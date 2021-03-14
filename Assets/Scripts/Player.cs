@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -26,6 +28,11 @@ public class Player : MonoBehaviour
     private GameObject[] coletadoPosicoes = new GameObject[3]; 
     private GameObject[] coletados = new GameObject[3];
     private Vector2[] coletadosBackPosition = new Vector2[3];
+
+    private int score = 0;
+    private int maxScore = 4;
+
+    [SerializeField] protected Text scoreTextField;
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +100,14 @@ public class Player : MonoBehaviour
                 {
                     Destroy(coletados[i]);
                 }
+
+                score += 1;
+                scoreTextField.text = score.ToString();
+
+                if(score == maxScore)
+                {
+                    OnClickPlay();
+                }
             }
             else
             {
@@ -104,7 +119,7 @@ public class Player : MonoBehaviour
                     coletados[i].gameObject.transform.position = coletadosBackPosition[i];
                     //coletadoPosicoes[i].gameObject.transform.position = coletadoOldPosicoes[i].transform.position;
                 }
-            }
+            }           
 
             coletados = new GameObject[3];
             coletadosBackPosition = new Vector2[3];
@@ -145,5 +160,10 @@ public class Player : MonoBehaviour
                 }
             }                      
         //}
+    }
+
+    public void OnClickPlay()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 }
