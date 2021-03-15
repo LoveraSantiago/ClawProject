@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
-public class Player : MonoBehaviour
+public class Garra : MonoBehaviour
 {
 
     private Rigidbody2D rgbd2d;
@@ -14,7 +15,7 @@ public class Player : MonoBehaviour
     private float speed;
     [SerializeField]
     private float gravity;
-    private bool jumping;
+    private bool movingDown;
     
     private Vector2 moveToTarget;
     private bool moveToPosition;
@@ -34,6 +35,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] protected Text scoreTextField;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +54,7 @@ public class Player : MonoBehaviour
         {
             moveToTarget = rgbd2d.transform.position;            
             movingEnable = false;
-            jumping = true;
+            movingDown = true;
         }
     }
 
@@ -62,10 +65,10 @@ public class Player : MonoBehaviour
             rgbd2d.velocity = new Vector2(move * speed, rgbd2d.velocity.y);
         }        
 
-        if (jumping)
+        if (movingDown)
         {                        
             rgbd2d.gravityScale = gravity;            
-            jumping = false;
+            movingDown = false;
         }
 
         if (moveToPosition)
