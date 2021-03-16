@@ -1,31 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Garra : MonoBehaviour, 
+                     CommunicatorComGarra
 {
+    [SerializeField] private float speed;
+    [SerializeField] private float gravity;
+    [SerializeField] private float coletadoScale;
+    [SerializeField] private GameObject[] coletadoPosicoes = new GameObject[3]; 
 
-    private Rigidbody2D rgbd2d;
-    private float move;
-
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float gravity;
-    private bool jumping;
-    
-    private Vector2 moveToTarget;
+    private Vector2 posicaoInicial;
     private bool moveToPosition;
 
-    private bool movingEnable = true;
     private bool checkCombinacao = false;
 
-    [SerializeField]
-    private float coletadoScale;
-    [SerializeField]
-    private GameObject[] coletadoPosicoes = new GameObject[3]; 
     private GameObject[] coletados = new GameObject[3];
     private Vector2[] coletadosBackPosition = new Vector2[3];
 
@@ -34,46 +23,31 @@ public class Player : MonoBehaviour
 
     [SerializeField] protected Text scoreTextField;
 
+    private MovimentacaoDaGarra movimentacaoAtual;    
+    private MovimentacaoDaGarra movimentacaoParaBaixo;
+    private MovimentacaoParaCima movimentacaoParaCima;
+    private MovimentacaoDaGarra movimentacaoLateral;
+
     // Start is called before the first frame update
     void Start()
     {
-        rgbd2d = GetComponent<Rigidbody2D>();        
+        Rigidbody2D rigidBody2d = GetComponent<Rigidbody2D>();
 
+        movimentacaoLateral = new MovimentacaoLateral(speed, rigidBody2d, this);
+        movimentacaoParaCima = new MovimentacaoParaCima(gravity, rigidBody2d, this);
+        movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, rigidBody2d);
+        movimentacaoAtual = movimentacaoLateral;
     }
 
     // Update is called once per frame
     void Update()
     {
-        move = Input.GetAxis("Horizontal");
-        
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            moveToTarget = rgbd2d.transform.position;            
-            movingEnable = false;
-            jumping = true;
-        }
+        movimentacaoAtual.update();
     }
 
     private void FixedUpdate()
     {
-        if (movingEnable)
-        {
-            rgbd2d.velocity = new Vector2(move * speed, rgbd2d.velocity.y);
-        }        
-
-        if (jumping)
-        {                        
-            rgbd2d.gravityScale = gravity;            
-            jumping = false;
-        }
-
-        if (moveToPosition)
-        {
-            rgbd2d.position = moveToTarget;
-            moveToPosition = false;
-            movingEnable = true;
-        }
+        movimentacaoAtual.fixedUpdate();       
 
         if (checkCombinacao)
         {
@@ -133,10 +107,11 @@ public class Player : MonoBehaviour
     {
         //if (other.gameObject.tag == "Gummy")
         //{            
-            rgbd2d.gravityScale = 0.0f;
 
-            
-            //other.transform.position = coletado1.transform.position;
+
+        //other.transform.position = coletado1.transform.position;
+
+        trocarParaAcaoSubindo();
 
             for (int i = 0; i < coletados.Length; i++)
             {
@@ -166,4 +141,23 @@ public class Player : MonoBehaviour
     {
         SceneManager.LoadScene("TitleScene");
     }
+
+    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO
+    public void trocarParaAcaoDescendo(Vector2 posicaoInicial)
+    {
+        this.posicaoInicial = posicaoInicial;
+        movimentacaoAtual   = movimentacaoParaBaixo;
+    }
+
+    public void trocarParaAcaoSubindo()
+    {
+        movimentacaoParaCima.setPosicalInicialDeReferencia(posicaoInicial);
+        movimentacaoAtual = movimentacaoParaCima;
+    }
+
+    public void trocarParaAcaoNormal()
+    {
+        movimentacaoAtual = movimentacaoLateral;
+    }
+    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
 }
