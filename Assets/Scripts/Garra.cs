@@ -5,26 +5,16 @@ using UnityEngine.UI;
 public class Garra : MonoBehaviour, 
                      CommunicatorComGarra
 {
+    [SerializeField] private float speed;
+    [SerializeField] private float gravity;
+    [SerializeField] private float coletadoScale;
+    [SerializeField] private GameObject[] coletadoPosicoes = new GameObject[3]; 
 
-    private Rigidbody2D rgbd2d;
-    //private float move;
-
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float gravity;
-    private bool movingDown;
-    
     private Vector2 posicaoInicial;
     private bool moveToPosition;
 
-    private bool movingEnable = true;
     private bool checkCombinacao = false;
 
-    [SerializeField]
-    private float coletadoScale;
-    [SerializeField]
-    private GameObject[] coletadoPosicoes = new GameObject[3]; 
     private GameObject[] coletados = new GameObject[3];
     private Vector2[] coletadosBackPosition = new Vector2[3];
 
@@ -41,11 +31,11 @@ public class Garra : MonoBehaviour,
     // Start is called before the first frame update
     void Start()
     {
-        rgbd2d = GetComponent<Rigidbody2D>();
+        Rigidbody2D rigidBody2d = GetComponent<Rigidbody2D>();
 
-        movimentacaoLateral = new MovimentacaoLateral(speed, rgbd2d, this);
-        movimentacaoParaCima = new MovimentacaoParaCima(gravity, rgbd2d, this);
-        movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, rgbd2d);
+        movimentacaoLateral = new MovimentacaoLateral(speed, rigidBody2d, this);
+        movimentacaoParaCima = new MovimentacaoParaCima(gravity, rigidBody2d, this);
+        movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, rigidBody2d);
         movimentacaoAtual = movimentacaoLateral;
     }
 
@@ -53,39 +43,11 @@ public class Garra : MonoBehaviour,
     void Update()
     {
         movimentacaoAtual.update();
-        //move = Input.GetAxis("Horizontal");
-
-        //if (Input.GetButtonDown("Jump"))
-        //{
-        //    moveToTarget = rgbd2d.transform.position;            
-        //    movingEnable = false;
-        //    movingDown = true;
-        //}
-
-        //Debug.Log(movimentacaoAtual);
     }
 
     private void FixedUpdate()
     {
-        //if (movingEnable)
-        //{
-        //    rgbd2d.velocity = new Vector2(move * speed, rgbd2d.velocity.y);
-        //}       
-
         movimentacaoAtual.fixedUpdate();       
-
-        //if (movingDown)
-        //{                        
-        //    rgbd2d.gravityScale = gravity;            
-        //    movingDown = false;
-        //}
-
-        //if (moveToPosition)
-        //{
-        //    rgbd2d.position = posicaoInicial;
-        //    moveToPosition = false;
-        //    movingEnable = true;
-        //}
 
         if (checkCombinacao)
         {
@@ -145,7 +107,6 @@ public class Garra : MonoBehaviour,
     {
         //if (other.gameObject.tag == "Gummy")
         //{            
-        //rgbd2d.gravityScale = 0.0f;
 
 
         //other.transform.position = coletado1.transform.position;
