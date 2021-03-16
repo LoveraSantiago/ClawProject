@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
+using UnityEngine.UI;
 
-public class Garra : MonoBehaviour
+public class Garra : MonoBehaviour, 
+                     CommunicatorComGarra
 {
 
     private Rigidbody2D rgbd2d;
-    private float move;
+    //private float move;
 
     [SerializeField]
     private float speed;
@@ -17,7 +15,7 @@ public class Garra : MonoBehaviour
     private float gravity;
     private bool movingDown;
     
-    private Vector2 moveToTarget;
+    private Vector2 posicaoInicial;
     private bool moveToPosition;
 
     private bool movingEnable = true;
@@ -35,48 +33,59 @@ public class Garra : MonoBehaviour
 
     [SerializeField] protected Text scoreTextField;
 
-    
+    private MovimentacaoDaGarra movimentacaoAtual;    
+    private MovimentacaoDaGarra movimentacaoParaBaixo;
+    private MovimentacaoParaCima movimentacaoParaCima;
+    private MovimentacaoDaGarra movimentacaoLateral;
 
     // Start is called before the first frame update
     void Start()
     {
-        rgbd2d = GetComponent<Rigidbody2D>();        
+        rgbd2d = GetComponent<Rigidbody2D>();
 
+        movimentacaoLateral = new MovimentacaoLateral(speed, rgbd2d, this);
+        movimentacaoParaCima = new MovimentacaoParaCima(gravity, rgbd2d, this);
+        movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, rgbd2d);
+        movimentacaoAtual = movimentacaoLateral;
     }
 
     // Update is called once per frame
     void Update()
     {
-        move = Input.GetAxis("Horizontal");
-        
+        movimentacaoAtual.update();
+        //move = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            moveToTarget = rgbd2d.transform.position;            
-            movingEnable = false;
-            movingDown = true;
-        }
+        //if (Input.GetButtonDown("Jump"))
+        //{
+        //    moveToTarget = rgbd2d.transform.position;            
+        //    movingEnable = false;
+        //    movingDown = true;
+        //}
+
+        //Debug.Log(movimentacaoAtual);
     }
 
     private void FixedUpdate()
     {
-        if (movingEnable)
-        {
-            rgbd2d.velocity = new Vector2(move * speed, rgbd2d.velocity.y);
-        }        
+        //if (movingEnable)
+        //{
+        //    rgbd2d.velocity = new Vector2(move * speed, rgbd2d.velocity.y);
+        //}       
 
-        if (movingDown)
-        {                        
-            rgbd2d.gravityScale = gravity;            
-            movingDown = false;
-        }
+        movimentacaoAtual.fixedUpdate();       
 
-        if (moveToPosition)
-        {
-            rgbd2d.position = moveToTarget;
-            moveToPosition = false;
-            movingEnable = true;
-        }
+        //if (movingDown)
+        //{                        
+        //    rgbd2d.gravityScale = gravity;            
+        //    movingDown = false;
+        //}
+
+        //if (moveToPosition)
+        //{
+        //    rgbd2d.position = posicaoInicial;
+        //    moveToPosition = false;
+        //    movingEnable = true;
+        //}
 
         if (checkCombinacao)
         {
@@ -136,10 +145,12 @@ public class Garra : MonoBehaviour
     {
         //if (other.gameObject.tag == "Gummy")
         //{            
-            rgbd2d.gravityScale = 0.0f;
+        //rgbd2d.gravityScale = 0.0f;
 
-            
-            //other.transform.position = coletado1.transform.position;
+
+        //other.transform.position = coletado1.transform.position;
+
+        trocarParaAcaoSubindo();
 
             for (int i = 0; i < coletados.Length; i++)
             {
@@ -169,4 +180,23 @@ public class Garra : MonoBehaviour
     {
         SceneManager.LoadScene("TitleScene");
     }
+
+    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO
+    public void trocarParaAcaoDescendo(Vector2 posicaoInicial)
+    {
+        this.posicaoInicial = posicaoInicial;
+        movimentacaoAtual   = movimentacaoParaBaixo;
+    }
+
+    public void trocarParaAcaoSubindo()
+    {
+        movimentacaoParaCima.setPosicalInicialDeReferencia(posicaoInicial);
+        movimentacaoAtual = movimentacaoParaCima;
+    }
+
+    public void trocarParaAcaoNormal()
+    {
+        movimentacaoAtual = movimentacaoLateral;
+    }
+    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
 }
