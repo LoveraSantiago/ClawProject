@@ -49,24 +49,6 @@ public class Garra : MonoBehaviour,
     void Update()
     {
         movimentacaoAtual.update();
-
-        //vertical = Input.GetAxis("Vertical");
-        //Quaternion anguloDejadoEsquerda = Quaternion.Euler(0, 0, 50);        
-        //Quaternion anguloDesejadoDireita = Quaternion.Euler(0, 0, -50);
-        ////pincaEsquerda.rotation = Quaternion.Lerp(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 1.5f);
-        ////pincaDireita.rotation  = Quaternion.Lerp(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 1.5f);
-
-        ////pincaEsquerda.rotation = Quaternion.LerpUnclamped(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 1.5f);
-        ////pincaDireita.rotation  = Quaternion.LerpUnclamped(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 1.5f);
-
-        ////pincaEsquerda.rotation = Quaternion.Slerp(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 1.5f);
-        ////pincaDireita.rotation  = Quaternion.Slerp(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 1.5f);
-
-        ////pincaEsquerda.rotation = Quaternion.SlerpUnclamped(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 1.5f);
-        ////pincaDireita.rotation  = Quaternion.SlerpUnclamped(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 1.5f);
-
-        //pincaEsquerda.rotation = Quaternion.RotateTowards(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 75f);
-        //pincaDireita.rotation  = Quaternion.RotateTowards(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 75f);
     }
 
     private void FixedUpdate()
