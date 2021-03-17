@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MovimentacaoParaBaixo : MovimentacaoDaGarra
 {
-    private readonly float ANGULO_ROTACAO_ABERTO = 50;
+    private readonly float ANGULO_ROTACAO_ABERTO = 50f;
     private readonly float VELOCIDADE_ROTACAO = 75f;
 
     private float gravidade;
