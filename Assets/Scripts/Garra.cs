@@ -29,9 +29,14 @@ public class Garra : MonoBehaviour,
     private MovimentacaoDaGarra movimentacaoLateral;
 
     // Start is called before the first frame update
+    private Transform pincaEsquerda;
+    private Transform pincaDireita;
+
     void Start()
     {
         Rigidbody2D rigidBody2d = GetComponent<Rigidbody2D>();
+        pincaDireita = transform.Find("centroPinca/pincaDireita");
+        pincaEsquerda = transform.Find("centroPinca/pincaEsquerda");       
 
         movimentacaoLateral = new MovimentacaoLateral(speed, rigidBody2d, this);
         movimentacaoParaCima = new MovimentacaoParaCima(gravity, rigidBody2d, this);
@@ -40,9 +45,12 @@ public class Garra : MonoBehaviour,
     }
 
     // Update is called once per frame
+    private float vertical;
     void Update()
     {
         movimentacaoAtual.update();
+
+        vertical = Input.GetAxis("Vertical");
     }
 
     private void FixedUpdate()
