@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Coletaveis : MonoBehaviour
 {
@@ -80,6 +81,11 @@ public class Coletaveis : MonoBehaviour
             checkCombinacao = false;
         }
 
+    }
+
+    public void OnClickPlay()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 
     private void OnCollisionEnter2D(Collision2D other)

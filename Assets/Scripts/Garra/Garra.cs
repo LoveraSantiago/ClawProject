@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Garra : MonoBehaviour, 
                      CommunicatorComGarra
@@ -26,8 +25,8 @@ public class Garra : MonoBehaviour,
         pincaDireita = transform.Find("centroPinca/pincaDireita");
         pincaEsquerda = transform.Find("centroPinca/pincaEsquerda");       
 
-        movimentacaoLateral = new MovimentacaoLateral(speed, rigidBody2d, this);
-        movimentacaoParaCima = new MovimentacaoParaCima(gravity, rigidBody2d, this);
+        movimentacaoLateral   = new MovimentacaoLateral(speed, rigidBody2d, this);
+        movimentacaoParaCima  = new MovimentacaoParaCima(gravity, rigidBody2d, this);
         movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, rigidBody2d, pincaDireita, pincaEsquerda);
         movimentacaoAtual = movimentacaoLateral;
     }
@@ -45,12 +44,7 @@ public class Garra : MonoBehaviour,
     private void OnCollisionEnter2D(Collision2D other)
     {
         trocarParaAcaoSubindo();
-    }
-
-    public void OnClickPlay()
-    {
-        SceneManager.LoadScene("TitleScene");
-    }
+    }    
 
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO
     public void trocarParaAcaoDescendo(Vector2 posicaoInicial)
