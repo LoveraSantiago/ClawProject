@@ -40,7 +40,7 @@ public class Garra : MonoBehaviour,
 
         movimentacaoLateral = new MovimentacaoLateral(speed, rigidBody2d, this);
         movimentacaoParaCima = new MovimentacaoParaCima(gravity, rigidBody2d, this);
-        movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, rigidBody2d);
+        movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, rigidBody2d, pincaDireita, pincaEsquerda);
         movimentacaoAtual = movimentacaoLateral;
     }
 
@@ -50,23 +50,23 @@ public class Garra : MonoBehaviour,
     {
         movimentacaoAtual.update();
 
-        vertical = Input.GetAxis("Vertical");
-        Quaternion anguloDejadoEsquerda = Quaternion.Euler(0, 0, 50);        
-        Quaternion anguloDesejadoDireita = Quaternion.Euler(0, 0, -50);
-        //pincaEsquerda.rotation = Quaternion.Lerp(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 1.5f);
-        //pincaDireita.rotation  = Quaternion.Lerp(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 1.5f);
+        //vertical = Input.GetAxis("Vertical");
+        //Quaternion anguloDejadoEsquerda = Quaternion.Euler(0, 0, 50);        
+        //Quaternion anguloDesejadoDireita = Quaternion.Euler(0, 0, -50);
+        ////pincaEsquerda.rotation = Quaternion.Lerp(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 1.5f);
+        ////pincaDireita.rotation  = Quaternion.Lerp(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 1.5f);
 
-        //pincaEsquerda.rotation = Quaternion.LerpUnclamped(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 1.5f);
-        //pincaDireita.rotation  = Quaternion.LerpUnclamped(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 1.5f);
+        ////pincaEsquerda.rotation = Quaternion.LerpUnclamped(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 1.5f);
+        ////pincaDireita.rotation  = Quaternion.LerpUnclamped(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 1.5f);
 
-        //pincaEsquerda.rotation = Quaternion.Slerp(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 1.5f);
-        //pincaDireita.rotation  = Quaternion.Slerp(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 1.5f);
+        ////pincaEsquerda.rotation = Quaternion.Slerp(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 1.5f);
+        ////pincaDireita.rotation  = Quaternion.Slerp(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 1.5f);
 
-        //pincaEsquerda.rotation = Quaternion.SlerpUnclamped(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 1.5f);
-        //pincaDireita.rotation  = Quaternion.SlerpUnclamped(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 1.5f);
+        ////pincaEsquerda.rotation = Quaternion.SlerpUnclamped(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 1.5f);
+        ////pincaDireita.rotation  = Quaternion.SlerpUnclamped(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 1.5f);
 
-        pincaEsquerda.rotation = Quaternion.RotateTowards(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 75f);
-        pincaDireita.rotation  = Quaternion.RotateTowards(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 75f);
+        //pincaEsquerda.rotation = Quaternion.RotateTowards(pincaEsquerda.rotation, anguloDejadoEsquerda, Time.deltaTime * 75f);
+        //pincaDireita.rotation  = Quaternion.RotateTowards(pincaDireita.rotation, anguloDesejadoDireita, Time.deltaTime * 75f);
     }
 
     private void FixedUpdate()
