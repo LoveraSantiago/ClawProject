@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1907269041359877149}
   - component: {fileID: 1907269041359877148}
   m_Layer: 0
-  m_Name: GarraDir
+  m_Name: pincaDireita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 1907269042991643850}
   - component: {fileID: 1907269042991643849}
   m_Layer: 0
-  m_Name: GarraEsq
+  m_Name: pincaEsquerda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
