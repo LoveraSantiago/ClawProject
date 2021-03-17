@@ -13,6 +13,7 @@ public class Garra : MonoBehaviour,
 
     private MovimentacaoDaGarra movimentacaoAtual;    
     private MovimentacaoDaGarra movimentacaoParaBaixo;
+    private MovimentacaoDaGarra movimentacaoAgarrando;
     private MovimentacaoParaCima movimentacaoParaCima;
     private MovimentacaoDaGarra movimentacaoLateral;
 
@@ -28,6 +29,7 @@ public class Garra : MonoBehaviour,
         movimentacaoLateral   = new MovimentacaoLateral(speed, rigidBody2d, this, pincaDireita, pincaEsquerda);
         movimentacaoParaCima  = new MovimentacaoParaCima(gravity, rigidBody2d, this);
         movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, rigidBody2d, pincaDireita, pincaEsquerda);
+        movimentacaoAgarrando = new MovimentacaoAgarrando(rigidBody2d, pincaDireita, pincaEsquerda);
         movimentacaoAtual = movimentacaoLateral;
     }
 
@@ -43,7 +45,7 @@ public class Garra : MonoBehaviour,
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        trocarParaAcaoSubindo();
+        trocarParaAgarrada();
     }    
 
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO
@@ -62,6 +64,11 @@ public class Garra : MonoBehaviour,
     public void trocarParaAcaoNormal()
     {
         movimentacaoAtual = movimentacaoLateral;
+    }
+
+    public void trocarParaAgarrada()
+    {
+        movimentacaoAtual = movimentacaoAgarrando;
     }
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
 }
