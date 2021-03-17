@@ -88,9 +88,10 @@ public class Garra : MonoBehaviour,
                 Debug.Log("noooo");
 
                 for (int i = 0; i < coletados.Length; i++)
-                {
+                {                    
                     coletados[i].transform.localScale += Vector3.one * coletadoScale;
                     coletados[i].gameObject.transform.position = coletadosBackPosition[i];
+                    
                     //coletadoPosicoes[i].gameObject.transform.position = coletadoOldPosicoes[i].transform.position;
                 }
             }           
@@ -107,10 +108,7 @@ public class Garra : MonoBehaviour,
     {
         //if (other.gameObject.tag == "Gummy")
         //{            
-
-
         //other.transform.position = coletado1.transform.position;
-
         trocarParaAcaoSubindo();
 
             for (int i = 0; i < coletados.Length; i++)
@@ -119,10 +117,10 @@ public class Garra : MonoBehaviour,
                 {
                 //coletadoOldPosicoes[i] = other.gameObject;
                     coletados[i] = other.gameObject;
-                    coletadosBackPosition[i] = other.gameObject.transform.position;
+                    coletadosBackPosition[i] = other.gameObject.transform.position;                    
 
                     other.transform.localScale -= Vector3.one * coletadoScale;
-                    other.transform.position = coletadoPosicoes[i].transform.position;
+                    other.transform.position = coletadoPosicoes[i].transform.position;                    
                                     
                     if ( i == coletados.Length - 1)
                     {

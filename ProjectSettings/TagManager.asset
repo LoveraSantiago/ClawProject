@@ -9,6 +9,8 @@ TagManager:
   - Urso_Verde
   - Urso_Amarelo
   - Gummy_Roxo
+  - Laranja
+  - Coco
   layers:
   - Default
   - TransparentFX
