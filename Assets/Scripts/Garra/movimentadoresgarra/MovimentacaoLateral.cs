@@ -38,9 +38,9 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
 
     public void update()
     {
-        incremento = Time.deltaTime * VELOCIDADE_ROTACAO;
-        pincaEsquerda.rotation = Quaternion.RotateTowards(pincaEsquerda.rotation, anguloDesejadoEsquerda, incremento);
-        pincaDireita.rotation = Quaternion.RotateTowards(pincaDireita.rotation, anguloDesejadoDireita, incremento);
+        //incremento = Time.deltaTime * VELOCIDADE_ROTACAO;
+        //pincaEsquerda.rotation = Quaternion.RotateTowards(pincaEsquerda.rotation, anguloDesejadoEsquerda, incremento);
+        //pincaDireita.rotation = Quaternion.RotateTowards(pincaDireita.rotation, anguloDesejadoDireita, incremento);
 
         if (Input.GetButtonDown("Jump"))
         {

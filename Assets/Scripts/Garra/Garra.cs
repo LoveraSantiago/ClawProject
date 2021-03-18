@@ -27,9 +27,9 @@ public class Garra : MonoBehaviour,
         pincaEsquerda = transform.Find("centroPinca/pincaEsquerda");       
 
         movimentacaoLateral   = new MovimentacaoLateral(speed, rigidBody2d, this, pincaDireita, pincaEsquerda);
-        movimentacaoParaCima  = new MovimentacaoParaCima(gravity, rigidBody2d, this);
+        movimentacaoParaCima  = new MovimentacaoParaCima(gravity, rigidBody2d, this, pincaDireita, pincaEsquerda);
         movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, rigidBody2d, pincaDireita, pincaEsquerda);
-        movimentacaoAgarrando = new MovimentacaoAgarrando(rigidBody2d, pincaDireita, pincaEsquerda);
+        movimentacaoAgarrando = new MovimentacaoAgarrando(rigidBody2d, pincaDireita, pincaEsquerda, this);
         movimentacaoAtual = movimentacaoLateral;
     }
 
@@ -46,6 +46,7 @@ public class Garra : MonoBehaviour,
     private void OnCollisionEnter2D(Collision2D other)
     {
         trocarParaAgarrada();
+        other.transform.GetComponent<Rigidbody2D>().mass = 0;
     }    
 
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO
