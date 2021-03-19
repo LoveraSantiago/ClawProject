@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1907269042779730412}
   - component: {fileID: 1907269042779730410}
   - component: {fileID: -7560634540368291778}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Garra_V2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1907269042913725776}
   - component: {fileID: 1907269042913725791}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Braco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1896134444382479020}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: centroPinca
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -222,6 +222,10 @@ PrefabInstance:
     - target: {fileID: 1886034751624910198, guid: 29e9a2b860ab66f43abf76077e9cfec2, type: 3}
       propertyPath: m_Name
       value: pincaEsquerda
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886034751624910198, guid: 29e9a2b860ab66f43abf76077e9cfec2, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1886034751624910199, guid: 29e9a2b860ab66f43abf76077e9cfec2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -284,6 +288,10 @@ PrefabInstance:
     - target: {fileID: 1886034751624910198, guid: 29e9a2b860ab66f43abf76077e9cfec2, type: 3}
       propertyPath: m_Name
       value: pincaDireita
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886034751624910198, guid: 29e9a2b860ab66f43abf76077e9cfec2, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1886034751624910199, guid: 29e9a2b860ab66f43abf76077e9cfec2, type: 3}
       propertyPath: m_LocalPosition.x

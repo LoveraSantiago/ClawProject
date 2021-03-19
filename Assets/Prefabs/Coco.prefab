@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3433761233117207209}
   - component: {fileID: 979480353061343443}
   - component: {fileID: 1900221043949912328}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Coco
   m_TagString: Coco
   m_Icon: {fileID: 0}
