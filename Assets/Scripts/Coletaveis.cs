@@ -2,12 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Coletaveis : MonoBehaviour
+public class Coletaveis
 {
-    [SerializeField] private float coletadoScale;//0.55586
-    [SerializeField] private GameObject[] coletadoPosicoes = new GameObject[3];//3
-    [SerializeField] protected Text scoreTextField;
-
     private GameObject[] coletados = new GameObject[3];
     private Vector2[] coletadosBackPosition = new Vector2[3];
 
@@ -16,6 +12,13 @@ public class Coletaveis : MonoBehaviour
 
     private int score = 0;
     private int maxScore = 4;
+
+    private ColetaveisDto coletaveisDto;
+
+    public Coletaveis(ColetaveisDto coletaveisDto)
+    {
+        this.coletaveisDto = coletaveisDto;
+    }
 
     public void Start()
     {
@@ -52,11 +55,11 @@ public class Coletaveis : MonoBehaviour
 
                 for (int i = 0; i < coletados.Length; i++)
                 {
-                    Destroy(coletados[i]);
+                    GameObject.Destroy(coletados[i]);
                 }
 
                 score += 1;
-                scoreTextField.text = score.ToString();
+                coletaveisDto.ScoreTextField.text = score.ToString();
 
                 if (score == maxScore)
                 {
@@ -69,7 +72,7 @@ public class Coletaveis : MonoBehaviour
 
                 for (int i = 0; i < coletados.Length; i++)
                 {
-                    coletados[i].transform.localScale += Vector3.one * coletadoScale;
+                    coletados[i].transform.localScale += Vector3.one * coletaveisDto.ColetadoScale;
                     coletados[i].gameObject.transform.position = coletadosBackPosition[i];
 
                     //coletadoPosicoes[i].gameObject.transform.position = coletadoOldPosicoes[i].transform.position;
@@ -103,8 +106,8 @@ public class Coletaveis : MonoBehaviour
                 coletados[i] = other.gameObject;
                 coletadosBackPosition[i] = other.gameObject.transform.position;
 
-                other.transform.localScale -= Vector3.one * coletadoScale;
-                other.transform.position = coletadoPosicoes[i].transform.position;
+                other.transform.localScale -= Vector3.one * coletaveisDto.ColetadoScale;
+                other.transform.position = coletaveisDto.ColetadoPosicoes[i].transform.position;
 
                 if (i == coletados.Length - 1)
                 {
