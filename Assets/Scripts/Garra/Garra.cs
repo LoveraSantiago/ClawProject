@@ -69,6 +69,7 @@ public class Garra : CommunicatorComGarra
     public void trocarParaAcaoSubindo()
     {
         movimentacaoParaCima.setPosicalInicialDeReferencia(posicaoInicial);
+        movimentacaoParaCima.preInicio();
         movimentacaoAtual = movimentacaoParaCima;
     }
 

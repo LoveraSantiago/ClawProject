@@ -18,6 +18,16 @@ public class Coletaveis
     public Coletaveis(ColetaveisDto coletaveisDto)
     {
         this.coletaveisDto = coletaveisDto;
+        coletaveisDto.GoTriggerDeColetado.GetComponent<DetectorDeTriggers>()
+            .registrarConsumidorDeCollider2d(
+            (collider2d) => //temporariamente aqui p validar
+            {
+                //Retirar getcomponent daqui
+                if(collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0)
+                {
+                    GameObject.Destroy(collider2d.gameObject);
+                }
+            });
     }
 
     public void Start()
