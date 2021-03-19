@@ -1,10 +1,7 @@
 using UnityEngine;
 
 public class MovimentacaoAgarrando : MovimentacaoDaGarra
-{
-    private readonly float ANGULO_ROTACAO_ABERTO = 18f;
-    private readonly float VELOCIDADE_ROTACAO = 50f;
-
+{   
     private float incremento;    
     
     private Quaternion anguloDesejadoEsquerda;
@@ -12,8 +9,8 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
 
     public MovimentacaoAgarrando()
     {
-        anguloDesejadoDireita = Quaternion.Euler(0, 0,   ANGULO_ROTACAO_ABERTO);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -ANGULO_ROTACAO_ABERTO);        
+        anguloDesejadoDireita  = Quaternion.Euler(0, 0,   compDaGarra.AnguloFechamentoGarra);
+        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -compDaGarra.AnguloFechamentoGarra);        
     }
 
     public override void update()
@@ -29,7 +26,7 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
 
     public override void fixedUpdate()
     {
-        incremento = Time.deltaTime * VELOCIDADE_ROTACAO;
+        incremento = Time.deltaTime * compDaGarra.VelocidadeFechamentoGarra;
         compDaGarra.PincaEsquerda.rotation = Quaternion.RotateTowards(
             compDaGarra.PincaEsquerda.rotation, anguloDesejadoEsquerda, incremento);
 

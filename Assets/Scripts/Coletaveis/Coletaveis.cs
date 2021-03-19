@@ -95,7 +95,7 @@ public class Coletaveis
 
     private void coletavelAtingido2(GameObject goColetavel)
     {
-        goColetavel.transform.GetComponent<Rigidbody2D>().mass = 0;
+        //goColetavel.transform.GetComponent<Rigidbody2D>().mass = 0;
     }
     
     private void coletavelAtingido(GameObject goColetavel)//para nao ser chamdo por enquanto
