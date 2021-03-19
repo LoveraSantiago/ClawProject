@@ -4,8 +4,7 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
 {
     private readonly float VELOCIDADE_ROTACAO = 100f;
 
-    private float movimentoLateral;    
-    private float velocidadeMovimento;
+    private float movimentoLateral;        
 
     private Rigidbody2D rigidBody2d;
 
@@ -19,13 +18,11 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
 
     private CommunicatorComGarra communicatorComGarra;
 
-    public MovimentacaoLateral(float velocidadeMovimento, 
-        Rigidbody2D rigidBody2d, 
+    public MovimentacaoLateral(Rigidbody2D rigidBody2d, 
         CommunicatorComGarra communicatorComGarra,
         Transform pincaDireita,
         Transform pincaEsquerda)
-    {
-        this.velocidadeMovimento = velocidadeMovimento;
+    {        
         this.rigidBody2d = rigidBody2d;
         this.communicatorComGarra = communicatorComGarra;
 
@@ -36,7 +33,7 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0, 0);
     }
 
-    public void update()
+    public override void update()
     {
         //incremento = Time.deltaTime * VELOCIDADE_ROTACAO;
         //pincaEsquerda.rotation = Quaternion.RotateTowards(pincaEsquerda.rotation, anguloDesejadoEsquerda, incremento);
@@ -50,9 +47,11 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
         }
     }
 
-    public void fixedUpdate()
+    public override void fixedUpdate()
     {
         movimentoLateral = Input.GetAxis("Horizontal");
-        rigidBody2d.velocity = new Vector2(movimentoLateral * velocidadeMovimento, rigidBody2d.velocity.y);
+        rigidBody2d.velocity = new Vector2(
+            movimentoLateral * componentesDaGarraDto.VelocidadeMovimento, 
+            rigidBody2d.velocity.y);
     }
 }
