@@ -1,5 +1,12 @@
-public interface MovimentacaoDaGarra 
+public abstract class MovimentacaoDaGarra 
 {
-    void update();
-    void fixedUpdate();
+    protected static ComponentesDaGarraDto componentesDaGarraDto;
+
+    public virtual void update() { }
+    public virtual void fixedUpdate() { }
+
+    public static void configurarComponentesDaGarraDto(ComponentesDaGarraDto componentesDaGarraDtoArg)
+    {
+        componentesDaGarraDto = componentesDaGarraDtoArg;
+    }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Garra : MonoBehaviour, 
                      CommunicatorComGarra
 {
+    [SerializeField] ComponentesDaGarraDto componentesDaGarra;
     [SerializeField] private float speed;
     [SerializeField] private float gravity;
 
@@ -24,8 +25,9 @@ public class Garra : MonoBehaviour,
     {
         Rigidbody2D rigidBody2d = GetComponent<Rigidbody2D>();
         pincaDireita = transform.Find("centroPinca/pincaDireita");
-        pincaEsquerda = transform.Find("centroPinca/pincaEsquerda");       
+        pincaEsquerda = transform.Find("centroPinca/pincaEsquerda");
 
+        MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarra);
         movimentacaoLateral   = new MovimentacaoLateral(speed, rigidBody2d, this, pincaDireita, pincaEsquerda);
         movimentacaoParaCima  = new MovimentacaoParaCima(gravity, rigidBody2d, this, pincaDireita, pincaEsquerda);
         movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, rigidBody2d, pincaDireita, pincaEsquerda);
