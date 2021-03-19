@@ -22,10 +22,12 @@ public class Garra : MonoBehaviour,
         Rigidbody2D rigidBody2d = GetComponent<Rigidbody2D>();        
 
         MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarra);
-        movimentacaoLateral   = new MovimentacaoLateral(this);
-        movimentacaoParaCima  = new MovimentacaoParaCima(gravity, this);
+        MovimentacaoAgarrando.configurarCommunicatorComGarra(this);
+
+        movimentacaoLateral   = new MovimentacaoLateral();
+        movimentacaoParaCima  = new MovimentacaoParaCima(gravity);
         movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity);
-        movimentacaoAgarrando = new MovimentacaoAgarrando(this);
+        movimentacaoAgarrando = new MovimentacaoAgarrando();
         movimentacaoAtual = movimentacaoLateral;
     }
 

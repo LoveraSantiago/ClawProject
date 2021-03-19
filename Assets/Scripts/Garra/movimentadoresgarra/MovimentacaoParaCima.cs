@@ -7,14 +7,9 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
     private float gravidade;
     private float incremento;    
 
-    private CommunicatorComGarra communicatorComGarra;
-
-    public MovimentacaoParaCima(float gravidade, 
-        CommunicatorComGarra communicatorComGarra)
+    public MovimentacaoParaCima(float gravidade)
     {
         this.gravidade = -gravidade;
-        
-        this.communicatorComGarra = communicatorComGarra;
     }
 
     public override void update()

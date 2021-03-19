@@ -9,12 +9,8 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
 
     private float incremento;
 
-    private CommunicatorComGarra communicatorComGarra;
-
-    public MovimentacaoLateral(CommunicatorComGarra communicatorComGarra)
+    public MovimentacaoLateral()
     {        
-        this.communicatorComGarra = communicatorComGarra;
-
         anguloDesejadoDireita = Quaternion.Euler(0, 0, 0);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0, 0);
     }

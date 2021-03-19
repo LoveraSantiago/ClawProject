@@ -10,14 +10,10 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;
 
-    private CommunicatorComGarra communicatorComGarra;
-
-    public MovimentacaoAgarrando(CommunicatorComGarra communicatorComGarra)
+    public MovimentacaoAgarrando()
     {
         anguloDesejadoDireita = Quaternion.Euler(0, 0,   ANGULO_ROTACAO_ABERTO);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -ANGULO_ROTACAO_ABERTO);
-
-        this.communicatorComGarra = communicatorComGarra;
+        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -ANGULO_ROTACAO_ABERTO);        
     }
 
     public override void update()
