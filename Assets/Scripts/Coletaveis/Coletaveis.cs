@@ -30,7 +30,9 @@ public class Coletaveis
         
     }
 
-    public void FixedUpdate()
+    public void FixedUpdate() { }
+
+    public void FixedUpdate2()//para nao ser chamado por enquanto
     {
         if (checkCombinacao)
         {
@@ -91,14 +93,18 @@ public class Coletaveis
         SceneManager.LoadScene("TitleScene");
     }
 
-    private void coletavelAtingido(GameObject goColetavel)
+    private void coletavelAtingido2(GameObject goColetavel)
+    {
+        goColetavel.transform.GetComponent<Rigidbody2D>().mass = 0;
+    }
+    
+    private void coletavelAtingido(GameObject goColetavel)//para nao ser chamdo por enquanto
     {
         //if (other.gameObject.tag == "Gummy")
         //{            
         //other.transform.position = coletado1.transform.position;
         //trocarParaAcaoSubindo();
 
-        goColetavel.transform.GetComponent<Rigidbody2D>().mass = 0;
 
         for (int i = 0; i < coletados.Length; i++)
         {
@@ -126,6 +132,6 @@ public class Coletaveis
 
     public Action<GameObject> getConsumidorDeColetavelAtingito()
     {
-        return (coletado) => coletavelAtingido(coletado);
+        return (coletado) => coletavelAtingido2(coletado);
     }
 }
