@@ -1,8 +1,8 @@
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Coletaveis
+public class Coletaveis 
 {
     private GameObject[] coletados = new GameObject[3];
     private Vector2[] coletadosBackPosition = new Vector2[3];
@@ -91,23 +91,25 @@ public class Coletaveis
         SceneManager.LoadScene("TitleScene");
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void coletavelAtingido(GameObject goColetavel)
     {
         //if (other.gameObject.tag == "Gummy")
         //{            
         //other.transform.position = coletado1.transform.position;
         //trocarParaAcaoSubindo();
 
+        goColetavel.transform.GetComponent<Rigidbody2D>().mass = 0;
+
         for (int i = 0; i < coletados.Length; i++)
         {
             if (coletados[i] == null)
             {
                 //coletadoOldPosicoes[i] = other.gameObject;
-                coletados[i] = other.gameObject;
-                coletadosBackPosition[i] = other.gameObject.transform.position;
+                coletados[i] = goColetavel;
+                coletadosBackPosition[i] = goColetavel.transform.position;
 
-                other.transform.localScale -= Vector3.one * coletaveisDto.ColetadoScale;
-                other.transform.position = coletaveisDto.ColetadoPosicoes[i].transform.position;
+                goColetavel.transform.localScale -= Vector3.one * coletaveisDto.ColetadoScale;
+                goColetavel.transform.position = coletaveisDto.ColetadoPosicoes[i].transform.position;
 
                 if (i == coletados.Length - 1)
                 {
@@ -120,6 +122,10 @@ public class Coletaveis
             }
         }
         //}
+    }
 
+    public Action<GameObject> getConsumidorDeColetavelAtingito()
+    {
+        return (coletado) => coletavelAtingido(coletado);
     }
 }

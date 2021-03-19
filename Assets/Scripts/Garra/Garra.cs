@@ -8,7 +8,9 @@ public class Garra : CommunicatorComGarra
     private MovimentacaoDaGarra movimentacaoParaBaixo;
     private MovimentacaoDaGarra movimentacaoAgarrando;
     private MovimentacaoParaCima movimentacaoParaCima;
-    private MovimentacaoDaGarra movimentacaoLateral;    
+    private MovimentacaoDaGarra movimentacaoLateral;
+
+    private ProdutorDeEvento<GameObject> produtorDeEventoAtingiuColetavel;
 
     public Garra(ComponentesDaGarraDto componentesDaGarraDto)
     {
@@ -22,6 +24,8 @@ public class Garra : CommunicatorComGarra
         movimentacaoAtual = movimentacaoLateral;
         
         configurarDetector(componentesDaGarraDto.RigidBody.gameObject);
+
+        produtorDeEventoAtingiuColetavel = new ProdutorDeEvento<GameObject>();
     }    
 
     public void Update()
@@ -37,7 +41,7 @@ public class Garra : CommunicatorComGarra
     private void garraColidiuCom(Collision2D other)
     {
         trocarParaAgarrada();
-        other.transform.GetComponent<Rigidbody2D>().mass = 0;
+        produtorDeEventoAtingiuColetavel.produziuEvento(other.gameObject);        
     }    
 
     private void configurarDetector(GameObject goGarra)
@@ -45,6 +49,11 @@ public class Garra : CommunicatorComGarra
         DetectorDeColisoes detectorDeColisoes =  goGarra.GetComponent<DetectorDeColisoes>();
         detectorDeColisoes.registrarConsumidorCollision2dOnEnter(
             (colisao) => garraColidiuCom(colisao));
+    }
+
+    public ProdutorDeEvento<GameObject> getProdutorDeEventoColisaoComColetavel()
+    {
+        return produtorDeEventoAtingiuColetavel;
     }
 
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO

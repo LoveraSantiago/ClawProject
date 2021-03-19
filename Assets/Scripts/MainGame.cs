@@ -13,8 +13,11 @@ public class MainGame : MonoBehaviour
     {
         garra = new Garra(componentesDaGarra);
         coletaveis = new Coletaveis(coletaveisDto);
-    }
 
+        new ProdutorConsumidoresDeEvento<GameObject>()
+            .configurarProdutor(garra.getProdutorDeEventoColisaoComColetavel())
+            .adicionarConsumidorDeEvento(coletaveis.getConsumidorDeColetavelAtingito());
+    }
     
     void Update()
     {
