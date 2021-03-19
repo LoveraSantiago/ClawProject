@@ -1678,9 +1678,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1907269042779730409, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+      propertyPath: componentesDaGarra.velocidadeMovimento
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1907269042779730410, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1907269042779730411, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
       propertyPath: m_LocalPosition.x
