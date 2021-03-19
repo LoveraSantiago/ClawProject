@@ -11,6 +11,7 @@ TagManager:
   - Gummy_Roxo
   - Laranja
   - Coco
+  - Container
   layers:
   - Default
   - TransparentFX

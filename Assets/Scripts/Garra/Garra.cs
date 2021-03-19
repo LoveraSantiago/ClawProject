@@ -40,8 +40,11 @@ public class Garra : CommunicatorComGarra
 
     private void garraColidiuCom(Collision2D other)
     {
-        trocarParaAgarrada();
-        produtorDeEventoAtingiuColetavel.produziuEvento(other.gameObject);        
+        if (Utils.isColetavel(other))
+        {
+            trocarParaAgarrada();
+            produtorDeEventoAtingiuColetavel.produziuEvento(other.gameObject);        
+        }
     }    
 
     private void configurarDetector(GameObject goGarra)
