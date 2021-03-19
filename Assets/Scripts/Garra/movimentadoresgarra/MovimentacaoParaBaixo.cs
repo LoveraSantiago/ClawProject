@@ -5,16 +5,13 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     private readonly float ANGULO_ROTACAO_ABERTO = 50f;
     private readonly float VELOCIDADE_ROTACAO = 75f;
 
-    private float gravidade;
     private float incremento;    
 
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;    
 
-    public MovimentacaoParaBaixo(float gravidade)
+    public MovimentacaoParaBaixo()
     {
-        this.gravidade = gravidade;
-
         anguloDesejadoDireita  = Quaternion.Euler(0, 0, -ANGULO_ROTACAO_ABERTO);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  ANGULO_ROTACAO_ABERTO);
     }
@@ -31,6 +28,6 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
 
     public override void fixedUpdate()
     {
-        compDaGarra.RigidBody.gravityScale = gravidade;        
+        compDaGarra.RigidBody.gravityScale = compDaGarra.GravidadePos;        
     }
 }

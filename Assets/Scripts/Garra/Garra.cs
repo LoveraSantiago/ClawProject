@@ -3,13 +3,9 @@ using UnityEngine;
 public class Garra : MonoBehaviour, 
                      CommunicatorComGarra
 {
-    [SerializeField] ComponentesDaGarraDto componentesDaGarra;    
-    [SerializeField] private float gravity;
+    [SerializeField] ComponentesDaGarraDto componentesDaGarra;        
 
     private Vector2 posicaoInicial;
-
-    private GameObject[] coletados = new GameObject[3];
-    private Vector2[] coletadosBackPosition = new Vector2[3];
 
     private MovimentacaoDaGarra movimentacaoAtual;    
     private MovimentacaoDaGarra movimentacaoParaBaixo;
@@ -25,8 +21,8 @@ public class Garra : MonoBehaviour,
         MovimentacaoAgarrando.configurarCommunicatorComGarra(this);
 
         movimentacaoLateral   = new MovimentacaoLateral();
-        movimentacaoParaCima  = new MovimentacaoParaCima(gravity);
-        movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity);
+        movimentacaoParaCima  = new MovimentacaoParaCima();
+        movimentacaoParaBaixo = new MovimentacaoParaBaixo();
         movimentacaoAgarrando = new MovimentacaoAgarrando();
         movimentacaoAtual = movimentacaoLateral;
     }

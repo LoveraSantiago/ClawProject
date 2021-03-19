@@ -1694,6 +1694,14 @@ PrefabInstance:
       propertyPath: componentesDaGarra.pincaEsquerda
       value: 
       objectReference: {fileID: 1879337338}
+    - target: {fileID: 1907269042779730409, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+      propertyPath: componentesDaGarra.gravidadePos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907269042779730409, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+      propertyPath: componentesDaGarra.gravidadeNeg
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1907269042779730410, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
       propertyPath: m_Mass
       value: 5
