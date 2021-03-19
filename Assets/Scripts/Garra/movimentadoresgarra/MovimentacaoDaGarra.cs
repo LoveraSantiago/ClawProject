@@ -1,12 +1,12 @@
 public abstract class MovimentacaoDaGarra 
 {
-    protected static ComponentesDaGarraDto componentesDaGarraDto;
+    protected static ComponentesDaGarraDto compDaGarra;
 
     public virtual void update() { }
     public virtual void fixedUpdate() { }
 
     public static void configurarComponentesDaGarraDto(ComponentesDaGarraDto componentesDaGarraDtoArg)
     {
-        componentesDaGarraDto = componentesDaGarraDtoArg;
+        compDaGarra = componentesDaGarraDtoArg;
     }
 }

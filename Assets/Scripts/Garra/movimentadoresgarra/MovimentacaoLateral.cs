@@ -6,8 +6,6 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
 
     private float movimentoLateral;        
 
-    private Rigidbody2D rigidBody2d;
-
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;
 
@@ -18,12 +16,11 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
 
     private CommunicatorComGarra communicatorComGarra;
 
-    public MovimentacaoLateral(Rigidbody2D rigidBody2d, 
+    public MovimentacaoLateral(
         CommunicatorComGarra communicatorComGarra,
         Transform pincaDireita,
         Transform pincaEsquerda)
     {        
-        this.rigidBody2d = rigidBody2d;
         this.communicatorComGarra = communicatorComGarra;
 
         this.pincaDireita = pincaDireita;
@@ -41,7 +38,7 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
 
         if (Input.GetButtonDown("Jump"))
         {
-            Vector2 posicaoInicial = rigidBody2d.transform.localPosition;
+            Vector2 posicaoInicial = compDaGarra.RigidBody.transform.localPosition;
             Debug.Log("Posicao inicial: " + posicaoInicial);
             communicatorComGarra.trocarParaAcaoDescendo(posicaoInicial);
         }
@@ -50,8 +47,9 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
     public override void fixedUpdate()
     {
         movimentoLateral = Input.GetAxis("Horizontal");
-        rigidBody2d.velocity = new Vector2(
-            movimentoLateral * componentesDaGarraDto.VelocidadeMovimento, 
-            rigidBody2d.velocity.y);
+
+        compDaGarra.RigidBody.velocity = new Vector2(
+            movimentoLateral * compDaGarra.VelocidadeMovimento,
+            compDaGarra.RigidBody.velocity.y);
     }
 }

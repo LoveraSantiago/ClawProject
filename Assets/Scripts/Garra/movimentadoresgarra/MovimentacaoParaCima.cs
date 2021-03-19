@@ -7,8 +7,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 
     private Vector2 posicaoInicial;
 
-    private float gravidade;
-    private Rigidbody2D rigidbody2D;
+    private float gravidade;    
 
     private float incremento;
 
@@ -21,11 +20,11 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
     private CommunicatorComGarra communicatorComGarra;
 
     public MovimentacaoParaCima(float gravidade, 
-        Rigidbody2D rigidbody2D, CommunicatorComGarra communicatorComGarra,
+        CommunicatorComGarra communicatorComGarra,
         Transform pincaDireita, Transform pincaEsquerda )
     {
         this.gravidade = -gravidade;
-        this.rigidbody2D = rigidbody2D;
+        
         this.communicatorComGarra = communicatorComGarra;
 
         anguloDesejadoDireita = Quaternion.Euler(0, 0,   ANGULO_ROTACAO_ABERTO);
@@ -35,21 +34,21 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
         this.pincaEsquerda = pincaEsquerda;
     }
 
-    public void update()
+    public override void update()
     {        
-        if(rigidbody2D.transform.localPosition.y > posicaoInicial.y)
+        if(compDaGarra.RigidBody.transform.localPosition.y > posicaoInicial.y)
         {
-            rigidbody2D.transform.localPosition = new Vector2(rigidbody2D.position.x, posicaoInicial.y);
+            compDaGarra.RigidBody.transform.localPosition = new Vector2(compDaGarra.RigidBody.position.x, posicaoInicial.y);
 
-            rigidbody2D.gravityScale = 0;
-            rigidbody2D.velocity = Vector3.zero;
+            compDaGarra.RigidBody.gravityScale = 0;
+            compDaGarra.RigidBody.velocity = Vector3.zero;
             communicatorComGarra.trocarParaAcaoNormal();
         }
     }
 
-    public void fixedUpdate()
+    public override void fixedUpdate()
     {
-        rigidbody2D.gravityScale = gravidade;
+        compDaGarra.RigidBody.gravityScale = gravidade;
 
         //incremento = Time.deltaTime * VELOCIDADE_ROTACAO;
         //pincaEsquerda.rotation = Quaternion.RotateTowards(pincaEsquerda.rotation, anguloDesejadoEsquerda, incremento);

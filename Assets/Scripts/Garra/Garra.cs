@@ -27,10 +27,10 @@ public class Garra : MonoBehaviour,
         pincaEsquerda = transform.Find("centroPinca/pincaEsquerda");
 
         MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarra);
-        movimentacaoLateral   = new MovimentacaoLateral(rigidBody2d, this, pincaDireita, pincaEsquerda);
-        movimentacaoParaCima  = new MovimentacaoParaCima(gravity, rigidBody2d, this, pincaDireita, pincaEsquerda);
-        movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, rigidBody2d, pincaDireita, pincaEsquerda);
-        movimentacaoAgarrando = new MovimentacaoAgarrando(rigidBody2d, pincaDireita, pincaEsquerda, this);
+        movimentacaoLateral   = new MovimentacaoLateral(this, pincaDireita, pincaEsquerda);
+        movimentacaoParaCima  = new MovimentacaoParaCima(gravity, this, pincaDireita, pincaEsquerda);
+        movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, pincaDireita, pincaEsquerda);
+        movimentacaoAgarrando = new MovimentacaoAgarrando(pincaDireita, pincaEsquerda, this);
         movimentacaoAtual = movimentacaoLateral;
     }
 

@@ -6,9 +6,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     private readonly float VELOCIDADE_ROTACAO = 75f;
 
     private float gravidade;
-    private float incremento;
-
-    private Rigidbody2D rigidbody2D;
+    private float incremento;    
 
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;
@@ -16,12 +14,11 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     private Transform pincaDireita;
     private Transform pincaEsquerda;
 
-    public MovimentacaoParaBaixo(float gravidade, Rigidbody2D rigidbody2D,
+    public MovimentacaoParaBaixo(float gravidade, 
         Transform pincaDireita, 
         Transform pincaEsquerda)
     {
         this.gravidade = gravidade;
-        this.rigidbody2D = rigidbody2D;
 
         anguloDesejadoDireita  = Quaternion.Euler(0, 0, -ANGULO_ROTACAO_ABERTO);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  ANGULO_ROTACAO_ABERTO);
@@ -30,15 +27,15 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
         this.pincaEsquerda = pincaEsquerda;
     }
 
-    public void update()
+    public override void update()
     {
         incremento = Time.deltaTime * VELOCIDADE_ROTACAO;
         pincaEsquerda.rotation = Quaternion.RotateTowards(pincaEsquerda.rotation, anguloDesejadoEsquerda, incremento);
         pincaDireita.rotation =  Quaternion.RotateTowards(pincaDireita.rotation,  anguloDesejadoDireita , incremento);
     }
 
-    public void fixedUpdate()
+    public override void fixedUpdate()
     {
-        rigidbody2D.gravityScale = gravidade;        
+        compDaGarra.RigidBody.gravityScale = gravidade;        
     }
 }
