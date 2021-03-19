@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1907269042779730411}
   - component: {fileID: 1907269042779730412}
   - component: {fileID: 1907269042779730410}
-  - component: {fileID: 1907269042779730409}
+  - component: {fileID: -7560634540368291778}
   m_Layer: 0
   m_Name: Garra_V2
   m_TagString: Untagged
@@ -82,7 +82,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1907269042779730409
+--- !u!114 &-7560634540368291778
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,11 +91,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1907269042779730413}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba1085a14a4b4f3d9c6e61261465eed, type: 3}
+  m_Script: {fileID: 11500000, guid: ad57ad0fcd449d647a38b1975f22b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  gravity: 1
 --- !u!1 &1907269042913725777
 GameObject:
   m_ObjectHideFlags: 0

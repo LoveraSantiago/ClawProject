@@ -1,10 +1,7 @@
 using UnityEngine;
 
-public class Garra : MonoBehaviour, 
-                     CommunicatorComGarra
+public class Garra : CommunicatorComGarra
 {
-    [SerializeField] ComponentesDaGarraDto componentesDaGarra;        
-
     private Vector2 posicaoInicial;
 
     private MovimentacaoDaGarra movimentacaoAtual;    
@@ -13,11 +10,9 @@ public class Garra : MonoBehaviour,
     private MovimentacaoParaCima movimentacaoParaCima;
     private MovimentacaoDaGarra movimentacaoLateral;    
 
-    void Start()
+    public Garra(ComponentesDaGarraDto componentesDaGarraDto)
     {
-        Rigidbody2D rigidBody2d = GetComponent<Rigidbody2D>();        
-
-        MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarra);
+        MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
         MovimentacaoAgarrando.configurarCommunicatorComGarra(this);
 
         movimentacaoLateral   = new MovimentacaoLateral();
@@ -25,23 +20,32 @@ public class Garra : MonoBehaviour,
         movimentacaoParaBaixo = new MovimentacaoParaBaixo();
         movimentacaoAgarrando = new MovimentacaoAgarrando();
         movimentacaoAtual = movimentacaoLateral;
-    }
+        
+        configurarDetector(componentesDaGarraDto.RigidBody.gameObject);
+    }    
 
-    void Update()
+    public void Update()
     {
         movimentacaoAtual.update();
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         movimentacaoAtual.fixedUpdate();       
     }   
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void garraColidiuCom(Collision2D other)
     {
         trocarParaAgarrada();
         other.transform.GetComponent<Rigidbody2D>().mass = 0;
     }    
+
+    private void configurarDetector(GameObject goGarra)
+    {
+        DetectorDeColisoes detectorDeColisoes =  goGarra.GetComponent<DetectorDeColisoes>();
+        detectorDeColisoes.registrarConsumidorCollision2dOnEnter(
+            (colisao) => garraColidiuCom(colisao));
+    }
 
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO
     public void trocarParaAcaoDescendo(Vector2 posicaoInicial)
