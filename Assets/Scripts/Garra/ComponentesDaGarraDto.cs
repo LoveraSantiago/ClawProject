@@ -5,9 +5,17 @@ using UnityEngine;
 public class ComponentesDaGarraDto 
 {
     [SerializeField] private float velocidadeMovimento;
+    [Space(5)]
     [SerializeField] private Rigidbody2D rigidBody;
+    [Space(5)]
+    [SerializeField] private Transform pincaEsquerda;
+    [SerializeField] private Transform pincaDireita;
 
     public float VelocidadeMovimento { get { return velocidadeMovimento; } }   
     public Rigidbody2D RigidBody { get { return rigidBody; } }
+
+    public Transform PincaEsquerda { get { return pincaEsquerda; } }
+    public Transform PincaDireita { get { return pincaDireita; } }
+
 
 }

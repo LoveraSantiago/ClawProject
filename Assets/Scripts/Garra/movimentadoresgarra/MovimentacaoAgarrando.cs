@@ -6,22 +6,14 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
     private readonly float VELOCIDADE_ROTACAO = 50f;
 
     private float incremento;    
-
-    private Transform pincaDireita;
-    private Transform pincaEsquerda;
-
+    
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;
 
     private CommunicatorComGarra communicatorComGarra;
 
-    public MovimentacaoAgarrando(
-        Transform pincaDireita, Transform pincaEsquerda,
-        CommunicatorComGarra communicatorComGarra)
+    public MovimentacaoAgarrando(CommunicatorComGarra communicatorComGarra)
     {
-        this.pincaDireita = pincaDireita;
-        this.pincaEsquerda = pincaEsquerda;
-
         anguloDesejadoDireita = Quaternion.Euler(0, 0,   ANGULO_ROTACAO_ABERTO);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -ANGULO_ROTACAO_ABERTO);
 
@@ -37,14 +29,15 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
             Debug.Log("Posicao inicial: " + posicaoInicial);
             communicatorComGarra.trocarParaAcaoSubindo();
         }
-
-
     }
 
     public override void fixedUpdate()
     {
         incremento = Time.deltaTime * VELOCIDADE_ROTACAO;
-        pincaEsquerda.rotation = Quaternion.RotateTowards(pincaEsquerda.rotation, anguloDesejadoEsquerda, incremento);
-        pincaDireita.rotation = Quaternion.RotateTowards(pincaDireita.rotation, anguloDesejadoDireita, incremento);
+        compDaGarra.PincaEsquerda.rotation = Quaternion.RotateTowards(
+            compDaGarra.PincaEsquerda.rotation, anguloDesejadoEsquerda, incremento);
+
+        compDaGarra.PincaDireita.rotation = Quaternion.RotateTowards(
+            compDaGarra.PincaDireita.rotation, anguloDesejadoDireita, incremento);
     }
 }

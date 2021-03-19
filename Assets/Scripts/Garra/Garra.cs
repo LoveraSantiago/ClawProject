@@ -15,22 +15,17 @@ public class Garra : MonoBehaviour,
     private MovimentacaoDaGarra movimentacaoParaBaixo;
     private MovimentacaoDaGarra movimentacaoAgarrando;
     private MovimentacaoParaCima movimentacaoParaCima;
-    private MovimentacaoDaGarra movimentacaoLateral;
-
-    private Transform pincaEsquerda;
-    private Transform pincaDireita;
+    private MovimentacaoDaGarra movimentacaoLateral;    
 
     void Start()
     {
-        Rigidbody2D rigidBody2d = GetComponent<Rigidbody2D>();
-        pincaDireita = transform.Find("centroPinca/pincaDireita");
-        pincaEsquerda = transform.Find("centroPinca/pincaEsquerda");
+        Rigidbody2D rigidBody2d = GetComponent<Rigidbody2D>();        
 
         MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarra);
-        movimentacaoLateral   = new MovimentacaoLateral(this, pincaDireita, pincaEsquerda);
-        movimentacaoParaCima  = new MovimentacaoParaCima(gravity, this, pincaDireita, pincaEsquerda);
-        movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity, pincaDireita, pincaEsquerda);
-        movimentacaoAgarrando = new MovimentacaoAgarrando(pincaDireita, pincaEsquerda, this);
+        movimentacaoLateral   = new MovimentacaoLateral(this);
+        movimentacaoParaCima  = new MovimentacaoParaCima(gravity, this);
+        movimentacaoParaBaixo = new MovimentacaoParaBaixo(gravity);
+        movimentacaoAgarrando = new MovimentacaoAgarrando(this);
         movimentacaoAtual = movimentacaoLateral;
     }
 

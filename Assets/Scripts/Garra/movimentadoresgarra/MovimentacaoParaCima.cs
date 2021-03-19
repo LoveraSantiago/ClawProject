@@ -2,36 +2,19 @@ using UnityEngine;
 
 public class MovimentacaoParaCima : MovimentacaoDaGarra
 {
-    private readonly float ANGULO_ROTACAO_ABERTO = 18f;
-    private readonly float VELOCIDADE_ROTACAO = 50f;
-
     private Vector2 posicaoInicial;
 
-    private float gravidade;    
-
-    private float incremento;
-
-    private Transform pincaDireita;
-    private Transform pincaEsquerda;
-
-    private Quaternion anguloDesejadoEsquerda;
-    private Quaternion anguloDesejadoDireita;
+    private float gravidade;
+    private float incremento;    
 
     private CommunicatorComGarra communicatorComGarra;
 
     public MovimentacaoParaCima(float gravidade, 
-        CommunicatorComGarra communicatorComGarra,
-        Transform pincaDireita, Transform pincaEsquerda )
+        CommunicatorComGarra communicatorComGarra)
     {
         this.gravidade = -gravidade;
         
         this.communicatorComGarra = communicatorComGarra;
-
-        anguloDesejadoDireita = Quaternion.Euler(0, 0,   ANGULO_ROTACAO_ABERTO);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -ANGULO_ROTACAO_ABERTO);
-
-        this.pincaDireita = pincaDireita;
-        this.pincaEsquerda = pincaEsquerda;
     }
 
     public override void update()
@@ -49,10 +32,6 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
     public override void fixedUpdate()
     {
         compDaGarra.RigidBody.gravityScale = gravidade;
-
-        //incremento = Time.deltaTime * VELOCIDADE_ROTACAO;
-        //pincaEsquerda.rotation = Quaternion.RotateTowards(pincaEsquerda.rotation, anguloDesejadoEsquerda, incremento);
-        //pincaDireita.rotation = Quaternion.RotateTowards(pincaDireita.rotation, anguloDesejadoDireita, incremento);
     }
 
     public void setPosicalInicialDeReferencia(Vector2 posicaoInicial)

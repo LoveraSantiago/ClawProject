@@ -1682,6 +1682,18 @@ PrefabInstance:
       propertyPath: componentesDaGarra.velocidadeMovimento
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1907269042779730409, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+      propertyPath: componentesDaGarra.rigidBody
+      value: 
+      objectReference: {fileID: 1879337339}
+    - target: {fileID: 1907269042779730409, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+      propertyPath: componentesDaGarra.pincaDireita
+      value: 
+      objectReference: {fileID: 1879337337}
+    - target: {fileID: 1907269042779730409, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+      propertyPath: componentesDaGarra.pincaEsquerda
+      value: 
+      objectReference: {fileID: 1879337338}
     - target: {fileID: 1907269042779730410, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
       propertyPath: m_Mass
       value: 5
@@ -1776,6 +1788,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+--- !u!4 &1879337337 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6299144452930243208, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+  m_PrefabInstance: {fileID: 1879337336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1879337338 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1907269042991643850, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+  m_PrefabInstance: {fileID: 1879337336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1879337339 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1907269042779730410, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+  m_PrefabInstance: {fileID: 1879337336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1992022150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5113981538719583669, guid: 497f4811988e044b2a03f2d4c5e9fc0a, type: 3}
