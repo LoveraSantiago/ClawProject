@@ -39,19 +39,15 @@ public class Garra : CommunicatorComGarra
         movimentacaoAtual.fixedUpdate();       
     }   
 
-    private void garraColidiuCom(Collision2D other)
+    private void garraColidiuCom(Collider2D other)
     {
         movimentacaoAtual.garraColidiuCom(other.gameObject);        
     }    
 
     private void configurarColisorCentroDaPinca(GameObject goColisor)
     {
-        DetectorDeColisoes detectorDeColisoes = goColisor.GetComponent<DetectorDeColisoes>();        
-        detectorDeColisoes.registrarConsumidorCollision2dOnEnter(
-            (colisao) =>
-            {
-                garraColidiuCom(colisao);
-            });
+        DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();        
+        detectorDeColisoes.registrarConsumidorDeTrigger((colisao) =>garraColidiuCom(colisao));
     }
 
     public ProdutorDeEvento<GameObject> getProdutorDeEventoColisaoComColetavel()

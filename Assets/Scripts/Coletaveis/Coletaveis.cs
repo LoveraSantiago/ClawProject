@@ -19,7 +19,7 @@ public class Coletaveis
     {
         this.coletaveisDto = coletaveisDto;
         coletaveisDto.GoTriggerDeColetado.GetComponent<DetectorDeTriggers>()
-            .registrarConsumidorDeCollider2d(
+            .registrarConsumidorDeTrigger(
             (collider2d) => //temporariamente aqui p validar
             {
                 //Retirar getcomponent daqui

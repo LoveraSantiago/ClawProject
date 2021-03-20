@@ -10,7 +10,7 @@ public class DetectorDeTriggers : MonoBehaviour
         actionsConsumerCollider2d.Invoke(collider2d);
     }
 
-    public void registrarConsumidorDeCollider2d(Action<Collider2D> consumer)
+    public void registrarConsumidorDeTrigger(Action<Collider2D> consumer)
     {
         actionsConsumerCollider2d = consumer;        
     }
