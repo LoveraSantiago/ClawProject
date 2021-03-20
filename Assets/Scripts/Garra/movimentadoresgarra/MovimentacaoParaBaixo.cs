@@ -34,7 +34,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
         compDaGarra.PincaDireita.rotation =  Quaternion.RotateTowards(
             compDaGarra.PincaDireita.rotation,  anguloDesejadoDireita , incremento);
 
-        compDaGarra.RigidBody.velocity = new Vector2(compDaGarra.RigidBody.velocity.x,           
+        compDaGarra.RigidBody.velocity = new Vector2(0,           
            1 * compDaGarra.VelocMovBaixo * Time.fixedDeltaTime);
     }
 

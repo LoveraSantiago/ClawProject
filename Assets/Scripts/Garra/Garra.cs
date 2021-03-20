@@ -72,6 +72,7 @@ public class Garra : CommunicatorComGarra
 
     public void trocarParaAcaoNormal()
     {
+        movimentacaoLateral.preInicio();
         movimentacaoAtual = movimentacaoLateral;
     }
 

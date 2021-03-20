@@ -8,6 +8,11 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
     {        
     }
 
+    public override void preInicio()
+    {
+        parandoMovimentacaoDaGarra();
+    }
+
     public override void update()
     {        
         if(compDaGarra.RigidBody.transform.localPosition.y > posicaoInicial.y)
@@ -23,7 +28,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 
     public override void fixedUpdate()
     {
-        compDaGarra.RigidBody.velocity = new Vector2(compDaGarra.RigidBody.velocity.x,
+        compDaGarra.RigidBody.velocity = new Vector2(0,
            1 * compDaGarra.VelocMovCima * Time.fixedDeltaTime);
     }
 
@@ -35,5 +40,6 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
     private void parandoMovimentacaoDaGarra()
     {
         compDaGarra.RigidBody.velocity = Vector3.zero;
+        compDaGarra.RigidBody.angularVelocity = 0;
     }
 }

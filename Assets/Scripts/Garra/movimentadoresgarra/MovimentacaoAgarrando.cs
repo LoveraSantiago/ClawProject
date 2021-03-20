@@ -17,13 +17,15 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
     public override void preInicio()
     {
         compDaGarra.RigidBody.velocity = Vector3.zero;
+        compDaGarra.RigidBody.angularVelocity = 0;
 
-        compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass * 2;
+        compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass * 4;
     }
 
     public override void fixedUpdate()
     {
         compDaGarra.RigidBody.velocity = Vector3.zero;
+        compDaGarra.RigidBody.angularVelocity = 0;
         incremento = Time.deltaTime * compDaGarra.VelocidadeFechamentoGarra;
 
         //Fechando a garra Esquerda
@@ -38,7 +40,7 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
         if (isGarraFechadaNoAngulo())
         {
             Debug.Log("Subindo");
-            compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass / 2;
+            compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass / 4;
             communicatorComGarra.trocarParaAcaoSubindo();
         }        
     }
