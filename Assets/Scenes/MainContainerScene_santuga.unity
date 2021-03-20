@@ -569,14 +569,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentesDaGarra:
-    velocidadeMovimento: 5
-    gravidadePos: 2
-    gravidadeNeg: 2
+    velocMovHorizontal: 300
+    velocMovCima: 400
+    velocMovBaixo: 400
     anguloAberturaGarra: 50
     velocidadeAberturaGarra: 75
     anguloFechamentoGarra: 10
     velocidadeFechamentoGarra: 50
     rigidBody: {fileID: 1879337339}
+    centroDaPinca: {fileID: 828780031}
     pincaEsquerda: {fileID: 1879337338}
     pincaDireita: {fileID: 1879337337}
   coletaveisDto:
@@ -784,6 +785,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+--- !u!4 &828780031 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1896134444382479020, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+  m_PrefabInstance: {fileID: 1879337336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &863802017
 PrefabInstance:
   m_ObjectHideFlags: 0

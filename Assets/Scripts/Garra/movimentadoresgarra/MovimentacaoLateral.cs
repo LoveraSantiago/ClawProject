@@ -20,7 +20,7 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
         if (Input.GetButtonDown("Jump"))
         {
             Vector2 posicaoInicial = compDaGarra.RigidBody.transform.localPosition;
-            Debug.Log("Posicao inicial: " + posicaoInicial);
+            //Debug.Log("Posicao inicial: " + posicaoInicial);
             communicatorComGarra.trocarParaAcaoDescendo(posicaoInicial);
         }
     }

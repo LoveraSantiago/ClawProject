@@ -63,6 +63,7 @@ public class Garra : CommunicatorComGarra
     public void trocarParaAcaoDescendo(Vector2 posicaoInicial)
     {
         this.posicaoInicial = posicaoInicial;
+        movimentacaoParaBaixo.preInicio();
         movimentacaoAtual   = movimentacaoParaBaixo;
     }
 

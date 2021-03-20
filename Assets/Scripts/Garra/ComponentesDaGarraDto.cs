@@ -16,6 +16,7 @@ public class ComponentesDaGarraDto
     [Space(5)]
     [SerializeField] private Rigidbody2D rigidBody;
     [Space(5)]
+    [SerializeField] private Transform centroDaPinca;
     [SerializeField] private Transform pincaEsquerda;
     [SerializeField] private Transform pincaDireita;
 
@@ -31,6 +32,7 @@ public class ComponentesDaGarraDto
 
     public Rigidbody2D RigidBody { get { return rigidBody; } }
 
+    public Transform CentroDaPinca { get { return centroDaPinca; } }
     public Transform PincaEsquerda { get { return pincaEsquerda; } }
     public Transform PincaDireita { get { return pincaDireita; } }
 
