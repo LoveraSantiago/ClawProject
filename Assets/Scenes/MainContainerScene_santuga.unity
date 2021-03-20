@@ -572,7 +572,7 @@ MonoBehaviour:
     velocMovHorizontal: 300
     velocMovCima: 400
     velocMovBaixo: 400
-    anguloAberturaGarra: 50
+    anguloAberturaGarra: 70
     velocidadeAberturaGarra: 75
     anguloFechamentoGarra: 10
     velocidadeFechamentoGarra: 60
@@ -1980,6 +1980,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 651342360986963001, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+      propertyPath: m_ForceMagnitude
+      value: -25
+      objectReference: {fileID: 0}
     - target: {fileID: 1907269042779730411, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.1

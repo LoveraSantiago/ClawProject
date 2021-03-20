@@ -12,7 +12,12 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
     public MovimentacaoLateral()
     {        
         anguloDesejadoDireita = Quaternion.Euler(0, 0, 0);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, 0);
+        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, 0);        
+    }
+
+    public override void preInicio()
+    {
+        desligarAtracaoNoObjeto();
     }
 
     public override void update()

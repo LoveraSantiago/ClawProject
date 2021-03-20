@@ -26,7 +26,6 @@ public class Garra : CommunicatorComGarra
         movimentacaoAtual = movimentacaoLateral;
         
         configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);
-
     }    
 
     public void Update()
@@ -59,27 +58,29 @@ public class Garra : CommunicatorComGarra
     public void trocarParaAcaoDescendo(Vector2 posicaoInicial)
     {
         this.posicaoInicial = posicaoInicial;
-        movimentacaoParaBaixo.preInicio();
-        movimentacaoAtual   = movimentacaoParaBaixo;
+        trocarMovimentador(movimentacaoParaBaixo);        
     }
 
     public void trocarParaAcaoSubindo()
     {
         movimentacaoParaCima.setPosicalInicialDeReferencia(posicaoInicial);
-        movimentacaoParaCima.preInicio();
-        movimentacaoAtual = movimentacaoParaCima;
+        trocarMovimentador(movimentacaoParaCima);        
     }
 
     public void trocarParaAcaoNormal()
     {
-        movimentacaoLateral.preInicio();
-        movimentacaoAtual = movimentacaoLateral;
+        trocarMovimentador(movimentacaoLateral);        
     }
 
     public void trocarParaAgarrada()
     {
-        movimentacaoAgarrando.preInicio();
-        movimentacaoAtual = movimentacaoAgarrando;
+        trocarMovimentador(movimentacaoAgarrando);        
+    }
+
+    private void trocarMovimentador(MovimentacaoDaGarra movimentador)
+    {
+        movimentador.preInicio();
+        movimentacaoAtual = movimentador;
     }
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
 }

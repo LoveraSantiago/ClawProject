@@ -19,7 +19,7 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
         compDaGarra.RigidBody.velocity = Vector3.zero;
         compDaGarra.RigidBody.angularVelocity = 0;
 
-        compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass * 4;
+        compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass * 3;
     }
 
     public override void fixedUpdate()
@@ -40,7 +40,7 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
         if (isGarraFechadaNoAngulo())
         {
             Debug.Log("Subindo");
-            compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass / 4;
+            compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass / 3;
             communicatorComGarra.trocarParaAcaoSubindo();
         }        
     }

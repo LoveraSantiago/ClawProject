@@ -8,6 +8,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     private Quaternion anguloDesejadoDireita;    
 
     private ProdutorDeEvento<GameObject> produtorDeEventoAtingiuColetavel;
+    private ContadorDeTempo contadorDeTempoTravamento;
 
     public MovimentacaoParaBaixo(ProdutorDeEvento<GameObject> produtorDeEventoAtingiuColetavel)
     {
@@ -15,14 +16,18 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
 
         anguloDesejadoDireita  = Quaternion.Euler(0, 0, -compDaGarra.AnguloAberturaGarra);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  compDaGarra.AnguloAberturaGarra);
+
+        contadorDeTempoTravamento = new ContadorDeTempo(2, () => communicatorComGarra.trocarParaAcaoSubindo());
     }
 
     public override void preInicio()
     {
+        contadorDeTempoTravamento.resetContador();
     }
 
     public override void update()
     {
+        contadorDeTempoTravamento.contarTempo();
     }
 
     public override void fixedUpdate()
@@ -43,9 +48,10 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
         Debug.Log("Atingiu: " + gameObject.name);
         if (Utils.isColetavel(gameObject))
         {
-            gameObject.layer = LayerMask.NameToLayer("Atracao");
+            
+            ligarAtracaoNoObjeto(gameObject);
             communicatorComGarra.trocarParaAgarrada();
-            produtorDeEventoAtingiuColetavel.produziuEvento(gameObject);
+            //produtorDeEventoAtingiuColetavel.produziuEvento(gameObject);
         }
     }
 }
