@@ -30,7 +30,7 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
         movimentoLateral = Input.GetAxis("Horizontal");
 
         compDaGarra.RigidBody.velocity = new Vector2(
-            movimentoLateral * compDaGarra.VelocidadeMovimento,
+            movimentoLateral * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
             compDaGarra.RigidBody.velocity.y);
     }
 }

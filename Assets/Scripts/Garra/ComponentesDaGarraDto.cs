@@ -4,9 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class ComponentesDaGarraDto 
 {
-    [SerializeField] private float velocidadeMovimento;
-    [SerializeField] private float gravidadePos;
-    [SerializeField] private float gravidadeNeg;
+    [SerializeField] private float velocMovHorizontal;
+    [SerializeField] private float velocMovCima;
+    [SerializeField] private float velocMovBaixo;
     [Space(5)]
     [SerializeField] private float anguloAberturaGarra;
     [SerializeField] private float velocidadeAberturaGarra;
@@ -19,9 +19,9 @@ public class ComponentesDaGarraDto
     [SerializeField] private Transform pincaEsquerda;
     [SerializeField] private Transform pincaDireita;
 
-    public float VelocidadeMovimento { get { return velocidadeMovimento; } }   
-    public float GravidadePos { get { return gravidadePos; } }   
-    public float GravidadeNeg { get { return gravidadeNeg * -1; } }
+    public float VelocMovHorizontal { get { return velocMovHorizontal; } }   
+    public float VelocMovCima { get { return velocMovCima; } }   
+    public float VelocMovBaixo { get { return velocMovBaixo * -1; } }
 
     public float AnguloAberturaGarra { get { return anguloAberturaGarra; } }
     public float VelocidadeAberturaGarra { get { return velocidadeAberturaGarra; } }

@@ -25,6 +25,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
 
     public override void fixedUpdate()
     {
-        compDaGarra.RigidBody.gravityScale = compDaGarra.GravidadePos;        
+        compDaGarra.RigidBody.velocity = new Vector2(compDaGarra.RigidBody.velocity.x,           
+           1 * compDaGarra.VelocMovBaixo * Time.fixedDeltaTime);
     }
 }
