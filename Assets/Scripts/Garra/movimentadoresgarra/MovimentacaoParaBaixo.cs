@@ -5,10 +5,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     private float incremento;    
 
     private Quaternion anguloDesejadoEsquerda;
-    private Quaternion anguloDesejadoDireita;
-
-    private readonly int layerMask = LayerMask.GetMask("Coletavel");//TODO agrupar em uma classe estatica de constantes
-    private RaycastHit2D rayCastHit;
+    private Quaternion anguloDesejadoDireita;    
 
     private ProdutorDeEvento<GameObject> produtorDeEventoAtingiuColetavel;
 
@@ -22,12 +19,10 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
 
     public override void preInicio()
     {
-        //acertarRayCast();         
     }
 
     public override void update()
     {
-        //Debug.DrawRay(compDaGarra.CentroDaPinca.position, Vector2.down * 10, Color.red);
     }
 
     public override void fixedUpdate()
@@ -52,18 +47,4 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
             produtorDeEventoAtingiuColetavel.produziuEvento(gameObject);
         }
     }
-
-    //private void acertarRayCast()
-    //{
-    //    rayCastHit = Physics2D.Raycast(compDaGarra.CentroDaPinca.position, Vector2.down, 10, layerMask);
-    //    if(rayCastHit.collider != null)
-    //    {
-    //        Debug.Log("Raycast Acertou: " + rayCastHit.collider.gameObject.name);
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("NADA!");
-    //    }
-
-    //}
 }
