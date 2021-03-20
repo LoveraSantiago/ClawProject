@@ -15,10 +15,10 @@ public class ComponentesDaGarraDto
     [SerializeField] private float velocidadeFechamentoGarra;
     [Space(5)]
     [SerializeField] private Rigidbody2D rigidBody;
-    [Space(5)]
-    [SerializeField] private Transform centroDaPinca;
+    [Space(5)]    
     [SerializeField] private Transform pincaEsquerda;
     [SerializeField] private Transform pincaDireita;
+    [SerializeField] private GameObject colisor;
 
     public float VelocMovHorizontal { get { return velocMovHorizontal; } }   
     public float VelocMovCima { get { return velocMovCima; } }   
@@ -31,10 +31,9 @@ public class ComponentesDaGarraDto
     public float VelocidadeFechamentoGarra { get { return velocidadeFechamentoGarra; } }
 
     public Rigidbody2D RigidBody { get { return rigidBody; } }
-
-    public Transform CentroDaPinca { get { return centroDaPinca; } }
+    
     public Transform PincaEsquerda { get { return pincaEsquerda; } }
     public Transform PincaDireita { get { return pincaDireita; } }
-
+    public GameObject Colisor { get { return colisor; } }
 
 }

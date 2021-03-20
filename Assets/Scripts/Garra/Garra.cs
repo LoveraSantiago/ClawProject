@@ -17,15 +17,16 @@ public class Garra : CommunicatorComGarra
         MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
         MovimentacaoAgarrando.configurarCommunicatorComGarra(this);
 
+        produtorDeEventoAtingiuColetavel = new ProdutorDeEvento<GameObject>();
+
         movimentacaoLateral   = new MovimentacaoLateral();
         movimentacaoParaCima  = new MovimentacaoParaCima();
-        movimentacaoParaBaixo = new MovimentacaoParaBaixo();
+        movimentacaoParaBaixo = new MovimentacaoParaBaixo(produtorDeEventoAtingiuColetavel);
         movimentacaoAgarrando = new MovimentacaoAgarrando();
         movimentacaoAtual = movimentacaoLateral;
         
-        configurarDetector(componentesDaGarraDto.RigidBody.gameObject);
+        configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);
 
-        produtorDeEventoAtingiuColetavel = new ProdutorDeEvento<GameObject>();
     }    
 
     public void Update()
@@ -40,18 +41,17 @@ public class Garra : CommunicatorComGarra
 
     private void garraColidiuCom(Collision2D other)
     {
-        if (Utils.isColetavel(other))
-        {
-            trocarParaAgarrada();
-            produtorDeEventoAtingiuColetavel.produziuEvento(other.gameObject);        
-        }
+        movimentacaoAtual.garraColidiuCom(other.gameObject);        
     }    
 
-    private void configurarDetector(GameObject goGarra)
+    private void configurarColisorCentroDaPinca(GameObject goColisor)
     {
-        DetectorDeColisoes detectorDeColisoes =  goGarra.GetComponent<DetectorDeColisoes>();
+        DetectorDeColisoes detectorDeColisoes = goColisor.GetComponent<DetectorDeColisoes>();        
         detectorDeColisoes.registrarConsumidorCollision2dOnEnter(
-            (colisao) => garraColidiuCom(colisao));
+            (colisao) =>
+            {
+                garraColidiuCom(colisao);
+            });
     }
 
     public ProdutorDeEvento<GameObject> getProdutorDeEventoColisaoComColetavel()

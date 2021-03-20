@@ -10,20 +10,24 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     private readonly int layerMask = LayerMask.GetMask("Coletavel");//TODO agrupar em uma classe estatica de constantes
     private RaycastHit2D rayCastHit;
 
-    public MovimentacaoParaBaixo()
+    private ProdutorDeEvento<GameObject> produtorDeEventoAtingiuColetavel;
+
+    public MovimentacaoParaBaixo(ProdutorDeEvento<GameObject> produtorDeEventoAtingiuColetavel)
     {
+        this.produtorDeEventoAtingiuColetavel = produtorDeEventoAtingiuColetavel;
+
         anguloDesejadoDireita  = Quaternion.Euler(0, 0, -compDaGarra.AnguloAberturaGarra);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  compDaGarra.AnguloAberturaGarra);
     }
 
     public override void preInicio()
     {
-        acertarRayCast();         
+        //acertarRayCast();         
     }
 
     public override void update()
     {
-        Debug.DrawRay(compDaGarra.CentroDaPinca.position, Vector2.down * 10, Color.red);
+        //Debug.DrawRay(compDaGarra.CentroDaPinca.position, Vector2.down * 10, Color.red);
     }
 
     public override void fixedUpdate()
@@ -39,17 +43,27 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
            1 * compDaGarra.VelocMovBaixo * Time.fixedDeltaTime);
     }
 
-    private void acertarRayCast()
+    public override void garraColidiuCom(GameObject gameObject)
     {
-        rayCastHit = Physics2D.Raycast(compDaGarra.CentroDaPinca.position, Vector2.down, 10, layerMask);
-        if(rayCastHit.collider != null)
+        Debug.Log("Atingiu: " + gameObject.name);
+        if (Utils.isColetavel(gameObject))
         {
-            Debug.Log("Raycast Acertou: " + rayCastHit.collider.gameObject.name);
+            communicatorComGarra.trocarParaAgarrada();
+            produtorDeEventoAtingiuColetavel.produziuEvento(gameObject);
         }
-        else
-        {
-            Debug.Log("NADA!");
-        }
-        
     }
+
+    //private void acertarRayCast()
+    //{
+    //    rayCastHit = Physics2D.Raycast(compDaGarra.CentroDaPinca.position, Vector2.down, 10, layerMask);
+    //    if(rayCastHit.collider != null)
+    //    {
+    //        Debug.Log("Raycast Acertou: " + rayCastHit.collider.gameObject.name);
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("NADA!");
+    //    }
+
+    //}
 }

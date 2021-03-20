@@ -577,9 +577,9 @@ MonoBehaviour:
     anguloFechamentoGarra: 10
     velocidadeFechamentoGarra: 50
     rigidBody: {fileID: 1879337339}
-    centroDaPinca: {fileID: 828780031}
     pincaEsquerda: {fileID: 1879337338}
     pincaDireita: {fileID: 1879337337}
+    colisor: {fileID: 745325034}
   coletaveisDto:
     coletadoScale: 0
     coletadoPosicoes:
@@ -728,6 +728,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &745325034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3777820025343088888, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+  m_PrefabInstance: {fileID: 1879337336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &798425705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -785,11 +790,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
---- !u!4 &828780031 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1896134444382479020, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
-  m_PrefabInstance: {fileID: 1879337336}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &863802017
 PrefabInstance:
   m_ObjectHideFlags: 0

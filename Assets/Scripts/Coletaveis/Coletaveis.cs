@@ -23,7 +23,7 @@ public class Coletaveis
             (collider2d) => //temporariamente aqui p validar
             {
                 //Retirar getcomponent daqui
-                if(collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0)
+                if(collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0 )
                 {
                     GameObject.Destroy(collider2d.gameObject);
                 }

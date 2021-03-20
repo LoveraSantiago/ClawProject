@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public abstract class MovimentacaoDaGarra 
 {
     protected static ComponentesDaGarraDto compDaGarra;
@@ -6,6 +8,8 @@ public abstract class MovimentacaoDaGarra
     public virtual void preInicio() { }
     public virtual void update() { }
     public virtual void fixedUpdate() { }
+
+    public virtual void garraColidiuCom(GameObject gameObject) { }
 
     public static void configurarComponentesDaGarraDto(ComponentesDaGarraDto componentesDaGarraDtoArg)
     {
