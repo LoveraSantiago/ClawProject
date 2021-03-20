@@ -575,7 +575,7 @@ MonoBehaviour:
     anguloAberturaGarra: 50
     velocidadeAberturaGarra: 75
     anguloFechamentoGarra: 10
-    velocidadeFechamentoGarra: 50
+    velocidadeFechamentoGarra: 60
     rigidBody: {fileID: 1879337339}
     pincaEsquerda: {fileID: 1879337338}
     pincaDireita: {fileID: 1879337337}

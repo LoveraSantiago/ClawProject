@@ -11,10 +11,19 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
     {
         anguloDesejadoDireita  = Quaternion.Euler(0, 0,   compDaGarra.AnguloFechamentoGarra);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -compDaGarra.AnguloFechamentoGarra);        
-    }    
+    }
+
+    Vector2 posOriginal;
+    public override void preInicio()
+    {
+        compDaGarra.RigidBody.velocity = Vector3.zero;
+
+        compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass * 2;
+    }
 
     public override void fixedUpdate()
     {
+        compDaGarra.RigidBody.velocity = Vector3.zero;
         incremento = Time.deltaTime * compDaGarra.VelocidadeFechamentoGarra;
 
         //Fechando a garra Esquerda
@@ -27,7 +36,9 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
 
         
         if (isGarraFechadaNoAngulo())
-        {   
+        {
+            Debug.Log("Subindo");
+            compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass / 2;
             communicatorComGarra.trocarParaAcaoSubindo();
         }        
     }

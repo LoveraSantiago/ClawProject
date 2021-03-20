@@ -77,6 +77,7 @@ public class Garra : CommunicatorComGarra
 
     public void trocarParaAgarrada()
     {
+        movimentacaoAgarrando.preInicio();
         movimentacaoAtual = movimentacaoAgarrando;
     }
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM

@@ -43,6 +43,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
         Debug.Log("Atingiu: " + gameObject.name);
         if (Utils.isColetavel(gameObject))
         {
+            gameObject.layer = LayerMask.NameToLayer("Atracao");
             communicatorComGarra.trocarParaAgarrada();
             produtorDeEventoAtingiuColetavel.produziuEvento(gameObject);
         }
