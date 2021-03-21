@@ -17,8 +17,8 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
     {        
         if(compDaGarra.RigidBody.transform.localPosition.y > posicaoInicial.y)
         {
-
             parandoMovimentacaoDaGarra();
+
             compDaGarra.RigidBody.transform.localPosition = new Vector2(
                 compDaGarra.RigidBody.position.x, posicaoInicial.y);
             
@@ -39,7 +39,6 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 
     private void parandoMovimentacaoDaGarra()
     {
-        compDaGarra.RigidBody.velocity = Vector3.zero;
-        compDaGarra.RigidBody.angularVelocity = 0;
+        diminuirInerciaDaGarra();
     }
 }

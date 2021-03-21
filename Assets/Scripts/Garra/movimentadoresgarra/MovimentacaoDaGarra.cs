@@ -38,4 +38,10 @@ public abstract class MovimentacaoDaGarra
             objetoAtraido.layer = layerAnterior;
         }
     }
+
+    protected void diminuirInerciaDaGarra()
+    {
+        compDaGarra.RigidBody.velocity = Vector3.zero;
+        compDaGarra.RigidBody.angularVelocity = 0;
+    }
 }

@@ -2,17 +2,19 @@ using UnityEngine;
 
 public class MovimentacaoLateral : MovimentacaoDaGarra
 {
+    private readonly float LIMITE_LATERAL_TELA = 2.16f;
+
     private float movimentoLateral;        
+    private float direcao;
 
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;    
 
-    private float incremento;
-
     public MovimentacaoLateral()
     {        
-        anguloDesejadoDireita = Quaternion.Euler(0, 0, 0);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, 0);        
+        direcao = 1;
+        anguloDesejadoDireita  = Quaternion.Euler(0, 0, 0);
+        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, 0);
     }
 
     public override void preInicio()
@@ -24,18 +26,32 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
     {
         if (Input.GetButtonDown("Jump"))
         {
-            Vector2 posicaoInicial = compDaGarra.RigidBody.transform.localPosition;
-            //Debug.Log("Posicao inicial: " + posicaoInicial);
+            Vector2 posicaoInicial = compDaGarra.RigidBody.transform.localPosition;            
             communicatorComGarra.trocarParaAcaoDescendo(posicaoInicial);
         }
     }
-
+    
     public override void fixedUpdate()
     {
-        movimentoLateral = Input.GetAxis("Horizontal");
-
+        definirDirecaoDaMovimentacao();
+        
         compDaGarra.RigidBody.velocity = new Vector2(
-            movimentoLateral * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
+            direcao * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
             compDaGarra.RigidBody.velocity.y);
+    }
+
+    private void definirDirecaoDaMovimentacao()
+    {
+        if (compDaGarra.RigidBody.transform.localPosition.x > LIMITE_LATERAL_TELA)
+        {
+            direcao = -1;
+
+            diminuirInerciaDaGarra();
+        }
+        else if (compDaGarra.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
+        {
+            direcao = 1;
+            diminuirInerciaDaGarra();
+        }
     }
 }
