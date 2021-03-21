@@ -13,7 +13,7 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
     public MovimentacaoLateral()
     {        
         direcao = 1;
-        anguloDesejadoDireita = Quaternion.Euler(0, 0, 0);
+        anguloDesejadoDireita  = Quaternion.Euler(0, 0, 0);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0, 0);
     }
 
@@ -32,23 +32,26 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
     }
     
     public override void fixedUpdate()
-    {        
-        if(compDaGarra.RigidBody.transform.localPosition.x > LIMITE_LATERAL_TELA)
-        {   
-            direcao = -1;
-            
-            diminuirInerciaDaGarra();
-            return;
-        }
-        else if(compDaGarra.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
-        {
-            direcao = 1;
-            diminuirInerciaDaGarra();
-            return;
-        }        
+    {
+        definirDirecaoDaMovimentacao();
         
         compDaGarra.RigidBody.velocity = new Vector2(
             direcao * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
             compDaGarra.RigidBody.velocity.y);
+    }
+
+    private void definirDirecaoDaMovimentacao()
+    {
+        if (compDaGarra.RigidBody.transform.localPosition.x > LIMITE_LATERAL_TELA)
+        {
+            direcao = -1;
+
+            diminuirInerciaDaGarra();
+        }
+        else if (compDaGarra.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
+        {
+            direcao = 1;
+            diminuirInerciaDaGarra();
+        }
     }
 }

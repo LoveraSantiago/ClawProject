@@ -569,7 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentesDaGarra:
-    velocMovHorizontal: 300
+    velocMovHorizontal: 150
     velocMovCima: 500
     velocMovBaixo: 500
     anguloAberturaGarra: 70
