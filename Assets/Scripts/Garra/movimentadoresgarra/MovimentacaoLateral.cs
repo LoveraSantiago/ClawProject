@@ -36,14 +36,15 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
         if(compDaGarra.RigidBody.transform.localPosition.x > LIMITE_LATERAL_TELA)
         {   
             direcao = -1;
-            compDaGarra.RigidBody.velocity = Vector2.zero;
-            compDaGarra.RigidBody.angularVelocity = 0;
+            
+            diminuirInerciaDaGarra();
+            return;
         }
         else if(compDaGarra.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
         {
             direcao = 1;
-            compDaGarra.RigidBody.velocity = Vector2.zero;
-            compDaGarra.RigidBody.angularVelocity = 0;
+            diminuirInerciaDaGarra();
+            return;
         }        
         
         compDaGarra.RigidBody.velocity = new Vector2(

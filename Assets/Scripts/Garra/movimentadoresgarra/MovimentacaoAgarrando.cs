@@ -17,17 +17,15 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
 
     Vector2 posOriginal;
     public override void preInicio()
-    {
-        compDaGarra.RigidBody.velocity = Vector3.zero;
-        compDaGarra.RigidBody.angularVelocity = 0;
-
+    {        
+        diminuirInerciaDaGarra();
         compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass * INCREMENTO_DE_MASSA;
     }
 
     public override void fixedUpdate()
-    {
-        compDaGarra.RigidBody.velocity = Vector3.zero;
-        compDaGarra.RigidBody.angularVelocity = 0;
+    {        
+        diminuirInerciaDaGarra();
+
         incremento = Time.deltaTime * compDaGarra.VelocidadeFechamentoGarra;
 
         //Fechando a garra Esquerda

@@ -39,7 +39,6 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 
     private void parandoMovimentacaoDaGarra()
     {
-        compDaGarra.RigidBody.velocity = Vector3.zero;
-        compDaGarra.RigidBody.angularVelocity = 0;
+        diminuirInerciaDaGarra();
     }
 }
