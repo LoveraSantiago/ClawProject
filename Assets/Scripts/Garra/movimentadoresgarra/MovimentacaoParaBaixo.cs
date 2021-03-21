@@ -23,6 +23,8 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     public override void preInicio()
     {
         contadorDeTempoTravamento.resetContador();
+        compDaGarra.RigidBody.velocity = Vector2.zero;
+        compDaGarra.RigidBody.angularVelocity = 0;
     }
 
     public override void update()

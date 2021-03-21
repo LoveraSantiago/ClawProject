@@ -29,13 +29,30 @@ public class MovimentacaoLateral : MovimentacaoDaGarra
             communicatorComGarra.trocarParaAcaoDescendo(posicaoInicial);
         }
     }
-
+    //2.17
+    int direcao = 1;
     public override void fixedUpdate()
     {
-        movimentoLateral = Input.GetAxis("Horizontal");
-
+        //movimentoLateral = Input.GetAxis("Horizontal");
+        if(compDaGarra.RigidBody.transform.localPosition.x > 2.16)
+        {
+            Debug.Log("1");
+            direcao = -1;
+            compDaGarra.RigidBody.velocity = Vector2.zero;
+            compDaGarra.RigidBody.angularVelocity = 0;
+        }
+        else if(compDaGarra.RigidBody.transform.localPosition.x < -2.16)
+        {
+            Debug.Log("2");
+            direcao = 1;
+            compDaGarra.RigidBody.velocity = Vector2.zero;
+            compDaGarra.RigidBody.angularVelocity = 0;
+        }
+        
+        
         compDaGarra.RigidBody.velocity = new Vector2(
-            movimentoLateral * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
+            direcao * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
             compDaGarra.RigidBody.velocity.y);
+        
     }
 }
