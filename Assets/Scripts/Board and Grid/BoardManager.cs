@@ -30,6 +30,7 @@ public class BoardManager : MonoBehaviour
 	public List<Sprite> characters = new List<Sprite>();
 	public GameObject tile;
 	public int xSize, ySize;
+	public float shakeTile;
 
 	private GameObject[,] tiles;
 
@@ -49,12 +50,14 @@ public class BoardManager : MonoBehaviour
 
 		float startX = transform.position.x;
 		float startY = transform.position.y;
+		
 
 		for (int x = 0; x < xSize; x++)
 		{
 			for (int y = 0; y < ySize; y++)
 			{
-				GameObject newTile = Instantiate(tile, new Vector3(startX + (xOffset * x), startY + (yOffset * y), 0), tile.transform.rotation);
+				shakeTile *= -1;
+				GameObject newTile = Instantiate(tile, new Vector3(startX + shakeTile + (xOffset * x), startY + (yOffset * y), 0), tile.transform.rotation);
 				tiles[x, y] = newTile;
 
 				newTile.transform.parent = transform;
