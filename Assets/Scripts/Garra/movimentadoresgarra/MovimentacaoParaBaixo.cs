@@ -35,6 +35,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     public override void fixedUpdate()
     {
         incremento = Time.deltaTime * compDaGarra.VelocidadeAberturaGarra;
+
         compDaGarra.PincaEsquerda.rotation = Quaternion.RotateTowards(
             compDaGarra.PincaEsquerda.rotation, anguloDesejadoEsquerda, incremento);
 
