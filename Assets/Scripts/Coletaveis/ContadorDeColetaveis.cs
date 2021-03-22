@@ -37,7 +37,7 @@ public class ContadorDeColetaveis
     private bool isCombinacaoValida()
     {
         //Regra para validar a cada coletado
-        //talvez validar se o sprite e repitido
+        //trazer a logica de FixedUpdate2 aqui acho
         //no caso negativo     
         return true;
     }

@@ -361,7 +361,7 @@ MonoBehaviour:
     colisor: {fileID: 745325034}
   coletaveisDto:
     coletadoScale: 0
-    coletadoSprites:
+    coletadosSprites:
     - {fileID: 915443462}
     - {fileID: 1841290754}
     - {fileID: 1903171840}

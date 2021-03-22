@@ -19,7 +19,7 @@ public class Coletaveis
     public Coletaveis(ColetaveisDto coletaveisDto)
     {
         this.coletaveisDto = coletaveisDto;
-        contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.ColetadoPosicoes);
+        contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.ColetadosPosicoes);
 
         coletaveisDto.GoTriggerDeColetado.GetComponent<DetectorDeTriggers>()
             .registrarConsumidorDeTrigger(
