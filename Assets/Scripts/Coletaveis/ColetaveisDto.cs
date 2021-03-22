@@ -10,8 +10,10 @@ public class ColetaveisDto
     [SerializeField] private Text scoreTextField;
     [Space(5)]
     [SerializeField] private GameObject goTriggerDeColetado;
+    private GameObject[] itensColetados = new GameObject[3];
 
     public float ColetadoScale { get { return coletadoScale; } }
+    public GameObject[] ItensColetados { get { return itensColetados; } }
     public GameObject[] ColetadoPosicoes { get { return coletadoPosicoes; } }
     public Text ScoreTextField { get { return scoreTextField; } }
 

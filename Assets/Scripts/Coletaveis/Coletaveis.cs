@@ -25,7 +25,43 @@ public class Coletaveis
                 //Retirar getcomponent daqui
                 if(collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0 )
                 {
-                    GameObject.Destroy(collider2d.gameObject);
+                    for( int i = 0; i < coletaveisDto.ItensColetados.Length; i++)
+                    {
+                        if (coletaveisDto.ItensColetados[i] == null)
+                        {
+                            coletaveisDto.ItensColetados[i] = collider2d.gameObject;
+
+                            Sprite sprite = collider2d.GetComponent<SpriteRenderer>().sprite;
+                            coletaveisDto.ColetadoPosicoes[i].GetComponent<SpriteRenderer>().sprite = sprite;
+
+                            GameObject.Destroy(collider2d.gameObject);
+                            return;
+                        }                                                      
+                    }
+
+                   
+
+                    //for (int i = 0; i < coletados.Length; i++)
+                    //{
+                    //    if (coletados[i] == null)
+                    //    {
+                    //        //coletadoOldPosicoes[i] = other.gameObject;
+                    //        coletados[i] = goColetavel;
+                    //        coletadosBackPosition[i] = goColetavel.transform.position;
+
+                    //        goColetavel.transform.localScale -= Vector3.one * coletaveisDto.ColetadoScale;
+                    //        goColetavel.transform.position = coletaveisDto.ColetadoPosicoes[i].transform.position;
+
+                    //        if (i == coletados.Length - 1)
+                    //        {
+                    //            checkCombinacao = true;
+                    //        }
+
+                    //        //moveToPosition = true;
+                    //        //Destroy(other.gameObject);
+                    //        return;
+                    //    }
+                    //}
                 }
             });
     }
@@ -132,7 +168,7 @@ public class Coletaveis
                     checkCombinacao = true;
                 }
 
-                moveToPosition = true;
+                //moveToPosition = true;
                 //Destroy(other.gameObject);
                 return;
             }
