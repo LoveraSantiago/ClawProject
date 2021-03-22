@@ -30,44 +30,6 @@ public class Coletaveis
                 {
                     contadorDeColetaveis.adicionarColetado(collider2d.gameObject);
                     GameObject.Destroy(collider2d.gameObject);
-
-                    //for( int i = 0; i < this.coletaveisDto.itensColetados.Length; i++)
-                    //{
-                    //    if (this.coletaveisDto.itensColetados[i] == null)
-                    //    {
-                    //        this.coletaveisDto.itensColetados[i] = collider2d.gameObject;
-
-                    //        Sprite sprite = collider2d.GetComponent<SpriteRenderer>().sprite;
-                    //        coletaveisDto.ColetadoPosicoes[i].GetComponent<SpriteRenderer>().sprite = sprite;
-
-                    //        GameObject.Destroy(collider2d.gameObject);
-                    //        return;
-                    //    }                                                      
-                    //}
-
-                   
-
-                    //for (int i = 0; i < coletados.Length; i++)
-                    //{
-                    //    if (coletados[i] == null)
-                    //    {
-                    //        //coletadoOldPosicoes[i] = other.gameObject;
-                    //        coletados[i] = goColetavel;
-                    //        coletadosBackPosition[i] = goColetavel.transform.position;
-
-                    //        goColetavel.transform.localScale -= Vector3.one * coletaveisDto.ColetadoScale;
-                    //        goColetavel.transform.position = coletaveisDto.ColetadoPosicoes[i].transform.position;
-
-                    //        if (i == coletados.Length - 1)
-                    //        {
-                    //            checkCombinacao = true;
-                    //        }
-
-                    //        //moveToPosition = true;
-                    //        //Destroy(other.gameObject);
-                    //        return;
-                    //    }
-                    //}
                 }
             });
     }
@@ -148,38 +110,6 @@ public class Coletaveis
     private void coletavelAtingido2(GameObject goColetavel)
     {
         //goColetavel.transform.GetComponent<Rigidbody2D>().mass = 0;
-    }
-    
-    private void coletavelAtingido(GameObject goColetavel)//para nao ser chamdo por enquanto
-    {
-        //if (other.gameObject.tag == "Gummy")
-        //{            
-        //other.transform.position = coletado1.transform.position;
-        //trocarParaAcaoSubindo();
-
-
-        for (int i = 0; i < coletados.Length; i++)
-        {
-            if (coletados[i] == null)
-            {
-                //coletadoOldPosicoes[i] = other.gameObject;
-                coletados[i] = goColetavel;
-                coletadosBackPosition[i] = goColetavel.transform.position;
-
-                goColetavel.transform.localScale -= Vector3.one * coletaveisDto.ColetadoScale;
-                goColetavel.transform.position = coletaveisDto.ColetadoPosicoes[i].transform.position;
-
-                if (i == coletados.Length - 1)
-                {
-                    checkCombinacao = true;
-                }
-
-                //moveToPosition = true;
-                //Destroy(other.gameObject);
-                return;
-            }
-        }
-        //}
     }
 
     public Action<GameObject> getConsumidorDeColetavelAtingito()
