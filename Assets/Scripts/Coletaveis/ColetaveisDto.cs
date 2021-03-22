@@ -6,16 +6,19 @@ using UnityEngine.UI;
 public class ColetaveisDto 
 {
     [SerializeField] private float coletadoScale;//0.55586
-    [SerializeField] private GameObject[] coletadoPosicoes = new GameObject[3];//3
+    //[SerializeField] private GameObject[] coletadoPosicoes = new GameObject[3];//3
+    [SerializeField] private SpriteRenderer[] coletadoSprites = new SpriteRenderer[3];//3
     [SerializeField] private Text scoreTextField;
     [Space(5)]
     [SerializeField] private GameObject goTriggerDeColetado;
-    private GameObject[] itensColetados = new GameObject[3];
+
+    public GameObject[] itensColetados = new GameObject[3];
 
     public float ColetadoScale { get { return coletadoScale; } }
-    public GameObject[] ItensColetados { get { return itensColetados; } }
-    public GameObject[] ColetadoPosicoes { get { return coletadoPosicoes; } }
+    public SpriteRenderer[] ColetadoPosicoes { get { return coletadoSprites; } }
     public Text ScoreTextField { get { return scoreTextField; } }
 
     public GameObject GoTriggerDeColetado { get { return goTriggerDeColetado; } }
+
+    //public GameObject[] ItensColetados { get { return itensColetados; } set { itensColetados = value; }}
 }

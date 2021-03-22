@@ -14,10 +14,13 @@ public class Coletaveis
     private int maxScore = 4;
 
     private ColetaveisDto coletaveisDto;
+    private ContadorDeColetaveis contadorDeColetaveis;
 
     public Coletaveis(ColetaveisDto coletaveisDto)
     {
         this.coletaveisDto = coletaveisDto;
+        contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.ColetadoPosicoes);
+
         coletaveisDto.GoTriggerDeColetado.GetComponent<DetectorDeTriggers>()
             .registrarConsumidorDeTrigger(
             (collider2d) => //temporariamente aqui p validar
@@ -25,19 +28,22 @@ public class Coletaveis
                 //Retirar getcomponent daqui
                 if(collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0 )
                 {
-                    for( int i = 0; i < coletaveisDto.ItensColetados.Length; i++)
-                    {
-                        if (coletaveisDto.ItensColetados[i] == null)
-                        {
-                            coletaveisDto.ItensColetados[i] = collider2d.gameObject;
+                    contadorDeColetaveis.adicionarColetado(collider2d.gameObject);
+                    GameObject.Destroy(collider2d.gameObject);
 
-                            Sprite sprite = collider2d.GetComponent<SpriteRenderer>().sprite;
-                            coletaveisDto.ColetadoPosicoes[i].GetComponent<SpriteRenderer>().sprite = sprite;
+                    //for( int i = 0; i < this.coletaveisDto.itensColetados.Length; i++)
+                    //{
+                    //    if (this.coletaveisDto.itensColetados[i] == null)
+                    //    {
+                    //        this.coletaveisDto.itensColetados[i] = collider2d.gameObject;
 
-                            GameObject.Destroy(collider2d.gameObject);
-                            return;
-                        }                                                      
-                    }
+                    //        Sprite sprite = collider2d.GetComponent<SpriteRenderer>().sprite;
+                    //        coletaveisDto.ColetadoPosicoes[i].GetComponent<SpriteRenderer>().sprite = sprite;
+
+                    //        GameObject.Destroy(collider2d.gameObject);
+                    //        return;
+                    //    }                                                      
+                    //}
 
                    
 
