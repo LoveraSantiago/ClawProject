@@ -361,10 +361,10 @@ MonoBehaviour:
     colisor: {fileID: 745325034}
   coletaveisDto:
     coletadoScale: 0
-    coletadoPosicoes:
-    - {fileID: 915443460}
-    - {fileID: 1841290752}
-    - {fileID: 1903171838}
+    coletadosSprites:
+    - {fileID: 915443462}
+    - {fileID: 1841290754}
+    - {fileID: 1903171840}
     scoreTextField: {fileID: 119649667}
     goTriggerDeColetado: {fileID: 2083913115}
 --- !u!1 &519420028

@@ -14,10 +14,13 @@ public class Coletaveis
     private int maxScore = 4;
 
     private ColetaveisDto coletaveisDto;
+    private ContadorDeColetaveis contadorDeColetaveis;
 
     public Coletaveis(ColetaveisDto coletaveisDto)
     {
         this.coletaveisDto = coletaveisDto;
+        contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.ColetadosPosicoes);
+
         coletaveisDto.GoTriggerDeColetado.GetComponent<DetectorDeTriggers>()
             .registrarConsumidorDeTrigger(
             (collider2d) => //temporariamente aqui p validar
@@ -25,43 +28,8 @@ public class Coletaveis
                 //Retirar getcomponent daqui
                 if(collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0 )
                 {
-                    for( int i = 0; i < coletaveisDto.ItensColetados.Length; i++)
-                    {
-                        if (coletaveisDto.ItensColetados[i] == null)
-                        {
-                            coletaveisDto.ItensColetados[i] = collider2d.gameObject;
-
-                            Sprite sprite = collider2d.GetComponent<SpriteRenderer>().sprite;
-                            coletaveisDto.ColetadoPosicoes[i].GetComponent<SpriteRenderer>().sprite = sprite;
-
-                            GameObject.Destroy(collider2d.gameObject);
-                            return;
-                        }                                                      
-                    }
-
-                   
-
-                    //for (int i = 0; i < coletados.Length; i++)
-                    //{
-                    //    if (coletados[i] == null)
-                    //    {
-                    //        //coletadoOldPosicoes[i] = other.gameObject;
-                    //        coletados[i] = goColetavel;
-                    //        coletadosBackPosition[i] = goColetavel.transform.position;
-
-                    //        goColetavel.transform.localScale -= Vector3.one * coletaveisDto.ColetadoScale;
-                    //        goColetavel.transform.position = coletaveisDto.ColetadoPosicoes[i].transform.position;
-
-                    //        if (i == coletados.Length - 1)
-                    //        {
-                    //            checkCombinacao = true;
-                    //        }
-
-                    //        //moveToPosition = true;
-                    //        //Destroy(other.gameObject);
-                    //        return;
-                    //    }
-                    //}
+                    contadorDeColetaveis.adicionarColetado(collider2d.gameObject);
+                    GameObject.Destroy(collider2d.gameObject);
                 }
             });
     }
@@ -142,38 +110,6 @@ public class Coletaveis
     private void coletavelAtingido2(GameObject goColetavel)
     {
         //goColetavel.transform.GetComponent<Rigidbody2D>().mass = 0;
-    }
-    
-    private void coletavelAtingido(GameObject goColetavel)//para nao ser chamdo por enquanto
-    {
-        //if (other.gameObject.tag == "Gummy")
-        //{            
-        //other.transform.position = coletado1.transform.position;
-        //trocarParaAcaoSubindo();
-
-
-        for (int i = 0; i < coletados.Length; i++)
-        {
-            if (coletados[i] == null)
-            {
-                //coletadoOldPosicoes[i] = other.gameObject;
-                coletados[i] = goColetavel;
-                coletadosBackPosition[i] = goColetavel.transform.position;
-
-                goColetavel.transform.localScale -= Vector3.one * coletaveisDto.ColetadoScale;
-                goColetavel.transform.position = coletaveisDto.ColetadoPosicoes[i].transform.position;
-
-                if (i == coletados.Length - 1)
-                {
-                    checkCombinacao = true;
-                }
-
-                //moveToPosition = true;
-                //Destroy(other.gameObject);
-                return;
-            }
-        }
-        //}
     }
 
     public Action<GameObject> getConsumidorDeColetavelAtingito()
