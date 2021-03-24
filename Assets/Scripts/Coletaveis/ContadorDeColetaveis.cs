@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ContadorDeColetaveis 
+public class ContadorDeColetaveis
 {
-    private int qtdColetados;
+    private int qtdColetados = 0;
     private GameObject[] itensColetados;
 
     private SpriteRenderer[] spritesDeColetados;
@@ -14,36 +14,52 @@ public class ContadorDeColetaveis
     }
 
     public void adicionarColetado(GameObject coletado)
-    {
-        spritesDeColetados[qtdColetados].sprite = coletado.GetComponent<SpriteRenderer>().sprite;
-        qtdColetados++;//alguma regra pra nao estourar os indices do array
+    {        
+        adicionaAoContainerDeColetados(coletado.GetComponent<SpriteRenderer>().sprite);
 
-        if (isCombinacaoValida())
+        if (qtdColetados > spritesDeColetados.Length - 1)
         {
-            algumaCoisa();
-        }
-        else
-        {
+            if (isCombinacaoValida())
+            {
+                adicionaPontuacao();
+            }
+            else
+            {
+                retornaObjetosParaBoard();
+            }
+
             resetarColetados();
         }
-    }
-
-    private void algumaCoisa()
-    {
 
     }
-
 
     private bool isCombinacaoValida()
     {
-        //Regra para validar a cada coletado
-        //trazer a logica de FixedUpdate2 aqui acho
-        //no caso negativo     
+        Debug.Log("isCombinacaoValida");
         return true;
+    }
+
+    private void adicionaAoContainerDeColetados(Sprite coletado)
+    {
+        Debug.Log("adicionaAoContainerDeColetados");
+        spritesDeColetados[qtdColetados].sprite = coletado;
+        qtdColetados++;
+    }
+
+    private void retornaObjetosParaBoard()
+    {
+        Debug.Log("retornarObjetosParaBoard");
+    }
+
+    private void adicionaPontuacao()
+    {
+        Debug.Log("adicionaPontuacao");
     }
 
     private void resetarColetados()
     {
+        Debug.Log("resetar coletado");
         qtdColetados = 0;
+        itensColetados = new GameObject[3];
     }
 }
