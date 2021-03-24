@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Coletaveis 
+public class Coletaveis : ContadorDeColetaveis.ColetavelCallback
 {
     private GameObject[] coletados = new GameObject[3];
     private Vector2[] coletadosBackPosition = new Vector2[3];
@@ -18,15 +18,15 @@ public class Coletaveis
 
     public Coletaveis(ColetaveisDto coletaveisDto)
     {
-        this.coletaveisDto = coletaveisDto;
-        contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.ColetadosPosicoes);
+        contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.ColetadosPosicoes, this);
 
-        coletaveisDto.GoTriggerDeColetado.GetComponent<DetectorDeTriggers>()
+        this.coletaveisDto = coletaveisDto;        
+        this.coletaveisDto.GoTriggerDeColetado.GetComponent<DetectorDeTriggers>()
             .registrarConsumidorDeTrigger(
             (collider2d) => //temporariamente aqui p validar
             {
                 //Retirar getcomponent daqui
-                if(collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0 )
+                if (collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0)
                 {
                     contadorDeColetaveis.adicionarColetado(collider2d.gameObject);
                     GameObject.Destroy(collider2d.gameObject);
@@ -34,73 +34,51 @@ public class Coletaveis
             });
     }
 
-    public void Start()
-    {
-        
-    }
-
-    public void Update()
-    {
-        
-    }
 
     public void FixedUpdate() { }
 
-    public void FixedUpdate2()//para nao ser chamado por enquanto
-    {
-        if (checkCombinacao)
-        {
-            GameObject checkColetavel = coletados[1];
-            bool resposta = false;
+    //public void FixedUpdate2()//para nao ser chamado por enquanto
+    //{
+    //    if (checkCombinacao)
+    //    {
+    //        GameObject checkColetavel = coletados[1];
+    //        bool resposta = false;
+    //        if (resposta)
+    //        {
+    //            Debug.Log("yes");
 
-            foreach (GameObject coletavel in coletados)
-            {
-                if (checkColetavel.gameObject.CompareTag(coletavel.tag))
-                {
-                    resposta = true;
-                }
-                else
-                {
-                    resposta = false;
-                }
-            }
+    //            for (int i = 0; i < coletados.Length; i++)
+    //            {
+    //                GameObject.Destroy(coletados[i]);
+    //            }
 
-            if (resposta)
-            {
-                Debug.Log("yes");
+    //            score += 1;
+    //            coletaveisDto.ScoreTextField.text = score.ToString();
 
-                for (int i = 0; i < coletados.Length; i++)
-                {
-                    GameObject.Destroy(coletados[i]);
-                }
+    //            if (score == maxScore)
+    //            {
+    //                OnClickPlay();
+    //            }
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("noooo");
 
-                score += 1;
-                coletaveisDto.ScoreTextField.text = score.ToString();
+    //            for (int i = 0; i < coletados.Length; i++)
+    //            {
+    //                coletados[i].transform.localScale += Vector3.one * coletaveisDto.ColetadoScale;
+    //                coletados[i].gameObject.transform.position = coletadosBackPosition[i];
 
-                if (score == maxScore)
-                {
-                    OnClickPlay();
-                }
-            }
-            else
-            {
-                Debug.Log("noooo");
+    //                //coletadoPosicoes[i].gameObject.transform.position = coletadoOldPosicoes[i].transform.position;
+    //            }
+    //        }
 
-                for (int i = 0; i < coletados.Length; i++)
-                {
-                    coletados[i].transform.localScale += Vector3.one * coletaveisDto.ColetadoScale;
-                    coletados[i].gameObject.transform.position = coletadosBackPosition[i];
+    //        coletados = new GameObject[3];
+    //        coletadosBackPosition = new Vector2[3];
+    //        checkCombinacao = false;
+    //    }
 
-                    //coletadoPosicoes[i].gameObject.transform.position = coletadoOldPosicoes[i].transform.position;
-                }
-            }
-
-            coletados = new GameObject[3];
-            coletadosBackPosition = new Vector2[3];
-            checkCombinacao = false;
-        }
-
-    }
+    //}
 
     public void OnClickPlay()
     {
@@ -115,5 +93,21 @@ public class Coletaveis
     public Action<GameObject> getConsumidorDeColetavelAtingito()
     {
         return (coletado) => coletavelAtingido2(coletado);
+    }
+
+    public void match(GameObject[] coletados)
+    {
+        score += 10;
+        coletaveisDto.ScoreTextField.text = score.ToString();
+
+        foreach (SpriteRenderer spriteRenderer in coletaveisDto.ColetadosPosicoes)
+        {
+            spriteRenderer.sprite = null;
+        }
+
+        foreach (GameObject coletado in coletados)
+        {
+            GameObject.Destroy(coletado);
+        }
     }
 }

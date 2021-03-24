@@ -5,12 +5,16 @@ public class ContadorDeColetaveis
     private int qtdColetados = 0;
     private GameObject[] itensColetados;
 
-    private SpriteRenderer[] spritesDeColetados;
+    private SpriteRenderer[] spritesDeColetados;    
+    public GameObject[] Match { get { return itensColetados; } }
 
-    public ContadorDeColetaveis(SpriteRenderer[] spritesDeColetados)
+    private ColetavelCallback callback;
+
+    public ContadorDeColetaveis(SpriteRenderer[] spritesDeColetados, ColetavelCallback callback)
     {
         itensColetados = new GameObject[3];
         this.spritesDeColetados = spritesDeColetados;
+        this.callback = callback;
     }
 
     public void adicionarColetado(GameObject coletado)
@@ -22,6 +26,12 @@ public class ContadorDeColetaveis
             if (isCombinacaoValida())
             {
                 adicionaPontuacao();
+
+                if(callback != null)
+                {
+                    callback.match(itensColetados);
+                }
+
             }
             else
             {
@@ -60,6 +70,12 @@ public class ContadorDeColetaveis
     {
         Debug.Log("resetar coletado");
         qtdColetados = 0;
-        itensColetados = new GameObject[3];
+        //itensColetados = new GameObject[3];
+        //spritesDeColetados = new SpriteRenderer[3];
+    }
+
+    public interface ColetavelCallback
+    {
+        public void match(GameObject[] coletados);
     }
 }
