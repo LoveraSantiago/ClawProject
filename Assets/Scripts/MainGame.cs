@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class MainGame : MonoBehaviour
 {
-    [SerializeField] ComponentesDaGarraDto componentesDaGarra;
+    public enum MECANICA_GARRA { ZIG_ZAG, TELEGUIADA, ZIG_ZAGTELEGUIADO };
+
     [Space(5)]
-    [SerializeField] ColetaveisDto coletaveisDto;
+    [SerializeField] private MECANICA_GARRA mecanicaAtual;
+    [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
+    [Space(5)]
+    [SerializeField] private ColetaveisDto coletaveisDto;
 
     private Garra garra;
     private Coletaveis coletaveis;
