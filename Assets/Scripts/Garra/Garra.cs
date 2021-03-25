@@ -1,46 +1,51 @@
 using UnityEngine;
 
-public class Garra : CommunicatorComGarra
+public class Garra 
+    //: CommunicatorComGarra
 {
-    private Vector2 posicaoInicial;
+    //private Vector2 posicaoInicial;
 
-    private MovimentacaoDaGarra movimentacaoAtual;    
-    private MovimentacaoDaGarra movimentacaoParaBaixo;
-    private MovimentacaoDaGarra movimentacaoAgarrando;
-    private MovimentacaoParaCima movimentacaoParaCima;
-    private MovimentacaoDaGarra movimentacaoLateral;
-
+    //private MovimentacaoDaGarra movimentacaoAtual;    
+    //private MovimentacaoDaGarra movimentacaoParaBaixo;
+    //private MovimentacaoDaGarra movimentacaoAgarrando;
+    //private MovimentacaoParaCima movimentacaoParaCima;
+    //private MovimentacaoDaGarra movimentacaoLateral;
+    private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
     private ProdutorDeEvento<GameObject> produtorDeEventoAtingiuColetavel;
 
     public Garra(ComponentesDaGarraDto componentesDaGarraDto)
     {
-        MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
-        MovimentacaoDaGarra.configurarCommunicatorComGarra(this);
+        //MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
+        //MovimentacaoDaGarra.configurarCommunicatorComGarra(this);
 
         produtorDeEventoAtingiuColetavel = new ProdutorDeEvento<GameObject>();
 
-        movimentacaoLateral   = new MovimentacaoLateral();
-        movimentacaoParaCima  = new MovimentacaoParaCima();
-        movimentacaoParaBaixo = new MovimentacaoParaBaixo(produtorDeEventoAtingiuColetavel);
-        movimentacaoAgarrando = new MovimentacaoAgarrando();
-        movimentacaoAtual = movimentacaoLateral;
-        
+        //movimentacaoLateral   = new MovimentacaoLateral();
+        //movimentacaoParaCima  = new MovimentacaoParaCima();
+        //movimentacaoParaBaixo = new MovimentacaoParaBaixo(produtorDeEventoAtingiuColetavel);
+        //movimentacaoAgarrando = new MovimentacaoAgarrando();
+        //movimentacaoAtual = movimentacaoLateral;
+
+        gerenciadorDeMovimentacao = new GerenciadorDeMovimentacao(componentesDaGarraDto);
         configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);
     }    
 
     public void Update()
     {
-        movimentacaoAtual.update();
+        gerenciadorDeMovimentacao.update();
+        //movimentacaoAtual.update();
     }
 
     public void FixedUpdate()
     {
-        movimentacaoAtual.fixedUpdate();       
+        gerenciadorDeMovimentacao.fixedUpdate();
+        //movimentacaoAtual.fixedUpdate();       
     }   
 
     private void garraColidiuCom(Collider2D other)
     {
-        movimentacaoAtual.garraColidiuCom(other.gameObject);        
+        gerenciadorDeMovimentacao.garraColidiuCom(other);
+        //movimentacaoAtual.garraColidiuCom(other.gameObject);        
     }    
 
     private void configurarColisorCentroDaPinca(GameObject goColisor)
@@ -55,32 +60,32 @@ public class Garra : CommunicatorComGarra
     }
 
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO
-    public void trocarParaAcaoDescendo(Vector2 posicaoInicial)
-    {
-        this.posicaoInicial = posicaoInicial;
-        trocarMovimentador(movimentacaoParaBaixo);        
-    }
+    //public void trocarParaAcaoDescendo(Vector2 posicaoInicial)
+    //{
+    //    this.posicaoInicial = posicaoInicial;
+    //    trocarMovimentador(movimentacaoParaBaixo);        
+    //}
 
-    public void trocarParaAcaoSubindo()
-    {
-        movimentacaoParaCima.setPosicalInicialDeReferencia(posicaoInicial);
-        trocarMovimentador(movimentacaoParaCima);        
-    }
+    //public void trocarParaAcaoSubindo()
+    //{
+    //    movimentacaoParaCima.setPosicalInicialDeReferencia(posicaoInicial);
+    //    trocarMovimentador(movimentacaoParaCima);        
+    //}
 
-    public void trocarParaAcaoNormal()
-    {
-        trocarMovimentador(movimentacaoLateral);        
-    }
+    //public void trocarParaAcaoNormal()
+    //{
+    //    trocarMovimentador(movimentacaoLateral);        
+    //}
 
-    public void trocarParaAgarrada()
-    {
-        trocarMovimentador(movimentacaoAgarrando);        
-    }
+    //public void trocarParaAgarrada()
+    //{
+    //    trocarMovimentador(movimentacaoAgarrando);        
+    //}
 
-    private void trocarMovimentador(MovimentacaoDaGarra movimentador)
-    {
-        movimentador.preInicio();
-        movimentacaoAtual = movimentador;
-    }
+    //private void trocarMovimentador(MovimentacaoDaGarra movimentador)
+    //{
+    //    movimentador.preInicio();
+    //    movimentacaoAtual = movimentador;
+    //}
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
 }
