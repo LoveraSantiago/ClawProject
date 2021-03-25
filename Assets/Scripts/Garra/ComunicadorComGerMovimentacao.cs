@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface CommunicatorComGarra
+public interface ComunicadorComGerMovimentacao
 {
     void trocarParaAcaoNormal();
     void trocarParaAcaoSubindo();

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GerenciadorDeMovimentacao : CommunicatorComGarra
+public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
 {
     private Vector2 posicaoInicial;
 

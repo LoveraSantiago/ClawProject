@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class MovimentacaoDaGarra 
 {
     protected static ComponentesDaGarraDto compDaGarra;
-    protected static CommunicatorComGarra communicatorComGarra;
+    protected static ComunicadorComGerMovimentacao comunicadorComGerMovimentacao;
 
     private static GameObject objetoAtraido;
     private static int layerAnterior;
@@ -19,9 +19,9 @@ public abstract class MovimentacaoDaGarra
         compDaGarra = componentesDaGarraDtoArg;
     }
 
-    public static void configurarCommunicatorComGarra(CommunicatorComGarra communicatorComGarraArg)
+    public static void configurarCommunicatorComGarra(ComunicadorComGerMovimentacao comunicadorComGerMovimentacaoArg)
     {
-        communicatorComGarra = communicatorComGarraArg;
+        comunicadorComGerMovimentacao = comunicadorComGerMovimentacaoArg;
     }
 
     protected void ligarAtracaoNoObjeto(GameObject gameObject)

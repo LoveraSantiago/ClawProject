@@ -17,7 +17,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
         anguloDesejadoDireita  = Quaternion.Euler(0, 0, -compDaGarra.AnguloAberturaGarra);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  compDaGarra.AnguloAberturaGarra);
 
-        contadorDeTempoTravamento = new ContadorDeTempo(2, () => communicatorComGarra.trocarParaAgarrada());
+        contadorDeTempoTravamento = new ContadorDeTempo(2, () => comunicadorComGerMovimentacao.trocarParaAgarrada());
     }
 
     public override void preInicio()
@@ -53,7 +53,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
         {
             
             ligarAtracaoNoObjeto(gameObject);
-            communicatorComGarra.trocarParaAgarrada();
+            comunicadorComGerMovimentacao.trocarParaAgarrada();
             //produtorDeEventoAtingiuColetavel.produziuEvento(gameObject);
         }
     }
