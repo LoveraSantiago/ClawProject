@@ -99,20 +99,27 @@ public class Coletaveis : ContadorDeColetaveis.ColetavelCallback
     {
         if (result)
         {
-            score += 30;
-            coletaveisDto.ScoreTextField.text = score.ToString();
-
-            foreach (SpriteRenderer spriteRenderer in coletaveisDto.ColetadosPosicoes)
-            {
-                spriteRenderer.sprite = null;
-            }
+            atualizaScore();
         }
         else
         {
-            foreach (SpriteRenderer spriteRenderer in coletaveisDto.ColetadosPosicoes)
-            {
-                spriteRenderer.sprite = null;
-            }
+            resetColetadosPosicoes();
+        }
+    }
+
+    private void atualizaScore()
+    {
+        score += 30;
+        coletaveisDto.ScoreTextField.text = score.ToString();
+
+        resetColetadosPosicoes();
+    }
+
+    private void resetColetadosPosicoes()
+    {
+        foreach (SpriteRenderer spriteRenderer in coletaveisDto.ColetadosPosicoes)
+        {
+            spriteRenderer.sprite = null;
         }
     }
 }

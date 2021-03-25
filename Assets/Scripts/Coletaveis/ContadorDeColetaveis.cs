@@ -10,8 +10,7 @@ public class ContadorDeColetaveis
     private ColetavelCallback callback;
 
     public ContadorDeColetaveis(SpriteRenderer[] spritesDeColetados, ColetavelCallback callback)
-    {
-        //itensColetados = new GameObject[3];
+    {        
         this.spritesDeColetados = spritesDeColetados;
         this.callback = callback;
     }
@@ -37,13 +36,11 @@ public class ContadorDeColetaveis
     }
 
     private bool isCombinacaoValida()
-    {
-        Debug.Log("isCombinacaoValida");
-
+    {        
         Sprite primeiroSprite = spritesDeColetados[0].sprite;
         for(int i = 0; i < spritesDeColetados.Length; i++)
         {
-            if(primeiroSprite != spritesDeColetados[1].sprite)
+            if(primeiroSprite != spritesDeColetados[i].sprite)
             {
                 return false;
             }
@@ -53,16 +50,13 @@ public class ContadorDeColetaveis
     }
 
     private void adicionaAoContainerDeColetados(Sprite coletado)
-    {
-        Debug.Log("adicionaAoContainerDeColetados");
+    {        
         spritesDeColetados[qtdColetados].sprite = coletado;
         qtdColetados++;
     }
 
     private void retornaObjetosParaBoard()
-    {
-        Debug.Log("retornarObjetosParaBoard");
-
+    {        
         if (callback != null)
         {
             callback.match(false);
@@ -70,8 +64,7 @@ public class ContadorDeColetaveis
     }
 
     private void adicionaPontuacao()
-    {
-        Debug.Log("adicionaPontuacao");
+    {        
         if (callback != null)
         {
             callback.match(true);
@@ -79,8 +72,7 @@ public class ContadorDeColetaveis
     }
 
     private void resetarColetados()
-    {
-        Debug.Log("resetar coletado");
+    {        
         qtdColetados = 0;       
     }
 
