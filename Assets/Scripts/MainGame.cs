@@ -25,13 +25,13 @@ public class MainGame : MonoBehaviour
     
     void Update()
     {
-        garra.Update();
+        garra.update();
         //coletaveis.Update();
     }
 
     private void FixedUpdate()
     {
-        garra.FixedUpdate();
+        garra.fixedUpdate();
         coletaveis.FixedUpdate();
     }
 }
