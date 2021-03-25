@@ -15,7 +15,7 @@ public class Garra : CommunicatorComGarra
     public Garra(ComponentesDaGarraDto componentesDaGarraDto)
     {
         MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
-        MovimentacaoAgarrando.configurarCommunicatorComGarra(this);
+        MovimentacaoDaGarra.configurarCommunicatorComGarra(this);
 
         produtorDeEventoAtingiuColetavel = new ProdutorDeEvento<GameObject>();
 
