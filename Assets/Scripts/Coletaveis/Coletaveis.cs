@@ -95,19 +95,24 @@ public class Coletaveis : ContadorDeColetaveis.ColetavelCallback
         return (coletado) => coletavelAtingido2(coletado);
     }
 
-    public void match(GameObject[] coletados)
+    public void match(bool result)
     {
-        score += 10;
-        coletaveisDto.ScoreTextField.text = score.ToString();
-
-        foreach (SpriteRenderer spriteRenderer in coletaveisDto.ColetadosPosicoes)
+        if (result)
         {
-            spriteRenderer.sprite = null;
+            score += 30;
+            coletaveisDto.ScoreTextField.text = score.ToString();
+
+            foreach (SpriteRenderer spriteRenderer in coletaveisDto.ColetadosPosicoes)
+            {
+                spriteRenderer.sprite = null;
+            }
         }
-
-        foreach (GameObject coletado in coletados)
+        else
         {
-            GameObject.Destroy(coletado);
+            foreach (SpriteRenderer spriteRenderer in coletaveisDto.ColetadosPosicoes)
+            {
+                spriteRenderer.sprite = null;
+            }
         }
     }
 }
