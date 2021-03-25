@@ -18,9 +18,12 @@ public class MainGame : MonoBehaviour
         garra = new Garra(componentesDaGarra);
         coletaveis = new Coletaveis(coletaveisDto);
 
-        new ProdutorConsumidoresDeEvento<GameObject>()
-            .configurarProdutor(garra.getProdutorDeEventoColisaoComColetavel())
-            .adicionarConsumidorDeEvento(coletaveis.getConsumidorDeColetavelAtingito());
+        //GARRA NAO PRODUZ MAIS EVENTOS DE TER ACERTADO COLETADO
+        //QUEM DEVE EMITIR ESSE EVENTO SERIA O SENSOR DE CIMA DA TELA
+        //DEAD CODE AQUI PARA REFERENCIA DE USO (REMOVER)
+        //new ProdutorConsumidoresDeEvento<GameObject>()
+        //    .configurarProdutor(garra.getProdutorDeEventoColisaoComColetavel())
+        //    .adicionarConsumidorDeEvento(coletaveis.getConsumidorDeColetavelAtingito());
     }
     
     void Update()

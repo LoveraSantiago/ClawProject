@@ -3,12 +3,9 @@ using UnityEngine;
 public class Garra 
 { 
     private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
-    private ProdutorDeEvento<GameObject> produtorDeEventoAtingiuColetavel;
 
     public Garra(ComponentesDaGarraDto componentesDaGarraDto)
     {
-        produtorDeEventoAtingiuColetavel = new ProdutorDeEvento<GameObject>();
-
         gerenciadorDeMovimentacao = new GerenciadorDeMovimentacao(componentesDaGarraDto);
         configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);
     }    
@@ -32,10 +29,5 @@ public class Garra
     {
         DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();        
         detectorDeColisoes.registrarConsumidorDeTrigger((colisao) =>garraColidiuCom(colisao));
-    }
-
-    public ProdutorDeEvento<GameObject> getProdutorDeEventoColisaoComColetavel()
-    {
-        return produtorDeEventoAtingiuColetavel;
-    }
+    }    
 }

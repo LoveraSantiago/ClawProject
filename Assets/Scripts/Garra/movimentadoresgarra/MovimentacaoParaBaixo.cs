@@ -5,15 +5,12 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     private float incremento;    
 
     private Quaternion anguloDesejadoEsquerda;
-    private Quaternion anguloDesejadoDireita;    
-
-    private ProdutorDeEvento<GameObject> produtorDeEventoAtingiuColetavel;
+    private Quaternion anguloDesejadoDireita;   
+    
     private ContadorDeTempo contadorDeTempoTravamento;
 
-    public MovimentacaoParaBaixo(ProdutorDeEvento<GameObject> produtorDeEventoAtingiuColetavel)
+    public MovimentacaoParaBaixo()
     {
-        this.produtorDeEventoAtingiuColetavel = produtorDeEventoAtingiuColetavel;
-
         anguloDesejadoDireita  = Quaternion.Euler(0, 0, -compDaGarra.AnguloAberturaGarra);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  compDaGarra.AnguloAberturaGarra);
 
@@ -54,7 +51,6 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
             
             ligarAtracaoNoObjeto(gameObject);
             comunicadorComGerMovimentacao.trocarParaAgarrada();
-            //produtorDeEventoAtingiuColetavel.produziuEvento(gameObject);
         }
     }
 }
