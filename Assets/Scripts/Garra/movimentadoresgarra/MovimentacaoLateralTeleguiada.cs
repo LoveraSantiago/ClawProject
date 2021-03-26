@@ -14,23 +14,35 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarra
         moverLateralmente = false;
     }
 
+    Vector3 posTemp = Vector3.zero;
     public override void update()
     {
         //TEMPORARIAMENTE AQUI ... PEGAR TOQUE NA TELA
         if (aceitarClique && Input.GetMouseButtonDown(0))
         {
-            RaycastHit raycastHit;
+            Debug.Log("clicou");
+            RaycastHit2D raycastHit;
             int layerMask = LayerMask.GetMask("Coletavel");
 
-            if(Physics.Raycast(Input.mousePosition, Vector3.forward, out raycastHit, 1, layerMask))
+            Vector3 posicaoClicada = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            posicaoClicada.z = 0;
+            posTemp = posicaoClicada;
+            Debug.Log("Pos clicado: " + posicaoClicada);
+
+            raycastHit = Physics2D.Raycast(posicaoClicada, Vector3.up, 2, layerMask);
+            if (raycastHit.collider != null)
             {
-                posicaoDoToque = Input.mousePosition.x;
+                Debug.Log("Raycast acertou");
+                posicaoDoToque = posicaoClicada.x;
                 aceitarClique = false;
                 moverLateralmente = true;
             }
         }
-        Debug.Log(Input.mousePosition);
-        Debug.DrawRay(Input.mousePosition, Vector3.up * 10, Color.blue);
+        //Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        //Debug.Log(posTemp);
+        //Debug.DrawRay(new Vector3(-0.2f, 0.5f, -1), Vector3.back * 10, Color.blue);
+        //Debug.DrawRay(new Vector3(-0.3f, 0.5f, -1), Vector3.forward * 2, Color.red);
+        //Debug.DrawRay(posTemp, Vector3.up * 2, Color.red);
     }
 
     public override void fixedUpdate()

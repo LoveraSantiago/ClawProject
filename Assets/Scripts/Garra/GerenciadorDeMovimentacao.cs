@@ -22,7 +22,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
         movimentacaoParaCima  = new MovimentacaoParaCima();
         movimentacaoParaBaixo = new MovimentacaoParaBaixo();
         movimentacaoAgarrando = new MovimentacaoAgarrando();
-        movimentacaoAtual = movimentacaoLateral;
+        trocarMovimentador(movimentacaoLateral);
     }
 
     public void update()
