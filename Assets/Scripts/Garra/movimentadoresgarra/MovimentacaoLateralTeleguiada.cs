@@ -12,6 +12,7 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarra
     {
         aceitarClique = true;
         moverLateralmente = false;
+        desligarAtracaoNoObjeto();
     }
 
     Vector3 posTemp = Vector3.zero;
@@ -20,19 +21,19 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarra
         //TEMPORARIAMENTE AQUI ... PEGAR TOQUE NA TELA
         if (aceitarClique && Input.GetMouseButtonDown(0))
         {
-            Debug.Log("clicou");
+            //Debug.Log("clicou");
             RaycastHit2D raycastHit;
             int layerMask = LayerMask.GetMask("Coletavel");
 
             Vector3 posicaoClicada = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             posicaoClicada.z = 0;
             posTemp = posicaoClicada;
-            Debug.Log("Pos clicado: " + posicaoClicada);
+            //Debug.Log("Pos clicado: " + posicaoClicada);
 
             raycastHit = Physics2D.Raycast(posicaoClicada, Vector3.up, 2, layerMask);
             if (raycastHit.collider != null)
             {
-                Debug.Log("Raycast acertou");
+                //Debug.Log("Raycast acertou");
                 posicaoDoToque = posicaoClicada.x;
                 aceitarClique = false;
                 moverLateralmente = true;

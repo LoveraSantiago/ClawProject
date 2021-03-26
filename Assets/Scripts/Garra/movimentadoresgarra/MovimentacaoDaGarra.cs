@@ -28,7 +28,7 @@ public abstract class MovimentacaoDaGarra
 
     //TEMPORARIAMENTE AQUI.... GARRA NAO DEVERIA INTERFERIR NO ESTADO DO COLETAVEL POSSIVEL (QUEBRANDO UMA INVARIANTE PERTENCENTE A COLETAVEIS)
     protected void ligarAtracaoNoObjeto(GameObject gameObject)
-    {
+    {        
         layerAnterior = gameObject.layer;
         gameObject.layer = LayerMask.NameToLayer("Atracao");
         objetoAtraido = gameObject;
@@ -37,7 +37,7 @@ public abstract class MovimentacaoDaGarra
     protected void desligarAtracaoNoObjeto()
     {
         if(objetoAtraido != null)
-        {
+        {     
             objetoAtraido.layer = layerAnterior;
         }
     }
