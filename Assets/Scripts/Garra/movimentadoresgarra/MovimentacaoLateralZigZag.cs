@@ -31,28 +31,29 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarra
     }
     
     public override void fixedUpdate()
-    {
-        //REFATORAR
-        definirDirecaoDaMovimentacao();
+    {        
+        verificarSeMovimentacaoAtingiuLimites();
         
         compDaGarra.RigidBody.velocity = new Vector2(
             direcao * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
             compDaGarra.RigidBody.velocity.y);
     }
 
-    private void definirDirecaoDaMovimentacao()
+    private void verificarSeMovimentacaoAtingiuLimites()
     {
         if (compDaGarra.RigidBody.transform.localPosition.x > LIMITE_LATERAL_TELA)
         {
-            direcao = -1;
-            //REFATORAR
+            direcao = -1;     
             diminuirInerciaDaGarra();
         }
         else if (compDaGarra.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
         {
-            direcao = 1;
-            //REFATORAR
+            direcao = 1;     
             diminuirInerciaDaGarra();
+        }
+        else
+        {
+            //nada
         }
     }
 }
