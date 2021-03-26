@@ -45,7 +45,11 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
         switch (mecanicaGarraEscolhida)
         {
             case (MECANICA_GARRA.ZIG_ZAG):
-                return new MovimentacaoZigZagLateral();                
+                return new MovimentacaoZigZagLateral();
+
+            case (MECANICA_GARRA.TELEGUIADA):
+                return new MecanicaTeleguiadaLateral();
+
         }
         return new MovimentacaoZigZagLateral();
     }

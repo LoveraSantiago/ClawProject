@@ -2,6 +2,8 @@ using UnityEngine;
 
 public abstract class MovimentacaoDaGarra 
 {
+    protected readonly float LIMITE_LATERAL_TELA = 2.16f;
+
     protected static ComponentesDaGarraDto compDaGarra;
     protected static ComunicadorComGerMovimentacao comunicadorComGerMovimentacao;
 

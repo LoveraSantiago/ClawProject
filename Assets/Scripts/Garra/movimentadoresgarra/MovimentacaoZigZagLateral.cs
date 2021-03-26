@@ -1,8 +1,7 @@
 using UnityEngine;
 
 public class MovimentacaoZigZagLateral : MovimentacaoDaGarra
-{
-    private readonly float LIMITE_LATERAL_TELA = 2.16f;
+{    
 
     private float movimentoLateral;        
     private float direcao;
@@ -33,6 +32,7 @@ public class MovimentacaoZigZagLateral : MovimentacaoDaGarra
     
     public override void fixedUpdate()
     {
+        //REFATORAR
         definirDirecaoDaMovimentacao();
         
         compDaGarra.RigidBody.velocity = new Vector2(
@@ -45,12 +45,13 @@ public class MovimentacaoZigZagLateral : MovimentacaoDaGarra
         if (compDaGarra.RigidBody.transform.localPosition.x > LIMITE_LATERAL_TELA)
         {
             direcao = -1;
-
+            //REFATORAR
             diminuirInerciaDaGarra();
         }
         else if (compDaGarra.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
         {
             direcao = 1;
+            //REFATORAR
             diminuirInerciaDaGarra();
         }
     }
