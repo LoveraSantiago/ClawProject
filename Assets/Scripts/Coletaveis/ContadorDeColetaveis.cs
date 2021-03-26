@@ -82,6 +82,6 @@ public class ContadorDeColetaveis
 
     public interface ColetavelCallback
     {
-        public void match(bool result);
+        void match(bool result);
     }
 }

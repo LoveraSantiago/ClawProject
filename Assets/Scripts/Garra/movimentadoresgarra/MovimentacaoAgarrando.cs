@@ -40,7 +40,7 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
         if (isGarraFechadaNoAngulo())
         {            
             compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass / INCREMENTO_DE_MASSA;
-            communicatorComGarra.trocarParaAcaoSubindo();
+            comunicadorComGerMovimentacao.trocarParaAcaoSubindo();
         }        
     }
 

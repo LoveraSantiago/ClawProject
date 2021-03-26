@@ -1,86 +1,34 @@
 using UnityEngine;
 
-public class Garra : CommunicatorComGarra
-{
-    private Vector2 posicaoInicial;
+public class Garra 
+{ 
+    private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
 
-    private MovimentacaoDaGarra movimentacaoAtual;    
-    private MovimentacaoDaGarra movimentacaoParaBaixo;
-    private MovimentacaoDaGarra movimentacaoAgarrando;
-    private MovimentacaoParaCima movimentacaoParaCima;
-    private MovimentacaoDaGarra movimentacaoLateral;
-
-    private ProdutorDeEvento<GameObject> produtorDeEventoAtingiuColetavel;
-
-    public Garra(ComponentesDaGarraDto componentesDaGarraDto)
+    public Garra(ComponentesDaGarraDto componentesDaGarraDto, 
+        GerenciadorDeMovimentacao.MECANICA_GARRA mecanicaGarraEscolhida)
     {
-        MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
-        MovimentacaoAgarrando.configurarCommunicatorComGarra(this);
-
-        produtorDeEventoAtingiuColetavel = new ProdutorDeEvento<GameObject>();
-
-        movimentacaoLateral   = new MovimentacaoLateral();
-        movimentacaoParaCima  = new MovimentacaoParaCima();
-        movimentacaoParaBaixo = new MovimentacaoParaBaixo(produtorDeEventoAtingiuColetavel);
-        movimentacaoAgarrando = new MovimentacaoAgarrando();
-        movimentacaoAtual = movimentacaoLateral;
-        
+        gerenciadorDeMovimentacao = new GerenciadorDeMovimentacao(componentesDaGarraDto, mecanicaGarraEscolhida);
         configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);
     }    
 
-    public void Update()
+    public void update()
     {
-        movimentacaoAtual.update();
+        gerenciadorDeMovimentacao.update();
     }
 
-    public void FixedUpdate()
+    public void fixedUpdate()
     {
-        movimentacaoAtual.fixedUpdate();       
+        gerenciadorDeMovimentacao.fixedUpdate();
     }   
 
     private void garraColidiuCom(Collider2D other)
     {
-        movimentacaoAtual.garraColidiuCom(other.gameObject);        
+        gerenciadorDeMovimentacao.garraColidiuCom(other);
     }    
 
     private void configurarColisorCentroDaPinca(GameObject goColisor)
     {
         DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();        
         detectorDeColisoes.registrarConsumidorDeTrigger((colisao) =>garraColidiuCom(colisao));
-    }
-
-    public ProdutorDeEvento<GameObject> getProdutorDeEventoColisaoComColetavel()
-    {
-        return produtorDeEventoAtingiuColetavel;
-    }
-
-    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO
-    public void trocarParaAcaoDescendo(Vector2 posicaoInicial)
-    {
-        this.posicaoInicial = posicaoInicial;
-        trocarMovimentador(movimentacaoParaBaixo);        
-    }
-
-    public void trocarParaAcaoSubindo()
-    {
-        movimentacaoParaCima.setPosicalInicialDeReferencia(posicaoInicial);
-        trocarMovimentador(movimentacaoParaCima);        
-    }
-
-    public void trocarParaAcaoNormal()
-    {
-        trocarMovimentador(movimentacaoLateral);        
-    }
-
-    public void trocarParaAgarrada()
-    {
-        trocarMovimentador(movimentacaoAgarrando);        
-    }
-
-    private void trocarMovimentador(MovimentacaoDaGarra movimentador)
-    {
-        movimentador.preInicio();
-        movimentacaoAtual = movimentador;
-    }
-    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
+    }    
 }

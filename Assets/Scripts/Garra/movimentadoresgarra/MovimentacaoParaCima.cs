@@ -22,7 +22,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
             compDaGarra.RigidBody.transform.localPosition = new Vector2(
                 compDaGarra.RigidBody.position.x, posicaoInicial.y);
             
-            communicatorComGarra.trocarParaAcaoNormal();
+            comunicadorComGerMovimentacao.trocarParaAcaoNormal();
         }
     }
 
