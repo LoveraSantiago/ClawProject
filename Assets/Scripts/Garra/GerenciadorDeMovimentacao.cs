@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
 {
+    public enum MECANICA_GARRA { ZIG_ZAG, TELEGUIADA, ZIG_ZAGTELEGUIADO };
+
     private Vector2 posicaoInicial;
 
     private MovimentacaoDaGarra movimentacaoAtual;
@@ -10,7 +12,8 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     private MovimentacaoParaCima movimentacaoParaCima;
     private MovimentacaoDaGarra movimentacaoLateral;
 
-    public GerenciadorDeMovimentacao(ComponentesDaGarraDto componentesDaGarraDto)
+    public GerenciadorDeMovimentacao(ComponentesDaGarraDto componentesDaGarraDto, 
+        MECANICA_GARRA mecanicaGarraEscolhida)
     {
         MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
         MovimentacaoDaGarra.configurarCommunicatorComGarra(this);
