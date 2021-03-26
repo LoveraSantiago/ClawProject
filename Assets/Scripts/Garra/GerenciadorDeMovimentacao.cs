@@ -50,6 +50,9 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
             case (MECANICA_GARRA.TELEGUIADA):
                 return new MovimentacaoLateralTeleguiada();
 
+            case (MECANICA_GARRA.ZIG_ZAGTELEGUIADO):
+                return new MovimentacaoLateralZigTeleguiado();
+
         }
         return new MovimentacaoLateralZigZag();
     }
