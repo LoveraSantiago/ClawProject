@@ -18,7 +18,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
         MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
         MovimentacaoDaGarra.configurarCommunicatorComGarra(this);
 
-        movimentacaoLateral   = new MovimentacaoZigZagLateral();
+        movimentacaoLateral = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
         movimentacaoParaCima  = new MovimentacaoParaCima();
         movimentacaoParaBaixo = new MovimentacaoParaBaixo();
         movimentacaoAgarrando = new MovimentacaoAgarrando();
@@ -38,6 +38,16 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     public void garraColidiuCom(Collider2D other)
     {
         movimentacaoAtual.garraColidiuCom(other.gameObject);
+    }
+
+    private MovimentacaoDaGarra selecionarMecanicaHorizontal(MECANICA_GARRA mecanicaGarraEscolhida)
+    {
+        switch (mecanicaGarraEscolhida)
+        {
+            case (MECANICA_GARRA.ZIG_ZAG):
+                return new MovimentacaoZigZagLateral();                
+        }
+        return new MovimentacaoZigZagLateral();
     }
 
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO

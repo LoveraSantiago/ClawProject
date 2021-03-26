@@ -13,7 +13,7 @@ public class MainGame : MonoBehaviour
 
     void Start()
     {
-        garra = new Garra(componentesDaGarra);
+        garra = new Garra(componentesDaGarra, mecanicaAtual);
         coletaveis = new Coletaveis(coletaveisDto);
 
         //GARRA NAO PRODUZ MAIS EVENTOS DE TER ACERTADO COLETADO

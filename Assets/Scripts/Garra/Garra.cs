@@ -4,9 +4,10 @@ public class Garra
 { 
     private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
 
-    public Garra(ComponentesDaGarraDto componentesDaGarraDto)
+    public Garra(ComponentesDaGarraDto componentesDaGarraDto, 
+        GerenciadorDeMovimentacao.MECANICA_GARRA mecanicaGarraEscolhida)
     {
-        gerenciadorDeMovimentacao = new GerenciadorDeMovimentacao(componentesDaGarraDto);
+        gerenciadorDeMovimentacao = new GerenciadorDeMovimentacao(componentesDaGarraDto, mecanicaGarraEscolhida);
         configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);
     }    
 
