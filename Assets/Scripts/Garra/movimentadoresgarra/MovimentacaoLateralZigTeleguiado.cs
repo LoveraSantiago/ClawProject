@@ -13,7 +13,9 @@ public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarra
     private Action actionFixedUpdateTeleguiado;
 
     public MovimentacaoLateralZigTeleguiado()
-    {
+    {        
+        direcao = 1;
+
         actionFixedUpdateTeleguiado = () => fixedUpdateTeleguiado();
         actionFixedUpdateZigZague = () => fixedUpdateZigZag();
     }
