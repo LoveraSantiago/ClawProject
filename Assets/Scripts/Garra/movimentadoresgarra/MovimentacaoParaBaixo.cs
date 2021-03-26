@@ -45,10 +45,9 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
 
     public override void garraColidiuCom(GameObject gameObject)
     {
-        Debug.Log("Atingiu: " + gameObject.name);
+        //Debug.Log("Atingiu: " + gameObject.name);
         if (Utils.isColetavel(gameObject))
-        {
-            
+        {            
             ligarAtracaoNoObjeto(gameObject);
             comunicadorComGerMovimentacao.trocarParaAgarrada();
         }
