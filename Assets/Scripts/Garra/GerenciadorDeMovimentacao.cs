@@ -17,7 +17,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
 
         movimentacaoLateral   = new MovimentacaoLateral();
         movimentacaoParaCima  = new MovimentacaoParaCima();
-        movimentacaoParaBaixo = new MovimentacaoParaBaixo(null);
+        movimentacaoParaBaixo = new MovimentacaoParaBaixo();
         movimentacaoAgarrando = new MovimentacaoAgarrando();
         movimentacaoAtual = movimentacaoLateral;
     }
