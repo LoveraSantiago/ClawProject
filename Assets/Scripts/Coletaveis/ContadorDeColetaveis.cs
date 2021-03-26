@@ -3,21 +3,20 @@ using UnityEngine;
 public class ContadorDeColetaveis
 {    
     private int qtdColetados = 0;
-    private SpriteRenderer[] spritesDeColetados;
-
+    private Sprite[] spritesDeColetados = new Sprite[3];
 
 
     private ColetavelCallback callback;
 
-    public ContadorDeColetaveis(SpriteRenderer[] spritesDeColetados, ColetavelCallback callback)
-    {        
-        this.spritesDeColetados = spritesDeColetados;
+    
+    public ContadorDeColetaveis(ColetavelCallback callback)
+    {                
         this.callback = callback;
     }
 
-    public void adicionarColetado(GameObject coletado)
+    public void adicionarColetado(Sprite coletado)
     {        
-        adicionaAoContainerDeColetados(coletado.GetComponent<SpriteRenderer>().sprite);
+        adicionaAoContainerDeColetados(coletado);
 
         if (qtdColetados > spritesDeColetados.Length - 1)
         {
@@ -35,12 +34,17 @@ public class ContadorDeColetaveis
 
     }
 
+    public int getQtdColetados()
+    {
+        return qtdColetados;
+    }
+
     private bool isCombinacaoValida()
     {        
-        Sprite primeiroSprite = spritesDeColetados[0].sprite;
+        Sprite primeiroSprite = spritesDeColetados[0];
         for(int i = 0; i < spritesDeColetados.Length; i++)
         {
-            if(primeiroSprite != spritesDeColetados[i].sprite)
+            if(primeiroSprite != spritesDeColetados[i])
             {
                 return false;
             }
@@ -50,8 +54,8 @@ public class ContadorDeColetaveis
     }
 
     private void adicionaAoContainerDeColetados(Sprite coletado)
-    {        
-        spritesDeColetados[qtdColetados].sprite = coletado;
+    {
+        spritesDeColetados[qtdColetados] = coletado;
         qtdColetados++;
     }
 

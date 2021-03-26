@@ -7,12 +7,12 @@ public class MainGame : MonoBehaviour
     [SerializeField] ColetaveisDto coletaveisDto;
 
     private Garra garra;
-    private Coletaveis coletaveis;
+    private ColetavelManager coletaveis;
 
     void Start()
     {
         garra = new Garra(componentesDaGarra);
-        coletaveis = new Coletaveis(coletaveisDto);
+        coletaveis = new ColetavelManager(coletaveisDto);
 
         new ProdutorConsumidoresDeEvento<GameObject>()
             .configurarProdutor(garra.getProdutorDeEventoColisaoComColetavel())
