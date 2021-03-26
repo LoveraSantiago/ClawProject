@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoZigZagLateral : MovimentacaoDaGarra
+public class MovimentacaoLateralZigZag : MovimentacaoDaGarra
 {    
 
     private float movimentoLateral;        
@@ -9,7 +9,7 @@ public class MovimentacaoZigZagLateral : MovimentacaoDaGarra
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;    
 
-    public MovimentacaoZigZagLateral()
+    public MovimentacaoLateralZigZag()
     {        
         direcao = 1;
         anguloDesejadoDireita  = Quaternion.Euler(0, 0, 0);

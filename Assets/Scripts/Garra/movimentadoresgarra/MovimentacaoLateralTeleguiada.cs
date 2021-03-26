@@ -1,6 +1,6 @@
 using UnityEngine;
 //TODO dupla responsabilidade. ifs para 2 estados - RUIM
-public class MecanicaTeleguiadaLateral : MovimentacaoDaGarra
+public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarra
 {
     private bool aceitarClique;
     private bool moverLateralmente;
@@ -29,6 +29,8 @@ public class MecanicaTeleguiadaLateral : MovimentacaoDaGarra
                 moverLateralmente = true;
             }
         }
+        Debug.Log(Input.mousePosition);
+        Debug.DrawRay(Input.mousePosition, Vector3.up * 10, Color.blue);
     }
 
     public override void fixedUpdate()
