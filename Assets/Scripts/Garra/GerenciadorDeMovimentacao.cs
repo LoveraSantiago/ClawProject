@@ -15,7 +15,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
         MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
         MovimentacaoDaGarra.configurarCommunicatorComGarra(this);
 
-        movimentacaoLateral   = new MovimentacaoLateral();
+        movimentacaoLateral   = new MovimentacaoZigZagLateral();
         movimentacaoParaCima  = new MovimentacaoParaCima();
         movimentacaoParaBaixo = new MovimentacaoParaBaixo();
         movimentacaoAgarrando = new MovimentacaoAgarrando();
