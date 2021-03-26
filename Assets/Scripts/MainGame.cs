@@ -9,12 +9,14 @@ public class MainGame : MonoBehaviour
     [SerializeField] private ColetaveisDto coletaveisDto;
 
     private Garra garra;
-    private Coletaveis coletaveis;
+    private ColetavelManager coletaveis;
 
     void Start()
     {
+
         garra = new Garra(componentesDaGarra, mecanicaAtual);
-        coletaveis = new Coletaveis(coletaveisDto);
+        coletaveis = new ColetavelManager(coletaveisDto);
+
 
         //GARRA NAO PRODUZ MAIS EVENTOS DE TER ACERTADO COLETADO
         //QUEM DEVE EMITIR ESSE EVENTO SERIA O SENSOR DE CIMA DA TELA
