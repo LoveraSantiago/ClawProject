@@ -4,16 +4,11 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarra
 {    
 
     private float movimentoLateral;        
-    private float direcao;
-
-    private Quaternion anguloDesejadoEsquerda;
-    private Quaternion anguloDesejadoDireita;    
+    private float direcao;    
 
     public MovimentacaoLateralZigZag()
     {        
-        direcao = 1;
-        anguloDesejadoDireita  = Quaternion.Euler(0, 0, 0);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, 0);
+        direcao = 1;        
     }
 
     public override void preInicio()
