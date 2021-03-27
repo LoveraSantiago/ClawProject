@@ -1265,9 +1265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c04612a595b74c2da272b0e052ad58d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnZigZag: {fileID: 0}
-  btnTeleguiado: {fileID: 0}
-  btnZigZagTeleguiado: {fileID: 0}
+  btnZigZag: {fileID: 1561186519}
+  btnTeleguiado: {fileID: 1653340877}
+  btnZigZagTeleguiado: {fileID: 827199133}
 --- !u!4 &2038700493
 Transform:
   m_ObjectHideFlags: 0
