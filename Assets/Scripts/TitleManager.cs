@@ -9,7 +9,9 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private Button btnZigZagTeleguiado;
 
     private void Start()
-    {
+    {       
+        Camera.main.aspect = 0.625f;
+
         btnZigZag.onClick.AddListener(() => irParaGameComMecanicaZigZag());
         btnTeleguiado.onClick.AddListener(() => irParaGameComMecanicaTeleguiada());
         btnZigZagTeleguiado.onClick.AddListener(() => irParaGameComMecanicaZigZagTeleguiado());
