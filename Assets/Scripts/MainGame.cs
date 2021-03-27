@@ -13,8 +13,9 @@ public class MainGame : MonoBehaviour
 
     void Start()
     {
+        Garra.MECANICA_GARRA mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
 
-        garra = new Garra(componentesDaGarra, mecanicaAtual);
+        garra = new Garra(componentesDaGarra, mecanicaSelecionada);
         coletaveis = new ColetavelManager(coletaveisDto);
 
 

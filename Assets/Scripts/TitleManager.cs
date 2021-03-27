@@ -8,7 +8,6 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private Button btnTeleguiado;
     [SerializeField] private Button btnZigZagTeleguiado;
 
-
     private void Start()
     {
         btnZigZag.onClick.AddListener(() => irParaGameComMecanicaZigZag());
@@ -18,21 +17,24 @@ public class TitleManager : MonoBehaviour
 
     private void irParaGameComMecanicaZigZag()
     {
+        PlayerPrefsGarraMecanica.salvarMecanica(Garra.MECANICA_GARRA.ZIG_ZAG);
         irParaMainScene();
     }
 
     private void irParaGameComMecanicaTeleguiada()
     {
+        PlayerPrefsGarraMecanica.salvarMecanica(Garra.MECANICA_GARRA.TELEGUIADA);
         irParaMainScene();
     }
 
     private void irParaGameComMecanicaZigZagTeleguiado()
     {
+        PlayerPrefsGarraMecanica.salvarMecanica(Garra.MECANICA_GARRA.ZIG_ZAGTELEGUIADO);
         irParaMainScene();
     }
 
     private void irParaMainScene()
-    {
-        SceneManager.LoadScene("MainScene");
+    {        
+        SceneManager.LoadScene("MainContainerSceneV2");
     }
 }
