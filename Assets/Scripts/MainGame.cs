@@ -14,7 +14,7 @@ public class MainGame : MonoBehaviour
     //Componentes uis temporarios aqui...
     [SerializeField] private Button btnDuvida;
     [SerializeField] private Button btnSair;
-    [SerializeField] private Canvas canvasExplicacao;
+    [SerializeField] private Canvas canvasInformacao;
     [SerializeField] private TextMeshProUGUI lblMecanica;
     [SerializeField] private TextMeshProUGUI lblExplicacao;
     [SerializeField] private Button btnOk;
@@ -72,7 +72,7 @@ public class MainGame : MonoBehaviour
     private void ligarCanvasDuvida()
     {
         mostrandoCanvas = true;
-        canvasExplicacao.gameObject.SetActive(true);
+        canvasInformacao.gameObject.SetActive(true);
         switch (mecanicaSelecionada)
         {
             case (Garra.MECANICA_GARRA.ZIG_ZAG):
@@ -95,6 +95,6 @@ public class MainGame : MonoBehaviour
     private void desligarCanvasDuvida()
     {
         mostrandoCanvas = false;
-        canvasExplicacao.gameObject.SetActive(false);
+        canvasInformacao.gameObject.SetActive(false);
     }
 }

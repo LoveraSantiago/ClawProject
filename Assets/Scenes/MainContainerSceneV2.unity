@@ -585,7 +585,7 @@ MonoBehaviour:
     goTriggerDeColetado: {fileID: 2083913115}
   btnDuvida: {fileID: 2014931419}
   btnSair: {fileID: 1780015346}
-  canvasExplicacao: {fileID: 1040665835}
+  canvasInformacao: {fileID: 0}
   lblMecanica: {fileID: 145160602}
   lblExplicacao: {fileID: 1714968184}
   btnOk: {fileID: 1687577903}
@@ -1071,7 +1071,7 @@ GameObject:
   - component: {fileID: 1040665833}
   - component: {fileID: 1040665832}
   m_Layer: 5
-  m_Name: canvasDuvida
+  m_Name: canvasInformacao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
