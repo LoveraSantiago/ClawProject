@@ -77,7 +77,7 @@ public class MainGame : MonoBehaviour
         {
             case (Garra.MECANICA_GARRA.ZIG_ZAG):
                 lblMecanica.text = "ZIG-ZAG";
-                lblExplicacao.text = "A garra fica se movimentando para direita e esquerda continuamente.\nToque na tela para faze-la descer.";
+                lblExplicacao.text = "A garra fica se movimentando para direita e esquerda continuamente.\nToque na tela para faze-la descer até os coletaveis.";
                 break;
 
             case (Garra.MECANICA_GARRA.TELEGUIADA):

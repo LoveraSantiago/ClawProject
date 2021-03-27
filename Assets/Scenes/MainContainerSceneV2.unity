@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mecanicaAtual: 1
+  mecanicaAtual: 3
   componentesDaGarra:
     velocMovHorizontal: 150
     velocMovCima: 500
@@ -585,7 +585,7 @@ MonoBehaviour:
     goTriggerDeColetado: {fileID: 2083913115}
   btnDuvida: {fileID: 2014931419}
   btnSair: {fileID: 1780015346}
-  canvasInformacao: {fileID: 0}
+  canvasInformacao: {fileID: 1040665835}
   lblMecanica: {fileID: 145160602}
   lblExplicacao: {fileID: 1714968184}
   btnOk: {fileID: 1687577903}
