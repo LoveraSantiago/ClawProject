@@ -5,15 +5,15 @@ using UnityEngine.UI;
 [System.Serializable]
 public class ColetaveisDto 
 {
-    [SerializeField] private float coletadoScale;//0.55586
-    [SerializeField] private GameObject[] coletadoPosicoes = new GameObject[3];//3
+    [SerializeField] private float coletadoScale;//0.55586    
+    [SerializeField] private SpriteRenderer[] coletadosSprites = new SpriteRenderer[3];//3
     [SerializeField] private Text scoreTextField;
     [Space(5)]
-    [SerializeField] private GameObject goTriggerDeColetado;
+    [SerializeField] private GameObject goTriggerDeColetado;    
 
     public float ColetadoScale { get { return coletadoScale; } }
-    public GameObject[] ColetadoPosicoes { get { return coletadoPosicoes; } }
+    public SpriteRenderer[] ColetadosPosicoes { get { return coletadosSprites; } }
     public Text ScoreTextField { get { return scoreTextField; } }
 
-    public GameObject GoTriggerDeColetado { get { return goTriggerDeColetado; } }
+    public GameObject GoTriggerDeColetado { get { return goTriggerDeColetado; } }    
 }

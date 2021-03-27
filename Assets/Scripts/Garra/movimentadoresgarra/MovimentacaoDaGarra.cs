@@ -2,8 +2,10 @@ using UnityEngine;
 
 public abstract class MovimentacaoDaGarra 
 {
+    protected readonly float LIMITE_LATERAL_TELA = 2.16f;
+
     protected static ComponentesDaGarraDto compDaGarra;
-    protected static CommunicatorComGarra communicatorComGarra;
+    protected static ComunicadorComGerMovimentacao comunicadorComGerMovimentacao;
 
     private static GameObject objetoAtraido;
     private static int layerAnterior;
@@ -19,13 +21,14 @@ public abstract class MovimentacaoDaGarra
         compDaGarra = componentesDaGarraDtoArg;
     }
 
-    public static void configurarCommunicatorComGarra(CommunicatorComGarra communicatorComGarraArg)
+    public static void configurarCommunicatorComGarra(ComunicadorComGerMovimentacao comunicadorComGerMovimentacaoArg)
     {
-        communicatorComGarra = communicatorComGarraArg;
+        comunicadorComGerMovimentacao = comunicadorComGerMovimentacaoArg;
     }
 
+    //TEMPORARIAMENTE AQUI.... GARRA NAO DEVERIA INTERFERIR NO ESTADO DO COLETAVEL POSSIVEL (QUEBRANDO UMA INVARIANTE PERTENCENTE A COLETAVEIS)
     protected void ligarAtracaoNoObjeto(GameObject gameObject)
-    {
+    {        
         layerAnterior = gameObject.layer;
         gameObject.layer = LayerMask.NameToLayer("Atracao");
         objetoAtraido = gameObject;
@@ -34,7 +37,7 @@ public abstract class MovimentacaoDaGarra
     protected void desligarAtracaoNoObjeto()
     {
         if(objetoAtraido != null)
-        {
+        {     
             objetoAtraido.layer = layerAnterior;
         }
     }
