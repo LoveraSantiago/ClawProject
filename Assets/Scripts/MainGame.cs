@@ -3,7 +3,7 @@ using UnityEngine;
 public class MainGame : MonoBehaviour
 {    
     [Space(5)]
-    [SerializeField] private GerenciadorDeMovimentacao.MECANICA_GARRA mecanicaAtual;
+    [SerializeField] private Garra.MECANICA_GARRA mecanicaAtual;
     [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
     [Space(5)]
     [SerializeField] private ColetaveisDto coletaveisDto;
