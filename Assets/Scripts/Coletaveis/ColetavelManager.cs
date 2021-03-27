@@ -21,6 +21,7 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback
             .registrarConsumidorDeTrigger(
             (collider2d) => //temporariamente aqui p validar
             {
+                Debug.Log("Coletado");
                 //Retirar getcomponent daqui
                 if (collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0)
                 {                   
