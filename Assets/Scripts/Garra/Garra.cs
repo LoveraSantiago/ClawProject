@@ -3,9 +3,10 @@ using UnityEngine;
 public class Garra 
 { 
     private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
+    public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
 
     public Garra(ComponentesDaGarraDto componentesDaGarraDto, 
-        GerenciadorDeMovimentacao.MECANICA_GARRA mecanicaGarraEscolhida)
+                 MECANICA_GARRA mecanicaGarraEscolhida)
     {
         gerenciadorDeMovimentacao = new GerenciadorDeMovimentacao(componentesDaGarraDto, mecanicaGarraEscolhida);
         configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);

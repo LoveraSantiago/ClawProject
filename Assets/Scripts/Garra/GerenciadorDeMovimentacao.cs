@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
 {
-    public enum MECANICA_GARRA { ZIG_ZAG, TELEGUIADA, ZIG_ZAGTELEGUIADO };
-
     private Vector2 posicaoInicial;
 
     private MovimentacaoDaGarra movimentacaoAtual;
@@ -13,7 +11,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     private MovimentacaoDaGarra movimentacaoLateral;
 
     public GerenciadorDeMovimentacao(ComponentesDaGarraDto componentesDaGarraDto, 
-        MECANICA_GARRA mecanicaGarraEscolhida)
+        Garra.MECANICA_GARRA mecanicaGarraEscolhida)
     {
         MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
         MovimentacaoDaGarra.configurarCommunicatorComGarra(this);
@@ -40,17 +38,17 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
         movimentacaoAtual.garraColidiuCom(other.gameObject);
     }
 
-    private MovimentacaoDaGarra selecionarMecanicaHorizontal(MECANICA_GARRA mecanicaGarraEscolhida)
+    private MovimentacaoDaGarra selecionarMecanicaHorizontal(Garra.MECANICA_GARRA mecanicaGarraEscolhida)
     {
         switch (mecanicaGarraEscolhida)
         {
-            case (MECANICA_GARRA.ZIG_ZAG):
+            case (Garra.MECANICA_GARRA.ZIG_ZAG):
                 return new MovimentacaoLateralZigZag();
 
-            case (MECANICA_GARRA.TELEGUIADA):
+            case (Garra.MECANICA_GARRA.TELEGUIADA):
                 return new MovimentacaoLateralTeleguiada();
 
-            case (MECANICA_GARRA.ZIG_ZAGTELEGUIADO):
+            case (Garra.MECANICA_GARRA.ZIG_ZAGTELEGUIADO):
                 return new MovimentacaoLateralZigTeleguiado();
 
         }

@@ -1,13 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TitleManager : MonoBehaviour
 {
-    public void OnClickPlay()
+    [SerializeField] private Button btnZigZag;
+    [SerializeField] private Button btnTeleguiado;
+    [SerializeField] private Button btnZigZagTeleguiado;
+
+    private void Start()
     {
-        SceneManager.LoadScene("MainScene");
+        btnZigZag.onClick.AddListener(() => irParaGameComMecanicaZigZag());
+        btnTeleguiado.onClick.AddListener(() => irParaGameComMecanicaTeleguiada());
+        btnZigZagTeleguiado.onClick.AddListener(() => irParaGameComMecanicaZigZagTeleguiado());
+    }    
+
+    private void irParaGameComMecanicaZigZag()
+    {
+        PlayerPrefsGarraMecanica.salvarMecanica(Garra.MECANICA_GARRA.ZIG_ZAG);
+        irParaMainScene();
     }
 
+    private void irParaGameComMecanicaTeleguiada()
+    {
+        PlayerPrefsGarraMecanica.salvarMecanica(Garra.MECANICA_GARRA.TELEGUIADA);
+        irParaMainScene();
+    }
+
+    private void irParaGameComMecanicaZigZagTeleguiado()
+    {
+        PlayerPrefsGarraMecanica.salvarMecanica(Garra.MECANICA_GARRA.ZIG_ZAGTELEGUIADO);
+        irParaMainScene();
+    }
+
+    private void irParaMainScene()
+    {        
+        SceneManager.LoadScene("MainContainerSceneV2");
+    }
 }
