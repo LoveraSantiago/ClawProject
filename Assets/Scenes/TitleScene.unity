@@ -263,7 +263,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Mec\xE2nica ZigZag\n"
+  m_text: 'Modo 1
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -516,7 +518,7 @@ GameObject:
   - component: {fileID: 827199134}
   - component: {fileID: 827199133}
   m_Layer: 5
-  m_Name: btnZigZagTeleguiado
+  m_Name: btnModo3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -759,7 +761,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Mec\xE2nica ZigZag Teleguiado"
+  m_text: Modo 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -893,7 +895,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Mec\xE2nica Teleguiada"
+  m_text: Modo 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -983,7 +985,7 @@ GameObject:
   - component: {fileID: 1561186520}
   - component: {fileID: 1561186519}
   m_Layer: 5
-  m_Name: btnZigZag
+  m_Name: btnModo1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1116,7 +1118,7 @@ GameObject:
   - component: {fileID: 1653340878}
   - component: {fileID: 1653340877}
   m_Layer: 5
-  m_Name: btnTeleguiado
+  m_Name: btnModo2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
