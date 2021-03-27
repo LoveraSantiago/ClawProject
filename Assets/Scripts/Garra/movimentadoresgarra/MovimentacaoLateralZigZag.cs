@@ -18,7 +18,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarra
 
     public override void update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetMouseButtonDown(0))
         {
             Vector2 posicaoInicial = compDaGarra.RigidBody.transform.localPosition;            
             comunicadorComGerMovimentacao.trocarParaAcaoDescendo(posicaoInicial);
