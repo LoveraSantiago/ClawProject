@@ -368,6 +368,7 @@ MonoBehaviour:
     - {fileID: 1903171840}
     scoreTextField: {fileID: 119649667}
     goTriggerDeColetado: {fileID: 2083913115}
+  btnSair: {fileID: 1780015346}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
