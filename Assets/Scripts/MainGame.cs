@@ -25,8 +25,18 @@ public class MainGame : MonoBehaviour
 
     private bool mostrandoCanvas;
 
+    void OnEnable()
+    {
+        //forçando escala Y pra ficar dentro da safe area
+        float escalaY = Screen.safeArea.height / Screen.height;
+        float escalaX = Screen.safeArea.width / Screen.width;
+        transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
+    }
+
     void Start()
     {
+        Camera.main.aspect = 0.625f;        
+
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
 
         garra = new Garra(componentesDaGarra, mecanicaSelecionada);
