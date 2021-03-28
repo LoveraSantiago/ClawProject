@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Utils 
 {
+    public static readonly float RATIO_SCREEN = 0.5625f;
+    //public static readonly float RATIO_SCREEN = 0.625f;
+
     public static bool isColetavel(Collision2D collision)
     {
         return isColetavel(collision.gameObject);
