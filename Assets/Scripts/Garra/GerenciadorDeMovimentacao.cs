@@ -70,13 +70,6 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao {
     private void trocarMovimentador(MovimentacaoDaGarra movimentador) {
         movimentador.preInicio();
         movimentacaoAtual = movimentador;
-
-        if (movimentador.GetType().IsInstanceOfType(movimentacaoParaBaixo)) {
-            AudioController.current.PlayAudio(AudioController.current.garra);
-        }
-        if (movimentador.GetType().IsInstanceOfType(movimentacaoLateral)) {
-            AudioController.current.StopAudio(AudioController.current.garra);
-        }
     }
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
 
