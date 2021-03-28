@@ -27,7 +27,7 @@ public class MainGame : MonoBehaviour
 
     void Start()
     {
-        Camera.main.aspect = 0.625f;        
+        Camera.main.aspect = Utils.RATIO_SCREEN;        
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
 
