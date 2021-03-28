@@ -17,8 +17,6 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarra {
         //TEMPORARIAMENTE AQUI ... PEGAR TOQUE NA TELA
         if (aceitarClique && Input.GetMouseButtonDown(0)) {
 
-            AudioController.current.PlayAudioGarra();
-
             RaycastHit2D raycastHit;
             int layerMask = LayerMask.GetMask("Coletavel");
 
@@ -27,6 +25,7 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarra {
 
             raycastHit = Physics2D.Raycast(posicaoClicada, Vector3.up, 2, layerMask);
             if (raycastHit.collider != null) {
+                AudioController.current.PlayAudioGarra();
                 posicaoDoToque = posicaoClicada.x;
                 aceitarClique = false;
                 moverLateralmente = true;
