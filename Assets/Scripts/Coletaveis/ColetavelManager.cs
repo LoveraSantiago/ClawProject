@@ -3,35 +3,31 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
-public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback
-{
-    private List<GameObject> coletados = new List<GameObject>();        
+public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback {
+    private List<GameObject> coletados = new List<GameObject>();
 
-    private int score = 0;    
+    private int score = 0;
     private ColetaveisDto coletaveisDto;
     private ContadorDeColetaveis contadorDeColetaveis;
 
-    public ColetavelManager(ColetaveisDto coletaveisDto)
-    {
+    public ColetavelManager(ColetaveisDto coletaveisDto) {
         //contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.ColetadosPosicoes, this);
         contadorDeColetaveis = new ContadorDeColetaveis(this);
 
-        this.coletaveisDto = coletaveisDto;        
+        this.coletaveisDto = coletaveisDto;
         this.coletaveisDto.GoTriggerDeColetado.GetComponent<DetectorDeTriggers>()
             .registrarConsumidorDeTrigger(
             (collider2d) => //temporariamente aqui p validar
             {
                 Debug.Log("Coletado");
                 //Retirar getcomponent daqui
-                if (collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0)
-                {                   
+                if (collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0) {
                     adicionarColetado(collider2d.gameObject);
                 }
             });
     }
 
-    private void adicionarColetado(GameObject gameObject)
-    {
+    private void adicionarColetado(GameObject gameObject) {
         int qtdColetados = contadorDeColetaveis.getQtdColetados();
         Sprite sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
 
@@ -39,6 +35,7 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback
         contadorDeColetaveis.adicionarColetado(gameObject.GetComponent<SpriteRenderer>().sprite);
         gameObject.SetActive(false);
         coletados.Add(gameObject);
+        AudioController.current.PlayAudio(AudioController.current.coletar);
     }
 
     public void FixedUpdate() { }
@@ -86,55 +83,45 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback
 
     //}
 
-    public void OnClickPlay()
-    {
+    public void OnClickPlay() {
         SceneManager.LoadScene("TitleScene");
     }
 
-    private void coletavelAtingido2(GameObject goColetavel)
-    {
+    private void coletavelAtingido2(GameObject goColetavel) {
         Debug.Log("coletavelAtingido2");
         //goColetavel.transform.GetComponent<Rigidbody2D>().mass = 0;
     }
 
-    public Action<GameObject> getConsumidorDeColetavelAtingito()
-    {
+    public Action<GameObject> getConsumidorDeColetavelAtingito() {
         return (coletado) => coletavelAtingido2(coletado);
     }
 
-    public void match(bool result)
-    {
-        if (result)
-        {
+    public void match(bool result) {
+        if (result) {
             atualizaScore();
-        }
-        else
-        {
+        } else {
 
             //foreach (GameObject gameObject in coletados)
             //{
             //    gameObject.SetActive(true);
 
             //}
-            
+
 
             resetColetadosPosicoes();
         }
     }
 
-    private void atualizaScore()
-    {
+    private void atualizaScore() {
         score += 30;
         coletaveisDto.ScoreTextField.text = score.ToString();
 
         resetColetadosPosicoes();
     }
 
-    private void resetColetadosPosicoes()
-    {
+    private void resetColetadosPosicoes() {
         Debug.Log("resetColetadosPosicoes");
-        foreach (SpriteRenderer spriteRenderer in coletaveisDto.ColetadosPosicoes)
-        {
+        foreach (SpriteRenderer spriteRenderer in coletaveisDto.ColetadosPosicoes) {
             spriteRenderer.sprite = null;
         }
 

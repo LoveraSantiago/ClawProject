@@ -1,7 +1,7 @@
 using UnityEngine;
+using System.Threading;
 
-public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
-{
+public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao {
     private Vector2 posicaoInicial;
 
     private MovimentacaoDaGarra movimentacaoAtual;
@@ -10,38 +10,32 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     private MovimentacaoParaCima movimentacaoParaCima;
     private MovimentacaoDaGarra movimentacaoLateral;
 
-    public GerenciadorDeMovimentacao(ComponentesDaGarraDto componentesDaGarraDto, 
-        Garra.MECANICA_GARRA mecanicaGarraEscolhida)
-    {
+    public GerenciadorDeMovimentacao(ComponentesDaGarraDto componentesDaGarraDto,
+        Garra.MECANICA_GARRA mecanicaGarraEscolhida) {
         MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
         MovimentacaoDaGarra.configurarCommunicatorComGarra(this);
 
         movimentacaoLateral = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
-        movimentacaoParaCima  = new MovimentacaoParaCima();
+        movimentacaoParaCima = new MovimentacaoParaCima();
         movimentacaoParaBaixo = new MovimentacaoParaBaixo();
         movimentacaoAgarrando = new MovimentacaoAgarrando();
         trocarMovimentador(movimentacaoLateral);
     }
 
-    public void update()
-    {
+    public void update() {
         movimentacaoAtual.update();
     }
 
-    public void fixedUpdate()
-    {
+    public void fixedUpdate() {
         movimentacaoAtual.fixedUpdate();
     }
 
-    public void garraColidiuCom(Collider2D other)
-    {
+    public void garraColidiuCom(Collider2D other) {
         movimentacaoAtual.garraColidiuCom(other.gameObject);
     }
 
-    private MovimentacaoDaGarra selecionarMecanicaHorizontal(Garra.MECANICA_GARRA mecanicaGarraEscolhida)
-    {
-        switch (mecanicaGarraEscolhida)
-        {
+    private MovimentacaoDaGarra selecionarMecanicaHorizontal(Garra.MECANICA_GARRA mecanicaGarraEscolhida) {
+        switch (mecanicaGarraEscolhida) {
             case (Garra.MECANICA_GARRA.ZIG_ZAG):
                 return new MovimentacaoLateralZigZag();
 
@@ -56,33 +50,29 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     }
 
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO
-    public void trocarParaAcaoDescendo(Vector2 posicaoInicial)
-    {
+    public void trocarParaAcaoDescendo(Vector2 posicaoInicial) {
+        AudioController.current.PlayAudioGarra();
         this.posicaoInicial = posicaoInicial;
         trocarMovimentador(movimentacaoParaBaixo);
     }
 
-    public void trocarParaAcaoSubindo()
-    {
+    public void trocarParaAcaoSubindo() {
         movimentacaoParaCima.setPosicalInicialDeReferencia(posicaoInicial);
         trocarMovimentador(movimentacaoParaCima);
     }
 
-    public void trocarParaAcaoNormal()
-    {
+    public void trocarParaAcaoNormal() {
+        AudioController.current.StopAudioGarra();
         trocarMovimentador(movimentacaoLateral);
     }
 
-    public void trocarParaAgarrada()
-    {
+    public void trocarParaAgarrada() {
         trocarMovimentador(movimentacaoAgarrando);
     }
 
-    private void trocarMovimentador(MovimentacaoDaGarra movimentador)
-    {
+    private void trocarMovimentador(MovimentacaoDaGarra movimentador) {
         movimentador.preInicio();
         movimentacaoAtual = movimentador;
     }
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
-
 }
