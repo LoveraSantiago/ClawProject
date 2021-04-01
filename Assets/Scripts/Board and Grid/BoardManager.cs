@@ -74,7 +74,9 @@ public class BoardManager : MonoBehaviour
                 //Sprite newSprite = characters[Random.Range(0, characters.Count)];
                 Sprite newSprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)];
 
-                newTile.GetComponent<SpriteRenderer>().sprite = newSprite;
+                SpriteRenderer spriteRenderer = newTile.GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = newSprite;
+                spriteRenderer.sortingLayerID = 31;
             }
         }
     }
