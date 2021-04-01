@@ -223,6 +223,7 @@ Transform:
   - {fileID: 1613948051}
   - {fileID: 1258702706}
   - {fileID: 156359581}
+  - {fileID: 731514236}
   m_Father: {fileID: 608468003}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -398,7 +399,7 @@ GameObject:
   - component: {fileID: 156359581}
   - component: {fileID: 156359582}
   m_Layer: 0
-  m_Name: frente-chao
+  m_Name: chao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -597,7 +598,7 @@ GameObject:
   - component: {fileID: 286208978}
   - component: {fileID: 286208979}
   m_Layer: 0
-  m_Name: frente-tampa-baixo
+  m_Name: tampa-baixo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1112,7 +1113,7 @@ GameObject:
   - component: {fileID: 494918631}
   - component: {fileID: 494918632}
   m_Layer: 0
-  m_Name: frente-tampa-cima
+  m_Name: tampa-cima
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1391,7 +1392,7 @@ GameObject:
   - component: {fileID: 568340069}
   - component: {fileID: 568340070}
   m_Layer: 0
-  m_Name: bordainterna
+  m_Name: borda-interna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1828,6 +1829,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &731514235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731514236}
+  m_Layer: 0
+  m_Name: placa-ficha
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &731514236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731514235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 118079973}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745325034 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3777820025343088888, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
@@ -2346,7 +2377,7 @@ GameObject:
   - component: {fileID: 1072491966}
   - component: {fileID: 1072491967}
   m_Layer: 0
-  m_Name: frente-cima
+  m_Name: cima
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2510,7 +2541,7 @@ GameObject:
   - component: {fileID: 1258702706}
   - component: {fileID: 1258702707}
   m_Layer: 0
-  m_Name: frente-placa-saida
+  m_Name: placa-saida
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2969,7 +3000,7 @@ GameObject:
   - component: {fileID: 1613948051}
   - component: {fileID: 1613948052}
   m_Layer: 0
-  m_Name: frente-placa
+  m_Name: placa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
