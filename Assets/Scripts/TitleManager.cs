@@ -19,19 +19,19 @@ public class TitleManager : MonoBehaviour
 
     private void irParaGameComMecanicaZigZag()
     {
-        PlayerPrefsGarraMecanica.salvarMecanica(Garra.MECANICA_GARRA.ZIG_ZAG);
+        PlayerPrefsGarraMecanica.salvarMecanica(GarraManager.MECANICA_GARRA.ZIG_ZAG);
         irParaMainScene();
     }
 
     private void irParaGameComMecanicaTeleguiada()
     {
-        PlayerPrefsGarraMecanica.salvarMecanica(Garra.MECANICA_GARRA.TELEGUIADA);
+        PlayerPrefsGarraMecanica.salvarMecanica(GarraManager.MECANICA_GARRA.TELEGUIADA);
         irParaMainScene();
     }
 
     private void irParaGameComMecanicaZigZagTeleguiado()
     {
-        PlayerPrefsGarraMecanica.salvarMecanica(Garra.MECANICA_GARRA.ZIG_ZAGTELEGUIADO);
+        PlayerPrefsGarraMecanica.salvarMecanica(GarraManager.MECANICA_GARRA.ZIG_ZAGTELEGUIADO);
         irParaMainScene();
     }
 

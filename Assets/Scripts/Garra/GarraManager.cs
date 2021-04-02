@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Garra
+public class GarraManager
 {
     private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
 
-    public Garra(ComponentesDaGarraDto componentesDaGarraDto,
+    public GarraManager(ComponentesDaGarraDto componentesDaGarraDto,
                  MECANICA_GARRA mecanicaGarraEscolhida)
     {
         gerenciadorDeMovimentacao = new GerenciadorDeMovimentacao(componentesDaGarraDto, mecanicaGarraEscolhida);

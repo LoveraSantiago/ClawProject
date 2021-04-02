@@ -5,7 +5,7 @@ using UnityEngine.UI;
 #pragma warning disable 0649
 public class MainGame : MonoBehaviour
 {
-    [SerializeField] private Garra.MECANICA_GARRA mecanicaAtual;
+    [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
     [Space(5)]    
     [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
     [Space(5)]
@@ -14,8 +14,8 @@ public class MainGame : MonoBehaviour
     //Componentes uis temporarios aqui...    
     [SerializeField] private Button btnSair;
 
-    private Garra.MECANICA_GARRA mecanicaSelecionada;
-    private Garra garra;
+    private GarraManager.MECANICA_GARRA mecanicaSelecionada;
+    private GarraManager garraManager;
     private ColetavelManager coletaveis;
 
     void OnEnable()
@@ -32,7 +32,7 @@ public class MainGame : MonoBehaviour
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
 
-        garra = new Garra(componentesDaGarra, mecanicaSelecionada);
+        garraManager = new GarraManager(componentesDaGarra, mecanicaSelecionada);
         coletaveis = new ColetavelManager(coletaveisDto);
 
         btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));
@@ -46,13 +46,13 @@ public class MainGame : MonoBehaviour
 
     void Update()
     {
-        garra.update();
+        garraManager.update();
         //coletaveis.Update();     
     }
 
     private void FixedUpdate()
     {
-        garra.fixedUpdate();
+        garraManager.fixedUpdate();
         coletaveis.FixedUpdate();
     }
 }
