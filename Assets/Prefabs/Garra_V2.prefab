@@ -219,7 +219,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 31
   m_Sprite: {fileID: 21300000, guid: d6bce9d4419c0436da4dc6cac070fda9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -334,7 +334,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1886034751624910196, guid: 29e9a2b860ab66f43abf76077e9cfec2, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 1886034751624910198, guid: 29e9a2b860ab66f43abf76077e9cfec2, type: 3}
       propertyPath: m_Name
@@ -402,6 +402,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1896134444382479020}
     m_Modifications:
+    - target: {fileID: 1886034751624910196, guid: 29e9a2b860ab66f43abf76077e9cfec2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 1886034751624910198, guid: 29e9a2b860ab66f43abf76077e9cfec2, type: 3}
       propertyPath: m_Name
       value: pincaDireita
