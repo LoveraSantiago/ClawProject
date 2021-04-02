@@ -1,32 +1,34 @@
-using System;
+using System.Collections.Generic;
 
-public class ProdutorConsumidoresDeEvento<T> 
+public class ProdutorConsumidoresDeEvento<T> : ConsumidorDeEvento<T>
 {
-    private Action<T> consumers;
+    private int contador;
+    private ConsumidorDeEvento<T> consumidorAtual;
+    private List<ConsumidorDeEvento<T>> listaDeConsumidoresDeEvento;
+
+    private ProdutorConsumidoresDeEvento()
+    {
+        listaDeConsumidoresDeEvento = new List<ConsumidorDeEvento<T>>();
+    }
 
     public ProdutorConsumidoresDeEvento<T> configurarProdutor(ProdutorDeEvento<T> produtor)
     {
-        produtor.registrarConsumidorDeEvento(evento => produziuEvento(evento));
+        produtor.registrarConsumidorDeEvento(this);
         return this;
     }
 
-    public ProdutorConsumidoresDeEvento<T> adicionarConsumidorDeEvento(Action<T> actionConsumidora)
+    public ProdutorConsumidoresDeEvento<T> adicionarConsumidorDeEvento(ConsumidorDeEvento<T> consumidorDeEvento)
     {
-        consumers += actionConsumidora;
+        listaDeConsumidoresDeEvento.Add(consumidorDeEvento);
         return this;
-    }
+    }       
 
-    public ProdutorConsumidoresDeEvento<T> adicionarConsumidorDeEvento(Action<T>[] arrayDeActionsConsumidores)
+    public void consumirEvento(T evento)
     {
-        for (int contador = 0; contador < arrayDeActionsConsumidores.Length; contador++)
+        for(contador = 0; contador < listaDeConsumidoresDeEvento.Count; contador++)
         {
-            adicionarConsumidorDeEvento(arrayDeActionsConsumidores[contador]);
+            consumidorAtual = listaDeConsumidoresDeEvento[contador];
+            consumidorAtual.consumirEvento(evento);
         }
-        return this;
-    }
-
-    private void produziuEvento(T evento)
-    {
-        consumers.Invoke(evento);
     }
 }
