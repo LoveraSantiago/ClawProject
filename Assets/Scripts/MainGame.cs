@@ -11,7 +11,9 @@ public class MainGame : MonoBehaviour
     [Space(5)]
     [SerializeField] private ColetaveisDto coletaveisDto;
     [Space(5)]
+    [SerializeField] private SensoresDto sensoresDto;
     //Componentes uis temporarios aqui...    
+    [Space(5)]
     [SerializeField] private Button btnSair;
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
@@ -32,12 +34,18 @@ public class MainGame : MonoBehaviour
     {
         //Camera.main.aspect = Utils.RATIO_SCREEN;
 
+        btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));
+
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
 
-        garraManager = new GarraManager(componentesDaGarra, mecanicaSelecionada);
+        garraManager      = new GarraManager(componentesDaGarra, mecanicaSelecionada);
         coletaveisManager = new ColetavelManager(coletaveisDto);
+        sensoresManager   = new SensoresManager(sensoresDto);
 
-        btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));
+        new AcaoDeColetado()
+            .configurarProdutor(sensoresManager.getProdutorDeEventoDeColetado())
+            .adicionarConsumidor(coletaveisManager.getConsumidorDeColetado());
+        
         //GARRA NAO PRODUZ MAIS EVENTOS DE TER ACERTADO COLETADO
         //QUEM DEVE EMITIR ESSE EVENTO SERIA O SENSOR DE CIMA DA TELA
         //DEAD CODE AQUI PARA REFERENCIA DE USO (REMOVER)

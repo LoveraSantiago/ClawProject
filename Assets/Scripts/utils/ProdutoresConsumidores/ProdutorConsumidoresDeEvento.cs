@@ -6,7 +6,7 @@ public class ProdutorConsumidoresDeEvento<T> : ConsumidorDeEvento<T>
     private ConsumidorDeEvento<T> consumidorAtual;
     private List<ConsumidorDeEvento<T>> listaDeConsumidoresDeEvento;
 
-    private ProdutorConsumidoresDeEvento()
+    public ProdutorConsumidoresDeEvento()
     {
         listaDeConsumidoresDeEvento = new List<ConsumidorDeEvento<T>>();
     }
@@ -17,7 +17,7 @@ public class ProdutorConsumidoresDeEvento<T> : ConsumidorDeEvento<T>
         return this;
     }
 
-    public ProdutorConsumidoresDeEvento<T> adicionarConsumidorDeEvento(ConsumidorDeEvento<T> consumidorDeEvento)
+    public ProdutorConsumidoresDeEvento<T> adicionarConsumidor(ConsumidorDeEvento<T> consumidorDeEvento)
     {
         listaDeConsumidoresDeEvento.Add(consumidorDeEvento);
         return this;

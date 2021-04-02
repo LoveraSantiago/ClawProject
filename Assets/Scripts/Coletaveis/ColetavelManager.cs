@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
-public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback
+public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, ConsumidorDeEvento<GameObject>
 {
     private List<GameObject> coletados = new List<GameObject>();
 
@@ -28,6 +28,11 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback
                     adicionarColetado(collider2d.gameObject);
                 }
             });
+    }
+
+    public ConsumidorDeEvento<GameObject> getConsumidorDeColetado()
+    {
+        return this;
     }
 
     private void adicionarColetado(GameObject gameObject)

@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SensoresDto : MonoBehaviour
+#pragma warning disable 0649
+[System.Serializable]
+public class SensoresDto 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private GameObject sensorDeColetado;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject SensorDeColetado { get { return sensorDeColetado;  } }
 }
