@@ -42,9 +42,12 @@ public class MainGame : MonoBehaviour
         coletaveisManager = new ColetavelManager(coletaveisDto);
         sensoresManager   = new SensoresManager(sensoresDto);
 
+        DisplayDeImagens displayDeImgs = new DisplayDeImagens(coletaveisDto.ColetadosPosicoes);
+
         new AcaoDeColetado()
             .configurarProdutor(sensoresManager.getProdutorDeEventoDeColetado())
-            .adicionarConsumidor(coletaveisManager.getConsumidorDeColetado());
+            .adicionarConsumidor(coletaveisManager.getConsumidorDeColetado())
+            .adicionarConsumidor(displayDeImgs.getConsumidorDeColetado());
         
         //GARRA NAO PRODUZ MAIS EVENTOS DE TER ACERTADO COLETADO
         //QUEM DEVE EMITIR ESSE EVENTO SERIA O SENSOR DE CIMA DA TELA

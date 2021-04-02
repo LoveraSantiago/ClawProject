@@ -33,19 +33,13 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, Consumid
         Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
 
         coletaveisDto.ColetadosPosicoes[qtdColetados].sprite = sprite;
-        contadorDeColetaveis.adicionarColetado(gameObjectColetado.GetComponent<SpriteRenderer>().sprite);
+        contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);
         gameObjectColetado.SetActive(false);
         coletados.Add(gameObjectColetado);
         AudioController.current.PlayAudio(AudioController.current.coletar);
     }
 
     public void FixedUpdate() { }
-    
-
-    //public Action<GameObject> getConsumidorDeColetavelAtingito()
-    //{
-    //    return (coletado) => coletavelAtingido2(coletado);
-    //}
 
     public void match(bool result)
     {
