@@ -2,9 +2,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainGame : MonoBehaviour {
-    [Space(5)]
+#pragma warning disable 0649
+public class MainGame : MonoBehaviour
+{
     [SerializeField] private Garra.MECANICA_GARRA mecanicaAtual;
+    [Space(5)]    
     [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
     [Space(5)]
     [SerializeField] private ColetaveisDto coletaveisDto;
@@ -16,14 +18,16 @@ public class MainGame : MonoBehaviour {
     private Garra garra;
     private ColetavelManager coletaveis;
 
-    void OnEnable() {
+    void OnEnable()
+    {
         //forçando escala Y pra ficar dentro da safe area
         //float escalaY = Screen.safeArea.height / Screen.height;
         //float escalaX = Screen.safeArea.width / Screen.width;
         //transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
     }
 
-    void Start() {
+    void Start()
+    {
         //Camera.main.aspect = Utils.RATIO_SCREEN;
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
@@ -40,12 +44,14 @@ public class MainGame : MonoBehaviour {
         //    .adicionarConsumidorDeEvento(coletaveis.getConsumidorDeColetavelAtingito());
     }
 
-    void Update() {
+    void Update()
+    {
         garra.update();
         //coletaveis.Update();     
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         garra.fixedUpdate();
         coletaveis.FixedUpdate();
     }
