@@ -341,7 +341,8 @@ MonoBehaviour:
     - {fileID: 523200846}
     - {fileID: 229104350}
     scoreTextField: {fileID: 119649667}
-    goTriggerDeColetado: {fileID: 2083913115}
+  sensoresDto:
+    sensorDeColetado: {fileID: 2083913115}
   btnSair: {fileID: 1780015346}
 --- !u!1 &519420028
 GameObject:
@@ -1328,7 +1329,7 @@ GameObject:
   - component: {fileID: 2083913117}
   - component: {fileID: 2083913118}
   m_Layer: 0
-  m_Name: TriggerDeColetado
+  m_Name: SensorDeColetado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
