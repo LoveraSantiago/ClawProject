@@ -30,6 +30,6 @@ public class GarraManager
     private void configurarColisorCentroDaPinca(GameObject goColisor)
     {
         DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();
-        detectorDeColisoes.registrarConsumidorDeTrigger((colisao) => garraColidiuCom(colisao));
+        //detectorDeColisoes.registrarConsumidorDeTrigger((colisao) => garraColidiuCom(colisao));
     }
 }
