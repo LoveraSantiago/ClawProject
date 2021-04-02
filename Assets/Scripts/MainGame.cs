@@ -15,8 +15,10 @@ public class MainGame : MonoBehaviour
     [SerializeField] private Button btnSair;
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
+
     private GarraManager garraManager;
-    private ColetavelManager coletaveis;
+    private ColetavelManager coletaveisManager;
+    private SensoresManager sensoresManager;
 
     void OnEnable()
     {
@@ -33,7 +35,7 @@ public class MainGame : MonoBehaviour
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
 
         garraManager = new GarraManager(componentesDaGarra, mecanicaSelecionada);
-        coletaveis = new ColetavelManager(coletaveisDto);
+        coletaveisManager = new ColetavelManager(coletaveisDto);
 
         btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));
         //GARRA NAO PRODUZ MAIS EVENTOS DE TER ACERTADO COLETADO
@@ -53,6 +55,6 @@ public class MainGame : MonoBehaviour
     private void FixedUpdate()
     {
         garraManager.fixedUpdate();
-        coletaveis.FixedUpdate();
+        coletaveisManager.FixedUpdate();
     }
 }
