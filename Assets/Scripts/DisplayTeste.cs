@@ -9,10 +9,6 @@ public class DisplayTeste : MonoBehaviour
     private int contadorY;
 
     private Color corOriginal;
-    //private Color corBranca = Color.white;
-
-    //private Color corSim;
-    //private Color corNao;
 
     void Start()
     {
@@ -26,68 +22,13 @@ public class DisplayTeste : MonoBehaviour
             }
         }
         corOriginal = arrayDeLeds[0, 0].color;
-        //trocarCores();
         StartCoroutine(colorindo());
     }
-
-    //private void trocarCores()
-    //{
-    //    if(corSim == corVermelha)
-    //    {
-    //        corSim = corVermelha;
-    //        corNao = corBranca;
-    //    }
-    //    else
-    //    {
-    //        corSim = corBranca;
-    //        corNao = corVermelha;
-    //    }
-    //}
 
     private IEnumerator colorindo()
     {
         while (true)
         {
-
-            //    int contadorGeral = 0;
-            //    for (contadorX = 0; contadorX < 5; contadorX++)
-            //    {
-            //        Transform transfFileira = transform.Find("fileira" + (contadorX + 1));
-            //        for (contadorY = 0; contadorY < 7; contadorY++)
-            //        {                    
-            //            if(contadorGeral % 2== 0)
-            //            {
-            //                arrayDeLeds[contadorX, contadorY].color = corSim;
-            //            }
-            //            else
-            //            {
-            //                arrayDeLeds[contadorX, contadorY].color = corNao;
-            //            }
-            //            contadorGeral++;
-            //        }
-            //    }
-            //    //trocarCores();
-            //    yield return new WaitForSeconds(2f);
-
-            //    contadorGeral = 0;
-            //    for (contadorX = 0; contadorX < 5; contadorX++)
-            //    {
-            //        Transform transfFileira = transform.Find("fileira" + (contadorX + 1));
-            //        for (contadorY = 0; contadorY < 7; contadorY++)
-            //        {
-            //            if (contadorGeral % 2 == 0)
-            //            {
-            //                arrayDeLeds[contadorX, contadorY].color = corNao;
-            //            }
-            //            else
-            //            {
-            //                arrayDeLeds[contadorX, contadorY].color = corSim;
-            //            }
-            //            contadorGeral++;
-            //        }
-            //    }
-
-            
             int[,] arrayLigar = getArrayParaLigar(1);
             ligarPosicoes(arrayLigar);
             yield return new WaitForSeconds(1f);
