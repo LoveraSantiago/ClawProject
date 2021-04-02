@@ -1,7 +1,5 @@
-using System;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, ConsumidorDeEvento<GameObject>
 {
@@ -16,18 +14,7 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, Consumid
         //contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.ColetadosPosicoes, this);
         contadorDeColetaveis = new ContadorDeColetaveis(this);
 
-        this.coletaveisDto = coletaveisDto;
-        this.coletaveisDto.GoTriggerDeColetado.GetComponent<DetectorDeTriggers>()
-            .registrarConsumidorDeTrigger(
-            (collider2d) => //temporariamente aqui p validar
-            {
-                Debug.Log("Coletado");
-                //Retirar getcomponent daqui
-                if (collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0)
-                {
-                    adicionarColetado(collider2d.gameObject);
-                }
-            });
+        this.coletaveisDto = coletaveisDto;        
     }
 
     public ConsumidorDeEvento<GameObject> getConsumidorDeColetado()
@@ -35,78 +22,30 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, Consumid
         return this;
     }
 
-    private void adicionarColetado(GameObject gameObject)
+    public void consumirEvento(GameObject gameObjectColetado)
+    {
+        adicionarColetado(gameObjectColetado);
+    }
+
+    private void adicionarColetado(GameObject gameObjectColetado)
     {
         int qtdColetados = contadorDeColetaveis.getQtdColetados();
-        Sprite sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+        Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
 
         coletaveisDto.ColetadosPosicoes[qtdColetados].sprite = sprite;
-        contadorDeColetaveis.adicionarColetado(gameObject.GetComponent<SpriteRenderer>().sprite);
-        gameObject.SetActive(false);
-        coletados.Add(gameObject);
+        contadorDeColetaveis.adicionarColetado(gameObjectColetado.GetComponent<SpriteRenderer>().sprite);
+        gameObjectColetado.SetActive(false);
+        coletados.Add(gameObjectColetado);
         AudioController.current.PlayAudio(AudioController.current.coletar);
     }
 
     public void FixedUpdate() { }
+    
 
-    //public void FixedUpdate2()//para nao ser chamado por enquanto
+    //public Action<GameObject> getConsumidorDeColetavelAtingito()
     //{
-    //    if (checkCombinacao)
-    //    {
-    //        GameObject checkColetavel = coletados[1];
-    //        bool resposta = false;
-    //        if (resposta)
-    //        {
-    //            Debug.Log("yes");
-
-    //            for (int i = 0; i < coletados.Length; i++)
-    //            {
-    //                GameObject.Destroy(coletados[i]);
-    //            }
-
-    //            score += 1;
-    //            coletaveisDto.ScoreTextField.text = score.ToString();
-
-    //            if (score == maxScore)
-    //            {
-    //                OnClickPlay();
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("noooo");
-
-    //            for (int i = 0; i < coletados.Length; i++)
-    //            {
-    //                coletados[i].transform.localScale += Vector3.one * coletaveisDto.ColetadoScale;
-    //                coletados[i].gameObject.transform.position = coletadosBackPosition[i];
-
-    //                //coletadoPosicoes[i].gameObject.transform.position = coletadoOldPosicoes[i].transform.position;
-    //            }
-    //        }
-
-    //        coletados = new GameObject[3];
-    //        coletadosBackPosition = new Vector2[3];
-    //        checkCombinacao = false;
-    //    }
-
+    //    return (coletado) => coletavelAtingido2(coletado);
     //}
-
-    public void OnClickPlay()
-    {
-        SceneManager.LoadScene("TitleScene");
-    }
-
-    private void coletavelAtingido2(GameObject goColetavel)
-    {
-        Debug.Log("coletavelAtingido2");
-        //goColetavel.transform.GetComponent<Rigidbody2D>().mass = 0;
-    }
-
-    public Action<GameObject> getConsumidorDeColetavelAtingito()
-    {
-        return (coletado) => coletavelAtingido2(coletado);
-    }
 
     public void match(bool result)
     {
@@ -116,14 +55,6 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, Consumid
         }
         else
         {
-
-            //foreach (GameObject gameObject in coletados)
-            //{
-            //    gameObject.SetActive(true);
-
-            //}
-
-
             resetColetadosPosicoes();
         }
     }
@@ -145,5 +76,5 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, Consumid
         }
 
         coletados.Clear();
-    }
+    }    
 }
