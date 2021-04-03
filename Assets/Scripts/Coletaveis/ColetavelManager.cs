@@ -35,7 +35,7 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback,
     {
         if (result)
         {
-            atualizaScore();
+            //atualizaScore();
         }
         else
         {
