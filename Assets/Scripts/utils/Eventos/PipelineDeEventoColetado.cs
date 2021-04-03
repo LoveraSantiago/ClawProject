@@ -3,8 +3,8 @@ using UnityEngine;
 public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
 {
     private TransformadorDeEvento<GameObject, InformacoesColetado> processadorDeColetado;
-    private ConsumidorDeEvento<Sprite> consumidorDeSpriteColetado;
-    private ConsumidorDeEvento<int> consumidorDeScore;
+    private BiConsumidorDeEvento<Sprite, bool> displayImgsConsumidor;
+    private ConsumidorDeEvento<int> displayScoreConsumidor;
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<GameObject> INICIO
     //É CHAMADO QUANDO O SENSOR DE COLETADO É ACIONADO
@@ -12,8 +12,8 @@ public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
     public void consumirEvento(GameObject evento)
     {
         InformacoesColetado infoColetado = processadorDeColetado.transformarEvento(evento);
-        consumidorDeSpriteColetado.consumirEvento(infoColetado.sprite);
-        consumidorDeScore.consumirEvento(infoColetado.score);
+        displayImgsConsumidor.consumirEvento(infoColetado.sprite, infoColetado.resetDisplay);
+        displayScoreConsumidor.consumirEvento(infoColetado.score);
     }
     //IMPLEMENTACAO INTERFACE onsumidorDeEvento<GameObject> FIM
         
@@ -29,15 +29,15 @@ public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
         return this;
     }
 
-    public PipelineDeEventoColetado configConsumidorDeSpriteDoColetado(ConsumidorDeEvento<Sprite> consumidorDeSpriteColetado)
+    public PipelineDeEventoColetado configDisplayImgConsumidor(BiConsumidorDeEvento<Sprite, bool> displayImgsConsumidor)
     {
-        this.consumidorDeSpriteColetado = consumidorDeSpriteColetado;
+        this.displayImgsConsumidor = displayImgsConsumidor;
         return this;
     }
 
-    public PipelineDeEventoColetado configConsumidorDeScore(ConsumidorDeEvento<int> consumidorDeEscore)
+    public PipelineDeEventoColetado configdisplayScoreConsumidor(ConsumidorDeEvento<int> displayScoreConsumidor)
     {
-        this.consumidorDeScore = consumidorDeEscore;
+        this.displayScoreConsumidor = displayScoreConsumidor;
         return this;
     }
 

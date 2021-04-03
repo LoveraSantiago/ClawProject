@@ -53,8 +53,8 @@ public class MainGame : MonoBehaviour
         new PipelineDeEventoColetado()
             .configLancadorDeEventoColetado(sensoresManager.getProdutorDeEventoDeColetado())
             .configProcessadorDeColetado(coletaveisManager.getProcessadorDeColetado())
-            .configConsumidorDeSpriteDoColetado(displayDeImgs)
-            .configConsumidorDeScore(displayDeScores);
+            .configDisplayImgConsumidor(displayDeImgs.getDisplayImgConsumidor())
+            .configdisplayScoreConsumidor(displayDeScores.getDisplayScoreConsumidor());
     }
 
     void Update()

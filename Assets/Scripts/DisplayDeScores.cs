@@ -37,4 +37,9 @@ public class DisplayDeScores : ConsumidorDeEvento<int>
         mostrarScore(evento);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> INICIO
+
+    public ConsumidorDeEvento<int> getDisplayScoreConsumidor()
+    {
+        return this;
+    }
 }
