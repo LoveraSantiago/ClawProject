@@ -23,7 +23,7 @@ public class DisplayDeImagens : BiConsumidorDeEvento<Sprite, bool>
     {
         computarIndiceAntesAdicaoSprite();
         espacoImgs[indiceEspaco].sprite = spriteColetado;
-        computarIndicePosAdicaoSprite();        
+        computarIndicePosAdicaoSprite(resetDisplay);        
     }
 
     private void computarIndiceAntesAdicaoSprite()
@@ -35,9 +35,9 @@ public class DisplayDeImagens : BiConsumidorDeEvento<Sprite, bool>
         }
     }
 
-    private void computarIndicePosAdicaoSprite()
-    {
-        if(indiceEspaco + 1 >= 3)
+    private void computarIndicePosAdicaoSprite(bool forceResetDisplay)
+    {   
+        if(forceResetDisplay || (indiceEspaco + 1 >= 3))
         {
             indiceEspaco = 0;            
             coroutineLimpeza = monoBehaviour.StartCoroutine(limpezaDeEspacos());
