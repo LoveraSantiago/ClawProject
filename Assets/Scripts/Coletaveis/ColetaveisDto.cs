@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// todo - deletar esta classe
 #pragma warning disable 0649
 [System.Serializable]
 public class ColetaveisDto 

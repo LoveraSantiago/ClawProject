@@ -1,20 +1,17 @@
 using UnityEngine;
 
 public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesColetado>
-{   
-    private ColetaveisDto coletaveisDto;
+{      
     private ContadorDeColetaveis contadorDeColetaveis;
 
     private ColetaveisParaBoard coletaveisDeVoltaBoard;
     private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
 
-    public ColetavelManager(ColetaveisDto coletaveisDto)
+    public ColetavelManager()
     {        
         contadorDeColetaveis = new ContadorDeColetaveis();
         coletaveisSaidaTubo = new ColetaveisParaTuboDeSaida();
         coletaveisDeVoltaBoard = new ColetaveisParaBoard();
-
-        this.coletaveisDto = coletaveisDto;        
     }
 
     private InformacoesColetado processarColetado(GameObject gameObjectColetado)
@@ -58,7 +55,7 @@ public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesCol
     }
 
     //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, InformacoesColetado> INICIO
-    //É O PRIMEIRO DO PIPELINEDEEVENTOCOLETADO 
+    //ï¿½ O PRIMEIRO DO PIPELINEDEEVENTOCOLETADO 
     //RECEBE UM GAMEOBJECT E DEVOLVE UM INFORMACOESCOLETADOS
     public InformacoesColetado transformarEvento(GameObject gameObjectColetado)
     {

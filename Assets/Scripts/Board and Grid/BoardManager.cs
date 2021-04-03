@@ -24,61 +24,79 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class BoardManager : MonoBehaviour
+public class BoardManager
 {
-    public static BoardManager instance;
-    public List<Sprite> characters = new List<Sprite>();
-    public GameObject tile;
-    public int xSize, ySize;
-    public float shakeTile;
+    //public static BoardManager instance;
+    //public List<Sprite> characters = new List<Sprite>();
+    //public GameObject tile;
+    //public int xSize, ySize;
+    //public float shakeTile;
 
-    private GameObject[,] tiles;
+    private ColetavelManager coletavelManager;
+    private BoardManagerDto boardManagerDto;
+    private Board board;
 
-    public bool IsShifting { get; set; }
+
+    //private GameObject[,] tiles;
+
+    //public bool IsShifting { get; set; }
+
+    public BoardManager(BoardManagerDto boardManagerDto)
+    {
+        this.boardManagerDto = boardManagerDto;
+        this.coletavelManager = new ColetavelManager();
+        this.board = new Board(boardManagerDto);
+        Start();
+    }
 
     void Start()
     {
-        instance = GetComponent<BoardManager>();
-
-        Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;
+        //instance = GetComponent<BoardManager>();
+        Vector2 offset = boardManagerDto.sprTile.bounds.size;
         CreateBoard(offset.x, offset.y);
     }
 
     private void CreateBoard(float xOffset, float yOffset)
     {
-        tiles = new GameObject[xSize, ySize];
+        this.board.Create(xOffset, yOffset);
+        //tiles = new GameObject[boardManagerDto.xSize, boardManagerDto.ySize];
 
-        float startX = transform.position.x;
-        float startY = transform.position.y;
+        //float startX = boardManagerDto.transform.position.x;
+        //float startY = boardManagerDto.transform.position.y;
 
-        Sprite[] previousLeft = new Sprite[ySize];
-        Sprite previousBelow = null;
-
-
-        for (int x = 0; x < xSize; x++)
-        {
-            for (int y = 0; y < ySize; y++)
-            {
-                shakeTile *= -1;
-                GameObject newTile = Instantiate(tile, new Vector3(startX + shakeTile + (xOffset * x), startY + (yOffset * y), 0), tile.transform.rotation);
-                tiles[x, y] = newTile;
-                newTile.transform.parent = transform;
-
-                List<Sprite> possibleCharacters = new List<Sprite>();
-                possibleCharacters.AddRange(characters);
-
-                possibleCharacters.Remove(previousLeft[y]);
-                possibleCharacters.Remove(previousBelow);
+        //Sprite[] previousLeft = new Sprite[boardManagerDto.ySize];
+        //Sprite previousBelow = null;
 
 
-                //Sprite newSprite = characters[Random.Range(0, characters.Count)];
-                Sprite newSprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)];
+        //for (int x = 0; x < boardManagerDto.xSize; x++)
+        //{
+        //    for (int y = 0; y < boardManagerDto.ySize; y++)
+        //    {
+        //        boardManagerDto.shakeTile *= -1;
+        //        GameObject newTile = GameObject.Instantiate(boardManagerDto.tile, new Vector3(startX + boardManagerDto.shakeTile + (xOffset * x), startY + (yOffset * y), 0), boardManagerDto.tile.transform.rotation);
+        //        tiles[x, y] = newTile;
+        //        newTile.transform.parent = boardManagerDto.transform;
 
-                SpriteRenderer spriteRenderer = newTile.GetComponent<SpriteRenderer>();
-                spriteRenderer.sprite = newSprite;
-                spriteRenderer.sortingOrder = 31;
-                newTile.name = newSprite.name;
-            }
-        }
+        //        List<Sprite> possibleCharacters = new List<Sprite>();
+        //        possibleCharacters.AddRange(boardManagerDto.characters);
+
+        //        possibleCharacters.Remove(previousLeft[y]);
+        //        possibleCharacters.Remove(previousBelow);
+
+
+        //        //Sprite newSprite = characters[Random.Range(0, characters.Count)];
+        //        Sprite newSprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)];
+
+        //        SpriteRenderer spriteRenderer = newTile.GetComponent<SpriteRenderer>();
+        //        spriteRenderer.sprite = newSprite;
+        //        spriteRenderer.sortingOrder = 31;
+        //        newTile.name = newSprite.name;
+        //    }
+        //}
+    }
+
+    private void devolverBoard(string[] nomes)
+    {
+        //reposicionar
     }
 }
