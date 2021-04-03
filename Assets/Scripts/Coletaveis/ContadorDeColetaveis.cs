@@ -17,6 +17,7 @@ public class ContadorDeColetaveis
 
     public void adicionarColetado(string nomeColetado)
     {
+        Debug.Log(nomeColetado);
         adicionaAoContainerDeColetados(nomeColetado);
 
         if (qtdColetados > nomesColetados.Length - 1)
@@ -45,8 +46,8 @@ public class ContadorDeColetaveis
     {
         string nomePrimeiroColetado = nomesColetados[0];
         for (int i = 0; i < nomesColetados.Length; i++)
-        {
-            if (nomePrimeiroColetado.Equals(nomesColetados[i]))
+        {            
+            if (!nomePrimeiroColetado.Equals(nomesColetados[i]))
             {
                 return false;
             }

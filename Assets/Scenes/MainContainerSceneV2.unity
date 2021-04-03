@@ -273,6 +273,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 683841258165775589, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &419047350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 363533896534822254, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &491158113
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,10 +341,6 @@ MonoBehaviour:
     colisor: {fileID: 745325034}
   coletaveisDto:
     coletadoScale: 0
-    coletadosSprites:
-    - {fileID: 1552986179}
-    - {fileID: 523200846}
-    - {fileID: 229104350}
     scoreTextField: {fileID: 119649667}
   sensoresDto:
     sensorDeColetado: {fileID: 2083913115}
@@ -347,7 +348,15 @@ MonoBehaviour:
   - {fileID: 1552986179}
   - {fileID: 523200846}
   - {fileID: 229104350}
+  displayScore1: {fileID: 660903945}
+  displayScore2: {fileID: 419047350}
+  displayScore3: {fileID: 514353999}
   btnSair: {fileID: 1780015346}
+--- !u!1 &514353999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 363533896306271071, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +648,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 8}
   m_EdgeRadius: 0
+--- !u!1 &660903945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6406990384768208898, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &745325034 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3777820025343088888, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
