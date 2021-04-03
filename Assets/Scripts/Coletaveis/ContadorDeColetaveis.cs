@@ -5,17 +5,15 @@ public class ContadorDeColetaveis
     private int score = 0;
     private int qtdColetados = 0;
 
-    private string[] nomesColetados;
+    private string[] nomesColetados;   
 
-    private ColetavelCallback callback;    
-
-    public ContadorDeColetaveis(ColetavelCallback callback)
-    {
-        this.callback = callback;
+    public ContadorDeColetaveis()
+    {        
         nomesColetados = new string[3];        
     }
 
-    public void adicionarColetado(string nomeColetado)
+    public void adicionarColetado(string nomeColetado, 
+        ResultadoDoContadorColetaveis resultadoSucesso, ResultadoDoContadorColetaveis resultadoFalha)
     {
         Debug.Log(nomeColetado);
         adicionaAoContainerDeColetados(nomeColetado);
@@ -25,14 +23,14 @@ public class ContadorDeColetaveis
             if (isCombinacaoValida())
             {
                 AudioController.current.PlayAudio(AudioController.current.combinacaoOk);
+                resultadoSucesso.processarResultado(nomesColetados);
                 adicionaPontuacao();
             }
             else
             {
                 AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
-                retornaObjetosParaBoard();
+                resultadoFalha.processarResultado(nomesColetados);
             }
-
             resetarColetados();
         }
     }    
@@ -59,15 +57,7 @@ public class ContadorDeColetaveis
     {
         nomesColetados[qtdColetados] = nomeColetado;
         qtdColetados++;
-    }
-
-    private void retornaObjetosParaBoard()
-    {
-        if (callback != null)
-        {
-            callback.match(false);
-        }
-    }
+    }  
 
     private void adicionaPontuacao()
     {
@@ -82,10 +72,5 @@ public class ContadorDeColetaveis
     private void resetarColetados()
     {
         qtdColetados = 0;
-    }
-
-    public interface ColetavelCallback
-    {
-        void match(bool result);
-    }
+    }   
 }

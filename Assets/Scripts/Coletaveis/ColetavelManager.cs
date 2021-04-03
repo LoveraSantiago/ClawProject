@@ -1,15 +1,18 @@
 using UnityEngine;
 
-public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, 
-                                TransformadorDeEvento<GameObject, InformacoesColetado>
+public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesColetado>
 {   
     private ColetaveisDto coletaveisDto;
     private ContadorDeColetaveis contadorDeColetaveis;
 
+    private ColetaveisParaBoard coletaveisDeVoltaBoard;
+    private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
+
     public ColetavelManager(ColetaveisDto coletaveisDto)
-    {
-        //contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.ColetadosPosicoes, this);
-        contadorDeColetaveis = new ContadorDeColetaveis(this);
+    {        
+        contadorDeColetaveis = new ContadorDeColetaveis();
+        coletaveisSaidaTubo = new ColetaveisParaTuboDeSaida();
+        coletaveisDeVoltaBoard = new ColetaveisParaBoard();
 
         this.coletaveisDto = coletaveisDto;        
     }
@@ -19,7 +22,7 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback,
         Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
         gameObjectColetado.SetActive(false);
         
-        contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);        
+        contadorDeColetaveis.adicionarColetado(gameObjectColetado.name, coletaveisSaidaTubo, coletaveisDeVoltaBoard);        
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
