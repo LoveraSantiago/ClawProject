@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class ContadorDeColetaveis
 {
+    private int score = 0;
     private int qtdColetados = 0;
+
     private string[] nomesColetados;
 
     private ColetavelCallback callback;
@@ -72,10 +74,7 @@ public class ContadorDeColetaveis
 
     private void adicionaPontuacao()
     {
-        if (callback != null)
-        {
-            callback.match(true);
-        }
+        score += 30;        
     }
 
     private void resetarColetados()

@@ -2,11 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, 
-                                TransformadorDeEvento<GameObject, Sprite>
+                                TransformadorDeEvento<GameObject, InformacoesColetado>
 {
     private List<GameObject> coletados = new List<GameObject>();
-
-    private int score = 0;
+    
     private ColetaveisDto coletaveisDto;
     private ContadorDeColetaveis contadorDeColetaveis;
 
@@ -18,17 +17,19 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback,
         this.coletaveisDto = coletaveisDto;        
     }
 
-    private Sprite processarColetado(GameObject gameObjectColetado)
-    {
-        int qtdColetados = contadorDeColetaveis.getQtdColetados();
+    private InformacoesColetado processarColetado(GameObject gameObjectColetado)
+    {        
         Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
         
         contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);
         gameObjectColetado.SetActive(false);
         coletados.Add(gameObjectColetado);
+
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
-        return sprite;
+        InformacoesColetado infoColetado = new InformacoesColetado();
+        infoColetado.addInfosDisplayColetados(sprite, false);
+        return infoColetado;
     }
 
     public void FixedUpdate() { }
@@ -46,22 +47,21 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback,
     }
 
     private void atualizaScore()
-    {
-        score += 30;
+    {        
         coletaveisDto.ScoreTextField.text = score.ToString();        
     }   
 
-    public TransformadorDeEvento<GameObject, Sprite> getProcessadorDeColetado()
+    public TransformadorDeEvento<GameObject, InformacoesColetado> getProcessadorDeColetado()
     {
         return this;
     }
 
-    //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, Sprite> INICIO
+    //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, InformacoesColetado> INICIO
     //É O PRIMEIRO DO PIPELINEDEEVENTOCOLETADO 
-    //RECEBE UM GAMEOBJECT E DEVOLVE UM SPRITE
-    public Sprite transformarEvento(GameObject gameObjectColetado)
+    //RECEBE UM GAMEOBJECT E DEVOLVE UM INFORMACOESCOLETADOS
+    public InformacoesColetado transformarEvento(GameObject gameObjectColetado)
     {
         return processarColetado(gameObjectColetado);        
     }
-    //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, Sprite> FIM
+    //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, InformacoesColetado> FIM
 }

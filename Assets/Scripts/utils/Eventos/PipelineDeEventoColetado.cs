@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
 {
-    private TransformadorDeEvento<GameObject, Sprite> processadorDeColetado;
+    private TransformadorDeEvento<GameObject, InformacoesColetado> processadorDeColetado;
     private ConsumidorDeEvento<Sprite> consumidorDeSpriteColetado;
 
     public PipelineDeEventoColetado configLancadorDeEventoColetado(ProdutorDeEvento<GameObject> produtorDeEvento)
@@ -11,7 +11,7 @@ public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
         return this;
     }
 
-    public PipelineDeEventoColetado configProcessadorDeColetado(TransformadorDeEvento<GameObject, Sprite> processadorDeColetado)
+    public PipelineDeEventoColetado configProcessadorDeColetado(TransformadorDeEvento<GameObject, InformacoesColetado> processadorDeColetado)
     {
         this.processadorDeColetado = processadorDeColetado;
         return this;
@@ -28,8 +28,8 @@ public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
     //INICIA O PIPELINE DE EVENTOS QUE UM COLETADO PASSA
     public void consumirEvento(GameObject evento)
     {
-        Sprite sprite = processadorDeColetado.transformarEvento(evento);
-        consumidorDeSpriteColetado.consumirEvento(sprite);
+        InformacoesColetado infoColetado = processadorDeColetado.transformarEvento(evento);
+        consumidorDeSpriteColetado.consumirEvento(infoColetado.sprite);
     }
     //IMPLEMENTACAO INTERFACE onsumidorDeEvento<GameObject> FIM
 }
