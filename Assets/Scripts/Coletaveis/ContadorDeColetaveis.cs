@@ -7,10 +7,13 @@ public class ContadorDeColetaveis
 
     private ColetavelCallback callback;
 
+    private ProdutorDeEvento<Sprite> produtorDeSpriteColetado;
+
     public ContadorDeColetaveis(ColetavelCallback callback)
     {
         this.callback = callback;
         nomesColetados = new string[3];
+        produtorDeSpriteColetado = new ProdutorDeEvento<Sprite>();
     }
 
     public void adicionarColetado(string nomeColetado)

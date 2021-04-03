@@ -45,7 +45,8 @@ public class MainGame : MonoBehaviour
         DisplayDeImagens displayDeImgs = new DisplayDeImagens(coletaveisDto.ColetadosPosicoes);
 
         new AcaoDeColetado()
-            .configurarProdutor(sensoresManager.getProdutorDeEventoDeColetado())
+            .configurarLancadorDeEventoColetado(sensoresManager.getProdutorDeEventoDeColetado())
+            
             .adicionarConsumidor(coletaveisManager.getConsumidorDeColetado())
             .adicionarConsumidor(displayDeImgs.getConsumidorDeColetado());
         
