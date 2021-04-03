@@ -77,6 +77,7 @@ public class BoardManager : MonoBehaviour
                 SpriteRenderer spriteRenderer = newTile.GetComponent<SpriteRenderer>();
                 spriteRenderer.sprite = newSprite;
                 spriteRenderer.sortingOrder = 31;
+                newTile.name = newSprite.name;
             }
         }
     }

@@ -4,12 +4,12 @@ public class PlayerPrefsGarraMecanica
 {
     private static readonly string MECANICA = "MECANICA";
 
-    public static void salvarMecanica(Garra.MECANICA_GARRA mecanica)
+    public static void salvarMecanica(GarraManager.MECANICA_GARRA mecanica)
     {
         PlayerPrefs.SetInt(MECANICA, (int) mecanica);
     }
 
-    public static Garra.MECANICA_GARRA recuperarMecanica(Garra.MECANICA_GARRA defaultMecanica)
+    public static GarraManager.MECANICA_GARRA recuperarMecanica(GarraManager.MECANICA_GARRA defaultMecanica)
     {
         int mecanicaSalva = PlayerPrefs.GetInt(MECANICA);
         PlayerPrefs.DeleteKey(MECANICA);
@@ -18,6 +18,6 @@ public class PlayerPrefsGarraMecanica
         {
             return defaultMecanica;
         }
-        return (Garra.MECANICA_GARRA) mecanicaSalva;
+        return (GarraManager.MECANICA_GARRA) mecanicaSalva;
     }
 }

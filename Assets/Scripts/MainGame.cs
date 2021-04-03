@@ -2,51 +2,70 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainGame : MonoBehaviour {
-    [Space(5)]
-    [SerializeField] private Garra.MECANICA_GARRA mecanicaAtual;
+#pragma warning disable 0649
+public class MainGame : MonoBehaviour
+{
+    [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
+    [Space(5)]    
     [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
     [Space(5)]
     [SerializeField] private ColetaveisDto coletaveisDto;
     [Space(5)]
+    [SerializeField] private SensoresDto sensoresDto;
     //Componentes uis temporarios aqui...    
+    [Space(5)]    
+    [SerializeField] private SpriteRenderer[] coletadosSprites = new SpriteRenderer[3];//3
+    [SerializeField] private GameObject displayScore1;
+    [SerializeField] private GameObject displayScore2;
+    [SerializeField] private GameObject displayScore3;
     [SerializeField] private Button btnSair;
 
-    private Garra.MECANICA_GARRA mecanicaSelecionada;
-    private Garra garra;
-    private ColetavelManager coletaveis;
+    private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
-    void OnEnable() {
+    private GarraManager garraManager;
+    private ColetavelManager coletaveisManager;
+    private SensoresManager sensoresManager;
+
+    void OnEnable()
+    {
         //forçando escala Y pra ficar dentro da safe area
         //float escalaY = Screen.safeArea.height / Screen.height;
         //float escalaX = Screen.safeArea.width / Screen.width;
         //transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
     }
 
-    void Start() {
+    void Start()
+    {
         //Camera.main.aspect = Utils.RATIO_SCREEN;
+
+        btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
 
-        garra = new Garra(componentesDaGarra, mecanicaSelecionada);
-        coletaveis = new ColetavelManager(coletaveisDto);
+        garraManager      = new GarraManager(componentesDaGarra, mecanicaSelecionada);
+        coletaveisManager = new ColetavelManager(coletaveisDto);
+        sensoresManager   = new SensoresManager(sensoresDto);
 
-        btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));
-        //GARRA NAO PRODUZ MAIS EVENTOS DE TER ACERTADO COLETADO
-        //QUEM DEVE EMITIR ESSE EVENTO SERIA O SENSOR DE CIMA DA TELA
-        //DEAD CODE AQUI PARA REFERENCIA DE USO (REMOVER)
-        //new ProdutorConsumidoresDeEvento<GameObject>()
-        //    .configurarProdutor(garra.getProdutorDeEventoColisaoComColetavel())
-        //    .adicionarConsumidorDeEvento(coletaveis.getConsumidorDeColetavelAtingito());
+        //TEMPORARIO AQUI.... TALVEZ DEVESSEM ESTAR DENTROS DE UM OUTRO OBJETO AINDA NAO SEI        
+        DisplayDeImagens displayDeImgs = new DisplayDeImagens(coletadosSprites, 0.5f, this);
+        DisplayDeScores displayDeScores = new DisplayDeScores(displayScore1, displayScore2, displayScore3);
+
+        new PipelineDeEventoColetado()
+            .configLancadorDeEventoColetado(sensoresManager.getProdutorDeEventoDeColetado())
+            .configProcessadorDeColetado(coletaveisManager.getProcessadorDeColetado())
+            .configDisplayImgConsumidor(displayDeImgs.getDisplayImgConsumidor())
+            .configdisplayScoreConsumidor(displayDeScores.getDisplayScoreConsumidor());
     }
 
-    void Update() {
-        garra.update();
+    void Update()
+    {
+        garraManager.update();
         //coletaveis.Update();     
     }
 
-    private void FixedUpdate() {
-        garra.fixedUpdate();
-        coletaveis.FixedUpdate();
+    private void FixedUpdate()
+    {
+        garraManager.fixedUpdate();
+        coletaveisManager.FixedUpdate();
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Threading;
 
 public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao {
     private Vector2 posicaoInicial;
@@ -11,7 +10,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao {
     private MovimentacaoDaGarra movimentacaoLateral;
 
     public GerenciadorDeMovimentacao(ComponentesDaGarraDto componentesDaGarraDto,
-        Garra.MECANICA_GARRA mecanicaGarraEscolhida) {
+        GarraManager.MECANICA_GARRA mecanicaGarraEscolhida) {
         MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
         MovimentacaoDaGarra.configurarCommunicatorComGarra(this);
 
@@ -34,22 +33,22 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao {
         movimentacaoAtual.garraColidiuCom(other.gameObject);
     }
 
-    private MovimentacaoDaGarra selecionarMecanicaHorizontal(Garra.MECANICA_GARRA mecanicaGarraEscolhida) {
+    private MovimentacaoDaGarra selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida) {
         switch (mecanicaGarraEscolhida) {
-            case (Garra.MECANICA_GARRA.ZIG_ZAG):
+            case (GarraManager.MECANICA_GARRA.ZIG_ZAG):
                 return new MovimentacaoLateralZigZag();
 
-            case (Garra.MECANICA_GARRA.TELEGUIADA):
+            case (GarraManager.MECANICA_GARRA.TELEGUIADA):
                 return new MovimentacaoLateralTeleguiada();
 
-            case (Garra.MECANICA_GARRA.ZIG_ZAGTELEGUIADO):
+            case (GarraManager.MECANICA_GARRA.ZIG_ZAGTELEGUIADO):
                 return new MovimentacaoLateralZigTeleguiado();
 
         }
         return new MovimentacaoLateralZigZag();
     }
 
-    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO
+    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO    
     public void trocarParaAcaoDescendo(Vector2 posicaoInicial) {
         AudioController.current.PlayAudioGarra();
         this.posicaoInicial = posicaoInicial;

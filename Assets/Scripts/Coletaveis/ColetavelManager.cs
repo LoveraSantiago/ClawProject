@@ -1,130 +1,68 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
-public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback {
-    private List<GameObject> coletados = new List<GameObject>();
-
-    private int score = 0;
+public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesColetado>
+{   
     private ColetaveisDto coletaveisDto;
     private ContadorDeColetaveis contadorDeColetaveis;
 
-    public ColetavelManager(ColetaveisDto coletaveisDto) {
-        //contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.ColetadosPosicoes, this);
-        contadorDeColetaveis = new ContadorDeColetaveis(this);
+    private ColetaveisParaBoard coletaveisDeVoltaBoard;
+    private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
 
-        this.coletaveisDto = coletaveisDto;
-        this.coletaveisDto.GoTriggerDeColetado.GetComponent<DetectorDeTriggers>()
-            .registrarConsumidorDeTrigger(
-            (collider2d) => //temporariamente aqui p validar
-            {
-                Debug.Log("Coletado");
-                //Retirar getcomponent daqui
-                if (collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0) {
-                    adicionarColetado(collider2d.gameObject);
-                }
-            });
+    public ColetavelManager(ColetaveisDto coletaveisDto)
+    {        
+        contadorDeColetaveis = new ContadorDeColetaveis();
+        coletaveisSaidaTubo = new ColetaveisParaTuboDeSaida();
+        coletaveisDeVoltaBoard = new ColetaveisParaBoard();
+
+        this.coletaveisDto = coletaveisDto;        
     }
 
-    private void adicionarColetado(GameObject gameObject) {
-        int qtdColetados = contadorDeColetaveis.getQtdColetados();
-        Sprite sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+    private InformacoesColetado processarColetado(GameObject gameObjectColetado)
+    {        
+        Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
+        gameObjectColetado.SetActive(false);
+        
+        contadorDeColetaveis.adicionarColetado(gameObjectColetado.name, coletaveisSaidaTubo, coletaveisDeVoltaBoard);        
 
-        coletaveisDto.ColetadosPosicoes[qtdColetados].sprite = sprite;
-        contadorDeColetaveis.adicionarColetado(gameObject.GetComponent<SpriteRenderer>().sprite);
-        gameObject.SetActive(false);
-        coletados.Add(gameObject);
         AudioController.current.PlayAudio(AudioController.current.coletar);
+
+        InformacoesColetado infoColetado = new InformacoesColetado();
+        infoColetado.addInfosDisplayColetados(sprite, contadorDeColetaveis.hasResetColetados());
+        infoColetado.addInfosDisplayScore(contadorDeColetaveis.getScore());
+        return infoColetado;
     }
 
     public void FixedUpdate() { }
 
-    //public void FixedUpdate2()//para nao ser chamado por enquanto
-    //{
-    //    if (checkCombinacao)
-    //    {
-    //        GameObject checkColetavel = coletados[1];
-    //        bool resposta = false;
-    //        if (resposta)
-    //        {
-    //            Debug.Log("yes");
-
-    //            for (int i = 0; i < coletados.Length; i++)
-    //            {
-    //                GameObject.Destroy(coletados[i]);
-    //            }
-
-    //            score += 1;
-    //            coletaveisDto.ScoreTextField.text = score.ToString();
-
-    //            if (score == maxScore)
-    //            {
-    //                OnClickPlay();
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("noooo");
-
-    //            for (int i = 0; i < coletados.Length; i++)
-    //            {
-    //                coletados[i].transform.localScale += Vector3.one * coletaveisDto.ColetadoScale;
-    //                coletados[i].gameObject.transform.position = coletadosBackPosition[i];
-
-    //                //coletadoPosicoes[i].gameObject.transform.position = coletadoOldPosicoes[i].transform.position;
-    //            }
-    //        }
-
-    //        coletados = new GameObject[3];
-    //        coletadosBackPosition = new Vector2[3];
-    //        checkCombinacao = false;
-    //    }
-
-    //}
-
-    public void OnClickPlay() {
-        SceneManager.LoadScene("TitleScene");
-    }
-
-    private void coletavelAtingido2(GameObject goColetavel) {
-        Debug.Log("coletavelAtingido2");
-        //goColetavel.transform.GetComponent<Rigidbody2D>().mass = 0;
-    }
-
-    public Action<GameObject> getConsumidorDeColetavelAtingito() {
-        return (coletado) => coletavelAtingido2(coletado);
-    }
-
-    public void match(bool result) {
-        if (result) {
-            atualizaScore();
-        } else {
-
-            //foreach (GameObject gameObject in coletados)
-            //{
-            //    gameObject.SetActive(true);
-
-            //}
-
-
-            resetColetadosPosicoes();
+    public void match(bool result)
+    {
+        if (result)
+        {
+            //atualizaScore();
+        }
+        else
+        {
+            
         }
     }
 
-    private void atualizaScore() {
-        score += 30;
-        coletaveisDto.ScoreTextField.text = score.ToString();
+    //private void atualizaScore()
+    //{        
+    //    //REMOVER DO DTO
+    //    coletaveisDto.ScoreTextField.text = score.ToString();        
+    //}   
 
-        resetColetadosPosicoes();
+    public TransformadorDeEvento<GameObject, InformacoesColetado> getProcessadorDeColetado()
+    {
+        return this;
     }
 
-    private void resetColetadosPosicoes() {
-        Debug.Log("resetColetadosPosicoes");
-        foreach (SpriteRenderer spriteRenderer in coletaveisDto.ColetadosPosicoes) {
-            spriteRenderer.sprite = null;
-        }
-
-        coletados.Clear();
+    //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, InformacoesColetado> INICIO
+    //É O PRIMEIRO DO PIPELINEDEEVENTOCOLETADO 
+    //RECEBE UM GAMEOBJECT E DEVOLVE UM INFORMACOESCOLETADOS
+    public InformacoesColetado transformarEvento(GameObject gameObjectColetado)
+    {
+        return processarColetado(gameObjectColetado);        
     }
+    //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, InformacoesColetado> FIM
 }

@@ -273,6 +273,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 683841258165775589, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &419047350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 363533896534822254, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &491158113
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,13 +341,22 @@ MonoBehaviour:
     colisor: {fileID: 745325034}
   coletaveisDto:
     coletadoScale: 0
-    coletadosSprites:
-    - {fileID: 1552986179}
-    - {fileID: 523200846}
-    - {fileID: 229104350}
     scoreTextField: {fileID: 119649667}
-    goTriggerDeColetado: {fileID: 2083913115}
+  sensoresDto:
+    sensorDeColetado: {fileID: 2083913115}
+  coletadosSprites:
+  - {fileID: 1552986179}
+  - {fileID: 523200846}
+  - {fileID: 229104350}
+  displayScore1: {fileID: 660903945}
+  displayScore2: {fileID: 419047350}
+  displayScore3: {fileID: 514353999}
   btnSair: {fileID: 1780015346}
+--- !u!1 &514353999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 363533896306271071, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +648,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 8}
   m_EdgeRadius: 0
+--- !u!1 &660903945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6406990384768208898, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &745325034 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3777820025343088888, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
@@ -1328,7 +1347,7 @@ GameObject:
   - component: {fileID: 2083913117}
   - component: {fileID: 2083913118}
   m_Layer: 0
-  m_Name: TriggerDeColetado
+  m_Name: SensorDeColetado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1389,14 +1408,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
-    - target: {fileID: 1258064833904829691, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 1258064834214647659, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.3
-      objectReference: {fileID: 0}
     - target: {fileID: 6406990384449578760, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_RootOrder
       value: 4

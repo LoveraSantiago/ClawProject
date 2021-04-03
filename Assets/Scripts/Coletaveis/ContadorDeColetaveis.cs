@@ -1,70 +1,76 @@
 using UnityEngine;
 
-public class ContadorDeColetaveis {
+public class ContadorDeColetaveis
+{
+    private int score = 0;
     private int qtdColetados = 0;
-    private Sprite[] spritesDeColetados = new Sprite[3];
 
+    private string[] nomesColetados;   
 
-    private ColetavelCallback callback;
-
-
-    public ContadorDeColetaveis(ColetavelCallback callback) {
-        this.callback = callback;
+    public ContadorDeColetaveis()
+    {        
+        nomesColetados = new string[3];        
     }
 
-    public void adicionarColetado(Sprite coletado) {
-        adicionaAoContainerDeColetados(coletado);
+    public void adicionarColetado(string nomeColetado, 
+        ResultadoDoContadorColetaveis resultadoSucesso, ResultadoDoContadorColetaveis resultadoFalha)
+    {
+        Debug.Log(nomeColetado);
+        adicionaAoContainerDeColetados(nomeColetado);
 
-        if (qtdColetados > spritesDeColetados.Length - 1) {
-            if (isCombinacaoValida()) {
+        if (qtdColetados > nomesColetados.Length - 1)
+        {
+            if (isCombinacaoValida())
+            {
                 AudioController.current.PlayAudio(AudioController.current.combinacaoOk);
+                resultadoSucesso.processarResultado(nomesColetados);
                 adicionaPontuacao();
-            } else {
-                AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
-                retornaObjetosParaBoard();
             }
-
+            else
+            {
+                AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
+                resultadoFalha.processarResultado(nomesColetados);
+            }
             resetarColetados();
         }
+    }    
 
+    public bool hasResetColetados()
+    {
+        return qtdColetados == 0;
     }
 
-    public int getQtdColetados() {
-        return qtdColetados;
-    }
-
-    private bool isCombinacaoValida() {
-        Sprite primeiroSprite = spritesDeColetados[0];
-        for (int i = 0; i < spritesDeColetados.Length; i++) {
-            if (primeiroSprite != spritesDeColetados[i]) {
+    private bool isCombinacaoValida()
+    {
+        string nomePrimeiroColetado = nomesColetados[0];
+        for (int i = 0; i < nomesColetados.Length; i++)
+        {            
+            if (!nomePrimeiroColetado.Equals(nomesColetados[i]))
+            {
                 return false;
             }
         }
         return true;
     }
 
-    private void adicionaAoContainerDeColetados(Sprite coletado) {
-        spritesDeColetados[qtdColetados] = coletado;
+    private void adicionaAoContainerDeColetados(string nomeColetado)
+    {
+        nomesColetados[qtdColetados] = nomeColetado;
         qtdColetados++;
+    }  
+
+    private void adicionaPontuacao()
+    {
+        score += 30;        
     }
 
-    private void retornaObjetosParaBoard() {
-        if (callback != null) {
-            callback.match(false);
-        }
+    public int getScore()
+    {
+        return score;
     }
 
-    private void adicionaPontuacao() {
-        if (callback != null) {
-            callback.match(true);
-        }
-    }
-
-    private void resetarColetados() {
+    private void resetarColetados()
+    {
         qtdColetados = 0;
-    }
-
-    public interface ColetavelCallback {
-        void match(bool result);
-    }
+    }   
 }
