@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GarraManager
+public class GarraManager : ConsumidorDeEventoTrigger
 {
     private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
@@ -30,6 +30,11 @@ public class GarraManager
     private void configurarColisorCentroDaPinca(GameObject goColisor)
     {
         DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();
-        //detectorDeColisoes.registrarConsumidorDeTrigger((colisao) => garraColidiuCom(colisao));
+        detectorDeColisoes.registrarConsumidorDeTrigger(this);
+    }
+
+    public void consumirEvento(Collider2D colliderDeColetavel)
+    {
+        garraColidiuCom(colliderDeColetavel);
     }
 }
