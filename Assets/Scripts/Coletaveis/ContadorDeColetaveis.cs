@@ -7,15 +7,12 @@ public class ContadorDeColetaveis
 
     private string[] nomesColetados;
 
-    private ColetavelCallback callback;
-
-    private ProdutorDeEvento<Sprite> produtorDeSpriteColetado;
+    private ColetavelCallback callback;    
 
     public ContadorDeColetaveis(ColetavelCallback callback)
     {
         this.callback = callback;
-        nomesColetados = new string[3];
-        produtorDeSpriteColetado = new ProdutorDeEvento<Sprite>();
+        nomesColetados = new string[3];        
     }
 
     public void adicionarColetado(string nomeColetado)
@@ -37,12 +34,11 @@ public class ContadorDeColetaveis
 
             resetarColetados();
         }
+    }    
 
-    }
-
-    public int getQtdColetados()
+    public bool hasResetColetados()
     {
-        return qtdColetados;
+        return qtdColetados == 0;
     }
 
     private bool isCombinacaoValida()
@@ -75,6 +71,11 @@ public class ContadorDeColetaveis
     private void adicionaPontuacao()
     {
         score += 30;        
+    }
+
+    public int getScore()
+    {
+        return score;
     }
 
     private void resetarColetados()

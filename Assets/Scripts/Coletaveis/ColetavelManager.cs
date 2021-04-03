@@ -1,11 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, 
                                 TransformadorDeEvento<GameObject, InformacoesColetado>
-{
-    private List<GameObject> coletados = new List<GameObject>();
-    
+{   
     private ColetaveisDto coletaveisDto;
     private ContadorDeColetaveis contadorDeColetaveis;
 
@@ -20,15 +17,15 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback,
     private InformacoesColetado processarColetado(GameObject gameObjectColetado)
     {        
         Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
-        
-        contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);
         gameObjectColetado.SetActive(false);
-        coletados.Add(gameObjectColetado);
+        
+        contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);        
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
         InformacoesColetado infoColetado = new InformacoesColetado();
-        infoColetado.addInfosDisplayColetados(sprite, false);
+        infoColetado.addInfosDisplayColetados(sprite, contadorDeColetaveis.hasResetColetados());
+        infoColetado.addInfosDisplayScore(contadorDeColetaveis.getScore());
         return infoColetado;
     }
 
@@ -46,10 +43,11 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback,
         }
     }
 
-    private void atualizaScore()
-    {        
-        coletaveisDto.ScoreTextField.text = score.ToString();        
-    }   
+    //private void atualizaScore()
+    //{        
+    //    //REMOVER DO DTO
+    //    coletaveisDto.ScoreTextField.text = score.ToString();        
+    //}   
 
     public TransformadorDeEvento<GameObject, InformacoesColetado> getProcessadorDeColetado()
     {
