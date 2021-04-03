@@ -13,8 +13,11 @@ public class MainGame : MonoBehaviour
     [Space(5)]
     [SerializeField] private SensoresDto sensoresDto;
     //Componentes uis temporarios aqui...    
-    [Space(5)]
+    [Space(5)]    
     [SerializeField] private SpriteRenderer[] coletadosSprites = new SpriteRenderer[3];//3
+    [SerializeField] private GameObject displayScore1;
+    [SerializeField] private GameObject displayScore2;
+    [SerializeField] private GameObject displayScore3;
     [SerializeField] private Button btnSair;
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
@@ -43,23 +46,15 @@ public class MainGame : MonoBehaviour
         coletaveisManager = new ColetavelManager(coletaveisDto);
         sensoresManager   = new SensoresManager(sensoresDto);
 
-        //Temporario aqui....
+        //TEMPORARIO AQUI.... TALVEZ DEVESSEM ESTAR DENTROS DE UM OUTRO OBJETO AINDA NAO SEI        
         DisplayDeImagens displayDeImgs = new DisplayDeImagens(coletadosSprites, 0.5f, this);
+        DisplayDeScores displayDeScores = new DisplayDeScores(displayScore1, displayScore2, displayScore3);
 
         new PipelineDeEventoColetado()
             .configLancadorDeEventoColetado(sensoresManager.getProdutorDeEventoDeColetado())
             .configProcessadorDeColetado(coletaveisManager.getProcessadorDeColetado())
-            .configConsumidorDeSpriteDoColetado(displayDeImgs);
-
-            
-            //.adicionarConsumidor(displayDeImgs.getConsumidorDeColetado());
-        
-        //GARRA NAO PRODUZ MAIS EVENTOS DE TER ACERTADO COLETADO
-        //QUEM DEVE EMITIR ESSE EVENTO SERIA O SENSOR DE CIMA DA TELA
-        //DEAD CODE AQUI PARA REFERENCIA DE USO (REMOVER)
-        //new ProdutorConsumidoresDeEvento<GameObject>()
-        //    .configurarProdutor(garra.getProdutorDeEventoColisaoComColetavel())
-        //    .adicionarConsumidorDeEvento(coletaveis.getConsumidorDeColetavelAtingito());
+            .configConsumidorDeSpriteDoColetado(displayDeImgs)
+            .configConsumidorDeScore(displayDeScores);
     }
 
     void Update()
