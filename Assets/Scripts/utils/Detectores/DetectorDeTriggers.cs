@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class DetectorDeTriggers : MonoBehaviour
 {
-    private ConsumidorDeTrigger consumidorDeTrigger;
+    private ConsumidorDeEventoTrigger consumidorDeTrigger;
 
     private void OnTriggerEnter2D(Collider2D collider2d)
     {
         consumidorDeTrigger.consumirEvento(collider2d);
     }
 
-    public void registrarConsumidorDeTrigger(ConsumidorDeTrigger consumidorDeTrigger)
+    public void registrarConsumidorDeTrigger(ConsumidorDeEventoTrigger consumidorDeTrigger)
     {
         this.consumidorDeTrigger = consumidorDeTrigger;        
     }

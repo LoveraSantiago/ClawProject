@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SensorDeColetado : ConsumidorDeTrigger
+public class SensorDeColetado : ConsumidorDeEventoTrigger
 {
     private ProdutorDeEvento<GameObject> produtorDeEventoDeColetado;
 
