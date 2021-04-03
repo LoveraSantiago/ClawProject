@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, ConsumidorDeEvento<GameObject>
+public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, TransformadorDeEvento<GameObject, Sprite>
 {
     private List<GameObject> coletados = new List<GameObject>();
 
@@ -17,17 +17,7 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, Consumid
         this.coletaveisDto = coletaveisDto;        
     }
 
-    public ConsumidorDeEvento<GameObject> getConsumidorDeColetado()
-    {
-        return this;
-    }
-
-    public void consumirEvento(GameObject gameObjectColetado)
-    {
-        adicionarColetado(gameObjectColetado);
-    }
-
-    private void adicionarColetado(GameObject gameObjectColetado)
+    private Sprite processarColetado(GameObject gameObjectColetado)
     {
         int qtdColetados = contadorDeColetaveis.getQtdColetados();
         Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
@@ -37,6 +27,8 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, Consumid
         gameObjectColetado.SetActive(false);
         coletados.Add(gameObjectColetado);
         AudioController.current.PlayAudio(AudioController.current.coletar);
+
+        return sprite;
     }
 
     public void FixedUpdate() { }
@@ -70,5 +62,15 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, Consumid
         }
 
         coletados.Clear();
-    }    
+    }
+
+    public Sprite transformarEvento(GameObject gameObjectColetado)
+    {
+        return processarColetado(gameObjectColetado);        
+    }
+
+    public TransformadorDeEvento<GameObject, Sprite> getProcessadorDeColetado()
+    {
+        return this;
+    }
 }

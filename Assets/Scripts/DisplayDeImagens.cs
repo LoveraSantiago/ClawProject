@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DisplayDeImagens : ConsumidorDeEvento<GameObject>
+public class DisplayDeImagens : ConsumidorDeEvento<Sprite>
 {
     private int indiceEspaco;
     private SpriteRenderer[] espacoImgs;
@@ -10,19 +10,9 @@ public class DisplayDeImagens : ConsumidorDeEvento<GameObject>
         this.espacoImgs = espacoImgs;
     }
 
-    public ConsumidorDeEvento<GameObject> getConsumidorDeColetado()
+    private void adicionarSpriteAoDisplay(Sprite spriteColetado)
     {
-        return this;
-    }
-
-    public void consumirEvento(GameObject goColetado)
-    {
-        extrairSpriteParaODisplay(goColetado);
-    }
-
-    private void extrairSpriteParaODisplay(GameObject goColetado)
-    {
-        espacoImgs[indiceEspaco].sprite = goColetado.GetComponent<SpriteRenderer>().sprite;
+        espacoImgs[indiceEspaco].sprite = spriteColetado;
         computarIndice();
     }
 
@@ -36,5 +26,15 @@ public class DisplayDeImagens : ConsumidorDeEvento<GameObject>
         {
             indiceEspaco++;
         }
+    }
+
+    public ConsumidorDeEvento<Sprite> getConsumidorDeColetado()
+    {
+        return this;
+    }
+
+    public void consumirEvento(Sprite spriteColetado)
+    {
+        adicionarSpriteAoDisplay(spriteColetado);
     }
 }

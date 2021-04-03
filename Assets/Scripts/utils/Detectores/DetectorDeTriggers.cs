@@ -12,5 +12,5 @@ public class DetectorDeTriggers : MonoBehaviour
     public void registrarConsumidorDeTrigger(ConsumidorDeEventoTrigger consumidorDeTrigger)
     {
         this.consumidorDeTrigger = consumidorDeTrigger;        
-    }
+    }    
 }
