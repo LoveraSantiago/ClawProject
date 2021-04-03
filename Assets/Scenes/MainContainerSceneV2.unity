@@ -343,6 +343,10 @@ MonoBehaviour:
     scoreTextField: {fileID: 119649667}
   sensoresDto:
     sensorDeColetado: {fileID: 2083913115}
+  coletadosSprites:
+  - {fileID: 1552986179}
+  - {fileID: 523200846}
+  - {fileID: 229104350}
   btnSair: {fileID: 1780015346}
 --- !u!1 &519420028
 GameObject:

@@ -22,8 +22,7 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback,
     {
         int qtdColetados = contadorDeColetaveis.getQtdColetados();
         Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
-
-        coletaveisDto.ColetadosPosicoes[qtdColetados].sprite = sprite;
+        
         contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);
         gameObjectColetado.SetActive(false);
         coletados.Add(gameObjectColetado);
@@ -42,28 +41,15 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback,
         }
         else
         {
-            resetColetadosPosicoes();
+            
         }
     }
 
     private void atualizaScore()
     {
         score += 30;
-        coletaveisDto.ScoreTextField.text = score.ToString();
-
-        resetColetadosPosicoes();
-    }
-
-    private void resetColetadosPosicoes()
-    {
-        Debug.Log("resetColetadosPosicoes");
-        foreach (SpriteRenderer spriteRenderer in coletaveisDto.ColetadosPosicoes)
-        {
-            spriteRenderer.sprite = null;
-        }
-
-        coletados.Clear();
-    }
+        coletaveisDto.ScoreTextField.text = score.ToString();        
+    }   
 
     public TransformadorDeEvento<GameObject, Sprite> getProcessadorDeColetado()
     {

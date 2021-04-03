@@ -5,11 +5,9 @@ using UnityEngine.UI;
 [System.Serializable]
 public class ColetaveisDto 
 {
-    [SerializeField] private float coletadoScale;//0.55586    
-    [SerializeField] private SpriteRenderer[] coletadosSprites = new SpriteRenderer[3];//3
+    [SerializeField] private float coletadoScale;//0.55586        
     [SerializeField] private Text scoreTextField;    
 
-    public float ColetadoScale { get { return coletadoScale; } }
-    public SpriteRenderer[] ColetadosPosicoes { get { return coletadosSprites; } }
+    public float ColetadoScale { get { return coletadoScale; } }    
     public Text ScoreTextField { get { return scoreTextField; } }    
 }

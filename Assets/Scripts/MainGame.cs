@@ -14,6 +14,7 @@ public class MainGame : MonoBehaviour
     [SerializeField] private SensoresDto sensoresDto;
     //Componentes uis temporarios aqui...    
     [Space(5)]
+    [SerializeField] private SpriteRenderer[] coletadosSprites = new SpriteRenderer[3];//3
     [SerializeField] private Button btnSair;
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
@@ -43,7 +44,7 @@ public class MainGame : MonoBehaviour
         sensoresManager   = new SensoresManager(sensoresDto);
 
         //Temporario aqui....
-        DisplayDeImagens displayDeImgs = new DisplayDeImagens(coletaveisDto.ColetadosPosicoes);
+        DisplayDeImagens displayDeImgs = new DisplayDeImagens(coletadosSprites, 0.5f, this);
 
         new PipelineDeEventoColetado()
             .configLancadorDeEventoColetado(sensoresManager.getProdutorDeEventoDeColetado())
