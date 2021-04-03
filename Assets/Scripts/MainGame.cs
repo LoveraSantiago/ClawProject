@@ -28,7 +28,7 @@ public class MainGame : MonoBehaviour
 
     void OnEnable()
     {
-        //forçando escala Y pra ficar dentro da safe area
+        //forï¿½ando escala Y pra ficar dentro da safe area
         //float escalaY = Screen.safeArea.height / Screen.height;
         //float escalaX = Screen.safeArea.width / Screen.width;
         //transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
@@ -51,10 +51,10 @@ public class MainGame : MonoBehaviour
         DisplayDeScores displayDeScores = new DisplayDeScores(displayScore1, displayScore2, displayScore3);
 
         new PipelineDeEventoColetado()
-            .configLancadorDeEventoColetado(sensoresManager.getProdutorDeEventoDeColetado())
-            .configProcessadorDeColetado(coletaveisManager.getProcessadorDeColetado())
-            .configDisplayImgConsumidor(displayDeImgs.getDisplayImgConsumidor())
-            .configdisplayScoreConsumidor(displayDeScores.getDisplayScoreConsumidor());
+            .configStep1LancadorDeEventoColetado(sensoresManager.getProdutorDeEventoDeColetado())
+            .configStep2ProcessadorDeColetado(coletaveisManager.getProcessadorDeColetado())
+            .configStep3DisplayImgConsumidor(displayDeImgs.getDisplayImgConsumidor())
+            .configStep4displayScoreConsumidor(displayDeScores.getDisplayScoreConsumidor());
     }
 
     void Update()

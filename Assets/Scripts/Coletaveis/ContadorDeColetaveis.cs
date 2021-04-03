@@ -5,14 +5,14 @@ public class ContadorDeColetaveis
     private int score = 0;
     private int qtdColetados = 0;
 
-    private string[] nomesColetados;   
+    private string[] nomesColetados;
 
     public ContadorDeColetaveis()
-    {        
-        nomesColetados = new string[3];        
+    {
+        nomesColetados = new string[3];
     }
 
-    public void adicionarColetado(string nomeColetado, 
+    public void adicionarColetado(string nomeColetado,
         ResultadoDoContadorColetaveis resultadoSucesso, ResultadoDoContadorColetaveis resultadoFalha)
     {
         Debug.Log(nomeColetado);
@@ -33,7 +33,10 @@ public class ContadorDeColetaveis
             }
             resetarColetados();
         }
-    }    
+
+        score++;
+
+    }
 
     public bool hasResetColetados()
     {
@@ -44,7 +47,7 @@ public class ContadorDeColetaveis
     {
         string nomePrimeiroColetado = nomesColetados[0];
         for (int i = 0; i < nomesColetados.Length; i++)
-        {            
+        {
             if (!nomePrimeiroColetado.Equals(nomesColetados[i]))
             {
                 return false;
@@ -57,11 +60,11 @@ public class ContadorDeColetaveis
     {
         nomesColetados[qtdColetados] = nomeColetado;
         qtdColetados++;
-    }  
+    }
 
     private void adicionaPontuacao()
     {
-        score += 30;        
+        score += 30;
     }
 
     public int getScore()
@@ -72,5 +75,5 @@ public class ContadorDeColetaveis
     private void resetarColetados()
     {
         qtdColetados = 0;
-    }   
+    }
 }

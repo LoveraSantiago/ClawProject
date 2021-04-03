@@ -7,7 +7,7 @@ public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
     private ConsumidorDeEvento<int> displayScoreConsumidor;
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<GameObject> INICIO
-    //É CHAMADO QUANDO O SENSOR DE COLETADO É ACIONADO
+    //ï¿½ CHAMADO QUANDO O SENSOR DE COLETADO ï¿½ ACIONADO
     //INICIA O PIPELINE DE EVENTOS QUE UM COLETADO PASSA
     public void consumirEvento(GameObject evento)
     {
@@ -17,25 +17,25 @@ public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
     }
     //IMPLEMENTACAO INTERFACE onsumidorDeEvento<GameObject> FIM
         
-    public PipelineDeEventoColetado configLancadorDeEventoColetado(ProdutorDeEvento<GameObject> produtorDeEvento)
+    public PipelineDeEventoColetado configStep1LancadorDeEventoColetado(ProdutorDeEvento<GameObject> produtorDeEvento)
     {
         produtorDeEvento.registrarConsumidorDeEvento(this);
         return this;
     }
 
-    public PipelineDeEventoColetado configProcessadorDeColetado(TransformadorDeEvento<GameObject, InformacoesColetado> processadorDeColetado)
+    public PipelineDeEventoColetado configStep2ProcessadorDeColetado(TransformadorDeEvento<GameObject, InformacoesColetado> processadorDeColetado)
     {
         this.processadorDeColetado = processadorDeColetado;
         return this;
     }
 
-    public PipelineDeEventoColetado configDisplayImgConsumidor(BiConsumidorDeEvento<Sprite, bool> displayImgsConsumidor)
+    public PipelineDeEventoColetado configStep3DisplayImgConsumidor(BiConsumidorDeEvento<Sprite, bool> displayImgsConsumidor)
     {
         this.displayImgsConsumidor = displayImgsConsumidor;
         return this;
     }
 
-    public PipelineDeEventoColetado configdisplayScoreConsumidor(ConsumidorDeEvento<int> displayScoreConsumidor)
+    public PipelineDeEventoColetado configStep4displayScoreConsumidor(ConsumidorDeEvento<int> displayScoreConsumidor)
     {
         this.displayScoreConsumidor = displayScoreConsumidor;
         return this;
