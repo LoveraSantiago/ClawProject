@@ -6,6 +6,17 @@ public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
     private ConsumidorDeEvento<Sprite> consumidorDeSpriteColetado;
     private ConsumidorDeEvento<int> consumidorDeScore;
 
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<GameObject> INICIO
+    //É CHAMADO QUANDO O SENSOR DE COLETADO É ACIONADO
+    //INICIA O PIPELINE DE EVENTOS QUE UM COLETADO PASSA
+    public void consumirEvento(GameObject evento)
+    {
+        InformacoesColetado infoColetado = processadorDeColetado.transformarEvento(evento);
+        consumidorDeSpriteColetado.consumirEvento(infoColetado.sprite);
+        consumidorDeScore.consumirEvento(infoColetado.score);
+    }
+    //IMPLEMENTACAO INTERFACE onsumidorDeEvento<GameObject> FIM
+        
     public PipelineDeEventoColetado configLancadorDeEventoColetado(ProdutorDeEvento<GameObject> produtorDeEvento)
     {
         produtorDeEvento.registrarConsumidorDeEvento(this);
@@ -30,14 +41,4 @@ public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
         return this;
     }
 
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<GameObject> INICIO
-    //É CHAMADO QUANDO O SENSOR DE COLETADO É ACIONADO
-    //INICIA O PIPELINE DE EVENTOS QUE UM COLETADO PASSA
-    public void consumirEvento(GameObject evento)
-    {
-        InformacoesColetado infoColetado = processadorDeColetado.transformarEvento(evento);
-        consumidorDeSpriteColetado.consumirEvento(infoColetado.sprite);
-        consumidorDeScore.consumirEvento(infoColetado.score);
-    }
-    //IMPLEMENTACAO INTERFACE onsumidorDeEvento<GameObject> FIM
 }
