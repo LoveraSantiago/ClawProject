@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, TransformadorDeEvento<GameObject, Sprite>
+public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, 
+                                TransformadorDeEvento<GameObject, Sprite>
 {
     private List<GameObject> coletados = new List<GameObject>();
 
@@ -64,13 +65,17 @@ public class ColetavelManager : ContadorDeColetaveis.ColetavelCallback, Transfor
         coletados.Clear();
     }
 
-    public Sprite transformarEvento(GameObject gameObjectColetado)
-    {
-        return processarColetado(gameObjectColetado);        
-    }
-
     public TransformadorDeEvento<GameObject, Sprite> getProcessadorDeColetado()
     {
         return this;
     }
+
+    //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, Sprite> INICIO
+    //É O PRIMEIRO DO PIPELINEDEEVENTOCOLETADO 
+    //RECEBE UM GAMEOBJECT E DEVOLVE UM SPRITE
+    public Sprite transformarEvento(GameObject gameObjectColetado)
+    {
+        return processarColetado(gameObjectColetado);        
+    }
+    //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, Sprite> FIM
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Threading;
 
 public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao {
     private Vector2 posicaoInicial;
@@ -49,7 +48,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao {
         return new MovimentacaoLateralZigZag();
     }
 
-    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO
+    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO    
     public void trocarParaAcaoDescendo(Vector2 posicaoInicial) {
         AudioController.current.PlayAudioGarra();
         this.posicaoInicial = posicaoInicial;

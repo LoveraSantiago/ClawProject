@@ -33,8 +33,11 @@ public class GarraManager : ConsumidorDeEventoTrigger
         detectorDeColisoes.registrarConsumidorDeTrigger(this);
     }
 
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
+    //ACIONADO QDO GARRA COLLIDE COM UM COLETAVEL
     public void consumirEvento(Collider2D colliderDeColetavel)
     {
         garraColidiuCom(colliderDeColetavel);
     }
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
 }

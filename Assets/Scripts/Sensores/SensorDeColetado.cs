@@ -9,6 +9,14 @@ public class SensorDeColetado : ConsumidorDeEventoTrigger
         produtorDeEventoDeColetado = new ProdutorDeEvento<GameObject>();
     }
 
+    public ProdutorDeEvento<GameObject> getProdutorDeEventoDeColetado()
+    {
+        return produtorDeEventoDeColetado;
+    }
+
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
+    //E ACIONADO QUANDO TRIGGER DETECTA COLISAO COM UM COLETAVEL
+    //PRODUZ O EVENTO INICIAL DE COLETAVEL COLETADO NO PIPELINEDEEVENTOCOLETADO
     public void consumirEvento(Collider2D collider2d)
     {
         if (collider2d.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0)
@@ -16,9 +24,5 @@ public class SensorDeColetado : ConsumidorDeEventoTrigger
             produtorDeEventoDeColetado.produziuEvento(collider2d.gameObject);
         }
     }
-
-    public ProdutorDeEvento<GameObject> getProdutorDeEventoDeColetado()
-    {
-        return produtorDeEventoDeColetado;
-    }
+    //IMPLEMENTACAO INTERFACEConsumidorDeEventoTrigger FIM
 }

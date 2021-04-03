@@ -18,7 +18,7 @@ public class DisplayDeImagens : ConsumidorDeEvento<Sprite>
 
     private void computarIndice()
     {
-        if(indiceEspaco + 1 >= 2)
+        if(indiceEspaco + 1 >= 3)
         {
             indiceEspaco = 0;
         }
@@ -28,13 +28,17 @@ public class DisplayDeImagens : ConsumidorDeEvento<Sprite>
         }
     }
 
-    public ConsumidorDeEvento<Sprite> getConsumidorDeColetado()
-    {
-        return this;
-    }
-
+    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<Sprite> INICIO
+    //ACIONADO COMO SEGUNDO STEP PELO PIPELINE DE COLETAVEL COLETADO
+    //RECEBENDO O SPRITE DO COLETADO
     public void consumirEvento(Sprite spriteColetado)
     {
         adicionarSpriteAoDisplay(spriteColetado);
+    }
+    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<Sprite> FIM
+
+    public ConsumidorDeEvento<Sprite> getConsumidorDeColetado()
+    {
+        return this;
     }
 }
