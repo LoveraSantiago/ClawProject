@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ContadorDeColetaveis
 {
@@ -7,10 +8,12 @@ public class ContadorDeColetaveis
     private string[] nomesColetados;
     private string[] arrayBoard;
     private string[] arrayTubo;
+    private int totalColetaveis;
 
-    public ContadorDeColetaveis()
+    public ContadorDeColetaveis(int totalColetaveis)
     {
         nomesColetados = new string[3];
+        this.totalColetaveis = totalColetaveis;
     }
 
     public void adicionarColetado(string nomeColetado)
@@ -26,12 +29,15 @@ public class ContadorDeColetaveis
                 adicionaPontuacao();
                 arrayBoard = new string[0];
                 arrayTubo = nomesColetados;
+                totalColetaveis -= 3;               
             }
             else
             {
                 arrayBoard = nomesColetados;
                 arrayTubo = new string[0];
                 AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
+
+                totalColetaveis -= 3;
             }
             resetarColetados();
         }
@@ -42,6 +48,11 @@ public class ContadorDeColetaveis
         }
 
         score++;
+
+        if (totalColetaveis <= 0)
+        {
+            resetCena();
+        }
     }
 
     public string[] getArrayBoard()
@@ -54,6 +65,10 @@ public class ContadorDeColetaveis
         return arrayTubo;
     }
 
+    public void resetCena()
+    {
+        SceneManager.LoadScene("MainContainerSceneV2");
+    }
 
     public bool hasResetColetados()
     {

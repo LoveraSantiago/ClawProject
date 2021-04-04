@@ -85,6 +85,11 @@ public class Board
         }
     }
 
+    public int getTotalColetaveis()
+    {
+        return xSize * ySize;
+    }
+
     internal void devolver(string[] coletaveis)
     {
         //Debug.Log("Board - devolver");
