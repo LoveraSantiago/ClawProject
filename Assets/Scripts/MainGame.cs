@@ -51,7 +51,7 @@ public class MainGame : MonoBehaviour
         //TEMPORARIO AQUI.... TALVEZ DEVESSEM ESTAR DENTROS DE UM OUTRO OBJETO AINDA NAO SEI               
         DisplayDeImagens displayDeImgs = new DisplayDeImagens(coletadosSprites, 0.5f, this);
         DisplayDeScores displayDeScores = new DisplayDeScores(displayScore1, displayScore2, displayScore3);
-        joystickHaste = new JoystickHaste(hasteJoystick);
+        joystickHaste = new JoystickHaste(hasteJoystick, componentesDaGarra.VelocMovHorizontal);
 
         new PipelineDeEventoColetado()
             .configStep1LancadorDeEventoColetado(sensoresManager.getProdutorDeEventoDeColetado())
