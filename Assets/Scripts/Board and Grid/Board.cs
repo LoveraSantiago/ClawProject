@@ -74,8 +74,8 @@ public class Board
                 possibleCharacters.Remove(previousBelow);
 
                 //Sprite newSprite = characters[Random.Range(0, characters.Count)]; //permite repetição do item na mesma linha
-                Sprite newSprite = characters[0]; //FORÇANDO repetição do MESMO item SO PARA TESTES LOCAIS
-                //Sprite newSprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)];
+                //Sprite newSprite = characters[0]; //FORÇANDO repetição do MESMO item SO PARA TESTES LOCAIS
+                Sprite newSprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)];
 
                 SpriteRenderer spriteRenderer = newTile.GetComponent<SpriteRenderer>();
                 spriteRenderer.sprite = newSprite;
