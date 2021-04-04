@@ -8,11 +8,15 @@ public class ComponentesDaGarraDto
     [SerializeField] private float velocMovCima;
     [SerializeField] private float velocMovBaixo;
     [Space(5)]
-    [SerializeField] private float anguloAberturaGarra;
-    [SerializeField] private float velocidadeAberturaGarra;
+    [SerializeField] private float anguloIdleMin;
+    [SerializeField] private float anguloIdleMax;
+    [SerializeField] private float velocAnguloIdle;
     [Space(5)]
-    [SerializeField] private float anguloFechamentoGarra;
-    [SerializeField] private float velocidadeFechamentoGarra;
+    [SerializeField] private float anguloAbertura;
+    [SerializeField] private float velocAnguloAbertura;
+    [Space(5)]
+    [SerializeField] private float anguloFechamento;
+    [SerializeField] private float velocAnguloFechamento;
     [Space(5)]
     [SerializeField] private Rigidbody2D rigidBody;
     [Space(5)]    
@@ -24,11 +28,15 @@ public class ComponentesDaGarraDto
     public float VelocMovCima { get { return velocMovCima; } }   
     public float VelocMovBaixo { get { return velocMovBaixo * -1; } }
 
-    public float AnguloAberturaGarra { get { return anguloAberturaGarra; } }
-    public float VelocidadeAberturaGarra { get { return velocidadeAberturaGarra; } }
+    public float AnguloIdleMin { get { return anguloIdleMin; } }
+    public float AnguloIdleMax { get { return anguloIdleMax; } }
+    public float VelocAnguloIdle { get { return velocAnguloIdle; } }
 
-    public float AnguloFechamentoGarra { get { return anguloFechamentoGarra; } }
-    public float VelocidadeFechamentoGarra { get { return velocidadeFechamentoGarra; } }
+    public float AnguloAbertura { get { return anguloAbertura; } }
+    public float VelocidadeAnguloAbertura { get { return velocAnguloAbertura; } }
+
+    public float AnguloFechamento { get { return anguloFechamento; } }
+    public float VelocidadeAnguloFechamento { get { return velocAnguloFechamento; } }
 
     public Rigidbody2D RigidBody { get { return rigidBody; } }
     

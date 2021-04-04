@@ -19,12 +19,14 @@ public class MainGame : MonoBehaviour
     [SerializeField] private GameObject displayScore2;
     [SerializeField] private GameObject displayScore3;
     [SerializeField] private Button btnSair;
+    [SerializeField] private Transform hasteJoystick;
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
     private GarraManager garraManager;
     private ColetavelManager coletaveisManager;
     private SensoresManager sensoresManager;
+    private JoystickHaste joystickHaste;
 
     void OnEnable()
     {
@@ -46,15 +48,22 @@ public class MainGame : MonoBehaviour
         coletaveisManager = new ColetavelManager(coletaveisDto);
         sensoresManager   = new SensoresManager(sensoresDto);
 
-        //TEMPORARIO AQUI.... TALVEZ DEVESSEM ESTAR DENTROS DE UM OUTRO OBJETO AINDA NAO SEI        
+        //TEMPORARIO AQUI.... TALVEZ DEVESSEM ESTAR DENTROS DE UM OUTRO OBJETO AINDA NAO SEI               
         DisplayDeImagens displayDeImgs = new DisplayDeImagens(coletadosSprites, 0.5f, this);
         DisplayDeScores displayDeScores = new DisplayDeScores(displayScore1, displayScore2, displayScore3);
+        joystickHaste = new JoystickHaste(hasteJoystick, componentesDaGarra.VelocMovHorizontal);
 
         new PipelineDeEventoColetado()
             .configStep1LancadorDeEventoColetado(sensoresManager.getProdutorDeEventoDeColetado())
             .configStep2ProcessadorDeColetado(coletaveisManager.getProcessadorDeColetado())
             .configStep3DisplayImgConsumidor(displayDeImgs.getDisplayImgConsumidor())
             .configStep4displayScoreConsumidor(displayDeScores.getDisplayScoreConsumidor());
+
+        new AcaoSincroniaComDirecaoDaGarra()
+            .configurarProdutor(garraManager.getDisparadorDeEventoDeDirecao())
+            .adicionarConsumidor(joystickHaste.getConsumidorDeEventoDeDirecao());
+
+        garraManager.start();
     }
 
     void Update()
@@ -67,5 +76,6 @@ public class MainGame : MonoBehaviour
     {
         garraManager.fixedUpdate();
         coletaveisManager.FixedUpdate();
+        joystickHaste.fixedUpdate();
     }
 }

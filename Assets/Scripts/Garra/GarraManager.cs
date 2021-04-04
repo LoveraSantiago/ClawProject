@@ -12,6 +12,11 @@ public class GarraManager : ConsumidorDeEventoTrigger
         configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);
     }
 
+    public void start()
+    {
+        gerenciadorDeMovimentacao.iniciarMovimentacoes();
+    }
+
     public void update()
     {
         gerenciadorDeMovimentacao.update();
@@ -40,4 +45,9 @@ public class GarraManager : ConsumidorDeEventoTrigger
         garraColidiuCom(colliderDeColetavel);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
+
+    public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
+    {
+        return gerenciadorDeMovimentacao.getDisparadorDeEventoDeDirecao();
+    }
 }
