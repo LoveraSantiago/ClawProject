@@ -4,7 +4,6 @@ public class ContadorDeColetaveis
 {
     private int score = 0;
     private int qtdColetados = 0;
-
     private string[] nomesColetados;
 
     public ContadorDeColetaveis()

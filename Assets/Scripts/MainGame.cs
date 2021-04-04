@@ -8,8 +8,7 @@ public class MainGame : MonoBehaviour
     [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
     [Space(5)]    
     [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
-    [Space(5)]
-    [SerializeField] private BoardManagerDto boardManagerDto;
+    [Space(5)]    
     [SerializeField] private ColetaveisDto coletaveisDto;
     [Space(5)]
     [SerializeField] private SensoresDto sensoresDto;
@@ -23,9 +22,8 @@ public class MainGame : MonoBehaviour
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
-    private GarraManager garraManager;
-    private BoardManager boardManager;
-    //private ColetavelManager coletaveisManager;
+    private GarraManager garraManager;    
+    private ColetavelManager coletaveisManager;
     private SensoresManager sensoresManager;
 
     void OnEnable()
@@ -45,8 +43,9 @@ public class MainGame : MonoBehaviour
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
 
         garraManager      = new GarraManager(componentesDaGarra, mecanicaSelecionada);
-        //coletaveisManager = new ColetavelManager(coletaveisDto);
-        boardManager = new BoardManager(boardManagerDto);
+
+        coletaveisManager = new ColetavelManager(coletaveisDto);
+        //boardManager = new BoardManager(boardManagerDto);
         sensoresManager   = new SensoresManager(sensoresDto);
 
         //TEMPORARIO AQUI.... TALVEZ DEVESSEM ESTAR DENTROS DE UM OUTRO OBJETO AINDA NAO SEI        
@@ -55,7 +54,7 @@ public class MainGame : MonoBehaviour
 
         new PipelineDeEventoColetado()
             .configStep1LancadorDeEventoColetado(sensoresManager.getProdutorDeEventoDeColetado())
-            //.configStep2ProcessadorDeColetado(coletaveisManager.getProcessadorDeColetado())
+            .configStep2ProcessadorDeColetado(coletaveisManager.getProcessadorDeColetado())
             .configStep3DisplayImgConsumidor(displayDeImgs.getDisplayImgConsumidor())
             .configStep4displayScoreConsumidor(displayDeScores.getDisplayScoreConsumidor());
     }

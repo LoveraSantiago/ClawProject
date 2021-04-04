@@ -2,16 +2,26 @@ using UnityEngine;
 
 public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesColetado>
 {      
+    private ColetaveisDto coletaveisDto;
     private ContadorDeColetaveis contadorDeColetaveis;
-
     private ColetaveisParaBoard coletaveisDeVoltaBoard;
     private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
+    private Board board;
 
-    public ColetavelManager()
-    {        
+    public ColetavelManager(ColetaveisDto coletaveisDto)
+    {
+        this.coletaveisDto = coletaveisDto;        
         contadorDeColetaveis = new ContadorDeColetaveis();
-        coletaveisSaidaTubo = new ColetaveisParaTuboDeSaida();
         coletaveisDeVoltaBoard = new ColetaveisParaBoard();
+        coletaveisSaidaTubo = new ColetaveisParaTuboDeSaida();      
+
+        CriarBoard(coletaveisDto.BoardManagerDto);
+    }
+
+    private void CriarBoard(BoardManagerDto boardManagerDto)
+    {
+        board = new Board(boardManagerDto);
+        board.Create();
     }
 
     private InformacoesColetado processarColetado(GameObject gameObjectColetado)
