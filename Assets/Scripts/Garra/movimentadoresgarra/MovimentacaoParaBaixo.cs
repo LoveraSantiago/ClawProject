@@ -11,8 +11,8 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
 
     public MovimentacaoParaBaixo()
     {
-        anguloDesejadoDireita  = Quaternion.Euler(0, 0, -compDaGarra.AnguloAberturaGarra);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  compDaGarra.AnguloAberturaGarra);
+        anguloDesejadoDireita  = Quaternion.Euler(0, 0, -compDaGarra.AnguloAbertura);
+        anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  compDaGarra.AnguloAbertura);
 
         contadorDeTempoTravamento = new ContadorDeTempo(2, () => comunicadorComGerMovimentacao.trocarParaAgarrada());
     }
@@ -31,7 +31,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
 
     public override void fixedUpdate()
     {
-        incremento = Time.deltaTime * compDaGarra.VelocidadeAberturaGarra;
+        incremento = Time.deltaTime * compDaGarra.VelocidadeAnguloAbertura;
 
         compDaGarra.PincaEsquerda.rotation = Quaternion.RotateTowards(
             compDaGarra.PincaEsquerda.rotation, anguloDesejadoEsquerda, incremento);

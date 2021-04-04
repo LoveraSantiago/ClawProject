@@ -331,9 +331,11 @@ MonoBehaviour:
     velocMovHorizontal: 150
     velocMovCima: 500
     velocMovBaixo: 500
-    anguloAberturaGarra: 70
-    velocidadeAberturaGarra: 75
-    anguloFechamentoGarra: 10
+    anguloIdle: 0
+    velocAnguloIdle: 0
+    anguloAbertura: 70
+    velocAnguloAbertura: 75
+    anguloFechamento: 10
     velocidadeFechamentoGarra: 60
     rigidBody: {fileID: 1879337339}
     pincaEsquerda: {fileID: 1879337338}

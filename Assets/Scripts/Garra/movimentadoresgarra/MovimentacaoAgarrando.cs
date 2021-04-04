@@ -11,8 +11,8 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
 
     public MovimentacaoAgarrando()
     {
-        anguloDesejadoDireita  = Quaternion.Euler(0, 0,   compDaGarra.AnguloFechamentoGarra);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -compDaGarra.AnguloFechamentoGarra);        
+        anguloDesejadoDireita  = Quaternion.Euler(0, 0,   compDaGarra.AnguloFechamento);
+        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -compDaGarra.AnguloFechamento);        
     }
     
     public override void preInicio()
@@ -25,7 +25,7 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
     {        
         diminuirInerciaDaGarra();
 
-        incremento = Time.deltaTime * compDaGarra.VelocidadeFechamentoGarra;
+        incremento = Time.deltaTime * compDaGarra.VelocidadeAnguloFechamento;
 
         //FECHANDO A GARRA ESQUERDA
         compDaGarra.PincaEsquerda.rotation = Quaternion.RotateTowards(
@@ -45,6 +45,6 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
 
     private bool isGarraFechadaNoAngulo()
     {
-        return Mathf.Round(compDaGarra.PincaDireita.rotation.eulerAngles.z) == compDaGarra.AnguloFechamentoGarra;
+        return Mathf.Round(compDaGarra.PincaDireita.rotation.eulerAngles.z) == compDaGarra.AnguloFechamento;
     }
 }
