@@ -6,6 +6,7 @@ public abstract class MovimentacaoDaGarra
 
     protected static ComponentesDaGarraDto compDaGarra;
     protected static ComunicadorComGerMovimentacao comunicadorComGerMovimentacao;
+    protected static PincaDaGarra pincas;
 
     private static GameObject objetoAtraido;
     private static int layerAnterior;
@@ -19,6 +20,7 @@ public abstract class MovimentacaoDaGarra
     public static void configurarComponentesDaGarraDto(ComponentesDaGarraDto componentesDaGarraDtoArg)
     {
         compDaGarra = componentesDaGarraDtoArg;
+        pincas = new PincaDaGarra(compDaGarra.PincaEsquerda, compDaGarra.PincaDireita);
     }
 
     public static void configurarCommunicatorComGarra(ComunicadorComGerMovimentacao comunicadorComGerMovimentacaoArg)
