@@ -25,7 +25,8 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
 
         pincas.fixUpdateRotacionamento(compDaGarra.VelocidadeAnguloFechamento, anguloDesejadoEsquerda, anguloDesejadoDireita);
         
-        if (pincas.isNoAngulo(compDaGarra.AnguloFechamento))
+        //if (pincas.isDireitaNoAngulo(compDaGarra.AnguloFechamento))
+        if (pincas.isDireitaNoAngulo(anguloDesejadoDireita))
         {            
             compDaGarra.RigidBody.mass = compDaGarra.RigidBody.mass / INCREMENTO_DE_MASSA;
             comunicadorComGerMovimentacao.trocarParaAcaoSubindo();

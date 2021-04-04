@@ -8,7 +8,8 @@ public class ComponentesDaGarraDto
     [SerializeField] private float velocMovCima;
     [SerializeField] private float velocMovBaixo;
     [Space(5)]
-    [SerializeField] private float anguloIdle;
+    [SerializeField] private float anguloIdleMin;
+    [SerializeField] private float anguloIdleMax;
     [SerializeField] private float velocAnguloIdle;
     [Space(5)]
     [SerializeField] private float anguloAbertura;
@@ -26,6 +27,10 @@ public class ComponentesDaGarraDto
     public float VelocMovHorizontal { get { return velocMovHorizontal; } }   
     public float VelocMovCima { get { return velocMovCima; } }   
     public float VelocMovBaixo { get { return velocMovBaixo * -1; } }
+
+    public float AnguloIdleMin { get { return anguloIdleMin; } }
+    public float AnguloIdleMax { get { return anguloIdleMax; } }
+    public float VelocAnguloIdle { get { return velocAnguloIdle; } }
 
     public float AnguloAbertura { get { return anguloAbertura; } }
     public float VelocidadeAnguloAbertura { get { return velocAnguloAbertura; } }
