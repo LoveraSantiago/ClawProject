@@ -334,9 +334,9 @@ MonoBehaviour:
     anguloIdle: 0
     velocAnguloIdle: 0
     anguloAbertura: 70
-    velocAnguloAbertura: 75
+    velocAnguloAbertura: 4
     anguloFechamento: 10
-    velocidadeFechamentoGarra: 60
+    velocAnguloFechamento: 1.5
     rigidBody: {fileID: 1879337339}
     pincaEsquerda: {fileID: 1879337338}
     pincaDireita: {fileID: 1879337337}

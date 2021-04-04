@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class MovimentacaoParaBaixo : MovimentacaoDaGarra
 {
-    private float incremento;    
-
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;   
     
@@ -31,13 +29,8 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
 
     public override void fixedUpdate()
     {
-        incremento = Time.deltaTime * compDaGarra.VelocidadeAnguloAbertura;
-
-        compDaGarra.PincaEsquerda.rotation = Quaternion.RotateTowards(
-            compDaGarra.PincaEsquerda.rotation, anguloDesejadoEsquerda, incremento);
-
-        compDaGarra.PincaDireita.rotation =  Quaternion.RotateTowards(
-            compDaGarra.PincaDireita.rotation,  anguloDesejadoDireita , incremento);
+        pincas.fixUpdateRotacionamento(compDaGarra.VelocidadeAnguloAbertura,
+            anguloDesejadoEsquerda, anguloDesejadoDireita);
 
         compDaGarra.RigidBody.velocity = new Vector2(0,           
            1 * compDaGarra.VelocMovBaixo * Time.fixedDeltaTime);

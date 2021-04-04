@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class MovimentacaoLateralZigZag : MovimentacaoDaGarra
 {    
-
     private float movimentoLateral;        
     private float direcao;    
 
