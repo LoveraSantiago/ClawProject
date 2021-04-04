@@ -12,7 +12,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
         anguloDesejadoDireita  = Quaternion.Euler(0, 0, -compDaGarra.AnguloAbertura);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  compDaGarra.AnguloAbertura);
 
-        contadorDeTempoTravamento = new ContadorDeTempo(2, () => comunicadorComGerMovimentacao.trocarParaAgarrada());
+        contadorDeTempoTravamento = new ContadorDeTempo(1.5f, () => comunicadorComGerMovimentacao.trocarParaAgarrada());
     }
 
     public override void preInicio()
