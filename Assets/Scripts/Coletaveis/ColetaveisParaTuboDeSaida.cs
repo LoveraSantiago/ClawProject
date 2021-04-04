@@ -1,3 +1,6 @@
+using System;
+using UnityEngine;
+
 public class ColetaveisParaTuboDeSaida : ResultadoDoContadorColetaveis
 {
     public void processarResultado(string[] coletados)
@@ -5,5 +8,8 @@ public class ColetaveisParaTuboDeSaida : ResultadoDoContadorColetaveis
         
     }
 
-    
+    internal void devolver(string[] coletaveis)
+    {
+        Debug.Log("ColetaveisParaTuboDeSaida - devolver");
+    }
 }

@@ -1,28 +1,38 @@
 using UnityEngine;
 
 public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesColetado>
-{   
+{
     private ColetaveisDto coletaveisDto;
     private ContadorDeColetaveis contadorDeColetaveis;
-
     private ColetaveisParaBoard coletaveisDeVoltaBoard;
     private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
+    private Board board;
 
     public ColetavelManager(ColetaveisDto coletaveisDto)
-    {        
+    {
+        this.coletaveisDto = coletaveisDto;
         contadorDeColetaveis = new ContadorDeColetaveis();
-        coletaveisSaidaTubo = new ColetaveisParaTuboDeSaida();
         coletaveisDeVoltaBoard = new ColetaveisParaBoard();
+        coletaveisSaidaTubo = new ColetaveisParaTuboDeSaida();
 
-        this.coletaveisDto = coletaveisDto;        
+        CriarBoard(coletaveisDto.BoardDto);
+    }
+
+    private void CriarBoard(BoardDto boardDto)
+    {
+        board = new Board(boardDto);
+        board.Create();
     }
 
     private InformacoesColetado processarColetado(GameObject gameObjectColetado)
-    {        
+    {
         Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
         gameObjectColetado.SetActive(false);
-        
-        contadorDeColetaveis.adicionarColetado(gameObjectColetado.name, coletaveisSaidaTubo, coletaveisDeVoltaBoard);        
+
+        contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);
+
+        board.devolver(contadorDeColetaveis.getArrayBoard());
+        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo());
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
@@ -42,7 +52,7 @@ public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesCol
         }
         else
         {
-            
+
         }
     }
 
@@ -58,11 +68,11 @@ public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesCol
     }
 
     //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, InformacoesColetado> INICIO
-    //É O PRIMEIRO DO PIPELINEDEEVENTOCOLETADO 
+    //ï¿½ O PRIMEIRO DO PIPELINEDEEVENTOCOLETADO 
     //RECEBE UM GAMEOBJECT E DEVOLVE UM INFORMACOESCOLETADOS
     public InformacoesColetado transformarEvento(GameObject gameObjectColetado)
     {
-        return processarColetado(gameObjectColetado);        
+        return processarColetado(gameObjectColetado);
     }
     //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, InformacoesColetado> FIM
 }
