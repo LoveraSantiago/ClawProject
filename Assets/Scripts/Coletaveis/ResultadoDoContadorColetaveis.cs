@@ -1,5 +1,5 @@
 public interface ResultadoDoContadorColetaveis 
 {
-    void processarResultado(string[] coletados);
+    void devolver(string[] coletados);
     
 }

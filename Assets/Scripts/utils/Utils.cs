@@ -14,4 +14,9 @@ public class Utils
     {
         return !gameObject.CompareTag("Container");
     }
+
+    public static bool isTag(Collider2D collider, string nomeTag)
+    {
+        return collider.gameObject.CompareTag(nomeTag);
+    }
 }

@@ -18,8 +18,8 @@ public class ContadorDeColetaveis
 
     public void adicionarColetado(string nomeColetado)
     {
-        Debug.Log(nomeColetado);
-        adicionaAoContainerDeColetados(nomeColetado);        
+       // Debug.Log(nomeColetado);
+        adicionaAoContainerDeColetados(nomeColetado);
 
         if (qtdColetados > nomesColetados.Length - 1)
         {
