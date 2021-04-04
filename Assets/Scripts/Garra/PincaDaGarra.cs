@@ -24,9 +24,6 @@ public class PincaDaGarra
 
     public bool isDireitaNoAngulo(Quaternion anguloDesejado)
     {
-        Debug.Log("Pinca:  " + pincaDireita.rotation.eulerAngles.z);
-        Debug.Log("Desejo: " + anguloDesejado.eulerAngles.z);
-
         return Mathf.Round(pincaDireita.rotation.eulerAngles.z) == Mathf.Round(anguloDesejado.eulerAngles.z);        
     }
 }
