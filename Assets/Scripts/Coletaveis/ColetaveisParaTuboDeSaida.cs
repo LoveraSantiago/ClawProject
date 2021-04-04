@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class ColetaveisParaTuboDeSaida : ResultadoDoContadorColetaveis,
                                          ConsumidorDeEventoTrigger
 {
-    private readonly float GRAVIDADE = 0.90f;
+    private readonly float GRAVIDADE = 0.65f;
     private int torque = 550;
     private int contadorSaindoTubo;
 
