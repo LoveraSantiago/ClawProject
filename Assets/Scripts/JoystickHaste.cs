@@ -20,7 +20,7 @@ public class JoystickHaste : ConsumidorDeEvento<DirecaoDaGarra>
     public JoystickHaste(Transform hasteJoystick, float velocidade)
     {
         this.hasteJoystick = hasteJoystick;
-        this.velocidade = velocidade * .005f;//AJUSTANDO PARA PROPORCAO TAMANHO JOYSTICK
+        this.velocidade = velocidade * .0025f;//AJUSTANDO PARA PROPORCAO TAMANHO JOYSTICK
 
         anguloDesejadoDireita = Quaternion.Euler(0, 0, -ANGULO);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0, ANGULO);
