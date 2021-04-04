@@ -62,6 +62,8 @@ public class MainGame : MonoBehaviour
         new AcaoSincroniaComDirecaoDaGarra()
             .configurarProdutor(garraManager.getDisparadorDeEventoDeDirecao())
             .adicionarConsumidor(joystickHaste.getConsumidorDeEventoDeDirecao());
+
+        garraManager.start();
     }
 
     void Update()

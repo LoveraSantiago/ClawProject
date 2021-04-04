@@ -18,6 +18,10 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao {
         movimentacaoParaCima = new MovimentacaoParaCima();
         movimentacaoParaBaixo = new MovimentacaoParaBaixo();
         movimentacaoAgarrando = new MovimentacaoAgarrando();
+    }
+
+    public void iniciarMovimentacoes()
+    {
         trocarMovimentador(movimentacaoLateral);
     }
 
@@ -75,7 +79,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao {
     }
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
 
-    public ProdutorDeEvento<Direcao> getDisparadorDeEventoDeDirecao()
+    public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
     {
         return movimentacaoLateral.getProdutorDeEventoDeDirecao();
     }
