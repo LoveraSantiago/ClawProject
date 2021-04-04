@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ColetaveisParaTuboDeSaida : ResultadoDoContadorColetaveis
 {
+    private int torque = 550;
     private int contador;
 
     private Vector3[] posicoesOriginais;
@@ -19,8 +20,9 @@ public class ColetaveisParaTuboDeSaida : ResultadoDoContadorColetaveis
         Debug.Log("Devolver chamado com " + coletados.Length);
         for(contador = 0; contador < coletados.Length; contador++)
         {
-            rigidBodies[contador].gravityScale = .75F;
-            rigidBodies[contador].AddTorque(900);
+            torque *= -1;
+            rigidBodies[contador].gravityScale = .55F;
+            rigidBodies[contador].AddTorque(torque);
         }        
     }    
 
