@@ -27,6 +27,11 @@ public class JoystickHaste : ConsumidorDeEvento<Direcao>
         hasteJoystick.rotation = Quaternion.RotateTowards(hasteJoystick.rotation, anguloDesejadoAtual, incremento);
     }
 
+    public ConsumidorDeEvento<Direcao> getConsumidorDeEventoDeDirecao()
+    {
+        return this;
+    }
+
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<Direcao> INICIO
     //CONSOME EVENTO DE DIRECAO DISPARADO PELA GARRA PARA TER SINCRONIA NA DIRECAO DA GARRA
     public void consumirEvento(Direcao direcao)

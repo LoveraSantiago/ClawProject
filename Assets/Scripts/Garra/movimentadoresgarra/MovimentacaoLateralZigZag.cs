@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoLateralZigZag : MovimentacaoDaGarra
+public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
 {    
     private float movimentoLateral;        
     private float direcao;
@@ -15,7 +15,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarra
     private Quaternion anguloDesejadoDireitaMax;
 
     private Quaternion anguloDesejadoEsquerdaAtual;
-    private Quaternion anguloDesejadoDireitaAtual;
+    private Quaternion anguloDesejadoDireitaAtual;    
 
     public MovimentacaoLateralZigZag()
     {
@@ -23,8 +23,8 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarra
         anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMin);
 
         anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMax);
-        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMax);       
-
+        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMax);        
+        
         direcao = 1;        
     }
 
@@ -61,11 +61,13 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarra
         {
             direcao = -1;     
             diminuirInerciaDaGarra();
+            produtorEventoDirecao.produziuEvento(Direcao.ESQUERDA);
         }
         else if (compDaGarra.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
         {
             direcao = 1;     
             diminuirInerciaDaGarra();
+            produtorEventoDirecao.produziuEvento(Direcao.DIREITA);
         }
         else
         {

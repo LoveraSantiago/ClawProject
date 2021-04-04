@@ -40,4 +40,9 @@ public class GarraManager : ConsumidorDeEventoTrigger
         garraColidiuCom(colliderDeColetavel);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
+
+    public ProdutorDeEvento<Direcao> getDisparadorDeEventoDeDirecao()
+    {
+        return gerenciadorDeMovimentacao.getDisparadorDeEventoDeDirecao();
+    }
 }

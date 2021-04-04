@@ -7,7 +7,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao {
     private MovimentacaoDaGarra movimentacaoParaBaixo;
     private MovimentacaoDaGarra movimentacaoAgarrando;
     private MovimentacaoParaCima movimentacaoParaCima;
-    private MovimentacaoDaGarra movimentacaoLateral;
+    private MovimentacaoDaGarraHorizontal movimentacaoLateral;
 
     public GerenciadorDeMovimentacao(ComponentesDaGarraDto componentesDaGarraDto,
         GarraManager.MECANICA_GARRA mecanicaGarraEscolhida) {
@@ -33,7 +33,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao {
         movimentacaoAtual.garraColidiuCom(other.gameObject);
     }
 
-    private MovimentacaoDaGarra selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida) {
+    private MovimentacaoDaGarraHorizontal selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida) {
         switch (mecanicaGarraEscolhida) {
             case (GarraManager.MECANICA_GARRA.ZIG_ZAG):
                 return new MovimentacaoLateralZigZag();
@@ -74,4 +74,9 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao {
         movimentacaoAtual = movimentador;
     }
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
+
+    public ProdutorDeEvento<Direcao> getDisparadorDeEventoDeDirecao()
+    {
+        return movimentacaoLateral.getProdutorDeEventoDeDirecao();
+    }
 }
