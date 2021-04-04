@@ -19,6 +19,7 @@ public class MainGame : MonoBehaviour
     [SerializeField] private GameObject displayScore2;
     [SerializeField] private GameObject displayScore3;
     [SerializeField] private Button btnSair;
+    [SerializeField] private Transform hasteJoystick;
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
