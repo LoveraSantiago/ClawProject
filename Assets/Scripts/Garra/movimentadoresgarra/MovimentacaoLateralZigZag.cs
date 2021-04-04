@@ -32,6 +32,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
     {
         desligarAtracaoNoObjeto();
         configurarAngulosParaMax();
+        dispararEventoDirecao();
     }
 
     public override void update()
@@ -39,6 +40,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 posicaoInicial = compDaGarra.RigidBody.transform.localPosition;            
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
             comunicadorComGerMovimentacao.trocarParaAcaoDescendo(posicaoInicial);
         }
     }
@@ -61,13 +63,13 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         {
             direcao = -1;     
             diminuirInerciaDaGarra();
-            produtorEventoDirecao.produziuEvento(Direcao.ESQUERDA);
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
         }
         else if (compDaGarra.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
         {
             direcao = 1;     
             diminuirInerciaDaGarra();
-            produtorEventoDirecao.produziuEvento(Direcao.DIREITA);
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
         }
         else
         {
@@ -88,6 +90,18 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
                 configurarAngulosParaMax();
             }
         }       
+    }
+
+    private void dispararEventoDirecao()
+    {
+        if(direcao == 1)
+        {
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
+        }
+        else
+        {
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
+        }
     }
 
     private void configurarAngulosParaMax()

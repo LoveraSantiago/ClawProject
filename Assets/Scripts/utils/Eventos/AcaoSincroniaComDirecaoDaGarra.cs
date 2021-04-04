@@ -1,3 +1,3 @@
-public class AcaoSincroniaComDirecaoDaGarra : ProdutorConsumidoresDeEvento<Direcao>
+public class AcaoSincroniaComDirecaoDaGarra : ProdutorConsumidoresDeEvento<DirecaoDaGarra>
 {    
 }

@@ -355,6 +355,7 @@ MonoBehaviour:
   displayScore2: {fileID: 419047350}
   displayScore3: {fileID: 514353999}
   btnSair: {fileID: 1780015346}
+  hasteJoystick: {fileID: 1655319868}
 --- !u!1 &514353999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 363533896306271071, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -1051,6 +1052,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 683841257340749432, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1655319868 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6406990384794630421, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1780015344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1512,22 @@ PrefabInstance:
     - target: {fileID: 6406990384794630421, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406990384794630421, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406990384794630421, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406990384794630421, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406990384794630421, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6406990385281862657, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_LocalPosition.y
