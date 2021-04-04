@@ -44,8 +44,7 @@ public class MainGame : MonoBehaviour
 
         garraManager      = new GarraManager(componentesDaGarra, mecanicaSelecionada);
 
-        coletaveisManager = new ColetavelManager(coletaveisDto);
-        //boardManager = new BoardManager(boardManagerDto);
+        coletaveisManager = new ColetavelManager(coletaveisDto);        
         sensoresManager   = new SensoresManager(sensoresDto);
 
         //TEMPORARIO AQUI.... TALVEZ DEVESSEM ESTAR DENTROS DE UM OUTRO OBJETO AINDA NAO SEI        

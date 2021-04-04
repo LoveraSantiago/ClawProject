@@ -4,7 +4,7 @@ using UnityEngine;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class BoardManagerDto
+public class BoardDto
 {  
     public List<Sprite> characters = new List<Sprite>();
     public GameObject tile;

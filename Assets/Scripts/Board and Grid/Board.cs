@@ -35,7 +35,7 @@ public class Board
     private float xOffset;
     private float yOffset;
 
-    public Board(BoardManagerDto boardManagerDto)
+    public Board(BoardDto boardManagerDto)
     {        
         characters = boardManagerDto.characters;
         tile = boardManagerDto.tile;
@@ -84,6 +84,8 @@ public class Board
         }
     }
 
-
-
+    internal void devolver(string[] coletaveis)
+    {
+        Debug.Log("Board - devolver");
+    }
 }

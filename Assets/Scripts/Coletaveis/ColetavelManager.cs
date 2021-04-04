@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesColetado>
-{      
+{
     private ColetaveisDto coletaveisDto;
     private ContadorDeColetaveis contadorDeColetaveis;
     private ColetaveisParaBoard coletaveisDeVoltaBoard;
@@ -10,26 +10,29 @@ public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesCol
 
     public ColetavelManager(ColetaveisDto coletaveisDto)
     {
-        this.coletaveisDto = coletaveisDto;        
+        this.coletaveisDto = coletaveisDto;
         contadorDeColetaveis = new ContadorDeColetaveis();
         coletaveisDeVoltaBoard = new ColetaveisParaBoard();
-        coletaveisSaidaTubo = new ColetaveisParaTuboDeSaida();      
+        coletaveisSaidaTubo = new ColetaveisParaTuboDeSaida();
 
-        CriarBoard(coletaveisDto.BoardManagerDto);
+        CriarBoard(coletaveisDto.BoardDto);
     }
 
-    private void CriarBoard(BoardManagerDto boardManagerDto)
+    private void CriarBoard(BoardDto boardDto)
     {
-        board = new Board(boardManagerDto);
+        board = new Board(boardDto);
         board.Create();
     }
 
     private InformacoesColetado processarColetado(GameObject gameObjectColetado)
-    {        
+    {
         Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
         gameObjectColetado.SetActive(false);
-        
-        contadorDeColetaveis.adicionarColetado(gameObjectColetado.name, coletaveisSaidaTubo, coletaveisDeVoltaBoard);        
+
+        contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);
+
+        board.devolver(contadorDeColetaveis.getArrayBoard());
+        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo());
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
@@ -49,7 +52,7 @@ public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesCol
         }
         else
         {
-            
+
         }
     }
 
@@ -69,7 +72,7 @@ public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesCol
     //RECEBE UM GAMEOBJECT E DEVOLVE UM INFORMACOESCOLETADOS
     public InformacoesColetado transformarEvento(GameObject gameObjectColetado)
     {
-        return processarColetado(gameObjectColetado);        
+        return processarColetado(gameObjectColetado);
     }
     //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, InformacoesColetado> FIM
 }

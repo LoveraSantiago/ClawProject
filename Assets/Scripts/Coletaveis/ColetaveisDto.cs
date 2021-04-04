@@ -8,8 +8,8 @@ public class ColetaveisDto
 {    
     [SerializeField] private Text scoreTextField;
     [Space(5)]    
-    public BoardManagerDto boardManagerDto;    
+    public BoardDto boardDto;    
     
     public Text ScoreTextField { get { return scoreTextField; } }
-    public BoardManagerDto BoardManagerDto { get { return boardManagerDto; } }
+    public BoardDto BoardDto { get { return boardDto; } }
 }
