@@ -8,6 +8,9 @@ public class ComponentesDaGarraDto
     [SerializeField] private float velocMovCima;
     [SerializeField] private float velocMovBaixo;
     [Space(5)]
+    [SerializeField] private float anguloIdle;
+    [SerializeField] private float velocAnguloIdle;
+    [Space(5)]
     [SerializeField] private float anguloAberturaGarra;
     [SerializeField] private float velocidadeAberturaGarra;
     [Space(5)]
