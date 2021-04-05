@@ -12,6 +12,7 @@ TagManager:
   - Laranja
   - Coco
   - Container
+  - ColetavelDoTubo
   layers:
   - Default
   - TransparentFX

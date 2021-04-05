@@ -15,9 +15,7 @@ public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesCol
         this.coletaveisDto = coletaveisDto;
         contadorDeColetaveis = new ContadorDeColetaveis(board.getTotalColetaveis());
         coletaveisDeVoltaBoard = new ColetaveisParaBoard();
-        coletaveisSaidaTubo = new ColetaveisParaTuboDeSaida();
-
-        
+        coletaveisSaidaTubo = new ColetaveisParaTuboDeSaida(coletaveisDto);       
     }
 
     private void CriarBoard(BoardDto boardDto)
