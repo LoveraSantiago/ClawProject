@@ -67,7 +67,7 @@ public class ContadorDeColetaveis
 
     public void resetCena()
     {
-        SceneManager.LoadScene("MainContainerSceneV2");
+        SceneManager.LoadScene("MapScene");
     }
 
     public bool hasResetColetados()

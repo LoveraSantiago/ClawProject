@@ -35,8 +35,8 @@ public class TitleManager : MonoBehaviour
         irParaMainScene();
     }
 
-    private void irParaMainScene()
+    public void irParaMainScene()
     {        
-        SceneManager.LoadScene("MainContainerSceneV2");
+        SceneManager.LoadScene("MapScene");
     }
 }
