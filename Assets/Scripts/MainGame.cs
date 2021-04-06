@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 #pragma warning disable 0649
-public class MainGame : MonoBehaviour {
+public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
     [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
     [Space (5)]
     [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
@@ -19,6 +19,8 @@ public class MainGame : MonoBehaviour {
     [SerializeField] private GameObject displayScore3;
     [SerializeField] private Button btnSair;
     [SerializeField] private Transform hasteJoystick;
+    [SerializeField] private GameObject parentParticulas;
+
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
@@ -26,6 +28,8 @@ public class MainGame : MonoBehaviour {
     private ColetavelManager coletaveisManager;
     private SensoresManager sensoresManager;
     private JoystickHaste joystickHaste;
+
+    private ParticleSystem particleSystem;
 
     void OnEnable () {
         //for�ando escala Y pra ficar dentro da safe area
@@ -40,11 +44,13 @@ public class MainGame : MonoBehaviour {
         btnSair.onClick.AddListener (() => SceneManager.LoadScene ("TitleScene"));
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica (mecanicaAtual);
-
         garraManager = new GarraManager (componentesDaGarra, mecanicaSelecionada);
-
         coletaveisManager = new ColetavelManager (coletaveisDto);
         sensoresManager = new SensoresManager (sensoresDto);
+
+        particleSystem = parentParticulas.GetComponent<ParticleSystem>();
+        particleSystem.Stop();
+        particleSystem.gameObject.SetActive(true);
 
         //TEMPORARIO AQUI.... TALVEZ DEVESSEM ESTAR DENTROS DE UM OUTRO OBJETO AINDA NAO SEI               
         DisplayDeImagens displayDeImgs = new DisplayDeImagens (coletadosSprites, 0.5f, this);
@@ -55,7 +61,8 @@ public class MainGame : MonoBehaviour {
             .configStep1LancadorDeEventoColetado (sensoresManager.getProdutorDeEventoDeColetado ())
             .configStep2ProcessadorDeColetado (coletaveisManager.getProcessadorDeColetado ())
             .configStep3DisplayImgConsumidor (displayDeImgs.getDisplayImgConsumidor ())
-            .configStep4displayScoreConsumidor (displayDeScores.getDisplayScoreConsumidor ());
+            .configStep4displayScoreConsumidor (displayDeScores.getDisplayScoreConsumidor ())
+            .configStep5displayScoreConsumidor(this);
 
         new AcaoSincroniaComDirecaoDaGarra ()
             .configurarProdutor (garraManager.getDisparadorDeEventoDeDirecao ())
@@ -73,5 +80,10 @@ public class MainGame : MonoBehaviour {
         garraManager.fixedUpdate ();
         coletaveisManager.FixedUpdate ();
         joystickHaste.fixedUpdate ();
+    }
+
+    public void consumirEvento(InformacoesColetado evento)
+    {
+        particleSystem.Play();
     }
 }

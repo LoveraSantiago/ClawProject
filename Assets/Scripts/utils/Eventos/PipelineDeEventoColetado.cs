@@ -5,6 +5,7 @@ public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
     private TransformadorDeEvento<GameObject, InformacoesColetado> processadorDeColetado;
     private BiConsumidorDeEvento<Sprite, bool> displayImgsConsumidor;
     private ConsumidorDeEvento<int> displayScoreConsumidor;
+    private ConsumidorDeEvento<InformacoesColetado> consumidorInformacoesColetado;
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<GameObject> INICIO
     //� CHAMADO QUANDO O SENSOR DE COLETADO � ACIONADO
@@ -38,6 +39,12 @@ public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
     public PipelineDeEventoColetado configStep4displayScoreConsumidor(ConsumidorDeEvento<int> displayScoreConsumidor)
     {
         this.displayScoreConsumidor = displayScoreConsumidor;
+        return this;
+    }
+
+    public PipelineDeEventoColetado configStep5displayScoreConsumidor(ConsumidorDeEvento<InformacoesColetado> consumidorInformacoesColetado)
+    {
+        this.consumidorInformacoesColetado = consumidorInformacoesColetado;
         return this;
     }
 
