@@ -24,8 +24,7 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
 
     private GarraManager garraManager;
     private ColetavelManager coletaveisManager;
-    private MaquinaManager maquinaManager;
-    
+    private MaquinaManager maquinaManager;    
 
     private ParticleSystem particleSystem;
 
@@ -44,20 +43,17 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica (mecanicaAtual);
         garraManager = new GarraManager (componentesDaGarra, mecanicaSelecionada);
         coletaveisManager = new ColetavelManager (coletaveisDto);
-        maquinaManager = new MaquinaManager(hasteJoystick, componentesDaGarra.VelocMovHorizontal);
+        maquinaManager = new MaquinaManager(hasteJoystick, componentesDaGarra.VelocMovHorizontal,
+            coletadosSprites, displayScores, this);
 
         particleSystem = parentParticulas.GetComponent<ParticleSystem>();
         particleSystem.Stop();
-        particleSystem.gameObject.SetActive(true);
-
-        //TEMPORARIO AQUI.... TALVEZ DEVESSEM ESTAR DENTROS DE UM OUTRO OBJETO AINDA NAO SEI               
-        DisplayDeImagens displayDeImgs = new DisplayDeImagens (coletadosSprites, 0.5f, this);
-        DisplayDeScores displayDeScores = new DisplayDeScores (displayScores);
+        particleSystem.gameObject.SetActive(true);        
         
         new AcaoEventoColetado()
-            .configurarProdutor(coletaveisManager.getProdutorDeInformacaoDoColetado())
-            .adicionarConsumidor(displayDeImgs.getDisplayImagensConsumidor())
-            .adicionarConsumidor(displayDeScores.getDisplayScoreConsumidor())
+            .configurarProdutor(coletaveisManager.getProdutorDeInfoColetado())
+            .adicionarConsumidor(maquinaManager.getDisplayImagensConsumidorInfoColetado())
+            .adicionarConsumidor(maquinaManager.getDisplayScoreConsumidorInfoColetado())
             .adicionarConsumidor(this);
 
         new AcaoSincroniaComDirecaoDaGarra ()
