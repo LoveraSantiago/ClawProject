@@ -14,9 +14,7 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
     //Componentes uis temporarios aqui...    
     [Space (5)]
     [SerializeField] private SpriteRenderer[] coletadosSprites = new SpriteRenderer[3]; //3
-    [SerializeField] private GameObject displayScore1;
-    [SerializeField] private GameObject displayScore2;
-    [SerializeField] private GameObject displayScore3;
+    [SerializeField] private GameObject[] displayScores = new GameObject[3];    
     [SerializeField] private Button btnSair;
     [SerializeField] private Transform hasteJoystick;
     [SerializeField] private GameObject parentParticulas;
@@ -51,7 +49,7 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
 
         //TEMPORARIO AQUI.... TALVEZ DEVESSEM ESTAR DENTROS DE UM OUTRO OBJETO AINDA NAO SEI               
         DisplayDeImagens displayDeImgs = new DisplayDeImagens (coletadosSprites, 0.5f, this);
-        DisplayDeScores displayDeScores = new DisplayDeScores (displayScore1, displayScore2, displayScore3);
+        DisplayDeScores displayDeScores = new DisplayDeScores (displayScores);
         joystickHaste = new JoystickHaste (hasteJoystick, componentesDaGarra.VelocMovHorizontal);
 
         new AcaoEventoColetado()

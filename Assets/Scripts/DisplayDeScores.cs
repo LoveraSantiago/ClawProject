@@ -6,11 +6,11 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>
     private DisplayDigito displayDezena;
     private DisplayDigito displayUnidade;
 
-    public DisplayDeScores(GameObject goDisplay1, GameObject goDisplay2, GameObject goDisplay3)
+    public DisplayDeScores(GameObject[] displayScores)
     {
-        displayCentena = new DisplayDigito(goDisplay1);
-        displayDezena = new DisplayDigito(goDisplay2);
-        displayUnidade = new DisplayDigito(goDisplay3);        
+        displayCentena = new DisplayDigito(displayScores[0]);
+        displayDezena = new DisplayDigito(displayScores[1]);
+        displayUnidade = new DisplayDigito(displayScores[2]);        
     }
 
    
