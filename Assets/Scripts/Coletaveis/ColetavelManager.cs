@@ -50,7 +50,9 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
         InformacoesColetado infoColetado = new InformacoesColetado();
         infoColetado.addInfosDisplayColetados(sprite, contadorDeColetaveis.hasResetColetados());
         infoColetado.addInfosDisplayScore(contadorDeColetaveis.getScore());
-        produtorDeInformacoesDoColetado.produziuEvento(infoColetado);        
+        infoColetado.addInfosPosicao(gameObjectColetado.transform.position);
+
+        produtorDeInformacoesDoColetado.produziuEvento(infoColetado);         
     }
 
     public void fixedUpdate() { }    

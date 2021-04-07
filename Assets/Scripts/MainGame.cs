@@ -3,30 +3,27 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 #pragma warning disable 0649
-public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
+public class MainGame : MonoBehaviour{
 
     [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
     [Space (5)]
     [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
     [Space (5)]
     [SerializeField] private ColetaveisDto coletaveisDto;
-    
-    //Componentes uis temporarios aqui...    
-    [Space (5)]
-    [SerializeField] private SpriteRenderer[] coletadosSprites = new SpriteRenderer[3]; //3
-    [SerializeField] private GameObject[] displayScores = new GameObject[3];    
-    [SerializeField] private Transform hasteJoystick;
+    [Space(5)]
+    [SerializeField] private MaquinaDto maquinaDto;
 
-    [SerializeField] private Button btnSair;
+    //Componentes uis temporarios aqui...    
+    [Space(15)]
     [SerializeField] private GameObject parentParticulas;
+    [Space(5)]
+    [SerializeField] private Button btnSair;
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
     private GarraManager garraManager;
     private ColetavelManager coletaveisManager;
-    private MaquinaManager maquinaManager;    
-
-    private ParticleSystem particleSystem;
+    private MaquinaManager maquinaManager;        
 
     void OnEnable () {
         //for�ando escala Y pra ficar dentro da safe area
@@ -43,18 +40,15 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica (mecanicaAtual);
         garraManager = new GarraManager (componentesDaGarra, mecanicaSelecionada);
         coletaveisManager = new ColetavelManager (coletaveisDto);
-        maquinaManager = new MaquinaManager(hasteJoystick, componentesDaGarra.VelocMovHorizontal,
-            coletadosSprites, displayScores, this);
+        maquinaManager = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, this);
 
-        particleSystem = parentParticulas.GetComponent<ParticleSystem>();
-        particleSystem.Stop();
-        particleSystem.gameObject.SetActive(true);        
+        EfeitoColetado efeitoColetado = new EfeitoColetado(parentParticulas);
         
         new AcaoEventoColetado()
             .configurarProdutor(coletaveisManager.getProdutorDeInfoColetado())
             .adicionarConsumidor(maquinaManager.getDisplayImagensConsumidorInfoColetado())
             .adicionarConsumidor(maquinaManager.getDisplayScoreConsumidorInfoColetado())
-            .adicionarConsumidor(this);
+            .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado());
 
         new AcaoSincroniaComDirecaoDaGarra ()
             .configurarProdutor (garraManager.getDisparadorDeEventoDeDirecao ())
@@ -72,11 +66,5 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
         garraManager.fixedUpdate ();
         coletaveisManager.fixedUpdate ();
         maquinaManager.fixedUpdate();
-    }
-
-    public void consumirEvento(InformacoesColetado evento)
-    {
-        Debug.Log("Disparar particulas");
-        particleSystem.Play();
-    }
+    }    
 }

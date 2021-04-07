@@ -195,7 +195,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -5167,17 +5167,8 @@ MonoBehaviour:
     - {fileID: 419047350}
     - {fileID: 514353999}
     hasteJoystick: {fileID: 1655319868}
-  coletadosSprites:
-  - {fileID: 1552986179}
-  - {fileID: 523200846}
-  - {fileID: 229104350}
-  displayScores:
-  - {fileID: 660903945}
-  - {fileID: 419047350}
-  - {fileID: 514353999}
-  hasteJoystick: {fileID: 1655319868}
-  btnSair: {fileID: 1780015346}
   parentParticulas: {fileID: 1488198862}
+  btnSair: {fileID: 1780015346}
 --- !u!1 &514353999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 363533896306271071, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -5463,7 +5454,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -15774,7 +15765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488198862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 19295420}
@@ -15823,7 +15814,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
