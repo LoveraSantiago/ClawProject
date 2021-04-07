@@ -15,8 +15,9 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
     [Space (5)]
     [SerializeField] private SpriteRenderer[] coletadosSprites = new SpriteRenderer[3]; //3
     [SerializeField] private GameObject[] displayScores = new GameObject[3];    
-    [SerializeField] private Button btnSair;
     [SerializeField] private Transform hasteJoystick;
+
+    [SerializeField] private Button btnSair;
     [SerializeField] private GameObject parentParticulas;
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
