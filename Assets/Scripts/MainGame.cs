@@ -84,6 +84,7 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
 
     public void consumirEvento(InformacoesColetado evento)
     {
+        Debug.Log("Disparar particulas");
         particleSystem.Play();
     }
 }

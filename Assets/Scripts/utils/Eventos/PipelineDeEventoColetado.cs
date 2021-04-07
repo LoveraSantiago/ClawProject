@@ -15,6 +15,7 @@ public class PipelineDeEventoColetado : ConsumidorDeEvento<GameObject>
         InformacoesColetado infoColetado = processadorDeColetado.transformarEvento(evento);
         displayImgsConsumidor.consumirEvento(infoColetado.sprite, infoColetado.resetDisplay);
         displayScoreConsumidor.consumirEvento(infoColetado.score);
+        consumidorInformacoesColetado.consumirEvento(infoColetado);
     }
     //IMPLEMENTACAO INTERFACE onsumidorDeEvento<GameObject> FIM
         
