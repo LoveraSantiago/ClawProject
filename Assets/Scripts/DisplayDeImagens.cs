@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class DisplayDeImagens : BiConsumidorDeEvento<Sprite, bool>
+public class DisplayDeImagens : ConsumidorDeEvento<InformacoesColetado>
 {
     private int indiceEspaco;
     private SpriteRenderer[] espacoImgs;
@@ -65,16 +65,20 @@ public class DisplayDeImagens : BiConsumidorDeEvento<Sprite, bool>
         espacoImgs[2].sprite = null;
     }
 
-    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<Sprite> INICIO
-    //ACIONADO COMO SEGUNDO STEP PELO PIPELINE DE COLETAVEL COLETADO
-    //RECEBENDO O SPRITE DO COLETADO
     public void consumirEvento(Sprite spriteColetado, bool resetDisplay)
     {
         adicionarSpriteAoDisplay(spriteColetado, resetDisplay);
     }
-    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<Sprite> FIM
 
-    public BiConsumidorDeEvento<Sprite, bool> getDisplayImgConsumidor()
+    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
+    //CONSOME EVENTO DISPARADO PELO COLETAVEIS MANAGER AO COLETAR UM COLETAVEL
+    public void consumirEvento(InformacoesColetado infoColetado)
+    {
+        adicionarSpriteAoDisplay(infoColetado.sprite, infoColetado.resetDisplay);
+    }
+    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
+
+    public ConsumidorDeEvento<InformacoesColetado> getDisplayImagensConsumidor()
     {
         return this;
     }

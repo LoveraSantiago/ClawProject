@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public class DisplayDeScores : ConsumidorDeEvento<int>
-{
+public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>
+{ 
     private DisplayDigito displayCentena;
     private DisplayDigito displayDezena;
     private DisplayDigito displayUnidade;
@@ -30,15 +30,15 @@ public class DisplayDeScores : ConsumidorDeEvento<int>
         displayUnidade.mostrarDigito(unidade);
     }
 
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> INICIO
-    //É CHAMADO PELO PIPELINEDEEVENTOCOLETADO APOS SER COMPUTADO O SCORE VINDO DO COLETAVEL MANAGER
-    public void consumirEvento(int evento)
+    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
+    //CONSOME EVENTO DISPARADO PELO COLETAVEIS MANAGER AO COLETAR UM COLETAVEL
+    public void consumirEvento(InformacoesColetado infoColetado)
     {
-        mostrarScore(evento);
+        mostrarScore(infoColetado.score);        
     }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> INICIO
+    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
 
-    public ConsumidorDeEvento<int> getDisplayScoreConsumidor()
+    public ConsumidorDeEvento<InformacoesColetado> getDisplayScoreConsumidor()
     {
         return this;
     }

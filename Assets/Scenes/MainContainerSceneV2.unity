@@ -5136,7 +5136,7 @@ MonoBehaviour:
     pincaDireita: {fileID: 1879337337}
     colisor: {fileID: 745325034}
   coletaveisDto:
-    scoreTextField: {fileID: 0}
+    sensorDeColetado: {fileID: 2083913115}
     parentColetavelTubo: {fileID: 1607848931}
     coletaveisParaTubo:
     - {fileID: 650369887}

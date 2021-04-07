@@ -10,8 +10,7 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
     [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
     [Space (5)]
     [SerializeField] private ColetaveisDto coletaveisDto;
-    [Space (5)]
-    [SerializeField] private SensoresDto sensoresDto;
+    
     //Componentes uis temporarios aqui...    
     [Space (5)]
     [SerializeField] private SpriteRenderer[] coletadosSprites = new SpriteRenderer[3]; //3
@@ -25,8 +24,7 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
     private GarraManager garraManager;
-    private ColetavelManager coletaveisManager;
-    private SensoresManager sensoresManager;
+    private ColetavelManager coletaveisManager;    
     private JoystickHaste joystickHaste;
 
     private ParticleSystem particleSystem;
@@ -45,8 +43,7 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica (mecanicaAtual);
         garraManager = new GarraManager (componentesDaGarra, mecanicaSelecionada);
-        coletaveisManager = new ColetavelManager (coletaveisDto);
-        sensoresManager = new SensoresManager (sensoresDto);
+        coletaveisManager = new ColetavelManager (coletaveisDto);        
 
         particleSystem = parentParticulas.GetComponent<ParticleSystem>();
         particleSystem.Stop();
@@ -57,12 +54,11 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
         DisplayDeScores displayDeScores = new DisplayDeScores (displayScore1, displayScore2, displayScore3);
         joystickHaste = new JoystickHaste (hasteJoystick, componentesDaGarra.VelocMovHorizontal);
 
-        new PipelineDeEventoColetado ()
-            .configStep1LancadorDeEventoColetado (sensoresManager.getProdutorDeEventoDeColetado ())
-            .configStep2ProcessadorDeColetado (coletaveisManager.getProcessadorDeColetado ())
-            .configStep3DisplayImgConsumidor (displayDeImgs.getDisplayImgConsumidor ())
-            .configStep4displayScoreConsumidor (displayDeScores.getDisplayScoreConsumidor ())
-            .configStep5displayScoreConsumidor(this);
+        new AcaoEventoColetado()
+            .configurarProdutor(coletaveisManager.getProdutorDeInformacaoDoColetado())
+            .adicionarConsumidor(displayDeImgs.getDisplayImagensConsumidor())
+            .adicionarConsumidor(displayDeScores.getDisplayScoreConsumidor())
+            .adicionarConsumidor(this);
 
         new AcaoSincroniaComDirecaoDaGarra ()
             .configurarProdutor (garraManager.getDisparadorDeEventoDeDirecao ())
