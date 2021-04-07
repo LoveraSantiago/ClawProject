@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
+
     [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
     [Space (5)]
     [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
@@ -20,7 +21,6 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
     [SerializeField] private Button btnSair;
     [SerializeField] private Transform hasteJoystick;
     [SerializeField] private GameObject parentParticulas;
-
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
