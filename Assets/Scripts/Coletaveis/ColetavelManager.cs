@@ -12,10 +12,12 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
 
     public ColetavelManager(ColetaveisDto coletaveisDto)
     {
+        this.coletaveisDto = coletaveisDto;
+
         CriarBoard(coletaveisDto.BoardDto);
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
+        produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
 
-        this.coletaveisDto = coletaveisDto;
         contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
         coletaveisDeVoltaBoard = new ColetaveisParaBoard();
         coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto);
