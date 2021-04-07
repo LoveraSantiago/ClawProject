@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MaquinaDto : MonoBehaviour
+#pragma warning disable 0649
+[System.Serializable]
+public class MaquinaDto
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Space(5)]
+    [SerializeField] float tempoResetDisplayColetados;
+    [Space(5)]
+    [SerializeField] private SpriteRenderer[] spritesDisplayColetados = new SpriteRenderer[3]; //3
+    [SerializeField] private GameObject[] gosDisplayScores = new GameObject[3];
+    [SerializeField] private Transform hasteJoystick;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float TempoResetDisplayColetados { get { return tempoResetDisplayColetados; } }
+    public SpriteRenderer[] SpritesDisplayColetados { get { return spritesDisplayColetados; }}
+    public GameObject[] GosDisplayScores { get { return gosDisplayScores; } }
+    public Transform HasteJoystick { get { return hasteJoystick;  } }
+
 }

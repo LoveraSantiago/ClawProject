@@ -5156,6 +5156,17 @@ MonoBehaviour:
       ySize: 2
       shakeTile: 0.02
       startBoard: {fileID: 1496791513}
+  maquinaDto:
+    tempoResetDisplayColetados: 0.5
+    spritesDisplayColetados:
+    - {fileID: 1552986179}
+    - {fileID: 523200846}
+    - {fileID: 229104350}
+    gosDisplayScores:
+    - {fileID: 660903945}
+    - {fileID: 419047350}
+    - {fileID: 514353999}
+    hasteJoystick: {fileID: 1655319868}
   coletadosSprites:
   - {fileID: 1552986179}
   - {fileID: 523200846}
@@ -5164,11 +5175,8 @@ MonoBehaviour:
   - {fileID: 660903945}
   - {fileID: 419047350}
   - {fileID: 514353999}
-  displayScore1: {fileID: 660903945}
-  displayScore2: {fileID: 419047350}
-  displayScore3: {fileID: 514353999}
-  btnSair: {fileID: 1780015346}
   hasteJoystick: {fileID: 1655319868}
+  btnSair: {fileID: 1780015346}
   parentParticulas: {fileID: 1488198862}
 --- !u!1 &514353999 stripped
 GameObject:

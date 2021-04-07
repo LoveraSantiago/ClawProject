@@ -6,14 +6,11 @@ public class MaquinaManager
     private DisplayDeScores displayDeScores;
     private JoystickHaste joystickHaste;
 
-    public MaquinaManager(Transform hasteJoystick, float velocidade,
-        SpriteRenderer[] coletadosSprites,
-        GameObject[] displayScores,
-        MonoBehaviour monoBehaviour)
+    public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, MonoBehaviour monoBehaviour)
     {
-        displayDeImgs = new DisplayDeImagens(coletadosSprites, 0.5f, monoBehaviour);
-        displayDeScores = new DisplayDeScores(displayScores);
-        joystickHaste = new JoystickHaste(hasteJoystick, velocidade);
+        displayDeImgs = new DisplayDeImagens(maquinaDto.SpritesDisplayColetados, maquinaDto.TempoResetDisplayColetados, monoBehaviour);
+        displayDeScores = new DisplayDeScores(maquinaDto.GosDisplayScores);
+        joystickHaste = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
     }
 
     public void fixedUpdate()
