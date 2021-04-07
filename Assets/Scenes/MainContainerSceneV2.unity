@@ -5060,6 +5060,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &133220434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1258064833904829690, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &229104350 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 683841258165775589, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -5168,6 +5173,9 @@ MonoBehaviour:
     - {fileID: 514353999}
     hasteJoystick: {fileID: 1655319868}
   parentParticulas: {fileID: 1488198862}
+  destinoParticulas: {fileID: 133220434}
+  posDestinoParticulas: {x: 0, y: 0, z: 0}
+  velocidadeMovimentacao: 0
   btnSair: {fileID: 1780015346}
 --- !u!1 &514353999 stripped
 GameObject:
