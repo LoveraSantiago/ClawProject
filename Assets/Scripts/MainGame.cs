@@ -24,8 +24,8 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
 
     private GarraManager garraManager;
     private ColetavelManager coletaveisManager;
-    //private MaquinaManager maquinaManager;
-    private JoystickHaste joystickHaste;
+    private MaquinaManager maquinaManager;
+    
 
     private ParticleSystem particleSystem;
 
@@ -44,7 +44,7 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica (mecanicaAtual);
         garraManager = new GarraManager (componentesDaGarra, mecanicaSelecionada);
         coletaveisManager = new ColetavelManager (coletaveisDto);
-        //maquinaManager = new MaquinaManager();
+        maquinaManager = new MaquinaManager(hasteJoystick, componentesDaGarra.VelocMovHorizontal);
 
         particleSystem = parentParticulas.GetComponent<ParticleSystem>();
         particleSystem.Stop();
@@ -53,8 +53,7 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
         //TEMPORARIO AQUI.... TALVEZ DEVESSEM ESTAR DENTROS DE UM OUTRO OBJETO AINDA NAO SEI               
         DisplayDeImagens displayDeImgs = new DisplayDeImagens (coletadosSprites, 0.5f, this);
         DisplayDeScores displayDeScores = new DisplayDeScores (displayScores);
-        joystickHaste = new JoystickHaste (hasteJoystick, componentesDaGarra.VelocMovHorizontal);
-
+        
         new AcaoEventoColetado()
             .configurarProdutor(coletaveisManager.getProdutorDeInformacaoDoColetado())
             .adicionarConsumidor(displayDeImgs.getDisplayImagensConsumidor())
@@ -63,7 +62,7 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
 
         new AcaoSincroniaComDirecaoDaGarra ()
             .configurarProdutor (garraManager.getDisparadorDeEventoDeDirecao ())
-            .adicionarConsumidor (joystickHaste.getConsumidorDeEventoDeDirecao ());
+            .adicionarConsumidor (maquinaManager.getJoystickHasteConsumidorDirecao ());
 
         garraManager.start ();
     }
@@ -76,7 +75,7 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
     private void FixedUpdate () {
         garraManager.fixedUpdate ();
         coletaveisManager.fixedUpdate ();
-        joystickHaste.fixedUpdate ();
+        maquinaManager.fixedUpdate();
     }
 
     public void consumirEvento(InformacoesColetado evento)
