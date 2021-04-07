@@ -23,7 +23,8 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
     private GarraManager garraManager;
-    private ColetavelManager coletaveisManager;    
+    private ColetavelManager coletaveisManager;
+    //private MaquinaManager maquinaManager;
     private JoystickHaste joystickHaste;
 
     private ParticleSystem particleSystem;
@@ -42,7 +43,8 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica (mecanicaAtual);
         garraManager = new GarraManager (componentesDaGarra, mecanicaSelecionada);
-        coletaveisManager = new ColetavelManager (coletaveisDto);        
+        coletaveisManager = new ColetavelManager (coletaveisDto);
+        //maquinaManager = new MaquinaManager();
 
         particleSystem = parentParticulas.GetComponent<ParticleSystem>();
         particleSystem.Stop();
@@ -73,7 +75,7 @@ public class MainGame : MonoBehaviour, ConsumidorDeEvento<InformacoesColetado> {
 
     private void FixedUpdate () {
         garraManager.fixedUpdate ();
-        coletaveisManager.FixedUpdate ();
+        coletaveisManager.fixedUpdate ();
         joystickHaste.fixedUpdate ();
     }
 

@@ -51,7 +51,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
         produtorDeInformacoesDoColetado.produziuEvento(infoColetado);        
     }
 
-    public void FixedUpdate() { }    
+    public void fixedUpdate() { }    
 
     public ProdutorDeEvento<InformacoesColetado> getProdutorDeInformacaoDoColetado()
     {
