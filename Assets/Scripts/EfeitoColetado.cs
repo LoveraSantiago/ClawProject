@@ -2,27 +2,22 @@ using UnityEngine;
 using System.Collections;
 
 public class EfeitoColetado : ConsumidorDeEvento<InformacoesColetado>
-{
-    private float velocidadeMovimentacao;
-    private Vector3 posicaoDesejada;
+{    
     private Vector3 posicaoOriginal;
-    private GameObject parentParticulas;
 
     private ParticleSystem particulas;
     private MonoBehaviour monoBehaviour;
 
-    public EfeitoColetado(GameObject parentParticulas, 
-        Vector3 posicaoDesejada,
-        float velocidadeMovimentacao,
-        MonoBehaviour monoBehaviour)
+    private ParticulasDto particulasDto;
+
+    public EfeitoColetado(ParticulasDto particulasDto, MonoBehaviour monoBehaviour)
     {
-        this.parentParticulas = parentParticulas;
-        this.posicaoDesejada = posicaoDesejada;
-        this.velocidadeMovimentacao = velocidadeMovimentacao;
+        this.particulasDto = particulasDto;
+        
         this.monoBehaviour = monoBehaviour;
 
-        posicaoOriginal = parentParticulas.transform.position;
-        particulas = parentParticulas.GetComponent<ParticleSystem>();
+        posicaoOriginal = particulasDto.ParentParticulas.transform.position;
+        particulas      = particulasDto.ParentParticulas.GetComponent<ParticleSystem>();
         particulas.Stop();
     }
 
@@ -31,20 +26,25 @@ public class EfeitoColetado : ConsumidorDeEvento<InformacoesColetado>
         float posX = posicao.x;
         float posY = posicaoOriginal.y;
         float posZ = posicaoOriginal.z;
-        parentParticulas.transform.position = new Vector3(posX, posY, posZ);
+        particulasDto.ParentParticulas.transform.position = new Vector3(posX, posY, posZ);
         particulas.Play();
 
-        monoBehaviour.StartCoroutine(moverEfeito(posicaoDesejada, velocidadeMovimentacao));
+        monoBehaviour.StartCoroutine(
+            moverEfeito(particulasDto.DestinoParticulas.transform.position, particulasDto.VelocidadeMovimentacao));
     }
 
     public IEnumerator moverEfeito(Vector3 posFim, float velocidade)
     {
-        while (Vector3.Distance(parentParticulas.transform.position, posFim) > velocidade * Time.deltaTime)
+        yield return new WaitForSeconds(0.5f);
+        while ((Vector3.Distance(particulasDto.ParentParticulas.transform.position, posFim))
+               > (velocidade * Time.deltaTime))
         {
-            parentParticulas.transform.position = Vector3.MoveTowards(parentParticulas.transform.position, posFim, velocidade * Time.deltaTime);
+            particulasDto.ParentParticulas.transform.position = Vector3.MoveTowards(
+                particulasDto.ParentParticulas.transform.position, posFim, velocidade * Time.deltaTime);
+
             yield return null;
         }
-        parentParticulas.transform.position = posFim;
+        particulasDto.ParentParticulas.transform.position = posFim;
     }
 
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
