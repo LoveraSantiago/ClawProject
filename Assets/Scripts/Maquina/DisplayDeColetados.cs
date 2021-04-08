@@ -5,21 +5,20 @@ public class DisplayDeColetados : ConsumidorDeEvento<InformacoesColetado>
 {
     private int indiceEspaco;
     private DisplayDeColetado[] displayDeColetado;
-
-    private WaitForSeconds tempoReset;
+    
     private bool coroutineEmAndamento;
 
     private Coroutine coroutineLimpeza;
     private MonoBehaviour monoBehaviour;
 
-    private float velocidade;
+    private DisplayDeColetadoDto displayColetadoDto;    
 
-    public DisplayDeColetados(SpriteRenderer[] espacoImgs, float velocidade, float tempoReset, MonoBehaviour monoBehaviour)
+    public DisplayDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
-        inicializarDisplayDeColetado(espacoImgs);
-        this.tempoReset = new WaitForSeconds(tempoReset);
-        this.monoBehaviour = monoBehaviour;
-        this.velocidade = velocidade;
+        inicializarDisplayDeColetado(displayColetadoDto.SpritesDisplayColetados);
+        this.displayColetadoDto = displayColetadoDto;
+
+        this.monoBehaviour = monoBehaviour;        
     }
 
     private void inicializarDisplayDeColetado(SpriteRenderer[] espacoImgs)
@@ -33,7 +32,10 @@ public class DisplayDeColetados : ConsumidorDeEvento<InformacoesColetado>
     private void adicionarSpriteAoDisplay(Sprite spriteColetado, bool resetDisplay)
     {
         computarIndiceAntesAdicaoSprite();
-        displayDeColetado[indiceEspaco].mostrarSprite(spriteColetado, velocidade, monoBehaviour);
+
+        displayDeColetado[indiceEspaco].mostrarSprite(
+            spriteColetado, displayColetadoDto.InicialDelay, displayColetadoDto.VelocSubidaImg, monoBehaviour);
+
         computarIndicePosAdicaoSprite(resetDisplay);        
     }
 
@@ -62,7 +64,7 @@ public class DisplayDeColetados : ConsumidorDeEvento<InformacoesColetado>
     private IEnumerator limpezaDeEspacos()
     {
         coroutineEmAndamento = true;
-        yield return tempoReset;
+        yield return new WaitForSeconds(displayColetadoDto.TempoReset);
         limparTodosOsIndices();
         
         coroutineEmAndamento = false;

@@ -17,15 +17,15 @@ public class DisplayDeColetado
         posicaoDesejada = new Vector3(go.transform.localPosition.x, 0.45f, go.transform.localPosition.z);
     }
 
-    public void mostrarSprite(Sprite sprite, float velocidade, MonoBehaviour monoBehaviour)
+    public void mostrarSprite(Sprite sprite, float inicialDelay, float velocidade, MonoBehaviour monoBehaviour)
     {
         spriteRenderer.sprite = sprite;
-        monoBehaviour.StartCoroutine(subirSprite(posicaoDesejada, velocidade));
+        monoBehaviour.StartCoroutine(subirSprite(posicaoDesejada, inicialDelay, velocidade));
     }
 
-    private IEnumerator subirSprite(Vector3 posFim, float velocidade)
+    private IEnumerator subirSprite(Vector3 posFim, float inicialDelay, float velocidade)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(inicialDelay);
         while ((Vector3.Distance(go.transform.localPosition, posFim))
                > (velocidade * Time.deltaTime))
         {
