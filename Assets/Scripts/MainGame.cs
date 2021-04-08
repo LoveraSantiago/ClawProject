@@ -38,10 +38,10 @@ public class MainGame : MonoBehaviour{
         btnSair.onClick.AddListener (() => SceneManager.LoadScene ("TitleScene"));
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica (mecanicaAtual);
-        garraManager = new GarraManager (componentesDaGarra, mecanicaSelecionada);
-        coletaveisManager = new ColetavelManager (coletaveisDto);
-        maquinaManager = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, this);
 
+        garraManager      = new GarraManager (componentesDaGarra, mecanicaSelecionada);
+        coletaveisManager = new ColetavelManager (coletaveisDto);
+        maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, this);
         EfeitoColetado efeitoColetado = new EfeitoColetado(particulasDto, this);
         
         new AcaoEventoColetado()

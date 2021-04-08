@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class DisplayDeImagens : ConsumidorDeEvento<InformacoesColetado>
+public class DisplayDeColetados : ConsumidorDeEvento<InformacoesColetado>
 {
     private int indiceEspaco;
-    private SpriteRenderer[] espacoImgs;
+    private DisplayDeColetado[] displayDeColetado;
 
     private WaitForSeconds tempoReset;
     private bool coroutineEmAndamento;
@@ -12,17 +12,28 @@ public class DisplayDeImagens : ConsumidorDeEvento<InformacoesColetado>
     private Coroutine coroutineLimpeza;
     private MonoBehaviour monoBehaviour;
 
-    public DisplayDeImagens(SpriteRenderer[] espacoImgs, float tempoReset, MonoBehaviour monoBehaviour)
+    private float velocidade;
+
+    public DisplayDeColetados(SpriteRenderer[] espacoImgs, float velocidade, float tempoReset, MonoBehaviour monoBehaviour)
     {
-        this.espacoImgs = espacoImgs;
+        inicializarDisplayDeColetado(espacoImgs);
         this.tempoReset = new WaitForSeconds(tempoReset);
         this.monoBehaviour = monoBehaviour;
+        this.velocidade = velocidade;
+    }
+
+    private void inicializarDisplayDeColetado(SpriteRenderer[] espacoImgs)
+    {
+        displayDeColetado = new DisplayDeColetado[espacoImgs.Length];
+        displayDeColetado[0] = new DisplayDeColetado(espacoImgs[0]);
+        displayDeColetado[1] = new DisplayDeColetado(espacoImgs[1]);
+        displayDeColetado[2] = new DisplayDeColetado(espacoImgs[2]);
     }
 
     private void adicionarSpriteAoDisplay(Sprite spriteColetado, bool resetDisplay)
     {
         computarIndiceAntesAdicaoSprite();
-        espacoImgs[indiceEspaco].sprite = spriteColetado;
+        displayDeColetado[indiceEspaco].mostrarSprite(spriteColetado, velocidade, monoBehaviour);
         computarIndicePosAdicaoSprite(resetDisplay);        
     }
 
@@ -60,9 +71,9 @@ public class DisplayDeImagens : ConsumidorDeEvento<InformacoesColetado>
 
     private void limparTodosOsIndices()
     {
-        espacoImgs[0].sprite = null;
-        espacoImgs[1].sprite = null;
-        espacoImgs[2].sprite = null;
+        displayDeColetado[0].limparSprite();
+        displayDeColetado[1].limparSprite();
+        displayDeColetado[2].limparSprite();
     }
 
     public void consumirEvento(Sprite spriteColetado, bool resetDisplay)

@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class MaquinaManager 
 {
-    private DisplayDeImagens displayDeImgs;
+    private DisplayDeColetados displayDeImgs;
     private DisplayDeScores displayDeScores;
     private JoystickHaste joystickHaste;
 
     public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, MonoBehaviour monoBehaviour)
     {
-        displayDeImgs = new DisplayDeImagens(maquinaDto.SpritesDisplayColetados, maquinaDto.TempoResetDisplayColetados, monoBehaviour);
+        displayDeImgs = new DisplayDeColetados(maquinaDto.SpritesDisplayColetados, maquinaDto.Velocidade, maquinaDto.TempoResetDisplayColetados, monoBehaviour);
         displayDeScores = new DisplayDeScores(maquinaDto.GosDisplayScores);
         joystickHaste = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
     }
