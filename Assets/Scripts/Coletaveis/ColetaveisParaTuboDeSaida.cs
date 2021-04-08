@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class ColetaveisParaTuboDeSaida : ResultadoDoContadorColetaveis,
@@ -14,27 +15,37 @@ public class ColetaveisParaTuboDeSaida : ResultadoDoContadorColetaveis,
     private Rigidbody2D[] rigidBodies;
     private SpriteRenderer[] spriteRenderers;
     private GameObject[] coletaveisParaTubo;
+    private MonoBehaviour monoBehaviour;
 
-    public ColetaveisParaTuboDeSaida(ColetaveisDto coletaveisDto)
+    public ColetaveisParaTuboDeSaida(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
     {       
         inicializarArrays(coletaveisDto.ColetaveisParaTubo);
         configurarEventoTrigger(coletaveisDto.ParentColetavelTubo);
+
         this.listaDeCharacters = coletaveisDto.boardDto.characters;
+        this.monoBehaviour = monoBehaviour;
     }
 
     public void devolver(string[] coletados, float delayQueda)
     {
-        if(coletados.Length > 0)
+        monoBehaviour.StartCoroutine(descerPeloTubo(coletados, delayQueda));
+    }
+
+    private IEnumerator descerPeloTubo(string[] coletados, float delayQueda)
+    {
+        yield return new WaitForSeconds(delayQueda);
+        if (coletados.Length > 0)
         {
             Sprite spriteAtual = listaDeCharacters.Find((sprite) => sprite.name == coletados[0]);
-            for(int contador = 0; contador < coletados.Length; contador++)
+            for (int contador = 0; contador < coletados.Length; contador++)
             {
                 torque *= -1;
                 rigidBodies[contador].gravityScale = GRAVIDADE;
                 rigidBodies[contador].AddTorque(torque);
                 spriteRenderers[contador].sprite = spriteAtual;
-            }        
+            }
         }
+        yield return null;
     }
 
     private void restaurandoColetaveisParaOTubo()

@@ -40,7 +40,7 @@ public class MainGame : MonoBehaviour{
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica (mecanicaAtual);
 
         garraManager      = new GarraManager (componentesDaGarra, mecanicaSelecionada);
-        coletaveisManager = new ColetavelManager (coletaveisDto);
+        coletaveisManager = new ColetavelManager (coletaveisDto, this);
         maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, this);
         EfeitoColetado efeitoColetado = new EfeitoColetado(particulasDto, this);
         

@@ -5136,6 +5136,7 @@ MonoBehaviour:
     colisor: {fileID: 745325034}
   coletaveisDto:
     sensorDeColetado: {fileID: 2083913115}
+    delayQuedaTubo: 1
     parentColetavelTubo: {fileID: 1607848931}
     coletaveisParaTubo:
     - {fileID: 650369887}

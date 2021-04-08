@@ -6,12 +6,15 @@ public class ColetaveisDto
 {
     [SerializeField] private GameObject sensorDeColetado;
     [Space(5)]
+    [SerializeField] private float delayQuedaTubo;
     [SerializeField] private GameObject parentColetavelTubo;
     [SerializeField] private GameObject[] coletaveisParaTubo = new GameObject[3];
     [Space(5)]    
     public BoardDto boardDto;
 
     public GameObject SensorDeColetado { get { return sensorDeColetado; } }
+
+    public float DelayQuedaTubo { get { return delayQuedaTubo;  } }
     public GameObject ParentColetavelTubo { get { return parentColetavelTubo; } }
     public GameObject[] ColetaveisParaTubo { get { return coletaveisParaTubo; } }
 
