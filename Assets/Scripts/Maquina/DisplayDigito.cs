@@ -35,6 +35,11 @@ public class DisplayDigito
         ligarPosicoes(arrayLigados);
     }    
 
+    public void desligarDigito()
+    {
+        desligarPosicoes(arrayLigados);
+    }
+
     private void ligarPosicoes(int[,] array)
     {
         for(contadorX = 0; contadorX < array.GetLength(0); contadorX++)

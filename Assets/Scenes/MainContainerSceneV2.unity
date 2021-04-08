@@ -5166,6 +5166,8 @@ MonoBehaviour:
       - {fileID: 1552986179}
       - {fileID: 523200846}
       - {fileID: 229104350}
+    qtdBlinks: 3
+    tempoBlink: 0.2
     gosDisplayScores:
     - {fileID: 660903945}
     - {fileID: 419047350}

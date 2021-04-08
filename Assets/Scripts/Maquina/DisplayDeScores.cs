@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>
 { 
@@ -6,13 +7,20 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>
     private DisplayDigito displayDezena;
     private DisplayDigito displayUnidade;
 
-    public DisplayDeScores(GameObject[] displayScores)
+    private int qtdBlinks;
+    private float tempoBlink;
+    private MonoBehaviour monoBehaviour;
+
+    public DisplayDeScores(GameObject[] displayScores, int qtdBlinks, float tempoBlink, MonoBehaviour monoBehaviour)
     {
+        this.monoBehaviour = monoBehaviour;
+        this.qtdBlinks = qtdBlinks;
+        this.tempoBlink = tempoBlink;
+
         displayCentena = new DisplayDigito(displayScores[0]);
         displayDezena = new DisplayDigito(displayScores[1]);
-        displayUnidade = new DisplayDigito(displayScores[2]);        
+        displayUnidade = new DisplayDigito(displayScores[2]);
     }
-
    
     private void mostrarScore(int score)
     {
@@ -25,10 +33,29 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>
         scoreTotal -= dezena * 10;
         int unidade = scoreTotal;
 
-        displayCentena.mostrarDigito(centena);
-        displayDezena.mostrarDigito(dezena);
-        displayUnidade.mostrarDigito(unidade);
+        monoBehaviour.StartCoroutine(blinkarScore(centena, dezena, unidade));
     }
+
+    private IEnumerator blinkarScore(int centena, int dezena, int unidade)
+    {
+        WaitForSeconds wfsTempoBlink = new WaitForSeconds(tempoBlink);
+        for(int contador = 0; contador < qtdBlinks; contador++)
+        {
+            displayCentena.desligarDigito();
+            displayDezena.desligarDigito();
+            displayUnidade.desligarDigito();
+
+            yield return wfsTempoBlink;
+
+            displayCentena.mostrarDigito(centena);
+            displayDezena.mostrarDigito(dezena);
+            displayUnidade.mostrarDigito(unidade);
+
+            yield return wfsTempoBlink;
+        }
+        yield return null;
+    }
+
 
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
     //CONSOME EVENTO DISPARADO PELO COLETAVEIS MANAGER AO COLETAR UM COLETAVEL
