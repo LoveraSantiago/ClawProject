@@ -7,22 +7,21 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>
     private DisplayDigito displayDezena;
     private DisplayDigito displayUnidade;
 
-    private int qtdBlinks;
-    private float tempoBlink;
+    private DisplayDeScoreDto displayDeScoresDto;
     private MonoBehaviour monoBehaviour;
 
-    public DisplayDeScores(GameObject[] displayScores, int qtdBlinks, float tempoBlink, MonoBehaviour monoBehaviour)
+    public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto, MonoBehaviour monoBehaviour)
     {
         this.monoBehaviour = monoBehaviour;
-        this.qtdBlinks = qtdBlinks;
-        this.tempoBlink = tempoBlink;
+        this.displayDeScoresDto = displayDeScoresDto;
 
+        GameObject[] displayScores = displayDeScoresDto.GosDisplayScores;
         displayCentena = new DisplayDigito(displayScores[0]);
         displayDezena = new DisplayDigito(displayScores[1]);
         displayUnidade = new DisplayDigito(displayScores[2]);
     }
    
-    private void mostrarScore(int score)
+    private void mostrarScore(int score, bool result)
     {
         int scoreTotal = score;
         int centena = scoreTotal / 100;
@@ -32,14 +31,20 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>
 
         scoreTotal -= dezena * 10;
         int unidade = scoreTotal;
-
-        monoBehaviour.StartCoroutine(blinkarScore(centena, dezena, unidade));
+        if (result)
+        {
+            monoBehaviour.StartCoroutine(blinkarScoreSucesso(centena, dezena, unidade));
+        }
+        else
+        {
+            monoBehaviour.StartCoroutine(blinkarScore(centena, dezena, unidade));
+        }
     }
 
     private IEnumerator blinkarScore(int centena, int dezena, int unidade)
     {
-        WaitForSeconds wfsTempoBlink = new WaitForSeconds(tempoBlink);
-        for(int contador = 0; contador < qtdBlinks; contador++)
+        WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
+        for(int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
         {
             displayCentena.desligarDigito();
             displayDezena.desligarDigito();
@@ -56,12 +61,35 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>
         yield return null;
     }
 
+    private IEnumerator blinkarScoreSucesso(int centena, int dezena, int unidade)
+    {
+        WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
+        for(int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
+        {
+            displayCentena.mostrarDigito(centena);
+            displayDezena.mostrarDigito(dezena);
+            displayUnidade.mostrarDigito(unidade);
+
+            yield return wfsTempoBlink;
+
+            displayCentena.mostrarDigito("Y");
+            displayDezena.mostrarDigito("E");
+            displayUnidade.mostrarDigito("S");
+
+            yield return wfsTempoBlink;
+        }
+
+        displayCentena.mostrarDigito(centena);
+        displayDezena.mostrarDigito(dezena);
+        displayUnidade.mostrarDigito(unidade);
+        yield return null;
+    }
 
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
     //CONSOME EVENTO DISPARADO PELO COLETAVEIS MANAGER AO COLETAR UM COLETAVEL
     public void consumirEvento(InformacoesColetado infoColetado)
     {
-        mostrarScore(infoColetado.score);        
+        mostrarScore(infoColetado.score, infoColetado.resultCombinacao);        
     }
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
 

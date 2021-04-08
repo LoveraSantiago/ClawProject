@@ -48,7 +48,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
         InformacoesColetado infoColetado = new InformacoesColetado();
-        infoColetado.addInfosDisplayColetados(sprite, contadorDeColetaveis.hasResetColetados());
+        infoColetado.addInfosDisplayColetados(sprite, contadorDeColetaveis.hasResetColetados(), contadorDeColetaveis.getResult());
         infoColetado.addInfosDisplayScore(contadorDeColetaveis.getScore());
         infoColetado.addInfosPosicao(gameObjectColetado.transform.position);
 
