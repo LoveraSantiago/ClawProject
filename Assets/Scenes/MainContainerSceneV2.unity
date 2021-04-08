@@ -5169,7 +5169,7 @@ MonoBehaviour:
     hasteJoystick: {fileID: 1655319868}
   parentParticulas: {fileID: 1488198862}
   destinoParticulas: {fileID: 6406990385049082668}
-  velocidadeMovimentacao: 5
+  velocidadeMovimentacao: 0
   btnSair: {fileID: 1780015346}
 --- !u!1 &514353999 stripped
 GameObject:
@@ -10942,7 +10942,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
