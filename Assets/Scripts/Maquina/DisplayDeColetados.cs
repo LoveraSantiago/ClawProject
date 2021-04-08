@@ -34,7 +34,7 @@ public class DisplayDeColetados : ConsumidorDeEvento<InformacoesColetado>
         computarIndiceAntesAdicaoSprite();
 
         displayDeColetado[indiceEspaco].mostrarSprite(
-            spriteColetado, displayColetadoDto.InicialDelay, displayColetadoDto.VelocSubidaImg, monoBehaviour);
+            spriteColetado, displayColetadoDto.InicialDelay, displayColetadoDto.VelocImg, monoBehaviour);
 
         computarIndicePosAdicaoSprite(resetDisplay);        
     }
@@ -73,9 +73,9 @@ public class DisplayDeColetados : ConsumidorDeEvento<InformacoesColetado>
 
     private void limparTodosOsIndices()
     {
-        displayDeColetado[0].limparSprite();
-        displayDeColetado[1].limparSprite();
-        displayDeColetado[2].limparSprite();
+        displayDeColetado[0].limparSprite(displayColetadoDto.FimDelay, displayColetadoDto.VelocImg, monoBehaviour);
+        displayDeColetado[1].limparSprite(displayColetadoDto.FimDelay * 2, displayColetadoDto.VelocImg, monoBehaviour);
+        displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3, displayColetadoDto.VelocImg, monoBehaviour);
     }
 
     public void consumirEvento(Sprite spriteColetado, bool resetDisplay)

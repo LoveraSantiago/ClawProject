@@ -23,6 +23,17 @@ public class DisplayDeColetado
         monoBehaviour.StartCoroutine(subirSprite(posicaoDesejada, inicialDelay, velocidade));
     }
 
+    public void limparSprite()
+    {
+        spriteRenderer.sprite = null;
+        go.transform.localPosition = posicaoInicial;
+    }
+
+    public void limparSprite(float inicialDelay, float velocidade, MonoBehaviour monoBehaviour)
+    {
+        monoBehaviour.StartCoroutine(descerSprite(posicaoInicial, inicialDelay, velocidade));        
+    }
+
     private IEnumerator subirSprite(Vector3 posFim, float inicialDelay, float velocidade)
     {
         yield return new WaitForSeconds(inicialDelay);
@@ -35,9 +46,15 @@ public class DisplayDeColetado
         go.transform.localPosition = posFim;
     }
 
-    public void limparSprite()
+    private IEnumerator descerSprite(Vector3 posFim, float inicialDelay, float velocidade)
     {
-        spriteRenderer.sprite = null;
-        go.transform.localPosition = posicaoInicial;
+        yield return new WaitForSeconds(inicialDelay);
+        while ((Vector3.Distance(go.transform.localPosition, posFim))
+               > (velocidade * Time.deltaTime))
+        {
+            go.transform.localPosition = Vector3.MoveTowards(go.transform.localPosition, posFim, velocidade * Time.deltaTime);
+            yield return null;
+        }
+        go.transform.localPosition = posFim;
     }
 }

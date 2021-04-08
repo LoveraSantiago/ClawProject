@@ -5158,8 +5158,9 @@ MonoBehaviour:
   maquinaDto:
     displayDeColetadoDto:
       inicialDelay: 0.5
-      tempoReset: 1.25
-      velocSubidaImg: 4
+      fimDelay: 0.1
+      tempoReset: 1
+      velocImg: 4
       spritesDisplayColetados:
       - {fileID: 1552986179}
       - {fileID: 523200846}
