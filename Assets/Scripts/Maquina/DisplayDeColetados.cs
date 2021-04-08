@@ -4,14 +4,13 @@ using UnityEngine;
 public class DisplayDeColetados : ConsumidorDeEvento<InformacoesColetado>
 {
     private int indiceEspaco;
-    private DisplayDeColetado[] displayDeColetado;
-    
     private bool coroutineEmAndamento;
+
+    private DisplayDeColetadoDto displayColetadoDto;    
+    private DisplayDeColetado[] displayDeColetado;    
 
     private Coroutine coroutineLimpeza;
     private MonoBehaviour monoBehaviour;
-
-    private DisplayDeColetadoDto displayColetadoDto;    
 
     public DisplayDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
@@ -23,7 +22,7 @@ public class DisplayDeColetados : ConsumidorDeEvento<InformacoesColetado>
 
     private void inicializarDisplayDeColetado(SpriteRenderer[] espacoImgs)
     {
-        displayDeColetado = new DisplayDeColetado[espacoImgs.Length];
+        displayDeColetado    = new DisplayDeColetado[espacoImgs.Length];
         displayDeColetado[0] = new DisplayDeColetado(espacoImgs[0]);
         displayDeColetado[1] = new DisplayDeColetado(espacoImgs[1]);
         displayDeColetado[2] = new DisplayDeColetado(espacoImgs[2]);

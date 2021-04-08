@@ -22,7 +22,7 @@ public class ColetaveisParaTuboDeSaida : ResultadoDoContadorColetaveis,
         this.listaDeCharacters = coletaveisDto.boardDto.characters;
     }
 
-    public void devolver(string[] coletados)
+    public void devolver(string[] coletados, float delayQueda)
     {
         if(coletados.Length > 0)
         {

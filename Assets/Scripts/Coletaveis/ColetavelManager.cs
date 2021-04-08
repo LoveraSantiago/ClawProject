@@ -43,7 +43,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
         contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);
 
         board.devolver(contadorDeColetaveis.getArrayBoard());
-        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo());
+        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), 0);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 

@@ -48,7 +48,7 @@ public class MainGame : MonoBehaviour{
             .configurarProdutor(coletaveisManager.getProdutorDeInfoColetado())
             .adicionarConsumidor(maquinaManager.getDisplayImagensConsumidorInfoColetado())
             .adicionarConsumidor(maquinaManager.getDisplayScoreConsumidorInfoColetado())
-            .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado());
+            .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado());//TODO ver mudanca de ordem
 
         new AcaoSincroniaComDirecaoDaGarra ()
             .configurarProdutor (garraManager.getDisparadorDeEventoDeDirecao ())
