@@ -19,6 +19,7 @@ public class EfeitoColetado : ConsumidorDeEvento<InformacoesColetado>
         this.parentParticulas = parentParticulas;
         this.posicaoDesejada = posicaoDesejada;
         this.velocidadeMovimentacao = velocidadeMovimentacao;
+        this.monoBehaviour = monoBehaviour;
 
         posicaoOriginal = parentParticulas.transform.position;
         particulas = parentParticulas.GetComponent<ParticleSystem>();

@@ -16,8 +16,7 @@ public class MainGame : MonoBehaviour{
     //Componentes uis temporarios aqui...    
     [Space(15)]
     [SerializeField] private GameObject parentParticulas;
-    [SerializeField] private GameObject destinoParticulas;
-    [SerializeField] private Vector3 posDestinoParticulas;
+    [SerializeField] private Transform destinoParticulas;    
     [SerializeField] private float velocidadeMovimentacao;
     [Space(5)]
     [SerializeField] private Button btnSair;
@@ -45,7 +44,7 @@ public class MainGame : MonoBehaviour{
         coletaveisManager = new ColetavelManager (coletaveisDto);
         maquinaManager = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, this);
 
-        EfeitoColetado efeitoColetado = new EfeitoColetado(parentParticulas, posDestinoParticulas, velocidadeMovimentacao, this);
+        EfeitoColetado efeitoColetado = new EfeitoColetado(parentParticulas, destinoParticulas.position, velocidadeMovimentacao, this);
         
         new AcaoEventoColetado()
             .configurarProdutor(coletaveisManager.getProdutorDeInfoColetado())
