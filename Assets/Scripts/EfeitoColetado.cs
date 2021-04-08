@@ -27,6 +27,7 @@ public class EfeitoColetado : ConsumidorDeEvento<InformacoesColetado>
         float posY = posicaoOriginal.y;
         float posZ = posicaoOriginal.z;
         particulasDto.ParentParticulas.transform.position = new Vector3(posX, posY, posZ);
+        particulasDto.SeguidoraParticulas.transform.position = particulasDto.ParentParticulas.transform.position;
         particulas.Play();
 
         monoBehaviour.StartCoroutine(
@@ -35,16 +36,16 @@ public class EfeitoColetado : ConsumidorDeEvento<InformacoesColetado>
 
     public IEnumerator moverEfeito(Vector3 posFim, float velocidade)
     {
-        yield return new WaitForSeconds(0.5f);
-        while ((Vector3.Distance(particulasDto.ParentParticulas.transform.position, posFim))
+        //yield return new WaitForSeconds(0.5f);
+        while ((Vector3.Distance(particulasDto.SeguidoraParticulas.transform.position, posFim))
                > (velocidade * Time.deltaTime))
         {
-            particulasDto.ParentParticulas.transform.position = Vector3.MoveTowards(
-                particulasDto.ParentParticulas.transform.position, posFim, velocidade * Time.deltaTime);
+            particulasDto.SeguidoraParticulas.transform.position = Vector3.MoveTowards(
+                particulasDto.SeguidoraParticulas.transform.position, posFim, velocidade * Time.deltaTime);
 
             yield return null;
         }
-        particulasDto.ParentParticulas.transform.position = posFim;
+        particulasDto.SeguidoraParticulas.transform.position = posFim;
     }
 
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
