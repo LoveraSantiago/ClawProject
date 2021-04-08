@@ -3,29 +3,27 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 #pragma warning disable 0649
-public class MainGame : MonoBehaviour {
+public class MainGame : MonoBehaviour{
+
     [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
     [Space (5)]
     [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
     [Space (5)]
     [SerializeField] private ColetaveisDto coletaveisDto;
-    [Space (5)]
-    [SerializeField] private SensoresDto sensoresDto;
+    [Space(5)]
+    [SerializeField] private MaquinaDto maquinaDto;
+    [Space(5)]
+    [SerializeField] private ParticulasDto particulasDto;
+
     //Componentes uis temporarios aqui...    
-    [Space (5)]
-    [SerializeField] private SpriteRenderer[] coletadosSprites = new SpriteRenderer[3]; //3
-    [SerializeField] private GameObject displayScore1;
-    [SerializeField] private GameObject displayScore2;
-    [SerializeField] private GameObject displayScore3;
+    [Space(15)]   
     [SerializeField] private Button btnSair;
-    [SerializeField] private Transform hasteJoystick;
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
     private GarraManager garraManager;
     private ColetavelManager coletaveisManager;
-    private SensoresManager sensoresManager;
-    private JoystickHaste joystickHaste;
+    private MaquinaManager maquinaManager;        
 
     void OnEnable () {
         //for�ando escala Y pra ficar dentro da safe area
@@ -41,25 +39,20 @@ public class MainGame : MonoBehaviour {
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica (mecanicaAtual);
 
-        garraManager = new GarraManager (componentesDaGarra, mecanicaSelecionada);
-
+        garraManager      = new GarraManager (componentesDaGarra, mecanicaSelecionada);
         coletaveisManager = new ColetavelManager (coletaveisDto);
-        sensoresManager = new SensoresManager (sensoresDto);
-
-        //TEMPORARIO AQUI.... TALVEZ DEVESSEM ESTAR DENTROS DE UM OUTRO OBJETO AINDA NAO SEI               
-        DisplayDeImagens displayDeImgs = new DisplayDeImagens (coletadosSprites, 0.5f, this);
-        DisplayDeScores displayDeScores = new DisplayDeScores (displayScore1, displayScore2, displayScore3);
-        joystickHaste = new JoystickHaste (hasteJoystick, componentesDaGarra.VelocMovHorizontal);
-
-        new PipelineDeEventoColetado ()
-            .configStep1LancadorDeEventoColetado (sensoresManager.getProdutorDeEventoDeColetado ())
-            .configStep2ProcessadorDeColetado (coletaveisManager.getProcessadorDeColetado ())
-            .configStep3DisplayImgConsumidor (displayDeImgs.getDisplayImgConsumidor ())
-            .configStep4displayScoreConsumidor (displayDeScores.getDisplayScoreConsumidor ());
+        maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, this);
+        EfeitoColetado efeitoColetado = new EfeitoColetado(particulasDto, this);
+        
+        new AcaoEventoColetado()
+            .configurarProdutor(coletaveisManager.getProdutorDeInfoColetado())
+            .adicionarConsumidor(maquinaManager.getDisplayImagensConsumidorInfoColetado())
+            .adicionarConsumidor(maquinaManager.getDisplayScoreConsumidorInfoColetado())
+            .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado());//TODO ver mudanca de ordem
 
         new AcaoSincroniaComDirecaoDaGarra ()
             .configurarProdutor (garraManager.getDisparadorDeEventoDeDirecao ())
-            .adicionarConsumidor (joystickHaste.getConsumidorDeEventoDeDirecao ());
+            .adicionarConsumidor (maquinaManager.getJoystickHasteConsumidorDirecao ());
 
         garraManager.start ();
     }
@@ -71,7 +64,7 @@ public class MainGame : MonoBehaviour {
 
     private void FixedUpdate () {
         garraManager.fixedUpdate ();
-        coletaveisManager.FixedUpdate ();
-        joystickHaste.fixedUpdate ();
-    }
+        coletaveisManager.fixedUpdate ();
+        maquinaManager.fixedUpdate();
+    }    
 }

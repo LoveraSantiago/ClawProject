@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesColetado>
+public class ColetavelManager : ConsumidorDeEventoTrigger
 {
     private ColetaveisDto coletaveisDto;
     private ContadorDeColetaveis contadorDeColetaveis;
@@ -8,14 +8,19 @@ public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesCol
     private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
     private Board board;
 
+    private ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado;
+
     public ColetavelManager(ColetaveisDto coletaveisDto)
     {
-        CriarBoard(coletaveisDto.BoardDto);
-
         this.coletaveisDto = coletaveisDto;
-        contadorDeColetaveis = new ContadorDeColetaveis(board.getTotalColetaveis());
+
+        CriarBoard(coletaveisDto.BoardDto);
+        configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
+        produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
+
+        contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
         coletaveisDeVoltaBoard = new ColetaveisParaBoard();
-        coletaveisSaidaTubo = new ColetaveisParaTuboDeSaida(coletaveisDto);       
+        coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto);
     }
 
     private void CriarBoard(BoardDto boardDto)
@@ -24,7 +29,13 @@ public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesCol
         board.Create();
     }
 
-    private InformacoesColetado processarColetado(GameObject gameObjectColetado)
+    private void configurarSensorDeColetado(GameObject goSensorDeColetado)
+    {
+        DetectorDeTriggers detectorDeTrigger = goSensorDeColetado.GetComponent<DetectorDeTriggers>();
+        detectorDeTrigger.registrarConsumidorDeTrigger(this);
+    }
+
+    private void processarColetado(GameObject gameObjectColetado)
     {
         Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
         gameObjectColetado.SetActive(false);
@@ -32,47 +43,33 @@ public class ColetavelManager : TransformadorDeEvento<GameObject, InformacoesCol
         contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);
 
         board.devolver(contadorDeColetaveis.getArrayBoard());
-        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo());
+        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), 0);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
         InformacoesColetado infoColetado = new InformacoesColetado();
         infoColetado.addInfosDisplayColetados(sprite, contadorDeColetaveis.hasResetColetados());
         infoColetado.addInfosDisplayScore(contadorDeColetaveis.getScore());
-        return infoColetado;
+        infoColetado.addInfosPosicao(gameObjectColetado.transform.position);
+
+        produtorDeInformacoesDoColetado.produziuEvento(infoColetado);         
     }
 
-    public void FixedUpdate() { }
+    public void fixedUpdate() { }    
 
-    public void match(bool result)
+    public ProdutorDeEvento<InformacoesColetado> getProdutorDeInfoColetado()
     {
-        if (result)
-        {
-            //atualizaScore();
+        return produtorDeInformacoesDoColetado;
+    }
+
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
+    //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
+    public void consumirEvento(Collider2D goColetado)
+    {
+        if (goColetado.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0)
+        {            
+            processarColetado(goColetado.gameObject);
         }
-        else
-        {
-
-        }
     }
-
-    //private void atualizaScore()
-    //{        
-    //    //REMOVER DO DTO
-    //    coletaveisDto.ScoreTextField.text = score.ToString();        
-    //}   
-
-    public TransformadorDeEvento<GameObject, InformacoesColetado> getProcessadorDeColetado()
-    {
-        return this;
-    }
-
-    //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, InformacoesColetado> INICIO
-    //� O PRIMEIRO DO PIPELINEDEEVENTOCOLETADO 
-    //RECEBE UM GAMEOBJECT E DEVOLVE UM INFORMACOESCOLETADOS
-    public InformacoesColetado transformarEvento(GameObject gameObjectColetado)
-    {
-        return processarColetado(gameObjectColetado);
-    }
-    //IMPLEMENTACAO INTERFACE TransformadorDeEvento<GameObject, InformacoesColetado> FIM
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
 }
