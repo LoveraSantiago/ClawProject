@@ -13,4 +13,9 @@ public class PoolDeColetaveis
         poolDeNomes.addObjetoAoDicionario(coletavel.nome, coletavel);
         return coletavel;
     }
+
+    public Coletavel getColetavelPeloNome(string nome)
+    {
+        return poolDeNomes.getObjetoPeloNome(nome);
+    }
 }

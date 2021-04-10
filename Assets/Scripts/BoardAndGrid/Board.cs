@@ -32,11 +32,9 @@ public class Board
     private List<Sprite> characters;
     private Coletavel[,] tiles;
     private float xOffset;
-    private float yOffset;
+    private float yOffset;    
 
-    private PoolDeColetaveis poolDeColetaveis;
-
-    public Board(BoardDto boardManagerDto, PoolDeColetaveis poolDeColetaveis)
+    public Board(BoardDto boardManagerDto)
     {        
         characters = boardManagerDto.characters;
         spriteTile = boardManagerDto.spriteTile;
@@ -46,11 +44,9 @@ public class Board
         startBoard = boardManagerDto.startBoard;       
         xOffset = boardManagerDto.spriteTile.bounds.size.x;
         yOffset = boardManagerDto.spriteTile.bounds.size.y;
-
-        this.poolDeColetaveis = poolDeColetaveis;
     }
 
-    public void Create()
+    public void Create(PoolDeColetaveis poolDeColetaveis)
     {
         tiles = new Coletavel[xSize, ySize];
        
@@ -89,7 +85,7 @@ public class Board
         return xSize * ySize;
     }
 
-    internal void devolver(string[] coletaveis)
+    internal void devolver(Coletavel[] coletaveis)
     {
         //Debug.Log("Board - devolver");
     }

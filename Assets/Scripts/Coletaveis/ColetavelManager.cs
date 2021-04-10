@@ -20,15 +20,15 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
         configurarPoolDeColetaveis(coletaveisDto);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
-        board = new Board(coletaveisDto.BoardDto, poolDeColetaveis);        
+        board = new Board(coletaveisDto.BoardDto);        
         contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
         coletaveisDeVoltaBoard = new ColetaveisParaBoard();
-        coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto, coletaveisDto, monoBehaviour);
+        coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto, monoBehaviour);
     }   
 
     public void start()
     {
-        board.Create();
+        board.Create(poolDeColetaveis);
     }    
 
     private void configurarSensorDeColetado(GameObject goSensorDeColetado)
@@ -45,18 +45,18 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
 
     private void processarColetado(GameObject gameObjectColetado)
     {
-        Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
-        gameObjectColetado.SetActive(false);
+        Coletavel coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
+        coletavelAcertado.desligar();        
 
-        contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);
+        contadorDeColetaveis.adicionarColetado(coletavelAcertado);
 
         board.devolver(contadorDeColetaveis.getArrayBoard());
-        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), coletaveisDto.TuboDto.DelayQuedaTubo);
+        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo());
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
         InformacoesColetado infoColetado = new InformacoesColetado();
-        infoColetado.addInfosDisplayColetados(sprite, contadorDeColetaveis.hasResetColetados(), contadorDeColetaveis.getResult());
+        infoColetado.addInfosDisplayColetados(coletavelAcertado.getSprite(), contadorDeColetaveis.hasResetColetados(), contadorDeColetaveis.getResult());
         infoColetado.addInfosDisplayScore(contadorDeColetaveis.getScore());
         infoColetado.addInfosPosicao(gameObjectColetado.transform.position);
 

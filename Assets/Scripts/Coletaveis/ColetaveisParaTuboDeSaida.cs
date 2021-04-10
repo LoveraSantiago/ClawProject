@@ -1,42 +1,42 @@
-using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine;
 
 public class ColetaveisParaTuboDeSaida : ResultadoDoContadorColetaveis,
                                          ConsumidorDeEventoTrigger
 {
     private readonly float GRAVIDADE = 0.65f;
+
     private int torque = 550;
     private int contadorSaindoTubo;
 
-    private List<Sprite> listaDeCharacters;
+    private float delayQueda;    
 
     private Vector3[] posicoesOriginais;
-    private Rigidbody2D[] rigidBodies;
+    private Rigidbody2D[] rigidBodies;//TODO transformar esses caras em coletavel para mais facil manipulacaoS
     private SpriteRenderer[] spriteRenderers;
     private GameObject[] coletaveisParaTubo;
     private MonoBehaviour monoBehaviour;
 
-    public ColetaveisParaTuboDeSaida(TuboDto tuboDto, ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
+    public ColetaveisParaTuboDeSaida(TuboDto tuboDto, MonoBehaviour monoBehaviour)
     {       
         inicializarArrays(tuboDto.ColetaveisParaTubo);
         configurarEventoTrigger(tuboDto.ParentColetavelTubo);
-
-        this.listaDeCharacters = coletaveisDto.boardDto.characters;
+        
+        this.delayQueda = tuboDto.DelayQuedaTubo;
         this.monoBehaviour = monoBehaviour;
     }
 
-    public void devolver(string[] coletados, float delayQueda)
+    public void devolver(Coletavel[] coletados)
     {
-        monoBehaviour.StartCoroutine(descerPeloTubo(coletados, delayQueda));
+        monoBehaviour.StartCoroutine(descerPeloTubo(coletados));
     }
 
-    private IEnumerator descerPeloTubo(string[] coletados, float delayQueda)
+    private IEnumerator descerPeloTubo(Coletavel[] coletados)
     {
         yield return new WaitForSeconds(delayQueda);
         if (coletados.Length > 0)
         {
-            Sprite spriteAtual = listaDeCharacters.Find((sprite) => sprite.name == coletados[0]);
+            Sprite spriteAtual = coletados[0].getSprite();
             for (int contador = 0; contador < coletados.Length; contador++)
             {
                 torque *= -1;

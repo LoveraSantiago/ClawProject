@@ -5,36 +5,41 @@ public class ContadorDeColetaveis
 {
     private int score = 0;
     private int qtdColetados = 0;
-    private string[] nomesColetados;
-    private string[] arrayBoard;
-    private string[] arrayTubo;
+
+    private Coletavel[] coletados;
+    private Coletavel[] devolverBoard;
+    private Coletavel[] deveolverTubo;
+
+    private Coletavel[] arrayVazio;
+
     private int totalColetaveis;
 
     public ContadorDeColetaveis(int totalColetaveis)
     {
-        nomesColetados = new string[3];
+        coletados = new Coletavel[3];
+        arrayVazio = new Coletavel[0];
         this.totalColetaveis = totalColetaveis;
     }
 
-    public void adicionarColetado(string nomeColetado)
+    public void adicionarColetado(Coletavel coletado)
     {
        // Debug.Log(nomeColetado);
-        adicionaAoContainerDeColetados(nomeColetado);
+        adicionaAoContainerDeColetados(coletado);
 
-        if (qtdColetados > nomesColetados.Length - 1)
+        if (qtdColetados > coletados.Length - 1)
         {
             if (isCombinacaoValida())
             {
                 AudioController.current.PlayAudio(AudioController.current.combinacaoOk);
                 adicionaPontuacao();
-                arrayBoard = new string[0];
-                arrayTubo = nomesColetados;
+                devolverBoard = arrayVazio;
+                deveolverTubo = coletados;
                 totalColetaveis -= 3;               
             }
             else
             {
-                arrayBoard = nomesColetados;
-                arrayTubo = new string[0];
+                devolverBoard = coletados;
+                deveolverTubo = arrayVazio;
                 AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
 
                 totalColetaveis -= 3;
@@ -43,8 +48,8 @@ public class ContadorDeColetaveis
         }
         else
         {
-            arrayBoard = new string[0];
-            arrayTubo = new string[0];
+            devolverBoard = arrayVazio;
+            deveolverTubo  = arrayVazio;
         }
 
         score++;
@@ -55,14 +60,14 @@ public class ContadorDeColetaveis
         }
     }
 
-    public string[] getArrayBoard()
+    public Coletavel[] getArrayBoard()
     {
-        return arrayBoard;
+        return devolverBoard;
     }
 
-    public string[] getArrayTubo()
+    public Coletavel[] getArrayTubo()
     {
-        return arrayTubo;
+        return deveolverTubo;
     }
 
     public void resetCena()
@@ -77,15 +82,15 @@ public class ContadorDeColetaveis
 
     public bool getResult()
     {
-        return arrayTubo == nomesColetados;
+        return deveolverTubo == coletados;
     }
 
     private bool isCombinacaoValida()
     {
-        string nomePrimeiroColetado = nomesColetados[0];
-        for (int i = 0; i < nomesColetados.Length; i++)
+        Coletavel primeiroColetado = coletados[0];
+        for (int i = 0; i < coletados.Length; i++)
         {
-            if (!nomePrimeiroColetado.Equals(nomesColetados[i]))
+            if (!primeiroColetado.hasEqualsSprite(coletados[i]))
             {
                 return false;
             }
@@ -93,9 +98,9 @@ public class ContadorDeColetaveis
         return true;
     }
 
-    private void adicionaAoContainerDeColetados(string nomeColetado)
+    private void adicionaAoContainerDeColetados(Coletavel coletado)
     {
-        nomesColetados[qtdColetados] = nomeColetado;
+        coletados[qtdColetados] = coletado;
         qtdColetados++;
     }
 

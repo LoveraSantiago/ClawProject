@@ -36,6 +36,26 @@ public class Coletavel
         spriteRenderer.sortingOrder = 31;
     }
 
+    public void desligar()
+    {
+        goColetavel.SetActive(false);
+    }
+
+    public void ligar()
+    {
+        goColetavel.SetActive(true);
+    }
+
+    public Sprite getSprite()
+    {
+        return spriteRenderer.sprite;
+    }
+
+    public bool hasEqualsSprite(Coletavel coletavelOutro)
+    {
+        return nomeSprite.Equals(coletavelOutro.nomeSprite);
+    }
+
     public static void configurarMainTile(GameObject mainTileArg, Transform mainTileParentArg)
     {
         mainTile = mainTileArg;
