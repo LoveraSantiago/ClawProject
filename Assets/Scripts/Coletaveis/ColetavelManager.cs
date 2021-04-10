@@ -14,18 +14,17 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
     {
         this.coletaveisDto = coletaveisDto;
 
-        CriarBoard(coletaveisDto.BoardDto);
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
-        produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
 
+        produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
+        board = new Board(coletaveisDto.BoardDto);        
         contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
         coletaveisDeVoltaBoard = new ColetaveisParaBoard();
         coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto, monoBehaviour);
-    }
+    }   
 
-    private void CriarBoard(BoardDto boardDto)
+    public void start()
     {
-        board = new Board(boardDto);
         board.Create();
     }
 

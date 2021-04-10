@@ -54,6 +54,12 @@ public class MainGame : MonoBehaviour{
             .configurarProdutor (garraManager.getDisparadorDeEventoDeDirecao ())
             .adicionarConsumidor (maquinaManager.getJoystickHasteConsumidorDirecao ());
 
+        startLaizy();
+    }
+
+    private void startLaizy()
+    {
+        coletaveisManager.start();
         garraManager.start ();
     }
 
