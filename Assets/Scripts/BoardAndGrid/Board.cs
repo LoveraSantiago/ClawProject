@@ -89,14 +89,10 @@ public class Board
     {
         for(int contador = 0; contador < coletaveis.Length; contador++)
         {
-            float angulo = Random.Range(-45, 45);
+            float angle = Random.Range(135, 225);
             Coletavel coletavel = coletaveis[contador];
-            float x = Mathf.Cos(angulo * Mathf.PI / 180) * 20;
-            float y = Mathf.Sin(angulo * Mathf.PI / 180) * 20;
-            Vector3 forca = new Vector3(x, y, 0);
-            coletavel.colocarNaPosicao(new Vector3(-1.61f, 4.1f, 0f));
-            coletavel.addForce(forca);
             coletavel.ligar();
+            coletavel.disparar(new Vector3(-1.61f, 4.1f, 0f), 250, 2.5f);
         }
     }
 }

@@ -26,9 +26,23 @@ public class Coletavel
         goColetavel.transform.position = posicao;
     }
 
-    public void addForce(Vector3 forca)
+    public void colocarNaPosicao(Vector3 posicao, Quaternion rotacao) {
+        colocarNaPosicao(posicao);
+        rigidbody.transform.rotation = rotacao;
+    }
+
+    //public void addForce(Vector2 forca)
+    //{
+    //    Debug.Log("F: " + forca);
+    //    rigidbody.AddForce(forca, ForceMode2D.Impulse);
+    //    //rigidbody.AddRelativeForce(forca);
+    //}
+
+    public void disparar(Vector3 posicao, float angulo, float velocidade)
     {
-        rigidbody.AddForce(forca);
+        Quaternion quatAngulo = Quaternion.Euler(0, 0, angulo);
+        colocarNaPosicao(posicao, quatAngulo);
+        rigidbody.AddForce(goColetavel.transform.up * velocidade, ForceMode2D.Impulse);
     }
 
     public void addParent(Transform parent)
