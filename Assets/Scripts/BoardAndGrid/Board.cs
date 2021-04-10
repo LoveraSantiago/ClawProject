@@ -25,32 +25,35 @@ using System.Collections.Generic;
 
 public class Board
 {    
-    private GameObject tile;
     private SpriteRenderer spriteTile;
     private int xSize, ySize;
     private float shakeTile;
     private Transform startBoard;
     private List<Sprite> characters;
-    private GameObject[,] tiles;
+    private Coletavel[,] tiles;
     private float xOffset;
     private float yOffset;
+
+    private PoolDeColetaveis poolDeColetaveis;
 
     public Board(BoardDto boardManagerDto)
     {        
         characters = boardManagerDto.characters;
-        tile = boardManagerDto.tile;
         spriteTile = boardManagerDto.spriteTile;
         xSize = boardManagerDto.xSize;
         ySize = boardManagerDto.ySize;
         shakeTile = boardManagerDto.shakeTile;
         startBoard = boardManagerDto.startBoard;       
         xOffset = boardManagerDto.spriteTile.bounds.size.x;
-        yOffset = boardManagerDto.spriteTile.bounds.size.y;        
+        yOffset = boardManagerDto.spriteTile.bounds.size.y;
+
+        Coletavel.configurarMainTile(boardManagerDto.tile);
+        poolDeColetaveis = new PoolDeColetaveis();
     }
 
     public void Create()
     {
-        tiles = new GameObject[xSize, ySize];
+        tiles = new Coletavel[xSize, ySize];
        
         float startX = startBoard.position.x;
         float startY = startBoard.position.y;
@@ -63,24 +66,22 @@ public class Board
             for (int y = 0; y < ySize; y++)
             {
                 shakeTile *= -1;
-                GameObject newTile = GameObject.Instantiate(tile, new Vector3(startX + shakeTile + (xOffset * x), startY + (yOffset * y), 0), tile.transform.rotation);
-                tiles[x, y] = newTile;
-                newTile.transform.parent = startBoard;
+                Vector3 posCalculada = new Vector3(startX + shakeTile + (xOffset * x), startY + (yOffset * y), 0);
+
+                Coletavel coletavel = poolDeColetaveis.criarColetavel();
+                coletavel.colocarNaPosicao(posCalculada);
+                coletavel.addParent(startBoard);
+
+                tiles[x, y] = coletavel;
 
                 List<Sprite> possibleCharacters = new List<Sprite>();
                 possibleCharacters.AddRange(characters);
+                Sprite newSprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)];
 
                 possibleCharacters.Remove(previousLeft[y]);
                 possibleCharacters.Remove(previousBelow);
 
-                //Sprite newSprite = characters[Random.Range(0, characters.Count)]; //permite repetição do item na mesma linha
-                //Sprite newSprite = characters[0]; //FORÇANDO repetição do MESMO item SO PARA TESTES LOCAIS
-                Sprite newSprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)];
-
-                SpriteRenderer spriteRenderer = newTile.GetComponent<SpriteRenderer>();
-                spriteRenderer.sprite = newSprite;
-                spriteRenderer.sortingOrder = 31;
-                newTile.name = newSprite.name;
+                coletavel.receberSprite(newSprite);
             }
         }
     }
