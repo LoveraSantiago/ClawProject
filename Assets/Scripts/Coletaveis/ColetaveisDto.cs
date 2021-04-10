@@ -5,6 +5,7 @@ using UnityEngine;
 public class ColetaveisDto 
 {
     [SerializeField] private GameObject sensorDeColetado;
+    [SerializeField] private GameObject tile; 
     [Space(5)]
     [SerializeField] private float delayQuedaTubo;
     [SerializeField] private GameObject parentColetavelTubo;
@@ -12,7 +13,8 @@ public class ColetaveisDto
     [Space(5)]    
     public BoardDto boardDto;
 
-    public GameObject SensorDeColetado { get { return sensorDeColetado; } }
+    public GameObject SensorDeColetado { get { return sensorDeColetado; } }    
+    public GameObject Tile { get { return tile; } }
 
     public float DelayQuedaTubo { get { return delayQuedaTubo;  } }
     public GameObject ParentColetavelTubo { get { return parentColetavelTubo; } }

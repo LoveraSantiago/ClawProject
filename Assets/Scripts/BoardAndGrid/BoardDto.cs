@@ -7,7 +7,6 @@ using UnityEngine;
 public class BoardDto
 {  
     public List<Sprite> characters = new List<Sprite>();
-    public GameObject tile;
     public SpriteRenderer spriteTile;
     public int xSize, ySize;
     public float shakeTile;

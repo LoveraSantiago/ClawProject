@@ -36,7 +36,7 @@ public class Board
 
     private PoolDeColetaveis poolDeColetaveis;
 
-    public Board(BoardDto boardManagerDto)
+    public Board(BoardDto boardManagerDto, PoolDeColetaveis poolDeColetaveis)
     {        
         characters = boardManagerDto.characters;
         spriteTile = boardManagerDto.spriteTile;
@@ -47,8 +47,7 @@ public class Board
         xOffset = boardManagerDto.spriteTile.bounds.size.x;
         yOffset = boardManagerDto.spriteTile.bounds.size.y;
 
-        Coletavel.configurarMainTile(boardManagerDto.tile, startBoard);
-        poolDeColetaveis = new PoolDeColetaveis();
+        this.poolDeColetaveis = poolDeColetaveis;
     }
 
     public void Create()

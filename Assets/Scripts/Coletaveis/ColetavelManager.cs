@@ -3,10 +3,12 @@ using UnityEngine;
 public class ColetavelManager : ConsumidorDeEventoTrigger
 {
     private ColetaveisDto coletaveisDto;
+
+    private Board board;
+    private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contadorDeColetaveis;
     private ColetaveisParaBoard coletaveisDeVoltaBoard;
     private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
-    private Board board;
 
     private ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado;
 
@@ -15,9 +17,10 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
         this.coletaveisDto = coletaveisDto;
 
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
+        configurarPoolDeColetaveis(coletaveisDto);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
-        board = new Board(coletaveisDto.BoardDto);        
+        board = new Board(coletaveisDto.BoardDto, poolDeColetaveis);        
         contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
         coletaveisDeVoltaBoard = new ColetaveisParaBoard();
         coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto, monoBehaviour);
@@ -26,12 +29,18 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
     public void start()
     {
         board.Create();
-    }
+    }    
 
     private void configurarSensorDeColetado(GameObject goSensorDeColetado)
     {
         DetectorDeTriggers detectorDeTrigger = goSensorDeColetado.GetComponent<DetectorDeTriggers>();
         detectorDeTrigger.registrarConsumidorDeTrigger(this);
+    }
+
+    private void configurarPoolDeColetaveis(ColetaveisDto coletaveisDto)
+    {
+        Coletavel.configurarMainTile(coletaveisDto.Tile, coletaveisDto.BoardDto.startBoard);
+        poolDeColetaveis = new PoolDeColetaveis();
     }
 
     private void processarColetado(GameObject gameObjectColetado)
