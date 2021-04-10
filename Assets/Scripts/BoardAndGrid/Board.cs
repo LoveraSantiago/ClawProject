@@ -47,7 +47,7 @@ public class Board
         xOffset = boardManagerDto.spriteTile.bounds.size.x;
         yOffset = boardManagerDto.spriteTile.bounds.size.y;
 
-        Coletavel.configurarMainTile(boardManagerDto.tile);
+        Coletavel.configurarMainTile(boardManagerDto.tile, startBoard);
         poolDeColetaveis = new PoolDeColetaveis();
     }
 
@@ -69,8 +69,7 @@ public class Board
                 Vector3 posCalculada = new Vector3(startX + shakeTile + (xOffset * x), startY + (yOffset * y), 0);
 
                 Coletavel coletavel = poolDeColetaveis.criarColetavel();
-                coletavel.colocarNaPosicao(posCalculada);
-                coletavel.addParent(startBoard);
+                coletavel.colocarNaPosicao(posCalculada);                
 
                 tiles[x, y] = coletavel;
 

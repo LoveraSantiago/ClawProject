@@ -4,6 +4,7 @@ public class Coletavel
 {
     private static Nomeador nomeador = new Nomeador();
     private static GameObject mainTile;
+    private static Transform mainTileParent;
 
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }
@@ -13,7 +14,7 @@ public class Coletavel
     
     public Coletavel()
     {
-        goColetavel = GameObject.Instantiate(mainTile, mainTile.transform.position, mainTile.transform.rotation);
+        goColetavel = GameObject.Instantiate(mainTile, mainTile.transform.position, mainTile.transform.rotation, mainTileParent);
         nome = nomeador.getName();
         goColetavel.name = nome;
         spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();
@@ -35,8 +36,9 @@ public class Coletavel
         spriteRenderer.sortingOrder = 31;
     }
 
-    public static void configurarMainTile(GameObject mainTileArg)
+    public static void configurarMainTile(GameObject mainTileArg, Transform mainTileParentArg)
     {
         mainTile = mainTileArg;
+        mainTileParent = mainTileParentArg;
     }
 }
