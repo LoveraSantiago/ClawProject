@@ -29,14 +29,7 @@ public class Coletavel
     public void colocarNaPosicao(Vector3 posicao, Quaternion rotacao) {
         colocarNaPosicao(posicao);
         rigidbody.transform.rotation = rotacao;
-    }
-
-    //public void addForce(Vector2 forca)
-    //{
-    //    Debug.Log("F: " + forca);
-    //    rigidbody.AddForce(forca, ForceMode2D.Impulse);
-    //    //rigidbody.AddRelativeForce(forca);
-    //}
+    }   
 
     public void disparar(Vector3 posicao, float angulo, float velocidade)
     {
