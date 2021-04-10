@@ -13,21 +13,22 @@ public class ColetaveisParaTuboDeSaida : ConsumidorDeEventoTrigger
     private Vector3[] posicoesOriginais;
     private Rigidbody2D[] rigidBodies;//TODO transformar esses caras em coletavel para mais facil manipulacaoS
     private SpriteRenderer[] spriteRenderers;
-    private GameObject[] coletaveisParaTubo;
-    private MonoBehaviour monoBehaviour;
+    private GameObject[] coletaveisParaTubo;    
 
-    public ColetaveisParaTuboDeSaida(TuboDto tuboDto, MonoBehaviour monoBehaviour)
+    public ColetaveisParaTuboDeSaida(TuboDto tuboDto)
     {       
         inicializarArrays(tuboDto.ColetaveisParaTubo);
         configurarEventoTrigger(tuboDto.ParentColetavelTubo);
         
-        this.delayQueda = tuboDto.DelayQuedaTubo;
-        this.monoBehaviour = monoBehaviour;
+        this.delayQueda = tuboDto.DelayQuedaTubo;        
     }
 
-    public void devolver(Coletavel[] coletados)
+    public void devolver(Coletavel[] coletados, MonoBehaviour monoBehaviour)
     {
-        monoBehaviour.StartCoroutine(descerPeloTubo(coletados));
+        if(coletados.Length > 0)
+        {
+            monoBehaviour.StartCoroutine(descerPeloTubo(coletados));
+        }
     }
 
     private IEnumerator descerPeloTubo(Coletavel[] coletados)

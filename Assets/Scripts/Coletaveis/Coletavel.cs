@@ -34,8 +34,9 @@ public class Coletavel
     public void disparar(Vector3 posicao, float angulo, float velocidade)
     {
         Quaternion quatAngulo = Quaternion.Euler(0, 0, angulo);
+        mainTile.transform.rotation = quatAngulo;
         colocarNaPosicao(posicao, quatAngulo);
-        rigidbody.AddForce(goColetavel.transform.up * velocidade, ForceMode2D.Impulse);
+        rigidbody.AddForce(mainTile.transform.up * velocidade, ForceMode2D.Impulse);
     }
 
     public void addParent(Transform parent)

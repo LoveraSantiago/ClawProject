@@ -22,6 +22,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class Board 
 {    
@@ -32,7 +33,8 @@ public class Board
     private List<Sprite> characters;
     private Coletavel[,] tiles;
     private float xOffset;
-    private float yOffset;    
+    private float yOffset;
+    private float delay;
 
     public Board(BoardDto boardManagerDto)
     {        
@@ -44,6 +46,8 @@ public class Board
         startBoard = boardManagerDto.startBoard;       
         xOffset = boardManagerDto.spriteTile.bounds.size.x;
         yOffset = boardManagerDto.spriteTile.bounds.size.y;
+
+        delay = boardManagerDto.DelayVoltaBoard;
     }
 
     public void Create(PoolDeColetaveis poolDeColetaveis)
@@ -85,14 +89,25 @@ public class Board
         return xSize * ySize;
     }
 
-    public void devolver(Coletavel[] coletaveis)
+    public void devolver(Coletavel[] coletados, MonoBehaviour monoBehaviour)
     {
-        for(int contador = 0; contador < coletaveis.Length; contador++)
+        if (coletados.Length > 0)
         {
-            float angle = Random.Range(135, 225);
-            Coletavel coletavel = coletaveis[contador];
+            monoBehaviour.StartCoroutine(devolverParaBoard(coletados));
+        }        
+    }
+
+    private IEnumerator devolverParaBoard(Coletavel[] coletados)
+    {
+        for (int contador = 0; contador < coletados.Length; contador++)
+        {
+            float anguloDevolucao = Random.Range(90, 270);
+            Coletavel coletavel = coletados[contador];
             coletavel.ligar();
-            coletavel.disparar(new Vector3(-1.61f, 4.1f, 0f), 250, 2.5f);
+            coletavel.disparar(new Vector3(-1.61f, 4.1f, 0f), anguloDevolucao, 10f);
+
+            yield return new WaitForSeconds(delay);
         }
+        yield return null;
     }
 }

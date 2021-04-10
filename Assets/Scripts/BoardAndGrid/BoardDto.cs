@@ -5,9 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class BoardDto
 {  
-    public List<Sprite> characters = new List<Sprite>();
-    public SpriteRenderer spriteTile;
-    public int xSize, ySize;
-    public float shakeTile;
-    public Transform startBoard;
+    [SerializeField] public int xSize, ySize;
+    [SerializeField] public float shakeTile;
+    [SerializeField] private float delayVoltaBoard;
+    [SerializeField] public Transform startBoard;
+    [SerializeField] public SpriteRenderer spriteTile;
+    [Space(5)]
+    [SerializeField] public List<Sprite> characters = new List<Sprite>();
+
+    public float DelayVoltaBoard { get { return delayVoltaBoard; } }
 }
