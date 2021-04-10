@@ -2,12 +2,8 @@ using UnityEngine;
 
 public class MovimentacaoAgarrando : MovimentacaoDaGarra
 {
-    //private readonly float INCREMENTO_DE_MASSA = 2;    
-    
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;
-
-    //float massaOriginal;
 
     public MovimentacaoAgarrando()
     {
@@ -18,7 +14,6 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
     public override void preInicio()
     {        
         diminuirInerciaDaGarra();
-        //massaOriginal = compDaGarra.RigidBody.mass;
         compDaGarra.RigidBody.mass = 1;
     }
 
@@ -28,11 +23,8 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
 
         pincas.fixUpdateRotacionamento(compDaGarra.VelocidadeAnguloFechamento, anguloDesejadoEsquerda, anguloDesejadoDireita);
         
-        //if (pincas.isDireitaNoAngulo(compDaGarra.AnguloFechamento))
         if (pincas.isDireitaNoAngulo(anguloDesejadoDireita))
-        {
-            //compDaGarra.RigidBody.mass = 1;
-            //compDaGarra.RigidBody.mass = massaOriginal;
+        {       
             comunicadorComGerMovimentacao.trocarParaAcaoSubindo();
         }        
     }    

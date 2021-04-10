@@ -21044,10 +21044,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
-    - target: {fileID: 1907269042779730410, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1907269042779730411, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -21095,46 +21091,6 @@ PrefabInstance:
     - target: {fileID: 1907269042779730413, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
       propertyPath: m_Name
       value: Garra_V2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1907269042991643850, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1907269042991643850, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1907269042991643850, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1907269042991643850, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1907269042991643850, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6299144452930243208, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6299144452930243208, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6299144452930243208, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6299144452930243208, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6299144452930243208, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
