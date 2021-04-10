@@ -45,7 +45,9 @@ public class Board
         ySize = boardManagerDto.ySize;
         shakeTile = boardManagerDto.shakeTile;
         startBoard = boardManagerDto.startBoard;       
-        xOffset = boardManagerDto.spriteTile.bounds.size.x;
+        //xOffset = boardManagerDto.spriteTile.bounds.size.x;
+        xOffset = 1;//TEMPORARIO AQUI
+        Debug.Log("XOffset " + xOffset);
         yOffset = boardManagerDto.spriteTile.bounds.size.y;
 
         delay = boardManagerDto.DelayVoltaBoard;
