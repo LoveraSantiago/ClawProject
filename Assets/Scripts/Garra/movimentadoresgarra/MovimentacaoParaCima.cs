@@ -10,6 +10,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 
     public override void preInicio()
     {
+        compDaGarra.RigidBody.mass = 3;
         parandoMovimentacaoDaGarra();
     }
 

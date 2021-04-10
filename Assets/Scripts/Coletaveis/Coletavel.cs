@@ -10,6 +10,7 @@ public class Coletavel
     public string nomeSprite { get; private set; }
 
     private GameObject goColetavel;
+    private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;
     
     public Coletavel()
@@ -18,10 +19,16 @@ public class Coletavel
         nome = nomeador.getName();
         goColetavel.name = nome;
         spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();
+        rigidbody = goColetavel.GetComponent<Rigidbody2D>();
     }
 
     public void colocarNaPosicao(Vector3 posicao) {
         goColetavel.transform.position = posicao;
+    }
+
+    public void addForce(Vector3 forca)
+    {
+        rigidbody.AddForce(forca);
     }
 
     public void addParent(Transform parent)

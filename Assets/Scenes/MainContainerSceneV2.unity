@@ -5144,12 +5144,6 @@ MonoBehaviour:
       - {fileID: 650369887}
       - {fileID: 1171204407}
       - {fileID: 911244732}
-    delayQuedaTubo: 1
-    parentColetavelTubo: {fileID: 1607848931}
-    coletaveisParaTubo:
-    - {fileID: 650369887}
-    - {fileID: 1171204407}
-    - {fileID: 911244732}
     boardDto:
       characters:
       - {fileID: 21300000, guid: 0b082251c8af14642bd56a42a89b025e, type: 3}
@@ -21050,6 +21044,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 1907269042779730410, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1907269042779730411, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
       propertyPath: m_RootOrder
       value: 2
