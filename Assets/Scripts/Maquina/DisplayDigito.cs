@@ -28,18 +28,30 @@ public class DisplayDigito
         mostrarDigito(0);
     }
 
+    public void mostrarDigito(string digito)
+    {
+        desligarPosicoes(arrayLigados);
+        arrayLigados = getArrayParaLigar(digito);
+        ligarPosicoes(arrayLigados, Color.green);
+    }
+
     public void mostrarDigito(int digito)
     {
         desligarPosicoes(arrayLigados);
         arrayLigados = getArrayParaLigar(digito);
-        ligarPosicoes(arrayLigados);
+        ligarPosicoes(arrayLigados, Color.red);
     }    
 
-    private void ligarPosicoes(int[,] array)
+    public void desligarDigito()
+    {
+        desligarPosicoes(arrayLigados);
+    }
+
+    private void ligarPosicoes(int[,] array, Color cor)
     {
         for(contadorX = 0; contadorX < array.GetLength(0); contadorX++)
         {            
-            arrayDeLeds[array[contadorX, 0], array[contadorX, 1]].color = Color.red;            
+            arrayDeLeds[array[contadorX, 0], array[contadorX, 1]].color = cor;            
         }
     }
 
@@ -70,6 +82,20 @@ public class DisplayDigito
         return ARRAY_VAZIO;
     }
 
+    private int [,] getArrayParaLigar(string caracter)
+    {
+        switch (caracter)
+        {
+            case "Y":
+                return ARRAY_Y;
+            case "E":
+                return ARRAY_E;
+            case "S":
+                return ARRAY_S;
+        }
+        return ARRAY_VAZIO;
+    }
+
     private static int[,] ARRAY_VAZIO = new int[,] { };
     private static int[,] ARRAY_ZERO   = new int[,] { { 0, 1 }, { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 }, { 1, 0 }, { 1, 2 }, { 1, 6 }, { 2, 0 }, { 2, 3 }, { 2, 6 }, { 3, 0 }, { 3, 4 }, { 3, 6 }, { 4, 1 }, { 4, 2 }, { 4, 3 }, { 4, 4 }, { 4, 5 } };
     private static int[,] ARRAY_HUM    = new int[,] { { 1, 0 }, { 1, 5 }, { 2, 0 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 2, 5 }, { 2, 6 }, { 3, 0 } };
@@ -81,4 +107,8 @@ public class DisplayDigito
     private static int[,] ARRAY_SETE   = new int[,] { { 0, 6 }, { 1, 0 }, { 1, 1 }, { 1, 2 }, { 1, 6 }, { 2, 3 }, { 2, 6 }, { 3, 4 }, { 3, 6 }, { 4, 5 }, { 4, 6 } };
     private static int[,] ARRAY_OITO   = new int[,] { { 0, 1 }, { 0, 2 }, { 0, 4 }, { 0, 5 }, { 1, 0 }, { 1, 3 }, { 1, 6 }, { 2, 0 }, { 2, 3 }, { 2, 6 }, { 3, 0 }, { 3, 3 }, { 3, 6 }, { 4, 1 }, { 4, 2 }, { 4, 4 }, { 4, 5 } };
     private static int[,] ARRAY_NOVE   = new int[,] { { 0, 0 }, { 0, 4 }, { 0, 5 }, { 1, 0 }, { 1, 3 }, { 1, 6 }, { 2, 0 }, { 2, 3 }, { 2, 6 }, { 3, 1 }, { 3, 3 }, { 3, 6 }, { 4, 2 }, { 4, 3 }, { 4, 4 }, { 4, 5 } };
+
+    private static int[,] ARRAY_Y = new int[,] { { 0, 4 }, { 0, 5 }, { 0, 6 }, { 1, 3 }, { 2, 0 }, { 2, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 4, 5 }, { 4, 6 } };
+    private static int[,] ARRAY_E = new int[,] { { 0, 0 }, { 0, 1 }, { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 }, { 0, 6 }, { 1, 0 }, { 1, 3 }, { 1, 6 }, { 2, 0 }, { 2, 3 }, { 2, 6 }, { 3, 0 }, { 3, 3 }, { 3, 6 }, { 4, 0 }, { 4, 6 } };
+    private static int[,] ARRAY_S = new int[,] { { 0, 0 }, { 0, 4 }, { 0, 5 }, { 1, 0 }, { 1, 3 }, { 1, 6 }, { 2, 0 }, { 2, 3 }, { 2, 6 }, { 3, 0 }, { 3, 3 }, { 3, 6 }, { 4, 1 }, { 4, 2 }, { 4, 6 }};
 }

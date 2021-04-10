@@ -8,9 +8,9 @@ public class MaquinaManager
 
     public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, MonoBehaviour monoBehaviour)
     {
-        displayDeImgs = new DisplayDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
-        displayDeScores = new DisplayDeScores(maquinaDto.GosDisplayScores);
-        joystickHaste = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
+        displayDeImgs   = new DisplayDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
+        displayDeScores = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
+        joystickHaste   = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
     }
 
     public void fixedUpdate()

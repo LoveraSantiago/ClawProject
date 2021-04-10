@@ -75,6 +75,11 @@ public class ContadorDeColetaveis
         return qtdColetados == 0;
     }
 
+    public bool getResult()
+    {
+        return arrayTubo == nomesColetados;
+    }
+
     private bool isCombinacaoValida()
     {
         string nomePrimeiroColetado = nomesColetados[0];

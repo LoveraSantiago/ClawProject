@@ -10,7 +10,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
 
     private ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado;
 
-    public ColetavelManager(ColetaveisDto coletaveisDto)
+    public ColetavelManager(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
     {
         this.coletaveisDto = coletaveisDto;
 
@@ -20,7 +20,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
 
         contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
         coletaveisDeVoltaBoard = new ColetaveisParaBoard();
-        coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto);
+        coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto, monoBehaviour);
     }
 
     private void CriarBoard(BoardDto boardDto)
@@ -43,12 +43,12 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
         contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);
 
         board.devolver(contadorDeColetaveis.getArrayBoard());
-        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), 0);
+        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), coletaveisDto.DelayQuedaTubo);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
         InformacoesColetado infoColetado = new InformacoesColetado();
-        infoColetado.addInfosDisplayColetados(sprite, contadorDeColetaveis.hasResetColetados());
+        infoColetado.addInfosDisplayColetados(sprite, contadorDeColetaveis.hasResetColetados(), contadorDeColetaveis.getResult());
         infoColetado.addInfosDisplayScore(contadorDeColetaveis.getScore());
         infoColetado.addInfosPosicao(gameObjectColetado.transform.position);
 

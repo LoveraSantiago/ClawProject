@@ -3,7 +3,8 @@ using System.Collections;
 
 public class EfeitoColetado : ConsumidorDeEvento<InformacoesColetado>
 {    
-    private Vector3 posicaoOriginal;
+    private Vector3 posOriginalEfeito;
+    private Vector3 posOriginalSeguidores;
 
     private ParticleSystem particulas;
     private MonoBehaviour monoBehaviour;
@@ -12,22 +13,21 @@ public class EfeitoColetado : ConsumidorDeEvento<InformacoesColetado>
 
     public EfeitoColetado(ParticulasDto particulasDto, MonoBehaviour monoBehaviour)
     {
-        this.particulasDto = particulasDto;
-        
+        this.particulasDto = particulasDto;        
         this.monoBehaviour = monoBehaviour;
 
-        posicaoOriginal = particulasDto.ParentParticulas.transform.position;
+        posOriginalEfeito = particulasDto.ParentParticulas.transform.position;
+        posOriginalSeguidores = particulasDto.SeguidoraParticulas.transform.position;
         particulas      = particulasDto.ParentParticulas.GetComponent<ParticleSystem>();
         particulas.Stop();
     }
 
     private void playEfeitoColetado(Vector3 posicao)
-    {
-        float posX = posicao.x;
-        float posY = posicaoOriginal.y;
-        float posZ = posicaoOriginal.z;
-        particulasDto.ParentParticulas.transform.position = new Vector3(posX, posY, posZ);
-        particulasDto.SeguidoraParticulas.transform.position = particulasDto.ParentParticulas.transform.position;
+    {        
+        particulasDto.ParentParticulas.transform.position = new Vector3(posicao.x, posOriginalEfeito.y, posOriginalEfeito.z);
+        particulasDto.SeguidoraParticulas.transform.position = new Vector3(posicao.x, posOriginalSeguidores.y, posOriginalSeguidores.y);
+        particulasDto.LuzSeguidora.transform.position = particulasDto.SeguidoraParticulas.transform.position;
+
         particulas.Play();
 
         monoBehaviour.StartCoroutine(
@@ -42,6 +42,8 @@ public class EfeitoColetado : ConsumidorDeEvento<InformacoesColetado>
         {
             particulasDto.SeguidoraParticulas.transform.position = Vector3.MoveTowards(
                 particulasDto.SeguidoraParticulas.transform.position, posFim, velocidade * Time.deltaTime);
+
+            particulasDto.LuzSeguidora.transform.position = particulasDto.SeguidoraParticulas.transform.position;
 
             yield return null;
         }
