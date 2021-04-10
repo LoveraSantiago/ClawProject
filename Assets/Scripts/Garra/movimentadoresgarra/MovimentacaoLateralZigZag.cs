@@ -38,6 +38,8 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
 
         compDaGarra.RigidBody.transform.localPosition = new Vector2(compDaGarra.RigidBody.position.x, posicaoInicial.y);
         compDaGarra.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+
+        pincas.acionarTrigger();
     }
 
     public override void update()
@@ -47,6 +49,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
             comunicadorComGerMovimentacao.trocarParaAcaoDescendo(posicaoInicial);
             compDaGarra.RigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            pincas.acionarCollider();
         }
     }
     
