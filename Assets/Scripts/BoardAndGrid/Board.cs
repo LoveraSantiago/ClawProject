@@ -26,36 +26,30 @@ using System.Collections;
 
 public class Board 
 {    
-    private SpriteRenderer spriteTile;
     private int xSize, ySize;
     private float shakeTile;
     private Transform startBoard;
     private List<Sprite> characters;
-    private Coletavel[,] tiles;
-    private float xOffset;
-    private float yOffset;
-    private float delay;
-    private Transform referenciaVoltaBoard;
+    private Coletavel[,] tiles;    
+    private BoardDto boardDto;
 
-    public Board(BoardDto boardManagerDto)
+    public Board(BoardDto boardDto)
     {        
-        characters = boardManagerDto.characters;
-        spriteTile = boardManagerDto.spriteTile;
-        xSize = boardManagerDto.xSize;
-        ySize = boardManagerDto.ySize;
-        shakeTile = boardManagerDto.shakeTile;
-        startBoard = boardManagerDto.startBoard;       
-        //xOffset = boardManagerDto.spriteTile.bounds.size.x;
-        xOffset = 1;//TEMPORARIO AQUI
-        Debug.Log("XOffset " + xOffset);
-        yOffset = boardManagerDto.spriteTile.bounds.size.y;
+        characters = boardDto.characters;
+        xSize = boardDto.xSize;
+        ySize = boardDto.ySize;
+        shakeTile = boardDto.shakeTile;
+        startBoard = boardDto.startBoard;               
 
-        delay = boardManagerDto.DelayVoltaBoard;
-        referenciaVoltaBoard = boardManagerDto.PosicaoRefVoltaBoard;
+        this.boardDto = boardDto;                
     }
 
     public void Create(PoolDeColetaveis poolDeColetaveis)
     {
+        float yOffset = boardDto.SpriteTile.bounds.size.y;
+        //xOffset = boardManagerDto.spriteTile.bounds.size.x;
+        float xOffset = 1;//TEMPORARIO AQUI
+
         tiles = new Coletavel[xSize, ySize];
        
         float startX = startBoard.position.x;
@@ -103,14 +97,16 @@ public class Board
 
     private IEnumerator devolverParaBoard(Coletavel[] coletados)
     {
+        yield return new WaitForSeconds(boardDto.DelayInicialVoltaBoard);
+
         for (int contador = 0; contador < coletados.Length; contador++)
         {
-            float anguloDevolucao = Random.Range(180, 270);
+            float anguloDevolucao = Random.Range(180, 230);
             Coletavel coletavel = coletados[contador];
             coletavel.ligar();
-            coletavel.disparar(referenciaVoltaBoard.position, anguloDevolucao, 10f);
+            coletavel.disparar(boardDto.PosicaoRefVoltaBoard.position, anguloDevolucao, 10f);
 
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(boardDto.DelayVoltaBoard);
         }
         yield return null;
     }

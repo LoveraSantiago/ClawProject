@@ -5148,7 +5148,8 @@ MonoBehaviour:
       xSize: 6
       ySize: 2
       shakeTile: 0.02
-      delayVoltaBoard: 0.4
+      delayInicialVoltaBoard: 1.5
+      delayVoltaBoard: 0.2
       posicaoRefVoltaBoard: {fileID: 1476824515}
       startBoard: {fileID: 1496791513}
       spriteTile: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
