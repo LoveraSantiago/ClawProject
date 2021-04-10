@@ -23,7 +23,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Board
+public class Board 
 {    
     private SpriteRenderer spriteTile;
     private int xSize, ySize;
@@ -85,7 +85,7 @@ public class Board
         return xSize * ySize;
     }
 
-    internal void devolver(Coletavel[] coletaveis)
+    public void devolver(Coletavel[] coletaveis)
     {
         //Debug.Log("Board - devolver");
     }

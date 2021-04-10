@@ -7,7 +7,6 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
     private Board board;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contadorDeColetaveis;
-    private ColetaveisParaBoard coletaveisDeVoltaBoard;
     private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
 
     private ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado;
@@ -22,7 +21,6 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
         board = new Board(coletaveisDto.BoardDto);        
         contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
-        coletaveisDeVoltaBoard = new ColetaveisParaBoard();
         coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto, monoBehaviour);
     }   
 

@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ColetaveisParaTuboDeSaida : ResultadoDoContadorColetaveis,
-                                         ConsumidorDeEventoTrigger
+public class ColetaveisParaTuboDeSaida : ConsumidorDeEventoTrigger
 {
     private readonly float GRAVIDADE = 0.65f;
 
