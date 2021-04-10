@@ -35,6 +35,7 @@ public class Board
     private float xOffset;
     private float yOffset;
     private float delay;
+    private Transform referenciaVoltaBoard;
 
     public Board(BoardDto boardManagerDto)
     {        
@@ -48,6 +49,7 @@ public class Board
         yOffset = boardManagerDto.spriteTile.bounds.size.y;
 
         delay = boardManagerDto.DelayVoltaBoard;
+        referenciaVoltaBoard = boardManagerDto.PosicaoRefVoltaBoard;
     }
 
     public void Create(PoolDeColetaveis poolDeColetaveis)
@@ -101,10 +103,10 @@ public class Board
     {
         for (int contador = 0; contador < coletados.Length; contador++)
         {
-            float anguloDevolucao = Random.Range(90, 270);
+            float anguloDevolucao = Random.Range(180, 270);
             Coletavel coletavel = coletados[contador];
             coletavel.ligar();
-            coletavel.disparar(new Vector3(-1.61f, 4.1f, 0f), anguloDevolucao, 10f);
+            coletavel.disparar(referenciaVoltaBoard.position, anguloDevolucao, 10f);
 
             yield return new WaitForSeconds(delay);
         }
