@@ -40,9 +40,7 @@ public class ContadorDeColetaveis
             {
                 devolverBoard = coletados;
                 deveolverTubo = arrayVazio;
-                AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
-
-                totalColetaveis -= 3;
+                AudioController.current.PlayAudio(AudioController.current.combinacaoNok);                
             }
             resetarColetados();
         }
