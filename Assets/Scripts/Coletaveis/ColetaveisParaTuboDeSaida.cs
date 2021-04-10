@@ -17,10 +17,10 @@ public class ColetaveisParaTuboDeSaida : ResultadoDoContadorColetaveis,
     private GameObject[] coletaveisParaTubo;
     private MonoBehaviour monoBehaviour;
 
-    public ColetaveisParaTuboDeSaida(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
+    public ColetaveisParaTuboDeSaida(TuboDto tuboDto, ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
     {       
-        inicializarArrays(coletaveisDto.ColetaveisParaTubo);
-        configurarEventoTrigger(coletaveisDto.ParentColetavelTubo);
+        inicializarArrays(tuboDto.ColetaveisParaTubo);
+        configurarEventoTrigger(tuboDto.ParentColetavelTubo);
 
         this.listaDeCharacters = coletaveisDto.boardDto.characters;
         this.monoBehaviour = monoBehaviour;
