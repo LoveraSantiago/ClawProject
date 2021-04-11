@@ -45,7 +45,7 @@ public class MainGame : MonoBehaviour
         inputGame = new InputGameImpl(maquinaDto.ReferenciaChao);
         garraManager = new GarraManager(componentesDaGarra, mecanicaSelecionada, inputGame);
         coletaveisManager = new ColetavelManager(coletaveisDto, this);
-        maquinaManager = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, this);
+        maquinaManager = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         EfeitoColetado efeitoColetado = new EfeitoColetado(particulasDto, this);
 
         new AcaoEventoColetado()
@@ -68,13 +68,14 @@ public class MainGame : MonoBehaviour
     private void startLaizy()
     {
         coletaveisManager.start();
-        garraManager.start();
+        garraManager.start();        
     }
 
     void Update()
     {
         inputGame.update();
         garraManager.update();
+        maquinaManager.update();
         //coletaveis.Update();     
     }
 
