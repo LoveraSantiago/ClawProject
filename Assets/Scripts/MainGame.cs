@@ -52,6 +52,10 @@ public class MainGame : MonoBehaviour
             .adicionarConsumidor(maquinaManager.getDisplayScoreConsumidorInfoColetado())
             .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado());//TODO ver mudanca de ordem
 
+        new AcaoImantadoPelaGarra()
+            .configurarProdutor(garraManager.getProdutorDeEventoTocadoPelaGarra())
+            .adicionarConsumidor(coletaveisManager.getConsumidorDeColetavelParaImantar());            
+
         new AcaoSincroniaComDirecaoDaGarra()
             .configurarProdutor(garraManager.getDisparadorDeEventoDeDirecao())
             .adicionarConsumidor(maquinaManager.getJoystickHasteConsumidorDirecao());

@@ -11,7 +11,7 @@ public class Coletavel
 
     private GameObject goColetavel;
     private Rigidbody2D rigidbody;
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;    
     
     public Coletavel()
     {
@@ -38,6 +38,17 @@ public class Coletavel
         colocarNaPosicao(posicao, quatAngulo);
         rigidbody.AddForce(mainTile.transform.up * velocidade, ForceMode2D.Impulse);
     }
+
+    public void imantar()
+    {
+        goColetavel.layer = LayerMask.NameToLayer("Atracao");
+    }
+
+    public void desimantar()
+    {
+        goColetavel.layer = LayerMask.NameToLayer("Coletavel");
+    }
+
 
     public void addParent(Transform parent)
     {

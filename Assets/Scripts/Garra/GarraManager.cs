@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class GarraManager : ConsumidorDeEventoTrigger
 {
-    private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
+    private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
 
     public GarraManager(ComponentesDaGarraDto componentesDaGarraDto,
                  MECANICA_GARRA mecanicaGarraEscolhida)
@@ -49,5 +49,10 @@ public class GarraManager : ConsumidorDeEventoTrigger
     public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
     {
         return gerenciadorDeMovimentacao.getDisparadorDeEventoDeDirecao();
+    }
+
+    public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
+    {
+        return gerenciadorDeMovimentacao.getProdutorDeEventoTocadoPelaGarra(); ;
     }
 }

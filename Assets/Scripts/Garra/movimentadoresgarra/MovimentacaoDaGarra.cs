@@ -28,22 +28,6 @@ public abstract class MovimentacaoDaGarra
         comunicadorComGerMovimentacao = comunicadorComGerMovimentacaoArg;
     }
 
-    //TEMPORARIAMENTE AQUI.... GARRA NAO DEVERIA INTERFERIR NO ESTADO DO COLETAVEL POSSIVEL (QUEBRANDO UMA INVARIANTE PERTENCENTE A COLETAVEIS)
-    protected void ligarAtracaoNoObjeto(GameObject gameObject)
-    {        
-        layerAnterior = gameObject.layer;
-        gameObject.layer = LayerMask.NameToLayer("Atracao");
-        objetoAtraido = gameObject;
-    }
-
-    protected void desligarAtracaoNoObjeto()
-    {
-        if(objetoAtraido != null)
-        {     
-            objetoAtraido.layer = layerAnterior;
-        }
-    }
-
     protected void diminuirInerciaDaGarra()
     {
         compDaGarra.RigidBody.velocity = Vector3.zero;

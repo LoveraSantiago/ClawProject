@@ -6,6 +6,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     private Quaternion anguloDesejadoDireita;   
     
     private ContadorDeTempo contadorDeTempoTravamento;
+    private ProdutorDeEvento<string> produtorEventoGarraAcertou;
 
     public MovimentacaoParaBaixo()
     {
@@ -13,6 +14,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  compDaGarra.AnguloAbertura);
 
         contadorDeTempoTravamento = new ContadorDeTempo(1.5f, () => comunicadorComGerMovimentacao.trocarParaAgarrada());
+        produtorEventoGarraAcertou = new ProdutorDeEvento<string>();
     }
 
     public override void preInicio()
@@ -40,9 +42,14 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     {
         //Debug.Log("Atingiu: " + gameObject.name);
         if (Utils.isColetavel(gameObject))
-        {            
-            ligarAtracaoNoObjeto(gameObject);
+        {
+            produtorEventoGarraAcertou.produziuEvento(gameObject.name);
             comunicadorComGerMovimentacao.trocarParaAgarrada();
         }
+    }
+
+    public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
+    {
+        return produtorEventoGarraAcertou;
     }
 }

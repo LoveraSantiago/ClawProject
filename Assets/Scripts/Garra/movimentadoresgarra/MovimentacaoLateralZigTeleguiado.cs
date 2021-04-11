@@ -22,8 +22,7 @@ public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraHorizontal
 
     public override void preInicio()
     {
-        aceitarClique = true;
-        desligarAtracaoNoObjeto();
+        aceitarClique = true;        
         actionFixedUpdate = actionFixedUpdateZigZague;
     }
 

@@ -10,8 +10,7 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarraHorizontal
 
     public override void preInicio() {
         aceitarClique = true;
-        moverLateralmente = false;
-        desligarAtracaoNoObjeto();
+        moverLateralmente = false;        
     }
 
     public override void update() {
