@@ -5,7 +5,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     private Vector2 posicaoInicial;
 
     private MovimentacaoDaGarra movimentacaoAtual;
-    private MovimentacaoDaGarra movimentacaoParaBaixo;
+    private MovimentacaoParaBaixo movimentacaoParaBaixo;
     private MovimentacaoDaGarra movimentacaoAgarrando;
     private MovimentacaoParaCima movimentacaoParaCima;
     private MovimentacaoDaGarraHorizontal movimentacaoLateral;
@@ -94,5 +94,10 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
     {
         return movimentacaoLateral.getProdutorDeEventoDeDirecao();
+    }
+
+    public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
+    {
+        return movimentacaoParaBaixo.getProdutorDeEventoTocadoPelaGarra();
     }
 }

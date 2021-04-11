@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class ColetavelManager : ConsumidorDeEventoTrigger
+public class ColetavelManager : ConsumidorDeEventoTrigger,
+                                ConsumidorDeEvento<string>
 {
     private ColetaveisDto coletaveisDto;
+    private Coletavel coletavelImantado;
 
     private Board board;
     private PoolDeColetaveis poolDeColetaveis;
@@ -45,6 +47,8 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
 
     private void processarColetado(GameObject gameObjectColetado)
     {
+        coletavelImantado.desimantar();
+
         Coletavel coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
         coletavelAcertado.desligar();        
 
@@ -65,19 +69,38 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
 
     public void fixedUpdate() { }    
 
+    private void processarImantado(string nomeColetado)
+    {
+        coletavelImantado = poolDeColetaveis.getColetavelPeloNome(nomeColetado);
+        coletavelImantado.imantar();
+    }
+
     public ProdutorDeEvento<InformacoesColetado> getProdutorDeInfoColetado()
     {
         return produtorDeInformacoesDoColetado;
+    }
+
+    public ConsumidorDeEvento<string> getConsumidorDeColetavelParaImantar()
+    {
+        return this;
     }
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
     //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
     public void consumirEvento(Collider2D goColetado)
     {
-        if (goColetado.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0)
+        if(goColetado.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0)
         {            
             processarColetado(goColetado.gameObject);
         }
+    }
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
+
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
+    //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
+    public void consumirEvento(string nomeColetavel)
+    {
+        processarImantado(nomeColetavel);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
 }

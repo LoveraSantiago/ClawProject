@@ -31,8 +31,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
     }
 
     public override void preInicio()
-    {
-        desligarAtracaoNoObjeto();
+    {        
         configurarAngulosParaMax();
         dispararEventoDirecao();
 
