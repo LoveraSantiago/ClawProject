@@ -22,6 +22,8 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
 
     public MovimentacaoLateralZigZag(InputGame inputGame)
     {
+        this.inputGame = inputGame;
+
         anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMin);
         anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMin);
 

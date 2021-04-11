@@ -5161,6 +5161,8 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 197f4c6ad86ad4eea9ece9b073043381, type: 3}
       - {fileID: 21300000, guid: 1b34677d209914bd88468db12bd7ef0f, type: 3}
   maquinaDto:
+    referenciaChao: {fileID: 1841408758}
+    hasteJoystick: {fileID: 1655319868}
     displayDeColetadoDto:
       inicialDelay: 0.5
       fimDelay: 0.1
@@ -5177,13 +5179,6 @@ MonoBehaviour:
       - {fileID: 660903945}
       - {fileID: 419047350}
       - {fileID: 514353999}
-    qtdBlinks: 3
-    tempoBlink: 0.2
-    gosDisplayScores:
-    - {fileID: 660903945}
-    - {fileID: 419047350}
-    - {fileID: 514353999}
-    hasteJoystick: {fileID: 1655319868}
   particulasDto:
     velocidadeMovimentacao: 4.5
     destinoParticulas: {fileID: 6406990385049082668}
@@ -10674,7 +10669,7 @@ GameObject:
   m_Layer: 11
   m_Name: collider-container-coletaveis
   m_TagString: Container
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -21027,7 +21022,7 @@ GameObject:
   m_Layer: 11
   m_Name: chao
   m_TagString: Untagged
-  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
