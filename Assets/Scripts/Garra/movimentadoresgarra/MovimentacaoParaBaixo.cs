@@ -16,9 +16,9 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     }
 
     public override void preInicio()
-    {
+    {        
+        compDaGarra.RigidBody.mass = 2;
         contadorDeTempoTravamento.resetContador();
-
         diminuirInerciaDaGarra();        
     }
 

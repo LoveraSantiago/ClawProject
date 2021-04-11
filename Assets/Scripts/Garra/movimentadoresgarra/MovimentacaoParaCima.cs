@@ -10,6 +10,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 
     public override void preInicio()
     {
+        compDaGarra.RigidBody.mass = 3;
         parandoMovimentacaoDaGarra();
     }
 
@@ -18,10 +19,6 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
         if(compDaGarra.RigidBody.transform.localPosition.y > posicaoInicial.y)
         {
             parandoMovimentacaoDaGarra();
-
-            compDaGarra.RigidBody.transform.localPosition = new Vector2(
-                compDaGarra.RigidBody.position.x, posicaoInicial.y);
-            
             comunicadorComGerMovimentacao.trocarParaAcaoNormal();
         }
     }

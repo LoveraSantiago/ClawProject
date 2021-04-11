@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +5,20 @@ using UnityEngine;
 [System.Serializable]
 public class BoardDto
 {  
-    public List<Sprite> characters = new List<Sprite>();
-    public GameObject tile;
-    public SpriteRenderer spriteTile;
-    public int xSize, ySize;
-    public float shakeTile;
-    public Transform startBoard;
+    [SerializeField] public int xSize, ySize;
+    [SerializeField] public float shakeTile;
+    [SerializeField] private float delayInicialVoltaBoard;
+    [SerializeField] private float delayVoltaBoard;
+    [Space(5)]
+    [SerializeField] private Transform posicaoRefVoltaBoard;
+    [SerializeField] public Transform startBoard;
+    [SerializeField] private SpriteRenderer spriteTile;
+    [Space(5)]
+    [SerializeField] public List<Sprite> characters = new List<Sprite>();
+
+    public float DelayInicialVoltaBoard { get { return delayInicialVoltaBoard; } }
+    public float DelayVoltaBoard { get { return delayVoltaBoard; } }
+    public Transform PosicaoRefVoltaBoard { get { return posicaoRefVoltaBoard; } }
+
+    public SpriteRenderer SpriteTile { get { return spriteTile; } }
 }

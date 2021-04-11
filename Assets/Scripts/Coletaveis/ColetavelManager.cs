@@ -3,31 +3,33 @@ using UnityEngine;
 public class ColetavelManager : ConsumidorDeEventoTrigger
 {
     private ColetaveisDto coletaveisDto;
-    private ContadorDeColetaveis contadorDeColetaveis;
-    private ColetaveisParaBoard coletaveisDeVoltaBoard;
-    private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
+
     private Board board;
+    private PoolDeColetaveis poolDeColetaveis;
+    private ContadorDeColetaveis contadorDeColetaveis;
+    private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
 
     private ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado;
+    private MonoBehaviour monoBehaviour;
 
     public ColetavelManager(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
     {
         this.coletaveisDto = coletaveisDto;
+        this.monoBehaviour = monoBehaviour;
 
-        CriarBoard(coletaveisDto.BoardDto);
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
+        configurarPoolDeColetaveis(coletaveisDto);
+
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
-
+        board = new Board(coletaveisDto.BoardDto);        
         contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
-        coletaveisDeVoltaBoard = new ColetaveisParaBoard();
-        coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto, monoBehaviour);
-    }
+        coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);
+    }   
 
-    private void CriarBoard(BoardDto boardDto)
+    public void start()
     {
-        board = new Board(boardDto);
-        board.Create();
-    }
+        board.Create(poolDeColetaveis);
+    }    
 
     private void configurarSensorDeColetado(GameObject goSensorDeColetado)
     {
@@ -35,20 +37,26 @@ public class ColetavelManager : ConsumidorDeEventoTrigger
         detectorDeTrigger.registrarConsumidorDeTrigger(this);
     }
 
+    private void configurarPoolDeColetaveis(ColetaveisDto coletaveisDto)
+    {
+        Coletavel.configurarMainTile(coletaveisDto.Tile, coletaveisDto.BoardDto.startBoard);
+        poolDeColetaveis = new PoolDeColetaveis();
+    }
+
     private void processarColetado(GameObject gameObjectColetado)
     {
-        Sprite sprite = gameObjectColetado.GetComponent<SpriteRenderer>().sprite;
-        gameObjectColetado.SetActive(false);
+        Coletavel coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
+        coletavelAcertado.desligar();        
 
-        contadorDeColetaveis.adicionarColetado(gameObjectColetado.name);
+        contadorDeColetaveis.adicionarColetado(coletavelAcertado);
 
-        board.devolver(contadorDeColetaveis.getArrayBoard());
-        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), coletaveisDto.DelayQuedaTubo);
+        board.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour);
+        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
         InformacoesColetado infoColetado = new InformacoesColetado();
-        infoColetado.addInfosDisplayColetados(sprite, contadorDeColetaveis.hasResetColetados(), contadorDeColetaveis.getResult());
+        infoColetado.addInfosDisplayColetados(coletavelAcertado.getSprite(), contadorDeColetaveis.hasResetColetados(), contadorDeColetaveis.getResult());
         infoColetado.addInfosDisplayScore(contadorDeColetaveis.getScore());
         infoColetado.addInfosPosicao(gameObjectColetado.transform.position);
 

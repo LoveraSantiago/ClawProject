@@ -22,35 +22,35 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
-public class Board
+public class Board 
 {    
-    private GameObject tile;
-    private SpriteRenderer spriteTile;
     private int xSize, ySize;
     private float shakeTile;
     private Transform startBoard;
     private List<Sprite> characters;
-    private GameObject[,] tiles;
-    private float xOffset;
-    private float yOffset;
+    private Coletavel[,] tiles;    
+    private BoardDto boardDto;
 
-    public Board(BoardDto boardManagerDto)
+    public Board(BoardDto boardDto)
     {        
-        characters = boardManagerDto.characters;
-        tile = boardManagerDto.tile;
-        spriteTile = boardManagerDto.spriteTile;
-        xSize = boardManagerDto.xSize;
-        ySize = boardManagerDto.ySize;
-        shakeTile = boardManagerDto.shakeTile;
-        startBoard = boardManagerDto.startBoard;       
-        xOffset = boardManagerDto.spriteTile.bounds.size.x;
-        yOffset = boardManagerDto.spriteTile.bounds.size.y;        
+        characters = boardDto.characters;
+        xSize = boardDto.xSize;
+        ySize = boardDto.ySize;
+        shakeTile = boardDto.shakeTile;
+        startBoard = boardDto.startBoard;               
+
+        this.boardDto = boardDto;                
     }
 
-    public void Create()
+    public void Create(PoolDeColetaveis poolDeColetaveis)
     {
-        tiles = new GameObject[xSize, ySize];
+        float yOffset = boardDto.SpriteTile.bounds.size.y;
+        //xOffset = boardManagerDto.spriteTile.bounds.size.x;
+        float xOffset = 1;//TEMPORARIO AQUI
+
+        tiles = new Coletavel[xSize, ySize];
        
         float startX = startBoard.position.x;
         float startY = startBoard.position.y;
@@ -63,24 +63,21 @@ public class Board
             for (int y = 0; y < ySize; y++)
             {
                 shakeTile *= -1;
-                GameObject newTile = GameObject.Instantiate(tile, new Vector3(startX + shakeTile + (xOffset * x), startY + (yOffset * y), 0), tile.transform.rotation);
-                tiles[x, y] = newTile;
-                newTile.transform.parent = startBoard;
+                Vector3 posCalculada = new Vector3(startX + shakeTile + (xOffset * x), startY + (yOffset * y), 0);
+
+                Coletavel coletavel = poolDeColetaveis.criarColetavel();
+                coletavel.colocarNaPosicao(posCalculada);                
+
+                tiles[x, y] = coletavel;
 
                 List<Sprite> possibleCharacters = new List<Sprite>();
                 possibleCharacters.AddRange(characters);
+                Sprite newSprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)];
 
                 possibleCharacters.Remove(previousLeft[y]);
                 possibleCharacters.Remove(previousBelow);
 
-                //Sprite newSprite = characters[Random.Range(0, characters.Count)]; //permite repetição do item na mesma linha
-                //Sprite newSprite = characters[0]; //FORÇANDO repetição do MESMO item SO PARA TESTES LOCAIS
-                Sprite newSprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)];
-
-                SpriteRenderer spriteRenderer = newTile.GetComponent<SpriteRenderer>();
-                spriteRenderer.sprite = newSprite;
-                spriteRenderer.sortingOrder = 31;
-                newTile.name = newSprite.name;
+                coletavel.receberSprite(newSprite);
             }
         }
     }
@@ -90,8 +87,27 @@ public class Board
         return xSize * ySize;
     }
 
-    internal void devolver(string[] coletaveis)
+    public void devolver(Coletavel[] coletados, MonoBehaviour monoBehaviour)
     {
-        //Debug.Log("Board - devolver");
+        if (coletados.Length > 0)
+        {
+            monoBehaviour.StartCoroutine(devolverParaBoard(coletados));
+        }        
+    }
+
+    private IEnumerator devolverParaBoard(Coletavel[] coletados)
+    {
+        yield return new WaitForSeconds(boardDto.DelayInicialVoltaBoard);
+
+        for (int contador = 0; contador < coletados.Length; contador++)
+        {
+            float anguloDevolucao = Random.Range(180, 230);
+            Coletavel coletavel = coletados[contador];
+            coletavel.ligar();
+            coletavel.disparar(boardDto.PosicaoRefVoltaBoard.position, anguloDevolucao, 10f);
+
+            yield return new WaitForSeconds(boardDto.DelayVoltaBoard);
+        }
+        yield return null;
     }
 }

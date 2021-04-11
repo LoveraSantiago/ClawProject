@@ -8,6 +8,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
     private bool isUsandoMaxAngulo;
     private float anguloAtual;
 
+    private Vector2 posicaoInicial;
     private Quaternion anguloDesejadoEsquerdaMin;
     private Quaternion anguloDesejadoDireitaMin;
 
@@ -15,7 +16,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
     private Quaternion anguloDesejadoDireitaMax;
 
     private Quaternion anguloDesejadoEsquerdaAtual;
-    private Quaternion anguloDesejadoDireitaAtual;    
+    private Quaternion anguloDesejadoDireitaAtual;
 
     public MovimentacaoLateralZigZag()
     {
@@ -23,8 +24,9 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMin);
 
         anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMax);
-        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMax);        
-        
+        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMax);
+
+        posicaoInicial = compDaGarra.RigidBody.transform.localPosition;
         direcao = 1;        
     }
 
@@ -33,15 +35,21 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         desligarAtracaoNoObjeto();
         configurarAngulosParaMax();
         dispararEventoDirecao();
+
+        compDaGarra.RigidBody.transform.localPosition = new Vector2(compDaGarra.RigidBody.position.x, posicaoInicial.y);
+        compDaGarra.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+
+        pincas.acionarTrigger();
     }
 
     public override void update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector2 posicaoInicial = compDaGarra.RigidBody.transform.localPosition;            
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
             comunicadorComGerMovimentacao.trocarParaAcaoDescendo(posicaoInicial);
+            compDaGarra.RigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            pincas.acionarCollider();
         }
     }
     
