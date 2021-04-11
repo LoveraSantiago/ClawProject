@@ -5065,9 +5065,24 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 683841258165775589, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &251000132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014026568584514290, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &347425360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014026569183689271, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &419047350 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 363533896534822254, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &465782766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014026568506975908, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &491158113
@@ -5179,6 +5194,12 @@ MonoBehaviour:
       - {fileID: 660903945}
       - {fileID: 419047350}
       - {fileID: 514353999}
+    powerUpDto:
+      btnsPowerUp:
+      - {fileID: 347425360}
+      - {fileID: 251000132}
+      - {fileID: 465782766}
+      - {fileID: 1241201174}
   particulasDto:
     velocidadeMovimentacao: 4.5
     destinoParticulas: {fileID: 6406990385049082668}
@@ -15765,6 +15786,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1241201174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014026568556634405, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1476824514
 GameObject:
   m_ObjectHideFlags: 0
@@ -21224,6 +21250,10 @@ PrefabInstance:
     - target: {fileID: 4467844495707473492, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014026569021869673, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6406990384449578760, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_RootOrder
