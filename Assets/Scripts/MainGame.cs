@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 #pragma warning disable 0649
-public class MainGame : MonoBehaviour
+public class MainGame : MonoBehaviour, 
+                        IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
     [Space(5)]
@@ -73,7 +75,7 @@ public class MainGame : MonoBehaviour
 
     void Update()
     {
-        inputGame.update();
+        //inputGame.update();
         garraManager.update();
         maquinaManager.update();
         //coletaveis.Update();     
@@ -85,4 +87,29 @@ public class MainGame : MonoBehaviour
         coletaveisManager.fixedUpdate();
         maquinaManager.fixedUpdate();
     }
+
+    //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP INICIO
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        Debug.Log("OnBeginDrag: " + eventData.pointerCurrentRaycast.worldPosition);
+        if (inputGame.aconteceuDragNaAreaInferior(eventData.pointerCurrentRaycast.worldPosition))
+        {
+            Debug.Log("Drag YES");
+        }
+        else
+        {
+            Debug.Log("Drag NO");
+        }
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        //Debug.Log("OnEndDrag");
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        //Debug.Log("OnDrag");
+    }
+    //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM
 }

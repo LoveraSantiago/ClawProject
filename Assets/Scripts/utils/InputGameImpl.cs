@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class InputGameImpl : InputGame
 {
-    private bool isAreaSuperior;
-    private bool isAreaInferior;
+    private bool isTapAreaSuperior;
+    private bool isTapAreaInferior;
 
     private Vector3 posicaoTap;
     private Transform referenciaChaoMaquina;
@@ -20,30 +20,36 @@ public class InputGameImpl : InputGame
             posicaoTap = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (isPosicaoAcimaPosicaoDeReferencia())
             {
-                isAreaSuperior = true;
-                isAreaInferior = false;
+                isTapAreaSuperior = true;
+                isTapAreaInferior = false;
             }
             else
             {
-                isAreaSuperior = false;
-                isAreaInferior = true;
+                isTapAreaSuperior = false;
+                isTapAreaInferior = true;
             }
         }
         else
         {
-            isAreaInferior = false;
-            isAreaSuperior = false;
+            isTapAreaInferior = false;
+            isTapAreaSuperior = false;
         }
     }
 
     public bool aconteceuTapNaAreaSuperior()
     {
-        return isAreaSuperior;
+        return isTapAreaSuperior;
     }
 
     public bool aconteceuTapNaAreaInferior()
     {
-        return isAreaInferior;
+        return isTapAreaInferior;
+    }
+
+    public bool aconteceuDragNaAreaInferior(Vector3 dragPosicao)
+    {
+        Debug.Log("Drag Y: " + dragPosicao.y + " Ref Y: " + referenciaChaoMaquina.position.y);
+        return dragPosicao.y < referenciaChaoMaquina.position.y;
     }
 
     public Vector2 getPosicaoTap()
