@@ -13,9 +13,12 @@ public class BotoesPowerUp
 
     private InputGame inputGame;
 
-    public BotoesPowerUp(PowerUpDto powerUpDto, InputGame inputGame)
+    private MonoBehaviour monoBehaviour;
+
+    public BotoesPowerUp(PowerUpDto powerUpDto, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
         this.inputGame = inputGame;
+        this.monoBehaviour = monoBehaviour;
 
         btnPUp1 = new BotaoPowerUp(powerUpDto.BtnsPowerUp[0]);
         btnPUp2 = new BotaoPowerUp(powerUpDto.BtnsPowerUp[1]);
@@ -92,6 +95,7 @@ public class BotoesPowerUp
 
     public void endDrag()
     {
+        dragavelAtual.dragFinalizado(monoBehaviour);
         dragavelAtual = dragavelVazio;
     }
 }
