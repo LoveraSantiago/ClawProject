@@ -75,7 +75,7 @@ public class MainGame : MonoBehaviour,
 
     void Update()
     {
-        //inputGame.update();
+        inputGame.update();
         garraManager.update();
         maquinaManager.update();
         //coletaveis.Update();     
