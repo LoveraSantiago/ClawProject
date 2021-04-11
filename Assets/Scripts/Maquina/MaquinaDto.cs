@@ -5,12 +5,14 @@ using UnityEngine;
 public class MaquinaDto
 {
     [Space(5)]
-    [SerializeField] Transform referenciaChao;
+    [SerializeField] private Transform referenciaChao;
     [SerializeField] private Transform hasteJoystick;
     [Space(5)]
-    [SerializeField] DisplayDeColetadoDto displayDeColetadoDto;
+    [SerializeField] private DisplayDeColetadoDto displayDeColetadoDto;
     [Space(5)]
-    [SerializeField] DisplayDeScoreDto displayDeScoreDto;    
+    [SerializeField] private DisplayDeScoreDto displayDeScoreDto;
+    [Space(5)]
+    [SerializeField] private PowerUpDto powerUpDto;
 
     public Transform ReferenciaChao { get { return referenciaChao; } }
     public Transform HasteJoystick { get { return hasteJoystick;  } }
@@ -18,5 +20,5 @@ public class MaquinaDto
     public DisplayDeColetadoDto DisplayDeColetadoDto { get { return displayDeColetadoDto; } }
     public DisplayDeScoreDto DisplayDeScoreDto { get { return displayDeScoreDto; } }
     
-
+    public PowerUpDto PowerUpDto { get { return powerUpDto; } }
 }
