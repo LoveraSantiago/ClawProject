@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BotaoPowerUp : Draggavel
 {
     private bool isDraggavel;
 
+    private Vector2 posicaoInicialDrag;
     private Bounds boundExterno;
+
     private GameObject goBotaoExterno;
     private GameObject goBotaoInterno;
 
@@ -44,12 +44,25 @@ public class BotaoPowerUp : Draggavel
     public bool isDragDentroAreaBotao(Vector2 posicao)
     {
         return isDraggavel && isPosicaoDentroAreaBotao(posicao);
-    }
+    }    
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
-    public void updateDrag()
+    public void prepararDraggagem(Vector3 posInicialDrag)
     {
-        
+        this.posicaoInicialDrag = posInicialDrag;
     }
-    //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
+
+    public void updateDrag(Vector2 posicaoAtual)
+    {
+        Vector2 delta = posicaoAtual - posicaoInicialDrag;
+        posicaoInicialDrag = posicaoAtual;
+
+        Vector3 posicaoCalculada = new Vector3(
+            goBotaoInterno.transform.position.x + delta.x,
+            goBotaoInterno.transform.position.y + delta.y, 
+            goBotaoInterno.transform.position.z);
+
+        goBotaoInterno.transform.position = posicaoCalculada;
+    }
+    //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM    
 }

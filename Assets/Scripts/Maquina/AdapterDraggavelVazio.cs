@@ -1,6 +1,8 @@
+using UnityEngine;
+
 public class AdapterDraggavelVazio : Draggavel
 {
-    public void updateDrag()
-    {        
-    }
+    public void prepararDraggagem(Vector3 posInicialDrag){}
+
+    public void updateDrag(Vector2 delta){}
 }

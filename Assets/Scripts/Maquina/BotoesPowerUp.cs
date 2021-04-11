@@ -53,39 +53,41 @@ public class BotoesPowerUp
                 Debug.Log("BTN4 CRICADO!!!");
             }
         }
-        dragavelAtual.updateDrag();
+        
     }
 
-    public void beginDrag(Vector3 posicaoDrag)
+    public void beginDrag(Vector2 posicaoDrag)
     {
         if (btnPUp1.isDragDentroAreaBotao(posicaoDrag))
         {
-            Debug.Log("DRAG1 CRICADO!!!");
+            Debug.Log("BTN1 DRAGGADO!!!");
+            dragavelAtual = btnPUp1;
         }
         else if (btnPUp2.isDragDentroAreaBotao(posicaoDrag))
         {
-            Debug.Log("DRAG2 CRICADO!!!");
+            Debug.Log("BTN2 DRAGGADO!!!");
+            dragavelAtual = btnPUp2;
         }
         else if (btnPUp3.isDragDentroAreaBotao(posicaoDrag))
         {
-            Debug.Log("DRAG3 CRICADO!!!");
+            Debug.Log("BTN3 DRAGGADO!!!");
+            dragavelAtual = btnPUp3;
         }
         else if (btnPUp4.isDragDentroAreaBotao(posicaoDrag))
         {
-            Debug.Log("DRAG4 CRICADO!!!");
+            Debug.Log("BTN4 DRAGGADO!!!");
+            dragavelAtual = btnPUp4;
         }
         else
         {
             dragavelAtual = dragavelVazio;
         }
+        dragavelAtual.prepararDraggagem(posicaoDrag);
     }
 
-    public void drag()
-    {
-        if(dragavelAtual != dragavelVazio)
-        {
-
-        }
+    public void drag(Vector2 delta)
+    {        
+        dragavelAtual.updateDrag(delta);        
     }
 
     public void endDrag()

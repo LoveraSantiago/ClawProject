@@ -26,14 +26,14 @@ public class MaquinaManager
         joystickHaste.fixedUpdate();
     }
 
-    public void beginDragPowerUp(Vector3 posicao)
+    public void beginDragPowerUp(Vector2 posicao)
     {
         botoesPowerUp.beginDrag(posicao);
     }
 
-    public void onDragPowerUp()
+    public void onDragPowerUp(Vector2 delta)
     {
-        botoesPowerUp.drag();
+        botoesPowerUp.drag(delta);
     }
 
     public void onEndDragPowerUp()

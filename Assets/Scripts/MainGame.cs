@@ -100,13 +100,13 @@ public class MainGame : MonoBehaviour,
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnEndDrag");
+        Debug.Log("OnEndDrag");
         maquinaManager.onEndDragPowerUp();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        maquinaManager.onDragPowerUp();
+        maquinaManager.onDragPowerUp(eventData.pointerCurrentRaycast.worldPosition);
     }
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM
 }
