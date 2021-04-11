@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotaoPowerUp 
+public class BotaoPowerUp : Draggavel
 {
-    private Bounds boundExterno;
+    private bool isDraggavel;
 
+    private Bounds boundExterno;
     private GameObject goBotaoExterno;
     private GameObject goBotaoInterno;
 
@@ -16,10 +17,39 @@ public class BotaoPowerUp
 
         boundExterno = goBotaoExterno.GetComponent<SpriteRenderer>()
             .bounds;
+
+        isDraggavel = false;
     }
 
-    public bool isPosicaoDentroAreaBotao(Vector2 posicao)
+    public void transformarEmBotaoDragavel()
+    {
+        isDraggavel = true;
+    }
+
+    public void transormarEmBotalClicavel()
+    {
+        isDraggavel = false;
+    }
+
+    private bool isPosicaoDentroAreaBotao(Vector2 posicao)
     {
         return boundExterno.Contains(posicao);        
     }
+
+    public bool isCliqueDentroAreaBotao(Vector2 posicao)
+    {
+        return !isDraggavel && isPosicaoDentroAreaBotao(posicao);
+    }
+
+    public bool isDragDentroAreaBotao(Vector2 posicao)
+    {
+        return isDraggavel && isPosicaoDentroAreaBotao(posicao);
+    }
+
+    //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
+    public void updateDrag()
+    {
+        
+    }
+    //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 }
