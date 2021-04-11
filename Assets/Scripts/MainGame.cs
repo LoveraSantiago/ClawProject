@@ -21,6 +21,7 @@ public class MainGame : MonoBehaviour
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
+    private InputGame inputGame;
     private GarraManager garraManager;
     private ColetavelManager coletaveisManager;
     private MaquinaManager maquinaManager;
@@ -41,7 +42,7 @@ public class MainGame : MonoBehaviour
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
 
-        InputGame inputGame = new InputGameImpl(maquinaDto.ReferenciaChao);
+        inputGame = new InputGameImpl(maquinaDto.ReferenciaChao);
         garraManager = new GarraManager(componentesDaGarra, mecanicaSelecionada, inputGame);
         coletaveisManager = new ColetavelManager(coletaveisDto, this);
         maquinaManager = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, this);
@@ -72,6 +73,7 @@ public class MainGame : MonoBehaviour
 
     void Update()
     {
+        inputGame.update();
         garraManager.update();
         //coletaveis.Update();     
     }

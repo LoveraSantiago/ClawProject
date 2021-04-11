@@ -1,4 +1,9 @@
+using UnityEngine;
+
 public interface InputGame 
 {
-    bool aconteceuTapNaAreaJogavel();
+    void update();
+    bool aconteceuTapNaAreaSuperior();
+    bool aconteceuTapNaAreaInferior();
+    Vector2 getPosicaoTap();
 }

@@ -47,7 +47,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
 
     public override void update()
     {
-        if (inputGame.aconteceuTapNaAreaJogavel())
+        if (inputGame.aconteceuTapNaAreaSuperior())
         {
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
             comunicadorComGerMovimentacao.trocarParaAcaoDescendo(posicaoInicial);

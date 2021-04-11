@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class InputGameImpl : InputGame
 {
+    private bool isAreaSuperior;
+    private bool isAreaInferior;
+
+    private Vector3 posicaoTap;
     private Transform referenciaChaoMaquina;
 
     public InputGameImpl(Transform referenciaChao)
@@ -9,13 +13,46 @@ public class InputGameImpl : InputGame
         referenciaChaoMaquina = referenciaChao;
     }
 
-    public bool aconteceuTapNaAreaJogavel()
+    public void update()
     {
-        return Input.GetMouseButtonDown(0) && isPosicaoAcimaPosicaoDeReferencia();
+        if (Input.GetMouseButtonDown(0))
+        {
+            posicaoTap = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (isPosicaoAcimaPosicaoDeReferencia())
+            {
+                isAreaSuperior = true;
+                isAreaInferior = false;
+            }
+            else
+            {
+                isAreaSuperior = false;
+                isAreaInferior = true;
+            }
+        }
+        else
+        {
+            isAreaInferior = false;
+            isAreaSuperior = false;
+        }
+    }
+
+    public bool aconteceuTapNaAreaSuperior()
+    {
+        return isAreaSuperior;
+    }
+
+    public bool aconteceuTapNaAreaInferior()
+    {
+        return isAreaInferior;
+    }
+
+    public Vector2 getPosicaoTap()
+    {
+        return new Vector2(posicaoTap.x, posicaoTap.y);
     }
 
     private bool isPosicaoAcimaPosicaoDeReferencia()
     {
-        return Camera.main.ScreenToWorldPoint(Input.mousePosition).y > referenciaChaoMaquina.position.y;
+        return posicaoTap.y > referenciaChaoMaquina.position.y;
     }
 }
