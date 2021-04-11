@@ -18,7 +18,9 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
     private Quaternion anguloDesejadoEsquerdaAtual;
     private Quaternion anguloDesejadoDireitaAtual;
 
-    public MovimentacaoLateralZigZag()
+    private InputGame inputGame;
+
+    public MovimentacaoLateralZigZag(InputGame inputGame)
     {
         anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMin);
         anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMin);
@@ -43,7 +45,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
 
     public override void update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (inputGame.aconteceuTapNaAreaJogavel())
         {
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
             comunicadorComGerMovimentacao.trocarParaAcaoDescendo(posicaoInicial);
