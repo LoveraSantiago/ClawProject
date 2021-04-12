@@ -46,6 +46,10 @@ public class MaquinaManager
         botoesPowerUp.endDrag();
     }
 
+    public ProdutorDeEvento<PowerUp> getProdutorDeEventoPowerUp()
+    {
+        return botoesPowerUp.produtorDeEventoDePowerUp;
+    }
 
     //CONSUMIDORES DE EVENTOS INICIO
     public ConsumidorDeEvento<DirecaoDaGarra> getJoystickHasteConsumidorDirecao()
@@ -61,6 +65,11 @@ public class MaquinaManager
     public ConsumidorDeEvento<InformacoesColetado> getDisplayScoreConsumidorInfoColetado()
     {
         return displayDeScores.getDisplayScoreConsumidor();
+    }
+
+    public ConsumidorDeEvento<PowerUp> getConsumidorDePowerUp()
+    {
+        return displayDeScores.getConsumidorDePowerUp();
     }
     //CONSUMIDORES DE EVENTOS FIM
 }

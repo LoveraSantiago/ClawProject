@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>
+public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
+                               ConsumidorDeEvento<PowerUp>
 { 
     private DisplayDigito displayCentena;
     private DisplayDigito displayDezena;
@@ -93,7 +94,19 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>
     }
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
 
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUp> INICIO
+    public void consumirEvento(PowerUp evento)
+    {
+        
+    }
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUp> INICIO
+
     public ConsumidorDeEvento<InformacoesColetado> getDisplayScoreConsumidor()
+    {
+        return this;
+    }
+
+    public ConsumidorDeEvento<PowerUp> getConsumidorDePowerUp()
     {
         return this;
     }

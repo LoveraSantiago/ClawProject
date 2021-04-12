@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class GarraManager : ConsumidorDeEventoTrigger
+public class GarraManager : ConsumidorDeEventoTrigger,
+                            ConsumidorDeEvento<PowerUp>
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
     private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
@@ -10,6 +11,12 @@ public class GarraManager : ConsumidorDeEventoTrigger
     {
         gerenciadorDeMovimentacao = new GerenciadorDeMovimentacao(componentesDaGarraDto, mecanicaGarraEscolhida, inputGame);
         configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);
+    }
+
+    private void configurarColisorCentroDaPinca(GameObject goColisor)
+    {
+        DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();
+        detectorDeColisoes.registrarConsumidorDeTrigger(this);
     }
 
     public void start()
@@ -27,24 +34,32 @@ public class GarraManager : ConsumidorDeEventoTrigger
         gerenciadorDeMovimentacao.fixedUpdate();
     }
 
-    private void garraColidiuCom(Collider2D other)
+    private void processarGarraColidiuCom(Collider2D other)
     {
         gerenciadorDeMovimentacao.garraColidiuCom(other);
     }
 
-    private void configurarColisorCentroDaPinca(GameObject goColisor)
+    private void processarPowerUp(PowerUp powerUp)
     {
-        DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();
-        detectorDeColisoes.registrarConsumidorDeTrigger(this);
-    }
+        if(powerUp.tipo == PowerUp.TIPO.BOMBA_DA_GARRA)
+        {
 
+        }
+    }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
     //ACIONADO QDO GARRA COLLIDE COM UM COLETAVEL
     public void consumirEvento(Collider2D colliderDeColetavel)
     {
-        garraColidiuCom(colliderDeColetavel);
+        processarGarraColidiuCom(colliderDeColetavel);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
+
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUp> INICIO
+    public void consumirEvento(PowerUp evento)
+    {
+        processarPowerUp(evento);
+    }
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUp> INICIO
 
     public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
     {
@@ -59,5 +74,10 @@ public class GarraManager : ConsumidorDeEventoTrigger
     public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()
     {
         return gerenciadorDeMovimentacao.getProdutorDeEventoSubidaDaGarra();
+    }
+
+    public ConsumidorDeEvento<PowerUp> getConsumidorDePowerUp()
+    {
+        return this;
     }
 }

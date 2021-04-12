@@ -27,6 +27,7 @@ public class MainGame : MonoBehaviour,
     private GarraManager garraManager;
     private ColetavelManager coletaveisManager;
     private MaquinaManager maquinaManager;
+    private EfeitoColetado efeitoColetado;
 
     void OnEnable()
     {
@@ -44,12 +45,18 @@ public class MainGame : MonoBehaviour,
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
 
-        inputGame = new InputGameImpl(maquinaDto.ReferenciaChao);
-        garraManager = new GarraManager(componentesDaGarra, mecanicaSelecionada, inputGame);
+        inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
+        garraManager      = new GarraManager(componentesDaGarra, mecanicaSelecionada, inputGame);
         coletaveisManager = new ColetavelManager(coletaveisDto, this);
-        maquinaManager = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
-        EfeitoColetado efeitoColetado = new EfeitoColetado(particulasDto, this);
+        maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
+        efeitoColetado    = new EfeitoColetado(particulasDto, this);
 
+        configurandoAcoes();
+        startLaizy();
+    }
+    
+    private void configurandoAcoes()
+    {
         new AcaoEventoColetado()
             .configurarProdutor(coletaveisManager.produtorDeInformacoesDoColetado)
             .adicionarConsumidor(maquinaManager.getDisplayImagensConsumidorInfoColetado())
@@ -68,7 +75,11 @@ public class MainGame : MonoBehaviour,
             .configurarProdutor(garraManager.getDisparadorDeEventoDeDirecao())
             .adicionarConsumidor(maquinaManager.getJoystickHasteConsumidorDirecao());
 
-        startLaizy();
+        new AcaoPowerUp()
+            .configurarProdutor(maquinaManager.getProdutorDeEventoPowerUp())
+            .adicionarConsumidor(garraManager.getConsumidorDePowerUp())
+            .adicionarConsumidor(maquinaManager.getConsumidorDePowerUp());
+            
     }
 
     private void startLaizy()
