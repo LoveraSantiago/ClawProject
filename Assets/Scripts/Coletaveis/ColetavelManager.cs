@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class ColetavelManager : ConsumidorDeEventoTrigger,
-                                ConsumidorDeEvento<string>
+                                ConsumidorDeEvento<string>,
+                                ConsumidorDeEvento<int>
 {
     private ColetaveisDto coletaveisDto;
     private Coletavel coletavelImantado;
@@ -25,7 +26,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
         board = new Board(coletaveisDto.BoardDto);        
         contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
-        coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);
+        coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);        
     }   
 
     public void start()
@@ -47,8 +48,6 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
     private void processarColetado(GameObject gameObjectColetado)
     {
-        coletavelImantado.desimantar();
-
         Coletavel coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
         coletavelAcertado.desligar();        
 
@@ -70,9 +69,14 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     public void fixedUpdate() { }    
 
     private void processarImantado(string nomeColetado)
-    {
+    {        
         coletavelImantado = poolDeColetaveis.getColetavelPeloNome(nomeColetado);
         coletavelImantado.imantar();
+    }
+
+    private void processarDesimantado()
+    {
+        coletavelImantado.desimantar();
     }
 
     public ProdutorDeEvento<InformacoesColetado> getProdutorDeInfoColetado()
@@ -81,6 +85,11 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     }
 
     public ConsumidorDeEvento<string> getConsumidorDeColetavelParaImantar()
+    {
+        return this;
+    }
+
+    public ConsumidorDeEvento<int> getConsumidorDeContagemSubidaDaGarra()
     {
         return this;
     }
@@ -101,6 +110,11 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     public void consumirEvento(string nomeColetavel)
     {
         processarImantado(nomeColetavel);
+    }
+
+    public void consumirEvento(int evento)
+    {
+        processarDesimantado();
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
 }

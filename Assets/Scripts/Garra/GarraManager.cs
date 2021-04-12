@@ -55,4 +55,9 @@ public class GarraManager : ConsumidorDeEventoTrigger
     {
         return gerenciadorDeMovimentacao.getProdutorDeEventoTocadoPelaGarra(); ;
     }
+
+    public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()
+    {
+        return gerenciadorDeMovimentacao.getProdutorDeEventoSubidaDaGarra();
+    }
 }

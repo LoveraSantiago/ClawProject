@@ -58,7 +58,11 @@ public class MainGame : MonoBehaviour,
 
         new AcaoImantadoPelaGarra()
             .configurarProdutor(garraManager.getProdutorDeEventoTocadoPelaGarra())
-            .adicionarConsumidor(coletaveisManager.getConsumidorDeColetavelParaImantar());            
+            .adicionarConsumidor(coletaveisManager.getConsumidorDeColetavelParaImantar());
+
+        new AcaoSubidaDaGarra()
+            .configurarProdutor(garraManager.getProdutorDeEventoSubidaDaGarra())
+            .adicionarConsumidor(coletaveisManager.getConsumidorDeContagemSubidaDaGarra());
 
         new AcaoSincroniaComDirecaoDaGarra()
             .configurarProdutor(garraManager.getDisparadorDeEventoDeDirecao())

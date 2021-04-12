@@ -101,4 +101,9 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     {
         return movimentacaoParaBaixo.getProdutorDeEventoTocadoPelaGarra();
     }
+
+    public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()
+    {
+        return movimentacaoParaCima.getProdutorDeEventoSubidaDaGarra();
+    }
 }
