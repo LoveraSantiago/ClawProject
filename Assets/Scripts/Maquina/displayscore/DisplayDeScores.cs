@@ -49,6 +49,8 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
         int scoreCentena = displayCentena.digito;
         int scoreDezena = displayDezena.digito;
         int scoreUnidade = displayUnidade.digito;
+
+
     }
 
     private void processarPowerUp(PowerUp powerUp)

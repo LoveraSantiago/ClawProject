@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OrquestradorDisplayDigitos 
@@ -25,16 +24,10 @@ public class OrquestradorDisplayDigitos
         WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
         for (int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
         {
-            displayCentena.desligarDigito();
-            displayDezena.desligarDigito();
-            displayUnidade.desligarDigito();
-
+            desligarTodosDigitos();
             yield return wfsTempoBlink;
 
-            displayCentena.mostrarDigito(centena);
-            displayDezena.mostrarDigito(dezena);
-            displayUnidade.mostrarDigito(unidade);
-
+            passarScore(centena, dezena, unidade);
             yield return wfsTempoBlink;
         }
         yield return null;
@@ -45,23 +38,50 @@ public class OrquestradorDisplayDigitos
         WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
         for (int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
         {
-            displayCentena.mostrarDigito(centena);
-            displayDezena.mostrarDigito(dezena);
-            displayUnidade.mostrarDigito(unidade);
-
+            passarScore(centena, dezena, unidade);
             yield return wfsTempoBlink;
 
-            displayCentena.mostrarDigito("Y");
+            displayCentena.mostrarDigito("Y");//Talve tirar daqui
             displayDezena.mostrarDigito("E");
             displayUnidade.mostrarDigito("S");
 
             yield return wfsTempoBlink;
         }
-
-        displayCentena.mostrarDigito(centena);
-        displayDezena.mostrarDigito(dezena);
-        displayUnidade.mostrarDigito(unidade);
+        
+        passarScore(centena, dezena, unidade);
         yield return null;
     }
 
+    public IEnumerator mostrarContagemRegressivo(int segundos, int centena, int dezena, int unidade)
+    {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(0.15f);
+        for(int contadorRegressivo = segundos; contadorRegressivo > 0; contadorRegressivo--)
+        {        
+            for(int contador = 0; contador < 2; contador++)//COMPLETA 0.5 A CADA ITERACAO
+            {
+                passarScore(0, 0, contadorRegressivo);
+                yield return waitForSeconds;
+
+                desligarTodosDigitos();
+                yield return waitForSeconds;                
+            }
+        }
+        
+        passarScore(centena, dezena, unidade);
+        yield return null;
+    }
+
+    private  void passarScore(int centena, int dezena, int unidade)
+    {
+        displayCentena.mostrarDigito(centena);
+        displayDezena.mostrarDigito(dezena);
+        displayUnidade.mostrarDigito(unidade);
+    }
+
+    private void desligarTodosDigitos()
+    {
+        displayCentena.desligarDigito();
+        displayDezena.desligarDigito();
+        displayUnidade.desligarDigito();
+    }
 }
