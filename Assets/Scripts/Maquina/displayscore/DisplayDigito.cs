@@ -6,6 +6,9 @@ public class DisplayDigito
     private int contadorX;
     private int contadorY;
 
+    public int digito { get; private set; }
+    public string letra { get; private set; }
+
     private Color corOriginal;
 
     private int[,] arrayLigados;
@@ -30,6 +33,7 @@ public class DisplayDigito
 
     public void mostrarDigito(string digito)
     {
+        letra = digito;
         desligarPosicoes(arrayLigados);
         arrayLigados = getArrayParaLigar(digito);
         ligarPosicoes(arrayLigados, Color.green);
@@ -37,6 +41,7 @@ public class DisplayDigito
 
     public void mostrarDigito(int digito)
     {
+        this.digito = digito;
         desligarPosicoes(arrayLigados);
         arrayLigados = getArrayParaLigar(digito);
         ligarPosicoes(arrayLigados, Color.red);

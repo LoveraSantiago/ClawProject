@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
                                ConsumidorDeEvento<PowerUp>
@@ -8,18 +7,21 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
     private DisplayDigito displayDezena;
     private DisplayDigito displayUnidade;
 
-    private DisplayDeScoreDto displayDeScoresDto;
+    //private DisplayDeScoreDto displayDeScoresDto;
+    private OrquestradorDisplayDigitos orquestrador;
     private MonoBehaviour monoBehaviour;
 
     public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto, MonoBehaviour monoBehaviour)
     {
         this.monoBehaviour = monoBehaviour;
-        this.displayDeScoresDto = displayDeScoresDto;
+        //this.displayDeScoresDto = displayDeScoresDto;
 
         GameObject[] displayScores = displayDeScoresDto.GosDisplayScores;
         displayCentena = new DisplayDigito(displayScores[0]);
         displayDezena = new DisplayDigito(displayScores[1]);
         displayUnidade = new DisplayDigito(displayScores[2]);
+
+        orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade)
     }
    
     private void mostrarScore(int score, bool result)
@@ -34,57 +36,72 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
         int unidade = scoreTotal;
         if (result)
         {
-            monoBehaviour.StartCoroutine(blinkarScoreSucesso(centena, dezena, unidade));
+            monoBehaviour.StartCoroutine(orquestrador.blinkarScoreSucesso(centena, dezena, unidade));
         }
         else
         {
-            monoBehaviour.StartCoroutine(blinkarScore(centena, dezena, unidade));
+            monoBehaviour.StartCoroutine(orquestrador.blinkarScore(centena, dezena, unidade));
         }
     }
 
-    private IEnumerator blinkarScore(int centena, int dezena, int unidade)
+    private void mostrarContagemRegressiva()
     {
-        WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
-        for(int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
-        {
-            displayCentena.desligarDigito();
-            displayDezena.desligarDigito();
-            displayUnidade.desligarDigito();
-
-            yield return wfsTempoBlink;
-
-            displayCentena.mostrarDigito(centena);
-            displayDezena.mostrarDigito(dezena);
-            displayUnidade.mostrarDigito(unidade);
-
-            yield return wfsTempoBlink;
-        }
-        yield return null;
+        int scoreCentena = displayCentena.digito;
+        int scoreDezena = displayDezena.digito;
+        int scoreUnidade = displayUnidade.digito;
     }
 
-    private IEnumerator blinkarScoreSucesso(int centena, int dezena, int unidade)
+    private void processarPowerUp(PowerUp powerUp)
     {
-        WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
-        for(int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
+        if (powerUp.tipo == PowerUp.TIPO.BOMBA_DA_GARRA)
         {
-            displayCentena.mostrarDigito(centena);
-            displayDezena.mostrarDigito(dezena);
-            displayUnidade.mostrarDigito(unidade);
-
-            yield return wfsTempoBlink;
-
-            displayCentena.mostrarDigito("Y");
-            displayDezena.mostrarDigito("E");
-            displayUnidade.mostrarDigito("S");
-
-            yield return wfsTempoBlink;
+            mostrarContagemRegressiva();
         }
-
-        displayCentena.mostrarDigito(centena);
-        displayDezena.mostrarDigito(dezena);
-        displayUnidade.mostrarDigito(unidade);
-        yield return null;
     }
+
+    //private IEnumerator blinkarScore(int centena, int dezena, int unidade)
+    //{
+    //    WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
+    //    for(int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
+    //    {
+    //        displayCentena.desligarDigito();
+    //        displayDezena.desligarDigito();
+    //        displayUnidade.desligarDigito();
+
+    //        yield return wfsTempoBlink;
+
+    //        displayCentena.mostrarDigito(centena);
+    //        displayDezena.mostrarDigito(dezena);
+    //        displayUnidade.mostrarDigito(unidade);
+
+    //        yield return wfsTempoBlink;
+    //    }
+    //    yield return null;
+    //}
+
+    //private IEnumerator blinkarScoreSucesso(int centena, int dezena, int unidade)
+    //{
+    //    WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
+    //    for(int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
+    //    {
+    //        displayCentena.mostrarDigito(centena);
+    //        displayDezena.mostrarDigito(dezena);
+    //        displayUnidade.mostrarDigito(unidade);
+
+    //        yield return wfsTempoBlink;
+
+    //        displayCentena.mostrarDigito("Y");
+    //        displayDezena.mostrarDigito("E");
+    //        displayUnidade.mostrarDigito("S");
+
+    //        yield return wfsTempoBlink;
+    //    }
+
+    //    displayCentena.mostrarDigito(centena);
+    //    displayDezena.mostrarDigito(dezena);
+    //    displayUnidade.mostrarDigito(unidade);
+    //    yield return null;
+    //}
 
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
     //CONSOME EVENTO DISPARADO PELO COLETAVEIS MANAGER AO COLETAR UM COLETAVEL
