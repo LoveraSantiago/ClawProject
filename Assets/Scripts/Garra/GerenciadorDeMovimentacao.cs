@@ -94,16 +94,16 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
 
     public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
     {
-        return movimentacaoLateral.getProdutorDeEventoDeDirecao();
+        return MovimentacaoDaGarraHorizontal.produtorEventoDirecao;
     }
 
     public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
     {
-        return movimentacaoParaBaixo.getProdutorDeEventoTocadoPelaGarra();
+        return movimentacaoParaBaixo.produtorEventoGarraAcertou;
     }
 
     public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()
     {
-        return movimentacaoParaCima.getProdutorDeEventoSubidaDaGarra();
+        return movimentacaoParaCima.produtorDeEventoSubidaDaGarra;
     }
 }

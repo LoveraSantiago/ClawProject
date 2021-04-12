@@ -12,7 +12,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private ContadorDeColetaveis contadorDeColetaveis;
     private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
 
-    private ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado;
+    public ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado { get; private set; }
     private MonoBehaviour monoBehaviour;
 
     public ColetavelManager(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
@@ -77,12 +77,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private void processarDesimantado()
     {
         coletavelImantado.desimantar();
-    }
-
-    public ProdutorDeEvento<InformacoesColetado> getProdutorDeInfoColetado()
-    {
-        return produtorDeInformacoesDoColetado;
-    }
+    }    
 
     public ConsumidorDeEvento<string> getConsumidorDeColetavelParaImantar()
     {

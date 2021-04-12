@@ -12,7 +12,7 @@ public class BotoesPowerUp
 
     private InputGame inputGame;
 
-    private ProdutorDeEvento<PowerUp> produtorDeEventoDePowerUp;
+    public ProdutorDeEvento<PowerUp> produtorDeEventoDePowerUp { get; private set; }
     private MonoBehaviour monoBehaviour;
 
     public BotoesPowerUp(PowerUpDto powerUpDto, InputGame inputGame, MonoBehaviour monoBehaviour)

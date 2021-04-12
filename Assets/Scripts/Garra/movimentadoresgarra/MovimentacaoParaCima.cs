@@ -4,7 +4,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 {
     private int contadorDeSubidas;
     private Vector2 posicaoInicial;
-    private ProdutorDeEvento<int> produtorDeEventoSubidaDaGarra;
+    public ProdutorDeEvento<int> produtorDeEventoSubidaDaGarra { get; private set; }
 
     public MovimentacaoParaCima()
     {
@@ -44,10 +44,5 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
     private void parandoMovimentacaoDaGarra()
     {
         diminuirInerciaDaGarra();
-    }
-
-    public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()
-    {
-        return produtorDeEventoSubidaDaGarra;
-    }
+    }    
 }

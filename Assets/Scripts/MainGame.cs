@@ -51,7 +51,7 @@ public class MainGame : MonoBehaviour,
         EfeitoColetado efeitoColetado = new EfeitoColetado(particulasDto, this);
 
         new AcaoEventoColetado()
-            .configurarProdutor(coletaveisManager.getProdutorDeInfoColetado())
+            .configurarProdutor(coletaveisManager.produtorDeInformacoesDoColetado)
             .adicionarConsumidor(maquinaManager.getDisplayImagensConsumidorInfoColetado())
             .adicionarConsumidor(maquinaManager.getDisplayScoreConsumidorInfoColetado())
             .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado());//TODO ver mudanca de ordem

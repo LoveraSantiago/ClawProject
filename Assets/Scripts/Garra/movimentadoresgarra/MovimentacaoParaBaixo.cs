@@ -6,7 +6,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     private Quaternion anguloDesejadoDireita;   
     
     private ContadorDeTempo contadorDeTempoTravamento;
-    private ProdutorDeEvento<string> produtorEventoGarraAcertou;
+    public ProdutorDeEvento<string> produtorEventoGarraAcertou { get; private set; }
 
     public MovimentacaoParaBaixo()
     {
@@ -46,10 +46,5 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
             produtorEventoGarraAcertou.produziuEvento(gameObject.name);
             comunicadorComGerMovimentacao.trocarParaAgarrada();
         }
-    }
-
-    public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
-    {
-        return produtorEventoGarraAcertou;
-    }
+    }    
 }

@@ -1,9 +1,9 @@
 public class MovimentacaoDaGarraHorizontal : MovimentacaoDaGarra
 {
-    protected static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
+    public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }
 
-    public ProdutorDeEvento<DirecaoDaGarra> getProdutorDeEventoDeDirecao()
+    static MovimentacaoDaGarraHorizontal()
     {
-        return produtorEventoDirecao;
-    }
+        produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
+    }    
 }
