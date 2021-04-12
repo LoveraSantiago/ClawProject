@@ -21,7 +21,7 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
         displayDezena = new DisplayDigito(displayScores[1]);
         displayUnidade = new DisplayDigito(displayScores[2]);
 
-        orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade)
+        orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
    
     private void mostrarScore(int score, bool result)
@@ -58,50 +58,6 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
             mostrarContagemRegressiva();
         }
     }
-
-    //private IEnumerator blinkarScore(int centena, int dezena, int unidade)
-    //{
-    //    WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
-    //    for(int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
-    //    {
-    //        displayCentena.desligarDigito();
-    //        displayDezena.desligarDigito();
-    //        displayUnidade.desligarDigito();
-
-    //        yield return wfsTempoBlink;
-
-    //        displayCentena.mostrarDigito(centena);
-    //        displayDezena.mostrarDigito(dezena);
-    //        displayUnidade.mostrarDigito(unidade);
-
-    //        yield return wfsTempoBlink;
-    //    }
-    //    yield return null;
-    //}
-
-    //private IEnumerator blinkarScoreSucesso(int centena, int dezena, int unidade)
-    //{
-    //    WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
-    //    for(int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
-    //    {
-    //        displayCentena.mostrarDigito(centena);
-    //        displayDezena.mostrarDigito(dezena);
-    //        displayUnidade.mostrarDigito(unidade);
-
-    //        yield return wfsTempoBlink;
-
-    //        displayCentena.mostrarDigito("Y");
-    //        displayDezena.mostrarDigito("E");
-    //        displayUnidade.mostrarDigito("S");
-
-    //        yield return wfsTempoBlink;
-    //    }
-
-    //    displayCentena.mostrarDigito(centena);
-    //    displayDezena.mostrarDigito(dezena);
-    //    displayUnidade.mostrarDigito(unidade);
-    //    yield return null;
-    //}
 
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
     //CONSOME EVENTO DISPARADO PELO COLETAVEIS MANAGER AO COLETAR UM COLETAVEL
