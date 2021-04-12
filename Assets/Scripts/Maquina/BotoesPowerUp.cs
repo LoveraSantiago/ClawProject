@@ -29,9 +29,9 @@ public class BotoesPowerUp
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
 
-        btnPUp1.transormarEmBotalClicavel();
+        btnPUp1.transormarEmBotaoClicavel();
         btnPUp2.transformarEmBotaoDragavel();
-        btnPUp3.transormarEmBotalClicavel();
+        btnPUp3.transormarEmBotaoClicavel();
         btnPUp4.transformarEmBotaoDragavel();
     }
 

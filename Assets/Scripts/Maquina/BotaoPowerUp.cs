@@ -36,7 +36,7 @@ public class BotaoPowerUp : Draggavel
         isDraggavel = true;
     }
 
-    public void transormarEmBotalClicavel()
+    public void transormarEmBotaoClicavel()
     {
         spriteRendererBorda.sprite = spriteBordaNormal;
         isDraggavel = false;
