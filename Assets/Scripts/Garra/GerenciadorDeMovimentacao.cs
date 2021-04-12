@@ -10,13 +10,13 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     private MovimentacaoParaCima movimentacaoParaCima;
     private MovimentacaoDaGarraHorizontal movimentacaoLateral;
 
-    public GerenciadorDeMovimentacao(ComponentesDaGarraDto componentesDaGarraDto,
-        GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
+    public GerenciadorDeMovimentacao(ComponentesDaGarraDto componentesDaGarraDto, 
+        GarraManager.MECANICA_GARRA mecanicaGarraEscolhida, InputGame inputGame)
     {
         MovimentacaoDaGarra.configurarComponentesDaGarraDto(componentesDaGarraDto);
         MovimentacaoDaGarra.configurarCommunicatorComGarra(this);
 
-        movimentacaoLateral = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
+        movimentacaoLateral = selecionarMecanicaHorizontal(mecanicaGarraEscolhida, inputGame);
         movimentacaoParaCima = new MovimentacaoParaCima();
         movimentacaoParaBaixo = new MovimentacaoParaBaixo();
         movimentacaoAgarrando = new MovimentacaoAgarrando();
@@ -42,12 +42,13 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
         movimentacaoAtual.garraColidiuCom(other.gameObject);
     }
 
-    private MovimentacaoDaGarraHorizontal selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
+    private MovimentacaoDaGarraHorizontal selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida,
+        InputGame inputGame)
     {
         switch (mecanicaGarraEscolhida)
         {
             case (GarraManager.MECANICA_GARRA.ZIG_ZAG):
-                return new MovimentacaoLateralZigZag();
+                return new MovimentacaoLateralZigZag(inputGame);
 
             case (GarraManager.MECANICA_GARRA.TELEGUIADA):
                 return new MovimentacaoLateralTeleguiada();
@@ -56,7 +57,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
                 return new MovimentacaoLateralZigTeleguiado();
 
         }
-        return new MovimentacaoLateralZigZag();
+        return new MovimentacaoLateralZigZag(inputGame);
     }
 
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO    
@@ -99,5 +100,10 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
     {
         return movimentacaoParaBaixo.getProdutorDeEventoTocadoPelaGarra();
+    }
+
+    public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()
+    {
+        return movimentacaoParaCima.getProdutorDeEventoSubidaDaGarra();
     }
 }

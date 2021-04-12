@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 #pragma warning disable 0649
-public class MainGame : MonoBehaviour
+public class MainGame : MonoBehaviour, 
+                        IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
     [Space(5)]
@@ -21,6 +23,7 @@ public class MainGame : MonoBehaviour
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
+    private InputGame inputGame;
     private GarraManager garraManager;
     private ColetavelManager coletaveisManager;
     private MaquinaManager maquinaManager;
@@ -41,9 +44,10 @@ public class MainGame : MonoBehaviour
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
 
-        garraManager = new GarraManager(componentesDaGarra, mecanicaSelecionada);
+        inputGame = new InputGameImpl(maquinaDto.ReferenciaChao);
+        garraManager = new GarraManager(componentesDaGarra, mecanicaSelecionada, inputGame);
         coletaveisManager = new ColetavelManager(coletaveisDto, this);
-        maquinaManager = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, this);
+        maquinaManager = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         EfeitoColetado efeitoColetado = new EfeitoColetado(particulasDto, this);
 
         new AcaoEventoColetado()
@@ -54,7 +58,11 @@ public class MainGame : MonoBehaviour
 
         new AcaoImantadoPelaGarra()
             .configurarProdutor(garraManager.getProdutorDeEventoTocadoPelaGarra())
-            .adicionarConsumidor(coletaveisManager.getConsumidorDeColetavelParaImantar());            
+            .adicionarConsumidor(coletaveisManager.getConsumidorDeColetavelParaImantar());
+
+        new AcaoSubidaDaGarra()
+            .configurarProdutor(garraManager.getProdutorDeEventoSubidaDaGarra())
+            .adicionarConsumidor(coletaveisManager.getConsumidorDeContagemSubidaDaGarra());
 
         new AcaoSincroniaComDirecaoDaGarra()
             .configurarProdutor(garraManager.getDisparadorDeEventoDeDirecao())
@@ -66,12 +74,14 @@ public class MainGame : MonoBehaviour
     private void startLaizy()
     {
         coletaveisManager.start();
-        garraManager.start();
+        garraManager.start();        
     }
 
     void Update()
     {
+        inputGame.update();
         garraManager.update();
+        maquinaManager.update();
         //coletaveis.Update();     
     }
 
@@ -81,4 +91,26 @@ public class MainGame : MonoBehaviour
         coletaveisManager.fixedUpdate();
         maquinaManager.fixedUpdate();
     }
+
+    //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP INICIO
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        //Debug.Log("OnBeginDrag: " + eventData.pointerCurrentRaycast.worldPosition);
+        if (inputGame.aconteceuDragNaAreaInferior(eventData.pointerCurrentRaycast.worldPosition))
+        {
+            maquinaManager.beginDragPowerUp(eventData.pointerCurrentRaycast.worldPosition);
+        }       
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        Debug.Log("OnEndDrag");
+        maquinaManager.onEndDragPowerUp();
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        maquinaManager.onDragPowerUp(eventData.pointerCurrentRaycast.worldPosition);
+    }
+    //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM
 }

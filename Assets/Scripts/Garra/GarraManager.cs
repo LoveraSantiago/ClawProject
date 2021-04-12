@@ -5,10 +5,10 @@ public class GarraManager : ConsumidorDeEventoTrigger
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
     private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
 
-    public GarraManager(ComponentesDaGarraDto componentesDaGarraDto,
-                 MECANICA_GARRA mecanicaGarraEscolhida)
+    public GarraManager(ComponentesDaGarraDto componentesDaGarraDto,  
+        MECANICA_GARRA mecanicaGarraEscolhida, InputGame inputGame)
     {
-        gerenciadorDeMovimentacao = new GerenciadorDeMovimentacao(componentesDaGarraDto, mecanicaGarraEscolhida);
+        gerenciadorDeMovimentacao = new GerenciadorDeMovimentacao(componentesDaGarraDto, mecanicaGarraEscolhida, inputGame);
         configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);
     }
 
@@ -54,5 +54,10 @@ public class GarraManager : ConsumidorDeEventoTrigger
     public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
     {
         return gerenciadorDeMovimentacao.getProdutorDeEventoTocadoPelaGarra(); ;
+    }
+
+    public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()
+    {
+        return gerenciadorDeMovimentacao.getProdutorDeEventoSubidaDaGarra();
     }
 }
