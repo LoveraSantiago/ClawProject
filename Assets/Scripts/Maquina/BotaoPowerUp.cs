@@ -13,7 +13,10 @@ public class BotaoPowerUp : Draggavel
     private Vector3 posicaoOriginal;
     private Bounds boundExterno;
 
+    private Color corOriginal;
+    private SpriteRenderer spriteRendererDentro;
     private SpriteRenderer spriteRendererBorda;
+
     private GameObject goBotaoExterno;
     private GameObject goBotaoInterno;
 
@@ -24,10 +27,16 @@ public class BotaoPowerUp : Draggavel
         posicaoOriginal = goBotaoInterno.transform.position;
         boundExterno = goBotaoExterno.GetComponent<SpriteRenderer>().bounds;
 
+        spriteRendererDentro = goBotaoInterno.GetComponent<SpriteRenderer>();
         spriteRendererBorda = goBotaoInterno.transform.Find("contorno")
             .GetComponent<SpriteRenderer>();
 
         isDraggavel = false;
+    }
+
+    public void clicar(MonoBehaviour monoBehaviour)
+    {
+        monoBehaviour.StartCoroutine(colorirBotao());
     }
 
     public void transformarEmBotaoDragavel()
@@ -66,6 +75,13 @@ public class BotaoPowerUp : Draggavel
             yield return null;
         }
         goBotaoInterno.transform.position = posicaoOriginal;
+    }
+
+    public IEnumerator colorirBotao()
+    {
+        spriteRendererDentro.color = Color.black;
+        yield return new WaitForSeconds(0.1f);
+        spriteRendererDentro.color = corOriginal;
     }
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class BotoesPowerUp 
@@ -43,18 +42,22 @@ public class BotoesPowerUp
             if (btnPUp1.isCliqueDentroAreaBotao(posicaoTap))
             {
                 Debug.Log("BTN1 CRICADO!!!");
+                btnPUp1.clicar(monoBehaviour);
             }
             else if (btnPUp2.isCliqueDentroAreaBotao(posicaoTap))
             {
                 Debug.Log("BTN2 CRICADO!!!");
+                btnPUp2.clicar(monoBehaviour);
             }
             else if (btnPUp3.isCliqueDentroAreaBotao(posicaoTap))
             {
                 Debug.Log("BTN3 CRICADO!!!");
+                btnPUp3.clicar(monoBehaviour);
             }
             else if (btnPUp4.isCliqueDentroAreaBotao(posicaoTap))
             {
                 Debug.Log("BTN4 CRICADO!!!");
+                btnPUp4.clicar(monoBehaviour);
             }
         }
         
