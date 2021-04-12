@@ -3,13 +3,17 @@ using System.Collections;
 
 public class BotaoPowerUp : Draggavel
 {
-    private int VELOCIDADE_VOLTA = 10;
-    private bool isDraggavel;
+    private static readonly int VELOCIDADE_VOLTA = 15;
 
+    private static Sprite spriteBordaNormal;
+    private static Sprite spriteBordaSerrilhada;
+
+    private bool isDraggavel;
     private Vector2 posicaoInicialDrag;
     private Vector3 posicaoOriginal;
     private Bounds boundExterno;
 
+    private SpriteRenderer spriteRendererBorda;
     private GameObject goBotaoExterno;
     private GameObject goBotaoInterno;
 
@@ -18,19 +22,23 @@ public class BotaoPowerUp : Draggavel
         goBotaoExterno = goBotao;
         goBotaoInterno = goBotao.transform.Find("parte-dentro").gameObject;
         posicaoOriginal = goBotaoInterno.transform.position;
-        boundExterno = goBotaoExterno.GetComponent<SpriteRenderer>()
-            .bounds;
+        boundExterno = goBotaoExterno.GetComponent<SpriteRenderer>().bounds;
+
+        spriteRendererBorda = goBotaoInterno.transform.Find("contorno")
+            .GetComponent<SpriteRenderer>();
 
         isDraggavel = false;
     }
 
     public void transformarEmBotaoDragavel()
     {
+        spriteRendererBorda.sprite = spriteBordaSerrilhada;
         isDraggavel = true;
     }
 
     public void transormarEmBotalClicavel()
     {
+        spriteRendererBorda.sprite = spriteBordaNormal;
         isDraggavel = false;
     }
 
@@ -84,4 +92,10 @@ public class BotaoPowerUp : Draggavel
         monoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal());
     }    
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM    
+
+    public static void configurarSpriteBordas(Sprite[] spritesBordas)
+    {
+        spriteBordaNormal = spritesBordas[0];
+        spriteBordaSerrilhada = spritesBordas[1];
+    }
 }

@@ -20,6 +20,7 @@ public class BotoesPowerUp
         this.inputGame = inputGame;
         this.monoBehaviour = monoBehaviour;
 
+        BotaoPowerUp.configurarSpriteBordas(powerUpDto.BordasBtns);
         btnPUp1 = new BotaoPowerUp(powerUpDto.BtnsPowerUp[0]);
         btnPUp2 = new BotaoPowerUp(powerUpDto.BtnsPowerUp[1]);
         btnPUp3 = new BotaoPowerUp(powerUpDto.BtnsPowerUp[2]);
