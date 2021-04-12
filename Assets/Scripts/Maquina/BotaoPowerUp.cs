@@ -20,7 +20,7 @@ public class BotaoPowerUp : Draggavel
     private GameObject goBotaoExterno;
     private GameObject goBotaoInterno;
 
-    private PowerUp powerUp;
+    public PowerUp powerUp { get; private set; }
 
     public BotaoPowerUp(GameObject goBotao)
     {

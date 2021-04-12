@@ -12,12 +12,15 @@ public class BotoesPowerUp
 
     private InputGame inputGame;
 
+    private ProdutorDeEvento<PowerUp> produtorDeEventoDePowerUp;
     private MonoBehaviour monoBehaviour;
 
     public BotoesPowerUp(PowerUpDto powerUpDto, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
         this.inputGame = inputGame;
         this.monoBehaviour = monoBehaviour;
+
+        produtorDeEventoDePowerUp = new ProdutorDeEvento<PowerUp>();
 
         BotaoPowerUp.configurarSpriteBordas(powerUpDto.BordasBtns);
         btnPUp1 = new BotaoPowerUp(powerUpDto.BtnsPowerUp[0]);
@@ -41,18 +44,22 @@ public class BotoesPowerUp
             if (btnPUp1.isCliqueDentroAreaBotao(posicaoTap))
             {   
                 btnPUp1.clicar(monoBehaviour);
+                produtorDeEventoDePowerUp.produziuEvento(btnPUp1.powerUp);
             }
             else if (btnPUp2.isCliqueDentroAreaBotao(posicaoTap))
             {   
                 btnPUp2.clicar(monoBehaviour);
+                produtorDeEventoDePowerUp.produziuEvento(btnPUp2.powerUp);
             }
             else if (btnPUp3.isCliqueDentroAreaBotao(posicaoTap))
             {   
                 btnPUp3.clicar(monoBehaviour);
+                produtorDeEventoDePowerUp.produziuEvento(btnPUp3.powerUp);
             }
             else if (btnPUp4.isCliqueDentroAreaBotao(posicaoTap))
             {             
                 btnPUp4.clicar(monoBehaviour);
+                produtorDeEventoDePowerUp.produziuEvento(btnPUp4.powerUp);
             }
         }        
     }
@@ -96,5 +103,5 @@ public class BotoesPowerUp
     {
         dragavelAtual.dragFinalizado(monoBehaviour);
         dragavelAtual = dragavelVazio;
-    }
+    }    
 }
