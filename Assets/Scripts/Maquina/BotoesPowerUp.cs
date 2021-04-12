@@ -27,62 +27,57 @@ public class BotoesPowerUp
 
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
-
-        btnPUp1.transormarEmBotaoClicavel();
+        
         btnPUp2.transformarEmBotaoDragavel();
-        btnPUp3.transormarEmBotaoClicavel();
+        btnPUp3.transformarEmBotaoClicavel();
         btnPUp4.transformarEmBotaoDragavel();
     }
-
+    
     public void update()
     {
         if (inputGame.aconteceuTapNaAreaInferior())
         {
             Vector2 posicaoTap = inputGame.getPosicaoTap();
             if (btnPUp1.isCliqueDentroAreaBotao(posicaoTap))
-            {
-                Debug.Log("BTN1 CRICADO!!!");
+            {   
                 btnPUp1.clicar(monoBehaviour);
             }
             else if (btnPUp2.isCliqueDentroAreaBotao(posicaoTap))
-            {
-                Debug.Log("BTN2 CRICADO!!!");
+            {   
                 btnPUp2.clicar(monoBehaviour);
             }
             else if (btnPUp3.isCliqueDentroAreaBotao(posicaoTap))
-            {
-                Debug.Log("BTN3 CRICADO!!!");
+            {   
                 btnPUp3.clicar(monoBehaviour);
             }
             else if (btnPUp4.isCliqueDentroAreaBotao(posicaoTap))
-            {
-                Debug.Log("BTN4 CRICADO!!!");
+            {             
                 btnPUp4.clicar(monoBehaviour);
             }
-        }
-        
+        }        
+    }
+
+    public void recebendoPowerUp(PowerUp powerUp)
+    {
+        btnPUp1.recebendoPowerUp(powerUp);
     }
 
     public void beginDrag(Vector2 posicaoDrag)
     {
         if (btnPUp1.isDragDentroAreaBotao(posicaoDrag))
-        {
-            Debug.Log("BTN1 DRAGGADO!!!");
+        {   
             dragavelAtual = btnPUp1;
         }
         else if (btnPUp2.isDragDentroAreaBotao(posicaoDrag))
-        {
-            Debug.Log("BTN2 DRAGGADO!!!");
+        {            
             dragavelAtual = btnPUp2;
         }
         else if (btnPUp3.isDragDentroAreaBotao(posicaoDrag))
-        {
-            Debug.Log("BTN3 DRAGGADO!!!");
+        {            
             dragavelAtual = btnPUp3;
         }
         else if (btnPUp4.isDragDentroAreaBotao(posicaoDrag))
-        {
-            Debug.Log("BTN4 DRAGGADO!!!");
+        {            
             dragavelAtual = btnPUp4;
         }
         else

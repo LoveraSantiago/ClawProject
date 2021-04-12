@@ -20,6 +20,8 @@ public class BotaoPowerUp : Draggavel
     private GameObject goBotaoExterno;
     private GameObject goBotaoInterno;
 
+    private PowerUp powerUp;
+
     public BotaoPowerUp(GameObject goBotao)
     {
         goBotaoExterno = goBotao;
@@ -45,10 +47,23 @@ public class BotaoPowerUp : Draggavel
         isDraggavel = true;
     }
 
-    public void transormarEmBotaoClicavel()
+    public void transformarEmBotaoClicavel()
     {
         spriteRendererBorda.sprite = spriteBordaNormal;
         isDraggavel = false;
+    }
+
+    public void recebendoPowerUp(PowerUp powerUp)
+    {
+        this.powerUp = powerUp;
+        if(powerUp.botao == PowerUp.BOTAO.CLIQUE)
+        {
+            transformarEmBotaoClicavel();
+        }
+        else
+        {
+            transformarEmBotaoDragavel();
+        }
     }
 
     private bool isPosicaoDentroAreaBotao(Vector2 posicao)

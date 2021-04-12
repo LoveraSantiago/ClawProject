@@ -74,7 +74,8 @@ public class MainGame : MonoBehaviour,
     private void startLaizy()
     {
         coletaveisManager.start();
-        garraManager.start();        
+        garraManager.start();
+        maquinaManager.recebendoPowerUp(PowerUp.BombaDaGarra);
     }
 
     void Update()
