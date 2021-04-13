@@ -4,6 +4,7 @@ public class GarraManager : ConsumidorDeEventoTrigger,
                             ConsumidorDeEvento<PowerUp>
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
+
     private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
 
     public GarraManager(ComponentesDaGarraDto componentesDaGarraDto,  
