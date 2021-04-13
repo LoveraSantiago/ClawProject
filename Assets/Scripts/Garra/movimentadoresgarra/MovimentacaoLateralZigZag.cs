@@ -7,8 +7,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
 
     private bool isUsandoMaxAngulo;
     private float anguloAtual;
-
-    private Vector2 posicaoInicial;
+    
     private Quaternion anguloDesejadoEsquerdaMin;
     private Quaternion anguloDesejadoDireitaMin;
 
@@ -26,7 +25,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMax);
         anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMax);
 
-        posicaoInicial = compDaGarra.RigidBody.transform.localPosition;
+        posInicial = compDaGarra.RigidBody.transform.localPosition;
         direcao = 1;        
     }
 
@@ -35,7 +34,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         configurarAngulosParaMax();
         dispararEventoDirecao();
 
-        compDaGarra.RigidBody.transform.localPosition = new Vector2(compDaGarra.RigidBody.position.x, posicaoInicial.y);
+        compDaGarra.RigidBody.transform.localPosition = new Vector2(compDaGarra.RigidBody.position.x, posInicial.y);
         compDaGarra.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 
         pincas.acionarTrigger();
@@ -46,7 +45,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         if (inputGame.aconteceuTapNaAreaSuperior())
         {
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
-            comunicadorComGerMovimentacao.trocarParaAcaoDescendo(posicaoInicial);
+            comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
             compDaGarra.RigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             pincas.acionarCollider();
         }

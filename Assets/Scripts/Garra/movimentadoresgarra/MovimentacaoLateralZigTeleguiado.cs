@@ -18,6 +18,8 @@ public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraHorizontal
 
         actionFixedUpdateTeleguiado = () => fixedUpdateTeleguiado();
         actionFixedUpdateZigZague = () => fixedUpdateZigZag();
+
+        posInicial = compDaGarra.RigidBody.transform.localPosition;
     }
 
     public override void preInicio()
@@ -77,9 +79,8 @@ public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraHorizontal
                         compDaGarra.RigidBody.velocity.y);
                 }
                 else
-                {
-                    Vector2 posicaoInicial = compDaGarra.RigidBody.transform.localPosition;
-                    comunicadorComGerMovimentacao.trocarParaAcaoDescendo(posicaoInicial);
+                {   
+                    comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
                 }
             }
             else
@@ -91,9 +92,8 @@ public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraHorizontal
                         compDaGarra.RigidBody.velocity.y);
                 }
                 else
-                {
-                    Vector2 posicaoInicial = compDaGarra.RigidBody.transform.localPosition;
-                    comunicadorComGerMovimentacao.trocarParaAcaoDescendo(posicaoInicial);
+                {                    
+                    comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
                 }
             }
         //}

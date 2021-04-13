@@ -8,6 +8,11 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarraHorizontal
     private float posicaoDoToque;
     private int direcao;
 
+    public MovimentacaoLateralTeleguiada()
+    {
+        posInicial = compDaGarra.RigidBody.transform.localPosition;
+    }
+
     public override void preInicio() {
         aceitarClique = true;
         moverLateralmente = false;        
@@ -41,9 +46,8 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarraHorizontal
                     compDaGarra.RigidBody.velocity = new Vector2(
                         1 * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
                         compDaGarra.RigidBody.velocity.y);
-                } else {
-                    Vector2 posicaoInicial = compDaGarra.RigidBody.transform.localPosition;
-                    comunicadorComGerMovimentacao.trocarParaAcaoDescendo(posicaoInicial);
+                } else {                    
+                    comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
                 }
             } else {
                 if (compDaGarra.RigidBody.transform.localPosition.x > Mathf.Max(posicaoDoToque, -LIMITE_LATERAL_TELA))//REFATORAR COMPLEXIDADE
@@ -51,9 +55,8 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarraHorizontal
                     compDaGarra.RigidBody.velocity = new Vector2(
                         -1 * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
                         compDaGarra.RigidBody.velocity.y);
-                } else {
-                    Vector2 posicaoInicial = compDaGarra.RigidBody.transform.localPosition;
-                    comunicadorComGerMovimentacao.trocarParaAcaoDescendo(posicaoInicial);
+                } else {                    
+                    comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
                 }
             }
         }

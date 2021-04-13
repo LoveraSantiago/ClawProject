@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
 {
-    private Vector2 posicaoInicial;
-
     private MovimentacaoDaGarra movimentacaoAtual;
     private MovimentacaoParaBaixo movimentacaoParaBaixo;
     private MovimentacaoDaGarra movimentacaoAgarrando;
@@ -15,8 +13,8 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(componentesDaGarraDto, this, inputGame);        
 
-        movimentacaoLateral = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
-        movimentacaoParaCima = new MovimentacaoParaCima();
+        movimentacaoLateral   = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
+        movimentacaoParaCima  = new MovimentacaoParaCima();
         movimentacaoParaBaixo = new MovimentacaoParaBaixo();
         movimentacaoAgarrando = new MovimentacaoAgarrando();
     }
@@ -59,16 +57,14 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     }
 
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO    
-    public void trocarParaAcaoDescendo(Vector2 posicaoInicial)
+    public void trocarParaAcaoDescendo()
     {
-        AudioController.current.PlayAudioGarra();
-        this.posicaoInicial = posicaoInicial;
+        AudioController.current.PlayAudioGarra();        
         trocarMovimentador(movimentacaoParaBaixo);
     }
 
     public void trocarParaAcaoSubindo()
-    {
-        movimentacaoParaCima.setPosicalInicialDeReferencia(posicaoInicial);
+    {        
         trocarMovimentador(movimentacaoParaCima);
     }
 
@@ -78,7 +74,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
         trocarMovimentador(movimentacaoLateral);
     }
 
-    public void trocarParaAgarrada()
+    public void trocarParaAcaoAgarrada()
     {
         trocarMovimentador(movimentacaoAgarrando);
     }
@@ -87,6 +83,11 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     {
         movimentador.preInicio();
         movimentacaoAtual = movimentador;
+    }
+
+    public void trocarParaAcaoSegurando()
+    {
+        
     }
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
 
@@ -104,4 +105,5 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     {
         return movimentacaoParaCima.produtorDeEventoSubidaDaGarra;
     }
+
 }
