@@ -3,7 +3,7 @@ using UnityEngine;
 public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
 {    
     private float movimentoLateral;        
-    private float direcao;
+    private int direcao;
 
     private bool isUsandoMaxAngulo;
     private float anguloAtual;
@@ -57,21 +57,19 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         verificarSePincaAtingiuLimites();
 
         pincas.fixUpdateRotacionamento(compDaGarra.VelocAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);
-        
-        compDaGarra.RigidBody.velocity = new Vector2(
-            direcao * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
-            compDaGarra.RigidBody.velocity.y);
+
+        moverGarraHorizontalmenteFDT(direcao);        
     }
 
     private void verificarSeMovimentacaoAtingiuLimites()
     {
-        if (compDaGarra.RigidBody.transform.localPosition.x > LIMITE_LATERAL_TELA)
+        if (isGarraMaiorPosHorizontal(LIMITE_LATERAL_TELA))            
         {
             direcao = -1;     
             diminuirInerciaDaGarra();
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
         }
-        else if (compDaGarra.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
+        else if (isGarraMenorPosHorizontal(-LIMITE_LATERAL_TELA))
         {
             direcao = 1;     
             diminuirInerciaDaGarra();

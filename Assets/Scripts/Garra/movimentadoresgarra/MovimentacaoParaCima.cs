@@ -29,6 +29,6 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 
     public override void fixedUpdate()
     {        
-        subirGarraFDT();
+        moverGarraParaCimaFDT();
     }        
 }

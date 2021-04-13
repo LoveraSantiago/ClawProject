@@ -3,7 +3,9 @@ using UnityEngine;
 public class MovimentacaoSegurando : MovimentacaoDaGarra
 {
     private const int ESTADO_VOLTAR_SUBIDA = 1;
-    private const int ESTADO_IR_PARA_MEIO  = 2;
+    private const int ESTADO_IR_MEIO_PELA_ESQUERDA  = 2;
+    private const int ESTADO_IR_MEIO_PELA_DIREITA  = 3;
+    private const int NONE  = 99;
 
     private int estadoAtual;
     private Vector3 posMeio;
@@ -29,21 +31,71 @@ public class MovimentacaoSegurando : MovimentacaoDaGarra
         {
             case ESTADO_VOLTAR_SUBIDA:
                 voltarPosicaoMeioCima();
-                break;            
-        }        
+                break;
+
+            case ESTADO_IR_MEIO_PELA_DIREITA:
+                voltarAoMeioVindoPelaDireita();
+                break;
+
+            case ESTADO_IR_MEIO_PELA_ESQUERDA:
+                voltarAoMeioVindoPelaEsquerda();
+                break;
+                
+        }
+        Debug.Log("EstadoAtual : " + estadoAtual);
     }
 
     private void voltarPosicaoMeioCima()
     {
         if (!isGarraAcimaPosInicial())
         {
-            subirGarraFDT();
+            moverGarraParaCimaFDT();
         }
         else
         {
             diminuirInerciaDaGarra();
             colocarGarraNaAlturaInicial();
-            estadoAtual = ESTADO_IR_PARA_MEIO;
+            determinarDirecaoPAraVoltarAoMeio();
+        }
+    }
+
+    private void determinarDirecaoPAraVoltarAoMeio()
+    {
+        if (isGarraMaiorPosHorizontal(0))
+        {
+            estadoAtual = ESTADO_IR_MEIO_PELA_ESQUERDA;
+        }
+        else
+        {
+            estadoAtual = ESTADO_IR_MEIO_PELA_DIREITA;
+        }
+    }
+
+    private void voltarAoMeioVindoPelaEsquerda()
+    {
+        if (!isGarraMenorPosHorizontal(0))
+        {
+            moverGarraHorizontalmenteFDT(-1);
+        }
+        else
+        {
+            diminuirInerciaDaGarra();
+            colocarGarraNaPosInicial();
+            estadoAtual = NONE;
+        }
+    }
+
+    private void voltarAoMeioVindoPelaDireita()
+    {
+        if (!isGarraMaiorPosHorizontal(0))
+        {
+            moverGarraHorizontalmenteFDT(1);
+        }
+        else
+        {
+            diminuirInerciaDaGarra();
+            colocarGarraNaPosInicial();
+            estadoAtual = NONE;
         }
     }
 }

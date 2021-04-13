@@ -26,9 +26,14 @@ public abstract class MovimentacaoDaGarra
         compDaGarra.RigidBody.angularVelocity = 0;
     }
 
-    protected void subirGarraFDT()//FDT FixedDeltaTime
+    protected void moverGarraParaCimaFDT()//FDT FixedDeltaTime
     {
         compDaGarra.RigidBody.velocity = new Vector2(0, compDaGarra.VelocMovCima * Time.fixedDeltaTime);
+    }
+
+    protected void moverGarraHorizontalmenteFDT(int direcao)
+    {
+        compDaGarra.RigidBody.velocity = new Vector2(direcao * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,compDaGarra.RigidBody.velocity.y);
     }
 
     protected void colocarGarraNaAlturaInicial()
@@ -36,9 +41,24 @@ public abstract class MovimentacaoDaGarra
         compDaGarra.RigidBody.transform.localPosition = new Vector2(compDaGarra.RigidBody.position.x, posInicial.y);
     }
 
+    protected void colocarGarraNaPosInicial()
+    {
+        compDaGarra.RigidBody.transform.localPosition = posInicial;
+    }
+
     protected bool isGarraAcimaPosInicial()
     {
-        return compDaGarra.RigidBody.transform.localPosition.y > posInicial.y;
+        return compDaGarra.RigidBody.transform.localPosition.y >= posInicial.y;
+    }
+
+    protected bool isGarraMaiorPosHorizontal(float posHorizontal)
+    {
+        return compDaGarra.RigidBody.transform.localPosition.x > posHorizontal;
+    }
+
+    protected bool isGarraMenorPosHorizontal(float posHorizontal)
+    {
+        return compDaGarra.RigidBody.transform.localPosition.x < posHorizontal;
     }
 
     public static void configurarComponentesMovimentacaoGarra(
