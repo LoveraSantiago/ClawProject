@@ -11,6 +11,8 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     private int estadoAtual;
     private Vector3 posMeio;
 
+    private int direcao;
+
     private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;
     private Quaternion anguloDesejadoDireitaAntesEstadoInicial;
 
@@ -30,6 +32,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraDto.AnguloFechamento);
 
         produtorEventoGarraCentralizada = new ProdutorDeEvento<Vector3>();
+        direcao = 1;
     }
 
     public override void preInicio()
@@ -60,7 +63,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
                 break;
 
             case ESTADO_CENTRALIZADO:
-                x();
+                movendoZigueZague();
                 break;
 
             case NONE:
@@ -68,7 +71,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
                 break;
 
         }
-        //Debug.Log("EstadoAtual : " + estadoAtual);
+        Debug.Log("EstadoAtual : " + estadoAtual);
     }
 
     private void voltarPosicaoMeioCima()
@@ -135,8 +138,30 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         estadoAtual = ESTADO_CENTRALIZADO;
     }
 
-    private void x()
+    private void movendoZigueZague()
     {
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
+        verificarSeMovimentacaoAtingiuLimites();
+        moverGarraHorizontalmenteFDT(direcao);
+    }
+
+    private void verificarSeMovimentacaoAtingiuLimites()//DUPLICIDADE COM MOVIMENTACAO LATERAL
+    {
+        if (isGarraMaiorPosHorizontal(LIMITE_LATERAL_TELA))
+        {
+            direcao = -1;
+            //diminuirInerciaDaGarra();
+            //produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
+        }
+        else if (isGarraMenorPosHorizontal(-LIMITE_LATERAL_TELA))
+        {
+            direcao = 1;
+            //diminuirInerciaDaGarra();
+            //produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
+        }
+        else
+        {
+            //nada
+        }
     }
 }
