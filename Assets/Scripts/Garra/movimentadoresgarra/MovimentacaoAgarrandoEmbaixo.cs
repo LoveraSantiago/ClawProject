@@ -14,7 +14,7 @@ public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarra
     public override void preInicio()
     {        
         diminuirInerciaDaGarra();
-        garraDto.RigidBody.mass = 1;
+        colocarMassaNaGarra(1);        
     }
 
     public override void fixedUpdate()

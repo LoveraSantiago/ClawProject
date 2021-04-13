@@ -14,6 +14,9 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;
     private Quaternion anguloDesejadoDireitaAntesEstadoInicial;
 
+    private Quaternion anguloDesejadoEsquerdaFechado;
+    private Quaternion anguloDesejadoDireitaFechado;
+
     public ProdutorDeEvento<Vector3> produtorEventoGarraCentralizada { get; private set; }
 
     public MovimentacaoAgarrandoEmcima()
@@ -23,12 +26,16 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMin);
         anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
 
+        anguloDesejadoDireitaFechado = Quaternion.Euler(0, 0, garraDto.AnguloFechamento);
+        anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraDto.AnguloFechamento);
+
         produtorEventoGarraCentralizada = new ProdutorDeEvento<Vector3>();
     }
 
     public override void preInicio()
     {
         estadoAtual = ESTADO_VOLTAR_SUBIDA;
+        colocarMassaNaGarra(3);
     }
 
     public override void update()
@@ -53,7 +60,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
                 break;
 
             case ESTADO_CENTRALIZADO:
-
+                x();
                 break;
 
             case NONE:
@@ -100,7 +107,6 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         }
         else
         {
-            diminuirInerciaDaGarra();
             colocarGarraNaPosInicial();
             colocarEstadoCentralizado();            
         }
@@ -114,8 +120,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
-        {
-            diminuirInerciaDaGarra();
+        {            
             colocarGarraNaPosInicial();
             colocarEstadoCentralizado();
         }
@@ -123,7 +128,15 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
 
     private void colocarEstadoCentralizado()
     {
+        diminuirInerciaDaGarra();
         produtorEventoGarraCentralizada.produziuEvento(garraDto.CentroDaGarra.transform.position);
+        fixarGarraHorizontalmente();
+        pincas.acionarCollider();
         estadoAtual = ESTADO_CENTRALIZADO;
+    }
+
+    private void x()
+    {
+        pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
     }
 }

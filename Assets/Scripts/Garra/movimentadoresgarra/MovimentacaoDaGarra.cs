@@ -46,6 +46,21 @@ public abstract class MovimentacaoDaGarra
         garraDto.RigidBody.transform.localPosition = posInicial;
     }
 
+    protected void colocarMassaNaGarra(int massa)
+    {
+        garraDto.RigidBody.mass = massa;
+    }
+
+    protected void fixarGarraHorizontalmente()
+    {
+        garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    protected void desafixarGarraHorizontalmente()
+    {
+        garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
     protected bool isGarraAcimaPosInicial()
     {
         return garraDto.RigidBody.transform.localPosition.y >= posInicial.y;
@@ -59,7 +74,7 @@ public abstract class MovimentacaoDaGarra
     protected bool isGarraMenorPosHorizontal(float posHorizontal)
     {
         return garraDto.RigidBody.transform.localPosition.x < posHorizontal;
-    }
+    }    
 
     public static void configurarComponentesMovimentacaoGarra(
         GarraDto componentesDaGarraDtoArg, 

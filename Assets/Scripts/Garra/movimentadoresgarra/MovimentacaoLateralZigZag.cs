@@ -35,7 +35,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         dispararEventoDirecao();
 
         colocarGarraNaAlturaInicial();
-        garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        fixarGarraHorizontalmente();
 
         pincas.acionarTrigger();
     }
@@ -46,7 +46,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         {
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
             comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
-            garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            desafixarGarraHorizontalmente();
             pincas.acionarCollider();
         }
     }

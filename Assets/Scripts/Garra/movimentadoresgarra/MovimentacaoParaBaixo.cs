@@ -18,8 +18,8 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     }
 
     public override void preInicio()
-    {        
-        garraDto.RigidBody.mass = 2;
+    {   
+        colocarMassaNaGarra(2);
         contadorDeTempoTravamento.resetContador();
         diminuirInerciaDaGarra();        
     }

@@ -11,7 +11,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 
     public override void preInicio()
     {
-        garraDto.RigidBody.mass = 3;
+        colocarMassaNaGarra(3);
         diminuirInerciaDaGarra();
 
         contadorDeSubidas++;
