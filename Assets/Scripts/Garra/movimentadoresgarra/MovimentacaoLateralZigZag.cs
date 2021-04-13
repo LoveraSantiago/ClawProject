@@ -19,13 +19,13 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
 
     public MovimentacaoLateralZigZag()
     {
-        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMin);
-        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMin);
+        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMin);
+        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
 
-        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMax);
-        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMax);
+        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMax);
+        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, garraDto.AnguloIdleMax);
 
-        posInicial = compDaGarra.RigidBody.transform.localPosition;
+        posInicial = garraDto.RigidBody.transform.localPosition;
         direcao = 1;        
     }
 
@@ -35,7 +35,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         dispararEventoDirecao();
 
         colocarGarraNaAlturaInicial();
-        compDaGarra.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 
         pincas.acionarTrigger();
     }
@@ -46,7 +46,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         {
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
             comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
-            compDaGarra.RigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             pincas.acionarCollider();
         }
     }
@@ -56,7 +56,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         verificarSeMovimentacaoAtingiuLimites();
         verificarSePincaAtingiuLimites();
 
-        pincas.rotacionarFDT(compDaGarra.VelocAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);
+        pincas.rotacionarFDT(garraDto.VelocAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);
 
         moverGarraHorizontalmenteFDT(direcao);        
     }
@@ -111,7 +111,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
     private void configurarAngulosParaMax()
     {
         isUsandoMaxAngulo = true;
-        anguloAtual = -compDaGarra.AnguloIdleMax;
+        anguloAtual = -garraDto.AnguloIdleMax;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMax;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMax;
     }
@@ -119,7 +119,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
     private void configurarAngulosParaMin()
     {
         isUsandoMaxAngulo = false;
-        anguloAtual = compDaGarra.AnguloIdleMin;
+        anguloAtual = garraDto.AnguloIdleMin;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMin;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMin;
     }

@@ -9,7 +9,7 @@ public class MainGame : MonoBehaviour,
 {
     [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
     [Space(5)]
-    [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
+    [SerializeField] private GarraDto componentesDaGarra;
     [Space(5)]
     [SerializeField] private ColetaveisDto coletaveisDto;
     [Space(5)]

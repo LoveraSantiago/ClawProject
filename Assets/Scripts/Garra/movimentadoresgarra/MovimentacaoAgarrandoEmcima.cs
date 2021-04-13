@@ -17,8 +17,8 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     {
         posMeio = new Vector3(0, posInicial.y, 0);
 
-        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMin);
-        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMin);
+        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMin);
+        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
     }
 
     public override void preInicio()
@@ -61,7 +61,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         if (!isGarraAcimaPosInicial())
         {
             moverGarraParaCimaFDT();
-            pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
         {
@@ -88,7 +88,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         if (!isGarraMenorPosHorizontal(0))
         {
             moverGarraHorizontalmenteFDT(-1);
-            pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
         {
@@ -103,7 +103,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         if (!isGarraMaiorPosHorizontal(0))
         {
             moverGarraHorizontalmenteFDT(1);
-            pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
         {

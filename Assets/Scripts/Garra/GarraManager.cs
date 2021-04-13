@@ -7,7 +7,7 @@ public class GarraManager : ConsumidorDeEventoTrigger,
 
     private GerenciadorDeMovimentacao gerenciadorDeMovimentacao;
 
-    public GarraManager(ComponentesDaGarraDto componentesDaGarraDto,  
+    public GarraManager(GarraDto componentesDaGarraDto,  
         MECANICA_GARRA mecanicaGarraEscolhida, InputGame inputGame)
     {
         gerenciadorDeMovimentacao = new GerenciadorDeMovimentacao(componentesDaGarraDto, mecanicaGarraEscolhida, inputGame);

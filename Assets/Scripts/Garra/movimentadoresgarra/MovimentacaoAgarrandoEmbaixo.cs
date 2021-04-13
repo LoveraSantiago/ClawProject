@@ -7,21 +7,21 @@ public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarra
 
     public MovimentacaoAgarrandoEmbaixo()
     {
-        anguloDesejadoDireita  = Quaternion.Euler(0, 0,   compDaGarra.AnguloFechamento);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -compDaGarra.AnguloFechamento);        
+        anguloDesejadoDireita  = Quaternion.Euler(0, 0,   garraDto.AnguloFechamento);
+        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -garraDto.AnguloFechamento);        
     }
     
     public override void preInicio()
     {        
         diminuirInerciaDaGarra();
-        compDaGarra.RigidBody.mass = 1;
+        garraDto.RigidBody.mass = 1;
     }
 
     public override void fixedUpdate()
     {        
         diminuirInerciaDaGarra();
 
-        pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloFechamento, anguloDesejadoEsquerda, anguloDesejadoDireita);
+        pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerda, anguloDesejadoDireita);
         
         if (pincas.isDireitaNoAngulo(anguloDesejadoDireita))
         {       

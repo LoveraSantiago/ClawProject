@@ -5,7 +5,7 @@ public abstract class MovimentacaoDaGarra
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
 
     protected static PincaDaGarra pincas;
-    protected static ComponentesDaGarraDto compDaGarra;
+    protected static GarraDto garraDto;
     protected static InputGame inputGame;
     protected static ComunicadorComGerMovimentacao comunicadorComGerMovimentacao;
 
@@ -22,52 +22,52 @@ public abstract class MovimentacaoDaGarra
 
     protected void diminuirInerciaDaGarra()
     {
-        compDaGarra.RigidBody.velocity = Vector3.zero;
-        compDaGarra.RigidBody.angularVelocity = 0;
+        garraDto.RigidBody.velocity = Vector3.zero;
+        garraDto.RigidBody.angularVelocity = 0;
     }
 
     protected void moverGarraParaCimaFDT()//FDT FixedDeltaTime
     {
-        compDaGarra.RigidBody.velocity = new Vector2(0, compDaGarra.VelocMovCima * Time.fixedDeltaTime);
+        garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovCima * Time.fixedDeltaTime);
     }
 
     protected void moverGarraHorizontalmenteFDT(int direcao)
     {
-        compDaGarra.RigidBody.velocity = new Vector2(direcao * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,compDaGarra.RigidBody.velocity.y);
+        garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.VelocMovHorizontal * Time.fixedDeltaTime,garraDto.RigidBody.velocity.y);
     }
 
     protected void colocarGarraNaAlturaInicial()
     {
-        compDaGarra.RigidBody.transform.localPosition = new Vector2(compDaGarra.RigidBody.position.x, posInicial.y);
+        garraDto.RigidBody.transform.localPosition = new Vector2(garraDto.RigidBody.position.x, posInicial.y);
     }
 
     protected void colocarGarraNaPosInicial()
     {
-        compDaGarra.RigidBody.transform.localPosition = posInicial;
+        garraDto.RigidBody.transform.localPosition = posInicial;
     }
 
     protected bool isGarraAcimaPosInicial()
     {
-        return compDaGarra.RigidBody.transform.localPosition.y >= posInicial.y;
+        return garraDto.RigidBody.transform.localPosition.y >= posInicial.y;
     }
 
     protected bool isGarraMaiorPosHorizontal(float posHorizontal)
     {
-        return compDaGarra.RigidBody.transform.localPosition.x > posHorizontal;
+        return garraDto.RigidBody.transform.localPosition.x > posHorizontal;
     }
 
     protected bool isGarraMenorPosHorizontal(float posHorizontal)
     {
-        return compDaGarra.RigidBody.transform.localPosition.x < posHorizontal;
+        return garraDto.RigidBody.transform.localPosition.x < posHorizontal;
     }
 
     public static void configurarComponentesMovimentacaoGarra(
-        ComponentesDaGarraDto componentesDaGarraDtoArg, 
+        GarraDto componentesDaGarraDtoArg, 
         ComunicadorComGerMovimentacao comunicadorComGerMovimentacaoArg,
         InputGame inputGameArg)
     {
-        compDaGarra = componentesDaGarraDtoArg;
-        pincas = new PincaDaGarra(compDaGarra.PincaEsquerda, compDaGarra.PincaDireita);
+        garraDto = componentesDaGarraDtoArg;
+        pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);
         comunicadorComGerMovimentacao = comunicadorComGerMovimentacaoArg;
         inputGame = inputGameArg;
     }

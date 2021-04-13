@@ -9,7 +9,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     private MovimentacaoDaGarraHorizontal movimentacaoLateral;
     private MovimentacaoDaGarra movimentacaoSegCima;
 
-    public GerenciadorDeMovimentacao(ComponentesDaGarraDto componentesDaGarraDto, 
+    public GerenciadorDeMovimentacao(GarraDto componentesDaGarraDto, 
         GarraManager.MECANICA_GARRA mecanicaGarraEscolhida, InputGame inputGame)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(componentesDaGarraDto, this, inputGame);        

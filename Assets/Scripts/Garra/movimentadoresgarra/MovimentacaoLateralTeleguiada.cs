@@ -10,7 +10,7 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarraHorizontal
 
     public MovimentacaoLateralTeleguiada()
     {
-        posInicial = compDaGarra.RigidBody.transform.localPosition;
+        posInicial = garraDto.RigidBody.transform.localPosition;
     }
 
     public override void preInicio() {
@@ -41,20 +41,20 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarraHorizontal
     public override void fixedUpdate() {
         if (moverLateralmente) {
             if (posicaoDoToque >= 0) {
-                if (compDaGarra.RigidBody.transform.localPosition.x < Mathf.Min(posicaoDoToque, LIMITE_LATERAL_TELA))//REFATORAR COMPLEXIDADE
+                if (garraDto.RigidBody.transform.localPosition.x < Mathf.Min(posicaoDoToque, LIMITE_LATERAL_TELA))//REFATORAR COMPLEXIDADE
                 {
-                    compDaGarra.RigidBody.velocity = new Vector2(
-                        1 * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
-                        compDaGarra.RigidBody.velocity.y);
+                    garraDto.RigidBody.velocity = new Vector2(
+                        1 * garraDto.VelocMovHorizontal * Time.fixedDeltaTime,
+                        garraDto.RigidBody.velocity.y);
                 } else {                    
                     comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
                 }
             } else {
-                if (compDaGarra.RigidBody.transform.localPosition.x > Mathf.Max(posicaoDoToque, -LIMITE_LATERAL_TELA))//REFATORAR COMPLEXIDADE
+                if (garraDto.RigidBody.transform.localPosition.x > Mathf.Max(posicaoDoToque, -LIMITE_LATERAL_TELA))//REFATORAR COMPLEXIDADE
                 {
-                    compDaGarra.RigidBody.velocity = new Vector2(
-                        -1 * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
-                        compDaGarra.RigidBody.velocity.y);
+                    garraDto.RigidBody.velocity = new Vector2(
+                        -1 * garraDto.VelocMovHorizontal * Time.fixedDeltaTime,
+                        garraDto.RigidBody.velocity.y);
                 } else {                    
                     comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
                 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class ComponentesDaGarraDto 
+public class GarraDto 
 {
     [SerializeField] private float velocMovHorizontal;
     [SerializeField] private float velocMovCima;

@@ -19,7 +19,7 @@ public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraHorizontal
         actionFixedUpdateTeleguiado = () => fixedUpdateTeleguiado();
         actionFixedUpdateZigZague = () => fixedUpdateZigZag();
 
-        posInicial = compDaGarra.RigidBody.transform.localPosition;
+        posInicial = garraDto.RigidBody.transform.localPosition;
     }
 
     public override void preInicio()
@@ -60,9 +60,9 @@ public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraHorizontal
     {
         verificarSeMovimentacaoAtingiuLimites();
 
-        compDaGarra.RigidBody.velocity = new Vector2(
-            direcao * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
-            compDaGarra.RigidBody.velocity.y);
+        garraDto.RigidBody.velocity = new Vector2(
+            direcao * garraDto.VelocMovHorizontal * Time.fixedDeltaTime,
+            garraDto.RigidBody.velocity.y);
     }
 
     //TODO duplicidade com MovimentacaoLateralTeleguiada
@@ -72,11 +72,11 @@ public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraHorizontal
         //{
             if (posicaoDoToque >= 0)
             {
-                if (compDaGarra.RigidBody.transform.localPosition.x < Mathf.Min(posicaoDoToque, LIMITE_LATERAL_TELA))//REFATORAR COMPLEXIDADE
+                if (garraDto.RigidBody.transform.localPosition.x < Mathf.Min(posicaoDoToque, LIMITE_LATERAL_TELA))//REFATORAR COMPLEXIDADE
                 {
-                    compDaGarra.RigidBody.velocity = new Vector2(
-                        1 * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
-                        compDaGarra.RigidBody.velocity.y);
+                    garraDto.RigidBody.velocity = new Vector2(
+                        1 * garraDto.VelocMovHorizontal * Time.fixedDeltaTime,
+                        garraDto.RigidBody.velocity.y);
                 }
                 else
                 {   
@@ -85,11 +85,11 @@ public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraHorizontal
             }
             else
             {
-                if (compDaGarra.RigidBody.transform.localPosition.x > Mathf.Max(posicaoDoToque, -LIMITE_LATERAL_TELA))//REFATORAR COMPLEXIDADE
+                if (garraDto.RigidBody.transform.localPosition.x > Mathf.Max(posicaoDoToque, -LIMITE_LATERAL_TELA))//REFATORAR COMPLEXIDADE
                 {
-                    compDaGarra.RigidBody.velocity = new Vector2(
-                        -1 * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
-                        compDaGarra.RigidBody.velocity.y);
+                    garraDto.RigidBody.velocity = new Vector2(
+                        -1 * garraDto.VelocMovHorizontal * Time.fixedDeltaTime,
+                        garraDto.RigidBody.velocity.y);
                 }
                 else
                 {                    
@@ -102,12 +102,12 @@ public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraHorizontal
     //TODO duplicidade com MovimentacaoLateralZigZag
     private void verificarSeMovimentacaoAtingiuLimites()
     {
-        if (compDaGarra.RigidBody.transform.localPosition.x > LIMITE_LATERAL_TELA)
+        if (garraDto.RigidBody.transform.localPosition.x > LIMITE_LATERAL_TELA)
         {
             direcao = -1;
             diminuirInerciaDaGarra();
         }
-        else if (compDaGarra.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
+        else if (garraDto.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
         {
             direcao = 1;
             diminuirInerciaDaGarra();
