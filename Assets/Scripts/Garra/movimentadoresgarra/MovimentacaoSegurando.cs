@@ -10,14 +10,15 @@ public class MovimentacaoSegurando : MovimentacaoDaGarra
     private int estadoAtual;
     private Vector3 posMeio;
 
-    private Quaternion anguloDesejadoEsquerdaMin;
-    private Quaternion anguloDesejadoDireitaMin;
+    private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;
+    private Quaternion anguloDesejadoDireitaAntesEstadoInicial;
 
     public MovimentacaoSegurando()
     {
         posMeio = new Vector3(0, posInicial.y, 0);
-        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMin);
-        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMin);
+
+        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMin);
+        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMin);
     }
 
     public override void preInicio()
@@ -45,7 +46,12 @@ public class MovimentacaoSegurando : MovimentacaoDaGarra
             case ESTADO_IR_MEIO_PELA_ESQUERDA:
                 voltarAoMeioVindoPelaEsquerda();
                 break;
-                
+
+
+            case NONE:
+                //pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+                break;
+
         }
         Debug.Log("EstadoAtual : " + estadoAtual);
     }
@@ -55,6 +61,7 @@ public class MovimentacaoSegurando : MovimentacaoDaGarra
         if (!isGarraAcimaPosInicial())
         {
             moverGarraParaCimaFDT();
+            pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
         {
@@ -81,6 +88,7 @@ public class MovimentacaoSegurando : MovimentacaoDaGarra
         if (!isGarraMenorPosHorizontal(0))
         {
             moverGarraHorizontalmenteFDT(-1);
+            pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
         {
@@ -95,6 +103,7 @@ public class MovimentacaoSegurando : MovimentacaoDaGarra
         if (!isGarraMaiorPosHorizontal(0))
         {
             moverGarraHorizontalmenteFDT(1);
+            pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
         {
