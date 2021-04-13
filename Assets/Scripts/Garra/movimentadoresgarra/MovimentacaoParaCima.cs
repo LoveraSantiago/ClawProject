@@ -1,9 +1,6 @@
-using UnityEngine;
-
 public class MovimentacaoParaCima : MovimentacaoDaGarra
 {
-    private int contadorDeSubidas;
-    private Vector2 posicaoInicial;
+    private int contadorDeSubidas;    
     public ProdutorDeEvento<int> produtorDeEventoSubidaDaGarra { get; private set; }
 
     public MovimentacaoParaCima()
@@ -15,7 +12,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
     public override void preInicio()
     {
         compDaGarra.RigidBody.mass = 3;
-        parandoMovimentacaoDaGarra();
+        diminuirInerciaDaGarra();
 
         contadorDeSubidas++;
         produtorDeEventoSubidaDaGarra.produziuEvento(contadorDeSubidas);
@@ -23,26 +20,15 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 
     public override void update()
     {        
-        if(compDaGarra.RigidBody.transform.localPosition.y > posicaoInicial.y)
+        if(isGarraAcimaPosInicial())
         {
-            parandoMovimentacaoDaGarra();
+            diminuirInerciaDaGarra();
             comunicadorComGerMovimentacao.trocarParaAcaoNormal();
         }
     }
 
     public override void fixedUpdate()
-    {
-        compDaGarra.RigidBody.velocity = new Vector2(0,
-           1 * compDaGarra.VelocMovCima * Time.fixedDeltaTime);
-    }
-
-    public void setPosicalInicialDeReferencia(Vector2 posicaoInicial)
-    {
-        this.posicaoInicial = posicaoInicial;
-    }
-
-    private void parandoMovimentacaoDaGarra()
-    {
-        diminuirInerciaDaGarra();
-    }    
+    {        
+        subirGarraFDT();
+    }        
 }

@@ -34,7 +34,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         configurarAngulosParaMax();
         dispararEventoDirecao();
 
-        compDaGarra.RigidBody.transform.localPosition = new Vector2(compDaGarra.RigidBody.position.x, posInicial.y);
+        colocarGarraNaAlturaInicial();
         compDaGarra.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 
         pincas.acionarTrigger();

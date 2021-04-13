@@ -7,6 +7,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     private MovimentacaoDaGarra movimentacaoAgarrando;
     private MovimentacaoParaCima movimentacaoParaCima;
     private MovimentacaoDaGarraHorizontal movimentacaoLateral;
+    private MovimentacaoDaGarra movimentacaoSegurando;
 
     public GerenciadorDeMovimentacao(ComponentesDaGarraDto componentesDaGarraDto, 
         GarraManager.MECANICA_GARRA mecanicaGarraEscolhida, InputGame inputGame)
@@ -17,6 +18,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
         movimentacaoParaCima  = new MovimentacaoParaCima();
         movimentacaoParaBaixo = new MovimentacaoParaBaixo();
         movimentacaoAgarrando = new MovimentacaoAgarrando();
+        movimentacaoSegurando = new MovimentacaoSegurando();
     }
 
     public void iniciarMovimentacoes()
@@ -79,17 +81,17 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
         trocarMovimentador(movimentacaoAgarrando);
     }
 
+    public void trocarParaAcaoSegurando()
+    {
+        trocarMovimentador(movimentacaoSegurando);
+    }
+    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
+
     private void trocarMovimentador(MovimentacaoDaGarra movimentador)
     {
         movimentador.preInicio();
         movimentacaoAtual = movimentador;
     }
-
-    public void trocarParaAcaoSegurando()
-    {
-        
-    }
-    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
 
     public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
     {

@@ -26,6 +26,21 @@ public abstract class MovimentacaoDaGarra
         compDaGarra.RigidBody.angularVelocity = 0;
     }
 
+    protected void subirGarraFDT()//FDT FixedDeltaTime
+    {
+        compDaGarra.RigidBody.velocity = new Vector2(0, compDaGarra.VelocMovCima * Time.fixedDeltaTime);
+    }
+
+    protected void colocarGarraNaAlturaInicial()
+    {
+        compDaGarra.RigidBody.transform.localPosition = new Vector2(compDaGarra.RigidBody.position.x, posInicial.y);
+    }
+
+    protected bool isGarraAcimaPosInicial()
+    {
+        return compDaGarra.RigidBody.transform.localPosition.y > posInicial.y;
+    }
+
     public static void configurarComponentesMovimentacaoGarra(
         ComponentesDaGarraDto componentesDaGarraDtoArg, 
         ComunicadorComGerMovimentacao comunicadorComGerMovimentacaoArg,

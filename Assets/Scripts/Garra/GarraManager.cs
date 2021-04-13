@@ -44,7 +44,7 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     {
         if(powerUp.tipo == PowerUp.TIPO.BOMBA_DA_GARRA)
         {
-
+            gerenciadorDeMovimentacao.trocarParaAcaoSegurando();
         }
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
