@@ -14,13 +14,18 @@ public class Coletavel
     private SpriteRenderer spriteRenderer;    
     
     public Coletavel()
+        :this(mainTile)
+    {        
+    }
+
+    public Coletavel(GameObject go)
     {
-        goColetavel = GameObject.Instantiate(mainTile, mainTile.transform.position, mainTile.transform.rotation, mainTileParent);
+        goColetavel = GameObject.Instantiate(go, go.transform.position, go.transform.rotation, mainTileParent);        
         nome = nomeador.getName();
         goColetavel.name = nome;
         spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();
         rigidbody = goColetavel.GetComponent<Rigidbody2D>();
-    }
+    }   
 
     public void colocarNaPosicao(Vector3 posicao) {
         goColetavel.transform.position = posicao;

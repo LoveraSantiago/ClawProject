@@ -5147,12 +5147,14 @@ MonoBehaviour:
     anguloFechamento: 15
     velocAnguloFechamento: 1.5
     rigidBody: {fileID: 1879337339}
+    centroDaGarra: {fileID: 1264822102}
     pincaEsquerda: {fileID: 1879337338}
     pincaDireita: {fileID: 1879337337}
     colisor: {fileID: 745325034}
   coletaveisDto:
     sensorDeColetado: {fileID: 2083913115}
     tile: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+    tileBomb: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
     tuboDto:
       delayQuedaTubo: 1
       parentColetavelTubo: {fileID: 1607848931}
@@ -15865,6 +15867,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5014026568556634405, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1264822102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1379266188458234233, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+  m_PrefabInstance: {fileID: 1879337336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1476824514
 GameObject:
   m_ObjectHideFlags: 0
@@ -21173,6 +21180,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 1869876798932273626, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1907269042779730411, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
       propertyPath: m_RootOrder
       value: 2

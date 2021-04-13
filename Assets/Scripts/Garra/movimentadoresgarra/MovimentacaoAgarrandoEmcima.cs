@@ -61,7 +61,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
                 break;
 
         }
-        Debug.Log("EstadoAtual : " + estadoAtual);
+        //Debug.Log("EstadoAtual : " + estadoAtual);
     }
 
     private void voltarPosicaoMeioCima()
@@ -102,7 +102,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             diminuirInerciaDaGarra();
             colocarGarraNaPosInicial();
-            estadoAtual = NONE;
+            colocarEstadoCentralizado();            
         }
     }
 
@@ -117,7 +117,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             diminuirInerciaDaGarra();
             colocarGarraNaPosInicial();
-            estadoAtual = NONE;
+            colocarEstadoCentralizado();
         }
     }
 
