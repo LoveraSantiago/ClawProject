@@ -21,7 +21,7 @@ public class MovimentacaoAgarrando : MovimentacaoDaGarra
     {        
         diminuirInerciaDaGarra();
 
-        pincas.fixUpdateRotacionamento(compDaGarra.VelocidadeAnguloFechamento, anguloDesejadoEsquerda, anguloDesejadoDireita);
+        pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloFechamento, anguloDesejadoEsquerda, anguloDesejadoDireita);
         
         if (pincas.isDireitaNoAngulo(anguloDesejadoDireita))
         {       

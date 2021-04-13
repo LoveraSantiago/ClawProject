@@ -10,9 +10,14 @@ public class MovimentacaoSegurando : MovimentacaoDaGarra
     private int estadoAtual;
     private Vector3 posMeio;
 
+    private Quaternion anguloDesejadoEsquerdaMin;
+    private Quaternion anguloDesejadoDireitaMin;
+
     public MovimentacaoSegurando()
     {
         posMeio = new Vector3(0, posInicial.y, 0);
+        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMin);
+        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMin);
     }
 
     public override void preInicio()

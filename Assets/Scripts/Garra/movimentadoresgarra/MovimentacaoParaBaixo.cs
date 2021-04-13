@@ -31,7 +31,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
 
     public override void fixedUpdate()
     {
-        pincas.fixUpdateRotacionamento(compDaGarra.VelocidadeAnguloAbertura,
+        pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloAbertura,
             anguloDesejadoEsquerda, anguloDesejadoDireita);
 
         compDaGarra.RigidBody.velocity = new Vector2(0,           

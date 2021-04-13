@@ -56,7 +56,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         verificarSeMovimentacaoAtingiuLimites();
         verificarSePincaAtingiuLimites();
 
-        pincas.fixUpdateRotacionamento(compDaGarra.VelocAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);
+        pincas.rotacionarFDT(compDaGarra.VelocAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);
 
         moverGarraHorizontalmenteFDT(direcao);        
     }
