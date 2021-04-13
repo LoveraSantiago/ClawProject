@@ -15,7 +15,7 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarraHorizontal
 
     public override void update() {
         //TEMPORARIAMENTE AQUI ... PEGAR TOQUE NA TELA
-        if (aceitarClique && Input.GetMouseButtonDown(0)) {
+        if (aceitarClique && inputGame.aconteceuTapNaAreaSuperior()) {
 
             RaycastHit2D raycastHit;
             int layerMask = LayerMask.GetMask("Coletavel");
