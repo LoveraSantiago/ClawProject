@@ -44,20 +44,20 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
         }
     }
 
-    private void mostrarContagemRegressiva()
+    private void mostrarContagemRegressiva(int duracao)
     {
         int scoreCentena = displayCentena.digito;
         int scoreDezena = displayDezena.digito;
         int scoreUnidade = displayUnidade.digito;
 
-
+        monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao, scoreCentena, scoreDezena, scoreUnidade));
     }
 
     private void processarPowerUp(PowerUp powerUp)
     {
         if (powerUp.tipo == PowerUp.TIPO.BOMBA_DA_GARRA)
         {
-            mostrarContagemRegressiva();
+            mostrarContagemRegressiva(powerUp.duracao);
         }
     }
 
@@ -72,7 +72,7 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUp> INICIO
     public void consumirEvento(PowerUp evento)
     {
-        
+        processarPowerUp(evento);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUp> INICIO
 

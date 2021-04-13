@@ -55,7 +55,7 @@ public class OrquestradorDisplayDigitos
     public IEnumerator mostrarContagemRegressivo(int segundos, int centena, int dezena, int unidade)
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(0.15f);
-        for(int contadorRegressivo = segundos; contadorRegressivo > 0; contadorRegressivo--)
+        for(int contadorRegressivo = segundos; contadorRegressivo >= 0; contadorRegressivo--)
         {        
             for(int contador = 0; contador < 2; contador++)//COMPLETA 0.5 A CADA ITERACAO
             {
