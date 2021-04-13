@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class ColetavelManager : ConsumidorDeEventoTrigger,
                                 ConsumidorDeEvento<string>,
-                                ConsumidorDeEvento<int>
+                                ConsumidorDeEvento<int>,
+                                ConsumidorDeEvento<PowerUp>,
+                                ConsumidorDeEvento<Vector3>
 {
     private ColetaveisDto coletaveisDto;
     private Coletavel coletavelImantado;
@@ -77,7 +79,17 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private void processarDesimantado()
     {
         coletavelImantado.desimantar();
-    }    
+    }   
+    
+    private void processarPowerUp(PowerUp powerUp)
+    {
+
+    }
+
+    private void processarPosicaoCentralizada(Vector3 posicaoCentro)
+    {
+
+    }
 
     public ConsumidorDeEvento<string> getConsumidorDeColetavelParaImantar()
     {
@@ -85,6 +97,16 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     }
 
     public ConsumidorDeEvento<int> getConsumidorDeContagemSubidaDaGarra()
+    {
+        return this;
+    }
+
+    public ConsumidorDeEvento<PowerUp> getConsumidorDePowerUp()
+    {
+        return this;
+    }
+
+    public ConsumidorDeEvento<Vector3> getConsumidorDePosicaoDeGarraCentralizada()
     {
         return this;
     }
@@ -100,16 +122,27 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
 
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
-    //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<string> INICIO    
     public void consumirEvento(string nomeColetavel)
     {
         processarImantado(nomeColetavel);
     }
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<string> FIM
 
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> INICIO    
     public void consumirEvento(int evento)
     {
         processarDesimantado();
     }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> FIM    
+
+    public void consumirEvento(PowerUp powerUp)
+    {
+        processarPowerUp(powerUp);
+    }
+
+    public void consumirEvento(Vector3 posicaoCentralizada)
+    {
+        processarPosicaoCentralizada(posicaoCentralizada);
+    }
 }

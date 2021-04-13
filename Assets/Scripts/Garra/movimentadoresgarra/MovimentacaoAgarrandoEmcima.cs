@@ -5,6 +5,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     private const int ESTADO_VOLTAR_SUBIDA = 1;
     private const int ESTADO_IR_MEIO_PELA_ESQUERDA  = 2;
     private const int ESTADO_IR_MEIO_PELA_DIREITA  = 3;
+    private const int ESTADO_CENTRALIZADO  = 4;
     private const int NONE  = 99;
 
     private int estadoAtual;
@@ -13,12 +14,16 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;
     private Quaternion anguloDesejadoDireitaAntesEstadoInicial;
 
+    public ProdutorDeEvento<Vector3> produtorEventoGarraCentralizada { get; private set; }
+
     public MovimentacaoAgarrandoEmcima()
     {
         posMeio = new Vector3(0, posInicial.y, 0);
 
         anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMin);
         anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
+
+        produtorEventoGarraCentralizada = new ProdutorDeEvento<Vector3>();
     }
 
     public override void preInicio()
@@ -47,6 +52,9 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
                 voltarAoMeioVindoPelaEsquerda();
                 break;
 
+            case ESTADO_CENTRALIZADO:
+
+                break;
 
             case NONE:
                 //pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
@@ -67,11 +75,11 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             diminuirInerciaDaGarra();
             colocarGarraNaAlturaInicial();
-            determinarDirecaoPAraVoltarAoMeio();
+            determinarDirecaoParaVoltarAoMeio();
         }
     }
 
-    private void determinarDirecaoPAraVoltarAoMeio()
+    private void determinarDirecaoParaVoltarAoMeio()
     {
         if (isGarraMaiorPosHorizontal(0))
         {
@@ -111,5 +119,11 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
             colocarGarraNaPosInicial();
             estadoAtual = NONE;
         }
+    }
+
+    private void colocarEstadoCentralizado()
+    {
+        produtorEventoGarraCentralizada.produziuEvento(garraDto.CentroDaGarra.transform.position);
+        estadoAtual = ESTADO_CENTRALIZADO;
     }
 }

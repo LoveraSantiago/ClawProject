@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
 {
-    private MovimentacaoDaGarra movimentacaoAtual;
-    private MovimentacaoParaBaixo movimentacaoParaBaixo;
-    private MovimentacaoDaGarra movimentacaoSegBaixo;
-    private MovimentacaoParaCima movimentacaoParaCima;
+    private MovimentacaoDaGarra           movimentacaoAtual;
+    private MovimentacaoParaBaixo         movimentacaoParaBaixo;
+    private MovimentacaoDaGarra           movimentacaoSegBaixo;
+    private MovimentacaoParaCima          movimentacaoParaCima;
     private MovimentacaoDaGarraHorizontal movimentacaoLateral;
-    private MovimentacaoDaGarra movimentacaoSegCima;
+    private MovimentacaoAgarrandoEmcima   movimentacaoSegCima;
 
     public GerenciadorDeMovimentacao(GarraDto componentesDaGarraDto, 
         GarraManager.MECANICA_GARRA mecanicaGarraEscolhida, InputGame inputGame)
@@ -108,4 +108,8 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
         return movimentacaoParaCima.produtorDeEventoSubidaDaGarra;
     }
 
+    public ProdutorDeEvento<Vector3> getProdutorDeEventoGarraCentralizadaPup()
+    {
+        return movimentacaoSegCima.produtorEventoGarraCentralizada;
+    }
 }
