@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoSegurando : MovimentacaoDaGarra
+public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
 {
     private const int ESTADO_VOLTAR_SUBIDA = 1;
     private const int ESTADO_IR_MEIO_PELA_ESQUERDA  = 2;
@@ -13,7 +13,7 @@ public class MovimentacaoSegurando : MovimentacaoDaGarra
     private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;
     private Quaternion anguloDesejadoDireitaAntesEstadoInicial;
 
-    public MovimentacaoSegurando()
+    public MovimentacaoAgarrandoEmcima()
     {
         posMeio = new Vector3(0, posInicial.y, 0);
 

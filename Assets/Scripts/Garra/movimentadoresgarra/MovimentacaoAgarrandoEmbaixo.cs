@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class MovimentacaoAgarrando : MovimentacaoDaGarra
+public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarra
 {
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;
 
-    public MovimentacaoAgarrando()
+    public MovimentacaoAgarrandoEmbaixo()
     {
         anguloDesejadoDireita  = Quaternion.Euler(0, 0,   compDaGarra.AnguloFechamento);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -compDaGarra.AnguloFechamento);        

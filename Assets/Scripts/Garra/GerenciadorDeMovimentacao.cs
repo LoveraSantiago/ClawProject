@@ -17,8 +17,8 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
         movimentacaoLateral   = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
         movimentacaoParaCima  = new MovimentacaoParaCima();
         movimentacaoParaBaixo = new MovimentacaoParaBaixo();
-        movimentacaoAgarrando = new MovimentacaoAgarrando();
-        movimentacaoSegurando = new MovimentacaoSegurando();
+        movimentacaoAgarrando = new MovimentacaoAgarrandoEmbaixo();
+        movimentacaoSegurando = new MovimentacaoAgarrandoEmcima();
     }
 
     public void iniciarMovimentacoes()
