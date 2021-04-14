@@ -13,7 +13,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
         anguloDesejadoDireita  = Quaternion.Euler(0, 0, -garraDto.AnguloAbertura);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  garraDto.AnguloAbertura);
 
-        contadorDeTempoTravamento = new ContadorDeTempo(1.0f);
+        contadorDeTempoTravamento  = new ContadorDeTempo(1.0f);
         produtorEventoGarraAcertou = new ProdutorDeEvento<string>();
     }
 
@@ -38,15 +38,10 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     {
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura,
             anguloDesejadoEsquerda, anguloDesejadoDireita);
-
-
-        //garraDto.RigidBody.velocity = new Vector2(0,           
-        //   1 * garraDto.VelocMovBaixo * Time.fixedDeltaTime);
     }
 
     public override void garraColidiuCom(GameObject gameObject)
-    {
-        //Debug.Log("Atingiu: " + gameObject.name);
+    {        
         if (Utils.isColetavel(gameObject))
         {
             produtorEventoGarraAcertou.produziuEvento(gameObject.name);
