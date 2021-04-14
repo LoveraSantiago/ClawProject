@@ -17,7 +17,8 @@ public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarra
     }
 
     public override void fixedUpdate()
-    {   
+    {
+        pararGarra();
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerda, anguloDesejadoDireita);
         
         if (pincas.isDireitaNoAngulo(anguloDesejadoDireita))
