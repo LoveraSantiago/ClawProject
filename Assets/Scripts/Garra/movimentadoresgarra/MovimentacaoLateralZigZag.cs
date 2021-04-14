@@ -66,15 +66,15 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
     {
         if (isGarraMaiorPosHorizontal(LIMITE_LATERAL_TELA))            
         {
-            //direcao = -1;     
-            moverGarraHorizontalmenteFDT(-1);
+            direcao = -1;     
+            moverGarraHorizontalmenteFDT(direcao);
             //diminuirInerciaDaGarra();
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
         }
         else if (isGarraMenorPosHorizontal(-LIMITE_LATERAL_TELA))
         {
-            //direcao = 1;
-            moverGarraHorizontalmenteFDT(1);
+            direcao = 1;
+            moverGarraHorizontalmenteFDT(direcao);
             //diminuirInerciaDaGarra();
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
         }
