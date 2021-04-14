@@ -21,7 +21,9 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     {   
         colocarMassaNaGarra(2);
         contadorDeTempoTravamento.resetContador();
-        diminuirInerciaDaGarra();        
+        diminuirInerciaDaGarra();
+
+        moverGarraParaBaixoFDT();
     }
 
     public override void update()
@@ -37,8 +39,9 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura,
             anguloDesejadoEsquerda, anguloDesejadoDireita);
 
-        garraDto.RigidBody.velocity = new Vector2(0,           
-           1 * garraDto.VelocMovBaixo * Time.fixedDeltaTime);
+
+        //garraDto.RigidBody.velocity = new Vector2(0,           
+        //   1 * garraDto.VelocMovBaixo * Time.fixedDeltaTime);
     }
 
     public override void garraColidiuCom(GameObject gameObject)

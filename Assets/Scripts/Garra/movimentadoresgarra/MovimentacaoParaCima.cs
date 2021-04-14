@@ -16,6 +16,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 
         contadorDeSubidas++;
         produtorDeEventoSubidaDaGarra.produziuEvento(contadorDeSubidas);
+        moverGarraParaCimaFDT();
     }
 
     public override void update()
@@ -29,6 +30,5 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 
     public override void fixedUpdate()
     {        
-        moverGarraParaCimaFDT();
     }        
 }

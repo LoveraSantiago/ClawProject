@@ -28,15 +28,38 @@ public abstract class MovimentacaoDaGarra
 
     protected void moverGarraParaCimaFDT()//FDT FixedDeltaTime
     {
-        garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovCima * Time.fixedDeltaTime);
+        //garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovCima * Time.fixedDeltaTime);
+        //garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovCima * Time.fixedDeltaTime);
         //garraDto.RigidBody.AddForce(new Vector2(0, garraDto.VelocMovCima * Time.fixedDeltaTime), ForceMode2D.Impulse);
         //garraDto.RigidBody.AddRelativeForce(new Vector2(0, garraDto.VelocMovCima * Time.fixedDeltaTime));
+
+        Debug.Log("IR PARA CIMA");
+        garraDto.RigidBody.AddForce(new Vector2(0, -garraDto.VelocMovCima), ForceMode2D.Force);
     }
+
+    protected void moverGarraParaBaixoFDT()//FDT FixedDeltaTime
+    {
+        //garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovCima * Time.fixedDeltaTime);
+        //garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovCima * Time.fixedDeltaTime);
+        //garraDto.RigidBody.AddForce(new Vector2(0, garraDto.VelocMovCima * Time.fixedDeltaTime), ForceMode2D.Impulse);
+        //garraDto.RigidBody.AddRelativeForce(new Vector2(0, garraDto.VelocMovCima * Time.fixedDeltaTime));
+
+        //garraDto.RigidBody.velocity = new Vector2(0, 1 * garraDto.VelocMovBaixo * Time.fixedDeltaTime);
+
+        garraDto.RigidBody.AddForce(new Vector2(0, garraDto.VelocMovBaixo), ForceMode2D.Force);
+        
+
+        //garraDto.RigidBody.AddForce(new Vector2(direcao * garraDto.VelocMovHorizontal, garraDto.RigidBody.velocity.y), ForceMode2D.Force);
+    }
+
+
 
     protected void moverGarraHorizontalmenteFDT(float direcao)
     {
-        garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.VelocMovHorizontal * Time.fixedDeltaTime,garraDto.RigidBody.velocity.y);
-        //garraDto.RigidBody.AddForce(new Vector2(direcao * garraDto.VelocMovHorizontal * Time.fixedDeltaTime,garraDto.RigidBody.velocity.y), ForceMode2D.Impulse);
+        //garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.VelocMovHorizontal, garraDto.RigidBody.velocity.y);
+        //garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.VelocMovHorizontal * Time.fixedDeltaTime,garraDto.RigidBody.velocity.y);
+        //garraDto.RigidBody.AddForce(new Vector2(direcao * garraDto.VelocMovHorizontal, garraDto.RigidBody.velocity.y), ForceMode2D.Impulse);
+        garraDto.RigidBody.AddForce(new Vector2(direcao * garraDto.VelocMovHorizontal, 0), ForceMode2D.Force);
         //garraDto.RigidBody.AddRelativeForce(new Vector2(direcao * garraDto.VelocMovHorizontal * Time.fixedDeltaTime,garraDto.RigidBody.velocity.y));
     }
 

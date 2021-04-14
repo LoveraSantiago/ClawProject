@@ -5136,8 +5136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mecanicaAtual: 1
   componentesDaGarra:
-    velocMovHorizontal: 150
-    velocMovCima: 500
+    velocMovHorizontal: 100
+    velocMovCima: 5000
     velocMovBaixo: 500
     anguloIdleMin: -5
     anguloIdleMax: 15

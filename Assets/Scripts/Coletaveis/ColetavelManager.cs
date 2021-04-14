@@ -84,7 +84,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
     private void processarDesimantado()
     {
-        coletavelImantado.desimantar();
+        //coletavelImantado.desimantar();
     }   
     
     private void processarPowerUp(PowerUp powerUp)
