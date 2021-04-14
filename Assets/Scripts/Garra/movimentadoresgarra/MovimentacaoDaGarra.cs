@@ -20,31 +20,43 @@ public abstract class MovimentacaoDaGarra
 
     public virtual void garraColidiuCom(GameObject gameObject) { }
 
-    protected void diminuirInerciaDaGarra()
+    protected void pararGarra()
     {
         garraDto.RigidBody.velocity = Vector3.zero;
         garraDto.RigidBody.angularVelocity = 0;
     }
 
-    protected void moverGarraParaCima()
+    private void moverGarraParaCima()
     {
-        garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovCima);
-        //garraDto.RigidBody.AddForce(new Vector2(0, -garraDto.VelocMovCima), ForceMode2D.Force);
+        garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovCima);        
     }
 
-    protected void moverGarraParaBaixo()
+    private void moverGarraParaBaixo()
     {
-        garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovBaixo);                                
-        //garraDto.RigidBody.AddForce(new Vector2(0, garraDto.VelocMovBaixo), ForceMode2D.Force);        
-        //garraDto.RigidBody.AddForce(new Vector2(direcao * garraDto.VelocMovHorizontal, garraDto.RigidBody.velocity.y), ForceMode2D.Force);
+        garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovBaixo);                                        
     }
 
-    protected void moverGarraHorizontalmente(float direcao)
+    private void moverGarraHorizontalmente(float direcao)
     {
-        garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.VelocMovHorizontal, 0);        
-        //garraDto.RigidBody.AddForce(new Vector2(direcao * garraDto.VelocMovHorizontal, garraDto.RigidBody.velocity.y), ForceMode2D.Impulse);
-        //garraDto.RigidBody.AddForce(new Vector2(direcao * garraDto.VelocMovHorizontal, 0), ForceMode2D.Force);
-        //garraDto.RigidBody.AddRelativeForce(new Vector2(direcao * garraDto.VelocMovHorizontal * Time.fixedDeltaTime,garraDto.RigidBody.velocity.y));
+        garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.VelocMovHorizontal, 0);                
+    }
+
+    protected void moverGarraParaCimaFreeze()
+    {
+        fixarGarraVerticalmente();
+        moverGarraParaCima();
+    }
+
+    protected void moverGarraParaBaixoFreeze()
+    {
+        fixarGarraVerticalmente();
+        moverGarraParaBaixo();
+    }
+
+    protected void moverGarraHorizontalmenteFreeze(float direcao)
+    {
+        fixarGarraHorizontalmente();
+        moverGarraHorizontalmente(direcao);
     }
 
     protected void colocarGarraNaAlturaInicial()
@@ -65,6 +77,11 @@ public abstract class MovimentacaoDaGarra
     protected void fixarGarraHorizontalmente()
     {
         garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    protected void fixarGarraVerticalmente()
+    {
+        garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
 
     protected void desafixarGarraHorizontalmente()

@@ -20,10 +20,9 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     public override void preInicio()
     {   
         colocarMassaNaGarra(2);
-        contadorDeTempoTravamento.resetContador();
-        diminuirInerciaDaGarra();
+        contadorDeTempoTravamento.resetContador();       
 
-        moverGarraParaBaixo();
+        moverGarraParaBaixoFreeze();
     }
 
     public override void update()

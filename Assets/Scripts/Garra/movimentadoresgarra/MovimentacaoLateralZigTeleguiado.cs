@@ -106,12 +106,12 @@ public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraHorizontal
         if (garraDto.RigidBody.transform.localPosition.x > LIMITE_LATERAL_TELA)
         {
             direcao = -1;
-            diminuirInerciaDaGarra();
+            //diminuirInerciaDaGarra();
         }
         else if (garraDto.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
         {
             direcao = 1;
-            diminuirInerciaDaGarra();
+            //diminuirInerciaDaGarra();
         }
         else
         {

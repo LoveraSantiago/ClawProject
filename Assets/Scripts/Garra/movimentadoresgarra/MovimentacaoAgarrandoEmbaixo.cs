@@ -12,15 +12,12 @@ public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarra
     }
     
     public override void preInicio()
-    {        
-        diminuirInerciaDaGarra();
+    {   
         colocarMassaNaGarra(1);        
     }
 
     public override void fixedUpdate()
-    {        
-        diminuirInerciaDaGarra();
-
+    {   
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerda, anguloDesejadoDireita);
         
         if (pincas.isDireitaNoAngulo(anguloDesejadoDireita))

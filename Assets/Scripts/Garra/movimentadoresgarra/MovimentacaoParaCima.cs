@@ -11,20 +11,23 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
 
     public override void preInicio()
     {
-        colocarMassaNaGarra(3);
-        diminuirInerciaDaGarra();
+        colocarMassaNaGarra(3);        
 
         contadorDeSubidas++;
         produtorDeEventoSubidaDaGarra.produziuEvento(contadorDeSubidas);
-        moverGarraParaCima();
+        //moverGarraParaCimaFreeze();
     }
 
     public override void update()
     {        
         if(isGarraAcimaPosInicial())
-        {
-            diminuirInerciaDaGarra();
+        {            
             comunicadorComGerMovimentacao.trocarParaAcaoNormal();
         }
-    }    
+    }
+
+    public override void fixedUpdate()
+    {
+        moverGarraParaCimaFreeze();
+    }
 }

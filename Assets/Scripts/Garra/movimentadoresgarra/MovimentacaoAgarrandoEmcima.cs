@@ -81,12 +81,11 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     {
         if (!isGarraAcimaPosInicial())
         {
-            moverGarraParaCima();
+            moverGarraParaCimaFreeze();
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
-        {
-            diminuirInerciaDaGarra();
+        {            
             colocarGarraNaAlturaInicial();
             determinarDirecaoParaVoltarAoMeio();
             contadorDeTempoPausa.resetContador();
@@ -111,7 +110,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             if (!isGarraMenorPosHorizontal(0))
             {
-                moverGarraHorizontalmente(-1);
+                moverGarraHorizontalmenteFreeze(-1);
                 pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
             }
             else
@@ -128,7 +127,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             if (!isGarraMaiorPosHorizontal(0))
             {
-                moverGarraHorizontalmente(1);
+                moverGarraHorizontalmenteFreeze(1);
                 pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
             }
             else
@@ -140,8 +139,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     }
 
     private void colocarEstadoCentralizado()
-    {
-        diminuirInerciaDaGarra();
+    {   
         produtorEventoGarraCentralizada.produziuEvento(garraDto.CentroDaGarra.transform.position);
         fixarGarraHorizontalmente();
         pincas.acionarCollider();
@@ -155,7 +153,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
             verificarSeMovimentacaoAtingiuLimites();
-            moverGarraHorizontalmente(direcao);
+            moverGarraHorizontalmenteFreeze(direcao);
         }
     }
 
