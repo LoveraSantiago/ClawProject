@@ -26,20 +26,20 @@ public abstract class MovimentacaoDaGarra
         garraDto.RigidBody.angularVelocity = 0;
     }
 
-    protected void moverGarraParaCimaFDT()//FDT FixedDeltaTime
+    protected void moverGarraParaCima()
     {
         garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovCima);
         //garraDto.RigidBody.AddForce(new Vector2(0, -garraDto.VelocMovCima), ForceMode2D.Force);
     }
 
-    protected void moverGarraParaBaixoFDT()//FDT FixedDeltaTime
+    protected void moverGarraParaBaixo()
     {
         garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovBaixo);                                
         //garraDto.RigidBody.AddForce(new Vector2(0, garraDto.VelocMovBaixo), ForceMode2D.Force);        
         //garraDto.RigidBody.AddForce(new Vector2(direcao * garraDto.VelocMovHorizontal, garraDto.RigidBody.velocity.y), ForceMode2D.Force);
     }
 
-    protected void moverGarraHorizontalmenteFDT(float direcao)
+    protected void moverGarraHorizontalmente(float direcao)
     {
         garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.VelocMovHorizontal, 0);        
         //garraDto.RigidBody.AddForce(new Vector2(direcao * garraDto.VelocMovHorizontal, garraDto.RigidBody.velocity.y), ForceMode2D.Impulse);

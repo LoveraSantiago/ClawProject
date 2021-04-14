@@ -81,7 +81,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     {
         if (!isGarraAcimaPosInicial())
         {
-            moverGarraParaCimaFDT();
+            moverGarraParaCima();
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
@@ -111,7 +111,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             if (!isGarraMenorPosHorizontal(0))
             {
-                moverGarraHorizontalmenteFDT(-1);
+                moverGarraHorizontalmente(-1);
                 pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
             }
             else
@@ -128,7 +128,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             if (!isGarraMaiorPosHorizontal(0))
             {
-                moverGarraHorizontalmenteFDT(1);
+                moverGarraHorizontalmente(1);
                 pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
             }
             else
@@ -155,7 +155,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
             verificarSeMovimentacaoAtingiuLimites();
-            moverGarraHorizontalmenteFDT(direcao);
+            moverGarraHorizontalmente(direcao);
         }
     }
 

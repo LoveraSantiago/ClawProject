@@ -23,7 +23,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
         contadorDeTempoTravamento.resetContador();
         diminuirInerciaDaGarra();
 
-        moverGarraParaBaixoFDT();
+        moverGarraParaBaixo();
     }
 
     public override void update()
