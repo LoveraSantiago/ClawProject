@@ -30,7 +30,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMin);
         anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
 
-        anguloDesejadoDireitaFechado = Quaternion.Euler(0, 0, garraDto.AnguloFechamento);
+        anguloDesejadoDireitaFechado  = Quaternion.Euler(0, 0, garraDto.AnguloFechamento);
         anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraDto.AnguloFechamento);
 
         produtorEventoGarraCentralizada = new ProdutorDeEvento<Vector3>();
