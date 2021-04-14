@@ -4,47 +4,28 @@ using UnityEngine;
 public class ContadorDeTempo 
 {
     private float tempoParaAcao;
-    private float contadorTempo;
-
-    private Action action;
-
-    public ContadorDeTempo()
+    private float contadorTempo;    
+    
+    public ContadorDeTempo(float tempoEmSegundosParaAcao)
     {
+        configTempoParaAcao(tempoEmSegundosParaAcao);
     }
 
-    public ContadorDeTempo(Action action)
-    {
-        tempoParaAcao = float.MaxValue;
-        this.action = action;
-    }
-
-    public ContadorDeTempo(float tempoEmSegundosParaAcao, Action action)
-    {
-        configContadorEAction(tempoEmSegundosParaAcao, action);
-    }
-
-    public void contarTempo()
+    public bool contarTempo()
     {
         contadorTempo -= Time.deltaTime;
         if (contadorTempo < 0)
         {
-            resetContador();
-            action.Invoke();
+            return true;
         }
+        return false;
     }
 
     public void configTempoParaAcao(float tempoParaAcao)
     {
         this.tempoParaAcao = tempoParaAcao;
         resetContador();
-    }
-
-    public void configContadorEAction(float tempoParaAcao, Action action)
-    {
-        this.tempoParaAcao = tempoParaAcao;
-        this.action = action;
-        resetContador();
-    }
+    }    
 
     public void resetContador()
     {

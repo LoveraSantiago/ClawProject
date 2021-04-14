@@ -13,7 +13,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
         anguloDesejadoDireita  = Quaternion.Euler(0, 0, -garraDto.AnguloAbertura);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  garraDto.AnguloAbertura);
 
-        contadorDeTempoTravamento = new ContadorDeTempo(1.5f, () => comunicadorComGerMovimentacao.trocarParaAcaoAgarrada());
+        contadorDeTempoTravamento = new ContadorDeTempo(1.5f);
         produtorEventoGarraAcertou = new ProdutorDeEvento<string>();
     }
 
@@ -26,7 +26,10 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
 
     public override void update()
     {
-        contadorDeTempoTravamento.contarTempo();
+        if (contadorDeTempoTravamento.contarTempo())
+        {
+            comunicadorComGerMovimentacao.trocarParaAcaoAgarrada();
+        }
     }
 
     public override void fixedUpdate()
