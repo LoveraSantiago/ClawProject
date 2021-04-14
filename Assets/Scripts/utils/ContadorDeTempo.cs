@@ -11,9 +11,19 @@ public class ContadorDeTempo
         configTempoParaAcao(tempoEmSegundosParaAcao);
     }
 
-    public bool contarTempo()
+    public bool contarTempoDT()
     {
         contadorTempo -= Time.deltaTime;
+        if (contadorTempo < 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool contarTempoFDT()
+    {
+        contadorTempo -= Time.fixedDeltaTime;
         if (contadorTempo < 0)
         {
             return true;

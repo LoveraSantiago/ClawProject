@@ -21,6 +21,8 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
 
     public ProdutorDeEvento<Vector3> produtorEventoGarraCentralizada { get; private set; }
 
+    private ContadorDeTempo contadorDeTempoPausa;
+
     public MovimentacaoAgarrandoEmcima()
     {
         posMeio = new Vector3(0, posInicial.y, 0);
@@ -32,6 +34,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraDto.AnguloFechamento);
 
         produtorEventoGarraCentralizada = new ProdutorDeEvento<Vector3>();
+        contadorDeTempoPausa = new ContadorDeTempo(0.4f);
         direcao = 1;
     }
 
@@ -86,6 +89,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
             diminuirInerciaDaGarra();
             colocarGarraNaAlturaInicial();
             determinarDirecaoParaVoltarAoMeio();
+            contadorDeTempoPausa.resetContador();
         }
     }
 
@@ -103,29 +107,35 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
 
     private void voltarAoMeioVindoPelaEsquerda()
     {
-        if (!isGarraMenorPosHorizontal(0))
+        if (contadorDeTempoPausa.contarTempoFDT())
         {
-            moverGarraHorizontalmenteFDT(-1);
-            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
-        }
-        else
-        {
-            colocarGarraNaPosInicial();
-            colocarEstadoCentralizado();            
+            if (!isGarraMenorPosHorizontal(0))
+            {
+                moverGarraHorizontalmenteFDT(-1);
+                pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+            }
+            else
+            {
+                colocarGarraNaPosInicial();
+                colocarEstadoCentralizado();            
+            }
         }
     }
 
     private void voltarAoMeioVindoPelaDireita()
     {
-        if (!isGarraMaiorPosHorizontal(0))
+        if (contadorDeTempoPausa.contarTempoFDT())
         {
-            moverGarraHorizontalmenteFDT(1);
-            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
-        }
-        else
-        {            
-            colocarGarraNaPosInicial();
-            colocarEstadoCentralizado();
+            if (!isGarraMaiorPosHorizontal(0))
+            {
+                moverGarraHorizontalmenteFDT(1);
+                pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+            }
+            else
+            {
+                colocarGarraNaPosInicial();
+                colocarEstadoCentralizado();
+            }
         }
     }
 
@@ -135,14 +145,18 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         produtorEventoGarraCentralizada.produziuEvento(garraDto.CentroDaGarra.transform.position);
         fixarGarraHorizontalmente();
         pincas.acionarCollider();
+        contadorDeTempoPausa.resetContador();
         estadoAtual = ESTADO_CENTRALIZADO;
     }
 
     private void movendoZigueZague()
     {
-        pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
-        verificarSeMovimentacaoAtingiuLimites();
-        moverGarraHorizontalmenteFDT(direcao);
+        if (contadorDeTempoPausa.contarTempoFDT())
+        {
+            pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
+            verificarSeMovimentacaoAtingiuLimites();
+            moverGarraHorizontalmenteFDT(direcao);
+        }
     }
 
     private void verificarSeMovimentacaoAtingiuLimites()//DUPLICIDADE COM MOVIMENTACAO LATERAL
