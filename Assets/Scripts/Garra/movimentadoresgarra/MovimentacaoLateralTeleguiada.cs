@@ -38,6 +38,7 @@ public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarraHorizontal
         }
     }
 
+    //TODO SE FOR USAR CLASSE REVER A FORMA DE MOVIMENTACAO DA GARRA DEPRECIADA ABAIXO
     public override void fixedUpdate() {
         if (moverLateralmente) {
             if (posicaoDoToque >= 0) {

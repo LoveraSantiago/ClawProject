@@ -65,6 +65,7 @@ public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraHorizontal
             garraDto.RigidBody.velocity.y);
     }
 
+    //TODO SE FOR USAR CLASSE REVER A FORMA DE MOVIMENTACAO DA GARRA DEPRECIADA ABAIXO
     //TODO duplicidade com MovimentacaoLateralTeleguiada
     public void fixedUpdateTeleguiado()
     {
