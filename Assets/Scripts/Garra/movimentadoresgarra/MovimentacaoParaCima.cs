@@ -26,9 +26,5 @@ public class MovimentacaoParaCima : MovimentacaoDaGarra
             diminuirInerciaDaGarra();
             comunicadorComGerMovimentacao.trocarParaAcaoNormal();
         }
-    }
-
-    public override void fixedUpdate()
-    {        
-    }        
+    }    
 }
