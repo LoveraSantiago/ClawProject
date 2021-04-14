@@ -41,7 +41,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     public override void preInicio()
     {
         estadoAtual = ESTADO_VOLTAR_SUBIDA;
-        colocarMassaNaGarra(3);
+        //colocarMassaNaGarra(30);
     }
 
     public override void update()
