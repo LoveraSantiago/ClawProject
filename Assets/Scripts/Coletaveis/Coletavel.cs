@@ -14,14 +14,14 @@ public class Coletavel
     private SpriteRenderer spriteRenderer;    
     
     public Coletavel()
-        :this(mainTile)
+        :this(mainTile, nomeador.getName())
     {        
     }
 
-    public Coletavel(GameObject go)
+    public Coletavel(GameObject go, string nome)
     {
-        goColetavel = GameObject.Instantiate(go, go.transform.position, go.transform.rotation, mainTileParent);        
-        nome = nomeador.getName();
+        goColetavel = GameObject.Instantiate(go, go.transform.position, go.transform.rotation, mainTileParent);
+        this.nome = nome;
         goColetavel.name = nome;
         spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();
         rigidbody = goColetavel.GetComponent<Rigidbody2D>();
@@ -75,6 +75,16 @@ public class Coletavel
     public void ligar()
     {
         goColetavel.SetActive(true);
+    }
+
+    public void desligarGravidade()
+    {
+        rigidbody.gravityScale = 0;
+    }
+
+    public void ligarGravidade()
+    {
+        rigidbody.gravityScale = 1;
     }
 
     public Sprite getSprite()
