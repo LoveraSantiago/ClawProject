@@ -58,6 +58,8 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
             case ESTADO_CENTRALIZADO:
                 if (inputGame.aconteceuTapNaAreaSuperior())
                 {                    
+                    pararGarra();
+                    contadorDeTempoPausa.resetContador();
                     estadoAtual = ESTADO_SOLTAR;
                 }
                 break;
@@ -92,7 +94,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
                 break;
 
         }
-        Debug.Log("EstadoAtual : " + estadoAtual);
+        //Debug.Log("EstadoAtual : " + estadoAtual);
     }
 
     private void voltarPosicaoMeioCima()
@@ -173,34 +175,47 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
             verificarSeMovimentacaoAtingiuLimites();
-            moverGarraHorizontalmenteFreeze(direcao);
+
+            moverGarraHorizontalmenteFreeze(direcao);            
         }
     }
 
 
     private void verificarSeMovimentacaoAtingiuLimites()//DUPLICIDADE COM MOVIMENTACAO LATERAL
     {
-        if (isGarraMaiorPosHorizontal(LIMITE_LATERAL_TELA))
+        if (isGarraMaiorPosHorizontal(LIMITE_LATERAL_TELA - 0.1f))//DIMINUINDO RANGE PQ O OBJETO SEGURADO PODE IMPEDIR DA GARRA CHEGAR NO LIMITE
         {
             direcao = -1;
-            //diminuirInerciaDaGarra();
+            pararGarra();
             //produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
         }
-        else if (isGarraMenorPosHorizontal(-LIMITE_LATERAL_TELA))
-        {
+        else if (isGarraMenorPosHorizontal(-LIMITE_LATERAL_TELA + 0.1f))
+        {            
             direcao = 1;
-            //diminuirInerciaDaGarra();
+            pararGarra();            
             //produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
         }
         else
         {
+            //if (isGarraParada())
+            //{
+            //    moverGarraHorizontalmenteFreeze(direcao);
+            //}
             //nada
         }
     }
 
     private void abrirPincas()
     {
-        pararGarra();
-        pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoAberturaEsquerda, anguloDesejadoAberturaDireita);
+        if (contadorDeTempoPausa.contarTempoDT())
+        {
+            pararGarra();
+            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoAberturaEsquerda, anguloDesejadoAberturaDireita);
+
+        }
+        else
+        {
+            Debug.Log("Esperando");
+        }
     }
 }

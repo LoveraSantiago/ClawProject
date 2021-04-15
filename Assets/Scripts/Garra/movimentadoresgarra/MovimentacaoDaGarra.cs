@@ -38,7 +38,7 @@ public abstract class MovimentacaoDaGarra
 
     private void moverGarraHorizontalmente(float direcao)
     {
-        garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.VelocMovHorizontal, 0);                
+        garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.VelocMovHorizontal, 0);        
     }
 
     protected void moverGarraParaCimaFreeze()
@@ -58,6 +58,15 @@ public abstract class MovimentacaoDaGarra
         fixarGarraHorizontalmente();
         moverGarraHorizontalmente(direcao);
     }
+
+    //protected void moverGarraHorizontalmenteFreezeCarregando(float direcao)
+    //{
+    //    fixarGarraHorizontalmente();
+    //    if(garraDto.RigidBody.velocity.x < garraDto.VelocMovHorizontal)
+    //    {
+    //        garraDto.RigidBody.AddForce(new Vector2(1 * direcao, 0), ForceMode2D.Impulse);
+    //    }
+    //}
 
     protected void colocarGarraNaAlturaInicial()
     {
@@ -92,6 +101,11 @@ public abstract class MovimentacaoDaGarra
     protected bool isGarraAcimaPosInicial()
     {
         return garraDto.RigidBody.transform.localPosition.y >= posInicial.y;
+    }
+
+    protected bool isGarraParada()
+    {
+        return garraDto.RigidBody.velocity.x == 0 && garraDto.RigidBody.velocity.y == 0;
     }
 
     protected bool isGarraMaiorPosHorizontal(float posHorizontal)

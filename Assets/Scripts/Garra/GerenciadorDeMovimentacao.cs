@@ -29,7 +29,7 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     public void update()
     {
         movimentacaoAtual.update();
-        Debug.Log(movimentacaoAtual);
+        //Debug.Log(movimentacaoAtual);
     }
 
     public void fixedUpdate()
