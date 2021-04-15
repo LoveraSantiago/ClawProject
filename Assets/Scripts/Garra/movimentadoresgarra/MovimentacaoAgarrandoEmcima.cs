@@ -85,7 +85,8 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
-        {            
+        {
+            pararGarra();
             colocarGarraNaAlturaInicial();
             determinarDirecaoParaVoltarAoMeio();
             contadorDeTempoPausa.resetContador();
@@ -115,8 +116,9 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
             }
             else
             {
+                pararGarra();
                 colocarGarraNaPosInicial();
-                colocarEstadoCentralizado();            
+                colocarEstadoCentralizado();                
             }
         }
     }
@@ -132,16 +134,16 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
             }
             else
             {
+                pararGarra();
                 colocarGarraNaPosInicial();
-                colocarEstadoCentralizado();
+                colocarEstadoCentralizado();                
             }
         }
     }
 
     private void colocarEstadoCentralizado()
     {   
-        produtorEventoGarraCentralizada.produziuEvento(garraDto.CentroDaGarra.transform.position);
-        fixarGarraHorizontalmente();
+        produtorEventoGarraCentralizada.produziuEvento(garraDto.CentroDaGarra.transform.position);        
         pincas.acionarCollider();
         contadorDeTempoPausa.resetContador();
         estadoAtual = ESTADO_CENTRALIZADO;

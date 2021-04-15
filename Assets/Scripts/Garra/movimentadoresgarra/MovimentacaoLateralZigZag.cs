@@ -34,8 +34,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         configurarAngulosParaMax();
         dispararEventoDirecao();
 
-        colocarGarraNaAlturaInicial();
-        fixarGarraHorizontalmente();
+        colocarGarraNaAlturaInicial();        
 
         pincas.acionarTrigger();
         moverGarraHorizontalmenteFreeze(direcao);

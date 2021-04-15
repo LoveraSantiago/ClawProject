@@ -74,12 +74,12 @@ public abstract class MovimentacaoDaGarra
         garraDto.RigidBody.mass = massa;
     }
 
-    protected void fixarGarraHorizontalmente()
+    private void fixarGarraHorizontalmente()
     {
         garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
     }
 
-    protected void fixarGarraVerticalmente()
+    private void fixarGarraVerticalmente()
     {
         garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
