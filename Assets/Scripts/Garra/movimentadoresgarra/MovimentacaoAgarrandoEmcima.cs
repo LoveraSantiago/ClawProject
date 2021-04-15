@@ -6,6 +6,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     private const int ESTADO_IR_MEIO_PELA_ESQUERDA  = 2;
     private const int ESTADO_IR_MEIO_PELA_DIREITA  = 3;
     private const int ESTADO_CENTRALIZADO  = 4;
+    private const int ESTADO_SOLTAR = 5;
     private const int NONE  = 99;
 
     private int estadoAtual;
@@ -18,6 +19,9 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
 
     private Quaternion anguloDesejadoEsquerdaFechado;
     private Quaternion anguloDesejadoDireitaFechado;
+
+    private Quaternion anguloDesejadoAberturaEsquerda;
+    private Quaternion anguloDesejadoAberturaDireita;
 
     public ProdutorDeEvento<Vector3> produtorEventoGarraCentralizada { get; private set; }
 
@@ -33,6 +37,9 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         anguloDesejadoDireitaFechado  = Quaternion.Euler(0, 0, garraDto.AnguloFechamento);
         anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraDto.AnguloFechamento);
 
+        anguloDesejadoAberturaDireita = Quaternion.Euler(0, 0, -garraDto.AnguloAbertura);
+        anguloDesejadoAberturaEsquerda = Quaternion.Euler(0, 0, garraDto.AnguloAbertura);
+
         produtorEventoGarraCentralizada = new ProdutorDeEvento<Vector3>();
         contadorDeTempoPausa = new ContadorDeTempo(0.4f);
         direcao = 1;
@@ -46,7 +53,15 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
 
     public override void update()
     {
-        
+        switch (estadoAtual)
+        {
+            case ESTADO_CENTRALIZADO:
+                if (inputGame.aconteceuTapNaAreaSuperior())
+                {                    
+                    estadoAtual = ESTADO_SOLTAR;
+                }
+                break;
+        }
     }
 
     public override void fixedUpdate()
@@ -69,6 +84,9 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
                 movendoZigueZague();
                 break;
 
+            case ESTADO_SOLTAR:
+                abrirPincas();
+                break;
             case NONE:
                 //pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
                 break;
@@ -159,6 +177,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         }
     }
 
+
     private void verificarSeMovimentacaoAtingiuLimites()//DUPLICIDADE COM MOVIMENTACAO LATERAL
     {
         if (isGarraMaiorPosHorizontal(LIMITE_LATERAL_TELA))
@@ -177,5 +196,11 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             //nada
         }
+    }
+
+    private void abrirPincas()
+    {
+        pararGarra();
+        pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoAberturaEsquerda, anguloDesejadoAberturaDireita);
     }
 }
