@@ -175,7 +175,6 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
             verificarSeMovimentacaoAtingiuLimites();
-
             moverGarraHorizontalmenteFreeze(direcao);            
         }
     }
