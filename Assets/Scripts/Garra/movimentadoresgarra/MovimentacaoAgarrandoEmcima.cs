@@ -196,11 +196,6 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         }
         else
         {
-            //if (isGarraParada())
-            //{
-            //    moverGarraHorizontalmenteFreeze(direcao);
-            //}
-            //nada
         }
     }
 
@@ -210,11 +205,6 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             pararGarra();
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoAberturaEsquerda, anguloDesejadoAberturaDireita);
-
-        }
-        else
-        {
-            Debug.Log("Esperando");
-        }
+        }        
     }
 }
