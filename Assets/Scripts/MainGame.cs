@@ -23,12 +23,13 @@ public class MainGame : MonoBehaviour,
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
-    private InputGame inputGame;
-    private GarraManager garraManager;
+    private GarraManager     garraManager;
     private ColetavelManager coletaveisManager;
-    private MaquinaManager maquinaManager;
-    private EfeitoColetado efeitoColetado;
-    private PowerUpManager powerUpManager;
+    private MaquinaManager   maquinaManager;
+    private PowerUpManager   powerUpManager;
+
+    private InputGame inputGame;
+    private EfeitoColetado   efeitoColetado;
 
     void OnEnable()
     {

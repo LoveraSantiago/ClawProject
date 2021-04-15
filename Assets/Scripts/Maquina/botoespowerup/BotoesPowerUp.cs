@@ -44,29 +44,35 @@ public class BotoesPowerUp
             if (btnPUp1.isCliqueDentroAreaBotao(posicaoTap))
             {   
                 btnPUp1.clicar(monoBehaviour);
-                produtorDeEventoDePowerUp.produziuEvento(btnPUp1.powerUp);
+                acaoBotaoPup1.acionar();                
             }
             else if (btnPUp2.isCliqueDentroAreaBotao(posicaoTap))
             {   
-                btnPUp2.clicar(monoBehaviour);
-                produtorDeEventoDePowerUp.produziuEvento(btnPUp2.powerUp);
+                btnPUp2.clicar(monoBehaviour);                
             }
             else if (btnPUp3.isCliqueDentroAreaBotao(posicaoTap))
             {   
-                btnPUp3.clicar(monoBehaviour);
-                produtorDeEventoDePowerUp.produziuEvento(btnPUp3.powerUp);
+                btnPUp3.clicar(monoBehaviour);                
             }
             else if (btnPUp4.isCliqueDentroAreaBotao(posicaoTap))
             {             
-                btnPUp4.clicar(monoBehaviour);
-                produtorDeEventoDePowerUp.produziuEvento(btnPUp4.powerUp);
+                btnPUp4.clicar(monoBehaviour);                
             }
         }        
     }
 
-    public void recebendoPowerUp(PowerUp powerUp)
+    private AcaoBotaoPowerUp acaoBotaoPup1;//TEMPORARIAMENTE AQUI
+    public void recebendoPowerUp(AcaoBotaoPowerUp acaoBotaoPup)
     {
-        btnPUp1.recebendoPowerUp(powerUp);
+        acaoBotaoPup1 = acaoBotaoPup;
+        if (acaoBotaoPup.isClicavel())
+        {
+            btnPUp1.transformarEmBotaoClicavel();
+        }
+        else
+        {
+            btnPUp1.transformarEmBotaoDragavel();
+        }
     }
 
     public void beginDrag(Vector2 posicaoDrag)

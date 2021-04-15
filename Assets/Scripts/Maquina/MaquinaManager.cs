@@ -26,9 +26,9 @@ public class MaquinaManager
         joystickHaste.fixedUpdate();
     }
 
-    public void recebendoPowerUp(PowerUp powerUp)
+    public void recebendoPowerUp(AcaoBotaoPowerUp acaoBotaoPowerUp)
     {
-        botoesPowerUp.recebendoPowerUp(powerUp);
+        botoesPowerUp.recebendoPowerUp(acaoBotaoPowerUp);
     }
 
     public void beginDragPowerUp(Vector2 posicao)
