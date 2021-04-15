@@ -44,12 +44,7 @@ public class MaquinaManager
     public void onEndDragPowerUp()
     {
         botoesPowerUp.endDrag();
-    }
-
-    public ProdutorDeEvento<PowerUp> getProdutorDeEventoPowerUp()
-    {
-        return botoesPowerUp.produtorDeEventoDePowerUp;
-    }
+    }    
 
     //CONSUMIDORES DE EVENTOS INICIO
     public ConsumidorDeEvento<DirecaoDaGarra> getJoystickHasteConsumidorDirecao()

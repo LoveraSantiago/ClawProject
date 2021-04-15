@@ -82,8 +82,8 @@ public class MainGame : MonoBehaviour,
             .configurarProdutor(garraManager.getDisparadorDeEventoDeDirecao())
             .adicionarConsumidor(maquinaManager.getJoystickHasteConsumidorDirecao());
 
-        new AcaoPowerUp()
-            .configurarProdutor(maquinaManager.getProdutorDeEventoPowerUp())
+        new AcaoPowerUp()//TODO TIRAR
+            //.configurarProdutor(maquinaManager.getProdutorDeEventoPowerUp())
             .adicionarConsumidor(garraManager.getConsumidorDePowerUp())
             .adicionarConsumidor(coletaveisManager.getConsumidorDePowerUp())
             .adicionarConsumidor(maquinaManager.getConsumidorDePowerUp());
@@ -94,7 +94,7 @@ public class MainGame : MonoBehaviour,
     {
         coletaveisManager.start();
         garraManager.start();
-        maquinaManager.recebendoPowerUp(PowerUp.BombaDaGarra);
+        maquinaManager.recebendoPowerUp(powerUpManager.distribuirPowerUpParaMaquina());
     }
 
     void Update()

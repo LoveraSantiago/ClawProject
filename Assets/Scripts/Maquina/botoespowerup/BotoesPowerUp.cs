@@ -11,16 +11,13 @@ public class BotoesPowerUp
     private Draggavel dragavelVazio;
 
     private InputGame inputGame;
-
-    public ProdutorDeEvento<PowerUp> produtorDeEventoDePowerUp { get; private set; }
+    
     private MonoBehaviour monoBehaviour;
 
     public BotoesPowerUp(PowerUpDto powerUpDto, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
         this.inputGame = inputGame;
-        this.monoBehaviour = monoBehaviour;
-
-        produtorDeEventoDePowerUp = new ProdutorDeEvento<PowerUp>();
+        this.monoBehaviour = monoBehaviour;        
 
         BotaoPowerUp.configurarSpriteBordas(powerUpDto.BordasBtns);
         btnPUp1 = new BotaoPowerUp(powerUpDto.BtnsPowerUp[0]);
