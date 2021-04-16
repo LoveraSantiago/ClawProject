@@ -6,6 +6,5 @@ public interface ComunicadorComGerMovimentacao
     void trocarParaAcaoNormal();
     void trocarParaAcaoSubindo();
     void trocarParaAcaoAgarrada();
-    void trocarParaAcaoDescendo();
-    void trocarParaAcaoSegurando();
+    void trocarParaAcaoDescendo();    
 }

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 public class GarraManager : ConsumidorDeEventoTrigger,
-                            ConsumidorDeEvento<PowerUp>
+                            ConsumidorDeEvento<PowerUpInfo>
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
 
@@ -41,9 +41,9 @@ public class GarraManager : ConsumidorDeEventoTrigger,
         gerenciadorDeMovimentacao.garraColidiuCom(other);
     }
 
-    private void processarPowerUp(PowerUp powerUp)
+    private void processarPowerUp(PowerUpInfo powerUpInfo)
     {
-        if(powerUp.tipo == PowerUp.TIPO.BOMBA_DA_GARRA)
+        if(powerUpInfo.garraInteracaoPowerUp != null)
         {
             gerenciadorDeMovimentacao.trocarParaAcaoSegurando();
         }
@@ -56,12 +56,12 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
 
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUp> INICIO
-    public void consumirEvento(PowerUp evento)
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
+    public void consumirEvento(PowerUpInfo evento)
     {
         processarPowerUp(evento);
     }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUp> INICIO
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
 
     public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
     {
@@ -78,7 +78,7 @@ public class GarraManager : ConsumidorDeEventoTrigger,
         return gerenciadorDeMovimentacao.getProdutorDeEventoSubidaDaGarra();
     }
 
-    public ConsumidorDeEvento<PowerUp> getConsumidorDePowerUp()
+    public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
         return this;
     }    
