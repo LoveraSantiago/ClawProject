@@ -19,4 +19,10 @@ public class Utils
     {
         return collider.gameObject.CompareTag(nomeTag);
     }
+
+    public static bool isTag(Collision2D collision, string nomeTag)
+    {
+        return collision.gameObject.CompareTag(nomeTag);
+    }
+    
 }
