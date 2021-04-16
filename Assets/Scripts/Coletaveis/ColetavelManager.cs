@@ -3,8 +3,7 @@ using UnityEngine;
 public class ColetavelManager : ConsumidorDeEventoTrigger,
                                 ConsumidorDeEvento<string>,
                                 ConsumidorDeEvento<int>,
-                                ConsumidorDeEvento<PowerUp>,
-                                ConsumidorDeEvento<Vector3>
+                                ConsumidorDeEvento<PowerUp>
 {
     private ColetaveisDto coletaveisDto;
     private Coletavel coletavelImantado;
@@ -115,12 +114,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     public ConsumidorDeEvento<PowerUp> getConsumidorDePowerUp()
     {
         return this;
-    }
-
-    public ConsumidorDeEvento<Vector3> getConsumidorDePosicaoDeGarraCentralizada()
-    {
-        return this;
-    }
+    }    
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
     //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA

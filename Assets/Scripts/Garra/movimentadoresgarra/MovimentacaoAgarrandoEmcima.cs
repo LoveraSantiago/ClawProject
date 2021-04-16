@@ -21,9 +21,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     private Quaternion anguloDesejadoDireitaFechado;
 
     private Quaternion anguloDesejadoAberturaEsquerda;
-    private Quaternion anguloDesejadoAberturaDireita;
-
-    public ProdutorDeEvento<Vector3> produtorEventoGarraCentralizada { get; private set; }
+    private Quaternion anguloDesejadoAberturaDireita;    
 
     private ContadorDeTempo contadorDeTempoPausa;
 
@@ -39,8 +37,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
 
         anguloDesejadoAberturaDireita = Quaternion.Euler(0, 0, -garraDto.AnguloAbertura);
         anguloDesejadoAberturaEsquerda = Quaternion.Euler(0, 0, garraDto.AnguloAbertura);
-
-        produtorEventoGarraCentralizada = new ProdutorDeEvento<Vector3>();
+        
         contadorDeTempoPausa = new ContadorDeTempo(0.4f);
         direcao = 1;
     }
@@ -162,8 +159,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     }
 
     private void colocarEstadoCentralizado()
-    {   
-        produtorEventoGarraCentralizada.produziuEvento(garraDto.CentroDaGarra.transform.position);        
+    {           
         pincas.acionarCollider();
         contadorDeTempoPausa.resetContador();
         estadoAtual = ESTADO_CENTRALIZADO;

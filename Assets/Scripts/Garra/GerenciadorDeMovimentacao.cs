@@ -107,10 +107,5 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()
     {
         return movimentacaoParaCima.produtorDeEventoSubidaDaGarra;
-    }
-
-    public ProdutorDeEvento<Vector3> getProdutorDeEventoGarraCentralizadaPup()
-    {
-        return movimentacaoSegCima.produtorEventoGarraCentralizada;
-    }
+    }    
 }

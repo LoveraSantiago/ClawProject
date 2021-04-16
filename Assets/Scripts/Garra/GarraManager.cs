@@ -81,10 +81,5 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     public ConsumidorDeEvento<PowerUp> getConsumidorDePowerUp()
     {
         return this;
-    }
-
-    public ProdutorDeEvento<Vector3> getProdutorDeEventoGarraCentralizadaPup()
-    {
-        return gerenciadorDeMovimentacao.getProdutorDeEventoGarraCentralizadaPup();
-    }
+    }    
 }

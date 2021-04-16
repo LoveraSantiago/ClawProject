@@ -73,11 +73,7 @@ public class MainGame : MonoBehaviour,
         new AcaoSubidaDaGarra()
             .configurarProdutor(garraManager.getProdutorDeEventoSubidaDaGarra())
             .adicionarConsumidor(coletaveisManager.getConsumidorDeContagemSubidaDaGarra());
-
-        new AcaoGarraCentralizadaPUp()//TODO TIRAR
-            .configurarProdutor(garraManager.getProdutorDeEventoGarraCentralizadaPup())
-            .adicionarConsumidor(coletaveisManager.getConsumidorDePosicaoDeGarraCentralizada());
-
+        
         new AcaoSincroniaComDirecaoDaGarra()
             .configurarProdutor(garraManager.getDisparadorDeEventoDeDirecao())
             .adicionarConsumidor(maquinaManager.getJoystickHasteConsumidorDirecao());
