@@ -61,12 +61,12 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
     }
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
 
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUp> INICIO
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
     public void consumirEvento(PowerUpInfo evento)
     {
         mostrarContagemRegressiva(evento.duracaoTempo);
     }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUp> INICIO
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
 
     public ConsumidorDeEvento<InformacoesColetado> getDisplayScoreConsumidor()
     {
