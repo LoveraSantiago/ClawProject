@@ -1,3 +1,3 @@
-public class AcaoPowerUp : ProdutorConsumidoresDeEvento<PowerUp>
+public class AcaoPowerUp : ProdutorConsumidoresDeEvento<PowerUpInfo>
 {    
 }

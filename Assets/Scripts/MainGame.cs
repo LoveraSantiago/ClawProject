@@ -82,12 +82,8 @@ public class MainGame : MonoBehaviour,
             .configurarProdutor(garraManager.getDisparadorDeEventoDeDirecao())
             .adicionarConsumidor(maquinaManager.getJoystickHasteConsumidorDirecao());
 
-        new AcaoPowerUp()//TODO TIRAR
-            //.configurarProdutor(maquinaManager.getProdutorDeEventoPowerUp())
-            .adicionarConsumidor(garraManager.getConsumidorDePowerUp())
-            .adicionarConsumidor(coletaveisManager.getConsumidorDePowerUp())
-            .adicionarConsumidor(maquinaManager.getConsumidorDePowerUp());
-            
+        new AcaoPowerUp()
+            .configurarProdutor(powerUpManager.produtorDeEventoPowerUp);
     }
 
     private void startLaizy()
