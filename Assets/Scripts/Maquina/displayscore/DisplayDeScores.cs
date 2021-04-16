@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
-                               ConsumidorDeEvento<PowerUp>
+                               ConsumidorDeEvento<PowerUpInfo>
 { 
     private DisplayDigito displayCentena;
     private DisplayDigito displayDezena;
@@ -51,15 +51,7 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
         int scoreUnidade = displayUnidade.digito;
 
         monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao, scoreCentena, scoreDezena, scoreUnidade));
-    }
-
-    private void processarPowerUp(PowerUp powerUp)
-    {
-        if (powerUp.tipo == PowerUp.TIPO.BOMBA_DA_GARRA)
-        {
-            mostrarContagemRegressiva(powerUp.duracao);
-        }
-    }
+    }    
 
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
     //CONSOME EVENTO DISPARADO PELO COLETAVEIS MANAGER AO COLETAR UM COLETAVEL
@@ -70,9 +62,9 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUp> INICIO
-    public void consumirEvento(PowerUp evento)
+    public void consumirEvento(PowerUpInfo evento)
     {
-        processarPowerUp(evento);
+        mostrarContagemRegressiva(evento.duracaoTempo);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUp> INICIO
 
@@ -81,7 +73,7 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
         return this;
     }
 
-    public ConsumidorDeEvento<PowerUp> getConsumidorDePowerUp()
+    public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
         return this;
     }

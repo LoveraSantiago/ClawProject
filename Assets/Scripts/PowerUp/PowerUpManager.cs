@@ -21,6 +21,8 @@ public class PowerUpManager : PowerUpAcionamento
         if(tipoPowerUp == PowerUp.TIPO.BOMBA_DA_GARRA)
         {
             PowerUpInfo powerUpInfo = new PowerUpInfo();
+            powerUpInfo.configurarDuracaoTempo(9);
+
             produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         }
     }    

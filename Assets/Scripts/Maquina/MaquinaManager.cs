@@ -62,9 +62,9 @@ public class MaquinaManager
         return displayDeScores.getDisplayScoreConsumidor();
     }
 
-    public ConsumidorDeEvento<PowerUp> getConsumidorDePowerUp()
+    public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
-        return displayDeScores.getConsumidorDePowerUp();
+        return displayDeScores.getConsumidorDePowerUpInfo();
     }
     //CONSUMIDORES DE EVENTOS FIM
 }

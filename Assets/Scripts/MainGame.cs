@@ -79,7 +79,8 @@ public class MainGame : MonoBehaviour,
             .adicionarConsumidor(maquinaManager.getJoystickHasteConsumidorDirecao());
 
         new AcaoPowerUp()
-            .configurarProdutor(powerUpManager.produtorDeEventoPowerUp);
+            .configurarProdutor(powerUpManager.produtorDeEventoPowerUp)
+            .adicionarConsumidor(maquinaManager.getConsumidorDePowerUpInfo());
     }
 
     private void startLaizy()
