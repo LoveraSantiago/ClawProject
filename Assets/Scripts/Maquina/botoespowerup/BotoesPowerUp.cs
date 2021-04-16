@@ -14,7 +14,7 @@ public class BotoesPowerUp
     
     private MonoBehaviour monoBehaviour;
 
-    public BotoesPowerUp(PowerUpDto powerUpDto, InputGame inputGame, MonoBehaviour monoBehaviour)
+    public BotoesPowerUp(BotoesPowerUpDto powerUpDto, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
         this.inputGame = inputGame;
         this.monoBehaviour = monoBehaviour;        

@@ -13,7 +13,7 @@ public class MaquinaManager
         displayDeScores = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         joystickHaste   = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
 
-        botoesPowerUp = new BotoesPowerUp(maquinaDto.PowerUpDto, inputGame, monoBehaviour);
+        botoesPowerUp = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame, monoBehaviour);
     }
 
     public void update()
