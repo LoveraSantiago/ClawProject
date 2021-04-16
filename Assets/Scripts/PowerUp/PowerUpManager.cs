@@ -25,7 +25,7 @@ public class PowerUpManager : PowerUpAcionamento
         {
             PowerUpInfo powerUpInfo = new PowerUpInfo();
             powerUpInfo.configurarDuracaoTempo(9);
-            powerUpInfo.configurarObjetoInteracaoComGarra(new ColetavelBomba(tileBomb));
+            powerUpInfo.configurarObjetoInteracaoComGarra(new PowerUpBomba(tileBomb));
 
             produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         }

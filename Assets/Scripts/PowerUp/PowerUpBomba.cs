@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class ColetavelBomba : Coletavel,
+public class PowerUpBomba : Coletavel,
                               GarraInteracaoComPowerUp
 {
-    public ColetavelBomba(GameObject tileBomb)
+    public PowerUpBomba(GameObject tileBomb)
         : base(tileBomb, "bomba")
     {
     }   
