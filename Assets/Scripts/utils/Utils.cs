@@ -12,7 +12,7 @@ public class Utils
 
     public static bool isColetavel(GameObject gameObject)
     {
-        return !gameObject.CompareTag("Container");
+        return gameObject.CompareTag("Coletavel");
     }
 
     public static bool isTag(Collider2D collider, string nomeTag)
