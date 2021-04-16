@@ -45,7 +45,7 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     {
         if(powerUpInfo.garraInteracaoPowerUp != null)
         {
-            gerenciadorDeMovimentacao.trocarParaAcaoSegurando();
+            gerenciadorDeMovimentacao.trocarParaAcaoSegurando(powerUpInfo.garraInteracaoPowerUp);
         }
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO

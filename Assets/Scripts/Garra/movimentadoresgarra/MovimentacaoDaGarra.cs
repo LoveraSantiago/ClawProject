@@ -57,16 +57,7 @@ public abstract class MovimentacaoDaGarra
     {
         fixarGarraHorizontalmente();
         moverGarraHorizontalmente(direcao);
-    }
-
-    //protected void moverGarraHorizontalmenteFreezeCarregando(float direcao)
-    //{
-    //    fixarGarraHorizontalmente();
-    //    if(garraDto.RigidBody.velocity.x < garraDto.VelocMovHorizontal)
-    //    {
-    //        garraDto.RigidBody.AddForce(new Vector2(1 * direcao, 0), ForceMode2D.Impulse);
-    //    }
-    //}
+    }    
 
     protected void colocarGarraNaAlturaInicial()
     {

@@ -5154,7 +5154,6 @@ MonoBehaviour:
   coletaveisDto:
     sensorDeColetado: {fileID: 2083913115}
     tile: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-    tileBomb: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
     tuboDto:
       delayQuedaTubo: 1
       parentColetavelTubo: {fileID: 1607848931}
@@ -5212,6 +5211,7 @@ MonoBehaviour:
     parentParticulas: {fileID: 1488198862}
     seguidoraParticulas: {fileID: 19295419}
     luzSeguidora: {fileID: 1216567083}
+  tileBomb: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
   btnSair: {fileID: 1780015346}
 --- !u!61 &491158116
 BoxCollider2D:

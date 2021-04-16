@@ -7,7 +7,6 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 {
     private ColetaveisDto coletaveisDto;
     private Coletavel coletavelImantado;
-    private ColetavelBomba coletavelBomba;
 
     private PowerUp powerUpAtual;
     private Board board;
@@ -31,9 +30,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
         coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);
 
-        powerUpAtual = PowerUp.PowerUpVazio;
-        coletavelBomba = new ColetavelBomba(coletaveisDto.TileBomb);
-        coletavelBomba.desligar();
+        powerUpAtual = PowerUp.PowerUpVazio;                
     }   
 
     public void start()
@@ -93,12 +90,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
     private void processarPosicaoCentralizada(Vector3 posicaoCentro)
     {
-        if(powerUpAtual.tipo == PowerUp.TIPO.BOMBA_DA_GARRA)
-        {
-            Debug.Log("Bomba acionada");
-            coletavelBomba.colocarNaPosicao(posicaoCentro);
-            coletavelBomba.ligar();
-        }
+        
     }
 
     public ConsumidorDeEvento<string> getConsumidorDeColetavelParaImantar()

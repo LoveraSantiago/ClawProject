@@ -1,12 +1,15 @@
-public class PowerUpManager : PowerUpAcionamento
-{   
+using UnityEngine;
 
+public class PowerUpManager : PowerUpAcionamento
+{
+    private GameObject tileBomb;
     public ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp { get; private set; }
 
-    public PowerUpManager()
+    public PowerUpManager(GameObject tileBomb)
     {
         PowerUpParaMaquina.configAcionadorDePowerUp(this);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
+        this.tileBomb = tileBomb;
     }
 
     public PowerUpParaMaquina distribuirPowerUpParaMaquina()
@@ -22,6 +25,7 @@ public class PowerUpManager : PowerUpAcionamento
         {
             PowerUpInfo powerUpInfo = new PowerUpInfo();
             powerUpInfo.configurarDuracaoTempo(9);
+            powerUpInfo.configurarObjetoInteracaoComGarra(new ColetavelBomba(tileBomb));
 
             produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         }

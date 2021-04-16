@@ -24,6 +24,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     private Quaternion anguloDesejadoAberturaDireita;    
 
     private ContadorDeTempo contadorDeTempoPausa;
+    private GarraInteracaoComPowerUp garraInteracaoPowerUp;
 
     public MovimentacaoAgarrandoEmcima()
     {
@@ -56,6 +57,10 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
                 if (inputGame.aconteceuTapNaAreaSuperior())
                 {                    
                     pararGarra();
+                    garraInteracaoPowerUp.parar();
+                    garraInteracaoPowerUp.ligarGravidade();
+                    garraInteracaoPowerUp.fixarVerticalmente();
+
                     contadorDeTempoPausa.resetContador();
                     estadoAtual = ESTADO_SOLTAR;
                 }
@@ -162,6 +167,11 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     {           
         pincas.acionarCollider();
         contadorDeTempoPausa.resetContador();
+
+        garraInteracaoPowerUp.ligar();
+        garraInteracaoPowerUp.desligarGravidade();
+        garraInteracaoPowerUp.colocarNaPosicao(garraDto.CentroDaGarra.position);
+
         estadoAtual = ESTADO_CENTRALIZADO;
     }
 
@@ -202,5 +212,10 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
             pararGarra();
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoAberturaEsquerda, anguloDesejadoAberturaDireita);
         }        
+    }
+
+    public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp)
+    {
+        this.garraInteracaoPowerUp = garraInteracaoPowerUp;
     }
 }

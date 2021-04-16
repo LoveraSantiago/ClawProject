@@ -16,7 +16,7 @@ public class Coletavel
     public Coletavel()
         :this(mainTile, nomeador.getName())
     {        
-    }
+    }   
 
     public Coletavel(GameObject go, string nome)
     {
@@ -54,7 +54,6 @@ public class Coletavel
         goColetavel.layer = LayerMask.NameToLayer("Coletavel");
     }
 
-
     public void addParent(Transform parent)
     {
         goColetavel.transform.SetParent(parent);
@@ -65,6 +64,12 @@ public class Coletavel
         spriteRenderer.sprite = sprite;
         nomeSprite = sprite.name;
         spriteRenderer.sortingOrder = 31;
+    }
+
+    public void parar()
+    {
+        rigidbody.velocity = Vector2.zero;
+        rigidbody.angularVelocity = 0;
     }
 
     public void desligar()
@@ -85,6 +90,11 @@ public class Coletavel
     public void ligarGravidade()
     {
         rigidbody.gravityScale = 1;
+    }
+
+    public void fixarVerticalmente()
+    {
+        rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
 
     public Sprite getSprite()
