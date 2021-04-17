@@ -1,16 +1,15 @@
-using System;
 using UnityEngine;
 
-public class MaquinaManager 
+public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>
 {
-    private DisplayDeColetados displayDeImgs;
+    private DisplayDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
     private JoystickHaste joystickHaste;
     private BotoesPowerUp botoesPowerUp;
 
     public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
-        displayDeImgs   = new DisplayDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
+        displayDeColetados   = new DisplayDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
         displayDeScores = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         joystickHaste   = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
 
@@ -45,22 +44,30 @@ public class MaquinaManager
     public void onEndDragPowerUp()
     {
         botoesPowerUp.endDrag();
-    }    
+    }
+
+    private void processarInformacoesDoColetado(InformacoesColetado infoColetado)
+    {
+        displayDeColetados.adicionarSpriteAoDisplay(infoColetado.sprite, infoColetado.resetDisplay);
+        displayDeScores.mostrarScore(infoColetado.score, infoColetado.resultCombinacao);
+    }
+
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO
+    public void consumirEvento(InformacoesColetado infoColetado)
+    {
+        processarInformacoesDoColetado(infoColetado);
+    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> FIM
 
     //CONSUMIDORES DE EVENTOS INICIO
     public ConsumidorDeEvento<DirecaoDaGarra> getJoystickHasteConsumidorDirecao()
     {
         return joystickHaste.getConsumidorDeEventoDeDirecao();
-    }
+    }    
 
-    public ConsumidorDeEvento<InformacoesColetado> getDisplayImagensConsumidorInfoColetado()
+    public ConsumidorDeEvento<InformacoesColetado> getConsumidorInfoColetado()
     {
-        return displayDeImgs.getDisplayImagensConsumidor();
-    }
-
-    public ConsumidorDeEvento<InformacoesColetado> getDisplayScoreConsumidorInfoColetado()
-    {
-        return displayDeScores.getDisplayScoreConsumidor();
+        return this;
     }
 
     public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
@@ -71,6 +78,6 @@ public class MaquinaManager
     public ConsumidorDeEvento<int> getConsumidorDePowerUpFim()
     {
         return botoesPowerUp.getConsumidorDePowerUpFim();
-    }
+    }   
     //CONSUMIDORES DE EVENTOS FIM
 }

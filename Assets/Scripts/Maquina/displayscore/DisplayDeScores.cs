@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
-                               ConsumidorDeEvento<PowerUpInfo>
+public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
 { 
     private DisplayDigito displayCentena;
     private DisplayDigito displayDezena;
@@ -24,7 +23,7 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
    
-    private void mostrarScore(int score, bool result)
+    public void mostrarScore(int score, bool result)
     {
         int scoreTotal = score;
         int centena = scoreTotal / 100;
@@ -51,27 +50,14 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>,
         int scoreUnidade = displayUnidade.digito;
 
         monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao, scoreCentena, scoreDezena, scoreUnidade));
-    }    
-
-    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
-    //CONSOME EVENTO DISPARADO PELO COLETAVEIS MANAGER AO COLETAR UM COLETAVEL
-    public void consumirEvento(InformacoesColetado infoColetado)
-    {
-        mostrarScore(infoColetado.score, infoColetado.resultCombinacao);        
-    }
-    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
+    }       
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
     public void consumirEvento(PowerUpInfo evento)
     {
         mostrarContagemRegressiva(evento.duracaoTempo);
     }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
-
-    public ConsumidorDeEvento<InformacoesColetado> getDisplayScoreConsumidor()
-    {
-        return this;
-    }
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO   
 
     public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
     {

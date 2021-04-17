@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class DisplayDeColetados : ConsumidorDeEvento<InformacoesColetado>
+public class DisplayDeColetados 
 {
     private int indiceEspaco;
     private bool coroutineEmAndamento;
@@ -28,7 +28,7 @@ public class DisplayDeColetados : ConsumidorDeEvento<InformacoesColetado>
         displayDeColetado[2] = new DisplayDeColetado(espacoImgs[2]);
     }
 
-    private void adicionarSpriteAoDisplay(Sprite spriteColetado, bool resetDisplay)
+    public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool resetDisplay)
     {
         computarIndiceAntesAdicaoSprite();
 
@@ -80,18 +80,5 @@ public class DisplayDeColetados : ConsumidorDeEvento<InformacoesColetado>
     public void consumirEvento(Sprite spriteColetado, bool resetDisplay)
     {
         adicionarSpriteAoDisplay(spriteColetado, resetDisplay);
-    }
-
-    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
-    //CONSOME EVENTO DISPARADO PELO COLETAVEIS MANAGER AO COLETAR UM COLETAVEL
-    public void consumirEvento(InformacoesColetado infoColetado)
-    {
-        adicionarSpriteAoDisplay(infoColetado.sprite, infoColetado.resetDisplay);
-    }
-    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
-
-    public ConsumidorDeEvento<InformacoesColetado> getDisplayImagensConsumidor()
-    {
-        return this;
     }
 }

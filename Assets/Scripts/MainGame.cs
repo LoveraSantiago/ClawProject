@@ -64,9 +64,8 @@ public class MainGame : MonoBehaviour,
     private void configurandoAcoes()
     {
         new AcaoEventoColetado()
-            .configurarProdutor(coletaveisManager.produtorDeInformacoesDoColetado)
-            .adicionarConsumidor(maquinaManager.getDisplayImagensConsumidorInfoColetado())
-            .adicionarConsumidor(maquinaManager.getDisplayScoreConsumidorInfoColetado())
+            .configurarProdutor(coletaveisManager.produtorDeInformacoesDoColetado)            
+            .adicionarConsumidor(maquinaManager.getConsumidorInfoColetado())
             .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado());//TODO ver mudanca de ordem
 
         new AcaoImantadoPelaGarra()
