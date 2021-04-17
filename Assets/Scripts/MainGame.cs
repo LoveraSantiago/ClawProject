@@ -54,7 +54,7 @@ public class MainGame : MonoBehaviour,
         coletaveisManager = new ColetavelManager(coletaveisDto, this);
         maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
-        powerUpManager    = new PowerUpManager(tileBomb);
+        powerUpManager    = new PowerUpManager(tileBomb, this);
 
         configurandoAcoes();
         startLaizy();

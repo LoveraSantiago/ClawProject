@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PowerUpBomba : Coletavel,
                             GarraInteracaoComPowerUp,
@@ -6,15 +7,17 @@ public class PowerUpBomba : Coletavel,
 {
     private bool configurado;
     private bool acionado;
-
     private int bomba_explosao;
-    private GameObject explosao;
-    private Animator animator;
 
-    public PowerUpBomba(GameObject tileBomb)
+    private GameObject goExplosao;
+    private Animator animator;
+    private static MonoBehaviour monoBehaviour;
+
+    public PowerUpBomba(GameObject tileBomb, MonoBehaviour monoBehaviourArg)
         : base(tileBomb, "bomba")
     {
         bomba_explosao = Animator.StringToHash("bomba-explosao");
+        monoBehaviour = monoBehaviourArg;
     }
 
     public void consumirEvento(Collision2D evento)
@@ -22,13 +25,23 @@ public class PowerUpBomba : Coletavel,
         Debug.Log("EXPLODIR CHAMADO");
         if(!acionado && Utils.isColetavel(evento))
         {
-            acionado = true;            
-            explosao.SetActive(true);
-            animator.Play(bomba_explosao);
+            acionado = true;
+            monoBehaviour.StartCoroutine(explodir());
         }
     }
 
-    public void ligar(MonoBehaviour monoBehaviour)
+    private IEnumerator explodir()
+    {
+        yield return new WaitForSeconds(0.4f);
+        goExplosao.SetActive(true);
+        animator.Play(bomba_explosao);
+        yield return new WaitForSeconds(0.25f);
+        goExplosao.SetActive(false);
+        desligar();
+        yield return null;
+    }
+
+    public override void ligar()
     {
         if (!configurado)
         {
@@ -53,7 +66,7 @@ public class PowerUpBomba : Coletavel,
 
     private void configurarExplosao()
     {
-        explosao = goColetavel.transform.Find("explosao").gameObject;
+        goExplosao = goColetavel.transform.Find("explosao").gameObject;
     }
 
     private void configurarAnimator()

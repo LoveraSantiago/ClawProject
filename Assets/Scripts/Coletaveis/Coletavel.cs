@@ -77,7 +77,7 @@ public class Coletavel
         goColetavel.SetActive(false);
     }
 
-    public void ligar()
+    public virtual void ligar()
     {
         goColetavel.SetActive(true);
     }

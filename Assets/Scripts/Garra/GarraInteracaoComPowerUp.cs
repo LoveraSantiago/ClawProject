@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface GarraInteracaoComPowerUp 
 {
-    void ligar(MonoBehaviour monoBehaviour);
+    void ligar();
     void parar();
     void colocarNaPosicao(Vector3 posicao);
     void desligarGravidade();
