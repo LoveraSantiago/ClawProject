@@ -3,12 +3,14 @@ using UnityEngine;
 public class ColetavelManager : ConsumidorDeEventoTrigger,
                                 ConsumidorDeEvento<string>,
                                 ConsumidorDeEvento<int>,
-                                ConsumidorDeEvento<PowerUp>
+                                ConsumidorDeEvento<PowerUpInfo>,
+                                ConsumidorDeEvento<Utils.EventoVazioPowerUpFim>
 {
+    private bool powerUpEmAcao;
+
     private ColetaveisDto coletaveisDto;
     private Coletavel coletavelImantado;
-
-    private PowerUp powerUpAtual;
+    
     private Board board;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contadorDeColetaveis;
@@ -30,7 +32,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
         coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);
 
-        powerUpAtual = PowerUp.PowerUpVazio;                
+        powerUpEmAcao = false;
     }   
 
     public void start()
@@ -81,17 +83,45 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private void processarDesimantado()
     {
         coletavelImantado.desimantar();
-    }   
-    
-    private void processarPowerUp(PowerUp powerUp)
+    }    
+
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER INICIO
+    //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
+    public void consumirEvento(Collider2D goColetado)
     {
-        powerUpAtual = powerUp;
+        if(goColetado.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0 &&
+            !powerUpEmAcao)
+        {            
+            processarColetado(goColetado.gameObject);
+        }
+    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM
+
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<STRING> INICIO    
+    public void consumirEvento(string nomeColetavel)
+    {
+        processarImantado(nomeColetavel);
+    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<STRING> FIM
+
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INT> INICIO    
+    public void consumirEvento(int evento)
+    {
+        processarDesimantado();
+    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INT> FIM    
+
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> INICIO    
+    public void consumirEvento(PowerUpInfo powerUpInfo)
+    {
+        powerUpEmAcao = true;
     }
 
-    private void processarPosicaoCentralizada(Vector3 posicaoCentro)
+    public void consumirEvento(Utils.EventoVazioPowerUpFim evento)
     {
-        
+        powerUpEmAcao = false;
     }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> FIM    
 
     public ConsumidorDeEvento<string> getConsumidorDeColetavelParaImantar()
     {
@@ -103,43 +133,13 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         return this;
     }
 
-    public ConsumidorDeEvento<PowerUp> getConsumidorDePowerUp()
+    public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
         return this;
-    }    
-
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
-    //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
-    public void consumirEvento(Collider2D goColetado)
-    {
-        if(goColetado.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0)
-        {            
-            processarColetado(goColetado.gameObject);
-        }
-    }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
-
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<string> INICIO    
-    public void consumirEvento(string nomeColetavel)
-    {
-        processarImantado(nomeColetavel);
-    }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<string> FIM
-
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> INICIO    
-    public void consumirEvento(int evento)
-    {
-        processarDesimantado();
-    }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> FIM    
-
-    public void consumirEvento(PowerUp powerUp)
-    {
-        processarPowerUp(powerUp);
     }
 
-    public void consumirEvento(Vector3 posicaoCentralizada)
+    public ConsumidorDeEvento<Utils.EventoVazioPowerUpFim> getConsumidorDePowerUpFim()
     {
-        processarPosicaoCentralizada(posicaoCentralizada);
+        return this;
     }
 }

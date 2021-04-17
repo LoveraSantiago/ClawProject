@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
-                              ConsumidorDeEvento<int>
+                              ConsumidorDeEvento<Utils.EventoVazioPowerUpFim>
 {
     private DisplayDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
@@ -67,7 +67,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> FIM
 
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
-    public void consumirEvento(int evento)
+    public void consumirEvento(Utils.EventoVazioPowerUpFim evento)
     {
         processarFimDePowerUp();
     }
@@ -89,7 +89,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         return displayDeScores.getConsumidorDePowerUpInfo();
     }
 
-    public ConsumidorDeEvento<int> getConsumidorDePowerUpFim()
+    public ConsumidorDeEvento<Utils.EventoVazioPowerUpFim> getConsumidorDePowerUpFim()
     {
         return this;
     }   

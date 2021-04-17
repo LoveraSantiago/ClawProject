@@ -25,4 +25,5 @@ public class Utils
         return collision.gameObject.CompareTag(nomeTag);
     }
     
+    public class EventoVazioPowerUpFim { }
 }
