@@ -88,6 +88,7 @@ public class MainGame : MonoBehaviour,
 
         new AcaoPowerUpFim()
             .configurarProdutor(powerUpManager.produtorDeEventoFinalizacao)
+            .adicionarConsumidor(garraManager.getConsumidorDePowerUpFim())
             .adicionarConsumidor(maquinaManager.getConsumidorDePowerUpFim());
     }
 

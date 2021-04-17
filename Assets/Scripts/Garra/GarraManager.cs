@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class GarraManager : ConsumidorDeEventoTrigger,
-                            ConsumidorDeEvento<PowerUpInfo>
+                            ConsumidorDeEvento<PowerUpInfo>,
+                            ConsumidorDeEvento<int>
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
 
@@ -40,6 +42,11 @@ public class GarraManager : ConsumidorDeEventoTrigger,
         gerenciadorDeMovimentacao.garraColidiuCom(other);
     }
 
+    private void processarFimPowerUp()
+    {
+        gerenciadorDeMovimentacao.trocarParaAcaoNormal();
+    }
+
     private void processarPowerUp(PowerUpInfo powerUpInfo)
     {
         if(powerUpInfo.garraInteracaoPowerUp != null)
@@ -62,6 +69,13 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
 
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> INICIO
+    public void consumirEvento(int evento)
+    {
+        processarFimPowerUp();
+    }
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> INICIO
+
     public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
     {
         return gerenciadorDeMovimentacao.getDisparadorDeEventoDeDirecao();
@@ -78,6 +92,11 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     }
 
     public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
+    {
+        return this;
+    }
+
+    internal ConsumidorDeEvento<int> getConsumidorDePowerUpFim()
     {
         return this;
     }    

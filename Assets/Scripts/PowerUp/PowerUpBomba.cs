@@ -41,6 +41,7 @@ public class PowerUpBomba : Coletavel,
         yield return new WaitForSeconds(0.25f);
         goExplosao.SetActive(false);
         desligar();
+        yield return new WaitForSeconds(0.15f);
         powerUpFinalizacao.finalizado();
         yield return null;
     }
