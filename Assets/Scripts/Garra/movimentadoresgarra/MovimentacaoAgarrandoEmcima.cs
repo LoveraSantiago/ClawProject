@@ -9,7 +9,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraHorizontal
     private const int ESTADO_SOLTAR = 5;
     private const int ESTADO_ESPERANDO = 6;
     private const int NONE  = 99;
-
+        
     private int estadoAtual;
     private int direcao;
     private bool isJoystickSincronizado;
@@ -26,6 +26,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraHorizontal
     private Quaternion anguloDesejadoAberturaDireita;    
 
     private ContadorDeTempo contadorDeTempoPausa;
+    private ContadorDeTempo contadorDeFimTempo;
     private GarraInteracaoComPowerUp garraInteracaoPowerUp;
 
     public MovimentacaoAgarrandoEmcima()
@@ -42,6 +43,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraHorizontal
         anguloDesejadoAberturaEsquerda = Quaternion.Euler(0, 0, garraDto.AnguloAbertura);
         
         contadorDeTempoPausa = new ContadorDeTempo(0.4f);
+        contadorDeFimTempo   = new ContadorDeTempo();
         direcao = 1;
     }
 
@@ -54,18 +56,16 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraHorizontal
 
     public override void update()
     {
+        if (contadorDeFimTempo.contarTempoDT() && estadoAtual <= ESTADO_CENTRALIZADO)
+        {
+            acaoSoltarPowerUp();
+        }
         switch (estadoAtual)
         {
             case ESTADO_CENTRALIZADO:
                 if (inputGame.aconteceuTapNaAreaSuperior())
-                {                    
-                    pararGarra();
-                    garraInteracaoPowerUp.parar();
-                    garraInteracaoPowerUp.ligarGravidade();
-                    garraInteracaoPowerUp.fixarVerticalmente();
-
-                    contadorDeTempoPausa.resetContador();
-                    estadoAtual = ESTADO_SOLTAR;
+                {
+                    acaoSoltarPowerUp();
                 }
                 break;
         }
@@ -221,6 +221,17 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraHorizontal
         }
     }
 
+    private void acaoSoltarPowerUp()
+    {
+        pararGarra();
+        garraInteracaoPowerUp.parar();
+        garraInteracaoPowerUp.ligarGravidade();
+        garraInteracaoPowerUp.fixarVerticalmente();
+
+        contadorDeTempoPausa.resetContador();
+        estadoAtual = ESTADO_SOLTAR;
+    }
+
     private void abrirPincas()
     {
         if (contadorDeTempoPausa.contarTempoDT())
@@ -240,8 +251,9 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraHorizontal
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
     }
 
-    public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp)
+    public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
     {
         this.garraInteracaoPowerUp = garraInteracaoPowerUp;
+        contadorDeFimTempo.configTempoParaAcao(tempoDuracao);        
     }
 }

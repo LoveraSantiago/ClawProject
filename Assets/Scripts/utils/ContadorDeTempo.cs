@@ -1,11 +1,14 @@
-using System;
 using UnityEngine;
 
 public class ContadorDeTempo 
 {
     private float tempoParaAcao;
-    private float contadorTempo;    
-    
+    private float contadorTempo;
+
+    public ContadorDeTempo()
+    {
+    }
+
     public ContadorDeTempo(float tempoEmSegundosParaAcao)
     {
         configTempoParaAcao(tempoEmSegundosParaAcao);

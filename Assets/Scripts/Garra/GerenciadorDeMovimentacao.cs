@@ -82,9 +82,9 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
         trocarMovimentador(movimentacaoSegBaixo);
     }
 
-    public void trocarParaAcaoSegurando(GarraInteracaoComPowerUp garraInteracaoPowerUp)
+    public void trocarParaAcaoSegurando(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
     {
-        movimentacaoSegCima.receberGarraInteracaoComPowerUp(garraInteracaoPowerUp);
+        movimentacaoSegCima.receberGarraInteracaoComPowerUp(garraInteracaoPowerUp, tempoDuracao);
         trocarMovimentador(movimentacaoSegCima);
     }
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
