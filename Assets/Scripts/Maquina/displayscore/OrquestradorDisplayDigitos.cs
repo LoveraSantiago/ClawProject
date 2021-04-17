@@ -60,7 +60,12 @@ public class OrquestradorDisplayDigitos
         WaitForSeconds waitForSeconds = new WaitForSeconds(0.25f);
 
         for(int contadorRegressivo = segundos; contadorRegressivo >= 0; contadorRegressivo--)
-        {        
+        {
+            if (!continuarContagemRegressiva)
+            {
+                break;
+            }
+
             for(int contador = 0; contador < 2; contador++)//COMPLETA 0.5 A CADA ITERACAO
             {
                 passarScore("!", contadorRegressivo, "!", Color.yellow);
