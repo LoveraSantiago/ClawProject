@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class OrquestradorDisplayDigitos 
 {
+    private bool continuarContagemRegressiva;
+
     private DisplayDeScoreDto displayDeScoresDto;
 
     private DisplayDigito displayCentena;
@@ -41,9 +43,9 @@ public class OrquestradorDisplayDigitos
             passarScore(centena, dezena, unidade);
             yield return wfsTempoBlink;
 
-            displayCentena.mostrarDigito("Y");//Talve tirar daqui
-            displayDezena.mostrarDigito("E");
-            displayUnidade.mostrarDigito("S");
+            displayCentena.mostrarDigito("Y", Color.green);//Talve tirar daqui
+            displayDezena.mostrarDigito ("E", Color.green);
+            displayUnidade.mostrarDigito("S", Color.green);
 
             yield return wfsTempoBlink;
         }
@@ -54,28 +56,51 @@ public class OrquestradorDisplayDigitos
 
     public IEnumerator mostrarContagemRegressivo(int segundos, int centena, int dezena, int unidade)
     {
+        continuarContagemRegressiva = true;
         WaitForSeconds waitForSeconds = new WaitForSeconds(0.25f);
+
         for(int contadorRegressivo = segundos; contadorRegressivo >= 0; contadorRegressivo--)
         {        
             for(int contador = 0; contador < 2; contador++)//COMPLETA 0.5 A CADA ITERACAO
             {
-                passarScore(0, 0, contadorRegressivo);
+                passarScore("!", contadorRegressivo, "!", Color.red);
                 yield return waitForSeconds;
 
                 desligarTodosDigitos();
                 yield return waitForSeconds;                
             }
         }
-        
-        passarScore(centena, dezena, unidade);
+
+        while (continuarContagemRegressiva)
+        {
+            passarScore("*", "*", "*", Color.red);
+            yield return waitForSeconds;
+
+            desligarTodosDigitos();
+            yield return waitForSeconds;
+        }
         yield return null;
     }
 
-    private  void passarScore(int centena, int dezena, int unidade)
+    private void passarScore(int centena, int dezena, int unidade)
     {
         displayCentena.mostrarDigito(centena);
         displayDezena.mostrarDigito(dezena);
         displayUnidade.mostrarDigito(unidade);
+    }
+
+    private void passarScore(string centena, string dezena, string unidade, Color cor)
+    {
+        displayCentena.mostrarDigito(centena, cor);
+        displayDezena.mostrarDigito(dezena, cor);
+        displayUnidade.mostrarDigito(unidade, cor);
+    }
+
+    private void passarScore(string centena, int dezena, string unidade, Color cor)
+    {
+        displayCentena.mostrarDigito(centena, cor);
+        displayDezena.mostrarDigito(dezena);
+        displayUnidade.mostrarDigito(unidade, cor);
     }
 
     private void desligarTodosDigitos()
