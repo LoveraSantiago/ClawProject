@@ -7,6 +7,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraHorizontal
     private const int ESTADO_IR_MEIO_PELA_DIREITA  = 3;
     private const int ESTADO_CENTRALIZADO  = 4;
     private const int ESTADO_SOLTAR = 5;
+    private const int ESTADO_ESPERANDO = 6;
     private const int NONE  = 99;
 
     private int estadoAtual;
@@ -92,6 +93,9 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraHorizontal
 
             case ESTADO_SOLTAR:
                 abrirPincas();
+                break;
+            case ESTADO_ESPERANDO:
+                esperando();
                 break;
             case NONE:
                 //pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
@@ -223,7 +227,17 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraHorizontal
         {
             pararGarra();
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoAberturaEsquerda, anguloDesejadoAberturaDireita);
+            if (pincas.isDireitaNoAngulo(anguloDesejadoAberturaDireita))
+            {
+                estadoAtual = ESTADO_ESPERANDO;
+            }
         }        
+    }
+
+    private void esperando()
+    {
+        pararGarra();
+        pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
     }
 
     public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp)
