@@ -25,8 +25,7 @@ public class PowerUpBomba : Coletavel,
     }
 
     public void consumirEvento(Collision2D evento)
-    {
-        Debug.Log("EXPLODIR CHAMADO");
+    {        
         if(!acionado && Utils.isColetavel(evento))
         {
             acionado = true;
