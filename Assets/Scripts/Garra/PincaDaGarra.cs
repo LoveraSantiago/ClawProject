@@ -19,7 +19,8 @@ public class PincaDaGarra
         colliderPDireita = this.pincaDireita.GetComponent<EdgeCollider2D>(); ;
     }
 
-    public void fixUpdateRotacionamento(
+    //FDT fixed delta time
+    public void rotacionarFDT(
         float velocidade, Quaternion anguloEsquerda, Quaternion anguloDireita)
     {
         incremento = Time.fixedDeltaTime + velocidade;

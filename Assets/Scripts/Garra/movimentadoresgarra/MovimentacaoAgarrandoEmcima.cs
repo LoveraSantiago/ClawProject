@@ -1,0 +1,259 @@
+using UnityEngine;
+
+public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraHorizontal
+{
+    private const int ESTADO_VOLTAR_SUBIDA = 1;
+    private const int ESTADO_IR_MEIO_PELA_ESQUERDA  = 2;
+    private const int ESTADO_IR_MEIO_PELA_DIREITA  = 3;
+    private const int ESTADO_CENTRALIZADO  = 4;
+    private const int ESTADO_SOLTAR = 5;
+    private const int ESTADO_ESPERANDO = 6;
+    private const int NONE  = 99;
+        
+    private int estadoAtual;
+    private int direcao;
+    private bool isJoystickSincronizado;
+
+    private Vector3 posMeio;
+
+    private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;
+    private Quaternion anguloDesejadoDireitaAntesEstadoInicial;
+
+    private Quaternion anguloDesejadoEsquerdaFechado;
+    private Quaternion anguloDesejadoDireitaFechado;
+
+    private Quaternion anguloDesejadoAberturaEsquerda;
+    private Quaternion anguloDesejadoAberturaDireita;    
+
+    private ContadorDeTempo contadorDeTempoPausa;
+    private ContadorDeTempo contadorDeFimTempo;
+    private GarraInteracaoComPowerUp garraInteracaoPowerUp;
+
+    public MovimentacaoAgarrandoEmcima()
+    {
+        posMeio = new Vector3(0, posInicial.y, 0);
+
+        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMin);
+        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
+
+        anguloDesejadoDireitaFechado  = Quaternion.Euler(0, 0, garraDto.AnguloFechamento);
+        anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraDto.AnguloFechamento);
+
+        anguloDesejadoAberturaDireita = Quaternion.Euler(0, 0, -garraDto.AnguloAbertura);
+        anguloDesejadoAberturaEsquerda = Quaternion.Euler(0, 0, garraDto.AnguloAbertura);
+        
+        contadorDeTempoPausa = new ContadorDeTempo(0.4f);
+        contadorDeFimTempo   = new ContadorDeTempo();
+        direcao = 1;
+    }
+
+    public override void preInicio()
+    {
+        estadoAtual = ESTADO_VOLTAR_SUBIDA;        
+        produtorEventoDirecao.produziuEvento(DirecaoDaGarra.CENTRALIZADA);
+        isJoystickSincronizado = false;
+    }
+
+    public override void update()
+    {
+        if (contadorDeFimTempo.contarTempoDT() && estadoAtual <= ESTADO_CENTRALIZADO)
+        {
+            acaoSoltarPowerUp();
+        }
+        switch (estadoAtual)
+        {
+            case ESTADO_CENTRALIZADO:
+                if (inputGame.aconteceuTapNaAreaSuperior())
+                {
+                    acaoSoltarPowerUp();
+                }
+                break;
+        }
+    }
+
+    public override void fixedUpdate()
+    {
+        switch (estadoAtual)
+        {
+            case ESTADO_VOLTAR_SUBIDA:
+                voltarPosicaoMeioCima();
+                break;
+
+            case ESTADO_IR_MEIO_PELA_DIREITA:
+                voltarAoMeioVindoPelaDireita();
+                break;
+
+            case ESTADO_IR_MEIO_PELA_ESQUERDA:
+                voltarAoMeioVindoPelaEsquerda();
+                break;
+
+            case ESTADO_CENTRALIZADO:
+                movendoZigueZague();
+                break;
+
+            case ESTADO_SOLTAR:
+                abrirPincas();
+                break;
+            case ESTADO_ESPERANDO:
+                esperando();
+                break;
+            case NONE:
+                //pincas.rotacionarFDT(compDaGarra.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+                break;
+
+        }
+        //Debug.Log("EstadoAtual : " + estadoAtual);
+    }
+
+    private void voltarPosicaoMeioCima()
+    {
+        if (!isGarraAcimaPosInicial())
+        {
+            moverGarraParaCimaFreeze();
+            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+        }
+        else
+        {
+            pararGarra();
+            colocarGarraNaAlturaInicial();
+            determinarDirecaoParaVoltarAoMeio();
+            contadorDeTempoPausa.resetContador();            
+        }
+    }
+
+    private void determinarDirecaoParaVoltarAoMeio()
+    {
+        if (isGarraMaiorPosHorizontal(0))
+        {
+            estadoAtual = ESTADO_IR_MEIO_PELA_ESQUERDA;            
+        }
+        else
+        {
+            estadoAtual = ESTADO_IR_MEIO_PELA_DIREITA;            
+        }
+    }
+
+    private void voltarAoMeioVindoPelaEsquerda()
+    {
+        if (contadorDeTempoPausa.contarTempoFDT())
+        {
+
+            if (!isGarraMenorPosHorizontal(0))
+            {
+                moverGarraHorizontalmenteFreeze(-1);
+                pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+            }
+            else
+            {
+                pararGarra();
+                colocarGarraNaPosInicial();
+                colocarEstadoCentralizado();                
+            }
+        }
+    }
+
+    private void voltarAoMeioVindoPelaDireita()
+    {
+        if (contadorDeTempoPausa.contarTempoFDT())
+        {
+            if (!isGarraMaiorPosHorizontal(0))
+            {
+                moverGarraHorizontalmenteFreeze(1);
+                pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+            }
+            else
+            {
+                pararGarra();
+                colocarGarraNaPosInicial();
+                colocarEstadoCentralizado();                
+            }
+        }
+    }
+
+    private void colocarEstadoCentralizado()
+    {           
+        pincas.acionarCollider();
+        contadorDeTempoPausa.resetContador();
+
+        garraInteracaoPowerUp.ligar();
+        garraInteracaoPowerUp.desligarGravidade();
+        garraInteracaoPowerUp.colocarNaPosicao(garraDto.CentroDaGarra.position);
+
+        estadoAtual = ESTADO_CENTRALIZADO;        
+    }
+
+    private void movendoZigueZague()
+    {        
+        if (contadorDeTempoPausa.contarTempoFDT())
+        {
+            reesincronizarJoystick();
+            pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
+            verificarSeMovimentacaoAtingiuLimites();
+            moverGarraHorizontalmenteFreeze(direcao);            
+        }
+    }
+
+    private void reesincronizarJoystick()
+    {
+        if (!isJoystickSincronizado)
+        {
+            dispararEventoDirecao(direcao);
+            isJoystickSincronizado = true;
+        }
+    }
+
+    private void verificarSeMovimentacaoAtingiuLimites()//DUPLICIDADE COM MOVIMENTACAO LATERAL
+    {
+        if (isGarraMaiorPosHorizontal(LIMITE_LATERAL_TELA - 0.1f))//DIMINUINDO RANGE PQ O OBJETO SEGURADO PODE IMPEDIR DA GARRA CHEGAR NO LIMITE
+        {
+            direcao = -1;
+            pararGarra();
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
+        }
+        else if (isGarraMenorPosHorizontal(-LIMITE_LATERAL_TELA + 0.1f))
+        {            
+            direcao = 1;
+            pararGarra();            
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
+        }
+        else
+        {
+        }
+    }
+
+    private void acaoSoltarPowerUp()
+    {
+        pararGarra();
+        garraInteracaoPowerUp.parar();
+        garraInteracaoPowerUp.ligarGravidade();
+        garraInteracaoPowerUp.fixarVerticalmente();
+
+        contadorDeTempoPausa.resetContador();
+        estadoAtual = ESTADO_SOLTAR;
+    }
+
+    private void abrirPincas()
+    {
+        if (contadorDeTempoPausa.contarTempoDT())
+        {
+            pararGarra();
+            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoAberturaEsquerda, anguloDesejadoAberturaDireita);
+            if (pincas.isDireitaNoAngulo(anguloDesejadoAberturaDireita))
+            {
+                estadoAtual = ESTADO_ESPERANDO;
+            }
+        }        
+    }
+
+    private void esperando()
+    {
+        pararGarra();
+        pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+    }
+
+    public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
+    {
+        this.garraInteracaoPowerUp = garraInteracaoPowerUp;
+        contadorDeFimTempo.configTempoParaAcao(tempoDuracao);        
+    }
+}

@@ -12,11 +12,18 @@ public class Utils
 
     public static bool isColetavel(GameObject gameObject)
     {
-        return !gameObject.CompareTag("Container");
+        return gameObject.CompareTag("Coletavel");
     }
 
     public static bool isTag(Collider2D collider, string nomeTag)
     {
         return collider.gameObject.CompareTag(nomeTag);
     }
+
+    public static bool isTag(Collision2D collision, string nomeTag)
+    {
+        return collision.gameObject.CompareTag(nomeTag);
+    }
+    
+    public class EventoVazioPowerUpFim { }
 }

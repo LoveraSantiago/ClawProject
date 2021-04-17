@@ -6,50 +6,45 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarra
     private Quaternion anguloDesejadoDireita;   
     
     private ContadorDeTempo contadorDeTempoTravamento;
-    private ProdutorDeEvento<string> produtorEventoGarraAcertou;
+    public ProdutorDeEvento<string> produtorEventoGarraAcertou { get; private set; }
 
     public MovimentacaoParaBaixo()
     {
-        anguloDesejadoDireita  = Quaternion.Euler(0, 0, -compDaGarra.AnguloAbertura);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  compDaGarra.AnguloAbertura);
+        anguloDesejadoDireita  = Quaternion.Euler(0, 0, -garraDto.AnguloAbertura);
+        anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  garraDto.AnguloAbertura);
 
-        contadorDeTempoTravamento = new ContadorDeTempo(1.5f, () => comunicadorComGerMovimentacao.trocarParaAgarrada());
+        contadorDeTempoTravamento  = new ContadorDeTempo(1.0f);
         produtorEventoGarraAcertou = new ProdutorDeEvento<string>();
     }
 
     public override void preInicio()
-    {        
-        compDaGarra.RigidBody.mass = 2;
-        contadorDeTempoTravamento.resetContador();
-        diminuirInerciaDaGarra();        
+    {   
+        colocarMassaNaGarra(2);
+        contadorDeTempoTravamento.resetContador();               
     }
 
     public override void update()
     {
-        contadorDeTempoTravamento.contarTempo();
+        if (contadorDeTempoTravamento.contarTempoDT())
+        {
+            comunicadorComGerMovimentacao.trocarParaAcaoAgarrada();
+        }
     }
 
     public override void fixedUpdate()
     {
-        pincas.fixUpdateRotacionamento(compDaGarra.VelocidadeAnguloAbertura,
+        pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura,
             anguloDesejadoEsquerda, anguloDesejadoDireita);
 
-        compDaGarra.RigidBody.velocity = new Vector2(0,           
-           1 * compDaGarra.VelocMovBaixo * Time.fixedDeltaTime);
+        moverGarraParaBaixoFreeze();
     }
 
     public override void garraColidiuCom(GameObject gameObject)
-    {
-        //Debug.Log("Atingiu: " + gameObject.name);
+    {        
         if (Utils.isColetavel(gameObject))
         {
             produtorEventoGarraAcertou.produziuEvento(gameObject.name);
-            comunicadorComGerMovimentacao.trocarParaAgarrada();
+            comunicadorComGerMovimentacao.trocarParaAcaoAgarrada();
         }
-    }
-
-    public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
-    {
-        return produtorEventoGarraAcertou;
-    }
+    }    
 }

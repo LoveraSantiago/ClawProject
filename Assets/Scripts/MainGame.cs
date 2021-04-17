@@ -9,24 +9,30 @@ public class MainGame : MonoBehaviour,
 {
     [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
     [Space(5)]
-    [SerializeField] private ComponentesDaGarraDto componentesDaGarra;
+    [SerializeField] private GarraDto componentesDaGarra;
     [Space(5)]
     [SerializeField] private ColetaveisDto coletaveisDto;
     [Space(5)]
     [SerializeField] private MaquinaDto maquinaDto;
     [Space(5)]
     [SerializeField] private ParticulasDto particulasDto;
+    [Space(5)]
 
-    //Componentes uis temporarios aqui...    
+    //Componentes  temporarios aqui...    
+    [SerializeField] private Sprite spriteBomb;
+    [SerializeField] private GameObject tileBomb;
     [Space(15)]
     [SerializeField] private Button btnSair;
 
     private GarraManager.MECANICA_GARRA mecanicaSelecionada;
 
-    private InputGame inputGame;
-    private GarraManager garraManager;
+    private GarraManager     garraManager;
     private ColetavelManager coletaveisManager;
-    private MaquinaManager maquinaManager;
+    private MaquinaManager   maquinaManager;
+    private PowerUpManager   powerUpManager;
+
+    private InputGame inputGame;
+    private EfeitoColetado   efeitoColetado;
 
     void OnEnable()
     {
@@ -44,16 +50,22 @@ public class MainGame : MonoBehaviour,
 
         mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
 
-        inputGame = new InputGameImpl(maquinaDto.ReferenciaChao);
-        garraManager = new GarraManager(componentesDaGarra, mecanicaSelecionada, inputGame);
+        inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
+        garraManager      = new GarraManager(componentesDaGarra, mecanicaSelecionada, inputGame);
         coletaveisManager = new ColetavelManager(coletaveisDto, this);
-        maquinaManager = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
-        EfeitoColetado efeitoColetado = new EfeitoColetado(particulasDto, this);
+        maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
+        efeitoColetado    = new EfeitoColetado(particulasDto, this);
+        powerUpManager    = new PowerUpManager(tileBomb, spriteBomb, this);
 
+        configurandoAcoes();
+        startLaizy();
+    }
+    
+    private void configurandoAcoes()
+    {
         new AcaoEventoColetado()
-            .configurarProdutor(coletaveisManager.getProdutorDeInfoColetado())
-            .adicionarConsumidor(maquinaManager.getDisplayImagensConsumidorInfoColetado())
-            .adicionarConsumidor(maquinaManager.getDisplayScoreConsumidorInfoColetado())
+            .configurarProdutor(coletaveisManager.produtorDeInformacoesDoColetado)            
+            .adicionarConsumidor(maquinaManager.getConsumidorInfoColetado())
             .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado());//TODO ver mudanca de ordem
 
         new AcaoImantadoPelaGarra()
@@ -63,18 +75,29 @@ public class MainGame : MonoBehaviour,
         new AcaoSubidaDaGarra()
             .configurarProdutor(garraManager.getProdutorDeEventoSubidaDaGarra())
             .adicionarConsumidor(coletaveisManager.getConsumidorDeContagemSubidaDaGarra());
-
+        
         new AcaoSincroniaComDirecaoDaGarra()
             .configurarProdutor(garraManager.getDisparadorDeEventoDeDirecao())
             .adicionarConsumidor(maquinaManager.getJoystickHasteConsumidorDirecao());
 
-        startLaizy();
+        new AcaoPowerUpInicio()
+            .configurarProdutor(powerUpManager.produtorDeEventoPowerUp)
+            .adicionarConsumidor(garraManager.getConsumidorDePowerUpInfo())
+            .adicionarConsumidor(maquinaManager.getConsumidorDePowerUpInfo())
+            .adicionarConsumidor(coletaveisManager.getConsumidorDePowerUpInfo());
+
+        new AcaoPowerUpFim()
+            .configurarProdutor(powerUpManager.produtorDeEventoFinalizacao)
+            .adicionarConsumidor(garraManager.getConsumidorDePowerUpFim())
+            .adicionarConsumidor(maquinaManager.getConsumidorDePowerUpFim())
+            .adicionarConsumidor(coletaveisManager.getConsumidorDePowerUpFim());
     }
 
     private void startLaizy()
     {
         coletaveisManager.start();
-        garraManager.start();        
+        garraManager.start();
+        maquinaManager.recebendoPowerUp(powerUpManager.distribuirPowerUpParaMaquina());
     }
 
     void Update()

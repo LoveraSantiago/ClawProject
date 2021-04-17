@@ -9,18 +9,23 @@ public class Coletavel
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }
 
-    private GameObject goColetavel;
+    protected GameObject goColetavel;
     private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;    
     
     public Coletavel()
+        :this(mainTile, nomeador.getName())
+    {        
+    }   
+
+    public Coletavel(GameObject go, string nome)
     {
-        goColetavel = GameObject.Instantiate(mainTile, mainTile.transform.position, mainTile.transform.rotation, mainTileParent);
-        nome = nomeador.getName();
+        goColetavel = GameObject.Instantiate(go, go.transform.position, go.transform.rotation, mainTileParent);
+        this.nome = nome;
         goColetavel.name = nome;
         spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();
         rigidbody = goColetavel.GetComponent<Rigidbody2D>();
-    }
+    }   
 
     public void colocarNaPosicao(Vector3 posicao) {
         goColetavel.transform.position = posicao;
@@ -49,7 +54,6 @@ public class Coletavel
         goColetavel.layer = LayerMask.NameToLayer("Coletavel");
     }
 
-
     public void addParent(Transform parent)
     {
         goColetavel.transform.SetParent(parent);
@@ -62,14 +66,35 @@ public class Coletavel
         spriteRenderer.sortingOrder = 31;
     }
 
+    public void parar()
+    {
+        rigidbody.velocity = Vector2.zero;
+        rigidbody.angularVelocity = 0;
+    }
+
     public void desligar()
     {
         goColetavel.SetActive(false);
     }
 
-    public void ligar()
+    public virtual void ligar()
     {
         goColetavel.SetActive(true);
+    }
+
+    public void desligarGravidade()
+    {
+        rigidbody.gravityScale = 0;
+    }
+
+    public void ligarGravidade()
+    {
+        rigidbody.gravityScale = 1;
+    }
+
+    public void fixarVerticalmente()
+    {
+        rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
 
     public Sprite getSprite()

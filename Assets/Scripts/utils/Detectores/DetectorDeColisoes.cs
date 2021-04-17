@@ -1,18 +1,21 @@
 using UnityEngine;
-using System;
 
 public class DetectorDeColisoes : MonoBehaviour
 {
-    private Action<Collision2D> actionCollisionOnEnter;
+    private ConsumidorDeEventoCollider consumidorCollider = AdapterDeEventosUtils.getAdapterVazioConsumidorDeEventoCollider();
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Start()
     {        
-        actionCollisionOnEnter.Invoke(collision);
     }
 
-    public DetectorDeColisoes registrarConsumidorCollision2dOnEnter(Action<Collision2D> actionCollisionOnEnter)
-    {        
-        this.actionCollisionOnEnter = actionCollisionOnEnter;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {     
+        consumidorCollider.consumirEvento(collision);
+    }
+
+    public DetectorDeColisoes registrarConsumidorCollision2dOnEnter(ConsumidorDeEventoCollider consumidorCollider)
+    {
+        this.consumidorCollider = consumidorCollider;     
         return this;
     }
 }

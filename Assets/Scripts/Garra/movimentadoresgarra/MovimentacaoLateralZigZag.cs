@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
 {    
-    private float movimentoLateral;        
-    private float direcao;
+    private int direcao;
 
-    private bool isUsandoMaxAngulo;
+    private float movimentoLateral;
+
     private float anguloAtual;
-
-    private Vector2 posicaoInicial;
+    private bool isUsandoMaxAngulo;
+    
     private Quaternion anguloDesejadoEsquerdaMin;
     private Quaternion anguloDesejadoDireitaMin;
 
@@ -16,33 +16,29 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
     private Quaternion anguloDesejadoDireitaMax;
 
     private Quaternion anguloDesejadoEsquerdaAtual;
-    private Quaternion anguloDesejadoDireitaAtual;
+    private Quaternion anguloDesejadoDireitaAtual;    
 
-    private InputGame inputGame;
-
-    public MovimentacaoLateralZigZag(InputGame inputGame)
+    public MovimentacaoLateralZigZag()
     {
-        this.inputGame = inputGame;
+        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMin);
+        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
 
-        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMin);
-        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMin);
+        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMax);
+        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, garraDto.AnguloIdleMax);
 
-        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -compDaGarra.AnguloIdleMax);
-        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, compDaGarra.AnguloIdleMax);
-
-        posicaoInicial = compDaGarra.RigidBody.transform.localPosition;
+        posInicial = garraDto.RigidBody.transform.localPosition;
         direcao = 1;        
     }
 
     public override void preInicio()
     {        
         configurarAngulosParaMax();
-        dispararEventoDirecao();
+        dispararEventoDirecao(direcao);
 
-        compDaGarra.RigidBody.transform.localPosition = new Vector2(compDaGarra.RigidBody.position.x, posicaoInicial.y);
-        compDaGarra.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        colocarGarraNaAlturaInicial();        
 
         pincas.acionarTrigger();
+        moverGarraHorizontalmenteFreeze(direcao);
     }
 
     public override void update()
@@ -50,8 +46,8 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         if (inputGame.aconteceuTapNaAreaSuperior())
         {
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
-            comunicadorComGerMovimentacao.trocarParaAcaoDescendo(posicaoInicial);
-            compDaGarra.RigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
+            desafixarGarraHorizontalmente();
             pincas.acionarCollider();
         }
     }
@@ -61,25 +57,21 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
         verificarSeMovimentacaoAtingiuLimites();
         verificarSePincaAtingiuLimites();
 
-        pincas.fixUpdateRotacionamento(compDaGarra.VelocAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);
-        
-        compDaGarra.RigidBody.velocity = new Vector2(
-            direcao * compDaGarra.VelocMovHorizontal * Time.fixedDeltaTime,
-            compDaGarra.RigidBody.velocity.y);
+        pincas.rotacionarFDT(garraDto.VelocAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
     }
 
     private void verificarSeMovimentacaoAtingiuLimites()
     {
-        if (compDaGarra.RigidBody.transform.localPosition.x > LIMITE_LATERAL_TELA)
+        if (isGarraMaiorPosHorizontal(LIMITE_LATERAL_TELA))            
         {
             direcao = -1;     
-            diminuirInerciaDaGarra();
+            moverGarraHorizontalmenteFreeze(direcao);            
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
         }
-        else if (compDaGarra.RigidBody.transform.localPosition.x < -LIMITE_LATERAL_TELA)
+        else if (isGarraMenorPosHorizontal(-LIMITE_LATERAL_TELA))
         {
-            direcao = 1;     
-            diminuirInerciaDaGarra();
+            direcao = 1;
+            moverGarraHorizontalmenteFreeze(direcao);            
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
         }
         else
@@ -101,24 +93,12 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
                 configurarAngulosParaMax();
             }
         }       
-    }
-
-    private void dispararEventoDirecao()
-    {
-        if(direcao == 1)
-        {
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
-        }
-        else
-        {
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
-        }
-    }
+    }    
 
     private void configurarAngulosParaMax()
     {
         isUsandoMaxAngulo = true;
-        anguloAtual = -compDaGarra.AnguloIdleMax;
+        anguloAtual = -garraDto.AnguloIdleMax;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMax;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMax;
     }
@@ -126,7 +106,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
     private void configurarAngulosParaMin()
     {
         isUsandoMaxAngulo = false;
-        anguloAtual = compDaGarra.AnguloIdleMin;
+        anguloAtual = garraDto.AnguloIdleMin;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMin;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMin;
     }

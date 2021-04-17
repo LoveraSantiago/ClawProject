@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class JoystickHaste : ConsumidorDeEvento<DirecaoDaGarra>
 {
-    private readonly int ANGULO = 25;
+    private readonly int ANGULO = 20;
 
     private float velocidade;
     private float incremento;
@@ -13,6 +13,7 @@ public class JoystickHaste : ConsumidorDeEvento<DirecaoDaGarra>
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;
     private Quaternion anguloDesejadoAtual;
+    private Quaternion anguloInicial;
 
     //UTILIZANDO MESMA VELOCIDADE DE MOVIMENTACAO HORIZONTAL DA GARRA
     /* A VELOCIDADE VAI PEGAR O VALOR INICIAL DE VELOCIDADE SE MUDADO 
@@ -20,11 +21,12 @@ public class JoystickHaste : ConsumidorDeEvento<DirecaoDaGarra>
     public JoystickHaste(Transform hasteJoystick, float velocidade)
     {
         this.hasteJoystick = hasteJoystick;
-        this.velocidade = velocidade * .0025f;//AJUSTANDO PARA PROPORCAO TAMANHO JOYSTICK
+        this.velocidade = velocidade * .3f;//AJUSTANDO PARA PROPORCAO TAMANHO JOYSTICK
 
         anguloDesejadoDireita = Quaternion.Euler(0, 0, -ANGULO);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0, ANGULO);
         anguloDesejadoAtual = Quaternion.Euler(0, 0, 0);
+        anguloInicial = this.hasteJoystick.rotation;
     }
 
     public void fixedUpdate()
@@ -50,6 +52,12 @@ public class JoystickHaste : ConsumidorDeEvento<DirecaoDaGarra>
         else if(direcao == DirecaoDaGarra.ESQUERDA)
         {
             anguloDesejadoAtual = anguloDesejadoEsquerda;
+            multiplicador = 1;
+        }
+        else if(direcao == DirecaoDaGarra.CENTRALIZADA)
+        {
+            Debug.Log("Direcao CENTRO");
+            anguloDesejadoAtual = Quaternion.Euler(0, 0, 0); ;
             multiplicador = 1;
         }
         else

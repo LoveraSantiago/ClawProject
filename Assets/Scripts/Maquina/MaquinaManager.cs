@@ -1,19 +1,20 @@
 using UnityEngine;
 
-public class MaquinaManager 
+public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
+                              ConsumidorDeEvento<Utils.EventoVazioPowerUpFim>
 {
-    private DisplayDeColetados displayDeImgs;
+    private DisplayDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
     private JoystickHaste joystickHaste;
     private BotoesPowerUp botoesPowerUp;
 
     public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
-        displayDeImgs   = new DisplayDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
+        displayDeColetados   = new DisplayDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
         displayDeScores = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         joystickHaste   = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
 
-        botoesPowerUp = new BotoesPowerUp(maquinaDto.PowerUpDto, inputGame, monoBehaviour);
+        botoesPowerUp = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame, monoBehaviour);
     }
 
     public void update()
@@ -24,6 +25,11 @@ public class MaquinaManager
     public void fixedUpdate()
     {
         joystickHaste.fixedUpdate();
+    }
+
+    public void recebendoPowerUp(AcaoBotaoPowerUp acaoBotaoPowerUp)
+    {
+        botoesPowerUp.recebendoPowerUp(acaoBotaoPowerUp);
     }
 
     public void beginDragPowerUp(Vector2 posicao)
@@ -41,21 +47,51 @@ public class MaquinaManager
         botoesPowerUp.endDrag();
     }
 
+    private void processarInformacoesDoColetado(InformacoesColetado infoColetado)
+    {
+        displayDeColetados.adicionarSpriteAoDisplay(infoColetado.sprite, infoColetado.resetDisplay);
+        displayDeScores.mostrarScore(infoColetado.score, infoColetado.resultCombinacao);
+    }
+
+    private void processarFimDePowerUp()
+    {
+        displayDeScores.finalizarContatemRegressiva();
+        botoesPowerUp.desacionarBotao();
+    }
+
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO
+    public void consumirEvento(InformacoesColetado infoColetado)
+    {
+        processarInformacoesDoColetado(infoColetado);
+    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> FIM
+
+    //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
+    public void consumirEvento(Utils.EventoVazioPowerUpFim evento)
+    {
+        processarFimDePowerUp();
+    }
+    //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> FIM
 
     //CONSUMIDORES DE EVENTOS INICIO
     public ConsumidorDeEvento<DirecaoDaGarra> getJoystickHasteConsumidorDirecao()
     {
         return joystickHaste.getConsumidorDeEventoDeDirecao();
+    }    
+
+    public ConsumidorDeEvento<InformacoesColetado> getConsumidorInfoColetado()
+    {
+        return this;
     }
 
-    public ConsumidorDeEvento<InformacoesColetado> getDisplayImagensConsumidorInfoColetado()
+    public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
-        return displayDeImgs.getDisplayImagensConsumidor();
+        return displayDeScores.getConsumidorDePowerUpInfo();
     }
 
-    public ConsumidorDeEvento<InformacoesColetado> getDisplayScoreConsumidorInfoColetado()
+    public ConsumidorDeEvento<Utils.EventoVazioPowerUpFim> getConsumidorDePowerUpFim()
     {
-        return displayDeScores.getDisplayScoreConsumidor();
-    }
+        return this;
+    }   
     //CONSUMIDORES DE EVENTOS FIM
 }

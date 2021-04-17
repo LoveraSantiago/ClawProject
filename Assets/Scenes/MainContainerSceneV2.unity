@@ -5136,9 +5136,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mecanicaAtual: 1
   componentesDaGarra:
-    velocMovHorizontal: 150
-    velocMovCima: 500
-    velocMovBaixo: 500
+    velocMovHorizontal: 3.1
+    velocMovCima: 7.5
+    velocMovBaixo: 7.5
     anguloIdleMin: -5
     anguloIdleMax: 15
     velocAnguloIdle: 0.3
@@ -5147,6 +5147,7 @@ MonoBehaviour:
     anguloFechamento: 15
     velocAnguloFechamento: 1.5
     rigidBody: {fileID: 1879337339}
+    centroDaGarra: {fileID: 1264822102}
     pincaEsquerda: {fileID: 1879337338}
     pincaDireita: {fileID: 1879337337}
     colisor: {fileID: 745325034}
@@ -5195,7 +5196,7 @@ MonoBehaviour:
       - {fileID: 660903945}
       - {fileID: 419047350}
       - {fileID: 514353999}
-    powerUpDto:
+    botoesPowerUpDto:
       bordasBtns:
       - {fileID: 21300000, guid: a23ddb0e1a97a7145a4f2adebb8447e9, type: 3}
       - {fileID: 21300000, guid: 8c942bfafa862a64a97c76dca69e4b90, type: 3}
@@ -5210,6 +5211,8 @@ MonoBehaviour:
     parentParticulas: {fileID: 1488198862}
     seguidoraParticulas: {fileID: 19295419}
     luzSeguidora: {fileID: 1216567083}
+  spriteBomb: {fileID: 21300000, guid: ff767bdfc020f404783fe84614e5a795, type: 3}
+  tileBomb: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
   btnSair: {fileID: 1780015346}
 --- !u!61 &491158116
 BoxCollider2D:
@@ -5271,7 +5274,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!82 &519420030
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5279,7 +5282,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9ab0aa6a032f1004595d6bcaf989713b, type: 3}
@@ -15865,6 +15868,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5014026568556634405, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1264822102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1379266188458234233, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+  m_PrefabInstance: {fileID: 1879337336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1476824514
 GameObject:
   m_ObjectHideFlags: 0
@@ -21173,6 +21181,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 1869876798932273626, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1907269042779730411, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
       propertyPath: m_RootOrder
       value: 2

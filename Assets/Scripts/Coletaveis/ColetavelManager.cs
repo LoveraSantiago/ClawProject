@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class ColetavelManager : ConsumidorDeEventoTrigger,
                                 ConsumidorDeEvento<string>,
-                                ConsumidorDeEvento<int>
+                                ConsumidorDeEvento<int>,
+                                ConsumidorDeEvento<PowerUpInfo>,
+                                ConsumidorDeEvento<Utils.EventoVazioPowerUpFim>
 {
+    private bool powerUpEmAcao;
+
     private ColetaveisDto coletaveisDto;
     private Coletavel coletavelImantado;
-
+    
     private Board board;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contadorDeColetaveis;
     private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
 
-    private ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado;
+    public ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado { get; private set; }
     private MonoBehaviour monoBehaviour;
 
     public ColetavelManager(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
@@ -26,7 +30,9 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
         board = new Board(coletaveisDto.BoardDto);        
         contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
-        coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);        
+        coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);
+
+        powerUpEmAcao = false;
     }   
 
     public void start()
@@ -77,12 +83,45 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private void processarDesimantado()
     {
         coletavelImantado.desimantar();
+    }    
+
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER INICIO
+    //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
+    public void consumirEvento(Collider2D goColetado)
+    {
+        if(goColetado.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0 &&
+            !powerUpEmAcao)
+        {            
+            processarColetado(goColetado.gameObject);
+        }
+    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM
+
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<STRING> INICIO    
+    public void consumirEvento(string nomeColetavel)
+    {
+        processarImantado(nomeColetavel);
+    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<STRING> FIM
+
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INT> INICIO    
+    public void consumirEvento(int evento)
+    {
+        processarDesimantado();
+    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INT> FIM    
+
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> INICIO    
+    public void consumirEvento(PowerUpInfo powerUpInfo)
+    {
+        powerUpEmAcao = true;
     }
 
-    public ProdutorDeEvento<InformacoesColetado> getProdutorDeInfoColetado()
+    public void consumirEvento(Utils.EventoVazioPowerUpFim evento)
     {
-        return produtorDeInformacoesDoColetado;
+        powerUpEmAcao = false;
     }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> FIM    
 
     public ConsumidorDeEvento<string> getConsumidorDeColetavelParaImantar()
     {
@@ -94,27 +133,13 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         return this;
     }
 
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
-    //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
-    public void consumirEvento(Collider2D goColetado)
+    public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
-        if(goColetado.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0)
-        {            
-            processarColetado(goColetado.gameObject);
-        }
-    }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
-
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
-    //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
-    public void consumirEvento(string nomeColetavel)
-    {
-        processarImantado(nomeColetavel);
+        return this;
     }
 
-    public void consumirEvento(int evento)
+    public ConsumidorDeEvento<Utils.EventoVazioPowerUpFim> getConsumidorDePowerUpFim()
     {
-        processarDesimantado();
+        return this;
     }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
 }

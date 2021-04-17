@@ -2,7 +2,7 @@ using UnityEngine;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class ComponentesDaGarraDto 
+public class GarraDto 
 {
     [SerializeField] private float velocMovHorizontal;
     [SerializeField] private float velocMovCima;
@@ -19,7 +19,8 @@ public class ComponentesDaGarraDto
     [SerializeField] private float velocAnguloFechamento;
     [Space(5)]
     [SerializeField] private Rigidbody2D rigidBody;
-    [Space(5)]    
+    [Space(5)]
+    [SerializeField] private Transform centroDaGarra;
     [SerializeField] private Transform pincaEsquerda;
     [SerializeField] private Transform pincaDireita;
     [SerializeField] private GameObject colisor;
@@ -40,6 +41,7 @@ public class ComponentesDaGarraDto
 
     public Rigidbody2D RigidBody { get { return rigidBody; } }
     
+    public Transform CentroDaGarra { get { return centroDaGarra; } }
     public Transform PincaEsquerda { get { return pincaEsquerda; } }
     public Transform PincaDireita { get { return pincaDireita; } }
     public GameObject Colisor { get { return colisor; } }

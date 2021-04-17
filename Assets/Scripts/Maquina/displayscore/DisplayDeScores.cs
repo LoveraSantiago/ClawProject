@@ -1,27 +1,29 @@
 using UnityEngine;
-using System.Collections;
 
-public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>
+public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
 { 
     private DisplayDigito displayCentena;
     private DisplayDigito displayDezena;
     private DisplayDigito displayUnidade;
 
-    private DisplayDeScoreDto displayDeScoresDto;
+    //private DisplayDeScoreDto displayDeScoresDto;
+    private OrquestradorDisplayDigitos orquestrador;
     private MonoBehaviour monoBehaviour;
 
     public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto, MonoBehaviour monoBehaviour)
     {
         this.monoBehaviour = monoBehaviour;
-        this.displayDeScoresDto = displayDeScoresDto;
+        //this.displayDeScoresDto = displayDeScoresDto;
 
         GameObject[] displayScores = displayDeScoresDto.GosDisplayScores;
         displayCentena = new DisplayDigito(displayScores[0]);
         displayDezena = new DisplayDigito(displayScores[1]);
         displayUnidade = new DisplayDigito(displayScores[2]);
+
+        orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
    
-    private void mostrarScore(int score, bool result)
+    public void mostrarScore(int score, bool result)
     {
         int scoreTotal = score;
         int centena = scoreTotal / 100;
@@ -33,67 +35,36 @@ public class DisplayDeScores : ConsumidorDeEvento<InformacoesColetado>
         int unidade = scoreTotal;
         if (result)
         {
-            monoBehaviour.StartCoroutine(blinkarScoreSucesso(centena, dezena, unidade));
+            monoBehaviour.StartCoroutine(orquestrador.blinkarScoreSucesso(centena, dezena, unidade));
         }
         else
         {
-            monoBehaviour.StartCoroutine(blinkarScore(centena, dezena, unidade));
+            monoBehaviour.StartCoroutine(orquestrador.blinkarScore(centena, dezena, unidade));
         }
     }
 
-    private IEnumerator blinkarScore(int centena, int dezena, int unidade)
+    private void mostrarContagemRegressiva(int duracao)
     {
-        WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
-        for(int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
-        {
-            displayCentena.desligarDigito();
-            displayDezena.desligarDigito();
-            displayUnidade.desligarDigito();
+        int scoreCentena = displayCentena.digito;
+        int scoreDezena = displayDezena.digito;
+        int scoreUnidade = displayUnidade.digito;
 
-            yield return wfsTempoBlink;
-
-            displayCentena.mostrarDigito(centena);
-            displayDezena.mostrarDigito(dezena);
-            displayUnidade.mostrarDigito(unidade);
-
-            yield return wfsTempoBlink;
-        }
-        yield return null;
+        monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao, scoreCentena, scoreDezena, scoreUnidade));
+    }     
+    
+    public void finalizarContatemRegressiva()
+    {
+        orquestrador.finalizarContatemRegressiva();
     }
 
-    private IEnumerator blinkarScoreSucesso(int centena, int dezena, int unidade)
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
+    public void consumirEvento(PowerUpInfo evento)
     {
-        WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
-        for(int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
-        {
-            displayCentena.mostrarDigito(centena);
-            displayDezena.mostrarDigito(dezena);
-            displayUnidade.mostrarDigito(unidade);
-
-            yield return wfsTempoBlink;
-
-            displayCentena.mostrarDigito("Y");
-            displayDezena.mostrarDigito("E");
-            displayUnidade.mostrarDigito("S");
-
-            yield return wfsTempoBlink;
-        }
-
-        displayCentena.mostrarDigito(centena);
-        displayDezena.mostrarDigito(dezena);
-        displayUnidade.mostrarDigito(unidade);
-        yield return null;
+        mostrarContagemRegressiva(evento.duracaoTempo);
     }
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO   
 
-    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
-    //CONSOME EVENTO DISPARADO PELO COLETAVEIS MANAGER AO COLETAR UM COLETAVEL
-    public void consumirEvento(InformacoesColetado infoColetado)
-    {
-        mostrarScore(infoColetado.score, infoColetado.resultCombinacao);        
-    }
-    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
-
-    public ConsumidorDeEvento<InformacoesColetado> getDisplayScoreConsumidor()
+    public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
         return this;
     }

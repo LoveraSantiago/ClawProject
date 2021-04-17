@@ -4,15 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Gummy
-  - Urso_Vermelho
-  - Urso_Verde
-  - Urso_Amarelo
-  - Gummy_Roxo
-  - Laranja
-  - Coco
   - Container
   - ColetavelDoTubo
+  - Coletavel
   layers:
   - Default
   - TransparentFX

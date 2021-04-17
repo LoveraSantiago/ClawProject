@@ -2,7 +2,7 @@ using UnityEngine;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class PowerUpDto 
+public class BotoesPowerUpDto 
 {
     [SerializeField] private Sprite[] bordasBtns = new Sprite[2];
     [SerializeField] private GameObject[] btnsPowerUp = new GameObject[4];
