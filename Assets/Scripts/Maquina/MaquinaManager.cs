@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>
+public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
+                              ConsumidorDeEvento<int>
 {
     private DisplayDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
@@ -52,12 +53,25 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>
         displayDeScores.mostrarScore(infoColetado.score, infoColetado.resultCombinacao);
     }
 
+    private void processarFimDePowerUp()
+    {
+        displayDeScores.finalizarContatemRegressiva();
+        botoesPowerUp.desacionarBotao();
+    }
+
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO
     public void consumirEvento(InformacoesColetado infoColetado)
     {
         processarInformacoesDoColetado(infoColetado);
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> FIM
+
+    //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
+    public void consumirEvento(int evento)
+    {
+        processarFimDePowerUp();
+    }
+    //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> FIM
 
     //CONSUMIDORES DE EVENTOS INICIO
     public ConsumidorDeEvento<DirecaoDaGarra> getJoystickHasteConsumidorDirecao()
@@ -77,7 +91,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>
 
     public ConsumidorDeEvento<int> getConsumidorDePowerUpFim()
     {
-        return botoesPowerUp.getConsumidorDePowerUpFim();
+        return this;
     }   
     //CONSUMIDORES DE EVENTOS FIM
 }

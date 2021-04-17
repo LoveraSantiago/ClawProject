@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BotoesPowerUp : ConsumidorDeEvento<int>
+public class BotoesPowerUp 
 {
     private bool acionadoPowerUp;
     private BotaoPowerUp btnPUp1;
@@ -132,16 +132,4 @@ public class BotoesPowerUp : ConsumidorDeEvento<int>
             dragavelAtual = dragavelVazio;
         }
     }   
-
-    //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
-    public void consumirEvento(int evento)
-    {
-        desacionarBotao();
-    }
-    //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> FIM
-
-    public ConsumidorDeEvento<int> getConsumidorDePowerUpFim()
-    {
-        return this;
-    }
 }

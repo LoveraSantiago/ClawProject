@@ -50,7 +50,12 @@ public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
         int scoreUnidade = displayUnidade.digito;
 
         monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao, scoreCentena, scoreDezena, scoreUnidade));
-    }       
+    }     
+    
+    public void finalizarContatemRegressiva()
+    {
+        orquestrador.finalizarContatemRegressiva();
+    }
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
     public void consumirEvento(PowerUpInfo evento)

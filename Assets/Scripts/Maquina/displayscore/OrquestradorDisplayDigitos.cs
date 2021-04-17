@@ -43,7 +43,7 @@ public class OrquestradorDisplayDigitos
             passarScore(centena, dezena, unidade);
             yield return wfsTempoBlink;
 
-            displayCentena.mostrarDigito("Y", Color.green);//Talve tirar daqui
+            displayCentena.mostrarDigito("Y", Color.green);
             displayDezena.mostrarDigito ("E", Color.green);
             displayUnidade.mostrarDigito("S", Color.green);
 
@@ -63,7 +63,7 @@ public class OrquestradorDisplayDigitos
         {        
             for(int contador = 0; contador < 2; contador++)//COMPLETA 0.5 A CADA ITERACAO
             {
-                passarScore("!", contadorRegressivo, "!", Color.red);
+                passarScore("!", contadorRegressivo, "!", Color.yellow);
                 yield return waitForSeconds;
 
                 desligarTodosDigitos();
@@ -73,20 +73,27 @@ public class OrquestradorDisplayDigitos
 
         while (continuarContagemRegressiva)
         {
-            passarScore("*", "*", "*", Color.red);
+            passarScore("*", "*", "*", Color.yellow);
             yield return waitForSeconds;
 
             desligarTodosDigitos();
             yield return waitForSeconds;
         }
+
+        passarScore(centena, dezena, unidade);
         yield return null;
+    }
+
+    public void finalizarContatemRegressiva()
+    {
+        continuarContagemRegressiva = false;
     }
 
     private void passarScore(int centena, int dezena, int unidade)
     {
-        displayCentena.mostrarDigito(centena);
-        displayDezena.mostrarDigito(dezena);
-        displayUnidade.mostrarDigito(unidade);
+        displayCentena.mostrarDigito(centena, Color.red);
+        displayDezena.mostrarDigito(dezena, Color.red);
+        displayUnidade.mostrarDigito(unidade, Color.red);
     }
 
     private void passarScore(string centena, string dezena, string unidade, Color cor)
@@ -99,7 +106,7 @@ public class OrquestradorDisplayDigitos
     private void passarScore(string centena, int dezena, string unidade, Color cor)
     {
         displayCentena.mostrarDigito(centena, cor);
-        displayDezena.mostrarDigito(dezena);
+        displayDezena.mostrarDigito(dezena, cor);
         displayUnidade.mostrarDigito(unidade, cor);
     }
 

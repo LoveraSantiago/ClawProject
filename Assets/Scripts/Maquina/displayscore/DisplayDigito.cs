@@ -28,7 +28,7 @@ public class DisplayDigito
         corOriginal = arrayDeLeds[0, 0].color;
 
         arrayLigados = ARRAY_VAZIO;
-        mostrarDigito(0);
+        mostrarDigito(0, Color.red);
     }
 
     public void mostrarDigito(string digito, Color cor)
@@ -39,12 +39,12 @@ public class DisplayDigito
         ligarPosicoes(arrayLigados, cor);
     }
 
-    public void mostrarDigito(int digito)
+    public void mostrarDigito(int digito, Color cor)
     {
         this.digito = digito;
         desligarPosicoes(arrayLigados);
         arrayLigados = getArrayParaLigar(digito);
-        ligarPosicoes(arrayLigados, Color.red);
+        ligarPosicoes(arrayLigados, cor);
     }    
 
     public void desligarDigito()
