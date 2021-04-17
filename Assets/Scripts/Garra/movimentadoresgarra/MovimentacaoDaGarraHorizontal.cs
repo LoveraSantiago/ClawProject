@@ -5,5 +5,17 @@ public class MovimentacaoDaGarraHorizontal : MovimentacaoDaGarra
     static MovimentacaoDaGarraHorizontal()
     {
         produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
-    }    
+    }
+
+    protected void dispararEventoDirecao(int direcao)
+    {
+        if (direcao == 1)
+        {
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
+        }
+        else
+        {
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
+        }
+    }
 }

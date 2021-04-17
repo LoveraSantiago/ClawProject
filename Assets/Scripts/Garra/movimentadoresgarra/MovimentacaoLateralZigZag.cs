@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
 {    
-    private float movimentoLateral;        
     private int direcao;
 
-    private bool isUsandoMaxAngulo;
+    private float movimentoLateral;
+
     private float anguloAtual;
+    private bool isUsandoMaxAngulo;
     
     private Quaternion anguloDesejadoEsquerdaMin;
     private Quaternion anguloDesejadoDireitaMin;
@@ -32,7 +33,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
     public override void preInicio()
     {        
         configurarAngulosParaMax();
-        dispararEventoDirecao();
+        dispararEventoDirecao(direcao);
 
         colocarGarraNaAlturaInicial();        
 
@@ -92,19 +93,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
                 configurarAngulosParaMax();
             }
         }       
-    }
-
-    private void dispararEventoDirecao()
-    {
-        if(direcao == 1)
-        {
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
-        }
-        else
-        {
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
-        }
-    }
+    }    
 
     private void configurarAngulosParaMax()
     {

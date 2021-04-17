@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
+public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraHorizontal
 {
     private const int ESTADO_VOLTAR_SUBIDA = 1;
     private const int ESTADO_IR_MEIO_PELA_ESQUERDA  = 2;
@@ -10,9 +10,10 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     private const int NONE  = 99;
 
     private int estadoAtual;
-    private Vector3 posMeio;
-
     private int direcao;
+    private bool isJoystickSincronizado;
+
+    private Vector3 posMeio;
 
     private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;
     private Quaternion anguloDesejadoDireitaAntesEstadoInicial;
@@ -45,8 +46,9 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
 
     public override void preInicio()
     {
-        estadoAtual = ESTADO_VOLTAR_SUBIDA;
-        //colocarMassaNaGarra(30);
+        estadoAtual = ESTADO_VOLTAR_SUBIDA;        
+        produtorEventoDirecao.produziuEvento(DirecaoDaGarra.CENTRALIZADA);
+        isJoystickSincronizado = false;
     }
 
     public override void update()
@@ -111,7 +113,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
             pararGarra();
             colocarGarraNaAlturaInicial();
             determinarDirecaoParaVoltarAoMeio();
-            contadorDeTempoPausa.resetContador();
+            contadorDeTempoPausa.resetContador();            
         }
     }
 
@@ -119,11 +121,11 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     {
         if (isGarraMaiorPosHorizontal(0))
         {
-            estadoAtual = ESTADO_IR_MEIO_PELA_ESQUERDA;
+            estadoAtual = ESTADO_IR_MEIO_PELA_ESQUERDA;            
         }
         else
         {
-            estadoAtual = ESTADO_IR_MEIO_PELA_DIREITA;
+            estadoAtual = ESTADO_IR_MEIO_PELA_DIREITA;            
         }
     }
 
@@ -131,6 +133,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
     {
         if (contadorDeTempoPausa.contarTempoFDT())
         {
+
             if (!isGarraMenorPosHorizontal(0))
             {
                 moverGarraHorizontalmenteFreeze(-1);
@@ -172,19 +175,28 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         garraInteracaoPowerUp.desligarGravidade();
         garraInteracaoPowerUp.colocarNaPosicao(garraDto.CentroDaGarra.position);
 
-        estadoAtual = ESTADO_CENTRALIZADO;
+        estadoAtual = ESTADO_CENTRALIZADO;        
     }
 
     private void movendoZigueZague()
-    {
+    {        
         if (contadorDeTempoPausa.contarTempoFDT())
         {
+            reesincronizarJoystick();
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
             verificarSeMovimentacaoAtingiuLimites();
             moverGarraHorizontalmenteFreeze(direcao);            
         }
     }
 
+    private void reesincronizarJoystick()
+    {
+        if (!isJoystickSincronizado)
+        {
+            dispararEventoDirecao(direcao);
+            isJoystickSincronizado = true;
+        }
+    }
 
     private void verificarSeMovimentacaoAtingiuLimites()//DUPLICIDADE COM MOVIMENTACAO LATERAL
     {
@@ -192,13 +204,13 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
         {
             direcao = -1;
             pararGarra();
-            //produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
         }
         else if (isGarraMenorPosHorizontal(-LIMITE_LATERAL_TELA + 0.1f))
         {            
             direcao = 1;
             pararGarra();            
-            //produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
         }
         else
         {
