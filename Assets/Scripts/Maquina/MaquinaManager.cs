@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MaquinaManager 
@@ -65,6 +66,11 @@ public class MaquinaManager
     public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
         return displayDeScores.getConsumidorDePowerUpInfo();
+    }
+
+    public ConsumidorDeEvento<int> getConsumidorDePowerUpFim()
+    {
+        return botoesPowerUp.getConsumidorDePowerUpFim();
     }
     //CONSUMIDORES DE EVENTOS FIM
 }

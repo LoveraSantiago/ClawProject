@@ -1,17 +1,22 @@
 using UnityEngine;
 
-public class PowerUpManager : PowerUpAcionamento
+public class PowerUpManager : PowerUpAcionamento,
+                              PowerUpFinalizacao
 {
     private GameObject tileBomb;
     private MonoBehaviour monoBehaviour;
+
     public ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp { get; private set; }
+    public ProdutorDeEvento<int> produtorDeEventoFinalizacao { get; private set; }
 
     public PowerUpManager(GameObject tileBomb, MonoBehaviour monoBehaviour)
     {
-        PowerUpParaMaquina.configAcionadorDePowerUp(this);
-        produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         this.tileBomb = tileBomb;
         this.monoBehaviour = monoBehaviour;
+
+        PowerUpParaMaquina.configAcionadorDePowerUp(this);
+        produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
+        produtorDeEventoFinalizacao = new ProdutorDeEvento<int>();
     }
 
     public PowerUpParaMaquina distribuirPowerUpParaMaquina()
@@ -27,9 +32,14 @@ public class PowerUpManager : PowerUpAcionamento
         {
             PowerUpInfo powerUpInfo = new PowerUpInfo();
             powerUpInfo.configurarDuracaoTempo(9);
-            powerUpInfo.configurarObjetoInteracaoComGarra(new PowerUpBomba(tileBomb, monoBehaviour));
+            powerUpInfo.configurarObjetoInteracaoComGarra(new PowerUpBomba(tileBomb, this, monoBehaviour));
 
             produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         }
-    }    
+    }
+
+    public void finalizado()
+    {
+        produtorDeEventoFinalizacao.produziuEvento(0);
+    }
 }

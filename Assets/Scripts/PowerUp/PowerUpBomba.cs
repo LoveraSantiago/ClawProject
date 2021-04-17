@@ -11,13 +11,17 @@ public class PowerUpBomba : Coletavel,
 
     private GameObject goExplosao;
     private Animator animator;
-    private static MonoBehaviour monoBehaviour;
 
-    public PowerUpBomba(GameObject tileBomb, MonoBehaviour monoBehaviourArg)
+    private static MonoBehaviour monoBehaviour;
+    private static PowerUpFinalizacao powerUpFinalizacao;
+
+    public PowerUpBomba(GameObject tileBomb, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
         : base(tileBomb, "bomba")
     {
-        bomba_explosao = Animator.StringToHash("bomba-explosao");
         monoBehaviour = monoBehaviourArg;
+        powerUpFinalizacao = powerUpFinalizacaoArg;
+
+        bomba_explosao = Animator.StringToHash("bomba-explosao");
     }
 
     public void consumirEvento(Collision2D evento)
@@ -38,6 +42,7 @@ public class PowerUpBomba : Coletavel,
         yield return new WaitForSeconds(0.25f);
         goExplosao.SetActive(false);
         desligar();
+        powerUpFinalizacao.finalizado();
         yield return null;
     }
 
