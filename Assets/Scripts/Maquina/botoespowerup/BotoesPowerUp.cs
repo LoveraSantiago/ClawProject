@@ -80,6 +80,7 @@ public class BotoesPowerUp : ConsumidorDeEvento<int>
         if (acaoBotaoPup.isClicavel())
         {
             btnPUp1.transformarEmBotaoClicavel();
+            btnPUp1.receberImg(acaoBotaoPup.getImgBotao());
         }
         else
         {

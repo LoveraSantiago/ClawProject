@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PowerUpInfo
 {
     public int duracaoTempo{ get; private set; }

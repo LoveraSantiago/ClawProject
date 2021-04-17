@@ -16,6 +16,7 @@ public class BotaoPowerUp : Draggavel
     private Color corOriginal;
     private SpriteRenderer spriteRendererDentro;
     private SpriteRenderer spriteRendererBorda;
+    private SpriteRenderer spriteRendererImg;
 
     private GameObject goBotaoExterno;
     private GameObject goBotaoInterno;   
@@ -26,10 +27,11 @@ public class BotaoPowerUp : Draggavel
         goBotaoInterno = goBotao.transform.Find("parte-dentro").gameObject;
         posicaoOriginal = goBotaoInterno.transform.position;
         boundExterno = goBotaoExterno.GetComponent<SpriteRenderer>().bounds;
-
         spriteRendererDentro = goBotaoInterno.GetComponent<SpriteRenderer>();
-        spriteRendererBorda = goBotaoInterno.transform.Find("contorno")
-            .GetComponent<SpriteRenderer>();
+
+        Transform contorno = goBotaoInterno.transform.Find("contorno");
+        spriteRendererBorda = contorno.GetComponent<SpriteRenderer>();
+        spriteRendererImg = contorno.Find("img-btn").GetComponent<SpriteRenderer>();
 
         corOriginal = spriteRendererDentro.color;
         isDraggavel = false;
@@ -70,18 +72,7 @@ public class BotaoPowerUp : Draggavel
     public bool isDragDentroAreaBotao(Vector2 posicao)
     {
         return isDraggavel && isPosicaoDentroAreaBotao(posicao);
-    }    
-
-    public IEnumerator voltarBotaoDragPosOriginal()
-    {
-        while ((Vector3.Distance(goBotaoInterno.transform.position, posicaoOriginal))
-               > (VELOCIDADE_VOLTA * Time.deltaTime))
-        {
-            goBotaoInterno.transform.position = Vector3.MoveTowards(goBotaoInterno.transform.position, posicaoOriginal, VELOCIDADE_VOLTA * Time.deltaTime);
-            yield return null;
-        }
-        goBotaoInterno.transform.position = posicaoOriginal;
-    }
+    }        
 
     public void colorirBotao()
     {
@@ -91,6 +82,11 @@ public class BotaoPowerUp : Draggavel
     public void voltarCorOriginalBotao()
     {
         spriteRendererDentro.color = corOriginal;
+    }
+
+    public void receberImg(Sprite img)
+    {
+        spriteRendererImg.sprite = img;
     }
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
@@ -115,8 +111,19 @@ public class BotaoPowerUp : Draggavel
     public void dragFinalizado(MonoBehaviour monoBehaviour)
     {
         monoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal());
-    }    
+    }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM    
+
+    private IEnumerator voltarBotaoDragPosOriginal()
+    {
+        while ((Vector3.Distance(goBotaoInterno.transform.position, posicaoOriginal))
+               > (VELOCIDADE_VOLTA * Time.deltaTime))
+        {
+            goBotaoInterno.transform.position = Vector3.MoveTowards(goBotaoInterno.transform.position, posicaoOriginal, VELOCIDADE_VOLTA * Time.deltaTime);
+            yield return null;
+        }
+        goBotaoInterno.transform.position = posicaoOriginal;
+    }
 
     public static void configurarSpriteBordas(Sprite[] spritesBordas)
     {
