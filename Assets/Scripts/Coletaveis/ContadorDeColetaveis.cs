@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ContadorDeColetaveis
@@ -14,8 +15,12 @@ public class ContadorDeColetaveis
 
     private int totalColetaveis;
 
-    public ContadorDeColetaveis(int totalColetaveis)
+    private GameObject pontosModal;
+
+    public ContadorDeColetaveis(GameObject pontosModal, int totalColetaveis)
     {
+        this.pontosModal = pontosModal; // Todo - Level 1 - para mostrar modat de pontuação total
+
         coletados = new Coletavel[3];
         arrayVazio = new Coletavel[0];
         this.totalColetaveis = totalColetaveis;
@@ -40,7 +45,9 @@ public class ContadorDeColetaveis
             {
                 devolverBoard = coletados;
                 deveolverTubo = arrayVazio;
-                AudioController.current.PlayAudio(AudioController.current.combinacaoNok);                
+                AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
+
+                totalColetaveis -= 3; // Todo - Level 1 - Para atendeer objetivo do Level 1 que coletar tods os itens
             }
             resetarColetados();
         }
@@ -50,11 +57,12 @@ public class ContadorDeColetaveis
             deveolverTubo  = arrayVazio;
         }
 
-        score++;
+        score += 10;
 
         if (totalColetaveis <= 0)
         {
-            resetCena();
+            //resetCena();
+            showTarget();
         }
     }
 
@@ -71,6 +79,17 @@ public class ContadorDeColetaveis
     public void resetCena()
     {
         SceneManager.LoadScene("MapScene");
+    }
+
+    public void showTarget()
+    {
+        pontosModal.SetActive(true);
+
+        GameObject pontosText = GameObject.Find("PointsText");
+        if(pontosText != null)
+        {
+            pontosText.GetComponent<Text>().text = score.ToString();
+        }
     }
 
     public bool hasResetColetados()
@@ -104,7 +123,7 @@ public class ContadorDeColetaveis
 
     private void adicionaPontuacao()
     {
-        score += 30;
+        score += 90;
     }
 
     public int getScore()
