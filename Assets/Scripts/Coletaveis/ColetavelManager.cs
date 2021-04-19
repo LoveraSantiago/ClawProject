@@ -29,7 +29,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
         board = new Board(coletaveisDto.BoardDto);        
-        contadorDeColetaveis   = new ContadorDeColetaveis(board.getTotalColetaveis());
+        contadorDeColetaveis   = new ContadorDeColetaveis(this.coletaveisDto.PontosModal, board.getTotalColetaveis());
         coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);
 
         powerUpEmAcao = false;
@@ -59,7 +59,8 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
         contadorDeColetaveis.adicionarColetado(coletavelAcertado);
 
-        board.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour);
+        //board.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour); // Todo - Level 1 - desativado por enquanto para simular objetivo level1
+
         coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
