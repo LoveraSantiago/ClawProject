@@ -45,7 +45,13 @@ public class BoardAssembler : EditorWindow
                 Debug.Log("Nome: " + gos[contador].name);
             }
         };
+
+        configurarReferenciasComBoard();
     }
 
+    private void configurarReferenciasComBoard()
+    {
+
+    }
     
 }
