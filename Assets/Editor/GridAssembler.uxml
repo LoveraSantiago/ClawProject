@@ -6,4 +6,8 @@
     xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
 >
     <engine:Label text="Hello World! From UXML" />
+
+    <engine:VisualElement name="containerBotoes">
+      <engine:Button name="botao" text="Botao"/>
+    </engine:VisualElement>
 </engine:UXML>

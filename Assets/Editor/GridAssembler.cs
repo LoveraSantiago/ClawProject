@@ -2,11 +2,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
+using UnityEngine.SceneManagement;
 
 
 public class GridAssembler : EditorWindow
 {
-    [MenuItem("Window/UI Toolkit/GridAssembler")]
+    [MenuItem("Window/Custom/GridAssembler")]
     public static void ShowExample()
     {
         GridAssembler wnd = GetWindow<GridAssembler>();
@@ -19,8 +20,8 @@ public class GridAssembler : EditorWindow
         VisualElement root = rootVisualElement;
 
         // VisualElements objects can contain other VisualElement following a tree hierarchy.
-        VisualElement label = new Label("Hello World! From C#");
-        root.Add(label);
+        //VisualElement label = new Label("Hello World! From C#");
+        //root.Add(label);
 
         // Import UXML
         var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/GridAssembler.uxml");
@@ -30,8 +31,21 @@ public class GridAssembler : EditorWindow
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/GridAssembler.uss");
-        VisualElement labelWithStyle = new Label("Hello World! With Style");
-        labelWithStyle.styleSheets.Add(styleSheet);
-        root.Add(labelWithStyle);
+        //VisualElement labelWithStyle = new Label("Hello World! With Style");
+        //labelWithStyle.styleSheets.Add(styleSheet);
+        //root.Add(labelWithStyle);
+
+        Button btn = rootVisualElement.Q<Button>("botao");
+        btn.clickable.clicked += () =>
+        {
+            Debug.Log("Fui Pressionado");
+            GameObject[] gos = SceneManager.GetActiveScene().GetRootGameObjects();
+            for(int contador = 0; contador < gos.Length; contador++)
+            {
+                Debug.Log("Nome: " + gos[contador].name);
+            }
+        };
     }
+
+    
 }
