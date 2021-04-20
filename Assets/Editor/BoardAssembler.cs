@@ -5,13 +5,13 @@ using UnityEditor.UIElements;
 using UnityEngine.SceneManagement;
 
 
-public class GridAssembler : EditorWindow
+public class BoardAssembler : EditorWindow
 {
-    [MenuItem("Window/Custom/GridAssembler")]
+    [MenuItem("Window/Custom/BoardAssembler")]
     public static void ShowExample()
     {
-        GridAssembler wnd = GetWindow<GridAssembler>();
-        wnd.titleContent = new GUIContent("GridAssembler");
+        BoardAssembler wnd = GetWindow<BoardAssembler>();
+        wnd.titleContent = new GUIContent("BoardAssembler");
     }
 
     public void CreateGUI()
