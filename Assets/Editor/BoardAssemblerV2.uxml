@@ -26,5 +26,8 @@
   <engine:VisualElement name="container2">
     <editor:ObjectField name="ObjectField " type="UnityEngine.Sprite, UnityEngine.CoreModule" binding-path="icone" label="Sprite" allow-scene-objects="false"/>
   </engine:VisualElement>
+
+  <engine:VisualElement name="container3">    
+  </engine:VisualElement>
   
 </engine:UXML>

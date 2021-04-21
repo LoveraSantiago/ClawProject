@@ -19,7 +19,7 @@ public class ReferenciasDoBoardAssembler
         GameObject[] gos = SceneManager.GetActiveScene().GetRootGameObjects();
         for (int contador = 0; contador < gos.Length; contador++)
         {
-            Debug.Log("Nome: " + gos[contador].name);
+            //Debug.Log("Nome: " + gos[contador].name);
             if (gos[contador].name == "BoardAssembler")
             {
                 return gos[contador];

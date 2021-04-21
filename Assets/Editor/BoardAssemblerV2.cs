@@ -36,8 +36,26 @@ public class BoardAssemblerV2 : EditorWindow
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
 
-        configurarSpritesDefaults();
-        configurarComponentes();
+        
+        ObjectField objField = root.Q<ObjectField>();
+        Debug.Log("Obj: " + objField);
+        Debug.Log("Nome: " + objField.name);
+        Debug.Log("Tipo:" + objField.GetType());
+        Debug.Log("Tipo Nome: " + objField.GetType().Name);
+        Debug.Log("ObjTipo: " + objField.objectType);
+        //configurarSpritesDefaults();
+        //configurarComponentes();
+
+        ObjectField objNovo = new ObjectField();
+        objNovo.label = "Spr";
+        objNovo.objectType = typeof(Sprite);
+        objNovo.allowSceneObjects = false;
+        objNovo.RegisterCallback<ChangeEvent<UnityEngine.Object>>( e => {
+            Debug.Log(e.newValue);
+        });
+
+        root.Q<VisualElement>("container3")
+            .Add(objNovo);
     }
 
     private void configurarComponentes()
