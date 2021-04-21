@@ -17,37 +17,22 @@ public class BoardAssembler : EditorWindow
 
     private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
     private GameObject goMira;
-
+    private int linhaInicial;
+    private int colunaInicial;
 
     public void CreateGUI()
     {
         // Each editor window contains a root VisualElement object
         VisualElement root = rootVisualElement;
 
-        // VisualElements objects can contain other VisualElement following a tree hierarchy.
-        VisualElement label = new Label("Hello World! From C#");
-        root.Add(label);
-
         // Import UXML
         var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/BoardAssembler.uxml");
         VisualElement labelFromUXML = visualTree.Instantiate();
         root.Add(labelFromUXML);
 
-        // A stylesheet can be added to a VisualElement.
-        // The style will be applied to the VisualElement and all of its children.
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BoardAssembler.uss");
-        VisualElement labelWithStyle = new Label("Hello World! With Style");
-        labelWithStyle.styleSheets.Add(styleSheet);
-        root.Add(labelWithStyle);
-
-        //configurarReferenciasComBoard();
-        //configurarMiraPosInicial();
-
-        //Button btn = rootVisualElement.Q<Button>("botaoCima");
-        //btn.clickable.clicked += () =>
-        //{
-        //    Debug.Log("Fui Pressionado");
-        //};
+        configurarReferenciasComBoard();
+        posicionarMira(0,0);
+        configurarBotoes();        
     }
 
     private void configurarReferenciasComBoard()
@@ -57,9 +42,9 @@ public class BoardAssembler : EditorWindow
         goMira = inicializarGoMira(goBoardAssembler);
     }
 
-    public void configurarMiraPosInicial()
+    public void posicionarMira(int linha, int coluna)
     {
-        GameObject go00 = dicionarioGosBoard[0][0];
+        GameObject go00 = dicionarioGosBoard[linha][coluna];
         goMira.transform.position = go00.transform.position;
     }
 
@@ -115,5 +100,36 @@ public class BoardAssembler : EditorWindow
             Debug.LogError("Objeto mira nao existe no game object BoardAssembler");
         }
         return goMira;
+    }
+
+    private void configurarBotoes()
+    {
+        Button btnCima = rootVisualElement.Q<Button>("botaoCima");
+        btnCima.clickable.clicked += () =>
+        {
+            linhaInicial++;
+            posicionarMira(linhaInicial, colunaInicial);
+        };
+
+        Button btnEsquerda = rootVisualElement.Q<Button>("botaoEsquerda");
+        btnEsquerda.clickable.clicked += () =>
+        {
+            colunaInicial--;
+            posicionarMira(linhaInicial, colunaInicial);
+        };
+
+        Button btnDireita = rootVisualElement.Q<Button>("botaoDireita");
+        btnDireita.clickable.clicked += () =>
+        {
+            colunaInicial++;
+            posicionarMira(linhaInicial, colunaInicial);
+        };
+
+        Button btnBaixo = rootVisualElement.Q<Button>("botaoBaixo");
+        btnBaixo.clickable.clicked += () =>
+        {
+            linhaInicial--;
+            posicionarMira(linhaInicial, colunaInicial);
+        };
     }
 }
