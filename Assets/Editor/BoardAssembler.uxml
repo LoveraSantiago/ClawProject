@@ -20,6 +20,21 @@
     <engine:VisualElement name="terceiraLinha" class="ctnLinha">
       <engine:Button name="botaoBaixo"/>
     </engine:VisualElement>
-   
+  
   </engine:VisualElement>
+  
+  <engine:VisualElement name="container2">     
+     <editor:ObjectField name="ObjectField " type="UnityEngine.Sprite, UnityEngine.CoreModule" binding-path="icone" label="Sprite" allow-scene-objects="false"/>     
+  </engine:VisualElement>
+    
+  <engine:VisualElement name="container3">
+    <engine:ListView class="the-uxml-listview"/>
+  </engine:VisualElement>
+
+
+  <!--<engine:VisualElement name="container4">
+    <engine:ListView class="the-uxml-listview">
+      <editor:ObjectField name="ObjectField " type="UnityEngine.Sprite, UnityEngine.CoreModule" binding-path="icone" label="Sprite" allow-scene-objects="false"/>     
+    </engine:ListView>
+  </engine:VisualElement>-->
 </engine:UXML>
