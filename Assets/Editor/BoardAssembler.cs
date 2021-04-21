@@ -107,15 +107,17 @@ public class BoardAssembler : EditorWindow
         Button btnCima = rootVisualElement.Q<Button>("botaoCima");
         btnCima.clickable.clicked += () =>
         {
-            
-            linhaInicial++;
+            if (podeDescerUmaLinha())
+            {
+                linhaInicial++;
+            }
             posicionarMira(linhaInicial, colunaInicial);
         };
 
         Button btnEsquerda = rootVisualElement.Q<Button>("botaoEsquerda");
         btnEsquerda.clickable.clicked += () =>
         {
-            if (isNoLimiteInferiorDaLinha())
+            if (podeVoltarUmaColuna())
             {
                 colunaInicial--;
             }
@@ -126,7 +128,7 @@ public class BoardAssembler : EditorWindow
         Button btnDireita = rootVisualElement.Q<Button>("botaoDireita");
         btnDireita.clickable.clicked += () =>
         {
-            if (isNoLimiteSuperiorDaLinha())
+            if (podeAndarUmaColuna())
             {
                 colunaInicial++;
             }
@@ -136,18 +138,31 @@ public class BoardAssembler : EditorWindow
         Button btnBaixo = rootVisualElement.Q<Button>("botaoBaixo");
         btnBaixo.clickable.clicked += () =>
         {
-            linhaInicial--;
+            if (podeAndarUmaLinha())
+            {
+                linhaInicial--;
+            }
             posicionarMira(linhaInicial, colunaInicial);
         };
     }
 
-    private bool isNoLimiteSuperiorDaLinha()
+    private bool podeAndarUmaColuna()
     {
         return colunaInicial + 1 < dicionarioGosBoard[linhaInicial].Count;
     }
 
-    private bool isNoLimiteInferiorDaLinha()
+    private bool podeVoltarUmaColuna()
     {
         return colunaInicial - 1 >= 0;
+    }
+
+    private bool podeAndarUmaLinha()
+    {
+        return linhaInicial - 1 >= 0; 
+    }
+
+    private bool podeDescerUmaLinha()
+    {
+        return linhaInicial + 1 < dicionarioGosBoard.Count;
     }
 }
