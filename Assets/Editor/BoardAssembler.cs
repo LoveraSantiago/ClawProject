@@ -22,9 +22,9 @@ public class BoardAssembler : EditorWindow
     private Sprite sprVazio;
     private Sprite sprRandom;
 
-    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
-    private GameObject goMira;
-    private List<Sprite> listOf = new List<Sprite>();
+    //private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
+    //private GameObject goMira;
+    //private List<Sprite> listOf = new List<Sprite>();
 
     public void CreateGUI()
     {
@@ -47,14 +47,14 @@ public class BoardAssembler : EditorWindow
         //listView.itemsSource = listaDeObjectField;
         //listView.makeItem = makeItem;
         //listView.binding = listaDeObjectField;
-       
+
 
         //configurarSpritesDefaults();        
-        //configurarReferenciasComBoard();
         //posicionarMira(0,0);
         //configurarBotoes();        
 
-        
+        ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler();
+        referenciasDoBoard.configurarReferenciasComBoard();
     }
 
     private void configurarSpritesDefaults()
@@ -63,77 +63,15 @@ public class BoardAssembler : EditorWindow
         sprRandom = Resources.Load<Sprite>("Sprites/collectables/tile-random");
     }
 
-    private void configurarReferenciasComBoard()
-    {
-        GameObject goBoardAssembler = getBoardAssembler();
-        dicionarioGosBoard = inicializarDicionarioDeGosBoard(goBoardAssembler);
-        goMira = inicializarGoMira(goBoardAssembler);
-    }
-
     public void posicionarMira(int linha, int coluna)
     {
         GameObject go00 = dicionarioGosBoard[linha][coluna];
         goMira.transform.position = go00.transform.position;
     }
 
-    private GameObject getBoardAssembler()
-    {
-        GameObject[] gos = SceneManager.GetActiveScene().GetRootGameObjects();
-        for (int contador = 0; contador < gos.Length; contador++)
-        {
-            Debug.Log("Nome: " + gos[contador].name);
-            if (gos[contador].name == "BoardAssembler")
-            {
-                return gos[contador];
-            }
-        }
-        Debug.LogError("Nao existe na cena o prefab BoardAssembler");
-        return null;
-    }
-
-    private Dictionary<int, Dictionary<int, GameObject>> inicializarDicionarioDeGosBoard(GameObject goBoardAssembler)
-    {
-        Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard = new Dictionary<int, Dictionary<int, GameObject>>();
-        for (int contadorLinha = 0; contadorLinha < goBoardAssembler.transform.childCount; contadorLinha++)
-        {
-            GameObject goLinha = goBoardAssembler.transform.GetChild(contadorLinha).gameObject;
-            int nomeNumericoLinha;
-            bool isNumericoLinha = int.TryParse(goLinha.name, out nomeNumericoLinha);
-            if (isNumericoLinha)
-            {
-                Dictionary<int, GameObject> dicionarioColuna = new Dictionary<int, GameObject>();
-
-                for (int contadorColuna = 0; contadorColuna < goLinha.transform.childCount; contadorColuna++)
-                {
-                    GameObject goColuna = goLinha.transform.GetChild(contadorColuna).gameObject;
-                    int nomeNumericoColuna;
-                    bool isNumericoColuna = int.TryParse(goColuna.name, out nomeNumericoColuna);
-                    if (isNumericoColuna)
-                    {
-                        colocarSprite(goColuna, sprVazio);
-                        dicionarioColuna.Add(nomeNumericoColuna, goColuna);                        
-                    }
-                }
-
-                dicionarioGosBoard.Add(nomeNumericoLinha, dicionarioColuna);
-            }
-        }
-        return dicionarioGosBoard;
-    }
-
     private void colocarSprite(GameObject go, Sprite sprite)
     {
         go.GetComponent<SpriteRenderer>().sprite = sprite;
-    }
-
-    private GameObject inicializarGoMira(GameObject goBoardAssembler)
-    {
-        GameObject goMira = goBoardAssembler.transform.Find("mira").gameObject;
-        if (goMira == null)
-        {
-            Debug.LogError("Objeto mira nao existe no game object BoardAssembler");
-        }
-        return goMira;
     }
 
     private void configurarBotoes()
