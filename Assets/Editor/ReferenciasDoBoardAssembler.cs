@@ -23,6 +23,7 @@ public class ReferenciasDoBoardAssembler
             if (gos[contador].name == "BoardAssembler")
             {
                 return gos[contador];
+
             }
         }
         Debug.LogError("Nao existe na cena o prefab BoardAssembler");

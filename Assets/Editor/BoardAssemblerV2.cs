@@ -37,25 +37,46 @@ public class BoardAssemblerV2 : EditorWindow
         //root.Add(labelWithStyle);
 
         
-        ObjectField objField = root.Q<ObjectField>();
-        Debug.Log("Obj: " + objField);
-        Debug.Log("Nome: " + objField.name);
-        Debug.Log("Tipo:" + objField.GetType());
-        Debug.Log("Tipo Nome: " + objField.GetType().Name);
-        Debug.Log("ObjTipo: " + objField.objectType);
+        //ObjectField objField = root.Q<ObjectField>();
+        //Debug.Log("Obj: " + objField);
+        //Debug.Log("Nome: " + objField.name);
+        //Debug.Log("Tipo:" + objField.GetType());
+        //Debug.Log("Tipo Nome: " + objField.GetType().Name);
+        //Debug.Log("ObjTipo: " + objField.objectType);
         //configurarSpritesDefaults();
         //configurarComponentes();
 
         ObjectField objNovo = new ObjectField();
-        objNovo.label = "Spr";
+        objNovo.label = "Tile Imagem";
         objNovo.objectType = typeof(Sprite);
         objNovo.allowSceneObjects = false;
         objNovo.RegisterCallback<ChangeEvent<UnityEngine.Object>>( e => {
             Debug.Log(e.newValue);
         });
 
-        root.Q<VisualElement>("container3")
+
+        root.Q<VisualElement>("containerListSprites")
             .Add(objNovo);
+
+        root.Q<Button>("botaoMais").clicked += () =>
+        {
+            Debug.Log("Fui Acionado");
+            criarSpriteXXXX();
+        };                     
+    }
+
+    private void criarSpriteXXXX()
+    {
+        ObjectField objNovo = new ObjectField();
+        objNovo.label = "Tile Imagem";
+        objNovo.objectType = typeof(Sprite);
+        objNovo.allowSceneObjects = false;
+        objNovo.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e => {
+            Debug.Log(e.newValue);
+        });
+
+        rootVisualElement.Q<VisualElement>("containerListSprites")
+           .Add(objNovo);
     }
 
     private void configurarComponentes()

@@ -7,25 +7,30 @@
 
 #container2 {	
 	display: flex;
-	flex-direction: column;	
+	flex-direction: row;	
 	padding-top: 10px;
 	background-color:red;
 }
 
-#container3 {	
+#containerListSprites {	
 	display: flex;
 	flex-direction: column;	
 	padding-top: 10px;
 	background-color:blue;
 }
 
-#container4 {	
+#containerBtns {	
 	display: flex;
 	flex-direction: column;	
+	align-self: flex-end;
 	padding-top: 10px;
 	background-color:orange;
 }
 
+#containerBtnLinha{
+	display: flex;
+	flex-direction: row;	
+}
 
 .ctnLinha{	
 	width: auto;
@@ -33,7 +38,7 @@
 	justify-content: center;
 }
 
-Button {	
+.btnDirecao {	
 	height: 50px;
 	width: 50px;
 }
