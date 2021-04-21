@@ -15,10 +15,14 @@ public class BoardAssembler : EditorWindow
         wnd.titleContent = new GUIContent("BoardAssembler");
     }
 
-    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
-    private GameObject goMira;
     private int linhaInicial;
     private int colunaInicial;
+
+    private Sprite sprVazio;
+    private Sprite sprRandom;
+
+    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
+    private GameObject goMira;
 
     public void CreateGUI()
     {
@@ -30,9 +34,16 @@ public class BoardAssembler : EditorWindow
         VisualElement labelFromUXML = visualTree.Instantiate();
         root.Add(labelFromUXML);
 
+        configurarSpritesDefaults();        
         configurarReferenciasComBoard();
         posicionarMira(0,0);
         configurarBotoes();        
+    }
+
+    private void configurarSpritesDefaults()
+    {
+        sprVazio = Resources.Load<Sprite>("Sprites/collectables/tile-vazio");
+        sprRandom = Resources.Load<Sprite>("Sprites/collectables/tile-random");
     }
 
     private void configurarReferenciasComBoard()
@@ -82,7 +93,8 @@ public class BoardAssembler : EditorWindow
                     bool isNumericoColuna = int.TryParse(goColuna.name, out nomeNumericoColuna);
                     if (isNumericoColuna)
                     {
-                        dicionarioColuna.Add(nomeNumericoColuna, goColuna);
+                        colocarSprite(goColuna, sprVazio);
+                        dicionarioColuna.Add(nomeNumericoColuna, goColuna);                        
                     }
                 }
 
@@ -90,6 +102,11 @@ public class BoardAssembler : EditorWindow
             }
         }
         return dicionarioGosBoard;
+    }
+
+    private void colocarSprite(GameObject go, Sprite sprite)
+    {
+        go.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
     private GameObject inicializarGoMira(GameObject goBoardAssembler)
