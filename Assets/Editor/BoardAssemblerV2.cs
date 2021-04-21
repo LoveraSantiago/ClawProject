@@ -39,34 +39,50 @@ public class BoardAssemblerV2 : EditorWindow
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);        
 
+        contadorSpriteBinding = 0;
         criarSpriteBinding();        
 
         root.Q<Button>("botaoMais").clicked += () =>
-        {
-            Debug.Log("Fui Acionado");
+        {            
             criarSpriteBinding();
-        };                     
+        };
 
-        
+        root.Q<Button>("botaoMenos").clicked += () =>
+        {
+            removerUltimoSpriteBinding();
+        };
     }
 
     private void criarSpriteBinding()
     {
-        ObjectField objNovo = new ObjectField();
-        objNovo.label = "Coletavel:";
-        objNovo.objectType = typeof(Sprite);
-        objNovo.allowSceneObjects = false;
-        objNovo.name = (++contadorSpriteBinding).ToString();
+        ObjectField objFieldSprite = new ObjectField();
+        objFieldSprite.label = "Coletavel:";
+        objFieldSprite.objectType = typeof(Sprite);
+        objFieldSprite.allowSceneObjects = false;
+        objFieldSprite.name = (++contadorSpriteBinding).ToString();
 
-        objNovo.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e => {
+        objFieldSprite.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e => {
             Debug.Log(e.newValue);
             Debug.Log(e.currentTarget);
             ObjectField current = (ObjectField)e.currentTarget;
-            Debug.Log("Lancado por: " + current.name);
+            Debug.Log("Lancado por: " + current.name);            
         });
 
         rootVisualElement.Q<VisualElement>("containerListSprites")
-           .Add(objNovo);
+           .Add(objFieldSprite);
+    }
+
+    private void removerUltimoSpriteBinding()
+    {
+        Debug.Log("Qtd: " + contadorSpriteBinding);
+        if(contadorSpriteBinding > 1)
+        {
+            ObjectField objFieldSprite = rootVisualElement.Q<ObjectField>(contadorSpriteBinding.ToString());
+            rootVisualElement.Q<VisualElement>("containerListSprites")
+                .Remove(objFieldSprite);
+
+            contadorSpriteBinding--;
+        }
     }
 
     private void configurarComponentes()
