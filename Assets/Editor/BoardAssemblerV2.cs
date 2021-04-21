@@ -2,52 +2,39 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
-using UnityEngine.SceneManagement;
-using System.Collections.Generic;
-using System;
 
-
-public class BoardAssembler : EditorWindow
+public class BoardAssemblerV2 : EditorWindow
 {
-    [MenuItem("Window/BoardAssembler")]
+    [MenuItem("Window/BoardAssemblerV2")]
     public static void ShowExample()
     {
-        BoardAssembler wnd = GetWindow<BoardAssembler>();
-        wnd.titleContent = new GUIContent("BoardAssembler");
+        BoardAssemblerV2 wnd = GetWindow<BoardAssemblerV2>();
+        wnd.titleContent = new GUIContent("BoardAssemblerV2");
     }
-
-    private int linhaInicial;
-    private int colunaInicial;
 
     private Sprite sprVazio;
     private Sprite sprRandom;
-
-    //private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
-    //private GameObject goMira;
-    //private List<Sprite> listOf = new List<Sprite>();
 
     public void CreateGUI()
     {
         // Each editor window contains a root VisualElement object
         VisualElement root = rootVisualElement;
 
+        // VisualElements objects can contain other VisualElement following a tree hierarchy.
+        //VisualElement label = new Label("Hello World! From C#");
+        //root.Add(label);
+
         // Import UXML
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/BoardAssembler.uxml");
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/BoardAssemblerV2.uxml");
         VisualElement labelFromUXML = visualTree.Instantiate();
         root.Add(labelFromUXML);
 
-        List<ObjectField> listaDeObjectField = new List<ObjectField>();
-        listaDeObjectField.Add(new ObjectField("Hum"));
-        listaDeObjectField.Add(new ObjectField("Dois"));
-        listaDeObjectField.Add(new ObjectField("Tres"));
-
-        Func<VisualElement> makeItem = () => new ObjectField();
-
-        ListView listView = root.Q<ListView>();
-        //listView.itemsSource = listaDeObjectField;
-        //listView.makeItem = makeItem;
-        //listView.binding = listaDeObjectField;
-
+        // A stylesheet can be added to a VisualElement.
+        // The style will be applied to the VisualElement and all of its children.
+        //var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BoardAssemblerV2.uss");
+        //VisualElement labelWithStyle = new Label("Hello World! With Style");
+        //labelWithStyle.styleSheets.Add(styleSheet);
+        //root.Add(labelWithStyle);
 
         configurarSpritesDefaults();
         configurarComponentes();
