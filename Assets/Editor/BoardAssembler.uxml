@@ -4,25 +4,22 @@
     xmlns:engine="UnityEngine.UIElements"
     xmlns:editor="UnityEditor.UIElements"
     xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd">
-    <engine:Style src="BoardAssembler.uss"/>
-    <engine:Label text="Hello World! From UXML" name="groselha"/>   
+    <engine:Style src="BoardAssembler.uss"/>    
 
-    <!--<engine:VisualElement name="primeiraLinha" class="ctnLinha">
-      <engine:Button name="botaoCima" text="Botao1"/>
+  <engine:VisualElement name="container1">
+    
+    <engine:VisualElement name="primeiraLinha" class="ctnLinha">
+      <engine:Button name="botaoCima"/>
     </engine:VisualElement>
 
     <engine:VisualElement name="segundaLinha" class="ctnLinha">
-      <engine:Button name="botaoEsquerda" text="Botao2"/>
-      <engine:Button name="botaoDireita" text="Botao3"/>
+      <engine:Button name="botaoEsquerda"/>
+      <engine:Button name="botaoDireita"/>
     </engine:VisualElement>
 
     <engine:VisualElement name="terceiraLinha" class="ctnLinha">
-      <engine:Button name="botaoBaixo" text="Botao4"/>
-    </engine:VisualElement>-->
-  <engine:VisualElement name="container1">
-    <engine:VisualElement name="container2" class="yellow">
-      <engine:Button name="OK" class="yellow" text="OK" />
-      <engine:Button name="Cancel" class="" text="Cancel" />
+      <engine:Button name="botaoBaixo"/>
     </engine:VisualElement>
+   
   </engine:VisualElement>
 </engine:UXML>
