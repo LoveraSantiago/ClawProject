@@ -49,12 +49,18 @@ public class BoardAssembler : EditorWindow
         //listView.binding = listaDeObjectField;
 
 
-        //configurarSpritesDefaults();        
-        //posicionarMira(0,0);
-        //configurarBotoes();        
+        configurarSpritesDefaults();
+        configurarComponentes();
+    }
 
+    private void configurarComponentes()
+    {
         ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler();
         referenciasDoBoard.configurarReferenciasComBoard();
+
+        NavegacaoPeloBoard navegacao = new NavegacaoPeloBoard(referenciasDoBoard.goMira, referenciasDoBoard.dicionarioGosBoard);
+        navegacao.configurarBotoes(rootVisualElement);
+        navegacao.resetMira();
     }
 
     private void configurarSpritesDefaults()
@@ -63,78 +69,8 @@ public class BoardAssembler : EditorWindow
         sprRandom = Resources.Load<Sprite>("Sprites/collectables/tile-random");
     }
 
-    public void posicionarMira(int linha, int coluna)
-    {
-        GameObject go00 = dicionarioGosBoard[linha][coluna];
-        goMira.transform.position = go00.transform.position;
-    }
-
     private void colocarSprite(GameObject go, Sprite sprite)
     {
         go.GetComponent<SpriteRenderer>().sprite = sprite;
-    }
-
-    private void configurarBotoes()
-    {
-        Button btnCima = rootVisualElement.Q<Button>("botaoCima");
-        btnCima.clickable.clicked += () =>
-        {
-            if (podeDescerUmaLinha())
-            {
-                linhaInicial++;
-            }
-            posicionarMira(linhaInicial, colunaInicial);
-        };
-
-        Button btnEsquerda = rootVisualElement.Q<Button>("botaoEsquerda");
-        btnEsquerda.clickable.clicked += () =>
-        {
-            if (podeVoltarUmaColuna())
-            {
-                colunaInicial--;
-            }
-
-            posicionarMira(linhaInicial, colunaInicial);
-        };
-
-        Button btnDireita = rootVisualElement.Q<Button>("botaoDireita");
-        btnDireita.clickable.clicked += () =>
-        {
-            if (podeAndarUmaColuna())
-            {
-                colunaInicial++;
-            }
-            posicionarMira(linhaInicial, colunaInicial);
-        };
-
-        Button btnBaixo = rootVisualElement.Q<Button>("botaoBaixo");
-        btnBaixo.clickable.clicked += () =>
-        {
-            if (podeAndarUmaLinha())
-            {
-                linhaInicial--;
-            }
-            posicionarMira(linhaInicial, colunaInicial);
-        };
-    }
-
-    private bool podeAndarUmaColuna()
-    {
-        return colunaInicial + 1 < dicionarioGosBoard[linhaInicial].Count;
-    }
-
-    private bool podeVoltarUmaColuna()
-    {
-        return colunaInicial - 1 >= 0;
-    }
-
-    private bool podeAndarUmaLinha()
-    {
-        return linhaInicial - 1 >= 0; 
-    }
-
-    private bool podeDescerUmaLinha()
-    {
-        return linhaInicial + 1 < dicionarioGosBoard.Count;
     }
 }
