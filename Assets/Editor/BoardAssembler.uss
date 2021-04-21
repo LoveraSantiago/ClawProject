@@ -1,0 +1,46 @@
+Label {
+    font-size: 150px;
+    -unity-font-style: bold;
+    color: rgb(68, 138, 255);
+}
+
+.unity-label, #groselha {
+    font-size: 50px;
+    -unity-font-style: bold;
+    color: rgb(68, 138, 255);
+}
+
+#primeiraLinha {
+}
+
+VisualElement
+{
+	height: 550px;	
+}
+
+#terceiraLinha {
+}
+
+.ctnLinha {	
+}
+
+#ButtonHolder 
+{
+	height: 50px;
+	width: auto;
+	background-color: rgb(21, 132, 67);
+
+	display: flex;
+	flex-direction: row;
+}
+
+Button {
+  border-radius: 8px;
+  width: 100px;
+}
+
+#Cancel {
+    border-width: 2px;
+    border-color: DarkRed;
+    background-color: pink;
+}

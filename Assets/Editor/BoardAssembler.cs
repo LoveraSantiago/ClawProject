@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 public class BoardAssembler : EditorWindow
 {
-    [MenuItem("Window/Custom/BoardAssembler")]
+    [MenuItem("Window/BoardAssembler")]
     public static void ShowExample()
     {
         BoardAssembler wnd = GetWindow<BoardAssembler>();
@@ -18,35 +18,36 @@ public class BoardAssembler : EditorWindow
     private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
     private GameObject goMira;
 
+
     public void CreateGUI()
     {
         // Each editor window contains a root VisualElement object
         VisualElement root = rootVisualElement;
 
         // VisualElements objects can contain other VisualElement following a tree hierarchy.
-        //VisualElement label = new Label("Hello World! From C#");
-        //root.Add(label);
+        VisualElement label = new Label("Hello World! From C#");
+        root.Add(label);
 
         // Import UXML
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/GridAssembler.uxml");
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/BoardAssembler.uxml");
         VisualElement labelFromUXML = visualTree.Instantiate();
         root.Add(labelFromUXML);
 
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/GridAssembler.uss");
-        //VisualElement labelWithStyle = new Label("Hello World! With Style");
-        //labelWithStyle.styleSheets.Add(styleSheet);
-        //root.Add(labelWithStyle);
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BoardAssembler.uss");
+        VisualElement labelWithStyle = new Label("Hello World! With Style");
+        labelWithStyle.styleSheets.Add(styleSheet);
+        root.Add(labelWithStyle);
 
-        configurarReferenciasComBoard();
-        configurarMiraPosInicial();
+        //configurarReferenciasComBoard();
+        //configurarMiraPosInicial();
 
-        Button btn = rootVisualElement.Q<Button>("botao");
-        btn.clickable.clicked += () =>
-        {
-            Debug.Log("Fui Pressionado");           
-        };
+        //Button btn = rootVisualElement.Q<Button>("botaoCima");
+        //btn.clickable.clicked += () =>
+        //{
+        //    Debug.Log("Fui Pressionado");
+        //};
     }
 
     private void configurarReferenciasComBoard()
@@ -70,7 +71,7 @@ public class BoardAssembler : EditorWindow
             Debug.Log("Nome: " + gos[contador].name);
             if (gos[contador].name == "BoardAssembler")
             {
-                return gos[contador];                
+                return gos[contador];
             }
         }
         Debug.LogError("Nao existe na cena o prefab BoardAssembler");
@@ -80,7 +81,7 @@ public class BoardAssembler : EditorWindow
     private Dictionary<int, Dictionary<int, GameObject>> inicializarDicionarioDeGosBoard(GameObject goBoardAssembler)
     {
         Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard = new Dictionary<int, Dictionary<int, GameObject>>();
-        for(int contadorLinha = 0; contadorLinha < goBoardAssembler.transform.childCount; contadorLinha++)
+        for (int contadorLinha = 0; contadorLinha < goBoardAssembler.transform.childCount; contadorLinha++)
         {
             GameObject goLinha = goBoardAssembler.transform.GetChild(contadorLinha).gameObject;
             int nomeNumericoLinha;
@@ -89,7 +90,7 @@ public class BoardAssembler : EditorWindow
             {
                 Dictionary<int, GameObject> dicionarioColuna = new Dictionary<int, GameObject>();
 
-                for(int contadorColuna = 0; contadorColuna < goLinha.transform.childCount; contadorColuna++)
+                for (int contadorColuna = 0; contadorColuna < goLinha.transform.childCount; contadorColuna++)
                 {
                     GameObject goColuna = goLinha.transform.GetChild(contadorColuna).gameObject;
                     int nomeNumericoColuna;
@@ -104,12 +105,12 @@ public class BoardAssembler : EditorWindow
             }
         }
         return dicionarioGosBoard;
-    }    
+    }
 
     private GameObject inicializarGoMira(GameObject goBoardAssembler)
     {
         GameObject goMira = goBoardAssembler.transform.Find("mira").gameObject;
-        if(goMira == null)
+        if (goMira == null)
         {
             Debug.LogError("Objeto mira nao existe no game object BoardAssembler");
         }
