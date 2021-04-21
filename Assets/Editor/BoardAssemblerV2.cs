@@ -5,6 +5,8 @@ using UnityEditor.UIElements;
 
 public class BoardAssemblerV2 : EditorWindow
 {
+    private int contadorTeste;
+
     [MenuItem("Window/BoardAssemblerV2")]
     public static void ShowExample()
     {
@@ -12,6 +14,7 @@ public class BoardAssemblerV2 : EditorWindow
         wnd.titleContent = new GUIContent("BoardAssemblerV2");
     }
 
+    private int contadorSpriteBinding;
     private Sprite sprVazio;
     private Sprite sprRandom;
 
@@ -34,45 +37,32 @@ public class BoardAssemblerV2 : EditorWindow
         //var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BoardAssemblerV2.uss");
         //VisualElement labelWithStyle = new Label("Hello World! With Style");
         //labelWithStyle.styleSheets.Add(styleSheet);
-        //root.Add(labelWithStyle);
+        //root.Add(labelWithStyle);        
 
-        
-        //ObjectField objField = root.Q<ObjectField>();
-        //Debug.Log("Obj: " + objField);
-        //Debug.Log("Nome: " + objField.name);
-        //Debug.Log("Tipo:" + objField.GetType());
-        //Debug.Log("Tipo Nome: " + objField.GetType().Name);
-        //Debug.Log("ObjTipo: " + objField.objectType);
-        //configurarSpritesDefaults();
-        //configurarComponentes();
-
-        ObjectField objNovo = new ObjectField();
-        objNovo.label = "Tile Imagem";
-        objNovo.objectType = typeof(Sprite);
-        objNovo.allowSceneObjects = false;
-        objNovo.RegisterCallback<ChangeEvent<UnityEngine.Object>>( e => {
-            Debug.Log(e.newValue);
-        });
-
-
-        root.Q<VisualElement>("containerListSprites")
-            .Add(objNovo);
+        criarSpriteBinding();        
 
         root.Q<Button>("botaoMais").clicked += () =>
         {
             Debug.Log("Fui Acionado");
-            criarSpriteXXXX();
+            criarSpriteBinding();
         };                     
+
+        
     }
 
-    private void criarSpriteXXXX()
+    private void criarSpriteBinding()
     {
         ObjectField objNovo = new ObjectField();
-        objNovo.label = "Tile Imagem";
+        objNovo.label = "Coletavel:";
         objNovo.objectType = typeof(Sprite);
         objNovo.allowSceneObjects = false;
+        objNovo.name = (++contadorSpriteBinding).ToString();
+
         objNovo.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e => {
             Debug.Log(e.newValue);
+            Debug.Log(e.currentTarget);
+            ObjectField current = (ObjectField)e.currentTarget;
+            Debug.Log("Lancado por: " + current.name);
         });
 
         rootVisualElement.Q<VisualElement>("containerListSprites")
