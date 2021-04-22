@@ -21,7 +21,7 @@ public class BoardAssemblerV2 : EditorWindow
     private Sprite sprVazio;
     private Sprite sprRandom;
 
-        List<ObjectField> items = new List<ObjectField>(10);
+    private List<ObjectField> listaDeLinhas;
 
     public void CreateGUI()
     {
@@ -44,8 +44,7 @@ public class BoardAssemblerV2 : EditorWindow
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);        
 
-        contadorSpriteBinding = 0;
-        criarSpriteBinding();        
+        contadorSpriteBinding = 0;       
 
         root.Q<Button>("botaoMais").clicked += () =>
         {            
@@ -57,33 +56,50 @@ public class BoardAssemblerV2 : EditorWindow
             removerUltimoSpriteBinding();
         };
 
-        const int itemCount = 1;
-        for (int i = 1; i <= itemCount; i++)
-        {
-            ObjectField objFieldSprite = new ObjectField();
-            objFieldSprite.label = "Coletavel:";
-            objFieldSprite.objectType = typeof(Sprite);
-            objFieldSprite.allowSceneObjects = false;
+        //const int itemCount = 1;
+        //for (int i = 1; i <= itemCount; i++)
+        //{
+        //    ObjectField objFieldSprite = new ObjectField();
+        //    objFieldSprite.label = "Coletavel:";
+        //    objFieldSprite.objectType = typeof(Sprite);
+        //    objFieldSprite.allowSceneObjects = false;
 
-            items.Add(objFieldSprite);
-        }
+        //    listaDeLinhas.Add(objFieldSprite);
+        //}
 
+        listaDeLinhas = new List<ObjectField>(10);
         Func<VisualElement> makeItem = () => new ObjectField();
-        Action<VisualElement, int> bindItem = (e, i) => { };
-        int itemHeight = 16;
+        Action<VisualElement, int> bindItem = (e, i) => {
+            ObjectField objF = (ObjectField) e;
+            objF.objectType  = listaDeLinhas[i].objectType;
+            objF.label = listaDeLinhas[i].label;
+            objF.allowSceneObjects = listaDeLinhas[i].allowSceneObjects;
+            objF.name = listaDeLinhas[i].name;
+            //objF.RegisterCallback = listaDeLinhas[i].RegisterCallback;
 
-        var listView = new ListView(items, itemHeight, makeItem, bindItem);
+            objF.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 => {
+                Debug.Log(e1.newValue);
+                Debug.Log(e1.currentTarget);
+                ObjectField current = (ObjectField)e1.currentTarget;
+                Debug.Log("Lancado por: " + current.name);
+            });
+        };
+        int itemHeight = 16;        
 
-        //listView.itemsSource = items;
-        //listView.itemHeight = itemHeight;
-        //listView.makeItem = makeItem;
-        //listView.bindItem = bindItem;
+
+        ListView listView = root.Q<ListView>("listView");
+        listView.itemsSource = listaDeLinhas;
+        listView.itemHeight = itemHeight;
+        listView.makeItem = makeItem;
+        listView.bindItem = bindItem;
         listView.selectionType = SelectionType.Single;
         listView.onItemsChosen += objects => Debug.Log(objects);
         listView.onSelectionChange += objects => Debug.Log(objects);
 
         listView.style.flexGrow = 1.0f;
         rootVisualElement.Add(listView);
+
+        criarSpriteBinding();
     }
 
     private void criarSpriteBinding()
@@ -94,15 +110,7 @@ public class BoardAssemblerV2 : EditorWindow
         objFieldSprite.allowSceneObjects = false;
         objFieldSprite.name = (++contadorSpriteBinding).ToString();
 
-        items.Add(new ObjectField());
-
-        objFieldSprite.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e => {
-            Debug.Log(e.newValue);
-            Debug.Log(e.currentTarget);
-            ObjectField current = (ObjectField)e.currentTarget;
-            Debug.Log("Lancado por: " + current.name);            
-        });
-
+        listaDeLinhas.Add(objFieldSprite);
         rootVisualElement.Q<VisualElement>("containerListSprites")
            .Add(objFieldSprite);        
     }

@@ -24,7 +24,7 @@
   </engine:VisualElement>
 
   <engine:VisualElement name="container3">
-    <!--<engine:ListView/>-->
+    <engine:ListView name="listView"/>
   </engine:VisualElement>
 
   <engine:VisualElement name="container2">    
