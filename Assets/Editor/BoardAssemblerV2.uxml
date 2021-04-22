@@ -23,16 +23,23 @@
 
   </engine:VisualElement>
 
+  <engine:VisualElement name="container3">
+    <!--<engine:ListView/>-->
+  </engine:VisualElement>
+
   <engine:VisualElement name="container2">    
     <engine:VisualElement name="containerListSprites">    
     </engine:VisualElement>
 
     <engine:VisualElement name="containerBtns">
+      
       <engine:VisualElement name="containerBtnLinha">
         <engine:Button name="botaoMais" text="+"/>
         <engine:Button name="botaoMenos" text="-"/>
       </engine:VisualElement>
+      
     </engine:VisualElement>
+    
   </engine:VisualElement>
 
   

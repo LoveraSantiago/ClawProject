@@ -2,6 +2,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
+using System.Collections;
+using System.Collections.Generic;
+using System;
 
 public class BoardAssemblerV2 : EditorWindow
 {
@@ -17,6 +20,8 @@ public class BoardAssemblerV2 : EditorWindow
     private int contadorSpriteBinding;
     private Sprite sprVazio;
     private Sprite sprRandom;
+
+        List<ObjectField> items = new List<ObjectField>(10);
 
     public void CreateGUI()
     {
@@ -51,6 +56,34 @@ public class BoardAssemblerV2 : EditorWindow
         {
             removerUltimoSpriteBinding();
         };
+
+        const int itemCount = 1;
+        for (int i = 1; i <= itemCount; i++)
+        {
+            ObjectField objFieldSprite = new ObjectField();
+            objFieldSprite.label = "Coletavel:";
+            objFieldSprite.objectType = typeof(Sprite);
+            objFieldSprite.allowSceneObjects = false;
+
+            items.Add(objFieldSprite);
+        }
+
+        Func<VisualElement> makeItem = () => new ObjectField();
+        Action<VisualElement, int> bindItem = (e, i) => { };
+        int itemHeight = 16;
+
+        var listView = new ListView(items, itemHeight, makeItem, bindItem);
+
+        //listView.itemsSource = items;
+        //listView.itemHeight = itemHeight;
+        //listView.makeItem = makeItem;
+        //listView.bindItem = bindItem;
+        listView.selectionType = SelectionType.Single;
+        listView.onItemsChosen += objects => Debug.Log(objects);
+        listView.onSelectionChange += objects => Debug.Log(objects);
+
+        listView.style.flexGrow = 1.0f;
+        rootVisualElement.Add(listView);
     }
 
     private void criarSpriteBinding()
@@ -61,6 +94,8 @@ public class BoardAssemblerV2 : EditorWindow
         objFieldSprite.allowSceneObjects = false;
         objFieldSprite.name = (++contadorSpriteBinding).ToString();
 
+        items.Add(new ObjectField());
+
         objFieldSprite.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e => {
             Debug.Log(e.newValue);
             Debug.Log(e.currentTarget);
@@ -69,7 +104,7 @@ public class BoardAssemblerV2 : EditorWindow
         });
 
         rootVisualElement.Q<VisualElement>("containerListSprites")
-           .Add(objFieldSprite);
+           .Add(objFieldSprite);        
     }
 
     private void removerUltimoSpriteBinding()
