@@ -21,15 +21,13 @@
       <engine:Button name="botaoBaixo" class="btnDirecao"/>
     </engine:VisualElement>
 
-  </engine:VisualElement>
-
-  <engine:VisualElement name="container3">
-    <engine:ListView name="listView"/>
-  </engine:VisualElement>
+  </engine:VisualElement>  
 
   <engine:VisualElement name="container2">    
     <engine:VisualElement name="containerListSprites">    
+      <engine:ListView name="listView"/>
     </engine:VisualElement>
+
 
     <engine:VisualElement name="containerBtns">
       

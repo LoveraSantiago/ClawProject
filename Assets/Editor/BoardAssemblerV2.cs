@@ -86,7 +86,6 @@ public class BoardAssemblerV2 : EditorWindow
         };
         int itemHeight = 16;        
 
-
         ListView listView = root.Q<ListView>("listView");
         listView.itemsSource = listaDeLinhas;
         listView.itemHeight = itemHeight;
@@ -110,9 +109,10 @@ public class BoardAssemblerV2 : EditorWindow
         objFieldSprite.allowSceneObjects = false;
         objFieldSprite.name = (++contadorSpriteBinding).ToString();
 
-        listaDeLinhas.Add(objFieldSprite);
-        rootVisualElement.Q<VisualElement>("containerListSprites")
-           .Add(objFieldSprite);        
+        listaDeLinhas.Add(objFieldSprite);       
+
+        ListView listView = rootVisualElement.Q<ListView>("listView");        
+        listView.Refresh();        
     }
 
     private void removerUltimoSpriteBinding()
@@ -120,9 +120,9 @@ public class BoardAssemblerV2 : EditorWindow
         Debug.Log("Qtd: " + contadorSpriteBinding);
         if(contadorSpriteBinding > 1)
         {
-            ObjectField objFieldSprite = rootVisualElement.Q<ObjectField>(contadorSpriteBinding.ToString());
-            rootVisualElement.Q<VisualElement>("containerListSprites")
-                .Remove(objFieldSprite);
+            listaDeLinhas.RemoveAt(contadorSpriteBinding - 1);
+            ListView listView = rootVisualElement.Q<ListView>("listView");
+            listView.Refresh();
 
             contadorSpriteBinding--;
         }
