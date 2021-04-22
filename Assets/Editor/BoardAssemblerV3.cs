@@ -43,26 +43,22 @@ public class BoardAssemblerV3 : EditorWindow
 
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BoardAssemblerV3.uss");
-        //VisualElement labelWithStyle = new Label("Hello World! With Style");
-        //labelWithStyle.styleSheets.Add(styleSheet);
-        //root.Add(labelWithStyle);        
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BoardAssemblerV3.uss");        
 
         contadorSpriteBinding = 0;
+        listaDeLinhas = new List<ObjectField>();
+        listaDeVisualElements = new List<VisualElement>();
+        listaDeBotoes = new List<Button>();
 
         root.Q<Button>("botaoMais").clicked += () =>
         {
             criarSpriteBinding();
         };
 
-        //root.Q<Button>("botaoMenos").clicked += () =>
-        //{
-        //    removerUltimoSpriteBinding();
-        //};       
-
-        listaDeLinhas = new List<ObjectField>();
-        listaDeVisualElements = new List<VisualElement>();
-        listaDeBotoes = new List<Button>();
+        root.Q<Button>("botaoMenos").clicked += () =>
+        {
+            removerUltimoSpriteBinding();
+        };       
 
         //Func<VisualElement> makeItem = () => { return new ObjectField(); };
         Func<VisualElement> makeItem = () =>
@@ -112,31 +108,16 @@ public class BoardAssemblerV3 : EditorWindow
             btn.text = "btn";
             btn = listaDeBotoes[i];
         };
-        //int itemHeight = 50;
-
-        //listview listview = root.q<listview>("listview");
-        //listview.itemssource = listadelinhas;
-
 
         listView = new ListView();
         listView.name = "listViewSprites";
-        listView.itemsSource = listaDeVisualElements;
-        //listView.itemHeight = itemHeight;
+        listView.itemsSource = listaDeVisualElements;        
         listView.makeItem = makeItem;
         listView.bindItem = bindItem;
         listView.selectionType = SelectionType.Single;
         listView.onItemsChosen += objects => Debug.Log(objects);
         listView.onSelectionChange += objects => Debug.Log(objects);
         listView.styleSheets.Add(styleSheet);
-
-        //listView.style.flexGrow = 1.0f;
-
-        //VisualElement container = root.Q<VisualElement>("containerListSprites");
-        //container.Add(listView);
-
-        //rootVisualElement.Add(container);
-        //rootVisualElement.Add(listView);
-
 
         root.Add(listView);
         criarSpriteBinding();
@@ -153,8 +134,7 @@ public class BoardAssemblerV3 : EditorWindow
         VisualElement visualElement = new VisualElement();
         visualElement.name = "visualElementLinha";
         visualElement.AddToClassList("custom");
-        visualElement.Add(objFieldSprite);
-        //visualElement.style.flexDirection = FlexDirection.Row;
+        visualElement.Add(objFieldSprite);        
 
         Button btn = new Button();
         btn.text = "btn";
@@ -165,23 +145,21 @@ public class BoardAssemblerV3 : EditorWindow
 
         visualElement.Add(btn);
 
-        listView.Refresh();
-        //ListView listView = rootVisualElement.Q<ListView>("listView");        
-        //listView.Refresh();          
+        listView.Refresh();        
     }
 
     private void removerUltimoSpriteBinding()
     {
-        //Debug.Log("Qtd: " + contadorSpriteBinding);
-        //if (contadorSpriteBinding > 1)
-        //{
-        //    listaDeLinhas.RemoveAt(contadorSpriteBinding - 1);
-        //    listaDeVisualElements.RemoveAt(contadorSpriteBinding - 1);
-        //    ListView listView = rootVisualElement.Q<ListView>("listView");
-        //    listView.Refresh();
+        Debug.Log("Qtd: " + contadorSpriteBinding);
+        if (listaDeVisualElements.Count > 1)
+        {
+            listaDeVisualElements.RemoveAt(listaDeVisualElements.Count - 1);            
+            listaDeLinhas.RemoveAt(listaDeLinhas.Count - 1);
+            listaDeBotoes.RemoveAt(listaDeBotoes.Count - 1);           
 
-        //    contadorSpriteBinding--;
-        //}
+            listView.Refresh();
+            contadorSpriteBinding--;
+        }
     }
 
     private void configurarComponentes()
