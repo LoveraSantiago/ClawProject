@@ -63,11 +63,12 @@ public class BoardAssemblerV3 : EditorWindow
         //Func<VisualElement> makeItem = () => { return new ObjectField(); };
         Func<VisualElement> makeItem = () =>
         {
+            Debug.Log("Make Item Chamado");
             ObjectField objFieldSprite = new ObjectField();
             objFieldSprite.label = "Coletavel:";
             objFieldSprite.objectType = typeof(Sprite);
             objFieldSprite.allowSceneObjects = false;
-            objFieldSprite.name = (++contadorSpriteBinding).ToString();
+            objFieldSprite.name = (++contadorSpriteBinding).ToString();//PROBLEMAS COM NOME
 
             Button btn = new Button();
             btn.text = "btn";
