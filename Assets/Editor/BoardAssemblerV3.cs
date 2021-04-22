@@ -48,12 +48,12 @@ public class BoardAssemblerV3 : EditorWindow
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);        
 
-        //contadorSpriteBinding = 0;
+        contadorSpriteBinding = 0;
 
-        //root.Q<Button>("botaoMais").clicked += () =>
-        //{
-        //    criarSpriteBinding();
-        //};
+        root.Q<Button>("botaoMais").clicked += () =>
+        {
+            criarSpriteBinding();
+        };
 
         //root.Q<Button>("botaoMenos").clicked += () =>
         //{
@@ -167,8 +167,7 @@ public class BoardAssemblerV3 : EditorWindow
 
         listView.Refresh();
         //ListView listView = rootVisualElement.Q<ListView>("listView");        
-        //listView.Refresh();  
-        
+        //listView.Refresh();          
     }
 
     private void removerUltimoSpriteBinding()
