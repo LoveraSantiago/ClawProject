@@ -84,9 +84,11 @@ public class BoardAssemblerV2 : EditorWindow
                 Debug.Log("Lancado por: " + current.name);
             });
         };
-        int itemHeight = 16;        
+        int itemHeight = 16;
 
-        ListView listView = root.Q<ListView>("listView");
+        //ListView listView = root.Q<ListView>("listView");
+
+        ListView listView = new ListView();
         listView.itemsSource = listaDeLinhas;
         listView.itemHeight = itemHeight;
         listView.makeItem = makeItem;
@@ -111,8 +113,8 @@ public class BoardAssemblerV2 : EditorWindow
 
         listaDeLinhas.Add(objFieldSprite);       
 
-        ListView listView = rootVisualElement.Q<ListView>("listView");        
-        listView.Refresh();        
+        //ListView listView = rootVisualElement.Q<ListView>("listView");        
+        //listView.Refresh();        
     }
 
     private void removerUltimoSpriteBinding()
@@ -121,8 +123,8 @@ public class BoardAssemblerV2 : EditorWindow
         if(contadorSpriteBinding > 1)
         {
             listaDeLinhas.RemoveAt(contadorSpriteBinding - 1);
-            ListView listView = rootVisualElement.Q<ListView>("listView");
-            listView.Refresh();
+            //ListView listView = rootVisualElement.Q<ListView>("listView");
+            //listView.Refresh();
 
             contadorSpriteBinding--;
         }

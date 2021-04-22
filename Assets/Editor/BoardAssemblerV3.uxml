@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd">
+  
+  <engine:Style src="BoardAssemblerV3.uss"/>
+  <engine:VisualElement name="container1">
+
+    <engine:VisualElement name="primeiraLinha" class="ctnLinha">
+      <engine:Button name="botaoCima" class="btnDirecao"/>
+    </engine:VisualElement>
+
+    <engine:VisualElement name="segundaLinha" class="ctnLinha">
+      <engine:Button name="botaoEsquerda" class="btnDirecao"/>
+      <engine:Button name="botaoDireita" class="btnDirecao"/>
+    </engine:VisualElement>
+
+    <engine:VisualElement name="terceiraLinha" class="ctnLinha">
+      <engine:Button name="botaoBaixo" class="btnDirecao"/>
+    </engine:VisualElement>
+
+  </engine:VisualElement>
+
+  <engine:VisualElement name="container2">
+    <engine:VisualElement name="containerListSprites">
+    </engine:VisualElement>
+
+
+    <engine:VisualElement name="containerBtns">
+
+      <engine:VisualElement name="containerBtnLinha">
+        <engine:Button name="botaoMais" text="+"/>
+        <engine:Button name="botaoMenos" text="-"/>
+      </engine:VisualElement>
+
+    </engine:VisualElement>
+
+  </engine:VisualElement>
+</engine:UXML>

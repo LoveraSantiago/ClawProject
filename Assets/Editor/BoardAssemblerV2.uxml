@@ -24,8 +24,7 @@
   </engine:VisualElement>  
 
   <engine:VisualElement name="container2">    
-    <engine:VisualElement name="containerListSprites">    
-      <engine:ListView name="listView"/>
+    <engine:VisualElement name="containerListSprites">      
     </engine:VisualElement>
 
 
