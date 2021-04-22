@@ -1,25 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ContadorDeColetaveis
 {
     private int score = 0;
     private int qtdColetados = 0;
+    private int totalColetaveis;
 
     private Coletavel[] coletados;
     private Coletavel[] devolverBoard;
     private Coletavel[] deveolverTubo;
-
     private Coletavel[] arrayVazio;
 
-    private int totalColetaveis;
-
     private GameObject pontosModal;
+    private MonoBehaviour monoBehaviour;
 
-    public ContadorDeColetaveis(GameObject pontosModal, int totalColetaveis)
+    public ContadorDeColetaveis(GameObject pontosModal, int totalColetaveis, MonoBehaviour monoBehaviour)
     {
-        this.pontosModal = pontosModal; // Todo - Level 1 - para mostrar modat de pontuação total
+        this.monoBehaviour = monoBehaviour;
+        this.pontosModal = pontosModal; // Todo - Level 1 - para mostrar modal de pontuação total
 
         coletados = new Coletavel[3];
         arrayVazio = new Coletavel[0];
@@ -28,7 +29,7 @@ public class ContadorDeColetaveis
 
     public void adicionarColetado(Coletavel coletado)
     {
-       // Debug.Log(nomeColetado);
+        // Debug.Log(nomeColetado);
         adicionaAoContainerDeColetados(coletado);
 
         if (qtdColetados > coletados.Length - 1)
@@ -39,7 +40,7 @@ public class ContadorDeColetaveis
                 adicionaPontuacao();
                 devolverBoard = arrayVazio;
                 deveolverTubo = coletados;
-                totalColetaveis -= 3;               
+                totalColetaveis -= 3;
             }
             else
             {
@@ -54,7 +55,7 @@ public class ContadorDeColetaveis
         else
         {
             devolverBoard = arrayVazio;
-            deveolverTubo  = arrayVazio;
+            deveolverTubo = arrayVazio;
         }
 
         score += 10;
@@ -62,7 +63,7 @@ public class ContadorDeColetaveis
         if (totalColetaveis <= 0)
         {
             //resetCena();
-            showTarget();
+            monoBehaviour.StartCoroutine(waitToShow());                 
         }
     }
 
@@ -81,15 +82,24 @@ public class ContadorDeColetaveis
         SceneManager.LoadScene("MapScene");
     }
 
-    public void showTarget()
-    {
+    public void showPontuacao()
+    {       
         pontosModal.SetActive(true);
 
         GameObject pontosText = GameObject.Find("PointsText");
-        if(pontosText != null)
+
+        if (pontosText != null)
         {
             pontosText.GetComponent<Text>().text = score.ToString();
         }
+    }
+
+    IEnumerator waitToShow()
+    {
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(0.5f);
+
+        showPontuacao();
     }
 
     public bool hasResetColetados()

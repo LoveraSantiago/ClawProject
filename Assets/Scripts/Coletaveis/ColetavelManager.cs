@@ -29,7 +29,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
         board = new Board(coletaveisDto.BoardDto);        
-        contadorDeColetaveis   = new ContadorDeColetaveis(this.coletaveisDto.PontosModal, board.getTotalColetaveis());
+        contadorDeColetaveis   = new ContadorDeColetaveis(this.coletaveisDto.PontosModal, board.getTotalColetaveis(), monoBehaviour);
         coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);
 
         powerUpEmAcao = false;
