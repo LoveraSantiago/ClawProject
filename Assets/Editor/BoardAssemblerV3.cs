@@ -23,7 +23,7 @@ public class BoardAssemblerV3 : EditorWindow
 
     private List<VisualElement> listaDeVELinha;
     private List<ObjectField> listaDeOFSprites;
-    private List<Button> listaDeBotoes;
+    private List<Button> listaDeBotoes;    
 
     private ListView listView;
 
@@ -47,8 +47,8 @@ public class BoardAssemblerV3 : EditorWindow
 
         contadorSpriteBinding = 0;
         listaDeOFSprites = new List<ObjectField>();
-        listaDeVELinha = new List<VisualElement>();
-        listaDeBotoes = new List<Button>();
+        listaDeVELinha   = new List<VisualElement>();
+        listaDeBotoes    = new List<Button>();
 
         root.Q<Button>("botaoMais").clicked += () =>
         {
@@ -79,6 +79,8 @@ public class BoardAssemblerV3 : EditorWindow
 
     private void criarItemLinha()
     {
+        contadorSpriteBinding = 0;
+
         ObjectField objFieldSprite = criarObjectFieldSprite();        
         Button btn = criarBotao();
         VisualElement visualElement = criarVELinha();
@@ -137,19 +139,22 @@ public class BoardAssemblerV3 : EditorWindow
     {
         Debug.Log("Make Item Chamado");
 
-        string nome = (++contadorSpriteBinding).ToString();
+        //string nome = (++contadorSpriteBinding).ToString();
 
-        ObjectField objFieldSprite = criarObjectFieldSprite();
-        objFieldSprite.name += nome;
+        //ObjectField objFieldSprite = criarObjectFieldSprite();
+        //objFieldSprite.name += nome;
 
-        Button btn = criarBotao();
-        btn.name += nome;
+        //Button btn = criarBotao();
+        //btn.name += nome;
 
-        VisualElement visualElement = criarVELinha();
-        visualElement.name += nome;
+        //VisualElement visualElement = criarVELinha();
+        //visualElement.name += nome;
 
-        visualElement.Add(objFieldSprite);
-        visualElement.Add(btn);
+        //visualElement.Add(objFieldSprite);
+        //visualElement.Add(btn);
+
+        VisualElement visualElement = listaDeVELinha[contadorSpriteBinding];
+        contadorSpriteBinding++;
         return visualElement;
     }
 
