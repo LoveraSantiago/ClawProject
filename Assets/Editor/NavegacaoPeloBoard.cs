@@ -105,4 +105,22 @@ public class NavegacaoPeloBoard
         linhaAtual = dicionarioGosBoard.Count - 1;
         posicionarMira(linhaAtual, colunaAtual);
     }
+
+    public void navegarBaixoTotal()
+    {
+        linhaAtual = 0;
+        posicionarMira(linhaAtual, colunaAtual);
+    }
+
+    public void navegarTrasTotal()
+    {
+        colunaAtual = 0;
+        posicionarMira(linhaAtual, colunaAtual);
+    }
+
+    public void navegarFrenteTotal()
+    {
+        colunaAtual = dicionarioGosBoard[linhaAtual].Count - 1;
+        posicionarMira(linhaAtual, colunaAtual);
+    }
 }
