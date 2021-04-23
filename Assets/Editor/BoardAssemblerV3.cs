@@ -14,7 +14,10 @@ public class BoardAssemblerV3 : EditorWindow
     {
         BoardAssemblerV3 wnd = GetWindow<BoardAssemblerV3>();
         wnd.titleContent = new GUIContent("BoardAssemblerV3");
-    }   
+    }
+
+    private Sprite spriteVazio;
+    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
 
     public void CreateGUI()
     {
@@ -46,11 +49,29 @@ public class BoardAssemblerV3 : EditorWindow
         });
         //root.Q<Button>("botaoMais").clicked += () => criarItemLinha();
         root.Q<Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();                
+
+        dicionarioGosBoard = referenciasDoBoard.dicionarioGosBoard;
+        spriteVazio = listaDeSprites.getSpriteVazio();
+        cleanBoard();
     }        
 
     private void colocarSprite(GameObject go, Sprite sprite)
     {
         Debug.Log(sprite);
         go.GetComponent<SpriteRenderer>().sprite = sprite;
+        go.transform.rotation = Quaternion.Euler(Vector3.zero);
+    }
+
+    private void cleanBoard()
+    {
+        for(int contadorLinha = 0; contadorLinha < dicionarioGosBoard.Count; contadorLinha++)
+        {
+            Dictionary<int, GameObject> dicionarioLinha = dicionarioGosBoard[0];
+            for(int contadorColuna = 0; contadorColuna < dicionarioLinha.Count; contadorColuna++)
+            {
+                GameObject goIt = dicionarioGosBoard[contadorLinha][contadorColuna];
+                colocarSprite(goIt, spriteVazio);
+            }
+        }
     }
 }

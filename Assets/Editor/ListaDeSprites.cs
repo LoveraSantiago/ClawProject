@@ -36,8 +36,8 @@ public class ListaDeSprites
         listView.selectionType = SelectionType.Single;
         listView.styleSheets.Add(styleSheet);
         listView.onSelectionChange += objects => {
-            Debug.Log("onSelectionChange: " + objects);
-            Debug.Log("onSelectionChange: " + objects.GetEnumerator());
+            //Debug.Log("onSelectionChange: " + objects);
+            //Debug.Log("onSelectionChange: " + objects.GetEnumerator());
             //objects[0]//PEGA o SPRITE    
 
             //IEnumerator<object> enumerator = objects.GetEnumerator();
@@ -84,5 +84,10 @@ public class ListaDeSprites
 
             listView.Refresh();
         }
+    }
+
+    public Sprite getSpriteVazio()
+    {
+        return listaDeSprites[0];
     }
 }
