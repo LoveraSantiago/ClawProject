@@ -58,57 +58,10 @@ public class BoardAssemblerV3 : EditorWindow
         root.Q<Button>("botaoMenos").clicked += () =>
         {
             removerUltimoItemLinha();
-        };       
-
-        //Func<VisualElement> makeItem = () => { return new ObjectField(); };
-        Func<VisualElement> makeItem = () =>
-        {
-            Debug.Log("Make Item Chamado");
-            ObjectField objFieldSprite = new ObjectField();
-            objFieldSprite.label = "Coletavel:";
-            objFieldSprite.objectType = typeof(Sprite);
-            objFieldSprite.allowSceneObjects = false;
-            objFieldSprite.name = (++contadorSpriteBinding).ToString();//PROBLEMAS COM NOME
-
-            Button btn = new Button();
-            btn.text = "btn";
-
-            VisualElement visualElement = new VisualElement();
-            visualElement.name = "visualElementLinha";
-            visualElement.AddToClassList("custom");
-            visualElement.Add(objFieldSprite);
-            visualElement.Add(btn);
-            return visualElement;
         };
 
-
-        Action<VisualElement, int> bindItem = (e, i) =>
-        {
-            e = listaDeVELinha[i];
-
-            e.name = "visualElementLinha";
-            e.AddToClassList("custom");
-
-            //ObjectField objF = (ObjectField) e;
-            ObjectField objF = e.Q<ObjectField>();
-            objF.objectType = listaDeOFSprites[i].objectType;
-            objF.label = listaDeOFSprites[i].label;
-            objF.allowSceneObjects = listaDeOFSprites[i].allowSceneObjects;
-            objF.name = listaDeOFSprites[i].name;
-            //objF.RegisterCallback = listaDeLinhas[i].RegisterCallback;
-
-            objF.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
-            {
-                Debug.Log(e1.newValue);
-                Debug.Log(e1.currentTarget);
-                ObjectField current = (ObjectField)e1.currentTarget;
-                Debug.Log("Lancado por: " + current.name);
-            });
-
-            Button btn = e.Q<Button>();
-            btn.text = "btn";
-            btn = listaDeBotoes[i];
-        };
+        Func<VisualElement> makeItem = () => funcMakeItem();
+        Action<VisualElement, int> bindItem = (e, i) => actionBindItem(e, i);        
 
         listView = new ListView();
         listView.name = "listViewSprites";
@@ -126,25 +79,16 @@ public class BoardAssemblerV3 : EditorWindow
 
     private void criarItemLinha()
     {
-        ObjectField objFieldSprite = new ObjectField();
-        objFieldSprite.label = "Coletavel:";
-        objFieldSprite.objectType = typeof(Sprite);
-        objFieldSprite.allowSceneObjects = false;
-        objFieldSprite.name = (++contadorSpriteBinding).ToString();
+        ObjectField objFieldSprite = criarObjectFieldSprite();        
+        Button btn = criarBotao();
+        VisualElement visualElement = criarVELinha();
 
-        VisualElement visualElement = new VisualElement();
-        visualElement.name = "visualElementLinha";
-        visualElement.AddToClassList("custom");
-        visualElement.Add(objFieldSprite);        
-
-        Button btn = new Button();
-        btn.text = "btn";
+        visualElement.Add(objFieldSprite);
+        visualElement.Add(btn);
 
         listaDeVELinha.Add(visualElement);
         listaDeOFSprites.Add(objFieldSprite);
         listaDeBotoes.Add(btn);
-
-        visualElement.Add(btn);
 
         listView.Refresh();        
     }
@@ -161,6 +105,79 @@ public class BoardAssemblerV3 : EditorWindow
             listView.Refresh();
             contadorSpriteBinding--;
         }
+    }
+
+    private ObjectField criarObjectFieldSprite()
+    {
+        ObjectField objFieldSprite = new ObjectField();
+        objFieldSprite.label = "Coletavel:";
+        objFieldSprite.objectType = typeof(Sprite);
+        objFieldSprite.allowSceneObjects = false;
+        objFieldSprite.name = "objectFieldSprite_";
+        return objFieldSprite;
+    }
+
+    private Button criarBotao()
+    {
+        Button btn = new Button();
+        btn.text = "add";
+        btn.name = "button_";
+        return btn;
+    }
+
+    private VisualElement criarVELinha()
+    {
+        VisualElement visualElement = new VisualElement();
+        visualElement.name = "visualElementLinha_";
+        visualElement.AddToClassList("veLinha");
+        return visualElement;
+    }
+
+    private VisualElement funcMakeItem()
+    {
+        Debug.Log("Make Item Chamado");
+
+        string nome = (++contadorSpriteBinding).ToString();
+
+        ObjectField objFieldSprite = criarObjectFieldSprite();
+        objFieldSprite.name += nome;
+
+        Button btn = criarBotao();
+        btn.name += nome;
+
+        VisualElement visualElement = criarVELinha();
+        visualElement.name += nome;
+
+        visualElement.Add(objFieldSprite);
+        visualElement.Add(btn);
+        return visualElement;
+    }
+
+    private void actionBindItem(VisualElement e, int i)
+    {
+        VisualElement veDaLista = listaDeVELinha[i];        
+        e.name = veDaLista.name;        
+        e.AddToClassList("veLinha");
+
+        ObjectField objFDaLista = listaDeOFSprites[i];
+        ObjectField eObF = e.Q<ObjectField>();
+        eObF.objectType = objFDaLista.objectType;
+        eObF.label = objFDaLista.label;
+        eObF.allowSceneObjects = objFDaLista.allowSceneObjects;
+        eObF.name = objFDaLista.name;
+
+        eObF.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
+        {
+            Debug.Log(e1.newValue);
+            Debug.Log(e1.currentTarget);
+            ObjectField current = (ObjectField)e1.currentTarget;
+            Debug.Log("Lancado por: " + current.name);
+        });
+
+        Button btnDaLista = listaDeBotoes[i];
+        Button eBtn = e.Q<Button>();
+        eBtn.text = btnDaLista.text;
+        eBtn.name = btnDaLista.name;        
     }
 
     private void configurarComponentes()
