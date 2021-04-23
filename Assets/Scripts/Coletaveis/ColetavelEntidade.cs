@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public class ColetavelEntidade 
 {
@@ -33,58 +32,4 @@ public class ColetavelEntidade
         new ColetavelEntidade(15, "coco", "characters_0006", FAMILIA.FRUTAS),
         new ColetavelEntidade(16, "estrelamarinha?", "characters_0007", FAMILIA.FRUTAS)
     };
-
-    public ColetavelEntidade getColetavelById(int idQuery)
-    {
-        inicializarDicionarioDeId();
-        if (dicionarioDeIds.ContainsKey(idQuery))
-        {
-            return dicionarioDeIds[idQuery];
-        }
-        else
-        {
-            Debug.LogError("O id solicitado nao existe: " + idQuery);
-            return null;
-        }
-    }
-
-    public ColetavelEntidade getColetavelBySprite(string spriteName)
-    {
-        inicializarDicionarioDeSprites();
-        if (dicionarioDeSprites.ContainsKey(spriteName))
-        {
-            return dicionarioDeSprites[spriteName];
-        }
-        else
-        {
-            Debug.LogError("O spritename solicitado nao existe: " + spriteName);
-            return null;
-        }
-    }
-
-    private void inicializarDicionarioDeId()
-    {
-        if (dicionarioDeIds == null)
-        {
-            dicionarioDeIds = new Dictionary<int, ColetavelEntidade>();
-            for (int contador = 0; contador < ARRAY_COLETAVEIS_ENTIDADES.Length; contador++)
-            {
-                ColetavelEntidade coletavelEntidadeIt = ARRAY_COLETAVEIS_ENTIDADES[contador];
-                dicionarioDeIds.Add(coletavelEntidadeIt.id, coletavelEntidadeIt);
-            }
-        }
-    }
-
-    private void inicializarDicionarioDeSprites()
-    {
-        if (dicionarioDeSprites == null)
-        {
-            dicionarioDeSprites = new Dictionary<string, ColetavelEntidade>();
-            for (int contador = 0; contador < ARRAY_COLETAVEIS_ENTIDADES.Length; contador++)
-            {
-                ColetavelEntidade coletavelEntidadeIt = ARRAY_COLETAVEIS_ENTIDADES[contador];
-                dicionarioDeSprites.Add(coletavelEntidadeIt.nomeSprite, coletavelEntidadeIt);
-            }
-        }
-    }
 }
