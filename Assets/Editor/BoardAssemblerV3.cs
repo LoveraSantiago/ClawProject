@@ -42,6 +42,9 @@ public class BoardAssemblerV3 : EditorWindow
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BoardAssemblerV3.uss");        
         
         listaDeSprites   = new List<Sprite>();
+        listaDeSprites.Add(Resources.Load<Sprite>("Sprites/collectables/tile-vazio"));
+        listaDeSprites.Add(Resources.Load<Sprite>("Sprites/collectables/tile-random"));
+
         root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
         {            
             listaDeSprites.Add((Sprite) e1.newValue);
@@ -60,12 +63,14 @@ public class BoardAssemblerV3 : EditorWindow
         listView.onItemsChosen += objects => Debug.Log(objects);
         listView.onSelectionChange += objects => Debug.Log(objects);
         listView.styleSheets.Add(styleSheet);
-        root.Add(listView);        
+        root.Add(listView);
+
+        configurarComponentes();
     }    
 
     private void removerUltimoItemLinha()
     {        
-        if (listaDeSprites.Count > 0)
+        if (listaDeSprites.Count > 2)
         {
             listaDeSprites.RemoveAt(listaDeSprites.Count - 1);                        
 
