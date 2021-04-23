@@ -15,14 +15,10 @@ public class BoardAssemblerV3 : EditorWindow
         BoardAssemblerV3 wnd = GetWindow<BoardAssemblerV3>();
         wnd.titleContent = new GUIContent("BoardAssemblerV3");
     }
-
-    private int contadorSpriteBinding;
+    
     private Sprite sprVazio;
     private Sprite sprRandom;
-
-    private List<VisualElement> listaDeVELinha;
-    private List<ObjectField> listaDeOFSprites;
-    private List<Button> listaDeBotoes;
+    
     private List<Sprite> listaDeSprites;
 
     private ListView listView;
@@ -44,20 +40,15 @@ public class BoardAssemblerV3 : EditorWindow
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BoardAssemblerV3.uss");        
-
-        contadorSpriteBinding = 0;
-        listaDeOFSprites = new List<ObjectField>();
-        listaDeVELinha   = new List<VisualElement>();
-        listaDeBotoes    = new List<Button>();
+        
         listaDeSprites   = new List<Sprite>();
-
         root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
         {            
             listaDeSprites.Add((Sprite) e1.newValue);
             Debug.Log("Lista De Sprites size: " +  listaDeSprites.Count);            
             listView.Refresh();
         });
-        root.Q<Button>("botaoMais").clicked += () => criarItemLinha();
+        //root.Q<Button>("botaoMais").clicked += () => criarItemLinha();
         root.Q<Button>("botaoMenos").clicked += () => removerUltimoItemLinha();        
 
         listView = new ListView();
@@ -70,121 +61,27 @@ public class BoardAssemblerV3 : EditorWindow
         listView.onSelectionChange += objects => Debug.Log(objects);
         listView.styleSheets.Add(styleSheet);
 
-        root.Add(listView);
-        //criarItemLinha();
-    }
-
-    private void criarItemLinha()
-    {
-        contadorSpriteBinding = 0;
-
-        ObjectField objFieldSprite = criarObjectFieldSprite();        
-        Button btn = criarBotao();
-        VisualElement visualElement = criarVELinha();
-
-        visualElement.Add(objFieldSprite);
-        visualElement.Add(btn);
-
-        listaDeVELinha.Add(visualElement);
-        listaDeOFSprites.Add(objFieldSprite);
-        listaDeBotoes.Add(btn);
-
-        listView.Refresh();        
-    }
+        root.Add(listView);        
+    }    
 
     private void removerUltimoItemLinha()
-    {
-        Debug.Log("Qtd: " + contadorSpriteBinding);
-        if (listaDeVELinha.Count > 1)
+    {        
+        if (listaDeSprites.Count > 1)
         {
-            listaDeVELinha.RemoveAt(listaDeVELinha.Count - 1);            
-            listaDeOFSprites.RemoveAt(listaDeOFSprites.Count - 1);
-            listaDeBotoes.RemoveAt(listaDeBotoes.Count - 1);           
+            listaDeSprites.RemoveAt(listaDeSprites.Count - 1);                        
 
-            listView.Refresh();
-            contadorSpriteBinding--;
+            listView.Refresh();            
         }
-    }
-
-    private ObjectField criarObjectFieldSprite()
-    {
-        ObjectField objFieldSprite = new ObjectField();
-        objFieldSprite.label = "Coletavel:";
-        objFieldSprite.objectType = typeof(Sprite);
-        objFieldSprite.allowSceneObjects = false;
-        objFieldSprite.name = "objectFieldSprite_";
-        return objFieldSprite;
-    }
-
-    private Button criarBotao()
-    {
-        Button btn = new Button();
-        btn.text = "add";
-        btn.name = "button_";
-        return btn;
-    }
-
-    private VisualElement criarVELinha()
-    {
-        VisualElement visualElement = new VisualElement();
-        visualElement.name = "visualElementLinha_";
-        visualElement.AddToClassList("veLinha");
-        return visualElement;
-    }
+    }       
 
     private VisualElement funcMakeItem()
     {
-        Debug.Log("Make Item Chamado");
-
-        //string nome = (++contadorSpriteBinding).ToString();
-
-        //ObjectField objFieldSprite = criarObjectFieldSprite();
-        //objFieldSprite.name += nome;
-
-        //Button btn = criarBotao();
-        //btn.name += nome;
-
-        //VisualElement visualElement = criarVELinha();
-        //visualElement.name += nome;
-
-        //visualElement.Add(objFieldSprite);
-        //visualElement.Add(btn);
-
-        //VisualElement visualElement = listaDeVELinha[contadorSpriteBinding];
-        //contadorSpriteBinding++;
-        //return visualElement;
-
         Image image = new Image();
         return image;
     }
 
     private void actionBindItem(VisualElement e, int i)
     {
-        //Debug.Log("Binding chamado indice: " + i);
-        //VisualElement veDaLista = listaDeVELinha[i];        
-        //e.name = veDaLista.name;        
-        //e.AddToClassList("veLinha");
-
-        //ObjectField objFDaLista = listaDeOFSprites[i];
-        //ObjectField eObF = e.Q<ObjectField>();
-        //eObF.objectType = objFDaLista.objectType;
-        //eObF.label = objFDaLista.label;
-        //eObF.allowSceneObjects = objFDaLista.allowSceneObjects;
-        //eObF.name = objFDaLista.name;
-
-        //eObF.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
-        //{
-        //    Debug.Log(e1.newValue);
-        //    Debug.Log(e1.currentTarget);
-        //    ObjectField current = (ObjectField)e1.currentTarget;
-        //    Debug.Log("Lancado por: " + current.name);
-        //});
-
-        //Button btnDaLista = listaDeBotoes[i];
-        //Button eBtn = e.Q<Button>();
-        //eBtn.text = btnDaLista.text;
-        //eBtn.name = btnDaLista.name;        
-
         Image image = (Image)e;
         image.style.backgroundImage = new StyleBackground(listaDeSprites[i].texture);
     }
