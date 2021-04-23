@@ -47,7 +47,8 @@ public class BoardAssemblerV3 : EditorWindow
         {
             listaDeSprites.receberSprite((Sprite)e1.newValue);
         });
-        //root.Q<Button>("botaoMais").clicked += () => criarItemLinha();
+
+        root.Q<Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
         root.Q<Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();                
 
         dicionarioGosBoard = referenciasDoBoard.dicionarioGosBoard;
@@ -56,8 +57,7 @@ public class BoardAssemblerV3 : EditorWindow
     }        
 
     private void colocarSprite(GameObject go, Sprite sprite)
-    {
-        Debug.Log(sprite);
+    {        
         go.GetComponent<SpriteRenderer>().sprite = sprite;
         go.transform.rotation = Quaternion.Euler(Vector3.zero);
     }

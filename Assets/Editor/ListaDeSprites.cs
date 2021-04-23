@@ -86,6 +86,15 @@ public class ListaDeSprites
         }
     }
 
+    public void limparTodaLista()
+    {
+        while(listaDeSprites.Count > 2)
+        {
+            removerUltimaLinha();
+        }
+        listView.Refresh();
+    }
+
     public Sprite getSpriteVazio()
     {
         return listaDeSprites[0];
