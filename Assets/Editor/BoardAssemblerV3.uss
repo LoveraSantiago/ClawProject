@@ -68,9 +68,24 @@
 
 .veLinha {
 	flex-direction: row;
-	height: 25px;
+	height: 40px;
+	align-items: center;
 }
 
 Image {
-	width: 50px;
+	width: 30px;
+	height: 30px;
+	margin-left: 30px;
+}
+
+.veLinha > Label {
+	margin-left: 10px;
+}
+
+#objectFieldSprite > Label {
+	min-width: 70px;
+}
+
+#main{
+	min-width: 290px;
 }

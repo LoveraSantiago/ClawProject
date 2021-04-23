@@ -60,13 +60,12 @@ public class BoardAssemblerV3 : EditorWindow
         listView.onItemsChosen += objects => Debug.Log(objects);
         listView.onSelectionChange += objects => Debug.Log(objects);
         listView.styleSheets.Add(styleSheet);
-
         root.Add(listView);        
     }    
 
     private void removerUltimoItemLinha()
     {        
-        if (listaDeSprites.Count > 1)
+        if (listaDeSprites.Count > 0)
         {
             listaDeSprites.RemoveAt(listaDeSprites.Count - 1);                        
 
@@ -77,13 +76,22 @@ public class BoardAssemblerV3 : EditorWindow
     private VisualElement funcMakeItem()
     {
         Image image = new Image();
-        return image;
+        Label label = new Label();
+
+        VisualElement visualElement = new VisualElement();
+        visualElement.AddToClassList("veLinha");
+        visualElement.Add(image);
+        visualElement.Add(label);
+        return visualElement;
     }
 
     private void actionBindItem(VisualElement e, int i)
     {
-        Image image = (Image)e;
+        VisualElement visualElement = e;
+        Image image = visualElement.Q<Image>();
         image.style.backgroundImage = new StyleBackground(listaDeSprites[i].texture);
+        Label label = visualElement.Q<Label>();
+        label.text = listaDeSprites[i].name;
     }
 
     private void configurarComponentes()
