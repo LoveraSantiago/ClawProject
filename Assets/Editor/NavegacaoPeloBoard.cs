@@ -1,10 +1,6 @@
-using UnityEditor;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEditor.UIElements;
-using UnityEngine.SceneManagement;
-using System.Collections.Generic;
-using System;
 
 public class NavegacaoPeloBoard 
 {
@@ -95,5 +91,10 @@ public class NavegacaoPeloBoard
         posicionarMira(0, 0);
         linhaAtual = 0;
         colunaAtual = 0;
+    }
+
+    public GameObject getGoDaMira()
+    {
+        return dicionarioGosBoard[linhaAtual][colunaAtual];
     }
 }

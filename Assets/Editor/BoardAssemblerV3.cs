@@ -14,14 +14,12 @@ public class BoardAssemblerV3 : EditorWindow
     {
         BoardAssemblerV3 wnd = GetWindow<BoardAssemblerV3>();
         wnd.titleContent = new GUIContent("BoardAssemblerV3");
-    }
+    }   
     
-    private Sprite sprVazio;
-    private Sprite sprRandom;
     
-    private List<Sprite> listaDeSprites;
-
     private ListView listView;
+    private List<Sprite> listaDeSprites;
+    private NavegacaoPeloBoard navegacao;
 
     public void CreateGUI()
     {
@@ -60,8 +58,20 @@ public class BoardAssemblerV3 : EditorWindow
         listView.makeItem = () => funcMakeItem();
         listView.bindItem = (e, i) => actionBindItem(e, i);
         listView.selectionType = SelectionType.Single;
-        listView.onItemsChosen += objects => Debug.Log(objects);
-        listView.onSelectionChange += objects => Debug.Log(objects);
+        listView.onItemsChosen += objects => {            
+            Debug.Log("onItemsChosen: " + objects);
+            
+        };
+        listView.onSelectionChange += objects => {
+            Debug.Log("onSelectionChange: " + objects);
+            Debug.Log("onSelectionChange: " + objects.GetEnumerator());
+            //objects[0]//PEGA o SPRITE    
+
+            //IEnumerator<object> enumerator = objects.GetEnumerator();
+            Sprite spr = (Sprite) ((List<System.Object>)objects)[0];
+
+            colocarSprite(navegacao.getGoDaMira(), spr);
+        };
         listView.styleSheets.Add(styleSheet);
         root.Add(listView);
 
@@ -104,19 +114,14 @@ public class BoardAssemblerV3 : EditorWindow
         ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler();
         referenciasDoBoard.configurarReferenciasComBoard();
 
-        NavegacaoPeloBoard navegacao = new NavegacaoPeloBoard(referenciasDoBoard.goMira, referenciasDoBoard.dicionarioGosBoard);
+        navegacao = new NavegacaoPeloBoard(referenciasDoBoard.goMira, referenciasDoBoard.dicionarioGosBoard);
         navegacao.configurarBotoes(rootVisualElement);
         navegacao.resetMira();
-    }
-
-    private void configurarSpritesDefaults()
-    {
-        sprVazio = Resources.Load<Sprite>("Sprites/collectables/tile-vazio");
-        sprRandom = Resources.Load<Sprite>("Sprites/collectables/tile-random");
-    }
+    }    
 
     private void colocarSprite(GameObject go, Sprite sprite)
     {
+        Debug.Log(sprite);
         go.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 }
