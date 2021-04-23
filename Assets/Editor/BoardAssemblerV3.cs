@@ -17,9 +17,10 @@ public class BoardAssemblerV3 : EditorWindow
     }   
     
     
-    private ListView listView;
-    private List<Sprite> listaDeSprites;
+    //private ListView listView;
+    //private List<Sprite> listaDeSprites;
     private NavegacaoPeloBoard navegacao;
+    private ListaDeSprites listaDeSpritesObj;
 
     public void CreateGUI()
     {
@@ -37,80 +38,76 @@ public class BoardAssemblerV3 : EditorWindow
 
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BoardAssemblerV3.uss");        
-        
-        listaDeSprites   = new List<Sprite>();
-        listaDeSprites.Add(Resources.Load<Sprite>("Sprites/collectables/tile-vazio"));
-        listaDeSprites.Add(Resources.Load<Sprite>("Sprites/collectables/tile-random"));
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BoardAssemblerV3.uss");
+        listaDeSpritesObj = new ListaDeSprites(root, styleSheet, (spr)=> colocarSprite(navegacao.getGoDaMira(), spr));
+        //listaDeSprites   = new List<Sprite>();
+        //listaDeSprites.Add(Resources.Load<Sprite>("Sprites/collectables/tile-vazio"));
+        //listaDeSprites.Add(Resources.Load<Sprite>("Sprites/collectables/tile-random"));
 
         root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
-        {            
-            listaDeSprites.Add((Sprite) e1.newValue);
-            Debug.Log("Lista De Sprites size: " +  listaDeSprites.Count);            
-            listView.Refresh();
+        {
+            listaDeSpritesObj.receberSprite((Sprite)e1.newValue);
+            //listaDeSprites.Add((Sprite) e1.newValue);
+            //Debug.Log("Lista De Sprites size: " +  listaDeSprites.Count);            
+            //listView.Refresh();
         });
         //root.Q<Button>("botaoMais").clicked += () => criarItemLinha();
         root.Q<Button>("botaoMenos").clicked += () => removerUltimoItemLinha();        
 
-        listView = new ListView();
-        listView.name = "listViewSprites";
-        listView.itemsSource = listaDeSprites;        
-        listView.makeItem = () => funcMakeItem();
-        listView.bindItem = (e, i) => actionBindItem(e, i);
-        listView.selectionType = SelectionType.Single;
-        listView.onItemsChosen += objects => {            
-            Debug.Log("onItemsChosen: " + objects);
+        //listView = new ListView();
+        //listView.name = "listViewSprites";
+        //listView.itemsSource = listaDeSprites;        
+        //listView.makeItem = () => funcMakeItem();
+        //listView.bindItem = (e, i) => actionBindItem(e, i);
+        //listView.selectionType = SelectionType.Single;
+        //listView.onItemsChosen += objects => {            
+        //    Debug.Log("onItemsChosen: " + objects);
             
-        };
+        //};
 
 
                                     
-        listView.onSelectionChange += objects => {
-            Debug.Log("onSelectionChange: " + objects);
-            Debug.Log("onSelectionChange: " + objects.GetEnumerator());
-            //objects[0]//PEGA o SPRITE    
+        //listView.onSelectionChange += objects => {
+        //    Debug.Log("onSelectionChange: " + objects);
+        //    Debug.Log("onSelectionChange: " + objects.GetEnumerator());
+        //    //objects[0]//PEGA o SPRITE    
 
-            //IEnumerator<object> enumerator = objects.GetEnumerator();
-            Sprite spr = (Sprite) ((List<System.Object>)objects)[0];
+        //    //IEnumerator<object> enumerator = objects.GetEnumerator();
+        //    Sprite spr = (Sprite) ((List<System.Object>)objects)[0];
 
-            colocarSprite(navegacao.getGoDaMira(), spr);
-        };
-        listView.styleSheets.Add(styleSheet);
-        root.Add(listView);
+        //    colocarSprite(navegacao.getGoDaMira(), spr);
+        //};
+        //listView.styleSheets.Add(styleSheet);
+        //root.Add(listView);
 
         configurarComponentes();
     }    
 
     private void removerUltimoItemLinha()
-    {        
-        if (listaDeSprites.Count > 2)
-        {
-            listaDeSprites.RemoveAt(listaDeSprites.Count - 1);                        
-
-            listView.Refresh();            
-        }
+    {
+        listaDeSpritesObj.removerUltimaLinha();
     }       
 
-    private VisualElement funcMakeItem()
-    {
-        Image image = new Image();
-        Label label = new Label();
+    //private VisualElement funcMakeItem()
+    //{
+    //    Image image = new Image();
+    //    Label label = new Label();
 
-        VisualElement visualElement = new VisualElement();
-        visualElement.AddToClassList("veLinha");
-        visualElement.Add(image);
-        visualElement.Add(label);
-        return visualElement;
-    }
+    //    VisualElement visualElement = new VisualElement();
+    //    visualElement.AddToClassList("veLinha");
+    //    visualElement.Add(image);
+    //    visualElement.Add(label);
+    //    return visualElement;
+    //}
 
-    private void actionBindItem(VisualElement e, int i)
-    {
-        VisualElement visualElement = e;
-        Image image = visualElement.Q<Image>();
-        image.style.backgroundImage = new StyleBackground(listaDeSprites[i].texture);
-        Label label = visualElement.Q<Label>();
-        label.text = listaDeSprites[i].name;
-    }
+    //private void actionBindItem(VisualElement e, int i)
+    //{
+    //    VisualElement visualElement = e;
+    //    Image image = visualElement.Q<Image>();
+    //    image.style.backgroundImage = new StyleBackground(listaDeSprites[i].texture);
+    //    Label label = visualElement.Q<Label>();
+    //    label.text = listaDeSprites[i].name;
+    //}
 
     private void configurarComponentes()
     {
