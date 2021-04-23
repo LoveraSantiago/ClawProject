@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 public class ReferenciasDoBoardAssembler 
 {
     public Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard { get; private set; }
-    public GameObject goMira { get; private set; }    
+    public GameObject goMira { get; private set; }
 
-    public void configurarReferenciasComBoard()
+    public ReferenciasDoBoardAssembler()
+    {
+        configurarReferenciasComBoard();
+    }
+
+    private void configurarReferenciasComBoard()
     {
         GameObject goBoardAssembler = getBoardAssembler();
         dicionarioGosBoard = inicializarDicionarioDeGosBoard(goBoardAssembler);

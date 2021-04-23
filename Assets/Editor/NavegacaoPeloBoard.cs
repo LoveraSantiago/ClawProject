@@ -10,13 +10,15 @@ public class NavegacaoPeloBoard
     private GameObject goMira;
     private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
 
-    public NavegacaoPeloBoard(GameObject goMira, Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard)
+    public NavegacaoPeloBoard(VisualElement root, GameObject goMira, Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard)
     {
         this.goMira = goMira;
-        this.dicionarioGosBoard = dicionarioGosBoard;        
+        this.dicionarioGosBoard = dicionarioGosBoard;
+
+        configurarBotoes(root);
     }
 
-    public void configurarBotoes(VisualElement root)
+    private void configurarBotoes(VisualElement root)
     {
         Button btnCima = root.Q<Button>("botaoCima");
         btnCima.clickable.clicked += () =>
