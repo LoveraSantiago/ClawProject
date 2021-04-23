@@ -21,8 +21,8 @@ public class BoardAssemblerV3 : EditorWindow
     private Sprite sprVazio;
     private Sprite sprRandom;
 
-    private List<VisualElement> listaDeVisualElements;
-    private List<ObjectField> listaDeLinhas;
+    private List<VisualElement> listaDeVELinha;
+    private List<ObjectField> listaDeOFSprites;
     private List<Button> listaDeBotoes;
 
     private ListView listView;
@@ -46,18 +46,18 @@ public class BoardAssemblerV3 : EditorWindow
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BoardAssemblerV3.uss");        
 
         contadorSpriteBinding = 0;
-        listaDeLinhas = new List<ObjectField>();
-        listaDeVisualElements = new List<VisualElement>();
+        listaDeOFSprites = new List<ObjectField>();
+        listaDeVELinha = new List<VisualElement>();
         listaDeBotoes = new List<Button>();
 
         root.Q<Button>("botaoMais").clicked += () =>
         {
-            criarSpriteBinding();
+            criarItemLinha();
         };
 
         root.Q<Button>("botaoMenos").clicked += () =>
         {
-            removerUltimoSpriteBinding();
+            removerUltimoItemLinha();
         };       
 
         //Func<VisualElement> makeItem = () => { return new ObjectField(); };
@@ -84,17 +84,17 @@ public class BoardAssemblerV3 : EditorWindow
 
         Action<VisualElement, int> bindItem = (e, i) =>
         {
-            e = listaDeVisualElements[i];
+            e = listaDeVELinha[i];
 
             e.name = "visualElementLinha";
             e.AddToClassList("custom");
 
             //ObjectField objF = (ObjectField) e;
             ObjectField objF = e.Q<ObjectField>();
-            objF.objectType = listaDeLinhas[i].objectType;
-            objF.label = listaDeLinhas[i].label;
-            objF.allowSceneObjects = listaDeLinhas[i].allowSceneObjects;
-            objF.name = listaDeLinhas[i].name;
+            objF.objectType = listaDeOFSprites[i].objectType;
+            objF.label = listaDeOFSprites[i].label;
+            objF.allowSceneObjects = listaDeOFSprites[i].allowSceneObjects;
+            objF.name = listaDeOFSprites[i].name;
             //objF.RegisterCallback = listaDeLinhas[i].RegisterCallback;
 
             objF.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
@@ -112,7 +112,7 @@ public class BoardAssemblerV3 : EditorWindow
 
         listView = new ListView();
         listView.name = "listViewSprites";
-        listView.itemsSource = listaDeVisualElements;        
+        listView.itemsSource = listaDeVELinha;        
         listView.makeItem = makeItem;
         listView.bindItem = bindItem;
         listView.selectionType = SelectionType.Single;
@@ -121,10 +121,10 @@ public class BoardAssemblerV3 : EditorWindow
         listView.styleSheets.Add(styleSheet);
 
         root.Add(listView);
-        criarSpriteBinding();
+        criarItemLinha();
     }
 
-    private void criarSpriteBinding()
+    private void criarItemLinha()
     {
         ObjectField objFieldSprite = new ObjectField();
         objFieldSprite.label = "Coletavel:";
@@ -140,8 +140,8 @@ public class BoardAssemblerV3 : EditorWindow
         Button btn = new Button();
         btn.text = "btn";
 
-        listaDeVisualElements.Add(visualElement);
-        listaDeLinhas.Add(objFieldSprite);
+        listaDeVELinha.Add(visualElement);
+        listaDeOFSprites.Add(objFieldSprite);
         listaDeBotoes.Add(btn);
 
         visualElement.Add(btn);
@@ -149,13 +149,13 @@ public class BoardAssemblerV3 : EditorWindow
         listView.Refresh();        
     }
 
-    private void removerUltimoSpriteBinding()
+    private void removerUltimoItemLinha()
     {
         Debug.Log("Qtd: " + contadorSpriteBinding);
-        if (listaDeVisualElements.Count > 1)
+        if (listaDeVELinha.Count > 1)
         {
-            listaDeVisualElements.RemoveAt(listaDeVisualElements.Count - 1);            
-            listaDeLinhas.RemoveAt(listaDeLinhas.Count - 1);
+            listaDeVELinha.RemoveAt(listaDeVELinha.Count - 1);            
+            listaDeOFSprites.RemoveAt(listaDeOFSprites.Count - 1);
             listaDeBotoes.RemoveAt(listaDeBotoes.Count - 1);           
 
             listView.Refresh();
