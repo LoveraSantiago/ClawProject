@@ -55,6 +55,13 @@ public class BoardAssemblerV3 : EditorWindow
         {            
             listaDeSprites.Add((Sprite) e1.newValue);
             Debug.Log("Lista De Sprites size: " +  listaDeSprites.Count);
+
+            //Image image = new Image();
+            //image.image = ((Sprite)e1.newValue).texture;
+            //image.style.backgroundImage = new StyleBackground(((Sprite)e1.newValue).texture);
+            //image.style.backgroundColor = Color.blue;
+            //image.sp = e1.newValue;
+            //root.Add(image);
         });
         root.Q<Button>("botaoMais").clicked += () => criarItemLinha();
         root.Q<Button>("botaoMenos").clicked += () => removerUltimoItemLinha();        
@@ -69,7 +76,7 @@ public class BoardAssemblerV3 : EditorWindow
         listView.onSelectionChange += objects => Debug.Log(objects);
         listView.styleSheets.Add(styleSheet);
 
-        root.Add(listView);
+        //root.Add(listView);
         criarItemLinha();
     }
 
