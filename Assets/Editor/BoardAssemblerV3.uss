@@ -6,8 +6,7 @@
 #container1 {	
 	display: flex;
 	flex-direction: column;	
-	padding-top: 10px;
-	background-color:green;
+	padding-top: 10px;	
 	flex-grow: 1;
 	align-items: center;
 }
@@ -24,6 +23,7 @@
 
 #container1Lado {
 	align-self: flex-end;
+	flex-grow: 1;
 }
 
 #container2 {	
@@ -71,9 +71,17 @@
 	background-image: resource('Assets/Editor/sprites/seta-cima.png');
 }
 
+#botaoCimaAll {
+	background-image: resource('Assets/Editor/sprites/arrow-cima.png');
+}
+
 #botaoEsquerda {
 	margin-right: 25px;
 	background-image: resource('Assets/Editor/sprites/seta-esquerda.png');
+}
+
+#botaoEsquerdaAll {
+	background-image: resource('Assets/Editor/sprites/arrow-esquerda.png');
 }
 
 #botaoDireita{
@@ -81,8 +89,16 @@
 	background-image: resource('Assets/Editor/sprites/seta-direita.png');
 }
 
+#botaoDireitaAll {
+	background-image: resource('Assets/Editor/sprites/arrow-direita.png');
+}
+
 #botaoBaixo{
 	background-image: resource('Assets/Editor/sprites/seta-baixo.png');
+}
+
+#botaoBaixoAll {
+	background-image: resource('Assets/Editor/sprites/arrow-baixo.png');
 }
 
 #listViewSprites {
