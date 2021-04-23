@@ -16,7 +16,7 @@
           <engine:Button name="botaoDireita" class="btnDirecao"/>
       </engine:VisualElement>
 
-      <engine:VisualElement name="terceiraLinha" class="ctnLinha">
+      <engine:VisualElement name="terceiraLinha" class="ctnLinha">          
           <engine:Button name="botaoBaixo" class="btnDirecao"/>
       </engine:VisualElement>
   </engine:VisualElement>
@@ -24,6 +24,7 @@
   <engine:VisualElement name="container2">
       <engine:VisualElement name="containerBtns">
         <engine:VisualElement name="containerBtnLinha">
+            <editor:ObjectField name="obfSprite" type="UnityEngine.Sprite, UnityEngine.CoreModule" label="Coletavel" allow-scene-objects="false" />            
             <engine:Button name="botaoMais" text="+"/>
             <engine:Button name="botaoMenos" text="-"/>
         </engine:VisualElement>

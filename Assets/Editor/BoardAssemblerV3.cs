@@ -8,7 +8,6 @@ using System;
 
 public class BoardAssemblerV3 : EditorWindow
 {
-    private int contadorTeste;
 
     [MenuItem("Window/BoardAssemblerV3")]
     public static void ShowExample()
