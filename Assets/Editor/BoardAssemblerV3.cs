@@ -155,6 +155,7 @@ public class BoardAssemblerV3 : EditorWindow
 
     private void actionBindItem(VisualElement e, int i)
     {
+        Debug.Log("Binding chamado indice: " + i);
         VisualElement veDaLista = listaDeVELinha[i];        
         e.name = veDaLista.name;        
         e.AddToClassList("veLinha");
