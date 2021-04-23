@@ -71,3 +71,6 @@
 	height: 25px;
 }
 
+Image {
+	width: 50px;
+}

@@ -54,21 +54,15 @@ public class BoardAssemblerV3 : EditorWindow
         root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
         {            
             listaDeSprites.Add((Sprite) e1.newValue);
-            Debug.Log("Lista De Sprites size: " +  listaDeSprites.Count);
-
-            //Image image = new Image();
-            //image.image = ((Sprite)e1.newValue).texture;
-            //image.style.backgroundImage = new StyleBackground(((Sprite)e1.newValue).texture);
-            //image.style.backgroundColor = Color.blue;
-            //image.sp = e1.newValue;
-            //root.Add(image);
+            Debug.Log("Lista De Sprites size: " +  listaDeSprites.Count);            
+            listView.Refresh();
         });
         root.Q<Button>("botaoMais").clicked += () => criarItemLinha();
         root.Q<Button>("botaoMenos").clicked += () => removerUltimoItemLinha();        
 
         listView = new ListView();
         listView.name = "listViewSprites";
-        listView.itemsSource = listaDeVELinha;        
+        listView.itemsSource = listaDeSprites;        
         listView.makeItem = () => funcMakeItem();
         listView.bindItem = (e, i) => actionBindItem(e, i);
         listView.selectionType = SelectionType.Single;
@@ -76,8 +70,8 @@ public class BoardAssemblerV3 : EditorWindow
         listView.onSelectionChange += objects => Debug.Log(objects);
         listView.styleSheets.Add(styleSheet);
 
-        //root.Add(listView);
-        criarItemLinha();
+        root.Add(listView);
+        //criarItemLinha();
     }
 
     private void criarItemLinha()
@@ -156,37 +150,43 @@ public class BoardAssemblerV3 : EditorWindow
         //visualElement.Add(objFieldSprite);
         //visualElement.Add(btn);
 
-        VisualElement visualElement = listaDeVELinha[contadorSpriteBinding];
-        contadorSpriteBinding++;
-        return visualElement;
+        //VisualElement visualElement = listaDeVELinha[contadorSpriteBinding];
+        //contadorSpriteBinding++;
+        //return visualElement;
+
+        Image image = new Image();
+        return image;
     }
 
     private void actionBindItem(VisualElement e, int i)
     {
-        Debug.Log("Binding chamado indice: " + i);
-        VisualElement veDaLista = listaDeVELinha[i];        
-        e.name = veDaLista.name;        
-        e.AddToClassList("veLinha");
+        //Debug.Log("Binding chamado indice: " + i);
+        //VisualElement veDaLista = listaDeVELinha[i];        
+        //e.name = veDaLista.name;        
+        //e.AddToClassList("veLinha");
 
-        ObjectField objFDaLista = listaDeOFSprites[i];
-        ObjectField eObF = e.Q<ObjectField>();
-        eObF.objectType = objFDaLista.objectType;
-        eObF.label = objFDaLista.label;
-        eObF.allowSceneObjects = objFDaLista.allowSceneObjects;
-        eObF.name = objFDaLista.name;
+        //ObjectField objFDaLista = listaDeOFSprites[i];
+        //ObjectField eObF = e.Q<ObjectField>();
+        //eObF.objectType = objFDaLista.objectType;
+        //eObF.label = objFDaLista.label;
+        //eObF.allowSceneObjects = objFDaLista.allowSceneObjects;
+        //eObF.name = objFDaLista.name;
 
-        eObF.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
-        {
-            Debug.Log(e1.newValue);
-            Debug.Log(e1.currentTarget);
-            ObjectField current = (ObjectField)e1.currentTarget;
-            Debug.Log("Lancado por: " + current.name);
-        });
+        //eObF.RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
+        //{
+        //    Debug.Log(e1.newValue);
+        //    Debug.Log(e1.currentTarget);
+        //    ObjectField current = (ObjectField)e1.currentTarget;
+        //    Debug.Log("Lancado por: " + current.name);
+        //});
 
-        Button btnDaLista = listaDeBotoes[i];
-        Button eBtn = e.Q<Button>();
-        eBtn.text = btnDaLista.text;
-        eBtn.name = btnDaLista.name;        
+        //Button btnDaLista = listaDeBotoes[i];
+        //Button eBtn = e.Q<Button>();
+        //eBtn.text = btnDaLista.text;
+        //eBtn.name = btnDaLista.name;        
+
+        Image image = (Image)e;
+        image.style.backgroundImage = new StyleBackground(listaDeSprites[i].texture);
     }
 
     private void configurarComponentes()
