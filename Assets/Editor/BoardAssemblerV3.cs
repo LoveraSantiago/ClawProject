@@ -62,6 +62,9 @@ public class BoardAssemblerV3 : EditorWindow
             Debug.Log("onItemsChosen: " + objects);
             
         };
+
+
+                                    
         listView.onSelectionChange += objects => {
             Debug.Log("onSelectionChange: " + objects);
             Debug.Log("onSelectionChange: " + objects.GetEnumerator());
