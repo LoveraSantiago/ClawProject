@@ -41,7 +41,6 @@ public class BoardAssemblerV3 : EditorWindow
         NavegacaoPeloBoard navegacao = new NavegacaoPeloBoard(root, referenciasDoBoard.goMira, referenciasDoBoard.dicionarioGosBoard);        
         navegacao.resetMira();
 
-
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr)=> colocarSprite(navegacao.getGoDaMira(), spr));
 
         root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
@@ -52,6 +51,7 @@ public class BoardAssemblerV3 : EditorWindow
         root.Q<Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
         root.Q<Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
         root.Q<Button>("botaoClean").clicked += () => cleanBoard();
+        root.Q<Button>("botaoCimaAll").clicked += () => navegacao.navegarCimaTotal();
 
         dicionarioGosBoard = referenciasDoBoard.dicionarioGosBoard;
         spriteVazio = listaDeSprites.getSpriteVazio();

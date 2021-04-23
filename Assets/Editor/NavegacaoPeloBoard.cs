@@ -99,4 +99,10 @@ public class NavegacaoPeloBoard
     {
         return dicionarioGosBoard[linhaAtual][colunaAtual];
     }
+
+    public void navegarCimaTotal()
+    {
+        linhaAtual = dicionarioGosBoard.Count - 1;
+        posicionarMira(linhaAtual, colunaAtual);
+    }
 }
