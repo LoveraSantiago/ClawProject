@@ -22,7 +22,8 @@ public class BoardAssemblerV3 : EditorWindow
 
     private List<VisualElement> listaDeVELinha;
     private List<ObjectField> listaDeOFSprites;
-    private List<Button> listaDeBotoes;    
+    private List<Button> listaDeBotoes;
+    private List<Sprite> listaDeSprites;
 
     private ListView listView;
 
@@ -48,13 +49,12 @@ public class BoardAssemblerV3 : EditorWindow
         listaDeOFSprites = new List<ObjectField>();
         listaDeVELinha   = new List<VisualElement>();
         listaDeBotoes    = new List<Button>();
+        listaDeSprites   = new List<Sprite>();
 
         root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
-        {
-            Debug.Log(e1.newValue);
-            Debug.Log(e1.currentTarget);
-            ObjectField current = (ObjectField)e1.currentTarget;
-            Debug.Log("Lancado por: " + current.name);
+        {            
+            listaDeSprites.Add((Sprite) e1.newValue);
+            Debug.Log("Lista De Sprites size: " +  listaDeSprites.Count);
         });
         root.Q<Button>("botaoMais").clicked += () => criarItemLinha();
         root.Q<Button>("botaoMenos").clicked += () => removerUltimoItemLinha();        
