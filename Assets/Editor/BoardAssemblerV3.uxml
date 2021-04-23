@@ -24,7 +24,7 @@
   <engine:VisualElement name="container2">
       <engine:VisualElement name="containerBtns">
         <engine:VisualElement name="containerBtnLinha">
-            <editor:ObjectField name="obfSprite" type="UnityEngine.Sprite, UnityEngine.CoreModule" label="Coletavel" allow-scene-objects="false" />            
+            <editor:ObjectField name="objectFieldSprite" type="UnityEngine.Sprite, UnityEngine.CoreModule" label="Coletavel" allow-scene-objects="false" />            
             <engine:Button name="botaoMais" text="+"/>
             <engine:Button name="botaoMenos" text="-"/>
         </engine:VisualElement>

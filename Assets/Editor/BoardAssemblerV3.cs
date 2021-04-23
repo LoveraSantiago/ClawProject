@@ -49,24 +49,21 @@ public class BoardAssemblerV3 : EditorWindow
         listaDeVELinha   = new List<VisualElement>();
         listaDeBotoes    = new List<Button>();
 
-        root.Q<Button>("botaoMais").clicked += () =>
+        root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
         {
-            criarItemLinha();
-        };
-
-        root.Q<Button>("botaoMenos").clicked += () =>
-        {
-            removerUltimoItemLinha();
-        };
-
-        Func<VisualElement> makeItem = () => funcMakeItem();
-        Action<VisualElement, int> bindItem = (e, i) => actionBindItem(e, i);        
+            Debug.Log(e1.newValue);
+            Debug.Log(e1.currentTarget);
+            ObjectField current = (ObjectField)e1.currentTarget;
+            Debug.Log("Lancado por: " + current.name);
+        });
+        root.Q<Button>("botaoMais").clicked += () => criarItemLinha();
+        root.Q<Button>("botaoMenos").clicked += () => removerUltimoItemLinha();        
 
         listView = new ListView();
         listView.name = "listViewSprites";
         listView.itemsSource = listaDeVELinha;        
-        listView.makeItem = makeItem;
-        listView.bindItem = bindItem;
+        listView.makeItem = () => funcMakeItem();
+        listView.bindItem = (e, i) => actionBindItem(e, i);
         listView.selectionType = SelectionType.Single;
         listView.onItemsChosen += objects => Debug.Log(objects);
         listView.onSelectionChange += objects => Debug.Log(objects);
