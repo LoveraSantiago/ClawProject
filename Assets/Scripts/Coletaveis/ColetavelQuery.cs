@@ -5,11 +5,13 @@ public class ColetavelQuery
 {
     private Dictionary<int, ColetavelEntidade> dicionarioDeIds;
     private Dictionary<string, ColetavelEntidade> dicionarioDeSprites;
+    private Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>> dicionarioDeFamilias;
 
     public ColetavelQuery()
     {
         inicializarDicionarioDeId();
         inicializarDicionarioDeSprites();
+        inicializarDicionarioDeFamilias();
     }
 
     public ColetavelEntidade getColetavelById(int idQuery)
@@ -38,6 +40,22 @@ public class ColetavelQuery
         }
     }
 
+    public ColetavelEntidade getColetavelByFamilia(ColetavelEntidade.FAMILIA familia)
+    {
+        if (dicionarioDeFamilias.ContainsKey(familia))
+        {
+            List<ColetavelEntidade> listaDeFamilias = dicionarioDeFamilias[familia];
+            int indiceSorteadoDaLista = Random.Range(0, listaDeFamilias.Count);
+            return listaDeFamilias[indiceSorteadoDaLista];
+        }
+        else
+        {
+            Debug.LogError("A familia solicitada nao existe: " + familia);
+            return null;
+        }        
+    }
+
+    //TODO AGRUPAR TODOS EM UM UNICO FOR MELHOR PERFORMANCE
     private void inicializarDicionarioDeId()
     {   
         dicionarioDeIds = new Dictionary<int, ColetavelEntidade>();
@@ -56,5 +74,21 @@ public class ColetavelQuery
             ColetavelEntidade coletavelEntidadeIt = ColetavelEntidade.ARRAY_COLETAVEIS_ENTIDADES[contador];
             dicionarioDeSprites.Add(coletavelEntidadeIt.nomeSprite, coletavelEntidadeIt);
         }        
+    }
+
+    private void inicializarDicionarioDeFamilias()
+    {
+        dicionarioDeFamilias = new Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>>();
+        for (int contador = 0; contador < ColetavelEntidade.ARRAY_COLETAVEIS_ENTIDADES.Length; contador++)
+        {
+            ColetavelEntidade coletavelEntidadeIt = ColetavelEntidade.ARRAY_COLETAVEIS_ENTIDADES[contador];
+            if (!dicionarioDeFamilias.ContainsKey(coletavelEntidadeIt.familia))
+            {
+                dicionarioDeFamilias.Add(coletavelEntidadeIt.familia, new List<ColetavelEntidade>());
+            }
+
+            List<ColetavelEntidade> lista = dicionarioDeFamilias[coletavelEntidadeIt.familia];
+            lista.Add(coletavelEntidadeIt);
+        }
     }
 }

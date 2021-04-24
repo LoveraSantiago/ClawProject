@@ -1,101 +1,92 @@
-﻿/*
- * Copyright (c) 2017 Razeware LLC
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-using UnityEngine;
-using System.Collections.Generic;
 using System.Collections;
+using UnityEngine;
 
 public class Board 
-{    
-    private int xSize, ySize;
-    private float shakeTile;
-    private Transform startBoard;
-    private List<Sprite> characters;
-    private Coletavel[,] tiles;    
+{
+    private int contadorDeColetaveis;
     private BoardDto boardDto;
 
-    public Board(BoardDto boardDto)
-    {        
-        characters = boardDto.characters;
-        xSize = boardDto.xSize;
-        ySize = boardDto.ySize;
-        shakeTile = boardDto.shakeTile;
-        startBoard = boardDto.startBoard;               
+    private int[,] arrayDeColetaveis;
+    private ColetavelEntidade.FAMILIA familia;
+    private bool devolverParaBoard;
 
-        this.boardDto = boardDto;                
+    public Board(BoardDto boardDto)
+    {
+        this.boardDto = boardDto;        
+    }
+
+    public void configurarLevel(AbstractLevel level)
+    {
+        arrayDeColetaveis = level.getArrayDeColetaveis();
+        familia = level.getFamiliaColetavel();
+        devolverParaBoard = level.devolverParaBoard();
+        validacaoArray(arrayDeColetaveis);
     }
 
     public void Create(PoolDeColetaveis poolDeColetaveis)
     {
-        float yOffset = boardDto.SpriteTile.bounds.size.y;
-        //xOffset = boardManagerDto.spriteTile.bounds.size.x;
-        float xOffset = 1;//TEMPORARIO AQUI
-
-        tiles = new Coletavel[xSize, ySize];
-       
-        float startX = startBoard.position.x;
-        float startY = startBoard.position.y;
-
-        Sprite[] previousLeft = new Sprite[ySize];
-        Sprite previousBelow = null;
-
-        for (int x = 0; x < xSize; x++)
+        ColetavelQuery coletavelQuery = new ColetavelQuery();
+        for(int contadorLinha = 0; contadorLinha < boardDto.PosicoesEixoY.Length; contadorLinha++)
         {
-            for (int y = 0; y < ySize; y++)
+            float[] eixoX = getEixoX(contadorLinha);
+            for(int contadorColuna = 0;  contadorColuna < eixoX.Length; contadorColuna++)
             {
-                shakeTile *= -1;
-                Vector3 posCalculada = new Vector3(startX + shakeTile + (xOffset * x), startY + (yOffset * y), 0);
+                int id = arrayDeColetaveis[contadorLinha, contadorColuna];
+                ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelById(id);
+
+                if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
+                {
+                    continue;
+                }
+                else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
+                {
+                    coletavelEntidade = coletavelQuery.getColetavelByFamilia(familia);
+                }
+
+                contadorDeColetaveis++;
+                Vector3 posicao = new Vector3(eixoX[contadorColuna], boardDto.PosicoesEixoY[contadorLinha]);
 
                 Coletavel coletavel = poolDeColetaveis.criarColetavel();
-                coletavel.colocarNaPosicao(posCalculada);                
-
-                tiles[x, y] = coletavel;
-
-                List<Sprite> possibleCharacters = new List<Sprite>();
-                possibleCharacters.AddRange(characters);
-                Sprite newSprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)];
-
-                possibleCharacters.Remove(previousLeft[y]);
-                possibleCharacters.Remove(previousBelow);
-
-                coletavel.receberSprite(newSprite);
+                //Debug.Log("Colocando Coletavel : " + coletavel.nome +" posicao: " + posicao);
+                coletavel.receberSprite(coletavelEntidade.nomeSprite);
+                coletavel.colocarNaPosicao(posicao);                
             }
+        }
+    }    
+
+    private float[] getEixoX(int indice)
+    {
+        if(indice % 2 == 0)
+        {
+            return boardDto.PosicoesEixoXPar;
+        }
+        else
+        {
+            return boardDto.PosicoesEixoXImpar;
         }
     }
 
     public int getTotalColetaveis()
     {
-        return xSize * ySize;
+        return contadorDeColetaveis;
     }
 
     public void devolver(Coletavel[] coletados, MonoBehaviour monoBehaviour)
     {
-        if (coletados.Length > 0)
+        if (devolverParaBoard)
         {
-            monoBehaviour.StartCoroutine(devolverParaBoard(coletados));
-        }        
+            if (coletados.Length > 0)
+            {
+                monoBehaviour.StartCoroutine(coroutineDevolverParaBoard(coletados));
+            }
+        }
+        else
+        {
+
+        }
     }
 
-    private IEnumerator devolverParaBoard(Coletavel[] coletados)
+    private IEnumerator coroutineDevolverParaBoard(Coletavel[] coletados)
     {
         yield return new WaitForSeconds(boardDto.DelayInicialVoltaBoard);
 
@@ -109,5 +100,19 @@ public class Board
             yield return new WaitForSeconds(boardDto.DelayVoltaBoard);
         }
         yield return null;
+    }
+
+    //TODO adicionar validacao para os coletaveis q vazam da maquina
+    private void validacaoArray(int[,] arrayDeColetaveis)
+    {
+        if (arrayDeColetaveis.GetLength(0) != boardDto.PosicoesEixoY.Length)
+        {
+            Debug.LogError("QTD DE LINHAS DO ARRAY E DAS POSICOES EIXO Y ESTAO DIFERENTES.");
+        }
+
+        if (arrayDeColetaveis.GetLength(1) != boardDto.PosicoesEixoXPar.Length)
+        {
+            Debug.LogError("QTD DE COLUNA DO ARRAY E DAS POSICOES EIXO X ESTAO DIFERENTES.");
+        }
     }
 }

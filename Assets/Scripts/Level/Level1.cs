@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Level1 : AbstractLevel
 {
     public override string getMsgObjetivoLevel()
@@ -30,5 +26,10 @@ public class Level1 : AbstractLevel
     public override bool devolverParaBoard()
     {
         return false;
+    }
+
+    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
+    {
+        return ColetavelEntidade.FAMILIA.FRUTAS;
     }
 }

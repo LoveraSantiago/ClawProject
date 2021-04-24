@@ -32,4 +32,14 @@ public class ColetavelEntidade
         new ColetavelEntidade(15, "coco", "characters_0006", FAMILIA.FRUTAS),
         new ColetavelEntidade(16, "estrelamarinha?", "characters_0007", FAMILIA.FRUTAS)
     };
+
+    public bool isVazio()
+    {
+        return id == 0;
+    }
+
+    public bool isRandom()
+    {
+        return id == 1;
+    }
 }

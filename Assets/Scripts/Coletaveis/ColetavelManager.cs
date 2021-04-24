@@ -10,26 +10,32 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
     private ColetaveisDto coletaveisDto;
     private Coletavel coletavelImantado;
-    
+
+    //private Board board;
     private Board board;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contadorDeColetaveis;
     private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
 
+    private AbstractLevel levelAtual;
+
     public ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado { get; private set; }
     private MonoBehaviour monoBehaviour;
 
-    public ColetavelManager(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
+    public ColetavelManager(ColetaveisDto coletaveisDto, AbstractLevel level, MonoBehaviour monoBehaviour)
     {
         this.coletaveisDto = coletaveisDto;
         this.monoBehaviour = monoBehaviour;
+        this.levelAtual = level;
 
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
         configurarPoolDeColetaveis(coletaveisDto);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
-        board = new Board(coletaveisDto.BoardDto);        
-        contadorDeColetaveis   = new ContadorDeColetaveis(this.coletaveisDto.PontosModal, board.getTotalColetaveis(), monoBehaviour);
+        board = new Board(coletaveisDto.BoardDto);
+        board.configurarLevel(level);
+
+        contadorDeColetaveis   = new ContadorDeColetaveis(this.coletaveisDto.PontosModal, monoBehaviour);
         coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);
 
         powerUpEmAcao = false;
@@ -38,6 +44,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     public void start()
     {
         board.Create(poolDeColetaveis);
+        contadorDeColetaveis.configurarTotalColetaveis(board.getTotalColetaveis(), levelAtual.devolverParaBoard());
     }    
 
     private void configurarSensorDeColetado(GameObject goSensorDeColetado)
@@ -48,7 +55,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
     private void configurarPoolDeColetaveis(ColetaveisDto coletaveisDto)
     {
-        Coletavel.configurarMainTile(coletaveisDto.Tile, coletaveisDto.BoardDto.startBoard);
+        Coletavel.configurar(coletaveisDto.Tile, coletaveisDto.BoardDto.StartBoard, coletaveisDto.Characters);
         poolDeColetaveis = new PoolDeColetaveis();
     }
 
@@ -59,7 +66,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
         contadorDeColetaveis.adicionarColetado(coletavelAcertado);
 
-        //board.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour); // Todo - Level 1 - desativado por enquanto para simular objetivo level1
+        board.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour); // Todo - Level 1 - desativado por enquanto para simular objetivo level1
 
         coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
 

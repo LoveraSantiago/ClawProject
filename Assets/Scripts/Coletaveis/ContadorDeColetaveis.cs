@@ -7,6 +7,10 @@ public class ContadorDeColetaveis
 {
     private int score = 0;
     private int qtdColetados = 0;
+
+    private int decrementoComboValido;
+    private int decrementoComboInvalido;
+
     private int totalColetaveis;
 
     private Coletavel[] coletados;
@@ -17,14 +21,29 @@ public class ContadorDeColetaveis
     private GameObject pontosModal;
     private MonoBehaviour monoBehaviour;
 
-    public ContadorDeColetaveis(GameObject pontosModal, int totalColetaveis, MonoBehaviour monoBehaviour)
+    public ContadorDeColetaveis(GameObject pontosModal, MonoBehaviour monoBehaviour)
     {
         this.monoBehaviour = monoBehaviour;
         this.pontosModal = pontosModal; // Todo - Level 1 - para mostrar modal de pontuação total
 
         coletados = new Coletavel[3];
-        arrayVazio = new Coletavel[0];
-        this.totalColetaveis = totalColetaveis;
+        arrayVazio = new Coletavel[0];        
+    }
+
+    public void configurarTotalColetaveis(int total, bool backToBoard)
+    {
+        this.totalColetaveis = total;
+
+        if (backToBoard)
+        {
+            decrementoComboValido = 3;
+            decrementoComboInvalido = 0;
+        }
+        else
+        {
+            decrementoComboValido = 3;
+            decrementoComboInvalido = 3;
+        }
     }
 
     public void adicionarColetado(Coletavel coletado)
@@ -40,7 +59,7 @@ public class ContadorDeColetaveis
                 adicionaPontuacao();
                 devolverBoard = arrayVazio;
                 deveolverTubo = coletados;
-                totalColetaveis -= 3;
+                totalColetaveis -= decrementoComboValido;
             }
             else
             {
@@ -48,7 +67,7 @@ public class ContadorDeColetaveis
                 deveolverTubo = arrayVazio;
                 AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
 
-                totalColetaveis -= 3; // Todo - Level 1 - Para atendeer objetivo do Level 1 que coletar tods os itens
+                totalColetaveis -= decrementoComboInvalido; // Todo - Level 1 - Para atendeer objetivo do Level 1 que coletar tods os itens
             }
             resetarColetados();
         }
