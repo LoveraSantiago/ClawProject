@@ -12,7 +12,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private Coletavel coletavelImantado;
 
     //private Board board;
-    private BoardV2 board;
+    private Board board;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contadorDeColetaveis;
     private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
@@ -29,7 +29,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         configurarPoolDeColetaveis(coletaveisDto);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
-        board = new BoardV2(coletaveisDto.BoardDto);
+        board = new Board(coletaveisDto.BoardDto);
         board.configurarLevel(level);
 
         contadorDeColetaveis   = new ContadorDeColetaveis(this.coletaveisDto.PontosModal, monoBehaviour);

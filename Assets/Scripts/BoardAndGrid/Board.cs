@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BoardV2 
+public class Board 
 {
     private int contadorDeColetaveis;
     private BoardDto boardDto;
@@ -10,7 +10,7 @@ public class BoardV2
     private ColetavelEntidade.FAMILIA familia;
     private bool devolverParaBoard;
 
-    public BoardV2(BoardDto boardDto)
+    public Board(BoardDto boardDto)
     {
         this.boardDto = boardDto;        
     }
