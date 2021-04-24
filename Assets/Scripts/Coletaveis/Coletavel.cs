@@ -66,6 +66,11 @@ public class Coletavel
         spriteRenderer.sortingOrder = 31;
     }
 
+    public void receberEntidade(ColetavelEntidade entidade)
+    {
+
+    }
+
     public void parar()
     {
         rigidbody.velocity = Vector2.zero;
