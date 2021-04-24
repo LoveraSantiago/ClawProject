@@ -28,7 +28,8 @@ public class BoardV2
         ColetavelQuery coletavelQuery = new ColetavelQuery();
         for(int contadorLinha = 0; contadorLinha < boardDto.PosicoesEixoY.Length; contadorLinha++)
         {
-            for(int contadorColuna = 0;  contadorColuna < boardDto.PosicoesEixoXPar.Length; contadorColuna++)
+            float[] eixoX = getEixoX(contadorLinha);
+            for(int contadorColuna = 0;  contadorColuna < eixoX.Length; contadorColuna++)
             {
                 int id = arrayDeColetaveis[contadorLinha, contadorColuna];
                 ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelById(id);
@@ -43,7 +44,7 @@ public class BoardV2
                 }
 
                 contadorDeColetaveis++;
-                Vector3 posicao = new Vector3(boardDto.PosicoesEixoXPar[contadorColuna], boardDto.PosicoesEixoY[contadorLinha]);
+                Vector3 posicao = new Vector3(eixoX[contadorColuna], boardDto.PosicoesEixoY[contadorLinha]);
 
                 Coletavel coletavel = poolDeColetaveis.criarColetavel();
                 Debug.Log("Colocando Coletavel : " + coletavel.nome +" posicao: " + posicao);
@@ -52,6 +53,18 @@ public class BoardV2
             }
         }
     }    
+
+    private float[] getEixoX(int indice)
+    {
+        if(indice % 2 == 0)
+        {
+            return boardDto.PosicoesEixoXPar;
+        }
+        else
+        {
+            return boardDto.PosicoesEixoXImpar;
+        }
+    }
 
     public int getTotalColetaveis()
     {
