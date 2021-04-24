@@ -9,8 +9,8 @@ public class MapaManager : MonoBehaviour
 
 
     public void showTarget()
-    {
-        levelObjetivo.active = true;
+    {        
+        levelObjetivo.SetActive(true);
     }
     
 }
