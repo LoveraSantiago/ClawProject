@@ -48,7 +48,7 @@ public class Board
 
                 Coletavel coletavel = poolDeColetaveis.criarColetavel();
                 Debug.Log("Colocando Coletavel : " + coletavel.nome +" posicao: " + posicao);
-                coletavel.receberEntidade(coletavelEntidade);
+                coletavel.receberSprite(coletavelEntidade.nomeSprite);
                 coletavel.colocarNaPosicao(posicao);                
             }
         }

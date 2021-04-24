@@ -5243,7 +5243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 0
   componentesDaGarra:
     velocMovHorizontal: 3.1
     velocMovCima: 7.5
@@ -5264,6 +5264,14 @@ MonoBehaviour:
     sensorDeColetado: {fileID: 2083913115}
     tile: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
     pontosModal: {fileID: 543390433}
+    characters:
+    - {fileID: 21300000, guid: 0b082251c8af14642bd56a42a89b025e, type: 3}
+    - {fileID: 21300000, guid: 12248e2a121b8400aa4464081fa6dce1, type: 3}
+    - {fileID: 21300000, guid: dca2e233e9a6e4ef7be9a5b392e5effc, type: 3}
+    - {fileID: 21300000, guid: efb723cbae18641a9954c28d1f5cf3e9, type: 3}
+    - {fileID: 21300000, guid: 197f4c6ad86ad4eea9ece9b073043381, type: 3}
+    - {fileID: 21300000, guid: 1b34677d209914bd88468db12bd7ef0f, type: 3}
+    - {fileID: 21300000, guid: 6ff825b4da47d4749bb0a0b28414a44d, type: 3}
     tuboDto:
       delayQuedaTubo: 1
       parentColetavelTubo: {fileID: 1607848931}
@@ -5272,21 +5280,10 @@ MonoBehaviour:
       - {fileID: 1171204407}
       - {fileID: 911244732}
     boardDto:
-      xSize: 6
-      ySize: 2
-      shakeTile: 0.02
       delayInicialVoltaBoard: 1.5
       delayVoltaBoard: 0.2
       posicaoRefVoltaBoard: {fileID: 1476824515}
       startBoard: {fileID: 422691799}
-      spriteTile: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-      characters:
-      - {fileID: 21300000, guid: 0b082251c8af14642bd56a42a89b025e, type: 3}
-      - {fileID: 21300000, guid: 12248e2a121b8400aa4464081fa6dce1, type: 3}
-      - {fileID: 21300000, guid: dca2e233e9a6e4ef7be9a5b392e5effc, type: 3}
-      - {fileID: 21300000, guid: efb723cbae18641a9954c28d1f5cf3e9, type: 3}
-      - {fileID: 21300000, guid: 197f4c6ad86ad4eea9ece9b073043381, type: 3}
-      - {fileID: 21300000, guid: 1b34677d209914bd88468db12bd7ef0f, type: 3}
       posicoesEixoXPar:
       - -2.25
       - -1.5
@@ -5312,7 +5309,6 @@ MonoBehaviour:
       - -0.0999999
       - 0.55
       - 1.2
-      Characters: []
   maquinaDto:
     referenciaChao: {fileID: 1841408758}
     hasteJoystick: {fileID: 1655319868}

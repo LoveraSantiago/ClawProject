@@ -52,7 +52,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
     private void configurarPoolDeColetaveis(ColetaveisDto coletaveisDto)
     {
-        Coletavel.configurarMainTile(coletaveisDto.Tile, coletaveisDto.BoardDto.StartBoard);
+        Coletavel.configurar(coletaveisDto.Tile, coletaveisDto.BoardDto.StartBoard, coletaveisDto.Characters);
         poolDeColetaveis = new PoolDeColetaveis();
     }
 

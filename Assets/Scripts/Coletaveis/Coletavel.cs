@@ -1,10 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Coletavel 
 {
     private static Nomeador nomeador = new Nomeador();
     private static GameObject mainTile;
     private static Transform mainTileParent;
+    private static Dictionary<string, Sprite> dicionarioDeSprites;
 
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }
@@ -66,9 +68,9 @@ public class Coletavel
         spriteRenderer.sortingOrder = 31;
     }
 
-    public void receberEntidade(ColetavelEntidade entidade)
+    public void receberSprite(string nomeSprite)
     {
-
+        receberSprite(dicionarioDeSprites[nomeSprite]);
     }
 
     public void parar()
@@ -112,9 +114,16 @@ public class Coletavel
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
     }
 
-    public static void configurarMainTile(GameObject mainTileArg, Transform mainTileParentArg)
+    public static void configurar(GameObject mainTileArg, Transform mainTileParentArg, List<Sprite> characters)
     {
         mainTile = mainTileArg;
         mainTileParent = mainTileParentArg;
+
+        dicionarioDeSprites = new Dictionary<string, Sprite>();
+        for(int contador = 0; contador < characters.Count; contador++)
+        {
+            Sprite spriteIt = characters[contador];
+            dicionarioDeSprites.Add(spriteIt.name, spriteIt);
+        }
     }
 }
