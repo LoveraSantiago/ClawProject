@@ -7,6 +7,10 @@ public class ContadorDeColetaveis
 {
     private int score = 0;
     private int qtdColetados = 0;
+
+    private int decrementoComboValido;
+    private int decrementoComboInvalido;
+
     private int totalColetaveis;
 
     private Coletavel[] coletados;
@@ -26,9 +30,20 @@ public class ContadorDeColetaveis
         arrayVazio = new Coletavel[0];        
     }
 
-    public void configurarTotalColetaveis(int total)
+    public void configurarTotalColetaveis(int total, bool backToBoard)
     {
         this.totalColetaveis = total;
+
+        if (backToBoard)
+        {
+            decrementoComboValido = 3;
+            decrementoComboInvalido = 0;
+        }
+        else
+        {
+            decrementoComboValido = 3;
+            decrementoComboInvalido = 3;
+        }
     }
 
     public void adicionarColetado(Coletavel coletado)
@@ -44,7 +59,7 @@ public class ContadorDeColetaveis
                 adicionaPontuacao();
                 devolverBoard = arrayVazio;
                 deveolverTubo = coletados;
-                totalColetaveis -= 3;
+                totalColetaveis -= decrementoComboValido;
             }
             else
             {
@@ -52,7 +67,7 @@ public class ContadorDeColetaveis
                 deveolverTubo = arrayVazio;
                 AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
 
-                totalColetaveis -= 3; // Todo - Level 1 - Para atendeer objetivo do Level 1 que coletar tods os itens
+                totalColetaveis -= decrementoComboInvalido; // Todo - Level 1 - Para atendeer objetivo do Level 1 que coletar tods os itens
             }
             resetarColetados();
         }

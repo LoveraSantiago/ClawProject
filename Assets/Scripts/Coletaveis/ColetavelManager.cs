@@ -17,6 +17,8 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private ContadorDeColetaveis contadorDeColetaveis;
     private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
 
+    private AbstractLevel levelAtual;
+
     public ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado { get; private set; }
     private MonoBehaviour monoBehaviour;
 
@@ -24,6 +26,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     {
         this.coletaveisDto = coletaveisDto;
         this.monoBehaviour = monoBehaviour;
+        this.levelAtual = level;
 
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
         configurarPoolDeColetaveis(coletaveisDto);
@@ -41,7 +44,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     public void start()
     {
         board.Create(poolDeColetaveis);
-        contadorDeColetaveis.configurarTotalColetaveis(board.getTotalColetaveis());
+        contadorDeColetaveis.configurarTotalColetaveis(board.getTotalColetaveis(), levelAtual.devolverParaBoard());
     }    
 
     private void configurarSensorDeColetado(GameObject goSensorDeColetado)
