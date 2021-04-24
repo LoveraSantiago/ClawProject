@@ -47,7 +47,7 @@ public class Board
                 Vector3 posicao = new Vector3(eixoX[contadorColuna], boardDto.PosicoesEixoY[contadorLinha]);
 
                 Coletavel coletavel = poolDeColetaveis.criarColetavel();
-                Debug.Log("Colocando Coletavel : " + coletavel.nome +" posicao: " + posicao);
+                //Debug.Log("Colocando Coletavel : " + coletavel.nome +" posicao: " + posicao);
                 coletavel.receberSprite(coletavelEntidade.nomeSprite);
                 coletavel.colocarNaPosicao(posicao);                
             }
