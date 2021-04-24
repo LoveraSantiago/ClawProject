@@ -35,11 +35,11 @@ public class Board
 
     public Board(BoardDto boardDto)
     {        
-        characters = boardDto.characters;
-        xSize = boardDto.xSize;
-        ySize = boardDto.ySize;
-        shakeTile = boardDto.shakeTile;
-        startBoard = boardDto.startBoard;               
+        characters = boardDto.Characters;
+        xSize = boardDto.XSize;
+        ySize = boardDto.YSize;
+        shakeTile = boardDto.ShakeTile;
+        startBoard = boardDto.StartBoard;               
 
         this.boardDto = boardDto;                
     }
