@@ -5213,7 +5213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mecanicaAtual: 1
+  level: 0
   componentesDaGarra:
     velocMovHorizontal: 3.1
     velocMovCima: 7.5
@@ -5257,6 +5257,23 @@ MonoBehaviour:
       - {fileID: 21300000, guid: efb723cbae18641a9954c28d1f5cf3e9, type: 3}
       - {fileID: 21300000, guid: 197f4c6ad86ad4eea9ece9b073043381, type: 3}
       - {fileID: 21300000, guid: 1b34677d209914bd88468db12bd7ef0f, type: 3}
+      posicoesEixoX:
+      - 0.3499999
+      - 1.1
+      - 1.85
+      - 2.6
+      - 3.35
+      - 4.1
+      - 4.85
+      posicoesEixoY:
+      - 0.4499998
+      - 1.1
+      - 1.75
+      - 2.4
+      - 3.05
+      - 3.7
+      - 4.35
+      - 5
   maquinaDto:
     referenciaChao: {fileID: 1841408758}
     hasteJoystick: {fileID: 1655319868}

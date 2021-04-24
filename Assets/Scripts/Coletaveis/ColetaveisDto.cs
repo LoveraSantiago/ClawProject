@@ -10,7 +10,7 @@ public class ColetaveisDto
     [Space(5)]
     [SerializeField] private TuboDto tuboDto;    
     [Space(5)]    
-    public BoardDto boardDto;
+    [SerializeField] private BoardDto boardDto;
 
     public GameObject SensorDeColetado { get { return sensorDeColetado; } }    
     public GameObject Tile { get { return tile; } }

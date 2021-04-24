@@ -15,10 +15,15 @@ public class BoardDto
     [SerializeField] private SpriteRenderer spriteTile;
     [Space(5)]
     [SerializeField] public List<Sprite> characters = new List<Sprite>();
+    [SerializeField] private float[] posicoesEixoX = new float[7];
+    [SerializeField] private float[] posicoesEixoY = new float[8];
 
     public float DelayInicialVoltaBoard { get { return delayInicialVoltaBoard; } }
     public float DelayVoltaBoard { get { return delayVoltaBoard; } }
     public Transform PosicaoRefVoltaBoard { get { return posicaoRefVoltaBoard; } }
 
+    public float[] PosicoesEixoX { get { return posicoesEixoX;  } }
+    public float[] PosicoesEixoY { get { return posicoesEixoY;  } }
     public SpriteRenderer SpriteTile { get { return spriteTile; } }
+    
 }
