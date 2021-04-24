@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoardV2 
@@ -26,20 +24,21 @@ public class BoardV2
                 int id = arrayDeColetaveis[contadorLinha, contadorColuna];
                 ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelById(id);
 
-                if (coletavelEntidade.isVazio())
+                if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
                 {
+                    continue;
                 }
-                else if (coletavelEntidade.isRandom())
+                else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
                 {
+                    coletavelEntidade = coletavelQuery.getColetavelByFamilia(familia);
                 }
-                else
-                {
-                    Vector3 posicao = new Vector3(boardDto.PosicoesEixoX[contadorColuna], boardDto.PosicoesEixoY[contadorLinha]);
+                
+                Vector3 posicao = new Vector3(boardDto.PosicoesEixoX[contadorColuna], boardDto.PosicoesEixoY[contadorLinha]);
 
-                    Coletavel coletavel = poolDeColetaveis.criarColetavel();
-                    coletavel.receberEntidade(coletavelEntidade);
-                    coletavel.colocarNaPosicao(posicao);
-                }
+                Coletavel coletavel = poolDeColetaveis.criarColetavel();
+                coletavel.receberEntidade(coletavelEntidade);
+                coletavel.colocarNaPosicao(posicao);
+                
             }
         }
     }
