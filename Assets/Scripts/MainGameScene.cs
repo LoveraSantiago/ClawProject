@@ -7,8 +7,7 @@ using UnityEngine.EventSystems;
 public class MainGameScene : MonoBehaviour, 
                         IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private LevelFlowManager.LEVEL level;
-    [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
+    [SerializeField] private LevelFlowManager.LEVEL level;    
     [Space(5)]
     [SerializeField] private GarraDto componentesDaGarra;
     [Space(5)]
@@ -23,9 +22,7 @@ public class MainGameScene : MonoBehaviour,
     [SerializeField] private Sprite spriteBomb;
     [SerializeField] private GameObject tileBomb;
     [Space(15)]
-    [SerializeField] private Button btnSair;
-
-    private GarraManager.MECANICA_GARRA mecanicaSelecionada;
+    [SerializeField] private Button btnSair;    
 
     private GarraManager     garraManager;
     private ColetavelManager coletaveisManager;
@@ -49,10 +46,11 @@ public class MainGameScene : MonoBehaviour,
 
         btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));
 
-        mecanicaSelecionada = PlayerPrefsGarraMecanica.recuperarMecanica(mecanicaAtual);
+        LevelFlowManager.LEVEL levelEscolhido = PlayerPrefsLevel.recuperarLevel(level);
+        AbstractLevel levelGame = LevelFlowManager.getLevelByEnum(levelEscolhido);
 
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
-        garraManager      = new GarraManager(componentesDaGarra, mecanicaSelecionada, inputGame);
+        garraManager      = new GarraManager(componentesDaGarra, levelGame.getMecanicaDaGarra(), inputGame);
         coletaveisManager = new ColetavelManager(coletaveisDto, this);
         maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
