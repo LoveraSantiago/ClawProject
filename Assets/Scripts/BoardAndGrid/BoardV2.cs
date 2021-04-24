@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BoardV2 
@@ -7,6 +8,7 @@ public class BoardV2
 
     private int[,] arrayDeColetaveis;
     private ColetavelEntidade.FAMILIA familia;
+    private bool devolverParaBoard;
 
     public BoardV2(BoardDto boardDto)
     {
@@ -17,6 +19,7 @@ public class BoardV2
     {
         arrayDeColetaveis = level.getArrayDeColetaveis();
         familia = level.getFamiliaColetavel();
+        devolverParaBoard = level.devolverParaBoard();
         validacaoArray(arrayDeColetaveis);
     }
 
@@ -48,21 +51,7 @@ public class BoardV2
                 
             }
         }
-    }
-
-    //TODO adicionar validacao para os coletaveis q vazam da maquina
-    private void validacaoArray(int[,] arrayDeColetaveis)
-    {
-        if(arrayDeColetaveis.Length != boardDto.PosicoesEixoY.Length)
-        {
-            Debug.LogError("QTD DE LINHAS DO ARRAY E DAS POSICOES EIXO Y ESTAO DIFERENTES.");
-        }
-
-        if(arrayDeColetaveis.GetLength(0) != boardDto.PosicoesEixoX.Length)
-        {
-            Debug.LogError("QTD DE COLUNA DO ARRAY E DAS POSICOES EIXO X ESTAO DIFERENTES.");
-        }
-    }
+    }    
 
     public int getTotalColetaveis()
     {
@@ -71,6 +60,46 @@ public class BoardV2
 
     public void devolver(Coletavel[] coletados, MonoBehaviour monoBehaviour)
     {
+        if (devolverParaBoard)
+        {
+            if (coletados.Length > 0)
+            {
+                monoBehaviour.StartCoroutine(coroutineDevolverParaBoard(coletados));
+            }
+        }
+        else
+        {
 
+        }
+    }
+
+    private IEnumerator coroutineDevolverParaBoard(Coletavel[] coletados)
+    {
+        yield return new WaitForSeconds(boardDto.DelayInicialVoltaBoard);
+
+        for (int contador = 0; contador < coletados.Length; contador++)
+        {
+            float anguloDevolucao = Random.Range(180, 230);
+            Coletavel coletavel = coletados[contador];
+            coletavel.ligar();
+            coletavel.disparar(boardDto.PosicaoRefVoltaBoard.position, anguloDevolucao, 10f);
+
+            yield return new WaitForSeconds(boardDto.DelayVoltaBoard);
+        }
+        yield return null;
+    }
+
+    //TODO adicionar validacao para os coletaveis q vazam da maquina
+    private void validacaoArray(int[,] arrayDeColetaveis)
+    {
+        if (arrayDeColetaveis.Length != boardDto.PosicoesEixoY.Length)
+        {
+            Debug.LogError("QTD DE LINHAS DO ARRAY E DAS POSICOES EIXO Y ESTAO DIFERENTES.");
+        }
+
+        if (arrayDeColetaveis.GetLength(0) != boardDto.PosicoesEixoX.Length)
+        {
+            Debug.LogError("QTD DE COLUNA DO ARRAY E DAS POSICOES EIXO X ESTAO DIFERENTES.");
+        }
     }
 }
