@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class MainGameScene : MonoBehaviour, 
                         IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    [SerializeField] private LevelFlowManager.LEVEL level;
     [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
     [Space(5)]
     [SerializeField] private GarraDto componentesDaGarra;
