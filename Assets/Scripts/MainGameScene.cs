@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 #pragma warning disable 0649
-public class MainGame : MonoBehaviour, 
+public class MainGameScene : MonoBehaviour, 
                         IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private GarraManager.MECANICA_GARRA mecanicaAtual;
