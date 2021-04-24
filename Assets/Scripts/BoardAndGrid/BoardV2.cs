@@ -47,8 +47,7 @@ public class BoardV2
 
                 Coletavel coletavel = poolDeColetaveis.criarColetavel();
                 coletavel.receberEntidade(coletavelEntidade);
-                coletavel.colocarNaPosicao(posicao);
-                
+                coletavel.colocarNaPosicao(posicao);                
             }
         }
     }    
@@ -92,12 +91,12 @@ public class BoardV2
     //TODO adicionar validacao para os coletaveis q vazam da maquina
     private void validacaoArray(int[,] arrayDeColetaveis)
     {
-        if (arrayDeColetaveis.Length != boardDto.PosicoesEixoY.Length)
+        if (arrayDeColetaveis.GetLength(0) != boardDto.PosicoesEixoY.Length)
         {
             Debug.LogError("QTD DE LINHAS DO ARRAY E DAS POSICOES EIXO Y ESTAO DIFERENTES.");
         }
 
-        if (arrayDeColetaveis.GetLength(0) != boardDto.PosicoesEixoX.Length)
+        if (arrayDeColetaveis.GetLength(1) != boardDto.PosicoesEixoX.Length)
         {
             Debug.LogError("QTD DE COLUNA DO ARRAY E DAS POSICOES EIXO X ESTAO DIFERENTES.");
         }
