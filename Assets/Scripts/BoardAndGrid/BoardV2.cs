@@ -28,7 +28,7 @@ public class BoardV2
         ColetavelQuery coletavelQuery = new ColetavelQuery();
         for(int contadorLinha = 0; contadorLinha < boardDto.PosicoesEixoY.Length; contadorLinha++)
         {
-            for(int contadorColuna = 0;  contadorColuna < boardDto.PosicoesEixoX.Length; contadorColuna++)
+            for(int contadorColuna = 0;  contadorColuna < boardDto.PosicoesEixoXPar.Length; contadorColuna++)
             {
                 int id = arrayDeColetaveis[contadorLinha, contadorColuna];
                 ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelById(id);
@@ -43,9 +43,10 @@ public class BoardV2
                 }
 
                 contadorDeColetaveis++;
-                Vector3 posicao = new Vector3(boardDto.PosicoesEixoX[contadorColuna], boardDto.PosicoesEixoY[contadorLinha]);
+                Vector3 posicao = new Vector3(boardDto.PosicoesEixoXPar[contadorColuna], boardDto.PosicoesEixoY[contadorLinha]);
 
                 Coletavel coletavel = poolDeColetaveis.criarColetavel();
+                Debug.Log("Colocando Coletavel : " + coletavel.nome +" posicao: " + posicao);
                 coletavel.receberEntidade(coletavelEntidade);
                 coletavel.colocarNaPosicao(posicao);                
             }
@@ -96,7 +97,7 @@ public class BoardV2
             Debug.LogError("QTD DE LINHAS DO ARRAY E DAS POSICOES EIXO Y ESTAO DIFERENTES.");
         }
 
-        if (arrayDeColetaveis.GetLength(1) != boardDto.PosicoesEixoX.Length)
+        if (arrayDeColetaveis.GetLength(1) != boardDto.PosicoesEixoXPar.Length)
         {
             Debug.LogError("QTD DE COLUNA DO ARRAY E DAS POSICOES EIXO X ESTAO DIFERENTES.");
         }

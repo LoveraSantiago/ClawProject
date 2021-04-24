@@ -5159,6 +5159,36 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 363533896534822254, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &422691798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 422691799}
+  m_Layer: 0
+  m_Name: Posicoes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &422691799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422691798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1496791513}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &465782766 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5014026568506975908, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -5248,7 +5278,7 @@ MonoBehaviour:
       delayInicialVoltaBoard: 1.5
       delayVoltaBoard: 0.2
       posicaoRefVoltaBoard: {fileID: 1476824515}
-      startBoard: {fileID: 1496791513}
+      startBoard: {fileID: 422691799}
       spriteTile: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       characters:
       - {fileID: 21300000, guid: 0b082251c8af14642bd56a42a89b025e, type: 3}
@@ -5257,23 +5287,32 @@ MonoBehaviour:
       - {fileID: 21300000, guid: efb723cbae18641a9954c28d1f5cf3e9, type: 3}
       - {fileID: 21300000, guid: 197f4c6ad86ad4eea9ece9b073043381, type: 3}
       - {fileID: 21300000, guid: 1b34677d209914bd88468db12bd7ef0f, type: 3}
-      posicoesEixoX:
-      - 0.3499999
-      - 1.1
-      - 1.85
-      - 2.6
-      - 3.35
-      - 4.1
-      - 4.85
+      posicoesEixoXPar:
+      - -2.25
+      - -1.5
+      - -0.7499999
+      - 0
+      - 0.75
+      - 1.5
+      - 2.25
+      posicoesEixoXImpar:
+      - -1.88
+      - -1.13
+      - -0.38
+      - 0.3699999
+      - 1.12
+      - 1.87
+      - 2.62
       posicoesEixoY:
-      - 0.4499998
-      - 1.1
-      - 1.75
-      - 2.4
-      - 3.05
-      - 3.7
-      - 4.35
-      - 5
+      - -3.35
+      - -2.7
+      - -2.05
+      - -1.4
+      - -0.75
+      - -0.0999999
+      - 0.55
+      - 1.2
+      Characters: []
   maquinaDto:
     referenciaChao: {fileID: 1841408758}
     hasteJoystick: {fileID: 1655319868}
@@ -21657,7 +21696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1496791513}
   m_Layer: 0
-  m_Name: BoardManager
+  m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -21671,10 +21710,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496791512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6, y: -3.6, z: 0}
+  m_LocalPosition: {x: -2.6, y: -3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1476824515}
+  - {fileID: 422691799}
   m_Father: {fileID: 1792400949}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

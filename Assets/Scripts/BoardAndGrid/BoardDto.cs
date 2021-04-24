@@ -15,7 +15,8 @@ public class BoardDto
     [SerializeField] private SpriteRenderer spriteTile;
     [Space(5)]
     [SerializeField] private List<Sprite> characters = new List<Sprite>();
-    [SerializeField] private float[] posicoesEixoX = new float[7];
+    [SerializeField] private float[] posicoesEixoXPar = new float[7];
+    [SerializeField] private float[] posicoesEixoXImpar = new float[7];
     [SerializeField] private float[] posicoesEixoY = new float[8];
 
     public int XSize{ get { return xSize;}}
@@ -28,7 +29,8 @@ public class BoardDto
     public Transform PosicaoRefVoltaBoard { get { return posicaoRefVoltaBoard; } }
 
     public List<Sprite> Characters = new List<Sprite>();
-    public float[] PosicoesEixoX { get { return posicoesEixoX;  } }
+    public float[] PosicoesEixoXPar { get { return posicoesEixoXPar;  } }
+    public float[] PosicoesEixoXImpar { get { return posicoesEixoXImpar;  } }
     public float[] PosicoesEixoY { get { return posicoesEixoY;  } }
     public SpriteRenderer SpriteTile { get { return spriteTile; } }
     
