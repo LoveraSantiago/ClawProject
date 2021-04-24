@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class BoardV2 
 {
+    private int contadorDeColetaveis;
     private BoardDto boardDto;
+
     private int[,] arrayDeColetaveis;
     private ColetavelEntidade.FAMILIA familia;
 
-    public BoardV2(BoardDto boardDto, int[,] arrayDeColetaveis, ColetavelEntidade.FAMILIA familia)
+    public BoardV2(BoardDto boardDto)
     {
-        this.boardDto = boardDto;
-        this.arrayDeColetaveis = arrayDeColetaveis;
-        this.familia = familia;
+        this.boardDto = boardDto;        
+    }
+
+    public void configurarLevel(AbstractLevel level)
+    {
+        arrayDeColetaveis = level.getArrayDeColetaveis();
+        familia = level.getFamiliaColetavel();
         validacaoArray(arrayDeColetaveis);
     }
 
@@ -32,7 +38,8 @@ public class BoardV2
                 {
                     coletavelEntidade = coletavelQuery.getColetavelByFamilia(familia);
                 }
-                
+
+                contadorDeColetaveis++;
                 Vector3 posicao = new Vector3(boardDto.PosicoesEixoX[contadorColuna], boardDto.PosicoesEixoY[contadorLinha]);
 
                 Coletavel coletavel = poolDeColetaveis.criarColetavel();
@@ -43,8 +50,8 @@ public class BoardV2
         }
     }
 
-        //TODO adicionar validacao para os coletaveis q vazam da maquina
-        private void validacaoArray(int[,] arrayDeColetaveis)
+    //TODO adicionar validacao para os coletaveis q vazam da maquina
+    private void validacaoArray(int[,] arrayDeColetaveis)
     {
         if(arrayDeColetaveis.Length != boardDto.PosicoesEixoY.Length)
         {
@@ -55,5 +62,15 @@ public class BoardV2
         {
             Debug.LogError("QTD DE COLUNA DO ARRAY E DAS POSICOES EIXO X ESTAO DIFERENTES.");
         }
+    }
+
+    public int getTotalColetaveis()
+    {
+        return contadorDeColetaveis;
+    }
+
+    public void devolver(Coletavel[] coletados, MonoBehaviour monoBehaviour)
+    {
+
     }
 }

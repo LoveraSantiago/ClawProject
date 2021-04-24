@@ -31,4 +31,9 @@ public class Level2 : AbstractLevel
     {
         return true;
     }
+
+    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
+    {
+        return ColetavelEntidade.FAMILIA.FRUTAS;
+    }
 }

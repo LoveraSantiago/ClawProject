@@ -51,7 +51,7 @@ public class MainGameScene : MonoBehaviour,
 
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
         garraManager      = new GarraManager(componentesDaGarra, levelGame.getMecanicaDaGarra(), inputGame);
-        coletaveisManager = new ColetavelManager(coletaveisDto, this);
+        coletaveisManager = new ColetavelManager(coletaveisDto, levelGame, this);
         maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(tileBomb, spriteBomb, this);

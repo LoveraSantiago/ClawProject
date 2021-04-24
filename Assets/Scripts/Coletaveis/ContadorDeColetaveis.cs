@@ -17,14 +17,18 @@ public class ContadorDeColetaveis
     private GameObject pontosModal;
     private MonoBehaviour monoBehaviour;
 
-    public ContadorDeColetaveis(GameObject pontosModal, int totalColetaveis, MonoBehaviour monoBehaviour)
+    public ContadorDeColetaveis(GameObject pontosModal, MonoBehaviour monoBehaviour)
     {
         this.monoBehaviour = monoBehaviour;
         this.pontosModal = pontosModal; // Todo - Level 1 - para mostrar modal de pontuação total
 
         coletados = new Coletavel[3];
-        arrayVazio = new Coletavel[0];
-        this.totalColetaveis = totalColetaveis;
+        arrayVazio = new Coletavel[0];        
+    }
+
+    public void configurarTotalColetaveis(int total)
+    {
+        this.totalColetaveis = total;
     }
 
     public void adicionarColetado(Coletavel coletado)
