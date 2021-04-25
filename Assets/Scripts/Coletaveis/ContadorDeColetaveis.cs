@@ -67,7 +67,7 @@ public class ContadorDeColetaveis
                 deveolverTubo = arrayVazio;
                 AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
 
-                totalColetaveis -= decrementoComboInvalido; // Todo - Level 1 - Para atendeer objetivo do Level 1 que coletar tods os itens
+                totalColetaveis -= decrementoComboInvalido;
             }
             resetarColetados();
         }

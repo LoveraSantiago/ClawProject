@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Board 
 {
-    private int contadorDeColetaveis;
+    private int contadorDeColetaveis;    
     private BoardDto boardDto;
 
     private int[,] arrayDeColetaveis;
@@ -43,7 +43,7 @@ public class Board
                     coletavelEntidade = coletavelQuery.getColetavelByFamilia(familia);
                 }
 
-                contadorDeColetaveis++;
+                contadorDeColetaveis++;                
                 Vector3 posicao = new Vector3(eixoX[contadorColuna], boardDto.PosicoesEixoY[contadorLinha]);
 
                 Coletavel coletavel = poolDeColetaveis.criarColetavel();

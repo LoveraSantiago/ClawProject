@@ -13,8 +13,8 @@ public class Level1 : AbstractLevel
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,] {
-            { 0, 11, 11, 11, 11, 11, 0 },
-            { 0, 12, 12, 12, 12, 0, 0 },
+            { 0, 11, 11, 0, 0, 0, 0 },
+            { 0, 11, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0 },

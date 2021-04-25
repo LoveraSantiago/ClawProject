@@ -6,7 +6,7 @@ public class Level2 : AbstractLevel
 {
     public override string getMsgObjetivoLevel()
     {
-        return "Faça uma trinca de espadas";
+        return "Faï¿½a uma trinca de espadas";
     }
 
     public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
@@ -29,7 +29,7 @@ public class Level2 : AbstractLevel
 
     public override bool devolverParaBoard()
     {
-        return true;
+        return false;
     }
 
     public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
