@@ -12257,7 +12257,7 @@ PrefabInstance:
     - target: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bb854d5e06f49584c8b2b6f3306be8e2, type: 2}
+      objectReference: {fileID: 2100000, guid: 7f85c2829c41c1b40915e5f553609b30, type: 2}
     - target: {fileID: 4127936681606313066, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -27493,7 +27493,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 641f330b424a77843813e424cf4e053c, type: 2}
+  - {fileID: 2100000, guid: e56d9c28b5c6eef43b03a45b06b3ef25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
