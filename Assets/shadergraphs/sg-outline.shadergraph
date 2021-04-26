@@ -14,6 +14,12 @@
         },
         {
             "m_Id": "8c173da32ac24e23acaad508ac7a2254"
+        },
+        {
+            "m_Id": "6f808d79c74b4bf99bbc699fa6e7af69"
+        },
+        {
+            "m_Id": "0266dc789be94148b942fb929f421699"
         }
     ],
     "m_Keywords": [],
@@ -356,6 +362,30 @@
 }
 
 {
+    "m_SGVersion": 3,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
+    "m_ObjectId": "0266dc789be94148b942fb929f421699",
+    "m_Guid": {
+        "m_GuidSerialized": "f657cfbc-7c48-4b17-bf77-975f345202c8"
+    },
+    "m_Name": "corGlow",
+    "m_DefaultReferenceName": "Color_0266dc789be94148b942fb929f421699",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "r": 0.0,
+        "g": 1.0,
+        "b": 0.1517486572265625,
+        "a": 0.0
+    },
+    "m_ColorMode": 0
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "09a3821bb75c46488201ddc69ded4c14",
@@ -408,7 +438,7 @@
     "m_Guid": {
         "m_GuidSerialized": "aa400b37-7a3c-4a70-b7b3-0c7c206a15a9"
     },
-    "m_Name": "cor",
+    "m_Name": "corFora",
     "m_DefaultReferenceName": "Color_0f80ed64792c4995a5ed199de3a7f74f",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -985,6 +1015,29 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Texture2DShaderProperty",
+    "m_ObjectId": "6f808d79c74b4bf99bbc699fa6e7af69",
+    "m_Guid": {
+        "m_GuidSerialized": "b5e48eda-3b3e-4427-8505-03f7c6fd814c"
+    },
+    "m_Name": "imgGlow",
+    "m_DefaultReferenceName": "Texture2D_6f808d79c74b4bf99bbc699fa6e7af69",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"0d47d3c17ae34d944bb56fc4542ae806\",\"type\":3}}",
+        "m_Guid": ""
+    },
+    "m_Modifiable": true,
+    "m_DefaultType": 0
 }
 
 {
@@ -1655,7 +1708,7 @@
     "m_Guid": {
         "m_GuidSerialized": "b900c6af-ea3e-4bce-891c-813bd00ba989"
     },
-    "m_Name": "img",
+    "m_Name": "imgFora",
     "m_DefaultReferenceName": "Texture2D_d8668875c04e4a7f86d897e1da4d14b3",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
