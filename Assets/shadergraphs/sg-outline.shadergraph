@@ -14,12 +14,6 @@
         },
         {
             "m_Id": "8c173da32ac24e23acaad508ac7a2254"
-        },
-        {
-            "m_Id": "6f808d79c74b4bf99bbc699fa6e7af69"
-        },
-        {
-            "m_Id": "0266dc789be94148b942fb929f421699"
         }
     ],
     "m_Keywords": [],
@@ -359,30 +353,6 @@
     },
     "m_TextureType": 0,
     "m_NormalMapSpace": 0
-}
-
-{
-    "m_SGVersion": 3,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
-    "m_ObjectId": "0266dc789be94148b942fb929f421699",
-    "m_Guid": {
-        "m_GuidSerialized": "f657cfbc-7c48-4b17-bf77-975f345202c8"
-    },
-    "m_Name": "corGlow",
-    "m_DefaultReferenceName": "Color_0266dc789be94148b942fb929f421699",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "r": 0.0,
-        "g": 1.0,
-        "b": 0.1517486572265625,
-        "a": 0.0
-    },
-    "m_ColorMode": 0
 }
 
 {
@@ -1015,29 +985,6 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Texture2DShaderProperty",
-    "m_ObjectId": "6f808d79c74b4bf99bbc699fa6e7af69",
-    "m_Guid": {
-        "m_GuidSerialized": "b5e48eda-3b3e-4427-8505-03f7c6fd814c"
-    },
-    "m_Name": "imgGlow",
-    "m_DefaultReferenceName": "Texture2D_6f808d79c74b4bf99bbc699fa6e7af69",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"0d47d3c17ae34d944bb56fc4542ae806\",\"type\":3}}",
-        "m_Guid": ""
-    },
-    "m_Modifiable": true,
-    "m_DefaultType": 0
 }
 
 {
