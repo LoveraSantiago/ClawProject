@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_f486c4c31a0a44478eb2e824f8c462c3:
-        m_Texture: {fileID: 2800000, guid: 8b69ae9168ffc0440a5841e6816f377c, type: 3}
+        m_Texture: {fileID: 2800000, guid: ca200656150414f4591a1c4cc0438590, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlphaTex:
@@ -64,7 +64,7 @@ Material:
     m_Colors:
     - Color_0266dc789be94148b942fb929f421699: {r: 0, g: 1, b: 0.1517487, a: 0}
     - Color_0f80ed64792c4995a5ed199de3a7f74f: {r: 0.74509805, g: 0.74509805, b: 0.74509805, a: 0}
-    - Color_8c173da32ac24e23acaad508ac7a2254: {r: 0, g: 0.45413065, b: 1, a: 0}
+    - Color_8c173da32ac24e23acaad508ac7a2254: {r: 0.4804646, g: 0.54391396, b: 0.5566038, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
