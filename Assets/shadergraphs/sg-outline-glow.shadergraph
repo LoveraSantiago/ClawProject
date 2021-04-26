@@ -354,7 +354,7 @@
     },
     "m_Name": "corGlow",
     "m_DefaultReferenceName": "Color_0266dc789be94148b942fb929f421699",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_corGlow",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
@@ -362,11 +362,11 @@
     "m_Hidden": false,
     "m_Value": {
         "r": 0.0,
-        "g": 1.0,
-        "b": 0.1517486572265625,
+        "g": 1.999999761581421,
+        "b": 0.3141360878944397,
         "a": 0.0
     },
-    "m_ColorMode": 0
+    "m_ColorMode": 1
 }
 
 {
@@ -472,7 +472,7 @@
     },
     "m_Name": "corFora",
     "m_DefaultReferenceName": "Color_0f80ed64792c4995a5ed199de3a7f74f",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_corFora",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
@@ -952,7 +952,7 @@
     },
     "m_Name": "imgGlow",
     "m_DefaultReferenceName": "Texture2D_6f808d79c74b4bf99bbc699fa6e7af69",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_imgGlow",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
@@ -1629,7 +1629,7 @@
     },
     "m_Name": "imgFora",
     "m_DefaultReferenceName": "Texture2D_d8668875c04e4a7f86d897e1da4d14b3",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_imgFora",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
