@@ -1,5 +1,7 @@
 public abstract class AbstractLevel 
 {
+    public abstract string getLevelName();
+
     public abstract string getMsgObjetivoLevel();
 
     public abstract GarraManager.MECANICA_GARRA getMecanicaDaGarra();
