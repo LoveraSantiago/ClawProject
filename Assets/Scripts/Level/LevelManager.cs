@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
 
     public void startLevel()
     {
-        SceneManager.LoadScene("MainContainerSceneV2");
+        SceneManager.LoadScene("MainGameScene");
     }
 
     public void goTotMapScene()
@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void atualizarPontuacaoFinla(int points)
+    public void atualizarPontuacaoFinal(int points)
     {
         pontuacaoFinal.text = points.ToString();
     }

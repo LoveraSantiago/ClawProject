@@ -32,22 +32,30 @@ public class MainGameScene : MonoBehaviour,
     private InputGame inputGame;
     private EfeitoColetado   efeitoColetado;
 
+    private LevelFlowManager.LEVEL levelEscolhido;
+
     void OnEnable()
     {
         //for�ando escala Y pra ficar dentro da safe area
-        //float escalaY = Screen.safeArea.height / Screen.height;
-        //float escalaX = Screen.safeArea.width / Screen.width;
-        //transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
+        float escalaY = Screen.safeArea.height / Screen.height;
+        float escalaX = Screen.safeArea.width / Screen.width;
+        transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
+    }
+
+    private void Awake()
+    {
+       levelEscolhido = PlayerPrefsLevel.recuperarLevel(level);
     }
 
     void Start()
     {
-        //Camera.main.aspect = Utils.RATIO_SCREEN;
+        Camera.main.aspect = Utils.RATIO_SCREEN;
 
         btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));
-
-        LevelFlowManager.LEVEL levelEscolhido = PlayerPrefsLevel.recuperarLevel(level);
+       
         AbstractLevel levelGame = LevelFlowManager.getLevelByEnum(levelEscolhido);
+
+        //modal.setText(levelGame.getMsgObjetivoLevel());
 
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
         garraManager      = new GarraManager(componentesDaGarra, levelGame.getMecanicaDaGarra(), inputGame);

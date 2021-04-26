@@ -4,7 +4,7 @@ public class PlayerPrefsLevel
 {
     private static readonly string LEVEL = "LEVEL";
 
-    public static void salvarMecanica(LevelFlowManager.LEVEL level)
+    public static void salvarLevel(LevelFlowManager.LEVEL level)
     {
         PlayerPrefs.SetInt(LEVEL, (int) level);
     }

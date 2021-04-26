@@ -3,7 +3,11 @@ using UnityEngine;
 //TODO NOME BEM RUIM MUDAR PARA LEVELMANAGER
 public class LevelFlowManager 
 {
-    public enum LEVEL { HUM, DOIS }
+    public enum LEVEL
+    {
+        HUM = 1,
+        DOIS = 2
+    }
 
     public static AbstractLevel getLevelByEnum(LEVEL level)
     {

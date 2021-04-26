@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Level2 : AbstractLevel
 {
+    public override string getLevelName()
+    {
+        return "Nível 2";
+    }
+
     public override string getMsgObjetivoLevel()
     {
-        return "Fa�a uma trinca de espadas";
+        return "Faça o maior número de combinações";
     }
 
     public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
@@ -18,7 +23,7 @@ public class Level2 : AbstractLevel
     {
         return new int[,] {
             { 10, 10, 10, 11, 11, 11, 12 },
-            { 14, 14, 14, 13, 13, 13, 0 },
+            { 14, 14, 14, 13, 13, 13, 1 },
             { 1, 1, 1, 1, 1, 1, 1 },
             { 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0 },
@@ -29,7 +34,7 @@ public class Level2 : AbstractLevel
 
     public override bool devolverParaBoard()
     {
-        return true;
+        return false;
     }
 
     public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
