@@ -2,8 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class DisplayDeColetado 
-{
-    private static MonoBehaviour monoBehaviour;
+{    
     private static Material materialGlow;
 
     private Vector3 posicaoDesejada;
@@ -27,27 +26,17 @@ public class DisplayDeColetado
 
         posicaoInicial = goColetadoSprite.transform.localPosition;
         posicaoDesejada = new Vector3(goColetadoSprite.transform.localPosition.x, 0f, goColetadoSprite.transform.localPosition.z);
-    }
-
-    public void mostrarSprite(Sprite sprite, float inicialDelay, float velocidade)
-    {
-        sprRenderColetado.sprite = sprite;
-        monoBehaviour.StartCoroutine(subirSprite(inicialDelay, velocidade));
-    }
+    }    
 
     public void limparSprite()
     {
         sprRenderColetado.sprite = null;
         goColetadoSprite.transform.localPosition = posicaoInicial;
-    }
+    }    
 
-    public void limparSprite(float inicialDelay, float velocidade)
+    public IEnumerator mostrarSprite(Sprite sprite, float inicialDelay, float velocidade)
     {
-        monoBehaviour.StartCoroutine(descerSprite(posicaoInicial, inicialDelay, velocidade));        
-    }
-
-    private IEnumerator subirSprite(float inicialDelay, float velocidade)
-    {
+        sprRenderColetado.sprite = sprite;
         ligarGlowLuz();
         yield return new WaitForSeconds(inicialDelay);
         while ((Vector3.Distance(goColetadoSprite.transform.localPosition, posicaoDesejada))
@@ -61,16 +50,16 @@ public class DisplayDeColetado
         desligarGlow();
     }
 
-    private IEnumerator descerSprite(Vector3 posFim, float inicialDelay, float velocidade)
+    public IEnumerator limparSprite(float inicialDelay, float velocidade)
     {
         yield return new WaitForSeconds(inicialDelay);
-        while ((Vector3.Distance(goColetadoSprite.transform.localPosition, posFim))
+        while ((Vector3.Distance(goColetadoSprite.transform.localPosition, posicaoInicial))
                > (velocidade * Time.deltaTime))
         {
-            goColetadoSprite.transform.localPosition = Vector3.MoveTowards(goColetadoSprite.transform.localPosition, posFim, velocidade * Time.deltaTime);
+            goColetadoSprite.transform.localPosition = Vector3.MoveTowards(goColetadoSprite.transform.localPosition, posicaoInicial, velocidade * Time.deltaTime);
             yield return null;
         }
-        goColetadoSprite.transform.localPosition = posFim;
+        goColetadoSprite.transform.localPosition = posicaoInicial;
     }
 
     public void ligarGlowSucesso()
@@ -96,9 +85,8 @@ public class DisplayDeColetado
         sprRenderDentro.material = materialOriginal;
     }
 
-    public static void configurarDisplay(MonoBehaviour monoBehaviourArg, Material materialGlowArg)
-    {
-        monoBehaviour = monoBehaviourArg;
+    public static void configurarDisplay(Material materialGlowArg)
+    {        
         materialGlow = materialGlowArg;
     }
 }
