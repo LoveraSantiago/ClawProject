@@ -57,6 +57,7 @@ public class DisplayDeColetado
     public IEnumerator limparSprite(float inicialDelay)
     {
         yield return new WaitForSeconds(inicialDelay);
+
         while ((Vector3.Distance(goColetadoSprite.transform.localPosition, posicaoInicial))
                > (displayColetadoDto.VelocImg * Time.deltaTime))
         {
@@ -65,6 +66,7 @@ public class DisplayDeColetado
 
             yield return null;
         }
+
         goColetadoSprite.transform.localPosition = posicaoInicial;
     }
 
