@@ -3,14 +3,14 @@ using UnityEngine;
 public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
                               ConsumidorDeEvento<Utils.EventoVazioPowerUpFim>
 {
-    private DisplayDeColetados displayDeColetados;
+    private DisplaysDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
     private JoystickHaste joystickHaste;
     private BotoesPowerUp botoesPowerUp;
 
     public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
-        displayDeColetados   = new DisplayDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
+        displayDeColetados   = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
         displayDeScores = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         joystickHaste   = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
 

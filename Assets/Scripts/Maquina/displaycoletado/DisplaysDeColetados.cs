@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class DisplayDeColetados 
+public class DisplaysDeColetados 
 {
     private int indiceEspaco;
     private bool coroutineEmAndamento;
@@ -12,7 +12,7 @@ public class DisplayDeColetados
     private Coroutine coroutineLimpeza;
     private MonoBehaviour monoBehaviour;
 
-    public DisplayDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
+    public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
         inicializarDisplayDeColetado(displayColetadoDto.SpritesDisplayColetados);
         this.displayColetadoDto = displayColetadoDto;
