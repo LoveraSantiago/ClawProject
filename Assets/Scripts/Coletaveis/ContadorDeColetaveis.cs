@@ -15,7 +15,7 @@ public class ContadorDeColetaveis
 
     private Coletavel[] coletados;
     private Coletavel[] devolverBoard;
-    private Coletavel[] deveolverTubo;
+    private Coletavel[] devolverTubo;
     private Coletavel[] arrayVazio;
 
     private GameObject pontosModal;
@@ -58,13 +58,13 @@ public class ContadorDeColetaveis
                 AudioController.current.PlayAudio(AudioController.current.combinacaoOk);
                 adicionaPontuacao();
                 devolverBoard = arrayVazio;
-                deveolverTubo = coletados;
+                devolverTubo = coletados;
                 totalColetaveis -= decrementoComboValido;
             }
             else
             {
                 devolverBoard = coletados;
-                deveolverTubo = arrayVazio;
+                devolverTubo = arrayVazio;
                 AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
 
                 totalColetaveis -= decrementoComboInvalido;
@@ -74,7 +74,7 @@ public class ContadorDeColetaveis
         else
         {
             devolverBoard = arrayVazio;
-            deveolverTubo = arrayVazio;
+            devolverTubo = arrayVazio;
         }
 
         score += 10;
@@ -93,7 +93,7 @@ public class ContadorDeColetaveis
 
     public Coletavel[] getArrayTubo()
     {
-        return deveolverTubo;
+        return devolverTubo;
     }
 
     public void resetCena()
@@ -119,16 +119,11 @@ public class ContadorDeColetaveis
         yield return new WaitForSeconds(0.5f);
 
         showPontuacao();
-    }
-
-    public bool hasResetColetados()
-    {
-        return qtdColetados == 0;
-    }
+    }    
 
     public bool getResult()
     {
-        return deveolverTubo == coletados;
+        return devolverTubo == coletados;
     }
 
     private bool isCombinacaoValida()
