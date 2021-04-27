@@ -122,6 +122,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     public void consumirEvento(PowerUpInfo powerUpInfo)
     {
         powerUpEmAcao = true;
+        processarDesimantado();
     }
 
     public void consumirEvento(Utils.EventoVazioPowerUpFim evento)
