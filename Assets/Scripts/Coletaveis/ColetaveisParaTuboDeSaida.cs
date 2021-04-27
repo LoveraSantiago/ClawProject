@@ -36,10 +36,10 @@ public class ColetaveisParaTuboDeSaida : ConsumidorDeEventoTrigger
         yield return new WaitForSeconds(delayQueda);
         if (coletados.Length > 0)
         {
-            Sprite spriteAtual = coletados[0].getSprite();
             for (int contador = 0; contador < coletados.Length; contador++)
             {
                 torque *= -1;
+                Sprite spriteAtual = coletados[contador].getSprite();
                 rigidBodies[contador].gravityScale = GRAVIDADE;
                 rigidBodies[contador].AddTorque(torque);
                 spriteRenderers[contador].sprite = spriteAtual;

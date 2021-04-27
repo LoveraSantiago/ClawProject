@@ -66,8 +66,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
         contadorDeColetaveis.adicionarColetado(coletavelAcertado);
 
-        board.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour); // Todo - Level 1 - desativado por enquanto para simular objetivo level1
-
+        board.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour);
         coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
