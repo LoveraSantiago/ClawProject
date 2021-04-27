@@ -54,6 +54,7 @@ public class ContadorDeColetaveis
         }
         else
         {
+            resultCombinacao = false;
             devolverBoard = arrayVazio;
             devolverTubo = arrayVazio;
         }
