@@ -31,21 +31,10 @@ public class DisplaysDeColetados
 
     public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool resetDisplay, bool result)
     {
-        computarIndiceAntesAdicaoSprite();
-
         monoBehaviour.StartCoroutine(displayDeColetado[indiceEspaco].mostrarSprite(spriteColetado));
 
         computarIndicePosAdicaoSprite(resetDisplay, result);        
-    }
-
-    private void computarIndiceAntesAdicaoSprite()
-    {
-        if(indiceEspaco == 0 && coroutineEmAndamento)
-        {
-            monoBehaviour.StopCoroutine(coroutineLimpeza);
-            limparTodosOsIndices();
-        }
-    }
+    }    
 
     private void computarIndicePosAdicaoSprite(bool forceResetDisplay, bool result)
     {   
