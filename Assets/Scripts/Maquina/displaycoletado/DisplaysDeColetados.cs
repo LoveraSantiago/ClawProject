@@ -33,7 +33,9 @@ public class DisplaysDeColetados
         computarIndiceAntesAdicaoSprite();
 
         displayDeColetado[indiceEspaco].mostrarSprite(
-            spriteColetado, displayColetadoDto.InicialDelay, displayColetadoDto.VelocImg, monoBehaviour);
+            spriteColetado, displayColetadoDto.InicialDelay, displayColetadoDto.VelocImg,
+            displayColetadoDto.MaterialGlowDisplay,
+            monoBehaviour);
 
         computarIndicePosAdicaoSprite(resetDisplay);        
     }

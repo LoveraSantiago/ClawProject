@@ -5316,6 +5316,7 @@ MonoBehaviour:
       - {fileID: 6406990385049082671}
       - {fileID: 6406990385049082670}
       - {fileID: 6406990385049082669}
+      materialGlowDisplay: {fileID: 2100000, guid: db08e5d8c23ec6247a7abf7fc6a2be5a, type: 2}
     displayDeScoreDto:
       qtdBlinks: 3
       tempoBlink: 0.2
@@ -22518,6 +22519,10 @@ PrefabInstance:
       propertyPath: m_AdaptiveModeThreshold
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5639408529855733617, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6406990384104044180, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_Size.y
       value: 1.8609415
