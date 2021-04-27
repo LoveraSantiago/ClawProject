@@ -18,7 +18,7 @@ public class DisplaysDeColetados
         this.displayColetadoDto = displayColetadoDto;
 
         this.monoBehaviour = monoBehaviour;
-        DisplayDeColetado.configurarDisplay(displayColetadoDto.MaterialGlowDisplay);
+        DisplayDeColetado.configurarDisplay(displayColetadoDto);
     }
 
     private void inicializarDisplayDeColetado(GameObject[] arrayDisplayColetado)
@@ -33,8 +33,7 @@ public class DisplaysDeColetados
     {
         computarIndiceAntesAdicaoSprite();
 
-        monoBehaviour.StartCoroutine(
-            displayDeColetado[indiceEspaco].mostrarSprite(spriteColetado, displayColetadoDto.InicialDelay, displayColetadoDto.VelocImg));
+        monoBehaviour.StartCoroutine(displayDeColetado[indiceEspaco].mostrarSprite(spriteColetado));
 
         computarIndicePosAdicaoSprite(resetDisplay, result);        
     }
@@ -83,9 +82,9 @@ public class DisplaysDeColetados
 
     private void limparTodosOsIndices()
     {
-        monoBehaviour.StartCoroutine(displayDeColetado[0].limparSprite(displayColetadoDto.FimDelay, displayColetadoDto.VelocImg));
-        monoBehaviour.StartCoroutine(displayDeColetado[1].limparSprite(displayColetadoDto.FimDelay * 2, displayColetadoDto.VelocImg));
-        monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3, displayColetadoDto.VelocImg));
+        monoBehaviour.StartCoroutine(displayDeColetado[0].limparSprite(displayColetadoDto.FimDelay));
+        monoBehaviour.StartCoroutine(displayDeColetado[1].limparSprite(displayColetadoDto.FimDelay * 2));
+        monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3));
     }
 
     private void ligarGlowsSucesso()

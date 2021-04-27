@@ -2,8 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 public class DisplayDeColetado 
-{    
-    private static Material materialGlow;
+{
+    private static DisplayDeColetadoDto displayColetadoDto;
 
     private Vector3 posicaoDesejada;
     private Vector3 posicaoInicial;
@@ -34,29 +34,35 @@ public class DisplayDeColetado
         goColetadoSprite.transform.localPosition = posicaoInicial;
     }    
 
-    public IEnumerator mostrarSprite(Sprite sprite, float inicialDelay, float velocidade)
+    public IEnumerator mostrarSprite(Sprite sprite)
     {
         sprRenderColetado.sprite = sprite;
         ligarGlowLuz();
-        yield return new WaitForSeconds(inicialDelay);
+        yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
+
         while ((Vector3.Distance(goColetadoSprite.transform.localPosition, posicaoDesejada))
-               > (velocidade * Time.deltaTime))
+               > (displayColetadoDto.VelocImg * Time.deltaTime))
         {
-            goColetadoSprite.transform.localPosition = Vector3.MoveTowards(goColetadoSprite.transform.localPosition, posicaoDesejada, velocidade * Time.deltaTime);
+            goColetadoSprite.transform.localPosition = Vector3.MoveTowards(
+                goColetadoSprite.transform.localPosition, posicaoDesejada, displayColetadoDto.VelocImg * Time.deltaTime);
+
             yield return null;
         }
+
         goColetadoSprite.transform.localPosition = posicaoDesejada;
-        yield return new WaitForSeconds(inicialDelay);
+        yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
         desligarGlow();
     }
 
-    public IEnumerator limparSprite(float inicialDelay, float velocidade)
+    public IEnumerator limparSprite(float inicialDelay)
     {
         yield return new WaitForSeconds(inicialDelay);
         while ((Vector3.Distance(goColetadoSprite.transform.localPosition, posicaoInicial))
-               > (velocidade * Time.deltaTime))
+               > (displayColetadoDto.VelocImg * Time.deltaTime))
         {
-            goColetadoSprite.transform.localPosition = Vector3.MoveTowards(goColetadoSprite.transform.localPosition, posicaoInicial, velocidade * Time.deltaTime);
+            goColetadoSprite.transform.localPosition = Vector3.MoveTowards(
+                goColetadoSprite.transform.localPosition, posicaoInicial, displayColetadoDto.VelocImg * Time.deltaTime);
+
             yield return null;
         }
         goColetadoSprite.transform.localPosition = posicaoInicial;
@@ -64,20 +70,20 @@ public class DisplayDeColetado
 
     public void ligarGlowSucesso()
     {
-        materialGlow.SetColor("_corGlow", Color.green);
-        sprRenderDentro.material = materialGlow;
+        displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.green);
+        sprRenderDentro.material = displayColetadoDto.MaterialGlowDisplay;
     }
 
     public void ligarGlowFail()
     {
-        materialGlow.SetColor("_corGlow", Color.red);
-        sprRenderDentro.material = materialGlow;
+        displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.red);
+        sprRenderDentro.material = displayColetadoDto.MaterialGlowDisplay;
     }
 
     public void ligarGlowLuz()
     {
-        materialGlow.SetColor("_corGlow", Color.yellow);
-        sprRenderDentro.material = materialGlow;
+        displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.yellow);
+        sprRenderDentro.material = displayColetadoDto.MaterialGlowDisplay;
     }
 
     public void desligarGlow()
@@ -85,8 +91,8 @@ public class DisplayDeColetado
         sprRenderDentro.material = materialOriginal;
     }
 
-    public static void configurarDisplay(Material materialGlowArg)
-    {        
-        materialGlow = materialGlowArg;
+    public static void configurarDisplay(DisplayDeColetadoDto displayColetadoDtoArg)
+    {
+        displayColetadoDto = displayColetadoDtoArg;
     }
 }
