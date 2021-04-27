@@ -14,18 +14,18 @@ public class DisplaysDeColetados
 
     public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
-        inicializarDisplayDeColetado(displayColetadoDto.SpritesDisplayColetados);
+        inicializarDisplayDeColetado(displayColetadoDto.GosDisplayColetados);
         this.displayColetadoDto = displayColetadoDto;
 
         this.monoBehaviour = monoBehaviour;        
     }
 
-    private void inicializarDisplayDeColetado(SpriteRenderer[] espacoImgs)
+    private void inicializarDisplayDeColetado(GameObject[] arrayDisplayColetado)
     {
-        displayDeColetado    = new DisplayDeColetado[espacoImgs.Length];
-        displayDeColetado[0] = new DisplayDeColetado(espacoImgs[0]);
-        displayDeColetado[1] = new DisplayDeColetado(espacoImgs[1]);
-        displayDeColetado[2] = new DisplayDeColetado(espacoImgs[2]);
+        displayDeColetado    = new DisplayDeColetado[arrayDisplayColetado.Length];
+        displayDeColetado[0] = new DisplayDeColetado(arrayDisplayColetado[0]);
+        displayDeColetado[1] = new DisplayDeColetado(arrayDisplayColetado[1]);
+        displayDeColetado[2] = new DisplayDeColetado(arrayDisplayColetado[2]);
     }
 
     public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool resetDisplay)

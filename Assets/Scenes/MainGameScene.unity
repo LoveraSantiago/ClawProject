@@ -5317,6 +5317,10 @@ MonoBehaviour:
       fimDelay: 0.075
       tempoReset: 0.75
       velocImg: 5
+      gosDisplayColetados:
+      - {fileID: 6406990385049082671}
+      - {fileID: 6406990385049082670}
+      - {fileID: 6406990385049082669}
       spritesDisplayColetados:
       - {fileID: 1552986179}
       - {fileID: 523200846}
@@ -22606,5 +22610,20 @@ PrefabInstance:
 --- !u!4 &6406990385049082668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1258064833904829691, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6406990385049082669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1258064834214647658, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6406990385049082670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1258064833904829690, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6406990385049082671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1258064835005988343, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}

@@ -6,27 +6,34 @@ public class DisplayDeColetado
     private Vector3 posicaoDesejada;
     private Vector3 posicaoInicial;
 
-    private GameObject go;
-    private SpriteRenderer spriteRenderer;
+    
+    private GameObject goColetadoSprite;
+    private SpriteRenderer sprRenderDentro;
+    private SpriteRenderer sprRenderColetado;
 
-    public DisplayDeColetado(SpriteRenderer spriteRenderer)
+    public DisplayDeColetado(GameObject goDisplay)
     {
-        this.spriteRenderer = spriteRenderer;
-        go = spriteRenderer.gameObject;
-        posicaoInicial = go.transform.localPosition;
-        posicaoDesejada = new Vector3(go.transform.localPosition.x, 0.45f, go.transform.localPosition.z);
+        Transform transformDentro = goDisplay.transform.Find("dentro");
+        sprRenderDentro = transformDentro.GetComponent<SpriteRenderer>();
+
+        Transform transformColetadoSpr = transformDentro.Find("coletado-sprite");
+        sprRenderColetado = transformColetadoSpr.GetComponent<SpriteRenderer>();
+        goColetadoSprite = sprRenderColetado.gameObject;
+
+        posicaoInicial = goColetadoSprite.transform.localPosition;
+        posicaoDesejada = new Vector3(goColetadoSprite.transform.localPosition.x, 0f, goColetadoSprite.transform.localPosition.z);
     }
 
     public void mostrarSprite(Sprite sprite, float inicialDelay, float velocidade, MonoBehaviour monoBehaviour)
     {
-        spriteRenderer.sprite = sprite;
+        sprRenderColetado.sprite = sprite;
         monoBehaviour.StartCoroutine(subirSprite(posicaoDesejada, inicialDelay, velocidade));
     }
 
     public void limparSprite()
     {
-        spriteRenderer.sprite = null;
-        go.transform.localPosition = posicaoInicial;
+        sprRenderColetado.sprite = null;
+        goColetadoSprite.transform.localPosition = posicaoInicial;
     }
 
     public void limparSprite(float inicialDelay, float velocidade, MonoBehaviour monoBehaviour)
@@ -37,24 +44,24 @@ public class DisplayDeColetado
     private IEnumerator subirSprite(Vector3 posFim, float inicialDelay, float velocidade)
     {
         yield return new WaitForSeconds(inicialDelay);
-        while ((Vector3.Distance(go.transform.localPosition, posFim))
+        while ((Vector3.Distance(goColetadoSprite.transform.localPosition, posFim))
                > (velocidade * Time.deltaTime))
         {
-            go.transform.localPosition = Vector3.MoveTowards(go.transform.localPosition, posFim, velocidade * Time.deltaTime);
+            goColetadoSprite.transform.localPosition = Vector3.MoveTowards(goColetadoSprite.transform.localPosition, posFim, velocidade * Time.deltaTime);
             yield return null;
         }
-        go.transform.localPosition = posFim;
+        goColetadoSprite.transform.localPosition = posFim;
     }
 
     private IEnumerator descerSprite(Vector3 posFim, float inicialDelay, float velocidade)
     {
         yield return new WaitForSeconds(inicialDelay);
-        while ((Vector3.Distance(go.transform.localPosition, posFim))
+        while ((Vector3.Distance(goColetadoSprite.transform.localPosition, posFim))
                > (velocidade * Time.deltaTime))
         {
-            go.transform.localPosition = Vector3.MoveTowards(go.transform.localPosition, posFim, velocidade * Time.deltaTime);
+            goColetadoSprite.transform.localPosition = Vector3.MoveTowards(goColetadoSprite.transform.localPosition, posFim, velocidade * Time.deltaTime);
             yield return null;
         }
-        go.transform.localPosition = posFim;
+        goColetadoSprite.transform.localPosition = posFim;
     }
 }
