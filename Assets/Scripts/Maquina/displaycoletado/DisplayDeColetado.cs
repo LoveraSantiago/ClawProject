@@ -52,7 +52,7 @@ public class DisplayDeColetado
         goColetadoSprite.transform.localPosition = posicaoDesejada;
         yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
         desligarGlow();
-    }
+    }   
 
     public IEnumerator limparSprite(float inicialDelay)
     {

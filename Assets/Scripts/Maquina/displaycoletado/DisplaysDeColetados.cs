@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class DisplaysDeColetados 
 {
-    private int indiceEspaco;
-    private bool coroutineEmAndamento;
+    private int indiceEspaco;    
 
     private DisplayDeColetadoDto displayColetadoDto;    
     private DisplayDeColetado[] displayDeColetado;    
-
-    private Coroutine coroutineLimpeza;
+    
     private MonoBehaviour monoBehaviour;
 
     public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
@@ -29,28 +27,24 @@ public class DisplaysDeColetados
         displayDeColetado[2] = new DisplayDeColetado(arrayDisplayColetado[2]);
     }
 
-    public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool resetDisplay, bool result)
+    public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool result)
     {
-        monoBehaviour.StartCoroutine(displayDeColetado[indiceEspaco].mostrarSprite(spriteColetado));
-
-        computarIndicePosAdicaoSprite(resetDisplay, result);        
-    }    
-
-    private void computarIndicePosAdicaoSprite(bool forceResetDisplay, bool result)
-    {   
-        if(forceResetDisplay || (indiceEspaco + 1 >= 3))
+        if(indiceEspaco + 1 >= 3)
         {
-            indiceEspaco = 0;            
-            coroutineLimpeza = monoBehaviour.StartCoroutine(limpezaDeEspacos(result));
+            monoBehaviour.StartCoroutine(mostrarTerceiroSprite(spriteColetado, result));
+            indiceEspaco = 0;
         }
         else
         {
+            monoBehaviour.StartCoroutine(displayDeColetado[indiceEspaco].mostrarSprite(spriteColetado));
             indiceEspaco++;
-        }
+        }        
     }    
 
-    private IEnumerator limpezaDeEspacos(bool result)
+    private IEnumerator mostrarTerceiroSprite(Sprite spriteColetado, bool result)
     {
+        yield return monoBehaviour.StartCoroutine(displayDeColetado[2].mostrarSprite(spriteColetado));
+
         if (result)
         {
             ligarGlowsSucesso();
@@ -59,22 +53,13 @@ public class DisplaysDeColetados
         {
             ligarGlowsFail();
         }
-
-        coroutineEmAndamento = true;
-
-        yield return new WaitForSeconds(displayColetadoDto.TempoReset);
-        limparTodosOsIndices();
         
-        coroutineEmAndamento = false;        
-        yield return null;
-    }
-
-    private void limparTodosOsIndices()
-    {
         monoBehaviour.StartCoroutine(displayDeColetado[0].limparSprite(displayColetadoDto.FimDelay));
         monoBehaviour.StartCoroutine(displayDeColetado[1].limparSprite(displayColetadoDto.FimDelay * 2));
-        monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3));
-    }
+        yield return monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3));
+        yield return new WaitForSeconds(displayColetadoDto.FimDelay);
+        desligarGlows();
+    }    
 
     private void ligarGlowsSucesso()
     {
@@ -95,10 +80,5 @@ public class DisplaysDeColetados
         displayDeColetado[0].desligarGlow();
         displayDeColetado[1].desligarGlow();
         displayDeColetado[2].desligarGlow();
-    }
-
-    public void passarInformacao(Sprite spriteColetado, bool resetDisplay, bool result)
-    {
-        adicionarSpriteAoDisplay(spriteColetado, resetDisplay, result);
-    }
+    }    
 }
