@@ -29,13 +29,13 @@ public class DisplaysDeColetados
         displayDeColetado[2] = new DisplayDeColetado(arrayDisplayColetado[2]);
     }
 
-    public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool resetDisplay)
+    public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool resetDisplay, bool result)
     {
         computarIndiceAntesAdicaoSprite();
 
         displayDeColetado[indiceEspaco].mostrarSprite(spriteColetado, displayColetadoDto.InicialDelay, displayColetadoDto.VelocImg);
 
-        computarIndicePosAdicaoSprite(resetDisplay);        
+        computarIndicePosAdicaoSprite(resetDisplay, result);        
     }
 
     private void computarIndiceAntesAdicaoSprite()
@@ -47,12 +47,12 @@ public class DisplaysDeColetados
         }
     }
 
-    private void computarIndicePosAdicaoSprite(bool forceResetDisplay)
+    private void computarIndicePosAdicaoSprite(bool forceResetDisplay, bool result)
     {   
         if(forceResetDisplay || (indiceEspaco + 1 >= 3))
         {
             indiceEspaco = 0;            
-            coroutineLimpeza = monoBehaviour.StartCoroutine(limpezaDeEspacos());
+            coroutineLimpeza = monoBehaviour.StartCoroutine(limpezaDeEspacos(result));
         }
         else
         {
@@ -60,13 +60,23 @@ public class DisplaysDeColetados
         }
     }    
 
-    private IEnumerator limpezaDeEspacos()
+    private IEnumerator limpezaDeEspacos(bool result)
     {
+        if (result)
+        {
+            ligarGlowsSucesso();
+        }
+        else
+        {
+            ligarGlowsFail();
+        }
+
         coroutineEmAndamento = true;
+
         yield return new WaitForSeconds(displayColetadoDto.TempoReset);
         limparTodosOsIndices();
         
-        coroutineEmAndamento = false;
+        coroutineEmAndamento = false;        
         yield return null;
     }
 
@@ -77,8 +87,29 @@ public class DisplaysDeColetados
         displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3, displayColetadoDto.VelocImg);
     }
 
-    public void consumirEvento(Sprite spriteColetado, bool resetDisplay)
+    private void ligarGlowsSucesso()
     {
-        adicionarSpriteAoDisplay(spriteColetado, resetDisplay);
+        displayDeColetado[0].ligarGlowSucesso();
+        displayDeColetado[1].ligarGlowSucesso();
+        displayDeColetado[2].ligarGlowSucesso();
+    }
+
+    private void ligarGlowsFail()
+    {
+        displayDeColetado[0].ligarGlowFail();
+        displayDeColetado[1].ligarGlowFail();
+        displayDeColetado[2].ligarGlowFail();
+    }
+
+    private void desligarGlows()
+    {
+        displayDeColetado[0].desligarGlow();
+        displayDeColetado[1].desligarGlow();
+        displayDeColetado[2].desligarGlow();
+    }
+
+    public void passarInformacao(Sprite spriteColetado, bool resetDisplay, bool result)
+    {
+        adicionarSpriteAoDisplay(spriteColetado, resetDisplay, result);
     }
 }

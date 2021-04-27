@@ -49,7 +49,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
 
     private void processarInformacoesDoColetado(InformacoesColetado infoColetado)
     {
-        displayDeColetados.adicionarSpriteAoDisplay(infoColetado.sprite, infoColetado.resetDisplay);
+        displayDeColetados.adicionarSpriteAoDisplay(infoColetado.sprite, infoColetado.resetDisplay, infoColetado.resultCombinacao);
         displayDeScores.mostrarScore(infoColetado.score, infoColetado.resultCombinacao);
     }
 

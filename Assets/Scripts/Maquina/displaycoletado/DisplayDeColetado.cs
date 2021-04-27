@@ -32,7 +32,7 @@ public class DisplayDeColetado
     public void mostrarSprite(Sprite sprite, float inicialDelay, float velocidade)
     {
         sprRenderColetado.sprite = sprite;
-        monoBehaviour.StartCoroutine(subirSprite(inicialDelay, velocidade, materialGlow));
+        monoBehaviour.StartCoroutine(subirSprite(inicialDelay, velocidade));
     }
 
     public void limparSprite()
@@ -46,9 +46,9 @@ public class DisplayDeColetado
         monoBehaviour.StartCoroutine(descerSprite(posicaoInicial, inicialDelay, velocidade));        
     }
 
-    private IEnumerator subirSprite(float inicialDelay, float velocidade, Material materialGlow)
+    private IEnumerator subirSprite(float inicialDelay, float velocidade)
     {
-        sprRenderDentro.material = materialGlow;
+        ligarGlowLuz();
         yield return new WaitForSeconds(inicialDelay);
         while ((Vector3.Distance(goColetadoSprite.transform.localPosition, posicaoDesejada))
                > (velocidade * Time.deltaTime))
@@ -58,7 +58,7 @@ public class DisplayDeColetado
         }
         goColetadoSprite.transform.localPosition = posicaoDesejada;
         yield return new WaitForSeconds(inicialDelay);
-        sprRenderDentro.material = materialOriginal;
+        desligarGlow();
     }
 
     private IEnumerator descerSprite(Vector3 posFim, float inicialDelay, float velocidade)
@@ -71,6 +71,29 @@ public class DisplayDeColetado
             yield return null;
         }
         goColetadoSprite.transform.localPosition = posFim;
+    }
+
+    public void ligarGlowSucesso()
+    {
+        materialGlow.SetColor("_corGlow", Color.green);
+        sprRenderDentro.material = materialGlow;
+    }
+
+    public void ligarGlowFail()
+    {
+        materialGlow.SetColor("_corGlow", Color.red);
+        sprRenderDentro.material = materialGlow;
+    }
+
+    public void ligarGlowLuz()
+    {
+        materialGlow.SetColor("_corGlow", Color.yellow);
+        sprRenderDentro.material = materialGlow;
+    }
+
+    public void desligarGlow()
+    {
+        sprRenderDentro.material = materialOriginal;
     }
 
     public static void configurarDisplay(MonoBehaviour monoBehaviourArg, Material materialGlowArg)
