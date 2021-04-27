@@ -66,14 +66,13 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
         contadorDeColetaveis.adicionarColetado(coletavelAcertado);
 
-        board.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour); // Todo - Level 1 - desativado por enquanto para simular objetivo level1
-
+        board.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour);
         coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
         InformacoesColetado infoColetado = new InformacoesColetado();
-        infoColetado.addInfosDisplayColetados(coletavelAcertado.getSprite(), contadorDeColetaveis.hasResetColetados(), contadorDeColetaveis.getResult());
+        infoColetado.addInfosDisplayColetados(coletavelAcertado.getSprite(), contadorDeColetaveis.getResult());
         infoColetado.addInfosDisplayScore(contadorDeColetaveis.getScore());
         infoColetado.addInfosPosicao(gameObjectColetado.transform.position);
 

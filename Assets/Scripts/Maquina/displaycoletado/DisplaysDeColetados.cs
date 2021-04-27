@@ -1,0 +1,84 @@
+using System.Collections;
+using UnityEngine;
+
+public class DisplaysDeColetados 
+{
+    private int indiceEspaco;    
+
+    private DisplayDeColetadoDto displayColetadoDto;    
+    private DisplayDeColetado[] displayDeColetado;    
+    
+    private MonoBehaviour monoBehaviour;
+
+    public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
+    {
+        inicializarDisplayDeColetado(displayColetadoDto.GosDisplayColetados);
+        this.displayColetadoDto = displayColetadoDto;
+
+        this.monoBehaviour = monoBehaviour;
+        DisplayDeColetado.configurarDisplay(displayColetadoDto);
+    }
+
+    private void inicializarDisplayDeColetado(GameObject[] arrayDisplayColetado)
+    {
+        displayDeColetado    = new DisplayDeColetado[arrayDisplayColetado.Length];
+        displayDeColetado[0] = new DisplayDeColetado(arrayDisplayColetado[0]);
+        displayDeColetado[1] = new DisplayDeColetado(arrayDisplayColetado[1]);
+        displayDeColetado[2] = new DisplayDeColetado(arrayDisplayColetado[2]);
+    }
+
+    public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool result)
+    {
+        if(indiceEspaco + 1 >= 3)
+        {
+            monoBehaviour.StartCoroutine(mostrarTerceiroSprite(spriteColetado, result));
+            indiceEspaco = 0;
+        }
+        else
+        {
+            monoBehaviour.StartCoroutine(displayDeColetado[indiceEspaco].mostrarSprite(spriteColetado));
+            indiceEspaco++;
+        }        
+    }    
+
+    private IEnumerator mostrarTerceiroSprite(Sprite spriteColetado, bool result)
+    {
+        yield return monoBehaviour.StartCoroutine(displayDeColetado[2].mostrarSprite(spriteColetado));
+
+        if (result)
+        {
+            ligarGlowsSucesso();
+        }
+        else
+        {
+            ligarGlowsFail();
+        }
+        
+        monoBehaviour.StartCoroutine(displayDeColetado[0].limparSprite(displayColetadoDto.FimDelay));
+        monoBehaviour.StartCoroutine(displayDeColetado[1].limparSprite(displayColetadoDto.FimDelay * 2));
+        yield return monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3));
+        yield return new WaitForSeconds(displayColetadoDto.FimDelay);
+        desligarGlows();
+    }    
+
+    private void ligarGlowsSucesso()
+    {
+        displayDeColetado[0].ligarGlowSucesso();
+        displayDeColetado[1].ligarGlowSucesso();
+        displayDeColetado[2].ligarGlowSucesso();
+    }
+
+    private void ligarGlowsFail()
+    {
+        displayDeColetado[0].ligarGlowFail();
+        displayDeColetado[1].ligarGlowFail();
+        displayDeColetado[2].ligarGlowFail();
+    }
+
+    private void desligarGlows()
+    {
+        displayDeColetado[0].desligarGlow();
+        displayDeColetado[1].desligarGlow();
+        displayDeColetado[2].desligarGlow();
+    }    
+}

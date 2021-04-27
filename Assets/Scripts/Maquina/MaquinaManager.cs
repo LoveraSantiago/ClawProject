@@ -3,18 +3,17 @@ using UnityEngine;
 public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
                               ConsumidorDeEvento<Utils.EventoVazioPowerUpFim>
 {
-    private DisplayDeColetados displayDeColetados;
+    private DisplaysDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
     private JoystickHaste joystickHaste;
     private BotoesPowerUp botoesPowerUp;
 
     public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
-        displayDeColetados   = new DisplayDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
-        displayDeScores = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
-        joystickHaste   = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
-
-        botoesPowerUp = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame, monoBehaviour);
+        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
+        displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
+        joystickHaste      = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
+        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame, monoBehaviour);
     }
 
     public void update()
@@ -48,8 +47,8 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     }
 
     private void processarInformacoesDoColetado(InformacoesColetado infoColetado)
-    {
-        displayDeColetados.adicionarSpriteAoDisplay(infoColetado.sprite, infoColetado.resetDisplay);
+    {        
+        displayDeColetados.adicionarSpriteAoDisplay(infoColetado.sprite, infoColetado.resultCombinacao);
         displayDeScores.mostrarScore(infoColetado.score, infoColetado.resultCombinacao);
     }
 

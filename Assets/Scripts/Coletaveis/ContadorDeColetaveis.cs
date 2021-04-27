@@ -8,14 +8,13 @@ public class ContadorDeColetaveis
     private int score = 0;
     private int qtdColetados = 0;
 
-    private int decrementoComboValido;
-    private int decrementoComboInvalido;
-
+    private bool backToBoard;
+    private bool resultCombinacao;
     private int totalColetaveis;
 
     private Coletavel[] coletados;
     private Coletavel[] devolverBoard;
-    private Coletavel[] deveolverTubo;
+    private Coletavel[] devolverTubo;
     private Coletavel[] arrayVazio;
 
     private GameObject pontosModal;
@@ -33,17 +32,7 @@ public class ContadorDeColetaveis
     public void configurarTotalColetaveis(int total, bool backToBoard)
     {
         this.totalColetaveis = total;
-
-        if (backToBoard)
-        {
-            decrementoComboValido = 3;
-            decrementoComboInvalido = 0;
-        }
-        else
-        {
-            decrementoComboValido = 3;
-            decrementoComboInvalido = 3;
-        }
+        this.backToBoard = backToBoard;        
     }
 
     public void adicionarColetado(Coletavel coletado)
@@ -55,26 +44,19 @@ public class ContadorDeColetaveis
         {
             if (isCombinacaoValida())
             {
-                AudioController.current.PlayAudio(AudioController.current.combinacaoOk);
-                adicionaPontuacao();
-                devolverBoard = arrayVazio;
-                deveolverTubo = coletados;
-                totalColetaveis -= decrementoComboValido;
+                processarRetornoValido();
             }
             else
             {
-                devolverBoard = coletados;
-                deveolverTubo = arrayVazio;
-                AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
-
-                totalColetaveis -= decrementoComboInvalido;
+                processarRetornoInvalido();
             }
             resetarColetados();
         }
         else
         {
+            resultCombinacao = false;
             devolverBoard = arrayVazio;
-            deveolverTubo = arrayVazio;
+            devolverTubo = arrayVazio;
         }
 
         score += 10;
@@ -93,7 +75,7 @@ public class ContadorDeColetaveis
 
     public Coletavel[] getArrayTubo()
     {
-        return deveolverTubo;
+        return devolverTubo;
     }
 
     public void resetCena()
@@ -119,16 +101,11 @@ public class ContadorDeColetaveis
         yield return new WaitForSeconds(0.5f);
 
         showPontuacao();
-    }
-
-    public bool hasResetColetados()
-    {
-        return qtdColetados == 0;
-    }
+    }    
 
     public bool getResult()
     {
-        return deveolverTubo == coletados;
+        return resultCombinacao;
     }
 
     private bool isCombinacaoValida()
@@ -138,9 +115,11 @@ public class ContadorDeColetaveis
         {
             if (!primeiroColetado.hasEqualsSprite(coletados[i]))
             {
+                resultCombinacao = false;
                 return false;
             }
         }
+        resultCombinacao = true;
         return true;
     }
 
@@ -148,6 +127,35 @@ public class ContadorDeColetaveis
     {
         coletados[qtdColetados] = coletado;
         qtdColetados++;
+    }
+
+    private void processarRetornoValido()
+    {
+        AudioController.current.PlayAudio(AudioController.current.combinacaoOk);
+        adicionaPontuacao();
+        devolverBoard = arrayVazio;
+        devolverTubo = coletados;
+        totalColetaveis -= 3;
+    }
+
+    private void processarRetornoInvalido()
+    {
+        if (backToBoard)
+        {
+            devolverBoard = coletados;
+            devolverTubo = arrayVazio;
+            AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
+
+            totalColetaveis -= 0;
+        }
+        else
+        {
+            devolverBoard = coletados;
+            devolverTubo  = coletados;
+
+            totalColetaveis -= 3;
+        }
+        AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
     }
 
     private void adicionaPontuacao()

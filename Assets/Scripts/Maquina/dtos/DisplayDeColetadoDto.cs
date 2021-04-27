@@ -9,12 +9,16 @@ public class DisplayDeColetadoDto
     [SerializeField] float tempoReset;//Tempo para disparar o reset dos 3 coletaveis
     [SerializeField] float velocImg;
     [Space(5)]
-    [SerializeField] private SpriteRenderer[] spritesDisplayColetados = new SpriteRenderer[3]; //3
+    [SerializeField] private GameObject[] gosDisplayColetados = new GameObject[3];
+    [Space(5)]
+    [SerializeField] private Material materialGlowDisplay;
 
     public float InicialDelay { get { return inicialDelay; } }
     public float FimDelay { get { return fimDelay; } }
-
     public float TempoReset { get { return tempoReset; } }
     public float VelocImg { get { return velocImg; } }
-    public SpriteRenderer[] SpritesDisplayColetados { get { return spritesDisplayColetados; } }
+
+    public GameObject[] GosDisplayColetados { get { return gosDisplayColetados; } }
+
+    public Material MaterialGlowDisplay { get { return materialGlowDisplay; } }
 }
