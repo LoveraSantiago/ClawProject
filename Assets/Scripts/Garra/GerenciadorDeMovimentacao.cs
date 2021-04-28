@@ -3,27 +3,27 @@ using UnityEngine;
 public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
 {
     private MovimentacaoDaGarra           movimentacaoAtual;
-    private MovimentacaoParaBaixo         movimentacaoParaBaixo;
-    private MovimentacaoDaGarra           movimentacaoSegBaixo;
-    private MovimentacaoParaCima          movimentacaoParaCima;
-    private MovimentacaoDaGarraHorizontal movimentacaoLateral;
-    private MovimentacaoAgarrandoEmcima   movimentacaoSegCima;
+    private MovimentacaoParaBaixo         movPBaixo;
+    private MovimentacaoDaGarra           movAgarrandoBaixo;
+    private MovimentacaoParaCima          movPCima;
+    private MovimentacaoDaGarraHorizontal movLateral;
+    private MovimentacaoAgarrandoEmcima   movAgarrandoCima;
 
     public GerenciadorDeMovimentacao(GarraDto componentesDaGarraDto, 
         GarraManager.MECANICA_GARRA mecanicaGarraEscolhida, InputGame inputGame)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(componentesDaGarraDto, this, inputGame);        
 
-        movimentacaoLateral   = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
-        movimentacaoParaCima  = new MovimentacaoParaCima();
-        movimentacaoParaBaixo = new MovimentacaoParaBaixo();
-        movimentacaoSegBaixo  = new MovimentacaoAgarrandoEmbaixo();
-        movimentacaoSegCima   = new MovimentacaoAgarrandoEmcima();
+        movLateral   = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
+        movPCima  = new MovimentacaoParaCima();
+        movPBaixo = new MovimentacaoParaBaixo();
+        movAgarrandoBaixo     = new MovimentacaoAgarrandoEmbaixo();
+        movAgarrandoCima      = new MovimentacaoAgarrandoEmcima();
     }
 
     public void iniciarMovimentacoes()
     {
-        trocarMovimentador(movimentacaoLateral);
+        trocarMovimentador(movLateral);
     }
 
     public void update()
@@ -63,29 +63,29 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     public void trocarParaAcaoDescendo()
     {
         AudioController.current.PlayAudioGarra();        
-        trocarMovimentador(movimentacaoParaBaixo);
+        trocarMovimentador(movPBaixo);
     }
 
     public void trocarParaAcaoSubindo()
     {        
-        trocarMovimentador(movimentacaoParaCima);
+        trocarMovimentador(movPCima);
     }
 
     public void trocarParaAcaoNormal()
     {
         AudioController.current.StopAudioGarra();
-        trocarMovimentador(movimentacaoLateral);
+        trocarMovimentador(movLateral);
     }
 
     public void trocarParaAcaoAgarrada()
     {
-        trocarMovimentador(movimentacaoSegBaixo);
+        trocarMovimentador(movAgarrandoBaixo);
     }
 
     public void trocarParaAcaoSegurando(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
     {
-        movimentacaoSegCima.receberGarraInteracaoComPowerUp(garraInteracaoPowerUp, tempoDuracao);
-        trocarMovimentador(movimentacaoSegCima);
+        movAgarrandoCima.receberGarraInteracaoComPowerUp(garraInteracaoPowerUp, tempoDuracao);
+        trocarMovimentador(movAgarrandoCima);
     }
     //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
 
@@ -102,11 +102,11 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
 
     public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
     {
-        return movimentacaoParaBaixo.produtorEventoGarraAcertou;
+        return movPBaixo.produtorEventoGarraAcertou;
     }
 
     public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()
     {
-        return movimentacaoParaCima.produtorDeEventoSubidaDaGarra;
+        return movPCima.produtorDeEventoSubidaDaGarra;
     }    
 }
