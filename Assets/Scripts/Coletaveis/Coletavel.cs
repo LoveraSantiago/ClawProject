@@ -22,7 +22,7 @@ public class Coletavel
 
     public Coletavel(GameObject go, string nome)
     {
-        goColetavel = GameObject.Instantiate(go, go.transform.position, go.transform.rotation, mainTileParent);
+        goColetavel = GameObject.Instantiate(go, go.transform.position, Quaternion.Euler(Vector3.zero), mainTileParent);
         this.nome = nome;
         goColetavel.name = nome;
         spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();
