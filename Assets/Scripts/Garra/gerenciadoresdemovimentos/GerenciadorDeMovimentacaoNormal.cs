@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class GerenciadorDeMovimentacaoNormal : ComunicadorComGerMovimentacao
+public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
+                                               ComunicadorComGerMovimentacao
 {
     private MovimentacaoDaGarra           movimentacaoAtual;
     private MovimentacaoParaBaixo         movPBaixo;
@@ -21,6 +22,7 @@ public class GerenciadorDeMovimentacaoNormal : ComunicadorComGerMovimentacao
         movAgarrandoCima  = new MovimentacaoAgarrandoEmcima();
     }
 
+    //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO INICIO
     public void iniciarMovimentacoes()
     {
         trocarMovimentador(movLateral);
@@ -31,6 +33,7 @@ public class GerenciadorDeMovimentacaoNormal : ComunicadorComGerMovimentacao
         movimentacaoAtual.update();
         //Debug.Log(movimentacaoAtual);
     }
+    //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO FIM
 
     public void fixedUpdate()
     {
