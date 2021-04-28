@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
+public class GerenciadorDeMovimentacaoNormal : ComunicadorComGerMovimentacao
 {
     private MovimentacaoDaGarra           movimentacaoAtual;
     private MovimentacaoParaBaixo         movPBaixo;
@@ -9,16 +9,16 @@ public class GerenciadorDeMovimentacao : ComunicadorComGerMovimentacao
     private MovimentacaoDaGarraHorizontal movLateral;
     private MovimentacaoAgarrandoEmcima   movAgarrandoCima;
 
-    public GerenciadorDeMovimentacao(GarraDto componentesDaGarraDto, 
+    public GerenciadorDeMovimentacaoNormal(GarraDto componentesDaGarraDto, 
         GarraManager.MECANICA_GARRA mecanicaGarraEscolhida, InputGame inputGame)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(componentesDaGarraDto, this, inputGame);        
 
-        movLateral   = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
-        movPCima  = new MovimentacaoParaCima();
-        movPBaixo = new MovimentacaoParaBaixo();
-        movAgarrandoBaixo     = new MovimentacaoAgarrandoEmbaixo();
-        movAgarrandoCima      = new MovimentacaoAgarrandoEmcima();
+        movLateral        = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
+        movPCima          = new MovimentacaoParaCima();
+        movPBaixo         = new MovimentacaoParaBaixo();
+        movAgarrandoBaixo = new MovimentacaoAgarrandoEmbaixo();
+        movAgarrandoCima  = new MovimentacaoAgarrandoEmcima();
     }
 
     public void iniciarMovimentacoes()
