@@ -11,12 +11,14 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     private MovimentacaoDaGarra movAtual;
     private MovimentacaoDaGarra movVoltarPCima;
     private MovimentacaoDaGarra movVoltarMeio;
+    private MovimentacaoSegurandoEmcima movSegCima;
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
         MovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);
         movVoltarPCima = new MovimentacaoVoltarParaCima();
-        movVoltarMeio = new MovimentacaoVoltarParaMeio();
+        movVoltarMeio  = new MovimentacaoVoltarParaMeio();
+        movSegCima     = new MovimentacaoSegurandoEmcima();
     }
 
     //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO INICIO
@@ -42,8 +44,8 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO FIM
 
     public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
-    {
-        //this.garraInteracaoPowerUp = garraInteracaoPowerUp;
+    {        
+        movSegCima.receberInteracaoComPowerUp(garraInteracaoPowerUp);
         contadorDeFimTempo.configTempoParaAcao(tempoDuracao);
     }
 
@@ -66,7 +68,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoSegurando()
     {
-        throw new System.NotImplementedException();
+        trocarMovimentador(movSegCima);
     }
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
 

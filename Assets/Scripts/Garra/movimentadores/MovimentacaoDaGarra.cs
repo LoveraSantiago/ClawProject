@@ -8,7 +8,8 @@ public abstract class MovimentacaoDaGarra
     protected static GarraDto garraDto;
     protected static InputGame inputGame;    
 
-    protected static Vector2 posInicial;    
+    protected static Vector2 posInicial;
+    public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }
 
     public virtual void preInicio() { }
     public virtual void update() { }
@@ -103,7 +104,19 @@ public abstract class MovimentacaoDaGarra
     protected bool isGarraMenorPosHorizontal(float posHorizontal)
     {
         return garraDto.RigidBody.transform.localPosition.x < posHorizontal;
-    }    
+    }
+
+    protected void dispararEventoDirecao(int direcao)
+    {
+        if (direcao == 1)
+        {
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
+        }
+        else
+        {
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
+        }
+    }
 
     public static void configurarComponentesMovimentacaoGarra(
         GarraDto componentesDaGarraDtoArg,         
@@ -112,5 +125,7 @@ public abstract class MovimentacaoDaGarra
         garraDto = componentesDaGarraDtoArg;
         pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);        
         inputGame = inputGameArg;
+
+        produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
     }
 }
