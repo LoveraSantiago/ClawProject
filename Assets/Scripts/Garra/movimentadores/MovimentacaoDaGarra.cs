@@ -9,10 +9,7 @@ public abstract class MovimentacaoDaGarra
     protected static InputGame inputGame;
     protected static ComunicadorComGerMovimentacao comunicadorComGerMovimentacao;
 
-    protected static Vector2 posInicial;
-
-    private static GameObject objetoAtraido;
-    private static int layerAnterior;
+    protected static Vector2 posInicial;    
 
     public virtual void preInicio() { }
     public virtual void update() { }
