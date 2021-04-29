@@ -24,7 +24,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO INICIO
     public void iniciarMovimentacoes()
     {
-        MovimentacaoDaGarraHorizontal.produtorEventoDirecao.produziuEvento(DirecaoDaGarra.CENTRALIZADA);
+        MovimentacaoDaGarra.produtorEventoDirecao.produziuEvento(DirecaoDaGarra.CENTRALIZADA);
         trocarParaAcaoVoltarParaCima();
     }    
 

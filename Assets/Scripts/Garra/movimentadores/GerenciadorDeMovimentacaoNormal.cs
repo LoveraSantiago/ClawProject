@@ -7,7 +7,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     private MovimentacaoParaBaixo         movPBaixo;
     private MovimentacaoDaGarra           movAgarrandoBaixo;
     private MovimentacaoParaCima          movPCima;
-    private MovimentacaoDaGarraHorizontal movLateral;
+    private MovimentacaoDaGarra           movLateral;
     private MovimentacaoAgarrandoEmcima   movAgarrandoCima;
 
     public GerenciadorDeMovimentacaoNormal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
@@ -44,7 +44,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movAtual.garraColidiuCom(other.gameObject);
     }
 
-    private MovimentacaoDaGarraHorizontal selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
+    private MovimentacaoDaGarra selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
     {
         switch (mecanicaGarraEscolhida)
         {
@@ -96,12 +96,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movimentador.preInicio();
         movAtual = movimentador;
     }
-
-    public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
-    {
-        return MovimentacaoDaGarraHorizontal.produtorEventoDirecao;
-    }
-
+    
     public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
     {
         return movPBaixo.produtorEventoGarraAcertou;

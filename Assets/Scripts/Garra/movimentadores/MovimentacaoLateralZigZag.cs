@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoLateralZigZag : MovimentacaoDaGarraHorizontal
+public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 {    
     private int direcao;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraHorizontal
+public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarra
 {
     private const int ESTADO_VOLTAR_SUBIDA = 1;
     private const int ESTADO_IR_MEIO_PELA_ESQUERDA  = 2;

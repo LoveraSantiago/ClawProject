@@ -79,7 +79,7 @@ public class GarraManager : ConsumidorDeEventoTrigger,
 
     public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
     {
-        return gerenciadorDeMovimentacao.getDisparadorDeEventoDeDirecao();
+        return MovimentacaoDaGarra.produtorEventoDirecao;
     }
 
     public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
