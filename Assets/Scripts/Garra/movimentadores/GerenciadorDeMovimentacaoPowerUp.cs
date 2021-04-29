@@ -54,7 +54,12 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP INICIO
     public void trocarParaAcaoVoltarParaCima()
     {
-        
+        trocarMovimentador(movVoltarPCima);
+    }
+
+    public void trocarParaAcaoVoltarParaMeio()
+    {
+        throw new System.NotImplementedException();
     }
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
 
@@ -64,5 +69,4 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         movimentador.preInicio();
         movAtual = movimentador;
     }
-
 }
