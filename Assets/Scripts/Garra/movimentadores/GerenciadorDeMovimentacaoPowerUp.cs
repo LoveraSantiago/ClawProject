@@ -10,11 +10,13 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     private MovimentacaoDaGarra movAtual;
     private MovimentacaoDaGarra movVoltarPCima;
+    private MovimentacaoDaGarra movVoltarMeio;
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
         MovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);
         movVoltarPCima = new MovimentacaoVoltarParaCima();
+        movVoltarMeio = new MovimentacaoVoltarParaMeio();
     }
 
     //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO INICIO
@@ -59,6 +61,11 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoVoltarParaMeio()
     {
+        trocarMovimentador(movVoltarMeio);
+    }
+
+    public void trocarParaAcaoSegurando()
+    {
         throw new System.NotImplementedException();
     }
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
@@ -69,4 +76,5 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         movimentador.preInicio();
         movAtual = movimentador;
     }
+
 }
