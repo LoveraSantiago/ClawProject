@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoParaBaixo : MovimentacaoDaGarra
+public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal
 {
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;   

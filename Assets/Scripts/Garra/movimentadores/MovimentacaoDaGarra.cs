@@ -6,8 +6,7 @@ public abstract class MovimentacaoDaGarra
 
     protected static PincaDaGarra pincas;
     protected static GarraDto garraDto;
-    protected static InputGame inputGame;
-    protected static ComunicadorComGerMovimentacao comunicadorComGerMovimentacao;
+    protected static InputGame inputGame;    
 
     protected static Vector2 posInicial;    
 
@@ -107,13 +106,11 @@ public abstract class MovimentacaoDaGarra
     }    
 
     public static void configurarComponentesMovimentacaoGarra(
-        GarraDto componentesDaGarraDtoArg, 
-        ComunicadorComGerMovimentacao comunicadorComGerMovimentacaoArg,
+        GarraDto componentesDaGarraDtoArg,         
         InputGame inputGameArg)
     {
         garraDto = componentesDaGarraDtoArg;
-        pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);
-        comunicadorComGerMovimentacao = comunicadorComGerMovimentacaoArg;
+        pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);        
         inputGame = inputGameArg;
     }
 }

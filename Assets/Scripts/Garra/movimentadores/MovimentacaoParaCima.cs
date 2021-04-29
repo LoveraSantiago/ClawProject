@@ -1,4 +1,4 @@
-public class MovimentacaoParaCima : MovimentacaoDaGarra
+public class MovimentacaoParaCima : MovimentacaoDaGarraNormal
 {
     private int contadorDeSubidas;    
     public ProdutorDeEvento<int> produtorDeEventoSubidaDaGarra { get; private set; }

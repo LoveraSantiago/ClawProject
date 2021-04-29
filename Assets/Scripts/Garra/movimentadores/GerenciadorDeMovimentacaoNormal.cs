@@ -13,7 +13,8 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     public GerenciadorDeMovimentacaoNormal(GarraDto componentesDaGarraDto, 
         GarraManager.MECANICA_GARRA mecanicaGarraEscolhida, InputGame inputGame)
     {
-        MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(componentesDaGarraDto, this, inputGame);        
+        MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(componentesDaGarraDto, inputGame);
+        MovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
 
         movLateral        = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
         movPCima          = new MovimentacaoParaCima();

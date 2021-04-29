@@ -23,7 +23,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao
     {
         if (contadorDeFimTempo.contarTempoDT() && isEstadoAtualCentralizado())
         {
-            acaoSoltarPowerUp();
+            //acaoSoltarPowerUp();
         }
 
     }
@@ -31,14 +31,14 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao
 
     public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
     {
-        this.garraInteracaoPowerUp = garraInteracaoPowerUp;
+        //this.garraInteracaoPowerUp = garraInteracaoPowerUp;
         contadorDeFimTempo.configTempoParaAcao(tempoDuracao);
     }
 
     private bool isEstadoAtualCentralizado()
     {
-        return movimentacaoAtual == ALGUM_ESTADO_CENTRALIZADO;
-        //return false;
+        //return movimentacaoAtual == ALGUM_ESTADO_CENTRALIZADO;
+        return false;
     }
 
     //TODO REFATORAR COM GERENCIADOR DE MOVIMENTACAO NORMAL

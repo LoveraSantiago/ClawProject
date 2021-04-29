@@ -1,4 +1,4 @@
-public class MovimentacaoDaGarraHorizontal : MovimentacaoDaGarra
+public class MovimentacaoDaGarraHorizontal : MovimentacaoDaGarraNormal
 {
     public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }
 
