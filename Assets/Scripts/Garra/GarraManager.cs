@@ -11,7 +11,9 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     public GarraManager(GarraDto componentesDaGarraDto,  
         MECANICA_GARRA mecanicaGarraEscolhida, InputGame inputGame)
     {
-        gerenciadorDeMovimentacao = new GerenciadorDeMovimentacaoNormal(componentesDaGarraDto, mecanicaGarraEscolhida, inputGame);
+        MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(componentesDaGarraDto, inputGame);
+        gerenciadorDeMovimentacao = new GerenciadorDeMovimentacaoNormal(mecanicaGarraEscolhida);
+
         configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);
     }
 
