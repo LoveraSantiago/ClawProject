@@ -8,7 +8,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     private ContadorDeTempo contadorDeFimTempo;
 
-    private MovimentacaoDaGarra movimentacaoAtual;
+    private MovimentacaoDaGarra movAtual;
     private MovimentacaoDaGarra movVoltarPCima;
 
     public GerenciadorDeMovimentacaoPowerUp()
@@ -62,7 +62,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     private void trocarMovimentador(MovimentacaoDaGarra movimentador)
     {
         movimentador.preInicio();
-        movimentacaoAtual = movimentador;
+        movAtual = movimentador;
     }
 
 }

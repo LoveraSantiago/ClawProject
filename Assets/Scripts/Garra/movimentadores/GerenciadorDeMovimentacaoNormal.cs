@@ -3,7 +3,7 @@ using UnityEngine;
 public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
                                                ComunicadorComGerMovNormal
 {
-    private MovimentacaoDaGarra           movimentacaoAtual;
+    private MovimentacaoDaGarra           movAtual;
     private MovimentacaoParaBaixo         movPBaixo;
     private MovimentacaoDaGarra           movAgarrandoBaixo;
     private MovimentacaoParaCima          movPCima;
@@ -29,19 +29,19 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public void update()
     {
-        movimentacaoAtual.update();
+        movAtual.update();
         //Debug.Log(movimentacaoAtual);
     }
 
     public void fixedUpdate()
     {
-        movimentacaoAtual.fixedUpdate();
+        movAtual.fixedUpdate();
     }
     //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO FIM
 
     public void garraColidiuCom(Collider2D other)
     {
-        movimentacaoAtual.garraColidiuCom(other.gameObject);
+        movAtual.garraColidiuCom(other.gameObject);
     }
 
     private MovimentacaoDaGarraHorizontal selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
@@ -94,7 +94,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     private void trocarMovimentador(MovimentacaoDaGarra movimentador)
     {
         movimentador.preInicio();
-        movimentacaoAtual = movimentador;
+        movAtual = movimentador;
     }
 
     public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
