@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
-                                               ComunicadorComGerMovimentacao
+                                               ComunicadorComGerMovNormal
 {
     private MovimentacaoDaGarra           movimentacaoAtual;
     private MovimentacaoParaBaixo         movPBaixo;
@@ -32,12 +32,12 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movimentacaoAtual.update();
         //Debug.Log(movimentacaoAtual);
     }
-    //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO FIM
 
     public void fixedUpdate()
     {
         movimentacaoAtual.fixedUpdate();
     }
+    //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO FIM
 
     public void garraColidiuCom(Collider2D other)
     {

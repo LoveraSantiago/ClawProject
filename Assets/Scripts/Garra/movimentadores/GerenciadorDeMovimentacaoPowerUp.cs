@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao
+public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
+                                                ComunicadorComGerMovPowerUp
 {
     private MovimentacaoDaGarra movimentacaoAtual;
 
@@ -10,7 +11,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
-
+        MovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);
     }
 
     //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO INICIO
@@ -25,6 +26,11 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao
         {
             //acaoSoltarPowerUp();
         }
+
+    }
+
+    public void fixedUpdate()
+    {
 
     }
     //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO FIM

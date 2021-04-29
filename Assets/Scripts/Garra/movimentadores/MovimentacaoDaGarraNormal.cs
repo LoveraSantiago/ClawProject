@@ -1,8 +1,8 @@
 public abstract class MovimentacaoDaGarraNormal : MovimentacaoDaGarra
 {
-    protected static ComunicadorComGerMovimentacao comunicadorComGerMovimentacao;
+    protected static ComunicadorComGerMovNormal comunicadorComGerMovimentacao;
 
-    public static void configurarComunicadorComGerMovimentacao(ComunicadorComGerMovimentacao comunicadorComGerMovimentacaoArg)
+    public static void configurarComunicadorComGerMovimentacao(ComunicadorComGerMovNormal comunicadorComGerMovimentacaoArg)
     {
         comunicadorComGerMovimentacao = comunicadorComGerMovimentacaoArg;
     }
