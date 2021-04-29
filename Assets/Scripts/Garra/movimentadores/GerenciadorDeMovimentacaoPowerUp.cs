@@ -8,10 +8,15 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao
 
     private ContadorDeTempo contadorDeFimTempo;
 
+    public GerenciadorDeMovimentacaoPowerUp()
+    {
+
+    }
+
     //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO INICIO
     public void iniciarMovimentacoes()
     {
-        
+        MovimentacaoDaGarraHorizontal.produtorEventoDirecao.produziuEvento(DirecaoDaGarra.CENTRALIZADA);
     }
 
     public void update()
