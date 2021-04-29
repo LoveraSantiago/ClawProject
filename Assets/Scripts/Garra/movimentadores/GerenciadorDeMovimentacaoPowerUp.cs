@@ -5,20 +5,24 @@ using UnityEngine;
 public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
                                                 ComunicadorComGerMovPowerUp
 {
-    private MovimentacaoDaGarra movimentacaoAtual;
 
     private ContadorDeTempo contadorDeFimTempo;
+
+    private MovimentacaoDaGarra movimentacaoAtual;
+    private MovimentacaoDaGarra movVoltarPCima;
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
         MovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);
+        movVoltarPCima = new MovimentacaoParaCimaVoltar();
     }
 
     //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO INICIO
     public void iniciarMovimentacoes()
     {
         MovimentacaoDaGarraHorizontal.produtorEventoDirecao.produziuEvento(DirecaoDaGarra.CENTRALIZADA);
-    }
+        trocarParaAcaoVoltarParaCima();
+    }    
 
     public void update()
     {
@@ -47,10 +51,18 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         return false;
     }
 
+    //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP INICIO
+    public void trocarParaAcaoVoltarParaCima()
+    {
+        
+    }
+    //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
+
     //TODO REFATORAR COM GERENCIADOR DE MOVIMENTACAO NORMAL
     private void trocarMovimentador(MovimentacaoDaGarra movimentador)
     {
         movimentador.preInicio();
         movimentacaoAtual = movimentador;
     }
+
 }

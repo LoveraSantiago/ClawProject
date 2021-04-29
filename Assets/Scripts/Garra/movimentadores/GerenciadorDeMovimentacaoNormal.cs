@@ -61,7 +61,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         return new MovimentacaoLateralZigZag();
     }
 
-    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA INICIO    
+    //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL INICIO    
     public void trocarParaAcaoDescendo()
     {
         AudioController.current.PlayAudioGarra();        
@@ -89,7 +89,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movAgarrandoCima.receberGarraInteracaoComPowerUp(garraInteracaoPowerUp, tempoDuracao);
         trocarMovimentador(movAgarrandoCima);
     }
-    //IMPLEMENTACAO INTERFACE COMMUNICATORCOMGARRA FIM
+    //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL FIM
 
     private void trocarMovimentador(MovimentacaoDaGarra movimentador)
     {
