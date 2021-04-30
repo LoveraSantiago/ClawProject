@@ -1,6 +1,12 @@
-public interface GerenciadorDeMovimentacao 
+using UnityEngine;
+
+public abstract class GerenciadorDeMovimentacao 
 {
-    void iniciarMovimentacoes();
-    void update();
-    void fixedUpdate();
+    public abstract void iniciarMovimentacoes();
+    public abstract void update();
+    public abstract void fixedUpdate();
+
+    public virtual void garraColidiuCom(Collider2D other)
+    {        
+    }
 }

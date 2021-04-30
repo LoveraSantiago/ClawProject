@@ -6,13 +6,17 @@ public class GarraManager : ConsumidorDeEventoTrigger,
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
 
-    private GerenciadorDeMovimentacaoNormal gerenciadorDeMovimentacao;
+    private GerenciadorDeMovimentacaoNormal  gerDeMovNormal;
+    private GerenciadorDeMovimentacaoPowerUp gerDeMovPowerUp;
+    private GerenciadorDeMovimentacao gerDeMovAtual;
 
     public GarraManager(GarraDto componentesDaGarraDto,  
         MECANICA_GARRA mecanicaGarraEscolhida, InputGame inputGame)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(componentesDaGarraDto, inputGame);
-        gerenciadorDeMovimentacao = new GerenciadorDeMovimentacaoNormal(mecanicaGarraEscolhida);
+        gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal(mecanicaGarraEscolhida);
+        gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
+        gerDeMovAtual = gerDeMovNormal;
 
         configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);
     }
@@ -25,34 +29,37 @@ public class GarraManager : ConsumidorDeEventoTrigger,
 
     public void start()
     {
-        gerenciadorDeMovimentacao.iniciarMovimentacoes();
+        gerDeMovAtual.iniciarMovimentacoes();
     }
 
     public void update()
     {
-        gerenciadorDeMovimentacao.update();
+        gerDeMovAtual.update();
     }
 
     public void fixedUpdate()
     {
-        gerenciadorDeMovimentacao.fixedUpdate();
+        gerDeMovAtual.fixedUpdate();
     }
 
     private void processarGarraColidiuCom(Collider2D other)
     {
-        gerenciadorDeMovimentacao.garraColidiuCom(other);
+        gerDeMovAtual.garraColidiuCom(other);
     }
 
     private void processarFimPowerUp()
     {
-        gerenciadorDeMovimentacao.trocarParaAcaoNormal();
+        gerDeMovNormal.trocarParaAcaoNormal();
+        gerDeMovAtual = gerDeMovNormal;
     }
 
     private void processarPowerUp(PowerUpInfo powerUpInfo)
     {
         if(powerUpInfo.garraInteracaoPowerUp != null)
         {
-            gerenciadorDeMovimentacao.trocarParaAcaoSegurando(powerUpInfo.garraInteracaoPowerUp, powerUpInfo.duracaoTempo);
+            gerDeMovPowerUp.receberGarraInteracaoComPowerUp(powerUpInfo.garraInteracaoPowerUp, powerUpInfo.duracaoTempo);
+            gerDeMovPowerUp.iniciarMovimentacoes();
+            gerDeMovAtual = gerDeMovPowerUp;
         }
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
@@ -84,12 +91,12 @@ public class GarraManager : ConsumidorDeEventoTrigger,
 
     public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
     {
-        return gerenciadorDeMovimentacao.getProdutorDeEventoTocadoPelaGarra(); ;
+        return MovimentacaoDaGarra.produtorEventoGarraAcertou;
     }
 
     public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()
     {
-        return gerenciadorDeMovimentacao.getProdutorDeEventoSubidaDaGarra();
+        return MovimentacaoDaGarra.produtorDeEventoSubidaDaGarra;
     }
 
     public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()

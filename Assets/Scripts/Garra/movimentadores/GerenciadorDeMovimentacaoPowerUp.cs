@@ -21,14 +21,14 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         movParado      = new MovimentacaoParado();
     }
 
-    //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO INICIO
-    public void iniciarMovimentacoes()
+    //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
+    public override void iniciarMovimentacoes()
     {
         MovimentacaoDaGarra.produtorEventoDirecao.produziuEvento(DirecaoDaGarra.CENTRALIZADA);
         trocarParaAcaoVoltarParaCima();
     }    
 
-    public void update()
+    public override void update()
     {
         if (contadorDeFimTempo.contarTempoDT() && isEstadoAtualCentralizado())
         {
@@ -37,11 +37,11 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         movAtual.update();
     }
 
-    public void fixedUpdate()
+    public override void fixedUpdate()
     {
         movAtual.fixedUpdate();
     }
-    //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO FIM
+    //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
     public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
     {        

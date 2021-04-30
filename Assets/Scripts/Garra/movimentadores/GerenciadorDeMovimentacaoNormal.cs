@@ -21,28 +21,28 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movAgarrandoCima  = new MovimentacaoAgarrandoEmcima();
     }
 
-    //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO INICIO
-    public void iniciarMovimentacoes()
+    //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
+    public override void iniciarMovimentacoes()
     {
         trocarMovimentador(movLateral);
     }
 
-    public void update()
+    public override void update()
     {
         movAtual.update();
         //Debug.Log(movimentacaoAtual);
     }
 
-    public void fixedUpdate()
+    public override void fixedUpdate()
     {
         movAtual.fixedUpdate();
     }
-    //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO FIM
 
-    public void garraColidiuCom(Collider2D other)
+    public override void garraColidiuCom(Collider2D other)
     {
         movAtual.garraColidiuCom(other.gameObject);
     }
+    //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
     private MovimentacaoDaGarra selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
     {
@@ -84,7 +84,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         trocarMovimentador(movAgarrandoBaixo);
     }
 
-    public void trocarParaAcaoSegurando(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
+    public void receberPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
     {
         movAgarrandoCima.receberGarraInteracaoComPowerUp(garraInteracaoPowerUp, tempoDuracao);
         trocarMovimentador(movAgarrandoCima);
@@ -95,11 +95,6 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     {
         movimentador.preInicio();
         movAtual = movimentador;
-    }
-    
-    public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
-    {
-        return movPBaixo.produtorEventoGarraAcertou;
     }
 
     public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()

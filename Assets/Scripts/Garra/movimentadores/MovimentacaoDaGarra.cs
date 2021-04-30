@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//TODO quebrar a classe em responsabilidades menores
 public abstract class MovimentacaoDaGarra 
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
@@ -9,7 +9,10 @@ public abstract class MovimentacaoDaGarra
     protected static InputGame inputGame;    
 
     protected static Vector2 posInicial;
+
     public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }
+    public static ProdutorDeEvento<string> produtorEventoGarraAcertou { get; private set; }
+    public static ProdutorDeEvento<int> produtorDeEventoSubidaDaGarra { get; private set; }
 
     public virtual void preInicio() { }
     public virtual void update() { }
@@ -127,5 +130,7 @@ public abstract class MovimentacaoDaGarra
         inputGame = inputGameArg;
 
         produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
+        produtorEventoGarraAcertou = new ProdutorDeEvento<string>();
+        produtorDeEventoSubidaDaGarra = new ProdutorDeEvento<int>();
     }
 }
