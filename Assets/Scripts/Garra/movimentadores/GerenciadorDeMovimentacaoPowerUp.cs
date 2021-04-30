@@ -7,7 +7,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     private MovimentacaoDaGarra movAtual;
     private MovimentacaoDaGarra movVoltarPCima;
     private MovimentacaoDaGarra movVoltarMeio;
-    private MovimentacaoSegurandoEmcima movSegCima;
+    private MovimentacaoAgarrandoEmcima movSegCima;
     private MovimentacaoSoltar movSoltar;
     private MovimentacaoDaGarra movParado;
 
@@ -16,7 +16,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         MovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);
         movVoltarPCima = new MovimentacaoVoltarParaCima();
         movVoltarMeio  = new MovimentacaoVoltarParaMeio();
-        movSegCima     = new MovimentacaoSegurandoEmcima();
+        movSegCima     = new MovimentacaoAgarrandoEmcima();
         movSoltar      = new MovimentacaoSoltar();
         movParado      = new MovimentacaoParado();
 

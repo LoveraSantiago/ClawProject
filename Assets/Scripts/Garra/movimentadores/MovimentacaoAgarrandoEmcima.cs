@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoSegurandoEmcima : MovimentacaoDaGarraPowerUp
+public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
 {
     private int direcao;
 
@@ -9,7 +9,7 @@ public class MovimentacaoSegurandoEmcima : MovimentacaoDaGarraPowerUp
 
     private GarraInteracaoComPowerUp garraInteracaoPowerUp;
 
-    public MovimentacaoSegurandoEmcima()
+    public MovimentacaoAgarrandoEmcima()
     {
         anguloDesejadoDireitaFechado  = Quaternion.Euler(0, 0, garraDto.AnguloFechamento);
         anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraDto.AnguloFechamento);
