@@ -1,6 +1,6 @@
 using UnityEngine;
 //TODO dupla responsabilidade. ifs para 2 estados - RUIM
-public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarraHorizontal
+public class MovimentacaoLateralTeleguiada : MovimentacaoDaGarraNormal
 {
     private bool aceitarClique;
     private bool moverLateralmente;

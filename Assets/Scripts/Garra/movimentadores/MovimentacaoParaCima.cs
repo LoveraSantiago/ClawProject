@@ -1,12 +1,10 @@
-public class MovimentacaoParaCima : MovimentacaoDaGarra
+public class MovimentacaoParaCima : MovimentacaoDaGarraNormal
 {
-    private int contadorDeSubidas;    
-    public ProdutorDeEvento<int> produtorDeEventoSubidaDaGarra { get; private set; }
+    private int contadorDeSubidas;        
 
     public MovimentacaoParaCima()
     {
-        contadorDeSubidas = 0;
-        produtorDeEventoSubidaDaGarra = new ProdutorDeEvento<int>();
+        contadorDeSubidas = 0;        
     }
 
     public override void preInicio()

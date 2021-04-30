@@ -1,18 +1,18 @@
 using UnityEngine;
-
+//TODO quebrar a classe em responsabilidades menores
 public abstract class MovimentacaoDaGarra 
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
 
     protected static PincaDaGarra pincas;
     protected static GarraDto garraDto;
-    protected static InputGame inputGame;
-    protected static ComunicadorComGerMovimentacao comunicadorComGerMovimentacao;
+    protected static InputGame inputGame;    
 
     protected static Vector2 posInicial;
 
-    private static GameObject objetoAtraido;
-    private static int layerAnterior;
+    public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }
+    public static ProdutorDeEvento<string> produtorEventoGarraAcertou { get; private set; }
+    public static ProdutorDeEvento<int> produtorDeEventoSubidaDaGarra { get; private set; }
 
     public virtual void preInicio() { }
     public virtual void update() { }
@@ -107,16 +107,30 @@ public abstract class MovimentacaoDaGarra
     protected bool isGarraMenorPosHorizontal(float posHorizontal)
     {
         return garraDto.RigidBody.transform.localPosition.x < posHorizontal;
-    }    
+    }
+
+    protected void dispararEventoDirecao(int direcao)
+    {
+        if (direcao == 1)
+        {
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
+        }
+        else
+        {
+            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
+        }
+    }
 
     public static void configurarComponentesMovimentacaoGarra(
-        GarraDto componentesDaGarraDtoArg, 
-        ComunicadorComGerMovimentacao comunicadorComGerMovimentacaoArg,
+        GarraDto componentesDaGarraDtoArg,         
         InputGame inputGameArg)
     {
         garraDto = componentesDaGarraDtoArg;
-        pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);
-        comunicadorComGerMovimentacao = comunicadorComGerMovimentacaoArg;
+        pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);        
         inputGame = inputGameArg;
+
+        produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
+        produtorEventoGarraAcertou = new ProdutorDeEvento<string>();
+        produtorDeEventoSubidaDaGarra = new ProdutorDeEvento<int>();
     }
 }

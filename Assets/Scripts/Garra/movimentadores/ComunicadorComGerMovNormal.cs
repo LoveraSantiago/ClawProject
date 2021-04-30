@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //INTERFACE PARA ESTADOS DA GARRA SE COMUNICAR MUDANCA DE ESTADO
-public interface ComunicadorComGerMovimentacao
+public interface ComunicadorComGerMovNormal
 {
     void trocarParaAcaoNormal();
     void trocarParaAcaoSubindo();

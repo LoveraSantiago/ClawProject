@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraHorizontal
+public class MovimentacaoLateralZigTeleguiado : MovimentacaoDaGarraNormal
 {
     private float direcao;
     private bool aceitarClique;

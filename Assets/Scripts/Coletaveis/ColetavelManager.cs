@@ -31,20 +31,21 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
         configurarPoolDeColetaveis(coletaveisDto);
 
-        produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
         board = new Board(coletaveisDto.BoardDto);
         board.configurarLevel(level);
 
         contadorDeColetaveis   = new ContadorDeColetaveis(this.coletaveisDto.PontosModal, monoBehaviour);
         coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);
 
-        powerUpEmAcao = false;
+        produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
     }   
 
     public void start()
     {
+        powerUpEmAcao = false;
         board.Create(poolDeColetaveis);
         contadorDeColetaveis.configurarTotalColetaveis(board.getTotalColetaveis(), levelAtual.devolverParaBoard());
+        coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK
     }    
 
     private void configurarSensorDeColetado(GameObject goSensorDeColetado)
