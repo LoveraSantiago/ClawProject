@@ -95,10 +95,5 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     {
         movimentador.preInicio();
         movAtual = movimentador;
-    }
-
-    public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()
-    {
-        return movPCima.produtorDeEventoSubidaDaGarra;
     }    
 }
