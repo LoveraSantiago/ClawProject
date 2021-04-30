@@ -7,8 +7,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     private MovimentacaoParaBaixo         movPBaixo;
     private MovimentacaoDaGarra           movAgarrandoBaixo;
     private MovimentacaoParaCima          movPCima;
-    private MovimentacaoDaGarra           movLateral;
-    private MovimentacaoAgarrandoEmcima   movAgarrandoCima;
+    private MovimentacaoDaGarra           movLateral;    
 
     public GerenciadorDeMovimentacaoNormal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
     {        
@@ -17,8 +16,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movLateral        = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
         movPCima          = new MovimentacaoParaCima();
         movPBaixo         = new MovimentacaoParaBaixo();
-        movAgarrandoBaixo = new MovimentacaoAgarrandoEmbaixo();
-        movAgarrandoCima  = new MovimentacaoAgarrandoEmcima();
+        movAgarrandoBaixo = new MovimentacaoAgarrandoEmbaixo();        
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
@@ -82,13 +80,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     public void trocarParaAcaoAgarrada()
     {
         trocarMovimentador(movAgarrandoBaixo);
-    }
-
-    public void receberPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
-    {
-        movAgarrandoCima.receberGarraInteracaoComPowerUp(garraInteracaoPowerUp, tempoDuracao);
-        trocarMovimentador(movAgarrandoCima);
-    }
+    }    
     //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL FIM
 
     private void trocarMovimentador(MovimentacaoDaGarra movimentador)
