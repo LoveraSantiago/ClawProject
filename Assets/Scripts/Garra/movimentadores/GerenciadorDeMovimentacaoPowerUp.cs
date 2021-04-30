@@ -32,14 +32,14 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     {
         if (contadorDeFimTempo.contarTempoDT() && isEstadoAtualCentralizado())
         {
-            //acaoSoltarPowerUp();
+            
         }
-
+        movAtual.update();
     }
 
     public void fixedUpdate()
     {
-
+        movAtual.fixedUpdate();
     }
     //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO FIM
 
@@ -51,8 +51,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     private bool isEstadoAtualCentralizado()
     {
-        //return movimentacaoAtual == ALGUM_ESTADO_CENTRALIZADO;
-        return false;
+        return movAtual == movSegCima;        
     }
 
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP INICIO
