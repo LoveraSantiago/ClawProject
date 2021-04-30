@@ -56,7 +56,7 @@ public class JoystickHaste : ConsumidorDeEvento<DirecaoDaGarra>
         }
         else if(direcao == DirecaoDaGarra.CENTRALIZADA)
         {
-            Debug.Log("Direcao CENTRO");
+            //Debug.Log("Direcao CENTRO");
             anguloDesejadoAtual = Quaternion.Euler(0, 0, 0); ;
             multiplicador = 1;
         }

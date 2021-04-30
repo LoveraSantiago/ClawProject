@@ -23,7 +23,7 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
     {
         if(direcaoVoltar == DirecaoDaGarra.ESQUERDA)
         {
-            voltarAoMeioVindoPelaDireita();
+            voltarAoMeioVindoPelaEsquerda();
         }
         else
         {
