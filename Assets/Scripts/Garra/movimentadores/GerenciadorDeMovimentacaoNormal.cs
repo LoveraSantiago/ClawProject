@@ -3,11 +3,11 @@ using UnityEngine;
 public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
                                                ComunicadorComGerMovNormal
 {
-    private MovimentacaoDaGarra           movAtual;
-    private MovimentacaoParaBaixo         movPBaixo;
-    private MovimentacaoDaGarra           movAgarrandoBaixo;
-    private MovimentacaoParaCima          movPCima;
-    private MovimentacaoDaGarra           movLateral;    
+    private MovimentacaoDaGarra   movAtual;
+    private MovimentacaoParaBaixo movPBaixo;
+    private MovimentacaoDaGarra   movAgarrandoBaixo;
+    private MovimentacaoParaCima  movPCima;
+    private MovimentacaoDaGarra   movLateral;    
 
     public GerenciadorDeMovimentacaoNormal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
     {        

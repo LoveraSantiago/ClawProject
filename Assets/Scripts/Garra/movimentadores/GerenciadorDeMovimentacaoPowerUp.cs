@@ -4,12 +4,12 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     private ContadorDeTempo contadorDeFimTempo;
 
-    private MovimentacaoDaGarra movAtual;
-    private MovimentacaoDaGarra movVoltarPCima;
-    private MovimentacaoDaGarra movVoltarMeio;
+    private MovimentacaoDaGarra         movAtual;
+    private MovimentacaoDaGarra         movVoltarPCima;
+    private MovimentacaoDaGarra         movVoltarMeio;
     private MovimentacaoAgarrandoEmcima movSegCima;
-    private MovimentacaoSoltar movSoltar;
-    private MovimentacaoDaGarra movParado;
+    private MovimentacaoSoltar          movSoltar;
+    private MovimentacaoDaGarra         movParado;
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
