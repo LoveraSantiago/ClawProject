@@ -12,6 +12,11 @@ public class MovimentacaoParado : MovimentacaoDaGarraPowerUp
         anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
     }
 
+    public override void preInicio()
+    {
+        pincas.acionarTrigger();
+    }
+
     public override void fixedUpdate()
     {
         pararGarra();
