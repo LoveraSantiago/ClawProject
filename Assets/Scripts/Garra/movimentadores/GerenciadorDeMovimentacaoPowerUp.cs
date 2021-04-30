@@ -19,6 +19,8 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         movSegCima     = new MovimentacaoSegurandoEmcima();
         movSoltar      = new MovimentacaoSoltar();
         movParado      = new MovimentacaoParado();
+
+        contadorDeFimTempo = new ContadorDeTempo();
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
