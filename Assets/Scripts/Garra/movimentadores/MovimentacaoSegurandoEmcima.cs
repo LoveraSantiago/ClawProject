@@ -50,13 +50,13 @@ public class MovimentacaoSegurandoEmcima : MovimentacaoDaGarraPowerUp
     //TODO duplicidade com MovimentacaoLateralZigZag
     private void verificarSeMovimentacaoAtingiuLimites()
     {
-        if (isGarraMaiorPosHorizontal(LIMITE_LATERAL_TELA))
+        if (isGarraMaiorPosHorizontal(LIMITE_LATERAL_TELA - 0.1f))
         {
             direcao = -1;
             moverGarraHorizontalmenteFreeze(direcao);
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
         }
-        else if (isGarraMenorPosHorizontal(-LIMITE_LATERAL_TELA))
+        else if (isGarraMenorPosHorizontal(-LIMITE_LATERAL_TELA + 0.1f))
         {
             direcao = 1;
             moverGarraHorizontalmenteFreeze(direcao);
