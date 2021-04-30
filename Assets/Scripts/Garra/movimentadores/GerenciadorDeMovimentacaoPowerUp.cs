@@ -12,6 +12,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     private MovimentacaoDaGarra movVoltarPCima;
     private MovimentacaoDaGarra movVoltarMeio;
     private MovimentacaoSegurandoEmcima movSegCima;
+    private MovimentacaoSoltar movSoltar;
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
@@ -19,6 +20,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         movVoltarPCima = new MovimentacaoVoltarParaCima();
         movVoltarMeio  = new MovimentacaoVoltarParaMeio();
         movSegCima     = new MovimentacaoSegurandoEmcima();
+        movSoltar      = new MovimentacaoSoltar();
     }
 
     //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO INICIO
@@ -32,7 +34,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     {
         if (contadorDeFimTempo.contarTempoDT() && isEstadoAtualCentralizado())
         {
-            
+            trocarParaAcaoSoltar();
         }
         movAtual.update();
     }
@@ -46,6 +48,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
     {        
         movSegCima.receberInteracaoComPowerUp(garraInteracaoPowerUp);
+        movSoltar.receberInteracaoComPowerUp(garraInteracaoPowerUp);
         contadorDeFimTempo.configTempoParaAcao(tempoDuracao);
     }
 
@@ -68,6 +71,11 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     public void trocarParaAcaoSegurando()
     {
         trocarMovimentador(movSegCima);
+    }
+
+    public void trocarParaAcaoSoltar()
+    {
+        trocarMovimentador(movSoltar);
     }
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
 

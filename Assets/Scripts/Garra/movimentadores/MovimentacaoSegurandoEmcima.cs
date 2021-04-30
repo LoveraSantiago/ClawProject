@@ -33,7 +33,7 @@ public class MovimentacaoSegurandoEmcima : MovimentacaoDaGarraPowerUp
     {
         if (inputGame.aconteceuTapNaAreaSuperior())
         {
-            acaoSoltarPowerUp();
+            comunicadorComGerMovimentacao.trocarParaAcaoSoltar();
         }
     }
 
@@ -47,17 +47,7 @@ public class MovimentacaoSegurandoEmcima : MovimentacaoDaGarraPowerUp
     public void receberInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp)
     {
         this.garraInteracaoPowerUp = garraInteracaoPowerUp;
-    }
-
-    private void acaoSoltarPowerUp()
-    {
-        pararGarra();
-        garraInteracaoPowerUp.parar();
-        garraInteracaoPowerUp.ligarGravidade();
-        garraInteracaoPowerUp.fixarVerticalmente();
-        
-        estadoAtual = ESTADO_SOLTAR;
-    }
+    }   
 
     //TODO duplicidade com MovimentacaoLateralZigZag
     private void verificarSeMovimentacaoAtingiuLimites()
