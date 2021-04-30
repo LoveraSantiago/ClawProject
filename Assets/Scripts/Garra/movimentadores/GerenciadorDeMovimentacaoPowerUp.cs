@@ -13,6 +13,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     private MovimentacaoDaGarra movVoltarMeio;
     private MovimentacaoSegurandoEmcima movSegCima;
     private MovimentacaoSoltar movSoltar;
+    private MovimentacaoDaGarra movParado;
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
@@ -21,6 +22,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         movVoltarMeio  = new MovimentacaoVoltarParaMeio();
         movSegCima     = new MovimentacaoSegurandoEmcima();
         movSoltar      = new MovimentacaoSoltar();
+        movParado      = new MovimentacaoParado();
     }
 
     //IMPLEMENTANDO INTERFACE GERENCIADORDEMOVIMENTACAO INICIO
@@ -76,6 +78,11 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     public void trocarParaAcaoSoltar()
     {
         trocarMovimentador(movSoltar);
+    }
+
+    public void trocarParaAcaoParado()
+    {
+        trocarMovimentador(movParado);
     }
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
 

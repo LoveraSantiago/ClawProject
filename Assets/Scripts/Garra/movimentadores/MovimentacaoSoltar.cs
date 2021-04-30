@@ -26,7 +26,7 @@ public class MovimentacaoSoltar : MovimentacaoDaGarraPowerUp
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoAberturaEsquerda, anguloDesejadoAberturaDireita);
         if (pincas.isDireitaNoAngulo(anguloDesejadoAberturaDireita))
         {
-            estadoAtual = ESTADO_ESPERANDO;
+            comunicadorComGerMovimentacao.trocarParaAcaoParado();
         }
     }
 

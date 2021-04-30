@@ -4,4 +4,5 @@ public interface ComunicadorComGerMovPowerUp
     void trocarParaAcaoVoltarParaMeio();
     void trocarParaAcaoSegurando();
     void trocarParaAcaoSoltar();
+    void trocarParaAcaoParado();
 }
