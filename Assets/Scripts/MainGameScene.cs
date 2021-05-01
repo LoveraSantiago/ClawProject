@@ -23,6 +23,7 @@ public class MainGameScene : MonoBehaviour,
     [SerializeField] private Sprite spriteBomb;
     [SerializeField] private GameObject tileBomb;
     [SerializeField] private CinemachineVirtualCamera cineMachine;
+    [SerializeField] private NoiseSettings noise6d;    
     [Space(15)]
     [SerializeField] private Button btnSair;    
 
@@ -121,13 +122,18 @@ public class MainGameScene : MonoBehaviour,
         maquinaManager.update();
         //coletaveis.Update();     
 
+        //perlim.m_NoiseProfile = 
 
         if (Input.GetMouseButtonDown(0))
         {
+
+            perlim.m_PivotOffset = new Vector3(0, 0, 10);
             perlim.m_AmplitudeGain = 1;
+            perlim.m_FrequencyGain = 100;
+            perlim.m_NoiseProfile = noise6d;
+
             contador.resetContador();
         }
-
         if (contador.contarTempoDT() && perlim.m_AmplitudeGain == 1)
         {
             perlim.m_AmplitudeGain = 0;
