@@ -8,7 +8,7 @@ public class PowerUpManager : PowerUpAcionamento,
     private MonoBehaviour monoBehaviour;
 
     public ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp { get; private set; }
-    public ProdutorDeEvento<Utils.EventoVazioPowerUpFim> produtorDeEventoFinalizacao { get; private set; }
+    public ProdutorDeEvento<PowerUpInfoFim> produtorDeEventoFinalizacao { get; private set; }
 
     public PowerUpManager(GameObject tileBomb, Sprite spriteBomb, MonoBehaviour monoBehaviour)
     {
@@ -18,7 +18,7 @@ public class PowerUpManager : PowerUpAcionamento,
 
         PowerUpParaMaquina.configAcionadorDePowerUp(this);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
-        produtorDeEventoFinalizacao = new ProdutorDeEvento<Utils.EventoVazioPowerUpFim>();
+        produtorDeEventoFinalizacao = new ProdutorDeEvento<PowerUpInfoFim>();
     }
 
     public PowerUpParaMaquina distribuirPowerUpParaMaquina()
@@ -41,6 +41,7 @@ public class PowerUpManager : PowerUpAcionamento,
 
     public void finalizado()
     {
-        produtorDeEventoFinalizacao.produziuEvento(null);
+        PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(false, true);
+        produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
     }
 }

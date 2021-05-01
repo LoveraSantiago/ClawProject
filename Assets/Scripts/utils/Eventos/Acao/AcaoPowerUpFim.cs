@@ -1,3 +1,3 @@
-public class AcaoPowerUpFim : ProdutorConsumidoresDeEvento<Utils.EventoVazioPowerUpFim>
+public class AcaoPowerUpFim : ProdutorConsumidoresDeEvento<PowerUpInfoFim>
 {
 }

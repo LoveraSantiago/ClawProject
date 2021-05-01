@@ -4,7 +4,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
                                 ConsumidorDeEvento<string>,
                                 ConsumidorDeEvento<int>,
                                 ConsumidorDeEvento<PowerUpInfo>,
-                                ConsumidorDeEvento<Utils.EventoVazioPowerUpFim>
+                                ConsumidorDeEvento<PowerUpInfoFim>
 {
     private bool powerUpEmAcao;
 
@@ -126,9 +126,12 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         processarDesimantado();
     }
 
-    public void consumirEvento(Utils.EventoVazioPowerUpFim evento)
+    public void consumirEvento(PowerUpInfoFim powerUpInfoFim)
     {
-        powerUpEmAcao = false;
+        if (powerUpInfoFim.finalizar)
+        {
+            powerUpEmAcao = false;
+        }
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> FIM    
 
@@ -147,7 +150,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         return this;
     }
 
-    public ConsumidorDeEvento<Utils.EventoVazioPowerUpFim> getConsumidorDePowerUpFim()
+    public ConsumidorDeEvento<PowerUpInfoFim> getConsumidorDePowerUpFim()
     {
         return this;
     }
