@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Cinemachine;
 
 #pragma warning disable 0649
 public class MainGameScene : MonoBehaviour, 
@@ -21,6 +22,7 @@ public class MainGameScene : MonoBehaviour,
     //Componentes  temporarios aqui...    
     [SerializeField] private Sprite spriteBomb;
     [SerializeField] private GameObject tileBomb;
+    [SerializeField] private CinemachineVirtualCamera cineMachine;
     [Space(15)]
     [SerializeField] private Button btnSair;    
 
@@ -33,6 +35,8 @@ public class MainGameScene : MonoBehaviour,
     private EfeitoColetado   efeitoColetado;
 
     private LevelFlowManager.LEVEL levelEscolhido;
+
+    private CinemachineBasicMultiChannelPerlin perlim;
 
     void OnEnable()
     {
@@ -63,6 +67,8 @@ public class MainGameScene : MonoBehaviour,
         maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(tileBomb, spriteBomb, this);
+
+        perlim = cineMachine.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         configurandoAcoes();
         startLaizy();
@@ -107,12 +113,25 @@ public class MainGameScene : MonoBehaviour,
         maquinaManager.recebendoPowerUp(powerUpManager.distribuirPowerUpParaMaquina());
     }
 
+    ContadorDeTempo contador = new ContadorDeTempo(1);
     void Update()
     {
         inputGame.update();
         garraManager.update();
         maquinaManager.update();
         //coletaveis.Update();     
+
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            perlim.m_AmplitudeGain = 1;
+            contador.resetContador();
+        }
+
+        if (contador.contarTempoDT() && perlim.m_AmplitudeGain == 1)
+        {
+            perlim.m_AmplitudeGain = 0;
+        }
     }
 
     private void FixedUpdate()
