@@ -42,6 +42,8 @@ public class PowerUpBomba : Coletavel,
         yield return new WaitForSeconds(0.25f);
 
         goExplosao.SetActive(false);
+        ExplosaoShake explosaoShake = new ExplosaoShake(monoBehaviour);
+        explosaoShake.shake();
         desligar();
         powerUpFinalizacao.preFinalizar();
         yield return new WaitForSeconds(1.1f);

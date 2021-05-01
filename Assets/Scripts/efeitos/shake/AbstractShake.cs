@@ -19,5 +19,7 @@ public abstract class AbstractShake
         perlim.m_AmplitudeGain = 0;
         perlim.m_FrequencyGain = 0;
         perlim.m_NoiseProfile = cameraShakeDto.Noise6d;
-    }    
+    }
+
+    public abstract void shake();
 }
