@@ -12,19 +12,22 @@ public class ExplosaoShake : AbstractShake
 
     public override void shake()
     {
+        float amplitude = 1f;
+
         perlim.m_PivotOffset = new Vector3(0, 0, 10);
         perlim.m_FrequencyGain = 100;
-        perlim.m_AmplitudeGain = 1;
-        monoBehaviour.StartCoroutine(diminuirEfeito(1));
+        perlim.m_AmplitudeGain = amplitude;
+        monoBehaviour.StartCoroutine(diminuirEfeito(amplitude, 1));
     }
 
-    private IEnumerator diminuirEfeito(int duracao)
+    private IEnumerator diminuirEfeito(float amplitude, float duracao)
     {
-        float amplitudeAtual = Mathf.Lerp(duracao, 0, Time.deltaTime);
-        while(amplitudeAtual > 0f)
+        float duracaoAtual = duracao;
+        yield return new WaitForSeconds(duracao / 3);
+        while(duracaoAtual > 0f)
         {
-            perlim.m_AmplitudeGain = amplitudeAtual;
-            amplitudeAtual = Mathf.Lerp(amplitudeAtual, 0, Time.deltaTime);
+            duracaoAtual -= Time.deltaTime;
+            perlim.m_AmplitudeGain = Mathf.Lerp(amplitude, 0, 1 - (duracaoAtual / duracao));            
             yield return null;
         }
     }
