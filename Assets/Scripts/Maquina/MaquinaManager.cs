@@ -52,9 +52,14 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         displayDeScores.mostrarScore(infoColetado.score, infoColetado.resultCombinacao);
     }
 
+    private void processarPreFimDePowerUp()
+    {
+        displayDeScores.piscarAsteriscos();
+    }
+
     private void processarFimDePowerUp()
     {
-        displayDeScores.finalizarContatemRegressiva();
+        displayDeScores.mostrarPontuacaoAcumulada();
         botoesPowerUp.desacionarBotao();
     }
 
@@ -68,8 +73,15 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
     public void consumirEvento(PowerUpInfoFim powerUpInfoFim)
     {
+        Debug.Log("Fim chamado");
+        if (powerUpInfoFim.preFinalizar)
+        {
+            Debug.Log("Prefim");
+            processarPreFimDePowerUp();
+        }
         if (powerUpInfoFim.finalizar)
         {
+            Debug.Log("Fim ");
             processarFimDePowerUp();
         }
     }

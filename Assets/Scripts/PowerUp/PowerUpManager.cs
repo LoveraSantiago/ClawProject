@@ -44,4 +44,11 @@ public class PowerUpManager : PowerUpAcionamento,
         PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(false, true);
         produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
     }
+
+    public void preFinalizar()
+    {
+        PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(true, false);
+        produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
+
+    }
 }
