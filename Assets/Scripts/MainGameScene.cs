@@ -16,14 +16,14 @@ public class MainGameScene : MonoBehaviour,
     [Space(5)]
     [SerializeField] private MaquinaDto maquinaDto;
     [Space(5)]
+    [SerializeField] private CameraShakeDto camShakeDto;
+    [Space(5)]
     [SerializeField] private ParticulasDto particulasDto;
     [Space(5)]
 
     //Componentes  temporarios aqui...    
     [SerializeField] private Sprite spriteBomb;
-    [SerializeField] private GameObject tileBomb;
-    [SerializeField] private CinemachineVirtualCamera cineMachine;
-    [SerializeField] private NoiseSettings noise6d;    
+    [SerializeField] private GameObject tileBomb;    
     [Space(15)]
     [SerializeField] private Button btnSair;    
 
@@ -68,8 +68,6 @@ public class MainGameScene : MonoBehaviour,
         maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(tileBomb, spriteBomb, this);
-
-        perlim = cineMachine.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         configurandoAcoes();
         startLaizy();

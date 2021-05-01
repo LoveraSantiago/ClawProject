@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
-public class CameraShakeDto : MonoBehaviour
+#pragma warning disable 0649
+[System.Serializable]
+public class CameraShakeDto 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private CinemachineVirtualCamera cineMachine;
+    [SerializeField] private NoiseSettings noise6d;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public CinemachineVirtualCamera CineMachine { get { return cineMachine; }}
+    public NoiseSettings Noise6d { get { return noise6d; } }
 }

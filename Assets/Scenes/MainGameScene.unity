@@ -5400,6 +5400,9 @@ MonoBehaviour:
       - {fileID: 251000132}
       - {fileID: 465782766}
       - {fileID: 1241201174}
+  camShakeDto:
+    cineMachine: {fileID: 250677996}
+    noise6d: {fileID: 11400000, guid: a31f2eaada77af94689f0b0d7e781fb6, type: 2}
   particulasDto:
     velocidadeMovimentacao: 4.5
     destinoParticulas: {fileID: 6406990385049082668}
