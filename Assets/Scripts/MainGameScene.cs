@@ -56,21 +56,22 @@ public class MainGameScene : MonoBehaviour,
     {
         Camera.main.aspect = Utils.RATIO_SCREEN;
 
-        btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));
-       
-        AbstractLevel levelGame = LevelFlowManager.getLevelByEnum(levelEscolhido);
+        btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));//TODO TIRAR DAQUI UMA HORA
 
-        //modal.setText(levelGame.getMsgObjetivoLevel());
+        configurandoManagers(LevelFlowManager.getLevelByEnum(levelEscolhido));
+        configurandoAcoes();
+        configurandoEventos();
+        startLaizy();
+    }
 
+    private void configurandoManagers(AbstractLevel levelGame)
+    {
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
         garraManager      = new GarraManager(componentesDaGarra, levelGame.getMecanicaDaGarra(), inputGame);
         coletaveisManager = new ColetavelManager(coletaveisDto, levelGame, this);
         maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(tileBomb, spriteBomb, this);
-
-        configurandoAcoes();
-        startLaizy();
     }
     
     private void configurandoAcoes()
@@ -103,6 +104,11 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(garraManager.getConsumidorDePowerUpFim())
             .adicionarConsumidor(maquinaManager.getConsumidorDePowerUpFim())
             .adicionarConsumidor(coletaveisManager.getConsumidorDePowerUpFim());
+    }
+
+    private void configurandoEventos()
+    {
+        AbstractShake.configurar(camShakeDto);
     }
 
     private void startLaizy()
