@@ -36,12 +36,18 @@ public class PowerUpBomba : Coletavel,
     private IEnumerator explodir()
     {
         yield return new WaitForSeconds(0.4f);
+
         goExplosao.SetActive(true);
         animator.Play(bomba_explosao);
         yield return new WaitForSeconds(0.25f);
+
         goExplosao.SetActive(false);
+        ExplosaoShake explosaoShake = new ExplosaoShake(monoBehaviour);
+        explosaoShake.shake();
         desligar();
-        yield return new WaitForSeconds(0.75f);
+        powerUpFinalizacao.preFinalizar();
+        yield return new WaitForSeconds(1.1f);
+
         powerUpFinalizacao.finalizado();
         yield return null;
     }

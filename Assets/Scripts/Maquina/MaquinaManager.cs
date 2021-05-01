@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
-                              ConsumidorDeEvento<Utils.EventoVazioPowerUpFim>
+                              ConsumidorDeEvento<PowerUpInfoFim>
 {
     private DisplaysDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
@@ -52,9 +52,14 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         displayDeScores.mostrarScore(infoColetado.score, infoColetado.resultCombinacao);
     }
 
+    private void processarPreFimDePowerUp()
+    {
+        displayDeScores.piscarAsteriscos();
+    }
+
     private void processarFimDePowerUp()
     {
-        displayDeScores.finalizarContatemRegressiva();
+        displayDeScores.mostrarPontuacaoAcumulada();
         botoesPowerUp.desacionarBotao();
     }
 
@@ -66,9 +71,19 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> FIM
 
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
-    public void consumirEvento(Utils.EventoVazioPowerUpFim evento)
+    public void consumirEvento(PowerUpInfoFim powerUpInfoFim)
     {
-        processarFimDePowerUp();
+        Debug.Log("Fim chamado");
+        if (powerUpInfoFim.preFinalizar)
+        {
+            Debug.Log("Prefim");
+            processarPreFimDePowerUp();
+        }
+        if (powerUpInfoFim.finalizar)
+        {
+            Debug.Log("Fim ");
+            processarFimDePowerUp();
+        }
     }
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> FIM
 
@@ -88,7 +103,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         return displayDeScores.getConsumidorDePowerUpInfo();
     }
 
-    public ConsumidorDeEvento<Utils.EventoVazioPowerUpFim> getConsumidorDePowerUpFim()
+    public ConsumidorDeEvento<PowerUpInfoFim> getConsumidorDePowerUpFim()
     {
         return this;
     }   

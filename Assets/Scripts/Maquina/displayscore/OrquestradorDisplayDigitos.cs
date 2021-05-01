@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class OrquestradorDisplayDigitos 
 {
-    private bool continuarContagemRegressiva;
-
     private DisplayDeScoreDto displayDeScoresDto;
 
     private DisplayDigito displayCentena;
@@ -54,18 +52,12 @@ public class OrquestradorDisplayDigitos
         yield return null;
     }
 
-    public IEnumerator mostrarContagemRegressivo(int segundos, int centena, int dezena, int unidade)
+    public IEnumerator mostrarContagemRegressivo(int segundos)
     {
-        continuarContagemRegressiva = true;
         WaitForSeconds waitForSeconds = new WaitForSeconds(0.25f);
 
-        for(int contadorRegressivo = segundos; contadorRegressivo >= 0; contadorRegressivo--)
+        for(int contadorRegressivo = segundos; contadorRegressivo > 0; contadorRegressivo--)
         {
-            if (!continuarContagemRegressiva)
-            {
-                break;
-            }
-
             for(int contador = 0; contador < 2; contador++)//COMPLETA 0.5 A CADA ITERACAO
             {
                 passarScore("!", contadorRegressivo, "!", Color.yellow);
@@ -76,7 +68,20 @@ public class OrquestradorDisplayDigitos
             }
         }
 
-        while (continuarContagemRegressiva)
+        while (true)
+        {
+            passarScore("*", "*", "*", Color.yellow);
+            yield return waitForSeconds;
+
+            desligarTodosDigitos();
+            yield return waitForSeconds;
+        }        
+    }
+
+    public IEnumerator blinkarAsteriscos()
+    {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(0.25f);//TODO REFATORAR TODOS OS WAITFORSECONDS
+        while (true)
         {
             passarScore("*", "*", "*", Color.yellow);
             yield return waitForSeconds;
@@ -84,17 +89,9 @@ public class OrquestradorDisplayDigitos
             desligarTodosDigitos();
             yield return waitForSeconds;
         }
-
-        passarScore(centena, dezena, unidade);
-        yield return null;
     }
 
-    public void finalizarContatemRegressiva()
-    {
-        continuarContagemRegressiva = false;
-    }
-
-    private void passarScore(int centena, int dezena, int unidade)
+    public void passarScore(int centena, int dezena, int unidade)
     {
         displayCentena.mostrarDigito(centena, Color.red);
         displayDezena.mostrarDigito(dezena, Color.red);

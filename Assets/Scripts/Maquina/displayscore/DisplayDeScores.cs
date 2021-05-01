@@ -1,60 +1,85 @@
 using UnityEngine;
 
 public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
-{ 
+{
+    private int scoreCentenaAtual;
+    private int scoreDezenaAtual;
+    private int scoreUnidadeAtual;
+
     private DisplayDigito displayCentena;
     private DisplayDigito displayDezena;
     private DisplayDigito displayUnidade;
 
-    //private DisplayDeScoreDto displayDeScoresDto;
     private OrquestradorDisplayDigitos orquestrador;
     private MonoBehaviour monoBehaviour;
+
+    private Coroutine coroutineAtual;    
 
     public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto, MonoBehaviour monoBehaviour)
     {
         this.monoBehaviour = monoBehaviour;
-        //this.displayDeScoresDto = displayDeScoresDto;
 
         GameObject[] displayScores = displayDeScoresDto.GosDisplayScores;
         displayCentena = new DisplayDigito(displayScores[0]);
-        displayDezena = new DisplayDigito(displayScores[1]);
+        displayDezena  = new DisplayDigito(displayScores[1]);
         displayUnidade = new DisplayDigito(displayScores[2]);
 
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
    
     public void mostrarScore(int score, bool result)
-    {
-        int scoreTotal = score;
-        int centena = scoreTotal / 100;
-
-        scoreTotal -= centena * 100;
-        int dezena =scoreTotal / 10;
-
-        scoreTotal -= dezena * 10;
-        int unidade = scoreTotal;
+    {       
         if (result)
         {
-            monoBehaviour.StartCoroutine(orquestrador.blinkarScoreSucesso(centena, dezena, unidade));
+            monoBehaviour.StartCoroutine(orquestrador.blinkarScoreSucesso(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
         }
         else
         {
-            monoBehaviour.StartCoroutine(orquestrador.blinkarScore(centena, dezena, unidade));
+            monoBehaviour.StartCoroutine(orquestrador.blinkarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
         }
+    }
+
+    public void piscarAsteriscos()
+    {
+        Debug.Log("PiscarAstericos");
+        cancelarCoroutine();
+        coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.blinkarAsteriscos());
+    }
+
+    public void mostrarPontuacaoAcumulada()
+    {
+        cancelarCoroutine();
+        orquestrador.passarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual);
     }
 
     private void mostrarContagemRegressiva(int duracao)
     {
-        int scoreCentena = displayCentena.digito;
-        int scoreDezena = displayDezena.digito;
-        int scoreUnidade = displayUnidade.digito;
-
-        monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao, scoreCentena, scoreDezena, scoreUnidade));
+        armazenarScoreAtual();
+        coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));
     }     
-    
-    public void finalizarContatemRegressiva()
+
+    private void splitarScore(int score)
     {
-        orquestrador.finalizarContatemRegressiva();
+        int scoreTotal = score;
+        scoreCentenaAtual = scoreTotal / 100;
+
+        scoreTotal -= scoreCentenaAtual * 100;
+        scoreDezenaAtual = scoreTotal / 10;
+
+        scoreTotal -= scoreDezenaAtual * 10;
+        scoreUnidadeAtual = scoreTotal;
+    }
+
+    private void armazenarScoreAtual()
+    {
+        scoreCentenaAtual = displayCentena.digito;
+        scoreDezenaAtual  = displayDezena.digito;
+        scoreUnidadeAtual = displayUnidade.digito;
+    }
+    
+    private void cancelarCoroutine()
+    {
+        monoBehaviour.StopCoroutine(coroutineAtual);        
     }
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
