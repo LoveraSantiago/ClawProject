@@ -12,5 +12,5 @@ public class BotoesPowerUpDto
 
     public Sprite[] BordasBtns { get { return bordasBtns;  } }
     public GameObject[] BtnsPowerUp { get { return btnsPowerUp; } }
-    public Sprite[] SpritesDeBotoes { get { return bordasBtns; } }
+    public Sprite[] SpritesDeBotoes { get { return spritesDeBotoes; } }
 }
