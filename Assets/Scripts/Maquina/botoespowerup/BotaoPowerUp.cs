@@ -24,6 +24,7 @@ public class BotaoPowerUp : Draggavel
         if (hasPowerUp)
         {
             acaoBtnPowerUp.acionar();
+            aparencia.limparImg();
             hasPowerUp = false;
         }
     }
@@ -35,6 +36,7 @@ public class BotaoPowerUp : Draggavel
 
     public void receberAcaoPowerUp(AcaoBotaoPowerUp acaoBtnPowerUp)
     {
+        this.acaoBtnPowerUp = acaoBtnPowerUp;
         if (acaoBtnPowerUp.isClicavel())
         {
             transformarEmBotaoClicavel();

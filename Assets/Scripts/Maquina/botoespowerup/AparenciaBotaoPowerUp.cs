@@ -46,6 +46,11 @@ public class AparenciaBotaoPowerUp
         spriteRendererImg.sprite = img;
     }
 
+    public void limparImg()
+    {
+        spriteRendererImg.sprite = null;
+    }
+
     public static void configurarSpriteBordas(Sprite[] spritesBordas)
     {
         spriteBordaNormal = spritesBordas[0];
