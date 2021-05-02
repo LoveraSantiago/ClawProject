@@ -12,14 +12,12 @@ public class BotoesPowerUp
     private Draggavel dragavelAtual;
     private Draggavel dragavelVazio;
 
-    private InputGame inputGame;
+    private InputGame inputGame;    
     
-    private MonoBehaviour monoBehaviour;
 
-    public BotoesPowerUp(BotoesPowerUpDto btnsPowerUps, PowerUp.TIPO[] arrayDePowerUpsParaBotoes, InputGame inputGame, MonoBehaviour monoBehaviour)
+    public BotoesPowerUp(BotoesPowerUpDto btnsPowerUps, PowerUp.TIPO[] arrayDePowerUpsParaBotoes, InputGame inputGame)
     {
-        this.inputGame = inputGame;
-        this.monoBehaviour = monoBehaviour;        
+        this.inputGame = inputGame;       
 
         BotaoPowerUp.configurarSpriteBordas(btnsPowerUps.BordasBtns);
         inicializarBotoes(btnsPowerUps);
@@ -129,7 +127,7 @@ public class BotoesPowerUp
         }
     }
 
-    public void endDrag()
+    public void endDrag(MonoBehaviour monoBehaviour)
     {
         if (!acionadoPowerUp)
         {

@@ -16,7 +16,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         joystickHaste      = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
-        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, arrayDePowerUpsParaBotoes, inputGame, monoBehaviour);
+        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, arrayDePowerUpsParaBotoes, inputGame);
     }
 
     public void update()
@@ -44,9 +44,9 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         botoesPowerUp.drag(delta);
     }
 
-    public void onEndDragPowerUp()
+    public void onEndDragPowerUp(MonoBehaviour monoBehaviour)
     {
-        botoesPowerUp.endDrag();
+        botoesPowerUp.endDrag(monoBehaviour);
     }
 
     private void processarInformacoesDoColetado(InformacoesColetado infoColetado)

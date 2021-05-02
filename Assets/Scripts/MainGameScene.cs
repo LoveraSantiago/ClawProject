@@ -143,7 +143,7 @@ public class MainGameScene : MonoBehaviour,
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("OnEndDrag");
-        maquinaManager.onEndDragPowerUp();
+        maquinaManager.onEndDragPowerUp(this);
     }
 
     public void OnDrag(PointerEventData eventData)
