@@ -5,6 +5,7 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
     //TODO QUATERNIONS EM DUPLICIDADE COM MOVIMENTACAOVOLTARPARACIMA
     private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;
     private Quaternion anguloDesejadoDireitaAntesEstadoInicial;
+    private ContadorDeTempo contadorDeTempo;
 
     private DirecaoDaGarra direcaoVoltar;
 
@@ -12,6 +13,8 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
     {
         anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMin);
         anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
+
+        contadorDeTempo = new ContadorDeTempo(0.25f);
     }
 
     public override void preInicio()
@@ -25,9 +28,16 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
         {
             voltarAoMeioVindoPelaEsquerda();
         }
-        else
+        else if(direcaoVoltar == DirecaoDaGarra.DIREITA)
         {
             voltarAoMeioVindoPelaDireita();
+        }
+        else if(direcaoVoltar == DirecaoDaGarra.CENTRALIZADA)
+        {
+            if (contadorDeTempo.contarTempoFDT())
+            {
+                comunicadorComGerMovimentacao.trocarParaAcaoSegurando();
+            }
         }
     }
 
@@ -73,6 +83,7 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
     {
         pararGarra();
         colocarGarraNaPosInicial();
-        comunicadorComGerMovimentacao.trocarParaAcaoSegurando();
+        direcaoVoltar = DirecaoDaGarra.CENTRALIZADA;
+        contadorDeTempo.resetContador();
     }
 }

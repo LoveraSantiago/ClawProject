@@ -28,7 +28,8 @@ public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
     }
    
     public void mostrarScore(int score, bool result)
-    {       
+    {
+        splitarScore(score);
         if (result)
         {
             monoBehaviour.StartCoroutine(orquestrador.blinkarScoreSucesso(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
