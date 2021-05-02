@@ -18,14 +18,7 @@ public class PowerUpManager : PowerUpAcionamento,
         PowerUpParaMaquina.configAcionadorDePowerUp(this);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         produtorDeEventoFinalizacao = new ProdutorDeEvento<PowerUpInfoFim>();
-    }
-
-    public PowerUpParaMaquina distribuirPowerUpParaMaquina()
-    {
-        PowerUp  powerUpBomba = new PowerUp(PowerUp.TIPO.BOMBA_DA_GARRA, 5);
-        PowerUpParaMaquina powerUpParaMaquinaBomba = new PowerUpParaMaquina(powerUpBomba, powerUpDto.SpriteBomb, true);
-        return powerUpParaMaquinaBomba;
-    }
+    }    
 
     public void acionado(PowerUp.TIPO tipoPowerUp)
     {    

@@ -1,18 +1,17 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PowerUpParaMaquina : AcaoBotaoPowerUp
 {
     private static PowerUpAcionamento powerUpAcionamento;
-
-    private bool clicavel;
+    
     private PowerUp powerUp;
     private Sprite imgBtn;
 
-    public PowerUpParaMaquina(PowerUp powerUp, Sprite imgBtn, bool clicavel)
+    public PowerUpParaMaquina(PowerUp.TIPO tipo, Dictionary<string, Sprite> dicionarioDeSprites)
     {
-        this.powerUp = powerUp;
-        this.clicavel = clicavel;
-        this.imgBtn = imgBtn;
+        powerUp = PowerUp.getPowerUpByEnum(tipo);
+        imgBtn = dicionarioDeSprites[powerUp.nomeSprite];
     }
 
     public void acionar()
@@ -22,7 +21,7 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
 
     public bool isClicavel()
     {
-        return clicavel;
+        return powerUp.isClicavel;
     }
 
     public bool isDraggavel()

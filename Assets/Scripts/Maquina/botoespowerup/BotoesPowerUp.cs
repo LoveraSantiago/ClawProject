@@ -6,35 +6,38 @@ public class BotoesPowerUp
 
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
+    private DistribuidorParaBotoesPowerUp distribuidor;
 
     private Draggavel dragavelAtual;
     private Draggavel dragavelVazio;
 
     private InputGame inputGame;        
 
-    public BotoesPowerUp(BotoesPowerUpDto btnsPowerUps, InputGame inputGame)
+    public BotoesPowerUp(BotoesPowerUpDto btnsPowerUpsDto, InputGame inputGame)
     {
         this.inputGame = inputGame;       
 
-        BotaoPowerUp.configurarSpriteBordas(btnsPowerUps.BordasBtns);
-        inicializarBotoes(btnsPowerUps);
+        BotaoPowerUp.configurarSpriteBordas(btnsPowerUpsDto.BordasBtns);
+
+        inicializarBotoes(btnsPowerUpsDto);
+        distribuidor = new DistribuidorParaBotoesPowerUp(btnsPowerUp, btnsPowerUpsDto.SpritesDeBotoes);
 
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
     }
 
-    private void inicializarBotoes(BotoesPowerUpDto btnsPowerUps)
+    private void inicializarBotoes(BotoesPowerUpDto btnsPowerUpsDto)
     {
         btnsPowerUp = new BotaoPowerUp[4];
-        btnsPowerUp[0] = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[0]);
-        btnsPowerUp[1] = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[1]);
-        btnsPowerUp[2] = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[2]);
-        btnsPowerUp[3] = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[3]);
+        btnsPowerUp[0] = new BotaoPowerUp(btnsPowerUpsDto.BtnsPowerUp[0]);
+        btnsPowerUp[1] = new BotaoPowerUp(btnsPowerUpsDto.BtnsPowerUp[1]);
+        btnsPowerUp[2] = new BotaoPowerUp(btnsPowerUpsDto.BtnsPowerUp[2]);
+        btnsPowerUp[3] = new BotaoPowerUp(btnsPowerUpsDto.BtnsPowerUp[3]);
     }
 
     public void configuraradoPeloLevel(PowerUp.TIPO[] arrayDePowerUpsParaBotoes)
     {
-
+        distribuidor.distribuirArray(arrayDePowerUpsParaBotoes);
     }
     
     public void update()
