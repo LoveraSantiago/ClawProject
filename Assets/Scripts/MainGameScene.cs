@@ -20,10 +20,9 @@ public class MainGameScene : MonoBehaviour,
     [Space(5)]
     [SerializeField] private ParticulasDto particulasDto;
     [Space(5)]
-
-    //Componentes  temporarios aqui...    
-    [SerializeField] private Sprite spriteBomb;
-    [SerializeField] private GameObject tileBomb;    
+    [SerializeField] private PowerUpDto powerUpDto;
+    
+    //Componentes  temporarios aqui...        
     [Space(15)]
     [SerializeField] private Button btnSair;    
 
@@ -71,7 +70,7 @@ public class MainGameScene : MonoBehaviour,
         coletaveisManager = new ColetavelManager(coletaveisDto, levelGame, this);
         maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
-        powerUpManager    = new PowerUpManager(tileBomb, spriteBomb, this);
+        powerUpManager    = new PowerUpManager(powerUpDto, this);
     }
     
     private void configurandoAcoes()
