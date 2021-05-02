@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class BotaoPowerUp : Draggavel
 {
-    private bool isDraggavel;    
+    private bool isDraggavel;
+    public bool hasPowerUp { get; private set; }
 
     private AparenciaBotaoPowerUp aparencia;
     private AcaoDragPowerUp acaoDrag;
+    private AcaoBotaoPowerUp acaoBtnPowerUp;
 
     public BotaoPowerUp(GameObject goBotao)
     {        
@@ -19,6 +21,11 @@ public class BotaoPowerUp : Draggavel
     public void clicar()
     {
         aparencia.colorirBotao();
+        if (hasPowerUp)
+        {
+            acaoBtnPowerUp.acionar();
+            hasPowerUp = false;
+        }
     }
 
     public void desclicar()
@@ -26,13 +33,27 @@ public class BotaoPowerUp : Draggavel
         aparencia.voltarCorOriginalBotao();
     }
 
-    public void transformarEmBotaoDragavel()
+    public void receberAcaoPowerUp(AcaoBotaoPowerUp acaoBtnPowerUp)
+    {
+        if (acaoBtnPowerUp.isClicavel())
+        {
+            transformarEmBotaoClicavel();
+        }
+        else
+        {
+            transformarEmBotaoDragavel();
+        }
+        aparencia.receberImg(acaoBtnPowerUp.getImgBotao());
+        hasPowerUp = true;
+    }
+
+    private void transformarEmBotaoDragavel()
     {
         aparencia.mostrarBordaSerrilhada();
         isDraggavel = true;
     }
 
-    public void transformarEmBotaoClicavel()
+    private void transformarEmBotaoClicavel()
     {
         aparencia.mostrarBordaNormal();
         isDraggavel = false;
@@ -46,12 +67,7 @@ public class BotaoPowerUp : Draggavel
     public bool isDragDentroAreaBotao(Vector2 posicao)
     {
         return isDraggavel && acaoDrag.isPosicaoDentroAreaBotao(posicao);
-    }        
-
-    public void receberImg(Sprite img)
-    {
-        aparencia.receberImg(img);
-    }
+    }           
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
     public void prepararDraggagem(Vector3 posInicialDrag)

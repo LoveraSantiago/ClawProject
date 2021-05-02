@@ -3,6 +3,7 @@ using UnityEngine;
 public class BotoesPowerUp 
 {
     private bool acionadoPowerUp;
+
     private BotaoPowerUp btnPUp1;
     private BotaoPowerUp btnPUp2;
     private BotaoPowerUp btnPUp3;
@@ -12,8 +13,7 @@ public class BotoesPowerUp
     private Draggavel dragavelAtual;
     private Draggavel dragavelVazio;
 
-    private InputGame inputGame;    
-    
+    private InputGame inputGame;        
 
     public BotoesPowerUp(BotoesPowerUpDto btnsPowerUps, InputGame inputGame)
     {
@@ -24,10 +24,6 @@ public class BotoesPowerUp
 
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
-        
-        btnPUp2.transformarEmBotaoDragavel();
-        btnPUp3.transformarEmBotaoClicavel();
-        btnPUp4.transformarEmBotaoDragavel();
     }
 
     private void inicializarBotoes(BotoesPowerUpDto btnsPowerUps)
@@ -50,8 +46,7 @@ public class BotoesPowerUp
             Vector2 posicaoTap = inputGame.getPosicaoTap();
             if (btnPUp1.isCliqueDentroAreaBotao(posicaoTap))
             {
-                acionarBotao(btnPUp1);
-                acaoBotaoPup1.acionar();                
+                acionarBotao(btnPUp1);                
             }
             else if (btnPUp2.isCliqueDentroAreaBotao(posicaoTap))
             {
@@ -79,22 +74,7 @@ public class BotoesPowerUp
     {
         acionadoPowerUp = false;
         btnAcionado.desclicar();
-    }
-
-    private AcaoBotaoPowerUp acaoBotaoPup1;//TEMPORARIAMENTE AQUI
-    public void recebendoPowerUp(AcaoBotaoPowerUp acaoBotaoPup)
-    {
-        acaoBotaoPup1 = acaoBotaoPup;
-        if (acaoBotaoPup.isClicavel())
-        {
-            btnPUp1.transformarEmBotaoClicavel();
-            btnPUp1.receberImg(acaoBotaoPup.getImgBotao());
-        }
-        else
-        {
-            btnPUp1.transformarEmBotaoDragavel();
-        }
-    }
+    }   
 
     public void beginDrag(Vector2 posicaoDrag)
     {
