@@ -15,6 +15,7 @@ public class PowerUp
         this.tipo = tipo;
         this.duracao = duracao;
         this.nomeSprite = nomeSprite;
+        this.isClicavel = clicavel;
     }
 
     private static PowerUp bombaDaGarra;
