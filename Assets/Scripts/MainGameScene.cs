@@ -34,9 +34,7 @@ public class MainGameScene : MonoBehaviour,
     private InputGame inputGame;
     private EfeitoColetado   efeitoColetado;
 
-    private LevelFlowManager.LEVEL levelEscolhido;
-
-    private CinemachineBasicMultiChannelPerlin perlim;
+    private LevelFlowManager.LEVEL levelEscolhido;    
 
     void OnEnable()
     {
