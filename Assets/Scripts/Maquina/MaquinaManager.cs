@@ -78,16 +78,13 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
 
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
     public void consumirEvento(PowerUpInfoFim powerUpInfoFim)
-    {
-        Debug.Log("Fim chamado");
+    {        
         if (powerUpInfoFim.preFinalizar)
-        {
-            Debug.Log("Prefim");
+        {     
             processarPreFimDePowerUp();
         }
         if (powerUpInfoFim.finalizar)
-        {
-            Debug.Log("Fim ");
+        {         
             processarFimDePowerUp();
         }
     }
