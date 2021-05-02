@@ -16,16 +16,13 @@ public class BotoesPowerUp
     
     private MonoBehaviour monoBehaviour;
 
-    public BotoesPowerUp(BotoesPowerUpDto powerUpDto, InputGame inputGame, MonoBehaviour monoBehaviour)
+    public BotoesPowerUp(BotoesPowerUpDto btnsPowerUps, PowerUp.TIPO[] arrayDePowerUpsParaBotoes, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
         this.inputGame = inputGame;
         this.monoBehaviour = monoBehaviour;        
 
-        BotaoPowerUp.configurarSpriteBordas(powerUpDto.BordasBtns);
-        btnPUp1 = new BotaoPowerUp(powerUpDto.BtnsPowerUp[0]);
-        btnPUp2 = new BotaoPowerUp(powerUpDto.BtnsPowerUp[1]);
-        btnPUp3 = new BotaoPowerUp(powerUpDto.BtnsPowerUp[2]);
-        btnPUp4 = new BotaoPowerUp(powerUpDto.BtnsPowerUp[3]);
+        BotaoPowerUp.configurarSpriteBordas(btnsPowerUps.BordasBtns);
+        inicializarBotoes(btnsPowerUps);
 
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
@@ -33,6 +30,14 @@ public class BotoesPowerUp
         btnPUp2.transformarEmBotaoDragavel();
         btnPUp3.transformarEmBotaoClicavel();
         btnPUp4.transformarEmBotaoDragavel();
+    }
+
+    private void inicializarBotoes(BotoesPowerUpDto btnsPowerUps)
+    {
+        btnPUp1 = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[0]);
+        btnPUp2 = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[1]);
+        btnPUp3 = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[2]);
+        btnPUp4 = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[3]);
     }
     
     public void update()

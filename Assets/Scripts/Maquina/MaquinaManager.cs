@@ -8,12 +8,15 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     private JoystickHaste joystickHaste;
     private BotoesPowerUp botoesPowerUp;
 
-    public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
+    //TODO RESOLVER EXCECO DE ARGUMENTOS NO CONSTRUTOR
+    public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, 
+        PowerUp.TIPO[] arrayDePowerUpsParaBotoes,
+        InputGame inputGame, MonoBehaviour monoBehaviour)
     {
         displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         joystickHaste      = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
-        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame, monoBehaviour);
+        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, arrayDePowerUpsParaBotoes, inputGame, monoBehaviour);
     }
 
     public void update()
