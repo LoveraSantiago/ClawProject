@@ -5412,8 +5412,8 @@ MonoBehaviour:
     seguidoraParticulas: {fileID: 19295419}
     luzSeguidora: {fileID: 1216567083}
   powerUpDto:
-    spriteBomb: {fileID: 0}
-    tileBomb: {fileID: 0}
+    spriteBomb: {fileID: 21300000, guid: ff767bdfc020f404783fe84614e5a795, type: 3}
+    tileBomb: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
   btnSair: {fileID: 1780015346}
 --- !u!61 &491158116
 BoxCollider2D:
