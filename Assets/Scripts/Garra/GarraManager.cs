@@ -10,11 +10,10 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     private GerenciadorDeMovimentacaoPowerUp gerDeMovPowerUp;
     private GerenciadorDeMovimentacao gerDeMovAtual;
 
-    public GarraManager(GarraDto componentesDaGarraDto,  
-        MECANICA_GARRA mecanicaGarraEscolhida, InputGame inputGame)
+    public GarraManager(GarraDto componentesDaGarraDto, InputGame inputGame)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(componentesDaGarraDto, inputGame);
-        gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal(mecanicaGarraEscolhida);
+        gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
         gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
         gerDeMovAtual = gerDeMovNormal;
 
@@ -25,6 +24,11 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     {
         DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();
         detectorDeColisoes.registrarConsumidorDeTrigger(this);
+    }
+
+    public void configuradoPeloLevel(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
+    {
+        gerDeMovNormal.configuradoPeloLevel(mecanicaGarraEscolhida);
     }
 
     public void start()

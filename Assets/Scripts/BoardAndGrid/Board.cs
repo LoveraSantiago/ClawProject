@@ -15,7 +15,7 @@ public class Board
         this.boardDto = boardDto;        
     }
 
-    public void configurarLevel(AbstractLevel level)
+    public void configuradoPeloLevel(AbstractLevel level)
     {
         arrayDeColetaveis = level.getArrayDeColetaveis();
         familia = level.getFamiliaColetavel();

@@ -15,7 +15,7 @@ public class BotoesPowerUp
     private InputGame inputGame;    
     
 
-    public BotoesPowerUp(BotoesPowerUpDto btnsPowerUps, PowerUp.TIPO[] arrayDePowerUpsParaBotoes, InputGame inputGame)
+    public BotoesPowerUp(BotoesPowerUpDto btnsPowerUps, InputGame inputGame)
     {
         this.inputGame = inputGame;       
 
@@ -36,6 +36,11 @@ public class BotoesPowerUp
         btnPUp2 = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[1]);
         btnPUp3 = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[2]);
         btnPUp4 = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[3]);
+    }
+
+    public void configuraradoPeloLevel(PowerUp.TIPO[] arrayDePowerUpsParaBotoes)
+    {
+
     }
     
     public void update()

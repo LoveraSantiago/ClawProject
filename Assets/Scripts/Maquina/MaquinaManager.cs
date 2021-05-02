@@ -9,14 +9,17 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     private BotoesPowerUp botoesPowerUp;
 
     //TODO RESOLVER EXCECO DE ARGUMENTOS NO CONSTRUTOR
-    public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, 
-        PowerUp.TIPO[] arrayDePowerUpsParaBotoes,
-        InputGame inputGame, MonoBehaviour monoBehaviour)
+    public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
         displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         joystickHaste      = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
-        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, arrayDePowerUpsParaBotoes, inputGame);
+        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
+    }
+
+    public void configuradoPeloLevel(PowerUp.TIPO[] arrayDePowerUpsParaBotoes)
+    {
+        botoesPowerUp.configuraradoPeloLevel(arrayDePowerUpsParaBotoes);
     }
 
     public void update()

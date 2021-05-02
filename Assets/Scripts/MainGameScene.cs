@@ -1,8 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using Cinemachine;
 
 #pragma warning disable 0649
 public class MainGameScene : MonoBehaviour, 
@@ -44,10 +43,42 @@ public class MainGameScene : MonoBehaviour,
         transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
     }
 
-    private void Awake()
-    {
-       levelEscolhido = PlayerPrefsLevel.recuperarLevel(level);
-    }
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //TESTAR PARA VER IMPACTO DE REMOCAO DESSE CARA
+    //private void Awake()
+    //{
+    //   levelEscolhido = PlayerPrefsLevel.recuperarLevel(level);
+    //}
 
     void Start()
     {
@@ -55,20 +86,31 @@ public class MainGameScene : MonoBehaviour,
 
         btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));//TODO TIRAR DAQUI UMA HORA
 
-        configurandoManagers(LevelFlowManager.getLevelByEnum(levelEscolhido));
+        configurandoManagers();
+        configurandoLevel();
         configurandoAcoes();
         configurandoEventos();
         startLaizy();
     }
 
-    private void configurandoManagers(AbstractLevel levelGame)
+    private void configurandoManagers()
     {
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
-        garraManager      = new GarraManager(componentesDaGarra, levelGame.getMecanicaDaGarra(), inputGame);
-        coletaveisManager = new ColetavelManager(coletaveisDto, levelGame, this);
-        maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, levelGame.getPowerUpsParaBotoesMaquina(), inputGame, this);
+        garraManager      = new GarraManager(componentesDaGarra, inputGame);
+        coletaveisManager = new ColetavelManager(coletaveisDto, this);
+        maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(powerUpDto, this);
+    }
+
+    private void configurandoLevel()
+    {
+        LevelFlowManager.LEVEL levelFlow = PlayerPrefsLevel.recuperarLevel(level);
+        AbstractLevel levelEscolhido = LevelFlowManager.getLevelByEnum(levelFlow);
+
+        garraManager.configuradoPeloLevel(levelEscolhido.getMecanicaDaGarra());
+        coletaveisManager.configuradoPeloLevel(levelEscolhido);
+        maquinaManager.configuradoPeloLevel(levelEscolhido.getPowerUpsParaBotoesMaquina());
     }
     
     private void configurandoAcoes()

@@ -26,7 +26,7 @@ public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
 
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
-   
+    
     public void mostrarScore(int score, bool result)
     {
         splitarScore(score);

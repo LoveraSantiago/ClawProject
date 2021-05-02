@@ -9,14 +9,19 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     private MovimentacaoParaCima  movPCima;
     private MovimentacaoDaGarra   movLateral;    
 
-    public GerenciadorDeMovimentacaoNormal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
+    public GerenciadorDeMovimentacaoNormal()
     {        
         MovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
 
-        movLateral        = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
+        movLateral        = new MovimentacaoLateralZigZag();
         movPCima          = new MovimentacaoParaCima();
         movPBaixo         = new MovimentacaoParaBaixo();
         movAgarrandoBaixo = new MovimentacaoAgarrandoEmbaixo();        
+    }
+
+    public void configuradoPeloLevel(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
+    {
+        movLateral = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
@@ -42,12 +47,12 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
-    private MovimentacaoDaGarra selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
+    public MovimentacaoDaGarra selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
     {
         switch (mecanicaGarraEscolhida)
         {
             case (GarraManager.MECANICA_GARRA.ZIG_ZAG):
-                return new MovimentacaoLateralZigZag();
+                return movLateral;
 
             case (GarraManager.MECANICA_GARRA.TELEGUIADA):
                 return new MovimentacaoLateralTeleguiada();
