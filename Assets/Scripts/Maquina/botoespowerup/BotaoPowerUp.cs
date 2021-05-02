@@ -59,16 +59,16 @@ public class BotaoPowerUp : Draggavel
     {
         aparencia.mostrarBordaNormal();
         isDraggavel = false;
-    }   
+    }       
 
-    public bool isCliqueDentroAreaBotao(Vector2 posicao)
+    public bool isCliqueValido(Vector2 posicao)
     {
-        return !isDraggavel && acaoDrag.isPosicaoDentroAreaBotao(posicao);
+        return !isDraggavel && acaoDrag.isPosicaoDentroAreaBotao(posicao) && hasPowerUp;
     }
 
-    public bool isDragDentroAreaBotao(Vector2 posicao)
+    public bool isDragValido(Vector2 posicao)
     {
-        return isDraggavel && acaoDrag.isPosicaoDentroAreaBotao(posicao);
+        return isDraggavel && acaoDrag.isPosicaoDentroAreaBotao(posicao) && hasPowerUp;
     }           
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO

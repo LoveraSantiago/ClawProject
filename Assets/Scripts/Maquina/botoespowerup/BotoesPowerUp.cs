@@ -45,19 +45,19 @@ public class BotoesPowerUp
         if (!acionadoPowerUp && inputGame.aconteceuTapNaAreaInferior())
         {
             Vector2 posicaoTap = inputGame.getPosicaoTap();
-            if (btnsPowerUp[0].isCliqueDentroAreaBotao(posicaoTap))
+            if (btnsPowerUp[0].isCliqueValido(posicaoTap))
             {
                 acionarBotao(btnsPowerUp[0]);                
             }
-            else if (btnsPowerUp[1].isCliqueDentroAreaBotao(posicaoTap))
+            else if (btnsPowerUp[1].isCliqueValido(posicaoTap))
             {
                 acionarBotao(btnsPowerUp[1]);
             }
-            else if (btnsPowerUp[2].isCliqueDentroAreaBotao(posicaoTap))
+            else if (btnsPowerUp[2].isCliqueValido(posicaoTap))
             {
                 acionarBotao(btnsPowerUp[2]);
             }
-            else if (btnsPowerUp[3].isCliqueDentroAreaBotao(posicaoTap))
+            else if (btnsPowerUp[3].isCliqueValido(posicaoTap))
             {
                 acionarBotao(btnsPowerUp[3]);
             }
@@ -81,19 +81,19 @@ public class BotoesPowerUp
     {
         if (!acionadoPowerUp)
         {
-            if (btnsPowerUp[0].isDragDentroAreaBotao(posicaoDrag))
+            if (btnsPowerUp[0].isDragValido(posicaoDrag))
             {   
                 dragavelAtual = btnsPowerUp[0];
             }
-            else if (btnsPowerUp[1].isDragDentroAreaBotao(posicaoDrag))
+            else if (btnsPowerUp[1].isDragValido(posicaoDrag))
             {            
                 dragavelAtual = btnsPowerUp[1];
             }
-            else if (btnsPowerUp[2].isDragDentroAreaBotao(posicaoDrag))
+            else if (btnsPowerUp[2].isDragValido(posicaoDrag))
             {            
                 dragavelAtual = btnsPowerUp[2];
             }
-            else if (btnsPowerUp[3].isDragDentroAreaBotao(posicaoDrag))
+            else if (btnsPowerUp[3].isDragValido(posicaoDrag))
             {            
                 dragavelAtual = btnsPowerUp[3];
             }
