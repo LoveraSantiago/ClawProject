@@ -23,8 +23,7 @@ public class BotaoPowerUp : Draggavel
         aparencia.colorirBotao();
         if (hasPowerUp)
         {
-            acaoBtnPowerUp.acionar();
-            aparencia.limparImg();
+            acaoBtnPowerUp.acionar();            
             hasPowerUp = false;
         }
     }
@@ -32,6 +31,7 @@ public class BotaoPowerUp : Draggavel
     public void desclicar()
     {
         aparencia.voltarCorOriginalBotao();
+        aparencia.limparImg();
     }
 
     public void receberAcaoPowerUp(AcaoBotaoPowerUp acaoBtnPowerUp)
