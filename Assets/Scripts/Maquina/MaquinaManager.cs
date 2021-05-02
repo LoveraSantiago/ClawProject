@@ -30,12 +30,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     public void fixedUpdate()
     {
         joystickHaste.fixedUpdate();
-    }
-
-    public void recebendoPowerUp(AcaoBotaoPowerUp acaoBotaoPowerUp)
-    {
-        botoesPowerUp.recebendoPowerUp(acaoBotaoPowerUp);
-    }
+    }   
 
     public void beginDragPowerUp(Vector2 posicao)
     {

@@ -117,7 +117,7 @@ public class MainGameScene : MonoBehaviour,
     {
         coletaveisManager.start();
         garraManager.start();
-        maquinaManager.recebendoPowerUp(powerUpManager.distribuirPowerUpParaMaquina());
+        //maquinaManager.recebendoPowerUp(powerUpManager.distribuirPowerUpParaMaquina());
     }
     
     void Update()

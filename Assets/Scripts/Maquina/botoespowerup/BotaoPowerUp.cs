@@ -5,57 +5,44 @@ public class BotaoPowerUp : Draggavel
 {
     private static readonly int VELOCIDADE_VOLTA = 15;
 
-    private static Sprite spriteBordaNormal;
-    private static Sprite spriteBordaSerrilhada;
+    private bool isDraggavel;    
 
-    private bool isDraggavel;
     private Vector2 posicaoInicialDrag;
     private Vector3 posicaoOriginal;
     private Bounds boundExterno;
 
-    private Color corOriginal;
-    private SpriteRenderer spriteRendererDentro;
-    private SpriteRenderer spriteRendererBorda;
-    private SpriteRenderer spriteRendererImg;
-
-    private GameObject goBotaoExterno;
+    private AparenciaBotaoPowerUp aparencia;
     private GameObject goBotaoInterno;   
 
     public BotaoPowerUp(GameObject goBotao)
-    {
-        goBotaoExterno = goBotao;
+    {        
         goBotaoInterno = goBotao.transform.Find("parte-dentro").gameObject;
         posicaoOriginal = goBotaoInterno.transform.position;
-        boundExterno = goBotaoExterno.GetComponent<SpriteRenderer>().bounds;
-        spriteRendererDentro = goBotaoInterno.GetComponent<SpriteRenderer>();
+        boundExterno = goBotao.GetComponent<SpriteRenderer>().bounds;
 
-        Transform contorno = goBotaoInterno.transform.Find("contorno");
-        spriteRendererBorda = contorno.GetComponent<SpriteRenderer>();
-        spriteRendererImg = contorno.Find("img-btn").GetComponent<SpriteRenderer>();
-
-        corOriginal = spriteRendererDentro.color;
+        aparencia = new AparenciaBotaoPowerUp(goBotaoInterno);
         isDraggavel = false;
     }
 
     public void clicar()
     {
-        colorirBotao();        
+        aparencia.colorirBotao();
     }
 
     public void desclicar()
     {
-        voltarCorOriginalBotao();
+        aparencia.voltarCorOriginalBotao();
     }
 
     public void transformarEmBotaoDragavel()
     {
-        spriteRendererBorda.sprite = spriteBordaSerrilhada;
+        aparencia.mostrarBordaSerrilhada();
         isDraggavel = true;
     }
 
     public void transformarEmBotaoClicavel()
     {
-        spriteRendererBorda.sprite = spriteBordaNormal;
+        aparencia.mostrarBordaNormal();
         isDraggavel = false;
     }   
 
@@ -74,19 +61,9 @@ public class BotaoPowerUp : Draggavel
         return isDraggavel && isPosicaoDentroAreaBotao(posicao);
     }        
 
-    public void colorirBotao()
-    {
-        spriteRendererDentro.color = Color.black;
-    }
-
-    public void voltarCorOriginalBotao()
-    {
-        spriteRendererDentro.color = corOriginal;
-    }
-
     public void receberImg(Sprite img)
     {
-        spriteRendererImg.sprite = img;
+        aparencia.receberImg(img);
     }
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
@@ -127,7 +104,8 @@ public class BotaoPowerUp : Draggavel
 
     public static void configurarSpriteBordas(Sprite[] spritesBordas)
     {
-        spriteBordaNormal = spritesBordas[0];
-        spriteBordaSerrilhada = spritesBordas[1];
+        AparenciaBotaoPowerUp.configurarSpriteBordas(spritesBordas);
+        //spriteBordaNormal = spritesBordas[0];
+        //spriteBordaSerrilhada = spritesBordas[1];
     }
 }
