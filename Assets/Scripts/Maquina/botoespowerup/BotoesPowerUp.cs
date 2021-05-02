@@ -4,10 +4,7 @@ public class BotoesPowerUp
 {
     private bool acionadoPowerUp;
 
-    private BotaoPowerUp btnPUp1;
-    private BotaoPowerUp btnPUp2;
-    private BotaoPowerUp btnPUp3;
-    private BotaoPowerUp btnPUp4;
+    private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
 
     private Draggavel dragavelAtual;
@@ -28,10 +25,11 @@ public class BotoesPowerUp
 
     private void inicializarBotoes(BotoesPowerUpDto btnsPowerUps)
     {
-        btnPUp1 = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[0]);
-        btnPUp2 = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[1]);
-        btnPUp3 = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[2]);
-        btnPUp4 = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[3]);
+        btnsPowerUp = new BotaoPowerUp[4];
+        btnsPowerUp[0] = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[0]);
+        btnsPowerUp[1] = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[1]);
+        btnsPowerUp[2] = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[2]);
+        btnsPowerUp[3] = new BotaoPowerUp(btnsPowerUps.BtnsPowerUp[3]);
     }
 
     public void configuraradoPeloLevel(PowerUp.TIPO[] arrayDePowerUpsParaBotoes)
@@ -44,21 +42,21 @@ public class BotoesPowerUp
         if (!acionadoPowerUp && inputGame.aconteceuTapNaAreaInferior())
         {
             Vector2 posicaoTap = inputGame.getPosicaoTap();
-            if (btnPUp1.isCliqueDentroAreaBotao(posicaoTap))
+            if (btnsPowerUp[0].isCliqueDentroAreaBotao(posicaoTap))
             {
-                acionarBotao(btnPUp1);                
+                acionarBotao(btnsPowerUp[0]);                
             }
-            else if (btnPUp2.isCliqueDentroAreaBotao(posicaoTap))
+            else if (btnsPowerUp[1].isCliqueDentroAreaBotao(posicaoTap))
             {
-                acionarBotao(btnPUp2);
+                acionarBotao(btnsPowerUp[1]);
             }
-            else if (btnPUp3.isCliqueDentroAreaBotao(posicaoTap))
+            else if (btnsPowerUp[2].isCliqueDentroAreaBotao(posicaoTap))
             {
-                acionarBotao(btnPUp3);
+                acionarBotao(btnsPowerUp[2]);
             }
-            else if (btnPUp4.isCliqueDentroAreaBotao(posicaoTap))
+            else if (btnsPowerUp[3].isCliqueDentroAreaBotao(posicaoTap))
             {
-                acionarBotao(btnPUp4);
+                acionarBotao(btnsPowerUp[3]);
             }
         }        
     }
@@ -80,21 +78,21 @@ public class BotoesPowerUp
     {
         if (!acionadoPowerUp)
         {
-            if (btnPUp1.isDragDentroAreaBotao(posicaoDrag))
+            if (btnsPowerUp[0].isDragDentroAreaBotao(posicaoDrag))
             {   
-                dragavelAtual = btnPUp1;
+                dragavelAtual = btnsPowerUp[0];
             }
-            else if (btnPUp2.isDragDentroAreaBotao(posicaoDrag))
+            else if (btnsPowerUp[1].isDragDentroAreaBotao(posicaoDrag))
             {            
-                dragavelAtual = btnPUp2;
+                dragavelAtual = btnsPowerUp[1];
             }
-            else if (btnPUp3.isDragDentroAreaBotao(posicaoDrag))
+            else if (btnsPowerUp[2].isDragDentroAreaBotao(posicaoDrag))
             {            
-                dragavelAtual = btnPUp3;
+                dragavelAtual = btnsPowerUp[2];
             }
-            else if (btnPUp4.isDragDentroAreaBotao(posicaoDrag))
+            else if (btnsPowerUp[3].isDragDentroAreaBotao(posicaoDrag))
             {            
-                dragavelAtual = btnPUp4;
+                dragavelAtual = btnsPowerUp[3];
             }
             else
             {
