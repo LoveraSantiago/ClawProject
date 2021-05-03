@@ -31,13 +31,7 @@ public class PowerUpMissil : Coletavel,
             acionado = true;
             monoBehaviour.StartCoroutine(explodir());
         }
-    }
-
-    public override void colocarNaPosicao(Vector3 posicao)
-    {
-        base.colocarNaPosicao(posicao);
-        Debug.Log(posicao);
-    }
+    }    
 
     private IEnumerator explodir()
     {

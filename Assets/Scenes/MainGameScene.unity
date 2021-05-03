@@ -5310,7 +5310,7 @@ MonoBehaviour:
     velocMovCima: 7.5
     velocMovBaixo: 7.5
     anguloIdleMin: -5
-    anguloIdleMax: 15
+    anguloIdleMax: 10
     velocAnguloIdle: 0.3
     anguloAbertura: 70
     velocAnguloAbertura: 4
