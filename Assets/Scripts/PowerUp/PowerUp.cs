@@ -34,7 +34,7 @@ public class PowerUp
     {
         if(missilDaGarra == null)
         {
-            missilDaGarra = new PowerUp(TIPO.MISSIL_DA_GARRA, 9, "nuclear-bomba-v3", true);
+            missilDaGarra = new PowerUp(TIPO.MISSIL_DA_GARRA, 9, "nuclear-bomba-btn", true);
         }
         return missilDaGarra;
     }
