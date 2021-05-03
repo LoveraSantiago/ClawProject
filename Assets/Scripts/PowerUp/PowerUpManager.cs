@@ -22,13 +22,19 @@ public class PowerUpManager : PowerUpAcionamento,
 
     public void acionado(PowerUp powerUp)
     {    
+        PowerUpInfo powerUpInfo = new PowerUpInfo();
+        powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
+
         if(powerUp.tipo == PowerUp.TIPO.BOMBA_DA_GARRA)
         {
-            PowerUpInfo powerUpInfo = new PowerUpInfo();
-            powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
             powerUpInfo.configurarObjetoInteracaoComGarra(new PowerUpBomba(powerUpDto.TileBomb, this, monoBehaviour));
-            produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         }
+        else if(powerUp.tipo == PowerUp.TIPO.MISSIL_DA_GARRA)
+        {
+            powerUpInfo.configurarObjetoInteracaoComGarra(new PowerUpMissil(powerUpDto.TileMissil, this, monoBehaviour));
+        }
+
+        produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
     public void finalizado()

@@ -43,10 +43,8 @@ public class PowerUp
     {
         switch (tipo)
         {
-            case TIPO.BOMBA_DA_GARRA:
-            {
-                return getBombaDaGarra();
-            }
+            case TIPO.BOMBA_DA_GARRA: return getBombaDaGarra();
+            case TIPO.MISSIL_DA_GARRA: return getMissilDaGarra();            
         }
         return null;
     }

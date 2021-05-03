@@ -9,5 +9,5 @@ public class PowerUpDto
 
  
     public GameObject TileBomb { get { return tileBomb; } }
-    public GameObject TileMissil { get { return TileMissil; } }
+    public GameObject TileMissil { get { return tileMissil; } }
 }
