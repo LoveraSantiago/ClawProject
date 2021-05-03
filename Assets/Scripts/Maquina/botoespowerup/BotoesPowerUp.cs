@@ -71,10 +71,11 @@ public class BotoesPowerUp
         btnAcionado = btn;
     }
 
-    public void desacionarBotao()
+    public void acionarFimPowerUp()
     {
         acionadoPowerUp = false;
         btnAcionado.desclicar();
+        distribuidor.distribuirProxItem();
     }   
 
     public void beginDrag(Vector2 posicaoDrag)

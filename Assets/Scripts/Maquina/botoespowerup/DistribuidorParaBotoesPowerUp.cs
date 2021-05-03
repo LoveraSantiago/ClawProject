@@ -2,8 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class DistribuidorParaBotoesPowerUp 
-{
-    private bool continuarDistribuicao;
+{   
+    private int indiceDistribuicao;
 
     private BotaoPowerUp[] btnsPowerUp;
     private PowerUp.TIPO[] arrayDaFase;
@@ -18,15 +18,32 @@ public class DistribuidorParaBotoesPowerUp
 
     public void distribuirArray(PowerUp.TIPO[] arrayDePowerUpsParaBotoes)
     {
-        int limite = determinarIndicePrimeiraDistribuicao(arrayDePowerUpsParaBotoes);
-        for(int contador = 0; contador < limite; contador++)
+        arrayDaFase = arrayDePowerUpsParaBotoes;
+        determinarIndicePrimeiraDistribuicao();
+        for(int contador = 0; contador < indiceDistribuicao; contador++)
         {
-            PowerUp.TIPO tipoPU = arrayDePowerUpsParaBotoes[contador];
+            PowerUp.TIPO tipoPU = arrayDaFase[contador];
             if(tipoPU != PowerUp.TIPO.NONE)
             {
                 PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(tipoPU, dicionarioDeSprites);
                 btnsPowerUp[contador].receberAcaoPowerUp(powerUpPMaquina);
             }
+        }
+    }
+
+    public void distribuirProxItem()
+    {
+        if (indiceDistribuicao < arrayDaFase.Length)
+        {
+            PowerUp.TIPO tipoPU = arrayDaFase[indiceDistribuicao];
+            if (tipoPU != PowerUp.TIPO.NONE)
+            {
+                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(tipoPU, dicionarioDeSprites);
+                BotaoPowerUp btnDisponivel = getPrimeiroBotaoDisponivel();
+                btnDisponivel.receberAcaoPowerUp(powerUpPMaquina);
+            }
+
+            indiceDistribuicao++;            
         }
     }
 
@@ -40,18 +57,28 @@ public class DistribuidorParaBotoesPowerUp
         }
     }
 
-    private int determinarIndicePrimeiraDistribuicao(PowerUp.TIPO[] arrayDePowerUpsParaBotoes)
+    private void determinarIndicePrimeiraDistribuicao()
     {
-        int limite = 0;
-        if (arrayDePowerUpsParaBotoes.Length <= 4)
+        indiceDistribuicao = 0;
+        if (arrayDaFase.Length <= 4)
         {
-            continuarDistribuicao = false;
-            limite = arrayDePowerUpsParaBotoes.Length;
+            indiceDistribuicao = arrayDaFase.Length;
         }
         else
         {
-            limite = 4;
-        }
-        return limite;
+            indiceDistribuicao = 4;
+        }        
+    }
+
+    private BotaoPowerUp getPrimeiroBotaoDisponivel()
+    {
+        for(int contador = 0; contador < btnsPowerUp.Length; contador++)
+        {
+            if (!btnsPowerUp[contador].hasPowerUp)
+            {
+                return btnsPowerUp[contador];
+            }
+        }        
+        return null;
     }
 }

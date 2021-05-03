@@ -42,6 +42,7 @@ public class Level1 : AbstractLevel
 
     public override PowerUp.TIPO[] getPowerUpsParaBotoesMaquina()
     {
-        return new PowerUp.TIPO[] { PowerUp.TIPO.BOMBA_DA_GARRA, PowerUp.TIPO.NONE, PowerUp.TIPO.BOMBA_DA_GARRA, PowerUp.TIPO.NONE };
+        return new PowerUp.TIPO[] { PowerUp.TIPO.BOMBA_DA_GARRA, PowerUp.TIPO.NONE, PowerUp.TIPO.BOMBA_DA_GARRA, PowerUp.TIPO.NONE,
+                                    PowerUp.TIPO.BOMBA_DA_GARRA, PowerUp.TIPO.BOMBA_DA_GARRA, PowerUp.TIPO.BOMBA_DA_GARRA, PowerUp.TIPO.BOMBA_DA_GARRA};
     }
 }

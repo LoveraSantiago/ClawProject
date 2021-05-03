@@ -61,7 +61,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     private void processarFimDePowerUp()
     {
         displayDeScores.mostrarPontuacaoAcumulada();
-        botoesPowerUp.desacionarBotao();
+        botoesPowerUp.acionarFimPowerUp();
     }
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO
