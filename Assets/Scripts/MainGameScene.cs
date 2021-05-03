@@ -1,8 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using Cinemachine;
 
 #pragma warning disable 0649
 public class MainGameScene : MonoBehaviour, 
@@ -20,10 +19,9 @@ public class MainGameScene : MonoBehaviour,
     [Space(5)]
     [SerializeField] private ParticulasDto particulasDto;
     [Space(5)]
-
-    //Componentes  temporarios aqui...    
-    [SerializeField] private Sprite spriteBomb;
-    [SerializeField] private GameObject tileBomb;    
+    [SerializeField] private PowerUpDto powerUpDto;
+    
+    //Componentes  temporarios aqui...        
     [Space(15)]
     [SerializeField] private Button btnSair;    
 
@@ -35,9 +33,7 @@ public class MainGameScene : MonoBehaviour,
     private InputGame inputGame;
     private EfeitoColetado   efeitoColetado;
 
-    private LevelFlowManager.LEVEL levelEscolhido;
-
-    private CinemachineBasicMultiChannelPerlin perlim;
+    private LevelFlowManager.LEVEL levelEscolhido;    
 
     void OnEnable()
     {
@@ -47,31 +43,37 @@ public class MainGameScene : MonoBehaviour,
         transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
     }
 
-    private void Awake()
-    {
-       levelEscolhido = PlayerPrefsLevel.recuperarLevel(level);
-    }
-
     void Start()
     {
         Camera.main.aspect = Utils.RATIO_SCREEN;
 
         btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));//TODO TIRAR DAQUI UMA HORA
 
-        configurandoManagers(LevelFlowManager.getLevelByEnum(levelEscolhido));
+        configurandoManagers();
+        configurandoLevel();
         configurandoAcoes();
         configurandoEventos();
         startLaizy();
     }
 
-    private void configurandoManagers(AbstractLevel levelGame)
+    private void configurandoManagers()
     {
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
-        garraManager      = new GarraManager(componentesDaGarra, levelGame.getMecanicaDaGarra(), inputGame);
-        coletaveisManager = new ColetavelManager(coletaveisDto, levelGame, this);
+        garraManager      = new GarraManager(componentesDaGarra, inputGame);
+        coletaveisManager = new ColetavelManager(coletaveisDto, this);
         maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
-        powerUpManager    = new PowerUpManager(tileBomb, spriteBomb, this);
+        powerUpManager    = new PowerUpManager(powerUpDto, this);
+    }
+
+    private void configurandoLevel()
+    {
+        LevelFlowManager.LEVEL levelFlow = PlayerPrefsLevel.recuperarLevel(level);
+        AbstractLevel levelEscolhido = LevelFlowManager.getLevelByEnum(levelFlow);
+
+        garraManager.configuradoPeloLevel(levelEscolhido.getMecanicaDaGarra());
+        coletaveisManager.configuradoPeloLevel(levelEscolhido);
+        maquinaManager.configuradoPeloLevel(levelEscolhido.getPowerUpsParaBotoesMaquina());
     }
     
     private void configurandoAcoes()
@@ -115,7 +117,7 @@ public class MainGameScene : MonoBehaviour,
     {
         coletaveisManager.start();
         garraManager.start();
-        maquinaManager.recebendoPowerUp(powerUpManager.distribuirPowerUpParaMaquina());
+        //maquinaManager.recebendoPowerUp(powerUpManager.distribuirPowerUpParaMaquina());
     }
     
     void Update()
@@ -146,7 +148,7 @@ public class MainGameScene : MonoBehaviour,
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("OnEndDrag");
-        maquinaManager.onEndDragPowerUp();
+        maquinaManager.onEndDragPowerUp(this);
     }
 
     public void OnDrag(PointerEventData eventData)

@@ -5400,6 +5400,8 @@ MonoBehaviour:
       - {fileID: 251000132}
       - {fileID: 465782766}
       - {fileID: 1241201174}
+      spritesDeBotoes:
+      - {fileID: 21300000, guid: ff767bdfc020f404783fe84614e5a795, type: 3}
   camShakeDto:
     cineMachine: {fileID: 250677996}
     noise6d: {fileID: 11400000, guid: a31f2eaada77af94689f0b0d7e781fb6, type: 2}
@@ -5409,10 +5411,9 @@ MonoBehaviour:
     parentParticulas: {fileID: 1488198862}
     seguidoraParticulas: {fileID: 19295419}
     luzSeguidora: {fileID: 1216567083}
-  spriteBomb: {fileID: 21300000, guid: ff767bdfc020f404783fe84614e5a795, type: 3}
-  tileBomb: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
-  cineMachine: {fileID: 250677996}
-  noise6d: {fileID: 11400000, guid: a31f2eaada77af94689f0b0d7e781fb6, type: 2}
+  powerUpDto:
+    spriteBomb: {fileID: 21300000, guid: ff767bdfc020f404783fe84614e5a795, type: 3}
+    tileBomb: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
   btnSair: {fileID: 1780015346}
 --- !u!61 &491158116
 BoxCollider2D:
@@ -10867,7 +10868,7 @@ GameObject:
   - component: {fileID: 658355244}
   - component: {fileID: 658355243}
   m_Layer: 12
-  m_Name: paredesLaterais
+  m_Name: paredes-verticais
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10900,7 +10901,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.85, y: 0}
+  m_Offset: {x: 2.85, y: -3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -10911,7 +10912,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 14}
+  m_Size: {x: 0.3, y: 8}
   m_EdgeRadius: 0
 --- !u!61 &658355244
 BoxCollider2D:
@@ -10926,7 +10927,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.85, y: 0}
+  m_Offset: {x: -2.85, y: -3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -10937,7 +10938,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 14}
+  m_Size: {x: 0.3, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &660903945 stripped
 GameObject:
@@ -22416,7 +22417,7 @@ GameObject:
   - component: {fileID: 1841408759}
   - component: {fileID: 1841408760}
   m_Layer: 11
-  m_Name: paredesHorizontais
+  m_Name: paredes-horizontais
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

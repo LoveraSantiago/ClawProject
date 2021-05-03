@@ -8,12 +8,18 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     private JoystickHaste joystickHaste;
     private BotoesPowerUp botoesPowerUp;
 
+    //TODO RESOLVER EXCECO DE ARGUMENTOS NO CONSTRUTOR
     public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
         displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         joystickHaste      = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
-        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame, monoBehaviour);
+        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
+    }
+
+    public void configuradoPeloLevel(PowerUp.TIPO[] arrayDePowerUpsParaBotoes)
+    {
+        botoesPowerUp.configuraradoPeloLevel(arrayDePowerUpsParaBotoes);
     }
 
     public void update()
@@ -24,12 +30,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     public void fixedUpdate()
     {
         joystickHaste.fixedUpdate();
-    }
-
-    public void recebendoPowerUp(AcaoBotaoPowerUp acaoBotaoPowerUp)
-    {
-        botoesPowerUp.recebendoPowerUp(acaoBotaoPowerUp);
-    }
+    }   
 
     public void beginDragPowerUp(Vector2 posicao)
     {
@@ -41,9 +42,9 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         botoesPowerUp.drag(delta);
     }
 
-    public void onEndDragPowerUp()
+    public void onEndDragPowerUp(MonoBehaviour monoBehaviour)
     {
-        botoesPowerUp.endDrag();
+        botoesPowerUp.endDrag(monoBehaviour);
     }
 
     private void processarInformacoesDoColetado(InformacoesColetado infoColetado)
@@ -60,7 +61,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     private void processarFimDePowerUp()
     {
         displayDeScores.mostrarPontuacaoAcumulada();
-        botoesPowerUp.desacionarBotao();
+        botoesPowerUp.acionarFimPowerUp();
     }
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO
@@ -72,16 +73,13 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
 
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
     public void consumirEvento(PowerUpInfoFim powerUpInfoFim)
-    {
-        Debug.Log("Fim chamado");
+    {        
         if (powerUpInfoFim.preFinalizar)
-        {
-            Debug.Log("Prefim");
+        {     
             processarPreFimDePowerUp();
         }
         if (powerUpInfoFim.finalizar)
-        {
-            Debug.Log("Fim ");
+        {         
             processarFimDePowerUp();
         }
     }

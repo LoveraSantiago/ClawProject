@@ -1,133 +1,95 @@
 using UnityEngine;
-using System.Collections;
 
 public class BotaoPowerUp : Draggavel
 {
-    private static readonly int VELOCIDADE_VOLTA = 15;
-
-    private static Sprite spriteBordaNormal;
-    private static Sprite spriteBordaSerrilhada;
-
     private bool isDraggavel;
-    private Vector2 posicaoInicialDrag;
-    private Vector3 posicaoOriginal;
-    private Bounds boundExterno;
+    public bool hasPowerUp { get; private set; }
 
-    private Color corOriginal;
-    private SpriteRenderer spriteRendererDentro;
-    private SpriteRenderer spriteRendererBorda;
-    private SpriteRenderer spriteRendererImg;
-
-    private GameObject goBotaoExterno;
-    private GameObject goBotaoInterno;   
+    private AparenciaBotaoPowerUp aparencia;
+    private AcaoDragPowerUp acaoDrag;
+    private AcaoBotaoPowerUp acaoBtnPowerUp;
 
     public BotaoPowerUp(GameObject goBotao)
-    {
-        goBotaoExterno = goBotao;
-        goBotaoInterno = goBotao.transform.Find("parte-dentro").gameObject;
-        posicaoOriginal = goBotaoInterno.transform.position;
-        boundExterno = goBotaoExterno.GetComponent<SpriteRenderer>().bounds;
-        spriteRendererDentro = goBotaoInterno.GetComponent<SpriteRenderer>();
+    {        
+        GameObject goBotaoInterno = goBotao.transform.Find("parte-dentro").gameObject;
+        aparencia = new AparenciaBotaoPowerUp(goBotaoInterno);
+        acaoDrag  = new AcaoDragPowerUp(goBotao, goBotaoInterno);
 
-        Transform contorno = goBotaoInterno.transform.Find("contorno");
-        spriteRendererBorda = contorno.GetComponent<SpriteRenderer>();
-        spriteRendererImg = contorno.Find("img-btn").GetComponent<SpriteRenderer>();
-
-        corOriginal = spriteRendererDentro.color;
         isDraggavel = false;
     }
 
     public void clicar()
     {
-        colorirBotao();        
+        aparencia.colorirBotao();
+        if (hasPowerUp)
+        {
+            acaoBtnPowerUp.acionar();            
+            hasPowerUp = false;
+        }
     }
 
     public void desclicar()
     {
-        voltarCorOriginalBotao();
+        aparencia.voltarCorOriginalBotao();
+        aparencia.limparImg();
     }
 
-    public void transformarEmBotaoDragavel()
+    public void receberAcaoPowerUp(AcaoBotaoPowerUp acaoBtnPowerUp)
     {
-        spriteRendererBorda.sprite = spriteBordaSerrilhada;
+        this.acaoBtnPowerUp = acaoBtnPowerUp;
+        if (acaoBtnPowerUp.isClicavel())
+        {
+            transformarEmBotaoClicavel();
+        }
+        else
+        {
+            transformarEmBotaoDragavel();
+        }
+        aparencia.receberImg(acaoBtnPowerUp.getImgBotao());
+        hasPowerUp = true;
+    }
+
+    private void transformarEmBotaoDragavel()
+    {
+        aparencia.mostrarBordaSerrilhada();
         isDraggavel = true;
     }
 
-    public void transformarEmBotaoClicavel()
+    private void transformarEmBotaoClicavel()
     {
-        spriteRendererBorda.sprite = spriteBordaNormal;
+        aparencia.mostrarBordaNormal();
         isDraggavel = false;
-    }   
+    }       
 
-    private bool isPosicaoDentroAreaBotao(Vector2 posicao)
+    public bool isCliqueValido(Vector2 posicao)
     {
-        return boundExterno.Contains(posicao);        
+        return !isDraggavel && acaoDrag.isPosicaoDentroAreaBotao(posicao) && hasPowerUp;
     }
 
-    public bool isCliqueDentroAreaBotao(Vector2 posicao)
+    public bool isDragValido(Vector2 posicao)
     {
-        return !isDraggavel && isPosicaoDentroAreaBotao(posicao);
-    }
-
-    public bool isDragDentroAreaBotao(Vector2 posicao)
-    {
-        return isDraggavel && isPosicaoDentroAreaBotao(posicao);
-    }        
-
-    public void colorirBotao()
-    {
-        spriteRendererDentro.color = Color.black;
-    }
-
-    public void voltarCorOriginalBotao()
-    {
-        spriteRendererDentro.color = corOriginal;
-    }
-
-    public void receberImg(Sprite img)
-    {
-        spriteRendererImg.sprite = img;
-    }
+        return isDraggavel && acaoDrag.isPosicaoDentroAreaBotao(posicao) && hasPowerUp;
+    }           
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
     public void prepararDraggagem(Vector3 posInicialDrag)
     {
-        this.posicaoInicialDrag = posInicialDrag;
+        acaoDrag.prepararDraggagem(posInicialDrag);
     }
 
     public void updateDrag(Vector2 posicaoAtual)
     {
-        Vector2 delta = posicaoAtual - posicaoInicialDrag;
-        posicaoInicialDrag = posicaoAtual;
-
-        Vector3 posicaoCalculada = new Vector3(
-            goBotaoInterno.transform.position.x + delta.x,
-            goBotaoInterno.transform.position.y + delta.y, 
-            goBotaoInterno.transform.position.z);
-
-        goBotaoInterno.transform.position = posicaoCalculada;
+        acaoDrag.updateDrag(posicaoAtual);
     }
 
     public void dragFinalizado(MonoBehaviour monoBehaviour)
     {
-        monoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal());
+        acaoDrag.dragFinalizado(monoBehaviour);
     }
-    //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM    
-
-    private IEnumerator voltarBotaoDragPosOriginal()
-    {
-        while ((Vector3.Distance(goBotaoInterno.transform.position, posicaoOriginal))
-               > (VELOCIDADE_VOLTA * Time.deltaTime))
-        {
-            goBotaoInterno.transform.position = Vector3.MoveTowards(goBotaoInterno.transform.position, posicaoOriginal, VELOCIDADE_VOLTA * Time.deltaTime);
-            yield return null;
-        }
-        goBotaoInterno.transform.position = posicaoOriginal;
-    }
+    //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 
     public static void configurarSpriteBordas(Sprite[] spritesBordas)
     {
-        spriteBordaNormal = spritesBordas[0];
-        spriteBordaSerrilhada = spritesBordas[1];
+        AparenciaBotaoPowerUp.configurarSpriteBordas(spritesBordas);
     }
 }

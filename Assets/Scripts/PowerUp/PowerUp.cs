@@ -7,14 +7,37 @@ public class PowerUp
 
     public TIPO tipo   { get; private set; }    
     public int duracao { get; private set; }
+    public string nomeSprite { get; private set; }
+    public bool isClicavel { get; private set; }
 
-    public PowerUp(TIPO tipo, int duracao)
+    public PowerUp(TIPO tipo, int duracao, string nomeSprite, bool clicavel)
     {
         this.tipo = tipo;
-     
         this.duracao = duracao;
+        this.nomeSprite = nomeSprite;
+        this.isClicavel = clicavel;
     }
 
-    public static PowerUp BombaDaGarra { get { return new PowerUp(TIPO.BOMBA_DA_GARRA, 5); } }            
-    public static PowerUp PowerUpVazio { get { return new PowerUp(TIPO.NONE, 0); } }
+    private static PowerUp bombaDaGarra;
+
+    private static PowerUp getBombaDaGarra()
+    {
+        if(bombaDaGarra == null)
+        {
+            bombaDaGarra = new PowerUp(TIPO.BOMBA_DA_GARRA, 5, "bomba", true);
+        }
+        return bombaDaGarra;
+    }
+
+    public static PowerUp getPowerUpByEnum(TIPO tipo)
+    {
+        switch (tipo)
+        {
+            case TIPO.BOMBA_DA_GARRA:
+            {
+                return getBombaDaGarra();
+            }
+        }
+        return null;
+    }
 }

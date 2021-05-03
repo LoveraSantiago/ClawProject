@@ -7,44 +7,46 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
                                 ConsumidorDeEvento<PowerUpInfoFim>
 {
     private bool powerUpEmAcao;
+    private bool devolverParaBoard;
 
     private ColetaveisDto coletaveisDto;
     private Coletavel coletavelImantado;
-
-    //private Board board;
+    
     private Board board;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contadorDeColetaveis;
-    private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
-
-    private AbstractLevel levelAtual;
+    private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;    
 
     public ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado { get; private set; }
     private MonoBehaviour monoBehaviour;
 
-    public ColetavelManager(ColetaveisDto coletaveisDto, AbstractLevel level, MonoBehaviour monoBehaviour)
+    public ColetavelManager(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
     {
         this.coletaveisDto = coletaveisDto;
-        this.monoBehaviour = monoBehaviour;
-        this.levelAtual = level;
+        this.monoBehaviour = monoBehaviour;        
 
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
         configurarPoolDeColetaveis(coletaveisDto);
 
         board = new Board(coletaveisDto.BoardDto);
-        board.configurarLevel(level);
 
         contadorDeColetaveis   = new ContadorDeColetaveis(this.coletaveisDto.PontosModal, monoBehaviour);
         coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
-    }   
+    }
 
-    public void start()
+    public void configuradoPeloLevel(AbstractLevel level)
+    {
+        board.configuradoPeloLevel(level);
+        devolverParaBoard = level.devolverParaBoard();
+    }
+
+    public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
     {
         powerUpEmAcao = false;
         board.Create(poolDeColetaveis);
-        contadorDeColetaveis.configurarTotalColetaveis(board.getTotalColetaveis(), levelAtual.devolverParaBoard());
+        contadorDeColetaveis.configurarTotalColetaveis(board.getTotalColetaveis(), devolverParaBoard);
         coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK
     }    
 

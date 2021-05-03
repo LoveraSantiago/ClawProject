@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Coletavel 
 {
-    private static Nomeador nomeador = new Nomeador();
+    private static Nomeador nomeador;
     private static GameObject mainTile;
     private static Transform mainTileParent;
     private static Dictionary<string, Sprite> dicionarioDeSprites;
@@ -118,6 +118,8 @@ public class Coletavel
     {
         mainTile = mainTileArg;
         mainTileParent = mainTileParentArg;
+
+        nomeador = new Nomeador();
 
         dicionarioDeSprites = new Dictionary<string, Sprite>();
         for(int contador = 0; contador < characters.Count; contador++)
