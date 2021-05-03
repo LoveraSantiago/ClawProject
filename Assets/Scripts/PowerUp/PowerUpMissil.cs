@@ -5,6 +5,8 @@ public class PowerUpMissil : Coletavel,
                             GarraInteracaoComPowerUp,
                             ConsumidorDeEventoCollider
 {
+    public static readonly string STATIC_NOME = "missil";
+
     private bool configurado;
     private bool acionado;
     private int bomba_explosao;
@@ -16,7 +18,7 @@ public class PowerUpMissil : Coletavel,
     private static PowerUpFinalizacao powerUpFinalizacao;
 
     public PowerUpMissil(GameObject tileBomb, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
-        : base(tileBomb, "missil")
+        : base(tileBomb, STATIC_NOME)
     {
         monoBehaviour = monoBehaviourArg;
         powerUpFinalizacao = powerUpFinalizacaoArg;

@@ -5,6 +5,43 @@ public class PowerUpBomba : Coletavel,
                             GarraInteracaoComPowerUp,
                             ConsumidorDeEventoCollider
 {
+    public static readonly string STATIC_NOME = "bomba";
+
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+    //TODO RESETAR OBJETO
+
     private bool configurado;
     private bool acionado;
     private int bomba_explosao;
@@ -16,7 +53,7 @@ public class PowerUpBomba : Coletavel,
     private static PowerUpFinalizacao powerUpFinalizacao;
 
     public PowerUpBomba(GameObject tileBomb, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
-        : base(tileBomb, "bomba")
+        : base(tileBomb, STATIC_NOME)
     {
         monoBehaviour = monoBehaviourArg;
         powerUpFinalizacao = powerUpFinalizacaoArg;
