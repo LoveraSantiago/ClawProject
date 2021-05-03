@@ -20,12 +20,12 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoFinalizacao = new ProdutorDeEvento<PowerUpInfoFim>();
     }    
 
-    public void acionado(PowerUp.TIPO tipoPowerUp)
+    public void acionado(PowerUp powerUp)
     {    
-        if(tipoPowerUp == PowerUp.TIPO.BOMBA_DA_GARRA)
+        if(powerUp.tipo == PowerUp.TIPO.BOMBA_DA_GARRA)
         {
             PowerUpInfo powerUpInfo = new PowerUpInfo();
-            powerUpInfo.configurarDuracaoTempo(tipoPowerUp.);
+            powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
             powerUpInfo.configurarObjetoInteracaoComGarra(new PowerUpBomba(powerUpDto.TileBomb, this, monoBehaviour));
             produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         }
