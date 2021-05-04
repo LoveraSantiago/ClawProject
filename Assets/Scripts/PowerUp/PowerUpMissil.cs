@@ -27,6 +27,8 @@ public class PowerUpMissil : Coletavel,
 
         bomba_explosao = Animator.StringToHash("explosao");
         bomba_idle = Animator.StringToHash("idle");
+
+        goExplosao = tileBomb.transform.Find("explosao").gameObject;
     }
 
     public void consumirEvento(Collision2D evento)

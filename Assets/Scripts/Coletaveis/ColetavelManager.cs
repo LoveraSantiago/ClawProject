@@ -99,6 +99,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
     public void consumirEvento(Collider2D goColetado)
     {
+        Debug.Log("Nome Coletado: " + goColetado.name);
         if(goColetado.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0 &&
             !powerUpEmAcao)
         {            

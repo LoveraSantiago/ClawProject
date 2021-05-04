@@ -18,6 +18,7 @@ public class PowerUpBomba : Coletavel,
 
     private static MonoBehaviour monoBehaviour;
     private static PowerUpFinalizacao powerUpFinalizacao;
+    private CircleCollider2D circleCollider;
 
     public PowerUpBomba(GameObject tileBomb, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
         : base(tileBomb, STATIC_NOME)
@@ -27,6 +28,9 @@ public class PowerUpBomba : Coletavel,
 
         bomba_explosao = Animator.StringToHash("explosao");
         bomba_idle = Animator.StringToHash("idle");
+
+        goExplosao = tileBomb.transform.Find("explosao").gameObject;
+        circleCollider = goExplosao.GetComponent<CircleCollider2D>();
     }
 
     public void consumirEvento(Collision2D evento)
@@ -38,15 +42,24 @@ public class PowerUpBomba : Coletavel,
         }
     }
 
+    
     private IEnumerator explodir()
     {
         yield return new WaitForSeconds(0.4f);
 
         goExplosao.SetActive(true);
         animator.Play(bomba_explosao);
+
+        ContactFilter2D filter = new ContactFilter2D();
+        ContactFilter2D none = filter.NoFilter();
+        Collider2D[] array = { };
+
+        int result = circleCollider.OverlapCollider(none, array);
+        Debug.Log("Qtd acertados: " + result);
+
         yield return new WaitForSeconds(0.25f);
 
-        goExplosao.SetActive(false);
+        //goExplosao.SetActive(false);
         ExplosaoShake explosaoShake = new ExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         desligar();
