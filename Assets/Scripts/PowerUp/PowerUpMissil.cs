@@ -25,7 +25,7 @@ public class PowerUpMissil : Coletavel,
         monoBehaviour = monoBehaviourArg;
         powerUpFinalizacao = powerUpFinalizacaoArg;
 
-        bomba_explosao = Animator.StringToHash("bomba-explosao");
+        bomba_explosao = Animator.StringToHash("explosao");
         bomba_idle = Animator.StringToHash("idle");
     }
 
@@ -51,11 +51,18 @@ public class PowerUpMissil : Coletavel,
         explosaoShake.shake();
         desligar();
         animator.Play(bomba_idle);
-        powerUpFinalizacao.preFinalizar();
+        reset();
         yield return new WaitForSeconds(1.1f);
 
         powerUpFinalizacao.finalizado();
         yield return null;
+    }
+
+    private void reset()
+    {
+        powerUpFinalizacao.preFinalizar();
+        acionado = false;
+        desafixarVerticalmente();
     }
 
     public override void ligar()

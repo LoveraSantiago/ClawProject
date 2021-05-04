@@ -25,7 +25,7 @@ public class PowerUpBomba : Coletavel,
         monoBehaviour = monoBehaviourArg;
         powerUpFinalizacao = powerUpFinalizacaoArg;
 
-        bomba_explosao = Animator.StringToHash("bomba-explosao");
+        bomba_explosao = Animator.StringToHash("explosao");
         bomba_idle = Animator.StringToHash("idle");
     }
 

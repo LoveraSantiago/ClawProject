@@ -93,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 686654297092072938}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 19c3b64d17cfd5d43822b2833591c068, type: 2}
+  m_Controller: {fileID: 9100000, guid: d0b1325ea10920040a0dd1443e12dff8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.0007569228, y: -0.001056237}
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 0.9
 --- !u!250 &6528504305233528454
 PointEffector2D:
   m_ObjectHideFlags: 0
@@ -162,8 +162,8 @@ PointEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 128
-  m_ForceMagnitude: 650
-  m_ForceVariation: 650
+  m_ForceMagnitude: 750
+  m_ForceVariation: 750
   m_DistanceScale: 1
   m_ForceSource: 0
   m_ForceTarget: 0
@@ -188,7 +188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4127936681606313064
 Transform:
   m_ObjectHideFlags: 0
