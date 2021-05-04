@@ -26,9 +26,7 @@ public class PowerUpMissil : Coletavel,
         powerUpFinalizacao = powerUpFinalizacaoArg;
 
         bomba_explosao = Animator.StringToHash("explosao");
-        bomba_idle = Animator.StringToHash("idle");
-
-        goExplosao = tileBomb.transform.Find("explosao").gameObject;
+        bomba_idle = Animator.StringToHash("idle");        
     }
 
     public void consumirEvento(Collision2D evento)
@@ -78,25 +76,13 @@ public class PowerUpMissil : Coletavel,
 
     private void configurarObjetoBomba()
     {
-        configurarDetectorDeCollider();
-        configurarExplosao();
-        configurarAnimator();
-        configurado = true;
-    }
-
-    private void configurarDetectorDeCollider()
-    {
         goColetavel.GetComponent<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);
-    }
-
-    private void configurarExplosao()
-    {
+        
         goExplosao = goColetavel.transform.Find("explosao").gameObject;
-    }
 
-    private void configurarAnimator()
-    {
         animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-    }
+
+        configurado = true;
+    }    
 }
