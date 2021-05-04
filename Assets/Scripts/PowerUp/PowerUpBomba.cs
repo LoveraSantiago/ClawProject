@@ -47,7 +47,7 @@ public class PowerUpBomba : Coletavel,
 
         yield return new WaitForSeconds(0.25f);
                 
-        ExplosaoShake explosaoShake = new ExplosaoShake(monoBehaviour);
+        PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         desligar();
         animator.Play(bomba_idle);

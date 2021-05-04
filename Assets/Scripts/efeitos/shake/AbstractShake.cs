@@ -1,5 +1,6 @@
 using Cinemachine;
 using UnityEngine;
+using System.Collections;
 
 public abstract class AbstractShake 
 {
@@ -22,4 +23,22 @@ public abstract class AbstractShake
     }
 
     public abstract void shake();
+
+    protected IEnumerator pararEfeito(float duracao)
+    {
+        yield return new WaitForSeconds(duracao);
+        perlim.m_AmplitudeGain = 0;
+    }
+
+    protected IEnumerator diminuirEfeito(float amplitude, float duracao)
+    {
+        float duracaoAtual = duracao;
+        yield return new WaitForSeconds(duracao / 2);
+        while (duracaoAtual > 0f)
+        {
+            duracaoAtual -= Time.deltaTime;
+            perlim.m_AmplitudeGain = Mathf.Lerp(amplitude, 0, 1 - (duracaoAtual / duracao));
+            yield return null;
+        }
+    }
 }

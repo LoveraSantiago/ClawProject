@@ -149,7 +149,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.0007569228, y: -0.001056237}
   serializedVersion: 2
-  m_Radius: 0.9
+  m_Radius: 1
 --- !u!250 &6528504305233528454
 PointEffector2D:
   m_ObjectHideFlags: 0
@@ -162,8 +162,8 @@ PointEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 128
-  m_ForceMagnitude: 750
-  m_ForceVariation: 750
+  m_ForceMagnitude: 850
+  m_ForceVariation: 850
   m_DistanceScale: 1
   m_ForceSource: 0
   m_ForceTarget: 0

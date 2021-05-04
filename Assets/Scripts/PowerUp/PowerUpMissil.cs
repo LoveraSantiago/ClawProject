@@ -47,7 +47,7 @@ public class PowerUpMissil : Coletavel,
         yield return new WaitForSeconds(0.25f);
 
         goExplosao.SetActive(false);
-        ExplosaoShake explosaoShake = new ExplosaoShake(monoBehaviour);
+        GrandeExplosaoShake explosaoShake = new GrandeExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         desligar();
         animator.Play(bomba_idle);
