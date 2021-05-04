@@ -96,7 +96,7 @@ public class BoardAssemblerV3 : EditorWindow
                 GameObject goIt = dicionarioGosBoard[contadorLinha][contadorColuna];
                 Sprite spriteIt = goIt.GetComponent<SpriteRenderer>().sprite;
 
-                ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelBySprite(spriteIt.name);
+                ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelEntidadeBySprite(spriteIt.name);
 
                 string separador = contadorColuna == dicionarioLinha.Count -1 ? "" : ", ";
                 result += coletavelEntidade.id + separador;

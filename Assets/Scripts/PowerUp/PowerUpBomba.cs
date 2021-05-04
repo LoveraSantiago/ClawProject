@@ -5,23 +5,28 @@ public class PowerUpBomba : Coletavel,
                             GarraInteracaoComPowerUp,
                             ConsumidorDeEventoCollider
 {
+    public static readonly string STATIC_NOME = "bomba";  
+
     private bool configurado;
     private bool acionado;
-    private int bomba_explosao;
 
-    private GameObject goExplosao;
+    private int bomba_explosao;
+    private int bomba_idle;
+    
     private Animator animator;
 
     private static MonoBehaviour monoBehaviour;
     private static PowerUpFinalizacao powerUpFinalizacao;
+    private CircleCollider2D circleCollider;
 
     public PowerUpBomba(GameObject tileBomb, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
-        : base(tileBomb, "bomba")
+        : base(tileBomb, STATIC_NOME)
     {
         monoBehaviour = monoBehaviourArg;
         powerUpFinalizacao = powerUpFinalizacaoArg;
 
-        bomba_explosao = Animator.StringToHash("bomba-explosao");
+        bomba_explosao = Animator.StringToHash("explosao");
+        bomba_idle = Animator.StringToHash("idle");        
     }
 
     public void consumirEvento(Collision2D evento)
@@ -32,24 +37,32 @@ public class PowerUpBomba : Coletavel,
             monoBehaviour.StartCoroutine(explodir());
         }
     }
-
+    
     private IEnumerator explodir()
     {
         yield return new WaitForSeconds(0.4f);
-
-        goExplosao.SetActive(true);
+        
         animator.Play(bomba_explosao);
-        yield return new WaitForSeconds(0.25f);
+        processarExplosao();       
 
-        goExplosao.SetActive(false);
-        ExplosaoShake explosaoShake = new ExplosaoShake(monoBehaviour);
+        yield return new WaitForSeconds(0.25f);
+                
+        PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         desligar();
-        powerUpFinalizacao.preFinalizar();
+        animator.Play(bomba_idle);
+        resetMe();
         yield return new WaitForSeconds(1.1f);
 
         powerUpFinalizacao.finalizado();
         yield return null;
+    }
+
+    private void resetMe()
+    {
+        powerUpFinalizacao.preFinalizar();
+        acionado = false;
+        desafixarVerticalmente();
     }
 
     public override void ligar()
@@ -63,25 +76,35 @@ public class PowerUpBomba : Coletavel,
 
     private void configurarObjetoBomba()
     {
-        configurarDetectorDeCollider();
-        configurarExplosao();
-        configurarAnimator();
-        configurado = true;
-    }
-
-    private void configurarDetectorDeCollider()
-    {
         goColetavel.GetComponent<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);
+        
+        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+        
+        circleCollider = goColetavel.GetComponent<CircleCollider2D>();
+
+        configurado = true;
+    }    
+
+    private void processarExplosao()
+    {
+        ColetavelQuery query = new ColetavelQuery();
+
+        LayerMask mask = LayerMask.GetMask("Coletavel");
+        Collider2D[] acertados = Physics2D.OverlapCircleAll(goColetavel.transform.position, 0.75f, mask);
+
+        for (int contador = 0; contador < acertados.Length; contador++)
+        {
+            string nomeAcertado = acertados[contador].name;
+            Coletavel acertado = query.getColetavelInGameByName(nomeAcertado);
+            int angulo = determinarAngulo(acertado.getPosicao());
+            acertado.disparar(angulo, 5f);
+        }
     }
 
-    private void configurarExplosao()
+    private int determinarAngulo(Vector3 posicao)
     {
-        goExplosao = goColetavel.transform.Find("explosao").gameObject;
-    }
-
-    private void configurarAnimator()
-    {
-        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();        
+        if (getPosicao().x < posicao.x) return -45;
+        else return 45;
     }
 }

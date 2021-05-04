@@ -38,12 +38,22 @@ public class Coletavel
         rigidbody.transform.rotation = rotacao;
     }   
 
+    public Vector3 getPosicao()
+    {
+        return goColetavel.transform.position;
+    }
+
     public void disparar(Vector3 posicao, float angulo, float velocidade)
     {
         Quaternion quatAngulo = Quaternion.Euler(0, 0, angulo);
         mainTile.transform.rotation = quatAngulo;
         colocarNaPosicao(posicao, quatAngulo);
         rigidbody.AddForce(mainTile.transform.up * velocidade, ForceMode2D.Impulse);
+    }
+
+    public void disparar(float angulo, float velocidade)
+    {
+        disparar(goColetavel.transform.position, angulo, velocidade);
     }
 
     public void imantar()
@@ -102,6 +112,11 @@ public class Coletavel
     public void fixarVerticalmente()
     {
         rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public void desafixarVerticalmente()
+    {
+        rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public Sprite getSprite()

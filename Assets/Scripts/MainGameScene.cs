@@ -125,7 +125,7 @@ public class MainGameScene : MonoBehaviour,
         inputGame.update();
         garraManager.update();
         maquinaManager.update();
-        //coletaveis.Update();     
+        //coletaveis.Update();           
     }
 
     private void FixedUpdate()

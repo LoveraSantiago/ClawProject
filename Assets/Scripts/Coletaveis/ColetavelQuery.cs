@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ColetavelQuery 
 {
+    private static PoolDeColetaveis poolDeColetaveis;
+
     private Dictionary<int, ColetavelEntidade> dicionarioDeIds;
     private Dictionary<string, ColetavelEntidade> dicionarioDeSprites;
     private Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>> dicionarioDeFamilias;
@@ -14,7 +16,7 @@ public class ColetavelQuery
         inicializarDicionarioDeFamilias();
     }
 
-    public ColetavelEntidade getColetavelById(int idQuery)
+    public ColetavelEntidade getColetavelEntidadeById(int idQuery)
     {   
         if (dicionarioDeIds.ContainsKey(idQuery))
         {
@@ -27,7 +29,12 @@ public class ColetavelQuery
         }
     }
 
-    public ColetavelEntidade getColetavelBySprite(string spriteName)
+    public Coletavel getColetavelInGameByName(string name)
+    {
+        return poolDeColetaveis.getColetavelPeloNome(name);
+    }
+
+    public ColetavelEntidade getColetavelEntidadeBySprite(string spriteName)
     {     
         if (dicionarioDeSprites.ContainsKey(spriteName))
         {
@@ -40,7 +47,7 @@ public class ColetavelQuery
         }
     }
 
-    public ColetavelEntidade getColetavelByFamilia(ColetavelEntidade.FAMILIA familia)
+    public ColetavelEntidade getColetavelEntidadeByFamilia(ColetavelEntidade.FAMILIA familia)
     {
         if (dicionarioDeFamilias.ContainsKey(familia))
         {
@@ -90,5 +97,10 @@ public class ColetavelQuery
             List<ColetavelEntidade> lista = dicionarioDeFamilias[coletavelEntidadeIt.familia];
             lista.Add(coletavelEntidadeIt);
         }
+    }
+
+    public static void inicializarDicionarioDeColetaveisInGame(PoolDeColetaveis poolDeColetaveisArg)
+    {
+        poolDeColetaveis = poolDeColetaveisArg;
     }
 }

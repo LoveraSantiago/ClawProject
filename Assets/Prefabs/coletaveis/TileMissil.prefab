@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 963391463966577656}
   - component: {fileID: 6743520823141608748}
   - component: {fileID: 3265491571206695168}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: imagem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 31
-  m_Sprite: {fileID: 21300000, guid: ff767bdfc020f404783fe84614e5a795, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6ec77fbc42919f4ab8d775b7562da24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 686654297092072938}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 19c3b64d17cfd5d43822b2833591c068, type: 2}
+  m_Controller: {fileID: 9100000, guid: d0b1325ea10920040a0dd1443e12dff8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 526002558568633819}
   - component: {fileID: 4734623886373236252}
   - component: {fileID: 6528504305233528454}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: explosao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.0007569228, y: -0.001056237}
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 1
 --- !u!250 &6528504305233528454
 PointEffector2D:
   m_ObjectHideFlags: 0
@@ -162,8 +162,8 @@ PointEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 128
-  m_ForceMagnitude: 550
-  m_ForceVariation: 550
+  m_ForceMagnitude: 850
+  m_ForceVariation: 850
   m_DistanceScale: 1
   m_ForceSource: 0
   m_ForceTarget: 0
@@ -180,10 +180,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4127936681606313064}
   - component: {fileID: 4127936681606313067}
-  - component: {fileID: 4127936681606313066}
   - component: {fileID: 4650425360090855602}
-  m_Layer: 7
-  m_Name: TileBomb
+  - component: {fileID: 5164385478853921255}
+  m_Layer: 14
+  m_Name: TileMissil
   m_TagString: Laranja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,7 +198,7 @@ Transform:
   m_GameObject: {fileID: 4127936681606313068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 1.20757, y: 1.20757, z: 1.20757}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 963391463966577656}
   - {fileID: 526002558568633819}
@@ -217,7 +217,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2.5
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -226,22 +226,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!58 &4127936681606313066
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4127936681606313068}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0007569228, y: -0.0010562368}
-  serializedVersion: 2
-  m_Radius: 0.29943758
 --- !u!114 &4650425360090855602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,3 +238,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad57ad0fcd449d647a38b1975f22b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &5164385478853921255
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127936681606313068}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.15}
+  m_Size: {x: 0.6, y: 0.9}
+  m_Direction: 0

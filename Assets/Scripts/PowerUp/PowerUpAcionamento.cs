@@ -1,4 +1,4 @@
 public interface PowerUpAcionamento 
 {
-    void acionado(PowerUp.TIPO tipoPowerUp);
+    void acionado(PowerUp powerUp);
 }

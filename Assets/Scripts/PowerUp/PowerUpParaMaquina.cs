@@ -16,7 +16,7 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
 
     public void acionar()
     {
-        powerUpAcionamento.acionado(powerUp.tipo);
+        powerUpAcionamento.acionado(powerUp);
     }
 
     public bool isClicavel()
