@@ -14,6 +14,7 @@ public class PowerUpMissil : Coletavel,
     private int bomba_idle;
 
     private GameObject goExplosao;
+    private GameObject goImagem;
     private Animator animator;
 
     private static MonoBehaviour monoBehaviour;
@@ -44,6 +45,7 @@ public class PowerUpMissil : Coletavel,
 
         goExplosao.SetActive(true);
         animator.Play(bomba_explosao);
+        goImagem.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
         yield return new WaitForSeconds(0.25f);
 
         goExplosao.SetActive(false);
@@ -51,18 +53,19 @@ public class PowerUpMissil : Coletavel,
         explosaoShake.shake();
         desligar();
         animator.Play(bomba_idle);
-        reset();
+        resetMe();
         yield return new WaitForSeconds(1.1f);
 
         powerUpFinalizacao.finalizado();
         yield return null;
     }
 
-    private void reset()
+    private void resetMe()
     {
         powerUpFinalizacao.preFinalizar();
         acionado = false;
         desafixarVerticalmente();
+        goImagem.transform.localScale = new Vector3(1, 1, 1);
     }
 
     public override void ligar()
@@ -80,8 +83,8 @@ public class PowerUpMissil : Coletavel,
             .registrarConsumidorCollision2dOnEnter(this);
         
         goExplosao = goColetavel.transform.Find("explosao").gameObject;
-
-        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+        goImagem = goColetavel.transform.Find("imagem").gameObject;
+        animator = goImagem.GetComponent<Animator>();
 
         configurado = true;
     }    
