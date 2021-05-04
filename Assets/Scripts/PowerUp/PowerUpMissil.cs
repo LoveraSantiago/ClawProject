@@ -9,7 +9,9 @@ public class PowerUpMissil : Coletavel,
 
     private bool configurado;
     private bool acionado;
+
     private int bomba_explosao;
+    private int bomba_idle;
 
     private GameObject goExplosao;
     private Animator animator;
@@ -24,6 +26,7 @@ public class PowerUpMissil : Coletavel,
         powerUpFinalizacao = powerUpFinalizacaoArg;
 
         bomba_explosao = Animator.StringToHash("bomba-explosao");
+        bomba_idle = Animator.StringToHash("idle");
     }
 
     public void consumirEvento(Collision2D evento)
@@ -47,6 +50,7 @@ public class PowerUpMissil : Coletavel,
         ExplosaoShake explosaoShake = new ExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         desligar();
+        animator.Play(bomba_idle);
         powerUpFinalizacao.preFinalizar();
         yield return new WaitForSeconds(1.1f);
 

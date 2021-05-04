@@ -104,6 +104,11 @@ public class Coletavel
         rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
 
+    public void desafixarVerticalmente()
+    {
+        rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
     public Sprite getSprite()
     {
         return spriteRenderer.sprite;

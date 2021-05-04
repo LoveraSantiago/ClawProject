@@ -5,46 +5,13 @@ public class PowerUpBomba : Coletavel,
                             GarraInteracaoComPowerUp,
                             ConsumidorDeEventoCollider
 {
-    public static readonly string STATIC_NOME = "bomba";
-
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
-    //TODO RESETAR OBJETO
+    public static readonly string STATIC_NOME = "bomba";  
 
     private bool configurado;
     private bool acionado;
+
     private int bomba_explosao;
+    private int bomba_idle;
 
     private GameObject goExplosao;
     private Animator animator;
@@ -59,6 +26,7 @@ public class PowerUpBomba : Coletavel,
         powerUpFinalizacao = powerUpFinalizacaoArg;
 
         bomba_explosao = Animator.StringToHash("bomba-explosao");
+        bomba_idle = Animator.StringToHash("idle");
     }
 
     public void consumirEvento(Collision2D evento)
@@ -82,11 +50,19 @@ public class PowerUpBomba : Coletavel,
         ExplosaoShake explosaoShake = new ExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         desligar();
-        powerUpFinalizacao.preFinalizar();
+        animator.Play(bomba_idle);
+        reset();
         yield return new WaitForSeconds(1.1f);
 
         powerUpFinalizacao.finalizado();
         yield return null;
+    }
+
+    private void reset()
+    {
+        powerUpFinalizacao.preFinalizar();
+        acionado = false;
+        desafixarVerticalmente();
     }
 
     public override void ligar()
