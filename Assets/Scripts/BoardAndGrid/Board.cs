@@ -32,7 +32,7 @@ public class Board
             for(int contadorColuna = 0;  contadorColuna < eixoX.Length; contadorColuna++)
             {
                 int id = arrayDeColetaveis[contadorLinha, contadorColuna];
-                ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelById(id);
+                ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelEntidadeById(id);
 
                 if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
                 {
@@ -40,7 +40,7 @@ public class Board
                 }
                 else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
                 {
-                    coletavelEntidade = coletavelQuery.getColetavelByFamilia(familia);
+                    coletavelEntidade = coletavelQuery.getColetavelEntidadeByFamilia(familia);
                 }
 
                 contadorDeColetaveis++;                
