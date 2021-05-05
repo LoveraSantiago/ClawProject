@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class AparenciaBotaoPowerUp 
 {
+    private static readonly int MOSTRANDO_IMAGEM = 1;
+    private static readonly int MOSTRANDO_BOTAO  = 2;
+    private static readonly int MOSTRANDO_ERROR  = 3;
+
+    private int mostrandoAtual;
+
     private static Sprite spriteBordaNormal;
     private static Sprite spriteBordaSerrilhada;
 
@@ -11,15 +17,19 @@ public class AparenciaBotaoPowerUp
     private SpriteRenderer spriteRendererImg;
 
     private GameObject goBotaoInterno;
+    private GameObject goImagem;
 
     public AparenciaBotaoPowerUp(GameObject goBotaoInterno)
     {
         this.goBotaoInterno = goBotaoInterno;
+        mostrandoAtual = MOSTRANDO_BOTAO;
         spriteRendererDentro = goBotaoInterno.GetComponent<SpriteRenderer>();
 
         Transform contorno = goBotaoInterno.transform.Find("contorno");
         spriteRendererBorda = contorno.GetComponent<SpriteRenderer>();
-        spriteRendererImg = contorno.Find("img-btn").GetComponent<SpriteRenderer>();
+
+        goImagem = contorno.Find("img-btn").gameObject;
+        spriteRendererImg = goImagem.GetComponent<SpriteRenderer>();
 
         corOriginal = spriteRendererDentro.color;
     }
@@ -52,6 +62,30 @@ public class AparenciaBotaoPowerUp
     public void limparImg()
     {
         spriteRendererImg.sprite = null;
+    }
+
+    public void mostrarSoImagem()
+    {
+        if(mostrandoAtual != MOSTRANDO_IMAGEM)
+        {
+            spriteRendererDentro.enabled = false;
+            spriteRendererBorda.enabled = false;
+            goImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
+            mostrandoAtual = MOSTRANDO_IMAGEM;
+        }
+    }
+
+    public void mostrarBotao()
+    {
+        if(mostrandoAtual != MOSTRANDO_BOTAO)
+        {
+            spriteRendererDentro.enabled = true;
+            spriteRendererBorda.enabled = true;
+            goImagem.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+
+            mostrandoAtual = MOSTRANDO_BOTAO;
+        }
     }
 
     public Vector3 adicionarNaPosicao(Vector3 posAdicionar)

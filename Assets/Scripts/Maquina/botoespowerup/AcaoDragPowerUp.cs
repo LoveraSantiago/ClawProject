@@ -5,20 +5,22 @@ public class AcaoDragPowerUp
 {
     private static readonly int VELOCIDADE_VOLTA = 15;
     private static GameObject goAreaDraggavel;
+    private static Bounds areaDraggavel;
 
     private Vector2 posicaoInicialDrag;
     private Vector3 posicaoOriginal;
-    private Bounds boundExterno;   
+
+    private Bounds areaBotao;   
 
     public AcaoDragPowerUp(GameObject goBotao, GameObject goBotaoInterno)
     {
         posicaoOriginal = goBotaoInterno.transform.position;
-        boundExterno = goBotao.GetComponent<SpriteRenderer>().bounds;
+        areaBotao = goBotao.GetComponent<SpriteRenderer>().bounds;
     }
 
     public bool isPosicaoDentroAreaBotao(Vector2 posicao)
     {
-        return boundExterno.Contains(posicao);
+        return areaBotao.Contains(posicao);
     }
 
     public void prepararDraggagem(Vector3 posInicialDrag)
@@ -33,6 +35,18 @@ public class AcaoDragPowerUp
         posicaoInicialDrag = posicaoDrag;
 
         Vector3 posicaoCalculada = aparencia.adicionarNaPosicao(delta);
+        if(areaDraggavel.Contains(posicaoCalculada))
+        {
+            aparencia.mostrarSoImagem();
+        }
+        else if(posicaoCalculada.y > areaDraggavel.max.y)
+        {
+
+        }
+        else
+        {
+            aparencia.mostrarBotao();
+        }
     }
 
     public void dragFinalizado(AparenciaBotaoPowerUp aparencia, MonoBehaviour monoBehaviour)
@@ -49,11 +63,13 @@ public class AcaoDragPowerUp
             yield return null;
         }
         goAreaDraggavel.SetActive(false);
-        aparencia.colocarNaPosicao(posicaoOriginal);        
+        aparencia.colocarNaPosicao(posicaoOriginal);
+        aparencia.mostrarBotao();
     }
 
     public static void configurarAreaDraggavel(GameObject areaDraggavelArg)
     {
         goAreaDraggavel = areaDraggavelArg;
+        areaDraggavel = goAreaDraggavel.GetComponent<SpriteRenderer>().bounds;
     }
 }
