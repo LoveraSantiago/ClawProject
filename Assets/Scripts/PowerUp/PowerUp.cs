@@ -2,7 +2,7 @@ public class PowerUp
 {
     public enum TIPO
     {
-        BOMBA_DA_GARRA, MISSIL_DA_GARRA, NONE
+        BOMBA_DA_GARRA, MISSIL_DA_GARRA, MINA_TERRESTRE, NONE
     }    
 
     public TIPO tipo   { get; private set; }    
@@ -20,6 +20,7 @@ public class PowerUp
 
     private static PowerUp bombaDaGarra;
     private static PowerUp missilDaGarra;
+    private static PowerUp minaTerrestre;
 
     private static PowerUp getBombaDaGarra()
     {
@@ -39,12 +40,22 @@ public class PowerUp
         return missilDaGarra;
     }
 
+    private static PowerUp getMinaTerrestre()
+    {
+        if(minaTerrestre == null)
+        {
+            minaTerrestre = new PowerUp(TIPO.MISSIL_DA_GARRA, 9, "mina-terrestre", false);
+        }
+        return minaTerrestre;
+    }
+
     public static PowerUp getPowerUpByEnum(TIPO tipo)
     {
         switch (tipo)
         {
             case TIPO.BOMBA_DA_GARRA: return getBombaDaGarra();
-            case TIPO.MISSIL_DA_GARRA: return getMissilDaGarra();            
+            case TIPO.MISSIL_DA_GARRA: return getMissilDaGarra();
+            case TIPO.MINA_TERRESTRE: return getMinaTerrestre();
         }
         return null;
     }
