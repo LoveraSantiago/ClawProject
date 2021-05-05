@@ -138,7 +138,7 @@ public class MainGameScene : MonoBehaviour,
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP INICIO
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnBeginDrag: " + eventData.pointerCurrentRaycast.worldPosition);
+        Debug.Log("OnBeginDrag: " + eventData.pointerCurrentRaycast.worldPosition);
         if (inputGame.aconteceuDragNaAreaInferior(eventData.pointerCurrentRaycast.worldPosition))
         {
             maquinaManager.beginDragPowerUp(eventData.pointerCurrentRaycast.worldPosition);
@@ -153,6 +153,7 @@ public class MainGameScene : MonoBehaviour,
 
     public void OnDrag(PointerEventData eventData)
     {
+        Debug.Log("OnDrag");
         maquinaManager.onDragPowerUp(eventData.pointerCurrentRaycast.worldPosition);
     }
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM

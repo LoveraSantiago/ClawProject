@@ -80,6 +80,7 @@ public class BotoesPowerUp
 
     public void beginDrag(Vector2 posicaoDrag)
     {
+        Debug.Log("begindrag");
         if (!acionadoPowerUp)
         {
             if (btnsPowerUp[0].isDragValido(posicaoDrag))
