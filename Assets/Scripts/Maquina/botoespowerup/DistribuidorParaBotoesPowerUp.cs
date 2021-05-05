@@ -6,7 +6,7 @@ public class DistribuidorParaBotoesPowerUp
     private int indiceDistribuicao;
 
     private BotaoPowerUp[] btnsPowerUp;
-    private PowerUp.TIPO[] arrayDaFase;
+    private PowerUp.NAME[] arrayDaFase;
 
     private Dictionary<string, Sprite> dicionarioDeSprites;
 
@@ -16,16 +16,16 @@ public class DistribuidorParaBotoesPowerUp
         montarDicionarioDeSprites(arrayDeSpritesBotoes);
     }
 
-    public void distribuirArray(PowerUp.TIPO[] arrayDePowerUpsParaBotoes)
+    public void distribuirArray(PowerUp.NAME[] arrayDePowerUpsParaBotoes)
     {
         arrayDaFase = arrayDePowerUpsParaBotoes;
         determinarIndicePrimeiraDistribuicao();
         for(int contador = 0; contador < indiceDistribuicao; contador++)
         {
-            PowerUp.TIPO tipoPU = arrayDaFase[contador];
-            if(tipoPU != PowerUp.TIPO.NONE)
+            PowerUp.NAME namePU = arrayDaFase[contador];
+            if(namePU != PowerUp.NAME.NONE)
             {
-                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(tipoPU, dicionarioDeSprites);
+                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(namePU, dicionarioDeSprites);
                 btnsPowerUp[contador].receberAcaoPowerUp(powerUpPMaquina);
             }
         }
@@ -35,10 +35,10 @@ public class DistribuidorParaBotoesPowerUp
     {
         if (indiceDistribuicao < arrayDaFase.Length)
         {
-            PowerUp.TIPO tipoPU = arrayDaFase[indiceDistribuicao];
-            if (tipoPU != PowerUp.TIPO.NONE)
+            PowerUp.NAME namePU = arrayDaFase[indiceDistribuicao];
+            if (namePU != PowerUp.NAME.NONE)
             {
-                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(tipoPU, dicionarioDeSprites);
+                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(namePU, dicionarioDeSprites);
                 BotaoPowerUp btnDisponivel = getPrimeiroBotaoDisponivel();
                 btnDisponivel.receberAcaoPowerUp(powerUpPMaquina);
             }

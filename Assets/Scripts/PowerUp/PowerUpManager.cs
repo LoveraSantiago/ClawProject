@@ -28,11 +28,11 @@ public class PowerUpManager : PowerUpAcionamento,
         PowerUpInfo powerUpInfo = new PowerUpInfo();
         powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
 
-        if(powerUp.tipo == PowerUp.TIPO.BOMBA_DA_GARRA)
+        if(powerUp.name == PowerUp.NAME.BOMBA_DA_GARRA)
         {
             powerUpInfo.configurarObjetoInteracaoComGarra(getPowerUpBomba());
         }
-        else if(powerUp.tipo == PowerUp.TIPO.MISSIL_DA_GARRA)
+        else if(powerUp.name == PowerUp.NAME.MISSIL_DA_GARRA)
         {
             powerUpInfo.configurarObjetoInteracaoComGarra(getPowerUpMissil());
         }

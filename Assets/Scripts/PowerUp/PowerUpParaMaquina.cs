@@ -8,7 +8,7 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
     private PowerUp powerUp;
     private Sprite imgBtn;
 
-    public PowerUpParaMaquina(PowerUp.TIPO tipo, Dictionary<string, Sprite> dicionarioDeSprites)
+    public PowerUpParaMaquina(PowerUp.NAME tipo, Dictionary<string, Sprite> dicionarioDeSprites)
     {
         powerUp = PowerUp.getPowerUpByEnum(tipo);
         imgBtn = dicionarioDeSprites[powerUp.nomeSprite];

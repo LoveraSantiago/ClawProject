@@ -18,7 +18,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
     }
 
-    public void configuradoPeloLevel(PowerUp.TIPO[] arrayDePowerUpsParaBotoes)
+    public void configuradoPeloLevel(PowerUp.NAME[] arrayDePowerUpsParaBotoes)
     {
         botoesPowerUp.configuraradoPeloLevel(arrayDePowerUpsParaBotoes);
     }
