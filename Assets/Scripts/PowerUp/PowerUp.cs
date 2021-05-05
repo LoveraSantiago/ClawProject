@@ -3,19 +3,35 @@ public class PowerUp
     public enum TIPO
     {
         BOMBA_DA_GARRA, MISSIL_DA_GARRA, MINA_TERRESTRE, NONE
-    }    
+    }
+
+    public enum AREA
+    {
+        CHAO, NONE
+    }
 
     public TIPO tipo   { get; private set; }    
     public int duracao { get; private set; }
     public string nomeSprite { get; private set; }
     public bool isClicavel { get; private set; }
+    public AREA area { get; private set; }
 
-    public PowerUp(TIPO tipo, int duracao, string nomeSprite, bool clicavel)
+    public PowerUp(TIPO tipo, int duracao, string nomeSprite)
     {
         this.tipo = tipo;
         this.duracao = duracao;
         this.nomeSprite = nomeSprite;
-        this.isClicavel = clicavel;
+        this.isClicavel = true;
+        this.area = AREA.NONE;
+    }
+
+    public PowerUp(TIPO tipo, AREA area, string nomeSprite)
+    {
+        this.tipo = tipo;
+        this.duracao = 0;
+        this.nomeSprite = nomeSprite;
+        this.isClicavel = false;
+        this.area = area;
     }
 
     private static PowerUp bombaDaGarra;
@@ -26,7 +42,7 @@ public class PowerUp
     {
         if(bombaDaGarra == null)
         {
-            bombaDaGarra = new PowerUp(TIPO.BOMBA_DA_GARRA, 9, "bomba", true);
+            bombaDaGarra = new PowerUp(TIPO.BOMBA_DA_GARRA, 9, "bomba");
         }
         return bombaDaGarra;
     }
@@ -35,7 +51,7 @@ public class PowerUp
     {
         if(missilDaGarra == null)
         {
-            missilDaGarra = new PowerUp(TIPO.MISSIL_DA_GARRA, 9, "nuclear-bomba-btn", true);
+            missilDaGarra = new PowerUp(TIPO.MISSIL_DA_GARRA, 9, "nuclear-bomba-btn");
         }
         return missilDaGarra;
     }

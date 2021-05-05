@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
                               ConsumidorDeEvento<PowerUpInfoFim>
-{
+{    
+
     private DisplaysDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
     private JoystickHaste joystickHaste;
