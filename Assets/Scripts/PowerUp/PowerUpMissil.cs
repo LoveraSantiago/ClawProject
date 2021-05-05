@@ -20,14 +20,16 @@ public class PowerUpMissil : Coletavel,
     private static MonoBehaviour monoBehaviour;
     private static PowerUpFinalizacao powerUpFinalizacao;
 
-    public PowerUpMissil(GameObject tileBomb, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
-        : base(tileBomb, STATIC_NOME)
+    public PowerUpMissil(GameObject tileMissil, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
+        : base(tileMissil, STATIC_NOME)
     {
         monoBehaviour = monoBehaviourArg;
         powerUpFinalizacao = powerUpFinalizacaoArg;
 
         bomba_explosao = Animator.StringToHash("explosao");
-        bomba_idle = Animator.StringToHash("idle");        
+        bomba_idle = Animator.StringToHash("idle");
+
+        tileMissil.SetActive(false);
     }
 
     public void consumirEvento(Collision2D evento)

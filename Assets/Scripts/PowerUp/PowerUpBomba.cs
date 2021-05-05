@@ -26,7 +26,9 @@ public class PowerUpBomba : Coletavel,
         powerUpFinalizacao = powerUpFinalizacaoArg;
 
         bomba_explosao = Animator.StringToHash("explosao");
-        bomba_idle = Animator.StringToHash("idle");        
+        bomba_idle = Animator.StringToHash("idle");
+
+        tileBomb.SetActive(false);
     }
 
     public void consumirEvento(Collision2D evento)
