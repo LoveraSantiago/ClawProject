@@ -10,8 +10,11 @@ public class AparenciaBotaoPowerUp
     private SpriteRenderer spriteRendererBorda;
     private SpriteRenderer spriteRendererImg;
 
+    private GameObject goBotaoInterno;
+
     public AparenciaBotaoPowerUp(GameObject goBotaoInterno)
     {
+        this.goBotaoInterno = goBotaoInterno;
         spriteRendererDentro = goBotaoInterno.GetComponent<SpriteRenderer>();
 
         Transform contorno = goBotaoInterno.transform.Find("contorno");
@@ -49,6 +52,32 @@ public class AparenciaBotaoPowerUp
     public void limparImg()
     {
         spriteRendererImg.sprite = null;
+    }
+
+    public Vector3 adicionarNaPosicao(Vector3 posAdicionar)
+    {
+        Vector3 posicaoCalculada = new Vector3(
+           goBotaoInterno.transform.position.x + posAdicionar.x,
+           goBotaoInterno.transform.position.y + posAdicionar.y,
+           goBotaoInterno.transform.position.z + posAdicionar.z);
+
+        goBotaoInterno.transform.position = posicaoCalculada;
+        return posicaoCalculada;
+    }
+
+    public Vector3 getPosicao()
+    {
+        return goBotaoInterno.transform.position;
+    }
+
+    public void moveTowards(Vector3 posicaoDestino, float velocidade)
+    {
+        goBotaoInterno.transform.position = Vector3.MoveTowards(goBotaoInterno.transform.position, posicaoDestino, velocidade);
+    }
+
+    public void colocarNaPosicao(Vector3 posicao)
+    {
+        goBotaoInterno.transform.position = posicao;
     }
 
     public static void configurarSpriteBordas(Sprite[] spritesBordas)

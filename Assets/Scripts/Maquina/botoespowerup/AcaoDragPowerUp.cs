@@ -8,14 +8,10 @@ public class AcaoDragPowerUp
 
     private Vector2 posicaoInicialDrag;
     private Vector3 posicaoOriginal;
-    private Bounds boundExterno;
-
-    private GameObject goBotaoInterno;
+    private Bounds boundExterno;   
 
     public AcaoDragPowerUp(GameObject goBotao, GameObject goBotaoInterno)
     {
-        this.goBotaoInterno = goBotaoInterno;
-
         posicaoOriginal = goBotaoInterno.transform.position;
         boundExterno = goBotao.GetComponent<SpriteRenderer>().bounds;
     }
@@ -31,34 +27,29 @@ public class AcaoDragPowerUp
         goAreaDraggavel.SetActive(true);
     }
 
-    public void updateDrag(Vector2 posicaoAtual)
+    public void updateDrag(Vector2 posicaoDrag, AparenciaBotaoPowerUp aparencia)
     {
-        Vector2 delta = posicaoAtual - posicaoInicialDrag;
-        posicaoInicialDrag = posicaoAtual;
+        Vector2 delta = posicaoDrag - posicaoInicialDrag;
+        posicaoInicialDrag = posicaoDrag;
 
-        Vector3 posicaoCalculada = new Vector3(
-            goBotaoInterno.transform.position.x + delta.x,
-            goBotaoInterno.transform.position.y + delta.y,
-            goBotaoInterno.transform.position.z);
-
-        goBotaoInterno.transform.position = posicaoCalculada;
+        Vector3 posicaoCalculada = aparencia.adicionarNaPosicao(delta);
     }
 
-    public void dragFinalizado(MonoBehaviour monoBehaviour)
+    public void dragFinalizado(AparenciaBotaoPowerUp aparencia, MonoBehaviour monoBehaviour)
     {
-        monoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal());
+        monoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal(aparencia));
     }
 
-    private IEnumerator voltarBotaoDragPosOriginal()
+    private IEnumerator voltarBotaoDragPosOriginal(AparenciaBotaoPowerUp aparencia)
     {
-        while ((Vector3.Distance(goBotaoInterno.transform.position, posicaoOriginal))
+        while ((Vector3.Distance(aparencia.getPosicao(), posicaoOriginal))
                > (VELOCIDADE_VOLTA * Time.deltaTime))
-        {
-            goBotaoInterno.transform.position = Vector3.MoveTowards(goBotaoInterno.transform.position, posicaoOriginal, VELOCIDADE_VOLTA * Time.deltaTime);
+        {            
+            aparencia.moveTowards(posicaoOriginal, VELOCIDADE_VOLTA * Time.deltaTime);
             yield return null;
         }
         goAreaDraggavel.SetActive(false);
-        goBotaoInterno.transform.position = posicaoOriginal;
+        aparencia.colocarNaPosicao(posicaoOriginal);        
     }
 
     public static void configurarAreaDraggavel(GameObject areaDraggavelArg)

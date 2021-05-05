@@ -77,14 +77,14 @@ public class BotaoPowerUp : Draggavel
         acaoDrag.prepararDraggagem(posInicialDrag);
     }
 
-    public void updateDrag(Vector2 posicaoAtual)
+    public void updateDrag(Vector2 posicaoDrag)
     {
-        acaoDrag.updateDrag(posicaoAtual);
+        acaoDrag.updateDrag(posicaoDrag, aparencia);
     }
 
     public void dragFinalizado(MonoBehaviour monoBehaviour)
     {
-        acaoDrag.dragFinalizado(monoBehaviour);
+        acaoDrag.dragFinalizado(aparencia, monoBehaviour);
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 
