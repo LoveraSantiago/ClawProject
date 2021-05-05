@@ -88,8 +88,10 @@ public class BotaoPowerUp : Draggavel
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 
-    public static void configurarSpriteBordas(Sprite[] spritesBordas)
+    public static void configurar(Sprite[] spritesBordas, GameObject areaDraggavel)
     {
         AparenciaBotaoPowerUp.configurarSpriteBordas(spritesBordas);
+        AcaoDragPowerUp.configurarAreaDraggavel(areaDraggavel);
+
     }
 }

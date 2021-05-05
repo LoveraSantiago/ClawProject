@@ -17,7 +17,7 @@ public class BotoesPowerUp
     {
         this.inputGame = inputGame;       
 
-        BotaoPowerUp.configurarSpriteBordas(btnsPowerUpsDto.BordasBtns);
+        BotaoPowerUp.configurar(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.AreaDraggavel);
 
         inicializarBotoes(btnsPowerUpsDto);
         distribuidor = new DistribuidorParaBotoesPowerUp(btnsPowerUp, btnsPowerUpsDto.SpritesDeBotoes);

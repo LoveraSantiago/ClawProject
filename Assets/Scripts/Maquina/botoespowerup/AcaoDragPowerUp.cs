@@ -4,6 +4,7 @@ using UnityEngine;
 public class AcaoDragPowerUp 
 {
     private static readonly int VELOCIDADE_VOLTA = 15;
+    private static GameObject goAreaDraggavel;
 
     private Vector2 posicaoInicialDrag;
     private Vector3 posicaoOriginal;
@@ -27,6 +28,7 @@ public class AcaoDragPowerUp
     public void prepararDraggagem(Vector3 posInicialDrag)
     {
         this.posicaoInicialDrag = posInicialDrag;
+        goAreaDraggavel.SetActive(true);
     }
 
     public void updateDrag(Vector2 posicaoAtual)
@@ -55,6 +57,12 @@ public class AcaoDragPowerUp
             goBotaoInterno.transform.position = Vector3.MoveTowards(goBotaoInterno.transform.position, posicaoOriginal, VELOCIDADE_VOLTA * Time.deltaTime);
             yield return null;
         }
+        goAreaDraggavel.SetActive(false);
         goBotaoInterno.transform.position = posicaoOriginal;
+    }
+
+    public static void configurarAreaDraggavel(GameObject areaDraggavelArg)
+    {
+        goAreaDraggavel = areaDraggavelArg;
     }
 }

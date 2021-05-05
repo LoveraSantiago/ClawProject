@@ -60,7 +60,7 @@ public class PowerUp
     {
         if(minaTerrestre == null)
         {
-            minaTerrestre = new PowerUp(NAME.MISSIL_DA_GARRA, 9, "mina-terrestre", false);
+            minaTerrestre = new PowerUp(NAME.MISSIL_DA_GARRA, AREA.CHAO, "mina-terrestre");
         }
         return minaTerrestre;
     }
