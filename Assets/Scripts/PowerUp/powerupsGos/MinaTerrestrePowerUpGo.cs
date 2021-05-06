@@ -40,7 +40,7 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
 
     private void configurarObjetoMina()
     {
-        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+        animator   = goColetavel.transform.Find("imagem").GetComponent<Animator>();
         goExplosao = goColetavel.transform.Find("explosao").gameObject;
 
         tempoExplosao = PowerUpEntidade.getPowerUpEntidadeByEnum(PowerUpEntidade.NAME.MINA_TERRESTRE).duracao;
