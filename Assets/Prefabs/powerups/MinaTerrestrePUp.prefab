@@ -93,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 686654297092072938}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d0b1325ea10920040a0dd1443e12dff8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2b24a2c8d5a01ed44b02277fc7386d81, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 4650425360090855602}
   - component: {fileID: 4817202808016088623}
   m_Layer: 14
-  m_Name: TileMinaTerrestre
+  m_Name: MinaTerrestrePUp
   m_TagString: Laranja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
