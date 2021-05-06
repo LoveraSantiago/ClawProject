@@ -4,11 +4,11 @@ using UnityEngine;
 [System.Serializable]
 public class PowerUpDto 
 {    
-    [SerializeField] private GameObject tileBomb;
-    [SerializeField] private GameObject tileMissil;
-    [SerializeField] private GameObject tileMinaTerrestre;
+    [SerializeField] private GameObject bomdPUp;
+    [SerializeField] private GameObject missilPUp;
+    [SerializeField] private GameObject minaTerrestrePUp;
  
-    public GameObject TileBomb { get { return tileBomb; } }
-    public GameObject TileMissil { get { return tileMissil; } }
-    public GameObject TileMinaTerrestre { get { return tileMinaTerrestre; } }
+    public GameObject BombPUp { get { return bomdPUp; } }
+    public GameObject MissilPUp { get { return missilPUp; } }
+    public GameObject MinaTerrestrePUp { get { return minaTerrestrePUp; } }
 }

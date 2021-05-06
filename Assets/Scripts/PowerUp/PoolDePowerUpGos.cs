@@ -43,19 +43,19 @@ public class PoolDePowerUpGos
 
     private void criarPowerUpGoMinaTerrestre()
     {
-        MinaTerrestrePowerUpGo mina = new MinaTerrestrePowerUpGo(powerUpDto.TileMinaTerrestre);
+        MinaTerrestrePowerUpGo mina = new MinaTerrestrePowerUpGo(powerUpDto.MinaTerrestrePUp);
         poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MINA_TERRESTRE.ToString(), mina);
     }
 
     private void criarPowerUpGoBomba()
     {
-        BombaPowerUpGo bomba = new BombaPowerUpGo(powerUpDto.TileBomb);
+        BombaPowerUpGo bomba = new BombaPowerUpGo(powerUpDto.BombPUp);
         poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.BOMBA_DA_GARRA.ToString(), bomba);        
     }
 
     private void criarPowerUpGoMissil()
     {        
-        MissilPowerUpGo missil = new MissilPowerUpGo(powerUpDto.TileMissil);
+        MissilPowerUpGo missil = new MissilPowerUpGo(powerUpDto.MissilPUp);
         poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MISSIL_DA_GARRA.ToString(), missil);        
     }
 }
