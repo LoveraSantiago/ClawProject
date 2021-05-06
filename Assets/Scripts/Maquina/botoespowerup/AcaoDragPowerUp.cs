@@ -41,7 +41,7 @@ public class AcaoDragPowerUp
         }
         else if(posicaoCalculada.y > areaDraggavel.max.y)
         {
-
+            aparencia.mostrarErro();
         }
         else
         {

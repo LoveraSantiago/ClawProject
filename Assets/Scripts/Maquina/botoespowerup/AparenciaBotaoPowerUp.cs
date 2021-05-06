@@ -18,6 +18,7 @@ public class AparenciaBotaoPowerUp
 
     private GameObject goBotaoInterno;
     private GameObject goImagem;
+    private GameObject goExclamacao;
 
     public AparenciaBotaoPowerUp(GameObject goBotaoInterno)
     {
@@ -30,6 +31,8 @@ public class AparenciaBotaoPowerUp
 
         goImagem = contorno.Find("img-btn").gameObject;
         spriteRendererImg = goImagem.GetComponent<SpriteRenderer>();
+
+        goExclamacao = contorno.Find("img-exclamation").gameObject;
 
         corOriginal = spriteRendererDentro.color;
     }
@@ -71,6 +74,7 @@ public class AparenciaBotaoPowerUp
             spriteRendererDentro.enabled = false;
             spriteRendererBorda.enabled = false;
             goImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            goExclamacao.SetActive(false);
 
             mostrandoAtual = MOSTRANDO_IMAGEM;
         }
@@ -83,8 +87,22 @@ public class AparenciaBotaoPowerUp
             spriteRendererDentro.enabled = true;
             spriteRendererBorda.enabled = true;
             goImagem.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            goExclamacao.SetActive(false);
 
             mostrandoAtual = MOSTRANDO_BOTAO;
+        }
+    }
+
+    public void mostrarErro()
+    {
+        if(mostrandoAtual != MOSTRANDO_ERROR)
+        {
+            spriteRendererDentro.enabled = false;
+            spriteRendererBorda.enabled = false;
+            goImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            goExclamacao.SetActive(true);
+
+            mostrandoAtual = MOSTRANDO_ERROR;
         }
     }
 
