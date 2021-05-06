@@ -1,11 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
 {
     private static Vector3 posInicial;
+
     private bool configurado;
+    private int mina_explosao;
+    private int mina_idle;
 
     private Animator animator;
     private GameObject goExplosao;
@@ -15,6 +17,8 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
     public MinaTerrestrePowerUpGo(GameObject tileMinaTerrestre)
         :base(tileMinaTerrestre, "mina-terrestre")
     {
+        mina_explosao = Animator.StringToHash("explosao");
+        mina_idle = Animator.StringToHash("idle");
     }
 
     public override bool garraPodeSegurar()
@@ -36,6 +40,33 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
         base.ligar();
         posInicial.y = -3.7f;
         base.colocarNaPosicao(posInicial);
+        monoBehaviour.StartCoroutine(explodir());
+    }
+
+    private IEnumerator explodir()
+    {
+        yield return new WaitForSeconds(tempoExplosao);
+
+        goExplosao.SetActive(true);
+        animator.Play(mina_explosao);
+        yield return new WaitForSeconds(0.25f);
+
+        goExplosao.SetActive(false);
+        PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
+        explosaoShake.shake();
+        resetMe();
+        yield return new WaitForSeconds(1.1f);
+
+        powerUpFinalizacao.finalizado();
+        yield return null;
+    }
+
+    private void resetMe()
+    {
+        desligar();
+        animator.Play(mina_idle);
+        powerUpFinalizacao.preFinalizar();        
+        desafixarVerticalmente();
     }
 
     private void configurarObjetoMina()
