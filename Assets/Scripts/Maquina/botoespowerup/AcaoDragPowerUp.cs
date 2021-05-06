@@ -56,11 +56,13 @@ public class AcaoDragPowerUp
             acaoPowerUp.acionar(aparencia.getPosicao());
             aparencia.mostrarBotao();            
             aparencia.colocarNaPosicao(posicaoOriginal);
+            goAreaDraggavel.SetActive(false);
             return true;
         }
         else
         {
             monoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal(aparencia));
+            goAreaDraggavel.SetActive(false);
             return false;
         }
     }
