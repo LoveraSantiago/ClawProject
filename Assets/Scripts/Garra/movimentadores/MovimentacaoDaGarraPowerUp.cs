@@ -11,5 +11,9 @@ public abstract class MovimentacaoDaGarraPowerUp : MovimentacaoDaGarra
     public static void receberInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoComPowerUpArg)
     {
         garraInteracaoComPowerUp = garraInteracaoComPowerUpArg;
+        if (!garraInteracaoComPowerUp.garraPodeSegurar())
+        {
+            garraInteracaoComPowerUp.ligar();
+        }
     }
 }
