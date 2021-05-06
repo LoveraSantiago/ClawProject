@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolDePowerUps 
+public class PoolDePowerUpGos 
 {
-    private PoolGenerico<GarraInteracaoComPowerUp> poolDePowerUpsDaGarra;
+    private PoolGenerico<Coletavel> poolDePowerUpsDaGarra;
 
     private GarraInteracaoComPowerUp getPowerUpBomba()
     {

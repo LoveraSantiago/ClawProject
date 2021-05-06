@@ -1,4 +1,4 @@
-public class PowerUp 
+public class PowerUpEntidade 
 {
     public enum NAME
     {
@@ -16,7 +16,7 @@ public class PowerUp
     public bool isClicavel { get; private set; }
     public AREA area { get; private set; }
 
-    public PowerUp(NAME name, int duracao, string nomeSprite)
+    public PowerUpEntidade(NAME name, int duracao, string nomeSprite)
     {
         this.name = name;
         this.duracao = duracao;
@@ -25,7 +25,7 @@ public class PowerUp
         this.area = AREA.NONE;
     }
 
-    public PowerUp(NAME name, int duracao, AREA area, string nomeSprite)
+    public PowerUpEntidade(NAME name, int duracao, AREA area, string nomeSprite)
     {
         this.name = name;
         this.duracao = duracao;
@@ -34,44 +34,44 @@ public class PowerUp
         this.area = area;
     }
 
-    private static PowerUp bombaDaGarra;
-    private static PowerUp missilDaGarra;
-    private static PowerUp minaTerrestre;
+    private static PowerUpEntidade bombaDaGarra;
+    private static PowerUpEntidade missilDaGarra;
+    private static PowerUpEntidade minaTerrestre;
 
-    private static PowerUp getBombaDaGarra()
+    private static PowerUpEntidade getBombaDaGarra()
     {
         if(bombaDaGarra == null)
         {
-            bombaDaGarra = new PowerUp(NAME.BOMBA_DA_GARRA, 9, "bomba");
+            bombaDaGarra = new PowerUpEntidade(NAME.BOMBA_DA_GARRA, 9, "bomba");
         }
         return bombaDaGarra;
     }
 
-    private static PowerUp getMissilDaGarra()
+    private static PowerUpEntidade getMissilDaGarra()
     {
         if(missilDaGarra == null)
         {
-            missilDaGarra = new PowerUp(NAME.MISSIL_DA_GARRA, 9, "nuclear-bomba-btn");
+            missilDaGarra = new PowerUpEntidade(NAME.MISSIL_DA_GARRA, 9, "nuclear-bomba-btn");
         }
         return missilDaGarra;
     }
 
-    private static PowerUp getMinaTerrestre()
+    private static PowerUpEntidade getMinaTerrestre()
     {
         if(minaTerrestre == null)
         {
-            minaTerrestre = new PowerUp(NAME.MISSIL_DA_GARRA, 3, AREA.CHAO, "mina-terrestre");
+            minaTerrestre = new PowerUpEntidade(NAME.MISSIL_DA_GARRA, 3, AREA.CHAO, "mina-terrestre");
         }
         return minaTerrestre;
     }
 
-    public static PowerUp getPowerUpByEnum(NAME name)
+    public static PowerUpEntidade getPowerUpEntidadeByEnum(NAME name)
     {
         switch (name)
         {
-            case NAME.BOMBA_DA_GARRA: return getBombaDaGarra();
+            case NAME.BOMBA_DA_GARRA:  return getBombaDaGarra();
             case NAME.MISSIL_DA_GARRA: return getMissilDaGarra();
-            case NAME.MINA_TERRESTRE: return getMinaTerrestre();
+            case NAME.MINA_TERRESTRE:  return getMinaTerrestre();
         }
         return null;
     }

@@ -5,12 +5,12 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
 {
     private static PowerUpAcionamento powerUpAcionamento;
     
-    private PowerUp powerUp;
+    private PowerUpEntidade powerUp;
     private Sprite imgBtn;
 
-    public PowerUpParaMaquina(PowerUp.NAME tipo, Dictionary<string, Sprite> dicionarioDeSprites)
+    public PowerUpParaMaquina(PowerUpEntidade.NAME tipo, Dictionary<string, Sprite> dicionarioDeSprites)
     {
-        powerUp = PowerUp.getPowerUpByEnum(tipo);
+        powerUp = PowerUpEntidade.getPowerUpEntidadeByEnum(tipo);
         imgBtn = dicionarioDeSprites[powerUp.nomeSprite];
     }
 

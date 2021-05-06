@@ -5,7 +5,7 @@ public class PowerUpManager : PowerUpAcionamento,
 {
     private PowerUpDto powerUpDto;
     //private PoolGenerico<GarraInteracaoComPowerUp> poolDePowerUpsDaGarra;
-    private PoolDePowerUps poolDePowerUps;
+    private PoolDePowerUpGos poolDePowerUpGos;
     private MonoBehaviour monoBehaviour;
 
     public ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp { get; private set; }
@@ -20,20 +20,20 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         produtorDeEventoFinalizacao = new ProdutorDeEvento<PowerUpInfoFim>();
 
-        poolDePowerUps = new PoolDePowerUps();
+        poolDePowerUpGos = new PoolDePowerUpGos();
         //poolDePowerUpsDaGarra = new PoolGenerico<GarraInteracaoComPowerUp>();
     }    
 
-    public void acionado(PowerUp powerUp)
+    public void acionado(PowerUpEntidade powerUp)
     {    
         PowerUpInfo powerUpInfo = new PowerUpInfo();
         powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
 
-        if(powerUp.name == PowerUp.NAME.BOMBA_DA_GARRA)
+        if(powerUp.name == PowerUpEntidade.NAME.BOMBA_DA_GARRA)
         {
             powerUpInfo.configurarObjetoInteracaoComGarra(getPowerUpBomba());
         }
-        else if(powerUp.name == PowerUp.NAME.MISSIL_DA_GARRA)
+        else if(powerUp.name == PowerUpEntidade.NAME.MISSIL_DA_GARRA)
         {
             powerUpInfo.configurarObjetoInteracaoComGarra(getPowerUpMissil());
         }
@@ -41,7 +41,7 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
-    public void acionado(PowerUp powerUp, Vector3 posicaoAtual)
+    public void acionado(PowerUpEntidade powerUp, Vector3 posicaoAtual)
     {
         PowerUpInfo powerUpInfo = new PowerUpInfo();
         powerUpInfo.configurarDuracaoTempo(powerUp.duracao);

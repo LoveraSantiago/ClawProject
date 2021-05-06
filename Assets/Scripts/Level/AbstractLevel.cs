@@ -11,5 +11,5 @@ public abstract class AbstractLevel
     public abstract int[,] getArrayDeColetaveis();
     public abstract ColetavelEntidade.FAMILIA getFamiliaColetavel();
 
-    public abstract PowerUp.NAME[] getPowerUpsParaBotoesMaquina();
+    public abstract PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina();
 }

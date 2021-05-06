@@ -35,7 +35,7 @@ public class BotoesPowerUp
         btnsPowerUp[3] = new BotaoPowerUp(btnsPowerUpsDto.BtnsPowerUp[3]);
     }
 
-    public void configuraradoPeloLevel(PowerUp.NAME[] arrayDePowerUpsParaBotoes)
+    public void configuraradoPeloLevel(PowerUpEntidade.NAME[] arrayDePowerUpsParaBotoes)
     {
         distribuidor.distribuirArray(arrayDePowerUpsParaBotoes);
     }
