@@ -25,7 +25,7 @@ public class PowerUpManager : PowerUpAcionamento,
 
     public void acionado(PowerUpEntidade powerUp)
     {    
-        GarraInteracaoComPowerUp interacaoComPowerUp = (GarraInteracaoComPowerUp) poolDePowerUpGos.getPowerUpGo(powerUp.name);
+        GarraInteracaoComPowerUp interacaoComPowerUp = poolDePowerUpGos.getPowerUpGo(powerUp.name);
 
         PowerUpInfo powerUpInfo = new PowerUpInfo();
         powerUpInfo.configurarDuracaoTempo(powerUp.duracao);

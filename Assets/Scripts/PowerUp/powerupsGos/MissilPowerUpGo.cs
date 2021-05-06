@@ -32,6 +32,11 @@ public class MissilPowerUpGo : Coletavel,
         tileMissil.SetActive(false);
     }
 
+    public bool garraPodeSegurar()
+    {
+        return true;
+    }
+
     public void consumirEvento(Collision2D evento)
     {
         if (!acionado && Utils.isColetavel(evento))

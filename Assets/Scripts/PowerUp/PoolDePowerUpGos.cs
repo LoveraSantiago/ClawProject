@@ -4,7 +4,8 @@ public class PoolDePowerUpGos
 {
     private PowerUpDto powerUpDto;
     private MonoBehaviour monoBehaviour;
-    private PoolGenerico<Coletavel> poolDePowerUpsDaGarra;
+
+    private PoolGenerico<GarraInteracaoComPowerUp> poolDePowerUpsDaGarra;
 
     private PowerUpFinalizacao powerupFinalizacao;
 
@@ -14,10 +15,10 @@ public class PoolDePowerUpGos
         this.powerupFinalizacao = powerupFinalizacao;
         this.monoBehaviour = monoBehaviour;
 
-        poolDePowerUpsDaGarra = new PoolGenerico<Coletavel>();
+        poolDePowerUpsDaGarra = new PoolGenerico<GarraInteracaoComPowerUp>();
     }
 
-    public Coletavel getPowerUpGo(PowerUpEntidade.NAME powerUpName)
+    public GarraInteracaoComPowerUp getPowerUpGo(PowerUpEntidade.NAME powerUpName)
     {
         if (!poolDePowerUpsDaGarra.contemNome(powerUpName.ToString()))
         {
