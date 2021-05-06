@@ -116,16 +116,14 @@ public class MainGameScene : MonoBehaviour,
     private void startLaizy()
     {
         coletaveisManager.start();
-        garraManager.start();
-        //maquinaManager.recebendoPowerUp(powerUpManager.distribuirPowerUpParaMaquina());
+        garraManager.start();        
     }
     
     void Update()
     {
         inputGame.update();
         garraManager.update();
-        maquinaManager.update();
-        //coletaveis.Update();           
+        maquinaManager.update();        
     }
 
     private void FixedUpdate()
@@ -137,8 +135,7 @@ public class MainGameScene : MonoBehaviour,
 
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP INICIO
     public void OnBeginDrag(PointerEventData eventData)
-    {
-        Debug.Log("OnBeginDrag: " + eventData.pointerCurrentRaycast.worldPosition);
+    {        
         if (inputGame.aconteceuDragNaAreaInferior(eventData.pointerCurrentRaycast.worldPosition))
         {
             maquinaManager.beginDragPowerUp(eventData.pointerCurrentRaycast.worldPosition);
@@ -146,14 +143,12 @@ public class MainGameScene : MonoBehaviour,
     }
 
     public void OnEndDrag(PointerEventData eventData)
-    {
-        Debug.Log("OnEndDrag");
+    {        
         maquinaManager.onEndDragPowerUp(this);
     }
 
     public void OnDrag(PointerEventData eventData)
-    {
-        Debug.Log("OnDrag");
+    {        
         maquinaManager.onDragPowerUp(eventData.pointerCurrentRaycast.worldPosition);
     }
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM
