@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PowerUpMissil : Coletavel,
+public class MissilPowerUpGo : Coletavel,
                             GarraInteracaoComPowerUp,
                             ConsumidorDeEventoCollider
 {
@@ -20,7 +20,7 @@ public class PowerUpMissil : Coletavel,
     private static MonoBehaviour monoBehaviour;
     private static PowerUpFinalizacao powerUpFinalizacao;
 
-    public PowerUpMissil(GameObject tileMissil, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
+    public MissilPowerUpGo(GameObject tileMissil, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
         : base(tileMissil, STATIC_NOME)
     {
         monoBehaviour = monoBehaviourArg;

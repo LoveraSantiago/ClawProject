@@ -1,11 +1,11 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class PowerUpManager : PowerUpAcionamento,
                               PowerUpFinalizacao
 {
     private PowerUpDto powerUpDto;
-    private PoolGenerico<GarraInteracaoComPowerUp> poolDePowerUpsDaGarra;
+    //private PoolGenerico<GarraInteracaoComPowerUp> poolDePowerUpsDaGarra;
+    private PoolDePowerUps poolDePowerUps;
     private MonoBehaviour monoBehaviour;
 
     public ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp { get; private set; }
@@ -20,7 +20,8 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         produtorDeEventoFinalizacao = new ProdutorDeEvento<PowerUpInfoFim>();
 
-        poolDePowerUpsDaGarra = new PoolGenerico<GarraInteracaoComPowerUp>();
+        poolDePowerUps = new PoolDePowerUps();
+        //poolDePowerUpsDaGarra = new PoolGenerico<GarraInteracaoComPowerUp>();
     }    
 
     public void acionado(PowerUp powerUp)
@@ -60,24 +61,24 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
     }
 
-    private GarraInteracaoComPowerUp getPowerUpBomba()
-    {
-        if (!poolDePowerUpsDaGarra.contemNome(PowerUpBomba.STATIC_NOME))
-        {
-            PowerUpBomba bomba = new PowerUpBomba(powerUpDto.TileBomb, this, monoBehaviour);
-            poolDePowerUpsDaGarra.addObjetoAoDicionario(bomba.nome, bomba);            
-        }
-        return poolDePowerUpsDaGarra.getObjetoPeloNome(PowerUpBomba.STATIC_NOME);
-    }
+    //private GarraInteracaoComPowerUp getPowerUpBomba()
+    //{
+    //    if (!poolDePowerUpsDaGarra.contemNome(PowerUpBomba.STATIC_NOME))
+    //    {
+    //        PowerUpBomba bomba = new PowerUpBomba(powerUpDto.TileBomb, this, monoBehaviour);
+    //        poolDePowerUpsDaGarra.addObjetoAoDicionario(bomba.nome, bomba);            
+    //    }
+    //    return poolDePowerUpsDaGarra.getObjetoPeloNome(PowerUpBomba.STATIC_NOME);
+    //}
 
-    private GarraInteracaoComPowerUp getPowerUpMissil()
-    {
-        if (!poolDePowerUpsDaGarra.contemNome(PowerUpMissil.STATIC_NOME))
-        {
-            PowerUpMissil missil = new PowerUpMissil(powerUpDto.TileMissil, this, monoBehaviour);
-            poolDePowerUpsDaGarra.addObjetoAoDicionario(missil.nome, missil);
-        }
-        return poolDePowerUpsDaGarra.getObjetoPeloNome(PowerUpMissil.STATIC_NOME);
-    }
+    //private GarraInteracaoComPowerUp getPowerUpMissil()
+    //{
+    //    if (!poolDePowerUpsDaGarra.contemNome(PowerUpMissil.STATIC_NOME))
+    //    {
+    //        PowerUpMissil missil = new PowerUpMissil(powerUpDto.TileMissil, this, monoBehaviour);
+    //        poolDePowerUpsDaGarra.addObjetoAoDicionario(missil.nome, missil);
+    //    }
+    //    return poolDePowerUpsDaGarra.getObjetoPeloNome(PowerUpMissil.STATIC_NOME);
+    //}
 
 }

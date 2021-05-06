@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PowerUpBomba : Coletavel,
+public class BombaPowerUpGo : Coletavel,
                             GarraInteracaoComPowerUp,
                             ConsumidorDeEventoCollider
 {
@@ -19,7 +19,7 @@ public class PowerUpBomba : Coletavel,
     private static PowerUpFinalizacao powerUpFinalizacao;
     private CircleCollider2D circleCollider;
 
-    public PowerUpBomba(GameObject tileBomb, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
+    public BombaPowerUpGo(GameObject tileBomb, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
         : base(tileBomb, STATIC_NOME)
     {
         monoBehaviour = monoBehaviourArg;
