@@ -7,6 +7,7 @@ public abstract class AbstractPowerUpGo : Coletavel,
     protected static PowerUpFinalizacao powerUpFinalizacao;
 
     public abstract bool garraPodeSegurar();
+    public virtual void iniciarNaPosicao(Vector3 posicao) { }
 
     public AbstractPowerUpGo(GameObject goTile, string nome)
         : base(goTile, nome)

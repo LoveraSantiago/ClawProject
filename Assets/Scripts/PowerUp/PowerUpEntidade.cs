@@ -60,7 +60,7 @@ public class PowerUpEntidade
     {
         if(minaTerrestre == null)
         {
-            minaTerrestre = new PowerUpEntidade(NAME.MISSIL_DA_GARRA, 3, AREA.CHAO, "mina-terrestre");
+            minaTerrestre = new PowerUpEntidade(NAME.MINA_TERRESTRE, 3, AREA.CHAO, "mina-terrestre");
         }
         return minaTerrestre;
     }

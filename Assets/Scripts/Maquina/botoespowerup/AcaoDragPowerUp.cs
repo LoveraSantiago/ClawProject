@@ -61,7 +61,6 @@ public class AcaoDragPowerUp
             monoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal(aparencia));
             return false;
         }
-
     }
 
     private IEnumerator voltarBotaoDragPosOriginal(AparenciaBotaoPowerUp aparencia)

@@ -21,7 +21,7 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
 
     public void acionar(Vector3 posicaoAtual)
     {
-        
+        powerUpAcionamento.acionado(powerUp, posicaoAtual);
     }
 
     public bool isClicavel()

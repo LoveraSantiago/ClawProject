@@ -71,12 +71,12 @@ public class MissilPowerUpGo : AbstractPowerUpGo,
     {
         if (!configurado)
         {
-            configurarObjetoBomba();
+            configurarObjetoMissil();
         }
         base.ligar();
     }
 
-    private void configurarObjetoBomba()
+    private void configurarObjetoMissil()
     {
         goColetavel.GetComponent<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);

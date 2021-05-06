@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PoolDePowerUpGos 
@@ -33,9 +34,19 @@ public class PoolDePowerUpGos
             case PowerUpEntidade.NAME.MISSIL_DA_GARRA:
                 criarPowerUpGoMissil();
                 break;
-                
+
+            case PowerUpEntidade.NAME.MINA_TERRESTRE:
+                criarPowerUpGoMinaTerrestre();
+                break;               
         }
     }
+
+    private void criarPowerUpGoMinaTerrestre()
+    {
+        MinaTerrestrePowerUpGo mina = new MinaTerrestrePowerUpGo(powerUpDto.TileMinaTerrestre);
+        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MINA_TERRESTRE.ToString(), mina);
+    }
+
     private void criarPowerUpGoBomba()
     {
         BombaPowerUpGo bomba = new BombaPowerUpGo(powerUpDto.TileBomb);

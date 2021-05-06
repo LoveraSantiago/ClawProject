@@ -37,8 +37,12 @@ public class PowerUpManager : PowerUpAcionamento,
 
     public void acionado(PowerUpEntidade powerUp, Vector3 posicaoAtual)
     {
+        AbstractPowerUpGo interacaoComPowerUp = poolDePowerUpGos.getPowerUpGo(powerUp.name);
+        interacaoComPowerUp.iniciarNaPosicao(posicaoAtual);
+
         PowerUpInfo powerUpInfo = new PowerUpInfo();
         powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
+        powerUpInfo.configurarObjetoInteracaoComGarra(interacaoComPowerUp);
 
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
