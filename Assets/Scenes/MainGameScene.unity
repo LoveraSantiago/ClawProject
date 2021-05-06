@@ -5417,6 +5417,7 @@ MonoBehaviour:
   powerUpDto:
     tileBomb: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
     tileMissil: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
+    tileMinaTerrestre: {fileID: 4127936681606313068, guid: 60283f6ad83360741b3927cd1859a108, type: 3}
   btnSair: {fileID: 1780015346}
 --- !u!61 &491158116
 BoxCollider2D:

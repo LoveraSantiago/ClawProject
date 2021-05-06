@@ -1,28 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PoolDePowerUpGos 
 {
+    private PowerUpDto powerUpDto;
+    private MonoBehaviour monoBehaviour;
     private PoolGenerico<Coletavel> poolDePowerUpsDaGarra;
 
-    private GarraInteracaoComPowerUp getPowerUpBomba()
+    private PowerUpFinalizacao powerupFinalizacao;
+
+    public PoolDePowerUpGos(PowerUpDto powerUpDto, PowerUpFinalizacao powerupFinalizacao, MonoBehaviour monoBehaviour)
     {
-        if (!poolDePowerUpsDaGarra.contemNome(BombaPowerUpGo.STATIC_NOME))
-        {
-            BombaPowerUpGo bomba = new BombaPowerUpGo(powerUpDto.TileBomb, this, monoBehaviour);
-            poolDePowerUpsDaGarra.addObjetoAoDicionario(bomba.nome, bomba);
-        }
-        return poolDePowerUpsDaGarra.getObjetoPeloNome(BombaPowerUpGo.STATIC_NOME);
+        this.powerUpDto = powerUpDto;
+        this.powerupFinalizacao = powerupFinalizacao;
+        this.monoBehaviour = monoBehaviour;
+
+        poolDePowerUpsDaGarra = new PoolGenerico<Coletavel>();
     }
 
-    private GarraInteracaoComPowerUp getPowerUpMissil()
+    public Coletavel getPowerUpGo(PowerUpEntidade.NAME powerUpName)
     {
-        if (!poolDePowerUpsDaGarra.contemNome(MissilPowerUpGo.STATIC_NOME))
+        if (!poolDePowerUpsDaGarra.contemNome(powerUpName.ToString()))
         {
-            MissilPowerUpGo missil = new MissilPowerUpGo(powerUpDto.TileMissil, this, monoBehaviour);
-            poolDePowerUpsDaGarra.addObjetoAoDicionario(missil.nome, missil);
+            criarPowerUpGo(powerUpName);
         }
-        return poolDePowerUpsDaGarra.getObjetoPeloNome(MissilPowerUpGo.STATIC_NOME);
+        return poolDePowerUpsDaGarra.getObjetoPeloNome(powerUpName.ToString());
     }
+
+    private void criarPowerUpGo(PowerUpEntidade.NAME powerUpName)
+    {
+        switch (powerUpName)
+        {
+            case PowerUpEntidade.NAME.BOMBA_DA_GARRA:                
+                criarPowerUpGoBomba();
+                break;
+
+            case PowerUpEntidade.NAME.MISSIL_DA_GARRA:
+                criarPowerUpGoMissil();
+                break;
+                
+        }
+    }
+    private void criarPowerUpGoBomba()
+    {
+        BombaPowerUpGo bomba = new BombaPowerUpGo(powerUpDto.TileBomb, powerupFinalizacao, monoBehaviour);
+        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.BOMBA_DA_GARRA.ToString(), bomba);        
+    }
+
+    private void criarPowerUpGoMissil()
+    {        
+        MissilPowerUpGo missil = new MissilPowerUpGo(powerUpDto.TileMissil, powerupFinalizacao, monoBehaviour);
+        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MISSIL_DA_GARRA.ToString(), missil);        
+    }
+    
+
 }

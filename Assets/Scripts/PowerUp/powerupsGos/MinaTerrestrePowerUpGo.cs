@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinaTerrestrePowerUpGo 
+public class MinaTerrestrePowerUpGo : Coletavel
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //voltar pool ser GarraInteracaoComPowerUp
+    //adicionar em GarraInteracaoComPowerUp interagivel
+    //implementar em branco GarraInteracaoComPowerUp
 }

@@ -5,8 +5,6 @@ public class BombaPowerUpGo : Coletavel,
                             GarraInteracaoComPowerUp,
                             ConsumidorDeEventoCollider
 {
-    public static readonly string STATIC_NOME = "bomba";  
-
     private bool configurado;
     private bool acionado;
 
@@ -20,7 +18,7 @@ public class BombaPowerUpGo : Coletavel,
     private CircleCollider2D circleCollider;
 
     public BombaPowerUpGo(GameObject tileBomb, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
-        : base(tileBomb, STATIC_NOME)
+        : base(tileBomb, "bomba")
     {
         monoBehaviour = monoBehaviourArg;
         powerUpFinalizacao = powerUpFinalizacaoArg;
