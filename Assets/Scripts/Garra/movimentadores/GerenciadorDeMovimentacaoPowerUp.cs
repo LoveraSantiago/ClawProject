@@ -79,8 +79,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoParado()
     {
-        trocarMovimentador(movParado);
-        MovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(null);
+        trocarMovimentador(movParado);        
     }
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
 
