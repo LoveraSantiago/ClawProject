@@ -42,6 +42,7 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
                 }
                 else
                 {
+                    garraInteracaoComPowerUp.ligar();
                     comunicadorComGerMovimentacao.trocarParaAcaoParado();
                 }
             }
