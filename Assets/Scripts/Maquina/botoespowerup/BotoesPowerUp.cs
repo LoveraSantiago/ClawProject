@@ -86,18 +86,22 @@ public class BotoesPowerUp
             if (btnsPowerUp[0].isDragValido(posicaoDrag))
             {   
                 dragavelAtual = btnsPowerUp[0];
+                btnAcionado = btnsPowerUp[0];
             }
             else if (btnsPowerUp[1].isDragValido(posicaoDrag))
             {            
                 dragavelAtual = btnsPowerUp[1];
+                btnAcionado = btnsPowerUp[1];
             }
             else if (btnsPowerUp[2].isDragValido(posicaoDrag))
             {            
                 dragavelAtual = btnsPowerUp[2];
+                btnAcionado = btnsPowerUp[2];
             }
             else if (btnsPowerUp[3].isDragValido(posicaoDrag))
             {            
                 dragavelAtual = btnsPowerUp[3];
+                btnAcionado = btnsPowerUp[3];
             }
             else
             {
