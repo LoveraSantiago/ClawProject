@@ -15,7 +15,6 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
     public MinaTerrestrePowerUpGo(GameObject tileMinaTerrestre)
         :base(tileMinaTerrestre, "mina-terrestre")
     {
-
     }
 
     public override bool garraPodeSegurar()
@@ -35,6 +34,7 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
             configurarObjetoMina();
         }
         base.ligar();
+        posInicial.y = -3.7f;
         base.colocarNaPosicao(posInicial);
     }
 
