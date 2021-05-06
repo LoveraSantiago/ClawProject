@@ -1,11 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class MissilPowerUpGo : Coletavel,
-                            GarraInteracaoComPowerUp,
-                            ConsumidorDeEventoCollider
-{
-    public static readonly string STATIC_NOME = "missil";
+public class MissilPowerUpGo : AbstractPowerUpGo,
+                               ConsumidorDeEventoCollider
+{    
 
     private bool configurado;
     private bool acionado;
@@ -16,23 +14,17 @@ public class MissilPowerUpGo : Coletavel,
     private GameObject goExplosao;
     private GameObject goImagem;
     private Animator animator;
-
-    private static MonoBehaviour monoBehaviour;
-    private static PowerUpFinalizacao powerUpFinalizacao;
-
-    public MissilPowerUpGo(GameObject tileMissil, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
-        : base(tileMissil, STATIC_NOME)
+ 
+    public MissilPowerUpGo(GameObject tileMissil)
+        : base(tileMissil, "missil")
     {
-        monoBehaviour = monoBehaviourArg;
-        powerUpFinalizacao = powerUpFinalizacaoArg;
-
         bomba_explosao = Animator.StringToHash("explosao");
         bomba_idle = Animator.StringToHash("idle");
 
         tileMissil.SetActive(false);
     }
 
-    public bool garraPodeSegurar()
+    public override bool garraPodeSegurar()
     {
         return true;
     }

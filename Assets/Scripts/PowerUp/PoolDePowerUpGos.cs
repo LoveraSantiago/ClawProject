@@ -3,22 +3,17 @@ using UnityEngine;
 public class PoolDePowerUpGos 
 {
     private PowerUpDto powerUpDto;
-    private MonoBehaviour monoBehaviour;
-
-    private PoolGenerico<GarraInteracaoComPowerUp> poolDePowerUpsDaGarra;
+    private PoolGenerico<AbstractPowerUpGo> poolDePowerUpsDaGarra;
 
     private PowerUpFinalizacao powerupFinalizacao;
 
-    public PoolDePowerUpGos(PowerUpDto powerUpDto, PowerUpFinalizacao powerupFinalizacao, MonoBehaviour monoBehaviour)
+    public PoolDePowerUpGos(PowerUpDto powerUpDto)
     {
         this.powerUpDto = powerUpDto;
-        this.powerupFinalizacao = powerupFinalizacao;
-        this.monoBehaviour = monoBehaviour;
-
-        poolDePowerUpsDaGarra = new PoolGenerico<GarraInteracaoComPowerUp>();
+        poolDePowerUpsDaGarra = new PoolGenerico<AbstractPowerUpGo>();
     }
 
-    public GarraInteracaoComPowerUp getPowerUpGo(PowerUpEntidade.NAME powerUpName)
+    public AbstractPowerUpGo getPowerUpGo(PowerUpEntidade.NAME powerUpName)
     {
         if (!poolDePowerUpsDaGarra.contemNome(powerUpName.ToString()))
         {
@@ -43,15 +38,13 @@ public class PoolDePowerUpGos
     }
     private void criarPowerUpGoBomba()
     {
-        BombaPowerUpGo bomba = new BombaPowerUpGo(powerUpDto.TileBomb, powerupFinalizacao, monoBehaviour);
+        BombaPowerUpGo bomba = new BombaPowerUpGo(powerUpDto.TileBomb);
         poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.BOMBA_DA_GARRA.ToString(), bomba);        
     }
 
     private void criarPowerUpGoMissil()
     {        
-        MissilPowerUpGo missil = new MissilPowerUpGo(powerUpDto.TileMissil, powerupFinalizacao, monoBehaviour);
+        MissilPowerUpGo missil = new MissilPowerUpGo(powerUpDto.TileMissil);
         poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MISSIL_DA_GARRA.ToString(), missil);        
     }
-    
-
 }

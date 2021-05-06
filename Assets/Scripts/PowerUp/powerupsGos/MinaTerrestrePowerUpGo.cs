@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinaTerrestrePowerUpGo : Coletavel,
-                                     GarraInteracaoComPowerUp
+public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
 {
+    
 
-    private static MonoBehaviour monoBehaviour;
-    private static PowerUpFinalizacao powerUpFinalizacao;
-
-    public MinaTerrestrePowerUpGo(GameObject tileMissil, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
+    public MinaTerrestrePowerUpGo(GameObject tileMinaTerrestre)
+        :base(tileMinaTerrestre, "mina-terrestre")
     {
 
     }
 
-    public bool garraPodeSegurar()
+    public override bool garraPodeSegurar()
     {
         return false;
     }

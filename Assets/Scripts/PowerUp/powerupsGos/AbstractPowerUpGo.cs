@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AbstractPowerUpGo : MonoBehaviour
+public abstract class AbstractPowerUpGo : Coletavel,
+                                          GarraInteracaoComPowerUp
 {
-    // Start is called before the first frame update
-    void Start()
+    protected static MonoBehaviour monoBehaviour;
+    protected static PowerUpFinalizacao powerUpFinalizacao;
+
+    public abstract bool garraPodeSegurar();
+
+    public AbstractPowerUpGo(GameObject goTile, string nome)
+        : base(goTile, nome)
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void configurar(PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
     {
-        
+        monoBehaviour = monoBehaviourArg;
+        powerUpFinalizacao = powerUpFinalizacaoArg;
     }
 }

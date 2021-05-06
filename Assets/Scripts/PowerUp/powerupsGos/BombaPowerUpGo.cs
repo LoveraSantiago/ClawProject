@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class BombaPowerUpGo : Coletavel,
-                            GarraInteracaoComPowerUp,
+public class BombaPowerUpGo : AbstractPowerUpGo,
                             ConsumidorDeEventoCollider
 {
     private bool configurado;
@@ -12,24 +11,19 @@ public class BombaPowerUpGo : Coletavel,
     private int bomba_idle;
     
     private Animator animator;
-
-    private static MonoBehaviour monoBehaviour;
-    private static PowerUpFinalizacao powerUpFinalizacao;
+    
     private CircleCollider2D circleCollider;
 
-    public BombaPowerUpGo(GameObject tileBomb, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
+    public BombaPowerUpGo(GameObject tileBomb)
         : base(tileBomb, "bomba")
     {
-        monoBehaviour = monoBehaviourArg;
-        powerUpFinalizacao = powerUpFinalizacaoArg;
-
         bomba_explosao = Animator.StringToHash("explosao");
         bomba_idle = Animator.StringToHash("idle");
 
         tileBomb.SetActive(false);
     }
 
-    public bool garraPodeSegurar()
+    public override bool garraPodeSegurar()
     {
         return true;
     }
