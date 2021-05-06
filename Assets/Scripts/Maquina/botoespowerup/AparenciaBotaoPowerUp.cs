@@ -106,6 +106,11 @@ public class AparenciaBotaoPowerUp
         }
     }
 
+    public bool isMostrandoImagem()
+    {
+        return mostrandoAtual == MOSTRANDO_IMAGEM;
+    }
+
     public Vector3 adicionarNaPosicao(Vector3 posAdicionar)
     {
         Vector3 posicaoCalculada = new Vector3(

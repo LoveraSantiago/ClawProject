@@ -25,10 +25,10 @@ public class PowerUp
         this.area = AREA.NONE;
     }
 
-    public PowerUp(NAME name, AREA area, string nomeSprite)
+    public PowerUp(NAME name, int duracao, AREA area, string nomeSprite)
     {
         this.name = name;
-        this.duracao = 0;
+        this.duracao = duracao;
         this.nomeSprite = nomeSprite;
         this.isClicavel = false;
         this.area = area;
@@ -60,7 +60,7 @@ public class PowerUp
     {
         if(minaTerrestre == null)
         {
-            minaTerrestre = new PowerUp(NAME.MISSIL_DA_GARRA, AREA.CHAO, "mina-terrestre");
+            minaTerrestre = new PowerUp(NAME.MISSIL_DA_GARRA, 3, AREA.CHAO, "mina-terrestre");
         }
         return minaTerrestre;
     }

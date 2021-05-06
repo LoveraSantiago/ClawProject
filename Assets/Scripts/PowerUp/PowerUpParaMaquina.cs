@@ -19,6 +19,11 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
         powerUpAcionamento.acionado(powerUp);
     }
 
+    public void acionar(Vector3 posicaoAtual)
+    {
+        
+    }
+
     public bool isClicavel()
     {
         return powerUp.isClicavel;
@@ -38,4 +43,5 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
     {
         return imgBtn;
     }
+
 }

@@ -49,9 +49,19 @@ public class AcaoDragPowerUp
         }
     }
 
-    public void dragFinalizado(AparenciaBotaoPowerUp aparencia, MonoBehaviour monoBehaviour)
+    public bool dragFinalizado(AcaoBotaoPowerUp acaoPowerUp, AparenciaBotaoPowerUp aparencia, MonoBehaviour monoBehaviour)
     {
-        monoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal(aparencia));
+        if (aparencia.isMostrandoImagem())
+        {
+            acaoPowerUp.acionar(aparencia.getPosicao());
+            return true;
+        }
+        else
+        {
+            monoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal(aparencia));
+            return false;
+        }
+
     }
 
     private IEnumerator voltarBotaoDragPosOriginal(AparenciaBotaoPowerUp aparencia)

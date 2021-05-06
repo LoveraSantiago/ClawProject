@@ -82,9 +82,9 @@ public class BotaoPowerUp : Draggavel
         acaoDrag.updateDrag(posicaoDrag, aparencia);
     }
 
-    public void dragFinalizado(MonoBehaviour monoBehaviour)
+    public bool isDragFinalizadoAtivouPowerUp(MonoBehaviour monoBehaviour)
     {
-        acaoDrag.dragFinalizado(aparencia, monoBehaviour);
+        return acaoDrag.dragFinalizado(acaoBtnPowerUp, aparencia, monoBehaviour);
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 
@@ -92,6 +92,5 @@ public class BotaoPowerUp : Draggavel
     {
         AparenciaBotaoPowerUp.configurarSpriteBordas(spritesBordas);
         AcaoDragPowerUp.configurarAreaDraggavel(areaDraggavel);
-
     }
 }

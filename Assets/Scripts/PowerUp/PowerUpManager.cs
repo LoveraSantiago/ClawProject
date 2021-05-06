@@ -40,6 +40,14 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
+    public void acionado(PowerUp powerUp, Vector3 posicaoAtual)
+    {
+        PowerUpInfo powerUpInfo = new PowerUpInfo();
+        powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
+
+        produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
+    }
+
     public void finalizado()
     {
         PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(false, true);
@@ -71,4 +79,5 @@ public class PowerUpManager : PowerUpAcionamento,
         }
         return poolDePowerUpsDaGarra.getObjetoPeloNome(PowerUpMissil.STATIC_NOME);
     }
+
 }

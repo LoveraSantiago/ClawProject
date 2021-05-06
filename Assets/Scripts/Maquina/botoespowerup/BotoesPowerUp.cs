@@ -119,7 +119,7 @@ public class BotoesPowerUp
     {
         if (!acionadoPowerUp)
         {
-            dragavelAtual.dragFinalizado(monoBehaviour);
+            acionadoPowerUp = dragavelAtual.isDragFinalizadoAtivouPowerUp(monoBehaviour);
             dragavelAtual = dragavelVazio;
         }
     }   
