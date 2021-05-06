@@ -73,7 +73,7 @@ public class BotaoPowerUp : Draggavel
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
     public void prepararDraggagem(Vector3 posInicialDrag)
-    {
+    {        
         acaoDrag.prepararDraggagem(posInicialDrag);
     }
 
@@ -84,7 +84,12 @@ public class BotaoPowerUp : Draggavel
 
     public bool isDragFinalizadoAtivouPowerUp(MonoBehaviour monoBehaviour)
     {
-        return acaoDrag.dragFinalizado(acaoBtnPowerUp, aparencia, monoBehaviour);
+        bool resultAcionado = acaoDrag.dragFinalizado(acaoBtnPowerUp, aparencia, monoBehaviour);
+        if (resultAcionado)
+        {
+            clicar();
+        }
+        return resultAcionado;
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 

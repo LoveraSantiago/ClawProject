@@ -54,6 +54,8 @@ public class AcaoDragPowerUp
         if (aparencia.isMostrandoImagem())
         {
             acaoPowerUp.acionar(aparencia.getPosicao());
+            aparencia.mostrarBotao();            
+            aparencia.colocarNaPosicao(posicaoOriginal);
             return true;
         }
         else
