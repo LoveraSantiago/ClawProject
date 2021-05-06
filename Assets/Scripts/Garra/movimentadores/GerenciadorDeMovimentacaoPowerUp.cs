@@ -4,12 +4,12 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     private ContadorDeTempo contadorDeFimTempo;
 
-    private MovimentacaoDaGarra         movAtual;
-    private MovimentacaoDaGarra         movVoltarPCima;
-    private MovimentacaoDaGarra         movVoltarMeio;
-    private MovimentacaoAgarrandoEmcima movSegCima;
-    private MovimentacaoSoltar          movSoltar;
-    private MovimentacaoDaGarra         movParado;
+    private MovimentacaoDaGarra movAtual;
+    private MovimentacaoDaGarra movVoltarPCima;
+    private MovimentacaoDaGarra movVoltarMeio;
+    private MovimentacaoDaGarra movSegCima;
+    private MovimentacaoDaGarra movSoltar;
+    private MovimentacaoDaGarra movParado;
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
@@ -46,9 +46,8 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
     public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
-    {        
-        movSegCima.receberInteracaoComPowerUp(garraInteracaoPowerUp);
-        movSoltar.receberInteracaoComPowerUp(garraInteracaoPowerUp);
+    {
+        MovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(garraInteracaoPowerUp);                
         contadorDeFimTempo.configTempoParaAcao(tempoDuracao);
     }
 
@@ -81,6 +80,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     public void trocarParaAcaoParado()
     {
         trocarMovimentador(movParado);
+        MovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(null);
     }
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
 

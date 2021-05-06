@@ -5,9 +5,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
     private int direcao;
 
     private Quaternion anguloDesejadoEsquerdaFechado;
-    private Quaternion anguloDesejadoDireitaFechado;
-
-    private GarraInteracaoComPowerUp garraInteracaoPowerUp;
+    private Quaternion anguloDesejadoDireitaFechado;    
 
     public MovimentacaoAgarrandoEmcima()
     {
@@ -17,11 +15,11 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
 
     public override void preInicio()
     {        
-        pincas.acionarCollider();        
+        pincas.acionarCollider();
 
-        garraInteracaoPowerUp.ligar();
-        garraInteracaoPowerUp.desligarGravidade();
-        garraInteracaoPowerUp.colocarNaPosicao(garraDto.CentroDaGarra.position);
+        garraInteracaoComPowerUp.ligar();
+        garraInteracaoComPowerUp.desligarGravidade();
+        garraInteracaoComPowerUp.colocarNaPosicao(garraDto.CentroDaGarra.position);
 
         direcao = 1;
         dispararEventoDirecao(direcao);//reesincronizarJoystick
@@ -40,12 +38,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
         verificarSeMovimentacaoAtingiuLimites();
         moverGarraHorizontalmenteFreeze(direcao);
-    }
-
-    public void receberInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp)
-    {
-        this.garraInteracaoPowerUp = garraInteracaoPowerUp;
-    }   
+    }    
 
     //TODO duplicidade com MovimentacaoLateralZigZag
     private void verificarSeMovimentacaoAtingiuLimites()
