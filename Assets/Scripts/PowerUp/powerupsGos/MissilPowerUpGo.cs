@@ -8,8 +8,8 @@ public class MissilPowerUpGo : AbstractPowerUpGo,
     private bool configurado;
     private bool acionado;
 
-    private int bomba_explosao;
-    private int bomba_idle;
+    private int missil_explosao;
+    private int missil_idle;
 
     private GameObject goExplosao;
     private GameObject goImagem;
@@ -18,8 +18,8 @@ public class MissilPowerUpGo : AbstractPowerUpGo,
     public MissilPowerUpGo(GameObject tileMissil)
         : base(tileMissil, "missil")
     {
-        bomba_explosao = Animator.StringToHash("explosao");
-        bomba_idle = Animator.StringToHash("idle");
+        missil_explosao = Animator.StringToHash("explosao");
+        missil_idle = Animator.StringToHash("idle");
 
         tileMissil.SetActive(false);
     }
@@ -43,15 +43,13 @@ public class MissilPowerUpGo : AbstractPowerUpGo,
         yield return new WaitForSeconds(0.4f);
 
         goExplosao.SetActive(true);
-        animator.Play(bomba_explosao);
+        animator.Play(missil_explosao);
         goImagem.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
         yield return new WaitForSeconds(0.25f);
 
         goExplosao.SetActive(false);
         GrandeExplosaoShake explosaoShake = new GrandeExplosaoShake(monoBehaviour);
         explosaoShake.shake();
-        desligar();
-        animator.Play(bomba_idle);
         resetMe();
         yield return new WaitForSeconds(1.1f);
 
@@ -61,6 +59,8 @@ public class MissilPowerUpGo : AbstractPowerUpGo,
 
     private void resetMe()
     {
+        desligar();
+        animator.Play(missil_idle);
         powerUpFinalizacao.preFinalizar();
         acionado = false;
         desafixarVerticalmente();

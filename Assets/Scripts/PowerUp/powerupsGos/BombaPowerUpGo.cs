@@ -48,8 +48,6 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
                 
         PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
-        desligar();
-        animator.Play(bomba_idle);
         resetMe();
         yield return new WaitForSeconds(1.1f);
 
@@ -59,6 +57,8 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
 
     private void resetMe()
     {
+        desligar();
+        animator.Play(bomba_idle);
         powerUpFinalizacao.preFinalizar();
         acionado = false;
         desafixarVerticalmente();
