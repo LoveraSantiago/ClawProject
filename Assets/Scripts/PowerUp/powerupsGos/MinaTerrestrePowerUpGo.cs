@@ -33,6 +33,7 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
 
     public override void ligar()
     {
+        Debug.Log("ligar");
         if (!configurado)
         {
             configurarObjetoMina();
@@ -65,8 +66,7 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
     {
         desligar();
         animator.Play(mina_idle);
-        powerUpFinalizacao.preFinalizar();        
-        desafixarVerticalmente();
+        powerUpFinalizacao.preFinalizar();                
     }
 
     private void configurarObjetoMina()

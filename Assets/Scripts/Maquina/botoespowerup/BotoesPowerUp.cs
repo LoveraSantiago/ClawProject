@@ -71,6 +71,13 @@ public class BotoesPowerUp
         btnAcionado = btn;
     }
 
+    private void draggarBotao(BotaoPowerUp btn)
+    {
+        btn.draggar();
+        acionadoPowerUp = true;
+        btnAcionado = btn;
+    }
+
     public void acionarFimPowerUp()
     {
         acionadoPowerUp = false;
@@ -80,7 +87,7 @@ public class BotoesPowerUp
 
     public void beginDrag(Vector2 posicaoDrag)
     {
-        Debug.Log("begindrag");
+        //Debug.Log("begindrag");
         if (!acionadoPowerUp)
         {
             if (btnsPowerUp[0].isDragValido(posicaoDrag))
@@ -123,7 +130,13 @@ public class BotoesPowerUp
     {
         if (!acionadoPowerUp)
         {
-            acionadoPowerUp = dragavelAtual.isDragFinalizadoAtivouPowerUp(monoBehaviour);
+            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp(monoBehaviour);
+            acionadoPowerUp = result;
+            if (result)
+            {
+                draggarBotao(btnAcionado);
+            }
+
             dragavelAtual = dragavelVazio;
         }
     }   

@@ -28,6 +28,15 @@ public class BotaoPowerUp : Draggavel
         }
     }
 
+    public void draggar()
+    {
+        aparencia.colorirBotao();
+        if (hasPowerUp)
+        {            
+            hasPowerUp = false;
+        }
+    }
+
     public void desclicar()
     {
         aparencia.voltarCorOriginalBotao();
@@ -84,12 +93,7 @@ public class BotaoPowerUp : Draggavel
 
     public bool isDragFinalizadoAtivouPowerUp(MonoBehaviour monoBehaviour)
     {
-        bool resultAcionado = acaoDrag.dragFinalizado(acaoBtnPowerUp, aparencia, monoBehaviour);
-        if (resultAcionado)
-        {
-            clicar();
-        }
-        return resultAcionado;
+        return acaoDrag.dragFinalizado(acaoBtnPowerUp, aparencia, monoBehaviour);        
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 
