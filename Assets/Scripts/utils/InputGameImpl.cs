@@ -48,7 +48,7 @@ public class InputGameImpl : InputGame
 
     public bool aconteceuDragNaAreaInferior(Vector3 dragPosicao)
     {
-        Debug.Log("Drag Y: " + dragPosicao.y + " Ref Y: " + referenciaChaoMaquina.position.y);
+        //Debug.Log("Drag Y: " + dragPosicao.y + " Ref Y: " + referenciaChaoMaquina.position.y);
         return dragPosicao.y < referenciaChaoMaquina.position.y;
     }
 

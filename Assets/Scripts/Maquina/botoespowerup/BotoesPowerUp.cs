@@ -17,7 +17,7 @@ public class BotoesPowerUp
     {
         this.inputGame = inputGame;       
 
-        BotaoPowerUp.configurarSpriteBordas(btnsPowerUpsDto.BordasBtns);
+        BotaoPowerUp.configurar(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.AreaDraggavel);
 
         inicializarBotoes(btnsPowerUpsDto);
         distribuidor = new DistribuidorParaBotoesPowerUp(btnsPowerUp, btnsPowerUpsDto.SpritesDeBotoes);
@@ -35,7 +35,7 @@ public class BotoesPowerUp
         btnsPowerUp[3] = new BotaoPowerUp(btnsPowerUpsDto.BtnsPowerUp[3]);
     }
 
-    public void configuraradoPeloLevel(PowerUp.TIPO[] arrayDePowerUpsParaBotoes)
+    public void configuraradoPeloLevel(PowerUpEntidade.NAME[] arrayDePowerUpsParaBotoes)
     {
         distribuidor.distribuirArray(arrayDePowerUpsParaBotoes);
     }
@@ -71,6 +71,13 @@ public class BotoesPowerUp
         btnAcionado = btn;
     }
 
+    private void draggarBotao(BotaoPowerUp btn)
+    {
+        btn.draggar();
+        acionadoPowerUp = true;
+        btnAcionado = btn;
+    }
+
     public void acionarFimPowerUp()
     {
         acionadoPowerUp = false;
@@ -80,23 +87,28 @@ public class BotoesPowerUp
 
     public void beginDrag(Vector2 posicaoDrag)
     {
+        //Debug.Log("begindrag");
         if (!acionadoPowerUp)
         {
             if (btnsPowerUp[0].isDragValido(posicaoDrag))
             {   
                 dragavelAtual = btnsPowerUp[0];
+                btnAcionado = btnsPowerUp[0];
             }
             else if (btnsPowerUp[1].isDragValido(posicaoDrag))
             {            
                 dragavelAtual = btnsPowerUp[1];
+                btnAcionado = btnsPowerUp[1];
             }
             else if (btnsPowerUp[2].isDragValido(posicaoDrag))
             {            
                 dragavelAtual = btnsPowerUp[2];
+                btnAcionado = btnsPowerUp[2];
             }
             else if (btnsPowerUp[3].isDragValido(posicaoDrag))
             {            
                 dragavelAtual = btnsPowerUp[3];
+                btnAcionado = btnsPowerUp[3];
             }
             else
             {
@@ -118,7 +130,13 @@ public class BotoesPowerUp
     {
         if (!acionadoPowerUp)
         {
-            dragavelAtual.dragFinalizado(monoBehaviour);
+            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp(monoBehaviour);
+            acionadoPowerUp = result;
+            if (result)
+            {
+                draggarBotao(btnAcionado);
+            }
+
             dragavelAtual = dragavelVazio;
         }
     }   

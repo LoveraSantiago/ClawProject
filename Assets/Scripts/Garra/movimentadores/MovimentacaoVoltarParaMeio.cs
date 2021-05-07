@@ -36,7 +36,14 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
         {
             if (contadorDeTempo.contarTempoFDT())
             {
-                comunicadorComGerMovimentacao.trocarParaAcaoSegurando();
+                if (garraInteracaoComPowerUp.garraPodeSegurar())
+                {
+                    comunicadorComGerMovimentacao.trocarParaAcaoSegurando();
+                }
+                else
+                {                    
+                    comunicadorComGerMovimentacao.trocarParaAcaoParado();
+                }
             }
         }
     }

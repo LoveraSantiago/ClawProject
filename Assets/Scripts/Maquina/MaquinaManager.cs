@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
                               ConsumidorDeEvento<PowerUpInfoFim>
-{
+{    
+
     private DisplaysDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
     private JoystickHaste joystickHaste;
@@ -17,7 +18,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
     }
 
-    public void configuradoPeloLevel(PowerUp.TIPO[] arrayDePowerUpsParaBotoes)
+    public void configuradoPeloLevel(PowerUpEntidade.NAME[] arrayDePowerUpsParaBotoes)
     {
         botoesPowerUp.configuraradoPeloLevel(arrayDePowerUpsParaBotoes);
     }
@@ -73,7 +74,9 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
 
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
     public void consumirEvento(PowerUpInfoFim powerUpInfoFim)
-    {        
+    {
+        Debug.Log("Maquina consumindo prefim " + powerUpInfoFim.preFinalizar);
+        Debug.Log("Maquina consumindo fim " + powerUpInfoFim.finalizar);
         if (powerUpInfoFim.preFinalizar)
         {     
             processarPreFimDePowerUp();

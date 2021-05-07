@@ -42,8 +42,8 @@ public class Level2 : AbstractLevel
         return ColetavelEntidade.FAMILIA.FRUTAS;
     }
 
-    public override PowerUp.TIPO[] getPowerUpsParaBotoesMaquina()
+    public override PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina()
     {
-        return new PowerUp.TIPO[] { PowerUp.TIPO.BOMBA_DA_GARRA };
+        return new PowerUpEntidade.NAME[] { PowerUpEntidade.NAME.BOMBA_DA_GARRA };
     }
 }

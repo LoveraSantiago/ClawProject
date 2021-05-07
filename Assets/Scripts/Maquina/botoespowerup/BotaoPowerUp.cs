@@ -28,6 +28,15 @@ public class BotaoPowerUp : Draggavel
         }
     }
 
+    public void draggar()
+    {
+        aparencia.colorirBotao();
+        if (hasPowerUp)
+        {            
+            hasPowerUp = false;
+        }
+    }
+
     public void desclicar()
     {
         aparencia.voltarCorOriginalBotao();
@@ -73,23 +82,24 @@ public class BotaoPowerUp : Draggavel
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
     public void prepararDraggagem(Vector3 posInicialDrag)
-    {
+    {        
         acaoDrag.prepararDraggagem(posInicialDrag);
     }
 
-    public void updateDrag(Vector2 posicaoAtual)
+    public void updateDrag(Vector2 posicaoDrag)
     {
-        acaoDrag.updateDrag(posicaoAtual);
+        acaoDrag.updateDrag(posicaoDrag, aparencia);
     }
 
-    public void dragFinalizado(MonoBehaviour monoBehaviour)
+    public bool isDragFinalizadoAtivouPowerUp(MonoBehaviour monoBehaviour)
     {
-        acaoDrag.dragFinalizado(monoBehaviour);
+        return acaoDrag.dragFinalizado(acaoBtnPowerUp, aparencia, monoBehaviour);        
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 
-    public static void configurarSpriteBordas(Sprite[] spritesBordas)
+    public static void configurar(Sprite[] spritesBordas, GameObject areaDraggavel)
     {
         AparenciaBotaoPowerUp.configurarSpriteBordas(spritesBordas);
+        AcaoDragPowerUp.configurarAreaDraggavel(areaDraggavel);
     }
 }

@@ -3,9 +3,7 @@ using UnityEngine;
 public class MovimentacaoSoltar : MovimentacaoDaGarraPowerUp
 {
     private Quaternion anguloDesejadoAberturaEsquerda;
-    private Quaternion anguloDesejadoAberturaDireita;
-
-    private GarraInteracaoComPowerUp garraInteracaoPowerUp;
+    private Quaternion anguloDesejadoAberturaDireita;    
 
     public MovimentacaoSoltar()
     {
@@ -31,14 +29,8 @@ public class MovimentacaoSoltar : MovimentacaoDaGarraPowerUp
     private void acaoSoltarPowerUp()
     {
         pararGarra();
-        garraInteracaoPowerUp.parar();
-        garraInteracaoPowerUp.ligarGravidade();
-        garraInteracaoPowerUp.fixarVerticalmente();        
-    }
-
-    //TODO EM DUPLICIDADE COM MOVIMENTACAOSEGURANDOEMCIMA
-    public void receberInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp)
-    {
-        this.garraInteracaoPowerUp = garraInteracaoPowerUp;
-    }
+        garraInteracaoComPowerUp.parar();
+        garraInteracaoComPowerUp.ligarGravidade();
+        garraInteracaoComPowerUp.fixarVerticalmente();        
+    } 
 }

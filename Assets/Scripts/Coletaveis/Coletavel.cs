@@ -29,7 +29,7 @@ public class Coletavel
         rigidbody = goColetavel.GetComponent<Rigidbody2D>();
     }   
 
-    public void colocarNaPosicao(Vector3 posicao) {
+    public virtual void colocarNaPosicao(Vector3 posicao) {
         goColetavel.transform.position = posicao;
     }
 
@@ -37,6 +37,11 @@ public class Coletavel
         colocarNaPosicao(posicao);
         rigidbody.transform.rotation = rotacao;
     }   
+
+    public void colocarNoAngulo(float angulo)
+    {
+        rigidbody.transform.rotation = Quaternion.Euler(0, 0, angulo);
+    }
 
     public Vector3 getPosicao()
     {
@@ -83,7 +88,7 @@ public class Coletavel
         receberSprite(dicionarioDeSprites[nomeSprite]);
     }
 
-    public void parar()
+    public virtual void parar()
     {
         rigidbody.velocity = Vector2.zero;
         rigidbody.angularVelocity = 0;
@@ -99,17 +104,17 @@ public class Coletavel
         goColetavel.SetActive(true);
     }
 
-    public void desligarGravidade()
+    public virtual void desligarGravidade()
     {
         rigidbody.gravityScale = 0;
     }
 
-    public void ligarGravidade()
+    public virtual void ligarGravidade()
     {
         rigidbody.gravityScale = 1;
     }
 
-    public void fixarVerticalmente()
+    public virtual void fixarVerticalmente()
     {
         rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }

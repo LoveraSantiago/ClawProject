@@ -1,12 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-public class PowerUpBomba : Coletavel,
-                            GarraInteracaoComPowerUp,
+public class BombaPowerUpGo : AbstractPowerUpGo,
                             ConsumidorDeEventoCollider
 {
-    public static readonly string STATIC_NOME = "bomba";  
-
     private bool configurado;
     private bool acionado;
 
@@ -14,19 +11,21 @@ public class PowerUpBomba : Coletavel,
     private int bomba_idle;
     
     private Animator animator;
-
-    private static MonoBehaviour monoBehaviour;
-    private static PowerUpFinalizacao powerUpFinalizacao;
+    
     private CircleCollider2D circleCollider;
 
-    public PowerUpBomba(GameObject tileBomb, PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg)
-        : base(tileBomb, STATIC_NOME)
+    public BombaPowerUpGo(GameObject tileBomb)
+        : base(tileBomb, "bomba")
     {
-        monoBehaviour = monoBehaviourArg;
-        powerUpFinalizacao = powerUpFinalizacaoArg;
-
         bomba_explosao = Animator.StringToHash("explosao");
-        bomba_idle = Animator.StringToHash("idle");        
+        bomba_idle = Animator.StringToHash("idle");
+
+        tileBomb.SetActive(false);
+    }
+
+    public override bool garraPodeSegurar()
+    {
+        return true;
     }
 
     public void consumirEvento(Collision2D evento)
@@ -49,8 +48,6 @@ public class PowerUpBomba : Coletavel,
                 
         PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
-        desligar();
-        animator.Play(bomba_idle);
         resetMe();
         yield return new WaitForSeconds(1.1f);
 
@@ -60,6 +57,8 @@ public class PowerUpBomba : Coletavel,
 
     private void resetMe()
     {
+        desligar();
+        animator.Play(bomba_idle);
         powerUpFinalizacao.preFinalizar();
         acionado = false;
         desafixarVerticalmente();
@@ -91,20 +90,20 @@ public class PowerUpBomba : Coletavel,
         ColetavelQuery query = new ColetavelQuery();
 
         LayerMask mask = LayerMask.GetMask("Coletavel");
-        Collider2D[] acertados = Physics2D.OverlapCircleAll(goColetavel.transform.position, 0.75f, mask);
+        Collider2D[] acertados = Physics2D.OverlapCircleAll(goColetavel.transform.position, 1f, mask);
 
         for (int contador = 0; contador < acertados.Length; contador++)
         {
             string nomeAcertado = acertados[contador].name;
             Coletavel acertado = query.getColetavelInGameByName(nomeAcertado);
             int angulo = determinarAngulo(acertado.getPosicao());
-            acertado.disparar(angulo, 5f);
+            acertado.disparar(angulo, 7.5f);
         }
     }
 
     private int determinarAngulo(Vector3 posicao)
-    {
-        if (getPosicao().x < posicao.x) return -45;
-        else return 45;
+    {        
+        if (getPosicao().x < posicao.x) return -40;
+        else return 40;
     }
 }

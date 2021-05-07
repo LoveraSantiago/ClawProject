@@ -40,9 +40,21 @@ public class Level1 : AbstractLevel
         return ColetavelEntidade.FAMILIA.FRUTAS;
     }
 
-    public override PowerUp.TIPO[] getPowerUpsParaBotoesMaquina()
+    public override PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina()
     {
-        return new PowerUp.TIPO[] { PowerUp.TIPO.BOMBA_DA_GARRA, PowerUp.TIPO.MISSIL_DA_GARRA, PowerUp.TIPO.BOMBA_DA_GARRA, PowerUp.TIPO.MISSIL_DA_GARRA,
-                                    PowerUp.TIPO.BOMBA_DA_GARRA, PowerUp.TIPO.BOMBA_DA_GARRA, PowerUp.TIPO.BOMBA_DA_GARRA, PowerUp.TIPO.BOMBA_DA_GARRA};
+        //return new PowerUpEntidade.NAME[] { PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_DA_GARRA,
+          //                        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.BOMBA_DA_GARRA};
+
+        return new PowerUpEntidade.NAME[] { PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE};
+
+        
     }
 }

@@ -5,18 +5,23 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
 {
     private static PowerUpAcionamento powerUpAcionamento;
     
-    private PowerUp powerUp;
+    private PowerUpEntidade powerUp;
     private Sprite imgBtn;
 
-    public PowerUpParaMaquina(PowerUp.TIPO tipo, Dictionary<string, Sprite> dicionarioDeSprites)
+    public PowerUpParaMaquina(PowerUpEntidade.NAME tipo, Dictionary<string, Sprite> dicionarioDeSprites)
     {
-        powerUp = PowerUp.getPowerUpByEnum(tipo);
+        powerUp = PowerUpEntidade.getPowerUpEntidadeByEnum(tipo);
         imgBtn = dicionarioDeSprites[powerUp.nomeSprite];
     }
 
     public void acionar()
     {
         powerUpAcionamento.acionado(powerUp);
+    }
+
+    public void acionar(Vector3 posicaoAtual)
+    {
+        powerUpAcionamento.acionado(powerUp, posicaoAtual);
     }
 
     public bool isClicavel()
@@ -38,4 +43,5 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
     {
         return imgBtn;
     }
+
 }
