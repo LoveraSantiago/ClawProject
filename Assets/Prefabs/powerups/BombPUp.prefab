@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 31
+  m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: ff767bdfc020f404783fe84614e5a795, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 4127936681606313066}
   - component: {fileID: 4650425360090855602}
   m_Layer: 14
-  m_Name: TileBomb
+  m_Name: BombPUp
   m_TagString: Laranja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
