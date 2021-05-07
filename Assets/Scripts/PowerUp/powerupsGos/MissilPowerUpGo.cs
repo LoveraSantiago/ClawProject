@@ -11,8 +11,7 @@ public class MissilPowerUpGo : AbstractPowerUpGo,
     private int missil_explosao;
     private int missil_idle;
 
-    private GameObject goExplosao;
-    private GameObject goImagem;
+    private GameObject goExplosao;    
     private Animator animator;
  
     public MissilPowerUpGo(GameObject tileMissil)
@@ -43,8 +42,7 @@ public class MissilPowerUpGo : AbstractPowerUpGo,
         yield return new WaitForSeconds(0.4f);
 
         goExplosao.SetActive(true);
-        animator.Play(missil_explosao);
-        goImagem.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+        animator.Play(missil_explosao);        
         yield return new WaitForSeconds(0.25f);
 
         goExplosao.SetActive(false);
@@ -63,8 +61,7 @@ public class MissilPowerUpGo : AbstractPowerUpGo,
         animator.Play(missil_idle);
         powerUpFinalizacao.preFinalizar();
         acionado = false;
-        desafixarVerticalmente();
-        goImagem.transform.localScale = new Vector3(1, 1, 1);
+        desafixarVerticalmente();        
         colocarNoAngulo(0);
     }
 
@@ -82,9 +79,8 @@ public class MissilPowerUpGo : AbstractPowerUpGo,
         goColetavel.GetComponent<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);
         
-        goExplosao = goColetavel.transform.Find("explosao").gameObject;
-        goImagem = goColetavel.transform.Find("imagem").gameObject;
-        animator = goImagem.GetComponent<Animator>();
+        goExplosao = goColetavel.transform.Find("explosao").gameObject;        
+        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
 
         configurado = true;
     }    
