@@ -90,20 +90,20 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         ColetavelQuery query = new ColetavelQuery();
 
         LayerMask mask = LayerMask.GetMask("Coletavel");
-        Collider2D[] acertados = Physics2D.OverlapCircleAll(goColetavel.transform.position, 0.75f, mask);
+        Collider2D[] acertados = Physics2D.OverlapCircleAll(goColetavel.transform.position, 1f, mask);
 
         for (int contador = 0; contador < acertados.Length; contador++)
         {
             string nomeAcertado = acertados[contador].name;
             Coletavel acertado = query.getColetavelInGameByName(nomeAcertado);
             int angulo = determinarAngulo(acertado.getPosicao());
-            acertado.disparar(angulo, 5f);
+            acertado.disparar(angulo, 7.5f);
         }
     }
 
     private int determinarAngulo(Vector3 posicao)
-    {
-        if (getPosicao().x < posicao.x) return -45;
-        else return 45;
+    {        
+        if (getPosicao().x < posicao.x) return -40;
+        else return 40;
     }
 }

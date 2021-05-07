@@ -162,8 +162,8 @@ PointEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 128
-  m_ForceMagnitude: 850
-  m_ForceVariation: 850
+  m_ForceMagnitude: 550
+  m_ForceVariation: 0
   m_DistanceScale: 1
   m_ForceSource: 0
   m_ForceTarget: 0
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 4650425360090855602}
   - component: {fileID: 5164385478853921255}
   m_Layer: 14
-  m_Name: TileMissil
+  m_Name: MissilPUp
   m_TagString: Laranja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -49,6 +49,7 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
         yield return new WaitForSeconds(tempoExplosao);
 
         goExplosao.SetActive(true);
+        goExplosao.transform.position = new Vector3(goExplosao.transform.position.x, goExplosao.transform.position.y + 0.4f, goExplosao.transform.position.z);
         animator.Play(mina_explosao);
         yield return new WaitForSeconds(0.25f);
 
@@ -64,7 +65,7 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
 
     private void resetMe()
     {
-        desligar();
+        desligar();        
         animator.Play(mina_idle);
         powerUpFinalizacao.preFinalizar();                
     }
@@ -73,8 +74,7 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
     {
         animator   = goColetavel.transform.Find("imagem").GetComponent<Animator>();
         goExplosao = goColetavel.transform.Find("explosao").gameObject;
-
-        tempoExplosao = PowerUpEntidade.getPowerUpEntidadeByEnum(PowerUpEntidade.NAME.MINA_TERRESTRE).duracao;
+        
         configurado = true;
     }
 

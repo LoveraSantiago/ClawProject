@@ -38,6 +38,11 @@ public class Coletavel
         rigidbody.transform.rotation = rotacao;
     }   
 
+    public void colocarNoAngulo(float angulo)
+    {
+        rigidbody.transform.rotation = Quaternion.Euler(0, 0, angulo);
+    }
+
     public Vector3 getPosicao()
     {
         return goColetavel.transform.position;

@@ -65,6 +65,7 @@ public class MissilPowerUpGo : AbstractPowerUpGo,
         acionado = false;
         desafixarVerticalmente();
         goImagem.transform.localScale = new Vector3(1, 1, 1);
+        colocarNoAngulo(0);
     }
 
     public override void ligar()
