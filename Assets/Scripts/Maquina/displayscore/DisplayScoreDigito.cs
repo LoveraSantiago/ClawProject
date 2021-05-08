@@ -63,10 +63,7 @@ public class DisplayScoreDigito
     private void desligarPosicoes(int[,] array)
     {
         if (array == null) return;
-        for (contadorX = 0; contadorX < array.GetLength(0); contadorX++)
-        {
-            arrayDeLeds[array[contadorX, 0], array[contadorX, 1]].color = corOriginal;
-        }
+        ligarPosicoes(array, corOriginal);        
     }
 
     private int[,] getArrayParaLigar(int caracter)
