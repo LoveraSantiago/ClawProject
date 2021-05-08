@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DisplayDigito 
+public class DisplayScoreDigito 
 {
     private SpriteRenderer[,] arrayDeLeds = new SpriteRenderer[5,7];
     private int contadorX;
@@ -13,7 +13,7 @@ public class DisplayDigito
 
     private int[,] arrayLigados;
 
-    public DisplayDigito(GameObject goDisplay)
+    public DisplayScoreDigito(GameObject goDisplay)
     {
         Transform transform = goDisplay.transform;
         for (contadorX = 0; contadorX < transform.childCount; contadorX++)
@@ -63,10 +63,7 @@ public class DisplayDigito
     private void desligarPosicoes(int[,] array)
     {
         if (array == null) return;
-        for (contadorX = 0; contadorX < array.GetLength(0); contadorX++)
-        {
-            arrayDeLeds[array[contadorX, 0], array[contadorX, 1]].color = corOriginal;
-        }
+        ligarPosicoes(array, corOriginal);        
     }
 
     private int[,] getArrayParaLigar(int caracter)
@@ -91,16 +88,11 @@ public class DisplayDigito
     {
         switch (caracter)
         {
-            case "Y":
-                return ARRAY_Y;
-            case "E":
-                return ARRAY_E;
-            case "S":
-                return ARRAY_S;
-            case "!":
-                return ARRAY_EXCLAMACAO;
-            case "*":
-                return ARRAY_ASTERISCO;
+            case "Y": return ARRAY_Y;
+            case "E": return ARRAY_E;
+            case "S": return ARRAY_S;
+            case "!": return ARRAY_EXCLAMACAO;
+            case "*": return ARRAY_ASTERISCO;
         }
         return ARRAY_VAZIO;
     }

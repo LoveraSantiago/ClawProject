@@ -6,9 +6,9 @@ public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
     private int scoreDezenaAtual;
     private int scoreUnidadeAtual;
 
-    private DisplayDigito displayCentena;
-    private DisplayDigito displayDezena;
-    private DisplayDigito displayUnidade;
+    private DisplayScoreDigito displayCentena;
+    private DisplayScoreDigito displayDezena;
+    private DisplayScoreDigito displayUnidade;
 
     private OrquestradorDisplayDigitos orquestrador;
     private MonoBehaviour monoBehaviour;
@@ -20,9 +20,9 @@ public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
         this.monoBehaviour = monoBehaviour;
 
         GameObject[] displayScores = displayDeScoresDto.GosDisplayScores;
-        displayCentena = new DisplayDigito(displayScores[0]);
-        displayDezena  = new DisplayDigito(displayScores[1]);
-        displayUnidade = new DisplayDigito(displayScores[2]);
+        displayCentena = new DisplayScoreDigito(displayScores[0]);
+        displayDezena  = new DisplayScoreDigito(displayScores[1]);
+        displayUnidade = new DisplayScoreDigito(displayScores[2]);
 
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
