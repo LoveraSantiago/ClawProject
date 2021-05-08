@@ -91,16 +91,11 @@ public class DisplayScoreDigito
     {
         switch (caracter)
         {
-            case "Y":
-                return ARRAY_Y;
-            case "E":
-                return ARRAY_E;
-            case "S":
-                return ARRAY_S;
-            case "!":
-                return ARRAY_EXCLAMACAO;
-            case "*":
-                return ARRAY_ASTERISCO;
+            case "Y": return ARRAY_Y;
+            case "E": return ARRAY_E;
+            case "S": return ARRAY_S;
+            case "!": return ARRAY_EXCLAMACAO;
+            case "*": return ARRAY_ASTERISCO;
         }
         return ARRAY_VAZIO;
     }
