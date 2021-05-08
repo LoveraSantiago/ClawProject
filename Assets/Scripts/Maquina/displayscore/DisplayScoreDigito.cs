@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DisplayDigito 
+public class DisplayScoreDigito 
 {
     private SpriteRenderer[,] arrayDeLeds = new SpriteRenderer[5,7];
     private int contadorX;
@@ -13,7 +13,7 @@ public class DisplayDigito
 
     private int[,] arrayLigados;
 
-    public DisplayDigito(GameObject goDisplay)
+    public DisplayScoreDigito(GameObject goDisplay)
     {
         Transform transform = goDisplay.transform;
         for (contadorX = 0; contadorX < transform.childCount; contadorX++)

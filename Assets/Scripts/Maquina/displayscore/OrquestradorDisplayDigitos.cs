@@ -5,13 +5,13 @@ public class OrquestradorDisplayDigitos
 {
     private DisplayDeScoreDto displayDeScoresDto;
 
-    private DisplayDigito displayCentena;
-    private DisplayDigito displayDezena;
-    private DisplayDigito displayUnidade;
+    private DisplayScoreDigito displayCentena;
+    private DisplayScoreDigito displayDezena;
+    private DisplayScoreDigito displayUnidade;
 
     public OrquestradorDisplayDigitos(
         DisplayDeScoreDto displayDeScoresDto,
-        DisplayDigito displayCentena, DisplayDigito displayDezena, DisplayDigito displayUnidade)
+        DisplayScoreDigito displayCentena, DisplayScoreDigito displayDezena, DisplayScoreDigito displayUnidade)
     {
         this.displayDeScoresDto = displayDeScoresDto;
         this.displayCentena = displayCentena;
