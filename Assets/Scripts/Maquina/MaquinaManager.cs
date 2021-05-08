@@ -6,6 +6,8 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
 
     private DisplaysDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
+    private DisplayTimer displayTimer;
+
     private JoystickHaste joystickHaste;
     private BotoesPowerUp botoesPowerUp;
 
@@ -14,6 +16,8 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     {
         displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
+        displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
+
         joystickHaste      = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
     }
@@ -26,6 +30,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     public void update()
     {
         botoesPowerUp.update();
+        displayTimer.update();
     }
 
     public void fixedUpdate()

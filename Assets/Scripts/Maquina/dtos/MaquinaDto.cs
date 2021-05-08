@@ -10,6 +10,7 @@ public class MaquinaDto
     [Space(5)]
     [SerializeField] private DisplayDeColetadoDto displayDeColetadoDto;
     [Space(5)]
+    [SerializeField] private DisplayTimerDto displayTimerDto;
     [SerializeField] private DisplayDeScoreDto displayDeScoreDto;
     [Space(5)]
     [SerializeField] private BotoesPowerUpDto botoesPowerUpDto;
@@ -19,6 +20,7 @@ public class MaquinaDto
 
     public DisplayDeColetadoDto DisplayDeColetadoDto { get { return displayDeColetadoDto; } }
     public DisplayDeScoreDto DisplayDeScoreDto { get { return displayDeScoreDto; } }
+    public DisplayTimerDto DisplayTimerDto { get { return displayTimerDto; } }
     
     public BotoesPowerUpDto BotoesPowerUpDto { get { return botoesPowerUpDto; } }
 }
