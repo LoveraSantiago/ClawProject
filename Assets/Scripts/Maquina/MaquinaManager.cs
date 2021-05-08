@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
@@ -25,6 +26,11 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     public void configuradoPeloLevel(PowerUpEntidade.NAME[] arrayDePowerUpsParaBotoes)
     {
         botoesPowerUp.configuraradoPeloLevel(arrayDePowerUpsParaBotoes);
+    }
+
+    public void start()
+    {
+        displayTimer.iniciarContagemTempo();
     }
 
     public void update()
@@ -112,6 +118,6 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     public ConsumidorDeEvento<PowerUpInfoFim> getConsumidorDePowerUpFim()
     {
         return this;
-    }   
+    }    
     //CONSUMIDORES DE EVENTOS FIM
 }

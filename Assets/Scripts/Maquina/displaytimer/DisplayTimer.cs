@@ -4,12 +4,13 @@ using UnityEngine;
 using System;
 
 public class DisplayTimer 
-{
+{    
+    private int segundosUnidadeAtual;
+    private int segundosDezenaAtual;
+    private int minutosUnidadeAtual;
+    private int minutosDezenaAtual;
     private float tempoInicial;   
-
-    private ContadorDeTempo contadorDeTempo;
     private DisplayTimerDigito[] displayTimerDigito;
-    
 
     public DisplayTimer(DisplayTimerDto displayDto)
     {
@@ -18,19 +19,17 @@ public class DisplayTimer
         for(int contador = 0; contador < displayTimerDigito.Length; contador++)
         {
             displayTimerDigito[contador] = new DisplayTimerDigito(displayDto.GosDisplayTimers[contador]);
-        }
+        }    
+    }
 
-        contadorDeTempo = new ContadorDeTempo(1);
+    public void iniciarContagemTempo()
+    {        
         tempoInicial = Time.time;
     }
 
     public void update()
-    {
-        if (contadorDeTempo.contarTempoDT())
-        {
-            atualizarTempo();
-            contadorDeTempo.resetContador();
-        }
+    {     
+        atualizarTempo();     
     }
 
     private void atualizarTempo()
@@ -38,21 +37,28 @@ public class DisplayTimer
         float tempoAtual = Time.time - tempoInicial;
         TimeSpan timeSpan = TimeSpan.FromSeconds(tempoAtual);
 
-        double minutos = timeSpan.TotalMinutes;
-        double segundos = timeSpan.TotalSeconds;
-
-        int dezenaMinutos = (int) (minutos / 10);
-        int unidadeMinutos = (int) (minutos - (dezenaMinutos * 10));
-
+        double segundos = timeSpan.Seconds;
         int dezenaSegundos = (int)(segundos / 10);
         int unidadeSegundos = (int)(segundos - (dezenaSegundos * 10));
 
-        displayTimerDigito[0].mostrarDigito(dezenaMinutos);
-        displayTimerDigito[1].mostrarDigito(unidadeMinutos);
-        displayTimerDigito[2].mostrarDigito(dezenaSegundos);
+        if (unidadeSegundos == segundosUnidadeAtual) return;
+        segundosUnidadeAtual = unidadeSegundos;
         displayTimerDigito[3].mostrarDigito(unidadeSegundos);
 
-    }
+        if (dezenaSegundos == segundosDezenaAtual) return;
+        segundosDezenaAtual = dezenaSegundos;
+        displayTimerDigito[2].mostrarDigito(dezenaSegundos);
 
-    
+        double minutos = timeSpan.Minutes;
+        int dezenaMinutos = (int) (minutos / 10);
+        int unidadeMinutos = (int) (minutos - (dezenaMinutos * 10));
+
+        if (unidadeMinutos == minutosUnidadeAtual) return;
+        minutosUnidadeAtual = unidadeMinutos;
+        displayTimerDigito[1].mostrarDigito(unidadeMinutos);
+
+        if (dezenaMinutos == minutosDezenaAtual) return;
+        minutosDezenaAtual = dezenaMinutos;
+        displayTimerDigito[0].mostrarDigito(dezenaMinutos);
+    }   
 }

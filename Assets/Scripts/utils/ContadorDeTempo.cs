@@ -17,7 +17,7 @@ public class ContadorDeTempo
     public bool contarTempoDT()
     {
         contadorTempo -= Time.deltaTime;
-        if (contadorTempo < 0)
+        if (contadorTempo <= 0)
         {
             return true;
         }
@@ -27,7 +27,7 @@ public class ContadorDeTempo
     public bool contarTempoFDT()
     {
         contadorTempo -= Time.fixedDeltaTime;
-        if (contadorTempo < 0)
+        if (contadorTempo <= 0)
         {
             return true;
         }

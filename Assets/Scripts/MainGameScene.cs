@@ -116,7 +116,8 @@ public class MainGameScene : MonoBehaviour,
     private void startLaizy()
     {
         coletaveisManager.start();
-        garraManager.start();        
+        garraManager.start();
+        maquinaManager.start();
     }
     
     void Update()
