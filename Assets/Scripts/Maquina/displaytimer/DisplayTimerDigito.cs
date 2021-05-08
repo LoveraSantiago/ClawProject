@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DisplayTimerDigito 
@@ -19,6 +17,7 @@ public class DisplayTimerDigito
             Transform transfSegmento = goDisplayDigito.transform.Find("seg-" + (contador + 1));
             arrayDeLeds[contador] = transfSegmento.GetComponent<SpriteRenderer>();
         }
+        corOriginal = arrayDeLeds[0].color;
         mostrarDigito(0);
     }
 
