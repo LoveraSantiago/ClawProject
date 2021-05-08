@@ -73,6 +73,6 @@ public class DisplayTimerDigito
     private static int[] ARRAY_CINCO  = new int[] { 0, 2, 3, 5, 6 };
     private static int[] ARRAY_SEIS   = new int[] { 0, 2, 3, 4 ,5 , 6 };
     private static int[] ARRAY_SETE   = new int[] { 0, 1, 2 };
-    private static int[] ARRAY_OITO   = new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
+    private static int[] ARRAY_OITO   = new int[] { 0, 1, 2, 3, 4, 5, 6 };
     private static int[] ARRAY_NOVE   = new int[] { 0, 1, 2, 5, 6 };
 }
