@@ -27,9 +27,12 @@ public class Rope : MonoBehaviour
 
         ropeStartPoint = this.transform.position;
 
-        for(int i = 0; i < segmentLenght; i++)
+        Vector3[] ropePositions = new Vector3[this.segmentLenght];
+        lineRenderer.GetPositions(ropePositions);
+
+        for (int i = 0; i < segmentLenght; i++)
         {
-            this.ropeSegments.Add(new RopeSegment(ropeStartPoint));
+            this.ropeSegments.Add(new RopeSegment(ropePositions[i]));
             ropeStartPoint.y -= ropeSegLen;
         }
     }
