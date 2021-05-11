@@ -3,7 +3,7 @@ using UnityEngine;
 #pragma warning disable 0649
 [System.Serializable]
 public class GarraDto 
-{
+{   //TODO TALVEZ AGRUPAR EM UM DTO DE ANGULOS MANTENDO UMA UNICA REFERENCIA
     [SerializeField] private float velocMovHorizontal;
     [SerializeField] private float velocMovCima;
     [SerializeField] private float velocMovBaixo;
@@ -24,6 +24,8 @@ public class GarraDto
     [SerializeField] private Transform pincaEsquerda;
     [SerializeField] private Transform pincaDireita;
     [SerializeField] private GameObject colisor;
+    [Space(5)]
+    [SerializeField] private CaboGarraDto caboDto;
 
     public float VelocMovHorizontal { get { return velocMovHorizontal; } }   
     public float VelocMovCima { get { return velocMovCima; } }   
@@ -45,5 +47,7 @@ public class GarraDto
     public Transform PincaEsquerda { get { return pincaEsquerda; } }
     public Transform PincaDireita { get { return pincaDireita; } }
     public GameObject Colisor { get { return colisor; } }
+
+    public CaboGarraDto CaboDaGarraDto { get { return caboDto; } }
 
 }

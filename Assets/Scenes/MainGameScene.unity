@@ -5328,6 +5328,9 @@ MonoBehaviour:
     pincaEsquerda: {fileID: 1879337338}
     pincaDireita: {fileID: 1879337337}
     colisor: {fileID: 745325034}
+    caboDto:
+      transfInicioCabo: {fileID: 1336653433}
+      lineRenderer: {fileID: 1461260543}
   coletaveisDto:
     sensorDeColetado: {fileID: 2083913115}
     tile: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
@@ -16888,6 +16891,11 @@ Transform:
 --- !u!4 &1336653433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8245793874599924410, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
+  m_PrefabInstance: {fileID: 958265028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!120 &1461260543 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
   m_PrefabInstance: {fileID: 958265028}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1473191373
