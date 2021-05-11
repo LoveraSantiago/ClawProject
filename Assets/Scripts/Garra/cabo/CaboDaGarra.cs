@@ -90,8 +90,8 @@ public class CaboDaGarra
 
         for (int i = 0; i < ropeSegments.Count - 1; i++)
         {
-            SegmentoCabo firstSeg = this.ropeSegments[i];
-            SegmentoCabo secondSeg = this.ropeSegments[i + 1];
+            SegmentoCabo firstSeg  = ropeSegments[i];
+            SegmentoCabo secondSeg = ropeSegments[i + 1];
 
             float dist = (firstSeg.posNow - secondSeg.posNow).magnitude;
             float error = Mathf.Abs(dist - caboDto.TamanhoSegmento);

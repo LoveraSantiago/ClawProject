@@ -36,6 +36,7 @@ public class GarraManager : ConsumidorDeEventoTrigger,
 
     public void start()
     {
+        cabo.start();
         gerDeMovAtual.iniciarMovimentacoes();
     }
 
