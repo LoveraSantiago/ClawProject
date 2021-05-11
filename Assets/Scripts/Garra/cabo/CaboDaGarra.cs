@@ -6,7 +6,7 @@ public class CaboDaGarra
     private CaboGarraDto caboDto;
     private Transform posicaoGarra;
 
-    private List<SegmentoCabo> ropeSegments;
+    private List<SegmentoCabo> listaDeSegmentos;
     private Vector3 ropeStartPoint;
 
     public CaboDaGarra(CaboGarraDto caboGarraDto, Transform posicaoGarra)
@@ -14,19 +14,20 @@ public class CaboDaGarra
         this.caboDto = caboGarraDto;
         this.posicaoGarra = posicaoGarra;
 
-        ropeSegments = new List<SegmentoCabo>();
+        listaDeSegmentos = new List<SegmentoCabo>();
     }
 
     public void start()
     {
+        SegmentoCabo.configurarLimiteHorizontalMinimo(caboDto.TransfInicioCabo.localPosition.x);
         definirGrossuraDoCabo();
 
-        Vector3[] ropePositions = new Vector3[caboDto.LineRenderer.positionCount];
-        caboDto.LineRenderer.GetPositions(ropePositions);
+        Vector3[] posicoes = new Vector3[caboDto.LineRenderer.positionCount];
+        caboDto.LineRenderer.GetPositions(posicoes);
 
-        for(int contador = 0; contador < ropePositions.Length; contador++)
+        for(int contador = 0; contador < posicoes.Length; contador++)
         {
-            ropeSegments.Add(new SegmentoCabo(ropePositions[contador]));            
+            listaDeSegmentos.Add(new SegmentoCabo(posicoes[contador]));            
         }
     }
 
@@ -48,27 +49,27 @@ public class CaboDaGarra
 
     private void desenharCabo()
     {
-        Vector3[] ropePositions = new Vector3[ropeSegments.Count];
-        for (int i = 0; i < ropePositions.Length; i++)
+        Vector3[] posicoes = new Vector3[listaDeSegmentos.Count];
+        for (int i = 0; i < posicoes.Length; i++)
         {
-            ropePositions[i] = ropeSegments[i].posNow;
+            posicoes[i] = listaDeSegmentos[i].posNow;
         }
 
-        caboDto.LineRenderer.positionCount = ropePositions.Length;
-        caboDto.LineRenderer.SetPositions(ropePositions);
+        caboDto.LineRenderer.positionCount = posicoes.Length;
+        caboDto.LineRenderer.SetPositions(posicoes);
     }
 
     private void simularGravidade()
     {
-        Vector2 forceGravity = new Vector2(0f, -1f);
-        for (int i = 0; i < ropeSegments.Count; i++)
+        Vector2 gravidade = new Vector2(0f, -1f);
+        for (int i = 0; i < listaDeSegmentos.Count; i++)
         {
-            SegmentoCabo firstSegment = ropeSegments[i];
-            Vector2 velocity = firstSegment.posNow - firstSegment.posOld;
-            firstSegment.setPosOld(firstSegment.posNow);
-            firstSegment.addPosNow(velocity);
-            firstSegment.addPosNow(forceGravity * Time.fixedDeltaTime);
-            ropeSegments[i] = firstSegment;
+            SegmentoCabo primeiroSegmento = listaDeSegmentos[i];
+            Vector2 velocity = primeiroSegmento.posNow - primeiroSegmento.posOld;
+            primeiroSegmento.setPosOld(primeiroSegmento.posNow);
+            primeiroSegmento.addPosNow(velocity);
+            primeiroSegmento.addPosNow(gravidade * Time.fixedDeltaTime);
+            listaDeSegmentos[i] = primeiroSegmento;
         }
 
         esticarSegmentos();
@@ -76,48 +77,48 @@ public class CaboDaGarra
 
     private void esticarSegmentos()
     {
-        SegmentoCabo firstSegment = ropeSegments[0];
-        firstSegment.setPosNow(caboDto.TransfInicioCabo.position);
-        ropeSegments[0] = firstSegment;
+        SegmentoCabo primeiroSegmento = listaDeSegmentos[0];
+        primeiroSegmento.setPosNow(caboDto.TransfInicioCabo.position);
+        listaDeSegmentos[0] = primeiroSegmento;
 
-        SegmentoCabo.limiteMaxX = posicaoGarra.position.x;
-        SegmentoCabo endSegment = ropeSegments[ropeSegments.Count - 1];
+        SegmentoCabo.configurarLimiteHorizontalMaximo(posicaoGarra.position.x);
+        SegmentoCabo ultimoSegmento = listaDeSegmentos[listaDeSegmentos.Count - 1];
         Vector3 posicao = posicaoGarra.position;
-        //posicao.y = posYInicial;
-        endSegment.setPosNow(posicao);
+        
+        ultimoSegmento.setPosNow(posicao);
 
-        ropeSegments[ropeSegments.Count - 1] = endSegment;
+        listaDeSegmentos[listaDeSegmentos.Count - 1] = ultimoSegmento;
 
-        for (int i = 0; i < ropeSegments.Count - 1; i++)
+        for (int i = 0; i < listaDeSegmentos.Count - 1; i++)
         {
-            SegmentoCabo firstSeg  = ropeSegments[i];
-            SegmentoCabo secondSeg = ropeSegments[i + 1];
+            SegmentoCabo segmentoAtual  = listaDeSegmentos[i];
+            SegmentoCabo segmentoProximo = listaDeSegmentos[i + 1];
 
-            float dist = (firstSeg.posNow - secondSeg.posNow).magnitude;
+            float dist = (segmentoAtual.posNow - segmentoProximo.posNow).magnitude;
             float error = Mathf.Abs(dist - caboDto.TamanhoSegmento);
-            Vector2 changeDir = Vector2.zero;
+            Vector2 direcao = Vector2.zero;
 
             if (dist > caboDto.TamanhoSegmento)
             {
-                changeDir = (firstSeg.posNow - secondSeg.posNow).normalized;
+                direcao = (segmentoAtual.posNow - segmentoProximo.posNow).normalized;
             }
             else if (dist < caboDto.TamanhoSegmento)
             {
-                changeDir = (secondSeg.posNow - firstSeg.posNow).normalized;
+                direcao = (segmentoProximo.posNow - segmentoAtual.posNow).normalized;
             }
 
-            Vector2 changeAmount = changeDir * error;
+            Vector2 ajuste = direcao * error;
             if (i != 0)
             {
-                firstSeg.subPosNow(changeAmount * 0.5f);
-                this.ropeSegments[i] = firstSeg;
-                secondSeg.addPosNow(changeAmount * 0.5f);
-                this.ropeSegments[i + 1] = secondSeg;
+                segmentoAtual.subPosNow(ajuste * 0.5f);
+                this.listaDeSegmentos[i] = segmentoAtual;
+                segmentoProximo.addPosNow(ajuste * 0.5f);
+                this.listaDeSegmentos[i + 1] = segmentoProximo;
             }
             else
             {
-                secondSeg.addPosNow(changeAmount);
-                this.ropeSegments[i + 1] = secondSeg;
+                segmentoProximo.addPosNow(ajuste);
+                this.listaDeSegmentos[i + 1] = segmentoProximo;
             }
         }
     }

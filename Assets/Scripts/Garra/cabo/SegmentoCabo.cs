@@ -2,7 +2,8 @@ using UnityEngine;
 
 public struct SegmentoCabo 
 {
-    public static float limiteMaxX;
+    private static float limiteHorizontalMaximo;
+    private static float limiteHorizontalMinimo;
 
     public Vector2 posNow { get; private set; }
     public Vector2 posOld { get; private set; }
@@ -15,14 +16,14 @@ public struct SegmentoCabo
 
     public void setPosNow(Vector2 posNow)
     {
-        if (posNow.x < -2.5f)
+        if (posNow.x < limiteHorizontalMinimo)
         {
-            posNow.x = -2.5f;
+            posNow.x = limiteHorizontalMinimo;
         }
 
-        if (posNow.x > limiteMaxX)
+        if (posNow.x > limiteHorizontalMaximo)
         {
-            posNow.x = limiteMaxX;
+            posNow.x = limiteHorizontalMaximo;
         }
         this.posNow = posNow;
     }
@@ -42,5 +43,15 @@ public struct SegmentoCabo
     {
         Vector2 sub = this.posNow - posNow;
         setPosNow(sub);
+    }
+
+    public static void configurarLimiteHorizontalMaximo(float limite)
+    {
+        limiteHorizontalMaximo = limite;
+    }
+
+    public static void configurarLimiteHorizontalMinimo(float limite)
+    {
+        limiteHorizontalMinimo = limite;
     }
 }
