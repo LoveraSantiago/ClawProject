@@ -5329,6 +5329,8 @@ MonoBehaviour:
     pincaDireita: {fileID: 1879337337}
     colisor: {fileID: 745325034}
     caboDto:
+      grossuraLinha: 0.1
+      tamanhoSegmento: 0.15
       transfInicioCabo: {fileID: 1336653433}
       lineRenderer: {fileID: 1461260543}
   coletaveisDto:
@@ -11627,6 +11629,10 @@ PrefabInstance:
     - target: {fileID: 8245793874599924411, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Name
       value: fio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245793874599924413, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924413, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: tranfFinal

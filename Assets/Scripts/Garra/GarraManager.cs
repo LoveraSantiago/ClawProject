@@ -42,7 +42,7 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     public void update()
     {
         gerDeMovAtual.update();
-        cabo.updtade();
+        cabo.update();
     }
 
     public void fixedUpdate()

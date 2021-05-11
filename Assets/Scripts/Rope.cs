@@ -16,16 +16,16 @@ public class Rope : MonoBehaviour
     
     private float lineWidth = 0.1f;
 
-    private Vector3 ropeStartPoint;
-    float posYInicial;
+    //private Vector3 ropeStartPoint;
+    //float posYInicial;
 
     void Start()
     {
         this.lineRenderer = this.GetComponent<LineRenderer>();
-        posYInicial = tranfFinal.position.y;
+        //posYInicial = tranfFinal.position.y;
         definirGrossuraDoCabo();
 
-        ropeStartPoint = this.transform.position;
+        //ropeStartPoint = this.transform.position;
 
         Vector3[] ropePositions = new Vector3[this.segmentLenght];
         lineRenderer.GetPositions(ropePositions);
@@ -33,7 +33,7 @@ public class Rope : MonoBehaviour
         for (int i = 0; i < segmentLenght; i++)
         {
             this.ropeSegments.Add(new RopeSegment(ropePositions[i]));
-            ropeStartPoint.y -= ropeSegLen;
+          //  ropeStartPoint.y -= ropeSegLen;
         }
     }
 
@@ -61,7 +61,7 @@ public class Rope : MonoBehaviour
         {
             RopeSegment firstSegment = this.ropeSegments[i];
             Vector2 velocity = firstSegment.posNow - firstSegment.posOld;
-            firstSegment.posOld = firstSegment.posNow;
+            firstSegment.setPosOld(firstSegment.posNow);
             firstSegment.addPosNow(velocity);
             firstSegment.addPosNow(forceGravity * Time.fixedDeltaTime);
             this.ropeSegments[i] = firstSegment;
@@ -135,7 +135,7 @@ public class Rope : MonoBehaviour
         public static float limiteMaxX;
 
         public Vector2 posNow { get; private set; }
-        public Vector2 posOld;
+        public Vector2 posOld { get; private set; }
 
         public RopeSegment(Vector2 pos)
         {
@@ -155,6 +155,11 @@ public class Rope : MonoBehaviour
                 posNow.x = limiteMaxX;
             }
             this.posNow = posNow;
+        }
+        
+        public void setPosOld(Vector2 posOld)
+        {
+            this.posOld = posOld;
         }
 
         public void addPosNow(Vector2 posNow)
