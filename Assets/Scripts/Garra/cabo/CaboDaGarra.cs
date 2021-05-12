@@ -50,9 +50,9 @@ public class CaboDaGarra
     private void desenharCabo()
     {
         Vector3[] posicoes = new Vector3[listaDeSegmentos.Count];
-        for (int i = 0; i < posicoes.Length; i++)
+        for (int contador = 0; contador < posicoes.Length; contador++)
         {
-            posicoes[i] = listaDeSegmentos[i].posNow;
+            posicoes[contador] = listaDeSegmentos[contador].posNow;
         }
 
         caboDto.LineRenderer.positionCount = posicoes.Length;
@@ -62,14 +62,14 @@ public class CaboDaGarra
     private void simularGravidade()
     {
         Vector2 gravidade = new Vector2(0f, -1f);
-        for (int i = 0; i < listaDeSegmentos.Count; i++)
+        for (int contador = 0; contador < listaDeSegmentos.Count; contador++)
         {
-            SegmentoCabo primeiroSegmento = listaDeSegmentos[i];
+            SegmentoCabo primeiroSegmento = listaDeSegmentos[contador];
             Vector2 velocity = primeiroSegmento.posNow - primeiroSegmento.posOld;
             primeiroSegmento.setPosOld(primeiroSegmento.posNow);
             primeiroSegmento.addPosNow(velocity);
             primeiroSegmento.addPosNow(gravidade * Time.fixedDeltaTime);
-            listaDeSegmentos[i] = primeiroSegmento;
+            listaDeSegmentos[contador] = primeiroSegmento;
         }
 
         esticarSegmentos();
@@ -89,10 +89,10 @@ public class CaboDaGarra
 
         listaDeSegmentos[listaDeSegmentos.Count - 1] = ultimoSegmento;
 
-        for (int i = 0; i < listaDeSegmentos.Count - 1; i++)
+        for (int contador = 0; contador < listaDeSegmentos.Count - 1; contador++)
         {
-            SegmentoCabo segmentoAtual  = listaDeSegmentos[i];
-            SegmentoCabo segmentoProximo = listaDeSegmentos[i + 1];
+            SegmentoCabo segmentoAtual  = listaDeSegmentos[contador];
+            SegmentoCabo segmentoProximo = listaDeSegmentos[contador + 1];
 
             float dist = (segmentoAtual.posNow - segmentoProximo.posNow).magnitude;
             float error = Mathf.Abs(dist - caboDto.TamanhoSegmento);
@@ -108,17 +108,17 @@ public class CaboDaGarra
             }
 
             Vector2 ajuste = direcao * error;
-            if (i != 0)
+            if (contador != 0)
             {
                 segmentoAtual.subPosNow(ajuste * 0.5f);
-                this.listaDeSegmentos[i] = segmentoAtual;
+                listaDeSegmentos[contador] = segmentoAtual;
                 segmentoProximo.addPosNow(ajuste * 0.5f);
-                this.listaDeSegmentos[i + 1] = segmentoProximo;
+                listaDeSegmentos[contador + 1] = segmentoProximo;
             }
             else
             {
                 segmentoProximo.addPosNow(ajuste);
-                this.listaDeSegmentos[i + 1] = segmentoProximo;
+                listaDeSegmentos[contador + 1] = segmentoProximo;
             }
         }
     }
