@@ -1,8 +1,7 @@
 using UnityEngine;
 
 public class DisplayTimerDigito 
-{
-    private int contador;
+{    
     private int[] arrayLigado;
 
     private Color corOriginal;    
@@ -12,7 +11,7 @@ public class DisplayTimerDigito
     public DisplayTimerDigito(GameObject goDisplayDigito)
     {
         arrayDeLeds = new SpriteRenderer[7];
-        for(contador = 0; contador < arrayDeLeds.Length; contador++)
+        for(int contador = 0; contador < arrayDeLeds.Length; contador++)
         {
             Transform transfSegmento = goDisplayDigito.transform.Find("seg-" + (contador + 1));
             arrayDeLeds[contador] = transfSegmento.GetComponent<SpriteRenderer>();
@@ -32,7 +31,7 @@ public class DisplayTimerDigito
     private void desligarPosicoes(int[] array)
     {
         if (array == null) return;
-        for (contador = 0; contador < array.Length; contador++)
+        for (int contador = 0; contador < array.Length; contador++)
         {
             arrayDeLeds[array[contador]].color = corOriginal;
         }
@@ -40,7 +39,7 @@ public class DisplayTimerDigito
 
     private void ligarPosicoes(int[] array)
     {
-        for (contador = 0; contador < array.Length; contador++)
+        for (int contador = 0; contador < array.Length; contador++)
         {
             arrayDeLeds[array[contador]].color = Color.red; 
         }
