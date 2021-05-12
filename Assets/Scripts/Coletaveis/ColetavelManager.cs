@@ -79,6 +79,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         infoColetado.addInfosDisplayColetados(coletavelAcertado.getSprite(), contadorDeColetaveis.getResult());
         infoColetado.addInfosDisplayScore(contadorDeColetaveis.getScore());
         infoColetado.addInfosPosicao(gameObjectColetado.transform.position);
+        infoColetado.addInfoFinalizado(contadorDeColetaveis.hasFinished());
 
         produtorDeInformacoesDoColetado.produziuEvento(infoColetado);         
     }

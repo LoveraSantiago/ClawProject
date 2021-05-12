@@ -6,6 +6,7 @@ public class InformacoesColetado
 
     public Sprite sprite { get; private set; }
     public bool resultCombinacao { get; private set; }    
+    public bool fimColetados { get; private set; }
 
     public Vector3 posicao { get; private set; }
 
@@ -23,5 +24,10 @@ public class InformacoesColetado
     public void addInfosPosicao(Vector3 vector3)
     {
         this.posicao = vector3;
+    }
+
+    public void addInfoFinalizado(bool finalizado)
+    {
+        fimColetados = finalizado;
     }
 }

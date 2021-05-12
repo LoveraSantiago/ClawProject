@@ -168,6 +168,11 @@ public class ContadorDeColetaveis
         return score;
     }
 
+    public bool hasFinished()
+    {
+        return totalColetaveis == 0;
+    }
+
     private void resetarColetados()
     {
         qtdColetados = 0;

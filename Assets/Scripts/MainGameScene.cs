@@ -27,6 +27,7 @@ public class MainGameScene : MonoBehaviour,
     private ColetavelManager coletaveisManager;
     private MaquinaManager   maquinaManager;
     private PowerUpManager   powerUpManager;
+    private ModalPontos      modalPontos;
 
     private InputGame inputGame;
     private EfeitoColetado   efeitoColetado;
@@ -60,6 +61,7 @@ public class MainGameScene : MonoBehaviour,
         maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(powerUpDto, this);
+        modalPontos       = new ModalPontos(modalPontosDto, this);
     }
 
     private void configurandoLevel()
@@ -70,6 +72,7 @@ public class MainGameScene : MonoBehaviour,
         garraManager.configuradoPeloLevel(levelEscolhido.getMecanicaDaGarra());
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
         maquinaManager.configuradoPeloLevel(levelEscolhido.getPowerUpsParaBotoesMaquina());
+        modalPontos.configurarLevel(levelEscolhido.getLevelName());
     }
     
     private void configurandoAcoes()
@@ -77,7 +80,8 @@ public class MainGameScene : MonoBehaviour,
         new AcaoEventoColetado()
             .configurarProdutor(coletaveisManager.produtorDeInformacoesDoColetado)            
             .adicionarConsumidor(maquinaManager.getConsumidorInfoColetado())
-            .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado());//TODO ver mudanca de ordem
+            .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado())
+            .adicionarConsumidor(modalPontos.getConsumidorDeInformacoesColetado());//TODO ver mudanca de ordem
 
         new AcaoImantadoPelaGarra()
             .configurarProdutor(garraManager.getProdutorDeEventoTocadoPelaGarra())
