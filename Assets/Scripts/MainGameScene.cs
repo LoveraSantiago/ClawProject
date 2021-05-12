@@ -20,6 +20,8 @@ public class MainGameScene : MonoBehaviour,
     [SerializeField] private ParticulasDto particulasDto;
     [Space(5)]
     [SerializeField] private PowerUpDto powerUpDto;
+    [Space(5)]
+    [SerializeField] private ModalPontosDto modalPontosDto;
 
     private GarraManager     garraManager;
     private ColetavelManager coletaveisManager;
