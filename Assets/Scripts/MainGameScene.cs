@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class MainGameScene : MonoBehaviour, 

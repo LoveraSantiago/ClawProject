@@ -1,8 +1,3 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System.Collections;
-
 public class ContadorDeColetaveis
 {
     private int score = 0;
