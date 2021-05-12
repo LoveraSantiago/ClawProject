@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class MainGameScene : MonoBehaviour, 
@@ -20,15 +18,14 @@ public class MainGameScene : MonoBehaviour,
     [SerializeField] private ParticulasDto particulasDto;
     [Space(5)]
     [SerializeField] private PowerUpDto powerUpDto;
-    
-    //Componentes  temporarios aqui...        
-    [Space(15)]
-    [SerializeField] private Button btnSair;    
+    [Space(5)]
+    [SerializeField] private ModalPontosDto modalPontosDto;
 
     private GarraManager     garraManager;
     private ColetavelManager coletaveisManager;
     private MaquinaManager   maquinaManager;
     private PowerUpManager   powerUpManager;
+    private ModalPontos      modalPontos;
 
     private InputGame inputGame;
     private EfeitoColetado   efeitoColetado;
@@ -45,9 +42,7 @@ public class MainGameScene : MonoBehaviour,
 
     void Start()
     {
-        Camera.main.aspect = Utils.RATIO_SCREEN;
-
-        btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));//TODO TIRAR DAQUI UMA HORA
+        Camera.main.aspect = Utils.RATIO_SCREEN;        
 
         configurandoManagers();
         configurandoLevel();
@@ -64,6 +59,7 @@ public class MainGameScene : MonoBehaviour,
         maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(powerUpDto, this);
+        modalPontos       = new ModalPontos(modalPontosDto, this);
     }
 
     private void configurandoLevel()
@@ -74,6 +70,7 @@ public class MainGameScene : MonoBehaviour,
         garraManager.configuradoPeloLevel(levelEscolhido.getMecanicaDaGarra());
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
         maquinaManager.configuradoPeloLevel(levelEscolhido.getPowerUpsParaBotoesMaquina());
+        modalPontos.configurarLevel(levelEscolhido.getLevelName());
     }
     
     private void configurandoAcoes()
@@ -81,7 +78,8 @@ public class MainGameScene : MonoBehaviour,
         new AcaoEventoColetado()
             .configurarProdutor(coletaveisManager.produtorDeInformacoesDoColetado)            
             .adicionarConsumidor(maquinaManager.getConsumidorInfoColetado())
-            .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado());//TODO ver mudanca de ordem
+            .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado())
+            .adicionarConsumidor(modalPontos.getConsumidorDeInformacoesColetado());//TODO ver mudanca de ordem
 
         new AcaoImantadoPelaGarra()
             .configurarProdutor(garraManager.getProdutorDeEventoTocadoPelaGarra())

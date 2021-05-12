@@ -30,7 +30,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
         board = new Board(coletaveisDto.BoardDto);
 
-        contadorDeColetaveis   = new ContadorDeColetaveis(this.coletaveisDto.PontosModal, monoBehaviour);
+        contadorDeColetaveis   = new ContadorDeColetaveis();
         coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
@@ -79,6 +79,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         infoColetado.addInfosDisplayColetados(coletavelAcertado.getSprite(), contadorDeColetaveis.getResult());
         infoColetado.addInfosDisplayScore(contadorDeColetaveis.getScore());
         infoColetado.addInfosPosicao(gameObjectColetado.transform.position);
+        infoColetado.addInfoFinalizado(contadorDeColetaveis.hasFinished());
 
         produtorDeInformacoesDoColetado.produziuEvento(infoColetado);         
     }

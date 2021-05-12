@@ -33,7 +33,7 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
 
     public override void ligar()
     {
-        Debug.Log("ligar");
+     //   Debug.Log("ligar");
         if (!configurado)
         {
             configurarObjetoMina();
