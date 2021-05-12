@@ -20,10 +20,6 @@ public class MainGameScene : MonoBehaviour,
     [SerializeField] private ParticulasDto particulasDto;
     [Space(5)]
     [SerializeField] private PowerUpDto powerUpDto;
-    
-    //Componentes  temporarios aqui...        
-    [Space(15)]
-    [SerializeField] private Button btnSair;    
 
     private GarraManager     garraManager;
     private ColetavelManager coletaveisManager;
@@ -45,9 +41,7 @@ public class MainGameScene : MonoBehaviour,
 
     void Start()
     {
-        Camera.main.aspect = Utils.RATIO_SCREEN;
-
-        btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));//TODO TIRAR DAQUI UMA HORA
+        Camera.main.aspect = Utils.RATIO_SCREEN;        
 
         configurandoManagers();
         configurandoLevel();
