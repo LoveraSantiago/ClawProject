@@ -9,15 +9,18 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     private GerenciadorDeMovimentacaoNormal  gerDeMovNormal;
     private GerenciadorDeMovimentacaoPowerUp gerDeMovPowerUp;
     private GerenciadorDeMovimentacao gerDeMovAtual;
+    private CaboDaGarra cabo;
 
-    public GarraManager(GarraDto componentesDaGarraDto, InputGame inputGame)
+    public GarraManager(GarraDto garraDto, InputGame inputGame)
     {
-        MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(componentesDaGarraDto, inputGame);
+        MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(garraDto, inputGame);
         gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
         gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
         gerDeMovAtual = gerDeMovNormal;
 
-        configurarColisorCentroDaPinca(componentesDaGarraDto.Colisor);
+        configurarColisorCentroDaPinca(garraDto.Colisor);
+
+        cabo = new CaboDaGarra(garraDto.CaboDaGarraDto, garraDto.RigidBody.transform);
     }
 
     private void configurarColisorCentroDaPinca(GameObject goColisor)
@@ -33,17 +36,20 @@ public class GarraManager : ConsumidorDeEventoTrigger,
 
     public void start()
     {
+        cabo.start();
         gerDeMovAtual.iniciarMovimentacoes();
     }
 
     public void update()
     {
         gerDeMovAtual.update();
+        cabo.update();
     }
 
     public void fixedUpdate()
     {
         gerDeMovAtual.fixedUpdate();
+        cabo.fixedUpdate();
     }
 
     private void processarGarraColidiuCom(Collider2D other)
