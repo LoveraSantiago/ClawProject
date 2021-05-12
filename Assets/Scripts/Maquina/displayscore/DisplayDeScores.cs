@@ -42,7 +42,7 @@ public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
 
     public void piscarAsteriscos()
     {
-        Debug.Log("PiscarAstericos");
+        //Debug.Log("PiscarAstericos");
         cancelarCoroutine();
         coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.blinkarAsteriscos());
     }

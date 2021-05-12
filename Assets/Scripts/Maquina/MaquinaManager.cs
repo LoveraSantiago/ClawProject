@@ -86,8 +86,8 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
     public void consumirEvento(PowerUpInfoFim powerUpInfoFim)
     {
-        Debug.Log("Maquina consumindo prefim " + powerUpInfoFim.preFinalizar);
-        Debug.Log("Maquina consumindo fim " + powerUpInfoFim.finalizar);
+        //Debug.Log("Maquina consumindo prefim " + powerUpInfoFim.preFinalizar);
+        //Debug.Log("Maquina consumindo fim " + powerUpInfoFim.finalizar);
         if (powerUpInfoFim.preFinalizar)
         {     
             processarPreFimDePowerUp();
