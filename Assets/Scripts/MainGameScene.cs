@@ -38,14 +38,14 @@ public class MainGameScene : MonoBehaviour,
     void OnEnable()
     {
         //forcando escala Y pra ficar dentro da safe area
-        //float escalaY = Screen.safeArea.height / Screen.height;
-        //float escalaX = Screen.safeArea.width / Screen.width;
-        //transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
+        float escalaY = Screen.safeArea.height / Screen.height;
+        float escalaX = Screen.safeArea.width / Screen.width;
+        transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
     }
 
     void Start()
     {
-        //Camera.main.aspect = Utils.RATIO_SCREEN;
+        Camera.main.aspect = Utils.RATIO_SCREEN;
 
         btnSair.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));//TODO TIRAR DAQUI UMA HORA
 
