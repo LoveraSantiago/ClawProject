@@ -6,7 +6,7 @@ public class CaboDaGarra
     private CaboGarraDto caboDto;
     private Transform posicaoGarra;
 
-    private List<SegmentoCabo> listaDeSegmentos;
+    private List<SegmentoCabo> listaDeSegmentos;//TODO tentar trocar por um array
     private Vector3 ropeStartPoint;
 
     public CaboDaGarra(CaboGarraDto caboGarraDto, Transform posicaoGarra)
