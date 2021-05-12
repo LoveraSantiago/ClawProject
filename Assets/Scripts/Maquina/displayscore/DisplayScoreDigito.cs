@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class DisplayScoreDigito 
 {
-    private SpriteRenderer[,] arrayDeLeds = new SpriteRenderer[5,7];
-    private int contadorX;
-    private int contadorY;
+    private SpriteRenderer[,] arrayDeLeds = new SpriteRenderer[5,7];    
 
     public int digito { get; private set; }
     public string letra { get; private set; }
@@ -16,10 +14,10 @@ public class DisplayScoreDigito
     public DisplayScoreDigito(GameObject goDisplay)
     {
         Transform transform = goDisplay.transform;
-        for (contadorX = 0; contadorX < transform.childCount; contadorX++)
+        for (int contadorX = 0; contadorX < transform.childCount; contadorX++)
         {            
             Transform transfFileira = transform.GetChild(contadorX);
-            for(contadorY = 0; contadorY < transfFileira.childCount; contadorY++)
+            for(int contadorY = 0; contadorY < transfFileira.childCount; contadorY++)
             {         
                 Transform transformLed = transfFileira.GetChild(contadorY);         
                 arrayDeLeds[contadorX, contadorY] = transformLed.GetComponent<SpriteRenderer>();
@@ -54,7 +52,7 @@ public class DisplayScoreDigito
 
     private void ligarPosicoes(int[,] array, Color cor)
     {
-        for(contadorX = 0; contadorX < array.GetLength(0); contadorX++)
+        for(int contadorX = 0; contadorX < array.GetLength(0); contadorX++)
         {            
             arrayDeLeds[array[contadorX, 0], array[contadorX, 1]].color = cor;            
         }
