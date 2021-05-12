@@ -1,5 +1,7 @@
 public abstract class AbstractLevel 
 {
+    protected static readonly string TIMER_ZERO = "00:00";
+
     public abstract string getLevelName();
 
     public abstract string getMsgObjetivoLevel();
@@ -12,4 +14,11 @@ public abstract class AbstractLevel
     public abstract ColetavelEntidade.FAMILIA getFamiliaColetavel();
 
     public abstract PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina();
+
+    public abstract string getTempoContagem();//
+
+    public bool isTempoContagemNormal()
+    {
+        return getTempoContagem().Equals(TIMER_ZERO);
+    }
 }
