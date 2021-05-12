@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 
 public class ProdutorConsumidoresDeEvento<T> : ConsumidorDeEvento<T>
-{
-    private int contador;
+{    
     private ConsumidorDeEvento<T> consumidorAtual;
     private List<ConsumidorDeEvento<T>> listaDeConsumidoresDeEvento;
 
@@ -25,7 +24,7 @@ public class ProdutorConsumidoresDeEvento<T> : ConsumidorDeEvento<T>
 
     public void consumirEvento(T evento)
     {
-        for (contador = 0; contador < listaDeConsumidoresDeEvento.Count; contador++)
+        for (int contador = 0; contador < listaDeConsumidoresDeEvento.Count; contador++)
         {
             consumidorAtual = listaDeConsumidoresDeEvento[contador];
             consumidorAtual.consumirEvento(evento);

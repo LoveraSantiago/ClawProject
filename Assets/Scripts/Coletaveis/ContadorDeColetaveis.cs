@@ -111,9 +111,9 @@ public class ContadorDeColetaveis
     private bool isCombinacaoValida()
     {
         Coletavel primeiroColetado = coletados[0];
-        for (int i = 0; i < coletados.Length; i++)
+        for (int contador = 0; contador < coletados.Length; contador++)
         {
-            if (!primeiroColetado.hasEqualsSprite(coletados[i]))
+            if (!primeiroColetado.hasEqualsSprite(coletados[contador]))
             {
                 resultCombinacao = false;
                 return false;
