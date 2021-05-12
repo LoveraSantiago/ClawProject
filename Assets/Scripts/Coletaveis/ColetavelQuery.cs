@@ -11,9 +11,11 @@ public class ColetavelQuery
 
     public ColetavelQuery()
     {
-        inicializarDicionarioDeId();
-        inicializarDicionarioDeSprites();
-        inicializarDicionarioDeFamilias();
+        dicionarioDeIds = new Dictionary<int, ColetavelEntidade>();
+        dicionarioDeSprites = new Dictionary<string, ColetavelEntidade>();
+        dicionarioDeFamilias = new Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>>();
+
+        popularDicionarios();        
     }
 
     public ColetavelEntidade getColetavelEntidadeById(int idQuery)
@@ -61,43 +63,29 @@ public class ColetavelQuery
             return null;
         }        
     }
-
-    //TODO AGRUPAR TODOS EM UM UNICO FOR MELHOR PERFORMANCE
-    private void inicializarDicionarioDeId()
-    {   
-        dicionarioDeIds = new Dictionary<int, ColetavelEntidade>();
+    
+    private void popularDicionarios()
+    {           
         for (int contador = 0; contador < ColetavelEntidade.ARRAY_COLETAVEIS_ENTIDADES.Length; contador++)
         {
             ColetavelEntidade coletavelEntidadeIt = ColetavelEntidade.ARRAY_COLETAVEIS_ENTIDADES[contador];
+
             dicionarioDeIds.Add(coletavelEntidadeIt.id, coletavelEntidadeIt);
-        }        
-    }
-
-    private void inicializarDicionarioDeSprites()
-    {        
-        dicionarioDeSprites = new Dictionary<string, ColetavelEntidade>();
-        for (int contador = 0; contador < ColetavelEntidade.ARRAY_COLETAVEIS_ENTIDADES.Length; contador++)
-        {
-            ColetavelEntidade coletavelEntidadeIt = ColetavelEntidade.ARRAY_COLETAVEIS_ENTIDADES[contador];
             dicionarioDeSprites.Add(coletavelEntidadeIt.nomeSprite, coletavelEntidadeIt);
+            addAoDicionarioDeFamilias(coletavelEntidadeIt);
         }        
-    }
+    }    
 
-    private void inicializarDicionarioDeFamilias()
+    private void addAoDicionarioDeFamilias(ColetavelEntidade coletavelEntidadeIt)
     {
-        dicionarioDeFamilias = new Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>>();
-        for (int contador = 0; contador < ColetavelEntidade.ARRAY_COLETAVEIS_ENTIDADES.Length; contador++)
+        if (!dicionarioDeFamilias.ContainsKey(coletavelEntidadeIt.familia))
         {
-            ColetavelEntidade coletavelEntidadeIt = ColetavelEntidade.ARRAY_COLETAVEIS_ENTIDADES[contador];
-            if (!dicionarioDeFamilias.ContainsKey(coletavelEntidadeIt.familia))
-            {
-                dicionarioDeFamilias.Add(coletavelEntidadeIt.familia, new List<ColetavelEntidade>());
-            }
-
-            List<ColetavelEntidade> lista = dicionarioDeFamilias[coletavelEntidadeIt.familia];
-            lista.Add(coletavelEntidadeIt);
+            dicionarioDeFamilias.Add(coletavelEntidadeIt.familia, new List<ColetavelEntidade>());
         }
-    }
+
+        List<ColetavelEntidade> lista = dicionarioDeFamilias[coletavelEntidadeIt.familia];
+        lista.Add(coletavelEntidadeIt);
+    }    
 
     public static void inicializarDicionarioDeColetaveisInGame(PoolDeColetaveis poolDeColetaveisArg)
     {
