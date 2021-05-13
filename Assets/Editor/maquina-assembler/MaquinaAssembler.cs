@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
-
+using UnityEngine.SceneManagement;
 
 public class MaquinaAssembler : EditorWindow
 {
@@ -19,8 +19,8 @@ public class MaquinaAssembler : EditorWindow
         VisualElement root = rootVisualElement;
 
         // VisualElements objects can contain other VisualElement following a tree hierarchy.
-        VisualElement label = new Label("Hello World! From C#");
-        root.Add(label);
+        //VisualElement label = new Label("Hello World! From C#");
+        //root.Add(label);
 
         // Import UXML
         var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/maquina-assembler/MaquinaAssembler.uxml");
@@ -30,8 +30,29 @@ public class MaquinaAssembler : EditorWindow
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/maquina-assembler/MaquinaAssembler.uss");
-        VisualElement labelWithStyle = new Label("Hello World! With Style");
-        labelWithStyle.styleSheets.Add(styleSheet);
-        root.Add(labelWithStyle);
+        //VisualElement labelWithStyle = new Label("Hello World! With Style");
+        //labelWithStyle.styleSheets.Add(styleSheet);
+        //root.Add(labelWithStyle);
+
+        root.Q<ColorField>("cor1").RegisterCallback<ChangeEvent<Color>>(evt =>colorir(evt.newValue));
+    }
+
+    private void colorir(Color cor)
+    {
+        Debug.Log("colorit chamado");
+        GameObject[] gos = SceneManager.GetActiveScene().GetRootGameObjects();
+        for(int contador = 0; contador < gos.Length; contador++)
+        {
+            if(gos[contador].name == "MainObject")
+            {
+                GameObject goMaquina = gos[contador].transform.Find("maquina").gameObject;
+                GameObject goFrente = goMaquina.transform.Find("frente").gameObject;
+                GameObject goCima = goFrente.transform.Find("cima").gameObject;
+                SpriteRenderer sprRender = goCima.GetComponent<SpriteRenderer>();
+                sprRender.color = cor;
+
+                break;
+            }
+        }
     }
 }

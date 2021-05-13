@@ -5,5 +5,8 @@
     xmlns:editor="UnityEditor.UIElements"
     xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
 >
-    <engine:Label text="Hello World! From UXML" />
+    <engine:Style src="MaquinaAssembler.uss"/>
+  
+    <editor:ColorField label="Cor 1" name="cor1"/>   
+
 </engine:UXML>
