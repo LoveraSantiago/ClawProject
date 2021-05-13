@@ -25,7 +25,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
     {
-        botoesPowerUp.configuraradoPeloLevel(levelEscolhido.getPowerUpsParaBotoesMaquina());
+        botoesPowerUp.configuradoPeloLevel(levelEscolhido.getPowerUpsParaBotoesMaquina());
         displayTimer.configuradoPeloLevel(levelEscolhido);
     }
 

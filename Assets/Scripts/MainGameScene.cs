@@ -127,8 +127,7 @@ public class MainGameScene : MonoBehaviour,
 
     private void FixedUpdate()
     {
-        garraManager.fixedUpdate();
-        coletaveisManager.fixedUpdate();
+        garraManager.fixedUpdate();        
         maquinaManager.fixedUpdate();
     }
 
