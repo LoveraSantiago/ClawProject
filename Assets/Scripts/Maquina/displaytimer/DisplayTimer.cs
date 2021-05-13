@@ -47,7 +47,7 @@ public class DisplayTimer
 
     public void update()
     {    
-        if(Time.frameCount % 10 == 0)//Contabilizando tempo a cada 10frames
+        if(Time.frameCount % 5 == 0)//Contabilizando tempo a cada 5frames
         {
             atualizarTempo();
             if (contadorTimer.isTimeOver())
