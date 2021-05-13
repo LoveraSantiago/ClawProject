@@ -104,6 +104,10 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(garraManager.getConsumidorDePowerUpFim())
             .adicionarConsumidor(maquinaManager.getConsumidorDePowerUpFim())
             .adicionarConsumidor(coletaveisManager.getConsumidorDePowerUpFim());
+
+        new AcaoTempoEsgotado()
+            .configurarProdutor(maquinaManager.produtorDeTempoAcabado())
+            .adicionarConsumidor(modalPontos.getConsumidorDeTempoEsgotado());
     }
 
     private void configurandoEventos()

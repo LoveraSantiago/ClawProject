@@ -121,4 +121,9 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         return this;
     }    
     //CONSUMIDORES DE EVENTOS FIM
+
+    public ProdutorDeEvento<bool> produtorDeTempoAcabado()
+    {
+        return displayTimer.produtorDeEventoTempoEsgotado;
+    }
 }

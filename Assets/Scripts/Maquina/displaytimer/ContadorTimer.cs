@@ -4,4 +4,5 @@ public interface ContadorTimer
 {
     void iniciarContagem();
     TimeSpan processarContagem();
+    bool isTimeOver();
 }

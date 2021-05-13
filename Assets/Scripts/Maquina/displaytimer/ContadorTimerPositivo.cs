@@ -10,6 +10,11 @@ public class ContadorTimerPositivo : ContadorTimer
         tempoInicial = Time.time;
     }
 
+    public bool isTimeOver()
+    {
+        return false;
+    }
+
     public TimeSpan processarContagem()
     {
         float tempoAtual = Time.time - tempoInicial;        

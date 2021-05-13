@@ -6,6 +6,7 @@ public class ContadorTimerNegativo : ContadorTimer
 {
     private double tempoRegressivoInicial;
     private double tempoInicial;
+    private double tempoResult;
 
     public ContadorTimerNegativo(string tempo)
     {
@@ -18,9 +19,15 @@ public class ContadorTimerNegativo : ContadorTimer
         tempoInicial = Time.time;
     }
 
+    public bool isTimeOver()
+    {
+        return tempoResult <= 0;
+    }
+
     public TimeSpan processarContagem()
     {
         double tempoAtual = Time.time - tempoInicial;
-        return TimeSpan.FromSeconds(tempoRegressivoInicial - tempoAtual);
+        tempoResult = tempoRegressivoInicial - tempoAtual;
+        return TimeSpan.FromSeconds(tempoResult);
     }
 }

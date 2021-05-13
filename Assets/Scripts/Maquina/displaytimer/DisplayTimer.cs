@@ -14,6 +14,7 @@ public class DisplayTimer
     private DisplayTimerDigito2Pontos displayTimer2Pontos;
 
     private ContadorTimer contadorTimer;
+    public ProdutorDeEvento<bool> produtorDeEventoTempoEsgotado { get; private set; }
 
     public DisplayTimer(DisplayTimerDto displayDto)
     {
@@ -23,7 +24,8 @@ public class DisplayTimer
         for(int contador = 0; contador < displayTimerDigito.Length; contador++)
         {
             displayTimerDigito[contador] = new DisplayTimerDigito(displayDto.GosDisplayTimers[contador]);
-        }        
+        }
+        produtorDeEventoTempoEsgotado = new ProdutorDeEvento<bool>();
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
@@ -47,7 +49,11 @@ public class DisplayTimer
     {    
         if(Time.frameCount % 10 == 0)//Contabilizando tempo a cada 10frames
         {
-            atualizarTempo();     
+            atualizarTempo();
+            if (contadorTimer.isTimeOver())
+            {
+                produtorDeEventoTempoEsgotado.produziuEvento(true);
+            }
         }
     }
 
