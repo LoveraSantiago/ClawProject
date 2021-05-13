@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class DisplayTimer 
 {    
@@ -43,8 +44,11 @@ public class DisplayTimer
     }
 
     public void update()
-    {     
-        atualizarTempo();     
+    {    
+        if(Time.frameCount % 10 == 0)//Contabilizando tempo a cada 10frames
+        {
+            atualizarTempo();     
+        }
     }
 
     private void atualizarTempo()
