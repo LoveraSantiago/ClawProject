@@ -23,9 +23,10 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
     }
 
-    public void configuradoPeloLevel(PowerUpEntidade.NAME[] arrayDePowerUpsParaBotoes)
+    public void configuradoPeloLevel(AbstractLevel levelEscolhido)
     {
-        botoesPowerUp.configuraradoPeloLevel(arrayDePowerUpsParaBotoes);
+        botoesPowerUp.configuradoPeloLevel(levelEscolhido.getPowerUpsParaBotoesMaquina());
+        displayTimer.configuradoPeloLevel(levelEscolhido);
     }
 
     public void start()
@@ -120,4 +121,9 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         return this;
     }    
     //CONSUMIDORES DE EVENTOS FIM
+
+    public ProdutorDeEvento<bool> produtorDeTempoAcabado()
+    {
+        return displayTimer.produtorDeEventoTempoEsgotado;
+    }
 }

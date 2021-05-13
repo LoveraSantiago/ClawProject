@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Level2 : AbstractLevel
 {
     public override string getLevelName()
@@ -42,8 +38,22 @@ public class Level2 : AbstractLevel
         return ColetavelEntidade.FAMILIA.FRUTAS;
     }
 
+    public override string getTempoContagem()
+    {
+        return "01:31";
+    }
+
     public override PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina()
     {
-        return new PowerUpEntidade.NAME[] { PowerUpEntidade.NAME.BOMBA_DA_GARRA };
+        return new PowerUpEntidade.NAME[] { PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
+        PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE};
     }
 }
+

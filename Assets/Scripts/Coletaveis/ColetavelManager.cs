@@ -82,9 +82,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         infoColetado.addInfoFinalizado(contadorDeColetaveis.hasFinished());
 
         produtorDeInformacoesDoColetado.produziuEvento(infoColetado);         
-    }
-
-    public void fixedUpdate() { }    
+    }    
 
     private void processarImantado(string nomeColetado)
     {        

@@ -67,10 +67,10 @@ public class MainGameScene : MonoBehaviour,
         LevelFlowManager.LEVEL levelFlow = PlayerPrefsLevel.recuperarLevel(level);
         AbstractLevel levelEscolhido = LevelFlowManager.getLevelByEnum(levelFlow);
 
-        garraManager.configuradoPeloLevel(levelEscolhido.getMecanicaDaGarra());
+        garraManager     .configuradoPeloLevel(levelEscolhido.getMecanicaDaGarra());
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
-        maquinaManager.configuradoPeloLevel(levelEscolhido.getPowerUpsParaBotoesMaquina());
-        modalPontos.configurarLevel(levelEscolhido.getLevelName());
+        maquinaManager   .configuradoPeloLevel(levelEscolhido);
+        modalPontos      .configurarLevel(levelEscolhido.getLevelName());
     }
     
     private void configurandoAcoes()
@@ -104,6 +104,10 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(garraManager.getConsumidorDePowerUpFim())
             .adicionarConsumidor(maquinaManager.getConsumidorDePowerUpFim())
             .adicionarConsumidor(coletaveisManager.getConsumidorDePowerUpFim());
+
+        new AcaoTempoEsgotado()
+            .configurarProdutor(maquinaManager.produtorDeTempoAcabado())
+            .adicionarConsumidor(modalPontos.getConsumidorDeTempoEsgotado());
     }
 
     private void configurandoEventos()
@@ -127,8 +131,7 @@ public class MainGameScene : MonoBehaviour,
 
     private void FixedUpdate()
     {
-        garraManager.fixedUpdate();
-        coletaveisManager.fixedUpdate();
+        garraManager.fixedUpdate();        
         maquinaManager.fixedUpdate();
     }
 
