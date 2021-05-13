@@ -5,5 +5,45 @@
     xmlns:editor="UnityEditor.UIElements"
     xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
 >
-    <engine:Label text="Hello World! From UXML" />
+    <engine:Style src="BoardAssemblerV4.uss"/>
+  <engine:VisualElement name="main">
+      <engine:VisualElement name="containerCima">
+        <engine:VisualElement name="container1">    
+          <engine:VisualElement name="primeiraLinha" class="ctnLinha">            
+              <engine:Button name="botaoCimaAll" class="btnDirecaoAll"/>
+              <engine:Button name="botaoCima" class="btnDirecao"/>
+          </engine:VisualElement>
+
+          <engine:VisualElement name="segundaLinha" class="ctnLinha">
+              <engine:Button name="botaoEsquerdaAll"/>
+              <engine:Button name="botaoEsquerda" class="btnDirecao"/>
+              <engine:Button name="botaoDireita" class="btnDirecao"/>
+              <engine:Button name="botaoDireitaAll" />
+          </engine:VisualElement>
+
+          <engine:VisualElement name="terceiraLinha" class="ctnLinha">          
+              <engine:Button name="botaoBaixo" class="btnDirecao"/>
+              <engine:Button name="botaoBaixoAll" class="btnDirecaoAll"/>
+          </engine:VisualElement>
+        </engine:VisualElement>
+      
+        <engine:VisualElement name="container1Lado">    
+            <engine:Button name="botaoClean" text="Clean"/>
+            <engine:Button name="botaoProcessar" text="Processar"/>
+        </engine:VisualElement>
+     </engine:VisualElement>
+      
+
+      <engine:VisualElement name="container2">
+          <engine:VisualElement name="containerBtns">
+            <engine:VisualElement name="containerBtnLinha">
+                <editor:ObjectField name="objectFieldSprite" type="UnityEngine.Sprite, UnityEngine.CoreModule" label="Coletavel" allow-scene-objects="false" />            
+                <engine:Button name="botaoMenosTodos" text="-A"/>
+                <engine:Button name="botaoMenos" text="-1"/>
+            </engine:VisualElement>
+          </engine:VisualElement>
+      </engine:VisualElement>
+  </engine:VisualElement>
+  <!--<engine:VisualElement name="containerListSprites">
+  </engine:VisualElement>-->
 </engine:UXML>
