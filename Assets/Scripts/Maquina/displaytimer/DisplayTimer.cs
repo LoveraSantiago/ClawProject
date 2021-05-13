@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 public class DisplayTimer 
 {    
@@ -13,6 +12,8 @@ public class DisplayTimer
     private DisplayTimerDigito[] displayTimerDigito;
     private DisplayTimerDigito2Pontos displayTimer2Pontos;
 
+    private ContadorTimer contadorTimer;
+
     public DisplayTimer(DisplayTimerDto displayDto)
     {
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.GoDisplayTimer2Pontos);
@@ -21,12 +22,24 @@ public class DisplayTimer
         for(int contador = 0; contador < displayTimerDigito.Length; contador++)
         {
             displayTimerDigito[contador] = new DisplayTimerDigito(displayDto.GosDisplayTimers[contador]);
-        }    
+        }        
+    }
+
+    public void configuradoPeloLevel(AbstractLevel levelEscolhido)
+    {
+        if (levelEscolhido.isTempoContagemNormal())
+        {
+            contadorTimer = new ContadorTimerPositivo();
+        }
+        else
+        {
+            contadorTimer = new ContadorTimerNegativo(levelEscolhido.getTempoContagem());
+        }
     }
 
     public void iniciarContagemTempo()
-    {        
-        tempoInicial = Time.time;
+    {
+        contadorTimer.iniciarContagem();
     }
 
     public void update()
@@ -36,8 +49,7 @@ public class DisplayTimer
 
     private void atualizarTempo()
     {
-        float tempoAtual = Time.time - tempoInicial;
-        TimeSpan timeSpan = TimeSpan.FromSeconds(tempoAtual);
+        TimeSpan timeSpan = contadorTimer.processarContagem();
 
         double segundos = timeSpan.Seconds;
         int dezenaSegundos = (int)(segundos / 10);
