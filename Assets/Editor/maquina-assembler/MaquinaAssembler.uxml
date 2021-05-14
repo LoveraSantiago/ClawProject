@@ -7,6 +7,6 @@
 >
     <engine:Style src="MaquinaAssembler.uss"/>
   
-    <editor:ColorField label="Cor 1" name="cor1"/>   
+    <editor:ColorField label="Placa cima" name="placa-cima"/>   
 
 </engine:UXML>

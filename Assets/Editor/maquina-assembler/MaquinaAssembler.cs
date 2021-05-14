@@ -34,25 +34,7 @@ public class MaquinaAssembler : EditorWindow
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
 
-        root.Q<ColorField>("cor1").RegisterCallback<ChangeEvent<Color>>(evt =>colorir(evt.newValue));
-    }
-
-    private void colorir(Color cor)
-    {
-        Debug.Log("colorit chamado");
-        GameObject[] gos = SceneManager.GetActiveScene().GetRootGameObjects();
-        for(int contador = 0; contador < gos.Length; contador++)
-        {
-            if(gos[contador].name == "MainObject")
-            {
-                GameObject goMaquina = gos[contador].transform.Find("maquina").gameObject;
-                GameObject goFrente = goMaquina.transform.Find("frente").gameObject;
-                GameObject goCima = goFrente.transform.Find("cima").gameObject;
-                SpriteRenderer sprRender = goCima.GetComponent<SpriteRenderer>();
-                sprRender.color = cor;
-
-                break;
-            }
-        }
-    }
+        MaquinaColorida maquina = new MaquinaColorida();
+        root.Q<ColorField>("placa-cima").RegisterCallback<ChangeEvent<Color>>(evt =>maquina.colorirPlacaCima(evt.newValue));
+    }    
 }
