@@ -35,17 +35,24 @@ public class MaquinaAssembler : EditorWindow
         //root.Add(labelWithStyle);
 
         MaquinaColorida maquina = new MaquinaColorida();
-
-        root.Q<ColorField>(MaquinaColorida.PLACA_CIMA).RegisterCallback<ChangeEvent<Color>>(
-            evt =>maquina.colorir(MaquinaColorida.PLACA_CIMA, evt.newValue));
-
-        root.Q<Button>("reset-" + MaquinaColorida.PLACA_CIMA)
-            .clicked += () => maquina.reset(MaquinaColorida.PLACA_CIMA);
-
-        root.Q<ColorField>(MaquinaColorida.BASE_PARTE).RegisterCallback<ChangeEvent<Color>>(
-            evt =>maquina.colorir(MaquinaColorida.BASE_PARTE, evt.newValue));
-
-        root.Q<Button>("reset-" + MaquinaColorida.BASE_PARTE)
-            .clicked += () => maquina.reset(MaquinaColorida.BASE_PARTE);
+        bindarComponentes(root, maquina, MaquinaColorida.PLACA_CIMA);
+        bindarComponentes(root, maquina, MaquinaColorida.BASE_PARTE);
+        bindarComponentes(root, maquina, MaquinaColorida.BASE_CHAO);
+        bindarComponentes(root, maquina, MaquinaColorida.BORDA_VIDRO);       
+        bindarComponentes(root, maquina, MaquinaColorida.PLACA_FRONTAL);       
+        bindarComponentes(root, maquina, MaquinaColorida.PLACA_SAIDA);       
+        bindarComponentes(root, maquina, MaquinaColorida.BARRA);       
+        bindarComponentes(root, maquina, MaquinaColorida.CHAO_DENTRO);       
+        bindarComponentes(root, maquina, MaquinaColorida.TUBO);       
+        bindarComponentes(root, maquina, MaquinaColorida.VIGA_TRAS);       
     }    
+
+    private void bindarComponentes(VisualElement root, MaquinaColorida maquina, string componente)
+    {
+        root.Q<ColorField>(componente).RegisterCallback<ChangeEvent<Color>>(
+            evt => maquina.colorir(componente, evt.newValue));
+
+        root.Q<Button>("reset-" + componente)
+            .clicked += () => maquina.reset(componente);
+    }
 }

@@ -1915,7 +1915,7 @@ GameObject:
   - component: {fileID: 6406990385582931896}
   - component: {fileID: 6406990385582931903}
   m_Layer: 0
-  m_Name: placa-frontal-parte-baixo
+  m_Name: placa-frontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2165,7 +2165,7 @@ GameObject:
   - component: {fileID: 6406990385869860179}
   - component: {fileID: 6406990385869860178}
   m_Layer: 11
-  m_Name: chao-dentro-maquina
+  m_Name: chao-dentro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
