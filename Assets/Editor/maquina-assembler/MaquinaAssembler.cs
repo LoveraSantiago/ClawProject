@@ -1,8 +1,7 @@
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEditor.UIElements;
-using UnityEngine.SceneManagement;
 
 public class MaquinaAssembler : EditorWindow
 {
@@ -12,6 +11,7 @@ public class MaquinaAssembler : EditorWindow
         MaquinaAssembler wnd = GetWindow<MaquinaAssembler>();
         wnd.titleContent = new GUIContent("MaquinaAssembler");
     }
+
 
     public void CreateGUI()
     {
@@ -36,5 +36,6 @@ public class MaquinaAssembler : EditorWindow
 
         MaquinaColorida maquina = new MaquinaColorida();
         root.Q<ColorField>("placa-cima").RegisterCallback<ChangeEvent<Color>>(evt =>maquina.colorirPlacaCima(evt.newValue));
+        root.Q<Button>("reset-placa-cima").clicked += () => maquina.resetPlacaCima();
     }    
 }

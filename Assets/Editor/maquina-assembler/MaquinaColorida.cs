@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,13 +29,19 @@ public class MaquinaColorida
         return null;
     }
 
+
+    private GameObject find(string nome)
+    {
+        return goMaquina.transform.Find(nome).gameObject;
+    }
+
     public void colorirPlacaCima(Color cor)
     {
         compPlacaCima.passarCor(cor);
     }
 
-    private GameObject find(string nome)
+    public void resetPlacaCima()
     {
-        return goMaquina.transform.Find(nome).gameObject;
+        compPlacaCima.resetCor();
     }
 }
