@@ -12,7 +12,6 @@ public class MaquinaAssembler : EditorWindow
         wnd.titleContent = new GUIContent("MaquinaAssembler");
     }
 
-
     public void CreateGUI()
     {
         // Each editor window contains a root VisualElement object
