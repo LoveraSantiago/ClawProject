@@ -35,9 +35,17 @@ public class MaquinaAssembler : EditorWindow
         //root.Add(labelWithStyle);
 
         MaquinaColorida maquina = new MaquinaColorida();
-        root.Q<ColorField>("placa-cima").RegisterCallback<ChangeEvent<Color>>(
+
+        root.Q<ColorField>(MaquinaColorida.PLACA_CIMA).RegisterCallback<ChangeEvent<Color>>(
             evt =>maquina.colorir(MaquinaColorida.PLACA_CIMA, evt.newValue));
 
-        root.Q<Button>("reset-placa-cima").clicked += () => maquina.reset(MaquinaColorida.PLACA_CIMA);
+        root.Q<Button>("reset-" + MaquinaColorida.PLACA_CIMA)
+            .clicked += () => maquina.reset(MaquinaColorida.PLACA_CIMA);
+
+        root.Q<ColorField>(MaquinaColorida.BASE_PARTE).RegisterCallback<ChangeEvent<Color>>(
+            evt =>maquina.colorir(MaquinaColorida.BASE_PARTE, evt.newValue));
+
+        root.Q<Button>("reset-" + MaquinaColorida.BASE_PARTE)
+            .clicked += () => maquina.reset(MaquinaColorida.BASE_PARTE);
     }    
 }

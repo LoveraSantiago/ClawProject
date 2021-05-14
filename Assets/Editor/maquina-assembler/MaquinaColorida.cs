@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MaquinaColorida 
 {
     public static readonly string PLACA_CIMA = "placa-cima";
+    public static readonly string BASE_PARTE = "base-parte";
 
     private GameObject goMaquina;
     private Dictionary<string, ComponenteColorivel> dicionario;
@@ -15,7 +16,8 @@ public class MaquinaColorida
     {
         goMaquina = getGoMaquina();
         dicionario = new Dictionary<string, ComponenteColorivel>();
-        dicionario.Add(PLACA_CIMA, new ComponenteColorivel(PLACA_CIMA, find(PLACA_CIMA)));
+        dicionario.Add(PLACA_CIMA, new SingleCompColorivel(PLACA_CIMA, find(PLACA_CIMA)));
+        dicionario.Add(BASE_PARTE, new DoubleCompColorivel(BASE_PARTE + "-cima", BASE_PARTE + "-baixo", find(BASE_PARTE + "-cima"), find(BASE_PARTE + "-baixo")));
     }
 
     private GameObject getGoMaquina()
