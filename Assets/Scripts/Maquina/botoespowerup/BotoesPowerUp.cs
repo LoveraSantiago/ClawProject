@@ -29,10 +29,10 @@ public class BotoesPowerUp
     private void inicializarBotoes(BotoesPowerUpDto btnsPowerUpsDto)
     {
         btnsPowerUp = new BotaoPowerUp[4];
-        btnsPowerUp[0] = new BotaoPowerUp(btnsPowerUpsDto.BtnsPowerUp[0]);
-        btnsPowerUp[1] = new BotaoPowerUp(btnsPowerUpsDto.BtnsPowerUp[1]);
-        btnsPowerUp[2] = new BotaoPowerUp(btnsPowerUpsDto.BtnsPowerUp[2]);
-        btnsPowerUp[3] = new BotaoPowerUp(btnsPowerUpsDto.BtnsPowerUp[3]);
+        btnsPowerUp[0] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[0], btnsPowerUpsDto.BtnsPowerUp[0]);
+        btnsPowerUp[1] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[1], btnsPowerUpsDto.BtnsPowerUp[1]);
+        btnsPowerUp[2] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[2], btnsPowerUpsDto.BtnsPowerUp[2]);
+        btnsPowerUp[3] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[3], btnsPowerUpsDto.BtnsPowerUp[3]);
     }
 
     public void configuradoPeloLevel(PowerUpEntidade.NAME[] arrayDePowerUpsParaBotoes)

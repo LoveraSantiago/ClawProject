@@ -11,10 +11,16 @@ public class BotoesPowerUpDto
     [SerializeField] private Sprite[] spritesDeBotoes;
     [Space(5)]
     [SerializeField] private GameObject areaDraggavel;
+    [Space(5)]
+    [SerializeField] private BotaoPowerUpDto[] btnPowerUp = new BotaoPowerUpDto[4];
 
     public Sprite[] BordasBtns { get { return bordasBtns;  } }
+
     public GameObject[] BtnsPowerUp { get { return btnsPowerUp; } }
+
     public Sprite[] SpritesDeBotoes { get { return spritesDeBotoes; } }
 
     public GameObject AreaDraggavel { get { return areaDraggavel; } }
+
+    public BotaoPowerUpDto[] BtnPowerUp { get { return btnPowerUp;  } }
 }
