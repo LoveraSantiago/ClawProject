@@ -11,8 +11,8 @@ public class BotaoPowerUp : Draggavel
 
     public BotaoPowerUp(BotaoPowerUpDto botaoDto)
     {
-        aparencia = new AparenciaBotaoPowerUp(botaoDto.GoParteDentro);
-        acaoDrag  = new AcaoDragPowerUp(botaoDto.GoParteDentro, botaoDto.SprAreaBotao);
+        aparencia = new AparenciaBotaoPowerUp(botaoDto);
+        acaoDrag  = new AcaoDragPowerUp(botaoDto);
 
         isDraggavel = false;
     }
