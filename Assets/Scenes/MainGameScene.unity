@@ -5142,6 +5142,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5014026568584514284, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &292653094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014026569531479419, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &347425360 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5014026569183689271, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -5439,9 +5444,13 @@ MonoBehaviour:
       areaDraggavel: {fileID: 2139442905}
       btnPowerUp:
       - sprAreaBotao: {fileID: 347425362}
+        goParteDentro: {fileID: 646770560}
       - sprAreaBotao: {fileID: 251000134}
+        goParteDentro: {fileID: 1116124206}
       - sprAreaBotao: {fileID: 465782768}
+        goParteDentro: {fileID: 681647209}
       - sprAreaBotao: {fileID: 1241201176}
+        goParteDentro: {fileID: 292653094}
   camShakeDto:
     cineMachine: {fileID: 250677996}
     noise6d: {fileID: 11400000, guid: a31f2eaada77af94689f0b0d7e781fb6, type: 2}
@@ -10819,6 +10828,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &646770560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014026569021869673, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &650369885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10989,6 +11003,11 @@ BoxCollider2D:
 --- !u!1 &660903945 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6406990384768208898, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &681647209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014026567534351098, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &701492453
@@ -11801,6 +11820,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088575702}
   m_CullTransparentMesh: 1
+--- !u!1 &1116124206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014026569486892716, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1171204405
 PrefabInstance:
   m_ObjectHideFlags: 0

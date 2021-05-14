@@ -9,11 +9,10 @@ public class BotaoPowerUp : Draggavel
     private AcaoDragPowerUp acaoDrag;
     private AcaoBotaoPowerUp acaoBtnPowerUp;
 
-    public BotaoPowerUp(BotaoPowerUpDto botaoDto, GameObject goBotao)
-    {        
-        GameObject goBotaoInterno = goBotao.transform.Find("parte-dentro").gameObject;
-        aparencia = new AparenciaBotaoPowerUp(goBotaoInterno);
-        acaoDrag  = new AcaoDragPowerUp(goBotaoInterno, botaoDto.SprAreaBotao);
+    public BotaoPowerUp(BotaoPowerUpDto botaoDto)
+    {
+        aparencia = new AparenciaBotaoPowerUp(botaoDto.GoParteDentro);
+        acaoDrag  = new AcaoDragPowerUp(botaoDto.GoParteDentro, botaoDto.SprAreaBotao);
 
         isDraggavel = false;
     }
