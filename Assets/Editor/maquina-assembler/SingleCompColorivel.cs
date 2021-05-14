@@ -7,9 +7,9 @@ public class SingleCompColorivel : ComponenteColorivel
     private SpriteRenderer sprRenderer;
     private Color corOriginal;
 
-    public SingleCompColorivel(string nome, GameObject go)
+    public SingleCompColorivel(GameObject go)
     {
-        this.nome = nome;        
+        this.nome = go.name;        
         sprRenderer = go.GetComponent<SpriteRenderer>();
         corOriginal = sprRenderer.color;
     }

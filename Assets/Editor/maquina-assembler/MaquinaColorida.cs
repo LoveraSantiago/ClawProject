@@ -16,7 +16,7 @@ public class MaquinaColorida
     {
         goMaquina = getGoMaquina();
         dicionario = new Dictionary<string, ComponenteColorivel>();
-        dicionario.Add(PLACA_CIMA, new SingleCompColorivel(PLACA_CIMA, find(PLACA_CIMA)));
+        dicionario.Add(PLACA_CIMA, new SingleCompColorivel(find(PLACA_CIMA)));
         dicionario.Add(BASE_PARTE, new DoubleCompColorivel(BASE_PARTE + "-cima", BASE_PARTE + "-baixo", find(BASE_PARTE + "-cima"), find(BASE_PARTE + "-baixo")));
     }
 
