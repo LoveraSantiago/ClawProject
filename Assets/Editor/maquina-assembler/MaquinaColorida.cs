@@ -6,13 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class MaquinaColorida 
 {
+    public static readonly string PLACA_CIMA = "placa-cima";
+
     private GameObject goMaquina;
-    private ComponenteColorivel compPlacaCima;
+    private Dictionary<string, ComponenteColorivel> dicionario;
 
     public MaquinaColorida()
     {
         goMaquina = getGoMaquina();
-        compPlacaCima = new ComponenteColorivel("placa-cima", find("placa-cima"));
+        dicionario = new Dictionary<string, ComponenteColorivel>();
+        dicionario.Add(PLACA_CIMA, new ComponenteColorivel(PLACA_CIMA, find(PLACA_CIMA)));
     }
 
     private GameObject getGoMaquina()
@@ -35,13 +38,13 @@ public class MaquinaColorida
         return goMaquina.transform.Find(nome).gameObject;
     }
 
-    public void colorirPlacaCima(Color cor)
+    public void colorir(string nome, Color cor)
     {
-        compPlacaCima.passarCor(cor);
+        dicionario[nome].passarCor(cor);
     }
 
-    public void resetPlacaCima()
+    public void reset(string nome)
     {
-        compPlacaCima.resetCor();
+        dicionario[nome].resetCor();
     }
 }
