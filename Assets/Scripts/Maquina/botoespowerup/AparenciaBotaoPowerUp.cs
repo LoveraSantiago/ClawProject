@@ -29,10 +29,10 @@ public class AparenciaBotaoPowerUp
         Transform contorno = goBotaoInterno.transform.Find("contorno");
         spriteRendererBorda = contorno.GetComponent<SpriteRenderer>();
 
-        goImagem = contorno.Find("img-btn").gameObject;
+        goImagem = goBotaoInterno.transform.Find("img-btn").gameObject;
         spriteRendererImg = goImagem.GetComponent<SpriteRenderer>();
 
-        goExclamacao = contorno.Find("img-exclamation").gameObject;
+        goExclamacao = goBotaoInterno.transform.Find("img-exclamation").gameObject;
 
         corOriginal = spriteRendererDentro.color;
     }
