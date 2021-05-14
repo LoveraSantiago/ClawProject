@@ -6,5 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class BotaoPowerUpDto 
 {
-    
+    [SerializeField] private SpriteRenderer sprAreaBotao;
+
+    public SpriteRenderer SprAreaBotao { get { return sprAreaBotao; } }
 }

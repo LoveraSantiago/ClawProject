@@ -13,7 +13,7 @@ public class BotaoPowerUp : Draggavel
     {        
         GameObject goBotaoInterno = goBotao.transform.Find("parte-dentro").gameObject;
         aparencia = new AparenciaBotaoPowerUp(goBotaoInterno);
-        acaoDrag  = new AcaoDragPowerUp(goBotao, goBotaoInterno);
+        acaoDrag  = new AcaoDragPowerUp(goBotaoInterno, botaoDto.SprAreaBotao);
 
         isDraggavel = false;
     }
