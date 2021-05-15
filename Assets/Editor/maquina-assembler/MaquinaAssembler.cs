@@ -44,6 +44,18 @@ public class MaquinaAssembler : EditorWindow
         bindarComponentes(root, maquina, MaquinaColorida.CHAO_DENTRO);       
         bindarComponentes(root, maquina, MaquinaColorida.TUBO);       
         bindarComponentes(root, maquina, MaquinaColorida.VIGA_TRAS);       
+        bindarComponentes(root, maquina, MaquinaColorida.BTN_POWERUP_1);       
+        bindarComponentes(root, maquina, MaquinaColorida.BTN_PARTEDENTRO_1);       
+        bindarComponentes(root, maquina, MaquinaColorida.BTN_CONTORNO_1);
+        bindarComponentes(root, maquina, MaquinaColorida.BTN_POWERUP_2);       
+        bindarComponentes(root, maquina, MaquinaColorida.BTN_PARTEDENTRO_2);       
+        bindarComponentes(root, maquina, MaquinaColorida.BTN_CONTORNO_2);
+        bindarComponentes(root, maquina, MaquinaColorida.BTN_POWERUP_3);       
+        bindarComponentes(root, maquina, MaquinaColorida.BTN_PARTEDENTRO_3);       
+        bindarComponentes(root, maquina, MaquinaColorida.BTN_CONTORNO_3);
+        bindarComponentes(root, maquina, MaquinaColorida.BTN_POWERUP_4);       
+        bindarComponentes(root, maquina, MaquinaColorida.BTN_PARTEDENTRO_4);       
+        bindarComponentes(root, maquina, MaquinaColorida.BTN_CONTORNO_4);       
     }    
 
     private void bindarComponentes(VisualElement root, MaquinaColorida maquina, string componente)
