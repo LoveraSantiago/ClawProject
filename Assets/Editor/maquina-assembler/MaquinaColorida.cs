@@ -29,7 +29,14 @@ public class MaquinaColorida
     public static readonly string BTN_POWERUP_4 = "btnPowerUp4";
     public static readonly string BTN_PARTEDENTRO_4 = "parte-dentro4";
     public static readonly string BTN_CONTORNO_4 = "contorno4";
-    
+
+    public static readonly string PARTE_CIMA = "parte-cima";
+    public static readonly string PARTE_BAIXO = "parte-baixo";
+    public static readonly string FURO_HASTE = "furo-haste";
+    public static readonly string HASTE = "haste";
+    public static readonly string JOYSTICK_BOLA = "joystick-bola";
+    public static readonly string FURO_BOTAO = "furo-botao";
+    public static readonly string BOTAO = "botao";
     
 
     private GameObject goMaquina;
@@ -54,18 +61,8 @@ public class MaquinaColorida
         addBotoesAoDicionario(2, BTN_POWERUP_2, BTN_PARTEDENTRO_2, BTN_CONTORNO_2);
         addBotoesAoDicionario(3, BTN_POWERUP_3, BTN_PARTEDENTRO_3, BTN_CONTORNO_3);
         addBotoesAoDicionario(4, BTN_POWERUP_4, BTN_PARTEDENTRO_4, BTN_CONTORNO_4);
-    }
 
-    private void addBotoesAoDicionario(int indice, string strBtn, string strParteDentro, string strContorno)
-    {
-        GameObject goBotoes = find("btns-power-ups");
-        GameObject goBotao = goBotoes.transform.Find("btnPowerUp" + indice).gameObject;
-        GameObject parteDentro = goBotao.transform.Find("parte-dentro").gameObject;
-        GameObject contorno = parteDentro.transform.Find("contorno").gameObject;
-
-        dicionario.Add(strBtn, new SingleCompColorivel(goBotao));
-        dicionario.Add(strParteDentro, new SingleCompColorivel(parteDentro));
-        dicionario.Add(strContorno, new SingleCompColorivel(contorno));
+        addJoystickPartesAoDicionario();
     }
 
     private GameObject getGoMaquina()
@@ -82,9 +79,39 @@ public class MaquinaColorida
         return null;
     }
 
+    private void addBotoesAoDicionario(int indice, string strBtn, string strParteDentro, string strContorno)
+    {
+        GameObject goBotoes = find("btns-power-ups");
+        GameObject goBotao = goBotoes.transform.Find("btnPowerUp" + indice).gameObject;
+        GameObject parteDentro = goBotao.transform.Find("parte-dentro").gameObject;
+        GameObject contorno = parteDentro.transform.Find("contorno").gameObject;
+
+        dicionario.Add(strBtn, new SingleCompColorivel(goBotao));
+        dicionario.Add(strParteDentro, new SingleCompColorivel(parteDentro));
+        dicionario.Add(strContorno, new SingleCompColorivel(contorno));
+    }
+
+    private void addJoystickPartesAoDicionario()
+    {
+        GameObject goJoystick = find("joystick");
+
+        dicionario.Add(PARTE_CIMA, new SingleCompColorivel(find(goJoystick, PARTE_CIMA)));
+        dicionario.Add(PARTE_BAIXO, new SingleCompColorivel(find(goJoystick, PARTE_BAIXO)));
+        dicionario.Add(FURO_HASTE, new SingleCompColorivel(find(goJoystick, FURO_HASTE)));
+        dicionario.Add(HASTE, new SingleCompColorivel(find(goJoystick, HASTE)));
+        dicionario.Add(JOYSTICK_BOLA, new SingleCompColorivel(find(goJoystick, JOYSTICK_BOLA)));
+        dicionario.Add(FURO_BOTAO, new SingleCompColorivel(find(goJoystick, FURO_BOTAO)));
+        dicionario.Add(BOTAO, new SingleCompColorivel(find(goJoystick, BOTAO)));
+    }
+
     private GameObject find(string nome)
     {
         return goMaquina.transform.Find(nome).gameObject;
+    }
+
+    private GameObject find(GameObject go, string nome)
+    {
+        return go.transform.Find(nome).gameObject;
     }
 
     public void colorir(string nome, Color cor)

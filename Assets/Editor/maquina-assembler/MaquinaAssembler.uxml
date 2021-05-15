@@ -117,5 +117,40 @@
         <editor:ColorField label="Contorno 4" name="contorno4" class="campoCor"/>
         <engine:Button name="reset-contorno4" text="Reset" />
       </engine:VisualElement>
+
+      <engine:VisualElement name="linha23" class="linha">
+        <editor:ColorField label="Parte cima" name="parte-cima" class="campoCor"/>
+        <engine:Button name="reset-parte-cima" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha24" class="linha">
+        <editor:ColorField label="Parte Baixo" name="parte-baixo" class="campoCor"/>
+        <engine:Button name="reset-parte-baixo" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha25" class="linha">
+        <editor:ColorField label="Furo Haste" name="furo-haste" class="campoCor"/>
+        <engine:Button name="reset-furo-haste" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha26" class="linha">
+        <editor:ColorField label="Haste" name="haste" class="campoCor"/>
+        <engine:Button name="reset-haste" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha27" class="linha">
+        <editor:ColorField label="Joystick Bola" name="joystick-bola" class="campoCor"/>
+        <engine:Button name="reset-joystick-bola" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha28" class="linha">
+        <editor:ColorField label="Furo Botao" name="furo-botao" class="campoCor"/>
+        <engine:Button name="reset-furo-botao" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha29" class="linha">
+        <editor:ColorField label="Botao" name="botao" class="campoCor"/>
+        <engine:Button name="reset-botao" text="Reset" />
+      </engine:VisualElement>
     </engine:ScrollView>
   </engine:UXML>
