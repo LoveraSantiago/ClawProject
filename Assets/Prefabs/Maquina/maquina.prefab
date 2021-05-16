@@ -3222,6 +3222,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6406990386099675116}
     m_Modifications:
+    - target: {fileID: 2933312574570779873, guid: 1e7d8aa7693cf2f45ad50b8591dcd608, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5305161755260884636, guid: 1e7d8aa7693cf2f45ad50b8591dcd608, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3269,6 +3273,18 @@ PrefabInstance:
     - target: {fileID: 5305161755260884637, guid: 1e7d8aa7693cf2f45ad50b8591dcd608, type: 3}
       propertyPath: m_Name
       value: display-coletados1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305161755260884639, guid: 1e7d8aa7693cf2f45ad50b8591dcd608, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363413950137757529, guid: 1e7d8aa7693cf2f45ad50b8591dcd608, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dca2e233e9a6e4ef7be9a5b392e5effc, type: 3}
+    - target: {fileID: 5363413950137757529, guid: 1e7d8aa7693cf2f45ad50b8591dcd608, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e7d8aa7693cf2f45ad50b8591dcd608, type: 3}
