@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 6406990384040206731}
   - component: {fileID: 6406990384040206730}
   m_Layer: 0
-  m_Name: furo
+  m_Name: furo-baixo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -279,11 +279,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6406990384040206772}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.55, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6406990384071768711}
-  m_RootOrder: 0
+  m_Father: {fileID: 6406990384436321879}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6406990384040206730
 SpriteRenderer:
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 6406990384071768711}
   - component: {fileID: 6406990384071768710}
   m_Layer: 0
-  m_Name: parte-baixo
+  m_Name: placa-parte-baixo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -361,11 +361,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6406990384071768704}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.05000019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6406990384040206731}
+  m_Children: []
   m_Father: {fileID: 6406990384436321879}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -617,6 +616,10 @@ Transform:
   m_Children:
   - {fileID: 6406990386024326564}
   - {fileID: 6406990384071768711}
+  - {fileID: 6406990384476609807}
+  - {fileID: 6406990385792416089}
+  - {fileID: 6406990385162887297}
+  - {fileID: 6406990384040206731}
   m_Father: {fileID: 6406990384449578760}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -815,7 +818,7 @@ GameObject:
   - component: {fileID: 6406990384476609807}
   - component: {fileID: 6406990384476609806}
   m_Layer: 0
-  m_Name: quadrado-cima
+  m_Name: quadrado-maior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -829,11 +832,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6406990384476609800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0.9499998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6406990385792416089}
-  m_RootOrder: 0
+  m_Father: {fileID: 6406990384436321879}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6406990384476609806
 SpriteRenderer:
@@ -1595,7 +1598,7 @@ GameObject:
   - component: {fileID: 6406990385162887297}
   - component: {fileID: 6406990385162887296}
   m_Layer: 0
-  m_Name: furo
+  m_Name: furo-cima
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1608,12 +1611,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6406990385162887298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.55, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6406990386024326564}
-  m_RootOrder: 0
+  m_Father: {fileID: 6406990384436321879}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6406990385162887296
 SpriteRenderer:
@@ -2081,7 +2084,7 @@ GameObject:
   - component: {fileID: 6406990385792416089}
   - component: {fileID: 6406990385792416088}
   m_Layer: 0
-  m_Name: quadrado-baixo
+  m_Name: quadrado-menor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2094,13 +2097,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6406990385792416090}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.15, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.9000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6406990384476609807}
-  m_Father: {fileID: 6406990386024326564}
-  m_RootOrder: 1
+  m_Children: []
+  m_Father: {fileID: 6406990384436321879}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6406990385792416088
 SpriteRenderer:
@@ -2248,7 +2250,7 @@ GameObject:
   - component: {fileID: 6406990386024326564}
   - component: {fileID: 6406990386024326587}
   m_Layer: 0
-  m_Name: parte-cima
+  m_Name: placa-parte-cima
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2264,9 +2266,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6406990385162887297}
-  - {fileID: 6406990385792416089}
+  m_Children: []
   m_Father: {fileID: 6406990384436321879}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
