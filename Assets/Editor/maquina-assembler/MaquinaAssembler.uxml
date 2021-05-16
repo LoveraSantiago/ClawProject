@@ -152,5 +152,41 @@
         <editor:ColorField label="Botao" name="botao" class="campoCor"/>
         <engine:Button name="reset-botao" text="Reset" />
       </engine:VisualElement>
+    
+      <engine:VisualElement name="linha30" class="linha">
+        <editor:ColorField label="Placa Ficha" name="placa-ficha" class="campoCor"/>
+        <engine:Button name="reset-placa-ficha" text="Reset" />
+      </engine:VisualElement>
+      
+       <engine:VisualElement name="linha31" class="linha">
+        <editor:ColorField label="Parte Cima" name="placa-parte-cima" class="campoCor"/>
+        <engine:Button name="reset-placa-parte-cima" text="Reset" />
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha32" class="linha">
+        <editor:ColorField label="Parte Baixo" name="placa-parte-baixo" class="campoCor"/>
+        <engine:Button name="reset-placa-parte-baixo" text="Reset" />
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha33" class="linha">
+        <editor:ColorField label="Quad Maior" name="quadrado-maior" class="campoCor"/>
+        <engine:Button name="reset-quadrado-maior" text="Reset" />
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha34" class="linha">
+        <editor:ColorField label="Quad Menor" name="quadrado-menor" class="campoCor"/>
+        <engine:Button name="reset-quadrado-menor" text="Reset" />
+      </engine:VisualElement>
+      
+     <engine:VisualElement name="linha35" class="linha">
+        <editor:ColorField label="Furo Cima" name="furo-cima" class="campoCor"/>
+        <engine:Button name="reset-furo-cima" text="Reset" />
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha36" class="linha">
+        <editor:ColorField label="Furo Baixo" name="furo-baixo" class="campoCor"/>
+        <engine:Button name="reset-furo-baixo" text="Reset" />
+      </engine:VisualElement>
+    
     </engine:ScrollView>
   </engine:UXML>

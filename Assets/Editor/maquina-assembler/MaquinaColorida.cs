@@ -37,6 +37,14 @@ public class MaquinaColorida
     public static readonly string JOYSTICK_BOLA = "joystick-bola";
     public static readonly string FURO_BOTAO = "furo-botao";
     public static readonly string BOTAO = "botao";
+
+    public static readonly string PLACA_FICHA = "placa-ficha";
+    public static readonly string PLACA_P_CIMA = "placa-parte-cima";
+    public static readonly string PLACA_P_BAIXO = "placa-parte-baixo";
+    public static readonly string QUADRADO_MAIOR = "quadrado-maior";
+    public static readonly string QUADRADO_MENOR = "quadrado-menor";
+    public static readonly string FURO_CIMA = "furo-cima";
+    public static readonly string FURO_BAIXO = "furo-baixo";
     
 
     private GameObject goMaquina;
@@ -46,16 +54,16 @@ public class MaquinaColorida
     {
         goMaquina = getGoMaquina();
         dicionario = new Dictionary<string, ComponenteColorivel>();
-        dicionario.Add(PLACA_CIMA, new SingleCompColorivel(find(PLACA_CIMA)));
-        dicionario.Add(BASE_PARTE, new DoubleCompColorivel(find(BASE_PARTE + "-cima"), find(BASE_PARTE + "-baixo")));
-        dicionario.Add(BASE_CHAO, new SingleCompColorivel(find(BASE_CHAO)));
-        dicionario.Add(BORDA_VIDRO, new SingleCompColorivel(find(BORDA_VIDRO)));
+        dicionario.Add(PLACA_CIMA,    new SingleCompColorivel(find(PLACA_CIMA)));
+        dicionario.Add(BASE_PARTE,    new DoubleCompColorivel(find(BASE_PARTE + "-cima"), find(BASE_PARTE + "-baixo")));
+        dicionario.Add(BASE_CHAO,     new SingleCompColorivel(find(BASE_CHAO)));
+        dicionario.Add(BORDA_VIDRO,   new SingleCompColorivel(find(BORDA_VIDRO)));
         dicionario.Add(PLACA_FRONTAL, new SingleCompColorivel(find(PLACA_FRONTAL)));
-        dicionario.Add(PLACA_SAIDA, new SingleCompColorivel(find(PLACA_SAIDA)));
-        dicionario.Add(BARRA, new SingleCompColorivel(find(BARRA)));
-        dicionario.Add(CHAO_DENTRO, new SingleCompColorivel(find(CHAO_DENTRO)));
-        dicionario.Add(TUBO, new SingleCompColorivel(find(TUBO)));
-        dicionario.Add(VIGA_TRAS, new DoubleCompColorivel(find(VIGA_TRAS + "-esquerda"), find(VIGA_TRAS + "-direita")));
+        dicionario.Add(PLACA_SAIDA,   new SingleCompColorivel(find(PLACA_SAIDA)));
+        dicionario.Add(BARRA,         new SingleCompColorivel(find(BARRA)));
+        dicionario.Add(CHAO_DENTRO,   new SingleCompColorivel(find(CHAO_DENTRO)));
+        dicionario.Add(TUBO,          new SingleCompColorivel(find(TUBO)));
+        dicionario.Add(VIGA_TRAS,     new DoubleCompColorivel(find(VIGA_TRAS + "-esquerda"), find(VIGA_TRAS + "-direita")));
 
         addBotoesAoDicionario(1, BTN_POWERUP_1, BTN_PARTEDENTRO_1, BTN_CONTORNO_1);
         addBotoesAoDicionario(2, BTN_POWERUP_2, BTN_PARTEDENTRO_2, BTN_CONTORNO_2);
@@ -63,6 +71,7 @@ public class MaquinaColorida
         addBotoesAoDicionario(4, BTN_POWERUP_4, BTN_PARTEDENTRO_4, BTN_CONTORNO_4);
 
         addJoystickPartesAoDicionario();
+        addPlacaFichaAoDicionario();
     }
 
     private GameObject getGoMaquina()
@@ -86,22 +95,41 @@ public class MaquinaColorida
         GameObject parteDentro = goBotao.transform.Find("parte-dentro").gameObject;
         GameObject contorno = parteDentro.transform.Find("contorno").gameObject;
 
-        dicionario.Add(strBtn, new SingleCompColorivel(goBotao));
+        dicionario.Add(strBtn,         new SingleCompColorivel(goBotao));
         dicionario.Add(strParteDentro, new SingleCompColorivel(parteDentro));
-        dicionario.Add(strContorno, new SingleCompColorivel(contorno));
+        dicionario.Add(strContorno,    new SingleCompColorivel(contorno));
     }
 
     private void addJoystickPartesAoDicionario()
     {
         GameObject goJoystick = find("joystick");
 
-        dicionario.Add(PARTE_CIMA, new SingleCompColorivel(find(goJoystick, PARTE_CIMA)));
-        dicionario.Add(PARTE_BAIXO, new SingleCompColorivel(find(goJoystick, PARTE_BAIXO)));
-        dicionario.Add(FURO_HASTE, new SingleCompColorivel(find(goJoystick, FURO_HASTE)));
-        dicionario.Add(HASTE, new SingleCompColorivel(find(goJoystick, HASTE)));
+        dicionario.Add(PARTE_CIMA,    new SingleCompColorivel(find(goJoystick, PARTE_CIMA)));
+        dicionario.Add(PARTE_BAIXO,   new SingleCompColorivel(find(goJoystick, PARTE_BAIXO)));
+        dicionario.Add(FURO_HASTE,    new SingleCompColorivel(find(goJoystick, FURO_HASTE)));
+        dicionario.Add(HASTE,         new SingleCompColorivel(find(goJoystick, HASTE)));
         dicionario.Add(JOYSTICK_BOLA, new SingleCompColorivel(find(goJoystick, JOYSTICK_BOLA)));
-        dicionario.Add(FURO_BOTAO, new SingleCompColorivel(find(goJoystick, FURO_BOTAO)));
-        dicionario.Add(BOTAO, new SingleCompColorivel(find(goJoystick, BOTAO)));
+        dicionario.Add(FURO_BOTAO,    new SingleCompColorivel(find(goJoystick, FURO_BOTAO)));
+        dicionario.Add(BOTAO,         new SingleCompColorivel(find(goJoystick, BOTAO)));
+    }
+
+    private void addPlacaFichaAoDicionario()
+    {
+        GameObject placa = find(PLACA_FICHA);
+        GameObject placaPCima = find(placa, PLACA_P_CIMA);
+        GameObject placaPBaixo = find(placa, PLACA_P_BAIXO);
+        GameObject quadMaior = find(placa, QUADRADO_MAIOR);
+        GameObject quadMenor = find(placa, QUADRADO_MENOR);
+        GameObject furoCima = find(placa, FURO_CIMA);
+        GameObject furoBaixo = find(placa, FURO_BAIXO);
+
+        dicionario.Add(PLACA_FICHA,    new SingleCompColorivel(placa));
+        dicionario.Add(PLACA_P_CIMA,   new SingleCompColorivel(placaPCima));
+        dicionario.Add(PLACA_P_BAIXO,  new SingleCompColorivel(placaPBaixo));
+        dicionario.Add(QUADRADO_MAIOR, new SingleCompColorivel(quadMaior));
+        dicionario.Add(QUADRADO_MENOR, new SingleCompColorivel(quadMenor));
+        dicionario.Add(FURO_CIMA,      new SingleCompColorivel(furoCima));
+        dicionario.Add(FURO_BAIXO,     new SingleCompColorivel(furoBaixo));
     }
 
     private GameObject find(string nome)
