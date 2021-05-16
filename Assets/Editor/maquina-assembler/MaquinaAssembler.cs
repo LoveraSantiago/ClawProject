@@ -67,6 +67,14 @@ public class MaquinaAssembler : EditorWindow
         bindarComponentes(root, maquina, MaquinaColorida.FURO_CIMA);
         bindarComponentes(root, maquina, MaquinaColorida.FURO_BAIXO);
 
+        bindarComponentes(root, maquina, MaquinaColorida.DISPLAY_COLETADOS);
+        bindarComponentes(root, maquina, MaquinaColorida.PLACA_COLETADO1);
+        bindarComponentes(root, maquina, MaquinaColorida.PLACA_COLETADO2);
+        bindarComponentes(root, maquina, MaquinaColorida.PLACA_COLETADO3);
+
+        bindarComponentes(root, maquina, MaquinaColorida.DISPLAY_TIMER);
+        bindarComponentes(root, maquina, MaquinaColorida.DIGITOS_TIMERS);
+
     }    
 
     private void bindarComponentes(VisualElement root, MaquinaColorida maquina, string componente)

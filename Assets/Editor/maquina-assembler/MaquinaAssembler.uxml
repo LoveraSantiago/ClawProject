@@ -187,6 +187,36 @@
         <editor:ColorField label="Furo Baixo" name="furo-baixo" class="campoCor"/>
         <engine:Button name="reset-furo-baixo" text="Reset" />
       </engine:VisualElement>
+
+      <engine:VisualElement name="linha37" class="linha">
+        <editor:ColorField label="Disp Coletados" name="display-coletados" class="campoCor"/>
+        <engine:Button name="reset-display-coletados" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha38" class="linha">
+        <editor:ColorField label="Placa Coletado1" name="placa-coletado1" class="campoCor"/>
+        <engine:Button name="reset-placa-coletado1" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha39" class="linha">
+        <editor:ColorField label="Placa Coletado2" name="placa-coletado2" class="campoCor"/>
+        <engine:Button name="reset-placa-coletado2" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha40" class="linha">
+        <editor:ColorField label="Placa Coletado3" name="placa-coletado3" class="campoCor"/>
+        <engine:Button name="reset-placa-coletado3" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha41" class="linha">
+        <editor:ColorField label="Timer" name="display-timer" class="campoCor"/>
+        <engine:Button name="reset-display-timer" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha42" class="linha">
+        <editor:ColorField label="Timer Digitos" name="digitos-timer" class="campoCor"/>
+        <engine:Button name="reset-digitos-timer" text="Reset" />
+      </engine:VisualElement>
     
     </engine:ScrollView>
   </engine:UXML>

@@ -45,7 +45,14 @@ public class MaquinaColorida
     public static readonly string QUADRADO_MENOR = "quadrado-menor";
     public static readonly string FURO_CIMA = "furo-cima";
     public static readonly string FURO_BAIXO = "furo-baixo";
-    
+
+    public static readonly string DISPLAY_COLETADOS = "display-coletados";
+    public static readonly string PLACA_COLETADO1 = "placa-coletado1";
+    public static readonly string PLACA_COLETADO2 = "placa-coletado2";
+    public static readonly string PLACA_COLETADO3 = "placa-coletado3";
+
+    public static readonly string DISPLAY_TIMER = "display-timer";
+    public static readonly string DIGITOS_TIMERS = "digitos-timer";
 
     private GameObject goMaquina;
     private Dictionary<string, ComponenteColorivel> dicionario;
@@ -55,7 +62,7 @@ public class MaquinaColorida
         goMaquina = getGoMaquina();
         dicionario = new Dictionary<string, ComponenteColorivel>();
         dicionario.Add(PLACA_CIMA,    new SingleCompColorivel(find(PLACA_CIMA)));
-        dicionario.Add(BASE_PARTE,    new DoubleCompColorivel(find(BASE_PARTE + "-cima"), find(BASE_PARTE + "-baixo")));
+        dicionario.Add(BASE_PARTE,    new MultipleCompColorivel(new GameObject[] { find(BASE_PARTE + "-cima"), find(BASE_PARTE + "-baixo")}));
         dicionario.Add(BASE_CHAO,     new SingleCompColorivel(find(BASE_CHAO)));
         dicionario.Add(BORDA_VIDRO,   new SingleCompColorivel(find(BORDA_VIDRO)));
         dicionario.Add(PLACA_FRONTAL, new SingleCompColorivel(find(PLACA_FRONTAL)));
@@ -63,7 +70,7 @@ public class MaquinaColorida
         dicionario.Add(BARRA,         new SingleCompColorivel(find(BARRA)));
         dicionario.Add(CHAO_DENTRO,   new SingleCompColorivel(find(CHAO_DENTRO)));
         dicionario.Add(TUBO,          new SingleCompColorivel(find(TUBO)));
-        dicionario.Add(VIGA_TRAS,     new DoubleCompColorivel(find(VIGA_TRAS + "-esquerda"), find(VIGA_TRAS + "-direita")));
+        dicionario.Add(VIGA_TRAS,     new MultipleCompColorivel(new GameObject[] { find(VIGA_TRAS + "-esquerda"), find(VIGA_TRAS + "-direita") }));
 
         addBotoesAoDicionario(1, BTN_POWERUP_1, BTN_PARTEDENTRO_1, BTN_CONTORNO_1);
         addBotoesAoDicionario(2, BTN_POWERUP_2, BTN_PARTEDENTRO_2, BTN_CONTORNO_2);
@@ -72,6 +79,8 @@ public class MaquinaColorida
 
         addJoystickPartesAoDicionario();
         addPlacaFichaAoDicionario();
+        addDisplaysDeColetadosAoDicionario();
+        addDisplayTimerAoDicionario();
     }
 
     private GameObject getGoMaquina()
@@ -130,6 +139,57 @@ public class MaquinaColorida
         dicionario.Add(QUADRADO_MENOR, new SingleCompColorivel(quadMenor));
         dicionario.Add(FURO_CIMA,      new SingleCompColorivel(furoCima));
         dicionario.Add(FURO_BAIXO,     new SingleCompColorivel(furoBaixo));
+    }
+
+    private void addDisplaysDeColetadosAoDicionario()
+    {
+        GameObject goGrupoDisplays = find("grupo-display-coletados");
+
+        GameObject display1 = find(goGrupoDisplays, DISPLAY_COLETADOS + "1");
+        GameObject display2 = find(goGrupoDisplays, DISPLAY_COLETADOS + "2");
+        GameObject display3 = find(goGrupoDisplays, DISPLAY_COLETADOS + "3");
+
+        GameObject placaDisplay1 = find(display1, "dentro");
+        GameObject placaDisplay2 = find(display2, "dentro");
+        GameObject placaDisplay3 = find(display3, "dentro");
+
+        dicionario.Add(DISPLAY_COLETADOS, new MultipleCompColorivel(new GameObject[] { display1, display2, display3 }));
+        dicionario.Add(PLACA_COLETADO1, new SingleCompColorivel(placaDisplay1));
+        dicionario.Add(PLACA_COLETADO2, new SingleCompColorivel(placaDisplay2));
+        dicionario.Add(PLACA_COLETADO3, new SingleCompColorivel(placaDisplay3));
+    }
+
+    private void addDisplayTimerAoDicionario()
+    {
+        GameObject goDisplayTimer = find("display-timer");
+
+        List<GameObject> listaTras = new List<GameObject>();
+        List<GameObject> listaSegmentos = new List<GameObject>();
+
+        for(int contador = 1; contador < 5; contador++)
+        {
+            GameObject goDiplayTimerDigito = find(goDisplayTimer, "display-timer-digito-" + contador);
+            GameObject tras = find(goDiplayTimerDigito, "tras");
+            listaTras.Add(tras);
+
+            for(int subContador = 1; subContador < 8; subContador++)
+            {
+                GameObject segmento = find(goDiplayTimerDigito, "seg-" + subContador);
+                listaSegmentos.Add(segmento);
+            }
+        }
+
+        GameObject display2Digitos = find(goDisplayTimer, "display-timer-2pontos");
+        GameObject tras2P = find(display2Digitos, "tras");
+        GameObject seg1 = find(display2Digitos, "seg-1");
+        GameObject seg2 = find(display2Digitos, "seg-2");
+
+        listaTras.Add(tras2P);
+        listaSegmentos.Add(seg1);
+        listaSegmentos.Add(seg2);
+
+        dicionario.Add(DISPLAY_TIMER, new MultipleCompColorivel(listaTras.ToArray()));
+        dicionario.Add(DIGITOS_TIMERS, new MultipleCompColorivel(listaSegmentos.ToArray()));
     }
 
     private GameObject find(string nome)
