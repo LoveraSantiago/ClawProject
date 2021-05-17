@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class MaquinaAssembler : EditorWindow
 {
-    [MenuItem("Window/UI Toolkit/MaquinaAssembler")]
+    [MenuItem("Window/MaquinaAssembler")]
     public static void ShowExample()
     {
         MaquinaAssembler wnd = GetWindow<MaquinaAssembler>();
