@@ -83,17 +83,15 @@ public class MaquinaAssembler : EditorWindow
         bindarComponentes(root, maquina, MaquinaColorida.LEDS3);
 
         bindarComponentes(root, maquina, MaquinaColorida.CABO_DA_GARRA);
-
-        
-
-        root.Q<Button>("select-" + MaquinaColorida.PLACA_CIMA)
-            .clicked += () => maquina.select(MaquinaColorida.PLACA_CIMA);
     }    
 
     private void bindarComponentes(VisualElement root, MaquinaColorida maquina, string componente)
     {
         root.Q<ColorField>(componente).RegisterCallback<ChangeEvent<Color>>(
             evt => maquina.colorir(componente, evt.newValue));
+
+        root.Q<Button>("select-" + componente)
+           .clicked += () => maquina.select(componente);
 
         root.Q<Button>("reset-" + componente)
             .clicked += () => maquina.reset(componente);
