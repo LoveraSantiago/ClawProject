@@ -269,6 +269,12 @@ public class MaquinaColorida
 
     public void gerarMapa()
     {
+        string texto = "";
 
+        foreach(KeyValuePair<string, ComponenteColorivel> entry in dicionario)
+        {
+            texto += "dicionario.Add(" + entry.Key + ", " + ColorUtility.ToHtmlStringRGB(entry.Value.getCor()) + ");" + Environment.NewLine;
+        }
+        Debug.Log(texto);
     }
 }

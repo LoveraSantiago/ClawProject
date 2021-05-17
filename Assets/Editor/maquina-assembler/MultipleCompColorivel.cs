@@ -39,4 +39,9 @@ public class MultipleCompColorivel : ComponenteColorivel
     {
         return go;
     }
+
+    public Color getCor()
+    {
+        return sprRenderers[0].color;
+    }
 }

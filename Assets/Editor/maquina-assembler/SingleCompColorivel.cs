@@ -28,4 +28,9 @@ public class SingleCompColorivel : ComponenteColorivel
     {
         return go;
     }
+
+    public Color getCor()
+    {
+        return sprRenderer.color;
+    }
 }

@@ -30,4 +30,9 @@ public class SingleCompLineRendererColorivel : ComponenteColorivel
     {
         return go;
     }
+
+    public Color getCor()
+    {
+        return lineRenderer.startColor;
+    }
 }
