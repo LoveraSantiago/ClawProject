@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DisplayScoreDigito 
 {
-    private SpriteRenderer[,] arrayDeLeds = new SpriteRenderer[5,7];    
+    private SpriteRenderer[][] arrayDeLeds;
 
     public int digito { get; private set; }
     public string letra { get; private set; }
@@ -11,19 +11,16 @@ public class DisplayScoreDigito
 
     private int[,] arrayLigados;
 
-    public DisplayScoreDigito(GameObject goDisplay)
+    public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto)
     {
-        Transform transform = goDisplay.transform;
-        for (int contadorX = 0; contadorX < transform.childCount; contadorX++)
-        {            
-            Transform transfFileira = transform.GetChild(contadorX);
-            for(int contadorY = 0; contadorY < transfFileira.childCount; contadorY++)
-            {         
-                Transform transformLed = transfFileira.GetChild(contadorY);         
-                arrayDeLeds[contadorX, contadorY] = transformLed.GetComponent<SpriteRenderer>();
-            }
-        }
-        corOriginal = arrayDeLeds[0, 0].color;
+        arrayDeLeds = new SpriteRenderer[5][];
+        arrayDeLeds[0] = singleDisplayDto.Fileira1;
+        arrayDeLeds[1] = singleDisplayDto.Fileira2;
+        arrayDeLeds[2] = singleDisplayDto.Fileira3;
+        arrayDeLeds[3] = singleDisplayDto.Fileira4;
+        arrayDeLeds[4] = singleDisplayDto.Fileira5;
+        
+        corOriginal = arrayDeLeds[0][0].color;
 
         arrayLigados = ARRAY_VAZIO;
         mostrarDigito(0, Color.red);
@@ -54,7 +51,7 @@ public class DisplayScoreDigito
     {
         for(int contadorX = 0; contadorX < array.GetLength(0); contadorX++)
         {            
-            arrayDeLeds[array[contadorX, 0], array[contadorX, 1]].color = cor;            
+            arrayDeLeds[array[contadorX, 0]][array[contadorX, 1]].color = cor;            
         }
     }
 

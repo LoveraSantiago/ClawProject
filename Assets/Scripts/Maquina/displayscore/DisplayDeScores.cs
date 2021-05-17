@@ -19,10 +19,10 @@ public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
     {
         this.monoBehaviour = monoBehaviour;
 
-        GameObject[] displayScores = displayDeScoresDto.GosDisplayScores;
-        displayCentena = new DisplayScoreDigito(displayScores[0]);
-        displayDezena  = new DisplayScoreDigito(displayScores[1]);
-        displayUnidade = new DisplayScoreDigito(displayScores[2]);
+        SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;        
+        displayCentena = new DisplayScoreDigito(singleDisplays[0]);
+        displayDezena  = new DisplayScoreDigito(singleDisplays[1]);
+        displayUnidade = new DisplayScoreDigito(singleDisplays[2]);
 
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
