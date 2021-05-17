@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class Level1 : AbstractLevel
 {
     public override string getLevelName()
@@ -56,5 +58,10 @@ public class Level1 : AbstractLevel
         PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
         PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE,
         PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_DA_GARRA, PowerUpEntidade.NAME.MINA_TERRESTRE};        
+    }
+
+    public override Dictionary<string, string> getDicionarioDeCores()
+    {
+        return null;
     }
 }
