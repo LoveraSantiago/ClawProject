@@ -29,9 +29,10 @@ public class GarraManager : ConsumidorDeEventoTrigger,
         detectorDeColisoes.registrarConsumidorDeTrigger(this);
     }
 
-    public void configuradoPeloLevel(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
+    public void configuradoPeloLevel(AbstractLevel level)
     {
-        gerDeMovNormal.configuradoPeloLevel(mecanicaGarraEscolhida);
+        gerDeMovNormal.configuradoPeloLevel(level.getMecanicaDaGarra());
+        cabo.configuradoPeloLevel(level.getDicionarioDeCores());
     }
 
     public void start()

@@ -67,7 +67,7 @@ public class MainGameScene : MonoBehaviour,
         LevelFlowManager.LEVEL levelFlow = PlayerPrefsLevel.recuperarLevel(level);
         AbstractLevel levelEscolhido = LevelFlowManager.getLevelByEnum(levelFlow);
 
-        garraManager     .configuradoPeloLevel(levelEscolhido.getMecanicaDaGarra());
+        garraManager     .configuradoPeloLevel(levelEscolhido);
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
         maquinaManager   .configuradoPeloLevel(levelEscolhido);
         modalPontos      .configurarLevel(levelEscolhido.getLevelName());
