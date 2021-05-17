@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class SingleCompColorivel : ComponenteColorivel
 {
-    private string nome;
+    private GameObject go;
     
     private SpriteRenderer sprRenderer;
     private Color corOriginal;
 
     public SingleCompColorivel(GameObject go)
     {
-        this.nome = go.name;        
+        this.go = go;        
         sprRenderer = go.GetComponent<SpriteRenderer>();
         corOriginal = sprRenderer.color;
     }
@@ -22,5 +22,10 @@ public class SingleCompColorivel : ComponenteColorivel
     public void passarCor(Color cor)
     {
         sprRenderer.color = cor;
+    }
+
+    public GameObject getGo()
+    {
+        return go;
     }
 }

@@ -81,6 +81,9 @@ public class MaquinaAssembler : EditorWindow
         bindarComponentes(root, maquina, MaquinaColorida.LEDS1);
         bindarComponentes(root, maquina, MaquinaColorida.LEDS2);
         bindarComponentes(root, maquina, MaquinaColorida.LEDS3);
+
+        root.Q<Button>("select-" + MaquinaColorida.PLACA_CIMA)
+            .clicked += () => maquina.select(MaquinaColorida.PLACA_CIMA);
     }    
 
     private void bindarComponentes(VisualElement root, MaquinaColorida maquina, string componente)

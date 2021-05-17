@@ -2,23 +2,22 @@ using UnityEngine;
 
 public class MultipleCompColorivel : ComponenteColorivel
 {
-    private string[] nomes;
+    private GameObject go;
     private SpriteRenderer[] sprRenderers;    
     private Color corOriginal;
     
 
     public MultipleCompColorivel(GameObject[] gos)
     {
-        nomes = new string[gos.Length];
+        go = gos[0];
         sprRenderers = new SpriteRenderer[gos.Length];
 
         for(int contador = 0; contador < gos.Length; contador++)
-        {
-            nomes[contador] = gos[contador].name;
+        {            
             sprRenderers[contador] = gos[contador].GetComponent<SpriteRenderer>();
         }
         corOriginal = sprRenderers[0].color;        
-    }
+    }   
 
     public void passarCor(Color cor)
     {
@@ -34,5 +33,10 @@ public class MultipleCompColorivel : ComponenteColorivel
         {
             sprRenderers[contador].color = corOriginal;
         }
+    }
+
+    public GameObject getGo()
+    {
+        return go;
     }
 }

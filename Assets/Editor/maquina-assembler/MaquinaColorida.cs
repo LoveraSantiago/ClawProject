@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class MaquinaColorida 
 {
@@ -89,7 +90,7 @@ public class MaquinaColorida
         addDisplaysDeColetadosAoDicionario();
         addDisplayTimerAoDicionario();
         addDisplaysDeScoreAoDicionario();
-    }
+    }    
 
     private GameObject getGoMaquina()
     {
@@ -253,5 +254,10 @@ public class MaquinaColorida
     public void reset(string nome)
     {
         dicionario[nome].resetCor();
+    }
+
+    public void select(string nome)
+    {
+        Selection.activeGameObject = dicionario[nome].getGo();        
     }
 }
