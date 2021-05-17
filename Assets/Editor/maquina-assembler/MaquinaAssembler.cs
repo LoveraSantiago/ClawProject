@@ -82,6 +82,10 @@ public class MaquinaAssembler : EditorWindow
         bindarComponentes(root, maquina, MaquinaColorida.LEDS2);
         bindarComponentes(root, maquina, MaquinaColorida.LEDS3);
 
+        bindarComponentes(root, maquina, MaquinaColorida.CABO_DA_GARRA);
+
+        
+
         root.Q<Button>("select-" + MaquinaColorida.PLACA_CIMA)
             .clicked += () => maquina.select(MaquinaColorida.PLACA_CIMA);
     }    

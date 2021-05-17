@@ -7,7 +7,12 @@
 >
     <engine:Style src="MaquinaAssembler.uss"/>
   
-    <engine:ScrollView name="itemContainer">    
+    <engine:ScrollView name="itemContainer">
+      <engine:VisualElement name="linha0" class="linha">
+        <editor:ColorField label="Cabo" name="cabo-da-garra" class="campoCor"/>        
+        <engine:Button name="reset-cabo-da-garra" text="Reset" />
+      </engine:VisualElement>
+      
       <engine:VisualElement name="linha1" class="linha">
         <editor:ColorField label="Placa cima" name="placa-cima" class="campoCor"/>
         <engine:Button name="select-placa-cima" text="Select" />

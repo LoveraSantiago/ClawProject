@@ -62,12 +62,15 @@ public class MaquinaColorida
     public static readonly string LEDS2 = "leds2";
     public static readonly string LEDS3 = "leds3";
 
+    public static readonly string CABO_DA_GARRA = "cabo-da-garra";
+
     private GameObject goMaquina;
+    private GameObject goCabo;
     private Dictionary<string, ComponenteColorivel> dicionario;
 
     public MaquinaColorida()
     {
-        goMaquina = getGoMaquina();
+        inicializarGos();
         dicionario = new Dictionary<string, ComponenteColorivel>();
         dicionario.Add(PLACA_CIMA,    new SingleCompColorivel(find(PLACA_CIMA)));
         dicionario.Add(BASE_PARTE,    new MultipleCompColorivel(new GameObject[] { find(BASE_PARTE + "-cima"), find(BASE_PARTE + "-baixo")}));
@@ -90,20 +93,23 @@ public class MaquinaColorida
         addDisplaysDeColetadosAoDicionario();
         addDisplayTimerAoDicionario();
         addDisplaysDeScoreAoDicionario();
+
+        dicionario.Add(CABO_DA_GARRA, new SingleCompLineRendererColorivel(goCabo));
     }    
 
-    private GameObject getGoMaquina()
+    private void inicializarGos()
     {
         GameObject[] gos = SceneManager.GetActiveScene().GetRootGameObjects();
         for (int contador = 0; contador < gos.Length; contador++)
         {
             if (gos[contador].name == "MainObject")
             {
-                return gos[contador].transform.Find("maquina").gameObject;                
+                goMaquina = find(gos[contador], "maquina");
+                goCabo = find(gos[contador], "cabo_da_garra");
+                return;
             }
         }
         Debug.LogError("Cena nao contem game object maquina");
-        return null;
     }
 
     private void addBotoesAoDicionario(int indice, string strBtn, string strParteDentro, string strContorno)
