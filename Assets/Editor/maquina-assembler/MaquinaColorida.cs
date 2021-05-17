@@ -54,6 +54,13 @@ public class MaquinaColorida
     public static readonly string DISPLAY_TIMER = "display-timer";
     public static readonly string DIGITOS_TIMERS = "digitos-timer";
 
+    public static readonly string DISPLAY_SCORES1 = "display-pontos1";
+    public static readonly string DISPLAY_SCORES2 = "display-pontos2";
+    public static readonly string DISPLAY_SCORES3 = "display-pontos3";
+    public static readonly string LEDS1 = "leds1";
+    public static readonly string LEDS2 = "leds2";
+    public static readonly string LEDS3 = "leds3";
+
     private GameObject goMaquina;
     private Dictionary<string, ComponenteColorivel> dicionario;
 
@@ -81,6 +88,7 @@ public class MaquinaColorida
         addPlacaFichaAoDicionario();
         addDisplaysDeColetadosAoDicionario();
         addDisplayTimerAoDicionario();
+        addDisplaysDeScoreAoDicionario();
     }
 
     private GameObject getGoMaquina()
@@ -190,6 +198,41 @@ public class MaquinaColorida
 
         dicionario.Add(DISPLAY_TIMER, new MultipleCompColorivel(listaTras.ToArray()));
         dicionario.Add(DIGITOS_TIMERS, new MultipleCompColorivel(listaSegmentos.ToArray()));
+    }
+
+    private void addDisplaysDeScoreAoDicionario()
+    {
+        GameObject grupoDisplayScore = find("grupo-display-pontos");
+        GameObject displayScore1 = find(grupoDisplayScore, DISPLAY_SCORES1);
+        GameObject displayScore2 = find(grupoDisplayScore, DISPLAY_SCORES2);
+        GameObject displayScore3 = find(grupoDisplayScore, DISPLAY_SCORES3);
+
+        GameObject[] leds1 = getLedsFromDisplay(displayScore1);
+        GameObject[] leds2 = getLedsFromDisplay(displayScore2);
+        GameObject[] leds3 = getLedsFromDisplay(displayScore3);
+
+        dicionario.Add(DISPLAY_SCORES1, new SingleCompColorivel(displayScore1));
+        dicionario.Add(DISPLAY_SCORES2, new SingleCompColorivel(displayScore2));
+        dicionario.Add(DISPLAY_SCORES3, new SingleCompColorivel(displayScore3));
+
+        dicionario.Add(LEDS1, new MultipleCompColorivel(leds1));
+        dicionario.Add(LEDS2, new MultipleCompColorivel(leds2));
+        dicionario.Add(LEDS3, new MultipleCompColorivel(leds3));
+    }
+
+    private GameObject[] getLedsFromDisplay(GameObject display)
+    {
+        List<GameObject> listaDeLeds = new List<GameObject>();
+        for(int contador = 0; contador < 5; contador++)
+        {
+            GameObject goFileira = display.transform.Find("fileira" + (contador + 1)).gameObject;
+            for(int subContador = 0; subContador < goFileira.transform.childCount; subContador++)
+            {
+                GameObject led = goFileira.transform.GetChild(subContador).gameObject;
+                listaDeLeds.Add(led);
+            }
+        }
+        return listaDeLeds.ToArray();
     }
 
     private GameObject find(string nome)

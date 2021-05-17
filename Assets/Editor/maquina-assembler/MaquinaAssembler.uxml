@@ -217,6 +217,36 @@
         <editor:ColorField label="Timer Digitos" name="digitos-timer" class="campoCor"/>
         <engine:Button name="reset-digitos-timer" text="Reset" />
       </engine:VisualElement>
+      
+     <engine:VisualElement name="linha43" class="linha">
+        <editor:ColorField label="Score 1" name="display-pontos1" class="campoCor"/>
+        <engine:Button name="reset-display-pontos1" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha44" class="linha">
+        <editor:ColorField label="Score 2" name="display-pontos2" class="campoCor"/>
+        <engine:Button name="reset-display-pontos2" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha45" class="linha">
+        <editor:ColorField label="Score 3" name="display-pontos3" class="campoCor"/>
+        <engine:Button name="reset-display-pontos3" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha46" class="linha">
+        <editor:ColorField label="Leds 1" name="leds1" class="campoCor"/>
+        <engine:Button name="reset-leds1" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha47" class="linha">
+        <editor:ColorField label="Leds 2" name="leds2" class="campoCor"/>
+        <engine:Button name="reset-leds2" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha48" class="linha">
+        <editor:ColorField label="Leds 3" name="leds3" class="campoCor"/>
+        <engine:Button name="reset-leds3" text="Reset" />
+      </engine:VisualElement>
     
     </engine:ScrollView>
   </engine:UXML>
