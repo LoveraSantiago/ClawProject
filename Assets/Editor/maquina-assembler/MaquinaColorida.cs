@@ -269,12 +269,12 @@ public class MaquinaColorida
 
     public void gerarMapa()
     {
-        string texto = "";
+        string texto = "Dictionary<string, string> dicionario = new Dictionary<string, string>();" + Environment.NewLine;
 
         foreach(KeyValuePair<string, ComponenteColorivel> entry in dicionario)
         {
-            texto += "dicionario.Add(" + entry.Key + ", " + ColorUtility.ToHtmlStringRGB(entry.Value.getCor()) + ");" + Environment.NewLine;
+            texto += "dicionario.Add(\"" + entry.Key + "\", \"" + ColorUtility.ToHtmlStringRGB(entry.Value.getCor()) + "\");" + Environment.NewLine;
         }
-        Debug.Log(texto);
+        Debug.Log(texto);        
     }
 }
