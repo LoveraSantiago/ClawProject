@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 
 public class MaquinaColorida 
 {
@@ -273,7 +272,7 @@ public class MaquinaColorida
 
         foreach(KeyValuePair<string, ComponenteColorivel> entry in dicionario)
         {
-            texto += "dicionario.Add(\"" + entry.Key + "\", \"" + ColorUtility.ToHtmlStringRGB(entry.Value.getCor()) + "\");" + Environment.NewLine;
+            texto += "dicionario.Add(\"" + entry.Key + "\", \"#" + ColorUtility.ToHtmlStringRGB(entry.Value.getCor()) + "\");" + Environment.NewLine;
         }
         Debug.Log(texto);        
     }
