@@ -266,4 +266,9 @@ public class MaquinaColorida
     {
         Selection.activeGameObject = dicionario[nome].getGo();        
     }
+
+    public void gerarMapa()
+    {
+
+    }
 }

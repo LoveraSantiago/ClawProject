@@ -301,6 +301,7 @@
         <engine:Button name="select-leds3" text="Select" />
         <engine:Button name="reset-leds3" text="Reset" />
       </engine:VisualElement>
-    
+
+      <engine:Button name="mapa" text="Gerar Mapa" />
     </engine:ScrollView>
   </engine:UXML>

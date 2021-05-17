@@ -83,6 +83,9 @@ public class MaquinaAssembler : EditorWindow
         bindarComponentes(root, maquina, MaquinaColorida.LEDS3);
 
         bindarComponentes(root, maquina, MaquinaColorida.CABO_DA_GARRA);
+
+        root.Q<Button>("mapa")
+           .clicked += () => maquina.gerarMapa();
     }    
 
     private void bindarComponentes(VisualElement root, MaquinaColorida maquina, string componente)
