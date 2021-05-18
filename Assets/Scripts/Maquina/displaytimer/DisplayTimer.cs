@@ -18,13 +18,14 @@ public class DisplayTimer
 
     public DisplayTimer(DisplayTimerDto displayDto)
     {
-        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.GoDisplayTimer2Pontos);
+        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
 
-        displayTimerDigito = new DisplayTimerDigito[4];        
-        for(int contador = 0; contador < displayTimerDigito.Length; contador++)
-        {
-            displayTimerDigito[contador] = new DisplayTimerDigito(displayDto.GosDisplayTimers[contador]);
-        }
+        displayTimerDigito = new DisplayTimerDigito[4];
+        displayTimerDigito[0] = new DisplayTimerDigito(displayDto.SingleDisplay[0]);
+        displayTimerDigito[1] = new DisplayTimerDigito(displayDto.SingleDisplay[1]);
+        displayTimerDigito[2] = new DisplayTimerDigito(displayDto.SingleDisplay[2]);
+        displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);        
+        
         produtorDeEventoTempoEsgotado = new ProdutorDeEvento<bool>();
     }
 
