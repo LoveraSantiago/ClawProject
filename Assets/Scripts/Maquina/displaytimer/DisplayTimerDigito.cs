@@ -15,6 +15,16 @@ public class DisplayTimerDigito
         mostrarDigito(0);
     }
 
+    public void configuraradoPeloLevel(Color corTimer, Color corDigito)
+    {
+        corOriginal = corDigito;
+        sDisplayDto.Tras.color = corTimer;
+        for(int contador = 0; contador < sDisplayDto.Segmentos.Length; contador++)
+        {
+            sDisplayDto.Segmentos[contador].color = corDigito;
+        }
+    }
+
     public void mostrarDigito(int digito)
     {
         desligarPosicoes(arrayLigado);

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class DisplayTimer 
 {    
@@ -39,6 +40,17 @@ public class DisplayTimer
         {
             contadorTimer = new ContadorTimerNegativo(levelEscolhido.getTempoContagem());
         }
+
+        Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
+        string corTimerHex = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_TIMER];
+        string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquina.DIGITOS_TIMERS];
+        Color corTimer = Utils.getCorByHex(corTimerHex);
+        Color corDigito = Utils.getCorByHex(corDigitosHex);
+        displayTimer2Pontos.configuraradoPeloLevel(corTimer, corDigito);
+        displayTimerDigito[0].configuraradoPeloLevel(corTimer, corDigito);
+        displayTimerDigito[1].configuraradoPeloLevel(corTimer, corDigito);
+        displayTimerDigito[2].configuraradoPeloLevel(corTimer, corDigito);
+        displayTimerDigito[3].configuraradoPeloLevel(corTimer, corDigito);
     }
 
     public void iniciarContagemTempo()
