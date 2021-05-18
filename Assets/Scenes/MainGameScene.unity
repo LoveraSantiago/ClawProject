@@ -5082,6 +5082,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1214428721193575685, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &108455522 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6406990385393414263, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &121857696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1214428719979739542, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -5704,6 +5709,8 @@ MonoBehaviour:
       barra: {fileID: 186092669}
       chaoDentro: {fileID: 522769647}
       tubo: {fileID: 1914492973}
+      vigaTrasEsquerda: {fileID: 946233168}
+      vigaTrasDireita: {fileID: 108455522}
   camShakeDto:
     cineMachine: {fileID: 250677996}
     noise6d: {fileID: 11400000, guid: a31f2eaada77af94689f0b0d7e781fb6, type: 2}
@@ -11898,6 +11905,11 @@ CanvasRenderer:
 --- !u!212 &944383904 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6452164383312389409, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &946233168 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6406990385770677648, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &958265028

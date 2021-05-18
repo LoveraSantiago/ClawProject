@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class BotoesPowerUp 
 {
@@ -35,9 +36,31 @@ public class BotoesPowerUp
         btnsPowerUp[3] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[3]);
     }
 
-    public void configuradoPeloLevel(PowerUpEntidade.NAME[] arrayDePowerUpsParaBotoes)
+    public void configuradoPeloLevel(AbstractLevel level)
     {
-        distribuidor.distribuirArray(arrayDePowerUpsParaBotoes);
+        distribuidor.distribuirArray(level.getPowerUpsParaBotoesMaquina());
+
+        Dictionary<string, string> dicionarioDeCores = level.getDicionarioDeCores();
+
+        string hexBotao = dicionarioDeCores[ConstantesCoresMaquina.BTN_CONTORNO_1];
+        string hexDentro = dicionarioDeCores[ConstantesCoresMaquina.BTN_PARTEDENTRO_1];
+        string hexContorno = dicionarioDeCores[ConstantesCoresMaquina.BTN_CONTORNO_1];
+        btnsPowerUp[0].receberCorLevel(hexBotao, hexDentro, hexContorno);
+
+        hexBotao = dicionarioDeCores[ConstantesCoresMaquina.BTN_CONTORNO_2];
+        hexDentro = dicionarioDeCores[ConstantesCoresMaquina.BTN_PARTEDENTRO_2];
+        hexContorno = dicionarioDeCores[ConstantesCoresMaquina.BTN_CONTORNO_2];
+        btnsPowerUp[1].receberCorLevel(hexBotao, hexDentro, hexContorno);
+
+        hexBotao = dicionarioDeCores[ConstantesCoresMaquina.BTN_CONTORNO_3];
+        hexDentro = dicionarioDeCores[ConstantesCoresMaquina.BTN_PARTEDENTRO_3];
+        hexContorno = dicionarioDeCores[ConstantesCoresMaquina.BTN_CONTORNO_3];
+        btnsPowerUp[2].receberCorLevel(hexBotao, hexDentro, hexContorno);
+
+        hexBotao = dicionarioDeCores[ConstantesCoresMaquina.BTN_CONTORNO_4];
+        hexDentro = dicionarioDeCores[ConstantesCoresMaquina.BTN_PARTEDENTRO_4];
+        hexContorno = dicionarioDeCores[ConstantesCoresMaquina.BTN_CONTORNO_4];
+        btnsPowerUp[3].receberCorLevel(hexBotao, hexDentro, hexContorno);
     }
     
     public void update()

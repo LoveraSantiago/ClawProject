@@ -36,6 +36,14 @@ public class AparenciaBotaoPowerUp
         btnDto.SprParteDentro.color = Color.black;
     }
 
+    public void colorirBotaoFromLevel(string corBotao, string corDentro, string corContorno)
+    {
+        corOriginal = Utils.getCorByHex(corBotao);
+        btnDto.SprAreaBotao.color = corOriginal;
+        btnDto.SprParteDentro.color = Utils.getCorByHex(corDentro);
+        btnDto.SprContorno.color = Utils.getCorByHex(corContorno);
+    }
+
     public void voltarCorOriginalBotao()
     {
         btnDto.SprParteDentro.color = corOriginal;

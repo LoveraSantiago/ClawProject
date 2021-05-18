@@ -29,7 +29,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
     {
-        botoesPowerUp.configuradoPeloLevel(levelEscolhido.getPowerUpsParaBotoesMaquina());
+        botoesPowerUp.configuradoPeloLevel(levelEscolhido);
         displayTimer.configuradoPeloLevel(levelEscolhido);
 
         Dictionary<string, string> dicionarioCores = levelEscolhido.getDicionarioDeCores();

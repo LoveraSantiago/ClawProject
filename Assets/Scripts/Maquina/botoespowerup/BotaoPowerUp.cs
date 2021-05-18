@@ -42,6 +42,11 @@ public class BotaoPowerUp : Draggavel
         aparencia.limparImg();
     }
 
+    public void receberCorLevel(string corBotao, string corDentro, string corContorno)
+    {
+        aparencia.colorirBotaoFromLevel(corBotao, corDentro, corContorno);
+    }
+
     public void receberAcaoPowerUp(AcaoBotaoPowerUp acaoBtnPowerUp)
     {
         this.acaoBtnPowerUp = acaoBtnPowerUp;
