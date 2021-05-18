@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JoystickHaste : ConsumidorDeEvento<DirecaoDaGarra>
+public class Joystick : ConsumidorDeEvento<DirecaoDaGarra>
 {
     private readonly int ANGULO = 20;
 
@@ -18,7 +18,7 @@ public class JoystickHaste : ConsumidorDeEvento<DirecaoDaGarra>
     //UTILIZANDO MESMA VELOCIDADE DE MOVIMENTACAO HORIZONTAL DA GARRA
     /* A VELOCIDADE VAI PEGAR O VALOR INICIAL DE VELOCIDADE SE MUDADO 
        DURANTE GAMEPLAY NAO REFLETE AQUI SO NO PROXIMO START*/
-    public JoystickHaste(Transform hasteJoystick, float velocidade)
+    public Joystick(Transform hasteJoystick, float velocidade)
     {
         this.hasteJoystick = hasteJoystick;
         this.velocidade = velocidade * .3f;//AJUSTANDO PARA PROPORCAO TAMANHO JOYSTICK

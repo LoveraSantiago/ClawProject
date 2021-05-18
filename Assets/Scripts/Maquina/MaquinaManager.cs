@@ -10,7 +10,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     private DisplayDeScores displayDeScores;
     private DisplayTimer displayTimer;
 
-    private JoystickHaste joystickHaste;
+    private Joystick joystick;
     private BotoesPowerUp botoesPowerUp;
 
     private PartesMaquinaDto partesDto;
@@ -22,8 +22,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
-
-        joystickHaste      = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
+        joystick           = new Joystick(maquinaDto.HasteJoystick, velocidadeJoystick);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
     }
 
@@ -78,7 +77,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
 
     public void fixedUpdate()
     {
-        joystickHaste.fixedUpdate();
+        joystick.fixedUpdate();
     }   
 
     public void beginDragPowerUp(Vector2 posicao)
@@ -139,7 +138,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     //CONSUMIDORES DE EVENTOS INICIO
     public ConsumidorDeEvento<DirecaoDaGarra> getJoystickHasteConsumidorDirecao()
     {
-        return joystickHaste.getConsumidorDeEventoDeDirecao();
+        return joystick.getConsumidorDeEventoDeDirecao();
     }    
 
     public ConsumidorDeEvento<InformacoesColetado> getConsumidorInfoColetado()
