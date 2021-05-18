@@ -165,5 +165,26 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         cor = Utils.getCorByHex(corHex);
         partesDto.VigaTrasDireita.color = cor;
         partesDto.VigaTrasEsquerda.color = cor;
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_FICHA];
+        partesDto.PlacaFicha.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_P_CIMA];
+        partesDto.PlacaParteCima.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_P_BAIXO];
+        partesDto.PlacaParteBaixo.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.QUADRADO_MAIOR];
+        partesDto.QuadMaior.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.QUADRADO_MENOR];
+        partesDto.QuadMenor.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.FURO_CIMA];
+        partesDto.FuroCima.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.FURO_BAIXO];
+        partesDto.FuroBaixo.color = Utils.getCorByHex(corHex);
     }
 }

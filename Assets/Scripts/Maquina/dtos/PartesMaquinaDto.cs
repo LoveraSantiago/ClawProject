@@ -15,9 +15,14 @@ public class PartesMaquinaDto
     [SerializeField] private SpriteRenderer tubo;
     [SerializeField] private SpriteRenderer vigaTrasEsquerda;
     [SerializeField] private SpriteRenderer vigaTrasDireita;
-    [SerializeField] private SpriteRenderer placaFicha;
 
-    
+    [SerializeField] private SpriteRenderer placaFicha;
+    [SerializeField] private SpriteRenderer placaParteCima;
+    [SerializeField] private SpriteRenderer placaParteBaixo;
+    [SerializeField] private SpriteRenderer quadMaior;
+    [SerializeField] private SpriteRenderer quadMenor;
+    [SerializeField] private SpriteRenderer furoCima;
+    [SerializeField] private SpriteRenderer furoBaixo;    
 
     public SpriteRenderer PlacaCima { get { return placaCima; } }
     public SpriteRenderer BaseParteCima { get { return baseParteCima; } }
@@ -30,4 +35,12 @@ public class PartesMaquinaDto
     public SpriteRenderer Tubo { get { return tubo; } }
     public SpriteRenderer VigaTrasEsquerda { get { return vigaTrasEsquerda; } }
     public SpriteRenderer VigaTrasDireita { get { return vigaTrasDireita; } }
+
+    public SpriteRenderer PlacaFicha { get { return placaFicha; } }
+    public SpriteRenderer PlacaParteCima { get { return placaParteCima; } }
+    public SpriteRenderer PlacaParteBaixo { get { return placaParteBaixo; } }
+    public SpriteRenderer QuadMaior { get { return quadMaior; } }
+    public SpriteRenderer QuadMenor { get { return quadMenor; } }
+    public SpriteRenderer FuroCima { get { return furoCima; } }
+    public SpriteRenderer FuroBaixo { get { return furoBaixo; } }
 }

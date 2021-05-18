@@ -12,10 +12,11 @@ public class MaquinaDto
     [SerializeField] private DisplayDeColetadoDto displayDeColetadoDto;
     [Space(5)]
     [SerializeField] private DisplayTimerDto displayTimerDto;
+    [Space(5)]
     [SerializeField] private DisplayDeScoreDto displayDeScoreDto;
     [Space(5)]
     [SerializeField] private BotoesPowerUpDto botoesPowerUpDto;
-    [Space()]
+    [Space(5)]
     [SerializeField] private PartesMaquinaDto partesDto;
 
     public Transform ReferenciaChao { get { return referenciaChao; } }
