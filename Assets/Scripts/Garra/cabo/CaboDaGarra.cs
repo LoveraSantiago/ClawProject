@@ -20,8 +20,7 @@ public class CaboDaGarra
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
     {
         string corHex = dicionarioDeCores[ConstantesCoresMaquina.CABO_DA_GARRA];
-        Color cor;
-        ColorUtility.TryParseHtmlString(corHex, out cor);
+        Color cor = Utils.getCorByHex(corHex);
         caboDto.LineRenderer.startColor = cor;
         caboDto.LineRenderer.endColor = cor;
     }
