@@ -59,6 +59,15 @@ public class MaquinaAssembler : EditorWindow
         bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_CONTORNO_4);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.BOTAO);
 
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.PARTE_CIMA);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.PARTE_BAIXO);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.FURO_HASTE);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.HASTE);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.JOYSTICK_BOLA);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.FURO_BOTAO);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.BOTAO);
+
+
         bindarComponentes(root, maquina, ConstantesCoresMaquina.PLACA_FICHA);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.PLACA_P_CIMA);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.PLACA_P_BAIXO);

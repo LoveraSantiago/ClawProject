@@ -109,7 +109,10 @@ public class Level2 : AbstractLevel
         dicionario.Add("leds1", "#6100FF");
         dicionario.Add("leds2", "#B900FF");
         dicionario.Add("leds3", "#FF005F");
-        dicionario.Add("cabo-da-garra", "#F30000");        return dicionario;
+        dicionario.Add("cabo-da-garra", "#F30000");
+
+        return dicionario;
+
     }
 }
 
