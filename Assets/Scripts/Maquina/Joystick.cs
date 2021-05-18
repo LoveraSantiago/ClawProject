@@ -7,8 +7,8 @@ public class Joystick : ConsumidorDeEvento<DirecaoDaGarra>
     private float velocidade;
     private float incremento;
     private int multiplicador;
-
-    private Transform hasteJoystick;
+        
+    private JoystickDto joystickDto;
 
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;
@@ -18,21 +18,21 @@ public class Joystick : ConsumidorDeEvento<DirecaoDaGarra>
     //UTILIZANDO MESMA VELOCIDADE DE MOVIMENTACAO HORIZONTAL DA GARRA
     /* A VELOCIDADE VAI PEGAR O VALOR INICIAL DE VELOCIDADE SE MUDADO 
        DURANTE GAMEPLAY NAO REFLETE AQUI SO NO PROXIMO START*/
-    public Joystick(Transform hasteJoystick, float velocidade)
+    public Joystick(JoystickDto joystickDto, float velocidade)
     {
-        this.hasteJoystick = hasteJoystick;
+        this.joystickDto = joystickDto;
         this.velocidade = velocidade * .3f;//AJUSTANDO PARA PROPORCAO TAMANHO JOYSTICK
 
         anguloDesejadoDireita = Quaternion.Euler(0, 0, -ANGULO);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0, ANGULO);
         anguloDesejadoAtual = Quaternion.Euler(0, 0, 0);
-        anguloInicial = this.hasteJoystick.rotation;
+        anguloInicial = this.joystickDto.JoystickTransform.rotation;
     }
 
     public void fixedUpdate()
     {
         incremento = (Time.fixedDeltaTime + velocidade) * multiplicador;
-        hasteJoystick.rotation = Quaternion.RotateTowards(hasteJoystick.rotation, anguloDesejadoAtual, incremento);
+        joystickDto.JoystickTransform.rotation = Quaternion.RotateTowards(joystickDto.JoystickTransform.rotation, anguloDesejadoAtual, incremento);
     }
 
     public ConsumidorDeEvento<DirecaoDaGarra> getConsumidorDeEventoDeDirecao()

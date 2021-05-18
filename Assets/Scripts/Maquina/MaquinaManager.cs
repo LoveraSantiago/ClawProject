@@ -18,11 +18,12 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     //TODO RESOLVER EXCECO DE ARGUMENTOS NO CONSTRUTOR
     public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
-        this.partesDto = maquinaDto.PartesDto;
+        partesDto = maquinaDto.PartesDto;
+
         displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
-        joystick           = new Joystick(maquinaDto.HasteJoystick, velocidadeJoystick);
+        joystick           = new Joystick(maquinaDto.JoystickDto, velocidadeJoystick);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
     }
 
@@ -30,38 +31,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     {
         botoesPowerUp.configuradoPeloLevel(levelEscolhido);
         displayTimer.configuradoPeloLevel(levelEscolhido);
-
-        Dictionary<string, string> dicionarioCores = levelEscolhido.getDicionarioDeCores();
-        String corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_CIMA];
-        partesDto.PlacaCima.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.BASE_PARTE];
-        Color cor = Utils.getCorByHex(corHex);
-        partesDto.BaseParteCima.color = cor;
-        partesDto.BaseParteBaixo.color = cor;
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.BASE_CHAO];
-        partesDto.BaseChao.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.BORDA_VIDRO];
-        partesDto.BordaVidro.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_FRONTAL];
-        partesDto.PlacaFrontal.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.BARRA];
-        partesDto.Barra.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.CHAO_DENTRO];
-        partesDto.ChaoDentro.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.TUBO];
-        partesDto.Tubo.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.VIGA_TRAS];
-        cor = Utils.getCorByHex(corHex);
-        partesDto.VigaTrasDireita.color = cor;
-        partesDto.VigaTrasEsquerda.color = cor;
+        colorindoPartesMaquina(levelEscolhido.getDicionarioDeCores());
     }
 
     public void start()
@@ -160,5 +130,39 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     public ProdutorDeEvento<bool> produtorDeTempoAcabado()
     {
         return displayTimer.produtorDeEventoTempoEsgotado;
+    }
+
+    private void colorindoPartesMaquina(Dictionary<string, string> dicionarioCores)
+    {        
+        String corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_CIMA];
+        partesDto.PlacaCima.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.BASE_PARTE];
+        Color cor = Utils.getCorByHex(corHex);
+        partesDto.BaseParteCima.color = cor;
+        partesDto.BaseParteBaixo.color = cor;
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.BASE_CHAO];
+        partesDto.BaseChao.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.BORDA_VIDRO];
+        partesDto.BordaVidro.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_FRONTAL];
+        partesDto.PlacaFrontal.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.BARRA];
+        partesDto.Barra.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.CHAO_DENTRO];
+        partesDto.ChaoDentro.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.TUBO];
+        partesDto.Tubo.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.VIGA_TRAS];
+        cor = Utils.getCorByHex(corHex);
+        partesDto.VigaTrasDireita.color = cor;
+        partesDto.VigaTrasEsquerda.color = cor;
     }
 }
