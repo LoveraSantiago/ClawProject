@@ -23,6 +23,12 @@ public class DisplayDeColetado
             sDisplayDto.GoColetado.transform.localPosition.z);
     }    
 
+    public void configuradoPeloLevel(Color corDisplay, string corDentro)
+    {
+        sDisplayDto.SprDisplay.color = corDisplay;
+        sDisplayDto.SprRendererDentro.color = Utils.getCorByHex(corDentro);
+    }
+
     public void limparSprite()
     {
         sDisplayDto.SprRendererColetado.sprite = null;

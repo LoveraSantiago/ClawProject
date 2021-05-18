@@ -33,6 +33,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         displayTimer.configuradoPeloLevel(levelEscolhido);
         colorindoPartesMaquina(levelEscolhido.getDicionarioDeCores());
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        displayDeColetados.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
     }
 
     public void start()
