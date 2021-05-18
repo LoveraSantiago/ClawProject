@@ -8,6 +8,10 @@
     <engine:Style src="MaquinaAssembler.uss"/>
   
     <engine:ScrollView name="itemContainer">
+      <engine:VisualElement name="linha-1" class="linha">
+        
+      </engine:VisualElement>
+          
       <engine:VisualElement name="linha0" class="linha">
         <editor:ColorField label="Cabo" name="cabo-da-garra" class="campoCor"/>
         <engine:Button name="select-cabo-da-garra" text="Select" />

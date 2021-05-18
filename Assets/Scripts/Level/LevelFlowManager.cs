@@ -19,5 +19,14 @@ public class LevelFlowManager
         Debug.LogError("NAO FOI CRIADO LEVEL PARA ESSE ENUM");
         return null;
     }
+
+    public static AbstractLevel getLevelByString(string level)
+    {
+        switch (level)
+        {
+            case "2": return getLevelByEnum(LEVEL.DOIS);
+        }
+        return null;
+    }
 }
 

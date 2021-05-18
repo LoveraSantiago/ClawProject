@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 public class MaquinaAssembler : EditorWindow
 {
@@ -11,6 +12,8 @@ public class MaquinaAssembler : EditorWindow
         MaquinaAssembler wnd = GetWindow<MaquinaAssembler>();
         wnd.titleContent = new GUIContent("MaquinaAssembler");
     }
+
+    private MaquinaColorida maquina;
 
     public void CreateGUI()
     {
@@ -32,8 +35,9 @@ public class MaquinaAssembler : EditorWindow
         //VisualElement labelWithStyle = new Label("Hello World! With Style");
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
+        criarComponentDropDownField(root);
 
-        MaquinaColorida maquina = new MaquinaColorida();
+        maquina = new MaquinaColorida();
         bindarComponentes(root, maquina, ConstantesCoresMaquina.PLACA_CIMA);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.BASE_PARTE);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.BASE_CHAO);
@@ -93,9 +97,31 @@ public class MaquinaAssembler : EditorWindow
 
         bindarComponentes(root, maquina, ConstantesCoresMaquina.CABO_DA_GARRA);
 
-        root.Q<Button>("mapa")
-           .clicked += () => maquina.gerarMapa();
+        root.Q<Button>("mapa").clicked += () => maquina.gerarMapa();
     }    
+
+    private void criarComponentDropDownField(VisualElement root)
+    {
+        List<string> dicionarios = new List<string> { "0", "2" };
+        DropdownField dropDownField = new DropdownField("Dicionarios", dicionarios, 0);
+        dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {
+            if (evt.newValue != "0")
+            {
+                AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
+                Dictionary<string, string> dicionarioDeCores = level.getDicionarioDeCores();
+                foreach(KeyValuePair<string, string> entry in dicionarioDeCores)
+                {
+                    ColorField colorField = root.Q<ColorField>(entry.Key);
+                    Color cor = Utils.getCorByHex(entry.Value);
+                    colorField.value = cor;
+                    maquina.colorir(entry.Key, cor);
+                }
+            }
+        });
+
+        root.Q<VisualElement>("linha-1")
+               .Add(dropDownField);
+    }
 
     private void bindarComponentes(VisualElement root, MaquinaColorida maquina, string componente)
     {
