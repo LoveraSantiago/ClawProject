@@ -22,7 +22,7 @@ public class MaquinaColorida
         dicionario.Add(ConstantesCoresMaquina.PLACA_SAIDA,   new SingleCompColorivel(find(ConstantesCoresMaquina.PLACA_SAIDA)));
         dicionario.Add(ConstantesCoresMaquina.BARRA,         new SingleCompColorivel(find(ConstantesCoresMaquina.BARRA)));
         dicionario.Add(ConstantesCoresMaquina.CHAO_DENTRO,   new SingleCompColorivel(find(ConstantesCoresMaquina.CHAO_DENTRO)));
-        dicionario.Add(ConstantesCoresMaquina.TUBO,          new SingleCompColorivel(find(ConstantesCoresMaquina.TUBO)));
+        dicionario.Add(ConstantesCoresMaquina.TUBO,          new SingleCompColorivel(find(ConstantesCoresMaquina.TUBO), 0.88f));
         dicionario.Add(ConstantesCoresMaquina.VIGA_TRAS,     new MultipleCompColorivel(new GameObject[] { find(ConstantesCoresMaquina.VIGA_TRAS + "-esquerda"), find(ConstantesCoresMaquina.VIGA_TRAS + "-direita") }));
 
         addBotoesAoDicionario(1, ConstantesCoresMaquina.BTN_POWERUP_1, ConstantesCoresMaquina.BTN_PARTEDENTRO_1, ConstantesCoresMaquina.BTN_CONTORNO_1);

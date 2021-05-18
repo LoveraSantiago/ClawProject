@@ -2,16 +2,23 @@ using UnityEngine;
 
 public class SingleCompColorivel : ComponenteColorivel
 {
-    private GameObject go;
-    
-    private SpriteRenderer sprRenderer;
+    private float alpha;
+
     private Color corOriginal;
+    private SpriteRenderer sprRenderer;
+    private GameObject go;
 
     public SingleCompColorivel(GameObject go)
+        : this(go, 1)
+    {        
+    }
+
+    public SingleCompColorivel(GameObject go, float alpha)
     {
-        this.go = go;        
+        this.go = go;
         sprRenderer = go.GetComponent<SpriteRenderer>();
         corOriginal = sprRenderer.color;
+        this.alpha = alpha;
     }
 
     public void resetCor()
@@ -21,6 +28,7 @@ public class SingleCompColorivel : ComponenteColorivel
 
     public void passarCor(Color cor)
     {
+        cor.a = alpha;
         sprRenderer.color = cor;
     }
 
