@@ -11,8 +11,6 @@ public class DisplayTimerDigito
     public DisplayTimerDigito(SingleDisplayTimerDto sDisplayDto)
     {
         this.sDisplayDto = sDisplayDto;
-        corOriginal = sDisplayDto.Segmentos[0].color;
-        mostrarDigito(0);
     }
 
     public void configuraradoPeloLevel(Color corTimer, Color corDigito)
@@ -23,6 +21,7 @@ public class DisplayTimerDigito
         {
             sDisplayDto.Segmentos[contador].color = corDigito;
         }
+        mostrarDigito(0);
     }
 
     public void mostrarDigito(int digito)
