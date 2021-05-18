@@ -83,13 +83,15 @@ public class Level2 : AbstractLevel
         dicionario.Add("btnPowerUp4", "#00AFFF");
         dicionario.Add("parte-dentro4", "#0087FF");
         dicionario.Add("contorno4", "#0F00FF");
-        dicionario.Add("parte-cima", "#717171");
-        dicionario.Add("parte-baixo", "#575757");
-        dicionario.Add("furo-haste", "#1C1C1C");
-        dicionario.Add("haste", "#B7B7B7");
-        dicionario.Add("joystick-bola", "#1C1C1C");
-        dicionario.Add("furo-botao", "#B7B7B7");
+
+        dicionario.Add("parte-cima", "#FF0066");
+        dicionario.Add("parte-baixo", "#DFFF00");
+        dicionario.Add("furo-haste", "#00FFAB");
+        dicionario.Add("haste", "#0091FF");
+        dicionario.Add("joystick-bola", "#FF005F");
+        dicionario.Add("furo-botao", "#0F00FF");
         dicionario.Add("botao", "#FF2100");
+
         dicionario.Add("placa-ficha", "#FF9201");
         dicionario.Add("placa-parte-cima", "#FFD500");
         dicionario.Add("placa-parte-baixo", "#BCFF00");

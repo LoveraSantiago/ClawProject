@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Joystick : ConsumidorDeEvento<DirecaoDaGarra>
 {
@@ -33,6 +34,30 @@ public class Joystick : ConsumidorDeEvento<DirecaoDaGarra>
     {
         incremento = (Time.fixedDeltaTime + velocidade) * multiplicador;
         joystickDto.JoystickTransform.rotation = Quaternion.RotateTowards(joystickDto.JoystickTransform.rotation, anguloDesejadoAtual, incremento);
+    }
+
+    public void configuradoPeloLevel(Dictionary<string, string> dicionarioCores)
+    {
+        string hexCor = dicionarioCores[ConstantesCoresMaquina.PARTE_CIMA];
+        joystickDto.SprRendererParteCima.color = Utils.getCorByHex(hexCor);
+
+        hexCor = dicionarioCores[ConstantesCoresMaquina.PARTE_BAIXO];
+        joystickDto.SprRendererParteBaixo.color = Utils.getCorByHex(hexCor);
+
+        hexCor = dicionarioCores[ConstantesCoresMaquina.FURO_HASTE];
+        joystickDto.SprRendererFuroHaste.color = Utils.getCorByHex(hexCor);
+
+        hexCor = dicionarioCores[ConstantesCoresMaquina.HASTE];
+        joystickDto.SprRendererHaste.color = Utils.getCorByHex(hexCor);
+
+        hexCor = dicionarioCores[ConstantesCoresMaquina.JOYSTICK_BOLA];
+        joystickDto.SprRendererBola.color = Utils.getCorByHex(hexCor);
+
+        hexCor = dicionarioCores[ConstantesCoresMaquina.FURO_BOTAO];
+        joystickDto.SprRendererFuroBotao.color = Utils.getCorByHex(hexCor);
+
+        hexCor = dicionarioCores[ConstantesCoresMaquina.BOTAO];
+        joystickDto.SprRendererJoystickBotao.color = Utils.getCorByHex(hexCor);
     }
 
     public ConsumidorDeEvento<DirecaoDaGarra> getConsumidorDeEventoDeDirecao()

@@ -17,7 +17,7 @@ public class JoystickDto
 
     public Transform JoystickTransform { get { return joystickTransform; } }
     public SpriteRenderer SprRendererParteCima { get { return sprRendererParteCima; } }
-    public SpriteRenderer SprRendererparteBaixo { get { return sprRendererparteBaixo; } }
+    public SpriteRenderer SprRendererParteBaixo { get { return sprRendererparteBaixo; } }
     public SpriteRenderer SprRendererFuroHaste { get { return sprRendererFuroHaste; } }
     public SpriteRenderer SprRendererHaste { get { return sprRendererHaste; } }
     public SpriteRenderer SprRendererBola { get { return sprRendererBola; } }
