@@ -24,6 +24,7 @@ public class LevelFlowManager
     {
         switch (level)
         {
+            case "1": return getLevelByEnum(LEVEL.HUM);
             case "2": return getLevelByEnum(LEVEL.DOIS);
         }
         return null;

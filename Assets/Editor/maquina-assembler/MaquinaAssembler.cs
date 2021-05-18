@@ -102,7 +102,7 @@ public class MaquinaAssembler : EditorWindow
 
     private void criarComponentDropDownField(VisualElement root)
     {
-        List<string> dicionarios = new List<string> { "0", "2" };
+        List<string> dicionarios = new List<string> { "0", "1", "2" };
         DropdownField dropDownField = new DropdownField("Dicionarios", dicionarios, 0);
         dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {
             if (evt.newValue != "0")
