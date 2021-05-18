@@ -21,11 +21,6 @@ public class DisplayScoreDigito
         arrayDeLeds[2] = singleDisplayDto.Fileira3;
         arrayDeLeds[3] = singleDisplayDto.Fileira4;
         arrayDeLeds[4] = singleDisplayDto.Fileira5;
-        
-        corOriginal = arrayDeLeds[0][0].color;
-
-        arrayLigados = ARRAY_VAZIO;
-        mostrarDigito(0, Color.red);
     }
 
     public void configuradoPeloLevel(string corScore, string corLeds)
@@ -33,6 +28,8 @@ public class DisplayScoreDigito
         corOriginal = Utils.getCorByHex(corLeds);
         sprDisplay.color = Utils.getCorByHex(corScore);
         ligarPosicoes(ARRAY_CHEIO, corOriginal);
+
+        mostrarDigito(0, Color.red);
     }
 
     public void mostrarDigito(string digito, Color cor)
