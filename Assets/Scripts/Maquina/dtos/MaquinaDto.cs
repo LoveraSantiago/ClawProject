@@ -6,7 +6,9 @@ public class MaquinaDto
 {
     [Space(5)]
     [SerializeField] private Transform referenciaChao;
-    [SerializeField] private Transform hasteJoystick;
+    [Space(5)]
+    [SerializeField] private JoystickDto joystickDto;
+    [SerializeField] private Transform hasteJoystick;    
     [Space(5)]
     [SerializeField] private DisplayDeColetadoDto displayDeColetadoDto;
     [Space(5)]
@@ -18,6 +20,8 @@ public class MaquinaDto
     [SerializeField] private PartesMaquinaDto partesDto;
 
     public Transform ReferenciaChao { get { return referenciaChao; } }
+
+    public JoystickDto JoystickDto { get { return joystickDto; } }
     public Transform HasteJoystick { get { return hasteJoystick;  } }
 
     public DisplayDeColetadoDto DisplayDeColetadoDto { get { return displayDeColetadoDto; } }
