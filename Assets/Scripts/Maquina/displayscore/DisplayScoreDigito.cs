@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DisplayScoreDigito 
 {
+    private SpriteRenderer sprDisplay;
     private SpriteRenderer[][] arrayDeLeds;
 
     public int digito { get; private set; }
@@ -13,6 +14,7 @@ public class DisplayScoreDigito
 
     public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto)
     {
+        sprDisplay = singleDisplayDto.DisplayScore;
         arrayDeLeds = new SpriteRenderer[5][];
         arrayDeLeds[0] = singleDisplayDto.Fileira1;
         arrayDeLeds[1] = singleDisplayDto.Fileira2;
@@ -24,6 +26,13 @@ public class DisplayScoreDigito
 
         arrayLigados = ARRAY_VAZIO;
         mostrarDigito(0, Color.red);
+    }
+
+    public void configuradoPeloLevel(string corScore, string corLeds)
+    {
+        corOriginal = Utils.getCorByHex(corLeds);
+        sprDisplay.color = Utils.getCorByHex(corScore);
+        ligarPosicoes(ARRAY_CHEIO, corOriginal);
     }
 
     public void mostrarDigito(string digito, Color cor)
@@ -92,7 +101,8 @@ public class DisplayScoreDigito
         return ARRAY_VAZIO;
     }
 
-    private static int[,] ARRAY_VAZIO = new int[,] { };
+    private static int[,] ARRAY_VAZIO  = new int[,] { };
+    private static int[,] ARRAY_CHEIO  = new int[,] { { 0, 0 }, { 0, 1 }, { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 }, { 0, 6 }, { 1, 0 }, { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 1, 6 }, { 2, 0 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 2, 5 }, { 2, 6 }, { 3, 0 }, { 3, 1 }, { 3, 2 }, { 3, 3 }, { 3, 4 }, { 3, 5 }, { 3, 6 }, { 4, 0 }, { 4, 1 }, { 4, 2 }, { 4, 3 }, { 4, 4 }, { 4, 5 }, { 4, 6 } };
     private static int[,] ARRAY_ZERO   = new int[,] { { 0, 1 }, { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 }, { 1, 0 }, { 1, 2 }, { 1, 6 }, { 2, 0 }, { 2, 3 }, { 2, 6 }, { 3, 0 }, { 3, 4 }, { 3, 6 }, { 4, 1 }, { 4, 2 }, { 4, 3 }, { 4, 4 }, { 4, 5 } };
     private static int[,] ARRAY_HUM    = new int[,] { { 1, 0 }, { 1, 5 }, { 2, 0 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 2, 5 }, { 2, 6 }, { 3, 0 } };
     private static int[,] ARRAY_DOIS   = new int[,] { { 0, 0 }, { 0, 1 }, { 0, 5 }, { 1, 0 }, { 1, 2 }, { 1, 6 }, { 2, 0 }, { 2, 3 }, { 2, 6 }, { 3, 0 }, { 3, 3 }, { 3, 6 }, { 4, 0 }, { 4, 4 }, { 4, 5 } };
