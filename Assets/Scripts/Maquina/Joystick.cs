@@ -39,25 +39,25 @@ public class Joystick : ConsumidorDeEvento<DirecaoDaGarra>
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioCores)
     {
         string hexCor = dicionarioCores[ConstantesCoresMaquina.PARTE_CIMA];
-        joystickDto.SprRendererParteCima.color = Utils.getCorByHex(hexCor);
+        joystickDto.ParteCima.color = Utils.getCorByHex(hexCor);
 
         hexCor = dicionarioCores[ConstantesCoresMaquina.PARTE_BAIXO];
-        joystickDto.SprRendererParteBaixo.color = Utils.getCorByHex(hexCor);
+        joystickDto.ParteBaixo.color = Utils.getCorByHex(hexCor);
 
         hexCor = dicionarioCores[ConstantesCoresMaquina.FURO_HASTE];
-        joystickDto.SprRendererFuroHaste.color = Utils.getCorByHex(hexCor);
+        joystickDto.FuroHaste.color = Utils.getCorByHex(hexCor);
 
         hexCor = dicionarioCores[ConstantesCoresMaquina.HASTE];
-        joystickDto.SprRendererHaste.color = Utils.getCorByHex(hexCor);
+        joystickDto.Haste.color = Utils.getCorByHex(hexCor);
 
         hexCor = dicionarioCores[ConstantesCoresMaquina.JOYSTICK_BOLA];
-        joystickDto.SprRendererBola.color = Utils.getCorByHex(hexCor);
+        joystickDto.Bola.color = Utils.getCorByHex(hexCor);
 
         hexCor = dicionarioCores[ConstantesCoresMaquina.FURO_BOTAO];
-        joystickDto.SprRendererFuroBotao.color = Utils.getCorByHex(hexCor);
+        joystickDto.FuroBotao.color = Utils.getCorByHex(hexCor);
 
         hexCor = dicionarioCores[ConstantesCoresMaquina.BOTAO];
-        joystickDto.SprRendererJoystickBotao.color = Utils.getCorByHex(hexCor);
+        joystickDto.JoystickBotao.color = Utils.getCorByHex(hexCor);
     }
 
     public ConsumidorDeEvento<DirecaoDaGarra> getConsumidorDeEventoDeDirecao()

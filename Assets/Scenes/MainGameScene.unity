@@ -5520,14 +5520,13 @@ MonoBehaviour:
     referenciaChao: {fileID: 1841408758}
     joystickDto:
       joystickTransform: {fileID: 1655319868}
-      sprRendererParteCima: {fileID: 1371200242}
-      sprRendererparteBaixo: {fileID: 1200159529}
-      sprRendererFuroHaste: {fileID: 741199050}
-      sprRendererHaste: {fileID: 1436153780}
-      sprRendererBola: {fileID: 35392997}
-      sprRendererFuroBotao: {fileID: 1792373210}
-      sprRendererJoystickBotao: {fileID: 875563508}
-    hasteJoystick: {fileID: 1655319868}
+      parteCima: {fileID: 1371200242}
+      parteBaixo: {fileID: 1200159529}
+      furoHaste: {fileID: 741199050}
+      haste: {fileID: 1436153780}
+      bola: {fileID: 35392997}
+      furoBotao: {fileID: 1792373210}
+      botao: {fileID: 875563508}
     displayDeColetadoDto:
       inicialDelay: 0.3
       fimDelay: 0.1
@@ -5725,6 +5724,7 @@ MonoBehaviour:
       tubo: {fileID: 1914492973}
       vigaTrasEsquerda: {fileID: 946233168}
       vigaTrasDireita: {fileID: 108455522}
+      placaFicha: {fileID: 0}
   camShakeDto:
     cineMachine: {fileID: 250677996}
     noise6d: {fileID: 11400000, guid: a31f2eaada77af94689f0b0d7e781fb6, type: 2}

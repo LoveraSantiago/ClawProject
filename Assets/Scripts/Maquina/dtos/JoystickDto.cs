@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -7,22 +5,22 @@ using UnityEngine;
 public class JoystickDto 
 {
     [SerializeField] private Transform joystickTransform;
-    [SerializeField] private SpriteRenderer sprRendererParteCima;
-    [SerializeField] private SpriteRenderer sprRendererparteBaixo;
-    [SerializeField] private SpriteRenderer sprRendererFuroHaste;
-    [SerializeField] private SpriteRenderer sprRendererHaste;
-    [SerializeField] private SpriteRenderer sprRendererBola;
-    [SerializeField] private SpriteRenderer sprRendererFuroBotao;
-    [SerializeField] private SpriteRenderer sprRendererJoystickBotao;
+    [SerializeField] private SpriteRenderer parteCima;
+    [SerializeField] private SpriteRenderer parteBaixo;
+    [SerializeField] private SpriteRenderer furoHaste;
+    [SerializeField] private SpriteRenderer haste;
+    [SerializeField] private SpriteRenderer bola;
+    [SerializeField] private SpriteRenderer furoBotao;
+    [SerializeField] private SpriteRenderer botao;
 
     public Transform JoystickTransform { get { return joystickTransform; } }
-    public SpriteRenderer SprRendererParteCima { get { return sprRendererParteCima; } }
-    public SpriteRenderer SprRendererParteBaixo { get { return sprRendererparteBaixo; } }
-    public SpriteRenderer SprRendererFuroHaste { get { return sprRendererFuroHaste; } }
-    public SpriteRenderer SprRendererHaste { get { return sprRendererHaste; } }
-    public SpriteRenderer SprRendererBola { get { return sprRendererBola; } }
-    public SpriteRenderer SprRendererFuroBotao { get { return sprRendererFuroBotao; } }
-    public SpriteRenderer SprRendererJoystickBotao { get { return sprRendererJoystickBotao; } }
+    public SpriteRenderer ParteCima { get { return parteCima; } }
+    public SpriteRenderer ParteBaixo { get { return parteBaixo; } }
+    public SpriteRenderer FuroHaste { get { return furoHaste; } }
+    public SpriteRenderer Haste { get { return haste; } }
+    public SpriteRenderer Bola { get { return bola; } }
+    public SpriteRenderer FuroBotao { get { return furoBotao; } }
+    public SpriteRenderer JoystickBotao { get { return botao; } }
 
 
 }
