@@ -73,8 +73,10 @@ public class MaquinaColorida
         dicionario.Add(ConstantesCoresMaquina.PARTE_CIMA,    new SingleCompColorivel(find(goJoystick, ConstantesCoresMaquina.PARTE_CIMA)));
         dicionario.Add(ConstantesCoresMaquina.PARTE_BAIXO,   new SingleCompColorivel(find(goJoystick, ConstantesCoresMaquina.PARTE_BAIXO)));
         dicionario.Add(ConstantesCoresMaquina.FURO_HASTE,    new SingleCompColorivel(find(goJoystick, ConstantesCoresMaquina.FURO_HASTE)));
-        dicionario.Add(ConstantesCoresMaquina.HASTE,         new SingleCompColorivel(find(goJoystick, ConstantesCoresMaquina.HASTE)));
-        dicionario.Add(ConstantesCoresMaquina.JOYSTICK_BOLA, new SingleCompColorivel(find(goJoystick, ConstantesCoresMaquina.JOYSTICK_BOLA)));
+
+        GameObject goHaste = find(goJoystick, ConstantesCoresMaquina.HASTE);
+        dicionario.Add(ConstantesCoresMaquina.HASTE,         new SingleCompColorivel(goHaste));
+        dicionario.Add(ConstantesCoresMaquina.JOYSTICK_BOLA, new SingleCompColorivel(find(goHaste, ConstantesCoresMaquina.JOYSTICK_BOLA)));
         dicionario.Add(ConstantesCoresMaquina.FURO_BOTAO,    new SingleCompColorivel(find(goJoystick, ConstantesCoresMaquina.FURO_BOTAO)));
         dicionario.Add(ConstantesCoresMaquina.BOTAO,         new SingleCompColorivel(find(goJoystick, ConstantesCoresMaquina.BOTAO)));
     }
