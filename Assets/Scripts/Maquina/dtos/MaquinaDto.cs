@@ -14,6 +14,8 @@ public class MaquinaDto
     [SerializeField] private DisplayDeScoreDto displayDeScoreDto;
     [Space(5)]
     [SerializeField] private BotoesPowerUpDto botoesPowerUpDto;
+    [Space()]
+    [SerializeField] private PartesMaquinaDto partesDto;
 
     public Transform ReferenciaChao { get { return referenciaChao; } }
     public Transform HasteJoystick { get { return hasteJoystick;  } }
@@ -23,4 +25,6 @@ public class MaquinaDto
     public DisplayTimerDto DisplayTimerDto { get { return displayTimerDto; } }
     
     public BotoesPowerUpDto BotoesPowerUpDto { get { return botoesPowerUpDto; } }
+
+    public PartesMaquinaDto PartesDto { get { return partesDto; } }
 }
