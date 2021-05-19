@@ -7,7 +7,8 @@ public class DisplayDeColetado
 
     private Vector3 posicaoDesejada;
     private Vector3 posicaoInicial;
-    
+
+    private Color corOriginal;
     private Material materialOriginal;
     private SingleDisplayColetadoDto sDisplayDto;
 
@@ -26,7 +27,8 @@ public class DisplayDeColetado
     public void configuradoPeloLevel(Color corDisplay, string corDentro)
     {
         sDisplayDto.SprDisplay.color = corDisplay;
-        sDisplayDto.SprRendererDentro.color = Utils.getCorByHex(corDentro);
+        corOriginal = Utils.getCorByHex(corDentro);
+        sDisplayDto.SprRendererDentro.color = corOriginal;
     }
 
     public void limparSprite()
@@ -79,22 +81,26 @@ public class DisplayDeColetado
     {
         displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.green);
         sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
+        sDisplayDto.SprRendererDentro.color = Color.white;
     }
 
     public void ligarGlowFail()
     {
         displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.red);
         sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
+        sDisplayDto.SprRendererDentro.color = Color.white;
     }
 
     public void ligarGlowLuz()
     {
         displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.yellow);
         sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
+        sDisplayDto.SprRendererDentro.color = Color.white;
     }
 
     public void desligarGlow()
     {
+        sDisplayDto.SprRendererDentro.color = corOriginal;
         sDisplayDto.SprRendererDentro.material = materialOriginal;
     }
 
