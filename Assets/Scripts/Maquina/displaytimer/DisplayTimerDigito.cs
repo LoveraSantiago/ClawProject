@@ -4,19 +4,23 @@ public class DisplayTimerDigito
 {    
     private int[] arrayLigado;
 
-    private Color corOriginal;    
+    private Color corOriginal;
+    
+    private SingleDisplayTimerDto sDisplayDto;
 
-    private SpriteRenderer[] arrayDeLeds;
-
-    public DisplayTimerDigito(GameObject goDisplayDigito)
+    public DisplayTimerDigito(SingleDisplayTimerDto sDisplayDto)
     {
-        arrayDeLeds = new SpriteRenderer[7];
-        for(int contador = 0; contador < arrayDeLeds.Length; contador++)
+        this.sDisplayDto = sDisplayDto;
+    }
+
+    public void configuraradoPeloLevel(Color corTimer, Color corDigito)
+    {
+        corOriginal = corDigito;
+        sDisplayDto.Tras.color = corTimer;
+        for(int contador = 0; contador < sDisplayDto.Segmentos.Length; contador++)
         {
-            Transform transfSegmento = goDisplayDigito.transform.Find("seg-" + (contador + 1));
-            arrayDeLeds[contador] = transfSegmento.GetComponent<SpriteRenderer>();
+            sDisplayDto.Segmentos[contador].color = corDigito;
         }
-        corOriginal = arrayDeLeds[0].color;
         mostrarDigito(0);
     }
 
@@ -33,7 +37,7 @@ public class DisplayTimerDigito
         if (array == null) return;
         for (int contador = 0; contador < array.Length; contador++)
         {
-            arrayDeLeds[array[contador]].color = corOriginal;
+            sDisplayDto.Segmentos[array[contador]].color = corOriginal;
         }
     }
 
@@ -41,7 +45,7 @@ public class DisplayTimerDigito
     {
         for (int contador = 0; contador < array.Length; contador++)
         {
-            arrayDeLeds[array[contador]].color = Color.red; 
+            sDisplayDto.Segmentos[array[contador]].color = Color.red; 
         }
     }
 

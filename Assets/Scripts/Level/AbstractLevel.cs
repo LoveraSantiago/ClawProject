@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public abstract class AbstractLevel 
 {
     protected static readonly string TIMER_ZERO = "00:00";
@@ -16,6 +18,8 @@ public abstract class AbstractLevel
     public abstract PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina();
 
     public abstract string getTempoContagem();//
+
+    public abstract Dictionary<string, string> getDicionarioDeCores();
 
     public bool isTempoContagemNormal()
     {

@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class DisplayScoreDigito 
 {
-    private SpriteRenderer[,] arrayDeLeds = new SpriteRenderer[5,7];    
+    private SpriteRenderer sprDisplay;
+    private SpriteRenderer[][] arrayDeLeds;
 
     public int digito { get; private set; }
     public string letra { get; private set; }
@@ -11,21 +12,23 @@ public class DisplayScoreDigito
 
     private int[,] arrayLigados;
 
-    public DisplayScoreDigito(GameObject goDisplay)
+    public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto)
     {
-        Transform transform = goDisplay.transform;
-        for (int contadorX = 0; contadorX < transform.childCount; contadorX++)
-        {            
-            Transform transfFileira = transform.GetChild(contadorX);
-            for(int contadorY = 0; contadorY < transfFileira.childCount; contadorY++)
-            {         
-                Transform transformLed = transfFileira.GetChild(contadorY);         
-                arrayDeLeds[contadorX, contadorY] = transformLed.GetComponent<SpriteRenderer>();
-            }
-        }
-        corOriginal = arrayDeLeds[0, 0].color;
+        sprDisplay = singleDisplayDto.DisplayScore;
+        arrayDeLeds = new SpriteRenderer[5][];
+        arrayDeLeds[0] = singleDisplayDto.Fileira1;
+        arrayDeLeds[1] = singleDisplayDto.Fileira2;
+        arrayDeLeds[2] = singleDisplayDto.Fileira3;
+        arrayDeLeds[3] = singleDisplayDto.Fileira4;
+        arrayDeLeds[4] = singleDisplayDto.Fileira5;
+    }
 
-        arrayLigados = ARRAY_VAZIO;
+    public void configuradoPeloLevel(string corScore, string corLeds)
+    {
+        corOriginal = Utils.getCorByHex(corLeds);
+        sprDisplay.color = Utils.getCorByHex(corScore);
+        ligarPosicoes(ARRAY_CHEIO, corOriginal);
+
         mostrarDigito(0, Color.red);
     }
 
@@ -54,7 +57,7 @@ public class DisplayScoreDigito
     {
         for(int contadorX = 0; contadorX < array.GetLength(0); contadorX++)
         {            
-            arrayDeLeds[array[contadorX, 0], array[contadorX, 1]].color = cor;            
+            arrayDeLeds[array[contadorX, 0]][array[contadorX, 1]].color = cor;            
         }
     }
 
@@ -95,7 +98,8 @@ public class DisplayScoreDigito
         return ARRAY_VAZIO;
     }
 
-    private static int[,] ARRAY_VAZIO = new int[,] { };
+    private static int[,] ARRAY_VAZIO  = new int[,] { };
+    private static int[,] ARRAY_CHEIO  = new int[,] { { 0, 0 }, { 0, 1 }, { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 }, { 0, 6 }, { 1, 0 }, { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 1, 6 }, { 2, 0 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 2, 5 }, { 2, 6 }, { 3, 0 }, { 3, 1 }, { 3, 2 }, { 3, 3 }, { 3, 4 }, { 3, 5 }, { 3, 6 }, { 4, 0 }, { 4, 1 }, { 4, 2 }, { 4, 3 }, { 4, 4 }, { 4, 5 }, { 4, 6 } };
     private static int[,] ARRAY_ZERO   = new int[,] { { 0, 1 }, { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 }, { 1, 0 }, { 1, 2 }, { 1, 6 }, { 2, 0 }, { 2, 3 }, { 2, 6 }, { 3, 0 }, { 3, 4 }, { 3, 6 }, { 4, 1 }, { 4, 2 }, { 4, 3 }, { 4, 4 }, { 4, 5 } };
     private static int[,] ARRAY_HUM    = new int[,] { { 1, 0 }, { 1, 5 }, { 2, 0 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 2, 5 }, { 2, 6 }, { 3, 0 } };
     private static int[,] ARRAY_DOIS   = new int[,] { { 0, 0 }, { 0, 1 }, { 0, 5 }, { 1, 0 }, { 1, 2 }, { 1, 6 }, { 2, 0 }, { 2, 3 }, { 2, 6 }, { 3, 0 }, { 3, 3 }, { 3, 6 }, { 4, 0 }, { 4, 4 }, { 4, 5 } };

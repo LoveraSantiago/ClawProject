@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
 {
@@ -19,12 +20,27 @@ public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
     {
         this.monoBehaviour = monoBehaviour;
 
-        GameObject[] displayScores = displayDeScoresDto.GosDisplayScores;
-        displayCentena = new DisplayScoreDigito(displayScores[0]);
-        displayDezena  = new DisplayScoreDigito(displayScores[1]);
-        displayUnidade = new DisplayScoreDigito(displayScores[2]);
+        SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;        
+        displayCentena = new DisplayScoreDigito(singleDisplays[0]);
+        displayDezena  = new DisplayScoreDigito(singleDisplays[1]);
+        displayUnidade = new DisplayScoreDigito(singleDisplays[2]);
 
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
+    }
+
+    public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
+    {
+        string hexCor = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_SCORES1];
+        string hexLed = dicionarioDeCores[ConstantesCoresMaquina.LEDS1];
+        displayCentena.configuradoPeloLevel(hexCor, hexLed);
+
+        hexCor = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_SCORES2];
+        hexLed = dicionarioDeCores[ConstantesCoresMaquina.LEDS2];
+        displayDezena.configuradoPeloLevel(hexCor, hexLed);
+
+        hexCor = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_SCORES3];
+        hexLed = dicionarioDeCores[ConstantesCoresMaquina.LEDS3];
+        displayUnidade.configuradoPeloLevel(hexCor, hexLed);
     }
     
     public void mostrarScore(int score, bool result)

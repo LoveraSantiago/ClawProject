@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class DisplayTimer 
 {    
@@ -18,13 +19,14 @@ public class DisplayTimer
 
     public DisplayTimer(DisplayTimerDto displayDto)
     {
-        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.GoDisplayTimer2Pontos);
+        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
 
-        displayTimerDigito = new DisplayTimerDigito[4];        
-        for(int contador = 0; contador < displayTimerDigito.Length; contador++)
-        {
-            displayTimerDigito[contador] = new DisplayTimerDigito(displayDto.GosDisplayTimers[contador]);
-        }
+        displayTimerDigito = new DisplayTimerDigito[4];
+        displayTimerDigito[0] = new DisplayTimerDigito(displayDto.SingleDisplay[0]);
+        displayTimerDigito[1] = new DisplayTimerDigito(displayDto.SingleDisplay[1]);
+        displayTimerDigito[2] = new DisplayTimerDigito(displayDto.SingleDisplay[2]);
+        displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);        
+        
         produtorDeEventoTempoEsgotado = new ProdutorDeEvento<bool>();
     }
 
@@ -38,6 +40,17 @@ public class DisplayTimer
         {
             contadorTimer = new ContadorTimerNegativo(levelEscolhido.getTempoContagem());
         }
+
+        Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
+        string corTimerHex = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_TIMER];
+        string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquina.DIGITOS_TIMERS];
+        Color corTimer = Utils.getCorByHex(corTimerHex);
+        Color corDigito = Utils.getCorByHex(corDigitosHex);
+        displayTimer2Pontos.configuraradoPeloLevel(corTimer, corDigito);
+        displayTimerDigito[0].configuraradoPeloLevel(corTimer, corDigito);
+        displayTimerDigito[1].configuraradoPeloLevel(corTimer, corDigito);
+        displayTimerDigito[2].configuraradoPeloLevel(corTimer, corDigito);
+        displayTimerDigito[3].configuraradoPeloLevel(corTimer, corDigito);
     }
 
     public void iniciarContagemTempo()

@@ -12,10 +12,10 @@ public class AcaoDragPowerUp
 
     private Bounds areaBotao;   
 
-    public AcaoDragPowerUp(GameObject goBotao, GameObject goBotaoInterno)
+    public AcaoDragPowerUp(BotaoPowerUpDto botaoDto)
     {
-        posicaoOriginal = goBotaoInterno.transform.position;
-        areaBotao = goBotao.GetComponent<SpriteRenderer>().bounds;
+        posicaoOriginal = botaoDto.GoParteDentro.transform.position;
+        areaBotao = botaoDto.SprAreaBotao.bounds;
     }
 
     public bool isPosicaoDentroAreaBotao(Vector2 posicao)

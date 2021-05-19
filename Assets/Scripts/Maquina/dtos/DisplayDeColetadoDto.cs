@@ -9,7 +9,7 @@ public class DisplayDeColetadoDto
     [SerializeField] float tempoReset;//Tempo para disparar o reset dos 3 coletaveis
     [SerializeField] float velocImg;
     [Space(5)]
-    [SerializeField] private GameObject[] gosDisplayColetados = new GameObject[3];
+    [SerializeField] private SingleDisplayColetadoDto[] singleDisplayColetado = new SingleDisplayColetadoDto[3];
     [Space(5)]
     [SerializeField] private Material materialGlowDisplay;
 
@@ -18,7 +18,7 @@ public class DisplayDeColetadoDto
     public float TempoReset { get { return tempoReset; } }
     public float VelocImg { get { return velocImg; } }
 
-    public GameObject[] GosDisplayColetados { get { return gosDisplayColetados; } }
+    public SingleDisplayColetadoDto[] SingleDisplaysColetadoDto { get { return singleDisplayColetado; } }
 
     public Material MaterialGlowDisplay { get { return materialGlowDisplay; } }
 }

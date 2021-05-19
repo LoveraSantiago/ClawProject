@@ -11,70 +11,62 @@ public class AparenciaBotaoPowerUp
     private static Sprite spriteBordaNormal;
     private static Sprite spriteBordaSerrilhada;
 
-    private Color corOriginal;
-    private SpriteRenderer spriteRendererDentro;
-    private SpriteRenderer spriteRendererBorda;
-    private SpriteRenderer spriteRendererImg;
+    private Color corOriginal;    
+    private BotaoPowerUpDto btnDto;
 
-    private GameObject goBotaoInterno;
-    private GameObject goImagem;
-    private GameObject goExclamacao;
-
-    public AparenciaBotaoPowerUp(GameObject goBotaoInterno)
+    public AparenciaBotaoPowerUp(BotaoPowerUpDto botaoDto)
     {
-        this.goBotaoInterno = goBotaoInterno;
         mostrandoAtual = MOSTRANDO_BOTAO;
-        spriteRendererDentro = goBotaoInterno.GetComponent<SpriteRenderer>();
-
-        Transform contorno = goBotaoInterno.transform.Find("contorno");
-        spriteRendererBorda = contorno.GetComponent<SpriteRenderer>();
-
-        goImagem = contorno.Find("img-btn").gameObject;
-        spriteRendererImg = goImagem.GetComponent<SpriteRenderer>();
-
-        goExclamacao = contorno.Find("img-exclamation").gameObject;
-
-        corOriginal = spriteRendererDentro.color;
+        this.btnDto = botaoDto;                                         
+        corOriginal = btnDto.SprParteDentro.color;
     }
 
     public void mostrarBordaSerrilhada()
     {
-        spriteRendererBorda.sprite = spriteBordaSerrilhada;
+        btnDto.SprContorno.sprite = spriteBordaSerrilhada;
     }
 
     public void mostrarBordaNormal()
     {
-        spriteRendererBorda.sprite = spriteBordaNormal;
+        btnDto.SprContorno.sprite = spriteBordaNormal;
     }
 
     public void colorirBotao()
     {
-        spriteRendererDentro.color = Color.black;
+        btnDto.SprParteDentro.color = Color.black;
+    }
+
+    public void colorirBotaoFromLevel(string corBotao, string corDentro, string corContorno)
+    {
+        corOriginal = Utils.getCorByHex(corBotao);
+        btnDto.SprAreaBotao.color = corOriginal;
+        btnDto.SprParteDentro.color = Utils.getCorByHex(corDentro);
+        btnDto.SprContorno.color = Utils.getCorByHex(corContorno);
     }
 
     public void voltarCorOriginalBotao()
     {
-        spriteRendererDentro.color = corOriginal;
+        btnDto.SprParteDentro.color = corOriginal;
     }
 
     public void receberImg(Sprite img)
     {
-        spriteRendererImg.sprite = img;
+        btnDto.SprImagem.sprite = img;
     }
 
     public void limparImg()
     {
-        spriteRendererImg.sprite = null;
+        btnDto.SprImagem.sprite = null;
     }
 
     public void mostrarSoImagem()
     {
         if(mostrandoAtual != MOSTRANDO_IMAGEM)
         {
-            spriteRendererDentro.enabled = false;
-            spriteRendererBorda.enabled = false;
-            goImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            goExclamacao.SetActive(false);
+            btnDto.SprParteDentro.enabled = false;
+            btnDto.SprContorno.enabled = false;
+            btnDto.GoImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            btnDto.GoExclamacao.SetActive(false);
 
             mostrandoAtual = MOSTRANDO_IMAGEM;
         }
@@ -84,10 +76,10 @@ public class AparenciaBotaoPowerUp
     {
         if(mostrandoAtual != MOSTRANDO_BOTAO)
         {
-            spriteRendererDentro.enabled = true;
-            spriteRendererBorda.enabled = true;
-            goImagem.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
-            goExclamacao.SetActive(false);
+            btnDto.SprParteDentro.enabled = true;
+            btnDto.SprContorno.enabled = true;
+            btnDto.GoImagem.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            btnDto.GoExclamacao.SetActive(false);
 
             mostrandoAtual = MOSTRANDO_BOTAO;
         }
@@ -97,10 +89,10 @@ public class AparenciaBotaoPowerUp
     {
         if(mostrandoAtual != MOSTRANDO_ERROR)
         {
-            spriteRendererDentro.enabled = false;
-            spriteRendererBorda.enabled = false;
-            goImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            goExclamacao.SetActive(true);
+            btnDto.SprParteDentro.enabled = false;
+            btnDto.SprContorno.enabled = false;
+            btnDto.GoImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            btnDto.GoExclamacao.SetActive(true);
 
             mostrandoAtual = MOSTRANDO_ERROR;
         }
@@ -114,27 +106,28 @@ public class AparenciaBotaoPowerUp
     public Vector3 adicionarNaPosicao(Vector3 posAdicionar)
     {
         Vector3 posicaoCalculada = new Vector3(
-           goBotaoInterno.transform.position.x + posAdicionar.x,
-           goBotaoInterno.transform.position.y + posAdicionar.y,
-           goBotaoInterno.transform.position.z + posAdicionar.z);
+           btnDto.GoParteDentro.transform.position.x + posAdicionar.x,
+           btnDto.GoParteDentro.transform.position.y + posAdicionar.y,
+           btnDto.GoParteDentro.transform.position.z + posAdicionar.z);
 
-        goBotaoInterno.transform.position = posicaoCalculada;
+        btnDto.GoParteDentro.transform.position = posicaoCalculada;
         return posicaoCalculada;
     }
 
     public Vector3 getPosicao()
     {
-        return goBotaoInterno.transform.position;
+        return btnDto.GoParteDentro.transform.position;
     }
 
     public void moveTowards(Vector3 posicaoDestino, float velocidade)
     {
-        goBotaoInterno.transform.position = Vector3.MoveTowards(goBotaoInterno.transform.position, posicaoDestino, velocidade);
+        btnDto.GoParteDentro.transform.position = Vector3.MoveTowards(
+            btnDto.GoParteDentro.transform.position, posicaoDestino, velocidade);
     }
 
     public void colocarNaPosicao(Vector3 posicao)
     {
-        goBotaoInterno.transform.position = posicao;
+        btnDto.GoParteDentro.transform.position = posicao;
     }
 
     public static void configurarSpriteBordas(Sprite[] spritesBordas)

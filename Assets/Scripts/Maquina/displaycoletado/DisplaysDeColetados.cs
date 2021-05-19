@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class DisplaysDeColetados 
 {
@@ -12,19 +13,34 @@ public class DisplaysDeColetados
 
     public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
-        inicializarDisplayDeColetado(displayColetadoDto.GosDisplayColetados);
+        inicializarDisplayDeColetado(displayColetadoDto.SingleDisplaysColetadoDto);
         this.displayColetadoDto = displayColetadoDto;
 
         this.monoBehaviour = monoBehaviour;
         DisplayDeColetado.configurarDisplay(displayColetadoDto);
     }
 
-    private void inicializarDisplayDeColetado(GameObject[] arrayDisplayColetado)
+    private void inicializarDisplayDeColetado(SingleDisplayColetadoDto[] singlesDisplayColetadosDto)
     {
-        displayDeColetado    = new DisplayDeColetado[arrayDisplayColetado.Length];
-        displayDeColetado[0] = new DisplayDeColetado(arrayDisplayColetado[0]);
-        displayDeColetado[1] = new DisplayDeColetado(arrayDisplayColetado[1]);
-        displayDeColetado[2] = new DisplayDeColetado(arrayDisplayColetado[2]);
+        displayDeColetado    = new DisplayDeColetado[singlesDisplayColetadosDto.Length];
+        displayDeColetado[0] = new DisplayDeColetado(singlesDisplayColetadosDto[0]);
+        displayDeColetado[1] = new DisplayDeColetado(singlesDisplayColetadosDto[1]);
+        displayDeColetado[2] = new DisplayDeColetado(singlesDisplayColetadosDto[2]);
+    }
+
+    public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
+    {
+        string hexCorDisplay = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_COLETADOS];
+        Color corDisplay = Utils.getCorByHex(hexCorDisplay);
+
+        string hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO1];
+        displayDeColetado[0].configuradoPeloLevel(corDisplay, hexCorDentro);
+
+        hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO2];
+        displayDeColetado[1].configuradoPeloLevel(corDisplay, hexCorDentro);
+
+        hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO3];
+        displayDeColetado[2].configuradoPeloLevel(corDisplay, hexCorDentro);
     }
 
     public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool result)

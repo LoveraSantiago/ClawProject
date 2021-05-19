@@ -7,49 +7,54 @@ public class DisplayDeColetado
 
     private Vector3 posicaoDesejada;
     private Vector3 posicaoInicial;
-    
+
+    private Color corOriginal;
     private Material materialOriginal;
+    private SingleDisplayColetadoDto sDisplayDto;
 
-    private GameObject goColetadoSprite;
-    private SpriteRenderer sprRenderDentro;
-    private SpriteRenderer sprRenderColetado;
-
-    public DisplayDeColetado(GameObject goDisplay)
+    public DisplayDeColetado(SingleDisplayColetadoDto singleDisplayColetadoDto)
     {
-        Transform transformDentro = goDisplay.transform.Find("dentro");
-        sprRenderDentro = transformDentro.GetComponent<SpriteRenderer>();
-        materialOriginal = sprRenderDentro.material;
+        sDisplayDto = singleDisplayColetadoDto;        
+        materialOriginal = sDisplayDto.SprRendererDentro.material;
 
-        Transform transformColetadoSpr = transformDentro.Find("coletado-sprite");
-        sprRenderColetado = transformColetadoSpr.GetComponent<SpriteRenderer>();
-        goColetadoSprite = sprRenderColetado.gameObject;
-
-        posicaoInicial = goColetadoSprite.transform.localPosition;
-        posicaoDesejada = new Vector3(goColetadoSprite.transform.localPosition.x, 0f, goColetadoSprite.transform.localPosition.z);
+        posicaoInicial = sDisplayDto.GoColetado.transform.localPosition;
+        posicaoDesejada = new Vector3(
+            sDisplayDto.GoColetado.transform.localPosition.x, 
+            0.5f, 
+            sDisplayDto.GoColetado.transform.localPosition.z);
     }    
+
+    public void configuradoPeloLevel(Color corDisplay, string corDentro)
+    {
+        sDisplayDto.SprDisplay.color = corDisplay;
+        corOriginal = Utils.getCorByHex(corDentro);
+        sDisplayDto.SprRendererDentro.color = corOriginal;
+    }
 
     public void limparSprite()
     {
-        sprRenderColetado.sprite = null;
-        goColetadoSprite.transform.localPosition = posicaoInicial;
+        sDisplayDto.SprRendererColetado.sprite = null;
+        sDisplayDto.GoColetado.transform.localPosition = posicaoInicial;
     }    
 
     public IEnumerator mostrarSprite(Sprite sprite)
     {
-        sprRenderColetado.sprite = sprite;
+        sDisplayDto.SprRendererColetado.sprite = sprite;
         ligarGlowLuz();
         yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
 
-        while ((Vector3.Distance(goColetadoSprite.transform.localPosition, posicaoDesejada))
+        while ((Vector3.Distance(sDisplayDto.GoColetado.transform.localPosition, posicaoDesejada))
                > (displayColetadoDto.VelocImg * Time.deltaTime))
         {
-            goColetadoSprite.transform.localPosition = Vector3.MoveTowards(
-                goColetadoSprite.transform.localPosition, posicaoDesejada, displayColetadoDto.VelocImg * Time.deltaTime);
+            sDisplayDto.GoColetado.transform.localPosition = Vector3.MoveTowards(
+                sDisplayDto.GoColetado.transform.localPosition, 
+                posicaoDesejada, 
+                displayColetadoDto.VelocImg * Time.deltaTime);
 
             yield return null;
         }
 
-        goColetadoSprite.transform.localPosition = posicaoDesejada;
+        sDisplayDto.GoColetado.transform.localPosition = posicaoDesejada;
         yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
         desligarGlow();
     }   
@@ -58,39 +63,45 @@ public class DisplayDeColetado
     {
         yield return new WaitForSeconds(inicialDelay);
 
-        while ((Vector3.Distance(goColetadoSprite.transform.localPosition, posicaoInicial))
+        while ((Vector3.Distance(sDisplayDto.GoColetado.transform.localPosition, posicaoInicial))
                > (displayColetadoDto.VelocImg * Time.deltaTime))
         {
-            goColetadoSprite.transform.localPosition = Vector3.MoveTowards(
-                goColetadoSprite.transform.localPosition, posicaoInicial, displayColetadoDto.VelocImg * Time.deltaTime);
+            sDisplayDto.GoColetado.transform.localPosition = Vector3.MoveTowards(
+                sDisplayDto.GoColetado.transform.localPosition, 
+                posicaoInicial, 
+                displayColetadoDto.VelocImg * Time.deltaTime);
 
             yield return null;
         }
 
-        goColetadoSprite.transform.localPosition = posicaoInicial;
+        sDisplayDto.GoColetado.transform.localPosition = posicaoInicial;
     }
 
     public void ligarGlowSucesso()
     {
         displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.green);
-        sprRenderDentro.material = displayColetadoDto.MaterialGlowDisplay;
+        sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
+        sDisplayDto.SprRendererDentro.color = Color.white;
     }
 
     public void ligarGlowFail()
     {
         displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.red);
-        sprRenderDentro.material = displayColetadoDto.MaterialGlowDisplay;
+        sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
+        sDisplayDto.SprRendererDentro.color = Color.white;
     }
 
     public void ligarGlowLuz()
     {
         displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.yellow);
-        sprRenderDentro.material = displayColetadoDto.MaterialGlowDisplay;
+        sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
+        sDisplayDto.SprRendererDentro.color = Color.white;
     }
 
     public void desligarGlow()
     {
-        sprRenderDentro.material = materialOriginal;
+        sDisplayDto.SprRendererDentro.color = corOriginal;
+        sDisplayDto.SprRendererDentro.material = materialOriginal;
     }
 
     public static void configurarDisplay(DisplayDeColetadoDto displayColetadoDtoArg)

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
                               ConsumidorDeEvento<PowerUpInfoFim>
@@ -9,24 +10,31 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     private DisplayDeScores displayDeScores;
     private DisplayTimer displayTimer;
 
-    private JoystickHaste joystickHaste;
+    private Joystick joystick;
     private BotoesPowerUp botoesPowerUp;
+
+    private PartesMaquinaDto partesDto;
 
     //TODO RESOLVER EXCECO DE ARGUMENTOS NO CONSTRUTOR
     public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
+        partesDto = maquinaDto.PartesDto;
+
         displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
-
-        joystickHaste      = new JoystickHaste(maquinaDto.HasteJoystick, velocidadeJoystick);
+        joystick           = new Joystick(maquinaDto.JoystickDto, velocidadeJoystick);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
     {
-        botoesPowerUp.configuradoPeloLevel(levelEscolhido.getPowerUpsParaBotoesMaquina());
+        botoesPowerUp.configuradoPeloLevel(levelEscolhido);
         displayTimer.configuradoPeloLevel(levelEscolhido);
+        colorindoPartesMaquina(levelEscolhido.getDicionarioDeCores());
+        joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        displayDeColetados.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
     }
 
     public void start()
@@ -42,7 +50,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
 
     public void fixedUpdate()
     {
-        joystickHaste.fixedUpdate();
+        joystick.fixedUpdate();
     }   
 
     public void beginDragPowerUp(Vector2 posicao)
@@ -103,7 +111,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     //CONSUMIDORES DE EVENTOS INICIO
     public ConsumidorDeEvento<DirecaoDaGarra> getJoystickHasteConsumidorDirecao()
     {
-        return joystickHaste.getConsumidorDeEventoDeDirecao();
+        return joystick.getConsumidorDeEventoDeDirecao();
     }    
 
     public ConsumidorDeEvento<InformacoesColetado> getConsumidorInfoColetado()
@@ -125,5 +133,62 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     public ProdutorDeEvento<bool> produtorDeTempoAcabado()
     {
         return displayTimer.produtorDeEventoTempoEsgotado;
+    }
+
+    private void colorindoPartesMaquina(Dictionary<string, string> dicionarioCores)
+    {        
+        String corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_CIMA];
+        partesDto.PlacaCima.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.BASE_PARTE];
+        Color cor = Utils.getCorByHex(corHex);
+        partesDto.BaseParteCima.color = cor;
+        partesDto.BaseParteBaixo.color = cor;
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.BASE_CHAO];
+        partesDto.BaseChao.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.BORDA_VIDRO];
+        partesDto.BordaVidro.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_FRONTAL];
+        partesDto.PlacaFrontal.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.BARRA];
+        partesDto.Barra.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.CHAO_DENTRO];
+        partesDto.ChaoDentro.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.TUBO];
+        Color corTubo = Utils.getCorByHex(corHex);
+        corTubo.a = 0.88f;
+        partesDto.Tubo.color = corTubo;        
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.VIGA_TRAS];
+        cor = Utils.getCorByHex(corHex);
+        partesDto.VigaTrasDireita.color = cor;
+        partesDto.VigaTrasEsquerda.color = cor;
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_FICHA];
+        partesDto.PlacaFicha.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_P_CIMA];
+        partesDto.PlacaParteCima.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_P_BAIXO];
+        partesDto.PlacaParteBaixo.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.QUADRADO_MAIOR];
+        partesDto.QuadMaior.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.QUADRADO_MENOR];
+        partesDto.QuadMenor.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.FURO_CIMA];
+        partesDto.FuroCima.color = Utils.getCorByHex(corHex);
+
+        corHex = dicionarioCores[ConstantesCoresMaquina.FURO_BAIXO];
+        partesDto.FuroBaixo.color = Utils.getCorByHex(corHex);
     }
 }

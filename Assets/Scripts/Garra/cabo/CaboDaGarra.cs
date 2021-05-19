@@ -17,6 +17,14 @@ public class CaboDaGarra
         listaDeSegmentos = new List<SegmentoCabo>();
     }
 
+    public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
+    {
+        string corHex = dicionarioDeCores[ConstantesCoresMaquina.CABO_DA_GARRA];
+        Color cor = Utils.getCorByHex(corHex);
+        caboDto.LineRenderer.startColor = cor;
+        caboDto.LineRenderer.endColor = cor;
+    }
+
     public void start()
     {
         SegmentoCabo.configurarLimiteHorizontalMinimo(caboDto.TransfInicioCabo.localPosition.x);

@@ -384,6 +384,8 @@
         "m_GuidSerialized": "f657cfbc-7c48-4b17-bf77-975f345202c8"
     },
     "m_Name": "corGlow",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_0266dc789be94148b942fb929f421699",
     "m_OverrideReferenceName": "_corGlow",
     "m_GeneratePropertyBlock": true,
@@ -502,6 +504,8 @@
         "m_GuidSerialized": "aa400b37-7a3c-4a70-b7b3-0c7c206a15a9"
     },
     "m_Name": "corFora",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_0f80ed64792c4995a5ed199de3a7f74f",
     "m_OverrideReferenceName": "_corFora",
     "m_GeneratePropertyBlock": true,
@@ -510,9 +514,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.7450980544090271,
-        "g": 0.7450980544090271,
-        "b": 0.7450980544090271,
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
         "a": 0.0
     },
     "m_ColorMode": 0
@@ -1006,6 +1010,8 @@
         "m_GuidSerialized": "b5e48eda-3b3e-4427-8505-03f7c6fd814c"
     },
     "m_Name": "imgGlow",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Texture2D_6f808d79c74b4bf99bbc699fa6e7af69",
     "m_OverrideReferenceName": "_imgGlow",
     "m_GeneratePropertyBlock": true,
@@ -1769,6 +1775,8 @@
         "m_GuidSerialized": "b900c6af-ea3e-4bce-891c-813bd00ba989"
     },
     "m_Name": "imgFora",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Texture2D_d8668875c04e4a7f86d897e1da4d14b3",
     "m_OverrideReferenceName": "_imgFora",
     "m_GeneratePropertyBlock": true,
@@ -1869,7 +1877,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_BlendMode": 15
+    "m_BlendMode": 6
 }
 
 {

@@ -24,4 +24,11 @@ public class Utils
     {
         return collision.gameObject.CompareTag(nomeTag);
     }
+
+    public static Color getCorByHex(string hex)
+    {
+        Color cor;
+        ColorUtility.TryParseHtmlString(hex, out cor);
+        return cor;
+    }
 }
