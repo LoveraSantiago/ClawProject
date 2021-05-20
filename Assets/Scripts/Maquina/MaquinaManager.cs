@@ -160,6 +160,9 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         corHex = dicionarioCores[ConstantesCoresMaquina.CHAO_DENTRO];
         partesDto.ChaoDentro.color = Utils.getCorByHex(corHex);
 
+        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_SAIDA];
+        partesDto.PlacaDeSaida.color = Utils.getCorByHex(corHex);
+
         corHex = dicionarioCores[ConstantesCoresMaquina.TUBO];
         Color corTubo = Utils.getCorByHex(corHex);
         corTubo.a = 0.88f;
