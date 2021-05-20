@@ -5108,7 +5108,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5363,35 +5363,52 @@ MonoBehaviour:
       - 1.2
   maquinaDto:
     referenciaChao: {fileID: 1841408758}
-    hasteJoystick: {fileID: 1655319868}
+    joystickDto:
+      joystickTransform: {fileID: 0}
+      parteCima: {fileID: 0}
+      parteBaixo: {fileID: 0}
+      furoHaste: {fileID: 0}
+      haste: {fileID: 0}
+      bola: {fileID: 0}
+      furoBotao: {fileID: 0}
+      botao: {fileID: 0}
     displayDeColetadoDto:
       inicialDelay: 0.3
       fimDelay: 0.1
       tempoReset: 0.75
       velocImg: 5
       singleDisplayColetado:
-      - sprRendererDentro: {fileID: 0}
+      - sprDisplay: {fileID: 0}
+        sprRendererDentro: {fileID: 0}
         goColetado: {fileID: 0}
         sprRendererColetado: {fileID: 0}
-      - sprRendererDentro: {fileID: 0}
+      - sprDisplay: {fileID: 0}
+        sprRendererDentro: {fileID: 0}
         goColetado: {fileID: 0}
         sprRendererColetado: {fileID: 0}
-      - sprRendererDentro: {fileID: 0}
+      - sprDisplay: {fileID: 0}
+        sprRendererDentro: {fileID: 0}
         goColetado: {fileID: 0}
         sprRendererColetado: {fileID: 0}
       materialGlowDisplay: {fileID: 2100000, guid: db08e5d8c23ec6247a7abf7fc6a2be5a, type: 2}
     displayTimerDto:
-      gosDisplayTimers:
-      - {fileID: 6406990385049082676}
-      - {fileID: 6406990385049082675}
-      - {fileID: 6406990385049082674}
-      - {fileID: 6406990385049082673}
-      goDisplayTimer2Pontos: {fileID: 6406990385049082672}
+      singleDisplay:
+      - tras: {fileID: 0}
+        segmentos: []
+      - tras: {fileID: 0}
+        segmentos: []
+      - tras: {fileID: 0}
+        segmentos: []
+      - tras: {fileID: 0}
+        segmentos: []
+      - tras: {fileID: 0}
+        segmentos: []
     displayDeScoreDto:
       qtdBlinks: 3
       tempoBlink: 0.2
       singleDisplayScoreDto:
-      - fileira1:
+      - displayScore: {fileID: 0}
+        fileira1:
         - {fileID: 0}
         - {fileID: 0}
         - {fileID: 0}
@@ -5431,7 +5448,8 @@ MonoBehaviour:
         - {fileID: 0}
         - {fileID: 0}
         - {fileID: 0}
-      - fileira1:
+      - displayScore: {fileID: 0}
+        fileira1:
         - {fileID: 0}
         - {fileID: 0}
         - {fileID: 0}
@@ -5471,7 +5489,8 @@ MonoBehaviour:
         - {fileID: 0}
         - {fileID: 0}
         - {fileID: 0}
-      - fileira1:
+      - displayScore: {fileID: 0}
+        fileira1:
         - {fileID: 0}
         - {fileID: 0}
         - {fileID: 0}
@@ -5549,6 +5568,26 @@ MonoBehaviour:
         goImagem: {fileID: 0}
         sprImagem: {fileID: 0}
         goExclamacao: {fileID: 0}
+    partesDto:
+      placaCima: {fileID: 0}
+      baseParteCima: {fileID: 0}
+      baseParteBaixo: {fileID: 0}
+      baseChao: {fileID: 0}
+      bordaVidro: {fileID: 0}
+      placaFrontal: {fileID: 0}
+      barra: {fileID: 0}
+      chaoDentro: {fileID: 0}
+      tubo: {fileID: 0}
+      vigaTrasEsquerda: {fileID: 0}
+      vigaTrasDireita: {fileID: 0}
+      placaSaida: {fileID: 0}
+      placaFicha: {fileID: 0}
+      placaParteCima: {fileID: 0}
+      placaParteBaixo: {fileID: 0}
+      quadMaior: {fileID: 0}
+      quadMenor: {fileID: 0}
+      furoCima: {fileID: 0}
+      furoBaixo: {fileID: 0}
   camShakeDto:
     cineMachine: {fileID: 250677996}
     noise6d: {fileID: 11400000, guid: a31f2eaada77af94689f0b0d7e781fb6, type: 2}
@@ -22304,6 +22343,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9da6edb57becf934fab40b060310757f, type: 3}
+    - target: {fileID: 6881037629133323772, guid: 3493b4f605f0fd047a351af1a107ddf1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 691866f9e5888f44f8734e8b8722ede9, type: 3}
+    - target: {fileID: 6881037629133323772, guid: 3493b4f605f0fd047a351af1a107ddf1, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881037629133323772, guid: 3493b4f605f0fd047a351af1a107ddf1, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881037629133323772, guid: 3493b4f605f0fd047a351af1a107ddf1, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7087768775940840545, guid: 3493b4f605f0fd047a351af1a107ddf1, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -22537,11 +22592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6c00ead7b1e9e4783c52b65451e720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1655319868 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6406990384794630421, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1792400948
 GameObject:
   m_ObjectHideFlags: 0
@@ -22944,30 +22994,5 @@ PrefabInstance:
 --- !u!4 &6406990385049082668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1258064833904829691, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6406990385049082672 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8210845244564109219, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6406990385049082673 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4483752174791870381, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6406990385049082674 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8509622763487665638, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6406990385049082675 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1737898729050486971, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6406990385049082676 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3728113338630205410, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
