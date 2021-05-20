@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColetavelContextoEstatico : MonoBehaviour
+public class ColetavelContextoEstatico 
 {
     public Nomeador nomeador { get; private set; }
     public GameObject mainTile { get; private set; }
     public Transform mainTileParent { get; private set; }
     public Dictionary<string, Sprite> dicionarioDeSprites { get; private set; }
 
-    public void configurar(GameObject mainTile, Transform mainTileParent, List<Sprite> characters)
+    public void configurar(GameObject mainTile, Transform mainTileParent, Sprite[] characters)
     {
         this.mainTile = mainTile;
         this.mainTileParent = mainTileParent;
@@ -16,7 +16,7 @@ public class ColetavelContextoEstatico : MonoBehaviour
         nomeador = new Nomeador();
 
         dicionarioDeSprites = new Dictionary<string, Sprite>();
-        for (int contador = 0; contador < characters.Count; contador++)
+        for (int contador = 0; contador < characters.Length; contador++)
         {
             Sprite spriteIt = characters[contador];
             dicionarioDeSprites.Add(spriteIt.name, spriteIt);

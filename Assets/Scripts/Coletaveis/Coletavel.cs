@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Coletavel 
@@ -131,8 +130,9 @@ public class Coletavel
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
     }
 
-    public static void configurar(GameObject mainTile, Transform mainTileParent, List<Sprite> characters)
+    public static void configurar(GameObject mainTile, Transform mainTileParent, Sprite[] characters)
     {
+        context = new ColetavelContextoEstatico();
         context.configurar(mainTile, mainTileParent, characters);
     }
 }
