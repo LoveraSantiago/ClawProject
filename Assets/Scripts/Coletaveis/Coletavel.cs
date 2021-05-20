@@ -1,12 +1,9 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Coletavel 
 {
-    private static Nomeador nomeador;
-    private static GameObject mainTile;
-    private static Transform mainTileParent;
-    private static Dictionary<string, Sprite> dicionarioDeSprites;
+    private static ColetavelContextoEstatico context;
 
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }
@@ -16,13 +13,13 @@ public class Coletavel
     private SpriteRenderer spriteRenderer;    
     
     public Coletavel()
-        :this(mainTile, nomeador.getName())
+        :this(context.mainTile, context.nomeador.getName())
     {        
     }   
 
     public Coletavel(GameObject go, string nome)
     {
-        goColetavel = GameObject.Instantiate(go, go.transform.position, Quaternion.Euler(Vector3.zero), mainTileParent);
+        goColetavel = GameObject.Instantiate(go, go.transform.position, Quaternion.Euler(Vector3.zero), context.mainTileParent);
         this.nome = nome;
         goColetavel.name = nome;
         spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();
@@ -51,9 +48,9 @@ public class Coletavel
     public void disparar(Vector3 posicao, float angulo, float velocidade)
     {
         Quaternion quatAngulo = Quaternion.Euler(0, 0, angulo);
-        mainTile.transform.rotation = quatAngulo;
+        context.mainTile.transform.rotation = quatAngulo;
         colocarNaPosicao(posicao, quatAngulo);
-        rigidbody.AddForce(mainTile.transform.up * velocidade, ForceMode2D.Impulse);
+        rigidbody.AddForce(context.mainTile.transform.up * velocidade, ForceMode2D.Impulse);
     }
 
     public void disparar(float angulo, float velocidade)
@@ -85,7 +82,7 @@ public class Coletavel
 
     public void receberSprite(string nomeSprite)
     {
-        receberSprite(dicionarioDeSprites[nomeSprite]);
+        receberSprite(context.dicionarioDeSprites[nomeSprite]);
     }
 
     public virtual void parar()
@@ -134,18 +131,8 @@ public class Coletavel
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
     }
 
-    public static void configurar(GameObject mainTileArg, Transform mainTileParentArg, List<Sprite> characters)
+    public static void configurar(GameObject mainTile, Transform mainTileParent, List<Sprite> characters)
     {
-        mainTile = mainTileArg;
-        mainTileParent = mainTileParentArg;
-
-        nomeador = new Nomeador();
-
-        dicionarioDeSprites = new Dictionary<string, Sprite>();
-        for(int contador = 0; contador < characters.Count; contador++)
-        {
-            Sprite spriteIt = characters[contador];
-            dicionarioDeSprites.Add(spriteIt.name, spriteIt);
-        }
+        context.configurar(mainTile, mainTileParent, characters);
     }
 }
