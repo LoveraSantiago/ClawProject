@@ -15,6 +15,7 @@ public class PartesMaquinaDto
     [SerializeField] private SpriteRenderer tubo;
     [SerializeField] private SpriteRenderer vigaTrasEsquerda;
     [SerializeField] private SpriteRenderer vigaTrasDireita;
+    [SerializeField] private SpriteRenderer placaSaida;
 
     [SerializeField] private SpriteRenderer placaFicha;
     [SerializeField] private SpriteRenderer placaParteCima;
@@ -35,6 +36,7 @@ public class PartesMaquinaDto
     public SpriteRenderer Tubo { get { return tubo; } }
     public SpriteRenderer VigaTrasEsquerda { get { return vigaTrasEsquerda; } }
     public SpriteRenderer VigaTrasDireita { get { return vigaTrasDireita; } }
+    public SpriteRenderer PlacaDeSaida { get { return placaSaida; } }
 
     public SpriteRenderer PlacaFicha { get { return placaFicha; } }
     public SpriteRenderer PlacaParteCima { get { return placaParteCima; } }
