@@ -70,7 +70,7 @@ public class PowerUpEntidade
     {
         if(missilTeleguiado == null)
         {
-            missilTeleguiado = new PowerUpEntidade(NAME.MISSIL_TELEGUIADO, 9, "missil-btn");
+            missilTeleguiado = new PowerUpEntidade(NAME.MISSIL_TELEGUIADO, 9, "missil-btnv2");
         }
         return missilTeleguiado;
     }
@@ -79,9 +79,9 @@ public class PowerUpEntidade
     {
         switch (name)
         {
-            case NAME.BOMBA_DA_GARRA:  return getBombaDaGarra();
-            case NAME.MISSIL_NUCLEAR: return getMissilNuclear();
-            case NAME.MINA_TERRESTRE:  return getMinaTerrestre();
+            case NAME.BOMBA_DA_GARRA:    return getBombaDaGarra();
+            case NAME.MISSIL_NUCLEAR:    return getMissilNuclear();
+            case NAME.MINA_TERRESTRE:    return getMinaTerrestre();
             case NAME.MISSIL_TELEGUIADO: return getMissilTeleguiado();
         }
         return null;
