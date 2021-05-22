@@ -9,9 +9,9 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     {
     }
 
-    public override bool garraPodeSegurar()
+    public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
     {
-        return true;
+        return PowerUpEntidade.INTERACAOGARRA.PARADO;
     }
 
     public override float getAnguloGarraSegurar()

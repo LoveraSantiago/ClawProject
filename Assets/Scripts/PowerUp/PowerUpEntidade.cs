@@ -10,6 +10,11 @@ public class PowerUpEntidade
         CHAO, NONE
     }
 
+    public enum INTERACAOGARRA
+    {
+        MOVIMENTO, PARADO, NAO_INTERACAO
+    }
+
     public NAME name   { get; private set; }    
     public int duracao { get; private set; }
     public string nomeSprite { get; private set; }

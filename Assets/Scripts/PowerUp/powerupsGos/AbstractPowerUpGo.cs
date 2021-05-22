@@ -6,7 +6,7 @@ public abstract class AbstractPowerUpGo : Coletavel,
     protected static MonoBehaviour monoBehaviour;
     protected static PowerUpFinalizacao powerUpFinalizacao;
 
-    public abstract bool garraPodeSegurar();
+    public abstract PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra();
     public virtual float getAnguloGarraSegurar() { return 15; }//Angulo de fechamento atual configurado no edior
     public virtual void iniciarNaPosicao(Vector3 posicao) { }
 

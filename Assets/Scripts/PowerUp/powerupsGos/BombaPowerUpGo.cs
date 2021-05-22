@@ -23,9 +23,9 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         tileBomb.SetActive(false);
     }
 
-    public override bool garraPodeSegurar()
+    public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
     {
-        return true;
+        return PowerUpEntidade.INTERACAOGARRA.MOVIMENTO;
     }
 
     public override float getAnguloGarraSegurar()

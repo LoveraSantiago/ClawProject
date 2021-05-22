@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface GarraInteracaoComPowerUp 
 {
-    bool garraPodeSegurar();
+    PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra();
     float getAnguloGarraSegurar();
     void ligar();
     void parar();

@@ -8,6 +8,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     private MovimentacaoDaGarra movVoltarPCima;
     private MovimentacaoDaGarra movVoltarMeio;
     private MovimentacaoDaGarra movSegCima;
+    private MovimentacaoDaGarra movSegCimaMov;
     private MovimentacaoDaGarra movSoltar;
     private MovimentacaoDaGarra movParado;
 
@@ -17,6 +18,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         movVoltarPCima = new MovimentacaoVoltarParaCima();
         movVoltarMeio  = new MovimentacaoVoltarParaMeio();
         movSegCima     = new MovimentacaoAgarrandoEmcima();
+        movSegCimaMov  = new MovimentacaoAgarrandoEmcimaEmMovimento();
         movSoltar      = new MovimentacaoSoltar();
         movParado      = new MovimentacaoParado();
 
@@ -67,9 +69,14 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         trocarMovimentador(movVoltarMeio);
     }
 
-    public void trocarParaAcaoSegurando()
+    public void trocarParaAcaoSegurandoParado()
     {
         trocarMovimentador(movSegCima);
+    }
+
+    public void trocarParaAcaoSegurandoEmMovimento()
+    {
+        trocarMovimentador(movSegCimaMov);
     }
 
     public void trocarParaAcaoSoltar()
