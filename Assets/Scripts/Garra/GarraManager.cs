@@ -66,6 +66,7 @@ public class GarraManager : ConsumidorDeEventoTrigger,
 
     private void processarPowerUp(PowerUpInfo powerUpInfo)
     {
+        //TODO TODOS OS POWERUPS POR ENQUANTO INTERAGEM COM A GARRA TALVEZ REMOVER ESSE IF
         if(powerUpInfo.garraInteracaoPowerUp != null)
         {
             gerDeMovPowerUp.receberGarraInteracaoComPowerUp(powerUpInfo.garraInteracaoPowerUp, powerUpInfo.duracaoTempo);
