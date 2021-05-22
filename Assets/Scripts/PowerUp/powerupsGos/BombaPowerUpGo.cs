@@ -28,6 +28,11 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         return true;
     }
 
+    public override float getAnguloGarraSegurar()
+    {
+        return 10f;
+    }
+
     public void consumirEvento(Collision2D evento)
     {        
         if(!acionado && Utils.isColetavel(evento))

@@ -8,13 +8,14 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
     private Quaternion anguloDesejadoDireitaFechado;    
 
     public MovimentacaoAgarrandoEmcima()
-    {
-        anguloDesejadoDireitaFechado  = Quaternion.Euler(0, 0, garraDto.AnguloFechamento);
-        anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraDto.AnguloFechamento);
+    {        
     }
 
     public override void preInicio()
-    {        
+    {
+        anguloDesejadoDireitaFechado = Quaternion.Euler(0, 0, garraInteracaoComPowerUp.getAnguloGarraSegurar());
+        anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraInteracaoComPowerUp.getAnguloGarraSegurar());
+
         pincas.acionarCollider();
 
         garraInteracaoComPowerUp.ligar();
