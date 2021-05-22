@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 {
-    public MissilTeleguiadoPowerUpGo(GameObject goTile, string nome) : 
-        base(goTile, nome)
+    public MissilTeleguiadoPowerUpGo(GameObject tileMissil) : 
+        base(tileMissil, "missil-teleguiado")
     {
     }
 

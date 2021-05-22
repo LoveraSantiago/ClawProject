@@ -24,17 +24,10 @@ public class PoolDePowerUpGos
     {
         switch (powerUpName)
         {
-            case PowerUpEntidade.NAME.BOMBA_DA_GARRA:                
-                criarPowerUpGoBomba();
-                break;
-
-            case PowerUpEntidade.NAME.MISSIL_NUCLEAR:
-                criarPowerUpGoMissil();
-                break;
-
-            case PowerUpEntidade.NAME.MINA_TERRESTRE:
-                criarPowerUpGoMinaTerrestre();
-                break;               
+            case PowerUpEntidade.NAME.BOMBA_DA_GARRA: criarPowerUpGoBomba(); break;
+            case PowerUpEntidade.NAME.MISSIL_NUCLEAR: criarPowerUpGoMissilNuclear(); break;
+            case PowerUpEntidade.NAME.MINA_TERRESTRE: criarPowerUpGoMinaTerrestre(); break;
+            case PowerUpEntidade.NAME.MISSIL_TELEGUIADO: criarPowerUpGoMissilTeleguiado(); break;
         }
     }
 
@@ -50,9 +43,15 @@ public class PoolDePowerUpGos
         poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.BOMBA_DA_GARRA.ToString(), bomba);        
     }
 
-    private void criarPowerUpGoMissil()
+    private void criarPowerUpGoMissilNuclear()
     {        
-        MissilNuclearPowerUpGo missilNuclear = new MissilNuclearPowerUpGo(powerUpDto.MissilPUp);
+        MissilNuclearPowerUpGo missilNuclear = new MissilNuclearPowerUpGo(powerUpDto.MissilNuclearPUp);
         poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MISSIL_NUCLEAR.ToString(), missilNuclear);        
+    }
+
+    private void criarPowerUpGoMissilTeleguiado()
+    {
+        MissilTeleguiadoPowerUpGo missilTeleguiado = new MissilTeleguiadoPowerUpGo(powerUpDto.MissilTeleguiadoPUp);
+        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MISSIL_TELEGUIADO.ToString(), missilTeleguiado);
     }
 }

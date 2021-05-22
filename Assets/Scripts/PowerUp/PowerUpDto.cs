@@ -5,10 +5,12 @@ using UnityEngine;
 public class PowerUpDto 
 {    
     [SerializeField] private GameObject bomdPUp;
-    [SerializeField] private GameObject missilPUp;
+    [SerializeField] private GameObject missilNuclearPUp;
     [SerializeField] private GameObject minaTerrestrePUp;
+    [SerializeField] private GameObject missilTeleguiadoPUp;
  
     public GameObject BombPUp { get { return bomdPUp; } }
-    public GameObject MissilPUp { get { return missilPUp; } }
+    public GameObject MissilNuclearPUp { get { return missilNuclearPUp; } }
     public GameObject MinaTerrestrePUp { get { return minaTerrestrePUp; } }
+    public GameObject MissilTeleguiadoPUp { get { return missilTeleguiadoPUp; } }
 }

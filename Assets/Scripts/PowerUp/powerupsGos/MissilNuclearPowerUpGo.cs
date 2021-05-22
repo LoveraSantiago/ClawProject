@@ -14,13 +14,13 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
     private GameObject goExplosao;    
     private Animator animator;
  
-    public MissilNuclearPowerUpGo(GameObject tileMissil)
-        : base(tileMissil, "missil")
+    public MissilNuclearPowerUpGo(GameObject tileMissilNuclear)
+        : base(tileMissilNuclear, "missil-nuclear")
     {
         missil_explosao = Animator.StringToHash("explosao");
         missil_idle = Animator.StringToHash("idle");
 
-        tileMissil.SetActive(false);
+        tileMissilNuclear.SetActive(false);
     }
 
     public override bool garraPodeSegurar()
