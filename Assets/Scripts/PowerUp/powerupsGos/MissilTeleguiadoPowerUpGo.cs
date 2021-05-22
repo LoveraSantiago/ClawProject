@@ -13,4 +13,14 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     {
         return true;
     }
+
+    public override float getAnguloGarraSegurar()
+    {
+        return 16f;
+    }
+
+    public override void colocarNaPosicao(Vector3 posicao)
+    {
+        base.colocarNaPosicao(posicao + new Vector3(0, -0.4f, 0));
+    }
 }
