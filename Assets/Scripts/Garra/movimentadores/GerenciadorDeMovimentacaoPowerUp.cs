@@ -55,7 +55,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     private bool isEstadoAtualCentralizado()
     {
-        return movAtual == movSegCima;        
+        return movAtual == movSegCimaMov;        
     }
 
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP INICIO

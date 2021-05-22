@@ -9,7 +9,8 @@ public class Coletavel
 
     protected GameObject goColetavel;
     private Rigidbody2D rigidbody;
-    private SpriteRenderer spriteRenderer;    
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
     
     public Coletavel()
         :this(context.mainTile, context.nomeador.getName())
@@ -23,6 +24,7 @@ public class Coletavel
         goColetavel.name = nome;
         spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();
         rigidbody = goColetavel.GetComponent<Rigidbody2D>();
+        animator = goColetavel.transform.Find("animacao").GetComponent<Animator>();
     }   
 
     public virtual void colocarNaPosicao(Vector3 posicao) {
@@ -128,6 +130,21 @@ public class Coletavel
     public bool hasEqualsSprite(Coletavel coletavelOutro)
     {
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
+    }
+
+    public void ligarAnimacaoMira()
+    {
+        animator.Play(context.MIRAR_ON);
+    }
+
+    public void ligarAnimacaoMiraSelecionado()
+    {
+        animator.Play(context.MIRAR_SELECTED);
+    }
+
+    public void desligarAnimacao()
+    {
+        animator.Play(context.IDLE);
     }
 
     public static void configurar(GameObject mainTile, Transform mainTileParent, Sprite[] characters)

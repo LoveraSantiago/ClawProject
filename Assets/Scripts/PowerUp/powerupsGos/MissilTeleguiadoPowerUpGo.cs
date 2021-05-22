@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 {
+    private bool configurado;
+    private ColetavelQuery coletavelQuery;
+
     public MissilTeleguiadoPowerUpGo(GameObject tileMissil) : 
         base(tileMissil, "missil-teleguiado")
     {
@@ -22,5 +25,14 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     public override void colocarNaPosicao(Vector3 posicao)
     {
         base.colocarNaPosicao(posicao + new Vector3(0, -0.4f, 0));
+    }
+
+    public override void ligar()
+    {
+        if (!configurado)
+        {
+            coletavelQuery = new ColetavelQuery();
+        }
+        base.ligar();
     }
 }
