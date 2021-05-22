@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MissilPowerUpGo : AbstractPowerUpGo,
+public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
                                ConsumidorDeEventoCollider
 {    
 
@@ -14,7 +14,7 @@ public class MissilPowerUpGo : AbstractPowerUpGo,
     private GameObject goExplosao;    
     private Animator animator;
  
-    public MissilPowerUpGo(GameObject tileMissil)
+    public MissilNuclearPowerUpGo(GameObject tileMissil)
         : base(tileMissil, "missil")
     {
         missil_explosao = Animator.StringToHash("explosao");

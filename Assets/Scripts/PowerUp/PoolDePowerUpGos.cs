@@ -31,7 +31,7 @@ public class PoolDePowerUpGos
                 criarPowerUpGoBomba();
                 break;
 
-            case PowerUpEntidade.NAME.MISSIL_DA_GARRA:
+            case PowerUpEntidade.NAME.MISSIL_NUCLEAR:
                 criarPowerUpGoMissil();
                 break;
 
@@ -55,7 +55,7 @@ public class PoolDePowerUpGos
 
     private void criarPowerUpGoMissil()
     {        
-        MissilPowerUpGo missil = new MissilPowerUpGo(powerUpDto.MissilPUp);
-        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MISSIL_DA_GARRA.ToString(), missil);        
+        MissilNuclearPowerUpGo missilNuclear = new MissilNuclearPowerUpGo(powerUpDto.MissilPUp);
+        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MISSIL_NUCLEAR.ToString(), missilNuclear);        
     }
 }

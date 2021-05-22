@@ -2,7 +2,7 @@ public class PowerUpEntidade
 {
     public enum NAME
     {
-        BOMBA_DA_GARRA, MISSIL_DA_GARRA, MINA_TERRESTRE, MISSIL_TELEGUIADO, NONE
+        BOMBA_DA_GARRA, MISSIL_NUCLEAR, MINA_TERRESTRE, MISSIL_TELEGUIADO, NONE
     }
 
     public enum AREA
@@ -35,7 +35,7 @@ public class PowerUpEntidade
     }
 
     private static PowerUpEntidade bombaDaGarra;
-    private static PowerUpEntidade missilDaGarra;
+    private static PowerUpEntidade missilNuclear;
     private static PowerUpEntidade minaTerrestre;
     private static PowerUpEntidade missilTeleguiado;
 
@@ -48,13 +48,13 @@ public class PowerUpEntidade
         return bombaDaGarra;
     }
 
-    private static PowerUpEntidade getMissilDaGarra()
+    private static PowerUpEntidade getMissilNuclear()
     {
-        if(missilDaGarra == null)
+        if(missilNuclear == null)
         {
-            missilDaGarra = new PowerUpEntidade(NAME.MISSIL_DA_GARRA, 9, "nuclear-bomba-btn");
+            missilNuclear = new PowerUpEntidade(NAME.MISSIL_NUCLEAR, 9, "nuclear-bomba-btn");
         }
-        return missilDaGarra;
+        return missilNuclear;
     }
 
     private static PowerUpEntidade getMinaTerrestre()
@@ -80,7 +80,7 @@ public class PowerUpEntidade
         switch (name)
         {
             case NAME.BOMBA_DA_GARRA:  return getBombaDaGarra();
-            case NAME.MISSIL_DA_GARRA: return getMissilDaGarra();
+            case NAME.MISSIL_NUCLEAR: return getMissilNuclear();
             case NAME.MINA_TERRESTRE:  return getMinaTerrestre();
             case NAME.MISSIL_TELEGUIADO: return getMissilTeleguiado();
         }
