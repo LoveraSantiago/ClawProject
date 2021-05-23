@@ -45,6 +45,11 @@ public abstract class Coletavel
         return goColetavel.transform.position;
     }
 
+    public Vector2 getPosicaoRigidBody()
+    {
+        return rigidbody.transform.position;
+    }
+
     public void disparar(Vector3 posicao, float angulo, float velocidade)
     {
         Quaternion quatAngulo = Quaternion.Euler(0, 0, angulo);
@@ -84,6 +89,16 @@ public abstract class Coletavel
     public void receberSprite(string nomeSprite)
     {
         receberSprite(context.dicionarioDeSprites[nomeSprite]);
+    }
+
+    public void addVelocidadeAngular(float velocidadeAngular)
+    {
+        rigidbody.angularVelocity = velocidadeAngular;
+    }
+
+    public void addVelocidade(Vector2 velocidade)
+    {
+        rigidbody.velocity = velocidade;
     }
 
     public virtual void parar()

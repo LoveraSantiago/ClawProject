@@ -9,6 +9,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     private bool hitColetavel;
 
     private ColetavelQuery coletavelQuery;
+    private CapsuleCollider2D capsuleCollider;
 
     public MissilTeleguiadoPowerUpGo(GameObject tileMissil) : 
         base(tileMissil, "missil-teleguiado")
@@ -36,6 +37,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         {
             coletavelQuery = new ColetavelQuery();
             configurado = true;
+            capsuleCollider = goColetavel.GetComponent<CapsuleCollider2D>();
         }
         base.ligar();        
         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
@@ -60,10 +62,28 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
                     string nomeAlvo = raycastHit.collider.name;
                     coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvo(nomeAlvo));
                     hitColetavel = true;
+                    monoBehaviour.StartCoroutine(disparandoMissil(coletavelQuery.getColetavelInGameByName(nomeAlvo)));
                 }
             }
             yield return null;
         }
+        yield return null;
+    }
+
+    private IEnumerator disparandoMissil(ColetavelTile coletavel)
+    {
+        capsuleCollider.isTrigger = true;
+        while (true)
+        {
+            Vector2 direcao = (Vector2) (coletavel.getPosicao() - getPosicao());
+            direcao.Normalize();
+            float rotacao = Vector3.Cross(direcao, goColetavel.transform.up).z;
+            addVelocidadeAngular(-rotacao * 1);
+            addVelocidade(- goColetavel.transform.up * 1);
+
+            yield return null;
+        }
+
         yield return null;
     }
 
