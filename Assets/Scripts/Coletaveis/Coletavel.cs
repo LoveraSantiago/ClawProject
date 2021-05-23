@@ -51,6 +51,7 @@ public abstract class Coletavel
         context.mainTile.transform.rotation = quatAngulo;
         colocarNaPosicao(posicao, quatAngulo);
         rigidbody.AddForce(context.mainTile.transform.up * velocidade, ForceMode2D.Impulse);
+        context.mainTile.transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
     public void disparar(float angulo, float velocidade)
@@ -136,9 +137,7 @@ public abstract class Coletavel
     public bool hasEqualsSprite(Coletavel coletavelOutro)
     {
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
-    }
-
-   
+    }   
 
     public static void configurar(GameObject mainTile, Transform mainTileParent, Sprite[] characters)
     {
