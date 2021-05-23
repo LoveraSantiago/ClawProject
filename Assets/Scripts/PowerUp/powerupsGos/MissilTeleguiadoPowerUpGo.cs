@@ -6,6 +6,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
                                          ConsumidorDeEvento<ColetavelTile>
 {
     private bool configurado;
+    private bool hitColetavel;
+
     private ColetavelQuery coletavelQuery;
 
     public MissilTeleguiadoPowerUpGo(GameObject tileMissil) : 
@@ -33,9 +35,36 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         if (!configurado)
         {
             coletavelQuery = new ColetavelQuery();
+            configurado = true;
         }
-        base.ligar();
+        base.ligar();        
         coletavelQuery.executeNoPoolDeColetaveis(this);
+        monoBehaviour.StartCoroutine(selecionarAlvo());
+    }
+
+    private IEnumerator selecionarAlvo()
+    {
+        hitColetavel = false;
+        while (!hitColetavel)
+        {
+            if (inputGame.aconteceuTapNaAreaSuperior())
+            {
+                Vector3 posicaoTap = inputGame.getPosicaoTap();
+                posicaoTap.z = 0;
+
+                int layerMask = LayerMask.GetMask("Coletavel");
+                RaycastHit2D raycastHit;
+                raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
+                if (raycastHit.collider != null)
+                {
+                    ColetavelTile coletavel = coletavelQuery.getColetavelInGameByName(raycastHit.collider.name);
+                    coletavel.ligarAnimacaoMiraSelecionado();
+                    hitColetavel = true;
+                }
+            }
+            yield return null;
+        }
+        yield return null;
     }
 
     public void consumirEvento(ColetavelTile coletavel)

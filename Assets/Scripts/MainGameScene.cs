@@ -58,7 +58,7 @@ public class MainGameScene : MonoBehaviour,
         coletaveisManager = new ColetavelManager(coletaveisDto, this);
         maquinaManager    = new MaquinaManager(maquinaDto, componentesDaGarra.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
-        powerUpManager    = new PowerUpManager(powerUpDto, this);
+        powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);
         modalPontos       = new ModalPontos(modalPontosDto, this);
     }
 

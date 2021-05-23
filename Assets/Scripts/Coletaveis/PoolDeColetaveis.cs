@@ -14,7 +14,7 @@ public class PoolDeColetaveis
         return coletavel;
     }
 
-    public Coletavel getColetavelPeloNome(string nome)
+    public ColetavelTile getColetavelPeloNome(string nome)
     {
         return poolDeNomes.getObjetoPeloNome(nome);
     }

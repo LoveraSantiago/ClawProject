@@ -31,7 +31,7 @@ public class ColetavelQuery
         }
     }
 
-    public Coletavel getColetavelInGameByName(string name)
+    public ColetavelTile getColetavelInGameByName(string name)
     {
         return poolDeColetaveis.getColetavelPeloNome(name);
     }
