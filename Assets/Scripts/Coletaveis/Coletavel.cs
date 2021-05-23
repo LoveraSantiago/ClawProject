@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Coletavel 
+public abstract class Coletavel 
 {
-    private static ColetavelContextoEstatico context;
+    protected static ColetavelContextoEstatico context;
 
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }
@@ -10,8 +10,7 @@ public class Coletavel
     private bool ativo;
     protected GameObject goColetavel;
     private Rigidbody2D rigidbody;
-    private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    private SpriteRenderer spriteRenderer;    
     
     public Coletavel()
         :this(context.mainTile, context.nomeador.getName())
@@ -24,8 +23,7 @@ public class Coletavel
         this.nome = nome;
         goColetavel.name = nome;
         spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();
-        rigidbody = goColetavel.GetComponent<Rigidbody2D>();
-        animator = goColetavel.transform.Find("animacao").GetComponent<Animator>();
+        rigidbody = goColetavel.GetComponent<Rigidbody2D>();        
     }   
 
     public virtual void colocarNaPosicao(Vector3 posicao) {
@@ -140,20 +138,7 @@ public class Coletavel
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
     }
 
-    public void ligarAnimacaoMira()
-    {
-        animator.Play(context.MIRAR_ON);
-    }
-
-    public void ligarAnimacaoMiraSelecionado()
-    {
-        animator.Play(context.MIRAR_SELECTED);
-    }
-
-    public void desligarAnimacao()
-    {
-        animator.Play(context.IDLE);
-    }
+   
 
     public static void configurar(GameObject mainTile, Transform mainTileParent, Sprite[] characters)
     {

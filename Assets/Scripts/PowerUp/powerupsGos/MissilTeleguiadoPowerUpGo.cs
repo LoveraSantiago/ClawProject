@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
-                                         ConsumidorDeEvento<Coletavel>
+                                         ConsumidorDeEvento<ColetavelTile>
 {
     private bool configurado;
     private ColetavelQuery coletavelQuery;
@@ -38,7 +38,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         coletavelQuery.executeNoPoolDeColetaveis(this);
     }
 
-    public void consumirEvento(Coletavel coletavel)
+    public void consumirEvento(ColetavelTile coletavel)
     {
         if (coletavel.isAtivo())
         {
