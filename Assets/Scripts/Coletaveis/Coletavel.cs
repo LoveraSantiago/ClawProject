@@ -7,6 +7,7 @@ public class Coletavel
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }
 
+    private bool ativo;
     protected GameObject goColetavel;
     private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;
@@ -94,12 +95,19 @@ public class Coletavel
 
     public void desligar()
     {
+        ativo = false;
         goColetavel.SetActive(false);
     }
 
     public virtual void ligar()
     {
+        ativo = true;
         goColetavel.SetActive(true);
+    }
+
+    public bool isAtivo()
+    {
+        return ativo;
     }
 
     public virtual void desligarGravidade()

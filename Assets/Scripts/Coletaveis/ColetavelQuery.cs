@@ -36,6 +36,11 @@ public class ColetavelQuery
         return poolDeColetaveis.getColetavelPeloNome(name);
     }
 
+    public void executeNoPoolDeColetaveis(ConsumidorDeEvento<Coletavel> consumidor)
+    {
+        poolDeColetaveis.executeEmTodosColetaveis(consumidor);
+    }
+
     public ColetavelEntidade getColetavelEntidadeBySprite(string spriteName)
     {     
         if (dicionarioDeSprites.ContainsKey(spriteName))

@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
+public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
+                                         ConsumidorDeEvento<Coletavel>
 {
     private bool configurado;
     private ColetavelQuery coletavelQuery;
@@ -34,5 +35,14 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
             coletavelQuery = new ColetavelQuery();
         }
         base.ligar();
+        coletavelQuery.executeNoPoolDeColetaveis(this);
+    }
+
+    public void consumirEvento(Coletavel coletavel)
+    {
+        if (coletavel.isAtivo())
+        {
+            coletavel.ligarAnimacaoMira();                        
+        }
     }
 }

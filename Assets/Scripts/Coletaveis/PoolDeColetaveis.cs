@@ -18,4 +18,9 @@ public class PoolDeColetaveis
     {
         return poolDeNomes.getObjetoPeloNome(nome);
     }
+
+    public void executeEmTodosColetaveis(ConsumidorDeEvento<Coletavel> consumidor)
+    {
+        poolDeNomes.executeEmTodosOsObj(consumidor);
+    }
 }
