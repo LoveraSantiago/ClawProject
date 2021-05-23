@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
-                                         ConsumidorDeEvento<ColetavelTile>
+public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
+                                         
 {
     private bool configurado;
     private bool hitColetavel;
@@ -38,7 +38,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
             configurado = true;
         }
         base.ligar();        
-        coletavelQuery.executeNoPoolDeColetaveis(this);
+        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
         monoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
@@ -57,8 +57,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
                 raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
                 if (raycastHit.collider != null)
                 {
-                    ColetavelTile coletavel = coletavelQuery.getColetavelInGameByName(raycastHit.collider.name);
-                    coletavel.ligarAnimacaoMiraSelecionado();
+                    string nomeAlvo = raycastHit.collider.name;
+                    coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvo(nomeAlvo));
                     hitColetavel = true;
                 }
             }
@@ -67,11 +67,39 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         yield return null;
     }
 
-    public void consumirEvento(ColetavelTile coletavel)
+    private class LigadorDeAlvo : ConsumidorDeEvento<ColetavelTile>
     {
-        if (coletavel.isAtivo())
+        private string nameAlvo;
+
+        public LigadorDeAlvo(string nameAlvo)
         {
-            coletavel.ligarAnimacaoMira();                        
+            this.nameAlvo = nameAlvo;
+        }
+
+        public void consumirEvento(ColetavelTile coletavel)
+        {
+            if (coletavel.isAtivo())
+            {
+                if (coletavel.nome.Equals(nameAlvo))
+                {
+                    coletavel.ligarAnimacaoMiraSelecionado();
+                }
+                else
+                {
+                    coletavel.desligarAnimacao();
+                }
+            }
+        }
+    }
+
+    private class LigadorDeMiras : ConsumidorDeEvento<ColetavelTile>
+    {
+        public void consumirEvento(ColetavelTile coletavel)
+        {
+            if (coletavel.isAtivo())
+            {
+                coletavel.ligarAnimacaoMira();                        
+            }
         }
     }
 }
