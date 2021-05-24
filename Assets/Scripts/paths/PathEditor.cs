@@ -26,6 +26,14 @@ public class PathEditor : Editor
             Undo.RecordObject(creator, "Add segment");
             path.AddSegment(mousePos);
         }
+
+        if (EventType.MouseDown == guiEvent.type)
+        {
+            foreach(Vector2 point in path.getListPoints())
+            {
+                Debug.Log("Ponto: " + point);
+            }
+        }
     }
 
     void Draw()

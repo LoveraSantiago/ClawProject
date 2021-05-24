@@ -44,6 +44,11 @@ public class Path
         }
     }
 
+    public List<Vector2> getListPoints()
+    {
+        return points;
+    }
+
     public void AddSegment(Vector2 anchorPos)
     {
         points.Add(points[points.Count - 1] * 2 - points[points.Count - 2]);
