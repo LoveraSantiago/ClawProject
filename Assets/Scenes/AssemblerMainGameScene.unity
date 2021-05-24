@@ -5747,6 +5747,20 @@ MonoBehaviour:
     missilNuclearPUp: {fileID: 0}
     minaTerrestrePUp: {fileID: 4127936681606313068, guid: 60283f6ad83360741b3927cd1859a108, type: 3}
     missilTeleguiadoPUp: {fileID: 0}
+    pathPointsMissil:
+    - {fileID: 1559863628}
+    - {fileID: 471392566}
+    - {fileID: 264603929}
+    - {fileID: 1020683585}
+    - {fileID: 282342767}
+    - {fileID: 1080864239}
+    - {fileID: 710220344}
+    - {fileID: 167078083}
+    - {fileID: 1974286618}
+    - {fileID: 675718309}
+    - {fileID: 318912150}
+    - {fileID: 1352256879}
+    - {fileID: 1828948201}
   modalPontosDto:
     textoPontos: {fileID: 1473191375}
     textoNivel: {fileID: 376184029}
