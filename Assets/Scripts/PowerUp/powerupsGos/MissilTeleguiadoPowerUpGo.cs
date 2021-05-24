@@ -10,10 +10,12 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 
     private ColetavelQuery coletavelQuery;
     private CapsuleCollider2D capsuleCollider;
+    private Transform[] pathMissil;
 
-    public MissilTeleguiadoPowerUpGo(GameObject tileMissil) : 
+    public MissilTeleguiadoPowerUpGo(GameObject tileMissil, Transform[] pathMissil) : 
         base(tileMissil, "missil-teleguiado")
     {
+        this.pathMissil = pathMissil;
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -121,5 +123,24 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
                 coletavel.ligarAnimacaoMira();                        
             }
         }
+    }
+
+    public Vector2 lerp(Vector2 a, Vector2 b, float t)
+    {
+        return a + (b - a) * t;
+    }
+
+    public Vector2 quadraticCurve(Vector2 a, Vector2 b, Vector2 c, float t)
+    {
+        Vector2 p0 = lerp(a, b, t);
+        Vector2 p1 = lerp(b, c, t);
+        return lerp(p0, p1, t);
+    }
+
+    public Vector2 cubicCurve(Vector2 a, Vector2 b, Vector2 c, Vector2 d, float t)
+    {
+        Vector2 p0 = quadraticCurve(a, b, c, t);
+        Vector2 p1 = quadraticCurve(b, c, d, t);
+        return lerp(p0, p1, t);
     }
 }
