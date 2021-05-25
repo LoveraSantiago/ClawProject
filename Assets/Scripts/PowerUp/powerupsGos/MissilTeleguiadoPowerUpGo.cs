@@ -84,13 +84,20 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 
         while (true)
         {
-            contador += 0.015f;
+            contador += (2f * Time.deltaTime);
             Vector2 posicao = cubicCurve(p1, p2, p3, p4, contador);
+            Vector2 posNext = cubicCurve(p1, p2, p3, p4, contador + 0.01f);
             colocarNaPosicao(posicao);
 
+            Vector2 diferenca = posicao - posNext;
+            diferenca.Normalize();
+            float z = Mathf.Atan2(diferenca.y, diferenca.x) * Mathf.Rad2Deg;
+            Quaternion quat = Quaternion.Euler(0f, 0f, z - 90);
+            colocarNoAngulo(quat);
+
             float distancia = (posicao - p4).sqrMagnitude;
-            Debug.Log("Dist: " + distancia);
-            if (distancia < 0.01f)
+            Debug.Log("Dist: " + distancia + " Ang: " + z);
+            if (distancia < 0.001f)
             {
                 Debug.Log("********************");
                 contador = 0;
@@ -103,6 +110,13 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
                 p2 = pathMissil[contadorIndice * 3 + 1].position;
                 p3 = pathMissil[contadorIndice * 3 + 2].position;
                 p4 = pathMissil[contadorIndice * 3 + 3].position;
+
+                //posNext = cubicCurve(p1, p2, p3, p4, contador + 0.01f);
+                //diferenca = posicao - posNext;
+                //diferenca.Normalize();
+                //z = Mathf.Atan2(diferenca.y, diferenca.x) * Mathf.Rad2Deg;
+                //quat = Quaternion.Euler(0f, 0f, z - 90);
+                //colocarNoAngulo(quat);
             }
             yield return null;
         }

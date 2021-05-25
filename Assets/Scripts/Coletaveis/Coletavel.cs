@@ -33,7 +33,12 @@ public abstract class Coletavel
     public void colocarNaPosicao(Vector3 posicao, Quaternion rotacao) {
         colocarNaPosicao(posicao);
         rigidbody.transform.rotation = rotacao;
-    }   
+    } 
+    
+    public void colocarNoAngulo(Quaternion quaternion)
+    {
+        rigidbody.transform.rotation = quaternion;
+    }
 
     public void colocarNoAngulo(float angulo)
     {
