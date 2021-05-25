@@ -75,14 +75,35 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     private IEnumerator disparandoMissil(ColetavelTile coletavel)
     {
         capsuleCollider.isTrigger = true;
+        int contadorIndice = 0;
+        float contador = 0;
+        Vector2 p1 = pathMissil[contadorIndice * 3].position;
+        Vector2 p2 = pathMissil[contadorIndice * 3 + 1].position;
+        Vector2 p3 = pathMissil[contadorIndice * 3 + 2].position;
+        Vector2 p4 = pathMissil[contadorIndice * 3 + 3].position;
+
         while (true)
         {
-            Vector2 direcao = (Vector2) (coletavel.getPosicao() - getPosicao());
-            direcao.Normalize();
-            float rotacao = Vector3.Cross(direcao, goColetavel.transform.up).z;
-            addVelocidadeAngular(-rotacao * 1);
-            addVelocidade(- goColetavel.transform.up * 1);
+            contador += 0.015f;
+            Vector2 posicao = cubicCurve(p1, p2, p3, p4, contador);
+            colocarNaPosicao(posicao);
 
+            float distancia = (posicao - p4).sqrMagnitude;
+            Debug.Log("Dist: " + distancia);
+            if (distancia < 0.01f)
+            {
+                Debug.Log("********************");
+                contador = 0;
+                contadorIndice++;
+                if ((contadorIndice * 3 + 3) > pathMissil.Length)
+                {
+                    break;
+                }
+                p1 = pathMissil[contadorIndice * 3].position;
+                p2 = pathMissil[contadorIndice * 3 + 1].position;
+                p3 = pathMissil[contadorIndice * 3 + 2].position;
+                p4 = pathMissil[contadorIndice * 3 + 3].position;
+            }
             yield return null;
         }
 
