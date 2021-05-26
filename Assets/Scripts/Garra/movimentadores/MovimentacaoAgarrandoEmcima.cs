@@ -11,6 +11,8 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
 
     public override void preInicio()
     {
+        fixarGarraVerticalEHorizontal();
+
         anguloDesejadoDireitaFechado = Quaternion.Euler(0, 0, garraInteracaoComPowerUp.getAnguloGarraSegurar());
         anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraInteracaoComPowerUp.getAnguloGarraSegurar());
 
