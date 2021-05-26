@@ -115,7 +115,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
             }
             yield return null;
         }
-        coletavel.disparar(0, 15f);
+        coletavel.disparar(0, 20f);
         coletavel.desligarAnimacao();
         desligar();
 
@@ -131,6 +131,15 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 
     private void recalcularPath(Vector3 posicaoFim)
     {
+        if(posicaoFim.x > 0)
+        {
+            pathMissilDto.GoMainPath.transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else
+        {
+            pathMissilDto.GoMainPath.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
         pathMissilRecalculado = new Vector2[pathMissilDto.PathPointsMissil.Length];
         for(int contador = 0; contador < pathMissilDto.PathPointsMissil.Length; contador++)
         {
