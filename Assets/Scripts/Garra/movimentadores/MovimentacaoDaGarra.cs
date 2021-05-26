@@ -84,7 +84,7 @@ public abstract class MovimentacaoDaGarra
         garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
 
-    protected void desafixarGarraHorizontalmente()
+    protected void desafixarGarra()
     {
         garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }

@@ -47,7 +47,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         {
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
             comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
-            desafixarGarraHorizontalmente();
+            desafixarGarra();
             pincas.acionarCollider();
         }
     }
