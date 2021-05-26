@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo                                         
@@ -87,8 +86,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         while (true)
         {
             contador += (2.5f * Time.deltaTime);
-            Vector2 posicao = cubicCurve(p1, p2, p3, p4, contador);
-            Vector2 posNext = cubicCurve(p1, p2, p3, p4, contador + 0.01f);
+            Vector2 posicao = Utils.cubicCurve(p1, p2, p3, p4, contador);
+            Vector2 posNext = Utils.cubicCurve(p1, p2, p3, p4, contador + 0.01f);
             colocarNaPosicao(posicao);
 
             Vector2 diferenca = posicao - posNext;
@@ -184,24 +183,5 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
                 coletavel.ligarAnimacaoMira();                        
             }
         }
-    }
-
-    public Vector2 lerp(Vector2 a, Vector2 b, float t)
-    {
-        return a + (b - a) * t;
-    }
-
-    public Vector2 quadraticCurve(Vector2 a, Vector2 b, Vector2 c, float t)
-    {
-        Vector2 p0 = lerp(a, b, t);
-        Vector2 p1 = lerp(b, c, t);
-        return lerp(p0, p1, t);
-    }
-
-    public Vector2 cubicCurve(Vector2 a, Vector2 b, Vector2 c, Vector2 d, float t)
-    {
-        Vector2 p0 = quadraticCurve(a, b, c, t);
-        Vector2 p1 = quadraticCurve(b, c, d, t);
-        return lerp(p0, p1, t);
-    }
+    }    
 }
