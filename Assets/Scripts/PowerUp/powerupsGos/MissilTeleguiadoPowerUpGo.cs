@@ -11,6 +11,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     private ColetavelQuery coletavelQuery;
     private CapsuleCollider2D capsuleCollider;
     private Transform[] pathMissil;
+    private Vector2[] pathMissilRecalculado;
 
     public MissilTeleguiadoPowerUpGo(GameObject tileMissil, Transform[] pathMissil) : 
         base(tileMissil, "missil-teleguiado")
@@ -74,17 +75,18 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 
     private IEnumerator disparandoMissil(ColetavelTile coletavel)
     {
+        recalcularPath(coletavel.getPosicao());
         capsuleCollider.isTrigger = true;
         int contadorIndice = 0;
         float contador = 0;
-        Vector2 p1 = pathMissil[contadorIndice * 3].position;
-        Vector2 p2 = pathMissil[contadorIndice * 3 + 1].position;
-        Vector2 p3 = pathMissil[contadorIndice * 3 + 2].position;
-        Vector2 p4 = pathMissil[contadorIndice * 3 + 3].position;
+        Vector2 p1 = pathMissilRecalculado[contadorIndice * 3];
+        Vector2 p2 = pathMissilRecalculado[contadorIndice * 3 + 1];
+        Vector2 p3 = pathMissilRecalculado[contadorIndice * 3 + 2];
+        Vector2 p4 = pathMissilRecalculado[contadorIndice * 3 + 3];
 
         while (true)
         {
-            contador += (2f * Time.deltaTime);
+            contador += (2.5f * Time.deltaTime);
             Vector2 posicao = cubicCurve(p1, p2, p3, p4, contador);
             Vector2 posNext = cubicCurve(p1, p2, p3, p4, contador + 0.01f);
             colocarNaPosicao(posicao);
@@ -97,7 +99,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 
             float distancia = (posicao - p4).sqrMagnitude;
             Debug.Log("Dist: " + distancia + " Ang: " + z);
-            if (distancia < 0.001f)
+            if (distancia < 0.1f)
             {
                 Debug.Log("********************");
                 contador = 0;
@@ -106,22 +108,37 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
                 {
                     break;
                 }
-                p1 = pathMissil[contadorIndice * 3].position;
-                p2 = pathMissil[contadorIndice * 3 + 1].position;
-                p3 = pathMissil[contadorIndice * 3 + 2].position;
-                p4 = pathMissil[contadorIndice * 3 + 3].position;
-
-                //posNext = cubicCurve(p1, p2, p3, p4, contador + 0.01f);
-                //diferenca = posicao - posNext;
-                //diferenca.Normalize();
-                //z = Mathf.Atan2(diferenca.y, diferenca.x) * Mathf.Rad2Deg;
-                //quat = Quaternion.Euler(0f, 0f, z - 90);
-                //colocarNoAngulo(quat);
+                p1 = pathMissilRecalculado[contadorIndice * 3];
+                p2 = pathMissilRecalculado[contadorIndice * 3 + 1];
+                p3 = pathMissilRecalculado[contadorIndice * 3 + 2];
+                p4 = pathMissilRecalculado[contadorIndice * 3 + 3];
             }
             yield return null;
         }
+        coletavel.disparar(0, 15f);
+        coletavel.desligarAnimacao();
+        desligar();
+
+        PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
+        explosaoShake.shake();
+        powerUpFinalizacao.preFinalizar();
+
+        yield return new WaitForSeconds(1.1f);
+        powerUpFinalizacao.finalizado();
 
         yield return null;
+    }
+
+    private void recalcularPath(Vector3 posicaoFim)
+    {
+        pathMissilRecalculado = new Vector2[pathMissil.Length];
+        for(int contador = 0; contador < pathMissil.Length; contador++)
+        {
+            pathMissilRecalculado[contador] = pathMissil[contador].position;
+        }
+
+        pathMissilRecalculado[pathMissilRecalculado.Length - 1] = posicaoFim;
+        pathMissilRecalculado[pathMissilRecalculado.Length - 2] = new Vector2(posicaoFim.x, pathMissilRecalculado[pathMissilRecalculado.Length - 2].y);
     }
 
     private class LigadorDeAlvo : ConsumidorDeEvento<ColetavelTile>
