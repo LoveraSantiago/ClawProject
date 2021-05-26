@@ -51,7 +51,7 @@ public class PoolDePowerUpGos
 
     private void criarPowerUpGoMissilTeleguiado()
     {
-        MissilTeleguiadoPowerUpGo missilTeleguiado = new MissilTeleguiadoPowerUpGo(powerUpDto.MissilTeleguiadoPUp, powerUpDto.PathPointsMissil);
+        MissilTeleguiadoPowerUpGo missilTeleguiado = new MissilTeleguiadoPowerUpGo(powerUpDto.MissilTeleguiadoPUp, powerUpDto.PathMissilDto);
         poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MISSIL_TELEGUIADO.ToString(), missilTeleguiado);
     }
 }

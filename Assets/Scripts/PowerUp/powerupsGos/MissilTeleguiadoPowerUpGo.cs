@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
-                                         
+public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo                                         
 {
     private bool configurado;
     private bool hitColetavel;
 
     private ColetavelQuery coletavelQuery;
     private CapsuleCollider2D capsuleCollider;
-    private Transform[] pathMissil;
+    
     private Vector2[] pathMissilRecalculado;
+    private PathMissilDto pathMissilDto;
 
-    public MissilTeleguiadoPowerUpGo(GameObject tileMissil, Transform[] pathMissil) : 
+    public MissilTeleguiadoPowerUpGo(GameObject tileMissil, PathMissilDto pathMissilDto) : 
         base(tileMissil, "missil-teleguiado")
     {
-        this.pathMissil = pathMissil;
+        this.pathMissilDto = pathMissilDto;
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -104,7 +104,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
                 Debug.Log("********************");
                 contador = 0;
                 contadorIndice++;
-                if ((contadorIndice * 3 + 3) > pathMissil.Length)
+                if ((contadorIndice * 3 + 3) > pathMissilDto.PathPointsMissil.Length)
                 {
                     break;
                 }
@@ -131,10 +131,10 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 
     private void recalcularPath(Vector3 posicaoFim)
     {
-        pathMissilRecalculado = new Vector2[pathMissil.Length];
-        for(int contador = 0; contador < pathMissil.Length; contador++)
+        pathMissilRecalculado = new Vector2[pathMissilDto.PathPointsMissil.Length];
+        for(int contador = 0; contador < pathMissilDto.PathPointsMissil.Length; contador++)
         {
-            pathMissilRecalculado[contador] = pathMissil[contador].position;
+            pathMissilRecalculado[contador] = pathMissilDto.PathPointsMissil[contador].position;
         }
 
         pathMissilRecalculado[pathMissilRecalculado.Length - 1] = posicaoFim;
