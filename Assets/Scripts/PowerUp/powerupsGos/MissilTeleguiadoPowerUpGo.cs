@@ -96,9 +96,10 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
             Quaternion quat = Quaternion.Euler(0f, 0f, z - 90);
             colocarNoAngulo(quat);
 
-            float distancia = (posicao - p4).sqrMagnitude;
+            float distancia = (p4 - posicao).magnitude;
             Debug.Log("Dist: " + distancia + " Ang: " + z);
-            if (distancia < 0.1f)
+            
+            if (distancia < 0.1f && false)
             {
                 Debug.Log("********************");
                 contador = 0;
