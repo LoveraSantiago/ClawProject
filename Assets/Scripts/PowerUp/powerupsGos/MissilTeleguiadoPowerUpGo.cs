@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo                                         
 {
+    private readonly int missil_acionado;
+    private readonly int missil_explosao;
+    private readonly int missil_idle;
+
     private bool configurado;
     private bool hitColetavel;
     private float distanciaAnterior;
@@ -12,11 +16,15 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     
     private Vector2[] pathMissilRecalculado;
     private PathMissilDto pathMissilDto;
+    private Animator animator;
 
     public MissilTeleguiadoPowerUpGo(GameObject tileMissil, PathMissilDto pathMissilDto) : 
         base(tileMissil, "missil-teleguiado")
     {
         this.pathMissilDto = pathMissilDto;
+        missil_acionado = Animator.StringToHash("missil-acionado");
+        missil_explosao = Animator.StringToHash("explosao");
+        missil_idle     = Animator.StringToHash("idle");
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -41,6 +49,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
             coletavelQuery = new ColetavelQuery();
             configurado = true;
             capsuleCollider = goColetavel.GetComponent<CapsuleCollider2D>();
+            animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
         }
         base.ligar();        
         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
@@ -76,6 +85,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     
     private IEnumerator disparandoMissil(ColetavelTile coletavel)
     {
+        animator.Play(missil_acionado);
         recalcularPath(coletavel.getPosicao());
         capsuleCollider.isTrigger = true;
         int contadorIndice = 0;
@@ -124,17 +134,19 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
             }
             yield return null;
         }
+        parar();
+        animator.Play(missil_explosao);
         coletavel.disparar(0, 20f);
         coletavel.desligarAnimacao();
-        desligar();
 
         PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         powerUpFinalizacao.preFinalizar();
 
         yield return new WaitForSeconds(1.1f);
+        desligar();
         powerUpFinalizacao.finalizado();
-
+        animator.Play(missil_idle);
         yield return null;
     }
 
