@@ -10,4 +10,5 @@ public interface GarraInteracaoComPowerUp
     void desligarGravidade();
     void ligarGravidade();
     void fixarVerticalmente();
+    void timeout();
 }

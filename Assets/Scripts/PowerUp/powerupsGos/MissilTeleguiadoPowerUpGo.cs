@@ -172,6 +172,11 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         pathMissilRecalculado[pathMissilRecalculado.Length - 2] = new Vector2(posicaoFim.x, pathMissilRecalculado[pathMissilRecalculado.Length - 2].y);
     }
 
+    public override void timeout()
+    {
+        
+    }
+
     private class LigadorDeAlvo : ConsumidorDeEvento<ColetavelTile>
     {
         private string nameAlvo;

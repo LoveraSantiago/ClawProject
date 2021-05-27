@@ -7,7 +7,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     private MovimentacaoDaGarra movAtual;
     private MovimentacaoDaGarra movVoltarPCima;
     private MovimentacaoDaGarra movVoltarMeio;
-    private MovimentacaoDaGarra movSegCima;
+    private MovimentacaoAgarrandoEmcima movSegCima;
     private MovimentacaoDaGarra movSegCimaMov;
     private MovimentacaoDaGarra movSoltar;
     private MovimentacaoDaGarra movParado;
@@ -34,9 +34,16 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     public override void update()
     {
-        if (contadorDeFimTempo.contarTempoDT() && isEstadoAtualCentralizado())
+        if (contadorDeFimTempo.contarTempoDT())
         {
-            trocarParaAcaoSoltar();
+            if (isEstadoAtualSegurandoEmCimaMovimentando())
+            {
+                trocarParaAcaoSoltar();
+            }
+            else if (isEstadoAtualSegurandoParado())
+            {
+                movSegCima.acionarTimeout();
+            }
         }
         movAtual.update();
     }
@@ -53,9 +60,14 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         contadorDeFimTempo.configTempoParaAcao(tempoDuracao);
     }
 
-    private bool isEstadoAtualCentralizado()
+    private bool isEstadoAtualSegurandoEmCimaMovimentando()
     {
         return movAtual == movSegCimaMov;        
+    }
+
+    private bool isEstadoAtualSegurandoParado()
+    {
+        return movAtual == movSegCima;
     }
 
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP INICIO

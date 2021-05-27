@@ -21,11 +21,16 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
         garraInteracaoComPowerUp.ligar();
         garraInteracaoComPowerUp.desligarGravidade();
         garraInteracaoComPowerUp.colocarNaPosicao(garraDto.CentroDaGarra.position);
-    }   
+    }       
 
     public override void fixedUpdate()
     {        
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);        
-    }    
+    }   
+    
+    public void acionarTimeout()
+    {
+
+    }
     
 }
