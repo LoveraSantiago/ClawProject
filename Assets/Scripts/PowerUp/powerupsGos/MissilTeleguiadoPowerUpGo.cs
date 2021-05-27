@@ -5,6 +5,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 {
     private bool configurado;
     private bool hitColetavel;
+    private float distanciaAnterior;
 
     private ColetavelQuery coletavelQuery;
     private CapsuleCollider2D capsuleCollider;
@@ -72,6 +73,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         yield return null;
     }
 
+    
     private IEnumerator disparandoMissil(ColetavelTile coletavel)
     {
         recalcularPath(coletavel.getPosicao());
@@ -82,6 +84,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         Vector2 p2 = pathMissilRecalculado[contadorIndice * 3 + 1];
         Vector2 p3 = pathMissilRecalculado[contadorIndice * 3 + 2];
         Vector2 p4 = pathMissilRecalculado[contadorIndice * 3 + 3];
+
+        distanciaAnterior = 100;
 
         while (true)
         {
@@ -96,11 +100,12 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
             Quaternion quat = Quaternion.Euler(0f, 0f, z - 90);
             colocarNoAngulo(quat);
 
-            float distancia = (p4 - posicao).magnitude;
-            Debug.Log("Dist: " + distancia + " Ang: " + z);
+            float distanciaAtual = (p4 - posicao).magnitude;
+            Debug.Log("Dist: " + distanciaAtual + " Ang: " + z);
             
-            if (distancia < 0.1f && false)
+            if (distanciaAtual > distanciaAnterior)
             {
+                distanciaAnterior = 100;
                 Debug.Log("********************");
                 contador = 0;
                 contadorIndice++;
@@ -112,6 +117,10 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
                 p2 = pathMissilRecalculado[contadorIndice * 3 + 1];
                 p3 = pathMissilRecalculado[contadorIndice * 3 + 2];
                 p4 = pathMissilRecalculado[contadorIndice * 3 + 3];
+            }
+            else
+            {
+                distanciaAnterior = distanciaAtual;
             }
             yield return null;
         }
