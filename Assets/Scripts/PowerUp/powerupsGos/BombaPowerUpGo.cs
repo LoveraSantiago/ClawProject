@@ -67,6 +67,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         powerUpFinalizacao.preFinalizar();
         acionado = false;
         desafixarVerticalmente();
+        colocarNoAngulo(0);
     }
 
     public override void ligar()

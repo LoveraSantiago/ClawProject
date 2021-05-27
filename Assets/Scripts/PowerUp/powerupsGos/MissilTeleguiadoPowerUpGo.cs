@@ -147,6 +147,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         desligar();
         powerUpFinalizacao.finalizado();
         animator.Play(missil_idle);
+        colocarNoAngulo(0);
         yield return null;
     }
 
