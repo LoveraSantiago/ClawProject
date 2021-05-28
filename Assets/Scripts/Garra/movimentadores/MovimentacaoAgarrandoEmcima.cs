@@ -30,7 +30,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
     
     public void acionarTimeout()
     {
-
+        garraInteracaoComPowerUp.timeout();
     }
     
 }

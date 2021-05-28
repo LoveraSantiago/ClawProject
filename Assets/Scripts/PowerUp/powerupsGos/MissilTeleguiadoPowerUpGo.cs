@@ -18,6 +18,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     private PathMissilDto pathMissilDto;
     private Animator animator;
 
+    private Coroutine coroutine;
+
     public MissilTeleguiadoPowerUpGo(GameObject tileMissil, PathMissilDto pathMissilDto) : 
         base(tileMissil, "missil-teleguiado")
     {
@@ -53,7 +55,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         }
         base.ligar();        
         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
-        monoBehaviour.StartCoroutine(selecionarAlvo());
+        coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
     private IEnumerator selecionarAlvo()
@@ -144,11 +146,16 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         powerUpFinalizacao.preFinalizar();
 
         yield return new WaitForSeconds(1.1f);
+        resetMe();
+        yield return null;
+    }
+
+    private void resetMe()
+    {
         desligar();
         powerUpFinalizacao.finalizado();
         animator.Play(missil_idle);
         colocarNoAngulo(0);
-        yield return null;
     }
 
     private void recalcularPath(Vector3 posicaoFim)
@@ -174,7 +181,12 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 
     public override void timeout()
     {
-        
+        if (!hitColetavel)
+        {
+            monoBehaviour.StopCoroutine(coroutine);
+            coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMira());
+            resetMe();
+        }
     }
 
     private class LigadorDeAlvo : ConsumidorDeEvento<ColetavelTile>
@@ -211,5 +223,16 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
                 coletavel.ligarAnimacaoMira();                        
             }
         }
-    }    
+    }
+
+    private class DesligadorDeMira : ConsumidorDeEvento<ColetavelTile>
+    {
+        public void consumirEvento(ColetavelTile coletavel)
+        {
+            if (coletavel.isAtivo())
+            {
+                coletavel.desligarAnimacao();
+            }
+        }
+    }
 }
