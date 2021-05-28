@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MissilPowerUpGo : AbstractPowerUpGo,
+public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
                                ConsumidorDeEventoCollider
 {    
 
@@ -14,18 +14,28 @@ public class MissilPowerUpGo : AbstractPowerUpGo,
     private GameObject goExplosao;    
     private Animator animator;
  
-    public MissilPowerUpGo(GameObject tileMissil)
-        : base(tileMissil, "missil")
+    public MissilNuclearPowerUpGo(GameObject tileMissilNuclear)
+        : base(tileMissilNuclear, "missil-nuclear")
     {
         missil_explosao = Animator.StringToHash("explosao");
         missil_idle = Animator.StringToHash("idle");
 
-        tileMissil.SetActive(false);
+        tileMissilNuclear.SetActive(false);
     }
 
-    public override bool garraPodeSegurar()
+    public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
     {
-        return true;
+        return PowerUpEntidade.INTERACAOGARRA.MOVIMENTO;
+    }
+
+    public override float getAnguloGarraSegurar()
+    {
+        return 9f;
+    }
+
+    public override void colocarNaPosicao(Vector3 posicao)
+    {        
+        base.colocarNaPosicao(posicao + new Vector3(0, -0.45f, 0));
     }
 
     public void consumirEvento(Collision2D evento)

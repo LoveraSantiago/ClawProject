@@ -18,14 +18,19 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         : base(tileBomb, "bomba")
     {
         bomba_explosao = Animator.StringToHash("explosao");
-        bomba_idle = Animator.StringToHash("idle");
+        bomba_idle     = Animator.StringToHash("idle");
 
         tileBomb.SetActive(false);
     }
 
-    public override bool garraPodeSegurar()
+    public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
     {
-        return true;
+        return PowerUpEntidade.INTERACAOGARRA.MOVIMENTO;
+    }
+
+    public override float getAnguloGarraSegurar()
+    {
+        return 10f;
     }
 
     public void consumirEvento(Collision2D evento)
@@ -48,6 +53,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
                 
         PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
+        powerUpFinalizacao.preFinalizar();
         resetMe();
         yield return new WaitForSeconds(1.1f);
 
@@ -59,9 +65,9 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     {
         desligar();
         animator.Play(bomba_idle);
-        powerUpFinalizacao.preFinalizar();
         acionado = false;
         desafixarVerticalmente();
+        colocarNoAngulo(0);
     }
 
     public override void ligar()

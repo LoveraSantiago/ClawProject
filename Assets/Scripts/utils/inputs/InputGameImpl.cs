@@ -3,7 +3,7 @@ using UnityEngine;
 public class InputGameImpl : InputGame
 {
     private bool isTapAreaSuperior;
-    private bool isTapAreaInferior;
+    private bool isTapAreaInferior;    
 
     private Vector3 posicaoTap;
     private Transform referenciaChaoMaquina;
@@ -27,12 +27,12 @@ public class InputGameImpl : InputGame
             {
                 isTapAreaSuperior = false;
                 isTapAreaInferior = true;
-            }
+            }            
         }
         else
         {
             isTapAreaInferior = false;
-            isTapAreaSuperior = false;
+            isTapAreaSuperior = false;            
         }
     }
 

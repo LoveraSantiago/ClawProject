@@ -1,21 +1,26 @@
 public class PoolDeColetaveis 
 {
-    private PoolGenerico<Coletavel> poolDeNomes;
+    private PoolGenerico<ColetavelTile> poolDeNomes;
 
     public PoolDeColetaveis()
     {
-        poolDeNomes = new PoolGenerico<Coletavel>();
+        poolDeNomes = new PoolGenerico<ColetavelTile>();
     }
 
-    public Coletavel criarColetavel()
+    public ColetavelTile criarColetavel()
     {
-        Coletavel coletavel = new Coletavel();
+        ColetavelTile coletavel = new ColetavelTile();
         poolDeNomes.addObjetoAoDicionario(coletavel.nome, coletavel);
         return coletavel;
     }
 
-    public Coletavel getColetavelPeloNome(string nome)
+    public ColetavelTile getColetavelPeloNome(string nome)
     {
         return poolDeNomes.getObjetoPeloNome(nome);
+    }
+
+    public void executeEmTodosColetaveis(ConsumidorDeEvento<ColetavelTile> consumidor)
+    {
+        poolDeNomes.executeEmTodosOsObj(consumidor);
     }
 }

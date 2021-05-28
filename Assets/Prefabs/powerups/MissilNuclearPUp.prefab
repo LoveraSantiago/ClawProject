@@ -43,6 +43,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 50
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: c6ec77fbc42919f4ab8d775b7562da24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -183,7 +184,7 @@ GameObject:
   - component: {fileID: 4650425360090855602}
   - component: {fileID: 5164385478853921255}
   m_Layer: 14
-  m_Name: MissilPUp
+  m_Name: MissilNuclearPUp
   m_TagString: Laranja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

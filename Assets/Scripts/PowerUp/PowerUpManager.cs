@@ -11,7 +11,7 @@ public class PowerUpManager : PowerUpAcionamento,
     public ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp { get; private set; }
     public ProdutorDeEvento<PowerUpInfoFim> produtorDeEventoFinalizacao { get; private set; }
 
-    public PowerUpManager(PowerUpDto powerUpDto, MonoBehaviour monoBehaviour)
+    public PowerUpManager(PowerUpDto powerUpDto, MonoBehaviour monoBehaviour, InputGame inputGame)
     {
         this.powerUpDto = powerUpDto;
         this.monoBehaviour = monoBehaviour;
@@ -20,7 +20,7 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         produtorDeEventoFinalizacao = new ProdutorDeEvento<PowerUpInfoFim>();
 
-        AbstractPowerUpGo.configurar(this, monoBehaviour);
+        AbstractPowerUpGo.configurar(this, monoBehaviour, inputGame);
         poolDePowerUpGos = new PoolDePowerUpGos(powerUpDto);        
     }    
 

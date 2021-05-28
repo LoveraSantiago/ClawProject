@@ -31,9 +31,14 @@ public class ColetavelQuery
         }
     }
 
-    public Coletavel getColetavelInGameByName(string name)
+    public ColetavelTile getColetavelInGameByName(string name)
     {
         return poolDeColetaveis.getColetavelPeloNome(name);
+    }
+
+    public void executeNoPoolDeColetaveis(ConsumidorDeEvento<ColetavelTile> consumidor)
+    {
+        poolDeColetaveis.executeEmTodosColetaveis(consumidor);
     }
 
     public ColetavelEntidade getColetavelEntidadeBySprite(string spriteName)

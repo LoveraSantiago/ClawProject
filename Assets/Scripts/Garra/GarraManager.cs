@@ -65,14 +65,12 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     }
 
     private void processarPowerUp(PowerUpInfo powerUpInfo)
-    {
-        if(powerUpInfo.garraInteracaoPowerUp != null)
-        {
-            gerDeMovPowerUp.receberGarraInteracaoComPowerUp(powerUpInfo.garraInteracaoPowerUp, powerUpInfo.duracaoTempo);
-            gerDeMovPowerUp.iniciarMovimentacoes();
-            gerDeMovAtual = gerDeMovPowerUp;
-        }
+    {        
+        gerDeMovPowerUp.receberGarraInteracaoComPowerUp(powerUpInfo.garraInteracaoPowerUp, powerUpInfo.duracaoTempo);
+        gerDeMovPowerUp.iniciarMovimentacoes();
+        gerDeMovAtual = gerDeMovPowerUp;        
     }
+
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
     //ACIONADO QDO GARRA COLLIDE COM UM COLETAVEL
     public void consumirEvento(Collider2D colliderDeColetavel)

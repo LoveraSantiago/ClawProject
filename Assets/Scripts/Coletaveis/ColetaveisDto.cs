@@ -8,8 +8,8 @@ public class ColetaveisDto
     [SerializeField] private GameObject sensorDeColetado;
     [SerializeField] private GameObject tile;
     [SerializeField] private GameObject pontosModal;
-    [Space(5)]
-    [SerializeField] private List<Sprite> characters = new List<Sprite>();
+    [Space(5)]    
+    [SerializeField] private Sprite[] caracteres;
     [Space(5)]
     [SerializeField] private TuboDto tuboDto;    
     [Space(5)]    
@@ -18,8 +18,8 @@ public class ColetaveisDto
     public GameObject SensorDeColetado { get { return sensorDeColetado; } }    
     public GameObject Tile { get { return tile; } }
     public GameObject PontosModal { get { return pontosModal; } }
-
-    public List<Sprite> Characters { get { return characters; } }
+    
+    public Sprite[] Caracteres { get { return caracteres; } }
 
     public TuboDto TuboDto { get { return tuboDto; } }    
 

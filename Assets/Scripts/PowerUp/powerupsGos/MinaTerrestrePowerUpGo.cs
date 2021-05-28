@@ -21,9 +21,9 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
         mina_idle = Animator.StringToHash("idle");
     }
 
-    public override bool garraPodeSegurar()
+    public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
     {
-        return false;
+        return PowerUpEntidade.INTERACAOGARRA.NAO_INTERACAO;
     }
 
     public override void iniciarNaPosicao(Vector3 posicao)

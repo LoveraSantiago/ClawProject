@@ -1,32 +1,29 @@
 using UnityEngine;
-using System.Collections.Generic;
 
-public class Coletavel 
+public abstract class Coletavel 
 {
-    private static Nomeador nomeador;
-    private static GameObject mainTile;
-    private static Transform mainTileParent;
-    private static Dictionary<string, Sprite> dicionarioDeSprites;
+    protected static ColetavelContextoEstatico context;
 
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }
 
+    private bool ativo;
     protected GameObject goColetavel;
     private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;    
     
     public Coletavel()
-        :this(mainTile, nomeador.getName())
+        :this(context.mainTile, context.nomeador.getName())
     {        
     }   
 
     public Coletavel(GameObject go, string nome)
     {
-        goColetavel = GameObject.Instantiate(go, go.transform.position, Quaternion.Euler(Vector3.zero), mainTileParent);
+        goColetavel = GameObject.Instantiate(go, go.transform.position, Quaternion.Euler(Vector3.zero), context.mainTileParent);
         this.nome = nome;
         goColetavel.name = nome;
         spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();
-        rigidbody = goColetavel.GetComponent<Rigidbody2D>();
+        rigidbody = goColetavel.GetComponent<Rigidbody2D>();        
     }   
 
     public virtual void colocarNaPosicao(Vector3 posicao) {
@@ -36,7 +33,12 @@ public class Coletavel
     public void colocarNaPosicao(Vector3 posicao, Quaternion rotacao) {
         colocarNaPosicao(posicao);
         rigidbody.transform.rotation = rotacao;
-    }   
+    } 
+    
+    public void colocarNoAngulo(Quaternion quaternion)
+    {
+        rigidbody.transform.rotation = quaternion;
+    }
 
     public void colocarNoAngulo(float angulo)
     {
@@ -48,12 +50,18 @@ public class Coletavel
         return goColetavel.transform.position;
     }
 
+    public Vector2 getPosicaoRigidBody()
+    {
+        return rigidbody.transform.position;
+    }
+
     public void disparar(Vector3 posicao, float angulo, float velocidade)
     {
         Quaternion quatAngulo = Quaternion.Euler(0, 0, angulo);
-        mainTile.transform.rotation = quatAngulo;
+        context.mainTile.transform.rotation = quatAngulo;
         colocarNaPosicao(posicao, quatAngulo);
-        rigidbody.AddForce(mainTile.transform.up * velocidade, ForceMode2D.Impulse);
+        rigidbody.AddForce(context.mainTile.transform.up * velocidade, ForceMode2D.Impulse);
+        context.mainTile.transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
     public void disparar(float angulo, float velocidade)
@@ -85,7 +93,17 @@ public class Coletavel
 
     public void receberSprite(string nomeSprite)
     {
-        receberSprite(dicionarioDeSprites[nomeSprite]);
+        receberSprite(context.dicionarioDeSprites[nomeSprite]);
+    }
+
+    public void addVelocidadeAngular(float velocidadeAngular)
+    {
+        rigidbody.angularVelocity = velocidadeAngular;
+    }
+
+    public void addVelocidade(Vector2 velocidade)
+    {
+        rigidbody.velocity = velocidade;
     }
 
     public virtual void parar()
@@ -96,12 +114,19 @@ public class Coletavel
 
     public void desligar()
     {
+        ativo = false;
         goColetavel.SetActive(false);
     }
 
     public virtual void ligar()
     {
+        ativo = true;
         goColetavel.SetActive(true);
+    }
+
+    public bool isAtivo()
+    {
+        return ativo;
     }
 
     public virtual void desligarGravidade()
@@ -132,20 +157,11 @@ public class Coletavel
     public bool hasEqualsSprite(Coletavel coletavelOutro)
     {
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
-    }
+    }   
 
-    public static void configurar(GameObject mainTileArg, Transform mainTileParentArg, List<Sprite> characters)
+    public static void configurar(GameObject mainTile, Transform mainTileParent, Sprite[] characters)
     {
-        mainTile = mainTileArg;
-        mainTileParent = mainTileParentArg;
-
-        nomeador = new Nomeador();
-
-        dicionarioDeSprites = new Dictionary<string, Sprite>();
-        for(int contador = 0; contador < characters.Count; contador++)
-        {
-            Sprite spriteIt = characters[contador];
-            dicionarioDeSprites.Add(spriteIt.name, spriteIt);
-        }
+        context = new ColetavelContextoEstatico();
+        context.configurar(mainTile, mainTileParent, characters);
     }
 }

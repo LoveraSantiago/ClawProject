@@ -1,6 +1,3 @@
-using System;
-using UnityEngine;
-
 public class PoolDePowerUpGos 
 {
     private PowerUpDto powerUpDto;
@@ -27,17 +24,10 @@ public class PoolDePowerUpGos
     {
         switch (powerUpName)
         {
-            case PowerUpEntidade.NAME.BOMBA_DA_GARRA:                
-                criarPowerUpGoBomba();
-                break;
-
-            case PowerUpEntidade.NAME.MISSIL_DA_GARRA:
-                criarPowerUpGoMissil();
-                break;
-
-            case PowerUpEntidade.NAME.MINA_TERRESTRE:
-                criarPowerUpGoMinaTerrestre();
-                break;               
+            case PowerUpEntidade.NAME.BOMBA_DA_GARRA: criarPowerUpGoBomba(); break;
+            case PowerUpEntidade.NAME.MISSIL_NUCLEAR: criarPowerUpGoMissilNuclear(); break;
+            case PowerUpEntidade.NAME.MINA_TERRESTRE: criarPowerUpGoMinaTerrestre(); break;
+            case PowerUpEntidade.NAME.MISSIL_TELEGUIADO: criarPowerUpGoMissilTeleguiado(); break;
         }
     }
 
@@ -53,9 +43,15 @@ public class PoolDePowerUpGos
         poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.BOMBA_DA_GARRA.ToString(), bomba);        
     }
 
-    private void criarPowerUpGoMissil()
+    private void criarPowerUpGoMissilNuclear()
     {        
-        MissilPowerUpGo missil = new MissilPowerUpGo(powerUpDto.MissilPUp);
-        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MISSIL_DA_GARRA.ToString(), missil);        
+        MissilNuclearPowerUpGo missilNuclear = new MissilNuclearPowerUpGo(powerUpDto.MissilNuclearPUp);
+        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MISSIL_NUCLEAR.ToString(), missilNuclear);        
+    }
+
+    private void criarPowerUpGoMissilTeleguiado()
+    {
+        MissilTeleguiadoPowerUpGo missilTeleguiado = new MissilTeleguiadoPowerUpGo(powerUpDto.MissilTeleguiadoPUp, powerUpDto.PathMissilDto);
+        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MISSIL_TELEGUIADO.ToString(), missilTeleguiado);
     }
 }
