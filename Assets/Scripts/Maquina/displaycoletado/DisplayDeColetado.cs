@@ -4,6 +4,7 @@ using System.Collections;
 public class DisplayDeColetado 
 {
     private static DisplayDeColetadoDto displayColetadoDto;
+    private static readonly string propMaterial = "_corGlow";
 
     private Vector3 posicaoDesejada;
     private Vector3 posicaoInicial;
@@ -80,31 +81,23 @@ public class DisplayDeColetado
     public void ligarGlowSucesso()
     {
         sDisplayDto.SprRendererDentroEfeito.gameObject.SetActive(true);
-        displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.green);
-        //sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
-        //sDisplayDto.SprRendererDentro.color = Color.white;
+        displayColetadoDto.MaterialGlowDisplay.SetColor(propMaterial, Color.green);
     }
 
     public void ligarGlowFail()
     {
         sDisplayDto.SprRendererDentroEfeito.gameObject.SetActive(true);
-        displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.red);
-        //sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
-        //sDisplayDto.SprRendererDentro.color = Color.white;
+        displayColetadoDto.MaterialGlowDisplay.SetColor(propMaterial, Color.red);
     }
 
     public void ligarGlowLuz()
     {
         sDisplayDto.SprRendererDentroEfeito.gameObject.SetActive(true);
-        displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.yellow);
-        //sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
-        //sDisplayDto.SprRendererDentro.color = Color.white;
+        displayColetadoDto.MaterialGlowDisplay.SetColor(propMaterial, Color.yellow);
     }
 
     public void desligarGlow()
     {
-        //sDisplayDto.SprRendererDentro.color = corOriginal;
-        //sDisplayDto.SprRendererDentro.material = materialOriginal;
         sDisplayDto.SprRendererDentroEfeito.gameObject.SetActive(false);
     }
 
