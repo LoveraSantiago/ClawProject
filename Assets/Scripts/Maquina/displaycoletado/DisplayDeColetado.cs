@@ -79,29 +79,33 @@ public class DisplayDeColetado
 
     public void ligarGlowSucesso()
     {
+        sDisplayDto.SprRendererDentroEfeito.gameObject.SetActive(true);
         displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.green);
-        sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
-        sDisplayDto.SprRendererDentro.color = Color.white;
+        //sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
+        //sDisplayDto.SprRendererDentro.color = Color.white;
     }
 
     public void ligarGlowFail()
     {
+        sDisplayDto.SprRendererDentroEfeito.gameObject.SetActive(true);
         displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.red);
-        sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
-        sDisplayDto.SprRendererDentro.color = Color.white;
+        //sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
+        //sDisplayDto.SprRendererDentro.color = Color.white;
     }
 
     public void ligarGlowLuz()
     {
+        sDisplayDto.SprRendererDentroEfeito.gameObject.SetActive(true);
         displayColetadoDto.MaterialGlowDisplay.SetColor("_corGlow", Color.yellow);
-        sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
-        sDisplayDto.SprRendererDentro.color = Color.white;
+        //sDisplayDto.SprRendererDentro.material = displayColetadoDto.MaterialGlowDisplay;
+        //sDisplayDto.SprRendererDentro.color = Color.white;
     }
 
     public void desligarGlow()
     {
-        sDisplayDto.SprRendererDentro.color = corOriginal;
-        sDisplayDto.SprRendererDentro.material = materialOriginal;
+        //sDisplayDto.SprRendererDentro.color = corOriginal;
+        //sDisplayDto.SprRendererDentro.material = materialOriginal;
+        sDisplayDto.SprRendererDentroEfeito.gameObject.SetActive(false);
     }
 
     public static void configurarDisplay(DisplayDeColetadoDto displayColetadoDtoArg)

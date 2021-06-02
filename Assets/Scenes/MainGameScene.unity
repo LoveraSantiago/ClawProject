@@ -5441,6 +5441,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5014026568506975930, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &482185736 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4767438955442284893, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &484306874 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1376772371933875797, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -5509,7 +5514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 2
+  level: 1
   componentesDaGarra:
     velocMovHorizontal: 3.1
     velocMovCima: 7.5
@@ -5599,17 +5604,20 @@ MonoBehaviour:
       singleDisplayColetado:
       - sprDisplay: {fileID: 1936649351}
         sprRendererDentro: {fileID: 6406990385049082679}
+        sprRendererDentroEfeito: {fileID: 1765276500}
         goColetado: {fileID: 1996993516}
         sprRendererColetado: {fileID: 6406990385049082682}
       - sprDisplay: {fileID: 1814368437}
         sprRendererDentro: {fileID: 6406990385049082678}
+        sprRendererDentroEfeito: {fileID: 482185736}
         goColetado: {fileID: 733168918}
         sprRendererColetado: {fileID: 6406990385049082681}
       - sprDisplay: {fileID: 1937059052}
         sprRendererDentro: {fileID: 6406990385049082677}
+        sprRendererDentroEfeito: {fileID: 1743591685}
         goColetado: {fileID: 878217980}
         sprRendererColetado: {fileID: 6406990385049082680}
-      materialGlowDisplay: {fileID: 2100000, guid: db08e5d8c23ec6247a7abf7fc6a2be5a, type: 2}
+      materialGlowDisplay: {fileID: 2100000, guid: 355cf51cbb3442146a9683574825bf91, type: 2}
     displayTimerDto:
       singleDisplay:
       - tras: {fileID: 786299049}
@@ -23337,9 +23345,19 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6452164382807422426, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1743591685 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4767438955148188365, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1753095778 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6406990384476609806, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1765276500 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4767438956470005840, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1778081827 stripped
