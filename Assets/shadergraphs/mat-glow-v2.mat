@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat-glow
-  m_Shader: {fileID: -6465566751694194690, guid: 98d7a1b8a0bed614c933ee8b812318af, type: 3}
+  m_Name: mat-glow-v2
+  m_Shader: {fileID: -6465566751694194690, guid: 80386587e6c7b0142a1624561fd29f84, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -51,8 +51,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_a8058ed7e0984fb2882cba797d1a125b_Out_0:
+        m_Texture: {fileID: 2800000, guid: 90482d1fae1440e40a3f29ffaab6f337, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_ff47ca740e4144d7bc9f7df449478293_Out_0:
+        m_Texture: {fileID: 2800000, guid: 12ec41b1b9f230c41b5baf1d2209d29c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _imgFora:
-        m_Texture: {fileID: 2800000, guid: 9220b3171de7b7a4ab133b61c6248ac6, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _imgGlow:

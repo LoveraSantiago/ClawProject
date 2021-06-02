@@ -5441,6 +5441,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5014026568506975930, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &482185736 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4767438955442284893, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &484306874 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1376772371933875797, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -5485,12 +5490,15 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1037237941}
-  - {fileID: 1792400949}
-  - {fileID: 1336653433}
-  - {fileID: 1879337340}
   - {fileID: 608468003}
+  - {fileID: 1496791513}
+  - {fileID: 1023419904}
+  - {fileID: 2083913116}
+  - {fileID: 1607848932}
+  - {fileID: 1879337340}
+  - {fileID: 1336653433}
   - {fileID: 1245264349}
+  - {fileID: 1037237941}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5506,7 +5514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 2
+  level: 1
   componentesDaGarra:
     velocMovHorizontal: 3.1
     velocMovCima: 7.5
@@ -5596,17 +5604,20 @@ MonoBehaviour:
       singleDisplayColetado:
       - sprDisplay: {fileID: 1936649351}
         sprRendererDentro: {fileID: 6406990385049082679}
+        sprRendererDentroEfeito: {fileID: 1765276500}
         goColetado: {fileID: 1996993516}
         sprRendererColetado: {fileID: 6406990385049082682}
       - sprDisplay: {fileID: 1814368437}
         sprRendererDentro: {fileID: 6406990385049082678}
+        sprRendererDentroEfeito: {fileID: 482185736}
         goColetado: {fileID: 733168918}
         sprRendererColetado: {fileID: 6406990385049082681}
       - sprDisplay: {fileID: 1937059052}
         sprRendererDentro: {fileID: 6406990385049082677}
+        sprRendererDentroEfeito: {fileID: 1743591685}
         goColetado: {fileID: 878217980}
         sprRendererColetado: {fileID: 6406990385049082680}
-      materialGlowDisplay: {fileID: 2100000, guid: db08e5d8c23ec6247a7abf7fc6a2be5a, type: 2}
+      materialGlowDisplay: {fileID: 2100000, guid: 355cf51cbb3442146a9683574825bf91, type: 2}
     displayTimerDto:
       singleDisplay:
       - tras: {fileID: 786299049}
@@ -12132,7 +12143,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8245793874599924410, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924410, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12279,7 +12290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1023419904}
   m_Layer: 11
-  m_Name: collider-container-coletaveis
+  m_Name: collider-container
   m_TagString: Container
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -12298,8 +12309,8 @@ Transform:
   m_Children:
   - {fileID: 1841408758}
   - {fileID: 658355242}
-  m_Father: {fileID: 1792400949}
-  m_RootOrder: 3
+  m_Father: {fileID: 491158114}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1037237939
 GameObject:
@@ -12382,7 +12393,7 @@ Transform:
   m_LocalScale: {x: 8.25, y: 10.833593, z: 1}
   m_Children: []
   m_Father: {fileID: 491158114}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1042033438 stripped
 SpriteRenderer:
@@ -17581,7 +17592,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7790524476573715620, guid: 81ff0eac146cda141b95272ab1e303d9, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7790524476573715620, guid: 81ff0eac146cda141b95272ab1e303d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23008,7 +23019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1496791513}
   m_Layer: 0
-  m_Name: Board
+  m_Name: board
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -23021,13 +23032,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496791512}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.6, y: -3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1476824515}
   - {fileID: 422691799}
-  m_Father: {fileID: 1792400949}
+  m_Father: {fileID: 491158114}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1497245540 stripped
@@ -23237,7 +23248,7 @@ GameObject:
   - component: {fileID: 1607848933}
   - component: {fileID: 1607848934}
   m_Layer: 0
-  m_Name: coletaveis-tubo
+  m_Name: tubo_de_saida
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23250,15 +23261,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607848931}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.61, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 650369886}
   - {fileID: 1171204406}
   - {fileID: 911244731}
-  m_Father: {fileID: 1792400949}
-  m_RootOrder: 2
+  m_Father: {fileID: 491158114}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &1607848933
 EdgeCollider2D:
@@ -23334,9 +23345,19 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6452164382807422426, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1743591685 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4767438955148188365, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1753095778 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6406990384476609806, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1765276500 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4767438956470005840, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1778081827 stripped
@@ -23354,40 +23375,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6406990384795182878, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1792400948
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1792400949}
-  m_Layer: 0
-  m_Name: Cenario
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1792400949
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792400948}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2083913116}
-  - {fileID: 1496791513}
-  - {fileID: 1607848932}
-  - {fileID: 1023419904}
-  m_Father: {fileID: 491158114}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1796863416 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1322663747441896823, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -23551,7 +23538,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1907269042779730411, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1907269042779730411, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23786,7 +23773,7 @@ GameObject:
   - component: {fileID: 2083913117}
   - component: {fileID: 2083913118}
   m_Layer: 0
-  m_Name: SensorDeColetado
+  m_Name: sensor_de_coletado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23799,13 +23786,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083913115}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1488198863}
-  m_Father: {fileID: 1792400949}
-  m_RootOrder: 0
+  m_Father: {fileID: 491158114}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &2083913117
 EdgeCollider2D:
@@ -25359,7 +25346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6406990384449578760, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6406990384449578760, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_LocalPosition.x
