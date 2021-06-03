@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TeleportePowerUpGo : AbstractPowerUpGo
 {
+    private bool configurado;
+    private ColetavelQuery coletavelQuery;
+
     public TeleportePowerUpGo(GameObject goTile) 
         : base(goTile, "teleporte")
     {
@@ -16,6 +17,11 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
 
     public override void ligar()
     {
-        
+        if (!configurado)
+        {
+            configurado = true;
+            coletavelQuery = new ColetavelQuery();
+        }
+        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
     }
 }
