@@ -13,4 +13,9 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
     {
         return PowerUpEntidade.INTERACAOGARRA.NAO_INTERACAO;
     }
+
+    public override void ligar()
+    {
+        
+    }
 }

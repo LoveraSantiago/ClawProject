@@ -184,55 +184,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         if (!hitColetavel)
         {
             monoBehaviour.StopCoroutine(coroutine);
-            coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMira());
+            coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
             resetMe();
         }
-    }
-
-    private class LigadorDeAlvo : ConsumidorDeEvento<ColetavelTile>
-    {
-        private string nameAlvo;
-
-        public LigadorDeAlvo(string nameAlvo)
-        {
-            this.nameAlvo = nameAlvo;
-        }
-
-        public void consumirEvento(ColetavelTile coletavel)
-        {
-            if (coletavel.isAtivo())
-            {
-                if (coletavel.nome.Equals(nameAlvo))
-                {
-                    coletavel.ligarAnimacaoMiraSelecionado();
-                }
-                else
-                {
-                    coletavel.desligarAnimacao();
-                }
-            }
-        }
-    }
-
-    private class LigadorDeMiras : ConsumidorDeEvento<ColetavelTile>
-    {
-        public void consumirEvento(ColetavelTile coletavel)
-        {
-            if (coletavel.isAtivo())
-            {
-                coletavel.ligarAnimacaoMira();                        
-            }
-        }
-    }
-
-    private class DesligadorDeMira : ConsumidorDeEvento<ColetavelTile>
-    {
-        public void consumirEvento(ColetavelTile coletavel)
-        {
-            if (coletavel.isAtivo())
-            {
-                coletavel.desligarAnimacao();
-            }
-        }
-    }
+    }    
 }
