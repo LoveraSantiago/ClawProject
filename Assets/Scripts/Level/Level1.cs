@@ -51,14 +51,23 @@ public class Level1 : AbstractLevel
     {
         return new PowerUpEntidade.NAME[] {
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
-            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO
+            PowerUpEntidade.NAME.TELEPORTE      ,
+            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      
         };
     }
 
