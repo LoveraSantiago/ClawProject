@@ -3,6 +3,8 @@ using UnityEngine;
 public abstract class AbstractPowerUpGo : Coletavel,
                                           GarraInteracaoComPowerUp
 {
+    private bool configurado;
+
     protected static MonoBehaviour monoBehaviour;
     protected static PowerUpFinalizacao powerUpFinalizacao;
     protected static InputGame inputGame;
@@ -17,7 +19,20 @@ public abstract class AbstractPowerUpGo : Coletavel,
     {
     }
 
-    public static void configurar(PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg, InputGame inputGameArg)
+    public void iniciar()
+    {
+        if (!configurado)
+        {
+            configurado = true;
+            configurarPup();
+        }
+        iniciarPup();
+    }
+
+    public abstract void configurarPup();
+    public abstract void iniciarPup();
+
+    public static void configurarAbstractPowerUp(PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg, InputGame inputGameArg)
     {
         monoBehaviour = monoBehaviourArg;
         powerUpFinalizacao = powerUpFinalizacaoArg;

@@ -118,7 +118,7 @@ public abstract class Coletavel
         goColetavel.SetActive(false);
     }
 
-    public virtual void ligar()
+    public void ligar()
     {
         ativo = true;
         goColetavel.SetActive(true);

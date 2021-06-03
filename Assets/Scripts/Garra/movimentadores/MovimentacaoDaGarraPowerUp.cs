@@ -13,7 +13,7 @@ public abstract class MovimentacaoDaGarraPowerUp : MovimentacaoDaGarra
         garraInteracaoComPowerUp = garraInteracaoComPowerUpArg;
         if (garraInteracaoComPowerUp.getInteracaoComGarra() == PowerUpEntidade.INTERACAOGARRA.NAO_INTERACAO)
         {
-            garraInteracaoComPowerUp.ligar();
+            garraInteracaoComPowerUp.iniciar();
         }
     }
 }

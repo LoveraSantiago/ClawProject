@@ -3,8 +3,7 @@ using System.Collections;
 
 public class BombaPowerUpGo : AbstractPowerUpGo,
                             ConsumidorDeEventoCollider
-{
-    private bool configurado;
+{    
     private bool acionado;
 
     private int bomba_explosao;
@@ -31,6 +30,21 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     public override float getAnguloGarraSegurar()
     {
         return 10f;
+    }
+
+    public override void configurarPup()
+    {
+        goColetavel.GetComponent<DetectorDeColisoes>()
+            .registrarConsumidorCollision2dOnEnter(this);
+
+        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+
+        circleCollider = goColetavel.GetComponent<CircleCollider2D>();
+    }
+
+    public override void iniciarPup()
+    {
+        ligar();
     }
 
     public void consumirEvento(Collision2D evento)
@@ -69,27 +83,6 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         desafixarVerticalmente();
         colocarNoAngulo(0);
     }
-
-    public override void ligar()
-    {
-        if (!configurado)
-        {
-            configurarObjetoBomba();            
-        }
-        base.ligar();
-    }
-
-    private void configurarObjetoBomba()
-    {
-        goColetavel.GetComponent<DetectorDeColisoes>()
-            .registrarConsumidorCollision2dOnEnter(this);
-        
-        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-        
-        circleCollider = goColetavel.GetComponent<CircleCollider2D>();
-
-        configurado = true;
-    }    
 
     private void processarExplosao()
     {

@@ -15,13 +15,13 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
         return PowerUpEntidade.INTERACAOGARRA.NAO_INTERACAO;
     }
 
-    public override void ligar()
+    public override void configurarPup()
     {
-        if (!configurado)
-        {
-            configurado = true;
-            coletavelQuery = new ColetavelQuery();
-        }
-        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
+        coletavelQuery = new ColetavelQuery();        
     }
+
+    public override void iniciarPup()
+    {
+        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());        
+    }    
 }

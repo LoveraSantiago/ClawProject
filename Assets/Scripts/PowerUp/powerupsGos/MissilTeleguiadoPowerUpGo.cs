@@ -6,8 +6,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     private readonly int missil_acionado;
     private readonly int missil_explosao;
     private readonly int missil_idle;
-
-    private bool configurado;
+    
     private bool hitColetavel;
     private float distanciaAnterior;
 
@@ -44,19 +43,19 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         base.colocarNaPosicao(posicao + new Vector3(0, -0.4f, 0));
     }
 
-    public override void ligar()
+    public override void configurarPup()
     {
-        if (!configurado)
-        {
-            coletavelQuery = new ColetavelQuery();
-            configurado = true;
-            capsuleCollider = goColetavel.GetComponent<CapsuleCollider2D>();
-            animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-        }
-        base.ligar();        
+        coletavelQuery = new ColetavelQuery();        
+        capsuleCollider = goColetavel.GetComponent<CapsuleCollider2D>();
+        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+    }
+
+    public override void iniciarPup()
+    {
+        ligar();
         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
-    }
+    }    
 
     private IEnumerator selecionarAlvo()
     {
