@@ -12,9 +12,7 @@ public class CaboDaGarra
     public CaboDaGarra(CaboGarraDto caboGarraDto, Transform posicaoGarra)
     {
         this.caboDto = caboGarraDto;
-        this.posicaoGarra = posicaoGarra;
-
-        listaDeSegmentos = new List<SegmentoCabo>();
+        this.posicaoGarra = posicaoGarra;        
     }
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
@@ -33,7 +31,8 @@ public class CaboDaGarra
         Vector3[] posicoes = new Vector3[caboDto.LineRenderer.positionCount];
         caboDto.LineRenderer.GetPositions(posicoes);
 
-        for(int contador = 0; contador < posicoes.Length; contador++)
+        listaDeSegmentos = new List<SegmentoCabo>(posicoes.Length);
+        for (int contador = 0; contador < posicoes.Length; contador++)
         {
             listaDeSegmentos.Add(new SegmentoCabo(posicoes[contador]));            
         }
