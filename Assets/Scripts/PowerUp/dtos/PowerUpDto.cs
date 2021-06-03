@@ -8,6 +8,7 @@ public class PowerUpDto
     [SerializeField] private GameObject missilNuclearPUp;
     [SerializeField] private GameObject minaTerrestrePUp;
     [SerializeField] private GameObject missilTeleguiadoPUp;
+    [SerializeField] private GameObject teleportePUp;
     [Space(5)]    
     [SerializeField] private PathMissilDto pathMissilDto;
  
@@ -15,6 +16,7 @@ public class PowerUpDto
     public GameObject MissilNuclearPUp { get { return missilNuclearPUp; } }
     public GameObject MinaTerrestrePUp { get { return minaTerrestrePUp; } }
     public GameObject MissilTeleguiadoPUp { get { return missilTeleguiadoPUp; } }
+    public GameObject TeleportePUp { get { return teleportePUp; } }
         
     public PathMissilDto PathMissilDto { get { return pathMissilDto; } }
 }
