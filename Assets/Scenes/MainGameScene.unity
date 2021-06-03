@@ -5861,6 +5861,7 @@ MonoBehaviour:
     missilNuclearPUp: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
     minaTerrestrePUp: {fileID: 4127936681606313068, guid: 60283f6ad83360741b3927cd1859a108, type: 3}
     missilTeleguiadoPUp: {fileID: 4127936681606313068, guid: f4b85493ee34d5749b9c9e3d0dd804d1, type: 3}
+    teleportePUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
     pathMissilDto:
       goMainPath: {fileID: 1245264362}
       pathPointsMissil:
