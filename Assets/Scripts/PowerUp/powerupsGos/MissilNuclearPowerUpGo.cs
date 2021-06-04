@@ -50,6 +50,16 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         ligar();
     }
 
+    public override void resetPup()
+    {
+        desligar();
+        animator.Play(missil_idle);
+        powerUpFinalizacao.preFinalizar();
+        acionado = false;
+        desafixarVerticalmente();
+        colocarNoAngulo(0);
+    }
+
     public void consumirEvento(Collision2D evento)
     {
         if (!acionado && Utils.isColetavel(evento))
@@ -70,20 +80,10 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         goExplosao.SetActive(false);
         GrandeExplosaoShake explosaoShake = new GrandeExplosaoShake(monoBehaviour);
         explosaoShake.shake();
-        resetMe();
+        resetPup();
         yield return new WaitForSeconds(1.1f);
 
         powerUpFinalizacao.finalizado();
         yield return null;
-    }
-
-    private void resetMe()
-    {
-        desligar();
-        animator.Play(missil_idle);
-        powerUpFinalizacao.preFinalizar();
-        acionado = false;
-        desafixarVerticalmente();        
-        colocarNoAngulo(0);
     }    
 }

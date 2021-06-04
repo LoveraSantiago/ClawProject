@@ -55,7 +55,15 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         ligar();
         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
-    }    
+    }
+
+    public override void resetPup()
+    {
+        desligar();
+        powerUpFinalizacao.finalizado();
+        animator.Play(missil_idle);
+        colocarNoAngulo(0);
+    }
 
     private IEnumerator selecionarAlvo()
     {
@@ -145,17 +153,9 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         powerUpFinalizacao.preFinalizar();
 
         yield return new WaitForSeconds(1.1f);
-        resetMe();
+        resetPup();
         yield return null;
-    }
-
-    private void resetMe()
-    {
-        desligar();
-        powerUpFinalizacao.finalizado();
-        animator.Play(missil_idle);
-        colocarNoAngulo(0);
-    }
+    }    
 
     private void recalcularPath(Vector3 posicaoFim)
     {
@@ -184,7 +184,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         {
             monoBehaviour.StopCoroutine(coroutine);
             coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
-            resetMe();
+            resetPup();
         }
     }    
 }

@@ -47,6 +47,15 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         ligar();
     }
 
+    public override void resetPup()
+    {
+        desligar();
+        animator.Play(bomba_idle);
+        acionado = false;
+        desafixarVerticalmente();
+        colocarNoAngulo(0);
+    }
+
     public void consumirEvento(Collision2D evento)
     {        
         if(!acionado && Utils.isColetavel(evento))
@@ -68,21 +77,12 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         powerUpFinalizacao.preFinalizar();
-        resetMe();
+        resetPup();
         yield return new WaitForSeconds(1.1f);
 
         powerUpFinalizacao.finalizado();
         yield return null;
-    }
-
-    private void resetMe()
-    {
-        desligar();
-        animator.Play(bomba_idle);
-        acionado = false;
-        desafixarVerticalmente();
-        colocarNoAngulo(0);
-    }
+    }    
 
     private void processarExplosao()
     {

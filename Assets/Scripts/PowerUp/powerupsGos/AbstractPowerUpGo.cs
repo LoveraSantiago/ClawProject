@@ -10,6 +10,10 @@ public abstract class AbstractPowerUpGo : Coletavel,
     protected static InputGame inputGame;
 
     public abstract PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra();
+    public abstract void configurarPup();
+    public abstract void iniciarPup();
+    public abstract void resetPup();
+
     public virtual float getAnguloGarraSegurar() { return 15; }//Angulo de fechamento atual configurado no edior
     public virtual void iniciarNaPosicao(Vector3 posicao) { }
     public virtual void timeout() { }
@@ -29,8 +33,6 @@ public abstract class AbstractPowerUpGo : Coletavel,
         iniciarPup();
     }
 
-    public abstract void configurarPup();
-    public abstract void iniciarPup();
 
     public static void configurarAbstractPowerUp(PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg, InputGame inputGameArg)
     {

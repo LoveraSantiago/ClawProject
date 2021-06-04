@@ -23,5 +23,10 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
     public override void iniciarPup()
     {
         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());        
-    }    
+    }
+
+    public override void resetPup()
+    {
+        
+    }
 }

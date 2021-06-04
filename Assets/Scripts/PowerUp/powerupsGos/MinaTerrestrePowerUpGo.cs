@@ -44,7 +44,14 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
         posInicial.y = -3.7f;
         base.colocarNaPosicao(posInicial);
         monoBehaviour.StartCoroutine(explodir());
-    }    
+    }
+
+    public override void resetPup()
+    {
+        desligar();
+        animator.Play(mina_idle);
+        powerUpFinalizacao.preFinalizar();
+    }
 
     private IEnumerator explodir()
     {
@@ -58,18 +65,11 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
         goExplosao.SetActive(false);
         PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
-        resetMe();
+        resetPup();
         yield return new WaitForSeconds(1.1f);
 
         powerUpFinalizacao.finalizado();
         yield return null;
-    }
-
-    private void resetMe()
-    {
-        desligar();        
-        animator.Play(mina_idle);
-        powerUpFinalizacao.preFinalizar();                
     }    
 
     public override void parar() { }
