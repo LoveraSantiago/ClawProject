@@ -3,8 +3,7 @@ using System.Collections;
 
 public class BombaPowerUpGo : AbstractPowerUpGo,
                             ConsumidorDeEventoCollider
-{
-    private bool configurado;
+{    
     private bool acionado;
 
     private int bomba_explosao;
@@ -33,6 +32,30 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         return 10f;
     }
 
+    public override void configurarPup()
+    {
+        goColetavel.GetComponent<DetectorDeColisoes>()
+            .registrarConsumidorCollision2dOnEnter(this);
+
+        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+
+        circleCollider = goColetavel.GetComponent<CircleCollider2D>();
+    }
+
+    public override void iniciarPup()
+    {
+        ligar();
+    }
+
+    public override void resetPup()
+    {
+        desligar();
+        animator.Play(bomba_idle);
+        acionado = false;
+        desafixarVerticalmente();
+        colocarNoAngulo(0);
+    }
+
     public void consumirEvento(Collision2D evento)
     {        
         if(!acionado && Utils.isColetavel(evento))
@@ -54,41 +77,11 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         powerUpFinalizacao.preFinalizar();
-        resetMe();
+        resetPup();
         yield return new WaitForSeconds(1.1f);
 
         powerUpFinalizacao.finalizado();
         yield return null;
-    }
-
-    private void resetMe()
-    {
-        desligar();
-        animator.Play(bomba_idle);
-        acionado = false;
-        desafixarVerticalmente();
-        colocarNoAngulo(0);
-    }
-
-    public override void ligar()
-    {
-        if (!configurado)
-        {
-            configurarObjetoBomba();            
-        }
-        base.ligar();
-    }
-
-    private void configurarObjetoBomba()
-    {
-        goColetavel.GetComponent<DetectorDeColisoes>()
-            .registrarConsumidorCollision2dOnEnter(this);
-        
-        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-        
-        circleCollider = goColetavel.GetComponent<CircleCollider2D>();
-
-        configurado = true;
     }    
 
     private void processarExplosao()

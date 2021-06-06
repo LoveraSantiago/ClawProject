@@ -20,7 +20,7 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         produtorDeEventoFinalizacao = new ProdutorDeEvento<PowerUpInfoFim>();
 
-        AbstractPowerUpGo.configurar(this, monoBehaviour, inputGame);
+        AbstractPowerUpGo.configurarAbstractPowerUp(this, monoBehaviour, inputGame);
         poolDePowerUpGos = new PoolDePowerUpGos(powerUpDto);        
     }    
 

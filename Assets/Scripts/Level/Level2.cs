@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 
 public class Level2 : AbstractLevel
@@ -48,15 +49,25 @@ public class Level2 : AbstractLevel
     public override PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina()
     {
         return new PowerUpEntidade.NAME[] {
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.NAME.TELEPORTE      ,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
-            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO };
+            PowerUpEntidade.NAME.TELEPORTE,
+            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+        };
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()

@@ -21,15 +21,15 @@ public class ColetavelEntidade
     }
 
     public static ColetavelEntidade[] ARRAY_COLETAVEIS_ENTIDADES = new ColetavelEntidade[] {
-        new ColetavelEntidade(0, "vazio", "tile-vazio", FAMILIA.DEFAULTS),//Range de 0 a 9 pra defaults
+        new ColetavelEntidade(0, "vazio" , "tile-vazio" , FAMILIA.DEFAULTS),//Range de 0 a 9 pra defaults
         new ColetavelEntidade(1, "random", "tile-random", FAMILIA.DEFAULTS),
 
-        new ColetavelEntidade(10, "leite", "characters_0001", FAMILIA.FRUTAS),//Range de 10 a 19 frutas
-        new ColetavelEntidade(11, "maca", "characters_0002", FAMILIA.FRUTAS),
-        new ColetavelEntidade(12, "laranja", "characters_0003", FAMILIA.FRUTAS),
-        new ColetavelEntidade(13, "pao", "characters_0004", FAMILIA.FRUTAS),
-        new ColetavelEntidade(14, "aspargo?", "characters_0005", FAMILIA.FRUTAS),
-        new ColetavelEntidade(15, "coco", "characters_0006", FAMILIA.FRUTAS),
+        new ColetavelEntidade(10, "leite"          , "characters_0001", FAMILIA.FRUTAS),//Range de 10 a 19 frutas
+        new ColetavelEntidade(11, "maca"           , "characters_0002", FAMILIA.FRUTAS),
+        new ColetavelEntidade(12, "laranja"        , "characters_0003", FAMILIA.FRUTAS),
+        new ColetavelEntidade(13, "pao"            , "characters_0004", FAMILIA.FRUTAS),
+        new ColetavelEntidade(14, "aspargo?"       , "characters_0005", FAMILIA.FRUTAS),
+        new ColetavelEntidade(15, "coco"           , "characters_0006", FAMILIA.FRUTAS),
         new ColetavelEntidade(16, "estrelamarinha?", "characters_0007", FAMILIA.FRUTAS)
     };
 

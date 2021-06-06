@@ -4,13 +4,13 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     private ContadorDeTempo contadorDeFimTempo;
 
-    private MovimentacaoDaGarra movAtual;
-    private MovimentacaoDaGarra movVoltarPCima;
-    private MovimentacaoDaGarra movVoltarMeio;
-    private MovimentacaoAgarrandoEmcima movSegCima;
-    private MovimentacaoDaGarra movSegCimaMov;
-    private MovimentacaoDaGarra movSoltar;
-    private MovimentacaoDaGarra movParado;
+    private MovimentacaoDaGarraPowerUp movAtual;
+    private MovimentacaoDaGarraPowerUp movVoltarPCima;
+    private MovimentacaoDaGarraPowerUp movVoltarMeio;
+    private MovimentacaoDaGarraPowerUp movSegCima;
+    private MovimentacaoDaGarraPowerUp movSegCimaMov;
+    private MovimentacaoDaGarraPowerUp movSoltar;
+    private MovimentacaoDaGarraPowerUp movParado;
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
@@ -42,7 +42,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
             }
             else if (isEstadoAtualSegurandoParado())
             {
-                movSegCima.acionarTimeout();
+                movAtual.acionarTimeout();
             }
         }
         movAtual.update();
@@ -67,7 +67,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     private bool isEstadoAtualSegurandoParado()
     {
-        return movAtual == movSegCima;
+        return movAtual == movSegCima || movAtual == movParado;
     }
 
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP INICIO
@@ -103,7 +103,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
 
     //TODO REFATORAR COM GERENCIADOR DE MOVIMENTACAO NORMAL
-    private void trocarMovimentador(MovimentacaoDaGarra movimentador)
+    private void trocarMovimentador(MovimentacaoDaGarraPowerUp movimentador)
     {
         movimentador.preInicio();
         movAtual = movimentador;

@@ -6,8 +6,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     private readonly int missil_acionado;
     private readonly int missil_explosao;
     private readonly int missil_idle;
-
-    private bool configurado;
+    
     private bool hitColetavel;
     private float distanciaAnterior;
 
@@ -44,18 +43,26 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         base.colocarNaPosicao(posicao + new Vector3(0, -0.4f, 0));
     }
 
-    public override void ligar()
+    public override void configurarPup()
     {
-        if (!configurado)
-        {
-            coletavelQuery = new ColetavelQuery();
-            configurado = true;
-            capsuleCollider = goColetavel.GetComponent<CapsuleCollider2D>();
-            animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-        }
-        base.ligar();        
+        coletavelQuery = new ColetavelQuery();        
+        capsuleCollider = goColetavel.GetComponent<CapsuleCollider2D>();
+        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+    }
+
+    public override void iniciarPup()
+    {
+        ligar();
         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
+    }
+
+    public override void resetPup()
+    {
+        desligar();
+        powerUpFinalizacao.finalizado();
+        animator.Play(missil_idle);
+        colocarNoAngulo(0);
     }
 
     private IEnumerator selecionarAlvo()
@@ -74,7 +81,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
                 if (raycastHit.collider != null)
                 {
                     string nomeAlvo = raycastHit.collider.name;
-                    coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvo(nomeAlvo));
+                    coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
                     hitColetavel = true;
                     monoBehaviour.StartCoroutine(disparandoMissil(coletavelQuery.getColetavelInGameByName(nomeAlvo)));
                 }
@@ -146,17 +153,9 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         powerUpFinalizacao.preFinalizar();
 
         yield return new WaitForSeconds(1.1f);
-        resetMe();
+        resetPup();
         yield return null;
-    }
-
-    private void resetMe()
-    {
-        desligar();
-        powerUpFinalizacao.finalizado();
-        animator.Play(missil_idle);
-        colocarNoAngulo(0);
-    }
+    }    
 
     private void recalcularPath(Vector3 posicaoFim)
     {
@@ -184,55 +183,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         if (!hitColetavel)
         {
             monoBehaviour.StopCoroutine(coroutine);
-            coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMira());
-            resetMe();
+            coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
+            resetPup();
         }
-    }
-
-    private class LigadorDeAlvo : ConsumidorDeEvento<ColetavelTile>
-    {
-        private string nameAlvo;
-
-        public LigadorDeAlvo(string nameAlvo)
-        {
-            this.nameAlvo = nameAlvo;
-        }
-
-        public void consumirEvento(ColetavelTile coletavel)
-        {
-            if (coletavel.isAtivo())
-            {
-                if (coletavel.nome.Equals(nameAlvo))
-                {
-                    coletavel.ligarAnimacaoMiraSelecionado();
-                }
-                else
-                {
-                    coletavel.desligarAnimacao();
-                }
-            }
-        }
-    }
-
-    private class LigadorDeMiras : ConsumidorDeEvento<ColetavelTile>
-    {
-        public void consumirEvento(ColetavelTile coletavel)
-        {
-            if (coletavel.isAtivo())
-            {
-                coletavel.ligarAnimacaoMira();                        
-            }
-        }
-    }
-
-    private class DesligadorDeMira : ConsumidorDeEvento<ColetavelTile>
-    {
-        public void consumirEvento(ColetavelTile coletavel)
-        {
-            if (coletavel.isAtivo())
-            {
-                coletavel.desligarAnimacao();
-            }
-        }
-    }
+    }    
 }

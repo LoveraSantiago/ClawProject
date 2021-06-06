@@ -57,6 +57,17 @@ public class DisplaysDeColetados
         }        
     }    
 
+    public void acionadoPeloPowerUp()
+    {
+        ligarGlowsSucesso();
+        displayDeColetado[0].ligarArcoIris(monoBehaviour);
+    }
+
+    public void acionadoFimPowerUp()
+    {
+        desligarGlows();
+    }
+
     private IEnumerator mostrarTerceiroSprite(Sprite spriteColetado, bool result)
     {
         yield return monoBehaviour.StartCoroutine(displayDeColetado[2].mostrarSprite(spriteColetado));

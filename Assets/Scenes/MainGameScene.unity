@@ -5203,7 +5203,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.4787234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5796,6 +5796,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 2b953ba433bc90440a548aaf1b916cab, type: 3}
       - {fileID: 21300000, guid: a7d45f520d37bf4489a4bb139dcd9335, type: 3}
       - {fileID: 21300000, guid: ae6ca25e5fa8ba54fa8ab0a8edb2c9ae, type: 3}
+      - {fileID: 21300000, guid: df5f1b9b2a0044c49a6881e8b375936c, type: 3}
       areaDraggavel: {fileID: 2139442905}
       btnPowerUp:
       - sprAreaBotao: {fileID: 347425362}
@@ -5876,6 +5877,9 @@ MonoBehaviour:
       - {fileID: 1245264351}
       - {fileID: 1245264350}
       - {fileID: 1245264348}
+    teleportePUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
+    matTeleporteIn: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
+    matTeleporteOut: {fileID: 2100000, guid: e4da0d30a658a4541a919c42171abb7f, type: 2}
   modalPontosDto:
     textoPontos: {fileID: 1473191375}
     textoNivel: {fileID: 376184029}

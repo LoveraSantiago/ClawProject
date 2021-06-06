@@ -4,8 +4,7 @@ using UnityEngine;
 public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
 {
     private static Vector3 posInicial;
-
-    private bool configurado;
+    
     private int mina_explosao;
     private int mina_idle;
 
@@ -31,17 +30,27 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
         posInicial = posicao;
     }
 
-    public override void ligar()
+    public override void configurarPup()
+    {        
+        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+        goExplosao = goColetavel.transform.Find("explosao").gameObject;
+
+        tempoExplosao = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(PowerUpEntidade.NAME.MINA_TERRESTRE).duracao;        
+    }
+
+    public override void iniciarPup()
     {
-     //   Debug.Log("ligar");
-        if (!configurado)
-        {
-            configurarObjetoMina();
-        }
-        base.ligar();
+        ligar();
         posInicial.y = -3.7f;
         base.colocarNaPosicao(posInicial);
         monoBehaviour.StartCoroutine(explodir());
+    }
+
+    public override void resetPup()
+    {
+        desligar();
+        animator.Play(mina_idle);
+        powerUpFinalizacao.preFinalizar();
     }
 
     private IEnumerator explodir()
@@ -56,28 +65,12 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
         goExplosao.SetActive(false);
         PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
-        resetMe();
+        resetPup();
         yield return new WaitForSeconds(1.1f);
 
         powerUpFinalizacao.finalizado();
         yield return null;
-    }
-
-    private void resetMe()
-    {
-        desligar();        
-        animator.Play(mina_idle);
-        powerUpFinalizacao.preFinalizar();                
-    }
-
-    private void configurarObjetoMina()
-    {
-        animator   = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-        goExplosao = goColetavel.transform.Find("explosao").gameObject;
-
-        tempoExplosao = PowerUpEntidade.getPowerUpEntidadeByEnum(PowerUpEntidade.NAME.MINA_TERRESTRE).duracao;
-        configurado = true;
-    }
+    }    
 
     public override void parar() { }
     public override void colocarNaPosicao(Vector3 posicao) { }

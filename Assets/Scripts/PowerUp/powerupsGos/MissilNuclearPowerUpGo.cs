@@ -3,9 +3,7 @@ using UnityEngine;
 
 public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
                                ConsumidorDeEventoCollider
-{    
-
-    private bool configurado;
+{   
     private bool acionado;
 
     private int missil_explosao;
@@ -38,6 +36,30 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         base.colocarNaPosicao(posicao + new Vector3(0, -0.45f, 0));
     }
 
+    public override void configurarPup()
+    {
+        goColetavel.GetComponent<DetectorDeColisoes>()
+            .registrarConsumidorCollision2dOnEnter(this);
+
+        goExplosao = goColetavel.transform.Find("explosao").gameObject;
+        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+    }
+
+    public override void iniciarPup()
+    {
+        ligar();
+    }
+
+    public override void resetPup()
+    {
+        desligar();
+        animator.Play(missil_idle);
+        powerUpFinalizacao.preFinalizar();
+        acionado = false;
+        desafixarVerticalmente();
+        colocarNoAngulo(0);
+    }
+
     public void consumirEvento(Collision2D evento)
     {
         if (!acionado && Utils.isColetavel(evento))
@@ -58,40 +80,10 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         goExplosao.SetActive(false);
         GrandeExplosaoShake explosaoShake = new GrandeExplosaoShake(monoBehaviour);
         explosaoShake.shake();
-        resetMe();
+        resetPup();
         yield return new WaitForSeconds(1.1f);
 
         powerUpFinalizacao.finalizado();
         yield return null;
-    }
-
-    private void resetMe()
-    {
-        desligar();
-        animator.Play(missil_idle);
-        powerUpFinalizacao.preFinalizar();
-        acionado = false;
-        desafixarVerticalmente();        
-        colocarNoAngulo(0);
-    }
-
-    public override void ligar()
-    {
-        if (!configurado)
-        {
-            configurarObjetoMissil();
-        }
-        base.ligar();
-    }
-
-    private void configurarObjetoMissil()
-    {
-        goColetavel.GetComponent<DetectorDeColisoes>()
-            .registrarConsumidorCollision2dOnEnter(this);
-        
-        goExplosao = goColetavel.transform.Find("explosao").gameObject;        
-        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-
-        configurado = true;
     }    
 }

@@ -28,6 +28,7 @@ public class PoolDePowerUpGos
             case PowerUpEntidade.NAME.MISSIL_NUCLEAR: criarPowerUpGoMissilNuclear(); break;
             case PowerUpEntidade.NAME.MINA_TERRESTRE: criarPowerUpGoMinaTerrestre(); break;
             case PowerUpEntidade.NAME.MISSIL_TELEGUIADO: criarPowerUpGoMissilTeleguiado(); break;
+            case PowerUpEntidade.NAME.TELEPORTE: criarPowerUpTeleporte(); break;
         }
     }
 
@@ -53,5 +54,11 @@ public class PoolDePowerUpGos
     {
         MissilTeleguiadoPowerUpGo missilTeleguiado = new MissilTeleguiadoPowerUpGo(powerUpDto.MissilTeleguiadoPUp, powerUpDto.PathMissilDto);
         poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.MISSIL_TELEGUIADO.ToString(), missilTeleguiado);
+    }
+
+    private void criarPowerUpTeleporte()
+    {
+        TeleportePowerUpGo teleporte = new TeleportePowerUpGo(powerUpDto.TeleportePUp, powerUpDto.MatTeleporteIn, powerUpDto.MatTeleporteOut);
+        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.TELEPORTE.ToString(), teleporte);
     }
 }
