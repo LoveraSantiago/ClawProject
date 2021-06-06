@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
+                              ConsumidorDeEvento<PowerUpInfo>,
                               ConsumidorDeEvento<PowerUpInfoFim>
 {    
 
@@ -74,6 +75,11 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         displayDeScores.mostrarScore(infoColetado.score, infoColetado.resultCombinacao);
     }
 
+    private void processarInicioPowerUp(PowerUpInfo evento)
+    {
+        displayDeScores.mostrarContagemRegressiva(evento.duracaoTempo);
+    }
+
     private void processarPreFimDePowerUp()
     {
         displayDeScores.piscarAsteriscos();
@@ -91,6 +97,13 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         processarInformacoesDoColetado(infoColetado);
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> FIM
+
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
+    public void consumirEvento(PowerUpInfo evento)
+    {
+        processarInicioPowerUp(evento);
+    }
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO       
 
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
     public void consumirEvento(PowerUpInfoFim powerUpInfoFim)
@@ -121,7 +134,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
 
     public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
-        return displayDeScores.getConsumidorDePowerUpInfo();
+        return this;
     }
 
     public ConsumidorDeEvento<PowerUpInfoFim> getConsumidorDePowerUpFim()

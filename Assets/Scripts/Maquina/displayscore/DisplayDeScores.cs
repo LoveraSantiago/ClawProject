@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
+public class DisplayDeScores 
 {
     private int scoreCentenaAtual;
     private int scoreDezenaAtual;
@@ -69,7 +69,7 @@ public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
         orquestrador.passarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual);
     }
 
-    private void mostrarContagemRegressiva(int duracao)
+    public void mostrarContagemRegressiva(int duracao)
     {
         armazenarScoreAtual();
         coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));
@@ -97,17 +97,5 @@ public class DisplayDeScores : ConsumidorDeEvento<PowerUpInfo>
     private void cancelarCoroutine()
     {
         monoBehaviour.StopCoroutine(coroutineAtual);        
-    }
-
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
-    public void consumirEvento(PowerUpInfo evento)
-    {
-        mostrarContagemRegressiva(evento.duracaoTempo);
-    }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO   
-
-    public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
-    {
-        return this;
-    }
+    }    
 }
