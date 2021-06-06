@@ -112,7 +112,7 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
         float contador = 0;
         while(contador < 1.01f)
         {
-            contador += Time.deltaTime * 0.60f;
+            contador += Time.deltaTime * 0.75f;
             matOut.SetFloat("valor", contador);
             matIn.SetFloat("valor", contador);
             yield return null;
