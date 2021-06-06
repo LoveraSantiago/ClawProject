@@ -44,6 +44,7 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
     private IEnumerator selecionarAlvos()
     {
         hitColetavel1 = false;
+        hitColetavel2 = false;
         while (!hitColetavel1)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
@@ -79,9 +80,12 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
                 {
                     string nomeAlvo = raycastHit.collider.name;
                     coletavel2 = coletavelQuery.getColetavelInGameByName(raycastHit.collider.name);
-                    coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));                    
-                    hitColetavel2 = true;
-                    monoBehaviour.StartCoroutine(fazerTeleporte());
+                    if (!coletavel1.nome.Equals(coletavel2.nome))
+                    {
+                        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));                    
+                        hitColetavel2 = true;
+                        monoBehaviour.StartCoroutine(fazerTeleporte());
+                    }
                 }
             }
             yield return null;
@@ -104,20 +108,25 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
         coletavel2.addMaterial(matOut);
 
         float contador = 0;
-        while(contador < 1.1)
+        while(contador < 1.01f)
         {
-            contador += Time.deltaTime * 0.75f;
+            contador += Time.deltaTime * 0.60f;
             matOut.SetFloat("valor", contador);
             matIn.SetFloat("valor", contador);
             yield return null;
         }
-
+        powerUpFinalizacao.preFinalizar();
         coletavel1.receberSprite(spr2);
         coletavel2.receberSprite(spr1);
 
         coletavel1.clearMaterial();
         coletavel2.clearMaterial();
 
+        coletavel1.desligarAnimacao();
+        coletavel2.desligarAnimacao();
+
+        yield return new WaitForSeconds(0.5f);
+        powerUpFinalizacao.finalizado();
         yield return null;
     }
 }

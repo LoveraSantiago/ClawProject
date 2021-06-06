@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 
 public class Level2 : AbstractLevel
@@ -48,7 +49,10 @@ public class Level2 : AbstractLevel
     public override PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina()
     {
         return new PowerUpEntidade.NAME[] {
-            PowerUpEntidade.NAME.TELEPORTE, PowerUpEntidade.NAME.TELEPORTE, PowerUpEntidade.NAME.TELEPORTE, PowerUpEntidade.NAME.TELEPORTE };
+            PowerUpEntidade.NAME.TELEPORTE, PowerUpEntidade.NAME.TELEPORTE, PowerUpEntidade.NAME.TELEPORTE, PowerUpEntidade.NAME.TELEPORTE,
+            PowerUpEntidade.NAME.TELEPORTE, PowerUpEntidade.NAME.TELEPORTE, PowerUpEntidade.NAME.TELEPORTE, PowerUpEntidade.NAME.TELEPORTE,
+            PowerUpEntidade.NAME.TELEPORTE, PowerUpEntidade.NAME.TELEPORTE, PowerUpEntidade.NAME.TELEPORTE, PowerUpEntidade.NAME.TELEPORTE,
+        };
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()
