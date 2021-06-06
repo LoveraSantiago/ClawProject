@@ -6,13 +6,18 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
     private bool hitColetavel1;
     private bool hitColetavel2;
 
+    private Material matIn;
+    private Material matOut;
+
     private ColetavelTile coletavel1;
     private ColetavelTile coletavel2;
     private ColetavelQuery coletavelQuery;
 
-    public TeleportePowerUpGo(GameObject goTile) 
+    public TeleportePowerUpGo(GameObject goTile, Material matIn, Material matOut) 
         : base(goTile, "teleporte")
     {
+        this.matIn = matIn;
+        this.matOut = matOut;
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -76,11 +81,42 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
                     coletavel2 = coletavelQuery.getColetavelInGameByName(raycastHit.collider.name);
                     coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));                    
                     hitColetavel2 = true;
+                    monoBehaviour.StartCoroutine(fazerTeleporte());
                 }
             }
             yield return null;
         }
+        yield return null;
+    }
 
+    private IEnumerator fazerTeleporte()
+    {
+        Sprite spr1 = coletavel1.getSprite();
+        Sprite spr2 = coletavel2.getSprite();
+
+        matIn.SetTexture("inSprite", spr1.texture);
+        matIn.SetTexture("outSprite", spr2.texture);
+
+        matOut.SetTexture("inSprite", spr2.texture);
+        matOut.SetTexture("outSprite", spr1.texture);
+
+        coletavel1.addMaterial(matIn);
+        coletavel2.addMaterial(matOut);
+
+        float contador = 0;
+        while(contador < 1.1)
+        {
+            contador += Time.deltaTime * 0.75f;
+            matOut.SetFloat("valor", contador);
+            matIn.SetFloat("valor", contador);
+            yield return null;
+        }
+
+        coletavel1.receberSprite(spr2);
+        coletavel2.receberSprite(spr1);
+
+        coletavel1.clearMaterial();
+        coletavel2.clearMaterial();
 
         yield return null;
     }

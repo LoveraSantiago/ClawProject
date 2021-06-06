@@ -5203,7 +5203,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.4787234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5861,7 +5861,6 @@ MonoBehaviour:
     missilNuclearPUp: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
     minaTerrestrePUp: {fileID: 4127936681606313068, guid: 60283f6ad83360741b3927cd1859a108, type: 3}
     missilTeleguiadoPUp: {fileID: 4127936681606313068, guid: f4b85493ee34d5749b9c9e3d0dd804d1, type: 3}
-    teleportePUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
     pathMissilDto:
       goMainPath: {fileID: 1245264362}
       pathPointsMissil:
@@ -5878,6 +5877,9 @@ MonoBehaviour:
       - {fileID: 1245264351}
       - {fileID: 1245264350}
       - {fileID: 1245264348}
+    teleportePUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
+    matTeleporteIn: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
+    matTeleporteOut: {fileID: 2100000, guid: e4da0d30a658a4541a919c42171abb7f, type: 2}
   modalPontosDto:
     textoPontos: {fileID: 1473191375}
     textoNivel: {fileID: 376184029}

@@ -5,18 +5,26 @@ using UnityEngine;
 public class PowerUpDto 
 {    
     [SerializeField] private GameObject bomdPUp;
+    [Space(3)]
     [SerializeField] private GameObject missilNuclearPUp;
+    [Space(3)]
     [SerializeField] private GameObject minaTerrestrePUp;
+    [Space(3)]
     [SerializeField] private GameObject missilTeleguiadoPUp;
-    [SerializeField] private GameObject teleportePUp;
-    [Space(5)]    
     [SerializeField] private PathMissilDto pathMissilDto;
+    [Space(3)]
+    [SerializeField] private GameObject teleportePUp;
+    [SerializeField] private Material matTeleporteIn;
+    [SerializeField] private Material matTeleporteOut;
  
     public GameObject BombPUp { get { return bomdPUp; } }
     public GameObject MissilNuclearPUp { get { return missilNuclearPUp; } }
     public GameObject MinaTerrestrePUp { get { return minaTerrestrePUp; } }
+
     public GameObject MissilTeleguiadoPUp { get { return missilTeleguiadoPUp; } }
-    public GameObject TeleportePUp { get { return teleportePUp; } }
-        
     public PathMissilDto PathMissilDto { get { return pathMissilDto; } }
+
+    public GameObject TeleportePUp { get { return teleportePUp; } }
+    public Material MatTeleporteIn { get { return matTeleporteIn; } }
+    public Material MatTeleporteOut { get { return matTeleporteOut; } }
 }

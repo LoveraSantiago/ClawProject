@@ -8,9 +8,10 @@ public abstract class Coletavel
     public string nomeSprite { get; private set; }
 
     private bool ativo;
+    
     protected GameObject goColetavel;
     private Rigidbody2D rigidbody;
-    private SpriteRenderer spriteRenderer;    
+    protected SpriteRenderer spriteRenderer;    
     
     public Coletavel()
         :this(context.mainTile, context.nomeador.getName())
@@ -22,7 +23,7 @@ public abstract class Coletavel
         goColetavel = GameObject.Instantiate(go, go.transform.position, Quaternion.Euler(Vector3.zero), context.mainTileParent);
         this.nome = nome;
         goColetavel.name = nome;
-        spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();
+        spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();        
         rigidbody = goColetavel.GetComponent<Rigidbody2D>();        
     }   
 
@@ -152,7 +153,7 @@ public abstract class Coletavel
     public Sprite getSprite()
     {
         return spriteRenderer.sprite;
-    }
+    }   
 
     public bool hasEqualsSprite(Coletavel coletavelOutro)
     {

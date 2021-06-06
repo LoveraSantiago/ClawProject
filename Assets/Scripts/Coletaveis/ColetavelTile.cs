@@ -4,11 +4,13 @@ public class ColetavelTile : Coletavel
 {
     private Animator animator;
     private bool miraSelecionada;
+    private Material materialDefault;
 
     public ColetavelTile()
         : base()
     {
         animator = goColetavel.transform.Find("animacao").GetComponent<Animator>();
+        materialDefault = spriteRenderer.material;
     }
 
     public void ligarAnimacaoMira()
@@ -32,5 +34,15 @@ public class ColetavelTile : Coletavel
     public bool isMiraSelecionada()
     {
         return miraSelecionada;
+    }
+
+    public void addMaterial(Material material)
+    {
+        spriteRenderer.material = material;
+    }
+
+    public void clearMaterial()
+    {
+        addMaterial(materialDefault);
     }
 }

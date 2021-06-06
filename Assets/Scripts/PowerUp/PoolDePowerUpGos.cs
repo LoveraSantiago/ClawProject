@@ -58,7 +58,7 @@ public class PoolDePowerUpGos
 
     private void criarPowerUpTeleporte()
     {
-        TeleportePowerUpGo teleporte = new TeleportePowerUpGo(powerUpDto.TeleportePUp);
+        TeleportePowerUpGo teleporte = new TeleportePowerUpGo(powerUpDto.TeleportePUp, powerUpDto.MatTeleporteIn, powerUpDto.MatTeleporteOut);
         poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.TELEPORTE.ToString(), teleporte);
     }
 }
