@@ -16,4 +16,9 @@ public abstract class MovimentacaoDaGarraPowerUp : MovimentacaoDaGarra
             garraInteracaoComPowerUp.iniciar();
         }
     }
+
+    public void acionarTimeout()
+    {
+        garraInteracaoComPowerUp.timeout();
+    }
 }

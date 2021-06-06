@@ -155,6 +155,11 @@ public abstract class Coletavel
         return spriteRenderer.sprite;
     }   
 
+    public void resetSprite()
+    {
+        spriteRenderer.sprite = null;
+    }
+
     public bool hasEqualsSprite(Coletavel coletavelOutro)
     {
         return nomeSprite.Equals(coletavelOutro.nomeSprite);

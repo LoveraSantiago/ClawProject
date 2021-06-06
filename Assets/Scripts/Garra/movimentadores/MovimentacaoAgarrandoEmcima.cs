@@ -27,10 +27,4 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
     {        
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);        
     }   
-    
-    public void acionarTimeout()
-    {
-        garraInteracaoComPowerUp.timeout();
-    }
-    
 }

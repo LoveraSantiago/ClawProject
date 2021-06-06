@@ -13,6 +13,8 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
     private ColetavelTile coletavel2;
     private ColetavelQuery coletavelQuery;
 
+    private Coroutine coroutine;
+
     public TeleportePowerUpGo(GameObject goTile, Material matIn, Material matOut) 
         : base(goTile, "teleporte")
     {
@@ -33,7 +35,7 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
     public override void iniciarPup()
     {
         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
-        monoBehaviour.StartCoroutine(selecionarAlvos());
+        coroutine = monoBehaviour.StartCoroutine(selecionarAlvos());
     }
 
     public override void resetPup()
@@ -96,7 +98,7 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
     private IEnumerator fazerTeleporte()
     {
         Sprite spr1 = coletavel1.getSprite();
-        Sprite spr2 = coletavel2.getSprite();
+        Sprite spr2 = coletavel2.getSprite();        
 
         matIn.SetTexture("inSprite", spr1.texture);
         matIn.SetTexture("outSprite", spr2.texture);
@@ -128,5 +130,15 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
         yield return new WaitForSeconds(0.5f);
         powerUpFinalizacao.finalizado();
         yield return null;
+    }
+
+    public override void timeout()
+    {
+        if (!hitColetavel2)
+        {
+            monoBehaviour.StopCoroutine(coroutine);
+            coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
+            powerUpFinalizacao.finalizado();
+        }
     }
 }
