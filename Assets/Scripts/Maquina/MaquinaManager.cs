@@ -78,6 +78,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     private void processarInicioPowerUp(PowerUpInfo evento)
     {
         displayDeScores.mostrarContagemRegressiva(evento.duracaoTempo);
+        displayDeColetados.acionadoPeloPowerUp();
     }
 
     private void processarPreFimDePowerUp()
@@ -89,6 +90,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     {
         displayDeScores.mostrarPontuacaoAcumulada();
         botoesPowerUp.acionarFimPowerUp();
+        displayDeColetados.acionadoFimPowerUp();
     }
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO

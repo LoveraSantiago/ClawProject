@@ -13,6 +13,8 @@ public class DisplayDeColetado
     private Material materialOriginal;
     private SingleDisplayColetadoDto sDisplayDto;
 
+    private Coroutine coroutineArcoIris;
+
     public DisplayDeColetado(SingleDisplayColetadoDto singleDisplayColetadoDto)
     {
         sDisplayDto = singleDisplayColetadoDto;        
@@ -77,6 +79,27 @@ public class DisplayDeColetado
 
         sDisplayDto.GoColetado.transform.localPosition = posicaoInicial;
     }
+
+    public void ligarArcoIris(MonoBehaviour monobehaviour)
+    {
+        coroutineArcoIris = monobehaviour.StartCoroutine(ligarGlowArcoIris());
+    }
+
+    public void desligarArcoIris(MonoBehaviour monobehaviour)
+    {
+        monobehaviour.StopCoroutine(coroutineArcoIris);
+    }
+
+    private IEnumerator ligarGlowArcoIris()
+    {
+        while (true)
+        {
+            displayColetadoDto.MaterialGlowDisplay.SetColor(propMaterial, 
+                HSBColor.ToColor(new HSBColor(Mathf.PingPong(Time.time * 0.5f, 1), 1, 1)));
+            yield return null;
+        }
+    }
+
 
     public void ligarGlowSucesso()
     {
