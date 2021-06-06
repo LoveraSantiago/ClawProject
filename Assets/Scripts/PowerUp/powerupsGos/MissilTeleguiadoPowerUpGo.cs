@@ -81,7 +81,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
                 if (raycastHit.collider != null)
                 {
                     string nomeAlvo = raycastHit.collider.name;
-                    coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvo(nomeAlvo));
+                    coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
                     hitColetavel = true;
                     monoBehaviour.StartCoroutine(disparandoMissil(coletavelQuery.getColetavelInGameByName(nomeAlvo)));
                 }

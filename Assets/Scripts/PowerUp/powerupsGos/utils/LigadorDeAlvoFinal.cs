@@ -1,8 +1,8 @@
-public class LigadorDeAlvo : ConsumidorDeEvento<ColetavelTile>
+public class LigadorDeAlvoFinal : ConsumidorDeEvento<ColetavelTile>
 {
     private string nameAlvo;
 
-    public LigadorDeAlvo(string nameAlvo)
+    public LigadorDeAlvoFinal(string nameAlvo)
     {
         this.nameAlvo = nameAlvo;
     }
@@ -14,6 +14,10 @@ public class LigadorDeAlvo : ConsumidorDeEvento<ColetavelTile>
             if (coletavel.nome.Equals(nameAlvo))
             {
                 coletavel.ligarAnimacaoMiraSelecionado();
+            }
+            else if (coletavel.isMiraSelecionada())
+            {
+
             }
             else
             {
