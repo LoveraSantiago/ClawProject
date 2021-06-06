@@ -66,6 +66,7 @@ public class DisplaysDeColetados
     public void acionadoFimPowerUp()
     {
         desligarGlows();
+        displayDeColetado[0].desligarArcoIris(monoBehaviour);
     }
 
     private IEnumerator mostrarTerceiroSprite(Sprite spriteColetado, bool result)
