@@ -5514,7 +5514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 2
   componentesDaGarra:
     velocMovHorizontal: 3.1
     velocMovCima: 7.5
@@ -5664,7 +5664,7 @@ MonoBehaviour:
       qtdBlinks: 3
       tempoBlink: 0.2
       singleDisplayScoreDto:
-      - displayScore: {fileID: 2049208599}
+      - displayScore: {fileID: 6406990385049082671}
         fileira1:
         - {fileID: 1626547692}
         - {fileID: 1288371179}
@@ -5705,7 +5705,7 @@ MonoBehaviour:
         - {fileID: 1606558}
         - {fileID: 1640791701}
         - {fileID: 1330082112}
-      - displayScore: {fileID: 2034227254}
+      - displayScore: {fileID: 6406990385049082670}
         fileira1:
         - {fileID: 1825025540}
         - {fileID: 1263761801}
@@ -5746,7 +5746,7 @@ MonoBehaviour:
         - {fileID: 1275697047}
         - {fileID: 706088252}
         - {fileID: 171518226}
-      - displayScore: {fileID: 1130800875}
+      - displayScore: {fileID: 6406990385049082669}
         fileira1:
         - {fileID: 1475653772}
         - {fileID: 1454529877}
@@ -12585,11 +12585,6 @@ GameObject:
 --- !u!212 &1116124208 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5014026569486892718, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1130800875 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 363533897227471560, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1163032540 stripped
@@ -23740,19 +23735,9 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5249480216777452384, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &2034227254 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 363533897225282809, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &2045999594 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6319874493803998152, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &2049208599 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6406990385957796245, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &2059452738 stripped
@@ -23932,11 +23917,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: maquina
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6406990385957796245, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
 --- !u!4 &6406990385049082668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1258064833904829691, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082669 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3466981528857976396, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082670 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3466981528910180477, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082671 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7925361988018793745, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &6406990385049082677 stripped
