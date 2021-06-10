@@ -14,11 +14,11 @@ public class DisplaysDeColetados
 
     public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
+        DisplayDeColetado.configurarDisplay(displayColetadoDto);
         inicializarDisplayDeColetado(displayColetadoDto.SingleDisplaysColetadoDto);
         this.displayColetadoDto = displayColetadoDto;
 
         this.monoBehaviour = monoBehaviour;
-        DisplayDeColetado.configurarDisplay(displayColetadoDto);
     }
 
     private void inicializarDisplayDeColetado(SingleDisplayColetadoDto[] singlesDisplayColetadosDto)
@@ -93,8 +93,7 @@ public class DisplaysDeColetados
     private IEnumerator ligarGlowArcoIris()
     {
         while (true)
-        {
-            GlowEfeito.sortearCor();
+        {            
             displayDeColetado[0].atualizarCorMaterial();            
             yield return null;
         }
