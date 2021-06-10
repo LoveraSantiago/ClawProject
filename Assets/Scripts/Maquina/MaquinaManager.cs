@@ -77,7 +77,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
 
     private void processarInicioPowerUp(PowerUpInfo evento)
     {
-        displayDeScores.mostrarContagemRegressiva(evento.duracaoTempo);
+        displayDeScores.acionadoPeloPowerUp(evento.duracaoTempo);
         displayDeColetados.acionadoPeloPowerUp();
     }
 

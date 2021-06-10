@@ -69,7 +69,7 @@ public class DisplayDeScores
         orquestrador.passarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual);
     }
 
-    public void mostrarContagemRegressiva(int duracao)
+    public void acionadoPeloPowerUp(int duracao)
     {
         armazenarScoreAtual();
         coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));

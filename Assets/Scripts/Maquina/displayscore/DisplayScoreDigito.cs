@@ -14,7 +14,7 @@ public class DisplayScoreDigito
 
     public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto)
     {
-        sprDisplay = singleDisplayDto.DisplayScore;
+        sprDisplay = singleDisplayDto.Placa;
         arrayDeLeds = new SpriteRenderer[5][];
         arrayDeLeds[0] = singleDisplayDto.Fileira1;
         arrayDeLeds[1] = singleDisplayDto.Fileira2;
