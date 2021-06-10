@@ -88,7 +88,7 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
 
     private void processarFimDePowerUp()
     {
-        displayDeScores.mostrarPontuacaoAcumulada();
+        displayDeScores.acionadoPeloFimPowerUp();
         botoesPowerUp.acionarFimPowerUp();
         displayDeColetados.acionadoFimPowerUp();
     }

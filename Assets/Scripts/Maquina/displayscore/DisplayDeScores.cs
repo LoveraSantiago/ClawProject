@@ -60,13 +60,14 @@ public class DisplayDeScores
     public void piscarAsteriscos()
     {
         //Debug.Log("PiscarAstericos");
-        cancelarCoroutine();
+        finalizarCoroutineAtual();
         coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.blinkarAsteriscos());
     }
 
-    public void mostrarPontuacaoAcumulada()
+    public void acionadoPeloFimPowerUp()
     {
-        cancelarCoroutine();
+        finalizarCoroutineAtual();
+        finalizarCoroutineArcoIris();
         orquestrador.passarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual);
     }
 
@@ -97,8 +98,14 @@ public class DisplayDeScores
         scoreUnidadeAtual = displayUnidade.digito;
     }
     
-    private void cancelarCoroutine()
+    private void finalizarCoroutineAtual()
     {
         monoBehaviour.StopCoroutine(coroutineAtual);        
     }    
+
+    private void finalizarCoroutineArcoIris()
+    {
+        orquestrador.desligarGlows();
+        monoBehaviour.StopCoroutine(coroutineArcoIris);
+    }
 }
