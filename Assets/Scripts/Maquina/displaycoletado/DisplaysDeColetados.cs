@@ -35,13 +35,13 @@ public class DisplaysDeColetados
         Color corDisplay = Utils.getCorByHex(hexCorDisplay);
 
         string hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO1];        
-        displayDeColetado[0].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDisplay));
+        displayDeColetado[0].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
 
         hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO2];        
-        displayDeColetado[1].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDisplay));
+        displayDeColetado[1].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
 
         hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO3];        
-        displayDeColetado[2].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDisplay));
+        displayDeColetado[2].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
     }
 
     public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool result)
