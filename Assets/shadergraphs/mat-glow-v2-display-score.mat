@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat-glow-v2
+  m_Name: mat-glow-v2-display-score
   m_Shader: {fileID: -6465566751694194690, guid: 80386587e6c7b0142a1624561fd29f84, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -67,6 +67,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: 0d47d3c17ae34d944bb56fc4542ae806, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - text_glow:
+        m_Texture: {fileID: 2800000, guid: b594d85cf65dbf745af1c98acaefcdbe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - text_outline:
+        m_Texture: {fileID: 2800000, guid: f7cdbd24c2419004685cbaed572f08a0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -90,5 +98,5 @@ Material:
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _corFora: {r: 1, g: 1, b: 1, a: 0}
-    - _corGlow: {r: 0, g: 0.043605804, b: 1, a: 1}
+    - _corGlow: {r: 1, g: 0, b: 0.58440095, a: 1}
   m_BuildTextureStacks: []

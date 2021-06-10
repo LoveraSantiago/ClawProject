@@ -9,18 +9,21 @@ public class DisplayScoreDigito
     public string letra { get; private set; }
 
     private Color corOriginal;
+    private GlowEfeito glowEfeito;
 
     private int[,] arrayLigados;
 
-    public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto)
+    public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto, Material materialGlow)
     {
-        sprDisplay = singleDisplayDto.DisplayScore;
+        sprDisplay = singleDisplayDto.Placa;
         arrayDeLeds = new SpriteRenderer[5][];
         arrayDeLeds[0] = singleDisplayDto.Fileira1;
         arrayDeLeds[1] = singleDisplayDto.Fileira2;
         arrayDeLeds[2] = singleDisplayDto.Fileira3;
         arrayDeLeds[3] = singleDisplayDto.Fileira4;
         arrayDeLeds[4] = singleDisplayDto.Fileira5;
+
+        glowEfeito = new GlowEfeito(singleDisplayDto.PlacaEfeito, materialGlow);
     }
 
     public void configuradoPeloLevel(string corScore, string corLeds)
@@ -51,6 +54,21 @@ public class DisplayScoreDigito
     public void desligarDigito()
     {
         desligarPosicoes(arrayLigados);
+    }
+
+    public void ligarGlowSucesso()
+    {
+        glowEfeito.ligarGlowSucesso();
+    }
+
+    public void desligarGlow()
+    {
+        glowEfeito.desligarGlow();
+    }
+
+    public void atualizarCorMaterial()
+    {
+        glowEfeito.atualizarCorMaterial();
     }
 
     private void ligarPosicoes(int[,] array, Color cor)

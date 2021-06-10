@@ -7,17 +7,18 @@ public class DisplaysDeColetados
     private int indiceEspaco;    
 
     private DisplayDeColetadoDto displayColetadoDto;    
-    private DisplayDeColetado[] displayDeColetado;    
-    
+    private DisplayDeColetado[] displayDeColetado;
+
+    private Coroutine coroutineArcoIris;
     private MonoBehaviour monoBehaviour;
 
     public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
+        DisplayDeColetado.configurarDisplay(displayColetadoDto);
         inicializarDisplayDeColetado(displayColetadoDto.SingleDisplaysColetadoDto);
         this.displayColetadoDto = displayColetadoDto;
 
         this.monoBehaviour = monoBehaviour;
-        DisplayDeColetado.configurarDisplay(displayColetadoDto);
     }
 
     private void inicializarDisplayDeColetado(SingleDisplayColetadoDto[] singlesDisplayColetadosDto)
@@ -33,14 +34,14 @@ public class DisplaysDeColetados
         string hexCorDisplay = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_COLETADOS];
         Color corDisplay = Utils.getCorByHex(hexCorDisplay);
 
-        string hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO1];
-        displayDeColetado[0].configuradoPeloLevel(corDisplay, hexCorDentro);
+        string hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO1];        
+        displayDeColetado[0].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
 
-        hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO2];
-        displayDeColetado[1].configuradoPeloLevel(corDisplay, hexCorDentro);
+        hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO2];        
+        displayDeColetado[1].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
 
-        hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO3];
-        displayDeColetado[2].configuradoPeloLevel(corDisplay, hexCorDentro);
+        hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO3];        
+        displayDeColetado[2].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
     }
 
     public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool result)
@@ -60,13 +61,13 @@ public class DisplaysDeColetados
     public void acionadoPeloPowerUp()
     {
         ligarGlowsSucesso();
-        displayDeColetado[0].ligarArcoIris(monoBehaviour);
+        coroutineArcoIris = monoBehaviour.StartCoroutine(ligarGlowArcoIris());        
     }
 
     public void acionadoFimPowerUp()
     {
         desligarGlows();
-        displayDeColetado[0].desligarArcoIris(monoBehaviour);
+        monoBehaviour.StopCoroutine(coroutineArcoIris);
     }
 
     private IEnumerator mostrarTerceiroSprite(Sprite spriteColetado, bool result)
@@ -87,7 +88,16 @@ public class DisplaysDeColetados
         yield return monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3));
         yield return new WaitForSeconds(displayColetadoDto.FimDelay);
         desligarGlows();
-    }    
+    }
+
+    private IEnumerator ligarGlowArcoIris()
+    {
+        while (true)
+        {            
+            displayDeColetado[0].atualizarCorMaterial();            
+            yield return null;
+        }
+    }
 
     private void ligarGlowsSucesso()
     {

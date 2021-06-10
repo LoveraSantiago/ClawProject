@@ -14,16 +14,17 @@ public class DisplayDeScores
     private OrquestradorDisplayDigitos orquestrador;
     private MonoBehaviour monoBehaviour;
 
-    private Coroutine coroutineAtual;    
+    private Coroutine coroutineAtual;
+    private Coroutine coroutineArcoIris;
 
     public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto, MonoBehaviour monoBehaviour)
     {
         this.monoBehaviour = monoBehaviour;
 
         SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;        
-        displayCentena = new DisplayScoreDigito(singleDisplays[0]);
-        displayDezena  = new DisplayScoreDigito(singleDisplays[1]);
-        displayUnidade = new DisplayScoreDigito(singleDisplays[2]);
+        displayCentena = new DisplayScoreDigito(singleDisplays[0], displayDeScoresDto.MaterialGlowDisplay);
+        displayDezena  = new DisplayScoreDigito(singleDisplays[1], displayDeScoresDto.MaterialGlowDisplay);
+        displayUnidade = new DisplayScoreDigito(singleDisplays[2], displayDeScoresDto.MaterialGlowDisplay);
 
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
@@ -59,20 +60,23 @@ public class DisplayDeScores
     public void piscarAsteriscos()
     {
         //Debug.Log("PiscarAstericos");
-        cancelarCoroutine();
+        finalizarCoroutineAtual();
         coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.blinkarAsteriscos());
     }
 
-    public void mostrarPontuacaoAcumulada()
+    public void acionadoPeloFimPowerUp()
     {
-        cancelarCoroutine();
+        finalizarCoroutineAtual();
+        finalizarCoroutineArcoIris();
         orquestrador.passarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual);
     }
 
-    public void mostrarContagemRegressiva(int duracao)
+    public void acionadoPeloPowerUp(int duracao)
     {
         armazenarScoreAtual();
         coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));
+        orquestrador.ligarGlows();
+        coroutineArcoIris = monoBehaviour.StartCoroutine(orquestrador.ligarGlowArcoIris());
     }     
 
     private void splitarScore(int score)
@@ -94,8 +98,14 @@ public class DisplayDeScores
         scoreUnidadeAtual = displayUnidade.digito;
     }
     
-    private void cancelarCoroutine()
+    private void finalizarCoroutineAtual()
     {
         monoBehaviour.StopCoroutine(coroutineAtual);        
     }    
+
+    private void finalizarCoroutineArcoIris()
+    {
+        orquestrador.desligarGlows();
+        monoBehaviour.StopCoroutine(coroutineArcoIris);
+    }
 }
