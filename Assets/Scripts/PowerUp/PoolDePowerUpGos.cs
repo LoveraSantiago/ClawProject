@@ -29,6 +29,7 @@ public class PoolDePowerUpGos
             case PowerUpEntidade.NAME.MINA_TERRESTRE: criarPowerUpGoMinaTerrestre(); break;
             case PowerUpEntidade.NAME.MISSIL_TELEGUIADO: criarPowerUpGoMissilTeleguiado(); break;
             case PowerUpEntidade.NAME.TELEPORTE: criarPowerUpTeleporte(); break;
+            case PowerUpEntidade.NAME.ASAS: criarPowerUpAsas(); break;
         }
     }
 
@@ -60,5 +61,11 @@ public class PoolDePowerUpGos
     {
         TeleportePowerUpGo teleporte = new TeleportePowerUpGo(powerUpDto.TeleportePUp, powerUpDto.MatTeleporteIn, powerUpDto.MatTeleporteOut);
         poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.TELEPORTE.ToString(), teleporte);
+    }
+
+    private void criarPowerUpAsas()
+    {
+        AsaPowerUpGo asa = new AsaPowerUpGo(null);
+        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.ASAS, asa);
     }
 }

@@ -5,6 +5,7 @@ public class FactoryPowerUpEntidade
     private static PowerUpEntidade minaTerrestre;
     private static PowerUpEntidade missilTeleguiado;
     private static PowerUpEntidade teleporte;
+    private static PowerUpEntidade asa;
 
     private static PowerUpEntidade getBombaDaGarra()
     {
@@ -51,6 +52,15 @@ public class FactoryPowerUpEntidade
         return teleporte;
     }
 
+    private static PowerUpEntidade getAsas()
+    {
+        if(asa == null)
+        {
+            asa = new PowerUpEntidade(PowerUpEntidade.NAME.ASAS, 9, "asas-botao");
+        }
+        return asa;
+    }
+
     public static PowerUpEntidade getPowerUpEntidadeByEnum(PowerUpEntidade.NAME name)
     {
         switch (name)
@@ -60,6 +70,7 @@ public class FactoryPowerUpEntidade
             case PowerUpEntidade.NAME.MINA_TERRESTRE: return getMinaTerrestre();
             case PowerUpEntidade.NAME.MISSIL_TELEGUIADO: return getMissilTeleguiado();
             case PowerUpEntidade.NAME.TELEPORTE: return getTeleporte();
+            case PowerUpEntidade.NAME.ASAS: return getAsas();
         }
         return null;
     }
