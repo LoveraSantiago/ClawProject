@@ -66,6 +66,6 @@ public class PoolDePowerUpGos
     private void criarPowerUpAsas()
     {
         AsaPowerUpGo asa = new AsaPowerUpGo(null);
-        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.ASAS, asa);
+        poolDePowerUpsDaGarra.addObjetoAoDicionario(PowerUpEntidade.NAME.ASAS.ToString(), asa);
     }
 }
