@@ -3,8 +3,6 @@ using UnityEngine;
 public class PowerUpManager : PowerUpAcionamento,
                               PowerUpFinalizacao
 {   
-    private PoolDePowerUpGos poolDePowerUpGos;    
-
     public ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp { get; private set; }
     public ProdutorDeEvento<PowerUpInfoFim> produtorDeEventoFinalizacao { get; private set; }
 
@@ -14,13 +12,12 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         produtorDeEventoFinalizacao = new ProdutorDeEvento<PowerUpInfoFim>();
 
-        AbstractPowerUpGo.configurarAbstractPowerUp(powerUpDto, this, inputGame, monoBehaviour);
-        poolDePowerUpGos = new PoolDePowerUpGos(powerUpDto);        
+        AbstractPowerUpGo.configurarAbstractPowerUp(powerUpDto, this, inputGame, monoBehaviour);        
     }    
 
     public void acionado(PowerUpEntidade powerUp)
-    {    
-        GarraInteracaoComPowerUp interacaoComPowerUp = poolDePowerUpGos.getPowerUpGo(powerUp.name);
+    {
+        GarraInteracaoComPowerUp interacaoComPowerUp = null;
 
         PowerUpInfo powerUpInfo = new PowerUpInfo();
         powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
@@ -31,7 +28,7 @@ public class PowerUpManager : PowerUpAcionamento,
 
     public void acionado(PowerUpEntidade powerUp, Vector3 posicaoAtual)
     {
-        AbstractPowerUpGo interacaoComPowerUp = poolDePowerUpGos.getPowerUpGo(powerUp.name);
+        AbstractPowerUpGo interacaoComPowerUp = null;
         interacaoComPowerUp.iniciarNaPosicao(posicaoAtual);
 
         PowerUpInfo powerUpInfo = new PowerUpInfo();
