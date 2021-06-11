@@ -17,25 +17,41 @@ public class PowerUpEntidade
 
     public NAME name   { get; private set; }    
     public int duracao { get; private set; }
-    public string nomeSprite { get; private set; }
+    public string nomeSpriteBtn { get; private set; }
     public bool isClicavel { get; private set; }
     public AREA area { get; private set; }
 
-    public PowerUpEntidade(NAME name, int duracao, string nomeSprite)
+    public PowerUpEntidade()
+    {   
+    }    
+
+    public PowerUpEntidade configNomes(NAME nomeEntidade, string nomeSpriteBtn)
     {
-        this.name = name;
-        this.duracao = duracao;
-        this.nomeSprite = nomeSprite;
-        this.isClicavel = true;
-        this.area = AREA.NONE;
+        name = nomeEntidade;
+        this.nomeSpriteBtn = nomeSpriteBtn;
+        return this;
     }
 
-    public PowerUpEntidade(NAME name, int duracao, AREA area, string nomeSprite)
+    public PowerUpEntidade configIsClicavel(bool clicavel)
     {
-        this.name = name;
+        isClicavel = clicavel;
+        return this;
+    }
+
+    public PowerUpEntidade configDuracao(int duracao)
+    {
         this.duracao = duracao;
-        this.nomeSprite = nomeSprite;
-        this.isClicavel = false;
+        return this;
+    }
+
+    public PowerUpEntidade configArea()
+    {
+        return configArea(AREA.NONE);
+    }
+
+    public PowerUpEntidade configArea(AREA area)
+    {
         this.area = area;
-    }    
+        return this;
+    }
 }

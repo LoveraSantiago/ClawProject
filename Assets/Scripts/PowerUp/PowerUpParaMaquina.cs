@@ -11,7 +11,7 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
     public PowerUpParaMaquina(PowerUpEntidade.NAME tipo, Dictionary<string, Sprite> dicionarioDeSprites)
     {
         powerUp = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(tipo);
-        imgBtn = dicionarioDeSprites[powerUp.nomeSprite];
+        imgBtn = dicionarioDeSprites[powerUp.nomeSpriteBtn];
     }
 
     public void acionar()
