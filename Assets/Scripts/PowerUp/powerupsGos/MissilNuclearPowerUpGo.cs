@@ -85,5 +85,18 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
         powerUpFinalizacao.finalizado();
         yield return null;
-    }    
+    }
+    
+    public static Supplier<AbstractPowerUpGo> getSupplier()
+    {
+        return new Supplier();
+    }
+
+    public class Supplier : Supplier<AbstractPowerUpGo>
+    {
+        public AbstractPowerUpGo get()
+        {
+            return new MissilNuclearPowerUpGo();
+        }
+    }
 }

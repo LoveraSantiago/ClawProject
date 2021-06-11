@@ -78,4 +78,17 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
     public override void ligarGravidade() { }
     public override void fixarVerticalmente() { }
 
+    public static Supplier<AbstractPowerUpGo> getSupplier()
+    {
+        return new Supplier();
+    }
+
+    public class Supplier : Supplier<AbstractPowerUpGo>
+    {
+        public AbstractPowerUpGo get()
+        {
+            return new MinaTerrestrePowerUpGo();
+        }
+    }
+
 }

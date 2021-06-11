@@ -105,4 +105,17 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         if (getPosicao().x < posicao.x) return -40;
         else return 40;
     }
+
+    public static Supplier<AbstractPowerUpGo> getSupplier()
+    {
+        return new Supplier();
+    }
+
+    public class Supplier : Supplier<AbstractPowerUpGo>
+    {
+        public AbstractPowerUpGo get()
+        {
+            return new BombaPowerUpGo();
+        }
+    }
 }

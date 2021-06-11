@@ -186,5 +186,18 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
             coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
             resetPup();
         }
-    }    
+    }
+
+    public static Supplier<AbstractPowerUpGo> getSupplier()
+    {
+        return new Supplier();
+    }
+
+    public class Supplier : Supplier<AbstractPowerUpGo>
+    {
+        public AbstractPowerUpGo get()
+        {
+            return new MissilTeleguiadoPowerUpGo();
+        }
+    }
 }

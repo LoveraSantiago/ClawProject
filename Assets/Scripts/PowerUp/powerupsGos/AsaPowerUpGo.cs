@@ -26,4 +26,17 @@ public class AsaPowerUpGo : AbstractPowerUpGo
     {
         throw new System.NotImplementedException();
     }
+
+    public static Supplier<AbstractPowerUpGo> getSupplier()
+    {
+        return new Supplier();
+    }
+
+    public class Supplier : Supplier<AbstractPowerUpGo>
+    {
+        public AbstractPowerUpGo get()
+        {
+            return new AsaPowerUpGo();
+        }
+    }
 }

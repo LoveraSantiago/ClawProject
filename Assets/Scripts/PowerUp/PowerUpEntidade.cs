@@ -21,6 +21,9 @@ public class PowerUpEntidade
     public bool isClicavel { get; private set; }
     public AREA area { get; private set; }
 
+    private Supplier<AbstractPowerUpGo> supplierPowerUpGo;
+    private AbstractPowerUpGo powerUpGo;
+
     public PowerUpEntidade()
     {   
     }    
@@ -53,5 +56,20 @@ public class PowerUpEntidade
     {
         this.area = area;
         return this;
+    }
+
+    public PowerUpEntidade configSupplierDePowerUpGo(Supplier<AbstractPowerUpGo> supplierPowerUpGo) 
+    {
+        this.supplierPowerUpGo = supplierPowerUpGo;
+        return this;
+    }
+
+    public AbstractPowerUpGo getPowerUpGo()
+    {
+        if(powerUpGo == null)
+        {
+            powerUpGo = supplierPowerUpGo.get();
+        }
+        return powerUpGo;
     }
 }
