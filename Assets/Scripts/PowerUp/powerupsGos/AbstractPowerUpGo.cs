@@ -3,11 +3,13 @@ using UnityEngine;
 public abstract class AbstractPowerUpGo : Coletavel,
                                           GarraInteracaoComPowerUp
 {
-    private bool configurado;
-
+    protected static PowerUpDto powerUpDto;
     protected static MonoBehaviour monoBehaviour;
-    protected static PowerUpFinalizacao powerUpFinalizacao;
+
     protected static InputGame inputGame;
+    protected static PowerUpFinalizacao powerUpFinalizacao;
+
+    private bool configurado;
 
     public abstract PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra();
     public abstract void configurarPup();
@@ -33,9 +35,10 @@ public abstract class AbstractPowerUpGo : Coletavel,
         iniciarPup();
     }
 
-
-    public static void configurarAbstractPowerUp(PowerUpFinalizacao powerUpFinalizacaoArg, MonoBehaviour monoBehaviourArg, InputGame inputGameArg)
+    public static void configurarAbstractPowerUp(PowerUpDto powerUpDtoArg, PowerUpFinalizacao powerUpFinalizacaoArg, 
+        InputGame inputGameArg, MonoBehaviour monoBehaviourArg)
     {
+        powerUpDto = powerUpDtoArg;
         monoBehaviour = monoBehaviourArg;
         powerUpFinalizacao = powerUpFinalizacaoArg;
         inputGame = inputGameArg;

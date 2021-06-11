@@ -13,8 +13,8 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
 
     private int tempoExplosao;
 
-    public MinaTerrestrePowerUpGo(GameObject tileMinaTerrestre)
-        :base(tileMinaTerrestre, "mina-terrestre")
+    public MinaTerrestrePowerUpGo()
+        :base(powerUpDto.MinaTerrestrePUp, "mina-terrestre")
     {
         mina_explosao = Animator.StringToHash("explosao");
         mina_idle = Animator.StringToHash("idle");

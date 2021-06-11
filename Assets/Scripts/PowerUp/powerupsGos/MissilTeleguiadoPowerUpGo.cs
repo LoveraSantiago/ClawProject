@@ -19,10 +19,10 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 
     private Coroutine coroutine;
 
-    public MissilTeleguiadoPowerUpGo(GameObject tileMissil, PathMissilDto pathMissilDto) : 
-        base(tileMissil, "missil-teleguiado")
+    public MissilTeleguiadoPowerUpGo() : 
+        base(powerUpDto.MissilTeleguiadoPUp, "missil-teleguiado")
     {
-        this.pathMissilDto = pathMissilDto;
+        this.pathMissilDto = powerUpDto.PathMissilDto;
         missil_acionado = Animator.StringToHash("missil-acionado");
         missil_explosao = Animator.StringToHash("explosao");
         missil_idle     = Animator.StringToHash("idle");

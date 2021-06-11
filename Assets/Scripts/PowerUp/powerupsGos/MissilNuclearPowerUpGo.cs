@@ -12,13 +12,13 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
     private GameObject goExplosao;    
     private Animator animator;
  
-    public MissilNuclearPowerUpGo(GameObject tileMissilNuclear)
-        : base(tileMissilNuclear, "missil-nuclear")
+    public MissilNuclearPowerUpGo()
+        : base(powerUpDto.MissilNuclearPUp, "missil-nuclear")
     {
         missil_explosao = Animator.StringToHash("explosao");
         missil_idle = Animator.StringToHash("idle");
 
-        tileMissilNuclear.SetActive(false);
+        goColetavel.SetActive(false);
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()

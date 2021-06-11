@@ -15,11 +15,11 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
 
     private Coroutine coroutine;
 
-    public TeleportePowerUpGo(GameObject goTile, Material matIn, Material matOut) 
-        : base(goTile, "teleporte")
+    public TeleportePowerUpGo() 
+        : base(powerUpDto.TeleportePUp, "teleporte")
     {
-        this.matIn = matIn;
-        this.matOut = matOut;
+        this.matIn = powerUpDto.MatTeleporteIn;
+        this.matOut = powerUpDto.MatTeleporteOut;
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()

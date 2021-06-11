@@ -2,25 +2,19 @@ using UnityEngine;
 
 public class PowerUpManager : PowerUpAcionamento,
                               PowerUpFinalizacao
-{
-    private PowerUpDto powerUpDto;
-    
-    private PoolDePowerUpGos poolDePowerUpGos;
-    private MonoBehaviour monoBehaviour;
+{   
+    private PoolDePowerUpGos poolDePowerUpGos;    
 
     public ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp { get; private set; }
     public ProdutorDeEvento<PowerUpInfoFim> produtorDeEventoFinalizacao { get; private set; }
 
     public PowerUpManager(PowerUpDto powerUpDto, MonoBehaviour monoBehaviour, InputGame inputGame)
-    {
-        this.powerUpDto = powerUpDto;
-        this.monoBehaviour = monoBehaviour;
-
+    {   
         PowerUpParaMaquina.configAcionadorDePowerUp(this);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         produtorDeEventoFinalizacao = new ProdutorDeEvento<PowerUpInfoFim>();
 
-        AbstractPowerUpGo.configurarAbstractPowerUp(this, monoBehaviour, inputGame);
+        AbstractPowerUpGo.configurarAbstractPowerUp(powerUpDto, this, inputGame, monoBehaviour);
         poolDePowerUpGos = new PoolDePowerUpGos(powerUpDto);        
     }    
 

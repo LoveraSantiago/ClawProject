@@ -13,13 +13,13 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     
     private CircleCollider2D circleCollider;
 
-    public BombaPowerUpGo(GameObject tileBomb)
-        : base(tileBomb, "bomba")
+    public BombaPowerUpGo()
+        : base(powerUpDto.BombPUp, "bomba")
     {
         bomba_explosao = Animator.StringToHash("explosao");
         bomba_idle     = Animator.StringToHash("idle");
 
-        tileBomb.SetActive(false);
+        goColetavel.SetActive(false);
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()

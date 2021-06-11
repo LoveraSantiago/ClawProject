@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class AsaPowerUpGo : AbstractPowerUpGo
 {
-    public AsaPowerUpGo(GameObject goTile) 
-        : base(goTile, "Asas")
+    public AsaPowerUpGo() 
+        : base(powerUpDto.AsaPup, "Asas")
     {
     }
 
