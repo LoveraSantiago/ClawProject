@@ -9,7 +9,7 @@ public abstract class AbstractPowerUpGo : Coletavel,
     protected static InputGame inputGame;
     protected static PowerUpFinalizacao powerUpFinalizacao;
 
-    private bool configurado;
+    private bool configurado;    
 
     public abstract PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra();
     public abstract void configurarPup();
@@ -41,6 +41,6 @@ public abstract class AbstractPowerUpGo : Coletavel,
         powerUpDto = powerUpDtoArg;
         monoBehaviour = monoBehaviourArg;
         powerUpFinalizacao = powerUpFinalizacaoArg;
-        inputGame = inputGameArg;
+        inputGame = inputGameArg;        
     }
 }

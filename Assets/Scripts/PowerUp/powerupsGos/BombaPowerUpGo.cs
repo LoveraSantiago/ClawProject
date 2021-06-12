@@ -86,15 +86,14 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
 
     private void processarExplosao()
     {
-        ColetavelQuery query = new ColetavelQuery();
-
         LayerMask mask = LayerMask.GetMask("Coletavel");
         Collider2D[] acertados = Physics2D.OverlapCircleAll(goColetavel.transform.position, 1f, mask);
+        ColetavelQuery coletavelQuery = new ColetavelQuery();
 
         for (int contador = 0; contador < acertados.Length; contador++)
         {
             string nomeAcertado = acertados[contador].name;
-            Coletavel acertado = query.getColetavelInGameByName(nomeAcertado);
+            Coletavel acertado = coletavelQuery.getColetavelInGameByName(nomeAcertado);
             int angulo = determinarAngulo(acertado.getPosicao());
             acertado.disparar(angulo, 7.5f);
         }
