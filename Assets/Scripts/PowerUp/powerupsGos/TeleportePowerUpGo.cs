@@ -11,7 +11,6 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
 
     private ColetavelTile coletavel1;
     private ColetavelTile coletavel2;
-    private ColetavelQuery coletavelQuery;
 
     private Coroutine coroutine;
 
@@ -29,11 +28,11 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
 
     public override void configurarPup()
     {
-        coletavelQuery = new ColetavelQuery();        
     }
 
     public override void iniciarPup()
     {
+        ColetavelQuery coletavelQuery = new ColetavelQuery();        
         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvos());
     }
@@ -47,6 +46,8 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
     {
         hitColetavel1 = false;
         hitColetavel2 = false;
+        ColetavelQuery coletavelQuery = new ColetavelQuery();
+
         while (!hitColetavel1)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
@@ -137,6 +138,7 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
         if (!hitColetavel2)
         {
             monoBehaviour.StopCoroutine(coroutine);
+            ColetavelQuery coletavelQuery = new ColetavelQuery();
             coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
             powerUpFinalizacao.finalizado();
         }
