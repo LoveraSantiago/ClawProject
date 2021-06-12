@@ -51,8 +51,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     public override void iniciarPup()
     {
         ligar();
-        ColetavelQuery coletavelQuery = new ColetavelQuery();
-        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
+        ligarMirasNosColetaveis();
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
@@ -184,8 +183,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         {
             monoBehaviour.StopCoroutine(coroutine);
 
-            ColetavelQuery coletavelQuery = new ColetavelQuery();
-            coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
+            desligarMirasNosColetaveis();
             resetPup();
         }
     }

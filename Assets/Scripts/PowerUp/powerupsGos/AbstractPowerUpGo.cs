@@ -43,4 +43,16 @@ public abstract class AbstractPowerUpGo : Coletavel,
         powerUpFinalizacao = powerUpFinalizacaoArg;
         inputGame = inputGameArg;        
     }
+
+    protected void ligarMirasNosColetaveis()
+    {
+        ColetavelQuery coletavelQuery = new ColetavelQuery();
+        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
+    }
+
+    protected void desligarMirasNosColetaveis()
+    {
+        ColetavelQuery coletavelQuery = new ColetavelQuery();
+        coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
+    }
 }

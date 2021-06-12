@@ -32,8 +32,7 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
 
     public override void iniciarPup()
     {
-        ColetavelQuery coletavelQuery = new ColetavelQuery();        
-        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
+        ligarMirasNosColetaveis();
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvos());
     }
 
@@ -138,8 +137,7 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
         if (!hitColetavel2)
         {
             monoBehaviour.StopCoroutine(coroutine);
-            ColetavelQuery coletavelQuery = new ColetavelQuery();
-            coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
+            desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
         }
     }

@@ -23,7 +23,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
 
     public override void iniciarPup()
     {
-        
+        ligarMirasNosColetaveis();
     }
 
     public override void resetPup()
