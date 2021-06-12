@@ -51,7 +51,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
                     ColetavelTile coletavelParaVoar = coletavelQuery.getColetavelInGameByName(nomeAlvo);
 
                     colocarNaPosicao(coletavelParaVoar.getPosicao());
-                    receberSprite(coletavelParaVoar.getSprite());
+                   // receberSprite(coletavelParaVoar.getSprite());
 
                     coletavelParaVoar.desligar();
                     ligar();
