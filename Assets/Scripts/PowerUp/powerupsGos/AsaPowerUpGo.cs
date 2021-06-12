@@ -2,29 +2,33 @@ using UnityEngine;
 
 public class AsaPowerUpGo : AbstractPowerUpGo
 {
+    private readonly int VOADA;
+    private Animator animator;
+
     public AsaPowerUpGo() 
         : base(powerUpDto.AsaPup, "Asas")
     {
+        VOADA = Animator.StringToHash("voada");
     }
 
     public override void configurarPup()
     {
-        
+        animator = goColetavel.GetComponent<Animator>();
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
     {
-        throw new System.NotImplementedException();
+        return PowerUpEntidade.INTERACAOGARRA.NAO_INTERACAO;
     }
 
     public override void iniciarPup()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void resetPup()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public static Supplier<AbstractPowerUpGo> getSupplier()
