@@ -26,7 +26,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         return PowerUpEntidade.INTERACAOGARRA.MOVIMENTO;
     }
 
-    public override float getAnguloGarraSegurar()
+    public override float getAnguloParaGarraSegurar()
     {
         return 9f;
     }

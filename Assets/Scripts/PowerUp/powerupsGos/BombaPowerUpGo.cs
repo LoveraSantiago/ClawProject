@@ -27,7 +27,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         return PowerUpEntidade.INTERACAOGARRA.MOVIMENTO;
     }
 
-    public override float getAnguloGarraSegurar()
+    public override float getAnguloParaGarraSegurar()
     {
         return 10f;
     }

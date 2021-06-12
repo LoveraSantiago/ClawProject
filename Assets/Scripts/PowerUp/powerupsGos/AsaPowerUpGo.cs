@@ -9,7 +9,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
 
     public override void configurarPup()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()

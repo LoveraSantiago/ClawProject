@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo                                         
 {
-    private readonly int missil_acionado;
-    private readonly int missil_explosao;
-    private readonly int missil_idle;
+    private readonly int MISSIL_ACIONADO;
+    private readonly int MISSIL_EXPLOSAO;
+    private readonly int MISSIL_IDLE;
     
     private bool hitColetavel;
     private float distanciaAnterior;
@@ -23,9 +23,9 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         base(powerUpDto.MissilTeleguiadoPUp, "missil-teleguiado")
     {
         this.pathMissilDto = powerUpDto.PathMissilDto;
-        missil_acionado = Animator.StringToHash("missil-acionado");
-        missil_explosao = Animator.StringToHash("explosao");
-        missil_idle     = Animator.StringToHash("idle");
+        MISSIL_ACIONADO = Animator.StringToHash("missil-acionado");
+        MISSIL_EXPLOSAO = Animator.StringToHash("explosao");
+        MISSIL_IDLE     = Animator.StringToHash("idle");
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -33,7 +33,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         return PowerUpEntidade.INTERACAOGARRA.PARADO;
     }
 
-    public override float getAnguloGarraSegurar()
+    public override float getAnguloParaGarraSegurar()
     {
         return 16f;
     }
@@ -61,7 +61,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     {
         desligar();
         powerUpFinalizacao.finalizado();
-        animator.Play(missil_idle);
+        animator.Play(MISSIL_IDLE);
         colocarNoAngulo(0);
     }
 
@@ -94,7 +94,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     
     private IEnumerator disparandoMissil(ColetavelTile coletavel)
     {
-        animator.Play(missil_acionado);
+        animator.Play(MISSIL_ACIONADO);
         recalcularPath(coletavel.getPosicao());
         capsuleCollider.isTrigger = true;
         int contadorIndice = 0;
@@ -144,7 +144,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
             yield return null;
         }
         parar();
-        animator.Play(missil_explosao);
+        animator.Play(MISSIL_EXPLOSAO);
         coletavel.disparar(0, 20f);
         coletavel.desligarAnimacao();
 

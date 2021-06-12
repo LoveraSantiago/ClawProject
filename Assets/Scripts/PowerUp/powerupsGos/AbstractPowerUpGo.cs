@@ -16,7 +16,7 @@ public abstract class AbstractPowerUpGo : Coletavel,
     public abstract void iniciarPup();
     public abstract void resetPup();
 
-    public virtual float getAnguloGarraSegurar() { return 15; }//Angulo de fechamento atual configurado no edior
+    public virtual float getAnguloParaGarraSegurar() { return 15; }//Angulo de fechamento atual configurado no edior
     public virtual void iniciarNaPosicao(Vector3 posicao) { }
     public virtual void timeout() { }
 
