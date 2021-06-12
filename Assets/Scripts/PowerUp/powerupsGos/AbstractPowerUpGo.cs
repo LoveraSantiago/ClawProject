@@ -55,4 +55,15 @@ public abstract class AbstractPowerUpGo : Coletavel,
         ColetavelQuery coletavelQuery = new ColetavelQuery();
         coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
     }
+
+    protected Collider2D getColetavelHit()
+    {
+        Vector3 posicaoTap = inputGame.getPosicaoTap();
+        posicaoTap.z = 0;
+
+        int layerMask = LayerMask.GetMask("Coletavel");
+        RaycastHit2D raycastHit;
+        raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
+        return raycastHit.collider;
+    }
 }

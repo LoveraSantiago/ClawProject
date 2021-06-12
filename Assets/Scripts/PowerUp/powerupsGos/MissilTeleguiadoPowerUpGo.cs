@@ -71,15 +71,10 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
-                Vector3 posicaoTap = inputGame.getPosicaoTap();
-                posicaoTap.z = 0;
-
-                int layerMask = LayerMask.GetMask("Coletavel");
-                RaycastHit2D raycastHit;
-                raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
-                if (raycastHit.collider != null)
+                Collider2D coletavelHit = getColetavelHit();
+                if (coletavelHit != null)
                 {
-                    string nomeAlvo = raycastHit.collider.name;
+                    string nomeAlvo = coletavelHit.name;
                     coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
                     hitColetavel = true;
                     monoBehaviour.StartCoroutine(disparandoMissil(coletavelQuery.getColetavelInGameByName(nomeAlvo)));
