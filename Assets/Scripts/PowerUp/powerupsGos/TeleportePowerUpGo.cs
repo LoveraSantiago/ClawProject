@@ -134,10 +134,10 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
-        return new Fornecedor();
+        return new FornecedorTeleporte();
     }
 
-    public class Fornecedor : Fornecedor<AbstractPowerUpGo>
+    public class FornecedorTeleporte : Fornecedor<AbstractPowerUpGo>
     {
         public AbstractPowerUpGo fornecer()
         {

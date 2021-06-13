@@ -95,10 +95,10 @@ public class AsaPowerUpGo : AbstractPowerUpGo
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
-        return new Fornecedor();
+        return new FornecedorAsa();
     }
 
-    public class Fornecedor : Fornecedor<AbstractPowerUpGo>
+    public class FornecedorAsa : Fornecedor<AbstractPowerUpGo>
     {
         public AbstractPowerUpGo fornecer()
         {

@@ -89,10 +89,10 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
     
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
-        return new Fornecedor();
+        return new FornecedorMissilNuclear();
     }
 
-    public class Fornecedor : Fornecedor<AbstractPowerUpGo>
+    public class FornecedorMissilNuclear : Fornecedor<AbstractPowerUpGo>
     {
         public AbstractPowerUpGo fornecer()
         {

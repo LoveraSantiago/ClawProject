@@ -107,10 +107,10 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
-        return new Fornecedor();
+        return new FornecedorBomba();
     }
 
-    public class Fornecedor : Fornecedor<AbstractPowerUpGo>
+    public class FornecedorBomba : Fornecedor<AbstractPowerUpGo>
     {
         public AbstractPowerUpGo fornecer()
         {

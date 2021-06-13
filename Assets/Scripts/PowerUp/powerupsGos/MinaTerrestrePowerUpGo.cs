@@ -80,10 +80,10 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
-        return new Fornecedor();
+        return new FornecedorMina();
     }
 
-    public class Fornecedor : Fornecedor<AbstractPowerUpGo>
+    public class FornecedorMina : Fornecedor<AbstractPowerUpGo>
     {
         public AbstractPowerUpGo fornecer()
         {

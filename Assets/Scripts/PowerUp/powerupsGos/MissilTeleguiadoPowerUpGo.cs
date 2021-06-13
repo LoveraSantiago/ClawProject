@@ -185,10 +185,10 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
-        return new Fornecedor();
+        return new FornecedorMissilTeleguiado();
     }
 
-    public class Fornecedor : Fornecedor<AbstractPowerUpGo>
+    public class FornecedorMissilTeleguiado : Fornecedor<AbstractPowerUpGo>
     {
         public AbstractPowerUpGo fornecer()
         {
