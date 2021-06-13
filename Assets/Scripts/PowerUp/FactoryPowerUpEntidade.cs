@@ -15,7 +15,7 @@ public class FactoryPowerUpEntidade
                 .configNomes(PowerUpEntidade.NAME.BOMBA_DA_GARRA, "bomba")
                 .configDuracao(9)
                 .configArea()
-                .configSupplierDePowerUpGo(BombaPowerUpGo.getSupplier())
+                .configSupplierDePowerUpGo(BombaPowerUpGo.getFornecedor())
                 .configIsClicavel(true);
         }
         return bombaDaGarra;
@@ -29,7 +29,7 @@ public class FactoryPowerUpEntidade
                 .configNomes(PowerUpEntidade.NAME.MISSIL_NUCLEAR, "nuclear-bomba-btn")
                 .configDuracao(9)
                 .configArea()
-                .configSupplierDePowerUpGo(MissilNuclearPowerUpGo.getSupplier())
+                .configSupplierDePowerUpGo(MissilNuclearPowerUpGo.getFornecedor())
                 .configIsClicavel(true); 
         }
         return missilNuclear;
@@ -43,7 +43,7 @@ public class FactoryPowerUpEntidade
                 .configNomes(PowerUpEntidade.NAME.MINA_TERRESTRE, "mina-terrestre")
                 .configDuracao(3)
                 .configArea(PowerUpEntidade.AREA.CHAO)
-                .configSupplierDePowerUpGo(MinaTerrestrePowerUpGo.getSupplier())
+                .configSupplierDePowerUpGo(MinaTerrestrePowerUpGo.getFornecedor())
                 .configIsClicavel(false);
         }
         return minaTerrestre;
@@ -57,7 +57,7 @@ public class FactoryPowerUpEntidade
                 .configNomes(PowerUpEntidade.NAME.MISSIL_TELEGUIADO, "missil-btnv2")
                 .configDuracao(9)
                 .configArea()
-                .configSupplierDePowerUpGo(MissilTeleguiadoPowerUpGo.getSupplier())
+                .configSupplierDePowerUpGo(MissilTeleguiadoPowerUpGo.getFornecedor())
                 .configIsClicavel(true); 
         }
         return missilTeleguiado;
@@ -71,7 +71,7 @@ public class FactoryPowerUpEntidade
                 .configNomes(PowerUpEntidade.NAME.TELEPORTE, "teleport-btn")
                 .configDuracao(9)
                 .configArea()
-                .configSupplierDePowerUpGo(TeleportePowerUpGo.getSupplier())
+                .configSupplierDePowerUpGo(TeleportePowerUpGo.getFornecedor())
                 .configIsClicavel(true); 
         }
         return teleporte;
@@ -85,7 +85,7 @@ public class FactoryPowerUpEntidade
                 .configNomes(PowerUpEntidade.NAME.ASAS, "asas-botao")
                 .configDuracao(9)
                 .configArea()
-                .configSupplierDePowerUpGo(AsaPowerUpGo.getSupplier())
+                .configSupplierDePowerUpGo(AsaPowerUpGo.getFornecedor())
                 .configIsClicavel(true); 
         }
         return asa;

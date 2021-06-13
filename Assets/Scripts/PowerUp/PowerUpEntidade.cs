@@ -21,7 +21,7 @@ public class PowerUpEntidade
     public bool isClicavel { get; private set; }
     public AREA area { get; private set; }
 
-    private Supplier<AbstractPowerUpGo> supplierPowerUpGo;
+    private Fornecedor<AbstractPowerUpGo> fornecedorPowerUpGo;
     private AbstractPowerUpGo powerUpGo;
 
     public PowerUpEntidade()
@@ -58,9 +58,9 @@ public class PowerUpEntidade
         return this;
     }
 
-    public PowerUpEntidade configSupplierDePowerUpGo(Supplier<AbstractPowerUpGo> supplierPowerUpGo) 
+    public PowerUpEntidade configSupplierDePowerUpGo(Fornecedor<AbstractPowerUpGo> supplierPowerUpGo) 
     {
-        this.supplierPowerUpGo = supplierPowerUpGo;
+        this.fornecedorPowerUpGo = supplierPowerUpGo;
         return this;
     }
 
@@ -68,7 +68,7 @@ public class PowerUpEntidade
     {
         if(powerUpGo == null)
         {
-            powerUpGo = supplierPowerUpGo.get();
+            powerUpGo = fornecedorPowerUpGo.fornecer();
         }
         return powerUpGo;
     }
