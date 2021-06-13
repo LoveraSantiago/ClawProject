@@ -19,7 +19,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
         pincas.acionarCollider();
 
         garraInteracaoComPowerUp.iniciar();
-        garraInteracaoComPowerUp.desligarGravidade();
+        garraInteracaoComPowerUp.ligarGravidadeZero();
         garraInteracaoComPowerUp.colocarNaPosicao(garraDto.CentroDaGarra.position);
     }       
 

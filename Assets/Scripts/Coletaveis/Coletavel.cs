@@ -96,9 +96,14 @@ public abstract class Coletavel
 
     public void receberSprite(Sprite sprite)
     {
+        receberSprite(sprite, 31);
+    }
+
+    public void receberSprite(Sprite sprite, int layer)
+    {
         spriteRenderer.sprite = sprite;
         nomeSprite = sprite.name;
-        spriteRenderer.sortingOrder = 31;
+        spriteRenderer.sortingOrder = layer;
     }
 
     public void receberSprite(string nomeSprite)
@@ -139,14 +144,24 @@ public abstract class Coletavel
         return ativo;
     }
 
-    public virtual void desligarGravidade()
+    public virtual void ligarGravidadeZero()
     {
         rigidbody.gravityScale = 0;
     }
 
-    public virtual void ligarGravidade()
+    public virtual void ligarGravidadeHum()
     {
         rigidbody.gravityScale = 1;
+    }
+
+    public void ligarGravidadeNegativa()
+    {
+        rigidbody.gravityScale = -1;
+    }
+
+    public void setGravidade(float gravidade)
+    {
+        rigidbody.gravityScale = gravidade;
     }
 
     public virtual void fixarVerticalmente()

@@ -6,6 +6,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
     private readonly int VOADA;
 
     private bool hitColetavel;
+    private CircleCollider2D circleCollider;
     private Animator animator;
 
     public AsaPowerUpGo() 
@@ -16,7 +17,8 @@ public class AsaPowerUpGo : AbstractPowerUpGo
 
     public override void configurarPup()
     {
-        animator = goColetavel.GetComponent<Animator>();
+        animator = goColetavel.transform.Find("asas").GetComponent<Animator>();
+        circleCollider = goColetavel.GetComponent<CircleCollider2D>();
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -51,15 +53,27 @@ public class AsaPowerUpGo : AbstractPowerUpGo
                     ColetavelTile coletavelParaVoar = coletavelQuery.getColetavelInGameByName(nomeAlvo);
 
                     colocarNaPosicao(coletavelParaVoar.getPosicao());
-                    receberSprite(coletavelParaVoar.getSprite());
+                    receberSprite(coletavelParaVoar.getSprite(), 32);
 
                     coletavelParaVoar.desligar();
                     ligar();
+                    monoBehaviour.StartCoroutine(voar());
                 }
             }
             yield return null;
         }
 
+        yield return null;
+    }
+
+    private IEnumerator voar()
+    {
+        setGravidade(-0.05f);
+        circleCollider.isTrigger = true;
+        while(getPosicao().y < 3)
+        {
+            yield return null;
+        }
         yield return null;
     }
 
