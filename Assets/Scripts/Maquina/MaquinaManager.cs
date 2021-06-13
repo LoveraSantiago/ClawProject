@@ -75,9 +75,9 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         displayDeScores.mostrarScore(infoColetado.score, infoColetado.resultCombinacao);
     }
 
-    private void processarInicioPowerUp(PowerUpInfo evento)
+    private void processarInicioPowerUp(PowerUpInfo pupInfo)
     {
-        displayDeScores.acionadoPeloPowerUp(evento.duracaoTempo);
+        displayDeScores.acionadoPeloPowerUp(pupInfo.duracaoTempo);
         displayDeColetados.acionadoPeloPowerUp();
     }
 
@@ -108,15 +108,15 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO       
 
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
-    public void consumir(PowerUpInfoFim powerUpInfoFim)
+    public void consumir(PowerUpInfoFim pupFim)
     {
         //Debug.Log("Maquina consumindo prefim " + powerUpInfoFim.preFinalizar);
         //Debug.Log("Maquina consumindo fim " + powerUpInfoFim.finalizar);
-        if (powerUpInfoFim.preFinalizar)
+        if (pupFim.preFinalizar)
         {     
             processarPreFimDePowerUp();
         }
-        if (powerUpInfoFim.finalizar)
+        else if (pupFim.finalizar)
         {         
             processarFimDePowerUp();
         }
