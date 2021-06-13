@@ -70,10 +70,21 @@ public class AsaPowerUpGo : AbstractPowerUpGo
     {
         setGravidade(-0.05f);
         circleCollider.isTrigger = true;
-        while(getPosicao().y < 3)
+        animator.Play(VOADA);
+
+        Vector3 posicaoInicial = getPosicao();
+        float posXmax = posicaoInicial.x + 0.3f;
+        float posXmin = posicaoInicial.x - 0.3f;
+
+        while (getPosicao().y < 3)
         {
+            Vector3 posicaoAtual = getPosicao();
+            float xZigZag = Mathf.Lerp(posXmin, posXmax, Mathf.PingPong(Time.time, 1f));
+            Vector3 posicaoZigZag = new Vector3(xZigZag, posicaoAtual.y, posicaoAtual.z);
+            colocarNaPosicao(posicaoZigZag);
             yield return null;
         }
+        desligar();
         yield return null;
     }
 
