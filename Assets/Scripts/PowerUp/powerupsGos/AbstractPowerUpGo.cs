@@ -25,8 +25,10 @@ public abstract class AbstractPowerUpGo : Coletavel,
     {
     }
 
-    public AbstractPowerUpGo(GameObject goTile, GameObject goSprite, string nome)
-        : base(goTile, goSprite, nome)
+    public AbstractPowerUpGo(GameObject goTile, 
+                             Transformador<GameObject, GameObject> getGoComSprRenderer, 
+                             string nome)
+        : base(goTile, getGoComSprRenderer, nome)
     {
     }
 
@@ -70,5 +72,5 @@ public abstract class AbstractPowerUpGo : Coletavel,
         RaycastHit2D raycastHit;
         raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
         return raycastHit.collider;
-    }
+    }      
 }

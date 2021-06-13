@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 963391463966577656}
   - component: {fileID: 6743520823141608748}
-  - component: {fileID: 3265491571206695168}
   m_Layer: 14
   m_Name: imagem
   m_TagString: Untagged
@@ -84,25 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3265491571206695168
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686654297092072938}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 19c3b64d17cfd5d43822b2833591c068, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4127936681606313068
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +94,6 @@ GameObject:
   - component: {fileID: 4127936681606313064}
   - component: {fileID: 4127936681606313067}
   - component: {fileID: 4127936681606313066}
-  - component: {fileID: 3281702390557241745}
   m_Layer: 14
   m_Name: AsasPUp
   m_TagString: Laranja
@@ -176,25 +155,6 @@ CircleCollider2D:
   m_Offset: {x: 0.0007569228, y: -0.0010562368}
   serializedVersion: 2
   m_Radius: 0.29943758
---- !u!95 &3281702390557241745
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4127936681606313068}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 08b4744f5b955a747828558f6b58593f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7442274556195925268
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
     private Animator animator;
 
     public AsaPowerUpGo() 
-        : base(powerUpDto.AsaPup, null, "Asas")
+        : base(powerUpDto.AsaPup, new GetGoComSpriteRenderer(), "Asas")
     {
         VOADA = Animator.StringToHash("voada");
     }
@@ -51,7 +51,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
                     ColetavelTile coletavelParaVoar = coletavelQuery.getColetavelInGameByName(nomeAlvo);
 
                     colocarNaPosicao(coletavelParaVoar.getPosicao());
-                   // receberSprite(coletavelParaVoar.getSprite());
+                    receberSprite(coletavelParaVoar.getSprite());
 
                     coletavelParaVoar.desligar();
                     ligar();
@@ -73,6 +73,14 @@ public class AsaPowerUpGo : AbstractPowerUpGo
         public AbstractPowerUpGo fornecer()
         {
             return new AsaPowerUpGo();
+        }
+    }
+
+    private class GetGoComSpriteRenderer : Transformador<GameObject, GameObject>
+    {
+        public GameObject transformar(GameObject goColetavel)
+        {
+            return goColetavel.transform.Find("imagem").gameObject;
         }
     }
 }

@@ -27,9 +27,12 @@ public abstract class Coletavel
         rigidbody = goColetavel.GetComponent<Rigidbody2D>();        
     }   
 
-    public Coletavel(GameObject go, GameObject goSprite, string nome)
+    public Coletavel(GameObject go, 
+                     Transformador<GameObject, GameObject> getGoComSprRenderer, 
+                     string nome)
         :this(go, nome)
     {
+        GameObject goSprite = getGoComSprRenderer.transformar(goColetavel);
         spriteRenderer = goSprite.GetComponent<SpriteRenderer>();
     }
 
