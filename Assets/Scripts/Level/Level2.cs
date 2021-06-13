@@ -49,12 +49,12 @@ public class Level2 : AbstractLevel
     public override PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina()
     {
         return new PowerUpEntidade.NAME[] {
-            //PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS,
-            //PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS,
-            //PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS,
-            //PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS,
-            //PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS,
-            //PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS,
+            PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS,
+            PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS,
+            PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS,
+            PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS,
+            PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS,
+            PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS, PowerUpEntidade.NAME.ASAS,
 
             PowerUpEntidade.NAME.TELEPORTE     , PowerUpEntidade.NAME.ASAS,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,

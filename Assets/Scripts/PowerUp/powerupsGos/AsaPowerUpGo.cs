@@ -49,6 +49,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
                 if (coletavelHit != null)
                 {
                     string nomeAlvo = coletavelHit.name;
+                    Debug.Log("Acertou " + nomeAlvo);
                     desligarMirasNosColetaveis();
                     ColetavelTile coletavelParaVoar = coletavelQuery.getColetavelInGameByName(nomeAlvo);
 
@@ -68,7 +69,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
 
     private IEnumerator voar(ColetavelTile coletavelAcertado)
     {
-        setGravidade(-0.05f);
+        setGravidade(-0.075f);
         circleCollider.isTrigger = true;
         animator.Play(VOADA);
 
