@@ -57,7 +57,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
 
                     coletavelParaVoar.desligar();
                     ligar();
-                    monoBehaviour.StartCoroutine(voar());
+                    monoBehaviour.StartCoroutine(voar(coletavelParaVoar));
                 }
             }
             yield return null;
@@ -66,7 +66,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
         yield return null;
     }
 
-    private IEnumerator voar()
+    private IEnumerator voar(ColetavelTile coletavelAcertado)
     {
         setGravidade(-0.05f);
         circleCollider.isTrigger = true;
@@ -84,7 +84,12 @@ public class AsaPowerUpGo : AbstractPowerUpGo
             colocarNaPosicao(posicaoZigZag);
             yield return null;
         }
+        powerUpFinalizacao.preFinalizar(coletavelAcertado);
         desligar();
+
+        yield return new WaitForSeconds(0.5f);
+
+        powerUpFinalizacao.finalizado();
         yield return null;
     }
 

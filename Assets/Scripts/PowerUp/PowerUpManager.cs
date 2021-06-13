@@ -36,17 +36,24 @@ public class PowerUpManager : PowerUpAcionamento,
         powerUpInfo.configurarObjetoInteracaoComGarra(interacaoComPowerUp);
 
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
+    }   
+
+    public void preFinalizar()
+    {
+        PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(true, false);
+        produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
+    }
+
+    public void preFinalizar(ColetavelTile coletavelTile)
+    {
+        PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(true, false);
+        powerUpInfoFim.addColetavel(coletavelTile);
+        produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
     }
 
     public void finalizado()
     {
         PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(false, true);
-        produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
-    }
-
-    public void preFinalizar()
-    {
-        PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(true, false);
         produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
     }
 }

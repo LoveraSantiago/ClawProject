@@ -95,6 +95,25 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         coletavelImantado.desimantar();
     }    
 
+    private void processarInicioPowerUp(PowerUpInfo pupInfo)
+    {
+        powerUpEmAcao = true;
+        processarDesimantado();
+    }
+
+    private void processarPreFimDePowerUp(PowerUpInfoFim pupPreFim)
+    {
+        if (pupPreFim.hasColetavel)
+        {
+            processarColetado(pupPreFim.coletavelTile.getGoColetavel());
+        }
+    }
+
+    private void processarFimDePowerUp()
+    {
+        powerUpEmAcao = false;
+    }
+
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER INICIO
     //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
     public void consumir(Collider2D goColetado)
@@ -125,15 +144,18 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> INICIO    
     public void consumir(PowerUpInfo powerUpInfo)
     {
-        powerUpEmAcao = true;
-        processarDesimantado();
+        processarInicioPowerUp(powerUpInfo);
     }
 
     public void consumir(PowerUpInfoFim powerUpInfoFim)
     {
+        if (powerUpInfoFim.preFinalizar)
+        {
+            processarPreFimDePowerUp(powerUpInfoFim);
+        }
         if (powerUpInfoFim.finalizar)
         {
-            powerUpEmAcao = false;
+            processarFimDePowerUp();
         }
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> FIM    
