@@ -36,7 +36,7 @@ public class ColetavelQuery
         return poolDeColetaveis.getColetavelPeloNome(name);
     }
 
-    public void executeNoPoolDeColetaveis(ConsumidorDeEvento<ColetavelTile> consumidor)
+    public void executeNoPoolDeColetaveis(Consumidor<ColetavelTile> consumidor)
     {
         poolDeColetaveis.executeEmTodosColetaveis(consumidor);
     }

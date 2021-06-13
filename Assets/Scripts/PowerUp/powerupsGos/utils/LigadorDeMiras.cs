@@ -1,6 +1,6 @@
-public class LigadorDeMiras : ConsumidorDeEvento<ColetavelTile>
+public class LigadorDeMiras : Consumidor<ColetavelTile>
 {
-    public void consumirEvento(ColetavelTile coletavel)
+    public void consumir(ColetavelTile coletavel)
     {
         if (coletavel.isAtivo())
         {

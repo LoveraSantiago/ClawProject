@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 
-public class ProdutorConsumidoresDeEvento<T> : ConsumidorDeEvento<T>
+public class ProdutorConsumidoresDeEvento<T> : Consumidor<T>
 {    
-    private ConsumidorDeEvento<T> consumidorAtual;
-    private List<ConsumidorDeEvento<T>> listaDeConsumidoresDeEvento;
+    private Consumidor<T> consumidorAtual;
+    private List<Consumidor<T>> listaDeConsumidoresDeEvento;
 
     public ProdutorConsumidoresDeEvento()
     {
-        listaDeConsumidoresDeEvento = new List<ConsumidorDeEvento<T>>();
+        listaDeConsumidoresDeEvento = new List<Consumidor<T>>();
     }
 
     public ProdutorConsumidoresDeEvento<T> configurarProdutor(ProdutorDeEvento<T> produtor)
@@ -16,18 +16,18 @@ public class ProdutorConsumidoresDeEvento<T> : ConsumidorDeEvento<T>
         return this;
     }
 
-    public ProdutorConsumidoresDeEvento<T> adicionarConsumidor(ConsumidorDeEvento<T> consumidorDeEvento)
+    public ProdutorConsumidoresDeEvento<T> adicionarConsumidor(Consumidor<T> consumidorDeEvento)
     {
         listaDeConsumidoresDeEvento.Add(consumidorDeEvento);
         return this;
     }
 
-    public void consumirEvento(T evento)
+    public void consumir(T evento)
     {
         for (int contador = 0; contador < listaDeConsumidoresDeEvento.Count; contador++)
         {
             consumidorAtual = listaDeConsumidoresDeEvento[contador];
-            consumidorAtual.consumirEvento(evento);
+            consumidorAtual.consumir(evento);
         }
     }
 }

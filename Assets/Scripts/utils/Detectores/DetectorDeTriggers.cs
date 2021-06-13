@@ -6,7 +6,7 @@ public class DetectorDeTriggers : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider2d)
     {
-        consumidorDeTrigger.consumirEvento(collider2d);
+        consumidorDeTrigger.consumir(collider2d);
     }
 
     public void registrarConsumidorDeTrigger(ConsumidorDeEventoTrigger consumidorDeTrigger)

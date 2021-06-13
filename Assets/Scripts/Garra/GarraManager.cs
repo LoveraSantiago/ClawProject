@@ -1,8 +1,8 @@
 using UnityEngine;
 
 public class GarraManager : ConsumidorDeEventoTrigger,
-                            ConsumidorDeEvento<PowerUpInfo>,
-                            ConsumidorDeEvento<PowerUpInfoFim>
+                            Consumidor<PowerUpInfo>,
+                            Consumidor<PowerUpInfoFim>
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
 
@@ -73,21 +73,21 @@ public class GarraManager : ConsumidorDeEventoTrigger,
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
     //ACIONADO QDO GARRA COLLIDE COM UM COLETAVEL
-    public void consumirEvento(Collider2D colliderDeColetavel)
+    public void consumir(Collider2D colliderDeColetavel)
     {
         processarGarraColidiuCom(colliderDeColetavel);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
-    public void consumirEvento(PowerUpInfo evento)
+    public void consumir(PowerUpInfo evento)
     {
         processarPowerUp(evento);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> INICIO
-    public void consumirEvento(PowerUpInfoFim powerUpInfoFim)
+    public void consumir(PowerUpInfoFim powerUpInfoFim)
     {
         if (powerUpInfoFim.finalizar)
         {
@@ -111,12 +111,12 @@ public class GarraManager : ConsumidorDeEventoTrigger,
         return MovimentacaoDaGarra.produtorDeEventoSubidaDaGarra;
     }
 
-    public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
+    public Consumidor<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
         return this;
     }
 
-    internal ConsumidorDeEvento<PowerUpInfoFim> getConsumidorDePowerUpFim()
+    internal Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
     {
         return this;
     }    

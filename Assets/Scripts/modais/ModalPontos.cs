@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class ModalPontos : ConsumidorDeEvento<InformacoesColetado>,
-                           ConsumidorDeEvento<bool>
+public class ModalPontos : Consumidor<InformacoesColetado>,
+                           Consumidor<bool>
 {
     private string scoreAtual;
     private bool mostrandoModal;
@@ -35,7 +35,7 @@ public class ModalPontos : ConsumidorDeEvento<InformacoesColetado>,
         modalPontosDto.TextoNivel.text = levelName;
     }
 
-    public void consumirEvento(InformacoesColetado infoColetado)
+    public void consumir(InformacoesColetado infoColetado)
     {
         if (infoColetado.fimColetados)
         {
@@ -44,7 +44,7 @@ public class ModalPontos : ConsumidorDeEvento<InformacoesColetado>,
         scoreAtual = infoColetado.score.ToString();
     }
 
-    public void consumirEvento(bool evento)
+    public void consumir(bool evento)
     {
         mostrarModalResultado();
     }
@@ -65,12 +65,12 @@ public class ModalPontos : ConsumidorDeEvento<InformacoesColetado>,
         setPontuacao();
     }
 
-    public ConsumidorDeEvento<InformacoesColetado> getConsumidorDeInformacoesColetado()
+    public Consumidor<InformacoesColetado> getConsumidorDeInformacoesColetado()
     {
         return this;
     }
 
-    internal ConsumidorDeEvento<bool> getConsumidorDeTempoEsgotado()
+    internal Consumidor<bool> getConsumidorDeTempoEsgotado()
     {
         return this;
     }   

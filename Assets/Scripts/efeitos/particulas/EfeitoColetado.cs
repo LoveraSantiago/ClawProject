@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class EfeitoColetado : ConsumidorDeEvento<InformacoesColetado>
+public class EfeitoColetado : Consumidor<InformacoesColetado>
 {    
     private Vector3 posOriginalEfeito;
     private Vector3 posOriginalSeguidores;
@@ -51,13 +51,13 @@ public class EfeitoColetado : ConsumidorDeEvento<InformacoesColetado>
     }
 
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
-    public void consumirEvento(InformacoesColetado infoColetado)
+    public void consumir(InformacoesColetado infoColetado)
     {
         playEfeitoColetado(infoColetado.posicao);
     }
     //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
 
-    public ConsumidorDeEvento<InformacoesColetado> getEfeitoConsumidorInfoColetado()
+    public Consumidor<InformacoesColetado> getEfeitoConsumidorInfoColetado()
     {
         return this;
     }

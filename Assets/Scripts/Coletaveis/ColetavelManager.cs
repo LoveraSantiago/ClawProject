@@ -1,10 +1,10 @@
 using UnityEngine;
 
 public class ColetavelManager : ConsumidorDeEventoTrigger,
-                                ConsumidorDeEvento<string>,
-                                ConsumidorDeEvento<int>,
-                                ConsumidorDeEvento<PowerUpInfo>,
-                                ConsumidorDeEvento<PowerUpInfoFim>
+                                Consumidor<string>,
+                                Consumidor<int>,
+                                Consumidor<PowerUpInfo>,
+                                Consumidor<PowerUpInfoFim>
 {
     private bool powerUpEmAcao;
     private bool devolverParaBoard;
@@ -97,7 +97,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER INICIO
     //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
-    public void consumirEvento(Collider2D goColetado)
+    public void consumir(Collider2D goColetado)
     {
         //Debug.Log("Nome Coletado: " + goColetado.name);
         if(goColetado.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0 &&
@@ -109,27 +109,27 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<STRING> INICIO    
-    public void consumirEvento(string nomeColetavel)
+    public void consumir(string nomeColetavel)
     {
         processarImantado(nomeColetavel);
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<STRING> FIM
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INT> INICIO    
-    public void consumirEvento(int evento)
+    public void consumir(int evento)
     {
         processarDesimantado();
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INT> FIM    
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> INICIO    
-    public void consumirEvento(PowerUpInfo powerUpInfo)
+    public void consumir(PowerUpInfo powerUpInfo)
     {
         powerUpEmAcao = true;
         processarDesimantado();
     }
 
-    public void consumirEvento(PowerUpInfoFim powerUpInfoFim)
+    public void consumir(PowerUpInfoFim powerUpInfoFim)
     {
         if (powerUpInfoFim.finalizar)
         {
@@ -138,22 +138,22 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> FIM    
 
-    public ConsumidorDeEvento<string> getConsumidorDeColetavelParaImantar()
+    public Consumidor<string> getConsumidorDeColetavelParaImantar()
     {
         return this;
     }
 
-    public ConsumidorDeEvento<int> getConsumidorDeContagemSubidaDaGarra()
+    public Consumidor<int> getConsumidorDeContagemSubidaDaGarra()
     {
         return this;
     }
 
-    public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
+    public Consumidor<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
         return this;
     }
 
-    public ConsumidorDeEvento<PowerUpInfoFim> getConsumidorDePowerUpFim()
+    public Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
     {
         return this;
     }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Joystick : ConsumidorDeEvento<DirecaoDaGarra>
+public class Joystick : Consumidor<DirecaoDaGarra>
 {
     private readonly int ANGULO = 20;
 
@@ -60,14 +60,14 @@ public class Joystick : ConsumidorDeEvento<DirecaoDaGarra>
         joystickDto.JoystickBotao.color = Utils.getCorByHex(hexCor);
     }
 
-    public ConsumidorDeEvento<DirecaoDaGarra> getConsumidorDeEventoDeDirecao()
+    public Consumidor<DirecaoDaGarra> getConsumidorDeEventoDeDirecao()
     {
         return this;
     }
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<Direcao> INICIO
     //CONSOME EVENTO DE DIRECAO DISPARADO PELA GARRA PARA TER SINCRONIA NA DIRECAO DA GARRA
-    public void consumirEvento(DirecaoDaGarra direcao)
+    public void consumir(DirecaoDaGarra direcao)
     {
         if(direcao == DirecaoDaGarra.DIREITA)
         {

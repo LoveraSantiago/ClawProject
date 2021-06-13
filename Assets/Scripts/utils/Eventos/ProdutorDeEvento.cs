@@ -1,14 +1,14 @@
 public class ProdutorDeEvento<T>
 {
     private int contador;
-    private ConsumidorDeEvento<T> consumidorDeEvento;
+    private Consumidor<T> consumidorDeEvento;
 
     public void produziuEvento(T evento)
     {
-        consumidorDeEvento.consumirEvento(evento);
+        consumidorDeEvento.consumir(evento);
     }
 
-    public void registrarConsumidorDeEvento(ConsumidorDeEvento<T> consumidorDeEvento)
+    public void registrarConsumidorDeEvento(Consumidor<T> consumidorDeEvento)
     {
         this.consumidorDeEvento = consumidorDeEvento;
     }

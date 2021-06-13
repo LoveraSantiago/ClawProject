@@ -56,7 +56,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         colocarNoAngulo(0);
     }
 
-    public void consumirEvento(Collision2D evento)
+    public void consumir(Collision2D evento)
     {        
         if(!acionado && Utils.isColetavel(evento))
         {

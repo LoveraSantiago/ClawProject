@@ -95,7 +95,7 @@ public class ColetaveisParaTuboDeSaida : ConsumidorDeEventoTrigger
 
     //IMPLEMENTANDO INTERFACE ConsumidorDeEventoTrigger INICIO
     //ACIONADO QUANDO O COLETAVEL DO TUBO ATINGE O FIM DO TUBO
-    public void consumirEvento(Collider2D collider)
+    public void consumir(Collider2D collider)
     {
         triggerDeSaidaDeTuboAcionado(collider);
     }
