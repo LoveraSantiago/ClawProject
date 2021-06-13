@@ -13,6 +13,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
         : base(powerUpDto.AsaPup, new GetGoComSpriteRenderer(), "Asas")
     {
         VOADA = Animator.StringToHash("voada");
+        Debug.Log("Asa Instanciado");
     }
 
     public override void configurarPup()
@@ -59,6 +60,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
                     coletavelParaVoar.desligar();
                     ligar();
                     monoBehaviour.StartCoroutine(voar(coletavelParaVoar));
+                    hitColetavel = true;
                 }
             }
             yield return null;
