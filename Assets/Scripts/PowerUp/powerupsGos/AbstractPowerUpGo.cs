@@ -25,6 +25,11 @@ public abstract class AbstractPowerUpGo : Coletavel,
     {
     }
 
+    public AbstractPowerUpGo(GameObject goTile, GameObject goSprite, string nome)
+        : base(goTile, goSprite, nome)
+    {
+    }
+
     public void iniciar()
     {
         if (!configurado)

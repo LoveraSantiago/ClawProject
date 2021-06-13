@@ -27,6 +27,12 @@ public abstract class Coletavel
         rigidbody = goColetavel.GetComponent<Rigidbody2D>();        
     }   
 
+    public Coletavel(GameObject go, GameObject goSprite, string nome)
+        :this(go, nome)
+    {
+        spriteRenderer = goSprite.GetComponent<SpriteRenderer>();
+    }
+
     public virtual void colocarNaPosicao(Vector3 posicao) {
         goColetavel.transform.position = posicao;
     }

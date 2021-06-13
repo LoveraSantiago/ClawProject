@@ -9,7 +9,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
     private Animator animator;
 
     public AsaPowerUpGo() 
-        : base(powerUpDto.AsaPup, "Asas")
+        : base(powerUpDto.AsaPup, , "Asas")
     {
         VOADA = Animator.StringToHash("voada");
     }
