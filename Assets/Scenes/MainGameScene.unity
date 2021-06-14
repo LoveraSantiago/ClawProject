@@ -5614,9 +5614,9 @@ MonoBehaviour:
         sprRendererColetado: {fileID: 6406990385049082680}
       materialGlowDisplay: {fileID: 2100000, guid: 355cf51cbb3442146a9683574825bf91, type: 2}
     displayTimerDto:
+      sprRendererPlaca: {fileID: 1404465311}
       singleDisplay:
-      - tras: {fileID: 0}
-        segmentos:
+      - segmentos:
         - {fileID: 260943912}
         - {fileID: 1440572245}
         - {fileID: 1068031733}
@@ -5624,8 +5624,7 @@ MonoBehaviour:
         - {fileID: 180282613}
         - {fileID: 1805556720}
         - {fileID: 299002580}
-      - tras: {fileID: 0}
-        segmentos:
+      - segmentos:
         - {fileID: 366567947}
         - {fileID: 582932977}
         - {fileID: 1370782299}
@@ -5633,8 +5632,7 @@ MonoBehaviour:
         - {fileID: 226162099}
         - {fileID: 821895733}
         - {fileID: 2121606867}
-      - tras: {fileID: 0}
-        segmentos:
+      - segmentos:
         - {fileID: 197993093}
         - {fileID: 618396878}
         - {fileID: 254129749}
@@ -5642,8 +5640,7 @@ MonoBehaviour:
         - {fileID: 1493681471}
         - {fileID: 1553361954}
         - {fileID: 1376782559}
-      - tras: {fileID: 0}
-        segmentos:
+      - segmentos:
         - {fileID: 1711710162}
         - {fileID: 1577576813}
         - {fileID: 792029650}
@@ -5651,8 +5648,7 @@ MonoBehaviour:
         - {fileID: 875243412}
         - {fileID: 574890792}
         - {fileID: 377211486}
-      - tras: {fileID: 0}
-        segmentos:
+      - segmentos:
         - {fileID: 802050896}
         - {fileID: 655932435}
     displayDeScoreDto:
@@ -17778,6 +17774,11 @@ SpriteRenderer:
 --- !u!212 &1392632380 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5249480217781084695, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1404465311 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9112315611017100307, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1417847845 stripped

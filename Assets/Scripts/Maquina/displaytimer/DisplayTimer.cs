@@ -9,8 +9,9 @@ public class DisplayTimer
     private int minutosUnidadeAtual;
     private int minutosDezenaAtual;
 
-    private float tempoInicial;   
+    private float tempoInicial;
 
+    private SpriteRenderer placaTimer;
     private DisplayTimerDigito[] displayTimerDigito;
     private DisplayTimerDigito2Pontos displayTimer2Pontos;
 
@@ -19,6 +20,7 @@ public class DisplayTimer
 
     public DisplayTimer(DisplayTimerDto displayDto)
     {
+        placaTimer = displayDto.SprRendererPlaca;
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
 
         displayTimerDigito = new DisplayTimerDigito[4];
@@ -44,9 +46,10 @@ public class DisplayTimer
         Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
         string corTimerHex = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_TIMER];
         string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquina.DIGITOS_TIMERS];
-        Color corTimer = Utils.getCorByHex(corTimerHex);
-        Color corDigito = Utils.getCorByHex(corDigitosHex);
+
+        placaTimer.color = Utils.getCorByHex(corTimerHex);
         
+        Color corDigito = Utils.getCorByHex(corDigitosHex);
         displayTimerDigito[0].configuraradoPeloLevel(corDigito);
         displayTimerDigito[1].configuraradoPeloLevel(corDigito);
         displayTimerDigito[2].configuraradoPeloLevel(corDigito);
