@@ -6,8 +6,10 @@ public class AsaPowerUpGo : AbstractPowerUpGo
     private readonly int VOADA;
 
     private bool hitColetavel;
-    private CircleCollider2D circleCollider;
+
     private Animator animator;
+    private CircleCollider2D circleCollider;
+    private Coroutine coroutine;
 
     public AsaPowerUpGo() 
         : base(powerUpDto.AsaPup, new GetGoComSpriteRenderer(), "Asas")
@@ -30,7 +32,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
     public override void iniciarPup()
     {
         ligarMirasNosColetaveis();
-        monoBehaviour.StartCoroutine(selecionarAlvo());
+        coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
     public override void resetPup()
@@ -65,7 +67,6 @@ public class AsaPowerUpGo : AbstractPowerUpGo
             }
             yield return null;
         }
-
         yield return null;
     }
 
@@ -94,6 +95,16 @@ public class AsaPowerUpGo : AbstractPowerUpGo
 
         powerUpFinalizacao.finalizado();
         yield return null;
+    }
+
+    public override void timeout()
+    {
+        if (!hitColetavel)
+        {
+            monoBehaviour.StopCoroutine(coroutine);
+            desligarMirasNosColetaveis();
+            powerUpFinalizacao.finalizado();
+        }
     }
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
