@@ -23899,8 +23899,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: maquina
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6406990385957796245, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
 --- !u!4 &6406990385049082668 stripped
 Transform:
