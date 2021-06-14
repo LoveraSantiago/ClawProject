@@ -5203,7 +5203,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.46153846, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5265,11 +5265,6 @@ GameObject:
 --- !u!212 &299002580 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2025694168824101487, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &302284571 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6084182129726684293, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &305827701 stripped
@@ -5620,7 +5615,7 @@ MonoBehaviour:
       materialGlowDisplay: {fileID: 2100000, guid: 355cf51cbb3442146a9683574825bf91, type: 2}
     displayTimerDto:
       singleDisplay:
-      - tras: {fileID: 786299049}
+      - tras: {fileID: 0}
         segmentos:
         - {fileID: 260943912}
         - {fileID: 1440572245}
@@ -5629,7 +5624,7 @@ MonoBehaviour:
         - {fileID: 180282613}
         - {fileID: 1805556720}
         - {fileID: 299002580}
-      - tras: {fileID: 1163032540}
+      - tras: {fileID: 0}
         segmentos:
         - {fileID: 366567947}
         - {fileID: 582932977}
@@ -5638,7 +5633,7 @@ MonoBehaviour:
         - {fileID: 226162099}
         - {fileID: 821895733}
         - {fileID: 2121606867}
-      - tras: {fileID: 1907179525}
+      - tras: {fileID: 0}
         segmentos:
         - {fileID: 197993093}
         - {fileID: 618396878}
@@ -5647,7 +5642,7 @@ MonoBehaviour:
         - {fileID: 1493681471}
         - {fileID: 1553361954}
         - {fileID: 1376782559}
-      - tras: {fileID: 719601488}
+      - tras: {fileID: 0}
         segmentos:
         - {fileID: 1711710162}
         - {fileID: 1577576813}
@@ -5656,7 +5651,7 @@ MonoBehaviour:
         - {fileID: 875243412}
         - {fileID: 574890792}
         - {fileID: 377211486}
-      - tras: {fileID: 302284571}
+      - tras: {fileID: 0}
         segmentos:
         - {fileID: 802050896}
         - {fileID: 655932435}
@@ -11612,11 +11607,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5249480216164678149, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &719601488 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1991980331381247115, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &733168918 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1939758284032199629, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -11829,11 +11819,6 @@ MonoBehaviour:
 --- !u!212 &785966923 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 744518587999901845, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &786299049 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1594687694588568772, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &792029650 stripped
@@ -12591,11 +12576,6 @@ GameObject:
 --- !u!212 &1116124208 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5014026569486892718, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1163032540 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4432618428716135325, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1168720569 stripped
@@ -23610,11 +23590,6 @@ Rigidbody2D:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1907269042779730411, guid: 08acda2909ad2a44e880da26dec0551f, type: 3}
   m_PrefabInstance: {fileID: 1879337336}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1907179525 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6018449054404646592, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1907380379
 GameObject:
