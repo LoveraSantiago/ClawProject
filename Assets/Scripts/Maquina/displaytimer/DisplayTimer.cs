@@ -46,11 +46,11 @@ public class DisplayTimer
         string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquina.DIGITOS_TIMERS];
         Color corTimer = Utils.getCorByHex(corTimerHex);
         Color corDigito = Utils.getCorByHex(corDigitosHex);
-        displayTimer2Pontos.configuraradoPeloLevel(corTimer, corDigito);
-        displayTimerDigito[0].configuraradoPeloLevel(corTimer, corDigito);
-        displayTimerDigito[1].configuraradoPeloLevel(corTimer, corDigito);
-        displayTimerDigito[2].configuraradoPeloLevel(corTimer, corDigito);
-        displayTimerDigito[3].configuraradoPeloLevel(corTimer, corDigito);
+        
+        displayTimerDigito[0].configuraradoPeloLevel(corDigito);
+        displayTimerDigito[1].configuraradoPeloLevel(corDigito);
+        displayTimerDigito[2].configuraradoPeloLevel(corDigito);
+        displayTimerDigito[3].configuraradoPeloLevel(corDigito);
     }
 
     public void iniciarContagemTempo()

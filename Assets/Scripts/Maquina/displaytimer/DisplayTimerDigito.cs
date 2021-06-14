@@ -13,10 +13,9 @@ public class DisplayTimerDigito
         this.sDisplayDto = sDisplayDto;
     }
 
-    public void configuraradoPeloLevel(Color corTimer, Color corDigito)
+    public void configuraradoPeloLevel(Color corDigito)
     {
-        corOriginal = corDigito;
-        sDisplayDto.Tras.color = corTimer;
+        corOriginal = corDigito;        
         for(int contador = 0; contador < sDisplayDto.Segmentos.Length; contador++)
         {
             sDisplayDto.Segmentos[contador].color = corDigito;
