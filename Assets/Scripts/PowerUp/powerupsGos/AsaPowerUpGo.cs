@@ -72,7 +72,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
 
     private IEnumerator voar(ColetavelTile coletavelAcertado)
     {
-        setGravidade(-0.075f);
+        setGravidade(-0.1f);
         circleCollider.isTrigger = true;
         animator.Play(VOADA);
 
