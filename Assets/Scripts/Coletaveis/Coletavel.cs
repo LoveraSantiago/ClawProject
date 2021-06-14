@@ -27,6 +27,30 @@ public abstract class Coletavel
         rigidbody = goColetavel.GetComponent<Rigidbody2D>();        
     }   
 
+    public Coletavel(GameObject go, 
+                     Transformador<GameObject, GameObject> getGoComSprRenderer, 
+                     string nome)
+        :this(go, nome)
+    {
+        GameObject goSprite = getGoComSprRenderer.transformar(goColetavel);
+        spriteRenderer = goSprite.GetComponent<SpriteRenderer>();
+    }
+
+    public void addParent(Transform parent)
+    {
+        goColetavel.transform.SetParent(parent);
+    }
+
+    public void addVelocidadeAngular(float velocidadeAngular)
+    {
+        rigidbody.angularVelocity = velocidadeAngular;
+    }
+
+    public void addVelocidade(Vector2 velocidade)
+    {
+        rigidbody.velocity = velocidade;
+    }
+
     public virtual void colocarNaPosicao(Vector3 posicao) {
         goColetavel.transform.position = posicao;
     }
@@ -44,17 +68,7 @@ public abstract class Coletavel
     public void colocarNoAngulo(float angulo)
     {
         rigidbody.transform.rotation = Quaternion.Euler(0, 0, angulo);
-    }
-
-    public Vector3 getPosicao()
-    {
-        return goColetavel.transform.position;
-    }
-
-    public Vector2 getPosicaoRigidBody()
-    {
-        return rigidbody.transform.position;
-    }
+    }   
 
     public void disparar(Vector3 posicao, float angulo, float velocidade)
     {
@@ -78,34 +92,7 @@ public abstract class Coletavel
     public void desimantar()
     {
         goColetavel.layer = LayerMask.NameToLayer("Coletavel");
-    }
-
-    public void addParent(Transform parent)
-    {
-        goColetavel.transform.SetParent(parent);
-    }
-
-    public void receberSprite(Sprite sprite)
-    {
-        spriteRenderer.sprite = sprite;
-        nomeSprite = sprite.name;
-        spriteRenderer.sortingOrder = 31;
-    }
-
-    public void receberSprite(string nomeSprite)
-    {
-        receberSprite(context.dicionarioDeSprites[nomeSprite]);
-    }
-
-    public void addVelocidadeAngular(float velocidadeAngular)
-    {
-        rigidbody.angularVelocity = velocidadeAngular;
-    }
-
-    public void addVelocidade(Vector2 velocidade)
-    {
-        rigidbody.velocity = velocidade;
-    }
+    }    
 
     public virtual void parar()
     {
@@ -119,6 +106,21 @@ public abstract class Coletavel
         goColetavel.SetActive(false);
     }
 
+    public Vector3 getPosicao()
+    {
+        return goColetavel.transform.position;
+    }
+
+    public Vector2 getPosicaoRigidBody()
+    {
+        return rigidbody.transform.position;
+    }
+
+    public GameObject getGoColetavel()
+    {
+        return goColetavel;
+    }
+
     public void ligar()
     {
         ativo = true;
@@ -130,14 +132,24 @@ public abstract class Coletavel
         return ativo;
     }
 
-    public virtual void desligarGravidade()
+    public virtual void ligarGravidadeZero()
     {
         rigidbody.gravityScale = 0;
     }
 
-    public virtual void ligarGravidade()
+    public virtual void ligarGravidadeHum()
     {
         rigidbody.gravityScale = 1;
+    }
+
+    public void ligarGravidadeNegativa()
+    {
+        rigidbody.gravityScale = -1;
+    }
+
+    public void setGravidade(float gravidade)
+    {
+        rigidbody.gravityScale = gravidade;
     }
 
     public virtual void fixarVerticalmente()
@@ -148,6 +160,23 @@ public abstract class Coletavel
     public void desafixarVerticalmente()
     {
         rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public void receberSprite(Sprite sprite)
+    {
+        receberSprite(sprite, 31);
+    }
+
+    public void receberSprite(Sprite sprite, int layer)
+    {
+        spriteRenderer.sprite = sprite;
+        nomeSprite = sprite.name;
+        spriteRenderer.sortingOrder = layer;
+    }
+
+    public void receberSprite(string nomeSprite)
+    {
+        receberSprite(context.dicionarioDeSprites[nomeSprite]);
     }
 
     public Sprite getSprite()

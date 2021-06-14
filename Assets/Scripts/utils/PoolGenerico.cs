@@ -22,20 +22,20 @@ public class PoolGenerico<T>
         return poolDeObjetosPorNome[nome];
     }
 
-    public void executeSeTiverObjeto(string nome, ConsumidorDeEvento<T> consumidor)
+    public void executeSeTiverObjeto(string nome, Consumidor<T> consumidor)
     {
         if (contemNome(nome))
         {
             objetoTemp = getObjetoPeloNome(nome);
-            consumidor.consumirEvento(objetoTemp);            
+            consumidor.consumir(objetoTemp);            
         }
     }
 
-    public void executeEmTodosOsObj(ConsumidorDeEvento<T> consumidor)
+    public void executeEmTodosOsObj(Consumidor<T> consumidor)
     {
         foreach (KeyValuePair<string, T> entry in poolDeObjetosPorNome)
         {
-            consumidor.consumirEvento(entry.Value);
+            consumidor.consumir(entry.Value);
         }
     }
 

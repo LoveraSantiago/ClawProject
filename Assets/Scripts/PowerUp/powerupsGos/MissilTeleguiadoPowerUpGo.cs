@@ -3,14 +3,13 @@ using UnityEngine;
 
 public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo                                         
 {
-    private readonly int missil_acionado;
-    private readonly int missil_explosao;
-    private readonly int missil_idle;
+    private readonly int MISSIL_ACIONADO;
+    private readonly int MISSIL_EXPLOSAO;
+    private readonly int MISSIL_IDLE;
     
     private bool hitColetavel;
     private float distanciaAnterior;
-
-    private ColetavelQuery coletavelQuery;
+    
     private CapsuleCollider2D capsuleCollider;
     
     private Vector2[] pathMissilRecalculado;
@@ -19,13 +18,13 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 
     private Coroutine coroutine;
 
-    public MissilTeleguiadoPowerUpGo(GameObject tileMissil, PathMissilDto pathMissilDto) : 
-        base(tileMissil, "missil-teleguiado")
+    public MissilTeleguiadoPowerUpGo() : 
+        base(powerUpDto.MissilTeleguiadoPUp, "missil-teleguiado")
     {
-        this.pathMissilDto = pathMissilDto;
-        missil_acionado = Animator.StringToHash("missil-acionado");
-        missil_explosao = Animator.StringToHash("explosao");
-        missil_idle     = Animator.StringToHash("idle");
+        this.pathMissilDto = powerUpDto.PathMissilDto;
+        MISSIL_ACIONADO = Animator.StringToHash("missil-acionado");
+        MISSIL_EXPLOSAO = Animator.StringToHash("explosao");
+        MISSIL_IDLE     = Animator.StringToHash("idle");
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -33,7 +32,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         return PowerUpEntidade.INTERACAOGARRA.PARADO;
     }
 
-    public override float getAnguloGarraSegurar()
+    public override float getAnguloParaGarraSegurar()
     {
         return 16f;
     }
@@ -44,8 +43,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     }
 
     public override void configurarPup()
-    {
-        coletavelQuery = new ColetavelQuery();        
+    {        
         capsuleCollider = goColetavel.GetComponent<CapsuleCollider2D>();
         animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
     }
@@ -53,7 +51,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     public override void iniciarPup()
     {
         ligar();
-        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
+        ligarMirasNosColetaveis();
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
@@ -61,26 +59,22 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     {
         desligar();
         powerUpFinalizacao.finalizado();
-        animator.Play(missil_idle);
+        animator.Play(MISSIL_IDLE);
         colocarNoAngulo(0);
     }
 
     private IEnumerator selecionarAlvo()
     {
         hitColetavel = false;
+        ColetavelQuery coletavelQuery = new ColetavelQuery();
         while (!hitColetavel)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
-                Vector3 posicaoTap = inputGame.getPosicaoTap();
-                posicaoTap.z = 0;
-
-                int layerMask = LayerMask.GetMask("Coletavel");
-                RaycastHit2D raycastHit;
-                raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
-                if (raycastHit.collider != null)
+                Collider2D coletavelHit = getColetavelHit();
+                if (coletavelHit != null)
                 {
-                    string nomeAlvo = raycastHit.collider.name;
+                    string nomeAlvo = coletavelHit.name;
                     coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
                     hitColetavel = true;
                     monoBehaviour.StartCoroutine(disparandoMissil(coletavelQuery.getColetavelInGameByName(nomeAlvo)));
@@ -94,7 +88,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
     
     private IEnumerator disparandoMissil(ColetavelTile coletavel)
     {
-        animator.Play(missil_acionado);
+        animator.Play(MISSIL_ACIONADO);
         recalcularPath(coletavel.getPosicao());
         capsuleCollider.isTrigger = true;
         int contadorIndice = 0;
@@ -144,7 +138,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
             yield return null;
         }
         parar();
-        animator.Play(missil_explosao);
+        animator.Play(MISSIL_EXPLOSAO);
         coletavel.disparar(0, 20f);
         coletavel.desligarAnimacao();
 
@@ -183,8 +177,22 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
         if (!hitColetavel)
         {
             monoBehaviour.StopCoroutine(coroutine);
-            coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
+
+            desligarMirasNosColetaveis();
             resetPup();
         }
-    }    
+    }
+
+    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
+    {
+        return new FornecedorMissilTeleguiado();
+    }
+
+    public class FornecedorMissilTeleguiado : Fornecedor<AbstractPowerUpGo>
+    {
+        public AbstractPowerUpGo fornecer()
+        {
+            return new MissilTeleguiadoPowerUpGo();
+        }
+    }
 }

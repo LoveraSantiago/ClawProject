@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
-                              ConsumidorDeEvento<PowerUpInfo>,
-                              ConsumidorDeEvento<PowerUpInfoFim>
+public class MaquinaManager : Consumidor<InformacoesColetado>,
+                              Consumidor<PowerUpInfo>,
+                              Consumidor<PowerUpInfoFim>
 {    
 
     private DisplaysDeColetados displayDeColetados;
@@ -75,9 +75,9 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
         displayDeScores.mostrarScore(infoColetado.score, infoColetado.resultCombinacao);
     }
 
-    private void processarInicioPowerUp(PowerUpInfo evento)
+    private void processarInicioPowerUp(PowerUpInfo pupInfo)
     {
-        displayDeScores.acionadoPeloPowerUp(evento.duracaoTempo);
+        displayDeScores.acionadoPeloPowerUp(pupInfo.duracaoTempo);
         displayDeColetados.acionadoPeloPowerUp();
     }
 
@@ -94,29 +94,29 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     }
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO
-    public void consumirEvento(InformacoesColetado infoColetado)
+    public void consumir(InformacoesColetado infoColetado)
     {
         processarInformacoesDoColetado(infoColetado);
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> FIM
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
-    public void consumirEvento(PowerUpInfo evento)
+    public void consumir(PowerUpInfo evento)
     {
         processarInicioPowerUp(evento);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO       
 
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
-    public void consumirEvento(PowerUpInfoFim powerUpInfoFim)
+    public void consumir(PowerUpInfoFim pupFim)
     {
         //Debug.Log("Maquina consumindo prefim " + powerUpInfoFim.preFinalizar);
         //Debug.Log("Maquina consumindo fim " + powerUpInfoFim.finalizar);
-        if (powerUpInfoFim.preFinalizar)
+        if (pupFim.preFinalizar)
         {     
             processarPreFimDePowerUp();
         }
-        if (powerUpInfoFim.finalizar)
+        else if (pupFim.finalizar)
         {         
             processarFimDePowerUp();
         }
@@ -124,22 +124,22 @@ public class MaquinaManager : ConsumidorDeEvento<InformacoesColetado>,
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> FIM
 
     //CONSUMIDORES DE EVENTOS INICIO
-    public ConsumidorDeEvento<DirecaoDaGarra> getJoystickHasteConsumidorDirecao()
+    public Consumidor<DirecaoDaGarra> getJoystickHasteConsumidorDirecao()
     {
         return joystick.getConsumidorDeEventoDeDirecao();
     }    
 
-    public ConsumidorDeEvento<InformacoesColetado> getConsumidorInfoColetado()
+    public Consumidor<InformacoesColetado> getConsumidorInfoColetado()
     {
         return this;
     }
 
-    public ConsumidorDeEvento<PowerUpInfo> getConsumidorDePowerUpInfo()
+    public Consumidor<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
         return this;
     }
 
-    public ConsumidorDeEvento<PowerUpInfoFim> getConsumidorDePowerUpFim()
+    public Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
     {
         return this;
     }    

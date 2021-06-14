@@ -12,13 +12,13 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
     private GameObject goExplosao;    
     private Animator animator;
  
-    public MissilNuclearPowerUpGo(GameObject tileMissilNuclear)
-        : base(tileMissilNuclear, "missil-nuclear")
+    public MissilNuclearPowerUpGo()
+        : base(powerUpDto.MissilNuclearPUp, "missil-nuclear")
     {
         missil_explosao = Animator.StringToHash("explosao");
         missil_idle = Animator.StringToHash("idle");
 
-        tileMissilNuclear.SetActive(false);
+        goColetavel.SetActive(false);
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -26,7 +26,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         return PowerUpEntidade.INTERACAOGARRA.MOVIMENTO;
     }
 
-    public override float getAnguloGarraSegurar()
+    public override float getAnguloParaGarraSegurar()
     {
         return 9f;
     }
@@ -60,7 +60,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         colocarNoAngulo(0);
     }
 
-    public void consumirEvento(Collision2D evento)
+    public void consumir(Collision2D evento)
     {
         if (!acionado && Utils.isColetavel(evento))
         {
@@ -85,5 +85,18 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
         powerUpFinalizacao.finalizado();
         yield return null;
-    }    
+    }
+    
+    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
+    {
+        return new FornecedorMissilNuclear();
+    }
+
+    public class FornecedorMissilNuclear : Fornecedor<AbstractPowerUpGo>
+    {
+        public AbstractPowerUpGo fornecer()
+        {
+            return new MissilNuclearPowerUpGo();
+        }
+    }
 }

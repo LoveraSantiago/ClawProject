@@ -5801,6 +5801,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: a7d45f520d37bf4489a4bb139dcd9335, type: 3}
       - {fileID: 21300000, guid: ae6ca25e5fa8ba54fa8ab0a8edb2c9ae, type: 3}
       - {fileID: 21300000, guid: df5f1b9b2a0044c49a6881e8b375936c, type: 3}
+      - {fileID: 21300000, guid: 1fbc70667d57b1d4d939f69d53be7265, type: 3}
       areaDraggavel: {fileID: 2139442905}
       btnPowerUp:
       - sprAreaBotao: {fileID: 347425362}
@@ -5884,6 +5885,7 @@ MonoBehaviour:
     teleportePUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
     matTeleporteIn: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
     matTeleporteOut: {fileID: 2100000, guid: e4da0d30a658a4541a919c42171abb7f, type: 2}
+    asaPup: {fileID: 4127936681606313068, guid: 5432931c59eafda478e032d555b31327, type: 3}
   modalPontosDto:
     textoPontos: {fileID: 1473191375}
     textoNivel: {fileID: 376184029}

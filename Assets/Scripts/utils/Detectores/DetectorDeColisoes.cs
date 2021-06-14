@@ -10,7 +10,7 @@ public class DetectorDeColisoes : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {     
-        consumidorCollider.consumirEvento(collision);
+        consumidorCollider.consumir(collision);
     }
 
     public DetectorDeColisoes registrarConsumidorCollision2dOnEnter(ConsumidorDeEventoCollider consumidorCollider)

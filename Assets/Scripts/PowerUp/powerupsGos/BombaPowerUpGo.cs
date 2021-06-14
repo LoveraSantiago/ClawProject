@@ -13,13 +13,13 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     
     private CircleCollider2D circleCollider;
 
-    public BombaPowerUpGo(GameObject tileBomb)
-        : base(tileBomb, "bomba")
+    public BombaPowerUpGo()
+        : base(powerUpDto.BombPUp, "bomba")
     {
         bomba_explosao = Animator.StringToHash("explosao");
         bomba_idle     = Animator.StringToHash("idle");
 
-        tileBomb.SetActive(false);
+        goColetavel.SetActive(false);
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -27,7 +27,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         return PowerUpEntidade.INTERACAOGARRA.MOVIMENTO;
     }
 
-    public override float getAnguloGarraSegurar()
+    public override float getAnguloParaGarraSegurar()
     {
         return 10f;
     }
@@ -56,7 +56,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         colocarNoAngulo(0);
     }
 
-    public void consumirEvento(Collision2D evento)
+    public void consumir(Collision2D evento)
     {        
         if(!acionado && Utils.isColetavel(evento))
         {
@@ -86,15 +86,14 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
 
     private void processarExplosao()
     {
-        ColetavelQuery query = new ColetavelQuery();
-
         LayerMask mask = LayerMask.GetMask("Coletavel");
         Collider2D[] acertados = Physics2D.OverlapCircleAll(goColetavel.transform.position, 1f, mask);
+        ColetavelQuery coletavelQuery = new ColetavelQuery();
 
         for (int contador = 0; contador < acertados.Length; contador++)
         {
             string nomeAcertado = acertados[contador].name;
-            Coletavel acertado = query.getColetavelInGameByName(nomeAcertado);
+            Coletavel acertado = coletavelQuery.getColetavelInGameByName(nomeAcertado);
             int angulo = determinarAngulo(acertado.getPosicao());
             acertado.disparar(angulo, 7.5f);
         }
@@ -104,5 +103,18 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     {        
         if (getPosicao().x < posicao.x) return -40;
         else return 40;
+    }
+
+    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
+    {
+        return new FornecedorBomba();
+    }
+
+    public class FornecedorBomba : Fornecedor<AbstractPowerUpGo>
+    {
+        public AbstractPowerUpGo fornecer()
+        {
+            return new BombaPowerUpGo();
+        }
     }
 }

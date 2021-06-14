@@ -13,8 +13,8 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
 
     private int tempoExplosao;
 
-    public MinaTerrestrePowerUpGo(GameObject tileMinaTerrestre)
-        :base(tileMinaTerrestre, "mina-terrestre")
+    public MinaTerrestrePowerUpGo()
+        :base(powerUpDto.MinaTerrestrePUp, "mina-terrestre")
     {
         mina_explosao = Animator.StringToHash("explosao");
         mina_idle = Animator.StringToHash("idle");
@@ -74,8 +74,21 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
 
     public override void parar() { }
     public override void colocarNaPosicao(Vector3 posicao) { }
-    public override void desligarGravidade() { }
-    public override void ligarGravidade() { }
+    public override void ligarGravidadeZero() { }
+    public override void ligarGravidadeHum() { }
     public override void fixarVerticalmente() { }
+
+    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
+    {
+        return new FornecedorMina();
+    }
+
+    public class FornecedorMina : Fornecedor<AbstractPowerUpGo>
+    {
+        public AbstractPowerUpGo fornecer()
+        {
+            return new MinaTerrestrePowerUpGo();
+        }
+    }
 
 }

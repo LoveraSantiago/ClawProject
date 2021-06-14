@@ -27,11 +27,11 @@ public class AdapterDeEventosUtils
     //SERVE PARA SER ASSINALADO A UM CONSUMIDORDEEVENTOTRIGGER COMO GARANTIA DE NUNCA SER NULO    
     private class AdapterConsumidorDeEventoTrigger : ConsumidorDeEventoTrigger
     {
-        public void consumirEvento(Collider2D evento){}
+        public void consumir(Collider2D evento){}
     }
 
     private class AdapterConsumidorDeEventoCollider : ConsumidorDeEventoCollider
     {
-        public void consumirEvento(Collision2D evento){}
+        public void consumir(Collision2D evento){}
     }
 }

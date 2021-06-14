@@ -1,5 +1,5 @@
 using UnityEngine;
 
-public interface ConsumidorDeEventoCollider : ConsumidorDeEvento<Collision2D>
+public interface ConsumidorDeEventoCollider : Consumidor<Collision2D>
 {    
 }

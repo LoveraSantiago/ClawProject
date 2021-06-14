@@ -1,4 +1,4 @@
-public class LigadorDeAlvoFinal : ConsumidorDeEvento<ColetavelTile>
+public class LigadorDeAlvoFinal : Consumidor<ColetavelTile>
 {
     private string nameAlvo;
 
@@ -7,7 +7,7 @@ public class LigadorDeAlvoFinal : ConsumidorDeEvento<ColetavelTile>
         this.nameAlvo = nameAlvo;
     }
 
-    public void consumirEvento(ColetavelTile coletavel)
+    public void consumir(ColetavelTile coletavel)
     {
         if (coletavel.isAtivo())
         {

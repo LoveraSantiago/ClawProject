@@ -2,31 +2,22 @@ using UnityEngine;
 
 public class PowerUpManager : PowerUpAcionamento,
                               PowerUpFinalizacao
-{
-    private PowerUpDto powerUpDto;
-    
-    private PoolDePowerUpGos poolDePowerUpGos;
-    private MonoBehaviour monoBehaviour;
-
+{   
     public ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp { get; private set; }
     public ProdutorDeEvento<PowerUpInfoFim> produtorDeEventoFinalizacao { get; private set; }
 
     public PowerUpManager(PowerUpDto powerUpDto, MonoBehaviour monoBehaviour, InputGame inputGame)
-    {
-        this.powerUpDto = powerUpDto;
-        this.monoBehaviour = monoBehaviour;
-
+    {   
         PowerUpParaMaquina.configAcionadorDePowerUp(this);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         produtorDeEventoFinalizacao = new ProdutorDeEvento<PowerUpInfoFim>();
 
-        AbstractPowerUpGo.configurarAbstractPowerUp(this, monoBehaviour, inputGame);
-        poolDePowerUpGos = new PoolDePowerUpGos(powerUpDto);        
+        AbstractPowerUpGo.configurarAbstractPowerUp(powerUpDto, this, inputGame, monoBehaviour);        
     }    
 
     public void acionado(PowerUpEntidade powerUp)
-    {    
-        GarraInteracaoComPowerUp interacaoComPowerUp = poolDePowerUpGos.getPowerUpGo(powerUp.name);
+    {
+        GarraInteracaoComPowerUp interacaoComPowerUp = powerUp.getPowerUpGo();
 
         PowerUpInfo powerUpInfo = new PowerUpInfo();
         powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
@@ -37,7 +28,7 @@ public class PowerUpManager : PowerUpAcionamento,
 
     public void acionado(PowerUpEntidade powerUp, Vector3 posicaoAtual)
     {
-        AbstractPowerUpGo interacaoComPowerUp = poolDePowerUpGos.getPowerUpGo(powerUp.name);
+        AbstractPowerUpGo interacaoComPowerUp = powerUp.getPowerUpGo();
         interacaoComPowerUp.iniciarNaPosicao(posicaoAtual);
 
         PowerUpInfo powerUpInfo = new PowerUpInfo();
@@ -45,17 +36,24 @@ public class PowerUpManager : PowerUpAcionamento,
         powerUpInfo.configurarObjetoInteracaoComGarra(interacaoComPowerUp);
 
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
+    }   
+
+    public void preFinalizar()
+    {
+        PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(true, false);
+        produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
+    }
+
+    public void preFinalizar(ColetavelTile coletavelTile)
+    {
+        PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(true, false);
+        powerUpInfoFim.addColetavel(coletavelTile);
+        produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
     }
 
     public void finalizado()
     {
         PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(false, true);
-        produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
-    }
-
-    public void preFinalizar()
-    {
-        PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(true, false);
         produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
     }
 }

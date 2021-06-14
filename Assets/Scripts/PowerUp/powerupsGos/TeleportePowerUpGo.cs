@@ -11,15 +11,14 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
 
     private ColetavelTile coletavel1;
     private ColetavelTile coletavel2;
-    private ColetavelQuery coletavelQuery;
 
     private Coroutine coroutine;
 
-    public TeleportePowerUpGo(GameObject goTile, Material matIn, Material matOut) 
-        : base(goTile, "teleporte")
+    public TeleportePowerUpGo() 
+        : base(powerUpDto.TeleportePUp, "teleporte")
     {
-        this.matIn = matIn;
-        this.matOut = matOut;
+        this.matIn = powerUpDto.MatTeleporteIn;
+        this.matOut = powerUpDto.MatTeleporteOut;
     }
 
     public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -29,12 +28,11 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
 
     public override void configurarPup()
     {
-        coletavelQuery = new ColetavelQuery();        
     }
 
     public override void iniciarPup()
     {
-        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
+        ligarMirasNosColetaveis();
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvos());
     }
 
@@ -47,19 +45,16 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
     {
         hitColetavel1 = false;
         hitColetavel2 = false;
+        ColetavelQuery coletavelQuery = new ColetavelQuery();
+
         while (!hitColetavel1)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
-            {
-                Vector3 posicaoTap = inputGame.getPosicaoTap();
-                posicaoTap.z = 0;
-
-                int layerMask = LayerMask.GetMask("Coletavel");
-                RaycastHit2D raycastHit;
-                raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
-                if (raycastHit.collider != null)
+            {                
+                Collider2D coletavelHit = getColetavelHit();
+                if (coletavelHit != null)
                 {
-                    string nomeAlvo = raycastHit.collider.name;
+                    string nomeAlvo = coletavelHit.name;
                     coletavel1 = coletavelQuery.getColetavelInGameByName(nomeAlvo);
                     coletavel1.ligarAnimacaoMiraSelecionado();
                     hitColetavel1 = true;                    
@@ -72,16 +67,11 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
-                Vector3 posicaoTap = inputGame.getPosicaoTap();
-                posicaoTap.z = 0;
-
-                int layerMask = LayerMask.GetMask("Coletavel");
-                RaycastHit2D raycastHit;
-                raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
-                if (raycastHit.collider != null)
+                Collider2D coletavelHit = getColetavelHit();
+                if (coletavelHit != null)
                 {
-                    string nomeAlvo = raycastHit.collider.name;
-                    coletavel2 = coletavelQuery.getColetavelInGameByName(raycastHit.collider.name);
+                    string nomeAlvo = coletavelHit.name;
+                    coletavel2 = coletavelQuery.getColetavelInGameByName(nomeAlvo);
                     if (!coletavel1.nome.Equals(coletavel2.nome))
                     {
                         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));                    
@@ -137,8 +127,21 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
         if (!hitColetavel2)
         {
             monoBehaviour.StopCoroutine(coroutine);
-            coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
+            desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
+        }
+    }
+
+    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
+    {
+        return new FornecedorTeleporte();
+    }
+
+    public class FornecedorTeleporte : Fornecedor<AbstractPowerUpGo>
+    {
+        public AbstractPowerUpGo fornecer()
+        {
+            return new TeleportePowerUpGo();
         }
     }
 }

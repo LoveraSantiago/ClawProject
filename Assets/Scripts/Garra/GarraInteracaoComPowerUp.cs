@@ -3,12 +3,12 @@ using UnityEngine;
 public interface GarraInteracaoComPowerUp 
 {
     PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra();
-    float getAnguloGarraSegurar();    
+    float getAnguloParaGarraSegurar();    
     void iniciar();
     void parar();
     void colocarNaPosicao(Vector3 posicao);
-    void desligarGravidade();
-    void ligarGravidade();
+    void ligarGravidadeZero();
+    void ligarGravidadeHum();
     void fixarVerticalmente();
     void timeout();
 }
