@@ -101,7 +101,7 @@ public class BotoesPowerUp
         btnAcionado = btn;
     }
 
-    public void acionarFimPowerUp()
+    public void reclicarProxPowerUp()
     {
         acionadoPowerUp = false;
         btnAcionado.desclicar();

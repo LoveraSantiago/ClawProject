@@ -64,14 +64,14 @@ public class DisplayDeScores
         coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.blinkarAsteriscos());
     }
 
-    public void acionadoPeloFimPowerUp()
+    public void finalizarContagemRegressiva()
     {
         finalizarCoroutineAtual();
         finalizarCoroutineArcoIris();
         orquestrador.passarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual);
     }
 
-    public void acionadoPeloPowerUp(int duracao)
+    public void iniciarContagemRegressiva(int duracao)
     {
         armazenarScoreAtual();
         coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));

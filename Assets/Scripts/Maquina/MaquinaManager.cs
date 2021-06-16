@@ -7,6 +7,8 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
                               Consumidor<PowerUpInfoFim>
 {    
 
+    private PartesMaquinaDto partesDto;
+
     private DisplaysDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
     private DisplayTimer displayTimer;
@@ -14,7 +16,7 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
     private Joystick joystick;
     private BotoesPowerUp botoesPowerUp;
 
-    private PartesMaquinaDto partesDto;
+    private ArcoIrisEfeito arcoIrisEfeito;
 
     //TODO RESOLVER EXCECO DE ARGUMENTOS NO CONSTRUTOR
     public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
@@ -26,6 +28,8 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick           = new Joystick(maquinaDto.JoystickDto, velocidadeJoystick);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
+
+        arcoIrisEfeito = new ArcoIrisEfeito();
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
@@ -77,7 +81,8 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
 
     private void processarInicioPowerUp(PowerUpInfo pupInfo)
     {
-        displayDeScores.acionadoPeloPowerUp(pupInfo.duracaoTempo);
+        arcoIrisEfeito.ligarEfeitoArcoIris();
+        displayDeScores.iniciarContagemRegressiva(pupInfo.duracaoTempo);
         displayDeColetados.acionadoPeloPowerUp();
     }
 
@@ -88,8 +93,8 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
 
     private void processarFimDePowerUp()
     {
-        displayDeScores.acionadoPeloFimPowerUp();
-        botoesPowerUp.acionarFimPowerUp();
+        displayDeScores.finalizarContagemRegressiva();
+        botoesPowerUp.reclicarProxPowerUp();
         displayDeColetados.acionadoFimPowerUp();
     }
 
