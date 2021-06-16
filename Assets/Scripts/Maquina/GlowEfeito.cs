@@ -8,10 +8,43 @@ public class GlowEfeito
     private GameObject goEfeito;
     private Material materialGlow;
 
+    //REMOVER
+    //REMOVER
+    //REMOVER
+    //REMOVER
+    //REMOVER
+    //REMOVER
+    //REMOVER
+    //REMOVER
+    //REMOVER
+    //REMOVER
+    //REMOVER
+    //REMOVER
     public GlowEfeito(GameObject goEfeito, Material materialGlow)
     {
         this.goEfeito = goEfeito;
         this.materialGlow = materialGlow;
+    }
+
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    //USAR NO LUGAR
+    public GlowEfeito(GameObject goEfeito, MaterialGlow materialGlow)
+    {
+
     }
 
     public void ligarGlowSucesso()
