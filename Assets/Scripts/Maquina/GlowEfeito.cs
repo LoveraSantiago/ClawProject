@@ -40,10 +40,5 @@ public class GlowEfeito
     public void atualizarCorMaterial()
     {
         materialGlow.SetColor(propMaterial, singleColor);
-    }
-
-    public static void sortearCor()
-    {
-        singleColor = HSBColor.ToColor(new HSBColor(Mathf.PingPong(Time.time * 0.5f, 1), 1, 1));
     }   
 }
