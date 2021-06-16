@@ -29,7 +29,7 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         joystick           = new Joystick(maquinaDto.JoystickDto, velocidadeJoystick);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
 
-        arcoIrisEfeito = new ArcoIrisEfeito();
+        arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour);
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
