@@ -108,8 +108,7 @@ public class OrquestradorDisplayDigitos
     public IEnumerator ligarGlowArcoIris()
     {
         while (true)
-        {
-            GlowEfeito.sortearCor();
+        {            
             displayCentena.atualizarCorMaterial();
             yield return null;
         }
