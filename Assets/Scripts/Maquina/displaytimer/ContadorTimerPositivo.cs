@@ -10,6 +10,11 @@ public class ContadorTimerPositivo : ContadorTimer
         tempoInicial = Time.time;
     }
 
+    public bool isNearTimeOver()
+    {
+        return false;
+    }
+
     public bool isTimeOver()
     {
         return false;

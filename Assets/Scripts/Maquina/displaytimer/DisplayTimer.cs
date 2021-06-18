@@ -1,6 +1,7 @@
 using System;
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class DisplayTimer : ArcoIrisConjunto
 {    
@@ -10,17 +11,21 @@ public class DisplayTimer : ArcoIrisConjunto
     private int minutosDezenaAtual;
 
     private float tempoInicial;
+    private bool blink;
 
+    private GlowEfeito glowEfeito;
     private SpriteRenderer placaTimer;
     private DisplayTimerDigito[] displayTimerDigito;
     private DisplayTimerDigito2Pontos displayTimer2Pontos;
 
-    private GlowEfeito glowEfeito;
+    private Coroutine coroutineBlink;
+    private MonoBehaviour monoBehaviour;
 
     private ContadorTimer contadorTimer;
     public ProdutorDeEvento<bool> produtorDeEventoTempoEsgotado { get; private set; }
 
-    public DisplayTimer(DisplayTimerDto displayDto)
+
+    public DisplayTimer(DisplayTimerDto displayDto, MonoBehaviour monoBehaviour)
     {
         placaTimer = displayDto.SprRendererPlaca;
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
@@ -32,8 +37,8 @@ public class DisplayTimer : ArcoIrisConjunto
         displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);        
         
         produtorDeEventoTempoEsgotado = new ProdutorDeEvento<bool>();
-
         glowEfeito = new GlowEfeito(displayDto.PlacaEfeito, new MaterialGlow(displayDto.MaterialEfeito));
+        this.monoBehaviour = monoBehaviour;
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
@@ -73,11 +78,23 @@ public class DisplayTimer : ArcoIrisConjunto
             if (contadorTimer.isTimeOver())
             {
                 produtorDeEventoTempoEsgotado.produziuEvento(true);
+                monoBehaviour.StopCoroutine(coroutineBlink);
             }
         }
     }
 
     private void atualizarTempo()
+    {
+        passarTempoAosScores();
+        if(contadorTimer.isNearTimeOver() && !blink)
+        {
+            blink = true;
+            coroutineBlink = monoBehaviour.StartCoroutine(blinkarTimer());
+            glowEfeito.ligarGlowFail();
+        }
+    }
+
+    private void passarTempoAosScores()
     {
         TimeSpan timeSpan = contadorTimer.processarContagem();
 
@@ -106,18 +123,39 @@ public class DisplayTimer : ArcoIrisConjunto
         displayTimerDigito[0].mostrarDigito(dezenaMinutos);
     }
 
+    private IEnumerator blinkarTimer()
+    {
+        while (contadorTimer.isNearTimeOver())
+        {
+            glowEfeito.ligarGlowFail();
+            yield return new WaitForSeconds(0.5f);
+            glowEfeito.desligarGlow();
+            yield return new WaitForSeconds(0.5f);
+        }
+        yield return null;
+    }
+
     public void ligar()
     {
-        glowEfeito.ligarGlowSucesso();
+        if (!blink)
+        {
+            glowEfeito.ligarGlowSucesso();
+        }
     }
 
     public void desligar()
     {
-        glowEfeito.desligarGlow();
+        if (!blink)
+        {
+            glowEfeito.desligarGlow();
+        }
     }
 
     public void passarCor(Color cor)
     {
-        glowEfeito.getMaterialGlow().setCorNoMaterial(cor);
+        if (!blink)
+        {
+            glowEfeito.getMaterialGlow().setCorNoMaterial(cor);
+        }
     }
 }
