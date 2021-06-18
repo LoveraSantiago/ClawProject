@@ -5,7 +5,7 @@
     xmlns:editor="UnityEditor.UIElements"
     xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
 >
-    <engine:Style src="MaquinaAssembler.uss"/>
+    <engine:Style src="MaquinaAssemblerV2.uss"/>
   
     <engine:ScrollView name="itemContainer">
       <engine:VisualElement name="linha-1" class="linha">
@@ -308,4 +308,4 @@
 
       <engine:Button name="mapa" text="Gerar Mapa" />
     </engine:ScrollView>
-  </engine:UXML>
+</engine:UXML>

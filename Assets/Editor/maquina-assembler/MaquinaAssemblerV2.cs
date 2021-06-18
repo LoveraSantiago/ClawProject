@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 
-public class MaquinaAssembler : EditorWindow
+public class MaquinaAssemblerV2 : EditorWindow
 {
-    [MenuItem("Window/MaquinaAssembler")]
+    [MenuItem("Window/MaquinaAssemblerV2")]
     public static void ShowExample()
     {
-        MaquinaAssembler wnd = GetWindow<MaquinaAssembler>();
-        wnd.titleContent = new GUIContent("MaquinaAssembler");
+        MaquinaAssemblerV2 wnd = GetWindow<MaquinaAssemblerV2>();
+        wnd.titleContent = new GUIContent("MaquinaAssemblerV2");
     }
 
     private MaquinaColorida maquina;
@@ -25,41 +25,42 @@ public class MaquinaAssembler : EditorWindow
         //root.Add(label);
 
         // Import UXML
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/maquina-assembler/MaquinaAssembler.uxml");
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/maquina-assembler/MaquinaAssemblerV2.uxml");
         VisualElement labelFromUXML = visualTree.Instantiate();
         root.Add(labelFromUXML);
 
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/maquina-assembler/MaquinaAssembler.uss");
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/maquina-assembler/MaquinaAssemblerV2.uss");
         //VisualElement labelWithStyle = new Label("Hello World! With Style");
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
+
         criarComponentDropDownField(root);
 
         maquina = new MaquinaColorida();
         bindarComponentes(root, maquina, ConstantesCoresMaquina.PLACA_CIMA);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.BASE_PARTE);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.BASE_CHAO);
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.BORDA_VIDRO);       
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.PLACA_FRONTAL);       
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.PLACA_SAIDA);       
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.BARRA);       
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.CHAO_DENTRO);       
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.TUBO);       
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.VIGA_TRAS);       
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.BORDA_VIDRO);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.PLACA_FRONTAL);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.PLACA_SAIDA);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.BARRA);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.CHAO_DENTRO);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.TUBO);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.VIGA_TRAS);
 
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_POWERUP_1);       
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_PARTEDENTRO_1);       
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_POWERUP_1);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_PARTEDENTRO_1);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_CONTORNO_1);
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_POWERUP_2);       
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_PARTEDENTRO_2);       
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_POWERUP_2);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_PARTEDENTRO_2);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_CONTORNO_2);
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_POWERUP_3);       
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_PARTEDENTRO_3);       
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_POWERUP_3);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_PARTEDENTRO_3);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_CONTORNO_3);
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_POWERUP_4);       
-        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_PARTEDENTRO_4);       
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_POWERUP_4);
+        bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_PARTEDENTRO_4);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.BTN_CONTORNO_4);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.BOTAO);
 
@@ -98,7 +99,7 @@ public class MaquinaAssembler : EditorWindow
         bindarComponentes(root, maquina, ConstantesCoresMaquina.CABO_DA_GARRA);
 
         root.Q<Button>("mapa").clicked += () => maquina.gerarMapa();
-    }    
+    }
 
     private void criarComponentDropDownField(VisualElement root)
     {
@@ -109,7 +110,7 @@ public class MaquinaAssembler : EditorWindow
             {
                 AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
                 Dictionary<string, string> dicionarioDeCores = level.getDicionarioDeCores();
-                foreach(KeyValuePair<string, string> entry in dicionarioDeCores)
+                foreach (KeyValuePair<string, string> entry in dicionarioDeCores)
                 {
                     ColorField colorField = root.Q<ColorField>(entry.Key);
                     Color cor = Utils.getCorByHex(entry.Value);

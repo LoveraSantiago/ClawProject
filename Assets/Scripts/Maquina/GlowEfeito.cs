@@ -1,14 +1,11 @@
 using UnityEngine;
 
 public class GlowEfeito 
-{
-    private static readonly string propMaterial = "_corGlow";
-    private static Color singleColor;
-
+{   
     private GameObject goEfeito;
-    private Material materialGlow;
+    private MaterialGlow materialGlow;
 
-    public GlowEfeito(GameObject goEfeito, Material materialGlow)
+    public GlowEfeito(GameObject goEfeito, MaterialGlow materialGlow)
     {
         this.goEfeito = goEfeito;
         this.materialGlow = materialGlow;
@@ -17,33 +14,28 @@ public class GlowEfeito
     public void ligarGlowSucesso()
     {
         goEfeito.SetActive(true);
-        materialGlow.SetColor(propMaterial, Color.green);
+        materialGlow.setCorNoMaterial(Color.green);
     }
 
     public void ligarGlowFail()
     {
         goEfeito.SetActive(true);
-        materialGlow.SetColor(propMaterial, Color.red);
+        materialGlow.setCorNoMaterial(Color.red);
     }
 
     public void ligarGlowLuz()
     {
         goEfeito.SetActive(true);
-        materialGlow.SetColor(propMaterial, Color.yellow);
+        materialGlow.setCorNoMaterial(Color.yellow);
     }
 
     public void desligarGlow()
     {
         goEfeito.SetActive(false);
-    }
-
-    public void atualizarCorMaterial()
-    {
-        materialGlow.SetColor(propMaterial, singleColor);
-    }
-
-    public static void sortearCor()
-    {
-        singleColor = HSBColor.ToColor(new HSBColor(Mathf.PingPong(Time.time * 0.5f, 1), 1, 1));
     }   
+
+    public MaterialGlow getMaterialGlow()
+    {
+        return materialGlow;
+    }
 }

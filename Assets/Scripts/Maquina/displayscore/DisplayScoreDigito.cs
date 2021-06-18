@@ -13,7 +13,7 @@ public class DisplayScoreDigito
 
     private int[,] arrayLigados;
 
-    public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto, Material materialGlow)
+    public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto, MaterialGlow materialGlow)
     {
         sprDisplay = singleDisplayDto.Placa;
         arrayDeLeds = new SpriteRenderer[5][];
@@ -64,11 +64,11 @@ public class DisplayScoreDigito
     public void desligarGlow()
     {
         glowEfeito.desligarGlow();
-    }
+    }    
 
-    public void atualizarCorMaterial()
+    public MaterialGlow getMaterialGlow()
     {
-        glowEfeito.atualizarCorMaterial();
+        return glowEfeito.getMaterialGlow();
     }
 
     private void ligarPosicoes(int[,] array, Color cor)

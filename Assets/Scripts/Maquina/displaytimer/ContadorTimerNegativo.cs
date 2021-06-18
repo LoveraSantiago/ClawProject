@@ -24,6 +24,11 @@ public class ContadorTimerNegativo : ContadorTimer
         return tempoResult <= 0;
     }
 
+    public bool isNearTimeOver()
+    {
+        return tempoResult <= 15;
+    }
+
     public TimeSpan processarContagem()
     {
         double tempoAtual = Time.time - tempoInicial;

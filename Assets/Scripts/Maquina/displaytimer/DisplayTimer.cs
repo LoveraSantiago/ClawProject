@@ -1,24 +1,33 @@
 using System;
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class DisplayTimer 
+public class DisplayTimer : ArcoIrisConjunto
 {    
     private int segundosUnidadeAtual;
     private int segundosDezenaAtual;
     private int minutosUnidadeAtual;
     private int minutosDezenaAtual;
 
-    private float tempoInicial;   
+    private float tempoInicial;
+    private bool blink;
 
+    private GlowEfeito glowEfeito;
+    private SpriteRenderer placaTimer;
     private DisplayTimerDigito[] displayTimerDigito;
     private DisplayTimerDigito2Pontos displayTimer2Pontos;
+
+    private Coroutine coroutineBlink;
+    private MonoBehaviour monoBehaviour;
 
     private ContadorTimer contadorTimer;
     public ProdutorDeEvento<bool> produtorDeEventoTempoEsgotado { get; private set; }
 
-    public DisplayTimer(DisplayTimerDto displayDto)
+
+    public DisplayTimer(DisplayTimerDto displayDto, MonoBehaviour monoBehaviour)
     {
+        placaTimer = displayDto.SprRendererPlaca;
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
 
         displayTimerDigito = new DisplayTimerDigito[4];
@@ -28,6 +37,8 @@ public class DisplayTimer
         displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);        
         
         produtorDeEventoTempoEsgotado = new ProdutorDeEvento<bool>();
+        glowEfeito = new GlowEfeito(displayDto.PlacaEfeito, new MaterialGlow(displayDto.MaterialEfeito));
+        this.monoBehaviour = monoBehaviour;
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
@@ -44,13 +55,14 @@ public class DisplayTimer
         Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
         string corTimerHex = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_TIMER];
         string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquina.DIGITOS_TIMERS];
-        Color corTimer = Utils.getCorByHex(corTimerHex);
+
+        placaTimer.color = Utils.getCorByHex(corTimerHex);
+        
         Color corDigito = Utils.getCorByHex(corDigitosHex);
-        displayTimer2Pontos.configuraradoPeloLevel(corTimer, corDigito);
-        displayTimerDigito[0].configuraradoPeloLevel(corTimer, corDigito);
-        displayTimerDigito[1].configuraradoPeloLevel(corTimer, corDigito);
-        displayTimerDigito[2].configuraradoPeloLevel(corTimer, corDigito);
-        displayTimerDigito[3].configuraradoPeloLevel(corTimer, corDigito);
+        displayTimerDigito[0].configuraradoPeloLevel(corDigito);
+        displayTimerDigito[1].configuraradoPeloLevel(corDigito);
+        displayTimerDigito[2].configuraradoPeloLevel(corDigito);
+        displayTimerDigito[3].configuraradoPeloLevel(corDigito);
     }
 
     public void iniciarContagemTempo()
@@ -66,11 +78,23 @@ public class DisplayTimer
             if (contadorTimer.isTimeOver())
             {
                 produtorDeEventoTempoEsgotado.produziuEvento(true);
+                monoBehaviour.StopCoroutine(coroutineBlink);
             }
         }
     }
 
     private void atualizarTempo()
+    {
+        passarTempoAosScores();
+        if(contadorTimer.isNearTimeOver() && !blink)
+        {
+            blink = true;
+            coroutineBlink = monoBehaviour.StartCoroutine(blinkarTimer());
+            glowEfeito.ligarGlowFail();
+        }
+    }
+
+    private void passarTempoAosScores()
     {
         TimeSpan timeSpan = contadorTimer.processarContagem();
 
@@ -97,5 +121,41 @@ public class DisplayTimer
         if (dezenaMinutos == minutosDezenaAtual) return;
         minutosDezenaAtual = dezenaMinutos;
         displayTimerDigito[0].mostrarDigito(dezenaMinutos);
-    }   
+    }
+
+    private IEnumerator blinkarTimer()
+    {
+        while (contadorTimer.isNearTimeOver())
+        {
+            glowEfeito.ligarGlowFail();
+            yield return new WaitForSeconds(0.5f);
+            glowEfeito.desligarGlow();
+            yield return new WaitForSeconds(0.5f);
+        }
+        yield return null;
+    }
+
+    public void ligar()
+    {
+        if (!blink)
+        {
+            glowEfeito.ligarGlowSucesso();
+        }
+    }
+
+    public void desligar()
+    {
+        if (!blink)
+        {
+            glowEfeito.desligarGlow();
+        }
+    }
+
+    public void passarCor(Color cor)
+    {
+        if (!blink)
+        {
+            glowEfeito.getMaterialGlow().setCorNoMaterial(cor);
+        }
+    }
 }

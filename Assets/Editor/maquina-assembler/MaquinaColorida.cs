@@ -121,15 +121,12 @@ public class MaquinaColorida
     private void addDisplayTimerAoDicionario()
     {
         GameObject goDisplayTimer = find("display-timer");
-
-        List<GameObject> listaTras = new List<GameObject>();
+                
         List<GameObject> listaSegmentos = new List<GameObject>();
 
         for(int contador = 1; contador < 5; contador++)
         {
-            GameObject goDiplayTimerDigito = find(goDisplayTimer, "display-timer-digito-" + contador);
-            GameObject tras = find(goDiplayTimerDigito, "tras");
-            listaTras.Add(tras);
+            GameObject goDiplayTimerDigito = find(goDisplayTimer, "display-timer-digito-" + contador);                        
 
             for(int subContador = 1; subContador < 8; subContador++)
             {
@@ -138,16 +135,15 @@ public class MaquinaColorida
             }
         }
 
-        GameObject display2Digitos = find(goDisplayTimer, "display-timer-2pontos");
-        GameObject tras2P = find(display2Digitos, "tras");
+        GameObject display2Digitos = find(goDisplayTimer, "display-timer-2pontos");        
         GameObject seg1 = find(display2Digitos, "seg-1");
         GameObject seg2 = find(display2Digitos, "seg-2");
-
-        listaTras.Add(tras2P);
+        
         listaSegmentos.Add(seg1);
         listaSegmentos.Add(seg2);
 
-        dicionario.Add(ConstantesCoresMaquina.DISPLAY_TIMER, new MultipleCompColorivel(listaTras.ToArray()));
+        GameObject placaTimer = find(goDisplayTimer, "placa-timer");
+        dicionario.Add(ConstantesCoresMaquina.DISPLAY_TIMER, new SingleCompColorivel(placaTimer));
         dicionario.Add(ConstantesCoresMaquina.DIGITOS_TIMERS, new MultipleCompColorivel(listaSegmentos.ToArray()));
     }
 
@@ -162,9 +158,13 @@ public class MaquinaColorida
         GameObject[] leds2 = getLedsFromDisplay(displayScore2);
         GameObject[] leds3 = getLedsFromDisplay(displayScore3);
 
-        dicionario.Add(ConstantesCoresMaquina.DISPLAY_SCORES1, new SingleCompColorivel(displayScore1));
-        dicionario.Add(ConstantesCoresMaquina.DISPLAY_SCORES2, new SingleCompColorivel(displayScore2));
-        dicionario.Add(ConstantesCoresMaquina.DISPLAY_SCORES3, new SingleCompColorivel(displayScore3));
+        GameObject placa1 = find(displayScore1, "placa");
+        GameObject placa2 = find(displayScore2, "placa");
+        GameObject placa3 = find(displayScore3, "placa");
+
+        dicionario.Add(ConstantesCoresMaquina.DISPLAY_SCORES1, new SingleCompColorivel(placa1));
+        dicionario.Add(ConstantesCoresMaquina.DISPLAY_SCORES2, new SingleCompColorivel(placa2));
+        dicionario.Add(ConstantesCoresMaquina.DISPLAY_SCORES3, new SingleCompColorivel(placa3));
 
         dicionario.Add(ConstantesCoresMaquina.LEDS1, new MultipleCompColorivel(leds1));
         dicionario.Add(ConstantesCoresMaquina.LEDS2, new MultipleCompColorivel(leds2));

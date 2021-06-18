@@ -7,6 +7,8 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
                               Consumidor<PowerUpInfoFim>
 {    
 
+    private PartesMaquinaDto partesDto;
+
     private DisplaysDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
     private DisplayTimer displayTimer;
@@ -14,7 +16,7 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
     private Joystick joystick;
     private BotoesPowerUp botoesPowerUp;
 
-    private PartesMaquinaDto partesDto;
+    private ArcoIrisEfeito arcoIrisEfeito;
 
     //TODO RESOLVER EXCECO DE ARGUMENTOS NO CONSTRUTOR
     public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
@@ -23,9 +25,14 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
 
         displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
-        displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
+        displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto, monoBehaviour);
         joystick           = new Joystick(maquinaDto.JoystickDto, velocidadeJoystick);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
+
+        arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)
+            .addArcoIrisConjunto(displayDeColetados)
+            .addArcoIrisConjunto(displayDeScores)
+            .addArcoIrisConjunto(displayTimer);
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
@@ -77,8 +84,8 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
 
     private void processarInicioPowerUp(PowerUpInfo pupInfo)
     {
-        displayDeScores.acionadoPeloPowerUp(pupInfo.duracaoTempo);
-        displayDeColetados.acionadoPeloPowerUp();
+        arcoIrisEfeito.ligarEfeitoArcoIris();
+        displayDeScores.iniciarContagemRegressiva(pupInfo.duracaoTempo);        
     }
 
     private void processarPreFimDePowerUp()
@@ -88,9 +95,9 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
 
     private void processarFimDePowerUp()
     {
-        displayDeScores.acionadoPeloFimPowerUp();
-        botoesPowerUp.acionarFimPowerUp();
-        displayDeColetados.acionadoFimPowerUp();
+        displayDeScores.finalizarContagemRegressiva();
+        botoesPowerUp.reclicarProxPowerUp();        
+        arcoIrisEfeito.desligarEfeitoArcoIris();
     }
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO

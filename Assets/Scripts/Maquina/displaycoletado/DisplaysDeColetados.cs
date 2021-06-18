@@ -2,14 +2,13 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class DisplaysDeColetados 
+public class DisplaysDeColetados : ArcoIrisConjunto
 {
     private int indiceEspaco;    
 
     private DisplayDeColetadoDto displayColetadoDto;    
     private DisplayDeColetado[] displayDeColetado;
 
-    private Coroutine coroutineArcoIris;
     private MonoBehaviour monoBehaviour;
 
     public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
@@ -56,19 +55,7 @@ public class DisplaysDeColetados
             monoBehaviour.StartCoroutine(displayDeColetado[indiceEspaco].mostrarSprite(spriteColetado));
             indiceEspaco++;
         }        
-    }    
-
-    public void acionadoPeloPowerUp()
-    {
-        ligarGlowsSucesso();
-        coroutineArcoIris = monoBehaviour.StartCoroutine(ligarGlowArcoIris());        
-    }
-
-    public void acionadoFimPowerUp()
-    {
-        desligarGlows();
-        monoBehaviour.StopCoroutine(coroutineArcoIris);
-    }
+    }       
 
     private IEnumerator mostrarTerceiroSprite(Sprite spriteColetado, bool result)
     {
@@ -88,16 +75,7 @@ public class DisplaysDeColetados
         yield return monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3));
         yield return new WaitForSeconds(displayColetadoDto.FimDelay);
         desligarGlows();
-    }
-
-    private IEnumerator ligarGlowArcoIris()
-    {
-        while (true)
-        {            
-            displayDeColetado[0].atualizarCorMaterial();            
-            yield return null;
-        }
-    }
+    }   
 
     private void ligarGlowsSucesso()
     {
@@ -118,5 +96,20 @@ public class DisplaysDeColetados
         displayDeColetado[0].desligarGlow();
         displayDeColetado[1].desligarGlow();
         displayDeColetado[2].desligarGlow();
-    }    
+    }
+
+    public void ligar()
+    {
+        ligarGlowsSucesso();
+    }
+
+    public void desligar()
+    {
+        desligarGlows();
+    }
+
+    public void passarCor(Color cor)
+    {
+        displayDeColetado[0].getMaterialGlow().setCorNoMaterial(cor);
+    }
 }

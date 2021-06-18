@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class DisplayDeScores 
+public class DisplayDeScores : ArcoIrisConjunto
 {
     private int scoreCentenaAtual;
     private int scoreDezenaAtual;
@@ -15,16 +15,17 @@ public class DisplayDeScores
     private MonoBehaviour monoBehaviour;
 
     private Coroutine coroutineAtual;
-    private Coroutine coroutineArcoIris;
 
     public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto, MonoBehaviour monoBehaviour)
     {
         this.monoBehaviour = monoBehaviour;
 
-        SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;        
-        displayCentena = new DisplayScoreDigito(singleDisplays[0], displayDeScoresDto.MaterialGlowDisplay);
-        displayDezena  = new DisplayScoreDigito(singleDisplays[1], displayDeScoresDto.MaterialGlowDisplay);
-        displayUnidade = new DisplayScoreDigito(singleDisplays[2], displayDeScoresDto.MaterialGlowDisplay);
+        SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;
+
+        MaterialGlow materialGlow = new MaterialGlow(displayDeScoresDto.MaterialGlowDisplay);
+        displayCentena = new DisplayScoreDigito(singleDisplays[0], materialGlow);
+        displayDezena  = new DisplayScoreDigito(singleDisplays[1], materialGlow);
+        displayUnidade = new DisplayScoreDigito(singleDisplays[2], materialGlow);
 
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
@@ -64,19 +65,17 @@ public class DisplayDeScores
         coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.blinkarAsteriscos());
     }
 
-    public void acionadoPeloFimPowerUp()
+    public void finalizarContagemRegressiva()
     {
         finalizarCoroutineAtual();
         finalizarCoroutineArcoIris();
         orquestrador.passarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual);
     }
 
-    public void acionadoPeloPowerUp(int duracao)
+    public void iniciarContagemRegressiva(int duracao)
     {
         armazenarScoreAtual();
-        coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));
-        orquestrador.ligarGlows();
-        coroutineArcoIris = monoBehaviour.StartCoroutine(orquestrador.ligarGlowArcoIris());
+        coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));                
     }     
 
     private void splitarScore(int score)
@@ -106,6 +105,24 @@ public class DisplayDeScores
     private void finalizarCoroutineArcoIris()
     {
         orquestrador.desligarGlows();
-        monoBehaviour.StopCoroutine(coroutineArcoIris);
+    }
+
+    public void ligar()
+    {
+        displayCentena.ligarGlowSucesso();
+        displayDezena.ligarGlowSucesso();
+        displayUnidade.ligarGlowSucesso();
+    }
+
+    public void desligar()
+    {
+        displayCentena.desligarGlow();
+        displayDezena.desligarGlow();
+        displayUnidade.desligarGlow();
+    }
+
+    public void passarCor(Color cor)
+    {
+        displayCentena.getMaterialGlow().setCorNoMaterial(cor);
     }
 }
