@@ -30,7 +30,8 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
 
         arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)
-            .addArcoIrisConjunto(displayDeColetados);
+            .addArcoIrisConjunto(displayDeColetados)
+            .addArcoIrisConjunto(displayDeScores);
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)

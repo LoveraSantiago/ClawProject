@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class DisplayTimer 
+public class DisplayTimer : ArcoIrisConjunto
 {    
     private int segundosUnidadeAtual;
     private int segundosDezenaAtual;
@@ -100,5 +100,20 @@ public class DisplayTimer
         if (dezenaMinutos == minutosDezenaAtual) return;
         minutosDezenaAtual = dezenaMinutos;
         displayTimerDigito[0].mostrarDigito(dezenaMinutos);
-    }   
+    }
+
+    public void ligar()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void desligar()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void passarCor(Color cor)
+    {
+        throw new NotImplementedException();
+    }
 }

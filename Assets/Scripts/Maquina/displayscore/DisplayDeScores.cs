@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class DisplayDeScores 
+public class DisplayDeScores : ArcoIrisConjunto
 {
     private int scoreCentenaAtual;
     private int scoreDezenaAtual;
@@ -15,7 +15,6 @@ public class DisplayDeScores
     private MonoBehaviour monoBehaviour;
 
     private Coroutine coroutineAtual;
-    private Coroutine coroutineArcoIris;
 
     public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto, MonoBehaviour monoBehaviour)
     {
@@ -106,6 +105,24 @@ public class DisplayDeScores
     private void finalizarCoroutineArcoIris()
     {
         orquestrador.desligarGlows();
-        monoBehaviour.StopCoroutine(coroutineArcoIris);
+    }
+
+    public void ligar()
+    {
+        displayCentena.ligarGlowSucesso();
+        displayDezena.ligarGlowSucesso();
+        displayUnidade.ligarGlowSucesso();
+    }
+
+    public void desligar()
+    {
+        displayCentena.desligarGlow();
+        displayDezena.desligarGlow();
+        displayUnidade.desligarGlow();
+    }
+
+    public void passarCor(Color cor)
+    {
+        displayCentena.getMaterialGlow().setCorNoMaterial(cor);
     }
 }

@@ -66,6 +66,11 @@ public class DisplayScoreDigito
         glowEfeito.desligarGlow();
     }    
 
+    public MaterialGlow getMaterialGlow()
+    {
+        return glowEfeito.getMaterialGlow();
+    }
+
     private void ligarPosicoes(int[,] array, Color cor)
     {
         for(int contadorX = 0; contadorX < array.GetLength(0); contadorX++)
