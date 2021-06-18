@@ -14,7 +14,9 @@ public class DisplayDeColetado
     public DisplayDeColetado(SingleDisplayColetadoDto singleDisplayColetadoDto)
     {
         sDisplayDto = singleDisplayColetadoDto;
-        glowEfeito = new GlowEfeito(singleDisplayColetadoDto.SprRendererDentroEfeito.gameObject, displayColetadoDto.MaterialGlowDisplay);        
+
+        MaterialGlow materialGlow = new MaterialGlow(displayColetadoDto.MaterialGlowDisplay);
+        glowEfeito = new GlowEfeito(singleDisplayColetadoDto.SprRendererDentroEfeito.gameObject, materialGlow);        
 
         posicaoInicial = sDisplayDto.GoColetado.transform.localPosition;
         posicaoDesejada = new Vector3(
@@ -93,12 +95,7 @@ public class DisplayDeColetado
     public void desligarGlow()
     {
         glowEfeito.desligarGlow();
-    }
-
-    public void atualizarCorMaterial()
-    {
-        glowEfeito.atualizarCorMaterial();
-    }
+    }    
 
     public static void configurarDisplay(DisplayDeColetadoDto displayColetadoDtoArg)
     {

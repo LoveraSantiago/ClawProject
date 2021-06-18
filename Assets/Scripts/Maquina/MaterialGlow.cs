@@ -14,4 +14,9 @@ public class MaterialGlow
     {
         material.SetColor(propMaterial, cor);
     }
+
+    public Material getMaterial()
+    {
+        return material;
+    }
 }

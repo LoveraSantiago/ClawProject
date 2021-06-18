@@ -21,10 +21,12 @@ public class DisplayDeScores
     {
         this.monoBehaviour = monoBehaviour;
 
-        SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;        
-        displayCentena = new DisplayScoreDigito(singleDisplays[0], displayDeScoresDto.MaterialGlowDisplay);
-        displayDezena  = new DisplayScoreDigito(singleDisplays[1], displayDeScoresDto.MaterialGlowDisplay);
-        displayUnidade = new DisplayScoreDigito(singleDisplays[2], displayDeScoresDto.MaterialGlowDisplay);
+        SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;
+
+        MaterialGlow materialGlow = new MaterialGlow(displayDeScoresDto.MaterialGlowDisplay);
+        displayCentena = new DisplayScoreDigito(singleDisplays[0], materialGlow);
+        displayDezena  = new DisplayScoreDigito(singleDisplays[1], materialGlow);
+        displayUnidade = new DisplayScoreDigito(singleDisplays[2], materialGlow);
 
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
@@ -74,9 +76,7 @@ public class DisplayDeScores
     public void iniciarContagemRegressiva(int duracao)
     {
         armazenarScoreAtual();
-        coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));
-        orquestrador.ligarGlows();
-        coroutineArcoIris = monoBehaviour.StartCoroutine(orquestrador.ligarGlowArcoIris());
+        coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));                
     }     
 
     private void splitarScore(int score)

@@ -104,16 +104,7 @@ public class OrquestradorDisplayDigitos
         displayDezena.desligarGlow();
         displayUnidade.desligarGlow();
     }
-
-    public IEnumerator ligarGlowArcoIris()
-    {
-        while (true)
-        {            
-            displayCentena.atualizarCorMaterial();
-            yield return null;
-        }
-    }
-
+   
     public void passarScore(int centena, int dezena, int unidade)
     {
         displayCentena.mostrarDigito(centena, Color.red);

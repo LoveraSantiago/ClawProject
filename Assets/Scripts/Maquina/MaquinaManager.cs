@@ -82,8 +82,7 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
     private void processarInicioPowerUp(PowerUpInfo pupInfo)
     {
         arcoIrisEfeito.ligarEfeitoArcoIris();
-        displayDeScores.iniciarContagemRegressiva(pupInfo.duracaoTempo);
-        displayDeColetados.acionadoPeloPowerUp();
+        displayDeScores.iniciarContagemRegressiva(pupInfo.duracaoTempo);        
     }
 
     private void processarPreFimDePowerUp()
@@ -94,8 +93,8 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
     private void processarFimDePowerUp()
     {
         displayDeScores.finalizarContagemRegressiva();
-        botoesPowerUp.reclicarProxPowerUp();
-        displayDeColetados.acionadoFimPowerUp();
+        botoesPowerUp.reclicarProxPowerUp();        
+        arcoIrisEfeito.desligarEfeitoArcoIris();
     }
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO
