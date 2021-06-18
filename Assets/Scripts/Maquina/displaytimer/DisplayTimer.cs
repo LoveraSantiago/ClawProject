@@ -15,6 +15,8 @@ public class DisplayTimer : ArcoIrisConjunto
     private DisplayTimerDigito[] displayTimerDigito;
     private DisplayTimerDigito2Pontos displayTimer2Pontos;
 
+    private GlowEfeito glowEfeito;
+
     private ContadorTimer contadorTimer;
     public ProdutorDeEvento<bool> produtorDeEventoTempoEsgotado { get; private set; }
 
@@ -30,6 +32,8 @@ public class DisplayTimer : ArcoIrisConjunto
         displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);        
         
         produtorDeEventoTempoEsgotado = new ProdutorDeEvento<bool>();
+
+        glowEfeito = new GlowEfeito(displayDto.PlacaEfeito, new MaterialGlow(displayDto.MaterialEfeito));
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
@@ -104,16 +108,16 @@ public class DisplayTimer : ArcoIrisConjunto
 
     public void ligar()
     {
-        throw new NotImplementedException();
+        glowEfeito.ligarGlowSucesso();
     }
 
     public void desligar()
     {
-        throw new NotImplementedException();
+        glowEfeito.desligarGlow();
     }
 
     public void passarCor(Color cor)
     {
-        throw new NotImplementedException();
+        glowEfeito.getMaterialGlow().setCorNoMaterial(cor);
     }
 }

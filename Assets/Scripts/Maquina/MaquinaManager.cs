@@ -31,7 +31,8 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
 
         arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)
             .addArcoIrisConjunto(displayDeColetados)
-            .addArcoIrisConjunto(displayDeScores);
+            .addArcoIrisConjunto(displayDeScores)
+            .addArcoIrisConjunto(displayTimer);
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
