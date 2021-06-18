@@ -97,6 +97,11 @@ public class DisplayDeColetado
         glowEfeito.desligarGlow();
     }    
 
+    public MaterialGlow getMaterialGlow()
+    {
+        return glowEfeito.getMaterialGlow();
+    }
+
     public static void configurarDisplay(DisplayDeColetadoDto displayColetadoDtoArg)
     {
         displayColetadoDto = displayColetadoDtoArg;

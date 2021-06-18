@@ -33,4 +33,9 @@ public class GlowEfeito
     {
         goEfeito.SetActive(false);
     }   
+
+    public MaterialGlow getMaterialGlow()
+    {
+        return materialGlow;
+    }
 }

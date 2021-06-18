@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class DisplaysDeColetados 
+public class DisplaysDeColetados : ArcoIrisConjunto
 {
     private int indiceEspaco;    
 
@@ -96,5 +96,20 @@ public class DisplaysDeColetados
         displayDeColetado[0].desligarGlow();
         displayDeColetado[1].desligarGlow();
         displayDeColetado[2].desligarGlow();
-    }    
+    }
+
+    public void ligar()
+    {
+        ligarGlowsSucesso();
+    }
+
+    public void desligar()
+    {
+        desligarGlows();
+    }
+
+    public void passarCor(Color cor)
+    {
+        displayDeColetado[0].getMaterialGlow().setCorNoMaterial(cor);
+    }
 }

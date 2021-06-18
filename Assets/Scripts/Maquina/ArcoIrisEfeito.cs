@@ -33,9 +33,10 @@ public class ArcoIrisEfeito
         monoBehaviour.StopCoroutine(coroutineArcoIris);
     }
 
-    public void addArcoIrisConjunto(ArcoIrisConjunto arcoIrisConjunto)
+    public ArcoIrisEfeito addArcoIrisConjunto(ArcoIrisConjunto arcoIrisConjunto)
     {
         listaArcoIrisConjunto.Add(arcoIrisConjunto);
+        return this;
     }
 
     private IEnumerator ligarGlowArcoIris()
