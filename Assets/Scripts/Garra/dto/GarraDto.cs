@@ -24,6 +24,7 @@ public class GarraDto
     [SerializeField] private Transform pincaEsquerda;
     [SerializeField] private Transform pincaDireita;
     [SerializeField] private GameObject colisor;
+    [SerializeField] private Animator animator;
     [Space(5)]
     [SerializeField] private CaboGarraDto caboDto;
 
@@ -47,6 +48,7 @@ public class GarraDto
     public Transform PincaEsquerda { get { return pincaEsquerda; } }
     public Transform PincaDireita { get { return pincaDireita; } }
     public GameObject Colisor { get { return colisor; } }
+    public Animator Animator { get { return animator; } }
 
     public CaboGarraDto CaboDaGarraDto { get { return caboDto; } }
 
