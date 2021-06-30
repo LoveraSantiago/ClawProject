@@ -18,7 +18,8 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal
     public override void preInicio()
     {   
         colocarMassa(2);
-        contadorDeTempoTravamento.resetContador();               
+        contadorDeTempoTravamento.resetContador();
+        animacao.irParaBaixo();
     }
 
     public override void update()

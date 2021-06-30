@@ -26,4 +26,26 @@ public class AnimacaoGarra
     {
         animator.Play(ANIM_ESQUERDA);
     }
+
+    public void irParaLadoAnterior(int lado)
+    {
+        if(lado == -1)
+        {
+            irParaEsquerda();
+        }
+        else
+        {
+            irParaDireita();
+        }
+    }
+
+    public void irParaBaixo()
+    {
+        animator.Play(ANIM_BAIXO);
+    }
+
+    public void irParaCima()
+    {
+        animator.Play(ANIM_CIMA);
+    }
 }

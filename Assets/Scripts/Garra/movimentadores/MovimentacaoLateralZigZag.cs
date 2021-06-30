@@ -39,6 +39,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 
         pincas.acionarTrigger();
         moverHorizontalmenteFreeze(direcao);
+        animacao.irParaLadoAnterior(direcao);
     }
 
     public override void update()

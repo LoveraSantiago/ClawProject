@@ -13,6 +13,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal
 
         contadorDeSubidas++;
         produtorDeEventoSubidaDaGarra.produziuEvento(contadorDeSubidas);
+        animacao.irParaCima();
         //moverGarraParaCimaFreeze();
     }
 
