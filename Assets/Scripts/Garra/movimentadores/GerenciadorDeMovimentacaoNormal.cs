@@ -55,10 +55,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
                 return movLateral;
 
             case (GarraManager.MECANICA_GARRA.TELEGUIADA):
-                return new MovimentacaoLateralTeleguiada();
-
-            case (GarraManager.MECANICA_GARRA.ZIG_ZAGTELEGUIADO):
-                return new MovimentacaoLateralZigTeleguiado();
+                return new MovimentacaoLateralTeleguiada();            
 
         }
         return new MovimentacaoLateralZigZag();
