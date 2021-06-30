@@ -13,15 +13,15 @@ public class MovimentacaoVoltarParaCima : MovimentacaoDaGarraPowerUp
 
     public override void fixedUpdate()
     {
-        if (!isGarraAcimaPosInicial())
+        if (!isAcimaPosInicial())
         {
-            moverGarraParaCimaFreeze();
+            moverParaCimaFreeze();
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
         {
-            pararGarra();
-            colocarGarraNaAlturaInicial();
+            parar();
+            colocarNaAlturaInicial();
             comunicadorComGerMovimentacao.trocarParaAcaoVoltarParaMeio();
         }
     }

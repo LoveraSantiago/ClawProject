@@ -9,7 +9,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal
 
     public override void preInicio()
     {
-        colocarMassaNaGarra(3);        
+        colocarMassa(3);        
 
         contadorDeSubidas++;
         produtorDeEventoSubidaDaGarra.produziuEvento(contadorDeSubidas);
@@ -18,7 +18,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal
 
     public override void update()
     {        
-        if(isGarraAcimaPosInicial())
+        if(isAcimaPosInicial())
         {            
             comunicadorComGerMovimentacao.trocarParaAcaoNormal();
         }
@@ -26,6 +26,6 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal
 
     public override void fixedUpdate()
     {
-        moverGarraParaCimaFreeze();
+        moverParaCimaFreeze();
     }
 }

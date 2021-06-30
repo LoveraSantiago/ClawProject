@@ -13,7 +13,7 @@ public class GarraManager : ConsumidorDeEventoTrigger,
 
     public GarraManager(GarraDto garraDto, InputGame inputGame)
     {
-        MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(garraDto, inputGame);
+        MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto, inputGame);
         gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
         gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
         gerDeMovAtual = gerDeMovNormal;
