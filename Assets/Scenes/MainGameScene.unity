@@ -5528,10 +5528,10 @@ MonoBehaviour:
     colisor: {fileID: 3777820026685026688}
     animator: {fileID: 2086766167889621232}
     caboDto:
-      grossuraLinha: 0
-      tamanhoSegmento: 0
-      transfInicioCabo: {fileID: 0}
-      lineRenderer: {fileID: 0}
+      grossuraLinha: 0.1
+      tamanhoSegmento: 0.15
+      transfInicioCabo: {fileID: 1336653433}
+      lineRenderer: {fileID: 958265029}
   coletaveisDto:
     sensorDeColetado: {fileID: 2083913115}
     tile: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
@@ -12324,6 +12324,11 @@ PrefabInstance:
       objectReference: {fileID: 1907269041974171795}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
+--- !u!120 &958265029 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
+  m_PrefabInstance: {fileID: 958265028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &963819042 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7474942483030141672, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
