@@ -49,14 +49,10 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public MovimentacaoDaGarra selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
     {
-        switch (mecanicaGarraEscolhida)
+        switch (mecanicaGarraEscolhida)//MECANICAS ANTIGAS REMOVIDAS IMPLEMENTACAO LEGADA
         {
             case (GarraManager.MECANICA_GARRA.ZIG_ZAG):
                 return movLateral;
-
-            case (GarraManager.MECANICA_GARRA.TELEGUIADA):
-                return new MovimentacaoLateralTeleguiada();            
-
         }
         return new MovimentacaoLateralZigZag();
     }
