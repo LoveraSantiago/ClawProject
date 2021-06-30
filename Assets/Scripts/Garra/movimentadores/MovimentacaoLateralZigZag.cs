@@ -65,13 +65,15 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         if (isMaiorPosHorizontal(LIMITE_LATERAL_TELA))            
         {
             direcao = -1;     
-            moverHorizontalmenteFreeze(direcao);            
+            moverHorizontalmenteFreeze(direcao);
+            animacao.irParaEsquerda();
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
         }
         else if (isMenorPosHorizontal(-LIMITE_LATERAL_TELA))
         {
             direcao = 1;
-            moverHorizontalmenteFreeze(direcao);            
+            moverHorizontalmenteFreeze(direcao);
+            animacao.irParaDireita();
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
         }
         else

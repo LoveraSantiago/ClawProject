@@ -6,7 +6,8 @@ public abstract class MovimentacaoDaGarra
 
     protected static PincaDaGarra pincas;
     protected static GarraDto garraDto;
-    protected static InputGame inputGame;    
+    protected static InputGame inputGame;
+    protected static AnimacaoGarra animacao;
 
     protected static Vector2 posInicial;
 
@@ -127,15 +128,16 @@ public abstract class MovimentacaoDaGarra
     }
 
     public static void configurarComponentesMovimentacao(
-        GarraDto componentesDaGarraDtoArg,         
+        GarraDto garraDtoArg,         
         InputGame inputGameArg)
     {
-        garraDto = componentesDaGarraDtoArg;
+        garraDto = garraDtoArg;
         pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);        
         inputGame = inputGameArg;
 
         produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
         produtorEventoGarraAcertou = new ProdutorDeEvento<string>();
         produtorDeEventoSubidaDaGarra = new ProdutorDeEvento<int>();
+        animacao = new AnimacaoGarra(garraDto.Animator);
     }
 }
