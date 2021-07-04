@@ -21,6 +21,11 @@ public abstract class MovimentacaoDaGarra
 
     public virtual void garraColidiuCom(GameObject gameObject) { }
 
+    public void comemorar()
+    {
+        animacao.comemorar();
+    }
+
     protected void parar()
     {
         garraDto.RigidBody.velocity = Vector3.zero;

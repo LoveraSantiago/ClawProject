@@ -48,4 +48,9 @@ public class AnimacaoGarra
     {
         animator.Play(ANIM_CIMA);
     }
+
+    public void comemorar()
+    {
+        animator.Play(ANIM_FELIZ);
+    }
 }

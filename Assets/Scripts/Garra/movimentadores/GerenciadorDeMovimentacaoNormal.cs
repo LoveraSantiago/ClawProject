@@ -45,6 +45,11 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     {
         movAtual.garraColidiuCom(other.gameObject);
     }
+
+    public override void garraComemorar()
+    {
+        movAtual.comemorar();
+    }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
     public MovimentacaoDaGarra selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)

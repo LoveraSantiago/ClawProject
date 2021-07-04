@@ -9,4 +9,6 @@ public abstract class GerenciadorDeMovimentacao
     public virtual void garraColidiuCom(Collider2D other)
     {        
     }
+
+    public abstract void garraComemorar();
 }

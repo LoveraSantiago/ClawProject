@@ -52,6 +52,11 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     {
         movAtual.fixedUpdate();
     }
+
+    public override void garraComemorar()
+    {
+        movAtual.comemorar();
+    }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
     public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
@@ -107,6 +112,5 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     {
         movimentador.preInicio();
         movAtual = movimentador;
-    }
-
+    }    
 }
