@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AnimacaoGarra 
@@ -10,7 +11,7 @@ public class AnimacaoGarra
     private readonly int ANIM_PISCANDO = Animator.StringToHash("piscando");
     private readonly int ANIM_FELIZ    = Animator.StringToHash("feliz");
 
-    private Animator animator;
+    private Animator animator;   
 
     public AnimacaoGarra(Animator animator)
     {
@@ -52,5 +53,10 @@ public class AnimacaoGarra
     public void comemorar()
     {
         animator.Play(ANIM_FELIZ);
+    }
+
+    public void piscar()
+    {
+        animator.Play(ANIM_PISCANDO);
     }
 }

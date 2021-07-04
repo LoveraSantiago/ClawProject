@@ -11,6 +11,11 @@ public class MovimentacaoVoltarParaCima : MovimentacaoDaGarraPowerUp
         anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
     }
 
+    public override void preInicio()
+    {
+        animacao.irParaCima();
+    }
+
     public override void fixedUpdate()
     {
         if (!isAcimaPosInicial())

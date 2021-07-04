@@ -56,11 +56,13 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
     {
         if (isMaiorPosHorizontal(0))
         {
-            direcaoVoltar = DirecaoDaGarra.ESQUERDA;            
+            direcaoVoltar = DirecaoDaGarra.ESQUERDA;
+            animacao.irParaDireita();
         }
         else
         {
-            direcaoVoltar = DirecaoDaGarra.DIREITA;            
+            direcaoVoltar = DirecaoDaGarra.DIREITA;
+            animacao.irParaEsquerda();
         }
     }
 
