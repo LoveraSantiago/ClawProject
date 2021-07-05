@@ -28,12 +28,12 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
     public override float getAnguloParaGarraSegurar()
     {
-        return 9f;
+        return 4f;
     }
 
     public override void colocarNaPosicao(Vector3 posicao)
     {        
-        base.colocarNaPosicao(posicao + new Vector3(0, -0.45f, 0));
+        base.colocarNaPosicao(posicao + new Vector3(0, -0.60f, 0));
     }
 
     public override void configurarPup()
