@@ -137,6 +137,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
             }
             yield return null;
         }
+        colocarNaPosicao(coletavel.getPosicao());
         parar();
         animator.Play(MISSIL_EXPLOSAO);
         coletavel.disparar(0, 20f);
