@@ -98,5 +98,5 @@ Material:
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _corFora: {r: 1, g: 1, b: 1, a: 0}
-    - _corGlow: {r: 1, g: 0.8530569, b: 0, a: 1}
+    - _corGlow: {r: 0, g: 1, b: 0.8882169, a: 1}
   m_BuildTextureStacks: []
