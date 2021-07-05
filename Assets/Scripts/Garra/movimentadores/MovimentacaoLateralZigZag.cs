@@ -35,10 +35,10 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         configurarAngulosParaMax();
         dispararEventoDirecao(direcao);
 
-        colocarGarraNaAlturaInicial();        
+        colocarNaAlturaInicial();        
 
         pincas.acionarTrigger();
-        moverGarraHorizontalmenteFreeze(direcao);
+        moverHorizontalmenteFreeze(direcao);        
     }
 
     public override void update()
@@ -47,7 +47,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         {
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
             comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
-            desafixarGarra();
+            desafixar();
             pincas.acionarCollider();
         }
     }
@@ -62,16 +62,18 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 
     private void verificarSeMovimentacaoAtingiuLimites()
     {
-        if (isGarraMaiorPosHorizontal(LIMITE_LATERAL_TELA))            
+        if (isMaiorPosHorizontal(LIMITE_LATERAL_TELA))            
         {
             direcao = -1;     
-            moverGarraHorizontalmenteFreeze(direcao);            
+            moverHorizontalmenteFreeze(direcao);
+            animacao.irParaEsquerda();
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
         }
-        else if (isGarraMenorPosHorizontal(-LIMITE_LATERAL_TELA))
+        else if (isMenorPosHorizontal(-LIMITE_LATERAL_TELA))
         {
             direcao = 1;
-            moverGarraHorizontalmenteFreeze(direcao);            
+            moverHorizontalmenteFreeze(direcao);
+            animacao.irParaDireita();
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
         }
         else

@@ -29,8 +29,8 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
 
     public override float getAnguloParaGarraSegurar()
     {
-        return 10f;
-    }
+        return 5f;
+    }    
 
     public override void configurarPup()
     {

@@ -17,8 +17,9 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal
 
     public override void preInicio()
     {   
-        colocarMassaNaGarra(2);
-        contadorDeTempoTravamento.resetContador();               
+        colocarMassa(2);
+        contadorDeTempoTravamento.resetContador();
+        animacao.irParaBaixo();
     }
 
     public override void update()
@@ -34,7 +35,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura,
             anguloDesejadoEsquerda, anguloDesejadoDireita);
 
-        moverGarraParaBaixoFreeze();
+        moverParaBaixoFreeze();
     }
 
     public override void garraColidiuCom(GameObject gameObject)

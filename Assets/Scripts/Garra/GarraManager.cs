@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class GarraManager : ConsumidorDeEventoTrigger,
                             Consumidor<PowerUpInfo>,
-                            Consumidor<PowerUpInfoFim>
+                            Consumidor<PowerUpInfoFim>,
+                            Consumidor<InformacoesColetado>
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
 
@@ -13,7 +14,7 @@ public class GarraManager : ConsumidorDeEventoTrigger,
 
     public GarraManager(GarraDto garraDto, InputGame inputGame)
     {
-        MovimentacaoDaGarra.configurarComponentesMovimentacaoGarra(garraDto, inputGame);
+        MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto, inputGame);
         gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
         gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
         gerDeMovAtual = gerDeMovNormal;
@@ -84,7 +85,7 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     {
         processarPowerUp(evento);
     }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> FIM
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> INICIO
     public void consumir(PowerUpInfoFim powerUpInfoFim)
@@ -94,7 +95,14 @@ public class GarraManager : ConsumidorDeEventoTrigger,
             processarFimPowerUp();
         }
     }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> INICIO
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> FIM
+
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
+    public void consumir(InformacoesColetado evento)
+    {
+        gerDeMovAtual.garraComemorar();
+    }
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
 
     public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
     {
@@ -116,8 +124,13 @@ public class GarraManager : ConsumidorDeEventoTrigger,
         return this;
     }
 
-    internal Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
+    public Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
     {
         return this;
-    }    
+    }  
+    
+    public Consumidor<InformacoesColetado> getConsumidorInformacoesColetado()
+    {
+        return this;
+    }
 }

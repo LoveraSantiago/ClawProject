@@ -114,12 +114,12 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
             colocarNoAngulo(quat);
 
             float distanciaAtual = (p4 - posicao).magnitude;
-            Debug.Log("Dist: " + distanciaAtual + " Ang: " + z);
+            //Debug.Log("Dist: " + distanciaAtual + " Ang: " + z);
             
             if (distanciaAtual > distanciaAnterior)
             {
                 distanciaAnterior = 100;
-                Debug.Log("********************");
+                //Debug.Log("********************");
                 contador = 0;
                 contadorIndice++;
                 if ((contadorIndice * 3 + 3) > pathMissilDto.PathPointsMissil.Length)
@@ -137,6 +137,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
             }
             yield return null;
         }
+        colocarNaPosicao(coletavel.getPosicao());
         parar();
         animator.Play(MISSIL_EXPLOSAO);
         coletavel.disparar(0, 20f);

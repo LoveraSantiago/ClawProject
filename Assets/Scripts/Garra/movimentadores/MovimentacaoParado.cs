@@ -15,11 +15,12 @@ public class MovimentacaoParado : MovimentacaoDaGarraPowerUp
     public override void preInicio()
     {
         pincas.acionarTrigger();
+        animacao.piscar();
     }
 
     public override void fixedUpdate()
     {
-        pararGarra();
+        parar();
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
     }
 }

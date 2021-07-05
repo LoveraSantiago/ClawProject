@@ -11,17 +11,22 @@ public class MovimentacaoVoltarParaCima : MovimentacaoDaGarraPowerUp
         anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
     }
 
+    public override void preInicio()
+    {
+        animacao.irParaCima();
+    }
+
     public override void fixedUpdate()
     {
-        if (!isGarraAcimaPosInicial())
+        if (!isAcimaPosInicial())
         {
-            moverGarraParaCimaFreeze();
+            moverParaCimaFreeze();
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
         {
-            pararGarra();
-            colocarGarraNaAlturaInicial();
+            parar();
+            colocarNaAlturaInicial();
             comunicadorComGerMovimentacao.trocarParaAcaoVoltarParaMeio();
         }
     }

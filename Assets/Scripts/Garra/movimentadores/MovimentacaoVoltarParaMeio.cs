@@ -54,21 +54,23 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
 
     private void determinarDirecaoParaVoltarAoMeio()
     {
-        if (isGarraMaiorPosHorizontal(0))
+        if (isMaiorPosHorizontal(0))
         {
-            direcaoVoltar = DirecaoDaGarra.ESQUERDA;            
+            direcaoVoltar = DirecaoDaGarra.ESQUERDA;
+            animacao.irParaDireita();
         }
         else
         {
-            direcaoVoltar = DirecaoDaGarra.DIREITA;            
+            direcaoVoltar = DirecaoDaGarra.DIREITA;
+            animacao.irParaEsquerda();
         }
     }
 
     private void voltarAoMeioVindoPelaEsquerda()
     {
-        if (!isGarraMenorPosHorizontal(0))
+        if (!isMenorPosHorizontal(0))
         {
-            moverGarraHorizontalmenteFreeze(-1);
+            moverHorizontalmenteFreeze(-1);
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
@@ -79,9 +81,9 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
 
     private void voltarAoMeioVindoPelaDireita()
     {        
-        if (!isGarraMaiorPosHorizontal(0))
+        if (!isMaiorPosHorizontal(0))
         {
-            moverGarraHorizontalmenteFreeze(1);
+            moverHorizontalmenteFreeze(1);
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
@@ -92,8 +94,8 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
 
     private void voltaFinalizada()
     {
-        pararGarra();
-        colocarGarraNaPosInicial();
+        parar();
+        colocarNaPosInicial();
         direcaoVoltar = DirecaoDaGarra.CENTRALIZADA;
         contadorDeTempo.resetContador();
     }

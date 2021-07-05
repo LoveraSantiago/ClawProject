@@ -13,12 +13,12 @@ public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarraNormal
     
     public override void preInicio()
     {   
-        colocarMassaNaGarra(1);        
+        colocarMassa(1);        
     }
 
     public override void fixedUpdate()
     {
-        pararGarra();
+        parar();
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerda, anguloDesejadoDireita);
         
         if (pincas.isDireitaNoAngulo(anguloDesejadoDireita))

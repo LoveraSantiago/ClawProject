@@ -33,22 +33,22 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
     {
         pincas.rotacionarFDT(garraDto.VelocidadeAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
         verificarSeMovimentacaoAtingiuLimites();
-        moverGarraHorizontalmenteFreeze(direcao);
+        moverHorizontalmenteFreeze(direcao);
     }
 
     //TODO duplicidade com MovimentacaoLateralZigZag
     private void verificarSeMovimentacaoAtingiuLimites()
     {
-        if (isGarraMaiorPosHorizontal(LIMITE_LATERAL_TELA - 0.1f))
+        if (isMaiorPosHorizontal(LIMITE_LATERAL_TELA - 0.1f))
         {
             direcao = -1;
-            moverGarraHorizontalmenteFreeze(direcao);
+            moverHorizontalmenteFreeze(direcao);
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
         }
-        else if (isGarraMenorPosHorizontal(-LIMITE_LATERAL_TELA + 0.1f))
+        else if (isMenorPosHorizontal(-LIMITE_LATERAL_TELA + 0.1f))
         {
             direcao = 1;
-            moverGarraHorizontalmenteFreeze(direcao);
+            moverHorizontalmenteFreeze(direcao);
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
         }
         else

@@ -45,21 +45,19 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     {
         movAtual.garraColidiuCom(other.gameObject);
     }
+
+    public override void garraComemorar()
+    {
+        movAtual.comemorar();
+    }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
     public MovimentacaoDaGarra selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
     {
-        switch (mecanicaGarraEscolhida)
+        switch (mecanicaGarraEscolhida)//MECANICAS ANTIGAS REMOVIDAS IMPLEMENTACAO LEGADA
         {
             case (GarraManager.MECANICA_GARRA.ZIG_ZAG):
                 return movLateral;
-
-            case (GarraManager.MECANICA_GARRA.TELEGUIADA):
-                return new MovimentacaoLateralTeleguiada();
-
-            case (GarraManager.MECANICA_GARRA.ZIG_ZAGTELEGUIADO):
-                return new MovimentacaoLateralZigTeleguiado();
-
         }
         return new MovimentacaoLateralZigZag();
     }
