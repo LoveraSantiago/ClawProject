@@ -6,7 +6,8 @@ public class LevelFlowManager
     public enum LEVEL
     {
         HUM = 1,
-        DOIS = 2
+        DOIS = 2,
+        TRES = 3,
     }
 
     public static AbstractLevel getLevelByEnum(LEVEL level)
@@ -15,6 +16,7 @@ public class LevelFlowManager
         {
             case LEVEL.HUM: return new Level1();
             case LEVEL.DOIS: return new Level2();
+            case LEVEL.TRES: return new Level3();
         }
         Debug.LogError("NAO FOI CRIADO LEVEL PARA ESSE ENUM");
         return null;
@@ -26,6 +28,7 @@ public class LevelFlowManager
         {
             case "1": return getLevelByEnum(LEVEL.HUM);
             case "2": return getLevelByEnum(LEVEL.DOIS);
+            case "3": return getLevelByEnum(LEVEL.TRES);
         }
         return null;
     }
