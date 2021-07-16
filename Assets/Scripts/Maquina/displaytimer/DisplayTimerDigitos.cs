@@ -10,11 +10,14 @@ public class DisplayTimerDigitos
 
     private SpriteRenderer placaTimer;
 
+    private DisplayTimerDigito2Pontos displayTimer2Pontos;
     public DisplayTimerDigito[] displayTimerDigito { get; private set; }
 
     public DisplayTimerDigitos(DisplayTimerDto displayDto)
     {
         placaTimer = displayDto.SprRendererPlaca;
+
+        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
 
         displayTimerDigito = new DisplayTimerDigito[4];
         displayTimerDigito[0] = new DisplayTimerDigito(displayDto.SingleDisplay[0]);
@@ -31,10 +34,10 @@ public class DisplayTimerDigitos
         placaTimer.color = Utils.getCorByHex(corTimerHex);
 
         Color corDigito = Utils.getCorByHex(corDigitosHex);
-        displayTimerDigito[0].configuraradoPeloLevel(corDigito);
-        displayTimerDigito[1].configuraradoPeloLevel(corDigito);
-        displayTimerDigito[2].configuraradoPeloLevel(corDigito);
-        displayTimerDigito[3].configuraradoPeloLevel(corDigito);
+        displayTimerDigito[0].configuradoPeloLevel(corDigito);
+        displayTimerDigito[1].configuradoPeloLevel(corDigito);
+        displayTimerDigito[2].configuradoPeloLevel(corDigito);
+        displayTimerDigito[3].configuradoPeloLevel(corDigito);
     }
 
     public void blinkar(bool estadoBlink)
@@ -43,6 +46,8 @@ public class DisplayTimerDigitos
         displayTimerDigito[2].estadoBlink(estadoBlink);
         displayTimerDigito[1].estadoBlink(estadoBlink);
         displayTimerDigito[0].estadoBlink(estadoBlink);
+
+        displayTimer2Pontos.estadoBlink(estadoBlink);
     }
 
     public void setSegundosUnidade(int unidadeSegundos)

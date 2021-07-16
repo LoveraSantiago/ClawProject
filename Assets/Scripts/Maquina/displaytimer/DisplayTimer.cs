@@ -7,7 +7,7 @@ public class DisplayTimer
         
     private ContadorTimer contadorTimer;    
     private DisplayTimerGlow glowDisplay;
-    private DisplayTimerDigito2Pontos displayTimer2Pontos;
+    
     private DisplayTimerDigitos digitos;
 
     private Coroutine coroutineBlink;
@@ -16,8 +16,7 @@ public class DisplayTimer
     public ProdutorDeEvento<bool> produtorDeEventoTempoEsgotado { get; private set; }
 
     public DisplayTimer(DisplayTimerDto displayDto, MonoBehaviour monoBehaviour)
-    {        
-        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
+    {   
         digitos = new DisplayTimerDigitos(displayDto);
         
         produtorDeEventoTempoEsgotado = new ProdutorDeEvento<bool>();
@@ -65,9 +64,9 @@ public class DisplayTimer
         while (contadorTimer.isNearTimeOver())
         {
             digitos.blinkar(true);
-            yield return new WaitForSeconds(0.33f);
+            yield return new WaitForSeconds(0.25f);
             digitos.blinkar(false);
-            yield return new WaitForSeconds(0.33f);
+            yield return new WaitForSeconds(0.25f);
         }
         yield return null;
     }
