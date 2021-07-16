@@ -16,8 +16,7 @@ public class DisplayTimer
     public ProdutorDeEvento<bool> produtorDeEventoTempoEsgotado { get; private set; }
 
     public DisplayTimer(DisplayTimerDto displayDto, MonoBehaviour monoBehaviour)
-    {
-        
+    {        
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
         digitos = new DisplayTimerDigitos(displayDto);
         
