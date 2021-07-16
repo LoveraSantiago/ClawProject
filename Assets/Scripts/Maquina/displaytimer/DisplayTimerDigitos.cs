@@ -37,6 +37,14 @@ public class DisplayTimerDigitos
         displayTimerDigito[3].configuraradoPeloLevel(corDigito);
     }
 
+    public void blinkar(bool estadoBlink)
+    {
+        displayTimerDigito[3].estadoBlink(estadoBlink);
+        displayTimerDigito[2].estadoBlink(estadoBlink);
+        displayTimerDigito[1].estadoBlink(estadoBlink);
+        displayTimerDigito[0].estadoBlink(estadoBlink);
+    }
+
     public void setSegundosUnidade(int unidadeSegundos)
     {
         segundosUnidadeAtual = unidadeSegundos;

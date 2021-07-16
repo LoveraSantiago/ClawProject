@@ -3,7 +3,7 @@ using UnityEngine;
 public class DisplayTimerDigito 
 {    
     private int[] arrayLigado;
-
+    private bool blink;
     private Color corOriginal;
     
     private SingleDisplayTimerDto sDisplayDto;
@@ -28,7 +28,23 @@ public class DisplayTimerDigito
         desligarPosicoes(arrayLigado);
 
         arrayLigado = getArrayParaLigar(digito);
-        ligarPosicoes(arrayLigado);
+        if (!blink)
+        {
+            ligarPosicoes(arrayLigado);
+        }
+    }
+
+    public void estadoBlink(bool blink)
+    {
+        this.blink = blink;
+        if (blink)
+        {
+            desligarPosicoes(arrayLigado);
+        }
+        else
+        {
+            ligarPosicoes(arrayLigado);
+        }
     }
 
     private void desligarPosicoes(int[] array)

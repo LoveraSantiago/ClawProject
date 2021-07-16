@@ -39,13 +39,14 @@ public class DisplayTimer
 
     public void update()
     {    
-        if(Time.frameCount % 5 == 0)//Contabilizando tempo a cada 5frames
+        if(Time.frameCount % 2 == 0)//Contabilizando tempo a cada 5frames
         {
             atualizarTempo();
             if (contadorTimer.isTimeOver())
             {
                 produtorDeEventoTempoEsgotado.produziuEvento(true);
                 monoBehaviour.StopCoroutine(coroutineBlink);
+                coroutineBlink = null;
             }
         }
     }
@@ -53,11 +54,9 @@ public class DisplayTimer
     private void atualizarTempo()
     {
         contadorTimer.passarTempoAosScores(digitos);
-        if(contadorTimer.isNearTimeOver() && !glowDisplay.getEstadoBlink())
-        {
-            glowDisplay.ativarBlink();
-            coroutineBlink = monoBehaviour.StartCoroutine(blinkarTimer());
-            glowDisplay.ligarGlowFail();
+        if(contadorTimer.isNearTimeOver() && coroutineBlink == null)
+        {            
+            coroutineBlink = monoBehaviour.StartCoroutine(blinkarTimer());         
         }
     }
 
@@ -65,10 +64,10 @@ public class DisplayTimer
     {
         while (contadorTimer.isNearTimeOver())
         {
-            glowDisplay.ligarGlowFail();
-            yield return new WaitForSeconds(0.5f);
-            glowDisplay.desligarGlow();
-            yield return new WaitForSeconds(0.5f);
+            digitos.blinkar(true);
+            yield return new WaitForSeconds(0.33f);
+            digitos.blinkar(false);
+            yield return new WaitForSeconds(0.33f);
         }
         yield return null;
     }

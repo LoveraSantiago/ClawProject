@@ -43,7 +43,8 @@ public class Level2 : AbstractLevel
 
     public override string getTempoContagem()
     {
-        return "01:31";
+        //return "01:31";
+        return "00:20";
     }
 
     public override PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina()
