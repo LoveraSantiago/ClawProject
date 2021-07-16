@@ -43,8 +43,7 @@ public class Level2 : AbstractLevel
 
     public override string getTempoContagem()
     {
-        //return "01:31";
-        return "00:20";
+        return "01:31";        
     }
 
     public override PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina()
@@ -84,7 +83,7 @@ public class Level2 : AbstractLevel
         dicionario.Add("barra", "#FF420E");
         dicionario.Add("chao-dentro", "#FF420E");
         dicionario.Add("tubo", "#F98866");
-        dicionario.Add("viga-tras", "#5BB327");
+        dicionario.Add("viga-tras", "#52A123");
         dicionario.Add("btnPowerUp1", "#FAAB93");
         dicionario.Add("parte-dentro1", "#CB9888");
         dicionario.Add("contorno1", "#F37476");
@@ -125,9 +124,7 @@ public class Level2 : AbstractLevel
         dicionario.Add("leds3", "#268747");
         dicionario.Add("cabo-da-garra", "#CB9888");
 
-
         return dicionario;
-
     }
 }
 
