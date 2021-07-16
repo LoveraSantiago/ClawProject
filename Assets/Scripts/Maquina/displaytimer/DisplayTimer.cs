@@ -13,14 +13,13 @@ public class DisplayTimer
     private Coroutine coroutineBlink;
     private MonoBehaviour monoBehaviour;
 
-    private ContadorTimer contadorTimer;
+    private TipoContadorTimer tipoContadorTimer;
     public ProdutorDeEvento<bool> produtorDeEventoTempoEsgotado { get; private set; }
 
     public DisplayTimer(DisplayTimerDto displayDto, MonoBehaviour monoBehaviour)
     {
         
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
-
         digitos = new DisplayTimerDigitos(displayDto);
         
         produtorDeEventoTempoEsgotado = new ProdutorDeEvento<bool>();
@@ -32,18 +31,18 @@ public class DisplayTimer
     {
         if (levelEscolhido.isTempoContagemNormal())
         {
-            contadorTimer = new ContadorTimerPositivo();
+            tipoContadorTimer = new ContadorTimerPositivo();
         }
         else
         {
-            contadorTimer = new ContadorTimerNegativo(levelEscolhido.getTempoContagem());
+            tipoContadorTimer = new ContadorTimerNegativo(levelEscolhido.getTempoContagem());
         }
         digitos.passarCoresAosDisplayDigitos(levelEscolhido.getDicionarioDeCores());        
     }
 
     public void iniciarContagemTempo()
     {
-        contadorTimer.iniciarContagem();
+        tipoContadorTimer.iniciarContagem();
     }
 
     public void update()
@@ -51,7 +50,7 @@ public class DisplayTimer
         if(Time.frameCount % 5 == 0)//Contabilizando tempo a cada 5frames
         {
             atualizarTempo();
-            if (contadorTimer.isTimeOver())
+            if (tipoContadorTimer.isTimeOver())
             {
                 produtorDeEventoTempoEsgotado.produziuEvento(true);
                 monoBehaviour.StopCoroutine(coroutineBlink);
@@ -62,7 +61,7 @@ public class DisplayTimer
     private void atualizarTempo()
     {
         passarTempoAosScores();
-        if(contadorTimer.isNearTimeOver() && !glowDisplay.getEstadoBlink())
+        if(tipoContadorTimer.isNearTimeOver() && !glowDisplay.getEstadoBlink())
         {
             glowDisplay.ativarBlink();
             coroutineBlink = monoBehaviour.StartCoroutine(blinkarTimer());
@@ -72,7 +71,7 @@ public class DisplayTimer
 
     private void passarTempoAosScores()
     {
-        TimeSpan timeSpan = contadorTimer.processarContagem();
+        TimeSpan timeSpan = tipoContadorTimer.processarContagem();
 
         double segundos = timeSpan.Seconds;
         int dezenaSegundos = (int)(segundos / 10);
@@ -97,7 +96,7 @@ public class DisplayTimer
 
     private IEnumerator blinkarTimer()
     {
-        while (contadorTimer.isNearTimeOver())
+        while (tipoContadorTimer.isNearTimeOver())
         {
             glowDisplay.ligarGlowFail();
             yield return new WaitForSeconds(0.5f);

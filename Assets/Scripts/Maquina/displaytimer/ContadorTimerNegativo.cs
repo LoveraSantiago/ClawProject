@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using UnityEngine;
 
-public class ContadorTimerNegativo : ContadorTimer
+public class ContadorTimerNegativo : TipoContadorTimer
 {
     private double tempoRegressivoInicial;
     private double tempoInicial;

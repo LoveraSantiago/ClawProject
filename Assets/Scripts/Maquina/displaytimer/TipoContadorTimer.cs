@@ -1,6 +1,6 @@
 using System;
 
-public interface ContadorTimer 
+public interface TipoContadorTimer 
 {
     void iniciarContagem();
     TimeSpan processarContagem();

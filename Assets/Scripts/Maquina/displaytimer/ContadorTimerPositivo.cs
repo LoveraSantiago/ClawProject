@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ContadorTimerPositivo : ContadorTimer
+public class ContadorTimerPositivo : TipoContadorTimer
 {
     private float tempoInicial;
 
