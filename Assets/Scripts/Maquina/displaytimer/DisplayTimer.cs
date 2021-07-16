@@ -1,21 +1,14 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DisplayTimer
-{    
-    private int segundosUnidadeAtual;
-    private int segundosDezenaAtual;
-    private int minutosUnidadeAtual;
-    private int minutosDezenaAtual;
-
+{  
     private float tempoInicial;    
-    
-    private SpriteRenderer placaTimer;
+        
     private DisplayTimerGlow glowDisplay;
-    private DisplayTimerDigito[] displayTimerDigito;
     private DisplayTimerDigito2Pontos displayTimer2Pontos;
+    private DisplayTimerDigitos digitos;
 
     private Coroutine coroutineBlink;
     private MonoBehaviour monoBehaviour;
@@ -25,14 +18,10 @@ public class DisplayTimer
 
     public DisplayTimer(DisplayTimerDto displayDto, MonoBehaviour monoBehaviour)
     {
-        placaTimer = displayDto.SprRendererPlaca;
+        
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
 
-        displayTimerDigito = new DisplayTimerDigito[4];
-        displayTimerDigito[0] = new DisplayTimerDigito(displayDto.SingleDisplay[0]);
-        displayTimerDigito[1] = new DisplayTimerDigito(displayDto.SingleDisplay[1]);
-        displayTimerDigito[2] = new DisplayTimerDigito(displayDto.SingleDisplay[2]);
-        displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);        
+        digitos = new DisplayTimerDigitos(displayDto);
         
         produtorDeEventoTempoEsgotado = new ProdutorDeEvento<bool>();
         glowDisplay = new DisplayTimerGlow(displayDto);        
@@ -49,18 +38,7 @@ public class DisplayTimer
         {
             contadorTimer = new ContadorTimerNegativo(levelEscolhido.getTempoContagem());
         }
-
-        Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
-        string corTimerHex = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_TIMER];
-        string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquina.DIGITOS_TIMERS];
-
-        placaTimer.color = Utils.getCorByHex(corTimerHex);
-        
-        Color corDigito = Utils.getCorByHex(corDigitosHex);
-        displayTimerDigito[0].configuraradoPeloLevel(corDigito);
-        displayTimerDigito[1].configuraradoPeloLevel(corDigito);
-        displayTimerDigito[2].configuraradoPeloLevel(corDigito);
-        displayTimerDigito[3].configuraradoPeloLevel(corDigito);
+        digitos.passarCoresAosDisplayDigitos(levelEscolhido.getDicionarioDeCores());        
     }
 
     public void iniciarContagemTempo()
@@ -100,25 +78,21 @@ public class DisplayTimer
         int dezenaSegundos = (int)(segundos / 10);
         int unidadeSegundos = (int)(segundos - (dezenaSegundos * 10));
 
-        if (unidadeSegundos == segundosUnidadeAtual) return;
-        segundosUnidadeAtual = unidadeSegundos;
-        displayTimerDigito[3].mostrarDigito(unidadeSegundos);
+        if (unidadeSegundos == digitos.segundosUnidadeAtual) return;
+        digitos.setSegundosUnidade(unidadeSegundos);        
 
-        if (dezenaSegundos == segundosDezenaAtual) return;
-        segundosDezenaAtual = dezenaSegundos;
-        displayTimerDigito[2].mostrarDigito(dezenaSegundos);
+        if (dezenaSegundos == digitos.segundosDezenaAtual) return;
+        digitos.setSegundosDezena(dezenaSegundos);        
 
         double minutos = timeSpan.Minutes;
         int dezenaMinutos = (int) (minutos / 10);
         int unidadeMinutos = (int) (minutos - (dezenaMinutos * 10));
 
-        if (unidadeMinutos == minutosUnidadeAtual) return;
-        minutosUnidadeAtual = unidadeMinutos;
-        displayTimerDigito[1].mostrarDigito(unidadeMinutos);
+        if (unidadeMinutos == digitos.minutosUnidadeAtual) return;
+        digitos.setMinutosUnidade(unidadeMinutos);        
 
-        if (dezenaMinutos == minutosDezenaAtual) return;
-        minutosDezenaAtual = dezenaMinutos;
-        displayTimerDigito[0].mostrarDigito(dezenaMinutos);
+        if (dezenaMinutos == digitos.minutosDezenaAtual) return;
+        digitos.setMinutosDezena(dezenaMinutos);        
     }
 
     private IEnumerator blinkarTimer()
