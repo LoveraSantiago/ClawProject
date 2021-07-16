@@ -3,18 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplayTimer : ArcoIrisConjunto
+public class DisplayTimer
 {    
     private int segundosUnidadeAtual;
     private int segundosDezenaAtual;
     private int minutosUnidadeAtual;
     private int minutosDezenaAtual;
 
-    private float tempoInicial;
-    private bool blink;
-
-    private GlowEfeito glowEfeito;
+    private float tempoInicial;    
+    
     private SpriteRenderer placaTimer;
+    private DisplayTimerGlow glowDisplay;
     private DisplayTimerDigito[] displayTimerDigito;
     private DisplayTimerDigito2Pontos displayTimer2Pontos;
 
@@ -23,7 +22,6 @@ public class DisplayTimer : ArcoIrisConjunto
 
     private ContadorTimer contadorTimer;
     public ProdutorDeEvento<bool> produtorDeEventoTempoEsgotado { get; private set; }
-
 
     public DisplayTimer(DisplayTimerDto displayDto, MonoBehaviour monoBehaviour)
     {
@@ -37,7 +35,7 @@ public class DisplayTimer : ArcoIrisConjunto
         displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);        
         
         produtorDeEventoTempoEsgotado = new ProdutorDeEvento<bool>();
-        glowEfeito = new GlowEfeito(displayDto.PlacaEfeito, new MaterialGlow(displayDto.MaterialEfeito));
+        glowDisplay = new DisplayTimerGlow(displayDto);        
         this.monoBehaviour = monoBehaviour;
     }
 
@@ -86,11 +84,11 @@ public class DisplayTimer : ArcoIrisConjunto
     private void atualizarTempo()
     {
         passarTempoAosScores();
-        if(contadorTimer.isNearTimeOver() && !blink)
+        if(contadorTimer.isNearTimeOver() && !glowDisplay.getEstadoBlink())
         {
-            blink = true;
+            glowDisplay.ativarBlink();
             coroutineBlink = monoBehaviour.StartCoroutine(blinkarTimer());
-            glowEfeito.ligarGlowFail();
+            glowDisplay.ligarGlowFail();
         }
     }
 
@@ -127,35 +125,16 @@ public class DisplayTimer : ArcoIrisConjunto
     {
         while (contadorTimer.isNearTimeOver())
         {
-            glowEfeito.ligarGlowFail();
+            glowDisplay.ligarGlowFail();
             yield return new WaitForSeconds(0.5f);
-            glowEfeito.desligarGlow();
+            glowDisplay.desligarGlow();
             yield return new WaitForSeconds(0.5f);
         }
         yield return null;
     }
 
-    public void ligar()
+    public ArcoIrisConjunto getDisplayTimerGlow()
     {
-        if (!blink)
-        {
-            glowEfeito.ligarGlowSucesso();
-        }
-    }
-
-    public void desligar()
-    {
-        if (!blink)
-        {
-            glowEfeito.desligarGlow();
-        }
-    }
-
-    public void passarCor(Color cor)
-    {
-        if (!blink)
-        {
-            glowEfeito.getMaterialGlow().setCorNoMaterial(cor);
-        }
+        return glowDisplay;
     }
 }
