@@ -7,6 +7,7 @@ public class ContadorTimerNegativo : TipoContadorTimer
     private double tempoRegressivoInicial;
     private double tempoInicial;
     private double tempoResult;
+    private float tempoPause;
 
     public ContadorTimerNegativo(string tempo)
     {
@@ -17,6 +18,17 @@ public class ContadorTimerNegativo : TipoContadorTimer
     public void iniciarContagem()
     {
         tempoInicial = Time.time;
+    }
+
+    public void pause()
+    {
+        tempoPause = Time.time;
+    }
+
+    public void continuar()
+    {
+        tempoPause = Time.time - tempoPause;
+        tempoInicial = tempoInicial + tempoPause;
     }
 
     public bool isTimeOver()

@@ -85,6 +85,7 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
     private void processarInicioPowerUp(PowerUpInfo pupInfo)
     {
         arcoIrisEfeito.ligarEfeitoArcoIris();
+        displayTimer.pause();
         displayDeScores.iniciarContagemRegressiva(pupInfo.duracaoTempo);        
     }
 
@@ -96,6 +97,7 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
     private void processarFimDePowerUp()
     {
         displayDeScores.finalizarContagemRegressiva();
+        displayTimer.continuar();
         botoesPowerUp.reclicarProxPowerUp();        
         arcoIrisEfeito.desligarEfeitoArcoIris();
     }

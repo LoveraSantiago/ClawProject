@@ -21,6 +21,16 @@ public class ContadorTimer
         tipoContadorTimer.iniciarContagem();
     }
 
+    public void pause()
+    {
+        tipoContadorTimer.pause();
+    }
+
+    public void continuar()
+    {
+        tipoContadorTimer.continuar();
+    }
+
     public bool isTimeOver()
     {
         return tipoContadorTimer.isTimeOver();

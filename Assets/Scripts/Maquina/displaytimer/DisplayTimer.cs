@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class DisplayTimer
 {  
-    private float tempoInicial;    
+    private float tempoInicial;
+    private bool isPausado;
         
     private ContadorTimer contadorTimer;    
     private DisplayTimerGlow glowDisplay;
@@ -38,7 +39,7 @@ public class DisplayTimer
 
     public void update()
     {    
-        if(Time.frameCount % 2 == 0)//Contabilizando tempo a cada 5frames
+        if(Time.frameCount % 2 == 0 && !isPausado)//Contabilizando tempo a cada 5frames
         {
             atualizarTempo();
             if (contadorTimer.isTimeOver())
@@ -48,6 +49,18 @@ public class DisplayTimer
                 coroutineBlink = null;
             }
         }
+    }
+
+    public void pause()
+    {
+        isPausado = true;
+        contadorTimer.pause();
+    }
+
+    public void continuar()
+    {
+        isPausado = false;
+        contadorTimer.continuar();
     }
 
     private void atualizarTempo()
