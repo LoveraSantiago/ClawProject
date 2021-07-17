@@ -41,9 +41,9 @@ public class Level2 : AbstractLevel
         return ColetavelEntidade.FAMILIA.FRUTAS;
     }
 
-    public override string getTempoContagem()
+    public override TipoContagemTempoDto getTempoContagem()
     {
-        return "01:31";        
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.REGRESSIVA, "02:01");        
     }
 
     public override PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina()

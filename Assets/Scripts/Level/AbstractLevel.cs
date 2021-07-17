@@ -17,12 +17,8 @@ public abstract class AbstractLevel
 
     public abstract PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina();
 
-    public abstract string getTempoContagem();//
+    public abstract TipoContagemTempoDto getTempoContagem();//
 
     public abstract Dictionary<string, string> getDicionarioDeCores();
-
-    public bool isTempoContagemNormal()
-    {
-        return getTempoContagem().Equals(TIMER_ZERO);
-    }
+   
 }

@@ -50,9 +50,9 @@ public class Level3 : AbstractLevel
        };
     }
 
-    public override string getTempoContagem()
+    public override TipoContagemTempoDto getTempoContagem()
     {
-        return "01:31";
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:10");
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()
@@ -106,7 +106,8 @@ public class Level3 : AbstractLevel
         dicionario.Add("leds1", "#536163");
         dicionario.Add("leds2", "#536163");
         dicionario.Add("leds3", "#536163");
-        dicionario.Add("cabo-da-garra", "#2C9FBF");
+        dicionario.Add("cabo-da-garra", "#2C9FBF");
+
         return dicionario;
     }
 }

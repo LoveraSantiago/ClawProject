@@ -28,7 +28,7 @@ public class DisplayTimer
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
     {
-        contadorTimer.definirContador(levelEscolhido.isTempoContagemNormal(), levelEscolhido.getTempoContagem());        
+        contadorTimer.definirContador(levelEscolhido.getTempoContagem());        
         digitos.passarCoresAosDisplayDigitos(levelEscolhido.getDicionarioDeCores());        
     }
 

@@ -2,18 +2,28 @@ using System;
 
 public class ContadorTimer 
 {
+    public enum Contagem { NORMAL, REGRESSIVA, CONTINUA };
     private TipoContadorTimer tipoContadorTimer;
 
-    public void definirContador(bool tipoContagemNormal, string tempoContagem)
+    public void definirContador(TipoContagemTempoDto tipoContagemTempo)
     {
-        if (tipoContagemNormal)
+        switch (tipoContagemTempo.contagem)
         {
-            tipoContadorTimer = new ContadorTimerPositivo();
-        }
-        else
-        {
-            tipoContadorTimer = new ContadorTimerNegativo(tempoContagem);
-        }
+            case Contagem.NORMAL:
+            {
+                tipoContadorTimer = new ContadorTimerPositivo();
+                break;
+            }
+            case Contagem.REGRESSIVA:
+            {
+                tipoContadorTimer = new ContadorTimerNegativo(tipoContagemTempo.tempo);
+                break;
+            }
+            case Contagem.CONTINUA:
+            {
+                tipoContadorTimer = null; break;
+            }
+        }        
     }
 
     public void iniciarContagemTempo()
