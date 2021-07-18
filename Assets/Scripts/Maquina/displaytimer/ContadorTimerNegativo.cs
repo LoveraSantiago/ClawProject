@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using UnityEngine;
 
 public class ContadorTimerNegativo : TipoContadorTimer
@@ -9,9 +8,13 @@ public class ContadorTimerNegativo : TipoContadorTimer
 
     public ContadorTimerNegativo(string tempo)
     {
-        TimeSpan intervalo = DateTime.ParseExact(tempo, "mm:ss", CultureInfo.InvariantCulture).TimeOfDay;
-        tempoRegressivoInicial = intervalo.TotalSeconds;
+        setTempoRegressivoInicial(tempo);
     }    
+
+    protected void setTempoRegressivoInicial(string tempo)
+    {
+        tempoRegressivoInicial = parseTimeFromString(tempo);
+    }
         
     public override bool isTimeOver()
     {

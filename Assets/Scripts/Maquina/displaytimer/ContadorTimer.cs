@@ -21,7 +21,8 @@ public class ContadorTimer
             }
             case Contagem.CONTINUA:
             {
-                tipoContadorTimer = null; break;
+                tipoContadorTimer = new ContadorTimerContinuo(tipoContagemTempo.tempo);
+                break;
             }
         }        
     }
