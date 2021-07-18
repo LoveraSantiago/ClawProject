@@ -5639,7 +5639,7 @@ MonoBehaviour:
       - 0.55
       - 1.2
   maquinaDto:
-    referenciaChao: {fileID: 0}
+    referenciaChao: {fileID: 1496791513}
     joystickDto:
       joystickTransform: {fileID: 1655319868}
       parteCima: {fileID: 1371200242}
