@@ -9,6 +9,7 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
 
     private PartesMaquinaDto partesDto;
 
+    private Elevador elevador;
     private DisplaysDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
     private DisplayTimer displayTimer;
@@ -28,10 +29,7 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto, monoBehaviour);
         joystick           = new Joystick(maquinaDto.JoystickDto, velocidadeJoystick);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
-
-        Elevador elevador = new Elevador();
-        displayTimer.getInnerProdutorDeEventoTempoRestart()
-                    .registrarConsumidorDeEvento(elevador);
+        elevador           = new Elevador();
 
         arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)
             .addArcoIrisConjunto(displayDeColetados)
@@ -47,6 +45,9 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         displayDeColetados.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+       
+        displayTimer.getInnerProdutorDeEventoTempoRestart()
+                    .registrarConsumidorDeEvento(elevador);
     }
 
     public void start()
