@@ -29,6 +29,10 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         joystick           = new Joystick(maquinaDto.JoystickDto, velocidadeJoystick);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
 
+        Elevador elevador = new Elevador();
+        displayTimer.getInnerProdutorDeEventoTempoRestart()
+                    .registrarConsumidorDeEvento(elevador);
+
         arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)
             .addArcoIrisConjunto(displayDeColetados)
             .addArcoIrisConjunto(displayDeScores)

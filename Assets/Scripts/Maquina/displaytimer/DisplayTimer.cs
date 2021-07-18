@@ -63,6 +63,16 @@ public class DisplayTimer
         contadorTimer.continuar();
     }
 
+    public ArcoIrisConjunto getDisplayTimerGlow()
+    {
+        return glowDisplay;
+    }
+
+    public ProdutorDeEvento<bool> getInnerProdutorDeEventoTempoRestart()
+    {
+        return contadorTimer.getInnerProdutorDeEventoTempoRestart();
+    }
+
     private void atualizarTempo()
     {
         contadorTimer.passarTempoAosScores(digitos);
@@ -84,8 +94,4 @@ public class DisplayTimer
         yield return null;
     }
 
-    public ArcoIrisConjunto getDisplayTimerGlow()
-    {
-        return glowDisplay;
-    }
 }

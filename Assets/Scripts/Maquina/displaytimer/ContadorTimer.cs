@@ -77,4 +77,15 @@ public class ContadorTimer
         digitos.setMinutosDezena(dezenaMinutos);
     }
 
+    public ProdutorDeEvento<bool> getInnerProdutorDeEventoTempoRestart()
+    {        
+        if(tipoContadorTimer.GetType() == typeof(ContadorTimerContinuo))
+        {
+            return ((ContadorTimerContinuo)tipoContadorTimer).innerProdutorDeEventoTempoRestart;
+        }
+        else
+        {
+            return new ProdutorDeEvento<bool>();
+        }
+    }
 }
