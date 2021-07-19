@@ -30,6 +30,13 @@ public class Level3 : AbstractLevel
             { 0, 0, 0, 0, 0, 0, 0 } };
     }
 
+    public override int[,] getArrayDeColetaveisSub()
+    {
+        return new int[,] {
+            { 10, 10, 10, 11, 11, 11, 12 }
+        };
+    }
+
     public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
     {
         return ColetavelEntidade.FAMILIA.FRUTAS;

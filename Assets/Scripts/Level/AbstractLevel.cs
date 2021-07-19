@@ -12,8 +12,14 @@ public abstract class AbstractLevel
 
     public abstract bool devolverParaBoard();//Pode ser trocado p enum para tipos de devolucoes
 
-    public abstract int[,] getArrayDeColetaveis();
     public abstract ColetavelEntidade.FAMILIA getFamiliaColetavel();
+
+    public abstract int[,] getArrayDeColetaveis();
+
+    public virtual int[,] getArrayDeColetaveisSub()
+    {
+        return null;
+    }
 
     public abstract PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina();
 

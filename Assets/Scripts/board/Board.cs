@@ -4,11 +4,13 @@ using UnityEngine;
 public class Board 
 {
     private int contadorDeColetaveis;    
-    private BoardDto boardDto;
+    private bool devolverParaBoard;
 
     private int[,] arrayDeColetaveis;
+    private int[,] arrayDeColetaveisSub;
+
+    private BoardDto boardDto;
     private ColetavelEntidade.FAMILIA familia;
-    private bool devolverParaBoard;
 
     public Board(BoardDto boardDto)
     {
@@ -18,18 +20,25 @@ public class Board
     public void configuradoPeloLevel(AbstractLevel level)
     {
         arrayDeColetaveis = level.getArrayDeColetaveis();
+        arrayDeColetaveisSub = level.getArrayDeColetaveisSub();
+
         familia = level.getFamiliaColetavel();
         devolverParaBoard = level.devolverParaBoard();
         validacaoArray(arrayDeColetaveis);
     }
 
-    public void Create(PoolDeColetaveis poolDeColetaveis)
+    public void create(PoolDeColetaveis poolDeColetaveis)
+    {
+        createNormal(poolDeColetaveis);
+    }    
+
+    private void createNormal(PoolDeColetaveis poolDeColetaveis)
     {
         ColetavelQuery coletavelQuery = new ColetavelQuery();
-        for(int contadorLinha = 0; contadorLinha < boardDto.PosicoesEixoY.Length; contadorLinha++)
+        for (int contadorLinha = 0; contadorLinha < boardDto.PosicoesEixoY.Length; contadorLinha++)
         {
             float[] eixoX = getEixoX(contadorLinha);
-            for(int contadorColuna = 0;  contadorColuna < eixoX.Length; contadorColuna++)
+            for (int contadorColuna = 0; contadorColuna < eixoX.Length; contadorColuna++)
             {
                 int id = arrayDeColetaveis[contadorLinha, contadorColuna];
                 ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelEntidadeById(id);
@@ -43,17 +52,25 @@ public class Board
                     coletavelEntidade = coletavelQuery.getColetavelEntidadeByFamilia(familia);
                 }
 
-                contadorDeColetaveis++;                
+                contadorDeColetaveis++;
                 Vector3 posicao = new Vector3(eixoX[contadorColuna], boardDto.PosicoesEixoY[contadorLinha]);
 
                 Coletavel coletavel = poolDeColetaveis.criarColetavel();
                 //Debug.Log("Colocando Coletavel : " + coletavel.nome +" posicao: " + posicao);
                 coletavel.ligar();
                 coletavel.receberSprite(coletavelEntidade.nomeSprite);
-                coletavel.colocarNaPosicao(posicao);                
+                coletavel.colocarNaPosicao(posicao);
             }
         }
-    }    
+    }
+
+    private void createSub(PoolDeColetaveis poolDeColetaveis)
+    {
+        if(arrayDeColetaveisSub != null)
+        {
+            
+        }
+    }
 
     private float[] getEixoX(int indice)
     {
