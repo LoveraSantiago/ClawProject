@@ -30,6 +30,7 @@ public class Board
     public void create(PoolDeColetaveis poolDeColetaveis)
     {
         createNormal(poolDeColetaveis);
+        createSub(poolDeColetaveis);
     }    
 
     private void createNormal(PoolDeColetaveis poolDeColetaveis)
@@ -66,9 +67,34 @@ public class Board
 
     private void createSub(PoolDeColetaveis poolDeColetaveis)
     {
+        Debug.Log("criando subs");
         if(arrayDeColetaveisSub != null)
         {
-            
+            ColetavelQuery coletavelQuery = new ColetavelQuery();
+
+            float [] eixoX = getEixoX(0);
+            for (int contadorColuna = 0; contadorColuna < eixoX.Length; contadorColuna++)
+            {
+                Debug.Log("criando cada sub " + contadorColuna);
+                int id = arrayDeColetaveisSub[0, contadorColuna];
+                ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelEntidadeById(id);
+
+                if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
+                {
+                    continue;
+                }
+                else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
+                {
+                    coletavelEntidade = coletavelQuery.getColetavelEntidadeByFamilia(familia);
+                }
+
+                Vector3 posicao = new Vector3(eixoX[contadorColuna], -4.6f, 0);
+                Coletavel coletavel = poolDeColetaveis.criarColetavel();
+                Debug.Log("coletavel sub nome: " + coletavel.nome);
+                coletavel.ligar();
+                coletavel.receberSprite(coletavelEntidade.nomeSprite);
+                coletavel.colocarNaPosicao(posicao);
+            }
         }
     }
 

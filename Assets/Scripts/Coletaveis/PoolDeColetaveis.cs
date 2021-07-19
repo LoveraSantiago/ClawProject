@@ -5,6 +5,7 @@ public class PoolDeColetaveis
 
     public PoolDeColetaveis()
     {
+        poolInativos = new PoolList<ColetavelTile>();
         poolDeNomes = new PoolDeNomes<ColetavelTile>();
     }
 
