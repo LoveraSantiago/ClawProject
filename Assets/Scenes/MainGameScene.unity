@@ -5883,6 +5883,9 @@ MonoBehaviour:
         goImagem: {fileID: 1420270364}
         sprImagem: {fileID: 1420270366}
         goExclamacao: {fileID: 293416723}
+    elevadorDto:
+      paredeHorizontal1: {fileID: 50493997}
+      paredeHorizontal2: {fileID: 1392206645}
     partesDto:
       placaCima: {fileID: 702916761}
       baseParteCima: {fileID: 243475117}

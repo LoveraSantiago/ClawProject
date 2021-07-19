@@ -29,7 +29,7 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto, monoBehaviour);
         joystick           = new Joystick(maquinaDto.JoystickDto, velocidadeJoystick);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
-        elevador           = new Elevador();
+        elevador           = new Elevador(maquinaDto.ElevadorDto, monoBehaviour);
 
         arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)
             .addArcoIrisConjunto(displayDeColetados)
