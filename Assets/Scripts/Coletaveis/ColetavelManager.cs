@@ -10,7 +10,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private bool devolverParaBoard;
 
     private ColetaveisDto coletaveisDto;
-    private Coletavel coletavelImantado;
+    private ColetavelTile coletavelImantado;
     
     private Board board;
     private PoolDeColetaveis poolDeColetaveis;
@@ -65,13 +65,14 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
     private void processarColetado(GameObject gameObjectColetado)
     {
-        Coletavel coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
+        ColetavelTile coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
         coletavelAcertado.desligar();        
 
         contadorDeColetaveis.adicionarColetado(coletavelAcertado);
 
         board.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour);
         coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
+        poolDeColetaveis.inativarColetaveis(contadorDeColetaveis.getArrayTubo());
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 

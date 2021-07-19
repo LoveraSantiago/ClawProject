@@ -7,15 +7,15 @@ public class ContadorDeColetaveis
     private bool resultCombinacao;
     private int totalColetaveis;
 
-    private Coletavel[] coletados;
-    private Coletavel[] devolverBoard;
-    private Coletavel[] devolverTubo;
-    private Coletavel[] arrayVazio;
+    private ColetavelTile[] coletados;
+    private ColetavelTile[] devolverBoard;
+    private ColetavelTile[] devolverTubo;
+    private ColetavelTile[] arrayVazio;
 
     public ContadorDeColetaveis()
     {
-        coletados = new Coletavel[3];
-        arrayVazio = new Coletavel[0];        
+        coletados = new ColetavelTile[3];
+        arrayVazio = new ColetavelTile[0];        
     }
 
     public void configurarTotalColetaveis(int total, bool backToBoard)
@@ -24,7 +24,7 @@ public class ContadorDeColetaveis
         this.backToBoard = backToBoard;        
     }
 
-    public void adicionarColetado(Coletavel coletado)
+    public void adicionarColetado(ColetavelTile coletado)
     {
         // Debug.Log(nomeColetado);
         adicionaAoContainerDeColetados(coletado);
@@ -51,12 +51,12 @@ public class ContadorDeColetaveis
         score += 10;
     }
 
-    public Coletavel[] getArrayBoard()
+    public ColetavelTile[] getArrayBoard()
     {
         return devolverBoard;
     }
 
-    public Coletavel[] getArrayTubo()
+    public ColetavelTile[] getArrayTubo()
     {
         return devolverTubo;
     }
@@ -68,7 +68,7 @@ public class ContadorDeColetaveis
 
     private bool isCombinacaoValida()
     {
-        Coletavel primeiroColetado = coletados[0];
+        ColetavelTile primeiroColetado = coletados[0];
         for (int contador = 0; contador < coletados.Length; contador++)
         {
             if (!primeiroColetado.hasEqualsSprite(coletados[contador]))
@@ -81,7 +81,7 @@ public class ContadorDeColetaveis
         return true;
     }
 
-    private void adicionaAoContainerDeColetados(Coletavel coletado)
+    private void adicionaAoContainerDeColetados(ColetavelTile coletado)
     {
         coletados[qtdColetados] = coletado;
         qtdColetados++;

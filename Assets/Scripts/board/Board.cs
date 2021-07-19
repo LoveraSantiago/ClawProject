@@ -89,7 +89,7 @@ public class Board
         return contadorDeColetaveis;
     }
 
-    public void devolver(Coletavel[] coletados, MonoBehaviour monoBehaviour)
+    public void devolver(ColetavelTile[] coletados, MonoBehaviour monoBehaviour)
     {
         if (devolverParaBoard)
         {
@@ -104,7 +104,7 @@ public class Board
         }
     }
 
-    private IEnumerator coroutineDevolverParaBoard(Coletavel[] coletados)
+    private IEnumerator coroutineDevolverParaBoard(ColetavelTile[] coletados)
     {
         yield return new WaitForSeconds(boardDto.DelayInicialVoltaBoard);
 
