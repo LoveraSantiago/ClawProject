@@ -45,9 +45,12 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         displayDeColetados.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
-       
-        displayTimer.getInnerProdutorDeEventoTempoRestart()
-                    .registrarConsumidorDeEvento(elevador);
+
+        if (levelEscolhido.isFaseContagemContinua())
+        {
+            displayTimer.getInnerProdutorDeEventoTempoRestart()
+                        .registrarConsumidorDeEvento(elevador);                
+        }
     }
 
     public void start()
