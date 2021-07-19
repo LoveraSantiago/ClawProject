@@ -1,10 +1,10 @@
 public class PoolDeColetaveis 
 {
-    private PoolGenerico<ColetavelTile> poolDeNomes;
+    private PoolDeNomes<ColetavelTile> poolDeNomes;
 
     public PoolDeColetaveis()
     {
-        poolDeNomes = new PoolGenerico<ColetavelTile>();
+        poolDeNomes = new PoolDeNomes<ColetavelTile>();
     }
 
     public ColetavelTile criarColetavel()

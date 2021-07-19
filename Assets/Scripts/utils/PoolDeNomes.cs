@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PoolGenerico<T> 
+public class PoolDeNomes<T> 
 {
     private T objetoTemp;
     private Dictionary<string, T> poolDeObjetosPorNome;
 
-    public PoolGenerico()
+    public PoolDeNomes()
     {
         poolDeObjetosPorNome = new Dictionary<string, T>();
     }
