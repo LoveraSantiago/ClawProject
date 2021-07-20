@@ -192,7 +192,7 @@ public abstract class Coletavel
     public bool hasEqualsSprite(Coletavel coletavelOutro)
     {
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
-    }   
+    }       
 
     public static void configurar(GameObject mainTile, Transform mainTileParent, Sprite[] characters)
     {

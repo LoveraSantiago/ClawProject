@@ -52,6 +52,6 @@ public class Elevador : Consumidor<bool>
             paredeBaixa = elevadorDto.ParedeHorizontal1;
         }
         paredeAlta.transform.localPosition = Vector3.zero;
-        paredeBaixa.transform.localPosition = new Vector3(0, -1.0f, 0);
+        paredeBaixa.transform.localPosition = new Vector3(0, -0.6f, 0);
     }
 }

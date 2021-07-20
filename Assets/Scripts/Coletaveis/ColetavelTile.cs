@@ -45,4 +45,14 @@ public class ColetavelTile : Coletavel
     {
         addMaterial(materialDefault);
     }
+
+    public void colocarNoLayerElevador()
+    {
+        goColetavel.layer = 16;
+    }
+
+    public void colocarNoLayerNormal()
+    {
+        goColetavel.layer = 7;
+    }
 }

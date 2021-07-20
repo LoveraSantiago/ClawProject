@@ -88,9 +88,10 @@ public class Board
                     coletavelEntidade = coletavelQuery.getColetavelEntidadeByFamilia(familia);
                 }
 
-                Vector3 posicao = new Vector3(eixoX[contadorColuna], -4.6f, 0);
-                Coletavel coletavel = poolDeColetaveis.criarColetavel();
+                Vector3 posicao = new Vector3(eixoX[contadorColuna], -4.0f, 0);
+                ColetavelTile coletavel = poolDeColetaveis.criarColetavel();
                 Debug.Log("coletavel sub nome: " + coletavel.nome);
+                coletavel.colocarNoLayerElevador();
                 coletavel.ligar();
                 coletavel.receberSprite(coletavelEntidade.nomeSprite);
                 coletavel.colocarNaPosicao(posicao);
