@@ -5613,6 +5613,7 @@ MonoBehaviour:
       delayVoltaBoard: 0.2
       posicaoRefVoltaBoard: {fileID: 1476824515}
       startBoard: {fileID: 422691799}
+      posAlturaSub: -4
       posicoesEixoXPar:
       - -2.25
       - -1.5
@@ -5884,6 +5885,8 @@ MonoBehaviour:
         sprImagem: {fileID: 1420270366}
         goExclamacao: {fileID: 293416723}
     elevadorDto:
+      posBaixo: -0.6
+      velocidadeSubida: 0.5
       paredeHorizontal1: {fileID: 50493997}
       paredeHorizontal2: {fileID: 1392206645}
     partesDto:
@@ -11517,7 +11520,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.85, y: -3}
+  m_Offset: {x: 2.85, y: -3.3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -11528,7 +11531,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 8}
+  m_Size: {x: 0.3, y: 8.5}
   m_EdgeRadius: 0
 --- !u!61 &658355244
 BoxCollider2D:
@@ -11543,7 +11546,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.85, y: -3}
+  m_Offset: {x: -2.85, y: -3.3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -11554,7 +11557,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 8}
+  m_Size: {x: 0.3, y: 8.5}
   m_EdgeRadius: 0
 --- !u!212 &678638197 stripped
 SpriteRenderer:
