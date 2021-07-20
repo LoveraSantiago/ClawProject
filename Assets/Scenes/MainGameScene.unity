@@ -5566,7 +5566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 3
+  level: 1
   garraDto:
     velocMovHorizontal: 3.1
     velocMovCima: 7.5
@@ -5631,14 +5631,14 @@ MonoBehaviour:
       - 1.87
       - 2.62
       posicoesEixoY:
-      - -3.35
-      - -2.7
-      - -2.05
-      - -1.4
-      - -0.75
-      - -0.0999999
-      - 0.55
-      - 1.2
+      - -3.5
+      - -2.85
+      - -2.2
+      - -1.55
+      - -0.9
+      - -0.25
+      - 0.4
+      - 1.05
   maquinaDto:
     referenciaChao: {fileID: 1496791513}
     joystickDto:
@@ -5885,6 +5885,7 @@ MonoBehaviour:
         sprImagem: {fileID: 1420270366}
         goExclamacao: {fileID: 293416723}
     elevadorDto:
+      alturaSubida: 0.75
       posBaixo: -0.6
       velocidadeSubida: 0.5
       paredeHorizontal1: {fileID: 50493997}

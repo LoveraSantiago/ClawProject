@@ -28,7 +28,7 @@ public class Elevador : Consumidor<bool>
 
     private IEnumerator subirElevador()
     {
-        while(paredeAlta.transform.localPosition.y < 0.9f)
+        while(paredeAlta.transform.localPosition.y < elevadorDto.AlturaSubida)
         {
             Vector3 acrescimo = new Vector3(0, elevadorDto.VelocidadeSubida * Time.deltaTime, 0);
             paredeAlta.transform.localPosition += acrescimo;
