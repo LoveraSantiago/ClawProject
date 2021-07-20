@@ -88,7 +88,7 @@ public class Board
                     coletavelEntidade = coletavelQuery.getColetavelEntidadeByFamilia(familia);
                 }
 
-                Vector3 posicao = new Vector3(eixoX[contadorColuna], -4.0f, 0);
+                Vector3 posicao = new Vector3(eixoX[contadorColuna], boardDto.PosAlturaSub, 0);
                 ColetavelTile coletavel = poolDeColetaveis.criarColetavel();
                 Debug.Log("coletavel sub nome: " + coletavel.nome);
                 coletavel.colocarNoLayerElevador();

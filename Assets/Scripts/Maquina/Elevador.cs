@@ -30,7 +30,7 @@ public class Elevador : Consumidor<bool>
     {
         while(paredeAlta.transform.localPosition.y < 0.9f)
         {
-            Vector3 acrescimo = new Vector3(0, 0.5f * Time.deltaTime, 0);
+            Vector3 acrescimo = new Vector3(0, elevadorDto.VelocidadeSubida * Time.deltaTime, 0);
             paredeAlta.transform.localPosition += acrescimo;
             paredeBaixa.transform.localPosition += acrescimo;
             yield return null;
@@ -52,6 +52,6 @@ public class Elevador : Consumidor<bool>
             paredeBaixa = elevadorDto.ParedeHorizontal1;
         }
         paredeAlta.transform.localPosition = Vector3.zero;
-        paredeBaixa.transform.localPosition = new Vector3(0, -0.6f, 0);
+        paredeBaixa.transform.localPosition = new Vector3(0, elevadorDto.PosBaixo, 0);
     }
 }
