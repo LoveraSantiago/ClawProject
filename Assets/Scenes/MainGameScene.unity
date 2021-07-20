@@ -5566,7 +5566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 3
   garraDto:
     velocMovHorizontal: 3.1
     velocMovCima: 7.5
@@ -5886,7 +5886,7 @@ MonoBehaviour:
         goExclamacao: {fileID: 293416723}
     elevadorDto:
       alturaSubida: 0.75
-      posBaixo: -0.6
+      posBaixo: -0.8
       velocidadeSubida: 0.5
       paredeHorizontal1: {fileID: 50493997}
       paredeHorizontal2: {fileID: 1392206645}
@@ -23272,7 +23272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496791512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.6, y: -3.8, z: 0}
+  m_LocalPosition: {x: -2.6, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1476824515}
