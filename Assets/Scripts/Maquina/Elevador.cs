@@ -9,11 +9,15 @@ public class Elevador : Consumidor<bool>
     private GameObject paredeAlta;
     private GameObject paredeBaixa;
 
+    public ProdutorDeEvento<bool> produtorEventoElevador;
+
     public Elevador(ElevadorDto elevadorDto, MonoBehaviour monoBehaviour)
     {
         this.elevadorDto = elevadorDto;
         this.monoBehaviour = monoBehaviour;
         posicionarParedes();
+
+        produtorEventoElevador = new ProdutorDeEvento<bool>();
     }
 
     private void acionarElevador()
@@ -31,8 +35,10 @@ public class Elevador : Consumidor<bool>
         while(paredeAlta.transform.localPosition.y < elevadorDto.AlturaSubida)
         {
             Vector3 acrescimo = new Vector3(0, elevadorDto.VelocidadeSubida * Time.deltaTime, 0);
-            paredeAlta.transform.localPosition += acrescimo;
+            paredeAlta.transform.localPosition  += acrescimo;
             paredeBaixa.transform.localPosition += acrescimo;
+
+            produtorEventoElevador.produziuEvento(true);
             yield return null;
         }
         posicionarParedes();

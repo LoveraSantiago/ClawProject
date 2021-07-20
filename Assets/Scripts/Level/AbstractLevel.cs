@@ -25,10 +25,5 @@ public abstract class AbstractLevel
 
     public abstract TipoContagemTempoDto getTempoContagem();
 
-    public abstract Dictionary<string, string> getDicionarioDeCores();
-   
-    public bool isFaseContagemContinua()
-    {
-        return getTempoContagem().contagem == ContadorTimer.Contagem.CONTINUA;
-    }
+    public abstract Dictionary<string, string> getDicionarioDeCores();   
 }
