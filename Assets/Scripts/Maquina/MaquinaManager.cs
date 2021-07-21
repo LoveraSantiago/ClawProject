@@ -162,4 +162,9 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
     {
         return displayTimer.produtorDeEventoTempoEsgotado;
     }   
+
+    public ProdutorDeEvento<bool> produtorEventoElevador()
+    {
+        return elevador.produtorEventoElevador;
+    }
 }

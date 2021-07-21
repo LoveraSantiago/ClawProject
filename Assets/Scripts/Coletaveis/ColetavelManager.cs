@@ -4,7 +4,8 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
                                 Consumidor<string>,
                                 Consumidor<int>,
                                 Consumidor<PowerUpInfo>,
-                                Consumidor<PowerUpInfoFim>
+                                Consumidor<PowerUpInfoFim>,
+                                Consumidor<bool>
 {
     private bool powerUpEmAcao;
     private bool devolverParaBoard;
@@ -115,6 +116,11 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         powerUpEmAcao = false;
     }
 
+    private void processarEventoElevador()
+    {
+
+    }
+
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER INICIO
     //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
     public void consumir(Collider2D goColetado)
@@ -161,6 +167,14 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> FIM    
 
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<bool> INICIO    
+    public void consumir(bool evento)
+    {
+        processarEventoElevador();
+    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<bool> FIM    
+
+    //CONSUMIDORES DE EVENTOS INICIO
     public Consumidor<string> getConsumidorDeColetavelParaImantar()
     {
         return this;
@@ -180,4 +194,10 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     {
         return this;
     }
+
+    public Consumidor<bool> getConsumidorEventoElevador()
+    {
+        return this;
+    }
+    //CONSUMIDORES DE EVENTOS FIM  
 }
