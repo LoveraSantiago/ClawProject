@@ -11,8 +11,7 @@ public abstract class MovimentacaoDaGarra
 
     protected static Vector2 posInicial;
 
-    public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }
-    public static ProdutorDeEvento<string> produtorEventoGarraAcertou { get; private set; }
+    public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }    
     public static ProdutorDeEvento<int> produtorDeEventoSubidaDaGarra { get; private set; }
 
     public virtual void preInicio() { }
@@ -140,8 +139,7 @@ public abstract class MovimentacaoDaGarra
         pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);        
         inputGame = inputGameArg;
 
-        produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
-        produtorEventoGarraAcertou = new ProdutorDeEvento<string>();
+        produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();        
         produtorDeEventoSubidaDaGarra = new ProdutorDeEvento<int>();
         animacao = new AnimacaoGarra(garraDto.Animator);
     }

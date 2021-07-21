@@ -1,7 +1,10 @@
 using UnityEngine;
 
 public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
-                                               ComunicadorComGerMovNormal
+                                               ComunicadorComGerMovNormal,
+                                               AcaoImantadoPelaGarra.ProdutorEvento
+
+
 {
     private MovimentacaoDaGarra   movAtual;
     private MovimentacaoParaBaixo movPBaixo;
@@ -90,5 +93,10 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     {
         movimentador.preInicio();
         movAtual = movimentador;
-    }    
+    }
+
+    ProdutorDeEvento<InformacoesColetadoImantado> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        return ((AcaoImantadoPelaGarra.ProdutorEvento)movPBaixo).getProdutorDeEventoColetado();
+    }
 }

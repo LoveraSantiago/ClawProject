@@ -83,7 +83,7 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(garraManager);//TODO ver mudanca de ordem
 
         new AcaoImantadoPelaGarra()
-            .configurarProdutor(garraManager.getProdutorDeEventoTocadoPelaGarra())
+            .configurarProdutor(garraManager)
             .adicionarConsumidor(coletaveisManager.getConsumidorDeColetavelParaImantar());
 
         new AcaoSubidaDaGarra()

@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class GarraManager : AcaoColetado.ConsumidorEvento,
+public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
+                            AcaoColetado.ConsumidorEvento,
                             ConsumidorDeEventoTrigger,
                             Consumidor<PowerUpInfo>,
                             Consumidor<PowerUpInfoFim>
@@ -96,7 +97,12 @@ public class GarraManager : AcaoColetado.ConsumidorEvento,
         }
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> FIM
-    
+
+    ProdutorDeEvento<InformacoesColetadoImantado> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        return ((AcaoImantadoPelaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEventoColetado();
+    }
+
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
     {
         gerDeMovAtual.garraComemorar();
@@ -105,12 +111,7 @@ public class GarraManager : AcaoColetado.ConsumidorEvento,
     public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
     {
         return MovimentacaoDaGarra.produtorEventoDirecao;
-    }
-
-    public ProdutorDeEvento<string> getProdutorDeEventoTocadoPelaGarra()
-    {
-        return MovimentacaoDaGarra.produtorEventoGarraAcertou;
-    }
+    } 
 
     public ProdutorDeEvento<int> getProdutorDeEventoSubidaDaGarra()
     {
@@ -125,5 +126,5 @@ public class GarraManager : AcaoColetado.ConsumidorEvento,
     public Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
     {
         return this;
-    }  
+    }    
 }
