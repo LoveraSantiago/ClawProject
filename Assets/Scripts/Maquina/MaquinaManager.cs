@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MaquinaManager : Consumidor<InformacoesColetado>,
+public class MaquinaManager : AcaoColetado.ConsumidorEvento,                              
                               Consumidor<PowerUpInfo>,
                               Consumidor<PowerUpInfoFim>
 {    
@@ -80,10 +80,14 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         botoesPowerUp.endDrag(monoBehaviour);
     }
 
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
+    {        
+        displayDeColetados.adicionarSpriteAoDisplay(evento.sprite, evento.resultCombinacao);
+        displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
+    }
+
     private void processarInformacoesDoColetado(InformacoesColetado infoColetado)
     {        
-        displayDeColetados.adicionarSpriteAoDisplay(infoColetado.sprite, infoColetado.resultCombinacao);
-        displayDeScores.mostrarScore(infoColetado.score, infoColetado.resultCombinacao);
     }
 
     private void processarInicioPowerUp(PowerUpInfo pupInfo)
@@ -106,12 +110,12 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         arcoIrisEfeito.desligarEfeitoArcoIris();
     }
 
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO
-    public void consumir(InformacoesColetado infoColetado)
-    {
-        processarInformacoesDoColetado(infoColetado);
-    }
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> FIM
+    ////IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO
+    //void AcaoColetado.consumir(InformacoesColetado infoColetado)
+    //{
+    //    processarInformacoesDoColetado(infoColetado);
+    //}
+    ////IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> FIM
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
     public void consumir(PowerUpInfo evento)
@@ -140,12 +144,7 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
     public Consumidor<DirecaoDaGarra> getJoystickHasteConsumidorDirecao()
     {
         return joystick.getConsumidorDeEventoDeDirecao();
-    }    
-
-    public Consumidor<InformacoesColetado> getConsumidorInfoColetado()
-    {
-        return this;
-    }
+    }        
 
     public Consumidor<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
@@ -166,5 +165,5 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
     public ProdutorDeEvento<bool> produtorEventoElevador()
     {
         return elevador.produtorEventoElevador;
-    }
+    }   
 }

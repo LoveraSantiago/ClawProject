@@ -75,9 +75,9 @@ public class MainGameScene : MonoBehaviour,
     
     private void configurandoAcoes()
     {
-        new AcaoEventoColetado()
-            .configurarProdutor(coletaveisManager.produtorDeInformacoesDoColetado)            
-            .adicionarConsumidor(maquinaManager.getConsumidorInfoColetado())
+        new AcaoColetado()
+            .configurarProdutor(coletaveisManager)            
+            .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado())
             .adicionarConsumidor(modalPontos.getConsumidorDeInformacoesColetado())
             .adicionarConsumidor(garraManager.getConsumidorInformacoesColetado());//TODO ver mudanca de ordem

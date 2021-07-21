@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class ColetavelManager : ConsumidorDeEventoTrigger,
+public class ColetavelManager : AcaoColetado.ProdutorEvento,
+                                ConsumidorDeEventoTrigger,
                                 Consumidor<string>,
                                 Consumidor<int>,
                                 Consumidor<PowerUpInfo>,
@@ -16,9 +17,9 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private Board board;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contadorDeColetaveis;
-    private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;    
+    private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
 
-    public ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado { get; private set; }
+    private ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado;
     private MonoBehaviour monoBehaviour;
 
     public ColetavelManager(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
@@ -200,4 +201,9 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         return this;
     }
     //CONSUMIDORES DE EVENTOS FIM  
+
+    ProdutorDeEvento<InformacoesColetado> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        return produtorDeInformacoesDoColetado;
+    }
 }
