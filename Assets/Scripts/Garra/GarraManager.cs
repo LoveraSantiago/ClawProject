@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class GarraManager : ConsumidorDeEventoTrigger,
+public class GarraManager : AcaoColetado.ConsumidorEvento,
+                            ConsumidorDeEventoTrigger,
                             Consumidor<PowerUpInfo>,
-                            Consumidor<PowerUpInfoFim>,
-                            Consumidor<InformacoesColetado>
+                            Consumidor<PowerUpInfoFim>
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
 
@@ -96,13 +96,11 @@ public class GarraManager : ConsumidorDeEventoTrigger,
         }
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> FIM
-
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
-    public void consumir(InformacoesColetado evento)
+    
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
     {
         gerDeMovAtual.garraComemorar();
     }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
 
     public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
     {
@@ -128,9 +126,4 @@ public class GarraManager : ConsumidorDeEventoTrigger,
     {
         return this;
     }  
-    
-    public Consumidor<InformacoesColetado> getConsumidorInformacoesColetado()
-    {
-        return this;
-    }
 }

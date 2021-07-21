@@ -78,9 +78,9 @@ public class MainGameScene : MonoBehaviour,
         new AcaoColetado()
             .configurarProdutor(coletaveisManager)            
             .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado())
-            .adicionarConsumidor(modalPontos.getConsumidorDeInformacoesColetado())
-            .adicionarConsumidor(garraManager.getConsumidorInformacoesColetado());//TODO ver mudanca de ordem
+            .adicionarConsumidor(efeitoColetado)
+            .adicionarConsumidor(modalPontos)
+            .adicionarConsumidor(garraManager);//TODO ver mudanca de ordem
 
         new AcaoImantadoPelaGarra()
             .configurarProdutor(garraManager.getProdutorDeEventoTocadoPelaGarra())

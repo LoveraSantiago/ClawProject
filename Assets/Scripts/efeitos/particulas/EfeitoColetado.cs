@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class EfeitoColetado : Consumidor<InformacoesColetado>
+public class EfeitoColetado : AcaoColetado.ConsumidorEvento
 {    
     private Vector3 posOriginalEfeito;
     private Vector3 posOriginalSeguidores;
@@ -22,10 +22,10 @@ public class EfeitoColetado : Consumidor<InformacoesColetado>
         particulas.Stop();
     }
 
-    private void playEfeitoColetado(Vector3 posicao)
-    {        
-        particulasDto.ParentParticulas.transform.position = new Vector3(posicao.x, posOriginalEfeito.y, posOriginalEfeito.z);
-        particulasDto.SeguidoraParticulas.transform.position = new Vector3(posicao.x, posOriginalSeguidores.y, posOriginalSeguidores.y);
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
+    {
+        particulasDto.ParentParticulas.transform.position = new Vector3(evento.posicao.x, posOriginalEfeito.y, posOriginalEfeito.z);
+        particulasDto.SeguidoraParticulas.transform.position = new Vector3(evento.posicao.x, posOriginalSeguidores.y, posOriginalSeguidores.y);
         particulasDto.LuzSeguidora.transform.position = particulasDto.SeguidoraParticulas.transform.position;
 
         particulas.Play();
@@ -48,17 +48,5 @@ public class EfeitoColetado : Consumidor<InformacoesColetado>
             yield return null;
         }
         particulasDto.SeguidoraParticulas.transform.position = posFim;
-    }
-
-    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> INICIO
-    public void consumir(InformacoesColetado infoColetado)
-    {
-        playEfeitoColetado(infoColetado.posicao);
-    }
-    //IMPLEMENTANDO INTERFACE ConsumidorDeEvento<InformacoesColetado> FIM
-
-    public Consumidor<InformacoesColetado> getEfeitoConsumidorInfoColetado()
-    {
-        return this;
     }
 }

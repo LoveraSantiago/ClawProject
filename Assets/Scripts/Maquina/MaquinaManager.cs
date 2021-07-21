@@ -84,11 +84,7 @@ public class MaquinaManager : AcaoColetado.ConsumidorEvento,
     {        
         displayDeColetados.adicionarSpriteAoDisplay(evento.sprite, evento.resultCombinacao);
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
-    }
-
-    private void processarInformacoesDoColetado(InformacoesColetado infoColetado)
-    {        
-    }
+    }    
 
     private void processarInicioPowerUp(PowerUpInfo pupInfo)
     {
@@ -109,13 +105,6 @@ public class MaquinaManager : AcaoColetado.ConsumidorEvento,
         botoesPowerUp.reclicarProxPowerUp();        
         arcoIrisEfeito.desligarEfeitoArcoIris();
     }
-
-    ////IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO
-    //void AcaoColetado.consumir(InformacoesColetado infoColetado)
-    //{
-    //    processarInformacoesDoColetado(infoColetado);
-    //}
-    ////IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> FIM
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
     public void consumir(PowerUpInfo evento)

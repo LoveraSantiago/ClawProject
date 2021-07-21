@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ModalPontos : Consumidor<InformacoesColetado>,
+public class ModalPontos : AcaoColetado.ConsumidorEvento,
                            Consumidor<bool>
 {
     private string scoreAtual;
@@ -35,13 +35,13 @@ public class ModalPontos : Consumidor<InformacoesColetado>,
         modalPontosDto.TextoNivel.text = levelName;
     }
 
-    public void consumir(InformacoesColetado infoColetado)
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
     {
-        if (infoColetado.fimColetados)
+        if (evento.fimColetados)
         {
             mostrarModalResultado();
         }
-        scoreAtual = infoColetado.score.ToString();
+        scoreAtual = evento.score.ToString();
     }
 
     public void consumir(bool evento)
@@ -63,12 +63,7 @@ public class ModalPontos : Consumidor<InformacoesColetado>,
         yield return new WaitForSeconds(0.5f);
         ligar();
         setPontuacao();
-    }
-
-    public Consumidor<InformacoesColetado> getConsumidorDeInformacoesColetado()
-    {
-        return this;
-    }
+    }  
 
     internal Consumidor<bool> getConsumidorDeTempoEsgotado()
     {
