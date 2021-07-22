@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class ColetavelManager : AcaoColetado.ProdutorEvento,
-                                ConsumidorDeEventoTrigger,
-                                Consumidor<string>,
-                                Consumidor<int>,
+public class ColetavelManager : ConsumidorDeEventoTrigger,
+                                AcaoColetado.ProdutorEvento,                                
+                                AcaoImantadoPelaGarra.ConsumidorEvento,
+                                AcaoSubidaDaGarra.ConsumidorEvento,                                
                                 Consumidor<PowerUpInfo>,
                                 Consumidor<PowerUpInfoFim>,
                                 Consumidor<bool>
@@ -85,12 +85,17 @@ public class ColetavelManager : AcaoColetado.ProdutorEvento,
         infoColetado.addInfoFinalizado(contadorDeColetaveis.hasFinished());
 
         produtorDeInformacoesDoColetado.produziuEvento(infoColetado);         
-    }    
+    }
 
-    private void processarImantado(string nomeColetado)
-    {        
-        coletavelImantado = poolDeColetaveis.getColetavelPeloNome(nomeColetado);
+    void AcaoImantadoPelaGarra.ConsumidorEvento.consumirEvento(InformacoesColetadoImantado evento)
+    {
+        coletavelImantado = poolDeColetaveis.getColetavelPeloNome(evento.nomeColetado);
         coletavelImantado.imantar();
+    }
+
+    void AcaoSubidaDaGarra.ConsumidorEvento.consumirEvento(ContagemSubidaGarra evento)
+    {
+        processarDesimantado();
     }
 
     private void processarDesimantado()
@@ -133,21 +138,7 @@ public class ColetavelManager : AcaoColetado.ProdutorEvento,
             processarColetado(goColetado.gameObject);
         }
     }
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM
-
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<STRING> INICIO    
-    public void consumir(string nomeColetavel)
-    {
-        processarImantado(nomeColetavel);
-    }
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<STRING> FIM
-
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INT> INICIO    
-    public void consumir(int evento)
-    {
-        processarDesimantado();
-    }
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INT> FIM    
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM       
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> INICIO    
     public void consumir(PowerUpInfo powerUpInfo)
@@ -173,18 +164,7 @@ public class ColetavelManager : AcaoColetado.ProdutorEvento,
     {
         processarEventoElevador();
     }
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<bool> FIM    
-
-    //CONSUMIDORES DE EVENTOS INICIO
-    public Consumidor<string> getConsumidorDeColetavelParaImantar()
-    {
-        return this;
-    }
-
-    public Consumidor<int> getConsumidorDeContagemSubidaDaGarra()
-    {
-        return this;
-    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<bool> FIM           
 
     public Consumidor<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
@@ -205,5 +185,5 @@ public class ColetavelManager : AcaoColetado.ProdutorEvento,
     ProdutorDeEvento<InformacoesColetado> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeInformacoesDoColetado;
-    }
+    }  
 }
