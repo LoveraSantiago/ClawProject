@@ -95,10 +95,10 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(maquinaManager);
 
         new AcaoPowerUpInicio()
-            .configurarProdutor(powerUpManager.produtorDeEventoPowerUp)
-            .adicionarConsumidor(garraManager.getConsumidorDePowerUpInfo())
-            .adicionarConsumidor(maquinaManager.getConsumidorDePowerUpInfo())
-            .adicionarConsumidor(coletaveisManager.getConsumidorDePowerUpInfo());
+            .configurarProdutor(powerUpManager)
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(coletaveisManager);
 
         new AcaoPowerUpFim()
             .configurarProdutor(powerUpManager.produtorDeEventoFinalizacao)

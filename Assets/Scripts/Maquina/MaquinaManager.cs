@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MaquinaManager : AcaoColetado.ConsumidorEvento,    
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
-                              Consumidor<PowerUpInfo>,
+                              AcaoPowerUpInicio.ConsumidorEvento,
                               Consumidor<PowerUpInfoFim>
 {    
     private PartesMaquinaDto partesDto;
@@ -85,14 +85,14 @@ public class MaquinaManager : AcaoColetado.ConsumidorEvento,
     {        
         displayDeColetados.adicionarSpriteAoDisplay(evento.sprite, evento.resultCombinacao);
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
-    }    
+    }
 
-    private void processarInicioPowerUp(PowerUpInfo pupInfo)
+    void AcaoPowerUpInicio.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         arcoIrisEfeito.ligarEfeitoArcoIris();
         displayTimer.pause();
-        displayDeScores.iniciarContagemRegressiva(pupInfo.duracaoTempo);        
-    }
+        displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);                
+    }    
 
     private void processarPreFimDePowerUp()
     {
@@ -105,16 +105,8 @@ public class MaquinaManager : AcaoColetado.ConsumidorEvento,
         displayTimer.continuar();
         botoesPowerUp.reclicarProxPowerUp();        
         arcoIrisEfeito.desligarEfeitoArcoIris();
-    }
-
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
-    public void consumir(PowerUpInfo evento)
-    {
-        processarInicioPowerUp(evento);
-    }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO       
-
-    //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
+    }    
+    
     public void consumir(PowerUpInfoFim pupFim)
     {
         //Debug.Log("Maquina consumindo prefim " + powerUpInfoFim.preFinalizar);
@@ -127,18 +119,12 @@ public class MaquinaManager : AcaoColetado.ConsumidorEvento,
         {         
             processarFimDePowerUp();
         }
-    }
-    //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> FIM
+    }   
 
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)
     {
-        return ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
-    }    
-
-    public Consumidor<PowerUpInfo> getConsumidorDePowerUpInfo()
-    {
-        return this;
-    }
+        ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
+    }        
 
     public Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
     {

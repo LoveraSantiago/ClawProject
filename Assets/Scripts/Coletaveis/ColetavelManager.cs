@@ -4,7 +4,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
                                 AcaoColetado.ProdutorEvento,                                
                                 AcaoImantadoPelaGarra.ConsumidorEvento,
                                 AcaoSubidaDaGarra.ConsumidorEvento,                                
-                                Consumidor<PowerUpInfo>,
+                                AcaoPowerUpInicio.ConsumidorEvento,
                                 Consumidor<PowerUpInfoFim>,
                                 Consumidor<bool>
 {
@@ -101,13 +101,13 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private void processarDesimantado()
     {
         coletavelImantado.desimantar();
-    }    
+    }
 
-    private void processarInicioPowerUp(PowerUpInfo pupInfo)
-    {
+    void AcaoPowerUpInicio.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    {        
         powerUpEmAcao = true;
         processarDesimantado();
-    }
+    }    
 
     private void processarPreFimDePowerUp(PowerUpInfoFim pupPreFim)
     {
@@ -138,13 +138,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
             processarColetado(goColetado.gameObject);
         }
     }
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM       
-
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> INICIO    
-    public void consumir(PowerUpInfo powerUpInfo)
-    {
-        processarInicioPowerUp(powerUpInfo);
-    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM          
 
     public void consumir(PowerUpInfoFim powerUpInfoFim)
     {
@@ -164,12 +158,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     {
         processarEventoElevador();
     }
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<bool> FIM           
-
-    public Consumidor<PowerUpInfo> getConsumidorDePowerUpInfo()
-    {
-        return this;
-    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<bool> FIM             
 
     public Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
     {
@@ -185,5 +174,5 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     ProdutorDeEvento<InformacoesColetado> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeInformacoesDoColetado;
-    }  
+    }    
 }

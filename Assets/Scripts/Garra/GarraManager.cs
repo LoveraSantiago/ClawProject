@@ -4,8 +4,8 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoSubidaDaGarra.ProdutorEvento,
                             AcaoSincroniaComDirecaoDaGarra.ProdutorEvento,
                             AcaoColetado.ConsumidorEvento,
-                            ConsumidorDeEventoTrigger,
-                            Consumidor<PowerUpInfo>,
+                            AcaoPowerUpInicio.ConsumidorEvento,
+                            ConsumidorDeEventoTrigger,                        
                             Consumidor<PowerUpInfoFim>
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
@@ -68,9 +68,9 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         gerDeMovAtual = gerDeMovNormal;
     }
 
-    private void processarPowerUp(PowerUpInfo powerUpInfo)
-    {
-        gerDeMovPowerUp.receberGarraInteracaoComPowerUp(powerUpInfo.garraInteracaoPowerUp, powerUpInfo.duracaoTempo);
+    void AcaoPowerUpInicio.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    {        
+        gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.garraInteracaoPowerUp, evento.duracaoTempo);
         gerDeMovPowerUp.iniciarMovimentacoes();
         gerDeMovAtual = gerDeMovPowerUp;
     }
@@ -82,13 +82,6 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         processarGarraColidiuCom(colliderDeColetavel);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
-
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
-    public void consumir(PowerUpInfo evento)
-    {
-        processarPowerUp(evento);
-    }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> FIM
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> INICIO
     public void consumir(PowerUpInfoFim powerUpInfoFim)
@@ -118,15 +111,10 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
     {
         gerDeMovAtual.garraComemorar();
-    }
-
-    public Consumidor<PowerUpInfo> getConsumidorDePowerUpInfo()
-    {
-        return this;
-    }
+    }    
 
     public Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
     {
         return this;
-    }
+    }   
 }
