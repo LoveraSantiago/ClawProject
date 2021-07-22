@@ -1,3 +1,3 @@
-public class TempoEsgotado 
+public class TempoEsgotado : Vazio
 {    
 }

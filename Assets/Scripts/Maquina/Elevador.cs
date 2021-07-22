@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class Elevador : Consumidor<bool>
+public class Elevador : AcaoElevadorFim.ProdutorEvento,
+                        Consumidor<bool>
 {
     private ElevadorDto elevadorDto;
     private MonoBehaviour monoBehaviour;
@@ -9,7 +10,7 @@ public class Elevador : Consumidor<bool>
     private GameObject paredeAlta;
     private GameObject paredeBaixa;
 
-    public ProdutorDeEvento<bool> produtorEventoElevador;
+    public ProdutorDeEvento<ElevadorFim> produtorEventoElevador;
 
     public Elevador(ElevadorDto elevadorDto, MonoBehaviour monoBehaviour)
     {
@@ -17,7 +18,7 @@ public class Elevador : Consumidor<bool>
         this.monoBehaviour = monoBehaviour;
         posicionarParedes();
 
-        produtorEventoElevador = new ProdutorDeEvento<bool>();
+        produtorEventoElevador = new ProdutorDeEvento<ElevadorFim>();
     }
 
     private void acionarElevador()
@@ -38,7 +39,7 @@ public class Elevador : Consumidor<bool>
             paredeAlta.transform.localPosition  += acrescimo;
             paredeBaixa.transform.localPosition += acrescimo;
 
-            produtorEventoElevador.produziuEvento(true);
+            produtorEventoElevador.produziuEvento(null);
             yield return null;
         }
         posicionarParedes();
@@ -59,5 +60,10 @@ public class Elevador : Consumidor<bool>
         }
         paredeAlta.transform.localPosition = Vector3.zero;
         paredeBaixa.transform.localPosition = new Vector3(0, elevadorDto.PosBaixo, 0);
+    }
+
+    ProdutorDeEvento<ElevadorFim> AcaoElevadorFim.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        return produtorEventoElevador;
     }
 }

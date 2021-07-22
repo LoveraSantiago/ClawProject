@@ -1,3 +1,3 @@
-public class AcaoElevadorFim : ProdutorConsumidoresDeEvento<bool>
+public class AcaoElevadorFim : ProdutorConsumidoresDeEvento<ElevadorFim>
 {   
 }

@@ -111,8 +111,8 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(modalPontos);
 
         new AcaoElevadorFim()
-            .configurarProdutor(maquinaManager.produtorEventoElevador())
-            .adicionarConsumidor(coletaveisManager.getConsumidorEventoElevador());
+            .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(coletaveisManager);
     }
 
     private void configurandoEventos()
