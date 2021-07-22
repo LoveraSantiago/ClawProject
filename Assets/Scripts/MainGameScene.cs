@@ -107,8 +107,8 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(coletaveisManager);
 
         new AcaoTempoEsgotado()
-            .configurarProdutor(maquinaManager.produtorDeTempoAcabado())
-            .adicionarConsumidor(modalPontos.getConsumidorDeTempoEsgotado());
+            .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(modalPontos);
 
         new AcaoElevadorFim()
             .configurarProdutor(maquinaManager.produtorEventoElevador())

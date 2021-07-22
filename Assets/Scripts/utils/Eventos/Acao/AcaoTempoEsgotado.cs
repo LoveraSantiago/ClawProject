@@ -1,3 +1,3 @@
-public class AcaoTempoEsgotado : ProdutorConsumidoresDeEvento<bool>
+public class AcaoTempoEsgotado : ProdutorConsumidoresDeEvento<TempoEsgotado>
 {    
 }

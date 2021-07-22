@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class ModalPontos : AcaoColetado.ConsumidorEvento,
-                           Consumidor<bool>
+                           AcaoTempoEsgotado.ConsumidorEvento
 {
     private string scoreAtual;
     private bool mostrandoModal;
@@ -44,7 +44,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         scoreAtual = evento.score.ToString();
     }
 
-    public void consumir(bool evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {
         mostrarModalResultado();
     }
@@ -63,10 +63,5 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         yield return new WaitForSeconds(0.5f);
         ligar();
         setPontuacao();
-    }  
-
-    internal Consumidor<bool> getConsumidorDeTempoEsgotado()
-    {
-        return this;
-    }   
+    }     
 }

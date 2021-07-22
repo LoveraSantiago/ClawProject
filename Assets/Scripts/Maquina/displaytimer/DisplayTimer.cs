@@ -1,26 +1,25 @@
 using System.Collections;
 using UnityEngine;
 
-public class DisplayTimer
+public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
 {  
     private float tempoInicial;
     private bool isPausado;
         
     private ContadorTimer contadorTimer;    
-    private DisplayTimerGlow glowDisplay;
-    
+    private DisplayTimerGlow glowDisplay;    
     private DisplayTimerDigitos digitos;
 
     private Coroutine coroutineBlink;
     private MonoBehaviour monoBehaviour;
 
-    public ProdutorDeEvento<bool> produtorDeEventoTempoEsgotado { get; private set; }
+    private ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado;
 
     public DisplayTimer(DisplayTimerDto displayDto, MonoBehaviour monoBehaviour)
     {   
         digitos = new DisplayTimerDigitos(displayDto);
         
-        produtorDeEventoTempoEsgotado = new ProdutorDeEvento<bool>();
+        produtorDeEventoTempoEsgotado = new ProdutorDeEvento<TempoEsgotado>();
         glowDisplay = new DisplayTimerGlow(displayDto);
         contadorTimer = new ContadorTimer();
         this.monoBehaviour = monoBehaviour;
@@ -44,7 +43,7 @@ public class DisplayTimer
             atualizarTempo();
             if (contadorTimer.isTimeOver())
             {
-                produtorDeEventoTempoEsgotado.produziuEvento(true);
+                produtorDeEventoTempoEsgotado.produziuEvento(null);
                 monoBehaviour.StopCoroutine(coroutineBlink);
                 coroutineBlink = null;
             }
@@ -94,4 +93,8 @@ public class DisplayTimer
         yield return null;
     }
 
+    ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        return produtorDeEventoTempoEsgotado;
+    }
 }
