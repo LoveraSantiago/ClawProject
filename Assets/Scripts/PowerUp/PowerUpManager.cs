@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class PowerUpManager : PowerUpAcionamento,
                               PowerUpFinalizacao,
-                              AcaoPowerUpInicio.ProdutorEvento
+                              AcaoPowerUpInicio.ProdutorEvento,
+                              AcaoPowerUpFim.ProdutorEvento
 {   
     public ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp { get; private set; }
-    public ProdutorDeEvento<PowerUpInfoFim> produtorDeEventoFinalizacao { get; private set; }
+    private ProdutorDeEvento<PowerUpInfoFim> produtorDeEventoFinalizacao;
 
     public PowerUpManager(PowerUpDto powerUpDto, MonoBehaviour monoBehaviour, InputGame inputGame)
     {   
@@ -61,5 +62,10 @@ public class PowerUpManager : PowerUpAcionamento,
     ProdutorDeEvento<PowerUpInfo> AcaoPowerUpInicio.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeEventoPowerUp;
+    }
+
+    ProdutorDeEvento<PowerUpInfoFim> AcaoPowerUpFim.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        return produtorDeEventoFinalizacao;
     }
 }

@@ -5,8 +5,8 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoSincroniaComDirecaoDaGarra.ProdutorEvento,
                             AcaoColetado.ConsumidorEvento,
                             AcaoPowerUpInicio.ConsumidorEvento,
-                            ConsumidorDeEventoTrigger,                        
-                            Consumidor<PowerUpInfoFim>
+                            AcaoPowerUpFim.ConsumidorEvento,
+                            ConsumidorDeEventoTrigger
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
 
@@ -82,16 +82,19 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         processarGarraColidiuCom(colliderDeColetavel);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
-
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> INICIO
-    public void consumir(PowerUpInfoFim powerUpInfoFim)
+   
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
     {
-        if (powerUpInfoFim.finalizar)
+        gerDeMovAtual.garraComemorar();
+    }    
+
+    void AcaoPowerUpFim.ConsumidorEvento.consumirEvento(PowerUpInfoFim evento)
+    {
+        if (evento.finalizar)
         {
             processarFimPowerUp();
         }
     }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<int> FIM
 
     ProdutorDeEvento<InformacoesColetadoImantado> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEventoColetado()
     {
@@ -107,14 +110,4 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     {
         return MovimentacaoDaGarra.produtorEventoDirecao;
     }
-
-    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
-    {
-        gerDeMovAtual.garraComemorar();
-    }    
-
-    public Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
-    {
-        return this;
-    }   
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class MaquinaManager : AcaoColetado.ConsumidorEvento,    
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUpInicio.ConsumidorEvento,
-                              Consumidor<PowerUpInfoFim>
+                              AcaoPowerUpFim.ConsumidorEvento
 {    
     private PartesMaquinaDto partesDto;
 
@@ -106,31 +106,23 @@ public class MaquinaManager : AcaoColetado.ConsumidorEvento,
         botoesPowerUp.reclicarProxPowerUp();        
         arcoIrisEfeito.desligarEfeitoArcoIris();
     }    
-    
-    public void consumir(PowerUpInfoFim pupFim)
+
+    void AcaoPowerUpFim.ConsumidorEvento.consumirEvento(PowerUpInfoFim evento)
     {
-        //Debug.Log("Maquina consumindo prefim " + powerUpInfoFim.preFinalizar);
-        //Debug.Log("Maquina consumindo fim " + powerUpInfoFim.finalizar);
-        if (pupFim.preFinalizar)
+        if (evento.preFinalizar)
         {     
             processarPreFimDePowerUp();
         }
-        else if (pupFim.finalizar)
+        else if (evento.finalizar)
         {         
             processarFimDePowerUp();
-        }
-    }   
+        }        
+    }
 
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)
     {
         ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
-    }        
-
-    public Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
-    {
-        return this;
-    }    
-    //CONSUMIDORES DE EVENTOS FIM
+    }           
 
     public ProdutorDeEvento<bool> produtorDeTempoAcabado()
     {
@@ -140,5 +132,5 @@ public class MaquinaManager : AcaoColetado.ConsumidorEvento,
     public ProdutorDeEvento<bool> produtorEventoElevador()
     {
         return elevador.produtorEventoElevador;
-    }    
+    }  
 }

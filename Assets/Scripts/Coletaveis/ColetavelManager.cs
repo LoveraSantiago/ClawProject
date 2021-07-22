@@ -5,7 +5,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
                                 AcaoImantadoPelaGarra.ConsumidorEvento,
                                 AcaoSubidaDaGarra.ConsumidorEvento,                                
                                 AcaoPowerUpInicio.ConsumidorEvento,
-                                Consumidor<PowerUpInfoFim>,
+                                AcaoPowerUpFim.ConsumidorEvento,
                                 Consumidor<bool>
 {
     private bool powerUpEmAcao;
@@ -138,32 +138,26 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
             processarColetado(goColetado.gameObject);
         }
     }
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM          
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM         
 
-    public void consumir(PowerUpInfoFim powerUpInfoFim)
-    {
-        if (powerUpInfoFim.preFinalizar)
+    void AcaoPowerUpFim.ConsumidorEvento.consumirEvento(PowerUpInfoFim evento)
+    {     
+        if (evento.preFinalizar)
         {
-            processarPreFimDePowerUp(powerUpInfoFim);
+            processarPreFimDePowerUp(evento);
         }
-        if (powerUpInfoFim.finalizar)
+        if (evento.finalizar)
         {
             processarFimDePowerUp();
         }
-    }
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<POWERUPINFO> FIM    
+    }    
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<bool> INICIO    
     public void consumir(bool evento)
     {
         processarEventoElevador();
     }
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<bool> FIM             
-
-    public Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
-    {
-        return this;
-    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<bool> FIM                
 
     public Consumidor<bool> getConsumidorEventoElevador()
     {
@@ -174,5 +168,5 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     ProdutorDeEvento<InformacoesColetado> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeInformacoesDoColetado;
-    }    
+    }
 }
