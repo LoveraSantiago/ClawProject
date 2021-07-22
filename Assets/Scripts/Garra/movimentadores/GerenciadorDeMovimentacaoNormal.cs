@@ -4,8 +4,6 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
                                                ComunicadorComGerMovNormal,
                                                AcaoImantadoPelaGarra.ProdutorEvento,
                                                AcaoSubidaDaGarra.ProdutorEvento
-
-
 {
     private MovimentacaoDaGarra   movAtual;
     private MovimentacaoParaBaixo movPBaixo;

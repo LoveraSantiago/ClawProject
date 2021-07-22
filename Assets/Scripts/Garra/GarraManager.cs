@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoSubidaDaGarra.ProdutorEvento,
+                            AcaoSincroniaComDirecaoDaGarra.ProdutorEvento,
                             AcaoColetado.ConsumidorEvento,
                             ConsumidorDeEventoTrigger,
                             Consumidor<PowerUpInfo>,
@@ -9,7 +10,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
 
-    private GerenciadorDeMovimentacaoNormal  gerDeMovNormal;
+    private GerenciadorDeMovimentacaoNormal gerDeMovNormal;
     private GerenciadorDeMovimentacaoPowerUp gerDeMovPowerUp;
     private GerenciadorDeMovimentacao gerDeMovAtual;
     private CaboDaGarra cabo;
@@ -17,7 +18,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     public GarraManager(GarraDto garraDto, InputGame inputGame)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto, inputGame);
-        gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
+        gerDeMovNormal = new GerenciadorDeMovimentacaoNormal();
         gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
         gerDeMovAtual = gerDeMovNormal;
 
@@ -68,10 +69,10 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     }
 
     private void processarPowerUp(PowerUpInfo powerUpInfo)
-    {        
+    {
         gerDeMovPowerUp.receberGarraInteracaoComPowerUp(powerUpInfo.garraInteracaoPowerUp, powerUpInfo.duracaoTempo);
         gerDeMovPowerUp.iniciarMovimentacoes();
-        gerDeMovAtual = gerDeMovPowerUp;        
+        gerDeMovAtual = gerDeMovPowerUp;
     }
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
@@ -109,16 +110,15 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         return ((AcaoSubidaDaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEventoColetado();
     }
 
-    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
-    {
-        gerDeMovAtual.garraComemorar();
-    }
-
-    public ProdutorDeEvento<DirecaoDaGarra> getDisparadorDeEventoDeDirecao()
+    ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return MovimentacaoDaGarra.produtorEventoDirecao;
     }
 
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
+    {
+        gerDeMovAtual.garraComemorar();
+    }
 
     public Consumidor<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
@@ -128,5 +128,5 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     public Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
     {
         return this;
-    }    
+    }
 }

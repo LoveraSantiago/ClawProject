@@ -91,8 +91,8 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(coletaveisManager);
         
         new AcaoSincroniaComDirecaoDaGarra()
-            .configurarProdutor(garraManager.getDisparadorDeEventoDeDirecao())
-            .adicionarConsumidor(maquinaManager.getJoystickHasteConsumidorDirecao());
+            .configurarProdutor(garraManager)
+            .adicionarConsumidor(maquinaManager);
 
         new AcaoPowerUpInicio()
             .configurarProdutor(powerUpManager.produtorDeEventoPowerUp)

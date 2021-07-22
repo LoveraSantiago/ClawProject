@@ -4,14 +4,14 @@ public abstract class MovimentacaoDaGarra
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
 
+    protected static Vector2 posInicial;
     protected static PincaDaGarra pincas;
     protected static GarraDto garraDto;
-    protected static InputGame inputGame;
     protected static AnimacaoGarra animacao;
 
-    protected static Vector2 posInicial;
-
     public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }        
+
+    protected static InputGame inputGame;
 
     public virtual void preInicio() { }
     public virtual void update() { }

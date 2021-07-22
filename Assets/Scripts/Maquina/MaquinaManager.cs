@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class MaquinaManager : AcaoColetado.ConsumidorEvento,                              
+public class MaquinaManager : AcaoColetado.ConsumidorEvento,    
+                              AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               Consumidor<PowerUpInfo>,
                               Consumidor<PowerUpInfoFim>
 {    
@@ -129,11 +130,10 @@ public class MaquinaManager : AcaoColetado.ConsumidorEvento,
     }
     //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> FIM
 
-    //CONSUMIDORES DE EVENTOS INICIO
-    public Consumidor<DirecaoDaGarra> getJoystickHasteConsumidorDirecao()
+    void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)
     {
-        return joystick.getConsumidorDeEventoDeDirecao();
-    }        
+        return ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
+    }    
 
     public Consumidor<PowerUpInfo> getConsumidorDePowerUpInfo()
     {
@@ -154,5 +154,5 @@ public class MaquinaManager : AcaoColetado.ConsumidorEvento,
     public ProdutorDeEvento<bool> produtorEventoElevador()
     {
         return elevador.produtorEventoElevador;
-    }   
+    }    
 }
