@@ -44,7 +44,9 @@ public class Elevador : AcaoElevadorFim.ProdutorEvento,
         }
 
         equipararParedes();
+        yield return new WaitForSeconds(0.5f);
         produtorEventoElevador.produziuEvento(null);
+        yield return new WaitForSeconds(0.5f);
         posicionarParedes();
         yield return null;
     }
