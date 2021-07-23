@@ -47,8 +47,8 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
     {
         powerUpEmAcao = false;
-        board.create(poolDeColetaveis);
-        contadorDeColetaveis.configurarTotalColetaveis(board.getTotalColetaveis(), devolverParaBoard);
+        int qtdColetaveisDoBoard = board.create(poolDeColetaveis);
+        contadorDeColetaveis.configurarTotalColetaveis(qtdColetaveisDoBoard, devolverParaBoard);
         coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK
     }    
 

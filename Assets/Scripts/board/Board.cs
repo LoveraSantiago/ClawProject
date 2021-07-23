@@ -2,8 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class Board 
-{
-    private int contadorDeColetaveis;    
+{    
     private bool devolverParaBoard;
 
     private int[,] arrayDeColetaveis;
@@ -11,6 +10,8 @@ public class Board
 
     private BoardDto boardDto;
     private ColetavelEntidade.FAMILIA familia;
+
+    private PoolList<ColetavelTile> poolExtraSubs;
 
     public Board(BoardDto boardDto)
     {
@@ -25,16 +26,35 @@ public class Board
         familia = level.getFamiliaColetavel();
         devolverParaBoard = level.devolverParaBoard();
         validacaoArray(arrayDeColetaveis);
+
+        if (hasExtraSubColetaveis())
+        {
+            poolExtraSubs = new PoolList<ColetavelTile>();
+        }
     }
 
-    public void create(PoolDeColetaveis poolDeColetaveis)
+    public int create(PoolDeColetaveis poolDeColetaveis)
     {
-        createNormal(poolDeColetaveis);
+        int qtdColetaveisCriados = createNormal(poolDeColetaveis);
         createSub(poolDeColetaveis);
-    }    
+        return qtdColetaveisCriados;
+    }   
 
-    private void createNormal(PoolDeColetaveis poolDeColetaveis)
+    public void devolver(ColetavelTile[] coletados, MonoBehaviour monoBehaviour)
     {
+        if (devolverParaBoard)
+        {
+            if (coletados.Length > 0)
+            {
+                monoBehaviour.StartCoroutine(coroutineDevolverParaBoard(coletados));
+            }
+        }       
+    }
+   
+    private int createNormal(PoolDeColetaveis poolDeColetaveis)
+    {
+        int contadorDeColetaveis = 0;
+
         ColetavelQuery coletavelQuery = new ColetavelQuery();
         for (int contadorLinha = 0; contadorLinha < boardDto.PosicoesEixoY.Length; contadorLinha++)
         {
@@ -63,12 +83,13 @@ public class Board
                 coletavel.colocarNaPosicao(posicao);
             }
         }
+        return contadorDeColetaveis;
     }
 
     private void createSub(PoolDeColetaveis poolDeColetaveis)
     {
         Debug.Log("criando subs");
-        if(arrayDeColetaveisSub != null)
+        if(hasExtraSubColetaveis())
         {
             ColetavelQuery coletavelQuery = new ColetavelQuery();
 
@@ -95,8 +116,17 @@ public class Board
                 coletavel.ligar();
                 coletavel.receberSprite(coletavelEntidade.nomeSprite);
                 coletavel.colocarNaPosicao(posicao);
+
+                poolExtraSubs.addObjeto(coletavel);
             }
         }
+    }
+
+
+
+    private bool hasExtraSubColetaveis()
+    {
+        return arrayDeColetaveisSub != null;
     }
 
     private float[] getEixoX(int indice)
@@ -109,27 +139,7 @@ public class Board
         {
             return boardDto.PosicoesEixoXImpar;
         }
-    }
-
-    public int getTotalColetaveis()
-    {
-        return contadorDeColetaveis;
-    }
-
-    public void devolver(ColetavelTile[] coletados, MonoBehaviour monoBehaviour)
-    {
-        if (devolverParaBoard)
-        {
-            if (coletados.Length > 0)
-            {
-                monoBehaviour.StartCoroutine(coroutineDevolverParaBoard(coletados));
-            }
-        }
-        else
-        {
-
-        }
-    }
+    }    
 
     private IEnumerator coroutineDevolverParaBoard(ColetavelTile[] coletados)
     {
