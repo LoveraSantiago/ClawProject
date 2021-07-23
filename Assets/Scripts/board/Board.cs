@@ -50,6 +50,22 @@ public class Board
             }
         }       
     }
+
+    public int ativarColetaveisSub(PoolDeColetaveis poolDeColetaveis)
+    {
+        int contadorAtivados = 0;
+        while (poolExtraSubs.hasObjeto())
+        {
+            ColetavelTile coletavel = poolExtraSubs.getObjeto();
+            coletavel.colocarNoLayerNormal();
+            contadorAtivados++;
+        }
+
+        poolExtraSubs.reclicarPool();
+        createSub(poolDeColetaveis);
+
+        return contadorAtivados;
+    }
    
     private int createNormal(PoolDeColetaveis poolDeColetaveis)
     {
@@ -120,9 +136,7 @@ public class Board
                 poolExtraSubs.addObjeto(coletavel);
             }
         }
-    }
-
-
+    }    
 
     private bool hasExtraSubColetaveis()
     {

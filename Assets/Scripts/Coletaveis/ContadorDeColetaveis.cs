@@ -51,6 +51,11 @@ public class ContadorDeColetaveis
         score += 10;
     }
 
+    public void adicionarColetaveisExtras(int qtd)
+    {
+        totalColetaveis += qtd;
+    }
+
     public ColetavelTile[] getArrayBoard()
     {
         return devolverBoard;

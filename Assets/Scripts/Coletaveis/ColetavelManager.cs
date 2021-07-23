@@ -135,8 +135,9 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     }
     
     void AcaoElevadorFim.ConsumidorEvento.consumirEvento(ElevadorFim evento)
-    {        
-
+    {
+        int qtdAtivados = board.ativarColetaveisSub(poolDeColetaveis);
+        contadorDeColetaveis.adicionarColetaveisExtras(qtdAtivados);
     }
 
     ProdutorDeEvento<InformacoesColetado> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
