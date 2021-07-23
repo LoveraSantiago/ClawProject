@@ -43,11 +43,17 @@ public class Elevador : AcaoElevadorFim.ProdutorEvento,
             yield return null;
         }
 
+        yield return new WaitForSeconds(1f);
         equipararParedes();
-        yield return new WaitForSeconds(0.5f);
-        produtorEventoElevador.produziuEvento(null);
-        yield return new WaitForSeconds(0.5f);
+        Debug.Log("Paredes equiparadas");
+        yield return new WaitForSeconds(1f);
+        produtorEventoElevador.produziuEvento(new ElevadorFim(false));
+        Debug.Log("Finalizou eventos");
+        yield return new WaitForSeconds(1f);
         posicionarParedes();
+        Debug.Log("Paredes posicionadas");
+        yield return new WaitForSeconds(1f);
+        produtorEventoElevador.produziuEvento(new ElevadorFim(true));
         yield return null;
     }
 

@@ -5670,7 +5670,7 @@ MonoBehaviour:
       delayVoltaBoard: 0.2
       posicaoRefVoltaBoard: {fileID: 1476824515}
       startBoard: {fileID: 422691799}
-      posAlturaSub: -4
+      posAlturaSub: -4.3
       posicoesEixoXPar:
       - -2.25
       - -1.5

@@ -51,7 +51,7 @@ public class Board
         }       
     }
 
-    public int ativarColetaveisSub(PoolDeColetaveis poolDeColetaveis)
+    public int ativarColetaveisSub()
     {
         int contadorAtivados = 0;
         while (poolExtraSubs.hasObjeto())
@@ -60,9 +60,7 @@ public class Board
             coletavel.colocarNoLayerNormal();
             contadorAtivados++;
         }
-
-        poolExtraSubs.reclicarPool();
-        createSub(poolDeColetaveis);
+        poolExtraSubs.reclicarPool();        
 
         return contadorAtivados;
     }
@@ -102,7 +100,7 @@ public class Board
         return contadorDeColetaveis;
     }
 
-    private void createSub(PoolDeColetaveis poolDeColetaveis)
+    public void createSub(PoolDeColetaveis poolDeColetaveis)
     {
         Debug.Log("criando subs");
         if(hasExtraSubColetaveis())
@@ -111,8 +109,7 @@ public class Board
 
             float [] eixoX = getEixoX(0);
             for (int contadorColuna = 0; contadorColuna < eixoX.Length; contadorColuna++)
-            {
-                Debug.Log("criando cada sub " + contadorColuna);
+            {                
                 int id = arrayDeColetaveisSub[0, contadorColuna];
                 ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelEntidadeById(id);
 
@@ -127,11 +124,11 @@ public class Board
 
                 Vector3 posicao = new Vector3(eixoX[contadorColuna], boardDto.PosAlturaSub, 0);
                 ColetavelTile coletavel = poolDeColetaveis.criarColetavel();
-                Debug.Log("coletavel sub nome: " + coletavel.nome);
                 coletavel.colocarNoLayerElevador();
                 coletavel.ligar();
                 coletavel.receberSprite(coletavelEntidade.nomeSprite);
                 coletavel.colocarNaPosicao(posicao);
+                Debug.Log("coletavel sub nome: " + coletavel.nome + " pos: " + posicao);
 
                 poolExtraSubs.addObjeto(coletavel);
             }
