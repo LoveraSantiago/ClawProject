@@ -10,6 +10,7 @@ public class ElevadorDto
     [Space(3)]
     [SerializeField] private GameObject paredeHorizontal1;
     [SerializeField] private GameObject paredeHorizontal2;
+    [SerializeField] private GameObject paredeHorizontalFixa;
 
     public float AlturaSubida { get { return alturaSubida; } }
     public float PosBaixo { get { return posBaixo; } }
@@ -17,5 +18,6 @@ public class ElevadorDto
 
     public GameObject ParedeHorizontal1 { get { return paredeHorizontal1; } }
     public GameObject ParedeHorizontal2 { get { return paredeHorizontal2; } }
+    public GameObject ParedeHorizontalFixa { get { return paredeHorizontalFixa; } }
 
 }

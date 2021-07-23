@@ -19,6 +19,7 @@ public class Elevador : AcaoElevadorFim.ProdutorEvento,
         posicionarParedes();
 
         produtorEventoElevador = new ProdutorDeEvento<ElevadorFim>();
+        elevadorDto.ParedeHorizontalFixa.transform.localPosition = new Vector3(0, elevadorDto.PosBaixo, 0);
     }
 
     private void acionarElevador()
