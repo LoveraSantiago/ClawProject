@@ -87,6 +87,23 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         produtorDeInformacoesDoColetado.produziuEvento(infoColetado);         
     }
 
+    private void processarDesimantado()
+    {
+        coletavelImantado.desimantar();
+    }
+
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER INICIO
+    //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
+    public void consumir(Collider2D goColetado)
+    {
+        //Debug.Log("Nome Coletado: " + goColetado.name);
+        if(goColetado.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0 && !powerUpEmAcao)
+        {            
+            processarColetado(goColetado.gameObject);
+        }
+    }
+    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM         
+
     void AcaoImantadoPelaGarra.ConsumidorEvento.consumirEvento(InformacoesColetadoImantado evento)
     {
         coletavelImantado = poolDeColetaveis.getColetavelPeloNome(evento.nomeColetado);
@@ -98,58 +115,28 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         processarDesimantado();
     }
 
-    private void processarDesimantado()
-    {
-        coletavelImantado.desimantar();
-    }
-
     void AcaoPowerUpInicio.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {        
         powerUpEmAcao = true;
         processarDesimantado();
-    }    
-
-    private void processarPreFimDePowerUp(PowerUpInfoFim pupPreFim)
-    {
-        if (pupPreFim.hasColetavel)
-        {
-            processarColetado(pupPreFim.coletavelTile.getGoColetavel());
-        }
-    }
-
-    private void processarFimDePowerUp()
-    {
-        powerUpEmAcao = false;
-    }
-    
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER INICIO
-    //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
-    public void consumir(Collider2D goColetado)
-    {
-        //Debug.Log("Nome Coletado: " + goColetado.name);
-        if(goColetado.gameObject.transform.GetComponent<Rigidbody2D>().velocity.y > 0 &&
-            !powerUpEmAcao)
-        {            
-            processarColetado(goColetado.gameObject);
-        }
-    }
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM         
-
-    void AcaoElevadorFim.ConsumidorEvento.consumirEvento(ElevadorFim evento)
-    {        
-    }
+    }        
 
     void AcaoPowerUpFim.ConsumidorEvento.consumirEvento(PowerUpInfoFim evento)
     {     
-        if (evento.preFinalizar)
+        if (evento.preFinalizar && evento.hasColetavel)
         {
-            processarPreFimDePowerUp(evento);
+            processarColetado(evento.coletavelTile.getGoColetavel());
         }
-        if (evento.finalizar)
+        else if (evento.finalizar)
         {
-            processarFimDePowerUp();
+            powerUpEmAcao = false;
         }
-    }      
+    }
+    
+    void AcaoElevadorFim.ConsumidorEvento.consumirEvento(ElevadorFim evento)
+    {        
+
+    }
 
     ProdutorDeEvento<InformacoesColetado> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
     {
