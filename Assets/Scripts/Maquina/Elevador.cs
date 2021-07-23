@@ -39,11 +39,18 @@ public class Elevador : AcaoElevadorFim.ProdutorEvento,
             paredeAlta.transform.localPosition  += acrescimo;
             paredeBaixa.transform.localPosition += acrescimo;
 
-            produtorEventoElevador.produziuEvento(null);
             yield return null;
         }
+
+        equipararParedes();
+        produtorEventoElevador.produziuEvento(null);
         posicionarParedes();
         yield return null;
+    }
+
+    private void equipararParedes()
+    {
+        paredeAlta.transform.localPosition = paredeBaixa.transform.localPosition;
     }
 
     private void posicionarParedes()
@@ -59,8 +66,12 @@ public class Elevador : AcaoElevadorFim.ProdutorEvento,
             paredeBaixa = elevadorDto.ParedeHorizontal1;
         }
         paredeAlta.transform.localPosition = Vector3.zero;
+        paredeAlta.layer = 11;
+        
         paredeBaixa.transform.localPosition = new Vector3(0, elevadorDto.PosBaixo, 0);
-    }
+        paredeBaixa.layer = 17;
+
+    }    
 
     ProdutorDeEvento<ElevadorFim> AcaoElevadorFim.ProdutorEvento.getProdutorDeEventoColetado()
     {
