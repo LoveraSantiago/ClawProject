@@ -6,7 +6,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoSubidaDaGarra.ConsumidorEvento,                                
                                 AcaoPowerUpInicio.ConsumidorEvento,
                                 AcaoPowerUpFim.ConsumidorEvento,
-                                AcaoElevadorFim.ConsumidorEvento
+                                AcaoTempoEsgotado.ConsumidorEvento
 {
     private bool powerUpEmAcao;
     private bool devolverParaBoard;
@@ -133,17 +133,14 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         }
     }
     
-    void AcaoElevadorFim.ConsumidorEvento.consumirEvento(ElevadorFim evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {
-        if (!evento.finalizou)
+        if (evento.restart)
         {
             int qtdAtivados = boardManager.ativarColetaveisSub();
             contadorDeColetaveis.adicionarColetaveisExtras(qtdAtivados);
-        }
-        else
-        {
             boardManager.createSub(poolDeColetaveis);
-        }
+        }        
     }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()

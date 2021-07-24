@@ -108,7 +108,8 @@ public class MainGameScene : MonoBehaviour,
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(modalPontos);      
+            .adicionarConsumidor(modalPontos)
+            .adicionarConsumidor(coletaveisManager);      
     }
 
     private void configurandoEventos()
