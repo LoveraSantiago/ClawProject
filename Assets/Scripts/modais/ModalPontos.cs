@@ -35,7 +35,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         modalPontosDto.TextoNivel.text = levelName;
     }
 
-    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         if (evento.fimColetados)
         {

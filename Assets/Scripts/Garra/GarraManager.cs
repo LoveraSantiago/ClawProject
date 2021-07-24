@@ -83,7 +83,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
    
-    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         gerDeMovAtual.garraComemorar();
     }    

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InformacoesColetado
+public class InformacoesColetadoDto
 {    
     public int score { get; private set; }
 

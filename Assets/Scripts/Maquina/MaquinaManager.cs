@@ -83,7 +83,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp.endDrag(monoBehaviour);
     }
 
-    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {        
         displayDeColetados.adicionarSpriteAoDisplay(evento.sprite, evento.resultCombinacao);
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);

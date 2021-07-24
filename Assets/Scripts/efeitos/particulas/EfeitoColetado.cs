@@ -22,7 +22,7 @@ public class EfeitoColetado : AcaoColetado.ConsumidorEvento
         particulas.Stop();
     }
 
-    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetado evento)
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         particulasDto.ParentParticulas.transform.position = new Vector3(evento.posicao.x, posOriginalEfeito.y, posOriginalEfeito.z);
         particulasDto.SeguidoraParticulas.transform.position = new Vector3(evento.posicao.x, posOriginalSeguidores.y, posOriginalSeguidores.y);

@@ -19,7 +19,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private ContadorDeColetaveis contadorDeColetaveis;
     private TuboDeSaida tudoDeSaida;
 
-    private ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado;
+    private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;
     private MonoBehaviour monoBehaviour;
 
     public ColetavelManager(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
@@ -34,7 +34,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         contadorDeColetaveis = new ContadorDeColetaveis();
         tudoDeSaida = new TuboDeSaida(coletaveisDto.TuboDto);
 
-        produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
+        produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
@@ -77,13 +77,13 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
-        InformacoesColetado infoColetado = new InformacoesColetado();
-        infoColetado.addInfosDisplayColetados(coletavelAcertado.getSprite(), contadorDeColetaveis.getResult());
-        infoColetado.addInfosDisplayScore(contadorDeColetaveis.getScore());
-        infoColetado.addInfosPosicao(gameObjectColetado.transform.position);
-        infoColetado.addInfoFinalizado(contadorDeColetaveis.hasFinished());
+        InformacoesColetadoDto infoColetadoDto = new InformacoesColetadoDto();
+        infoColetadoDto.addInfosDisplayColetados(coletavelAcertado.getSprite(), contadorDeColetaveis.getResult());
+        infoColetadoDto.addInfosDisplayScore(contadorDeColetaveis.getScore());
+        infoColetadoDto.addInfosPosicao(gameObjectColetado.transform.position);
+        infoColetadoDto.addInfoFinalizado(contadorDeColetaveis.hasFinished());
 
-        produtorDeInformacoesDoColetado.produziuEvento(infoColetado);         
+        produtorDeInformacoesDoColetado.produziuEvento(infoColetadoDto);         
     }
 
     private void processarDesimantado()
@@ -146,7 +146,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         }
     }
 
-    ProdutorDeEvento<InformacoesColetado> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeInformacoesDoColetado;
     }
