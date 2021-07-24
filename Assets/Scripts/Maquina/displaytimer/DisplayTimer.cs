@@ -65,12 +65,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
     public ArcoIrisConjunto getDisplayTimerGlow()
     {
         return glowDisplay;
-    }
-
-    public ProdutorDeEvento<bool> getInnerProdutorDeEventoTempoRestart()
-    {
-        return contadorTimer.getInnerProdutorDeEventoTempoRestart();
-    }
+    }    
 
     private void atualizarTempo()
     {
