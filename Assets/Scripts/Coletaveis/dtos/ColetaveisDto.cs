@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -6,8 +5,7 @@ using UnityEngine;
 public class ColetaveisDto 
 {
     [SerializeField] private GameObject sensorDeColetado;
-    [SerializeField] private GameObject tile;
-    [SerializeField] private GameObject pontosModal;
+    [SerializeField] private GameObject tile;    
     [Space(5)]    
     [SerializeField] private Sprite[] caracteres;
     [Space(5)]
@@ -16,8 +14,7 @@ public class ColetaveisDto
     [SerializeField] private BoardDto boardDto;
 
     public GameObject SensorDeColetado { get { return sensorDeColetado; } }    
-    public GameObject Tile { get { return tile; } }
-    public GameObject PontosModal { get { return pontosModal; } }
+    public GameObject Tile { get { return tile; } }    
     
     public Sprite[] Caracteres { get { return caracteres; } }
 
