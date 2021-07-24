@@ -1,3 +1,3 @@
-public class AcaoImantadoPelaGarra : ProdutorConsumidoresDeEvento<InformacoesColetadoImantado>
+public class AcaoImantadoPelaGarra : ProdutorConsumidoresDeEvento<InformacoesColetadoImantadoDto>
 {    
 }

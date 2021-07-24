@@ -104,7 +104,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM         
 
-    void AcaoImantadoPelaGarra.ConsumidorEvento.consumirEvento(InformacoesColetadoImantado evento)
+    void AcaoImantadoPelaGarra.ConsumidorEvento.consumirEvento(InformacoesColetadoImantadoDto evento)
     {
         coletavelImantado = poolDeColetaveis.getColetavelPeloNome(evento.nomeColetado);
         coletavelImantado.imantar();
