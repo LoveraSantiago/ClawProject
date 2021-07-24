@@ -46,7 +46,10 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
 
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {
-        mostrarModalResultado();
+        if (evento.isTimeOver())
+        {
+            mostrarModalResultado();
+        }
     }
 
     private void mostrarModalResultado()

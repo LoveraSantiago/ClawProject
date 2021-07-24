@@ -43,7 +43,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
             atualizarTempo();
             if (contadorTimer.isTimeOver())
             {
-                produtorDeEventoTempoEsgotado.produziuEvento(null);
+                produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(false));
                 monoBehaviour.StopCoroutine(coroutineBlink);
                 coroutineBlink = null;
             }
