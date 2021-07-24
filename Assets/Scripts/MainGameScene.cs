@@ -22,7 +22,7 @@ public class MainGameScene : MonoBehaviour,
     [SerializeField] private ModalPontosDto modalPontosDto;
 
     private GarraManager     garraManager;
-    private ColetavelManager coletaveisManager;
+    private ColetaveisManager coletaveisManager;
     private MaquinaManager   maquinaManager;
     private PowerUpManager   powerUpManager;
     private ModalPontos      modalPontos;
@@ -55,7 +55,7 @@ public class MainGameScene : MonoBehaviour,
     {
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
         garraManager      = new GarraManager(garraDto, inputGame);
-        coletaveisManager = new ColetavelManager(coletaveisDto, this);
+        coletaveisManager = new ColetaveisManager(coletaveisDto, this);
         maquinaManager    = new MaquinaManager(maquinaDto, garraDto.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);

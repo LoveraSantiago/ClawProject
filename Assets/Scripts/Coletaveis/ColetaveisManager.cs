@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ColetavelManager : ConsumidorDeEventoTrigger,
+public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoColetado.ProdutorEvento,                                
                                 AcaoImantadoPelaGarra.ConsumidorEvento,
                                 AcaoSubidaDaGarra.ConsumidorEvento,                                
@@ -22,7 +22,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;
     private MonoBehaviour monoBehaviour;
 
-    public ColetavelManager(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
+    public ColetaveisManager(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
     {
         this.coletaveisDto = coletaveisDto;
         this.monoBehaviour = monoBehaviour;        
