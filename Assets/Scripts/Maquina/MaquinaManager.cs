@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
-                              AcaoElevadorFim.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,    
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUpInicio.ConsumidorEvento,
@@ -9,7 +8,6 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 {    
     private PartesMaquinaDto partesDto;
 
-    private Elevador elevador;
     private DisplaysDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
     private DisplayTimer displayTimer;
@@ -29,7 +27,6 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto, monoBehaviour);
         joystick           = new Joystick(maquinaDto.JoystickDto, velocidadeJoystick);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
-        elevador           = new Elevador(maquinaDto.ElevadorDto, monoBehaviour);
 
         arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)
             .addArcoIrisConjunto(displayDeColetados)
@@ -47,9 +44,6 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
         new ColoridorMaquina()
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());
-
-        displayTimer.getInnerProdutorDeEventoTempoRestart()
-                    .registrarConsumidorDeEvento(elevador);
     }
 
     public void start()
@@ -129,10 +123,5 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return ((AcaoTempoEsgotado.ProdutorEvento)displayTimer).getProdutorDeEventoColetado();
-    }
-
-    ProdutorDeEvento<ElevadorFim> AcaoElevadorFim.ProdutorEvento.getProdutorDeEventoColetado()
-    {
-        return ((AcaoElevadorFim.ProdutorEvento)elevador).getProdutorDeEventoColetado();
     }
 }
