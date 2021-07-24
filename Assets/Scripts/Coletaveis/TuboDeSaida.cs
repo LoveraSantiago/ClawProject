@@ -4,24 +4,22 @@ using UnityEngine;
 public class TuboDeSaida : ConsumidorDeEventoTrigger
 {
     private int contadorSaindoTubo;
-
-    private float torque;
-    private float delayQueda;
-    private float gravidade;
+    private float torque;    
 
     private Vector3[] posicoesOriginais;
     private Rigidbody2D[] rigidBodies;//TODO transformar esses caras em coletavel para mais facil manipulacaoS
-    private SpriteRenderer[] spriteRenderers;
-    private GameObject[] coletaveisParaTubo;    
+    private SpriteRenderer[] spriteRenderers;    
+
+    private TuboDto tuboDto;
 
     public TuboDeSaida(TuboDto tuboDto)
-    {        
-        inicializarArrays(tuboDto.ColetaveisParaTubo);
-        configurarEventoTrigger(tuboDto.ParentColetavelTubo);
+    {
+        this.tuboDto = tuboDto;
+
+        inicializarArrays();
+        configurarEventoTrigger();        
         
-        delayQueda = tuboDto.DelayQuedaTubo;
-        torque = tuboDto.Torque;
-        gravidade = tuboDto.Gravidade;
+        torque = tuboDto.Torque;        
     }
 
     public void devolver(Coletavel[] coletados, MonoBehaviour monoBehaviour)
@@ -34,14 +32,14 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
 
     private IEnumerator descerPeloTubo(Coletavel[] coletados)
     {
-        yield return new WaitForSeconds(delayQueda);
+        yield return new WaitForSeconds(tuboDto.DelayQuedaTubo);
         if (coletados.Length > 0)
         {
             for (int contador = 0; contador < coletados.Length; contador++)
             {
                 torque *= -1;
                 Sprite spriteAtual = coletados[contador].getSprite();
-                rigidBodies[contador].gravityScale = gravidade;
+                rigidBodies[contador].gravityScale = tuboDto.Gravidade;
                 rigidBodies[contador].AddTorque(torque);
                 spriteRenderers[contador].sprite = spriteAtual;
             }
@@ -51,12 +49,12 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
 
     private void restaurandoColetaveisParaOTubo()
     {
-        for (int contador = 0; contador < coletaveisParaTubo.Length; contador++)
+        for (int contador = 0; contador < tuboDto.ColetaveisParaTubo.Length; contador++)
         {
             rigidBodies[contador].gravityScale = 0f;
             rigidBodies[contador].velocity = Vector2.zero;
             rigidBodies[contador].angularVelocity = 0f;
-            coletaveisParaTubo[contador].transform.position = posicoesOriginais[contador];
+            tuboDto.ColetaveisParaTubo[contador].transform.position = posicoesOriginais[contador];
         }
     }
 
@@ -73,9 +71,10 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         }
     }
 
-    private void inicializarArrays(GameObject[] coletaveisParaTubo)
+    private void inicializarArrays()
     {
-        this.coletaveisParaTubo = coletaveisParaTubo;
+        GameObject[] coletaveisParaTubo = tuboDto.ColetaveisParaTubo;
+
         posicoesOriginais = new Vector3[coletaveisParaTubo.Length];
         rigidBodies       = new Rigidbody2D[coletaveisParaTubo.Length];
         spriteRenderers   = new SpriteRenderer[coletaveisParaTubo.Length];
@@ -88,10 +87,11 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         }
     }
 
-    private void configurarEventoTrigger(GameObject parentColetavelTubo)
+    private void configurarEventoTrigger()
     {
-        parentColetavelTubo.GetComponent<DetectorDeTriggers>()
-            .registrarConsumidorDeTrigger(this);
+        tuboDto.ParentColetavelTubo
+               .GetComponent<DetectorDeTriggers>()
+               .registrarConsumidorDeTrigger(this);
     }
 
     //IMPLEMENTANDO INTERFACE ConsumidorDeEventoTrigger INICIO
