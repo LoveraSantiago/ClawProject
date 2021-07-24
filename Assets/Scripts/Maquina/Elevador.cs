@@ -44,7 +44,7 @@ public class Elevador : AcaoElevadorFim.ProdutorEvento,
             paredeAlta.transform.localPosition  += acrescimo;
             paredeBaixa.transform.localPosition += acrescimo;
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         yield return new WaitForSeconds(1f);
@@ -57,7 +57,8 @@ public class Elevador : AcaoElevadorFim.ProdutorEvento,
         {
             Vector3 acrescimo = new Vector3(0, (elevadorDto.VelocidadeSubida) * Time.deltaTime, 0);
             paredeAlta.transform.localPosition -= acrescimo;
-            yield return null;
+
+            yield return new WaitForFixedUpdate();
         }
         posicionarParedes();        
         yield return new WaitForSeconds(1f);
