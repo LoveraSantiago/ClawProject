@@ -17,7 +17,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
     private Board board;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contadorDeColetaveis;
-    private ColetaveisParaTuboDeSaida coletaveisSaidaTubo;
+    private TuboDeSaida tudoDeSaida;
 
     private ProdutorDeEvento<InformacoesColetado> produtorDeInformacoesDoColetado;
     private MonoBehaviour monoBehaviour;
@@ -31,9 +31,8 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         configurarPoolDeColetaveis(coletaveisDto);
 
         board = new Board(coletaveisDto.BoardDto);
-
-        contadorDeColetaveis   = new ContadorDeColetaveis();
-        coletaveisSaidaTubo    = new ColetaveisParaTuboDeSaida(coletaveisDto.TuboDto);
+        contadorDeColetaveis = new ContadorDeColetaveis();
+        tudoDeSaida = new TuboDeSaida(coletaveisDto.TuboDto);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetado>();
     }
@@ -73,7 +72,7 @@ public class ColetavelManager : ConsumidorDeEventoTrigger,
         contadorDeColetaveis.adicionarColetado(coletavelAcertado);
 
         board.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour);
-        coletaveisSaidaTubo.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
+        tudoDeSaida.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
         poolDeColetaveis.inativarColetaveis(contadorDeColetaveis.getArrayTubo());
 
         AudioController.current.PlayAudio(AudioController.current.coletar);

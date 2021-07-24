@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ColetaveisParaTuboDeSaida : ConsumidorDeEventoTrigger
+public class TuboDeSaida : ConsumidorDeEventoTrigger
 {
     private readonly float GRAVIDADE = 0.65f;
 
@@ -15,7 +15,7 @@ public class ColetaveisParaTuboDeSaida : ConsumidorDeEventoTrigger
     private SpriteRenderer[] spriteRenderers;
     private GameObject[] coletaveisParaTubo;    
 
-    public ColetaveisParaTuboDeSaida(TuboDto tuboDto)
+    public TuboDeSaida(TuboDto tuboDto)
     {       
         inicializarArrays(tuboDto.ColetaveisParaTubo);
         configurarEventoTrigger(tuboDto.ParentColetavelTubo);
