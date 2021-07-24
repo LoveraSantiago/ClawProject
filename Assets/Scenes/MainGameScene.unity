@@ -5649,7 +5649,6 @@ MonoBehaviour:
   coletaveisDto:
     sensorDeColetado: {fileID: 2083913115}
     tile: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-    pontosModal: {fileID: 543390433}
     caracteres:
     - {fileID: 21300000, guid: 0b082251c8af14642bd56a42a89b025e, type: 3}
     - {fileID: 21300000, guid: 12248e2a121b8400aa4464081fa6dce1, type: 3}
@@ -5670,6 +5669,7 @@ MonoBehaviour:
     boardDto:
       delayInicialVoltaBoard: 1.5
       delayVoltaBoard: 0.2
+      boardPosicao: {fileID: 1496791513}
       posicaoRefVoltaBoard: {fileID: 1476824515}
       startBoard: {fileID: 422691799}
       posAlturaSub: -4.3
@@ -5943,13 +5943,6 @@ MonoBehaviour:
         goImagem: {fileID: 1420270364}
         sprImagem: {fileID: 1420270366}
         goExclamacao: {fileID: 293416723}
-    elevadorDto:
-      alturaSubida: 0.75
-      posBaixo: -0.81
-      velocidadeSubida: 0.3
-      paredeHorizontal1: {fileID: 50493997}
-      paredeHorizontal2: {fileID: 1392206645}
-      paredeHorizontalFixa: {fileID: 140685376}
     partesDto:
       placaCima: {fileID: 702916761}
       baseParteCima: {fileID: 243475117}

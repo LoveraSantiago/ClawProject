@@ -8,6 +8,7 @@ public class BoardDto
     [SerializeField] private float delayInicialVoltaBoard;
     [SerializeField] private float delayVoltaBoard;
     [Space(5)]
+    [SerializeField] private Transform boardPosicao;
     [SerializeField] private Transform posicaoRefVoltaBoard;
     [SerializeField] private Transform startBoard;
     [Space(5)]
@@ -19,6 +20,7 @@ public class BoardDto
     public float DelayInicialVoltaBoard { get { return delayInicialVoltaBoard; } }
     public float DelayVoltaBoard { get { return delayVoltaBoard; } }
 
+    public Transform BoardPosicao { get { return boardPosicao; } }
     public Transform StartBoard { get { return startBoard; } }
     public Transform PosicaoRefVoltaBoard { get { return posicaoRefVoltaBoard; } }
     
