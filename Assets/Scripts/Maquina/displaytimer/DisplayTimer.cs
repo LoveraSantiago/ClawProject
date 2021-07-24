@@ -27,7 +27,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
     {
-        contadorTimer.definirContador(levelEscolhido.getTempoContagem());        
+        contadorTimer.definirContador(levelEscolhido.getTempoContagem(), produtorDeEventoTempoEsgotado);        
         digitos.passarCoresAosDisplayDigitos(levelEscolhido.getDicionarioDeCores());        
     }
 

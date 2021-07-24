@@ -3,13 +3,13 @@ using System;
 public class ContadorTimerContinuo : ContadorTimerNegativo
 {
     private string tempoRestart;
-    public ProdutorDeEvento<bool> innerProdutorDeEventoTempoRestart;
+    private ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado;
 
-    public ContadorTimerContinuo(string tempo)
+    public ContadorTimerContinuo(string tempo, ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado)
         : base(tempo)
     {
         tempoRestart = tempo;
-        innerProdutorDeEventoTempoRestart = new ProdutorDeEvento<bool>();
+        this.produtorDeEventoTempoEsgotado = produtorDeEventoTempoEsgotado;
     }
 
     public override bool isTimeOver()
@@ -23,7 +23,7 @@ public class ContadorTimerContinuo : ContadorTimerNegativo
 
         if (base.isTimeOver())
         {
-            innerProdutorDeEventoTempoRestart.produziuEvento(true);
+            produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(true));
             iniciarContagem();
             setTempoRegressivoInicial(tempoRestart);
         }
