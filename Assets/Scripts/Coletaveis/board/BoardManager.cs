@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Board 
+public class BoardManager 
 {    
     private bool devolverParaBoard;
 
@@ -13,7 +13,7 @@ public class Board
 
     private PoolList<ColetavelTile> poolExtraSubs;
 
-    public Board(BoardDto boardDto)
+    public BoardManager(BoardDto boardDto)
     {
         this.boardDto = boardDto;        
     }

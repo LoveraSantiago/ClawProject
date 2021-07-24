@@ -14,7 +14,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private ColetaveisDto coletaveisDto;
     private ColetavelTile coletavelImantado;
     
-    private Board board;
+    private BoardManager boardManager;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contadorDeColetaveis;
     private TuboDeSaida tudoDeSaida;
@@ -30,7 +30,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
         configurarPoolDeColetaveis(coletaveisDto);
 
-        board = new Board(coletaveisDto.BoardDto);
+        boardManager = new BoardManager(coletaveisDto.BoardDto);
         contadorDeColetaveis = new ContadorDeColetaveis();
         tudoDeSaida = new TuboDeSaida(coletaveisDto.TuboDto);
 
@@ -39,14 +39,14 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     public void configuradoPeloLevel(AbstractLevel level)
     {
-        board.configuradoPeloLevel(level);
+        boardManager.configuradoPeloLevel(level);
         devolverParaBoard = level.devolverParaBoard();
     }
 
     public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
     {
         powerUpEmAcao = false;
-        int qtdColetaveisDoBoard = board.create(poolDeColetaveis);
+        int qtdColetaveisDoBoard = boardManager.create(poolDeColetaveis);
         contadorDeColetaveis.configurarTotalColetaveis(qtdColetaveisDoBoard, devolverParaBoard);
         coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK
     }    
@@ -71,7 +71,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
         contadorDeColetaveis.adicionarColetado(coletavelAcertado);
 
-        board.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour);
+        boardManager.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour);
         tudoDeSaida.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
         poolDeColetaveis.inativarColetaveis(contadorDeColetaveis.getArrayTubo());
 
@@ -137,12 +137,12 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         if (!evento.finalizou)
         {
-            int qtdAtivados = board.ativarColetaveisSub();
+            int qtdAtivados = boardManager.ativarColetaveisSub();
             contadorDeColetaveis.adicionarColetaveisExtras(qtdAtivados);
         }
         else
         {
-            board.createSub(poolDeColetaveis);
+            boardManager.createSub(poolDeColetaveis);
         }
     }
 
