@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class TuboDeSaida : ConsumidorDeEventoTrigger
 {
-    private readonly float GRAVIDADE = 0.65f;
-
-    private int torque = 550;
     private int contadorSaindoTubo;
 
-    private float delayQueda;    
+    private float torque;
+    private float delayQueda;
+    private float gravidade;
 
     private Vector3[] posicoesOriginais;
     private Rigidbody2D[] rigidBodies;//TODO transformar esses caras em coletavel para mais facil manipulacaoS
@@ -16,11 +15,13 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
     private GameObject[] coletaveisParaTubo;    
 
     public TuboDeSaida(TuboDto tuboDto)
-    {       
+    {        
         inicializarArrays(tuboDto.ColetaveisParaTubo);
         configurarEventoTrigger(tuboDto.ParentColetavelTubo);
         
-        this.delayQueda = tuboDto.DelayQuedaTubo;        
+        delayQueda = tuboDto.DelayQuedaTubo;
+        torque = tuboDto.Torque;
+        gravidade = tuboDto.Gravidade;
     }
 
     public void devolver(Coletavel[] coletados, MonoBehaviour monoBehaviour)
@@ -40,7 +41,7 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
             {
                 torque *= -1;
                 Sprite spriteAtual = coletados[contador].getSprite();
-                rigidBodies[contador].gravityScale = GRAVIDADE;
+                rigidBodies[contador].gravityScale = gravidade;
                 rigidBodies[contador].AddTorque(torque);
                 spriteRenderers[contador].sprite = spriteAtual;
             }
