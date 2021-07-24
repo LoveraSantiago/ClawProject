@@ -1,18 +1,18 @@
-using System.Collections;
 using UnityEngine;
 
 public class BoardManager 
-{    
-    private bool devolverParaBoard;
+{   
     private BoardDto boardDto;
 
+    private BoardDevolvedor devolvedor;
     private BoardMontador montador;
     private BoardMontadorExtra montadorExtra;    
 
     public BoardManager(BoardDto boardDto)
     {
         this.boardDto = boardDto;
-        montador = new BoardMontador();
+        devolvedor    = new BoardDevolvedor();
+        montador      = new BoardMontador();
         montadorExtra = new BoardMontadorExtra();
     }
 
@@ -21,9 +21,8 @@ public class BoardManager
         montador.configuradoPeloLevel(level);
         montador.validacaoArray(boardDto.PosicoesEixoY.Length, boardDto.PosicoesEixoXPar.Length);
 
-        montadorExtra.configuradoPeloLevel(level);       
-
-        devolverParaBoard = level.devolverParaBoard();        
+        montadorExtra.configuradoPeloLevel(level);
+        devolvedor.configuradoPeloLevel(level.devolverParaBoard());        
     }
 
     public int create(PoolDeColetaveis poolDeColetaveis)
@@ -35,13 +34,7 @@ public class BoardManager
 
     public void devolver(ColetavelTile[] coletados, MonoBehaviour monoBehaviour)
     {
-        if (devolverParaBoard)
-        {
-            if (coletados.Length > 0)
-            {
-                monoBehaviour.StartCoroutine(coroutineDevolverParaBoard(coletados));
-            }
-        }       
+        devolvedor.devolver(boardDto, coletados, monoBehaviour);
     }
 
     public int ativarColetaveisSub()
@@ -52,21 +45,5 @@ public class BoardManager
     public void createSub(PoolDeColetaveis poolDeColetaveis)
     {
         montadorExtra.create(boardDto, poolDeColetaveis);
-    }       
-
-    private IEnumerator coroutineDevolverParaBoard(ColetavelTile[] coletados)
-    {
-        yield return new WaitForSeconds(boardDto.DelayInicialVoltaBoard);
-
-        for (int contador = 0; contador < coletados.Length; contador++)
-        {
-            float anguloDevolucao = Random.Range(180, 230);
-            Coletavel coletavel = coletados[contador];
-            coletavel.ligar();
-            coletavel.disparar(boardDto.PosicaoRefVoltaBoard.position, anguloDevolucao, 10f);
-
-            yield return new WaitForSeconds(boardDto.DelayVoltaBoard);
-        }
-        yield return null;
-    }    
+    }           
 }
