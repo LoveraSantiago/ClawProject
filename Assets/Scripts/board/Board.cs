@@ -101,8 +101,7 @@ public class Board
     }
 
     public void createSub(PoolDeColetaveis poolDeColetaveis)
-    {
-        Debug.Log("criando subs");
+    {       
         if(hasExtraSubColetaveis())
         {
             ColetavelQuery coletavelQuery = new ColetavelQuery();
@@ -128,8 +127,6 @@ public class Board
                 coletavel.ligar();
                 coletavel.receberSprite(coletavelEntidade.nomeSprite);
                 coletavel.colocarNaPosicao(posicao);
-                Debug.Log("coletavel sub nome: " + coletavel.nome + " pos: " + posicao);
-
                 poolExtraSubs.addObjeto(coletavel);
             }
         }

@@ -16,6 +16,10 @@ public class Elevador : AcaoElevadorFim.ProdutorEvento,
     {
         this.elevadorDto = elevadorDto;
         this.monoBehaviour = monoBehaviour;
+
+        paredeAlta = elevadorDto.ParedeHorizontal1;
+        paredeBaixa = elevadorDto.ParedeHorizontal2;
+
         posicionarParedes();
 
         produtorEventoElevador = new ProdutorDeEvento<ElevadorFim>();
@@ -34,7 +38,7 @@ public class Elevador : AcaoElevadorFim.ProdutorEvento,
 
     private IEnumerator subirElevador()
     {
-        while(paredeAlta.transform.localPosition.y < elevadorDto.AlturaSubida)
+        while(paredeBaixa.transform.localPosition.y < 0)
         {
             Vector3 acrescimo = new Vector3(0, elevadorDto.VelocidadeSubida * Time.deltaTime, 0);
             paredeAlta.transform.localPosition  += acrescimo;
@@ -44,42 +48,37 @@ public class Elevador : AcaoElevadorFim.ProdutorEvento,
         }
 
         yield return new WaitForSeconds(1f);
-        equipararParedes();
-        Debug.Log("Paredes equiparadas");
+        equipararParedes();        
         yield return new WaitForSeconds(1f);
+        Debug.Log("Chamando eventos pre fim");
         produtorEventoElevador.produziuEvento(new ElevadorFim(false));
-        Debug.Log("Finalizou eventos");
         yield return new WaitForSeconds(1f);
-        posicionarParedes();
-        Debug.Log("Paredes posicionadas");
+        while(paredeAlta.transform.localPosition.y > 0)
+        {
+            Vector3 acrescimo = new Vector3(0, (elevadorDto.VelocidadeSubida) * Time.deltaTime, 0);
+            paredeAlta.transform.localPosition -= acrescimo;
+            yield return null;
+        }
+        posicionarParedes();        
         yield return new WaitForSeconds(1f);
+        Debug.Log("Chamando eventos fim");
         produtorEventoElevador.produziuEvento(new ElevadorFim(true));
         yield return null;
     }
 
     private void equipararParedes()
     {
-        paredeAlta.transform.localPosition = paredeBaixa.transform.localPosition;
+        Debug.Log("Paredes equiparadas inicio");
+        paredeAlta.transform.localPosition = Vector3.zero;
+        paredeBaixa.transform.localPosition = Vector3.zero;
+        Debug.Log("Paredes equiparadas fim");
     }
 
     private void posicionarParedes()
     {
-        if(paredeAlta != elevadorDto.ParedeHorizontal1)
-        {
-            paredeAlta = elevadorDto.ParedeHorizontal1;
-            paredeBaixa = elevadorDto.ParedeHorizontal2;
-        }
-        else
-        {
-            paredeAlta = elevadorDto.ParedeHorizontal2;
-            paredeBaixa = elevadorDto.ParedeHorizontal1;
-        }
-        paredeAlta.transform.localPosition = Vector3.zero;
-        paredeAlta.layer = 11;
-        
-        paredeBaixa.transform.localPosition = new Vector3(0, elevadorDto.PosBaixo, 0);
-        paredeBaixa.layer = 17;
-
+        Debug.Log("Posicionar paredes inicio");        
+        paredeBaixa.transform.localPosition = new Vector3(0, elevadorDto.PosBaixo, 0);        
+        Debug.Log("Posicionar paredes inicio");
     }    
 
     ProdutorDeEvento<ElevadorFim> AcaoElevadorFim.ProdutorEvento.getProdutorDeEventoColetado()

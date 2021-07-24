@@ -5179,7 +5179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140685376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.8, z: 0}
+  m_LocalPosition: {x: 0, y: -0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1023419904}
@@ -5943,8 +5943,8 @@ MonoBehaviour:
         goExclamacao: {fileID: 293416723}
     elevadorDto:
       alturaSubida: 0.75
-      posBaixo: -0.85
-      velocidadeSubida: 0.25
+      posBaixo: -0.81
+      velocidadeSubida: 0.3
       paredeHorizontal1: {fileID: 50493997}
       paredeHorizontal2: {fileID: 1392206645}
       paredeHorizontalFixa: {fileID: 140685376}
@@ -17999,7 +17999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392206645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1023419904}
