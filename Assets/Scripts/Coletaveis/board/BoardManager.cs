@@ -21,7 +21,6 @@ public class BoardManager
     {
         BoardMontador.configurar(level.getFamiliaColetavel());
         montador.configuradoPeloLevel(level);
-        montador.validacaoArray(boardDto.PosicoesEixoY.Length, boardDto.PosicoesEixoXPar.Length);
 
         montadorExtra.configuradoPeloLevel(level);
         devolvedor.configuradoPeloLevel(level.devolverParaBoard());        

@@ -16,7 +16,7 @@ public class BoardMontadorNormal : BoardMontador
         ColetavelQuery coletavelQuery = new ColetavelQuery();
         for (int contadorLinha = 0; contadorLinha < boardDto.PosicoesEixoY.Length; contadorLinha++)
         {
-            float[] eixoX = getEixoX(boardDto, contadorLinha);
+            float[] eixoX = getEixoX(boardDto, contadorLinha);            
             for (int contadorColuna = 0; contadorColuna < eixoX.Length; contadorColuna++)
             {
                 int id = arrayDeColetaveis[contadorLinha, contadorColuna];
@@ -42,19 +42,5 @@ public class BoardMontadorNormal : BoardMontador
             }
         }
         return contadorDeColetaveis;
-    }
-
-        //TODO adicionar validacao para os coletaveis q vazam da maquina
-    public void validacaoArray(int eixoY, int eixoX)
-    {
-        if (arrayDeColetaveis.GetLength(0) != eixoY)
-        {
-            Debug.LogError("QTD DE LINHAS DO ARRAY E DAS POSICOES EIXO Y ESTAO DIFERENTES.");
-        }
-
-        if (arrayDeColetaveis.GetLength(1) != eixoX)
-        {
-            Debug.LogError("QTD DE COLUNA DO ARRAY E DAS POSICOES EIXO X ESTAO DIFERENTES.");
-        }
     }    
 }
