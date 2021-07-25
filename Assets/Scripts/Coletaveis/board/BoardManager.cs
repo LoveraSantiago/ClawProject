@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BoardManager 
@@ -28,22 +29,51 @@ public class BoardManager
     public int create(PoolDeColetaveis poolDeColetaveis)
     {
         int qtdColetaveisCriados = montador.create(boardDto, poolDeColetaveis);
-        createSub(poolDeColetaveis);
+        montadorExtra.create(boardDto, poolDeColetaveis);
         return qtdColetaveisCriados;
     }   
+
+    public int subirBoard(PoolDeColetaveis poolDeColetaveis, MonoBehaviour monoBehaviour)
+    {
+        int qtdColetaveis = montadorExtra.getQtdExtras();
+        monoBehaviour.StartCoroutine(subirBoard(poolDeColetaveis));
+        return qtdColetaveis;
+    }       
 
     public void devolver(ColetavelTile[] coletados, MonoBehaviour monoBehaviour)
     {
         devolvedor.devolver(boardDto, coletados, monoBehaviour);
     }
 
-    public int ativarColetaveisSub()
+    private IEnumerator subirBoard(PoolDeColetaveis poolDeColetaveis)
     {
-        return montadorExtra.ativarColetaveisSub();
-    } 
+        float limite = boardDto.BoardPosicao.position.y + boardDto.Subida;
+        Vector3 posInicialParedeAlta  = boardDto.ParedeAlta.position;
+        Vector3 posInicialParedeBaixa = boardDto.ParedeBaixa.position;
+        while (boardDto.BoardPosicao.position.y < limite)
+        {
+            boardDto.BoardPosicao.position += new Vector3(0, boardDto.VelocidadeSubida * Time.deltaTime, 0);
+            yield return null;
+        }
 
-    public void createSub(PoolDeColetaveis poolDeColetaveis)
-    {
+        while(boardDto.ParedeAlta.position.y > boardDto.ParedeBaixa.position.y)
+        {
+            boardDto.ParedeAlta.position -= new Vector3(0, boardDto.VelocidadeSubida * Time.deltaTime, 0);
+            yield return null;
+        }
+        boardDto.ParedeAlta.position = boardDto.ParedeBaixa.position;
+        montadorExtra.ativarColetaveisSub();
+        while(boardDto.ParedeAlta.position.y > posInicialParedeAlta.y)
+        {
+            Vector3 valorDescida = new Vector3(0, boardDto.VelocidadeSubida * Time.deltaTime, 0);
+            boardDto.ParedeAlta.position -= valorDescida;
+            boardDto.ParedeBaixa.position -= valorDescida;
+            yield return null;
+        }
+        boardDto.ParedeAlta.position  = posInicialParedeAlta;
+        boardDto.ParedeBaixa.position = posInicialParedeBaixa;
+
         montadorExtra.create(boardDto, poolDeColetaveis);
-    }           
+        yield return null;
+    }
 }

@@ -30,4 +30,9 @@ public class PoolList<T>
     {
         return listaDeObjetos.Count > 0;
     }
+
+    public int getQtd()
+    {
+        return listaDeObjetos.Count;
+    }
 }

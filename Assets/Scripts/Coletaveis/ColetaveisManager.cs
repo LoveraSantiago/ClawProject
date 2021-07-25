@@ -137,9 +137,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         if (evento.restart)
         {
-            int qtdAtivados = boardManager.ativarColetaveisSub();
-            contadorDeColetaveis.adicionarColetaveisExtras(qtdAtivados);
-            boardManager.createSub(poolDeColetaveis);
+            int qtdAtivados = boardManager.subirBoard(poolDeColetaveis, monoBehaviour);
+            contadorDeColetaveis.adicionarColetaveisExtras(qtdAtivados);            
         }        
     }
 

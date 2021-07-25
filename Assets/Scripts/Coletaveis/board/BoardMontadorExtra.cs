@@ -47,22 +47,25 @@ public class BoardMontadorExtra //TODO refatorar com BoardMontador
                 coletavel.receberSprite(coletavelEntidade.nomeSprite);
                 coletavel.colocarNaPosicao(posicao);
                 poolExtraSubs.addObjeto(coletavel);
+
+                Debug.Log("Criando coletavel extra: " + coletavel.nome + " pos: " + coletavel.getPosicao());
             }
         }
     }
 
-    public int ativarColetaveisSub()
-    {
-        int contadorAtivados = 0;
+    public void ativarColetaveisSub()
+    {        
         while (poolExtraSubs.hasObjeto())
         {
             ColetavelTile coletavel = poolExtraSubs.getObjeto();
-            coletavel.colocarNoLayerNormal();
-            contadorAtivados++;
+            coletavel.colocarNoLayerNormal();            
         }
-        poolExtraSubs.reclicarPool();
+        poolExtraSubs.reclicarPool();     
+    }
 
-        return contadorAtivados;
+    public int getQtdExtras()
+    {
+        return poolExtraSubs.getQtd();
     }
 
     private bool hasExtraSubColetaveis()
