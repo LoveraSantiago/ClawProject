@@ -1,14 +1,11 @@
-using UnityEngine;
-
 public class BoardMontadorExtra : BoardMontador
 {
-    private int contador;
-    private int[,] arrayDeColetaveisSub;
+    private int contador;    
     private PoolList<ColetavelTile> poolExtraSubs;
 
     public void configuradoPeloLevel(AbstractLevel level)
-    {        
-        arrayDeColetaveisSub = level.getArrayDeColetaveisSub();
+    {
+        arrayDeColetaveis = level.getArrayDeColetaveisSub();
 
         if (hasExtraSubColetaveis())
         {
@@ -20,34 +17,15 @@ public class BoardMontadorExtra : BoardMontador
     {
         if (hasExtraSubColetaveis())
         {
-            ColetavelQuery coletavelQuery = new ColetavelQuery();
-
             float[] eixoX = getEixoX(boardDto, 0);
-            for (int contadorColuna = 0; contadorColuna < eixoX.Length; contadorColuna++)
-            {
-                int id = arrayDeColetaveisSub[0, contadorColuna];
-                ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelEntidadeById(id);
-
-                if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
-                {
-                    continue;
-                }
-                else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
-                {
-                    coletavelEntidade = coletavelQuery.getColetavelEntidadeByFamilia(familia);
-                }
-
-                Vector3 posicao = new Vector3(eixoX[contadorColuna], boardDto.PosAlturaSub, 0);
-                ColetavelTile coletavel = poolDeColetaveis.criarColetavel();
-                coletavel.colocarNoLayerElevador();
-                coletavel.ligar();
-                coletavel.receberSprite(coletavelEntidade.nomeSprite);
-                coletavel.colocarNaPosicao(posicao);
-                poolExtraSubs.addObjeto(coletavel);
-
-                //Debug.Log("Criando coletavel extra: " + coletavel.nome + " pos: " + coletavel.getPosicao());
-            }
+            montarLinha(eixoX, 0, boardDto.PosAlturaSub, poolDeColetaveis);            
         }
+    }
+
+    protected override void onColetavelCriado(ColetavelTile coletavel)
+    {
+        coletavel.colocarNoLayerElevador();        
+        poolExtraSubs.addObjeto(coletavel);
     }
 
     public void ativarColetaveisSub()
@@ -67,6 +45,7 @@ public class BoardMontadorExtra : BoardMontador
 
     private bool hasExtraSubColetaveis()
     {
-        return arrayDeColetaveisSub != null;
-    }   
+        return arrayDeColetaveis != null;
+    }
+
 }
