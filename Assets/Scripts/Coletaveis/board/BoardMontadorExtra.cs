@@ -48,7 +48,7 @@ public class BoardMontadorExtra //TODO refatorar com BoardMontador
                 coletavel.colocarNaPosicao(posicao);
                 poolExtraSubs.addObjeto(coletavel);
 
-                Debug.Log("Criando coletavel extra: " + coletavel.nome + " pos: " + coletavel.getPosicao());
+                //Debug.Log("Criando coletavel extra: " + coletavel.nome + " pos: " + coletavel.getPosicao());
             }
         }
     }

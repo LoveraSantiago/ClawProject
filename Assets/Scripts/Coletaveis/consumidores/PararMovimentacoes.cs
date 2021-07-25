@@ -4,8 +4,7 @@ public class PararMovimentacoes : Consumidor<ColetavelTile>
     {
         if (coletavel.isAtivo())
         {
-            coletavel.fixarEixoXY();
-            coletavel.parar();
+            coletavel.fixarEixoXY();            
         }
     }
 }
@@ -16,8 +15,7 @@ public class PararMovimentacoes2 : Consumidor<ColetavelTile>
     {
         if (coletavel.isAtivo())
         {
-            coletavel.desafixarVerticalmente();
-            coletavel.parar();
+            coletavel.desafixarVerticalmente();            
         }
     }
 }

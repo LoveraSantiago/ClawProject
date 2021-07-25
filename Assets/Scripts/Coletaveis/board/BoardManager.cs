@@ -50,35 +50,19 @@ public class BoardManager
         float limite = boardDto.BoardPosicao.position.y + boardDto.Subida;
         Vector3 posInicialParedeAlta  = boardDto.ParedeAlta.position;
         Vector3 posInicialParedeBaixa = boardDto.ParedeBaixa.position;
+        poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes());
+
         while (boardDto.BoardPosicao.position.y < limite)
         {
             boardDto.BoardPosicao.position += new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
-            //poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes());
             yield return new WaitForFixedUpdate();
         }
 
-        while(boardDto.ParedeAlta.position.y > boardDto.ParedeBaixa.position.y)
-        {
-            boardDto.ParedeAlta.position -= new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
-            poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes());
-            yield return new WaitForFixedUpdate();
-        }
-        boardDto.ParedeAlta.position = boardDto.ParedeBaixa.position;
-        montadorExtra.ativarColetaveisSub();
-        while(boardDto.ParedeAlta.position.y > posInicialParedeAlta.y)
-        {
-            Vector3 valorDescida = new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
-            boardDto.ParedeAlta.position -= valorDescida;
-            boardDto.ParedeBaixa.position -= valorDescida;
-            poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes());
-            yield return new WaitForFixedUpdate();
-        }
         boardDto.ParedeAlta.position  = posInicialParedeAlta;
-        boardDto.ParedeBaixa.position = posInicialParedeBaixa;
-        poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes());
+        boardDto.ParedeBaixa.position = posInicialParedeBaixa;        
 
-        montadorExtra.create(boardDto, poolDeColetaveis);
         poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes2());
+        montadorExtra.create(boardDto, poolDeColetaveis);
 
         Debug.Log("Finalizado");
         yield return null;
