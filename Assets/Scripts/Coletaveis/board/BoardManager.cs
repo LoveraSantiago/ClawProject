@@ -63,8 +63,7 @@ public class BoardManager
 
         poolDeColetaveis.executeEmTodosColetaveis(new DesafixadorEixosXY());
         montadorExtra.create(boardDto, poolDeColetaveis);
-
-        Debug.Log("Finalizado");
+        
         yield return null;
     }
 }
