@@ -50,7 +50,7 @@ public class BoardManager
         float limite = boardDto.BoardPosicao.position.y + boardDto.Subida;
         Vector3 posInicialParedeAlta  = boardDto.ParedeAlta.position;
         Vector3 posInicialParedeBaixa = boardDto.ParedeBaixa.position;
-        poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes());
+        poolDeColetaveis.executeEmTodosColetaveis(new FixadorEixosXY());
 
         while (boardDto.BoardPosicao.position.y < limite)
         {
@@ -61,7 +61,7 @@ public class BoardManager
         boardDto.ParedeAlta.position  = posInicialParedeAlta;
         boardDto.ParedeBaixa.position = posInicialParedeBaixa;        
 
-        poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes2());
+        poolDeColetaveis.executeEmTodosColetaveis(new DesafixadorEixosXY());
         montadorExtra.create(boardDto, poolDeColetaveis);
 
         Debug.Log("Finalizado");
