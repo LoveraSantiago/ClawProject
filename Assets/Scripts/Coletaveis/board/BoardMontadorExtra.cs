@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class BoardMontadorExtra //TODO refatorar com BoardMontador
+public class BoardMontadorExtra : BoardMontador
 {
-    private ColetavelEntidade.FAMILIA familia;
-
+    private int contador;
     private int[,] arrayDeColetaveisSub;
-
     private PoolList<ColetavelTile> poolExtraSubs;
 
     public void configuradoPeloLevel(AbstractLevel level)
-    {
-        familia = level.getFamiliaColetavel();
+    {        
         arrayDeColetaveisSub = level.getArrayDeColetaveisSub();
 
         if (hasExtraSubColetaveis())
@@ -71,17 +68,5 @@ public class BoardMontadorExtra //TODO refatorar com BoardMontador
     private bool hasExtraSubColetaveis()
     {
         return arrayDeColetaveisSub != null;
-    }
-
-    private float[] getEixoX(BoardDto boardDto, int indice)
-    {
-        if (indice % 2 == 0)
-        {
-            return boardDto.PosicoesEixoXPar;
-        }
-        else
-        {
-            return boardDto.PosicoesEixoXImpar;
-        }
-    }
+    }   
 }

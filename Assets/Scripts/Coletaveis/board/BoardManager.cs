@@ -6,19 +6,20 @@ public class BoardManager
     private BoardDto boardDto;
 
     private BoardDevolvedor devolvedor;
-    private BoardMontador montador;
+    private BoardMontadorNormal montador;
     private BoardMontadorExtra montadorExtra;    
 
     public BoardManager(BoardDto boardDto)
     {
         this.boardDto = boardDto;
         devolvedor    = new BoardDevolvedor();
-        montador      = new BoardMontador();
+        montador      = new BoardMontadorNormal();
         montadorExtra = new BoardMontadorExtra();
     }
 
     public void configuradoPeloLevel(AbstractLevel level)//TODO CRIAR INTERFACE PADRONIZAR CONFIGURADOS PELO LEVEL ALEM DE ADICIONAR SEMANTICA
-    {        
+    {
+        BoardMontador.configurar(level.getFamiliaColetavel());
         montador.configuradoPeloLevel(level);
         montador.validacaoArray(boardDto.PosicoesEixoY.Length, boardDto.PosicoesEixoXPar.Length);
 
