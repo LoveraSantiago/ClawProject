@@ -52,23 +52,23 @@ public class BoardManager
         Vector3 posInicialParedeBaixa = boardDto.ParedeBaixa.position;
         while (boardDto.BoardPosicao.position.y < limite)
         {
-            boardDto.BoardPosicao.position += new Vector3(0, boardDto.VelocidadeSubida * Time.deltaTime, 0);
-            yield return null;
+            boardDto.BoardPosicao.position += new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
+            yield return new WaitForFixedUpdate();
         }
 
         while(boardDto.ParedeAlta.position.y > boardDto.ParedeBaixa.position.y)
         {
-            boardDto.ParedeAlta.position -= new Vector3(0, boardDto.VelocidadeSubida * Time.deltaTime, 0);
-            yield return null;
+            boardDto.ParedeAlta.position -= new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
+            yield return new WaitForFixedUpdate();
         }
         boardDto.ParedeAlta.position = boardDto.ParedeBaixa.position;
         montadorExtra.ativarColetaveisSub();
         while(boardDto.ParedeAlta.position.y > posInicialParedeAlta.y)
         {
-            Vector3 valorDescida = new Vector3(0, boardDto.VelocidadeSubida * Time.deltaTime, 0);
+            Vector3 valorDescida = new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
             boardDto.ParedeAlta.position -= valorDescida;
             boardDto.ParedeBaixa.position -= valorDescida;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         boardDto.ParedeAlta.position  = posInicialParedeAlta;
         boardDto.ParedeBaixa.position = posInicialParedeBaixa;
