@@ -157,9 +157,14 @@ public abstract class Coletavel
         rigidbody.gravityScale = gravidade;
     }
 
-    public virtual void fixarVerticalmente()
+    public virtual void fixarEixoX()
     {
         rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public virtual void fixarEixoXY()
+    {
+        rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void desafixarVerticalmente()

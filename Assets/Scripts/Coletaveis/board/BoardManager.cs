@@ -53,12 +53,14 @@ public class BoardManager
         while (boardDto.BoardPosicao.position.y < limite)
         {
             boardDto.BoardPosicao.position += new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
+            //poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes());
             yield return new WaitForFixedUpdate();
         }
 
         while(boardDto.ParedeAlta.position.y > boardDto.ParedeBaixa.position.y)
         {
             boardDto.ParedeAlta.position -= new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
+            poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes());
             yield return new WaitForFixedUpdate();
         }
         boardDto.ParedeAlta.position = boardDto.ParedeBaixa.position;
@@ -68,12 +70,17 @@ public class BoardManager
             Vector3 valorDescida = new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
             boardDto.ParedeAlta.position -= valorDescida;
             boardDto.ParedeBaixa.position -= valorDescida;
+            poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes());
             yield return new WaitForFixedUpdate();
         }
         boardDto.ParedeAlta.position  = posInicialParedeAlta;
         boardDto.ParedeBaixa.position = posInicialParedeBaixa;
+        poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes());
 
         montadorExtra.create(boardDto, poolDeColetaveis);
+        poolDeColetaveis.executeEmTodosColetaveis(new PararMovimentacoes2());
+
+        Debug.Log("Finalizado");
         yield return null;
     }
 }
