@@ -1,6 +1,10 @@
+using UnityEngine;
+
 public class BoardMontadorExtra : BoardMontador
 {
-    private int contador;    
+    private int contadorEixoX;
+    private int contadorLinhaAtual;
+
     private PoolList<ColetavelTile> poolExtraSubs;
 
     public void configuradoPeloLevel(AbstractLevel level)
@@ -16,9 +20,10 @@ public class BoardMontadorExtra : BoardMontador
     public void create(BoardDto boardDto, PoolDeColetaveis poolDeColetaveis)
     {
         if (hasExtraSubColetaveis())
-        {
-            float[] eixoX = getEixoX(boardDto, 0);
-            montarLinha(eixoX, 0, boardDto.PosAlturaSub, poolDeColetaveis);            
+        {            
+            float[] eixoX = getEixoX(boardDto, ++contadorEixoX);            
+            montarLinha(eixoX, contadorLinhaAtual, boardDto.PosAlturaSub, poolDeColetaveis);
+            incrementarContadorDeLinha();
         }
     }
 
@@ -48,4 +53,15 @@ public class BoardMontadorExtra : BoardMontador
         return arrayDeColetaveis != null;
     }
 
+    private void incrementarContadorDeLinha()
+    {
+        if(arrayDeColetaveis.GetLength(0) - 1 <= contadorLinhaAtual)
+        {
+            contadorLinhaAtual = 0;
+        }
+        else
+        {
+            contadorLinhaAtual++;
+        }        
+    }
 }
