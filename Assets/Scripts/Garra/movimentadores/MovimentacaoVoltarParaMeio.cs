@@ -1,20 +1,21 @@
 using UnityEngine;
 
-public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
+public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarra
 {
-    //TODO QUATERNIONS EM DUPLICIDADE COM MOVIMENTACAOVOLTARPARACIMA
+    private DirecaoDaGarra direcaoVoltar;
+
     private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;
     private Quaternion anguloDesejadoDireitaAntesEstadoInicial;
-    private ContadorDeTempo contadorDeTempo;
-
-    private DirecaoDaGarra direcaoVoltar;
 
     public MovimentacaoVoltarParaMeio()
     {
         anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMin);
         anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
+    }
 
-        contadorDeTempo = new ContadorDeTempo(0.25f);
+    public DirecaoDaGarra getDirecaoAtual()
+    {
+        return direcaoVoltar;
     }
 
     public override void preInicio()
@@ -22,33 +23,29 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
         determinarDirecaoParaVoltarAoMeio();
     }
 
-    public override void fixedUpdate()
+    public void voltarAoMeioVindoPelaEsquerda()
     {
-        if(direcaoVoltar == DirecaoDaGarra.ESQUERDA)
+        if (!isMenorPosHorizontal(0))
         {
-            voltarAoMeioVindoPelaEsquerda();
+            moverHorizontalmenteFreeze(-1);
+            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
-        else if(direcaoVoltar == DirecaoDaGarra.DIREITA)
+        else
         {
-            voltarAoMeioVindoPelaDireita();
+            voltaFinalizada();
         }
-        else if(direcaoVoltar == DirecaoDaGarra.CENTRALIZADA)
+    }
+
+    public void voltarAoMeioVindoPelaDireita()
+    {
+        if (!isMaiorPosHorizontal(0))
         {
-            if (contadorDeTempo.contarTempoFDT())
-            {
-                if (garraInteracaoComPowerUp.getInteracaoComGarra() == PowerUpEntidade.INTERACAOGARRA.MOVIMENTO)
-                {
-                    comunicadorComGerMovimentacao.trocarParaAcaoSegurandoEmMovimento();
-                }
-                else if (garraInteracaoComPowerUp.getInteracaoComGarra() == PowerUpEntidade.INTERACAOGARRA.PARADO)
-                {
-                    comunicadorComGerMovimentacao.trocarParaAcaoSegurandoParado();
-                }
-                else
-                {                    
-                    comunicadorComGerMovimentacao.trocarParaAcaoParado();
-                }
-            }
+            moverHorizontalmenteFreeze(1);
+            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+        }
+        else
+        {
+            voltaFinalizada();
         }
     }
 
@@ -66,37 +63,10 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarraPowerUp
         }
     }
 
-    private void voltarAoMeioVindoPelaEsquerda()
-    {
-        if (!isMenorPosHorizontal(0))
-        {
-            moverHorizontalmenteFreeze(-1);
-            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
-        }
-        else
-        {
-            voltaFinalizada();
-        }        
-    }
-
-    private void voltarAoMeioVindoPelaDireita()
-    {        
-        if (!isMaiorPosHorizontal(0))
-        {
-            moverHorizontalmenteFreeze(1);
-            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
-        }
-        else
-        {
-            voltaFinalizada();
-        }        
-    }
-
     private void voltaFinalizada()
     {
         parar();
         colocarNaPosInicial();
-        direcaoVoltar = DirecaoDaGarra.CENTRALIZADA;
-        contadorDeTempo.resetContador();
+        direcaoVoltar = DirecaoDaGarra.CENTRALIZADA;        
     }
 }

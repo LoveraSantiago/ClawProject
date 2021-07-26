@@ -7,7 +7,8 @@ public interface ComunicadorComGerMovNormal
     void trocarParaAcaoSubindo();
     void trocarParaAcaoAgarrada();
     void trocarParaAcaoDescendo();    
+    void trocarParaAcaoParado();
 
     void trocarParaAcaoVoltarParaCima();
-
+    void trocarParaAcaoVoltarParaMeio();
 }

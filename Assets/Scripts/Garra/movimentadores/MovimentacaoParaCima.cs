@@ -36,7 +36,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal,
             }
             else
             {
-
+                comunicadorComGerMovimentacao.trocarParaAcaoVoltarParaMeio();
             }
         }
     }

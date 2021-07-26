@@ -9,7 +9,8 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     private MovimentacaoParaBaixo movPBaixo;
     private MovimentacaoDaGarra   movAgarrandoBaixo;
     private MovimentacaoParaCima  movPCima;
-    private MovimentacaoDaGarra   movLateral;    
+    private MovimentacaoDaGarra   movLateral;
+    private MovimentacaoDaGarra   movVoltarMeio;
 
     public GerenciadorDeMovimentacaoNormal()
     {        
@@ -18,7 +19,8 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movLateral        = new MovimentacaoLateralZigZag();
         movPCima          = new MovimentacaoParaCima();
         movPBaixo         = new MovimentacaoParaBaixo();
-        movAgarrandoBaixo = new MovimentacaoAgarrandoEmbaixo();        
+        movAgarrandoBaixo = new MovimentacaoAgarrandoEmbaixo();
+        movVoltarMeio = new MovimentacaoVoltarParaMeioNormal();
     }
 
     public void configuradoPeloLevel(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
@@ -93,6 +95,16 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movPCima.toAcaoEsperar();
         trocarMovimentador(movPCima);
     }
+
+    public void trocarParaAcaoVoltarParaMeio()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void trocarParaAcaoParado()
+    {
+        throw new System.NotImplementedException();
+    }
     //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL FIM
 
     private void trocarMovimentador(MovimentacaoDaGarra movimentador)
@@ -109,5 +121,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return ((AcaoSubidaDaGarra.ProdutorEvento)movPCima).getProdutorDeEventoColetado();
-    }   
+    }
+
+   
 }

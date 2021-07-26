@@ -16,7 +16,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     {
         MovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);
         movVoltarPCima = new MovimentacaoVoltarParaCima();
-        movVoltarMeio  = new MovimentacaoVoltarParaMeio();
+        movVoltarMeio  = new MovimentacaoVoltarParaMeioPowerUp();
         movSegCima     = new MovimentacaoAgarrandoEmcima();
         movSegCimaMov  = new MovimentacaoAgarrandoEmcimaEmMovimento();
         movSoltar      = new MovimentacaoSoltar();
