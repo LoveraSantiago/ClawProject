@@ -4,7 +4,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,    
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUpInicio.ConsumidorEvento,
-                              AcaoPowerUpFim.ConsumidorEvento
+                              AcaoPowerUpFim.ConsumidorEvento,
+                              AcaoTempoEsgotado.ConsumidorEvento
 {    
     private PartesMaquinaDto partesDto;
 
@@ -31,7 +32,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)
             .addArcoIrisConjunto(displayDeColetados)
             .addArcoIrisConjunto(displayDeScores)
-            .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow());
+            .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow());        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
@@ -48,7 +49,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     public void start()
     {
-        displayTimer.iniciarContagemTempo();
+        displayTimer.iniciarContagemTempo();        
     }
 
     public void update()
@@ -105,6 +106,14 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         }        
     }
 
+    void ProdutorConsumidoresDeEvento<TempoEsgotado>.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    {
+        if (evento.restart)
+        {
+            displayTimer.pause();
+        }
+    }
+
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)
     {
         ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
@@ -113,5 +122,5 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return ((AcaoTempoEsgotado.ProdutorEvento)displayTimer).getProdutorDeEventoColetado();
-    }
+    }    
 }
