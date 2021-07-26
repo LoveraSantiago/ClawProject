@@ -111,6 +111,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         if (evento.restart)
         {
             displayTimer.pause();
+            arcoIrisEfeito.ligarEfeitoRed();
         }
     }
 

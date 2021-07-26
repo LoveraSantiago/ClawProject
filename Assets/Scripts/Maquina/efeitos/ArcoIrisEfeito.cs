@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class ArcoIrisEfeito 
 {
-    private Coroutine coroutineArcoIris;
+    private Coroutine coroutineAtual;
     private MonoBehaviour monoBehaviour;
 
     private List<ArcoIrisConjunto> listaArcoIrisConjunto;
@@ -17,20 +17,35 @@ public class ArcoIrisEfeito
 
     public void ligarEfeitoArcoIris()
     {
-        for(int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
+        ligarGlows();
+        coroutineAtual = monoBehaviour.StartCoroutine(ligarGlowArcoIris());
+    }
+
+    public void ligarEfeitoRed()
+    {
+        coroutineAtual = monoBehaviour.StartCoroutine(blinkarGlowRed());
+    }
+
+    private void ligarGlows()
+    {
+        for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
         {
             listaArcoIrisConjunto[contador].ligar();
         }
-        coroutineArcoIris = monoBehaviour.StartCoroutine(ligarGlowArcoIris());
     }
 
     public void desligarEfeitoArcoIris()
+    {
+        desligarGlows();
+        monoBehaviour.StopCoroutine(coroutineAtual);
+    }
+
+    private void desligarGlows()
     {
         for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
         {
             listaArcoIrisConjunto[contador].desligar();
         }
-        monoBehaviour.StopCoroutine(coroutineArcoIris);
     }
 
     public ArcoIrisEfeito addArcoIrisConjunto(ArcoIrisConjunto arcoIrisConjunto)
@@ -50,6 +65,21 @@ public class ArcoIrisEfeito
             }
 
             yield return null;
+        }
+    }
+
+    private IEnumerator blinkarGlowRed()
+    {
+        while (true)
+        {
+            ligarGlows();
+            for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
+            {
+                listaArcoIrisConjunto[contador].passarCor(Color.red);
+            }
+            yield return new WaitForSeconds(0.2f);
+            desligarGlows();
+            yield return new WaitForSeconds(0.2f);
         }
     }
 }
