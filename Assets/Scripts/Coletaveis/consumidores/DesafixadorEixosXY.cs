@@ -5,6 +5,7 @@ public class DesafixadorEixosXY : Consumidor<ColetavelTile>
         if (coletavel.isAtivo())
         {
             coletavel.desafixarVerticalmente();
+            coletavel.colocarNoLayerNormal();
         }
     }
 }

@@ -47,7 +47,7 @@ public class BoardManager
 
     private IEnumerator subirBoard(PoolDeColetaveis poolDeColetaveis)
     {
-        float limite = boardDto.BoardPosicao.position.y + boardDto.Subida;
+        float limite = boardDto.BoardPosicao.position.y + boardDto.Subida;        
         Vector3 posInicialParedeAlta  = boardDto.ParedeAlta.position;
         Vector3 posInicialParedeBaixa = boardDto.ParedeBaixa.position;
         poolDeColetaveis.executeEmTodosColetaveis(new FixadorEixosXY());
