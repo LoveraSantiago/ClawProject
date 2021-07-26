@@ -23,6 +23,8 @@ public class ContadorTimerContinuo : ContadorTimerNegativo
 
         if (base.isTimeOver())
         {
+            iniciarContagem();
+            setTempoRegressivoInicial(tempoRestart);
             produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(true));
         }
 

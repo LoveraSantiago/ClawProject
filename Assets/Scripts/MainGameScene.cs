@@ -110,7 +110,11 @@ public class MainGameScene : MonoBehaviour,
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(modalPontos)
-            .adicionarConsumidor(coletaveisManager);      
+            .adicionarConsumidor(coletaveisManager);
+
+        new AcaoBoardElevadoFim()
+            .configurarProdutor(coletaveisManager)
+            .adicionarConsumidor(maquinaManager);
     }
 
     private void configurandoEventos()

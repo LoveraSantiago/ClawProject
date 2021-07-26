@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoColetado.ProdutorEvento,                                
+                                AcaoBoardElevadoFim.ProdutorEvento,
                                 AcaoImantadoPelaGarra.ConsumidorEvento,
                                 AcaoSubidaDaGarra.ConsumidorEvento,                                
                                 AcaoPowerUpInicio.ConsumidorEvento,
@@ -140,10 +141,15 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
             int qtdAtivados = boardManager.subirBoard(poolDeColetaveis, monoBehaviour);
             contadorDeColetaveis.adicionarColetaveisExtras(qtdAtivados);            
         }        
-    }
+    }  
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeInformacoesDoColetado;
     }
+
+    ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        return ((AcaoBoardElevadoFim.ProdutorEvento)boardManager).getProdutorDeEventoColetado();
+    }   
 }

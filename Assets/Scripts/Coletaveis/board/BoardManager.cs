@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class BoardManager 
+public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 {   
     private BoardDto boardDto;
 
     private BoardDevolvedor devolvedor;
     private BoardMontadorNormal montador;
-    private BoardMontadorExtra montadorExtra;    
+    private BoardMontadorExtra montadorExtra;
+
+    private ProdutorDeEvento<BoardAcaoFim> produtorDeEvento;
 
     public BoardManager(BoardDto boardDto)
     {
@@ -15,6 +17,8 @@ public class BoardManager
         devolvedor    = new BoardDevolvedor();
         montador      = new BoardMontadorNormal();
         montadorExtra = new BoardMontadorExtra();
+
+        produtorDeEvento = new ProdutorDeEvento<BoardAcaoFim>();
     }
 
     public void configuradoPeloLevel(AbstractLevel level)//TODO CRIAR INTERFACE PADRONIZAR CONFIGURADOS PELO LEVEL ALEM DE ADICIONAR SEMANTICA
@@ -63,7 +67,13 @@ public class BoardManager
 
         poolDeColetaveis.executeEmTodosColetaveis(new DesafixadorEixosXY());
         montadorExtra.create(boardDto, poolDeColetaveis);
-        
+
+        produtorDeEvento.produziuEvento(null);
         yield return null;
+    }
+
+    ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        return produtorDeEvento;
     }
 }

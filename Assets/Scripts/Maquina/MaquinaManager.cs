@@ -5,7 +5,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUpInicio.ConsumidorEvento,
                               AcaoPowerUpFim.ConsumidorEvento,
-                              AcaoTempoEsgotado.ConsumidorEvento
+                              AcaoTempoEsgotado.ConsumidorEvento,
+                              AcaoBoardElevadoFim.ConsumidorEvento
 {    
     private PartesMaquinaDto partesDto;
 
@@ -102,7 +103,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             displayDeScores.finalizarContagemRegressiva();
             displayTimer.continuar();
             botoesPowerUp.reclicarProxPowerUp();
-            arcoIrisEfeito.desligarEfeitoArcoIris();
+            arcoIrisEfeito.desligarEfeito();
         }        
     }
 
@@ -115,6 +116,12 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         }
     }
 
+    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
+    {
+        arcoIrisEfeito.desligarEfeito();
+        displayTimer.continuar();
+    }
+
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)
     {
         ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
@@ -123,5 +130,5 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return ((AcaoTempoEsgotado.ProdutorEvento)displayTimer).getProdutorDeEventoColetado();
-    }    
+    }   
 }

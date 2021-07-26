@@ -34,7 +34,7 @@ public class ArcoIrisEfeito
         }
     }
 
-    public void desligarEfeitoArcoIris()
+    public void desligarEfeito()
     {
         desligarGlows();
         monoBehaviour.StopCoroutine(coroutineAtual);
