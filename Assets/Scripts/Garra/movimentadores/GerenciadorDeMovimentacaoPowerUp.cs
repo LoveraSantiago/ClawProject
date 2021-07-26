@@ -20,7 +20,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         movSegCima     = new MovimentacaoAgarrandoEmcima();
         movSegCimaMov  = new MovimentacaoAgarrandoEmcimaEmMovimento();
         movSoltar      = new MovimentacaoSoltar();
-        movParado      = new MovimentacaoParado();
+        movParado      = new MovimentacaoParadoPowerUp();
 
         contadorDeFimTempo = new ContadorDeTempo();
     }

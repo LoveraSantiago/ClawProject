@@ -11,6 +11,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     private MovimentacaoParaCima  movPCima;
     private MovimentacaoDaGarra   movLateral;
     private MovimentacaoDaGarra   movVoltarMeio;
+    private MovimentacaoDaGarra   movParado;
 
     public GerenciadorDeMovimentacaoNormal()
     {        
@@ -21,6 +22,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movPBaixo         = new MovimentacaoParaBaixo();
         movAgarrandoBaixo = new MovimentacaoAgarrandoEmbaixo();
         movVoltarMeio     = new MovimentacaoVoltarParaMeioNormal();
+        movParado         = new MovimentacaoParadoNormal();
     }
 
     public void configuradoPeloLevel(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
@@ -103,7 +105,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoParado()
     {
-        throw new System.NotImplementedException();
+        trocarMovimentador(movParado);
     }
     //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL FIM
 
