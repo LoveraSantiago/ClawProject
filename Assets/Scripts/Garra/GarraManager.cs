@@ -18,7 +18,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     public GarraManager(GarraDto garraDto, InputGame inputGame)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto, inputGame);
-        gerDeMovNormal = new GerenciadorDeMovimentacaoNormal();
+        gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
         gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
         gerDeMovAtual = gerDeMovNormal;
 
@@ -60,13 +60,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     private void processarGarraColidiuCom(Collider2D other)
     {
         gerDeMovAtual.garraColidiuCom(other);
-    }
-
-    private void processarFimPowerUp()
-    {
-        gerDeMovNormal.trocarParaAcaoNormal();
-        gerDeMovAtual = gerDeMovNormal;
-    }
+    }  
 
     void AcaoPowerUpInicio.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {        
@@ -92,7 +86,9 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     {
         if (evento.finalizar)
         {
-            processarFimPowerUp();
+            gerDeMovNormal.trocarParaAcaoNormal();
+            gerDeMovAtual = gerDeMovNormal;
+            gerDeMovPowerUp.finalizarPowerUp();
         }
     }
 

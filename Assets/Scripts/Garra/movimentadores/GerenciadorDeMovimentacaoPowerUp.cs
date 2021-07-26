@@ -107,6 +107,11 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     }
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
 
+    public void finalizarPowerUp()
+    {
+        movAtual.finalizarPowerUp();
+    }
+
     //TODO REFATORAR COM GERENCIADOR DE MOVIMENTACAO NORMAL
     private void trocarMovimentador(MovimentacaoDaGarraPowerUp movimentador)
     {

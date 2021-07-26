@@ -6,9 +6,7 @@ public abstract class GerenciadorDeMovimentacao
     public abstract void update();
     public abstract void fixedUpdate();
 
-    public virtual void garraColidiuCom(Collider2D other)
-    {        
-    }
+    public virtual void garraColidiuCom(Collider2D other){}
 
     public abstract void garraComemorar();
 }
