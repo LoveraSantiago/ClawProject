@@ -46,4 +46,9 @@ public class PoolDeColetaveis
     {
         poolInativos.addObjeto(coletavel);
     }
+
+    public int getQtdDeColetaveis()
+    {
+        return poolDeNomes.getTamanhoDoPool();
+    }
 }

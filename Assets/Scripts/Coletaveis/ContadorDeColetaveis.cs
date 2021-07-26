@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class ContadorDeColetaveis
 {
     private int score = 0;
@@ -20,8 +22,9 @@ public class ContadorDeColetaveis
 
     public void configurarTotalColetaveis(int total, bool backToBoard)
     {
-        this.totalColetaveis = total;
-        this.backToBoard = backToBoard;        
+        totalColetaveis = total;
+        this.backToBoard = backToBoard;
+        Debug.Log("Total: " + totalColetaveis);
     }
 
     public void adicionarColetado(ColetavelTile coletado)
@@ -54,6 +57,7 @@ public class ContadorDeColetaveis
     public void adicionarColetaveisExtras(int qtd)
     {
         totalColetaveis += qtd;
+        Debug.Log("PosAdicionado Total: " + totalColetaveis);
     }
 
     public ColetavelTile[] getArrayBoard()

@@ -32,7 +32,9 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 
     public int create(PoolDeColetaveis poolDeColetaveis)
     {
-        int qtdColetaveisCriados = montador.create(boardDto, poolDeColetaveis);
+        montador.create(boardDto, poolDeColetaveis);
+        int qtdColetaveisCriados = poolDeColetaveis.getQtdDeColetaveis();
+
         montadorExtra.create(boardDto, poolDeColetaveis);
         return qtdColetaveisCriados;
     }   

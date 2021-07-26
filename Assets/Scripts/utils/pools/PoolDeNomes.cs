@@ -68,4 +68,9 @@ public class PoolDeNomes<T>
     {
         return poolDeObjetosPorNome.Values.ToList();
     }
+
+    public int getTamanhoDoPool()
+    {
+        return poolDeObjetosPorNome.Count;
+    }
 }
