@@ -88,30 +88,20 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         arcoIrisEfeito.ligarEfeitoArcoIris();
         displayTimer.pause();
         displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);                
-    }    
-
-    private void processarPreFimDePowerUp()
-    {
-        displayDeScores.piscarAsteriscos();
-    }
-
-    private void processarFimDePowerUp()
-    {
-        displayDeScores.finalizarContagemRegressiva();
-        displayTimer.continuar();
-        botoesPowerUp.reclicarProxPowerUp();        
-        arcoIrisEfeito.desligarEfeitoArcoIris();
-    }    
+    }       
 
     void AcaoPowerUpFim.ConsumidorEvento.consumirEvento(PowerUpInfoFim evento)
     {
         if (evento.preFinalizar)
-        {     
-            processarPreFimDePowerUp();
+        {
+            displayDeScores.piscarAsteriscos();
         }
         else if (evento.finalizar)
-        {         
-            processarFimDePowerUp();
+        {
+            displayDeScores.finalizarContagemRegressiva();
+            displayTimer.continuar();
+            botoesPowerUp.reclicarProxPowerUp();
+            arcoIrisEfeito.desligarEfeitoArcoIris();
         }        
     }
 
