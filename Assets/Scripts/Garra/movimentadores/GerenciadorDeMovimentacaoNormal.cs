@@ -20,7 +20,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movPCima          = new MovimentacaoParaCima();
         movPBaixo         = new MovimentacaoParaBaixo();
         movAgarrandoBaixo = new MovimentacaoAgarrandoEmbaixo();
-        movVoltarMeio = new MovimentacaoVoltarParaMeioNormal();
+        movVoltarMeio     = new MovimentacaoVoltarParaMeioNormal();
     }
 
     public void configuradoPeloLevel(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
@@ -98,7 +98,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoVoltarParaMeio()
     {
-        throw new System.NotImplementedException();
+        trocarMovimentador(movVoltarMeio);
     }
 
     public void trocarParaAcaoParado()
