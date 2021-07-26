@@ -2,6 +2,10 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal,
                                     AcaoSubidaDaGarra.ProdutorEvento
 
 {
+    private readonly int ACAO_NORMAL  = 0;
+    private readonly int ACAO_ESPERAR = 1;
+
+    private int acaoAtual;
     private int contadorDeSubidas;
     private ProdutorDeEvento<ContagemSubidaGarra> produtorDeEventoSubidaDaGarra;
 
@@ -26,13 +30,30 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal,
         if(isAcimaPosInicial())
         {
             colocarNaAlturaInicial();
-            comunicadorComGerMovimentacao.trocarParaAcaoNormal();
+            if(acaoAtual == ACAO_NORMAL)
+            {
+                comunicadorComGerMovimentacao.trocarParaAcaoNormal();
+            }
+            else
+            {
+
+            }
         }
     }
 
     public override void fixedUpdate()
     {
         moverParaCimaFreeze();
+    }
+
+    public void toAcaoNormal()
+    {
+        acaoAtual = ACAO_NORMAL;
+    }
+
+    public void toAcaoEsperar()
+    {
+        acaoAtual = ACAO_ESPERAR;
     }
 
     ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEventoColetado()

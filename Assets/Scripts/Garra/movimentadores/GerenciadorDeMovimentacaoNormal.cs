@@ -72,7 +72,8 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     }
 
     public void trocarParaAcaoSubindo()
-    {        
+    {
+        movPCima.toAcaoNormal();
         trocarMovimentador(movPCima);
     }
 
@@ -85,7 +86,13 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     public void trocarParaAcaoAgarrada()
     {
         trocarMovimentador(movAgarrandoBaixo);
-    }    
+    }
+
+    public void trocarParaAcaoVoltarParaCima()
+    {
+        movPCima.toAcaoEsperar();
+        trocarMovimentador(movPCima);
+    }
     //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL FIM
 
     private void trocarMovimentador(MovimentacaoDaGarra movimentador)
@@ -102,5 +109,5 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return ((AcaoSubidaDaGarra.ProdutorEvento)movPCima).getProdutorDeEventoColetado();
-    }
+    }   
 }
