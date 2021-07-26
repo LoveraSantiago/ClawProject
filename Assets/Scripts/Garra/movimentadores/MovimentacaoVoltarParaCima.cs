@@ -13,21 +13,23 @@ public class MovimentacaoVoltarParaCima : MovimentacaoDaGarraPowerUp
 
     public override void preInicio()
     {
+        colocarMassa(3);
         animacao.irParaCima();
     }
 
-    public override void fixedUpdate()
+    public override void update()
     {
-        if (!isAcimaPosInicial())
-        {
-            moverParaCimaFreeze();
-            pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
-        }
-        else
+        if (isAcimaPosInicial())
         {
             parar();
             colocarNaAlturaInicial();
             comunicadorComGerMovimentacao.trocarParaAcaoVoltarParaMeio();
         }
+    }
+
+    public override void fixedUpdate()
+    {
+        moverParaCimaFreeze();
+        pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
     }
 }

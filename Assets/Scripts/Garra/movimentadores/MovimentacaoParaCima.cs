@@ -24,7 +24,8 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal,
     public override void update()
     {        
         if(isAcimaPosInicial())
-        {            
+        {
+            colocarNaAlturaInicial();
             comunicadorComGerMovimentacao.trocarParaAcaoNormal();
         }
     }
