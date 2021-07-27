@@ -51,4 +51,9 @@ public class PoolDeColetaveis
     {
         return poolDeNomes.getTamanhoDoPool();
     }
+
+    public bool contemNome(string nome)
+    {
+        return poolDeNomes.contemNome(nome);
+    }
 }

@@ -97,10 +97,13 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     public void consumir(Collider2D goColetado)
     {
         //Debug.Log("Nome Coletado: " + goColetado.name);
-        ColetavelTile coletado = poolDeColetaveis.getColetavelPeloNome(goColetado.name);        
-        if(coletado.isVelocidadeYPositiva() && !powerUpEmAcao)
-        {            
-            processarColetado(goColetado.gameObject);
+        if (poolDeColetaveis.contemNome(goColetado.name))
+        {
+            ColetavelTile coletado = poolDeColetaveis.getColetavelPeloNome(goColetado.name);        
+            if(coletado.isVelocidadeYPositiva() && !powerUpEmAcao)
+            {            
+                processarColetado(goColetado.gameObject);
+            }
         }
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM         
