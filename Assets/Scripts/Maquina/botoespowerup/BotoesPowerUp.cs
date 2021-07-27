@@ -87,6 +87,16 @@ public class BotoesPowerUp
         }        
     }
 
+    public void desativarPowerUp()
+    {
+        acionadoPowerUp = true;
+    }
+
+    public void reativarPowerUp()
+    {
+        acionadoPowerUp = false;
+    }
+
     private void acionarBotao(BotaoPowerUp btn)
     {
         btn.clicar();

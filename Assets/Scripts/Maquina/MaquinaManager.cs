@@ -111,6 +111,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         if (evento.restart)
         {
+            botoesPowerUp.desativarPowerUp();
             displayTimer.pause();
             arcoIrisEfeito.ligarEfeitoRed();
         }
@@ -118,6 +119,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
     {
+        botoesPowerUp.reativarPowerUp();
         arcoIrisEfeito.desligarEfeito();
         displayTimer.continuar();
     }
