@@ -53,9 +53,12 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 
     private IEnumerator subirBoard(PoolDeColetaveis poolDeColetaveis)
     {
+        yield return new WaitForSeconds(0.6f);
         float limite = boardDto.BoardPosicao.position.y + boardDto.Subida;        
         Vector3 posInicialParedeAlta  = boardDto.ParedeAlta.position;
         Vector3 posInicialParedeBaixa = boardDto.ParedeBaixa.position;
+        Vector3 posVoltaBoard         = boardDto.PosicaoRefVoltaBoard.position;
+
         poolDeColetaveis.executeEmTodosColetaveis(new FixadorEixosXY());
 
         while (boardDto.BoardPosicao.position.y < limite)
@@ -64,8 +67,9 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
             yield return new WaitForFixedUpdate();
         }
 
-        boardDto.ParedeAlta.position  = posInicialParedeAlta;
-        boardDto.ParedeBaixa.position = posInicialParedeBaixa;        
+        boardDto.ParedeAlta.position           = posInicialParedeAlta;
+        boardDto.ParedeBaixa.position          = posInicialParedeBaixa;
+        boardDto.PosicaoRefVoltaBoard.position = posVoltaBoard;
 
         poolDeColetaveis.executeEmTodosColetaveis(new DesafixadorEixosXY());
         montadorExtra.create(boardDto, poolDeColetaveis);

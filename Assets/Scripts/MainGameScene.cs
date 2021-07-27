@@ -108,10 +108,10 @@ public class MainGameScene : MonoBehaviour,
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(modalPontos)
-            .adicionarConsumidor(coletaveisManager)
-            .adicionarConsumidor(garraManager);
+            .adicionarConsumidor(coletaveisManager);
 
         new AcaoBoardElevadoFim()
             .configurarProdutor(coletaveisManager)
