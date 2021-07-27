@@ -5645,7 +5645,7 @@ MonoBehaviour:
       - 0.4
       - 1.05
   maquinaDto:
-    referenciaChao: {fileID: 1496791513}
+    referenciaChao: {fileID: 1270622651}
     joystickDto:
       joystickTransform: {fileID: 1655319868}
       parteCima: {fileID: 1371200242}
@@ -17860,6 +17860,11 @@ SpriteRenderer:
 --- !u!212 &1269634543 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5745098079531437903, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1270622651 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6406990385869860179, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1275697047 stripped

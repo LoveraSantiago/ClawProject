@@ -57,7 +57,7 @@ public class PowerUpManager : PowerUpAcionamento,
     {
         PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(false, true);
         produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
-    }
+    }    
 
     ProdutorDeEvento<PowerUpInfo> AcaoPowerUpInicio.ProdutorEvento.getProdutorDeEventoColetado()
     {
@@ -67,5 +67,5 @@ public class PowerUpManager : PowerUpAcionamento,
     ProdutorDeEvento<PowerUpInfoFim> AcaoPowerUpFim.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeEventoFinalizacao;
-    }
+    }    
 }

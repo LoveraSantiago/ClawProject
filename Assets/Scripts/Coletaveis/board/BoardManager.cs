@@ -61,11 +61,13 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 
         poolDeColetaveis.executeEmTodosColetaveis(new FixadorEixosXY());
 
+        float acrescimo = boardDto.BoardPosicao.position.y;
         while (boardDto.BoardPosicao.position.y < limite)
         {
             boardDto.BoardPosicao.position += new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
             yield return new WaitForFixedUpdate();
         }
+        acrescimo = boardDto.BoardPosicao.position.y - acrescimo;
 
         boardDto.ParedeAlta.position           = posInicialParedeAlta;
         boardDto.ParedeBaixa.position          = posInicialParedeBaixa;
@@ -74,7 +76,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         poolDeColetaveis.executeEmTodosColetaveis(new DesafixadorEixosXY());
         montadorExtra.create(boardDto, poolDeColetaveis);
 
-        produtorDeEvento.produziuEvento(null);
+        produtorDeEvento.produziuEvento(new BoardAcaoFim(acrescimo));
         yield return null;
     }
 

@@ -24,7 +24,7 @@ public class ContadorDeColetaveis
     {
         totalColetaveis = total;
         this.backToBoard = backToBoard;
-        Debug.Log("Total: " + totalColetaveis);
+        //Debug.Log("Total: " + totalColetaveis);
     }
 
     public void adicionarColetado(ColetavelTile coletado)
@@ -57,7 +57,7 @@ public class ContadorDeColetaveis
     public void adicionarColetaveisExtras(int qtd)
     {
         totalColetaveis += qtd;
-        Debug.Log("PosAdicionado Total: " + totalColetaveis);
+        //Debug.Log("PosAdicionado Total: " + totalColetaveis);
     }
 
     public ColetavelTile[] getArrayBoard()
