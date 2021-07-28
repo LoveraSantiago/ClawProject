@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class ColetavelTile : Coletavel
 {
-    private Animator animator;
+    private static CircleCollider2D referenciaColliderColetado;
+
     private bool miraSelecionada;
+
+    private Animator animator;    
     private Material materialDefault;
 
     public ColetavelTile()
         : base()
     {
-        animator = goColetavel.transform.Find("animacao").GetComponent<Animator>();
-        materialDefault = spriteRenderer.material;
+        animator = goColetavel.transform.Find("animacao").GetComponent<Animator>();        
+        materialDefault = spriteRenderer.material;        
     }
 
     public void ligarAnimacaoMira()
@@ -54,5 +57,17 @@ public class ColetavelTile : Coletavel
     public void colocarNoLayerNormal()
     {
         goColetavel.layer = 7;
+    }
+
+    public bool isTouchingCentroDaGarra()
+    {
+        LayerMask mask = LayerMask.GetMask("GarraCentro");
+        Collider2D collider2d = Physics2D.OverlapCircle(rigidbody.position, 0.3f, mask);        
+        return referenciaColliderColetado == collider2d;
+    }
+
+    public static void configReferenciaColliderColetado(CircleCollider2D referenciaColliderColetadoArg)
+    {
+        referenciaColliderColetado = referenciaColliderColetadoArg;
     }
 }

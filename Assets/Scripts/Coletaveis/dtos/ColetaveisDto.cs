@@ -5,7 +5,8 @@ using UnityEngine;
 public class ColetaveisDto 
 {
     [SerializeField] private GameObject sensorDeColetado;
-    [SerializeField] private GameObject tile;    
+    [SerializeField] private GameObject tile;
+    [SerializeField] private CircleCollider2D referenciaColliderColetado;
     [Space(5)]    
     [SerializeField] private Sprite[] caracteres;
     [Space(5)]
@@ -15,7 +16,8 @@ public class ColetaveisDto
 
     public GameObject SensorDeColetado { get { return sensorDeColetado; } }    
     public GameObject Tile { get { return tile; } }    
-    
+    public CircleCollider2D ReferenciaColliderColetado { get { return referenciaColliderColetado; } }
+
     public Sprite[] Caracteres { get { return caracteres; } }
 
     public TuboDto TuboDto { get { return tuboDto; } }    

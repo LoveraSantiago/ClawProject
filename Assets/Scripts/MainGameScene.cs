@@ -21,11 +21,11 @@ public class MainGameScene : MonoBehaviour,
     [Space(5)]
     [SerializeField] private ModalPontosDto modalPontosDto;
 
-    private GarraManager     garraManager;
+    private ModalPontos       modalPontos;
+    private GarraManager      garraManager;
+    private MaquinaManager    maquinaManager;
+    private PowerUpManager    powerUpManager;
     private ColetaveisManager coletaveisManager;
-    private MaquinaManager   maquinaManager;
-    private PowerUpManager   powerUpManager;
-    private ModalPontos      modalPontos;
 
     private InputGame inputGame;
     private EfeitoColetado   efeitoColetado;

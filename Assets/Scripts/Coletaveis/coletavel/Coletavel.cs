@@ -10,7 +10,7 @@ public abstract class Coletavel
     private bool ativo;
     
     protected GameObject goColetavel;
-    private Rigidbody2D rigidbody;
+    protected Rigidbody2D rigidbody;
     protected SpriteRenderer spriteRenderer;    
     
     public Coletavel()

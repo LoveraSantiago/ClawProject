@@ -36,6 +36,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         tudoDeSaida = new TuboDeSaida(coletaveisDto.TuboDto);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();
+
+        ColetavelTile.configReferenciaColliderColetado(coletaveisDto.ReferenciaColliderColetado);
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
@@ -99,8 +101,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         //Debug.Log("Nome Coletado: " + goColetado.name);
         if (poolDeColetaveis.contemNome(goColetado.name))
         {
-            ColetavelTile coletado = poolDeColetaveis.getColetavelPeloNome(goColetado.name);        
-            if(coletado.isVelocidadeYPositiva() && !powerUpEmAcao)
+            ColetavelTile coletado = poolDeColetaveis.getColetavelPeloNome(goColetado.name);            
+            if(coletado.isTouchingCentroDaGarra() && !powerUpEmAcao)
             {            
                 processarColetado(goColetado.gameObject);
             }

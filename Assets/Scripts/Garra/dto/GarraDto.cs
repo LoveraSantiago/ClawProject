@@ -20,11 +20,11 @@ public class GarraDto
     [Space(5)]
     [SerializeField] private Rigidbody2D rigidBody;
     [Space(5)]
-    [SerializeField] private Transform centroDaGarra;
-    [SerializeField] private Transform pincaEsquerda;
-    [SerializeField] private Transform pincaDireita;
+    [SerializeField] private Transform  centroDaGarra;
+    [SerializeField] private Transform  pincaEsquerda;
+    [SerializeField] private Transform  pincaDireita;
     [SerializeField] private GameObject colisor;
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator   animator;
     [Space(5)]
     [SerializeField] private CaboGarraDto caboDto;
 
