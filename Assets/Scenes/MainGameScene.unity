@@ -5566,7 +5566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 3
   garraDto:
     velocMovHorizontal: 3.1
     velocMovCima: 7.5
@@ -5615,6 +5615,7 @@ MonoBehaviour:
       delayVoltaBoard: 0.2
       velocidadeSubida: 0.25
       subida: 0.78
+      limiteSubida: 2.09
       paredeAlta: {fileID: 50493998}
       paredeBaixa: {fileID: 1392206646}
       boardPosicao: {fileID: 1496791513}
@@ -24102,6 +24103,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6406990385869860188, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
 --- !u!4 &6406990385049082668 stripped
