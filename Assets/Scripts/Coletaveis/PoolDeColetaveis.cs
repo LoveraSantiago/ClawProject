@@ -34,6 +34,11 @@ public class PoolDeColetaveis
         poolDeNomes.executeEmTodosOsObj(consumidor);
     }
 
+    public bool temEmAlgumColetavel(Predicate<ColetavelTile> predicate)
+    {
+        return poolDeNomes.temEmAlgum(predicate);
+    }
+
     public void inativarColetaveis(ColetavelTile[] coletaveis)
     {
         for(int contador = 0; contador < coletaveis.Length; contador++)

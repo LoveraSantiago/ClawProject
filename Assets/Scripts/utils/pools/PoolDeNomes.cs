@@ -39,6 +39,16 @@ public class PoolDeNomes<T>
         }
     }
 
+    public bool temEmAlgum(Predicate<T> predicate)
+    {
+        foreach (KeyValuePair<string, T> entry in poolDeObjetosPorNome)
+        {
+            bool result = predicate.test(entry.Value);
+            if (result) return true;
+        }
+        return false;
+    }
+
     public void removerObjetoDoDicionario(string nome)
     {
         if (contemNome(nome))

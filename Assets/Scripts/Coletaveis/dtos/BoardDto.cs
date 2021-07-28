@@ -9,6 +9,7 @@ public class BoardDto
     [Space(5)]
     [SerializeField] private float velocidadeSubida;
     [SerializeField] private float subida;
+    [SerializeField] private float limiteSubida;
     [SerializeField] private Transform paredeAlta;
     [SerializeField] private Transform paredeBaixa;
     [Space(5)]
@@ -26,6 +27,8 @@ public class BoardDto
 
     public float VelocidadeSubida { get { return velocidadeSubida; } }
     public float Subida { get { return subida; } }
+    public float LimiteSubida { get { return limiteSubida; } }
+
     public Transform ParedeAlta { get { return paredeAlta; } }
     public Transform ParedeBaixa { get { return paredeBaixa; } }
 
