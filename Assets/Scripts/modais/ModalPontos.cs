@@ -2,7 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 public class ModalPontos : AcaoColetado.ConsumidorEvento,
-                           AcaoTempoEsgotado.ConsumidorEvento
+                           AcaoTempoEsgotado.ConsumidorEvento,
+                           AcaoBoardElevadoFim.ConsumidorEvento
 {
     private string scoreAtual;
     private bool mostrandoModal;
@@ -47,6 +48,14 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {
         if (evento.isTimeOver())
+        {
+            mostrarModalResultado();
+        }
+    }
+
+    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
+    {
+        if (evento.isGameOVer)
         {
             mostrarModalResultado();
         }

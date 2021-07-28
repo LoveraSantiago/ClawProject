@@ -102,8 +102,11 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
     {
-        gerDeMovNormal.iniciarMovimentacoes();
-        gerDeMovAtual = gerDeMovNormal;
+        if (!evento.isGameOVer)
+        {
+            gerDeMovNormal.iniciarMovimentacoes();
+            gerDeMovAtual = gerDeMovNormal;
+        }
     }
 
     ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEventoColetado()

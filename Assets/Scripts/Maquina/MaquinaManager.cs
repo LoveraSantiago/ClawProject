@@ -119,9 +119,12 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
     {
-        botoesPowerUp.reativarPowerUp();
-        arcoIrisEfeito.desligarEfeito();
-        displayTimer.continuar();
+        if (!evento.isGameOVer)
+        {
+            botoesPowerUp.reativarPowerUp();
+            arcoIrisEfeito.desligarEfeito();
+            displayTimer.continuar();
+        }
     }
 
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)

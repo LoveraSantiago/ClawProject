@@ -116,7 +116,8 @@ public class MainGameScene : MonoBehaviour,
         new AcaoBoardElevadoFim()
             .configurarProdutor(coletaveisManager)
             .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(garraManager);
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(modalPontos);
     }
 
     private void configurandoEventos()
