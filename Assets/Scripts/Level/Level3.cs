@@ -76,8 +76,7 @@ public class Level3 : AbstractLevel
 
     public override TipoContagemTempoDto getTempoContagem()
     {
-        //return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:31");
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:10");
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:26");        
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()

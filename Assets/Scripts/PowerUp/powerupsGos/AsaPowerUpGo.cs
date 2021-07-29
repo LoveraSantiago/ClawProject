@@ -55,7 +55,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
                     Debug.Log("Acertou " + nomeAlvo);
                     desligarMirasNosColetaveis();
                     ColetavelTile coletavelParaVoar = coletavelQuery.getColetavelInGameByName(nomeAlvo);
-
+                                        
                     colocarNaPosicao(coletavelParaVoar.getPosicao());
                     receberSprite(coletavelParaVoar.getSprite(), 32);
 
