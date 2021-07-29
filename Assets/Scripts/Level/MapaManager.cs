@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +5,6 @@ public class MapaManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject levelObjetivo;
-
 
     public void showTarget1()
     {
@@ -21,6 +18,13 @@ public class MapaManager : MonoBehaviour
         levelObjetivo.SetActive(true);
         PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.DOIS);              
         updateModal(new Level2());
+    }
+
+    public void showTarget3()
+    {
+        levelObjetivo.SetActive(true);
+        PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.TRES);
+        updateModal(new Level3());
     }
 
     private static void updateModal(AbstractLevel level)
