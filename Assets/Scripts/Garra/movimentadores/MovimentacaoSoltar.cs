@@ -31,6 +31,6 @@ public class MovimentacaoSoltar : MovimentacaoDaGarraPowerUp
         parar();
         garraInteracaoComPowerUp.parar();
         garraInteracaoComPowerUp.ligarGravidadeHum();
-        garraInteracaoComPowerUp.fixarVerticalmente();        
+        garraInteracaoComPowerUp.fixarEixoX();        
     } 
 }

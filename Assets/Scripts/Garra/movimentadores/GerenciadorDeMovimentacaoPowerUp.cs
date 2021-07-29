@@ -16,11 +16,11 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     {
         MovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);
         movVoltarPCima = new MovimentacaoVoltarParaCima();
-        movVoltarMeio  = new MovimentacaoVoltarParaMeio();
+        movVoltarMeio  = new MovimentacaoVoltarParaMeioPowerUp();
         movSegCima     = new MovimentacaoAgarrandoEmcima();
         movSegCimaMov  = new MovimentacaoAgarrandoEmcimaEmMovimento();
         movSoltar      = new MovimentacaoSoltar();
-        movParado      = new MovimentacaoParado();
+        movParado      = new MovimentacaoParadoPowerUp();
 
         contadorDeFimTempo = new ContadorDeTempo();
     }
@@ -106,6 +106,11 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         trocarMovimentador(movParado);        
     }
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
+
+    public void finalizarPowerUp()
+    {
+        movAtual.finalizarPowerUp();
+    }
 
     //TODO REFATORAR COM GERENCIADOR DE MOVIMENTACAO NORMAL
     private void trocarMovimentador(MovimentacaoDaGarraPowerUp movimentador)

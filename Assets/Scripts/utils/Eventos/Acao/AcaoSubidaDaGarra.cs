@@ -1,3 +1,3 @@
-public class AcaoSubidaDaGarra : ProdutorConsumidoresDeEvento<int>
+public class AcaoSubidaDaGarra : ProdutorConsumidoresDeEvento<ContagemSubidaGarra>
 {    
 }

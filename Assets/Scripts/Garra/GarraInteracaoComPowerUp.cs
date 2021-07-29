@@ -9,6 +9,6 @@ public interface GarraInteracaoComPowerUp
     void colocarNaPosicao(Vector3 posicao);
     void ligarGravidadeZero();
     void ligarGravidadeHum();
-    void fixarVerticalmente();
+    void fixarEixoX();
     void timeout();
 }

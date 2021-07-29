@@ -1,12 +1,13 @@
-using System;
 using UnityEngine;
-using System.Collections.Generic;
 
-public class MaquinaManager : Consumidor<InformacoesColetado>,
-                              Consumidor<PowerUpInfo>,
-                              Consumidor<PowerUpInfoFim>
+public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
+                              AcaoColetado.ConsumidorEvento,    
+                              AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
+                              AcaoPowerUpInicio.ConsumidorEvento,
+                              AcaoPowerUpFim.ConsumidorEvento,
+                              AcaoTempoEsgotado.ConsumidorEvento,
+                              AcaoBoardElevadoFim.ConsumidorEvento
 {    
-
     private PartesMaquinaDto partesDto;
 
     private DisplaysDeColetados displayDeColetados;
@@ -32,22 +33,24 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)
             .addArcoIrisConjunto(displayDeColetados)
             .addArcoIrisConjunto(displayDeScores)
-            .addArcoIrisConjunto(displayTimer);
+            .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow());        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
     {
         botoesPowerUp.configuradoPeloLevel(levelEscolhido);
         displayTimer.configuradoPeloLevel(levelEscolhido);
-        colorindoPartesMaquina(levelEscolhido.getDicionarioDeCores());
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         displayDeColetados.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+
+        new ColoridorMaquina()
+            .colorir(partesDto, levelEscolhido.getDicionarioDeCores());
     }
 
     public void start()
     {
-        displayTimer.iniciarContagemTempo();
+        displayTimer.iniciarContagemTempo();        
     }
 
     public void update()
@@ -76,144 +79,61 @@ public class MaquinaManager : Consumidor<InformacoesColetado>,
         botoesPowerUp.endDrag(monoBehaviour);
     }
 
-    private void processarInformacoesDoColetado(InformacoesColetado infoColetado)
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {        
-        displayDeColetados.adicionarSpriteAoDisplay(infoColetado.sprite, infoColetado.resultCombinacao);
-        displayDeScores.mostrarScore(infoColetado.score, infoColetado.resultCombinacao);
+        displayDeColetados.adicionarSpriteAoDisplay(evento.sprite, evento.resultCombinacao);
+        displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
     }
 
-    private void processarInicioPowerUp(PowerUpInfo pupInfo)
+    void AcaoPowerUpInicio.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         arcoIrisEfeito.ligarEfeitoArcoIris();
-        displayDeScores.iniciarContagemRegressiva(pupInfo.duracaoTempo);        
-    }
+        displayTimer.pause();
+        displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);                
+    }       
 
-    private void processarPreFimDePowerUp()
+    void AcaoPowerUpFim.ConsumidorEvento.consumirEvento(PowerUpInfoFim evento)
     {
-        displayDeScores.piscarAsteriscos();
-    }
-
-    private void processarFimDePowerUp()
-    {
-        displayDeScores.finalizarContagemRegressiva();
-        botoesPowerUp.reclicarProxPowerUp();        
-        arcoIrisEfeito.desligarEfeitoArcoIris();
-    }
-
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> INICIO
-    public void consumir(InformacoesColetado infoColetado)
-    {
-        processarInformacoesDoColetado(infoColetado);
-    }
-    //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTO<INFORMACOESCOLETADO> FIM
-
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO
-    public void consumir(PowerUpInfo evento)
-    {
-        processarInicioPowerUp(evento);
-    }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<PowerUpInfo> INICIO       
-
-    //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> INICIO
-    public void consumir(PowerUpInfoFim pupFim)
-    {
-        //Debug.Log("Maquina consumindo prefim " + powerUpInfoFim.preFinalizar);
-        //Debug.Log("Maquina consumindo fim " + powerUpInfoFim.finalizar);
-        if (pupFim.preFinalizar)
-        {     
-            processarPreFimDePowerUp();
+        if (evento.preFinalizar)
+        {
+            displayDeScores.piscarAsteriscos();
         }
-        else if (pupFim.finalizar)
-        {         
-            processarFimDePowerUp();
+        else if (evento.finalizar)
+        {
+            displayDeScores.finalizarContagemRegressiva();
+            displayTimer.continuar();
+            botoesPowerUp.reclicarProxPowerUp();
+            arcoIrisEfeito.desligarEfeito();
+        }        
+    }
+
+    void ProdutorConsumidoresDeEvento<TempoEsgotado>.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    {
+        if (evento.restart)
+        {
+            botoesPowerUp.desativarPowerUp();
+            displayTimer.pause();
+            arcoIrisEfeito.ligarEfeitoRed();
         }
     }
-    //IMPLEMENTACAO CONSUMIDORDEEVENTO<INT> FIM
 
-    //CONSUMIDORES DE EVENTOS INICIO
-    public Consumidor<DirecaoDaGarra> getJoystickHasteConsumidorDirecao()
+    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
     {
-        return joystick.getConsumidorDeEventoDeDirecao();
-    }    
-
-    public Consumidor<InformacoesColetado> getConsumidorInfoColetado()
-    {
-        return this;
+        if (!evento.isGameOver)
+        {
+            botoesPowerUp.reativarPowerUp();
+            arcoIrisEfeito.desligarEfeito();
+            displayTimer.continuar();
+        }
     }
 
-    public Consumidor<PowerUpInfo> getConsumidorDePowerUpInfo()
+    void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)
     {
-        return this;
+        ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
     }
 
-    public Consumidor<PowerUpInfoFim> getConsumidorDePowerUpFim()
+    ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEventoColetado()
     {
-        return this;
-    }    
-    //CONSUMIDORES DE EVENTOS FIM
-
-    public ProdutorDeEvento<bool> produtorDeTempoAcabado()
-    {
-        return displayTimer.produtorDeEventoTempoEsgotado;
-    }
-
-    private void colorindoPartesMaquina(Dictionary<string, string> dicionarioCores)
-    {        
-        String corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_CIMA];
-        partesDto.PlacaCima.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.BASE_PARTE];
-        Color cor = Utils.getCorByHex(corHex);
-        partesDto.BaseParteCima.color = cor;
-        partesDto.BaseParteBaixo.color = cor;
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.BASE_CHAO];
-        partesDto.BaseChao.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.BORDA_VIDRO];
-        partesDto.BordaVidro.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_FRONTAL];
-        partesDto.PlacaFrontal.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.BARRA];
-        partesDto.Barra.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.CHAO_DENTRO];
-        partesDto.ChaoDentro.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_SAIDA];
-        partesDto.PlacaDeSaida.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.TUBO];
-        Color corTubo = Utils.getCorByHex(corHex);
-        corTubo.a = 0.88f;
-        partesDto.Tubo.color = corTubo;        
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.VIGA_TRAS];
-        cor = Utils.getCorByHex(corHex);
-        partesDto.VigaTrasDireita.color = cor;
-        partesDto.VigaTrasEsquerda.color = cor;
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_FICHA];
-        partesDto.PlacaFicha.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_P_CIMA];
-        partesDto.PlacaParteCima.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.PLACA_P_BAIXO];
-        partesDto.PlacaParteBaixo.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.QUADRADO_MAIOR];
-        partesDto.QuadMaior.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.QUADRADO_MENOR];
-        partesDto.QuadMenor.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.FURO_CIMA];
-        partesDto.FuroCima.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioCores[ConstantesCoresMaquina.FURO_BAIXO];
-        partesDto.FuroBaixo.color = Utils.getCorByHex(corHex);
-    }
+        return ((AcaoTempoEsgotado.ProdutorEvento)displayTimer).getProdutorDeEventoColetado();
+    }   
 }

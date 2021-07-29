@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class AbstractPowerUpGo : Coletavel,
                                           GarraInteracaoComPowerUp
 {
+    private static float acrescimo;
     protected static PowerUpDto powerUpDto;
     protected static MonoBehaviour monoBehaviour;
 
@@ -66,11 +67,17 @@ public abstract class AbstractPowerUpGo : Coletavel,
     protected Collider2D getColetavelHit()
     {
         Vector3 posicaoTap = inputGame.getPosicaoTap();
+        posicaoTap += new Vector3(0, acrescimo, 0);
         posicaoTap.z = 0;
-
+        Debug.Log("Posicao tap " + posicaoTap);
         int layerMask = LayerMask.GetMask("Coletavel");
         RaycastHit2D raycastHit;
         raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
         return raycastHit.collider;
     }      
+
+    public static void addAcrescimo(float acrescimoArg)
+    {
+        acrescimo += acrescimoArg;
+    }
 }

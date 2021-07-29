@@ -1,161 +1,95 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplayTimer : ArcoIrisConjunto
-{    
-    private int segundosUnidadeAtual;
-    private int segundosDezenaAtual;
-    private int minutosUnidadeAtual;
-    private int minutosDezenaAtual;
-
+public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
+{  
     private float tempoInicial;
-    private bool blink;
-
-    private GlowEfeito glowEfeito;
-    private SpriteRenderer placaTimer;
-    private DisplayTimerDigito[] displayTimerDigito;
-    private DisplayTimerDigito2Pontos displayTimer2Pontos;
+    private bool isPausado;
+        
+    private ContadorTimer contadorTimer;    
+    private DisplayTimerGlow glowDisplay;    
+    private DisplayTimerDigitos digitos;
 
     private Coroutine coroutineBlink;
     private MonoBehaviour monoBehaviour;
 
-    private ContadorTimer contadorTimer;
-    public ProdutorDeEvento<bool> produtorDeEventoTempoEsgotado { get; private set; }
-
+    private ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado;
 
     public DisplayTimer(DisplayTimerDto displayDto, MonoBehaviour monoBehaviour)
-    {
-        placaTimer = displayDto.SprRendererPlaca;
-        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
-
-        displayTimerDigito = new DisplayTimerDigito[4];
-        displayTimerDigito[0] = new DisplayTimerDigito(displayDto.SingleDisplay[0]);
-        displayTimerDigito[1] = new DisplayTimerDigito(displayDto.SingleDisplay[1]);
-        displayTimerDigito[2] = new DisplayTimerDigito(displayDto.SingleDisplay[2]);
-        displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);        
+    {   
+        digitos = new DisplayTimerDigitos(displayDto);
         
-        produtorDeEventoTempoEsgotado = new ProdutorDeEvento<bool>();
-        glowEfeito = new GlowEfeito(displayDto.PlacaEfeito, new MaterialGlow(displayDto.MaterialEfeito));
+        produtorDeEventoTempoEsgotado = new ProdutorDeEvento<TempoEsgotado>();
+        glowDisplay = new DisplayTimerGlow(displayDto);
+        contadorTimer = new ContadorTimer();
         this.monoBehaviour = monoBehaviour;
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
     {
-        if (levelEscolhido.isTempoContagemNormal())
-        {
-            contadorTimer = new ContadorTimerPositivo();
-        }
-        else
-        {
-            contadorTimer = new ContadorTimerNegativo(levelEscolhido.getTempoContagem());
-        }
-
-        Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
-        string corTimerHex = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_TIMER];
-        string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquina.DIGITOS_TIMERS];
-
-        placaTimer.color = Utils.getCorByHex(corTimerHex);
-        
-        Color corDigito = Utils.getCorByHex(corDigitosHex);
-        displayTimerDigito[0].configuraradoPeloLevel(corDigito);
-        displayTimerDigito[1].configuraradoPeloLevel(corDigito);
-        displayTimerDigito[2].configuraradoPeloLevel(corDigito);
-        displayTimerDigito[3].configuraradoPeloLevel(corDigito);
+        contadorTimer.definirContador(levelEscolhido.getTempoContagem(), produtorDeEventoTempoEsgotado);        
+        digitos.passarCoresAosDisplayDigitos(levelEscolhido.getDicionarioDeCores());        
     }
 
     public void iniciarContagemTempo()
     {
-        contadorTimer.iniciarContagem();
+        contadorTimer.iniciarContagemTempo();
     }
 
     public void update()
     {    
-        if(Time.frameCount % 5 == 0)//Contabilizando tempo a cada 5frames
+        if(Time.frameCount % 2 == 0 && !isPausado)//Contabilizando tempo a cada 5frames
         {
             atualizarTempo();
             if (contadorTimer.isTimeOver())
             {
-                produtorDeEventoTempoEsgotado.produziuEvento(true);
+                produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(false));
                 monoBehaviour.StopCoroutine(coroutineBlink);
+                coroutineBlink = null;
             }
         }
     }
 
-    private void atualizarTempo()
+    public void pause()
     {
-        passarTempoAosScores();
-        if(contadorTimer.isNearTimeOver() && !blink)
-        {
-            blink = true;
-            coroutineBlink = monoBehaviour.StartCoroutine(blinkarTimer());
-            glowEfeito.ligarGlowFail();
-        }
+        isPausado = true;
+        contadorTimer.pause();
     }
 
-    private void passarTempoAosScores()
+    public void continuar()
     {
-        TimeSpan timeSpan = contadorTimer.processarContagem();
+        isPausado = false;
+        contadorTimer.continuar();
+    }
 
-        double segundos = timeSpan.Seconds;
-        int dezenaSegundos = (int)(segundos / 10);
-        int unidadeSegundos = (int)(segundos - (dezenaSegundos * 10));
+    public ArcoIrisConjunto getDisplayTimerGlow()
+    {
+        return glowDisplay;
+    }    
 
-        if (unidadeSegundos == segundosUnidadeAtual) return;
-        segundosUnidadeAtual = unidadeSegundos;
-        displayTimerDigito[3].mostrarDigito(unidadeSegundos);
-
-        if (dezenaSegundos == segundosDezenaAtual) return;
-        segundosDezenaAtual = dezenaSegundos;
-        displayTimerDigito[2].mostrarDigito(dezenaSegundos);
-
-        double minutos = timeSpan.Minutes;
-        int dezenaMinutos = (int) (minutos / 10);
-        int unidadeMinutos = (int) (minutos - (dezenaMinutos * 10));
-
-        if (unidadeMinutos == minutosUnidadeAtual) return;
-        minutosUnidadeAtual = unidadeMinutos;
-        displayTimerDigito[1].mostrarDigito(unidadeMinutos);
-
-        if (dezenaMinutos == minutosDezenaAtual) return;
-        minutosDezenaAtual = dezenaMinutos;
-        displayTimerDigito[0].mostrarDigito(dezenaMinutos);
+    private void atualizarTempo()
+    {
+        contadorTimer.passarTempoAosScores(digitos);
+        if(contadorTimer.isNearTimeOver() && coroutineBlink == null)
+        {            
+            coroutineBlink = monoBehaviour.StartCoroutine(blinkarTimer());         
+        }
     }
 
     private IEnumerator blinkarTimer()
     {
         while (contadorTimer.isNearTimeOver())
         {
-            glowEfeito.ligarGlowFail();
-            yield return new WaitForSeconds(0.5f);
-            glowEfeito.desligarGlow();
-            yield return new WaitForSeconds(0.5f);
+            digitos.blinkar(true);
+            yield return new WaitForSeconds(0.25f);
+            digitos.blinkar(false);
+            yield return new WaitForSeconds(0.25f);
         }
         yield return null;
     }
 
-    public void ligar()
+    ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEventoColetado()
     {
-        if (!blink)
-        {
-            glowEfeito.ligarGlowSucesso();
-        }
-    }
-
-    public void desligar()
-    {
-        if (!blink)
-        {
-            glowEfeito.desligarGlow();
-        }
-    }
-
-    public void passarCor(Color cor)
-    {
-        if (!blink)
-        {
-            glowEfeito.getMaterialGlow().setCorNoMaterial(cor);
-        }
+        return produtorDeEventoTempoEsgotado;
     }
 }

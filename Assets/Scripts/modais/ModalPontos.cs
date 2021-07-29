@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class ModalPontos : Consumidor<InformacoesColetado>,
-                           Consumidor<bool>
+public class ModalPontos : AcaoColetado.ConsumidorEvento,
+                           AcaoTempoEsgotado.ConsumidorEvento,
+                           AcaoBoardElevadoFim.ConsumidorEvento
 {
     private string scoreAtual;
     private bool mostrandoModal;
@@ -35,18 +36,30 @@ public class ModalPontos : Consumidor<InformacoesColetado>,
         modalPontosDto.TextoNivel.text = levelName;
     }
 
-    public void consumir(InformacoesColetado infoColetado)
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
-        if (infoColetado.fimColetados)
+        if (evento.fimColetados)
         {
             mostrarModalResultado();
         }
-        scoreAtual = infoColetado.score.ToString();
+        scoreAtual = evento.score.ToString();
     }
 
-    public void consumir(bool evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {
-        mostrarModalResultado();
+        if (evento.isTimeOver())
+        {
+            mostrarModalResultado();
+        }
+    }
+
+    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
+    {
+        if (evento.isGameOver)
+        {
+            Debug.Log("mostrar modal end");
+            mostrarModalResultado();
+        }
     }
 
     private void mostrarModalResultado()
@@ -63,15 +76,5 @@ public class ModalPontos : Consumidor<InformacoesColetado>,
         yield return new WaitForSeconds(0.5f);
         ligar();
         setPontuacao();
-    }
-
-    public Consumidor<InformacoesColetado> getConsumidorDeInformacoesColetado()
-    {
-        return this;
-    }
-
-    internal Consumidor<bool> getConsumidorDeTempoEsgotado()
-    {
-        return this;
-    }   
+    }     
 }

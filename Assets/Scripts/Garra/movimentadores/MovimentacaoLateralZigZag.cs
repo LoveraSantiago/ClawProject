@@ -33,9 +33,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     public override void preInicio()
     {        
         configurarAngulosParaMax();
-        dispararEventoDirecao(direcao);
-
-        colocarNaAlturaInicial();        
+        dispararEventoDirecao(direcao);        
 
         pincas.acionarTrigger();
         moverHorizontalmenteFreeze(direcao);        

@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1139847813599578350}
   - component: {fileID: 5094742231976607924}
   - component: {fileID: 1585168848629503406}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: centroDeAtracao
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoParado : MovimentacaoDaGarraPowerUp
+public class MovimentacaoParado : MovimentacaoDaGarra
 {
     //TODO agrupar em um unico lugar os angulos desejados
     private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;

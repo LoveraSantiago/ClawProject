@@ -21,11 +21,11 @@ public class MainGameScene : MonoBehaviour,
     [Space(5)]
     [SerializeField] private ModalPontosDto modalPontosDto;
 
-    private GarraManager     garraManager;
-    private ColetavelManager coletaveisManager;
-    private MaquinaManager   maquinaManager;
-    private PowerUpManager   powerUpManager;
-    private ModalPontos      modalPontos;
+    private ModalPontos       modalPontos;
+    private GarraManager      garraManager;
+    private MaquinaManager    maquinaManager;
+    private PowerUpManager    powerUpManager;
+    private ColetaveisManager coletaveisManager;
 
     private InputGame inputGame;
     private EfeitoColetado   efeitoColetado;
@@ -55,7 +55,7 @@ public class MainGameScene : MonoBehaviour,
     {
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
         garraManager      = new GarraManager(garraDto, inputGame);
-        coletaveisManager = new ColetavelManager(coletaveisDto, this);
+        coletaveisManager = new ColetaveisManager(coletaveisDto, this);
         maquinaManager    = new MaquinaManager(maquinaDto, garraDto.VelocMovHorizontal, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);
@@ -75,40 +75,49 @@ public class MainGameScene : MonoBehaviour,
     
     private void configurandoAcoes()
     {
-        new AcaoEventoColetado()
-            .configurarProdutor(coletaveisManager.produtorDeInformacoesDoColetado)            
-            .adicionarConsumidor(maquinaManager.getConsumidorInfoColetado())
-            .adicionarConsumidor(efeitoColetado.getEfeitoConsumidorInfoColetado())
-            .adicionarConsumidor(modalPontos.getConsumidorDeInformacoesColetado())
-            .adicionarConsumidor(garraManager.getConsumidorInformacoesColetado());//TODO ver mudanca de ordem
+        new AcaoColetado()
+            .configurarProdutor(coletaveisManager)            
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(efeitoColetado)
+            .adicionarConsumidor(modalPontos)
+            .adicionarConsumidor(garraManager);//TODO ver mudanca de ordem
 
         new AcaoImantadoPelaGarra()
-            .configurarProdutor(garraManager.getProdutorDeEventoTocadoPelaGarra())
-            .adicionarConsumidor(coletaveisManager.getConsumidorDeColetavelParaImantar());
+            .configurarProdutor(garraManager)
+            .adicionarConsumidor(coletaveisManager);
 
         new AcaoSubidaDaGarra()
-            .configurarProdutor(garraManager.getProdutorDeEventoSubidaDaGarra())
-            .adicionarConsumidor(coletaveisManager.getConsumidorDeContagemSubidaDaGarra());
+            .configurarProdutor(garraManager)
+            .adicionarConsumidor(coletaveisManager);
         
         new AcaoSincroniaComDirecaoDaGarra()
-            .configurarProdutor(garraManager.getDisparadorDeEventoDeDirecao())
-            .adicionarConsumidor(maquinaManager.getJoystickHasteConsumidorDirecao());
+            .configurarProdutor(garraManager)
+            .adicionarConsumidor(maquinaManager);
 
         new AcaoPowerUpInicio()
-            .configurarProdutor(powerUpManager.produtorDeEventoPowerUp)
-            .adicionarConsumidor(garraManager.getConsumidorDePowerUpInfo())
-            .adicionarConsumidor(maquinaManager.getConsumidorDePowerUpInfo())
-            .adicionarConsumidor(coletaveisManager.getConsumidorDePowerUpInfo());
+            .configurarProdutor(powerUpManager)
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(coletaveisManager);
 
         new AcaoPowerUpFim()
-            .configurarProdutor(powerUpManager.produtorDeEventoFinalizacao)
-            .adicionarConsumidor(garraManager.getConsumidorDePowerUpFim())
-            .adicionarConsumidor(maquinaManager.getConsumidorDePowerUpFim())
-            .adicionarConsumidor(coletaveisManager.getConsumidorDePowerUpFim());
+            .configurarProdutor(powerUpManager)
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(coletaveisManager);
 
         new AcaoTempoEsgotado()
-            .configurarProdutor(maquinaManager.produtorDeTempoAcabado())
-            .adicionarConsumidor(modalPontos.getConsumidorDeTempoEsgotado());
+            .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(modalPontos)
+            .adicionarConsumidor(coletaveisManager);
+
+        new AcaoBoardElevadoFim()
+            .configurarProdutor(coletaveisManager)
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(modalPontos);
     }
 
     private void configurandoEventos()

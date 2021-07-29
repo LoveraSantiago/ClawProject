@@ -1,26 +1,20 @@
 using System;
 using UnityEngine;
 
-public class ContadorTimerPositivo : ContadorTimer
-{
-    private float tempoInicial;
+public class ContadorTimerPositivo : TipoContadorTimer
+{         
 
-    public void iniciarContagem()
-    {
-        tempoInicial = Time.time;
-    }
-
-    public bool isNearTimeOver()
+    public override bool isNearTimeOver()
     {
         return false;
     }
 
-    public bool isTimeOver()
+    public override bool isTimeOver()
     {
         return false;
     }
 
-    public TimeSpan processarContagem()
+    public override TimeSpan processarContagem()
     {
         float tempoAtual = Time.time - tempoInicial;        
         return TimeSpan.FromSeconds(tempoAtual);

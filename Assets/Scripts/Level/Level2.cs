@@ -22,7 +22,7 @@ public class Level2 : AbstractLevel
     {
         return new int[,] {
             { 10, 10, 10, 11, 11, 11, 12 },
-            { 14, 14, 14, 13, 13, 13, 1 },
+            { 14, 14, 14, 13, 13, 13, 0 },
             { 1, 1, 1, 1, 1, 1, 1 },
             { 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0 },
@@ -41,9 +41,9 @@ public class Level2 : AbstractLevel
         return ColetavelEntidade.FAMILIA.FRUTAS;
     }
 
-    public override string getTempoContagem()
+    public override TipoContagemTempoDto getTempoContagem()
     {
-        return "01:31";
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.REGRESSIVA, "02:01");        
     }
 
     public override PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina()
@@ -83,7 +83,7 @@ public class Level2 : AbstractLevel
         dicionario.Add("barra", "#FF420E");
         dicionario.Add("chao-dentro", "#FF420E");
         dicionario.Add("tubo", "#F98866");
-        dicionario.Add("viga-tras", "#5BB327");
+        dicionario.Add("viga-tras", "#52A123");
         dicionario.Add("btnPowerUp1", "#FAAB93");
         dicionario.Add("parte-dentro1", "#CB9888");
         dicionario.Add("contorno1", "#F37476");
@@ -124,9 +124,7 @@ public class Level2 : AbstractLevel
         dicionario.Add("leds3", "#268747");
         dicionario.Add("cabo-da-garra", "#CB9888");
 
-
         return dicionario;
-
     }
 }
 

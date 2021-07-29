@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class DisplayDeColetadoDto 
 {
-    [SerializeField] float inicialDelay;
+    [SerializeField] float inicialDelay;//TODO tentar tirar delay a partir da evolucao de efeito particulas
     [SerializeField] float fimDelay;//delay do reset de um display coletado para o outro
     [SerializeField] float tempoReset;//Tempo para disparar o reset dos 3 coletaveis
     [SerializeField] float velocImg;

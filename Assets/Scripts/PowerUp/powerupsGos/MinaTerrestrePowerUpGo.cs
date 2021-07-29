@@ -76,7 +76,7 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
     public override void colocarNaPosicao(Vector3 posicao) { }
     public override void ligarGravidadeZero() { }
     public override void ligarGravidadeHum() { }
-    public override void fixarVerticalmente() { }
+    public override void fixarEixoX() { }
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {

@@ -1,35 +1,32 @@
 using System;
-using System.Globalization;
 using UnityEngine;
 
-public class ContadorTimerNegativo : ContadorTimer
+public class ContadorTimerNegativo : TipoContadorTimer
 {
-    private double tempoRegressivoInicial;
-    private double tempoInicial;
+    private double tempoRegressivoInicial;    
     private double tempoResult;
 
     public ContadorTimerNegativo(string tempo)
     {
-        TimeSpan intervalo = DateTime.ParseExact(tempo, "mm:ss", CultureInfo.InvariantCulture).TimeOfDay;
-        tempoRegressivoInicial = intervalo.TotalSeconds;
-    }
+        setTempoRegressivoInicial(tempo);
+    }    
 
-    public void iniciarContagem()
+    protected void setTempoRegressivoInicial(string tempo)
     {
-        tempoInicial = Time.time;
+        tempoRegressivoInicial = parseTimeFromString(tempo);
     }
-
-    public bool isTimeOver()
+        
+    public override bool isTimeOver()
     {
         return tempoResult <= 0;
     }
 
-    public bool isNearTimeOver()
+    public override bool isNearTimeOver()
     {
         return tempoResult <= 15;
     }
 
-    public TimeSpan processarContagem()
+    public override TimeSpan processarContagem()
     {
         double tempoAtual = Time.time - tempoInicial;
         tempoResult = tempoRegressivoInicial - tempoAtual;

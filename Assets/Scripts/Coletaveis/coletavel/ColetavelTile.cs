@@ -1,0 +1,73 @@
+using UnityEngine;
+
+public class ColetavelTile : Coletavel
+{
+    private static CircleCollider2D referenciaColliderColetado;
+
+    private bool miraSelecionada;
+
+    private Animator animator;    
+    private Material materialDefault;
+
+    public ColetavelTile()
+        : base()
+    {
+        animator = goColetavel.transform.Find("animacao").GetComponent<Animator>();        
+        materialDefault = spriteRenderer.material;        
+    }
+
+    public void ligarAnimacaoMira()
+    {
+        animator.Play(context.MIRAR_ON);
+        miraSelecionada = false;
+    }
+
+    public void ligarAnimacaoMiraSelecionado()
+    {
+        animator.Play(context.MIRAR_SELECTED);
+        miraSelecionada = true;
+    }
+
+    public void desligarAnimacao()
+    {
+        animator.Play(context.IDLE);
+        miraSelecionada = false;
+    }
+
+    public bool isMiraSelecionada()
+    {
+        return miraSelecionada;
+    }
+
+    public void addMaterial(Material material)
+    {
+        spriteRenderer.material = material;
+    }
+
+    public void clearMaterial()
+    {
+        addMaterial(materialDefault);
+    }
+
+    public void colocarNoLayerElevador()
+    {
+        goColetavel.layer = 16;
+    }
+
+    public void colocarNoLayerNormal()
+    {
+        goColetavel.layer = 7;
+    }
+
+    public bool isTouchingCentroDaGarra()
+    {
+        LayerMask mask = LayerMask.GetMask("GarraCentro");
+        Collider2D collider2d = Physics2D.OverlapCircle(rigidbody.position, 0.3f, mask);        
+        return referenciaColliderColetado == collider2d;
+    }
+
+    public static void configReferenciaColliderColetado(CircleCollider2D referenciaColliderColetadoArg)
+    {
+        referenciaColliderColetado = referenciaColliderColetadoArg;
+    }
+}

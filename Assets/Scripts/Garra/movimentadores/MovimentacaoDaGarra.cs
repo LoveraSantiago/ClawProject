@@ -4,16 +4,14 @@ public abstract class MovimentacaoDaGarra
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
 
+    protected static Vector2 posInicial;
     protected static PincaDaGarra pincas;
     protected static GarraDto garraDto;
-    protected static InputGame inputGame;
     protected static AnimacaoGarra animacao;
 
-    protected static Vector2 posInicial;
+    public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }        
 
-    public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }
-    public static ProdutorDeEvento<string> produtorEventoGarraAcertou { get; private set; }
-    public static ProdutorDeEvento<int> produtorDeEventoSubidaDaGarra { get; private set; }
+    protected static InputGame inputGame;
 
     public virtual void preInicio() { }
     public virtual void update() { }
@@ -139,10 +137,7 @@ public abstract class MovimentacaoDaGarra
         garraDto = garraDtoArg;
         pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);        
         inputGame = inputGameArg;
-
-        produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
-        produtorEventoGarraAcertou = new ProdutorDeEvento<string>();
-        produtorDeEventoSubidaDaGarra = new ProdutorDeEvento<int>();
+        produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();                
         animacao = new AnimacaoGarra(garraDto.Animator);
     }
 }
