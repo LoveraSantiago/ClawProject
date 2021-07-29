@@ -1,11 +1,11 @@
 public class BoardAcaoFim 
 {
-    public bool isGameOVer { get; private set; }
+    public bool isGameOver { get; private set; }
     public float acrescimo { get; private set; }
 
     public BoardAcaoFim(bool isGameOver, float acrescimo)
     {
-        this.isGameOVer = isGameOVer;
+        this.isGameOver = isGameOver;
         this.acrescimo = acrescimo;
     }
 }

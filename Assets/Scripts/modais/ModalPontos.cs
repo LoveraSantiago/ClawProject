@@ -55,8 +55,9 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
     {
-        if (evento.isGameOVer)
+        if (evento.isGameOver)
         {
+            Debug.Log("mostrar modal end");
             mostrarModalResultado();
         }
     }
