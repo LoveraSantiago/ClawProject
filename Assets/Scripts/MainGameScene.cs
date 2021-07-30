@@ -94,7 +94,7 @@ public class MainGameScene : MonoBehaviour,
             .configurarProdutor(garraManager)
             .adicionarConsumidor(maquinaManager);
 
-        new AcaoPowerUpInicio()
+        new AcaoPowerUp()
             .configurarProdutor(powerUpManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)

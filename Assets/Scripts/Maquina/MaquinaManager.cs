@@ -3,7 +3,7 @@ using UnityEngine;
 public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,    
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
-                              AcaoPowerUpInicio.ConsumidorEvento,
+                              AcaoPowerUp.ConsumidorEvento,
                               AcaoPowerUpFim.ConsumidorEvento,
                               AcaoTempoEsgotado.ConsumidorEvento,
                               AcaoBoardElevadoFim.ConsumidorEvento
@@ -89,7 +89,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
     }
 
-    void AcaoPowerUpInicio.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUp.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         arcoIrisEfeito.ligarEfeitoArcoIris();
         displayTimer.pause();

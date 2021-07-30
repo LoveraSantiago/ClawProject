@@ -4,7 +4,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoSubidaDaGarra.ProdutorEvento,
                             AcaoSincroniaComDirecaoDaGarra.ProdutorEvento,
                             AcaoColetado.ConsumidorEvento,
-                            AcaoPowerUpInicio.ConsumidorEvento,
+                            AcaoPowerUp.ConsumidorEvento,
                             AcaoPowerUpFim.ConsumidorEvento,
                             AcaoTempoEsgotado.ConsumidorEvento,
                             AcaoBoardElevadoFim.ConsumidorEvento,
@@ -64,7 +64,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         gerDeMovAtual.garraColidiuCom(other);
     }  
 
-    void AcaoPowerUpInicio.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUp.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {        
         gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.garraInteracaoPowerUp, evento.duracaoTempo);
         gerDeMovPowerUp.iniciarMovimentacoes();
