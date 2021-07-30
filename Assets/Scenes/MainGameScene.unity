@@ -5891,6 +5891,12 @@ MonoBehaviour:
         goImagem: {fileID: 1420270364}
         sprImagem: {fileID: 1420270366}
         goExclamacao: {fileID: 293416723}
+    vigasDto:
+      vigaTrasEsquerda: {fileID: 946233168}
+      vigaTrasDireita: {fileID: 108455522}
+      vigaTrasEsquerdaEfeito: {fileID: 1780505043}
+      vigaTrasDireitaEfeito: {fileID: 6406990385049082675}
+      materialVigas: {fileID: 2100000, guid: a65f97e21115d7541946c69a86748e60, type: 2}
     partesDto:
       placaCima: {fileID: 702916761}
       baseParteCima: {fileID: 243475117}
@@ -5903,6 +5909,9 @@ MonoBehaviour:
       tubo: {fileID: 1914492973}
       vigaTrasEsquerda: {fileID: 946233168}
       vigaTrasDireita: {fileID: 108455522}
+      vigaTrasEsquerdaEfeito: {fileID: 0}
+      vigaTrasDireitaEfeito: {fileID: 0}
+      materialVigas: {fileID: 0}
       placaSaida: {fileID: 201901775}
       placaFicha: {fileID: 1266331362}
       placaParteCima: {fileID: 2086796815}
@@ -23640,6 +23649,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1322663748585022464, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1780505043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1780505043, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1783677019 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6833448712210773718, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -24172,6 +24186,11 @@ GameObject:
 --- !u!1 &6406990385049082674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6164130766996793517, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6406990385049082675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1063684333982160861, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &6406990385049082677 stripped
