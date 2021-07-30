@@ -21,9 +21,9 @@ public class PowerUpManager : PowerUpAcionamento,
     {
         GarraInteracaoComPowerUp interacaoComPowerUp = powerUp.getPowerUpGo();
 
-        PowerUpInfo powerUpInfo = new PowerUpInfo();
-        powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
-        powerUpInfo.configurarObjetoInteracaoComGarra(interacaoComPowerUp);
+        PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.INICIO)
+            .configurarDuracaoTempo(powerUp.duracao)
+            .configurarObjetoInteracaoComGarra(interacaoComPowerUp);
 
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
@@ -33,9 +33,9 @@ public class PowerUpManager : PowerUpAcionamento,
         AbstractPowerUpGo interacaoComPowerUp = powerUp.getPowerUpGo();
         interacaoComPowerUp.iniciarNaPosicao(posicaoAtual);
 
-        PowerUpInfo powerUpInfo = new PowerUpInfo();
-        powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
-        powerUpInfo.configurarObjetoInteracaoComGarra(interacaoComPowerUp);
+        PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.INICIO)
+            .configurarDuracaoTempo(powerUp.duracao)
+            .configurarObjetoInteracaoComGarra(interacaoComPowerUp);
 
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }   

@@ -91,9 +91,12 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     void AcaoPowerUp.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        arcoIrisEfeito.ligarEfeitoArcoIris();
-        displayTimer.pause();
-        displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);                
+        if (evento.isInicio())
+        {
+            arcoIrisEfeito.ligarEfeitoArcoIris();
+            displayTimer.pause();
+            displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);
+        }
     }       
 
     void AcaoPowerUpFim.ConsumidorEvento.consumirEvento(PowerUpInfoFim evento)

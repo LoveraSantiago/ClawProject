@@ -1,15 +1,30 @@
 public class PowerUpInfo
 {
+    public enum ESTADO { INICIO, PREFINALIZAR, FINALIZAR}
+
+    public ESTADO estadoAtual;
     public int duracaoTempo{ get; private set; }
     public GarraInteracaoComPowerUp garraInteracaoPowerUp { get; private set; }
 
-    public void configurarDuracaoTempo(int duracao)
+    public PowerUpInfo(ESTADO estado)
     {
-        duracaoTempo = duracao;
+        estadoAtual = estado;
     }
 
-    public void configurarObjetoInteracaoComGarra(GarraInteracaoComPowerUp garraInteracaoPowerUp)
+    public PowerUpInfo configurarDuracaoTempo(int duracao)
+    {
+        duracaoTempo = duracao;
+        return this;
+    }
+
+    public PowerUpInfo configurarObjetoInteracaoComGarra(GarraInteracaoComPowerUp garraInteracaoPowerUp)
     {
         this.garraInteracaoPowerUp = garraInteracaoPowerUp;
+        return this;
+    }
+
+    public bool isInicio()
+    {
+        return estadoAtual == ESTADO.INICIO;
     }
 }

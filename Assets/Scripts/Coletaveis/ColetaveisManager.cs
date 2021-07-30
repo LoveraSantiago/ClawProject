@@ -122,9 +122,12 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     }
 
     void AcaoPowerUp.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
-    {        
-        powerUpEmAcao = true;
-        processarDesimantado();
+    {
+        if (evento.isInicio())
+        {
+            powerUpEmAcao = true;
+            processarDesimantado();
+        }
     }        
 
     void AcaoPowerUpFim.ConsumidorEvento.consumirEvento(PowerUpInfoFim evento)

@@ -65,10 +65,13 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     }  
 
     void AcaoPowerUp.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
-    {        
-        gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.garraInteracaoPowerUp, evento.duracaoTempo);
-        gerDeMovPowerUp.iniciarMovimentacoes();
-        gerDeMovAtual = gerDeMovPowerUp;
+    {
+        if (evento.isInicio())
+        {
+            gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.garraInteracaoPowerUp, evento.duracaoTempo);
+            gerDeMovPowerUp.iniciarMovimentacoes();
+            gerDeMovAtual = gerDeMovPowerUp;
+        }
     }
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
