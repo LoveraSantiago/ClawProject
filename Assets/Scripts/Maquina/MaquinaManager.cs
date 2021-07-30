@@ -13,6 +13,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     private DisplaysDeColetados displayDeColetados;
     private DisplayDeScores displayDeScores;
     private DisplayTimer displayTimer;
+    private VigasTras vigasTras;
 
     private Joystick joystick;
     private BotoesPowerUp botoesPowerUp;
@@ -29,11 +30,13 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto, monoBehaviour);
         joystick           = new Joystick(maquinaDto.JoystickDto, velocidadeJoystick);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
+        vigasTras          = new VigasTras(maquinaDto.VigasDto);
 
         arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)
             .addArcoIrisConjunto(displayDeColetados)
             .addArcoIrisConjunto(displayDeScores)
-            .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow());        
+            .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow())
+            .addArcoIrisConjunto(vigasTras);        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
@@ -43,6 +46,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         displayDeColetados.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        vigasTras.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
 
         new ColoridorMaquina()
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());

@@ -17,10 +17,11 @@ public class MaquinaDto
     [Space(5)]
     [SerializeField] private BotoesPowerUpDto botoesPowerUpDto;
     [Space(5)]
+    [SerializeField] private VigasDto vigasDto;
+    [Space(5)]
     [SerializeField] private PartesMaquinaDto partesDto;
 
     public Transform ReferenciaChao { get { return referenciaChao; } }
-
     public JoystickDto JoystickDto { get { return joystickDto; } }    
 
     public DisplayDeColetadoDto DisplayDeColetadoDto { get { return displayDeColetadoDto; } }
@@ -28,6 +29,6 @@ public class MaquinaDto
     public DisplayTimerDto DisplayTimerDto { get { return displayTimerDto; } }
     
     public BotoesPowerUpDto BotoesPowerUpDto { get { return botoesPowerUpDto; } }
-
+    public VigasDto VigasDto { get { return vigasDto; } }
     public PartesMaquinaDto PartesDto { get { return partesDto; } }
 }
