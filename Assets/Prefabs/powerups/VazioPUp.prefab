@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4127936681606313064}
   m_Layer: 14
-  m_Name: TeleportePUp
+  m_Name: VazioPUp
   m_TagString: Laranja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

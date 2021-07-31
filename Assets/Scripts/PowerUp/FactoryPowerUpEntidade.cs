@@ -100,7 +100,7 @@ public class FactoryPowerUpEntidade
                 .configNomes(PowerUpEntidade.NAME.ROLLBACK, "rollback-botao")
                 .configDuracao(9)
                 .configArea()
-                .configSupplierDePowerUpGo(null)
+                .configSupplierDePowerUpGo(RollbackPowerUpGo.getFornecedor())
                 .configIsClicavel(true);
         }
         return rollback;

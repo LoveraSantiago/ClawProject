@@ -15,7 +15,7 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
     private Coroutine coroutine;
 
     public TeleportePowerUpGo() 
-        : base(powerUpDto.TeleportePUp, "teleporte")
+        : base(powerUpDto.VazioPUp, "teleporte")
     {
         this.matIn = powerUpDto.MatTeleporteIn;
         this.matOut = powerUpDto.MatTeleporteOut;
