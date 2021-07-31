@@ -98,13 +98,7 @@ public class MainGameScene : MonoBehaviour,
             .configurarProdutor(powerUpManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(coletaveisManager);
-
-        new AcaoPowerUpFim()
-            .configurarProdutor(powerUpManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(coletaveisManager);
+            .adicionarConsumidor(coletaveisManager);       
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)

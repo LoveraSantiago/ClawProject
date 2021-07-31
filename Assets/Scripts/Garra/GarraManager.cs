@@ -4,8 +4,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoSubidaDaGarra.ProdutorEvento,
                             AcaoSincroniaComDirecaoDaGarra.ProdutorEvento,
                             AcaoColetado.ConsumidorEvento,
-                            AcaoPowerUp.ConsumidorEvento,
-                            AcaoPowerUpFim.ConsumidorEvento,
+                            AcaoPowerUp.ConsumidorEvento,                            
                             AcaoTempoEsgotado.ConsumidorEvento,
                             AcaoBoardElevadoFim.ConsumidorEvento,
                             ConsumidorDeEventoTrigger
@@ -72,6 +71,12 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
             gerDeMovPowerUp.iniciarMovimentacoes();
             gerDeMovAtual = gerDeMovPowerUp;
         }
+        else if (evento.isFinalizar())
+        {
+            gerDeMovNormal.trocarParaAcaoNormal();
+            gerDeMovAtual = gerDeMovNormal;
+            gerDeMovPowerUp.finalizarPowerUp();
+        }
     }
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
@@ -85,17 +90,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         gerDeMovAtual.garraComemorar();
-    }    
-
-    void AcaoPowerUpFim.ConsumidorEvento.consumirEvento(PowerUpInfoFim evento)
-    {
-        if (evento.finalizar)
-        {
-            gerDeMovNormal.trocarParaAcaoNormal();
-            gerDeMovAtual = gerDeMovNormal;
-            gerDeMovPowerUp.finalizarPowerUp();
-        }
-    }
+    }        
 
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {

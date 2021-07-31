@@ -5,8 +5,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoBoardElevadoFim.ProdutorEvento,
                                 AcaoImantadoPelaGarra.ConsumidorEvento,
                                 AcaoSubidaDaGarra.ConsumidorEvento,                                
-                                AcaoPowerUp.ConsumidorEvento,
-                                AcaoPowerUpFim.ConsumidorEvento,
+                                AcaoPowerUp.ConsumidorEvento,                                
                                 AcaoTempoEsgotado.ConsumidorEvento
 {
     private bool powerUpEmAcao;
@@ -128,19 +127,15 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
             powerUpEmAcao = true;
             processarDesimantado();
         }
-    }        
-
-    void AcaoPowerUpFim.ConsumidorEvento.consumirEvento(PowerUpInfoFim evento)
-    {     
-        if (evento.preFinalizar && evento.hasColetavel)
-        {
-            processarColetado(evento.coletavelTile.getGoColetavel());
-        }
-        else if (evento.finalizar)
+        else if (evento.isFinalizar())
         {
             powerUpEmAcao = false;
         }
-    }
+        else if (evento.isPreFinalizar() && evento.hasColetavel())
+        {
+            processarColetado(evento.coletavelTile.getGoColetavel());
+        }
+    }            
     
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {

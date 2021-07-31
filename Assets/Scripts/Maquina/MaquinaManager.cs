@@ -3,8 +3,7 @@ using UnityEngine;
 public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,    
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
-                              AcaoPowerUp.ConsumidorEvento,
-                              AcaoPowerUpFim.ConsumidorEvento,
+                              AcaoPowerUp.ConsumidorEvento,                              
                               AcaoTempoEsgotado.ConsumidorEvento,
                               AcaoBoardElevadoFim.ConsumidorEvento
 {    
@@ -97,22 +96,18 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             displayTimer.pause();
             displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);
         }
-    }       
-
-    void AcaoPowerUpFim.ConsumidorEvento.consumirEvento(PowerUpInfoFim evento)
-    {
-        if (evento.preFinalizar)
+        else if (evento.isPreFinalizar())
         {
             displayDeScores.piscarAsteriscos();
         }
-        else if (evento.finalizar)
+        else if (evento.isFinalizar())
         {
             displayDeScores.finalizarContagemRegressiva();
             displayTimer.continuar();
             botoesPowerUp.reclicarProxPowerUp();
             arcoIrisEfeito.desligarEfeito();
-        }        
-    }
+        }
+    }           
 
     void ProdutorConsumidoresDeEvento<TempoEsgotado>.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {
