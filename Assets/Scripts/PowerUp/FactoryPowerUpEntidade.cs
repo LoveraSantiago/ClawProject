@@ -6,6 +6,7 @@ public class FactoryPowerUpEntidade
     private static PowerUpEntidade missilTeleguiado;
     private static PowerUpEntidade teleporte;
     private static PowerUpEntidade asa;
+    private static PowerUpEntidade rollback;
 
     private static PowerUpEntidade getBombaDaGarra()
     {
@@ -91,6 +92,20 @@ public class FactoryPowerUpEntidade
         return asa;
     }
 
+    private static PowerUpEntidade getRollBack()
+    {
+        if(rollback == null)
+        {
+            rollback = new PowerUpEntidade()
+                .configNomes(PowerUpEntidade.NAME.ROLLBACK, "rollback-botao")
+                .configDuracao(9)
+                .configArea()
+                .configSupplierDePowerUpGo(null)
+                .configIsClicavel(true);
+        }
+        return rollback;
+    }
+
     public static PowerUpEntidade getPowerUpEntidadeByEnum(PowerUpEntidade.NAME name)
     {
         switch (name)
@@ -101,6 +116,7 @@ public class FactoryPowerUpEntidade
             case PowerUpEntidade.NAME.MISSIL_TELEGUIADO: return getMissilTeleguiado();
             case PowerUpEntidade.NAME.TELEPORTE        : return getTeleporte();
             case PowerUpEntidade.NAME.ASAS             : return getAsas();
+            case PowerUpEntidade.NAME.ROLLBACK         : return getRollBack();
         }
         return null;
     }
