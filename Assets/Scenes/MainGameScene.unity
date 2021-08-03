@@ -5566,7 +5566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 3
+  level: 1
   garraDto:
     velocMovHorizontal: 3.1
     velocMovCima: 7.5
@@ -23858,7 +23858,7 @@ GameObject:
   - component: {fileID: 1971238200}
   - component: {fileID: 1971238199}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: shock-wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24197,7 +24197,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2.5
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
