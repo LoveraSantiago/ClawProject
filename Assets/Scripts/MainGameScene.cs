@@ -76,11 +76,11 @@ public class MainGameScene : MonoBehaviour,
     private void configurandoAcoes()
     {
         new AcaoColetado()
-            .configurarProdutor(coletaveisManager)            
+            .configurarProdutor(coletaveisManager)
+            .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(efeitoColetado)
-            .adicionarConsumidor(modalPontos)
-            .adicionarConsumidor(garraManager);//TODO ver mudanca de ordem
+            .adicionarConsumidor(modalPontos);
 
         new AcaoImantadoPelaGarra()
             .configurarProdutor(garraManager)

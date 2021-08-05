@@ -83,7 +83,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
-    {        
+    {
+        displayTimer.pause();
         displayDeColetados.adicionarSpriteAoDisplay(evento.sprite, evento.resultCombinacao);
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
     }

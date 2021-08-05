@@ -3,7 +3,9 @@ using System.Collections;
 
 public class DisplayDeColetado 
 {
-    private static DisplayDeColetadoDto displayColetadoDto;    
+    private static DisplayDeColetadoDto displayColetadoDto;
+
+    private bool ocupado;
 
     private Vector3 posicaoDesejada;
     private Vector3 posicaoInicial;
@@ -33,12 +35,16 @@ public class DisplayDeColetado
 
     public void limparSprite()
     {
+        ocupado = false;
+
         sDisplayDto.SprRendererColetado.sprite = null;
         sDisplayDto.GoColetado.transform.localPosition = posicaoInicial;
     }    
 
     public IEnumerator mostrarSprite(Sprite sprite)
     {
+        ocupado = true;
+
         sDisplayDto.SprRendererColetado.sprite = sprite;
         ligarGlowLuz();
         yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
@@ -96,6 +102,16 @@ public class DisplayDeColetado
     {
         glowEfeito.desligarGlow();
     }    
+
+    public bool isOcupado()
+    {
+        return ocupado;
+    }
+
+    public bool isDesocupado()
+    {
+        return !isOcupado();
+    }
 
     public MaterialGlow getMaterialGlow()
     {

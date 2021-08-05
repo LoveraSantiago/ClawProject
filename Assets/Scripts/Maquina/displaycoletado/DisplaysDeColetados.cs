@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class DisplaysDeColetados : ArcoIrisConjunto
 {
-    private int indiceEspaco;    
-
     private DisplayDeColetadoDto displayColetadoDto;    
     private DisplayDeColetado[] displayDeColetado;
 
@@ -45,37 +43,44 @@ public class DisplaysDeColetados : ArcoIrisConjunto
 
     public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool result)
     {
-        if(indiceEspaco + 1 >= 3)
-        {
-            monoBehaviour.StartCoroutine(mostrarTerceiroSprite(spriteColetado, result));
-            indiceEspaco = 0;
-        }
-        else
-        {
-            monoBehaviour.StartCoroutine(displayDeColetado[indiceEspaco].mostrarSprite(spriteColetado));
-            indiceEspaco++;
-        }        
+        int indiceDesocupado = getIndicePrimeiroDisplayDesocupado();
+        monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].mostrarSprite(spriteColetado));        
     }       
 
-    private IEnumerator mostrarTerceiroSprite(Sprite spriteColetado, bool result)
+    private IEnumerator mostrarSprite(int indiceDesocupado, Sprite spriteColetado, bool result)
     {
-        yield return monoBehaviour.StartCoroutine(displayDeColetado[2].mostrarSprite(spriteColetado));
+        yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].mostrarSprite(spriteColetado));
 
-        if (result)
+        if (isTodosDisplayOcupados())
         {
-            ligarGlowsSucesso();
-        }
-        else
-        {
-            ligarGlowsFail();
-        }
+            if (result)
+            {
+                ligarGlowsSucesso();
+            }
+            else
+            {
+                ligarGlowsFail();
+            }
         
-        monoBehaviour.StartCoroutine(displayDeColetado[0].limparSprite(displayColetadoDto.FimDelay));
-        monoBehaviour.StartCoroutine(displayDeColetado[1].limparSprite(displayColetadoDto.FimDelay * 2));
-        yield return monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3));
-        yield return new WaitForSeconds(displayColetadoDto.FimDelay);
-        desligarGlows();
+            monoBehaviour.StartCoroutine(displayDeColetado[0].limparSprite(displayColetadoDto.FimDelay));
+            monoBehaviour.StartCoroutine(displayDeColetado[1].limparSprite(displayColetadoDto.FimDelay * 2));
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3));
+            yield return new WaitForSeconds(displayColetadoDto.FimDelay);
+            desligarGlows();
+        }
     }   
+
+    private int getIndicePrimeiroDisplayDesocupado()
+    {
+        if (displayDeColetado[0].isDesocupado()) return 0;
+        if (displayDeColetado[1].isDesocupado()) return 1;
+        return 2;
+    }
+
+    private bool isTodosDisplayOcupados()
+    {
+        return displayDeColetado[0].isOcupado() && displayDeColetado[1].isOcupado() && displayDeColetado[2].isOcupado();
+    }
 
     private void ligarGlowsSucesso()
     {
