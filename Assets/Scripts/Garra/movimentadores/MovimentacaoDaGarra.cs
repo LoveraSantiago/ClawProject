@@ -17,12 +17,7 @@ public abstract class MovimentacaoDaGarra
     public virtual void update() { }
     public virtual void fixedUpdate() { }
 
-    public virtual void garraColidiuCom(GameObject gameObject) { }
-
-    public void comemorar()
-    {
-        animacao.comemorar();
-    }
+    public virtual void garraColidiuCom(GameObject gameObject) { }    
 
     protected void parar()
     {
@@ -128,6 +123,16 @@ public abstract class MovimentacaoDaGarra
         {
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
         }
+    }
+
+    public void comemorar()
+    {
+        animacao.comemorar();
+    }
+
+    public bool isComemorando()
+    {
+        return animacao.isComemorando();
     }
 
     public static void configurarComponentesMovimentacao(

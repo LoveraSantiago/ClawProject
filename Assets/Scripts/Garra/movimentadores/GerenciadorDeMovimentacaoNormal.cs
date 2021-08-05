@@ -84,7 +84,14 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     public void trocarParaAcaoNormal()
     {
         AudioController.current.StopAudioGarra();
-        trocarMovimentador(movLateral);
+        if (movAtual.isComemorando())
+        {
+            trocarParaAcaoVoltarParaMeio();
+        }
+        else
+        {
+            trocarMovimentador(movLateral);
+        }
     }
 
     public void trocarParaAcaoAgarrada()
