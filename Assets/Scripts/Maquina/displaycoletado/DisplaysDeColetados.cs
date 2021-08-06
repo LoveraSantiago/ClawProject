@@ -47,11 +47,11 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
     public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool result)
     {
         int indiceDesocupado = getIndicePrimeiroDisplayDesocupado();
-        monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].mostrarSprite(spriteColetado));        
+        monoBehaviour.StartCoroutine(mostrarSprite(indiceDesocupado, spriteColetado, result));        
     }       
 
     private IEnumerator mostrarSprite(int indiceDesocupado, Sprite spriteColetado, bool result)
-    {
+    {        
         yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].mostrarSprite(spriteColetado));
 
         if (isTodosDisplayOcupados())
@@ -75,7 +75,7 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
         else
         {
             produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim());
-        }
+        }        
     }   
 
     private int getIndicePrimeiroDisplayDesocupado()
@@ -128,6 +128,6 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
 
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
     {
-        throw new System.NotImplementedException();
+        return produtorDeEventoFimColetagem;
     }
 }

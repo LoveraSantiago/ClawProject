@@ -83,7 +83,8 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(modalPontos);
 
         new AcaoColetadoFim()
-            .configurarProdutor(maquinaManager);
+            .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(garraManager);
 
         new AcaoImantadoPelaGarra()
             .configurarProdutor(garraManager)
