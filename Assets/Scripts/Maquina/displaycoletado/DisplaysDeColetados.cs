@@ -2,12 +2,14 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class DisplaysDeColetados : ArcoIrisConjunto
+public class DisplaysDeColetados : ArcoIrisConjunto,
+                                   AcaoColetadoFim.ProdutorEvento
 {
     private DisplayDeColetadoDto displayColetadoDto;    
     private DisplayDeColetado[] displayDeColetado;
 
     private MonoBehaviour monoBehaviour;
+    private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
 
     public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
@@ -16,6 +18,7 @@ public class DisplaysDeColetados : ArcoIrisConjunto
         this.displayColetadoDto = displayColetadoDto;
 
         this.monoBehaviour = monoBehaviour;
+        produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();
     }
 
     private void inicializarDisplayDeColetado(SingleDisplayColetadoDto[] singlesDisplayColetadosDto)
@@ -67,6 +70,11 @@ public class DisplaysDeColetados : ArcoIrisConjunto
             yield return monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3));
             yield return new WaitForSeconds(displayColetadoDto.FimDelay);
             desligarGlows();
+            produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim());
+        }
+        else
+        {
+            produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim());
         }
     }   
 
@@ -116,5 +124,10 @@ public class DisplaysDeColetados : ArcoIrisConjunto
     public void passarCor(Color cor)
     {
         displayDeColetado[0].getMaterialGlow().setCorNoMaterial(cor);
+    }
+
+    ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -82,6 +82,9 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(efeitoColetado)
             .adicionarConsumidor(modalPontos);
 
+        new AcaoColetadoFim()
+            .configurarProdutor(maquinaManager);
+
         new AcaoImantadoPelaGarra()
             .configurarProdutor(garraManager)
             .adicionarConsumidor(coletaveisManager);
