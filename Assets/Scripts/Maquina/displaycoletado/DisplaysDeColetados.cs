@@ -64,10 +64,10 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
             {
                 ligarGlowsFail();
             }
-        
-            monoBehaviour.StartCoroutine(displayDeColetado[0].limparSprite(displayColetadoDto.FimDelay));
-            monoBehaviour.StartCoroutine(displayDeColetado[1].limparSprite(displayColetadoDto.FimDelay * 2));
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay * 3));
+
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[0].limparSprite(displayColetadoDto.FimDelay));
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[1].limparSprite(displayColetadoDto.FimDelay));
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay));
             yield return new WaitForSeconds(displayColetadoDto.FimDelay);
             desligarGlows();
             produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim());

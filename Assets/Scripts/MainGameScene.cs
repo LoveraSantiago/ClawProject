@@ -84,6 +84,7 @@ public class MainGameScene : MonoBehaviour,
 
         new AcaoColetadoFim()
             .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(garraManager);
 
         new AcaoImantadoPelaGarra()
