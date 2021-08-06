@@ -7,6 +7,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoPowerUp.ConsumidorEvento,                            
                             AcaoTempoEsgotado.ConsumidorEvento,
                             AcaoBoardElevadoFim.ConsumidorEvento,
+                            AcaoColetadoFim.ConsumidorEvento,
                             ConsumidorDeEventoTrigger
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
@@ -107,6 +108,12 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         }
     }
 
+    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
+    {        
+        gerDeMovNormal.iniciarMovimentacoes();
+        gerDeMovAtual = gerDeMovNormal;
+    }
+
     ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return ((AcaoImantadoPelaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEventoColetado();
@@ -120,5 +127,5 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return MovimentacaoDaGarra.produtorEventoDirecao;
-    }    
+    }   
 }
