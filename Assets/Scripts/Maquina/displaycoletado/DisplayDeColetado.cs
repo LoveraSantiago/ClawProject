@@ -31,15 +31,7 @@ public class DisplayDeColetado
     {
         sDisplayDto.SprDisplay.color = corDisplay;
         sDisplayDto.SprRendererDentro.color = corDentro;
-    }
-
-    public void limparSprite()
-    {
-        ocupado = false;
-
-        sDisplayDto.SprRendererColetado.sprite = null;
-        sDisplayDto.GoColetado.transform.localPosition = posicaoInicial;
-    }    
+    }   
 
     public IEnumerator mostrarSprite(Sprite sprite)
     {
@@ -67,6 +59,8 @@ public class DisplayDeColetado
 
     public IEnumerator limparSprite(float inicialDelay)
     {
+        ocupado = false;
+
         yield return new WaitForSeconds(inicialDelay);
 
         while ((Vector3.Distance(sDisplayDto.GoColetado.transform.localPosition, posicaoInicial))
