@@ -785,10 +785,9 @@ MonoBehaviour:
       furoBotao: {fileID: 1792373210}
       botao: {fileID: 875563508}
     displayDeColetadoDto:
-      inicialDelay: 0.3
-      fimDelay: 0.1
-      tempoReset: 0.75
-      velocImg: 5
+      inicialDelay: 0.4
+      fimDelay: 0.2
+      velocImg: 3.5
       singleDisplayColetado:
       - sprDisplay: {fileID: 1936649351}
         sprRendererDentro: {fileID: 6406990385049082679}
