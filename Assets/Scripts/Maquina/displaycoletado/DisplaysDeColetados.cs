@@ -44,19 +44,19 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
         displayDeColetado[2].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
     }
 
-    public void adicionarSpriteAoDisplay(ArcoIrisEfeito arcoIris, Sprite spriteColetado, bool result)
+    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, DisplayTimer displayTimer)
     {
-        monoBehaviour.StartCoroutine(mostrarSprite(arcoIris, spriteColetado, result));        
+        monoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris, displayTimer));        
     }       
 
-    private IEnumerator mostrarSprite(ArcoIrisEfeito arcoIris, Sprite spriteColetado, bool result)
+    private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, DisplayTimer displayTimer)
     {        
         int indiceDesocupado = getIndicePrimeiroDisplayDesocupado();
-        yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].mostrarSprite(spriteColetado));
+        yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].mostrarSprite(evento.sprite));
 
         if (isTodosDisplayOcupados())
         {
-            if (result)
+            if (evento.resultCombinacao)
             {
                 arcoIris.ligarBlinkVerde();
             }
@@ -77,7 +77,9 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
         else
         {
             produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(false));
-        }        
+        }
+
+        displayTimer.continuar();
     }   
 
     private int getIndicePrimeiroDisplayDesocupado()
