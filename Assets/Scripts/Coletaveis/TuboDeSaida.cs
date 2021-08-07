@@ -31,8 +31,7 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
     }
 
     private IEnumerator descerPeloTubo(Coletavel[] coletados)
-    {
-        yield return new WaitForSeconds(tuboDto.DelayQuedaTubo);
+    {        
         if (coletados.Length > 0)
         {
             for (int contador = 0; contador < coletados.Length; contador++)

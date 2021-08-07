@@ -3,8 +3,7 @@ using UnityEngine;
 #pragma warning disable 0649
 [System.Serializable]
 public class BoardDto
-{   
-    [SerializeField] private float delayInicialVoltaBoard;
+{       
     [SerializeField] private float delayVoltaBoard;
     [Space(5)]
     [SerializeField] private float velocidadeSubida;
@@ -21,8 +20,7 @@ public class BoardDto
     [SerializeField] private float[] posicoesEixoXPar = new float[7];
     [SerializeField] private float[] posicoesEixoXImpar = new float[7];
     [SerializeField] private float[] posicoesEixoY = new float[8];   
-    
-    public float DelayInicialVoltaBoard { get { return delayInicialVoltaBoard; } }
+        
     public float DelayVoltaBoard { get { return delayVoltaBoard; } }
 
     public float VelocidadeSubida { get { return velocidadeSubida; } }

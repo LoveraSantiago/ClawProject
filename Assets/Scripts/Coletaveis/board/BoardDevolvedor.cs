@@ -23,8 +23,6 @@ public class BoardDevolvedor
 
     private IEnumerator coroutineDevolverParaBoard(BoardDto boardDto, ColetavelTile[] coletados)
     {
-        yield return new WaitForSeconds(boardDto.DelayInicialVoltaBoard);
-
         for (int contador = 0; contador < coletados.Length; contador++)
         {
             float anguloDevolucao = Random.Range(180, 230);
