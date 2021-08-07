@@ -87,7 +87,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         displayTimer.pause();
-        displayDeColetados.adicionarSpriteAoDisplay(evento.sprite, evento.resultCombinacao);
+        displayDeColetados.adicionarSpriteAoDisplay(arcoIrisEfeito, evento.sprite, evento.resultCombinacao);
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
     }
 
@@ -118,7 +118,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         {
             botoesPowerUp.desativarPowerUp();
             displayTimer.pause();
-            arcoIrisEfeito.ligarEfeitoRed();
+            arcoIrisEfeito.ligarBlinkRed();
         }
     }
 

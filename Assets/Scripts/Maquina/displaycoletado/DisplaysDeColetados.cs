@@ -44,32 +44,34 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
         displayDeColetado[2].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
     }
 
-    public void adicionarSpriteAoDisplay(Sprite spriteColetado, bool result)
+    public void adicionarSpriteAoDisplay(ArcoIrisEfeito arcoIris, Sprite spriteColetado, bool result)
     {
-        int indiceDesocupado = getIndicePrimeiroDisplayDesocupado();
-        monoBehaviour.StartCoroutine(mostrarSprite(indiceDesocupado, spriteColetado, result));        
+        monoBehaviour.StartCoroutine(mostrarSprite(arcoIris, spriteColetado, result));        
     }       
 
-    private IEnumerator mostrarSprite(int indiceDesocupado, Sprite spriteColetado, bool result)
+    private IEnumerator mostrarSprite(ArcoIrisEfeito arcoIris, Sprite spriteColetado, bool result)
     {        
+        int indiceDesocupado = getIndicePrimeiroDisplayDesocupado();
         yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].mostrarSprite(spriteColetado));
 
         if (isTodosDisplayOcupados())
         {
             if (result)
             {
-                ligarGlowsSucesso();
+                arcoIris.ligarBlinkVerde();
             }
             else
             {
-                ligarGlowsFail();
+                arcoIris.ligarBlinkRed();
             }
 
             yield return monoBehaviour.StartCoroutine(displayDeColetado[0].limparSprite(displayColetadoDto.FimDelay));
             yield return monoBehaviour.StartCoroutine(displayDeColetado[1].limparSprite(displayColetadoDto.FimDelay));
             yield return monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay));
             yield return new WaitForSeconds(displayColetadoDto.FimDelay);
-            desligarGlows();
+
+            arcoIris.desligarEfeito();
+
             produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(true));
         }
         else

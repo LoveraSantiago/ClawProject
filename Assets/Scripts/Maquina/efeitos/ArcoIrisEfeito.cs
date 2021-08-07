@@ -21,9 +21,14 @@ public class ArcoIrisEfeito
         coroutineAtual = monoBehaviour.StartCoroutine(ligarGlowArcoIris());
     }
 
-    public void ligarEfeitoRed()
+    public void ligarBlinkRed()
     {
-        coroutineAtual = monoBehaviour.StartCoroutine(blinkarGlowRed());
+        coroutineAtual = monoBehaviour.StartCoroutine(blinkarCor(Color.red));
+    }
+
+    public void ligarBlinkVerde()
+    {
+        coroutineAtual = monoBehaviour.StartCoroutine(blinkarCor(Color.green));
     }
 
     private void ligarGlows()
@@ -68,14 +73,14 @@ public class ArcoIrisEfeito
         }
     }
 
-    private IEnumerator blinkarGlowRed()
+    private IEnumerator blinkarCor(Color cor)
     {
         while (true)
         {
             ligarGlows();
             for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
             {
-                listaArcoIrisConjunto[contador].passarCor(Color.red);
+                listaArcoIrisConjunto[contador].passarCor(cor);
             }
             yield return new WaitForSeconds(0.2f);
             desligarGlows();
