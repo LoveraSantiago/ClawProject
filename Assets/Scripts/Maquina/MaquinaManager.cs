@@ -111,7 +111,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         }
     }           
 
-    void ProdutorConsumidoresDeEvento<TempoEsgotado>.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {
         if (evento.restart)
         {
