@@ -15,7 +15,10 @@ public class MovimentacaoParado : MovimentacaoDaGarra
     public override void preInicio()
     {
         pincas.acionarTrigger();
-        animacao.piscar();
+        if (!animacao.isComemorando())
+        {
+            animacao.piscar();
+        }
     }
 
     public override void fixedUpdate()

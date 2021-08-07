@@ -87,7 +87,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         if (movAtual.isComemorando())
         {
             Debug.Log("comemorando");
-            trocarParaAcaoVoltarParaMeio();
+            trocarParaAcaoParado();
         }
         else
         {
