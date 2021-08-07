@@ -1,8 +1,9 @@
 using UnityEngine;
 
 public class ColetaveisManager : ConsumidorDeEventoTrigger,
-                                AcaoColetado.ProdutorEvento,                                
+                                AcaoColetado.ProdutorEvento,                              
                                 AcaoBoardElevadoFim.ProdutorEvento,
+                                AcaoColetadoFim.ConsumidorEvento,
                                 AcaoImantadoPelaGarra.ConsumidorEvento,
                                 AcaoSubidaDaGarra.ConsumidorEvento,                                
                                 AcaoPowerUp.ConsumidorEvento,                                
@@ -71,10 +72,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         ColetavelTile coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
         coletavelAcertado.desligar();        
 
-        contadorDeColetaveis.adicionarColetado(coletavelAcertado);
-
-        boardManager.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour);
-        tudoDeSaida.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
+        contadorDeColetaveis.adicionarColetado(coletavelAcertado);        
         poolDeColetaveis.inativarColetaveis(contadorDeColetaveis.getArrayTubo());
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
@@ -144,7 +142,16 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
             int qtdAtivados = boardManager.subirBoard(poolDeColetaveis, monoBehaviour);
             contadorDeColetaveis.adicionarColetaveisExtras(qtdAtivados);            
         }        
-    }  
+    }
+
+    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
+    {
+        if (evento.clearDisplay)
+        {
+            boardManager.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour);
+            tudoDeSaida.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
+        }
+    }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
     {
@@ -154,5 +161,5 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return ((AcaoBoardElevadoFim.ProdutorEvento)boardManager).getProdutorDeEventoColetado();
-    }   
+    }
 }

@@ -70,11 +70,11 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
             yield return monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay));
             yield return new WaitForSeconds(displayColetadoDto.FimDelay);
             desligarGlows();
-            produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim());
+            produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(true));
         }
         else
         {
-            produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim());
+            produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(false));
         }        
     }   
 
