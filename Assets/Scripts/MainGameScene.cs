@@ -72,7 +72,27 @@ public class MainGameScene : MonoBehaviour,
         maquinaManager   .configuradoPeloLevel(levelEscolhido);
         modalPontos      .configurarLevel(levelEscolhido.getLevelName());
     }
-    
+
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
+    //TODO dar um jeito de nao ter auto consumos
     private void configurandoAcoes()
     {
         new AcaoColetado()
@@ -83,7 +103,8 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(modalPontos);
 
         new AcaoColetadoFim()
-            .configurarProdutor(maquinaManager)            
+            .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(maquinaManager)//TODO dar um jeito de nao ter auto consumos
             .adicionarConsumidor(coletaveisManager)
             .adicionarConsumidor(garraManager);            
 

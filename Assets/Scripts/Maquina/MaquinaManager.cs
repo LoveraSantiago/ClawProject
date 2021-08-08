@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetadoFim.ProdutorEvento,
-                              AcaoColetado.ConsumidorEvento,    
+                              AcaoColetado.ConsumidorEvento,  
+                              AcaoColetadoFim.ConsumidorEvento,
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUp.ConsumidorEvento,                              
                               AcaoTempoEsgotado.ConsumidorEvento,
@@ -88,6 +89,12 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayTimer.pause();
         displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIrisEfeito, displayTimer);
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
+        botoesPowerUp.suspenderPowerUp();
+    }
+
+    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
+    {
+        botoesPowerUp.reativarPowerUp();
     }
 
     void AcaoPowerUp.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
@@ -106,7 +113,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         {
             displayDeScores.finalizarContagemRegressiva();
             displayTimer.continuar();
-            botoesPowerUp.reclicarProxPowerUp();
+            botoesPowerUp.reclicarProximoPowerUp();
             arcoIrisEfeito.desligarEfeito();
         }
     }           
@@ -144,5 +151,5 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEventoColetado();
-    }    
+    }
 }

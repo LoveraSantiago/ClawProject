@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class BotoesPowerUp 
 {
-    private bool acionadoPowerUp;
+    //private bool acionadoPowerUp;
 
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
+
     private DistribuidorParaBotoesPowerUp distribuidor;
+    private ControleAcionamentoPowerUp controlePup;
 
     private Draggavel dragavelAtual;
     private Draggavel dragavelVazio;
@@ -21,6 +23,7 @@ public class BotoesPowerUp
 
         inicializarBotoes(btnsPowerUpsDto);
         distribuidor = new DistribuidorParaBotoesPowerUp(btnsPowerUpsDto.SpritesDeBotoes);
+        controlePup = new ControleAcionamentoPowerUp();
 
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
@@ -43,22 +46,22 @@ public class BotoesPowerUp
     
     public void update()
     {
-        if (!acionadoPowerUp && inputGame.aconteceuTapNaAreaInferior())
+        if (inputGame.aconteceuTapNaAreaInferior())
         {
             Vector2 posicaoTap = inputGame.getPosicaoTap();
-            if (btnsPowerUp[0].isCliqueValido(posicaoTap))
+                 if (btnsPowerUp[0].isCliqueValido(controlePup, posicaoTap))
             {
                 acionarBotao(btnsPowerUp[0]);                
             }
-            else if (btnsPowerUp[1].isCliqueValido(posicaoTap))
+            else if (btnsPowerUp[1].isCliqueValido(controlePup, posicaoTap))
             {
                 acionarBotao(btnsPowerUp[1]);
             }
-            else if (btnsPowerUp[2].isCliqueValido(posicaoTap))
+            else if (btnsPowerUp[2].isCliqueValido(controlePup, posicaoTap))
             {
                 acionarBotao(btnsPowerUp[2]);
             }
-            else if (btnsPowerUp[3].isCliqueValido(posicaoTap))
+            else if (btnsPowerUp[3].isCliqueValido(controlePup, posicaoTap))
             {
                 acionarBotao(btnsPowerUp[3]);
             }
@@ -67,39 +70,44 @@ public class BotoesPowerUp
 
     public void desativarPowerUp()
     {
-        acionadoPowerUp = true;
+        controlePup.desabilitarPowerUp();        
+    }
+
+    public void suspenderPowerUp()
+    {
+        controlePup.suspenderPowerUp();
     }
 
     public void reativarPowerUp()
     {
-        acionadoPowerUp = false;
+        controlePup.habilitarPowerUp();
     }
 
     private void acionarBotao(BotaoPowerUp btn)
     {
         btn.clicar();
-        acionadoPowerUp = true;
+        controlePup.powerUpAcionado();
         btnAcionado = btn;
     }
 
-    public void reclicarProxPowerUp()
+    public void reclicarProximoPowerUp()
     {
-        acionadoPowerUp = false;
+        controlePup.powerUpFinalizado();
         btnAcionado.desclicar();
         distribuidor.distribuirProxItem(btnsPowerUp);
     }   
 
     private void draggarBotao(BotaoPowerUp btn)
     {
+        controlePup.powerUpAcionado();        
         btn.draggar();
-        acionadoPowerUp = true;
         btnAcionado = btn;
     }
 
     public void beginDrag(Vector2 posicaoDrag)
     {
         //Debug.Log("begindrag");
-        if (!acionadoPowerUp)
+        if (controlePup.podeAcionarPupDraggavel())
         {
             if (btnsPowerUp[0].isDragValido(posicaoDrag))
             {   
@@ -131,7 +139,7 @@ public class BotoesPowerUp
 
     public void drag(Vector2 delta)
     {
-        if (!acionadoPowerUp)
+        if (controlePup.podeAcionarPupDraggavel())
         {
             dragavelAtual.updateDrag(delta);
         }
@@ -139,15 +147,13 @@ public class BotoesPowerUp
 
     public void endDrag(MonoBehaviour monoBehaviour)
     {
-        if (!acionadoPowerUp)
+        if (controlePup.podeAcionarPupDraggavel())
         {
-            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp(monoBehaviour);
-            acionadoPowerUp = result;
+            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp(monoBehaviour);            
             if (result)
             {
                 draggarBotao(btnAcionado);
             }
-
             dragavelAtual = dragavelVazio;
         }
     }   
