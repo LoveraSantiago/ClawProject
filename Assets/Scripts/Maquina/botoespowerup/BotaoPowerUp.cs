@@ -76,12 +76,12 @@ public class BotaoPowerUp : Draggavel
 
     public bool isCliqueValido(Vector2 posicao)
     {
-        return !isDraggavel && acaoDrag.isPosicaoDentroAreaBotao(posicao) && hasPowerUp;
+        return !isDraggavel && hasPowerUp && acaoDrag.isPosicaoDentroAreaBotao(posicao);
     }
 
     public bool isDragValido(Vector2 posicao)
     {
-        return isDraggavel && acaoDrag.isPosicaoDentroAreaBotao(posicao) && hasPowerUp;
+        return isDraggavel && hasPowerUp && acaoDrag.isPosicaoDentroAreaBotao(posicao);
     }           
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
