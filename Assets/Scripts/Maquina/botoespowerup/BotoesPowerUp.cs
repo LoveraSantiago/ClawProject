@@ -21,7 +21,7 @@ public class BotoesPowerUp
         BotaoPowerUp.configurar(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.AreaDraggavel);
 
         inicializarBotoes(btnsPowerUpsDto);
-        distribuidor = new DistribuidorParaBotoesPowerUp(btnsPowerUp, btnsPowerUpsDto.SpritesDeBotoes);
+        distribuidor = new DistribuidorParaBotoesPowerUp(btnsPowerUpsDto.SpritesDeBotoes);
 
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
@@ -38,7 +38,7 @@ public class BotoesPowerUp
 
     public void configuradoPeloLevel(AbstractLevel level)
     {
-        distribuidor.distribuirArray(level.getPowerUpsParaBotoesMaquina());
+        distribuidor.distribuirArray(level.getPowerUpsParaBotoesMaquina(), btnsPowerUp);
 
         Dictionary<string, string> dicionarioDeCores = level.getDicionarioDeCores();
 
@@ -104,19 +104,19 @@ public class BotoesPowerUp
         btnAcionado = btn;
     }
 
+    public void reclicarProxPowerUp()
+    {
+        acionadoPowerUp = false;
+        btnAcionado.desclicar();
+        distribuidor.distribuirProxItem(btnsPowerUp);
+    }   
+
     private void draggarBotao(BotaoPowerUp btn)
     {
         btn.draggar();
         acionadoPowerUp = true;
         btnAcionado = btn;
     }
-
-    public void reclicarProxPowerUp()
-    {
-        acionadoPowerUp = false;
-        btnAcionado.desclicar();
-        distribuidor.distribuirProxItem();
-    }   
 
     public void beginDrag(Vector2 posicaoDrag)
     {

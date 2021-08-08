@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 3
   garraDto:
     velocMovHorizontal: 3.1
     velocMovCima: 7.5
@@ -730,7 +730,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 6ff825b4da47d4749bb0a0b28414a44d, type: 3}
     tuboDto:
       torque: 550
-      delayQuedaTubo: 0.8
       gravidade: 0.65
       parentColetavelTubo: {fileID: 1607848931}
       coletaveisParaTubo:
@@ -738,7 +737,6 @@ MonoBehaviour:
       - {fileID: 1171204407}
       - {fileID: 911244732}
     boardDto:
-      delayInicialVoltaBoard: 1.5
       delayVoltaBoard: 0.2
       velocidadeSubida: 0.25
       subida: 0.78
@@ -787,7 +785,7 @@ MonoBehaviour:
     displayDeColetadoDto:
       inicialDelay: 0.4
       fimDelay: 0.2
-      velocImg: 3.5
+      velocImg: 4
       singleDisplayColetado:
       - sprDisplay: {fileID: 1936649351}
         sprRendererDentro: {fileID: 6406990385049082679}
