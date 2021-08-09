@@ -5,11 +5,15 @@ public class ContadorTimerContinuo : ContadorTimerNegativo
     private string tempoRestart;
     private ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado;
 
-    public ContadorTimerContinuo(string tempo, ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado)
+    private Executor executorAntes;
+
+    public ContadorTimerContinuo(
+        string tempo, ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado, Executor executorAntes)
         : base(tempo)
     {
         tempoRestart = tempo;
         this.produtorDeEventoTempoEsgotado = produtorDeEventoTempoEsgotado;
+        this.executorAntes = executorAntes;
     }
 
     public override bool isTimeOver()
@@ -25,6 +29,7 @@ public class ContadorTimerContinuo : ContadorTimerNegativo
         {
             iniciarContagem();
             setTempoRegressivoInicial(tempoRestart);
+            executorAntes.execute();
             produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(true));
         }
 

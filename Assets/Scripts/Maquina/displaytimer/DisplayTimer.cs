@@ -25,9 +25,11 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
         this.monoBehaviour = monoBehaviour;
     }
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido)
+    public void configuradoPeloLevel(AbstractLevel levelEscolhido, Executor executorTimerRestart)
     {
-        contadorTimer.definirContador(levelEscolhido.getTempoContagem(), produtorDeEventoTempoEsgotado);        
+        contadorTimer.definirContador(
+            levelEscolhido.getTempoContagem(), produtorDeEventoTempoEsgotado, executorTimerRestart);        
+
         digitos.passarCoresAosDisplayDigitos(levelEscolhido.getDicionarioDeCores());        
     }
 

@@ -4,8 +4,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetadoFim.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,                                
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
-                              AcaoPowerUp.ConsumidorEvento,                              
-                              AcaoTempoEsgotado.ConsumidorEvento,
+                              AcaoPowerUp.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento
 {    
     private PartesMaquinaDto partesDto;
@@ -42,11 +41,13 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
     {
         botoesPowerUp.configuradoPeloLevel(levelEscolhido);
-        displayTimer.configuradoPeloLevel(levelEscolhido);
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         displayDeColetados.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         vigasTras.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+
+        AntesExecutorTimerRestart executor = new AntesExecutorTimerRestart(botoesPowerUp, displayTimer, arcoIrisEfeito);
+        displayTimer.configuradoPeloLevel(levelEscolhido, executor);
 
         new ColoridorMaquina()
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());
@@ -112,17 +113,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             botoesPowerUp.reclicarProximoPowerUp();
             arcoIrisEfeito.desligarEfeito();
         }
-    }           
-
-    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
-    {
-        if (evento.restart)
-        {
-            botoesPowerUp.desativarPowerUp();
-            displayTimer.pause();
-            arcoIrisEfeito.ligarBlinkRed();
-        }
-    }
+    }              
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
     {

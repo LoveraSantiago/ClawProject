@@ -126,8 +126,7 @@ public class MainGameScene : MonoBehaviour,
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager)//TODO dar um jeito de nao ter auto consumos
+            .adicionarConsumidor(garraManager)            
             .adicionarConsumidor(modalPontos)
             .adicionarConsumidor(coletaveisManager);
 
