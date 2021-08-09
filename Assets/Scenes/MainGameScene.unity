@@ -774,6 +774,7 @@ MonoBehaviour:
   maquinaDto:
     referenciaChao: {fileID: 1270622651}
     joystickDto:
+      velocidade: 0.9
       joystickTransform: {fileID: 1655319868}
       parteCima: {fileID: 1371200242}
       parteBaixo: {fileID: 1200159529}

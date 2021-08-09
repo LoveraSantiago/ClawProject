@@ -4,7 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class JoystickDto 
 {
+    [SerializeField] private float velocidade;
     [SerializeField] private Transform joystickTransform;
+    [Space(5)]
     [SerializeField] private SpriteRenderer parteCima;
     [SerializeField] private SpriteRenderer parteBaixo;
     [SerializeField] private SpriteRenderer furoHaste;
@@ -13,7 +15,9 @@ public class JoystickDto
     [SerializeField] private SpriteRenderer furoBotao;
     [SerializeField] private SpriteRenderer botao;
 
+    public float Velocidade { get { return velocidade; } }
     public Transform JoystickTransform { get { return joystickTransform; } }
+
     public SpriteRenderer ParteCima { get { return parteCima; } }
     public SpriteRenderer ParteBaixo { get { return parteBaixo; } }
     public SpriteRenderer FuroHaste { get { return furoHaste; } }

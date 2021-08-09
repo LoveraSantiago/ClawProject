@@ -56,7 +56,7 @@ public class MainGameScene : MonoBehaviour,
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
         garraManager      = new GarraManager(garraDto, inputGame);
         coletaveisManager = new ColetaveisManager(coletaveisDto, this);
-        maquinaManager    = new MaquinaManager(maquinaDto, garraDto.VelocMovHorizontal, inputGame, this);
+        maquinaManager    = new MaquinaManager(maquinaDto, inputGame, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);
         modalPontos       = new ModalPontos(modalPontosDto, this);

@@ -4,8 +4,7 @@ using System.Collections.Generic;
 public class Joystick : AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento
 {
     private readonly int ANGULO = 20;
-
-    private float velocidade;
+    
     private float incremento;
     private int multiplicador;
         
@@ -19,10 +18,9 @@ public class Joystick : AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento
     //UTILIZANDO MESMA VELOCIDADE DE MOVIMENTACAO HORIZONTAL DA GARRA
     /* A VELOCIDADE VAI PEGAR O VALOR INICIAL DE VELOCIDADE SE MUDADO 
        DURANTE GAMEPLAY NAO REFLETE AQUI SO NO PROXIMO START*/
-    public Joystick(JoystickDto joystickDto, float velocidade)
+    public Joystick(JoystickDto joystickDto)
     {
-        this.joystickDto = joystickDto;
-        this.velocidade = velocidade * .3f;//AJUSTANDO PARA PROPORCAO TAMANHO JOYSTICK
+        this.joystickDto = joystickDto;    
 
         anguloDesejadoDireita = Quaternion.Euler(0, 0, -ANGULO);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0, ANGULO);
@@ -32,7 +30,7 @@ public class Joystick : AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento
 
     public void fixedUpdate()
     {
-        incremento = (Time.fixedDeltaTime + velocidade) * multiplicador;
+        incremento = (Time.fixedDeltaTime + joystickDto.Velocidade) * multiplicador;
         joystickDto.JoystickTransform.rotation = Quaternion.RotateTowards(joystickDto.JoystickTransform.rotation, anguloDesejadoAtual, incremento);
     }
 
