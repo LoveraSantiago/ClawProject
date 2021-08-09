@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetadoFim.ProdutorEvento,
-                              AcaoColetado.ConsumidorEvento,  
-                              AcaoColetadoFim.ConsumidorEvento,
+                              AcaoColetado.ConsumidorEvento,                                
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUp.ConsumidorEvento,                              
                               AcaoTempoEsgotado.ConsumidorEvento,
@@ -87,15 +86,12 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         displayTimer.pause();
-        displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIrisEfeito, displayTimer);
+
+        PosExecutorAcaoColetadoFim posExecucao = new PosExecutorAcaoColetadoFim(displayTimer, botoesPowerUp);
+        displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIrisEfeito, posExecucao);
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
         botoesPowerUp.suspenderPowerUp();
-    }
-
-    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
-    {
-        botoesPowerUp.reativarPowerUp();
-    }
+    }   
 
     void AcaoPowerUp.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {

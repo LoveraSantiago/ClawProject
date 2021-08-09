@@ -44,12 +44,12 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
         displayDeColetado[2].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
     }
 
-    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, DisplayTimer displayTimer)
+    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
-        monoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris, displayTimer));        
+        monoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris, executorPosEvento));        
     }       
 
-    private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, DisplayTimer displayTimer)
+    private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {        
         int indiceDesocupado = getIndicePrimeiroDisplayDesocupado();
         yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].mostrarSprite(evento.sprite));
@@ -71,7 +71,6 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
             yield return new WaitForSeconds(displayColetadoDto.FimDelay);
 
             arcoIris.desligarEfeito();
-
             produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(true));
         }
         else
@@ -79,7 +78,7 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
             produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(false));
         }
 
-        displayTimer.continuar();
+        executorPosEvento.execute();        
     }   
 
     private int getIndicePrimeiroDisplayDesocupado()

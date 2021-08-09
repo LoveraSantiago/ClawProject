@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class BotoesPowerUp 
 {
-    //private bool acionadoPowerUp;
-
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
 

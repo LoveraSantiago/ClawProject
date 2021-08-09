@@ -92,7 +92,6 @@ public class MainGameScene : MonoBehaviour,
     //TODO dar um jeito de nao ter auto consumos
     //TODO dar um jeito de nao ter auto consumos
     //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
     private void configurandoAcoes()
     {
         new AcaoColetado()
@@ -104,7 +103,6 @@ public class MainGameScene : MonoBehaviour,
 
         new AcaoColetadoFim()
             .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(maquinaManager)//TODO dar um jeito de nao ter auto consumos
             .adicionarConsumidor(coletaveisManager)
             .adicionarConsumidor(garraManager);            
 
