@@ -73,25 +73,6 @@ public class MainGameScene : MonoBehaviour,
         modalPontos      .configurarLevel(levelEscolhido.getLevelName());
     }
 
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
-    //TODO dar um jeito de nao ter auto consumos
     private void configurandoAcoes()
     {
         new AcaoColetado()
