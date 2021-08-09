@@ -20,7 +20,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     private ArcoIrisEfeito arcoIrisEfeito;
 
     //TODO RESOLVER EXCECO DE ARGUMENTOS NO CONSTRUTOR
-    public MaquinaManager(MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
+    public MaquinaManager(
+        MaquinaDto maquinaDto, float velocidadeJoystick, InputGame inputGame, MonoBehaviour monoBehaviour)
     {
         partesDto = maquinaDto.PartesDto;
 
