@@ -63,7 +63,7 @@ public class ContadorDeColetaveis
     public void subtrairColetavel()
     {
         totalColetaveis -= 1;
-        Debug.Log("Total: " + totalColetaveis);
+        //Debug.Log("Total: " + totalColetaveis);
     }
 
     public ColetavelTile[] getArrayBoard()
