@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 3
+  level: 1
   garraDto:
     velocMovHorizontal: 3.1
     velocMovCima: 7.5
@@ -784,9 +784,9 @@ MonoBehaviour:
       furoBotao: {fileID: 1792373210}
       botao: {fileID: 875563508}
     displayDeColetadoDto:
-      inicialDelay: 0.4
-      fimDelay: 0.2
-      velocImg: 4
+      inicialDelay: 0.35
+      fimDelay: 0.15
+      velocImg: 4.5
       singleDisplayColetado:
       - sprDisplay: {fileID: 1936649351}
         sprRendererDentro: {fileID: 6406990385049082679}

@@ -24,7 +24,7 @@ public class ContadorDeColetaveis
     {
         totalColetaveis = total;
         this.backToBoard = backToBoard;
-        //Debug.Log("Total: " + totalColetaveis);
+        Debug.Log("Total: " + totalColetaveis);
     }
 
     public void adicionarColetado(ColetavelTile coletado)
@@ -58,6 +58,12 @@ public class ContadorDeColetaveis
     {
         totalColetaveis += qtd;
         //Debug.Log("PosAdicionado Total: " + totalColetaveis);
+    }
+
+    public void subtrairColetavel()
+    {
+        totalColetaveis -= 1;
+        Debug.Log("Total: " + totalColetaveis);
     }
 
     public ColetavelTile[] getArrayBoard()
@@ -101,8 +107,7 @@ public class ContadorDeColetaveis
         AudioController.current.PlayAudio(AudioController.current.combinacaoOk);
         adicionaPontuacao();
         devolverBoard = arrayVazio;
-        devolverTubo = coletados;
-        totalColetaveis -= 3;
+        devolverTubo = coletados;        
     }
 
     private void processarRetornoInvalido()
@@ -112,15 +117,11 @@ public class ContadorDeColetaveis
             devolverBoard = coletados;
             devolverTubo = arrayVazio;
             AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
-
-            totalColetaveis -= 0;
         }
         else
         {
             devolverBoard = coletados;
             devolverTubo  = coletados;
-
-            totalColetaveis -= 3;
         }
         AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
     }

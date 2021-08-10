@@ -69,6 +69,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     private void processarColetado(GameObject gameObjectColetado)
     {
+        contadorDeColetaveis.subtrairColetavel();
         ColetavelTile coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
         coletavelAcertado.desligar();        
 

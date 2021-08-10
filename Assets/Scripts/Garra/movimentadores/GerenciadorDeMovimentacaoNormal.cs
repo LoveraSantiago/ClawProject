@@ -86,12 +86,12 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         AudioController.current.StopAudioGarra();
         if (movAtual.isComemorando())
         {
-            Debug.Log("comemorando");
+            //Debug.Log("comemorando");
             trocarParaAcaoParado();
         }
         else
         {
-            Debug.Log("normal");
+            //Debug.Log("normal");
             trocarMovimentador(movLateral);
         }
     }
