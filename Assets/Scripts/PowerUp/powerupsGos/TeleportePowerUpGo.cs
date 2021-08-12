@@ -21,9 +21,9 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
         this.matOut = powerUpDto.MatTeleporteOut;
     }
 
-    public override PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
+    public override GarraInteracaoComPowerUp getInteracaoComGarra()
     {
-        return PowerUpEntidade.INTERACAOGARRA.NAO_INTERACAO;
+        return new NaoInteracaoComGarra();
     }
 
     public override void configurarPup()
