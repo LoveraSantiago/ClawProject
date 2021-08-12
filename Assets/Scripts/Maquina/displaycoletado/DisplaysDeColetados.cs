@@ -2,8 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class DisplaysDeColetados : ArcoIrisConjunto,
-                                   AcaoColetadoFim.ProdutorEvento
+public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
 {
     private DisplayDeColetadoDto displayColetadoDto;    
     private DisplayDeColetado[] displayDeColetado;
@@ -37,7 +36,12 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
     public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
         monoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris, executorPosEvento));        
-    }       
+    }     
+    
+    public ArcoIrisConjunto getDisplayColetadoGlow()
+    {
+        return new DisplayDeColetadosArcoIris(displayDeColetado);
+    }
 
     private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {        
@@ -81,43 +85,7 @@ public class DisplaysDeColetados : ArcoIrisConjunto,
     private bool isTodosDisplayOcupados()
     {
         return displayDeColetado[0].isOcupado() && displayDeColetado[1].isOcupado() && displayDeColetado[2].isOcupado();
-    }
-
-    private void ligarGlowsSucesso()
-    {
-        displayDeColetado[0].ligarGlowSucesso();
-        displayDeColetado[1].ligarGlowSucesso();
-        displayDeColetado[2].ligarGlowSucesso();
-    }
-
-    private void ligarGlowsFail()
-    {
-        displayDeColetado[0].ligarGlowFail();
-        displayDeColetado[1].ligarGlowFail();
-        displayDeColetado[2].ligarGlowFail();
-    }
-
-    private void desligarGlows()
-    {
-        displayDeColetado[0].desligarGlow();
-        displayDeColetado[1].desligarGlow();
-        displayDeColetado[2].desligarGlow();
-    }
-
-    public void ligar()
-    {
-        ligarGlowsSucesso();
-    }
-
-    public void desligar()
-    {
-        desligarGlows();
-    }
-
-    public void passarCor(Color cor)
-    {
-        displayDeColetado[0].getMaterialGlow().setCorNoMaterial(cor);
-    }
+    }            
 
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
     {
