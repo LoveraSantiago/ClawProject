@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo                                         
+public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
+                                         GarraInteracaoComPowerUp
 {
     private readonly int MISSIL_ACIONADO;
     private readonly int MISSIL_EXPLOSAO;
@@ -29,7 +30,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo
 
     public override GarraInteracaoComPowerUp getInteracaoComGarra()
     {
-        return PowerUpEntidade.INTERACAOGARRA.PARADO;
+        return this;
     }
 
     public override float getAnguloParaGarraSegurar()

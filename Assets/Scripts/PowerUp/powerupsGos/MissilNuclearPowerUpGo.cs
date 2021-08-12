@@ -2,7 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
-                               ConsumidorDeEventoCollider
+                                      ConsumidorDeEventoCollider,
+                                      GarraInteracaoComPowerUp
 {   
     private bool acionado;
 
@@ -23,7 +24,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
     public override GarraInteracaoComPowerUp getInteracaoComGarra()
     {
-        return PowerUpEntidade.INTERACAOGARRA.MOVIMENTO;
+        return this;
     }
 
     public override float getAnguloParaGarraSegurar()
