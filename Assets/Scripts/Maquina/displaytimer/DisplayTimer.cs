@@ -7,7 +7,6 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
     private bool isPausado;
         
     private ContadorTimer contadorTimer;    
-    private DisplayTimerGlow glowDisplay;    
     private DisplayTimerDigitos digitos;
 
     private Coroutine coroutineBlink;
@@ -20,7 +19,6 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
         digitos = new DisplayTimerDigitos(displayDto);
         
         produtorDeEventoTempoEsgotado = new ProdutorDeEvento<TempoEsgotado>();
-        glowDisplay = new DisplayTimerGlow(displayDto);
         contadorTimer = new ContadorTimer();
         this.monoBehaviour = monoBehaviour;
     }
@@ -64,9 +62,10 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
         contadorTimer.continuar();
     }
 
-    public ArcoIrisConjunto getDisplayTimerGlow()
+    public ArcoIrisConjunto getDisplayTimerGlow(DisplayTimerDto displayDto)
     {
-        return glowDisplay;
+        return new DisplayTimerGlow(displayDto);
+        ;
     }    
 
     private void atualizarTempo()
