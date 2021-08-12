@@ -14,7 +14,7 @@ public class RollbackPowerUpGo : AbstractPowerUpGo
         
     }
 
-    public override GarraInteracaoComPowerUp getInteracaoComGarra()
+    public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
     {
         return new NaoInteracaoComGarra();
     }

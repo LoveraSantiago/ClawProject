@@ -28,7 +28,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         MISSIL_IDLE     = Animator.StringToHash("idle");
     }
 
-    public override GarraInteracaoComPowerUp getInteracaoComGarra()
+    public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
     {
         return this;
     }

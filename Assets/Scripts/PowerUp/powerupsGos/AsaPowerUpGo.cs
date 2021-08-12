@@ -24,7 +24,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
         circleCollider = goColetavel.GetComponent<CircleCollider2D>();
     }
 
-    public override GarraInteracaoComPowerUp getInteracaoComGarra()
+    public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
     {
         return new NaoInteracaoComGarra();
     }

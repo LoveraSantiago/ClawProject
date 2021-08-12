@@ -23,7 +23,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         goColetavel.SetActive(false);
     }
 
-    public override GarraInteracaoComPowerUp getInteracaoComGarra()
+    public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
     {
         return this;
     }
