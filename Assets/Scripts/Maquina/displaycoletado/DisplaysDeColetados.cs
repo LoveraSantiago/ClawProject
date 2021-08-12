@@ -1,6 +1,6 @@
 using System.Collections;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
 {
@@ -18,15 +18,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
 
         this.monoBehaviour = monoBehaviour;
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();
-    }
-
-    private void inicializarDisplayDeColetado(SingleDisplayColetadoDto[] singlesDisplayColetadosDto)
-    {
-        displayDeColetado    = new DisplayDeColetado[singlesDisplayColetadosDto.Length];
-        displayDeColetado[0] = new DisplayDeColetado(singlesDisplayColetadosDto[0]);
-        displayDeColetado[1] = new DisplayDeColetado(singlesDisplayColetadosDto[1]);
-        displayDeColetado[2] = new DisplayDeColetado(singlesDisplayColetadosDto[2]);
-    }
+    }    
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
     {
@@ -36,11 +28,24 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
         monoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris, executorPosEvento));        
-    }     
+    }    
+    
+    public void processarPowerUp(PowerUpInfo powerUpInfo)
+    {
+        //powerUpInfo.
+    }
     
     public ArcoIrisConjunto getDisplayColetadoGlow()
     {
         return new DisplayDeColetadosArcoIris(displayDeColetado);
+    }
+
+    private void inicializarDisplayDeColetado(SingleDisplayColetadoDto[] singlesDisplayColetadosDto)
+    {
+        displayDeColetado = new DisplayDeColetado[singlesDisplayColetadosDto.Length];
+        displayDeColetado[0] = new DisplayDeColetado(singlesDisplayColetadosDto[0]);
+        displayDeColetado[1] = new DisplayDeColetado(singlesDisplayColetadosDto[1]);
+        displayDeColetado[2] = new DisplayDeColetado(singlesDisplayColetadosDto[2]);
     }
 
     private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)

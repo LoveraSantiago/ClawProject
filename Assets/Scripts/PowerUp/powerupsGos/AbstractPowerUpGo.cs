@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public abstract class AbstractPowerUpGo : Coletavel,
-                                          GarraInteracaoComPowerUp
+public abstract class AbstractPowerUpGo : Coletavel
 {
     private static float acrescimo;
     protected static PowerUpDto powerUpDto;
@@ -11,8 +10,8 @@ public abstract class AbstractPowerUpGo : Coletavel,
     protected static PowerUpFinalizacao powerUpFinalizacao;
 
     private bool configurado;    
-
-    public abstract PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra();
+    
+    public abstract GarraInteracaoComPowerUp getInteracaoComGarra();
     public abstract void configurarPup();
     public abstract void iniciarPup();
     public abstract void resetPup();
