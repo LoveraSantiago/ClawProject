@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColoridorBotoes : MonoBehaviour
+public class ColoridorBotoes 
 {
     public void colorir(BotaoPowerUp[] btnsPowerUp, Dictionary<string, string> dicionarioDeCores)
     {
