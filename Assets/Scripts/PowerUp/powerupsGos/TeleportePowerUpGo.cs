@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class TeleportePowerUpGo : AbstractPowerUpGo
+public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
 {
     private bool hitColetavel1;
     private bool hitColetavel2;
@@ -23,7 +23,7 @@ public class TeleportePowerUpGo : AbstractPowerUpGo
 
     public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
     {
-        return new NaoInteracaoComGarra();
+        return this;
     }
 
     public override void configurarPup()

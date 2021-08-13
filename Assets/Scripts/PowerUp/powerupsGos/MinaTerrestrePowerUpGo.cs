@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
+public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
 {
     private static Vector3 posInicial;
     
@@ -22,7 +22,7 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
 
     public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
     {
-        return new NaoInteracaoComGarra();
+        return this;
     }
 
     public override void iniciarNaPosicao(Vector3 posicao)

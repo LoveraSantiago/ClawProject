@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RollbackPowerUpGo : AbstractPowerUpGo
+public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra
 {
     public RollbackPowerUpGo()
         :base(powerUpDto.VazioPUp, "rollback")
@@ -16,7 +16,7 @@ public class RollbackPowerUpGo : AbstractPowerUpGo
 
     public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
     {
-        return new NaoInteracaoComGarra();
+        return this;
     }
 
     public override void iniciarPup()

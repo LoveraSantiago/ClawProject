@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class AsaPowerUpGo : AbstractPowerUpGo
+public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
 {
     private readonly int VOADA;
 
@@ -26,7 +26,7 @@ public class AsaPowerUpGo : AbstractPowerUpGo
 
     public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
     {
-        return new NaoInteracaoComGarra();
+        return this;
     }
 
     public override void iniciarPup()
