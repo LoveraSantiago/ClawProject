@@ -28,12 +28,17 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         MISSIL_IDLE     = Animator.StringToHash("idle");
     }
 
+    public PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
+    {
+        return PowerUpEntidade.INTERACAOGARRA.PARADO;
+    }
+
     public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
     {
         return this;
     }
 
-    public override float getAnguloParaGarraSegurar()
+    public float getAnguloParaGarraSegurar()
     {
         return 16f;
     }
@@ -188,7 +193,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
         return new FornecedorMissilTeleguiado();
-    }
+    }    
 
     public class FornecedorMissilTeleguiado : Fornecedor<AbstractPowerUpGo>
     {

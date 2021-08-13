@@ -72,7 +72,7 @@ public class MinaTerrestrePowerUpGo : AbstractPowerUpGo
         yield return null;
     }    
 
-    public override void parar() { }
+    public override void parar() { }//TODO TESTAR ACHO Q DA PRA REMOVER
     public override void colocarNaPosicao(Vector3 posicao) { }
     public override void ligarGravidadeZero() { }
     public override void ligarGravidadeHum() { }

@@ -23,12 +23,17 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         goColetavel.SetActive(false);
     }
 
+    public PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
+    {
+        return PowerUpEntidade.INTERACAOGARRA.MOVIMENTO;
+    }
+
     public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
     {
         return this;
     }
 
-    public override float getAnguloParaGarraSegurar()
+    public float getAnguloParaGarraSegurar()
     {
         return 5f;
     }    
