@@ -15,8 +15,7 @@ public abstract class AbstractPowerUpGo : Coletavel
     public abstract void iniciarPup();
     public abstract void resetPup();
     
-    public virtual void iniciarNaPosicao(Vector3 posicao) { }
-    public virtual void timeout() { }
+    public virtual void iniciarNaPosicao(Vector3 posicao) { }    
 
     public AbstractPowerUpGo(GameObject goTile, string nome)
         : base(goTile, nome)

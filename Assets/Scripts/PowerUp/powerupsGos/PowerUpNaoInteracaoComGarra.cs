@@ -31,5 +31,5 @@ public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo,
 
     public override void parar(){}
 
-    public override void timeout(){}
+    public abstract void timeout();
 }
