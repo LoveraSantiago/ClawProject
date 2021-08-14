@@ -18,12 +18,7 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
     {
         mina_explosao = Animator.StringToHash("explosao");
         mina_idle = Animator.StringToHash("idle");
-    }
-
-    public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
-    {
-        return this;
-    }
+    }    
 
     public override void iniciarNaPosicao(Vector3 posicao)
     {

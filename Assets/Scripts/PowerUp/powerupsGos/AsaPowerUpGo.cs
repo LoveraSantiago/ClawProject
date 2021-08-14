@@ -24,12 +24,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
     {
         animator = goColetavel.transform.Find("asas").GetComponent<Animator>();
         circleCollider = goColetavel.GetComponent<CircleCollider2D>();
-    }
-
-    public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
-    {
-        return this;
-    }
+    }    
 
     public override void iniciarPup()
     {

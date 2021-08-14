@@ -14,6 +14,11 @@ public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo,
     {
     }
 
+    public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
+    {
+        return this;
+    }
+
     public PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
     {
         return PowerUpEntidade.INTERACAOGARRA.NAO_INTERACAO;
@@ -31,5 +36,5 @@ public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo,
 
     public override void parar(){}
 
-    public void timeout(){}
+    public override void timeout(){}
 }

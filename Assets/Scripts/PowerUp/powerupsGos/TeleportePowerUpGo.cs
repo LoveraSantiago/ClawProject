@@ -22,12 +22,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         this.matOut = powerUpDto.MatTeleporteOut;
 
         miras = new ColetaveisMiras();
-    }
-
-    public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
-    {
-        return this;
-    }
+    }    
 
     public override void configurarPup()
     {

@@ -13,12 +13,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra
     {
         
     }
-
-    public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
-    {
-        return this;
-    }
-
+    
     public override void iniciarPup()
     {
         
