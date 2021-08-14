@@ -14,7 +14,7 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
     private int tempoExplosao;
 
     public MinaTerrestrePowerUpGo()
-        :base(powerUpDto.MinaTerrestrePUp, "mina-terrestre")
+        :base(powerUpDto.MinaDto.MinaTerrestreGo, "mina-terrestre")
     {
         mina_explosao = Animator.StringToHash("explosao");
         mina_idle = Animator.StringToHash("idle");
@@ -36,7 +36,7 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
     public override void iniciarPup()
     {
         ligar();
-        posInicial.y = -3.7f;
+        posInicial.y = powerUpDto.MinaDto.Haltura;
         base.colocarNaPosicao(posInicial);
         monoBehaviour.StartCoroutine(explodir());
     }
@@ -55,13 +55,13 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
         goExplosao.SetActive(true);
         goExplosao.transform.position = new Vector3(goExplosao.transform.position.x, goExplosao.transform.position.y + 0.4f, goExplosao.transform.position.z);
         animator.Play(mina_explosao);
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(powerUpDto.MinaDto.DelayExplosao);
 
         goExplosao.SetActive(false);
         PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         resetPup();
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(powerUpDto.MinaDto.DelayPosExplosao);
 
         powerUpFinalizacao.finalizado();
         yield return null;
