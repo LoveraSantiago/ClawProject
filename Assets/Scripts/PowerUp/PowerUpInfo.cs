@@ -3,9 +3,13 @@ public class PowerUpInfo
     public enum ESTADO { INICIO, PREFINALIZAR, FINALIZAR}
 
     public ESTADO estadoAtual;
+
     public int duracaoTempo{ get; private set; }
+
     public ColetavelTile coletavelTile { get; private set; }
-    public PowerUpInteracaoComGarra garraInteracaoPowerUp { get; private set; }
+
+    public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }
+    public PowerUpInteracaoDisplayColetado interacaoDisplayColetado { get; private set; }
 
     public PowerUpInfo(ESTADO estado)
     {
@@ -18,9 +22,15 @@ public class PowerUpInfo
         return this;
     }
 
-    public PowerUpInfo configurarObjetoInteracaoComGarra(PowerUpInteracaoComGarra garraInteracaoPowerUp)
+    public PowerUpInfo configInteracaoComGarra(PowerUpInteracaoComGarra interacaoComGarra)
     {
-        this.garraInteracaoPowerUp = garraInteracaoPowerUp;
+        this.interacaoComGarra = interacaoComGarra;
+        return this;
+    }
+
+    public PowerUpInfo configInteracaoDisplayColetado(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
+    {
+        this.interacaoComGarra = interacaoComGarra;
         return this;
     }
 

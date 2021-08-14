@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra
+public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
+                                 PowerUpInteracaoDisplayColetado
 {
     public RollbackPowerUpGo()
         :base(powerUpDto.VazioPUp, "rollback")

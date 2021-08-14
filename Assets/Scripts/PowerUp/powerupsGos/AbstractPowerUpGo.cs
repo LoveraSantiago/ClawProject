@@ -10,13 +10,15 @@ public abstract class AbstractPowerUpGo : Coletavel
 
     private bool configurado;    
     
-    public abstract PowerUpInteracaoComGarra getObjInteracaoComGarra();
     public abstract void configurarPup();
     public abstract void iniciarPup();
     public abstract void resetPup();
     
     public virtual void iniciarNaPosicao(Vector3 posicao) { }
     public virtual void timeout() { }
+
+    public abstract PowerUpInteracaoComGarra getObjInteracaoComGarra();
+    public virtual PowerUpInteracaoDisplayColetado getObjInteracaoDisplayColetado() { return null; }
 
     public AbstractPowerUpGo(GameObject goTile, string nome)
         : base(goTile, nome)

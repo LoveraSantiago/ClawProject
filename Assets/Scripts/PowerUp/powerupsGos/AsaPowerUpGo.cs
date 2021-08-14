@@ -5,7 +5,6 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
 {
     private readonly int VOADA;
 
-
     private bool hitColetavel;
 
     private ColetaveisMiras miras;

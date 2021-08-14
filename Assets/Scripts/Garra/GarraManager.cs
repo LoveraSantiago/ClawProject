@@ -68,7 +68,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     {
         if (evento.isInicio())
         {
-            gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.garraInteracaoPowerUp, evento.duracaoTempo);
+            gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.interacaoComGarra, evento.duracaoTempo);
             gerDeMovPowerUp.iniciarMovimentacoes();
             gerDeMovAtual = gerDeMovPowerUp;
         }
