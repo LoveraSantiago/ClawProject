@@ -22,9 +22,7 @@ public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo,
     public PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
     {
         return PowerUpEntidade.INTERACAOGARRA.NAO_INTERACAO;
-    }
-
-    public override void colocarNaPosicao(Vector3 posicao){}
+    }   
 
     public override void fixarEixoX(){}
 
