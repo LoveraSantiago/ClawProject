@@ -15,7 +15,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     private CircleCollider2D circleCollider;
 
     public BombaPowerUpGo()
-        : base(powerUpDto.BombPUp, "bomba")
+        : base(powerUpDto.BombaDto.BombaGo, "bomba")
     {
         bomba_explosao = Animator.StringToHash("explosao");
         bomba_idle     = Animator.StringToHash("idle");
@@ -35,7 +35,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
 
     public float getAnguloParaGarraSegurar()
     {
-        return 5f;
+        return powerUpDto.BombaDto.AngGarra;
     }    
 
     public override void configurarPup()
@@ -73,18 +73,18 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     
     private IEnumerator explodir()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);
         
         animator.Play(bomba_explosao);
-        processarExplosao();       
+        processarExplosao();
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(powerUpDto.BombaDto.DelayExplosao);
                 
         PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         powerUpFinalizacao.preFinalizar();
         resetPup();
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(powerUpDto.BombaDto.DelayPosExplosao);
 
         powerUpFinalizacao.finalizado();
         yield return null;
@@ -93,7 +93,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     private void processarExplosao()
     {
         LayerMask mask = LayerMask.GetMask("Coletavel");
-        Collider2D[] acertados = Physics2D.OverlapCircleAll(goColetavel.transform.position, 1f, mask);
+        Collider2D[] acertados = Physics2D.OverlapCircleAll(goColetavel.transform.position, powerUpDto.BombaDto.RaioExplosao, mask);
         ColetavelQuery coletavelQuery = new ColetavelQuery();
 
         for (int contador = 0; contador < acertados.Length; contador++)
@@ -101,14 +101,14 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
             string nomeAcertado = acertados[contador].name;
             Coletavel acertado = coletavelQuery.getColetavelInGameByName(nomeAcertado);
             int angulo = determinarAngulo(acertado.getPosicao());
-            acertado.disparar(angulo, 7.5f);
+            acertado.disparar(angulo, powerUpDto.BombaDto.VelocidadeHit);
         }
     }
 
     private int determinarAngulo(Vector3 posicao)
     {        
-        if (getPosicao().x < posicao.x) return -40;
-        else return 40;
+        if (getPosicao().x < posicao.x) return -powerUpDto.BombaDto.AnguloHit;
+        else return powerUpDto.BombaDto.AnguloHit;
     }
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()

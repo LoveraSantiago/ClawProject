@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class PowerUpDto 
 {    
-    [SerializeField] private GameObject bomdPUp;
+    [SerializeField] private BombaDto bombaDto;
     [Space(3)]
     [SerializeField] private GameObject missilNuclearPUp;
     [Space(3)]
@@ -20,7 +20,7 @@ public class PowerUpDto
     [Space(3)]
     [SerializeField] private AsaDto asaDto;
  
-    public GameObject BombPUp { get { return bomdPUp; } }
+    public BombaDto BombaDto { get { return bombaDto; } }
     public GameObject MissilNuclearPUp { get { return missilNuclearPUp; } }
     public GameObject MinaTerrestrePUp { get { return minaTerrestrePUp; } }
 
