@@ -50,18 +50,6 @@ public abstract class AbstractPowerUpGo : Coletavel
         inputGame = inputGameArg;        
     }
 
-    protected void ligarMirasNosColetaveis()
-    {
-        ColetavelQuery coletavelQuery = new ColetavelQuery();
-        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
-    }
-
-    protected void desligarMirasNosColetaveis()
-    {
-        ColetavelQuery coletavelQuery = new ColetavelQuery();
-        coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
-    }
-
     protected Collider2D getColetavelHit()
     {
         Vector3 posicaoTap = inputGame.getPosicaoTap();

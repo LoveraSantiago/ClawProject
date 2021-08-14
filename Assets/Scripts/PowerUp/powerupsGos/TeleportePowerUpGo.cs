@@ -12,6 +12,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
     private ColetavelTile coletavel1;
     private ColetavelTile coletavel2;
 
+    private ColetaveisMiras miras;
     private Coroutine coroutine;
 
     public TeleportePowerUpGo() 
@@ -19,6 +20,8 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
     {
         this.matIn = powerUpDto.MatTeleporteIn;
         this.matOut = powerUpDto.MatTeleporteOut;
+
+        miras = new ColetaveisMiras();
     }
 
     public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
@@ -32,7 +35,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
-        ligarMirasNosColetaveis();
+        miras.ligar();
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvos());
     }
 
@@ -127,7 +130,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         if (!hitColetavel2)
         {
             monoBehaviour.StopCoroutine(coroutine);
-            desligarMirasNosColetaveis();
+            miras.desligar();
             powerUpFinalizacao.finalizado();
         }
     }

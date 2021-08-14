@@ -7,6 +7,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private bool hitColetavel;
 
+    private ColetaveisMiras miras;
     private Animator animator;
     private CircleCollider2D circleCollider;
     private Coroutine coroutine;
@@ -16,6 +17,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
     {
         VOADA = Animator.StringToHash("voada");
         Debug.Log("Asa Instanciado");
+        miras = new ColetaveisMiras();
     }
 
     public override void configurarPup()
@@ -31,7 +33,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
-        ligarMirasNosColetaveis();
+        miras.ligar();
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
@@ -53,7 +55,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
                 {
                     string nomeAlvo = coletavelHit.name;
                     Debug.Log("Acertou " + nomeAlvo);
-                    desligarMirasNosColetaveis();
+                    miras.desligar();
                     ColetavelTile coletavelParaVoar = coletavelQuery.getColetavelInGameByName(nomeAlvo);
                                         
                     colocarNaPosicao(coletavelParaVoar.getPosicao());
@@ -102,7 +104,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
         if (!hitColetavel)
         {
             monoBehaviour.StopCoroutine(coroutine);
-            desligarMirasNosColetaveis();
+            miras.desligar();
             powerUpFinalizacao.finalizado();
         }
     }

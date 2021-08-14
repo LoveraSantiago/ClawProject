@@ -10,7 +10,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     
     private bool hitColetavel;
     private float distanciaAnterior;
-    
+
+    private ColetaveisMiras miras;
     private CapsuleCollider2D capsuleCollider;
     
     private Vector2[] pathMissilRecalculado;
@@ -26,6 +27,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         MISSIL_ACIONADO = Animator.StringToHash("missil-acionado");
         MISSIL_EXPLOSAO = Animator.StringToHash("explosao");
         MISSIL_IDLE     = Animator.StringToHash("idle");
+
+        miras = new ColetaveisMiras();
     }
 
     public PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -57,7 +60,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     public override void iniciarPup()
     {
         ligar();
-        ligarMirasNosColetaveis();
+        miras.ligar();
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
@@ -185,7 +188,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         {
             monoBehaviour.StopCoroutine(coroutine);
 
-            desligarMirasNosColetaveis();
+            miras.desligar();
             resetPup();
         }
     }
