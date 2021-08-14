@@ -4,10 +4,7 @@ using System.Collections;
 public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
 {
     private bool hitColetavel1;
-    private bool hitColetavel2;
-
-    private Material matIn;
-    private Material matOut;
+    private bool hitColetavel2;    
 
     private ColetavelTile coletavel1;
     private ColetavelTile coletavel2;
@@ -18,9 +15,6 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
     public TeleportePowerUpGo() 
         : base(powerUpDto.VazioPUp, "teleporte")
     {
-        this.matIn = powerUpDto.MatTeleporteIn;
-        this.matOut = powerUpDto.MatTeleporteOut;
-
         miras = new ColetaveisMiras();
     }    
 
@@ -86,8 +80,10 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
     private IEnumerator fazerTeleporte()
     {
         Sprite spr1 = coletavel1.getSprite();
-        Sprite spr2 = coletavel2.getSprite();        
+        Sprite spr2 = coletavel2.getSprite();
 
+        Material matIn = powerUpDto.TeleporteDto.MatTeleporteIn;
+        Material matOut = powerUpDto.TeleporteDto.MatTeleporteOut;
         matIn.SetTexture("inSprite", spr1.texture);
         matIn.SetTexture("outSprite", spr2.texture);
 
@@ -100,7 +96,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         float contador = 0;
         while(contador < 1.01f)
         {
-            contador += Time.deltaTime * 0.75f;
+            contador += Time.deltaTime * powerUpDto.TeleporteDto.Velocidade;
             matOut.SetFloat("valor", contador);
             matIn.SetFloat("valor", contador);
             yield return null;
@@ -115,7 +111,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         coletavel1.desligarAnimacao();
         coletavel2.desligarAnimacao();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
         powerUpFinalizacao.finalizado();
         yield return null;
     }

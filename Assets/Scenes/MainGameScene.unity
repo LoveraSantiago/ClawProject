@@ -1050,6 +1050,7 @@ MonoBehaviour:
     parentParticulas: {fileID: 1488198862}
     luzSeguidora: {fileID: 1216567083}
   powerUpDto:
+    vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
     bombaDto:
       angGarra: 5
       delayInicial: 0.4
@@ -1059,7 +1060,13 @@ MonoBehaviour:
       velocidadeHit: 7.5
       anguloHit: 40
       bombaGo: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
-    missilNuclearPUp: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
+    missilNuclearDto:
+      angGarra: 4
+      halturaPos: -0.6
+      delayInicial: 0.4
+      delayExplosao: 0.25
+      delayFinal: 1.1
+      missilNuclearGo: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
     minaDto:
       haltura: -3.7
       delayExplosao: 0.25
@@ -1089,9 +1096,11 @@ MonoBehaviour:
         - {fileID: 1245264351}
         - {fileID: 1245264350}
         - {fileID: 1245264348}
-    vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
-    matTeleporteIn: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
-    matTeleporteOut: {fileID: 2100000, guid: e4da0d30a658a4541a919c42171abb7f, type: 2}
+    teleporteDto:
+      velocidade: 0.75
+      delayFinal: 0.5
+      matTeleporteIn: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
+      matTeleporteOut: {fileID: 2100000, guid: e4da0d30a658a4541a919c42171abb7f, type: 2}
     asaDto:
       layer: 32
       gravidadeNeg: -0.1
