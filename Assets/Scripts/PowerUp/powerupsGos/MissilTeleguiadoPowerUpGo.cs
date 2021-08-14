@@ -14,16 +14,14 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     private ColetaveisMiras miras;
     private CapsuleCollider2D capsuleCollider;
     
-    private Vector2[] pathMissilRecalculado;
-    private PathMissilDto pathMissilDto;
+    private Vector2[] pathMissilRecalculado;    
     private Animator animator;
 
     private Coroutine coroutine;
 
     public MissilTeleguiadoPowerUpGo() : 
-        base(powerUpDto.MissilTeleguiadoPUp, "missil-teleguiado")
-    {
-        this.pathMissilDto = powerUpDto.PathMissilDto;
+        base(powerUpDto.MissilTeleguiadoDto.MissilGo, "missil-teleguiado")
+    {        
         MISSIL_ACIONADO = Animator.StringToHash("missil-acionado");
         MISSIL_EXPLOSAO = Animator.StringToHash("explosao");
         MISSIL_IDLE     = Animator.StringToHash("idle");
@@ -43,12 +41,12 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
 
     public float getAnguloParaGarraSegurar()
     {
-        return 16f;
+        return powerUpDto.MissilTeleguiadoDto.AngGarra;
     }
 
     public override void colocarNaPosicao(Vector3 posicao)
     {
-        base.colocarNaPosicao(posicao + new Vector3(0, -0.4f, 0));
+        base.colocarNaPosicao(posicao + new Vector3(0, powerUpDto.MissilTeleguiadoDto.HalturaPos, 0));
     }
 
     public override void configurarPup()
@@ -112,7 +110,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
 
         while (true)
         {
-            contador += (2.5f * Time.deltaTime);
+            contador += (powerUpDto.MissilTeleguiadoDto.Velocidade * Time.deltaTime);
             Vector2 posicao = Utils.cubicCurve(p1, p2, p3, p4, contador);
             Vector2 posNext = Utils.cubicCurve(p1, p2, p3, p4, contador + 0.01f);
             colocarNaPosicao(posicao);
@@ -132,7 +130,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
                 //Debug.Log("********************");
                 contador = 0;
                 contadorIndice++;
-                if ((contadorIndice * 3 + 3) > pathMissilDto.PathPointsMissil.Length)
+                if ((contadorIndice * 3 + 3) > powerUpDto.MissilTeleguiadoDto.PathMissilDto.PathPointsMissil.Length)
                 {
                     break;
                 }
@@ -150,37 +148,40 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         colocarNaPosicao(coletavel.getPosicao());
         parar();
         animator.Play(MISSIL_EXPLOSAO);
-        coletavel.disparar(0, 20f);
+        coletavel.disparar(powerUpDto.MissilTeleguiadoDto.VelocidadeHit, powerUpDto.MissilTeleguiadoDto.VelocidadeHit);
         coletavel.desligarAnimacao();
 
         PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         powerUpFinalizacao.preFinalizar();
 
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(powerUpDto.MissilTeleguiadoDto.DelayFinalizar);
         resetPup();
         yield return null;
     }    
 
     private void recalcularPath(Vector3 posicaoFim)
     {
-        if(posicaoFim.x > 0)
+        PathMissilDto pathMissil = powerUpDto.MissilTeleguiadoDto.PathMissilDto;
+        Transform tranformMain = pathMissil.GoMainPath.transform;
+        if (posicaoFim.x > 0)
         {
-            pathMissilDto.GoMainPath.transform.localScale = new Vector3(-1f, 1f, 1f);
+            tranformMain.localScale = new Vector3(-1f, 1f, 1f);
         }
         else
         {
-            pathMissilDto.GoMainPath.transform.localScale = new Vector3(1f, 1f, 1f);
+            tranformMain.localScale = new Vector3(1f, 1f, 1f);
         }
 
-        pathMissilRecalculado = new Vector2[pathMissilDto.PathPointsMissil.Length];
-        for(int contador = 0; contador < pathMissilDto.PathPointsMissil.Length; contador++)
+        int lenghPath = pathMissil.PathPointsMissil.Length;
+        pathMissilRecalculado = new Vector2[lenghPath];
+        for(int contador = 0; contador < lenghPath; contador++)
         {
-            pathMissilRecalculado[contador] = pathMissilDto.PathPointsMissil[contador].position;
+            pathMissilRecalculado[contador] = pathMissil.PathPointsMissil[contador].position;
         }
 
-        pathMissilRecalculado[pathMissilRecalculado.Length - 1] = posicaoFim;
-        pathMissilRecalculado[pathMissilRecalculado.Length - 2] = new Vector2(posicaoFim.x, pathMissilRecalculado[pathMissilRecalculado.Length - 2].y);
+        pathMissilRecalculado[lenghPath - 1] = posicaoFim;
+        pathMissilRecalculado[lenghPath - 2] = new Vector2(posicaoFim.x, pathMissilRecalculado[lenghPath - 2].y);
     }
 
     public override void timeout()

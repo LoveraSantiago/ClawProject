@@ -1060,29 +1060,35 @@ MonoBehaviour:
       anguloHit: 40
       bombaGo: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
     missilNuclearPUp: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
-    minaTerrestrePUp: {fileID: 4127936681606313068, guid: 60283f6ad83360741b3927cd1859a108, type: 3}
     minaDto:
       haltura: -3.7
       delayExplosao: 0.25
       delayPosExplosao: 1.1
       minaTerrestreGo: {fileID: 4127936681606313068, guid: 60283f6ad83360741b3927cd1859a108, type: 3}
-    missilTeleguiadoPUp: {fileID: 4127936681606313068, guid: f4b85493ee34d5749b9c9e3d0dd804d1, type: 3}
-    pathMissilDto:
-      goMainPath: {fileID: 1245264362}
-      pathPointsMissil:
-      - {fileID: 1245264361}
-      - {fileID: 1245264360}
-      - {fileID: 1245264359}
-      - {fileID: 1245264358}
-      - {fileID: 1245264357}
-      - {fileID: 1245264356}
-      - {fileID: 1245264355}
-      - {fileID: 1245264354}
-      - {fileID: 1245264353}
-      - {fileID: 1245264352}
-      - {fileID: 1245264351}
-      - {fileID: 1245264350}
-      - {fileID: 1245264348}
+    missilTeleguiadoDto:
+      angGarra: 16
+      halturaPos: -0.4
+      velocidade: 2.5
+      anguloHit: 0
+      velocidadeHit: 20
+      delayFinalizar: 1.1
+      missilGo: {fileID: 4127936681606313068, guid: f4b85493ee34d5749b9c9e3d0dd804d1, type: 3}
+      pathMissilDto:
+        goMainPath: {fileID: 1245264362}
+        pathPointsMissil:
+        - {fileID: 1245264361}
+        - {fileID: 1245264360}
+        - {fileID: 1245264359}
+        - {fileID: 1245264358}
+        - {fileID: 1245264357}
+        - {fileID: 1245264356}
+        - {fileID: 1245264355}
+        - {fileID: 1245264354}
+        - {fileID: 1245264353}
+        - {fileID: 1245264352}
+        - {fileID: 1245264351}
+        - {fileID: 1245264350}
+        - {fileID: 1245264348}
     vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
     matTeleporteIn: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
     matTeleporteOut: {fileID: 2100000, guid: e4da0d30a658a4541a919c42171abb7f, type: 2}

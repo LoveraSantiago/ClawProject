@@ -9,9 +9,8 @@ public class PowerUpDto
     [SerializeField] private GameObject missilNuclearPUp;
     [Space(5)]    
     [SerializeField] private MinaDto minaDto;
-    [Space(5)]
-    [SerializeField] private GameObject missilTeleguiadoPUp;
-    [SerializeField] private PathMissilDto pathMissilDto;
+    [Space(5)]        
+    [SerializeField] private MissilTeleguiadoDto missilTeleguiadoDto;
     [Space(5)]
     [SerializeField] private GameObject vazioPUp;
     [Space(5)]
@@ -23,9 +22,8 @@ public class PowerUpDto
     public BombaDto BombaDto { get { return bombaDto; } }
     public GameObject MissilNuclearPUp { get { return missilNuclearPUp; } }    
     public MinaDto MinaDto { get { return minaDto; } }
-
-    public GameObject MissilTeleguiadoPUp { get { return missilTeleguiadoPUp; } }
-    public PathMissilDto PathMissilDto { get { return pathMissilDto; } }
+    
+    public MissilTeleguiadoDto MissilTeleguiadoDto { get { return missilTeleguiadoDto; }}
 
     public GameObject VazioPUp { get { return vazioPUp; } }
     public Material MatTeleporteIn { get { return matTeleporteIn; } }
