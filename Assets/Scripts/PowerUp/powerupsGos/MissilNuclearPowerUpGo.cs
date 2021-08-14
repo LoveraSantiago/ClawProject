@@ -14,7 +14,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
     private Animator animator;
  
     public MissilNuclearPowerUpGo()
-        : base(powerUpDto.MissilNuclearPUp, "missil-nuclear")
+        : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, "missil-nuclear")
     {
         missil_explosao = Animator.StringToHash("explosao");
         missil_idle = Animator.StringToHash("idle");
@@ -34,12 +34,12 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
     public float getAnguloParaGarraSegurar()
     {
-        return 4f;
+        return powerUpDto.MissilNuclearDto.AngGarra;
     }
 
     public override void colocarNaPosicao(Vector3 posicao)
     {        
-        base.colocarNaPosicao(posicao + new Vector3(0, -0.60f, 0));
+        base.colocarNaPosicao(posicao + new Vector3(0, powerUpDto.MissilNuclearDto.HalturaPos, 0));
     }
 
     public override void configurarPup()
@@ -77,17 +77,17 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
     private IEnumerator explodir()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayInicial);
 
         goExplosao.SetActive(true);
         animator.Play(missil_explosao);        
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayExplosao);
 
         goExplosao.SetActive(false);
         GrandeExplosaoShake explosaoShake = new GrandeExplosaoShake(monoBehaviour);
         explosaoShake.shake();
         resetPup();
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayFinal);
 
         powerUpFinalizacao.finalizado();
         yield return null;
