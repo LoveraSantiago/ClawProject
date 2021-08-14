@@ -5,6 +5,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
 {
     private readonly int VOADA;
 
+
     private bool hitColetavel;
 
     private ColetaveisMiras miras;
@@ -13,7 +14,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
     private Coroutine coroutine;
 
     public AsaPowerUpGo() 
-        : base(powerUpDto.AsaPup, new GetGoComSpriteRenderer(), "Asas")
+        : base(powerUpDto.AsaDto.AsaGo, new GetGoComSpriteRenderer(), "Asas")
     {
         VOADA = Animator.StringToHash("voada");
         Debug.Log("Asa Instanciado");
@@ -55,7 +56,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
                     ColetavelTile coletavelParaVoar = coletavelQuery.getColetavelInGameByName(nomeAlvo);
                                         
                     colocarNaPosicao(coletavelParaVoar.getPosicao());
-                    receberSprite(coletavelParaVoar.getSprite(), 32);
+                    receberSprite(coletavelParaVoar.getSprite(), powerUpDto.AsaDto.Layer);
 
                     coletavelParaVoar.desligar();
                     ligar();
@@ -70,15 +71,15 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator voar(ColetavelTile coletavelAcertado)
     {
-        setGravidade(-0.1f);
+        setGravidade(powerUpDto.AsaDto.GravidadeNeg);
         circleCollider.isTrigger = true;
         animator.Play(VOADA);
 
         Vector3 posicaoInicial = getPosicao();
-        float posXmax = posicaoInicial.x + 0.3f;
-        float posXmin = posicaoInicial.x - 0.3f;
+        float posXmax = posicaoInicial.x + powerUpDto.AsaDto.Offset;
+        float posXmin = posicaoInicial.x - powerUpDto.AsaDto.Offset;
 
-        while (getPosicao().y < 3)
+        while (getPosicao().y < powerUpDto.AsaDto.Haltura)
         {
             Vector3 posicaoAtual = getPosicao();
             float xZigZag = Mathf.Lerp(posXmin, posXmax, Mathf.PingPong(Time.time, 1f));
@@ -89,7 +90,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
         powerUpFinalizacao.preFinalizar(coletavelAcertado);
         desligar();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(powerUpDto.AsaDto.DelayFinalizar);
 
         powerUpFinalizacao.finalizado();
         yield return null;

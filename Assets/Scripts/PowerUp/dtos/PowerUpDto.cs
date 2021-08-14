@@ -18,7 +18,7 @@ public class PowerUpDto
     [SerializeField] private Material matTeleporteIn;
     [SerializeField] private Material matTeleporteOut;
     [Space(3)]
-    [SerializeField] private GameObject asaPup;
+    [SerializeField] private AsaDto asaDto;
  
     public GameObject BombPUp { get { return bomdPUp; } }
     public GameObject MissilNuclearPUp { get { return missilNuclearPUp; } }
@@ -31,5 +31,5 @@ public class PowerUpDto
     public Material MatTeleporteIn { get { return matTeleporteIn; } }
     public Material MatTeleporteOut { get { return matTeleporteOut; } }
 
-    public GameObject AsaPup { get { return asaPup; } }
+    public AsaDto AsaDto { get { return asaDto; } }
 }
