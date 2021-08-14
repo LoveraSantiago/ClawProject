@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BombaPowerUpGo : AbstractPowerUpGo,
                               ConsumidorDeEventoCollider,
-                              GarraInteracaoComPowerUp
+                              PowerUpInteracaoComGarra
 {    
     private bool acionado;
 
@@ -28,7 +28,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         return PowerUpEntidade.INTERACAOGARRA.MOVIMENTO;
     }
 
-    public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
+    public override PowerUpInteracaoComGarra getObjInteracaoComGarra()
     {
         return this;
     }

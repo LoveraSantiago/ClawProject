@@ -10,7 +10,7 @@ public abstract class AbstractPowerUpGo : Coletavel
 
     private bool configurado;    
     
-    public abstract GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra();
+    public abstract PowerUpInteracaoComGarra getObjInteracaoComGarra();
     public abstract void configurarPup();
     public abstract void iniciarPup();
     public abstract void resetPup();

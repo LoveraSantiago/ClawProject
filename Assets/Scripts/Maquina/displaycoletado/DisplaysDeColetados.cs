@@ -32,7 +32,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     
     public void processarPowerUp(PowerUpInfo powerUpInfo)
     {
-        //powerUpInfo.
+        //powerUpInfo
     }
     
     public ArcoIrisConjunto getDisplayColetadoGlow()

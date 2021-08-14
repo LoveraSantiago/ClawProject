@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
-                                         GarraInteracaoComPowerUp
+                                         PowerUpInteracaoComGarra
 {
     private readonly int MISSIL_ACIONADO;
     private readonly int MISSIL_EXPLOSAO;
@@ -34,7 +34,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         return PowerUpEntidade.INTERACAOGARRA.PARADO;
     }
 
-    public override GarraInteracaoComPowerUp getObjetoDeInteracaoComGarra()
+    public override PowerUpInteracaoComGarra getObjInteracaoComGarra()
     {
         return this;
     }

@@ -59,7 +59,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
-    public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
+    public void receberGarraInteracaoComPowerUp(PowerUpInteracaoComGarra garraInteracaoPowerUp, float tempoDuracao)
     {
         MovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(garraInteracaoPowerUp);                
         contadorDeFimTempo.configTempoParaAcao(tempoDuracao);

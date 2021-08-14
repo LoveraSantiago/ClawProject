@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface GarraInteracaoComPowerUp 
+public interface PowerUpInteracaoComGarra 
 {
     PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra();
 

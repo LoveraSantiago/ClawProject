@@ -20,7 +20,7 @@ public class PowerUpManager : PowerUpAcionamento,
 
         PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.INICIO)
             .configurarDuracaoTempo(powerUp.duracao)
-            .configurarObjetoInteracaoComGarra(interacaoComPowerUp.getObjetoDeInteracaoComGarra());
+            .configurarObjetoInteracaoComGarra(interacaoComPowerUp.getObjInteracaoComGarra());
 
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
@@ -32,7 +32,7 @@ public class PowerUpManager : PowerUpAcionamento,
 
         PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.INICIO)
             .configurarDuracaoTempo(powerUp.duracao)
-            .configurarObjetoInteracaoComGarra(interacaoComPowerUp.getObjetoDeInteracaoComGarra());
+            .configurarObjetoInteracaoComGarra(interacaoComPowerUp.getObjInteracaoComGarra());
 
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }   

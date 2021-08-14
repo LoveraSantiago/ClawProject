@@ -5,7 +5,7 @@ public class PowerUpInfo
     public ESTADO estadoAtual;
     public int duracaoTempo{ get; private set; }
     public ColetavelTile coletavelTile { get; private set; }
-    public GarraInteracaoComPowerUp garraInteracaoPowerUp { get; private set; }
+    public PowerUpInteracaoComGarra garraInteracaoPowerUp { get; private set; }
 
     public PowerUpInfo(ESTADO estado)
     {
@@ -18,7 +18,7 @@ public class PowerUpInfo
         return this;
     }
 
-    public PowerUpInfo configurarObjetoInteracaoComGarra(GarraInteracaoComPowerUp garraInteracaoPowerUp)
+    public PowerUpInfo configurarObjetoInteracaoComGarra(PowerUpInteracaoComGarra garraInteracaoPowerUp)
     {
         this.garraInteracaoPowerUp = garraInteracaoPowerUp;
         return this;
