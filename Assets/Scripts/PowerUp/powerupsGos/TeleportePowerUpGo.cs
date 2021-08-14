@@ -49,15 +49,15 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         hitColetavel1 = false;
         hitColetavel2 = false;
         ColetavelQuery coletavelQuery = new ColetavelQuery();
-
+        ColetavelHit coletavelHit = new ColetavelHit();
         while (!hitColetavel1)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
-            {                
-                Collider2D coletavelHit = getColetavelHit();
-                if (coletavelHit != null)
+            {
+                Collider2D coletavelAcertado = coletavelHit.hit(inputGame);
+                if (coletavelAcertado != null)
                 {
-                    string nomeAlvo = coletavelHit.name;
+                    string nomeAlvo = coletavelAcertado.name;
                     coletavel1 = coletavelQuery.getColetavelInGameByName(nomeAlvo);
                     coletavel1.ligarAnimacaoMiraSelecionado();
                     hitColetavel1 = true;                    
@@ -70,10 +70,10 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
-                Collider2D coletavelHit = getColetavelHit();
-                if (coletavelHit != null)
+                Collider2D coletavelAcertado = coletavelHit.hit(inputGame);
+                if (coletavelAcertado != null)
                 {
-                    string nomeAlvo = coletavelHit.name;
+                    string nomeAlvo = coletavelAcertado.name;
                     coletavel2 = coletavelQuery.getColetavelInGameByName(nomeAlvo);
                     if (!coletavel1.nome.Equals(coletavel2.nome))
                     {
