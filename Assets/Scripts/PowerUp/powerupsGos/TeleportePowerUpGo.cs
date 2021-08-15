@@ -18,9 +18,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         miras = new ColetaveisMiras();
     }    
 
-    public override void configurarPup()
-    {
-    }
+    public override void configurarPup(){}
 
     public override void iniciarPup()
     {
@@ -28,10 +26,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvos());
     }
 
-    public override void resetPup()
-    {
-        
-    }
+    public override void resetPup(){}
 
     private IEnumerator selecionarAlvos()
     {

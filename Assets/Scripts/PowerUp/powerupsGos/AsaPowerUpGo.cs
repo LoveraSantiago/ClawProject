@@ -32,10 +32,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
         coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
-    public override void resetPup()
-    {
-        
-    }
+    public override void resetPup(){}
 
     private IEnumerator selecionarAlvo()
     {

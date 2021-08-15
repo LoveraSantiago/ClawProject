@@ -16,15 +16,9 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         return this;
     }
 
-    public override void configurarPup()
-    {
-        
-    }
+    public override void configurarPup(){}
     
-    public override void iniciarPup()
-    {
-        
-    }
+    public override void iniciarPup(){}
 
     public override void resetPup()
     {
