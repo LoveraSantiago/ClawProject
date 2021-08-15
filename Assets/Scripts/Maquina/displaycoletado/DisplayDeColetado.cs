@@ -13,6 +13,7 @@ public class DisplayDeColetado
       
     private GlowEfeito glowEfeito;
     private AnimacaoDisplayColetado animacao;
+    private MovimentadorDeSlots slots;
 
     private SingleDisplayColetadoDto sDisplayDto;
 
@@ -30,6 +31,8 @@ public class DisplayDeColetado
 
         Vector3 localPosition = sDisplayDto.GoSlotBaixo.transform.localPosition;
         posicaoDesejada = new Vector3(localPosition.x, 0.5f, localPosition.z);
+
+        slots = new MovimentadorDeSlots();
     }    
 
     public void configuradoPeloLevel(Color corDisplay, Color corDentro)
@@ -64,91 +67,30 @@ public class DisplayDeColetado
     public IEnumerator subirSlotBaixo(Sprite sprite)
     {
         ocupado = true;
-
         sDisplayDto.SlotSpriteBaixo.sprite = sprite;
         ligarGlowLuz();
-        yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
-
-        while(slotBaixoAtingiuPosicao(posicaoDesejada))        
-        {
-            moverSlotBaixoAtePosicao(posicaoDesejada);
-            yield return null;
-        }
-
-        sDisplayDto.GoSlotBaixo.transform.localPosition = posicaoDesejada;
-        yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
+        yield return slots.subirSlotBaixo(sDisplayDto.GoSlotBaixo, posicaoDesejada, displayColetadoDto);        
         desligarGlow();
     }   
 
     public IEnumerator descerSlotBaixo()
     {
         ocupado = false;
-
-        yield return new WaitForSeconds(displayColetadoDto.FimDelay);
-
-        while(slotBaixoAtingiuPosicao(posicaoSlotBaixoInicial))        
-        {            
-            moverSlotBaixoAtePosicao(posicaoSlotBaixoInicial);
-            yield return null;
-        }
-        sDisplayDto.GoSlotBaixo.transform.localPosition = posicaoSlotBaixoInicial;
+        yield return slots.descerSlotBaixo(sDisplayDto.GoSlotBaixo, posicaoSlotBaixoInicial, displayColetadoDto);        
     }     
     
     public IEnumerator descerSlotCima(Sprite sprite)
     {
         sDisplayDto.SlotSpriteCima.sprite = sprite;
         sDisplayDto.SlotSpriteCima.color = Color.red;
-        while (slotCimaAtingiuPosicao(posicaoDesejada))
-        {
-            moverSlotCimaAtePosicao(posicaoDesejada);
-            yield return null;
-        }
-        sDisplayDto.GoSlotCima.transform.localPosition = posicaoDesejada;
-        yield return null;
+        yield return slots.descerSlotCima(sDisplayDto.GoSlotCima, posicaoDesejada, displayColetadoDto);        
     }
 
     public IEnumerator subirSlotCima()
     {
-        while (slotCimaAtingiuPosicao(posicaoSlotCimaInicial))
-        {
-            moverSlotCimaAtePosicao(posicaoSlotCimaInicial);
-            yield return null;
-        }
-        sDisplayDto.GoSlotBaixo.transform.localPosition = posicaoSlotCimaInicial;
-    }
-
-    private bool slotBaixoAtingiuPosicao(Vector3 posicao)
-    {
-        return slotaAtingiuPosicao(sDisplayDto.GoSlotBaixo, posicao);        
-    }
-
-    private bool slotCimaAtingiuPosicao(Vector3 posicao)
-    {
-        return slotaAtingiuPosicao(sDisplayDto.GoSlotCima, posicao);        
-    }
-
-    private bool slotaAtingiuPosicao(GameObject slot, Vector3 posicao)
-    {
-        return (Vector3.Distance(slot.transform.localPosition, posicao))
-               > (displayColetadoDto.VelocImg * Time.deltaTime);
-    }
-
-    private void moverSlotBaixoAtePosicao(Vector3 posicao)
-    {
-        moverSlotAtePosicao(sDisplayDto.GoSlotBaixo, posicao);        
-    }
-
-    private void moverSlotCimaAtePosicao(Vector3 posicao)
-    {
-        moverSlotAtePosicao(sDisplayDto.GoSlotCima, posicao);        
-    }
-
-    private void moverSlotAtePosicao(GameObject slot, Vector3 posicao)
-    {
-        float acrescimo = displayColetadoDto.VelocImg * Time.deltaTime;
-        slot.transform.localPosition = Vector3.MoveTowards(
-                slot.transform.localPosition, posicao, acrescimo);
-    }
+        yield return slots.subirSlotCima(sDisplayDto.GoSlotCima, posicaoSlotCimaInicial, displayColetadoDto);
+        sDisplayDto.SlotSpriteCima.sprite = null;
+    }    
 
     public void ligarGlowSucesso()
     {
