@@ -40,7 +40,7 @@ public class DisplayDeColetado
     {
         ocupado = true;
 
-        sDisplayDto.SprRendererColetado.sprite = sprite;
+        sDisplayDto.SlotSpriteBaixo.sprite = sprite;
         ligarGlowLuz();
         yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
 
