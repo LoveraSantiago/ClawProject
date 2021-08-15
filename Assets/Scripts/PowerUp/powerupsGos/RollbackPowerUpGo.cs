@@ -25,6 +25,11 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         
     }
 
+    public override void timeout()
+    {
+        powerUpFinalizacao.finalizado();
+    }
+
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
         return new FornecedorRollback();
