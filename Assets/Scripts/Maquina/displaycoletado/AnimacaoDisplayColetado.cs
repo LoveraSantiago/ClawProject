@@ -3,8 +3,8 @@ using UnityEngine;
 public class AnimacaoDisplayColetado 
 {
     private static readonly int IDLE           = Animator.StringToHash("idle");
-    private static readonly int MIRAR_ON       = Animator.StringToHash("mirar-on");
-    private static readonly int MIRAR_SELECTED = Animator.StringToHash("mirar-selected");
+    private static readonly int MIRAR_ON       = Animator.StringToHash("mira-on");
+    private static readonly int MIRAR_SELECTED = Animator.StringToHash("mira-selected");
 
     private Animator animator;
 
