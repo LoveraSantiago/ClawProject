@@ -7,7 +7,9 @@ public class SingleDisplayColetadoDto
     [SerializeField] private SpriteRenderer sprDisplay;
     [SerializeField] private SpriteRenderer sprRendererDentro;
     [SerializeField] private SpriteRenderer sprRendererDentroEfeito;
-    [Space(2)]
+    [Space(3)]
+    [SerializeField] private Animator animator;
+    [Space(3)]
     [SerializeField] private GameObject goColetado;
     [SerializeField] private SpriteRenderer sprRendererColetado;
 
@@ -15,6 +17,7 @@ public class SingleDisplayColetadoDto
     public SpriteRenderer SprRendererDentro { get { return sprRendererDentro; } }
     public SpriteRenderer SprRendererDentroEfeito { get { return sprRendererDentroEfeito; } }
 
+    public Animator Animator { get { return animator; } }
     public GameObject GoColetado { get { return goColetado; } }
     public SpriteRenderer SprRendererColetado { get { return sprRendererColetado; } }
 }

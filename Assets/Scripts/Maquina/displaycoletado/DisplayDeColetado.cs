@@ -10,12 +10,15 @@ public class DisplayDeColetado
     private Vector3 posicaoDesejada;
     private Vector3 posicaoInicial;
       
+    private GlowEfeito glowEfeito;
+    private AnimacaoDisplayColetado animacao;
     private SingleDisplayColetadoDto sDisplayDto;
-    private GlowEfeito glowEfeito;    
 
     public DisplayDeColetado(SingleDisplayColetadoDto singleDisplayColetadoDto)
     {
         sDisplayDto = singleDisplayColetadoDto;
+
+        animacao = new AnimacaoDisplayColetado(singleDisplayColetadoDto.Animator);
 
         MaterialGlow materialGlow = new MaterialGlow(displayColetadoDto.MaterialGlowDisplay);
         glowEfeito = new GlowEfeito(singleDisplayColetadoDto.SprRendererDentroEfeito.gameObject, materialGlow);        
@@ -61,7 +64,7 @@ public class DisplayDeColetado
     {
         if (ocupado)
         {
-
+            animacao.ligarAnimacaoMira();
         }
         else
         {
