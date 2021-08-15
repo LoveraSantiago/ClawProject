@@ -6,6 +6,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
                                  PowerUpInteracaoDisplayColetado
 {
     private Coroutine coroutine;
+    private bool finalizado;
 
     public RollbackPowerUpGo()
         :base(powerUpDto.VazioPUp, "rollback")
@@ -20,7 +21,9 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
 
     public override void configurarPup(){}
     
-    public override void iniciarPup(){}
+    public override void iniciarPup(){
+        finalizado = false;
+    }
 
     public void iniciar(InformacaoDisplayColetado[] informacaoDisplayColetados)
     {
@@ -33,7 +36,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     {
         if (reset)
         {
-            monoBehaviour.StartCoroutine(resetNoTempo(powerUpDto.RollBackDto.DelayReset));
+            monoBehaviour.StartCoroutine(resetImediato(powerUpDto.RollBackDto.DelayReset));
         }
     }
 
@@ -44,17 +47,15 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     }
 
     private IEnumerator getCliqueNoDisplayDeColetados(InformacaoDisplayColetado[] informacaoDisplayColetados)
-    {
-        bool finalizar = false;
-        string selecionado = null;
-        while(!finalizar)
+    {        
+        while(!finalizado)
         {
             for(int contador = 0; contador < informacaoDisplayColetados.Length; contador++)
             {
-                selecionado = informacaoDisplayColetados[contador].getColetavelDoDisplayAcertado(inputGame.getPosicaoTap());
-                if(selecionado != null)
+                finalizado = informacaoDisplayColetados[contador].getColetavelDoDisplayAcertado(inputGame.getPosicaoTap());
+                if(finalizado)
                 {
-                    finalizar = true;
+                    informacaoDisplayColetados[contador].descerSlotBaixo(monoBehaviour);
                     break;
                 }
             }
@@ -62,10 +63,11 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         }
     }
 
-    private IEnumerator resetNoTempo(float delayReset)
+    private IEnumerator resetImediato(float delayReset)
     {
         yield return new WaitForSeconds(delayReset);
-        timeout();
+        monoBehaviour.StopCoroutine(coroutine);
+        powerUpFinalizacao.finalizado();
     }
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()

@@ -87,11 +87,17 @@ public class DisplayDeColetado : InformacaoDisplayColetado
         yield return slots.descerSlotCima(sDisplayDto.GoSlotCima, posicaoDesejada, displayColetadoDto);        
     }
 
+    public void descerSlotBaixo(MonoBehaviour monoBehaviour)
+    {
+        monoBehaviour.StartCoroutine(descerSlotBaixo());
+    }
+
     public IEnumerator subirSlotCima()
     {
         yield return slots.subirSlotCima(sDisplayDto.GoSlotCima, posicaoSlotCimaInicial, displayColetadoDto);
         sDisplayDto.SlotSpriteCima.sprite = null;
-    }    
+    }
+
 
     public void ligarGlowSucesso()
     {
@@ -128,13 +134,9 @@ public class DisplayDeColetado : InformacaoDisplayColetado
         return sDisplayDto.SprRendererDentro.bounds.Contains(posicao);
     }
 
-    public string getColetavelDoDisplayAcertado(Vector2 posicao)
+    public bool getColetavelDoDisplayAcertado(Vector2 posicao)
     {
-        if (isOcupado() && isCliqueDentroArea(posicao))
-        {
-            return sDisplayDto.SlotSpriteCima.sprite.name;
-        }
-        return null;        
+        return isOcupado() && isCliqueDentroArea(posicao);        
     }
 
     public MaterialGlow getMaterialGlow()
@@ -145,6 +147,5 @@ public class DisplayDeColetado : InformacaoDisplayColetado
     public static void configurarDisplay(DisplayDeColetadoDto displayColetadoDtoArg)
     {
         displayColetadoDto = displayColetadoDtoArg;
-    }
-
+    }  
 }

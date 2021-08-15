@@ -47,7 +47,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
                 if (coletavelAcertado != null)
                 {
                     string nomeAlvo = coletavelAcertado.name;
-                    Debug.Log("Acertou " + nomeAlvo);
+                    //Debug.Log("Acertou " + nomeAlvo);
                     miras.desligar();
                     ColetavelTile coletavelParaVoar = coletavelQuery.getColetavelInGameByName(nomeAlvo);
                                         

@@ -2,5 +2,6 @@ using UnityEngine;
 
 public interface InformacaoDisplayColetado 
 {
-    string getColetavelDoDisplayAcertado(Vector2 posicao);
+    bool getColetavelDoDisplayAcertado(Vector2 posicao);
+    void descerSlotBaixo(MonoBehaviour monoBehaviour);
 }
