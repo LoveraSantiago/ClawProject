@@ -7,17 +7,19 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     private bool powerUpAcionado;
     private DisplayDeColetadoDto displayColetadoDto;    
     private DisplayDeColetado[] displayDeColetado;
-
+    private DisplayDeColetadosArcoIris displayArcoIris;
     private MonoBehaviour monoBehaviour;
     private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
 
     public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
+        this.displayColetadoDto = displayColetadoDto;
+        this.monoBehaviour = monoBehaviour;
+
         DisplayDeColetado.configurarDisplay(displayColetadoDto);
         inicializarDisplayDeColetado(displayColetadoDto.SingleDisplaysColetadoDto);
-        this.displayColetadoDto = displayColetadoDto;
 
-        this.monoBehaviour = monoBehaviour;
+        displayArcoIris = new DisplayDeColetadosArcoIris(displayDeColetado);
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();
     }    
 
@@ -36,6 +38,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
         if(powerUpInfo.interacaoDisplayColetado != null)
         {
             powerUpAcionado = true;
+            displayArcoIris.setarEstadoPowerUp(powerUpAcionado);
             displayDeColetado[0].mostrarAlvo(monoBehaviour);
             displayDeColetado[1].mostrarAlvo(monoBehaviour);
             displayDeColetado[2].mostrarAlvo(monoBehaviour);
@@ -46,16 +49,17 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     {
         if (powerUpAcionado)
         {
+            powerUpAcionado = false;
+            displayArcoIris.setarEstadoPowerUp(powerUpAcionado);
             displayDeColetado[0].desligarAlvo(monoBehaviour);
             displayDeColetado[1].desligarAlvo(monoBehaviour);
             displayDeColetado[2].desligarAlvo(monoBehaviour);
-            powerUpAcionado = false;
         }
     }
     
     public ArcoIrisConjunto getDisplayColetadoGlow()
     {
-        return new DisplayDeColetadosArcoIris(displayDeColetado);
+        return displayArcoIris;
     }
 
     private void inicializarDisplayDeColetado(SingleDisplayColetadoDto[] singlesDisplayColetadosDto)

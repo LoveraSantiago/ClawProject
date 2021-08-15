@@ -98,10 +98,10 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         if (evento.isInicio())
         {
+            displayDeColetados.processarPowerUp(evento);
             arcoIrisEfeito.ligarEfeitoArcoIris();
             displayTimer.pause();
             displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);
-            displayDeColetados.processarPowerUp(evento);
         }
         else if (evento.isPreFinalizar())
         {
