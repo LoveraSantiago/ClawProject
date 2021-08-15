@@ -32,7 +32,10 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     
     public void processarPowerUp(PowerUpInfo powerUpInfo)
     {
-        //powerUpInfo
+        if(powerUpInfo.interacaoDisplayColetado != null)
+        {
+
+        }
     }
     
     public ArcoIrisConjunto getDisplayColetadoGlow()
@@ -51,7 +54,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {        
         int indiceDesocupado = getIndicePrimeiroDisplayDesocupado();
-        yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].mostrarSprite(evento.sprite));
+        yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].subirSprite(evento.sprite));
 
         if (isTodosDisplayOcupados())
         {
@@ -64,9 +67,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
                 arcoIris.ligarBlinkRed();
             }
 
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[0].limparSprite(displayColetadoDto.FimDelay));
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[1].limparSprite(displayColetadoDto.FimDelay));
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[2].limparSprite(displayColetadoDto.FimDelay));
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[0].descerSprite(displayColetadoDto.FimDelay));
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[1].descerSprite(displayColetadoDto.FimDelay));
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[2].descerSprite(displayColetadoDto.FimDelay));
             yield return new WaitForSeconds(displayColetadoDto.FimDelay);
 
             arcoIris.desligarEfeito();

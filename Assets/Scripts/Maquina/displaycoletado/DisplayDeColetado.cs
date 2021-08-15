@@ -33,7 +33,7 @@ public class DisplayDeColetado
         sDisplayDto.SprRendererDentro.color = corDentro;
     }   
 
-    public IEnumerator mostrarSprite(Sprite sprite)
+    public IEnumerator subirSprite(Sprite sprite)
     {
         ocupado = true;
 
@@ -57,7 +57,20 @@ public class DisplayDeColetado
         desligarGlow();
     }   
 
-    public IEnumerator limparSprite(float inicialDelay)
+    public IEnumerator mostrarAlvo()
+    {
+        if (ocupado)
+        {
+
+        }
+        else
+        {
+
+        }
+        yield return null;
+    }
+
+    public IEnumerator descerSprite(float inicialDelay)
     {
         ocupado = false;
 
@@ -73,7 +86,6 @@ public class DisplayDeColetado
 
             yield return null;
         }
-
         sDisplayDto.GoColetado.transform.localPosition = posicaoInicial;
     }            
 
