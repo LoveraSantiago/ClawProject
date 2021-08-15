@@ -54,7 +54,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {        
         int indiceDesocupado = getIndicePrimeiroDisplayDesocupado();
-        yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].subirSprite(evento.sprite));
+        yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].subirSlotBaixo(evento.sprite));
 
         if (isTodosDisplayOcupados())
         {
@@ -67,9 +67,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
                 arcoIris.ligarBlinkRed();
             }
 
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[0].descerSprite(displayColetadoDto.FimDelay));
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[1].descerSprite(displayColetadoDto.FimDelay));
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[2].descerSprite(displayColetadoDto.FimDelay));
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[0].descerSlotBaixo(displayColetadoDto.FimDelay));
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[1].descerSlotBaixo(displayColetadoDto.FimDelay));
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[2].descerSlotBaixo(displayColetadoDto.FimDelay));
             yield return new WaitForSeconds(displayColetadoDto.FimDelay);
 
             arcoIris.desligarEfeito();

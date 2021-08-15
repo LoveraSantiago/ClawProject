@@ -23,41 +23,17 @@ public class DisplayDeColetado
         MaterialGlow materialGlow = new MaterialGlow(displayColetadoDto.MaterialGlowDisplay);
         glowEfeito = new GlowEfeito(singleDisplayColetadoDto.SprRendererDentroEfeito.gameObject, materialGlow);        
 
-        posicaoInicial = sDisplayDto.GoColetado.transform.localPosition;
+        posicaoInicial = sDisplayDto.GoSlotBaixo.transform.localPosition;
         posicaoDesejada = new Vector3(
-            sDisplayDto.GoColetado.transform.localPosition.x, 
+            sDisplayDto.GoSlotBaixo.transform.localPosition.x, 
             0.5f, 
-            sDisplayDto.GoColetado.transform.localPosition.z);
+            sDisplayDto.GoSlotBaixo.transform.localPosition.z);
     }    
 
     public void configuradoPeloLevel(Color corDisplay, Color corDentro)
     {
         sDisplayDto.SprDisplay.color = corDisplay;
         sDisplayDto.SprRendererDentro.color = corDentro;
-    }   
-
-    public IEnumerator subirSprite(Sprite sprite)
-    {
-        ocupado = true;
-
-        sDisplayDto.SlotSpriteBaixo.sprite = sprite;
-        ligarGlowLuz();
-        yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
-
-        while ((Vector3.Distance(sDisplayDto.GoColetado.transform.localPosition, posicaoDesejada))
-               > (displayColetadoDto.VelocImg * Time.deltaTime))
-        {
-            sDisplayDto.GoColetado.transform.localPosition = Vector3.MoveTowards(
-                sDisplayDto.GoColetado.transform.localPosition, 
-                posicaoDesejada, 
-                displayColetadoDto.VelocImg * Time.deltaTime);
-
-            yield return null;
-        }
-
-        sDisplayDto.GoColetado.transform.localPosition = posicaoDesejada;
-        yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
-        desligarGlow();
     }   
 
     public IEnumerator mostrarAlvo()
@@ -73,24 +49,52 @@ public class DisplayDeColetado
         yield return null;
     }
 
-    public IEnumerator descerSprite(float inicialDelay)
+    public IEnumerator subirSlotBaixo(Sprite sprite)
+    {
+        ocupado = true;
+
+        sDisplayDto.SlotSpriteBaixo.sprite = sprite;
+        ligarGlowLuz();
+        yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
+
+        while(slotBaixoAtingiuPosicao(posicaoDesejada))        
+        {
+            moverSlotBaixoAtePosicao(posicaoDesejada);
+            yield return null;
+        }
+
+        sDisplayDto.GoSlotBaixo.transform.localPosition = posicaoDesejada;
+        yield return new WaitForSeconds(displayColetadoDto.InicialDelay);
+        desligarGlow();
+    }   
+
+    public IEnumerator descerSlotBaixo(float inicialDelay)
     {
         ocupado = false;
 
         yield return new WaitForSeconds(inicialDelay);
 
-        while ((Vector3.Distance(sDisplayDto.GoColetado.transform.localPosition, posicaoInicial))
-               > (displayColetadoDto.VelocImg * Time.deltaTime))
-        {
-            sDisplayDto.GoColetado.transform.localPosition = Vector3.MoveTowards(
-                sDisplayDto.GoColetado.transform.localPosition, 
-                posicaoInicial, 
-                displayColetadoDto.VelocImg * Time.deltaTime);
-
+        while(slotBaixoAtingiuPosicao(posicaoInicial))        
+        {            
+            moverSlotBaixoAtePosicao(posicaoInicial);
             yield return null;
         }
-        sDisplayDto.GoColetado.transform.localPosition = posicaoInicial;
+        sDisplayDto.GoSlotBaixo.transform.localPosition = posicaoInicial;
     }            
+
+    private bool slotBaixoAtingiuPosicao(Vector3 posicao)
+    {
+        return (Vector3.Distance(sDisplayDto.GoSlotBaixo.transform.localPosition, posicao))
+               > (displayColetadoDto.VelocImg * Time.deltaTime);
+    }
+
+    private void moverSlotBaixoAtePosicao(Vector3 posicao)
+    {
+        sDisplayDto.GoSlotBaixo.transform.localPosition = Vector3.MoveTowards(
+                sDisplayDto.GoSlotBaixo.transform.localPosition,
+                posicao,
+                displayColetadoDto.VelocImg * Time.deltaTime);
+    }
 
     public void ligarGlowSucesso()
     {
