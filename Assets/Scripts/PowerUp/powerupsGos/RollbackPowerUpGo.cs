@@ -31,15 +31,29 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         
     }
 
+    public void resetImediato(bool reset)
+    {
+        if (reset)
+        {
+            monoBehaviour.StartCoroutine(resetNoTempo(powerUpDto.RollBackDto.DelayReset));
+        }
+    }
+
     public override void timeout()
     {
         powerUpFinalizacao.finalizado();
     }
 
+    private IEnumerator resetNoTempo(float delayReset)
+    {
+        yield return new WaitForSeconds(delayReset);
+        timeout();
+    }
+
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
         return new FornecedorRollback();
-    }
+    }  
 
     public class FornecedorRollback : Fornecedor<AbstractPowerUpGo>
     {

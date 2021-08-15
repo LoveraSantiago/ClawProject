@@ -35,13 +35,16 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     
     public void processarPowerUp(PowerUpInfo powerUpInfo)
     {
-        if(powerUpInfo.interacaoDisplayColetado != null)
+        PowerUpInteracaoDisplayColetado interacaoDisplayColetado = powerUpInfo.interacaoDisplayColetado;
+        if (interacaoDisplayColetado != null)
         {
             powerUpAcionado = true;
             displayArcoIris.setarEstadoPowerUp(powerUpAcionado);
             displayDeColetado[0].mostrarAlvo(monoBehaviour);
             displayDeColetado[1].mostrarAlvo(monoBehaviour);
             displayDeColetado[2].mostrarAlvo(monoBehaviour);
+
+            interacaoDisplayColetado.resetImediato(isTodosDisplaysDesocupados());
         }        
     }
 
@@ -113,6 +116,11 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     {
         return displayDeColetado[0].isOcupado() && displayDeColetado[1].isOcupado() && displayDeColetado[2].isOcupado();
     }            
+
+    private bool isTodosDisplaysDesocupados()
+    {
+        return displayDeColetado[0].isDesocupado() && displayDeColetado[1].isDesocupado() && displayDeColetado[2].isDesocupado();
+    }
 
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
     {

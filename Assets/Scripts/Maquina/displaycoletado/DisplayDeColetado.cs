@@ -123,6 +123,11 @@ public class DisplayDeColetado
         return !isOcupado();
     }
 
+    public bool isCliqueDentroArea(Vector2 posicao)
+    {
+        return sDisplayDto.SprRendererDentro.bounds.Contains(posicao);
+    }
+
     public MaterialGlow getMaterialGlow()
     {
         return glowEfeito.getMaterialGlow();
