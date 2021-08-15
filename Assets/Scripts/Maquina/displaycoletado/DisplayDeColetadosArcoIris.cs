@@ -34,6 +34,9 @@ public class DisplayDeColetadosArcoIris : ArcoIrisConjunto
 
     public void passarCor(Color cor)
     {
-        displayDeColetado[0].getMaterialGlow().setCorNoMaterial(cor);
+        if (!powerUpDisplayColetado)
+        {
+            displayDeColetado[0].getMaterialGlow().setCorNoMaterial(cor);
+        }
     }    
 }

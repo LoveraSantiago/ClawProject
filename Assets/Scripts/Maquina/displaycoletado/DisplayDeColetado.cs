@@ -51,6 +51,7 @@ public class DisplayDeColetado
         {
             monoBehaviour.StartCoroutine(descerSlotCima(displayColetadoDto.SprVazio));
         }
+        ligarGlowLuz();
     }
 
     public void desligarAlvo(MonoBehaviour monoBehavior)
