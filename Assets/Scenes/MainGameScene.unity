@@ -784,9 +784,9 @@ MonoBehaviour:
       furoBotao: {fileID: 1792373210}
       botao: {fileID: 875563508}
     displayDeColetadoDto:
-      inicialDelay: 0.35
-      fimDelay: 0.15
-      velocImg: 4.5
+      inicialDelay: 0.3
+      fimDelay: 0.1
+      velocImg: 3.5
       sprVazio: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
       materialGlowDisplay: {fileID: 2100000, guid: 355cf51cbb3442146a9683574825bf91, type: 2}
       singleDisplayColetado:

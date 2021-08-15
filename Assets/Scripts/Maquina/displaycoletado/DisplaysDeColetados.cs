@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
 {
+    private bool powerUpAcionado;
     private DisplayDeColetadoDto displayColetadoDto;    
     private DisplayDeColetado[] displayDeColetado;
 
@@ -34,14 +35,21 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     {
         if(powerUpInfo.interacaoDisplayColetado != null)
         {
-            Debug.Log("Acionando alvos displays coletados");
+            powerUpAcionado = true;
             displayDeColetado[0].mostrarAlvo(monoBehaviour);
             displayDeColetado[1].mostrarAlvo(monoBehaviour);
             displayDeColetado[2].mostrarAlvo(monoBehaviour);
-        }
-        else
+        }        
+    }
+
+    public void finalizarPowerUp()
+    {
+        if (powerUpAcionado)
         {
-            Debug.Log("Interacao com display coletado null");
+            displayDeColetado[0].desligarAlvo(monoBehaviour);
+            displayDeColetado[1].desligarAlvo(monoBehaviour);
+            displayDeColetado[2].desligarAlvo(monoBehaviour);
+            powerUpAcionado = false;
         }
     }
     

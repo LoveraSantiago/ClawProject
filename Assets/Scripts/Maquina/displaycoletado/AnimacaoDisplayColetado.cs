@@ -7,6 +7,7 @@ public class AnimacaoDisplayColetado
     private static readonly int MIRAR_SELECTED = Animator.StringToHash("mira-selected");
 
     private Animator animator;
+    public bool isMiraLigado { get; private set; }
 
     public AnimacaoDisplayColetado(Animator animator)
     {
@@ -15,16 +16,18 @@ public class AnimacaoDisplayColetado
 
     public void ligarAnimacaoMira()
     {
-        animator.Play(MIRAR_ON);     
+        animator.Play(MIRAR_ON);
+        isMiraLigado = true;
     }
 
     public void ligarAnimacaoMiraSelecionado()
     {
-        animator.Play(MIRAR_SELECTED);     
+        animator.Play(MIRAR_SELECTED);        
     }
 
     public void desligarAnimacao()
     {
-        animator.Play(IDLE);     
-    }
+        animator.Play(IDLE);
+        isMiraLigado = false;
+    }    
 }

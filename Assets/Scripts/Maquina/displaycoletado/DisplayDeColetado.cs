@@ -8,10 +8,12 @@ public class DisplayDeColetado
     private bool ocupado;
 
     private Vector3 posicaoDesejada;
-    private Vector3 posicaoInicial;
+    private Vector3 posicaoSlotBaixoInicial;
+    private Vector3 posicaoSlotCimaInicial;
       
     private GlowEfeito glowEfeito;
     private AnimacaoDisplayColetado animacao;
+
     private SingleDisplayColetadoDto sDisplayDto;
 
     public DisplayDeColetado(SingleDisplayColetadoDto singleDisplayColetadoDto)
@@ -23,11 +25,11 @@ public class DisplayDeColetado
         MaterialGlow materialGlow = new MaterialGlow(displayColetadoDto.MaterialGlowDisplay);
         glowEfeito = new GlowEfeito(singleDisplayColetadoDto.SprRendererDentroEfeito.gameObject, materialGlow);        
 
-        posicaoInicial = sDisplayDto.GoSlotBaixo.transform.localPosition;
-        posicaoDesejada = new Vector3(
-            sDisplayDto.GoSlotBaixo.transform.localPosition.x, 
-            0.5f, 
-            sDisplayDto.GoSlotBaixo.transform.localPosition.z);
+        posicaoSlotBaixoInicial = sDisplayDto.GoSlotBaixo.transform.localPosition;
+        posicaoSlotCimaInicial = sDisplayDto.GoSlotCima.transform.localPosition;
+
+        Vector3 localPosition = sDisplayDto.GoSlotBaixo.transform.localPosition;
+        posicaoDesejada = new Vector3(localPosition.x, 0.5f, localPosition.z);
     }    
 
     public void configuradoPeloLevel(Color corDisplay, Color corDentro)
@@ -45,6 +47,17 @@ public class DisplayDeColetado
         else
         {
             monoBehaviour.StartCoroutine(descerSlotCima(displayColetadoDto.SprVazio));
+        }
+    }
+
+    public void desligarAlvo(MonoBehaviour monoBehavior)
+    {
+        if (animacao.isMiraLigado)
+        {
+            animacao.desligarAnimacao();
+        }
+        else{
+            monoBehavior.StartCoroutine(subirSlotCima());
         }
     }
 
@@ -73,12 +86,12 @@ public class DisplayDeColetado
 
         yield return new WaitForSeconds(displayColetadoDto.FimDelay);
 
-        while(slotBaixoAtingiuPosicao(posicaoInicial))        
+        while(slotBaixoAtingiuPosicao(posicaoSlotBaixoInicial))        
         {            
-            moverSlotBaixoAtePosicao(posicaoInicial);
+            moverSlotBaixoAtePosicao(posicaoSlotBaixoInicial);
             yield return null;
         }
-        sDisplayDto.GoSlotBaixo.transform.localPosition = posicaoInicial;
+        sDisplayDto.GoSlotBaixo.transform.localPosition = posicaoSlotBaixoInicial;
     }     
     
     public IEnumerator descerSlotCima(Sprite sprite)
@@ -94,32 +107,47 @@ public class DisplayDeColetado
         yield return null;
     }
 
+    public IEnumerator subirSlotCima()
+    {
+        while (slotCimaAtingiuPosicao(posicaoSlotCimaInicial))
+        {
+            moverSlotCimaAtePosicao(posicaoSlotCimaInicial);
+            yield return null;
+        }
+        sDisplayDto.GoSlotBaixo.transform.localPosition = posicaoSlotCimaInicial;
+    }
+
     private bool slotBaixoAtingiuPosicao(Vector3 posicao)
     {
-        return (Vector3.Distance(sDisplayDto.GoSlotBaixo.transform.localPosition, posicao))
-               > (displayColetadoDto.VelocImg * Time.deltaTime);
+        return slotaAtingiuPosicao(sDisplayDto.GoSlotBaixo, posicao);        
     }
 
     private bool slotCimaAtingiuPosicao(Vector3 posicao)
     {
-        return (Vector3.Distance(sDisplayDto.GoSlotCima.transform.localPosition, posicao))
+        return slotaAtingiuPosicao(sDisplayDto.GoSlotCima, posicao);        
+    }
+
+    private bool slotaAtingiuPosicao(GameObject slot, Vector3 posicao)
+    {
+        return (Vector3.Distance(slot.transform.localPosition, posicao))
                > (displayColetadoDto.VelocImg * Time.deltaTime);
     }
 
     private void moverSlotBaixoAtePosicao(Vector3 posicao)
     {
-        sDisplayDto.GoSlotBaixo.transform.localPosition = Vector3.MoveTowards(
-                sDisplayDto.GoSlotBaixo.transform.localPosition,
-                posicao,
-                displayColetadoDto.VelocImg * Time.deltaTime);
+        moverSlotAtePosicao(sDisplayDto.GoSlotBaixo, posicao);        
     }
 
     private void moverSlotCimaAtePosicao(Vector3 posicao)
     {
-        sDisplayDto.GoSlotCima.transform.localPosition = Vector3.MoveTowards(
-                sDisplayDto.GoSlotCima.transform.localPosition,
-                posicao,
-                displayColetadoDto.VelocImg * Time.deltaTime);
+        moverSlotAtePosicao(sDisplayDto.GoSlotCima, posicao);        
+    }
+
+    private void moverSlotAtePosicao(GameObject slot, Vector3 posicao)
+    {
+        float acrescimo = displayColetadoDto.VelocImg * Time.deltaTime;
+        slot.transform.localPosition = Vector3.MoveTowards(
+                slot.transform.localPosition, posicao, acrescimo);
     }
 
     public void ligarGlowSucesso()
