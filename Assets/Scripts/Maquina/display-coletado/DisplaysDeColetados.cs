@@ -96,11 +96,11 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
             yield return new WaitForSeconds(displayColetadoDto.FimDelay);
 
             arcoIris.desligarEfeito();
-            produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(true));
+            produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(true, true, true));
         }
         else
         {
-            produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(false));
+            produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(false, false, false));
         }
 
         executorPosEvento.execute();        

@@ -1,9 +1,14 @@
 public class ColetadoFim 
 {
-    public bool clearDisplay { get; private set; }
+    public bool[] clear;
 
-    public ColetadoFim(bool clearColetados)
+    public ColetadoFim(bool clear1, bool clear2, bool clear3)
     {
-        this.clearDisplay = clearColetados;
+        clear = new bool[] { clear1, clear2, clear3 };
+    }
+
+    public bool devolverBoard()
+    {
+        return clear[0] && clear[1] && clear[2];
     }
 }

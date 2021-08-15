@@ -147,11 +147,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {
-        if (evento.clearDisplay)
-        {
-            boardManager.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour);
-            tudoDeSaida.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
-        }
+        boardManager.devolver(evento.devolverBoard(), contadorDeColetaveis.getArrayBoard(), monoBehaviour);
+        tudoDeSaida .devolver(evento.clear, contadorDeColetaveis.getArrayTubo(), monoBehaviour);        
     }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()

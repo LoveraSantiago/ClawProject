@@ -22,19 +22,17 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         torque = tuboDto.Torque;        
     }
 
-    public void devolver(Coletavel[] coletados, MonoBehaviour monoBehaviour)
-    {
-        if(coletados.Length > 0)
-        {
-            monoBehaviour.StartCoroutine(descerPeloTubo(coletados));
-        }
+    public void devolver(bool[] resultados, Coletavel[] coletados, MonoBehaviour monoBehaviour)
+    {        
+        monoBehaviour.StartCoroutine(descerPeloTubo(resultados, coletados));        
     }
 
-    private IEnumerator descerPeloTubo(Coletavel[] coletados)
+    private IEnumerator descerPeloTubo(bool[] resultados, Coletavel[] coletados)
     {        
-        if (coletados.Length > 0)
+        
+        for (int contador = 0; contador < coletados.Length; contador++)
         {
-            for (int contador = 0; contador < coletados.Length; contador++)
+            if (resultados[contador])
             {
                 torque *= -1;
                 Sprite spriteAtual = coletados[contador].getSprite();
@@ -42,7 +40,7 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
                 rigidBodies[contador].AddTorque(torque);
                 spriteRenderers[contador].sprite = spriteAtual;
             }
-        }
+        }        
         yield return null;
     }
 
