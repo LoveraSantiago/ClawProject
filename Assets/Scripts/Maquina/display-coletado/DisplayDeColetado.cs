@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class DisplayDeColetado 
+public class DisplayDeColetado : InformacaoDisplayColetado
 {
     private static DisplayDeColetadoDto displayColetadoDto;
 
@@ -128,6 +128,15 @@ public class DisplayDeColetado
         return sDisplayDto.SprRendererDentro.bounds.Contains(posicao);
     }
 
+    public string getColetavelDoDisplayAcertado(Vector2 posicao)
+    {
+        if (isOcupado() && isCliqueDentroArea(posicao))
+        {
+            return sDisplayDto.SlotSpriteCima.sprite.name;
+        }
+        return null;        
+    }
+
     public MaterialGlow getMaterialGlow()
     {
         return glowEfeito.getMaterialGlow();
@@ -137,4 +146,5 @@ public class DisplayDeColetado
     {
         displayColetadoDto = displayColetadoDtoArg;
     }
+
 }

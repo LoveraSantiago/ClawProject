@@ -44,6 +44,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
             displayDeColetado[1].mostrarAlvo(monoBehaviour);
             displayDeColetado[2].mostrarAlvo(monoBehaviour);
 
+            interacaoDisplayColetado.iniciar(displayDeColetado);
             interacaoDisplayColetado.resetImediato(isTodosDisplaysDesocupados());
         }        
     }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
                                  PowerUpInteracaoDisplayColetado
 {
+    private Coroutine coroutine;
+
     public RollbackPowerUpGo()
         :base(powerUpDto.VazioPUp, "rollback")
     {
@@ -20,10 +22,12 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     
     public override void iniciarPup(){}
 
-    public override void resetPup()
+    public void iniciar(InformacaoDisplayColetado[] informacaoDisplayColetados)
     {
-        
+        coroutine = monoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados(informacaoDisplayColetados));
     }
+
+    public override void resetPup(){}
 
     public void resetImediato(bool reset)
     {
@@ -35,7 +39,27 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
 
     public override void timeout()
     {
+        monoBehaviour.StopCoroutine(coroutine);
         powerUpFinalizacao.finalizado();
+    }
+
+    private IEnumerator getCliqueNoDisplayDeColetados(InformacaoDisplayColetado[] informacaoDisplayColetados)
+    {
+        bool finalizar = false;
+        string selecionado = null;
+        while(!finalizar)
+        {
+            for(int contador = 0; contador < informacaoDisplayColetados.Length; contador++)
+            {
+                selecionado = informacaoDisplayColetados[contador].getColetavelDoDisplayAcertado(inputGame.getPosicaoTap());
+                if(selecionado != null)
+                {
+                    finalizar = true;
+                    break;
+                }
+            }
+            yield return null;
+        }
     }
 
     private IEnumerator resetNoTempo(float delayReset)
