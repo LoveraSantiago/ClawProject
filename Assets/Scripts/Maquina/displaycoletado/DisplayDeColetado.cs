@@ -36,17 +36,16 @@ public class DisplayDeColetado
         sDisplayDto.SprRendererDentro.color = corDentro;
     }   
 
-    public IEnumerator mostrarAlvo()
+    public void mostrarAlvo(MonoBehaviour monoBehaviour)
     {
         if (ocupado)
         {
-            animacao.ligarAnimacaoMira();
+            animacao.ligarAnimacaoMira();            
         }
         else
         {
-
+            monoBehaviour.StartCoroutine(descerSlotCima(displayColetadoDto.SprVazio));
         }
-        yield return null;
     }
 
     public IEnumerator subirSlotBaixo(Sprite sprite)
@@ -68,11 +67,11 @@ public class DisplayDeColetado
         desligarGlow();
     }   
 
-    public IEnumerator descerSlotBaixo(float inicialDelay)
+    public IEnumerator descerSlotBaixo()
     {
         ocupado = false;
 
-        yield return new WaitForSeconds(inicialDelay);
+        yield return new WaitForSeconds(displayColetadoDto.FimDelay);
 
         while(slotBaixoAtingiuPosicao(posicaoInicial))        
         {            
@@ -80,7 +79,20 @@ public class DisplayDeColetado
             yield return null;
         }
         sDisplayDto.GoSlotBaixo.transform.localPosition = posicaoInicial;
-    }            
+    }     
+    
+    public IEnumerator descerSlotCima(Sprite sprite)
+    {
+        sDisplayDto.SlotSpriteCima.sprite = sprite;
+        sDisplayDto.SlotSpriteCima.color = Color.red;
+        while (slotCimaAtingiuPosicao(posicaoDesejada))
+        {
+            moverSlotCimaAtePosicao(posicaoDesejada);
+            yield return null;
+        }
+        sDisplayDto.GoSlotCima.transform.localPosition = posicaoDesejada;
+        yield return null;
+    }
 
     private bool slotBaixoAtingiuPosicao(Vector3 posicao)
     {
@@ -88,10 +100,24 @@ public class DisplayDeColetado
                > (displayColetadoDto.VelocImg * Time.deltaTime);
     }
 
+    private bool slotCimaAtingiuPosicao(Vector3 posicao)
+    {
+        return (Vector3.Distance(sDisplayDto.GoSlotCima.transform.localPosition, posicao))
+               > (displayColetadoDto.VelocImg * Time.deltaTime);
+    }
+
     private void moverSlotBaixoAtePosicao(Vector3 posicao)
     {
         sDisplayDto.GoSlotBaixo.transform.localPosition = Vector3.MoveTowards(
                 sDisplayDto.GoSlotBaixo.transform.localPosition,
+                posicao,
+                displayColetadoDto.VelocImg * Time.deltaTime);
+    }
+
+    private void moverSlotCimaAtePosicao(Vector3 posicao)
+    {
+        sDisplayDto.GoSlotCima.transform.localPosition = Vector3.MoveTowards(
+                sDisplayDto.GoSlotCima.transform.localPosition,
                 posicao,
                 displayColetadoDto.VelocImg * Time.deltaTime);
     }

@@ -30,7 +30,7 @@ public class PowerUpInfo
 
     public PowerUpInfo configInteracaoDisplayColetado(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
     {
-        this.interacaoComGarra = interacaoComGarra;
+        this.interacaoDisplayColetado = interacaoDisplayColetado;
         return this;
     }
 

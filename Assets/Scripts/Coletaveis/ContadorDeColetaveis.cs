@@ -24,7 +24,7 @@ public class ContadorDeColetaveis
     {
         totalColetaveis = total;
         this.backToBoard = backToBoard;
-        Debug.Log("Total: " + totalColetaveis);
+        //Debug.Log("Total: " + totalColetaveis);
     }
 
     public void adicionarColetado(ColetavelTile coletado)

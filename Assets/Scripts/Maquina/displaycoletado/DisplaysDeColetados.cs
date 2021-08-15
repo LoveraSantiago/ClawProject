@@ -34,7 +34,14 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     {
         if(powerUpInfo.interacaoDisplayColetado != null)
         {
-
+            Debug.Log("Acionando alvos displays coletados");
+            displayDeColetado[0].mostrarAlvo(monoBehaviour);
+            displayDeColetado[1].mostrarAlvo(monoBehaviour);
+            displayDeColetado[2].mostrarAlvo(monoBehaviour);
+        }
+        else
+        {
+            Debug.Log("Interacao com display coletado null");
         }
     }
     
@@ -67,9 +74,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
                 arcoIris.ligarBlinkRed();
             }
 
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[0].descerSlotBaixo(displayColetadoDto.FimDelay));
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[1].descerSlotBaixo(displayColetadoDto.FimDelay));
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[2].descerSlotBaixo(displayColetadoDto.FimDelay));
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[0].descerSlotBaixo());
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[1].descerSlotBaixo());
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[2].descerSlotBaixo());
             yield return new WaitForSeconds(displayColetadoDto.FimDelay);
 
             arcoIris.desligarEfeito();

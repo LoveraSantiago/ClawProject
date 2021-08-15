@@ -101,6 +101,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             arcoIrisEfeito.ligarEfeitoArcoIris();
             displayTimer.pause();
             displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);
+            displayDeColetados.processarPowerUp(evento);
         }
         else if (evento.isPreFinalizar())
         {
