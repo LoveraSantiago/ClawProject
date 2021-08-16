@@ -4,6 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class ColetaveisDto 
 {
+    [SerializeField] private int pontosColetado;
+    [SerializeField] private int pontosAcerto;
+    [Space(5)]
     [SerializeField] private GameObject sensorDeColetado;
     [SerializeField] private GameObject tile;
     [SerializeField] private CircleCollider2D referenciaColliderColetado;
@@ -13,6 +16,9 @@ public class ColetaveisDto
     [SerializeField] private TuboDto tuboDto;    
     [Space(5)]    
     [SerializeField] private BoardDto boardDto;
+
+    public int PontosColetados { get { return pontosColetado; } }
+    public int PontosAcerto { get { return pontosAcerto; } }
 
     public GameObject SensorDeColetado { get { return sensorDeColetado; } }    
     public GameObject Tile { get { return tile; } }    

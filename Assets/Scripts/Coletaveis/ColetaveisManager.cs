@@ -32,7 +32,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         configurarPoolDeColetaveis(coletaveisDto);
 
         boardManager = new BoardManager(coletaveisDto.BoardDto);
-        contadorDeColetaveis = new ContadorDeColetaveis();
+        contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
         tudoDeSaida = new TuboDeSaida(coletaveisDto.TuboDto);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();

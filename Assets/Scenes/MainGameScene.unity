@@ -717,6 +717,8 @@ MonoBehaviour:
       transfInicioCabo: {fileID: 1336653433}
       lineRenderer: {fileID: 958265029}
   coletaveisDto:
+    pontosColetado: 0
+    pontosAcerto: 0
     sensorDeColetado: {fileID: 2083913115}
     tile: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
     referenciaColliderColetado: {fileID: 1930189876}

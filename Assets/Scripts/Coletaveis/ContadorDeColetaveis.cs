@@ -5,6 +5,9 @@ public class ContadorDeColetaveis
     private int score = 0;
     private int qtdColetados = 0;
 
+    private int pontosColetado;
+    private int pontosAcerto;
+
     private bool backToBoard;
     private bool resultCombinacao;
     private int totalColetaveis;
@@ -14,8 +17,10 @@ public class ContadorDeColetaveis
     private ColetavelTile[] devolverTubo;
     private ColetavelTile[] arrayVazio;
 
-    public ContadorDeColetaveis()
+    public ContadorDeColetaveis(int pontosColetado, int pontosAcerto)
     {
+        this.pontosAcerto = pontosAcerto;
+        this.pontosColetado = pontosColetado;
         coletados = new ColetavelTile[3];
         arrayVazio = new ColetavelTile[0];        
     }
@@ -51,7 +56,7 @@ public class ContadorDeColetaveis
             devolverTubo = arrayVazio;
         }
 
-        score += 10;
+        score += pontosColetado;
     }
 
     public void adicionarColetaveisExtras(int qtd)
@@ -128,7 +133,7 @@ public class ContadorDeColetaveis
 
     private void adicionaPontuacao()
     {
-        score += 90;
+        score += pontosAcerto;
     }
 
     public int getScore()
