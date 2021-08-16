@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class ContadorDeColetaveis
 {
-    private int score = 0;
-    private int qtdColetados = 0;
+    private int score = 0;    
 
     private int pontosColetado;
     private int pontosAcerto;
@@ -37,7 +36,7 @@ public class ContadorDeColetaveis
         // Debug.Log(nomeColetado);
         adicionaAoContainerDeColetados(coletado);
 
-        if (qtdColetados > coletados.Length - 1)
+        if (isTodasPosicoesOcupadas())
         {
             if (isCombinacaoValida())
             {
@@ -103,8 +102,8 @@ public class ContadorDeColetaveis
 
     private void adicionaAoContainerDeColetados(ColetavelTile coletado)
     {
-        coletados[qtdColetados] = coletado;
-        qtdColetados++;
+        int indice = getPrimeiroIndiceVazio();
+        coletados[indice] = coletado;        
     }
 
     private void processarRetornoValido()
@@ -148,6 +147,20 @@ public class ContadorDeColetaveis
 
     private void resetarColetados()
     {
-        qtdColetados = 0;
+        coletados[0] = null;
+        coletados[1] = null;
+        coletados[2] = null;
+    }
+
+    private int getPrimeiroIndiceVazio()
+    {
+        if (coletados[0] == null) return 0;
+        if (coletados[1] == null) return 1;
+        return 2;        
+    }
+
+    private bool isTodasPosicoesOcupadas()
+    {
+        return coletados[0] != null && coletados[1] != null && coletados[2] != null;
     }
 }
