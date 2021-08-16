@@ -85,6 +85,15 @@ public class ContadorDeColetaveis
         return resultCombinacao;
     }
 
+    public void reajustarContagem(ColetadoFim evento)
+    {
+        if (evento.reajustarContador())
+        {
+            int indice = evento.getPrimeiroIndiceParaLimpar();
+            coletados[indice] = null;
+        }
+    }
+
     private bool isCombinacaoValida()
     {
         ColetavelTile primeiroColetado = coletados[0];
