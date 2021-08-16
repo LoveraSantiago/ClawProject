@@ -7,6 +7,11 @@ public class ColetadoFim
         clear = new bool[] { clear1, clear2, clear3 };
     }
 
+    public ColetadoFim(bool[] clears)
+        :this(clears[0], clears[1], clears[2])
+    {
+    }
+
     public bool devolverBoard()
     {
         return clear[0] && clear[1] && clear[2];

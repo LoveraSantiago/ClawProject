@@ -25,7 +25,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         finalizado = false;
     }
 
-    public void iniciar(InformacaoDisplayColetado[] informacaoDisplayColetados)
+    public void iniciar(InformacaoDisplayColetado informacaoDisplayColetados)
     {
         coroutine = monoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados(informacaoDisplayColetados));
     }
@@ -42,25 +42,23 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
 
     public override void timeout()
     {
-        monoBehaviour.StopCoroutine(coroutine);
-        powerUpFinalizacao.finalizado();
+        if (!finalizado)
+        {
+            monoBehaviour.StopCoroutine(coroutine);
+            powerUpFinalizacao.finalizado();
+        }
     }
 
-    private IEnumerator getCliqueNoDisplayDeColetados(InformacaoDisplayColetado[] informacaoDisplayColetados)
+    private IEnumerator getCliqueNoDisplayDeColetados(InformacaoDisplayColetado informacaoDisplayColetados)
     {        
         while(!finalizado)
         {
-            for(int contador = 0; contador < informacaoDisplayColetados.Length; contador++)
-            {
-                finalizado = informacaoDisplayColetados[contador].getColetavelDoDisplayAcertado(inputGame.getPosicaoTap());
-                if(finalizado)
-                {
-                    informacaoDisplayColetados[contador].descerSlotBaixo(monoBehaviour);
-                    break;
-                }
-            }
+            finalizado = informacaoDisplayColetados.acertouDisplay(inputGame.getPosicaoTap());                    
             yield return null;
-        }
+        }        
+        powerUpFinalizacao.preFinalizar();
+        yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
+        powerUpFinalizacao.finalizado();
     }
 
     private IEnumerator resetImediato(float delayReset)

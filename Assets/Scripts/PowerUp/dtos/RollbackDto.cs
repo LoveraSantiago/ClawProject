@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -7,6 +5,8 @@ using UnityEngine;
 public class RollbackDto 
 {
     [SerializeField] private float delayReset;
+    [SerializeField] private float delayFinalizar;
 
     public float DelayReset { get { return delayReset; } }
+    public float DelayFinalizar { get { return delayFinalizar; } }
 }

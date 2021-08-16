@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
+public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
+                                   InformacaoDisplayColetado
 {
     private bool powerUpAcionado;
     private DisplayDeColetadoDto displayColetadoDto;    
@@ -44,7 +45,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
             displayDeColetado[1].mostrarAlvo(monoBehaviour);
             displayDeColetado[2].mostrarAlvo(monoBehaviour);
 
-            interacaoDisplayColetado.iniciar(displayDeColetado);
+            interacaoDisplayColetado.iniciar(this);
             interacaoDisplayColetado.resetImediato(isTodosDisplaysDesocupados());
         }        
     }
@@ -64,6 +65,20 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     public ArcoIrisConjunto getDisplayColetadoGlow()
     {
         return displayArcoIris;
+    }
+
+    public bool acertouDisplay(Vector2 toque)
+    {
+        for(int contador = 0; contador < displayDeColetado.Length; contador++)
+        {
+            bool result = displayDeColetado[contador].isCliqueDentroArea(toque);
+            if (result)
+            {
+                monoBehaviour.StartCoroutine(descartarColetado(contador));
+                return true;
+            }
+        }
+        return false;
     }
 
     private void inicializarDisplayDeColetado(SingleDisplayColetadoDto[] singlesDisplayColetadosDto)
@@ -106,6 +121,16 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
         executorPosEvento.execute();        
     }   
 
+    private IEnumerator descartarColetado(int indice)
+    {
+        displayDeColetado[indice].mostrarAlvoSelecionado();
+        yield return displayDeColetado[indice].subirSlotCima();
+
+        bool[] result = new bool[3]{ false, false, false };
+        result[indice] = true;
+        produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(result));
+    }
+
     private int getIndicePrimeiroDisplayDesocupado()
     {
         if (displayDeColetado[0].isDesocupado()) return 0;
@@ -126,5 +151,5 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeEventoFimColetagem;
-    }
+    }   
 }

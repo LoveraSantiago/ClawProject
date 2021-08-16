@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class DisplayDeColetado : InformacaoDisplayColetado
+public class DisplayDeColetado 
 {
     private static DisplayDeColetadoDto displayColetadoDto;
 
@@ -54,6 +54,11 @@ public class DisplayDeColetado : InformacaoDisplayColetado
         ligarGlowLuz();
     }
 
+    public void mostrarAlvoSelecionado()
+    {
+        animacao.ligarAnimacaoMiraSelecionado();
+    }
+
     public void desligarAlvo(MonoBehaviour monoBehavior)
     {
         if (animacao.isMiraLigado)
@@ -85,12 +90,7 @@ public class DisplayDeColetado : InformacaoDisplayColetado
         sDisplayDto.SlotSpriteCima.sprite = sprite;
         sDisplayDto.SlotSpriteCima.color = Color.red;
         yield return slots.descerSlotCima(sDisplayDto.GoSlotCima, posicaoDesejada, displayColetadoDto);        
-    }
-
-    public void descerSlotBaixo(MonoBehaviour monoBehaviour)
-    {
-        monoBehaviour.StartCoroutine(descerSlotBaixo());
-    }
+    }    
 
     public IEnumerator subirSlotCima()
     {
@@ -131,13 +131,8 @@ public class DisplayDeColetado : InformacaoDisplayColetado
 
     public bool isCliqueDentroArea(Vector2 posicao)
     {
-        return sDisplayDto.SprRendererDentro.bounds.Contains(posicao);
-    }
-
-    public bool getColetavelDoDisplayAcertado(Vector2 posicao)
-    {
-        return isOcupado() && isCliqueDentroArea(posicao);        
-    }
+        return isOcupado() && sDisplayDto.SprRendererDentro.bounds.Contains(posicao);
+    }    
 
     public MaterialGlow getMaterialGlow()
     {
