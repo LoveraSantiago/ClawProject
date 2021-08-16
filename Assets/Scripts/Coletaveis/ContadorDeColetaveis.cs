@@ -91,6 +91,7 @@ public class ContadorDeColetaveis
         {
             int indice = evento.getPrimeiroIndiceParaLimpar();
             coletados[indice] = null;
+            Debug.Log("Reajuste de contagem no indice " + indice);
         }
     }
 
