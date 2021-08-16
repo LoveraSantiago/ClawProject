@@ -73,7 +73,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         {
             bool result = displayDeColetado[contador].isCliqueDentroArea(toque);
             if (result)
-            {
+            {                
                 monoBehaviour.StartCoroutine(descartarColetado(contador));
                 return true;
             }
@@ -123,8 +123,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
     private IEnumerator descartarColetado(int indice)
     {
+        Debug.Log("Acertou display indice " + indice);
         displayDeColetado[indice].mostrarAlvoSelecionado();
-        yield return displayDeColetado[indice].subirSlotCima();
+        yield return displayDeColetado[indice].descerSlotBaixo();
 
         bool[] result = new bool[3]{ false, false, false };
         result[indice] = true;

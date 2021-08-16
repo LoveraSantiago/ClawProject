@@ -27,7 +27,7 @@ public class DisplayDeColetado
         glowEfeito = new GlowEfeito(singleDisplayColetadoDto.SprRendererDentroEfeito.gameObject, materialGlow);        
 
         posicaoSlotBaixoInicial = sDisplayDto.GoSlotBaixo.transform.localPosition;
-        posicaoSlotCimaInicial = sDisplayDto.GoSlotCima.transform.localPosition;
+        posicaoSlotCimaInicial  = sDisplayDto.GoSlotCima.transform.localPosition;
 
         Vector3 localPosition = sDisplayDto.GoSlotBaixo.transform.localPosition;
         posicaoDesejada = new Vector3(localPosition.x, 0.5f, localPosition.z);
@@ -97,7 +97,6 @@ public class DisplayDeColetado
         yield return slots.subirSlotCima(sDisplayDto.GoSlotCima, posicaoSlotCimaInicial, displayColetadoDto);
         sDisplayDto.SlotSpriteCima.sprite = null;
     }
-
 
     public void ligarGlowSucesso()
     {
