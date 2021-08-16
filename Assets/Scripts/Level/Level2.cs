@@ -43,13 +43,21 @@ public class Level2 : AbstractLevel
 
     public override TipoContagemTempoDto getTempoContagem()
     {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.REGRESSIVA, "02:01");        
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.REGRESSIVA, "09:01");        
+        //return new TipoContagemTempoDto(ContadorTimer.Contagem.REGRESSIVA, "02:01");        
     }
 
     public override PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina()
     {
         return new PowerUpEntidade.NAME[] 
         {
+            PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,
+            PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,
+            PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,
+            PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,
+            PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,
+            PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,
+            PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,PowerUpEntidade.NAME.ROLLBACK,
             PowerUpEntidade.NAME.TELEPORTE     , PowerUpEntidade.NAME.ASAS          , PowerUpEntidade.NAME.ROLLBACK,
             PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
             PowerUpEntidade.NAME.TELEPORTE     , PowerUpEntidade.NAME.ASAS          , PowerUpEntidade.NAME.ROLLBACK,
