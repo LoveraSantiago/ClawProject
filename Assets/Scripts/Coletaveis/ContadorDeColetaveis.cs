@@ -10,15 +10,13 @@ public class ContadorDeColetaveis
     private bool resultCombinacao;
     private int totalColetaveis;
 
-    private ColetavelTile[] coletados;   
-    private ColetavelTile[] arrayVazio;
+    private ColetavelTile[] coletados;       
 
     public ContadorDeColetaveis(int pontosColetado, int pontosAcerto)
     {
         this.pontosAcerto = pontosAcerto;
         this.pontosColetado = pontosColetado;
-        coletados = new ColetavelTile[3];
-        arrayVazio = new ColetavelTile[0];        
+        coletados = new ColetavelTile[3];        
     }
 
     public void configurarTotalColetaveis(int total)
@@ -112,6 +110,11 @@ public class ContadorDeColetaveis
     public bool hasFinished()
     {
         return totalColetaveis == 0;
+    }
+
+    public ColetavelTile[] getColetados()
+    {
+        return coletados;
     }
 
     private void resetarColetados()

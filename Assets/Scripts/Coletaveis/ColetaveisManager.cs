@@ -72,8 +72,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         ColetavelTile coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
         coletavelAcertado.desligar();        
 
-        contadorDeColetaveis.adicionarColetado(coletavelAcertado);        
-        poolDeColetaveis.inativarColetaveis(contadorDeColetaveis.getArrayTubo());
+        contadorDeColetaveis.adicionarColetado(coletavelAcertado);
+        poolDeColetaveis.inativarColetavel(coletavelAcertado);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
@@ -147,8 +147,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {
         contadorDeColetaveis.reajustarContagem(evento);
-        boardManager.devolver(evento.devolverBoard(), contadorDeColetaveis.getArrayBoard(), monoBehaviour);
-        tuboDeSaida .devolver(evento.clear, contadorDeColetaveis.getArrayTubo(), monoBehaviour);        
+        boardManager.devolver(evento.devolverBoard(), contadorDeColetaveis.getColetados(), monoBehaviour);
+        tuboDeSaida .devolver(evento.clear, contadorDeColetaveis.getColetados(), monoBehaviour);        
     }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
