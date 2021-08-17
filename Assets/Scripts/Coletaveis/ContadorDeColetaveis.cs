@@ -6,14 +6,11 @@ public class ContadorDeColetaveis
 
     private int pontosColetado;
     private int pontosAcerto;
-
-    private bool backToBoard;
+    
     private bool resultCombinacao;
     private int totalColetaveis;
 
-    private ColetavelTile[] coletados;
-    private ColetavelTile[] devolverBoard;
-    private ColetavelTile[] devolverTubo;
+    private ColetavelTile[] coletados;   
     private ColetavelTile[] arrayVazio;
 
     public ContadorDeColetaveis(int pontosColetado, int pontosAcerto)
@@ -27,7 +24,6 @@ public class ContadorDeColetaveis
     public void configurarTotalColetaveis(int total)
     {
         totalColetaveis = total;
-        this.backToBoard = backToBoard;
         //Debug.Log("Total: " + totalColetaveis);
     }
 
@@ -35,7 +31,6 @@ public class ContadorDeColetaveis
     {
         // Debug.Log(nomeColetado);
         adicionaAoContainerDeColetados(coletado);
-
         if (isTodasPosicoesOcupadas())
         {
             if (isCombinacaoValida())
@@ -43,18 +38,15 @@ public class ContadorDeColetaveis
                 processarRetornoValido();
             }
             else
-            {
-                processarRetornoInvalido();
+            {                
+                AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
             }
             resetarColetados();
         }
         else
         {
-            resultCombinacao = false;
-            devolverBoard = arrayVazio;
-            devolverTubo = arrayVazio;
+            resultCombinacao = false;            
         }
-
         score += pontosColetado;
     }
 
@@ -68,17 +60,7 @@ public class ContadorDeColetaveis
     {
         totalColetaveis -= 1;
         //Debug.Log("Total: " + totalColetaveis);
-    }
-
-    public ColetavelTile[] getArrayBoard()
-    {
-        return devolverBoard;
-    }
-
-    public ColetavelTile[] getArrayTubo()
-    {
-        return devolverTubo;
-    }
+    }    
 
     public bool getResult()
     {
@@ -118,32 +100,9 @@ public class ContadorDeColetaveis
 
     private void processarRetornoValido()
     {
+        score += pontosAcerto;        
         AudioController.current.PlayAudio(AudioController.current.combinacaoOk);
-        adicionaPontuacao();
-        devolverBoard = arrayVazio;
-        devolverTubo = coletados;        
-    }
-
-    private void processarRetornoInvalido()
-    {
-        if (backToBoard)
-        {
-            devolverBoard = coletados;
-            devolverTubo = arrayVazio;
-            AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
-        }
-        else
-        {
-            devolverBoard = coletados;
-            devolverTubo  = coletados;
-        }
-        AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
-    }
-
-    private void adicionaPontuacao()
-    {
-        score += pontosAcerto;
-    }
+    }            
 
     public int getScore()
     {
