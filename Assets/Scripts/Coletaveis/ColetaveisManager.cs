@@ -18,7 +18,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private BoardManager boardManager;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contadorDeColetaveis;
-    private TuboDeSaida tudoDeSaida;
+    private TuboDeSaida tuboDeSaida;
 
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;
     private MonoBehaviour monoBehaviour;
@@ -33,7 +33,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
         boardManager = new BoardManager(coletaveisDto.BoardDto);
         contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
-        tudoDeSaida = new TuboDeSaida(coletaveisDto.TuboDto);
+        tuboDeSaida = new TuboDeSaida(coletaveisDto.TuboDto);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();
 
@@ -43,7 +43,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     public void configuradoPeloLevel(AbstractLevel level)
     {
         boardManager.configuradoPeloLevel(level);
-        devolverParaBoard = level.devolverParaBoard();
+        tuboDeSaida.configuradoPeloLevel(level.devolverParaBoard());
     }
 
     public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
@@ -149,7 +149,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         contadorDeColetaveis.reajustarContagem(evento);
         boardManager.devolver(evento.devolverBoard(), contadorDeColetaveis.getArrayBoard(), monoBehaviour);
-        tudoDeSaida .devolver(evento.clear, contadorDeColetaveis.getArrayTubo(), monoBehaviour);        
+        tuboDeSaida .devolver(evento.clear, contadorDeColetaveis.getArrayTubo(), monoBehaviour);        
     }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()

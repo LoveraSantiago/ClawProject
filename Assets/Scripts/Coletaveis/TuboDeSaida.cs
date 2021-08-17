@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TuboDeSaida : ConsumidorDeEventoTrigger
 {
+    private bool devolverTubo;
     private int contadorSaindoTubo;
     private float torque;    
 
@@ -22,9 +23,17 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         torque = tuboDto.Torque;        
     }
 
+    public void configuradoPeloLevel(bool devolverParaBoard)
+    {
+        this.devolverTubo = !devolverParaBoard;
+    }
+
     public void devolver(bool[] resultados, Coletavel[] coletados, MonoBehaviour monoBehaviour)
-    {        
-        monoBehaviour.StartCoroutine(descerPeloTubo(resultados, coletados));        
+    {
+        if (devolverTubo)
+        {
+            monoBehaviour.StartCoroutine(descerPeloTubo(resultados, coletados));
+        }
     }
 
     private IEnumerator descerPeloTubo(bool[] resultados, Coletavel[] coletados)
