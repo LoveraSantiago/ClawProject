@@ -24,7 +24,7 @@ public class ContadorDeColetaveis
         arrayVazio = new ColetavelTile[0];        
     }
 
-    public void configurarTotalColetaveis(int total, bool backToBoard)
+    public void configurarTotalColetaveis(int total)
     {
         totalColetaveis = total;
         this.backToBoard = backToBoard;

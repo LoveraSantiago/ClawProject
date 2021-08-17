@@ -9,8 +9,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoPowerUp.ConsumidorEvento,                                
                                 AcaoTempoEsgotado.ConsumidorEvento
 {
-    private bool powerUpEmAcao;
-    private bool devolverParaBoard;
+    private bool powerUpEmAcao;    
 
     private ColetaveisDto coletaveisDto;
     private ColetavelTile coletavelImantado;
@@ -50,7 +49,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         powerUpEmAcao = false;
         int qtdColetaveisDoBoard = boardManager.create(poolDeColetaveis);
-        contadorDeColetaveis.configurarTotalColetaveis(qtdColetaveisDoBoard, devolverParaBoard);
+        contadorDeColetaveis.configurarTotalColetaveis(qtdColetaveisDoBoard);
         coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK
     }    
 
