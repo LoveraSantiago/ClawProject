@@ -38,8 +38,7 @@ public class ContadorDeColetaveis
             else
             {                
                 AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
-            }
-            resetarColetados();
+            }           
         }
         else
         {
@@ -73,6 +72,10 @@ public class ContadorDeColetaveis
             coletados[indice] = null;
             Debug.Log("Reajuste de contagem no indice " + indice);
         }
+        else if(evento.devolverBoard())
+        {
+            resetarColetados();
+        }
     }
 
     private bool isCombinacaoValida()
@@ -93,6 +96,7 @@ public class ContadorDeColetaveis
     private void adicionaAoContainerDeColetados(ColetavelTile coletado)
     {
         int indice = getPrimeiroIndiceVazio();
+        Debug.Log("Indice contador de coletaveis " + indice);
         coletados[indice] = coletado;        
     }
 

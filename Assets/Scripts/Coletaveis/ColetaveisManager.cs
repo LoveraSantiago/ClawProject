@@ -146,9 +146,9 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {
-        contadorDeColetaveis.reajustarContagem(evento);
         boardManager.devolver(evento.devolverBoard(), contadorDeColetaveis.getColetados(), monoBehaviour);
         tuboDeSaida .devolver(evento.clear, contadorDeColetaveis.getColetados(), monoBehaviour);        
+        contadorDeColetaveis.reajustarContagem(evento);
     }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
