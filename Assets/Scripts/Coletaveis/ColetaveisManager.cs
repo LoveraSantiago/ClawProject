@@ -9,8 +9,6 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoPowerUp.ConsumidorEvento,                                
                                 AcaoTempoEsgotado.ConsumidorEvento
 {
-    private bool powerUpEmAcao;    
-
     private ColetaveisDto coletaveisDto;
     private ColetavelTile coletavelImantado;
     
@@ -47,7 +45,6 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
     {
-        powerUpEmAcao = false;
         int qtdColetaveisDoBoard = boardManager.create(poolDeColetaveis);
         contadorDeColetaveis.configurarTotalColetaveis(qtdColetaveisDoBoard);
         coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK
@@ -99,7 +96,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         if (poolDeColetaveis.contemNome(goColetado.name))
         {
             ColetavelTile coletado = poolDeColetaveis.getColetavelPeloNome(goColetado.name);            
-            if(coletado.isTouchingCentroDaGarra() && !powerUpEmAcao)
+            if(coletado.isTouchingCentroDaGarra())
             {            
                 processarColetado(goColetado.gameObject);
             }
@@ -122,17 +119,12 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         if (evento.isInicio())
         {
-            powerUpEmAcao = true;
             processarDesimantado();
-        }
-        else if (evento.isFinalizar())
-        {
-            powerUpEmAcao = false;
         }
         else if (evento.isPreFinalizar() && evento.hasColetavel())
         {
             processarColetado(evento.coletavelTile.getGoColetavel());
-        }
+        }        
     }            
     
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
