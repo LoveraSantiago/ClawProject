@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class TuboDeSaida : ConsumidorDeEventoTrigger
 {
-    private bool devolverTubo;
-    private int contadorSaindoTubo;
+    private bool devolverTubo;    
     private float torque;    
 
     private Vector3[] posicoesOriginais;
@@ -54,27 +53,19 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         yield return null;
     }
 
-    private void restaurandoColetaveisParaOTubo()
-    {
-        for (int contador = 0; contador < tuboDto.ColetaveisParaTubo.Length; contador++)
-        {
-            rigidBodies[contador].gravityScale = 0f;
-            rigidBodies[contador].velocity = Vector2.zero;
-            rigidBodies[contador].angularVelocity = 0f;
-            tuboDto.ColetaveisParaTubo[contador].transform.position = posicoesOriginais[contador];
-        }
+    private void restaurandoColetaveisParaOTubo(int indice)
+    {   
+        rigidBodies[indice].gravityScale = 0f;
+        rigidBodies[indice].velocity = Vector2.zero;
+        rigidBodies[indice].angularVelocity = 0f;
+        tuboDto.ColetaveisParaTubo[indice].transform.position = posicoesOriginais[indice];        
     }
 
     private void triggerDeSaidaDeTuboAcionado(Collider2D coletavelSaindo)
     {
         if (Utils.isTag(coletavelSaindo, "ColetavelDoTubo"))
-        {
-            contadorSaindoTubo++;
-            if (contadorSaindoTubo == 3)
-            {
-                restaurandoColetaveisParaOTubo();
-                contadorSaindoTubo = 0;
-            }
+        {   
+            restaurandoColetaveisParaOTubo(int.Parse(coletavelSaindo.name));
         }
     }
 

@@ -6632,7 +6632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_Name
-      value: Tile1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_TagString
@@ -7253,7 +7253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_Name
-      value: Tile3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_TagString
@@ -7980,7 +7980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_Name
-      value: Tile2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_TagString
