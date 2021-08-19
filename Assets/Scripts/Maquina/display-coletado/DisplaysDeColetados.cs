@@ -108,7 +108,15 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     {
         displayColetando = true;
         int indiceDesocupado = getIndicePrimeiroDisplayDesocupado();
+        if (powerUpAcionado)
+        {
+            yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].subirSlotCima());            
+        }
         yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].subirSlotBaixo(evento.sprite));
+        if (powerUpAcionado)
+        {
+            displayDeColetado[indiceDesocupado].mostrarAlvo(monoBehaviour);
+        }
 
         if (possuiAgendamentoDePowerUp())
         {
