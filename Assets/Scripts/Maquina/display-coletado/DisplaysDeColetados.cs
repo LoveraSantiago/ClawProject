@@ -59,9 +59,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         {
             powerUpAcionado = false;
             displayArcoIris.setarEstadoPowerUp(powerUpAcionado);
-            displayDeColetado[0].desligarAlvo(monoBehaviour);
-            displayDeColetado[1].desligarAlvo(monoBehaviour);
-            displayDeColetado[2].desligarAlvo(monoBehaviour);
+            monoBehaviour.StartCoroutine(displayDeColetado[0].desligarAlvo());
+            monoBehaviour.StartCoroutine(displayDeColetado[1].desligarAlvo());
+            monoBehaviour.StartCoroutine(displayDeColetado[2].desligarAlvo());            
             interacaoDisplayColetadoAgendado = null;
         }
     }
@@ -97,10 +97,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     {
         powerUpAcionado = true;
         displayArcoIris.setarEstadoPowerUp(powerUpAcionado);
-        displayDeColetado[0].mostrarAlvo(monoBehaviour);
-        displayDeColetado[1].mostrarAlvo(monoBehaviour);
-        displayDeColetado[2].mostrarAlvo(monoBehaviour);
-
+        monoBehaviour.StartCoroutine(displayDeColetado[0].mostrarAlvo());
+        monoBehaviour.StartCoroutine(displayDeColetado[1].mostrarAlvo());
+        monoBehaviour.StartCoroutine(displayDeColetado[2].mostrarAlvo());
         interacaoDisplayColetado.iniciar(this);        
     }
 
@@ -110,12 +109,12 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         int indiceDesocupado = getIndicePrimeiroDisplayDesocupado();
         if (powerUpAcionado)
         {
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].subirSlotCima());            
+            yield return displayDeColetado[indiceDesocupado].subirSlotCima();            
         }
-        yield return monoBehaviour.StartCoroutine(displayDeColetado[indiceDesocupado].subirSlotBaixo(evento.sprite));
+        yield return displayDeColetado[indiceDesocupado].subirSlotBaixo(evento.sprite);
         if (powerUpAcionado)
         {
-            displayDeColetado[indiceDesocupado].mostrarAlvo(monoBehaviour);
+            yield return displayDeColetado[indiceDesocupado].mostrarAlvo();
         }
 
         if (possuiAgendamentoDePowerUp())

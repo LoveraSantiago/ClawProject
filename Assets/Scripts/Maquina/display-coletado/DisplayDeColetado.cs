@@ -41,7 +41,7 @@ public class DisplayDeColetado
         sDisplayDto.SprRendererDentro.color = corDentro;
     }   
 
-    public void mostrarAlvo(MonoBehaviour monoBehaviour)
+    public IEnumerator mostrarAlvo()
     {
         if (ocupado)
         {
@@ -49,7 +49,7 @@ public class DisplayDeColetado
         }
         else
         {
-            monoBehaviour.StartCoroutine(descerSlotCima(displayColetadoDto.SprVazio));
+            yield return descerSlotCima(displayColetadoDto.SprVazio);
         }
         ligarGlowLuz();
     }
@@ -59,14 +59,14 @@ public class DisplayDeColetado
         animacao.ligarAnimacaoMiraSelecionado();
     }
 
-    public void desligarAlvo(MonoBehaviour monoBehavior)
+    public IEnumerator desligarAlvo()
     {
         if (animacao.isMiraLigado)
         {
             animacao.desligarAnimacao();
         }
         else{
-            monoBehavior.StartCoroutine(subirSlotCima());
+            yield return subirSlotCima();
         }
     }
 
