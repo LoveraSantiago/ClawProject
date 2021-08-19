@@ -101,8 +101,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         displayDeColetado[1].mostrarAlvo(monoBehaviour);
         displayDeColetado[2].mostrarAlvo(monoBehaviour);
 
-        interacaoDisplayColetado.iniciar(this);
-        interacaoDisplayColetado.resetImediato(isTodosDisplaysDesocupados());
+        interacaoDisplayColetado.iniciar(this);        
     }
 
     private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
@@ -166,7 +165,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         return displayDeColetado[0].isOcupado() && displayDeColetado[1].isOcupado() && displayDeColetado[2].isOcupado();
     }            
 
-    private bool isTodosDisplaysDesocupados()
+    public bool isTodosDisplaysDesocupados()
     {
         return displayDeColetado[0].isDesocupado() && displayDeColetado[1].isDesocupado() && displayDeColetado[2].isDesocupado();
     }

@@ -30,15 +30,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         coroutine = monoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados(informacaoDisplayColetados));
     }
 
-    public override void resetPup(){}
-
-    public void resetImediato(bool reset)
-    {
-        if (reset)
-        {
-            monoBehaviour.StartCoroutine(resetImediato(powerUpDto.RollBackDto.DelayReset));
-        }
-    }
+    public override void resetPup(){}   
 
     public override void timeout()
     {
@@ -50,23 +42,28 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     }
 
     private IEnumerator getCliqueNoDisplayDeColetados(InformacaoDisplayColetado informacaoDisplayColetados)
-    {        
-        while(!finalizado)
-        {
-            finalizado = informacaoDisplayColetados.acertouDisplay(inputGame.getPosicaoTap());                    
-            yield return null;
-        }        
-        powerUpFinalizacao.preFinalizar();
-        yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
-        powerUpFinalizacao.finalizado();
-    }
-
-    private IEnumerator resetImediato(float delayReset)
     {
-        yield return new WaitForSeconds(delayReset);
-        monoBehaviour.StopCoroutine(coroutine);
-        powerUpFinalizacao.finalizado();
-    }
+        if (informacaoDisplayColetados.isTodosDisplaysDesocupados())
+        {
+            yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayReset);
+        }
+
+        if (informacaoDisplayColetados.isTodosDisplaysDesocupados())
+        {
+            powerUpFinalizacao.finalizado();
+        }
+        else
+        {
+            while (!finalizado)
+            {
+                finalizado = informacaoDisplayColetados.acertouDisplay(inputGame.getPosicaoTap());                    
+                yield return null;
+            }        
+            powerUpFinalizacao.preFinalizar();
+            yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
+            powerUpFinalizacao.finalizado();
+        }
+    }   
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
