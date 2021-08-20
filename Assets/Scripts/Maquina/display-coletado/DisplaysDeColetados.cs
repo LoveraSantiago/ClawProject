@@ -9,7 +9,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private bool displayColetando;
     
     private DisplayDeColetadoDto displayColetadoDto;    
-    private DisplayDeColetado[] displayDeColetado;
+    
     private GrupoDisplays grupoDisplays;
     private MonoBehaviour monoBehaviour;
     private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
@@ -22,15 +22,14 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         this.monoBehaviour = monoBehaviour;
 
         DisplayDeColetado.configurarDisplay(displayColetadoDto);
-        inicializarDisplayDeColetado(displayColetadoDto.SingleDisplaysColetadoDto);
 
-        grupoDisplays = new GrupoDisplays(displayDeColetado);
+        grupoDisplays = new GrupoDisplays(displayColetadoDto.SingleDisplaysColetadoDto);
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();
     }    
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
     {
-        new ColoridorDisplaysColetados().colorir(displayDeColetado, dicionarioDeCores);        
+        grupoDisplays.colorirDisplays(dicionarioDeCores);
     }
 
     public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
@@ -59,9 +58,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         {
             powerUpAcionado = false;
             grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
-            monoBehaviour.StartCoroutine(displayDeColetado[0].desligarAlvo());
-            monoBehaviour.StartCoroutine(displayDeColetado[1].desligarAlvo());
-            monoBehaviour.StartCoroutine(displayDeColetado[2].desligarAlvo());            
+            grupoDisplays.desligarAlvos(monoBehaviour);            
             interacaoDisplayColetadoAgendado = null;
         }
     }
@@ -73,7 +70,8 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
     public bool acertouDisplay(Vector2 toque)
     {
-        for(int contador = 0; contador < displayDeColetado.Length; contador++)
+        DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;
+        for (int contador = 0; contador < displayDeColetado.Length; contador++)
         {
             bool result = displayDeColetado[contador].isCliqueDentroArea(toque);
             if (result)
@@ -83,30 +81,21 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
             }
         }
         return false;
-    }
-
-    private void inicializarDisplayDeColetado(SingleDisplayColetadoDto[] singlesDisplayColetadosDto)
-    {
-        displayDeColetado = new DisplayDeColetado[singlesDisplayColetadosDto.Length];
-        displayDeColetado[0] = new DisplayDeColetado(singlesDisplayColetadosDto[0]);
-        displayDeColetado[1] = new DisplayDeColetado(singlesDisplayColetadosDto[1]);
-        displayDeColetado[2] = new DisplayDeColetado(singlesDisplayColetadosDto[2]);
-    }
+    }   
 
     private void acionarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
     {
         powerUpAcionado = true;
         grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
-        monoBehaviour.StartCoroutine(displayDeColetado[0].mostrarAlvo());
-        monoBehaviour.StartCoroutine(displayDeColetado[1].mostrarAlvo());
-        monoBehaviour.StartCoroutine(displayDeColetado[2].mostrarAlvo());
+        grupoDisplays.acionarMostrarAlvos(monoBehaviour);
         interacaoDisplayColetado.iniciar(this);        
     }
 
     private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
         displayColetando = true;
-        int indiceDesocupado = getIndicePrimeiroDisplayDesocupado();
+        int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();
+        DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;
         if (powerUpAcionado)
         {
             yield return displayDeColetado[indiceDesocupado].subirSlotCima();            
@@ -121,7 +110,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         {
             acionarPowerUp(interacaoDisplayColetadoAgendado);
         }
-        else if (isTodosDisplayOcupados())
+        else if (grupoDisplays.isTodosDisplayOcupados())
         {
             if (evento.resultCombinacao)
             {
@@ -132,9 +121,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
                 arcoIris.ligarBlinkRed();
             }
 
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[0].descerSlotBaixo());
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[1].descerSlotBaixo());
-            yield return monoBehaviour.StartCoroutine(displayDeColetado[2].descerSlotBaixo());
+            yield return displayDeColetado[0].descerSlotBaixo();
+            yield return displayDeColetado[1].descerSlotBaixo();
+            yield return displayDeColetado[2].descerSlotBaixo();
             yield return new WaitForSeconds(displayColetadoDto.FimDelay);
 
             arcoIris.desligarEfeito();
@@ -152,30 +141,14 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private IEnumerator descartarColetado(int indice)
     {
         Debug.Log("Acertou display indice " + indice);
+        DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;
         displayDeColetado[indice].mostrarAlvoSelecionado();
         yield return displayDeColetado[indice].descerSlotBaixo();
 
         bool[] result = new bool[3]{ false, false, false };
         result[indice] = true;
         produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(result));
-    }
-
-    private int getIndicePrimeiroDisplayDesocupado()
-    {
-        if (displayDeColetado[0].isDesocupado()) return 0;
-        if (displayDeColetado[1].isDesocupado()) return 1;
-        return 2;
-    }
-
-    private bool isTodosDisplayOcupados()
-    {
-        return displayDeColetado[0].isOcupado() && displayDeColetado[1].isOcupado() && displayDeColetado[2].isOcupado();
-    }            
-
-    public bool isTodosDisplaysDesocupados()
-    {
-        return displayDeColetado[0].isDesocupado() && displayDeColetado[1].isDesocupado() && displayDeColetado[2].isDesocupado();
-    }
+    }        
 
     private bool possuiAgendamentoDePowerUp()
     {
@@ -185,5 +158,10 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeEventoFimColetagem;
-    }   
+    }
+
+    public bool isTodosDisplaysDesocupados()
+    {
+        return grupoDisplays.isTodosDisplaysDesocupados();
+    }
 }
