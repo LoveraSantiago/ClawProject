@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
-                                   InformacaoDisplayColetado
+                                   InformacaoDisplayColetado,
+                                   EstadoDisplayChanger
 {
     private bool powerUpAcionado;
     private bool displayColetando;
@@ -14,7 +15,10 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private MonoBehaviour monoBehaviour;
     private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
 
-    PowerUpInteracaoDisplayColetado interacaoDisplayColetadoAgendado;
+    private EstadoDisplay estadoAtual;
+    private EstadoDisplay estadoNormal;
+    private EstadoDisplay estadoPowerUp;
+    private PowerUpInteracaoDisplayColetado interacaoDisplayColetadoAgendado;
 
     public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
@@ -25,6 +29,10 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
         grupoDisplays = new GrupoDisplays(displayColetadoDto.SingleDisplaysColetadoDto);
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();
+
+        estadoNormal = new EstadoDisplayNormal(this);
+        estadoPowerUp = new EstadoDisplayPowerUp(this);
+        estadoAtual = estadoNormal;
     }    
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
@@ -85,6 +93,8 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
     private void acionarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
     {
+        estadoAtual.acionarPowerUp(grupoDisplays, interacaoDisplayColetado, this, monoBehaviour);
+
         powerUpAcionado = true;
         grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
         grupoDisplays.acionarMostrarAlvos(monoBehaviour);
@@ -93,6 +103,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
     private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
+        yield return estadoAtual.mostrarSprite(displayColetadoDto.FimDelay, grupoDisplays, evento, arcoIris, produtorDeEventoFimColetagem);
         displayColetando = true;
         int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();
         DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;
