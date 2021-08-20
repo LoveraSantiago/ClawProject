@@ -10,7 +10,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     
     private DisplayDeColetadoDto displayColetadoDto;    
     private DisplayDeColetado[] displayDeColetado;
-    private DisplayDeColetadosArcoIris displayArcoIris;
+    private GrupoDisplays grupoDisplays;
     private MonoBehaviour monoBehaviour;
     private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
 
@@ -24,7 +24,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         DisplayDeColetado.configurarDisplay(displayColetadoDto);
         inicializarDisplayDeColetado(displayColetadoDto.SingleDisplaysColetadoDto);
 
-        displayArcoIris = new DisplayDeColetadosArcoIris(displayDeColetado);
+        grupoDisplays = new GrupoDisplays(displayDeColetado);
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();
     }    
 
@@ -58,7 +58,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         if (powerUpAcionado)
         {
             powerUpAcionado = false;
-            displayArcoIris.setarEstadoPowerUp(powerUpAcionado);
+            grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
             monoBehaviour.StartCoroutine(displayDeColetado[0].desligarAlvo());
             monoBehaviour.StartCoroutine(displayDeColetado[1].desligarAlvo());
             monoBehaviour.StartCoroutine(displayDeColetado[2].desligarAlvo());            
@@ -68,7 +68,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     
     public ArcoIrisConjunto getDisplayColetadoGlow()
     {
-        return displayArcoIris;
+        return grupoDisplays;
     }
 
     public bool acertouDisplay(Vector2 toque)
@@ -96,7 +96,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private void acionarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
     {
         powerUpAcionado = true;
-        displayArcoIris.setarEstadoPowerUp(powerUpAcionado);
+        grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
         monoBehaviour.StartCoroutine(displayDeColetado[0].mostrarAlvo());
         monoBehaviour.StartCoroutine(displayDeColetado[1].mostrarAlvo());
         monoBehaviour.StartCoroutine(displayDeColetado[2].mostrarAlvo());

@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class DisplayDeColetadosArcoIris : ArcoIrisConjunto
+public class GrupoDisplays : ArcoIrisConjunto
 {
     private bool powerUpDisplayColetado;
     private DisplayDeColetado[] displayDeColetado;
 
-    public DisplayDeColetadosArcoIris(DisplayDeColetado[] displayDeColetado)
+    public GrupoDisplays(DisplayDeColetado[] displayDeColetado)
     {
         this.displayDeColetado = displayDeColetado;
     }
@@ -38,5 +38,5 @@ public class DisplayDeColetadosArcoIris : ArcoIrisConjunto
         {
             displayDeColetado[0].getMaterialGlow().setCorNoMaterial(cor);
         }
-    }    
+    }
 }
