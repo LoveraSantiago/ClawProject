@@ -163,5 +163,10 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     public bool isTodosDisplaysDesocupados()
     {
         return grupoDisplays.isTodosDisplaysDesocupados();
-    }   
+    }
+
+    public void restartPowerUp(PowerUpInteracaoDisplayColetado interacao)
+    {
+        processarPowerUp(interacao);
+    }
 }

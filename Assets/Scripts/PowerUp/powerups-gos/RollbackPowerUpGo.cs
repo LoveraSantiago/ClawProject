@@ -46,11 +46,14 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         if (informacaoDisplayColetados.isTodosDisplaysDesocupados())
         {
             yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayReset);
-        }
-
-        if (informacaoDisplayColetados.isTodosDisplaysDesocupados())
-        {
-            powerUpFinalizacao.finalizado();
+            if (informacaoDisplayColetados.isTodosDisplaysDesocupados())
+            {
+                powerUpFinalizacao.finalizado();
+            }
+            else
+            {
+                informacaoDisplayColetados.restartPowerUp(this);
+            }
         }
         else
         {
