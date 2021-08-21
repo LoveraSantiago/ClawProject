@@ -75,8 +75,8 @@ public class BotoesPowerUp
 
     private void acionarBotao(BotaoPowerUp btn)
     {
-        btn.clicar();
         controlePup.powerUpAcionado();
+        btn.clicar();
         btnAcionado = btn;
     }
 
