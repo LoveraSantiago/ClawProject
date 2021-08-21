@@ -99,15 +99,23 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
             yield return displayDeColetado[2].limparSprColetado();
             yield return new WaitForSeconds(displayColetadoDto.FimDelay);
 
-            arcoIris.desligarEfeito();
-            produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(true, true, true));
+            if (possuiAgendamentoDePowerUp())
+            {
+                displayColetando = false;
+                acionarPowerUp(interacaoDisplayColetadoAgendado);
+            }
+            else
+            {
+                arcoIris.desligarEfeito();
+                produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(true, true, true));
+                executorPosEvento.execute();
+            }
         }
-        else
+        else if(!powerUpAcionado)
         {
             produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(false, false, false));
+            executorPosEvento.execute();
         }
-
-        executorPosEvento.execute();
         displayColetando = false;
     }   
 
