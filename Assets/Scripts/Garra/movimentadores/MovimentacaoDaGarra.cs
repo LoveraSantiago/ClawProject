@@ -9,12 +9,10 @@ public abstract class MovimentacaoDaGarra
     protected static GarraDto garraDto;
     protected static AnimacaoGarra animacao;
 
-    public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }        
-
-    protected static InputGame inputGame;
+    public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }            
 
     public virtual void preInicio() { }
-    public virtual void update() { }
+    public virtual void update(InputGame inputGame) { }
     public virtual void fixedUpdate() { }
 
     public virtual void garraColidiuCom(GameObject gameObject) { }    
@@ -136,12 +134,10 @@ public abstract class MovimentacaoDaGarra
     }
 
     public static void configurarComponentesMovimentacao(
-        GarraDto garraDtoArg,         
-        InputGame inputGameArg)
+        GarraDto garraDtoArg)
     {
         garraDto = garraDtoArg;
-        pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);        
-        inputGame = inputGameArg;
+        pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);                
         produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();                
         animacao = new AnimacaoGarra(garraDto.Animator);
     }

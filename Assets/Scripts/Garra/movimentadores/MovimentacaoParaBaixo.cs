@@ -26,7 +26,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal,
         animacao.irParaBaixo();
     }
 
-    public override void update()
+    public override void update(InputGame inputGame)
     {
         if (contadorDeTempoTravamento.contarTempoDT())
         {

@@ -54,7 +54,7 @@ public class MainGameScene : MonoBehaviour,
     private void configurandoManagers()
     {
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
-        garraManager      = new GarraManager(garraDto, inputGame);
+        garraManager      = new GarraManager(garraDto);
         coletaveisManager = new ColetaveisManager(coletaveisDto, this);
         maquinaManager    = new MaquinaManager(maquinaDto, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
@@ -133,7 +133,7 @@ public class MainGameScene : MonoBehaviour,
     void Update()
     {
         inputGame.update();
-        garraManager.update();
+        garraManager.update(inputGame);
         maquinaManager.update(inputGame);        
     }
 

@@ -36,9 +36,9 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         trocarMovimentador(movLateral);
     }
 
-    public override void update()
+    public override void update(InputGame inputGame)
     {
-        movAtual.update();
+        movAtual.update(inputGame);
         //Debug.Log(movimentacaoAtual);
     }
 

@@ -17,7 +17,7 @@ public class MovimentacaoVoltarParaCima : MovimentacaoDaGarraPowerUp
         animacao.irParaCima();
     }
 
-    public override void update()
+    public override void update(InputGame inputGame)
     {
         if (isAcimaPosInicial())
         {

@@ -17,9 +17,9 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     private GerenciadorDeMovimentacao gerDeMovAtual;
     private CaboDaGarra cabo;
 
-    public GarraManager(GarraDto garraDto, InputGame inputGame)
+    public GarraManager(GarraDto garraDto)
     {
-        MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto, inputGame);
+        MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
         gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
         gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
         gerDeMovAtual = gerDeMovNormal;
@@ -47,9 +47,9 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         gerDeMovAtual.iniciarMovimentacoes();
     }
 
-    public void update()
+    public void update(InputGame inputGame)
     {
-        gerDeMovAtual.update();
+        gerDeMovAtual.update(inputGame);
         cabo.update();
     }
 

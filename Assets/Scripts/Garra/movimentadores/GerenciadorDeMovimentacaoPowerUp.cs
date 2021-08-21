@@ -32,7 +32,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         trocarParaAcaoVoltarParaCima();
     }    
 
-    public override void update()
+    public override void update(InputGame inputGame)
     {
         if (contadorDeFimTempo.contarTempoDT())
         {
@@ -45,7 +45,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
                 movAtual.acionarTimeout();
             }
         }
-        movAtual.update();
+        movAtual.update(inputGame);
     }
 
     public override void fixedUpdate()
