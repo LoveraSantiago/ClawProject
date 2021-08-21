@@ -76,24 +76,21 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         interacaoDisplayColetado.iniciar(this);        
     }
 
+    private void restartPowerUp()
+    {
+        interacaoDisplayColetadoAgendado.iniciar(this);
+    }
+
     private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {        
         displayColetando = true;
         int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();
-        DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;
-        if (powerUpAcionado)
-        {
-            yield return displayDeColetado[indiceDesocupado].subirSlotCima();            
-        }
-        yield return displayDeColetado[indiceDesocupado].subirSlotBaixo(evento.sprite);
-        if (powerUpAcionado)
-        {
-            yield return displayDeColetado[indiceDesocupado].mostrarAlvo();
-        }
+        DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;        
+        yield return displayDeColetado[indiceDesocupado].mostrarSprColetado(evento.sprite, powerUpAcionado);        
 
         if (possuiAgendamentoDePowerUp())
         {
-            acionarPowerUp(interacaoDisplayColetadoAgendado);
+            restartPowerUp();
         }
         else if (grupoDisplays.isTodosDisplayOcupados())
         {
@@ -106,9 +103,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
                 arcoIris.ligarBlinkRed();
             }
 
-            yield return displayDeColetado[0].descerSlotBaixo();
-            yield return displayDeColetado[1].descerSlotBaixo();
-            yield return displayDeColetado[2].descerSlotBaixo();
+            yield return displayDeColetado[0].limparSprColetado();
+            yield return displayDeColetado[1].limparSprColetado();
+            yield return displayDeColetado[2].limparSprColetado();
             yield return new WaitForSeconds(displayColetadoDto.FimDelay);
 
             arcoIris.desligarEfeito();
@@ -128,7 +125,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         Debug.Log("Acertou display indice " + indice);
         DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;
         displayDeColetado[indice].mostrarAlvoSelecionado();
-        yield return displayDeColetado[indice].descerSlotBaixo();
+        yield return displayDeColetado[indice].limparSprColetado();
 
         bool[] result = new bool[3]{ false, false, false };
         result[indice] = true;

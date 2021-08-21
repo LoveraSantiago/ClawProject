@@ -54,7 +54,7 @@ public class GrupoDisplays : ArcoIrisConjunto
 
     public bool isTodosDisplayOcupados()
     {
-        return displayDeColetado[0].isOcupado() && displayDeColetado[1].isOcupado() && displayDeColetado[2].isOcupado();
+        return displayDeColetado[0].isOcupadoColetado() && displayDeColetado[1].isOcupadoColetado() && displayDeColetado[2].isOcupadoColetado();
     }
 
     public bool isTodosDisplaysDesocupados()
