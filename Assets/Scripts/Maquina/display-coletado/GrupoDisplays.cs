@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class GrupoDisplays : ArcoIrisConjunto
 {
@@ -43,6 +44,11 @@ public class GrupoDisplays : ArcoIrisConjunto
         monoBehaviour.StartCoroutine(displayDeColetado[0].desligarAlvo());
         monoBehaviour.StartCoroutine(displayDeColetado[1].desligarAlvo());
         monoBehaviour.StartCoroutine(displayDeColetado[2].desligarAlvo());
+    }
+
+    public IEnumerator mostrarSprColetado(int indice, Sprite sprite, bool powerUpAcionado)
+    {
+        yield return displayDeColetado[indice].mostrarSprColetado(sprite, powerUpAcionado);
     }
 
     public int getIndicePrimeiroDisplayDesocupado()

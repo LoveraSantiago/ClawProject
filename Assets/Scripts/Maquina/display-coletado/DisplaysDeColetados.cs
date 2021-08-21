@@ -13,8 +13,11 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private GrupoDisplays grupoDisplays;
     private MonoBehaviour monoBehaviour;
     private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
-    
-    private PowerUpInteracaoDisplayColetado interacaoDisplayColetadoAgendado;
+
+    private InformacoesColetadoDto agendadoEvento;
+    private ArcoIrisEfeito agendadoArcoIris;
+    private Executor agendadoPosExecutor;
+    private PowerUpInteracaoDisplayColetado agendadoInteracaoDisplayColetado;
 
     public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
@@ -43,7 +46,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         {            
             if (displayColetando)
             {
-                interacaoDisplayColetadoAgendado = interacaoDisplayColetado;
+                agendadoInteracaoDisplayColetado = interacaoDisplayColetado;
             }
             else
             {
@@ -59,7 +62,13 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
             powerUpAcionado = false;
             grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
             grupoDisplays.desligarAlvos(monoBehaviour);            
-            interacaoDisplayColetadoAgendado = null;
+            agendadoInteracaoDisplayColetado = null;
+
+            if (possuiAgendamentoDeEvento() && grupoDisplays.isTodosDisplayOcupados())
+            {
+                agendadoEvento = null;
+                monoBehaviour.StartCoroutine(limpezaEFimTodosDisplaysOcupados(agendadoEvento, agendadoArcoIris, agendadoPosExecutor));
+            }
         }
     }
 
@@ -74,41 +83,28 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {        
         displayColetando = true;
-        int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();
-        DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;        
-        yield return displayDeColetado[indiceDesocupado].mostrarSprColetado(evento.sprite, powerUpAcionado);        
+        int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();        
+        yield return grupoDisplays.mostrarSprColetado(indiceDesocupado, evento.sprite, powerUpAcionado);        
 
         if (possuiAgendamentoDePowerUp())
         {
             displayColetando = false;
-            acionarPowerUp(interacaoDisplayColetadoAgendado);
+            acionarPowerUp(agendadoInteracaoDisplayColetado);
+            agendadoEvento = evento;
+            agendadoArcoIris = arcoIris;
+            agendadoPosExecutor = executorPosEvento;
         }
         else if (grupoDisplays.isTodosDisplayOcupados() && !powerUpAcionado)
         {
-            if (evento.resultCombinacao)
-            {
-                arcoIris.ligarBlinkVerde();
-            }
-            else
-            {
-                arcoIris.ligarBlinkRed();
-            }
-
-            yield return displayDeColetado[0].limparSprColetado();
-            yield return displayDeColetado[1].limparSprColetado();
-            yield return displayDeColetado[2].limparSprColetado();
-            yield return new WaitForSeconds(displayColetadoDto.FimDelay);
-
+            yield return limpezaTodosDisplaysOcupados(evento, arcoIris);
             if (possuiAgendamentoDePowerUp())
             {
                 displayColetando = false;
-                acionarPowerUp(interacaoDisplayColetadoAgendado);
+                acionarPowerUp(agendadoInteracaoDisplayColetado);
             }
             else
             {
-                arcoIris.desligarEfeito();
-                produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(true, true, true));
-                executorPosEvento.execute();
+                fimLimpezaTodosDisplaysOcupados(arcoIris, executorPosEvento);                
             }
         }
         else if(!powerUpAcionado)
@@ -117,7 +113,22 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
             executorPosEvento.execute();
         }
         displayColetando = false;
-    }   
+    }     
+
+    public ArcoIrisConjunto getDisplayColetadoGlow()
+    {
+        return grupoDisplays;
+    }
+
+    private bool possuiAgendamentoDePowerUp()
+    {
+        return agendadoInteracaoDisplayColetado != null;
+    }
+
+    private bool possuiAgendamentoDeEvento()
+    {
+        return agendadoEvento != null;
+    }
 
     private IEnumerator descartarColetado(int indice)
     {
@@ -126,19 +137,40 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         displayDeColetado[indice].mostrarAlvoSelecionado();
         yield return displayDeColetado[indice].limparSprColetado();
 
-        bool[] result = new bool[3]{ false, false, false };
+        bool[] result = new bool[3] { false, false, false };
         result[indice] = true;
         produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(result));
-    }        
-
-    private bool possuiAgendamentoDePowerUp()
-    {
-        return interacaoDisplayColetadoAgendado != null;
     }
 
-    public ArcoIrisConjunto getDisplayColetadoGlow()
+    private IEnumerator limpezaTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito  arcoIris)
     {
-        return grupoDisplays;
+        DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;
+        if (evento.resultCombinacao)
+        {
+            arcoIris.ligarBlinkVerde();
+        }
+        else
+        {
+            arcoIris.ligarBlinkRed();
+        }
+
+        yield return displayDeColetado[0].limparSprColetado();
+        yield return displayDeColetado[1].limparSprColetado();
+        yield return displayDeColetado[2].limparSprColetado();
+        yield return new WaitForSeconds(displayColetadoDto.FimDelay);
+    }
+
+    private IEnumerator limpezaEFimTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
+    {
+        yield return limpezaTodosDisplaysOcupados(evento, arcoIris);
+        fimLimpezaTodosDisplaysOcupados(arcoIris, executorPosEvento);
+    }
+
+    private void fimLimpezaTodosDisplaysOcupados(ArcoIrisEfeito arcoIris, Executor executorPosEvento)
+    {
+        arcoIris.desligarEfeito();
+        produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(true, true, true));
+        executorPosEvento.execute();
     }
 
     //***** IMPLEMENTACAO INTERFACE INFORMACAODISPLAYCOLETADO INICIO *****
