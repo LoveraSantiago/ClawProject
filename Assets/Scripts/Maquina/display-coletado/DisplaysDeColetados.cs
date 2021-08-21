@@ -66,21 +66,6 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     public ArcoIrisConjunto getDisplayColetadoGlow()
     {
         return grupoDisplays;
-    }
-
-    public bool acertouDisplay(Vector2 toque)
-    {
-        DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;
-        for (int contador = 0; contador < displayDeColetado.Length; contador++)
-        {
-            bool result = displayDeColetado[contador].isCliqueDentroArea(toque);
-            if (result)
-            {                
-                monoBehaviour.StartCoroutine(descartarColetado(contador));
-                return true;
-            }
-        }
-        return false;
     }   
 
     private void acionarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
@@ -155,9 +140,20 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         return interacaoDisplayColetadoAgendado != null;
     }
 
-    ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
+    //***** IMPLEMENTACAO INTERFACE INFORMACAODISPLAYCOLETADO INICIO *****
+    public bool acertouDisplay(Vector2 toque)
     {
-        return produtorDeEventoFimColetagem;
+        DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;
+        for (int contador = 0; contador < displayDeColetado.Length; contador++)
+        {
+            bool result = displayDeColetado[contador].isCliqueDentroArea(toque);
+            if (result)
+            {
+                monoBehaviour.StartCoroutine(descartarColetado(contador));
+                return true;
+            }
+        }
+        return false;
     }
 
     public bool isTodosDisplaysDesocupados()
@@ -168,5 +164,11 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     public void restartPowerUp(PowerUpInteracaoDisplayColetado interacao)
     {
         processarPowerUp(interacao);
+    }
+    //***** IMPLEMENTACAO INTERFACE INFORMACAODISPLAYCOLETADO FIM *****
+
+    ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        return produtorDeEventoFimColetagem;
     }
 }
