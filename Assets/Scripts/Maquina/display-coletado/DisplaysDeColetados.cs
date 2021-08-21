@@ -62,11 +62,6 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
             interacaoDisplayColetadoAgendado = null;
         }
     }
-    
-    public ArcoIrisConjunto getDisplayColetadoGlow()
-    {
-        return grupoDisplays;
-    }   
 
     private void acionarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
     {
@@ -81,13 +76,14 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         displayColetando = true;
         int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();
         DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;        
-        yield return displayDeColetado[indiceDesocupado].mostrarSprColetado(evento.sprite);        
+        yield return displayDeColetado[indiceDesocupado].mostrarSprColetado(evento.sprite, powerUpAcionado);        
 
         if (possuiAgendamentoDePowerUp())
         {
+            displayColetando = false;
             acionarPowerUp(interacaoDisplayColetadoAgendado);
         }
-        else if (grupoDisplays.isTodosDisplayOcupados())
+        else if (grupoDisplays.isTodosDisplayOcupados() && !powerUpAcionado)
         {
             if (evento.resultCombinacao)
             {
@@ -130,6 +126,11 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private bool possuiAgendamentoDePowerUp()
     {
         return interacaoDisplayColetadoAgendado != null;
+    }
+
+    public ArcoIrisConjunto getDisplayColetadoGlow()
+    {
+        return grupoDisplays;
     }
 
     //***** IMPLEMENTACAO INTERFACE INFORMACAODISPLAYCOLETADO INICIO *****
