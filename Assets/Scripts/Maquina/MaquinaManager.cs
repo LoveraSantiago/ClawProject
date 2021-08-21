@@ -20,7 +20,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     private ArcoIrisEfeito arcoIrisEfeito;
     
     public MaquinaManager(
-        MaquinaDto maquinaDto, InputGame inputGame, MonoBehaviour monoBehaviour)
+        MaquinaDto maquinaDto, MonoBehaviour monoBehaviour)
     {
         partesDto = maquinaDto.PartesDto;
 
@@ -28,7 +28,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto, monoBehaviour);
         joystick           = new Joystick(maquinaDto.JoystickDto);
-        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto, inputGame);
+        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         vigasTras          = new VigasTras(maquinaDto.VigasDto);
 
         arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)
@@ -58,9 +58,9 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayTimer.iniciarContagemTempo();        
     }
 
-    public void update()
+    public void update(InputGame inputGame)
     {
-        botoesPowerUp.update();
+        botoesPowerUp.update(inputGame);
         displayTimer.update();
     }
 

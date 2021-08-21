@@ -11,12 +11,8 @@ public class BotoesPowerUp
     private Draggavel dragavelAtual;
     private Draggavel dragavelVazio;
 
-    private InputGame inputGame;        
-
-    public BotoesPowerUp(BotoesPowerUpDto btnsPowerUpsDto, InputGame inputGame)
+    public BotoesPowerUp(BotoesPowerUpDto btnsPowerUpsDto)
     {
-        this.inputGame = inputGame;       
-
         BotaoPowerUp.configurar(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.AreaDraggavel);
 
         inicializarBotoes(btnsPowerUpsDto);
@@ -42,7 +38,7 @@ public class BotoesPowerUp
         new ColoridorBotoes().colorir(btnsPowerUp, level.getDicionarioDeCores());        
     }
     
-    public void update()
+    public void update(InputGame inputGame)
     {
         if (inputGame.aconteceuTapNaAreaInferior())
         {
