@@ -74,7 +74,7 @@ public class DisplayDeColetado
         }
     }
 
-    public IEnumerator mostrarSprColetado(Sprite sprite, bool mostrarMira)
+    public IEnumerator mostrarSprColetado(Sprite sprite)
     {
         if (isOcupadoNone())
         {
@@ -85,12 +85,7 @@ public class DisplayDeColetado
         sDisplayDto.SlotSpriteBaixo.sprite = sprite;
         ligarGlowLuz();
         yield return slots.subirSlotBaixo(sDisplayDto.GoSlotBaixo, posicaoDesejada, displayColetadoDto);        
-        desligarGlow();
-
-        if (mostrarMira)
-        {
-            mostrarAlvo();
-        }
+        desligarGlow();        
     }   
 
     public IEnumerator limparSprColetado()

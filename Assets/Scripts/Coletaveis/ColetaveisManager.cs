@@ -92,7 +92,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
     public void consumir(Collider2D goColetado)
     {
-        Debug.Log("Nome Coletado: " + goColetado.name);
+        //Debug.Log("Nome Coletado: " + goColetado.name);
         if (poolDeColetaveis.contemNome(goColetado.name))
         {
             ColetavelTile coletado = poolDeColetaveis.getColetavelPeloNome(goColetado.name);            

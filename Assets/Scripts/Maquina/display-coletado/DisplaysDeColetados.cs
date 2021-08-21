@@ -74,23 +74,18 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
         grupoDisplays.acionarMostrarAlvos(monoBehaviour);
         interacaoDisplayColetado.iniciar(this);        
-    }
-
-    private void restartPowerUp()
-    {
-        interacaoDisplayColetadoAgendado.iniciar(this);
-    }
+    }   
 
     private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {        
         displayColetando = true;
         int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();
         DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;        
-        yield return displayDeColetado[indiceDesocupado].mostrarSprColetado(evento.sprite, powerUpAcionado);        
+        yield return displayDeColetado[indiceDesocupado].mostrarSprColetado(evento.sprite);        
 
         if (possuiAgendamentoDePowerUp())
         {
-            restartPowerUp();
+            acionarPowerUp(interacaoDisplayColetadoAgendado);
         }
         else if (grupoDisplays.isTodosDisplayOcupados())
         {
