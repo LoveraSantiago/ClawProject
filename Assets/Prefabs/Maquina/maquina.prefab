@@ -3228,7 +3228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2125511377426289051, guid: 651d1b27d2dd48043924f19cedf90c4f, type: 3}
       propertyPath: m_Name
-      value: btnPowerUp3
+      value: btn-power-up3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 651d1b27d2dd48043924f19cedf90c4f, type: 3}
@@ -3476,7 +3476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2125511377426289051, guid: 651d1b27d2dd48043924f19cedf90c4f, type: 3}
       propertyPath: m_Name
-      value: btnPowerUp4
+      value: btn-power-up4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 651d1b27d2dd48043924f19cedf90c4f, type: 3}
@@ -3538,7 +3538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2125511377426289051, guid: 651d1b27d2dd48043924f19cedf90c4f, type: 3}
       propertyPath: m_Name
-      value: btnPowerUp2
+      value: btn-power-up2
       objectReference: {fileID: 0}
     - target: {fileID: 2262856535644321229, guid: 651d1b27d2dd48043924f19cedf90c4f, type: 3}
       propertyPath: m_AdaptiveModeThreshold
@@ -3682,7 +3682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2125511377426289051, guid: 651d1b27d2dd48043924f19cedf90c4f, type: 3}
       propertyPath: m_Name
-      value: btnPowerUp1
+      value: btn-power-up1
       objectReference: {fileID: 0}
     - target: {fileID: 2493864547588592542, guid: 651d1b27d2dd48043924f19cedf90c4f, type: 3}
       propertyPath: m_IsActive
