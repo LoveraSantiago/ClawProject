@@ -694,7 +694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 2
-  main:
+  mainDto:
     garraDto:
       velocMovHorizontal: 3.1
       velocMovCima: 7.5
@@ -717,28 +717,6 @@ MonoBehaviour:
         tamanhoSegmento: 0.15
         transfInicioCabo: {fileID: 1336653433}
         lineRenderer: {fileID: 958265029}
-  garraDto:
-    velocMovHorizontal: 3.1
-    velocMovCima: 7.5
-    velocMovBaixo: 7.5
-    anguloIdleMin: -5
-    anguloIdleMax: 10
-    velocAnguloIdle: 0.3
-    anguloAbertura: 70
-    velocAnguloAbertura: 4
-    anguloFechamento: 15
-    velocAnguloFechamento: 1.5
-    rigidBody: {fileID: 1907269041974171794}
-    centroDaGarra: {fileID: 1379266187116345345}
-    pincaEsquerda: {fileID: 1907269041649210802}
-    pincaDireita: {fileID: 6299144451050955760}
-    colisor: {fileID: 3777820026685026688}
-    animator: {fileID: 2086766167889621232}
-    caboDto:
-      grossuraLinha: 0.1
-      tamanhoSegmento: 0.15
-      transfInicioCabo: {fileID: 1336653433}
-      lineRenderer: {fileID: 958265029}
   coletaveisDto:
     pontosColetado: 3
     pontosAcerto: 9
@@ -7442,7 +7420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924411, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Name
-      value: cabo_da_garra
+      value: cabo-da-garra
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Positions.Array.data[0].y

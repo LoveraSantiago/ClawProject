@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 5094742231976607924}
   - component: {fileID: 1585168848629503406}
   m_Layer: 10
-  m_Name: centroDeAtracao
+  m_Name: centro-de-atracao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
