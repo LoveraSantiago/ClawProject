@@ -986,6 +986,8 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 1fbc70667d57b1d4d939f69d53be7265, type: 3}
       - {fileID: 21300000, guid: f37fd421c42edc64cbca345eee4ee033, type: 3}
       areaDraggavel: {fileID: 2139442905}
+      materialGlowGeral: {fileID: 2100000, guid: 985de28129141ff4baba43db8d59ceec, type: 2}
+      materialGlowIndividual: {fileID: 2100000, guid: dfd97146e0b25814d925ee865d50adb6, type: 2}
       btnPowerUp:
       - sprAreaExterna: {fileID: 6406990385049082688}
         goParteDentro: {fileID: 646770560}
@@ -993,6 +995,7 @@ MonoBehaviour:
         sprContorno: {fileID: 1457028559}
         goImagem: {fileID: 484306874}
         sprImagem: {fileID: 484306876}
+        sprEfeito: {fileID: 6406990385049082692}
         goExclamacao: {fileID: 121857696}
       - sprAreaExterna: {fileID: 6406990385049082687}
         goParteDentro: {fileID: 1116124206}
@@ -1000,6 +1003,7 @@ MonoBehaviour:
         sprContorno: {fileID: 1922279708}
         goImagem: {fileID: 1454684506}
         sprImagem: {fileID: 1454684508}
+        sprEfeito: {fileID: 6406990385049082691}
         goExclamacao: {fileID: 1061401521}
       - sprAreaExterna: {fileID: 6406990385049082686}
         goParteDentro: {fileID: 681647209}
@@ -1007,6 +1011,7 @@ MonoBehaviour:
         sprContorno: {fileID: 1508959791}
         goImagem: {fileID: 1419182439}
         sprImagem: {fileID: 1419182441}
+        sprEfeito: {fileID: 6406990385049082690}
         goExclamacao: {fileID: 67770073}
       - sprAreaExterna: {fileID: 6406990385049082685}
         goParteDentro: {fileID: 292653094}
@@ -1014,6 +1019,7 @@ MonoBehaviour:
         sprContorno: {fileID: 2123831560}
         goImagem: {fileID: 1420270364}
         sprImagem: {fileID: 1420270366}
+        sprEfeito: {fileID: 6406990385049082689}
         goExclamacao: {fileID: 293416723}
     vigasDto:
       vigaTrasEsquerda: {fileID: 946233168}
@@ -24169,10 +24175,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: maquina
       objectReference: {fileID: 0}
-    - target: {fileID: 8430377541888241770, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
 --- !u!4 &6406990385049082668 stripped
@@ -24278,5 +24280,25 @@ SpriteRenderer:
 --- !u!212 &6406990385049082688 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8608572314238549957, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082689 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7614681330707023677, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082690 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7614681329012932796, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082691 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7614681330688650474, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082692 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7614681330214198319, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
