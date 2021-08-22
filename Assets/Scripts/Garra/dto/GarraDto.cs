@@ -3,7 +3,7 @@ using UnityEngine;
 #pragma warning disable 0649
 [System.Serializable]
 public class GarraDto 
-{   //TODO TALVEZ AGRUPAR EM UM DTO DE ANGULOS MANTENDO UMA UNICA REFERENCIA
+{   
     [SerializeField] private float velocMovHorizontal;
     [SerializeField] private float velocMovCima;
     [SerializeField] private float velocMovBaixo;
