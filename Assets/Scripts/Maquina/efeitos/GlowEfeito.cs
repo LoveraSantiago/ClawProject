@@ -3,7 +3,7 @@ using UnityEngine;
 public class GlowEfeito 
 {   
     private GameObject goEfeito;
-    private MaterialGlow materialGlow;
+    public MaterialGlow materialGlow { get; private set; }
 
     public GlowEfeito(GameObject goEfeito, MaterialGlow materialGlow)
     {
@@ -32,10 +32,5 @@ public class GlowEfeito
     public void desligarGlow()
     {
         goEfeito.SetActive(false);
-    }   
-
-    public MaterialGlow getMaterialGlow()
-    {
-        return materialGlow;
-    }
+    }      
 }

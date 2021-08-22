@@ -156,7 +156,7 @@ public class DisplayDeColetado
 
     public MaterialGlow getMaterialGlow()
     {
-        return glowEfeito.getMaterialGlow();
+        return glowEfeito.materialGlow;
     }
 
     public static void configurarDisplay(DisplayDeColetadoDto displayColetadoDtoArg)

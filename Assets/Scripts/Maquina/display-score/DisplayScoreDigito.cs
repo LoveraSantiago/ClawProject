@@ -68,7 +68,7 @@ public class DisplayScoreDigito
 
     public MaterialGlow getMaterialGlow()
     {
-        return glowEfeito.getMaterialGlow();
+        return glowEfeito.materialGlow;
     }
 
     private void ligarPosicoes(int[,] array, Color cor)
