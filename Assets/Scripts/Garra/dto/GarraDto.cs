@@ -7,19 +7,19 @@ public class GarraDto
     [SerializeField] private float velocMovHorizontal;
     [SerializeField] private float velocMovCima;
     [SerializeField] private float velocMovBaixo;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private float anguloIdleMin;
     [SerializeField] private float anguloIdleMax;
     [SerializeField] private float velocAnguloIdle;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private float anguloAbertura;
     [SerializeField] private float velocAnguloAbertura;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private float anguloFechamento;
     [SerializeField] private float velocAnguloFechamento;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private Rigidbody2D rigidBody;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private Transform  centroDaGarra;
     [SerializeField] private Transform  pincaEsquerda;
     [SerializeField] private Transform  pincaDireita;

@@ -3684,6 +3684,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: btnPowerUp1
       objectReference: {fileID: 0}
+    - target: {fileID: 2493864547588592542, guid: 651d1b27d2dd48043924f19cedf90c4f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 651d1b27d2dd48043924f19cedf90c4f, type: 3}
 --- !u!4 &5014026569183689270 stripped
