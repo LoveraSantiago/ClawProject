@@ -5,9 +5,9 @@ using UnityEngine.EventSystems;
 public class MainGameScene : MonoBehaviour, 
                         IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private LevelFlowManager.LEVEL level;    
+    [SerializeField] private LevelFlowManager.LEVEL level;
     [Space(5)]
-    [SerializeField] private GarraDto garraDto;
+    [SerializeField] private MainDto main;    
     [Space(5)]
     [SerializeField] private ColetaveisDto coletaveisDto;
     [Space(5)]
@@ -54,7 +54,7 @@ public class MainGameScene : MonoBehaviour,
     private void configurandoManagers()
     {
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
-        garraManager      = new GarraManager(garraDto);
+        garraManager      = new GarraManager(main.GarraDto);
         coletaveisManager = new ColetaveisManager(coletaveisDto, this);
         maquinaManager    = new MaquinaManager(maquinaDto, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
