@@ -55,7 +55,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         }        
     }
 
-    public void processarFimPowerUp()
+    public void processarFimPowerUp(BotoesPowerUp botoesPup)
     {
         if (powerUpAcionado)
         {
@@ -64,11 +64,23 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
             grupoDisplays.desligarAlvos(monoBehaviour);            
             agendadoInteracaoDisplayColetado = null;
 
-            if (possuiAgendamentoDeEvento() && grupoDisplays.isTodosDisplayOcupados())
+            if (possuiAgendamentoDeEvento())
             {
-                monoBehaviour.StartCoroutine(limpezaEFimTodosDisplaysOcupados(agendadoEvento, agendadoArcoIris, agendadoPosExecutor));
+                if (grupoDisplays.isTodosDisplayOcupados())
+                {
+                    monoBehaviour.StartCoroutine(limpezaEFimTodosDisplaysOcupados(agendadoEvento, agendadoArcoIris, agendadoPosExecutor));
+                }
+                else
+                {
+                    fimLimpezaTodosDisplaysNaoOcupados(agendadoPosExecutor);
+                }
                 limparEventoAgendado();
             }
+            else
+            {
+                botoesPup.reativarPowerUpPosDisplay();
+            }
+
         }
     }
 
@@ -108,8 +120,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         }
         else if(!powerUpAcionado)
         {
-            produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(false, false, false));
-            executorPosEvento.execute();
+            fimLimpezaTodosDisplaysNaoOcupados(executorPosEvento);                        
         }
         displayColetando = false;
     }     
@@ -190,6 +201,12 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     {
         arcoIris.desligarEfeito();
         produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(true, true, true));
+        executorPosEvento.execute();
+    }
+
+    private void fimLimpezaTodosDisplaysNaoOcupados(Executor executorPosEvento)
+    {        
+        produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(false, false, false));
         executorPosEvento.execute();
     }
 

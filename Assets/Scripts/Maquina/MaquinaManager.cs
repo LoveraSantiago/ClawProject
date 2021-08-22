@@ -113,7 +113,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             displayTimer.continuar();
             botoesPowerUp.processarFimPowerUp();
             arcoIrisEfeito.desligarEfeito();
-            displayDeColetados.processarFimPowerUp();
+            displayDeColetados.processarFimPowerUp(botoesPowerUp);
         }
     }              
 

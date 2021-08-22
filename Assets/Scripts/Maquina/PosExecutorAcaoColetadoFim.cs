@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PosExecutorAcaoColetadoFim : Executor
 {
     private DisplayTimer displayTimer;
@@ -11,6 +13,7 @@ public class PosExecutorAcaoColetadoFim : Executor
 
     public void execute()
     {
+        Debug.Log("Pos Execucao chamado");
         displayTimer.continuar();
         botoesPowerUp.reativarPowerUpPosDisplay();
     }

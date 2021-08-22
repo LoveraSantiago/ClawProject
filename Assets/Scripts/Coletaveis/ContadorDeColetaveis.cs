@@ -96,7 +96,7 @@ public class ContadorDeColetaveis
     private void adicionaAoContainerDeColetados(ColetavelTile coletado)
     {
         int indice = getPrimeiroIndiceVazio();
-        Debug.Log("Indice contador de coletaveis " + indice);
+        //Debug.Log("Indice contador de coletaveis " + indice);
         coletados[indice] = coletado;        
     }
 

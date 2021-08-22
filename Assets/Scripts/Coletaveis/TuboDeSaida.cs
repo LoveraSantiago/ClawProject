@@ -31,7 +31,7 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
     {
         if (devolverTubo)
         {
-            Debug.Log("Devolver tubo acionado");
+            //Debug.Log("Devolver tubo acionado");
             monoBehaviour.StartCoroutine(descerPeloTubo(resultados, coletados));
         }
     }
