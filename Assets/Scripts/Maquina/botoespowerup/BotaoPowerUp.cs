@@ -17,21 +17,23 @@ public class BotaoPowerUp : Draggavel
         isDraggavel = false;
     }
 
-    public void clicar()
+    public void clicar(ControleAcionamentoPowerUp controlePup)
     {
         aparencia.colorirBotao();
         if (hasPowerUp)
         {
-            acaoBtnPowerUp.acionar();            
+            acaoBtnPowerUp.acionar();
+            controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
         }
     }
 
-    public void draggar()
+    public void draggar(ControleAcionamentoPowerUp controlePup)
     {
         aparencia.colorirBotao();
         if (hasPowerUp)
-        {            
+        {
+            controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
         }
     }

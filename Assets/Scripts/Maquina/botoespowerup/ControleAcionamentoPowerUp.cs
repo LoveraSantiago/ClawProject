@@ -5,31 +5,33 @@ public class ControleAcionamentoPowerUp
     private readonly int ESTADO_SUSPENSO  = 2;
 
     private int estadoAtual;
+
     private bool powerUpEmAcao;
+    private bool powerUpDisplayEmAcao;
 
     public ControleAcionamentoPowerUp()
     {
         estadoAtual = ESTADO_LIGADO;
+    }   
+
+    public void habilitarPowerUp()
+    {
+        if (!powerUpDisplayEmAcao)
+        {
+            powerUpEmAcao = false;
+            estadoAtual = ESTADO_LIGADO;        
+        }
     }
 
-    public void powerUpAcionado()
+    public void habilitarPowerUpPosDisplay()
     {
-        powerUpEmAcao = true;
+        powerUpDisplayEmAcao = false;
+        habilitarPowerUp();
     }
-
-    public void powerUpFinalizado()
-    {
-        powerUpEmAcao = false;
-    }    
 
     public void desabilitarPowerUp()
     {
         estadoAtual = ESTADO_DESLIGADO;        
-    }
-
-    public void habilitarPowerUp()
-    {
-        estadoAtual = ESTADO_LIGADO;        
     }
 
     public void suspenderPowerUp()
@@ -48,6 +50,15 @@ public class ControleAcionamentoPowerUp
     public bool podeAcionarPupDraggavel()
     {
         return isEstadoLigado() && !powerUpEmAcao;
+    }
+
+    public void notificarAcionado(AcaoBotaoPowerUp acaoBotaoPowerUp)
+    {
+        powerUpEmAcao = true;
+        if(acaoBotaoPowerUp.getName() == PowerUpEntidade.NAME.ROLLBACK)
+        {
+            powerUpDisplayEmAcao = true;
+        }
     }
 
     private bool isEstadoLigado()

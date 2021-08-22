@@ -12,6 +12,6 @@ public class PosExecutorAcaoColetadoFim : Executor
     public void execute()
     {
         displayTimer.continuar();
-        botoesPowerUp.reativarPowerUp();
+        botoesPowerUp.reativarPowerUpPosDisplay();
     }
 }

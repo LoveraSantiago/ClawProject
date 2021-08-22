@@ -54,6 +54,32 @@ public class BotoesPowerUp
         }           
     }
 
+    public void beginDrag(Vector2 posicaoDrag)
+    {
+        //Debug.Log("begindrag");
+        if (controlePup.podeAcionarPupDraggavel())
+        {
+            dragavelAtual = dragavelVazio;
+            for (int contador = 0; contador < btnsPowerUp.Length; contador++)
+            {
+                if (btnsPowerUp[contador].isDragValido(posicaoDrag))
+                {
+                    dragavelAtual = btnsPowerUp[contador];
+                    btnAcionado = btnsPowerUp[contador];
+                    break;
+                }
+            }
+            dragavelAtual.prepararDraggagem(posicaoDrag);
+        }
+    }
+
+    public void processarFimPowerUp()
+    {
+        controlePup.habilitarPowerUp();
+        btnAcionado.desclicar();
+        distribuidor.distribuirProxItem(btnsPowerUp);
+    }
+
     public void desativarPowerUp()
     {
         controlePup.desabilitarPowerUp();        
@@ -69,45 +95,22 @@ public class BotoesPowerUp
         controlePup.habilitarPowerUp();
     }
 
-    private void acionarBotao(BotaoPowerUp btn)
+    public void reativarPowerUpPosDisplay()
     {
-        controlePup.powerUpAcionado();
-        btn.clicar();
-        btnAcionado = btn;
+        controlePup.habilitarPowerUpPosDisplay();
     }
 
-    public void reclicarProximoPowerUp()
-    {
-        controlePup.powerUpFinalizado();
-        btnAcionado.desclicar();
-        distribuidor.distribuirProxItem(btnsPowerUp);
+    private void acionarBotao(BotaoPowerUp btn)
+    {       
+        btn.clicar(controlePup);
+        btnAcionado = btn;
     }   
 
     private void draggarBotao(BotaoPowerUp btn)
-    {
-        controlePup.powerUpAcionado();        
-        btn.draggar();
+    {        
+        btn.draggar(controlePup);
         btnAcionado = btn;
-    }
-
-    public void beginDrag(Vector2 posicaoDrag)
-    {
-        //Debug.Log("begindrag");
-        if (controlePup.podeAcionarPupDraggavel())
-        {
-            dragavelAtual = dragavelVazio;
-            for(int contador = 0; contador< btnsPowerUp.Length; contador++)
-            {
-                if (btnsPowerUp[contador].isDragValido(posicaoDrag))
-                {
-                    dragavelAtual = btnsPowerUp[contador];
-                    btnAcionado = btnsPowerUp[contador];
-                    break;
-                }
-            }            
-            dragavelAtual.prepararDraggagem(posicaoDrag);
-        }
-    }
+    }   
 
     public void drag(Vector2 delta)
     {
