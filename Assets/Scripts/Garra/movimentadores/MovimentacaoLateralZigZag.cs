@@ -39,7 +39,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         moverHorizontalmenteFreeze(direcao);        
     }
 
-    public override void update()
+    public override void update(InputGame inputGame)
     {
         if (inputGame.aconteceuTapNaAreaSuperior())
         {

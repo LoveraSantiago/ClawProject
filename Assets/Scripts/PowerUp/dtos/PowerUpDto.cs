@@ -4,31 +4,31 @@ using UnityEngine;
 [System.Serializable]
 public class PowerUpDto 
 {    
-    [SerializeField] private GameObject bomdPUp;
-    [Space(3)]
-    [SerializeField] private GameObject missilNuclearPUp;
-    [Space(3)]
-    [SerializeField] private GameObject minaTerrestrePUp;
-    [Space(3)]
-    [SerializeField] private GameObject missilTeleguiadoPUp;
-    [SerializeField] private PathMissilDto pathMissilDto;
-    [Space(3)]
-    [SerializeField] private GameObject teleportePUp;
-    [SerializeField] private Material matTeleporteIn;
-    [SerializeField] private Material matTeleporteOut;
-    [Space(3)]
-    [SerializeField] private GameObject asaPup;
+    [SerializeField] private GameObject vazioPUp;
+    [Space(5)]
+    [SerializeField] private BombaDto bombaDto;
+    [Space(5)]    
+    [SerializeField] private MissilNuclearDto missilNuclearDto;
+    [Space(5)]    
+    [SerializeField] private MinaDto minaDto;
+    [Space(5)]        
+    [SerializeField] private MissilTeleguiadoDto missilTeleguiadoDto;
+    [Space(5)]    
+    [SerializeField] private TeleporteDto teleporteDto;
+    [Space(5)]
+    [SerializeField] private AsaDto asaDto;
+    [Space(5)]
+    [SerializeField] private RollbackDto rollBackDto;
  
-    public GameObject BombPUp { get { return bomdPUp; } }
-    public GameObject MissilNuclearPUp { get { return missilNuclearPUp; } }
-    public GameObject MinaTerrestrePUp { get { return minaTerrestrePUp; } }
+    public GameObject VazioPUp { get { return vazioPUp; } }
 
-    public GameObject MissilTeleguiadoPUp { get { return missilTeleguiadoPUp; } }
-    public PathMissilDto PathMissilDto { get { return pathMissilDto; } }
+    public BombaDto BombaDto { get { return bombaDto; } }
+    public MissilNuclearDto MissilNuclearDto { get { return missilNuclearDto; } }    
+    public MinaDto MinaDto { get { return minaDto; } }
+    
+    public MissilTeleguiadoDto MissilTeleguiadoDto { get { return missilTeleguiadoDto; }}
+    public TeleporteDto TeleporteDto { get { return teleporteDto; } }   
 
-    public GameObject TeleportePUp { get { return teleportePUp; } }
-    public Material MatTeleporteIn { get { return matTeleporteIn; } }
-    public Material MatTeleporteOut { get { return matTeleporteOut; } }
-
-    public GameObject AsaPup { get { return asaPup; } }
+    public AsaDto AsaDto { get { return asaDto; } }
+    public RollbackDto RollBackDto { get { return rollBackDto;  }}
 }

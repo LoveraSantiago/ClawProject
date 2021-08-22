@@ -8,9 +8,9 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
     private PowerUpEntidade powerUp;
     private Sprite imgBtn;
 
-    public PowerUpParaMaquina(PowerUpEntidade.NAME tipo, Dictionary<string, Sprite> dicionarioDeSprites)
+    public PowerUpParaMaquina(PowerUpEntidade.NAME nome, Dictionary<string, Sprite> dicionarioDeSprites)
     {
-        powerUp = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(tipo);
+        powerUp = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(nome);
         imgBtn = dicionarioDeSprites[powerUp.nomeSpriteBtn];
     }
 
@@ -44,4 +44,8 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
         return imgBtn;
     }
 
+    public PowerUpEntidade.NAME getName()
+    {
+        return powerUp.name;
+    }
 }

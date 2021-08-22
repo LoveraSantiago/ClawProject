@@ -54,9 +54,9 @@ public class MainGameScene : MonoBehaviour,
     private void configurandoManagers()
     {
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
-        garraManager      = new GarraManager(garraDto, inputGame);
+        garraManager      = new GarraManager(garraDto);
         coletaveisManager = new ColetaveisManager(coletaveisDto, this);
-        maquinaManager    = new MaquinaManager(maquinaDto, garraDto.VelocMovHorizontal, inputGame, this);
+        maquinaManager    = new MaquinaManager(maquinaDto, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);
         modalPontos       = new ModalPontos(modalPontosDto, this);
@@ -72,15 +72,20 @@ public class MainGameScene : MonoBehaviour,
         maquinaManager   .configuradoPeloLevel(levelEscolhido);
         modalPontos      .configurarLevel(levelEscolhido.getLevelName());
     }
-    
+
     private void configurandoAcoes()
     {
         new AcaoColetado()
-            .configurarProdutor(coletaveisManager)            
+            .configurarProdutor(coletaveisManager)
+            .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(efeitoColetado)
-            .adicionarConsumidor(modalPontos)
-            .adicionarConsumidor(garraManager);//TODO ver mudanca de ordem
+            .adicionarConsumidor(modalPontos);
+
+        new AcaoColetadoFim()
+            .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(coletaveisManager)
+            .adicionarConsumidor(garraManager);            
 
         new AcaoImantadoPelaGarra()
             .configurarProdutor(garraManager)
@@ -94,22 +99,15 @@ public class MainGameScene : MonoBehaviour,
             .configurarProdutor(garraManager)
             .adicionarConsumidor(maquinaManager);
 
-        new AcaoPowerUpInicio()
+        new AcaoPowerUp()
             .configurarProdutor(powerUpManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(coletaveisManager);
-
-        new AcaoPowerUpFim()
-            .configurarProdutor(powerUpManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(coletaveisManager);
+            .adicionarConsumidor(coletaveisManager);       
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(garraManager)            
             .adicionarConsumidor(modalPontos)
             .adicionarConsumidor(coletaveisManager);
 
@@ -135,8 +133,8 @@ public class MainGameScene : MonoBehaviour,
     void Update()
     {
         inputGame.update();
-        garraManager.update();
-        maquinaManager.update();        
+        garraManager.update(inputGame);
+        maquinaManager.update(inputGame);        
     }
 
     private void FixedUpdate()

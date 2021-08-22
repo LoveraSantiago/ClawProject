@@ -32,7 +32,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         trocarParaAcaoVoltarParaCima();
     }    
 
-    public override void update()
+    public override void update(InputGame inputGame)
     {
         if (contadorDeFimTempo.contarTempoDT())
         {
@@ -45,7 +45,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
                 movAtual.acionarTimeout();
             }
         }
-        movAtual.update();
+        movAtual.update(inputGame);
     }
 
     public override void fixedUpdate()
@@ -59,7 +59,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
-    public void receberGarraInteracaoComPowerUp(GarraInteracaoComPowerUp garraInteracaoPowerUp, float tempoDuracao)
+    public void receberGarraInteracaoComPowerUp(PowerUpInteracaoComGarra garraInteracaoPowerUp, float tempoDuracao)
     {
         MovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(garraInteracaoPowerUp);                
         contadorDeFimTempo.configTempoParaAcao(tempoDuracao);

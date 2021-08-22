@@ -1,22 +1,19 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class DistribuidorParaBotoesPowerUp 
 {   
     private int indiceDistribuicao;
-
-    private BotaoPowerUp[] btnsPowerUp;
+    
     private PowerUpEntidade.NAME[] arrayDaFase;
-
     private Dictionary<string, Sprite> dicionarioDeSprites;
 
-    public DistribuidorParaBotoesPowerUp(BotaoPowerUp[] btnsPowerUp, Sprite[] arrayDeSpritesBotoes)
-    {
-        this.btnsPowerUp = btnsPowerUp;
+    public DistribuidorParaBotoesPowerUp(Sprite[] arrayDeSpritesBotoes)
+    {        
         montarDicionarioDeSprites(arrayDeSpritesBotoes);
     }
 
-    public void distribuirArray(PowerUpEntidade.NAME[] arrayDePowerUpsParaBotoes)
+    public void distribuirArray(PowerUpEntidade.NAME[] arrayDePowerUpsParaBotoes, BotaoPowerUp[] btnsPowerUp)
     {
         arrayDaFase = arrayDePowerUpsParaBotoes;
         determinarIndicePrimeiraDistribuicao();
@@ -31,7 +28,7 @@ public class DistribuidorParaBotoesPowerUp
         }
     }
 
-    public void distribuirProxItem()
+    public void distribuirProxItem(BotaoPowerUp[] btnsPowerUp)
     {
         if (indiceDistribuicao < arrayDaFase.Length)
         {
@@ -39,7 +36,7 @@ public class DistribuidorParaBotoesPowerUp
             if (namePU != PowerUpEntidade.NAME.NONE)
             {
                 PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(namePU, dicionarioDeSprites);
-                BotaoPowerUp btnDisponivel = getPrimeiroBotaoDisponivel();
+                BotaoPowerUp btnDisponivel = getPrimeiroBotaoDisponivel(btnsPowerUp);
                 btnDisponivel.receberAcaoPowerUp(powerUpPMaquina);
             }
 
@@ -70,7 +67,7 @@ public class DistribuidorParaBotoesPowerUp
         }        
     }
 
-    private BotaoPowerUp getPrimeiroBotaoDisponivel()
+    private BotaoPowerUp getPrimeiroBotaoDisponivel(BotaoPowerUp[] btnsPowerUp)
     {
         for(int contador = 0; contador < btnsPowerUp.Length; contador++)
         {

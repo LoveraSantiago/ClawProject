@@ -36,9 +36,9 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         trocarMovimentador(movLateral);
     }
 
-    public override void update()
+    public override void update(InputGame inputGame)
     {
-        movAtual.update();
+        movAtual.update(inputGame);
         //Debug.Log(movimentacaoAtual);
     }
 
@@ -84,7 +84,16 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     public void trocarParaAcaoNormal()
     {
         AudioController.current.StopAudioGarra();
-        trocarMovimentador(movLateral);
+        if (movAtual.isComemorando())
+        {
+            //Debug.Log("comemorando");
+            trocarParaAcaoParado();
+        }
+        else
+        {
+            //Debug.Log("normal");
+            trocarMovimentador(movLateral);
+        }
     }
 
     public void trocarParaAcaoAgarrada()

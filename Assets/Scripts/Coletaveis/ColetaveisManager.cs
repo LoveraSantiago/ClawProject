@@ -1,24 +1,21 @@
 using UnityEngine;
 
 public class ColetaveisManager : ConsumidorDeEventoTrigger,
-                                AcaoColetado.ProdutorEvento,                                
+                                AcaoColetado.ProdutorEvento,                              
                                 AcaoBoardElevadoFim.ProdutorEvento,
+                                AcaoColetadoFim.ConsumidorEvento,
                                 AcaoImantadoPelaGarra.ConsumidorEvento,
                                 AcaoSubidaDaGarra.ConsumidorEvento,                                
-                                AcaoPowerUpInicio.ConsumidorEvento,
-                                AcaoPowerUpFim.ConsumidorEvento,
+                                AcaoPowerUp.ConsumidorEvento,                                
                                 AcaoTempoEsgotado.ConsumidorEvento
 {
-    private bool powerUpEmAcao;
-    private bool devolverParaBoard;
-
     private ColetaveisDto coletaveisDto;
     private ColetavelTile coletavelImantado;
     
     private BoardManager boardManager;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contadorDeColetaveis;
-    private TuboDeSaida tudoDeSaida;
+    private TuboDeSaida tuboDeSaida;
 
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;
     private MonoBehaviour monoBehaviour;
@@ -32,8 +29,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         configurarPoolDeColetaveis(coletaveisDto);
 
         boardManager = new BoardManager(coletaveisDto.BoardDto);
-        contadorDeColetaveis = new ContadorDeColetaveis();
-        tudoDeSaida = new TuboDeSaida(coletaveisDto.TuboDto);
+        contadorDeColetaveis = new ContadorDeColetaveis(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
+        tuboDeSaida = new TuboDeSaida(coletaveisDto.TuboDto);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();
 
@@ -43,14 +40,13 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     public void configuradoPeloLevel(AbstractLevel level)
     {
         boardManager.configuradoPeloLevel(level);
-        devolverParaBoard = level.devolverParaBoard();
+        tuboDeSaida.configuradoPeloLevel(level.devolverParaBoard());
     }
 
     public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
     {
-        powerUpEmAcao = false;
         int qtdColetaveisDoBoard = boardManager.create(poolDeColetaveis);
-        contadorDeColetaveis.configurarTotalColetaveis(qtdColetaveisDoBoard, devolverParaBoard);
+        contadorDeColetaveis.configurarTotalColetaveis(qtdColetaveisDoBoard);
         coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK
     }    
 
@@ -69,14 +65,12 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     private void processarColetado(GameObject gameObjectColetado)
     {
+        contadorDeColetaveis.subtrairColetavel();
         ColetavelTile coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
         coletavelAcertado.desligar();        
 
         contadorDeColetaveis.adicionarColetado(coletavelAcertado);
-
-        boardManager.devolver(contadorDeColetaveis.getArrayBoard(), monoBehaviour);
-        tudoDeSaida.devolver(contadorDeColetaveis.getArrayTubo(), monoBehaviour);
-        poolDeColetaveis.inativarColetaveis(contadorDeColetaveis.getArrayTubo());
+        poolDeColetaveis.inativarColetavel(coletavelAcertado);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
@@ -102,7 +96,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         if (poolDeColetaveis.contemNome(goColetado.name))
         {
             ColetavelTile coletado = poolDeColetaveis.getColetavelPeloNome(goColetado.name);            
-            if(coletado.isTouchingCentroDaGarra() && !powerUpEmAcao)
+            if(coletado.isTouchingCentroDaGarra())
             {            
                 processarColetado(goColetado.gameObject);
             }
@@ -121,23 +115,17 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         processarDesimantado();
     }
 
-    void AcaoPowerUpInicio.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
-    {        
-        powerUpEmAcao = true;
-        processarDesimantado();
-    }        
-
-    void AcaoPowerUpFim.ConsumidorEvento.consumirEvento(PowerUpInfoFim evento)
-    {     
-        if (evento.preFinalizar && evento.hasColetavel)
+    void AcaoPowerUp.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    {
+        if (evento.isInicio())
+        {
+            processarDesimantado();
+        }
+        else if (evento.isPreFinalizar() && evento.hasColetavel())
         {
             processarColetado(evento.coletavelTile.getGoColetavel());
-        }
-        else if (evento.finalizar)
-        {
-            powerUpEmAcao = false;
-        }
-    }
+        }        
+    }            
     
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {
@@ -146,7 +134,14 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
             int qtdAtivados = boardManager.subirBoard(poolDeColetaveis, monoBehaviour);
             contadorDeColetaveis.adicionarColetaveisExtras(qtdAtivados);            
         }        
-    }  
+    }
+
+    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
+    {
+        boardManager.devolver(evento.devolverBoard(), contadorDeColetaveis.getColetados(), monoBehaviour);
+        tuboDeSaida .devolver(evento.clear, contadorDeColetaveis.getColetados(), monoBehaviour);        
+        contadorDeColetaveis.reajustarContagem(evento);
+    }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
     {
@@ -156,5 +151,5 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return ((AcaoBoardElevadoFim.ProdutorEvento)boardManager).getProdutorDeEventoColetado();
-    }   
+    }
 }

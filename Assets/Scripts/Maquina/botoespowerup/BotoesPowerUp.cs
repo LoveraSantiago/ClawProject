@@ -1,27 +1,23 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class BotoesPowerUp 
 {
-    private bool acionadoPowerUp;
-
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
+
     private DistribuidorParaBotoesPowerUp distribuidor;
+    private ControleAcionamentoPowerUp controlePup;
 
     private Draggavel dragavelAtual;
     private Draggavel dragavelVazio;
 
-    private InputGame inputGame;        
-
-    public BotoesPowerUp(BotoesPowerUpDto btnsPowerUpsDto, InputGame inputGame)
+    public BotoesPowerUp(BotoesPowerUpDto btnsPowerUpsDto)
     {
-        this.inputGame = inputGame;       
-
         BotaoPowerUp.configurar(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.AreaDraggavel);
 
         inicializarBotoes(btnsPowerUpsDto);
-        distribuidor = new DistribuidorParaBotoesPowerUp(btnsPowerUp, btnsPowerUpsDto.SpritesDeBotoes);
+        distribuidor = new DistribuidorParaBotoesPowerUp(btnsPowerUpsDto.SpritesDeBotoes);
+        controlePup = new ControleAcionamentoPowerUp();
 
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
@@ -38,122 +34,87 @@ public class BotoesPowerUp
 
     public void configuradoPeloLevel(AbstractLevel level)
     {
-        distribuidor.distribuirArray(level.getPowerUpsParaBotoesMaquina());
-
-        Dictionary<string, string> dicionarioDeCores = level.getDicionarioDeCores();
-
-        string hexBotao = dicionarioDeCores[ConstantesCoresMaquina.BTN_POWERUP_1];
-        string hexDentro = dicionarioDeCores[ConstantesCoresMaquina.BTN_PARTEDENTRO_1];
-        string hexContorno = dicionarioDeCores[ConstantesCoresMaquina.BTN_CONTORNO_1];
-        btnsPowerUp[0].receberCorLevel(hexBotao, hexDentro, hexContorno);
-
-        hexBotao = dicionarioDeCores[ConstantesCoresMaquina.BTN_POWERUP_2];
-        hexDentro = dicionarioDeCores[ConstantesCoresMaquina.BTN_PARTEDENTRO_2];
-        hexContorno = dicionarioDeCores[ConstantesCoresMaquina.BTN_CONTORNO_2];
-        btnsPowerUp[1].receberCorLevel(hexBotao, hexDentro, hexContorno);
-
-        hexBotao = dicionarioDeCores[ConstantesCoresMaquina.BTN_POWERUP_3];
-        hexDentro = dicionarioDeCores[ConstantesCoresMaquina.BTN_PARTEDENTRO_3];
-        hexContorno = dicionarioDeCores[ConstantesCoresMaquina.BTN_CONTORNO_3];
-        btnsPowerUp[2].receberCorLevel(hexBotao, hexDentro, hexContorno);
-
-        hexBotao = dicionarioDeCores[ConstantesCoresMaquina.BTN_POWERUP_4];
-        hexDentro = dicionarioDeCores[ConstantesCoresMaquina.BTN_PARTEDENTRO_4];
-        hexContorno = dicionarioDeCores[ConstantesCoresMaquina.BTN_CONTORNO_4];
-        btnsPowerUp[3].receberCorLevel(hexBotao, hexDentro, hexContorno);
+        distribuidor.distribuirArray(level.getPowerUpsParaBotoesMaquina(), btnsPowerUp);
+        new ColoridorBotoes().colorir(btnsPowerUp, level.getDicionarioDeCores());        
     }
     
-    public void update()
+    public void update(InputGame inputGame)
     {
-        if (!acionadoPowerUp && inputGame.aconteceuTapNaAreaInferior())
+        if (inputGame.aconteceuTapNaAreaInferior())
         {
             Vector2 posicaoTap = inputGame.getPosicaoTap();
-            if (btnsPowerUp[0].isCliqueValido(posicaoTap))
+            for (int contador = 0; contador < btnsPowerUp.Length; contador++)
             {
-                acionarBotao(btnsPowerUp[0]);                
+                if (btnsPowerUp[contador].isCliqueValido(controlePup, posicaoTap))
+                {
+                    acionarBotao(btnsPowerUp[contador]);
+                    break;
+                }
             }
-            else if (btnsPowerUp[1].isCliqueValido(posicaoTap))
-            {
-                acionarBotao(btnsPowerUp[1]);
-            }
-            else if (btnsPowerUp[2].isCliqueValido(posicaoTap))
-            {
-                acionarBotao(btnsPowerUp[2]);
-            }
-            else if (btnsPowerUp[3].isCliqueValido(posicaoTap))
-            {
-                acionarBotao(btnsPowerUp[3]);
-            }
-        }        
+        }           
     }
-
-    public void desativarPowerUp()
-    {
-        acionadoPowerUp = true;
-    }
-
-    public void reativarPowerUp()
-    {
-        acionadoPowerUp = false;
-    }
-
-    private void acionarBotao(BotaoPowerUp btn)
-    {
-        btn.clicar();
-        acionadoPowerUp = true;
-        btnAcionado = btn;
-    }
-
-    private void draggarBotao(BotaoPowerUp btn)
-    {
-        btn.draggar();
-        acionadoPowerUp = true;
-        btnAcionado = btn;
-    }
-
-    public void reclicarProxPowerUp()
-    {
-        acionadoPowerUp = false;
-        btnAcionado.desclicar();
-        distribuidor.distribuirProxItem();
-    }   
 
     public void beginDrag(Vector2 posicaoDrag)
     {
         //Debug.Log("begindrag");
-        if (!acionadoPowerUp)
+        if (controlePup.podeAcionarPupDraggavel())
         {
-            if (btnsPowerUp[0].isDragValido(posicaoDrag))
-            {   
-                dragavelAtual = btnsPowerUp[0];
-                btnAcionado = btnsPowerUp[0];
-            }
-            else if (btnsPowerUp[1].isDragValido(posicaoDrag))
-            {            
-                dragavelAtual = btnsPowerUp[1];
-                btnAcionado = btnsPowerUp[1];
-            }
-            else if (btnsPowerUp[2].isDragValido(posicaoDrag))
-            {            
-                dragavelAtual = btnsPowerUp[2];
-                btnAcionado = btnsPowerUp[2];
-            }
-            else if (btnsPowerUp[3].isDragValido(posicaoDrag))
-            {            
-                dragavelAtual = btnsPowerUp[3];
-                btnAcionado = btnsPowerUp[3];
-            }
-            else
+            dragavelAtual = dragavelVazio;
+            for (int contador = 0; contador < btnsPowerUp.Length; contador++)
             {
-                dragavelAtual = dragavelVazio;
+                if (btnsPowerUp[contador].isDragValido(posicaoDrag))
+                {
+                    dragavelAtual = btnsPowerUp[contador];
+                    btnAcionado = btnsPowerUp[contador];
+                    break;
+                }
             }
             dragavelAtual.prepararDraggagem(posicaoDrag);
         }
     }
 
+    public void processarFimPowerUp()
+    {
+        controlePup.habilitarPowerUp();
+        btnAcionado.desclicar();
+        distribuidor.distribuirProxItem(btnsPowerUp);
+    }
+
+    public void desativarPowerUp()
+    {
+        controlePup.desabilitarPowerUp();        
+    }
+
+    public void suspenderPowerUp()
+    {
+        controlePup.suspenderPowerUp();
+    }
+
+    public void reativarPowerUp()
+    {
+        controlePup.habilitarPowerUp();
+    }
+
+    public void reativarPowerUpPosDisplay()
+    {
+        controlePup.habilitarPowerUpPosDisplay();
+    }
+
+    private void acionarBotao(BotaoPowerUp btn)
+    {       
+        btn.clicar(controlePup);
+        btnAcionado = btn;
+    }   
+
+    private void draggarBotao(BotaoPowerUp btn)
+    {        
+        btn.draggar(controlePup);
+        btnAcionado = btn;
+    }   
+
     public void drag(Vector2 delta)
     {
-        if (!acionadoPowerUp)
+        if (controlePup.podeAcionarPupDraggavel())
         {
             dragavelAtual.updateDrag(delta);
         }
@@ -161,15 +122,13 @@ public class BotoesPowerUp
 
     public void endDrag(MonoBehaviour monoBehaviour)
     {
-        if (!acionadoPowerUp)
+        if (controlePup.podeAcionarPupDraggavel())
         {
-            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp(monoBehaviour);
-            acionadoPowerUp = result;
+            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp(monoBehaviour);            
             if (result)
             {
                 draggarBotao(btnAcionado);
             }
-
             dragavelAtual = dragavelVazio;
         }
     }   

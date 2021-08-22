@@ -1,15 +1,62 @@
 public class PowerUpInfo
 {
-    public int duracaoTempo{ get; private set; }
-    public GarraInteracaoComPowerUp garraInteracaoPowerUp { get; private set; }
+    public enum ESTADO { INICIO, PREFINALIZAR, FINALIZAR}
 
-    public void configurarDuracaoTempo(int duracao)
+    public ESTADO estadoAtual;
+
+    public int duracaoTempo{ get; private set; }
+
+    public ColetavelTile coletavelTile { get; private set; }
+
+    public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }
+    public PowerUpInteracaoDisplayColetado interacaoDisplayColetado { get; private set; }
+
+    public PowerUpInfo(ESTADO estado)
     {
-        duracaoTempo = duracao;
+        estadoAtual = estado;
     }
 
-    public void configurarObjetoInteracaoComGarra(GarraInteracaoComPowerUp garraInteracaoPowerUp)
+    public PowerUpInfo configurarDuracaoTempo(int duracao)
     {
-        this.garraInteracaoPowerUp = garraInteracaoPowerUp;
+        duracaoTempo = duracao;
+        return this;
+    }
+
+    public PowerUpInfo configInteracaoComGarra(PowerUpInteracaoComGarra interacaoComGarra)
+    {
+        this.interacaoComGarra = interacaoComGarra;
+        return this;
+    }
+
+    public PowerUpInfo configInteracaoDisplayColetado(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
+    {
+        this.interacaoDisplayColetado = interacaoDisplayColetado;
+        return this;
+    }
+
+    public PowerUpInfo addColetavel(ColetavelTile coletavelTile)
+    {
+        this.coletavelTile = coletavelTile;        
+        return this;
+    }
+
+    public bool isInicio()
+    {
+        return estadoAtual == ESTADO.INICIO;
+    }
+
+    public bool isPreFinalizar()
+    {
+        return estadoAtual == ESTADO.PREFINALIZAR;
+    }
+
+    public bool isFinalizar()
+    {
+        return estadoAtual == ESTADO.FINALIZAR;
+    }
+
+    public bool hasColetavel()
+    {
+        return coletavelTile != null;
     }
 }

@@ -25,7 +25,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal,
         //moverGarraParaCimaFreeze();
     }
 
-    public override void update()
+    public override void update(InputGame inputGame)
     {        
         if(isAcimaPosInicial())
         {

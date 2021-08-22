@@ -2,28 +2,26 @@ using UnityEngine;
 
 public class PowerUpManager : PowerUpAcionamento,
                               PowerUpFinalizacao,
-                              AcaoPowerUpInicio.ProdutorEvento,
-                              AcaoPowerUpFim.ProdutorEvento
-{   
-    public ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp { get; private set; }
-    private ProdutorDeEvento<PowerUpInfoFim> produtorDeEventoFinalizacao;
+                              AcaoPowerUp.ProdutorEvento
+{
+    private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;    
 
     public PowerUpManager(PowerUpDto powerUpDto, MonoBehaviour monoBehaviour, InputGame inputGame)
     {   
         PowerUpParaMaquina.configAcionadorDePowerUp(this);
-        produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
-        produtorDeEventoFinalizacao = new ProdutorDeEvento<PowerUpInfoFim>();
+        produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();        
 
         AbstractPowerUpGo.configurarAbstractPowerUp(powerUpDto, this, inputGame, monoBehaviour);        
     }    
 
     public void acionado(PowerUpEntidade powerUp)
     {
-        GarraInteracaoComPowerUp interacaoComPowerUp = powerUp.getPowerUpGo();
+        AbstractPowerUpGo interacaoComPowerUp = powerUp.getPowerUpGo();
 
-        PowerUpInfo powerUpInfo = new PowerUpInfo();
-        powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
-        powerUpInfo.configurarObjetoInteracaoComGarra(interacaoComPowerUp);
+        PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.INICIO)
+            .configurarDuracaoTempo(powerUp.duracao)
+            .configInteracaoComGarra(interacaoComPowerUp.getObjInteracaoComGarra())
+            .configInteracaoDisplayColetado(interacaoComPowerUp.getObjInteracaoDisplayColetado());
 
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
@@ -33,39 +31,35 @@ public class PowerUpManager : PowerUpAcionamento,
         AbstractPowerUpGo interacaoComPowerUp = powerUp.getPowerUpGo();
         interacaoComPowerUp.iniciarNaPosicao(posicaoAtual);
 
-        PowerUpInfo powerUpInfo = new PowerUpInfo();
-        powerUpInfo.configurarDuracaoTempo(powerUp.duracao);
-        powerUpInfo.configurarObjetoInteracaoComGarra(interacaoComPowerUp);
+        PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.INICIO)
+            .configurarDuracaoTempo(powerUp.duracao)
+            .configInteracaoComGarra(interacaoComPowerUp.getObjInteracaoComGarra())
+            .configInteracaoDisplayColetado(interacaoComPowerUp.getObjInteracaoDisplayColetado());
 
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }   
 
     public void preFinalizar()
     {
-        PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(true, false);
-        produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
+        PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.PREFINALIZAR);
+        produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
     public void preFinalizar(ColetavelTile coletavelTile)
     {
-        PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(true, false);
-        powerUpInfoFim.addColetavel(coletavelTile);
-        produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
+        PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.PREFINALIZAR)
+            .addColetavel(coletavelTile);
+        produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
     public void finalizado()
     {
-        PowerUpInfoFim powerUpInfoFim = new PowerUpInfoFim(false, true);
-        produtorDeEventoFinalizacao.produziuEvento(powerUpInfoFim);
+        PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.FINALIZAR);
+        produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }    
 
-    ProdutorDeEvento<PowerUpInfo> AcaoPowerUpInicio.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<PowerUpInfo> AcaoPowerUp.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeEventoPowerUp;
-    }
-
-    ProdutorDeEvento<PowerUpInfoFim> AcaoPowerUpFim.ProdutorEvento.getProdutorDeEventoColetado()
-    {
-        return produtorDeEventoFinalizacao;
     }    
 }

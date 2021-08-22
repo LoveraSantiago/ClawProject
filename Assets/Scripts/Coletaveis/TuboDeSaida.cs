@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TuboDeSaida : ConsumidorDeEventoTrigger
 {
-    private int contadorSaindoTubo;
+    private bool devolverTubo;    
     private float torque;    
 
     private Vector3[] posicoesOriginais;
@@ -22,20 +22,26 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         torque = tuboDto.Torque;        
     }
 
-    public void devolver(Coletavel[] coletados, MonoBehaviour monoBehaviour)
+    public void configuradoPeloLevel(bool devolverParaBoard)
     {
-        if(coletados.Length > 0)
+        this.devolverTubo = !devolverParaBoard;
+    }
+
+    public void devolver(bool[] resultados, Coletavel[] coletados, MonoBehaviour monoBehaviour)
+    {
+        if (devolverTubo)
         {
-            monoBehaviour.StartCoroutine(descerPeloTubo(coletados));
+            //Debug.Log("Devolver tubo acionado");
+            monoBehaviour.StartCoroutine(descerPeloTubo(resultados, coletados));
         }
     }
 
-    private IEnumerator descerPeloTubo(Coletavel[] coletados)
-    {
-        yield return new WaitForSeconds(tuboDto.DelayQuedaTubo);
-        if (coletados.Length > 0)
+    private IEnumerator descerPeloTubo(bool[] resultados, Coletavel[] coletados)
+    {        
+        
+        for (int contador = 0; contador < coletados.Length; contador++)
         {
-            for (int contador = 0; contador < coletados.Length; contador++)
+            if (resultados[contador])
             {
                 torque *= -1;
                 Sprite spriteAtual = coletados[contador].getSprite();
@@ -43,31 +49,23 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
                 rigidBodies[contador].AddTorque(torque);
                 spriteRenderers[contador].sprite = spriteAtual;
             }
-        }
+        }        
         yield return null;
     }
 
-    private void restaurandoColetaveisParaOTubo()
-    {
-        for (int contador = 0; contador < tuboDto.ColetaveisParaTubo.Length; contador++)
-        {
-            rigidBodies[contador].gravityScale = 0f;
-            rigidBodies[contador].velocity = Vector2.zero;
-            rigidBodies[contador].angularVelocity = 0f;
-            tuboDto.ColetaveisParaTubo[contador].transform.position = posicoesOriginais[contador];
-        }
+    private void restaurandoColetaveisParaOTubo(int indice)
+    {   
+        rigidBodies[indice].gravityScale = 0f;
+        rigidBodies[indice].velocity = Vector2.zero;
+        rigidBodies[indice].angularVelocity = 0f;
+        tuboDto.ColetaveisParaTubo[indice].transform.position = posicoesOriginais[indice];        
     }
 
     private void triggerDeSaidaDeTuboAcionado(Collider2D coletavelSaindo)
     {
         if (Utils.isTag(coletavelSaindo, "ColetavelDoTubo"))
-        {
-            contadorSaindoTubo++;
-            if (contadorSaindoTubo == 3)
-            {
-                restaurandoColetaveisParaOTubo();
-                contadorSaindoTubo = 0;
-            }
+        {   
+            restaurandoColetaveisParaOTubo(int.Parse(coletavelSaindo.name));
         }
     }
 

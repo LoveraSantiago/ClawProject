@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ColetavelContextoEstatico 
 {
-    public readonly int IDLE     = Animator.StringToHash("idle");
-    public readonly int MIRAR_ON = Animator.StringToHash("mirar-on");
+    public readonly int IDLE           = Animator.StringToHash("idle");
+    public readonly int MIRAR_ON       = Animator.StringToHash("mirar-on");
     public readonly int MIRAR_SELECTED = Animator.StringToHash("mirar-selected");
     
 

@@ -12,19 +12,14 @@ public class BoardDevolvedor
 
     public void devolver(BoardDto boardDto, ColetavelTile[] coletados, MonoBehaviour monoBehaviour)
     {
-        if (devolverParaBoard)
-        {
-            if (coletados.Length > 0)
-            {
-                monoBehaviour.StartCoroutine(coroutineDevolverParaBoard(boardDto, coletados));
-            }
+        if (devolverParaBoard && coletados.Length > 0)
+        {            
+            monoBehaviour.StartCoroutine(coroutineDevolverParaBoard(boardDto, coletados));            
         }
     }
 
     private IEnumerator coroutineDevolverParaBoard(BoardDto boardDto, ColetavelTile[] coletados)
     {
-        yield return new WaitForSeconds(boardDto.DelayInicialVoltaBoard);
-
         for (int contador = 0; contador < coletados.Length; contador++)
         {
             float anguloDevolucao = Random.Range(180, 230);

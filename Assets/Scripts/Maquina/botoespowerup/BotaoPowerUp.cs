@@ -17,21 +17,23 @@ public class BotaoPowerUp : Draggavel
         isDraggavel = false;
     }
 
-    public void clicar()
+    public void clicar(ControleAcionamentoPowerUp controlePup)
     {
         aparencia.colorirBotao();
         if (hasPowerUp)
         {
-            acaoBtnPowerUp.acionar();            
+            acaoBtnPowerUp.acionar();
+            controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
         }
     }
 
-    public void draggar()
+    public void draggar(ControleAcionamentoPowerUp controlePup)
     {
         aparencia.colorirBotao();
         if (hasPowerUp)
-        {            
+        {
+            controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
         }
     }
@@ -74,14 +76,17 @@ public class BotaoPowerUp : Draggavel
         isDraggavel = false;
     }       
 
-    public bool isCliqueValido(Vector2 posicao)
+    public bool isCliqueValido(ControleAcionamentoPowerUp controleAcionamento, Vector2 posicao)
     {
-        return !isDraggavel && acaoDrag.isPosicaoDentroAreaBotao(posicao) && hasPowerUp;
+        return !isDraggavel
+               && hasPowerUp
+               && controleAcionamento.podeAcionarPupBtn(acaoBtnPowerUp)
+               && acaoDrag.isPosicaoDentroAreaBotao(posicao);
     }
 
     public bool isDragValido(Vector2 posicao)
     {
-        return isDraggavel && acaoDrag.isPosicaoDentroAreaBotao(posicao) && hasPowerUp;
+        return isDraggavel && hasPowerUp && acaoDrag.isPosicaoDentroAreaBotao(posicao);
     }           
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO

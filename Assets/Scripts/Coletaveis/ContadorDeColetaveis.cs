@@ -2,28 +2,26 @@ using UnityEngine;
 
 public class ContadorDeColetaveis
 {
-    private int score = 0;
-    private int qtdColetados = 0;
+    private int score = 0;    
 
-    private bool backToBoard;
+    private int pontosColetado;
+    private int pontosAcerto;
+    
     private bool resultCombinacao;
     private int totalColetaveis;
 
-    private ColetavelTile[] coletados;
-    private ColetavelTile[] devolverBoard;
-    private ColetavelTile[] devolverTubo;
-    private ColetavelTile[] arrayVazio;
+    private ColetavelTile[] coletados;       
 
-    public ContadorDeColetaveis()
+    public ContadorDeColetaveis(int pontosColetado, int pontosAcerto)
     {
-        coletados = new ColetavelTile[3];
-        arrayVazio = new ColetavelTile[0];        
+        this.pontosAcerto = pontosAcerto;
+        this.pontosColetado = pontosColetado;
+        coletados = new ColetavelTile[3];        
     }
 
-    public void configurarTotalColetaveis(int total, bool backToBoard)
+    public void configurarTotalColetaveis(int total)
     {
         totalColetaveis = total;
-        this.backToBoard = backToBoard;
         //Debug.Log("Total: " + totalColetaveis);
     }
 
@@ -31,27 +29,22 @@ public class ContadorDeColetaveis
     {
         // Debug.Log(nomeColetado);
         adicionaAoContainerDeColetados(coletado);
-
-        if (qtdColetados > coletados.Length - 1)
+        if (isTodasPosicoesOcupadas())
         {
             if (isCombinacaoValida())
             {
                 processarRetornoValido();
             }
             else
-            {
-                processarRetornoInvalido();
-            }
-            resetarColetados();
+            {                
+                AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
+            }           
         }
         else
         {
-            resultCombinacao = false;
-            devolverBoard = arrayVazio;
-            devolverTubo = arrayVazio;
+            resultCombinacao = false;            
         }
-
-        score += 10;
+        score += pontosColetado;
     }
 
     public void adicionarColetaveisExtras(int qtd)
@@ -60,19 +53,29 @@ public class ContadorDeColetaveis
         //Debug.Log("PosAdicionado Total: " + totalColetaveis);
     }
 
-    public ColetavelTile[] getArrayBoard()
+    public void subtrairColetavel()
     {
-        return devolverBoard;
-    }
-
-    public ColetavelTile[] getArrayTubo()
-    {
-        return devolverTubo;
-    }
+        totalColetaveis -= 1;
+        //Debug.Log("Total: " + totalColetaveis);
+    }    
 
     public bool getResult()
     {
         return resultCombinacao;
+    }
+
+    public void reajustarContagem(ColetadoFim evento)
+    {
+        if (evento.reajustarContador())
+        {
+            int indice = evento.getPrimeiroIndiceParaLimpar();
+            coletados[indice] = null;
+            Debug.Log("Reajuste de contagem no indice " + indice);
+        }
+        else if(evento.devolverBoard())
+        {
+            resetarColetados();
+        }
     }
 
     private bool isCombinacaoValida()
@@ -92,43 +95,16 @@ public class ContadorDeColetaveis
 
     private void adicionaAoContainerDeColetados(ColetavelTile coletado)
     {
-        coletados[qtdColetados] = coletado;
-        qtdColetados++;
+        int indice = getPrimeiroIndiceVazio();
+        //Debug.Log("Indice contador de coletaveis " + indice);
+        coletados[indice] = coletado;        
     }
 
     private void processarRetornoValido()
     {
+        score += pontosAcerto;        
         AudioController.current.PlayAudio(AudioController.current.combinacaoOk);
-        adicionaPontuacao();
-        devolverBoard = arrayVazio;
-        devolverTubo = coletados;
-        totalColetaveis -= 3;
-    }
-
-    private void processarRetornoInvalido()
-    {
-        if (backToBoard)
-        {
-            devolverBoard = coletados;
-            devolverTubo = arrayVazio;
-            AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
-
-            totalColetaveis -= 0;
-        }
-        else
-        {
-            devolverBoard = coletados;
-            devolverTubo  = coletados;
-
-            totalColetaveis -= 3;
-        }
-        AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
-    }
-
-    private void adicionaPontuacao()
-    {
-        score += 90;
-    }
+    }            
 
     public int getScore()
     {
@@ -140,8 +116,27 @@ public class ContadorDeColetaveis
         return totalColetaveis == 0;
     }
 
+    public ColetavelTile[] getColetados()
+    {
+        return coletados;
+    }
+
     private void resetarColetados()
     {
-        qtdColetados = 0;
+        coletados[0] = null;
+        coletados[1] = null;
+        coletados[2] = null;
+    }
+
+    private int getPrimeiroIndiceVazio()
+    {
+        if (coletados[0] == null) return 0;
+        if (coletados[1] == null) return 1;
+        return 2;        
+    }
+
+    private bool isTodasPosicoesOcupadas()
+    {
+        return coletados[0] != null && coletados[1] != null && coletados[2] != null;
     }
 }

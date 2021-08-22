@@ -21,7 +21,7 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
         dispararEventoDirecao(direcao);//reesincronizarJoystick
     }
 
-    public override void update()
+    public override void update(InputGame inputGame)
     {
         if (inputGame.aconteceuTapNaAreaSuperior())
         {

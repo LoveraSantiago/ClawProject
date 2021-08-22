@@ -54,12 +54,12 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarra
         if (isMaiorPosHorizontal(0))
         {
             direcaoVoltar = DirecaoDaGarra.ESQUERDA;
-            animacao.irParaDireita();
+            animacao.irParaDireita();            
         }
         else
         {
             direcaoVoltar = DirecaoDaGarra.DIREITA;
-            animacao.irParaEsquerda();
+            animacao.irParaEsquerda();            
         }
     }
 
