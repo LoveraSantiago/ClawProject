@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class BotaoPowerUpDto 
 {
-    [SerializeField] private SpriteRenderer sprAreaBotao;
+    [SerializeField] private SpriteRenderer sprAreaExterna;
     [Space(2)]
     [SerializeField] private GameObject goParteDentro;
     [SerializeField] private SpriteRenderer sprParteDentro;
@@ -16,7 +16,7 @@ public class BotaoPowerUpDto
     [Space(2)]
     [SerializeField] private GameObject goExclamacao;
 
-    public SpriteRenderer SprAreaBotao { get { return sprAreaBotao; } }
+    public SpriteRenderer SprAreaExterna { get { return sprAreaExterna; } }
     public GameObject GoParteDentro { get { return goParteDentro; } }
     public SpriteRenderer SprParteDentro { get { return sprParteDentro; } }
     public SpriteRenderer SprContorno { get { return sprContorno; } }

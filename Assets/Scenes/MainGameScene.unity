@@ -987,28 +987,28 @@ MonoBehaviour:
       - {fileID: 21300000, guid: f37fd421c42edc64cbca345eee4ee033, type: 3}
       areaDraggavel: {fileID: 2139442905}
       btnPowerUp:
-      - sprAreaBotao: {fileID: 6406990385049082688}
+      - sprAreaExterna: {fileID: 6406990385049082688}
         goParteDentro: {fileID: 646770560}
         sprParteDentro: {fileID: 646770562}
         sprContorno: {fileID: 1457028559}
         goImagem: {fileID: 484306874}
         sprImagem: {fileID: 484306876}
         goExclamacao: {fileID: 121857696}
-      - sprAreaBotao: {fileID: 6406990385049082687}
+      - sprAreaExterna: {fileID: 6406990385049082687}
         goParteDentro: {fileID: 1116124206}
         sprParteDentro: {fileID: 1116124208}
         sprContorno: {fileID: 1922279708}
         goImagem: {fileID: 1454684506}
         sprImagem: {fileID: 1454684508}
         goExclamacao: {fileID: 1061401521}
-      - sprAreaBotao: {fileID: 6406990385049082686}
+      - sprAreaExterna: {fileID: 6406990385049082686}
         goParteDentro: {fileID: 681647209}
         sprParteDentro: {fileID: 681647211}
         sprContorno: {fileID: 1508959791}
         goImagem: {fileID: 1419182439}
         sprImagem: {fileID: 1419182441}
         goExclamacao: {fileID: 67770073}
-      - sprAreaBotao: {fileID: 6406990385049082685}
+      - sprAreaExterna: {fileID: 6406990385049082685}
         goParteDentro: {fileID: 292653094}
         sprParteDentro: {fileID: 292653096}
         sprContorno: {fileID: 2123831560}
@@ -24168,6 +24168,10 @@ PrefabInstance:
     - target: {fileID: 6406990384449578761, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_Name
       value: maquina
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430377541888241770, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
