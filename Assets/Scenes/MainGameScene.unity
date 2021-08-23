@@ -678,7 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 2
+  level: 1
   mainDto:
     garraDto:
       velocMovHorizontal: 3.1
@@ -759,63 +759,6 @@ MonoBehaviour:
         - -0.25
         - 0.4
         - 1.05
-  coletaveisDto:
-    pontosColetado: 3
-    pontosAcerto: 9
-    sensorDeColetado: {fileID: 2083913115}
-    tile: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-    referenciaColliderColetado: {fileID: 1930189876}
-    caracteres:
-    - {fileID: 21300000, guid: 0b082251c8af14642bd56a42a89b025e, type: 3}
-    - {fileID: 21300000, guid: 12248e2a121b8400aa4464081fa6dce1, type: 3}
-    - {fileID: 21300000, guid: dca2e233e9a6e4ef7be9a5b392e5effc, type: 3}
-    - {fileID: 21300000, guid: efb723cbae18641a9954c28d1f5cf3e9, type: 3}
-    - {fileID: 21300000, guid: 197f4c6ad86ad4eea9ece9b073043381, type: 3}
-    - {fileID: 21300000, guid: 1b34677d209914bd88468db12bd7ef0f, type: 3}
-    - {fileID: 21300000, guid: 6ff825b4da47d4749bb0a0b28414a44d, type: 3}
-    tuboDto:
-      torque: 550
-      gravidade: 0.65
-      parentColetavelTubo: {fileID: 1607848931}
-      coletaveisParaTubo:
-      - {fileID: 650369887}
-      - {fileID: 1171204407}
-      - {fileID: 911244732}
-    boardDto:
-      delayVoltaBoard: 0.2
-      velocidadeSubida: 0.25
-      subida: 0.78
-      limiteSubida: 1.4
-      paredeAlta: {fileID: 50493998}
-      paredeBaixa: {fileID: 1392206646}
-      boardPosicao: {fileID: 1496791513}
-      posicaoRefVoltaBoard: {fileID: 1476824515}
-      startBoard: {fileID: 422691799}
-      posAlturaSub: -4.3
-      posicoesEixoXPar:
-      - -2.25
-      - -1.5
-      - -0.7499999
-      - 0
-      - 0.75
-      - 1.5
-      - 2.25
-      posicoesEixoXImpar:
-      - -1.88
-      - -1.13
-      - -0.38
-      - 0.3699999
-      - 1.12
-      - 1.87
-      posicoesEixoY:
-      - -3.5
-      - -2.85
-      - -2.2
-      - -1.55
-      - -0.9
-      - -0.25
-      - 0.4
-      - 1.05
   maquinaDto:
     referenciaChao: {fileID: 1270622651}
     joystickDto:
@@ -1477,7 +1420,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
