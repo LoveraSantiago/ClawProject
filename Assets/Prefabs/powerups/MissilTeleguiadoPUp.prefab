@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 6392729766898919103}
   - component: {fileID: 5452028844087085432}
   - component: {fileID: 1793336883339300185}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: faiscas
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -4956,7 +4956,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 60
   m_RenderMode: 1
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -5112,4 +5112,4 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 6c194887dde02e5478355ee9a0aeab5f, type: 2}
+  sharedProfile: {fileID: 0}
