@@ -35,7 +35,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())
             .addArcoIrisConjunto(displayDeScores)
             .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow(maquinaDto.DisplayTimerDto))
-            .addArcoIrisConjunto(vigasTras);        
+            .addArcoIrisConjunto(vigasTras)
+            .addArcoIrisConjunto(botoesPowerUp.getBotoesGlow());        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)

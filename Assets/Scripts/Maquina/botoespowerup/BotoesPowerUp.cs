@@ -27,7 +27,6 @@ public class BotoesPowerUp
 
     private void inicializarBotoes(BotoesPowerUpDto btnsPowerUpsDto)
     {
-
         btnsPowerUp = new BotaoPowerUp[4];
         btnsPowerUp[0] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[0]);
         btnsPowerUp[1] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[1]);
@@ -39,6 +38,11 @@ public class BotoesPowerUp
     {
         distribuidor.distribuirArray(level.getPowerUpsParaBotoesMaquina(), btnsPowerUp);
         new ColoridorBotoes().colorir(btnsPowerUp, level.getDicionarioDeCores());        
+    }
+
+    public ArcoIrisConjunto getBotoesGlow()
+    {
+        return new BotoesPowerUpArcoIris(btnsPowerUp);
     }
     
     public void update(InputGame inputGame)

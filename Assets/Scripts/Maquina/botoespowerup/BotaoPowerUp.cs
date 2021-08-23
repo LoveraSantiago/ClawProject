@@ -106,7 +106,7 @@ public class BotaoPowerUp : Draggavel
         glowEfeito.desligarGlow();
     }
 
-    public void setCorNoMaterial(Color cor)
+    public void passarCorDoMaterial(Color cor)
     {
         if(glowEfeito.materialGlow == materialGlowIndividual)
         {
