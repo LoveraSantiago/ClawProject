@@ -13,7 +13,9 @@ public class BotoesPowerUp
 
     public BotoesPowerUp(BotoesPowerUpDto btnsPowerUpsDto)
     {
-        BotaoPowerUp.configurar(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.AreaDraggavel);
+        MaterialGlow matGeral = new MaterialGlow(btnsPowerUpsDto.MaterialGlowGeral);
+        MaterialGlow matIndiv = new MaterialGlow(btnsPowerUpsDto.MaterialGlowIndividual);
+        BotaoPowerUp.configurar(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.AreaDraggavel, matGeral, matIndiv);
 
         inicializarBotoes(btnsPowerUpsDto);
         distribuidor = new DistribuidorParaBotoesPowerUp(btnsPowerUpsDto.SpritesDeBotoes);
@@ -25,6 +27,7 @@ public class BotoesPowerUp
 
     private void inicializarBotoes(BotoesPowerUpDto btnsPowerUpsDto)
     {
+
         btnsPowerUp = new BotaoPowerUp[4];
         btnsPowerUp[0] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[0]);
         btnsPowerUp[1] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[1]);

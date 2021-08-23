@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class BotaoPowerUp : Draggavel
 {
+    private static MaterialGlow materialGlowGeral;
+    private static MaterialGlow materialGlowIndividual;
+
     private bool isDraggavel;
     public bool hasPowerUp { get; private set; }
 
+    private GlowEfeito glowEfeito;
     private AparenciaBotaoPowerUp aparencia;
     private AcaoDragPowerUp acaoDrag;
     private AcaoBotaoPowerUp acaoBtnPowerUp;
@@ -15,6 +19,7 @@ public class BotaoPowerUp : Draggavel
         acaoDrag  = new AcaoDragPowerUp(botaoDto);
 
         isDraggavel = false;
+        glowEfeito = new GlowEfeito(botaoDto.SprEfeito.gameObject, materialGlowGeral);
     }
 
     public void clicar(ControleAcionamentoPowerUp controlePup)
@@ -24,6 +29,7 @@ public class BotaoPowerUp : Draggavel
         {
             acaoBtnPowerUp.acionar();
             controlePup.notificarAcionado(acaoBtnPowerUp);
+            glowEfeito.mudarMaterial(materialGlowIndividual);
             hasPowerUp = false;
         }
     }
@@ -42,6 +48,7 @@ public class BotaoPowerUp : Draggavel
     {
         aparencia.voltarCorOriginalBotao();
         aparencia.limparImg();
+        glowEfeito.mudarMaterial(materialGlowGeral);
     }
 
     public void receberCorLevel(string corBotao, string corDentro, string corContorno)
@@ -87,7 +94,28 @@ public class BotaoPowerUp : Draggavel
     public bool isDragValido(Vector2 posicao)
     {
         return isDraggavel && hasPowerUp && acaoDrag.isPosicaoDentroAreaBotao(posicao);
-    }           
+    }
+
+    public void ligarGlowSucesso()
+    {
+        glowEfeito.ligarGlowSucesso();
+    }
+
+    public void desligarGlow()
+    {
+        glowEfeito.desligarGlow();
+    }
+
+    public void setCorNoMaterial(Color cor)
+    {
+        if(glowEfeito.materialGlow == materialGlowIndividual)
+        {
+            glowEfeito.materialGlow.setCorNoMaterial(Color.yellow);
+        }
+        else{
+            glowEfeito.materialGlow.setCorNoMaterial(cor);
+        }
+    }
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
     public void prepararDraggagem(Vector3 posInicialDrag)
@@ -106,9 +134,13 @@ public class BotaoPowerUp : Draggavel
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 
-    public static void configurar(Sprite[] spritesBordas, GameObject areaDraggavel)
+    public static void configurar(
+        Sprite[] spritesBordas, GameObject areaDraggavel, 
+        MaterialGlow materialGlowGeralArg, MaterialGlow materialIndividualArg)
     {
         AparenciaBotaoPowerUp.configurarSpriteBordas(spritesBordas);
         AcaoDragPowerUp.configurarAreaDraggavel(areaDraggavel);
+        materialGlowGeral = materialIndividualArg;
+        materialGlowIndividual = materialIndividualArg;
     }
 }

@@ -11,6 +11,11 @@ public class GlowEfeito
         this.materialGlow = materialGlow;
     }
 
+    public void mudarMaterial(MaterialGlow materialGlow)
+    {
+        this.materialGlow = materialGlow;
+    }
+
     public void ligarGlowSucesso()
     {
         goEfeito.SetActive(true);
