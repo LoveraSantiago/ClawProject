@@ -96,9 +96,16 @@ public class BotaoPowerUp : Draggavel
         return isDraggavel && hasPowerUp && acaoDrag.isPosicaoDentroAreaBotao(posicao);
     }
 
-    public void ligarGlowSucesso()
+    public void ligarGlow()
     {
-        glowEfeito.ligarGlowSucesso();
+        if (glowEfeito.materialGlow == materialGlowIndividual)
+        {
+            glowEfeito.ligarGlowLuz();
+        }
+        else
+        {
+            glowEfeito.ligarGlowSucesso();
+        }
     }
 
     public void desligarGlow()
@@ -108,6 +115,7 @@ public class BotaoPowerUp : Draggavel
 
     public void passarCorDoMaterial(Color cor)
     {
+        //Debug.Log("Botao recebendo cor");
         if(glowEfeito.materialGlow == materialGlowIndividual)
         {
             glowEfeito.materialGlow.setCorNoMaterial(Color.yellow);
@@ -140,7 +148,7 @@ public class BotaoPowerUp : Draggavel
     {
         AparenciaBotaoPowerUp.configurarSpriteBordas(spritesBordas);
         AcaoDragPowerUp.configurarAreaDraggavel(areaDraggavel);
-        materialGlowGeral = materialIndividualArg;
+        materialGlowGeral      = materialGlowGeralArg;
         materialGlowIndividual = materialIndividualArg;
     }
 }

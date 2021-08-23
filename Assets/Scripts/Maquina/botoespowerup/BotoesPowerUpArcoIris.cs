@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BotoesPowerUpArcoIris : ArcoIrisConjunto
@@ -23,12 +21,12 @@ public class BotoesPowerUpArcoIris : ArcoIrisConjunto
     {
         for (int contador = 0; contador < btnsPowerUp.Length; contador++)
         {
-            btnsPowerUp[contador].ligarGlowSucesso();
+            btnsPowerUp[contador].ligarGlow();
         }
     }
 
     public void passarCor(Color cor)
-    {
+    {     
         for (int contador = 0; contador < btnsPowerUp.Length; contador++)
         {
             btnsPowerUp[contador].passarCorDoMaterial(cor);
