@@ -10,6 +10,9 @@ public class BotoesPowerUpDto
     [Space(5)]
     [SerializeField] private GameObject areaDraggavel;
     [Space(5)]
+    [SerializeField] private Material materialGlowGeral;
+    [SerializeField] private Material materialGlowIndividual;
+    [Space(5)]
     [SerializeField] private BotaoPowerUpDto[] btnPowerUp = new BotaoPowerUpDto[4];
 
     public Sprite[] BordasBtns { get { return bordasBtns;  } }   
@@ -17,6 +20,9 @@ public class BotoesPowerUpDto
     public Sprite[] SpritesDeBotoes { get { return spritesDeBotoes; } }
 
     public GameObject AreaDraggavel { get { return areaDraggavel; } }
+
+    public Material MaterialGlowGeral { get { return materialGlowGeral; } }
+    public Material MaterialGlowIndividual { get { return materialGlowIndividual; } }
 
     public BotaoPowerUpDto[] BtnPowerUp { get { return btnPowerUp;  } }
 }

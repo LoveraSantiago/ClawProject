@@ -14,11 +14,15 @@ public class AparenciaBotaoPowerUp
     private Color corOriginal;    
     private BotaoPowerUpDto btnDto;
 
-    public AparenciaBotaoPowerUp(BotaoPowerUpDto botaoDto)
+    private GlowEfeito glowEfeito;
+
+    public AparenciaBotaoPowerUp(BotaoPowerUpDto botaoDto, MaterialGlow materialGlowGeral)
     {
         mostrandoAtual = MOSTRANDO_BOTAO;
         this.btnDto = botaoDto;                                         
         corOriginal = btnDto.SprParteDentro.color;
+
+        glowEfeito = new GlowEfeito(botaoDto.SprEfeito.gameObject, materialGlowGeral);
     }
 
     public void mostrarBordaSerrilhada()
@@ -39,7 +43,7 @@ public class AparenciaBotaoPowerUp
     public void colorirBotaoFromLevel(string corBotao, string corDentro, string corContorno)
     {
         corOriginal = Utils.getCorByHex(corDentro);
-        btnDto.SprAreaBotao.color = Utils.getCorByHex(corBotao);
+        btnDto.SprAreaExterna.color = Utils.getCorByHex(corBotao);
         btnDto.SprParteDentro.color = corOriginal;
         btnDto.SprContorno.color = Utils.getCorByHex(corContorno);
     }
@@ -128,6 +132,47 @@ public class AparenciaBotaoPowerUp
     public void colocarNaPosicao(Vector3 posicao)
     {
         btnDto.GoParteDentro.transform.position = posicao;
+    }
+
+    public void mudarParaMaterialAcionado(MaterialGlow materialGlow)
+    {
+        mudarMaterial(materialGlow);
+    }
+
+    public void mudarParaMaterialArcoIris(MaterialGlow materialGlow)
+    {
+        mudarMaterial(materialGlow);
+    }
+
+    public void ligarGlow(MaterialGlow materialAcionado)
+    {
+        if(glowEfeito.materialGlow == materialAcionado)
+        {
+            glowEfeito.ligarGlowLuz();
+        }
+        else
+        {
+            glowEfeito.ligarGlowSucesso();
+        }
+    }
+
+    public void desligarGlow()
+    {
+        glowEfeito.desligarGlow();
+    }
+
+    public void passarCorDoMaterial(MaterialGlow materialAcionado, Color cor)
+    {
+        if(glowEfeito.materialGlow != materialAcionado)
+        {
+            glowEfeito.materialGlow.setCorNoMaterial(cor);
+        }
+    }
+
+    private void mudarMaterial(MaterialGlow materialGlow)
+    {
+        glowEfeito.mudarMaterial(materialGlow);
+        btnDto.SprEfeito.material = materialGlow.material;
     }
 
     public static void configurarSpriteBordas(Sprite[] spritesBordas)

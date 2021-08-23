@@ -31,11 +31,12 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         vigasTras          = new VigasTras(maquinaDto.VigasDto);
 
-        arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)
+        arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW
             .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())
             .addArcoIrisConjunto(displayDeScores)
             .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow(maquinaDto.DisplayTimerDto))
-            .addArcoIrisConjunto(vigasTras);        
+            .addArcoIrisConjunto(vigasTras)
+            .addArcoIrisConjunto(botoesPowerUp.getBotoesGlow());        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)

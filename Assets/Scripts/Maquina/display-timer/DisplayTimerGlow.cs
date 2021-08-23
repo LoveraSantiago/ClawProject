@@ -50,7 +50,7 @@ public class DisplayTimerGlow : ArcoIrisConjunto
     {
         if (!blink)
         {
-            glowEfeito.getMaterialGlow().setCorNoMaterial(cor);
+            glowEfeito.materialGlow.setCorNoMaterial(cor);
         }
     }
 }

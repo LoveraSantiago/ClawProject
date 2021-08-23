@@ -13,7 +13,9 @@ public class BotoesPowerUp
 
     public BotoesPowerUp(BotoesPowerUpDto btnsPowerUpsDto)
     {
-        BotaoPowerUp.configurar(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.AreaDraggavel);
+        MaterialGlow matGeral = new MaterialGlow(btnsPowerUpsDto.MaterialGlowGeral);
+        MaterialGlow matIndiv = new MaterialGlow(btnsPowerUpsDto.MaterialGlowIndividual);
+        BotaoPowerUp.configurar(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.AreaDraggavel, matGeral, matIndiv);
 
         inicializarBotoes(btnsPowerUpsDto);
         distribuidor = new DistribuidorParaBotoesPowerUp(btnsPowerUpsDto.SpritesDeBotoes);
@@ -36,6 +38,11 @@ public class BotoesPowerUp
     {
         distribuidor.distribuirArray(level.getPowerUpsParaBotoesMaquina(), btnsPowerUp);
         new ColoridorBotoes().colorir(btnsPowerUp, level.getDicionarioDeCores());        
+    }
+
+    public ArcoIrisConjunto getBotoesGlow()
+    {
+        return new BotoesPowerUpArcoIris(btnsPowerUp);
     }
     
     public void update(InputGame inputGame)

@@ -411,11 +411,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &251000134 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5014026568584514284, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &254129749 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3136040987236059678, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -464,11 +459,6 @@ SpriteRenderer:
 --- !u!212 &345032555 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6452164382885043179, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &347425362 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5014026569183689257, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &366567947 stripped
@@ -615,11 +605,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 231076173415286155, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &465782768 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5014026568506975930, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &482185736 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4767438955442284893, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -694,28 +679,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 2
-  garraDto:
-    velocMovHorizontal: 3.1
-    velocMovCima: 7.5
-    velocMovBaixo: 7.5
-    anguloIdleMin: -5
-    anguloIdleMax: 10
-    velocAnguloIdle: 0.3
-    anguloAbertura: 70
-    velocAnguloAbertura: 4
-    anguloFechamento: 15
-    velocAnguloFechamento: 1.5
-    rigidBody: {fileID: 1907269041974171794}
-    centroDaGarra: {fileID: 1379266187116345345}
-    pincaEsquerda: {fileID: 1907269041649210802}
-    pincaDireita: {fileID: 6299144451050955760}
-    colisor: {fileID: 3777820026685026688}
-    animator: {fileID: 2086766167889621232}
-    caboDto:
-      grossuraLinha: 0.1
-      tamanhoSegmento: 0.15
-      transfInicioCabo: {fileID: 1336653433}
-      lineRenderer: {fileID: 958265029}
+  mainDto:
+    garraDto:
+      velocMovHorizontal: 3.1
+      velocMovCima: 7.5
+      velocMovBaixo: 7.5
+      anguloIdleMin: -5
+      anguloIdleMax: 10
+      velocAnguloIdle: 0.3
+      anguloAbertura: 70
+      velocAnguloAbertura: 4
+      anguloFechamento: 15
+      velocAnguloFechamento: 1.5
+      rigidBody: {fileID: 1907269041974171794}
+      centroDaGarra: {fileID: 1379266187116345345}
+      pincaEsquerda: {fileID: 1907269041649210802}
+      pincaDireita: {fileID: 6299144451050955760}
+      colisor: {fileID: 3777820026685026688}
+      animator: {fileID: 2086766167889621232}
+      caboDto:
+        grossuraLinha: 0.1
+        tamanhoSegmento: 0.15
+        transfInicioCabo: {fileID: 1336653433}
+        lineRenderer: {fileID: 958265029}
   coletaveisDto:
     pontosColetado: 3
     pontosAcerto: 9
@@ -1000,34 +986,40 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 1fbc70667d57b1d4d939f69d53be7265, type: 3}
       - {fileID: 21300000, guid: f37fd421c42edc64cbca345eee4ee033, type: 3}
       areaDraggavel: {fileID: 2139442905}
+      materialGlowGeral: {fileID: 2100000, guid: 985de28129141ff4baba43db8d59ceec, type: 2}
+      materialGlowIndividual: {fileID: 2100000, guid: dfd97146e0b25814d925ee865d50adb6, type: 2}
       btnPowerUp:
-      - sprAreaBotao: {fileID: 347425362}
+      - sprAreaExterna: {fileID: 6406990385049082688}
         goParteDentro: {fileID: 646770560}
         sprParteDentro: {fileID: 646770562}
         sprContorno: {fileID: 1457028559}
         goImagem: {fileID: 484306874}
         sprImagem: {fileID: 484306876}
+        sprEfeito: {fileID: 6406990385049082692}
         goExclamacao: {fileID: 121857696}
-      - sprAreaBotao: {fileID: 251000134}
+      - sprAreaExterna: {fileID: 6406990385049082687}
         goParteDentro: {fileID: 1116124206}
         sprParteDentro: {fileID: 1116124208}
         sprContorno: {fileID: 1922279708}
         goImagem: {fileID: 1454684506}
         sprImagem: {fileID: 1454684508}
+        sprEfeito: {fileID: 6406990385049082691}
         goExclamacao: {fileID: 1061401521}
-      - sprAreaBotao: {fileID: 465782768}
+      - sprAreaExterna: {fileID: 6406990385049082686}
         goParteDentro: {fileID: 681647209}
         sprParteDentro: {fileID: 681647211}
         sprContorno: {fileID: 1508959791}
         goImagem: {fileID: 1419182439}
         sprImagem: {fileID: 1419182441}
+        sprEfeito: {fileID: 6406990385049082690}
         goExclamacao: {fileID: 67770073}
-      - sprAreaBotao: {fileID: 1241201176}
+      - sprAreaExterna: {fileID: 6406990385049082685}
         goParteDentro: {fileID: 292653094}
         sprParteDentro: {fileID: 292653096}
         sprContorno: {fileID: 2123831560}
         goImagem: {fileID: 1420270364}
         sprImagem: {fileID: 1420270366}
+        sprEfeito: {fileID: 6406990385049082689}
         goExclamacao: {fileID: 293416723}
     vigasDto:
       vigaTrasEsquerda: {fileID: 946233168}
@@ -7419,7 +7411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924411, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Name
-      value: cabo_da_garra
+      value: cabo-da-garra
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Positions.Array.data[0].y
@@ -12877,11 +12869,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!212 &1241201176 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5014026568556634427, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1245264347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24140,10 +24127,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
-    - target: {fileID: 1258064835005988343, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6406990384449578760, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -24191,10 +24174,6 @@ PrefabInstance:
     - target: {fileID: 6406990384449578761, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_Name
       value: maquina
-      objectReference: {fileID: 0}
-    - target: {fileID: 8097203787549867915, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -24281,5 +24260,45 @@ Animator:
 --- !u!95 &6406990385049082684 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 583451328627464679, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082685 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8608572314731373783, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082686 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8608572312768848726, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082687 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8608572314704596736, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082688 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8608572314238549957, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082689 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7614681330707023677, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082690 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7614681329012932796, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082691 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7614681330688650474, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082692 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7614681330214198319, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}

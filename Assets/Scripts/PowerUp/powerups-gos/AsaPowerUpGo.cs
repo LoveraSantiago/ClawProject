@@ -16,7 +16,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
         : base(powerUpDto.AsaDto.AsaGo, new GetGoComSpriteRenderer(), "Asas")
     {
         VOADA = Animator.StringToHash("voada");
-        Debug.Log("Asa Instanciado");
+        //Debug.Log("Asa Instanciado");
         miras = new ColetaveisMiras();
     }
 

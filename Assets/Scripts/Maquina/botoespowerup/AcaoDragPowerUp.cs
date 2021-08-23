@@ -15,7 +15,7 @@ public class AcaoDragPowerUp
     public AcaoDragPowerUp(BotaoPowerUpDto botaoDto)
     {
         posicaoOriginal = botaoDto.GoParteDentro.transform.position;
-        areaBotao = botaoDto.SprAreaBotao.bounds;
+        areaBotao = botaoDto.SprAreaExterna.bounds;
     }
 
     public bool isPosicaoDentroAreaBotao(Vector2 posicao)
