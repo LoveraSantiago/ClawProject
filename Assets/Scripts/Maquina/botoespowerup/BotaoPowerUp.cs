@@ -7,19 +7,17 @@ public class BotaoPowerUp : Draggavel
 
     private bool isDraggavel;
     public bool hasPowerUp { get; private set; }
-
-    private GlowEfeito glowEfeito;
+    
     private AparenciaBotaoPowerUp aparencia;
     private AcaoDragPowerUp acaoDrag;
     private AcaoBotaoPowerUp acaoBtnPowerUp;
 
     public BotaoPowerUp(BotaoPowerUpDto botaoDto)
     {
-        aparencia = new AparenciaBotaoPowerUp(botaoDto);
+        aparencia = new AparenciaBotaoPowerUp(botaoDto, materialGlowGeral);
         acaoDrag  = new AcaoDragPowerUp(botaoDto);
 
-        isDraggavel = false;
-        glowEfeito = new GlowEfeito(botaoDto.SprEfeito.gameObject, materialGlowGeral);
+        isDraggavel = false;        
     }
 
     public void clicar(ControleAcionamentoPowerUp controlePup)
@@ -27,10 +25,10 @@ public class BotaoPowerUp : Draggavel
         aparencia.colorirBotao();
         if (hasPowerUp)
         {
-            acaoBtnPowerUp.acionar();
+            aparencia.mudarParaMaterialAcionado(materialGlowIndividual);            
             controlePup.notificarAcionado(acaoBtnPowerUp);
-            glowEfeito.mudarMaterial(materialGlowIndividual);
             hasPowerUp = false;
+            acaoBtnPowerUp.acionar();
         }
     }
 
@@ -48,7 +46,7 @@ public class BotaoPowerUp : Draggavel
     {
         aparencia.voltarCorOriginalBotao();
         aparencia.limparImg();
-        glowEfeito.mudarMaterial(materialGlowGeral);
+        aparencia.mudarParaMaterialArcoIris(materialGlowGeral);        
     }
 
     public void receberCorLevel(string corBotao, string corDentro, string corContorno)
@@ -98,31 +96,18 @@ public class BotaoPowerUp : Draggavel
 
     public void ligarGlow()
     {
-        if (glowEfeito.materialGlow == materialGlowIndividual)
-        {
-            glowEfeito.ligarGlowLuz();
-        }
-        else
-        {
-            glowEfeito.ligarGlowSucesso();
-        }
+        aparencia.ligarGlow(materialGlowIndividual);        
     }
 
     public void desligarGlow()
     {
-        glowEfeito.desligarGlow();
+        aparencia.desligarGlow();
     }
 
     public void passarCorDoMaterial(Color cor)
     {
         //Debug.Log("Botao recebendo cor");
-        if(glowEfeito.materialGlow == materialGlowIndividual)
-        {
-            glowEfeito.materialGlow.setCorNoMaterial(Color.yellow);
-        }
-        else{
-            glowEfeito.materialGlow.setCorNoMaterial(cor);
-        }
+        aparencia.passarCorDoMaterial(materialGlowIndividual, cor);        
     }
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO

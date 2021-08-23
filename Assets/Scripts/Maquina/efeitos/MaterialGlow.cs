@@ -3,7 +3,7 @@ using UnityEngine;
 public class MaterialGlow 
 {
     private static readonly string propMaterial = "_corGlow";
-    private Material material;
+    public Material material { get; private set; }
 
     public MaterialGlow(Material material)
     {
