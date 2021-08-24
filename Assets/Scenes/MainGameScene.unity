@@ -759,6 +759,292 @@ MonoBehaviour:
         - -0.25
         - 0.4
         - 1.05
+    maquinaDto:
+      referenciaChao: {fileID: 1270622651}
+      joystickDto:
+        velocidade: 0.9
+        joystickTransform: {fileID: 1655319868}
+        parteCima: {fileID: 1371200242}
+        parteBaixo: {fileID: 1200159529}
+        furoHaste: {fileID: 741199050}
+        haste: {fileID: 1436153780}
+        bola: {fileID: 35392997}
+        furoBotao: {fileID: 1792373210}
+        botao: {fileID: 875563508}
+      displayDeColetadoDto:
+        inicialDelay: 0.3
+        fimDelay: 0.1
+        velocImg: 3.5
+        sprVazio: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
+        materialGlowDisplay: {fileID: 2100000, guid: 355cf51cbb3442146a9683574825bf91, type: 2}
+        singleDisplayColetado:
+        - sprDisplay: {fileID: 1936649351}
+          sprRendererDentro: {fileID: 6406990385049082679}
+          sprRendererDentroEfeito: {fileID: 1765276500}
+          slotSpriteBaixo: {fileID: 6406990385049082682}
+          slotSpriteCima: {fileID: 1066551477}
+          animator: {fileID: 6406990385049082684}
+          goSlotBaixo: {fileID: 1996993516}
+          goSlotCima: {fileID: 1066551475}
+        - sprDisplay: {fileID: 1814368437}
+          sprRendererDentro: {fileID: 6406990385049082678}
+          sprRendererDentroEfeito: {fileID: 482185736}
+          slotSpriteBaixo: {fileID: 6406990385049082681}
+          slotSpriteCima: {fileID: 1446966422}
+          animator: {fileID: 6406990385049082683}
+          goSlotBaixo: {fileID: 733168918}
+          goSlotCima: {fileID: 1446966420}
+        - sprDisplay: {fileID: 1937059052}
+          sprRendererDentro: {fileID: 6406990385049082677}
+          sprRendererDentroEfeito: {fileID: 1743591685}
+          slotSpriteBaixo: {fileID: 6406990385049082680}
+          slotSpriteCima: {fileID: 1493040375}
+          animator: {fileID: 6406990385049082676}
+          goSlotBaixo: {fileID: 878217980}
+          goSlotCima: {fileID: 1493040373}
+      displayTimerDto:
+        sprRendererPlaca: {fileID: 1404465311}
+        placaEfeito: {fileID: 2146911254}
+        materialEfeito: {fileID: 2100000, guid: fb7901452995da14585f507a900c3d55, type: 2}
+        singleDisplay:
+        - segmentos:
+          - {fileID: 260943912}
+          - {fileID: 1440572245}
+          - {fileID: 1068031733}
+          - {fileID: 250003424}
+          - {fileID: 180282613}
+          - {fileID: 1805556720}
+          - {fileID: 299002580}
+        - segmentos:
+          - {fileID: 366567947}
+          - {fileID: 582932977}
+          - {fileID: 1370782299}
+          - {fileID: 568437848}
+          - {fileID: 226162099}
+          - {fileID: 821895733}
+          - {fileID: 2121606867}
+        - segmentos:
+          - {fileID: 197993093}
+          - {fileID: 618396878}
+          - {fileID: 254129749}
+          - {fileID: 2020398547}
+          - {fileID: 1493681471}
+          - {fileID: 1553361954}
+          - {fileID: 1376782559}
+        - segmentos:
+          - {fileID: 1711710162}
+          - {fileID: 1577576813}
+          - {fileID: 792029650}
+          - {fileID: 1878204014}
+          - {fileID: 875243412}
+          - {fileID: 574890792}
+          - {fileID: 377211486}
+        - segmentos:
+          - {fileID: 802050896}
+          - {fileID: 655932435}
+      displayDeScoreDto:
+        qtdBlinks: 3
+        tempoBlink: 0.2
+        materialGlowDisplay: {fileID: 2100000, guid: 2948262ee5a25aa4689dc21f0727d159, type: 2}
+        singleDisplayScoreDto:
+        - placa: {fileID: 6406990385049082671}
+          placaEfeito: {fileID: 6406990385049082674}
+          fileira1:
+          - {fileID: 1626547692}
+          - {fileID: 1288371179}
+          - {fileID: 743865388}
+          - {fileID: 1042033438}
+          - {fileID: 1247082539}
+          - {fileID: 496349162}
+          - {fileID: 2045999594}
+          fileira2:
+          - {fileID: 963819042}
+          - {fileID: 2060731750}
+          - {fileID: 1490273002}
+          - {fileID: 1182516293}
+          - {fileID: 920390407}
+          - {fileID: 48934515}
+          - {fileID: 1783677019}
+          fileira3:
+          - {fileID: 574009521}
+          - {fileID: 1662690030}
+          - {fileID: 2059452738}
+          - {fileID: 1832757161}
+          - {fileID: 1497245540}
+          - {fileID: 2125919422}
+          - {fileID: 1045896309}
+          fileira4:
+          - {fileID: 971552755}
+          - {fileID: 824903401}
+          - {fileID: 697686554}
+          - {fileID: 416378463}
+          - {fileID: 1518191560}
+          - {fileID: 1839724955}
+          - {fileID: 998095614}
+          fileira5:
+          - {fileID: 2130570004}
+          - {fileID: 971817541}
+          - {fileID: 1840820999}
+          - {fileID: 1269634543}
+          - {fileID: 1606558}
+          - {fileID: 1640791701}
+          - {fileID: 1330082112}
+        - placa: {fileID: 6406990385049082670}
+          placaEfeito: {fileID: 6406990385049082673}
+          fileira1:
+          - {fileID: 1825025540}
+          - {fileID: 1263761801}
+          - {fileID: 446848367}
+          - {fileID: 2140764664}
+          - {fileID: 143289794}
+          - {fileID: 1417847845}
+          - {fileID: 1829948236}
+          fileira2:
+          - {fileID: 270923982}
+          - {fileID: 558179180}
+          - {fileID: 898812265}
+          - {fileID: 1061635694}
+          - {fileID: 176229049}
+          - {fileID: 944383904}
+          - {fileID: 1955225401}
+          fileira3:
+          - {fileID: 1210446111}
+          - {fileID: 1054674719}
+          - {fileID: 2095859983}
+          - {fileID: 1778081827}
+          - {fileID: 205425890}
+          - {fileID: 1853819000}
+          - {fileID: 1168720569}
+          fileira4:
+          - {fileID: 1082646906}
+          - {fileID: 579870806}
+          - {fileID: 2032817256}
+          - {fileID: 1839790623}
+          - {fileID: 1444546587}
+          - {fileID: 345032555}
+          - {fileID: 1858974082}
+          fileira5:
+          - {fileID: 824986018}
+          - {fileID: 499785275}
+          - {fileID: 711602596}
+          - {fileID: 2135423720}
+          - {fileID: 1275697047}
+          - {fileID: 706088252}
+          - {fileID: 171518226}
+        - placa: {fileID: 6406990385049082669}
+          placaEfeito: {fileID: 6406990385049082672}
+          fileira1:
+          - {fileID: 1475653772}
+          - {fileID: 1454529877}
+          - {fileID: 1843484061}
+          - {fileID: 1588311724}
+          - {fileID: 1954321357}
+          - {fileID: 678638197}
+          - {fileID: 785966923}
+          fileira2:
+          - {fileID: 1046236689}
+          - {fileID: 969454962}
+          - {fileID: 1573082835}
+          - {fileID: 595963484}
+          - {fileID: 486829478}
+          - {fileID: 1926676158}
+          - {fileID: 462582932}
+          fileira3:
+          - {fileID: 446949739}
+          - {fileID: 1698881659}
+          - {fileID: 1392632380}
+          - {fileID: 792906609}
+          - {fileID: 1299669000}
+          - {fileID: 1583263433}
+          - {fileID: 305827701}
+          fileira4:
+          - {fileID: 550001802}
+          - {fileID: 1457083363}
+          - {fileID: 1535001094}
+          - {fileID: 1796863416}
+          - {fileID: 940686213}
+          - {fileID: 1712336194}
+          - {fileID: 1049704161}
+          fileira5:
+          - {fileID: 1362825483}
+          - {fileID: 602573084}
+          - {fileID: 1380102100}
+          - {fileID: 65335136}
+          - {fileID: 876821680}
+          - {fileID: 417079969}
+          - {fileID: 1471603725}
+      botoesPowerUpDto:
+        bordasBtns:
+        - {fileID: 21300000, guid: a23ddb0e1a97a7145a4f2adebb8447e9, type: 3}
+        - {fileID: 21300000, guid: 8c942bfafa862a64a97c76dca69e4b90, type: 3}
+        spritesDeBotoes:
+        - {fileID: 21300000, guid: ff767bdfc020f404783fe84614e5a795, type: 3}
+        - {fileID: 21300000, guid: 2b953ba433bc90440a548aaf1b916cab, type: 3}
+        - {fileID: 21300000, guid: a7d45f520d37bf4489a4bb139dcd9335, type: 3}
+        - {fileID: 21300000, guid: ae6ca25e5fa8ba54fa8ab0a8edb2c9ae, type: 3}
+        - {fileID: 21300000, guid: df5f1b9b2a0044c49a6881e8b375936c, type: 3}
+        - {fileID: 21300000, guid: 1fbc70667d57b1d4d939f69d53be7265, type: 3}
+        - {fileID: 21300000, guid: f37fd421c42edc64cbca345eee4ee033, type: 3}
+        areaDraggavel: {fileID: 2139442905}
+        materialGlowGeral: {fileID: 2100000, guid: 985de28129141ff4baba43db8d59ceec, type: 2}
+        materialGlowIndividual: {fileID: 2100000, guid: dfd97146e0b25814d925ee865d50adb6, type: 2}
+        btnPowerUp:
+        - sprAreaExterna: {fileID: 6406990385049082688}
+          goParteDentro: {fileID: 646770560}
+          sprParteDentro: {fileID: 646770562}
+          sprContorno: {fileID: 1457028559}
+          goImagem: {fileID: 484306874}
+          sprImagem: {fileID: 484306876}
+          sprEfeito: {fileID: 6406990385049082692}
+          goExclamacao: {fileID: 121857696}
+        - sprAreaExterna: {fileID: 6406990385049082687}
+          goParteDentro: {fileID: 1116124206}
+          sprParteDentro: {fileID: 1116124208}
+          sprContorno: {fileID: 1922279708}
+          goImagem: {fileID: 1454684506}
+          sprImagem: {fileID: 1454684508}
+          sprEfeito: {fileID: 6406990385049082691}
+          goExclamacao: {fileID: 1061401521}
+        - sprAreaExterna: {fileID: 6406990385049082686}
+          goParteDentro: {fileID: 681647209}
+          sprParteDentro: {fileID: 681647211}
+          sprContorno: {fileID: 1508959791}
+          goImagem: {fileID: 1419182439}
+          sprImagem: {fileID: 1419182441}
+          sprEfeito: {fileID: 6406990385049082690}
+          goExclamacao: {fileID: 67770073}
+        - sprAreaExterna: {fileID: 6406990385049082685}
+          goParteDentro: {fileID: 292653094}
+          sprParteDentro: {fileID: 292653096}
+          sprContorno: {fileID: 2123831560}
+          goImagem: {fileID: 1420270364}
+          sprImagem: {fileID: 1420270366}
+          sprEfeito: {fileID: 6406990385049082689}
+          goExclamacao: {fileID: 293416723}
+      vigasDto:
+        vigaTrasEsquerda: {fileID: 946233168}
+        vigaTrasDireita: {fileID: 108455522}
+        vigaTrasEsquerdaEfeito: {fileID: 1780505043}
+        vigaTrasDireitaEfeito: {fileID: 6406990385049082675}
+        materialVigas: {fileID: 2100000, guid: a65f97e21115d7541946c69a86748e60, type: 2}
+      partesDto:
+        placaCima: {fileID: 702916761}
+        baseParteCima: {fileID: 243475117}
+        baseParteBaixo: {fileID: 594860183}
+        baseChao: {fileID: 753857306}
+        bordaVidro: {fileID: 320505972}
+        placaFrontal: {fileID: 1814315205}
+        barra: {fileID: 186092669}
+        chaoDentro: {fileID: 522769647}
+        tubo: {fileID: 1914492973}
+        placaSaida: {fileID: 201901775}
+        placaFicha: {fileID: 1266331362}
+        placaParteCima: {fileID: 2086796815}
+        placaParteBaixo: {fileID: 597890811}
+        quadMaior: {fileID: 1753095778}
+        quadMenor: {fileID: 144916182}
+        furoCima: {fileID: 1707423591}
+        furoBaixo: {fileID: 1467999611}
   maquinaDto:
     referenciaChao: {fileID: 1270622651}
     joystickDto:
