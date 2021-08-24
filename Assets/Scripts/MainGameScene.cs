@@ -7,9 +7,7 @@ public class MainGameScene : MonoBehaviour,
 {
     [SerializeField] private LevelFlowManager.LEVEL level;
     [Space(5)]
-    [SerializeField] private MainDto mainDto;    
-    [Space(5)]
-    [SerializeField] private ColetaveisDto coletaveisDto;
+    [SerializeField] private MainDto mainDto;        
     [Space(5)]
     [SerializeField] private MaquinaDto maquinaDto;
     [Space(5)]
@@ -55,7 +53,7 @@ public class MainGameScene : MonoBehaviour,
     {
         inputGame         = new InputGameImpl(maquinaDto.ReferenciaChao);
         garraManager      = new GarraManager(mainDto.GarraDto);
-        coletaveisManager = new ColetaveisManager(coletaveisDto, this);
+        coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto, this);
         maquinaManager    = new MaquinaManager(maquinaDto, this);
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);

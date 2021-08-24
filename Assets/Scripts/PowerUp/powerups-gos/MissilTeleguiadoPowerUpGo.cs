@@ -17,6 +17,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     private Vector2[] pathMissilRecalculado;    
     private Animator animator;
 
+    private ParticleSystem particulas;
     private Coroutine coroutine;
 
     public MissilTeleguiadoPowerUpGo() : 
@@ -27,6 +28,9 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         MISSIL_IDLE     = Animator.StringToHash("idle");
 
         miras = new ColetaveisMiras();
+        particulas = goColetavel.transform.Find("imagem")
+                                .transform.Find("faiscas")
+                                .GetComponent<ParticleSystem>();
     }
 
     public PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -66,6 +70,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     {
         desligar();
         powerUpFinalizacao.finalizado();
+        particulas.gameObject.SetActive(false);
         animator.Play(MISSIL_IDLE);
         colocarNoAngulo(0);
     }
@@ -97,6 +102,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     private IEnumerator disparandoMissil(ColetavelTile coletavel)
     {
         animator.Play(MISSIL_ACIONADO);
+        particulas.gameObject.SetActive(true);
+        particulas.Play();
         recalcularPath(coletavel.getPosicao());
         capsuleCollider.isTrigger = true;
         int contadorIndice = 0;
@@ -147,6 +154,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         }
         colocarNaPosicao(coletavel.getPosicao());
         parar();
+        particulas.Stop();
         animator.Play(MISSIL_EXPLOSAO);
         coletavel.disparar(powerUpDto.MissilTeleguiadoDto.VelocidadeHit, powerUpDto.MissilTeleguiadoDto.VelocidadeHit);
         coletavel.desligarAnimacao();

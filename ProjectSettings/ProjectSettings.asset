@@ -146,7 +146,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.ClawGamesStudio.ClawTheJourney
+    Android: com.ClawGamesStudio.ClawMatch3
     Standalone: com.DefaultCompany.ClawProject
   buildNumber:
     Standalone: 0
