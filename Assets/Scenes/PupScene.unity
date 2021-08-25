@@ -3074,6 +3074,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1668072992}
+  - component: {fileID: 1668072987}
   - component: {fileID: 1668072991}
   - component: {fileID: 1668072990}
   - component: {fileID: 1668072989}
@@ -3085,6 +3086,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1668072987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668072986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4534f9fc0527647a2dbb19be08158e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCanvasDto:
+    btnBack: {fileID: 98718867}
+    btnBotton: {fileID: 294613795}
 --- !u!222 &1668072988
 CanvasRenderer:
   m_ObjectHideFlags: 0
