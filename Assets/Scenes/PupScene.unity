@@ -1015,7 +1015,6 @@ GameObject:
   - component: {fileID: 513783661}
   - component: {fileID: 513783660}
   - component: {fileID: 513783659}
-  - component: {fileID: 513783658}
   - component: {fileID: 513783663}
   m_Layer: 5
   m_Name: sidebar-bottom
@@ -1045,36 +1044,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -75}
   m_SizeDelta: {x: 1440, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &513783658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513783656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.27832523, g: 0.2520915, b: 0.9716981, a: 0.59607846}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &513783659
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3118,9 +3087,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4534f9fc0527647a2dbb19be08158e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCanvasDto:
-    btnBack: {fileID: 98718867}
-    btnBotton: {fileID: 294613795}
+  btnBack: {fileID: 98718867}
+  animatorBottonBar: {fileID: 513783663}
+  btnBottonBar: {fileID: 294613795}
 --- !u!222 &1668072988
 CanvasRenderer:
   m_ObjectHideFlags: 0
