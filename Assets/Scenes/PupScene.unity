@@ -1016,6 +1016,7 @@ GameObject:
   - component: {fileID: 513783660}
   - component: {fileID: 513783659}
   - component: {fileID: 513783658}
+  - component: {fileID: 513783663}
   m_Layer: 5
   m_Name: sidebar-bottom
   m_TagString: Untagged
@@ -1143,6 +1144,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!95 &513783663
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513783656}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f4763b10551c894d9edcc4d0974440a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &517893498
 GameObject:
   m_ObjectHideFlags: 0
