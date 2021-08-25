@@ -1,17 +1,8 @@
-using System.Collections.Generic;
-using UnityEngine;
-
 public class DistribuidorParaBotoesPowerUp 
 {   
     private int indiceDistribuicao;
     
-    private PowerUpEntidade.NAME[] arrayDaFase;
-    private Dictionary<string, Sprite> dicionarioDeSprites;
-
-    public DistribuidorParaBotoesPowerUp(Sprite[] arrayDeSpritesBotoes)
-    {        
-        montarDicionarioDeSprites(arrayDeSpritesBotoes);
-    }
+    private PowerUpEntidade.NAME[] arrayDaFase;        
 
     public void distribuirArray(PowerUpEntidade.NAME[] arrayDePowerUpsParaBotoes, BotaoPowerUp[] btnsPowerUp)
     {
@@ -22,7 +13,7 @@ public class DistribuidorParaBotoesPowerUp
             PowerUpEntidade.NAME namePU = arrayDaFase[contador];
             if(namePU != PowerUpEntidade.NAME.NONE)
             {
-                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(namePU, dicionarioDeSprites);
+                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(namePU);
                 btnsPowerUp[contador].receberAcaoPowerUp(powerUpPMaquina);
             }
         }
@@ -35,24 +26,14 @@ public class DistribuidorParaBotoesPowerUp
             PowerUpEntidade.NAME namePU = arrayDaFase[indiceDistribuicao];
             if (namePU != PowerUpEntidade.NAME.NONE)
             {
-                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(namePU, dicionarioDeSprites);
+                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(namePU);
                 BotaoPowerUp btnDisponivel = getPrimeiroBotaoDisponivel(btnsPowerUp);
                 btnDisponivel.receberAcaoPowerUp(powerUpPMaquina);
             }
 
             indiceDistribuicao++;            
         }
-    }
-
-    private void montarDicionarioDeSprites(Sprite[] arrayDeSpritesBotoes)
-    {
-        dicionarioDeSprites = new Dictionary<string, Sprite>();
-        for(int contador = 0; contador < arrayDeSpritesBotoes.Length; contador++)
-        {
-            Sprite spriteIt = arrayDeSpritesBotoes[contador];
-            dicionarioDeSprites.Add(spriteIt.name, spriteIt);
-        }
-    }
+    }    
 
     private void determinarIndicePrimeiraDistribuicao()
     {

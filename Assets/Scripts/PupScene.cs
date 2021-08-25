@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+#pragma warning disable 0649
 public class PupScene : MonoBehaviour
 {
     [SerializeField] private Button btnBack;
@@ -18,6 +19,9 @@ public class PupScene : MonoBehaviour
     {
         configButtonBack(btnBack);
         new BottomBar(animatorBottonBar, btnBottonBar, this);
+
+        PrefabPowerUpDto prefabPUpDto = prefabPowerUpDto.GetComponent<PrefabPowerUpDto>();
+        PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPUpDto.getInstance().dicionarioDeSprites);
     }
 
     // Update is called once per frame

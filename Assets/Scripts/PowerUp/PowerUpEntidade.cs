@@ -1,5 +1,10 @@
+using System.Collections.Generic;
+using UnityEngine;
+
 public class PowerUpEntidade 
 {
+    private static Dictionary<string, Sprite> dicionarioDeSprites;
+
     public enum NAME
     {
         BOMBA_DA_GARRA, MISSIL_NUCLEAR, MINA_TERRESTRE, MISSIL_TELEGUIADO,
@@ -16,7 +21,8 @@ public class PowerUpEntidade
         MOVIMENTO, PARADO, NAO_INTERACAO
     }
 
-    public NAME name   { get; private set; }    
+    public NAME name   { get; private set; }
+    public Sprite sprPowerUp { get { return dicionarioDeSprites[name.ToString()]; }}
     public int duracao { get; private set; }
     public string nomeSpriteBtn { get; private set; }
     public bool isClicavel { get; private set; }
@@ -72,5 +78,10 @@ public class PowerUpEntidade
             powerUpGo = fornecedorPowerUpGo.fornecer();
         }
         return powerUpGo;
+    }
+
+    public static void configurarDicionarioDeSpritesPup(Dictionary<string, Sprite> dicionarioArg)
+    {
+        dicionarioDeSprites = dicionarioArg;
     }
 }

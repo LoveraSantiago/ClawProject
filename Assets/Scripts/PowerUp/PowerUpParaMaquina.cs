@@ -5,13 +5,11 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
 {
     private static PowerUpAcionamento powerUpAcionamento;
     
-    private PowerUpEntidade powerUp;
-    private Sprite imgBtn;
+    private PowerUpEntidade powerUp;    
 
-    public PowerUpParaMaquina(PowerUpEntidade.NAME nome, Dictionary<string, Sprite> dicionarioDeSprites)
+    public PowerUpParaMaquina(PowerUpEntidade.NAME nome)
     {
         powerUp = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(nome);
-        imgBtn = dicionarioDeSprites[powerUp.nomeSpriteBtn];
     }
 
     public void acionar()
@@ -41,7 +39,7 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
 
     public Sprite getImgBotao()
     {
-        return imgBtn;
+        return powerUp.sprPowerUp;
     }
 
     public PowerUpEntidade.NAME getName()

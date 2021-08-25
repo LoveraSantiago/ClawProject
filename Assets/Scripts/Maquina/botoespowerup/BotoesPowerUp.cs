@@ -18,7 +18,7 @@ public class BotoesPowerUp
         BotaoPowerUp.configurar(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.AreaDraggavel, matGeral, matIndiv);
 
         inicializarBotoes(btnsPowerUpsDto);
-        distribuidor = new DistribuidorParaBotoesPowerUp(btnsPowerUpsDto.SpritesDeBotoes);
+        distribuidor = new DistribuidorParaBotoesPowerUp();
         controlePup = new ControleAcionamentoPowerUp();
 
         dragavelVazio = new AdapterDraggavelVazio();
