@@ -8,6 +8,8 @@ public class PupScene : MonoBehaviour
 {
     [SerializeField] private Button btnBack;
     [Space(5)]
+    [SerializeField] private GameObject prefabPowerUpDto;
+    [Space(5)]
     [SerializeField] private Animator animatorBottonBar;
     [SerializeField] private Button btnBottonBar;
 
