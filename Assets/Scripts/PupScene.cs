@@ -19,10 +19,8 @@ public class PupScene : MonoBehaviour
     {
         configButtonBack(btnBack);
         new BlocoImg(blocoImgDto, this);
-        new BottomBar(bottomBarDto, this);
-
-        PrefabPowerUpDto prefabPUpDto = prefabPowerUpDto.GetComponent<PrefabPowerUpDto>();
-        PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPUpDto.getInstance().dicionarioDeSprites);
+        new BottomBar(bottomBarDto, this);        
+        PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
     }
 
     // Update is called once per frame

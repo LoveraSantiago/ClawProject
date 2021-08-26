@@ -3072,9 +3072,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnBack: {fileID: 98718867}
-  animatorBlocoImg: {fileID: 2088493096}
-  btnEsquerda: {fileID: 487751604}
-  btnDireita: {fileID: 2124457856}
+  blocoImgDto:
+    animatorBlocoImg: {fileID: 2088493096}
+    btnEsquerda: {fileID: 487751604}
+    btnDireita: {fileID: 2124457856}
+    imgPowerUp: {fileID: 2026683646}
   prefabPowerUpDto: {fileID: 5653745407918303698, guid: 264fd96ffd92c7d4899adb12d26ef4f1, type: 3}
   bottomBarDto:
     animatorBottonBar: {fileID: 513783663}

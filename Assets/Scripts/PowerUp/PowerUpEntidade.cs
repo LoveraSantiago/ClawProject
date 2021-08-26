@@ -80,8 +80,9 @@ public class PowerUpEntidade
         return powerUpGo;
     }
 
-    public static void configurarDicionarioDeSpritesPup(Dictionary<string, Sprite> dicionarioArg)
+    public static void configurarDicionarioDeSpritesPup(GameObject goPrefabPupDto)
     {
-        dicionarioDeSprites = dicionarioArg;
+        PrefabPowerUpDto prefabPUpDto = goPrefabPupDto.GetComponent<PrefabPowerUpDto>();
+        dicionarioDeSprites = prefabPUpDto.getInstance().dicionarioDeSprites;
     }
 }

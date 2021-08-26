@@ -13,12 +13,9 @@ public class PowerUpManager : PowerUpAcionamento,
     }    
 
     private void configurarPowerUps(PowerUpDto powerUpDto, MonoBehaviour monoBehaviour, InputGame inputGame)
-    {
-        PrefabPowerUpDto prefabPowerUpDto = powerUpDto.PrefabPowerUpDto.GetComponent<PrefabPowerUpDto>();
-        PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto.getInstance().dicionarioDeSprites);
-
+    {        
+        PowerUpEntidade.configurarDicionarioDeSpritesPup(powerUpDto.PrefabPowerUpDto);
         PowerUpParaMaquina.configAcionadorDePowerUp(this);
-
         AbstractPowerUpGo.configurarAbstractPowerUp(powerUpDto, this, inputGame, monoBehaviour);        
     }
 
