@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BottomBar 
 {
@@ -15,10 +14,10 @@ public class BottomBar
     private Animator animator;
     private MonoBehaviour monoBehaviour;
 
-    public BottomBar(Animator animator, Button btnBottom, MonoBehaviour monoBehaviour)
+    public BottomBar(BottomBarDto bottomBarDto, MonoBehaviour monoBehaviour)
     {
-        btnBottom.onClick.AddListener(()=> btnBottomPressionado());
-        this.animator = animator;
+        bottomBarDto.BtnBottonBar.onClick.AddListener(()=> btnBottomPressionado());
+        animator = bottomBarDto.AnimatorBottonBar;
         animacaoAtual = ANIM_EMBAIXO;
 
         this.monoBehaviour = monoBehaviour;

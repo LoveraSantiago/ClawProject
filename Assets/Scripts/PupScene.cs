@@ -14,15 +14,14 @@ public class PupScene : MonoBehaviour
     [SerializeField] private Button btnDireita;
     [SerializeField] private GameObject prefabPowerUpDto;
     [Space(5)]
-    [SerializeField] private Animator animatorBottonBar;
-    [SerializeField] private Button btnBottonBar;
+    [SerializeField] private BottomBarDto bottomBarDto;  
 
     // Start is called before the first frame update
     void Start()
     {
         configButtonBack(btnBack);
         new BlocoImg(btnEsquerda, btnDireita, animatorBlocoImg, this);
-        new BottomBar(animatorBottonBar, btnBottonBar, this);
+        new BottomBar(bottomBarDto, this);
 
         PrefabPowerUpDto prefabPUpDto = prefabPowerUpDto.GetComponent<PrefabPowerUpDto>();
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPUpDto.getInstance().dicionarioDeSprites);
