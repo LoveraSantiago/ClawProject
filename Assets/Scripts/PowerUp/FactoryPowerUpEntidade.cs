@@ -13,11 +13,14 @@ public class FactoryPowerUpEntidade
         if (bombaDaGarra == null)
         {
             bombaDaGarra = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.BOMBA_DA_GARRA, "bomba")
+                .configNomes(PowerUpEntidade.TIPO.BOMBA_DA_GARRA, "Bomba", "bomba")
                 .configDuracao(9)
                 .configArea()
                 .configSupplierDePowerUpGo(BombaPowerUpGo.getFornecedor())
-                .configIsClicavel(true);
+                .configIsClicavel(true)
+                .configDescricao(
+                    "-", 
+                    "-");
         }
         return bombaDaGarra;
     }
@@ -27,11 +30,14 @@ public class FactoryPowerUpEntidade
         if (missilNuclear == null)
         {
             missilNuclear = new PowerUpEntidade()                
-                .configNomes(PowerUpEntidade.TIPO.MISSIL_NUCLEAR, "nuclear-bomba-btn")
+                .configNomes(PowerUpEntidade.TIPO.MISSIL_NUCLEAR, "Bomba Nuclear", "nuclear-bomba-btn")
                 .configDuracao(9)
                 .configArea()
                 .configSupplierDePowerUpGo(MissilNuclearPowerUpGo.getFornecedor())
-                .configIsClicavel(true); 
+                .configIsClicavel(true)
+                .configDescricao(
+                    "-",
+                    "-");
         }
         return missilNuclear;
     }
@@ -41,11 +47,14 @@ public class FactoryPowerUpEntidade
         if (minaTerrestre == null)
         {
             minaTerrestre = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.MINA_TERRESTRE, "mina-terrestre")
+                .configNomes(PowerUpEntidade.TIPO.MINA_TERRESTRE, "Mina Terrestre", "mina-terrestre")
                 .configDuracao(3)
                 .configArea(PowerUpEntidade.AREA.CHAO)
                 .configSupplierDePowerUpGo(MinaTerrestrePowerUpGo.getFornecedor())
-                .configIsClicavel(false);
+                .configIsClicavel(false)
+                .configDescricao(
+                    "-",
+                    "-");
         }
         return minaTerrestre;
     }
@@ -55,11 +64,14 @@ public class FactoryPowerUpEntidade
         if (missilTeleguiado == null)
         {
             missilTeleguiado = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.MISSIL_TELEGUIADO, "missil-btnv2")
+                .configNomes(PowerUpEntidade.TIPO.MISSIL_TELEGUIADO, "Missil Teleguiado", "missil-btnv2")
                 .configDuracao(9)
                 .configArea()
                 .configSupplierDePowerUpGo(MissilTeleguiadoPowerUpGo.getFornecedor())
-                .configIsClicavel(true); 
+                .configIsClicavel(true)
+                .configDescricao(
+                    "-",
+                    "-");
         }
         return missilTeleguiado;
     }
@@ -69,11 +81,14 @@ public class FactoryPowerUpEntidade
         if(teleporte == null)
         {
             teleporte = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.TELEPORTE, "teleport-btn")
+                .configNomes(PowerUpEntidade.TIPO.TELEPORTE, "Tele-Transporte", "teleport-btn")
                 .configDuracao(9)
                 .configArea()
                 .configSupplierDePowerUpGo(TeleportePowerUpGo.getFornecedor())
-                .configIsClicavel(true); 
+                .configIsClicavel(true)
+                .configDescricao(
+                    "-",
+                    "-");
         }
         return teleporte;
     }
@@ -83,11 +98,14 @@ public class FactoryPowerUpEntidade
         if(asa == null)
         {
             asa = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.ASAS, "asas-botao")
+                .configNomes(PowerUpEntidade.TIPO.ASAS, "Asas da Liberdade", "asas-botao")
                 .configDuracao(9)
                 .configArea()
                 .configSupplierDePowerUpGo(AsaPowerUpGo.getFornecedor())
-                .configIsClicavel(true); 
+                .configIsClicavel(true)
+                .configDescricao(
+                    "-",
+                    "-");
         }
         return asa;
     }
@@ -97,11 +115,14 @@ public class FactoryPowerUpEntidade
         if(rollback == null)
         {
             rollback = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.ROLLBACK, "rollback-botao")
+                .configNomes(PowerUpEntidade.TIPO.ROLLBACK, "Rollback", "rollback-botao")
                 .configDuracao(9)
                 .configArea()
                 .configSupplierDePowerUpGo(RollbackPowerUpGo.getFornecedor())
-                .configIsClicavel(true);
+                .configIsClicavel(true)
+                .configDescricao(
+                    "-",
+                    "-");
         }
         return rollback;
     }

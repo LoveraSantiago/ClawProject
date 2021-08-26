@@ -9,6 +9,8 @@ public class AllLabels : AcaoPUpEntidade.ConsumidorEvento
 
     void AcaoPUpEntidade.ConsumidorEvento.consumirEvento(PowerUpEntidade evento)
     {
-        labelsDto.LblPup.text = evento.tipo.ToString();
+        labelsDto.LblPup.text = evento.nome;
+        labelsDto.LblDescCurta.text = evento.descCurta;
+        labelsDto.LblExplicacao.text = evento.descDetalhada;
     }
 }
