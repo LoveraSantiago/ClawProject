@@ -44,9 +44,9 @@ public class BlocoImg
     {
         animacaoEmAndamento = true;
         animator.Play(animInicio);
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.4f);
         animator.Play(animFim);
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.4f);
         animator.Play(ANIM_IDLE);
         animacaoEmAndamento = false;
     }
