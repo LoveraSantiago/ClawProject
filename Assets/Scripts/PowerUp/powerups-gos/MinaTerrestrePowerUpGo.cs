@@ -30,7 +30,7 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
         animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
         goExplosao = goColetavel.transform.Find("explosao").gameObject;
 
-        tempoExplosao = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(PowerUpEntidade.NAME.MINA_TERRESTRE).duracao;        
+        tempoExplosao = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(PowerUpEntidade.TIPO.MINA_TERRESTRE).duracao;        
     }
 
     public override void iniciarPup()

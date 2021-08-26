@@ -5,7 +5,7 @@ public class PowerUpEntidade
 {
     private static Dictionary<string, Sprite> dicionarioDeSprites;
 
-    public enum NAME
+    public enum TIPO
     {
         BOMBA_DA_GARRA, MISSIL_NUCLEAR, MINA_TERRESTRE, MISSIL_TELEGUIADO,
         TELEPORTE, ASAS, ROLLBACK, NONE
@@ -21,7 +21,7 @@ public class PowerUpEntidade
         MOVIMENTO, PARADO, NAO_INTERACAO
     }
 
-    public NAME name   { get; private set; }
+    public TIPO tipo   { get; private set; }
     public Sprite sprPowerUp { get { return dicionarioDeSprites[nomeSpriteBtn]; }}
     public int duracao { get; private set; }
     public string nomeSpriteBtn { get; private set; }
@@ -35,9 +35,9 @@ public class PowerUpEntidade
     {   
     }    
 
-    public PowerUpEntidade configNomes(NAME nomeEntidade, string nomeSpriteBtn)
+    public PowerUpEntidade configNomes(TIPO tipoEntidade, string nomeSpriteBtn)
     {
-        name = nomeEntidade;
+        tipo = tipoEntidade;
         this.nomeSpriteBtn = nomeSpriteBtn;
         return this;
     }

@@ -2,18 +2,18 @@ public class DistribuidorParaBotoesPowerUp
 {   
     private int indiceDistribuicao;
     
-    private PowerUpEntidade.NAME[] arrayDaFase;        
+    private PowerUpEntidade.TIPO[] arrayDaFase;        
 
-    public void distribuirArray(PowerUpEntidade.NAME[] arrayDePowerUpsParaBotoes, BotaoPowerUp[] btnsPowerUp)
+    public void distribuirArray(PowerUpEntidade.TIPO[] arrayDePowerUpsParaBotoes, BotaoPowerUp[] btnsPowerUp)
     {
         arrayDaFase = arrayDePowerUpsParaBotoes;
         determinarIndicePrimeiraDistribuicao();
         for(int contador = 0; contador < indiceDistribuicao; contador++)
         {
-            PowerUpEntidade.NAME namePU = arrayDaFase[contador];
-            if(namePU != PowerUpEntidade.NAME.NONE)
+            PowerUpEntidade.TIPO tipoPU = arrayDaFase[contador];
+            if(tipoPU != PowerUpEntidade.TIPO.NONE)
             {
-                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(namePU);
+                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(tipoPU);
                 btnsPowerUp[contador].receberAcaoPowerUp(powerUpPMaquina);
             }
         }
@@ -23,10 +23,10 @@ public class DistribuidorParaBotoesPowerUp
     {
         if (indiceDistribuicao < arrayDaFase.Length)
         {
-            PowerUpEntidade.NAME namePU = arrayDaFase[indiceDistribuicao];
-            if (namePU != PowerUpEntidade.NAME.NONE)
+            PowerUpEntidade.TIPO tipoPU = arrayDaFase[indiceDistribuicao];
+            if (tipoPU != PowerUpEntidade.TIPO.NONE)
             {
-                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(namePU);
+                PowerUpParaMaquina powerUpPMaquina = new PowerUpParaMaquina(tipoPU);
                 BotaoPowerUp btnDisponivel = getPrimeiroBotaoDisponivel(btnsPowerUp);
                 btnDisponivel.receberAcaoPowerUp(powerUpPMaquina);
             }

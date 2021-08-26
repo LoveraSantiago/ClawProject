@@ -6,9 +6,9 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
     
     private PowerUpEntidade powerUp;    
 
-    public PowerUpParaMaquina(PowerUpEntidade.NAME nome)
+    public PowerUpParaMaquina(PowerUpEntidade.TIPO tipo)
     {
-        powerUp = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(nome);
+        powerUp = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(tipo);
     }
 
     public void acionar()
@@ -41,8 +41,8 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
         return powerUp.sprPowerUp;
     }
 
-    public PowerUpEntidade.NAME getName()
+    public PowerUpEntidade.TIPO getTipo()
     {
-        return powerUp.name;
+        return powerUp.tipo;
     }
 }
