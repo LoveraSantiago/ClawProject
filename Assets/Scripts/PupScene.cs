@@ -17,10 +17,11 @@ public class PupScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
+
         configButtonBack(btnBack);
         new BlocoImg(blocoImgDto, this);
         new BottomBar(bottomBarDto, this);        
-        PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
     }
 
     // Update is called once per frame
