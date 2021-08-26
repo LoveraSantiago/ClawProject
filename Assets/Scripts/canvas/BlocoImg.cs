@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BlocoImg
 {
@@ -12,15 +10,15 @@ public class BlocoImg
     private readonly int ANIM_IDLE         = Animator.StringToHash("idle");
 
     private bool animacaoEmAndamento;
-    private Animator animator;
+    private BlocoImgDto blocoImgDto;
     private MonoBehaviour monoBehaviour;
 
-    public BlocoImg(Button btnEsquerda, Button btnDireita, Animator animator, MonoBehaviour monoBehaviour)
+    public BlocoImg(BlocoImgDto blocoImgDto, MonoBehaviour monoBehaviour)
     {
-        btnEsquerda.onClick.AddListener(()=> irParaEsquerda());
-        btnDireita.onClick.AddListener(()=> irParaDireita());
-
-        this.animator = animator;
+        this.blocoImgDto = blocoImgDto;
+        blocoImgDto.BtnEsquerda.onClick.AddListener(()=> irParaEsquerda());
+        blocoImgDto.BtnDireita.onClick.AddListener(()=> irParaDireita());
+        
         this.monoBehaviour = monoBehaviour;
     }
 
@@ -43,11 +41,11 @@ public class BlocoImg
     private IEnumerator moverBloco(int animInicio, int animFim)
     {
         animacaoEmAndamento = true;
-        animator.Play(animInicio);
+        blocoImgDto.AnimatorBlocoImg.Play(animInicio);
         yield return new WaitForSeconds(0.4f);
-        animator.Play(animFim);
+        blocoImgDto.AnimatorBlocoImg.Play(animFim);
         yield return new WaitForSeconds(0.4f);
-        animator.Play(ANIM_IDLE);
+        blocoImgDto.AnimatorBlocoImg.Play(ANIM_IDLE);
         animacaoEmAndamento = false;
     }
 }
