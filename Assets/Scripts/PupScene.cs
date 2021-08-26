@@ -12,6 +12,8 @@ public class PupScene : MonoBehaviour
     [SerializeField] private BlocoImgDto blocoImgDto;    
     [SerializeField] private GameObject prefabPowerUpDto;
     [Space(5)]
+    [SerializeField] private AllLabelsDto labelsDto;
+    [Space(5)]
     [SerializeField] private BottomBarDto bottomBarDto;  
 
     // Start is called before the first frame update

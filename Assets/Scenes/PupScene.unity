@@ -2087,7 +2087,7 @@ GameObject:
   - component: {fileID: 1059423809}
   - component: {fileID: 1059423808}
   m_Layer: 5
-  m_Name: lbl-descricao-curta (1)
+  m_Name: lbl-explicacao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3078,6 +3078,10 @@ MonoBehaviour:
     btnDireita: {fileID: 2124457856}
     imgPowerUp: {fileID: 2026683646}
   prefabPowerUpDto: {fileID: 5653745407918303698, guid: 264fd96ffd92c7d4899adb12d26ef4f1, type: 3}
+  labelsDto:
+    lblPup: {fileID: 2048214938}
+    lblDescCurta: {fileID: 1559100285}
+    lblExplicacao: {fileID: 1059423808}
   bottomBarDto:
     animatorBottonBar: {fileID: 513783663}
     btnBottonBar: {fileID: 294613795}
