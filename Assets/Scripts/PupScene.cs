@@ -23,14 +23,15 @@ public class PupScene : MonoBehaviour
 
         configButtonBack(btnBack);
         BlocoImg blocoImg = new BlocoImg(blocoImgDto, this);
-        new BottomBar(bottomBarDto, this);        
-    }
+        AllLabels allLables = new AllLabels(labelsDto);
+        new BottomBar(bottomBarDto, this);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        new AcaoPUpEntidade()
+            .configurarProdutor(blocoImg)
+            .adicionarConsumidor(allLables);
+
+        blocoImg.startLaizy();
+    }   
 
     private void configButtonBack(Button btnBack)
     {

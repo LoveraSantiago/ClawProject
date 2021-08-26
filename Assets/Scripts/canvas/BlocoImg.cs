@@ -26,9 +26,15 @@ public class BlocoImg : AcaoPUpEntidade.ProdutorEvento
         this.monoBehaviour = monoBehaviour;
 
         controlePups = new ControlePupDoCanvas();
-        blocoImgDto.ImgPowerUp.sprite = controlePups.getPupAtual().sprPowerUp;
 
         produtorDeEvento = new ProdutorDeEvento<PowerUpEntidade>();
+    }
+
+    public void startLaizy()
+    {
+        PowerUpEntidade pupEntidade = controlePups.getPupAtual();
+        blocoImgDto.ImgPowerUp.sprite = pupEntidade.sprPowerUp;
+        produtorDeEvento.produziuEvento(pupEntidade);
     }
 
     public void irParaDireita()
@@ -64,6 +70,6 @@ public class BlocoImg : AcaoPUpEntidade.ProdutorEvento
     
     ProdutorDeEvento<PowerUpEntidade> AcaoPUpEntidade.ProdutorEvento.getProdutorDeEventoColetado()
     {
-        throw new System.NotImplementedException();
+        return produtorDeEvento;
     }
 }

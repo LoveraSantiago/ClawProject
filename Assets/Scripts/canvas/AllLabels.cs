@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class AllLabels : MonoBehaviour
+public class AllLabels : AcaoPUpEntidade.ConsumidorEvento
 {
-    // Start is called before the first frame update
-    void Start()
+    private AllLabelsDto labelsDto;
+
+    public AllLabels(AllLabelsDto labelsDto)
     {
-        
+        this.labelsDto = labelsDto;
     }
 
-    // Update is called once per frame
-    void Update()
+    void AcaoPUpEntidade.ConsumidorEvento.consumirEvento(PowerUpEntidade evento)
     {
-        
+        labelsDto.LblPup.text = evento.name.ToString();
     }
 }
