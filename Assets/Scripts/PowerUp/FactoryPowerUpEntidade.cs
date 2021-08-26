@@ -19,7 +19,7 @@ public class FactoryPowerUpEntidade
                 .configSupplierDePowerUpGo(BombaPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
-                    "-", 
+                    "Jogue uma bomba nos coletaveis para espalhar suas posições.", 
                     "-");
         }
         return bombaDaGarra;
@@ -36,7 +36,7 @@ public class FactoryPowerUpEntidade
                 .configSupplierDePowerUpGo(MissilNuclearPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
-                    "-",
+                    "Jogue uma bomba de grande raio de explosão nos coletaveis para espalhar suas posições.",
                     "-");
         }
         return missilNuclear;
@@ -53,7 +53,7 @@ public class FactoryPowerUpEntidade
                 .configSupplierDePowerUpGo(MinaTerrestrePowerUpGo.getFornecedor())
                 .configIsClicavel(false)
                 .configDescricao(
-                    "-",
+                    "Plante uma mina de explosão terrestre nos coletaveis para espalhar suas posições.",
                     "-");
         }
         return minaTerrestre;
@@ -70,7 +70,7 @@ public class FactoryPowerUpEntidade
                 .configSupplierDePowerUpGo(MissilTeleguiadoPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
-                    "-",
+                    "Acerte um missil teleguiado no coletavel de interesse para mudar a posição atual dele.",
                     "-");
         }
         return missilTeleguiado;
@@ -87,7 +87,7 @@ public class FactoryPowerUpEntidade
                 .configSupplierDePowerUpGo(TeleportePowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
-                    "-",
+                    "Troque as posições de um par de coletaveis para mudar suas respectivas posições.",
                     "-");
         }
         return teleporte;
@@ -104,7 +104,7 @@ public class FactoryPowerUpEntidade
                 .configSupplierDePowerUpGo(AsaPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
-                    "-",
+                    "Dê um par de asas ao coletavel do seu interesse para que ele alcance a liberdade.",
                     "-");
         }
         return asa;
@@ -121,7 +121,7 @@ public class FactoryPowerUpEntidade
                 .configSupplierDePowerUpGo(RollbackPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
-                    "-",
+                    "Descarte um coletado para tentar uma melhor combinação de coletados.",
                     "-");
         }
         return rollback;
