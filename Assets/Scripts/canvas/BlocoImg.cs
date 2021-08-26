@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BlocoImg
+public class BlocoImg : AcaoPUpEntidade.ProdutorEvento
 {
     private readonly int ANIM_IR_ESQUERDA  = Animator.StringToHash("irEsquerda");
     private readonly int ANIM_VIR_ESQUERDA = Animator.StringToHash("virDaEsquerda");
@@ -13,6 +13,7 @@ public class BlocoImg
 
     private BlocoImgDto blocoImgDto;
     private ControlePupDoCanvas controlePups;
+    private ProdutorDeEvento<PowerUpEntidade> produtorDeEvento;
 
     private MonoBehaviour monoBehaviour;
 
@@ -26,6 +27,8 @@ public class BlocoImg
 
         controlePups = new ControlePupDoCanvas();
         blocoImgDto.ImgPowerUp.sprite = controlePups.getPupAtual().sprPowerUp;
+
+        produtorDeEvento = new ProdutorDeEvento<PowerUpEntidade>();
     }
 
     public void irParaDireita()
@@ -33,7 +36,7 @@ public class BlocoImg
         if (!animacaoEmAndamento)
         {
             PowerUpEntidade pupEntidade = controlePups.getAntPup();
-            monoBehaviour.StartCoroutine(moverBloco(ANIM_IR_DIREITA, ANIM_VIR_DIREITA, pupEntidade.sprPowerUp));
+            monoBehaviour.StartCoroutine(moverBloco(ANIM_IR_DIREITA, ANIM_VIR_DIREITA, pupEntidade));
         }
     }
 
@@ -42,19 +45,25 @@ public class BlocoImg
         if (!animacaoEmAndamento)
         {
             PowerUpEntidade pupEntidade = controlePups.getProxPup();
-            monoBehaviour.StartCoroutine(moverBloco(ANIM_IR_ESQUERDA, ANIM_VIR_ESQUERDA, pupEntidade.sprPowerUp));
+            monoBehaviour.StartCoroutine(moverBloco(ANIM_IR_ESQUERDA, ANIM_VIR_ESQUERDA, pupEntidade));
         }
-    }
+    }    
 
-    private IEnumerator moverBloco(int animInicio, int animFim, Sprite spr)
+    private IEnumerator moverBloco(int animInicio, int animFim, PowerUpEntidade pupEntidade)
     {
         animacaoEmAndamento = true;
         blocoImgDto.AnimatorBlocoImg.Play(animInicio);
         yield return new WaitForSeconds(0.4f);
-        blocoImgDto.ImgPowerUp.sprite = spr;
+        blocoImgDto.ImgPowerUp.sprite = pupEntidade.sprPowerUp;
         blocoImgDto.AnimatorBlocoImg.Play(animFim);
+        produtorDeEvento.produziuEvento(pupEntidade);
         yield return new WaitForSeconds(0.4f);
         blocoImgDto.AnimatorBlocoImg.Play(ANIM_IDLE);
         animacaoEmAndamento = false;
+    }
+    
+    ProdutorDeEvento<PowerUpEntidade> AcaoPUpEntidade.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        throw new System.NotImplementedException();
     }
 }
