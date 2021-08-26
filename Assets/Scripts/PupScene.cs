@@ -20,7 +20,7 @@ public class PupScene : MonoBehaviour
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
 
         configButtonBack(btnBack);
-        new BlocoImg(blocoImgDto, this);
+        BlocoImg blocoImg = new BlocoImg(blocoImgDto, this);
         new BottomBar(bottomBarDto, this);        
     }
 

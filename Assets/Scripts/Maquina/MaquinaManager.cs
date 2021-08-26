@@ -4,7 +4,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetadoFim.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,                                
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
-                              AcaoPowerUp.ConsumidorEvento,                                                            
+                              AcaoPUpInfo.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento
 {    
     private PartesMaquinaDto partesDto;
@@ -95,7 +95,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp.suspenderPowerUp();
     }   
 
-    void AcaoPowerUp.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPUpInfo.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isInicio())
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PowerUpManager : PowerUpAcionamento,
                               PowerUpFinalizacao,
-                              AcaoPowerUp.ProdutorEvento
+                              AcaoPUpInfo.ProdutorEvento
 {
     private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;    
 
@@ -63,7 +63,7 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }    
 
-    ProdutorDeEvento<PowerUpInfo> AcaoPowerUp.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<PowerUpInfo> AcaoPUpInfo.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeEventoPowerUp;
     }    
