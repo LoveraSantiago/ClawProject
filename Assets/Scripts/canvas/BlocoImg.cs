@@ -9,6 +9,7 @@ public class BlocoImg
     private readonly int ANIM_VIR_ESQUERDA = Animator.StringToHash("virDaEsquerda");
     private readonly int ANIM_IR_DIREITA   = Animator.StringToHash("irDireita");
     private readonly int ANIM_VIR_DIREITA  = Animator.StringToHash("virDaDireita");
+    private readonly int ANIM_IDLE         = Animator.StringToHash("idle");
 
     private bool animacaoEmAndamento;
     private Animator animator;
@@ -46,6 +47,7 @@ public class BlocoImg
         yield return new WaitForSeconds(0.6f);
         animator.Play(animFim);
         yield return new WaitForSeconds(0.6f);
+        animator.Play(ANIM_IDLE);
         animacaoEmAndamento = false;
     }
 }
