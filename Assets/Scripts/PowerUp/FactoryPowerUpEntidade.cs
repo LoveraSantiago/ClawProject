@@ -117,8 +117,20 @@ public class FactoryPowerUpEntidade
             case PowerUpEntidade.NAME.TELEPORTE        : return getTeleporte();
             case PowerUpEntidade.NAME.ASAS             : return getAsas();
             case PowerUpEntidade.NAME.ROLLBACK         : return getRollBack();
-        }
-        return null;
+            default: return null;
+        }        
     }
 
+    public static PowerUpEntidade[] getAllPowerUps()
+    {
+        return new PowerUpEntidade[] {
+            getBombaDaGarra(),
+            getMissilNuclear(),
+            getMinaTerrestre(),
+            getMissilTeleguiado(),
+            getTeleporte(),
+            getAsas(),
+            getRollBack()
+        };
+    }
 }
