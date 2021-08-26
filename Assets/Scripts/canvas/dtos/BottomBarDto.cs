@@ -8,6 +8,6 @@ public class BottomBarDto
     [SerializeField] private Animator animatorBottonBar;
     [SerializeField] private Button btnBottonBar;
 
-    public Animator AnimatorBottonBar { get { return AnimatorBottonBar; } }
+    public Animator AnimatorBottonBar { get { return animatorBottonBar; } }
     public Button BtnBottonBar { get { return btnBottonBar; } }
 }
