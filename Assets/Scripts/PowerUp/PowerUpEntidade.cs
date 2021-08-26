@@ -22,7 +22,7 @@ public class PowerUpEntidade
     }
 
     public NAME name   { get; private set; }
-    public Sprite sprPowerUp { get { return dicionarioDeSprites[name.ToString()]; }}
+    public Sprite sprPowerUp { get { return dicionarioDeSprites[nomeSpriteBtn]; }}
     public int duracao { get; private set; }
     public string nomeSpriteBtn { get; private set; }
     public bool isClicavel { get; private set; }

@@ -1047,7 +1047,7 @@ MonoBehaviour:
     luzSeguidora: {fileID: 1216567083}
   powerUpDto:
     vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
-    prefabPowerUpDto: {fileID: 0}
+    prefabPowerUpDto: {fileID: 5653745407918303698, guid: 264fd96ffd92c7d4899adb12d26ef4f1, type: 3}
     bombaDto:
       angGarra: 5
       delayInicial: 0.4
