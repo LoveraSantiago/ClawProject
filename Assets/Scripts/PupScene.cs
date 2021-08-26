@@ -9,6 +9,9 @@ public class PupScene : MonoBehaviour
 {
     [SerializeField] private Button btnBack;
     [Space(5)]
+    [SerializeField] private Animator animatorBlocoImg;
+    [SerializeField] private Button btnEsquerda;
+    [SerializeField] private Button btnDireita;
     [SerializeField] private GameObject prefabPowerUpDto;
     [Space(5)]
     [SerializeField] private Animator animatorBottonBar;
@@ -18,6 +21,7 @@ public class PupScene : MonoBehaviour
     void Start()
     {
         configButtonBack(btnBack);
+        new BlocoImg(btnEsquerda, btnDireita, animatorBlocoImg, this);
         new BottomBar(animatorBottonBar, btnBottonBar, this);
 
         PrefabPowerUpDto prefabPUpDto = prefabPowerUpDto.GetComponent<PrefabPowerUpDto>();
