@@ -11,11 +11,7 @@ public class PrefabPowerUpDto : MonoBehaviour
 
     private void Start()
     {
-        if(instance == null)
-        {
-            instance = this;
-            montarDicionarioDeSprites(powerUpSprites);
-        }
+        inicializarInstancia();
     }
 
     private void montarDicionarioDeSprites(Sprite[] arrayDeSpritesBotoes)
@@ -28,8 +24,18 @@ public class PrefabPowerUpDto : MonoBehaviour
         }
     }
 
+    private void inicializarInstancia()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            montarDicionarioDeSprites(powerUpSprites);
+        }
+    }
+
     public PrefabPowerUpDto getInstance()
     {
+        inicializarInstancia();
         return instance;
     }
 }
