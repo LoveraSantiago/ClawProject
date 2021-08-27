@@ -1,17 +1,14 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class PowerUpParaMaquina : AcaoBotaoPowerUp
 {
     private static PowerUpAcionamento powerUpAcionamento;
     
-    private PowerUpEntidade powerUp;
-    private Sprite imgBtn;
+    private PowerUpEntidade powerUp;    
 
-    public PowerUpParaMaquina(PowerUpEntidade.NAME nome, Dictionary<string, Sprite> dicionarioDeSprites)
+    public PowerUpParaMaquina(PowerUpEntidade.TIPO tipo)
     {
-        powerUp = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(nome);
-        imgBtn = dicionarioDeSprites[powerUp.nomeSpriteBtn];
+        powerUp = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(tipo);
     }
 
     public void acionar()
@@ -41,11 +38,11 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
 
     public Sprite getImgBotao()
     {
-        return imgBtn;
+        return powerUp.sprPowerUp;
     }
 
-    public PowerUpEntidade.NAME getName()
+    public PowerUpEntidade.TIPO getTipo()
     {
-        return powerUp.name;
+        return powerUp.tipo;
     }
 }

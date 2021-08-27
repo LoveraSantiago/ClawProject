@@ -4,7 +4,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoSubidaDaGarra.ProdutorEvento,
                             AcaoSincroniaComDirecaoDaGarra.ProdutorEvento,
                             AcaoColetado.ConsumidorEvento,
-                            AcaoPowerUp.ConsumidorEvento,                            
+                            AcaoPUpInfo.ConsumidorEvento,                            
                             AcaoTempoEsgotado.ConsumidorEvento,
                             AcaoBoardElevadoFim.ConsumidorEvento,
                             AcaoColetadoFim.ConsumidorEvento,
@@ -64,7 +64,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         gerDeMovAtual.garraColidiuCom(other);
     }  
 
-    void AcaoPowerUp.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPUpInfo.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isInicio())
         {

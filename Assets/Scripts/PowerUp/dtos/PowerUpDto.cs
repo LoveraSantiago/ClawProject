@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerUpDto 
 {    
     [SerializeField] private GameObject vazioPUp;
+    [SerializeField] private GameObject prefabPowerUpDto;
     [Space(5)]
     [SerializeField] private BombaDto bombaDto;
     [Space(5)]    
@@ -21,6 +22,7 @@ public class PowerUpDto
     [SerializeField] private RollbackDto rollBackDto;
  
     public GameObject VazioPUp { get { return vazioPUp; } }
+    public GameObject PrefabPowerUpDto { get { return prefabPowerUpDto; } }
 
     public BombaDto BombaDto { get { return bombaDto; } }
     public MissilNuclearDto MissilNuclearDto { get { return missilNuclearDto; } }    

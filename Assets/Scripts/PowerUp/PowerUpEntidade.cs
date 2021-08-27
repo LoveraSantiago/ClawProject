@@ -1,6 +1,11 @@
+using System.Collections.Generic;
+using UnityEngine;
+
 public class PowerUpEntidade 
 {
-    public enum NAME
+    private static Dictionary<string, Sprite> dicionarioDeSprites;
+
+    public enum TIPO
     {
         BOMBA_DA_GARRA, MISSIL_NUCLEAR, MINA_TERRESTRE, MISSIL_TELEGUIADO,
         TELEPORTE, ASAS, ROLLBACK, NONE
@@ -16,9 +21,13 @@ public class PowerUpEntidade
         MOVIMENTO, PARADO, NAO_INTERACAO
     }
 
-    public NAME name   { get; private set; }    
+    public TIPO tipo   { get; private set; }
+    public string nome { get; private set; }
+    public Sprite sprPowerUp { get { return dicionarioDeSprites[nomeSpriteBtn]; }}
     public int duracao { get; private set; }
     public string nomeSpriteBtn { get; private set; }
+    public string descCurta { get; private set; }
+    public string descDetalhada { get; private set; }
     public bool isClicavel { get; private set; }
     public AREA area { get; private set; }
 
@@ -29,9 +38,10 @@ public class PowerUpEntidade
     {   
     }    
 
-    public PowerUpEntidade configNomes(NAME nomeEntidade, string nomeSpriteBtn)
+    public PowerUpEntidade configNomes(TIPO tipoEntidade, string nome, string nomeSpriteBtn)
     {
-        name = nomeEntidade;
+        tipo = tipoEntidade;
+        this.nome = nome;
         this.nomeSpriteBtn = nomeSpriteBtn;
         return this;
     }
@@ -65,6 +75,13 @@ public class PowerUpEntidade
         return this;
     }
 
+    public PowerUpEntidade configDescricao(string descCurta, string descDetalhada)
+    {
+        this.descCurta = descCurta;
+        this.descDetalhada = descDetalhada;
+        return this;
+    }
+
     public AbstractPowerUpGo getPowerUpGo()
     {
         if(powerUpGo == null)
@@ -72,5 +89,11 @@ public class PowerUpEntidade
             powerUpGo = fornecedorPowerUpGo.fornecer();
         }
         return powerUpGo;
+    }
+
+    public static void configurarDicionarioDeSpritesPup(GameObject goPrefabPupDto)
+    {
+        PrefabPowerUpDto prefabPUpDto = goPrefabPupDto.GetComponent<PrefabPowerUpDto>();
+        dicionarioDeSprites = prefabPUpDto.getInstance().dicionarioDeSprites;
     }
 }

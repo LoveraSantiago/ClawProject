@@ -44,7 +44,7 @@ public class ControleAcionamentoPowerUp
         if (powerUpEmAcao)       return false;
         if (isEstadoLigado())    return true;
         if (isEstadoDesligado()) return false;
-        return  isEstadoSuspenso() && acaoBotaoPowerUp.getName() == PowerUpEntidade.NAME.ROLLBACK;        
+        return  isEstadoSuspenso() && acaoBotaoPowerUp.getTipo() == PowerUpEntidade.TIPO.ROLLBACK;        
     }    
 
     public bool podeAcionarPupDraggavel()
@@ -55,7 +55,7 @@ public class ControleAcionamentoPowerUp
     public void notificarAcionado(AcaoBotaoPowerUp acaoBotaoPowerUp)
     {
         powerUpEmAcao = true;
-        if(acaoBotaoPowerUp.getName() == PowerUpEntidade.NAME.ROLLBACK)
+        if(acaoBotaoPowerUp.getTipo() == PowerUpEntidade.TIPO.ROLLBACK)
         {
             powerUpDisplayEmAcao = true;
         }

@@ -21,7 +21,7 @@ public abstract class AbstractLevel
         return null;
     }
 
-    public abstract PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina();
+    public abstract PowerUpEntidade.TIPO[] getPowerUpsParaBotoesMaquina();
 
     public abstract TipoContagemTempoDto getTempoContagem();
 

@@ -13,11 +13,14 @@ public class FactoryPowerUpEntidade
         if (bombaDaGarra == null)
         {
             bombaDaGarra = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.NAME.BOMBA_DA_GARRA, "bomba")
+                .configNomes(PowerUpEntidade.TIPO.BOMBA_DA_GARRA, "Bomba", "bomba")
                 .configDuracao(9)
                 .configArea()
                 .configSupplierDePowerUpGo(BombaPowerUpGo.getFornecedor())
-                .configIsClicavel(true);
+                .configIsClicavel(true)
+                .configDescricao(
+                    "Jogue uma bomba nos coletaveis para espalhar suas posições.", 
+                    "A bomba é segurada pela garra e no momento exato toque na tela para que ela solte em cima do seu alvo. Você tem 9 segundos antes que ela solte em um lugar aleatorio.");
         }
         return bombaDaGarra;
     }
@@ -27,11 +30,14 @@ public class FactoryPowerUpEntidade
         if (missilNuclear == null)
         {
             missilNuclear = new PowerUpEntidade()                
-                .configNomes(PowerUpEntidade.NAME.MISSIL_NUCLEAR, "nuclear-bomba-btn")
+                .configNomes(PowerUpEntidade.TIPO.MISSIL_NUCLEAR, "Bomba Nuclear", "nuclear-bomba-btn")
                 .configDuracao(9)
                 .configArea()
                 .configSupplierDePowerUpGo(MissilNuclearPowerUpGo.getFornecedor())
-                .configIsClicavel(true); 
+                .configIsClicavel(true)
+                .configDescricao(
+                    "Jogue uma bomba de grande raio de explosão nos coletaveis para espalhar suas posições.",
+                    "A bomba nuclear é segurada pela garra e no momento exato toque na tela para que ela solte em cima do seu alvo. Você tem 9 segundos antes que ela solte em um lugar aleatorio.");
         }
         return missilNuclear;
     }
@@ -41,11 +47,14 @@ public class FactoryPowerUpEntidade
         if (minaTerrestre == null)
         {
             minaTerrestre = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.NAME.MINA_TERRESTRE, "mina-terrestre")
+                .configNomes(PowerUpEntidade.TIPO.MINA_TERRESTRE, "Mina Terrestre", "mina-terrestre")
                 .configDuracao(3)
                 .configArea(PowerUpEntidade.AREA.CHAO)
                 .configSupplierDePowerUpGo(MinaTerrestrePowerUpGo.getFornecedor())
-                .configIsClicavel(false);
+                .configIsClicavel(false)
+                .configDescricao(
+                    "Plante uma mina de explosão terrestre nos coletaveis para espalhar suas posições.",
+                    "-");
         }
         return minaTerrestre;
     }
@@ -55,11 +64,14 @@ public class FactoryPowerUpEntidade
         if (missilTeleguiado == null)
         {
             missilTeleguiado = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.NAME.MISSIL_TELEGUIADO, "missil-btnv2")
+                .configNomes(PowerUpEntidade.TIPO.MISSIL_TELEGUIADO, "Missil Teleguiado", "missil-btnv2")
                 .configDuracao(9)
                 .configArea()
                 .configSupplierDePowerUpGo(MissilTeleguiadoPowerUpGo.getFornecedor())
-                .configIsClicavel(true); 
+                .configIsClicavel(true)
+                .configDescricao(
+                    "Acerte um missil teleguiado no coletavel de interesse para mudar a posição atual dele.",
+                    "-");
         }
         return missilTeleguiado;
     }
@@ -69,11 +81,14 @@ public class FactoryPowerUpEntidade
         if(teleporte == null)
         {
             teleporte = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.NAME.TELEPORTE, "teleport-btn")
+                .configNomes(PowerUpEntidade.TIPO.TELEPORTE, "Tele-Transporte", "teleport-btn")
                 .configDuracao(9)
                 .configArea()
                 .configSupplierDePowerUpGo(TeleportePowerUpGo.getFornecedor())
-                .configIsClicavel(true); 
+                .configIsClicavel(true)
+                .configDescricao(
+                    "Troque as posições de um par de coletaveis para mudar suas respectivas posições.",
+                    "-");
         }
         return teleporte;
     }
@@ -83,11 +98,14 @@ public class FactoryPowerUpEntidade
         if(asa == null)
         {
             asa = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.NAME.ASAS, "asas-botao")
+                .configNomes(PowerUpEntidade.TIPO.ASAS, "Asas da Liberdade", "asas-botao")
                 .configDuracao(9)
                 .configArea()
                 .configSupplierDePowerUpGo(AsaPowerUpGo.getFornecedor())
-                .configIsClicavel(true); 
+                .configIsClicavel(true)
+                .configDescricao(
+                    "Dê um par de asas ao coletavel do seu interesse para que ele alcance a liberdade.",
+                    "-");
         }
         return asa;
     }
@@ -97,28 +115,43 @@ public class FactoryPowerUpEntidade
         if(rollback == null)
         {
             rollback = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.NAME.ROLLBACK, "rollback-botao")
+                .configNomes(PowerUpEntidade.TIPO.ROLLBACK, "Rollback", "rollback-botao")
                 .configDuracao(9)
                 .configArea()
                 .configSupplierDePowerUpGo(RollbackPowerUpGo.getFornecedor())
-                .configIsClicavel(true);
+                .configIsClicavel(true)
+                .configDescricao(
+                    "Descarte um coletado para tentar uma melhor combinação de coletados.",
+                    "-");
         }
         return rollback;
     }
 
-    public static PowerUpEntidade getPowerUpEntidadeByEnum(PowerUpEntidade.NAME name)
+    public static PowerUpEntidade getPowerUpEntidadeByEnum(PowerUpEntidade.TIPO tipo)
     {
-        switch (name)
+        switch (tipo)
         {
-            case PowerUpEntidade.NAME.BOMBA_DA_GARRA   : return getBombaDaGarra();
-            case PowerUpEntidade.NAME.MISSIL_NUCLEAR   : return getMissilNuclear();
-            case PowerUpEntidade.NAME.MINA_TERRESTRE   : return getMinaTerrestre();
-            case PowerUpEntidade.NAME.MISSIL_TELEGUIADO: return getMissilTeleguiado();
-            case PowerUpEntidade.NAME.TELEPORTE        : return getTeleporte();
-            case PowerUpEntidade.NAME.ASAS             : return getAsas();
-            case PowerUpEntidade.NAME.ROLLBACK         : return getRollBack();
-        }
-        return null;
+            case PowerUpEntidade.TIPO.BOMBA_DA_GARRA   : return getBombaDaGarra();
+            case PowerUpEntidade.TIPO.MISSIL_NUCLEAR   : return getMissilNuclear();
+            case PowerUpEntidade.TIPO.MINA_TERRESTRE   : return getMinaTerrestre();
+            case PowerUpEntidade.TIPO.MISSIL_TELEGUIADO: return getMissilTeleguiado();
+            case PowerUpEntidade.TIPO.TELEPORTE        : return getTeleporte();
+            case PowerUpEntidade.TIPO.ASAS             : return getAsas();
+            case PowerUpEntidade.TIPO.ROLLBACK         : return getRollBack();
+            default: return null;
+        }        
     }
 
+    public static PowerUpEntidade[] getAllPowerUps()
+    {
+        return new PowerUpEntidade[] {
+            getBombaDaGarra(),
+            getMissilNuclear(),
+            getMinaTerrestre(),
+            getMissilTeleguiado(),
+            getTeleporte(),
+            getAsas(),
+            getRollBack()
+        };
+    }
 }

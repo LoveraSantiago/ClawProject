@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MapaManager : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class MapaManager : MonoBehaviour
         levelObjetivo.SetActive(true);
         PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.TRES);
         updateModal(new Level3());
+    }
+
+    public void goToPupScene()//TEMPORARIAMENTE AQUI
+    {
+        SceneManager.LoadScene("PupScene");
     }
 
     private static void updateModal(AbstractLevel level)

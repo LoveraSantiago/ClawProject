@@ -8,7 +8,7 @@ public interface AcaoBotaoPowerUp
     void acionar();
     void acionar(Vector3 posicaoAtual);
 
-    PowerUpEntidade.NAME getName();
+    PowerUpEntidade.TIPO getTipo();
 
     Sprite getImgBotao();
 }

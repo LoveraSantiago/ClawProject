@@ -49,28 +49,28 @@ public class Level3 : AbstractLevel
     }
 
 
-    public override PowerUpEntidade.NAME[] getPowerUpsParaBotoesMaquina()
+    public override PowerUpEntidade.TIPO[] getPowerUpsParaBotoesMaquina()
     {
-        return new PowerUpEntidade.NAME[]
+        return new PowerUpEntidade.TIPO[]
        {
-            PowerUpEntidade.NAME.TELEPORTE     , PowerUpEntidade.NAME.ASAS          , PowerUpEntidade.NAME.ROLLBACK,
-            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
-            PowerUpEntidade.NAME.TELEPORTE     , PowerUpEntidade.NAME.ASAS          , PowerUpEntidade.NAME.ROLLBACK,
-            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
-            PowerUpEntidade.NAME.TELEPORTE     , PowerUpEntidade.NAME.ASAS          , PowerUpEntidade.NAME.ROLLBACK,
-            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
-            PowerUpEntidade.NAME.TELEPORTE     , PowerUpEntidade.NAME.ASAS          , PowerUpEntidade.NAME.ROLLBACK,
-            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
-            PowerUpEntidade.NAME.TELEPORTE     , PowerUpEntidade.NAME.ASAS          , PowerUpEntidade.NAME.ROLLBACK,
-            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
-            PowerUpEntidade.NAME.TELEPORTE     , PowerUpEntidade.NAME.ASAS          , PowerUpEntidade.NAME.ROLLBACK,
-            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
-            PowerUpEntidade.NAME.TELEPORTE     , PowerUpEntidade.NAME.ASAS          , PowerUpEntidade.NAME.ROLLBACK,
-            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
-            PowerUpEntidade.NAME.TELEPORTE     , PowerUpEntidade.NAME.ASAS          , PowerUpEntidade.NAME.ROLLBACK,
-            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
-            PowerUpEntidade.NAME.TELEPORTE     , PowerUpEntidade.NAME.ASAS          , PowerUpEntidade.NAME.ROLLBACK,
-            PowerUpEntidade.NAME.BOMBA_DA_GARRA, PowerUpEntidade.NAME.MISSIL_NUCLEAR, PowerUpEntidade.NAME.MINA_TERRESTRE, PowerUpEntidade.NAME.MISSIL_TELEGUIADO,
+            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
+            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
+            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
+            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
+            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
+            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
+            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
+            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
+            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
+            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
+            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
+            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
+            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
+            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
+            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
+            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
+            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
+            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
        };
     }
 

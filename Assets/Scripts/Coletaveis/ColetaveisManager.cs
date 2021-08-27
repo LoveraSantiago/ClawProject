@@ -6,7 +6,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoColetadoFim.ConsumidorEvento,
                                 AcaoImantadoPelaGarra.ConsumidorEvento,
                                 AcaoSubidaDaGarra.ConsumidorEvento,                                
-                                AcaoPowerUp.ConsumidorEvento,                                
+                                AcaoPUpInfo.ConsumidorEvento,                                
                                 AcaoTempoEsgotado.ConsumidorEvento
 {
     private ColetaveisDto coletaveisDto;
@@ -115,7 +115,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         processarDesimantado();
     }
 
-    void AcaoPowerUp.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPUpInfo.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isInicio())
         {

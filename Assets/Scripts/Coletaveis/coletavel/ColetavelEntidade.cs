@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 public class ColetavelEntidade 
 {
     public enum FAMILIA { DEFAULTS, FRUTAS, }
@@ -7,10 +5,7 @@ public class ColetavelEntidade
     public int id { get; private set; }//Deve ser unico
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }//Deve ser unico
-    public FAMILIA familia { get; private set; }
-
-    private Dictionary<int, ColetavelEntidade> dicionarioDeIds;
-    private Dictionary<string, ColetavelEntidade> dicionarioDeSprites;
+    public FAMILIA familia { get; private set; }    
 
     public ColetavelEntidade(int id, string nome, string nomeSprite, FAMILIA familia)
     {
