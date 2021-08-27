@@ -2,34 +2,38 @@ using UnityEngine;
 
 public class BotoesPowerUpArcoIris : ArcoIrisConjunto
 {
-    private BotaoPowerUp[] btnsPowerUp;
+    private GlowBotaoPowerUp[] glowsBtns;
 
     public BotoesPowerUpArcoIris(BotaoPowerUp[] btnsPowerUp)
     {
-        this.btnsPowerUp = btnsPowerUp;
+        glowsBtns = new GlowBotaoPowerUp[btnsPowerUp.Length];
+        for(int contador = 0; contador < btnsPowerUp.Length; contador++)
+        {
+            glowsBtns[contador] = btnsPowerUp[contador].glow;
+        }
     }
 
     public void desligar()
     {
-        for(int contador = 0; contador < btnsPowerUp.Length; contador++)
+        for(int contador = 0; contador < glowsBtns.Length; contador++)
         {
-            btnsPowerUp[contador].desligarGlow();
+            glowsBtns[contador].desligarGlow();
         }
     }
 
     public void ligar()
     {
-        for (int contador = 0; contador < btnsPowerUp.Length; contador++)
+        for (int contador = 0; contador < glowsBtns.Length; contador++)
         {
-            btnsPowerUp[contador].ligarGlow();
+            glowsBtns[contador].ligarGlow();
         }
     }
 
     public void passarCor(Color cor)
     {     
-        for (int contador = 0; contador < btnsPowerUp.Length; contador++)
+        for (int contador = 0; contador < glowsBtns.Length; contador++)
         {
-            btnsPowerUp[contador].passarCorDoMaterial(cor);
+            glowsBtns[contador].passarCorDoMaterial(cor);
         }
     }
 }

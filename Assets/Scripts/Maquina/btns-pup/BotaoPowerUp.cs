@@ -5,8 +5,8 @@ public class BotaoPowerUp : Draggavel
     private bool isDraggavel;
     public bool hasPowerUp { get; private set; }
     
+    public GlowBotaoPowerUp glow { get; private set; }
     private AparenciaBotaoPowerUp aparencia;
-    private GlowBotaoPowerUp glow;
 
     private AcaoDragPowerUp acaoDrag;
     private AcaoBotaoPowerUp acaoBtnPowerUp;
@@ -91,23 +91,7 @@ public class BotaoPowerUp : Draggavel
     public bool isDragValido(Vector2 posicao)
     {
         return isDraggavel && hasPowerUp && acaoDrag.isPosicaoDentroAreaBotao(posicao);
-    }
-
-    public void ligarGlow()
-    {
-        glow.ligarGlow();
-    }
-
-    public void desligarGlow()
-    {
-        glow.desligarGlow();
-    }
-
-    public void passarCorDoMaterial(Color cor)
-    {
-        //Debug.Log("Botao recebendo cor");
-        glow.passarCorDoMaterial(cor);
-    }
+    }           
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
     public void prepararDraggagem(Vector3 posInicialDrag)
