@@ -16,12 +16,7 @@ public abstract class AbstractLevel
 
     public abstract int[,] getArrayDeColetaveis();
 
-    public virtual int[,] getArrayDeColetaveisSub()
-    {
-        return null;
-    }
-
-    public abstract PowerUpEntidade.TIPO[] getPowerUpsParaBotoesMaquina();
+    public virtual int[,] getArrayDeColetaveisSub(){return null;}    
 
     public abstract TipoContagemTempoDto getTempoContagem();
 
