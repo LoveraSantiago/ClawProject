@@ -2,21 +2,20 @@ using UnityEngine;
 
 public class BotaoPowerUp : Draggavel
 {
-    private static MaterialGlow materialGlowGeral;
-    private static MaterialGlow materialGlowIndividual;
-
     private bool isDraggavel;
     public bool hasPowerUp { get; private set; }
     
     private AparenciaBotaoPowerUp aparencia;
+    private GlowBotaoPowerUp glow;
+
     private AcaoDragPowerUp acaoDrag;
     private AcaoBotaoPowerUp acaoBtnPowerUp;
 
     public BotaoPowerUp(BotaoPowerUpDto botaoDto)
     {
-        aparencia = new AparenciaBotaoPowerUp(botaoDto, materialGlowGeral);
+        aparencia = new AparenciaBotaoPowerUp(botaoDto);
         acaoDrag  = new AcaoDragPowerUp(botaoDto);
-
+        glow   = new GlowBotaoPowerUp(botaoDto.SprEfeito);
         isDraggavel = false;        
     }
 
@@ -25,7 +24,7 @@ public class BotaoPowerUp : Draggavel
         aparencia.colorirBotao();
         if (hasPowerUp)
         {
-            aparencia.mudarParaMaterialAcionado(materialGlowIndividual);            
+            glow.mudarParaMaterialIndividual();
             controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
             acaoBtnPowerUp.acionar();
@@ -46,7 +45,7 @@ public class BotaoPowerUp : Draggavel
     {
         aparencia.voltarCorOriginalBotao();
         aparencia.limparImg();
-        aparencia.mudarParaMaterialArcoIris(materialGlowGeral);        
+        glow.mudarParaMaterialArcoIris();
     }
 
     public void receberCorLevel(string corBotao, string corDentro, string corContorno)
@@ -96,18 +95,18 @@ public class BotaoPowerUp : Draggavel
 
     public void ligarGlow()
     {
-        aparencia.ligarGlow(materialGlowIndividual);        
+        glow.ligarGlow();
     }
 
     public void desligarGlow()
     {
-        aparencia.desligarGlow();
+        glow.desligarGlow();
     }
 
     public void passarCorDoMaterial(Color cor)
     {
         //Debug.Log("Botao recebendo cor");
-        aparencia.passarCorDoMaterial(materialGlowIndividual, cor);        
+        glow.passarCorDoMaterial(cor);
     }
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
@@ -133,7 +132,7 @@ public class BotaoPowerUp : Draggavel
     {
         AparenciaBotaoPowerUp.configurarSpriteBordas(spritesBordas);
         AcaoDragPowerUp.configurarAreaDraggavel(areaDraggavel);
-        materialGlowGeral      = materialGlowGeralArg;
-        materialGlowIndividual = materialIndividualArg;
+
+        GlowBotaoPowerUp.configurar(materialGlowGeralArg, materialIndividualArg);
     }
 }
