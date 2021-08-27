@@ -8,9 +8,7 @@ public class MainGameScene : MonoBehaviour,
     [SerializeField] private LevelFlowManager.LEVEL level;
     [Space(5)]
     [SerializeField] private MainDto mainDto;            
-    [Space(5)]
-    [SerializeField] private CameraShakeDto camShakeDto;
-    [Space(5)]
+    [Space(5)]    
     [SerializeField] private ParticulasDto particulasDto;
     [Space(5)]
     [SerializeField] private PowerUpDto powerUpDto;
@@ -116,7 +114,7 @@ public class MainGameScene : MonoBehaviour,
 
     private void configurandoEventos()
     {
-        AbstractShake.configurar(camShakeDto);
+        AbstractShake.configurar(mainDto.CamShakeDto);
     }
 
     private void startLaizy()
