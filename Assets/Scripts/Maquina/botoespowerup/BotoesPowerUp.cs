@@ -4,8 +4,7 @@ public class BotoesPowerUp
 {
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
-
-    private DistribuidorParaBotoesPowerUp distribuidor;
+    
     private ControleAcionamentoPowerUp controlePup;
 
     private Draggavel dragavelAtual;
@@ -18,9 +17,8 @@ public class BotoesPowerUp
         BotaoPowerUp.configurar(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.AreaDraggavel, matGeral, matIndiv);
 
         inicializarBotoes(btnsPowerUpsDto);
-        distribuidor = new DistribuidorParaBotoesPowerUp();
-        controlePup = new ControleAcionamentoPowerUp();
-
+        
+        controlePup   = new ControleAcionamentoPowerUp();
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
     }
@@ -35,8 +33,7 @@ public class BotoesPowerUp
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
-    {
-        distribuidor.distribuirArray(level.getPowerUpsParaBotoesMaquina(), btnsPowerUp);
+    {        
         new ColoridorBotoes().colorir(btnsPowerUp, level.getDicionarioDeCores());        
     }
 
@@ -83,8 +80,7 @@ public class BotoesPowerUp
     public void processarFimPowerUp()
     {
         controlePup.habilitarPowerUp();
-        btnAcionado.desclicar();
-        distribuidor.distribuirProxItem(btnsPowerUp);
+        btnAcionado.desclicar();        
     }
 
     public void desativarPowerUp()
