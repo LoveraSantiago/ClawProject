@@ -14,7 +14,7 @@ public class PupScene : MonoBehaviour
     [Space(5)]
     [SerializeField] private AllLabelsDto labelsDto;
     [Space(5)]
-    [SerializeField] private BottomBarDto bottomBarDto;  
+    [SerializeField] private BotaoBottomBarDto bottomBarDto;  
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class PupScene : MonoBehaviour
         configButtonBack(btnBack);
         BlocoImg blocoImg = new BlocoImg(blocoImgDto, this);
         AllLabels allLables = new AllLabels(labelsDto);
-        new BottomBar(bottomBarDto, this);
+        new BotaoBottomBar(bottomBarDto, this);
 
         new AcaoPUpEntidade()
             .configurarProdutor(blocoImg)

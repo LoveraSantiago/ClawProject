@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class BottomBarDto 
+public class BotaoBottomBarDto 
 {
     [SerializeField] private Animator animatorBottonBar;
     [SerializeField] private Button btnBottonBar;

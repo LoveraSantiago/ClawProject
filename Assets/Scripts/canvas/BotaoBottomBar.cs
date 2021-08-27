@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BottomBar 
+public class BotaoBottomBar 
 {
     private readonly int ANIM_SUBIR   = Animator.StringToHash("subir");
     private readonly int ANIM_DESCER  = Animator.StringToHash("descer");
@@ -14,7 +14,7 @@ public class BottomBar
     private Animator animator;
     private MonoBehaviour monoBehaviour;
 
-    public BottomBar(BottomBarDto bottomBarDto, MonoBehaviour monoBehaviour)
+    public BotaoBottomBar(BotaoBottomBarDto bottomBarDto, MonoBehaviour monoBehaviour)
     {
         bottomBarDto.BtnBottonBar.onClick.AddListener(()=> btnBottomPressionado());
         animator = bottomBarDto.AnimatorBottonBar;
