@@ -34,6 +34,10 @@ public class PupScene : MonoBehaviour
             .configurarProdutor(blocoImg)
             .adicionarConsumidor(allLables);
 
+        new AcaoPupIndice()
+            .configurarProdutor(scBottomBar)
+            .adicionarConsumidor(blocoImg);
+
         blocoImg.startLaizy();
     }   
 

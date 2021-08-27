@@ -38,4 +38,9 @@ public class ControlePupDoCanvas
         }
         return getPupAtual();
     }
+
+    public void irPupDoIndice(int indice)
+    {
+        indiceAtual = indice;
+    }
 }
