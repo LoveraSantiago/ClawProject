@@ -14,7 +14,9 @@ public class PupScene : MonoBehaviour
     [Space(5)]
     [SerializeField] private AllLabelsDto labelsDto;
     [Space(5)]
-    [SerializeField] private BotaoBottomBarDto bottomBarDto;  
+    [SerializeField] private BotaoBottomBarDto bottomBarDto;
+    [Space(5)]
+    [SerializeField] private ScrollBottomBarDto scrollBottonDto;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +24,11 @@ public class PupScene : MonoBehaviour
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
 
         configButtonBack(btnBack);
-        BlocoImg blocoImg = new BlocoImg(blocoImgDto, this);
-        AllLabels allLables = new AllLabels(labelsDto);
-        new BotaoBottomBar(bottomBarDto, this);
+
+        BlocoImg blocoImg           = new BlocoImg(blocoImgDto, this);
+        AllLabels allLables         = new AllLabels(labelsDto);
+        BotaoBottomBar btnBottomBar = new BotaoBottomBar(bottomBarDto, this);
+        ScrollBottomBar scBottomBar = new ScrollBottomBar(scrollBottonDto);
 
         new AcaoPUpEntidade()
             .configurarProdutor(blocoImg)
