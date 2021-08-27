@@ -14,6 +14,7 @@ public class ScrollBottomBar
             bindBox(contador, go, allPups[contador]);
         }
         bindBox(0, scrollBottomBarDto.BoxPup, allPups[0]);
+
         scrollBottomBarDto.RectTransfHorizontal.sizeDelta = new Vector2(300f * allPups.Length, 300f);
         scrollBottomBarDto.RectTransfHorizontal.localPosition = new Vector3(300f * allPups.Length, 0, 0);
     }
