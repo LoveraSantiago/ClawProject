@@ -1,23 +1,20 @@
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class ScrollBottomBar : AcaoPupIndice.ProdutorEvento
+public abstract class ScrollBottomBar
 {
-    private ProdutorDeEvento<int> produtorDeIndiceEscolhido;
+    protected BotaoBottomBar btnBottomBar;
 
     public ScrollBottomBar(ScrollBottomBarDto scrollBottomBarDto, MonoBehaviour monoBehaviour)
     {
-        BotaoBottomBar btnBottomBar = new BotaoBottomBar(scrollBottomBarDto.BtnBottomBarDto, monoBehaviour);
+        btnBottomBar = new BotaoBottomBar(scrollBottomBarDto.BtnBottomBarDto, monoBehaviour);
 
         PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
         criarBoxes(scrollBottomBarDto, allPups);
 
         scrollBottomBarDto.RectTransfHorizontal.sizeDelta = new Vector2(300f * allPups.Length, 300f);
-        scrollBottomBarDto.RectTransfHorizontal.localPosition = new Vector3(300f * allPups.Length, 0, 0);
-
-        produtorDeIndiceEscolhido = new ProdutorDeEvento<int>();
+        scrollBottomBarDto.RectTransfHorizontal.localPosition = new Vector3(300f * allPups.Length, 0, 0);        
     }
 
     private void criarBoxes(ScrollBottomBarDto scrollBottomBarDto, PowerUpEntidade[] allPups)
@@ -41,14 +38,5 @@ public class ScrollBottomBar : AcaoPupIndice.ProdutorEvento
         btnIt.onClick.AddListener(() => cliqueAcionado());
     }
 
-    private void cliqueAcionado()
-    {
-        string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;
-        produtorDeIndiceEscolhido.produziuEvento(int.Parse(nomeBtnSelecionado));
-    }
-
-    ProdutorDeEvento<int> AcaoPupIndice.ProdutorEvento.getProdutorDeEventoColetado()
-    {
-        return produtorDeIndiceEscolhido;
-    }
+    protected abstract void cliqueAcionado();   
 }

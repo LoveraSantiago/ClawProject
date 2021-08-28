@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class PupScene : MonoBehaviour
@@ -24,8 +22,8 @@ public class PupScene : MonoBehaviour
         configButtonBack(btnBack);
 
         BlocoImg blocoImg           = new BlocoImg(blocoImgDto, this);
-        AllLabels allLables         = new AllLabels(labelsDto);        
-        ScrollBottomBar scBottomBar = new ScrollBottomBar(scrollBottonDto, this);
+        AllLabels allLables         = new AllLabels(labelsDto);
+        ScrollBottomBarPupScene scBottomBar = new ScrollBottomBarPupScene(scrollBottonDto, this);
 
         new AcaoPUpEntidade()
             .configurarProdutor(blocoImg)
