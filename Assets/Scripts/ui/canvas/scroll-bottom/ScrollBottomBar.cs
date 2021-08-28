@@ -9,7 +9,7 @@ public abstract class ScrollBottomBar
     public ScrollBottomBar(GameObject prefabBottomBar, MonoBehaviour monoBehaviour)
     {
         PrefabScrollBottomBarDto prefabDto = prefabBottomBar.GetComponent<PrefabScrollBottomBarDto>();
-        btnBottomBar = new BotaoBottomBar(prefabDto.BtnBottomBarDto, monoBehaviour);
+        btnBottomBar = new BotaoBottomBar(prefabDto.BtnBottomBarDto, this, monoBehaviour);
 
         PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
         criarBoxes(prefabDto.ScrollBottomBarDto, allPups);
@@ -39,5 +39,7 @@ public abstract class ScrollBottomBar
         btnIt.onClick.AddListener(() => cliqueAcionado());
     }
 
-    protected abstract void cliqueAcionado();   
+    protected abstract void cliqueAcionado();
+
+    public virtual void posClique() { }
 }

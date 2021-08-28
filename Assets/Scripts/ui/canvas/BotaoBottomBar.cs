@@ -14,9 +14,14 @@ public class BotaoBottomBar
     private Animator animator;
     private MonoBehaviour monoBehaviour;
 
-    public BotaoBottomBar(BotaoBottomBarDto bottomBarDto, MonoBehaviour monoBehaviour)
+    public BotaoBottomBar(
+        BotaoBottomBarDto bottomBarDto, ScrollBottomBar scrollBottomBar, MonoBehaviour monoBehaviour)
     {
-        bottomBarDto.BtnBottonBar.onClick.AddListener(()=> btnBottomPressionado());
+        bottomBarDto.BtnBottonBar.onClick.AddListener(()=> {
+                btnBottomPressionado();
+                scrollBottomBar.posClique();
+            });
+
         animator = bottomBarDto.AnimatorBottonBar;
         animacaoAtual = ANIM_EMBAIXO;
 
