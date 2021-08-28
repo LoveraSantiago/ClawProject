@@ -115,13 +115,13 @@ public class BotaoPowerUp : Draggavel
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 
-    public static void configurar(
-        Sprite[] spritesBordas, GameObject areaDraggavel, 
-        MaterialGlow materialGlowGeralArg, MaterialGlow materialIndividualArg)
+    public static void configurar(BotoesPowerUpDto btnsPowerUpsDto)
     {
-        AparenciaBotaoPowerUp.configurarSpriteBordas(spritesBordas);
-        AcaoDragPowerUp.configurarAreaDraggavel(areaDraggavel);
+        AparenciaBotaoPowerUp.configurarSpriteBordas(btnsPowerUpsDto.BordasBtns);
+        AcaoDragPowerUp.configurarAreaDraggavel(btnsPowerUpsDto.AreaDraggavel);
 
-        GlowBotaoPowerUp.configurar(materialGlowGeralArg, materialIndividualArg);
+        GlowBotaoPowerUp.configurar(
+            btnsPowerUpsDto.MaterialGlowGeral, 
+            btnsPowerUpsDto.MaterialGlowIndividual);
     }
 }

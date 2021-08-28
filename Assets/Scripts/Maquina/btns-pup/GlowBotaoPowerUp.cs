@@ -55,9 +55,10 @@ public class GlowBotaoPowerUp
         sprEfeito.material = materialGlow.material;
     }
 
-    public static void configurar(MaterialGlow materialGlowGeralArg, MaterialGlow materialIndividualArg)
+    public static void configurar(
+        Material materialGeral, Material materialIndividual)
     {
-        materialGlowGeral = materialGlowGeralArg;
-        materialGlowIndividual = materialIndividualArg;
+        materialGlowGeral = new MaterialGlow(materialGeral);
+        materialGlowIndividual = new MaterialGlow(materialIndividual);        
     }
 }

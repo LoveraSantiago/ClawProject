@@ -11,13 +11,9 @@ public class BotoesPowerUp
     private Draggavel dragavelVazio;
 
     public BotoesPowerUp(BotoesPowerUpDto btnsPowerUpsDto)
-    {
-        MaterialGlow matGeral = new MaterialGlow(btnsPowerUpsDto.MaterialGlowGeral);
-        MaterialGlow matIndiv = new MaterialGlow(btnsPowerUpsDto.MaterialGlowIndividual);
-        BotaoPowerUp.configurar(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.AreaDraggavel, matGeral, matIndiv);
-
-        inicializarBotoes(btnsPowerUpsDto);
-        
+    {        
+        BotaoPowerUp.configurar(btnsPowerUpsDto);
+        inicializarBotoes(btnsPowerUpsDto);        
         controlePup   = new ControleAcionamentoPowerUp();
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
