@@ -13,7 +13,7 @@ public class CameraShake
 
     private static void configurarPerlim(CameraDto cameraShakeDto)
     {
-        perlim = cameraShakeDto.CineMachine.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        perlim = cameraShakeDto.VirtualCam1.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         perlim.m_PivotOffset = new Vector3(0, 0, 0);
         perlim.m_AmplitudeGain = 0;
         perlim.m_FrequencyGain = 0;

@@ -1142,12 +1142,10 @@ MonoBehaviour:
         quadMenor: {fileID: 144916182}
         furoCima: {fileID: 1707423591}
         furoBaixo: {fileID: 1467999611}
-    camShakeDto:
-      cineMachine: {fileID: 250677996}
-      noise6d: {fileID: 11400000, guid: a31f2eaada77af94689f0b0d7e781fb6, type: 2}
     cameraDto:
-      cineMachine: {fileID: 250677996}
       noise6d: {fileID: 11400000, guid: a31f2eaada77af94689f0b0d7e781fb6, type: 2}
+      virtualCam1: {fileID: 250677996}
+      virtualCam2: {fileID: 1162031990}
   particulasDto:
     velocidadeMovimentacao: 4.5
     destinoParticulas: {fileID: 6406990385049082668}
