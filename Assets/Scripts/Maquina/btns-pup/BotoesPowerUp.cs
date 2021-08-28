@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class BotoesPowerUp 
+public class BotoesPowerUp : AcaoPUpEscolha.ProdutorEvento
 {
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
-    
+
+    private ProdutorDeEvento<int> produtorDeEventoEscolhaPup;
     private ControleAcionamentoPowerUp controlePup;
 
     private Draggavel dragavelAtual;
@@ -13,7 +14,8 @@ public class BotoesPowerUp
     public BotoesPowerUp(BotoesPowerUpDto btnsPowerUpsDto)
     {        
         BotaoPowerUp.configurar(btnsPowerUpsDto);
-        inicializarBotoes(btnsPowerUpsDto);        
+        inicializarBotoes(btnsPowerUpsDto);
+        produtorDeEventoEscolhaPup = new ProdutorDeEvento<int>();
         controlePup   = new ControleAcionamentoPowerUp();
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
@@ -47,7 +49,7 @@ public class BotoesPowerUp
             {
                 if (btnsPowerUp[contador].isCliqueValido(controlePup, posicaoTap))
                 {
-                    acionarBotao(btnsPowerUp[contador]);
+                    acionarBotao(contador);
                     break;
                 }
             }
@@ -99,9 +101,10 @@ public class BotoesPowerUp
         controlePup.habilitarPowerUpPosDisplay();
     }
 
-    private void acionarBotao(BotaoPowerUp btn)
-    {       
-        btn.clicar(controlePup);
+    private void acionarBotao(int indice)
+    {
+        BotaoPowerUp btn = btnsPowerUp[indice];
+        btn.clicar(controlePup, produtorDeEventoEscolhaPup, indice);
         btnAcionado = btn;
     }   
 
@@ -130,5 +133,10 @@ public class BotoesPowerUp
             }
             dragavelAtual = dragavelVazio;
         }
-    }   
+    }
+
+    ProdutorDeEvento<int> AcaoPUpEscolha.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        return produtorDeEventoEscolhaPup;
+    }
 }

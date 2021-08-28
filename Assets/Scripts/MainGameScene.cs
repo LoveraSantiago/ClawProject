@@ -98,7 +98,11 @@ public class MainGameScene : MonoBehaviour,
             .configurarProdutor(powerUpManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(coletaveisManager);       
+            .adicionarConsumidor(coletaveisManager);
+
+        new AcaoPUpEscolha()
+            .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(cameraManager);
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)

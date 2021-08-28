@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetadoFim.ProdutorEvento,
+                              AcaoPUpEscolha.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,                                
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPUpInfo.ConsumidorEvento,                                                            
@@ -141,5 +142,10 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEventoColetado();
+    }
+
+    ProdutorDeEvento<int> AcaoPUpEscolha.ProdutorEvento.getProdutorDeEventoColetado()
+    {
+        return ((AcaoPUpEscolha.ProdutorEvento)botoesPowerUp).getProdutorDeEventoColetado();
     }
 }
