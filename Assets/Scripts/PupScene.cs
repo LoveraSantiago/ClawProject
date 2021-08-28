@@ -25,7 +25,7 @@ public class PupScene : MonoBehaviour
         AllLabels allLables         = new AllLabels(labelsDto);
         ScrollBottomBarPupScene scBottomBar = new ScrollBottomBarPupScene(prefabBottomBar, this);
 
-        new AcaoPUpEntidade()
+        new AcaoBlocoImgPUpAtual()
             .configurarProdutor(blocoImg)
             .adicionarConsumidor(allLables);
 
