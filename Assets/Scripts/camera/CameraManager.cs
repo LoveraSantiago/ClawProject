@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CameraManager 
 {
+    public CameraManager(CameraDto cameraDto)
+    {
+        AbstractShake.configurar(cameraDto);
+    }
+
     public static void forceAspectCameraAsRatio()
     {
         Camera.main.aspect = Utils.RATIO_SCREEN;

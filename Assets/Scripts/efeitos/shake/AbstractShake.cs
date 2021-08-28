@@ -4,10 +4,10 @@ using System.Collections;
 
 public abstract class AbstractShake 
 {
-    protected static CameraShakeDto cameraShakeDto;
+    protected static CameraDto cameraShakeDto;
     protected static CinemachineBasicMultiChannelPerlin perlim;
 
-    public static void configurar(CameraShakeDto cameraShakeDtoArg)
+    public static void configurar(CameraDto cameraShakeDtoArg)
     {
         cameraShakeDto = cameraShakeDtoArg;
         configurarPerlim();

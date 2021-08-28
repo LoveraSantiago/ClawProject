@@ -9,11 +9,11 @@ public class MainDto
     [SerializeField] private ColetaveisDto coletaveisDto;
     [Space(5)]
     [SerializeField] private MaquinaDto maquinaDto;
-    [Space(5)]
-    [SerializeField] private CameraShakeDto camShakeDto;
+    [Space(5)]    
+    [SerializeField] private CameraDto cameraDto;
 
     public GarraDto GarraDto { get { return garraDto; } }
     public ColetaveisDto ColetaveisDto { get { return coletaveisDto; } }
-    public MaquinaDto MaquinaDto { get { return maquinaDto; } }
-    public CameraShakeDto CamShakeDto { get { return camShakeDto; } }
+    public MaquinaDto MaquinaDto { get { return maquinaDto; } }    
+    public CameraDto CameraDto { get { return cameraDto;  } }
 }

@@ -41,8 +41,7 @@ public class MainGameScene : MonoBehaviour,
 
         configurandoManagers();
         configurandoLevel();
-        configurandoAcoes();
-        configurandoEventos();
+        configurandoAcoes();        
         startLaizy();
     }
 
@@ -55,7 +54,7 @@ public class MainGameScene : MonoBehaviour,
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);
         modalPontos       = new ModalPontos(modalPontosDto, this);
-        cameraManager     = new CameraManager();
+        cameraManager     = new CameraManager(mainDto.CameraDto);
     }
 
     private void configurandoLevel()
@@ -112,12 +111,7 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(modalPontos);
-    }
-
-    private void configurandoEventos()
-    {
-        AbstractShake.configurar(mainDto.CamShakeDto);
-    }
+    }   
 
     private void startLaizy()
     {
