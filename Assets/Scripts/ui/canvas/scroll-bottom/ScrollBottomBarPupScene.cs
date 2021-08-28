@@ -6,8 +6,8 @@ public class ScrollBottomBarPupScene : ScrollBottomBar,
 {
     private ProdutorDeEvento<int> produtorDeIndiceEscolhido;
 
-    public ScrollBottomBarPupScene(ScrollBottomBarDto scrollBottomBarDto, MonoBehaviour monoBehaviour)
-        : base(scrollBottomBarDto, monoBehaviour)
+    public ScrollBottomBarPupScene(GameObject prefabBottomBar, MonoBehaviour monoBehaviour)
+        : base(prefabBottomBar, monoBehaviour)
     {
         produtorDeIndiceEscolhido = new ProdutorDeEvento<int>();
     }

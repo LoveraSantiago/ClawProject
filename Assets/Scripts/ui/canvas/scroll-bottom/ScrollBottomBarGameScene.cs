@@ -3,8 +3,8 @@ using UnityEngine.EventSystems;
 
 public class ScrollBottomBarGameScene : ScrollBottomBar
 {
-    public ScrollBottomBarGameScene(ScrollBottomBarDto scrollBottomBarDto, MonoBehaviour monoBehaviour)
-       : base(scrollBottomBarDto, monoBehaviour)
+    public ScrollBottomBarGameScene(GameObject prefabBottomBar, MonoBehaviour monoBehaviour)
+       : base(prefabBottomBar, monoBehaviour)
     {
         
     }

@@ -10,9 +10,9 @@ public class PupScene : MonoBehaviour
     [SerializeField] private BlocoImgDto blocoImgDto;    
     [SerializeField] private GameObject prefabPowerUpDto;
     [Space(5)]
-    [SerializeField] private AllLabelsDto labelsDto;        
+    [SerializeField] private AllLabelsDto labelsDto;
     [Space(5)]
-    [SerializeField] private ScrollBottomBarDto scrollBottonDto;
+    [SerializeField] private GameObject prefabBottomBar;    
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class PupScene : MonoBehaviour
 
         BlocoImg blocoImg           = new BlocoImg(blocoImgDto, this);
         AllLabels allLables         = new AllLabels(labelsDto);
-        ScrollBottomBarPupScene scBottomBar = new ScrollBottomBarPupScene(scrollBottonDto, this);
+        ScrollBottomBarPupScene scBottomBar = new ScrollBottomBarPupScene(prefabBottomBar, this);
 
         new AcaoPUpEntidade()
             .configurarProdutor(blocoImg)
