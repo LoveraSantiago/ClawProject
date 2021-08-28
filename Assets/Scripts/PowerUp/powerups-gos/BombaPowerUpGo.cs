@@ -79,9 +79,9 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         processarExplosao();
 
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayExplosao);
-                
-        PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
-        explosaoShake.shake();
+
+        CameraShake cameraShake = new CameraShake();
+        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f, monoBehaviour);
         powerUpFinalizacao.preFinalizar();
         resetPup();
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayPosExplosao);

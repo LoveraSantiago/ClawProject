@@ -58,8 +58,8 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayExplosao);
 
         goExplosao.SetActive(false);
-        PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
-        explosaoShake.shake();
+        CameraShake cameraShake = new CameraShake();
+        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f, monoBehaviour);
         resetPup();
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayPosExplosao);
 

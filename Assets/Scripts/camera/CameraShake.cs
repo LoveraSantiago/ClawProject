@@ -2,7 +2,7 @@ using Cinemachine;
 using UnityEngine;
 using System.Collections;
 
-public abstract class CameraShake 
+public class CameraShake 
 {    
     protected static CinemachineBasicMultiChannelPerlin perlim;
 
@@ -20,15 +20,34 @@ public abstract class CameraShake
         perlim.m_NoiseProfile = cameraShakeDto.Noise6d;
     }
 
-    public abstract void shake();
+    //TODO refatorar muitos argumentos
+    public void shakeEDiminuir(
+        float amplitude, Vector3 offset, float ganhoFreq, float duracao, 
+        MonoBehaviour monoBehaviour)
+    {
+        perlim.m_PivotOffset = offset;
+        perlim.m_FrequencyGain = ganhoFreq;
+        perlim.m_AmplitudeGain = amplitude;
+        monoBehaviour.StartCoroutine(diminuirEfeito(amplitude, duracao));
+    }
 
-    protected IEnumerator pararEfeito(float duracao)
+    public void shakeEParar(
+        float amplitude, Vector3 offset, float ganhoFreq, float duracao,
+        MonoBehaviour monoBehaviour)
+    {
+        perlim.m_PivotOffset = offset;
+        perlim.m_FrequencyGain = ganhoFreq;
+        perlim.m_AmplitudeGain = amplitude;
+        monoBehaviour.StartCoroutine(pararEfeito(duracao));
+    }
+
+    private IEnumerator pararEfeito(float duracao)
     {
         yield return new WaitForSeconds(duracao);
         perlim.m_AmplitudeGain = 0;
     }
 
-    protected IEnumerator diminuirEfeito(float amplitude, float duracao)
+    private IEnumerator diminuirEfeito(float amplitude, float duracao)
     {
         float duracaoAtual = duracao;
         yield return new WaitForSeconds(duracao / 2);
