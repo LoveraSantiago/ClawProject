@@ -37,6 +37,7 @@ public class BotaoPowerUp : Draggavel
             Debug.Log("Btn clicado sem pup");
             glow.ligarGlow();
             Time.timeScale = 0;
+            controlePup.desabilitarPowerUp();
             produtorEventoEscolhaPup.produziuEvento(indice);
         }
     }
@@ -63,7 +64,20 @@ public class BotaoPowerUp : Draggavel
         aparencia.colorirBotaoFromLevel(corBotao, corDentro, corContorno);
     }
 
-    public void receberAcaoPowerUp(AcaoBotaoPowerUp acaoBtnPowerUp)
+    public void receberAcaoPowerUp(
+        ControleAcionamentoPowerUp controlePup, 
+        PowerUpEntidade powerUpEntidade)
+    {
+        Time.timeScale = 1;
+        controlePup.habilitarPowerUp();
+        glow.desligarGlow();
+        if(powerUpEntidade != null)
+        {
+            receberAcaoPowerUp(new PowerUpParaMaquina(powerUpEntidade));
+        }
+    }
+
+    private void receberAcaoPowerUp(AcaoBotaoPowerUp acaoBtnPowerUp)
     {
         this.acaoBtnPowerUp = acaoBtnPowerUp;
         if (acaoBtnPowerUp.isClicavel())

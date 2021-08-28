@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento
+public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento,
+                             AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento
 {
     private CameraDto cameraDto;
 
@@ -12,7 +13,12 @@ public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento
 
     void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
-        cameraDto.VirtualCam2.Priority = 2;   
+        cameraDto.VirtualCam2.Priority += 2;   
+    }
+
+    void AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    {
+        cameraDto.VirtualCam2.Priority -= 2;
     }
 
     public static void forceAspectCameraAsRatio()

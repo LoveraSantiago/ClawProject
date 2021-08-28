@@ -109,6 +109,11 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(cameraManager)
             .adicionarConsumidor(scrollBottomBar);
 
+        new AcaoBBarPupEscolhido<PowerUpBtnInfo>()
+            .configurarProdutor(scrollBottomBar)
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(cameraManager);
+
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(garraManager)            

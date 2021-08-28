@@ -6,7 +6,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,                                
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPUpAcionado.ConsumidorEvento,                                                            
-                              AcaoBoardElevadoFim.ConsumidorEvento
+                              AcaoBoardElevadoFim.ConsumidorEvento,
+                              AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento
 {    
     private PartesMaquinaDto partesDto;
 
@@ -134,6 +135,11 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
     }
 
+    void AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    {
+        ((AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
+    }
+
     ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return ((AcaoTempoEsgotado.ProdutorEvento)displayTimer).getProdutorDeEventoColetado();
@@ -147,5 +153,5 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return ((AcaoBotaoPUpVazio.ProdutorEvento)botoesPowerUp).getProdutorDeEventoColetado();
-    }
+    }   
 }

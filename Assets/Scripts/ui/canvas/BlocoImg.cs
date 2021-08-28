@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class BlocoImg : AcaoBlocoImgPUpAtual.ProdutorEvento,
-                        AcaoPupIndice.ConsumidorEvento
+                        AcaoBBarPupEscolhido<int>.ConsumidorEvento
 {
     private readonly int ANIM_IR_ESQUERDA  = Animator.StringToHash("irEsquerda");
     private readonly int ANIM_VIR_ESQUERDA = Animator.StringToHash("virDaEsquerda");
@@ -74,7 +74,7 @@ public class BlocoImg : AcaoBlocoImgPUpAtual.ProdutorEvento,
         produtorDeEvento.produziuEvento(pupEntidade);
     }
     
-    void AcaoPupIndice.ConsumidorEvento.consumirEvento(int evento)
+    void AcaoBBarPupEscolhido<int>.ConsumidorEvento.consumirEvento(int evento)
     {
         controlePups.irPupDoIndice(evento);
         irParaPupAtual();

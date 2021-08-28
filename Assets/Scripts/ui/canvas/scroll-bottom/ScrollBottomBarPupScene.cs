@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ScrollBottomBarPupScene : ScrollBottomBar,
-                                       AcaoPupIndice.ProdutorEvento
+                                       AcaoBBarPupEscolhido<int>.ProdutorEvento
 {
     private ProdutorDeEvento<int> produtorDeIndiceEscolhido;
 
@@ -19,7 +19,7 @@ public class ScrollBottomBarPupScene : ScrollBottomBar,
         btnBottomBar.btnBottomPressionado();
     }
 
-    ProdutorDeEvento<int> AcaoPupIndice.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<int> AcaoBBarPupEscolhido<int>.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeIndiceEscolhido;
     }

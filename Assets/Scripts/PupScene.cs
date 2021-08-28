@@ -29,7 +29,7 @@ public class PupScene : MonoBehaviour
             .configurarProdutor(blocoImg)
             .adicionarConsumidor(allLables);
 
-        new AcaoPupIndice()
+        new AcaoBBarPupEscolhido<int>()
             .configurarProdutor(scBottomBar)
             .adicionarConsumidor(blocoImg);
 

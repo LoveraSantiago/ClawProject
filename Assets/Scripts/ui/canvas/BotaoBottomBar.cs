@@ -29,13 +29,23 @@ public class BotaoBottomBar
         {
             if (isEstadoEmbaixo())
             {
-                monoBehaviour.StartCoroutine(coroutineAnimacao(ANIM_SUBIR, ANIM_EMCIMA));
+                subirBotao();
             }
             else if (isEstadoEmCima())
             {
-                monoBehaviour.StartCoroutine(coroutineAnimacao(ANIM_DESCER, ANIM_EMBAIXO));
+                descerBotao();
             }
         }
+    }
+
+    public void subirBotao()
+    {
+        monoBehaviour.StartCoroutine(coroutineAnimacao(ANIM_SUBIR, ANIM_EMCIMA));
+    }
+
+    public void descerBotao()
+    {
+        monoBehaviour.StartCoroutine(coroutineAnimacao(ANIM_DESCER, ANIM_EMBAIXO));
     }
 
     private bool isEstadoEmbaixo()
