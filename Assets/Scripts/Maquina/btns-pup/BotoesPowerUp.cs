@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BotoesPowerUp : AcaoPUpEscolha.ProdutorEvento
+public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento
 {
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
@@ -135,7 +135,7 @@ public class BotoesPowerUp : AcaoPUpEscolha.ProdutorEvento
         }
     }
 
-    ProdutorDeEvento<int> AcaoPUpEscolha.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEventoColetado()
     {
         return produtorDeEventoEscolhaPup;
     }

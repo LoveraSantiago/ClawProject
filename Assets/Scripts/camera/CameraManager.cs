@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraManager : AcaoPUpEscolha.ConsumidorEvento
+public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento
 {
     private CameraDto cameraDto;
 
@@ -10,7 +10,7 @@ public class CameraManager : AcaoPUpEscolha.ConsumidorEvento
         this.cameraDto = cameraDto;
     }
 
-    void AcaoPUpEscolha.ConsumidorEvento.consumirEvento(int evento)
+    void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
         cameraDto.VirtualCam2.Priority = 2;   
     }

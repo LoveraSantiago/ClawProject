@@ -104,7 +104,7 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(coletaveisManager);
 
-        new AcaoPUpEscolha()
+        new AcaoBotaoPUpVazio()
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(cameraManager)
             .adicionarConsumidor(scrollBottomBar);

@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine;
 
 public class ScrollBottomBarGameScene : ScrollBottomBar,
-                                        AcaoPUpEscolha.ConsumidorEvento
+                                        AcaoBotaoPUpVazio.ConsumidorEvento
 {
     private MonoBehaviour monoBehaviour;
     private GameObject prefabBottomBar;
@@ -21,7 +21,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         
     }
 
-    void AcaoPUpEscolha.ConsumidorEvento.consumirEvento(int evento)
+    void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
         monoBehaviour.StartCoroutine(mostrarBottomBar());
     }    
