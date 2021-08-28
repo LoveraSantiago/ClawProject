@@ -5,8 +5,8 @@ public class BotaoPowerUp : Draggavel
     private bool isDraggavel;
     public bool hasPowerUp { get; private set; }
     
-    public GlowBotaoPowerUp glow { get; private set; }
     private AparenciaBotaoPowerUp aparencia;
+    public GlowBotaoPowerUp glow { get; private set; }
 
     private AcaoDragPowerUp acaoDrag;
     private AcaoBotaoPowerUp acaoBtnPowerUp;
@@ -21,13 +21,19 @@ public class BotaoPowerUp : Draggavel
 
     public void clicar(ControleAcionamentoPowerUp controlePup)
     {
-        aparencia.colorirBotao();
+        glow.mudarParaMaterialIndividual();
         if (hasPowerUp)
         {
-            glow.mudarParaMaterialIndividual();
+            aparencia.colorirBotao();
             controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
             acaoBtnPowerUp.acionar();
+        }
+        else
+        {
+            Debug.Log("Btn clicado sem pup");
+            glow.ligarGlow();
+            Time.timeScale = 0;
         }
     }
 
@@ -82,8 +88,7 @@ public class BotaoPowerUp : Draggavel
 
     public bool isCliqueValido(ControleAcionamentoPowerUp controleAcionamento, Vector2 posicao)
     {
-        return !isDraggavel
-               && hasPowerUp
+        return !isDraggavel            
                && controleAcionamento.podeAcionarPupBtn(acaoBtnPowerUp)
                && acaoDrag.isPosicaoDentroAreaBotao(posicao);
     }
