@@ -37,7 +37,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
     private IEnumerator esconderBottomBar()
     {
         btnBottomBar.descerBotao();
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.5f);
         prefabBottomBar.SetActive(false);
 
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;
@@ -50,7 +50,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
 
     private IEnumerator mostrarBottomBar()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.5f);
         prefabBottomBar.SetActive(true);
         btnBottomBar.subirBotao();
     }
