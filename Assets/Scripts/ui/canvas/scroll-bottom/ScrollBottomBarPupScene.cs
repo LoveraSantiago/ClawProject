@@ -16,6 +16,7 @@ public class ScrollBottomBarPupScene : ScrollBottomBar,
     {
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;
         produtorDeIndiceEscolhido.produziuEvento(int.Parse(nomeBtnSelecionado));
+        btnBottomBar.btnBottomPressionado();
     }
 
     ProdutorDeEvento<int> AcaoPupIndice.ProdutorEvento.getProdutorDeEventoColetado()
