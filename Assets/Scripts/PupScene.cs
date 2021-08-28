@@ -12,9 +12,7 @@ public class PupScene : MonoBehaviour
     [SerializeField] private BlocoImgDto blocoImgDto;    
     [SerializeField] private GameObject prefabPowerUpDto;
     [Space(5)]
-    [SerializeField] private AllLabelsDto labelsDto;
-    [Space(5)]
-    [SerializeField] private BotaoBottomBarDto bottomBarDto;
+    [SerializeField] private AllLabelsDto labelsDto;        
     [Space(5)]
     [SerializeField] private ScrollBottomBarDto scrollBottonDto;
 
@@ -27,7 +25,7 @@ public class PupScene : MonoBehaviour
 
         BlocoImg blocoImg           = new BlocoImg(blocoImgDto, this);
         AllLabels allLables         = new AllLabels(labelsDto);        
-        ScrollBottomBar scBottomBar = new ScrollBottomBar(scrollBottonDto, bottomBarDto, this);
+        ScrollBottomBar scBottomBar = new ScrollBottomBar(scrollBottonDto, this);
 
         new AcaoPUpEntidade()
             .configurarProdutor(blocoImg)
