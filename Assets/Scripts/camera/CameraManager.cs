@@ -6,7 +6,7 @@ public class CameraManager
 {
     public CameraManager(CameraDto cameraDto)
     {
-        AbstractShake.configurar(cameraDto);
+        CameraShake.configurar(cameraDto);
     }
 
     public static void forceAspectCameraAsRatio()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GrandeExplosaoShake : AbstractShake
+public class GrandeExplosaoShake : CameraShake
 {
     private MonoBehaviour monoBehaviour;
 

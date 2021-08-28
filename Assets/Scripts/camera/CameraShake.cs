@@ -2,18 +2,16 @@ using Cinemachine;
 using UnityEngine;
 using System.Collections;
 
-public abstract class AbstractShake 
-{
-    protected static CameraDto cameraShakeDto;
+public abstract class CameraShake 
+{    
     protected static CinemachineBasicMultiChannelPerlin perlim;
 
-    public static void configurar(CameraDto cameraShakeDtoArg)
-    {
-        cameraShakeDto = cameraShakeDtoArg;
-        configurarPerlim();
+    public static void configurar(CameraDto cameraShakeDto)
+    {        
+        configurarPerlim(cameraShakeDto);
     }
 
-    private static void configurarPerlim()
+    private static void configurarPerlim(CameraDto cameraShakeDto)
     {
         perlim = cameraShakeDto.CineMachine.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         perlim.m_PivotOffset = new Vector3(0, 0, 0);
