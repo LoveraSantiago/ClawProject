@@ -20,6 +20,7 @@ public class MainGameScene : MonoBehaviour,
     private MaquinaManager    maquinaManager;
     private PowerUpManager    powerUpManager;
     private ColetaveisManager coletaveisManager;
+    private CameraManager     cameraManager;
 
     private InputGame inputGame;
     private EfeitoColetado   efeitoColetado;
@@ -36,7 +37,7 @@ public class MainGameScene : MonoBehaviour,
 
     void Start()
     {
-        Camera.main.aspect = Utils.RATIO_SCREEN;        
+        CameraManager.forceAspectCameraAsRatio();
 
         configurandoManagers();
         configurandoLevel();
@@ -54,6 +55,7 @@ public class MainGameScene : MonoBehaviour,
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);
         modalPontos       = new ModalPontos(modalPontosDto, this);
+        cameraManager     = new CameraManager();
     }
 
     private void configurandoLevel()
