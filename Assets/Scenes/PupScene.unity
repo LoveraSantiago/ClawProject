@@ -2256,10 +2256,10 @@ MonoBehaviour:
     lblPup: {fileID: 2048214938}
     lblDescCurta: {fileID: 1559100285}
     lblExplicacao: {fileID: 1059423808}
-  bottomBarDto:
-    animatorBottonBar: {fileID: 513783663}
-    btnBottonBar: {fileID: 294613795}
   scrollBottonDto:
+    btnBottomBarDto:
+      animatorBottonBar: {fileID: 513783663}
+      btnBottonBar: {fileID: 294613795}
     boxPup: {fileID: 871085583}
     rectTransfHorizontal: {fileID: 1748351188}
     horizontalGroup: {fileID: 1748351192}
