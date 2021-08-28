@@ -36,7 +36,7 @@ public class BotaoPowerUp : Draggavel
         {
             Debug.Log("Btn clicado sem pup");
             glow.ligarGlow();
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
             produtorEventoEscolhaPup.produziuEvento(indice);
         }
     }

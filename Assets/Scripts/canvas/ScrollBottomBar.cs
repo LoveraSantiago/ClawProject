@@ -7,8 +7,10 @@ public class ScrollBottomBar : AcaoPupIndice.ProdutorEvento
 {
     private ProdutorDeEvento<int> produtorDeIndiceEscolhido;
 
-    public ScrollBottomBar(ScrollBottomBarDto scrollBottomBarDto)
+    public ScrollBottomBar(ScrollBottomBarDto scrollBottomBarDto, BotaoBottomBarDto bottomBarDto, MonoBehaviour monoBehaviour)
     {
+        BotaoBottomBar btnBottomBar = new BotaoBottomBar(bottomBarDto, monoBehaviour);
+
         PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
         criarBoxes(scrollBottomBarDto, allPups);
 

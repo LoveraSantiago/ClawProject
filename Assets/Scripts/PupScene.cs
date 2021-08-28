@@ -26,9 +26,8 @@ public class PupScene : MonoBehaviour
         configButtonBack(btnBack);
 
         BlocoImg blocoImg           = new BlocoImg(blocoImgDto, this);
-        AllLabels allLables         = new AllLabels(labelsDto);
-        BotaoBottomBar btnBottomBar = new BotaoBottomBar(bottomBarDto, this);
-        ScrollBottomBar scBottomBar = new ScrollBottomBar(scrollBottonDto);
+        AllLabels allLables         = new AllLabels(labelsDto);        
+        ScrollBottomBar scBottomBar = new ScrollBottomBar(scrollBottonDto, bottomBarDto, this);
 
         new AcaoPUpEntidade()
             .configurarProdutor(blocoImg)
