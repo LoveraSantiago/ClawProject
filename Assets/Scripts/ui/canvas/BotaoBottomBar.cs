@@ -52,7 +52,7 @@ public class BotaoBottomBar
     {
         animacaoEmAndamento = true;
         animator.Play(animacaoInicio);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSecondsRealtime(1.0f);
         animator.Play(animacaoFim);
         animacaoEmAndamento = false;
 

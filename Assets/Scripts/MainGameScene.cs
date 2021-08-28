@@ -14,6 +14,8 @@ public class MainGameScene : MonoBehaviour,
     [SerializeField] private PowerUpDto powerUpDto;
     [Space(5)]
     [SerializeField] private ModalPontosDto modalPontosDto;
+    [Space(5)]
+    [SerializeField] private GameObject prefabBottomBar;
 
     private ModalPontos       modalPontos;
     private GarraManager      garraManager;
@@ -21,6 +23,7 @@ public class MainGameScene : MonoBehaviour,
     private PowerUpManager    powerUpManager;
     private ColetaveisManager coletaveisManager;
     private CameraManager     cameraManager;
+    private ScrollBottomBarGameScene scrollBottomBar;
 
     private InputGame inputGame;
     private EfeitoColetado   efeitoColetado;
@@ -55,6 +58,7 @@ public class MainGameScene : MonoBehaviour,
         powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);
         modalPontos       = new ModalPontos(modalPontosDto, this);
         cameraManager     = new CameraManager(mainDto.CameraDto);
+        scrollBottomBar   = new ScrollBottomBarGameScene(prefabBottomBar, this);
     }
 
     private void configurandoLevel()
@@ -102,7 +106,8 @@ public class MainGameScene : MonoBehaviour,
 
         new AcaoPUpEscolha()
             .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(cameraManager);
+            .adicionarConsumidor(cameraManager)
+            .adicionarConsumidor(scrollBottomBar);
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)

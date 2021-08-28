@@ -1200,6 +1200,7 @@ MonoBehaviour:
     textoPontos: {fileID: 1473191375}
     textoNivel: {fileID: 376184029}
     goModalPontos: {fileID: 543390433}
+  prefabBottomBar: {fileID: 1411617376}
 --- !u!61 &491158116
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6872,19 +6873,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7059477540112635565, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7059477540112635565, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7059477540112635565, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7059477540112635565, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 7059477540732606420, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
       propertyPath: m_Pivot.x
@@ -6973,6 +6974,10 @@ PrefabInstance:
     - target: {fileID: 7059477540732606421, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
       propertyPath: m_Name
       value: sidebar-bottom
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059477540732606421, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
@@ -13457,6 +13462,11 @@ SpriteRenderer:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 9112315611017100307, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1411617376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7059477540732606421, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
+  m_PrefabInstance: {fileID: 669750091}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1417847845 stripped
 SpriteRenderer:

@@ -537,9 +537,6 @@ MonoBehaviour:
     animatorBottonBar: {fileID: 7059477540732606418}
     btnBottonBar: {fileID: 7059477540614165406}
   scrollBottomBarDto:
-    btnBottomBarDto:
-      animatorBottonBar: {fileID: 0}
-      btnBottonBar: {fileID: 0}
     boxPup: {fileID: 7059477540112635570}
     rectTransfHorizontal: {fileID: 7059477541578152041}
     horizontalGroup: {fileID: 7059477541578152037}
@@ -624,7 +621,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 0f4763b10551c894d9edcc4d0974440a, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
