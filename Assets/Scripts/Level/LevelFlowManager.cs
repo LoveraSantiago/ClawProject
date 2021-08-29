@@ -5,16 +5,17 @@ public class LevelFlowManager
 {
     public enum LEVEL
     {
-        HUM = 1,
+        HUM  = 1,
         DOIS = 2,
         TRES = 3,
+        PUP  = 999999999,
     }
 
     public static AbstractLevel getLevelByEnum(LEVEL level)
     {
         switch (level)
         {
-            case LEVEL.HUM: return new Level1();
+            case LEVEL.HUM : return new Level1();
             case LEVEL.DOIS: return new Level2();
             case LEVEL.TRES: return new Level3();
         }
