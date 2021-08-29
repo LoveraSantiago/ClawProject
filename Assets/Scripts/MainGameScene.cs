@@ -71,6 +71,7 @@ public class MainGameScene : MonoBehaviour,
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
         maquinaManager   .configuradoPeloLevel(levelEscolhido);
         modalPontos      .configurarLevel(levelEscolhido.getLevelName());
+        scrollManager    .configuradoPeloLevel(levelEscolhido);
     }
 
     private void configurandoAcoes()
@@ -133,6 +134,7 @@ public class MainGameScene : MonoBehaviour,
         coletaveisManager.start();
         garraManager.start();
         maquinaManager.start();
+        scrollManager.start();
     }
     
     void Update()

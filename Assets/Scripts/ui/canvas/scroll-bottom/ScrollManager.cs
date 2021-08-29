@@ -1,13 +1,34 @@
 using UnityEngine;
 
-public class ScrollManager : AcaoBotaoPUpVazio.ConsumidorEvento,
-                             AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento,
+public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento,
+                             AcaoBotaoPUpVazio.ConsumidorEvento
 {
+    private bool isLevelPup;
     private ScrollBottomBarGameScene scrollBottomBar;
 
     public ScrollManager(GameObject prefabBottomBar, MonoBehaviour monoBehaviour)
     {
         scrollBottomBar = new ScrollBottomBarGameScene(prefabBottomBar, monoBehaviour);
+    }
+
+    public void configuradoPeloLevel(AbstractLevel level)
+    {
+        if(level.getTipoGame() == AbstractLevel.TIPO_GAME.PUP)
+        {
+            isLevelPup = true;
+        }
+    }
+
+    public void start()
+    {
+        if (isLevelPup)
+        {
+            int indicePup = PlayerPrefsUtils.recuperarIndicePup();
+            for(int contador = 0; contador < 4; contador++)
+            {
+                scrollBottomBar.simularCliqueBoxAcionado(contador, indicePup);
+            }
+        }
     }
 
     void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)

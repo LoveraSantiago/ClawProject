@@ -34,6 +34,15 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         monoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));       
     }
 
+    public void simularCliqueBoxAcionado(int indiceBtn, int indicePup)
+    {
+        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
+        PowerUpEntidade pupEscolhido = allPups[indicePup];
+        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
+
+        produtorDeEvento.produziuEvento(pupBtnInfo);
+    }
+
     public override void posCliqueBtnClose()
     {
         PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, null);
