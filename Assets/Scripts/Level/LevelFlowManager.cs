@@ -18,6 +18,7 @@ public class LevelFlowManager
             case LEVEL.HUM : return new Level1();
             case LEVEL.DOIS: return new Level2();
             case LEVEL.TRES: return new Level3();
+            case LEVEL.PUP: return new LevelPup();
         }
         Debug.LogError("NAO FOI CRIADO LEVEL PARA ESSE ENUM");
         return null;
