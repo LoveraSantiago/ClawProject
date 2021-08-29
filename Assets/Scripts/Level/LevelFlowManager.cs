@@ -31,6 +31,7 @@ public class LevelFlowManager
             case "1": return getLevelByEnum(LEVEL.HUM);
             case "2": return getLevelByEnum(LEVEL.DOIS);
             case "3": return getLevelByEnum(LEVEL.TRES);
+            case "999999999": return getLevelByEnum(LEVEL.PUP);
         }
         return null;
     }
