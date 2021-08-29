@@ -36,10 +36,10 @@ public abstract class ScrollBottomBar
         Button btnIt = box.transform.Find("btn").GetComponent<Button>();
         btnIt.name = indiceName.ToString();
         btnIt.image.sprite = pupEntidade.sprPowerUp;
-        btnIt.onClick.AddListener(() => cliqueAcionado());
+        btnIt.onClick.AddListener(() => cliqueBoxAcionado());
     }
 
-    protected abstract void cliqueAcionado();
+    protected abstract void cliqueBoxAcionado();
 
-    public virtual void posClique() { }
+    public virtual void posCliqueBtnClose() { }
 }

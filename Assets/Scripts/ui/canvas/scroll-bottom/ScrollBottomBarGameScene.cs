@@ -23,7 +23,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfo>();
     }
 
-    protected override void cliqueAcionado()
+    protected override void cliqueBoxAcionado()
     {
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;
         PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
@@ -34,7 +34,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         monoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));       
     }
 
-    public override void posClique()
+    public override void posCliqueBtnClose()
     {
         PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, null);
         monoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));

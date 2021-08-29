@@ -19,7 +19,7 @@ public class BotaoBottomBar
     {
         bottomBarDto.BtnBottonBar.onClick.AddListener(()=> {
                 btnBottomPressionado();
-                scrollBottomBar.posClique();
+                scrollBottomBar.posCliqueBtnClose();
             });
 
         animator = bottomBarDto.AnimatorBottonBar;

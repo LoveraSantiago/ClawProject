@@ -98,6 +98,11 @@ public class LevelPup : AbstractLevel
         return "Treinar Habilidades em Power Up";
     }
 
+    public override TIPO_GAME getTipoGame()
+    {
+        return TIPO_GAME.PUP;
+    }
+
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);

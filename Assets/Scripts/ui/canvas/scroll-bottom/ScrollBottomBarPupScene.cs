@@ -12,7 +12,7 @@ public class ScrollBottomBarPupScene : ScrollBottomBar,
         produtorDeIndiceEscolhido = new ProdutorDeEvento<int>();
     }
 
-    protected override void cliqueAcionado()
+    protected override void cliqueBoxAcionado()
     {
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;
         produtorDeIndiceEscolhido.produziuEvento(int.Parse(nomeBtnSelecionado));
