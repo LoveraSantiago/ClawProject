@@ -44,10 +44,10 @@ public class MaquinaColorida
         GameObject[] gos = SceneManager.GetActiveScene().GetRootGameObjects();
         for (int contador = 0; contador < gos.Length; contador++)
         {
-            if (gos[contador].name == "MainObject")
+            if (gos[contador].name == "main-object")
             {
                 goMaquina = find(gos[contador], "maquina");
-                goCabo = find(gos[contador], "cabo_da_garra");
+                goCabo = find(gos[contador], "cabo-da-garra");
                 return;
             }
         }
@@ -56,12 +56,13 @@ public class MaquinaColorida
 
     private void addBotoesAoDicionario(int indice, string strBtn, string strParteDentro, string strContorno)
     {
-        GameObject goBotoes = find("btns-power-ups");
-        GameObject goBotao = goBotoes.transform.Find("btnPowerUp" + indice).gameObject;
-        GameObject parteDentro = goBotao.transform.Find("parte-dentro").gameObject;
-        GameObject contorno = parteDentro.transform.Find("contorno").gameObject;
+        GameObject goBotoes     = find("btns-power-ups");
+        GameObject goBotao      = find(goBotoes, "btn-power-up" + indice);
+        GameObject parteExterna = find(goBotao, "parte-externa");
+        GameObject parteDentro  = find(goBotao, "parte-dentro");
+        GameObject contorno     = find(parteDentro, "contorno");
 
-        dicionario.Add(strBtn,         new SingleCompColorivel(goBotao));
+        dicionario.Add(strBtn,         new SingleCompColorivel(parteExterna));
         dicionario.Add(strParteDentro, new SingleCompColorivel(parteDentro));
         dicionario.Add(strContorno,    new SingleCompColorivel(contorno));
     }

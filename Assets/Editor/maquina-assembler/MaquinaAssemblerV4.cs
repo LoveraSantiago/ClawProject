@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 
-public class MaquinaAssemblerV2 : EditorWindow
+public class MaquinaAssemblerV4 : EditorWindow
 {
-    [MenuItem("Window/MaquinaAssemblerV2")]
+    [MenuItem("Window/MaquinaAssemblerV4")]
     public static void ShowExample()
     {
-        MaquinaAssemblerV2 wnd = GetWindow<MaquinaAssemblerV2>();
-        wnd.titleContent = new GUIContent("MaquinaAssemblerV2");
+        MaquinaAssemblerV4 wnd = GetWindow<MaquinaAssemblerV4>();
+        wnd.titleContent = new GUIContent("MaquinaAssemblerV4");
     }
 
     private MaquinaColorida maquina;
@@ -25,13 +25,13 @@ public class MaquinaAssemblerV2 : EditorWindow
         //root.Add(label);
 
         // Import UXML
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/maquina-assembler/MaquinaAssemblerV2.uxml");
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/maquina-assembler/MaquinaAssemblerV4.uxml");
         VisualElement labelFromUXML = visualTree.Instantiate();
         root.Add(labelFromUXML);
 
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/maquina-assembler/MaquinaAssemblerV2.uss");
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/maquina-assembler/MaquinaAssemblerV4.uss");
         //VisualElement labelWithStyle = new Label("Hello World! With Style");
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
@@ -71,7 +71,6 @@ public class MaquinaAssemblerV2 : EditorWindow
         bindarComponentes(root, maquina, ConstantesCoresMaquina.JOYSTICK_BOLA);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.FURO_BOTAO);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.BOTAO);
-
 
         bindarComponentes(root, maquina, ConstantesCoresMaquina.PLACA_FICHA);
         bindarComponentes(root, maquina, ConstantesCoresMaquina.PLACA_P_CIMA);
@@ -123,6 +122,7 @@ public class MaquinaAssemblerV2 : EditorWindow
         root.Q<VisualElement>("linha-1")
                .Add(dropDownField);
     }
+
 
     private void bindarComponentes(VisualElement root, MaquinaColorida maquina, string componente)
     {
