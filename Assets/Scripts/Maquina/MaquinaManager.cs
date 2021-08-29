@@ -140,18 +140,18 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         ((AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
     }
 
-    ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoTempoEsgotado.ProdutorEvento)displayTimer).getProdutorDeEventoColetado();
+        return ((AcaoTempoEsgotado.ProdutorEvento)displayTimer).getProdutorDeEvento();
     }
 
-    ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEventoColetado();
+        return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEvento();
     }
 
-    ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoBotaoPUpVazio.ProdutorEvento)botoesPowerUp).getProdutorDeEventoColetado();
+        return ((AcaoBotaoPUpVazio.ProdutorEvento)botoesPowerUp).getProdutorDeEvento();
     }   
 }

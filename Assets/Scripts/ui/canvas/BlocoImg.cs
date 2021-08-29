@@ -85,7 +85,7 @@ public class BlocoImg : AcaoBlocoImgPUpAtual.ProdutorEvento,
         irParaPupAtual();
     }
 
-    ProdutorDeEvento<PowerUpEntidade> AcaoBlocoImgPUpAtual.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<PowerUpEntidade> AcaoBlocoImgPUpAtual.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

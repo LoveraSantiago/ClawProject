@@ -56,7 +56,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal,
         acaoAtual = ACAO_ESPERAR;
     }
 
-    ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoSubidaDaGarra;
     }

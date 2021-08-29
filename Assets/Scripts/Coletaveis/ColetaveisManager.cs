@@ -143,13 +143,13 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         contadorDeColetaveis.reajustarContagem(evento);
     }
 
-    ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeInformacoesDoColetado;
     }
 
-    ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoBoardElevadoFim.ProdutorEvento)boardManager).getProdutorDeEventoColetado();
+        return ((AcaoBoardElevadoFim.ProdutorEvento)boardManager).getProdutorDeEvento();
     }
 }

@@ -141,7 +141,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         btnsPowerUp[evento.indiceBotao].receberAcaoPowerUp(controlePup, evento.powerUpEntidade);
     }
 
-    ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoEscolhaPup;
     }   

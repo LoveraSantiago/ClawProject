@@ -12,7 +12,7 @@ public class ProdutorConsumidoresDeEvento<T> : Consumidor<T>
 
     public ProdutorConsumidoresDeEvento<T> configurarProdutor(ProdutorEvento produtor)
     {
-        produtor.getProdutorDeEventoColetado()
+        produtor.getProdutorDeEvento()
                 .registrarConsumidorDeEvento(this);
         
         return this;
@@ -35,7 +35,7 @@ public class ProdutorConsumidoresDeEvento<T> : Consumidor<T>
 
     public interface ProdutorEvento
     {
-        ProdutorDeEvento<T> getProdutorDeEventoColetado();
+        ProdutorDeEvento<T> getProdutorDeEvento();
     }
 
     public interface ConsumidorEvento

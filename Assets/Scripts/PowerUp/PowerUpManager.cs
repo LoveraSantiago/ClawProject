@@ -63,7 +63,7 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }    
 
-    ProdutorDeEvento<PowerUpInfo> AcaoPUpAcionado.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<PowerUpInfo> AcaoPUpAcionado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoPowerUp;
     }    

@@ -19,7 +19,7 @@ public class ScrollBottomBarPupScene : ScrollBottomBar,
         btnBottomBar.btnBottomPressionado();
     }
 
-    ProdutorDeEvento<int> AcaoBBarPupEscolhido<int>.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<int> AcaoBBarPupEscolhido<int>.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeIndiceEscolhido;
     }

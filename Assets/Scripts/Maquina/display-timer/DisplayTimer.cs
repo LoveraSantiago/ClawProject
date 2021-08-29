@@ -89,7 +89,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
         yield return null;
     }
 
-    ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoTempoEsgotado;
     }

@@ -61,7 +61,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         btnBottomBar.subirBotao();
     }
 
-    ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

@@ -23,7 +23,8 @@ public class MainGameScene : MonoBehaviour,
     private PowerUpManager    powerUpManager;
     private ColetaveisManager coletaveisManager;
     private CameraManager     cameraManager;
-    private ScrollBottomBarGameScene scrollBottomBar;
+    private ScrollManager     scrollManager;
+    
 
     private InputGame inputGame;
     private EfeitoColetado   efeitoColetado;
@@ -58,7 +59,7 @@ public class MainGameScene : MonoBehaviour,
         powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);
         modalPontos       = new ModalPontos(modalPontosDto, this);
         cameraManager     = new CameraManager(mainDto.CameraDto);
-        scrollBottomBar   = new ScrollBottomBarGameScene(prefabBottomBar, this);
+        scrollManager     = new ScrollManager(prefabBottomBar, this);        
     }
 
     private void configurandoLevel()
@@ -107,10 +108,10 @@ public class MainGameScene : MonoBehaviour,
         new AcaoBotaoPUpVazio()
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(scrollBottomBar);
+            .adicionarConsumidor(scrollManager);
 
         new AcaoBBarPupEscolhido<PowerUpBtnInfo>()
-            .configurarProdutor(scrollBottomBar)
+            .configurarProdutor(scrollManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(cameraManager);
 
