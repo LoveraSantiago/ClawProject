@@ -1,7 +1,7 @@
 public class ControlePupDoCanvas 
 {
     private PowerUpEntidade[] allPups;
-    private int indiceAtual;
+    public int indiceAtual { get; private set; }
 
     public ControlePupDoCanvas()
     {
@@ -42,5 +42,5 @@ public class ControlePupDoCanvas
     public void irPupDoIndice(int indice)
     {
         indiceAtual = indice;
-    }
+    }    
 }

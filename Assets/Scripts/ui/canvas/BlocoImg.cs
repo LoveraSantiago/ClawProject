@@ -54,6 +54,11 @@ public class BlocoImg : AcaoBlocoImgPUpAtual.ProdutorEvento,
         }
     }    
 
+    public int getIndicePupAtual()
+    {
+        return controlePups.indiceAtual;
+    }
+
     private IEnumerator moverBloco(int animInicio, int animFim, PowerUpEntidade pupEntidade)
     {
         animacaoEmAndamento = true;

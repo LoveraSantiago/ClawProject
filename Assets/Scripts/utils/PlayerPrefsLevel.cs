@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class PlayerPrefsLevel 
+public class PlayerPrefsUtils 
 {
     private static readonly string LEVEL = "LEVEL";
+    private static readonly string PUP = "PUP";
 
     public static void salvarLevel(LevelFlowManager.LEVEL level)
     {
@@ -19,5 +20,17 @@ public class PlayerPrefsLevel
             return level;
         }
         return (LevelFlowManager.LEVEL) levelSalvo;
+    }
+
+    public static void salvarIndicePup(int indicePup)
+    {
+        PlayerPrefs.SetInt(PUP, indicePup);
+    }
+
+    public static int recuperarIndicePup()
+    {
+        int indiceSalvo = PlayerPrefs.GetInt(PUP);
+        PlayerPrefs.DeleteKey(PUP);
+        return indiceSalvo;
     }
 }

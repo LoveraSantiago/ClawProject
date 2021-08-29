@@ -23,21 +23,21 @@ public class MapaScene : MonoBehaviour
     public void showTarget1()
     {
         modalObjetivo.SetActive(true);
-        PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.HUM);
+        PlayerPrefsUtils.salvarLevel(LevelFlowManager.LEVEL.HUM);
         updateModal(new Level1());
     }
 
     public void showTarget2()
     {
         modalObjetivo.SetActive(true);
-        PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.DOIS);
+        PlayerPrefsUtils.salvarLevel(LevelFlowManager.LEVEL.DOIS);
         updateModal(new Level2());
     }
 
     public void showTarget3()
     {
         modalObjetivo.SetActive(true);
-        PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.TRES);
+        PlayerPrefsUtils.salvarLevel(LevelFlowManager.LEVEL.TRES);
         updateModal(new Level3());
     }
 

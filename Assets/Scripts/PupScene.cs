@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PupScene : MonoBehaviour
 {
     [SerializeField] private Button btnBack;
+    [SerializeField] private Button btnPratica;
     [Space(5)]
     [SerializeField] private BlocoImgDto blocoImgDto;    
     [SerializeField] private GameObject prefabPowerUpDto;
@@ -19,11 +20,12 @@ public class PupScene : MonoBehaviour
     {
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
 
-        configButtonBack(btnBack);
-
         BlocoImg blocoImg           = new BlocoImg(blocoImgDto, this);
         AllLabels allLables         = new AllLabels(labelsDto);
         ScrollBottomBarPupScene scBottomBar = new ScrollBottomBarPupScene(prefabBottomBar, this);
+
+        configBtnBack(btnBack);
+        configBtnPratica(btnPratica, blocoImg);
 
         new AcaoBlocoImgPUpAtual()
             .configurarProdutor(blocoImg)
@@ -36,8 +38,17 @@ public class PupScene : MonoBehaviour
         blocoImg.startLaizy();
     }   
 
-    private void configButtonBack(Button btnBack)
+    private void configBtnBack(Button btnBack)
     {
         btnBack.onClick.AddListener(() => SceneManager.LoadScene("MapScene"));
+    }
+
+    private void configBtnPratica(Button btnPratica, BlocoImg blocoImg)
+    {
+        btnPratica.onClick.AddListener(() => {
+            PlayerPrefsUtils.salvarLevel(LevelFlowManager.LEVEL.PUP);
+            PlayerPrefsUtils.salvarIndicePup(blocoImg.getIndicePupAtual());
+            SceneManager.LoadScene("MainGameScene");
+        });
     }
 }

@@ -2225,6 +2225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnBack: {fileID: 98718867}
+  btnPratica: {fileID: 1907970085}
   blocoImgDto:
     animatorBlocoImg: {fileID: 2088493096}
     btnEsquerda: {fileID: 487751604}
