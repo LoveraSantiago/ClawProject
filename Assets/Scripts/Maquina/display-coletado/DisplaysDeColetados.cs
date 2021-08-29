@@ -237,7 +237,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     }
     //***** IMPLEMENTACAO INTERFACE INFORMACAODISPLAYCOLETADO FIM *****
 
-    ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoFimColetagem;
     }

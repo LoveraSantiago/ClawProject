@@ -51,7 +51,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal,
         }
     }
 
-    ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorEventoGarraAcertou;
     }

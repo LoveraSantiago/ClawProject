@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevel 
 {
+    public enum TIPO_GAME { NORMAL, PUP, SORTEIO_PUP, SORTEIO_GERAL }
+
     protected static readonly string TIMER_ZERO = "00:00";
 
     public abstract string getLevelName();
@@ -16,12 +18,9 @@ public abstract class AbstractLevel
 
     public abstract int[,] getArrayDeColetaveis();
 
-    public virtual int[,] getArrayDeColetaveisSub()
-    {
-        return null;
-    }
+    public virtual int[,] getArrayDeColetaveisSub(){return null;}    
 
-    public abstract PowerUpEntidade.TIPO[] getPowerUpsParaBotoesMaquina();
+    public virtual TIPO_GAME getTipoGame() { return TIPO_GAME.NORMAL; }
 
     public abstract TipoContagemTempoDto getTempoContagem();
 

@@ -159,8 +159,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         coletavel.disparar(powerUpDto.MissilTeleguiadoDto.VelocidadeHit, powerUpDto.MissilTeleguiadoDto.VelocidadeHit);
         coletavel.desligarAnimacao();
 
-        PequenaExplosaoShake explosaoShake = new PequenaExplosaoShake(monoBehaviour);
-        explosaoShake.shake();
+        CameraShake cameraShake = new CameraShake();
+        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f, monoBehaviour);
         powerUpFinalizacao.preFinalizar();
 
         yield return new WaitForSeconds(powerUpDto.MissilTeleguiadoDto.DelayFinalizar);

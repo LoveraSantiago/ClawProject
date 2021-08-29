@@ -13,7 +13,7 @@ public class PosExecutorAcaoColetadoFim : Executor
 
     public void execute()
     {
-        Debug.Log("Pos Execucao chamado");
+        //Debug.Log("Pos Execucao chamado");
         displayTimer.continuar();
         botoesPowerUp.reativarPowerUpPosDisplay();
     }

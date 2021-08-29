@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetadoFim.ProdutorEvento,
+                              AcaoBotaoPUpVazio.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,                                
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
-                              AcaoPUpInfo.ConsumidorEvento,                                                            
-                              AcaoBoardElevadoFim.ConsumidorEvento
+                              AcaoPUpAcionado.ConsumidorEvento,                                                            
+                              AcaoBoardElevadoFim.ConsumidorEvento,
+                              AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento
 {    
     private PartesMaquinaDto partesDto;
 
@@ -95,7 +97,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp.suspenderPowerUp();
     }   
 
-    void AcaoPUpInfo.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isInicio())
         {
@@ -133,13 +135,23 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
     }
 
-    ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEventoColetado()
+    void AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {
-        return ((AcaoTempoEsgotado.ProdutorEvento)displayTimer).getProdutorDeEventoColetado();
+        ((AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
     }
 
-    ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEventoColetado();
+        return ((AcaoTempoEsgotado.ProdutorEvento)displayTimer).getProdutorDeEvento();
     }
+
+    ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
+    {
+        return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEvento();
+    }
+
+    ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEvento()
+    {
+        return ((AcaoBotaoPUpVazio.ProdutorEvento)botoesPowerUp).getProdutorDeEvento();
+    }   
 }

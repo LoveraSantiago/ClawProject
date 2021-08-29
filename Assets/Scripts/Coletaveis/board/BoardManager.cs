@@ -90,7 +90,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         yield return null;
     }
 
-    ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

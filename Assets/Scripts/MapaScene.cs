@@ -1,0 +1,60 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class MapaScene : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject modalObjetivo;
+
+    void OnEnable()
+    {
+        //for�ando escala Y pra ficar dentro da safe area
+        float escalaY = Screen.safeArea.height / Screen.height;
+        float escalaX = Screen.safeArea.width / Screen.width;
+        transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
+    }
+    
+    void Start()
+    {
+        Camera.main.aspect = Utils.RATIO_SCREEN;
+    }
+
+    public void showTarget1()
+    {
+        modalObjetivo.SetActive(true);
+        PlayerPrefsUtils.salvarLevel(LevelFlowManager.LEVEL.HUM);
+        updateModal(new Level1());
+    }
+
+    public void showTarget2()
+    {
+        modalObjetivo.SetActive(true);
+        PlayerPrefsUtils.salvarLevel(LevelFlowManager.LEVEL.DOIS);
+        updateModal(new Level2());
+    }
+
+    public void showTarget3()
+    {
+        modalObjetivo.SetActive(true);
+        PlayerPrefsUtils.salvarLevel(LevelFlowManager.LEVEL.TRES);
+        updateModal(new Level3());
+    }
+
+    public void goToPupScene()
+    {
+        SceneManager.LoadScene("PupScene");
+    }
+
+    private static void updateModal(AbstractLevel level)
+    {
+        string nivelName = level.getLevelName();
+        string objetivo = level.getMsgObjetivoLevel();
+
+        GameObject nivelText = GameObject.Find("NivelText");
+        GameObject objetivoText = GameObject.Find("ObjetivoText");
+
+        nivelText.GetComponent<Text>().text = nivelName;
+        objetivoText.GetComponent<Text>().text = objetivo;
+    }
+}

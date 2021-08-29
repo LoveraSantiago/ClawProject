@@ -1,0 +1,51 @@
+using UnityEngine;
+
+public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento,
+                             AcaoBotaoPUpVazio.ConsumidorEvento
+{
+    private bool isLevelPup;
+    private ScrollBottomBarGameScene scrollBottomBar;
+
+    public ScrollManager(GameObject prefabBottomBar, MonoBehaviour monoBehaviour)
+    {
+        scrollBottomBar = new ScrollBottomBarGameScene(prefabBottomBar, monoBehaviour);
+    }
+
+    public void configuradoPeloLevel(AbstractLevel level)
+    {
+        if(level.getTipoGame() == AbstractLevel.TIPO_GAME.PUP)
+        {
+            isLevelPup = true;
+        }
+    }
+
+    public void start()
+    {
+        if (isLevelPup)
+        {
+            int indicePup = PlayerPrefsUtils.recuperarIndicePup();
+            for(int contador = 0; contador < 4; contador++)
+            {
+                scrollBottomBar.simularCliqueBoxAcionado(contador, indicePup);
+            }
+        }
+    }
+
+    void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
+    {
+        if (isLevelPup)
+        {
+            int indicePup = PlayerPrefsUtils.recuperarIndicePup();
+            scrollBottomBar.simularCliqueBoxAcionado(evento, indicePup);
+        }
+        else
+        {
+            ((AcaoBotaoPUpVazio.ConsumidorEvento)scrollBottomBar).consumirEvento(evento);
+        }
+    }
+
+    ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
+    {
+        return ((AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollBottomBar).getProdutorDeEvento();
+    }
+}

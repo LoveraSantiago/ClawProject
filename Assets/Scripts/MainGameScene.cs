@@ -8,20 +8,23 @@ public class MainGameScene : MonoBehaviour,
     [SerializeField] private LevelFlowManager.LEVEL level;
     [Space(5)]
     [SerializeField] private MainDto mainDto;            
-    [Space(5)]
-    [SerializeField] private CameraShakeDto camShakeDto;
-    [Space(5)]
+    [Space(5)]    
     [SerializeField] private ParticulasDto particulasDto;
     [Space(5)]
     [SerializeField] private PowerUpDto powerUpDto;
     [Space(5)]
     [SerializeField] private ModalPontosDto modalPontosDto;
+    [Space(5)]
+    [SerializeField] private GameObject prefabBottomBar;
 
     private ModalPontos       modalPontos;
     private GarraManager      garraManager;
     private MaquinaManager    maquinaManager;
     private PowerUpManager    powerUpManager;
     private ColetaveisManager coletaveisManager;
+    private CameraManager     cameraManager;
+    private ScrollManager     scrollManager;
+    
 
     private InputGame inputGame;
     private EfeitoColetado   efeitoColetado;
@@ -38,12 +41,11 @@ public class MainGameScene : MonoBehaviour,
 
     void Start()
     {
-        Camera.main.aspect = Utils.RATIO_SCREEN;        
+        CameraManager.forceAspectCameraAsRatio();
 
         configurandoManagers();
         configurandoLevel();
-        configurandoAcoes();
-        configurandoEventos();
+        configurandoAcoes();        
         startLaizy();
     }
 
@@ -56,17 +58,20 @@ public class MainGameScene : MonoBehaviour,
         efeitoColetado    = new EfeitoColetado(particulasDto, this);
         powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);
         modalPontos       = new ModalPontos(modalPontosDto, this);
+        cameraManager     = new CameraManager(mainDto.CameraDto);
+        scrollManager     = new ScrollManager(prefabBottomBar, this);        
     }
 
     private void configurandoLevel()
     {
-        LevelFlowManager.LEVEL levelFlow = PlayerPrefsLevel.recuperarLevel(level);
+        LevelFlowManager.LEVEL levelFlow = PlayerPrefsUtils.recuperarELimparLevel(level);
         AbstractLevel levelEscolhido     = LevelFlowManager.getLevelByEnum(levelFlow);
 
         garraManager     .configuradoPeloLevel(levelEscolhido);
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
         maquinaManager   .configuradoPeloLevel(levelEscolhido);
         modalPontos      .configurarLevel(levelEscolhido.getLevelName());
+        scrollManager    .configuradoPeloLevel(levelEscolhido);
     }
 
     private void configurandoAcoes()
@@ -95,11 +100,21 @@ public class MainGameScene : MonoBehaviour,
             .configurarProdutor(garraManager)
             .adicionarConsumidor(maquinaManager);
 
-        new AcaoPUpInfo()
+        new AcaoPUpAcionado()
             .configurarProdutor(powerUpManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(coletaveisManager);       
+            .adicionarConsumidor(coletaveisManager);
+
+        new AcaoBotaoPUpVazio()
+            .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(cameraManager)
+            .adicionarConsumidor(scrollManager);
+
+        new AcaoBBarPupEscolhido<PowerUpBtnInfo>()
+            .configurarProdutor(scrollManager)
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(cameraManager);
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)
@@ -112,18 +127,14 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(modalPontos);
-    }
-
-    private void configurandoEventos()
-    {
-        AbstractShake.configurar(camShakeDto);
-    }
+    }   
 
     private void startLaizy()
     {
         coletaveisManager.start();
         garraManager.start();
         maquinaManager.start();
+        scrollManager.start();
     }
     
     void Update()

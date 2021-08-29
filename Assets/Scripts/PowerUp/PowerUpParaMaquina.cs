@@ -4,26 +4,26 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
 {
     private static PowerUpAcionamento powerUpAcionamento;
     
-    private PowerUpEntidade powerUp;    
+    private PowerUpEntidade powerUpEntidade;    
 
-    public PowerUpParaMaquina(PowerUpEntidade.TIPO tipo)
+    public PowerUpParaMaquina(PowerUpEntidade powerUpEntidade)
     {
-        powerUp = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(tipo);
+        this.powerUpEntidade = powerUpEntidade;
     }
 
     public void acionar()
     {
-        powerUpAcionamento.acionado(powerUp);
+        powerUpAcionamento.acionado(powerUpEntidade);
     }
 
     public void acionar(Vector3 posicaoAtual)
     {
-        powerUpAcionamento.acionado(powerUp, posicaoAtual);
+        powerUpAcionamento.acionado(powerUpEntidade, posicaoAtual);
     }
 
     public bool isClicavel()
     {
-        return powerUp.isClicavel;
+        return powerUpEntidade.isClicavel;
     }
 
     public bool isDraggavel()
@@ -38,11 +38,11 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
 
     public Sprite getImgBotao()
     {
-        return powerUp.sprPowerUp;
+        return powerUpEntidade.sprPowerUp;
     }
 
     public PowerUpEntidade.TIPO getTipo()
     {
-        return powerUp.tipo;
+        return powerUpEntidade.tipo;
     }
 }

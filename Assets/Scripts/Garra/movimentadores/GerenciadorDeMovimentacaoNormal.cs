@@ -124,14 +124,14 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movAtual = movimentador;
     }
 
-    ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoImantadoPelaGarra.ProdutorEvento)movPBaixo).getProdutorDeEventoColetado();
+        return ((AcaoImantadoPelaGarra.ProdutorEvento)movPBaixo).getProdutorDeEvento();
     }
 
-    ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoSubidaDaGarra.ProdutorEvento)movPCima).getProdutorDeEventoColetado();
+        return ((AcaoSubidaDaGarra.ProdutorEvento)movPCima).getProdutorDeEvento();
     }
 
    

@@ -6,7 +6,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoColetadoFim.ConsumidorEvento,
                                 AcaoImantadoPelaGarra.ConsumidorEvento,
                                 AcaoSubidaDaGarra.ConsumidorEvento,                                
-                                AcaoPUpInfo.ConsumidorEvento,                                
+                                AcaoPUpAcionado.ConsumidorEvento,                                
                                 AcaoTempoEsgotado.ConsumidorEvento
 {
     private ColetaveisDto coletaveisDto;
@@ -115,7 +115,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         processarDesimantado();
     }
 
-    void AcaoPUpInfo.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isInicio())
         {
@@ -143,13 +143,13 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         contadorDeColetaveis.reajustarContagem(evento);
     }
 
-    ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeInformacoesDoColetado;
     }
 
-    ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEventoColetado()
+    ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoBoardElevadoFim.ProdutorEvento)boardManager).getProdutorDeEventoColetado();
+        return ((AcaoBoardElevadoFim.ProdutorEvento)boardManager).getProdutorDeEvento();
     }
 }

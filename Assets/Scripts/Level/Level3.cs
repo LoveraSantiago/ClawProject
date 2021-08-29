@@ -48,32 +48,6 @@ public class Level3 : AbstractLevel
         return true;
     }
 
-
-    public override PowerUpEntidade.TIPO[] getPowerUpsParaBotoesMaquina()
-    {
-        return new PowerUpEntidade.TIPO[]
-       {
-            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
-            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
-            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
-            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
-            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
-            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
-            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
-            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
-            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
-            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
-            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
-            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
-            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
-            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
-            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
-            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
-            PowerUpEntidade.TIPO.TELEPORTE     , PowerUpEntidade.TIPO.ASAS          , PowerUpEntidade.TIPO.ROLLBACK,
-            PowerUpEntidade.TIPO.BOMBA_DA_GARRA, PowerUpEntidade.TIPO.MISSIL_NUCLEAR, PowerUpEntidade.TIPO.MINA_TERRESTRE, PowerUpEntidade.TIPO.MISSIL_TELEGUIADO,
-       };
-    }
-
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:26");        
