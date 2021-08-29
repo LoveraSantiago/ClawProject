@@ -10,7 +10,7 @@ public class PlayerPrefsUtils
         PlayerPrefs.SetInt(LEVEL, (int) level);
     }
 
-    public static LevelFlowManager.LEVEL recuperarLevel(LevelFlowManager.LEVEL level)
+    public static LevelFlowManager.LEVEL recuperarELimparLevel(LevelFlowManager.LEVEL level)
     {
         int levelSalvo = PlayerPrefs.GetInt(LEVEL);
         PlayerPrefs.DeleteKey(LEVEL);
@@ -29,8 +29,7 @@ public class PlayerPrefsUtils
 
     public static int recuperarIndicePup()
     {
-        int indiceSalvo = PlayerPrefs.GetInt(PUP);
-        PlayerPrefs.DeleteKey(PUP);
+        int indiceSalvo = PlayerPrefs.GetInt(PUP);        
         return indiceSalvo;
     }
 }

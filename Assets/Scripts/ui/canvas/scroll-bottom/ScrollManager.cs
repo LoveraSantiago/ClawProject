@@ -33,7 +33,15 @@ public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
 
     void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
-        ((AcaoBotaoPUpVazio.ConsumidorEvento)scrollBottomBar).consumirEvento(evento);
+        if (isLevelPup)
+        {
+            int indicePup = PlayerPrefsUtils.recuperarIndicePup();
+            scrollBottomBar.simularCliqueBoxAcionado(evento, indicePup);
+        }
+        else
+        {
+            ((AcaoBotaoPUpVazio.ConsumidorEvento)scrollBottomBar).consumirEvento(evento);
+        }
     }
 
     ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
