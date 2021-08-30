@@ -22,8 +22,6 @@ public class MainGameScene : MonoBehaviour,
     private ColetaveisManager coletaveisManager;
     private CameraManager     cameraManager;
     private ScrollManager     scrollManager;
-    
-
     private InputGame inputGame;    
 
     private LevelFlowManager.LEVEL levelEscolhido;    
