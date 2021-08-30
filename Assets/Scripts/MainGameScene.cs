@@ -33,10 +33,7 @@ public class MainGameScene : MonoBehaviour,
 
     void OnEnable()
     {
-        //forcando escala Y pra ficar dentro da safe area
-        float escalaY = Screen.safeArea.height / Screen.height;
-        float escalaX = Screen.safeArea.width / Screen.width;
-        transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
+        CameraManager.forceLocalEscala(transform);
     }
 
     void Start()
