@@ -1129,8 +1129,6 @@ MonoBehaviour:
       noise6d: {fileID: 11400000, guid: a31f2eaada77af94689f0b0d7e781fb6, type: 2}
       virtualCam1: {fileID: 250677996}
       virtualCam2: {fileID: 1162031990}
-  particulasDto:
-    parentParticulas: {fileID: 1488198862}
   powerUpDto:
     vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
     prefabPowerUpDto: {fileID: 5653745407918303698, guid: 264fd96ffd92c7d4899adb12d26ef4f1, type: 3}
@@ -13736,7 +13734,7 @@ GameObject:
   - component: {fileID: 1488198865}
   - component: {fileID: 1488198864}
   m_Layer: 0
-  m_Name: EfeitoColetado
+  m_Name: efeito-coletado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19098,7 +19096,7 @@ GameObject:
   - component: {fileID: 1607848933}
   - component: {fileID: 1607848934}
   m_Layer: 0
-  m_Name: tubo_de_saida
+  m_Name: tubo-de-saida
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24326,7 +24324,7 @@ GameObject:
   - component: {fileID: 2083913117}
   - component: {fileID: 2083913118}
   m_Layer: 0
-  m_Name: sensor_de_coletado
+  m_Name: sensor-de-coletado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
