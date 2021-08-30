@@ -15,16 +15,10 @@ public class PupScene : MonoBehaviour
     [Space(5)]
     [SerializeField] private GameObject prefabBottomBar;
 
-    private void OnEnable()
-    {
-        CameraManager.forceLocalEscala(transform);
-    }
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        CameraManager.forceAspectCameraAsRatio();
-
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
 
         BlocoImg blocoImg           = new BlocoImg(blocoImgDto, this);
