@@ -10,8 +10,15 @@ public class LevelCacaNiquelPup : AbstractLevel
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
-       {    
-            {0, 0, 0, 0, 0, 0, 0}            
+       {
+            {0, 0, 0, 1, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0}
        };
     }
 
