@@ -7,6 +7,7 @@ public class PupScene : MonoBehaviour
 {
     [SerializeField] private Button btnBack;
     [SerializeField] private Button btnPratica;
+    [SerializeField] private Button btnCacaNiquelPup;
     [Space(5)]
     [SerializeField] private BlocoImgDto blocoImgDto;    
     [SerializeField] private GameObject prefabPowerUpDto;
@@ -27,6 +28,7 @@ public class PupScene : MonoBehaviour
 
         configBtnBack(btnBack);
         configBtnPratica(btnPratica, blocoImg);
+        configBtnCacaNiquel(btnCacaNiquelPup, blocoImg);
 
         new AcaoBlocoImgPUpAtual()
             .configurarProdutor(blocoImg)
@@ -48,8 +50,21 @@ public class PupScene : MonoBehaviour
     {
         btnPratica.onClick.AddListener(() => {
             PlayerPrefsUtils.salvarLevel(LevelFlowManager.LEVEL.PUP);
-            PlayerPrefsUtils.salvarIndicePup(blocoImg.getIndicePupAtual());
-            SceneManager.LoadScene("MainGameScene");
+            irGameScene(blocoImg);            
         });
+    }
+
+    private void configBtnCacaNiquel(Button btnCacaNiquel, BlocoImg blocoImg)
+    {
+        btnCacaNiquel.onClick.AddListener(() => {
+            PlayerPrefsUtils.salvarLevel(LevelFlowManager.LEVEL.CACANIQUEL_PUP);
+            irGameScene(blocoImg);            
+        });
+    }   
+
+    private void irGameScene(BlocoImg blocoImg)
+    {
+        PlayerPrefsUtils.salvarIndicePup(blocoImg.getIndicePupAtual());
+        SceneManager.LoadScene("MainGameScene");
     }
 }

@@ -15,6 +15,11 @@ public class LevelCacaNiquelPup : AbstractLevel
        };
     }
 
+    public override TIPO_GAME getTipoGame()
+    {
+        return TIPO_GAME.CACANIQUEL_PUP;
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -66,7 +71,8 @@ public class LevelCacaNiquelPup : AbstractLevel
         dicionario.Add("leds1", "#505160");
         dicionario.Add("leds2", "#505160");
         dicionario.Add("leds3", "#505160");
-        dicionario.Add("cabo-da-garra", "#68829E");
+        dicionario.Add("cabo-da-garra", "#68829E");
+
         return dicionario;
     }
 
@@ -94,4 +100,6 @@ public class LevelCacaNiquelPup : AbstractLevel
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
+
+    
 }

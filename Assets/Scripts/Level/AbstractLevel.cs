@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevel 
 {
-    public enum TIPO_GAME { NORMAL, PUP, SORTEIO_PUP, SORTEIO_GERAL }
+    public enum TIPO_GAME { NORMAL, PUP, CACANIQUEL_PUP, CACANIQUEL_PUPS }
 
     protected static readonly string TIMER_ZERO = "00:00";
 
