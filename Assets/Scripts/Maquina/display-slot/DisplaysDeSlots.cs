@@ -3,15 +3,18 @@ using UnityEngine;
 public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento
 {
     private DisplaysDeColetados displayDeColetados;
+    private DisplayCacaNiquel displayCacaNiquel;
 
     public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto, MonoBehaviour monoBehaviour)
     {
         displayDeColetados = new DisplaysDeColetados(displaysSlotsDto, monoBehaviour);
+        displayCacaNiquel  = new DisplayCacaNiquel();
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
     {
-        displayDeColetados.configuradoPeloLevel(levelEscolhido);
+        displayDeColetados.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        displayCacaNiquel.configuradoPeloLevel(levelEscolhido.getTipoGame());
     }
 
     public ArcoIrisConjunto getDisplayColetadoGlow()

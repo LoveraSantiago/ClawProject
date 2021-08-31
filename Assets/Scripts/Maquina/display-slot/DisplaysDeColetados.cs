@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
                                    InformacaoDisplayColetado
@@ -28,9 +29,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();        
     }    
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido)
+    public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
     {
-        grupoDisplays.colorirDisplays(levelEscolhido.getDicionarioDeCores());
+        grupoDisplays.colorirDisplays(dicionarioDeCores);
     }
 
     public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
