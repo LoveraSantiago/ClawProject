@@ -11,6 +11,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     
     private GrupoDisplays grupoDisplays;
     private MonoBehaviour monoBehaviour;
+
     private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
 
     private InformacoesColetadoDto agendadoEvento;
