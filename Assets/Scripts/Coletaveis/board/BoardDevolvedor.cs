@@ -10,11 +10,11 @@ public class BoardDevolvedor
         this.devolverParaBoard = devolverParaBoard;
     }
 
-    public void devolver(BoardDto boardDto, ColetavelTile[] coletados, MonoBehaviour monoBehaviour)
+    public void devolver(BoardDto boardDto, ColetavelTile[] coletados)
     {
         if (devolverParaBoard && coletados.Length > 0)
         {            
-            monoBehaviour.StartCoroutine(coroutineDevolverParaBoard(boardDto, coletados));            
+            Utils.MonoBehaviour.StartCoroutine(coroutineDevolverParaBoard(boardDto, coletados));            
         }
     }
 

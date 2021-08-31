@@ -5,9 +5,9 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento
     private DisplaysDeColetados displayDeColetados;
     private DisplayCacaNiquel displayCacaNiquel;
 
-    public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto, MonoBehaviour monoBehaviour)
+    public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto)
     {
-        displayDeColetados = new DisplaysDeColetados(displaysSlotsDto, monoBehaviour);
+        displayDeColetados = new DisplaysDeColetados(displaysSlotsDto);
         displayCacaNiquel  = new DisplayCacaNiquel();
     }
 

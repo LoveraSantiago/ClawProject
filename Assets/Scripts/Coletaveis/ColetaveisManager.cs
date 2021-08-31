@@ -18,13 +18,11 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contador;
 
-    private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;
-    private MonoBehaviour monoBehaviour;
+    private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;    
 
-    public ColetaveisManager(ColetaveisDto coletaveisDto, MonoBehaviour monoBehaviour)
+    public ColetaveisManager(ColetaveisDto coletaveisDto)
     {
         this.coletaveisDto = coletaveisDto;
-        this.monoBehaviour = monoBehaviour;        
 
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
         configurarPoolDeColetaveis(coletaveisDto);
@@ -134,15 +132,15 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         if (evento.restart)
         {
-            int qtdAtivados = board.subirBoard(poolDeColetaveis, monoBehaviour);
+            int qtdAtivados = board.subirBoard(poolDeColetaveis);
             contador.adicionarColetaveisExtras(qtdAtivados);            
         }        
     }
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {
-        board.devolver(evento.devolverBoard(), contador.getColetados(), monoBehaviour);
-        tuboSaida .devolver(evento.clear, contador.getColetados(), monoBehaviour);        
+        board.devolver(evento.devolverBoard(), contador.getColetados());
+        tuboSaida .devolver(evento.clear, contador.getColetados());        
         contador.reajustarContagem(evento);
     }
 

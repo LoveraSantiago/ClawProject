@@ -23,7 +23,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
     public override void iniciarPup()
     {
         miras.ligar();
-        coroutine = monoBehaviour.StartCoroutine(selecionarAlvos());
+        coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvos());
     }
 
     public override void resetPup(){}
@@ -63,7 +63,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
                     {
                         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));                    
                         hitColetavel2 = true;
-                        monoBehaviour.StartCoroutine(fazerTeleporte());
+                        Utils.MonoBehaviour.StartCoroutine(fazerTeleporte());
                     }
                 }
             }
@@ -115,7 +115,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
     {
         if (!hitColetavel2)
         {
-            monoBehaviour.StopCoroutine(coroutine);
+            Utils.MonoBehaviour.StopCoroutine(coroutine);
             miras.desligar();
             powerUpFinalizacao.finalizado();
         }

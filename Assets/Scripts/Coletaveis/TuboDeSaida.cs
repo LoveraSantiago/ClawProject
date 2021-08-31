@@ -27,12 +27,12 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         this.devolverTubo = !devolverParaBoard;
     }
 
-    public void devolver(bool[] resultados, Coletavel[] coletados, MonoBehaviour monoBehaviour)
+    public void devolver(bool[] resultados, Coletavel[] coletados)
     {
         if (devolverTubo)
         {
             //Debug.Log("Devolver tubo acionado");
-            monoBehaviour.StartCoroutine(descerPeloTubo(resultados, coletados));
+            Utils.MonoBehaviour.StartCoroutine(descerPeloTubo(resultados, coletados));
         }
     }
 

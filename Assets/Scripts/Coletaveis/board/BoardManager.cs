@@ -39,22 +39,22 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         return qtdColetaveisCriados;
     }   
 
-    public int subirBoard(PoolDeColetaveis poolDeColetaveis, MonoBehaviour monoBehaviour)
+    public int subirBoard(PoolDeColetaveis poolDeColetaveis)
     {
         int qtdColetaveis = montadorExtra.getQtdExtras();
-        monoBehaviour.StartCoroutine(subirBoard(poolDeColetaveis));
+        Utils.MonoBehaviour.StartCoroutine(subirBoardComPool(poolDeColetaveis));
         return qtdColetaveis;
     }       
 
-    public void devolver(bool devolverBoard, ColetavelTile[] coletados, MonoBehaviour monoBehaviour)
+    public void devolver(bool devolverBoard, ColetavelTile[] coletados)
     {
         if (devolverBoard)
         {
-            devolvedor.devolver(boardDto, coletados, monoBehaviour);
+            devolvedor.devolver(boardDto, coletados);
         }
     }
 
-    private IEnumerator subirBoard(PoolDeColetaveis poolDeColetaveis)
+    private IEnumerator subirBoardComPool(PoolDeColetaveis poolDeColetaveis)
     {
         yield return new WaitForSeconds(0.6f);
         float limite = boardDto.BoardPosicao.position.y + boardDto.Subida;        

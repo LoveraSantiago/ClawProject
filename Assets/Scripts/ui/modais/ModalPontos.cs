@@ -7,13 +7,11 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
 {
     private string scoreAtual;
     private bool mostrandoModal;
-    private ModalPontosDto modalPontosDto;
-    private MonoBehaviour monoBehaviour;
+    private ModalPontosDto modalPontosDto;    
 
-    public ModalPontos(ModalPontosDto modalPontosDto, MonoBehaviour monoBehaviour)
+    public ModalPontos(ModalPontosDto modalPontosDto)
     {
-        this.modalPontosDto = modalPontosDto;
-        this.monoBehaviour = monoBehaviour;
+        this.modalPontosDto = modalPontosDto;        
     }
 
     public void configurarLevel(string levelName)
@@ -66,7 +64,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            monoBehaviour.StartCoroutine(coroutineMostrarModalResultado());
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModalResultado());
             mostrandoModal = true;
         }
     }

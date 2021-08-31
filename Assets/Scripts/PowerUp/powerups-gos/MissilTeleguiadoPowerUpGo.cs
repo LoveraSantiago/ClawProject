@@ -63,7 +63,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     {
         ligar();
         miras.ligar();
-        coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
+        coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
     public override void resetPup()
@@ -90,7 +90,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
                     string nomeAlvo = coletavelAcertado.name;
                     coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
                     hitColetavel = true;
-                    monoBehaviour.StartCoroutine(disparandoMissil(coletavelQuery.getColetavelInGameByName(nomeAlvo)));
+                    Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelQuery.getColetavelInGameByName(nomeAlvo)));
                 }
             }
             yield return null;
@@ -160,7 +160,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         coletavel.desligarAnimacao();
 
         CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f, monoBehaviour);
+        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
         powerUpFinalizacao.preFinalizar();
 
         yield return new WaitForSeconds(powerUpDto.MissilTeleguiadoDto.DelayFinalizar);
@@ -196,7 +196,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     {
         if (!hitColetavel)
         {
-            monoBehaviour.StopCoroutine(coroutine);
+            Utils.MonoBehaviour.StopCoroutine(coroutine);
 
             miras.desligar();
             resetPup();

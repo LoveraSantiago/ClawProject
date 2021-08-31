@@ -12,14 +12,10 @@ public class DisplayDeScores : ArcoIrisConjunto
     private DisplayScoreDigito displayUnidade;
 
     private OrquestradorDisplayDigitos orquestrador;
-    private MonoBehaviour monoBehaviour;
-
     private Coroutine coroutineAtual;
 
-    public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto, MonoBehaviour monoBehaviour)
-    {
-        this.monoBehaviour = monoBehaviour;
-
+    public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto)
+    {   
         SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;
 
         MaterialGlow materialGlow = new MaterialGlow(displayDeScoresDto.MaterialGlowDisplay);
@@ -50,11 +46,11 @@ public class DisplayDeScores : ArcoIrisConjunto
         splitarScore(score);
         if (result)
         {
-            monoBehaviour.StartCoroutine(orquestrador.blinkarScoreSucesso(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
+            Utils.MonoBehaviour.StartCoroutine(orquestrador.blinkarScoreSucesso(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
         }
         else
         {
-            monoBehaviour.StartCoroutine(orquestrador.blinkarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
+            Utils.MonoBehaviour.StartCoroutine(orquestrador.blinkarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
         }
     }
 
@@ -62,7 +58,7 @@ public class DisplayDeScores : ArcoIrisConjunto
     {
         //Debug.Log("PiscarAstericos");
         finalizarCoroutineAtual();
-        coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.blinkarAsteriscos());
+        coroutineAtual = Utils.MonoBehaviour.StartCoroutine(orquestrador.blinkarAsteriscos());
     }
 
     public void finalizarContagemRegressiva()
@@ -75,7 +71,7 @@ public class DisplayDeScores : ArcoIrisConjunto
     public void iniciarContagemRegressiva(int duracao)
     {
         armazenarScoreAtual();
-        coroutineAtual = monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));                
+        coroutineAtual = Utils.MonoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));                
     }     
 
     private void splitarScore(int score)
@@ -99,7 +95,7 @@ public class DisplayDeScores : ArcoIrisConjunto
     
     private void finalizarCoroutineAtual()
     {
-        monoBehaviour.StopCoroutine(coroutineAtual);        
+        Utils.MonoBehaviour.StopCoroutine(coroutineAtual);        
     }    
 
     private void finalizarCoroutineArcoIris()

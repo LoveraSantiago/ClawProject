@@ -21,19 +21,18 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     private ArcoIrisEfeito arcoIrisEfeito;
     
-    public MaquinaManager(
-        MaquinaDto maquinaDto, MonoBehaviour monoBehaviour)
+    public MaquinaManager(MaquinaDto maquinaDto)
     {
         partesDto = maquinaDto.PartesDto;
 
-        displaysDeSlots = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto, monoBehaviour);        
-        displayDeScores = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
-        displayTimer    = new DisplayTimer(maquinaDto.DisplayTimerDto, monoBehaviour);
+        displaysDeSlots = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto);        
+        displayDeScores = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
+        displayTimer    = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick        = new Joystick(maquinaDto.JoystickDto);
         botoesPowerUp   = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         vigasTras       = new VigasTras(maquinaDto.VigasDto);
 
-        arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW            
+        arcoIrisEfeito = new ArcoIrisEfeito()//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW            
             .addArcoIrisConjunto(displaysDeSlots.getDisplayColetadoGlow())
             .addArcoIrisConjunto(displayDeScores)
             .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow(maquinaDto.DisplayTimerDto))
@@ -82,9 +81,9 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp.drag(delta);
     }
 
-    public void onEndDragPowerUp(MonoBehaviour monoBehaviour)
+    public void onEndDragPowerUp()
     {
-        botoesPowerUp.endDrag(monoBehaviour);
+        botoesPowerUp.endDrag();
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)

@@ -25,18 +25,18 @@ public class GrupoDisplays : ArcoIrisConjunto
         powerUpDisplayColetado = estado;
     }      
 
-    public void acionarMostrarAlvos(DisplaysSlotsDto displaysSlotsDto, MonoBehaviour monoBehaviour)
+    public void acionarMostrarAlvos(DisplaysSlotsDto displaysSlotsDto)
     {
-        monoBehaviour.StartCoroutine(displayDeSlot[0].mostrarAlvo(displaysSlotsDto));
-        monoBehaviour.StartCoroutine(displayDeSlot[1].mostrarAlvo(displaysSlotsDto));
-        monoBehaviour.StartCoroutine(displayDeSlot[2].mostrarAlvo(displaysSlotsDto));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].mostrarAlvo(displaysSlotsDto));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].mostrarAlvo(displaysSlotsDto));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].mostrarAlvo(displaysSlotsDto));
     }
 
-    public void desligarAlvos(DisplaysSlotsDto displaysSlotsDto, MonoBehaviour monoBehaviour)
+    public void desligarAlvos(DisplaysSlotsDto displaysSlotsDto)
     {
-        monoBehaviour.StartCoroutine(displayDeSlot[0].desligarAlvo(displaysSlotsDto));
-        monoBehaviour.StartCoroutine(displayDeSlot[1].desligarAlvo(displaysSlotsDto));
-        monoBehaviour.StartCoroutine(displayDeSlot[2].desligarAlvo(displaysSlotsDto));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].desligarAlvo(displaysSlotsDto));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].desligarAlvo(displaysSlotsDto));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].desligarAlvo(displaysSlotsDto));
     }
 
     public IEnumerator mostrarSprColetado(int indice, Sprite sprite, bool powerUpAcionado, DisplaysSlotsDto displaysSlotsDto)

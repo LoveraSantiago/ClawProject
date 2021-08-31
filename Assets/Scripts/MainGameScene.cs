@@ -34,6 +34,7 @@ public class MainGameScene : MonoBehaviour,
     void Start()
     {
         CameraManager.forceAspectCameraAsRatio();
+        Utils.configMainMono(this);
 
         configurandoManagers();
         configurandoLevel();
@@ -45,12 +46,12 @@ public class MainGameScene : MonoBehaviour,
     {
         inputGame         = new InputGameImpl(mainDto.MaquinaDto.ReferenciaChao);
         garraManager      = new GarraManager(mainDto.GarraDto);
-        coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto, this);
-        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, this);        
-        powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);
-        modalPontos       = new ModalPontos(modalPontosDto, this);
+        coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
+        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto);        
+        powerUpManager    = new PowerUpManager(powerUpDto, inputGame);
+        modalPontos       = new ModalPontos(modalPontosDto);
         cameraManager     = new CameraManager(mainDto.CameraDto);
-        scrollManager     = new ScrollManager(prefabBottomBar, this);        
+        scrollManager     = new ScrollManager(prefabBottomBar);        
     }
 
     private void configurandoLevel()
@@ -151,7 +152,7 @@ public class MainGameScene : MonoBehaviour,
 
     public void OnEndDrag(PointerEventData eventData)
     {        
-        maquinaManager.onEndDragPowerUp(this);
+        maquinaManager.onEndDragPowerUp();
     }
 
     public void OnDrag(PointerEventData eventData)

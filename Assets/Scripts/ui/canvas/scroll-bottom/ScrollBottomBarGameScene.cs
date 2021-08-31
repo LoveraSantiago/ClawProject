@@ -8,18 +8,14 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
 
 {
     private int indiceBtn;
-
-    private MonoBehaviour monoBehaviour;
+    
     private GameObject prefabBottomBar;
-
     private ProdutorDeEvento<PowerUpBtnInfo> produtorDeEvento;
 
-    public ScrollBottomBarGameScene(GameObject prefabBottomBar, MonoBehaviour monoBehaviour)
-       : base(prefabBottomBar, monoBehaviour)
+    public ScrollBottomBarGameScene(GameObject prefabBottomBar)
+       : base(prefabBottomBar)
     {
         this.prefabBottomBar = prefabBottomBar;
-        this.monoBehaviour = monoBehaviour;
-
         produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfo>();
     }
 
@@ -31,7 +27,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
 
         btnBottomBar.descerBotao();
-        monoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));       
+        Utils.MonoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));       
     }
 
     public void simularCliqueBoxAcionado(int indiceBtn, int indicePup)
@@ -46,13 +42,13 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
     public override void posCliqueBtnClose()
     {
         PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, null);
-        monoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));
+        Utils.MonoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));
     }
 
     void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
         indiceBtn = evento;
-        monoBehaviour.StartCoroutine(mostrarBottomBar());
+        Utils.MonoBehaviour.StartCoroutine(mostrarBottomBar());
     }
 
     private IEnumerator finaizarBottomBar(PowerUpBtnInfo pupBtnInfo)

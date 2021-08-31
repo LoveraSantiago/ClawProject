@@ -8,11 +8,8 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private bool powerUpAcionado;
     private bool displayColetando;
     
-    private DisplaysSlotsDto displaysSlotsDto;    
-    
-    private GrupoDisplays grupoDisplays;
-    private MonoBehaviour monoBehaviour;
-
+    private DisplaysSlotsDto displaysSlotsDto;        
+    private GrupoDisplays grupoDisplays;    
     private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
 
     private InformacoesColetadoDto agendadoEvento;
@@ -20,11 +17,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private Executor agendadoPosExecutor;
     private PowerUpInteracaoDisplayColetado agendadoInteracaoDisplayColetado;
 
-    public DisplaysDeColetados(DisplaysSlotsDto displaysSlotsDto, MonoBehaviour monoBehaviour)
+    public DisplaysDeColetados(DisplaysSlotsDto displaysSlotsDto)
     {
         this.displaysSlotsDto = displaysSlotsDto;
-        this.monoBehaviour = monoBehaviour;//TODO rever uso desse monobehaviour        
-
         grupoDisplays = new GrupoDisplays(displaysSlotsDto.SingleDisplaySlotDto, displaysSlotsDto.MaterialGlowDisplay);
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();        
     }    
@@ -36,7 +31,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
     public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
-        monoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris, executorPosEvento));        
+        Utils.MonoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris, executorPosEvento));        
     }    
     
     public void processarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
@@ -60,14 +55,14 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         {
             powerUpAcionado = false;
             grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
-            grupoDisplays.desligarAlvos(displaysSlotsDto, monoBehaviour);            
+            grupoDisplays.desligarAlvos(displaysSlotsDto);            
             agendadoInteracaoDisplayColetado = null;
 
             if (possuiAgendamentoDeEvento())
             {
                 if (grupoDisplays.isTodosDisplayOcupados())
                 {
-                    monoBehaviour.StartCoroutine(limpezaEFimTodosDisplaysOcupados(agendadoEvento, agendadoArcoIris, agendadoPosExecutor));
+                    Utils.MonoBehaviour.StartCoroutine(limpezaEFimTodosDisplaysOcupados(agendadoEvento, agendadoArcoIris, agendadoPosExecutor));
                 }
                 else
                 {
@@ -87,7 +82,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     {
         powerUpAcionado = true;
         grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
-        grupoDisplays.acionarMostrarAlvos(displaysSlotsDto, monoBehaviour);
+        grupoDisplays.acionarMostrarAlvos(displaysSlotsDto);
         interacaoDisplayColetado.iniciar(this);        
     }     
 
@@ -218,7 +213,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
             bool result = displayDeColetado[contador].isCliqueDentroArea(toque);
             if (result)
             {
-                monoBehaviour.StartCoroutine(descartarColetado(contador));
+                Utils.MonoBehaviour.StartCoroutine(descartarColetado(contador));
                 return true;
             }
         }
