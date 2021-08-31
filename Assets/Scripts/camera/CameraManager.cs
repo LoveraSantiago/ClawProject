@@ -3,6 +3,8 @@ using UnityEngine;
 public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento,
                              AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento
 {
+    private static readonly float RATIO_SCREEN = 0.5625f;
+
     private CameraDto cameraDto;
 
     public CameraManager(CameraDto cameraDto)
@@ -31,6 +33,6 @@ public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento,
 
     public static void forceAspectCameraAsRatio()
     {
-        Camera.main.aspect = Utils.RATIO_SCREEN;
+        Camera.main.aspect = RATIO_SCREEN;
     }
 }
