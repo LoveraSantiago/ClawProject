@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TagUtils 
+public class UtilsTags 
 {
     public static bool isColetavel(Collision2D collision)
     {
