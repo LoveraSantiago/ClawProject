@@ -162,9 +162,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private IEnumerator descartarColetado(int indice)
     {
         //Debug.Log("Acertou display indice " + indice);
-        DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;
-        displayDeColetado[indice].mostrarAlvoSelecionado();
-        yield return displayDeColetado[indice].limparSprColetado(displaysSlotsDto);
+        DisplayDeSlot[] displayDeSlot = grupoDisplays.displayDeSlot;
+        displayDeSlot[indice].mostrarAlvoSelecionado();
+        yield return displayDeSlot[indice].limparSprColetado(displaysSlotsDto);
 
         bool[] result = new bool[3] { false, false, false };
         result[indice] = true;
@@ -173,7 +173,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
     private IEnumerator limpezaTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito  arcoIris)
     {
-        DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;
+        DisplayDeSlot[] displayDeSlot = grupoDisplays.displayDeSlot;
         if (evento.resultCombinacao)
         {
             arcoIris.ligarBlinkVerde();
@@ -183,9 +183,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
             arcoIris.ligarBlinkRed();
         }
 
-        yield return displayDeColetado[0].limparSprColetado(displaysSlotsDto);
-        yield return displayDeColetado[1].limparSprColetado(displaysSlotsDto);
-        yield return displayDeColetado[2].limparSprColetado(displaysSlotsDto);
+        yield return displayDeSlot[0].limparSprColetado(displaysSlotsDto);
+        yield return displayDeSlot[1].limparSprColetado(displaysSlotsDto);
+        yield return displayDeSlot[2].limparSprColetado(displaysSlotsDto);
         yield return new WaitForSeconds(displaysSlotsDto.FimDelay);
     }
 
@@ -211,7 +211,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     //***** IMPLEMENTACAO INTERFACE INFORMACAODISPLAYCOLETADO INICIO *****
     public bool acertouDisplay(Vector2 toque)
     {
-        DisplayDeColetado[] displayDeColetado = grupoDisplays.displayDeColetado;
+        DisplayDeSlot[] displayDeColetado = grupoDisplays.displayDeSlot;
         for (int contador = 0; contador < displayDeColetado.Length; contador++)
         {
             bool result = displayDeColetado[contador].isCliqueDentroArea(toque);

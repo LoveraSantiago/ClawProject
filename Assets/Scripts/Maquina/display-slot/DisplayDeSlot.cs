@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class DisplayDeColetado 
+public class DisplayDeSlot 
 {
     private static readonly int ESTADO_VAZIO            = 0;
     private static readonly int ESTADO_OCUPADO_COLETADO = 1;
@@ -19,7 +19,7 @@ public class DisplayDeColetado
 
     private SingleDisplaySlotDto singleDisplaySlotDto;
 
-    public DisplayDeColetado(SingleDisplaySlotDto singleDisplaySlotDto, Material materialGlowDisplay)
+    public DisplayDeSlot(SingleDisplaySlotDto singleDisplaySlotDto, Material materialGlowDisplay)
     {
         this.singleDisplaySlotDto = singleDisplaySlotDto;
 
