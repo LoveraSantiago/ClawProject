@@ -21,7 +21,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
         this.displayColetadoDto = displayColetadoDto;
-        this.monoBehaviour = monoBehaviour;
+        this.monoBehaviour = monoBehaviour;//TODO rever uso desse monobehaviour
 
         DisplayDeColetado.configurarDisplay(displayColetadoDto);
 

@@ -11,10 +11,11 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 {    
     private PartesMaquinaDto partesDto;
 
-    private DisplaysDeColetados displayDeColetados;
-    private DisplayDeScores displayDeScores;
-    private DisplayTimer displayTimer;
     private VigasTras vigasTras;
+    private DisplayTimer displayTimer;
+    private DisplayDeScores displayDeScores;
+    //private DisplaysDeColetados displayDeColetados;
+    private DisplaysDeColetagemManager displaysDeColetagem;
 
     private Joystick joystick;
     private BotoesPowerUp botoesPowerUp;
@@ -26,15 +27,17 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         partesDto = maquinaDto.PartesDto;
 
-        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
-        displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
-        displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto, monoBehaviour);
-        joystick           = new Joystick(maquinaDto.JoystickDto);
-        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
-        vigasTras          = new VigasTras(maquinaDto.VigasDto);
+        displaysDeColetagem = new DisplaysDeColetagemManager(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
+        //displayDeColetados  = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
+        displayDeScores     = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
+        displayTimer        = new DisplayTimer(maquinaDto.DisplayTimerDto, monoBehaviour);
+        joystick            = new Joystick(maquinaDto.JoystickDto);
+        botoesPowerUp       = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
+        vigasTras           = new VigasTras(maquinaDto.VigasDto);
 
         arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW
-            .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())
+            //.addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())
+            .addArcoIrisConjunto(displaysDeColetagem.getDisplayColetadoGlow())
             .addArcoIrisConjunto(displayDeScores)
             .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow(maquinaDto.DisplayTimerDto))
             .addArcoIrisConjunto(vigasTras)
@@ -45,7 +48,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         botoesPowerUp.configuradoPeloLevel(levelEscolhido);
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
-        displayDeColetados.configuradoPeloLevel(levelEscolhido);
+        //displayDeColetados.configuradoPeloLevel(levelEscolhido);
+        displaysDeColetagem.configuradoPeloLevel(levelEscolhido);
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         vigasTras.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
 
@@ -92,7 +96,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayTimer.pause();
 
         PosExecutorAcaoColetadoFim posExecucao = new PosExecutorAcaoColetadoFim(displayTimer, botoesPowerUp);
-        displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIrisEfeito, posExecucao);
+        displaysDeColetagem.mostrarColetadoNoDisplay(evento, arcoIrisEfeito, posExecucao);
+        //displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIrisEfeito, posExecucao);
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
         botoesPowerUp.suspenderPowerUp();
     }   
@@ -101,7 +106,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         if (evento.isInicio())
         {
-            displayDeColetados.processarPowerUp(evento.interacaoDisplayColetado);
+            displaysDeColetagem.processarPowerUp(evento.interacaoDisplayColetado);
+            //displayDeColetados.processarPowerUp(evento.interacaoDisplayColetado);
             arcoIrisEfeito.ligarEfeitoArcoIris();
             displayTimer.pause();
             displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);
@@ -116,7 +122,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             displayTimer.continuar();
             botoesPowerUp.processarFimPowerUp();
             arcoIrisEfeito.desligarEfeito();
-            displayDeColetados.processarFimPowerUp(botoesPowerUp);
+            displaysDeColetagem.processarFimPowerUp(botoesPowerUp);
+            //displayDeColetados.processarFimPowerUp(botoesPowerUp);
         }
     }              
 
@@ -147,7 +154,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEvento();
+        //return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEvento();
+        return ((AcaoColetadoFim.ProdutorEvento)displaysDeColetagem).getProdutorDeEvento();
     }
 
     ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEvento()

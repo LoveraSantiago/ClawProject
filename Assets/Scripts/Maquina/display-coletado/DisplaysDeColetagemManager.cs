@@ -1,0 +1,41 @@
+using UnityEngine;
+
+public class DisplaysDeColetagemManager : AcaoColetadoFim.ProdutorEvento
+{
+    private DisplaysDeColetados displayDeColetados;
+
+    public DisplaysDeColetagemManager(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
+    {
+        displayDeColetados = new DisplaysDeColetados(displayColetadoDto, monoBehaviour);
+    }
+
+    public void configuradoPeloLevel(AbstractLevel levelEscolhido)
+    {
+        displayDeColetados.configuradoPeloLevel(levelEscolhido);
+    }
+
+    public ArcoIrisConjunto getDisplayColetadoGlow()
+    {
+        return displayDeColetados.getDisplayColetadoGlow();
+    }
+
+    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
+    {
+        displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIris, executorPosEvento);
+    }
+
+    public void processarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
+    {
+        displayDeColetados.processarPowerUp(interacaoDisplayColetado);
+    }
+
+    public void processarFimPowerUp(BotoesPowerUp botoesPup)
+    {
+        displayDeColetados.processarFimPowerUp(botoesPup);
+    }
+
+    ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
+    {
+        return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEvento();
+    }
+}
