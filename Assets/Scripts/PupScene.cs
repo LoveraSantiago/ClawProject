@@ -20,11 +20,12 @@ public class PupScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Utils.configMainMono(this);
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
 
-        BlocoImg blocoImg           = new BlocoImg(blocoImgDto, this);
+        BlocoImg blocoImg           = new BlocoImg(blocoImgDto);
         AllLabels allLables         = new AllLabels(labelsDto);
-        ScrollBottomBarPupScene scBottomBar = new ScrollBottomBarPupScene(prefabBottomBar, this);
+        ScrollBottomBarPupScene scBottomBar = new ScrollBottomBarPupScene(prefabBottomBar);
 
         configBtnBack(btnBack);
         configBtnPratica(btnPratica, blocoImg);

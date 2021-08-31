@@ -14,20 +14,15 @@ public class BlocoImg : AcaoBlocoImgPUpAtual.ProdutorEvento,
 
     private BlocoImgDto blocoImgDto;
     private ControlePupDoCanvas controlePups;
-    private ProdutorDeEvento<PowerUpEntidade> produtorDeEvento;
+    private ProdutorDeEvento<PowerUpEntidade> produtorDeEvento;    
 
-    private MonoBehaviour monoBehaviour;
-
-    public BlocoImg(BlocoImgDto blocoImgDto, MonoBehaviour monoBehaviour)
+    public BlocoImg(BlocoImgDto blocoImgDto)
     {
         this.blocoImgDto = blocoImgDto;
         blocoImgDto.BtnEsquerda.onClick.AddListener(()=> irParaEsquerda());
-        blocoImgDto.BtnDireita.onClick.AddListener(()=> irParaDireita());
-
-        this.monoBehaviour = monoBehaviour;
+        blocoImgDto.BtnDireita.onClick.AddListener(()=> irParaDireita());        
 
         controlePups = new ControlePupDoCanvas();
-
         produtorDeEvento = new ProdutorDeEvento<PowerUpEntidade>();
     }
 
@@ -40,8 +35,8 @@ public class BlocoImg : AcaoBlocoImgPUpAtual.ProdutorEvento,
     {
         if (!animacaoEmAndamento)
         {
-            PowerUpEntidade pupEntidade = controlePups.getAntPup();
-            monoBehaviour.StartCoroutine(moverBloco(ANIM_IR_DIREITA, ANIM_VIR_DIREITA, pupEntidade));
+            PowerUpEntidade pupEntidade = controlePups.getAntPup();            
+            Utils.MonoBehaviour.StartCoroutine(moverBloco(ANIM_IR_DIREITA, ANIM_VIR_DIREITA, pupEntidade));
         }
     }
 
@@ -50,7 +45,7 @@ public class BlocoImg : AcaoBlocoImgPUpAtual.ProdutorEvento,
         if (!animacaoEmAndamento)
         {
             PowerUpEntidade pupEntidade = controlePups.getProxPup();
-            monoBehaviour.StartCoroutine(moverBloco(ANIM_IR_ESQUERDA, ANIM_VIR_ESQUERDA, pupEntidade));
+            Utils.MonoBehaviour.StartCoroutine(moverBloco(ANIM_IR_ESQUERDA, ANIM_VIR_ESQUERDA, pupEntidade));
         }
     }    
 
