@@ -11,14 +11,14 @@ public class DisplaysSlotsDto
     [Space(5)]
     [SerializeField] private Material materialGlowDisplay;
     [Space(5)]
-    [SerializeField] private SingleDisplaySlotDto[] singleDisplayColetado = new SingleDisplaySlotDto[3];
+    [SerializeField] private SingleDisplaySlotDto[] singleDisplaySlotDto = new SingleDisplaySlotDto[3];
 
     public float InicialDelay { get { return inicialDelay; } }
     public float FimDelay { get { return fimDelay; } }
     public float VelocImg { get { return velocImg; } }
     public Sprite SprVazio { get { return sprVazio; } }
 
-    public SingleDisplaySlotDto[] SingleDisplaysColetadoDto { get { return singleDisplayColetado; } }
+    public SingleDisplaySlotDto[] SingleDisplaySlotDto { get { return singleDisplaySlotDto; } }
 
     public Material MaterialGlowDisplay { get { return materialGlowDisplay; } }
 }

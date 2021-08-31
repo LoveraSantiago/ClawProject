@@ -25,7 +25,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
         DisplayDeColetado.configurarDisplay(displaysSlotsDto);
 
-        grupoDisplays = new GrupoDisplays(displaysSlotsDto.SingleDisplaysColetadoDto);
+        grupoDisplays = new GrupoDisplays(displaysSlotsDto.SingleDisplaySlotDto);
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();        
     }    
 
