@@ -7,7 +7,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private bool powerUpAcionado;
     private bool displayColetando;
     
-    private DisplayDeColetadoDto displayColetadoDto;    
+    private DisplaysSlotsDto displaysSlotsDto;    
     
     private GrupoDisplays grupoDisplays;
     private MonoBehaviour monoBehaviour;
@@ -18,14 +18,14 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private Executor agendadoPosExecutor;
     private PowerUpInteracaoDisplayColetado agendadoInteracaoDisplayColetado;
 
-    public DisplaysDeColetados(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
+    public DisplaysDeColetados(DisplaysSlotsDto displaysSlotsDto, MonoBehaviour monoBehaviour)
     {
-        this.displayColetadoDto = displayColetadoDto;
+        this.displaysSlotsDto = displaysSlotsDto;
         this.monoBehaviour = monoBehaviour;//TODO rever uso desse monobehaviour
 
-        DisplayDeColetado.configurarDisplay(displayColetadoDto);
+        DisplayDeColetado.configurarDisplay(displaysSlotsDto);
 
-        grupoDisplays = new GrupoDisplays(displayColetadoDto.SingleDisplaysColetadoDto);
+        grupoDisplays = new GrupoDisplays(displaysSlotsDto.SingleDisplaysColetadoDto);
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();        
     }    
 
@@ -187,7 +187,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         yield return displayDeColetado[0].limparSprColetado();
         yield return displayDeColetado[1].limparSprColetado();
         yield return displayDeColetado[2].limparSprColetado();
-        yield return new WaitForSeconds(displayColetadoDto.FimDelay);
+        yield return new WaitForSeconds(displaysSlotsDto.FimDelay);
     }
 
     private IEnumerator limpezaEFimTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)

@@ -4,9 +4,9 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento
 {
     private DisplaysDeColetados displayDeColetados;
 
-    public DisplaysDeSlots(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
+    public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto, MonoBehaviour monoBehaviour)
     {
-        displayDeColetados = new DisplaysDeColetados(displayColetadoDto, monoBehaviour);
+        displayDeColetados = new DisplaysDeColetados(displaysSlotsDto, monoBehaviour);
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)

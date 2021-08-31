@@ -7,12 +7,12 @@ public class GrupoDisplays : ArcoIrisConjunto
     private bool powerUpDisplayColetado;
     public DisplayDeColetado[] displayDeColetado { get; private set; }
 
-    public GrupoDisplays(SingleDisplayColetadoDto[] singlesDisplayColetadosDto)
+    public GrupoDisplays(SingleDisplaySlotDto[] singleDisplaySlotDto)
     {
-        displayDeColetado = new DisplayDeColetado[singlesDisplayColetadosDto.Length];
-        displayDeColetado[0] = new DisplayDeColetado(singlesDisplayColetadosDto[0]);
-        displayDeColetado[1] = new DisplayDeColetado(singlesDisplayColetadosDto[1]);
-        displayDeColetado[2] = new DisplayDeColetado(singlesDisplayColetadosDto[2]);
+        displayDeColetado = new DisplayDeColetado[singleDisplaySlotDto.Length];
+        displayDeColetado[0] = new DisplayDeColetado(singleDisplaySlotDto[0]);
+        displayDeColetado[1] = new DisplayDeColetado(singleDisplaySlotDto[1]);
+        displayDeColetado[2] = new DisplayDeColetado(singleDisplaySlotDto[2]);
     }
 
     public void colorirDisplays(Dictionary<string, string> dicionarioDeCores)

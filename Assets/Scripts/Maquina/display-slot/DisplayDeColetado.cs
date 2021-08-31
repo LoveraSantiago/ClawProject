@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DisplayDeColetado 
 {
-    private static DisplayDeColetadoDto displayColetadoDto;
+    private static DisplaysSlotsDto displaysSlotsDto;
 
     private static readonly int ESTADO_VAZIO            = 0;
     private static readonly int ESTADO_OCUPADO_COLETADO = 1;
@@ -19,21 +19,21 @@ public class DisplayDeColetado
     private AnimacaoDisplayColetado animacao;
     private MovimentadorDeSlots slots;
 
-    private SingleDisplayColetadoDto sDisplayDto;
+    private SingleDisplaySlotDto singleDisplaySlotDto;
 
-    public DisplayDeColetado(SingleDisplayColetadoDto singleDisplayColetadoDto)
+    public DisplayDeColetado(SingleDisplaySlotDto singleDisplaySlotDto)
     {
-        sDisplayDto = singleDisplayColetadoDto;
+        this.singleDisplaySlotDto = singleDisplaySlotDto;
 
-        animacao = new AnimacaoDisplayColetado(singleDisplayColetadoDto.Animator);
+        animacao = new AnimacaoDisplayColetado(singleDisplaySlotDto.Animator);
 
-        MaterialGlow materialGlow = new MaterialGlow(displayColetadoDto.MaterialGlowDisplay);
-        glowEfeito = new GlowEfeito(singleDisplayColetadoDto.SprRendererDentroEfeito.gameObject, materialGlow);        
+        MaterialGlow materialGlow = new MaterialGlow(displaysSlotsDto.MaterialGlowDisplay);
+        glowEfeito = new GlowEfeito(singleDisplaySlotDto.SprRendererDentroEfeito.gameObject, materialGlow);
 
-        posicaoSlotBaixoInicial = sDisplayDto.GoSlotBaixo.transform.localPosition;
-        posicaoSlotCimaInicial  = sDisplayDto.GoSlotCima.transform.localPosition;
+        posicaoSlotBaixoInicial = this.singleDisplaySlotDto.GoSlotBaixo.transform.localPosition;
+        posicaoSlotCimaInicial = this.singleDisplaySlotDto.GoSlotCima.transform.localPosition;
 
-        Vector3 localPosition = sDisplayDto.GoSlotBaixo.transform.localPosition;
+        Vector3 localPosition = this.singleDisplaySlotDto.GoSlotBaixo.transform.localPosition;
         posicaoDesejada = new Vector3(localPosition.x, 0.5f, localPosition.z);
 
         slots = new MovimentadorDeSlots();
@@ -41,8 +41,8 @@ public class DisplayDeColetado
 
     public void configuradoPeloLevel(Color corDisplay, Color corDentro)
     {
-        sDisplayDto.SprDisplay.color = corDisplay;
-        sDisplayDto.SprRendererDentro.color = corDentro;
+        singleDisplaySlotDto.SprDisplay.color = corDisplay;
+        singleDisplaySlotDto.SprRendererDentro.color = corDentro;
     }   
 
     public IEnumerator mostrarAlvo()
@@ -53,7 +53,7 @@ public class DisplayDeColetado
         }
         else
         {
-            yield return mostrarSprNone(displayColetadoDto.SprVazio);
+            yield return mostrarSprNone(displaysSlotsDto.SprVazio);
         }
         ligarGlowLuz();
     }
@@ -82,9 +82,9 @@ public class DisplayDeColetado
             yield return limparSprNone();
         }
         estadoAtual = ESTADO_OCUPADO_COLETADO;
-        sDisplayDto.SlotSpriteBaixo.sprite = sprite;
+        singleDisplaySlotDto.SlotSpriteBaixo.sprite = sprite;
         ligarGlowLuz();
-        yield return slots.subirSlotBaixo(sDisplayDto.GoSlotBaixo, posicaoDesejada, displayColetadoDto);        
+        yield return slots.subirSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, posicaoDesejada, displaysSlotsDto);        
         desligarGlow();
 
         if (mostrarMira)
@@ -96,22 +96,22 @@ public class DisplayDeColetado
     public IEnumerator limparSprColetado()
     {
         estadoAtual = ESTADO_VAZIO;
-        yield return slots.descerSlotBaixo(sDisplayDto.GoSlotBaixo, posicaoSlotBaixoInicial, displayColetadoDto);        
+        yield return slots.descerSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, posicaoSlotBaixoInicial, displaysSlotsDto);        
     }     
     
     public IEnumerator mostrarSprNone(Sprite sprite)
     {
         estadoAtual = ESTADO_OCUPADO_NONE;
-        sDisplayDto.SlotSpriteCima.sprite = sprite;
-        sDisplayDto.SlotSpriteCima.color = Color.red;
-        yield return slots.descerSlotCima(sDisplayDto.GoSlotCima, posicaoDesejada, displayColetadoDto);        
+        singleDisplaySlotDto.SlotSpriteCima.sprite = sprite;
+        singleDisplaySlotDto.SlotSpriteCima.color = Color.red;
+        yield return slots.descerSlotCima(singleDisplaySlotDto.GoSlotCima, posicaoDesejada, displaysSlotsDto);        
     }    
 
     public IEnumerator limparSprNone()
     {
         estadoAtual = ESTADO_VAZIO;
-        yield return slots.subirSlotCima(sDisplayDto.GoSlotCima, posicaoSlotCimaInicial, displayColetadoDto);
-        sDisplayDto.SlotSpriteCima.sprite = null;
+        yield return slots.subirSlotCima(singleDisplaySlotDto.GoSlotCima, posicaoSlotCimaInicial, displaysSlotsDto);
+        singleDisplaySlotDto.SlotSpriteCima.sprite = null;
     }
 
     public void ligarGlowSucesso()
@@ -151,7 +151,7 @@ public class DisplayDeColetado
 
     public bool isCliqueDentroArea(Vector2 posicao)
     {
-        return isOcupadoColetado() && sDisplayDto.SprRendererDentro.bounds.Contains(posicao);
+        return isOcupadoColetado() && singleDisplaySlotDto.SprRendererDentro.bounds.Contains(posicao);
     }    
 
     public MaterialGlow getMaterialGlow()
@@ -159,8 +159,8 @@ public class DisplayDeColetado
         return glowEfeito.materialGlow;
     }
 
-    public static void configurarDisplay(DisplayDeColetadoDto displayColetadoDtoArg)
+    public static void configurarDisplay(DisplaysSlotsDto displaysSlotsDtoArg)
     {
-        displayColetadoDto = displayColetadoDtoArg;
+        displaysSlotsDto = displaysSlotsDtoArg;
     }  
 }

@@ -26,7 +26,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         partesDto = maquinaDto.PartesDto;
 
-        displaysDeSlots = new DisplaysDeSlots(maquinaDto.DisplayDeColetadoDto, monoBehaviour);        
+        displaysDeSlots = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto, monoBehaviour);        
         displayDeScores = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
         displayTimer    = new DisplayTimer(maquinaDto.DisplayTimerDto, monoBehaviour);
         joystick        = new Joystick(maquinaDto.JoystickDto);

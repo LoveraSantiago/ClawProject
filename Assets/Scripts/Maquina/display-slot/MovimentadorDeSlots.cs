@@ -15,29 +15,29 @@ public class MovimentadorDeSlots
         continuarMovimentacao = false;
     }    
 
-    public IEnumerator subirSlotBaixo(GameObject slot, Vector3 posicaoDesejada, DisplayDeColetadoDto displayDto)
+    public IEnumerator subirSlotBaixo(GameObject slot, Vector3 posicaoDesejada, DisplaysSlotsDto displaysSlotsDto)
     {
-        float velocidade = displayDto.VelocImg;
-        float delay = displayDto.InicialDelay;
+        float velocidade = displaysSlotsDto.VelocImg;
+        float delay = displaysSlotsDto.InicialDelay;
         yield return movimentarSlot(velocidade, delay, slot, posicaoDesejada);
     }
 
-    public IEnumerator descerSlotBaixo(GameObject slot, Vector3 posicaoDesejada, DisplayDeColetadoDto displayDto)
+    public IEnumerator descerSlotBaixo(GameObject slot, Vector3 posicaoDesejada, DisplaysSlotsDto displaysSlotsDto)
     {
-        float velocidade = displayDto.VelocImg;
-        float fimDelay = displayDto.FimDelay;
+        float velocidade = displaysSlotsDto.VelocImg;
+        float fimDelay = displaysSlotsDto.FimDelay;
         yield return movimentarSlot(velocidade, fimDelay, slot, posicaoDesejada);
     }
 
-    public IEnumerator descerSlotCima(GameObject slot, Vector3 posicaoDesejada, DisplayDeColetadoDto displayDto)
+    public IEnumerator descerSlotCima(GameObject slot, Vector3 posicaoDesejada, DisplaysSlotsDto displaysSlotsDto)
     {
-        float velocidade = displayDto.VelocImg;
+        float velocidade = displaysSlotsDto.VelocImg;
         yield return movimentarSlot(velocidade, 0, slot, posicaoDesejada);        
     }
 
-    public IEnumerator subirSlotCima(GameObject slot, Vector3 posicaoDesejada, DisplayDeColetadoDto displayDto)
+    public IEnumerator subirSlotCima(GameObject slot, Vector3 posicaoDesejada, DisplaysSlotsDto displaysSlotsDto)
     {
-        float velocidade = displayDto.VelocImg;
+        float velocidade = displaysSlotsDto.VelocImg;
         yield return movimentarSlot(velocidade, 0, slot, posicaoDesejada);        
     }
 
