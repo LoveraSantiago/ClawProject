@@ -7,12 +7,12 @@ public class GrupoDisplays : ArcoIrisConjunto
     private bool powerUpDisplayColetado;
     public DisplayDeColetado[] displayDeColetado { get; private set; }
 
-    public GrupoDisplays(SingleDisplaySlotDto[] singleDisplaySlotDto)
+    public GrupoDisplays(SingleDisplaySlotDto[] singleDisplaySlotDto, Material materialGlowDisplay)
     {
         displayDeColetado = new DisplayDeColetado[singleDisplaySlotDto.Length];
-        displayDeColetado[0] = new DisplayDeColetado(singleDisplaySlotDto[0]);
-        displayDeColetado[1] = new DisplayDeColetado(singleDisplaySlotDto[1]);
-        displayDeColetado[2] = new DisplayDeColetado(singleDisplaySlotDto[2]);
+        displayDeColetado[0] = new DisplayDeColetado(singleDisplaySlotDto[0], materialGlowDisplay);
+        displayDeColetado[1] = new DisplayDeColetado(singleDisplaySlotDto[1], materialGlowDisplay);
+        displayDeColetado[2] = new DisplayDeColetado(singleDisplaySlotDto[2], materialGlowDisplay);
     }
 
     public void colorirDisplays(Dictionary<string, string> dicionarioDeCores)
@@ -25,23 +25,23 @@ public class GrupoDisplays : ArcoIrisConjunto
         powerUpDisplayColetado = estado;
     }      
 
-    public void acionarMostrarAlvos(MonoBehaviour monoBehaviour)
+    public void acionarMostrarAlvos(DisplaysSlotsDto displaysSlotsDto, MonoBehaviour monoBehaviour)
     {
-        monoBehaviour.StartCoroutine(displayDeColetado[0].mostrarAlvo());
-        monoBehaviour.StartCoroutine(displayDeColetado[1].mostrarAlvo());
-        monoBehaviour.StartCoroutine(displayDeColetado[2].mostrarAlvo());
+        monoBehaviour.StartCoroutine(displayDeColetado[0].mostrarAlvo(displaysSlotsDto));
+        monoBehaviour.StartCoroutine(displayDeColetado[1].mostrarAlvo(displaysSlotsDto));
+        monoBehaviour.StartCoroutine(displayDeColetado[2].mostrarAlvo(displaysSlotsDto));
     }
 
-    public void desligarAlvos(MonoBehaviour monoBehaviour)
+    public void desligarAlvos(DisplaysSlotsDto displaysSlotsDto, MonoBehaviour monoBehaviour)
     {
-        monoBehaviour.StartCoroutine(displayDeColetado[0].desligarAlvo());
-        monoBehaviour.StartCoroutine(displayDeColetado[1].desligarAlvo());
-        monoBehaviour.StartCoroutine(displayDeColetado[2].desligarAlvo());
+        monoBehaviour.StartCoroutine(displayDeColetado[0].desligarAlvo(displaysSlotsDto));
+        monoBehaviour.StartCoroutine(displayDeColetado[1].desligarAlvo(displaysSlotsDto));
+        monoBehaviour.StartCoroutine(displayDeColetado[2].desligarAlvo(displaysSlotsDto));
     }
 
-    public IEnumerator mostrarSprColetado(int indice, Sprite sprite, bool powerUpAcionado)
+    public IEnumerator mostrarSprColetado(int indice, Sprite sprite, bool powerUpAcionado, DisplaysSlotsDto displaysSlotsDto)
     {
-        yield return displayDeColetado[indice].mostrarSprColetado(sprite, powerUpAcionado);
+        yield return displayDeColetado[indice].mostrarSprColetado(sprite, powerUpAcionado, displaysSlotsDto);
     }
 
     public int getIndicePrimeiroDisplayDesocupado()

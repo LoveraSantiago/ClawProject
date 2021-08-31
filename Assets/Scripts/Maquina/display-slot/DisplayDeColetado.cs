@@ -3,8 +3,6 @@ using System.Collections;
 
 public class DisplayDeColetado 
 {
-    private static DisplaysSlotsDto displaysSlotsDto;
-
     private static readonly int ESTADO_VAZIO            = 0;
     private static readonly int ESTADO_OCUPADO_COLETADO = 1;
     private static readonly int ESTADO_OCUPADO_NONE     = 2;
@@ -21,13 +19,13 @@ public class DisplayDeColetado
 
     private SingleDisplaySlotDto singleDisplaySlotDto;
 
-    public DisplayDeColetado(SingleDisplaySlotDto singleDisplaySlotDto)
+    public DisplayDeColetado(SingleDisplaySlotDto singleDisplaySlotDto, Material materialGlowDisplay)
     {
         this.singleDisplaySlotDto = singleDisplaySlotDto;
 
         animacao = new AnimacaoDisplayColetado(singleDisplaySlotDto.Animator);
 
-        MaterialGlow materialGlow = new MaterialGlow(displaysSlotsDto.MaterialGlowDisplay);
+        MaterialGlow materialGlow = new MaterialGlow(materialGlowDisplay);
         glowEfeito = new GlowEfeito(singleDisplaySlotDto.SprRendererDentroEfeito.gameObject, materialGlow);
 
         posicaoSlotBaixoInicial = this.singleDisplaySlotDto.GoSlotBaixo.transform.localPosition;
@@ -45,7 +43,7 @@ public class DisplayDeColetado
         singleDisplaySlotDto.SprRendererDentro.color = corDentro;
     }   
 
-    public IEnumerator mostrarAlvo()
+    public IEnumerator mostrarAlvo(DisplaysSlotsDto displaysSlotsDto)
     {
         if (isOcupadoColetado())
         {
@@ -53,7 +51,7 @@ public class DisplayDeColetado
         }
         else
         {
-            yield return mostrarSprNone(displaysSlotsDto.SprVazio);
+            yield return mostrarSprNone(displaysSlotsDto);
         }
         ligarGlowLuz();
     }
@@ -63,23 +61,24 @@ public class DisplayDeColetado
         animacao.ligarAnimacaoMiraSelecionado();
     }
 
-    public IEnumerator desligarAlvo()
+    public IEnumerator desligarAlvo(DisplaysSlotsDto displaysSlotsDto)
     {
         if (animacao.isMiraLigado)
         {
             animacao.desligarAnimacao();
         }
         else{
-            yield return limparSprNone();
+            yield return limparSprNone(displaysSlotsDto);
         }
     }
 
-    public IEnumerator mostrarSprColetado(Sprite sprite, bool mostrarMira)
+    public IEnumerator mostrarSprColetado(
+        Sprite sprite, bool mostrarMira, DisplaysSlotsDto displaysSlotsDto)
     {
         if (isOcupadoNone())
         {
             slots.cancelarMovimentacaoDeSlot();
-            yield return limparSprNone();
+            yield return limparSprNone(displaysSlotsDto);
         }
         estadoAtual = ESTADO_OCUPADO_COLETADO;
         singleDisplaySlotDto.SlotSpriteBaixo.sprite = sprite;
@@ -89,25 +88,25 @@ public class DisplayDeColetado
 
         if (mostrarMira)
         {
-            yield return mostrarAlvo();
+            yield return mostrarAlvo(displaysSlotsDto);
         }
     }   
 
-    public IEnumerator limparSprColetado()
+    public IEnumerator limparSprColetado(DisplaysSlotsDto displaysSlotsDto)
     {
         estadoAtual = ESTADO_VAZIO;
         yield return slots.descerSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, posicaoSlotBaixoInicial, displaysSlotsDto);        
     }     
     
-    public IEnumerator mostrarSprNone(Sprite sprite)
+    public IEnumerator mostrarSprNone(DisplaysSlotsDto displaysSlotsDto)
     {
         estadoAtual = ESTADO_OCUPADO_NONE;
-        singleDisplaySlotDto.SlotSpriteCima.sprite = sprite;
+        singleDisplaySlotDto.SlotSpriteCima.sprite = displaysSlotsDto.SprVazio;
         singleDisplaySlotDto.SlotSpriteCima.color = Color.red;
         yield return slots.descerSlotCima(singleDisplaySlotDto.GoSlotCima, posicaoDesejada, displaysSlotsDto);        
     }    
 
-    public IEnumerator limparSprNone()
+    public IEnumerator limparSprNone(DisplaysSlotsDto displaysSlotsDto)
     {
         estadoAtual = ESTADO_VAZIO;
         yield return slots.subirSlotCima(singleDisplaySlotDto.GoSlotCima, posicaoSlotCimaInicial, displaysSlotsDto);
@@ -157,10 +156,5 @@ public class DisplayDeColetado
     public MaterialGlow getMaterialGlow()
     {
         return glowEfeito.materialGlow;
-    }
-
-    public static void configurarDisplay(DisplaysSlotsDto displaysSlotsDtoArg)
-    {
-        displaysSlotsDto = displaysSlotsDtoArg;
-    }  
+    }    
 }
