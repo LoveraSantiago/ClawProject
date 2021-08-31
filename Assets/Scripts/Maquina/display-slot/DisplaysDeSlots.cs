@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class DisplaysDeColetagemManager : AcaoColetadoFim.ProdutorEvento
+public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento
 {
     private DisplaysDeColetados displayDeColetados;
 
-    public DisplaysDeColetagemManager(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
+    public DisplaysDeSlots(DisplayDeColetadoDto displayColetadoDto, MonoBehaviour monoBehaviour)
     {
         displayDeColetados = new DisplaysDeColetados(displayColetadoDto, monoBehaviour);
     }
