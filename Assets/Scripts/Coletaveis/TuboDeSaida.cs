@@ -63,7 +63,7 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
 
     private void triggerDeSaidaDeTuboAcionado(Collider2D coletavelSaindo)
     {
-        if (Utils.isTag(coletavelSaindo, "ColetavelDoTubo"))
+        if (TagUtils.isNome(coletavelSaindo, "ColetavelDoTubo"))
         {   
             restaurandoColetaveisParaOTubo(int.Parse(coletavelSaindo.name));
         }
