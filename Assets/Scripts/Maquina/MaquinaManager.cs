@@ -45,7 +45,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         botoesPowerUp.configuradoPeloLevel(levelEscolhido);
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
-        displayDeColetados.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        displayDeColetados.configuradoPeloLevel(levelEscolhido);
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         vigasTras.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
 
