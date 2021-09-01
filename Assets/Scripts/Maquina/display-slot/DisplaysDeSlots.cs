@@ -1,4 +1,5 @@
-public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento
+public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
+                               AcaoCacaNiquel.ProdutorEvento
 {
     private GrupoDisplays grupoDisplays;
 
@@ -17,6 +18,11 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento
     {        
         grupoDisplays.colorirDisplays(levelEscolhido.getDicionarioDeCores());
         displayCacaNiquel.configuradoPeloLevel(levelEscolhido.getTipoGame());
+    }
+
+    public void iniciar()
+    {
+        displayCacaNiquel.iniciar();
     }
 
     public ArcoIrisConjunto getDisplayColetadoGlow()
@@ -42,5 +48,10 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEvento();
+    }
+
+    ProdutorDeEvento<Vazio> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
+    {
+        return ((AcaoCacaNiquel.ProdutorEvento)displayCacaNiquel).getProdutorDeEvento();
     }
 }

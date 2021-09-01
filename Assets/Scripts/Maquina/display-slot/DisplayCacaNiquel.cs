@@ -1,14 +1,36 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplayCacaNiquel 
+public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 {
+    private bool acionarCacaNiquel;
+    private ProdutorDeEvento<Vazio> produtorDeEvento;
+
     public void configuradoPeloLevel(AbstractLevel.TIPO_GAME tipoGame)
     {
         if(tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP)
         {
-
+            acionarCacaNiquel = true;
         }
+        produtorDeEvento = new ProdutorDeEvento<Vazio>();
+    }
+
+    public void iniciar()
+    {
+        if (acionarCacaNiquel)
+        {
+            Utils.MonoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel());
+        }
+    }
+
+    private IEnumerator iniciarDisplayCacaNiquel()
+    {
+        yield return new WaitForSeconds(0.5f);
+        produtorDeEvento.produziuEvento(new Vazio());
+    }
+
+    ProdutorDeEvento<Vazio> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
+    {
+        return produtorDeEvento;
     }
 }
