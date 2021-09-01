@@ -6,13 +6,17 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     private bool acionarCacaNiquel;
     private ProdutorDeEvento<Vazio> produtorDeEvento;
 
-    public void configuradoPeloLevel(AbstractLevel.TIPO_GAME tipoGame)
+    public DisplayCacaNiquel()
     {
+        produtorDeEvento = new ProdutorDeEvento<Vazio>();
+    }
+
+    public void configuradoPeloLevel(AbstractLevel.TIPO_GAME tipoGame)
+    {        
         if(tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP)
         {
             acionarCacaNiquel = true;
         }
-        produtorDeEvento = new ProdutorDeEvento<Vazio>();
     }
 
     public void iniciar()

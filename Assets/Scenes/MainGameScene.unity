@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 999999998
   mainDto:
     garraDto:
       velocMovHorizontal: 3.1
@@ -1216,7 +1216,7 @@ MonoBehaviour:
       noise6d: {fileID: 11400000, guid: a31f2eaada77af94689f0b0d7e781fb6, type: 2}
       virtualCam1: {fileID: 250677996}
       virtualCam2: {fileID: 1162031990}
-      virtualCam3: {fileID: 0}
+      virtualCam3: {fileID: 2101427130}
   powerUpDto:
     vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
     prefabPowerUpDto: {fileID: 5653745407918303698, guid: 264fd96ffd92c7d4899adb12d26ef4f1, type: 3}
