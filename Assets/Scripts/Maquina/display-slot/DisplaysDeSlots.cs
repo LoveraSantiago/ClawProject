@@ -1,13 +1,15 @@
-using UnityEngine;
-
 public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento
 {
+    private GrupoDisplays grupoDisplays;
+
     private DisplaysDeColetados displayDeColetados;
     private DisplayCacaNiquel displayCacaNiquel;
 
     public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto)
     {
-        displayDeColetados = new DisplaysDeColetados(displaysSlotsDto);
+        grupoDisplays = new GrupoDisplays(displaysSlotsDto.SingleDisplaySlotDto, displaysSlotsDto.MaterialGlowDisplay);
+
+        displayDeColetados = new DisplaysDeColetados(displaysSlotsDto, grupoDisplays);
         displayCacaNiquel  = new DisplayCacaNiquel();
     }
 
@@ -19,7 +21,7 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento
 
     public ArcoIrisConjunto getDisplayColetadoGlow()
     {
-        return displayDeColetados.getDisplayColetadoGlow();
+        return grupoDisplays;
     }
 
     public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)

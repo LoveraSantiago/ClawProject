@@ -17,10 +17,10 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private Executor agendadoPosExecutor;
     private PowerUpInteracaoDisplayColetado agendadoInteracaoDisplayColetado;
 
-    public DisplaysDeColetados(DisplaysSlotsDto displaysSlotsDto)
+    public DisplaysDeColetados(DisplaysSlotsDto displaysSlotsDto, GrupoDisplays grupoDisplays)
     {
         this.displaysSlotsDto = displaysSlotsDto;
-        grupoDisplays = new GrupoDisplays(displaysSlotsDto.SingleDisplaySlotDto, displaysSlotsDto.MaterialGlowDisplay);
+        this.grupoDisplays = grupoDisplays;
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();        
     }    
 
@@ -74,7 +74,6 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
             {
                 botoesPup.reativarPowerUpPosDisplay();
             }
-
         }
     }
 
@@ -117,12 +116,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
             fimLimpezaTodosDisplaysNaoOcupados(executorPosEvento);                        
         }
         displayColetando = false;
-    }     
-
-    public ArcoIrisConjunto getDisplayColetadoGlow()
-    {
-        return grupoDisplays;
-    }
+    }        
 
     private bool possuiAgendamentoDePowerUp()
     {
