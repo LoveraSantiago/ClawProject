@@ -14,8 +14,8 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
-    {
-        displayDeColetados.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+    {        
+        grupoDisplays.colorirDisplays(levelEscolhido.getDicionarioDeCores());
         displayCacaNiquel.configuradoPeloLevel(levelEscolhido.getTipoGame());
     }
 

@@ -17,12 +17,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         this.grupoDisplays = grupoDisplays;
         agendados = new AgendamentoDisplayColetados();
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();            
-    }    
-
-    public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
-    {
-        grupoDisplays.colorirDisplays(dicionarioDeCores);
-    }
+    }        
 
     public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
