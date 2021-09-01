@@ -28,23 +28,34 @@ public class GrupoDisplays : ArcoIrisConjunto
         powerUpDisplayColetado = estado;
     }      
 
-    public void acionarMostrarAlvos(DisplaysSlotsDto displaysSlotsDto)
+    public void acionarMostrarAlvos()
     {
         Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].mostrarAlvo(displaysSlotsDto));
         Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].mostrarAlvo(displaysSlotsDto));
         Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].mostrarAlvo(displaysSlotsDto));
     }
 
-    public void desligarAlvos(DisplaysSlotsDto displaysSlotsDto)
+    public void desligarAlvos()
     {
         Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].desligarAlvo(displaysSlotsDto));
         Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].desligarAlvo(displaysSlotsDto));
         Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].desligarAlvo(displaysSlotsDto));
     }
 
-    public IEnumerator mostrarSprColetado(int indice, Sprite sprite, bool powerUpAcionado, DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator mostrarSprColetado(int indice, Sprite sprite, bool powerUpAcionado)
     {
         yield return displayDeSlot[indice].mostrarSprColetado(sprite, powerUpAcionado, displaysSlotsDto);
+    }
+
+    public IEnumerator limparSprColetado(int indice)
+    {
+        yield return displayDeSlot[indice].limparSprColetado(displaysSlotsDto);
+    }
+
+    public IEnumerator mostrarAlvoELimparSprColetado(int indice)
+    {
+        displayDeSlot[indice].mostrarAlvoSelecionado();
+        yield return displayDeSlot[indice].limparSprColetado(displaysSlotsDto);
     }
 
     public int getIndicePrimeiroDisplayDesocupado()
@@ -64,6 +75,12 @@ public class GrupoDisplays : ArcoIrisConjunto
         return displayDeSlot[0].isDesocupado() && displayDeSlot[1].isDesocupado() && displayDeSlot[2].isDesocupado();
     }
 
+    public float getFimDelay()
+    {
+        return displaysSlotsDto.FimDelay;
+    }
+
+    //***** INICIO IMPLEMENTACAO INTERFACE ARCO IRIS CONJUNTO *****
     public void ligar()
     {
         if (!powerUpDisplayColetado)
@@ -88,4 +105,5 @@ public class GrupoDisplays : ArcoIrisConjunto
             displayDeSlot[0].getMaterialGlow().setCorNoMaterial(cor);
         }
     }
+    //***** FIM IMPLEMENTACAO INTERFACE ARCO IRIS CONJUNTO *****
 }

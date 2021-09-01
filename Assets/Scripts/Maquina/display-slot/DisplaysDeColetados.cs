@@ -7,8 +7,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 {
     private bool powerUpAcionado;
     private bool displayColetando;
-    
-    //private DisplaysSlotsDto displaysSlotsDto;        
+        
     private GrupoDisplays grupoDisplays;    
     private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
 
@@ -18,8 +17,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private PowerUpInteracaoDisplayColetado agendadoInteracaoDisplayColetado;
 
     public DisplaysDeColetados(DisplaysSlotsDto displaysSlotsDto, GrupoDisplays grupoDisplays)
-    {
-        //this.displaysSlotsDto = displaysSlotsDto;
+    {    
         this.grupoDisplays = grupoDisplays;
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();        
     }    
@@ -55,7 +53,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         {
             powerUpAcionado = false;
             grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
-            grupoDisplays.desligarAlvos(displaysSlotsDto);            
+            grupoDisplays.desligarAlvos();            
             agendadoInteracaoDisplayColetado = null;
 
             if (possuiAgendamentoDeEvento())
@@ -81,15 +79,16 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     {
         powerUpAcionado = true;
         grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
-        grupoDisplays.acionarMostrarAlvos(displaysSlotsDto);
+        grupoDisplays.acionarMostrarAlvos();
         interacaoDisplayColetado.iniciar(this);        
     }     
 
-    private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
+    private IEnumerator mostrarSprite(
+        InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {        
         displayColetando = true;
         int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();        
-        yield return grupoDisplays.mostrarSprColetado(indiceDesocupado, evento.sprite, powerUpAcionado, displaysSlotsDto);        
+        yield return grupoDisplays.mostrarSprColetado(indiceDesocupado, evento.sprite, powerUpAcionado);        
 
         if (possuiAgendamentoDePowerUp())
         {
@@ -151,10 +150,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
     private IEnumerator descartarColetado(int indice)
     {
-        //Debug.Log("Acertou display indice " + indice);
-        DisplayDeSlot[] displayDeSlot = grupoDisplays.displayDeSlot;
-        displayDeSlot[indice].mostrarAlvoSelecionado();
-        yield return displayDeSlot[indice].limparSprColetado(displaysSlotsDto);
+        yield return grupoDisplays.mostrarAlvoELimparSprColetado(indice);
 
         bool[] result = new bool[3] { false, false, false };
         result[indice] = true;
@@ -173,10 +169,10 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
             arcoIris.ligarBlinkRed();
         }
 
-        yield return displayDeSlot[0].limparSprColetado(displaysSlotsDto);
-        yield return displayDeSlot[1].limparSprColetado(displaysSlotsDto);
-        yield return displayDeSlot[2].limparSprColetado(displaysSlotsDto);
-        yield return new WaitForSeconds(displaysSlotsDto.FimDelay);
+        yield return grupoDisplays.limparSprColetado(0);
+        yield return grupoDisplays.limparSprColetado(1);
+        yield return grupoDisplays.limparSprColetado(2);
+        yield return new WaitForSeconds(grupoDisplays.getFimDelay());
     }
 
     private IEnumerator limpezaEFimTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
