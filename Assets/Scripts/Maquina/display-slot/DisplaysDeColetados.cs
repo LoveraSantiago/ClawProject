@@ -9,17 +9,14 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private bool displayColetando;
         
     private GrupoDisplays grupoDisplays;    
+    private AgendamentoDisplayColetados agendados;    
     private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
-
-    private InformacoesColetadoDto agendadoEvento;
-    private ArcoIrisEfeito agendadoArcoIris;
-    private Executor agendadoPosExecutor;
-    private PowerUpInteracaoDisplayColetado agendadoInteracaoDisplayColetado;
 
     public DisplaysDeColetados(DisplaysSlotsDto displaysSlotsDto, GrupoDisplays grupoDisplays)
     {    
         this.grupoDisplays = grupoDisplays;
-        produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();        
+        agendados = new AgendamentoDisplayColetados();
+        produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();            
     }    
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
@@ -38,7 +35,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         {            
             if (displayColetando)
             {
-                agendadoInteracaoDisplayColetado = interacaoDisplayColetado;
+                agendados.agendar(interacaoDisplayColetado);                
             }
             else
             {
@@ -53,20 +50,22 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         {
             powerUpAcionado = false;
             grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
-            grupoDisplays.desligarAlvos();            
-            agendadoInteracaoDisplayColetado = null;
+            grupoDisplays.desligarAlvos();
+            agendados.cleanInteracao();            
 
-            if (possuiAgendamentoDeEvento())
+            if (agendados.possuiAgendamentoDeEvento())
             {
                 if (grupoDisplays.isTodosDisplayOcupados())
                 {
-                    Utils.MonoBehaviour.StartCoroutine(limpezaEFimTodosDisplaysOcupados(agendadoEvento, agendadoArcoIris, agendadoPosExecutor));
+                    Utils.MonoBehaviour.StartCoroutine(
+                        limpezaEFimTodosDisplaysOcupados(
+                            agendados.infoColetadoDto, agendados.arcoIris, agendados.executor));
                 }
                 else
                 {
-                    fimLimpezaTodosDisplaysNaoOcupados(agendadoPosExecutor);
+                    fimLimpezaTodosDisplaysNaoOcupados(agendados.executor);
                 }
-                limparEventoAgendado();
+                agendados.cleanOutros();
             }
             else
             {
@@ -90,14 +89,14 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();        
         yield return grupoDisplays.mostrarSprColetado(indiceDesocupado, evento.sprite, powerUpAcionado);        
 
-        if (possuiAgendamentoDePowerUp())
+        if (agendados.possuiAgendamentoDePowerUp())
         {
             acionarPowerUpAgendado(evento, arcoIris, executorPosEvento);            
         }
         else if (grupoDisplays.isTodosDisplayOcupados() && !powerUpAcionado)
         {
             yield return limpezaTodosDisplaysOcupados(evento, arcoIris);
-            if (possuiAgendamentoDePowerUp())
+            if (agendados.possuiAgendamentoDePowerUp())
             {
                 acionarPowerUpAgendado(evento, arcoIris, executorPosEvento);
             }
@@ -108,45 +107,21 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         }
         else if (powerUpAcionado)
         {
-            agendarEvento(evento, arcoIris, executorPosEvento);
+            agendados.agendar(evento, arcoIris, executorPosEvento);
         }
         else if(!powerUpAcionado)
         {
             fimLimpezaTodosDisplaysNaoOcupados(executorPosEvento);                        
         }
         displayColetando = false;
-    }        
-
-    private bool possuiAgendamentoDePowerUp()
-    {
-        return agendadoInteracaoDisplayColetado != null;
-    }
-
-    private bool possuiAgendamentoDeEvento()
-    {
-        return agendadoEvento != null;
-    }
+    }                
 
     private void acionarPowerUpAgendado(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
         displayColetando = false;
-        acionarPowerUp(agendadoInteracaoDisplayColetado);
-        agendarEvento(evento, arcoIris, executorPosEvento);
-    }
-
-    private void agendarEvento(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
-    {
-        agendadoEvento = evento;
-        agendadoArcoIris = arcoIris;
-        agendadoPosExecutor = executorPosEvento;
-    }
-
-    private void limparEventoAgendado()
-    {
-        agendadoEvento = null;
-        agendadoArcoIris = null;
-        agendadoPosExecutor = null;
-    }
+        acionarPowerUp(agendados.interacaoDisplayColetado);
+        agendados.agendar(evento, arcoIris, executorPosEvento);
+    }      
 
     private IEnumerator descartarColetado(int indice)
     {
