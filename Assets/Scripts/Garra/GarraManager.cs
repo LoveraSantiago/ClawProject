@@ -8,6 +8,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoTempoEsgotado.ConsumidorEvento,
                             AcaoBoardElevadoFim.ConsumidorEvento,
                             AcaoColetadoFim.ConsumidorEvento,
+                            AcaoCacaNiquel.ConsumidorEvento,
                             ConsumidorDeEventoTrigger
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
@@ -114,6 +115,11 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         {
             gerDeMovNormal.iniciarMovimentacoes();            
         }
+    }
+
+    void ProdutorConsumidoresDeEvento<Vazio>.ConsumidorEvento.consumirEvento(Vazio evento)
+    {
+        
     }
 
     ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
