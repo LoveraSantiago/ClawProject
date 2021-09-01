@@ -8,7 +8,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private bool powerUpAcionado;
     private bool displayColetando;
     
-    private DisplaysSlotsDto displaysSlotsDto;        
+    //private DisplaysSlotsDto displaysSlotsDto;        
     private GrupoDisplays grupoDisplays;    
     private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
 
@@ -19,7 +19,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
     public DisplaysDeColetados(DisplaysSlotsDto displaysSlotsDto, GrupoDisplays grupoDisplays)
     {
-        this.displaysSlotsDto = displaysSlotsDto;
+        //this.displaysSlotsDto = displaysSlotsDto;
         this.grupoDisplays = grupoDisplays;
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();        
     }    

@@ -5,10 +5,13 @@ using System.Collections;
 public class GrupoDisplays : ArcoIrisConjunto
 {
     private bool powerUpDisplayColetado;
+
+    private DisplaysSlotsDto displaysSlotsDto;
     public DisplayDeSlot[] displayDeSlot { get; private set; }
 
-    public GrupoDisplays(SingleDisplaySlotDto[] singleDisplaySlotDto, Material materialGlowDisplay)
+    public GrupoDisplays(DisplaysSlotsDto displaysSlotsDto, SingleDisplaySlotDto[] singleDisplaySlotDto, Material materialGlowDisplay)
     {
+        this.displaysSlotsDto = displaysSlotsDto;
         displayDeSlot = new DisplayDeSlot[singleDisplaySlotDto.Length];
         displayDeSlot[0] = new DisplayDeSlot(singleDisplaySlotDto[0], materialGlowDisplay);
         displayDeSlot[1] = new DisplayDeSlot(singleDisplaySlotDto[1], materialGlowDisplay);
