@@ -21,9 +21,8 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
 
     protected override void cliqueBoxAcionado()
     {
-        string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;
-        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
-        PowerUpEntidade pupEscolhido = allPups[int.Parse(nomeBtnSelecionado)];
+        string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;        
+        PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeBtnSelecionado));
         PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
 
         btnBottomBar.descerBotao();
@@ -31,9 +30,8 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
     }
 
     public void simularCliqueBoxAcionado(int indiceBtn, int indicePup)
-    {
-        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
-        PowerUpEntidade pupEscolhido = allPups[indicePup];
+    {        
+        PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
         PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
 
         produtorDeEvento.produziuEvento(pupBtnInfo);
