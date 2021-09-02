@@ -121,7 +121,8 @@ public class MainGameScene : MonoBehaviour,
 
         new AcaoCacaNiquel()
             .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(cameraManager);
+            .adicionarConsumidor(cameraManager)
+            .adicionarConsumidor(garraManager);
     }   
 
     private void startLaizy()

@@ -68,7 +68,7 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
     private void voltaFinalizada()
     {
         parar();
-        colocarNaPosInicial();
+        colocarNaPosHorizontal(posicaoHorizontal);
         direcaoVoltar = DirecaoDaGarra.CENTRALIZADA;        
     }
 }

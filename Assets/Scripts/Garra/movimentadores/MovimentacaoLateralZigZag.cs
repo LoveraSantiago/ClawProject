@@ -24,9 +24,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
 
         anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMax);
-        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, garraDto.AnguloIdleMax);
-
-        posInicial = garraDto.RigidBody.transform.localPosition;
+        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, garraDto.AnguloIdleMax);        
         direcao = 1;        
     }
 
