@@ -122,6 +122,38 @@ public class DisplayDeSlot
 
         if(sprSucesso == sprites[indiceEscolhido])
         {
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
+            //TODO resolver problema de material que esta ligando tudo ou nada
             ligarGlowSucesso();
         }
         else
