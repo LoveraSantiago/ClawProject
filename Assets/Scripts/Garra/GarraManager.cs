@@ -13,16 +13,18 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
 
-    private GerenciadorDeMovimentacaoNormal gerDeMovNormal;
-    private GerenciadorDeMovimentacaoPowerUp gerDeMovPowerUp;
+    private GerenciadorDeMovimentacaoNormal     gerDeMovNormal;
+    private GerenciadorDeMovimentacaoPowerUp    gerDeMovPowerUp;
+    private GerenciadorDeMovimentacaoCacaNiquel gerDeMovCacaNiquel;
     private GerenciadorDeMovimentacao gerDeMovAtual;
     private CaboDaGarra cabo;
 
     public GarraManager(GarraDto garraDto)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
-        gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
-        gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
+        gerDeMovNormal     = new GerenciadorDeMovimentacaoNormal();
+        gerDeMovPowerUp    = new GerenciadorDeMovimentacaoPowerUp();
+        gerDeMovCacaNiquel = new GerenciadorDeMovimentacaoCacaNiquel();
         gerDeMovAtual = gerDeMovNormal;
 
         configurarColisorCentroDaPinca(garraDto.Colisor);
@@ -40,6 +42,11 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     {
         gerDeMovNormal.configuradoPeloLevel(level.getMecanicaDaGarra());
         cabo.configuradoPeloLevel(level.getDicionarioDeCores());
+
+        if(level.getTipoGame() == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP)
+        {
+            gerDeMovAtual = gerDeMovCacaNiquel;
+        }
     }
 
     public void start()
@@ -118,8 +125,8 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     }
 
     void ProdutorConsumidoresDeEvento<Vazio>.ConsumidorEvento.consumirEvento(Vazio evento)
-    {
-        
+    {   
+        gerDeMovAtual.iniciarMovimentacoes();
     }
 
     ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()

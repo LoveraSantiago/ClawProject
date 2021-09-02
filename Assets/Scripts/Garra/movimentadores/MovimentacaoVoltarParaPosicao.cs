@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarra
+public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
 {
+    private float posicaoHorizontal;
     private DirecaoDaGarra direcaoVoltar;
 
     private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;
     private Quaternion anguloDesejadoDireitaAntesEstadoInicial;
 
-    public MovimentacaoVoltarParaMeio()
+    public MovimentacaoVoltarParaPosicao(float posicaoHorizontal)
     {
+        this.posicaoHorizontal = posicaoHorizontal;
         anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMin);
         anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
     }
@@ -23,9 +25,9 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarra
         determinarDirecaoParaVoltarAoMeio();
     }
 
-    public void voltarAoMeioVindoPelaEsquerda()
+    public void voltarVindoPelaEsquerda()
     {
-        if (!isMenorPosHorizontal(0))
+        if (!isMenorPosHorizontal(posicaoHorizontal))
         {
             moverHorizontalmenteFreeze(-1);
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
@@ -36,9 +38,9 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarra
         }
     }
 
-    public void voltarAoMeioVindoPelaDireita()
+    public void voltarVindoPelaDireita()
     {
-        if (!isMaiorPosHorizontal(0))
+        if (!isMaiorPosHorizontal(posicaoHorizontal))
         {
             moverHorizontalmenteFreeze(1);
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
@@ -51,7 +53,7 @@ public class MovimentacaoVoltarParaMeio : MovimentacaoDaGarra
 
     private void determinarDirecaoParaVoltarAoMeio()
     {
-        if (isMaiorPosHorizontal(0))
+        if (isMaiorPosHorizontal(posicaoHorizontal))
         {
             direcaoVoltar = DirecaoDaGarra.ESQUERDA;
             animacao.irParaDireita();            

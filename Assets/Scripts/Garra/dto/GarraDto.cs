@@ -18,6 +18,8 @@ public class GarraDto
     [SerializeField] private float anguloFechamento;
     [SerializeField] private float velocAnguloFechamento;
     [Space(3)]
+    [SerializeField] private float posCacaNiquel;
+    [Space(3)]
     [SerializeField] private Rigidbody2D rigidBody;
     [Space(3)]
     [SerializeField] private Transform  centroDaGarra;
@@ -41,6 +43,8 @@ public class GarraDto
 
     public float AnguloFechamento { get { return anguloFechamento; } }
     public float VelocidadeAnguloFechamento { get { return velocAnguloFechamento; } }
+
+    public float PosCacaNiquel { get { return posCacaNiquel; } }
 
     public Rigidbody2D RigidBody { get { return rigidBody; } }
     

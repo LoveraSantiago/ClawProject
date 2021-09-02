@@ -865,6 +865,7 @@ MonoBehaviour:
       velocAnguloAbertura: 4
       anguloFechamento: 15
       velocAnguloFechamento: 1.5
+      posCacaNiquel: -1.75
       rigidBody: {fileID: 1907269041974171794}
       centroDaGarra: {fileID: 1379266187116345345}
       pincaEsquerda: {fileID: 1907269041649210802}

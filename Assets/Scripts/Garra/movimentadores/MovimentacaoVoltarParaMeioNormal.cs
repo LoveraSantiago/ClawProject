@@ -1,10 +1,10 @@
 public class MovimentacaoVoltarParaMeioNormal : MovimentacaoDaGarraNormal
 {
-    private MovimentacaoVoltarParaMeio movVoltarParaMeio;
+    private MovimentacaoVoltarParaPosicao movVoltarParaMeio;
 
     public MovimentacaoVoltarParaMeioNormal()
     {
-        movVoltarParaMeio = new MovimentacaoVoltarParaMeio();
+        movVoltarParaMeio = new MovimentacaoVoltarParaPosicao(0);
     }
 
     public override void preInicio()
@@ -17,11 +17,11 @@ public class MovimentacaoVoltarParaMeioNormal : MovimentacaoDaGarraNormal
         DirecaoDaGarra direcaoVoltar = movVoltarParaMeio.getDirecaoAtual();
         if (direcaoVoltar == DirecaoDaGarra.ESQUERDA)
         {
-            movVoltarParaMeio.voltarAoMeioVindoPelaEsquerda();
+            movVoltarParaMeio.voltarVindoPelaEsquerda();
         }
         else if (direcaoVoltar == DirecaoDaGarra.DIREITA)
         {
-            movVoltarParaMeio.voltarAoMeioVindoPelaDireita();
+            movVoltarParaMeio.voltarVindoPelaDireita();
         }
         else if (direcaoVoltar == DirecaoDaGarra.CENTRALIZADA)
         {
