@@ -22,7 +22,7 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
 
     public void iniciar()
     {
-        displayCacaNiquel.iniciar();
+        displayCacaNiquel.iniciar(grupoDisplays);
     }
 
     public ArcoIrisConjunto getDisplayColetadoGlow()

@@ -80,6 +80,13 @@ public class GrupoDisplays : ArcoIrisConjunto
         return displaysSlotsDto.FimDelay;
     }
 
+    public void ligarGlowLuz()
+    {
+        displayDeSlot[0].ligarGlowLuz();
+        displayDeSlot[1].ligarGlowLuz();
+        displayDeSlot[2].ligarGlowLuz();
+    }
+
     //***** INICIO IMPLEMENTACAO INTERFACE ARCO IRIS CONJUNTO *****
     public void ligar()
     {

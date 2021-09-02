@@ -19,18 +19,19 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         }
     }
 
-    public void iniciar()
+    public void iniciar(GrupoDisplays grupoDisplays)
     {
         if (acionarCacaNiquel)
         {
-            Utils.MonoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel());
+            Utils.MonoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel(grupoDisplays));
         }
     }
 
-    private IEnumerator iniciarDisplayCacaNiquel()
+    private IEnumerator iniciarDisplayCacaNiquel(GrupoDisplays grupoDisplays)
     {
         yield return new WaitForSeconds(0.5f);
         produtorDeEvento.produziuEvento(new Vazio());
+        grupoDisplays.ligarGlowLuz();
     }
 
     ProdutorDeEvento<Vazio> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
