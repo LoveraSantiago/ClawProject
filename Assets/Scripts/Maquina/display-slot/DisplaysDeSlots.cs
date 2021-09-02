@@ -6,12 +6,12 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
     private DisplaysDeColetados displayDeColetados;
     private DisplayCacaNiquel displayCacaNiquel;
 
-    public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto)
+    public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto, InputGame inputGame)
     {
         grupoDisplays = new GrupoDisplays(displaysSlotsDto, displaysSlotsDto.SingleDisplaySlotDto, displaysSlotsDto.MaterialGlowDisplay);
 
         displayDeColetados = new DisplaysDeColetados(displaysSlotsDto, grupoDisplays);
-        displayCacaNiquel  = new DisplayCacaNiquel();
+        displayCacaNiquel  = new DisplayCacaNiquel(inputGame);
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)

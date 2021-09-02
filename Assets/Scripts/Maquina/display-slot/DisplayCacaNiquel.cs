@@ -5,9 +5,11 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 {
     private bool acionarCacaNiquel;
     private ProdutorDeEvento<Vazio> produtorDeEvento;
+    private InputGame inputGame;
 
-    public DisplayCacaNiquel()
+    public DisplayCacaNiquel(InputGame inputGame)
     {
+        this.inputGame = inputGame;
         produtorDeEvento = new ProdutorDeEvento<Vazio>();
     }
 
@@ -40,7 +42,20 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         Sprite[] spritesSlot2 = new Sprite[] { pupEscolhido.sprPowerUp, grupoDisplays.displaysSlotsDto.SprVazio };
         Sprite[] spritesSlot3 = new Sprite[] { pupEscolhido.sprPowerUp, grupoDisplays.displaysSlotsDto.SprVazio, grupoDisplays.displaysSlotsDto.SprMoeda };
 
-        grupoDisplays.ligarSprsSlotMeio(spritesSlot1, spritesSlot2, spritesSlot3);
+        grupoDisplays.ligarCacaNiquel(spritesSlot1, spritesSlot2, spritesSlot3);
+        yield return new WaitForSeconds(0.1f);
+
+        int clicado = 0;
+        Sprite[][] allSrites = new Sprite[][] { spritesSlot1, spritesSlot2, spritesSlot3 };
+        while(clicado < 3)
+        {
+            if (inputGame.aconteceuTap())
+            {                
+                grupoDisplays.desligarCacaNiquel(clicado, allSrites[clicado]);
+                clicado++;
+            }            
+            yield return null;
+        }
     }
 
     ProdutorDeEvento<Vazio> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()

@@ -22,11 +22,11 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     private ArcoIrisEfeito arcoIrisEfeito;
     
-    public MaquinaManager(MaquinaDto maquinaDto)
+    public MaquinaManager(MaquinaDto maquinaDto, InputGame inputGame)
     {
         partesDto = maquinaDto.PartesDto;
 
-        displaysDeSlots = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto);        
+        displaysDeSlots = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto, inputGame);        
         displayDeScores = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
         displayTimer    = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick        = new Joystick(maquinaDto.JoystickDto);

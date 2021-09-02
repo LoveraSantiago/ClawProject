@@ -14,7 +14,7 @@ public class InputGameImpl : InputGame
     }
 
     public void update()
-    {
+    {        
         if (Input.GetMouseButtonDown(0))
         {
             posicaoTap = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -44,6 +44,11 @@ public class InputGameImpl : InputGame
     public bool aconteceuTapNaAreaInferior()
     {
         return isTapAreaInferior;
+    }
+
+    public bool aconteceuTap()
+    {
+        return isTapAreaInferior || isTapAreaSuperior;
     }
 
     public bool aconteceuDragNaAreaInferior(Vector3 dragPosicao)

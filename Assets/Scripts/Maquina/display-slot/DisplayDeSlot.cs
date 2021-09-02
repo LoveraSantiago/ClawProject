@@ -112,24 +112,13 @@ public class DisplayDeSlot
     {
         singleDisplaySlotDto.SlotSpriteMeio.gameObject.SetActive(true);
         coroutineCacaNiquel = Utils.MonoBehaviour.StartCoroutine(ligarCacaNiquelCoroutine(sprites));
-    }
-
-    private IEnumerator ligarCacaNiquelCoroutine(Sprite[] sprites)
+    } 
+    
+    public void desligarCacaNiquel(Sprite[] sprites)
     {
-        int indiceAtual = 0;
-        while (true)
-        {
-            singleDisplaySlotDto.SlotSpriteMeio.sprite = sprites[indiceAtual];
-            if(indiceAtual < sprites.Length - 1)
-            {
-                indiceAtual++;
-            }
-            else
-            {
-                indiceAtual = 0;
-            }
-            yield return null;
-        }
+        int indiceEscolhido = UtilsMath.escolherDeZeroAteLimiteArray(sprites.Length);
+        Utils.MonoBehaviour.StopCoroutine(coroutineCacaNiquel);
+        singleDisplaySlotDto.SlotSpriteMeio.sprite = sprites[indiceEscolhido];
     }
 
     public void desligarSprsSlotMeio()
@@ -180,5 +169,23 @@ public class DisplayDeSlot
     public MaterialGlow getMaterialGlow()
     {
         return glowEfeito.materialGlow;
-    }    
+    }
+
+    private IEnumerator ligarCacaNiquelCoroutine(Sprite[] sprites)
+    {
+        int indiceAtual = 0;
+        while (true)
+        {
+            singleDisplaySlotDto.SlotSpriteMeio.sprite = sprites[indiceAtual];
+            if (indiceAtual < sprites.Length - 1)
+            {
+                indiceAtual++;
+            }
+            else
+            {
+                indiceAtual = 0;
+            }
+            yield return null;
+        }
+    }
 }

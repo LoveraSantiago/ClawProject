@@ -20,4 +20,9 @@ public class UtilsMath
         Vector2 p1 = quadraticCurve(b, c, d, t);
         return lerp(p0, p1, t);
     }
+
+    public static int escolherDeZeroAteLimiteArray(int limite)
+    {        
+        return Random.Range(0, limite);
+    }
 }

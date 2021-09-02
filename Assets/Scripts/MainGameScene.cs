@@ -47,7 +47,7 @@ public class MainGameScene : MonoBehaviour,
         inputGame         = new InputGameImpl(mainDto.MaquinaDto.ReferenciaChao);
         garraManager      = new GarraManager(mainDto.GarraDto);
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
-        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto);        
+        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, inputGame);        
         powerUpManager    = new PowerUpManager(powerUpDto, inputGame);
         modalPontos       = new ModalPontos(modalPontosDto);
         cameraManager     = new CameraManager(mainDto.CameraDto);
