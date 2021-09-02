@@ -19,11 +19,11 @@ public class MovimentacaoVoltarParaMeioPowerUp : MovimentacaoDaGarraPowerUp
         DirecaoDaGarra direcaoVoltar = movVoltarParaMeio.getDirecaoAtual();
         if (direcaoVoltar == DirecaoDaGarra.ESQUERDA)
         {
-            movVoltarParaMeio.voltarVindoPelaEsquerda();
+            movVoltarParaMeio.voltarVindoPelaEsquerda(-1);
         }
         else if(direcaoVoltar == DirecaoDaGarra.DIREITA)
         {
-            movVoltarParaMeio.voltarVindoPelaDireita();
+            movVoltarParaMeio.voltarVindoPelaDireita(1);
         }
         else if(direcaoVoltar == DirecaoDaGarra.CENTRALIZADA)
         {

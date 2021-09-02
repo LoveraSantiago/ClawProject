@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class MovimentacaoIrParaCacaNiquel : MovimentacaoDaGarraCacaNiquel
 {
     private MovimentacaoVoltarParaPosicao movVoltarPosCacaNiquel;
@@ -11,12 +13,12 @@ public class MovimentacaoIrParaCacaNiquel : MovimentacaoDaGarraCacaNiquel
     {
         DirecaoDaGarra direcaoVoltar = movVoltarPosCacaNiquel.getDirecaoAtual();
         if(direcaoVoltar == DirecaoDaGarra.CENTRALIZADA)
-        {
+        {            
             comunicadorComGerMovimentacao.trocarParaAcaoParado();
         }
         else
-        {
-            movVoltarPosCacaNiquel.voltarVindoPelaDireita();
+        {         
+            movVoltarPosCacaNiquel.voltarVindoPelaEsquerda(-0.5f);
         }
     }
 }

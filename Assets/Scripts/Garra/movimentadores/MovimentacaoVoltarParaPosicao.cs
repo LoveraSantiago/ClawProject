@@ -25,11 +25,11 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
         determinarDirecaoParaVoltarAoMeio();
     }
 
-    public void voltarVindoPelaEsquerda()
+    public void voltarVindoPelaEsquerda(float velocidadeDirecao)
     {
         if (!isMenorPosHorizontal(posicaoHorizontal))
         {
-            moverHorizontalmenteFreeze(-1);
+            moverHorizontalmenteFreeze(velocidadeDirecao);
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
@@ -38,11 +38,11 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
         }
     }
 
-    public void voltarVindoPelaDireita()
+    public void voltarVindoPelaDireita(float velocidadeDirecao)
     {
         if (!isMaiorPosHorizontal(posicaoHorizontal))
         {
-            moverHorizontalmenteFreeze(1);
+            moverHorizontalmenteFreeze(velocidadeDirecao);
             pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
