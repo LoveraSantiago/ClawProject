@@ -51,7 +51,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         {
             if (inputGame.aconteceuTap())
             {                
-                grupoDisplays.desligarCacaNiquel(clicado, allSrites[clicado]);
+                grupoDisplays.pararCacaNiquel(clicado, allSrites[clicado], pupEscolhido.sprPowerUp);
                 clicado++;
             }            
             yield return null;

@@ -114,11 +114,20 @@ public class DisplayDeSlot
         coroutineCacaNiquel = Utils.MonoBehaviour.StartCoroutine(ligarCacaNiquelCoroutine(sprites));
     } 
     
-    public void desligarCacaNiquel(Sprite[] sprites)
+    public void pararCacaNiquel(Sprite[] sprites, Sprite sprSucesso)
     {
         int indiceEscolhido = UtilsMath.escolherDeZeroAteLimiteArray(sprites.Length);
         Utils.MonoBehaviour.StopCoroutine(coroutineCacaNiquel);
         singleDisplaySlotDto.SlotSpriteMeio.sprite = sprites[indiceEscolhido];
+
+        if(sprSucesso == sprites[indiceEscolhido])
+        {
+            ligarGlowSucesso();
+        }
+        else
+        {
+            ligarGlowFail();
+        }
     }
 
     public void desligarSprsSlotMeio()
