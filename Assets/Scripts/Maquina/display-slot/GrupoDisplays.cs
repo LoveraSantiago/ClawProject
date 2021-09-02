@@ -6,7 +6,7 @@ public class GrupoDisplays : ArcoIrisConjunto
 {
     private bool powerUpDisplayColetado;
 
-    private DisplaysSlotsDto displaysSlotsDto;
+    public DisplaysSlotsDto displaysSlotsDto { get; private set; }
     public DisplayDeSlot[] displayDeSlot { get; private set; }
 
     public GrupoDisplays(DisplaysSlotsDto displaysSlotsDto, SingleDisplaySlotDto[] singleDisplaySlotDto, Material materialGlowDisplay)
@@ -73,18 +73,20 @@ public class GrupoDisplays : ArcoIrisConjunto
     public bool isTodosDisplaysDesocupados()
     {
         return displayDeSlot[0].isDesocupado() && displayDeSlot[1].isDesocupado() && displayDeSlot[2].isDesocupado();
-    }
-
-    public float getFimDelay()
-    {
-        return displaysSlotsDto.FimDelay;
-    }
+    }   
 
     public void ligarGlowLuz()
     {
         displayDeSlot[0].ligarGlowLuz();
         displayDeSlot[1].ligarGlowLuz();
         displayDeSlot[2].ligarGlowLuz();
+    }
+
+    public void ligarSprsSlotMeio(Sprite[] sprSlot1, Sprite[] sprSlot2, Sprite[] sprSlot3)
+    {
+        displayDeSlot[0].ligarCacaNiquel(sprSlot1);
+        displayDeSlot[1].ligarCacaNiquel(sprSlot2);
+        displayDeSlot[2].ligarCacaNiquel(sprSlot3);
     }
 
     //***** INICIO IMPLEMENTACAO INTERFACE ARCO IRIS CONJUNTO *****

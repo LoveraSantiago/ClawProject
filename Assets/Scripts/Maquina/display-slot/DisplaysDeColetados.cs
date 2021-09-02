@@ -141,7 +141,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         yield return grupoDisplays.limparSprColetado(0);
         yield return grupoDisplays.limparSprColetado(1);
         yield return grupoDisplays.limparSprColetado(2);
-        yield return new WaitForSeconds(grupoDisplays.getFimDelay());
+        yield return new WaitForSeconds(grupoDisplays.displaysSlotsDto.FimDelay);
     }
 
     private IEnumerator limpezaEFimTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)

@@ -7,19 +7,19 @@ public class DisplayDeSlot
     private static readonly int ESTADO_OCUPADO_COLETADO = 1;
     private static readonly int ESTADO_OCUPADO_NONE     = 2;
 
-    private int estadoAtual;
-
-    private Vector3 posicaoDesejada;
-    private Vector3 posicaoSlotBaixoInicial;
-    private Vector3 posicaoSlotCimaInicial;
-      
+    private int estadoAtual; 
+    
     private GlowEfeito glowEfeito;
-    private AnimacaoDisplayColetado animacao;
+    private PosicoesSlots posicoes;
     private MovimentadorDeSlots slots;
+    private AnimacaoDisplayColetado animacao;
 
     private SingleDisplaySlotDto singleDisplaySlotDto;
 
-    public DisplayDeSlot(SingleDisplaySlotDto singleDisplaySlotDto, Material materialGlowDisplay)
+    private Coroutine coroutineCacaNiquel;
+
+    public DisplayDeSlot(
+        SingleDisplaySlotDto singleDisplaySlotDto, Material materialGlowDisplay)
     {
         this.singleDisplaySlotDto = singleDisplaySlotDto;
 
@@ -28,12 +28,7 @@ public class DisplayDeSlot
         MaterialGlow materialGlow = new MaterialGlow(materialGlowDisplay);
         glowEfeito = new GlowEfeito(singleDisplaySlotDto.SprRendererDentroEfeito.gameObject, materialGlow);
 
-        posicaoSlotBaixoInicial = this.singleDisplaySlotDto.GoSlotBaixo.transform.localPosition;
-        posicaoSlotCimaInicial = this.singleDisplaySlotDto.GoSlotCima.transform.localPosition;
-
-        Vector3 localPosition = this.singleDisplaySlotDto.GoSlotBaixo.transform.localPosition;
-        posicaoDesejada = new Vector3(localPosition.x, 0.5f, localPosition.z);
-
+        posicoes = new PosicoesSlots(singleDisplaySlotDto);
         slots = new MovimentadorDeSlots();
     }    
 
@@ -83,7 +78,7 @@ public class DisplayDeSlot
         estadoAtual = ESTADO_OCUPADO_COLETADO;
         singleDisplaySlotDto.SlotSpriteBaixo.sprite = sprite;
         ligarGlowLuz();
-        yield return slots.subirSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, posicaoDesejada, displaysSlotsDto);        
+        yield return slots.subirSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, posicoes.posFinal, displaysSlotsDto);        
         desligarGlow();
 
         if (mostrarMira)
@@ -95,7 +90,7 @@ public class DisplayDeSlot
     public IEnumerator limparSprColetado(DisplaysSlotsDto displaysSlotsDto)
     {
         estadoAtual = ESTADO_VAZIO;
-        yield return slots.descerSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, posicaoSlotBaixoInicial, displaysSlotsDto);        
+        yield return slots.descerSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, posicoes.posSlotBaixoInicial, displaysSlotsDto);        
     }     
     
     public IEnumerator mostrarSprNone(DisplaysSlotsDto displaysSlotsDto)
@@ -103,14 +98,43 @@ public class DisplayDeSlot
         estadoAtual = ESTADO_OCUPADO_NONE;
         singleDisplaySlotDto.SlotSpriteCima.sprite = displaysSlotsDto.SprVazio;
         singleDisplaySlotDto.SlotSpriteCima.color = Color.red;
-        yield return slots.descerSlotCima(singleDisplaySlotDto.GoSlotCima, posicaoDesejada, displaysSlotsDto);        
+        yield return slots.descerSlotCima(singleDisplaySlotDto.GoSlotCima, posicoes.posFinal, displaysSlotsDto);        
     }    
 
     public IEnumerator limparSprNone(DisplaysSlotsDto displaysSlotsDto)
     {
         estadoAtual = ESTADO_VAZIO;
-        yield return slots.subirSlotCima(singleDisplaySlotDto.GoSlotCima, posicaoSlotCimaInicial, displaysSlotsDto);
+        yield return slots.subirSlotCima(singleDisplaySlotDto.GoSlotCima, posicoes.posSlotCimaInicial, displaysSlotsDto);
         singleDisplaySlotDto.SlotSpriteCima.sprite = null;
+    }
+
+    public void ligarCacaNiquel(Sprite[] sprites)
+    {
+        singleDisplaySlotDto.SlotSpriteMeio.gameObject.SetActive(true);
+        coroutineCacaNiquel = Utils.MonoBehaviour.StartCoroutine(ligarCacaNiquelCoroutine(sprites));
+    }
+
+    private IEnumerator ligarCacaNiquelCoroutine(Sprite[] sprites)
+    {
+        int indiceAtual = 0;
+        while (true)
+        {
+            singleDisplaySlotDto.SlotSpriteMeio.sprite = sprites[indiceAtual];
+            if(indiceAtual < sprites.Length - 1)
+            {
+                indiceAtual++;
+            }
+            else
+            {
+                indiceAtual = 0;
+            }
+            yield return null;
+        }
+    }
+
+    public void desligarSprsSlotMeio()
+    {
+        singleDisplaySlotDto.SlotSpriteMeio.gameObject.SetActive(false);
     }
 
     public void ligarGlowSucesso()
@@ -126,7 +150,7 @@ public class DisplayDeSlot
     public void ligarGlowLuz()
     {
         glowEfeito.ligarGlowLuz();        
-    }
+    }    
 
     public void desligarGlow()
     {
