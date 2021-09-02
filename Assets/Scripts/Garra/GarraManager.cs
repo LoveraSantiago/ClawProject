@@ -15,7 +15,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
 
     private GerenciadorDeMovimentacaoNormal     gerDeMovNormal;
     private GerenciadorDeMovimentacaoPowerUp    gerDeMovPowerUp;
-    private GerenciadorDeMovimentacaoCacaNiquel gerDeMovCacaNiquel;
+    private GerenciadorDeMovimentacaoCacaNiquel gerDeMovCacaNiquel;//TODO tentar reaproveitar GerenciadorDeMovimentacaoNormal e remover GerenciadorDeMovimentacaoCacaNiquel
     private GerenciadorDeMovimentacao gerDeMovAtual;
     private CaboDaGarra cabo;
 
