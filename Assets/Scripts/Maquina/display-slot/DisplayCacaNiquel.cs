@@ -16,7 +16,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 
     public void configuradoPeloLevel(AbstractLevel.TIPO_GAME tipoGame)
     {        
-        if(tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP)
+        if(tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
         {
             acionarCacaNiquel = true;            
         }

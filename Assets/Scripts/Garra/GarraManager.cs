@@ -43,7 +43,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         gerDeMovNormal.configuradoPeloLevel(level.getMecanicaDaGarra());
         cabo.configuradoPeloLevel(level.getDicionarioDeCores());
 
-        if(level.getTipoGame() == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP)
+        if(level.getTipoGame() == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
         {
             gerDeMovAtual = gerDeMovCacaNiquel;
         }

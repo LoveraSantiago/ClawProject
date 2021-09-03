@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class LevelCacaNiquelPup : AbstractLevel
+public class LevelCacaNiquelPupIndividual : AbstractLevel
 {
     public override bool devolverParaBoard()
     {
@@ -24,7 +24,7 @@ public class LevelCacaNiquelPup : AbstractLevel
 
     public override TIPO_GAME getTipoGame()
     {
-        return TIPO_GAME.CACANIQUEL_PUP;
+        return TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()
@@ -90,7 +90,7 @@ public class LevelCacaNiquelPup : AbstractLevel
 
     public override string getLevelName()
     {
-        return "Caça Niquel Pup";
+        return "Caça Niquel Pup Individual";
     }
 
     public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
@@ -107,6 +107,4 @@ public class LevelCacaNiquelPup : AbstractLevel
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
-
-    
 }
