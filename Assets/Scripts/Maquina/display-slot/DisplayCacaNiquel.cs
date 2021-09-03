@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 {
@@ -56,7 +57,26 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
             }            
             yield return null;
         }
-    }
+
+        yield return new WaitForSeconds(0.1f);
+        Sprite[] resultados = grupoDisplays.getResultadosCacaNiquel();
+        if(resultados[2] == grupoDisplays.displaysSlotsDto.SprMoeda)
+        {
+            grupoDisplays.ligarGlowLuz();
+        }
+        else if(resultados[0] == pupEscolhido.sprPowerUp &&
+                resultados[1] == pupEscolhido.sprPowerUp &&
+                resultados[2] == pupEscolhido.sprPowerUp)
+        {
+            grupoDisplays.ligar();
+        }
+        else
+        {
+            grupoDisplays.ligarGlowFail();
+        }
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene("PupScene");
+    }    
 
     ProdutorDeEvento<Vazio> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {

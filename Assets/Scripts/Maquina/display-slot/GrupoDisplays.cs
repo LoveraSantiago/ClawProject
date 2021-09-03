@@ -94,6 +94,22 @@ public class GrupoDisplays : ArcoIrisConjunto
         displayDeSlot[indice].pararCacaNiquel(sprSlots, sprSucesso);
     }
 
+    public Sprite[] getResultadosCacaNiquel()
+    {
+        return new Sprite[] {
+            displayDeSlot[0].getSprResultCacaNiquel(),
+            displayDeSlot[1].getSprResultCacaNiquel(),
+            displayDeSlot[2].getSprResultCacaNiquel()
+        };
+    }
+
+    public void ligarGlowFail()
+    {
+        displayDeSlot[0].ligarGlowFail();
+        displayDeSlot[1].ligarGlowFail();
+        displayDeSlot[2].ligarGlowFail();
+    }
+
     //***** INICIO IMPLEMENTACAO INTERFACE ARCO IRIS CONJUNTO *****
     public void ligar()
     {

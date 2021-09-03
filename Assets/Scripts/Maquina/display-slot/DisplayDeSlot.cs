@@ -130,6 +130,11 @@ public class DisplayDeSlot
         }
     }
 
+    public Sprite getSprResultCacaNiquel()
+    {
+        return singleDisplaySlotDto.SlotSpriteMeio.sprite;
+    }
+
     public void desligarSprsSlotMeio()
     {
         singleDisplaySlotDto.SlotSpriteMeio.gameObject.SetActive(false);
