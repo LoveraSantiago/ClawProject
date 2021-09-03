@@ -124,7 +124,7 @@ public class DisplayDeSlot
         {
             ligarGlowSucesso();
         }
-        if(sprSucesso == sprites[indiceEscolhido])
+        else if(sprSucesso == sprites[indiceEscolhido])
         {
             ligarGlowSucesso();
         }
