@@ -120,6 +120,10 @@ public class DisplayDeSlot
         Utils.MonoBehaviour.StopCoroutine(coroutineCacaNiquel);
         singleDisplaySlotDto.SlotSpriteMeio.sprite = sprites[indiceEscolhido];
 
+        if(sprSucesso == null)
+        {
+            ligarGlowSucesso();
+        }
         if(sprSucesso == sprites[indiceEscolhido])
         {
             ligarGlowSucesso();
