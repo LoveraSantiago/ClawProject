@@ -25,4 +25,9 @@ public abstract class AbstractLevel
     public abstract TipoContagemTempoDto getTempoContagem();
 
     public abstract Dictionary<string, string> getDicionarioDeCores();   
+
+    public static bool isCacaNiquelLevel(AbstractLevel.TIPO_GAME tipoGame)
+    {
+        return tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL || tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
+    }
 }

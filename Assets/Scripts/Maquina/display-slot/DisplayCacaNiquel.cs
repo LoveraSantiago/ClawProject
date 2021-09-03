@@ -21,16 +21,11 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 
     public void iniciar(GrupoDisplays grupoDisplays)
     {
-        if (isCacaNiquelLevel())
+        if (AbstractLevel.isCacaNiquelLevel(tipoGame))
         {
             Utils.MonoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel(grupoDisplays));
         }
-    }
-
-    private bool isCacaNiquelLevel()
-    {
-        return tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL || tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
-    }
+    }   
 
     private IEnumerator iniciarDisplayCacaNiquel(GrupoDisplays grupoDisplays)
     {
