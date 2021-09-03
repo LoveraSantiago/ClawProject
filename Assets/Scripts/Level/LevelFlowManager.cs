@@ -8,7 +8,8 @@ public class LevelFlowManager
         HUM  = 1,
         DOIS = 2,
         TRES = 3,
-        CACANIQUEL_PUP = 999999998,
+        CACANIQUEL_PUP_G = 999999997,
+        CACANIQUEL_PUP_I = 999999998,
         PUP  = 999999999,
     }
 
@@ -20,7 +21,7 @@ public class LevelFlowManager
             case LEVEL.DOIS: return new Level2();
             case LEVEL.TRES: return new Level3();
             case LEVEL.PUP: return new LevelPup();
-            case LEVEL.CACANIQUEL_PUP: return new LevelCacaNiquelPup();
+            case LEVEL.CACANIQUEL_PUP_I: return new LevelCacaNiquelPup();
             default: return null;
         }        
     }
@@ -32,7 +33,7 @@ public class LevelFlowManager
             case "1": return getLevelByEnum(LEVEL.HUM);
             case "2": return getLevelByEnum(LEVEL.DOIS);
             case "3": return getLevelByEnum(LEVEL.TRES);
-            case "999999998": return getLevelByEnum(LEVEL.CACANIQUEL_PUP);
+            case "999999998": return getLevelByEnum(LEVEL.CACANIQUEL_PUP_I);
             case "999999999": return getLevelByEnum(LEVEL.PUP);
         }
         return null;
