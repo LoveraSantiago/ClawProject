@@ -8,7 +8,7 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
 
     public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto, InputGame inputGame)
     {
-        grupoDisplays = new GrupoDisplays(displaysSlotsDto, displaysSlotsDto.SingleDisplaySlotDto, displaysSlotsDto.MaterialGlowDisplay);
+        grupoDisplays = new GrupoDisplays(displaysSlotsDto, displaysSlotsDto.SingleDisplaySlotDto);
 
         displayDeColetados = new DisplaysDeColetados(displaysSlotsDto, grupoDisplays);
         displayCacaNiquel  = new DisplayCacaNiquel(inputGame);

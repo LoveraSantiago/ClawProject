@@ -19,13 +19,13 @@ public class DisplayDeSlot
     private Coroutine coroutineCacaNiquel;
 
     public DisplayDeSlot(
-        SingleDisplaySlotDto singleDisplaySlotDto, Material materialGlowDisplay)
+        SingleDisplaySlotDto singleDisplaySlotDto)
     {
         this.singleDisplaySlotDto = singleDisplaySlotDto;
 
         animacao = new AnimacaoDisplayColetado(singleDisplaySlotDto.Animator);
 
-        MaterialGlow materialGlow = new MaterialGlow(materialGlowDisplay);
+        MaterialGlow materialGlow = new MaterialGlow(singleDisplaySlotDto.SprRendererDentroEfeito.material);
         glowEfeito = new GlowEfeito(singleDisplaySlotDto.SprRendererDentroEfeito.gameObject, materialGlow);
 
         posicoes = new PosicoesSlots(singleDisplaySlotDto);
@@ -122,38 +122,6 @@ public class DisplayDeSlot
 
         if(sprSucesso == sprites[indiceEscolhido])
         {
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
-            //TODO resolver problema de material que esta ligando tudo ou nada
             ligarGlowSucesso();
         }
         else

@@ -9,13 +9,13 @@ public class GrupoDisplays : ArcoIrisConjunto
     public DisplaysSlotsDto displaysSlotsDto { get; private set; }
     public DisplayDeSlot[] displayDeSlot { get; private set; }
 
-    public GrupoDisplays(DisplaysSlotsDto displaysSlotsDto, SingleDisplaySlotDto[] singleDisplaySlotDto, Material materialGlowDisplay)
+    public GrupoDisplays(DisplaysSlotsDto displaysSlotsDto, SingleDisplaySlotDto[] singleDisplaySlotDto)
     {
         this.displaysSlotsDto = displaysSlotsDto;
         displayDeSlot = new DisplayDeSlot[singleDisplaySlotDto.Length];
-        displayDeSlot[0] = new DisplayDeSlot(singleDisplaySlotDto[0], materialGlowDisplay);
-        displayDeSlot[1] = new DisplayDeSlot(singleDisplaySlotDto[1], materialGlowDisplay);
-        displayDeSlot[2] = new DisplayDeSlot(singleDisplaySlotDto[2], materialGlowDisplay);
+        displayDeSlot[0] = new DisplayDeSlot(singleDisplaySlotDto[0]);
+        displayDeSlot[1] = new DisplayDeSlot(singleDisplaySlotDto[1]);
+        displayDeSlot[2] = new DisplayDeSlot(singleDisplaySlotDto[2]);
     }
 
     public void colorirDisplays(Dictionary<string, string> dicionarioDeCores)
@@ -117,6 +117,8 @@ public class GrupoDisplays : ArcoIrisConjunto
         if (!powerUpDisplayColetado)
         {
             displayDeSlot[0].getMaterialGlow().setCorNoMaterial(cor);
+            displayDeSlot[1].getMaterialGlow().setCorNoMaterial(cor);
+            displayDeSlot[2].getMaterialGlow().setCorNoMaterial(cor);
         }
     }
     //***** FIM IMPLEMENTACAO INTERFACE ARCO IRIS CONJUNTO *****

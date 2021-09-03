@@ -9,9 +9,7 @@ public class DisplaysSlotsDto
     [SerializeField] private float velocImg;
     [Space(3)]
     [SerializeField] private Sprite sprVazio;
-    [SerializeField] private Sprite sprMoeda;
-    [Space(3)]
-    [SerializeField] private Material materialGlowDisplay;
+    [SerializeField] private Sprite sprMoeda;    
     [Space(3)]
     [SerializeField] private SingleDisplaySlotDto[] singleDisplaySlotDto = new SingleDisplaySlotDto[3];
 
@@ -22,7 +20,5 @@ public class DisplaysSlotsDto
     public Sprite SprVazio { get { return sprVazio; } }
     public Sprite SprMoeda { get { return sprMoeda; } }
 
-    public SingleDisplaySlotDto[] SingleDisplaySlotDto { get { return singleDisplaySlotDto; } }
-
-    public Material MaterialGlowDisplay { get { return materialGlowDisplay; } }
+    public SingleDisplaySlotDto[] SingleDisplaySlotDto { get { return singleDisplaySlotDto; } }    
 }
