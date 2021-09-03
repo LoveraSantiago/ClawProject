@@ -64,10 +64,10 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
 
     public void consumir(Collision2D evento)
     {        
-        if(!acionado && Utils.isColetavel(evento))
+        if(!acionado && UtilsTags.isColetavel(evento))
         {
             acionado = true;
-            monoBehaviour.StartCoroutine(explodir());
+            Utils.MonoBehaviour.StartCoroutine(explodir());
         }
     }
     
@@ -81,7 +81,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayExplosao);
 
         CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f, monoBehaviour);
+        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
         powerUpFinalizacao.preFinalizar();
         resetPup();
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayPosExplosao);

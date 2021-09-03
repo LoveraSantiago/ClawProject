@@ -7,9 +7,7 @@ public class MainGameScene : MonoBehaviour,
 {
     [SerializeField] private LevelFlowManager.LEVEL level;
     [Space(5)]
-    [SerializeField] private MainDto mainDto;            
-    [Space(5)]    
-    [SerializeField] private ParticulasDto particulasDto;
+    [SerializeField] private MainDto mainDto;                
     [Space(5)]
     [SerializeField] private PowerUpDto powerUpDto;
     [Space(5)]
@@ -24,10 +22,7 @@ public class MainGameScene : MonoBehaviour,
     private ColetaveisManager coletaveisManager;
     private CameraManager     cameraManager;
     private ScrollManager     scrollManager;
-    
-
-    private InputGame inputGame;
-    private EfeitoColetado   efeitoColetado;
+    private InputGame inputGame;    
 
     private LevelFlowManager.LEVEL levelEscolhido;    
 
@@ -39,6 +34,7 @@ public class MainGameScene : MonoBehaviour,
     void Start()
     {
         CameraManager.forceAspectCameraAsRatio();
+        Utils.configMainMono(this);
 
         configurandoManagers();
         configurandoLevel();
@@ -50,13 +46,12 @@ public class MainGameScene : MonoBehaviour,
     {
         inputGame         = new InputGameImpl(mainDto.MaquinaDto.ReferenciaChao);
         garraManager      = new GarraManager(mainDto.GarraDto);
-        coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto, this);
-        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, this);
-        efeitoColetado    = new EfeitoColetado(particulasDto, this);
-        powerUpManager    = new PowerUpManager(powerUpDto, this, inputGame);
-        modalPontos       = new ModalPontos(modalPontosDto, this);
+        coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
+        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, inputGame);        
+        powerUpManager    = new PowerUpManager(powerUpDto, inputGame);
+        modalPontos       = new ModalPontos(modalPontosDto);
         cameraManager     = new CameraManager(mainDto.CameraDto);
-        scrollManager     = new ScrollManager(prefabBottomBar, this);        
+        scrollManager     = new ScrollManager(prefabBottomBar);        
     }
 
     private void configurandoLevel()
@@ -76,8 +71,7 @@ public class MainGameScene : MonoBehaviour,
         new AcaoColetado()
             .configurarProdutor(coletaveisManager)
             .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(efeitoColetado)
+            .adicionarConsumidor(maquinaManager)            
             .adicionarConsumidor(modalPontos);
 
         new AcaoColetadoFim()
@@ -124,6 +118,11 @@ public class MainGameScene : MonoBehaviour,
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(modalPontos);
+
+        new AcaoCacaNiquel()
+            .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(cameraManager)
+            .adicionarConsumidor(garraManager);
     }   
 
     private void startLaizy()
@@ -158,7 +157,7 @@ public class MainGameScene : MonoBehaviour,
 
     public void OnEndDrag(PointerEventData eventData)
     {        
-        maquinaManager.onEndDragPowerUp(this);
+        maquinaManager.onEndDragPowerUp();
     }
 
     public void OnDrag(PointerEventData eventData)

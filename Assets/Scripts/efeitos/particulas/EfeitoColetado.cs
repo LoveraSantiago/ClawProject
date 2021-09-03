@@ -1,27 +1,20 @@
 using UnityEngine;
 
-public class EfeitoColetado : AcaoColetado.ConsumidorEvento
+public class EfeitoColetado 
 {    
     private Vector3 posOriginalEfeito;
+    private ParticleSystem efeitoColetado;        
 
-    private ParticleSystem particulas;
-    private MonoBehaviour monoBehaviour;
-
-    private ParticulasDto particulasDto;
-
-    public EfeitoColetado(ParticulasDto particulasDto, MonoBehaviour monoBehaviour)
+    public EfeitoColetado(ParticleSystem efeitoColetado)
     {
-        this.particulasDto = particulasDto;        
-        this.monoBehaviour = monoBehaviour;
-
-        posOriginalEfeito = particulasDto.ParentParticulas.transform.position;
-        particulas      = particulasDto.ParentParticulas.GetComponent<ParticleSystem>();
-        particulas.Stop();
+        this.efeitoColetado      = efeitoColetado;
+        posOriginalEfeito = this.efeitoColetado.transform.position; 
+        this.efeitoColetado.Stop();
     }
 
-    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
+    public void acionarEfeito(Vector3 posicao)
     {
-        particulasDto.ParentParticulas.transform.position = new Vector3(evento.posicao.x, posOriginalEfeito.y, posOriginalEfeito.z);
-        particulas.Play();
-    }
+        efeitoColetado.transform.position = new Vector3(posicao.x, posOriginalEfeito.y, posOriginalEfeito.z);
+        efeitoColetado.Play();
+    }    
 }

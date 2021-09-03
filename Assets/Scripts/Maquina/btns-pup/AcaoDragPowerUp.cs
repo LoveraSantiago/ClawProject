@@ -49,7 +49,7 @@ public class AcaoDragPowerUp
         }
     }
 
-    public bool dragFinalizado(AcaoBotaoPowerUp acaoPowerUp, AparenciaBotaoPowerUp aparencia, MonoBehaviour monoBehaviour)
+    public bool dragFinalizado(AcaoBotaoPowerUp acaoPowerUp, AparenciaBotaoPowerUp aparencia)
     {
         if (aparencia.isMostrandoImagem())
         {
@@ -61,7 +61,7 @@ public class AcaoDragPowerUp
         }
         else
         {
-            monoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal(aparencia));
+            Utils.MonoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal(aparencia));
             goAreaDraggavel.SetActive(false);
             return false;
         }

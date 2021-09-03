@@ -38,7 +38,7 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
         ligar();
         posInicial.y = powerUpDto.MinaDto.Haltura;
         base.colocarNaPosicao(posInicial);
-        monoBehaviour.StartCoroutine(explodir());
+        Utils.MonoBehaviour.StartCoroutine(explodir());
     }
 
     public override void resetPup()
@@ -59,7 +59,7 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
 
         goExplosao.SetActive(false);
         CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f, monoBehaviour);
+        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
         resetPup();
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayPosExplosao);
 

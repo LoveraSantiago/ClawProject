@@ -26,7 +26,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
 
     public void iniciar(InformacaoDisplayColetado informacaoDisplayColetados)
     {
-        coroutine = monoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados(informacaoDisplayColetados));
+        coroutine = Utils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados(informacaoDisplayColetados));
     }
 
     public override void resetPup(){}   
@@ -35,7 +35,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     {
         if (!finalizado)
         {
-            monoBehaviour.StopCoroutine(coroutine);
+            Utils.MonoBehaviour.StopCoroutine(coroutine);
             powerUpFinalizacao.finalizado();
         }
     }

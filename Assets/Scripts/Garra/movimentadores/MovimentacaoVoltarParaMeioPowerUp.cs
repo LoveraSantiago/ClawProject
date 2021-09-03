@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class MovimentacaoVoltarParaMeioPowerUp : MovimentacaoDaGarraPowerUp
 {
-    private MovimentacaoVoltarParaMeio movVoltarParaMeio;
+    private MovimentacaoVoltarParaPosicao movVoltarParaMeio;
 
     public MovimentacaoVoltarParaMeioPowerUp()
     {
-        movVoltarParaMeio = new MovimentacaoVoltarParaMeio();
+        movVoltarParaMeio = new MovimentacaoVoltarParaPosicao(0);
     }
 
     public override void preInicio()
@@ -19,11 +19,11 @@ public class MovimentacaoVoltarParaMeioPowerUp : MovimentacaoDaGarraPowerUp
         DirecaoDaGarra direcaoVoltar = movVoltarParaMeio.getDirecaoAtual();
         if (direcaoVoltar == DirecaoDaGarra.ESQUERDA)
         {
-            movVoltarParaMeio.voltarAoMeioVindoPelaEsquerda();
+            movVoltarParaMeio.voltarVindoPelaEsquerda(-1);
         }
         else if(direcaoVoltar == DirecaoDaGarra.DIREITA)
         {
-            movVoltarParaMeio.voltarAoMeioVindoPelaDireita();
+            movVoltarParaMeio.voltarVindoPelaDireita(1);
         }
         else if(direcaoVoltar == DirecaoDaGarra.CENTRALIZADA)
         {

@@ -3,6 +3,7 @@ using UnityEngine;
 public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetadoFim.ProdutorEvento,
                               AcaoBotaoPUpVazio.ProdutorEvento,
+                              AcaoCacaNiquel.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,                                
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPUpAcionado.ConsumidorEvento,                                                            
@@ -11,30 +12,29 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 {    
     private PartesMaquinaDto partesDto;
 
-    private DisplaysDeColetados displayDeColetados;
-    private DisplayDeScores displayDeScores;
-    private DisplayTimer displayTimer;
     private VigasTras vigasTras;
+    private DisplayTimer displayTimer;
+    private DisplayDeScores displayDeScores;    
+    private DisplaysDeSlots displaysDeSlots;
 
     private Joystick joystick;
     private BotoesPowerUp botoesPowerUp;
 
     private ArcoIrisEfeito arcoIrisEfeito;
     
-    public MaquinaManager(
-        MaquinaDto maquinaDto, MonoBehaviour monoBehaviour)
+    public MaquinaManager(MaquinaDto maquinaDto, InputGame inputGame)
     {
         partesDto = maquinaDto.PartesDto;
 
-        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayDeColetadoDto, monoBehaviour);
-        displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, monoBehaviour);
-        displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto, monoBehaviour);
-        joystick           = new Joystick(maquinaDto.JoystickDto);
-        botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
-        vigasTras          = new VigasTras(maquinaDto.VigasDto);
+        displaysDeSlots = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto, inputGame);        
+        displayDeScores = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
+        displayTimer    = new DisplayTimer(maquinaDto.DisplayTimerDto);
+        joystick        = new Joystick(maquinaDto.JoystickDto);
+        botoesPowerUp   = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
+        vigasTras       = new VigasTras(maquinaDto.VigasDto);
 
-        arcoIrisEfeito = new ArcoIrisEfeito(monoBehaviour)//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW
-            .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())
+        arcoIrisEfeito = new ArcoIrisEfeito()//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW            
+            .addArcoIrisConjunto(displaysDeSlots.getDisplayColetadoGlow())
             .addArcoIrisConjunto(displayDeScores)
             .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow(maquinaDto.DisplayTimerDto))
             .addArcoIrisConjunto(vigasTras)
@@ -44,8 +44,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
     {
         botoesPowerUp.configuradoPeloLevel(levelEscolhido);
-        joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
-        displayDeColetados.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
+        displaysDeSlots.configuradoPeloLevel(levelEscolhido);
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         vigasTras.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
 
@@ -58,7 +58,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     public void start()
     {
-        displayTimer.iniciarContagemTempo();        
+        displayTimer.iniciarContagemTempo();
+        displaysDeSlots.iniciar();
     }
 
     public void update(InputGame inputGame)
@@ -82,9 +83,9 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp.drag(delta);
     }
 
-    public void onEndDragPowerUp(MonoBehaviour monoBehaviour)
+    public void onEndDragPowerUp()
     {
-        botoesPowerUp.endDrag(monoBehaviour);
+        botoesPowerUp.endDrag();
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
@@ -92,7 +93,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayTimer.pause();
 
         PosExecutorAcaoColetadoFim posExecucao = new PosExecutorAcaoColetadoFim(displayTimer, botoesPowerUp);
-        displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIrisEfeito, posExecucao);
+        displaysDeSlots.mostrarColetadoNoDisplay(evento, arcoIrisEfeito, posExecucao);        
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
         botoesPowerUp.suspenderPowerUp();
     }   
@@ -101,7 +102,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         if (evento.isInicio())
         {
-            displayDeColetados.processarPowerUp(evento.interacaoDisplayColetado);
+            displaysDeSlots.processarPowerUp(evento.interacaoDisplayColetado);            
             arcoIrisEfeito.ligarEfeitoArcoIris();
             displayTimer.pause();
             displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);
@@ -116,7 +117,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             displayTimer.continuar();
             botoesPowerUp.processarFimPowerUp();
             arcoIrisEfeito.desligarEfeito();
-            displayDeColetados.processarFimPowerUp(botoesPowerUp);
+            displaysDeSlots.processarFimPowerUp(botoesPowerUp);            
         }
     }              
 
@@ -146,12 +147,17 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     }
 
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
-    {
-        return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEvento();
+    {        
+        return ((AcaoColetadoFim.ProdutorEvento)displaysDeSlots).getProdutorDeEvento();
     }
 
     ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoBotaoPUpVazio.ProdutorEvento)botoesPowerUp).getProdutorDeEvento();
-    }   
+    }
+
+    ProdutorDeEvento<Vazio> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
+    {
+        return ((AcaoCacaNiquel.ProdutorEvento)displaysDeSlots).getProdutorDeEvento();
+    }
 }

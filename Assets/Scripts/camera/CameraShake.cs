@@ -22,23 +22,21 @@ public class CameraShake
 
     //TODO refatorar muitos argumentos
     public void shakeEDiminuir(
-        float amplitude, Vector3 offset, float ganhoFreq, float duracao, 
-        MonoBehaviour monoBehaviour)
+        float amplitude, Vector3 offset, float ganhoFreq, float duracao)
     {
         perlim.m_PivotOffset = offset;
         perlim.m_FrequencyGain = ganhoFreq;
         perlim.m_AmplitudeGain = amplitude;
-        monoBehaviour.StartCoroutine(diminuirEfeito(amplitude, duracao));
+        Utils.MonoBehaviour.StartCoroutine(diminuirEfeito(amplitude, duracao));
     }
 
     public void shakeEParar(
-        float amplitude, Vector3 offset, float ganhoFreq, float duracao,
-        MonoBehaviour monoBehaviour)
+        float amplitude, Vector3 offset, float ganhoFreq, float duracao)
     {
         perlim.m_PivotOffset = offset;
         perlim.m_FrequencyGain = ganhoFreq;
         perlim.m_AmplitudeGain = amplitude;
-        monoBehaviour.StartCoroutine(pararEfeito(duracao));
+        Utils.MonoBehaviour.StartCoroutine(pararEfeito(duracao));
     }
 
     private IEnumerator pararEfeito(float duracao)

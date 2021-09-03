@@ -9,18 +9,16 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
     private ContadorTimer contadorTimer;    
     private DisplayTimerDigitos digitos;
 
-    private Coroutine coroutineBlink;
-    private MonoBehaviour monoBehaviour;
+    private Coroutine coroutineBlink;    
 
     private ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado;
 
-    public DisplayTimer(DisplayTimerDto displayDto, MonoBehaviour monoBehaviour)
+    public DisplayTimer(DisplayTimerDto displayDto)
     {   
         digitos = new DisplayTimerDigitos(displayDto);
         
         produtorDeEventoTempoEsgotado = new ProdutorDeEvento<TempoEsgotado>();
-        contadorTimer = new ContadorTimer();
-        this.monoBehaviour = monoBehaviour;
+        contadorTimer = new ContadorTimer();        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido, Executor executorTimerRestart)
@@ -44,7 +42,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
             if (contadorTimer.isTimeOver())
             {
                 produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(false));
-                monoBehaviour.StopCoroutine(coroutineBlink);
+                Utils.MonoBehaviour.StopCoroutine(coroutineBlink);
                 coroutineBlink = null;
             }
         }
@@ -73,7 +71,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
         contadorTimer.passarTempoAosScores(digitos);
         if(contadorTimer.isNearTimeOver() && coroutineBlink == null)
         {            
-            coroutineBlink = monoBehaviour.StartCoroutine(blinkarTimer());         
+            coroutineBlink = Utils.MonoBehaviour.StartCoroutine(blinkarTimer());         
         }
     }
 

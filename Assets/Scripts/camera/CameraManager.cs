@@ -1,8 +1,11 @@
 using UnityEngine;
 
 public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento,
-                             AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento
+                             AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
+                             AcaoCacaNiquel.ConsumidorEvento
 {
+    private static readonly float RATIO_SCREEN = 0.5625f;
+
     private CameraDto cameraDto;
 
     public CameraManager(CameraDto cameraDto)
@@ -21,6 +24,11 @@ public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento,
         cameraDto.VirtualCam2.Priority -= 2;
     }
 
+    void ProdutorConsumidoresDeEvento<Vazio>.ConsumidorEvento.consumirEvento(Vazio evento)
+    {
+        cameraDto.VirtualCam3.Priority += 2;
+    }
+
     public static void forceLocalEscala(Transform transform)
     {
         //forcando escala Y pra ficar dentro da safe area
@@ -31,6 +39,7 @@ public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento,
 
     public static void forceAspectCameraAsRatio()
     {
-        Camera.main.aspect = Utils.RATIO_SCREEN;
+        Camera.main.aspect = RATIO_SCREEN;
     }
+
 }

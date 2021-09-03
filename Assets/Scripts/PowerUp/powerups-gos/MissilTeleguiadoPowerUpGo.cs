@@ -63,7 +63,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     {
         ligar();
         miras.ligar();
-        coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
+        coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
     public override void resetPup()
@@ -90,7 +90,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
                     string nomeAlvo = coletavelAcertado.name;
                     coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
                     hitColetavel = true;
-                    monoBehaviour.StartCoroutine(disparandoMissil(coletavelQuery.getColetavelInGameByName(nomeAlvo)));
+                    Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelQuery.getColetavelInGameByName(nomeAlvo)));
                 }
             }
             yield return null;
@@ -118,8 +118,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         while (true)
         {
             contador += (powerUpDto.MissilTeleguiadoDto.Velocidade * Time.deltaTime);
-            Vector2 posicao = Utils.cubicCurve(p1, p2, p3, p4, contador);
-            Vector2 posNext = Utils.cubicCurve(p1, p2, p3, p4, contador + 0.01f);
+            Vector2 posicao = UtilsMath.cubicCurve(p1, p2, p3, p4, contador);
+            Vector2 posNext = UtilsMath.cubicCurve(p1, p2, p3, p4, contador + 0.01f);
             colocarNaPosicao(posicao);
 
             Vector2 diferenca = posicao - posNext;
@@ -160,7 +160,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         coletavel.desligarAnimacao();
 
         CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f, monoBehaviour);
+        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
         powerUpFinalizacao.preFinalizar();
 
         yield return new WaitForSeconds(powerUpDto.MissilTeleguiadoDto.DelayFinalizar);
@@ -196,7 +196,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     {
         if (!hitColetavel)
         {
-            monoBehaviour.StopCoroutine(coroutine);
+            Utils.MonoBehaviour.StopCoroutine(coroutine);
 
             miras.desligar();
             resetPup();

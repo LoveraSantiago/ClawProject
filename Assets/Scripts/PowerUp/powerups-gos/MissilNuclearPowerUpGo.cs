@@ -68,10 +68,10 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
     public void consumir(Collision2D evento)
     {
-        if (!acionado && Utils.isColetavel(evento))
+        if (!acionado && UtilsTags.isColetavel(evento))
         {
             acionado = true;
-            monoBehaviour.StartCoroutine(explodir());
+            Utils.MonoBehaviour.StartCoroutine(explodir());
         }
     }    
 
@@ -85,7 +85,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
         goExplosao.SetActive(false);
         CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEDiminuir(1f, new Vector3(150, 150, 150), 25f, 0.4f, monoBehaviour);
+        cameraShake.shakeEDiminuir(1f, new Vector3(150, 150, 150), 25f, 0.4f);
         resetPup();
         yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayFinal);
 

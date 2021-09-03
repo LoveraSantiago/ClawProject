@@ -154,4 +154,9 @@ public class FactoryPowerUpEntidade
             getRollBack()
         };
     }
+
+    public static PowerUpEntidade getPowerUpFromIndice(int indice)
+    {
+        return getAllPowerUps()[indice];
+    }
 }

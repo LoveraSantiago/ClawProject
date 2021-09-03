@@ -4,31 +4,29 @@ using System.Collections.Generic;
 
 public class ArcoIrisEfeito 
 {
-    private Coroutine coroutineAtual;
-    private MonoBehaviour monoBehaviour;
+    private Coroutine coroutineAtual;    
 
     private List<ArcoIrisConjunto> listaArcoIrisConjunto;
 
-    public ArcoIrisEfeito(MonoBehaviour monoBehaviour)
-    {
-        this.monoBehaviour = monoBehaviour;
+    public ArcoIrisEfeito()
+    {   
         listaArcoIrisConjunto = new List<ArcoIrisConjunto>();
     }
 
     public void ligarEfeitoArcoIris()
     {
         ligarGlows();
-        coroutineAtual = monoBehaviour.StartCoroutine(ligarGlowArcoIris());
+        coroutineAtual = Utils.MonoBehaviour.StartCoroutine(ligarGlowArcoIris());
     }
 
     public void ligarBlinkRed()
     {
-        coroutineAtual = monoBehaviour.StartCoroutine(blinkarCor(Color.red));
+        coroutineAtual = Utils.MonoBehaviour.StartCoroutine(blinkarCor(Color.red));
     }
 
     public void ligarBlinkVerde()
     {
-        coroutineAtual = monoBehaviour.StartCoroutine(blinkarCor(Color.green));
+        coroutineAtual = Utils.MonoBehaviour.StartCoroutine(blinkarCor(Color.green));
     }
 
     private void ligarGlows()
@@ -42,7 +40,7 @@ public class ArcoIrisEfeito
     public void desligarEfeito()
     {
         desligarGlows();
-        monoBehaviour.StopCoroutine(coroutineAtual);
+        Utils.MonoBehaviour.StopCoroutine(coroutineAtual);
     }
 
     private void desligarGlows()

@@ -29,7 +29,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
     public override void iniciarPup()
     {
         miras.ligar();
-        coroutine = monoBehaviour.StartCoroutine(selecionarAlvo());
+        coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
     public override void resetPup(){}
@@ -56,7 +56,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
 
                     coletavelParaVoar.desligar();
                     ligar();
-                    monoBehaviour.StartCoroutine(voar(coletavelParaVoar));
+                    Utils.MonoBehaviour.StartCoroutine(voar(coletavelParaVoar));
                     hitColetavel = true;
                 }
             }
@@ -96,7 +96,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
     {
         if (!hitColetavel)
         {
-            monoBehaviour.StopCoroutine(coroutine);
+            Utils.MonoBehaviour.StopCoroutine(coroutine);
             miras.desligar();
             powerUpFinalizacao.finalizado();
         }

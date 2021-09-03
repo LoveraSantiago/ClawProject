@@ -2,8 +2,7 @@ using UnityEngine;
 
 public abstract class AbstractPowerUpGo : Coletavel
 {    
-    protected static PowerUpDto powerUpDto;
-    protected static MonoBehaviour monoBehaviour;
+    protected static PowerUpDto powerUpDto;    
 
     protected static InputGame inputGame;
     protected static PowerUpFinalizacao powerUpFinalizacao;
@@ -43,10 +42,9 @@ public abstract class AbstractPowerUpGo : Coletavel
     }
 
     public static void configurarAbstractPowerUp(PowerUpDto powerUpDtoArg, PowerUpFinalizacao powerUpFinalizacaoArg, 
-        InputGame inputGameArg, MonoBehaviour monoBehaviourArg)
+        InputGame inputGameArg)
     {
-        powerUpDto = powerUpDtoArg;
-        monoBehaviour = monoBehaviourArg;
+        powerUpDto = powerUpDtoArg;        
         powerUpFinalizacao = powerUpFinalizacaoArg;
         inputGame = inputGameArg;        
     }    

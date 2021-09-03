@@ -8,20 +8,23 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoTempoEsgotado.ConsumidorEvento,
                             AcaoBoardElevadoFim.ConsumidorEvento,
                             AcaoColetadoFim.ConsumidorEvento,
+                            AcaoCacaNiquel.ConsumidorEvento,
                             ConsumidorDeEventoTrigger
 {
     public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
 
-    private GerenciadorDeMovimentacaoNormal gerDeMovNormal;
-    private GerenciadorDeMovimentacaoPowerUp gerDeMovPowerUp;
+    private GerenciadorDeMovimentacaoNormal     gerDeMovNormal;
+    private GerenciadorDeMovimentacaoPowerUp    gerDeMovPowerUp;
+    private GerenciadorDeMovimentacaoCacaNiquel gerDeMovCacaNiquel;//TODO tentar reaproveitar GerenciadorDeMovimentacaoNormal e remover GerenciadorDeMovimentacaoCacaNiquel
     private GerenciadorDeMovimentacao gerDeMovAtual;
     private CaboDaGarra cabo;
 
     public GarraManager(GarraDto garraDto)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
-        gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
-        gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
+        gerDeMovNormal     = new GerenciadorDeMovimentacaoNormal();
+        gerDeMovPowerUp    = new GerenciadorDeMovimentacaoPowerUp();
+        gerDeMovCacaNiquel = new GerenciadorDeMovimentacaoCacaNiquel();
         gerDeMovAtual = gerDeMovNormal;
 
         configurarColisorCentroDaPinca(garraDto.Colisor);
@@ -39,6 +42,11 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     {
         gerDeMovNormal.configuradoPeloLevel(level.getMecanicaDaGarra());
         cabo.configuradoPeloLevel(level.getDicionarioDeCores());
+
+        if(level.getTipoGame() == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP)
+        {
+            gerDeMovAtual = gerDeMovCacaNiquel;
+        }
     }
 
     public void start()
@@ -114,6 +122,11 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         {
             gerDeMovNormal.iniciarMovimentacoes();            
         }
+    }
+
+    void ProdutorConsumidoresDeEvento<Vazio>.ConsumidorEvento.consumirEvento(Vazio evento)
+    {   
+        gerDeMovAtual.iniciarMovimentacoes();
     }
 
     ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()

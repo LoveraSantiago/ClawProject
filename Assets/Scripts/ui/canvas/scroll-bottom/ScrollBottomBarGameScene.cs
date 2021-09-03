@@ -8,36 +8,30 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
 
 {
     private int indiceBtn;
-
-    private MonoBehaviour monoBehaviour;
+    
     private GameObject prefabBottomBar;
-
     private ProdutorDeEvento<PowerUpBtnInfo> produtorDeEvento;
 
-    public ScrollBottomBarGameScene(GameObject prefabBottomBar, MonoBehaviour monoBehaviour)
-       : base(prefabBottomBar, monoBehaviour)
+    public ScrollBottomBarGameScene(GameObject prefabBottomBar)
+       : base(prefabBottomBar)
     {
         this.prefabBottomBar = prefabBottomBar;
-        this.monoBehaviour = monoBehaviour;
-
         produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfo>();
     }
 
     protected override void cliqueBoxAcionado()
     {
-        string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;
-        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
-        PowerUpEntidade pupEscolhido = allPups[int.Parse(nomeBtnSelecionado)];
+        string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;        
+        PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeBtnSelecionado));
         PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
 
         btnBottomBar.descerBotao();
-        monoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));       
+        Utils.MonoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));       
     }
 
     public void simularCliqueBoxAcionado(int indiceBtn, int indicePup)
-    {
-        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
-        PowerUpEntidade pupEscolhido = allPups[indicePup];
+    {        
+        PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
         PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
 
         produtorDeEvento.produziuEvento(pupBtnInfo);
@@ -46,13 +40,13 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
     public override void posCliqueBtnClose()
     {
         PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, null);
-        monoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));
+        Utils.MonoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));
     }
 
     void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
         indiceBtn = evento;
-        monoBehaviour.StartCoroutine(mostrarBottomBar());
+        Utils.MonoBehaviour.StartCoroutine(mostrarBottomBar());
     }
 
     private IEnumerator finaizarBottomBar(PowerUpBtnInfo pupBtnInfo)

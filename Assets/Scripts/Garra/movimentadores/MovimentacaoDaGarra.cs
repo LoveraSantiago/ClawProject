@@ -4,7 +4,7 @@ public abstract class MovimentacaoDaGarra
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
 
-    protected static Vector2 posInicial;
+    private static Vector2 posInicial;
     protected static PincaDaGarra pincas;
     protected static GarraDto garraDto;
     protected static AnimacaoGarra animacao;
@@ -35,6 +35,7 @@ public abstract class MovimentacaoDaGarra
 
     private void moverHorizontalmente(float direcao)
     {
+        //Debug.Log(direcao * garraDto.VelocMovHorizontal);
         garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.VelocMovHorizontal, 0);        
     }
 
@@ -64,6 +65,11 @@ public abstract class MovimentacaoDaGarra
     protected void colocarNaPosInicial()
     {
         garraDto.RigidBody.transform.localPosition = posInicial;
+    }
+
+    protected void colocarNaPosHorizontal(float posHorizontal)
+    {
+        garraDto.RigidBody.transform.localPosition = new Vector3(posHorizontal, posInicial.y, 0);
     }
 
     protected void colocarMassa(int massa)
@@ -140,5 +146,6 @@ public abstract class MovimentacaoDaGarra
         pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);                
         produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();                
         animacao = new AnimacaoGarra(garraDto.Animator);
+        posInicial = garraDto.RigidBody.transform.localPosition;
     }
 }

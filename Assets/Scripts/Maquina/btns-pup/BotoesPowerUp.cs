@@ -123,11 +123,11 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         }
     }
 
-    public void endDrag(MonoBehaviour monoBehaviour)
+    public void endDrag()
     {
         if (controlePup.podeAcionarPupDraggavel())
         {
-            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp(monoBehaviour);            
+            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp();            
             if (result)
             {
                 draggarBotao(btnAcionado);

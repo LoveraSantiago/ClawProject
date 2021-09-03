@@ -6,17 +6,17 @@ public class PowerUpManager : PowerUpAcionamento,
 {
     private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;    
 
-    public PowerUpManager(PowerUpDto powerUpDto, MonoBehaviour monoBehaviour, InputGame inputGame)
+    public PowerUpManager(PowerUpDto powerUpDto, InputGame inputGame)
     {
-        configurarPowerUps(powerUpDto, monoBehaviour, inputGame);
+        configurarPowerUps(powerUpDto, inputGame);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();        
     }    
 
-    private void configurarPowerUps(PowerUpDto powerUpDto, MonoBehaviour monoBehaviour, InputGame inputGame)
+    private void configurarPowerUps(PowerUpDto powerUpDto, InputGame inputGame)
     {        
         PowerUpEntidade.configurarDicionarioDeSpritesPup(powerUpDto.PrefabPowerUpDto);
         PowerUpParaMaquina.configAcionadorDePowerUp(this);
-        AbstractPowerUpGo.configurarAbstractPowerUp(powerUpDto, this, inputGame, monoBehaviour);        
+        AbstractPowerUpGo.configurarAbstractPowerUp(powerUpDto, this, inputGame);        
     }
 
     public void acionado(PowerUpEntidade powerUp)

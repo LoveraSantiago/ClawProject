@@ -11,11 +11,10 @@ public class BotaoBottomBar
     private bool animacaoEmAndamento;
     private int animacaoAtual;
 
-    private Animator animator;
-    private MonoBehaviour monoBehaviour;
+    private Animator animator;    
 
     public BotaoBottomBar(
-        BotaoBottomBarDto bottomBarDto, ScrollBottomBar scrollBottomBar, MonoBehaviour monoBehaviour)
+        BotaoBottomBarDto bottomBarDto, ScrollBottomBar scrollBottomBar)
     {
         bottomBarDto.BtnBottonBar.onClick.AddListener(()=> {
                 btnBottomPressionado();
@@ -23,9 +22,7 @@ public class BotaoBottomBar
             });
 
         animator = bottomBarDto.AnimatorBottonBar;
-        animacaoAtual = ANIM_EMBAIXO;
-
-        this.monoBehaviour = monoBehaviour;
+        animacaoAtual = ANIM_EMBAIXO;        
     }
 
     public void btnBottomPressionado()
@@ -45,12 +42,12 @@ public class BotaoBottomBar
 
     public void subirBotao()
     {
-        monoBehaviour.StartCoroutine(coroutineAnimacao(ANIM_SUBIR, ANIM_EMCIMA));
+        Utils.MonoBehaviour.StartCoroutine(coroutineAnimacao(ANIM_SUBIR, ANIM_EMCIMA));
     }
 
     public void descerBotao()
     {
-        monoBehaviour.StartCoroutine(coroutineAnimacao(ANIM_DESCER, ANIM_EMBAIXO));
+        Utils.MonoBehaviour.StartCoroutine(coroutineAnimacao(ANIM_DESCER, ANIM_EMBAIXO));
     }
 
     private bool isEstadoEmbaixo()
