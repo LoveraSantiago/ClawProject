@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 29850283}
   - component: {fileID: 29850282}
   m_Layer: 5
-  m_Name: btn-ganhar-any-pup
+  m_Name: btn-ganhar-pup-geral
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1212,7 +1212,7 @@ GameObject:
   - component: {fileID: 921798733}
   - component: {fileID: 921798732}
   m_Layer: 5
-  m_Name: btn-ganhar-this-pup
+  m_Name: btn-ganhar-pup-individual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2260,6 +2260,8 @@ MonoBehaviour:
   btnBack: {fileID: 98718867}
   btnPratica: {fileID: 1907970085}
   btnCacaNiquelPup: {fileID: 921798732}
+  btnCacaNiquelPupIndividual: {fileID: 921798732}
+  btnCacaNiquelPupGeral: {fileID: 29850282}
   blocoImgDto:
     animatorBlocoImg: {fileID: 2088493096}
     btnEsquerda: {fileID: 487751604}

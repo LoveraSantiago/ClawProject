@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevel 
 {
-    public enum TIPO_GAME { NORMAL, PUP, CACANIQUEL_PUP, CACANIQUEL_PUPS }
+    public enum TIPO_GAME { NORMAL, PUP, CACANIQUEL_PUP_INDIVIDUAL, CACANIQUEL_PUP_GERAL }
 
     protected static readonly string TIMER_ZERO = "00:00";
 
@@ -25,4 +25,9 @@ public abstract class AbstractLevel
     public abstract TipoContagemTempoDto getTempoContagem();
 
     public abstract Dictionary<string, string> getDicionarioDeCores();   
+
+    public static bool isCacaNiquelLevel(AbstractLevel.TIPO_GAME tipoGame)
+    {
+        return tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL || tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
+    }
 }

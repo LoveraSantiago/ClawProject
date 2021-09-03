@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class FactoryPowerUpEntidade 
 {
     private static PowerUpEntidade bombaDaGarra;
@@ -158,5 +160,16 @@ public class FactoryPowerUpEntidade
     public static PowerUpEntidade getPowerUpFromIndice(int indice)
     {
         return getAllPowerUps()[indice];
+    }
+
+    public static Sprite[] getAllSpritesPowerUp()
+    {
+        PowerUpEntidade[] allPups = getAllPowerUps();
+        Sprite[] sprites = new Sprite[allPups.Length];
+        for(int contador = 0; contador < sprites.Length; contador++)
+        {
+            sprites[contador] = allPups[contador].sprPowerUp;
+        }
+        return sprites;
     }
 }
