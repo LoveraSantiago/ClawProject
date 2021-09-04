@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class GlowEfeito 
 {
-    private static Color greenHdr;
-    private static Color redHdr;
-    private static Color yellowHdr;
+    
 
     private GameObject goEfeito;
     public MaterialGlow materialGlow { get; private set; }
@@ -23,30 +21,23 @@ public class GlowEfeito
     public void ligarGlowSucesso()
     {
         goEfeito.SetActive(true);
-        materialGlow.setCorNoMaterial(greenHdr);
+        materialGlow.setCorNoMaterial(ArcoIrisEfeito.greenHdr);
     }
 
     public void ligarGlowFail()
     {
         goEfeito.SetActive(true);
-        materialGlow.setCorNoMaterial(redHdr);
+        materialGlow.setCorNoMaterial(ArcoIrisEfeito.redHdr);
     }
 
     public void ligarGlowLuz()
     {
         goEfeito.SetActive(true);
-        materialGlow.setCorNoMaterial(yellowHdr);
+        materialGlow.setCorNoMaterial(ArcoIrisEfeito.yellowHdr);
     }
 
     public void desligarGlow()
     {
         goEfeito.SetActive(false);
-    }      
-
-    public static void configurarHdr(float factorHdr)
-    {
-        greenHdr  = HSBColor.toHdrColor(Color.green , factorHdr);
-        redHdr    = HSBColor.toHdrColor(Color.red   , factorHdr);
-        yellowHdr = HSBColor.toHdrColor(Color.yellow, factorHdr);
-    }
+    }          
 }

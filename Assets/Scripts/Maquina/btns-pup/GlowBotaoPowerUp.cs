@@ -45,7 +45,7 @@ public class GlowBotaoPowerUp
         }
         else
         {
-            glowEfeito.materialGlow.setCorNoMaterial(Color.yellow);
+            glowEfeito.materialGlow.setCorNoMaterial(ArcoIrisEfeito.yellowHdr);
         }
     }
 

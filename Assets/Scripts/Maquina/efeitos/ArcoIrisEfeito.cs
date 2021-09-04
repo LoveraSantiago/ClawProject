@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public class ArcoIrisEfeito 
 {
+    public static Color greenHdr  { get; private set; }
+    public static Color redHdr    { get; private set; }
+    public static Color yellowHdr { get; private set; }
+
     private float factorHdr;
     private Coroutine coroutineAtual;    
     private List<ArcoIrisConjunto> listaArcoIrisConjunto;
@@ -12,7 +16,7 @@ public class ArcoIrisEfeito
     {
         this.factorHdr = factorHdr;
         listaArcoIrisConjunto = new List<ArcoIrisConjunto>();
-        GlowEfeito.configurarHdr(factorHdr);
+        configurarCoresHdr(factorHdr);
     }
 
     public void ligarEfeitoArcoIris()
@@ -23,12 +27,12 @@ public class ArcoIrisEfeito
 
     public void ligarBlinkRed()
     {
-        coroutineAtual = Utils.MonoBehaviour.StartCoroutine(blinkarCor(Color.red));
+        coroutineAtual = Utils.MonoBehaviour.StartCoroutine(blinkarCor(redHdr));
     }
 
     public void ligarBlinkVerde()
     {
-        coroutineAtual = Utils.MonoBehaviour.StartCoroutine(blinkarCor(Color.green));
+        coroutineAtual = Utils.MonoBehaviour.StartCoroutine(blinkarCor(greenHdr));
     }
 
     private void ligarGlows()
@@ -87,5 +91,12 @@ public class ArcoIrisEfeito
             desligarGlows();
             yield return new WaitForSeconds(0.2f);
         }
+    }
+
+    public void configurarCoresHdr(float factorHdr)
+    {
+        greenHdr  = HSBColor.toHdrColor(Color.green, factorHdr);
+        redHdr    = HSBColor.toHdrColor(Color.red, factorHdr);
+        yellowHdr = HSBColor.toHdrColor(Color.yellow, factorHdr);
     }
 }
