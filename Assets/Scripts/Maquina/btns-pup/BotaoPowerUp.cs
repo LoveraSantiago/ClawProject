@@ -136,10 +136,6 @@ public class BotaoPowerUp : Draggavel
     public static void configurar(BotoesPowerUpDto btnsPowerUpsDto)
     {
         AparenciaBotaoPowerUp.configurarSpriteBordas(btnsPowerUpsDto.BordasBtns);
-        AcaoDragPowerUp.configurarAreaDraggavel(btnsPowerUpsDto.AreaDraggavel);
-
-        GlowBotaoPowerUp.configurar(
-            btnsPowerUpsDto.MaterialGlowGeral, 
-            btnsPowerUpsDto.MaterialGlowIndividual);
+        AcaoDragPowerUp.configurarAreaDraggavel(btnsPowerUpsDto.AreaDraggavel);        
     }
 }
