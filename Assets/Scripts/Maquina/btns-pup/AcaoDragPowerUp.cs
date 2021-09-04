@@ -4,13 +4,13 @@ using UnityEngine;
 public class AcaoDragPowerUp 
 {
     private static readonly int VELOCIDADE_VOLTA = 15;
-    private static GameObject goAreaDraggavel;
-    private static Bounds areaDraggavel;
 
+    private static Bounds areaDraggavel;
+    private static GameObject goAreaDraggavel;
+
+    private Bounds  areaBotao;   
     private Vector2 posicaoInicialDrag;
     private Vector3 posicaoOriginal;
-
-    private Bounds areaBotao;   
 
     public AcaoDragPowerUp(BotaoPowerUpDto botaoDto)
     {
@@ -26,6 +26,7 @@ public class AcaoDragPowerUp
     public void prepararDraggagem(Vector3 posInicialDrag)
     {
         this.posicaoInicialDrag = posInicialDrag;
+
         goAreaDraggavel.SetActive(true);
     }
 
