@@ -61,7 +61,9 @@ public class AparenciaBotaoPowerUp
 
     public void prepararRotacaoImgDrag()
     {
-        btnDto.GoBtnPowerUp.transform.localRotation = Quaternion.identity;
+        Transform transformBtnPup = btnDto.GoBtnPowerUp.transform;
+        btnDto.GoAreaExterna.transform.localRotation = transformBtnPup.localRotation;
+        transformBtnPup.localRotation = Quaternion.identity;
     }
 
     public void mostrarSoImagem()
@@ -134,6 +136,10 @@ public class AparenciaBotaoPowerUp
     {
         btnDto.GoParteDentro.transform.position = posicao;
         btnDto.GoBtnPowerUp.transform.localRotation = rotacao;
+
+        Transform transformBtnPup = btnDto.GoBtnPowerUp.transform;
+        transformBtnPup.localRotation = btnDto.GoAreaExterna.transform.localRotation;
+        btnDto.GoAreaExterna.transform.localRotation = Quaternion.identity;
     }
 
     public static void configurarSpriteBordas(Sprite[] spritesBordas)

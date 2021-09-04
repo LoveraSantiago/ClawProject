@@ -600,11 +600,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4205780950082828164, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &292653094 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5014026569531479419, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &292653096 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5014026569531479417, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -782,11 +777,6 @@ SpriteRenderer:
 --- !u!212 &482185736 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4767438955442284893, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &484306874 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1376772371933875797, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &484306876 stripped
@@ -1159,34 +1149,26 @@ MonoBehaviour:
         areaDraggavel: {fileID: 2139442905}
         btnPowerUp:
         - sprAreaExterna: {fileID: 6406990385049082688}
-          goParteDentro: {fileID: 646770560}
           sprParteDentro: {fileID: 646770562}
           sprContorno: {fileID: 1457028559}
-          goImagem: {fileID: 484306874}
           sprImagem: {fileID: 484306876}
           sprEfeito: {fileID: 6406990385049082692}
           goExclamacao: {fileID: 121857696}
         - sprAreaExterna: {fileID: 6406990385049082687}
-          goParteDentro: {fileID: 1116124206}
           sprParteDentro: {fileID: 1116124208}
           sprContorno: {fileID: 1922279708}
-          goImagem: {fileID: 1454684506}
           sprImagem: {fileID: 1454684508}
           sprEfeito: {fileID: 6406990385049082691}
           goExclamacao: {fileID: 1061401521}
         - sprAreaExterna: {fileID: 6406990385049082686}
-          goParteDentro: {fileID: 681647209}
           sprParteDentro: {fileID: 681647211}
           sprContorno: {fileID: 1508959791}
-          goImagem: {fileID: 1419182439}
           sprImagem: {fileID: 1419182441}
           sprEfeito: {fileID: 6406990385049082690}
           goExclamacao: {fileID: 67770073}
         - sprAreaExterna: {fileID: 6406990385049082685}
-          goParteDentro: {fileID: 292653094}
           sprParteDentro: {fileID: 292653096}
           sprContorno: {fileID: 2123831560}
-          goImagem: {fileID: 1420270364}
           sprImagem: {fileID: 1420270366}
           sprEfeito: {fileID: 6406990385049082689}
           goExclamacao: {fileID: 293416723}
@@ -6769,11 +6751,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &646770560 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5014026569021869673, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &646770562 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5014026569021869675, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -7071,11 +7048,6 @@ PrefabInstance:
 --- !u!212 &678638197 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5830838162358916622, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &681647209 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5014026567534351098, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &681647211 stripped
@@ -8229,11 +8201,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088575702}
   m_CullTransparentMesh: 1
---- !u!1 &1116124206 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5014026569486892716, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1116124208 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5014026569486892718, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -13560,19 +13527,9 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5830838162553993279, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1419182439 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1376772373400392390, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1419182441 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5266700241456514810, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1420270364 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1376772372409931079, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1420270366 stripped
@@ -13608,11 +13565,6 @@ SpriteRenderer:
 --- !u!212 &1454529877 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8445163667742393304, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1454684506 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1376772372408401552, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1454684508 stripped
@@ -24736,6 +24688,10 @@ PrefabInstance:
     - target: {fileID: 6406990384449578761, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_Name
       value: maquina
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430377541888241770, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
