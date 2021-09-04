@@ -17,6 +17,11 @@ public class GlowBotaoPowerUp
 
     public void ligarGlow()
     {
+        glowEfeito.ligarGlowLuz();
+    }
+
+    public void ligarPeloEstadoGlow()
+    {
         if(!isEfeitoIndividual)
         {
             glowEfeito.ligarGlowLuz();
