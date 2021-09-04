@@ -151,6 +151,13 @@ public struct HSBColor
         return ToColor(this);
     }
 
+    public static Color toHdrColor(Color corOriginal, float factorHdr)
+    {
+        float factor = Mathf.Pow(2, factorHdr);        
+        Color corHdr = new Color(corOriginal.r * factor, corOriginal.g * factor, corOriginal.b * factor);
+        return corHdr;
+    }
+
     public override string ToString()
     {
         return "H:" + h + " S:" + s + " B:" + b;

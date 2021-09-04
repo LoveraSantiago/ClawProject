@@ -12,6 +12,7 @@ public class ArcoIrisEfeito
     {
         this.factorHdr = factorHdr;
         listaArcoIrisConjunto = new List<ArcoIrisConjunto>();
+        GlowEfeito.configurarHdr(factorHdr);
     }
 
     public void ligarEfeitoArcoIris()
@@ -61,10 +62,9 @@ public class ArcoIrisEfeito
     private IEnumerator ligarGlowArcoIris()
     {
         while (true)
-        {
-            float factor = Mathf.Pow(2, factorHdr);
+        {            
             Color singleColor    = HSBColor.ToColor(new HSBColor(Mathf.PingPong(Time.time * 0.5f, 1), 1, 1));
-            Color singleColorHdr = new Color(singleColor.r * factor, singleColor.g * factor, singleColor.b * factor);
+            Color singleColorHdr = HSBColor.toHdrColor(singleColor, factorHdr);
             for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
             {
                 listaArcoIrisConjunto[contador].passarCor(singleColorHdr);
