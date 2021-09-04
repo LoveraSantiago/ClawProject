@@ -7,9 +7,7 @@ public class MainGameScene : MonoBehaviour,
 {
     [SerializeField] private LevelFlowManager.LEVEL level;
     [Space(5)]
-    [SerializeField] private MainDto mainDto;                
-    [Space(5)]
-    [SerializeField] private PowerUpDto powerUpDto;
+    [SerializeField] private MainDto mainDto;                    
     [Space(5)]
     [SerializeField] private ModalPontosDto modalPontosDto;
     [Space(5)]
@@ -48,7 +46,7 @@ public class MainGameScene : MonoBehaviour,
         garraManager      = new GarraManager(mainDto.GarraDto);
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
         maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, inputGame);        
-        powerUpManager    = new PowerUpManager(powerUpDto, inputGame);
+        powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
         modalPontos       = new ModalPontos(modalPontosDto);
         cameraManager     = new CameraManager(mainDto.CameraDto);
         scrollManager     = new ScrollManager(prefabBottomBar);        

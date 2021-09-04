@@ -1201,6 +1201,69 @@ MonoBehaviour:
       virtualCam1: {fileID: 250677996}
       virtualCam2: {fileID: 1162031990}
       virtualCam3: {fileID: 2101427130}
+    powerUpDto:
+      vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
+      prefabPowerUpDto: {fileID: 5653745407918303698, guid: 264fd96ffd92c7d4899adb12d26ef4f1, type: 3}
+      bombaDto:
+        angGarra: 5
+        delayInicial: 0.4
+        delayExplosao: 0.25
+        delayPosExplosao: 1.1
+        raioExplosao: 1
+        velocidadeHit: 7.5
+        anguloHit: 40
+        bombaGo: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
+      missilNuclearDto:
+        angGarra: 4
+        halturaPos: -0.6
+        delayInicial: 0.4
+        delayExplosao: 0.25
+        delayFinal: 1.1
+        missilNuclearGo: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
+      minaDto:
+        haltura: -3.7
+        delayExplosao: 0.25
+        delayPosExplosao: 1.1
+        minaTerrestreGo: {fileID: 4127936681606313068, guid: 60283f6ad83360741b3927cd1859a108, type: 3}
+      missilTeleguiadoDto:
+        angGarra: 16
+        halturaPos: -0.4
+        velocidade: 2.5
+        anguloHit: 0
+        velocidadeHit: 20
+        delayFinalizar: 1.1
+        missilGo: {fileID: 4127936681606313068, guid: f4b85493ee34d5749b9c9e3d0dd804d1, type: 3}
+        pathMissilDto:
+          goMainPath: {fileID: 1245264362}
+          pathPointsMissil:
+          - {fileID: 1245264361}
+          - {fileID: 1245264360}
+          - {fileID: 1245264359}
+          - {fileID: 1245264358}
+          - {fileID: 1245264357}
+          - {fileID: 1245264356}
+          - {fileID: 1245264355}
+          - {fileID: 1245264354}
+          - {fileID: 1245264353}
+          - {fileID: 1245264352}
+          - {fileID: 1245264351}
+          - {fileID: 1245264350}
+          - {fileID: 1245264348}
+      teleporteDto:
+        velocidade: 0.75
+        delayFinal: 0.5
+        matTeleporteIn: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
+        matTeleporteOut: {fileID: 2100000, guid: e4da0d30a658a4541a919c42171abb7f, type: 2}
+      asaDto:
+        layer: 32
+        gravidadeNeg: -0.1
+        offset: 0.3
+        haltura: 3
+        delayFinalizar: 0.5
+        asaGo: {fileID: 4127936681606313068, guid: 5432931c59eafda478e032d555b31327, type: 3}
+      rollBackDto:
+        delayReset: 1.5
+        delayFinalizar: 1
   powerUpDto:
     vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
     prefabPowerUpDto: {fileID: 5653745407918303698, guid: 264fd96ffd92c7d4899adb12d26ef4f1, type: 3}
