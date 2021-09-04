@@ -26436,6 +26436,10 @@ PrefabInstance:
       value: 0.34117648
       objectReference: {fileID: 0}
     - target: {fileID: 6406990385582931903, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_Size.y
+      value: 3.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406990385582931903, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_Color.b
       value: 0.6784314
       objectReference: {fileID: 0}
