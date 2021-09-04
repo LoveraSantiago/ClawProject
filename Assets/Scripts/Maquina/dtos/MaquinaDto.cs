@@ -5,6 +5,7 @@ using UnityEngine;
 public class MaquinaDto
 {
     [Space(5)]
+    [SerializeField] private float factorHdr;
     [SerializeField] private Transform referenciaChao;
     [Space(5)]
     [SerializeField] private JoystickDto joystickDto;    
@@ -21,6 +22,7 @@ public class MaquinaDto
     [Space(5)]
     [SerializeField] private PartesMaquinaDto partesDto;
 
+    public float FactorHdr { get { return factorHdr; } }
     public Transform ReferenciaChao { get { return referenciaChao; } }
     public JoystickDto JoystickDto { get { return joystickDto; } }
 

@@ -4,12 +4,13 @@ using System.Collections.Generic;
 
 public class ArcoIrisEfeito 
 {
+    private float factorHdr;
     private Coroutine coroutineAtual;    
-
     private List<ArcoIrisConjunto> listaArcoIrisConjunto;
 
-    public ArcoIrisEfeito()
-    {   
+    public ArcoIrisEfeito(float factorHdr)
+    {
+        this.factorHdr = factorHdr;
         listaArcoIrisConjunto = new List<ArcoIrisConjunto>();
     }
 
@@ -61,10 +62,12 @@ public class ArcoIrisEfeito
     {
         while (true)
         {
-            Color singleColor = HSBColor.ToColor(new HSBColor(Mathf.PingPong(Time.time * 0.5f, 1), 1, 1));
+            float factor = Mathf.Pow(2, factorHdr);
+            Color singleColor    = HSBColor.ToColor(new HSBColor(Mathf.PingPong(Time.time * 0.5f, 1), 1, 1));
+            Color singleColorHdr = new Color(singleColor.r * factor, singleColor.g * factor, singleColor.b * factor);
             for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
             {
-                listaArcoIrisConjunto[contador].passarCor(singleColor);
+                listaArcoIrisConjunto[contador].passarCor(singleColorHdr);
             }
 
             yield return null;

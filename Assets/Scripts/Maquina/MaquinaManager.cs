@@ -33,7 +33,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp   = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         vigasTras       = new VigasTras(maquinaDto.VigasDto);
 
-        arcoIrisEfeito = new ArcoIrisEfeito()//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW            
+        arcoIrisEfeito = new ArcoIrisEfeito(maquinaDto.FactorHdr)//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW            
             .addArcoIrisConjunto(displaysDeSlots.getDisplayColetadoGlow())
             .addArcoIrisConjunto(displayDeScores)
             .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow(maquinaDto.DisplayTimerDto))

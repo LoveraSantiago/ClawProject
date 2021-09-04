@@ -33,7 +33,7 @@ public class VigasTras : ArcoIrisConjunto
     }
 
     public void passarCor(Color cor)
-    {
+    {       
         materialGlow.setCorNoMaterial(cor);
     }
 }
