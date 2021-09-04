@@ -25,7 +25,7 @@ public class BotoesPowerUpArcoIris : ArcoIrisConjunto
     {
         for (int contador = 0; contador < glowsBtns.Length; contador++)
         {
-            glowsBtns[contador].ligarGlow();
+            glowsBtns[contador].ligarPeloEstadoGlow();
         }
     }
 

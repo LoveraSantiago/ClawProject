@@ -2,21 +2,27 @@ using UnityEngine;
 
 public class GlowBotaoPowerUp 
 {
-    private static MaterialGlow materialGlowGeral;
-    private static MaterialGlow materialGlowIndividual;
+    private bool isEfeitoIndividual;
 
-    private SpriteRenderer sprEfeito;
     private GlowEfeito glowEfeito;
+    private SpriteRenderer sprEfeito;
 
     public GlowBotaoPowerUp(SpriteRenderer sprEfeito)
     {
         this.sprEfeito = sprEfeito;
-        glowEfeito = new GlowEfeito(sprEfeito.gameObject, materialGlowGeral);
+
+        MaterialGlow materialGlow = new MaterialGlow(sprEfeito.material);
+        glowEfeito = new GlowEfeito(sprEfeito.gameObject, materialGlow);
     }
 
     public void ligarGlow()
     {
-        if(glowEfeito.materialGlow == materialGlowIndividual)
+        glowEfeito.ligarGlowLuz();
+    }
+
+    public void ligarPeloEstadoGlow()
+    {
+        if(!isEfeitoIndividual)
         {
             glowEfeito.ligarGlowLuz();
         }
@@ -33,32 +39,29 @@ public class GlowBotaoPowerUp
 
     public void passarCorDoMaterial(Color cor)
     {
-        if(glowEfeito.materialGlow != materialGlowIndividual)
+        if(!isEfeitoIndividual)
         {
             glowEfeito.materialGlow.setCorNoMaterial(cor);
+        }
+        else
+        {
+            glowEfeito.materialGlow.setCorNoMaterial(Color.yellow);
         }
     }
 
     public void mudarParaMaterialIndividual()
     {
-        mudarMaterial(materialGlowIndividual);
+        isEfeitoIndividual = true;        
     }
 
     public void mudarParaMaterialArcoIris()
     {
-        mudarMaterial(materialGlowGeral);
+        isEfeitoIndividual = false;        
     }
 
     private void mudarMaterial(MaterialGlow materialGlow)
     {
         glowEfeito.mudarMaterial(materialGlow);
         sprEfeito.material = materialGlow.material;
-    }
-
-    public static void configurar(
-        Material materialGeral, Material materialIndividual)
-    {
-        materialGlowGeral = new MaterialGlow(materialGeral);
-        materialGlowIndividual = new MaterialGlow(materialIndividual);        
-    }
+    }   
 }

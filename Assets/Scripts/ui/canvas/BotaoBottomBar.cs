@@ -8,7 +8,7 @@ public class BotaoBottomBar
     private readonly int ANIM_EMCIMA  = Animator.StringToHash("emcima");
     private readonly int ANIM_EMBAIXO = Animator.StringToHash("embaixo");
 
-    private bool animacaoEmAndamento;
+    public bool animacaoEmAndamento { get; private set; }
     private int animacaoAtual;
 
     private Animator animator;    

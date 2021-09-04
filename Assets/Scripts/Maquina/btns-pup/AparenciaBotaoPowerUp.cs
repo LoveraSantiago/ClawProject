@@ -59,6 +59,13 @@ public class AparenciaBotaoPowerUp
         btnDto.SprImagem.sprite = null;
     }
 
+    public void prepararRotacaoImgDrag()
+    {
+        Transform transformBtnPup = btnDto.GoBtnPowerUp.transform;
+        btnDto.GoAreaExterna.transform.localRotation = transformBtnPup.localRotation;
+        transformBtnPup.localRotation = Quaternion.identity;
+    }
+
     public void mostrarSoImagem()
     {
         if(mostrandoAtual != MOSTRANDO_IMAGEM)
@@ -125,9 +132,14 @@ public class AparenciaBotaoPowerUp
             btnDto.GoParteDentro.transform.position, posicaoDestino, velocidade);
     }
 
-    public void colocarNaPosicao(Vector3 posicao)
+    public void colocarNaPosicaoOriginal(Vector3 posicao, Quaternion rotacao)
     {
         btnDto.GoParteDentro.transform.position = posicao;
+        btnDto.GoBtnPowerUp.transform.localRotation = rotacao;
+
+        Transform transformBtnPup = btnDto.GoBtnPowerUp.transform;
+        transformBtnPup.localRotation = btnDto.GoAreaExterna.transform.localRotation;
+        btnDto.GoAreaExterna.transform.localRotation = Quaternion.identity;
     }
 
     public static void configurarSpriteBordas(Sprite[] spritesBordas)

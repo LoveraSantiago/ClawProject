@@ -34,7 +34,7 @@ public class BotaoPowerUp : Draggavel
         }
         else
         {
-            Debug.Log("Btn clicado sem pup");
+            //Debug.Log("Btn clicado sem pup");
             glow.ligarGlow();
             Time.timeScale = 0;
             controlePup.desabilitarPowerUp();
@@ -119,7 +119,7 @@ public class BotaoPowerUp : Draggavel
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
     public void prepararDraggagem(Vector3 posInicialDrag)
     {        
-        acaoDrag.prepararDraggagem(posInicialDrag);
+        acaoDrag.prepararDraggagem(posInicialDrag, aparencia);
     }
 
     public void updateDrag(Vector2 posicaoDrag)
@@ -136,10 +136,6 @@ public class BotaoPowerUp : Draggavel
     public static void configurar(BotoesPowerUpDto btnsPowerUpsDto)
     {
         AparenciaBotaoPowerUp.configurarSpriteBordas(btnsPowerUpsDto.BordasBtns);
-        AcaoDragPowerUp.configurarAreaDraggavel(btnsPowerUpsDto.AreaDraggavel);
-
-        GlowBotaoPowerUp.configurar(
-            btnsPowerUpsDto.MaterialGlowGeral, 
-            btnsPowerUpsDto.MaterialGlowIndividual);
+        AcaoDragPowerUp.configurarAreaDraggavel(btnsPowerUpsDto.AreaDraggavel);        
     }
 }
