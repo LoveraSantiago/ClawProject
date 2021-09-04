@@ -11,9 +11,11 @@ public class AcaoDragPowerUp
     private Bounds  areaBotao;   
     private Vector2 posicaoInicialDrag;
     private Vector3 posicaoOriginal;
+    private Quaternion rotacaoOriginal;
 
     public AcaoDragPowerUp(BotaoPowerUpDto botaoDto)
     {
+        rotacaoOriginal = botaoDto.GoBtnPowerUp.transform.localRotation;
         posicaoOriginal = botaoDto.GoParteDentro.transform.position;
         areaBotao = botaoDto.SprAreaExterna.bounds;
     }
@@ -23,11 +25,11 @@ public class AcaoDragPowerUp
         return areaBotao.Contains(posicao);
     }
 
-    public void prepararDraggagem(Vector3 posInicialDrag)
+    public void prepararDraggagem(Vector3 posInicialDrag, AparenciaBotaoPowerUp aparencia)
     {
-        this.posicaoInicialDrag = posInicialDrag;
-
+        posicaoInicialDrag = posInicialDrag;
         goAreaDraggavel.SetActive(true);
+        aparencia.prepararRotacaoImgDrag();
     }
 
     public void updateDrag(Vector2 posicaoDrag, AparenciaBotaoPowerUp aparencia)
@@ -56,7 +58,7 @@ public class AcaoDragPowerUp
         {
             acaoPowerUp.acionar(aparencia.getPosicao());
             aparencia.mostrarBotao();            
-            aparencia.colocarNaPosicao(posicaoOriginal);
+            aparencia.colocarNaPosicaoOriginal(posicaoOriginal, rotacaoOriginal);
             goAreaDraggavel.SetActive(false);
             return true;
         }
@@ -77,7 +79,7 @@ public class AcaoDragPowerUp
             yield return null;
         }
         goAreaDraggavel.SetActive(false);
-        aparencia.colocarNaPosicao(posicaoOriginal);
+        aparencia.colocarNaPosicaoOriginal(posicaoOriginal, rotacaoOriginal);
         aparencia.mostrarBotao();
     }
 

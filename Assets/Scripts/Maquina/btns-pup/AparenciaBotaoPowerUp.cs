@@ -59,6 +59,11 @@ public class AparenciaBotaoPowerUp
         btnDto.SprImagem.sprite = null;
     }
 
+    public void prepararRotacaoImgDrag()
+    {
+        btnDto.GoBtnPowerUp.transform.localRotation = Quaternion.identity;
+    }
+
     public void mostrarSoImagem()
     {
         if(mostrandoAtual != MOSTRANDO_IMAGEM)
@@ -125,9 +130,10 @@ public class AparenciaBotaoPowerUp
             btnDto.GoParteDentro.transform.position, posicaoDestino, velocidade);
     }
 
-    public void colocarNaPosicao(Vector3 posicao)
+    public void colocarNaPosicaoOriginal(Vector3 posicao, Quaternion rotacao)
     {
         btnDto.GoParteDentro.transform.position = posicao;
+        btnDto.GoBtnPowerUp.transform.localRotation = rotacao;
     }
 
     public static void configurarSpriteBordas(Sprite[] spritesBordas)

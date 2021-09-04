@@ -119,7 +119,7 @@ public class BotaoPowerUp : Draggavel
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
     public void prepararDraggagem(Vector3 posInicialDrag)
     {        
-        acaoDrag.prepararDraggagem(posInicialDrag);
+        acaoDrag.prepararDraggagem(posInicialDrag, aparencia);
     }
 
     public void updateDrag(Vector2 posicaoDrag)

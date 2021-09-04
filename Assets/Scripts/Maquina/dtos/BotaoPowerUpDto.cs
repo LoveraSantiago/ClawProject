@@ -11,6 +11,7 @@ public class BotaoPowerUpDto
     [SerializeField] private SpriteRenderer sprEfeito;
     [SerializeField] private GameObject goExclamacao;
 
+    public GameObject GoBtnPowerUp { get { return sprAreaExterna.transform.parent.gameObject; } }
     public SpriteRenderer SprAreaExterna { get { return sprAreaExterna; } }
 
     public GameObject GoParteDentro { get { return sprParteDentro.gameObject; } }
