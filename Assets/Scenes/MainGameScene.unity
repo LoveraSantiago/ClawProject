@@ -1265,10 +1265,10 @@ MonoBehaviour:
       rollBackDto:
         delayReset: 1.5
         delayFinalizar: 1
-  modalPontosDto:
-    textoPontos: {fileID: 1473191375}
-    textoNivel: {fileID: 376184029}
-    goModalPontos: {fileID: 543390433}
+    modalPontosDto:
+      textoPontos: {fileID: 1473191375}
+      textoNivel: {fileID: 376184029}
+      goModalPontos: {fileID: 543390433}
   prefabBottomBar: {fileID: 1411617376}
 --- !u!61 &491158116
 BoxCollider2D:

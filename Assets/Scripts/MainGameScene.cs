@@ -7,9 +7,7 @@ public class MainGameScene : MonoBehaviour,
 {
     [SerializeField] private LevelFlowManager.LEVEL level;
     [Space(5)]
-    [SerializeField] private MainDto mainDto;                    
-    [Space(5)]
-    [SerializeField] private ModalPontosDto modalPontosDto;
+    [SerializeField] private MainDto mainDto;                        
     [Space(5)]
     [SerializeField] private GameObject prefabBottomBar;
 
@@ -47,7 +45,7 @@ public class MainGameScene : MonoBehaviour,
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
         maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, inputGame);        
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
-        modalPontos       = new ModalPontos(modalPontosDto);
+        modalPontos       = new ModalPontos(mainDto.ModalPontosDto);
         cameraManager     = new CameraManager(mainDto.CameraDto);
         scrollManager     = new ScrollManager(prefabBottomBar);        
     }
