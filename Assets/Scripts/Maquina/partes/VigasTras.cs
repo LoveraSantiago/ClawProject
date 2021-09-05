@@ -4,12 +4,14 @@ using UnityEngine;
 public class VigasTras : ArcoIrisConjunto
 {
     private VigasDto vigasDto;
-    private MaterialGlow materialGlow;
+    private MaterialGlow materialGlowVigaEsquerda;
+    private MaterialGlow materialGlowVigaDireita;
 
     public VigasTras(VigasDto vigasDto)
     {
         this.vigasDto = vigasDto;
-        materialGlow = new MaterialGlow(vigasDto.MaterialVigas);
+        materialGlowVigaEsquerda = new MaterialGlow(vigasDto.SprVigasTrasEsquerdaEfeito.material);
+        materialGlowVigaDireita = new MaterialGlow(vigasDto.SprVigasTrasDireitaEfeito.material);
     }
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
@@ -34,6 +36,7 @@ public class VigasTras : ArcoIrisConjunto
 
     public void passarCor(Color cor)
     {       
-        materialGlow.setCorNoMaterial(cor);
+        materialGlowVigaEsquerda.setCorNoMaterial(cor);
+        materialGlowVigaDireita.setCorNoMaterial(cor);
     }
 }

@@ -1177,8 +1177,9 @@ MonoBehaviour:
         vigaTrasEsquerda: {fileID: 946233168}
         vigaTrasDireita: {fileID: 108455522}
         vigaTrasEsquerdaEfeito: {fileID: 1780505043}
+        sprVigasTrasEsquerdaEfeito: {fileID: 1780505045}
         vigaTrasDireitaEfeito: {fileID: 6406990385049082675}
-        materialVigas: {fileID: 2100000, guid: a65f97e21115d7541946c69a86748e60, type: 2}
+        sprVigasTrasDireitaEfeito: {fileID: 6406990385049082698}
       bordasFrenteDto:
         sprBordaVidro: {fileID: 320505972}
         sprBordaVidroEfeito: {fileID: 6406990385049082696}
@@ -19264,6 +19265,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1780505043, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1780505045 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1780505045, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1783677019 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6833448712210773718, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -24837,5 +24843,10 @@ SpriteRenderer:
 --- !u!212 &6406990385049082696 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 848549023, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082698 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7255724115426048151, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
