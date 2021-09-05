@@ -13,10 +13,13 @@ public class MainDto
     [SerializeField] private CameraDto cameraDto;
     [Space(5)]
     [SerializeField] private PowerUpDto powerUpDto;
+    [Space(5)]
+    [SerializeField] private ModalPontosDto modalPontosDto;
 
     public GarraDto GarraDto { get { return garraDto; } }
     public ColetaveisDto ColetaveisDto { get { return coletaveisDto; } }
     public MaquinaDto MaquinaDto { get { return maquinaDto; } }    
     public CameraDto CameraDto { get { return cameraDto;  } }
     public PowerUpDto PowerUpDto { get { return powerUpDto; } }
+    public ModalPontosDto ModalPontosDto { get { return modalPontosDto; } }
 }

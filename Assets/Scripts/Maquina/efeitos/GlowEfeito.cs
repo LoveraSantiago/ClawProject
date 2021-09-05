@@ -1,7 +1,9 @@
 using UnityEngine;
 
 public class GlowEfeito 
-{   
+{
+    
+
     private GameObject goEfeito;
     public MaterialGlow materialGlow { get; private set; }
 
@@ -19,23 +21,23 @@ public class GlowEfeito
     public void ligarGlowSucesso()
     {
         goEfeito.SetActive(true);
-        materialGlow.setCorNoMaterial(Color.green);
+        materialGlow.setCorNoMaterial(ArcoIrisEfeito.greenHdr);
     }
 
     public void ligarGlowFail()
     {
         goEfeito.SetActive(true);
-        materialGlow.setCorNoMaterial(Color.red);
+        materialGlow.setCorNoMaterial(ArcoIrisEfeito.redHdr);
     }
 
     public void ligarGlowLuz()
     {
         goEfeito.SetActive(true);
-        materialGlow.setCorNoMaterial(Color.yellow);
+        materialGlow.setCorNoMaterial(ArcoIrisEfeito.yellowHdr);
     }
 
     public void desligarGlow()
     {
         goEfeito.SetActive(false);
-    }      
+    }          
 }
