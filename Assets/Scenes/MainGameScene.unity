@@ -1179,12 +1179,14 @@ MonoBehaviour:
         vigaTrasEsquerdaEfeito: {fileID: 1780505043}
         vigaTrasDireitaEfeito: {fileID: 6406990385049082675}
         materialVigas: {fileID: 2100000, guid: a65f97e21115d7541946c69a86748e60, type: 2}
+      bordasFrenteDto:
+        sprBordaVidro: {fileID: 320505972}
+        sprBordaVidroEfeito: {fileID: 6406990385049082696}
       partesDto:
         placaCima: {fileID: 702916761}
         baseParteCima: {fileID: 243475117}
         baseParteBaixo: {fileID: 594860183}
         baseChao: {fileID: 753857306}
-        bordaVidro: {fileID: 320505972}
         placaFrontal: {fileID: 1814315205}
         barra: {fileID: 186092669}
         chaoDentro: {fileID: 522769647}
@@ -24830,5 +24832,10 @@ SpriteRenderer:
 --- !u!212 &6406990385049082695 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 49801543049135062, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082696 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 848549023, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}

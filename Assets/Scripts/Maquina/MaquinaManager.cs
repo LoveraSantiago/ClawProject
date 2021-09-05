@@ -12,15 +12,14 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 {    
     private PartesMaquinaDto partesDto;
 
+    private Joystick joystick;
     private VigasTras vigasTras;
     private DisplayTimer displayTimer;
+    private BotoesPowerUp botoesPowerUp;
+    private ArcoIrisEfeito arcoIrisEfeito;
     private DisplayDeScores displayDeScores;    
     private DisplaysDeSlots displaysDeSlots;
-
-    private Joystick joystick;
-    private BotoesPowerUp botoesPowerUp;
-
-    private ArcoIrisEfeito arcoIrisEfeito;
+    private BordasVidroFrente bordasFrenteVidro;
     
     public MaquinaManager(MaquinaDto maquinaDto, InputGame inputGame)
     {
@@ -32,13 +31,15 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         joystick        = new Joystick(maquinaDto.JoystickDto);
         botoesPowerUp   = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         vigasTras       = new VigasTras(maquinaDto.VigasDto);
+        bordasFrenteVidro = new BordasVidroFrente(maquinaDto.BordasFrenteDto);
 
         arcoIrisEfeito = new ArcoIrisEfeito(maquinaDto.FactorHdr)//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW            
             .addArcoIrisConjunto(displaysDeSlots.getDisplayColetadoGlow())
             .addArcoIrisConjunto(displayDeScores)
             .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow(maquinaDto.DisplayTimerDto))
             .addArcoIrisConjunto(vigasTras)
-            .addArcoIrisConjunto(botoesPowerUp.getBotoesGlow());        
+            .addArcoIrisConjunto(botoesPowerUp.getBotoesGlow())
+            .addArcoIrisConjunto(bordasFrenteVidro);        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
@@ -48,6 +49,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displaysDeSlots.configuradoPeloLevel(levelEscolhido);
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         vigasTras.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        bordasFrenteVidro.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
 
         AntesExecutorTimerRestart executor = new AntesExecutorTimerRestart(botoesPowerUp, displayTimer, arcoIrisEfeito);
         displayTimer.configuradoPeloLevel(levelEscolhido, executor);
