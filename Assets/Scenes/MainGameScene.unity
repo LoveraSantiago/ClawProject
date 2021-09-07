@@ -24255,8 +24255,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0a7d0269a5b9d5d448033b51885ac904, type: 2}
-  - {fileID: 2100000, guid: 0a7d0269a5b9d5d448033b51885ac904, type: 2}
+  - {fileID: 2100000, guid: ef3260dacc0780948acbc3cde8b9b1a7, type: 2}
+  - {fileID: 2100000, guid: ef3260dacc0780948acbc3cde8b9b1a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24325,7 +24325,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.15
+    scalar: 0.025
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -24385,7 +24385,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1.25
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -24437,9 +24437,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 5
-      minScalar: 5
+      minScalar: 2.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -24554,7 +24554,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.15
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -24876,9 +24876,9 @@ ParticleSystem:
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
-      minScalar: 0
+      minMaxState: 3
+      scalar: 0.75
+      minScalar: 0.45
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -24937,7 +24937,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 90, y: 0, z: 0}
+    m_Rotation: {x: 90, y: -45, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -25017,7 +25017,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.1
       mode: 0
       spread: 0
       speed:
@@ -25074,7 +25074,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 180
+      value: 90
       mode: 0
       spread: 0
       speed:
@@ -25246,7 +25246,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 5
+        scalar: 10
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -28310,13 +28310,13 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minVertexDistance: 1
+    minVertexDistance: 0
     textureMode: 0
     ribbonCount: 1
-    shadowBias: 0.5
+    shadowBias: 0
     worldSpace: 0
-    dieWithParticles: 1
-    sizeAffectsWidth: 0
+    dieWithParticles: 0
+    sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
