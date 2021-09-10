@@ -1,61 +1,61 @@
 fileFormatVersion: 2
-guid: 81c10359937b4664cb92e7db6a616f19
+guid: a33791280a1c3e349aeb56a9a6cf567a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4922661001635544531
-    second: spritesheet-fogo-v5_0
+      213: 6521547324029358803
+    second: spritesheet-fogo-v6_0
   - first:
-      213: 2718609475488370789
-    second: spritesheet-fogo-v5_1
+      213: 807051059537028172
+    second: spritesheet-fogo-v6_1
   - first:
-      213: 5139825435292275367
-    second: spritesheet-fogo-v5_2
+      213: 786061073915842500
+    second: spritesheet-fogo-v6_2
   - first:
-      213: -2225590033611702823
-    second: spritesheet-fogo-v5_3
+      213: -460623557225170385
+    second: spritesheet-fogo-v6_3
   - first:
-      213: 3959552289117158305
-    second: spritesheet-fogo-v5_4
+      213: 3656216866894816530
+    second: spritesheet-fogo-v6_4
   - first:
-      213: -8536415241685241384
-    second: spritesheet-fogo-v5_5
+      213: 1714820390101283786
+    second: spritesheet-fogo-v6_5
   - first:
-      213: -9176240140002556084
-    second: spritesheet-fogo-v5_6
+      213: -770240541356223788
+    second: spritesheet-fogo-v6_6
   - first:
-      213: 7176658955127440488
-    second: spritesheet-fogo-v5_7
+      213: -699683518413240193
+    second: spritesheet-fogo-v6_7
   - first:
-      213: -7084912482442768796
-    second: spritesheet-fogo-v5_8
+      213: 3732907167649958233
+    second: spritesheet-fogo-v6_8
   - first:
-      213: -6558490270416765169
-    second: spritesheet-fogo-v5_9
+      213: 5341572924336171683
+    second: spritesheet-fogo-v6_9
   - first:
-      213: 2347765665007125394
-    second: spritesheet-fogo-v5_10
+      213: -1116049987985868202
+    second: spritesheet-fogo-v6_10
   - first:
-      213: 5385243397518490256
-    second: spritesheet-fogo-v5_11
+      213: -7654252469324791756
+    second: spritesheet-fogo-v6_11
   - first:
-      213: 846777435080277807
-    second: spritesheet-fogo-v5_12
+      213: 2460975656323356498
+    second: spritesheet-fogo-v6_12
   - first:
-      213: 5584671027659394274
-    second: spritesheet-fogo-v5_13
+      213: -7810028616807978996
+    second: spritesheet-fogo-v6_13
   - first:
-      213: -4334596871359222265
-    second: spritesheet-fogo-v5_14
+      213: -6939817020101035448
+    second: spritesheet-fogo-v6_14
   - first:
-      213: 7388625418845603366
-    second: spritesheet-fogo-v5_15
+      213: -1934340085852652570
+    second: spritesheet-fogo-v6_15
   - first:
-      213: 3175317275668173281
-    second: spritesheet-fogo-v5_16
+      213: 4714000342886997202
+    second: spritesheet-fogo-v6_16
   - first:
-      213: 6381092149006184324
-    second: spritesheet-fogo-v5_17
+      213: 4875170736282235793
+    second: spritesheet-fogo-v6_17
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -157,13 +157,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet-fogo-v5_0
+      name: spritesheet-fogo-v6_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 150
-        height: 190
+        width: 75
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +171,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ddb720891ec05440800000000000000
-      internalID: 4922661001635544531
+      spriteID: 3d25ba21db0318a50800000000000000
+      internalID: 6521547324029358803
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-fogo-v5_1
+      name: spritesheet-fogo-v6_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 0
+        width: 75
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c44ae47a9a8333b00800000000000000
+      internalID: 807051059537028172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-fogo-v6_2
       rect:
         serializedVersion: 2
         x: 150
         y: 0
-        width: 150
-        height: 190
+        width: 75
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,20 +213,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 560de750ae07ab520800000000000000
-      internalID: 2718609475488370789
+      spriteID: 4cf048ac166a8ea00800000000000000
+      internalID: 786061073915842500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-fogo-v5_2
+      name: spritesheet-fogo-v6_3
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 0
+        width: 75
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2aba60b0598b99f0800000000000000
+      internalID: -460623557225170385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-fogo-v6_4
       rect:
         serializedVersion: 2
         x: 300
         y: 0
-        width: 150
-        height: 190
+        width: 75
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +255,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a21d1e5004545740800000000000000
-      internalID: 5139825435292275367
+      spriteID: 215ae057edd7db230800000000000000
+      internalID: 3656216866894816530
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-fogo-v5_3
+      name: spritesheet-fogo-v6_5
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 0
+        width: 75
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac3759d2f044cc710800000000000000
+      internalID: 1714820390101283786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-fogo-v6_6
       rect:
         serializedVersion: 2
         x: 450
         y: 0
-        width: 150
-        height: 190
+        width: 75
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,20 +297,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ddbce6f7ad1d11e0800000000000000
-      internalID: -2225590033611702823
+      spriteID: 4d29bdcfe4e8f45f0800000000000000
+      internalID: -770240541356223788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-fogo-v5_4
+      name: spritesheet-fogo-v6_7
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 0
+        width: 75
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7888cd0c893a46f0800000000000000
+      internalID: -699683518413240193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-fogo-v6_8
       rect:
         serializedVersion: 2
         x: 600
         y: 0
-        width: 150
-        height: 190
+        width: 75
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,20 +339,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1abb96e04d723f630800000000000000
-      internalID: 3959552289117158305
+      spriteID: 959094b8a43fdc330800000000000000
+      internalID: 3732907167649958233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-fogo-v5_5
+      name: spritesheet-fogo-v6_9
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 0
+        width: 75
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aae6e81644112a40800000000000000
+      internalID: 5341572924336171683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-fogo-v6_10
       rect:
         serializedVersion: 2
         x: 750
         y: 0
-        width: 150
-        height: 190
+        width: 75
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,20 +381,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d1fe18c09f888980800000000000000
-      internalID: -8536415241685241384
+      spriteID: 65af582f27ef280f0800000000000000
+      internalID: -1116049987985868202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-fogo-v5_6
+      name: spritesheet-fogo-v6_11
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 0
+        width: 75
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4304db0eee1a6c590800000000000000
+      internalID: -7654252469324791756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-fogo-v6_12
       rect:
         serializedVersion: 2
         x: 900
         y: 0
-        width: 150
-        height: 190
+        width: 75
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,20 +423,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c478771e53277a080800000000000000
-      internalID: -9176240140002556084
+      spriteID: 25799041254272220800000000000000
+      internalID: 2460975656323356498
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-fogo-v5_7
+      name: spritesheet-fogo-v6_13
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 0
+        width: 75
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0866813a543d9390800000000000000
+      internalID: -7810028616807978996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-fogo-v6_14
       rect:
         serializedVersion: 2
         x: 1050
         y: 0
-        width: 150
-        height: 190
+        width: 75
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,20 +465,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8644f7ecb4d989360800000000000000
-      internalID: 7176658955127440488
+      spriteID: 84afaae5031d0bf90800000000000000
+      internalID: -6939817020101035448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-fogo-v5_8
+      name: spritesheet-fogo-v6_15
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 0
+        width: 75
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eb34f3c0f7d725e0800000000000000
+      internalID: -1934340085852652570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-fogo-v6_16
       rect:
         serializedVersion: 2
         x: 1200
         y: 0
-        width: 150
-        height: 190
+        width: 75
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -339,20 +507,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46e844b72a55dad90800000000000000
-      internalID: -7084912482442768796
+      spriteID: 2dc59d4065e7b6140800000000000000
+      internalID: 4714000342886997202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-fogo-v5_9
+      name: spritesheet-fogo-v6_17
       rect:
         serializedVersion: 2
-        x: 1350
+        x: 1275
         y: 0
-        width: 150
-        height: 190
+        width: 75
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -360,176 +528,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0ff3f0f8df8bf4a0800000000000000
-      internalID: -6558490270416765169
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-fogo-v5_10
-      rect:
-        serializedVersion: 2
-        x: 1500
-        y: 0
-        width: 150
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 293cb9eee60f49020800000000000000
-      internalID: 2347765665007125394
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-fogo-v5_11
-      rect:
-        serializedVersion: 2
-        x: 1650
-        y: 0
-        width: 150
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 09a7b1a765a3cba40800000000000000
-      internalID: 5385243397518490256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-fogo-v5_12
-      rect:
-        serializedVersion: 2
-        x: 1800
-        y: 0
-        width: 150
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f2fb6cd379b50cb00800000000000000
-      internalID: 846777435080277807
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-fogo-v5_13
-      rect:
-        serializedVersion: 2
-        x: 1950
-        y: 0
-        width: 150
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2eccd07f5bcb08d40800000000000000
-      internalID: 5584671027659394274
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-fogo-v5_14
-      rect:
-        serializedVersion: 2
-        x: 2100
-        y: 0
-        width: 150
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 70e2d167c1b68d3c0800000000000000
-      internalID: -4334596871359222265
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-fogo-v5_15
-      rect:
-        serializedVersion: 2
-        x: 2250
-        y: 0
-        width: 150
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 626c6bcfbaba98660800000000000000
-      internalID: 7388625418845603366
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-fogo-v5_16
-      rect:
-        serializedVersion: 2
-        x: 2400
-        y: 0
-        width: 150
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1e1dc591d3ef01c20800000000000000
-      internalID: 3175317275668173281
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-fogo-v5_17
-      rect:
-        serializedVersion: 2
-        x: 2550
-        y: 0
-        width: 150
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48f2c8440813e8850800000000000000
-      internalID: 6381092149006184324
+      spriteID: 1937b7374f518a340800000000000000
+      internalID: 4875170736282235793
       vertices: []
       indices: 
       edges: []
