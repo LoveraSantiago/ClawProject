@@ -1227,6 +1227,7 @@ MonoBehaviour:
         haltura: -3.7
         delayExplosao: 0.25
         delayPosExplosao: 1.1
+        halturaExplosao: 0.4
         minaTerrestreGo: {fileID: 4127936681606313068, guid: 60283f6ad83360741b3927cd1859a108, type: 3}
       missilTeleguiadoDto:
         angGarra: 16
