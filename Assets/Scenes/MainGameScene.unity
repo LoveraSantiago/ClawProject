@@ -842,7 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 999999999
   mainDto:
     garraDto:
       velocMovHorizontal: 3.1
@@ -926,7 +926,7 @@ MonoBehaviour:
         - 0.4
         - 1.05
     maquinaDto:
-      factorHdr: 5.5
+      factorHdr: 5
       referenciaChao: {fileID: 1270622651}
       joystickDto:
         velocidade: 0.9
@@ -39125,7 +39125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2125492026
 Transform:
   m_ObjectHideFlags: 0
