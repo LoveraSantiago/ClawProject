@@ -84,7 +84,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         CameraShake cameraShake = new CameraShake();
         cameraShake.shakeEDiminuir(1f, new Vector3(150, 150, 150), 25f, 0.4f);
         resetPup();
-        yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayFinal);
+        yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayPosExplosao);
 
         powerUpFinalizacao.finalizado();
         yield return null;

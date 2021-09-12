@@ -6,7 +6,8 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
                               PowerUpInteracaoComGarra
 {    
     private bool acionado;    
-    private int bomba_idle;
+    private int bombaIdle;
+    private int preExplosao;
     
     private Animator animator;
     
@@ -15,8 +16,8 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     public BombaPowerUpGo()
         : base(powerUpDto.BombaDto.BombaGo, "bomba")
     {        
-        bomba_idle     = Animator.StringToHash("idle");
-
+        bombaIdle     = Animator.StringToHash("idle");
+        preExplosao = Animator.StringToHash("pre-explosao");
         goColetavel.SetActive(false);
     }
 
@@ -53,7 +54,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     public override void resetPup()
     {
         desligar();
-        animator.Play(bomba_idle);
+        animator.Play(bombaIdle);
         acionado = false;
         desafixarVerticalmente();
         colocarNoAngulo(0);
@@ -70,6 +71,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     
     private IEnumerator explodir()
     {
+        animator.Play(preExplosao);
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);        
         
         acionarEfeitoExplosao(getPosicao());        

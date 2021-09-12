@@ -1209,7 +1209,7 @@ MonoBehaviour:
       efeitoExplosao: {fileID: 2125492028}
       bombaDto:
         angGarra: 5
-        delayInicial: 0.4
+        delayInicial: 0.5
         delayExplosao: 0.25
         delayPosExplosao: 1.1
         raioExplosao: 1
@@ -1220,8 +1220,8 @@ MonoBehaviour:
         angGarra: 4
         halturaPos: -0.6
         delayInicial: 0.4
-        delayExplosao: 0.25
-        delayFinal: 1.1
+        delayExplosao: 0.35
+        delayPosExplosao: 1.1
         missilNuclearGo: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
       minaDto:
         haltura: -3.7
