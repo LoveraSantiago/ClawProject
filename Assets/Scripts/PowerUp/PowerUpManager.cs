@@ -24,22 +24,15 @@ public class PowerUpManager : PowerUpAcionamento,
         AbstractPowerUpGo interacaoComPowerUp = powerUp.getPowerUpGo();
 
         PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.INICIO)
-            .configurarDuracaoTempo(powerUp.duracao)
-            .configInteracaoComGarra(interacaoComPowerUp.getObjInteracaoComGarra())
-            .configInteracaoDisplayColetado(interacaoComPowerUp.getObjInteracaoDisplayColetado());
+            .configurarPupEntidade(powerUp);           
 
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
     public void acionado(PowerUpEntidade powerUp, Vector3 posicaoAtual)
     {
-        AbstractPowerUpGo interacaoComPowerUp = powerUp.getPowerUpGo();
-        interacaoComPowerUp.iniciarNaPosicao(posicaoAtual);
-
         PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.INICIO)
-            .configurarDuracaoTempo(powerUp.duracao)
-            .configInteracaoComGarra(interacaoComPowerUp.getObjInteracaoComGarra())
-            .configInteracaoDisplayColetado(interacaoComPowerUp.getObjInteracaoDisplayColetado());
+            .configurarPupEntidade(powerUp, posicaoAtual);                                   
 
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }   

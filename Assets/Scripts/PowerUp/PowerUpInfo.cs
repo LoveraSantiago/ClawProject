@@ -1,11 +1,14 @@
+using UnityEngine;
+
 public class PowerUpInfo
 {
     public enum ESTADO { INICIO, PREFINALIZAR, FINALIZAR}
 
     public ESTADO estadoAtual;
 
-    public int duracaoTempo{ get; private set; }
+    public int duracaoTempo { get { return pupEntidade.duracao; }}
 
+    public PowerUpEntidade pupEntidade { get; private set; }
     public ColetavelTile coletavelTile { get; private set; }
 
     public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }
@@ -16,23 +19,25 @@ public class PowerUpInfo
         estadoAtual = estado;
     }
 
-    public PowerUpInfo configurarDuracaoTempo(int duracao)
+    public PowerUpInfo configurarPupEntidade(PowerUpEntidade pupEntidade)
     {
-        duracaoTempo = duracao;
+        this.pupEntidade = pupEntidade;
+
+        AbstractPowerUpGo interacaoComPowerUp = pupEntidade.getPowerUpGo();
+        interacaoComGarra = interacaoComPowerUp.getObjInteracaoComGarra();
+        interacaoDisplayColetado = interacaoComPowerUp.getObjInteracaoDisplayColetado();
         return this;
     }
 
-    public PowerUpInfo configInteracaoComGarra(PowerUpInteracaoComGarra interacaoComGarra)
+    public PowerUpInfo configurarPupEntidade(PowerUpEntidade pupEntidade, Vector3 posInicial)
     {
-        this.interacaoComGarra = interacaoComGarra;
-        return this;
-    }
+        configurarPupEntidade(pupEntidade);
 
-    public PowerUpInfo configInteracaoDisplayColetado(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
-    {
-        this.interacaoDisplayColetado = interacaoDisplayColetado;
+        AbstractPowerUpGo interacaoComPowerUp = pupEntidade.getPowerUpGo();
+        interacaoComPowerUp.iniciarNaPosicao(posInicial);
         return this;
     }
+    
 
     public PowerUpInfo addColetavel(ColetavelTile coletavelTile)
     {
