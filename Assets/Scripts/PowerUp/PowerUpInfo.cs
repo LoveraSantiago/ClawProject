@@ -10,12 +10,14 @@ public class PowerUpInfo
     public bool isPreFinalizar { get { return estadoAtual == ESTADO.PREFINALIZAR; } }
     public bool isFinalizar    { get { return estadoAtual == ESTADO.FINALIZAR; } }
 
+    public bool isColetavel { get { return pupEntidade.isColetavel; } }
+    public bool isNotColetavel { get { return !isColetavel; } }
     public bool hasColetavel { get { return coletavelTile != null; } }
 
     public int duracaoTempo { get { return pupEntidade.duracao; }}
 
-    public PowerUpEntidade pupEntidade { get; private set; }
-    public ColetavelTile coletavelTile { get; private set; }
+    private PowerUpEntidade pupEntidade;
+    public  ColetavelTile coletavelTile { get; private set; }
 
     public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }
     public PowerUpInteracaoDisplayColetado interacaoDisplayColetado { get; private set; }
