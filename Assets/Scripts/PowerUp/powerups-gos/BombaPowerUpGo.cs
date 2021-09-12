@@ -5,9 +5,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
                               ConsumidorDeEventoCollider,
                               PowerUpInteracaoComGarra
 {    
-    private bool acionado;
-
-    private int bomba_explosao;
+    private bool acionado;    
     private int bomba_idle;
     
     private Animator animator;
@@ -16,8 +14,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
 
     public BombaPowerUpGo()
         : base(powerUpDto.BombaDto.BombaGo, "bomba")
-    {
-        bomba_explosao = Animator.StringToHash("explosao");
+    {        
         bomba_idle     = Animator.StringToHash("idle");
 
         goColetavel.SetActive(false);
@@ -74,8 +71,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     private IEnumerator explodir()
     {
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);
-
-        //animator.Play(bomba_explosao);
+        
         desligar();
         acionarEfeitoExplosao(getPosicao());        
         processarExplosao();

@@ -58,9 +58,6 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 9043481261484839476}
-    m_Position: {x: 230, y: 170, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: -6156992510988962622}
     m_Position: {x: 230, y: 120, z: 0}
   m_ChildStateMachines: []
