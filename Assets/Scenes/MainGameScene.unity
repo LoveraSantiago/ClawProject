@@ -561,7 +561,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.5, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1225,9 +1225,10 @@ MonoBehaviour:
         missilNuclearGo: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
       minaDto:
         haltura: -3.7
+        halturaExplosao: 0.4
+        delayInicial: 0.5
         delayExplosao: 0.25
         delayPosExplosao: 1.1
-        halturaExplosao: 0.4
         minaTerrestreGo: {fileID: 4127936681606313068, guid: 60283f6ad83360741b3927cd1859a108, type: 3}
       missilTeleguiadoDto:
         angGarra: 16
@@ -18000,7 +18001,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.5, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -39091,7 +39092,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.5, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

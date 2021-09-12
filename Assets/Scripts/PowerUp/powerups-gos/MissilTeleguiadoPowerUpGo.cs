@@ -161,7 +161,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
         powerUpFinalizacao.preFinalizar();
 
-        yield return new WaitForSeconds(powerUpDto.MissilTeleguiadoDto.DelayFinalizar);
+        yield return new WaitForSeconds(powerUpDto.MissilTeleguiadoDto.DelayPosExplosao);
         resetPup();
         yield return null;
     }    
