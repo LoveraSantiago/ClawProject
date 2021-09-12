@@ -6,7 +6,6 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
     private static Vector3 posInicial;
     
     private int mina_explosao;
-    private int mina_idle;
 
     private Animator animator;
     private GameObject goExplosao;
@@ -16,8 +15,7 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
     public MinaTerrestrePowerUpGo()
         :base(powerUpDto.MinaDto.MinaTerrestreGo, "mina-terrestre")
     {
-        mina_explosao = Animator.StringToHash("explosao");
-        mina_idle = Animator.StringToHash("idle");
+        mina_explosao = Animator.StringToHash("explosao");        
     }    
 
     public override void iniciarNaPosicao(Vector3 posicao)
@@ -43,8 +41,7 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void resetPup()
     {
-        desligar();
-        animator.Play(mina_idle);
+        desligar();        
         powerUpFinalizacao.preFinalizar();
     }
 
