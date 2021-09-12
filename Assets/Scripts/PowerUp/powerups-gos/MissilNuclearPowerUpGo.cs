@@ -6,8 +6,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
                                       PowerUpInteracaoComGarra
 {   
     private bool acionado;
-
-    private int missil_explosao;
+    
     private int missil_idle;
 
     private GameObject goExplosao;    
@@ -15,10 +14,8 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
  
     public MissilNuclearPowerUpGo()
         : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, "missil-nuclear")
-    {
-        missil_explosao = Animator.StringToHash("explosao");
+    {        
         missil_idle = Animator.StringToHash("idle");
-
         goColetavel.SetActive(false);
     }
 
@@ -79,8 +76,8 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
     {
         yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayInicial);
 
-        goExplosao.SetActive(true);
-        animator.Play(missil_explosao);        
+        goExplosao.SetActive(true);        
+        acionarEfeitoExplosao(getPosicao());
         yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayExplosao);
 
         goExplosao.SetActive(false);

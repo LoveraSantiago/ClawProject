@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 4650425360090855602}
   - component: {fileID: 5164385478853921255}
   m_Layer: 14
-  m_Name: MissilNuclearPUp
+  m_Name: missil-nuclear-pup
   m_TagString: Laranja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
