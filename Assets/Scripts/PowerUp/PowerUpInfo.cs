@@ -6,6 +6,11 @@ public class PowerUpInfo
 
     public ESTADO estadoAtual;
 
+    public bool isInicio { get { return estadoAtual == ESTADO.INICIO; } }
+    public bool isPreFinalizar { get { return estadoAtual == ESTADO.PREFINALIZAR; } }
+    public bool isFinalizar { get { return estadoAtual == ESTADO.FINALIZAR; } }
+    public bool hasColetavel { get { return coletavelTile != null; } }
+
     public int duracaoTempo { get { return pupEntidade.duracao; }}
 
     public PowerUpEntidade pupEntidade { get; private set; }
@@ -43,25 +48,5 @@ public class PowerUpInfo
     {
         this.coletavelTile = coletavelTile;        
         return this;
-    }
-
-    public bool isInicio()
-    {
-        return estadoAtual == ESTADO.INICIO;
-    }
-
-    public bool isPreFinalizar()
-    {
-        return estadoAtual == ESTADO.PREFINALIZAR;
-    }
-
-    public bool isFinalizar()
-    {
-        return estadoAtual == ESTADO.FINALIZAR;
-    }
-
-    public bool hasColetavel()
-    {
-        return coletavelTile != null;
-    }
+    }           
 }

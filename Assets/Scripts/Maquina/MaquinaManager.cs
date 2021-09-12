@@ -102,18 +102,18 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        if (evento.isInicio())
+        if (evento.isInicio)
         {
             displaysDeSlots.processarPowerUp(evento.interacaoDisplayColetado);            
             arcoIrisEfeito.ligarEfeitoArcoIris();
             displayTimer.pause();
             displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);
         }
-        else if (evento.isPreFinalizar())
+        else if (evento.isPreFinalizar)
         {
             displayDeScores.piscarAsteriscos();
         }
-        else if (evento.isFinalizar())
+        else if (evento.isFinalizar)
         {
             displayDeScores.finalizarContagemRegressiva();
             displayTimer.continuar();

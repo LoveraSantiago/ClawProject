@@ -118,15 +118,15 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        if (evento.isInicio())
+        if (evento.isInicio)
         {
             processarDesimantado();
         }
-        else if (evento.isPreFinalizar() && evento.hasColetavel())
+        else if (evento.isPreFinalizar && evento.hasColetavel)
         {
             processarColetado(evento.coletavelTile.getGoColetavel());
         }        
-        else if (evento.isFinalizar())
+        else if (evento.isFinalizar)
         {
 
         }
