@@ -105,6 +105,7 @@ public class FactoryPowerUpEntidade
                 .configArea()
                 .configSupplierDePowerUpGo(AsaPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
+                .configIsColetavel(true)
                 .configDescricao(
                     "Dê um par de asas ao coletavel do seu interesse para que ele alcance a liberdade.",
                     "-");

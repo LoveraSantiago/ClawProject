@@ -126,6 +126,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         {
             processarColetado(evento.coletavelTile.getGoColetavel());
         }        
+        else if (evento.isFinalizar())
+        {
+
+        }
     }            
     
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
