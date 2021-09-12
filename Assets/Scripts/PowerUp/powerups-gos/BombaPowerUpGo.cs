@@ -5,21 +5,14 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
                               ConsumidorDeEventoCollider,
                               PowerUpInteracaoComGarra
 {    
-    private bool acionado;
+    private bool acionado;    
 
-    private int bomba_explosao;
-    private int bomba_idle;
-    
-    private Animator animator;
-    
+    private AnimacaoExplosaoPup animacao;
     private CircleCollider2D circleCollider;
 
     public BombaPowerUpGo()
         : base(powerUpDto.BombaDto.BombaGo, "bomba")
-    {
-        bomba_explosao = Animator.StringToHash("explosao");
-        bomba_idle     = Animator.StringToHash("idle");
-
+    {            
         goColetavel.SetActive(false);
     }
 
@@ -43,7 +36,8 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         goColetavel.GetComponent<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);
 
-        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+        Animator animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+        animacao = new AnimacaoExplosaoPup(animator);
 
         circleCollider = goColetavel.GetComponent<CircleCollider2D>();
     }
@@ -56,7 +50,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     public override void resetPup()
     {
         desligar();
-        animator.Play(bomba_idle);
+        animacao.playIdle();
         acionado = false;
         desafixarVerticalmente();
         colocarNoAngulo(0);
@@ -72,10 +66,11 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     }
     
     private IEnumerator explodir()
-    {
-        yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);
+    {        
+        animacao.playPreExplodir();
+        yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);        
         
-        animator.Play(bomba_explosao);
+        acionarEfeitoExplosao(getPosicao());        
         processarExplosao();
 
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayExplosao);

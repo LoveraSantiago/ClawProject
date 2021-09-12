@@ -21,21 +21,26 @@ public class PowerUpEntidade
         MOVIMENTO, PARADO, NAO_INTERACAO
     }
 
-    public TIPO tipo   { get; private set; }
     public string nome { get; private set; }
-    public Sprite sprPowerUp { get { return dicionarioDeSprites[nomeSpriteBtn]; }}
-    public int duracao { get; private set; }
     public string nomeSpriteBtn { get; private set; }
     public string descCurta { get; private set; }
     public string descDetalhada { get; private set; }
+
     public bool isClicavel { get; private set; }
+    public bool isColetavel { get; private set; }
+
+    public int duracao { get; private set; }
+
+    public TIPO tipo { get; private set; }
     public AREA area { get; private set; }
+    public Sprite sprPowerUp { get { return dicionarioDeSprites[nomeSpriteBtn]; }}
 
     private Fornecedor<AbstractPowerUpGo> fornecedorPowerUpGo;
     private AbstractPowerUpGo powerUpGo;
 
     public PowerUpEntidade()
-    {   
+    {
+        isColetavel = false;
     }    
 
     public PowerUpEntidade configNomes(TIPO tipoEntidade, string nome, string nomeSpriteBtn)
@@ -55,6 +60,12 @@ public class PowerUpEntidade
     public PowerUpEntidade configDuracao(int duracao)
     {
         this.duracao = duracao;
+        return this;
+    }
+
+    public PowerUpEntidade configIsColetavel(bool isColetavel)
+    {
+        this.isColetavel = isColetavel;
         return this;
     }
 

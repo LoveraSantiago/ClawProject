@@ -74,13 +74,13 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
 
     void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        if (evento.isInicio())
+        if (evento.isInicio)
         {
             gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.interacaoComGarra, evento.duracaoTempo);
             gerDeMovPowerUp.iniciarMovimentacoes();
             gerDeMovAtual = gerDeMovPowerUp;
         }
-        else if (evento.isFinalizar())
+        else if (evento.isFinalizar)
         {
             gerDeMovNormal.trocarParaAcaoNormal();
             gerDeMovAtual = gerDeMovNormal;

@@ -21,46 +21,30 @@ public class PowerUpManager : PowerUpAcionamento,
 
     public void acionado(PowerUpEntidade powerUp)
     {
-        AbstractPowerUpGo interacaoComPowerUp = powerUp.getPowerUpGo();
-
-        PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.INICIO)
-            .configurarDuracaoTempo(powerUp.duracao)
-            .configInteracaoComGarra(interacaoComPowerUp.getObjInteracaoComGarra())
-            .configInteracaoDisplayColetado(interacaoComPowerUp.getObjInteracaoDisplayColetado());
-
+        PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
     public void acionado(PowerUpEntidade powerUp, Vector3 posicaoAtual)
     {
-        AbstractPowerUpGo interacaoComPowerUp = powerUp.getPowerUpGo();
-        interacaoComPowerUp.iniciarNaPosicao(posicaoAtual);
-
-        PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.INICIO)
-            .configurarDuracaoTempo(powerUp.duracao)
-            .configInteracaoComGarra(interacaoComPowerUp.getObjInteracaoComGarra())
-            .configInteracaoDisplayColetado(interacaoComPowerUp.getObjInteracaoDisplayColetado());
-
+        PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp, posicaoAtual);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }   
 
     public void preFinalizar()
-    {
-        PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.PREFINALIZAR);
-        produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
+    {        
+        produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofPreFinalizar());
     }
 
     public void preFinalizar(ColetavelTile coletavelTile)
     {
-        PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.PREFINALIZAR)
-            .addColetavel(coletavelTile);
+        PowerUpInfo powerUpInfo = PowerUpInfo.ofPreFinalizar(coletavelTile);            
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
     public void finalizado()
-    {
-        PowerUpInfo powerUpInfo = new PowerUpInfo(PowerUpInfo.ESTADO.FINALIZAR);
-        produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
+    {        
+        produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofFinalizar());
     }    
 
     ProdutorDeEvento<PowerUpInfo> AcaoPUpAcionado.ProdutorEvento.getProdutorDeEvento()

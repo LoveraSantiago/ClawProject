@@ -13,4 +13,14 @@ public class DetectorDeTriggers : MonoBehaviour
     {
         this.consumidorDeTrigger = consumidorDeTrigger;        
     }    
+
+    public void desligarTrigger()
+    {
+        transform.gameObject.SetActive(false);
+    }
+
+    public void ligarTrigger()
+    {
+        transform.gameObject.SetActive(true);
+    }
 }

@@ -7,9 +7,7 @@ public class MainGameScene : MonoBehaviour,
 {
     [SerializeField] private LevelFlowManager.LEVEL level;
     [Space(5)]
-    [SerializeField] private MainDto mainDto;                        
-    [Space(5)]
-    [SerializeField] private GameObject prefabBottomBar;
+    [SerializeField] private MainDto mainDto;                            
 
     private ModalPontos       modalPontos;
     private GarraManager      garraManager;
@@ -47,7 +45,7 @@ public class MainGameScene : MonoBehaviour,
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
         modalPontos       = new ModalPontos(mainDto.ModalPontosDto);
         cameraManager     = new CameraManager(mainDto.CameraDto);
-        scrollManager     = new ScrollManager(prefabBottomBar);        
+        scrollManager     = new ScrollManager(mainDto.PrefabBottomBar);        
     }
 
     private void configurandoLevel()

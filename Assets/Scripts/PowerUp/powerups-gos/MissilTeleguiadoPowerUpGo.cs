@@ -4,9 +4,9 @@ using UnityEngine;
 public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
                                          PowerUpInteracaoComGarra
 {
-    private readonly int MISSIL_ACIONADO;
-    private readonly int MISSIL_EXPLOSAO;
-    private readonly int MISSIL_IDLE;
+    private static readonly int MISSIL_IDLE      = Animator.StringToHash("idle");
+    private static readonly int MISSIL_ACIONADO  = Animator.StringToHash("missil-acionado");
+    private static readonly int MISSIL_EXPLODIDO = Animator.StringToHash("missil-explodido");
     
     private bool hitColetavel;
     private float distanciaAnterior;
@@ -17,20 +17,13 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     private Vector2[] pathMissilRecalculado;    
     private Animator animator;
 
-    private ParticleSystem particulas;
+    private ParticleSystem efeitoFaiscas;
     private Coroutine coroutine;
 
     public MissilTeleguiadoPowerUpGo() : 
         base(powerUpDto.MissilTeleguiadoDto.MissilGo, "missil-teleguiado")
-    {        
-        MISSIL_ACIONADO = Animator.StringToHash("missil-acionado");
-        MISSIL_EXPLOSAO = Animator.StringToHash("explosao");
-        MISSIL_IDLE     = Animator.StringToHash("idle");
-
-        miras = new ColetaveisMiras();
-        particulas = goColetavel.transform.Find("imagem")
-                                .transform.Find("faiscas")
-                                .GetComponent<ParticleSystem>();
+    {
+        miras = new ColetaveisMiras();       
     }
 
     public PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
@@ -56,7 +49,11 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     public override void configurarPup()
     {        
         capsuleCollider = goColetavel.GetComponent<CapsuleCollider2D>();
-        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+
+        Transform transfImagem = goColetavel.transform.Find("imagem");
+        animator = transfImagem.GetComponent<Animator>();
+        efeitoFaiscas = transfImagem.transform.Find("faiscas")
+                               .GetComponent<ParticleSystem>();
     }
 
     public override void iniciarPup()
@@ -70,7 +67,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     {
         desligar();
         powerUpFinalizacao.finalizado();
-        particulas.gameObject.SetActive(false);
+        efeitoFaiscas.gameObject.SetActive(false);
         animator.Play(MISSIL_IDLE);
         colocarNoAngulo(0);
     }
@@ -102,8 +99,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     private IEnumerator disparandoMissil(ColetavelTile coletavel)
     {
         animator.Play(MISSIL_ACIONADO);
-        particulas.gameObject.SetActive(true);
-        particulas.Play();
+        efeitoFaiscas.gameObject.SetActive(true);
+        efeitoFaiscas.Play();
         recalcularPath(coletavel.getPosicao());
         capsuleCollider.isTrigger = true;
         int contadorIndice = 0;
@@ -154,8 +151,9 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         }
         colocarNaPosicao(coletavel.getPosicao());
         parar();
-        particulas.Stop();
-        animator.Play(MISSIL_EXPLOSAO);
+        efeitoFaiscas.Stop();
+        animator.Play(MISSIL_EXPLODIDO);
+        acionarEfeitoExplosao(getPosicao() + new Vector3(0, powerUpDto.MissilTeleguiadoDto.HalturaExplosao, 0));
         coletavel.disparar(powerUpDto.MissilTeleguiadoDto.VelocidadeHit, powerUpDto.MissilTeleguiadoDto.VelocidadeHit);
         coletavel.desligarAnimacao();
 
@@ -163,7 +161,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
         powerUpFinalizacao.preFinalizar();
 
-        yield return new WaitForSeconds(powerUpDto.MissilTeleguiadoDto.DelayFinalizar);
+        yield return new WaitForSeconds(powerUpDto.MissilTeleguiadoDto.DelayPosExplosao);
         resetPup();
         yield return null;
     }    

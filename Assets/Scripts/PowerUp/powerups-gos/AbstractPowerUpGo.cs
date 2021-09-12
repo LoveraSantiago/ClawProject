@@ -48,4 +48,11 @@ public abstract class AbstractPowerUpGo : Coletavel
         powerUpFinalizacao = powerUpFinalizacaoArg;
         inputGame = inputGameArg;        
     }    
+
+    protected void acionarEfeitoExplosao(Vector2 posicao)
+    {
+        powerUpDto.GoEfeitoExplosao.SetActive(true);
+        powerUpDto.GoEfeitoExplosao.transform.position = posicao;
+        powerUpDto.EfeitoExplosao.Play();
+    }
 }

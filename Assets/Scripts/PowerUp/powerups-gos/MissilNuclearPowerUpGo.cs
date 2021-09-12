@@ -6,19 +6,12 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
                                       PowerUpInteracaoComGarra
 {   
     private bool acionado;
-
-    private int missil_explosao;
-    private int missil_idle;
-
-    private GameObject goExplosao;    
-    private Animator animator;
+    private AnimacaoExplosaoPup animacao;
+    private GameObject goExplosao;        
  
     public MissilNuclearPowerUpGo()
         : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, "missil-nuclear")
-    {
-        missil_explosao = Animator.StringToHash("explosao");
-        missil_idle = Animator.StringToHash("idle");
-
+    {   
         goColetavel.SetActive(false);
     }
 
@@ -48,7 +41,8 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
             .registrarConsumidorCollision2dOnEnter(this);
 
         goExplosao = goColetavel.transform.Find("explosao").gameObject;
-        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+        Animator animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+        animacao = new AnimacaoExplosaoPup(animator);
     }
 
     public override void iniciarPup()
@@ -59,7 +53,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
     public override void resetPup()
     {
         desligar();
-        animator.Play(missil_idle);
+        animacao.playIdle();        
         powerUpFinalizacao.preFinalizar();
         acionado = false;
         desafixarVerticalmente();
@@ -77,17 +71,18 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
     private IEnumerator explodir()
     {
+        animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayInicial);
 
-        goExplosao.SetActive(true);
-        animator.Play(missil_explosao);        
+        goExplosao.SetActive(true);        
+        acionarEfeitoExplosao(getPosicao());
         yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayExplosao);
 
         goExplosao.SetActive(false);
         CameraShake cameraShake = new CameraShake();
         cameraShake.shakeEDiminuir(1f, new Vector3(150, 150, 150), 25f, 0.4f);
         resetPup();
-        yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayFinal);
+        yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayPosExplosao);
 
         powerUpFinalizacao.finalizado();
         yield return null;

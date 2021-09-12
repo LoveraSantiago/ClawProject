@@ -4,20 +4,13 @@ using UnityEngine;
 public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
 {
     private static Vector3 posInicial;
-    
-    private int mina_explosao;
-    private int mina_idle;
 
-    private Animator animator;
-    private GameObject goExplosao;
-
-    private int tempoExplosao;
+    private AnimacaoExplosaoPup animacao;
+    private GameObject goExplosao;    
 
     public MinaTerrestrePowerUpGo()
         :base(powerUpDto.MinaDto.MinaTerrestreGo, "mina-terrestre")
-    {
-        mina_explosao = Animator.StringToHash("explosao");
-        mina_idle = Animator.StringToHash("idle");
+    {        
     }    
 
     public override void iniciarNaPosicao(Vector3 posicao)
@@ -27,10 +20,9 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void configurarPup()
     {        
-        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+        Animator animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+        animacao = new AnimacaoExplosaoPup(animator);
         goExplosao = goColetavel.transform.Find("explosao").gameObject;
-
-        tempoExplosao = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(PowerUpEntidade.TIPO.MINA_TERRESTRE).duracao;        
     }
 
     public override void iniciarPup()
@@ -44,17 +36,19 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
     public override void resetPup()
     {
         desligar();
-        animator.Play(mina_idle);
+        animacao.playIdle();        
         powerUpFinalizacao.preFinalizar();
     }
 
     private IEnumerator explodir()
     {
-        yield return new WaitForSeconds(tempoExplosao);
+        animacao.playPreExplodir();
+        yield return new WaitForSeconds(powerUpDto.MinaDto.DelayInicial);
 
         goExplosao.SetActive(true);
         goExplosao.transform.position = new Vector3(goExplosao.transform.position.x, goExplosao.transform.position.y + 0.4f, goExplosao.transform.position.z);
-        animator.Play(mina_explosao);
+        
+        acionarEfeitoExplosao(getPosicao() + new Vector3(0, powerUpDto.MinaDto.HalturaExplosao, 0));        
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayExplosao);
 
         goExplosao.SetActive(false);

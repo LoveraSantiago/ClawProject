@@ -17,6 +17,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private EfeitoColetado efeito;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contador;
+    private DetectorDeTriggers detectorDeTrigger;
 
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;    
 
@@ -52,7 +53,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     private void configurarSensorDeColetado(GameObject goSensorDeColetado)
     {
-        DetectorDeTriggers detectorDeTrigger = goSensorDeColetado.GetComponent<DetectorDeTriggers>();
+        detectorDeTrigger = goSensorDeColetado.GetComponent<DetectorDeTriggers>();
         detectorDeTrigger.registrarConsumidorDeTrigger(this);
     }
 
@@ -118,14 +119,22 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        if (evento.isInicio())
+        if (evento.isInicio)
         {
             processarDesimantado();
+            if (evento.isNotColetavel)
+            {
+                detectorDeTrigger.desligarTrigger();
+            }
         }
-        else if (evento.isPreFinalizar() && evento.hasColetavel())
+        else if (evento.isPreFinalizar && evento.hasColetavel)
         {
             processarColetado(evento.coletavelTile.getGoColetavel());
         }        
+        else if (evento.isFinalizar)
+        {
+            detectorDeTrigger.ligarTrigger();
+        }
     }            
     
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
