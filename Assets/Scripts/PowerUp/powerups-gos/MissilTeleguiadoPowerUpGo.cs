@@ -5,7 +5,6 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
                                          PowerUpInteracaoComGarra
 {
     private readonly int MISSIL_ACIONADO;
-    private readonly int MISSIL_EXPLOSAO;
     private readonly int MISSIL_IDLE;
     
     private bool hitColetavel;
@@ -24,7 +23,6 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         base(powerUpDto.MissilTeleguiadoDto.MissilGo, "missil-teleguiado")
     {        
         MISSIL_ACIONADO = Animator.StringToHash("missil-acionado");
-        MISSIL_EXPLOSAO = Animator.StringToHash("explosao");
         MISSIL_IDLE     = Animator.StringToHash("idle");
 
         miras = new ColetaveisMiras();
@@ -155,7 +153,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         colocarNaPosicao(coletavel.getPosicao());
         parar();
         particulas.Stop();
-        animator.Play(MISSIL_EXPLOSAO);
+        acionarEfeitoExplosao(getPosicao() + new Vector3(0, powerUpDto.MissilTeleguiadoDto.HalturaExplosao, 0));
         coletavel.disparar(powerUpDto.MissilTeleguiadoDto.VelocidadeHit, powerUpDto.MissilTeleguiadoDto.VelocidadeHit);
         coletavel.desligarAnimacao();
 
