@@ -1206,6 +1206,7 @@ MonoBehaviour:
     powerUpDto:
       vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
       prefabPowerUpDto: {fileID: 5653745407918303698, guid: 264fd96ffd92c7d4899adb12d26ef4f1, type: 3}
+      efeitoExplosao: {fileID: 2125492028}
       bombaDto:
         angGarra: 5
         delayInicial: 0.4
@@ -1270,7 +1271,7 @@ MonoBehaviour:
       textoPontos: {fileID: 1473191375}
       textoNivel: {fileID: 376184029}
       goModalPontos: {fileID: 543390433}
-  prefabBottomBar: {fileID: 1411617376}
+    prefabBottomBar: {fileID: 1411617376}
 --- !u!61 &491158116
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1937,7 +1938,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

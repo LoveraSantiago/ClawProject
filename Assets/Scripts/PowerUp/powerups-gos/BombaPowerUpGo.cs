@@ -74,8 +74,10 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     private IEnumerator explodir()
     {
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);
-        
-        animator.Play(bomba_explosao);
+
+        //animator.Play(bomba_explosao);
+        desligar();
+        acionarEfeitoExplosao(getPosicao());        
         processarExplosao();
 
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayExplosao);
