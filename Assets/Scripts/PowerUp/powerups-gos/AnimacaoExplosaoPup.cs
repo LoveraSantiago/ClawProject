@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class AnimacaoExplosaoPup 
 {
-    private static int IDLE = Animator.StringToHash("idle");
-    private static int PRE_EXPLOSAO = Animator.StringToHash("pre-explosao");
+    private static readonly int IDLE = Animator.StringToHash("idle");
+    private static readonly int PRE_EXPLOSAO = Animator.StringToHash("pre-explosao");
 
     private Animator animator;
 
