@@ -6,18 +6,13 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
                               PowerUpInteracaoComGarra
 {    
     private bool acionado;    
-    private int bombaIdle;
-    private int preExplosao;
-    
-    private Animator animator;
-    
+
+    private AnimacaoExplosaoPup animacao;
     private CircleCollider2D circleCollider;
 
     public BombaPowerUpGo()
         : base(powerUpDto.BombaDto.BombaGo, "bomba")
-    {        
-        bombaIdle     = Animator.StringToHash("idle");
-        preExplosao = Animator.StringToHash("pre-explosao");
+    {            
         goColetavel.SetActive(false);
     }
 
@@ -41,7 +36,8 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         goColetavel.GetComponent<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);
 
-        animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+        Animator animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
+        animacao = new AnimacaoExplosaoPup(animator);
 
         circleCollider = goColetavel.GetComponent<CircleCollider2D>();
     }
@@ -54,7 +50,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     public override void resetPup()
     {
         desligar();
-        animator.Play(bombaIdle);
+        animacao.playIdle();
         acionado = false;
         desafixarVerticalmente();
         colocarNoAngulo(0);
@@ -70,8 +66,8 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     }
     
     private IEnumerator explodir()
-    {
-        animator.Play(preExplosao);
+    {        
+        animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);        
         
         acionarEfeitoExplosao(getPosicao());        

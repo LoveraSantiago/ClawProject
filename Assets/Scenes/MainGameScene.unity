@@ -561,7 +561,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1209,17 +1209,17 @@ MonoBehaviour:
       efeitoExplosao: {fileID: 2125492028}
       bombaDto:
         angGarra: 5
-        delayInicial: 0.5
-        delayExplosao: 0.25
-        delayPosExplosao: 1.1
         raioExplosao: 1
         velocidadeHit: 7.5
         anguloHit: 40
+        delayInicial: 0.5
+        delayExplosao: 0.25
+        delayPosExplosao: 1.1
         bombaGo: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
       missilNuclearDto:
         angGarra: 4
         halturaPos: -0.6
-        delayInicial: 0.4
+        delayInicial: 0.5
         delayExplosao: 0.35
         delayPosExplosao: 1.1
         missilNuclearGo: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
@@ -18000,7 +18000,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -39091,7 +39091,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
