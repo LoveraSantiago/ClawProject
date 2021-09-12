@@ -15,6 +15,8 @@ public class MainDto
     [SerializeField] private PowerUpDto powerUpDto;
     [Space(5)]
     [SerializeField] private ModalPontosDto modalPontosDto;
+    [Space(5)]
+    [SerializeField] private GameObject prefabBottomBar;
 
     public GarraDto GarraDto { get { return garraDto; } }
     public ColetaveisDto ColetaveisDto { get { return coletaveisDto; } }
@@ -22,4 +24,5 @@ public class MainDto
     public CameraDto CameraDto { get { return cameraDto;  } }
     public PowerUpDto PowerUpDto { get { return powerUpDto; } }
     public ModalPontosDto ModalPontosDto { get { return modalPontosDto; } }
+    public GameObject PrefabBottomBar { get { return prefabBottomBar; } }
 }
