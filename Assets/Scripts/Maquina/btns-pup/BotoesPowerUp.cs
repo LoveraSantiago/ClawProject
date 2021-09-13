@@ -76,6 +76,27 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         }
     }
 
+    public void drag(Vector2 delta)
+    {
+        if (controlePup.podeAcionarPupDraggavel())
+        {
+            dragavelAtual.updateDrag(delta);
+        }
+    }
+
+    public void endDrag()
+    {
+        if (controlePup.podeAcionarPupDraggavel())
+        {
+            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp();            
+            if (result)
+            {
+                draggarBotao(btnAcionado);
+            }
+            dragavelAtual = dragavelVazio;
+        }
+    }
+
     public void processarFimPowerUp()
     {
         controlePup.habilitarPowerUp();
@@ -102,26 +123,6 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         controlePup.habilitarPowerUpPosDisplay();
     }
 
-    public void drag(Vector2 delta)
-    {
-        if (controlePup.podeAcionarPupDraggavel())
-        {
-            dragavelAtual.updateDrag(delta);
-        }
-    }
-
-    public void endDrag()
-    {
-        if (controlePup.podeAcionarPupDraggavel())
-        {
-            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp();            
-            if (result)
-            {
-                draggarBotao(btnAcionado);
-            }
-            dragavelAtual = dragavelVazio;
-        }
-    }
 
     private void acionarBotao(int indice)
     {

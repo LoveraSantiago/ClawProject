@@ -142,6 +142,12 @@ public class AparenciaBotaoPowerUp
         btnDto.GoAreaExterna.transform.localRotation = Quaternion.identity;
     }
 
+    public void colocarNaPosicaoOriginalAcionado(Vector3 posicao, Quaternion rotacao)
+    {
+        colocarNaPosicaoOriginal(posicao, rotacao);
+        limparImg();
+    }
+
     public static void configurarSpriteBordas(Sprite[] spritesBordas)
     {
         spriteBordaNormal = spritesBordas[0];
