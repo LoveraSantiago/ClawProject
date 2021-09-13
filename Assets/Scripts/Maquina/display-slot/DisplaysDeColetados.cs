@@ -153,13 +153,13 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private void fimLimpezaTodosDisplaysOcupados(ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
         arcoIris.desligarEfeito();
-        produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(true, true, true));
+        produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(new bool[] { true, true, true }));
         executorPosEvento.execute();
     }
 
     private void fimLimpezaTodosDisplaysNaoOcupados(Executor executorPosEvento)
     {        
-        produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(false, false, false));
+        produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(new bool[] { false, false, false }));
         executorPosEvento.execute();
     }
 

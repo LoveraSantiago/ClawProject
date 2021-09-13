@@ -1,15 +1,10 @@
 public class ColetadoFim 
 {
-    public bool[] clear;
+    public bool[] clear;   
 
-    public ColetadoFim(bool clear1, bool clear2, bool clear3)
+    public ColetadoFim(bool[] clears)        
     {
-        clear = new bool[] { clear1, clear2, clear3 };
-    }
-
-    public ColetadoFim(bool[] clears)
-        :this(clears[0], clears[1], clears[2])
-    {
+        this.clear = clears;
     }
 
     public bool devolverBoard()
