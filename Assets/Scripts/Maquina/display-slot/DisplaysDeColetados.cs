@@ -18,7 +18,8 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();            
     }        
 
-    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
+    public void mostrarColetadoNoDisplay(
+        InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
         Utils.MonoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris, executorPosEvento));        
     }    
