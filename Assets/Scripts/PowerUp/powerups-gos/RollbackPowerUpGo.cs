@@ -13,8 +13,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     }
 
     public override PowerUpInteracaoDisplayColetado getObjInteracaoDisplayColetado()
-    {
-        Debug.Log("Rollback como interacao display coletado");
+    {        
         return this;
     }
 

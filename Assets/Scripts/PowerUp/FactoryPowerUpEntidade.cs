@@ -132,6 +132,7 @@ public class FactoryPowerUpEntidade
             descarte = new PowerUpEntidade()
                 .configNomes(PowerUpEntidade.TIPO.DESCARTE, "Descarte", "descarte-botao")
                 .configDuracao(9)
+                .configSupplierDePowerUpGo(DescartePowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao("Descarte um coletado para tentar uma melhor combinação de coletados.",
                 "Selecione no display de coletados o coletado que deseja ser descartado.");
