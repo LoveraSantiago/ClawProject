@@ -14,15 +14,29 @@ public class BoardDevolvedor
     {
         if (devolverBoard)
         {            
-            Utils.MonoBehaviour.StartCoroutine(devolverParaBoard(boardDto, coletados));            
+            //PAREI AQUI
+            //PAREI AQUI
+            //PAREI AQUI
+            //PAREI AQUI
+            //PAREI AQUI
+            //PAREI AQUI
+            //PAREI AQUI
+            //PAREI AQUI
+            //PAREI AQUI
+            //PAREI AQUI
+            //PAREI AQUI
+            //PAREI AQUI
+            //PAREI AQUI
+            //PAREI AQUI
+            Utils.MonoBehaviour.StartCoroutine(devolverParaBoard(null, boardDto, coletados));            
         }
     }
 
-    private IEnumerator devolverParaBoard(BoardDto boardDto, ColetavelTile[] coletados)
+    private IEnumerator devolverParaBoard(bool[]resultados, BoardDto boardDto, ColetavelTile[] coletados)
     {
         for (int contador = 0; contador < coletados.Length; contador++)
         {
-            if(coletados[contador] != null)
+            if(coletados[contador] != null && resultados[contador])
             {
                 float anguloDevolucao = Random.Range(180, 230);
                 ColetavelTile coletavel = coletados[contador];
