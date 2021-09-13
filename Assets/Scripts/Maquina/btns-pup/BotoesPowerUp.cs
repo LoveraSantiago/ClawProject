@@ -147,7 +147,6 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         btnAcionado = btn;
     }   
 
-
     void AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {        
         btnsPowerUp[evento.indiceBotao].receberAcaoPowerUp(controlePup, evento.powerUpEntidade);

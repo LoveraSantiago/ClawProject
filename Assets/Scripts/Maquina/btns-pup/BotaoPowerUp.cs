@@ -34,7 +34,7 @@ public class BotaoPowerUp : Draggavel
         }
         else
         {
-            //Debug.Log("Btn clicado sem pup");
+            Debug.Log("Btn clicado sem pup");
             glow.ligarGlow();
             Time.timeScale = 0;
             controlePup.desabilitarPowerUp();
@@ -57,6 +57,7 @@ public class BotaoPowerUp : Draggavel
     {
         aparencia.voltarCorOriginalBotao();
         aparencia.limparImg();
+        transformarEmBotaoClicavel();
     }
 
     public void mudarParaMaterialArcoIris()
