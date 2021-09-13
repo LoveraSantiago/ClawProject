@@ -118,6 +118,7 @@ public class FactoryPowerUpEntidade
                 .configDuracao(9)                
                 .configSupplierDePowerUpGo(RollbackPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
+                .configIsColetavel(true)
                 .configDescricao(
                     "Selecione um coletado para retornar ao board para tentar uma melhor combinação de coletados.",
                     "Selecione no display de coletados o coletado que deseja ser retornado ao boarde.");
@@ -134,6 +135,7 @@ public class FactoryPowerUpEntidade
                 .configDuracao(9)
                 .configSupplierDePowerUpGo(DescartePowerUpGo.getFornecedor())
                 .configIsClicavel(true)
+                .configIsColetavel(true)
                 .configDescricao("Descarte um coletado para tentar uma melhor combinação de coletados.",
                 "Selecione no display de coletados o coletado que deseja ser descartado.");
         }

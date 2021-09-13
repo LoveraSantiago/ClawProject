@@ -68,6 +68,17 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
                 if (btnsPowerUp[contador].isDragValido(posicaoDrag))
                 {
                     dragavelAtual = btnsPowerUp[contador];
+                    //BUG AQUI
+                    //BUG AQUI
+                    //BUG AQUI
+                    //BUG AQUI
+                    //BUG AQUI
+                    //BUG AQUI
+                    //BUG AQUI
+                    //BUG AQUI
+                    //BUG AQUI
+                    //BUG AQUI
+                    //BUG AQUI
                     btnAcionado = btnsPowerUp[contador];
                     break;
                 }
