@@ -3,22 +3,22 @@ using UnityEngine;
 
 public class BoardDevolvedor 
 {
-    private bool devolverParaBoard;
+    private bool devolverBoard;
 
     public void configuradoPeloLevel(bool devolverParaBoard)
     {
-        this.devolverParaBoard = devolverParaBoard;
+        this.devolverBoard = devolverParaBoard;
     }
 
     public void devolver(BoardDto boardDto, ColetavelTile[] coletados)
     {
-        if (devolverParaBoard && coletados.Length > 0)
+        if (devolverBoard && coletados.Length > 0)
         {            
-            Utils.MonoBehaviour.StartCoroutine(coroutineDevolverParaBoard(boardDto, coletados));            
+            Utils.MonoBehaviour.StartCoroutine(devolverParaBoard(boardDto, coletados));            
         }
     }
 
-    private IEnumerator coroutineDevolverParaBoard(BoardDto boardDto, ColetavelTile[] coletados)
+    private IEnumerator devolverParaBoard(BoardDto boardDto, ColetavelTile[] coletados)
     {
         for (int contador = 0; contador < coletados.Length; contador++)
         {
