@@ -9,6 +9,7 @@ public class FactoryPowerUpEntidade
     private static PowerUpEntidade teleporte;
     private static PowerUpEntidade asa;
     private static PowerUpEntidade rollback;
+    private static PowerUpEntidade descarte;
 
     private static PowerUpEntidade getBombaDaGarra()
     {
@@ -16,8 +17,7 @@ public class FactoryPowerUpEntidade
         {
             bombaDaGarra = new PowerUpEntidade()
                 .configNomes(PowerUpEntidade.TIPO.BOMBA_DA_GARRA, "Bomba", "bomba")
-                .configDuracao(9)
-                .configArea()
+                .configDuracao(9)                
                 .configSupplierDePowerUpGo(BombaPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
@@ -33,8 +33,7 @@ public class FactoryPowerUpEntidade
         {
             missilNuclear = new PowerUpEntidade()                
                 .configNomes(PowerUpEntidade.TIPO.MISSIL_NUCLEAR, "Bomba Nuclear", "nuclear-bomba-btn")
-                .configDuracao(9)
-                .configArea()
+                .configDuracao(9)                
                 .configSupplierDePowerUpGo(MissilNuclearPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
@@ -67,13 +66,12 @@ public class FactoryPowerUpEntidade
         {
             missilTeleguiado = new PowerUpEntidade()
                 .configNomes(PowerUpEntidade.TIPO.MISSIL_TELEGUIADO, "Missil Teleguiado", "missil-btnv2")
-                .configDuracao(9)
-                .configArea()
+                .configDuracao(9)                
                 .configSupplierDePowerUpGo(MissilTeleguiadoPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
                     "Acerte um missil teleguiado no coletavel de interesse para mudar a posição atual dele.",
-                    "-");
+                    "Selecione a mira do coletavel de interesse a ser acertado pelo missil teleguiado.");
         }
         return missilTeleguiado;
     }
@@ -84,8 +82,7 @@ public class FactoryPowerUpEntidade
         {
             teleporte = new PowerUpEntidade()
                 .configNomes(PowerUpEntidade.TIPO.TELEPORTE, "Tele-Transporte", "teleport-btn")
-                .configDuracao(9)
-                .configArea()
+                .configDuracao(9)                
                 .configSupplierDePowerUpGo(TeleportePowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
@@ -101,8 +98,7 @@ public class FactoryPowerUpEntidade
         {
             asa = new PowerUpEntidade()
                 .configNomes(PowerUpEntidade.TIPO.ASAS, "Asas da Liberdade", "asas-botao")
-                .configDuracao(9)
-                .configArea()
+                .configDuracao(9)                
                 .configSupplierDePowerUpGo(AsaPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configIsColetavel(true)
@@ -119,15 +115,28 @@ public class FactoryPowerUpEntidade
         {
             rollback = new PowerUpEntidade()
                 .configNomes(PowerUpEntidade.TIPO.ROLLBACK, "Rollback", "rollback-botao")
-                .configDuracao(9)
-                .configArea()
+                .configDuracao(9)                
                 .configSupplierDePowerUpGo(RollbackPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
-                    "Descarte um coletado para tentar uma melhor combinação de coletados.",
-                    "-");
+                    "Selecione um coletado para retornar ao board para tentar uma melhor combinação de coletados.",
+                    "Selecione no display de coletados o coletado que deseja ser retornado ao boarde.");
         }
         return rollback;
+    }
+
+    private static PowerUpEntidade getDescarte()
+    {
+        if(descarte == null)
+        {
+            descarte = new PowerUpEntidade()
+                .configNomes(PowerUpEntidade.TIPO.DESCARTE, "Descarte", "descarte-botao")
+                .configDuracao(9)
+                .configIsClicavel(true)
+                .configDescricao("Descarte um coletado para tentar uma melhor combinação de coletados.",
+                "Selecione no display de coletados o coletado que deseja ser descartado.");
+        }
+        return descarte;
     }
 
     public static PowerUpEntidade getPowerUpEntidadeByEnum(PowerUpEntidade.TIPO tipo)
@@ -141,6 +150,7 @@ public class FactoryPowerUpEntidade
             case PowerUpEntidade.TIPO.TELEPORTE        : return getTeleporte();
             case PowerUpEntidade.TIPO.ASAS             : return getAsas();
             case PowerUpEntidade.TIPO.ROLLBACK         : return getRollBack();
+            case PowerUpEntidade.TIPO.DESCARTE         : return getDescarte();
             default: return null;
         }        
     }
@@ -154,7 +164,8 @@ public class FactoryPowerUpEntidade
             getMissilTeleguiado(),
             getTeleporte(),
             getAsas(),
-            getRollBack()
+            getRollBack(),
+            getDescarte()
         };
     }
 
