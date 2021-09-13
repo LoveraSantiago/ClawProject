@@ -67,18 +67,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
             {
                 if (btnsPowerUp[contador].isDragValido(posicaoDrag))
                 {
-                    dragavelAtual = btnsPowerUp[contador];
-                    //BUG AQUI
-                    //BUG AQUI
-                    //BUG AQUI
-                    //BUG AQUI
-                    //BUG AQUI
-                    //BUG AQUI
-                    //BUG AQUI
-                    //BUG AQUI
-                    //BUG AQUI
-                    //BUG AQUI
-                    //BUG AQUI
+                    dragavelAtual = btnsPowerUp[contador];                   
                     btnAcionado = btnsPowerUp[contador];
                     break;
                 }
@@ -113,19 +102,6 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         controlePup.habilitarPowerUpPosDisplay();
     }
 
-    private void acionarBotao(int indice)
-    {
-        BotaoPowerUp btn = btnsPowerUp[indice];
-        btn.clicar(controlePup, produtorDeEventoEscolhaPup, indice);
-        btnAcionado = btn;
-    }   
-
-    private void draggarBotao(BotaoPowerUp btn)
-    {        
-        btn.draggar(controlePup);
-        btnAcionado = btn;
-    }   
-
     public void drag(Vector2 delta)
     {
         if (controlePup.podeAcionarPupDraggavel())
@@ -146,6 +122,29 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
             dragavelAtual = dragavelVazio;
         }
     }
+
+    private void acionarBotao(int indice)
+    {
+        colocarBtnsEmMaterialArcoIris();
+        BotaoPowerUp btn = btnsPowerUp[indice];
+        btn.clicar(controlePup, produtorDeEventoEscolhaPup, indice);
+        btnAcionado = btn;
+    }   
+
+    private void colocarBtnsEmMaterialArcoIris()
+    {
+        for (int contador = 0; contador < btnsPowerUp.Length; contador++)
+        {
+            btnsPowerUp[contador].mudarParaMaterialArcoIris();
+        }
+    }
+
+    private void draggarBotao(BotaoPowerUp btn)
+    {        
+        btn.draggar(controlePup);
+        btnAcionado = btn;
+    }   
+
 
     void AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {        

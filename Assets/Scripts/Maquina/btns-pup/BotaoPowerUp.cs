@@ -56,6 +56,10 @@ public class BotaoPowerUp : Draggavel
     {
         aparencia.voltarCorOriginalBotao();
         aparencia.limparImg();
+    }
+
+    public void mudarParaMaterialArcoIris()
+    {
         glow.mudarParaMaterialArcoIris();
     }
 
