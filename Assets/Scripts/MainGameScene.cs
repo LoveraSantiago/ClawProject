@@ -7,17 +7,9 @@ public class MainGameScene : MonoBehaviour,
 {
     [SerializeField] private LevelFlowManager.LEVEL level;
     [Space(5)]
-    [SerializeField] private MainDto mainDto;                            
+    [SerializeField] private MainDto mainDto;
 
-    private ModalPontos       modalPontos;
-    private GarraManager      garraManager;
-    private MaquinaManager    maquinaManager;
-    private PowerUpManager    powerUpManager;
-    private ColetaveisManager coletaveisManager;
-    private CameraManager     cameraManager;
-    private ScrollManager     scrollManager;
-    private InputGame inputGame;    
-
+    private MainGameManagers managers;
     private LevelFlowManager.LEVEL levelEscolhido;    
 
     void OnEnable()
@@ -30,133 +22,49 @@ public class MainGameScene : MonoBehaviour,
         CameraManager.forceAspectCameraAsRatio();
         Utils.configMainMono(this);
 
-        configurandoManagers();
+        managers = new MainGameManagers(mainDto);
+        
         configurandoLevel();
-        configurandoAcoes();        
-        startLaizy();
-    }
-
-    private void configurandoManagers()
-    {
-        inputGame         = new InputGameImpl(mainDto.MaquinaDto.ReferenciaChao);
-        garraManager      = new GarraManager(mainDto.GarraDto);
-        coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
-        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, inputGame);        
-        powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
-        modalPontos       = new ModalPontos(mainDto.ModalPontosDto);
-        cameraManager     = new CameraManager(mainDto.CameraDto);
-        scrollManager     = new ScrollManager(mainDto.PrefabBottomBar);        
-    }
+        managers.configurandoEventos();
+        managers.startLaizy();
+    }    
 
     private void configurandoLevel()
     {
         LevelFlowManager.LEVEL levelFlow = PlayerPrefsUtils.recuperarELimparLevel(level);
         AbstractLevel levelEscolhido     = LevelFlowManager.getLevelByEnum(levelFlow);
-
-        garraManager     .configuradoPeloLevel(levelEscolhido);
-        coletaveisManager.configuradoPeloLevel(levelEscolhido);
-        maquinaManager   .configuradoPeloLevel(levelEscolhido);
-        modalPontos      .configurarLevel(levelEscolhido.getLevelName());
-        scrollManager    .configuradoPeloLevel(levelEscolhido);
-    }
-
-    private void configurandoAcoes()
-    {
-        new AcaoColetado()
-            .configurarProdutor(coletaveisManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager)            
-            .adicionarConsumidor(modalPontos);
-
-        new AcaoColetadoFim()
-            .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(coletaveisManager)
-            .adicionarConsumidor(garraManager);            
-
-        new AcaoImantadoPelaGarra()
-            .configurarProdutor(garraManager)
-            .adicionarConsumidor(coletaveisManager);
-
-        new AcaoSubidaDaGarra()
-            .configurarProdutor(garraManager)
-            .adicionarConsumidor(coletaveisManager);
-        
-        new AcaoSincroniaComDirecaoDaGarra()
-            .configurarProdutor(garraManager)
-            .adicionarConsumidor(maquinaManager);
-
-        new AcaoPUpAcionado()
-            .configurarProdutor(powerUpManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(coletaveisManager);
-
-        new AcaoBotaoPUpVazio()
-            .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(scrollManager);
-
-        new AcaoBBarPupEscolhido<PowerUpBtnInfo>()
-            .configurarProdutor(scrollManager)
-            .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(cameraManager);
-
-        new AcaoTempoEsgotado()
-            .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(garraManager)            
-            .adicionarConsumidor(modalPontos)
-            .adicionarConsumidor(coletaveisManager);
-
-        new AcaoBoardElevadoFim()
-            .configurarProdutor(coletaveisManager)
-            .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(modalPontos);
-
-        new AcaoCacaNiquel()
-            .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(garraManager);
-    }   
-
-    private void startLaizy()
-    {
-        coletaveisManager.start();
-        garraManager.start();
-        maquinaManager.start();
-        scrollManager.start();
-    }
+        managers.configurandoLevel(levelEscolhido);
+    }       
     
     void Update()
     {
-        inputGame.update();
-        garraManager.update(inputGame);
-        maquinaManager.update(inputGame);        
+        managers.update();
     }
 
     private void FixedUpdate()
     {
-        garraManager.fixedUpdate();        
-        maquinaManager.fixedUpdate();
+        managers.fixedUpdate();
     }
 
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP INICIO
     public void OnBeginDrag(PointerEventData eventData)
-    {        
-        if (inputGame.aconteceuDragNaAreaInferior(eventData.pointerCurrentRaycast.worldPosition))
+    {
+        Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
+        if (managers.inputGame.aconteceuDragNaAreaInferior(posicaoToque))
         {
-            maquinaManager.beginDragPowerUp(eventData.pointerCurrentRaycast.worldPosition);
+            managers.maquinaManager.beginDragPowerUp(posicaoToque);
         }       
     }
 
     public void OnEndDrag(PointerEventData eventData)
-    {        
-        maquinaManager.onEndDragPowerUp();
+    {
+        managers.maquinaManager.onEndDragPowerUp();
     }
 
     public void OnDrag(PointerEventData eventData)
-    {        
-        maquinaManager.onDragPowerUp(eventData.pointerCurrentRaycast.worldPosition);
+    {
+        Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
+        managers.maquinaManager.onDragPowerUp(posicaoToque);
     }
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM
 }
