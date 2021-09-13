@@ -45,6 +45,7 @@ public class BotaoPowerUp : Draggavel
     public void draggar(ControleAcionamentoPowerUp controlePup)
     {
         aparencia.colorirBotao();
+        glow.mudarParaMaterialIndividual();
         if (hasPowerUp)
         {
             controlePup.notificarAcionado(acaoBtnPowerUp);

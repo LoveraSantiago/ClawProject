@@ -57,8 +57,7 @@ public class AcaoDragPowerUp
         if (aparencia.isMostrandoImagem())
         {
             acaoPowerUp.acionar(aparencia.getPosicao());
-            aparencia.mostrarBotao();            
-            //aparencia.colocarNaPosicaoOriginal(posicaoOriginal, rotacaoOriginal);
+            aparencia.mostrarBotao();                        
             aparencia.colocarNaPosicaoOriginalAcionado(posicaoOriginal, rotacaoOriginal);
             goAreaDraggavel.SetActive(false);
             return true;

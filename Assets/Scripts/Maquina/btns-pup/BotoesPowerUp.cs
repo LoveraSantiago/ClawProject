@@ -141,7 +141,8 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
     }
 
     private void draggarBotao(BotaoPowerUp btn)
-    {        
+    {
+        colocarBtnsEmMaterialArcoIris();
         btn.draggar(controlePup);
         btnAcionado = btn;
     }   
