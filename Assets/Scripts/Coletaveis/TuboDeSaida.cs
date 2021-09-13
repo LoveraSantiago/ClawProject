@@ -27,7 +27,7 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         this.devolverTubo = !devolverParaBoard;
     }
 
-    public void devolver(bool[] resultados, Coletavel[] coletados)
+    public void devolver(bool[] resultados, ColetavelTile[] coletados)
     {
         if (devolverTubo)
         {
@@ -36,7 +36,7 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         }
     }
 
-    private IEnumerator descerPeloTubo(bool[] resultados, Coletavel[] coletados)
+    private IEnumerator descerPeloTubo(bool[] resultados, ColetavelTile[] coletados)
     {        
         
         for (int contador = 0; contador < coletados.Length; contador++)
