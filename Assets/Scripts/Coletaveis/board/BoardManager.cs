@@ -51,6 +51,11 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         devolvedor.devolver(evento, boardDto, coletados);        
     }
 
+    public bool isDevolverBoard()
+    {
+        return devolvedor.devolverBoard;
+    }
+
     private IEnumerator subirBoardComPool(PoolDeColetaveis poolDeColetaveis)
     {
         yield return new WaitForSeconds(0.6f);

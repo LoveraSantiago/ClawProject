@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BoardDevolvedor 
 {
-    private bool devolverBoard;
+    public bool devolverBoard { get; private set; }
 
     public void configuradoPeloLevel(bool devolverParaBoard)
     {

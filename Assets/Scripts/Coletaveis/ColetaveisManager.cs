@@ -150,7 +150,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         tuboSaida.devolver(evento, contador.getColetados());        
         board.devolver(evento, contador.getColetados());
-        contador.reajustarContagem(evento);
+        contador.reajustarContagem(evento, board.isDevolverBoard());
     }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()

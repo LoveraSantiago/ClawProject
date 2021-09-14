@@ -64,18 +64,26 @@ public class ContadorDeColetaveis
         return resultCombinacao;
     }
 
-    public void reajustarContagem(ColetadoFim evento)
+    public void reajustarContagem(ColetadoFim evento, bool devolverBoard)
     {
-        //if (evento.reajustarContador())
-        //{
-        //    int indice = evento.getPrimeiroIndiceParaLimpar();
-        //    coletados[indice] = null;
-        //    Debug.Log("Reajuste de contagem no indice " + indice);
-        //}
-        //else if(evento.devolverBoard())
-        //{
-        //    resetarColetados();
-        //}
+        if (!evento.isNormal)
+        {
+            int indice = evento.getPrimeiroIndiceParaLimpar();
+            coletados[indice] = null;
+            Debug.Log("Reajuste de contagem no indice " + indice);
+            if (evento.isRollback)
+            {
+                adicionarColetaveisExtras(1);
+            }
+        }
+        else if (evento.isNormal)
+        {
+            resetarColetados();
+            if (devolverBoard)
+            {
+                adicionarColetaveisExtras(3);
+            }
+        }
     }
 
     private bool isCombinacaoValida()
