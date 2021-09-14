@@ -16,4 +16,14 @@ public class Utils
         return cor;
     }  
 
+    public static T[] copiarArray<T>(T[] array)
+    {
+        T[] result = new T[array.Length];
+        for(int contador = 0; contador < array.Length; contador++)
+        {
+            result[contador] = array[contador];
+        }
+        return result;
+    }
+
 }

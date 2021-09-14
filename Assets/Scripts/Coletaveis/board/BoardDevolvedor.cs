@@ -13,8 +13,9 @@ public class BoardDevolvedor
     public void devolver(ColetadoFim evento, BoardDto boardDto, ColetavelTile[] coletados)
     {
         if (devolverBoard || evento.isRollback)
-        {  
-            Utils.MonoBehaviour.StartCoroutine(devolverParaBoard(evento.clears, boardDto, coletados));            
+        {
+            ColetavelTile[] coletadosOriginais = Utils.copiarArray(coletados);
+            Utils.MonoBehaviour.StartCoroutine(devolverParaBoard(evento.clears, boardDto, coletadosOriginais));            
         }
     }
 
