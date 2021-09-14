@@ -10,9 +10,10 @@ public class BoardDevolvedor
         this.devolverBoard = devolverParaBoard;
     }
 
-    public void devolver(ColetadoFim evento, BoardDto boardDto, ColetavelTile[] coletados)
+    public void devolver(
+        bool combinacaoValida, ColetadoFim evento, BoardDto boardDto, ColetavelTile[] coletados)
     {
-        if (devolverBoard || evento.isRollback)
+        if ((devolverBoard && !combinacaoValida && evento.isTodosColetados()) || evento.isRollback)
         {
             ColetavelTile[] coletadosOriginais = Utils.copiarArray(coletados);
             Utils.MonoBehaviour.StartCoroutine(devolverParaBoard(evento.clears, boardDto, coletadosOriginais));            
