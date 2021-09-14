@@ -23,6 +23,11 @@ public class ColetadoFim
         return 2;
     }
 
+    public bool isTodosColetados()
+    {
+        return clears[0] && clears[1] && clears[2];
+    }
+
     public static ColetadoFim ofNormal(bool[] clears)
     {
         return new ColetadoFim(ESTADO_NORMAL, clears);        

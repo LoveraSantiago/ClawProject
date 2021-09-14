@@ -76,7 +76,7 @@ public class ContadorDeColetaveis
                 adicionarColetaveisExtras(1);
             }
         }
-        else if (evento.isNormal)
+        else if (evento.isNormal && evento.isTodosColetados())
         {
             resetarColetados();
             if (devolverBoard)
