@@ -7,7 +7,7 @@ public class ContadorDeColetaveis
     private int pontosColetado;
     private int pontosAcerto;
     
-    private bool resultCombinacao;
+    public bool resultCombinacao { get; private set; }
     private int totalColetaveis;
 
     private ColetavelTile[] coletados;       
@@ -57,12 +57,7 @@ public class ContadorDeColetaveis
     {
         totalColetaveis -= 1;
         //Debug.Log("Total: " + totalColetaveis);
-    }    
-
-    public bool getResult()
-    {
-        return resultCombinacao;
-    }
+    }       
 
     public void reajustarContagem(ColetadoFim evento, bool devolverBoard)
     {
