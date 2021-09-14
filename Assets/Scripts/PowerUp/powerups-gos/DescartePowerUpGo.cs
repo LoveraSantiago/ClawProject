@@ -52,7 +52,7 @@ public class DescartePowerUpGo : PowerUpNaoInteracaoComGarra,
             }
             else
             {
-                informacaoDisplayColetados.restartPowerUp(this);
+                informacaoDisplayColetados.restartPowerUp(PowerUpEntidade.TIPO.DESCARTE, this);
             }
         }
         else

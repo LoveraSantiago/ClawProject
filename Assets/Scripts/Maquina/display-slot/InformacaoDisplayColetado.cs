@@ -4,5 +4,5 @@ public interface InformacaoDisplayColetado
 {
     bool acertouDisplay(Vector2 toque);
     bool isTodosDisplaysDesocupados();
-    void restartPowerUp(PowerUpInteracaoDisplayColetado interacao);
+    void restartPowerUp(PowerUpEntidade.TIPO tipo, PowerUpInteracaoDisplayColetado interacao);
 }

@@ -1,5 +1,6 @@
 public class AgendamentoDisplayColetados
 {
+    public PowerUpEntidade.TIPO tipoPup { get; private set; }
     public InformacoesColetadoDto infoColetadoDto { get; private set; }
     public ArcoIrisEfeito arcoIris { get; private set; }
     public Executor executor { get; private set; }
@@ -13,6 +14,11 @@ public class AgendamentoDisplayColetados
     public bool possuiAgendamentoDeEvento()
     {
         return infoColetadoDto != null;
+    }
+
+    public void agendar(PowerUpEntidade.TIPO tipo)
+    {
+        tipoPup = tipo;
     }
 
     public void agendar(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)

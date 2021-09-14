@@ -66,16 +66,16 @@ public class ContadorDeColetaveis
 
     public void reajustarContagem(ColetadoFim evento)
     {
-        if (evento.reajustarContador())
-        {
-            int indice = evento.getPrimeiroIndiceParaLimpar();
-            coletados[indice] = null;
-            Debug.Log("Reajuste de contagem no indice " + indice);
-        }
-        else if(evento.devolverBoard())
-        {
-            resetarColetados();
-        }
+        //if (evento.reajustarContador())
+        //{
+        //    int indice = evento.getPrimeiroIndiceParaLimpar();
+        //    coletados[indice] = null;
+        //    Debug.Log("Reajuste de contagem no indice " + indice);
+        //}
+        //else if(evento.devolverBoard())
+        //{
+        //    resetarColetados();
+        //}
     }
 
     private bool isCombinacaoValida()

@@ -35,9 +35,12 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
         displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIris, executorPosEvento);
     }
 
-    public void processarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
+    public void processarPowerUp(PowerUpInfo evento)
     {
-        displayDeColetados.processarPowerUp(interacaoDisplayColetado);
+        if (evento.interacaoDisplayColetado != null)
+        {
+            displayDeColetados.processarPowerUp(evento.tipo, evento.interacaoDisplayColetado);
+        }
     }
 
     public void processarFimPowerUp(BotoesPowerUp botoesPup)

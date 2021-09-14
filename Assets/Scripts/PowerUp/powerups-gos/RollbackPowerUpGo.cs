@@ -50,7 +50,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
             }
             else
             {
-                informacaoDisplayColetados.restartPowerUp(this);
+                informacaoDisplayColetados.restartPowerUp(PowerUpEntidade.TIPO.ROLLBACK, this);
             }
         }
         else
