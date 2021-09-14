@@ -29,7 +29,7 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
 
     public void devolver(bool combinacaoValida, ColetadoFim evento, ColetavelTile[] coletados)
     {
-        if (devolverTubo || combinacaoValida || evento.isDescarte)
+        if ((devolverTubo && combinacaoValida) || evento.isDescarte)
         {
             //Debug.Log("Devolver tubo acionado");
             Utils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, coletados));
