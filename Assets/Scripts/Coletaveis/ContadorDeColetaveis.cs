@@ -83,7 +83,7 @@ public class ContadorDeColetaveis
 
     private bool isCombinacaoValida()
     {
-        ColetavelTile primeiroColetado = coletados[0];
+        ColetavelTile primeiroColetado = coletados[0];//AQUI PODE TOMAR NULL POINTER
         for (int contador = 0; contador < coletados.Length; contador++)
         {
             if (!primeiroColetado.hasEqualsSprite(coletados[contador]))
