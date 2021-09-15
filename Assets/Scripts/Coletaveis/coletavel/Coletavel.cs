@@ -201,6 +201,7 @@ public abstract class Coletavel
 
     public bool hasEqualsSprite(Coletavel coletavelOutro)
     {
+        Debug.Log("spr this " + nomeSprite + " spr other " + coletavelOutro.nomeSprite);
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
     }       
 

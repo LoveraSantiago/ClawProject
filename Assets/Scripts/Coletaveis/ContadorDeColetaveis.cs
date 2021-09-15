@@ -83,17 +83,26 @@ public class ContadorDeColetaveis
 
     private bool isCombinacaoValida()
     {
-        ColetavelTile primeiroColetado = coletados[0];//AQUI PODE TOMAR NULL POINTER
-        for (int contador = 0; contador < coletados.Length; contador++)
+        if(todosColetadosNaoNulos() && todosColetadosIguais())
         {
-            if (!primeiroColetado.hasEqualsSprite(coletados[contador]))
-            {
-                resultCombinacao = false;
-                return false;
-            }
+            resultCombinacao = true;            
         }
-        resultCombinacao = true;
-        return true;
+        else
+        {
+            resultCombinacao = false;
+        }
+        return resultCombinacao;
+    }
+
+    private bool todosColetadosNaoNulos()
+    {
+        return coletados[0] != null && coletados[1] != null && coletados[2] != null
+    }
+
+    private bool todosColetadosIguais()
+    {
+        return coletados[0].hasEqualsSprite(coletados[1]) &&
+               coletados[0].hasEqualsSprite(coletados[2]);
     }
 
     private void adicionaAoContainerDeColetados(ColetavelTile coletado)
