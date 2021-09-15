@@ -1,8 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
-public class DescartePowerUpGo : PowerUpNaoInteracaoComGarra,
-                                 PowerUpInteracaoDisplayColetado
+public class DescartePowerUpGo : RollbackPowerUpGo
 {
 
     private Coroutine coroutine;
@@ -11,69 +9,19 @@ public class DescartePowerUpGo : PowerUpNaoInteracaoComGarra,
     public DescartePowerUpGo()
         : base(powerUpDto.VazioPUp, "descarte")
     {
-    }
+    } 
 
-    public override PowerUpInteracaoDisplayColetado getObjInteracaoDisplayColetado()
-    {        
-        return this;
-    }
-
-    public override void configurarPup() { }
-
-    public override void iniciarPup()
+    protected override PowerUpEntidade.TIPO getTipoRestartPup()
     {
-        finalizado = false;
+        return PowerUpEntidade.TIPO.DESCARTE;
     }
 
-    public void iniciar(InformacaoDisplayColetado informacaoDisplayColetados)
+    public new static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
-        coroutine = Utils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados(informacaoDisplayColetados));
+        return new FornecedorDescarte();
     }
 
-    public override void resetPup() { }
-
-    public override void timeout()
-    {
-        if (!finalizado)
-        {
-            Utils.MonoBehaviour.StopCoroutine(coroutine);
-            powerUpFinalizacao.finalizado();
-        }
-    }
-
-    private IEnumerator getCliqueNoDisplayDeColetados(InformacaoDisplayColetado informacaoDisplayColetados)
-    {
-        if (informacaoDisplayColetados.isTodosDisplaysDesocupados())
-        {
-            yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayReset);
-            if (informacaoDisplayColetados.isTodosDisplaysDesocupados())
-            {
-                powerUpFinalizacao.finalizado();
-            }
-            else
-            {
-                informacaoDisplayColetados.restartPowerUp(PowerUpEntidade.TIPO.DESCARTE, this);
-            }
-        }
-        else
-        {
-            while (!finalizado)
-            {
-                finalizado = informacaoDisplayColetados.acertouDisplay(inputGame.getPosicaoTap());
-                yield return null;
-            }
-            powerUpFinalizacao.preFinalizar();
-            yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
-            powerUpFinalizacao.finalizado();
-        }
-    }
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorRollback();
-    }
-
-    public class FornecedorRollback : Fornecedor<AbstractPowerUpGo>
+    public class FornecedorDescarte : Fornecedor<AbstractPowerUpGo>
     {
         public AbstractPowerUpGo fornecer()
         {

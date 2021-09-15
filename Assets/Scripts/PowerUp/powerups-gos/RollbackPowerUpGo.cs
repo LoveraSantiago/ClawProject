@@ -12,6 +12,11 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     {
     }
 
+    public RollbackPowerUpGo(GameObject go, string nome)
+        : base(go, nome)
+    {
+    }
+
     public override PowerUpInteracaoDisplayColetado getObjInteracaoDisplayColetado()
     {        
         return this;
@@ -19,7 +24,8 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
 
     public override void configurarPup(){}
     
-    public override void iniciarPup(){
+    public override void iniciarPup()
+    {
         finalizado = false;
     }
 
@@ -50,7 +56,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
             }
             else
             {
-                informacaoDisplayColetados.restartPowerUp(PowerUpEntidade.TIPO.ROLLBACK, this);
+                informacaoDisplayColetados.restartPowerUp(getTipoRestartPup(), this);
             }
         }
         else
@@ -65,6 +71,11 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
             powerUpFinalizacao.finalizado();
         }
     }   
+
+    protected virtual PowerUpEntidade.TIPO getTipoRestartPup()
+    {
+        return PowerUpEntidade.TIPO.ROLLBACK;
+    }
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
