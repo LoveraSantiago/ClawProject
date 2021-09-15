@@ -13,7 +13,7 @@ public class BoardDevolvedor
     public void devolver(
         bool combinacaoValida, ColetadoFim evento, BoardDto boardDto, ColetavelTile[] coletados)
     {
-        if ((devolverBoard && !combinacaoValida && evento.isTodosColetados()) || evento.isRollback)
+        if ((devolverBoard && evento.isTodosColetados()) || evento.isRollback)
         {
             ColetavelTile[] coletadosOriginais = Utils.copiarArray(coletados);
             Utils.MonoBehaviour.StartCoroutine(devolverParaBoard(evento.clears, boardDto, coletadosOriginais));            
