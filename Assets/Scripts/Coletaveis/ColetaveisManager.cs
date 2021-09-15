@@ -148,8 +148,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {
-        tuboSaida.devolver(contador.resultCombinacao, evento, contador.getColetados());        
-        board.devolver(contador.resultCombinacao, evento, contador.getColetados());
+        tuboSaida.devolver(evento, contador.getColetados());        
+        board.devolver(evento, contador.getColetados());
         contador.reajustarContagem(evento, board.isDevolverBoard());
     }
 

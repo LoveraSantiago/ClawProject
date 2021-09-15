@@ -27,7 +27,7 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         this.devolverTubo = !devolverParaBoard;
     }
 
-    public void devolver(bool combinacaoValida, ColetadoFim evento, ColetavelTile[] coletados)
+    public void devolver(ColetadoFim evento, ColetavelTile[] coletados)
     {
         if ((devolverTubo && evento.isTodosColetados()) || evento.isDescarte)
         {

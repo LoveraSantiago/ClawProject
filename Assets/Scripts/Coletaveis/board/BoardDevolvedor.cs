@@ -10,8 +10,7 @@ public class BoardDevolvedor
         this.devolverBoard = devolverParaBoard;
     }
 
-    public void devolver(
-        bool combinacaoValida, ColetadoFim evento, BoardDto boardDto, ColetavelTile[] coletados)
+    public void devolver(ColetadoFim evento, BoardDto boardDto, ColetavelTile[] coletados)
     {
         if ((devolverBoard && evento.isTodosColetados()) || evento.isRollback)
         {
