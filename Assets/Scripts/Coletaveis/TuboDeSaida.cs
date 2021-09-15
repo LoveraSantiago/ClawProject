@@ -27,13 +27,25 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         this.devolverTubo = !devolverParaBoard;
     }
 
-    public void devolver(ColetadoFim evento, ColetavelTile[] coletados)
+    public void devolver(bool combinacaoValida, ColetadoFim evento, ColetavelTile[] coletados)
     {
-        if ((devolverTubo && evento.isTodosColetados()) || evento.isDescarte)
+        if (isLigadoECompleto(evento) || 
+            isDesligadoMasValido(combinacaoValida) || 
+            evento.isDescarte)
         {
             //Debug.Log("Devolver tubo acionado");
             Utils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, coletados));
         }
+    }
+
+    private bool isLigadoECompleto(ColetadoFim evento)
+    {
+        return devolverTubo && evento.isTodosColetados();
+    }
+
+    private bool isDesligadoMasValido(bool combinacaoValida)
+    {
+        return !devolverTubo && combinacaoValida;
     }
 
     private IEnumerator descerPeloTubo(bool[] resultados, ColetavelTile[] coletados)
