@@ -27,14 +27,16 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         this.devolverTubo = !devolverParaBoard;
     }
 
-    public void devolver(bool combinacaoValida, ColetadoFim evento, ColetavelTile[] coletados)
+    public void devolver(
+        bool combinacaoValida, ColetadoFim evento, 
+        ColetavelTile[] coletados, PoolDeColetaveis poolDeColetaveis)
     {
         if (isLigadoECompleto(evento) || 
             isDesligadoMasValido(combinacaoValida) || 
             evento.isDescarte)
         {
             //Debug.Log("Devolver tubo acionado");
-            Utils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, coletados));
+            Utils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, coletados, poolDeColetaveis));
         }
     }
 
@@ -48,7 +50,8 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
         return !devolverTubo && combinacaoValida;
     }
 
-    private IEnumerator descerPeloTubo(bool[] resultados, ColetavelTile[] coletados)
+    private IEnumerator descerPeloTubo(
+        bool[] resultados, ColetavelTile[] coletados, PoolDeColetaveis poolDeColetaveis)
     {        
         
         for (int contador = 0; contador < coletados.Length; contador++)
@@ -60,6 +63,8 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
                 rigidBodies[contador].gravityScale = tuboDto.Gravidade;
                 rigidBodies[contador].AddTorque(torque);
                 spriteRenderers[contador].sprite = spriteAtual;
+
+                poolDeColetaveis.inativarColetavel(coletados[contador]);
             }
         }        
         yield return null;
