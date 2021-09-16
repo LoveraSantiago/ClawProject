@@ -9,8 +9,7 @@ public class DisplayDeSlot
 
     private int estadoAtual; 
     
-    private GlowEfeito glowEfeito;
-    private PosicoesSlots posicoes;
+    private GlowEfeito glowEfeito;    
     private MovimentadorDeSlots slots;
     private AnimacaoDisplayColetado animacao;
 
@@ -18,8 +17,7 @@ public class DisplayDeSlot
 
     private Coroutine coroutineCacaNiquel;
 
-    public DisplayDeSlot(
-        SingleDisplaySlotDto singleDisplaySlotDto)
+    public DisplayDeSlot(SingleDisplaySlotDto singleDisplaySlotDto)
     {
         this.singleDisplaySlotDto = singleDisplaySlotDto;
 
@@ -27,9 +25,8 @@ public class DisplayDeSlot
 
         MaterialGlow materialGlow = new MaterialGlow(singleDisplaySlotDto.SprRendererDentroEfeito.material);
         glowEfeito = new GlowEfeito(singleDisplaySlotDto.SprRendererDentroEfeito.gameObject, materialGlow);
-
-        posicoes = new PosicoesSlots(singleDisplaySlotDto);
-        slots = new MovimentadorDeSlots();
+                
+        slots = new MovimentadorDeSlots(singleDisplaySlotDto);
     }    
 
     public void configuradoPeloLevel(Color corDisplay, Color corDentro)
@@ -78,7 +75,7 @@ public class DisplayDeSlot
         estadoAtual = ESTADO_OCUPADO_COLETADO;
         singleDisplaySlotDto.SlotSpriteBaixo.sprite = sprite;
         ligarGlowLuz();
-        yield return slots.subirSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, posicoes.posFinal, displaysSlotsDto);        
+        yield return slots.subirSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
         desligarGlow();
 
         if (mostrarMira)
@@ -90,7 +87,7 @@ public class DisplayDeSlot
     public IEnumerator limparSprColetado(DisplaysSlotsDto displaysSlotsDto)
     {
         estadoAtual = ESTADO_VAZIO;
-        yield return slots.descerSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, posicoes.posSlotBaixoInicial, displaysSlotsDto);        
+        yield return slots.descerSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
     }     
     
     public IEnumerator mostrarSprNone(DisplaysSlotsDto displaysSlotsDto)
@@ -98,13 +95,13 @@ public class DisplayDeSlot
         estadoAtual = ESTADO_OCUPADO_NONE;
         singleDisplaySlotDto.SlotSpriteCima.sprite = displaysSlotsDto.SprVazio;
         singleDisplaySlotDto.SlotSpriteCima.color = Color.red;
-        yield return slots.descerSlotCima(singleDisplaySlotDto.GoSlotCima, posicoes.posFinal, displaysSlotsDto);        
+        yield return slots.descerSlotCima(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto);        
     }    
 
     public IEnumerator limparSprNone(DisplaysSlotsDto displaysSlotsDto)
     {
         estadoAtual = ESTADO_VAZIO;
-        yield return slots.subirSlotCima(singleDisplaySlotDto.GoSlotCima, posicoes.posSlotCimaInicial, displaysSlotsDto);
+        yield return slots.subirSlotCima(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto);
         singleDisplaySlotDto.SlotSpriteCima.sprite = null;
     }
 
