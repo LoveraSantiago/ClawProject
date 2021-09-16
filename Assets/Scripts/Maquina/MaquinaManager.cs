@@ -117,9 +117,9 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         {
             displayDeScores.finalizarContagemRegressiva();
             displayTimer.continuar();
+            displaysDeSlots.processarFimPowerUp(botoesPowerUp);            
             botoesPowerUp.processarFimPowerUp();
             arcoIrisEfeito.desligarEfeito();
-            displaysDeSlots.processarFimPowerUp(botoesPowerUp);            
         }
     }              
 

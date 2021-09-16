@@ -123,7 +123,6 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         controlePup.habilitarPowerUpPosDisplay();
     }
 
-
     private void acionarBotao(int indice)
     {
         colocarBtnsEmMaterialArcoIris();
