@@ -14,6 +14,7 @@ public class MovimentadorDeSlots
 
     public void cancelarMovimentacaoDeSlot()
     {
+        Debug.Log("Cancelando movimentacao de slot");
         continuarMovimentacao = false;
     }    
 
@@ -43,7 +44,8 @@ public class MovimentadorDeSlots
         yield return movimentarSlot(velocidade, 0, slot, posicoes.posSlotCimaInicial);        
     }
 
-    public IEnumerator movimentarSlot(float velocidade, float delay, GameObject slot, Vector3 posicaoDesejada)
+    public IEnumerator movimentarSlot(
+        float velocidade, float delay, GameObject slot, Vector3 posicaoDesejada)
     {   
         yield return new WaitForSeconds(delay);
 

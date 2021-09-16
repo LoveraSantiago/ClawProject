@@ -41,6 +41,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         if (!finalizado)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
+            powerUpFinalizacao.preFinalizar();
             powerUpFinalizacao.finalizado();
         }
     }
@@ -54,6 +55,10 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
             yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayReset);
             if (informacaoDisplayColetados.isTodosDisplaysDesocupados())
             {
+                Debug.Log("Pup Prefinalizar displays desocupados");
+                powerUpFinalizacao.preFinalizar();
+                yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
+                Debug.Log("Pup Finalizar displays desocupados");
                 powerUpFinalizacao.finalizado();
             }
             else
@@ -67,13 +72,15 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
             {
                 finalizado = informacaoDisplayColetados.acertouDisplay(inputGame.getPosicaoTap());                    
                 yield return null;
-            }        
+            }
+            Debug.Log("Pup Prefinalizar normal");
             powerUpFinalizacao.preFinalizar();
             yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
+            Debug.Log("Pup Finalizar normal");
             powerUpFinalizacao.finalizado();
         }
     }   
-
+    
     protected virtual PowerUpEntidade.TIPO getTipoRestartPup()
     {
         return PowerUpEntidade.TIPO.ROLLBACK;

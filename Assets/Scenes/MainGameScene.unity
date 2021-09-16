@@ -941,7 +941,7 @@ MonoBehaviour:
       displaysSlotsDto:
         inicialDelay: 0.3
         fimDelay: 0.1
-        velocImg: 4
+        velocImg: 4.5
         sprVazio: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
         sprMoeda: {fileID: 21300000, guid: 4f65f6ab8c741e0488b961b5e3c17241, type: 3}
         singleDisplaySlotDto:

@@ -69,10 +69,12 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
     private void acionarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
     {
+        Debug.Log("Pup acionado no display de coletado inicio");
         powerUpAcionado = true;
         grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
         grupoDisplays.acionarMostrarAlvos();
-        interacaoDisplayColetado.iniciar(this); 
+        interacaoDisplayColetado.iniciar(this);
+        Debug.Log("Pup acionado no display de coletado fim");
     }     
 
     private IEnumerator mostrarSprite(
