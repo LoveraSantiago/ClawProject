@@ -48,6 +48,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     private IEnumerator getCliqueNoDisplayDeColetados(InformacaoDisplayColetado informacaoDisplayColetados)
     {
         //TODO adicionar delay de inicio
+        yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayInicial);
         if (informacaoDisplayColetados.isTodosDisplaysDesocupados())
         {
             yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayReset);

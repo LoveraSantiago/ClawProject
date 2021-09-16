@@ -4,9 +4,11 @@ using UnityEngine;
 [System.Serializable]
 public class RollbackDto 
 {
+    [SerializeField] private float delayInicial;
     [SerializeField] private float delayReset;
     [SerializeField] private float delayFinalizar;
 
+    public float DelayInicial { get { return delayInicial; } }
     public float DelayReset { get { return delayReset; } }
     public float DelayFinalizar { get { return delayFinalizar; } }
 }

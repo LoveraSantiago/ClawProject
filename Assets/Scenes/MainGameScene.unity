@@ -941,7 +941,7 @@ MonoBehaviour:
       displaysSlotsDto:
         inicialDelay: 0.3
         fimDelay: 0.1
-        velocImg: 3.5
+        velocImg: 4
         sprVazio: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
         sprMoeda: {fileID: 21300000, guid: 4f65f6ab8c741e0488b961b5e3c17241, type: 3}
         singleDisplaySlotDto:
@@ -1268,8 +1268,9 @@ MonoBehaviour:
         delayFinalizar: 0.5
         asaGo: {fileID: 4127936681606313068, guid: 5432931c59eafda478e032d555b31327, type: 3}
       rollBackDto:
-        delayReset: 1.5
-        delayFinalizar: 1.5
+        delayInicial: 2
+        delayReset: 1
+        delayFinalizar: 2
     modalPontosDto:
       textoPontos: {fileID: 1473191375}
       textoNivel: {fileID: 376184029}
