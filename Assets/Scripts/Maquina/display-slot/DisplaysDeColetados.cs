@@ -72,7 +72,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         powerUpAcionado = true;
         grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
         grupoDisplays.acionarMostrarAlvos();
-        interacaoDisplayColetado.iniciar(this);        
+        interacaoDisplayColetado.iniciar(this); 
     }     
 
     private IEnumerator mostrarSprite(
