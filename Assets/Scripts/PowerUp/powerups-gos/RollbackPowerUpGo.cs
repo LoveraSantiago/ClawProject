@@ -4,8 +4,9 @@ using UnityEngine;
 public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
                                  PowerUpInteracaoDisplayColetado
 {
-    private Coroutine coroutine;
     private bool finalizado;
+    private int contador;
+    private Coroutine coroutine;
 
     public RollbackPowerUpGo()
         :base(powerUpDto.VazioPUp, "rollback")
@@ -31,7 +32,11 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
 
     public void iniciar(InformacaoDisplayColetado informacaoDisplayColetados)
     {
-        coroutine = Utils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados(informacaoDisplayColetados));
+        contador++;
+        if(contador == 3)
+        {
+            coroutine = Utils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados(informacaoDisplayColetados));
+        }
     }
 
     public override void resetPup(){}   
@@ -49,7 +54,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     private IEnumerator getCliqueNoDisplayDeColetados(InformacaoDisplayColetado informacaoDisplayColetados)
     {
         //TODO adicionar delay de inicio
-        yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayInicial);
+        //yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayInicial);
         if (informacaoDisplayColetados.isTodosDisplaysDesocupados())
         {
             yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayReset);
