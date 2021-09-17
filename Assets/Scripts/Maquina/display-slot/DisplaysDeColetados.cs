@@ -42,8 +42,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         if (powerUpAcionado)
         {
             powerUpAcionado = false;
-            grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
-            grupoDisplays.desligarAlvos();
+            grupoDisplays.setarEstadoPowerUp(powerUpAcionado);        
             agendados.cleanInteracao();            
 
             if (agendados.possuiAgendamentoDeEvento())
@@ -65,6 +64,11 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
                 botoesPup.reativarPowerUpPosDisplay();
             }
         }
+    }
+
+    public void restaurarEstadoAntesPowerUp(Executor executor)
+    {
+        grupoDisplays.desligarAlvos(executor);
     }
 
     private void acionarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
@@ -194,5 +198,5 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoFimColetagem;
-    }
+    }   
 }

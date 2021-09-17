@@ -35,11 +35,11 @@ public class GrupoDisplays : ArcoIrisConjunto
         Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].mostrarAlvo(displaysSlotsDto, executor));
     }
 
-    public void desligarAlvos()
+    public void desligarAlvos(Executor executor)
     {
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].desligarAlvo(displaysSlotsDto));
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].desligarAlvo(displaysSlotsDto));
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].desligarAlvo(displaysSlotsDto));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].desligarAlvo(displaysSlotsDto, executor));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].desligarAlvo(displaysSlotsDto, executor));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].desligarAlvo(displaysSlotsDto, executor));
     }
 
     public IEnumerator mostrarSprColetado(int indice, Sprite sprite, bool powerUpAcionado)

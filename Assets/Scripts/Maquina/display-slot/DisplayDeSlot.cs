@@ -54,15 +54,17 @@ public class DisplayDeSlot
         animacao.ligarAnimacaoMiraSelecionado();
     }
 
-    public IEnumerator desligarAlvo(DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator desligarAlvo(DisplaysSlotsDto displaysSlotsDto, Executor executor)
     {
         if (animacao.isMiraLigado)
         {
             animacao.desligarAnimacao();
+            executor.execute();
         }
         else{
-            yield return limparSprNone(displaysSlotsDto);
+            yield return limparSprNone(displaysSlotsDto, executor);
         }
+        desligarGlow();
     }
 
     public IEnumerator mostrarSprColetado(
@@ -99,10 +101,10 @@ public class DisplayDeSlot
         yield return slots.descerSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);        
     }    
 
-    public IEnumerator limparSprNone(DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator limparSprNone(DisplaysSlotsDto displaysSlotsDto, Executor executor)
     {
         estadoAtual = ESTADO_VAZIO;
-        yield return slots.subirSlotCima(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto);
+        yield return slots.subirSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);
         singleDisplaySlotDto.SlotSpriteCima.sprite = null;
     }
 

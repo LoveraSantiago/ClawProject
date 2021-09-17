@@ -36,20 +36,6 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         this.informacaoDisplayColetado = informacaoDisplayColetado;
     }
 
-    public Executor getExecutorDeInicio()
-    {
-        return new ExecutorInicio(this);
-    }
-
-    public void inicio()
-    {
-        contador++;
-        if(contador == 3)
-        {
-            coroutine = Utils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados());
-        }
-    }
-
     public override void resetPup(){
         contador = 0;
     }   
@@ -59,7 +45,35 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         if (!finalizado)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
+            informacaoDisplayColetado.restaurarEstadoAntesPowerUp(new ExecutorFim(this));
+            //powerUpFinalizacao.preFinalizar();
+            //powerUpFinalizacao.finalizado();
+        }
+    }
+
+    public Executor getExecutorDeInicio()
+    {
+        return new ExecutorInicio(this);
+    }
+
+    private void inicio()
+    {
+        contador++;
+        if(contador == 3)
+        {
+            coroutine = Utils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados());
+        }
+    }
+
+    private void fim()
+    {
+        contador--;
+        if(contador == 0)
+        {
+            Debug.Log("Pup Prefinalizar normal");
             powerUpFinalizacao.preFinalizar();
+            //yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
+            Debug.Log("Pup Finalizar normal");
             powerUpFinalizacao.finalizado();
         }
     }
@@ -73,11 +87,12 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
             yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayReset);
             if (informacaoDisplayColetado.isTodosDisplaysDesocupados())
             {
-                Debug.Log("Pup Prefinalizar displays desocupados");
-                powerUpFinalizacao.preFinalizar();
-                yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
-                Debug.Log("Pup Finalizar displays desocupados");
-                powerUpFinalizacao.finalizado();
+                informacaoDisplayColetado.restaurarEstadoAntesPowerUp(new ExecutorFim(this));
+                //Debug.Log("Pup Prefinalizar displays desocupados");
+                //powerUpFinalizacao.preFinalizar();
+                //yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
+                //Debug.Log("Pup Finalizar displays desocupados");
+                //powerUpFinalizacao.finalizado();
             }
             else
             {
@@ -91,13 +106,14 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
                 finalizado = informacaoDisplayColetado.acertouDisplay(inputGame.getPosicaoTap());                    
                 yield return null;
             }
-            Debug.Log("Pup Prefinalizar normal");
-            powerUpFinalizacao.preFinalizar();
-            yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
-            Debug.Log("Pup Finalizar normal");
-            powerUpFinalizacao.finalizado();
+            informacaoDisplayColetado.restaurarEstadoAntesPowerUp(new ExecutorFim(this));
+            //Debug.Log("Pup Prefinalizar normal");
+            //powerUpFinalizacao.preFinalizar();
+            //yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
+            //Debug.Log("Pup Finalizar normal");
+            //powerUpFinalizacao.finalizado();
         }
-    }
+    }    
 
     private class ExecutorInicio : Executor
     {
@@ -111,6 +127,21 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         public void execute()
         {
             rollback.inicio();
+        }
+    }
+
+    private class ExecutorFim : Executor
+    {
+        private RollbackPowerUpGo rollback;
+
+        public ExecutorFim(RollbackPowerUpGo rollback)
+        {
+            this.rollback = rollback;
+        }
+
+        public void execute()
+        {
+            rollback.fim();   
         }
     }
 

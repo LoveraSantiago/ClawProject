@@ -38,10 +38,10 @@ public class MovimentadorDeSlots
         yield return movimentarSlot(velocidade, 0, slot, posicoes.posFinal, executor);        
     }
 
-    public IEnumerator subirSlotCima(GameObject slot, DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator subirSlotNone(GameObject slot, DisplaysSlotsDto displaysSlotsDto, Executor executor)
     {
         float velocidade = displaysSlotsDto.VelocImg;
-        yield return movimentarSlot(velocidade, 0, slot, posicoes.posSlotCimaInicial);        
+        yield return movimentarSlot(velocidade, 0, slot, posicoes.posSlotCimaInicial, executor);        
     }
 
     private IEnumerator movimentarSlot(
