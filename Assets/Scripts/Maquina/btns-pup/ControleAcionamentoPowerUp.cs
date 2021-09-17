@@ -44,8 +44,7 @@ public class ControleAcionamentoPowerUp
         if (powerUpEmAcao)       return false;
         if (isEstadoLigado())    return true;
         if (isEstadoDesligado()) return false;
-        return isEstadoSuspenso() && isAcaoBotaoPupTiposEspeciais(acaoBotaoPowerUp);
-;        
+        return isEstadoSuspenso() && isAcaoBotaoPupTiposEspeciais(acaoBotaoPowerUp);        
     }    
 
     private bool isAcaoBotaoPupTiposEspeciais(AcaoBotaoPowerUp acaoBotaoPowerUp)

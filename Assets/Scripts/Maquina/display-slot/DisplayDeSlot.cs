@@ -40,7 +40,10 @@ public class DisplayDeSlot
         if (isOcupadoColetado())
         {
             animacao.ligarAnimacaoMira();
-            executor.execute();
+            if(executor != null)
+            {
+                executor.execute();
+            }
         }
         else
         {
@@ -73,7 +76,7 @@ public class DisplayDeSlot
         if (isOcupadoNone())
         {
             slots.cancelarMovimentacaoDeSlot();
-            yield return limparSprNone(displaysSlotsDto);
+            yield return limparSprNone(displaysSlotsDto, null);
         }
         estadoAtual = ESTADO_OCUPADO_COLETADO;
         singleDisplaySlotDto.SlotSpriteBaixo.sprite = sprite;
@@ -83,7 +86,7 @@ public class DisplayDeSlot
 
         if (mostrarMira)
         {
-            yield return mostrarAlvo(displaysSlotsDto);
+            yield return mostrarAlvo(displaysSlotsDto, null);
         }
     }   
 
