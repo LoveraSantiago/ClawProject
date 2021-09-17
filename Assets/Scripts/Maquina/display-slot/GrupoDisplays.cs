@@ -28,11 +28,11 @@ public class GrupoDisplays : ArcoIrisConjunto
         powerUpDisplayColetado = estado;
     }      
 
-    public void acionarMostrarAlvos()
+    public void acionarMostrarAlvos(Executor executor)
     {
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].mostrarAlvo(displaysSlotsDto));
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].mostrarAlvo(displaysSlotsDto));
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].mostrarAlvo(displaysSlotsDto));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].mostrarAlvo(displaysSlotsDto, executor));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].mostrarAlvo(displaysSlotsDto, executor));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].mostrarAlvo(displaysSlotsDto, executor));
     }
 
     public void desligarAlvos()

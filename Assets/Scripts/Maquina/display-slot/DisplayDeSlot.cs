@@ -35,15 +35,16 @@ public class DisplayDeSlot
         singleDisplaySlotDto.SprRendererDentro.color = corDentro;
     }   
 
-    public IEnumerator mostrarAlvo(DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator mostrarAlvo(DisplaysSlotsDto displaysSlotsDto, Executor executor)
     {
         if (isOcupadoColetado())
         {
-            animacao.ligarAnimacaoMira();            
+            animacao.ligarAnimacaoMira();
+            executor.execute();
         }
         else
         {
-            yield return mostrarSprNone(displaysSlotsDto);
+            yield return mostrarSprNone(displaysSlotsDto, executor);
         }
         ligarGlowLuz();
     }
@@ -90,12 +91,12 @@ public class DisplayDeSlot
         yield return slots.descerSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
     }     
     
-    public IEnumerator mostrarSprNone(DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator mostrarSprNone(DisplaysSlotsDto displaysSlotsDto, Executor executor)
     {
         estadoAtual = ESTADO_OCUPADO_NONE;
         singleDisplaySlotDto.SlotSpriteCima.sprite = displaysSlotsDto.SprVazio;
         singleDisplaySlotDto.SlotSpriteCima.color = Color.red;
-        yield return slots.descerSlotCima(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto);        
+        yield return slots.descerSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);        
     }    
 
     public IEnumerator limparSprNone(DisplaysSlotsDto displaysSlotsDto)

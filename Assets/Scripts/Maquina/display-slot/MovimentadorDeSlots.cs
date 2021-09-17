@@ -32,10 +32,10 @@ public class MovimentadorDeSlots
         yield return movimentarSlot(velocidade, fimDelay, slot, posicoes.posSlotBaixoInicial);
     }
 
-    public IEnumerator descerSlotCima(GameObject slot, DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator descerSlotNone(GameObject slot, DisplaysSlotsDto displaysSlotsDto, Executor executor)
     {
         float velocidade = displaysSlotsDto.VelocImg;
-        yield return movimentarSlot(velocidade, 0, slot, posicoes.posFinal);        
+        yield return movimentarSlot(velocidade, 0, slot, posicoes.posFinal, executor);        
     }
 
     public IEnumerator subirSlotCima(GameObject slot, DisplaysSlotsDto displaysSlotsDto)
@@ -44,9 +44,15 @@ public class MovimentadorDeSlots
         yield return movimentarSlot(velocidade, 0, slot, posicoes.posSlotCimaInicial);        
     }
 
-    public IEnumerator movimentarSlot(
+    private IEnumerator movimentarSlot(
         float velocidade, float delay, GameObject slot, Vector3 posicaoDesejada)
-    {   
+    {
+        yield return movimentarSlot(velocidade, delay, slot, posicaoDesejada, null);
+    }
+
+    private IEnumerator movimentarSlot(
+       float velocidade, float delay, GameObject slot, Vector3 posicaoDesejada, Executor executor)
+    {
         yield return new WaitForSeconds(delay);
 
         while (slotaAtingiuPosicao(slot, posicaoDesejada, velocidade) && continuarMovimentacao)
@@ -58,6 +64,10 @@ public class MovimentadorDeSlots
         {
             slot.transform.localPosition = posicaoDesejada;
             yield return new WaitForSeconds(delay);
+
+            if (executor != null) {
+                executor.execute();
+            }
         }
         else
         {

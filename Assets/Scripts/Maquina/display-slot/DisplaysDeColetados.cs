@@ -72,8 +72,8 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         Debug.Log("Pup acionado no display de coletado inicio");
         powerUpAcionado = true;
         grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
-        grupoDisplays.acionarMostrarAlvos();
-        interacaoDisplayColetado.iniciar(this);
+        interacaoDisplayColetado.addInformacaoDisplayColetado(this);        
+        grupoDisplays.acionarMostrarAlvos(interacaoDisplayColetado.getExecutorDeInicio());
         Debug.Log("Pup acionado no display de coletado fim");
     }     
 

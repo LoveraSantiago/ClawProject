@@ -7,6 +7,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     private bool finalizado;
     private int contador;
     private Coroutine coroutine;
+    private InformacaoDisplayColetado informacaoDisplayColetado;
 
     public RollbackPowerUpGo()
         :base(powerUpDto.VazioPUp, "rollback")
@@ -30,16 +31,28 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         finalizado = false;
     }
 
-    public void iniciar(InformacaoDisplayColetado informacaoDisplayColetados)
+    public void addInformacaoDisplayColetado(InformacaoDisplayColetado informacaoDisplayColetado)
+    {
+        this.informacaoDisplayColetado = informacaoDisplayColetado;
+    }
+
+    public Executor getExecutorDeInicio()
+    {
+        return new ExecutorInicio(this);
+    }
+
+    public void inicio()
     {
         contador++;
         if(contador == 3)
         {
-            coroutine = Utils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados(informacaoDisplayColetados));
+            coroutine = Utils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados());
         }
     }
 
-    public override void resetPup(){}   
+    public override void resetPup(){
+        contador = 0;
+    }   
 
     public override void timeout()
     {
@@ -51,14 +64,14 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         }
     }
 
-    private IEnumerator getCliqueNoDisplayDeColetados(InformacaoDisplayColetado informacaoDisplayColetados)
+    private IEnumerator getCliqueNoDisplayDeColetados()
     {
         //TODO adicionar delay de inicio
         //yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayInicial);
-        if (informacaoDisplayColetados.isTodosDisplaysDesocupados())
+        if (informacaoDisplayColetado.isTodosDisplaysDesocupados())
         {
             yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayReset);
-            if (informacaoDisplayColetados.isTodosDisplaysDesocupados())
+            if (informacaoDisplayColetado.isTodosDisplaysDesocupados())
             {
                 Debug.Log("Pup Prefinalizar displays desocupados");
                 powerUpFinalizacao.preFinalizar();
@@ -68,14 +81,14 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
             }
             else
             {
-                informacaoDisplayColetados.restartPowerUp(getTipoRestartPup(), this);
+                informacaoDisplayColetado.restartPowerUp(getTipoRestartPup(), this);
             }
         }
         else
         {
             while (!finalizado)
             {
-                finalizado = informacaoDisplayColetados.acertouDisplay(inputGame.getPosicaoTap());                    
+                finalizado = informacaoDisplayColetado.acertouDisplay(inputGame.getPosicaoTap());                    
                 yield return null;
             }
             Debug.Log("Pup Prefinalizar normal");
@@ -84,8 +97,23 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
             Debug.Log("Pup Finalizar normal");
             powerUpFinalizacao.finalizado();
         }
-    }   
-    
+    }
+
+    private class ExecutorInicio : Executor
+    {
+        private RollbackPowerUpGo rollback;
+
+        public ExecutorInicio(RollbackPowerUpGo rollback)
+        {
+            this.rollback = rollback;
+        }
+
+        public void execute()
+        {
+            rollback.inicio();
+        }
+    }
+
     protected virtual PowerUpEntidade.TIPO getTipoRestartPup()
     {
         return PowerUpEntidade.TIPO.ROLLBACK;
@@ -94,7 +122,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
         return new FornecedorRollback();
-    }  
+    }    
 
     public class FornecedorRollback : Fornecedor<AbstractPowerUpGo>
     {
