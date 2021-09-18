@@ -120,7 +120,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
 
     public void reativarPowerUpPosDisplay()
     {
-        Debug.Log("Reativado btns pup pos display");
+        //Debug.Log("Reativado btns pup pos display");
         controlePup.habilitarPowerUpPosDisplay();
     }
 
