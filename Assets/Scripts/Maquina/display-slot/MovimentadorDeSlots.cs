@@ -18,14 +18,14 @@ public class MovimentadorDeSlots
         continuarMovimentacao = false;
     }    
 
-    public IEnumerator subirSlotBaixo(GameObject slot, DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator subirSlotColetado(GameObject slot, DisplaysSlotsDto displaysSlotsDto)
     {
         float velocidade = displaysSlotsDto.VelocImg;
         float delay = displaysSlotsDto.InicialDelay;
         yield return movimentarSlot(velocidade, delay, slot, posicoes.posFinal);
     }
 
-    public IEnumerator descerSlotBaixo(GameObject slot, DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator descerSlotColetado(GameObject slot, DisplaysSlotsDto displaysSlotsDto)
     {
         float velocidade = displaysSlotsDto.VelocImg;
         float fimDelay = displaysSlotsDto.FimDelay;
