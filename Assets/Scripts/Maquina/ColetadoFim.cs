@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class ColetadoFim 
 {
     private static readonly int ESTADO_NORMAL    = 0;
@@ -37,6 +39,7 @@ public class ColetadoFim
     {
         if(tipo == PowerUpEntidade.TIPO.ROLLBACK)
         {
+            Debug.lo
             return new ColetadoFim(ESTADO_ROLLBACK, clears);
         }
         else if(tipo == PowerUpEntidade.TIPO.DESCARTE)

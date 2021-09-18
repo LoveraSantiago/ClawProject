@@ -58,7 +58,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     private void inicio()
     {
         contador++;
-        Debug.Log("Inicio chamado " + contador + "vezes");
+        Debug.Log("Inicio chamado " + contador + " vezes");
         if (contador == 3)
         {
             coroutine = Utils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados());
@@ -68,7 +68,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     private void fim()
     {
         contador--;
-        Debug.Log("Fim chamado " + contador + "vezes");
+        Debug.Log("Fim chamado " + (3 - contador) + " vezes");
         if(contador == 0)
         {
             powerUpFinalizacao.preFinalizar();
@@ -89,6 +89,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
             else
             {
                 Debug.Log("Pup Restartado");
+                contador = 0;
                 informacaoDisplayColetado.restartPowerUp(getTipoRestartPup(), this);
             }
         }
