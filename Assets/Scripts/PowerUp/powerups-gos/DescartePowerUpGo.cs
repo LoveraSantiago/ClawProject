@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DescartePowerUpGo : RollbackPowerUpGo
+public class DescartePowerUpGo : AbstractDisplaySlotPowerUpGo
 {
 
     private Coroutine coroutine;
@@ -16,7 +16,7 @@ public class DescartePowerUpGo : RollbackPowerUpGo
         return PowerUpEntidade.TIPO.DESCARTE;
     }
 
-    public new static Fornecedor<AbstractPowerUpGo> getFornecedor()
+    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
         return new FornecedorDescarte();
     }
@@ -25,7 +25,7 @@ public class DescartePowerUpGo : RollbackPowerUpGo
     {
         public AbstractPowerUpGo fornecer()
         {
-            return new RollbackPowerUpGo();
+            return new DescartePowerUpGo();
         }
     }
 }

@@ -39,15 +39,17 @@ public class ColetadoFim
     {
         if(tipo == PowerUpEntidade.TIPO.ROLLBACK)
         {
-            Debug.lo
+            Debug.Log("Tipo Rollback criado");
             return new ColetadoFim(ESTADO_ROLLBACK, clears);
         }
         else if(tipo == PowerUpEntidade.TIPO.DESCARTE)
         {
+            Debug.Log("Tipo Descarte criado");
             return new ColetadoFim(ESTADO_DESCARTE, clears);
         }
         else
         {
+            Debug.Log("Tipo Normal criado");
             return ofNormal(clears);
         }
     }
