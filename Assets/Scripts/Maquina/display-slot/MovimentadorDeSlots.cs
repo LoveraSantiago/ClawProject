@@ -65,15 +65,20 @@ public class MovimentadorDeSlots
         {
             slot.transform.localPosition = posicaoDesejada;
             yield return new WaitForSeconds(delay);
-            if (executorFimMovimentacao != null) {
-                executorFimMovimentacao.execute();
-            }
         }
         else
         {
             continuarMovimentacao = true;
         }
+        executarFimMovimentacao(executorFimMovimentacao);
+    }
 
+    private void executarFimMovimentacao(Executor executorFimMovimentacao)
+    {
+        if (executorFimMovimentacao != null)
+        {
+            executorFimMovimentacao.execute();
+        }
     }
 
     private bool slotaAtingiuPosicao(GameObject slot, Vector3 posicao, float velocidade)
