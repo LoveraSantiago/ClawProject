@@ -72,12 +72,8 @@ public class DisplayDeSlot
 
     public IEnumerator mostrarSprColetado(
         Sprite sprite, bool mostrarMira, DisplaysSlotsDto displaysSlotsDto)
-    {
-        if (isOcupadoNone())
-        {
-            slots.cancelarMovimentacaoDeSlot();
-            yield return limparSprNone(displaysSlotsDto, null);
-        }
+    {        
+        yield return limparSprNoneCasoOcupado(displaysSlotsDto);
         estadoAtual = ESTADO_OCUPADO_COLETADO;
         singleDisplaySlotDto.SlotSpriteBaixo.sprite = sprite;        
         yield return slots.subirSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
@@ -88,7 +84,7 @@ public class DisplayDeSlot
             yield return mostrarAlvo(displaysSlotsDto, null);
             ligarGlowLuz();
         }        
-    }   
+    }      
 
     public IEnumerator limparSprColetado(DisplaysSlotsDto displaysSlotsDto)
     {
@@ -190,6 +186,15 @@ public class DisplayDeSlot
     public MaterialGlow getMaterialGlow()
     {
         return glowEfeito.materialGlow;
+    }
+
+    private IEnumerator limparSprNoneCasoOcupado(DisplaysSlotsDto displaysSlotsDto)
+    {
+        if (isOcupadoNone())
+        {
+            slots.cancelarMovimentacaoDeSlot();
+            yield return limparSprNone(displaysSlotsDto, null);
+        }
     }
 
     private IEnumerator ligarCacaNiquelCoroutine(Sprite[] sprites)
