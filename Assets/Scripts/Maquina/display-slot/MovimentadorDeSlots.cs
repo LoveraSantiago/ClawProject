@@ -64,14 +64,14 @@ public class MovimentadorDeSlots
         {
             slot.transform.localPosition = posicaoDesejada;
             yield return new WaitForSeconds(delay);
-
-            if (executor != null) {
-                executor.execute();
-            }
         }
         else
         {
             continuarMovimentacao = true;
+        }
+
+        if (executor != null) {
+            executor.execute();
         }
     }
 
