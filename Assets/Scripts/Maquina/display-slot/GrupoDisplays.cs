@@ -67,12 +67,16 @@ public class GrupoDisplays : ArcoIrisConjunto
 
     public bool isTodosDisplayOcupados()
     {
-        return displayDeSlot[0].isOcupadoColetado() && displayDeSlot[1].isOcupadoColetado() && displayDeSlot[2].isOcupadoColetado();
+        return displayDeSlot[0].isOcupadoColetado() && 
+               displayDeSlot[1].isOcupadoColetado() && 
+               displayDeSlot[2].isOcupadoColetado();
     }
 
     public bool isTodosDisplaysDesocupados()
     {
-        return displayDeSlot[0].isDesocupado() && displayDeSlot[1].isDesocupado() && displayDeSlot[2].isDesocupado();
+        return displayDeSlot[0].isDesocupado() && 
+               displayDeSlot[1].isDesocupado() && 
+               displayDeSlot[2].isDesocupado();
     }   
 
     public void ligarGlowLuz()
