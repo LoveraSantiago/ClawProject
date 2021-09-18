@@ -28,18 +28,18 @@ public class GrupoDisplays : ArcoIrisConjunto
         powerUpDisplayColetado = estado;
     }      
 
-    public void acionarMostrarAlvos(Executor executor)
+    public void acionarMostrarAlvos(Executor executorFimMovimentacao)
     {
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].mostrarAlvo(displaysSlotsDto, executor));
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].mostrarAlvo(displaysSlotsDto, executor));
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].mostrarAlvo(displaysSlotsDto, executor));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].mostrarAlvo(displaysSlotsDto, executorFimMovimentacao));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].mostrarAlvo(displaysSlotsDto, executorFimMovimentacao));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].mostrarAlvo(displaysSlotsDto, executorFimMovimentacao));
     }
 
-    public void desligarAlvos(Executor executor)
+    public void desligarAlvos(Executor executorFimMovimentacao)
     {
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].desligarAlvo(displaysSlotsDto, executor));
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].desligarAlvo(displaysSlotsDto, executor));
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].desligarAlvo(displaysSlotsDto, executor));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].desligarAlvo(displaysSlotsDto, executorFimMovimentacao));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].desligarAlvo(displaysSlotsDto, executorFimMovimentacao));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].desligarAlvo(displaysSlotsDto, executorFimMovimentacao));
     }
 
     public IEnumerator mostrarSprColetado(int indice, Sprite sprite, bool powerUpAcionado)

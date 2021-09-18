@@ -32,16 +32,16 @@ public class MovimentadorDeSlots
         yield return movimentarSlot(velocidade, fimDelay, slot, posicoes.posSlotBaixoInicial);
     }
 
-    public IEnumerator descerSlotNone(GameObject slot, DisplaysSlotsDto displaysSlotsDto, Executor executor)
+    public IEnumerator descerSlotNone(GameObject slot, DisplaysSlotsDto displaysSlotsDto, Executor executorFimMovimentacao)
     {
         float velocidade = displaysSlotsDto.VelocImg;
-        yield return movimentarSlot(velocidade, 0, slot, posicoes.posFinal, executor);        
+        yield return movimentarSlot(velocidade, 0, slot, posicoes.posFinal, executorFimMovimentacao);        
     }
 
-    public IEnumerator subirSlotNone(GameObject slot, DisplaysSlotsDto displaysSlotsDto, Executor executor)
+    public IEnumerator subirSlotNone(GameObject slot, DisplaysSlotsDto displaysSlotsDto, Executor executorFimMovimentacao)
     {
         float velocidade = displaysSlotsDto.VelocImg;
-        yield return movimentarSlot(velocidade, 0, slot, posicoes.posSlotCimaInicial, executor);        
+        yield return movimentarSlot(velocidade, 0, slot, posicoes.posSlotCimaInicial, executorFimMovimentacao);        
     }
 
     private IEnumerator movimentarSlot(
@@ -51,7 +51,8 @@ public class MovimentadorDeSlots
     }
 
     private IEnumerator movimentarSlot(
-       float velocidade, float delay, GameObject slot, Vector3 posicaoDesejada, Executor executor)
+       float velocidade, float delay, GameObject slot, Vector3 posicaoDesejada, 
+       Executor executorFimMovimentacao)
     {
         yield return new WaitForSeconds(delay);
 
@@ -64,15 +65,15 @@ public class MovimentadorDeSlots
         {
             slot.transform.localPosition = posicaoDesejada;
             yield return new WaitForSeconds(delay);
+            if (executorFimMovimentacao != null) {
+                executorFimMovimentacao.execute();
+            }
         }
         else
         {
             continuarMovimentacao = true;
         }
 
-        if (executor != null) {
-            executor.execute();
-        }
     }
 
     private bool slotaAtingiuPosicao(GameObject slot, Vector3 posicao, float velocidade)

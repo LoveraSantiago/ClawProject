@@ -35,19 +35,19 @@ public class DisplayDeSlot
         singleDisplaySlotDto.SprRendererDentro.color = corDentro;
     }   
 
-    public IEnumerator mostrarAlvo(DisplaysSlotsDto displaysSlotsDto, Executor executor)
+    public IEnumerator mostrarAlvo(DisplaysSlotsDto displaysSlotsDto, Executor executorFimMovimentacao)
     {
         if (isOcupadoColetado())
         {
             animacao.ligarAnimacaoMira();
-            if(executor != null)
+            if(executorFimMovimentacao != null)
             {
-                executor.execute();
+                executorFimMovimentacao.execute();
             }
         }
         else
         {
-            yield return mostrarSprNone(displaysSlotsDto, executor);
+            yield return mostrarSprNone(displaysSlotsDto, executorFimMovimentacao);
         }
         ligarGlowLuz();
     }
@@ -57,15 +57,15 @@ public class DisplayDeSlot
         animacao.ligarAnimacaoMiraSelecionado();
     }
 
-    public IEnumerator desligarAlvo(DisplaysSlotsDto displaysSlotsDto, Executor executor)
+    public IEnumerator desligarAlvo(DisplaysSlotsDto displaysSlotsDto, Executor executorFimMovimentacao)
     {
         if (animacao.isMiraLigado)
         {
             animacao.desligarAnimacao();
-            executor.execute();
+            executorFimMovimentacao.execute();
         }
         else{
-            yield return limparSprNone(displaysSlotsDto, executor);
+            yield return limparSprNone(displaysSlotsDto, executorFimMovimentacao);
         }
         desligarGlow();
     }
@@ -79,15 +79,15 @@ public class DisplayDeSlot
             yield return limparSprNone(displaysSlotsDto, null);
         }
         estadoAtual = ESTADO_OCUPADO_COLETADO;
-        singleDisplaySlotDto.SlotSpriteBaixo.sprite = sprite;
-        ligarGlowLuz();
+        singleDisplaySlotDto.SlotSpriteBaixo.sprite = sprite;        
         yield return slots.subirSlotBaixo(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
         desligarGlow();
 
         if (mostrarMira)
         {
             yield return mostrarAlvo(displaysSlotsDto, null);
-        }
+            ligarGlowLuz();
+        }        
     }   
 
     public IEnumerator limparSprColetado(DisplaysSlotsDto displaysSlotsDto)
