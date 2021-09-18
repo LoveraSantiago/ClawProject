@@ -842,7 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 3
   mainDto:
     garraDto:
       velocMovHorizontal: 3.1
@@ -1268,9 +1268,7 @@ MonoBehaviour:
         delayFinalizar: 0.5
         asaGo: {fileID: 4127936681606313068, guid: 5432931c59eafda478e032d555b31327, type: 3}
       rollBackDto:
-        delayInicial: 2
         delayReset: 1
-        delayFinalizar: 2
     modalPontosDto:
       textoPontos: {fileID: 1473191375}
       textoNivel: {fileID: 376184029}
