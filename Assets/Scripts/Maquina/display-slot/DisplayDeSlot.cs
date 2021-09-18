@@ -97,7 +97,8 @@ public class DisplayDeSlot
         estadoAtual = ESTADO_OCUPADO_NONE;
         singleDisplaySlotDto.SlotSpriteCima.sprite = displaysSlotsDto.SprVazio;
         singleDisplaySlotDto.SlotSpriteCima.color = Color.red;
-        yield return slots.descerSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);        
+        yield return slots.descerSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);
+        Debug.Log("Finalizado mostrado none");
     }    
 
     public IEnumerator limparSprNone(DisplaysSlotsDto displaysSlotsDto, Executor executor)
@@ -194,6 +195,7 @@ public class DisplayDeSlot
         {
             slots.cancelarMovimentacaoDeSlot();
             yield return limparSprNone(displaysSlotsDto, null);
+            Debug.Log("Pos Cancelado limpando spr none");
         }
     }
 

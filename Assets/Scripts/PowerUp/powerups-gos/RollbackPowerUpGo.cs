@@ -44,6 +44,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     {
         if (!finalizado)
         {
+            Debug.Log("timeout acionado");
             Utils.MonoBehaviour.StopCoroutine(coroutine);
             informacaoDisplayColetado.restaurarEstadoAntesPowerUp(new ExecutorFim(this));
         }
@@ -57,7 +58,8 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     private void inicio()
     {
         contador++;
-        if(contador == 3)
+        Debug.Log("Inicio chamado " + contador + "vezes");
+        if (contador == 3)
         {
             coroutine = Utils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados());
         }
@@ -66,6 +68,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
     private void fim()
     {
         contador--;
+        Debug.Log("Fim chamado " + contador + "vezes");
         if(contador == 0)
         {
             powerUpFinalizacao.preFinalizar();
@@ -75,6 +78,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
 
     private IEnumerator getCliqueNoDisplayDeColetados()
     {
+        Debug.Log("Pup Ativado");
         if (informacaoDisplayColetado.isTodosDisplaysDesocupados())
         {
             yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayReset);
@@ -84,6 +88,7 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
             }
             else
             {
+                Debug.Log("Pup Restartado");
                 informacaoDisplayColetado.restartPowerUp(getTipoRestartPup(), this);
             }
         }

@@ -44,4 +44,9 @@ public class ContadorDeTempo
     {
         contadorTempo = tempoParaAcao;
     }
+
+    public void addTempoLongo()
+    {
+        contadorTempo = 9999;
+    }
 }
