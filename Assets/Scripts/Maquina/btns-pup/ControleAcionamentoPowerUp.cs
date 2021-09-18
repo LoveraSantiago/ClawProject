@@ -44,8 +44,15 @@ public class ControleAcionamentoPowerUp
         if (powerUpEmAcao)       return false;
         if (isEstadoLigado())    return true;
         if (isEstadoDesligado()) return false;
-        return  isEstadoSuspenso() && acaoBotaoPowerUp.getTipo() == PowerUpEntidade.TIPO.ROLLBACK;        
+        return isEstadoSuspenso() && isAcaoBotaoPupTiposEspeciais(acaoBotaoPowerUp);        
     }    
+
+    private bool isAcaoBotaoPupTiposEspeciais(AcaoBotaoPowerUp acaoBotaoPowerUp)
+    {
+        return (acaoBotaoPowerUp != null) &&
+            (acaoBotaoPowerUp.getTipo() == PowerUpEntidade.TIPO.ROLLBACK ||
+             acaoBotaoPowerUp.getTipo() == PowerUpEntidade.TIPO.DESCARTE);
+    }
 
     public bool podeAcionarPupDraggavel()
     {
@@ -55,7 +62,7 @@ public class ControleAcionamentoPowerUp
     public void notificarAcionado(AcaoBotaoPowerUp acaoBotaoPowerUp)
     {
         powerUpEmAcao = true;
-        if(acaoBotaoPowerUp.getTipo() == PowerUpEntidade.TIPO.ROLLBACK)
+        if(isAcaoBotaoPupTiposEspeciais(acaoBotaoPowerUp))
         {
             powerUpDisplayEmAcao = true;
         }

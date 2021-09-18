@@ -19,6 +19,8 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     private GerenciadorDeMovimentacao gerDeMovAtual;
     private CaboDaGarra cabo;
 
+    private bool tempoEsgotadoEmAcao;
+
     public GarraManager(GarraDto garraDto)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
@@ -103,6 +105,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
 
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {
+        tempoEsgotadoEmAcao = true;
         gerDeMovNormal.trocarParaAcaoVoltarParaCima();
         gerDeMovAtual = gerDeMovNormal;
     }
@@ -111,6 +114,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     {
         if (!evento.isGameOver)
         {
+            tempoEsgotadoEmAcao = false;
             gerDeMovNormal.iniciarMovimentacoes();
             gerDeMovAtual = gerDeMovNormal;
         }
@@ -118,7 +122,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {
-        if (gerDeMovAtual != gerDeMovPowerUp)
+        if (gerDeMovAtual != gerDeMovPowerUp && !tempoEsgotadoEmAcao)
         {
             gerDeMovNormal.iniciarMovimentacoes();            
         }

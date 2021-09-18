@@ -50,20 +50,25 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
 
     public void pause()
     {
-        isPausado = true;
-        contadorTimer.pause();
+        if (!isPausado)
+        {
+            isPausado = true;
+            contadorTimer.pause();
+        }
     }
 
     public void continuar()
     {
-        isPausado = false;
-        contadorTimer.continuar();
+        if (isPausado)
+        {
+            isPausado = false;
+            contadorTimer.continuar();
+        }
     }
 
     public ArcoIrisConjunto getDisplayTimerGlow(DisplayTimerDto displayDto)
     {
-        return new DisplayTimerGlow(displayDto);
-        ;
+        return new DisplayTimerGlow(displayDto);        
     }    
 
     private void atualizarTempo()

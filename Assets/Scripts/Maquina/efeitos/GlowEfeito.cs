@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class GlowEfeito 
 {
-    
-
     private GameObject goEfeito;
     public MaterialGlow materialGlow { get; private set; }
 

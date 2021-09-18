@@ -43,6 +43,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
             else if (isEstadoAtualSegurandoParado())
             {
                 movAtual.acionarTimeout();
+                contadorDeFimTempo.addTempoLongo();
             }
         }
         movAtual.update(inputGame);

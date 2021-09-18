@@ -67,12 +67,33 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
             {
                 if (btnsPowerUp[contador].isDragValido(posicaoDrag))
                 {
-                    dragavelAtual = btnsPowerUp[contador];
+                    dragavelAtual = btnsPowerUp[contador];                   
                     btnAcionado = btnsPowerUp[contador];
                     break;
                 }
             }
             dragavelAtual.prepararDraggagem(posicaoDrag);
+        }
+    }
+
+    public void drag(Vector2 delta)
+    {
+        if (controlePup.podeAcionarPupDraggavel())
+        {
+            dragavelAtual.updateDrag(delta);
+        }
+    }
+
+    public void endDrag()
+    {
+        if (controlePup.podeAcionarPupDraggavel())
+        {
+            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp();            
+            if (result)
+            {
+                draggarBotao(btnAcionado);
+            }
+            dragavelAtual = dragavelVazio;
         }
     }
 
@@ -99,42 +120,32 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
 
     public void reativarPowerUpPosDisplay()
     {
+        //Debug.Log("Reativado btns pup pos display");
         controlePup.habilitarPowerUpPosDisplay();
     }
 
     private void acionarBotao(int indice)
     {
+        colocarBtnsEmMaterialArcoIris();
         BotaoPowerUp btn = btnsPowerUp[indice];
         btn.clicar(controlePup, produtorDeEventoEscolhaPup, indice);
         btnAcionado = btn;
     }   
 
+    private void colocarBtnsEmMaterialArcoIris()
+    {
+        for (int contador = 0; contador < btnsPowerUp.Length; contador++)
+        {
+            btnsPowerUp[contador].mudarParaMaterialArcoIris();
+        }
+    }
+
     private void draggarBotao(BotaoPowerUp btn)
-    {        
+    {
+        colocarBtnsEmMaterialArcoIris();
         btn.draggar(controlePup);
         btnAcionado = btn;
     }   
-
-    public void drag(Vector2 delta)
-    {
-        if (controlePup.podeAcionarPupDraggavel())
-        {
-            dragavelAtual.updateDrag(delta);
-        }
-    }
-
-    public void endDrag()
-    {
-        if (controlePup.podeAcionarPupDraggavel())
-        {
-            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp();            
-            if (result)
-            {
-                draggarBotao(btnAcionado);
-            }
-            dragavelAtual = dragavelVazio;
-        }
-    }
 
     void AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {        

@@ -8,7 +8,7 @@ public class PowerUpEntidade
     public enum TIPO
     {
         BOMBA_DA_GARRA, MISSIL_NUCLEAR, MINA_TERRESTRE, MISSIL_TELEGUIADO,
-        TELEPORTE, ASAS, ROLLBACK, NONE
+        TELEPORTE, ASAS, ROLLBACK, DESCARTE, NONE
     }
 
     public enum AREA
@@ -41,6 +41,7 @@ public class PowerUpEntidade
     public PowerUpEntidade()
     {
         isColetavel = false;
+        area = AREA.NONE;
     }    
 
     public PowerUpEntidade configNomes(TIPO tipoEntidade, string nome, string nomeSpriteBtn)
@@ -67,12 +68,7 @@ public class PowerUpEntidade
     {
         this.isColetavel = isColetavel;
         return this;
-    }
-
-    public PowerUpEntidade configArea()
-    {
-        return configArea(AREA.NONE);
-    }
+    }   
 
     public PowerUpEntidade configArea(AREA area)
     {

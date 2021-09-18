@@ -46,12 +46,14 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         return qtdColetaveis;
     }       
 
-    public void devolver(bool devolverBoard, ColetavelTile[] coletados)
+    public void devolver(bool combinacaoValida, ColetadoFim evento, ColetavelTile[] coletados)
     {
-        if (devolverBoard)
-        {
-            devolvedor.devolver(boardDto, coletados);
-        }
+        devolvedor.devolver(combinacaoValida, evento, boardDto, coletados);        
+    }
+
+    public bool isDevolverBoard()
+    {
+        return devolvedor.devolverBoard;
     }
 
     private IEnumerator subirBoardComPool(PoolDeColetaveis poolDeColetaveis)

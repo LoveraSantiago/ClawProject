@@ -70,13 +70,12 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         ColetavelTile coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
         coletavelAcertado.desligar();        
 
-        contador.adicionarColetado(coletavelAcertado);
-        poolDeColetaveis.inativarColetavel(coletavelAcertado);
+        contador.adicionarColetado(coletavelAcertado);        
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
         InformacoesColetadoDto infoColetadoDto = new InformacoesColetadoDto();
-        infoColetadoDto.addInfosDisplayColetados(coletavelAcertado.getSprite(), contador.getResult());
+        infoColetadoDto.addInfosDisplayColetados(coletavelAcertado.getSprite(), contador.resultCombinacao);
         infoColetadoDto.addInfosDisplayScore(contador.getScore());
         infoColetadoDto.addInfosPosicao(gameObjectColetado.transform.position);
         infoColetadoDto.addInfoFinalizado(contador.hasFinished());
@@ -148,9 +147,9 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {
-        board.devolver(evento.devolverBoard(), contador.getColetados());
-        tuboSaida .devolver(evento.clear, contador.getColetados());        
-        contador.reajustarContagem(evento);
+        tuboSaida.devolver(contador.resultCombinacao, evento, contador.getColetados(), poolDeColetaveis);        
+        board.devolver(contador.resultCombinacao, evento, contador.getColetados());
+        contador.reajustarContagem(evento, board.isDevolverBoard());
     }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()

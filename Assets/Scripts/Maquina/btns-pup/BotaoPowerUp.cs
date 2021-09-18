@@ -45,6 +45,7 @@ public class BotaoPowerUp : Draggavel
     public void draggar(ControleAcionamentoPowerUp controlePup)
     {
         aparencia.colorirBotao();
+        glow.mudarParaMaterialIndividual();
         if (hasPowerUp)
         {
             controlePup.notificarAcionado(acaoBtnPowerUp);
@@ -56,6 +57,11 @@ public class BotaoPowerUp : Draggavel
     {
         aparencia.voltarCorOriginalBotao();
         aparencia.limparImg();
+        transformarEmBotaoClicavel();
+    }
+
+    public void mudarParaMaterialArcoIris()
+    {
         glow.mudarParaMaterialArcoIris();
     }
 
@@ -71,6 +77,7 @@ public class BotaoPowerUp : Draggavel
         Time.timeScale = 1;
         controlePup.habilitarPowerUp();
         glow.desligarGlow();
+        mudarParaMaterialArcoIris();
         if(powerUpEntidade != null)
         {
             receberAcaoPowerUp(new PowerUpParaMaquina(powerUpEntidade));
@@ -113,7 +120,9 @@ public class BotaoPowerUp : Draggavel
 
     public bool isDragValido(Vector2 posicao)
     {
-        return isDraggavel && hasPowerUp && acaoDrag.isPosicaoDentroAreaBotao(posicao);
+        return isDraggavel 
+               && hasPowerUp 
+               && acaoDrag.isPosicaoDentroAreaBotao(posicao);
     }           
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO

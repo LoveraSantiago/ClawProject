@@ -22,17 +22,32 @@ public class ArcoIrisEfeito
     public void ligarEfeitoArcoIris()
     {
         ligarGlows();
+        cleanCoroutineEmAndamento();
         coroutineAtual = Utils.MonoBehaviour.StartCoroutine(ligarGlowArcoIris());
     }
 
     public void ligarBlinkRed()
     {
+        cleanCoroutineEmAndamento();
         coroutineAtual = Utils.MonoBehaviour.StartCoroutine(blinkarCor(redHdr));
     }
 
     public void ligarBlinkVerde()
     {
+        cleanCoroutineEmAndamento();
         coroutineAtual = Utils.MonoBehaviour.StartCoroutine(blinkarCor(greenHdr));
+    }
+
+    public void desligarEfeito()
+    {
+        desligarGlows();
+        cleanCoroutineEmAndamento();
+    }
+
+    public ArcoIrisEfeito addArcoIrisConjunto(ArcoIrisConjunto arcoIrisConjunto)
+    {
+        listaArcoIrisConjunto.Add(arcoIrisConjunto);
+        return this;
     }
 
     private void ligarGlows()
@@ -43,12 +58,6 @@ public class ArcoIrisEfeito
         }
     }
 
-    public void desligarEfeito()
-    {
-        desligarGlows();
-        Utils.MonoBehaviour.StopCoroutine(coroutineAtual);
-    }
-
     private void desligarGlows()
     {
         for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
@@ -57,10 +66,13 @@ public class ArcoIrisEfeito
         }
     }
 
-    public ArcoIrisEfeito addArcoIrisConjunto(ArcoIrisConjunto arcoIrisConjunto)
+    private void cleanCoroutineEmAndamento()
     {
-        listaArcoIrisConjunto.Add(arcoIrisConjunto);
-        return this;
+        if (coroutineAtual != null)
+        {
+            Utils.MonoBehaviour.StopCoroutine(coroutineAtual);
+            coroutineAtual = null;
+        }
     }
 
     private IEnumerator ligarGlowArcoIris()
@@ -93,7 +105,7 @@ public class ArcoIrisEfeito
         }
     }
 
-    public void configurarCoresHdr(float factorHdr)
+    private void configurarCoresHdr(float factorHdr)
     {
         greenHdr  = HSBColor.toHdrColor(Color.green, factorHdr);
         redHdr    = HSBColor.toHdrColor(Color.red, factorHdr);

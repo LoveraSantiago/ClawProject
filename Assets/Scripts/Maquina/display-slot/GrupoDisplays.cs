@@ -28,18 +28,18 @@ public class GrupoDisplays : ArcoIrisConjunto
         powerUpDisplayColetado = estado;
     }      
 
-    public void acionarMostrarAlvos()
+    public void acionarMostrarAlvos(Executor executorFimMovimentacao)
     {
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].mostrarAlvo(displaysSlotsDto));
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].mostrarAlvo(displaysSlotsDto));
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].mostrarAlvo(displaysSlotsDto));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].mostrarAlvo(displaysSlotsDto, executorFimMovimentacao));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].mostrarAlvo(displaysSlotsDto, executorFimMovimentacao));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].mostrarAlvo(displaysSlotsDto, executorFimMovimentacao));
     }
 
-    public void desligarAlvos()
+    public void desligarAlvos(Executor executorFimMovimentacao)
     {
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].desligarAlvo(displaysSlotsDto));
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].desligarAlvo(displaysSlotsDto));
-        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].desligarAlvo(displaysSlotsDto));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[0].desligarAlvo(displaysSlotsDto, executorFimMovimentacao));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[1].desligarAlvo(displaysSlotsDto, executorFimMovimentacao));
+        Utils.MonoBehaviour.StartCoroutine(displayDeSlot[2].desligarAlvo(displaysSlotsDto, executorFimMovimentacao));
     }
 
     public IEnumerator mostrarSprColetado(int indice, Sprite sprite, bool powerUpAcionado)
@@ -60,19 +60,23 @@ public class GrupoDisplays : ArcoIrisConjunto
 
     public int getIndicePrimeiroDisplayDesocupado()
     {
-        if (displayDeSlot[0].isDesocupado()) return 0;
-        if (displayDeSlot[1].isDesocupado()) return 1;
+        if (displayDeSlot[0].isDesocupado) return 0;
+        if (displayDeSlot[1].isDesocupado) return 1;
         return 2;
     }
 
     public bool isTodosDisplayOcupados()
     {
-        return displayDeSlot[0].isOcupadoColetado() && displayDeSlot[1].isOcupadoColetado() && displayDeSlot[2].isOcupadoColetado();
+        return displayDeSlot[0].isOcupado && 
+               displayDeSlot[1].isOcupado && 
+               displayDeSlot[2].isOcupado;
     }
 
     public bool isTodosDisplaysDesocupados()
     {
-        return displayDeSlot[0].isDesocupado() && displayDeSlot[1].isDesocupado() && displayDeSlot[2].isDesocupado();
+        return displayDeSlot[0].isDesocupado && 
+               displayDeSlot[1].isDesocupado && 
+               displayDeSlot[2].isDesocupado;
     }   
 
     public void ligarGlowLuz()

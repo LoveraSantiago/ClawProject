@@ -1,4 +1,5 @@
 public interface PowerUpInteracaoDisplayColetado 
 {
-    void iniciar(InformacaoDisplayColetado informacaoDisplayColetados);    
+    void addInformacaoDisplayColetado(InformacaoDisplayColetado informacaoDisplayColetado);
+    Executor getExecutorDeInicio();    
 }

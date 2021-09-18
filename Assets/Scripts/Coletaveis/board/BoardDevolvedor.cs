@@ -3,31 +3,41 @@ using UnityEngine;
 
 public class BoardDevolvedor 
 {
-    private bool devolverParaBoard;
+    public bool devolverBoard { get; private set; }
 
     public void configuradoPeloLevel(bool devolverParaBoard)
     {
-        this.devolverParaBoard = devolverParaBoard;
+        this.devolverBoard = devolverParaBoard;
     }
 
-    public void devolver(BoardDto boardDto, ColetavelTile[] coletados)
+    public void devolver(
+        bool combinacaoValida, ColetadoFim evento, BoardDto boardDto, ColetavelTile[] coletados)
     {
-        if (devolverParaBoard && coletados.Length > 0)
-        {            
-            Utils.MonoBehaviour.StartCoroutine(coroutineDevolverParaBoard(boardDto, coletados));            
+        if ((devolverBoard && evento.isTodosColetados() && !combinacaoValida) || 
+            evento.isRollback)
+        {
+            ColetavelTile[] coletadosOriginais = Utils.copiarArray(coletados);
+            Utils.MonoBehaviour.StartCoroutine(devolverParaBoard(evento.clears, boardDto, coletadosOriginais));            
         }
     }
 
-    private IEnumerator coroutineDevolverParaBoard(BoardDto boardDto, ColetavelTile[] coletados)
+    private IEnumerator devolverParaBoard(bool[]resultados, BoardDto boardDto, ColetavelTile[] coletados)
     {
         for (int contador = 0; contador < coletados.Length; contador++)
         {
-            float anguloDevolucao = Random.Range(180, 230);
-            ColetavelTile coletavel = coletados[contador];
-            coletavel.ligar();            
-            coletavel.disparar(boardDto.PosicaoRefVoltaBoard.position, anguloDevolucao, 10f);
+            if(coletados[contador] != null && resultados[contador])
+            {
+                float anguloDevolucao = Random.Range(180, 230);
+                ColetavelTile coletavel = coletados[contador];
+                coletavel.ligar();            
+                coletavel.disparar(boardDto.PosicaoRefVoltaBoard.position, anguloDevolucao, 10f);
 
-            yield return new WaitForSeconds(boardDto.DelayVoltaBoard);
+                yield return new WaitForSeconds(boardDto.DelayVoltaBoard);
+            }
+            else
+            {
+                yield return null;
+            }
         }
         yield return null;
     }

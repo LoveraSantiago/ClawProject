@@ -7,7 +7,7 @@ public class ContadorDeColetaveis
     private int pontosColetado;
     private int pontosAcerto;
     
-    private bool resultCombinacao;
+    public bool resultCombinacao { get; private set; }
     private int totalColetaveis;
 
     private ColetavelTile[] coletados;       
@@ -33,10 +33,13 @@ public class ContadorDeColetaveis
         {
             if (isCombinacaoValida())
             {
-                processarRetornoValido();
+                resultCombinacao = true;
+                score += pontosAcerto;
+                AudioController.current.PlayAudio(AudioController.current.combinacaoOk);                
             }
             else
-            {                
+            {
+                resultCombinacao = false;
                 AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
             }           
         }
@@ -57,54 +60,42 @@ public class ContadorDeColetaveis
     {
         totalColetaveis -= 1;
         //Debug.Log("Total: " + totalColetaveis);
-    }    
+    }       
 
-    public bool getResult()
+    public void reajustarContagem(ColetadoFim evento, bool devolverBoard)
     {
-        return resultCombinacao;
-    }
-
-    public void reajustarContagem(ColetadoFim evento)
-    {
-        if (evento.reajustarContador())
+        if (!evento.isNormal)
         {
             int indice = evento.getPrimeiroIndiceParaLimpar();
             coletados[indice] = null;
-            Debug.Log("Reajuste de contagem no indice " + indice);
+            //Debug.Log("Reajuste de contagem no indice " + indice);
+            if (evento.isRollback)
+            {
+                adicionarColetaveisExtras(1);
+            }
         }
-        else if(evento.devolverBoard())
+        else if (evento.isNormal && evento.isTodosColetados())
         {
             resetarColetados();
+            if (devolverBoard && !resultCombinacao)
+            {
+                adicionarColetaveisExtras(3);
+            }
         }
     }
 
     private bool isCombinacaoValida()
     {
-        ColetavelTile primeiroColetado = coletados[0];
-        for (int contador = 0; contador < coletados.Length; contador++)
-        {
-            if (!primeiroColetado.hasEqualsSprite(coletados[contador]))
-            {
-                resultCombinacao = false;
-                return false;
-            }
-        }
-        resultCombinacao = true;
-        return true;
-    }
+        return coletados[0].hasEqualsSprite(coletados[1]) &&
+               coletados[0].hasEqualsSprite(coletados[2]); 
+    }        
 
     private void adicionaAoContainerDeColetados(ColetavelTile coletado)
     {
         int indice = getPrimeiroIndiceVazio();
         //Debug.Log("Indice contador de coletaveis " + indice);
         coletados[indice] = coletado;        
-    }
-
-    private void processarRetornoValido()
-    {
-        score += pontosAcerto;        
-        AudioController.current.PlayAudio(AudioController.current.combinacaoOk);
-    }            
+    }         
 
     public int getScore()
     {

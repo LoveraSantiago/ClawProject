@@ -104,7 +104,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         if (evento.isInicio)
         {
-            displaysDeSlots.processarPowerUp(evento.interacaoDisplayColetado);            
+            displaysDeSlots.processarPowerUp(evento);            
             arcoIrisEfeito.ligarEfeitoArcoIris();
             displayTimer.pause();
             displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);
@@ -118,8 +118,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             displayDeScores.finalizarContagemRegressiva();
             displayTimer.continuar();
             botoesPowerUp.processarFimPowerUp();
-            arcoIrisEfeito.desligarEfeito();
             displaysDeSlots.processarFimPowerUp(botoesPowerUp);            
+            arcoIrisEfeito.desligarEfeito();
         }
     }              
 

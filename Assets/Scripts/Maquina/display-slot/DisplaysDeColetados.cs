@@ -18,23 +18,22 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();            
     }        
 
-    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
+    public void mostrarColetadoNoDisplay(
+        InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
         Utils.MonoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris, executorPosEvento));        
     }    
     
-    public void processarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
+    public void processarPowerUp(PowerUpEntidade.TIPO tipoPup, PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
     {
-        if (interacaoDisplayColetado != null)
-        {            
-            if (displayColetando)
-            {
-                agendados.agendar(interacaoDisplayColetado);                
-            }
-            else
-            {
-                acionarPowerUp(interacaoDisplayColetado);
-            }
+        agendados.agendar(tipoPup);
+        if (displayColetando)
+        {
+            agendados.agendar(interacaoDisplayColetado);                
+        }
+        else
+        {
+            acionarPowerUp(interacaoDisplayColetado);
         }        
     }
 
@@ -43,8 +42,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         if (powerUpAcionado)
         {
             powerUpAcionado = false;
-            grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
-            grupoDisplays.desligarAlvos();
+            grupoDisplays.setarEstadoPowerUp(powerUpAcionado);        
             agendados.cleanInteracao();            
 
             if (agendados.possuiAgendamentoDeEvento())
@@ -68,12 +66,19 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         }
     }
 
+    public void restaurarEstadoAntesPowerUp(Executor executor)
+    {
+        grupoDisplays.desligarAlvos(executor);
+    }
+
     private void acionarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
     {
+        //Debug.Log("Pup acionado no display de coletado inicio");
         powerUpAcionado = true;
         grupoDisplays.setarEstadoPowerUp(powerUpAcionado);
-        grupoDisplays.acionarMostrarAlvos();
-        interacaoDisplayColetado.iniciar(this);        
+        interacaoDisplayColetado.addInformacaoDisplayColetado(this);        
+        grupoDisplays.acionarMostrarAlvos(interacaoDisplayColetado.getExecutorDeInicio());
+        //Debug.Log("Pup acionado no display de coletado fim");
     }     
 
     private IEnumerator mostrarSprite(
@@ -123,7 +128,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
         bool[] result = new bool[3] { false, false, false };
         result[indice] = true;
-        produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(result));
+        produtorDeEventoFimColetagem.produziuEvento(ColetadoFim.ofPup(agendados.tipoPup, result));
     }
 
     private IEnumerator limpezaTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito  arcoIris)
@@ -153,13 +158,13 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private void fimLimpezaTodosDisplaysOcupados(ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
         arcoIris.desligarEfeito();
-        produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(true, true, true));
+        produtorDeEventoFimColetagem.produziuEvento(ColetadoFim.ofNormal(new bool[] { true, true, true }));
         executorPosEvento.execute();
     }
 
     private void fimLimpezaTodosDisplaysNaoOcupados(Executor executorPosEvento)
     {        
-        produtorDeEventoFimColetagem.produziuEvento(new ColetadoFim(false, false, false));
+        produtorDeEventoFimColetagem.produziuEvento(ColetadoFim.ofNormal(new bool[] { false, false, false }));
         executorPosEvento.execute();
     }
 
@@ -184,14 +189,14 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         return grupoDisplays.isTodosDisplaysDesocupados();
     }
 
-    public void restartPowerUp(PowerUpInteracaoDisplayColetado interacao)
+    public void restartPowerUp(PowerUpEntidade.TIPO tipo, PowerUpInteracaoDisplayColetado interacao)
     {
-        processarPowerUp(interacao);
+        processarPowerUp(tipo, interacao);
     }
     //***** IMPLEMENTACAO INTERFACE INFORMACAODISPLAYCOLETADO FIM *****
 
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoFimColetagem;
-    }
+    }   
 }

@@ -4,45 +4,56 @@ using UnityEngine;
 public class MovimentadorDeSlots 
 {
     private bool continuarMovimentacao;
+    private PosicoesSlots posicoes;
 
-    public MovimentadorDeSlots()
+    public MovimentadorDeSlots(SingleDisplaySlotDto singleDisplaySlotDto)
     {
-        continuarMovimentacao = true;   
+        continuarMovimentacao = true;
+        posicoes = new PosicoesSlots(singleDisplaySlotDto);
     }
 
     public void cancelarMovimentacaoDeSlot()
     {
+        Debug.Log("Cancelando movimentacao de slot");
         continuarMovimentacao = false;
     }    
 
-    public IEnumerator subirSlotBaixo(GameObject slot, Vector3 posicaoDesejada, DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator subirSlotColetado(GameObject slot, DisplaysSlotsDto displaysSlotsDto)
     {
         float velocidade = displaysSlotsDto.VelocImg;
         float delay = displaysSlotsDto.InicialDelay;
-        yield return movimentarSlot(velocidade, delay, slot, posicaoDesejada);
+        yield return movimentarSlot(velocidade, delay, slot, posicoes.posFinal);
     }
 
-    public IEnumerator descerSlotBaixo(GameObject slot, Vector3 posicaoDesejada, DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator descerSlotColetado(GameObject slot, DisplaysSlotsDto displaysSlotsDto)
     {
         float velocidade = displaysSlotsDto.VelocImg;
         float fimDelay = displaysSlotsDto.FimDelay;
-        yield return movimentarSlot(velocidade, fimDelay, slot, posicaoDesejada);
+        yield return movimentarSlot(velocidade, fimDelay, slot, posicoes.posSlotBaixoInicial);
     }
 
-    public IEnumerator descerSlotCima(GameObject slot, Vector3 posicaoDesejada, DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator descerSlotNone(GameObject slot, DisplaysSlotsDto displaysSlotsDto, Executor executorFimMovimentacao)
     {
         float velocidade = displaysSlotsDto.VelocImg;
-        yield return movimentarSlot(velocidade, 0, slot, posicaoDesejada);        
+        yield return movimentarSlot(velocidade, 0, slot, posicoes.posFinal, executorFimMovimentacao);        
     }
 
-    public IEnumerator subirSlotCima(GameObject slot, Vector3 posicaoDesejada, DisplaysSlotsDto displaysSlotsDto)
+    public IEnumerator subirSlotNone(GameObject slot, DisplaysSlotsDto displaysSlotsDto, Executor executorFimMovimentacao)
     {
         float velocidade = displaysSlotsDto.VelocImg;
-        yield return movimentarSlot(velocidade, 0, slot, posicaoDesejada);        
+        yield return movimentarSlot(velocidade, 0, slot, posicoes.posSlotCimaInicial, executorFimMovimentacao);        
     }
 
-    public IEnumerator movimentarSlot(float velocidade, float delay, GameObject slot, Vector3 posicaoDesejada)
-    {   
+    private IEnumerator movimentarSlot(
+        float velocidade, float delay, GameObject slot, Vector3 posicaoDesejada)
+    {
+        yield return movimentarSlot(velocidade, delay, slot, posicaoDesejada, null);
+    }
+
+    private IEnumerator movimentarSlot(
+       float velocidade, float delay, GameObject slot, Vector3 posicaoDesejada, 
+       Executor executorFimMovimentacao)
+    {
         yield return new WaitForSeconds(delay);
 
         while (slotaAtingiuPosicao(slot, posicaoDesejada, velocidade) && continuarMovimentacao)
@@ -58,6 +69,15 @@ public class MovimentadorDeSlots
         else
         {
             continuarMovimentacao = true;
+        }
+        executarFimMovimentacao(executorFimMovimentacao);
+    }
+
+    private void executarFimMovimentacao(Executor executorFimMovimentacao)
+    {
+        if (executorFimMovimentacao != null)
+        {
+            executorFimMovimentacao.execute();
         }
     }
 

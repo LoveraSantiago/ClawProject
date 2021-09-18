@@ -16,6 +16,7 @@ public class PowerUpInfo
 
     public int duracaoTempo { get { return pupEntidade.duracao; }}
 
+    public PowerUpEntidade.TIPO tipo { get { return pupEntidade.tipo; } }
     private PowerUpEntidade pupEntidade;
     public  ColetavelTile coletavelTile { get; private set; }
 
