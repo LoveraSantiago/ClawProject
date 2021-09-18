@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - inSprite:
-        m_Texture: {fileID: 2800000, guid: 6ff825b4da47d4749bb0a0b28414a44d, type: 3}
+        m_Texture: {fileID: 2800000, guid: efb723cbae18641a9954c28d1f5cf3e9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - outSprite:
@@ -62,7 +62,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - valor: 1.0118862
+    - valor: 1.0127757
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
