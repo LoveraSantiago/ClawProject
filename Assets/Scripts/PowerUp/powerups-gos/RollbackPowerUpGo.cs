@@ -46,8 +46,6 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
             informacaoDisplayColetado.restaurarEstadoAntesPowerUp(new ExecutorFim(this));
-            //powerUpFinalizacao.preFinalizar();
-            //powerUpFinalizacao.finalizado();
         }
     }
 
@@ -70,29 +68,19 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
         contador--;
         if(contador == 0)
         {
-            Debug.Log("Pup Prefinalizar normal");
             powerUpFinalizacao.preFinalizar();
-            //yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
-            Debug.Log("Pup Finalizar normal");
             powerUpFinalizacao.finalizado();
         }
     }
 
     private IEnumerator getCliqueNoDisplayDeColetados()
     {
-        //TODO adicionar delay de inicio
-        //yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayInicial);
         if (informacaoDisplayColetado.isTodosDisplaysDesocupados())
         {
             yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayReset);
             if (informacaoDisplayColetado.isTodosDisplaysDesocupados())
             {
                 informacaoDisplayColetado.restaurarEstadoAntesPowerUp(new ExecutorFim(this));
-                //Debug.Log("Pup Prefinalizar displays desocupados");
-                //powerUpFinalizacao.preFinalizar();
-                //yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
-                //Debug.Log("Pup Finalizar displays desocupados");
-                //powerUpFinalizacao.finalizado();
             }
             else
             {
@@ -107,11 +95,6 @@ public class RollbackPowerUpGo : PowerUpNaoInteracaoComGarra,
                 yield return null;
             }
             informacaoDisplayColetado.restaurarEstadoAntesPowerUp(new ExecutorFim(this));
-            //Debug.Log("Pup Prefinalizar normal");
-            //powerUpFinalizacao.preFinalizar();
-            //yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayFinalizar);
-            //Debug.Log("Pup Finalizar normal");
-            //powerUpFinalizacao.finalizado();
         }
     }    
 
