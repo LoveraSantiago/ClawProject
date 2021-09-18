@@ -4,8 +4,7 @@ using System.Collections;
 public class DisplayDeSlot 
 {
     private static readonly int ESTADO_VAZIO            = 0;
-    private static readonly int ESTADO_OCUPADO_COLETADO = 1;
-    private static readonly int ESTADO_OCUPADO_NONE     = 2;
+    private static readonly int ESTADO_OCUPADO_COLETADO = 1;    
 
     private int estadoAtual; 
     
@@ -97,7 +96,6 @@ public class DisplayDeSlot
         singleDisplaySlotDto.SlotSpriteCima.sprite = displaysSlotsDto.SprVazio;
         singleDisplaySlotDto.SlotSpriteCima.color = Color.red;
         yield return slots.descerSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);
-        estadoAtual = ESTADO_OCUPADO_NONE;
         Debug.Log("Finalizado mostrado none");
     }    
 
@@ -169,11 +167,6 @@ public class DisplayDeSlot
         return estadoAtual == ESTADO_OCUPADO_COLETADO;
     }
 
-    public bool isOcupadoNone()
-    {
-        return estadoAtual == ESTADO_OCUPADO_NONE;
-    }
-
     public bool isDesocupado()
     {
         return !isOcupadoColetado();
@@ -191,12 +184,9 @@ public class DisplayDeSlot
 
     private IEnumerator limparSprNoneCasoOcupado(DisplaysSlotsDto displaysSlotsDto)
     {
-        if (isOcupadoNone())
-        {
-            slots.cancelarMovimentacaoDeSlot();
-            yield return limparSprNone(displaysSlotsDto, null);
-            Debug.Log("Pos Cancelado limpando spr none");
-        }
+        slots.cancelarMovimentacaoDeSlot();
+        yield return limparSprNone(displaysSlotsDto, null);
+        Debug.Log("Pos Cancelado limpando spr none");
     }
 
     private IEnumerator ligarCacaNiquelCoroutine(Sprite[] sprites)
