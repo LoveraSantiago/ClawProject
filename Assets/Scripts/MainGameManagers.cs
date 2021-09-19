@@ -6,7 +6,7 @@ public class MainGameManagers
     public ColetaveisManager coletaveisManager { get; private set; }
     public CameraManager cameraManager { get; private set; }
     public UiGameManager uiManager { get; private set; }
-    public ScrollManager scrollManager { get; private set; }
+    //public ScrollManager scrollManager { get; private set; }
     public InputGame inputGame { get; private set; }
 
     public MainGameManagers(MainGameDto mainDto)
@@ -17,8 +17,7 @@ public class MainGameManagers
         maquinaManager = new MaquinaManager(mainDto.MaquinaDto, inputGame);
         powerUpManager = new PowerUpManager(mainDto.PowerUpDto, inputGame);
         uiManager = new UiGameManager(mainDto.UiDto);        
-        cameraManager = new CameraManager(mainDto.CameraDto);
-        scrollManager = new ScrollManager(mainDto.UiDto.PrefabBottomBar);
+        cameraManager = new CameraManager(mainDto.CameraDto);        
     }
 
     public void configurandoLevel(AbstractLevel levelEscolhido)
@@ -26,8 +25,7 @@ public class MainGameManagers
         garraManager.configuradoPeloLevel(levelEscolhido);
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
         maquinaManager.configuradoPeloLevel(levelEscolhido);
-        uiManager.configurandoLevel(levelEscolhido);
-        scrollManager.configuradoPeloLevel(levelEscolhido);
+        uiManager.configurandoLevel(levelEscolhido);        
     }
 
     public void configurandoEventos()
@@ -64,10 +62,10 @@ public class MainGameManagers
         new AcaoBotaoPUpVazio()
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(scrollManager);
+            .adicionarConsumidor(uiManager);
 
         new AcaoBBarPupEscolhido<PowerUpBtnInfo>()
-            .configurarProdutor(scrollManager)
+            .configurarProdutor(uiManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(cameraManager);
 
@@ -94,7 +92,7 @@ public class MainGameManagers
         coletaveisManager.start();
         garraManager.start();
         maquinaManager.start();
-        scrollManager.start();
+        uiManager.start();        
     }
 
     public void update()
