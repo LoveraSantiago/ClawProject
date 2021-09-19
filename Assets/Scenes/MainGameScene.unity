@@ -1201,6 +1201,12 @@ MonoBehaviour:
         asaGo: {fileID: 4127936681606313068, guid: 5432931c59eafda478e032d555b31327, type: 3}
       rollBackDto:
         delayReset: 1.5
+    uiDto:
+      modalPontosDto:
+        textoPontos: {fileID: 1473191375}
+        textoNivel: {fileID: 376184029}
+        goModalPontos: {fileID: 543390433}
+      prefabBottomBar: {fileID: 1411617376}
     modalPontosDto:
       textoPontos: {fileID: 1473191375}
       textoNivel: {fileID: 376184029}

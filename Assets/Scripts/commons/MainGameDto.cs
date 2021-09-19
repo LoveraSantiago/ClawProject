@@ -14,15 +14,12 @@ public class MainGameDto
     [Space(5)]
     [SerializeField] private PowerUpDto powerUpDto;
     [Space(5)]
-    [SerializeField] private ModalPontosDto modalPontosDto;
-    [Space(5)]
-    [SerializeField] private GameObject prefabBottomBar;
+    [SerializeField] private UIGameDto uiDto;    
 
     public GarraDto GarraDto { get { return garraDto; } }
     public ColetaveisDto ColetaveisDto { get { return coletaveisDto; } }
     public MaquinaDto MaquinaDto { get { return maquinaDto; } }    
     public CameraDto CameraDto { get { return cameraDto;  } }
     public PowerUpDto PowerUpDto { get { return powerUpDto; } }
-    public ModalPontosDto ModalPontosDto { get { return modalPontosDto; } }
-    public GameObject PrefabBottomBar { get { return prefabBottomBar; } }
+    public UIGameDto UiDto { get { return uiDto; } }    
 }

@@ -16,9 +16,9 @@ public class MainGameManagers
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
         maquinaManager = new MaquinaManager(mainDto.MaquinaDto, inputGame);
         powerUpManager = new PowerUpManager(mainDto.PowerUpDto, inputGame);
-        modalPontos = new ModalPontos(mainDto.ModalPontosDto);
+        modalPontos = new ModalPontos(mainDto.UiDto.ModalPontosDto);
         cameraManager = new CameraManager(mainDto.CameraDto);
-        scrollManager = new ScrollManager(mainDto.PrefabBottomBar);
+        scrollManager = new ScrollManager(mainDto.UiDto.PrefabBottomBar);
     }
 
     public void configurandoLevel(AbstractLevel levelEscolhido)
