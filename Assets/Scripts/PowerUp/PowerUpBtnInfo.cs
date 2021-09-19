@@ -4,7 +4,8 @@ public class PowerUpBtnInfo
     public int indiceBotao { get; private set; }
     public PowerUpEntidade powerUpEntidade { get; private set; }
 
-    public PowerUpBtnInfo()
+    public PowerUpBtnInfo(int indiceBotao)
+        :this(indiceBotao, null)
     {
     }
 

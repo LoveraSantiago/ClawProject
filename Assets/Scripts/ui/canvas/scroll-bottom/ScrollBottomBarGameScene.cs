@@ -33,7 +33,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         }
         else
         {        
-            PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo();
+            PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn);
             Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));
         }
     }
@@ -48,7 +48,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
 
     public override void posCliqueBtnClose()
     {
-        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo();
+        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn);
         Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));
     }
 
