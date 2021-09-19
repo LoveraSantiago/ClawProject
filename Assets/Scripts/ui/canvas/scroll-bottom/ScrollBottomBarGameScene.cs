@@ -24,16 +24,17 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;        
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeBtnSelecionado));
         int qtdPup = PlayerPrefsPup.recuperarQtdPup(pupEscolhido.nome);
+        btnBottomBar.descerBotao();
         if(qtdPup > 0)
         {
             PlayerPrefsPup.subtrairPup(pupEscolhido.nome);
             PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
-            btnBottomBar.descerBotao();
             Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));       
         }
         else
-        {
-            btnBottomBar.descerBotao();
+        {        
+            PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo();
+            Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));
         }
     }
 
@@ -47,7 +48,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
 
     public override void posCliqueBtnClose()
     {
-        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, null);
+        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo();
         Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));
     }
 

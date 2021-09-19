@@ -70,17 +70,16 @@ public class BotaoPowerUp : Draggavel
         aparencia.colorirBotaoFromLevel(corBotao, corDentro, corContorno);
     }
 
-    public void receberAcaoPowerUp(
-        ControleAcionamentoPowerUp controlePup, 
-        PowerUpEntidade powerUpEntidade)
+    public void receberAcaoPowerUp(PowerUpBtnInfo evento, ControleAcionamentoPowerUp controlePup)
     {
         Time.timeScale = 1;
         controlePup.habilitarPowerUp();
         glow.desligarGlow();
         mudarParaMaterialArcoIris();
-        if(powerUpEntidade != null)
+        if(evento.hasEntidade)
         {
-            receberAcaoPowerUp(new PowerUpParaMaquina(powerUpEntidade));
+            PowerUpEntidade pupEntidade = evento.powerUpEntidade;
+            receberAcaoPowerUp(new PowerUpParaMaquina(pupEntidade));
         }
     }
 
