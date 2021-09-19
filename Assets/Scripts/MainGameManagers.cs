@@ -9,7 +9,7 @@ public class MainGameManagers
     public ScrollManager scrollManager { get; private set; }
     public InputGame inputGame { get; private set; }
 
-    public MainGameManagers(MainDto mainDto)
+    public MainGameManagers(MainGameDto mainDto)
     {
         inputGame = new InputGameImpl(mainDto.MaquinaDto.ReferenciaChao);
         garraManager = new GarraManager(mainDto.GarraDto);

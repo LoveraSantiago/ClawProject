@@ -7,7 +7,7 @@ public class MainGameScene : MonoBehaviour,
 {
     [SerializeField] private LevelFlowManager.LEVEL level;
     [Space(5)]
-    [SerializeField] private MainDto mainDto;
+    [SerializeField] private MainGameDto mainDto;
 
     private MainGameManagers managers;
     private LevelFlowManager.LEVEL levelEscolhido;    
