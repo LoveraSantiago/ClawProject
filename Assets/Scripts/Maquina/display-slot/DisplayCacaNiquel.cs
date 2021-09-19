@@ -59,7 +59,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     {
         if(tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
         {
-            int indicePup = PlayerPrefsUtils.recuperarIndicePup();
+            int indicePup = PlayerPrefsPup.recuperarIndicePup();
             PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
             Sprite[] spritesSlot1 = new Sprite[] { pupEscolhido.sprPowerUp, displaysSlotsDto.SprVazio };
@@ -81,7 +81,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     {
         if(tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
         {
-            int indicePup = PlayerPrefsUtils.recuperarIndicePup();
+            int indicePup = PlayerPrefsPup.recuperarIndicePup();
             PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
             return pupEscolhido.sprPowerUp;
         }
@@ -95,7 +95,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     {
         if (tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
         {
-            int indicePup = PlayerPrefsUtils.recuperarIndicePup();
+            int indicePup = PlayerPrefsPup.recuperarIndicePup();
             PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
             if (resultados[2] == grupoDisplays.displaysSlotsDto.SprMoeda)

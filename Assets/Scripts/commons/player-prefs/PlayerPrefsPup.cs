@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerPrefsUtils 
+public class PlayerPrefsPup 
 {
     private static readonly string PUP = "PUP";    
 
