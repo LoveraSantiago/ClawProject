@@ -19,4 +19,20 @@ public class PlayerPrefsPup
     {
         return  PlayerPrefs.GetInt(nomePup);
     }
+
+    public static int subtrairPup(string nomePup)
+    {
+        int qtdAtual = recuperarQtdPup(nomePup);
+        if(qtdAtual > 0)
+        {
+            qtdAtual--;
+        }
+        salvarQtdPup(nomePup, qtdAtual);
+        return qtdAtual;
+    }
+
+    private static void salvarQtdPup(string nomePup, int qtd)
+    {
+        PlayerPrefs.SetInt(nomePup, qtd);
+    }
 }
