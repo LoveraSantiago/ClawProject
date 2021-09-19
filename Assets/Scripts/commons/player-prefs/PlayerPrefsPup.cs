@@ -14,4 +14,9 @@ public class PlayerPrefsPup
         int indiceSalvo = PlayerPrefs.GetInt(PUP);        
         return indiceSalvo;
     }
+
+    public static int recuperarQtdPup(string nomePup)
+    {
+        return  PlayerPrefs.GetInt(nomePup);
+    }
 }

@@ -31,7 +31,7 @@ public abstract class ScrollBottomBar
     private void bindBox(int indiceName, GameObject box, PowerUpEntidade pupEntidade)
     {
         TextMeshProUGUI text = box.transform.Find("lbl-qtd").GetComponent<TextMeshProUGUI>();
-        text.text = "999";
+        text.text = PlayerPrefsPup.recuperarQtdPup(pupEntidade.nome).ToString();
 
         Button btnIt = box.transform.Find("btn").GetComponent<Button>();
         btnIt.name = indiceName.ToString();
