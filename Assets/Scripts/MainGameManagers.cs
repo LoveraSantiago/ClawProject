@@ -1,11 +1,11 @@
 public class MainGameManagers 
-{
-    public ModalPontos modalPontos { get; private set; }
+{    
     public GarraManager garraManager { get; private set; }
     public MaquinaManager maquinaManager { get; private set; }
     public PowerUpManager powerUpManager { get; private set; }
     public ColetaveisManager coletaveisManager { get; private set; }
     public CameraManager cameraManager { get; private set; }
+    public UiGameManager uiManager { get; private set; }
     public ScrollManager scrollManager { get; private set; }
     public InputGame inputGame { get; private set; }
 
@@ -16,7 +16,7 @@ public class MainGameManagers
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
         maquinaManager = new MaquinaManager(mainDto.MaquinaDto, inputGame);
         powerUpManager = new PowerUpManager(mainDto.PowerUpDto, inputGame);
-        modalPontos = new ModalPontos(mainDto.UiDto.ModalPontosDto);
+        uiManager = new UiGameManager(mainDto.UiDto);        
         cameraManager = new CameraManager(mainDto.CameraDto);
         scrollManager = new ScrollManager(mainDto.UiDto.PrefabBottomBar);
     }
@@ -26,7 +26,7 @@ public class MainGameManagers
         garraManager.configuradoPeloLevel(levelEscolhido);
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
         maquinaManager.configuradoPeloLevel(levelEscolhido);
-        modalPontos.configurarLevel(levelEscolhido.getLevelName());
+        uiManager.configurandoLevel(levelEscolhido);
         scrollManager.configuradoPeloLevel(levelEscolhido);
     }
 
@@ -36,7 +36,7 @@ public class MainGameManagers
             .configurarProdutor(coletaveisManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(modalPontos);
+            .adicionarConsumidor(uiManager);
 
         new AcaoColetadoFim()
             .configurarProdutor(maquinaManager)
@@ -74,14 +74,14 @@ public class MainGameManagers
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(modalPontos)
+            .adicionarConsumidor(uiManager)
             .adicionarConsumidor(coletaveisManager);
 
         new AcaoBoardElevadoFim()
             .configurarProdutor(coletaveisManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(modalPontos);
+            .adicionarConsumidor(uiManager);
 
         new AcaoCacaNiquel()
             .configurarProdutor(maquinaManager)
