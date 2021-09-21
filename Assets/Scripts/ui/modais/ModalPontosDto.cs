@@ -7,8 +7,10 @@ public class ModalPontosDto
 {
     [SerializeField] private Text textoNivel;
     [SerializeField] private Text textoPontos;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private GameObject goModalPontos;
+    [Space(3)]
+    [SerializeField] private LinhaModalPontos[] linhas = new LinhaModalPontos[4];
 
     public Text TextoNivel { get { return textoNivel; } }
     public Text TextoPontos { get { return textoPontos; } }
