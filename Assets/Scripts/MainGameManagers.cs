@@ -5,8 +5,7 @@ public class MainGameManagers
     public PowerUpManager powerUpManager { get; private set; }
     public ColetaveisManager coletaveisManager { get; private set; }
     public CameraManager cameraManager { get; private set; }
-    public UiGameManager uiManager { get; private set; }
-    //public ScrollManager scrollManager { get; private set; }
+    public UiGameManager uiManager { get; private set; }    
     public InputGame inputGame { get; private set; }
 
     public MainGameManagers(MainGameDto mainDto)
