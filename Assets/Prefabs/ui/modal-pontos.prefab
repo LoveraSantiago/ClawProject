@@ -780,7 +780,7 @@ RectTransform:
   m_GameObject: {fileID: 2746075170011840652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2746075169872090763}
   - {fileID: 2746075169144371926}
@@ -811,7 +811,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: -110
+  m_SortingOrder: 110
   m_TargetDisplay: 0
 --- !u!114 &2746075170011840649
 MonoBehaviour:
@@ -1088,6 +1088,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2746075169144371926}
     m_Modifications:
+    - target: {fileID: 66693673676554353, guid: d9af98703492f054e9b4b794198a904d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2767681338934076781, guid: d9af98703492f054e9b4b794198a904d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

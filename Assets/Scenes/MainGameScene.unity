@@ -738,7 +738,7 @@ GameObject:
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &491158114
 Transform:
   m_ObjectHideFlags: 0
@@ -43052,6 +43052,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 2746075170011840648, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 110
+      objectReference: {fileID: 0}
     - target: {fileID: 2746075170011840651, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
