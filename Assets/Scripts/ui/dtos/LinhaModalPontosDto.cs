@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class LinhaModalPontos 
+public class LinhaModalPontosDto 
 {
     [SerializeField] private Text lblText1;
     [SerializeField] private Image imgLinha;
