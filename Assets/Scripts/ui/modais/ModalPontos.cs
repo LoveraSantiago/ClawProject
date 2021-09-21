@@ -7,11 +7,17 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
 {
     private string scoreAtual;
     private bool mostrandoModal;
-    private ModalPontosDto modalPontosDto;    
+    private ModalPontosDto modalPontosDto;
+    private LinhaModalPontos[] linhasModal;
 
     public ModalPontos(ModalPontosDto modalPontosDto)
     {
-        this.modalPontosDto = modalPontosDto;        
+        this.modalPontosDto = modalPontosDto;
+        linhasModal = new LinhaModalPontos[modalPontosDto.Linhas.Length];
+        for(int contador = 0; contador < linhasModal.Length; contador++)
+        {
+            linhasModal[contador] = new LinhaModalPontos(modalPontosDto.Linhas[contador]);
+        }
     }
 
     public void configurarLevel(string levelName)
@@ -66,7 +72,10 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         {
             Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModalResultado());
             mostrandoModal = true;
-            modalPontosDto.Linhas[0].GoLinha.SetActive(false);
+            linhasModal[0].desligar();
+            linhasModal[1].desligar();
+            linhasModal[2].desligar();
+            linhasModal[3].desligar();            
         }
     }
 
