@@ -51,6 +51,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         yield return new WaitForSeconds(0.1f);
         Sprite[] resultados = grupoDisplays.getResultadosCacaNiquel();
         avaliarResultados(resultados, grupoDisplays);
+        produtorDeEvento.produziuEvento(new CacaNiquelResult(tipoGame, resultados));
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("PupScene");
     }    

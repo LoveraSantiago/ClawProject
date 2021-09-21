@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class ModalPontos : AcaoColetado.ConsumidorEvento,
                            AcaoTempoEsgotado.ConsumidorEvento,
-                           AcaoBoardElevadoFim.ConsumidorEvento
+                           AcaoBoardElevadoFim.ConsumidorEvento,
+                           AcaoCacaNiquel.ConsumidorEvento
 {
     private string scoreAtual;
     private bool mostrandoModal;
@@ -40,6 +41,21 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         modalPontosDto.TextoNivel.text = levelName;
     }
 
+    private void naoMostrarLinhasResult()
+    {
+        linhasModal[0].desligar();
+        linhasModal[1].desligar();
+        linhasModal[2].desligar();
+        linhasModal[3].desligar();
+    }
+
+    private void mostrarModalResultLevel()
+    {
+        setPontuacao();
+        naoMostrarLinhasResult();
+        ligar();
+    }
+
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         if (evento.fimColetados)
@@ -60,9 +76,16 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
     {
         if (evento.isGameOver)
-        {
-            Debug.Log("mostrar modal end");
+        {            
             mostrarModalResultado();
+        }
+    }
+
+    void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelResult evento)
+    {
+        if (evento.isFinalizado)
+        {
+
         }
     }
 
@@ -71,18 +94,13 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         if (!mostrandoModal)
         {
             Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModalResultado());
-            mostrandoModal = true;
-            linhasModal[0].desligar();
-            linhasModal[1].desligar();
-            linhasModal[2].desligar();
-            linhasModal[3].desligar();            
         }
     }
 
     private IEnumerator coroutineMostrarModalResultado()
     {        
+        mostrandoModal = true;                   
         yield return new WaitForSeconds(0.5f);
-        ligar();
-        setPontuacao();
+        mostrarModalResultLevel();
     }     
 }

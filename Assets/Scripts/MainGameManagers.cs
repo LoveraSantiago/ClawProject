@@ -83,7 +83,8 @@ public class MainGameManagers
         new AcaoCacaNiquel()
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(garraManager);
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(uiManager);
     }
 
     public void startLaizy()

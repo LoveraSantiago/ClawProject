@@ -2,7 +2,8 @@ public class UiGameManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
                              AcaoColetado.ConsumidorEvento,
                              AcaoTempoEsgotado.ConsumidorEvento,
                              AcaoBoardElevadoFim.ConsumidorEvento,
-                             AcaoBotaoPUpVazio.ConsumidorEvento
+                             AcaoBotaoPUpVazio.ConsumidorEvento,
+                             AcaoCacaNiquel.ConsumidorEvento
 {
     private ModalPontos modalPontos;
     private ScrollManager scrollManager;
@@ -42,6 +43,11 @@ public class UiGameManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
     void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {       
         ((AcaoBotaoPUpVazio.ConsumidorEvento)scrollManager).consumirEvento(evento);       
+    }
+
+    void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelResult evento)
+    {
+        ((AcaoCacaNiquel.ConsumidorEvento)modalPontos).consumirEvento(evento);
     }
 
     ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
