@@ -5,12 +5,12 @@ using UnityEngine.UI;
 [System.Serializable]
 public class ModalPontosDto 
 {
-    [SerializeField] private Text textoPontos;
     [SerializeField] private Text textoNivel;
+    [SerializeField] private Text textoPontos;
     [Space(5)]
     [SerializeField] private GameObject goModalPontos;
 
-    public Text TextoPontos { get { return textoPontos; } }
     public Text TextoNivel { get { return textoNivel; } }
+    public Text TextoPontos { get { return textoPontos; } }
     public GameObject GoModalPontos { get { return goModalPontos; } }
 }
