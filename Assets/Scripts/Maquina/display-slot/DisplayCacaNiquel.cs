@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 {
     private AbstractLevel.TIPO_GAME tipoGame;
-    private ProdutorDeEvento<Vazio> produtorDeEvento;
+    private ProdutorDeEvento<CacaNiquelResult> produtorDeEvento;
     private InputGame inputGame;
 
     public DisplayCacaNiquel(InputGame inputGame)
     {
         this.inputGame = inputGame;
-        produtorDeEvento = new ProdutorDeEvento<Vazio>();
+        produtorDeEvento = new ProdutorDeEvento<CacaNiquelResult>();
     }
 
     public void configuradoPeloLevel(AbstractLevel.TIPO_GAME tipoGame)
@@ -30,7 +30,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     private IEnumerator iniciarDisplayCacaNiquel(GrupoDisplays grupoDisplays)
     {
         yield return new WaitForSeconds(0.5f);
-        produtorDeEvento.produziuEvento(new Vazio());
+        produtorDeEvento.produziuEvento(new CacaNiquelResult());
         grupoDisplays.ligarGlowLuz();    
 
         Sprite[][] allSrites = montarSpritesTipoCacaNiquel(grupoDisplays.displaysSlotsDto);
@@ -115,7 +115,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         }
     }        
 
-    ProdutorDeEvento<Vazio> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<CacaNiquelResult> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

@@ -158,7 +158,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         return ((AcaoBotaoPUpVazio.ProdutorEvento)botoesPowerUp).getProdutorDeEvento();
     }
 
-    ProdutorDeEvento<Vazio> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<CacaNiquelResult> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoCacaNiquel.ProdutorEvento)displaysDeSlots).getProdutorDeEvento();
     }

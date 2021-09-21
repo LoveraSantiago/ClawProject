@@ -24,9 +24,12 @@ public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento,
         cameraDto.VirtualCam2.Priority -= 2;
     }
 
-    void ProdutorConsumidoresDeEvento<Vazio>.ConsumidorEvento.consumirEvento(Vazio evento)
+    void ProdutorConsumidoresDeEvento<CacaNiquelResult>.ConsumidorEvento.consumirEvento(CacaNiquelResult evento)
     {
-        cameraDto.VirtualCam3.Priority += 2;
+        if (evento.isInicio)
+        {
+            cameraDto.VirtualCam3.Priority += 2;
+        }
     }
 
     public static void forceLocalEscala(Transform transform)
