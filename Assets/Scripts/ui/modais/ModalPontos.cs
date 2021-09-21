@@ -8,6 +8,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
 {
     private string scoreAtual;
     private bool mostrandoModal;
+
     private ModalPontosDto modalPontosDto;
     private LinhaModalPontos[] linhasModal;
 
@@ -56,30 +57,36 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         ligar();
     }
 
+    private void mostrarModalResultCacaNiquel()
+    {
+
+        
+    }
+
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
-        if (evento.fimColetados)
+        if (evento.fimColetados && !mostrandoModal)
         {
-            mostrarModalResultado();
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModalResultado());
         }
         scoreAtual = evento.score.ToString();
     }
 
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {
-        if (evento.isTimeOver())
+        if (evento.isTimeOver() && !mostrandoModal)
         {
-            mostrarModalResultado();
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModalResultado());
         }
     }
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
     {
-        if (evento.isGameOver)
-        {            
-            mostrarModalResultado();
+        if (evento.isGameOver && !mostrandoModal)
+        {
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModalResultado());
         }
-    }
+    }    
 
     void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelResult evento)
     {
@@ -89,18 +96,10 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         }
     }
 
-    private void mostrarModalResultado()
-    {
-        if (!mostrandoModal)
-        {
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModalResultado());
-        }
-    }
-
     private IEnumerator coroutineMostrarModalResultado()
     {        
         mostrandoModal = true;                   
         yield return new WaitForSeconds(0.5f);
         mostrarModalResultLevel();
-    }     
+    }
 }
