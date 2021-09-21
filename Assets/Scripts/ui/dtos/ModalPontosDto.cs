@@ -15,4 +15,5 @@ public class ModalPontosDto
     public Text TextoNivel { get { return textoNivel; } }
     public Text TextoPontos { get { return textoPontos; } }
     public GameObject GoModalPontos { get { return goModalPontos; } }
+    public LinhaModalPontos[] Linhas { get { return linhas; } }
 }

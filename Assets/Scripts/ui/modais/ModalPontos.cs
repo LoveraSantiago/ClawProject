@@ -66,6 +66,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         {
             Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModalResultado());
             mostrandoModal = true;
+            modalPontosDto.Linhas[0].GoLinha.SetActive(false);
         }
     }
 
