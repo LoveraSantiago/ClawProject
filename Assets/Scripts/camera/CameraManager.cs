@@ -30,6 +30,10 @@ public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento,
         {
             cameraDto.VirtualCam3.Priority += 2;
         }
+        else if (evento.isFinalizado)
+        {
+            cameraDto.VirtualCam3.Priority -= 2;
+        }
     }
 
     public static void forceLocalEscala(Transform transform)
