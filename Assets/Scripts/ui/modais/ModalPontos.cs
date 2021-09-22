@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ModalPontos : AcaoColetado.ConsumidorEvento,
                            AcaoTempoEsgotado.ConsumidorEvento,
@@ -62,7 +63,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         {
             setPontuacao();
             naoMostrarLinhasResult();
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal("MapScene"));
         }
     }
 
@@ -84,12 +85,16 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
             scoreAtual = "Power Ups Ganhos";
             setPontuacao();
 
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal("PupScene"));
         }
     }
 
-    private IEnumerator coroutineMostrarModal()
-    {        
+    private IEnumerator coroutineMostrarModal(string nomeCena)
+    {
+        modalPontosDto.BtnAvancar.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene(nomeCena);
+        });
         mostrandoModal = true;                   
         yield return new WaitForSeconds(0.5f);
         ligar();

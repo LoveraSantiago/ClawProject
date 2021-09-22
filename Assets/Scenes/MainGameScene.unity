@@ -1205,6 +1205,7 @@ MonoBehaviour:
       modalPontosDto:
         textoNivel: {fileID: 376184029}
         textoPontos: {fileID: 1473191375}
+        btnAvancar: {fileID: 2746075170554837631}
         goModalPontos: {fileID: 543390433}
         linhas:
         - lblText1: {fileID: 2746075170554837629}
@@ -43065,6 +43066,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1488572499}
     m_Modifications:
+    - target: {fileID: 2746075169483301557, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2746075170011840648, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
       propertyPath: m_Camera
       value: 
@@ -43316,6 +43321,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 505927001653532437, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
   m_PrefabInstance: {fileID: 2746075170554837613}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2746075170554837631 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2746075169483301557, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
+  m_PrefabInstance: {fileID: 2746075170554837613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3777820026685026688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2925138030546633071, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
