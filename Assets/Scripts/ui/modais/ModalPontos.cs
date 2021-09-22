@@ -53,38 +53,67 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
     private void mostrarModalResultLevel()
     {
         setPontuacao();
-        naoMostrarLinhasResult();
-        ligar();
+        naoMostrarLinhasResult();        
     }
 
-    private void mostrarModalResultCacaNiquel()
+    private void mostrarModalPontuacao()
     {
+        if (!mostrandoModal)
+        {
+            setPontuacao();
+            naoMostrarLinhasResult();
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+        }
+    }
 
-        
+    private void mostrarModalCacaNiquelAllPups(CacaNiquelResult evento)
+    {
+        if (!mostrandoModal)
+        {
+            linhasModal[0].ligar();
+            linhasModal[1].ligar();
+            linhasModal[2].ligar();
+            linhasModal[3].desligar();
+
+            string[] nomes = FactoryPowerUpEntidade.getNomesPupsBySprites(evento.sprResultados);
+
+            linhasModal[0].passarInfos(nomes[0], evento.sprResultados[0], "1");
+            linhasModal[1].passarInfos(nomes[1], evento.sprResultados[1], "1");
+            linhasModal[2].passarInfos(nomes[2], evento.sprResultados[2], "1");
+
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+        }
+    }
+
+    private IEnumerator coroutineMostrarModal()
+    {        
+        mostrandoModal = true;                   
+        yield return new WaitForSeconds(0.5f);
+        ligar();
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
-        if (evento.fimColetados && !mostrandoModal)
-        {
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModalResultado());
-        }
         scoreAtual = evento.score.ToString();
+        if (evento.fimColetados)
+        {
+            mostrarModalPontuacao();
+        }
     }
 
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
     {
-        if (evento.isTimeOver() && !mostrandoModal)
+        if (evento.isTimeOver())
         {
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModalResultado());
+            mostrarModalPontuacao();
         }
     }
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
     {
-        if (evento.isGameOver && !mostrandoModal)
+        if (evento.isGameOver)
         {
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModalResultado());
+            mostrarModalPontuacao();
         }
     }    
 
@@ -92,14 +121,15 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
     {
         if (evento.isFinalizado)
         {
+            if(evento.tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL)
+            {
+                mostrarModalCacaNiquelAllPups();
+            }
+            else if (evento.tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
+            {
 
+            }
         }
     }
 
-    private IEnumerator coroutineMostrarModalResultado()
-    {        
-        mostrandoModal = true;                   
-        yield return new WaitForSeconds(0.5f);
-        mostrarModalResultLevel();
-    }
 }
