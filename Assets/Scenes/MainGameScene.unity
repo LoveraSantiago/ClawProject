@@ -43065,14 +43065,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1488572499}
     m_Modifications:
-    - target: {fileID: 888395836462025248, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
-      propertyPath: m_Text
-      value: objetivo 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430449625286621524, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
-      propertyPath: m_Text
-      value: objetivo 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2746075170011840648, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
       propertyPath: m_Camera
       value: 
@@ -43168,14 +43160,6 @@ PrefabInstance:
     - target: {fileID: 2746075170011840652, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3268622973969597956, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
-      propertyPath: m_Text
-      value: objetivo 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8901340726610098834, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
-      propertyPath: m_Text
-      value: objetivo 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
