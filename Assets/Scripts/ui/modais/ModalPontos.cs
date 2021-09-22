@@ -123,7 +123,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         {
             if(evento.tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL)
             {
-                mostrarModalCacaNiquelAllPups();
+                mostrarModalCacaNiquelAllPups(evento);
             }
             else if (evento.tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
             {
