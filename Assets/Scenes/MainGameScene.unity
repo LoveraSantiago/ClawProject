@@ -43165,6 +43165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: modal-pontos
       objectReference: {fileID: 0}
+    - target: {fileID: 2746075170011840652, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3268622973969597956, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
       propertyPath: m_Text
       value: objetivo 1
