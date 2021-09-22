@@ -130,7 +130,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         }
         else if(sprSorteado == displaysSlotsDto.SprVazio)
         {
-            return RESULTADO_CACANIQUEL.FAIL
+            return RESULTADO_CACANIQUEL.FAIL;
         }
         else
         {
