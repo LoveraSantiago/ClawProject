@@ -15,6 +15,13 @@ public class PlayerPrefsPup
         return indiceSalvo;
     }
 
+    public static int recuperarEApagarIndicePup()
+    {
+        int indice = recuperarIndicePup();
+        PlayerPrefs.DeleteKey(PUP);
+        return indice;
+    }
+
     public static int recuperarQtdPup(string nomePup)
     {
         return PlayerPrefs.GetInt(nomePup);

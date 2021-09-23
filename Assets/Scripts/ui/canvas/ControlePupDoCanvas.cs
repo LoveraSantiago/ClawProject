@@ -6,6 +6,7 @@ public class ControlePupDoCanvas
     public ControlePupDoCanvas()
     {
         allPups = FactoryPowerUpEntidade.getAllPowerUps();
+        indiceAtual = PlayerPrefsPup.recuperarEApagarIndicePup();
     }
 
     public PowerUpEntidade getPupAtual()
