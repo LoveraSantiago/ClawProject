@@ -74,6 +74,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
             linhasModal[0].ligar();
             linhasModal[1].ligar();
             linhasModal[2].ligar();
+            linhasModal[3].desligar();
 
             int indicePup = PlayerPrefsPup.recuperarIndicePup();
             PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
