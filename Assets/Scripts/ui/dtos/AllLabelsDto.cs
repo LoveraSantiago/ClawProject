@@ -13,7 +13,7 @@ public class AllLabelsDto
     [SerializeField] private TextMeshProUGUI lblExplicacao;
 
     public TextMeshProUGUI LblPup { get { return lblPup; } }
-    public TextMeshProUGUI LblTipo { get { return LblTipo; } }
+    public TextMeshProUGUI LblTipo { get { return lblTipo; } }
     public TextMeshProUGUI LblQtd { get { return lblQtd; } }
     public TextMeshProUGUI LblPreco { get { return lblPreco; } }
     public TextMeshProUGUI LblDescCurta { get { return lblDescCurta; } }

@@ -17,6 +17,7 @@ public class FactoryPowerUpEntidade
         {
             bombaDaGarra = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.BOMBA_DA_GARRA, "Bomba", "bomba")
+                .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configDuracao(9)                
                 .configSupplierDePowerUpGo(BombaPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
@@ -33,6 +34,7 @@ public class FactoryPowerUpEntidade
         {
             missilNuclear = new PowerUpEntidade()                
                 .configNomes(PowerUpEnums.TIPO.MISSIL_NUCLEAR, "Bomba Nuclear", "nuclear-bomba-btn")
+                .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configDuracao(9)                
                 .configSupplierDePowerUpGo(MissilNuclearPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
@@ -49,6 +51,7 @@ public class FactoryPowerUpEntidade
         {
             minaTerrestre = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.MINA_TERRESTRE, "Mina Terrestre", "mina-terrestre")
+                .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configDuracao(3)
                 .configArea(PowerUpEnums.AREA.CHAO)
                 .configSupplierDePowerUpGo(MinaTerrestrePowerUpGo.getFornecedor())
@@ -66,6 +69,7 @@ public class FactoryPowerUpEntidade
         {
             missilTeleguiado = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.MISSIL_TELEGUIADO, "Missil Teleguiado", "missil-btnv2")
+                .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configDuracao(9)                
                 .configSupplierDePowerUpGo(MissilTeleguiadoPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
@@ -82,6 +86,7 @@ public class FactoryPowerUpEntidade
         {
             teleporte = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.TELEPORTE, "Tele-Transporte", "teleport-btn")
+                .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
                 .configDuracao(9)                
                 .configSupplierDePowerUpGo(TeleportePowerUpGo.getFornecedor())
                 .configIsClicavel(true)
@@ -98,6 +103,7 @@ public class FactoryPowerUpEntidade
         {
             asa = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.ASAS, "Asas da Liberdade", "asas-botao")
+                .configFamilia(PowerUpEnums.FAMILIA.LEVITACAO)
                 .configDuracao(9)                
                 .configSupplierDePowerUpGo(AsaPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
@@ -115,6 +121,7 @@ public class FactoryPowerUpEntidade
         {
             rollback = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.ROLLBACK, "Rollback", "rollback-botao")
+                .configFamilia(PowerUpEnums.FAMILIA.MECANISMO)
                 .configDuracao(9)                
                 .configSupplierDePowerUpGo(RollbackPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
@@ -132,6 +139,7 @@ public class FactoryPowerUpEntidade
         {
             descarte = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.DESCARTE, "Descarte", "descarte-botao")
+                .configFamilia(PowerUpEnums.FAMILIA.MECANISMO)
                 .configDuracao(9)
                 .configSupplierDePowerUpGo(DescartePowerUpGo.getFornecedor())
                 .configIsClicavel(true)

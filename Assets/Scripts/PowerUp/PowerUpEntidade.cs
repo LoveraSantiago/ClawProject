@@ -7,6 +7,7 @@ public class PowerUpEntidade
 
     public string nome { get; private set; }
     public string nomeSpriteBtn { get; private set; }
+    public string familia { get; private set; }
     public string descCurta { get; private set; }
     public string descDetalhada { get; private set; }
 
@@ -33,6 +34,12 @@ public class PowerUpEntidade
         tipo = tipoEntidade;
         this.nome = nome;
         this.nomeSpriteBtn = nomeSpriteBtn;
+        return this;
+    }
+
+    public PowerUpEntidade configFamilia(string familia)
+    {
+        this.familia = familia;
         return this;
     }
 
