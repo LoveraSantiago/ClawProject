@@ -10,6 +10,7 @@ public class PowerUpEntidade
     public string familia { get; private set; }
     public string descCurta { get; private set; }
     public string descDetalhada { get; private set; }
+    public string preco { get; private set; }
 
     public bool isClicavel { get; private set; }
     public bool isColetavel { get; private set; }
@@ -27,6 +28,7 @@ public class PowerUpEntidade
     {
         isColetavel = false;
         area = PowerUpEnums.AREA.NONE;
+        this.preco = "1";
     }    
 
     public PowerUpEntidade configNomes(PowerUpEnums.TIPO tipoEntidade, string nome, string nomeSpriteBtn)
@@ -77,6 +79,12 @@ public class PowerUpEntidade
     {
         this.descCurta = descCurta;
         this.descDetalhada = descDetalhada;
+        return this;
+    }
+
+    public PowerUpEntidade configPreco(int preco)
+    {
+        this.preco = preco.ToString();
         return this;
     }
 
