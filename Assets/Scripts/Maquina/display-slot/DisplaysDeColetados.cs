@@ -24,7 +24,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         Utils.MonoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris, executorPosEvento));        
     }    
     
-    public void processarPowerUp(PowerUpEntidade.TIPO tipoPup, PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
+    public void processarPowerUp(PowerUpEnums.TIPO tipoPup, PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
     {
         agendados.agendar(tipoPup);
         if (displayColetando)
@@ -189,7 +189,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         return grupoDisplays.isTodosDisplaysDesocupados();
     }
 
-    public void restartPowerUp(PowerUpEntidade.TIPO tipo, PowerUpInteracaoDisplayColetado interacao)
+    public void restartPowerUp(PowerUpEnums.TIPO tipo, PowerUpInteracaoDisplayColetado interacao)
     {
         processarPowerUp(tipo, interacao);
     }

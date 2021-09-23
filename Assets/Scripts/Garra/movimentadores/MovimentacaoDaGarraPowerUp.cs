@@ -11,7 +11,7 @@ public abstract class MovimentacaoDaGarraPowerUp : MovimentacaoDaGarra
     public static void receberInteracaoComPowerUp(PowerUpInteracaoComGarra garraInteracaoComPowerUpArg)
     {
         garraInteracaoComPowerUp = garraInteracaoComPowerUpArg;
-        if (garraInteracaoComPowerUp.getInteracaoComGarra() == PowerUpEntidade.INTERACAOGARRA.NAO_INTERACAO)
+        if (garraInteracaoComPowerUp.getInteracaoComGarra() == PowerUpEnums.INTERACAOGARRA.NAO_INTERACAO)
         {
             garraInteracaoComPowerUp.iniciar();
         }

@@ -50,8 +50,8 @@ public class ControleAcionamentoPowerUp
     private bool isAcaoBotaoPupTiposEspeciais(AcaoBotaoPowerUp acaoBotaoPowerUp)
     {
         return (acaoBotaoPowerUp != null) &&
-            (acaoBotaoPowerUp.getTipo() == PowerUpEntidade.TIPO.ROLLBACK ||
-             acaoBotaoPowerUp.getTipo() == PowerUpEntidade.TIPO.DESCARTE);
+            (acaoBotaoPowerUp.getTipo() == PowerUpEnums.TIPO.ROLLBACK ||
+             acaoBotaoPowerUp.getTipo() == PowerUpEnums.TIPO.DESCARTE);
     }
 
     public bool podeAcionarPupDraggavel()

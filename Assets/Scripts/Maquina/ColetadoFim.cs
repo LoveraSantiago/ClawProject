@@ -35,14 +35,14 @@ public class ColetadoFim
         return new ColetadoFim(ESTADO_NORMAL, clears);        
     }
 
-    public static ColetadoFim ofPup(PowerUpEntidade.TIPO tipo, bool[] clears)
+    public static ColetadoFim ofPup(PowerUpEnums.TIPO tipo, bool[] clears)
     {
-        if(tipo == PowerUpEntidade.TIPO.ROLLBACK)
+        if(tipo == PowerUpEnums.TIPO.ROLLBACK)
         {
             Debug.Log("Tipo Rollback criado");
             return new ColetadoFim(ESTADO_ROLLBACK, clears);
         }
-        else if(tipo == PowerUpEntidade.TIPO.DESCARTE)
+        else if(tipo == PowerUpEnums.TIPO.DESCARTE)
         {
             Debug.Log("Tipo Descarte criado");
             return new ColetadoFim(ESTADO_DESCARTE, clears);

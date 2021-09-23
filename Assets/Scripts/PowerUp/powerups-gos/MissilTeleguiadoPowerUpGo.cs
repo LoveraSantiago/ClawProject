@@ -26,9 +26,9 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         miras = new ColetaveisMiras();       
     }
 
-    public PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
+    public PowerUpEnums.INTERACAOGARRA getInteracaoComGarra()
     {
-        return PowerUpEntidade.INTERACAOGARRA.PARADO;
+        return PowerUpEnums.INTERACAOGARRA.PARADO;
     }
 
     public override PowerUpInteracaoComGarra getObjInteracaoComGarra()

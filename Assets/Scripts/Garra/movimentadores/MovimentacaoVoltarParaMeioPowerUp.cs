@@ -27,11 +27,11 @@ public class MovimentacaoVoltarParaMeioPowerUp : MovimentacaoDaGarraPowerUp
         }
         else if(direcaoVoltar == DirecaoDaGarra.CENTRALIZADA)
         {
-            if (garraInteracaoComPowerUp.getInteracaoComGarra() == PowerUpEntidade.INTERACAOGARRA.MOVIMENTO)
+            if (garraInteracaoComPowerUp.getInteracaoComGarra() == PowerUpEnums.INTERACAOGARRA.MOVIMENTO)
             {
                 comunicadorComGerMovimentacao.trocarParaAcaoSegurandoEmMovimento();
             }
-            else if (garraInteracaoComPowerUp.getInteracaoComGarra() == PowerUpEntidade.INTERACAOGARRA.PARADO)
+            else if (garraInteracaoComPowerUp.getInteracaoComGarra() == PowerUpEnums.INTERACAOGARRA.PARADO)
             {
                 comunicadorComGerMovimentacao.trocarParaAcaoSegurandoParado();
             }

@@ -3,23 +3,7 @@ using UnityEngine;
 
 public class PowerUpEntidade 
 {
-    private static Dictionary<string, Sprite> dicionarioDeSprites;
-
-    public enum TIPO
-    {
-        BOMBA_DA_GARRA, MISSIL_NUCLEAR, MINA_TERRESTRE, MISSIL_TELEGUIADO,
-        TELEPORTE, ASAS, ROLLBACK, DESCARTE, NONE
-    }
-
-    public enum AREA
-    {
-        CHAO, NONE
-    }
-
-    public enum INTERACAOGARRA
-    {
-        MOVIMENTO, PARADO, NAO_INTERACAO
-    }
+    private static Dictionary<string, Sprite> dicionarioDeSprites;   
 
     public string nome { get; private set; }
     public string nomeSpriteBtn { get; private set; }
@@ -31,8 +15,8 @@ public class PowerUpEntidade
 
     public int duracao { get; private set; }
 
-    public TIPO tipo { get; private set; }
-    public AREA area { get; private set; }
+    public PowerUpEnums.TIPO tipo { get; private set; }
+    public PowerUpEnums.AREA area { get; private set; }
     public Sprite sprPowerUp { get { return dicionarioDeSprites[nomeSpriteBtn]; }}
 
     private Fornecedor<AbstractPowerUpGo> fornecedorPowerUpGo;
@@ -41,10 +25,10 @@ public class PowerUpEntidade
     public PowerUpEntidade()
     {
         isColetavel = false;
-        area = AREA.NONE;
+        area = PowerUpEnums.AREA.NONE;
     }    
 
-    public PowerUpEntidade configNomes(TIPO tipoEntidade, string nome, string nomeSpriteBtn)
+    public PowerUpEntidade configNomes(PowerUpEnums.TIPO tipoEntidade, string nome, string nomeSpriteBtn)
     {
         tipo = tipoEntidade;
         this.nome = nome;
@@ -70,7 +54,7 @@ public class PowerUpEntidade
         return this;
     }   
 
-    public PowerUpEntidade configArea(AREA area)
+    public PowerUpEntidade configArea(PowerUpEnums.AREA area)
     {
         this.area = area;
         return this;
