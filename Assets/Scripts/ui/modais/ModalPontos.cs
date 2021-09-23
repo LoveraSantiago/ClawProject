@@ -67,6 +67,52 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         }
     }
 
+    private void mostrarModalCacaNiquelSinglePup(CacaNiquelResult evento)
+    {
+        if (!mostrandoModal)
+        {
+            linhasModal[0].ligar();
+            linhasModal[1].ligar();
+            linhasModal[2].ligar();
+
+            int indicePup = PlayerPrefsPup.recuperarIndicePup();
+            PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
+
+            montarLinhaPupSingle(0, evento, pupEscolhido);
+            montarLinhaPupSingle(1, evento, pupEscolhido);
+            montarLinhaPupSingle(2, evento, pupEscolhido);
+
+            if (evento.isTripleSucess())
+            {
+                linhasModal[3].ligar();
+                linhasModal[0].passarInfos("Bonus!!!", evento.sprResultados[0], "3");
+                PlayerPrefsPup.adicionarPup(pupEscolhido.nome, 3);
+            }            
+
+            scoreAtual = "Power Ups Ganhos";
+            setPontuacao();
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal("PupScene"));
+        }
+    }
+
+    private void montarLinhaPupSingle(int indice, CacaNiquelResult evento, PowerUpEntidade pup)
+    {
+
+        if(evento.isResultSucesso(indice))
+        {
+            linhasModal[indice].passarInfos(pup.nome, evento.sprResultados[indice], "OK");
+            PlayerPrefsPup.adicionarPup(pup.nome, 1);
+        }
+        else if(evento.isResultFail(indice))
+        {
+            linhasModal[indice].passarInfos("Nada", evento.sprResultados[indice], "NOK");
+        }
+        else
+        {
+            linhasModal[indice].passarInfos("Ficha", evento.sprResultados[indice], "OK");
+        }
+    }
+
     private void mostrarModalCacaNiquelAllPups(CacaNiquelResult evento)
     {
         if (!mostrandoModal)
@@ -133,13 +179,13 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
     {
         if (evento.isFinalizado)
         {
-            if(evento.tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL)
+            if(evento.isPupGeral())
             {
                 mostrarModalCacaNiquelAllPups(evento);
             }
-            else if (evento.tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
+            else if (evento.isPupSingle())
             {
-
+                mostrarModalCacaNiquelSinglePup(evento);
             }
         }
     }
