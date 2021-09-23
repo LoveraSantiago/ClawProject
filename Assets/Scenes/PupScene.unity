@@ -2483,8 +2483,10 @@ MonoBehaviour:
   prefabPowerUpDto: {fileID: 5653745407918303698, guid: 264fd96ffd92c7d4899adb12d26ef4f1, type: 3}
   labelsDto:
     lblPup: {fileID: 2048214938}
-    lblDescCurta: {fileID: 1559100285}
+    lblTipo: {fileID: 1147697279}
     lblQtd: {fileID: 755154434}
+    lblPreco: {fileID: 2017061033}
+    lblDescCurta: {fileID: 1559100285}
     lblExplicacao: {fileID: 1059423808}
   prefabBottomBar: {fileID: 2110723316}
 --- !u!222 &1668072988
