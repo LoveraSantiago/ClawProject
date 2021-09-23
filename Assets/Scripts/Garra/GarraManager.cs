@@ -128,9 +128,12 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         }
     }
 
-    void ProdutorConsumidoresDeEvento<Vazio>.ConsumidorEvento.consumirEvento(Vazio evento)
-    {   
-        gerDeMovAtual.iniciarMovimentacoes();
+    void ProdutorConsumidoresDeEvento<CacaNiquelResult>.ConsumidorEvento.consumirEvento(CacaNiquelResult evento)
+    {
+        if (evento.isInicio)
+        {
+            gerDeMovAtual.iniciarMovimentacoes();
+        }
     }
 
     ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()

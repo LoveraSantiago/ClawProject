@@ -7,7 +7,7 @@ public class MainGameScene : MonoBehaviour,
 {
     [SerializeField] private LevelFlowManager.LEVEL level;
     [Space(5)]
-    [SerializeField] private MainDto mainDto;
+    [SerializeField] private MainGameDto mainDto;
 
     private MainGameManagers managers;
     private LevelFlowManager.LEVEL levelEscolhido;    
@@ -31,7 +31,7 @@ public class MainGameScene : MonoBehaviour,
 
     private void configurandoLevel()
     {
-        LevelFlowManager.LEVEL levelFlow = PlayerPrefsUtils.recuperarELimparLevel(level);
+        LevelFlowManager.LEVEL levelFlow = PlayerPrefsLevel.recuperarELimparLevel(level);
         AbstractLevel levelEscolhido     = LevelFlowManager.getLevelByEnum(levelFlow);
         managers.configurandoLevel(levelEscolhido);
     }       

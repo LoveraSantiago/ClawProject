@@ -12,5 +12,6 @@ public class AllLabels : AcaoBlocoImgPUpAtual.ConsumidorEvento
         labelsDto.LblPup.text = evento.nome;
         labelsDto.LblDescCurta.text = evento.descCurta;
         labelsDto.LblExplicacao.text = evento.descDetalhada;
+        labelsDto.LblQtd.text = "QTD: " + PlayerPrefsPup.recuperarQtdPup(evento.nome);
     }
 }

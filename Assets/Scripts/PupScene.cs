@@ -71,8 +71,8 @@ public class PupScene : MonoBehaviour
 
     private void irGameScene(LevelFlowManager.LEVEL level, BlocoImg blocoImg)
     {
-        PlayerPrefsUtils.salvarLevel(level);
-        PlayerPrefsUtils.salvarIndicePup(blocoImg.getIndicePupAtual());
+        PlayerPrefsLevel.salvarLevel(level);
+        PlayerPrefsPup.salvarIndicePup(blocoImg.getIndicePupAtual());
         SceneManager.LoadScene("MainGameScene");
     }
 }

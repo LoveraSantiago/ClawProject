@@ -149,7 +149,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
 
     void AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {        
-        btnsPowerUp[evento.indiceBotao].receberAcaoPowerUp(controlePup, evento.powerUpEntidade);
+        btnsPowerUp[evento.indiceBotao].receberAcaoPowerUp(evento, controlePup);
     }
 
     ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEvento()

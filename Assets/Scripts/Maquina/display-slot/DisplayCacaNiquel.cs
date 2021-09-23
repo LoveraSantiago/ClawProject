@@ -1,17 +1,17 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 {
+    public enum RESULTADO_CACANIQUEL { SUCESSO, FAIL, COIN};
     private AbstractLevel.TIPO_GAME tipoGame;
-    private ProdutorDeEvento<Vazio> produtorDeEvento;
+    private ProdutorDeEvento<CacaNiquelResult> produtorDeEvento;
     private InputGame inputGame;
 
     public DisplayCacaNiquel(InputGame inputGame)
     {
         this.inputGame = inputGame;
-        produtorDeEvento = new ProdutorDeEvento<Vazio>();
+        produtorDeEvento = new ProdutorDeEvento<CacaNiquelResult>();
     }
 
     public void configuradoPeloLevel(AbstractLevel.TIPO_GAME tipoGame)
@@ -30,10 +30,11 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     private IEnumerator iniciarDisplayCacaNiquel(GrupoDisplays grupoDisplays)
     {
         yield return new WaitForSeconds(0.5f);
-        produtorDeEvento.produziuEvento(new Vazio());
-        grupoDisplays.ligarGlowLuz();    
+        produtorDeEvento.produziuEvento(new CacaNiquelResult());
+        grupoDisplays.ligarGlowLuz();
 
-        Sprite[][] allSrites = montarSpritesTipoCacaNiquel(grupoDisplays.displaysSlotsDto);
+        DisplaysSlotsDto displaysSlotsDto = grupoDisplays.displaysSlotsDto;
+        Sprite[][] allSrites = montarSpritesTipoCacaNiquel(displaysSlotsDto);
         grupoDisplays.ligarCacaNiquel(allSrites[0], allSrites[1], allSrites[2]);
         yield return new WaitForSeconds(0.1f);
 
@@ -49,17 +50,25 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         }
 
         yield return new WaitForSeconds(0.1f);
-        Sprite[] resultados = grupoDisplays.getResultadosCacaNiquel();
-        avaliarResultados(resultados, grupoDisplays);
-        yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("PupScene");
+        Sprite[] resultadosSprs = grupoDisplays.getResultadosCacaNiquel();
+
+        int indicePup = PlayerPrefsPup.recuperarIndicePup();
+        PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
+
+        avaliarResultados(pupEscolhido, resultadosSprs, grupoDisplays);
+        RESULTADO_CACANIQUEL[] resultados = new RESULTADO_CACANIQUEL[] {
+            avaliarResultado(pupEscolhido, resultadosSprs[0], displaysSlotsDto),
+            avaliarResultado(pupEscolhido, resultadosSprs[1], displaysSlotsDto),
+            avaliarResultado(pupEscolhido, resultadosSprs[2], displaysSlotsDto)};
+
+        produtorDeEvento.produziuEvento(new CacaNiquelResult(tipoGame, resultadosSprs, resultados));       
     }    
 
     private Sprite[][] montarSpritesTipoCacaNiquel(DisplaysSlotsDto displaysSlotsDto)
     {
         if(tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
         {
-            int indicePup = PlayerPrefsUtils.recuperarIndicePup();
+            int indicePup = PlayerPrefsPup.recuperarIndicePup();
             PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
             Sprite[] spritesSlot1 = new Sprite[] { pupEscolhido.sprPowerUp, displaysSlotsDto.SprVazio };
@@ -81,7 +90,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     {
         if(tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
         {
-            int indicePup = PlayerPrefsUtils.recuperarIndicePup();
+            int indicePup = PlayerPrefsPup.recuperarIndicePup();
             PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
             return pupEscolhido.sprPowerUp;
         }
@@ -91,20 +100,17 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         }
     }
 
-    private void avaliarResultados(Sprite[] resultados, GrupoDisplays grupoDisplays)
+    private void avaliarResultados(PowerUpEntidade pupEscolhido , Sprite[] resultados, GrupoDisplays grupoDisplays)
     {
         if (tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
         {
-            int indicePup = PlayerPrefsUtils.recuperarIndicePup();
-            PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
-
             if (resultados[2] == grupoDisplays.displaysSlotsDto.SprMoeda)
             {
                 grupoDisplays.ligarGlowLuz();
             }
             else if (resultados[0] == pupEscolhido.sprPowerUp &&
-                    resultados[1] == pupEscolhido.sprPowerUp &&
-                    resultados[2] == pupEscolhido.sprPowerUp)
+                     resultados[1] == pupEscolhido.sprPowerUp &&
+                     resultados[2] == pupEscolhido.sprPowerUp)
             {
                 grupoDisplays.ligar();
             }
@@ -115,7 +121,24 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         }
     }        
 
-    ProdutorDeEvento<Vazio> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
+    private RESULTADO_CACANIQUEL avaliarResultado(
+        PowerUpEntidade pupEscolhido, Sprite sprSorteado, DisplaysSlotsDto displaysSlotsDto)
+    {
+        if(sprSorteado == pupEscolhido.sprPowerUp)
+        {
+            return RESULTADO_CACANIQUEL.SUCESSO;
+        }
+        else if(sprSorteado == displaysSlotsDto.SprVazio)
+        {
+            return RESULTADO_CACANIQUEL.FAIL;
+        }
+        else
+        {
+            return RESULTADO_CACANIQUEL.COIN;
+        }
+    }
+
+    ProdutorDeEvento<CacaNiquelResult> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

@@ -187,4 +187,27 @@ public class FactoryPowerUpEntidade
         }
         return sprites;
     }
+
+    public static string[] getNomesPupsBySprites(Sprite[] sprites)
+    {
+        PowerUpEntidade[] allPups = getAllPowerUps();
+        string[] result = new string[sprites.Length];
+        for(int contador = 0; contador < sprites.Length; contador++)
+        {
+            result[contador] = getPupNomeBySprite(allPups, sprites[contador]);
+        }
+        return result;
+    }
+
+    private static string getPupNomeBySprite(PowerUpEntidade[] allPups, Sprite sprite)
+    {
+        for(int contador = 0; contador < allPups.Length; contador++)
+        {
+            if(allPups[contador].sprPowerUp == sprite)
+            {
+                return allPups[contador].nome;
+            }
+        }
+        return null;
+    }
 }

@@ -2259,7 +2259,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btnBack: {fileID: 98718867}
   btnPratica: {fileID: 1907970085}
-  btnCacaNiquelPup: {fileID: 921798732}
   btnCacaNiquelPupIndividual: {fileID: 921798732}
   btnCacaNiquelPupGeral: {fileID: 29850282}
   blocoImgDto:
@@ -2271,6 +2270,7 @@ MonoBehaviour:
   labelsDto:
     lblPup: {fileID: 2048214938}
     lblDescCurta: {fileID: 1559100285}
+    lblQtd: {fileID: 755154434}
     lblExplicacao: {fileID: 1059423808}
   prefabBottomBar: {fileID: 2110723316}
 --- !u!222 &1668072988

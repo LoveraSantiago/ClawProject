@@ -1,3 +1,3 @@
-public class AcaoCacaNiquel : ProdutorConsumidoresDeEvento<Vazio>
+public class AcaoCacaNiquel : ProdutorConsumidoresDeEvento<CacaNiquelResult>
 {    
 }

@@ -23,10 +23,19 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
     {
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;        
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeBtnSelecionado));
-        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
-
+        int qtdPup = PlayerPrefsPup.recuperarQtdPup(pupEscolhido.nome);
         btnBottomBar.descerBotao();
-        Utils.MonoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));       
+        if(qtdPup > 0)
+        {
+            PlayerPrefsPup.subtrairPup(pupEscolhido.nome);
+            PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
+            Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));       
+        }
+        else
+        {        
+            PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn);
+            Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));
+        }
     }
 
     public void simularCliqueBoxAcionado(int indiceBtn, int indicePup)
@@ -39,8 +48,8 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
 
     public override void posCliqueBtnClose()
     {
-        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, null);
-        Utils.MonoBehaviour.StartCoroutine(finaizarBottomBar(pupBtnInfo));
+        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn);
+        Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));
     }
 
     void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
@@ -49,7 +58,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         Utils.MonoBehaviour.StartCoroutine(mostrarBottomBar());
     }
 
-    private IEnumerator finaizarBottomBar(PowerUpBtnInfo pupBtnInfo)
+    private IEnumerator finalizarBottomBar(PowerUpBtnInfo pupBtnInfo)
     {
         yield return new WaitForSecondsRealtime(0.5f);
         prefabBottomBar.SetActive(false);        

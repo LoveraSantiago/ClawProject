@@ -1,24 +1,22 @@
 public class MainGameManagers 
-{
-    public ModalPontos modalPontos { get; private set; }
-    public GarraManager garraManager { get; private set; }
-    public MaquinaManager maquinaManager { get; private set; }
-    public PowerUpManager powerUpManager { get; private set; }
+{    
+    public GarraManager      garraManager      { get; private set; }
+    public MaquinaManager    maquinaManager    { get; private set; }
+    public PowerUpManager    powerUpManager    { get; private set; }
     public ColetaveisManager coletaveisManager { get; private set; }
-    public CameraManager cameraManager { get; private set; }
-    public ScrollManager scrollManager { get; private set; }
-    public InputGame inputGame { get; private set; }
+    public CameraManager     cameraManager     { get; private set; }
+    public UiGameManager     uiManager         { get; private set; }    
+    public InputGame         inputGame         { get; private set; }
 
-    public MainGameManagers(MainDto mainDto)
+    public MainGameManagers(MainGameDto mainDto)
     {
-        inputGame = new InputGameImpl(mainDto.MaquinaDto.ReferenciaChao);
-        garraManager = new GarraManager(mainDto.GarraDto);
+        inputGame         = new InputGameImpl(mainDto.MaquinaDto.ReferenciaChao);
+        garraManager      = new GarraManager(mainDto.GarraDto);
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
-        maquinaManager = new MaquinaManager(mainDto.MaquinaDto, inputGame);
-        powerUpManager = new PowerUpManager(mainDto.PowerUpDto, inputGame);
-        modalPontos = new ModalPontos(mainDto.ModalPontosDto);
-        cameraManager = new CameraManager(mainDto.CameraDto);
-        scrollManager = new ScrollManager(mainDto.PrefabBottomBar);
+        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, inputGame);
+        powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
+        uiManager         = new UiGameManager(mainDto.UiDto);        
+        cameraManager     = new CameraManager(mainDto.CameraDto);        
     }
 
     public void configurandoLevel(AbstractLevel levelEscolhido)
@@ -26,8 +24,7 @@ public class MainGameManagers
         garraManager.configuradoPeloLevel(levelEscolhido);
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
         maquinaManager.configuradoPeloLevel(levelEscolhido);
-        modalPontos.configurarLevel(levelEscolhido.getLevelName());
-        scrollManager.configuradoPeloLevel(levelEscolhido);
+        uiManager.configurandoLevel(levelEscolhido);        
     }
 
     public void configurandoEventos()
@@ -36,7 +33,7 @@ public class MainGameManagers
             .configurarProdutor(coletaveisManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(modalPontos);
+            .adicionarConsumidor(uiManager);
 
         new AcaoColetadoFim()
             .configurarProdutor(maquinaManager)
@@ -64,29 +61,30 @@ public class MainGameManagers
         new AcaoBotaoPUpVazio()
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(scrollManager);
+            .adicionarConsumidor(uiManager);
 
         new AcaoBBarPupEscolhido<PowerUpBtnInfo>()
-            .configurarProdutor(scrollManager)
+            .configurarProdutor(uiManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(cameraManager);
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(modalPontos)
+            .adicionarConsumidor(uiManager)
             .adicionarConsumidor(coletaveisManager);
 
         new AcaoBoardElevadoFim()
             .configurarProdutor(coletaveisManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(modalPontos);
+            .adicionarConsumidor(uiManager);
 
         new AcaoCacaNiquel()
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(garraManager);
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(uiManager);
     }
 
     public void startLaizy()
@@ -94,7 +92,7 @@ public class MainGameManagers
         coletaveisManager.start();
         garraManager.start();
         maquinaManager.start();
-        scrollManager.start();
+        uiManager.start();        
     }
 
     public void update()
