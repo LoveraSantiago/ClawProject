@@ -85,7 +85,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
             if (evento.isTripleSucess())
             {
                 linhasModal[3].ligar();
-                linhasModal[0].passarInfos("Bonus!!!", evento.sprResultados[0], "3");
+                linhasModal[3].passarInfos("Bonus!!!", evento.sprResultados[0], "3");
                 PlayerPrefsPup.adicionarPup(pupEscolhido.nome, 3);
             }            
 
