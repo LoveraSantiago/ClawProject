@@ -88,7 +88,13 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
                 linhasModal[3].ligar();
                 linhasModal[3].passarInfos("Bonus!!!", evento.sprResultados[0], "3");
                 PlayerPrefsPup.adicionarPup(pupEscolhido.nome, 3);
-            }            
+            }     
+            else if (evento.isTripleFail())
+            {
+                linhasModal[3].ligar();
+                linhasModal[3].passarInfos("Consolação", evento.sprResultados[0], "1");
+                PlayerPrefsPup.adicionarPup(pupEscolhido.nome, 1);
+            }
 
             scoreAtual = "Power Ups Ganhos";
             setPontuacao();

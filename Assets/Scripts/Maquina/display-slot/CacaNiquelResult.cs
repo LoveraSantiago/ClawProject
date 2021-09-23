@@ -39,6 +39,13 @@ public class CacaNiquelResult
                isResultSucesso(2);
     }
 
+    public bool isTripleFail()
+    {
+        return isResultFail(0) &&
+               isResultFail(1) &&
+               isResultFail(2);
+    }
+
     public bool isPupGeral()
     {
         return tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL;
