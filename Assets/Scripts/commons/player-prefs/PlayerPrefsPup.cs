@@ -17,7 +17,14 @@ public class PlayerPrefsPup
 
     public static int recuperarQtdPup(string nomePup)
     {
-        return  PlayerPrefs.GetInt(nomePup);
+        return PlayerPrefs.GetInt(nomePup);
+    }
+
+    public static void adicionarPup(string nomePup, int qtd)
+    {
+        int atual = recuperarQtdPup(nomePup);
+        atual += qtd;
+        salvarQtdPup(nomePup, atual);
     }
 
     public static int subtrairPup(string nomePup)
