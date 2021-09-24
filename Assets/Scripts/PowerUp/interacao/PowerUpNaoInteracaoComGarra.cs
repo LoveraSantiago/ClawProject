@@ -19,9 +19,9 @@ public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo,
         return this;
     }
 
-    public PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
+    public PowerUpEnums.INTERACAOGARRA getInteracaoComGarra()
     {
-        return PowerUpEntidade.INTERACAOGARRA.NAO_INTERACAO;
+        return PowerUpEnums.INTERACAOGARRA.NAO_INTERACAO;
     }   
 
     public override void fixarEixoX(){}

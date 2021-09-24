@@ -41,7 +41,7 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
         return powerUpEntidade.sprPowerUp;
     }
 
-    public PowerUpEntidade.TIPO getTipo()
+    public PowerUpEnums.TIPO getTipo()
     {
         return powerUpEntidade.tipo;
     }

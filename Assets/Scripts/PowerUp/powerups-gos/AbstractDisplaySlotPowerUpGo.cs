@@ -130,5 +130,5 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpNaoInteracaoComGarra
         }
     }
 
-    protected abstract PowerUpEntidade.TIPO getTipoRestartPup();        
+    protected abstract PowerUpEnums.TIPO getTipoRestartPup();        
 }

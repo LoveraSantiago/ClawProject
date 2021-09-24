@@ -15,9 +15,9 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         goColetavel.SetActive(false);
     }
 
-    public PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra()
+    public PowerUpEnums.INTERACAOGARRA getInteracaoComGarra()
     {
-        return PowerUpEntidade.INTERACAOGARRA.MOVIMENTO;
+        return PowerUpEnums.INTERACAOGARRA.MOVIMENTO;
     }
 
     public override PowerUpInteracaoComGarra getObjInteracaoComGarra()

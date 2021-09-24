@@ -16,7 +16,8 @@ public class FactoryPowerUpEntidade
         if (bombaDaGarra == null)
         {
             bombaDaGarra = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.BOMBA_DA_GARRA, "Bomba", "bomba")
+                .configNomes(PowerUpEnums.TIPO.BOMBA_DA_GARRA, "Bomba", "bomba")
+                .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configDuracao(9)                
                 .configSupplierDePowerUpGo(BombaPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
@@ -32,7 +33,8 @@ public class FactoryPowerUpEntidade
         if (missilNuclear == null)
         {
             missilNuclear = new PowerUpEntidade()                
-                .configNomes(PowerUpEntidade.TIPO.MISSIL_NUCLEAR, "Bomba Nuclear", "nuclear-bomba-btn")
+                .configNomes(PowerUpEnums.TIPO.MISSIL_NUCLEAR, "Bomba Nuclear", "nuclear-bomba-btn")
+                .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)                
                 .configDuracao(9)                
                 .configSupplierDePowerUpGo(MissilNuclearPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
@@ -48,9 +50,11 @@ public class FactoryPowerUpEntidade
         if (minaTerrestre == null)
         {
             minaTerrestre = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.MINA_TERRESTRE, "Mina Terrestre", "mina-terrestre")
+                .configNomes(PowerUpEnums.TIPO.MINA_TERRESTRE, "Mina Terrestre", "mina-terrestre")
+                .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
+                .configPreco(2)
                 .configDuracao(3)
-                .configArea(PowerUpEntidade.AREA.CHAO)
+                .configArea(PowerUpEnums.AREA.CHAO)
                 .configSupplierDePowerUpGo(MinaTerrestrePowerUpGo.getFornecedor())
                 .configIsClicavel(false)
                 .configDescricao(
@@ -65,7 +69,9 @@ public class FactoryPowerUpEntidade
         if (missilTeleguiado == null)
         {
             missilTeleguiado = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.MISSIL_TELEGUIADO, "Missil Teleguiado", "missil-btnv2")
+                .configNomes(PowerUpEnums.TIPO.MISSIL_TELEGUIADO, "Missil Teleguiado", "missil-btnv2")
+                .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
+                .configPreco(2)
                 .configDuracao(9)                
                 .configSupplierDePowerUpGo(MissilTeleguiadoPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
@@ -81,8 +87,10 @@ public class FactoryPowerUpEntidade
         if(teleporte == null)
         {
             teleporte = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.TELEPORTE, "Tele-Transporte", "teleport-btn")
-                .configDuracao(9)                
+                .configNomes(PowerUpEnums.TIPO.TELEPORTE, "Tele-Transporte", "teleport-btn")
+                .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
+                .configPreco(3)
+                .configDuracao(9)         
                 .configSupplierDePowerUpGo(TeleportePowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
@@ -97,7 +105,9 @@ public class FactoryPowerUpEntidade
         if(asa == null)
         {
             asa = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.ASAS, "Asas da Liberdade", "asas-botao")
+                .configNomes(PowerUpEnums.TIPO.ASAS, "Asas da Liberdade", "asas-botao")
+                .configFamilia(PowerUpEnums.FAMILIA.LEVITACAO)
+                .configPreco(4)
                 .configDuracao(9)                
                 .configSupplierDePowerUpGo(AsaPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
@@ -114,7 +124,8 @@ public class FactoryPowerUpEntidade
         if(rollback == null)
         {
             rollback = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.ROLLBACK, "Rollback", "rollback-botao")
+                .configNomes(PowerUpEnums.TIPO.ROLLBACK, "Rollback", "rollback-botao")
+                .configFamilia(PowerUpEnums.FAMILIA.MECANISMO)
                 .configDuracao(9)                
                 .configSupplierDePowerUpGo(RollbackPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
@@ -131,7 +142,9 @@ public class FactoryPowerUpEntidade
         if(descarte == null)
         {
             descarte = new PowerUpEntidade()
-                .configNomes(PowerUpEntidade.TIPO.DESCARTE, "Descarte", "descarte-botao")
+                .configNomes(PowerUpEnums.TIPO.DESCARTE, "Descarte", "descarte-botao")
+                .configFamilia(PowerUpEnums.FAMILIA.MECANISMO)
+                .configPreco(2)
                 .configDuracao(9)
                 .configSupplierDePowerUpGo(DescartePowerUpGo.getFornecedor())
                 .configIsClicavel(true)
@@ -142,18 +155,18 @@ public class FactoryPowerUpEntidade
         return descarte;
     }
 
-    public static PowerUpEntidade getPowerUpEntidadeByEnum(PowerUpEntidade.TIPO tipo)
+    public static PowerUpEntidade getPowerUpEntidadeByEnum(PowerUpEnums.TIPO tipo)
     {
         switch (tipo)
         {
-            case PowerUpEntidade.TIPO.BOMBA_DA_GARRA   : return getBombaDaGarra();
-            case PowerUpEntidade.TIPO.MISSIL_NUCLEAR   : return getMissilNuclear();
-            case PowerUpEntidade.TIPO.MINA_TERRESTRE   : return getMinaTerrestre();
-            case PowerUpEntidade.TIPO.MISSIL_TELEGUIADO: return getMissilTeleguiado();
-            case PowerUpEntidade.TIPO.TELEPORTE        : return getTeleporte();
-            case PowerUpEntidade.TIPO.ASAS             : return getAsas();
-            case PowerUpEntidade.TIPO.ROLLBACK         : return getRollBack();
-            case PowerUpEntidade.TIPO.DESCARTE         : return getDescarte();
+            case PowerUpEnums.TIPO.BOMBA_DA_GARRA   : return getBombaDaGarra();
+            case PowerUpEnums.TIPO.MISSIL_NUCLEAR   : return getMissilNuclear();
+            case PowerUpEnums.TIPO.MINA_TERRESTRE   : return getMinaTerrestre();
+            case PowerUpEnums.TIPO.MISSIL_TELEGUIADO: return getMissilTeleguiado();
+            case PowerUpEnums.TIPO.TELEPORTE        : return getTeleporte();
+            case PowerUpEnums.TIPO.ASAS             : return getAsas();
+            case PowerUpEnums.TIPO.ROLLBACK         : return getRollBack();
+            case PowerUpEnums.TIPO.DESCARTE         : return getDescarte();
             default: return null;
         }        
     }

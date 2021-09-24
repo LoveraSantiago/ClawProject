@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface PowerUpInteracaoComGarra 
 {
-    PowerUpEntidade.INTERACAOGARRA getInteracaoComGarra();
+    PowerUpEnums.INTERACAOGARRA getInteracaoComGarra();
 
     float getAnguloParaGarraSegurar();    
     void iniciar();

@@ -5,9 +5,9 @@ public class RollbackPowerUpGo : AbstractDisplaySlotPowerUpGo
     {
     }
 
-    protected override PowerUpEntidade.TIPO getTipoRestartPup()
+    protected override PowerUpEnums.TIPO getTipoRestartPup()
     {
-        return PowerUpEntidade.TIPO.ROLLBACK;
+        return PowerUpEnums.TIPO.ROLLBACK;
     }
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
