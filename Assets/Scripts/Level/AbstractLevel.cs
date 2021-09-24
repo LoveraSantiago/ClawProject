@@ -33,7 +33,13 @@ public abstract class AbstractLevel
 
     public void validar()
     {
+        LevelValidador validador = new LevelValidador();
+        validador.validar(this);
+    }
 
+    public bool isNormalLevel()
+    {
+        return getTipoGame() == TIPO_GAME.NORMAL;
     }
 
     public bool isCacaNiquelLevel()
