@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 {
-    public enum RESULTADO_CACANIQUEL { SUCESSO, FAIL, COIN};
-    private AbstractLevel.TIPO_GAME tipoGame;
+    public enum RESULTADO_CACANIQUEL { SUCESSO, FAIL, COIN };
+
+    private string tipoGame;
     private ProdutorDeEvento<CacaNiquelResult> produtorDeEvento;
     private InputGame inputGame;
 
@@ -14,7 +15,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         produtorDeEvento = new ProdutorDeEvento<CacaNiquelResult>();
     }
 
-    public void configuradoPeloLevel(AbstractLevel.TIPO_GAME tipoGame)
+    public void configuradoPeloLevel(string tipoGame)
     {
         this.tipoGame = tipoGame;
     }
@@ -66,7 +67,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 
     private Sprite[][] montarSpritesTipoCacaNiquel(DisplaysSlotsDto displaysSlotsDto)
     {
-        if(tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
+        if(AbstractLevel.isCacaNiquelSingleLevel(tipoGame))        
         {
             int indicePup = PlayerPrefsPup.recuperarIndicePup();
             PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
@@ -88,7 +89,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 
     private Sprite getSprDeSucesso()
     {
-        if(tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
+        if(AbstractLevel.isCacaNiquelSingleLevel(tipoGame))        
         {
             int indicePup = PlayerPrefsPup.recuperarIndicePup();
             PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
@@ -102,7 +103,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 
     private void avaliarResultados(PowerUpEntidade pupEscolhido , Sprite[] resultados, GrupoDisplays grupoDisplays)
     {
-        if (tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL)
+        if (AbstractLevel.isCacaNiquelSingleLevel(tipoGame))
         {
             if (resultados[2] == grupoDisplays.displaysSlotsDto.SprMoeda)
             {

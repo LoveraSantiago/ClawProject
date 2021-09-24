@@ -13,7 +13,7 @@ public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
 
     public void configuradoPeloLevel(AbstractLevel level)
     {
-        if(level.getTipoGame() == AbstractLevel.TIPO_GAME.PUP)
+        if(level.isPupLevel())
         {
             isLevelPup = true;
         }
