@@ -52,6 +52,19 @@ public class LevelValidador
                     }
                 }
             }
+
+            TipoContagemTempoDto contagemTempo = level.getTempoContagem();
+            if (!contagemTempo.isContagemContinua())
+            {
+                Debug.LogError(level.getLevelName() + 
+                               " level tipo elevador com tipo de contagem nao continua");
+            }
+
+            if (contagemTempo.tempo.Equals(AbstractLevel.TIMER_ZERO))
+            {
+                Debug.LogError(level.getLevelName() +
+                               " level com tempo configurado igual a zero");
+            }
         }
     }
 }

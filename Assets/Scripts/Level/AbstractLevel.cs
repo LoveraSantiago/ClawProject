@@ -4,7 +4,7 @@ public abstract class AbstractLevel
 {
     protected enum TIPO_GAME { NORMAL, ELEVADOR, ORDENADO, PUP, CACANIQUEL_PUP_INDIVIDUAL, CACANIQUEL_PUP_GERAL }
 
-    protected static readonly string TIMER_ZERO = "00:00";
+    public static readonly string TIMER_ZERO = "00:00";
 
     public abstract string getLevelName();
 
