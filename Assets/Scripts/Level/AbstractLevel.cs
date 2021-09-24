@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevel 
 {
-    public enum TIPO_GAME { NORMAL, PUP, CACANIQUEL_PUP_INDIVIDUAL, CACANIQUEL_PUP_GERAL }
+    public enum TIPO_GAME { NORMAL, ORDENADO, PUP, CACANIQUEL_PUP_INDIVIDUAL, CACANIQUEL_PUP_GERAL }
 
     protected static readonly string TIMER_ZERO = "00:00";
 
@@ -12,15 +12,15 @@ public abstract class AbstractLevel
 
     public abstract GarraManager.MECANICA_GARRA getMecanicaDaGarra();
 
-    public abstract bool devolverParaBoard();//Pode ser trocado p enum para tipos de devolucoes
+    public abstract bool devolverParaBoard();
 
     public abstract ColetavelEntidade.FAMILIA getFamiliaColetavel();
 
     public abstract int[,] getArrayDeColetaveis();
 
-    public virtual int[,] getArrayDeColetaveisSub(){return null;}    
+    public virtual int[,] getArrayDeColetaveisSub(){return null;}
 
-    public virtual TIPO_GAME getTipoGame() { return TIPO_GAME.NORMAL; }
+    public abstract TIPO_GAME getTipoGame();
 
     public abstract TipoContagemTempoDto getTempoContagem();
 
