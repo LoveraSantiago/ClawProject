@@ -31,6 +31,11 @@ public abstract class AbstractLevel
 
     public abstract Dictionary<string, string> getDicionarioDeCores();   
 
+    public void validar()
+    {
+
+    }
+
     public bool isCacaNiquelLevel()
     {
         TIPO_GAME tipoGame = getTipoGame();
