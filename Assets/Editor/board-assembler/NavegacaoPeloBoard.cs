@@ -62,9 +62,14 @@ public class NavegacaoPeloBoard
         };
     }
 
+
+
+
     private bool podeAndarUmaColuna()
     {
-        return colunaAtual + 1 < dicionarioGosBoard[linhaAtual].Count;
+        bool resultProximaPosicao = colunaAtual + 1 < dicionarioGosBoard[linhaAtual].Count;
+        bool resultPos7Par = (linhaAtual % 2 != 0) && colunaAtual + 1 == 6;
+        return resultProximaPosicao && !resultPos7Par;
     }
 
     private bool podeVoltarUmaColuna()
