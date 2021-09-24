@@ -20,7 +20,7 @@ public abstract class AbstractLevel
 
     public virtual int[,] getArrayDeColetaveisSub(){return null;}
 
-    public abstract TIPO_GAME getTipoGame();
+    protected abstract TIPO_GAME getTipoGame();
 
     public abstract TipoContagemTempoDto getTempoContagem();
 

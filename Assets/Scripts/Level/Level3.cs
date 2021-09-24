@@ -12,6 +12,11 @@ public class Level3 : AbstractLevel
         return "Cuidado com o numero de coletaveis";
     }
 
+    protected override TIPO_GAME getTipoGame()
+    {
+        return TIPO_GAME.NORMAL;
+    }
+
     public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
     {
         return GarraManager.MECANICA_GARRA.ZIG_ZAG;

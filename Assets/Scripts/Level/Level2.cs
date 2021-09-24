@@ -13,6 +13,11 @@ public class Level2 : AbstractLevel
         return "Faça o maior número de combinações";
     }
 
+    protected override TIPO_GAME getTipoGame()
+    {
+        return TIPO_GAME.NORMAL;
+    }
+
     public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
     {
         return GarraManager.MECANICA_GARRA.ZIG_ZAG;

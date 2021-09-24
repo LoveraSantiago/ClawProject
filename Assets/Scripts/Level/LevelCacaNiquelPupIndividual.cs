@@ -2,9 +2,26 @@ using System.Collections.Generic;
 
 public class LevelCacaNiquelPupIndividual : AbstractLevel
 {
-    public override bool devolverParaBoard()
+
+    public override string getLevelName()
     {
-        return false;
+        return "Caça Niquel Pup Individual";
+    }
+
+
+    public override string getMsgObjetivoLevel()
+    {
+        return "Ganhar power up escolhido.";
+    }
+
+    protected override TIPO_GAME getTipoGame()
+    {
+        return TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
+    }
+
+    public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
+    {
+        return GarraManager.MECANICA_GARRA.ZIG_ZAG;
     }
 
     public override int[,] getArrayDeColetaveis()
@@ -20,11 +37,22 @@ public class LevelCacaNiquelPupIndividual : AbstractLevel
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0}
        };
+    }   
+
+    public override bool devolverParaBoard()
+    {
+        return false;
     }
 
-    public override TIPO_GAME getTipoGame()
+
+    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
     {
-        return TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
+        return ColetavelEntidade.FAMILIA.FRUTAS;
+    }
+
+    public override TipoContagemTempoDto getTempoContagem()
+    {
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()
@@ -81,30 +109,5 @@ public class LevelCacaNiquelPupIndividual : AbstractLevel
         dicionario.Add("cabo-da-garra", "#68829E");
 
         return dicionario;
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
-
-    public override string getLevelName()
-    {
-        return "Caça Niquel Pup Individual";
-    }
-
-    public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
-    {
-        return GarraManager.MECANICA_GARRA.ZIG_ZAG;
-    }
-
-    public override string getMsgObjetivoLevel()
-    {
-        return "Ganhar power up escolhido.";
-    }
-
-    public override TipoContagemTempoDto getTempoContagem()
-    {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
-    }
+    }     
 }
