@@ -64,7 +64,9 @@ public class NavegacaoPeloBoard
 
     private bool podeAndarUmaColuna()
     {
-        return colunaAtual + 1 < dicionarioGosBoard[linhaAtual].Count;
+        bool resultProximaColuna = colunaAtual + 1 < dicionarioGosBoard[linhaAtual].Count;
+        bool resultPos7Par = (linhaAtual % 2 != 0) && colunaAtual + 1 == 6;
+        return resultProximaColuna && !resultPos7Par;
     }
 
     private bool podeVoltarUmaColuna()
@@ -74,12 +76,16 @@ public class NavegacaoPeloBoard
 
     private bool podeAndarUmaLinha()
     {
-        return linhaAtual - 1 >= 0;
+        bool resultProximaLinha = linhaAtual - 1 >= 0;
+        bool resultPos7Par = ((linhaAtual - 1) % 2 != 0) && colunaAtual == 6;
+        return resultProximaLinha && !resultPos7Par;
     }
 
     private bool podeDescerUmaLinha()
     {
-        return linhaAtual + 1 < dicionarioGosBoard.Count;
+        bool resultProximaLinha = linhaAtual + 1 < dicionarioGosBoard.Count;        
+        bool resultPos7Par = ((linhaAtual + 1) % 2 != 0) && colunaAtual == 6;
+        return resultProximaLinha && !resultPos7Par;
     }
 
     private void posicionarMira(int linha, int coluna)

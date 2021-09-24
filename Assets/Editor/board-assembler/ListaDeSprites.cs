@@ -19,8 +19,8 @@ public class ListaDeSprites
     private void inicializarLista()
     {
         listaDeSprites = new List<Sprite>();
-        listaDeSprites.Add(Resources.Load<Sprite>("Sprites/collectables/tile-vazio"));
-        listaDeSprites.Add(Resources.Load<Sprite>("Sprites/collectables/tile-random"));
+        listaDeSprites.Add(Resources.Load<Sprite>("Sprites/coletaveis/tile-vazio"));
+        listaDeSprites.Add(Resources.Load<Sprite>("Sprites/coletaveis/tile-random"));
     }
 
     private void inicializarListView(VisualElement root, StyleSheet styleSheet)

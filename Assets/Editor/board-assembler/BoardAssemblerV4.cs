@@ -78,9 +78,14 @@ public class BoardAssemblerV4 : EditorWindow
         {
             Dictionary<int, GameObject> dicionarioLinha = dicionarioGosBoard[0];
             for (int contadorColuna = 0; contadorColuna < dicionarioLinha.Count; contadorColuna++)
-            {
+            {                
                 GameObject goIt = dicionarioGosBoard[contadorLinha][contadorColuna];
                 colocarSprite(goIt, spriteVazio);
+
+                if (contadorLinha % 2 != 0 && contadorColuna == 6)
+                {
+                    goIt.SetActive(false);
+                }
             }
         }
     }
