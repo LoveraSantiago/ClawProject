@@ -42,7 +42,7 @@ public class ReferenciasDoBoardAssembler
         dicionarioGosBoard = new Dictionary<int, Dictionary<int, GameObject>>();
         dicionarioTextLabels = new Dictionary<int, Dictionary<int, Text>>();
 
-        for (int contadorLinha = 0; contadorLinha < goBoardAssembler.transform.childCount; contadorLinha++)
+        for (int contadorLinha = 0; contadorLinha < goBoardAssembler.transform.Find("gos").childCount; contadorLinha++)
         {            
             GameObject goLinha = goBoardAssembler.transform.Find("gos").GetChild(contadorLinha).gameObject;
             GameObject goLabel = goBoardAssembler.transform.Find("lbls").GetChild(contadorLinha).gameObject;
