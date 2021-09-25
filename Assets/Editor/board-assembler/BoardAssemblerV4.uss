@@ -31,6 +31,17 @@
 	flex-direction: row;			
 }
 
+#ordem{
+	margin-left: 40px;
+	margin-right: 40px;
+	padding-top: 10px;
+}
+
+#container3 {	
+	display: flex;
+	flex-direction: row;			
+}
+
 #containerBtns {	
 	display: flex;
 	flex-direction: column;	
