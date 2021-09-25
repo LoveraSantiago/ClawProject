@@ -10,6 +10,11 @@ public class NavegacaoPeloBoard
     private GameObject goMira;
     private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
 
+    public NavegacaoPeloBoard(VisualElement root, ReferenciasDoBoardAssembler referencias)
+        :this(root, referencias.goMira, referencias.dicionarioGosBoard)
+    {
+    }
+
     public NavegacaoPeloBoard(VisualElement root, GameObject goMira, Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard)
     {
         this.goMira = goMira;

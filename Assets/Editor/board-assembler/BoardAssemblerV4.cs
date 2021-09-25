@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class BoardAssemblerV4 : EditorWindow
 {
@@ -14,8 +15,9 @@ public class BoardAssemblerV4 : EditorWindow
     }
 
     private Sprite spriteVazio;
-    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
     private ColetavelQuery coletavelQuery;
+    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
+    public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels;
 
     public void CreateGUI()
     {
@@ -40,7 +42,7 @@ public class BoardAssemblerV4 : EditorWindow
 
         coletavelQuery = new ColetavelQuery();
         ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler();
-        NavegacaoPeloBoard navegacao = new NavegacaoPeloBoard(root, referenciasDoBoard.goMira, referenciasDoBoard.dicionarioGosBoard);
+        NavegacaoPeloBoard navegacao = new NavegacaoPeloBoard(root, referenciasDoBoard);
         navegacao.resetMira();
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => colocarSprite(navegacao.getGoDaMira(), spr));
@@ -50,14 +52,14 @@ public class BoardAssemblerV4 : EditorWindow
             listaDeSprites.receberSprite((Sprite)e1.newValue);
         });
 
-        root.Q<Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
-        root.Q<Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
-        root.Q<Button>("botaoClean").clicked += () => cleanBoard();
-        root.Q<Button>("botaoProcessar").clicked += () => gerarArrayDeIds();
-        root.Q<Button>("botaoCimaAll").clicked += () => navegacao.navegarCimaTotal();
-        root.Q<Button>("botaoBaixoAll").clicked += () => navegacao.navegarBaixoTotal();
-        root.Q<Button>("botaoEsquerdaAll").clicked += () => navegacao.navegarTrasTotal();
-        root.Q<Button>("botaoDireitaAll").clicked += () => navegacao.navegarFrenteTotal();
+        root.Q<UnityEngine.UIElements.Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
+        root.Q<UnityEngine.UIElements.Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
+        root.Q<UnityEngine.UIElements.Button>("botaoClean").clicked += () => cleanBoard();
+        root.Q<UnityEngine.UIElements.Button>("botaoProcessar").clicked += () => gerarArrayDeIds();
+        root.Q<UnityEngine.UIElements.Button>("botaoCimaAll").clicked += () => navegacao.navegarCimaTotal();
+        root.Q<UnityEngine.UIElements.Button>("botaoBaixoAll").clicked += () => navegacao.navegarBaixoTotal();
+        root.Q<UnityEngine.UIElements.Button>("botaoEsquerdaAll").clicked += () => navegacao.navegarTrasTotal();
+        root.Q<UnityEngine.UIElements.Button>("botaoDireitaAll").clicked += () => navegacao.navegarFrenteTotal();
 
         dicionarioGosBoard = referenciasDoBoard.dicionarioGosBoard;
         spriteVazio = listaDeSprites.getSpriteVazio();
