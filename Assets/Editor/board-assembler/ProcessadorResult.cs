@@ -15,7 +15,7 @@ public class ProcessadorResult
     public void gerarArrayDeIds()
     {
         ColetavelQuery coletavelQuery = new ColetavelQuery();
-        string result = "{";
+        string result = "int[,] coletaveis = new int[,]{" + Environment.NewLine;
 
         for (int contadorLinha = 0; contadorLinha < referencias.dicionarioGosBoard.Count; contadorLinha++)
         {
