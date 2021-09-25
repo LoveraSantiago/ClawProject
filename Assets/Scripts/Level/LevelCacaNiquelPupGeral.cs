@@ -103,7 +103,8 @@ public class LevelCacaNiquelPupGeral : AbstractLevel
         dicionario.Add("leds1", "#C4DFE6");
         dicionario.Add("leds2", "#C4DFE6");
         dicionario.Add("leds3", "#C4DFE6");
-        dicionario.Add("cabo-da-garra", "#C4DFE6");
+        dicionario.Add("cabo-da-garra", "#C4DFE6");
+
 
         return dicionario;
     }   
