@@ -61,7 +61,7 @@ public class ProcessadorResult
         string result = "BoardOrdem[] ordem = new BoardOrdem[]{" + Environment.NewLine;
         for(int contador = 0; contador < sortedList.Count; contador++)
         {
-            BoardOrdem boardOrdem = sortedList[contador];
+            BoardOrdem boardOrdem = sortedList[contador + 1];
             result += "new BoardOrdem(" + contador + ", " + boardOrdem.linha + ", " + boardOrdem.coluna + ")";
             string separadorLinha = (contador + 1) == sortedList.Count ? "" : ("," + Environment.NewLine);
             result += separadorLinha;
