@@ -80,12 +80,17 @@ public class BoardAssemblerV4 : EditorWindow
                 GameObject goIt = dicionarioGosBoard[contadorLinha][contadorColuna];
                 colocarSprite(goIt, spriteVazio);
 
-                if (contadorLinha % 2 != 0 && contadorColuna == 6)
+                if(isSextoElementoLinhaPar(contadorLinha, contadorColuna))                
                 {
                     goIt.SetActive(false);
                 }
             }
         }
+    }
+
+    private bool isSextoElementoLinhaPar(int linha, int coluna)
+    {
+        return linha % 2 != 0 && coluna == 6;
     }
 
     private void gerarArrayDeIds()
