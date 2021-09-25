@@ -82,12 +82,18 @@ public class BoardAssemblerV4 : EditorWindow
 
     private void colocarTexto(NavegacaoPeloBoard navegacao, int novoValor)
     {
+        Debug.Log("Troca de texto chamada");
         GameObject go = navegacao.getGoDaMira();
         Sprite spr = go.GetComponent<SpriteRenderer>().sprite;
-        if (spr != null && spr.name.Equals(spriteVazio.name))
+        if (spr != null && !spr.name.Equals(spriteVazio.name))
         {
             Text text = navegacao.getTextDaMira();
             text.text = novoValor.ToString();
+            Debug.Log("Troca de texto realizada no text " + text.gameObject.name);
+        }
+        else
+        {
+            Debug.Log("Troca de texto NAO realizada");
         }
     }      
 }
