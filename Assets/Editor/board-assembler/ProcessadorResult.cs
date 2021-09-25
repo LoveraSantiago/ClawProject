@@ -49,7 +49,7 @@ public class ProcessadorResult
             for (int contadorColuna = 0; contadorColuna < dicionarioLinha.Count; contadorColuna++)
             {
                 Text textIt = referencias.dicionarioTextLabels[contadorLinha][contadorColuna];
-                if (!textIt.text.Equals("00"))
+                if (int.Parse(textIt.text) != 0)
                 {
                     int ordem = int.Parse(textIt.text);
                     BoardOrdem boardOrdem = new BoardOrdem(ordem, contadorLinha, contadorColuna);

@@ -6,6 +6,7 @@ public class BoardOrdem
 
     public BoardOrdem(int ordem, int linha, int coluna)
     {
+        this.ordem = ordem;
         this.linha = linha;
         this.coluna = coluna;
     }    
