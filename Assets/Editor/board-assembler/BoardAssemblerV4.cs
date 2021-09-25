@@ -53,6 +53,7 @@ public class BoardAssemblerV4 : EditorWindow
         root.Q<UnityEngine.UIElements.Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
         root.Q<UnityEngine.UIElements.Button>("botaoClean").clicked += () => cleaner.clean((go) => colocarSprVazio(go), (text)=> resetText(text));
         root.Q<UnityEngine.UIElements.Button>("botaoProcessar").clicked += () => processador.gerarArrayDeIds();
+        root.Q<UnityEngine.UIElements.Button>("botaoProcessarOrdem").clicked += () => processador.gerarArrayDeOrdem();
         root.Q<UnityEngine.UIElements.Button>("botaoCimaAll").clicked += () => navegacao.navegarCimaTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoBaixoAll").clicked += () => navegacao.navegarBaixoTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoEsquerdaAll").clicked += () => navegacao.navegarTrasTotal();
