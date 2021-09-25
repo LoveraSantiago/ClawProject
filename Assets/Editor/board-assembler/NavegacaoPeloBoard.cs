@@ -1,31 +1,23 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class NavegacaoPeloBoard 
 {
     private int linhaAtual;
     private int colunaAtual;
 
-    private GameObject goMira;
-    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
+    private ReferenciasDoBoardAssembler referencias;   
 
-    public NavegacaoPeloBoard(VisualElement root, ReferenciasDoBoardAssembler referencias)
-        :this(root, referencias.goMira, referencias.dicionarioGosBoard)
+    public NavegacaoPeloBoard(VisualElement root, ReferenciasDoBoardAssembler referencias)        
     {
-    }
-
-    public NavegacaoPeloBoard(VisualElement root, GameObject goMira, Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard)
-    {
-        this.goMira = goMira;
-        this.dicionarioGosBoard = dicionarioGosBoard;
-
+        this.referencias = referencias;        
         configurarBotoes(root);
-    }
+    }    
 
     private void configurarBotoes(VisualElement root)
     {
-        Button btnCima = root.Q<Button>("botaoCima");
+        UnityEngine.UIElements.Button btnCima = root.Q<UnityEngine.UIElements.Button>("botaoCima");
         btnCima.clickable.clicked += () =>
         {
             if (podeDescerUmaLinha())
@@ -35,7 +27,7 @@ public class NavegacaoPeloBoard
             posicionarMira(linhaAtual, colunaAtual);
         };
 
-        Button btnEsquerda = root.Q<Button>("botaoEsquerda");
+        UnityEngine.UIElements.Button btnEsquerda = root.Q<UnityEngine.UIElements.Button>("botaoEsquerda");
         btnEsquerda.clickable.clicked += () =>
         {
             if (podeVoltarUmaColuna())
@@ -46,7 +38,7 @@ public class NavegacaoPeloBoard
             posicionarMira(linhaAtual, colunaAtual);
         };
 
-        Button btnDireita = root.Q<Button>("botaoDireita");
+        UnityEngine.UIElements.Button btnDireita = root.Q<UnityEngine.UIElements.Button>("botaoDireita");
         btnDireita.clickable.clicked += () =>
         {
             if (podeAndarUmaColuna())
@@ -56,7 +48,7 @@ public class NavegacaoPeloBoard
             posicionarMira(linhaAtual, colunaAtual);
         };
 
-        Button btnBaixo = root.Q<Button>("botaoBaixo");
+        UnityEngine.UIElements.Button btnBaixo = root.Q<UnityEngine.UIElements.Button>("botaoBaixo");
         btnBaixo.clickable.clicked += () =>
         {
             if (podeAndarUmaLinha())
@@ -69,7 +61,7 @@ public class NavegacaoPeloBoard
 
     private bool podeAndarUmaColuna()
     {
-        bool resultProximaColuna = colunaAtual + 1 < dicionarioGosBoard[linhaAtual].Count;
+        bool resultProximaColuna = colunaAtual + 1 < referencias.dicionarioGosBoard[linhaAtual].Count;
         bool resultPos7Par = (linhaAtual % 2 != 0) && colunaAtual + 1 == 6;
         return resultProximaColuna && !resultPos7Par;
     }
@@ -88,15 +80,15 @@ public class NavegacaoPeloBoard
 
     private bool podeDescerUmaLinha()
     {
-        bool resultProximaLinha = linhaAtual + 1 < dicionarioGosBoard.Count;        
+        bool resultProximaLinha = linhaAtual + 1 < referencias.dicionarioGosBoard.Count;        
         bool resultPos7Par = ((linhaAtual + 1) % 2 != 0) && colunaAtual == 6;
         return resultProximaLinha && !resultPos7Par;
     }
 
     private void posicionarMira(int linha, int coluna)
     {
-        GameObject go00 = dicionarioGosBoard[linha][coluna];
-        goMira.transform.position = go00.transform.position;
+        GameObject go00 = referencias.dicionarioGosBoard[linha][coluna];
+        referencias.goMira.transform.position = go00.transform.position;
     }
 
     public void resetMira()
@@ -108,12 +100,17 @@ public class NavegacaoPeloBoard
 
     public GameObject getGoDaMira()
     {
-        return dicionarioGosBoard[linhaAtual][colunaAtual];
+        return referencias.dicionarioGosBoard[linhaAtual][colunaAtual];
+    }
+
+    public Text getTextDaMira()
+    {
+        return referencias.dicionarioTextLabels[linhaAtual][colunaAtual];
     }
 
     public void navegarCimaTotal()
     {
-        linhaAtual = dicionarioGosBoard.Count - 1;
+        linhaAtual = referencias.dicionarioGosBoard.Count - 1;
         posicionarMira(linhaAtual, colunaAtual);
     }
 
@@ -131,7 +128,7 @@ public class NavegacaoPeloBoard
 
     public void navegarFrenteTotal()
     {
-        colunaAtual = dicionarioGosBoard[linhaAtual].Count - 1;
+        colunaAtual = referencias.dicionarioGosBoard[linhaAtual].Count - 1;
         posicionarMira(linhaAtual, colunaAtual);
     }
 }

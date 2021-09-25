@@ -60,6 +60,7 @@ public class BoardAssemblerV4 : EditorWindow
         root.Q<UnityEngine.UIElements.Button>("botaoBaixoAll").clicked += () => navegacao.navegarBaixoTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoEsquerdaAll").clicked += () => navegacao.navegarTrasTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoDireitaAll").clicked += () => navegacao.navegarFrenteTotal();
+        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => colocarTexto(navegacao, evento.newValue));            
 
         dicionarioGosBoard = referenciasDoBoard.dicionarioGosBoard;
         spriteVazio = listaDeSprites.getSpriteVazio();
@@ -70,6 +71,17 @@ public class BoardAssemblerV4 : EditorWindow
     {
         go.GetComponent<SpriteRenderer>().sprite = sprite;
         go.transform.rotation = Quaternion.Euler(Vector3.zero);
+    }
+
+    private void colocarTexto(NavegacaoPeloBoard navegacao, int novoValor)
+    {
+        GameObject go = navegacao.getGoDaMira();
+        Sprite spr = go.GetComponent<SpriteRenderer>().sprite;
+        if (spr != null && spr.name.Equals("tile-vazio"))
+        {
+            Text text = navegacao.getTextDaMira();
+            text.text = novoValor.ToString();
+        }
     }
 
     private void cleanBoard()
