@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class BoardAssemblerV4 : EditorWindow
 {
@@ -14,9 +13,7 @@ public class BoardAssemblerV4 : EditorWindow
         wnd.titleContent = new GUIContent("BoardAssemblerV4");
     }
 
-    private Sprite spriteVazio;
-    private ColetavelQuery coletavelQuery;    
-    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;    
+    private Sprite spriteVazio;    
 
     public void CreateGUI()
     {
@@ -38,10 +35,10 @@ public class BoardAssemblerV4 : EditorWindow
         //VisualElement labelWithStyle = new Label("Hello World! With Style");
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
-
-        coletavelQuery = new ColetavelQuery();
+        
         ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler();
-        NavegacaoPeloBoard navegacao = new NavegacaoPeloBoard(root, referenciasDoBoard);
+        NavegacaoPeloBoard navegacao  = new NavegacaoPeloBoard(root, referenciasDoBoard);
+        ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
         BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard);
         navegacao.resetMira();
 
@@ -55,14 +52,13 @@ public class BoardAssemblerV4 : EditorWindow
         root.Q<UnityEngine.UIElements.Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
         root.Q<UnityEngine.UIElements.Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
         root.Q<UnityEngine.UIElements.Button>("botaoClean").clicked += () => cleaner.clean((go) => colocarSprVazio(go), (text)=> resetText(text));
-        root.Q<UnityEngine.UIElements.Button>("botaoProcessar").clicked += () => gerarArrayDeIds();
+        root.Q<UnityEngine.UIElements.Button>("botaoProcessar").clicked += () => processador.gerarArrayDeIds();
         root.Q<UnityEngine.UIElements.Button>("botaoCimaAll").clicked += () => navegacao.navegarCimaTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoBaixoAll").clicked += () => navegacao.navegarBaixoTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoEsquerdaAll").clicked += () => navegacao.navegarTrasTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoDireitaAll").clicked += () => navegacao.navegarFrenteTotal();
         root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => colocarTexto(navegacao, evento.newValue));            
-
-        dicionarioGosBoard = referenciasDoBoard.dicionarioGosBoard;
+                
         spriteVazio = listaDeSprites.getSpriteVazio();
         cleaner.clean((go) => colocarSprVazio(go), (text) => resetText(text));
     }
@@ -92,32 +88,5 @@ public class BoardAssemblerV4 : EditorWindow
             Text text = navegacao.getTextDaMira();
             text.text = novoValor.ToString();
         }
-    }   
-
-    private void gerarArrayDeIds()
-    {
-        string result = "{";
-
-        for (int contadorLinha = 0; contadorLinha < dicionarioGosBoard.Count; contadorLinha++)
-        {
-            Dictionary<int, GameObject> dicionarioLinha = dicionarioGosBoard[0];
-            result += "{";
-            for (int contadorColuna = 0; contadorColuna < dicionarioLinha.Count; contadorColuna++)
-            {
-                GameObject goIt = dicionarioGosBoard[contadorLinha][contadorColuna];
-                Sprite spriteIt = goIt.GetComponent<SpriteRenderer>().sprite;
-
-                ColetavelEntidade coletavelEntidade = coletavelQuery.getColetavelEntidadeBySprite(spriteIt.name);
-
-                string separador = contadorColuna == dicionarioLinha.Count - 1 ? "" : ", ";
-                result += coletavelEntidade.id + separador;
-            }
-            string separadorFim = contadorLinha == dicionarioGosBoard.Count - 1 ? "" : ", ";
-            result += "}" + separadorFim;
-        }
-        result += "}";
-        Debug.Log(result);
-    }
-    //Resultado deve ser colocado como:
-    //int[,] x = new int[,]  { { 0,0,0,0,0,0,0},{ 0,0,0,0,0,0,0},{ 0,0,0,0,0,0,0},{ 0,0,0,0,0,0,0},{ 0,0,0,0,0,0,0},{ 0,0,0,0,0,0,0},{ 0,0,0,0,0,0,0},{ 0,0,0,0,0,0,0} };
+    }      
 }
