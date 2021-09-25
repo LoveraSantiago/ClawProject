@@ -12,6 +12,11 @@ public class Level1 : AbstractLevel
         return "Colete todos os itens";
     }
 
+    protected override TIPO_GAME getTipoGame()
+    {
+        return TIPO_GAME.NORMAL;
+    }
+
     public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
     {
         return GarraManager.MECANICA_GARRA.ZIG_ZAG;
@@ -100,5 +105,5 @@ public class Level1 : AbstractLevel
         dicionario.Add("leds3", "#5D5B5B");
         dicionario.Add("cabo-da-garra", "#FFFFFF");
         return dicionario;
-    }
+    }    
 }

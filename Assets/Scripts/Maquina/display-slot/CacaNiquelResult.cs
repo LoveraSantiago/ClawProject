@@ -6,7 +6,7 @@ public class CacaNiquelResult
     public bool isFinalizado { get { return !isInicio; } }
     public Sprite[] sprResultados { get; private set; }
 
-    private AbstractLevel.TIPO_GAME tipoGame;
+    private string tipoGame;
     private DisplayCacaNiquel.RESULTADO_CACANIQUEL[] resultados;
 
     public CacaNiquelResult()
@@ -15,7 +15,7 @@ public class CacaNiquelResult
     }
 
     public CacaNiquelResult(
-        AbstractLevel.TIPO_GAME tipoGame, Sprite[] sprResultados, DisplayCacaNiquel.RESULTADO_CACANIQUEL[] resultados)
+        string tipoGame, Sprite[] sprResultados, DisplayCacaNiquel.RESULTADO_CACANIQUEL[] resultados)
     {
         this.tipoGame = tipoGame;
         this.sprResultados = sprResultados;
@@ -48,11 +48,11 @@ public class CacaNiquelResult
 
     public bool isPupGeral()
     {
-        return tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL;
+        return AbstractLevel.isCacaNiquelGeralLevel(tipoGame);
     }
 
     public bool isPupSingle()
     {
-        return tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
+        return AbstractLevel.isCacaNiquelSingleLevel(tipoGame);
     }
 }

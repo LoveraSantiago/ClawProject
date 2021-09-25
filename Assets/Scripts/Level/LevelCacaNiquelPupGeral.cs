@@ -2,9 +2,24 @@ using System.Collections.Generic;
 
 public class LevelCacaNiquelPupGeral : AbstractLevel
 {
-    public override bool devolverParaBoard()
+    public override string getLevelName()
     {
-        return false;
+        return "Caça Niquel Pup Geral";
+    }
+
+    public override string getMsgObjetivoLevel()
+    {
+        return "Ganhar power ups gerais.";
+    }
+
+    public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
+    {
+        return GarraManager.MECANICA_GARRA.ZIG_ZAG;
+    }
+
+    protected override TIPO_GAME getTipoGame()
+    {
+        return TIPO_GAME.CACANIQUEL_PUP_GERAL;
     }
 
     public override int[,] getArrayDeColetaveis()
@@ -20,11 +35,21 @@ public class LevelCacaNiquelPupGeral : AbstractLevel
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0}
        };
+    }    
+
+    public override bool devolverParaBoard()
+    {
+        return false;
     }
 
-    public override TIPO_GAME getTipoGame()
+    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
     {
-        return TIPO_GAME.CACANIQUEL_PUP_GERAL;
+        return ColetavelEntidade.FAMILIA.FRUTAS;
+    }
+
+    public override TipoContagemTempoDto getTempoContagem()
+    {
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()
@@ -78,33 +103,9 @@ public class LevelCacaNiquelPupGeral : AbstractLevel
         dicionario.Add("leds1", "#C4DFE6");
         dicionario.Add("leds2", "#C4DFE6");
         dicionario.Add("leds3", "#C4DFE6");
-        dicionario.Add("cabo-da-garra", "#C4DFE6");
+        dicionario.Add("cabo-da-garra", "#C4DFE6");
+
 
         return dicionario;
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
-
-    public override string getLevelName()
-    {
-        return "Caça Niquel Pup Geral";
-    }
-
-    public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
-    {
-        return GarraManager.MECANICA_GARRA.ZIG_ZAG;
-    }
-
-    public override string getMsgObjetivoLevel()
-    {
-        return "Ganhar power ups gerais.";
-    }
-
-    public override TipoContagemTempoDto getTempoContagem()
-    {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
-    }
+    }   
 }

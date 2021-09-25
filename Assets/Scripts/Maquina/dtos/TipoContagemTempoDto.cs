@@ -8,4 +8,9 @@ public class TipoContagemTempoDto
         this.contagem = contagem;
         this.tempo = tempo;
     }
+
+    public bool isContagemContinua()
+    {
+        return contagem == ContadorTimer.Contagem.CONTINUA;
+    }
 }

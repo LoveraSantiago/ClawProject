@@ -2,9 +2,24 @@ using System.Collections.Generic;
 
 public class LevelPup : AbstractLevel
 {
-    public override bool devolverParaBoard()
+    public override string getLevelName()
     {
-        return false;
+        return "Treino de Power Up";
+    }
+
+    public override string getMsgObjetivoLevel()
+    {
+        return "Treinar Habilidades em Power Up";
+    }
+
+    protected override TIPO_GAME getTipoGame()
+    {
+        return TIPO_GAME.PUP;
+    }
+
+    public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
+    {
+        return GarraManager.MECANICA_GARRA.ZIG_ZAG;
     }
 
     public override int[,] getArrayDeColetaveis()
@@ -12,14 +27,29 @@ public class LevelPup : AbstractLevel
         return new int[,]
         {
             {1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 0},
             {1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 0},
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0}
         };
+    }
+
+    public override bool devolverParaBoard()
+    {
+        return false;
+    }
+
+    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
+    {
+        return ColetavelEntidade.FAMILIA.FRUTAS;
+    }
+
+    public override TipoContagemTempoDto getTempoContagem()
+    {
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()
@@ -76,35 +106,5 @@ public class LevelPup : AbstractLevel
         dicionario.Add("cabo-da-garra", "#376961");
 
         return dicionario;
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
-
-    public override string getLevelName()
-    {
-        return "Treino de Power Up";
-    }
-
-    public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
-    {
-        return GarraManager.MECANICA_GARRA.ZIG_ZAG;
-    }
-
-    public override string getMsgObjetivoLevel()
-    {
-        return "Treinar Habilidades em Power Up";
-    }
-
-    public override TIPO_GAME getTipoGame()
-    {
-        return TIPO_GAME.PUP;
-    }
-
-    public override TipoContagemTempoDto getTempoContagem()
-    {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
-    }
+    }    
 }

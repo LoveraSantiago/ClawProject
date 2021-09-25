@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevel 
 {
-    public enum TIPO_GAME { NORMAL, PUP, CACANIQUEL_PUP_INDIVIDUAL, CACANIQUEL_PUP_GERAL }
+    protected enum TIPO_GAME { NORMAL, ELEVADOR, ORDENADO, PUP, CACANIQUEL_PUP_INDIVIDUAL, CACANIQUEL_PUP_GERAL }
 
-    protected static readonly string TIMER_ZERO = "00:00";
+    public static readonly string TIMER_ZERO = "00:00";
 
     public abstract string getLevelName();
 
@@ -12,22 +12,66 @@ public abstract class AbstractLevel
 
     public abstract GarraManager.MECANICA_GARRA getMecanicaDaGarra();
 
-    public abstract bool devolverParaBoard();//Pode ser trocado p enum para tipos de devolucoes
+    public abstract bool devolverParaBoard();
 
     public abstract ColetavelEntidade.FAMILIA getFamiliaColetavel();
 
     public abstract int[,] getArrayDeColetaveis();
 
-    public virtual int[,] getArrayDeColetaveisSub(){return null;}    
+    public virtual int[,] getArrayDeColetaveisSub(){return null;}
 
-    public virtual TIPO_GAME getTipoGame() { return TIPO_GAME.NORMAL; }
+    public string getTipoGameDesc()
+    {
+        return getTipoGame().ToString();
+    }
+
+    protected abstract TIPO_GAME getTipoGame();
 
     public abstract TipoContagemTempoDto getTempoContagem();
 
     public abstract Dictionary<string, string> getDicionarioDeCores();   
 
-    public static bool isCacaNiquelLevel(AbstractLevel.TIPO_GAME tipoGame)
+    public void validar()
     {
-        return tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL || tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
+        LevelValidador validador = new LevelValidador();
+        validador.validar(this);
+    }
+
+    public bool isNormalLevel()
+    {
+        return getTipoGame() == TIPO_GAME.NORMAL;
+    }
+
+    public bool isElevadorLevel()
+    {
+        return getTipoGame() == TIPO_GAME.ELEVADOR;
+    }
+
+    public bool isCacaNiquelLevel()
+    {
+        TIPO_GAME tipoGame = getTipoGame();
+        return tipoGame == TIPO_GAME.CACANIQUEL_PUP_GERAL || 
+               tipoGame == TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
+    }
+
+    public bool isPupLevel()
+    {
+        return getTipoGame() == TIPO_GAME.PUP;
+    }
+
+    public static bool isCacaNiquelLevel(string desc)
+    {
+        return isCacaNiquelGeralLevel(desc) ||
+               isCacaNiquelSingleLevel(desc);
+    }
+
+    public static bool isCacaNiquelGeralLevel(string desc)
+    {
+        return TIPO_GAME.CACANIQUEL_PUP_GERAL.ToString().Equals(desc);
+    }
+
+    public static bool isCacaNiquelSingleLevel(string desc)
+    {
+        return TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL.ToString().Equals(desc);
     }
 }

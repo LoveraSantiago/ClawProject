@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ReferenciasDoBoardAssembler 
 {
-    public Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard { get; private set; }
     public GameObject goMira { get; private set; }
+    public Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard { get; private set; }
+    public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels { get; private set; }
 
     public ReferenciasDoBoardAssembler()
     {
@@ -15,7 +17,7 @@ public class ReferenciasDoBoardAssembler
     private void configurarReferenciasComBoard()
     {
         GameObject goBoardAssembler = getBoardAssembler();
-        dicionarioGosBoard = inicializarDicionarioDeGosBoard(goBoardAssembler);
+        inicializarDicionarios(goBoardAssembler);
         goMira = inicializarGoMira(goBoardAssembler);
     }
 
@@ -35,32 +37,51 @@ public class ReferenciasDoBoardAssembler
         return null;
     }
 
-    private Dictionary<int, Dictionary<int, GameObject>> inicializarDicionarioDeGosBoard(GameObject goBoardAssembler)
+    private void inicializarDicionarios(GameObject goBoardAssembler)
     {
-        Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard = new Dictionary<int, Dictionary<int, GameObject>>();
-        for (int contadorLinha = 0; contadorLinha < goBoardAssembler.transform.childCount; contadorLinha++)
-        {
-            GameObject goLinha = goBoardAssembler.transform.GetChild(contadorLinha).gameObject;
-            int nomeNumericoLinha;
-            bool isNumericoLinha = int.TryParse(goLinha.name, out nomeNumericoLinha);
-            if (isNumericoLinha)
+        dicionarioGosBoard = new Dictionary<int, Dictionary<int, GameObject>>();
+        dicionarioTextLabels = new Dictionary<int, Dictionary<int, Text>>();
+
+        for (int contadorLinha = 0; contadorLinha < goBoardAssembler.transform.Find("gos").childCount; contadorLinha++)
+        {            
+            GameObject goLinha = goBoardAssembler.transform.Find("gos").GetChild(contadorLinha).gameObject;
+            GameObject goLabel = goBoardAssembler.transform.Find("lbls").GetChild(contadorLinha).gameObject;
+            
+            if (isNumerico(goLinha.name) && goLinha.name.Equals(goLabel.name))
             {
-                Dictionary<int, GameObject> dicionarioColuna = new Dictionary<int, GameObject>();
+                Dictionary<int, GameObject> dicionarioGoColuna = new Dictionary<int, GameObject>();
+                Dictionary<int, Text> dicionarioTextColuna = new Dictionary<int, Text>();
 
                 for (int contadorColuna = 0; contadorColuna < goLinha.transform.childCount; contadorColuna++)
                 {
                     GameObject goColuna = goLinha.transform.GetChild(contadorColuna).gameObject;
-                    int nomeNumericoColuna;
-                    bool isNumericoColuna = int.TryParse(goColuna.name, out nomeNumericoColuna);
-                    if (isNumericoColuna)
-                    {                        
-                        dicionarioColuna.Add(nomeNumericoColuna, goColuna);
+                    Text textColuna = goLabel.transform.GetChild(contadorColuna).GetComponent<Text>();
+
+                    if (isNumerico(goColuna.name) && goColuna.name.Equals(textColuna.name))
+                    {
+                        int indiceColuna = toNumeric(goColuna.name);
+                        dicionarioGoColuna.Add(indiceColuna, goColuna);
+                        dicionarioTextColuna.Add(indiceColuna, textColuna);
                     }
                 }
-                dicionarioGosBoard.Add(nomeNumericoLinha, dicionarioColuna);
+                int indiceLinha = toNumeric(goLinha.name);
+                dicionarioGosBoard.Add(indiceLinha, dicionarioGoColuna);
+                dicionarioTextLabels.Add(indiceLinha, dicionarioTextColuna);
             }
-        }
-        return dicionarioGosBoard;
+        }        
+    }
+
+    private bool isNumerico(string name)
+    {
+        int nomeNumericoLinha;
+        return int.TryParse(name, out nomeNumericoLinha);
+    }
+
+    private int toNumeric(string name)
+    {
+        int nomeNumericoLinha;
+        bool result = int.TryParse(name, out nomeNumericoLinha);
+        return nomeNumericoLinha;
     }
 
     private GameObject inicializarGoMira(GameObject goBoardAssembler)
