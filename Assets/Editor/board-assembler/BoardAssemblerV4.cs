@@ -15,9 +15,8 @@ public class BoardAssemblerV4 : EditorWindow
     }
 
     private Sprite spriteVazio;
-    private ColetavelQuery coletavelQuery;
-    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
-    public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels;
+    private ColetavelQuery coletavelQuery;    
+    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;    
 
     public void CreateGUI()
     {
@@ -43,6 +42,7 @@ public class BoardAssemblerV4 : EditorWindow
         coletavelQuery = new ColetavelQuery();
         ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler();
         NavegacaoPeloBoard navegacao = new NavegacaoPeloBoard(root, referenciasDoBoard);
+        BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard);
         navegacao.resetMira();
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => colocarSprite(navegacao.getGoDaMira(), spr));
@@ -54,7 +54,7 @@ public class BoardAssemblerV4 : EditorWindow
 
         root.Q<UnityEngine.UIElements.Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
         root.Q<UnityEngine.UIElements.Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
-        root.Q<UnityEngine.UIElements.Button>("botaoClean").clicked += () => cleanBoard();
+        root.Q<UnityEngine.UIElements.Button>("botaoClean").clicked += () => cleaner.clean((go) => colocarSprVazio(go), (text)=> resetText(text));
         root.Q<UnityEngine.UIElements.Button>("botaoProcessar").clicked += () => gerarArrayDeIds();
         root.Q<UnityEngine.UIElements.Button>("botaoCimaAll").clicked += () => navegacao.navegarCimaTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoBaixoAll").clicked += () => navegacao.navegarBaixoTotal();
@@ -64,7 +64,7 @@ public class BoardAssemblerV4 : EditorWindow
 
         dicionarioGosBoard = referenciasDoBoard.dicionarioGosBoard;
         spriteVazio = listaDeSprites.getSpriteVazio();
-        cleanBoard();
+        cleaner.clean((go) => colocarSprVazio(go), (text) => resetText(text));
     }
 
     private void colocarSprite(GameObject go, Sprite sprite)
@@ -73,39 +73,26 @@ public class BoardAssemblerV4 : EditorWindow
         go.transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
+    private void colocarSprVazio(GameObject go)
+    {
+        colocarSprite(go, spriteVazio);
+    }
+
+    private void resetText(Text text)
+    {
+        text.text = "00";
+    }
+
     private void colocarTexto(NavegacaoPeloBoard navegacao, int novoValor)
     {
         GameObject go = navegacao.getGoDaMira();
         Sprite spr = go.GetComponent<SpriteRenderer>().sprite;
-        if (spr != null && spr.name.Equals("tile-vazio"))
+        if (spr != null && spr.name.Equals(spriteVazio.name))
         {
             Text text = navegacao.getTextDaMira();
             text.text = novoValor.ToString();
         }
-    }
-
-    private void cleanBoard()
-    {
-        for (int contadorLinha = 0; contadorLinha < dicionarioGosBoard.Count; contadorLinha++)
-        {
-            Dictionary<int, GameObject> dicionarioLinha = dicionarioGosBoard[0];
-            for (int contadorColuna = 0; contadorColuna < dicionarioLinha.Count; contadorColuna++)
-            {                
-                GameObject goIt = dicionarioGosBoard[contadorLinha][contadorColuna];
-                colocarSprite(goIt, spriteVazio);
-
-                if(isSextoElementoLinhaPar(contadorLinha, contadorColuna))                
-                {
-                    goIt.SetActive(false);
-                }
-            }
-        }
-    }
-
-    private bool isSextoElementoLinhaPar(int linha, int coluna)
-    {
-        return linha % 2 != 0 && coluna == 6;
-    }
+    }   
 
     private void gerarArrayDeIds()
     {
