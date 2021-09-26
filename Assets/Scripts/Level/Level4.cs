@@ -35,7 +35,42 @@ public class Level4 : AbstractLevel
             {0, 0, 14, 14, 0, 0, 0},
             {0, 0, 0, 10, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0}};
-    }   
+    }
+
+    public override BoardOrdem[] getBoardOrdem()
+    {
+        BoardOrdem[] ordem = new BoardOrdem[]{
+            new BoardOrdem(0, 6, 3),
+            new BoardOrdem(1, 5, 3),
+            new BoardOrdem(2, 5, 2),
+            new BoardOrdem(3, 4, 3),
+            new BoardOrdem(4, 4, 2),
+            new BoardOrdem(5, 4, 4),
+            new BoardOrdem(6, 3, 4),
+            new BoardOrdem(7, 3, 3),
+            new BoardOrdem(8, 3, 2),
+            new BoardOrdem(9, 3, 1),
+            new BoardOrdem(10, 2, 2),
+            new BoardOrdem(11, 2, 1),
+            new BoardOrdem(12, 2, 3),
+            new BoardOrdem(13, 2, 5),
+            new BoardOrdem(14, 2, 4),
+            new BoardOrdem(15, 1, 5),
+            new BoardOrdem(16, 1, 4),
+            new BoardOrdem(17, 1, 3),
+            new BoardOrdem(18, 1, 2),
+            new BoardOrdem(19, 1, 1),
+            new BoardOrdem(20, 1, 0),
+            new BoardOrdem(21, 0, 3),
+            new BoardOrdem(22, 0, 0),
+            new BoardOrdem(23, 0, 6),
+            new BoardOrdem(24, 0, 5),
+            new BoardOrdem(25, 0, 1),
+            new BoardOrdem(26, 0, 4),
+            new BoardOrdem(27, 0, 2)
+        };
+        return ordem;
+    }
 
     public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
     {
