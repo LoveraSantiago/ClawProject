@@ -103,7 +103,7 @@ public class MaquinaAssemblerV4 : EditorWindow
     private void criarComponentDropDownField(VisualElement root)
     {
         List<string> dicionarios = new List<string> {
-            "0", "1", "2", "3", "999999997", "999999998", "999999999"
+            "0", "1", "2", "3", "4", "999999997", "999999998", "999999999"
         };
 
         DropdownField dropDownField = new DropdownField("Dicionarios", dicionarios, 0);
