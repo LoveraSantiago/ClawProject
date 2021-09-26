@@ -804,9 +804,9 @@ MonoBehaviour:
       pontosAcerto: 8
       sensorDeColetado: {fileID: 2083913115}
       tile: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-      matOutline: {fileID: 2100000, guid: cbad35fbf462a4f4bb8e2451dc3cf1a3, type: 2}
       referenciaColliderColetado: {fileID: 1930189876}
       efeitoColetado: {fileID: 1488198865}
+      efeitoOutline: {fileID: 2100000, guid: cbad35fbf462a4f4bb8e2451dc3cf1a3, type: 2}
       caracteres:
       - {fileID: 21300000, guid: 0b082251c8af14642bd56a42a89b025e, type: 3}
       - {fileID: 21300000, guid: 12248e2a121b8400aa4464081fa6dce1, type: 3}

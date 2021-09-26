@@ -17,6 +17,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private EfeitoColetado efeito;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contador;
+    private ContadorOrdenadoDeColetaveis contadorOrdenado;
     private DetectorDeTriggers detectorDeTrigger;
 
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;    
@@ -30,6 +31,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
         board     = new BoardManager(coletaveisDto.BoardDto);
         contador  = new ContadorDeColetaveis(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
+        contadorOrdenado = new ContadorOrdenadoDeColetaveis();
         tuboSaida = new TuboDeSaida(coletaveisDto.TuboDto);
         efeito    = new EfeitoColetado(coletaveisDto.EfeitoColetado);
 
