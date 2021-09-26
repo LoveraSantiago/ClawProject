@@ -32872,11 +32872,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127936681606313064, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.35714287
+      value: 1.2500001
       objectReference: {fileID: 0}
     - target: {fileID: 4127936681606313064, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.35714287
+      value: 1.2500001
       objectReference: {fileID: 0}
     - target: {fileID: 4127936681606313064, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32924,7 +32924,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: efb723cbae18641a9954c28d1f5cf3e9, type: 3}
     - target: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_DrawMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       propertyPath: m_Materials.Array.data[0]
