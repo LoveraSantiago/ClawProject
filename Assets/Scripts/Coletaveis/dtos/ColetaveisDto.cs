@@ -8,7 +8,10 @@ public class ColetaveisDto
     [SerializeField] private int pontosAcerto;
     [Space(5)]
     [SerializeField] private GameObject sensorDeColetado;
+    [Space(5)]
     [SerializeField] private GameObject tile;
+    [SerializeField] private Material matOutline;
+    [Space(5)]
     [SerializeField] private CircleCollider2D referenciaColliderColetado;
     [SerializeField] private ParticleSystem efeitoColetado;
     [Space(5)]    
@@ -22,7 +25,10 @@ public class ColetaveisDto
     public int PontosAcerto { get { return pontosAcerto; } }
 
     public GameObject SensorDeColetado { get { return sensorDeColetado; } }    
+
     public GameObject Tile { get { return tile; } }    
+    public Material MatOutline { get { return matOutline; } }
+
     public CircleCollider2D ReferenciaColliderColetado { get { return referenciaColliderColetado; } }
     public ParticleSystem EfeitoColetado { get { return efeitoColetado; } }
 

@@ -800,10 +800,11 @@ MonoBehaviour:
         transfInicioCabo: {fileID: 1336653433}
         lineRenderer: {fileID: 958265029}
     coletaveisDto:
-      pontosColetado: 3
-      pontosAcerto: 9
+      pontosColetado: 2
+      pontosAcerto: 8
       sensorDeColetado: {fileID: 2083913115}
       tile: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+      matOutline: {fileID: 2100000, guid: cbad35fbf462a4f4bb8e2451dc3cf1a3, type: 2}
       referenciaColliderColetado: {fileID: 1930189876}
       efeitoColetado: {fileID: 1488198865}
       caracteres:

@@ -205,9 +205,9 @@ public abstract class Coletavel
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
     }       
 
-    public static void configurar(GameObject mainTile, Transform mainTileParent, Sprite[] characters)
+    public static void configurar(ColetaveisDto coletaveisDto)
     {
         context = new ColetavelContextoEstatico();
-        context.configurar(mainTile, mainTileParent, characters);
+        context.configurar(coletaveisDto);
     }
 }
