@@ -5,8 +5,7 @@ public class ColetavelContextoEstatico
 {
     public readonly int IDLE           = Animator.StringToHash("idle");
     public readonly int MIRAR_ON       = Animator.StringToHash("mirar-on");
-    public readonly int MIRAR_SELECTED = Animator.StringToHash("mirar-selected");
-    
+    public readonly int MIRAR_SELECTED = Animator.StringToHash("mirar-selected");    
 
     public Nomeador nomeador { get; private set; }
     public GameObject mainTile { get; private set; }
@@ -15,8 +14,8 @@ public class ColetavelContextoEstatico
 
     public void configurar(ColetaveisDto coletaveisDto)
     {
-        this.mainTile = coletaveisDto.Tile;
-        this.mainTileParent = coletaveisDto.BoardDto.StartBoard;
+        mainTile = coletaveisDto.Tile;
+        mainTileParent = coletaveisDto.BoardDto.StartBoard;
 
         nomeador = new Nomeador();
 
