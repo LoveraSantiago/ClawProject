@@ -81,7 +81,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
         InformacoesColetadoDto infoColetadoDto = new InformacoesColetadoDto();
         infoColetadoDto.addInfosDisplayColetados(coletavelAcertado.getSprite(), contador.resultCombinacao);
-        infoColetadoDto.addInfosDisplayScore(contador.getScore());
+        infoColetadoDto.addInfosDisplayScore(contador.score);
         infoColetadoDto.addInfoFinalizado(contador.hasFinished());
 
         efeito.acionarEfeito(gameObjectColetado.transform.position);
