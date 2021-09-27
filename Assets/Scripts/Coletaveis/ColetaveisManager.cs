@@ -82,7 +82,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         InformacoesColetadoDto infoColetadoDto = new InformacoesColetadoDto();
         infoColetadoDto.addInfosDisplayColetados(coletavelAcertado.getSprite(), contador.resultCombinacao);
         infoColetadoDto.addInfosDisplayScore(contador.score);
-        infoColetadoDto.addInfoFinalizado(contador.hasFinished());
+        infoColetadoDto.addInfoFinalizado(contador.isFinished);
 
         efeito.acionarEfeito(gameObjectColetado.transform.position);
         produtorDeInformacoesDoColetado.produziuEvento(infoColetadoDto);         
@@ -151,8 +151,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {
-        tuboSaida.devolver(contador.resultCombinacao, evento, contador.getColetados(), poolDeColetaveis);        
-        board.devolver(contador.resultCombinacao, evento, contador.getColetados());
+        tuboSaida.devolver(contador.resultCombinacao, evento, contador.coletados, poolDeColetaveis);        
+        board.devolver(contador.resultCombinacao, evento, contador.coletados);
         contador.reajustarContagem(evento, board.isDevolverBoard());
     }
 

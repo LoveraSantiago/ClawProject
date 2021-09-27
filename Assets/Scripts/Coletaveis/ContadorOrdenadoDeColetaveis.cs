@@ -27,9 +27,7 @@ public class ContadorOrdenadoDeColetaveis
             indicarProximoColetavel(poolDeColetaveis);
         }
     }
-
-
-
+       
     public void indicarProximoColetavel(PoolDeColetaveis poolDeColetaveis)
     {
         BoardOrdem ordemIt = ordem[contador];
