@@ -22,12 +22,24 @@ public class ContadorOrdenadoDeColetaveis
 
     public void iniciar(PoolDeColetaveis poolDeColetaveis)
     {
-        if(ordem != null)
+        if(isLevelOrdem())
         {
-            BoardOrdem ordemIt = ordem[contador];
-            ColetavelTile coletavelTile = poolDeColetaveis.getColetavelPeloNome(ordemIt.nome);
-            materialOutline.SetTexture("_MaintText", coletavelTile.getSprite().texture);
-            coletavelTile.addMaterial(materialOutline);
+            indicarProximoColetavel(poolDeColetaveis);
         }
+    }
+
+
+
+    public void indicarProximoColetavel(PoolDeColetaveis poolDeColetaveis)
+    {
+        BoardOrdem ordemIt = ordem[contador];
+        ColetavelTile coletavelTile = poolDeColetaveis.getColetavelPeloNome(ordemIt.nome);
+        materialOutline.SetTexture("_MaintText", coletavelTile.getSprite().texture);
+        coletavelTile.addMaterial(materialOutline);
+    }
+
+    private bool isLevelOrdem()
+    {
+        return ordem != null;
     }
 }
