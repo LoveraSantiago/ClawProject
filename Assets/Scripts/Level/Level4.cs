@@ -79,7 +79,7 @@ public class Level4 : AbstractLevel
 
     public override bool devolverParaBoard()
     {
-        return true;
+        return false;
     }
 
     public override TipoContagemTempoDto getTempoContagem()
