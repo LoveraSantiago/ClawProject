@@ -26,7 +26,7 @@ public class ContadorOrdenadoDeColetaveis
         {
             BoardOrdem ordemIt = ordem[contador];
             ColetavelTile coletavelTile = poolDeColetaveis.getColetavelPeloNome(ordemIt.nome);
-            materialOutline.SetTexture("MainText", coletavelTile.getSprite().texture);
+            materialOutline.SetTexture("_MaintText", coletavelTile.getSprite().texture);
             coletavelTile.addMaterial(materialOutline);
         }
     }
