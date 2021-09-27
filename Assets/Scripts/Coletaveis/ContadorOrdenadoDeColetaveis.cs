@@ -27,6 +27,29 @@ public class ContadorOrdenadoDeColetaveis
             indicarProximoColetavel(poolDeColetaveis);
         }
     }
+
+    public bool contarOrdem(ColetavelTile coletavelTile, PoolDeColetaveis poolDeColetaveis)
+    {
+        if (isLevelOrdem())
+        {
+            BoardOrdem ordemIt = ordem[contador];
+            if (coletavelTile.nome.Equals(ordemIt.nome))
+            {
+                coletavelTile.clearMaterial();
+                contador++;
+                indicarProximoColetavel(poolDeColetaveis);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
        
     public void indicarProximoColetavel(PoolDeColetaveis poolDeColetaveis)
     {
