@@ -51,7 +51,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         int qtdColetaveisDoBoard = board.create(poolDeColetaveis);
         contador.configurarTotalColetaveis(qtdColetaveisDoBoard);
-        coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK
+        coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK        
         contadorOrdenado.iniciar(poolDeColetaveis);
     }    
 

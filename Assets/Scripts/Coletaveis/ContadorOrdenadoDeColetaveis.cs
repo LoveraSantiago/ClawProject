@@ -24,10 +24,10 @@ public class ContadorOrdenadoDeColetaveis
     {
         if(ordem != null)
         {
-            //BoardOrdem ordemIt = ordem[contador];
-            //ColetavelTile coletavelTile = poolDeColetaveis.getColetavelPeloNome(ordemIt.nome);
-            //materialOutline.SetTexture("MainText", coletavelTile.getSprite().texture);
-            //coletavelTile.addMaterial(materialOutline);
+            BoardOrdem ordemIt = ordem[contador];
+            ColetavelTile coletavelTile = poolDeColetaveis.getColetavelPeloNome(ordemIt.nome);
+            materialOutline.SetTexture("MainText", coletavelTile.getSprite().texture);
+            coletavelTile.addMaterial(materialOutline);
         }
     }
 }
