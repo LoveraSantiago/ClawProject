@@ -31,7 +31,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
         board     = new BoardManager(coletaveisDto.BoardDto);
         contador  = new ContadorDeColetaveis(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
-        contadorOrdenado = new ContadorOrdenadoDeColetaveis();
+        contadorOrdenado = new ContadorOrdenadoDeColetaveis(coletaveisDto.EfeitoOutline);
         tuboSaida = new TuboDeSaida(coletaveisDto.TuboDto);
         efeito    = new EfeitoColetado(coletaveisDto.EfeitoColetado);
 
@@ -44,6 +44,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         board.configuradoPeloLevel(level);
         tuboSaida.configuradoPeloLevel(level.devolverParaBoard());
+        contadorOrdenado.configuradoPeloLevel(level);
     }
 
     public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
@@ -51,6 +52,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         int qtdColetaveisDoBoard = board.create(poolDeColetaveis);
         contador.configurarTotalColetaveis(qtdColetaveisDoBoard);
         coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK
+        contadorOrdenado.iniciar(poolDeColetaveis);
     }    
 
     private void configurarSensorDeColetado(GameObject goSensorDeColetado)
