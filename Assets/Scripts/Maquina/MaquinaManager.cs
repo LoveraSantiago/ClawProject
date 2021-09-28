@@ -12,13 +12,13 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 {    
     private PartesMaquinaDto partesDto;
 
-    private Joystick joystick;
-    private VigasTras vigasTras;
-    private DisplayTimer displayTimer;
-    private BotoesPowerUp botoesPowerUp;
-    private ArcoIrisEfeito arcoIrisEfeito;
-    private DisplayDeScores displayDeScores;    
-    private DisplaysDeSlots displaysDeSlots;
+    private Joystick          joystick;
+    private VigasTras         vigasTras;
+    private DisplayTimer      displayTimer;
+    private BotoesPowerUp     botoesPowerUp;
+    private ArcoIrisEfeito    arcoIrisEfeito;
+    private DisplayDeScores   displayDeScores;    
+    public DisplaysDeSlots    displaysDeSlots { get; private set; }
     private BordasVidroFrente bordasFrenteVidro;
     
     public MaquinaManager(MaquinaDto maquinaDto, InputGame inputGame)

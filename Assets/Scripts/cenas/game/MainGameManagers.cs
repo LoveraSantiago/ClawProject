@@ -26,7 +26,8 @@ public class MainGameManagers
         maquinaManager.configuradoPeloLevel(levelEscolhido);
         uiManager.configurandoLevel(levelEscolhido);
 
-        powerUpManager.configurarGosPowerUps(getTrocadorDeOrdem());
+        powerUpManager.configurarGosPowerUps(
+            getInformacaoDisplayColetado(), getTrocadorDeOrdem());
     }
 
     public void configurandoEventos()
@@ -59,5 +60,10 @@ public class MainGameManagers
     private TrocadorDeOrdem getTrocadorDeOrdem()
     {
         return coletaveisManager.contadorOrdenado;
+    }
+
+    private InformacaoDisplayColetado getInformacaoDisplayColetado()
+    {
+        return maquinaManager.displaysDeSlots.displayDeColetados;
     }
 }
