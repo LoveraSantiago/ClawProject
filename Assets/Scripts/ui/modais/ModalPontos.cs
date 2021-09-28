@@ -152,7 +152,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
     private void mostrarModalOrdemFail(int ordem)
     {
         naoMostrarLinhasResult();
-        scoreAtual = "Não conseguiu seguir a ordem " + ordem;
+        scoreAtual = "Não seguiu ordem " + ordem;
         setPontuacao();
         Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(MAPSCENE));
     }
