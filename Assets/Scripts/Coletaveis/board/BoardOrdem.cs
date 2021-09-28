@@ -8,4 +8,9 @@ public class BoardOrdem
         this.ordem = ordem;
         this.nome = nome;
     }    
+
+    public void trocarNome(string nome)
+    {
+        this.nome = nome;
+    }
 }

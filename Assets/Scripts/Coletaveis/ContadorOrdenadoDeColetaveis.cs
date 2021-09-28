@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ContadorOrdenadoDeColetaveis 
+public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
 {
     public int contador { get; private set; }
     private BoardOrdem[] ordem;
@@ -65,5 +65,27 @@ public class ContadorOrdenadoDeColetaveis
     private bool isLevelOrdem()
     {
         return ordem != null;
+    }
+
+    public void trocarOrdem(string primeiro, string segundo)
+    {
+        BoardOrdem ordemPrimeiro = null;
+        BoardOrdem ordemSegundo = null;
+        for(int contadorAtual = contador; contadorAtual < ordem.Length; contadorAtual++)
+        {
+            BoardOrdem ordemIt = ordem[contadorAtual];
+            if (ordemIt.nome.Equals(primeiro))
+            {
+                ordemPrimeiro = ordemIt;
+            }
+            else if (ordemIt.nome.Equals(segundo))
+            {
+                ordemSegundo = ordemIt;
+            }
+        }
+
+        string nomeTemp = ordemPrimeiro.nome;
+        ordemPrimeiro.trocarNome(ordemSegundo.nome);
+        ordemSegundo.trocarNome(nomeTemp);
     }
 }
