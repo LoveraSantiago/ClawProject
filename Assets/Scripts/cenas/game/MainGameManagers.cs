@@ -24,7 +24,9 @@ public class MainGameManagers
         garraManager.configuradoPeloLevel(levelEscolhido);
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
         maquinaManager.configuradoPeloLevel(levelEscolhido);
-        uiManager.configurandoLevel(levelEscolhido);        
+        uiManager.configurandoLevel(levelEscolhido);
+
+        powerUpManager.configurarGosPowerUps(getTrocadorDeOrdem());
     }
 
     public void configurandoEventos()
@@ -52,5 +54,10 @@ public class MainGameManagers
     {
         garraManager.fixedUpdate();
         maquinaManager.fixedUpdate();
+    }
+
+    private TrocadorDeOrdem getTrocadorDeOrdem()
+    {
+        return coletaveisManager.contadorOrdenado;
     }
 }

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
 {
+    private static TrocadorDeOrdem trocadorDeOrdem;
+
     private bool hitColetavel1;
     private bool hitColetavel2;    
 
@@ -132,5 +134,10 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         {
             return new TeleportePowerUpGo();
         }
+    }
+
+    public static void configurarTrocadorDeOrdem(TrocadorDeOrdem trocadorDeOrdemArg)
+    {
+        trocadorDeOrdem = trocadorDeOrdemArg;
     }
 }

@@ -19,6 +19,11 @@ public class PowerUpManager : PowerUpAcionamento,
         AbstractPowerUpGo.configurarAbstractPowerUp(powerUpDto, this, inputGame);        
     }
 
+    public void configurarGosPowerUps(TrocadorDeOrdem trocadorDeOrdem)
+    {
+        TeleportePowerUpGo.configurarTrocadorDeOrdem(trocadorDeOrdem);
+    }
+
     public void acionado(PowerUpEntidade powerUp)
     {
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp);

@@ -17,7 +17,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private EfeitoColetado efeito;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contador;
-    private ContadorOrdenadoDeColetaveis contadorOrdenado;
+    public ContadorOrdenadoDeColetaveis contadorOrdenado { get; private set; }
     private DetectorDeTriggers detectorDeTrigger;
 
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;    
