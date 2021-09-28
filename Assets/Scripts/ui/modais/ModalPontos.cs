@@ -7,6 +7,9 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
                            AcaoBoardElevadoFim.ConsumidorEvento,
                            AcaoCacaNiquel.ConsumidorEvento
 {
+    private static readonly string MAPSCENE = "MapScene";
+    private static readonly string PUPSCENE = "PupScene";
+
     private string scoreAtual;
     private bool mostrandoModal;
 
@@ -63,7 +66,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         {
             setPontuacao();
             naoMostrarLinhasResult();
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal("MapScene"));
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(MAPSCENE));
         }
     }
 
@@ -98,7 +101,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
 
             scoreAtual = "Power Ups Ganhos";
             setPontuacao();
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal("PupScene"));
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(PUPSCENE));
         }
     }
 
@@ -142,8 +145,16 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
             scoreAtual = "Power Ups Ganhos";
             setPontuacao();
 
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal("PupScene"));
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(PUPSCENE));
         }
+    }
+
+    private void mostrarModalOrdemFail(int ordem)
+    {
+        naoMostrarLinhasResult();
+        scoreAtual = "Não conseguiu seguir a ordem " + ordem;
+        setPontuacao();
+        Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(MAPSCENE));
     }
 
     private IEnumerator coroutineMostrarModal(string nomeCena)
@@ -163,6 +174,10 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         if (evento.fimColetados)
         {
             mostrarModalPontuacao();
+        }
+        else if (evento.fimErroOrdem)
+        {
+            mostrarModalOrdemFail();
         }
     }
 
