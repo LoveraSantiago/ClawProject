@@ -8,11 +8,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
     private bool hitColetavel2;            
     private Coroutine coroutine;
 
-    public TeleportePowerUpGo() 
-        : base(powerUpDto.VazioPUp, "teleporte")
-    {
-    
-    }    
+    public TeleportePowerUpGo() : base(powerUpDto.VazioPUp, "teleporte"){}    
 
     public override void configurarPup(){}
 
