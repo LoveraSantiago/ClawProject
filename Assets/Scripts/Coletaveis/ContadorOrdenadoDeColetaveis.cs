@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ContadorOrdenadoDeColetaveis 
 {
-    private int contador;
+    public int contador { get; private set; }
     private BoardOrdem[] ordem;
     private Material materialOutline;
 

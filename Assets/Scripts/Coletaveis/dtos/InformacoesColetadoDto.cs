@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class InformacoesColetadoDto
 {    
-    public int score { get; private set; }
-
-    public Sprite sprite { get; private set; }
     public bool resultCombinacao { get; private set; }    
     public bool fimColetados { get; private set; }
     public bool fimErroOrdem { get; private set; }
 
-    public void addInfosDisplayScore(int score)
+    public int score { get; private set; }
+    public int ordem { get; private set; }
+
+    public Sprite sprite { get; private set; }
+
+    public void addInfosDisplayScore(int score, int ordem)
     {
+        this.ordem = ordem;
         this.score = score;
     }
 
