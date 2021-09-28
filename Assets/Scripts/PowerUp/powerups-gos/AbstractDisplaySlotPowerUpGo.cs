@@ -27,11 +27,6 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpNaoInteracaoComGarra
         finalizado = false;
     }
 
-    public void addInformacaoDisplayColetado(InformacaoDisplayColetado informacaoDisplayColetado)
-    {
-        this.informacaoDisplayColetado = informacaoDisplayColetado;
-    }
-
     public override void resetPup()
     {
         contador = 0;
