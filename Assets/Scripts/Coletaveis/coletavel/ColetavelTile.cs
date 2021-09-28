@@ -40,7 +40,7 @@ public class ColetavelTile : Coletavel
     public void addMaterial(Material material)
     {
         spriteRenderer.material = material;
-    }
+    }   
 
     public void clearMaterial()
     {

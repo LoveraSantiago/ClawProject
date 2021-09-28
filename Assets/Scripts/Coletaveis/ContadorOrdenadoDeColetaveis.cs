@@ -72,7 +72,31 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
         if (isLevelOrdem())
         {
             BoardOrdem ordemPrimeiro = null;
-            BoardOrdem ordemSegundo = null;
+            BoardOrdem ordemSegundo = null;            
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
+            //TROCAR MATERIAL OUTLINE
             for(int contadorAtual = contador; contadorAtual < ordem.Length; contadorAtual++)
             {
                 BoardOrdem ordemIt = ordem[contadorAtual];
