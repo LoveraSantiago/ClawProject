@@ -69,23 +69,26 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
 
     public void trocarOrdem(string primeiro, string segundo)
     {
-        BoardOrdem ordemPrimeiro = null;
-        BoardOrdem ordemSegundo = null;
-        for(int contadorAtual = contador; contadorAtual < ordem.Length; contadorAtual++)
+        if (isLevelOrdem())
         {
-            BoardOrdem ordemIt = ordem[contadorAtual];
-            if (ordemIt.nome.Equals(primeiro))
+            BoardOrdem ordemPrimeiro = null;
+            BoardOrdem ordemSegundo = null;
+            for(int contadorAtual = contador; contadorAtual < ordem.Length; contadorAtual++)
             {
-                ordemPrimeiro = ordemIt;
+                BoardOrdem ordemIt = ordem[contadorAtual];
+                if (ordemIt.nome.Equals(primeiro))
+                {
+                    ordemPrimeiro = ordemIt;
+                }
+                else if (ordemIt.nome.Equals(segundo))
+                {
+                    ordemSegundo = ordemIt;
+                }
             }
-            else if (ordemIt.nome.Equals(segundo))
-            {
-                ordemSegundo = ordemIt;
-            }
-        }
 
-        string nomeTemp = ordemPrimeiro.nome;
-        ordemPrimeiro.trocarNome(ordemSegundo.nome);
-        ordemSegundo.trocarNome(nomeTemp);
+            string nomeTemp = ordemPrimeiro.nome;
+            ordemPrimeiro.trocarNome(ordemSegundo.nome);
+            ordemSegundo.trocarNome(nomeTemp);
+        }
     }
 }
