@@ -59,7 +59,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
                     if (!coletavel1.nome.Equals(coletavel2.nome))
                     {
                         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));                    
-                        hitColetavel2 = true;
+                        hitColetavel2 = true;                        
                         Utils.MonoBehaviour.StartCoroutine(fazerTeleporte(coletavel1, coletavel2));
                     }
                 }
@@ -102,6 +102,9 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
 
         coletavel1.desligarAnimacao();
         coletavel2.desligarAnimacao();
+        yield return null;
+
+        trocadorDeOrdem.trocarOrdem(coletavel1.nome, coletavel2.nome);
 
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
         powerUpFinalizacao.finalizado();
