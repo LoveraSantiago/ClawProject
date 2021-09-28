@@ -43163,6 +43163,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: modal-pontos
       objectReference: {fileID: 0}
+    - target: {fileID: 2746075170011840652, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c80960e73ec17ea40840ae5156d49dd6, type: 3}
 --- !u!224 &2746075170554837614 stripped

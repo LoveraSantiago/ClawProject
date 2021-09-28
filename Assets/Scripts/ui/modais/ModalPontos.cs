@@ -177,7 +177,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         }
         else if (evento.fimErroOrdem)
         {
-            mostrarModalOrdemFail();
+            mostrarModalOrdemFail(evento.ordem);
         }
     }
 
