@@ -85,17 +85,22 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
                 {
                     ordemSegundo = ordemIt;
                 }
-            }
-            trocarNomes(ordemPrimeiro, ordemSegundo);
 
-            if(ordemPrimeiro.ordem == contador)
+                if(ordemPrimeiro != null && ordemSegundo != null)
+                {
+                    break;
+                }
+            }
+
+            if(ordemPrimeiro.ordem == contador + 1)
             {
                 trocarMaterial(coletavelPrimeiro, coletavelSegundo);
             }
-            else if(ordemSegundo.ordem == contador)
+            else if(ordemSegundo.ordem == contador + 1)
             {
                 trocarMaterial(coletavelSegundo, coletavelPrimeiro);
             }
+            trocarNomes(ordemPrimeiro, ordemSegundo);
         }
     }
 
@@ -108,6 +113,7 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
 
     private void trocarMaterial(ColetavelTile coletavelComMaterial, ColetavelTile coletavelSemMaterial)
     {
+        Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
         coletavelSemMaterial.addMaterial(materialOutline);
     }
