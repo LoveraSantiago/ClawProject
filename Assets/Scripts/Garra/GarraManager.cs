@@ -21,21 +21,9 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     public GarraManager(GarraDto garraDto)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
-        //gerDeMovNormal     = new GerenciadorDeMovimentacaoNormal();
-        //gerDeMovPowerUp    = new GerenciadorDeMovimentacaoPowerUp();
-        //gerDeMovCacaNiquel = new GerenciadorDeMovimentacaoCacaNiquel();
-        //gerDeMovAtual = gerDeMovNormal;
-
         configurarColisorCentroDaPinca(garraDto.Colisor);
-
         cabo = new CaboDaGarra(garraDto.CaboDaGarraDto, garraDto.RigidBody.transform);
-    }
-
-    private void configurarColisorCentroDaPinca(GameObject goColisor)
-    {
-        DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();
-        detectorDeColisoes.registrarConsumidorDeTrigger(this);
-    }
+    }  
 
     public void configuradoPeloLevel(AbstractLevel level)
     {        
@@ -74,7 +62,13 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     private void processarGarraColidiuCom(Collider2D other)
     {
         gerDeMovAtual.garraColidiuCom(other);
-    }  
+    }
+
+    private void configurarColisorCentroDaPinca(GameObject goColisor)
+    {
+        DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();
+        detectorDeColisoes.registrarConsumidorDeTrigger(this);
+    }
 
     void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
@@ -141,13 +135,26 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     //TODO tentar unificar
     ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
     {
-        //PIPOCANDO NULL POINTER
-        return ((AcaoImantadoPelaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();
+        if(gerDeMovNormal != null)
+        {
+            return ((AcaoImantadoPelaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();
+        }
+        else
+        {
+            return null;
+        }
     }
 
     ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoSubidaDaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();
+        if(gerDeMovNormal != null)
+        {
+            return ((AcaoSubidaDaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();
+        }
+        else
+        {
+            return null;
+        }
     }
 
     ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
