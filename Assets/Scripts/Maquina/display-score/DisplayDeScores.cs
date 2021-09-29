@@ -16,12 +16,10 @@ public class DisplayDeScores : ArcoIrisConjunto
 
     public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto)
     {   
-        SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;
-
-        MaterialGlow materialGlow = new MaterialGlow(displayDeScoresDto.MaterialGlowDisplay);
-        displayCentena = new DisplayScoreDigito(singleDisplays[0], materialGlow);
-        displayDezena  = new DisplayScoreDigito(singleDisplays[1], materialGlow);
-        displayUnidade = new DisplayScoreDigito(singleDisplays[2], materialGlow);
+        SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;        
+        displayCentena = new DisplayScoreDigito(singleDisplays[0]);
+        displayDezena  = new DisplayScoreDigito(singleDisplays[1]);
+        displayUnidade = new DisplayScoreDigito(singleDisplays[2]);
 
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
@@ -120,5 +118,7 @@ public class DisplayDeScores : ArcoIrisConjunto
     public void passarCor(Color cor)
     {
         displayCentena.getMaterialGlow().setCorNoMaterial(cor);
+        displayDezena.getMaterialGlow().setCorNoMaterial(cor);
+        displayUnidade.getMaterialGlow().setCorNoMaterial(cor);
     }
 }

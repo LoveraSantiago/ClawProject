@@ -13,9 +13,9 @@ public class DisplayScoreDigito
 
     private int[,] arrayLigados;
 
-    public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto, MaterialGlow materialGlow)
+    public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto)
     {
-        sprDisplay = singleDisplayDto.Placa;
+        sprDisplay = singleDisplayDto.SprRendererPlaca;
         arrayDeLeds = new SpriteRenderer[5][];
         arrayDeLeds[0] = singleDisplayDto.Fileira1;
         arrayDeLeds[1] = singleDisplayDto.Fileira2;
@@ -23,6 +23,7 @@ public class DisplayScoreDigito
         arrayDeLeds[3] = singleDisplayDto.Fileira4;
         arrayDeLeds[4] = singleDisplayDto.Fileira5;
 
+        MaterialGlow materialGlow = new MaterialGlow(singleDisplayDto.MaterialEfeito);
         glowEfeito = new GlowEfeito(singleDisplayDto.PlacaEfeito, materialGlow);
     }
 

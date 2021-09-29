@@ -4,8 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class SingleDisplayScoreDto 
 {
-    [SerializeField] private SpriteRenderer placa;
-    [SerializeField] private GameObject placaEfeito;
+    [SerializeField] private SpriteRenderer sprRendererPlaca;
+    [SerializeField] private SpriteRenderer sprRendererPlacaEfeito;    
 
     [SerializeField] private SpriteRenderer[] fileira1 = new SpriteRenderer[7];
     [SerializeField] private SpriteRenderer[] fileira2 = new SpriteRenderer[7];
@@ -13,8 +13,9 @@ public class SingleDisplayScoreDto
     [SerializeField] private SpriteRenderer[] fileira4 = new SpriteRenderer[7];
     [SerializeField] private SpriteRenderer[] fileira5 = new SpriteRenderer[7];
 
-    public SpriteRenderer Placa { get { return placa; } }
-    public GameObject PlacaEfeito { get { return placaEfeito; } }
+    public SpriteRenderer SprRendererPlaca { get { return sprRendererPlaca; } }
+    public GameObject PlacaEfeito { get { return sprRendererPlacaEfeito.gameObject; } }
+    public Material MaterialEfeito { get { return sprRendererPlacaEfeito.material; } }
 
     public SpriteRenderer[] Fileira1 { get { return fileira1;  } }
     public SpriteRenderer[] Fileira2 { get { return fileira2;  } }
