@@ -13,7 +13,6 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
 {
     private GerenciadorDeMovimentacaoNormal     gerDeMovNormal;
     private GerenciadorDeMovimentacaoPowerUp    gerDeMovPowerUp;
-    private GerenciadorDeMovimentacaoCacaNiquel gerDeMovCacaNiquel;//TODO tentar reaproveitar GerenciadorDeMovimentacaoNormal e remover GerenciadorDeMovimentacaoCacaNiquel
     private GerenciadorDeMovimentacao gerDeMovAtual;
     private CaboDaGarra cabo;
 
@@ -22,10 +21,10 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     public GarraManager(GarraDto garraDto)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
-        gerDeMovNormal     = new GerenciadorDeMovimentacaoNormal();
-        gerDeMovPowerUp    = new GerenciadorDeMovimentacaoPowerUp();
-        gerDeMovCacaNiquel = new GerenciadorDeMovimentacaoCacaNiquel();
-        gerDeMovAtual = gerDeMovNormal;
+        //gerDeMovNormal     = new GerenciadorDeMovimentacaoNormal();
+        //gerDeMovPowerUp    = new GerenciadorDeMovimentacaoPowerUp();
+        //gerDeMovCacaNiquel = new GerenciadorDeMovimentacaoCacaNiquel();
+        //gerDeMovAtual = gerDeMovNormal;
 
         configurarColisorCentroDaPinca(garraDto.Colisor);
 
@@ -44,7 +43,13 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
 
         if(level.isCacaNiquelLevel())
         {
-            gerDeMovAtual = gerDeMovCacaNiquel;
+            gerDeMovAtual = new GerenciadorDeMovimentacaoCacaNiquel();
+        }
+        else
+        {
+            gerDeMovNormal = new GerenciadorDeMovimentacaoNormal();
+            gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
+            gerDeMovAtual = gerDeMovNormal;
         }
     }
 
@@ -133,8 +138,10 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         }
     }
 
+    //TODO tentar unificar
     ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
     {
+        //PIPOCANDO NULL POINTER
         return ((AcaoImantadoPelaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();
     }
 
