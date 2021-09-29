@@ -14,7 +14,7 @@ public class LinhaModalPontos
         linhasDto.LblText1.text = label1;
         linhasDto.ImgLinha.sprite = spr;
         linhasDto.LblText2.text = label2;
-    }
+    }   
 
     public void desligar()
     {

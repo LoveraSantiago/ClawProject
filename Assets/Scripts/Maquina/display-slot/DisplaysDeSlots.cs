@@ -3,7 +3,7 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
 {
     private GrupoDisplays grupoDisplays;
 
-    private DisplaysDeColetados displayDeColetados;
+    public DisplaysDeColetados displayDeColetados { get; private set; }
     private DisplayCacaNiquel displayCacaNiquel;
 
     public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto, InputGame inputGame)

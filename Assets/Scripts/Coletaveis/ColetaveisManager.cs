@@ -17,6 +17,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private EfeitoColetado efeito;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contador;
+    public ContadorOrdenadoDeColetaveis contadorOrdenado { get; private set; }
     private DetectorDeTriggers detectorDeTrigger;
 
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;    
@@ -30,6 +31,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
         board     = new BoardManager(coletaveisDto.BoardDto);
         contador  = new ContadorDeColetaveis(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
+        contadorOrdenado = new ContadorOrdenadoDeColetaveis(coletaveisDto.EfeitoOutline);
         tuboSaida = new TuboDeSaida(coletaveisDto.TuboDto);
         efeito    = new EfeitoColetado(coletaveisDto.EfeitoColetado);
 
@@ -42,13 +44,15 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         board.configuradoPeloLevel(level);
         tuboSaida.configuradoPeloLevel(level.devolverParaBoard());
+        contadorOrdenado.configuradoPeloLevel(level);
     }
 
     public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
     {
         int qtdColetaveisDoBoard = board.create(poolDeColetaveis);
         contador.configurarTotalColetaveis(qtdColetaveisDoBoard);
-        coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK
+        coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK        
+        contadorOrdenado.iniciar(poolDeColetaveis);
     }    
 
     private void configurarSensorDeColetado(GameObject goSensorDeColetado)
@@ -59,7 +63,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     private void configurarPoolDeColetaveis(ColetaveisDto coletaveisDto)
     {
-        Coletavel.configurar(coletaveisDto.Tile, coletaveisDto.BoardDto.StartBoard, coletaveisDto.Caracteres);
+        Coletavel.configurar(coletaveisDto);
         poolDeColetaveis = new PoolDeColetaveis();
         ColetavelQuery.inicializarDicionarioDeColetaveisInGame(poolDeColetaveis);
     }
@@ -70,15 +74,15 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         ColetavelTile coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
         coletavelAcertado.desligar();        
 
-        contador.adicionarColetado(coletavelAcertado);        
+        contador.adicionarColetado(coletavelAcertado);
+        bool resultOrdem = contadorOrdenado.contarOrdem(coletavelAcertado, poolDeColetaveis);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
         InformacoesColetadoDto infoColetadoDto = new InformacoesColetadoDto();
         infoColetadoDto.addInfosDisplayColetados(coletavelAcertado.getSprite(), contador.resultCombinacao);
-        infoColetadoDto.addInfosDisplayScore(contador.getScore());
-        infoColetadoDto.addInfosPosicao(gameObjectColetado.transform.position);
-        infoColetadoDto.addInfoFinalizado(contador.hasFinished());
+        infoColetadoDto.addInfosDisplayScore(contador.score, contadorOrdenado.contador);
+        infoColetadoDto.addInfoFinalizado(contador.isFinished, resultOrdem);
 
         efeito.acionarEfeito(gameObjectColetado.transform.position);
         produtorDeInformacoesDoColetado.produziuEvento(infoColetadoDto);         
@@ -147,8 +151,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {
-        tuboSaida.devolver(contador.resultCombinacao, evento, contador.getColetados(), poolDeColetaveis);        
-        board.devolver(contador.resultCombinacao, evento, contador.getColetados());
+        tuboSaida.devolver(contador.resultCombinacao, evento, contador.coletados, poolDeColetaveis);        
+        board.devolver(contador.resultCombinacao, evento, contador.coletados);
         contador.reajustarContagem(evento, board.isDevolverBoard());
     }
 

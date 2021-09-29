@@ -2,18 +2,19 @@ using UnityEngine;
 
 public class ContadorDeColetaveis
 {
-    private int score = 0;    
-
-    private int pontosColetado;
-    private int pontosAcerto;
-    
     public bool resultCombinacao { get; private set; }
+    public bool isFinished { get { return totalColetaveis == 0; } }
+
+    public int score { get; private set; }    
+    private int pontosColetado;
+    private int pontosAcerto;    
     private int totalColetaveis;
 
-    private ColetavelTile[] coletados;       
+    public ColetavelTile[] coletados { get; private set; }
 
     public ContadorDeColetaveis(int pontosColetado, int pontosAcerto)
     {
+        score = 0;
         this.pontosAcerto = pontosAcerto;
         this.pontosColetado = pontosColetado;
         coletados = new ColetavelTile[3];        
@@ -95,22 +96,7 @@ public class ContadorDeColetaveis
         int indice = getPrimeiroIndiceVazio();
         //Debug.Log("Indice contador de coletaveis " + indice);
         coletados[indice] = coletado;        
-    }         
-
-    public int getScore()
-    {
-        return score;
-    }
-
-    public bool hasFinished()
-    {
-        return totalColetaveis == 0;
-    }
-
-    public ColetavelTile[] getColetados()
-    {
-        return coletados;
-    }
+    }                    
 
     private void resetarColetados()
     {

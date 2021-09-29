@@ -5,7 +5,7 @@
     xmlns:editor="UnityEditor.UIElements"
     xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
 >
-    <engine:Style src="BoardAssemblerV4.uss"/>
+    <engine:Style src="BoardAssemblerV5.uss"/>
   <engine:VisualElement name="main">
       <engine:VisualElement name="containerCima">
         <engine:VisualElement name="container1">    

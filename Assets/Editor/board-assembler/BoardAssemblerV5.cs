@@ -4,16 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class BoardAssemblerV4 : EditorWindow
+public class BoardAssemblerV5 : EditorWindow
 {
-    [MenuItem("Window/BoardAssemblerV4")]
+    [MenuItem("Window/BoardAssemblerV5")]
     public static void ShowExample()
     {
-        BoardAssemblerV4 wnd = GetWindow<BoardAssemblerV4>();
-        wnd.titleContent = new GUIContent("BoardAssemblerV4");
+        BoardAssemblerV5 wnd = GetWindow<BoardAssemblerV5>();
+        wnd.titleContent = new GUIContent("BoardAssemblerV5");
     }
 
-    private Sprite spriteVazio;    
+    private Sprite spriteVazio;
 
     public void CreateGUI()
     {
@@ -25,19 +25,19 @@ public class BoardAssemblerV4 : EditorWindow
         //root.Add(label);
 
         // Import UXML
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/board-assembler/BoardAssemblerV4.uxml");
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/board-assembler/BoardAssemblerV5.uxml");
         VisualElement labelFromUXML = visualTree.Instantiate();
         root.Add(labelFromUXML);
 
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler/BoardAssemblerV4.uss");
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler/BoardAssemblerV5.uss");
         //VisualElement labelWithStyle = new Label("Hello World! With Style");
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
-        
+
         ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler();
-        NavegacaoPeloBoard navegacao  = new NavegacaoPeloBoard(root, referenciasDoBoard);
+        NavegacaoPeloBoard navegacao = new NavegacaoPeloBoard(root, referenciasDoBoard);
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
         BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard);
         navegacao.resetMira();
@@ -51,15 +51,15 @@ public class BoardAssemblerV4 : EditorWindow
 
         root.Q<UnityEngine.UIElements.Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
         root.Q<UnityEngine.UIElements.Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
-        root.Q<UnityEngine.UIElements.Button>("botaoClean").clicked += () => cleaner.clean((go) => colocarSprVazio(go), (text)=> resetText(text));
+        root.Q<UnityEngine.UIElements.Button>("botaoClean").clicked += () => cleaner.clean((go) => colocarSprVazio(go), (text) => resetText(text));
         root.Q<UnityEngine.UIElements.Button>("botaoProcessar").clicked += () => processador.gerarArrayDeIds();
         root.Q<UnityEngine.UIElements.Button>("botaoProcessarOrdem").clicked += () => processador.gerarArrayDeOrdem();
         root.Q<UnityEngine.UIElements.Button>("botaoCimaAll").clicked += () => navegacao.navegarCimaTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoBaixoAll").clicked += () => navegacao.navegarBaixoTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoEsquerdaAll").clicked += () => navegacao.navegarTrasTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoDireitaAll").clicked += () => navegacao.navegarFrenteTotal();
-        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => colocarTexto(navegacao, evento.newValue));            
-                
+        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => colocarTexto(navegacao, evento.newValue));
+
         spriteVazio = listaDeSprites.getSpriteVazio();
         cleaner.clean((go) => colocarSprVazio(go), (text) => resetText(text));
     }
@@ -95,5 +95,5 @@ public class BoardAssemblerV4 : EditorWindow
         {
             //Debug.Log("Troca de texto NAO realizada");
         }
-    }      
+    }
 }

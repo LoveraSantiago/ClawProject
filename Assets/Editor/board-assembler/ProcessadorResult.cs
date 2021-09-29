@@ -43,6 +43,7 @@ public class ProcessadorResult
     public void gerarArrayDeOrdem()
     {
         SortedList<int, BoardOrdem> sortedList = new SortedList<int, BoardOrdem>();
+        int contadorNome = 0;
         for (int contadorLinha = 0; contadorLinha < referencias.dicionarioTextLabels.Count; contadorLinha++)
         {
             Dictionary<int, Text> dicionarioLinha = referencias.dicionarioTextLabels[0];
@@ -51,8 +52,9 @@ public class ProcessadorResult
                 Text textIt = referencias.dicionarioTextLabels[contadorLinha][contadorColuna];
                 if (int.Parse(textIt.text) != 0)
                 {
+                    contadorNome++;
                     int ordem = int.Parse(textIt.text);
-                    BoardOrdem boardOrdem = new BoardOrdem(ordem, contadorLinha, contadorColuna);
+                    BoardOrdem boardOrdem = new BoardOrdem(ordem, contadorNome.ToString());
                     sortedList.Add(boardOrdem.ordem, boardOrdem);
                 }
             }
@@ -62,7 +64,7 @@ public class ProcessadorResult
         for(int contador = 0; contador < sortedList.Count; contador++)
         {
             BoardOrdem boardOrdem = sortedList[contador + 1];
-            result += "new BoardOrdem(" + contador + ", " + boardOrdem.linha + ", " + boardOrdem.coluna + ")";
+            result += "new BoardOrdem(" + boardOrdem.ordem + ", \"" + boardOrdem.nome + "\")";
             string separadorLinha = (contador + 1) == sortedList.Count ? "" : ("," + Environment.NewLine);
             result += separadorLinha;
         }

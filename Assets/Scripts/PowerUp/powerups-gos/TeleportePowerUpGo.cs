@@ -3,25 +3,18 @@ using System.Collections;
 
 public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
 {
-    private bool hitColetavel1;
-    private bool hitColetavel2;    
+    private static TrocadorDeOrdem trocadorDeOrdem;    
 
-    private ColetavelTile coletavel1;
-    private ColetavelTile coletavel2;
-
-    private ColetaveisMiras miras;
+    private bool hitColetavel2;            
     private Coroutine coroutine;
 
-    public TeleportePowerUpGo() 
-        : base(powerUpDto.VazioPUp, "teleporte")
-    {
-        miras = new ColetaveisMiras();
-    }    
+    public TeleportePowerUpGo() : base(powerUpDto.VazioPUp, "teleporte"){}    
 
     public override void configurarPup(){}
 
     public override void iniciarPup()
     {
+        ColetaveisMiras miras = new ColetaveisMiras();
         miras.ligar();
         coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvos());
     }
@@ -30,8 +23,12 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator selecionarAlvos()
     {
-        hitColetavel1 = false;
+        bool hitColetavel1 = false;
         hitColetavel2 = false;
+
+        ColetavelTile coletavel1 = null;
+        ColetavelTile coletavel2 = null;
+
         ColetavelQuery coletavelQuery = new ColetavelQuery();
         ColetavelHit coletavelHit = new ColetavelHit();
         while (!hitColetavel1)
@@ -62,8 +59,8 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
                     if (!coletavel1.nome.Equals(coletavel2.nome))
                     {
                         coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));                    
-                        hitColetavel2 = true;
-                        Utils.MonoBehaviour.StartCoroutine(fazerTeleporte());
+                        hitColetavel2 = true;                        
+                        Utils.MonoBehaviour.StartCoroutine(fazerTeleporte(coletavel1, coletavel2));
                     }
                 }
             }
@@ -72,7 +69,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         yield return null;
     }
 
-    private IEnumerator fazerTeleporte()
+    private IEnumerator fazerTeleporte(ColetavelTile coletavel1, ColetavelTile coletavel2)
     {
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();
@@ -105,6 +102,9 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
 
         coletavel1.desligarAnimacao();
         coletavel2.desligarAnimacao();
+        yield return null;
+
+        trocadorDeOrdem.trocarOrdem(coletavel1, coletavel2);
 
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
         powerUpFinalizacao.finalizado();
@@ -116,6 +116,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         if (!hitColetavel2)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
+            ColetaveisMiras miras = new ColetaveisMiras();
             miras.desligar();
             powerUpFinalizacao.finalizado();
         }
@@ -132,5 +133,10 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         {
             return new TeleportePowerUpGo();
         }
+    }
+
+    public static void configurarTrocadorDeOrdem(TrocadorDeOrdem trocadorDeOrdemArg)
+    {
+        trocadorDeOrdem = trocadorDeOrdemArg;
     }
 }

@@ -1,13 +1,16 @@
 public class BoardOrdem 
 {
     public int ordem { get; private set; }
-    public int linha { get; private set; }
-    public int coluna { get; private set; }
+    public string nome{ get; private set; }    
 
-    public BoardOrdem(int ordem, int linha, int coluna)
+    public BoardOrdem(int ordem, string nome)
     {
         this.ordem = ordem;
-        this.linha = linha;
-        this.coluna = coluna;
+        this.nome = nome;
     }    
+
+    public void trocarNome(string nome)
+    {
+        this.nome = nome;
+    }
 }

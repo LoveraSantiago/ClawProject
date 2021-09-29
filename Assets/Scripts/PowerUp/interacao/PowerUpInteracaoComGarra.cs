@@ -11,5 +11,6 @@ public interface PowerUpInteracaoComGarra
     void ligarGravidadeZero();
     void ligarGravidadeHum();
     void fixarEixoX();
+    //TODO garra nao deve cuidar de timeout
     void timeout();
 }

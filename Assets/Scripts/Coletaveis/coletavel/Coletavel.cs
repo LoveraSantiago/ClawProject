@@ -36,21 +36,6 @@ public abstract class Coletavel
         spriteRenderer = goSprite.GetComponent<SpriteRenderer>();
     }
 
-    public void addParent(Transform parent)
-    {
-        goColetavel.transform.SetParent(parent);
-    }
-
-    public void addVelocidadeAngular(float velocidadeAngular)
-    {
-        rigidbody.angularVelocity = velocidadeAngular;
-    }
-
-    public void addVelocidade(Vector2 velocidade)
-    {
-        rigidbody.velocity = velocidade;
-    }
-
     public bool isVelocidadeYPositiva()
     {
         return rigidbody.velocity.y > 0;
@@ -105,6 +90,12 @@ public abstract class Coletavel
         rigidbody.angularVelocity = 0;
     }
 
+    public void ligar()
+    {
+        ativo = true;
+        goColetavel.SetActive(true);
+    }
+
     public void desligar()
     {
         ativo = false;
@@ -116,21 +107,10 @@ public abstract class Coletavel
         return goColetavel.transform.position;
     }
 
-    public Vector2 getPosicaoRigidBody()
-    {
-        return rigidbody.transform.position;
-    }
-
     public GameObject getGoColetavel()
     {
         return goColetavel;
-    }
-
-    public void ligar()
-    {
-        ativo = true;
-        goColetavel.SetActive(true);
-    }
+    }   
 
     public bool isAtivo()
     {
@@ -145,11 +125,6 @@ public abstract class Coletavel
     public virtual void ligarGravidadeHum()
     {
         rigidbody.gravityScale = 1;
-    }
-
-    public void ligarGravidadeNegativa()
-    {
-        rigidbody.gravityScale = -1;
     }
 
     public void setGravidade(float gravidade)
@@ -194,20 +169,15 @@ public abstract class Coletavel
         return spriteRenderer.sprite;
     }   
 
-    public void resetSprite()
-    {
-        spriteRenderer.sprite = null;
-    }
-
     public bool hasEqualsSprite(Coletavel coletavelOutro)
     {
         //Debug.Log("spr this " + nomeSprite + " spr other " + coletavelOutro.nomeSprite);
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
     }       
 
-    public static void configurar(GameObject mainTile, Transform mainTileParent, Sprite[] characters)
+    public static void configurar(ColetaveisDto coletaveisDto)
     {
         context = new ColetavelContextoEstatico();
-        context.configurar(mainTile, mainTileParent, characters);
+        context.configurar(coletaveisDto);
     }
 }

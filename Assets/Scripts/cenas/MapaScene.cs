@@ -28,6 +28,13 @@ public class MapaScene : MonoBehaviour
         updateModal(new Level3());
     }
 
+    public void showTarget4()
+    {
+        modalObjetivo.SetActive(true);
+        PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.QUATRO);
+        updateModal(new Level4());
+    }
+
     public void goToPupScene()
     {
         SceneManager.LoadScene("PupScene");

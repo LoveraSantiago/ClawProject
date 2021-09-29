@@ -21,6 +21,10 @@ public class PowerUpInfo
     public  ColetavelTile coletavelTile { get; private set; }
 
     public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }
+
+    //TODO dar um jeito de remover essa propriedade. 
+    //Vai precisar q AbstractPowerUpGO iniciar receba quem iniciou.
+    //Conforme quem iniciou acionar o powerup AbstractDisplaySlotPowerUpGO na terceira vez
     public PowerUpInteracaoDisplayColetado interacaoDisplayColetado { get; private set; }
 
     private PowerUpInfo(ESTADO estado)

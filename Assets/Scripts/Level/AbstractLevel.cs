@@ -20,6 +20,8 @@ public abstract class AbstractLevel
 
     public virtual int[,] getArrayDeColetaveisSub(){return null;}
 
+    public virtual BoardOrdem[] getBoardOrdem() { return null; }
+
     public string getTipoGameDesc()
     {
         return getTipoGame().ToString();
@@ -57,6 +59,11 @@ public abstract class AbstractLevel
     public bool isPupLevel()
     {
         return getTipoGame() == TIPO_GAME.PUP;
+    }
+
+    public bool isOrdemLevel()
+    {
+        return getTipoGame() == TIPO_GAME.ORDENADO;
     }
 
     public static bool isCacaNiquelLevel(string desc)
