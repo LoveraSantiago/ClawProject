@@ -907,8 +907,7 @@ MonoBehaviour:
           goSlotCima: {fileID: 1493040373}
       displayTimerDto:
         sprRendererPlaca: {fileID: 1404465311}
-        placaEfeito: {fileID: 2146911254}
-        materialEfeito: {fileID: 2100000, guid: fb7901452995da14585f507a900c3d55, type: 2}
+        sprRendererPlacaEfeito: {fileID: 2146911256}
         singleDisplay:
         - segmentos:
           - {fileID: 260943912}
@@ -42973,9 +42972,9 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1962151703188086930, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2146911254 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4868279247045725058, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+--- !u!212 &2146911256 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5136154638387615519, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1379266187116345345 stripped
