@@ -11,12 +11,12 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoCacaNiquel.ConsumidorEvento,
                             ConsumidorDeEventoTrigger
 {
-    private GerenciadorDeMovimentacaoNormal     gerDeMovNormal;
-    private GerenciadorDeMovimentacaoPowerUp    gerDeMovPowerUp;
-    private GerenciadorDeMovimentacao gerDeMovAtual;
     private CaboDaGarra cabo;
+    private GerenciadorDeMovimentacaoNormal  gerDeMovNormal;
+    private GerenciadorDeMovimentacaoPowerUp gerDeMovPowerUp;
+    private GerenciadorDeMovimentacao        gerDeMovAtual;
 
-    private bool tempoEsgotadoEmAcao;
+    private bool tempoEsgotadoEmAcao;//TODO remover
 
     public GarraManager(GarraDto garraDto)
     {
@@ -35,9 +35,9 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         }
         else
         {
-            gerDeMovNormal = new GerenciadorDeMovimentacaoNormal();
+            gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
             gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
-            gerDeMovAtual = gerDeMovNormal;
+            gerDeMovAtual   = gerDeMovNormal;
         }
     }
 
@@ -135,26 +135,12 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     //TODO tentar unificar
     ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
     {
-        if(gerDeMovNormal != null)
-        {
-            return ((AcaoImantadoPelaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();
-        }
-        else
-        {
-            return null;
-        }
+        return gerDeMovNormal == null ? null : ((AcaoImantadoPelaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();        
     }
 
     ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
-        if(gerDeMovNormal != null)
-        {
-            return ((AcaoSubidaDaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();
-        }
-        else
-        {
-            return null;
-        }
+        return gerDeMovNormal == null ? null : ((AcaoSubidaDaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();        
     }
 
     ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
