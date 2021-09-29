@@ -104,7 +104,7 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         coletavel2.desligarAnimacao();
         yield return null;
 
-        trocadorDeOrdem.trocarOrdem(coletavel1.nome, coletavel2.nome);
+        trocadorDeOrdem.trocarOrdem(coletavel1, coletavel2);
 
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
         powerUpFinalizacao.finalizado();

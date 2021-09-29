@@ -67,52 +67,48 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
         return ordem != null;
     }
 
-    public void trocarOrdem(string primeiro, string segundo)
+    public void trocarOrdem(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {
         if (isLevelOrdem())
         {
             BoardOrdem ordemPrimeiro = null;
             BoardOrdem ordemSegundo = null;            
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
-            //TROCAR MATERIAL OUTLINE
+            
             for(int contadorAtual = contador; contadorAtual < ordem.Length; contadorAtual++)
             {
                 BoardOrdem ordemIt = ordem[contadorAtual];
-                if (ordemIt.nome.Equals(primeiro))
+                if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
                 {
                     ordemPrimeiro = ordemIt;
                 }
-                else if (ordemIt.nome.Equals(segundo))
+                else if (ordemIt.nome.Equals(coletavelSegundo.nome))
                 {
                     ordemSegundo = ordemIt;
                 }
             }
+            trocarNomes(ordemPrimeiro, ordemSegundo);
 
-            string nomeTemp = ordemPrimeiro.nome;
-            ordemPrimeiro.trocarNome(ordemSegundo.nome);
-            ordemSegundo.trocarNome(nomeTemp);
+            if(ordemPrimeiro.ordem == contador)
+            {
+                trocarMaterial(coletavelPrimeiro, coletavelSegundo);
+            }
+            else if(ordemSegundo.ordem == contador)
+            {
+                trocarMaterial(coletavelSegundo, coletavelPrimeiro);
+            }
         }
+    }
+
+    private void trocarNomes(BoardOrdem ordemPrimeiro, BoardOrdem ordemSegundo)
+    {
+        string nomeTemp = ordemPrimeiro.nome;
+        ordemPrimeiro.trocarNome(ordemSegundo.nome);
+        ordemSegundo.trocarNome(nomeTemp);
+    }
+
+    private void trocarMaterial(ColetavelTile coletavelComMaterial, ColetavelTile coletavelSemMaterial)
+    {
+        coletavelComMaterial.clearMaterial();
+        coletavelSemMaterial.addMaterial(materialOutline);
     }
 }
