@@ -25,11 +25,6 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movParado         = new MovimentacaoParadoNormal();
     }
 
-    public void configuradoPeloLevel(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
-    {
-        movLateral = selecionarMecanicaHorizontal(mecanicaGarraEscolhida);
-    }
-
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
     public override void iniciarMovimentacoes()
     {
@@ -57,16 +52,6 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movAtual.comemorar();
     }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
-
-    public MovimentacaoDaGarra selecionarMecanicaHorizontal(GarraManager.MECANICA_GARRA mecanicaGarraEscolhida)
-    {
-        switch (mecanicaGarraEscolhida)//MECANICAS ANTIGAS REMOVIDAS IMPLEMENTACAO LEGADA
-        {
-            case (GarraManager.MECANICA_GARRA.ZIG_ZAG):
-                return movLateral;
-        }
-        return new MovimentacaoLateralZigZag();
-    }
 
     //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL INICIO    
     public void trocarParaAcaoDescendo()

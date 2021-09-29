@@ -11,8 +11,6 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoCacaNiquel.ConsumidorEvento,
                             ConsumidorDeEventoTrigger
 {
-    public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
-
     private GerenciadorDeMovimentacaoNormal     gerDeMovNormal;
     private GerenciadorDeMovimentacaoPowerUp    gerDeMovPowerUp;
     private GerenciadorDeMovimentacaoCacaNiquel gerDeMovCacaNiquel;//TODO tentar reaproveitar GerenciadorDeMovimentacaoNormal e remover GerenciadorDeMovimentacaoCacaNiquel
@@ -41,8 +39,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
-    {
-        gerDeMovNormal.configuradoPeloLevel(level.getMecanicaDaGarra());
+    {        
         cabo.configuradoPeloLevel(level.getDicionarioDeCores());
 
         if(level.isCacaNiquelLevel())
