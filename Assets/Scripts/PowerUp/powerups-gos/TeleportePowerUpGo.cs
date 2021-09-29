@@ -3,6 +3,10 @@ using System.Collections;
 
 public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
 {
+    private static readonly string PROP_SPRITE_IN  = "inSprite";
+    private static readonly string PROP_SPRITE_OUT = "outSprite";
+    private static readonly string PROP_VALOR      = "valor";
+
     private static TrocadorDeOrdem trocadorDeOrdem;    
 
     private bool hitColetavel2;            
@@ -76,11 +80,11 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
 
         Material matIn = powerUpDto.TeleporteDto.MatTeleporteIn;
         Material matOut = powerUpDto.TeleporteDto.MatTeleporteOut;
-        matIn.SetTexture("inSprite", spr1.texture);
-        matIn.SetTexture("outSprite", spr2.texture);
+        matIn.SetTexture(PROP_SPRITE_IN, spr1.texture);
+        matIn.SetTexture(PROP_SPRITE_OUT, spr2.texture);
 
-        matOut.SetTexture("inSprite", spr2.texture);
-        matOut.SetTexture("outSprite", spr1.texture);
+        matOut.SetTexture(PROP_SPRITE_IN, spr2.texture);
+        matOut.SetTexture(PROP_SPRITE_OUT, spr1.texture);
 
         coletavel1.addMaterial(matIn);
         coletavel2.addMaterial(matOut);
@@ -89,8 +93,8 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         while(contador < 1.01f)
         {
             contador += Time.deltaTime * powerUpDto.TeleporteDto.Velocidade;
-            matOut.SetFloat("valor", contador);
-            matIn.SetFloat("valor", contador);
+            matOut.SetFloat(PROP_VALOR, contador);
+            matIn.SetFloat(PROP_VALOR, contador);
             yield return null;
         }
         powerUpFinalizacao.preFinalizar();
