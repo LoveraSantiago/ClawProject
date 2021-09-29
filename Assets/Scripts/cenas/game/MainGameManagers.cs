@@ -39,9 +39,9 @@ public class MainGameManagers
     public void startLaizy()
     {
         coletaveisManager.start();
-        garraManager.start();
         maquinaManager.start();
         uiManager.start();        
+        garraManager.start();
     }
 
     public void update()
