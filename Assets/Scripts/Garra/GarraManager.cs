@@ -11,43 +11,33 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoCacaNiquel.ConsumidorEvento,
                             ConsumidorDeEventoTrigger
 {
-    public enum MECANICA_GARRA { ZIG_ZAG = 1, TELEGUIADA = 2, ZIG_ZAGTELEGUIADO = 3 };
-
-    private GerenciadorDeMovimentacaoNormal     gerDeMovNormal;
-    private GerenciadorDeMovimentacaoPowerUp    gerDeMovPowerUp;
-    private GerenciadorDeMovimentacaoCacaNiquel gerDeMovCacaNiquel;//TODO tentar reaproveitar GerenciadorDeMovimentacaoNormal e remover GerenciadorDeMovimentacaoCacaNiquel
-    private GerenciadorDeMovimentacao gerDeMovAtual;
     private CaboDaGarra cabo;
+    private GerenciadorDeMovimentacaoNormal  gerDeMovNormal;
+    private GerenciadorDeMovimentacaoPowerUp gerDeMovPowerUp;
+    private GerenciadorDeMovimentacao        gerDeMovAtual;
 
-    private bool tempoEsgotadoEmAcao;
+    private bool tempoEsgotadoEmAcao;//TODO remover
 
     public GarraManager(GarraDto garraDto)
     {
         MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
-        gerDeMovNormal     = new GerenciadorDeMovimentacaoNormal();
-        gerDeMovPowerUp    = new GerenciadorDeMovimentacaoPowerUp();
-        gerDeMovCacaNiquel = new GerenciadorDeMovimentacaoCacaNiquel();
-        gerDeMovAtual = gerDeMovNormal;
-
         configurarColisorCentroDaPinca(garraDto.Colisor);
-
         cabo = new CaboDaGarra(garraDto.CaboDaGarraDto, garraDto.RigidBody.transform);
-    }
-
-    private void configurarColisorCentroDaPinca(GameObject goColisor)
-    {
-        DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();
-        detectorDeColisoes.registrarConsumidorDeTrigger(this);
-    }
+    }  
 
     public void configuradoPeloLevel(AbstractLevel level)
-    {
-        gerDeMovNormal.configuradoPeloLevel(level.getMecanicaDaGarra());
+    {        
         cabo.configuradoPeloLevel(level.getDicionarioDeCores());
 
         if(level.isCacaNiquelLevel())
         {
-            gerDeMovAtual = gerDeMovCacaNiquel;
+            gerDeMovAtual = new GerenciadorDeMovimentacaoCacaNiquel();
+        }
+        else
+        {
+            gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
+            gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
+            gerDeMovAtual   = gerDeMovNormal;
         }
     }
 
@@ -72,7 +62,13 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     private void processarGarraColidiuCom(Collider2D other)
     {
         gerDeMovAtual.garraColidiuCom(other);
-    }  
+    }
+
+    private void configurarColisorCentroDaPinca(GameObject goColisor)
+    {
+        DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();
+        detectorDeColisoes.registrarConsumidorDeTrigger(this);
+    }
 
     void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
@@ -136,14 +132,15 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         }
     }
 
+    //TODO tentar unificar
     ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoImantadoPelaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();
+        return gerDeMovNormal == null ? null : ((AcaoImantadoPelaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();        
     }
 
     ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoSubidaDaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();
+        return gerDeMovNormal == null ? null : ((AcaoSubidaDaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();        
     }
 
     ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()

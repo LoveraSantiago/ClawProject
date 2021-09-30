@@ -10,12 +10,7 @@ public class LevelCacaNiquelPupGeral : AbstractLevel
     public override string getMsgObjetivoLevel()
     {
         return "Ganhar power ups gerais.";
-    }
-
-    public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
-    {
-        return GarraManager.MECANICA_GARRA.ZIG_ZAG;
-    }
+    }   
 
     protected override TIPO_GAME getTipoGame()
     {

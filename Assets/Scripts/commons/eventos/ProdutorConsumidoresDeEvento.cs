@@ -3,24 +3,26 @@ using System.Collections.Generic;
 public class ProdutorConsumidoresDeEvento<T> : Consumidor<T>
 {    
     private ConsumidorEvento consumidorAtual;
-    private List<ConsumidorEvento> listaDeConsumidoresDeEvento;
-
-    public ProdutorConsumidoresDeEvento()
-    {
-        listaDeConsumidoresDeEvento = new List<ConsumidorEvento>();
-    }
+    private List<ConsumidorEvento> listaDeConsumidoresDeEvento;    
 
     public ProdutorConsumidoresDeEvento<T> configurarProdutor(ProdutorEvento produtor)
     {
-        produtor.getProdutorDeEvento()
-                .registrarConsumidorDeEvento(this);
-        
+        ProdutorDeEvento<T> produtorDeEvento = produtor.getProdutorDeEvento();
+
+        if(produtorDeEvento != null)
+        {
+            produtorDeEvento.registrarConsumidorDeEvento(this);
+            listaDeConsumidoresDeEvento = new List<ConsumidorEvento>();
+        }
         return this;
     }
 
     public ProdutorConsumidoresDeEvento<T> adicionarConsumidor(ConsumidorEvento consumidor)
     {
-        listaDeConsumidoresDeEvento.Add(consumidor);
+        if(listaDeConsumidoresDeEvento != null)
+        {
+            listaDeConsumidoresDeEvento.Add(consumidor);
+        }
         return this;
     }   
 

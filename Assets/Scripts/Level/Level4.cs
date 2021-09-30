@@ -17,12 +17,7 @@ public class Level4 : AbstractLevel
     protected override TIPO_GAME getTipoGame()
     {
         return TIPO_GAME.ORDENADO;
-    }
-
-    public override GarraManager.MECANICA_GARRA getMecanicaDaGarra()
-    {
-        return GarraManager.MECANICA_GARRA.ZIG_ZAG;
-    }
+    }   
 
     public override int[,] getArrayDeColetaveis()
     {
