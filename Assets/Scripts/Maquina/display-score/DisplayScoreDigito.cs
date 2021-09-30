@@ -27,14 +27,15 @@ public class DisplayScoreDigito
 
         MaterialGlow materialGlow = new MaterialGlow(singleDisplayDto.MaterialEfeito);
         glowEfeito = new GlowEfeito(singleDisplayDto.PlacaEfeito, materialGlow);
-        defaultMaterial = arrayDeLeds[0][0].sharedMaterial;
     }
 
     public void configuradoPeloLevel(string corScore, string corLeds)
     {
         corOriginal = Utils.getCorByHex(corLeds);
         sprDisplay.color = Utils.getCorByHex(corScore);
-        ligarPosicoes(segmentos.ARRAY_CHEIO, corOriginal, materialEfeitoLed);
+        defaultMaterial = arrayDeLeds[0][0].sharedMaterial;
+
+        ligarPosicoes(segmentos.ARRAY_CHEIO, corOriginal, defaultMaterial);
 
         mostrarDigito(0, Color.red);
     }
