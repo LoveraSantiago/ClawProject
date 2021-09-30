@@ -15,7 +15,8 @@ public class DisplayDeScores : ArcoIrisConjunto
     private Coroutine coroutineAtual;
 
     public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto)
-    {   
+    {
+        DisplayScoreDigito.configurarDisplayScoreDigito(displayDeScoresDto.MaterialEfeitoLed);
         SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;        
         displayCentena = new DisplayScoreDigito(singleDisplays[0]);
         displayDezena  = new DisplayScoreDigito(singleDisplays[1]);
