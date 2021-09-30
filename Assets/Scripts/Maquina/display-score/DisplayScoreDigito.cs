@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class DisplayScoreDigito 
 {
-    private static readonly SegmentosScore segmentos = new SegmentosScore();
+    private static SegmentosScore segmentos;
+    private static Material materialEfeitoLed;
 
-    private SpriteRenderer sprDisplay;
-    private SpriteRenderer[][] arrayDeLeds;
-
+    private int[,] arrayLigados;
     public int digito { get; private set; }
     public string letra { get; private set; }
 
     private Color corOriginal;
     private GlowEfeito glowEfeito;
-
-    private int[,] arrayLigados;
+    private SpriteRenderer sprDisplay;
+    private SpriteRenderer[][] arrayDeLeds;
+    private Material defaultMaterial;
 
     public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto)
     {
@@ -27,13 +27,14 @@ public class DisplayScoreDigito
 
         MaterialGlow materialGlow = new MaterialGlow(singleDisplayDto.MaterialEfeito);
         glowEfeito = new GlowEfeito(singleDisplayDto.PlacaEfeito, materialGlow);
+        defaultMaterial = arrayDeLeds[0][0].sharedMaterial;
     }
 
     public void configuradoPeloLevel(string corScore, string corLeds)
     {
         corOriginal = Utils.getCorByHex(corLeds);
         sprDisplay.color = Utils.getCorByHex(corScore);
-        ligarPosicoes(segmentos.ARRAY_CHEIO, corOriginal);
+        ligarPosicoes(segmentos.ARRAY_CHEIO, corOriginal, materialEfeitoLed);
 
         mostrarDigito(0, Color.red);
     }
@@ -43,7 +44,7 @@ public class DisplayScoreDigito
         letra = digito;
         desligarPosicoes(arrayLigados);
         arrayLigados = segmentos.getArrayParaLigar(digito);
-        ligarPosicoes(arrayLigados, cor);
+        ligarPosicoes(arrayLigados, cor, materialEfeitoLed);
     }
 
     public void mostrarDigito(int digito, Color cor)
@@ -51,7 +52,7 @@ public class DisplayScoreDigito
         this.digito = digito;
         desligarPosicoes(arrayLigados);
         arrayLigados = segmentos.getArrayParaLigar(digito);
-        ligarPosicoes(arrayLigados, cor);
+        ligarPosicoes(arrayLigados, cor, materialEfeitoLed);
     }    
 
     public void desligarDigito()
@@ -74,17 +75,25 @@ public class DisplayScoreDigito
         return glowEfeito.materialGlow;
     }
 
-    private void ligarPosicoes(int[,] array, Color cor)
+    private void ligarPosicoes(int[,] array, Color cor, Material material)
     {
         for(int contadorX = 0; contadorX < array.GetLength(0); contadorX++)
-        {            
-            arrayDeLeds[array[contadorX, 0]][array[contadorX, 1]].color = cor;            
+        {
+            SpriteRenderer sprLed = arrayDeLeds[array[contadorX, 0]][array[contadorX, 1]];
+            sprLed.color = cor;
+            sprLed.material = material;
         }
     }
 
     private void desligarPosicoes(int[,] array)
     {
         if (array == null) return;
-        ligarPosicoes(array, corOriginal);        
+        ligarPosicoes(array, corOriginal, defaultMaterial);        
+    }
+
+    public static void configurarDisplayScoreDigito(Material materialEfeitoLedArg)
+    {
+        segmentos = new SegmentosScore();
+        materialEfeitoLed = new Material(materialEfeitoLedArg);
     }
 }
