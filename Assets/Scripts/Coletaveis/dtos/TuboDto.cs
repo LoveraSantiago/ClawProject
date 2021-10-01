@@ -9,10 +9,12 @@ public class TuboDto
     [Space(5)]
     [SerializeField] private GameObject parentColetavelTubo;
     [SerializeField] private GameObject[] coletaveisParaTubo = new GameObject[3];
+    [SerializeField] private ColetavelTuboDeSaidaDto[] coletavelTuboDeSaida = new ColetavelTuboDeSaidaDto[3];
 
     public float Torque { get { return torque; } }    
     public float Gravidade { get { return gravidade; } }
 
     public GameObject ParentColetavelTubo { get { return parentColetavelTubo; } }
     public GameObject[] ColetaveisParaTubo { get { return coletaveisParaTubo; } }
+    public ColetavelTuboDeSaidaDto[] ColetavelTuboDeSaida { get { return coletavelTuboDeSaida; } }
 }
