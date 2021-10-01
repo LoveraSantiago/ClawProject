@@ -7,9 +7,6 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
     private float torque;    
 
     private Vector3[] posicoesOriginais;
-    private Rigidbody2D[] rigidBodies;//TODO transformar esses caras em coletavel para mais facil manipulacaoS
-    private SpriteRenderer[] spriteRenderers;    
-
     private TuboDto tuboDto;
 
     public TuboDeSaida(TuboDto tuboDto)
@@ -24,7 +21,7 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
 
     public void configuradoPeloLevel(bool devolverParaBoard)
     {
-        this.devolverTubo = !devolverParaBoard;
+        devolverTubo = !devolverParaBoard;
     }
 
     public void devolver(
@@ -60,9 +57,14 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
             {
                 torque *= -1;
                 Sprite spriteAtual = coletados[contador].getSprite();
-                rigidBodies[contador].gravityScale = tuboDto.Gravidade;
-                rigidBodies[contador].AddTorque(torque);
-                spriteRenderers[contador].sprite = spriteAtual;
+                ColetavelTuboDeSaidaDto coletavelTuboSaidaIt = tuboDto.ColetavelTuboDeSaida[contador];
+                coletavelTuboSaidaIt.RigidBodyColetavel.gravityScale = tuboDto.Gravidade;
+                coletavelTuboSaidaIt.RigidBodyColetavel.AddTorque(torque);
+                coletavelTuboSaidaIt.SprRendererColetavel.sprite = spriteAtual;
+
+                coletavelTuboSaidaIt.GoTrail.SetActive(true);
+                coletavelTuboSaidaIt.RigidBodyTrail.gravityScale = tuboDto.Gravidade;
+                coletavelTuboSaidaIt.ParticulasTrail.Play();
 
                 poolDeColetaveis.inativarColetavel(coletados[contador]);
             }
@@ -71,11 +73,20 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
     }
 
     private void restaurandoColetaveisParaOTubo(int indice)
-    {   
-        rigidBodies[indice].gravityScale = 0f;
-        rigidBodies[indice].velocity = Vector2.zero;
-        rigidBodies[indice].angularVelocity = 0f;
-        tuboDto.ColetaveisParaTubo[indice].transform.position = posicoesOriginais[indice];        
+    {
+        ColetavelTuboDeSaidaDto coletavelTuboSaidaIt = tuboDto.ColetavelTuboDeSaida[indice];
+        float zero = 0f;
+        coletavelTuboSaidaIt.RigidBodyColetavel.gravityScale = zero;
+        coletavelTuboSaidaIt.RigidBodyColetavel.angularVelocity = zero;
+        coletavelTuboSaidaIt.RigidBodyColetavel.velocity = Vector2.zero;
+        coletavelTuboSaidaIt.TransformColetavel.position = posicoesOriginais[indice];
+
+        coletavelTuboSaidaIt.RigidBodyTrail.gravityScale = zero;
+        coletavelTuboSaidaIt.RigidBodyTrail.angularVelocity = zero;
+        coletavelTuboSaidaIt.RigidBodyTrail.velocity = Vector2.zero;
+        coletavelTuboSaidaIt.ParticulasTrail.Stop();
+        coletavelTuboSaidaIt.GoTrail.SetActive(false);
+        coletavelTuboSaidaIt.TransformTrail.position = posicoesOriginais[indice];
     }
 
     private void triggerDeSaidaDeTuboAcionado(Collider2D coletavelSaindo)
@@ -88,17 +99,12 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
 
     private void inicializarArrays()
     {
-        GameObject[] coletaveisParaTubo = tuboDto.ColetaveisParaTubo;
-
-        posicoesOriginais = new Vector3[coletaveisParaTubo.Length];
-        rigidBodies       = new Rigidbody2D[coletaveisParaTubo.Length];
-        spriteRenderers   = new SpriteRenderer[coletaveisParaTubo.Length];
+        ColetavelTuboDeSaidaDto[] coletaveisParaTubo = tuboDto.ColetavelTuboDeSaida;
+        posicoesOriginais = new Vector3[coletaveisParaTubo.Length];        
 
         for(int contador = 0; contador < coletaveisParaTubo.Length; contador++)
         {
-            posicoesOriginais[contador] = coletaveisParaTubo[contador].transform.position;
-            rigidBodies[contador]       = coletaveisParaTubo[contador].GetComponent<Rigidbody2D>();
-            spriteRenderers[contador]   = coletaveisParaTubo[contador].GetComponent<SpriteRenderer>();
+            posicoesOriginais[contador] = coletaveisParaTubo[contador].TransformColetavel.position;            
         }
     }
 

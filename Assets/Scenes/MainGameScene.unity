@@ -10511,10 +10511,6 @@ MonoBehaviour:
         torque: 550
         gravidade: 0.65
         parentColetavelTubo: {fileID: 1607848931}
-        coletaveisParaTubo:
-        - {fileID: 650369887}
-        - {fileID: 1171204407}
-        - {fileID: 911244732}
         coletavelTuboDeSaida:
         - rigidBodyColetavel: {fileID: 650369890}
           sprRendererColetavel: {fileID: 650369889}
@@ -21241,11 +21237,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4127936681606313064, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 650369885}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &650369887 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-  m_PrefabInstance: {fileID: 650369885}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &650369889 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
@@ -21753,11 +21744,6 @@ PrefabInstance:
 --- !u!4 &911244731 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4127936681606313064, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-  m_PrefabInstance: {fileID: 911244730}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &911244732 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 911244730}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &911244734 stripped
@@ -27211,11 +27197,6 @@ PrefabInstance:
 --- !u!4 &1171204406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4127936681606313064, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-  m_PrefabInstance: {fileID: 1171204405}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1171204407 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 1171204405}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1171204409 stripped
@@ -57991,7 +57972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6406990384449578761, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}

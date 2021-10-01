@@ -12,7 +12,10 @@ public class ColetavelTuboDeSaidaDto
 
     public Rigidbody2D RigidBodyColetavel { get { return rigidBodyColetavel; } }
     public SpriteRenderer SprRendererColetavel { get { return sprRendererColetavel; } }
+    public Transform TransformColetavel { get { return rigidBodyColetavel.gameObject.transform; } }
 
     public Rigidbody2D RigidBodyTrail { get { return rigidBodyTrail; } }
     public ParticleSystem ParticulasTrail { get { return particulasTrail; } }
+    public GameObject GoTrail { get { return rigidBodyTrail.gameObject; } }
+    public Transform TransformTrail { get { return rigidBodyTrail.gameObject.transform; } }
 }
