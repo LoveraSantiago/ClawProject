@@ -11,12 +11,12 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoCacaNiquel.ConsumidorEvento,
                             ConsumidorDeEventoTrigger
 {
+    private bool tempoEsgotadoEmAcao;
+
     private CaboDaGarra cabo;
     private GerenciadorDeMovimentacaoNormal  gerDeMovNormal;
     private GerenciadorDeMovimentacaoPowerUp gerDeMovPowerUp;
     private GerenciadorDeMovimentacao        gerDeMovAtual;
-
-    private bool tempoEsgotadoEmAcao;//TODO remover
 
     public GarraManager(GarraDto garraDto)
     {
