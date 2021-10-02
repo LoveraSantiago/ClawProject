@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ColetavelQuery 
 {
-    private static PoolDeColetaveis poolDeColetaveis;
+    public static PoolDeColetaveis poolDeColetaveis { get; private set; }
 
     private Dictionary<int, ColetavelEntidade> dicionarioDeIds;
     private Dictionary<string, ColetavelEntidade> dicionarioDeSprites;
@@ -34,12 +34,7 @@ public class ColetavelQuery
     public ColetavelTile getColetavelInGameByName(string name)
     {
         return poolDeColetaveis.getColetavelPeloNome(name);
-    }
-
-    public void executeNoPoolDeColetaveis(Consumidor<ColetavelTile> consumidor)
-    {
-        poolDeColetaveis.executeEmTodosColetaveis(consumidor);
-    }
+    }   
 
     public ColetavelEntidade getColetavelEntidadeBySprite(string spriteName)
     {     
