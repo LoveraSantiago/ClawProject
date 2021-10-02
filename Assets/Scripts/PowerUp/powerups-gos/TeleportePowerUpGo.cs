@@ -76,8 +76,8 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();
 
-        Material matIn = powerUpDto.TeleporteDto.MatTeleporteIn;
-        Material matOut = powerUpDto.TeleporteDto.MatTeleporteOut;
+        Material matIn  = new Material(powerUpDto.TeleporteDto.MatTeleporte);
+        Material matOut = new Material(powerUpDto.TeleporteDto.MatTeleporte);
         matIn.SetTexture(PROP_SPRITE_IN, spr1.texture);
         matIn.SetTexture(PROP_SPRITE_OUT, spr2.texture);
 
