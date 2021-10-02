@@ -74,20 +74,19 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
 
     private IEnumerator selecionarAlvo()
     {
-        hitColetavel = false;
-        ColetavelQuery coletavelQuery = new ColetavelQuery();
-        ColetavelHit coletavelHit = new ColetavelHit();
+        hitColetavel = false;           
         while (!hitColetavel)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
-                Collider2D coletavelAcertado = coletavelHit.hit(inputGame);
-                if (coletavelAcertado != null)
+                bool resultACertado = false;
+                ColetavelTile coletavelAcertado = ColetavelHit.hit(inputGame, out resultACertado);
+                if (resultACertado)
                 {
-                    string nomeAlvo = coletavelAcertado.name;
-                    coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
+                    string nomeAlvo = coletavelAcertado.nome;
+                    ColetavelQuery.poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
                     hitColetavel = true;
-                    Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelQuery.getColetavelInGameByName(nomeAlvo)));
+                    Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelAcertado));
                 }
             }
             yield return null;

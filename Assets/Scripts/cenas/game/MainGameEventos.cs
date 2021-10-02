@@ -20,13 +20,9 @@ public class MainGameEventos
             .adicionarConsumidor(coletaveisManager)
             .adicionarConsumidor(garraManager);
 
-        new AcaoImantadoPelaGarra()
+        new AcaoInfoDaGarra()
             .configurarProdutor(garraManager)
-            .adicionarConsumidor(coletaveisManager);
-
-        new AcaoSubidaDaGarra()
-            .configurarProdutor(garraManager)
-            .adicionarConsumidor(coletaveisManager);
+            .adicionarConsumidor(coletaveisManager);      
 
         new AcaoSincroniaComDirecaoDaGarra()
             .configurarProdutor(garraManager)

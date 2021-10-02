@@ -1,22 +1,21 @@
 using UnityEngine;
 
-public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal,
-                                     AcaoImantadoPelaGarra.ProdutorEvento
+public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal
 {
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;   
     
     private ContadorDeTempo contadorDeTempoTravamento;
-    private ProdutorDeEvento<InformacoesColetadoImantadoDto> produtorEventoGarraAcertou;
+    public ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra { get; private set; }
 
-    public MovimentacaoParaBaixo()
+    public MovimentacaoParaBaixo(ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra)
     {
         anguloDesejadoDireita  = Quaternion.Euler(0, 0, -garraDto.AnguloAbertura);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  garraDto.AnguloAbertura);
 
         contadorDeTempoTravamento  = new ContadorDeTempo(1.0f);
 
-        produtorEventoGarraAcertou = new ProdutorDeEvento<InformacoesColetadoImantadoDto>();
+        this.produtorEventoInfoGarra = produtorEventoInfoGarra;
     }
 
     public override void preInicio()
@@ -46,13 +45,8 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal,
     {        
         if (UtilsTags.isColetavel(gameObject))
         {
-            produtorEventoGarraAcertou.produziuEvento(new InformacoesColetadoImantadoDto(gameObject.name));
+            produtorEventoInfoGarra.produziuEvento(new InformacoesDaGarraDto(gameObject.name));
             comunicadorComGerMovimentacao.trocarParaAcaoAgarrada();
         }
-    }
-
-    ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
-    {
-        return produtorEventoGarraAcertou;
-    }
+    }   
 }

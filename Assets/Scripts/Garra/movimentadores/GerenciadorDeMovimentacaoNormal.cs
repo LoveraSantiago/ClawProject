@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
                                                ComunicadorComGerMovNormal,
-                                               AcaoImantadoPelaGarra.ProdutorEvento,
-                                               AcaoSubidaDaGarra.ProdutorEvento
+                                               AcaoInfoDaGarra.ProdutorEvento
 {
     private MovimentacaoDaGarra   movAtual;
     private MovimentacaoParaBaixo movPBaixo;
@@ -18,11 +17,13 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         MovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
 
         movLateral        = new MovimentacaoLateralZigZag();
-        movPCima          = new MovimentacaoParaCima();
-        movPBaixo         = new MovimentacaoParaBaixo();
         movAgarrandoBaixo = new MovimentacaoAgarrandoEmbaixo();
         movVoltarMeio     = new MovimentacaoVoltarParaMeioNormal();
         movParado         = new MovimentacaoParadoNormal();
+
+        ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra = new ProdutorDeEvento<InformacoesDaGarraDto>();
+        movPCima          = new MovimentacaoParaCima(produtorEventoInfoGarra);
+        movPBaixo         = new MovimentacaoParaBaixo(produtorEventoInfoGarra);
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
@@ -109,15 +110,8 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         movAtual = movimentador;
     }
 
-    ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
-    {
-        return ((AcaoImantadoPelaGarra.ProdutorEvento)movPBaixo).getProdutorDeEvento();
-    }
-
-    ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEvento()
-    {
-        return ((AcaoSubidaDaGarra.ProdutorEvento)movPCima).getProdutorDeEvento();
-    }
-
-   
+    ProdutorDeEvento<InformacoesDaGarraDto> AcaoInfoDaGarra.ProdutorEvento.getProdutorDeEvento()
+    {        
+        return movPBaixo.produtorEventoInfoGarra;
+    }   
 }

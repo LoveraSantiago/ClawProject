@@ -4,8 +4,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoColetado.ProdutorEvento,                              
                                 AcaoBoardElevadoFim.ProdutorEvento,
                                 AcaoColetadoFim.ConsumidorEvento,
-                                AcaoImantadoPelaGarra.ConsumidorEvento,
-                                AcaoSubidaDaGarra.ConsumidorEvento,                                
+                                AcaoInfoDaGarra.ConsumidorEvento,                                
                                 AcaoPUpAcionado.ConsumidorEvento,                                
                                 AcaoTempoEsgotado.ConsumidorEvento
 {
@@ -109,16 +108,18 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM         
 
-    void AcaoImantadoPelaGarra.ConsumidorEvento.consumirEvento(InformacoesColetadoImantadoDto evento)
+    void AcaoInfoDaGarra.ConsumidorEvento.consumirEvento(InformacoesDaGarraDto evento)
     {
-        coletavelImantado = poolDeColetaveis.getColetavelPeloNome(evento.nomeColetado);
-        coletavelImantado.imantar();
-    }
-
-    void AcaoSubidaDaGarra.ConsumidorEvento.consumirEvento(ContagemSubidaGarra evento)
-    {
-        processarDesimantado();
-    }
+        if (evento.isImantadoInfo)
+        {
+            coletavelImantado = poolDeColetaveis.getColetavelPeloNome(evento.nomeColetado);
+            coletavelImantado.imantar();
+        }
+        else if (evento.isNotImantadoInfo)
+        {
+            processarDesimantado();
+        }
+    }   
 
     void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {

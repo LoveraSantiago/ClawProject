@@ -10466,7 +10466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 4
   mainDto:
     garraDto:
       velocMovHorizontal: 3.1
@@ -10891,8 +10891,7 @@ MonoBehaviour:
       teleporteDto:
         velocidade: 0.75
         delayFinal: 0.5
-        matTeleporteIn: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
-        matTeleporteOut: {fileID: 2100000, guid: e4da0d30a658a4541a919c42171abb7f, type: 2}
+        matTeleporte: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
       asaDto:
         layer: 32
         gravidadeNeg: -0.1

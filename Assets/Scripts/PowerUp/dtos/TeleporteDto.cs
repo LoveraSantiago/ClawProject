@@ -6,11 +6,9 @@ public class TeleporteDto
 {
     [SerializeField] private float velocidade;
     [SerializeField] private float delayFinal;
-    [SerializeField] private Material matTeleporteIn;
-    [SerializeField] private Material matTeleporteOut;
+    [SerializeField] private Material matTeleporte;    
 
     public float Velocidade { get { return velocidade; } }
     public float DelayFinal { get { return delayFinal; } }
-    public Material MatTeleporteIn { get { return matTeleporteIn; } }
-    public Material MatTeleporteOut { get { return matTeleporteOut; } }
+    public Material MatTeleporte { get { return matTeleporte; } }    
 }

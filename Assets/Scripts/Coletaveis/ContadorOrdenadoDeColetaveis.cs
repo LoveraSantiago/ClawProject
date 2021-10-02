@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
 {
+    private static readonly string PROP_MAINTTEXT = "_MaintText";
+
     public int contador { get; private set; }
     private BoardOrdem[] ordem;
     private Material materialOutline;
@@ -45,10 +47,7 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
                 return true;
             }
         }
-        else
-        {
-            return false;
-        }
+        return false;        
     }
        
     public void indicarProximoColetavel(PoolDeColetaveis poolDeColetaveis)
@@ -57,7 +56,7 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
         {
             BoardOrdem ordemIt = ordem[contador];
             ColetavelTile coletavelTile = poolDeColetaveis.getColetavelPeloNome(ordemIt.nome);
-            materialOutline.SetTexture("_MaintText", coletavelTile.getSprite().texture);
+            materialOutline.SetTexture(PROP_MAINTTEXT, coletavelTile.getSprite().texture);
             coletavelTile.addMaterial(materialOutline);
         }
     }
@@ -104,6 +103,25 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
         }
     }
 
+    public void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
+    {
+        if (isLevelOrdem())
+        {
+            for (int contadorAtual = contador; contadorAtual < ordem.Length; contadorAtual++)
+            {
+                BoardOrdem ordemIt = ordem[contadorAtual];
+                if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
+                {
+                    if(ordemIt.ordem == contador + 1)
+                    {
+                        trocarSpriteMaterial(coletavelPrimeiro, coletavelSegundo.getSprite());
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
     private void trocarNomes(BoardOrdem ordemPrimeiro, BoardOrdem ordemSegundo)
     {
         string nomeTemp = ordemPrimeiro.nome;
@@ -111,10 +129,16 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
         ordemSegundo.trocarNome(nomeTemp);
     }
 
+    private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
+    {
+        materialOutline.SetTexture(PROP_MAINTTEXT, spr.texture);
+        coletavelComMaterial.addMaterial(materialOutline);
+    }
+
     private void trocarMaterial(ColetavelTile coletavelComMaterial, ColetavelTile coletavelSemMaterial)
     {
         Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
         coletavelSemMaterial.addMaterial(materialOutline);
-    }
+    }    
 }

@@ -5,14 +5,12 @@ public class ColetaveisMiras
     }
 
     public void ligar()
-    {
-        ColetavelQuery coletavelQuery = new ColetavelQuery();
-        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeMiras());
+    {        
+        ColetavelQuery.poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeMiras());
     }
 
     public void desligar()
-    {
-        ColetavelQuery coletavelQuery = new ColetavelQuery();
-        coletavelQuery.executeNoPoolDeColetaveis(new DesligadorDeMiras());
+    {        
+        ColetavelQuery.poolDeColetaveis.executeEmTodosColetaveis(new DesligadorDeMiras());
     }   
 }
