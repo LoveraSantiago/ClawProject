@@ -1,18 +1,16 @@
-public class MovimentacaoParaCima : MovimentacaoDaGarraNormal,
-                                    AcaoSubidaDaGarra.ProdutorEvento
-
+public class MovimentacaoParaCima : MovimentacaoDaGarraNormal
 {
     private readonly int ACAO_NORMAL  = 0;
     private readonly int ACAO_ESPERAR = 1;
 
     private int acaoAtual;
     private int contadorDeSubidas;
-    private ProdutorDeEvento<ContagemSubidaGarra> produtorDeEventoSubidaDaGarra;
+    public ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra { get; private set; }
 
-    public MovimentacaoParaCima()
+    public MovimentacaoParaCima(ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra)
     {
         contadorDeSubidas = 0;
-        produtorDeEventoSubidaDaGarra = new ProdutorDeEvento<ContagemSubidaGarra>();
+        this.produtorEventoInfoGarra = produtorEventoInfoGarra;
     }
 
     public override void preInicio()
@@ -20,7 +18,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal,
         colocarMassa(3);        
 
         contadorDeSubidas++;
-        produtorDeEventoSubidaDaGarra.produziuEvento(new ContagemSubidaGarra(contadorDeSubidas));
+        produtorEventoInfoGarra.produziuEvento(new InformacoesDaGarraDto(contadorDeSubidas));
         animacao.irParaCima();
         //moverGarraParaCimaFreeze();
     }
@@ -54,10 +52,5 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal,
     public void toAcaoEsperar()
     {
         acaoAtual = ACAO_ESPERAR;
-    }
-
-    ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEvento()
-    {
-        return produtorDeEventoSubidaDaGarra;
-    }
+    }   
 }

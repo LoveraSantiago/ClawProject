@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
-                            AcaoSubidaDaGarra.ProdutorEvento,
+public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,                            
                             AcaoSincroniaComDirecaoDaGarra.ProdutorEvento,
                             AcaoColetado.ConsumidorEvento,
                             AcaoPUpAcionado.ConsumidorEvento,                            
@@ -136,12 +135,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     ProdutorDeEvento<InformacoesDaGarraDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
     {
         return gerDeMovNormal == null ? null : ((AcaoImantadoPelaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();        
-    }
-
-    ProdutorDeEvento<ContagemSubidaGarra> AcaoSubidaDaGarra.ProdutorEvento.getProdutorDeEvento()
-    {
-        return gerDeMovNormal == null ? null : ((AcaoSubidaDaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();        
-    }
+    }   
 
     ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
