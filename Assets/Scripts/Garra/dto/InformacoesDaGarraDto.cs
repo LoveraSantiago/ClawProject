@@ -1,12 +1,12 @@
-public class InformacoesColetadoImantadoDto 
+public class InformacoesDaGarraDto 
 {
     public string nomeColetado { get; private set; }
 
-    public InformacoesColetadoImantadoDto()
+    public InformacoesDaGarraDto()
     {
     }
 
-    public InformacoesColetadoImantadoDto(string nomeColetado)
+    public InformacoesDaGarraDto(string nomeColetado)
     {
         addNomeColetado(nomeColetado);
     }

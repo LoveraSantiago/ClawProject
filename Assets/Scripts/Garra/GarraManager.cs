@@ -133,7 +133,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
     }
 
     //TODO tentar unificar
-    ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<InformacoesDaGarraDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
     {
         return gerDeMovNormal == null ? null : ((AcaoImantadoPelaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();        
     }

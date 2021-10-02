@@ -7,7 +7,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal,
     private Quaternion anguloDesejadoDireita;   
     
     private ContadorDeTempo contadorDeTempoTravamento;
-    private ProdutorDeEvento<InformacoesColetadoImantadoDto> produtorEventoGarraAcertou;
+    private ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoGarraAcertou;
 
     public MovimentacaoParaBaixo()
     {
@@ -16,7 +16,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal,
 
         contadorDeTempoTravamento  = new ContadorDeTempo(1.0f);
 
-        produtorEventoGarraAcertou = new ProdutorDeEvento<InformacoesColetadoImantadoDto>();
+        produtorEventoGarraAcertou = new ProdutorDeEvento<InformacoesDaGarraDto>();
     }
 
     public override void preInicio()
@@ -46,12 +46,12 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal,
     {        
         if (UtilsTags.isColetavel(gameObject))
         {
-            produtorEventoGarraAcertou.produziuEvento(new InformacoesColetadoImantadoDto(gameObject.name));
+            produtorEventoGarraAcertou.produziuEvento(new InformacoesDaGarraDto(gameObject.name));
             comunicadorComGerMovimentacao.trocarParaAcaoAgarrada();
         }
     }
 
-    ProdutorDeEvento<InformacoesColetadoImantadoDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<InformacoesDaGarraDto> AcaoImantadoPelaGarra.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorEventoGarraAcertou;
     }
