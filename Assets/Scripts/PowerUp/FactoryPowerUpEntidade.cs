@@ -6,6 +6,7 @@ public class FactoryPowerUpEntidade
     private static PowerUpEntidade missilNuclear;
     private static PowerUpEntidade minaTerrestre;
     private static PowerUpEntidade missilTeleguiado;
+    private static PowerUpEntidade igual;
     private static PowerUpEntidade teleporte;
     private static PowerUpEntidade asa;
     private static PowerUpEntidade rollback;
@@ -82,6 +83,24 @@ public class FactoryPowerUpEntidade
         return missilTeleguiado;
     }
 
+    private static PowerUpEntidade getIgual()
+    {
+        if(igual == null)
+        {
+            igual = new PowerUpEntidade()
+                .configNomes(PowerUpEnums.TIPO.IGUAL, "Igual", "igual-botao")
+                .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
+                .configPreco(2)
+                .configDuracao(9)
+                .configSupplierDePowerUpGo(IgualPowerUpGo.getFornecedor())
+                .configIsClicavel(true)
+                .configDescricao(
+                    "Troque as posições de um par de coletaveis para mudar suas respectivas posições.",
+                    "Selecione o primeiro coletavel a ser igualado com o segundo coletavel.");
+        }
+        return igual;
+    }
+
     private static PowerUpEntidade getTeleporte()
     {
         if(teleporte == null)
@@ -95,7 +114,7 @@ public class FactoryPowerUpEntidade
                 .configIsClicavel(true)
                 .configDescricao(
                     "Troque as posições de um par de coletaveis para mudar suas respectivas posições.",
-                    "-");
+                    "Selecione o primeiro coletavel a ser trocado de lugar. Selecione o segundo coletavel que será trocado de posicao com o primeiro");
         }
         return teleporte;
     }
@@ -163,6 +182,7 @@ public class FactoryPowerUpEntidade
             case PowerUpEnums.TIPO.MISSIL_NUCLEAR   : return getMissilNuclear();
             case PowerUpEnums.TIPO.MINA_TERRESTRE   : return getMinaTerrestre();
             case PowerUpEnums.TIPO.MISSIL_TELEGUIADO: return getMissilTeleguiado();
+            case PowerUpEnums.TIPO.IGUAL            : return getIgual();
             case PowerUpEnums.TIPO.TELEPORTE        : return getTeleporte();
             case PowerUpEnums.TIPO.ASAS             : return getAsas();
             case PowerUpEnums.TIPO.ROLLBACK         : return getRollBack();
@@ -178,6 +198,7 @@ public class FactoryPowerUpEntidade
             getMissilNuclear(),
             getMinaTerrestre(),
             getMissilTeleguiado(),
+            getIgual(),
             getTeleporte(),
             getAsas(),
             getRollBack(),
