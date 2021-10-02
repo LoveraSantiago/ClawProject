@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
 {
+    private static readonly string PROP_MAINTTEXT = "_MaintText";
+
     public int contador { get; private set; }
     private BoardOrdem[] ordem;
     private Material materialOutline;
@@ -57,7 +59,7 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
         {
             BoardOrdem ordemIt = ordem[contador];
             ColetavelTile coletavelTile = poolDeColetaveis.getColetavelPeloNome(ordemIt.nome);
-            materialOutline.SetTexture("_MaintText", coletavelTile.getSprite().texture);
+            materialOutline.SetTexture(PROP_MAINTTEXT, coletavelTile.getSprite().texture);
             coletavelTile.addMaterial(materialOutline);
         }
     }
@@ -132,7 +134,7 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
 
     private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
     {
-        materialOutline.SetTexture("_MaintText", spr.texture);
+        materialOutline.SetTexture(PROP_MAINTTEXT, spr.texture);
         coletavelComMaterial.addMaterial(materialOutline);
     }
 
