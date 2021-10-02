@@ -3,10 +3,7 @@ using UnityEngine;
 public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo,
                                                     PowerUpInteracaoComGarra
 {
-    public PowerUpNaoInteracaoComGarra(GameObject goTile, string nome)
-        : base(goTile, nome)
-    {
-    }
+    public PowerUpNaoInteracaoComGarra(GameObject goTile, string nome): base(goTile, nome){}
 
     public PowerUpNaoInteracaoComGarra(
         GameObject goTile, Transformador<GameObject, GameObject> getGoComSprRenderer, string nome) 
