@@ -1,18 +1,18 @@
 public class InformacoesDaGarraDto 
 {
-    public string nomeColetado { get; private set; }
+    public int qtdSubidas { get; private set; }
+    public string nomeColetado { get; private set; }   
 
-    public InformacoesDaGarraDto()
-    {
-    }
+    public bool isImantadoInfo { get { return nomeColetado != null; } }
+    public bool isNotImantadoInfo { get { return !isImantadoInfo; } }
 
     public InformacoesDaGarraDto(string nomeColetado)
     {
-        addNomeColetado(nomeColetado);
+        this.nomeColetado = nomeColetado;        
     }
 
-    public void addNomeColetado(string nomeColetado)
+    public InformacoesDaGarraDto(int qtdSubidas)
     {
-        this.nomeColetado = nomeColetado;
-    }
+        this.qtdSubidas = qtdSubidas;
+    }   
 }
