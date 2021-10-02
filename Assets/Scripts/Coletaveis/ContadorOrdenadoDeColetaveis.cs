@@ -104,6 +104,25 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
         }
     }
 
+    public void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
+    {
+        if (isLevelOrdem())
+        {
+            for (int contadorAtual = contador; contadorAtual < ordem.Length; contadorAtual++)
+            {
+                BoardOrdem ordemIt = ordem[contadorAtual];
+                if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
+                {
+                    if(ordemIt.ordem == contador + 1)
+                    {
+                        trocarSpriteMaterial(coletavelPrimeiro, coletavelSegundo.getSprite());
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
     private void trocarNomes(BoardOrdem ordemPrimeiro, BoardOrdem ordemSegundo)
     {
         string nomeTemp = ordemPrimeiro.nome;
@@ -111,10 +130,16 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
         ordemSegundo.trocarNome(nomeTemp);
     }
 
+    private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
+    {
+        materialOutline.SetTexture("_MaintText", spr.texture);
+        coletavelComMaterial.addMaterial(materialOutline);
+    }
+
     private void trocarMaterial(ColetavelTile coletavelComMaterial, ColetavelTile coletavelSemMaterial)
     {
         Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
         coletavelSemMaterial.addMaterial(materialOutline);
-    }
+    }    
 }
