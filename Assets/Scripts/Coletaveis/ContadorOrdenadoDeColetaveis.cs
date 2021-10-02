@@ -47,10 +47,7 @@ public class ContadorOrdenadoDeColetaveis : TrocadorDeOrdem
                 return true;
             }
         }
-        else
-        {
-            return false;
-        }
+        return false;        
     }
        
     public void indicarProximoColetavel(PoolDeColetaveis poolDeColetaveis)
