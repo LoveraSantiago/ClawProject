@@ -37,14 +37,14 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
     private IEnumerator selecionarAlvo()
     {
         hitColetavel = false;
-        ColetavelQuery coletavelQuery = new ColetavelQuery();
-        ColetavelHit coletavelHit = new ColetavelHit();
+        ColetavelQuery coletavelQuery = new ColetavelQuery();        
         while (!hitColetavel)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
-                Collider2D coletavelAcertado = coletavelHit.hit(inputGame);
-                if (coletavelAcertado != null)
+                bool resultAcertado = false;
+                Collider2D coletavelAcertado = ColetavelHit.hit(inputGame, out resultAcertado);
+                if (resultAcertado)
                 {
                     string nomeAlvo = coletavelAcertado.name;
                     //Debug.Log("Acertou " + nomeAlvo);

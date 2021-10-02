@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ColetavelHit 
 {
-    public Collider2D hit(InputGame inputGame)
+    public static Collider2D hit(InputGame inputGame, out bool result)
     {
         Vector3 posicaoTap = inputGame.getPosicaoTap();
         posicaoTap.z = 0;
@@ -10,6 +10,11 @@ public class ColetavelHit
         int layerMask = LayerMask.GetMask("Coletavel");
         RaycastHit2D raycastHit;
         raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
-        return raycastHit.collider;
+
+        Collider2D colliderResult = raycastHit.collider;
+
+        result = colliderResult == null ? false : true;
+
+        return colliderResult;
     }
 }

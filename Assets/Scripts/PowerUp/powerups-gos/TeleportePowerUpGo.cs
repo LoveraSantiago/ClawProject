@@ -33,13 +33,13 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         ColetavelTile coletavel1 = null;
         ColetavelTile coletavel2 = null;
 
-        ColetavelQuery coletavelQuery = new ColetavelQuery();
-        ColetavelHit coletavelHit = new ColetavelHit();
+        ColetavelQuery coletavelQuery = new ColetavelQuery();        
         while (!hitColetavel1)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
-                Collider2D coletavelAcertado = coletavelHit.hit(inputGame);
+                bool resultACertado = false;
+                Collider2D coletavelAcertado = ColetavelHit.hit(inputGame, out resultACertado);
                 if (coletavelAcertado != null)
                 {
                     string nomeAlvo = coletavelAcertado.name;
@@ -55,8 +55,9 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
-                Collider2D coletavelAcertado = coletavelHit.hit(inputGame);
-                if (coletavelAcertado != null)
+                bool resultACertado = false;
+                Collider2D coletavelAcertado = ColetavelHit.hit(inputGame, out resultACertado);
+                if (resultACertado)
                 {
                     string nomeAlvo = coletavelAcertado.name;
                     coletavel2 = coletavelQuery.getColetavelInGameByName(nomeAlvo);

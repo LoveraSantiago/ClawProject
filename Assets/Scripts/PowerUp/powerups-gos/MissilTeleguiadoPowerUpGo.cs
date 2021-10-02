@@ -75,14 +75,14 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     private IEnumerator selecionarAlvo()
     {
         hitColetavel = false;
-        ColetavelQuery coletavelQuery = new ColetavelQuery();
-        ColetavelHit coletavelHit = new ColetavelHit();
+        ColetavelQuery coletavelQuery = new ColetavelQuery();        
         while (!hitColetavel)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
-                Collider2D coletavelAcertado = coletavelHit.hit(inputGame);
-                if (coletavelAcertado != null)
+                bool resultACertado = false;
+                Collider2D coletavelAcertado = ColetavelHit.hit(inputGame, out resultACertado);
+                if (resultACertado)
                 {
                     string nomeAlvo = coletavelAcertado.name;
                     coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
