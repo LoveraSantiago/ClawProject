@@ -36,7 +36,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
 
     public void update()
     {    
-        if(Time.frameCount % 2 == 0 && !isPausado)//Contabilizando tempo a cada 5frames
+        if(Time.frameCount % 2 == 0 && !isPausado)//Contabilizando tempo a cada 2frames
         {
             atualizarTempo();
             if (contadorTimer.isTimeOver())
