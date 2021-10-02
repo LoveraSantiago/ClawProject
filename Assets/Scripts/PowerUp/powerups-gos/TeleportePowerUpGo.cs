@@ -32,18 +32,16 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
 
         ColetavelTile coletavel1 = null;
         ColetavelTile coletavel2 = null;
-
-        ColetavelQuery coletavelQuery = new ColetavelQuery();        
+        
         while (!hitColetavel1)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
                 bool resultACertado = false;
-                Collider2D coletavelAcertado = ColetavelHit.hit(inputGame, out resultACertado);
-                if (coletavelAcertado != null)
+                coletavel1 = ColetavelHit.hit(inputGame, out resultACertado);
+                if (resultACertado)
                 {
-                    string nomeAlvo = coletavelAcertado.name;
-                    coletavel1 = coletavelQuery.getColetavelInGameByName(nomeAlvo);
+                    string nomeAlvo = coletavel1.nome;                    
                     coletavel1.ligarAnimacaoMiraSelecionado();
                     hitColetavel1 = true;                    
                 }
@@ -56,14 +54,13 @@ public class TeleportePowerUpGo : PowerUpNaoInteracaoComGarra
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
                 bool resultACertado = false;
-                Collider2D coletavelAcertado = ColetavelHit.hit(inputGame, out resultACertado);
+                coletavel2 = ColetavelHit.hit(inputGame, out resultACertado);
                 if (resultACertado)
                 {
-                    string nomeAlvo = coletavelAcertado.name;
-                    coletavel2 = coletavelQuery.getColetavelInGameByName(nomeAlvo);
+                    string nomeAlvo = coletavel2.nome;                    
                     if (!coletavel1.nome.Equals(coletavel2.nome))
                     {
-                        coletavelQuery.executeNoPoolDeColetaveis(new LigadorDeAlvoFinal(nomeAlvo));                    
+                        ColetavelQuery.poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));                              
                         hitColetavel2 = true;                        
                         Utils.MonoBehaviour.StartCoroutine(fazerTeleporte(coletavel1, coletavel2));
                     }

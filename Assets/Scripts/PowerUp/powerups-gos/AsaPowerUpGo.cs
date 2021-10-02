@@ -36,20 +36,18 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator selecionarAlvo()
     {
-        hitColetavel = false;
-        ColetavelQuery coletavelQuery = new ColetavelQuery();        
+        hitColetavel = false;        
         while (!hitColetavel)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
                 bool resultAcertado = false;
-                Collider2D coletavelAcertado = ColetavelHit.hit(inputGame, out resultAcertado);
+                ColetavelTile coletavelParaVoar = ColetavelHit.hit(inputGame, out resultAcertado);
                 if (resultAcertado)
                 {
-                    string nomeAlvo = coletavelAcertado.name;
+                    string nomeAlvo = coletavelParaVoar.nome;
                     //Debug.Log("Acertou " + nomeAlvo);
-                    miras.desligar();
-                    ColetavelTile coletavelParaVoar = coletavelQuery.getColetavelInGameByName(nomeAlvo);
+                    miras.desligar();                    
                                         
                     colocarNaPosicao(coletavelParaVoar.getPosicao());
                     receberSprite(coletavelParaVoar.getSprite(), powerUpDto.AsaDto.Layer);
