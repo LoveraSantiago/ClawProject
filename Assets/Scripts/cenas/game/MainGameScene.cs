@@ -34,7 +34,7 @@ public class MainGameScene : MonoBehaviour,
         LevelFlowManager.LEVEL levelFlow = PlayerPrefsLevel.recuperarELimparLevel(level);
         AbstractLevel levelEscolhido     = LevelFlowManager.getLevelByEnum(levelFlow);
         levelEscolhido.validar();
-        managers.configurandoLevel(levelEscolhido);
+        managers.configurandoLevel(mainDto, levelEscolhido);
     }       
     
     void Update()

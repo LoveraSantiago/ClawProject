@@ -20,12 +20,11 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
 
     public GarraManager(GarraDto garraDto)
     {
-        MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
-        configurarColisorCentroDaPinca(garraDto.Colisor);
         cabo = new CaboDaGarra(garraDto.CaboDaGarraDto, garraDto.RigidBody.transform);
+        MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
     }  
 
-    public void configuradoPeloLevel(AbstractLevel level)
+    public void configuradoPeloLevel(GarraDto garraDto, AbstractLevel level)
     {        
         cabo.configuradoPeloLevel(level.getDicionarioDeCores());
 
@@ -35,6 +34,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         }
         else
         {
+            configurarColisorCentroDaPinca(garraDto.Colisor);
             gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
             gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
             gerDeMovAtual   = gerDeMovNormal;

@@ -139,13 +139,13 @@ public abstract class MovimentacaoDaGarra
         return animacao.isComemorando();
     }
 
-    public static void configurarComponentesMovimentacao(
-        GarraDto garraDtoArg)
+    public static void configurarComponentesMovimentacao(GarraDto garraDtoArg)
     {
-        garraDto = garraDtoArg;
-        pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);                
-        produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();                
-        animacao = new AnimacaoGarra(garraDto.Animator);
+        garraDto   = garraDtoArg;
         posInicial = garraDto.RigidBody.transform.localPosition;
+
+        pincas   = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);                
+        animacao = new AnimacaoGarra(garraDto.Animator);
+        produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();                
     }
 }
