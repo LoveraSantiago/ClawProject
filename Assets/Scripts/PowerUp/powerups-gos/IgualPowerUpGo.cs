@@ -32,6 +32,7 @@ public class IgualPowerUpGo : AbstractTrocaPowerUpGo
         coletavel1.clearMaterial();
 
         coletavel1.desligarAnimacao();
+        coletavel2.desligarAnimacao();
         yield return null;
 
         trocadorDeOrdem.trocarFigura(coletavel1, coletavel2);
