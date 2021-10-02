@@ -19,9 +19,9 @@ public class MainGameManagers
         cameraManager     = new CameraManager(mainDto.CameraDto);        
     }
 
-    public void configurandoLevel(AbstractLevel levelEscolhido)
+    public void configurandoLevel(MainGameDto mainDto, AbstractLevel levelEscolhido)
     {
-        garraManager.configuradoPeloLevel(levelEscolhido);
+        garraManager.configuradoPeloLevel(mainDto.GarraDto, levelEscolhido);
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
         maquinaManager.configuradoPeloLevel(levelEscolhido);
         uiManager.configurandoLevel(levelEscolhido);

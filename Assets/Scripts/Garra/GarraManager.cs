@@ -11,21 +11,20 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
                             AcaoCacaNiquel.ConsumidorEvento,
                             ConsumidorDeEventoTrigger
 {
+    private bool tempoEsgotadoEmAcao;
+
     private CaboDaGarra cabo;
     private GerenciadorDeMovimentacaoNormal  gerDeMovNormal;
     private GerenciadorDeMovimentacaoPowerUp gerDeMovPowerUp;
     private GerenciadorDeMovimentacao        gerDeMovAtual;
 
-    private bool tempoEsgotadoEmAcao;//TODO remover
-
     public GarraManager(GarraDto garraDto)
     {
-        MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
-        configurarColisorCentroDaPinca(garraDto.Colisor);
         cabo = new CaboDaGarra(garraDto.CaboDaGarraDto, garraDto.RigidBody.transform);
+        MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
     }  
 
-    public void configuradoPeloLevel(AbstractLevel level)
+    public void configuradoPeloLevel(GarraDto garraDto, AbstractLevel level)
     {        
         cabo.configuradoPeloLevel(level.getDicionarioDeCores());
 
@@ -35,6 +34,7 @@ public class GarraManager : AcaoImantadoPelaGarra.ProdutorEvento,
         }
         else
         {
+            configurarColisorCentroDaPinca(garraDto.Colisor);
             gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
             gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
             gerDeMovAtual   = gerDeMovNormal;
