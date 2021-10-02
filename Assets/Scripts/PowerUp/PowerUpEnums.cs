@@ -13,10 +13,10 @@ public class PowerUpEnums
 
     public class FAMILIA
     {
-        public static readonly string EXPLOSIVOS = "EXPLOSIVOS";
+        public static readonly string EXPLOSIVOS   = "EXPLOSIVOS";
         public static readonly string TRANSMUTACAO = "TRANSMUTAÇÃO";
-        public static readonly string LEVITACAO = "LEVITAÇÂO";
-        public static readonly string MECANISMO = "MECANISMO";
+        public static readonly string LEVITACAO    = "LEVITAÇÂO";
+        public static readonly string MECANISMO    = "MECANISMO";
     }
 
     public enum INTERACAOGARRA

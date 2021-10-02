@@ -11,8 +11,8 @@ public class ColetavelQuery
 
     public ColetavelQuery()
     {
-        dicionarioDeIds = new Dictionary<int, ColetavelEntidade>();
-        dicionarioDeSprites = new Dictionary<string, ColetavelEntidade>();
+        dicionarioDeIds      = new Dictionary<int, ColetavelEntidade>();
+        dicionarioDeSprites  = new Dictionary<string, ColetavelEntidade>();
         dicionarioDeFamilias = new Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>>();
 
         popularDicionarios();        
