@@ -4,7 +4,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoColetado.ProdutorEvento,                              
                                 AcaoBoardElevadoFim.ProdutorEvento,
                                 AcaoColetadoFim.ConsumidorEvento,
-                                AcaoImantadoPelaGarra.ConsumidorEvento,                                
+                                AcaoInfoDaGarra.ConsumidorEvento,                                
                                 AcaoPUpAcionado.ConsumidorEvento,                                
                                 AcaoTempoEsgotado.ConsumidorEvento
 {
@@ -108,7 +108,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     }
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER FIM         
 
-    void AcaoImantadoPelaGarra.ConsumidorEvento.consumirEvento(InformacoesDaGarraDto evento)
+    void AcaoInfoDaGarra.ConsumidorEvento.consumirEvento(InformacoesDaGarraDto evento)
     {
         if (evento.isImantadoInfo)
         {
