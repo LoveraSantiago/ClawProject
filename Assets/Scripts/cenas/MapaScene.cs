@@ -4,48 +4,39 @@ using UnityEngine.UI;
 
 public class MapaScene : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject modalObjetivo;
+    [SerializeField] private GameObject modalObjetivo;
+    [Space(5)]
+    [SerializeField] private Button btnLevel1;
+    [SerializeField] private Button btnLevel2;
+    [SerializeField] private Button btnLevel3;
+    [SerializeField] private Button btnLevel4;
 
-    public void showTarget1()
+    private void Start()
     {
-        modalObjetivo.SetActive(true);
-        PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.HUM);
-        updateModal(new Level1());
-    }
-
-    public void showTarget2()
-    {
-        modalObjetivo.SetActive(true);
-        PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.DOIS);
-        updateModal(new Level2());
-    }
-
-    public void showTarget3()
-    {
-        modalObjetivo.SetActive(true);
-        PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.TRES);
-        updateModal(new Level3());
-    }
-
-    public void showTarget4()
-    {
-        modalObjetivo.SetActive(true);
-        PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.QUATRO);
-        updateModal(new Level4());
-    }
+        btnLevel1.onClick.AddListener(() => goToLevelFase(LevelFlowManager.LEVEL.HUM   , new Level1()));
+        btnLevel2.onClick.AddListener(() => goToLevelFase(LevelFlowManager.LEVEL.DOIS  , new Level2()));
+        btnLevel3.onClick.AddListener(() => goToLevelFase(LevelFlowManager.LEVEL.TRES  , new Level3()));
+        btnLevel4.onClick.AddListener(() => goToLevelFase(LevelFlowManager.LEVEL.QUATRO, new Level4()));
+    }   
 
     public void goToPupScene()
     {
         SceneManager.LoadScene("PupScene");
     }
 
-    private static void updateModal(AbstractLevel level)
+    private void goToLevelFase(LevelFlowManager.LEVEL levelEnum, AbstractLevel level)
+    {
+        modalObjetivo.SetActive(true);
+        PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.QUATRO);
+        updateModal(level);
+    }
+
+    private void updateModal(AbstractLevel level)
     {
         string nivelName = level.getLevelName();
         string objetivo = level.getMsgObjetivoLevel();
 
-        GameObject nivelText = GameObject.Find("NivelText");
+        GameObject nivelText    = GameObject.Find("NivelText");
         GameObject objetivoText = GameObject.Find("ObjetivoText");
 
         nivelText.GetComponent<Text>().text = nivelName;
