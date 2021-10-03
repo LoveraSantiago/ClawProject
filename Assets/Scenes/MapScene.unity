@@ -1842,6 +1842,7 @@ MonoBehaviour:
   btnLevel2: {fileID: 83325897}
   btnLevel3: {fileID: 663014699}
   btnLevel4: {fileID: 1847712419}
+  btnCards: {fileID: 250196780}
 --- !u!1 &1381132999
 GameObject:
   m_ObjectHideFlags: 0
