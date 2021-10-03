@@ -1838,10 +1838,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modalObjetivo: {fileID: 1990500530}
-  btnLevel1: {fileID: 0}
-  btnLevel2: {fileID: 0}
-  btnLevel3: {fileID: 0}
-  btnLevel4: {fileID: 0}
+  btnLevel1: {fileID: 1488078935}
+  btnLevel2: {fileID: 83325897}
+  btnLevel3: {fileID: 663014699}
+  btnLevel4: {fileID: 1847712419}
 --- !u!1 &1381132999
 GameObject:
   m_ObjectHideFlags: 0
