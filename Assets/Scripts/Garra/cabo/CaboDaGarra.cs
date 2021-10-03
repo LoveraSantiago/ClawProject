@@ -5,13 +5,11 @@ public class CaboDaGarra
 {
     private CaboGarraDto caboDto;
     private Transform posicaoGarra;
-
-    private List<SegmentoCabo> listaDeSegmentos;//TODO tentar trocar por um array
-    private Vector3 ropeStartPoint;
+    private List<SegmentoCabo> listaDeSegmentos;//TODO tentar trocar por um array    
 
     public CaboDaGarra(CaboGarraDto caboGarraDto, Transform posicaoGarra)
     {
-        this.caboDto = caboGarraDto;
+        caboDto = caboGarraDto;
         this.posicaoGarra = posicaoGarra;        
     }
 
