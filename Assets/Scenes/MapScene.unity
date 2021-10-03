@@ -1843,6 +1843,10 @@ MonoBehaviour:
   btnLevel3: {fileID: 663014699}
   btnLevel4: {fileID: 1847712419}
   btnCards: {fileID: 250196780}
+  btnScore: {fileID: 1357853671}
+  btnStore: {fileID: 1513573892}
+  btnPelucia: {fileID: 1246110284}
+  btnConfig: {fileID: 592234356}
 --- !u!1 &1381132999
 GameObject:
   m_ObjectHideFlags: 0

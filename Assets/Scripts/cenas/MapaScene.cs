@@ -13,6 +13,10 @@ public class MapaScene : MonoBehaviour
     [SerializeField] private Button btnLevel4;
     [Space(5)]
     [SerializeField] private Button btnCards;
+    [SerializeField] private Button btnScore;
+    [SerializeField] private Button btnStore;
+    [SerializeField] private Button btnPelucia;
+    [SerializeField] private Button btnConfig;
 
     private void Start()
     {
@@ -21,13 +25,22 @@ public class MapaScene : MonoBehaviour
         btnLevel3.onClick.AddListener(() => goToLevelFase(LevelFlowManager.LEVEL.TRES  , new Level3()));
         btnLevel4.onClick.AddListener(() => goToLevelFase(LevelFlowManager.LEVEL.QUATRO, new Level4()));
 
-        btnCards.onClick.AddListener(() => goToPupScene());
+        btnCards  .onClick.AddListener(() => goToPupScene());
+        btnStore  .onClick.AddListener(() => goToNotImplementedScene());
+        btnScore  .onClick.AddListener(() => goToNotImplementedScene());
+        btnPelucia.onClick.AddListener(() => goToNotImplementedScene());
+        btnConfig .onClick.AddListener(() => goToNotImplementedScene());
     }   
 
     private void goToPupScene()
     {
         SceneManager.LoadScene("PupScene");
     }   
+
+    private void goToNotImplementedScene()
+    {
+        SceneManager.LoadScene("NotImplementedScene");
+    }
 
     private void goToLevelFase(LevelFlowManager.LEVEL levelEnum, AbstractLevel level)
     {
