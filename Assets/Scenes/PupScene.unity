@@ -1407,7 +1407,7 @@ GameObject:
   - component: {fileID: 1055317422}
   - component: {fileID: 1055317421}
   m_Layer: 5
-  m_Name: img-silver-coin
+  m_Name: img-grupo-moeda-bronze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1429,8 +1429,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 165, y: -110}
-  m_SizeDelta: {x: 250, y: 250}
+  m_AnchoredPosition: {x: 200, y: -150}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1055317421
 MonoBehaviour:
@@ -1452,7 +1452,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8b043c96f3487e842bbad63a0f2d23be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc8297b7bfeb4ee4da78b37a913665ff, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
