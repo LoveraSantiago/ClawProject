@@ -24,7 +24,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;        
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeBtnSelecionado));
         int qtdPup = PlayerPrefsPup.recuperarQtdPup(pupEscolhido.nome);
-        btnBottomBar.descerBotao();
+        btnBottomBar.descerBotao(this);
         if(qtdPup > 0)
         {
             PlayerPrefsPup.subtrairPup(pupEscolhido.nome);
@@ -70,7 +70,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
     {
         yield return new WaitForSecondsRealtime(0.5f);
         prefabBottomBar.SetActive(true);
-        btnBottomBar.subirBotao();
+        btnBottomBar.subirBotao(this);
     }
 
     ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()

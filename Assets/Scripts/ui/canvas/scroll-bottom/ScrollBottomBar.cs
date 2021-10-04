@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public abstract class ScrollBottomBar
 {
     protected BotaoBottomBar btnBottomBar;
+    protected GameObject[] bordasBotoes;
 
     public ScrollBottomBar(GameObject prefabBottomBar)
     {
@@ -12,10 +13,27 @@ public abstract class ScrollBottomBar
         btnBottomBar = new BotaoBottomBar(prefabDto.BtnBottomBarDto, this);
 
         PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
+        bordasBotoes = new GameObject[allPups.Length];
         criarBoxes(prefabDto.ScrollBottomBarDto, allPups);
 
         prefabDto.ScrollBottomBarDto.RectTransfHorizontal.sizeDelta = new Vector2(300f * allPups.Length, 300f);
         prefabDto.ScrollBottomBarDto.RectTransfHorizontal.localPosition = new Vector3(300f * allPups.Length, 0, 0);        
+    }
+
+    public void ligarBordas()
+    {
+        for(int contador = 0; contador < bordasBotoes.Length; contador++)
+        {
+            bordasBotoes[contador].SetActive(true);
+        }
+    }
+
+    public void desligarBordas()
+    {
+        for (int contador = 0; contador < bordasBotoes.Length; contador++)
+        {
+            bordasBotoes[contador].SetActive(false);
+        }
     }
 
     private void criarBoxes(ScrollBottomBarDto scrollBottomBarDto, PowerUpEntidade[] allPups)
@@ -42,6 +60,8 @@ public abstract class ScrollBottomBar
                 cliqueBoxAcionado();
             }
         });
+
+        bordasBotoes[indiceName] = box.transform.Find("img-back-pup-borda").gameObject;
     }
 
     protected abstract void cliqueBoxAcionado();

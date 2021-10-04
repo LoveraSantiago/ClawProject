@@ -17,7 +17,7 @@ public class BotaoBottomBar
         BotaoBottomBarDto bottomBarDto, ScrollBottomBar scrollBottomBar)
     {
         bottomBarDto.BtnBottonBar.onClick.AddListener(()=> {
-                btnBottomPressionado();
+                btnBottomPressionado(scrollBottomBar);
                 scrollBottomBar.posCliqueBtnClose();
             });
 
@@ -25,29 +25,31 @@ public class BotaoBottomBar
         animacaoAtual = ANIM_EMBAIXO;        
     }
 
-    public void btnBottomPressionado()
+    public void btnBottomPressionado(ScrollBottomBar scrollBottomBar)
     {
         if (!animacaoEmAndamento)
         {
             if (isEstadoEmbaixo())
             {
-                subirBotao();
+                subirBotao(scrollBottomBar);
             }
             else if (isEstadoEmCima())
             {
-                descerBotao();
+                descerBotao(scrollBottomBar);
             }
         }
     }
 
-    public void subirBotao()
+    public void subirBotao(ScrollBottomBar scrollBottomBar)
     {
-        Utils.MonoBehaviour.StartCoroutine(coroutineAnimacao(ANIM_SUBIR, ANIM_EMCIMA));
+        Utils.MonoBehaviour.StartCoroutine(
+            coroutineAnimacao(ANIM_SUBIR, ANIM_EMCIMA, true, scrollBottomBar));
     }
 
-    public void descerBotao()
+    public void descerBotao(ScrollBottomBar scrollBottomBar)
     {
-        Utils.MonoBehaviour.StartCoroutine(coroutineAnimacao(ANIM_DESCER, ANIM_EMBAIXO));
+        Utils.MonoBehaviour.StartCoroutine(
+            coroutineAnimacao(ANIM_DESCER, ANIM_EMBAIXO, false, scrollBottomBar));
     }
 
     private bool isEstadoEmbaixo()
@@ -60,13 +62,23 @@ public class BotaoBottomBar
         return animacaoAtual == ANIM_EMCIMA;
     }
 
-    private IEnumerator coroutineAnimacao(int animacaoInicio, int animacaoFim)
+    private IEnumerator coroutineAnimacao(int animacaoInicio, int animacaoFim, bool ligarBordas, ScrollBottomBar scrollBottomBar)
     {
         animacaoEmAndamento = true;
         animator.Play(animacaoInicio);
-        yield return new WaitForSecondsRealtime(1.0f);
+        yield return new WaitForSecondsRealtime(0.9f);
+
         animator.Play(animacaoFim);
         animacaoEmAndamento = false;
+
+        if (ligarBordas)
+        {
+            scrollBottomBar.ligarBordas();
+        }
+        else
+        {
+            scrollBottomBar.desligarBordas();
+        }
 
         animacaoAtual = animacaoFim;
     }
