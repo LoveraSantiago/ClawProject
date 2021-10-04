@@ -51,9 +51,9 @@ public class MainGameManagers
         maquinaManager.update(inputGame);
     }
 
-    public void fixedUpdate()
+    public void fixedUpdate(MainGameDto mainDto)
     {
-        garraManager.fixedUpdate();
+        garraManager.fixedUpdate(mainDto.GarraDto);
         maquinaManager.fixedUpdate();
     }
 

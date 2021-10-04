@@ -52,10 +52,10 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         cabo.update();
     }
 
-    public void fixedUpdate()
+    public void fixedUpdate(GarraDto garraDto)
     {
         gerDeMovAtual.fixedUpdate();
-        cabo.fixedUpdate();
+        cabo.fixedUpdate(garraDto.RigidBody.transform);
     }
 
     private void processarGarraColidiuCom(Collider2D other)

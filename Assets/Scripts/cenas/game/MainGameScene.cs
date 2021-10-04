@@ -44,7 +44,7 @@ public class MainGameScene : MonoBehaviour,
 
     private void FixedUpdate()
     {
-        managers.fixedUpdate();
+        managers.fixedUpdate(mainDto);
     }
 
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP INICIO

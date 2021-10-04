@@ -3,14 +3,12 @@ using UnityEngine;
 
 public class CaboDaGarra 
 {
-    private CaboGarraDto caboDto;
-    private Transform posicaoGarra;
+    private CaboGarraDto caboDto;    
     private SegmentoCabo[] segmentos;
 
     public CaboDaGarra(CaboGarraDto caboGarraDto, Transform posicaoGarra)
     {
-        caboDto = caboGarraDto;
-        this.posicaoGarra = posicaoGarra;        
+        caboDto = caboGarraDto;        
     }
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
@@ -41,9 +39,9 @@ public class CaboDaGarra
         desenharCabo();
     }
 
-    public void fixedUpdate()
+    public void fixedUpdate(Transform posicaoGarra)
     {
-        simularGravidade();
+        simularGravidade(posicaoGarra);
     }
 
     private void definirGrossuraDoCabo()
@@ -64,7 +62,7 @@ public class CaboDaGarra
         caboDto.LineRenderer.SetPositions(posicoes);
     }
 
-    private void simularGravidade()
+    private void simularGravidade(Transform posicaoGarra)
     {
         Vector2 gravidade = new Vector2(0f, -1f);
         for (int contador = 0; contador < segmentos.Length; contador++)
@@ -77,10 +75,10 @@ public class CaboDaGarra
             segmentos[contador] = primeiroSegmento;
         }
 
-        esticarSegmentos();
+        esticarSegmentos(posicaoGarra);
     }
 
-    private void esticarSegmentos()
+    private void esticarSegmentos(Transform posicaoGarra)
     {
         SegmentoCabo primeiroSegmento = segmentos[0];
         primeiroSegmento.setPosNow(caboDto.TransfInicioCabo.position);
