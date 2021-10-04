@@ -19,7 +19,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     public GarraManager(GarraDto garraDto)
     {
-        cabo = new CaboDaGarra(garraDto.CaboDaGarraDto, garraDto.RigidBody.transform);
+        cabo = new CaboDaGarra(garraDto.CaboDaGarraDto);
         MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
     }  
 

@@ -6,7 +6,7 @@ public class CaboDaGarra
     private CaboGarraDto caboDto;    
     private SegmentoCabo[] segmentos;
 
-    public CaboDaGarra(CaboGarraDto caboGarraDto, Transform posicaoGarra)
+    public CaboDaGarra(CaboGarraDto caboGarraDto)
     {
         caboDto = caboGarraDto;        
     }
