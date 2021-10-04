@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 public class ScrollBottomBarGameScene : ScrollBottomBar,
                                         AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento,
                                         AcaoBotaoPUpVazio.ConsumidorEvento
-
 {
     private int indiceBtn;
     
