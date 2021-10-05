@@ -49,7 +49,11 @@ public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
     {
         if (evento.isFinalizar)
         {
-
+            if (isLevelPup)
+            {
+                int indicePup = PlayerPrefsPup.recuperarIndicePup();
+                scrollBottomBar.simularCliqueBoxAcionado(evento.indiceBtn, indicePup);
+            }
         }
     }
 
