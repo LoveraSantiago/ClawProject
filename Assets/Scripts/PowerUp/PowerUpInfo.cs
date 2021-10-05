@@ -14,6 +14,7 @@ public class PowerUpInfo
     public bool isNotColetavel { get { return !isColetavel; } }
     public bool hasColetavel { get { return coletavelTile != null; } }
 
+    public int indiceBtn { get; private set; }
     public int duracaoTempo { get { return pupEntidade.duracao; }}
 
     public PowerUpEnums.TIPO tipo { get { return pupEntidade.tipo; } }
@@ -83,9 +84,10 @@ public class PowerUpInfo
         return pupInfo;
     }
 
-    public static PowerUpInfo ofFinalizar()
+    public static PowerUpInfo ofFinalizar(int indiceBtn)
     {
-        PowerUpInfo pupInfo = new PowerUpInfo(ESTADO.FINALIZAR);        
+        PowerUpInfo pupInfo = new PowerUpInfo(ESTADO.FINALIZAR);
+        pupInfo.indiceBtn = indiceBtn;
         return pupInfo;
     }
 }
