@@ -26,13 +26,13 @@ public class PowerUpManager : PowerUpAcionamento,
         TeleportePowerUpGo.configurarTrocadorDeOrdem(trocadorDeOrdem);
     }
 
-    public void acionado(PowerUpEntidade powerUp)
+    public void acionado(int indiceBtn, PowerUpEntidade powerUp)
     {
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
-    public void acionado(PowerUpEntidade powerUp, Vector3 posicaoAtual)
+    public void acionado(int indiceBtn, PowerUpEntidade powerUp, Vector3 posicaoAtual)
     {
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp, posicaoAtual);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);

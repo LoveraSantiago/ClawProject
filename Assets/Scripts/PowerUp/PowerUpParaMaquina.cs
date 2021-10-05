@@ -13,12 +13,12 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
 
     public void acionar(int indiceBtn)
     {
-        powerUpAcionamento.acionado(powerUpEntidade);
+        powerUpAcionamento.acionado(indiceBtn, powerUpEntidade);
     }
 
     public void acionar(int indiceBtn, Vector3 posicaoAtual)
     {
-        powerUpAcionamento.acionado(powerUpEntidade, posicaoAtual);
+        powerUpAcionamento.acionado(indiceBtn, powerUpEntidade, posicaoAtual);
     }
 
     public bool isClicavel()
