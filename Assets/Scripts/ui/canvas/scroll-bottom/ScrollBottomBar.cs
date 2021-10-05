@@ -57,14 +57,14 @@ public abstract class ScrollBottomBar
         btnIt.onClick.AddListener(() => {
             if (!btnBottomBar.animacaoEmAndamento)
             {
-                cliqueBoxAcionado();
+                cliqueBoxAcionado(text);
             }
         });
 
         bordasBotoes[indiceName] = box.transform.Find("img-back-pup-borda").gameObject;
     }
 
-    protected abstract void cliqueBoxAcionado();
+    protected abstract void cliqueBoxAcionado(TextMeshProUGUI lblTQtd);
 
     public virtual void posCliqueBtnClose() { }
 }

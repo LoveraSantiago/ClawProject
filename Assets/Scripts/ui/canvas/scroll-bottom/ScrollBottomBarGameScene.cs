@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class ScrollBottomBarGameScene : ScrollBottomBar,
                                         AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento,
@@ -18,7 +19,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfo>();
     }
 
-    protected override void cliqueBoxAcionado()
+    protected override void cliqueBoxAcionado(TextMeshProUGUI lblTQtd)
     {
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;        
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeBtnSelecionado));
@@ -26,8 +27,9 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         btnBottomBar.descerBotao(this);
         if(qtdPup > 0)
         {
-            PlayerPrefsPup.subtrairPup(pupEscolhido.nome);
+            int qtdAtual = PlayerPrefsPup.subtrairPup(pupEscolhido.nome);
             PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
+            lblTQtd.text = qtdAtual.ToString();
             Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));       
         }
         else
