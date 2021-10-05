@@ -1,4 +1,4 @@
-public class PowerUpLevel 
+public class PowerUpsToLevel 
 {
     private int indiceAtual0;
     private int indiceAtual1;
@@ -10,25 +10,25 @@ public class PowerUpLevel
     private PowerUpEnums.TIPO[] pupsBtn3;
     private PowerUpEnums.TIPO[] pupsBtn4;
 
-    public PowerUpLevel addBtn0(PowerUpEnums.TIPO[] tipos)
+    public PowerUpsToLevel addBtn0(PowerUpEnums.TIPO[] tipos)
     {
         pupsBtn1 = tipos;
         return this;
     }
 
-    public PowerUpLevel addBtn1(PowerUpEnums.TIPO[] tipos)
+    public PowerUpsToLevel addBtn1(PowerUpEnums.TIPO[] tipos)
     {
         pupsBtn2 = tipos;
         return this;
     }
 
-    public PowerUpLevel addBtn2(PowerUpEnums.TIPO[] tipos)
+    public PowerUpsToLevel addBtn2(PowerUpEnums.TIPO[] tipos)
     {
         pupsBtn3 = tipos;
         return this;
     }
 
-    public PowerUpLevel addBtn3(PowerUpEnums.TIPO[] tipos)
+    public PowerUpsToLevel addBtn3(PowerUpEnums.TIPO[] tipos)
     {
         pupsBtn4 = tipos;
         return this;

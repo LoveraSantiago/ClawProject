@@ -20,7 +20,7 @@ public abstract class AbstractLevel
 
     public virtual BoardOrdem[] getBoardOrdem() { return null; }
 
-    public virtual PowerUpLevel getPupsLevel() { return null; }
+    public virtual PowerUpsToLevel getPupsLevel() { return null; }
 
     public string getTipoGameDesc()
     {
