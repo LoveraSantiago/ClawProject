@@ -40,20 +40,32 @@ public class PowerUpsToLevel
         switch (indiceBtn)
         {
             case 0:
-                pupTipo = pupsBtn0[indiceAtual0];
-                indiceAtual0++;
+                if(pupsBtn0 != null && indiceAtual0 < pupsBtn0.Length)
+                {
+                    pupTipo = pupsBtn0[indiceAtual0];
+                    indiceAtual0++;
+                }
                 break;
             case 1:
-                pupTipo = pupsBtn1[indiceAtual1];
-                indiceAtual1++;
+                if (pupsBtn1 != null && indiceAtual1 < pupsBtn1.Length)
+                {
+                    pupTipo = pupsBtn1[indiceAtual1];
+                    indiceAtual1++;
+                }
                 break;
             case 2:
-                pupTipo = pupsBtn2[indiceAtual2];
-                indiceAtual2++;
+                if (pupsBtn2 != null && indiceAtual2 < pupsBtn2.Length)
+                {
+                    pupTipo = pupsBtn2[indiceAtual2];
+                    indiceAtual2++;
+                }
                 break;
             case 3:
-                pupTipo = pupsBtn3[indiceAtual3];
-                indiceAtual3++;
+                if (pupsBtn3 != null && indiceAtual3 < pupsBtn3.Length)
+                {
+                    pupTipo = pupsBtn3[indiceAtual3];
+                    indiceAtual3++;
+                }
                 break;
         }
         
