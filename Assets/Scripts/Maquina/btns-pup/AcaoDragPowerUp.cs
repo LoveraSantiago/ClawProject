@@ -52,11 +52,11 @@ public class AcaoDragPowerUp
         }
     }
 
-    public bool dragFinalizado(AcaoBotaoPowerUp acaoPowerUp, AparenciaBotaoPowerUp aparencia)
+    public bool dragFinalizado(int indice, AcaoBotaoPowerUp acaoPowerUp, AparenciaBotaoPowerUp aparencia)
     {
         if (aparencia.isMostrandoImagem())
         {
-            acaoPowerUp.acionar(aparencia.getPosicao());
+            acaoPowerUp.acionar(indice, aparencia.getPosicao());
             aparencia.mostrarBotao();                        
             aparencia.colocarNaPosicaoOriginalAcionado(posicaoOriginal, rotacaoOriginal);
             goAreaDraggavel.SetActive(false);

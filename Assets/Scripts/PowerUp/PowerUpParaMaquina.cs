@@ -11,12 +11,12 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
         this.powerUpEntidade = powerUpEntidade;
     }
 
-    public void acionar()
+    public void acionar(int indiceBtn)
     {
         powerUpAcionamento.acionado(powerUpEntidade);
     }
 
-    public void acionar(Vector3 posicaoAtual)
+    public void acionar(int indiceBtn, Vector3 posicaoAtual)
     {
         powerUpAcionamento.acionado(powerUpEntidade, posicaoAtual);
     }

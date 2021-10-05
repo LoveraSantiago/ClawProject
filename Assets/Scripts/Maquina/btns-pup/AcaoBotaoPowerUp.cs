@@ -5,8 +5,8 @@ public interface AcaoBotaoPowerUp
     bool isClicavel();
     bool isDraggavel();
 
-    void acionar();
-    void acionar(Vector3 posicaoAtual);
+    void acionar(int indiceBtn);
+    void acionar(int indiceBtn, Vector3 posicaoAtual);
 
     PowerUpEnums.TIPO getTipo();
 

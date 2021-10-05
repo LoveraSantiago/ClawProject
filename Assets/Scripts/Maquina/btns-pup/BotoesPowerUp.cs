@@ -25,10 +25,10 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
     private void inicializarBotoes(BotoesPowerUpDto btnsPowerUpsDto)
     {
         btnsPowerUp = new BotaoPowerUp[4];
-        btnsPowerUp[0] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[0]);
-        btnsPowerUp[1] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[1]);
-        btnsPowerUp[2] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[2]);
-        btnsPowerUp[3] = new BotaoPowerUp(btnsPowerUpsDto.BtnPowerUp[3]);
+        btnsPowerUp[0] = new BotaoPowerUp(0, btnsPowerUpsDto.BtnPowerUp[0]);
+        btnsPowerUp[1] = new BotaoPowerUp(1, btnsPowerUpsDto.BtnPowerUp[1]);
+        btnsPowerUp[2] = new BotaoPowerUp(2, btnsPowerUpsDto.BtnPowerUp[2]);
+        btnsPowerUp[3] = new BotaoPowerUp(3, btnsPowerUpsDto.BtnPowerUp[3]);
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
@@ -128,7 +128,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
     {
         colocarBtnsEmMaterialArcoIris();
         BotaoPowerUp btn = btnsPowerUp[indice];
-        btn.clicar(controlePup, produtorDeEventoEscolhaPup, indice);
+        btn.clicar(controlePup, produtorDeEventoEscolhaPup);
         btnAcionado = btn;
     }   
 
