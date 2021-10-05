@@ -5,7 +5,7 @@ public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
                              AcaoBotaoPUpVazio.ConsumidorEvento        
 {
     private bool isLevelPup;
-    private bool isPupToLevel;
+    private bool isPupsToLevel;
 
     private PowerUpsToLevel pupsToLevel;
     private ScrollBottomBarGameScene scrollBottomBar;
@@ -21,14 +21,11 @@ public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
         {
             isLevelPup = true;
         }
-        else
+        else if (level.hasPupLevel())
         {
-            if (level.hasPupLevel())
-            {
-                pupsToLevel = level.getPupsLevel();
-                
-            }
-        }
+            pupsToLevel = level.getPupsLevel();
+            isPupsToLevel = true;
+        }        
     }
 
     public void start()
@@ -39,6 +36,13 @@ public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
             for(int contador = 0; contador < 4; contador++)
             {
                 scrollBottomBar.simularCliqueBoxAcionado(contador, indicePup);
+            }
+        }
+        else if(isPupsToLevel)
+        {
+            for(int contador = 0; contador < 4; contador++)
+            {
+                scrollBottomBar.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
             }
         }
     }
@@ -64,6 +68,10 @@ public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
             {
                 int indicePup = PlayerPrefsPup.recuperarIndicePup();
                 scrollBottomBar.simularCliqueBoxAcionado(evento.indiceBtn, indicePup);
+            }
+            else if (isPupsToLevel)
+            {                
+                scrollBottomBar.simularCliqueBoxAcionado(evento.indiceBtn, pupsToLevel.getPupEntidade(evento.indiceBtn));
             }
         }
     }

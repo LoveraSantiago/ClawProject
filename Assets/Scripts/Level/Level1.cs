@@ -51,7 +51,7 @@ public class Level1 : AbstractLevel
     {
         return new PowerUpsToLevel()
             .addBtn0(new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.BOMBA_DA_GARRA })
-            .addBtn1(new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.ASAS});
+            .addBtn3(new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.ASAS});
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()

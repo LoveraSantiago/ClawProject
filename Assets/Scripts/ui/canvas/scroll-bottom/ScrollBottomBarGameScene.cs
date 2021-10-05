@@ -42,9 +42,22 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
     public void simularCliqueBoxAcionado(int indiceBtn, int indicePup)
     {        
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
-        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
+        simularCliqueBoxAcionado(indiceBtn, pupEscolhido);        
+    }
 
-        produtorDeEvento.produziuEvento(pupBtnInfo);
+    public void simularCliqueBoxAcionado(int indiceBtn, PowerUpEnums.TIPO tipoPup)
+    {
+        PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(tipoPup);
+        simularCliqueBoxAcionado(indiceBtn, pupEscolhido);
+    }
+
+    private void simularCliqueBoxAcionado(int indiceBtn, PowerUpEntidade pupEscolhido)
+    {
+        if(pupEscolhido != null)
+        {
+            PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
+            produtorDeEvento.produziuEvento(pupBtnInfo);
+        }
     }
 
     public override void posCliqueBtnClose()
