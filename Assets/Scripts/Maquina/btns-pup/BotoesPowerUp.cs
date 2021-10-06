@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
-                             AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento
+                             AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
+                             AcaoColetado.ConsumidorEvento
 {
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
@@ -106,12 +107,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
     public void desativarPowerUp()
     {
         controlePup.desabilitarPowerUp();        
-    }
-
-    public void suspenderPowerUp()
-    {
-        controlePup.suspenderPowerUp();
-    }
+    }    
 
     public void reativarPowerUp()
     {
@@ -150,6 +146,19 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
     void AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {        
         btnsPowerUp[evento.indiceBotao].receberAcaoPowerUp(evento, controlePup);
+    }
+
+    void ProdutorConsumidoresDeEvento<InformacoesColetadoDto>.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
+    {
+        controlePup.suspenderPowerUp();
+        if (evento.fimColetados)
+        {
+            Debug.Log("Devolvendo pups");
+            btnsPowerUp[0].devolverPowerUp();
+            btnsPowerUp[1].devolverPowerUp();
+            btnsPowerUp[2].devolverPowerUp();
+            btnsPowerUp[3].devolverPowerUp();
+        }
     }
 
     ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEvento()

@@ -34,6 +34,12 @@ public class PlayerPrefsPup
         salvarQtdPup(nomePup, atual);
     }
 
+    public static void adicionarPup(PowerUpEnums.TIPO tipo, int qtd)
+    {
+        string nomePup = FactoryPowerUpEntidade.getNomePupByTipo(tipo);
+        adicionarPup(nomePup, qtd);
+    }
+
     public static int subtrairPup(string nomePup)
     {
         int qtdAtual = recuperarQtdPup(nomePup);

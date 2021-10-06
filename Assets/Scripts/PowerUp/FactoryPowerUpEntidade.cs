@@ -222,6 +222,19 @@ public class FactoryPowerUpEntidade
         return sprites;
     }
 
+    public static string getNomePupByTipo(PowerUpEnums.TIPO tipo)
+    {
+        PowerUpEntidade[] allPups = getAllPowerUps();
+        for(int contador = 0; contador < allPups.Length; contador++)
+        {
+            if(allPups[contador].tipo == tipo)
+            {
+                return allPups[contador].nome;
+            }
+        }
+        return null;
+    }
+
     public static string[] getNomesPupsBySprites(Sprite[] sprites)
     {
         PowerUpEntidade[] allPups = getAllPowerUps();

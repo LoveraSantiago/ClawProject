@@ -97,7 +97,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         PosExecutorAcaoColetadoFim posExecucao = new PosExecutorAcaoColetadoFim(displayTimer, botoesPowerUp);
         displaysDeSlots.mostrarColetadoNoDisplay(evento, arcoIrisEfeito, posExecucao);        
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
-        botoesPowerUp.suspenderPowerUp();
+        ((AcaoColetado.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
     }   
 
     void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
