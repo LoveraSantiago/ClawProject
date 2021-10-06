@@ -24,12 +24,12 @@ public class MainGameScene : MonoBehaviour,
 
         managers = new MainGameManagers(mainDto);
         
-        configurandoLevel();
+        carregandoLevelEscolhido();
         managers.configurandoEventos();
         managers.startLaizy();
     }    
 
-    private void configurandoLevel()
+    private void carregandoLevelEscolhido()
     {
         LevelFlowManager.LEVEL levelFlow = PlayerPrefsLevel.recuperarELimparLevel(level);
         AbstractLevel levelEscolhido     = LevelFlowManager.getLevelByEnum(levelFlow);
