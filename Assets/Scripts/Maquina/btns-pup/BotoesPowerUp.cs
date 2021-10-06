@@ -153,7 +153,6 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         controlePup.suspenderPowerUp();
         if (evento.fimColetados)
         {
-            Debug.Log("Devolvendo pups");
             btnsPowerUp[0].devolverPowerUp();
             btnsPowerUp[1].devolverPowerUp();
             btnsPowerUp[2].devolverPowerUp();

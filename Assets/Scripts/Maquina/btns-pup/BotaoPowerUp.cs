@@ -89,7 +89,6 @@ public class BotaoPowerUp : Draggavel
     {
         if (hasPowerUp)
         {
-            Debug.Log("Btn " + indice + " devolvendo " + acaoBtnPowerUp.getTipo().ToString());
             PlayerPrefsPup.adicionarPup(acaoBtnPowerUp.getTipo(), 1);
         }
     }
