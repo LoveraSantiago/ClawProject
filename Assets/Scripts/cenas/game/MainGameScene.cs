@@ -47,22 +47,17 @@ public class MainGameScene : MonoBehaviour,
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP INICIO
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
-        if (updatableManagers.inputGame.aconteceuDragNaAreaInferior(posicaoToque))
-        {
-            updatableManagers.maquinaManager.beginDragPowerUp(posicaoToque);
-        }       
+        updatableManagers.onBeginDrag(eventData);        
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        updatableManagers.maquinaManager.onEndDragPowerUp();
+        updatableManagers.onEndDrag(eventData);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
-        updatableManagers.maquinaManager.onDragPowerUp(posicaoToque);
+        updatableManagers.onDrag(eventData);        
     }
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM
 }

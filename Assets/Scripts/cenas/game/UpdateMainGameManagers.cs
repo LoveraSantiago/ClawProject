@@ -1,8 +1,11 @@
+using UnityEngine;
+using UnityEngine.EventSystems;
+
 public class UpdateMainGameManagers 
 {
-    public GarraManager   garraManager   { get; private set; }
-    public MaquinaManager maquinaManager { get; private set; }
-    public InputGame      inputGame      { get; private set; }
+    private GarraManager garraManager;
+    private MaquinaManager maquinaManager;
+    private InputGame inputGame;
 
     public UpdateMainGameManagers(
         GarraManager garraManager, MaquinaManager maquinaManager, InputGame inputGame)
@@ -23,5 +26,25 @@ public class UpdateMainGameManagers
     {
         garraManager.fixedUpdate(mainDto.GarraDto);
         maquinaManager.fixedUpdate();
+    }
+
+    public void onBeginDrag(PointerEventData eventData)
+    {
+        Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
+        if (inputGame.aconteceuDragNaAreaInferior(posicaoToque))
+        {
+            maquinaManager.beginDragPowerUp(posicaoToque);
+        }
+    }
+
+    public void onEndDrag(PointerEventData eventData)
+    {
+        maquinaManager.onEndDragPowerUp();
+    }
+
+    public void onDrag(PointerEventData eventData)
+    {
+        Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
+        maquinaManager.onDragPowerUp(posicaoToque);
     }
 }
