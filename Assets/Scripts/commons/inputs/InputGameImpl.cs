@@ -6,7 +6,7 @@ public class InputGameImpl : InputGame
     private bool isTapAreaInferior;    
 
     private Vector3 posicaoTap;
-    private Transform referenciaChaoMaquina;
+    private Transform referenciaChaoMaquina;//TODO acho q da pra remover validar
 
     public InputGameImpl(Transform referenciaChao)
     {
