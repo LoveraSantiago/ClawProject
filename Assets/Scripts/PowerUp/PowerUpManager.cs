@@ -4,6 +4,7 @@ public class PowerUpManager : PowerUpAcionamento,
                               PowerUpFinalizacao,
                               AcaoPUpAcionado.ProdutorEvento
 {
+    private int indiceBtnEmAcao;
     private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;    
 
     public PowerUpManager(PowerUpDto powerUpDto, InputGame inputGame)
@@ -26,14 +27,16 @@ public class PowerUpManager : PowerUpAcionamento,
         TeleportePowerUpGo.configurarTrocadorDeOrdem(trocadorDeOrdem);
     }
 
-    public void acionado(PowerUpEntidade powerUp)
+    public void acionado(int indiceBtn, PowerUpEntidade powerUp)
     {
+        indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
-    public void acionado(PowerUpEntidade powerUp, Vector3 posicaoAtual)
+    public void acionado(int indiceBtn, PowerUpEntidade powerUp, Vector3 posicaoAtual)
     {
+        indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp, posicaoAtual);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }   
@@ -51,7 +54,7 @@ public class PowerUpManager : PowerUpAcionamento,
 
     public void finalizado()
     {        
-        produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofFinalizar());
+        produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofFinalizar(indiceBtnEmAcao));
     }    
 
     ProdutorDeEvento<PowerUpInfo> AcaoPUpAcionado.ProdutorEvento.getProdutorDeEvento()

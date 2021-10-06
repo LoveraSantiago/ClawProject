@@ -173,7 +173,7 @@ public class DisplayDeSlot
     {
         slots.cancelarMovimentacaoDeSlot();
         yield return limparSprNone(displaysSlotsDto, null);
-        Debug.Log("Pos Cancelado limpando spr none");
+        //Debug.Log("Pos Cancelado limpando spr none");
     }
 
     private IEnumerator ligarCacaNiquelCoroutine(Sprite[] sprites)

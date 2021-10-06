@@ -14,7 +14,7 @@ public class MovimentadorDeSlots
 
     public void cancelarMovimentacaoDeSlot()
     {
-        Debug.Log("Cancelando movimentacao de slot");
+        //Debug.Log("Cancelando movimentacao de slot");
         continuarMovimentacao = false;
     }    
 

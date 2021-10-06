@@ -12,19 +12,28 @@ public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento,
     {
         CameraShake.configurar(cameraDto);
         this.cameraDto = cameraDto;
+        cameraDto.VirtualCam1.Priority = 1;
+        cameraDto.VirtualCam2.Priority = 0;
+        cameraDto.VirtualCam3.Priority = 0;
     }
 
     void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
-    {
-        cameraDto.VirtualCam2.Priority += 2;   
+    {     
+        if(cameraDto.VirtualCam2.Priority == 0)
+        {
+            cameraDto.VirtualCam2.Priority += 2;   
+        }
     }
 
     void AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
-    {
-        cameraDto.VirtualCam2.Priority -= 2;
+    {        
+        if(cameraDto.VirtualCam2.Priority == 2)
+        {
+            cameraDto.VirtualCam2.Priority -= 2;
+        }
     }
 
-    void ProdutorConsumidoresDeEvento<CacaNiquelResult>.ConsumidorEvento.consumirEvento(CacaNiquelResult evento)
+    void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelResult evento)
     {
         if (evento.isInicio)
         {

@@ -19,7 +19,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     public GarraManager(GarraDto garraDto)
     {
-        cabo = new CaboDaGarra(garraDto.CaboDaGarraDto, garraDto.RigidBody.transform);
+        cabo = new CaboDaGarra(garraDto.CaboDaGarraDto);
         MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
     }  
 
@@ -52,10 +52,10 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         cabo.update();
     }
 
-    public void fixedUpdate()
+    public void fixedUpdate(GarraDto garraDto)
     {
         gerDeMovAtual.fixedUpdate();
-        cabo.fixedUpdate();
+        cabo.fixedUpdate(garraDto.RigidBody.transform);
     }
 
     private void processarGarraColidiuCom(Collider2D other)

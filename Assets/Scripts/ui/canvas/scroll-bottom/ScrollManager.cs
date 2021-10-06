@@ -1,9 +1,13 @@
 using UnityEngine;
 
 public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento,
-                             AcaoBotaoPUpVazio.ConsumidorEvento
+                             AcaoPUpAcionado.ConsumidorEvento,
+                             AcaoBotaoPUpVazio.ConsumidorEvento        
 {
     private bool isLevelPup;
+    private bool isPupsToLevel;
+
+    private PowerUpsToLevel pupsToLevel;
     private ScrollBottomBarGameScene scrollBottomBar;
 
     public ScrollManager(GameObject prefabBottomBar)
@@ -17,6 +21,11 @@ public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
         {
             isLevelPup = true;
         }
+        else if (level.hasPupLevel())
+        {
+            pupsToLevel = level.getPupsLevel();
+            isPupsToLevel = true;
+        }        
     }
 
     public void start()
@@ -27,6 +36,13 @@ public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
             for(int contador = 0; contador < 4; contador++)
             {
                 scrollBottomBar.simularCliqueBoxAcionado(contador, indicePup);
+            }
+        }
+        else if(isPupsToLevel)
+        {
+            for(int contador = 0; contador < 4; contador++)
+            {
+                scrollBottomBar.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
             }
         }
     }
@@ -41,6 +57,22 @@ public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
         else
         {
             ((AcaoBotaoPUpVazio.ConsumidorEvento)scrollBottomBar).consumirEvento(evento);
+        }
+    }
+
+    void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    {
+        if (evento.isFinalizar)
+        {
+            if (isLevelPup)
+            {
+                int indicePup = PlayerPrefsPup.recuperarIndicePup();
+                scrollBottomBar.simularCliqueBoxAcionado(evento.indiceBtn, indicePup);
+            }
+            else if (isPupsToLevel)
+            {                
+                scrollBottomBar.simularCliqueBoxAcionado(evento.indiceBtn, pupsToLevel.getPupEntidade(evento.indiceBtn));
+            }
         }
     }
 

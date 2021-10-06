@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class ScrollBottomBarPupScene : ScrollBottomBar,
                                        AcaoBBarPupEscolhido<int>.ProdutorEvento
@@ -12,11 +13,11 @@ public class ScrollBottomBarPupScene : ScrollBottomBar,
         produtorDeIndiceEscolhido = new ProdutorDeEvento<int>();
     }
 
-    protected override void cliqueBoxAcionado()
+    protected override void cliqueBoxAcionado(TextMeshProUGUI lblTQtd)
     {
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;
         produtorDeIndiceEscolhido.produziuEvento(int.Parse(nomeBtnSelecionado));
-        btnBottomBar.btnBottomPressionado();
+        btnBottomBar.btnBottomPressionado(this);
     }
 
     ProdutorDeEvento<int> AcaoBBarPupEscolhido<int>.ProdutorEvento.getProdutorDeEvento()

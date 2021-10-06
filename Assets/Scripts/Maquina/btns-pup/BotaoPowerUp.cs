@@ -4,6 +4,7 @@ public class BotaoPowerUp : Draggavel
 {
     private bool isDraggavel;
     public bool hasPowerUp { get; private set; }
+    private int indice;
     
     private AparenciaBotaoPowerUp aparencia;
     public GlowBotaoPowerUp glow { get; private set; }
@@ -11,18 +12,19 @@ public class BotaoPowerUp : Draggavel
     private AcaoDragPowerUp acaoDrag;
     private AcaoBotaoPowerUp acaoBtnPowerUp;
 
-    public BotaoPowerUp(BotaoPowerUpDto botaoDto)
+    public BotaoPowerUp(int indice, BotaoPowerUpDto botaoDto)
     {
+        isDraggavel = false;
+        this.indice = indice;
+
         aparencia = new AparenciaBotaoPowerUp(botaoDto);
         acaoDrag  = new AcaoDragPowerUp(botaoDto);
         glow   = new GlowBotaoPowerUp(botaoDto.SprEfeito);
-        isDraggavel = false;        
     }
 
     public void clicar(
         ControleAcionamentoPowerUp controlePup, 
-        ProdutorDeEvento<int> produtorEventoEscolhaPup,
-        int indice)
+        ProdutorDeEvento<int> produtorEventoEscolhaPup)
     {
         glow.mudarParaMaterialIndividual();
         if (hasPowerUp)
@@ -30,7 +32,7 @@ public class BotaoPowerUp : Draggavel
             aparencia.colorirBotao();
             controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
-            acaoBtnPowerUp.acionar();
+            acaoBtnPowerUp.acionar(indice);
         }
         else
         {
@@ -80,6 +82,14 @@ public class BotaoPowerUp : Draggavel
         {
             PowerUpEntidade pupEntidade = evento.powerUpEntidade;
             receberAcaoPowerUp(new PowerUpParaMaquina(pupEntidade));
+        }
+    }
+
+    public void devolverPowerUp()
+    {
+        if (hasPowerUp)
+        {
+            PlayerPrefsPup.adicionarPup(acaoBtnPowerUp.getTipo(), 1);
         }
     }
 
@@ -137,7 +147,7 @@ public class BotaoPowerUp : Draggavel
 
     public bool isDragFinalizadoAtivouPowerUp()
     {
-        return acaoDrag.dragFinalizado(acaoBtnPowerUp, aparencia);        
+        return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, aparencia);        
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 

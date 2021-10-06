@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class ScrollBottomBarGameScene : ScrollBottomBar,
                                         AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento,
                                         AcaoBotaoPUpVazio.ConsumidorEvento
-
 {
     private int indiceBtn;
     
@@ -19,16 +19,17 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfo>();
     }
 
-    protected override void cliqueBoxAcionado()
+    protected override void cliqueBoxAcionado(TextMeshProUGUI lblTQtd)
     {
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;        
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeBtnSelecionado));
         int qtdPup = PlayerPrefsPup.recuperarQtdPup(pupEscolhido.nome);
-        btnBottomBar.descerBotao();
+        btnBottomBar.descerBotao(this);
         if(qtdPup > 0)
         {
-            PlayerPrefsPup.subtrairPup(pupEscolhido.nome);
+            int qtdAtual = PlayerPrefsPup.subtrairPup(pupEscolhido.nome);
             PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
+            lblTQtd.text = qtdAtual.ToString();
             Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));       
         }
         else
@@ -41,9 +42,22 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
     public void simularCliqueBoxAcionado(int indiceBtn, int indicePup)
     {        
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
-        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
+        simularCliqueBoxAcionado(indiceBtn, pupEscolhido);        
+    }
 
-        produtorDeEvento.produziuEvento(pupBtnInfo);
+    public void simularCliqueBoxAcionado(int indiceBtn, PowerUpEnums.TIPO tipoPup)
+    {
+        PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(tipoPup);
+        simularCliqueBoxAcionado(indiceBtn, pupEscolhido);
+    }
+
+    private void simularCliqueBoxAcionado(int indiceBtn, PowerUpEntidade pupEscolhido)
+    {
+        if(pupEscolhido != null)
+        {
+            PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
+            produtorDeEvento.produziuEvento(pupBtnInfo);
+        }
     }
 
     public override void posCliqueBtnClose()
@@ -70,7 +84,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
     {
         yield return new WaitForSecondsRealtime(0.5f);
         prefabBottomBar.SetActive(true);
-        btnBottomBar.subirBotao();
+        btnBottomBar.subirBotao(this);
     }
 
     ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()

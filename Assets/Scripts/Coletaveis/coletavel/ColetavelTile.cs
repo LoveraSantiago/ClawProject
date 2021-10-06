@@ -61,7 +61,7 @@ public class ColetavelTile : Coletavel
     {
         LayerMask mask = LayerMask.GetMask("GarraCentro");
         Collider2D collider2d = Physics2D.OverlapCircle(rigidbody.position, 0.3f, mask);        
-        return referenciaColliderColetado == collider2d;
+        return referenciaColliderColetado == collider2d && rigidbody.velocity.y > 0;
     }
 
     public static void configReferenciaColliderColetado(CircleCollider2D referenciaColliderColetadoArg)

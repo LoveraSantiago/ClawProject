@@ -20,6 +20,8 @@ public abstract class AbstractLevel
 
     public virtual BoardOrdem[] getBoardOrdem() { return null; }
 
+    public virtual PowerUpsToLevel getPupsLevel() { return null; }
+
     public string getTipoGameDesc()
     {
         return getTipoGame().ToString();
@@ -35,6 +37,11 @@ public abstract class AbstractLevel
     {
         LevelValidador validador = new LevelValidador();
         validador.validar(this);
+    }
+
+    public bool hasPupLevel()
+    {
+        return getPupsLevel() != null;
     }
 
     public bool isNormalLevel()
