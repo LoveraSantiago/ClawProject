@@ -14,7 +14,7 @@ public class RemontadorBoard
         this.referencias = referencias;
     }
 
-    public void montar(int[,] arrayDeColetaveis, Action<GameObject, Sprite> consumidorDeSprite)
+    public void montarColetaveis(int[,] arrayDeColetaveis, Action<GameObject, Sprite> consumidorDeSprite)
     {
         ColetavelQuery coletavelQuery = new ColetavelQuery();
 

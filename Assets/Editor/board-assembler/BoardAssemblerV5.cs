@@ -117,7 +117,7 @@ public class BoardAssemblerV5 : EditorWindow
 
                 AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
                 int[,] coletaveis = level.getArrayDeColetaveis();                
-                remontador.montar(coletaveis, (go, spr) => colocarSprite(go, spr));
+                remontador.montarColetaveis(coletaveis, (go, spr) => colocarSprite(go, spr));
             }
         });
 
