@@ -8,7 +8,7 @@ public class MainGameManagers
     public UiGameManager     uiManager         { get; private set; }    
     public InputGame         inputGame         { get; private set; }
 
-    public MainGameManagers(MainGameDto mainDto)
+    public MainGameManagers(MainGameDto mainDto, AbstractLevel levelEscolhido)
     {
         inputGame         = new InputGameImpl(mainDto.MaquinaDto.ReferenciaChao);
         garraManager      = new GarraManager(mainDto.GarraDto);
@@ -16,10 +16,19 @@ public class MainGameManagers
         maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, inputGame);
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
         uiManager         = new UiGameManager(mainDto.UiDto);        
-        cameraManager     = new CameraManager(mainDto.CameraDto);        
+        cameraManager     = new CameraManager(mainDto.CameraDto);
+
+        configurandoLevel(mainDto, levelEscolhido);
+        configurandoEventos();
+        startLaizy();
     }
 
-    public void configurandoLevel(MainGameDto mainDto, AbstractLevel levelEscolhido)
+    public UpdateMainGameManagers getUpdatables()
+    {
+        return new UpdateMainGameManagers(garraManager, maquinaManager, inputGame);
+    }
+
+    private void configurandoLevel(MainGameDto mainDto, AbstractLevel levelEscolhido)
     {
         garraManager.configuradoPeloLevel(mainDto.GarraDto, levelEscolhido);
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
@@ -30,32 +39,19 @@ public class MainGameManagers
             getInformacaoDisplayColetado(), getTrocadorDeOrdem());
     }
 
-    public void configurandoEventos()
+    private void configurandoEventos()
     {
         MainGameEventos eventos = new MainGameEventos();
         eventos.configurarEventos(this);
     }
 
-    public void startLaizy()
+    private void startLaizy()
     {
         coletaveisManager.start();
         maquinaManager.start();
         uiManager.start();        
         garraManager.start();
-    }
-
-    public void update()
-    {
-        inputGame.update();
-        garraManager.update(inputGame);
-        maquinaManager.update(inputGame);
-    }
-
-    public void fixedUpdate(MainGameDto mainDto)
-    {
-        garraManager.fixedUpdate(mainDto.GarraDto);
-        maquinaManager.fixedUpdate();
-    }
+    }      
 
     private TrocadorDeOrdem getTrocadorDeOrdem()
     {

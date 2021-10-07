@@ -9,8 +9,7 @@ public class MainGameScene : MonoBehaviour,
     [Space(5)]
     [SerializeField] private MainGameDto mainDto;
 
-    private MainGameManagers managers;
-    private LevelFlowManager.LEVEL levelEscolhido;    
+    private UpdateMainGameManagers updatableManagers;
 
     void OnEnable()
     {
@@ -22,50 +21,43 @@ public class MainGameScene : MonoBehaviour,
         CameraManager.forceAspectCameraAsRatio();
         Utils.configMainMono(this);
 
-        managers = new MainGameManagers(mainDto);
-        
-        configurandoLevel();
-        managers.configurandoEventos();
-        managers.startLaizy();
+        AbstractLevel levelEscolhido = carregandoLevelEscolhido();
+        MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido);
+        updatableManagers = managers.getUpdatables();
     }    
 
-    private void configurandoLevel()
+    private AbstractLevel carregandoLevelEscolhido()
     {
         LevelFlowManager.LEVEL levelFlow = PlayerPrefsLevel.recuperarELimparLevel(level);
         AbstractLevel levelEscolhido     = LevelFlowManager.getLevelByEnum(levelFlow);
         levelEscolhido.validar();
-        managers.configurandoLevel(mainDto, levelEscolhido);
+        return levelEscolhido;
     }       
     
     void Update()
     {
-        managers.update();
+        updatableManagers.update();
     }
 
     private void FixedUpdate()
     {
-        managers.fixedUpdate(mainDto);
+        updatableManagers.fixedUpdate(mainDto);
     }
 
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP INICIO
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
-        if (managers.inputGame.aconteceuDragNaAreaInferior(posicaoToque))
-        {
-            managers.maquinaManager.beginDragPowerUp(posicaoToque);
-        }       
+        updatableManagers.onBeginDrag(eventData);        
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        managers.maquinaManager.onEndDragPowerUp();
+        updatableManagers.onEndDrag(eventData);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
-        managers.maquinaManager.onDragPowerUp(posicaoToque);
+        updatableManagers.onDrag(eventData);        
     }
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM
 }

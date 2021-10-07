@@ -27,7 +27,9 @@
           </engine:VisualElement>
         </engine:VisualElement>
       
-        <engine:VisualElement name="container1Lado">    
+        <engine:VisualElement name="container1Lado">
+          <engine:VisualElement name="espacoDropDown">
+          </engine:VisualElement>
             <engine:Button name="botaoClean" text="Clean"/>
             <engine:Button name="botaoProcessar" text="Proc Coletaveis"/>
             <engine:Button name="botaoProcessarOrdem" text="Proc Ordem"/>

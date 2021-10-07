@@ -96,4 +96,23 @@ public class ListaDeSprites
     {
         return listaDeSprites[0];
     }
+
+    public Sprite getSpriteRandom()
+    {
+        return listaDeSprites[1];
+    }
+
+    public Sprite getSpriteByName(string nome)
+    {        
+        for(int contador = 0; contador < listaDeSprites.Count; contador++)
+        {            
+            if (listaDeSprites[contador].name == nome)
+            {
+                return listaDeSprites[contador];
+            }
+        }
+        Sprite sprResult = Resources.Load<Sprite>("Sprites/coletaveis/" + nome);
+        receberSprite(sprResult);
+        return sprResult;
+    }
 }

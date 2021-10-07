@@ -3,6 +3,7 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 public class BoardAssemblerV5 : EditorWindow
 {
@@ -36,13 +37,17 @@ public class BoardAssemblerV5 : EditorWindow
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
 
+
         ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler();
-        NavegacaoPeloBoard navegacao = new NavegacaoPeloBoard(root, referenciasDoBoard);
+        NavegacaoPeloBoard navegacao  = new NavegacaoPeloBoard(root, referenciasDoBoard);
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
-        BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard);
+        BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard, (go) => colocarSprVazio(go), (text) => resetText(text));
         navegacao.resetMira();
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => colocarSprite(navegacao.getGoDaMira(), spr));
+
+        RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
+        criarComponentDropDownField(root, cleaner, remontador);
 
         root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
         {
@@ -51,7 +56,7 @@ public class BoardAssemblerV5 : EditorWindow
 
         root.Q<UnityEngine.UIElements.Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
         root.Q<UnityEngine.UIElements.Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
-        root.Q<UnityEngine.UIElements.Button>("botaoClean").clicked += () => cleaner.clean((go) => colocarSprVazio(go), (text) => resetText(text));
+        root.Q<UnityEngine.UIElements.Button>("botaoClean").clicked += () => cleaner.clean();
         root.Q<UnityEngine.UIElements.Button>("botaoProcessar").clicked += () => processador.gerarArrayDeIds();
         root.Q<UnityEngine.UIElements.Button>("botaoProcessarOrdem").clicked += () => processador.gerarArrayDeOrdem();
         root.Q<UnityEngine.UIElements.Button>("botaoCimaAll").clicked += () => navegacao.navegarCimaTotal();
@@ -61,7 +66,7 @@ public class BoardAssemblerV5 : EditorWindow
         root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => colocarTexto(navegacao, evento.newValue));
 
         spriteVazio = listaDeSprites.getSpriteVazio();
-        cleaner.clean((go) => colocarSprVazio(go), (text) => resetText(text));
+        cleaner.clean();
     }
 
     private void colocarSprite(GameObject go, Sprite sprite)
@@ -95,5 +100,31 @@ public class BoardAssemblerV5 : EditorWindow
         {
             //Debug.Log("Troca de texto NAO realizada");
         }
+    }
+
+    private void criarComponentDropDownField(
+        VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
+    {
+        List<string> listaDeLevels = EditorUtils.getListaDeLevels();
+
+        DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
+        dropDownField.RegisterCallback<ChangeEvent<string>>((evt) =>{
+
+            cleaner.clean();
+
+            if (evt.newValue != "0")
+            {
+
+                AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
+                int[,] coletaveis = level.getArrayDeColetaveis();                
+                remontador.montarColetaveis(coletaveis, (go, spr) => colocarSprite(go, spr));
+
+                BoardOrdem[] ordens = level.getBoardOrdem();
+                remontador.montarLabels(ordens);
+            }
+        });
+
+        root.Q<VisualElement>("espacoDropDown")
+               .Add(dropDownField);
     }
 }
