@@ -105,11 +105,9 @@ public class BoardAssemblerV5 : EditorWindow
     private void criarComponentDropDownField(
         VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {
-        List<string> dicionarios = new List<string> {
-            "0", "1", "2", "3", "4", "999999997", "999999998", "999999999"
-        };
+        List<string> listaDeLevels = EditorUtils.getListaDeLevels();
 
-        DropdownField dropDownField = new DropdownField("Dicionarios", dicionarios, 0);
+        DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
         dropDownField.RegisterCallback<ChangeEvent<string>>((evt) =>{
 
             cleaner.clean();
