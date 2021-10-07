@@ -41,7 +41,7 @@ public class BoardAssemblerV5 : EditorWindow
         ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler();
         NavegacaoPeloBoard navegacao  = new NavegacaoPeloBoard(root, referenciasDoBoard);
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
-        BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard);
+        BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard, (go) => colocarSprVazio(go), (text) => resetText(text));
         navegacao.resetMira();
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => colocarSprite(navegacao.getGoDaMira(), spr));
@@ -54,7 +54,7 @@ public class BoardAssemblerV5 : EditorWindow
 
         root.Q<UnityEngine.UIElements.Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
         root.Q<UnityEngine.UIElements.Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
-        root.Q<UnityEngine.UIElements.Button>("botaoClean").clicked += () => cleaner.clean((go) => colocarSprVazio(go), (text) => resetText(text));
+        root.Q<UnityEngine.UIElements.Button>("botaoClean").clicked += () => cleaner.clean();
         root.Q<UnityEngine.UIElements.Button>("botaoProcessar").clicked += () => processador.gerarArrayDeIds();
         root.Q<UnityEngine.UIElements.Button>("botaoProcessarOrdem").clicked += () => processador.gerarArrayDeOrdem();
         root.Q<UnityEngine.UIElements.Button>("botaoCimaAll").clicked += () => navegacao.navegarCimaTotal();
@@ -64,7 +64,7 @@ public class BoardAssemblerV5 : EditorWindow
         root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => colocarTexto(navegacao, evento.newValue));
 
         spriteVazio = listaDeSprites.getSpriteVazio();
-        cleaner.clean((go) => colocarSprVazio(go), (text) => resetText(text));
+        cleaner.clean();
     }
 
     private void colocarSprite(GameObject go, Sprite sprite)

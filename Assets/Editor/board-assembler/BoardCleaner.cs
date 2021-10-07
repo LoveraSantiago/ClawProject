@@ -5,14 +5,21 @@ using UnityEngine.UI;
 
 public class BoardCleaner 
 {
+    private Action<GameObject> acaoCleanGo;
+    private Action<Text> acaoCleanText;
     private ReferenciasDoBoardAssembler referenciasDoBoard;
 
-    public BoardCleaner(ReferenciasDoBoardAssembler referenciasDoBoard)
+    public BoardCleaner(
+        ReferenciasDoBoardAssembler referenciasDoBoard, 
+        Action<GameObject> acaoCleanGo, 
+        Action<Text> acaoCleanText)
     {
+        this.acaoCleanGo = acaoCleanGo;
+        this.acaoCleanText = acaoCleanText;
         this.referenciasDoBoard = referenciasDoBoard;
     }
 
-    public void clean(Action<GameObject> acaoCleanGo, Action<Text> acaoCleanText)
+    public void clean()
     {
         for (int contadorLinha = 0; contadorLinha < referenciasDoBoard.dicionarioGosBoard.Count; contadorLinha++)
         {
