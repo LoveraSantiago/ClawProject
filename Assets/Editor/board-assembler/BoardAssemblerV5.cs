@@ -45,7 +45,9 @@ public class BoardAssemblerV5 : EditorWindow
         navegacao.resetMira();
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => colocarSprite(navegacao.getGoDaMira(), spr));
-        criarComponentDropDownField(root, referenciasDoBoard, listaDeSprites);
+
+        RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
+        criarComponentDropDownField(root, cleaner, remontador);
 
         root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
         {
@@ -101,20 +103,22 @@ public class BoardAssemblerV5 : EditorWindow
     }
 
     private void criarComponentDropDownField(
-        VisualElement root, ReferenciasDoBoardAssembler referencias, ListaDeSprites listaDeSprites)
+        VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {
         List<string> dicionarios = new List<string> {
             "0", "1", "2", "3", "4", "999999997", "999999998", "999999999"
         };
 
         DropdownField dropDownField = new DropdownField("Dicionarios", dicionarios, 0);
-        dropDownField.RegisterCallback<ChangeEvent<string>>((evt) =>        {
+        dropDownField.RegisterCallback<ChangeEvent<string>>((evt) =>{
+
+            cleaner.clean();
+
             if (evt.newValue != "0")
             {
-                AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
-                int[,] coletaveis = level.getArrayDeColetaveis();
 
-                RemontadorBoard remontador = new RemontadorBoard(referencias, listaDeSprites);
+                AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
+                int[,] coletaveis = level.getArrayDeColetaveis();                
                 remontador.montar(coletaveis, (go, spr) => colocarSprite(go, spr));
             }
         });
