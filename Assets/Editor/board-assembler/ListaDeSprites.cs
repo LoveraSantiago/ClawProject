@@ -112,7 +112,7 @@ public class ListaDeSprites
             }
         }
         Sprite sprResult = Resources.Load<Sprite>("Sprites/coletaveis/" + nome);
-        listaDeSprites.Add(sprResult);
+        receberSprite(sprResult);
         return sprResult;
     }
 }
