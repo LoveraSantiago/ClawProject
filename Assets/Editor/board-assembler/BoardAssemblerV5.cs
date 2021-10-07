@@ -37,7 +37,6 @@ public class BoardAssemblerV5 : EditorWindow
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
 
-        criarComponentDropDownField(root);
 
         ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler();
         NavegacaoPeloBoard navegacao  = new NavegacaoPeloBoard(root, referenciasDoBoard);
@@ -46,6 +45,7 @@ public class BoardAssemblerV5 : EditorWindow
         navegacao.resetMira();
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => colocarSprite(navegacao.getGoDaMira(), spr));
+        criarComponentDropDownField(root, referenciasDoBoard, listaDeSprites);
 
         root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
         {
@@ -100,7 +100,8 @@ public class BoardAssemblerV5 : EditorWindow
         }
     }
 
-    private void criarComponentDropDownField(VisualElement root)
+    private void criarComponentDropDownField(
+        VisualElement root, ReferenciasDoBoardAssembler referencias, ListaDeSprites listaDeSprites)
     {
         List<string> dicionarios = new List<string> {
             "0", "1", "2", "3", "4", "999999997", "999999998", "999999999"
@@ -112,6 +113,9 @@ public class BoardAssemblerV5 : EditorWindow
             {
                 AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
                 int[,] coletaveis = level.getArrayDeColetaveis();
+
+                RemontadorBoard remontador = new RemontadorBoard(referencias, listaDeSprites);
+                remontador.montar(coletaveis, (go, spr) => colocarSprite(go, spr));
             }
         });
 
