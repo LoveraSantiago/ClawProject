@@ -111,6 +111,8 @@ public class ListaDeSprites
                 return listaDeSprites[contador];
             }
         }
-        return null;
+        Sprite sprResult = Resources.Load<Sprite>("Sprites/coletaveis/" + nome);
+        listaDeSprites.Add(sprResult);
+        return sprResult;
     }
 }
