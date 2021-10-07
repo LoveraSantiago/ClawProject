@@ -3,6 +3,7 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 public class BoardAssemblerV5 : EditorWindow
 {
@@ -36,8 +37,10 @@ public class BoardAssemblerV5 : EditorWindow
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
 
+        criarComponentDropDownField(root);
+
         ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler();
-        NavegacaoPeloBoard navegacao = new NavegacaoPeloBoard(root, referenciasDoBoard);
+        NavegacaoPeloBoard navegacao  = new NavegacaoPeloBoard(root, referenciasDoBoard);
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
         BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard);
         navegacao.resetMira();
@@ -95,5 +98,24 @@ public class BoardAssemblerV5 : EditorWindow
         {
             //Debug.Log("Troca de texto NAO realizada");
         }
+    }
+
+    private void criarComponentDropDownField(VisualElement root)
+    {
+        List<string> dicionarios = new List<string> {
+            "0", "1", "2", "3", "4", "999999997", "999999998", "999999999"
+        };
+
+        DropdownField dropDownField = new DropdownField("Dicionarios", dicionarios, 0);
+        dropDownField.RegisterCallback<ChangeEvent<string>>((evt) =>        {
+            if (evt.newValue != "0")
+            {
+                AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
+                int[,] coletaveis = level.getArrayDeColetaveis();
+            }
+        });
+
+        root.Q<VisualElement>("espacoDropDown")
+               .Add(dropDownField);
     }
 }
