@@ -104,9 +104,11 @@ public class ListaDeSprites
 
     public Sprite getSpriteByName(string nome)
     {
+        Debug.Log("Nome procurado: " + nome);
         for(int contador = 0; contador < listaDeSprites.Count; contador++)
         {
-            if(listaDeSprites[contador].name == nome)
+            Debug.Log("Nome Atual " + listaDeSprites[contador].name);
+            if (listaDeSprites[contador].name == nome)
             {
                 return listaDeSprites[contador];
             }

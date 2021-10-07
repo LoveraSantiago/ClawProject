@@ -10,6 +10,7 @@ public class RemontadorBoard
     public RemontadorBoard(
         ReferenciasDoBoardAssembler referencias, ListaDeSprites listaDeSprites)
     {
+        this.listaDeSprites = listaDeSprites;
         this.referencias = referencias;
     }
 
