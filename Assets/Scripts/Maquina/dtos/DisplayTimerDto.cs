@@ -7,12 +7,15 @@ public class DisplayTimerDto
 
     [SerializeField] private SpriteRenderer sprRendererPlaca;
     [SerializeField] private SpriteRenderer sprRendererPlacaEfeito;    
+    [SerializeField] private Material materialEmptyTimer;    
     [Space(5)]
     [SerializeField] private SingleDisplayTimerDto[] singleDisplay = new SingleDisplayTimerDto[5];    
 
     public SpriteRenderer SprRendererPlaca { get { return sprRendererPlaca; } }
     public GameObject PlacaEfeito { get { return sprRendererPlacaEfeito.gameObject; } }
     public Material MaterialEfeito { get { return sprRendererPlacaEfeito.material; } }
+
+    public Material MaterialEmptyTimer { get { return materialEmptyTimer; } }
 
     public SingleDisplayTimerDto[] SingleDisplay { get { return singleDisplay; } }
 }

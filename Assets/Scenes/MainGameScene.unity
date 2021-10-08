@@ -10609,6 +10609,7 @@ MonoBehaviour:
       displayTimerDto:
         sprRendererPlaca: {fileID: 1404465311}
         sprRendererPlacaEfeito: {fileID: 2146911256}
+        materialEmptyTimer: {fileID: 2100000, guid: 196dc0d105cbf5b42b7d0c07e836b107, type: 2}
         singleDisplay:
         - segmentos:
           - {fileID: 260943912}
