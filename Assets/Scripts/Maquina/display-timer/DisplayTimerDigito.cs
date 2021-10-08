@@ -74,6 +74,6 @@ public class DisplayTimerDigito
     public static void configurar(DisplayTimerDto displayTimerDto)
     {
         segmentos = new SegmentosTimer();
-        segmentHdr = new SegmentoTimerHdr(displayTimerDto.MaterialEmptyTimer, displayTimerDto.SingleDisplay[0].Segmentos);
+        segmentHdr = new SegmentoTimerHdr(displayTimerDto);
     }
 }
