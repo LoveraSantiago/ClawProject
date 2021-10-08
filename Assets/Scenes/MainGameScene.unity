@@ -10466,7 +10466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 4
+  level: 1
   mainDto:
     garraDto:
       velocMovHorizontal: 3.1
@@ -10609,6 +10609,7 @@ MonoBehaviour:
       displayTimerDto:
         sprRendererPlaca: {fileID: 1404465311}
         sprRendererPlacaEfeito: {fileID: 2146911256}
+        materialEmptyTimer: {fileID: 2100000, guid: 196dc0d105cbf5b42b7d0c07e836b107, type: 2}
         singleDisplay:
         - segmentos:
           - {fileID: 260943912}
@@ -10993,7 +10994,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!82 &519420030
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11001,7 +11002,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9ab0aa6a032f1004595d6bcaf989713b, type: 3}

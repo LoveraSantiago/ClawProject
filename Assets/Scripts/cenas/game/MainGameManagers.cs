@@ -10,7 +10,7 @@ public class MainGameManagers
 
     public MainGameManagers(MainGameDto mainDto, AbstractLevel levelEscolhido)
     {
-        inputGame         = new InputGameImpl(mainDto.MaquinaDto.ReferenciaChao);
+        inputGame         = new InputGameImpl();
         garraManager      = new GarraManager(mainDto.GarraDto);
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
         maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, inputGame);

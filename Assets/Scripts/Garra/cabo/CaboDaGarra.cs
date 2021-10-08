@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CaboDaGarra 
 {
-    private CaboGarraDto caboDto;    
+    private CaboGarraDto caboDto;    //TODO refatorar passar pelos updates
     private SegmentoCabo[] segmentos;
 
     public CaboDaGarra(CaboGarraDto caboGarraDto)

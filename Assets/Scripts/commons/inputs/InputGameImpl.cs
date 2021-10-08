@@ -5,20 +5,14 @@ public class InputGameImpl : InputGame
     private bool isTapAreaSuperior;
     private bool isTapAreaInferior;    
 
-    private Vector3 posicaoTap;
-    private Transform referenciaChaoMaquina;//TODO acho q da pra remover validar
+    private Vector3 posicaoTap;        
 
-    public InputGameImpl(Transform referenciaChao)
-    {
-        referenciaChaoMaquina = referenciaChao;
-    }
-
-    public void update()
+    public void update(Transform referenciaChao)
     {        
         if (Input.GetMouseButtonDown(0))
         {
             posicaoTap = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (isPosicaoAcimaPosicaoDeReferencia())
+            if (isPosicaoAcimaPosicaoDeReferencia(referenciaChao))
             {
                 isTapAreaSuperior = true;
                 isTapAreaInferior = false;
@@ -51,9 +45,9 @@ public class InputGameImpl : InputGame
         return isTapAreaInferior || isTapAreaSuperior;
     }
 
-    public bool aconteceuDragNaAreaInferior(Vector3 dragPosicao)
+    public bool aconteceuDragNaAreaInferior(
+        Vector3 dragPosicao, Transform referenciaChaoMaquina)
     {
-        //Debug.Log("Drag Y: " + dragPosicao.y + " Ref Y: " + referenciaChaoMaquina.position.y);
         return dragPosicao.y < referenciaChaoMaquina.position.y;
     }
 
@@ -62,7 +56,7 @@ public class InputGameImpl : InputGame
         return new Vector2(posicaoTap.x, posicaoTap.y);
     }
 
-    private bool isPosicaoAcimaPosicaoDeReferencia()
+    private bool isPosicaoAcimaPosicaoDeReferencia(Transform referenciaChaoMaquina)
     {
         return posicaoTap.y > referenciaChaoMaquina.position.y;
     }

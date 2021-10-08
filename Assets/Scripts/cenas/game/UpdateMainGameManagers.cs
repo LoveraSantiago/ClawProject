@@ -15,9 +15,9 @@ public class UpdateMainGameManagers
         this.maquinaManager = maquinaManager;
     }
 
-    public void update()
+    public void update(MainGameDto mainDto)
     {
-        inputGame.update();
+        inputGame.update(mainDto.MaquinaDto.ReferenciaChao);
         garraManager.update(inputGame);
         maquinaManager.update(inputGame);
     }
@@ -28,10 +28,10 @@ public class UpdateMainGameManagers
         maquinaManager.fixedUpdate();
     }
 
-    public void onBeginDrag(PointerEventData eventData)
+    public void onBeginDrag(PointerEventData eventData, MainGameDto mainDto)
     {
         Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
-        if (inputGame.aconteceuDragNaAreaInferior(posicaoToque))
+        if (inputGame.aconteceuDragNaAreaInferior(posicaoToque, mainDto.MaquinaDto.ReferenciaChao))
         {
             maquinaManager.beginDragPowerUp(posicaoToque);
         }

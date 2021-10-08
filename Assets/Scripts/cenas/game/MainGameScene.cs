@@ -36,7 +36,7 @@ public class MainGameScene : MonoBehaviour,
     
     void Update()
     {
-        updatableManagers.update();
+        updatableManagers.update(mainDto);
     }
 
     private void FixedUpdate()
@@ -47,7 +47,7 @@ public class MainGameScene : MonoBehaviour,
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP INICIO
     public void OnBeginDrag(PointerEventData eventData)
     {
-        updatableManagers.onBeginDrag(eventData);        
+        updatableManagers.onBeginDrag(eventData, mainDto);        
     }
 
     public void OnEndDrag(PointerEventData eventData)
