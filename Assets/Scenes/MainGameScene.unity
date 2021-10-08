@@ -10610,6 +10610,9 @@ MonoBehaviour:
         sprRendererPlaca: {fileID: 1404465311}
         sprRendererPlacaEfeito: {fileID: 2146911256}
         materialEmptyTimer: {fileID: 2100000, guid: 196dc0d105cbf5b42b7d0c07e836b107, type: 2}
+        sprRendererMiniSegmentos:
+        - {fileID: 802050896}
+        - {fileID: 655932435}
         singleDisplay:
         - segmentos:
           - {fileID: 260943912}
@@ -57918,6 +57921,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 5136154638387615519, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ff7dd00a7c9a8db438cdd6d366957716, type: 3}
     - target: {fileID: 6406990384449578760, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_RootOrder
       value: 0
