@@ -67,7 +67,7 @@ public class DisplayTimerDigito
         {
             SpriteRenderer sprRenderer = sDisplayDto.Segmentos[array[contador]];
             sprRenderer.color = Color.red;
-            sprRenderer.material = segmentHdr.getMaterialSegmento(contador);
+            sprRenderer.material = segmentHdr.getMaterialSegmento(array[contador]);
         }
     }   
 
