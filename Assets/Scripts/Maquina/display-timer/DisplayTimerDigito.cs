@@ -1,8 +1,9 @@
 using UnityEngine;
 
 public class DisplayTimerDigito 
-{    
-    private static SegmentosTimer segmentos = new SegmentosTimer();
+{
+    private static SegmentosTimer segmentos;
+    private static SegmentoTimerHdr segmentHdr;
 
     private int[] arrayLigado;
     private bool blink;
@@ -54,7 +55,9 @@ public class DisplayTimerDigito
         if (array == null) return;
         for (int contador = 0; contador < array.Length; contador++)
         {
-            sDisplayDto.Segmentos[array[contador]].color = corOriginal;
+            SpriteRenderer sprRenderer = sDisplayDto.Segmentos[array[contador]];
+            sprRenderer.color = corOriginal;
+            sprRenderer.material = segmentHdr.originalMaterial;
         }
     }
 
@@ -62,7 +65,15 @@ public class DisplayTimerDigito
     {
         for (int contador = 0; contador < array.Length; contador++)
         {
-            sDisplayDto.Segmentos[array[contador]].color = Color.red; 
+            SpriteRenderer sprRenderer = sDisplayDto.Segmentos[array[contador]];
+            sprRenderer.color = Color.red;
+            sprRenderer.material = segmentHdr.getMaterialSegmento(contador);
         }
     }   
+
+    public static void configurar(DisplayTimerDto displayTimerDto)
+    {
+        segmentos = new SegmentosTimer();
+        segmentHdr = new SegmentoTimerHdr(displayTimerDto.MaterialEmptyTimer, displayTimerDto.SingleDisplay[0].Segmentos);
+    }
 }

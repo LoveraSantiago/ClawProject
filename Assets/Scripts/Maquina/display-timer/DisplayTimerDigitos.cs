@@ -19,6 +19,7 @@ public class DisplayTimerDigitos
 
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
 
+        DisplayTimerDigito.configurar(displayDto);
         displayTimerDigito = new DisplayTimerDigito[4];
         displayTimerDigito[0] = new DisplayTimerDigito(displayDto.SingleDisplay[0]);
         displayTimerDigito[1] = new DisplayTimerDigito(displayDto.SingleDisplay[1]);
