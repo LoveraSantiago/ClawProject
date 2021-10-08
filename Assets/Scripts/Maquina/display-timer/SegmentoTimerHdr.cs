@@ -11,7 +11,7 @@ public class SegmentoTimerHdr
         for(int contador = 0; contador < segmentos.Length; contador++)
         {
             Material materialHdr = new Material(materialEmpty);
-            materialEmpty.SetTexture("MainTexture", segmentos[contador].sprite.texture);
+            materialHdr.SetTexture("MainTexture", segmentos[contador].sprite.texture);
             materiaisSegmentosHdr[contador] = materialHdr;
         }
 
