@@ -53,7 +53,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         verificarSeMovimentacaoAtingiuLimites();
         verificarSePincaAtingiuLimites();
 
-        pincas.rotacionarFDT(garraDto.VelocAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
+        pincas.rotacionarFDT(garraDto.Velocidades.MovAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
     }
 
     private void verificarSeMovimentacaoAtingiuLimites()

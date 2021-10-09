@@ -10469,11 +10469,11 @@ MonoBehaviour:
   level: 1
   mainDto:
     garraDto:
-      velocMovBaixo: 7.5
       velocidades:
         movHorizontal: 3.1
         movCima: 7.5
         movBaixo: 7.5
+        movAnguloIdle: 0.3
       angulos:
         idleMin: -5
         idleMax: 10

@@ -7,9 +7,7 @@ public class GarraDto
     [SerializeField] private GarraVelocidadesDto velocidades;
     [Space(3)]
     [SerializeField] private GarraAngulosDto angulos;
-    [Space(3)]        
-    [SerializeField] private float velocAnguloIdle;
-    [Space(3)]    
+    [Space(3)]            
     [SerializeField] private float velocAnguloAbertura;
     [Space(3)]    
     [SerializeField] private float velocAnguloFechamento;
@@ -27,9 +25,7 @@ public class GarraDto
     [SerializeField] private CaboGarraDto caboDto;       
 
     public GarraVelocidadesDto Velocidades { get { return velocidades; } }
-    public GarraAngulosDto Angulos { get { return angulos; } }
-    
-    public float VelocAnguloIdle { get { return velocAnguloIdle; } }
+    public GarraAngulosDto Angulos { get { return angulos; } }    
     
     public float VelocidadeAnguloAbertura { get { return velocAnguloAbertura; } }
     
