@@ -12,7 +12,8 @@ public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarraNormal
     }
     
     public override void preInicio()
-    {   
+    {
+        agarrando();
         colocarMassa(1);        
     }
 

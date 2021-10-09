@@ -28,6 +28,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal
         if(isAcimaPosInicial())
         {
             colocarNaAlturaInicial();
+            voltando();
             if(acaoAtual == ACAO_NORMAL)
             {
                 comunicadorComGerMovimentacao.trocarParaAcaoNormal();

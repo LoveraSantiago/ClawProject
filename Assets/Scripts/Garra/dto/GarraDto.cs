@@ -17,6 +17,7 @@ public class GarraDto
     [SerializeField] private Transform  pincaDireita;
     [SerializeField] private GameObject colisor;
     [SerializeField] private Animator   animator;
+    [SerializeField] private ParticleSystem efeitoTrail;
 
     public GarraVelocidadesDto Velocidades { get { return velocidades; } }
     public GarraAngulosDto Angulos { get { return angulos; } }    
@@ -30,6 +31,7 @@ public class GarraDto
     public Transform PincaDireita { get { return pincaDireita; } }
     public GameObject Colisor { get { return colisor; } }
     public Animator Animator { get { return animator; } }
+    public ParticleSystem EfeitoTrail { get { return efeitoTrail; } }
 
     public CaboGarraDto CaboDaGarraDto { get { return caboDto; } }
 
