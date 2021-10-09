@@ -2,16 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CaboDaGarra 
-{
-    private CaboGarraDto caboDto;    //TODO refatorar passar pelos updates
-    private SegmentoCabo[] segmentos;
+{    
+    private SegmentoCabo[] segmentos;   
 
-    public CaboDaGarra(CaboGarraDto caboGarraDto)
-    {
-        caboDto = caboGarraDto;        
-    }
-
-    public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
+    public void configuradoPeloLevel(
+        CaboGarraDto caboDto, Dictionary<string, string> dicionarioDeCores)
     {
         string corHex = dicionarioDeCores[ConstantesCoresMaquina.CABO_DA_GARRA];
         Color cor = Utils.getCorByHex(corHex);
@@ -19,10 +14,10 @@ public class CaboDaGarra
         caboDto.LineRenderer.endColor = cor;
     }
 
-    public void start()
+    public void start(CaboGarraDto caboDto)
     {
         SegmentoCabo.configurarLimiteHorizontalMinimo(caboDto.TransfInicioCabo.localPosition.x);
-        definirGrossuraDoCabo();
+        definirGrossuraDoCabo(caboDto);
 
         Vector3[] posicoes = new Vector3[caboDto.LineRenderer.positionCount];
         caboDto.LineRenderer.GetPositions(posicoes);
@@ -34,23 +29,23 @@ public class CaboDaGarra
         }
     }
 
-    public void update()
+    public void update(CaboGarraDto caboDto)
     {
-        desenharCabo();
+        desenharCabo(caboDto);
     }
 
-    public void fixedUpdate(Transform posicaoGarra)
+    public void fixedUpdate(CaboGarraDto caboDto, Transform posicaoGarra)
     {
-        simularGravidade(posicaoGarra);
+        simularGravidade(caboDto, posicaoGarra);
     }
 
-    private void definirGrossuraDoCabo()
+    private void definirGrossuraDoCabo(CaboGarraDto caboDto)
     {
         caboDto.LineRenderer.startWidth = caboDto.GrossuraLinha;
         caboDto.LineRenderer.endWidth   = caboDto.GrossuraLinha;
     }
 
-    private void desenharCabo()
+    private void desenharCabo(CaboGarraDto caboDto)
     {
         Vector3[] posicoes = new Vector3[segmentos.Length];
         for (int contador = 0; contador < posicoes.Length; contador++)
@@ -62,7 +57,7 @@ public class CaboDaGarra
         caboDto.LineRenderer.SetPositions(posicoes);
     }
 
-    private void simularGravidade(Transform posicaoGarra)
+    private void simularGravidade(CaboGarraDto caboDto, Transform posicaoGarra)
     {
         Vector2 gravidade = new Vector2(0f, -1f);
         for (int contador = 0; contador < segmentos.Length; contador++)
@@ -75,10 +70,10 @@ public class CaboDaGarra
             segmentos[contador] = primeiroSegmento;
         }
 
-        esticarSegmentos(posicaoGarra);
+        esticarSegmentos(caboDto, posicaoGarra);
     }
 
-    private void esticarSegmentos(Transform posicaoGarra)
+    private void esticarSegmentos(CaboGarraDto caboDto, Transform posicaoGarra)
     {
         SegmentoCabo primeiroSegmento = segmentos[0];
         primeiroSegmento.setPosNow(caboDto.TransfInicioCabo.position);
