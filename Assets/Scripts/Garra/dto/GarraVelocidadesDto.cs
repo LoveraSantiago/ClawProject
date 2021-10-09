@@ -5,6 +5,8 @@ using UnityEngine;
 public class GarraVelocidadesDto 
 {
     [SerializeField] private float movHorizontal;
+    [SerializeField] private float movCima;
 
     public float MovHorizontal { get { return movHorizontal; } }
+    public float MovCima { get { return movCima; } }
 }

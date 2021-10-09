@@ -3,8 +3,7 @@ using UnityEngine;
 #pragma warning disable 0649
 [System.Serializable]
 public class GarraDto 
-{       
-    [SerializeField] private float velocMovCima;
+{   
     [SerializeField] private float velocMovBaixo;
     [SerializeField] private GarraVelocidadesDto velocidades;
     [Space(3)]
@@ -26,9 +25,8 @@ public class GarraDto
     [SerializeField] private GameObject colisor;
     [SerializeField] private Animator   animator;
     [Space(5)]
-    [SerializeField] private CaboGarraDto caboDto;
-    
-    public float VelocMovCima { get { return velocMovCima; } }   
+    [SerializeField] private CaboGarraDto caboDto;    
+     
     public float VelocMovBaixo { get { return velocMovBaixo * -1; } }
 
     public GarraVelocidadesDto Velocidades { get { return velocidades; } }

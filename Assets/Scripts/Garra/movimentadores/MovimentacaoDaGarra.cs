@@ -25,7 +25,7 @@ public abstract class MovimentacaoDaGarra
 
     private void moverParaCima()
     {
-        garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovCima);        
+        garraDto.RigidBody.velocity = new Vector2(0, garraDto.Velocidades.MovCima);        
     }
 
     private void moverParaBaixo()
