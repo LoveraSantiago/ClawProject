@@ -36,7 +36,7 @@ public abstract class MovimentacaoDaGarra
     private void moverHorizontalmente(float direcao)
     {
         //Debug.Log(direcao * garraDto.VelocMovHorizontal);
-        garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.VelocMovHorizontal, 0);        
+        garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.Velocidades.MovHorizontal, 0);        
     }
 
     protected void moverParaCimaFreeze()

@@ -10472,6 +10472,8 @@ MonoBehaviour:
       velocMovHorizontal: 3.1
       velocMovCima: 7.5
       velocMovBaixo: 7.5
+      velocidades:
+        movHorizontal: 3.1
       angulos:
         idleMin: -5
         idleMax: 10
@@ -10479,7 +10481,6 @@ MonoBehaviour:
         fechamento: 15
       velocAnguloIdle: 0.3
       velocAnguloAbertura: 4
-      anguloFechamento: 15
       velocAnguloFechamento: 1.5
       posCacaNiquel: -1.75
       rigidBody: {fileID: 1907269041974171794}
