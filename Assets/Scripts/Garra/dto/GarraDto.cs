@@ -7,25 +7,19 @@ public class GarraDto
     [SerializeField] private GarraVelocidadesDto velocidades;
     [Space(3)]
     [SerializeField] private GarraAngulosDto angulos;    
-    [Space(3)]    
-    [SerializeField] private float velocAnguloFechamento;
-    [Space(3)]
-    [SerializeField] private float posCacaNiquel;
-    [Space(3)]
-    [SerializeField] private Rigidbody2D rigidBody;
-    [Space(3)]
+    [Space(5)]
+    [SerializeField] private CaboGarraDto caboDto;       
+    [Space(5)]        
+    [SerializeField] private float posCacaNiquel;    
+    [SerializeField] private Rigidbody2D rigidBody;    
     [SerializeField] private Transform  centroDaGarra;
     [SerializeField] private Transform  pincaEsquerda;
     [SerializeField] private Transform  pincaDireita;
     [SerializeField] private GameObject colisor;
     [SerializeField] private Animator   animator;
-    [Space(5)]
-    [SerializeField] private CaboGarraDto caboDto;       
 
     public GarraVelocidadesDto Velocidades { get { return velocidades; } }
     public GarraAngulosDto Angulos { get { return angulos; } }    
-    
-    public float VelocidadeAnguloFechamento { get { return velocAnguloFechamento; } }
 
     public float PosCacaNiquel { get { return posCacaNiquel; } }
 

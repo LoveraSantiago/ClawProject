@@ -10,6 +10,7 @@ public class GarraVelocidadesDto
     [Space(3)]
     [SerializeField] private float movAnguloIdle;
     [SerializeField] private float movAnguloAbertura;
+    [SerializeField] private float movAnguloFechamento;
 
     public float MovHorizontal { get { return movHorizontal; } }
     public float MovCima { get { return movCima; } }
@@ -17,4 +18,5 @@ public class GarraVelocidadesDto
 
     public float MovAnguloIdle { get { return movAnguloIdle; } }
     public float MovAnguloAbertura { get { return movAnguloAbertura; } }
+    public float MovAnguloFechamento { get { return movAnguloFechamento; } }
 }

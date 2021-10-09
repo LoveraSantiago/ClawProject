@@ -10475,12 +10475,12 @@ MonoBehaviour:
         movBaixo: 7.5
         movAnguloIdle: 0.3
         movAnguloAbertura: 4
+        movAnguloFechamento: 1.5
       angulos:
         idleMin: -5
         idleMax: 10
         abertura: 70
         fechamento: 15
-      velocAnguloAbertura: 4
       velocAnguloFechamento: 1.5
       posCacaNiquel: -1.75
       rigidBody: {fileID: 1907269041974171794}
