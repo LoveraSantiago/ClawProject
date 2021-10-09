@@ -30,7 +30,7 @@ public abstract class MovimentacaoDaGarra
 
     private void moverParaBaixo()
     {
-        garraDto.RigidBody.velocity = new Vector2(0, garraDto.VelocMovBaixo);                                        
+        garraDto.RigidBody.velocity = new Vector2(0, garraDto.Velocidades.MovBaixo);
     }
 
     private void moverHorizontalmente(float direcao)
