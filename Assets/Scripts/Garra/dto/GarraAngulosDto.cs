@@ -6,7 +6,12 @@ public class GarraAngulosDto
 {
     [SerializeField] private float idleMin;
     [SerializeField] private float idleMax;
+    [Space(3)]
+    [SerializeField] private float abertura;
 
     public float IdleMin { get { return idleMin; } }
     public float IdleMax { get { return idleMax; } }
+
+    public float Abertura { get { return abertura; } }
+
 }

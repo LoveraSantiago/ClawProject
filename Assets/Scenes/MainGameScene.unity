@@ -10475,7 +10475,7 @@ MonoBehaviour:
       angulos:
         idleMin: -5
         idleMax: 10
-      anguloIdleMax: 10
+        abertura: 70
       velocAnguloIdle: 0.3
       anguloAbertura: 70
       velocAnguloAbertura: 4
