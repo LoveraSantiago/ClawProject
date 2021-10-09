@@ -7,8 +7,8 @@ public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarraNormal
 
     public MovimentacaoAgarrandoEmbaixo()
     {
-        anguloDesejadoDireita  = Quaternion.Euler(0, 0,   garraDto.AnguloFechamento);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -garraDto.AnguloFechamento);        
+        anguloDesejadoDireita  = Quaternion.Euler(0, 0,   garraDto.Angulos.Fechamento);
+        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -garraDto.Angulos.Fechamento);        
     }
     
     public override void preInicio()
