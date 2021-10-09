@@ -23,8 +23,8 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -garraDto.Angulos.IdleMin);
         anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, garraDto.Angulos.IdleMin);
 
-        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMax);
-        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, garraDto.AnguloIdleMax);        
+        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -garraDto.Angulos.IdleMax);
+        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, garraDto.Angulos.IdleMax);        
         direcao = 1;        
     }
 
@@ -96,7 +96,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     private void configurarAngulosParaMax()
     {
         isUsandoMaxAngulo = true;
-        anguloAtual = -garraDto.AnguloIdleMax;
+        anguloAtual = -garraDto.Angulos.IdleMax;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMax;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMax;
     }
