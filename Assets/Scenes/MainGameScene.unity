@@ -10474,12 +10474,12 @@ MonoBehaviour:
         movCima: 7.5
         movBaixo: 7.5
         movAnguloIdle: 0.3
+        movAnguloAbertura: 4
       angulos:
         idleMin: -5
         idleMax: 10
         abertura: 70
         fechamento: 15
-      velocAnguloIdle: 0.3
       velocAnguloAbertura: 4
       velocAnguloFechamento: 1.5
       posCacaNiquel: -1.75

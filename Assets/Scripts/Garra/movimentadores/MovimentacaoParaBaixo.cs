@@ -35,7 +35,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal
 
     public override void fixedUpdate()
     {
-        pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura,
+        pincas.rotacionarFDT(garraDto.Velocidades.MovAnguloAbertura,
             anguloDesejadoEsquerda, anguloDesejadoDireita);
 
         moverParaBaixoFreeze();

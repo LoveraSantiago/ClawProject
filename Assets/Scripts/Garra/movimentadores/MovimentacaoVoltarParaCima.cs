@@ -30,6 +30,6 @@ public class MovimentacaoVoltarParaCima : MovimentacaoDaGarraPowerUp
     public override void fixedUpdate()
     {
         moverParaCimaFreeze();
-        pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+        pincas.rotacionarFDT(garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
     }
 }
