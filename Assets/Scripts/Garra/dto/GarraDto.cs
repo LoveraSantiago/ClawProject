@@ -3,46 +3,24 @@ using UnityEngine;
 #pragma warning disable 0649
 [System.Serializable]
 public class GarraDto 
-{   
-    [SerializeField] private float velocMovHorizontal;
-    [SerializeField] private float velocMovCima;
-    [SerializeField] private float velocMovBaixo;
+{       
+    [SerializeField] private GarraVelocidadesDto velocidades;
     [Space(3)]
-    [SerializeField] private float anguloIdleMin;
-    [SerializeField] private float anguloIdleMax;
-    [SerializeField] private float velocAnguloIdle;
-    [Space(3)]
-    [SerializeField] private float anguloAbertura;
-    [SerializeField] private float velocAnguloAbertura;
-    [Space(3)]
-    [SerializeField] private float anguloFechamento;
-    [SerializeField] private float velocAnguloFechamento;
-    [Space(3)]
-    [SerializeField] private float posCacaNiquel;
-    [Space(3)]
-    [SerializeField] private Rigidbody2D rigidBody;
-    [Space(3)]
+    [SerializeField] private GarraAngulosDto angulos;    
+    [Space(5)]
+    [SerializeField] private CaboGarraDto caboDto;       
+    [Space(5)]        
+    [SerializeField] private float posCacaNiquel;    
+    [SerializeField] private Rigidbody2D rigidBody;    
     [SerializeField] private Transform  centroDaGarra;
     [SerializeField] private Transform  pincaEsquerda;
     [SerializeField] private Transform  pincaDireita;
     [SerializeField] private GameObject colisor;
     [SerializeField] private Animator   animator;
-    [Space(5)]
-    [SerializeField] private CaboGarraDto caboDto;
+    [SerializeField] private ParticleSystem efeitoTrail;
 
-    public float VelocMovHorizontal { get { return velocMovHorizontal; } }   
-    public float VelocMovCima { get { return velocMovCima; } }   
-    public float VelocMovBaixo { get { return velocMovBaixo * -1; } }
-
-    public float AnguloIdleMin { get { return anguloIdleMin; } }
-    public float AnguloIdleMax { get { return anguloIdleMax; } }
-    public float VelocAnguloIdle { get { return velocAnguloIdle; } }
-
-    public float AnguloAbertura { get { return anguloAbertura; } }
-    public float VelocidadeAnguloAbertura { get { return velocAnguloAbertura; } }
-
-    public float AnguloFechamento { get { return anguloFechamento; } }
-    public float VelocidadeAnguloFechamento { get { return velocAnguloFechamento; } }
+    public GarraVelocidadesDto Velocidades { get { return velocidades; } }
+    public GarraAngulosDto Angulos { get { return angulos; } }    
 
     public float PosCacaNiquel { get { return posCacaNiquel; } }
 
@@ -53,6 +31,7 @@ public class GarraDto
     public Transform PincaDireita { get { return pincaDireita; } }
     public GameObject Colisor { get { return colisor; } }
     public Animator Animator { get { return animator; } }
+    public ParticleSystem EfeitoTrail { get { return efeitoTrail; } }
 
     public CaboGarraDto CaboDaGarraDto { get { return caboDto; } }
 

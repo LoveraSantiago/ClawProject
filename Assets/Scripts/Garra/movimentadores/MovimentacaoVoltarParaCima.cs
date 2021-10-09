@@ -7,8 +7,8 @@ public class MovimentacaoVoltarParaCima : MovimentacaoDaGarraPowerUp
 
     public MovimentacaoVoltarParaCima()
     {
-        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMin);
-        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
+        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garraDto.Angulos.IdleMin);
+        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.Angulos.IdleMin);
     }
 
     public override void preInicio()
@@ -30,6 +30,6 @@ public class MovimentacaoVoltarParaCima : MovimentacaoDaGarraPowerUp
     public override void fixedUpdate()
     {
         moverParaCimaFreeze();
-        pincas.rotacionarFDT(garraDto.VelocidadeAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+        pincas.rotacionarFDT(garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
     }
 }

@@ -20,7 +20,7 @@ public class MainGameManagers
 
         configurandoLevel(mainDto, levelEscolhido);
         configurandoEventos();
-        startLaizy();
+        startLaizy(mainDto);
     }
 
     public UpdateMainGameManagers getUpdatables()
@@ -45,12 +45,12 @@ public class MainGameManagers
         eventos.configurarEventos(this);
     }
 
-    private void startLaizy()
+    private void startLaizy(MainGameDto mainDto)
     {
         coletaveisManager.start();
         maquinaManager.start();
         uiManager.start();        
-        garraManager.start();
+        garraManager.start(mainDto.GarraDto);
     }      
 
     private TrocadorDeOrdem getTrocadorDeOrdem()

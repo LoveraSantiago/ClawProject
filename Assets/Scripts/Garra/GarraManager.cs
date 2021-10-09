@@ -19,13 +19,13 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     public GarraManager(GarraDto garraDto)
     {
-        cabo = new CaboDaGarra(garraDto.CaboDaGarraDto);
         MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
     }  
 
     public void configuradoPeloLevel(GarraDto garraDto, AbstractLevel level)
     {        
-        cabo.configuradoPeloLevel(level.getDicionarioDeCores());
+        cabo = new CaboDaGarra();
+        cabo.configuradoPeloLevel(garraDto.CaboDaGarraDto, level.getDicionarioDeCores());
 
         if(level.isCacaNiquelLevel())
         {
@@ -40,22 +40,22 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         }
     }
 
-    public void start()
+    public void start(GarraDto garraDto)
     {
-        cabo.start();
+        cabo.start(garraDto.CaboDaGarraDto);
         gerDeMovAtual.iniciarMovimentacoes();
     }
 
-    public void update(InputGame inputGame)
+    public void update(GarraDto garraDto, InputGame inputGame)
     {
         gerDeMovAtual.update(inputGame);
-        cabo.update();
+        cabo.update(garraDto.CaboDaGarraDto);
     }
 
     public void fixedUpdate(GarraDto garraDto)
     {
         gerDeMovAtual.fixedUpdate();
-        cabo.fixedUpdate(garraDto.RigidBody.transform);
+        cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.RigidBody.transform);
     }
 
     private void processarGarraColidiuCom(Collider2D other)

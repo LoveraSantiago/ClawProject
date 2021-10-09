@@ -20,11 +20,11 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 
     public MovimentacaoLateralZigZag()
     {
-        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMin);
-        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, garraDto.AnguloIdleMin);
+        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -garraDto.Angulos.IdleMin);
+        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, garraDto.Angulos.IdleMin);
 
-        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -garraDto.AnguloIdleMax);
-        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, garraDto.AnguloIdleMax);        
+        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -garraDto.Angulos.IdleMax);
+        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, garraDto.Angulos.IdleMax);        
         direcao = 1;        
     }
 
@@ -53,7 +53,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         verificarSeMovimentacaoAtingiuLimites();
         verificarSePincaAtingiuLimites();
 
-        pincas.rotacionarFDT(garraDto.VelocAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
+        pincas.rotacionarFDT(garraDto.Velocidades.MovAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
     }
 
     private void verificarSeMovimentacaoAtingiuLimites()
@@ -96,7 +96,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     private void configurarAngulosParaMax()
     {
         isUsandoMaxAngulo = true;
-        anguloAtual = -garraDto.AnguloIdleMax;
+        anguloAtual = -garraDto.Angulos.IdleMax;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMax;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMax;
     }
@@ -104,7 +104,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     private void configurarAngulosParaMin()
     {
         isUsandoMaxAngulo = false;
-        anguloAtual = garraDto.AnguloIdleMin;
+        anguloAtual = garraDto.Angulos.IdleMin;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMin;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMin;
     }
