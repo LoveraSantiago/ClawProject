@@ -26,8 +26,8 @@ public class AsaMiniPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
-        ColetaveisMiras miras = new ColetaveisMiras();
-        miras.ligar();
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        coletavelHelper.ligarMirasNosColetaveis();
         coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
@@ -46,8 +46,8 @@ public class AsaMiniPowerUpGo : PowerUpNaoInteracaoComGarra
                 {
                     string nomeAlvo = coletavelParaVoar.nome;
                     //Debug.Log("Acertou " + nomeAlvo);
-                    ColetaveisMiras miras = new ColetaveisMiras();
-                    miras.desligar();
+                    ColetavelHelper coletavelHelper = new ColetavelHelper();
+                    coletavelHelper.desligarMirasNosColetaveis();
 
                     colocarNaPosicao(coletavelParaVoar.getPosicao());
                     receberSprite(coletavelParaVoar.getSprite(), powerUpDto.AsaDto.Layer);
@@ -65,7 +65,26 @@ public class AsaMiniPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator voar(ColetavelTile coletavelAcertado)    
     {
-        return null;
+        setGravidade(powerUpDto.AsaDto.GravidadeNeg);
+        circleCollider.isTrigger = true;
+        animator.Play(VOADA);
+
+        Vector3 posicaoInicial = getPosicao();
+        float posXmax = posicaoInicial.x + powerUpDto.AsaDto.Offset;
+        float posXmin = posicaoInicial.x - powerUpDto.AsaDto.Offset;
+
+        ColetavelHelper coletaveisHelper = new ColetavelHelper();
+        ColetavelTile coletavelMaisAlto = coletaveisHelper.getColetavelMaisAlto();
+        while (getPosicao().y < coletavelMaisAlto.getPosicao().y)
+        {
+            Vector3 posicaoAtual = getPosicao();
+            float xZigZag = Mathf.Lerp(posXmin, posXmax, Mathf.PingPong(Time.time, 1f));
+            Vector3 posicaoZigZag = new Vector3(xZigZag, posicaoAtual.y, posicaoAtual.z);
+            colocarNaPosicao(posicaoZigZag);
+            yield return null;
+        }
+
+        yield return null;
     }
 
     public override void timeout()
@@ -73,8 +92,8 @@ public class AsaMiniPowerUpGo : PowerUpNaoInteracaoComGarra
         if (!hitColetavel)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
-            ColetaveisMiras miras = new ColetaveisMiras();
-            miras.desligar();
+            ColetavelHelper coletavelHelper = new ColetavelHelper();
+            coletavelHelper.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
         }
     }
