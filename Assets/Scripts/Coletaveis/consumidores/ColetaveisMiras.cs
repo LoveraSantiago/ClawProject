@@ -2,16 +2,19 @@ public class ColetaveisMiras
 {
     public void ligarAlvoFinal(string nomeAlvo)
     {
-        ColetavelQuery.poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
+        ColetavelQuery coletavelQuery = new ColetavelQuery();
+        coletavelQuery.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
     }
 
     public void ligar()
-    {        
-        ColetavelQuery.poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeMiras());
+    {
+        ColetavelQuery coletavelQuery = new ColetavelQuery();
+        coletavelQuery.executeEmTodosColetaveis(new LigadorDeMiras());
     }
 
     public void desligar()
-    {        
-        ColetavelQuery.poolDeColetaveis.executeEmTodosColetaveis(new DesligadorDeMiras());
+    {
+        ColetavelQuery coletavelQuery = new ColetavelQuery();
+        coletavelQuery.executeEmTodosColetaveis(new DesligadorDeMiras());
     }   
 }

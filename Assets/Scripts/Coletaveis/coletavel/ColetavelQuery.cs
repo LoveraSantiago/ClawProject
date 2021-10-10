@@ -3,20 +3,10 @@ using UnityEngine;
 
 public class ColetavelQuery 
 {
-    public static PoolDeColetaveis poolDeColetaveis { get; private set; }
-
-    private Dictionary<int, ColetavelEntidade> dicionarioDeIds;
-    private Dictionary<string, ColetavelEntidade> dicionarioDeSprites;
-    private Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>> dicionarioDeFamilias;
-
-    public ColetavelQuery()
-    {
-        dicionarioDeIds      = new Dictionary<int, ColetavelEntidade>();
-        dicionarioDeSprites  = new Dictionary<string, ColetavelEntidade>();
-        dicionarioDeFamilias = new Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>>();
-
-        popularDicionarios();        
-    }
+    private static PoolDeColetaveis poolDeColetaveis;
+    private static Dictionary<int, ColetavelEntidade> dicionarioDeIds;
+    private static Dictionary<string, ColetavelEntidade> dicionarioDeSprites;
+    private static Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>> dicionarioDeFamilias;   
 
     public ColetavelEntidade getColetavelEntidadeById(int idQuery)
     {   
@@ -63,8 +53,13 @@ public class ColetavelQuery
             return null;
         }        
     }
+
+    public void executeEmTodosColetaveis(Consumidor<ColetavelTile> consumidor)
+    {
+        poolDeColetaveis.executeEmTodosColetaveis(consumidor);
+    }
     
-    private void popularDicionarios()
+    private static void popularDicionarios()
     {           
         for (int contador = 0; contador < ColetavelEntidade.ARRAY_COLETAVEIS_ENTIDADES.Length; contador++)
         {
@@ -76,7 +71,7 @@ public class ColetavelQuery
         }        
     }    
 
-    private void addAoDicionarioDeFamilias(ColetavelEntidade coletavelEntidadeIt)
+    private static void addAoDicionarioDeFamilias(ColetavelEntidade coletavelEntidadeIt)
     {
         if (!dicionarioDeFamilias.ContainsKey(coletavelEntidadeIt.familia))
         {
@@ -90,5 +85,10 @@ public class ColetavelQuery
     public static void inicializarDicionarioDeColetaveisInGame(PoolDeColetaveis poolDeColetaveisArg)
     {
         poolDeColetaveis = poolDeColetaveisArg;
+        dicionarioDeIds = new Dictionary<int, ColetavelEntidade>();
+        dicionarioDeSprites = new Dictionary<string, ColetavelEntidade>();
+        dicionarioDeFamilias = new Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>>();
+
+        popularDicionarios();
     }
 }
