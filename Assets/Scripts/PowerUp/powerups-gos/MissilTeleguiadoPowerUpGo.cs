@@ -56,7 +56,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     {
         ligar();
         ColetavelHelper coletavelHelper = new ColetavelHelper();
-        coletavelHelper.ligar();
+        coletavelHelper.ligarMirasNosColetaveis();
         coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
@@ -82,7 +82,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
                 {
                     string nomeAlvo = coletavelAcertado.nome;
                     ColetavelHelper coletaveisHelper = new ColetavelHelper();
-                    coletaveisHelper.ligarAlvoFinal(nomeAlvo);                    
+                    coletaveisHelper.ligarMiraAlvoFinalNoColetavel(nomeAlvo);                    
                     hitColetavel = true;
                     Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelAcertado));
                 }
@@ -194,7 +194,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
             Utils.MonoBehaviour.StopCoroutine(coroutine);
 
             ColetavelHelper coletavelHelper = new ColetavelHelper();
-            coletavelHelper.desligar();
+            coletavelHelper.desligarMirasNosColetaveis();
             resetPup();
         }
     }

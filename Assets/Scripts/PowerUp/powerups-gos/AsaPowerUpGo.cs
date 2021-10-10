@@ -26,7 +26,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
     public override void iniciarPup()
     {
         ColetavelHelper coletavelHelper = new ColetavelHelper();
-        coletavelHelper.ligar();
+        coletavelHelper.ligarMirasNosColetaveis();
         coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
@@ -46,7 +46,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
                     string nomeAlvo = coletavelParaVoar.nome;
                     //Debug.Log("Acertou " + nomeAlvo);
                     ColetavelHelper coletavelHelper = new ColetavelHelper();
-                    coletavelHelper.desligar();                    
+                    coletavelHelper.desligarMirasNosColetaveis();                    
                                         
                     colocarNaPosicao(coletavelParaVoar.getPosicao());
                     receberSprite(coletavelParaVoar.getSprite(), powerUpDto.AsaDto.Layer);
@@ -95,7 +95,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
             ColetavelHelper coletavelHelper = new ColetavelHelper();
-            coletavelHelper.desligar();
+            coletavelHelper.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
         }
     }

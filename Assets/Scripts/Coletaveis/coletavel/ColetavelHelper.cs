@@ -54,17 +54,17 @@ public class ColetavelHelper
         }        
     }
 
-    public void ligarAlvoFinal(string nomeAlvo)
+    public void ligarMiraAlvoFinalNoColetavel(string nomeAlvo)
     {        
         poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
     }
 
-    public void ligar()
+    public void ligarMirasNosColetaveis()
     {     
         poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeMiras());
     }
 
-    public void desligar()
+    public void desligarMirasNosColetaveis()
     {     
         poolDeColetaveis.executeEmTodosColetaveis(new DesligadorDeMiras());
     }    
