@@ -20,7 +20,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
 
         garraInteracaoComPowerUp.iniciar();
         garraInteracaoComPowerUp.ligarGravidadeZero();
-        garraInteracaoComPowerUp.colocarNaPosicao(garraDto.CentroDaGarra.position);
+        garraInteracaoComPowerUp.colocarNaPosicao(contexto.garraDto.CentroDaGarra.position);
     }       
 
     public override void fixedUpdate()

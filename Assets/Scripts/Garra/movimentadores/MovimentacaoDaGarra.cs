@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class MovimentacaoDaGarra 
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;   
-    protected static MovimentacaoDaGarraContextoEstatico contexto;//FECHAR VAZAMENTO DE CONTEXTO PARA MOVIMENTADORES
+    public static MovimentacaoDaGarraContextoEstatico contexto { get; private set; }//FECHAR VAZAMENTO DE CONTEXTO PARA MOVIMENTADORES
 
     public virtual void preInicio() { }
     public virtual void update(InputGame inputGame) { }

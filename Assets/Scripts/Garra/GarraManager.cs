@@ -138,7 +138,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     }   
 
     ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
-    {
-        return MovimentacaoDaGarra.produtorEventoDirecao;
+    {        
+        return MovimentacaoDaGarraContextoEstatico.produtorEventoDirecao;
     }   
 }
