@@ -75,7 +75,7 @@ public class AsaMiniPowerUpGo : PowerUpNaoInteracaoComGarra
 
         ColetavelHelper coletaveisHelper = new ColetavelHelper();
         ColetavelTile coletavelMaisAlto = coletaveisHelper.getColetavelMaisAlto();
-        while (getPosicao().y < coletavelMaisAlto.getPosicao().y)
+        while (getPosicao().y < coletavelMaisAlto.getPosicao().y + 1f)
         {
             Vector3 posicaoAtual = getPosicao();
             float xZigZag = Mathf.Lerp(posXmin, posXmax, Mathf.PingPong(Time.time, 1f));
@@ -85,6 +85,7 @@ public class AsaMiniPowerUpGo : PowerUpNaoInteracaoComGarra
         }
 
         coletavelAcertado.colocarNaPosicao(getPosicao());
+        coletavelAcertado.ligar();
         desligar();
 
         powerUpFinalizacao.preFinalizar();

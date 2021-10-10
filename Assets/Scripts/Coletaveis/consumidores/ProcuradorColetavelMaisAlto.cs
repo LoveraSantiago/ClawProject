@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class ProcuradorColetavelMaisAlto : Consumidor<ColetavelTile>
 {
     public ColetavelTile coletavelMaisAlto { get; private set; }
@@ -12,6 +14,7 @@ public class ProcuradorColetavelMaisAlto : Consumidor<ColetavelTile>
             if(alturaIt > alturaMaisAlta)
             {
                 coletavelMaisAlto = coletavelIt;
+                Debug.Log("Setado mais alto");
             }
         }        
     }    
@@ -22,6 +25,6 @@ public class ProcuradorColetavelMaisAlto : Consumidor<ColetavelTile>
         {
             return coletavelMaisAlto.getPosicao().y;
         }
-        return -1;
+        return -100;
     }
 }
