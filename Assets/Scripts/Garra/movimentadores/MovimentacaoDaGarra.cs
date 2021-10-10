@@ -107,7 +107,12 @@ public abstract class MovimentacaoDaGarra
     protected void dispararEventoDirecao(int direcao)
     {
         contexto.dispararEventoDirecao(direcao);        
-    }                        
+    }     
+    
+    protected void acionarColliderDasPincas()
+    {
+        contexto.pincas.acionarCollider();
+    }
 
     public static void configurarComponentesMovimentacao(GarraDto garraDtoArg)
     {

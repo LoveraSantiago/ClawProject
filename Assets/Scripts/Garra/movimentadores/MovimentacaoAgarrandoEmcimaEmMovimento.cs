@@ -11,7 +11,7 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
         anguloDesejadoDireitaFechado = Quaternion.Euler(0, 0, garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
         anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
 
-        pincas.acionarCollider();
+        acionarColliderDasPincas();        
 
         garraInteracaoComPowerUp.iniciar();
         garraInteracaoComPowerUp.ligarGravidadeZero();
