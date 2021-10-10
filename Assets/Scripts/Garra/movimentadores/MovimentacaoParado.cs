@@ -8,16 +8,16 @@ public class MovimentacaoParado : MovimentacaoDaGarra
     
     public MovimentacaoParado()
     {
-        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garraDto.Angulos.IdleMin);
-        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garraDto.Angulos.IdleMin);
+        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -contexto.garraDto.Angulos.IdleMin);
+        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, contexto.garraDto.Angulos.IdleMin);
     }
 
     public override void preInicio()
     {
         acionarTriggerDasPincas();
-        if (!animacao.isComemorando())
+        if (isNotPlayAnimacaoComemorando())
         {
-            animacao.piscar();
+            playAnimacaoPiscar();            
         }
     }
 

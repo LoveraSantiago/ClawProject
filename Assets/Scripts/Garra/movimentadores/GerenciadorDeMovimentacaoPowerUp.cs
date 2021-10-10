@@ -56,7 +56,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     public override void garraComemorar()
     {
-        movAtual.comemorar();
+        movAtual.playAnimcaoComemorar();
     }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 

@@ -11,14 +11,24 @@ public abstract class MovimentacaoDaGarra
 
     public virtual void garraColidiuCom(GameObject gameObject) { }
 
-    public void comemorar()
+    public void playAnimcaoComemorar()
     {
         contexto.animacao.comemorar();
     }
 
-    public bool isComemorando()
+    public void playAnimacaoPiscar()
+    {
+        contexto.animacao.piscar();
+    }
+
+    public bool isPlayAnimacaoComemorando()
     {
         return contexto.animacao.isComemorando();
+    }
+
+    public bool isNotPlayAnimacaoComemorando()
+    {
+        return !isPlayAnimacaoComemorando();
     }
 
     protected void parar()
