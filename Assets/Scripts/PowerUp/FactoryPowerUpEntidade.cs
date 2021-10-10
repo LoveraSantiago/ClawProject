@@ -8,6 +8,7 @@ public class FactoryPowerUpEntidade
     private static PowerUpEntidade missilTeleguiado;
     private static PowerUpEntidade igual;
     private static PowerUpEntidade teleporte;
+    private static PowerUpEntidade miniAsas;
     private static PowerUpEntidade asa;
     private static PowerUpEntidade rollback;
     private static PowerUpEntidade descarte;
@@ -117,6 +118,16 @@ public class FactoryPowerUpEntidade
                     "Selecione o primeiro coletavel a ser trocado de lugar. Selecione o segundo coletavel que será trocado de posicao com o primeiro");
         }
         return teleporte;
+    }
+
+    private static PowerUpEntidade getMiniAsas()
+    {
+        if(miniAsas == null)
+        {
+            miniAsas = new PowerUpEntidade()
+                .configNomes(PowerUpEnums.TIPO.MINI_ASAS, "Mini Asas de Escape", "");
+        }
+        return miniAsas;
     }
 
     private static PowerUpEntidade getAsas()
