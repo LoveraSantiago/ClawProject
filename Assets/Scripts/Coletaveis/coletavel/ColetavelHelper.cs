@@ -71,9 +71,9 @@ public class ColetavelHelper
 
     public ColetavelTile getColetavelMaisAlto()
     {
-        ColetavelMaisAlto coletavelMaisAlto = new ColetavelMaisAlto();
-        poolDeColetaveis.executeEmTodosColetaveis(coletavelMaisAlto);
-        return coletavelMaisAlto.coletavelMaisAlto;
+        ProcuradorColetavelMaisAlto procurador = new ProcuradorColetavelMaisAlto();
+        poolDeColetaveis.executeEmTodosColetaveis(procurador);
+        return procurador.coletavelMaisAlto;
     }
     
     private static void popularDicionarios()

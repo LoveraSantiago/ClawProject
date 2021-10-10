@@ -1,4 +1,4 @@
-public class ColetavelMaisAlto : Consumidor<ColetavelTile>
+public class ProcuradorColetavelMaisAlto : Consumidor<ColetavelTile>
 {
     public ColetavelTile coletavelMaisAlto { get; private set; }
 
