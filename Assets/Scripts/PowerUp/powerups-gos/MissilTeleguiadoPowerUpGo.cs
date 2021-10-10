@@ -84,7 +84,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
                 if (resultACertado)
                 {
                     string nomeAlvo = coletavelAcertado.nome;
-                    ColetavelQuery.poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
+                    ColetaveisMiras miras = new ColetaveisMiras();
+                    miras.ligarAlvoFinal(nomeAlvo);                    
                     hitColetavel = true;
                     Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelAcertado));
                 }
