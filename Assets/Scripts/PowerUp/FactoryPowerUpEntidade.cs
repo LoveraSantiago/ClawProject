@@ -203,6 +203,7 @@ public class FactoryPowerUpEntidade
             case PowerUpEnums.TIPO.MISSIL_TELEGUIADO: return getMissilTeleguiado();
             case PowerUpEnums.TIPO.IGUAL            : return getIgual();
             case PowerUpEnums.TIPO.TELEPORTE        : return getTeleporte();
+            case PowerUpEnums.TIPO.MINI_ASAS        : return getMiniAsas();
             case PowerUpEnums.TIPO.ASAS             : return getAsas();
             case PowerUpEnums.TIPO.ROLLBACK         : return getRollBack();
             case PowerUpEnums.TIPO.DESCARTE         : return getDescarte();
@@ -219,6 +220,7 @@ public class FactoryPowerUpEntidade
             getMissilTeleguiado(),
             getIgual(),
             getTeleporte(),
+            getMiniAsas(),
             getAsas(),
             getRollBack(),
             getDescarte()
