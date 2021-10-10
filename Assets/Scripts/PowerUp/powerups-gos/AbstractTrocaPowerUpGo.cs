@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
@@ -59,7 +58,8 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
                     string nomeAlvo = coletavel2.nome;
                     if (!coletavel1.nome.Equals(coletavel2.nome))
                     {
-                        ColetavelQuery.poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
+                        ColetaveisMiras miras = new ColetaveisMiras();
+                        miras.ligarAlvoFinal(nomeAlvo);                        
                         hitColetavel2 = true;
                         Utils.MonoBehaviour.StartCoroutine(realizarTroca(coletavel1, coletavel2));
                     }
