@@ -1,11 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ColetavelMaisAlto : Consumidor<ColetavelTile>
 {
-    public void consumir(ColetavelTile evento)
+    public ColetavelTile coletavelMaisAlto { get; private set; }
+
+    public void consumir(ColetavelTile coletavelIt)
     {
-        throw new System.NotImplementedException();
-    }
+        if (coletavelIt.isAtivo())
+        {
+            float alturaIt = coletavelIt.getPosicao().y;
+            float alturaMaisAlta = coletavelMaisAlto.getPosicao().y;
+
+            if(alturaIt > alturaMaisAlta)
+            {
+                coletavelMaisAlto = coletavelIt;
+            }
+        }        
+    }    
 }

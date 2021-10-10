@@ -68,6 +68,13 @@ public class ColetavelHelper
     {     
         poolDeColetaveis.executeEmTodosColetaveis(new DesligadorDeMiras());
     }    
+
+    public ColetavelTile getColetavelMaisAlto()
+    {
+        ColetavelMaisAlto coletavelMaisAlto = new ColetavelMaisAlto();
+        poolDeColetaveis.executeEmTodosColetaveis(coletavelMaisAlto);
+        return coletavelMaisAlto.coletavelMaisAlto;
+    }
     
     private static void popularDicionarios()
     {           
