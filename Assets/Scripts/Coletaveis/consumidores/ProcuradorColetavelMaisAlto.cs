@@ -7,7 +7,7 @@ public class ProcuradorColetavelMaisAlto : Consumidor<ColetavelTile>
         if (coletavelIt.isAtivo())
         {
             float alturaIt = coletavelIt.getPosicao().y;
-            float alturaMaisAlta = coletavelMaisAlto.getPosicao().y;
+            float alturaMaisAlta = getHalturaAtual();
 
             if(alturaIt > alturaMaisAlta)
             {
@@ -15,4 +15,13 @@ public class ProcuradorColetavelMaisAlto : Consumidor<ColetavelTile>
             }
         }        
     }    
+
+    private float getHalturaAtual()
+    {
+        if(coletavelMaisAlto != null)
+        {
+            return coletavelMaisAlto.getPosicao().y;
+        }
+        return -1;
+    }
 }

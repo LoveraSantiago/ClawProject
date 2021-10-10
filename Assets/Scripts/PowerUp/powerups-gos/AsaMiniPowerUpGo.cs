@@ -84,6 +84,14 @@ public class AsaMiniPowerUpGo : PowerUpNaoInteracaoComGarra
             yield return null;
         }
 
+        coletavelAcertado.colocarNaPosicao(getPosicao());
+        desligar();
+
+        powerUpFinalizacao.preFinalizar();
+
+        yield return new WaitForSeconds(powerUpDto.AsaDto.DelayFinalizar);
+
+        powerUpFinalizacao.finalizado();
         yield return null;
     }
 
