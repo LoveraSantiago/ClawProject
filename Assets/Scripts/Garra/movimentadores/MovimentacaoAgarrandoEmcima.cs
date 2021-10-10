@@ -24,7 +24,7 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
     }       
 
     public override void fixedUpdate()
-    {        
-        pincas.rotacionarFDT(garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);        
+    {
+        rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);        
     }   
 }

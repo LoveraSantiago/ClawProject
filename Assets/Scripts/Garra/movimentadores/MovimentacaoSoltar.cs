@@ -19,7 +19,7 @@ public class MovimentacaoSoltar : MovimentacaoDaGarraPowerUp
     public override void fixedUpdate()
     {
         parar();
-        pincas.rotacionarFDT(garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoAberturaEsquerda, anguloDesejadoAberturaDireita);
+        rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoAberturaEsquerda, anguloDesejadoAberturaDireita);
         if (pincas.isDireitaNoAngulo(anguloDesejadoAberturaDireita))
         {
             comunicadorComGerMovimentacao.trocarParaAcaoParado();

@@ -10,8 +10,8 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal
 
     public MovimentacaoParaBaixo(ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra)
     {
-        anguloDesejadoDireita  = Quaternion.Euler(0, 0, -garraDto.Angulos.Abertura);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0,  garraDto.Angulos.Abertura);
+        anguloDesejadoDireita  = Quaternion.Euler(0, 0, -contexto.garraDto.Angulos.Abertura);
+        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, contexto.garraDto.Angulos.Abertura);
 
         contadorDeTempoTravamento  = new ContadorDeTempo(1.0f);
 
@@ -35,9 +35,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal
 
     public override void fixedUpdate()
     {
-        pincas.rotacionarFDT(garraDto.Velocidades.MovAnguloAbertura,
-            anguloDesejadoEsquerda, anguloDesejadoDireita);
-
+        rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoEsquerda, anguloDesejadoDireita);
         moverParaBaixoFreeze();
     }
 

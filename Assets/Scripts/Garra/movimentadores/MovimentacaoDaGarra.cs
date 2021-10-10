@@ -129,6 +129,11 @@ public abstract class MovimentacaoDaGarra
         contexto.pincas.acionarTrigger();
     }
 
+    protected void rotacionarPincaFDT(float velocidade, Quaternion angEsquerda, Quaternion angDireita)
+    {
+        contexto.pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);
+    }
+
     public static void configurarComponentesMovimentacao(GarraDto garraDtoArg)
     {
         contexto = new MovimentacaoDaGarraContextoEstatico(garraDtoArg);               
