@@ -20,20 +20,19 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 
     public MovimentacaoLateralZigZag()
     {
-        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -garraDto.Angulos.IdleMin);
-        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, garraDto.Angulos.IdleMin);
+        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -contexto.garraDto.Angulos.IdleMin);
+        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, contexto.garraDto.Angulos.IdleMin);
 
-        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -garraDto.Angulos.IdleMax);
-        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, garraDto.Angulos.IdleMax);        
+        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -contexto.garraDto.Angulos.IdleMax);
+        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, contexto.garraDto.Angulos.IdleMax);        
         direcao = 1;        
     }
 
     public override void preInicio()
     {        
         configurarAngulosParaMax();
-        dispararEventoDirecao(direcao);        
-
-        pincas.acionarTrigger();
+        dispararEventoDirecao(direcao);
+        acionarTriggerDasPincas();        
         moverHorizontalmenteFreeze(direcao);        
     }
 

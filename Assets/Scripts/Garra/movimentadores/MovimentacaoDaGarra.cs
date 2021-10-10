@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class MovimentacaoDaGarra 
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;   
-    private static MovimentacaoDaGarraContextoEstatico contexto;
+    protected static MovimentacaoDaGarraContextoEstatico contexto;//FECHAR VAZAMENTO DE CONTEXTO PARA MOVIMENTADORES
 
     public virtual void preInicio() { }
     public virtual void update(InputGame inputGame) { }
@@ -112,6 +112,11 @@ public abstract class MovimentacaoDaGarra
     protected void acionarColliderDasPincas()
     {
         contexto.pincas.acionarCollider();
+    }
+
+    protected void acionarTriggerDasPincas()
+    {
+        contexto.pincas.acionarTrigger();
     }
 
     public static void configurarComponentesMovimentacao(GarraDto garraDtoArg)
