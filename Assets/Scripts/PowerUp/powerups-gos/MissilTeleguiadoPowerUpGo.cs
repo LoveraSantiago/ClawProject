@@ -10,8 +10,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     
     private bool hitColetavel;
     private float distanciaAnterior;
-
-    private ColetaveisMiras miras;
+    
     private CapsuleCollider2D capsuleCollider;
     
     private Vector2[] pathMissilRecalculado;    
@@ -21,10 +20,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     private Coroutine coroutine;
 
     public MissilTeleguiadoPowerUpGo() : 
-        base(powerUpDto.MissilTeleguiadoDto.MissilGo, "missil-teleguiado")
-    {
-        miras = new ColetaveisMiras();       
-    }
+        base(powerUpDto.MissilTeleguiadoDto.MissilGo, "missil-teleguiado"){}
 
     public PowerUpEnums.INTERACAOGARRA getInteracaoComGarra()
     {
@@ -59,7 +55,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     public override void iniciarPup()
     {
         ligar();
-        miras.ligar();
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        coletavelHelper.ligar();
         coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
@@ -84,8 +81,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
                 if (resultACertado)
                 {
                     string nomeAlvo = coletavelAcertado.nome;
-                    ColetaveisMiras miras = new ColetaveisMiras();
-                    miras.ligarAlvoFinal(nomeAlvo);                    
+                    ColetavelHelper coletaveisHelper = new ColetavelHelper();
+                    coletaveisHelper.ligarAlvoFinal(nomeAlvo);                    
                     hitColetavel = true;
                     Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelAcertado));
                 }
@@ -196,7 +193,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
 
-            miras.desligar();
+            ColetavelHelper coletavelHelper = new ColetavelHelper();
+            coletavelHelper.desligar();
             resetPup();
         }
     }

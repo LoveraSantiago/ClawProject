@@ -54,10 +54,20 @@ public class ColetavelHelper
         }        
     }
 
-    public void executeEmTodosColetaveis(Consumidor<ColetavelTile> consumidor)
-    {
-        poolDeColetaveis.executeEmTodosColetaveis(consumidor);
+    public void ligarAlvoFinal(string nomeAlvo)
+    {        
+        poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
     }
+
+    public void ligar()
+    {     
+        poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeMiras());
+    }
+
+    public void desligar()
+    {     
+        poolDeColetaveis.executeEmTodosColetaveis(new DesligadorDeMiras());
+    }    
     
     private static void popularDicionarios()
     {           

@@ -18,8 +18,8 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
-        ColetaveisMiras miras = new ColetaveisMiras();
-        miras.ligar();
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        coletavelHelper.ligar();
         coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvos());
     }
 
@@ -58,8 +58,8 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
                     string nomeAlvo = coletavel2.nome;
                     if (!coletavel1.nome.Equals(coletavel2.nome))
                     {
-                        ColetaveisMiras miras = new ColetaveisMiras();
-                        miras.ligarAlvoFinal(nomeAlvo);                        
+                        ColetavelHelper coletavelHelper = new ColetavelHelper();
+                        coletavelHelper.ligarAlvoFinal(nomeAlvo);                        
                         hitColetavel2 = true;
                         Utils.MonoBehaviour.StartCoroutine(realizarTroca(coletavel1, coletavel2));
                     }
@@ -77,8 +77,8 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
         if (!hitColetavel2)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
-            ColetaveisMiras miras = new ColetaveisMiras();
-            miras.desligar();
+            ColetavelHelper coletavelHelper = new ColetavelHelper();
+            coletavelHelper.desligar();
             powerUpFinalizacao.finalizado();
         }
     }
