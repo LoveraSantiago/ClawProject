@@ -9,12 +9,17 @@ public class AsaDto
     [SerializeField] private float offset;
     [SerializeField] private float haltura;
     [SerializeField] private float delayFinalizar;
+    [Space(3)]
     [SerializeField] private GameObject asaGo;
+    [SerializeField] private GameObject asaMiniGo;
+
 
     public int Layer { get { return layer; } }
     public float GravidadeNeg { get { return gravidadeNeg; } }
     public float Offset { get { return offset; } }
     public float Haltura { get { return haltura; } }
     public float DelayFinalizar { get { return delayFinalizar; } }
+
     public GameObject AsaGo { get { return asaGo; } }
+    public GameObject AsaMiniGo { get { return asaMiniGo; } }
 }

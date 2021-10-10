@@ -1,9 +1,5 @@
 public class ColetaveisMiras
 {
-    public ColetaveisMiras()
-    {
-    }
-
     public void ligar()
     {        
         ColetavelQuery.poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeMiras());
