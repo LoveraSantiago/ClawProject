@@ -40,7 +40,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     {
         if (inputGame.aconteceuTapNaAreaSuperior())
         {
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
+            produziuEventoDeDirecao(DirecaoDaGarra.PARADA);
             comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
             desafixar();
             acionarColliderDasPincas();
@@ -62,14 +62,14 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
             direcao = -1;     
             moverHorizontalmenteFreeze(direcao);
             playAnimacaoIrPEsquerda();
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
+            produziuEventoDeDirecao(DirecaoDaGarra.ESQUERDA);
         }
         else if (isMenorPosHorizontal(-LIMITE_LATERAL_TELA))
         {
             direcao = 1;
             moverHorizontalmenteFreeze(direcao);
-            playAnimacaoIrPDireita();            
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
+            playAnimacaoIrPDireita();
+            produziuEventoDeDirecao(DirecaoDaGarra.DIREITA);
         }
         else
         {

@@ -159,6 +159,11 @@ public abstract class MovimentacaoDaGarra
         contexto.pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);
     }
 
+    protected void produziuEventoDeDirecao(DirecaoDaGarra direcao)
+    {
+        MovimentacaoDaGarraContextoEstatico.produtorEventoDirecao.produziuEvento(direcao);
+    }
+
     public static void configurarComponentesMovimentacao(GarraDto garraDtoArg)
     {
         contexto = new MovimentacaoDaGarraContextoEstatico(garraDtoArg);               
