@@ -6,8 +6,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
     private readonly int VOADA;
 
     private bool hitColetavel;
-
-    private ColetaveisMiras miras;
+    
     private Animator animator;
     private CircleCollider2D circleCollider;
     private Coroutine coroutine;
@@ -15,9 +14,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
     public AsaPowerUpGo() 
         : base(powerUpDto.AsaDto.AsaGo, new GetGoComSpriteRenderer(), "Asas")
     {
-        VOADA = Animator.StringToHash("voada");
-        //Debug.Log("Asa Instanciado");
-        miras = new ColetaveisMiras();
+        VOADA = Animator.StringToHash("voada");        
     }
 
     public override void configurarPup()
@@ -28,6 +25,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
+        ColetaveisMiras miras = new ColetaveisMiras();
         miras.ligar();
         coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
@@ -47,6 +45,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
                 {
                     string nomeAlvo = coletavelParaVoar.nome;
                     //Debug.Log("Acertou " + nomeAlvo);
+                    ColetaveisMiras miras = new ColetaveisMiras();
                     miras.desligar();                    
                                         
                     colocarNaPosicao(coletavelParaVoar.getPosicao());
@@ -95,6 +94,7 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
         if (!hitColetavel)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
+            ColetaveisMiras miras = new ColetaveisMiras();
             miras.desligar();
             powerUpFinalizacao.finalizado();
         }
