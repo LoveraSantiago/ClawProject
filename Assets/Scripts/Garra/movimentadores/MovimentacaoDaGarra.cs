@@ -139,6 +139,11 @@ public abstract class MovimentacaoDaGarra
         contexto.pincas.acionarTrigger();
     }
 
+    protected bool isPincaDireitaNoAngulo(Quaternion anguloDesejado)
+    {
+        return contexto.pincas.isDireitaNoAngulo(anguloDesejado);
+    }
+
     protected void rotacionarPincaFDT(float velocidade, Quaternion angEsquerda, Quaternion angDireita)
     {
         contexto.pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);

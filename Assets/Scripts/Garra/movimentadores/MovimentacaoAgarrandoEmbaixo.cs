@@ -22,7 +22,7 @@ public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarraNormal
         parar();
         rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerda, anguloDesejadoDireita);
         
-        if (pincas.isDireitaNoAngulo(anguloDesejadoDireita))
+        if (isPincaDireitaNoAngulo(anguloDesejadoDireita))
         {       
             comunicadorComGerMovimentacao.trocarParaAcaoSubindo();
         }        

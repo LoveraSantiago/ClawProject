@@ -79,7 +79,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 
     private void verificarSePincaAtingiuLimites()
     {
-        if (pincas.isDireitaNoAngulo(anguloDesejadoDireitaAtual))
+        if (isPincaDireitaNoAngulo(anguloDesejadoDireitaAtual))
         {
             if (isUsandoMaxAngulo)
             {
@@ -95,7 +95,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     private void configurarAngulosParaMax()
     {
         isUsandoMaxAngulo = true;
-        anguloAtual = -garraDto.Angulos.IdleMax;
+        anguloAtual = -contexto.garraDto.Angulos.IdleMax;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMax;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMax;
     }
@@ -103,7 +103,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     private void configurarAngulosParaMin()
     {
         isUsandoMaxAngulo = false;
-        anguloAtual = garraDto.Angulos.IdleMin;
+        anguloAtual = contexto.garraDto.Angulos.IdleMin;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMin;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMin;
     }
