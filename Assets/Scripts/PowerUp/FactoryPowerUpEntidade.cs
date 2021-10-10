@@ -125,7 +125,7 @@ public class FactoryPowerUpEntidade
         if(miniAsas == null)
         {
             miniAsas = new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.MINI_ASAS, "Mini Asas de Escape", "");
+                .configNomes(PowerUpEnums.TIPO.MINI_ASAS, "Mini Asas de Escape", "mini-asas-botao");
         }
         return miniAsas;
     }
