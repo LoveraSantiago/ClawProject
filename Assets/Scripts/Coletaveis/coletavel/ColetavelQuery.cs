@@ -82,6 +82,8 @@ public class ColetavelQuery
         lista.Add(coletavelEntidadeIt);
     }    
 
+    
+
     public static void inicializarDicionarioDeColetaveisInGame(PoolDeColetaveis poolDeColetaveisArg)
     {
         poolDeColetaveis = poolDeColetaveisArg;

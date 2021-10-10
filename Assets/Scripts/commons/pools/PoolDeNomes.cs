@@ -47,7 +47,7 @@ public class PoolDeNomes<T>
             if (result) return true;
         }
         return false;
-    }
+    }    
 
     public void removerObjetoDoDicionario(string nome)
     {

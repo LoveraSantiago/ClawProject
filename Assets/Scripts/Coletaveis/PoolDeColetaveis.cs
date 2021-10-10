@@ -29,6 +29,11 @@ public class PoolDeColetaveis
         return poolDeNomes.getObjetoPeloNome(nome);
     }
 
+    //public ColetavelTile getColetavelMaisAlto()
+    //{
+
+    //}
+
     public void executeEmTodosColetaveis(Consumidor<ColetavelTile> consumidor)
     {
         poolDeNomes.executeEmTodosOsObj(consumidor);
