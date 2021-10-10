@@ -22,7 +22,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal
     {   
         colocarMassa(2);
         contadorDeTempoTravamento.resetContador();
-        animacao.irParaBaixo();
+        playAnimacaoIrPBaixo();
     }
 
     public override void update(InputGame inputGame)

@@ -14,7 +14,7 @@ public class MovimentacaoVoltarParaCima : MovimentacaoDaGarraPowerUp
     public override void preInicio()
     {
         colocarMassa(3);
-        animacao.irParaCima();
+        playAnimacaoIrPCima();
     }
 
     public override void update(InputGame inputGame)

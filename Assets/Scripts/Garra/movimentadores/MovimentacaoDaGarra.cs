@@ -31,6 +31,16 @@ public abstract class MovimentacaoDaGarra
         contexto.animacao.irParaEsquerda();
     }
 
+    public void playAnimacaoIrPCima()
+    {
+        contexto.animacao.irParaCima();
+    }
+
+    public void playAnimacaoIrPBaixo()
+    {
+        contexto.animacao.irParaBaixo();
+    }
+
     public bool isPlayAnimacaoComemorando()
     {
         return contexto.animacao.isComemorando();
