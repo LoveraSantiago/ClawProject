@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColetavelQuery 
+public class ColetavelHelper 
 {
     private static PoolDeColetaveis poolDeColetaveis;
     private static Dictionary<int, ColetavelEntidade> dicionarioDeIds;
