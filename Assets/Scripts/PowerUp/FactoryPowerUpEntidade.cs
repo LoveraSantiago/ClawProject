@@ -125,7 +125,16 @@ public class FactoryPowerUpEntidade
         if(miniAsas == null)
         {
             miniAsas = new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.MINI_ASAS, "Mini Asas de Escape", "mini-asas-botao");
+                .configNomes(PowerUpEnums.TIPO.MINI_ASAS, "Mini Asas de Escape", "mini-asas-botao")
+                .configFamilia(PowerUpEnums.FAMILIA.LEVITACAO)
+                .configPreco(2)
+                .configDuracao(9)
+                .configSupplierDePowerUpGo(AsaMiniPowerUpGo.getFornecedor())
+                .configIsClicavel(true)
+                .configIsColetavel(true)
+                .configDescricao(
+                    "Dê um par de mini asas ao coletavel do seu interesse para que ele tente alcançar a liberdade.",
+                    "Selecione o coletavel de interesse a tentar alcançar a liberdade.");
         }
         return miniAsas;
     }
@@ -144,7 +153,7 @@ public class FactoryPowerUpEntidade
                 .configIsColetavel(true)
                 .configDescricao(
                     "Dê um par de asas ao coletavel do seu interesse para que ele alcance a liberdade.",
-                    "-");
+                    "Selecione o coletavel de interesse a alcançar a liberdade.");
         }
         return asa;
     }
