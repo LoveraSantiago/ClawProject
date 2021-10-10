@@ -8,8 +8,8 @@ public abstract class MovimentacaoDaGarra
     private static Vector2 posInicial;
 
     protected static PincaDaGarra pincas;
-    protected static GarraDto garraDto;
     protected static AnimacaoGarra animacao;
+    protected static GarraDto garraDto;
 
     public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }            
 
