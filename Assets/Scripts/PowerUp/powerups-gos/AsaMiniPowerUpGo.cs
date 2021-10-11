@@ -4,13 +4,23 @@ using UnityEngine;
 public class AsaMiniPowerUpGo : AbstractAsaPowerUpGo
 {
     public AsaMiniPowerUpGo() 
-        : base(powerUpDto.AsaDto.AsaMiniGo, "MiniAsas"){}    
+        : base(powerUpDto.AsaMiniDto.AsaMiniGo, "MiniAsas"){}
+
+    protected override float getGravidadeNegativa()
+    {
+        return powerUpDto.AsaMiniDto.GravidadeNeg;
+    }
+
+    protected override float getOffset()
+    {
+        return powerUpDto.AsaMiniDto.Offset;
+    }
 
     protected override float getHalturaLimite()
     {
         ColetavelHelper coletaveisHelper = new ColetavelHelper();
         ColetavelTile coletavelMaisAlto = coletaveisHelper.getColetavelMaisAlto();
-        return coletavelMaisAlto.getPosicao().y + 1f;
+        return coletavelMaisAlto.getPosicao().y + powerUpDto.AsaMiniDto.IncrementoHaltura;
     }
 
     protected override IEnumerator finalizarVoar(ColetavelTile coletavelAcertado)

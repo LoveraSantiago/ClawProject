@@ -4,7 +4,18 @@ using System.Collections;
 public class AsaPowerUpGo : AbstractAsaPowerUpGo
 {   
     public AsaPowerUpGo() 
-        : base(powerUpDto.AsaDto.AsaGo, "Asas"){}              
+        : base(powerUpDto.AsaDto.AsaGo, "Asas"){}
+
+
+    protected override float getGravidadeNegativa()
+    {
+        return powerUpDto.AsaDto.GravidadeNeg;
+    }
+
+    protected override float getOffset()
+    {
+        return powerUpDto.AsaDto.Offset;
+    }
 
     protected override float getHalturaLimite()
     {

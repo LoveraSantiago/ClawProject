@@ -60,13 +60,14 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator voar(ColetavelTile coletavelAcertado)
     {
-        setGravidade(powerUpDto.AsaDto.GravidadeNeg);
+        setGravidade(getGravidadeNegativa());
         acionarTriggerNoCollider();
         playAnimacaoVoar();
 
         Vector3 posicaoInicial = getPosicao();
-        float posXmax = posicaoInicial.x + powerUpDto.AsaDto.Offset;
-        float posXmin = posicaoInicial.x - powerUpDto.AsaDto.Offset;
+        float offset = getOffset();
+        float posXmax = posicaoInicial.x + offset;
+        float posXmin = posicaoInicial.x - offset;
 
         while (getPosicao().y < getHalturaLimite())
         {
@@ -80,6 +81,8 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
         Utils.MonoBehaviour.StartCoroutine(finalizarVoar(coletavelAcertado));
     }
 
+    protected abstract float getGravidadeNegativa();
+    protected abstract float getOffset();
     protected abstract float getHalturaLimite();
     protected abstract IEnumerator finalizarVoar(ColetavelTile coletavelAcertado);
 
