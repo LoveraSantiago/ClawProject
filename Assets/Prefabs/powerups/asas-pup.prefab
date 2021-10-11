@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 4127936681606313067}
   - component: {fileID: 4127936681606313066}
   m_Layer: 14
-  m_Name: AsasPUp
+  m_Name: asas-pup
   m_TagString: Laranja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

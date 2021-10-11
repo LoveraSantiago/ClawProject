@@ -20,20 +20,19 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 
     public MovimentacaoLateralZigZag()
     {
-        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -garraDto.Angulos.IdleMin);
-        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, garraDto.Angulos.IdleMin);
+        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -contexto.garraDto.Angulos.IdleMin);
+        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, contexto.garraDto.Angulos.IdleMin);
 
-        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -garraDto.Angulos.IdleMax);
-        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, garraDto.Angulos.IdleMax);        
+        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -contexto.garraDto.Angulos.IdleMax);
+        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, contexto.garraDto.Angulos.IdleMax);        
         direcao = 1;        
     }
 
     public override void preInicio()
     {        
         configurarAngulosParaMax();
-        dispararEventoDirecao(direcao);        
-
-        pincas.acionarTrigger();
+        dispararEventoDirecao(direcao);
+        acionarTriggerDasPincas();        
         moverHorizontalmenteFreeze(direcao);        
     }
 
@@ -41,10 +40,10 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     {
         if (inputGame.aconteceuTapNaAreaSuperior())
         {
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.PARADA);
+            produziuEventoDeDirecao(DirecaoDaGarra.PARADA);
             comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
             desafixar();
-            pincas.acionarCollider();
+            acionarColliderDasPincas();
         }
     }
     
@@ -53,7 +52,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         verificarSeMovimentacaoAtingiuLimites();
         verificarSePincaAtingiuLimites();
 
-        pincas.rotacionarFDT(garraDto.Velocidades.MovAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
+        rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
     }
 
     private void verificarSeMovimentacaoAtingiuLimites()
@@ -62,15 +61,15 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         {
             direcao = -1;     
             moverHorizontalmenteFreeze(direcao);
-            animacao.irParaEsquerda();
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
+            playAnimacaoIrPEsquerda();
+            produziuEventoDeDirecao(DirecaoDaGarra.ESQUERDA);
         }
         else if (isMenorPosHorizontal(-LIMITE_LATERAL_TELA))
         {
             direcao = 1;
             moverHorizontalmenteFreeze(direcao);
-            animacao.irParaDireita();
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
+            playAnimacaoIrPDireita();
+            produziuEventoDeDirecao(DirecaoDaGarra.DIREITA);
         }
         else
         {
@@ -80,7 +79,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 
     private void verificarSePincaAtingiuLimites()
     {
-        if (pincas.isDireitaNoAngulo(anguloDesejadoDireitaAtual))
+        if (isPincaDireitaNoAngulo(anguloDesejadoDireitaAtual))
         {
             if (isUsandoMaxAngulo)
             {
@@ -96,7 +95,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     private void configurarAngulosParaMax()
     {
         isUsandoMaxAngulo = true;
-        anguloAtual = -garraDto.Angulos.IdleMax;
+        anguloAtual = -contexto.garraDto.Angulos.IdleMax;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMax;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMax;
     }
@@ -104,7 +103,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     private void configurarAngulosParaMin()
     {
         isUsandoMaxAngulo = false;
-        anguloAtual = garraDto.Angulos.IdleMin;
+        anguloAtual = contexto.garraDto.Angulos.IdleMin;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMin;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMin;
     }

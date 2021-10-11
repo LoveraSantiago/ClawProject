@@ -13,10 +13,7 @@ public abstract class Coletavel
     protected Rigidbody2D rigidbody;
     protected SpriteRenderer spriteRenderer;    
     
-    public Coletavel()
-        :this(context.mainTile, context.nomeador.getName())
-    {        
-    }   
+    public Coletavel() :this(context.mainTile, context.nomeador.getName()){}   
 
     public Coletavel(GameObject go, string nome)
     {

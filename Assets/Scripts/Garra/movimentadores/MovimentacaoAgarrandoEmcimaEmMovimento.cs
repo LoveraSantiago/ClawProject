@@ -11,11 +11,11 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
         anguloDesejadoDireitaFechado = Quaternion.Euler(0, 0, garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
         anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
 
-        pincas.acionarCollider();
+        acionarColliderDasPincas();        
 
         garraInteracaoComPowerUp.iniciar();
         garraInteracaoComPowerUp.ligarGravidadeZero();
-        garraInteracaoComPowerUp.colocarNaPosicao(garraDto.CentroDaGarra.position);
+        garraInteracaoComPowerUp.colocarNaPosicao(contexto.garraDto.CentroDaGarra.position);
 
         direcao = 1;
         dispararEventoDirecao(direcao);//reesincronizarJoystick
@@ -31,7 +31,7 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
 
     public override void fixedUpdate()
     {
-        pincas.rotacionarFDT(garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
+        rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
         verificarSeMovimentacaoAtingiuLimites();
         moverHorizontalmenteFreeze(direcao);
     }
@@ -43,13 +43,13 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
         {
             direcao = -1;
             moverHorizontalmenteFreeze(direcao);
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
+            produziuEventoDeDirecao(DirecaoDaGarra.ESQUERDA);
         }
         else if (isMenorPosHorizontal(-LIMITE_LATERAL_TELA + 0.1f))
         {
             direcao = 1;
             moverHorizontalmenteFreeze(direcao);
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
+            produziuEventoDeDirecao(DirecaoDaGarra.DIREITA);
         }
         else
         {

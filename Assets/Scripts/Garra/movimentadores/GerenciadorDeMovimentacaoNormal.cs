@@ -50,7 +50,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public override void garraComemorar()
     {
-        movAtual.comemorar();
+        movAtual.playAnimcaoComemorar();
     }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
@@ -70,7 +70,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     public void trocarParaAcaoNormal()
     {
         AudioController.current.StopAudioGarra();
-        if (movAtual.isComemorando())
+        if (movAtual.isPlayAnimacaoComemorando())
         {
             //Debug.Log("comemorando");
             trocarParaAcaoParado();

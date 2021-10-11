@@ -10906,6 +10906,11 @@ MonoBehaviour:
         haltura: 3
         delayFinalizar: 0.5
         asaGo: {fileID: 4127936681606313068, guid: 5432931c59eafda478e032d555b31327, type: 3}
+      asaMiniDto:
+        gravidadeNeg: -0.075
+        offset: 0.15
+        incrementoHaltura: 0.9
+        asaMiniGo: {fileID: 4127936681606313068, guid: 3d5bbd7b9b7d372408b0b38de7933937, type: 3}
       rollBackDto:
         delayReset: 1.5
     uiDto:
@@ -11000,7 +11005,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!82 &519420030
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11008,7 +11013,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9ab0aa6a032f1004595d6bcaf989713b, type: 3}

@@ -2,16 +2,8 @@ using UnityEngine;
 //TODO quebrar a classe em responsabilidades menores
 public abstract class MovimentacaoDaGarra 
 {
-    protected readonly float LIMITE_LATERAL_TELA = 2.25f;
-
-    private static float alturaLocalEfeitoTrail;
-    private static Vector2 posInicial;
-
-    protected static PincaDaGarra pincas;
-    protected static GarraDto garraDto;
-    protected static AnimacaoGarra animacao;
-
-    public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }            
+    protected readonly float LIMITE_LATERAL_TELA = 2.25f;   
+    public static MovimentacaoDaGarraContextoEstatico contexto { get; private set; }//FECHAR VAZAMENTO DE CONTEXTO PARA MOVIMENTADORES
 
     public virtual void preInicio() { }
     public virtual void update(InputGame inputGame) { }
@@ -19,163 +11,161 @@ public abstract class MovimentacaoDaGarra
 
     public virtual void garraColidiuCom(GameObject gameObject) { }
 
-    public void comemorar()
+    public void playAnimcaoComemorar()
     {
-        animacao.comemorar();
+        contexto.animacao.comemorar();
     }
 
-    public bool isComemorando()
+    public void playAnimacaoPiscar()
     {
-        return animacao.isComemorando();
+        contexto.animacao.piscar();
+    }
+
+    public void playAnimacaoIrPDireita()
+    {
+        contexto.animacao.irParaDireita();
+    }
+
+    public void playAnimacaoIrPEsquerda()
+    {
+        contexto.animacao.irParaEsquerda();
+    }
+
+    public void playAnimacaoIrPCima()
+    {
+        contexto.animacao.irParaCima();
+    }
+
+    public void playAnimacaoIrPBaixo()
+    {
+        contexto.animacao.irParaBaixo();
+    }
+
+    public bool isPlayAnimacaoComemorando()
+    {
+        return contexto.animacao.isComemorando();
+    }
+
+    public bool isNotPlayAnimacaoComemorando()
+    {
+        return !isPlayAnimacaoComemorando();
     }
 
     protected void parar()
     {
-        garraDto.RigidBody.velocity = Vector3.zero;
-        garraDto.RigidBody.angularVelocity = 0;
+        contexto.pararGarraRigidBody();
     }
 
     protected void moverParaCimaFreeze()
     {
-        fixarVerticalmente();
-        moverParaCima();
+        contexto.fixarGarraRigidBodyVerticalmente();
+        contexto.moverParaCima();        
     }
 
     protected void moverParaBaixoFreeze()
     {
-        fixarVerticalmente();
-        moverParaBaixo();
+        contexto.fixarGarraRigidBodyVerticalmente();
+        contexto.moverParaBaixo();
     }
 
     protected void moverHorizontalmenteFreeze(float direcao)
     {
-        fixarHorizontalmente();
-        moverHorizontalmente(direcao);
+        contexto.fixarGarraRigidBodyHorizontalmente();
+        contexto.moverHorizontalmente(direcao);        
     }    
 
     protected void agarrando()
     {
-        desligarTrail();
+        contexto.desligarTrail();
     }
 
     protected void voltando()
     {
-        desligarTrail();
+        contexto.desligarTrail();
     }
 
     protected void colocarNaAlturaInicial()
     {
-        garraDto.RigidBody.transform.localPosition = new Vector2(garraDto.RigidBody.position.x, posInicial.y);
+        contexto.colocarGarraRigidBodyAlturaInicial();
     }
 
-    protected void colocarNaPosInicial()
+    protected void colocarNaPosInicial()//REMOVER
     {
-        garraDto.RigidBody.transform.localPosition = posInicial;
+        contexto.colocarGarraRigidBodyPosInicial();
     }
 
     protected void colocarNaPosHorizontal(float posHorizontal)
     {
-        garraDto.RigidBody.transform.localPosition = new Vector3(posHorizontal, posInicial.y, 0);
+        contexto.colocarGarraRigidBodyPosHorizontal(posHorizontal);        
     }
 
     protected void colocarMassa(int massa)
     {
-        garraDto.RigidBody.mass = massa;
+        contexto.colocarMassaNaGarraRigidyBody(massa);        
     }
 
     protected void fixarVerticalEHorizontal()
     {
-        garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        contexto.fixarGarraRigidyBodyVerticalEHorizontal();
     }
 
     protected void desafixar()
     {
-        garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        contexto.desafixarGarraRigidBody();
     }
 
     protected bool isAcimaPosInicial()
     {
-        return garraDto.RigidBody.transform.localPosition.y >= posInicial.y;
+        return contexto.isGarraRigidyBodyAcimaPosInicial();        
     }
 
-    protected bool isParada()
+    protected bool isParada()//REMOVER
     {
-        return garraDto.RigidBody.velocity.x == 0 && garraDto.RigidBody.velocity.y == 0;
+        return false;
     }
 
     protected bool isMaiorPosHorizontal(float posHorizontal)
     {
-        return garraDto.RigidBody.transform.localPosition.x > posHorizontal;
+        return contexto.isGarraRigidBodyMaiorPosHorizontal(posHorizontal);
     }
 
     protected bool isMenorPosHorizontal(float posHorizontal)
     {
-        return garraDto.RigidBody.transform.localPosition.x < posHorizontal;
+        return contexto.isGarraRigidBodyMenorPosHorizontal(posHorizontal);
     }
 
     protected void dispararEventoDirecao(int direcao)
     {
-        if (direcao == 1)
-        {
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
-        }
-        else
-        {
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
-        }
-    }  
-
-    private void moverParaCima()
+        contexto.dispararEventoDirecao(direcao);        
+    }     
+    
+    protected void acionarColliderDasPincas()
     {
-        ligarEfeitoTrailAngulo(-0.4f, 180);
-        garraDto.RigidBody.velocity = new Vector2(0, garraDto.Velocidades.MovCima);        
+        contexto.pincas.acionarCollider();
     }
 
-    private void moverParaBaixo()
+    protected void acionarTriggerDasPincas()
     {
-        ligarEfeitoTrailAngulo(0.8f, 0);
-        garraDto.RigidBody.velocity = new Vector2(0, garraDto.Velocidades.MovBaixo);
+        contexto.pincas.acionarTrigger();
     }
 
-    private void moverHorizontalmente(float direcao)
+    protected bool isPincaDireitaNoAngulo(Quaternion anguloDesejado)
     {
-        garraDto.EfeitoTrail.Stop();
-        //Debug.Log(direcao * garraDto.VelocMovHorizontal);
-        garraDto.RigidBody.velocity = new Vector2(direcao * garraDto.Velocidades.MovHorizontal, 0);        
+        return contexto.pincas.isDireitaNoAngulo(anguloDesejado);
     }
 
-    private void fixarHorizontalmente()
+    protected void rotacionarPincaFDT(float velocidade, Quaternion angEsquerda, Quaternion angDireita)
     {
-        garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        contexto.pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);
     }
 
-    private void fixarVerticalmente()
+    protected void produziuEventoDeDirecao(DirecaoDaGarra direcao)
     {
-        garraDto.RigidBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-    }
-
-    private void ligarEfeitoTrailAngulo(float incremento, float angulo)
-    {
-        garraDto.EfeitoTrail.Play();
-        garraDto.EfeitoTrail.transform.rotation = Quaternion.Euler(0, 0, angulo);
-
-        Vector3 localPos = garraDto.EfeitoTrail.transform.localPosition;
-        garraDto.EfeitoTrail.transform.localPosition = new Vector3(localPos.x, alturaLocalEfeitoTrail + incremento, localPos.z);
-    }
-
-    private void desligarTrail()
-    {
-        garraDto.EfeitoTrail.Stop();
+        MovimentacaoDaGarraContextoEstatico.produtorEventoDirecao.produziuEvento(direcao);
     }
 
     public static void configurarComponentesMovimentacao(GarraDto garraDtoArg)
     {
-        garraDto   = garraDtoArg;
-        posInicial = garraDto.RigidBody.transform.localPosition;
-        alturaLocalEfeitoTrail = garraDto.EfeitoTrail.transform.localPosition.y;
-
-        pincas   = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);                
-        animacao = new AnimacaoGarra(garraDto.Animator);
-        produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();                
+        contexto = new MovimentacaoDaGarraContextoEstatico(garraDtoArg);               
     }
 }

@@ -4,7 +4,8 @@ public class PowerUpEnums
     {
         BOMBA_DA_GARRA, MISSIL_NUCLEAR, MINA_TERRESTRE, MISSIL_TELEGUIADO,
         IGUAL, TELEPORTE,
-        ASAS, ROLLBACK, DESCARTE, NONE
+        MINI_ASAS, ASAS,
+        ROLLBACK, DESCARTE, NONE
     }
 
     public enum AREA

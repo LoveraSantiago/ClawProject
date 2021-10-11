@@ -1,104 +1,38 @@
 using UnityEngine;
 using System.Collections;
 
-public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
-{
-    private readonly int VOADA;
-
-    private bool hitColetavel;
-
-    private ColetaveisMiras miras;
-    private Animator animator;
-    private CircleCollider2D circleCollider;
-    private Coroutine coroutine;
-
+public class AsaPowerUpGo : AbstractAsaPowerUpGo
+{   
     public AsaPowerUpGo() 
-        : base(powerUpDto.AsaDto.AsaGo, new GetGoComSpriteRenderer(), "Asas")
+        : base(powerUpDto.AsaDto.AsaGo, "Asas"){}
+
+
+    protected override float getGravidadeNegativa()
     {
-        VOADA = Animator.StringToHash("voada");
-        //Debug.Log("Asa Instanciado");
-        miras = new ColetaveisMiras();
+        return powerUpDto.AsaDto.GravidadeNeg;
     }
 
-    public override void configurarPup()
+    protected override float getOffset()
     {
-        animator = goColetavel.transform.Find("asas").GetComponent<Animator>();
-        circleCollider = goColetavel.GetComponent<CircleCollider2D>();
-    }    
-
-    public override void iniciarPup()
-    {
-        miras.ligar();
-        coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
+        return powerUpDto.AsaDto.Offset;
     }
 
-    public override void resetPup(){}
-
-    private IEnumerator selecionarAlvo()
+    protected override float getHalturaLimite()
     {
-        hitColetavel = false;        
-        while (!hitColetavel)
-        {
-            if (inputGame.aconteceuTapNaAreaSuperior())
-            {
-                bool resultAcertado = false;
-                ColetavelTile coletavelParaVoar = ColetavelHit.hit(inputGame, out resultAcertado);
-                if (resultAcertado)
-                {
-                    string nomeAlvo = coletavelParaVoar.nome;
-                    //Debug.Log("Acertou " + nomeAlvo);
-                    miras.desligar();                    
-                                        
-                    colocarNaPosicao(coletavelParaVoar.getPosicao());
-                    receberSprite(coletavelParaVoar.getSprite(), powerUpDto.AsaDto.Layer);
-
-                    coletavelParaVoar.desligar();
-                    ligar();
-                    Utils.MonoBehaviour.StartCoroutine(voar(coletavelParaVoar));
-                    hitColetavel = true;
-                }
-            }
-            yield return null;
-        }
-        yield return null;
+        return powerUpDto.AsaDto.Haltura;
     }
 
-    private IEnumerator voar(ColetavelTile coletavelAcertado)
+    protected override IEnumerator finalizarVoar(ColetavelTile coletavelAcertado)
     {
-        setGravidade(powerUpDto.AsaDto.GravidadeNeg);
-        circleCollider.isTrigger = true;
-        animator.Play(VOADA);
-
-        Vector3 posicaoInicial = getPosicao();
-        float posXmax = posicaoInicial.x + powerUpDto.AsaDto.Offset;
-        float posXmin = posicaoInicial.x - powerUpDto.AsaDto.Offset;
-
-        while (getPosicao().y < powerUpDto.AsaDto.Haltura)
-        {
-            Vector3 posicaoAtual = getPosicao();
-            float xZigZag = Mathf.Lerp(posXmin, posXmax, Mathf.PingPong(Time.time, 1f));
-            Vector3 posicaoZigZag = new Vector3(xZigZag, posicaoAtual.y, posicaoAtual.z);
-            colocarNaPosicao(posicaoZigZag);
-            yield return null;
-        }
         powerUpFinalizacao.preFinalizar(coletavelAcertado);
         desligar();
 
         yield return new WaitForSeconds(powerUpDto.AsaDto.DelayFinalizar);
 
         powerUpFinalizacao.finalizado();
-        yield return null;
+        yield return null;        
     }
 
-    public override void timeout()
-    {
-        if (!hitColetavel)
-        {
-            Utils.MonoBehaviour.StopCoroutine(coroutine);
-            miras.desligar();
-            powerUpFinalizacao.finalizado();
-        }
-    }
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
@@ -111,13 +45,5 @@ public class AsaPowerUpGo : PowerUpNaoInteracaoComGarra
         {
             return new AsaPowerUpGo();
         }
-    }
-
-    private class GetGoComSpriteRenderer : Transformador<GameObject, GameObject>
-    {
-        public GameObject transformar(GameObject goColetavel)
-        {
-            return goColetavel.transform.Find("imagem").gameObject;
-        }
-    }
+    }   
 }

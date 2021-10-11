@@ -27,7 +27,7 @@ public class PoolDeColetaveis
     public ColetavelTile getColetavelPeloNome(string nome)
     {
         return poolDeNomes.getObjetoPeloNome(nome);
-    }
+    }   
 
     public void executeEmTodosColetaveis(Consumidor<ColetavelTile> consumidor)
     {

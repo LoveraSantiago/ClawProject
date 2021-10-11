@@ -17,7 +17,7 @@ public class RemontadorBoard
 
     public void montarColetaveis(int[,] arrayDeColetaveis, Action<GameObject, Sprite> consumidorDeSprite)
     {
-        ColetavelQuery coletavelQuery = new ColetavelQuery();
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
 
         for (int contadorLinha = 0; contadorLinha < referencias.dicionarioGosBoard.Count; contadorLinha++)
         {
@@ -25,7 +25,7 @@ public class RemontadorBoard
             for (int contadorColuna = 0; contadorColuna < referenciasLinha.Count; contadorColuna++)
             {
                 int id = arrayDeColetaveis[contadorLinha, contadorColuna];
-                ColetavelEntidade coletavelEntidade  = coletavelQuery.getColetavelEntidadeById(id);
+                ColetavelEntidade coletavelEntidade  = coletavelHelper.getColetavelEntidadeById(id);
 
                 if (coletavelEntidade.isVazio())
                 {

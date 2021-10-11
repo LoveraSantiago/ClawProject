@@ -21,6 +21,8 @@ public class PowerUpDto
     [Space(5)]
     [SerializeField] private AsaDto asaDto;
     [Space(5)]
+    [SerializeField] private AsaMiniDto asaMiniDto;
+    [Space(5)]
     [SerializeField] private RollbackDto rollBackDto;
  
     public GameObject VazioPUp { get { return vazioPUp; } }
@@ -36,5 +38,7 @@ public class PowerUpDto
     public TeleporteDto TeleporteDto { get { return teleporteDto; } }   
 
     public AsaDto AsaDto { get { return asaDto; } }
+    public AsaMiniDto AsaMiniDto { get { return asaMiniDto; } }
+
     public RollbackDto RollBackDto { get { return rollBackDto;  }}
 }

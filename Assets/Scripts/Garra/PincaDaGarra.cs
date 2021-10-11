@@ -20,13 +20,12 @@ public class PincaDaGarra
     }
 
     //FDT fixed delta time
-    public void rotacionarFDT(
-        float velocidade, Quaternion anguloEsquerda, Quaternion anguloDireita)
+    public void rotacionarFDT(float velocidade, Quaternion angEsquerda, Quaternion angDireita)
     {
         incremento = Time.fixedDeltaTime + velocidade;
 
-        pincaEsquerda.rotation = Quaternion.RotateTowards(pincaEsquerda.rotation, anguloEsquerda, incremento);
-        pincaDireita.rotation  = Quaternion.RotateTowards(pincaDireita.rotation , anguloDireita , incremento);
+        pincaEsquerda.rotation = Quaternion.RotateTowards(pincaEsquerda.rotation, angEsquerda, incremento);
+        pincaDireita.rotation  = Quaternion.RotateTowards(pincaDireita.rotation , angDireita , incremento);
     }
 
     public bool isDireitaNoAngulo(Quaternion anguloDesejado)

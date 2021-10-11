@@ -19,8 +19,7 @@ public class MovimentacaoParaCima : MovimentacaoDaGarraNormal
 
         contadorDeSubidas++;
         produtorEventoInfoGarra.produziuEvento(new InformacoesDaGarraDto(contadorDeSubidas));
-        animacao.irParaCima();
-        //moverGarraParaCimaFreeze();
+        playAnimacaoIrPBaixo();        
     }
 
     public override void update(InputGame inputGame)

@@ -16,15 +16,15 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
         anguloDesejadoDireitaFechado = Quaternion.Euler(0, 0, garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
         anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
 
-        pincas.acionarCollider();
+        acionarColliderDasPincas();
 
         garraInteracaoComPowerUp.iniciar();
         garraInteracaoComPowerUp.ligarGravidadeZero();
-        garraInteracaoComPowerUp.colocarNaPosicao(garraDto.CentroDaGarra.position);
+        garraInteracaoComPowerUp.colocarNaPosicao(contexto.garraDto.CentroDaGarra.position);
     }       
 
     public override void fixedUpdate()
-    {        
-        pincas.rotacionarFDT(garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);        
+    {
+        rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);        
     }   
 }

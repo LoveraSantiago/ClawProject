@@ -8,6 +8,7 @@ public class FactoryPowerUpEntidade
     private static PowerUpEntidade missilTeleguiado;
     private static PowerUpEntidade igual;
     private static PowerUpEntidade teleporte;
+    private static PowerUpEntidade miniAsas;
     private static PowerUpEntidade asa;
     private static PowerUpEntidade rollback;
     private static PowerUpEntidade descarte;
@@ -119,6 +120,24 @@ public class FactoryPowerUpEntidade
         return teleporte;
     }
 
+    private static PowerUpEntidade getMiniAsas()
+    {
+        if(miniAsas == null)
+        {
+            miniAsas = new PowerUpEntidade()
+                .configNomes(PowerUpEnums.TIPO.MINI_ASAS, "Mini Asas de Escape", "mini-asas-botao")
+                .configFamilia(PowerUpEnums.FAMILIA.LEVITACAO)
+                .configPreco(2)
+                .configDuracao(9)
+                .configSupplierDePowerUpGo(AsaMiniPowerUpGo.getFornecedor())
+                .configIsClicavel(true)                
+                .configDescricao(
+                    "Dê um par de mini asas ao coletavel do seu interesse para que ele tente alcançar a liberdade.",
+                    "Selecione o coletavel de interesse a tentar alcançar a liberdade.");
+        }
+        return miniAsas;
+    }
+
     private static PowerUpEntidade getAsas()
     {
         if(asa == null)
@@ -133,7 +152,7 @@ public class FactoryPowerUpEntidade
                 .configIsColetavel(true)
                 .configDescricao(
                     "Dê um par de asas ao coletavel do seu interesse para que ele alcance a liberdade.",
-                    "-");
+                    "Selecione o coletavel de interesse a alcançar a liberdade.");
         }
         return asa;
     }
@@ -184,6 +203,7 @@ public class FactoryPowerUpEntidade
             case PowerUpEnums.TIPO.MISSIL_TELEGUIADO: return getMissilTeleguiado();
             case PowerUpEnums.TIPO.IGUAL            : return getIgual();
             case PowerUpEnums.TIPO.TELEPORTE        : return getTeleporte();
+            case PowerUpEnums.TIPO.MINI_ASAS        : return getMiniAsas();
             case PowerUpEnums.TIPO.ASAS             : return getAsas();
             case PowerUpEnums.TIPO.ROLLBACK         : return getRollBack();
             case PowerUpEnums.TIPO.DESCARTE         : return getDescarte();
@@ -200,6 +220,7 @@ public class FactoryPowerUpEntidade
             getMissilTeleguiado(),
             getIgual(),
             getTeleporte(),
+            getMiniAsas(),
             getAsas(),
             getRollBack(),
             getDescarte()
