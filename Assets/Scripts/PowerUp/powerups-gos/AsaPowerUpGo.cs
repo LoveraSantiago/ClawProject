@@ -4,34 +4,24 @@ using System.Collections;
 public class AsaPowerUpGo : AbstractAsaPowerUpGo
 {   
     public AsaPowerUpGo() 
-        : base(powerUpDto.AsaDto.AsaGo, "Asas"){}           
+        : base(powerUpDto.AsaDto.AsaGo, "Asas"){}              
 
-    protected override IEnumerator voar(ColetavelTile coletavelAcertado)
+    protected override float getHalturaLimite()
     {
-        setGravidade(powerUpDto.AsaDto.GravidadeNeg);
-        acionarTriggerNoCollider();
-        playAnimacaoVoar();
+        return powerUpDto.AsaDto.Haltura;
+    }
 
-        Vector3 posicaoInicial = getPosicao();
-        float posXmax = posicaoInicial.x + powerUpDto.AsaDto.Offset;
-        float posXmin = posicaoInicial.x - powerUpDto.AsaDto.Offset;
-
-        while (getPosicao().y < powerUpDto.AsaDto.Haltura)
-        {
-            Vector3 posicaoAtual = getPosicao();
-            float xZigZag = Mathf.Lerp(posXmin, posXmax, Mathf.PingPong(Time.time, 1f));
-            Vector3 posicaoZigZag = new Vector3(xZigZag, posicaoAtual.y, posicaoAtual.z);
-            colocarNaPosicao(posicaoZigZag);
-            yield return null;
-        }
+    protected override IEnumerator finalizarVoar(ColetavelTile coletavelAcertado)
+    {
         powerUpFinalizacao.preFinalizar(coletavelAcertado);
         desligar();
 
         yield return new WaitForSeconds(powerUpDto.AsaDto.DelayFinalizar);
 
         powerUpFinalizacao.finalizado();
-        yield return null;
-    }   
+        yield return null;        
+    }
+
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
