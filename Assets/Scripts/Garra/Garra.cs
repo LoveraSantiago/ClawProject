@@ -6,8 +6,8 @@ public class Garra
 
     public GarraDto garraDto { get; private set; }
 
-    public GarraPincas pincas { get; private set; }
-    public GarraAnimacao animacao { get; private set; }
+    public GarraPincas    pincas { get; private set; }
+    public GarraAnimacao  animacao { get; private set; }
     public GarraRigidBody rigidBody { get; private set; }    
 
     public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }
