@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class MovimentacaoDaGarraContextoEstatico 
+public class Garra 
 {
     public float alturaLocalEfeitoTrail { get; private set; }
     public Vector2 posInicial { get; private set; }
 
+    public GarraDto garraDto { get; private set; }
     public PincaDaGarra pincas { get; private set; }
     public AnimacaoGarra animacao { get; private set; }
-    public GarraDto garraDto { get; private set; }
     public Rigidbody2D garraRigidBody { get { return garraDto.RigidBody; } }
 
     public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }
 
-    public MovimentacaoDaGarraContextoEstatico(GarraDto garraDto)
+    public Garra(GarraDto garraDto)
     {
         this.garraDto = garraDto;
         posInicial = garraDto.RigidBody.transform.localPosition;

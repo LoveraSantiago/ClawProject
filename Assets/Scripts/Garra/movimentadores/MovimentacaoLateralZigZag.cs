@@ -20,11 +20,11 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 
     public MovimentacaoLateralZigZag()
     {
-        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -contexto.garraDto.Angulos.IdleMin);
-        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, contexto.garraDto.Angulos.IdleMin);
+        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -garra.garraDto.Angulos.IdleMin);
+        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, garra.garraDto.Angulos.IdleMin);
 
-        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -contexto.garraDto.Angulos.IdleMax);
-        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, contexto.garraDto.Angulos.IdleMax);        
+        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -garra.garraDto.Angulos.IdleMax);
+        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, garra.garraDto.Angulos.IdleMax);        
         direcao = 1;        
     }
 
@@ -52,7 +52,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         verificarSeMovimentacaoAtingiuLimites();
         verificarSePincaAtingiuLimites();
 
-        rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
+        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
     }
 
     private void verificarSeMovimentacaoAtingiuLimites()
@@ -95,7 +95,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     private void configurarAngulosParaMax()
     {
         isUsandoMaxAngulo = true;
-        anguloAtual = -contexto.garraDto.Angulos.IdleMax;
+        anguloAtual = -garra.garraDto.Angulos.IdleMax;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMax;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMax;
     }
@@ -103,7 +103,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     private void configurarAngulosParaMin()
     {
         isUsandoMaxAngulo = false;
-        anguloAtual = contexto.garraDto.Angulos.IdleMin;
+        anguloAtual = garra.garraDto.Angulos.IdleMin;
         anguloDesejadoDireitaAtual = anguloDesejadoDireitaMin;
         anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMin;
     }

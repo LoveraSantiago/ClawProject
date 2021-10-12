@@ -8,8 +8,8 @@ public class MovimentacaoParado : MovimentacaoDaGarra
     
     public MovimentacaoParado()
     {
-        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -contexto.garraDto.Angulos.IdleMin);
-        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, contexto.garraDto.Angulos.IdleMin);
+        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garra.garraDto.Angulos.IdleMin);
+        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garra.garraDto.Angulos.IdleMin);
     }
 
     public override void preInicio()
@@ -24,6 +24,6 @@ public class MovimentacaoParado : MovimentacaoDaGarra
     public override void fixedUpdate()
     {
         parar();
-        rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
     }
 }

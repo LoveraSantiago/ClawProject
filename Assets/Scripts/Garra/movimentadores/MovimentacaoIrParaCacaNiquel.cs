@@ -6,7 +6,7 @@ public class MovimentacaoIrParaCacaNiquel : MovimentacaoDaGarraCacaNiquel
 
     public MovimentacaoIrParaCacaNiquel()
     {
-        movVoltarPosCacaNiquel = new MovimentacaoVoltarParaPosicao(contexto.garraDto.PosCacaNiquel);
+        movVoltarPosCacaNiquel = new MovimentacaoVoltarParaPosicao(garra.garraDto.PosCacaNiquel);
     }
 
     public override void fixedUpdate()

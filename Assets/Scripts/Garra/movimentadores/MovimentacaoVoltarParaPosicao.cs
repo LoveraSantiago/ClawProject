@@ -11,8 +11,8 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
     public MovimentacaoVoltarParaPosicao(float posicaoHorizontal)
     {
         this.posicaoHorizontal = posicaoHorizontal;
-        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -contexto.garraDto.Angulos.IdleMin);
-        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, contexto.garraDto.Angulos.IdleMin);
+        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garra.garraDto.Angulos.IdleMin);
+        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garra.garraDto.Angulos.IdleMin);
     }
 
     public DirecaoDaGarra getDirecaoAtual()
@@ -30,7 +30,7 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
         if (!isMenorPosHorizontal(posicaoHorizontal))
         {
             moverHorizontalmenteFreeze(velocidadeDirecao);
-            rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+            rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
         {
@@ -43,7 +43,7 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
         if (!isMaiorPosHorizontal(posicaoHorizontal))
         {
             moverHorizontalmenteFreeze(velocidadeDirecao);
-            rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+            rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
         }
         else
         {
