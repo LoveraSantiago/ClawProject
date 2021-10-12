@@ -53,24 +53,24 @@ public abstract class MovimentacaoDaGarra
 
     protected void parar()
     {
-        garra.pararGarraRigidBody();
+        garra.rigidBody.parar();
     }
 
     protected void moverParaCimaFreeze()
     {
-        garra.fixarGarraRigidBodyVerticalmente();
+        garra.rigidBody.fixarVerticalmente();
         garra.moverParaCima();        
     }
 
     protected void moverParaBaixoFreeze()
     {
-        garra.fixarGarraRigidBodyVerticalmente();
+        garra.rigidBody.fixarVerticalmente();
         garra.moverParaBaixo();
     }
 
     protected void moverHorizontalmenteFreeze(float direcao)
     {
-        garra.fixarGarraRigidBodyHorizontalmente();
+        garra.rigidBody.fixarHorizontalmente();
         garra.moverHorizontalmente(direcao);        
     }    
 
@@ -86,37 +86,37 @@ public abstract class MovimentacaoDaGarra
 
     protected void colocarNaAlturaInicial()
     {
-        garra.colocarGarraRigidBodyAlturaInicial();
+        garra.rigidBody.colocarNaHalturaInicial();
     }
 
     protected void colocarNaPosInicial()//REMOVER
     {
-        garra.colocarGarraRigidBodyPosInicial();
+        garra.rigidBody.colocarNaPosicaoInicial();
     }
 
     protected void colocarNaPosHorizontal(float posHorizontal)
     {
-        garra.colocarGarraRigidBodyPosHorizontal(posHorizontal);        
+        garra.rigidBody.colocarNaPosicaoHorizontal(posHorizontal);        
     }
 
     protected void colocarMassa(int massa)
     {
-        garra.colocarMassaNaGarraRigidyBody(massa);        
+        garra.rigidBody.colocarMassa(massa);        
     }
 
     protected void fixarVerticalEHorizontal()
     {
-        garra.fixarGarraRigidyBodyVerticalEHorizontal();
+        garra.rigidBody.fixarVerticalEHorizontal();
     }
 
     protected void desafixar()
     {
-        garra.desafixarGarraRigidBody();
+        garra.rigidBody.desafixar();
     }
 
     protected bool isAcimaPosInicial()
     {
-        return garra.isGarraRigidyBodyAcimaPosInicial();        
+        return garra.rigidBody.isAcimaPosInicial();
     }
 
     protected bool isParada()//REMOVER
@@ -126,12 +126,12 @@ public abstract class MovimentacaoDaGarra
 
     protected bool isMaiorPosHorizontal(float posHorizontal)
     {
-        return garra.isGarraRigidBodyMaiorPosHorizontal(posHorizontal);
+        return garra.rigidBody.isMaiorPosHorizontal(posHorizontal);
     }
 
     protected bool isMenorPosHorizontal(float posHorizontal)
     {
-        return garra.isGarraRigidBodyMenorPosHorizontal(posHorizontal);
+        return garra.rigidBody.isMenorPosHorizontal(posHorizontal);
     }
 
     protected void dispararEventoDirecao(int direcao)
