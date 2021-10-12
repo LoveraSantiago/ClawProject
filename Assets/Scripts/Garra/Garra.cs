@@ -6,8 +6,9 @@ public class Garra
     public Vector2 posInicial { get; private set; }
 
     public GarraDto garraDto { get; private set; }
+
     public PincaDaGarra pincas { get; private set; }
-    public AnimacaoGarra animacao { get; private set; }
+    public GarraAnimacao animacao { get; private set; }
     public Rigidbody2D garraRigidBody { get { return garraDto.RigidBody; } }
 
     public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }
@@ -19,7 +20,7 @@ public class Garra
         alturaLocalEfeitoTrail = garraDto.EfeitoTrail.transform.localPosition.y;
 
         pincas = new PincaDaGarra(garraDto.PincaEsquerda, garraDto.PincaDireita);
-        animacao = new AnimacaoGarra(garraDto.Animator);
+        animacao = new GarraAnimacao(garraDto.Animator);
         produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
     }
 
