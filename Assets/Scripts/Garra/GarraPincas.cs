@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PincaDaGarra 
+public class GarraPincas 
 {
     private float incremento;    
 
@@ -10,7 +10,7 @@ public class PincaDaGarra
     private Transform pincaEsquerda;
     private Transform pincaDireita;
 
-    public PincaDaGarra(Transform pincaEsquerda, Transform pincaDireita)
+    public GarraPincas(Transform pincaEsquerda, Transform pincaDireita)
     {
         this.pincaEsquerda = pincaEsquerda;
         this.pincaDireita = pincaDireita;
