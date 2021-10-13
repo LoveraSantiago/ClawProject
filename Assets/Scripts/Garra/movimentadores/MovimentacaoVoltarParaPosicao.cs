@@ -3,16 +3,11 @@ using UnityEngine;
 public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
 {
     private float posicaoHorizontal;
-    private DirecaoDaGarra direcaoVoltar;
-
-    private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;
-    private Quaternion anguloDesejadoDireitaAntesEstadoInicial;
+    private DirecaoDaGarra direcaoVoltar;   
 
     public MovimentacaoVoltarParaPosicao(float posicaoHorizontal)
     {
-        this.posicaoHorizontal = posicaoHorizontal;
-        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garra.garraDto.Angulos.IdleMin);
-        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garra.garraDto.Angulos.IdleMin);
+        this.posicaoHorizontal = posicaoHorizontal;                
     }
 
     public DirecaoDaGarra getDirecaoAtual()
@@ -30,7 +25,9 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
         if (!isMenorPosHorizontal(posicaoHorizontal))
         {
             moverHorizontalmenteFreeze(velocidadeDirecao);
-            rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+            Quaternion angIdleMinDireita  = angulosTemp.angIdleMinDireita;
+            Quaternion angIdleMinEsquerda = angulosTemp.angIdleMinEsquerda;
+            rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, angIdleMinEsquerda, angIdleMinDireita);
         }
         else
         {
@@ -43,7 +40,9 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
         if (!isMaiorPosHorizontal(posicaoHorizontal))
         {
             moverHorizontalmenteFreeze(velocidadeDirecao);
-            rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+            Quaternion angIdleMinDireita = angulosTemp.angIdleMinDireita;
+            Quaternion angIdleMinEsquerda = angulosTemp.angIdleMinEsquerda;
+            rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, angIdleMinEsquerda, angIdleMinDireita);
         }
         else
         {
