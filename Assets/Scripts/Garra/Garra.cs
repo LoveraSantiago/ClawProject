@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class Garra 
+public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     public GarraDto garraDto;
 
@@ -9,7 +7,7 @@ public class Garra
     public GarraRigidBody rigidBody { get; private set; }    
     public GarraEfeito    efeito { get; private set; }
 
-    public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }
+    private ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao;
 
     public Garra(GarraDto garraDto)
     {
@@ -35,5 +33,13 @@ public class Garra
         }
     }
 
-   
+    public void dispararEventoDirecao(DirecaoDaGarra direcao)
+    {
+        produtorEventoDirecao.produziuEvento(direcao);
+    }
+
+    ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
+    {
+        return produtorEventoDirecao;
+    }
 }

@@ -164,7 +164,7 @@ public abstract class MovimentacaoDaGarra
 
     protected void produziuEventoDeDirecao(DirecaoDaGarra direcao)
     {
-        Garra.produtorEventoDirecao.produziuEvento(direcao);
+        garra.dispararEventoDirecao(direcao);        
     }
 
     public static void configurarComponentesMovimentacao(GarraDto garraDtoArg)
