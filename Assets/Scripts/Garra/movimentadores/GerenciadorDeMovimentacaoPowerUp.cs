@@ -1,7 +1,6 @@
 public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
                                                 ComunicadorComGerMovPowerUp
 {
-
     private ContadorDeTempo contadorDeFimTempo;
 
     private MovimentacaoDaGarraPowerUp movAtual;
