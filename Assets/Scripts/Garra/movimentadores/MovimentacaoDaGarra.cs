@@ -58,20 +58,23 @@ public abstract class MovimentacaoDaGarra
 
     protected void moverParaCimaFreeze()
     {
+        garra.efeito.ligarTrailPCima();
         garra.rigidBody.fixarVerticalmente();
-        garra.moverParaCima();        
+        garra.rigidBody.moverPCima();
     }
 
     protected void moverParaBaixoFreeze()
     {
+        garra.efeito.ligarTrailPBaixo();
         garra.rigidBody.fixarVerticalmente();
-        garra.moverParaBaixo();
+        garra.rigidBody.moverPBaixo();        
     }
 
     protected void moverHorizontalmenteFreeze(float direcao)
     {
+        garra.efeito.desligarTrail();
         garra.rigidBody.fixarHorizontalmente();
-        garra.moverHorizontalmente(direcao);        
+        garra.rigidBody.moverPHorizontal(direcao);          
     }    
 
     protected void agarrando()
