@@ -54,8 +54,5 @@ public class Garra
         }
     }
 
-    public void desligarTrail()
-    {
-        garraDto.EfeitoTrail.Stop();
-    }   
+   
 }

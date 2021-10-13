@@ -21,6 +21,11 @@ public class GarraEfeito
         ligarEfeitoTrailAngulo(0.8f, 0);
     }
 
+    public void desligarTrail()
+    {
+        efeitoTrail.Stop();
+    }
+
     private void ligarEfeitoTrailAngulo(float incremento, float angulo)
     {
         efeitoTrail.transform.rotation = Quaternion.Euler(0, 0, angulo);

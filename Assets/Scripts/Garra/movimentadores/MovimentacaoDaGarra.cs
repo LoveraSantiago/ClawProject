@@ -76,12 +76,12 @@ public abstract class MovimentacaoDaGarra
 
     protected void agarrando()
     {
-        garra.desligarTrail();
+        garra.efeito.desligarTrail();
     }
 
     protected void voltando()
     {
-        garra.desligarTrail();
+        garra.efeito.desligarTrail();
     }
 
     protected void colocarNaAlturaInicial()
