@@ -20,11 +20,11 @@ public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
 
         garraInteracaoComPowerUp.iniciar();
         garraInteracaoComPowerUp.ligarGravidadeZero();
-        garraInteracaoComPowerUp.colocarNaPosicao(contexto.garraDto.CentroDaGarra.position);
+        garraInteracaoComPowerUp.colocarNaPosicao(garra.garraDto.CentroDaGarra.position);
     }       
 
     public override void fixedUpdate()
     {
-        rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);        
+        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);        
     }   
 }

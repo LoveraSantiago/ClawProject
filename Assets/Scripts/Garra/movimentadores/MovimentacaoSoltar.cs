@@ -7,8 +7,8 @@ public class MovimentacaoSoltar : MovimentacaoDaGarraPowerUp
 
     public MovimentacaoSoltar()
     {
-        anguloDesejadoAberturaDireita = Quaternion.Euler(0, 0, -contexto.garraDto.Angulos.Abertura);
-        anguloDesejadoAberturaEsquerda = Quaternion.Euler(0, 0, contexto.garraDto.Angulos.Abertura);
+        anguloDesejadoAberturaDireita = Quaternion.Euler(0, 0, -garra.garraDto.Angulos.Abertura);
+        anguloDesejadoAberturaEsquerda = Quaternion.Euler(0, 0, garra.garraDto.Angulos.Abertura);
     }
 
     public override void preInicio()
@@ -19,7 +19,7 @@ public class MovimentacaoSoltar : MovimentacaoDaGarraPowerUp
     public override void fixedUpdate()
     {
         parar();
-        rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoAberturaEsquerda, anguloDesejadoAberturaDireita);
+        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, anguloDesejadoAberturaEsquerda, anguloDesejadoAberturaDireita);
         if (isPincaDireitaNoAngulo(anguloDesejadoAberturaDireita))
         {
             comunicadorComGerMovimentacao.trocarParaAcaoParado();

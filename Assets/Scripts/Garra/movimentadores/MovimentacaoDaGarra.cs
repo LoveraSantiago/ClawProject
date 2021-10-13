@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class MovimentacaoDaGarra 
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;   
-    public static MovimentacaoDaGarraContextoEstatico contexto { get; private set; }//FECHAR VAZAMENTO DE CONTEXTO PARA MOVIMENTADORES
+    public static Garra garra { get; private set; }//FECHAR VAZAMENTO DE CONTEXTO PARA MOVIMENTADORES
 
     public virtual void preInicio() { }
     public virtual void update(InputGame inputGame) { }
@@ -13,37 +13,37 @@ public abstract class MovimentacaoDaGarra
 
     public void playAnimcaoComemorar()
     {
-        contexto.animacao.comemorar();
+        garra.animacao.comemorar();
     }
 
     public void playAnimacaoPiscar()
     {
-        contexto.animacao.piscar();
+        garra.animacao.piscar();
     }
 
     public void playAnimacaoIrPDireita()
     {
-        contexto.animacao.irParaDireita();
+        garra.animacao.irParaDireita();
     }
 
     public void playAnimacaoIrPEsquerda()
     {
-        contexto.animacao.irParaEsquerda();
+        garra.animacao.irParaEsquerda();
     }
 
     public void playAnimacaoIrPCima()
     {
-        contexto.animacao.irParaCima();
+        garra.animacao.irParaCima();
     }
 
     public void playAnimacaoIrPBaixo()
     {
-        contexto.animacao.irParaBaixo();
+        garra.animacao.irParaBaixo();
     }
 
     public bool isPlayAnimacaoComemorando()
     {
-        return contexto.animacao.isComemorando();
+        return garra.animacao.isComemorando();
     }
 
     public bool isNotPlayAnimacaoComemorando()
@@ -53,70 +53,70 @@ public abstract class MovimentacaoDaGarra
 
     protected void parar()
     {
-        contexto.pararGarraRigidBody();
+        garra.rigidBody.parar();
     }
 
     protected void moverParaCimaFreeze()
     {
-        contexto.fixarGarraRigidBodyVerticalmente();
-        contexto.moverParaCima();        
+        garra.rigidBody.fixarVerticalmente();
+        garra.moverParaCima();        
     }
 
     protected void moverParaBaixoFreeze()
     {
-        contexto.fixarGarraRigidBodyVerticalmente();
-        contexto.moverParaBaixo();
+        garra.rigidBody.fixarVerticalmente();
+        garra.moverParaBaixo();
     }
 
     protected void moverHorizontalmenteFreeze(float direcao)
     {
-        contexto.fixarGarraRigidBodyHorizontalmente();
-        contexto.moverHorizontalmente(direcao);        
+        garra.rigidBody.fixarHorizontalmente();
+        garra.moverHorizontalmente(direcao);        
     }    
 
     protected void agarrando()
     {
-        contexto.desligarTrail();
+        garra.efeito.desligarTrail();
     }
 
     protected void voltando()
     {
-        contexto.desligarTrail();
+        garra.efeito.desligarTrail();
     }
 
     protected void colocarNaAlturaInicial()
     {
-        contexto.colocarGarraRigidBodyAlturaInicial();
+        garra.rigidBody.colocarNaHalturaInicial();
     }
 
     protected void colocarNaPosInicial()//REMOVER
     {
-        contexto.colocarGarraRigidBodyPosInicial();
+        garra.rigidBody.colocarNaPosicaoInicial();
     }
 
     protected void colocarNaPosHorizontal(float posHorizontal)
     {
-        contexto.colocarGarraRigidBodyPosHorizontal(posHorizontal);        
+        garra.rigidBody.colocarNaPosicaoHorizontal(posHorizontal);        
     }
 
     protected void colocarMassa(int massa)
     {
-        contexto.colocarMassaNaGarraRigidyBody(massa);        
+        garra.rigidBody.colocarMassa(massa);        
     }
 
     protected void fixarVerticalEHorizontal()
     {
-        contexto.fixarGarraRigidyBodyVerticalEHorizontal();
+        garra.rigidBody.fixarVerticalEHorizontal();
     }
 
     protected void desafixar()
     {
-        contexto.desafixarGarraRigidBody();
+        garra.rigidBody.desafixar();
     }
 
     protected bool isAcimaPosInicial()
     {
-        return contexto.isGarraRigidyBodyAcimaPosInicial();        
+        return garra.rigidBody.isAcimaPosInicial();
     }
 
     protected bool isParada()//REMOVER
@@ -126,46 +126,46 @@ public abstract class MovimentacaoDaGarra
 
     protected bool isMaiorPosHorizontal(float posHorizontal)
     {
-        return contexto.isGarraRigidBodyMaiorPosHorizontal(posHorizontal);
+        return garra.rigidBody.isMaiorPosHorizontal(posHorizontal);
     }
 
     protected bool isMenorPosHorizontal(float posHorizontal)
     {
-        return contexto.isGarraRigidBodyMenorPosHorizontal(posHorizontal);
+        return garra.rigidBody.isMenorPosHorizontal(posHorizontal);
     }
 
     protected void dispararEventoDirecao(int direcao)
     {
-        contexto.dispararEventoDirecao(direcao);        
+        garra.dispararEventoDirecao(direcao);        
     }     
     
     protected void acionarColliderDasPincas()
     {
-        contexto.pincas.acionarCollider();
+        garra.pincas.acionarCollider();
     }
 
     protected void acionarTriggerDasPincas()
     {
-        contexto.pincas.acionarTrigger();
+        garra.pincas.acionarTrigger();
     }
 
     protected bool isPincaDireitaNoAngulo(Quaternion anguloDesejado)
     {
-        return contexto.pincas.isDireitaNoAngulo(anguloDesejado);
+        return garra.pincas.isDireitaNoAngulo(anguloDesejado);
     }
 
     protected void rotacionarPincaFDT(float velocidade, Quaternion angEsquerda, Quaternion angDireita)
     {
-        contexto.pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);
+        garra.pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);
     }
 
     protected void produziuEventoDeDirecao(DirecaoDaGarra direcao)
     {
-        MovimentacaoDaGarraContextoEstatico.produtorEventoDirecao.produziuEvento(direcao);
+        Garra.produtorEventoDirecao.produziuEvento(direcao);
     }
 
     public static void configurarComponentesMovimentacao(GarraDto garraDtoArg)
     {
-        contexto = new MovimentacaoDaGarraContextoEstatico(garraDtoArg);               
+        garra = new Garra(garraDtoArg);               
     }
 }

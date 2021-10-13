@@ -28,7 +28,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
     public override void iniciarMovimentacoes()
     {
-        MovimentacaoDaGarraContextoEstatico.produtorEventoDirecao.produziuEvento(DirecaoDaGarra.CENTRALIZADA);
+        Garra.produtorEventoDirecao.produziuEvento(DirecaoDaGarra.CENTRALIZADA);
         trocarParaAcaoVoltarParaCima();
     }    
 

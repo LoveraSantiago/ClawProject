@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class AnimacaoGarra 
+public class GarraAnimacao 
 {
     private readonly int ANIM_IDLE     = Animator.StringToHash("idle");
     private readonly int ANIM_CIMA     = Animator.StringToHash("indocima");
@@ -15,7 +15,7 @@ public class AnimacaoGarra
 
     private Animator animator;   
 
-    public AnimacaoGarra(Animator animator)
+    public GarraAnimacao(Animator animator)
     {
         this.animator = animator;
     }

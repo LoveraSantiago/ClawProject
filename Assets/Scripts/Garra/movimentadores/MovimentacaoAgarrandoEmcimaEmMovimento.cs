@@ -15,7 +15,7 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
 
         garraInteracaoComPowerUp.iniciar();
         garraInteracaoComPowerUp.ligarGravidadeZero();
-        garraInteracaoComPowerUp.colocarNaPosicao(contexto.garraDto.CentroDaGarra.position);
+        garraInteracaoComPowerUp.colocarNaPosicao(garra.garraDto.CentroDaGarra.position);
 
         direcao = 1;
         dispararEventoDirecao(direcao);//reesincronizarJoystick
@@ -31,7 +31,7 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
 
     public override void fixedUpdate()
     {
-        rotacionarPincaFDT(contexto.garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
+        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
         verificarSeMovimentacaoAtingiuLimites();
         moverHorizontalmenteFreeze(direcao);
     }
