@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Garra 
 {
-    public float alturaLocalEfeitoTrail { get; private set; }    
-
     public GarraDto garraDto { get; private set; }
 
     public GarraPincas    pincas { get; private set; }
