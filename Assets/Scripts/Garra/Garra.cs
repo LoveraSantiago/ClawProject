@@ -9,29 +9,31 @@ public class Garra
     public GarraPincas    pincas { get; private set; }
     public GarraAnimacao  animacao { get; private set; }
     public GarraRigidBody rigidBody { get; private set; }    
+    public GarraEfeito    efeito { get; private set; }
 
     public static ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao { get; private set; }
 
     public Garra(GarraDto garraDto)
     {
-        this.garraDto = garraDto;        
-        alturaLocalEfeitoTrail = garraDto.EfeitoTrail.transform.localPosition.y;
+        this.garraDto = garraDto;                
 
-        pincas = new GarraPincas(garraDto.PincaEsquerda, garraDto.PincaDireita);
-        animacao = new GarraAnimacao(garraDto.Animator);
+        pincas    = new GarraPincas(garraDto.PincaEsquerda, garraDto.PincaDireita);
+        animacao  = new GarraAnimacao(garraDto.Animator);
         rigidBody = new GarraRigidBody(garraDto.RigidBody.transform.localPosition, garraDto.RigidBody);
+        efeito    = new GarraEfeito(garraDto.EfeitoTrail);
+
         produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
     }                           
 
     public void moverParaCima()
     {
-        ligarEfeitoTrailAngulo(-0.4f, 180);
+        efeito.ligarTrailPCima();
         rigidBody.setVelocidade(new Vector2(0, garraDto.Velocidades.MovCima));
     }
 
     public void moverParaBaixo()
     {
-        ligarEfeitoTrailAngulo(0.8f, 0);
+        efeito.ligarTrailPBaixo();
         rigidBody.setVelocidade(new Vector2(0, garraDto.Velocidades.MovBaixo));
     }
 
@@ -57,14 +59,5 @@ public class Garra
     public void desligarTrail()
     {
         garraDto.EfeitoTrail.Stop();
-    }
-
-    public void ligarEfeitoTrailAngulo(float incremento, float angulo)
-    {
-        garraDto.EfeitoTrail.Play();
-        garraDto.EfeitoTrail.transform.rotation = Quaternion.Euler(0, 0, angulo);
-
-        Vector3 localPos = garraDto.EfeitoTrail.transform.localPosition;
-        garraDto.EfeitoTrail.transform.localPosition = new Vector3(localPos.x, alturaLocalEfeitoTrail + incremento, localPos.z);
-    }
+    }   
 }
