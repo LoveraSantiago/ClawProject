@@ -28,7 +28,7 @@ public class MapaScene : MonoBehaviour
         btnCards  .onClick.AddListener(() => goToPupScene());
         btnStore  .onClick.AddListener(() => goToNotImplementedScene());
         btnScore  .onClick.AddListener(() => goToNotImplementedScene());
-        btnPelucia.onClick.AddListener(() => goToNotImplementedScene());
+        btnPelucia.onClick.AddListener(() => gotoColetaveisScene());
         btnConfig .onClick.AddListener(() => goToNotImplementedScene());
     }   
 
@@ -36,6 +36,11 @@ public class MapaScene : MonoBehaviour
     {
         SceneManager.LoadScene("PupScene");
     }   
+
+    private void gotoColetaveisScene()
+    {
+        SceneManager.LoadScene("ColetaveisScene");
+    }
 
     private void goToNotImplementedScene()
     {
