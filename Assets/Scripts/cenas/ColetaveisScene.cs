@@ -13,17 +13,28 @@ public class ColetaveisScene : MonoBehaviour
     [Space(5)]
     [SerializeField] private GameObject prefabColetaveisDto;
 
+    private ColetavelEntidade.FAMILIA[] familias = { ColetavelEntidade.FAMILIA.FRUTAS,
+                                                     ColetavelEntidade.FAMILIA.FAKE};
+
     // Start is called before the first frame update
     void Start()
     {
         configBtnBack(btnBack);
-
+        PrefabDeSpriteDto prefabSpritesDto = prefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
+        Dictionary<string, Sprite> dicionarioDeSprites = prefabSpritesDto.getDicionarioDeSprites();
+        ColetavelHelper.configurar();
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        List<ColetavelEntidade> coletaveis = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familias[0]);
+        for(int contador = 0; contador < coletaveis.Count; contador++)
+        {
+            grupoColetaveis[contador].sprite = dicionarioDeSprites[coletaveis[contador].nomeSprite];
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+                    
     }
 
     private void configBtnBack(Button btnBack)

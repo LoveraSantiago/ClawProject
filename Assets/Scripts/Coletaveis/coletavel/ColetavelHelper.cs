@@ -39,7 +39,7 @@ public class ColetavelHelper
         }
     }
 
-    public ColetavelEntidade getColetavelEntidadeByFamilia(ColetavelEntidade.FAMILIA familia)
+    public ColetavelEntidade getRandomColetavelEntidadeByFamilia(ColetavelEntidade.FAMILIA familia)
     {
         if (dicionarioDeFamilias.ContainsKey(familia))
         {
@@ -52,6 +52,11 @@ public class ColetavelHelper
             Debug.LogError("A familia solicitada nao existe: " + familia);
             return null;
         }        
+    }
+
+    public List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamilia(ColetavelEntidade.FAMILIA familia)
+    {
+        return dicionarioDeFamilias[familia];
     }
 
     public void ligarMiraAlvoFinalNoColetavel(string nomeAlvo)
@@ -99,15 +104,21 @@ public class ColetavelHelper
         lista.Add(coletavelEntidadeIt);
     }    
 
-    
+    public static void configurar()
+    {
+        if (dicionarioDeIds == null)
+        {
+            dicionarioDeIds = new Dictionary<int, ColetavelEntidade>();
+            dicionarioDeSprites = new Dictionary<string, ColetavelEntidade>();
+            dicionarioDeFamilias = new Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>>();
 
-    public static void inicializarDicionarioDeColetaveisInGame(PoolDeColetaveis poolDeColetaveisArg)
+            popularDicionarios();
+        }
+    }
+
+    public static void configurar(PoolDeColetaveis poolDeColetaveisArg)
     {
         poolDeColetaveis = poolDeColetaveisArg;
-        dicionarioDeIds = new Dictionary<int, ColetavelEntidade>();
-        dicionarioDeSprites = new Dictionary<string, ColetavelEntidade>();
-        dicionarioDeFamilias = new Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>>();
-
-        popularDicionarios();
+        configurar();
     }
 }
