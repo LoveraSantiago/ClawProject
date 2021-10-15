@@ -3,15 +3,29 @@ using System.Collections.Generic;
 
 #pragma warning disable 0649
 public class PrefabDeSpriteDto : MonoBehaviour
-{
-    private static PrefabDeSpriteDto instance;
+{   
     [SerializeField] private Sprite[] sprites;
 
-    public Dictionary<string, Sprite> dicionarioDeSprites { get; private set; }
+    private bool inicializado;
+    private Dictionary<string, Sprite> dicionarioDeSprites;
 
     private void Start()
     {
-        inicializarInstancia();
+        inicializarDicionario();
+    }
+
+    public Dictionary<string, Sprite> getDicionarioDeSprites()
+    {
+        inicializarDicionario();
+        return dicionarioDeSprites;
+    }
+
+    private void inicializarDicionario()
+    {
+        if (!inicializado)
+        {            
+            montarDicionarioDeSprites(sprites);
+        }
     }
 
     private void montarDicionarioDeSprites(Sprite[] arrayDeSprites )
@@ -22,20 +36,5 @@ public class PrefabDeSpriteDto : MonoBehaviour
             Sprite spriteIt = arrayDeSprites[contador];
             dicionarioDeSprites.Add(spriteIt.name, spriteIt);
         }
-    }
-
-    private void inicializarInstancia()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            montarDicionarioDeSprites(sprites);
-        }
-    }
-
-    public PrefabDeSpriteDto getInstance()
-    {
-        inicializarInstancia();
-        return instance;
-    }
+    }    
 }

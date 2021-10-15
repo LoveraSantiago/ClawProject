@@ -22,6 +22,6 @@ public class ColetavelContextoEstatico
         nomeador = new Nomeador();
 
         PrefabDeSpriteDto prefabColetaveisDto = coletaveisDto.PrefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
-        dicionarioDeSprites = prefabColetaveisDto.getInstance().dicionarioDeSprites;        
+        dicionarioDeSprites = prefabColetaveisDto.getDicionarioDeSprites();
     }
 }
