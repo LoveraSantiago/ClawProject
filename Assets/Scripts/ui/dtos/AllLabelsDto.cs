@@ -4,6 +4,15 @@ using UnityEngine;
 #pragma warning disable 0649
 [System.Serializable]
 public class AllLabelsDto 
+    //RENOMEAR
+    //RENOMEAR
+    //RENOMEAR
+    //RENOMEAR
+    //RENOMEAR
+    //RENOMEAR
+    //RENOMEAR
+    //RENOMEAR
+    //RENOMEAR
 {
     [SerializeField] private TextMeshProUGUI lblPup;
     [SerializeField] private TextMeshProUGUI lblTipo;
