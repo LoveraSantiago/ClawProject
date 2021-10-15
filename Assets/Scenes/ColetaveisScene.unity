@@ -2414,6 +2414,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnBack: {fileID: 818320628}
+  grupoColetaveis:
+  - {fileID: 985997568}
+  - {fileID: 1270689581}
+  - {fileID: 270043351}
+  - {fileID: 85470445}
+  - {fileID: 120900956}
+  - {fileID: 2114778726}
+  - {fileID: 1493387764}
 --- !u!1001 &1751718904
 PrefabInstance:
   m_ObjectHideFlags: 0
