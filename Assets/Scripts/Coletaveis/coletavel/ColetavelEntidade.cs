@@ -27,13 +27,13 @@ public class ColetavelEntidade
         new ColetavelEntidade(15, "Coco"           , "characters_0006", FAMILIA.FRUTAS),
         new ColetavelEntidade(16, "Estrelamarinha?", "characters_0007", FAMILIA.FRUTAS),
 
-        new ColetavelEntidade(16, "Fake1", "tile-random", FAMILIA.FAKE),
-        new ColetavelEntidade(17, "Fake2", "tile-random", FAMILIA.FAKE),
-        new ColetavelEntidade(18, "Fake3", "tile-random", FAMILIA.FAKE),
-        new ColetavelEntidade(19, "Fake4", "tile-random", FAMILIA.FAKE),
-        new ColetavelEntidade(20, "Fake5", "tile-random", FAMILIA.FAKE),
-        new ColetavelEntidade(21, "Fake6", "tile-random", FAMILIA.FAKE),
-        new ColetavelEntidade(22, "Fake7", "tile-random", FAMILIA.FAKE),
+        new ColetavelEntidade(17, "Fake1", "tile-random", FAMILIA.FAKE),
+        new ColetavelEntidade(18, "Fake2", "tile-random", FAMILIA.FAKE),
+        new ColetavelEntidade(19, "Fake3", "tile-random", FAMILIA.FAKE),
+        new ColetavelEntidade(20, "Fake4", "tile-random", FAMILIA.FAKE),
+        new ColetavelEntidade(21, "Fake5", "tile-random", FAMILIA.FAKE),
+        new ColetavelEntidade(22, "Fake6", "tile-random", FAMILIA.FAKE),
+        new ColetavelEntidade(23, "Fake7", "tile-random", FAMILIA.FAKE),
     };
 
     public bool isVazio()
