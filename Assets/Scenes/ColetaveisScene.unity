@@ -2422,6 +2422,7 @@ MonoBehaviour:
   - {fileID: 120900956}
   - {fileID: 2114778726}
   - {fileID: 1493387764}
+  prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
 --- !u!1001 &1751718904
 PrefabInstance:
   m_ObjectHideFlags: 0

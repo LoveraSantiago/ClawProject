@@ -10,6 +10,8 @@ public class ColetaveisScene : MonoBehaviour
     [SerializeField] private Button btnBack;
     [Space(5)]
     [SerializeField] private Image[] grupoColetaveis = new Image[7]; 
+    [Space(5)]
+    [SerializeField] private GameObject prefabColetaveisDto;
 
     // Start is called before the first frame update
     void Start()
