@@ -10343,59 +10343,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1268081680032141856, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &388478384
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 388478386}
-  - component: {fileID: 388478385}
-  m_Layer: 0
-  m_Name: prefab-coletaveis-dto
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &388478385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388478384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c145c63f0e721643a8536a47b0eaf04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 0b082251c8af14642bd56a42a89b025e, type: 3}
-  - {fileID: 21300000, guid: 12248e2a121b8400aa4464081fa6dce1, type: 3}
-  - {fileID: 21300000, guid: dca2e233e9a6e4ef7be9a5b392e5effc, type: 3}
-  - {fileID: 21300000, guid: efb723cbae18641a9954c28d1f5cf3e9, type: 3}
-  - {fileID: 21300000, guid: 197f4c6ad86ad4eea9ece9b073043381, type: 3}
-  - {fileID: 21300000, guid: 1b34677d209914bd88468db12bd7ef0f, type: 3}
-  - {fileID: 21300000, guid: 6ff825b4da47d4749bb0a0b28414a44d, type: 3}
-  - {fileID: 21300000, guid: 9da6edb57becf934fab40b060310757f, type: 3}
-  - {fileID: 21300000, guid: b447edf10f25dd242a1d6843c361c91a, type: 3}
---- !u!4 &388478386
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388478384}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &416378463 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5745098079122120234, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -10555,14 +10502,7 @@ MonoBehaviour:
       referenciaColliderColetado: {fileID: 1930189876}
       efeitoColetado: {fileID: 1488198865}
       efeitoOutline: {fileID: 2100000, guid: cbad35fbf462a4f4bb8e2451dc3cf1a3, type: 2}
-      caracteres:
-      - {fileID: 21300000, guid: 0b082251c8af14642bd56a42a89b025e, type: 3}
-      - {fileID: 21300000, guid: 12248e2a121b8400aa4464081fa6dce1, type: 3}
-      - {fileID: 21300000, guid: dca2e233e9a6e4ef7be9a5b392e5effc, type: 3}
-      - {fileID: 21300000, guid: efb723cbae18641a9954c28d1f5cf3e9, type: 3}
-      - {fileID: 21300000, guid: 197f4c6ad86ad4eea9ece9b073043381, type: 3}
-      - {fileID: 21300000, guid: 1b34677d209914bd88468db12bd7ef0f, type: 3}
-      - {fileID: 21300000, guid: 6ff825b4da47d4749bb0a0b28414a44d, type: 3}
+      prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
       tuboDto:
         torque: 550
         gravidade: 0.65
