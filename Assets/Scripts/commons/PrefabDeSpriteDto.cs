@@ -2,10 +2,10 @@ using UnityEngine;
 using System.Collections.Generic;
 
 #pragma warning disable 0649
-public class PrefabPowerUpDto : MonoBehaviour
+public class PrefabDeSpriteDto : MonoBehaviour
 {
-    private static PrefabPowerUpDto instance;
-    [SerializeField] private Sprite[] powerUpSprites;
+    private static PrefabDeSpriteDto instance;
+    [SerializeField] private Sprite[] sprites;
 
     public Dictionary<string, Sprite> dicionarioDeSprites { get; private set; }
 
@@ -14,12 +14,12 @@ public class PrefabPowerUpDto : MonoBehaviour
         inicializarInstancia();
     }
 
-    private void montarDicionarioDeSprites(Sprite[] arrayDeSpritesBotoes)
+    private void montarDicionarioDeSprites(Sprite[] arrayDeSprites)
     {
         dicionarioDeSprites = new Dictionary<string, Sprite>();
-        for (int contador = 0; contador < arrayDeSpritesBotoes.Length; contador++)
+        for (int contador = 0; contador < arrayDeSprites.Length; contador++)
         {
-            Sprite spriteIt = arrayDeSpritesBotoes[contador];
+            Sprite spriteIt = arrayDeSprites[contador];
             dicionarioDeSprites.Add(spriteIt.name, spriteIt);
         }
     }
@@ -29,11 +29,11 @@ public class PrefabPowerUpDto : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            montarDicionarioDeSprites(powerUpSprites);
+            montarDicionarioDeSprites(sprites);
         }
     }
 
-    public PrefabPowerUpDto getInstance()
+    public PrefabDeSpriteDto getInstance()
     {
         inicializarInstancia();
         return instance;
