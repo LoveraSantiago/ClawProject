@@ -20,6 +20,7 @@ public class ColetaveisScene : MonoBehaviour,
     // Start is called before the first frame update
     void Start()
     {
+        Utils.configMainMono(this);
         ColetavelHelper.configurar();
 
         PrefabDeSpriteDto prefabSpritesDto = prefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
@@ -31,7 +32,9 @@ public class ColetaveisScene : MonoBehaviour,
             .configurarProdutor(blocoImg)
             .adicionarConsumidor(blocoImgDetalhe);
 
-        configBtnBack(btnBack);        
+        configBtnBack(btnBack);
+
+        blocoImg.startLaizy();
     }
 
     // Update is called once per frame

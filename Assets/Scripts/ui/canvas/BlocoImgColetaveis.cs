@@ -27,6 +27,11 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
         }        
     }
 
+    public void startLaizy()
+    {
+        produzirEventoDeColetavelAtual(0);
+    }
+
     public void clicouNaImg(GameObject goClicado)
     {
         string nomeGo = goClicado.name;
@@ -34,12 +39,16 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
         {
             string subStringIndice = nomeGo.Replace("img-coletavel", "");
             int indice = int.Parse(subStringIndice) - 1;
-
-            ColetavelHelper coletavelHelper = new ColetavelHelper();
-            Sprite sprProcurado = grupoImgColetaveis[indice].sprite;
-            ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeBySprite(sprProcurado.name);
-            produtorDeEvento.produziuEvento(new UiColetavelInfo(coletavelEntidade, sprProcurado));
+            produzirEventoDeColetavelAtual(indice);
         }
+    }
+
+    private void produzirEventoDeColetavelAtual(int indice)
+    {
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        Sprite sprProcurado = grupoImgColetaveis[indice].sprite;
+        ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeBySprite(sprProcurado.name);
+        produtorDeEvento.produziuEvento(new UiColetavelInfo(coletavelEntidade, sprProcurado));
     }
 
     ProdutorDeEvento<UiColetavelInfo> AcaoBlocoImgColetavelAtual.ProdutorEvento.getProdutorDeEvento()
