@@ -6,12 +6,12 @@ using UnityEngine.EventSystems;
 
 #pragma warning disable 0649
 public class ColetaveisScene : MonoBehaviour, 
-                               IPointerClickHandler
-     
+                               IPointerClickHandler     
 {
     [SerializeField] private Button btnBack;
     [Space(5)]
-    [SerializeField] private BlocoImgColetaveisDto blocoImgDto;    
+    [SerializeField] private BlocoImgColetaveisDto blocoImgDto;
+    [SerializeField] private BlocoImgDetalheColetavelDto blocoImgDetalheDto;
     [Space(5)]
     [SerializeField] private GameObject prefabColetaveisDto;
 

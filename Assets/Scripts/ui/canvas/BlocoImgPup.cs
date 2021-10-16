@@ -12,8 +12,7 @@ public class BlocoImgPup : AcaoBlocoImgPUpAtual.ProdutorEvento,
 
     private bool animacaoEmAndamento;
 
-    private BlocoImgPupDto
-        blocoImgDto;
+    private BlocoImgPupDto blocoImgDto;
     private NavegacaoDeArray<PowerUpEntidade> controlePups;    
     private ProdutorDeEvento<PowerUpEntidade> produtorDeEvento;    
 
@@ -25,8 +24,8 @@ public class BlocoImgPup : AcaoBlocoImgPUpAtual.ProdutorEvento,
 
         PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
         int indiceInicial = PlayerPrefsPup.recuperarEApagarIndicePup();
-        controlePups = new NavegacaoDeArray<PowerUpEntidade>(allPups, indiceInicial);        
-        produtorDeEvento = new ProdutorDeEvento<PowerUpEntidade>();
+        controlePups      = new NavegacaoDeArray<PowerUpEntidade>(allPups, indiceInicial);        
+        produtorDeEvento  = new ProdutorDeEvento<PowerUpEntidade>();
     }
 
     public void startLaizy()
