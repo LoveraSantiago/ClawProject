@@ -66,9 +66,22 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
     private void produzirEventoDeColetavelAtual(int indice)
     {
         ColetavelHelper coletavelHelper = new ColetavelHelper();
+
         Sprite sprProcurado = grupoImgColetaveis[indice].sprite;
         ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeBySprite(sprProcurado.name);
-        produtorDeEvento.produziuEvento(UiColetavelInfo.ofColetado(sprProcurado, coletavelEntidade));
+
+        if (PlayerPrefsColetaveis.isFamiliaLocked(coletavelEntidade.familia.ToString()))
+        {
+            produtorDeEvento.produziuEvento(UiColetavelInfo.ofLockado(sprProcurado, coletavelEntidade));
+        }
+        else if (PlayerPrefsColetaveis.isColetavelDisponivel(coletavelEntidade.nome))
+        {
+            produtorDeEvento.produziuEvento(UiColetavelInfo.ofColetado(sprProcurado, coletavelEntidade));
+        }
+        else
+        {
+            produtorDeEvento.produziuEvento(UiColetavelInfo.ofNaoColetado(sprProcurado, coletavelEntidade));
+        }
     }
 
     ProdutorDeEvento<UiColetavelInfo> AcaoBlocoImgColetavelAtual.ProdutorEvento.getProdutorDeEvento()
