@@ -24,4 +24,18 @@ public class BlocoImgColetaveis
             grupoImgColetaveis[contador].sprite = dicionarioDeSprites[coletaveis[contador].nomeSprite];
         }        
     }
+
+    public void clicouNaImg(GameObject goClicado)
+    {
+        string nomeGo = goClicado.name;
+        if (nomeGo.StartsWith("img-coletavel"))
+        {
+            string subStringIndice = nomeGo.Replace("img-coletavel", "");
+            int indice = int.Parse(subStringIndice) - 1;
+
+            ColetavelHelper coletavelHelper = new ColetavelHelper();
+            Sprite sprProcurado = grupoImgColetaveis[indice].sprite;
+            coletavelHelper.getColetavelEntidadeBySprite(sprProcurado.name);
+        }
+    }
 }

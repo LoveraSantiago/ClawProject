@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 85470446}
   - component: {fileID: 85470445}
   m_Layer: 5
-  m_Name: coletavel1
+  m_Name: img-coletavel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 120900957}
   - component: {fileID: 120900956}
   m_Layer: 5
-  m_Name: coletavel7
+  m_Name: img-coletavel7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 270043352}
   - component: {fileID: 270043351}
   m_Layer: 5
-  m_Name: coletavel2
+  m_Name: img-coletavel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1516,7 +1516,7 @@ GameObject:
   - component: {fileID: 985997569}
   - component: {fileID: 985997568}
   m_Layer: 5
-  m_Name: coletavel4
+  m_Name: img-coletavel4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1982,7 +1982,7 @@ GameObject:
   - component: {fileID: 1270689582}
   - component: {fileID: 1270689581}
   m_Layer: 5
-  m_Name: coletavel3
+  m_Name: img-coletavel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2132,7 +2132,7 @@ GameObject:
   - component: {fileID: 1493387765}
   - component: {fileID: 1493387764}
   m_Layer: 5
-  m_Name: coletavel5
+  m_Name: img-coletavel5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3090,7 +3090,7 @@ GameObject:
   - component: {fileID: 2114778727}
   - component: {fileID: 2114778726}
   m_Layer: 5
-  m_Name: coletavel6
+  m_Name: img-coletavel6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

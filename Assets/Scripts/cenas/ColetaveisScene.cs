@@ -13,7 +13,9 @@ public class ColetaveisScene : MonoBehaviour,
     [Space(5)]
     [SerializeField] private BlocoImgColetaveisDto blocoImgDto;    
     [Space(5)]
-    [SerializeField] private GameObject prefabColetaveisDto;    
+    [SerializeField] private GameObject prefabColetaveisDto;
+
+    private BlocoImgColetaveis blocoImg;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,7 @@ public class ColetaveisScene : MonoBehaviour,
 
         PrefabDeSpriteDto prefabSpritesDto = prefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
         Dictionary<string, Sprite> dicionarioDeSprites = prefabSpritesDto.getDicionarioDeSprites();
-        BlocoImgColetaveis blocoImg = new BlocoImgColetaveis(dicionarioDeSprites, blocoImgDto);
+        blocoImg = new BlocoImgColetaveis(dicionarioDeSprites, blocoImgDto);
 
         configBtnBack(btnBack);        
     }
@@ -34,13 +36,12 @@ public class ColetaveisScene : MonoBehaviour,
     }
 
     public void OnPointerClick(PointerEventData eventData)
-    {        
-        Debug.Log("Clicado em " + eventData.pointerEnter.name);
+    {
+        blocoImg.clicouNaImg(eventData.pointerEnter);
     }
 
     private void configBtnBack(Button btnBack)
     {
         btnBack.onClick.AddListener(() => SceneManager.LoadScene("MapScene"));
     }
-
 }
