@@ -27,7 +27,7 @@ public class ColetaveisScene : MonoBehaviour,
         PrefabDeSpriteDto prefabSpritesDto = prefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
         Dictionary<string, Sprite> dicionarioDeSprites = prefabSpritesDto.getDicionarioDeSprites();
         blocoImg = new BlocoImgColetaveis(dicionarioDeSprites, blocoImgDto, materialGrayScale);
-        BlocoImgColetaveisDetalhe blocoImgDetalhe = new BlocoImgColetaveisDetalhe(blocoImgDetalheDto);
+        BlocoImgColetaveisDetalhe blocoImgDetalhe = new BlocoImgColetaveisDetalhe(blocoImgDetalheDto, materialGrayScale);
 
         new AcaoBlocoImgColetavelAtual()
             .configurarProdutor(blocoImg)
