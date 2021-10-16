@@ -54,7 +54,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
         ColetavelHelper coletavelHelper = new ColetavelHelper();
         Sprite sprProcurado = grupoImgColetaveis[indice].sprite;
         ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeBySprite(sprProcurado.name);
-        produtorDeEvento.produziuEvento(new UiColetavelInfo(coletavelEntidade, sprProcurado));
+        produtorDeEvento.produziuEvento(UiColetavelInfo.ofColetado(sprProcurado, coletavelEntidade));
     }
 
     ProdutorDeEvento<UiColetavelInfo> AcaoBlocoImgColetavelAtual.ProdutorEvento.getProdutorDeEvento()
