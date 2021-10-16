@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class BlocoImg : AcaoBlocoImgPUpAtual.ProdutorEvento,
-                        AcaoBBarPupEscolhido<int>.ConsumidorEvento
+public class BlocoImgPup : AcaoBlocoImgPUpAtual.ProdutorEvento,
+                           AcaoBBarPupEscolhido<int>.ConsumidorEvento
 {
     private readonly int ANIM_IR_ESQUERDA  = Animator.StringToHash("irEsquerda");
     private readonly int ANIM_VIR_ESQUERDA = Animator.StringToHash("virDaEsquerda");
@@ -12,17 +12,19 @@ public class BlocoImg : AcaoBlocoImgPUpAtual.ProdutorEvento,
 
     private bool animacaoEmAndamento;
 
-    private BlocoImgDto blocoImgDto;
-    private ControlePupDoCanvas controlePups;
+    private BlocoImgPupDto blocoImgDto;
+    private NavegacaoDeArray<PowerUpEntidade> controlePups;    
     private ProdutorDeEvento<PowerUpEntidade> produtorDeEvento;    
 
-    public BlocoImg(BlocoImgDto blocoImgDto)
+    public BlocoImgPup(BlocoImgPupDto blocoImgDto)
     {
         this.blocoImgDto = blocoImgDto;
         blocoImgDto.BtnEsquerda.onClick.AddListener(()=> irParaEsquerda());
-        blocoImgDto.BtnDireita.onClick.AddListener(()=> irParaDireita());        
+        blocoImgDto.BtnDireita.onClick.AddListener (()=> irParaDireita());
 
-        controlePups = new ControlePupDoCanvas();
+        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
+        int indiceInicial = PlayerPrefsPup.recuperarEApagarIndicePup();
+        controlePups = new NavegacaoDeArray<PowerUpEntidade>(allPups, indiceInicial);        
         produtorDeEvento = new ProdutorDeEvento<PowerUpEntidade>();
     }
 
@@ -34,8 +36,8 @@ public class BlocoImg : AcaoBlocoImgPUpAtual.ProdutorEvento,
     public void irParaDireita()
     {
         if (!animacaoEmAndamento)
-        {
-            PowerUpEntidade pupEntidade = controlePups.getAntPup();            
+        {            
+            PowerUpEntidade pupEntidade = controlePups.getItemAnterior();
             Utils.MonoBehaviour.StartCoroutine(moverBloco(ANIM_IR_DIREITA, ANIM_VIR_DIREITA, pupEntidade));
         }
     }
@@ -43,8 +45,8 @@ public class BlocoImg : AcaoBlocoImgPUpAtual.ProdutorEvento,
     public void irParaEsquerda()
     {
         if (!animacaoEmAndamento)
-        {
-            PowerUpEntidade pupEntidade = controlePups.getProxPup();
+        {            
+            PowerUpEntidade pupEntidade = controlePups.getItemProximo();
             Utils.MonoBehaviour.StartCoroutine(moverBloco(ANIM_IR_ESQUERDA, ANIM_VIR_ESQUERDA, pupEntidade));
         }
     }    
@@ -68,15 +70,15 @@ public class BlocoImg : AcaoBlocoImgPUpAtual.ProdutorEvento,
     }
 
     private void irParaPupAtual()
-    {
-        PowerUpEntidade pupEntidade = controlePups.getPupAtual();
+    {        
+        PowerUpEntidade pupEntidade = controlePups.getItemIndiceAtual();
         blocoImgDto.ImgPowerUp.sprite = pupEntidade.sprPowerUp;
         produtorDeEvento.produziuEvento(pupEntidade);
     }
     
     void AcaoBBarPupEscolhido<int>.ConsumidorEvento.consumirEvento(int evento)
-    {
-        controlePups.irPupDoIndice(evento);
+    {        
+        controlePups.setIndiceAtual(evento);
         irParaPupAtual();
     }
 
