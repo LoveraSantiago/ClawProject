@@ -35,7 +35,8 @@ public class ColetaveisScene : MonoBehaviour,
             .configurarProdutor(blocoImg)
             .adicionarConsumidor(blocoImgDetalhe);
 
-        configBtnBack(btnBack);        
+        configBtnBack(btnBack);
+        configBtnGanharColetado(blocoImgDetalheDto.BtnGanharColetavel);
         blocoImg.startLaizy();
     }
 
@@ -53,5 +54,10 @@ public class ColetaveisScene : MonoBehaviour,
     private void configBtnBack(Button btnBack)
     {
         btnBack.onClick.AddListener(() => SceneManager.LoadScene("MapScene"));
+    }
+
+    private void configBtnGanharColetado(Button btnBack)
+    {
+        btnBack.onClick.AddListener(() => SceneManager.LoadScene("NotImplementedScene"));
     }   
 }
