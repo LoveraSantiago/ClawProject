@@ -13,6 +13,7 @@ public class BlocoImgColetaveisDetalhe : AcaoBlocoImgColetavelAtual.ConsumidorEv
 
     void AcaoBlocoImgColetavelAtual.ConsumidorEvento.consumirEvento(UiColetavelInfo evento)
     {
+        this.blocoImgDto.LblName.text = evento.coletavelEntidade.nome;
         this.blocoImgDto.ImgDetalhe.sprite = evento.sprite;
     }
 }

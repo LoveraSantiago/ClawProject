@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class ColetaveisScene : MonoBehaviour, 
                                IPointerClickHandler     
 {
-    [SerializeField] private Button btnBack;
+    [SerializeField] private Button btnBack;   
     [Space(5)]
     [SerializeField] private BlocoImgColetaveisDto blocoImgDto;
     [SerializeField] private BlocoImgDetalheColetavelDto blocoImgDetalheDto;
@@ -33,7 +33,7 @@ public class ColetaveisScene : MonoBehaviour,
             .adicionarConsumidor(blocoImgDetalhe);
 
         configBtnBack(btnBack);
-
+        configBtnGanharColetavel(blocoImgDetalheDto.BtnGanharColetavel);//TEMPORARIO AQUI
         blocoImg.startLaizy();
     }
 
@@ -51,5 +51,10 @@ public class ColetaveisScene : MonoBehaviour,
     private void configBtnBack(Button btnBack)
     {
         btnBack.onClick.AddListener(() => SceneManager.LoadScene("MapScene"));
+    }
+
+    private void configBtnGanharColetavel(Button btnBack)
+    {
+        btnBack.onClick.AddListener(() => SceneManager.LoadScene("NotImplementedScene"));
     }
 }
