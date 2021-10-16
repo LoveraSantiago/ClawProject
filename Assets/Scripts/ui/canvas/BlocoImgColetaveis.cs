@@ -9,7 +9,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
     private ProdutorDeEvento<UiColetavelInfo> produtorDeEvento;
 
     public BlocoImgColetaveis(
-        Dictionary<string, Sprite> dicionarioDeSprites, BlocoImgColetaveisDto blocoImgsDto)
+        Dictionary<string, Sprite> dicionarioDeSprites, BlocoImgColetaveisDto blocoImgsDto, Material materialGrayScale)
     {
         this.grupoImgColetaveis = blocoImgsDto.GrupoImgColetaveis;
         produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();
@@ -23,7 +23,13 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
         List<ColetavelEntidade> coletaveis = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familias[0]);
         for (int contador = 0; contador < coletaveis.Count; contador++)
         {
-            grupoImgColetaveis[contador].sprite = dicionarioDeSprites[coletaveis[contador].nomeSprite];
+            Image imageIt = grupoImgColetaveis[contador];
+            Sprite sprIt = dicionarioDeSprites[coletaveis[contador].nomeSprite];
+            Material matGray = new Material(materialGrayScale);
+
+            matGray.SetTexture("main_text", sprIt.texture);
+            imageIt.sprite = sprIt;
+            imageIt.material = matGray;
         }        
     }
 

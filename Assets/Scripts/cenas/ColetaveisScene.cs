@@ -13,6 +13,7 @@ public class ColetaveisScene : MonoBehaviour,
     [SerializeField] private BlocoImgColetaveisDto blocoImgDto;
     [SerializeField] private BlocoImgDetalheColetavelDto blocoImgDetalheDto;
     [Space(5)]
+    [SerializeField] private Material materialGrayScale;
     [SerializeField] private GameObject prefabColetaveisDto;
 
     private BlocoImgColetaveis blocoImg;
@@ -25,7 +26,7 @@ public class ColetaveisScene : MonoBehaviour,
 
         PrefabDeSpriteDto prefabSpritesDto = prefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
         Dictionary<string, Sprite> dicionarioDeSprites = prefabSpritesDto.getDicionarioDeSprites();
-        blocoImg = new BlocoImgColetaveis(dicionarioDeSprites, blocoImgDto);
+        blocoImg = new BlocoImgColetaveis(dicionarioDeSprites, blocoImgDto, materialGrayScale);
         BlocoImgColetaveisDetalhe blocoImgDetalhe = new BlocoImgColetaveisDetalhe(blocoImgDetalheDto);
 
         new AcaoBlocoImgColetavelAtual()
