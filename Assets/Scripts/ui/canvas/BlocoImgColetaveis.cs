@@ -2,15 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BlocoImgColetaveis 
+public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
 {
     private Image[] grupoImgColetaveis;
     private NavegacaoDeArray<ColetavelEntidade.FAMILIA> controleFamilia;
+    private ProdutorDeEvento<UiColetavelInfo> produtorDeEvento;
 
     public BlocoImgColetaveis(
         Dictionary<string, Sprite> dicionarioDeSprites, BlocoImgColetaveisDto blocoImgsDto)
     {
         this.grupoImgColetaveis = blocoImgsDto.GrupoImgColetaveis;
+        produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();
 
         ColetavelEntidade.FAMILIA[] familias = { ColetavelEntidade.FAMILIA.FRUTAS,
                                                  ColetavelEntidade.FAMILIA.FAKE };
@@ -35,7 +37,13 @@ public class BlocoImgColetaveis
 
             ColetavelHelper coletavelHelper = new ColetavelHelper();
             Sprite sprProcurado = grupoImgColetaveis[indice].sprite;
-            coletavelHelper.getColetavelEntidadeBySprite(sprProcurado.name);
+            ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeBySprite(sprProcurado.name);
+            produtorDeEvento.produziuEvento(new UiColetavelInfo(coletavelEntidade, sprProcurado));
         }
+    }
+
+    ProdutorDeEvento<UiColetavelInfo> AcaoBlocoImgColetavelAtual.ProdutorEvento.getProdutorDeEvento()
+    {
+        return produtorDeEvento;
     }
 }
