@@ -22,13 +22,14 @@ public class ColetaveisScene : MonoBehaviour,
     void Start()
     {
         Utils.configMainMono(this);
+        Utils.configMainMatGrayScale(materialGrayScale);
         ColetavelHelper.configurar();
         PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI
 
         PrefabDeSpriteDto prefabSpritesDto = prefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
         Dictionary<string, Sprite> dicionarioDeSprites = prefabSpritesDto.getDicionarioDeSprites();
-        blocoImg = new BlocoImgColetaveis(dicionarioDeSprites, blocoImgDto, materialGrayScale);
-        BlocoImgColetaveisDetalhe blocoImgDetalhe = new BlocoImgColetaveisDetalhe(blocoImgDetalheDto, materialGrayScale);
+        blocoImg = new BlocoImgColetaveis(dicionarioDeSprites, blocoImgDto);
+        BlocoImgColetaveisDetalhe blocoImgDetalhe = new BlocoImgColetaveisDetalhe(blocoImgDetalheDto);
 
         new AcaoBlocoImgColetavelAtual()
             .configurarProdutor(blocoImg)

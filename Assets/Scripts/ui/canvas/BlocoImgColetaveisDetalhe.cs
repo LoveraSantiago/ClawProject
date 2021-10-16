@@ -2,14 +2,11 @@ using UnityEngine;
 
 public class BlocoImgColetaveisDetalhe : AcaoBlocoImgColetavelAtual.ConsumidorEvento
 {
-    private BlocoImgDetalheColetavelDto blocoImgDto;
-    private Material matGrayScale;
+    private BlocoImgDetalheColetavelDto blocoImgDto;    
 
-    public BlocoImgColetaveisDetalhe(
-        BlocoImgDetalheColetavelDto blocoImgDto, Material materialGrayScale)
+    public BlocoImgColetaveisDetalhe(BlocoImgDetalheColetavelDto blocoImgDto)
     {
-        this.blocoImgDto = blocoImgDto;
-        matGrayScale = new Material(materialGrayScale);
+        this.blocoImgDto = blocoImgDto;        
     }
 
     void AcaoBlocoImgColetavelAtual.ConsumidorEvento.consumirEvento(UiColetavelInfo evento)
@@ -24,6 +21,7 @@ public class BlocoImgColetaveisDetalhe : AcaoBlocoImgColetavelAtual.ConsumidorEv
         }
         else if (evento.isNaoColetado)
         {
+            Material matGrayScale = new Material(Utils.materialGrayScale);
             matGrayScale.SetTexture("main_text", evento.sprite.texture);
             blocoImgDto.ImgDetalhe.material = matGrayScale;
             blocoImgDto.ImgDetalhe.color = Color.white;

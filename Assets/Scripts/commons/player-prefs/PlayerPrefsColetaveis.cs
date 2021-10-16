@@ -21,6 +21,11 @@ public class PlayerPrefsColetaveis : MonoBehaviour
         return false;
     }
 
+    public static bool isColetavelIndisponivel(string nomeColetavel)
+    {
+        return !isColetavelDisponivel(nomeColetavel);
+    }
+
     public static void unlockFamilia(string nomeFamilia)
     {
         PlayerPrefs.SetInt(nomeFamilia, 1);

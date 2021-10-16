@@ -9,7 +9,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
     private ProdutorDeEvento<UiColetavelInfo> produtorDeEvento;
 
     public BlocoImgColetaveis(
-        Dictionary<string, Sprite> dicionarioDeSprites, BlocoImgColetaveisDto blocoImgsDto, Material materialGrayScale)
+        Dictionary<string, Sprite> dicionarioDeSprites, BlocoImgColetaveisDto blocoImgsDto)
     {
         this.grupoImgColetaveis = blocoImgsDto.GrupoImgColetaveis;
         produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();
@@ -23,13 +23,27 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
         List<ColetavelEntidade> coletaveis = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familias[0]);
         for (int contador = 0; contador < coletaveis.Count; contador++)
         {
-            Image imageIt = grupoImgColetaveis[contador];
             Sprite sprIt = dicionarioDeSprites[coletaveis[contador].nomeSprite];
-            Material matGray = new Material(materialGrayScale);
 
-            matGray.SetTexture("main_text", sprIt.texture);
+            Image imageIt = grupoImgColetaveis[contador];
             imageIt.sprite = sprIt;
-            imageIt.material = matGray;
+
+            ColetavelEntidade coletavelIt = coletavelHelper.getColetavelEntidadeBySprite(sprIt.name);
+
+            if (PlayerPrefsColetaveis.isFamiliaNotLocked(familias[0].ToString()))
+            {
+                if (PlayerPrefsColetaveis.isColetavelIndisponivel(coletavelIt.nome))
+                {
+                    Material matGray = new Material(Utils.materialGrayScale);
+                    matGray.SetTexture("main_text", sprIt.texture);
+                    imageIt.material = matGray;
+                }
+                imageIt.color = Color.white;
+            }
+            else
+            {
+                imageIt.color = Color.black;
+            }
         }        
     }
 
