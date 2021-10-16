@@ -22,6 +22,6 @@ public class BlocoImgColetaveis
         for (int contador = 0; contador < coletaveis.Count; contador++)
         {
             grupoImgColetaveis[contador].sprite = dicionarioDeSprites[coletaveis[contador].nomeSprite];
-        }
+        }        
     }
 }
