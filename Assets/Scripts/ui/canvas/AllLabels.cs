@@ -1,8 +1,8 @@
 public class AllLabels : AcaoBlocoImgPUpAtual.ConsumidorEvento
 {
-    private AllLabelsDto labelsDto;
+    private AllLabelsPupDto labelsDto;
 
-    public AllLabels(AllLabelsDto labelsDto)
+    public AllLabels(AllLabelsPupDto labelsDto)
     {
         this.labelsDto = labelsDto;
     }

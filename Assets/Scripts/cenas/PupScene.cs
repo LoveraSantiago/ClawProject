@@ -13,7 +13,7 @@ public class PupScene : MonoBehaviour
     [SerializeField] private BlocoImgDto blocoImgDto;    
     [SerializeField] private GameObject prefabPowerUpDto;
     [Space(5)]
-    [SerializeField] private AllLabelsDto labelsDto;
+    [SerializeField] private AllLabelsPupDto labelsDto;
     [Space(5)]
     [SerializeField] private GameObject prefabBottomBar;
     
@@ -23,8 +23,8 @@ public class PupScene : MonoBehaviour
         Utils.configMainMono(this);
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
 
-        BlocoImg blocoImg           = new BlocoImg(blocoImgDto);
-        AllLabels allLables         = new AllLabels(labelsDto);
+        BlocoImg blocoImg   = new BlocoImg(blocoImgDto);
+        AllLabels allLables = new AllLabels(labelsDto);
         ScrollBottomBarPupScene scBottomBar = new ScrollBottomBarPupScene(prefabBottomBar);
 
         configBtnBack(btnBack);
