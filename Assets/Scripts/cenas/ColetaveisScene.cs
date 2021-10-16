@@ -2,9 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 #pragma warning disable 0649
-public class ColetaveisScene : MonoBehaviour
+public class ColetaveisScene : MonoBehaviour, 
+                               IPointerClickHandler
+     
 {
     [SerializeField] private Button btnBack;
     [Space(5)]
@@ -30,8 +33,14 @@ public class ColetaveisScene : MonoBehaviour
                     
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {        
+        Debug.Log("Clicado em " + eventData.pointerEnter.name);
+    }
+
     private void configBtnBack(Button btnBack)
     {
         btnBack.onClick.AddListener(() => SceneManager.LoadScene("MapScene"));
     }
+
 }
