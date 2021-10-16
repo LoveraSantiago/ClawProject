@@ -11,10 +11,10 @@ public class PupScene : MonoBehaviour
     [SerializeField] private Button btnCacaNiquelPupGeral;
     [Space(5)]
     [SerializeField] private BlocoImgDto blocoImgDto;    
-    [SerializeField] private GameObject prefabPowerUpDto;
     [Space(5)]
     [SerializeField] private AllLabelsPupDto labelsDto;
     [Space(5)]
+    [SerializeField] private GameObject prefabPowerUpDto;
     [SerializeField] private GameObject prefabBottomBar;
     
     // Start is called before the first frame update
