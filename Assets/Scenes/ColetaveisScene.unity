@@ -497,6 +497,7 @@ GameObject:
   - component: {fileID: 220680147}
   - component: {fileID: 220680146}
   - component: {fileID: 220680145}
+  - component: {fileID: 220680148}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -569,6 +570,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &220680148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220680144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &261236022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,14 +2447,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnBack: {fileID: 818320628}
-  grupoColetaveis:
-  - {fileID: 985997568}
-  - {fileID: 1270689581}
-  - {fileID: 270043351}
-  - {fileID: 85470445}
-  - {fileID: 120900956}
-  - {fileID: 2114778726}
-  - {fileID: 1493387764}
+  blocoImgDto:
+    btnEsquerda: {fileID: 2083602857}
+    btnDireita: {fileID: 399052144}
+    grupoImgsColetaveis:
+    - {fileID: 985997568}
+    - {fileID: 1270689581}
+    - {fileID: 270043351}
+    - {fileID: 85470445}
+    - {fileID: 120900956}
+    - {fileID: 2114778726}
+    - {fileID: 1493387764}
   prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
 --- !u!1001 &1751718904
 PrefabInstance:

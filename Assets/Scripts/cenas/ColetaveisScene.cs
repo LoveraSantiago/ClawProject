@@ -8,7 +8,7 @@ public class ColetaveisScene : MonoBehaviour
 {
     [SerializeField] private Button btnBack;
     [Space(5)]
-    [SerializeField] private Image[] grupoColetaveis = new Image[7]; 
+    [SerializeField] private BlocoImgColetaveisDto blocoImgDto;    
     [Space(5)]
     [SerializeField] private GameObject prefabColetaveisDto;    
 
@@ -19,7 +19,7 @@ public class ColetaveisScene : MonoBehaviour
 
         PrefabDeSpriteDto prefabSpritesDto = prefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
         Dictionary<string, Sprite> dicionarioDeSprites = prefabSpritesDto.getDicionarioDeSprites();
-        BlocoImgColetaveis blocoImg = new BlocoImgColetaveis(dicionarioDeSprites, grupoColetaveis);
+        BlocoImgColetaveis blocoImg = new BlocoImgColetaveis(dicionarioDeSprites, blocoImgDto);
 
         configBtnBack(btnBack);        
     }

@@ -12,7 +12,8 @@ public class BlocoImgPup : AcaoBlocoImgPUpAtual.ProdutorEvento,
 
     private bool animacaoEmAndamento;
 
-    private BlocoImgPupDto blocoImgDto;
+    private BlocoImgPupDto
+        blocoImgDto;
     private NavegacaoDeArray<PowerUpEntidade> controlePups;    
     private ProdutorDeEvento<PowerUpEntidade> produtorDeEvento;    
 

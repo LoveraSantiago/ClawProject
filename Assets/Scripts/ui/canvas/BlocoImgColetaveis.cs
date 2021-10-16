@@ -4,12 +4,13 @@ using UnityEngine.UI;
 
 public class BlocoImgColetaveis 
 {
-    private Image[] grupoColetaveis;
+    private Image[] grupoImgColetaveis;
     private NavegacaoDeArray<ColetavelEntidade.FAMILIA> controleFamilia;
 
-    public BlocoImgColetaveis(Dictionary<string, Sprite> dicionarioDeSprites, Image[] grupoColetaveis)
+    public BlocoImgColetaveis(
+        Dictionary<string, Sprite> dicionarioDeSprites, BlocoImgColetaveisDto blocoImgsDto)
     {
-        this.grupoColetaveis = grupoColetaveis;
+        this.grupoImgColetaveis = blocoImgsDto.GrupoImgColetaveis;
 
         ColetavelEntidade.FAMILIA[] familias = { ColetavelEntidade.FAMILIA.FRUTAS,
                                                  ColetavelEntidade.FAMILIA.FAKE };
@@ -20,7 +21,7 @@ public class BlocoImgColetaveis
         List<ColetavelEntidade> coletaveis = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familias[0]);
         for (int contador = 0; contador < coletaveis.Count; contador++)
         {
-            grupoColetaveis[contador].sprite = dicionarioDeSprites[coletaveis[contador].nomeSprite];
+            grupoImgColetaveis[contador].sprite = dicionarioDeSprites[coletaveis[contador].nomeSprite];
         }
     }
 }
