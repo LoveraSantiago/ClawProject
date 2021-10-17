@@ -40,26 +40,23 @@ public abstract class ScrollBottomBar
     {
         for (int contador = 1; contador < items.getQtdItems(); contador++)
         {
-            GameObject go = GameObject.Instantiate(scrollBottomBarDto.BoxPup, scrollBottomBarDto.BoxPup.transform.parent);
-
-            string qtdString = items.getLabelQtdDoItemIndice(contador);
-            Sprite spr = items.getSprDoItemIndice(contador);            
-            bindBox(contador, go, qtdString, spr);
+            GameObject go = GameObject.Instantiate(scrollBottomBarDto.BoxPup, scrollBottomBarDto.BoxPup.transform.parent);            
+            bindBox(contador, go, items);
         }
         
         string qtdStringZero = items.getLabelQtdDoItemIndice(0);
         Sprite sprZero = items.getSprDoItemIndice(0);        
-        bindBox(0, scrollBottomBarDto.BoxPup, qtdStringZero, sprZero);
+        bindBox(0, scrollBottomBarDto.BoxPup, items);
     }
 
-    private void bindBox(int indiceName, GameObject box, string qtd, Sprite sprite)
+    private void bindBox(int indiceName, GameObject box, ItemsBottomBar items)
     {
         TextMeshProUGUI text = box.transform.Find("lbl-qtd").GetComponent<TextMeshProUGUI>();
-        text.text = qtd;
+        text.text = items.getLabelQtdDoItemIndice(indiceName);
 
         Button btnIt = box.transform.Find("btn").GetComponent<Button>();
         btnIt.name = indiceName.ToString();
-        btnIt.image.sprite = sprite;
+        btnIt.image.sprite = items.getSprDoItemIndice(indiceName);
         btnIt.onClick.AddListener(() => {
             if (!btnBottomBar.animacaoEmAndamento)
             {
