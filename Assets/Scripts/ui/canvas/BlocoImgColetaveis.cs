@@ -66,7 +66,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
             Sprite sprIt = dicionarioDeSprites[coletaveis[contador].nomeSprite];
 
             Image imageIt = grupoImgColetaveis[contador];
-            imageIt.sprite = sprIt;
+            imageIt.sprite = sprIt;            
 
             ColetavelEntidade coletavelIt = coletavelHelper.getColetavelEntidadeBySprite(sprIt.name);
 
@@ -83,6 +83,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
             else
             {
                 imageIt.color = Color.black;
+                imageIt.material = null;
             }
         }
     }
