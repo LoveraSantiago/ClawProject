@@ -10,9 +10,11 @@ public class BlocoImgDetalheColetavelDto
     [SerializeField] private Image imgDetalhe;
     [Space(5)]
     [SerializeField] private Button btnGanharColetavel;
+    [SerializeField] private Text lblBtnGanharColetavel;
 
     public TextMeshProUGUI LblName { get { return lblName; } }
     public Image ImgDetalhe { get { return imgDetalhe; } }
 
     public Button BtnGanharColetavel { get { return btnGanharColetavel; } }
+    public Text LblBtnGanharColetavel { get { return lblBtnGanharColetavel; } }
 }

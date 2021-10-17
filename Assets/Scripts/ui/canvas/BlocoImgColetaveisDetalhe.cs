@@ -18,6 +18,9 @@ public class BlocoImgColetaveisDetalhe : AcaoBlocoImgColetavelAtual.ConsumidorEv
         {
             blocoImgDto.ImgDetalhe.material = null;
             blocoImgDto.ImgDetalhe.color = Color.white;
+            blocoImgDto.BtnGanharColetavel.enabled = false;
+            blocoImgDto.LblBtnGanharColetavel.text = "Voce já possui esse coletavel";
+            
         }
         else if (evento.isNaoColetado)
         {
@@ -25,11 +28,15 @@ public class BlocoImgColetaveisDetalhe : AcaoBlocoImgColetavelAtual.ConsumidorEv
             matGrayScale.SetTexture("main_text", evento.sprite.texture);
             blocoImgDto.ImgDetalhe.material = matGrayScale;
             blocoImgDto.ImgDetalhe.color = Color.white;
+            blocoImgDto.BtnGanharColetavel.enabled = true;
+            blocoImgDto.LblBtnGanharColetavel.text = "TENTAR GANHAR COLETAVEL";
         }
         else
         {
             blocoImgDto.ImgDetalhe.material = null;
             blocoImgDto.ImgDetalhe.color = Color.black;
+            blocoImgDto.BtnGanharColetavel.enabled = false;
+            blocoImgDto.LblBtnGanharColetavel.text = "Libere a fase XXX antes";
         }
     }
 }
