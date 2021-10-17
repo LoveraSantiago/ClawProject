@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerPrefsColetaveis : MonoBehaviour
 {
@@ -14,6 +15,19 @@ public class PlayerPrefsColetaveis : MonoBehaviour
         return false;
     }
 
+    public static bool isAllFamiliaComColetaveisDisponiveis(ColetavelEntidade.FAMILIA familia)
+    {
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
+        for(int contador = 0; contador < coletaveisDaFamilia.Count; contador++)
+        {
+            ColetavelEntidade coletavelIt = coletaveisDaFamilia[contador];
+            bool indisponivel = isColetavelIndisponivel(coletavelIt.nome);
+            if (indisponivel) return false;
+        }
+        return true;
+    }
+
     public static bool isColetavelDisponivel(string nomeColetavel)
     {
         int resultado = PlayerPrefs.GetInt(nomeColetavel);
@@ -23,7 +37,7 @@ public class PlayerPrefsColetaveis : MonoBehaviour
 
     public static void disponibilizarColetavel(string nome)
     {
-        PlayerPrefs.SetInt(nome, 1);
+        PlayerPrefs.SetInt(nome, 1);        
     }
 
     public static bool isColetavelIndisponivel(string nomeColetavel)

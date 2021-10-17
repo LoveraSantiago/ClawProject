@@ -8,8 +8,11 @@ public class ScrollBottomBarSceneColetaveis : ScrollBottomBar,
 {
     private ProdutorDeEvento<int> produtorDeIndiceEscolhido;
 
-    public ScrollBottomBarSceneColetaveis(GameObject prefabBottomBar) 
-        : base(prefabBottomBar)
+    public ScrollBottomBarSceneColetaveis(
+        GameObject prefabBottomBar,
+        ColetavelEntidade.FAMILIA[] familias,
+        Dictionary<string, Sprite> dicionarioDeSprites) 
+        : base(prefabBottomBar, new Temporaria(familias, dicionarioDeSprites))
     {
         produtorDeIndiceEscolhido = new ProdutorDeEvento<int>();
     }
@@ -17,12 +20,7 @@ public class ScrollBottomBarSceneColetaveis : ScrollBottomBar,
     protected override void cliqueBoxAcionado(TextMeshProUGUI lblQtd)
     {
         throw new System.NotImplementedException();
-    }
-
-    protected override ItemsBottomBar getItemsBottomBar()
-    {
-        throw new System.NotImplementedException();
-    }
+    }    
 
     ProdutorDeEvento<int> AcaoBBarPupEscolhido<int>.ProdutorEvento.getProdutorDeEvento()
     {
@@ -31,19 +29,45 @@ public class ScrollBottomBarSceneColetaveis : ScrollBottomBar,
 
     class Temporaria : ItemsBottomBar
     {
+        private ColetavelEntidade.FAMILIA[] familias;
+        private Dictionary<string, Sprite> dicionarioDeSprites;
+
+        public Temporaria(ColetavelEntidade.FAMILIA[] familias, Dictionary<string, Sprite> dicionarioDeSprites)
+        {
+            this.familias = familias;
+            this.dicionarioDeSprites = dicionarioDeSprites;
+        }
+
         public string getLabelQtdDoItemIndice(int indice)
         {
-            throw new System.NotImplementedException();
+            ColetavelEntidade.FAMILIA familia = familias[indice];            
+            if (PlayerPrefsColetaveis.isFamiliaLocked(familia.ToString()))
+            {
+                return "Locked";
+            }
+            else if(PlayerPrefsColetaveis.isAllFamiliaComColetaveisDisponiveis(familia))            
+            {
+                return "Ok";
+            }
+            else
+            {
+                return "Nok";
+            }
         }
 
         public int getQtdItems()
         {
-            throw new System.NotImplementedException();
+            return familias.Length;
         }
 
         public Sprite getSprDoItemIndice(int indice)
         {
-            throw new System.NotImplementedException();
+            ColetavelEntidade.FAMILIA familia = familias[indice];
+
+            ColetavelHelper coletavelHelper = new ColetavelHelper();
+            List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
+            ColetavelEntidade coletavelEntidade = coletaveisDaFamilia[0];
+            return dicionarioDeSprites[coletavelEntidade.nomeSprite];
         }
     }
 }
