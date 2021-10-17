@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemsBottomBarColetaveis : ItemsBottomBar
+public class ItemsBottomBarFamilias : ItemsBottomBar
 {
     private ColetavelEntidade.FAMILIA[] familias;
     private Dictionary<string, Sprite> dicionarioDeSprites;
 
-    public ItemsBottomBarColetaveis(ColetavelEntidade.FAMILIA[] familias, Dictionary<string, Sprite> dicionarioDeSprites)
+    public ItemsBottomBarFamilias(ColetavelEntidade.FAMILIA[] familias, Dictionary<string, Sprite> dicionarioDeSprites)
     {
         this.familias = familias;
         this.dicionarioDeSprites = dicionarioDeSprites;
