@@ -43,21 +43,21 @@ public abstract class ScrollBottomBar
             GameObject go = GameObject.Instantiate(scrollBottomBarDto.BoxPup, scrollBottomBarDto.BoxPup.transform.parent);
             PowerUpEntidade pupEntidade = allPups[contador];
             string qtdString = PlayerPrefsPup.recuperarQtdPup(pupEntidade.nome).ToString();
-            bindBox(contador, go, qtdString, pupEntidade);
+            bindBox(contador, go, qtdString, pupEntidade.sprPowerUp);
         }
         PowerUpEntidade pupEntidadeZero = allPups[0];
         string qtdStringZero = PlayerPrefsPup.recuperarQtdPup(pupEntidadeZero.nome).ToString();
-        bindBox(0, scrollBottomBarDto.BoxPup, qtdStringZero, pupEntidadeZero);
+        bindBox(0, scrollBottomBarDto.BoxPup, qtdStringZero, pupEntidadeZero.sprPowerUp);
     }
 
-    private void bindBox(int indiceName, GameObject box, string qtd, PowerUpEntidade pupEntidade)
+    private void bindBox(int indiceName, GameObject box, string qtd, Sprite sprite)
     {
         TextMeshProUGUI text = box.transform.Find("lbl-qtd").GetComponent<TextMeshProUGUI>();
         text.text = qtd;
 
         Button btnIt = box.transform.Find("btn").GetComponent<Button>();
         btnIt.name = indiceName.ToString();
-        btnIt.image.sprite = pupEntidade.sprPowerUp;
+        btnIt.image.sprite = sprite;
         btnIt.onClick.AddListener(() => {
             if (!btnBottomBar.animacaoEmAndamento)
             {
