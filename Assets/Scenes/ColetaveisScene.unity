@@ -2329,6 +2329,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673316346}
   m_CullTransparentMesh: 1
+--- !u!1 &1677297773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7059477540732606421, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
+  m_PrefabInstance: {fileID: 1751718904}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1729035069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,6 +2469,7 @@ MonoBehaviour:
     btnGanharColetavel: {fileID: 795270389}
   materialGrayScale: {fileID: 2100000, guid: 1d9f4e4f1aa232148ad37c81fd61aee6, type: 2}
   prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
+  prefabBottomBar: {fileID: 1677297773}
 --- !u!1001 &1751718904
 PrefabInstance:
   m_ObjectHideFlags: 0
