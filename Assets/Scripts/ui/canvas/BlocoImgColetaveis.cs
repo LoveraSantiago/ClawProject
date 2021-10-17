@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
 {
     private Image[] grupoImgColetaveis;
+    private Dictionary<string, Sprite> dicionarioDeSprites;
     private NavegacaoDeArray<ColetavelEntidade.FAMILIA> controleFamilia;
     private ProdutorDeEvento<UiColetavelInfo> produtorDeEvento;
 
@@ -12,39 +13,18 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
         Dictionary<string, Sprite> dicionarioDeSprites, BlocoImgColetaveisDto blocoImgsDto)
     {
         this.grupoImgColetaveis = blocoImgsDto.GrupoImgColetaveis;
+        this.dicionarioDeSprites = dicionarioDeSprites;
         produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();
 
         ColetavelEntidade.FAMILIA[] familias = { ColetavelEntidade.FAMILIA.FRUTAS,
                                                  ColetavelEntidade.FAMILIA.FAKE };
 
         controleFamilia = new NavegacaoDeArray<ColetavelEntidade.FAMILIA>(familias, 0);
+        blocoImgsDto.BtnDireita.onClick.AddListener(()=> irParaDireita());
+        blocoImgsDto.BtnEsquerda.onClick.AddListener(()=> irParaEsquerda());
 
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
-        List<ColetavelEntidade> coletaveis = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familias[0]);
-        for (int contador = 0; contador < coletaveis.Count; contador++)
-        {
-            Sprite sprIt = dicionarioDeSprites[coletaveis[contador].nomeSprite];
-
-            Image imageIt = grupoImgColetaveis[contador];
-            imageIt.sprite = sprIt;
-
-            ColetavelEntidade coletavelIt = coletavelHelper.getColetavelEntidadeBySprite(sprIt.name);
-
-            if (PlayerPrefsColetaveis.isFamiliaNotLocked(familias[0].ToString()))
-            {
-                if (PlayerPrefsColetaveis.isColetavelIndisponivel(coletavelIt.nome))
-                {
-                    Material matGray = new Material(Utils.materialGrayScale);
-                    matGray.SetTexture("main_text", sprIt.texture);
-                    imageIt.material = matGray;
-                }
-                imageIt.color = Color.white;
-            }
-            else
-            {
-                imageIt.color = Color.black;
-            }
-        }        
+        ColetavelEntidade.FAMILIA familia = controleFamilia.getItemIndiceAtual();
+        montarBlocoImagemComFamilia(familia);
     }
 
     public void startLaizy()
@@ -60,6 +40,49 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
             string subStringIndice = nomeGo.Replace("img-coletavel", "");
             int indice = int.Parse(subStringIndice) - 1;
             produzirEventoDeColetavelAtual(indice);
+        }
+    }
+
+    private void irParaDireita()
+    {
+        ColetavelEntidade.FAMILIA familia = controleFamilia.getItemAnterior();
+        montarBlocoImagemComFamilia(familia);
+        produzirEventoDeColetavelAtual(0);
+    }
+
+    private void irParaEsquerda()
+    {
+        ColetavelEntidade.FAMILIA familia = controleFamilia.getItemProximo();
+        montarBlocoImagemComFamilia(familia);
+    }
+
+    private void montarBlocoImagemComFamilia(ColetavelEntidade.FAMILIA familia)
+    {
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        List<ColetavelEntidade> coletaveis = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
+        for (int contador = 0; contador < coletaveis.Count; contador++)
+        {
+            Sprite sprIt = dicionarioDeSprites[coletaveis[contador].nomeSprite];
+
+            Image imageIt = grupoImgColetaveis[contador];
+            imageIt.sprite = sprIt;
+
+            ColetavelEntidade coletavelIt = coletavelHelper.getColetavelEntidadeBySprite(sprIt.name);
+
+            if (PlayerPrefsColetaveis.isFamiliaNotLocked(familia.ToString()))
+            {
+                if (PlayerPrefsColetaveis.isColetavelIndisponivel(coletavelIt.nome))
+                {
+                    Material matGray = new Material(Utils.materialGrayScale);
+                    matGray.SetTexture("main_text", sprIt.texture);
+                    imageIt.material = matGray;
+                }
+                imageIt.color = Color.white;
+            }
+            else
+            {
+                imageIt.color = Color.black;
+            }
         }
     }
 
