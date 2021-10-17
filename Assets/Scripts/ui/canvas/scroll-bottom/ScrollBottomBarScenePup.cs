@@ -2,12 +2,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class ScrollBottomBarPupScene : ScrollBottomBar,
+public class ScrollBottomBarScenePup : ScrollBottomBar,
                                        AcaoBBarPupEscolhido<int>.ProdutorEvento
 {
     private ProdutorDeEvento<int> produtorDeIndiceEscolhido;
 
-    public ScrollBottomBarPupScene(GameObject prefabBottomBar)
+    public ScrollBottomBarScenePup(GameObject prefabBottomBar)
         : base(prefabBottomBar)
     {
         produtorDeIndiceEscolhido = new ProdutorDeEvento<int>();

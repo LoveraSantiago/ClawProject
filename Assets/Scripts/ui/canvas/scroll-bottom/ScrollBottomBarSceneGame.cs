@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class ScrollBottomBarGameScene : ScrollBottomBar,
+public class ScrollBottomBarSceneGame : ScrollBottomBar,
                                         AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento,
                                         AcaoBotaoPUpVazio.ConsumidorEvento
 {
@@ -12,7 +12,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
     private GameObject prefabBottomBar;
     private ProdutorDeEvento<PowerUpBtnInfo> produtorDeEvento;
 
-    public ScrollBottomBarGameScene(GameObject prefabBottomBar)
+    public ScrollBottomBarSceneGame(GameObject prefabBottomBar)
        : base(prefabBottomBar)
     {
         this.prefabBottomBar = prefabBottomBar;

@@ -25,7 +25,7 @@ public class PupScene : MonoBehaviour
 
         BlocoImgPup blocoImg   = new BlocoImgPup(blocoImgDto);
         AllLabelsPup allLables = new AllLabelsPup(labelsDto);
-        ScrollBottomBarPupScene scBottomBar = new ScrollBottomBarPupScene(prefabBottomBar);
+        ScrollBottomBarScenePup scBottomBar = new ScrollBottomBarScenePup(prefabBottomBar);
 
         configBtnBack(btnBack);
         configBtnPratica(btnPratica, blocoImg);
