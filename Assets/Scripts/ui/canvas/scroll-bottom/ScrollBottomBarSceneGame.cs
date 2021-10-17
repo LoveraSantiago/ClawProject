@@ -37,7 +37,12 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
             PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn);
             Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));
         }
-    }  
+    }
+
+    protected override ItemsBottomBar getItemsBottomBar()
+    {
+        return new ItemsBottomBarPups();
+    }
 
     public void simularCliqueBoxAcionado(int indiceBtn, int indicePup)
     {        
@@ -65,7 +70,6 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
             produtorDeEvento.produziuEvento(pupBtnInfo);
         }
     }
-
 
     void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
