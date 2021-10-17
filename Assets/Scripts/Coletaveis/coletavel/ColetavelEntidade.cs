@@ -25,7 +25,7 @@ public class ColetavelEntidade
         new ColetavelEntidade(13, "Pao"            , "characters_0004", FAMILIA.FRUTAS),
         new ColetavelEntidade(14, "Aspargo"        , "characters_0005", FAMILIA.FRUTAS),
         new ColetavelEntidade(15, "Coco"           , "characters_0006", FAMILIA.FRUTAS),
-        new ColetavelEntidade(16, "Estrelamarinha?", "characters_0007", FAMILIA.FRUTAS),
+        new ColetavelEntidade(16, "Estrela Marinha", "characters_0007", FAMILIA.FRUTAS),
 
         new ColetavelEntidade(17, "Fake1", "tile-random-temp1", FAMILIA.FAKE),
         new ColetavelEntidade(18, "Fake2", "tile-random-temp2", FAMILIA.FAKE),
