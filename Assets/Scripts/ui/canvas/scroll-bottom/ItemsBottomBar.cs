@@ -2,10 +2,12 @@ using UnityEngine;
 
 public interface ItemsBottomBar 
 {
+    void configurarIndicePesquisado(int indice);
+
     int getQtdItems();
 
-    string getLabelQtdDoItemIndice(int indice);
-    Sprite getSprDoItemIndice(int indice);
-    Material getMaterialDoItemIndice(int indice);
-    Color getCorImgDoItemIndice(int indice);
+    string   getLabelQtdDoItem();
+    Sprite   getSprDoItem();
+    Material getMaterialDoItem();
+    Color    getCorImgDoItem();
 }

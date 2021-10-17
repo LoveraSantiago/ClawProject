@@ -4,6 +4,10 @@ using UnityEngine;
 public class ItemsBottomBarFamilias : ItemsBottomBar
 {
     private ColetavelEntidade.FAMILIA[] familias;
+    private string lblQtdAtual;
+    private Sprite spriteAtual;
+    private Color corAtual;
+    private Material materialAtual;
     private Dictionary<string, Sprite> dicionarioDeSprites;
 
     public ItemsBottomBarFamilias(ColetavelEntidade.FAMILIA[] familias, Dictionary<string, Sprite> dicionarioDeSprites)
@@ -12,71 +16,57 @@ public class ItemsBottomBarFamilias : ItemsBottomBar
         this.dicionarioDeSprites = dicionarioDeSprites;
     }
 
-    public string getLabelQtdDoItemIndice(int indice)
+    public void configurarIndicePesquisado(int indice)
     {
-        ColetavelEntidade.FAMILIA familia = familias[indice];
-        if (PlayerPrefsColetaveis.isFamiliaLocked(familia.ToString()))
+        ColetavelEntidade.FAMILIA familiaAtual = familias[indice];
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familiaAtual);
+        ColetavelEntidade coletavelEntidade = coletaveisDaFamilia[0];
+        spriteAtual = dicionarioDeSprites[coletavelEntidade.nomeSprite]; 
+
+        if (PlayerPrefsColetaveis.isFamiliaLocked(familiaAtual.ToString()))
         {
-            return "Locked";
+            lblQtdAtual = "Locked";
+            corAtual = Color.black;
+            materialAtual = null;
         }
-        else if (PlayerPrefsColetaveis.isAllFamiliaComColetaveisDisponiveis(familia))
+        else if (PlayerPrefsColetaveis.isAllFamiliaComColetaveisDisponiveis(familiaAtual))
         {
-            return "Ok";
+            lblQtdAtual = "Ok";
+            corAtual = Color.white;
+            materialAtual = null;
         }
         else
         {
-            return "Nok";
+            lblQtdAtual = "Nok";
+            Material matGrayScale = new Material(Utils.materialGrayScale);
+            matGrayScale.SetTexture("main_text", spriteAtual.texture);
+            corAtual = Color.white;
         }
+    }
+
+    public string getLabelQtdDoItem()
+    {
+        return lblQtdAtual;
+    }    
+
+    public Sprite getSprDoItem()
+    {
+        return spriteAtual;
+    }
+
+    public Color getCorImgDoItem()
+    {
+        return corAtual;
+    }
+
+    public Material getMaterialDoItem()
+    {
+        return materialAtual;
     }
 
     public int getQtdItems()
     {
         return familias.Length;
-    }
-
-    public Sprite getSprDoItemIndice(int indice)
-    {
-        ColetavelEntidade.FAMILIA familia = familias[indice];
-
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
-        List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
-        ColetavelEntidade coletavelEntidade = coletaveisDaFamilia[0];
-        return dicionarioDeSprites[coletavelEntidade.nomeSprite];
-    }
-
-    public Color getCorImgDoItemIndice(int indice)
-    {
-        ColetavelEntidade.FAMILIA familia = familias[indice];
-        if (PlayerPrefsColetaveis.isFamiliaLocked(familia.ToString()))
-        {
-            return Color.black;
-        }        
-        else
-        {
-            return Color.white;
-        }
-    }
-
-    public Material getMaterialDoItemIndice(int indice)
-    {
-        ColetavelEntidade.FAMILIA familia = familias[indice];
-        if (PlayerPrefsColetaveis.isFamiliaLocked(familia.ToString()))
-        {
-            return null;
-        }
-        else if (!PlayerPrefsColetaveis.isAllFamiliaComColetaveisDisponiveis(familia))
-        {
-            Material matGrayScale = new Material(Utils.materialGrayScale);
-            ColetavelHelper coletavelHelper = new ColetavelHelper();
-            List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
-            ColetavelEntidade coletavelEntidade = coletaveisDaFamilia[0];
-            Sprite sprite = dicionarioDeSprites[coletavelEntidade.nomeSprite];
-            matGrayScale.SetTexture("main_text", sprite.texture);
-            return matGrayScale;
-        }
-        else
-        {
-            return null;
-        }
     }
 }
