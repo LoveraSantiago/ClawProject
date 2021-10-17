@@ -20,6 +20,20 @@ public class ScrollBottomBarScenePup : ScrollBottomBar,
         btnBottomBar.btnBottomPressionado(this);
     }
 
+    protected override int getQtdItems()
+    {
+        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
+        return allPups.Length;
+    }
+
+    protected override void recuperarDataFromItemIndice(int indice, out string qtdString, out Sprite spr)
+    {
+        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
+        PowerUpEntidade pupEntidade = allPups[indice];
+        qtdString  = PlayerPrefsPup.recuperarQtdPup(pupEntidade.nome).ToString();
+        spr = pupEntidade.sprPowerUp;
+    }
+
     ProdutorDeEvento<int> AcaoBBarPupEscolhido<int>.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeIndiceEscolhido;

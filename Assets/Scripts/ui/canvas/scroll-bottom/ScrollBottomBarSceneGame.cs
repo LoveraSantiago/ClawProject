@@ -39,6 +39,12 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
         }
     }
 
+    protected override int getQtdItems()
+    {
+        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
+        return allPups.Length;
+    }
+
     public void simularCliqueBoxAcionado(int indiceBtn, int indicePup)
     {        
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
@@ -51,6 +57,12 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
         simularCliqueBoxAcionado(indiceBtn, pupEscolhido);
     }
 
+    public override void posCliqueBtnClose()
+    {
+        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn);
+        Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));
+    }
+
     private void simularCliqueBoxAcionado(int indiceBtn, PowerUpEntidade pupEscolhido)
     {
         if(pupEscolhido != null)
@@ -60,11 +72,6 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
         }
     }
 
-    public override void posCliqueBtnClose()
-    {
-        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn);
-        Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));
-    }
 
     void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {

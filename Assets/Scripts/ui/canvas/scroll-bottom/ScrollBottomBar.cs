@@ -10,14 +10,14 @@ public abstract class ScrollBottomBar
     public ScrollBottomBar(GameObject prefabBottomBar)
     {
         PrefabScrollBottomBarDto prefabDto = prefabBottomBar.GetComponent<PrefabScrollBottomBarDto>();
-        btnBottomBar = new BotaoBottomBar(prefabDto.BtnBottomBarDto, this);
+        btnBottomBar = new BotaoBottomBar(prefabDto.BtnBottomBarDto, this);        
 
-        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
-        bordasBotoes = new GameObject[allPups.Length];
-        criarBoxes(prefabDto.ScrollBottomBarDto, allPups);
+        int qtdItems = getQtdItems();
+        bordasBotoes = new GameObject[qtdItems];
+        criarBoxes(prefabDto.ScrollBottomBarDto, qtdItems);
 
-        prefabDto.ScrollBottomBarDto.RectTransfHorizontal.sizeDelta = new Vector2(300f * allPups.Length, 300f);
-        prefabDto.ScrollBottomBarDto.RectTransfHorizontal.localPosition = new Vector3(300f * allPups.Length, 0, 0);        
+        prefabDto.ScrollBottomBarDto.RectTransfHorizontal.sizeDelta     = new Vector2(300f * qtdItems, 300f);
+        prefabDto.ScrollBottomBarDto.RectTransfHorizontal.localPosition = new Vector3(300f * qtdItems, 0, 0);        
     }
 
     public void ligarBordas()
@@ -36,18 +36,22 @@ public abstract class ScrollBottomBar
         }
     }
 
-    private void criarBoxes(ScrollBottomBarDto scrollBottomBarDto, PowerUpEntidade[] allPups)
+    private void criarBoxes(ScrollBottomBarDto scrollBottomBarDto, int qtdItems)
     {
-        for (int contador = 1; contador < allPups.Length; contador++)
+        for (int contador = 1; contador < qtdItems; contador++)
         {
             GameObject go = GameObject.Instantiate(scrollBottomBarDto.BoxPup, scrollBottomBarDto.BoxPup.transform.parent);
-            PowerUpEntidade pupEntidade = allPups[contador];
-            string qtdString = PlayerPrefsPup.recuperarQtdPup(pupEntidade.nome).ToString();
-            bindBox(contador, go, qtdString, pupEntidade.sprPowerUp);
+
+            string qtdString = null;
+            Sprite spr = null;
+            recuperarDataFromItemIndice(contador, out qtdString, out spr);
+            bindBox(contador, go, qtdString, spr);
         }
-        PowerUpEntidade pupEntidadeZero = allPups[0];
-        string qtdStringZero = PlayerPrefsPup.recuperarQtdPup(pupEntidadeZero.nome).ToString();
-        bindBox(0, scrollBottomBarDto.BoxPup, qtdStringZero, pupEntidadeZero.sprPowerUp);
+        
+        string qtdStringZero = null;
+        Sprite sprZero = null;
+        recuperarDataFromItemIndice(0, out qtdStringZero, out sprZero);
+        bindBox(0, scrollBottomBarDto.BoxPup, qtdStringZero, sprZero);
     }
 
     private void bindBox(int indiceName, GameObject box, string qtd, Sprite sprite)
@@ -68,6 +72,8 @@ public abstract class ScrollBottomBar
         bordasBotoes[indiceName] = box.transform.Find("img-back-pup-borda").gameObject;
     }
 
+    protected abstract int getQtdItems();
+    protected abstract void recuperarDataFromItemIndice(int indice, out string qtdString, out Sprite spr);
     protected abstract void cliqueBoxAcionado(TextMeshProUGUI lblQtd);
 
     public virtual void posCliqueBtnClose() { }
