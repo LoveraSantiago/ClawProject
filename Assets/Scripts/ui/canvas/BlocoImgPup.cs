@@ -33,7 +33,7 @@ public class BlocoImgPup : AcaoBlocoImgPUpAtual.ProdutorEvento,
         irParaPupAtual();
     }
 
-    public void irParaDireita()
+    private void irParaDireita()
     {
         if (!animacaoEmAndamento)
         {            
@@ -42,7 +42,7 @@ public class BlocoImgPup : AcaoBlocoImgPUpAtual.ProdutorEvento,
         }
     }
 
-    public void irParaEsquerda()
+    private void irParaEsquerda()
     {
         if (!animacaoEmAndamento)
         {            
