@@ -54,6 +54,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
     {
         ColetavelEntidade.FAMILIA familia = controleFamilia.getItemProximo();
         montarBlocoImagemComFamilia(familia);
+        produzirEventoDeColetavelAtual(0);
     }
 
     private void montarBlocoImagemComFamilia(ColetavelEntidade.FAMILIA familia)
@@ -106,6 +107,11 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
             produtorDeEvento.produziuEvento(UiColetavelInfo.ofNaoColetado(sprProcurado, coletavelEntidade));
         }
     }
+
+    private void produzirEventoDeColetavelAtual(ColetavelEntidade coletavelEntidade)
+    {
+
+    }   
 
     ProdutorDeEvento<UiColetavelInfo> AcaoBlocoImgColetavelAtual.ProdutorEvento.getProdutorDeEvento()
     {
