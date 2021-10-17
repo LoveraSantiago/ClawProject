@@ -2453,6 +2453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btnBack: {fileID: 818320628}
   blocoImgDto:
+    lblNomeFamilia: {fileID: 348035354}
     btnEsquerda: {fileID: 2083602857}
     btnDireita: {fileID: 399052144}
     grupoImgsColetaveis:

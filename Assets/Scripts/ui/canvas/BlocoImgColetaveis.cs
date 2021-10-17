@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
 {
-    private Image[] grupoImgColetaveis;
+    private BlocoImgColetaveisDto blocoImgsDto;
     private Dictionary<string, Sprite> dicionarioDeSprites;
     private NavegacaoDeArray<ColetavelEntidade.FAMILIA> controleFamilia;
     private ProdutorDeEvento<UiColetavelInfo> produtorDeEvento;
@@ -12,7 +12,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
     public BlocoImgColetaveis(
         Dictionary<string, Sprite> dicionarioDeSprites, BlocoImgColetaveisDto blocoImgsDto)
     {
-        this.grupoImgColetaveis = blocoImgsDto.GrupoImgColetaveis;
+        this.blocoImgsDto = blocoImgsDto;
         this.dicionarioDeSprites = dicionarioDeSprites;
         produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();
 
@@ -59,13 +59,15 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
 
     private void montarBlocoImagemComFamilia(ColetavelEntidade.FAMILIA familia)
     {
+        blocoImgsDto.LblNomeFamilia.text = familia.ToString();
+
         ColetavelHelper coletavelHelper = new ColetavelHelper();
         List<ColetavelEntidade> coletaveis = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
         for (int contador = 0; contador < coletaveis.Count; contador++)
         {
             Sprite sprIt = dicionarioDeSprites[coletaveis[contador].nomeSprite];
 
-            Image imageIt = grupoImgColetaveis[contador];
+            Image imageIt = blocoImgsDto.GrupoImgColetaveis[contador];
             imageIt.sprite = sprIt;            
 
             ColetavelEntidade coletavelIt = coletavelHelper.getColetavelEntidadeBySprite(sprIt.name);
@@ -92,7 +94,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
     {
         ColetavelHelper coletavelHelper = new ColetavelHelper();
 
-        Sprite sprProcurado = grupoImgColetaveis[indice].sprite;
+        Sprite sprProcurado = blocoImgsDto.GrupoImgColetaveis[indice].sprite;
         ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeBySprite(sprProcurado.name);
 
         if (PlayerPrefsColetaveis.isFamiliaLocked(coletavelEntidade.familia.ToString()))
@@ -107,12 +109,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
         {
             produtorDeEvento.produziuEvento(UiColetavelInfo.ofNaoColetado(sprProcurado, coletavelEntidade));
         }
-    }
-
-    private void produzirEventoDeColetavelAtual(ColetavelEntidade coletavelEntidade)
-    {
-
-    }   
+    }    
 
     ProdutorDeEvento<UiColetavelInfo> AcaoBlocoImgColetavelAtual.ProdutorEvento.getProdutorDeEvento()
     {

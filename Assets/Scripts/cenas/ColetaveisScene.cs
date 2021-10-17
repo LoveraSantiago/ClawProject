@@ -18,7 +18,6 @@ public class ColetaveisScene : MonoBehaviour,
     [Space(5)]
     [SerializeField] private GameObject prefabBottomBar;
 
-
     private BlocoImgColetaveis blocoImg;
 
     // Start is called before the first frame update
