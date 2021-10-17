@@ -10,14 +10,13 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
     private ProdutorDeEvento<UiColetavelInfo> produtorDeEvento;
 
     public BlocoImgColetaveis(
-        Dictionary<string, Sprite> dicionarioDeSprites, BlocoImgColetaveisDto blocoImgsDto)
+        ColetavelEntidade.FAMILIA[] familias,
+        Dictionary<string, Sprite> dicionarioDeSprites, 
+        BlocoImgColetaveisDto blocoImgsDto)
     {
         this.blocoImgsDto = blocoImgsDto;
         this.dicionarioDeSprites = dicionarioDeSprites;
-        produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();
-
-        ColetavelEntidade.FAMILIA[] familias = { ColetavelEntidade.FAMILIA.FRUTAS,
-                                                 ColetavelEntidade.FAMILIA.FAKE };
+        produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();        
 
         controleFamilia = new NavegacaoDeArray<ColetavelEntidade.FAMILIA>(familias, 0);
         blocoImgsDto.BtnDireita.onClick.AddListener(()=> irParaDireita());

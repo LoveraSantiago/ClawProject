@@ -7,12 +7,10 @@ public abstract class ScrollBottomBar
     protected BotaoBottomBar btnBottomBar;
     protected GameObject[] bordasBotoes;
 
-    public ScrollBottomBar(GameObject prefabBottomBar)
+    public ScrollBottomBar(GameObject prefabBottomBar, ItemsBottomBar items)
     {
         PrefabScrollBottomBarDto prefabDto = prefabBottomBar.GetComponent<PrefabScrollBottomBarDto>();
-        btnBottomBar = new BotaoBottomBar(prefabDto.BtnBottomBarDto, this);
-
-        ItemsBottomBar items = getItemsBottomBar();
+        btnBottomBar = new BotaoBottomBar(prefabDto.BtnBottomBarDto, this);        
 
         int qtdItems = items.getQtdItems();
         bordasBotoes = new GameObject[qtdItems];
@@ -70,10 +68,8 @@ public abstract class ScrollBottomBar
         });
 
         bordasBotoes[indiceName] = box.transform.Find("img-back-pup-borda").gameObject;
-    }    
+    }        
     
-    protected abstract ItemsBottomBar getItemsBottomBar();
     protected abstract void cliqueBoxAcionado(TextMeshProUGUI lblQtd);
-
     public virtual void posCliqueBtnClose() { }
 }

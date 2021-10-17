@@ -13,7 +13,7 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
     private ProdutorDeEvento<PowerUpBtnInfo> produtorDeEvento;
 
     public ScrollBottomBarSceneGame(GameObject prefabBottomBar)
-       : base(prefabBottomBar)
+       : base(prefabBottomBar, new ItemsBottomBarPups())
     {
         this.prefabBottomBar = prefabBottomBar;
         produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfo>();
@@ -37,12 +37,7 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
             PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn);
             Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));
         }
-    }
-
-    protected override ItemsBottomBar getItemsBottomBar()
-    {
-        return new ItemsBottomBarPups();
-    }
+    }    
 
     public void simularCliqueBoxAcionado(int indiceBtn, int indicePup)
     {        

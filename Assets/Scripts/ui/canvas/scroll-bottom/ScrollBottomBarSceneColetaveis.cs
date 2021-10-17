@@ -17,10 +17,33 @@ public class ScrollBottomBarSceneColetaveis : ScrollBottomBar,
     protected override void cliqueBoxAcionado(TextMeshProUGUI lblQtd)
     {
         throw new System.NotImplementedException();
-    }   
+    }
+
+    protected override ItemsBottomBar getItemsBottomBar()
+    {
+        throw new System.NotImplementedException();
+    }
 
     ProdutorDeEvento<int> AcaoBBarPupEscolhido<int>.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeIndiceEscolhido;
+    }
+
+    class Temporaria : ItemsBottomBar
+    {
+        public string getLabelQtdDoItemIndice(int indice)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public int getQtdItems()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Sprite getSprDoItemIndice(int indice)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

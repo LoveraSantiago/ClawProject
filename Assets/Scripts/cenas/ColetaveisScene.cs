@@ -30,9 +30,12 @@ public class ColetaveisScene : MonoBehaviour,
         PlayerPrefsColetaveis.disponibilizarColetavel("Laranja");//TEMPORARIAMENTE AQUI
         PlayerPrefsColetaveis.disponibilizarColetavel("Aspargo");//TEMPORARIAMENTE AQUI
 
+        ColetavelEntidade.FAMILIA[] familias = { ColetavelEntidade.FAMILIA.FRUTAS,
+                                                 ColetavelEntidade.FAMILIA.FAKE };
+
         PrefabDeSpriteDto prefabSpritesDto = prefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
         Dictionary<string, Sprite> dicionarioDeSprites = prefabSpritesDto.getDicionarioDeSprites();
-        blocoImg = new BlocoImgColetaveis(dicionarioDeSprites, blocoImgDto);
+        blocoImg = new BlocoImgColetaveis(familias, dicionarioDeSprites, blocoImgDto);
         BlocoImgColetaveisDetalhe blocoImgDetalhe = new BlocoImgColetaveisDetalhe(blocoImgDetalheDto);
 
         new AcaoBlocoImgColetavelAtual()

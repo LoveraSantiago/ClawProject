@@ -8,7 +8,7 @@ public class ScrollBottomBarScenePup : ScrollBottomBar,
     private ProdutorDeEvento<int> produtorDeIndiceEscolhido;
 
     public ScrollBottomBarScenePup(GameObject prefabBottomBar)
-        : base(prefabBottomBar)
+        : base(prefabBottomBar, new ItemsBottomBarPups())
     {
         produtorDeIndiceEscolhido = new ProdutorDeEvento<int>();
     }
@@ -18,12 +18,7 @@ public class ScrollBottomBarScenePup : ScrollBottomBar,
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;
         produtorDeIndiceEscolhido.produziuEvento(int.Parse(nomeBtnSelecionado));
         btnBottomBar.btnBottomPressionado(this);
-    }       
-
-    protected override ItemsBottomBar getItemsBottomBar()
-    {
-        return new ItemsBottomBarPups();
-    }
+    }           
 
     ProdutorDeEvento<int> AcaoBBarPupEscolhido<int>.ProdutorEvento.getProdutorDeEvento()
     {
