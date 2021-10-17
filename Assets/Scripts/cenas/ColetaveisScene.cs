@@ -37,7 +37,7 @@ public class ColetaveisScene : MonoBehaviour,
         Dictionary<string, Sprite> dicionarioDeSprites = prefabSpritesDto.getDicionarioDeSprites();
         blocoImg = new BlocoImgColetaveis(familias, dicionarioDeSprites, blocoImgDto);
         BlocoImgColetaveisDetalhe blocoImgDetalhe = new BlocoImgColetaveisDetalhe(blocoImgDetalheDto);
-        ScrollBottomBarSceneColetaveis scBottomBar = new ScrollBottomBarSceneColetaveis(prefabBottomBar, familias);
+        ScrollBottomBarSceneColetaveis scBottomBar = new ScrollBottomBarSceneColetaveis(prefabBottomBar, familias, dicionarioDeSprites);
 
         new AcaoBlocoImgColetavelAtual()
             .configurarProdutor(blocoImg)
