@@ -64,7 +64,7 @@ public abstract class ScrollBottomBar
         bordasBotoes[indiceName] = box.transform.Find("img-back-pup-borda").gameObject;
     }
 
-    protected abstract void cliqueBoxAcionado(TextMeshProUGUI lblTQtd);
+    protected abstract void cliqueBoxAcionado(TextMeshProUGUI lblQtd);
 
     public virtual void posCliqueBtnClose() { }
 }

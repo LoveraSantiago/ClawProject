@@ -19,7 +19,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfo>();
     }
 
-    protected override void cliqueBoxAcionado(TextMeshProUGUI lblTQtd)
+    protected override void cliqueBoxAcionado(TextMeshProUGUI lblQtd)
     {
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;        
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeBtnSelecionado));
@@ -29,7 +29,7 @@ public class ScrollBottomBarGameScene : ScrollBottomBar,
         {
             int qtdAtual = PlayerPrefsPup.subtrairPup(pupEscolhido.nome);
             PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
-            lblTQtd.text = qtdAtual.ToString();
+            lblQtd.text = qtdAtual.ToString();
             Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));       
         }
         else
