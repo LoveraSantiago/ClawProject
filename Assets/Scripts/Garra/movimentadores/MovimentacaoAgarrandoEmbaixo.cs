@@ -2,13 +2,8 @@ using UnityEngine;
 
 public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarraNormal
 {
-    private Quaternion anguloDesejadoEsquerda;
-    private Quaternion anguloDesejadoDireita;
-
     public MovimentacaoAgarrandoEmbaixo()
-    {
-        anguloDesejadoDireita  = Quaternion.Euler(0, 0, garra.garraDto.Angulos.Fechamento);
-        anguloDesejadoEsquerda = Quaternion.Euler(0, 0, -garra.garraDto.Angulos.Fechamento);        
+    {     
     }
     
     public override void preInicio()
@@ -20,9 +15,13 @@ public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarraNormal
     public override void fixedUpdate()
     {
         parar();
-        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerda, anguloDesejadoDireita);
+
+        Quaternion angFechamentoEsquerda = angulosTemp.angFechamentoEsquerda;
+        Quaternion angFechamentoDireita  = angulosTemp.angFechamentoDireita;
+
+        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloFechamento, angFechamentoEsquerda, angFechamentoDireita);
         
-        if (isPincaDireitaNoAngulo(anguloDesejadoDireita))
+        if (isPincaDireitaNoAngulo(angFechamentoDireita))
         {       
             comunicadorComGerMovimentacao.trocarParaAcaoSubindo();
         }        

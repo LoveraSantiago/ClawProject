@@ -13,8 +13,8 @@ public class ColetaveisDto
     [Space(5)]
     [SerializeField] private ParticleSystem efeitoColetado;
     [SerializeField] private Material efeitoOutline;
-    [Space(5)]    
-    [SerializeField] private Sprite[] caracteres;
+    [Space(5)]        
+    [SerializeField] private GameObject prefabColetaveisDto;
     [Space(5)]
     [SerializeField] private TuboDto tuboDto;    
     [Space(5)]    
@@ -30,8 +30,8 @@ public class ColetaveisDto
     public CircleCollider2D ReferenciaColliderColetado { get { return referenciaColliderColetado; } }
     public ParticleSystem EfeitoColetado { get { return efeitoColetado; } }
     public Material EfeitoOutline { get { return efeitoOutline; } }
-
-    public Sprite[] Caracteres { get { return caracteres; } }
+    
+    public GameObject PrefabColetaveisDto { get { return prefabColetaveisDto; } }
 
     public TuboDto TuboDto { get { return tuboDto; } }    
 

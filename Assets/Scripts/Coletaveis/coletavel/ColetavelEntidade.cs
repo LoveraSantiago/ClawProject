@@ -1,6 +1,6 @@
 public class ColetavelEntidade 
 {
-    public enum FAMILIA { DEFAULTS, FRUTAS, }
+    public enum FAMILIA { DEFAULTS, FRUTAS, FAKE}
 
     public int id { get; private set; }//Deve ser unico
     public string nome { get; private set; }
@@ -19,13 +19,21 @@ public class ColetavelEntidade
         new ColetavelEntidade(0, "vazio" , "tile-vazio" , FAMILIA.DEFAULTS),//Range de 0 a 9 pra defaults
         new ColetavelEntidade(1, "random", "tile-random", FAMILIA.DEFAULTS),
 
-        new ColetavelEntidade(10, "leite"          , "characters_0001", FAMILIA.FRUTAS),//Range de 10 a 19 frutas
-        new ColetavelEntidade(11, "maca"           , "characters_0002", FAMILIA.FRUTAS),
-        new ColetavelEntidade(12, "laranja"        , "characters_0003", FAMILIA.FRUTAS),
-        new ColetavelEntidade(13, "pao"            , "characters_0004", FAMILIA.FRUTAS),
-        new ColetavelEntidade(14, "aspargo?"       , "characters_0005", FAMILIA.FRUTAS),
-        new ColetavelEntidade(15, "coco"           , "characters_0006", FAMILIA.FRUTAS),
-        new ColetavelEntidade(16, "estrelamarinha?", "characters_0007", FAMILIA.FRUTAS)
+        new ColetavelEntidade(10, "Leite"          , "characters_0001", FAMILIA.FRUTAS),//Range de 10 a 19 frutas
+        new ColetavelEntidade(11, "Maca"           , "characters_0002", FAMILIA.FRUTAS),
+        new ColetavelEntidade(12, "Laranja"        , "characters_0003", FAMILIA.FRUTAS),
+        new ColetavelEntidade(13, "Pao"            , "characters_0004", FAMILIA.FRUTAS),
+        new ColetavelEntidade(14, "Aspargo"        , "characters_0005", FAMILIA.FRUTAS),
+        new ColetavelEntidade(15, "Coco"           , "characters_0006", FAMILIA.FRUTAS),
+        new ColetavelEntidade(16, "Estrela Marinha", "characters_0007", FAMILIA.FRUTAS),
+
+        new ColetavelEntidade(17, "Fake1", "tile-random-temp1", FAMILIA.FAKE),
+        new ColetavelEntidade(18, "Fake2", "tile-random-temp2", FAMILIA.FAKE),
+        new ColetavelEntidade(19, "Fake3", "tile-random-temp3", FAMILIA.FAKE),
+        new ColetavelEntidade(20, "Fake4", "tile-random-temp4", FAMILIA.FAKE),
+        new ColetavelEntidade(21, "Fake5", "tile-random-temp5", FAMILIA.FAKE),
+        new ColetavelEntidade(22, "Fake6", "tile-random-temp6", FAMILIA.FAKE),
+        new ColetavelEntidade(23, "Fake7", "tile-random-temp7", FAMILIA.FAKE),
     };
 
     public bool isVazio()

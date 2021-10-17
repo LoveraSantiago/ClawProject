@@ -64,7 +64,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         Coletavel.configurar(coletaveisDto);
         poolDeColetaveis = new PoolDeColetaveis();
-        ColetavelHelper.inicializarDicionarioDeColetaveisInGame(poolDeColetaveis);
+        ColetavelHelper.configurar(poolDeColetaveis);
     }
 
     private void processarColetado(GameObject gameObjectColetado)

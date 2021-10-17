@@ -1,15 +1,9 @@
 using UnityEngine;
 
 public class MovimentacaoParado : MovimentacaoDaGarra
-{
-    //TODO agrupar em um unico lugar os angulos desejados
-    private Quaternion anguloDesejadoEsquerdaAntesEstadoInicial;
-    private Quaternion anguloDesejadoDireitaAntesEstadoInicial;
-    
+{   
     public MovimentacaoParado()
-    {
-        anguloDesejadoDireitaAntesEstadoInicial  = Quaternion.Euler(0, 0, -garra.garraDto.Angulos.IdleMin);
-        anguloDesejadoEsquerdaAntesEstadoInicial = Quaternion.Euler(0, 0, garra.garraDto.Angulos.IdleMin);
+    { 
     }
 
     public override void preInicio()
@@ -24,6 +18,8 @@ public class MovimentacaoParado : MovimentacaoDaGarra
     public override void fixedUpdate()
     {
         parar();
-        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloFechamento, anguloDesejadoEsquerdaAntesEstadoInicial, anguloDesejadoDireitaAntesEstadoInicial);
+        Quaternion angIdleMinEsquerda = angulosTemp.angIdleMinEsquerda;
+        Quaternion angIdleMinDireita  = angulosTemp.angIdleMinDireita;
+        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloFechamento, angIdleMinEsquerda, angIdleMinDireita);
     }
 }

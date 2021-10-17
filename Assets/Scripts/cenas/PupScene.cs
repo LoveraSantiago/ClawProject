@@ -10,11 +10,11 @@ public class PupScene : MonoBehaviour
     [SerializeField] private Button btnCacaNiquelPupIndividual;
     [SerializeField] private Button btnCacaNiquelPupGeral;
     [Space(5)]
-    [SerializeField] private BlocoImgDto blocoImgDto;    
+    [SerializeField] private BlocoImgPupDto blocoImgDto;    
+    [Space(5)]
+    [SerializeField] private AllLabelsPupDto labelsDto;
+    [Space(5)]
     [SerializeField] private GameObject prefabPowerUpDto;
-    [Space(5)]
-    [SerializeField] private AllLabelsDto labelsDto;
-    [Space(5)]
     [SerializeField] private GameObject prefabBottomBar;
     
     // Start is called before the first frame update
@@ -23,9 +23,9 @@ public class PupScene : MonoBehaviour
         Utils.configMainMono(this);
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
 
-        BlocoImg blocoImg           = new BlocoImg(blocoImgDto);
-        AllLabels allLables         = new AllLabels(labelsDto);
-        ScrollBottomBarPupScene scBottomBar = new ScrollBottomBarPupScene(prefabBottomBar);
+        BlocoImgPup blocoImg   = new BlocoImgPup(blocoImgDto);
+        AllLabelsPup allLables = new AllLabelsPup(labelsDto);
+        ScrollBottomBarScenePup scBottomBar = new ScrollBottomBarScenePup(prefabBottomBar);
 
         configBtnBack(btnBack);
         configBtnPratica(btnPratica, blocoImg);
@@ -48,28 +48,28 @@ public class PupScene : MonoBehaviour
         btnBack.onClick.AddListener(() => SceneManager.LoadScene("MapScene"));
     }
 
-    private void configBtnPratica(Button btnPratica, BlocoImg blocoImg)
+    private void configBtnPratica(Button btnPratica, BlocoImgPup blocoImg)
     {
         btnPratica.onClick.AddListener(() => {            
             irGameScene(LevelFlowManager.LEVEL.PUP, blocoImg);            
         });
     }
 
-    private void configBtnCacaNiquelIndividual(Button btnCacaNiquel, BlocoImg blocoImg)
+    private void configBtnCacaNiquelIndividual(Button btnCacaNiquel, BlocoImgPup blocoImg)
     {
         btnCacaNiquel.onClick.AddListener(() => {            
             irGameScene(LevelFlowManager.LEVEL.CACANIQUEL_PUP_I, blocoImg);            
         });
     }
 
-    private void configBtnCacaNiquelGeral(Button btnCacaNiquel, BlocoImg blocoImg)
+    private void configBtnCacaNiquelGeral(Button btnCacaNiquel, BlocoImgPup blocoImg)
     {
         btnCacaNiquel.onClick.AddListener(() => {
             irGameScene(LevelFlowManager.LEVEL.CACANIQUEL_PUP_G, blocoImg);
         });
     }
 
-    private void irGameScene(LevelFlowManager.LEVEL level, BlocoImg blocoImg)
+    private void irGameScene(LevelFlowManager.LEVEL level, BlocoImgPup blocoImg)
     {
         PlayerPrefsLevel.salvarLevel(level);
         PlayerPrefsPup.salvarIndicePup(blocoImg.getIndicePupAtual());

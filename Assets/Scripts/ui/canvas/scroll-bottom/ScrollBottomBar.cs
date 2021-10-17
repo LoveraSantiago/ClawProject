@@ -7,17 +7,17 @@ public abstract class ScrollBottomBar
     protected BotaoBottomBar btnBottomBar;
     protected GameObject[] bordasBotoes;
 
-    public ScrollBottomBar(GameObject prefabBottomBar)
+    public ScrollBottomBar(GameObject prefabBottomBar, ItemsBottomBar items)
     {
         PrefabScrollBottomBarDto prefabDto = prefabBottomBar.GetComponent<PrefabScrollBottomBarDto>();
-        btnBottomBar = new BotaoBottomBar(prefabDto.BtnBottomBarDto, this);
+        btnBottomBar = new BotaoBottomBar(prefabDto.BtnBottomBarDto, this);        
 
-        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
-        bordasBotoes = new GameObject[allPups.Length];
-        criarBoxes(prefabDto.ScrollBottomBarDto, allPups);
+        int qtdItems = items.getQtdItems();
+        bordasBotoes = new GameObject[qtdItems];
+        criarBoxes(prefabDto.ScrollBottomBarDto, items);
 
-        prefabDto.ScrollBottomBarDto.RectTransfHorizontal.sizeDelta = new Vector2(300f * allPups.Length, 300f);
-        prefabDto.ScrollBottomBarDto.RectTransfHorizontal.localPosition = new Vector3(300f * allPups.Length, 0, 0);        
+        prefabDto.ScrollBottomBarDto.RectTransfHorizontal.sizeDelta     = new Vector2(300f * qtdItems, 300f);
+        prefabDto.ScrollBottomBarDto.RectTransfHorizontal.localPosition = new Vector3(300f * qtdItems, 0, 0);        
     }
 
     public void ligarBordas()
@@ -36,24 +36,32 @@ public abstract class ScrollBottomBar
         }
     }
 
-    private void criarBoxes(ScrollBottomBarDto scrollBottomBarDto, PowerUpEntidade[] allPups)
+    private void criarBoxes(ScrollBottomBarDto scrollBottomBarDto, ItemsBottomBar items)
     {
-        for (int contador = 1; contador < allPups.Length; contador++)
+        for (int contador = 1; contador < items.getQtdItems(); contador++)
         {
-            GameObject go = GameObject.Instantiate(scrollBottomBarDto.BoxPup, scrollBottomBarDto.BoxPup.transform.parent);
-            bindBox(contador, go, allPups[contador]);
+            GameObject go = GameObject.Instantiate(scrollBottomBarDto.BoxPup, scrollBottomBarDto.BoxPup.transform.parent);            
+            bindBox(contador, go, items);
         }
-        bindBox(0, scrollBottomBarDto.BoxPup, allPups[0]);
+
+        items.configurarIndicePesquisado(0);
+        string qtdStringZero = items.getLabelQtdDoItem();
+        Sprite sprZero = items.getSprDoItem();        
+        bindBox(0, scrollBottomBarDto.BoxPup, items);
     }
 
-    private void bindBox(int indiceName, GameObject box, PowerUpEntidade pupEntidade)
+    private void bindBox(int indiceName, GameObject box, ItemsBottomBar items)
     {
         TextMeshProUGUI text = box.transform.Find("lbl-qtd").GetComponent<TextMeshProUGUI>();
-        text.text = PlayerPrefsPup.recuperarQtdPup(pupEntidade.nome).ToString();
+
+        items.configurarIndicePesquisado(indiceName);
+        text.text = items.getLabelQtdDoItem();
 
         Button btnIt = box.transform.Find("btn").GetComponent<Button>();
         btnIt.name = indiceName.ToString();
-        btnIt.image.sprite = pupEntidade.sprPowerUp;
+        btnIt.image.sprite = items.getSprDoItem();
+        btnIt.image.material = items.getMaterialDoItem();
+        btnIt.image.color = items.getCorImgDoItem();
         btnIt.onClick.AddListener(() => {
             if (!btnBottomBar.animacaoEmAndamento)
             {
@@ -62,9 +70,8 @@ public abstract class ScrollBottomBar
         });
 
         bordasBotoes[indiceName] = box.transform.Find("img-back-pup-borda").gameObject;
-    }
-
-    protected abstract void cliqueBoxAcionado(TextMeshProUGUI lblTQtd);
-
+    }        
+    
+    protected abstract void cliqueBoxAcionado(TextMeshProUGUI lblQtd);
     public virtual void posCliqueBtnClose() { }
 }

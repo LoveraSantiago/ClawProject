@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GarraRigidBody
 {
     private Vector2 posInicial;
     private Rigidbody2D garraRigidBody;
+    private GarraVelocidadesDto velocidadesDto;
 
-    public GarraRigidBody(Vector2 posInicial, Rigidbody2D garraRigidBody)
+    public GarraRigidBody(GarraDto garraDto)
     {
-        this.posInicial = posInicial;
-        this.garraRigidBody = garraRigidBody;
-    }
+        garraRigidBody = garraDto.RigidBody;
+        posInicial     = garraDto.RigidBody.transform.localPosition;
+        velocidadesDto = garraDto.Velocidades;
+    }    
 
     public void setVelocidade(Vector2 velocidade)
     {
@@ -37,6 +37,21 @@ public class GarraRigidBody
     public void colocarNaPosicaoHorizontal(float posHorizontal)
     {
         garraRigidBody.transform.localPosition = new Vector3(posHorizontal, posInicial.y, 0);
+    }
+
+    public void moverPCima()
+    {
+        setVelocidade(new Vector2(0, velocidadesDto.MovCima));
+    }
+
+    public void moverPBaixo()
+    {
+        setVelocidade(new Vector2(0, velocidadesDto.MovBaixo));
+    }
+
+    public void moverPHorizontal(float direcao)
+    {
+        setVelocidade(new Vector2(direcao * velocidadesDto.MovHorizontal, 0));
     }
 
     public void colocarMassa(int massa)

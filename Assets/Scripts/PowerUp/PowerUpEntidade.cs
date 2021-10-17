@@ -99,7 +99,7 @@ public class PowerUpEntidade
 
     public static void configurarDicionarioDeSpritesPup(GameObject goPrefabPupDto)
     {
-        PrefabPowerUpDto prefabPUpDto = goPrefabPupDto.GetComponent<PrefabPowerUpDto>();
-        dicionarioDeSprites = prefabPUpDto.getInstance().dicionarioDeSprites;
+        PrefabDeSpriteDto prefabPUpDto = goPrefabPupDto.GetComponent<PrefabDeSpriteDto>();
+        dicionarioDeSprites = prefabPUpDto.getDicionarioDeSprites();
     }
 }

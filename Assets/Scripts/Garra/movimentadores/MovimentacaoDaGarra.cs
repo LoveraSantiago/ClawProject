@@ -1,9 +1,10 @@
 using UnityEngine;
-//TODO quebrar a classe em responsabilidades menores
+
 public abstract class MovimentacaoDaGarra 
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;   
     public static Garra garra { get; private set; }//FECHAR VAZAMENTO DE CONTEXTO PARA MOVIMENTADORES
+    protected static AngulosTemporarios angulosTemp;
 
     public virtual void preInicio() { }
     public virtual void update(InputGame inputGame) { }
@@ -58,20 +59,23 @@ public abstract class MovimentacaoDaGarra
 
     protected void moverParaCimaFreeze()
     {
+        garra.efeito.ligarTrailPCima();
         garra.rigidBody.fixarVerticalmente();
-        garra.moverParaCima();        
+        garra.rigidBody.moverPCima();
     }
 
     protected void moverParaBaixoFreeze()
     {
+        garra.efeito.ligarTrailPBaixo();
         garra.rigidBody.fixarVerticalmente();
-        garra.moverParaBaixo();
+        garra.rigidBody.moverPBaixo();        
     }
 
     protected void moverHorizontalmenteFreeze(float direcao)
     {
+        garra.efeito.desligarTrail();
         garra.rigidBody.fixarHorizontalmente();
-        garra.moverHorizontalmente(direcao);        
+        garra.rigidBody.moverPHorizontal(direcao);          
     }    
 
     protected void agarrando()
@@ -161,11 +165,12 @@ public abstract class MovimentacaoDaGarra
 
     protected void produziuEventoDeDirecao(DirecaoDaGarra direcao)
     {
-        Garra.produtorEventoDirecao.produziuEvento(direcao);
+        garra.dispararEventoDirecao(direcao);        
     }
 
-    public static void configurarComponentesMovimentacao(GarraDto garraDtoArg)
+    public static void configurar(GarraDto garraDto)
     {
-        garra = new Garra(garraDtoArg);               
+        garra = new Garra(garraDto);
+        angulosTemp = new AngulosTemporarios(garraDto.Angulos);
     }
 }

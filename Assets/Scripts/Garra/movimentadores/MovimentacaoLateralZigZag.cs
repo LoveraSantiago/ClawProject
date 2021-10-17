@@ -7,24 +7,13 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     private float movimentoLateral;
 
     private float anguloAtual;
-    private bool isUsandoMaxAngulo;
-    
-    private Quaternion anguloDesejadoEsquerdaMin;
-    private Quaternion anguloDesejadoDireitaMin;
-
-    private Quaternion anguloDesejadoEsquerdaMax;
-    private Quaternion anguloDesejadoDireitaMax;
+    private bool isUsandoMaxAngulo;        
 
     private Quaternion anguloDesejadoEsquerdaAtual;
     private Quaternion anguloDesejadoDireitaAtual;    
 
     public MovimentacaoLateralZigZag()
-    {
-        anguloDesejadoDireitaMin = Quaternion.Euler(0, 0, -garra.garraDto.Angulos.IdleMin);
-        anguloDesejadoEsquerdaMin = Quaternion.Euler(0, 0, garra.garraDto.Angulos.IdleMin);
-
-        anguloDesejadoDireitaMax = Quaternion.Euler(0, 0, -garra.garraDto.Angulos.IdleMax);
-        anguloDesejadoEsquerdaMax = Quaternion.Euler(0, 0, garra.garraDto.Angulos.IdleMax);        
+    {       
         direcao = 1;        
     }
 
@@ -96,15 +85,15 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     {
         isUsandoMaxAngulo = true;
         anguloAtual = -garra.garraDto.Angulos.IdleMax;
-        anguloDesejadoDireitaAtual = anguloDesejadoDireitaMax;
-        anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMax;
+        anguloDesejadoDireitaAtual  = angulosTemp.angIdleMaxDireita;
+        anguloDesejadoEsquerdaAtual = angulosTemp.angIdleMaxEsquerda;
     }
 
     private void configurarAngulosParaMin()
     {
         isUsandoMaxAngulo = false;
         anguloAtual = garra.garraDto.Angulos.IdleMin;
-        anguloDesejadoDireitaAtual = anguloDesejadoDireitaMin;
-        anguloDesejadoEsquerdaAtual = anguloDesejadoEsquerdaMin;
+        anguloDesejadoDireitaAtual  = angulosTemp.angIdleMinDireita;
+        anguloDesejadoEsquerdaAtual = angulosTemp.angIdleMinEsquerda;
     }
 }

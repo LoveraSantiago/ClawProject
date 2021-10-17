@@ -21,12 +21,7 @@ public class ColetavelContextoEstatico
 
         nomeador = new Nomeador();
 
-        Sprite[] characters = coletaveisDto.Caracteres;
-        dicionarioDeSprites = new Dictionary<string, Sprite>();
-        for (int contador = 0; contador < characters.Length; contador++)
-        {
-            Sprite spriteIt = characters[contador];
-            dicionarioDeSprites.Add(spriteIt.name, spriteIt);
-        }
+        PrefabDeSpriteDto prefabColetaveisDto = coletaveisDto.PrefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
+        dicionarioDeSprites = prefabColetaveisDto.getDicionarioDeSprites();
     }
 }

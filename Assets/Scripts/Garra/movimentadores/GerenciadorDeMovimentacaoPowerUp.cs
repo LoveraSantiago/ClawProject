@@ -1,7 +1,6 @@
 public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
                                                 ComunicadorComGerMovPowerUp
 {
-
     private ContadorDeTempo contadorDeFimTempo;
 
     private MovimentacaoDaGarraPowerUp movAtual;
@@ -28,7 +27,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
     public override void iniciarMovimentacoes()
     {
-        Garra.produtorEventoDirecao.produziuEvento(DirecaoDaGarra.CENTRALIZADA);
+        MovimentacaoDaGarra.garra.dispararEventoDirecao(DirecaoDaGarra.CENTRALIZADA);
         trocarParaAcaoVoltarParaCima();
     }    
 

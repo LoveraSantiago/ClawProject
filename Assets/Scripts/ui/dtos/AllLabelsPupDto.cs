@@ -3,7 +3,7 @@ using UnityEngine;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class AllLabelsDto 
+public class AllLabelsPupDto    
 {
     [SerializeField] private TextMeshProUGUI lblPup;
     [SerializeField] private TextMeshProUGUI lblTipo;
@@ -12,10 +12,10 @@ public class AllLabelsDto
     [SerializeField] private TextMeshProUGUI lblDescCurta;
     [SerializeField] private TextMeshProUGUI lblExplicacao;
 
-    public TextMeshProUGUI LblPup { get { return lblPup; } }
-    public TextMeshProUGUI LblTipo { get { return lblTipo; } }
-    public TextMeshProUGUI LblQtd { get { return lblQtd; } }
-    public TextMeshProUGUI LblPreco { get { return lblPreco; } }
+    public TextMeshProUGUI LblPup       { get { return lblPup; } }
+    public TextMeshProUGUI LblTipo      { get { return lblTipo; } }
+    public TextMeshProUGUI LblQtd       { get { return lblQtd; } }
+    public TextMeshProUGUI LblPreco     { get { return lblPreco; } }
     public TextMeshProUGUI LblDescCurta { get { return lblDescCurta; } }
-    public TextMeshProUGUI LblExplicacao { get { return lblExplicacao; } }
+    public TextMeshProUGUI LblExplicacao{ get { return lblExplicacao; } }
 }

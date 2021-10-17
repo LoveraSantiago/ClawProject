@@ -19,7 +19,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     public GarraManager(GarraDto garraDto)
     {
-        MovimentacaoDaGarra.configurarComponentesMovimentacao(garraDto);
+        MovimentacaoDaGarra.configurar(garraDto);
     }  
 
     public void configuradoPeloLevel(GarraDto garraDto, AbstractLevel level)
@@ -138,7 +138,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     }   
 
     ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
-    {        
-        return Garra.produtorEventoDirecao;
+    {
+        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)MovimentacaoDaGarra.garra).getProdutorDeEvento();        
     }   
 }

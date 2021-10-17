@@ -5407,7 +5407,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.4864865, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10502,14 +10502,7 @@ MonoBehaviour:
       referenciaColliderColetado: {fileID: 1930189876}
       efeitoColetado: {fileID: 1488198865}
       efeitoOutline: {fileID: 2100000, guid: cbad35fbf462a4f4bb8e2451dc3cf1a3, type: 2}
-      caracteres:
-      - {fileID: 21300000, guid: 0b082251c8af14642bd56a42a89b025e, type: 3}
-      - {fileID: 21300000, guid: 12248e2a121b8400aa4464081fa6dce1, type: 3}
-      - {fileID: 21300000, guid: dca2e233e9a6e4ef7be9a5b392e5effc, type: 3}
-      - {fileID: 21300000, guid: efb723cbae18641a9954c28d1f5cf3e9, type: 3}
-      - {fileID: 21300000, guid: 197f4c6ad86ad4eea9ece9b073043381, type: 3}
-      - {fileID: 21300000, guid: 1b34677d209914bd88468db12bd7ef0f, type: 3}
-      - {fileID: 21300000, guid: 6ff825b4da47d4749bb0a0b28414a44d, type: 3}
+      prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
       tuboDto:
         torque: 550
         gravidade: 0.65
@@ -27118,7 +27111,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.4864865, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -52642,7 +52635,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.4864865, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

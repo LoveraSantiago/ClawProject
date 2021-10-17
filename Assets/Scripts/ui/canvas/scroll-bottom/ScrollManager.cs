@@ -8,11 +8,11 @@ public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
     private bool isPupsToLevel;
 
     private PowerUpsToLevel pupsToLevel;
-    private ScrollBottomBarGameScene scrollBottomBar;
+    private ScrollBottomBarSceneGame scrollBottomBar;
 
     public ScrollManager(GameObject prefabBottomBar)
     {
-        scrollBottomBar = new ScrollBottomBarGameScene(prefabBottomBar);
+        scrollBottomBar = new ScrollBottomBarSceneGame(prefabBottomBar);
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
