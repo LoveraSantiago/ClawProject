@@ -25,6 +25,8 @@ public class ColetaveisScene : MonoBehaviour,
         Utils.configMainMatGrayScale(materialGrayScale);
         ColetavelHelper.configurar();
         PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI
+        PlayerPrefsColetaveis.disponibilizarColetavel("Laranja");//TEMPORARIAMENTE AQUI
+        PlayerPrefsColetaveis.disponibilizarColetavel("Aspargo");//TEMPORARIAMENTE AQUI
 
         PrefabDeSpriteDto prefabSpritesDto = prefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
         Dictionary<string, Sprite> dicionarioDeSprites = prefabSpritesDto.getDicionarioDeSprites();
