@@ -37,13 +37,7 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
             PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn);
             Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));
         }
-    }
-
-    protected override int getQtdItems()
-    {
-        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
-        return allPups.Length;
-    }
+    }  
 
     public void simularCliqueBoxAcionado(int indiceBtn, int indicePup)
     {        

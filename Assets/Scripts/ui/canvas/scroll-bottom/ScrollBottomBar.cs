@@ -10,11 +10,13 @@ public abstract class ScrollBottomBar
     public ScrollBottomBar(GameObject prefabBottomBar)
     {
         PrefabScrollBottomBarDto prefabDto = prefabBottomBar.GetComponent<PrefabScrollBottomBarDto>();
-        btnBottomBar = new BotaoBottomBar(prefabDto.BtnBottomBarDto, this);        
+        btnBottomBar = new BotaoBottomBar(prefabDto.BtnBottomBarDto, this);
 
-        int qtdItems = getQtdItems();
+        ItemsBottomBar items = getItemsBottomBar();
+
+        int qtdItems = items.getQtdItems();
         bordasBotoes = new GameObject[qtdItems];
-        criarBoxes(prefabDto.ScrollBottomBarDto, qtdItems);
+        criarBoxes(prefabDto.ScrollBottomBarDto, items);
 
         prefabDto.ScrollBottomBarDto.RectTransfHorizontal.sizeDelta     = new Vector2(300f * qtdItems, 300f);
         prefabDto.ScrollBottomBarDto.RectTransfHorizontal.localPosition = new Vector3(300f * qtdItems, 0, 0);        
@@ -36,21 +38,19 @@ public abstract class ScrollBottomBar
         }
     }
 
-    private void criarBoxes(ScrollBottomBarDto scrollBottomBarDto, int qtdItems)
+    private void criarBoxes(ScrollBottomBarDto scrollBottomBarDto, ItemsBottomBar items)
     {
-        for (int contador = 1; contador < qtdItems; contador++)
+        for (int contador = 1; contador < items.getQtdItems(); contador++)
         {
             GameObject go = GameObject.Instantiate(scrollBottomBarDto.BoxPup, scrollBottomBarDto.BoxPup.transform.parent);
 
-            string qtdString = null;
-            Sprite spr = null;
-            recuperarDataFromItemIndice(contador, out qtdString, out spr);
+            string qtdString = items.getLabelQtdDoItemIndice(contador);
+            Sprite spr = items.getSprDoItemIndice(contador);            
             bindBox(contador, go, qtdString, spr);
         }
         
-        string qtdStringZero = null;
-        Sprite sprZero = null;
-        recuperarDataFromItemIndice(0, out qtdStringZero, out sprZero);
+        string qtdStringZero = items.getLabelQtdDoItemIndice(0);
+        Sprite sprZero = items.getSprDoItemIndice(0);        
         bindBox(0, scrollBottomBarDto.BoxPup, qtdStringZero, sprZero);
     }
 
@@ -70,10 +70,9 @@ public abstract class ScrollBottomBar
         });
 
         bordasBotoes[indiceName] = box.transform.Find("img-back-pup-borda").gameObject;
-    }
-
-    protected abstract int getQtdItems();
-    protected abstract void recuperarDataFromItemIndice(int indice, out string qtdString, out Sprite spr);
+    }    
+    
+    protected abstract ItemsBottomBar getItemsBottomBar();
     protected abstract void cliqueBoxAcionado(TextMeshProUGUI lblQtd);
 
     public virtual void posCliqueBtnClose() { }

@@ -17,12 +17,7 @@ public class ScrollBottomBarSceneColetaveis : ScrollBottomBar,
     protected override void cliqueBoxAcionado(TextMeshProUGUI lblQtd)
     {
         throw new System.NotImplementedException();
-    }
-
-    protected override int getQtdItems()
-    {
-        return 2;//TEMPORARIO AQUI
-    }
+    }   
 
     ProdutorDeEvento<int> AcaoBBarPupEscolhido<int>.ProdutorEvento.getProdutorDeEvento()
     {
