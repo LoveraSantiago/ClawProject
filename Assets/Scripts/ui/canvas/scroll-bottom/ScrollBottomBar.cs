@@ -57,6 +57,8 @@ public abstract class ScrollBottomBar
         Button btnIt = box.transform.Find("btn").GetComponent<Button>();
         btnIt.name = indiceName.ToString();
         btnIt.image.sprite = items.getSprDoItemIndice(indiceName);
+        btnIt.image.material = items.getMaterialDoItemIndice(indiceName);
+        btnIt.image.color = items.getCorImgDoItemIndice(indiceName);
         btnIt.onClick.AddListener(() => {
             if (!btnBottomBar.animacaoEmAndamento)
             {

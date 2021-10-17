@@ -43,4 +43,40 @@ public class ItemsBottomBarFamilias : ItemsBottomBar
         ColetavelEntidade coletavelEntidade = coletaveisDaFamilia[0];
         return dicionarioDeSprites[coletavelEntidade.nomeSprite];
     }
+
+    public Color getCorImgDoItemIndice(int indice)
+    {
+        ColetavelEntidade.FAMILIA familia = familias[indice];
+        if (PlayerPrefsColetaveis.isFamiliaLocked(familia.ToString()))
+        {
+            return Color.black;
+        }        
+        else
+        {
+            return Color.white;
+        }
+    }
+
+    public Material getMaterialDoItemIndice(int indice)
+    {
+        ColetavelEntidade.FAMILIA familia = familias[indice];
+        if (PlayerPrefsColetaveis.isFamiliaLocked(familia.ToString()))
+        {
+            return null;
+        }
+        else if (!PlayerPrefsColetaveis.isAllFamiliaComColetaveisDisponiveis(familia))
+        {
+            Material matGrayScale = new Material(Utils.materialGrayScale);
+            ColetavelHelper coletavelHelper = new ColetavelHelper();
+            List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
+            ColetavelEntidade coletavelEntidade = coletaveisDaFamilia[0];
+            Sprite sprite = dicionarioDeSprites[coletavelEntidade.nomeSprite];
+            matGrayScale.SetTexture("main_text", sprite.texture);
+            return matGrayScale;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

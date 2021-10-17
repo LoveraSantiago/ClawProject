@@ -24,4 +24,14 @@ public class ItemsBottomBarPups : ItemsBottomBar
     {
         return allPups[indice].sprPowerUp;
     }
+
+    public Color getCorImgDoItemIndice(int indice)
+    {
+        return Color.white;
+    }
+
+    public Material getMaterialDoItemIndice(int indice)
+    {
+        return null;
+    }
 }
