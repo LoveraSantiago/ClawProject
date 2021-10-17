@@ -41,15 +41,19 @@ public abstract class ScrollBottomBar
         for (int contador = 1; contador < allPups.Length; contador++)
         {
             GameObject go = GameObject.Instantiate(scrollBottomBarDto.BoxPup, scrollBottomBarDto.BoxPup.transform.parent);
-            bindBox(contador, go, allPups[contador]);
+            PowerUpEntidade pupEntidade = allPups[contador];
+            string qtdString = PlayerPrefsPup.recuperarQtdPup(pupEntidade.nome).ToString();
+            bindBox(contador, go, qtdString, pupEntidade);
         }
-        bindBox(0, scrollBottomBarDto.BoxPup, allPups[0]);
+        PowerUpEntidade pupEntidadeZero = allPups[0];
+        string qtdStringZero = PlayerPrefsPup.recuperarQtdPup(pupEntidadeZero.nome).ToString();
+        bindBox(0, scrollBottomBarDto.BoxPup, qtdStringZero, pupEntidadeZero);
     }
 
-    private void bindBox(int indiceName, GameObject box, PowerUpEntidade pupEntidade)
+    private void bindBox(int indiceName, GameObject box, string qtd, PowerUpEntidade pupEntidade)
     {
         TextMeshProUGUI text = box.transform.Find("lbl-qtd").GetComponent<TextMeshProUGUI>();
-        text.text = PlayerPrefsPup.recuperarQtdPup(pupEntidade.nome).ToString();
+        text.text = qtd;
 
         Button btnIt = box.transform.Find("btn").GetComponent<Button>();
         btnIt.name = indiceName.ToString();
