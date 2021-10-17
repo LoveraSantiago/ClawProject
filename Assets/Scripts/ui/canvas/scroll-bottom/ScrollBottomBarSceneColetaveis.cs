@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ScrollBottomBarSceneColetaveis : ScrollBottomBar,
                                               AcaoBBarPupEscolhido<int>.ProdutorEvento
@@ -18,7 +19,9 @@ public class ScrollBottomBarSceneColetaveis : ScrollBottomBar,
 
     protected override void cliqueBoxAcionado(TextMeshProUGUI lblQtd)
     {
-        throw new System.NotImplementedException();
+        string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;
+        produtorDeIndiceEscolhido.produziuEvento(int.Parse(nomeBtnSelecionado));
+        btnBottomBar.btnBottomPressionado(this);
     }    
 
     ProdutorDeEvento<int> AcaoBBarPupEscolhido<int>.ProdutorEvento.getProdutorDeEvento()

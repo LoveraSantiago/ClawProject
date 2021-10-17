@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
+public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
+                                  AcaoBBarPupEscolhido<int>.ConsumidorEvento
 {
     private BlocoImgColetaveisDto blocoImgsDto;
     private Dictionary<string, Sprite> dicionarioDeSprites;
@@ -109,6 +110,14 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento
             produtorDeEvento.produziuEvento(UiColetavelInfo.ofNaoColetado(sprProcurado, coletavelEntidade));
         }
     }    
+
+    void ProdutorConsumidoresDeEvento<int>.ConsumidorEvento.consumirEvento(int evento)
+    {
+        controleFamilia.setIndiceAtual(evento);
+        ColetavelEntidade.FAMILIA familiaAtual = controleFamilia.getItemIndiceAtual();
+        montarBlocoImagemComFamilia(familiaAtual);
+        produzirEventoDeColetavelAtual(0);
+    }
 
     ProdutorDeEvento<UiColetavelInfo> AcaoBlocoImgColetavelAtual.ProdutorEvento.getProdutorDeEvento()
     {

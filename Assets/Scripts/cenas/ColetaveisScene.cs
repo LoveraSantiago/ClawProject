@@ -43,16 +43,14 @@ public class ColetaveisScene : MonoBehaviour,
             .configurarProdutor(blocoImg)
             .adicionarConsumidor(blocoImgDetalhe);
 
+        new AcaoBBarPupEscolhido<int>()
+            .configurarProdutor(scBottomBar)
+            .adicionarConsumidor(blocoImg);
+
         configBtnBack(btnBack);
         configBtnGanharColetado(blocoImgDetalheDto.BtnGanharColetavel);
         blocoImg.startLaizy();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-                    
-    }
+    }   
 
     public void OnPointerClick(PointerEventData eventData)
     {
