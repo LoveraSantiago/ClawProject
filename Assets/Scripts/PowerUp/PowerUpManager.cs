@@ -25,6 +25,7 @@ public class PowerUpManager : PowerUpAcionamento,
         TrocadorDeOrdem trocadorDeOrdem)
     {
         TeleportePowerUpGo.configurarTrocadorDeOrdem(trocadorDeOrdem);
+        AbstractDisplaySlotPowerUpGo.configurar(informacaoDisplayColetado);
     }
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp)
