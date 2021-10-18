@@ -83,7 +83,6 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
         }
     }
 
-
     public static void configurarTrocadorDeOrdem(TrocadorDeOrdem trocadorDeOrdemArg)
     {
         trocadorDeOrdem = trocadorDeOrdemArg;
