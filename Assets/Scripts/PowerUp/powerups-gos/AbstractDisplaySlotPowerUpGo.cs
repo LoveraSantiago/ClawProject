@@ -128,7 +128,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpNaoInteracaoComGarra
 
     protected abstract PowerUpEnums.TIPO getTipoRestartPup();        
 
-    public static void configurarInformacaoDisplayColetado(InformacaoDisplayColetado informacaoDisplayColetadoArg)
+    public static void configurar(InformacaoDisplayColetado informacaoDisplayColetadoArg)
     {
         informacaoDisplayColetado = informacaoDisplayColetadoArg;
     }
