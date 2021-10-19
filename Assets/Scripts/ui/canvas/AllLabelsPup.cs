@@ -9,11 +9,11 @@ public class AllLabelsPup : AcaoBlocoImgPUpAtual.ConsumidorEvento
 
     void AcaoBlocoImgPUpAtual.ConsumidorEvento.consumirEvento(PowerUpEntidade evento)
     {
-        labelsDto.LblPup.text = evento.nome;
-        labelsDto.LblTipo.text = "TIPO: " + evento.familia;
-        labelsDto.LblDescCurta.text = evento.descCurta;
+        labelsDto.LblPup.text        = evento.nome;
+        labelsDto.LblTipo.text       = evento.familia;
+        labelsDto.LblDescCurta.text  = evento.descCurta;
         labelsDto.LblExplicacao.text = evento.descDetalhada;
-        labelsDto.LblPreco.text = evento.preco;
-        labelsDto.LblQtd.text = "QTD: " + PlayerPrefsPup.recuperarQtdPup(evento.nome);
+        labelsDto.LblPreco.text      = evento.preco;
+        labelsDto.LblQtd.text        = "QTD: " + PlayerPrefsPup.recuperarQtdPup(evento.nome);
     }
 }

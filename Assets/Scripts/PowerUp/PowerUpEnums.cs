@@ -17,7 +17,7 @@ public class PowerUpEnums
     {
         public static readonly string EXPLOSIVOS   = "EXPLOSIVOS";
         public static readonly string TRANSMUTACAO = "TRANSMUTAÇÃO";
-        public static readonly string LEVITACAO    = "LEVITAÇÂO";
+        public static readonly string LEVITACAO    = "LEVITAÇÃO";
         public static readonly string MECANISMO    = "MECANISMO";
     }
 
