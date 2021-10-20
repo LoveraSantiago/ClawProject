@@ -1,11 +1,7 @@
 using UnityEngine;
 
 public class MovimentacaoParado : MovimentacaoDaGarra
-{   
-    public MovimentacaoParado()
-    { 
-    }
-
+{  
     public override void preInicio()
     {
         acionarTriggerDasPincas();
@@ -19,7 +15,7 @@ public class MovimentacaoParado : MovimentacaoDaGarra
     {
         parar();
         Quaternion angIdleMinEsquerda = angulosTemp.angIdleMinEsquerda;
-        Quaternion angIdleMinDireita  = angulosTemp.angIdleMinDireita;
-        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloFechamento, angIdleMinEsquerda, angIdleMinDireita);
+        Quaternion angIdleMinDireita  = angulosTemp.angIdleMinDireita;        
+        rotacionarPincaVelocidadeFechamentoFDT(angIdleMinEsquerda, angIdleMinDireita);
     }
 }
