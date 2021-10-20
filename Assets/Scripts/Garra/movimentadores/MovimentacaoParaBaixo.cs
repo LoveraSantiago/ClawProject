@@ -31,7 +31,7 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal
         Quaternion angAberturaEsquerda = angulosTemp.angAberturaEsquerda;
         Quaternion angAberturaDireita  = angulosTemp.angAberturaDireita;
 
-        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, angAberturaEsquerda, angAberturaDireita);
+        rotacionarPincaVelocidadeAberturaFDT(angAberturaEsquerda, angAberturaDireita);        
         moverParaBaixoFreeze();
     }
 
