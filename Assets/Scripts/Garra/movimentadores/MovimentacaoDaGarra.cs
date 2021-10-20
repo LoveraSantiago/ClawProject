@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
-    public static Garra garra;
+    private static Garra garra;
     protected static AngulosTemporarios angulosTemp;
 
     public virtual void preInicio() { }
@@ -137,11 +137,6 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
     {
         return garra.rigidBody.isMenorPosHorizontal(posHorizontal);
     }
-
-    protected void dispararEventoDirecao(int direcao)
-    {
-        garra.dispararEventoDirecao(direcao);        
-    }     
     
     protected void acionarColliderDasPincas()
     {
@@ -163,7 +158,12 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
         garra.pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);
     }
 
-    protected void produziuEventoDeDirecao(DirecaoDaGarra direcao)
+    protected void produziuEventoDeDirecao(int direcao)
+    {
+        garra.dispararEventoDirecao(direcao);        
+    }     
+
+    public void produziuEventoDeDirecao(DirecaoDaGarra direcao)
     {
         garra.dispararEventoDirecao(direcao);        
     }
