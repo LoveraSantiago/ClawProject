@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
-    private static Garra garra;
+    public static Garra garra;
     protected static AngulosTemporarios angulosTemp;
 
     public virtual void preInicio() { }
