@@ -1,11 +1,7 @@
 using UnityEngine;
 
 public class MovimentacaoSoltar : MovimentacaoDaGarraPowerUp
-{
-    public MovimentacaoSoltar()
-    {             
-    }
-
+{   
     public override void preInicio()
     {
         acaoSoltarPowerUp();   
@@ -16,8 +12,8 @@ public class MovimentacaoSoltar : MovimentacaoDaGarraPowerUp
         parar();
 
         Quaternion angAberturaDireita  = angulosTemp.angAberturaDireita;
-        Quaternion angAberturaEsquerda = angulosTemp.angAberturaEsquerda;
-        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, angAberturaEsquerda, angAberturaDireita);
+        Quaternion angAberturaEsquerda = angulosTemp.angAberturaEsquerda;        
+        rotacionarPincaVelocidadeAberturaFDT(angAberturaEsquerda, angAberturaDireita);
         if (isPincaDireitaNoAngulo(angAberturaDireita))
         {
             comunicadorComGerMovimentacao.trocarParaAcaoParado();
