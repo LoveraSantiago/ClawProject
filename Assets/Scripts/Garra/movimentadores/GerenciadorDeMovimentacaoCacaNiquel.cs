@@ -38,4 +38,9 @@ public class GerenciadorDeMovimentacaoCacaNiquel : GerenciadorDeMovimentacao,
         movAtual = movParado;
         movAtual.preInicio();
     }
+
+    public override ProdutorDeEvento<DirecaoDaGarra> getProdutorDeEvento()
+    {
+        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)movAtual).getProdutorDeEvento();
+    }
 }

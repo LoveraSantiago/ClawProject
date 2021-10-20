@@ -27,7 +27,7 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
             moverHorizontalmenteFreeze(velocidadeDirecao);
             Quaternion angIdleMinDireita  = angulosTemp.angIdleMinDireita;
             Quaternion angIdleMinEsquerda = angulosTemp.angIdleMinEsquerda;
-            rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, angIdleMinEsquerda, angIdleMinDireita);
+            rotacionarPincaVelocidadeAberturaFDT(angIdleMinEsquerda, angIdleMinDireita);
         }
         else
         {
@@ -42,7 +42,7 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
             moverHorizontalmenteFreeze(velocidadeDirecao);
             Quaternion angIdleMinDireita = angulosTemp.angIdleMinDireita;
             Quaternion angIdleMinEsquerda = angulosTemp.angIdleMinEsquerda;
-            rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, angIdleMinEsquerda, angIdleMinDireita);
+            rotacionarPincaVelocidadeAberturaFDT(angIdleMinEsquerda, angIdleMinDireita);
         }
         else
         {

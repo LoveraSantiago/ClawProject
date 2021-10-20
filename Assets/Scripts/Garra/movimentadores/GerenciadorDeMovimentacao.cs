@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class GerenciadorDeMovimentacao 
+public abstract class GerenciadorDeMovimentacao : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     public abstract void iniciarMovimentacoes();
     public abstract void update(InputGame inputGame);
@@ -9,4 +9,6 @@ public abstract class GerenciadorDeMovimentacao
     public virtual void garraColidiuCom(Collider2D other){}
 
     public abstract void garraComemorar();
+
+    public abstract ProdutorDeEvento<DirecaoDaGarra> getProdutorDeEvento();
 }

@@ -26,7 +26,7 @@ public class MovimentacaoVoltarParaCima : MovimentacaoDaGarraPowerUp
     {
         moverParaCimaFreeze();
         Quaternion angIdleMinEsquerda = angulosTemp.angIdleMinEsquerda;
-        Quaternion angIdleMinDireita  = angulosTemp.angIdleMinDireita;
-        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, angIdleMinEsquerda, angIdleMinDireita);
+        Quaternion angIdleMinDireita  = angulosTemp.angIdleMinDireita;        
+        rotacionarPincaVelocidadeAberturaFDT(angIdleMinEsquerda, angIdleMinDireita);
     }
 }

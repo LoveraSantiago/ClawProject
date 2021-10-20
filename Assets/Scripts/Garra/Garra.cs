@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     public GarraDto garraDto;
@@ -19,7 +21,12 @@ public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
         efeito    = new GarraEfeito(garraDto.EfeitoTrail);
 
         produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
-    }                                     
+    }          
+    
+    public Vector3 getPosicaoCentroGarra()
+    {
+        return garraDto.CentroDaGarra.position;
+    }
 
     public void dispararEventoDirecao(int direcao)
     {

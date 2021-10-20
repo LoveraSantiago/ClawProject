@@ -1,12 +1,10 @@
-using UnityEngine;
-
 public class MovimentacaoIrParaCacaNiquel : MovimentacaoDaGarraCacaNiquel
 {
     private MovimentacaoVoltarParaPosicao movVoltarPosCacaNiquel;
 
     public MovimentacaoIrParaCacaNiquel()
     {
-        movVoltarPosCacaNiquel = new MovimentacaoVoltarParaPosicao(garra.garraDto.PosCacaNiquel);
+        movVoltarPosCacaNiquel = new MovimentacaoVoltarParaPosicao(getPosicaoCacaNiquel());
     }
 
     public override void fixedUpdate()

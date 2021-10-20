@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public abstract class MovimentacaoDaGarra 
+public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
-    protected readonly float LIMITE_LATERAL_TELA = 2.25f;   
-    public static Garra garra { get; private set; }//FECHAR VAZAMENTO DE CONTEXTO PARA MOVIMENTADORES
+    protected readonly float LIMITE_LATERAL_TELA = 2.25f;
+    private static Garra garra;
     protected static AngulosTemporarios angulosTemp;
 
     public virtual void preInicio() { }
@@ -138,11 +138,16 @@ public abstract class MovimentacaoDaGarra
         return garra.rigidBody.isMenorPosHorizontal(posHorizontal);
     }
 
-    protected void dispararEventoDirecao(int direcao)
+    protected Vector3 getPosicaoCentroGarra()
     {
-        garra.dispararEventoDirecao(direcao);        
-    }     
-    
+        return garra.getPosicaoCentroGarra();
+    }
+
+    protected float getPosicaoCacaNiquel()
+    {
+        return garra.garraDto.PosCacaNiquel;
+    }
+
     protected void acionarColliderDasPincas()
     {
         garra.pincas.acionarCollider();
@@ -158,12 +163,42 @@ public abstract class MovimentacaoDaGarra
         return garra.pincas.isDireitaNoAngulo(anguloDesejado);
     }
 
+    protected bool isPincaDireitaNoAnguloDeFechamento()
+    {
+        return isPincaDireitaNoAngulo(angulosTemp.angFechamentoDireita);
+    }
+
+    protected void rotacionarPincaVelocidadeAberturaFDT(Quaternion angEsquerda, Quaternion angDireita)
+    {
+        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, angEsquerda, angDireita);
+    }
+
+    protected void rotacionarPincaVelocidadeFechamentoFDT()
+    {
+        rotacionarPincaVelocidadeFechamentoFDT(angulosTemp.angFechamentoEsquerda, angulosTemp.angFechamentoDireita);
+    }
+
+    protected void rotacionarPincaVelocidadeFechamentoFDT(Quaternion angEsquerda, Quaternion angDireita)
+    {
+        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloFechamento, angEsquerda, angDireita);
+    }
+
+    protected void rotacionarPincaVelocidadeIdleFDT(Quaternion angEsquerda, Quaternion angDireita)
+    {
+        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloIdle, angEsquerda, angDireita);
+    }
+
     protected void rotacionarPincaFDT(float velocidade, Quaternion angEsquerda, Quaternion angDireita)
     {
         garra.pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);
     }
 
-    protected void produziuEventoDeDirecao(DirecaoDaGarra direcao)
+    protected void produziuEventoDeDirecao(int direcao)
+    {
+        garra.dispararEventoDirecao(direcao);        
+    }     
+
+    public void produziuEventoDeDirecao(DirecaoDaGarra direcao)
     {
         garra.dispararEventoDirecao(direcao);        
     }
@@ -172,5 +207,10 @@ public abstract class MovimentacaoDaGarra
     {
         garra = new Garra(garraDto);
         angulosTemp = new AngulosTemporarios(garraDto.Angulos);
+    }
+
+    ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
+    {
+        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)garra).getProdutorDeEvento();
     }
 }
