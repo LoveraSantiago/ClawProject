@@ -40,8 +40,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     {        
         verificarSeMovimentacaoAtingiuLimites();
         verificarSePincaAtingiuLimites();
-
-        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloIdle, anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
+        rotacionarPincaVelocidadeIdleFDT(anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
     }
 
     private void verificarSeMovimentacaoAtingiuLimites()
