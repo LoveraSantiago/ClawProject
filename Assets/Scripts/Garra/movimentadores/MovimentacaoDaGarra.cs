@@ -163,9 +163,19 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
         return garra.pincas.isDireitaNoAngulo(anguloDesejado);
     }
 
+    protected bool isPincaDireitaNoAnguloDeFechamento()
+    {
+        return isPincaDireitaNoAngulo(angulosTemp.angFechamentoDireita);
+    }
+
     protected void rotacionarPincaVelocidadeAberturaFDT(Quaternion angEsquerda, Quaternion angDireita)
     {
         rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, angEsquerda, angDireita);
+    }
+
+    protected void rotacionarPincaVelocidadeFechamentoFDT()
+    {
+        rotacionarPincaVelocidadeFechamentoFDT(angulosTemp.angFechamentoEsquerda, angulosTemp.angFechamentoDireita);
     }
 
     protected void rotacionarPincaVelocidadeFechamentoFDT(Quaternion angEsquerda, Quaternion angDireita)

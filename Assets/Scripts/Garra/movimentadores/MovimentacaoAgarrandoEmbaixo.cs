@@ -1,11 +1,7 @@
 using UnityEngine;
 
 public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarraNormal
-{
-    public MovimentacaoAgarrandoEmbaixo()
-    {     
-    }
-    
+{   
     public override void preInicio()
     {
         agarrando();
@@ -14,14 +10,10 @@ public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarraNormal
 
     public override void fixedUpdate()
     {
-        parar();
+        parar();       
 
-        Quaternion angFechamentoEsquerda = angulosTemp.angFechamentoEsquerda;
-        Quaternion angFechamentoDireita  = angulosTemp.angFechamentoDireita;
-
-        rotacionarPincaVelocidadeFechamentoFDT(angFechamentoEsquerda, angFechamentoDireita);
-        
-        if (isPincaDireitaNoAngulo(angFechamentoDireita))
+        rotacionarPincaVelocidadeFechamentoFDT();
+        if (isPincaDireitaNoAnguloDeFechamento())
         {       
             comunicadorComGerMovimentacao.trocarParaAcaoSubindo();
         }        
