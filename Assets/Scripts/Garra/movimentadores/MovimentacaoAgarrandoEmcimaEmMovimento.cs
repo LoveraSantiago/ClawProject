@@ -18,7 +18,7 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
         garraInteracaoComPowerUp.colocarNaPosicao(garra.garraDto.CentroDaGarra.position);
 
         direcao = 1;
-        dispararEventoDirecao(direcao);//reesincronizarJoystick
+        produziuEventoDeDirecao(direcao);//reesincronizarJoystick
     }
 
     public override void update(InputGame inputGame)
