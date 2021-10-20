@@ -19,7 +19,7 @@ public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarraNormal
         Quaternion angFechamentoEsquerda = angulosTemp.angFechamentoEsquerda;
         Quaternion angFechamentoDireita  = angulosTemp.angFechamentoDireita;
 
-        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloFechamento, angFechamentoEsquerda, angFechamentoDireita);
+        rotacionarPincaVelocidadeFechamentoFDT(angFechamentoEsquerda, angFechamentoDireita);
         
         if (isPincaDireitaNoAngulo(angFechamentoDireita))
         {       
