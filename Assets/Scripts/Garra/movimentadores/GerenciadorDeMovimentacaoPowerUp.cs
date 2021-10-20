@@ -117,5 +117,10 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     {
         movimentador.preInicio();
         movAtual = movimentador;
-    }    
+    }
+
+    public override ProdutorDeEvento<DirecaoDaGarra> getProdutorDeEvento()
+    {
+        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)movAtual).getProdutorDeEvento();
+    }
 }

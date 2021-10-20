@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public abstract class MovimentacaoDaGarra 
+public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
-    protected readonly float LIMITE_LATERAL_TELA = 2.25f;   
-    public static Garra garra { get; private set; }//FECHAR VAZAMENTO DE CONTEXTO PARA MOVIMENTADORES
+    protected readonly float LIMITE_LATERAL_TELA = 2.25f;
+    public static Garra garra;
     protected static AngulosTemporarios angulosTemp;
 
     public virtual void preInicio() { }
@@ -172,5 +172,10 @@ public abstract class MovimentacaoDaGarra
     {
         garra = new Garra(garraDto);
         angulosTemp = new AngulosTemporarios(garraDto.Angulos);
+    }
+
+    ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
+    {
+        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)garra).getProdutorDeEvento();
     }
 }

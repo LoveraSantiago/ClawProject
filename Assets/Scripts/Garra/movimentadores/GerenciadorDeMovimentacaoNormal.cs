@@ -113,5 +113,10 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     ProdutorDeEvento<InformacoesDaGarraDto> AcaoInfoDaGarra.ProdutorEvento.getProdutorDeEvento()
     {        
         return movPBaixo.produtorEventoInfoGarra;
-    }   
+    }
+
+    public override ProdutorDeEvento<DirecaoDaGarra> getProdutorDeEvento()
+    {
+        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)movParado).getProdutorDeEvento();
+    }
 }
