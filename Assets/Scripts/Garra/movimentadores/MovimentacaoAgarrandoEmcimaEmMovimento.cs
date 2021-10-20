@@ -15,7 +15,7 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
 
         garraInteracaoComPowerUp.iniciar();
         garraInteracaoComPowerUp.ligarGravidadeZero();
-        garraInteracaoComPowerUp.colocarNaPosicao(garra.garraDto.CentroDaGarra.position);
+        garraInteracaoComPowerUp.colocarNaPosicao(getPosicaoCentroGarra());
 
         direcao = 1;
         produziuEventoDeDirecao(direcao);//reesincronizarJoystick

@@ -137,7 +137,12 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
     {
         return garra.rigidBody.isMenorPosHorizontal(posHorizontal);
     }
-    
+
+    protected Vector3 getPosicaoCentroGarra()
+    {
+        return garra.getPosicaoCentroGarra();
+    }
+
     protected void acionarColliderDasPincas()
     {
         garra.pincas.acionarCollider();
