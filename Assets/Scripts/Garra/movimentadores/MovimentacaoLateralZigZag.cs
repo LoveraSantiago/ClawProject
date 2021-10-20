@@ -2,12 +2,10 @@ using UnityEngine;
 
 public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 {    
+    private bool isUsandoMaxAngulo;
+    
     private int direcao;
-
-    private float movimentoLateral;
-
-    private float anguloAtual;
-    private bool isUsandoMaxAngulo;        
+    private float movimentoLateral;    
 
     private Quaternion anguloDesejadoEsquerdaAtual;
     private Quaternion anguloDesejadoDireitaAtual;    
@@ -82,16 +80,14 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 
     private void configurarAngulosParaMax()
     {
-        isUsandoMaxAngulo = true;
-        anguloAtual = -garra.garraDto.Angulos.IdleMax;
+        isUsandoMaxAngulo = true;        
         anguloDesejadoDireitaAtual  = angulosTemp.angIdleMaxDireita;
         anguloDesejadoEsquerdaAtual = angulosTemp.angIdleMaxEsquerda;
     }
 
     private void configurarAngulosParaMin()
     {
-        isUsandoMaxAngulo = false;
-        anguloAtual = garra.garraDto.Angulos.IdleMin;
+        isUsandoMaxAngulo = false;        
         anguloDesejadoDireitaAtual  = angulosTemp.angIdleMinDireita;
         anguloDesejadoEsquerdaAtual = angulosTemp.angIdleMinEsquerda;
     }
