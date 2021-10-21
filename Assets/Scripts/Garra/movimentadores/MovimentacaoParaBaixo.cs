@@ -28,8 +28,8 @@ public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal
 
     public override void fixedUpdate()
     {
-        Quaternion angAberturaEsquerda = angulosTemp.angAberturaEsquerda;
-        Quaternion angAberturaDireita  = angulosTemp.angAberturaDireita;
+        Quaternion angAberturaEsquerda = getAnguloAberturaEsquerda();
+        Quaternion angAberturaDireita  = getAnguloAberturaDireita();
 
         rotacionarPincaVelocidadeAberturaFDT(angAberturaEsquerda, angAberturaDireita);        
         moverParaBaixoFreeze();

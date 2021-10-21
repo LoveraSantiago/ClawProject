@@ -213,6 +213,16 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
         return angulosTemp.angIdleMinEsquerda;
     }
 
+    protected Quaternion getAnguloAberturaEsquerda()
+    {
+        return angulosTemp.angAberturaEsquerda;
+    }
+
+    protected Quaternion getAnguloAberturaDireita()
+    {
+        return angulosTemp.angAberturaDireita;
+    }
+
     protected void produziuEventoDeDirecao(int direcao)
     {
         garra.dispararEventoDirecao(direcao);        
