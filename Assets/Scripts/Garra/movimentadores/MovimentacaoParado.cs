@@ -14,8 +14,8 @@ public class MovimentacaoParado : MovimentacaoDaGarra
     public override void fixedUpdate()
     {
         parar();
-        Quaternion angIdleMinEsquerda = angulosTemp.angIdleMinEsquerda;
-        Quaternion angIdleMinDireita  = angulosTemp.angIdleMinDireita;        
+        Quaternion angIdleMinEsquerda = getAnguloIdleMinEsquerda();
+        Quaternion angIdleMinDireita  = getAnguloIdleMinDireita();        
         rotacionarPincaVelocidadeFechamentoFDT(angIdleMinEsquerda, angIdleMinDireita);
     }
 }
