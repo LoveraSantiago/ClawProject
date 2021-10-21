@@ -11,8 +11,8 @@ public class MovimentacaoSoltar : MovimentacaoDaGarraPowerUp
     {
         parar();
 
-        Quaternion angAberturaDireita  = angulosTemp.angAberturaDireita;
-        Quaternion angAberturaEsquerda = angulosTemp.angAberturaEsquerda;        
+        Quaternion angAberturaDireita  = getAnguloAberturaDireita();
+        Quaternion angAberturaEsquerda = getAnguloAberturaEsquerda();        
         rotacionarPincaVelocidadeAberturaFDT(angAberturaEsquerda, angAberturaDireita);
         if (isPincaDireitaNoAngulo(angAberturaDireita))
         {
