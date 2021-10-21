@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AngulosTemporarios 
+public class AngulosPropriedades 
 {
     public Quaternion angIdleMinEsquerda { get; private set; }
     public Quaternion angIdleMinDireita  { get; private set; }
@@ -14,7 +14,7 @@ public class AngulosTemporarios
     public Quaternion angFechamentoEsquerda { get; private set; }
     public Quaternion angFechamentoDireita  { get; private set; }
 
-    public AngulosTemporarios(GarraAngulosDto angulosDto)
+    public AngulosPropriedades(GarraAngulosDto angulosDto)
     {
         angIdleMinDireita  = Quaternion.Euler(0, 0, -angulosDto.IdleMin);
         angIdleMinEsquerda = Quaternion.Euler(0, 0, angulosDto.IdleMin);

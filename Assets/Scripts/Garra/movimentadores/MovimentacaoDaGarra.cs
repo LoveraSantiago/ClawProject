@@ -4,7 +4,7 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
     private static Garra garra;
-    private static AngulosTemporarios angulosTemp;
+    private static AngulosPropriedades angulosProps;
 
     public virtual void preInicio() { }
     public virtual void update(InputGame inputGame) { }
@@ -165,7 +165,7 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
 
     protected bool isPincaDireitaNoAnguloDeFechamento()
     {
-        return isPincaDireitaNoAngulo(angulosTemp.angFechamentoDireita);
+        return isPincaDireitaNoAngulo(angulosProps.angFechamentoDireita);
     }
 
     protected void rotacionarPincaVelocidadeAberturaFDT(Quaternion angEsquerda, Quaternion angDireita)
@@ -175,7 +175,7 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
 
     protected void rotacionarPincaVelocidadeFechamentoFDT()
     {
-        rotacionarPincaVelocidadeFechamentoFDT(angulosTemp.angFechamentoEsquerda, angulosTemp.angFechamentoDireita);
+        rotacionarPincaVelocidadeFechamentoFDT(angulosProps.angFechamentoEsquerda, angulosProps.angFechamentoDireita);
     }
 
     protected void rotacionarPincaVelocidadeFechamentoFDT(Quaternion angEsquerda, Quaternion angDireita)
@@ -195,32 +195,32 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
 
     protected Quaternion getAnguloIdleMaxDireita()
     {
-        return angulosTemp.angIdleMaxDireita;
+        return angulosProps.angIdleMaxDireita;
     }
 
     protected Quaternion getAnguloIdleMaxEsquerda()
     {
-        return angulosTemp.angIdleMaxEsquerda;
+        return angulosProps.angIdleMaxEsquerda;
     }
 
     protected Quaternion getAnguloIdleMinDireita()
     {
-        return angulosTemp.angIdleMinDireita;
+        return angulosProps.angIdleMinDireita;
     }
 
     protected Quaternion getAnguloIdleMinEsquerda()
     {
-        return angulosTemp.angIdleMinEsquerda;
+        return angulosProps.angIdleMinEsquerda;
     }
 
     protected Quaternion getAnguloAberturaEsquerda()
     {
-        return angulosTemp.angAberturaEsquerda;
+        return angulosProps.angAberturaEsquerda;
     }
 
     protected Quaternion getAnguloAberturaDireita()
     {
-        return angulosTemp.angAberturaDireita;
+        return angulosProps.angAberturaDireita;
     }
 
     protected void produziuEventoDeDirecao(int direcao)
@@ -236,7 +236,7 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
     public static void configurar(GarraDto garraDto)
     {
         garra = new Garra(garraDto);
-        angulosTemp = new AngulosTemporarios(garraDto.Angulos);
+        angulosProps = new AngulosPropriedades(garraDto.Angulos);
     }
 
     ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
