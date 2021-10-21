@@ -4,7 +4,7 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
     private static Garra garra;
-    protected static AngulosTemporarios angulosTemp;
+    private static AngulosTemporarios angulosTemp;
 
     public virtual void preInicio() { }
     public virtual void update(InputGame inputGame) { }
@@ -191,6 +191,26 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
     protected void rotacionarPincaFDT(float velocidade, Quaternion angEsquerda, Quaternion angDireita)
     {
         garra.pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);
+    }
+
+    protected Quaternion getAnguloIdleMaxDireita()
+    {
+        return angulosTemp.angIdleMaxDireita;
+    }
+
+    protected Quaternion getAnguloIdleMaxEsquerda()
+    {
+        return angulosTemp.angIdleMaxEsquerda;
+    }
+
+    protected Quaternion getAnguloIdleMinDireita()
+    {
+        return angulosTemp.angIdleMinDireita;
+    }
+
+    protected Quaternion getAnguloIdleMinEsquerda()
+    {
+        return angulosTemp.angIdleMinEsquerda;
     }
 
     protected void produziuEventoDeDirecao(int direcao)

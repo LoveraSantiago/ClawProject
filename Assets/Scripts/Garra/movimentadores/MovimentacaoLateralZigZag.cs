@@ -80,15 +80,15 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 
     private void configurarAngulosParaMax()
     {
-        isUsandoMaxAngulo = true;        
-        anguloDesejadoDireitaAtual  = angulosTemp.angIdleMaxDireita;
-        anguloDesejadoEsquerdaAtual = angulosTemp.angIdleMaxEsquerda;
+        isUsandoMaxAngulo = true;
+        anguloDesejadoDireitaAtual  = getAnguloIdleMaxDireita();
+        anguloDesejadoEsquerdaAtual = getAnguloIdleMaxEsquerda();
     }
 
     private void configurarAngulosParaMin()
     {
         isUsandoMaxAngulo = false;        
-        anguloDesejadoDireitaAtual  = angulosTemp.angIdleMinDireita;
-        anguloDesejadoEsquerdaAtual = angulosTemp.angIdleMinEsquerda;
+        anguloDesejadoDireitaAtual  = getAnguloIdleMinDireita();
+        anguloDesejadoEsquerdaAtual = getAnguloIdleMinEsquerda();
     }
 }
