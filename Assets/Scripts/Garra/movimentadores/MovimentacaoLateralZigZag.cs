@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 {    
-    private bool isUsandoMaxAngulo;
-    
-    private int direcao;
-    private float movimentoLateral;    
+    private bool isUsandoMaxAngulo;    
+    private int direcao;    
 
     private Quaternion anguloDesejadoEsquerdaAtual;
     private Quaternion anguloDesejadoDireitaAtual;    
