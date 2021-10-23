@@ -59,8 +59,8 @@ public class BoardAssemblerNegativo : EditorWindow
         root.Q<UnityEngine.UIElements.Button>("botaoClean")         .clicked += () => cleaner.clean();
         root.Q<UnityEngine.UIElements.Button>("botaoProcessar")     .clicked += () => processador.gerarArrayDeIds();
         root.Q<UnityEngine.UIElements.Button>("botaoProcessarOrdem").clicked += () => processador.gerarArrayDeOrdem();
-        root.Q<UnityEngine.UIElements.Button>("botaoCimaAll")       .clicked += () => navegacao.navegarCimaTotal();
-        root.Q<UnityEngine.UIElements.Button>("botaoBaixoAll")      .clicked += () => navegacao.navegarBaixoTotal();
+        root.Q<UnityEngine.UIElements.Button>("botaoCimaAll")       .clicked += () => navegacao.navegarBaixoTotal();
+        root.Q<UnityEngine.UIElements.Button>("botaoBaixoAll")      .clicked += () => navegacao.navegarCimaTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoEsquerdaAll")   .clicked += () => navegacao.navegarTrasTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoDireitaAll")    .clicked += () => navegacao.navegarFrenteTotal();
         root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => colocarTexto(navegacao, evento.newValue));

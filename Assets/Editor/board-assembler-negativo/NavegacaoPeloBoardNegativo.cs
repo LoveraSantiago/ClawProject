@@ -15,8 +15,8 @@ public class NavegacaoPeloBoardNegativo : NavegacaoPeloBoard
         return "botaoBaixo";
     }
 
-    protected override bool isLinhaMenor(int value)
+     protected override bool isLinhaMenor(int value)
     {
-        return isPar(value);
+        return isImpar(value);
     }
 }
