@@ -8,14 +8,17 @@ public class BoardCleaner
     private Action<GameObject> acaoCleanGo;
     private Action<Text> acaoCleanText;
     private ReferenciasDoBoardAssembler referenciasDoBoard;
+    private NavegacaoPeloBoard navegacao;
 
     public BoardCleaner(
-        ReferenciasDoBoardAssembler referenciasDoBoard, 
+        ReferenciasDoBoardAssembler referenciasDoBoard,
+        NavegacaoPeloBoard navegacao,
         Action<GameObject> acaoCleanGo, 
         Action<Text> acaoCleanText)
     {
         this.acaoCleanGo = acaoCleanGo;
         this.acaoCleanText = acaoCleanText;
+        this.navegacao = navegacao;
         this.referenciasDoBoard = referenciasDoBoard;
     }
 
@@ -39,6 +42,7 @@ public class BoardCleaner
                 }
             }
         }
+        navegacao.resetMira();
     }
 
     private bool isSextoElementoLinhaPar(int linha, int coluna)
