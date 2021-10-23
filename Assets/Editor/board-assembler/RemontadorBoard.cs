@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class RemontadorBoard
 {
     private ListaDeSprites listaDeSprites;
-    private ReferenciasDoBoardAssembler referencias;
+    private ReferenciasDoBoardAssemblerPositivo referencias;
 
     public RemontadorBoard(
-        ReferenciasDoBoardAssembler referencias, ListaDeSprites listaDeSprites)
+        ReferenciasDoBoardAssemblerPositivo referencias, ListaDeSprites listaDeSprites)
     {
         this.listaDeSprites = listaDeSprites;
         this.referencias = referencias;

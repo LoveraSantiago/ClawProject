@@ -34,6 +34,6 @@ public class BoardAssemblerNegativo : EditorWindow
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
 
-        ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler("BoardAssembler-Negativo");
+        ReferenciasDoBoardAssemblerNegativo referenciasDoBoard = new ReferenciasDoBoardAssemblerNegativo();
     }
 }

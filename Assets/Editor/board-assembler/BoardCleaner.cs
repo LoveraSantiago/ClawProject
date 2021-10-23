@@ -7,10 +7,10 @@ public class BoardCleaner
 {
     private Action<GameObject> acaoCleanGo;
     private Action<Text> acaoCleanText;
-    private ReferenciasDoBoardAssembler referenciasDoBoard;
+    private ReferenciasDoBoardAssemblerPositivo referenciasDoBoard;
 
     public BoardCleaner(
-        ReferenciasDoBoardAssembler referenciasDoBoard, 
+        ReferenciasDoBoardAssemblerPositivo referenciasDoBoard, 
         Action<GameObject> acaoCleanGo, 
         Action<Text> acaoCleanText)
     {

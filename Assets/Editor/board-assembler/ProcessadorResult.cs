@@ -5,9 +5,9 @@ using System;
 
 public class ProcessadorResult 
 {
-    private ReferenciasDoBoardAssembler referencias;
+    private ReferenciasDoBoardAssemblerPositivo referencias;
 
-    public ProcessadorResult(ReferenciasDoBoardAssembler referencias)
+    public ProcessadorResult(ReferenciasDoBoardAssemblerPositivo referencias)
     {
         this.referencias = referencias;
     }

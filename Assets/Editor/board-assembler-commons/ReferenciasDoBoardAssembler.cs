@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ReferenciasDoBoardAssembler 
+public abstract class ReferenciasDoBoardAssembler
 {
     public GameObject goMira { get; private set; }
     public Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard { get; private set; }
@@ -43,10 +43,10 @@ public class ReferenciasDoBoardAssembler
         dicionarioTextLabels = new Dictionary<int, Dictionary<int, Text>>();
 
         for (int contadorLinha = 0; contadorLinha < goBoardAssembler.transform.Find("gos").childCount; contadorLinha++)
-        {            
+        {
             GameObject goLinha = goBoardAssembler.transform.Find("gos").GetChild(contadorLinha).gameObject;
             GameObject goLabel = goBoardAssembler.transform.Find("lbls").GetChild(contadorLinha).gameObject;
-            
+
             if (isNumerico(goLinha.name) && goLinha.name.Equals(goLabel.name))
             {
                 Dictionary<int, GameObject> dicionarioGoColuna = new Dictionary<int, GameObject>();
@@ -68,7 +68,7 @@ public class ReferenciasDoBoardAssembler
                 dicionarioGosBoard.Add(indiceLinha, dicionarioGoColuna);
                 dicionarioTextLabels.Add(indiceLinha, dicionarioTextColuna);
             }
-        }        
+        }
     }
 
     private bool isNumerico(string name)
