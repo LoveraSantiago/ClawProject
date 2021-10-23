@@ -43,6 +43,10 @@ public class BoardAssemblerNegativo : EditorWindow
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
         BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard, (go) => colocarSprVazio(go), (text) => resetText(text));
         navegacao.resetMira();
+
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => colocarSprite(navegacao.getGoDaMira(), spr));
+
+        RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
     }
 
     private void colocarSprite(GameObject go, Sprite sprite)
