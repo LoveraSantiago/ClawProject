@@ -38,7 +38,7 @@ public class BoardAssemblerV5 : EditorWindow
         //root.Add(labelWithStyle);
 
 
-        ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler();
+        ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler("BoardAssembler");
         NavegacaoPeloBoard navegacao  = new NavegacaoPeloBoard(root, referenciasDoBoard);
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
         BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard, (go) => colocarSprVazio(go), (text) => resetText(text));

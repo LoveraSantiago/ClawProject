@@ -33,5 +33,7 @@ public class BoardAssemblerNegativo : EditorWindow
         //VisualElement labelWithStyle = new Label("Hello World! With Style");
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
+
+        ReferenciasDoBoardAssembler referenciasDoBoard = new ReferenciasDoBoardAssembler("BoardAssembler-Negativo");
     }
 }

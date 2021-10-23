@@ -9,31 +9,31 @@ public class ReferenciasDoBoardAssembler
     public Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard { get; private set; }
     public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels { get; private set; }
 
-    public ReferenciasDoBoardAssembler()
+    public ReferenciasDoBoardAssembler(string nomePrefab)
     {
-        configurarReferenciasComBoard();
+        configurarReferenciasComBoard(nomePrefab);
     }
 
-    private void configurarReferenciasComBoard()
+    private void configurarReferenciasComBoard(string nomePrefab)
     {
-        GameObject goBoardAssembler = getBoardAssembler();
+        GameObject goBoardAssembler = getBoardAssembler(nomePrefab);
         inicializarDicionarios(goBoardAssembler);
         goMira = inicializarGoMira(goBoardAssembler);
     }
 
-    private GameObject getBoardAssembler()
+    private GameObject getBoardAssembler(string nomePrefab)
     {
         GameObject[] gos = SceneManager.GetActiveScene().GetRootGameObjects();
         for (int contador = 0; contador < gos.Length; contador++)
         {
             //Debug.Log("Nome: " + gos[contador].name);
-            if (gos[contador].name == "BoardAssembler")
+            if (gos[contador].name.Equals(nomePrefab))
             {
                 return gos[contador];
 
             }
         }
-        Debug.LogError("Nao existe na cena o prefab BoardAssembler");
+        Debug.LogError("Nao existe na cena o prefab " + nomePrefab);
         return null;
     }
 
