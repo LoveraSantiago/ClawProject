@@ -17,6 +17,48 @@ public abstract class NavegacaoPeloBoard
 
     protected abstract string getNomeBtnIrParaCima();
     protected abstract string getNomeBtnIrParaBaixo();
+    protected abstract bool isLinhaMenor(int value);
+
+    public void resetMira()
+    {
+        posicionarMira(0, 0);
+        linhaAtual = 0;
+        colunaAtual = 0;
+    }
+
+    public GameObject getGoDaMira()
+    {
+        return referencias.dicionarioGosBoard[linhaAtual][colunaAtual];
+    }
+
+    public Text getTextDaMira()
+    {
+        return referencias.dicionarioTextLabels[linhaAtual][colunaAtual];
+    }
+
+    public void navegarCimaTotal()
+    {
+        linhaAtual = referencias.dicionarioGosBoard.Count - 1;
+        posicionarMira(linhaAtual, colunaAtual);
+    }
+
+    public void navegarBaixoTotal()
+    {
+        linhaAtual = 0;
+        posicionarMira(linhaAtual, colunaAtual);
+    }
+
+    public void navegarTrasTotal()
+    {
+        colunaAtual = 0;
+        posicionarMira(linhaAtual, colunaAtual);
+    }
+
+    public void navegarFrenteTotal()
+    {
+        colunaAtual = referencias.dicionarioGosBoard[linhaAtual].Count - 1;
+        posicionarMira(linhaAtual, colunaAtual);
+    }
 
     private void configurarBotoes(VisualElement root)
     {
@@ -62,17 +104,22 @@ public abstract class NavegacaoPeloBoard
         };
     }
 
-    private bool podeAndarUmaColuna()
+    protected bool isImpar(int valor)
     {
-        bool resultProximaColuna = colunaAtual + 1 < referencias.dicionarioGosBoard[linhaAtual].Count;
-        bool resultPos7Par = (linhaAtual % 2 != 0) && colunaAtual + 1 == 6;
-        return resultProximaColuna && !resultPos7Par;
+        return valor % 2 != 0;
     }
 
-    private bool isImpar(int x)
+    protected bool isPar(int valor)
     {
-        return true;
+        return valor % 2 == 0;
     }
+
+    private bool podeAndarUmaColuna()
+    {
+        bool resultProximaColuna = colunaAtual + 1 < referencias.dicionarioGosBoard[linhaAtual].Count;        
+        bool resultPos7Par = isLinhaMenor(linhaAtual) && colunaAtual + 1 == 6;
+        return resultProximaColuna && !resultPos7Par;
+    } 
 
     private bool podeVoltarUmaColuna()
     {
@@ -81,15 +128,15 @@ public abstract class NavegacaoPeloBoard
 
     private bool podeAndarUmaLinha()
     {
-        bool resultProximaLinha = linhaAtual - 1 >= 0;
-        bool resultPos7Par = ((linhaAtual - 1) % 2 != 0) && colunaAtual == 6;
+        bool resultProximaLinha = linhaAtual - 1 >= 0;        
+        bool resultPos7Par = isLinhaMenor(linhaAtual - 1) && colunaAtual == 6;
         return resultProximaLinha && !resultPos7Par;
     }
 
     private bool podeDescerUmaLinha()
     {
-        bool resultProximaLinha = linhaAtual + 1 < referencias.dicionarioGosBoard.Count;
-        bool resultPos7Par = ((linhaAtual + 1) % 2 != 0) && colunaAtual == 6;
+        bool resultProximaLinha = linhaAtual + 1 < referencias.dicionarioGosBoard.Count;        
+        bool resultPos7Par = isLinhaMenor(linhaAtual + 1) && colunaAtual == 6;
         return resultProximaLinha && !resultPos7Par;
     }
 
@@ -97,46 +144,5 @@ public abstract class NavegacaoPeloBoard
     {
         GameObject go00 = referencias.dicionarioGosBoard[linha][coluna];
         referencias.goMira.transform.position = go00.transform.position;
-    }
-
-    public void resetMira()
-    {
-        posicionarMira(0, 0);
-        linhaAtual = 0;
-        colunaAtual = 0;
-    }
-
-    public GameObject getGoDaMira()
-    {
-        return referencias.dicionarioGosBoard[linhaAtual][colunaAtual];
-    }
-
-    public Text getTextDaMira()
-    {
-        return referencias.dicionarioTextLabels[linhaAtual][colunaAtual];
-    }
-
-    public void navegarCimaTotal()
-    {
-        linhaAtual = referencias.dicionarioGosBoard.Count - 1;
-        posicionarMira(linhaAtual, colunaAtual);
-    }
-
-    public void navegarBaixoTotal()
-    {
-        linhaAtual = 0;
-        posicionarMira(linhaAtual, colunaAtual);
-    }
-
-    public void navegarTrasTotal()
-    {
-        colunaAtual = 0;
-        posicionarMira(linhaAtual, colunaAtual);
-    }
-
-    public void navegarFrenteTotal()
-    {
-        colunaAtual = referencias.dicionarioGosBoard[linhaAtual].Count - 1;
-        posicionarMira(linhaAtual, colunaAtual);
-    }
+    }   
 }

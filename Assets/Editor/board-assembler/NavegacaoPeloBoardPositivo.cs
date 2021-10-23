@@ -14,4 +14,9 @@ public class NavegacaoPeloBoardPositivo : NavegacaoPeloBoard
     {
         return "botaoCima";
     }
+
+    protected override bool isLinhaMenor(int value)
+    {
+        return isImpar(value);
+    }
 }
