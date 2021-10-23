@@ -17,6 +17,6 @@ public class NavegacaoPeloBoardNegativo : NavegacaoPeloBoard
 
      protected override bool isLinhaMenor(int value)
     {
-        return isImpar(value);
+        return isPar(value);
     }
 }

@@ -56,7 +56,14 @@ public abstract class NavegacaoPeloBoard
 
     public void navegarFrenteTotal()
     {
-        colunaAtual = referencias.dicionarioGosBoard[linhaAtual].Count - 1;
+        if (isLinhaMenor(linhaAtual))
+        {
+            colunaAtual = referencias.dicionarioGosBoard[linhaAtual].Count - 2;
+        }
+        else
+        {
+            colunaAtual = referencias.dicionarioGosBoard[linhaAtual].Count - 1;
+        }
         posicionarMira(linhaAtual, colunaAtual);
     }
 
