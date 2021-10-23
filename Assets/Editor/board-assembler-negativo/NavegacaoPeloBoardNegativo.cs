@@ -7,7 +7,7 @@ public class NavegacaoPeloBoardNegativo : NavegacaoPeloBoard
 
     protected override string getNomeBtnIrParaBaixo()
     {
-        return "botaoBaixo";
+        return "botaoCima";
     }
 
     protected override string getNomeBtnIrParaCima()

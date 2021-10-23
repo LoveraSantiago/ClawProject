@@ -69,6 +69,11 @@ public abstract class NavegacaoPeloBoard
         return resultProximaColuna && !resultPos7Par;
     }
 
+    private bool isImpar(int x)
+    {
+        return true;
+    }
+
     private bool podeVoltarUmaColuna()
     {
         return colunaAtual - 1 >= 0;
