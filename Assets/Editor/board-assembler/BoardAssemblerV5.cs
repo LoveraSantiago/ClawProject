@@ -85,7 +85,7 @@ public class BoardAssemblerV5 : EditorWindow
         text.text = "00";
     }
 
-    private void colocarTexto(NavegacaoPeloBoardPositivo navegacao, int novoValor)
+    private void colocarTexto(NavegacaoPeloBoard navegacao, int novoValor)
     {
         //Debug.Log("Troca de texto chamada");
         GameObject go = navegacao.getGoDaMira();
