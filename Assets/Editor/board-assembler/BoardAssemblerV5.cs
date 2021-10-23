@@ -39,7 +39,7 @@ public class BoardAssemblerV5 : EditorWindow
 
 
         ReferenciasDoBoardAssemblerPositivo referenciasDoBoard = new ReferenciasDoBoardAssemblerPositivo();
-        NavegacaoPeloBoard navegacao  = new NavegacaoPeloBoard(root, referenciasDoBoard);
+        NavegacaoPeloBoardPositivo navegacao  = new NavegacaoPeloBoardPositivo(root, referenciasDoBoard);
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
         BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard, (go) => colocarSprVazio(go), (text) => resetText(text));
         navegacao.resetMira();
@@ -85,7 +85,7 @@ public class BoardAssemblerV5 : EditorWindow
         text.text = "00";
     }
 
-    private void colocarTexto(NavegacaoPeloBoard navegacao, int novoValor)
+    private void colocarTexto(NavegacaoPeloBoardPositivo navegacao, int novoValor)
     {
         //Debug.Log("Troca de texto chamada");
         GameObject go = navegacao.getGoDaMira();

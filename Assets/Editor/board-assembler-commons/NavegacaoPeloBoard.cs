@@ -2,22 +2,25 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 
-public class NavegacaoPeloBoard 
+public abstract class NavegacaoPeloBoard
 {
     private int linhaAtual;
     private int colunaAtual;
 
-    private ReferenciasDoBoardAssemblerPositivo referencias;   
+    private ReferenciasDoBoardAssembler referencias;
 
-    public NavegacaoPeloBoard(VisualElement root, ReferenciasDoBoardAssemblerPositivo referencias)        
+    public NavegacaoPeloBoard(VisualElement root, ReferenciasDoBoardAssembler referencias)
     {
-        this.referencias = referencias;        
+        this.referencias = referencias;
         configurarBotoes(root);
-    }    
+    }
+
+    protected abstract string getNomeBtnIrParaCima();
+    protected abstract string getNomeBtnIrParaBaixo();
 
     private void configurarBotoes(VisualElement root)
     {
-        UnityEngine.UIElements.Button btnCima = root.Q<UnityEngine.UIElements.Button>("botaoCima");
+        UnityEngine.UIElements.Button btnCima = root.Q<UnityEngine.UIElements.Button>(getNomeBtnIrParaCima());
         btnCima.clickable.clicked += () =>
         {
             if (podeDescerUmaLinha())
@@ -48,7 +51,7 @@ public class NavegacaoPeloBoard
             posicionarMira(linhaAtual, colunaAtual);
         };
 
-        UnityEngine.UIElements.Button btnBaixo = root.Q<UnityEngine.UIElements.Button>("botaoBaixo");
+        UnityEngine.UIElements.Button btnBaixo = root.Q<UnityEngine.UIElements.Button>(getNomeBtnIrParaBaixo());
         btnBaixo.clickable.clicked += () =>
         {
             if (podeAndarUmaLinha())
@@ -80,7 +83,7 @@ public class NavegacaoPeloBoard
 
     private bool podeDescerUmaLinha()
     {
-        bool resultProximaLinha = linhaAtual + 1 < referencias.dicionarioGosBoard.Count;        
+        bool resultProximaLinha = linhaAtual + 1 < referencias.dicionarioGosBoard.Count;
         bool resultPos7Par = ((linhaAtual + 1) % 2 != 0) && colunaAtual == 6;
         return resultProximaLinha && !resultPos7Par;
     }
