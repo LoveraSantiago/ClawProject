@@ -1,7 +1,9 @@
 using UnityEditor;
-using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEditor.UIElements;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 
 public class BoardAssemblerNegativo : EditorWindow
@@ -12,6 +14,8 @@ public class BoardAssemblerNegativo : EditorWindow
         BoardAssemblerNegativo wnd = GetWindow<BoardAssemblerNegativo>();
         wnd.titleContent = new GUIContent("BoardAssemblerNegativo");
     }
+
+    private Sprite spriteVazio;
 
     public void CreateGUI()
     {
@@ -36,5 +40,24 @@ public class BoardAssemblerNegativo : EditorWindow
 
         ReferenciasDoBoardAssemblerNegativo referenciasDoBoard = new ReferenciasDoBoardAssemblerNegativo();
         NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);
+        ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
+        BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard, (go) => colocarSprVazio(go), (text) => resetText(text));
+        navegacao.resetMira();
+    }
+
+    private void colocarSprite(GameObject go, Sprite sprite)
+    {
+        go.GetComponent<SpriteRenderer>().sprite = sprite;
+        go.transform.rotation = Quaternion.Euler(Vector3.zero);
+    }
+
+    private void colocarSprVazio(GameObject go)
+    {
+        colocarSprite(go, spriteVazio);
+    }
+
+    private void resetText(Text text)
+    {
+        text.text = "00";
     }
 }

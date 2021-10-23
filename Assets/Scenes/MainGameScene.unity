@@ -47613,6 +47613,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardAssembler
       objectReference: {fileID: 0}
+    - target: {fileID: 7693639712196216021, guid: 3493b4f605f0fd047a351af1a107ddf1, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3493b4f605f0fd047a351af1a107ddf1, type: 3}
 --- !u!212 &1914492973 stripped
@@ -58117,11 +58121,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5706651224727452184, guid: 888aa82943d1eb6459a315992bd462ea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.22
+      value: 0.7199998
       objectReference: {fileID: 0}
     - target: {fileID: 5706651224727452184, guid: 888aa82943d1eb6459a315992bd462ea, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.4499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 8759335297693996134, guid: 888aa82943d1eb6459a315992bd462ea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 888aa82943d1eb6459a315992bd462ea, type: 3}
