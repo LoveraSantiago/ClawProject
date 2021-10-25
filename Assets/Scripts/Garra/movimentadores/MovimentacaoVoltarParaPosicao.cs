@@ -25,8 +25,8 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
         if (!isMenorPosHorizontal(posicaoHorizontal))
         {
             moverHorizontalmenteFreeze(velocidadeDirecao);
-            Quaternion angIdleMinDireita  = angulosTemp.angIdleMinDireita;
-            Quaternion angIdleMinEsquerda = angulosTemp.angIdleMinEsquerda;
+            Quaternion angIdleMinDireita  = getAnguloIdleMinDireita();
+            Quaternion angIdleMinEsquerda = getAnguloIdleMinEsquerda();
             rotacionarPincaVelocidadeAberturaFDT(angIdleMinEsquerda, angIdleMinDireita);
         }
         else
@@ -40,8 +40,8 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
         if (!isMaiorPosHorizontal(posicaoHorizontal))
         {
             moverHorizontalmenteFreeze(velocidadeDirecao);
-            Quaternion angIdleMinDireita = angulosTemp.angIdleMinDireita;
-            Quaternion angIdleMinEsquerda = angulosTemp.angIdleMinEsquerda;
+            Quaternion angIdleMinDireita  = getAnguloIdleMinDireita();
+            Quaternion angIdleMinEsquerda = getAnguloIdleMinEsquerda();
             rotacionarPincaVelocidadeAberturaFDT(angIdleMinEsquerda, angIdleMinDireita);
         }
         else

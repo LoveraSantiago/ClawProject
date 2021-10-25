@@ -3,37 +3,37 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ReferenciasDoBoardAssembler 
+public abstract class ReferenciasDoBoardAssembler
 {
     public GameObject goMira { get; private set; }
     public Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard { get; private set; }
     public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels { get; private set; }
 
-    public ReferenciasDoBoardAssembler()
+    public ReferenciasDoBoardAssembler(string nomePrefab)
     {
-        configurarReferenciasComBoard();
+        configurarReferenciasComBoard(nomePrefab);
     }
 
-    private void configurarReferenciasComBoard()
+    private void configurarReferenciasComBoard(string nomePrefab)
     {
-        GameObject goBoardAssembler = getBoardAssembler();
+        GameObject goBoardAssembler = getBoardAssembler(nomePrefab);
         inicializarDicionarios(goBoardAssembler);
         goMira = inicializarGoMira(goBoardAssembler);
     }
 
-    private GameObject getBoardAssembler()
+    private GameObject getBoardAssembler(string nomePrefab)
     {
         GameObject[] gos = SceneManager.GetActiveScene().GetRootGameObjects();
         for (int contador = 0; contador < gos.Length; contador++)
         {
             //Debug.Log("Nome: " + gos[contador].name);
-            if (gos[contador].name == "BoardAssembler")
+            if (gos[contador].name.Equals(nomePrefab))
             {
                 return gos[contador];
 
             }
         }
-        Debug.LogError("Nao existe na cena o prefab BoardAssembler");
+        Debug.LogError("Nao existe na cena o prefab " + nomePrefab);
         return null;
     }
 
@@ -43,10 +43,10 @@ public class ReferenciasDoBoardAssembler
         dicionarioTextLabels = new Dictionary<int, Dictionary<int, Text>>();
 
         for (int contadorLinha = 0; contadorLinha < goBoardAssembler.transform.Find("gos").childCount; contadorLinha++)
-        {            
+        {
             GameObject goLinha = goBoardAssembler.transform.Find("gos").GetChild(contadorLinha).gameObject;
             GameObject goLabel = goBoardAssembler.transform.Find("lbls").GetChild(contadorLinha).gameObject;
-            
+
             if (isNumerico(goLinha.name) && goLinha.name.Equals(goLabel.name))
             {
                 Dictionary<int, GameObject> dicionarioGoColuna = new Dictionary<int, GameObject>();
@@ -68,7 +68,7 @@ public class ReferenciasDoBoardAssembler
                 dicionarioGosBoard.Add(indiceLinha, dicionarioGoColuna);
                 dicionarioTextLabels.Add(indiceLinha, dicionarioTextColuna);
             }
-        }        
+        }
     }
 
     private bool isNumerico(string name)

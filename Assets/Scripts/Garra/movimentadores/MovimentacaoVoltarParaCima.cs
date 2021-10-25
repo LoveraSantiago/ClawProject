@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class MovimentacaoVoltarParaCima : MovimentacaoDaGarraPowerUp
 {
-    public MovimentacaoVoltarParaCima()
-    {     
-    }
-
     public override void preInicio()
     {
         colocarMassa(3);
@@ -25,8 +21,8 @@ public class MovimentacaoVoltarParaCima : MovimentacaoDaGarraPowerUp
     public override void fixedUpdate()
     {
         moverParaCimaFreeze();
-        Quaternion angIdleMinEsquerda = angulosTemp.angIdleMinEsquerda;
-        Quaternion angIdleMinDireita  = angulosTemp.angIdleMinDireita;        
+        Quaternion angIdleMinEsquerda = getAnguloIdleMinEsquerda();
+        Quaternion angIdleMinDireita  = getAnguloIdleMinDireita();        
         rotacionarPincaVelocidadeAberturaFDT(angIdleMinEsquerda, angIdleMinDireita);
     }
 }
