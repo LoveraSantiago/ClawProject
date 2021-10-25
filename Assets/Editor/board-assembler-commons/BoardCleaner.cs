@@ -37,6 +37,7 @@ public abstract class BoardCleaner
                 Text textIt = referenciasDoBoard.dicionarioTextLabels[contadorLinha][contadorColuna];
                 acaoCleanText.Invoke(textIt);
 
+                Debug.Log("linha " + contadorLinha + " coluna " + contadorColuna);
                 if (isSextoElementoTipoLinha(contadorLinha, contadorColuna))
                 {
                     goIt.SetActive(false);
