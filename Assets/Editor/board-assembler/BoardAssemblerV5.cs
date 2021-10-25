@@ -1,9 +1,8 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.UIElements;
-using System.Collections.Generic;
 
 public class BoardAssemblerV5 : EditorWindow
 {
@@ -15,6 +14,7 @@ public class BoardAssemblerV5 : EditorWindow
     }
 
     private Sprite spriteVazio;
+    private Preenchedor preenchedor;
 
     public void CreateGUI()
     {
@@ -41,10 +41,14 @@ public class BoardAssemblerV5 : EditorWindow
         ReferenciasDoBoardAssemblerPositivo referenciasDoBoard = new ReferenciasDoBoardAssemblerPositivo();
         NavegacaoPeloBoardPositivo navegacao  = new NavegacaoPeloBoardPositivo(root, referenciasDoBoard);
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
-        BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, (go) => colocarSprVazio(go), (text) => resetText(text));
+        preenchedor = new Preenchedor();
+        BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, 
+            (go) => preenchedor.colocarSprVazio(go, spriteVazio), 
+            (text) => preenchedor.resetText(text));
+
         navegacao.resetMira();
 
-        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => colocarSprite(navegacao.getGoDaMira(), spr));
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
 
         RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
         criarComponentDropDownField(root, cleaner, remontador);
@@ -63,44 +67,11 @@ public class BoardAssemblerV5 : EditorWindow
         root.Q<UnityEngine.UIElements.Button>("botaoBaixoAll")      .clicked += () => navegacao.navegarBaixoTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoEsquerdaAll")   .clicked += () => navegacao.navegarTrasTotal();
         root.Q<UnityEngine.UIElements.Button>("botaoDireitaAll")    .clicked += () => navegacao.navegarFrenteTotal();
-        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => colocarTexto(navegacao, evento.newValue));
+        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => preenchedor.colocarTexto(navegacao, evento.newValue, spriteVazio));
 
         spriteVazio = listaDeSprites.getSpriteVazio();
         cleaner.clean();
-    }
-
-    private void colocarSprite(GameObject go, Sprite sprite)
-    {
-        go.GetComponent<SpriteRenderer>().sprite = sprite;
-        go.transform.rotation = Quaternion.Euler(Vector3.zero);
-    }
-
-    private void colocarSprVazio(GameObject go)
-    {
-        colocarSprite(go, spriteVazio);
-    }
-
-    private void resetText(Text text)
-    {
-        text.text = "00";
-    }
-
-    private void colocarTexto(NavegacaoPeloBoard navegacao, int novoValor)
-    {
-        //Debug.Log("Troca de texto chamada");
-        GameObject go = navegacao.getGoDaMira();
-        Sprite spr = go.GetComponent<SpriteRenderer>().sprite;
-        if (spr != null && !spr.name.Equals(spriteVazio.name))
-        {
-            Text text = navegacao.getTextDaMira();
-            text.text = novoValor.ToString();
-            //Debug.Log("Troca de texto realizada no text " + text.gameObject.name);
-        }
-        else
-        {
-            //Debug.Log("Troca de texto NAO realizada");
-        }
-    }
+    }           
 
     private void criarComponentDropDownField(
         VisualElement root, BoardCleanerPositivo cleaner, RemontadorBoard remontador)
@@ -117,7 +88,7 @@ public class BoardAssemblerV5 : EditorWindow
 
                 AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
                 int[,] coletaveis = level.getArrayDeColetaveis();                
-                remontador.montarColetaveis(coletaveis, (go, spr) => colocarSprite(go, spr));
+                remontador.montarColetaveis(coletaveis, (go, spr) => preenchedor.colocarSprite(go, spr));
 
                 BoardOrdem[] ordens = level.getBoardOrdem();
                 remontador.montarLabels(ordens);
