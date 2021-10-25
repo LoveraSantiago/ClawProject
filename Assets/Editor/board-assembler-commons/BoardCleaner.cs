@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BoardCleaner 
+public abstract class BoardCleaner 
 {
     private Action<GameObject> acaoCleanGo;
     private Action<Text> acaoCleanText;
@@ -13,7 +13,7 @@ public class BoardCleaner
     public BoardCleaner(
         ReferenciasDoBoardAssembler referenciasDoBoard,
         NavegacaoPeloBoard navegacao,
-        Action<GameObject> acaoCleanGo, 
+        Action<GameObject> acaoCleanGo,
         Action<Text> acaoCleanText)
     {
         this.acaoCleanGo = acaoCleanGo;
@@ -21,6 +21,8 @@ public class BoardCleaner
         this.navegacao = navegacao;
         this.referenciasDoBoard = referenciasDoBoard;
     }
+
+    protected abstract bool isSextoElementoTipoLinha(int linha, int coluna);
 
     public void clean()
     {
@@ -35,18 +37,28 @@ public class BoardCleaner
                 Text textIt = referenciasDoBoard.dicionarioTextLabels[contadorLinha][contadorColuna];
                 acaoCleanText.Invoke(textIt);
 
-                if (isSextoElementoLinhaPar(contadorLinha, contadorColuna))
+                if (isSextoElementoTipoLinha(contadorLinha, contadorColuna))
                 {
                     goIt.SetActive(false);
                     textIt.gameObject.SetActive(false);
+                }
+                else
+                {
+                    goIt.SetActive(true);
+                    textIt.gameObject.SetActive(true);
                 }
             }
         }
         navegacao.resetMira();
     }
 
-    private bool isSextoElementoLinhaPar(int linha, int coluna)
+    protected bool isSextoElementoLinhaPar(int linha, int coluna)
     {
         return linha % 2 != 0 && coluna == 6;
+    }
+
+    protected bool isSextoElementoLinhaImpar(int linha, int coluna)
+    {
+        return linha % 2 == 0 && coluna == 6;
     }
 }

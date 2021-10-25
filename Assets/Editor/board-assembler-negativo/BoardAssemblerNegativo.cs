@@ -41,7 +41,7 @@ public class BoardAssemblerNegativo : EditorWindow
         ReferenciasDoBoardAssemblerNegativo referenciasDoBoard = new ReferenciasDoBoardAssemblerNegativo();
         NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
-        BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard, navegacao, (go) => colocarSprVazio(go), (text) => resetText(text));
+        BoardCleanerNegativo cleaner = new BoardCleanerNegativo(referenciasDoBoard, navegacao, (go) => colocarSprVazio(go), (text) => resetText(text));
         navegacao.resetMira();
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => colocarSprite(navegacao.getGoDaMira(), spr));

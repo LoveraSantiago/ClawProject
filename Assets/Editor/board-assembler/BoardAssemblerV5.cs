@@ -41,7 +41,7 @@ public class BoardAssemblerV5 : EditorWindow
         ReferenciasDoBoardAssemblerPositivo referenciasDoBoard = new ReferenciasDoBoardAssemblerPositivo();
         NavegacaoPeloBoardPositivo navegacao  = new NavegacaoPeloBoardPositivo(root, referenciasDoBoard);
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
-        BoardCleaner cleaner = new BoardCleaner(referenciasDoBoard, navegacao, (go) => colocarSprVazio(go), (text) => resetText(text));
+        BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, (go) => colocarSprVazio(go), (text) => resetText(text));
         navegacao.resetMira();
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => colocarSprite(navegacao.getGoDaMira(), spr));
@@ -103,7 +103,7 @@ public class BoardAssemblerV5 : EditorWindow
     }
 
     private void criarComponentDropDownField(
-        VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
+        VisualElement root, BoardCleanerPositivo cleaner, RemontadorBoard remontador)
     {
         List<string> listaDeLevels = EditorUtils.getListaDeLevels();
 
