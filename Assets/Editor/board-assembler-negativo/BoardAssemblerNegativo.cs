@@ -15,7 +15,6 @@ public class BoardAssemblerNegativo : EditorWindow
     }
 
     private Sprite spriteVazio;
-    private Preenchedor preenchedor;
 
     public void CreateGUI()
     {
@@ -42,7 +41,7 @@ public class BoardAssemblerNegativo : EditorWindow
         ReferenciasDoBoardAssemblerNegativo referenciasDoBoard = new ReferenciasDoBoardAssemblerNegativo();
         NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
-        preenchedor = new Preenchedor();
+        Preenchedor preenchedor = new Preenchedor();
         BoardCleanerNegativo cleaner = new BoardCleanerNegativo(referenciasDoBoard, navegacao, () => spriteVazio);
         navegacao.resetMira();
 
@@ -75,7 +74,7 @@ public class BoardAssemblerNegativo : EditorWindow
         VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {
         List<string> listaDeLevels = EditorUtils.getListaDeLevels();
-
+        Preenchedor preenchedor = new Preenchedor();
         DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
         dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {
 
