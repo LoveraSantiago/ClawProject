@@ -44,8 +44,7 @@ public class BoardAssemblerNegativo : EditorWindow
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
         preenchedor = new Preenchedor();
         BoardCleanerNegativo cleaner = new BoardCleanerNegativo(referenciasDoBoard, navegacao, 
-            (go) => preenchedor.colocarSprVazio(go, spriteVazio), 
-            (text) => preenchedor.resetText(text));
+            (go) => preenchedor.colocarSprVazio(go, spriteVazio));
         navegacao.resetMira();
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));

@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class BoardCleanerPositivo : BoardCleaner
 {
     public BoardCleanerPositivo(
-        ReferenciasDoBoardAssembler referenciasDoBoard, NavegacaoPeloBoard navegacao, Action<GameObject> acaoCleanGo, Action<Text> acaoCleanText) 
-        : base(referenciasDoBoard, navegacao, acaoCleanGo, acaoCleanText){}
+        ReferenciasDoBoardAssembler referenciasDoBoard, NavegacaoPeloBoard navegacao, Action<GameObject> acaoCleanGo) 
+        : base(referenciasDoBoard, navegacao, acaoCleanGo){}
 
     protected override bool isSextoElementoTipoLinha(int linha, int coluna)
     {

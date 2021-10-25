@@ -5,21 +5,20 @@ using UnityEngine.UI;
 
 public abstract class BoardCleaner 
 {
-    private Action<GameObject> acaoCleanGo;
-    private Action<Text> acaoCleanText;
+    private Action<GameObject> acaoCleanGo;    
     private ReferenciasDoBoardAssembler referenciasDoBoard;
     private NavegacaoPeloBoard navegacao;
+    private Preenchedor preenchedor;
 
     public BoardCleaner(
         ReferenciasDoBoardAssembler referenciasDoBoard,
         NavegacaoPeloBoard navegacao,
-        Action<GameObject> acaoCleanGo,
-        Action<Text> acaoCleanText)
+        Action<GameObject> acaoCleanGo)
     {
-        this.acaoCleanGo = acaoCleanGo;
-        this.acaoCleanText = acaoCleanText;
+        this.acaoCleanGo = acaoCleanGo;        
         this.navegacao = navegacao;
         this.referenciasDoBoard = referenciasDoBoard;
+        preenchedor = new Preenchedor();
     }
 
     protected abstract bool isSextoElementoTipoLinha(int linha, int coluna);
@@ -35,7 +34,7 @@ public abstract class BoardCleaner
                 acaoCleanGo.Invoke(goIt);
 
                 Text textIt = referenciasDoBoard.dicionarioTextLabels[contadorLinha][contadorColuna];
-                acaoCleanText.Invoke(textIt);
+                preenchedor.resetText(textIt);                
 
                 //Debug.Log("linha " + contadorLinha + " coluna " + contadorColuna);
                 if (isSextoElementoTipoLinha(contadorLinha, contadorColuna))
