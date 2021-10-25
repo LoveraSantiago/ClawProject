@@ -4,8 +4,9 @@ using UnityEngine;
 public class BoardCleanerNegativo : BoardCleaner
 {
     public BoardCleanerNegativo(
-        ReferenciasDoBoardAssembler referenciasDoBoard, NavegacaoPeloBoard navegacao, Action<GameObject> acaoCleanGo) 
-        : base(referenciasDoBoard, navegacao, acaoCleanGo){}
+        ReferenciasDoBoardAssembler referenciasDoBoard, NavegacaoPeloBoard navegacao,
+        Func<Sprite> fornecedorSpriteVazio) 
+        : base(referenciasDoBoard, navegacao, fornecedorSpriteVazio){}
 
     protected override bool isSextoElementoTipoLinha(int linha, int coluna)
     {

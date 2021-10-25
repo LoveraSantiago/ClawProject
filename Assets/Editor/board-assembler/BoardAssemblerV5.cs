@@ -42,8 +42,7 @@ public class BoardAssemblerV5 : EditorWindow
         NavegacaoPeloBoardPositivo navegacao  = new NavegacaoPeloBoardPositivo(root, referenciasDoBoard);
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
         preenchedor = new Preenchedor();
-        BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, 
-            (go) => preenchedor.colocarSprVazio(go, spriteVazio));
+        BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, () => spriteVazio);
 
         navegacao.resetMira();
 

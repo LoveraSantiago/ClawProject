@@ -4,34 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class BoardCleaner 
-{
-    private Action<GameObject> acaoCleanGo;    
+{    
     private ReferenciasDoBoardAssembler referenciasDoBoard;
     private NavegacaoPeloBoard navegacao;
-    private Preenchedor preenchedor;
+    private Func<Sprite> fornecedorSpriteVazio;
 
     public BoardCleaner(
         ReferenciasDoBoardAssembler referenciasDoBoard,
         NavegacaoPeloBoard navegacao,
-        Action<GameObject> acaoCleanGo)
-    {
-        this.acaoCleanGo = acaoCleanGo;        
+        Func<Sprite> fornecedorSpriteVazio)
+    {     
         this.navegacao = navegacao;
         this.referenciasDoBoard = referenciasDoBoard;
-        preenchedor = new Preenchedor();
+        this.fornecedorSpriteVazio = fornecedorSpriteVazio;
     }
 
     protected abstract bool isSextoElementoTipoLinha(int linha, int coluna);
 
     public void clean()
     {
+        Preenchedor preenchedor = new Preenchedor();
         for (int contadorLinha = 0; contadorLinha < referenciasDoBoard.dicionarioGosBoard.Count; contadorLinha++)
         {
             Dictionary<int, GameObject> dicionarioLinha = referenciasDoBoard.dicionarioGosBoard[0];
             for (int contadorColuna = 0; contadorColuna < dicionarioLinha.Count; contadorColuna++)
             {
-                GameObject goIt = referenciasDoBoard.dicionarioGosBoard[contadorLinha][contadorColuna];
-                acaoCleanGo.Invoke(goIt);
+                GameObject goIt = referenciasDoBoard.dicionarioGosBoard[contadorLinha][contadorColuna];                
+                preenchedor.colocarSprVazio(goIt, fornecedorSpriteVazio.Invoke());
 
                 Text textIt = referenciasDoBoard.dicionarioTextLabels[contadorLinha][contadorColuna];
                 preenchedor.resetText(textIt);                
