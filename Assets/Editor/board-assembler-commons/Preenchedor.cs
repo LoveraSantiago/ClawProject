@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class Preenchedor 
 {
-
     public void colocarSprite(GameObject go, Sprite sprite)
     {
         go.GetComponent<SpriteRenderer>().sprite = sprite;
