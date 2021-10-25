@@ -19,7 +19,7 @@ public class RemontadorBoard
     {
         ColetavelHelper coletavelHelper = new ColetavelHelper();
 
-        for (int contadorLinha = 0; contadorLinha < referencias.dicionarioGosBoard.Count; contadorLinha++)
+        for (int contadorLinha = 0; contadorLinha < arrayDeColetaveis.GetLength(0); contadorLinha++)
         {
             Dictionary<int, GameObject>  referenciasLinha = referencias.dicionarioGosBoard[contadorLinha];
             for (int contadorColuna = 0; contadorColuna < referenciasLinha.Count; contadorColuna++)

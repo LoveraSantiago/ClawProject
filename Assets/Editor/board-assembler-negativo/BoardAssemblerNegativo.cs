@@ -84,11 +84,18 @@ public class BoardAssemblerNegativo : EditorWindow
             {
 
                 AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
-                int[,] coletaveis = level.getArrayDeColetaveis();
-                remontador.montarColetaveis(coletaveis, (go, spr) => preenchedor.colocarSprite(go, spr));
+                int[,] coletaveis = level.getArrayDeColetaveisSub();
+                if(coletaveis != null)
+                {
+                    remontador.montarColetaveis(coletaveis, (go, spr) => preenchedor.colocarSprite(go, spr));
 
-                BoardOrdem[] ordens = level.getBoardOrdem();
-                remontador.montarLabels(ordens);
+                    BoardOrdem[] ordens = level.getBoardOrdem();
+                    remontador.montarLabels(ordens);
+                }
+                else
+                {
+                    Debug.Log("Level " + evt.newValue + " nao possui coletaveis sub");
+                }
             }
         });
 
