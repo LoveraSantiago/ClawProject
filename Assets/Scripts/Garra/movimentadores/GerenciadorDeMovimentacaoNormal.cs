@@ -6,9 +6,8 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 {
     private MovimentacaoDaGarra   movAtual;
     private MovimentacaoParaBaixo movPBaixo;
-    private MovimentacaoDaGarra   movAgarrandoBaixo;
     private MovimentacaoParaCima  movPCima;
-    private MovimentacaoDaGarra   movLateral;
+    private MovimentacaoDaGarra movLateral;//GUARDA ESTADO DE DIRECAO
     private MovimentacaoDaGarra   movVoltarMeio;
     private MovimentacaoDaGarra   movParado;
 
@@ -17,7 +16,6 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         MovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
 
         movLateral        = new MovimentacaoLateralZigZag();
-        movAgarrandoBaixo = new MovimentacaoAgarrandoEmbaixo();
         movVoltarMeio     = new MovimentacaoVoltarParaMeioNormal();
         movParado         = new MovimentacaoParadoNormal();
 
@@ -84,7 +82,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoAgarrada()
     {
-        trocarMovimentador(movAgarrandoBaixo);
+        trocarMovimentador(new MovimentacaoAgarrandoEmbaixo());
     }
 
     public void trocarParaAcaoVoltarParaCima()
