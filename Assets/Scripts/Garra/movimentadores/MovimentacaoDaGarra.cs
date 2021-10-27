@@ -143,6 +143,11 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
         return garra.getPosicaoCentroGarra();
     }
 
+    protected float getPosicaoHorizontalMeio()
+    {
+        return 0;
+    }
+
     protected float getPosicaoCacaNiquel()
     {
         return garra.garraDto.PosCacaNiquel;

@@ -6,12 +6,12 @@ public class MovimentacaoVoltarParaMeioPowerUp : MovimentacaoDaGarraPowerUp
 
     public MovimentacaoVoltarParaMeioPowerUp()
     {
-        movVoltarParaMeio = new MovimentacaoVoltarParaPosicao(0);
+        movVoltarParaMeio = new MovimentacaoVoltarParaPosicao();
     }
 
     public override void preInicio()
     {
-        movVoltarParaMeio.preInicio();
+        movVoltarParaMeio.preInicio(getPosicaoHorizontalMeio());
     }
 
     public override void fixedUpdate()
@@ -19,11 +19,11 @@ public class MovimentacaoVoltarParaMeioPowerUp : MovimentacaoDaGarraPowerUp
         DirecaoDaGarra direcaoVoltar = movVoltarParaMeio.getDirecaoAtual();
         if (direcaoVoltar == DirecaoDaGarra.ESQUERDA)
         {
-            movVoltarParaMeio.voltarVindoPelaEsquerda(-1);
+            movVoltarParaMeio.voltarVindoPelaEsquerda(getPosicaoHorizontalMeio(), -1);
         }
         else if(direcaoVoltar == DirecaoDaGarra.DIREITA)
         {
-            movVoltarParaMeio.voltarVindoPelaDireita(1);
+            movVoltarParaMeio.voltarVindoPelaDireita(getPosicaoHorizontalMeio(), 1);
         }
         else if(direcaoVoltar == DirecaoDaGarra.CENTRALIZADA)
         {

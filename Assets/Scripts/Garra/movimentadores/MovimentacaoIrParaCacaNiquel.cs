@@ -4,7 +4,12 @@ public class MovimentacaoIrParaCacaNiquel : MovimentacaoDaGarraCacaNiquel
 
     public MovimentacaoIrParaCacaNiquel()
     {
-        movVoltarPosCacaNiquel = new MovimentacaoVoltarParaPosicao(getPosicaoCacaNiquel());
+        movVoltarPosCacaNiquel = new MovimentacaoVoltarParaPosicao();
+    }
+
+    public override void preInicio()
+    {
+        movVoltarPosCacaNiquel.preInicio(getPosicaoCacaNiquel());
     }
 
     public override void fixedUpdate()
@@ -16,7 +21,7 @@ public class MovimentacaoIrParaCacaNiquel : MovimentacaoDaGarraCacaNiquel
         }
         else
         {         
-            movVoltarPosCacaNiquel.voltarVindoPelaEsquerda(-0.5f);
+            movVoltarPosCacaNiquel.voltarVindoPelaEsquerda(getPosicaoCacaNiquel(), - 0.5f);
         }
     }
 }
