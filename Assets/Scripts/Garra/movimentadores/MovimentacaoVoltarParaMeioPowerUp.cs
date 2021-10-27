@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class MovimentacaoVoltarParaMeioPowerUp : MovimentacaoDaGarraPowerUp
 {
     private MovimentacaoVoltarParaPosicao movVoltarParaMeio;
