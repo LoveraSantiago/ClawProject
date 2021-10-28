@@ -4,10 +4,10 @@ using UnityEngine;
 [System.Serializable]
 public class BotoesLigaDesligaDto
 {
-    [SerializeField] private GameObject goBtnBordas;
-    [SerializeField] private GameObject goBtnOnOff;
+    [SerializeField] private SpriteRenderer sprRendererBtnBordas;
+    [SerializeField] private SpriteRenderer sprRendererBtnOnOff;
 
-    public GameObject GoBtnBordas { get { return goBtnBordas; } }
-    public GameObject GoBtnOnOff { get { return goBtnOnOff; } }
+    public SpriteRenderer SprRendererBtnBordas { get { return sprRendererBtnBordas; } }
+    public SpriteRenderer SprRendererBtnOnOff  { get { return sprRendererBtnOnOff; } }
 
 }

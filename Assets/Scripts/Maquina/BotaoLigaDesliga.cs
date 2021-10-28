@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class BotaoLigaDesliga 
 {
-    // Start is called before the first frame update
-    void Start()
+    private BotoesLigaDesligaDto btnsLigaDesligaDto;
+
+    public BotaoLigaDesliga(BotoesLigaDesligaDto btnsLigaDesligaDto)
     {
-        
+        this.btnsLigaDesligaDto = btnsLigaDesligaDto;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void update(InputGame inputGame)
     {
-        
+        if (inputGame.aconteceuTapNaAreaInferior())
+        {
+            Vector2 posicaoTap = inputGame.getPosicaoTap();
+            if ()
+            {
+
+            }
+        }
     }
 }
