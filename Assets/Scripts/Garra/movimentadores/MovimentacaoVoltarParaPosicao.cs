@@ -2,17 +2,15 @@ using UnityEngine;
 
 public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
 {
-    private DirecaoDaGarra direcaoVoltar;   
-
-    public DirecaoDaGarra getDirecaoAtual()
-    {
-        return direcaoVoltar;
-    }
+    private DirecaoDaGarra direcaoVoltar;       
+    public bool isDirecaoEsquerda { get { return direcaoVoltar == DirecaoDaGarra.ESQUERDA; } }
+    public bool isDirecaoDireita  { get { return direcaoVoltar == DirecaoDaGarra.DIREITA; } }
+    public bool isDirecaoCentralizada { get { return direcaoVoltar == DirecaoDaGarra.CENTRALIZADA; } }
 
     public void preInicio(float posicaoHorizontal)
     {
         determinarDirecaoParaVoltarAoMeio(posicaoHorizontal);
-    }
+    }    
 
     public void voltarVindoPelaEsquerda(float posicaoHorizontal, float velocidadeDirecao)
     {

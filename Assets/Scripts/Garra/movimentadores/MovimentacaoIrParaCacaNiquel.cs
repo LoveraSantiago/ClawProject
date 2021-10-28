@@ -13,9 +13,8 @@ public class MovimentacaoIrParaCacaNiquel : MovimentacaoDaGarraCacaNiquel
     }
 
     public override void fixedUpdate()
-    {
-        DirecaoDaGarra direcaoVoltar = movVoltarPosCacaNiquel.getDirecaoAtual();
-        if(direcaoVoltar == DirecaoDaGarra.CENTRALIZADA)
+    {        
+        if(movVoltarPosCacaNiquel.isDirecaoCentralizada)
         {            
             comunicadorComGerMovimentacao.trocarParaAcaoParado();
         }

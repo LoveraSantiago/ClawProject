@@ -13,17 +13,16 @@ public class MovimentacaoVoltarParaMeioPowerUp : MovimentacaoDaGarraPowerUp
     }
 
     public override void fixedUpdate()
-    {
-        DirecaoDaGarra direcaoVoltar = movVoltarParaMeio.getDirecaoAtual();
-        if (direcaoVoltar == DirecaoDaGarra.ESQUERDA)
+    {        
+        if (movVoltarParaMeio.isDirecaoEsquerda)
         {
             movVoltarParaMeio.voltarVindoPelaEsquerda(getPosicaoHorizontalMeio(), -1);
         }
-        else if(direcaoVoltar == DirecaoDaGarra.DIREITA)
+        else if(movVoltarParaMeio.isDirecaoDireita)
         {
             movVoltarParaMeio.voltarVindoPelaDireita(getPosicaoHorizontalMeio(), 1);
         }
-        else if(direcaoVoltar == DirecaoDaGarra.CENTRALIZADA)
+        else if(movVoltarParaMeio.isDirecaoCentralizada)
         {
             if (garraInteracaoComPowerUp.getInteracaoComGarra() == PowerUpEnums.INTERACAOGARRA.MOVIMENTO)
             {
