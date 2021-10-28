@@ -16,6 +16,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     private VigasTras         vigasTras;
     private DisplayTimer      displayTimer;
     private BotoesPowerUp     botoesPowerUp;
+    private BotaoLigaDesliga  botaoLigaDesliga;
     private ArcoIrisEfeito    arcoIrisEfeito;
     private DisplayDeScores   displayDeScores;    
     public DisplaysDeSlots    displaysDeSlots { get; private set; }
@@ -25,12 +26,13 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         partesDto = maquinaDto.PartesDto;
 
-        displaysDeSlots = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto, inputGame);        
-        displayDeScores = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
-        displayTimer    = new DisplayTimer(maquinaDto.DisplayTimerDto);
-        joystick        = new Joystick(maquinaDto.JoystickDto);
-        botoesPowerUp   = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
-        vigasTras       = new VigasTras(maquinaDto.VigasDto);
+        displaysDeSlots   = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto, inputGame);        
+        displayDeScores   = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
+        displayTimer      = new DisplayTimer(maquinaDto.DisplayTimerDto);
+        joystick          = new Joystick(maquinaDto.JoystickDto);
+        botoesPowerUp     = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
+        botaoLigaDesliga  = new BotaoLigaDesliga(maquinaDto.BotoesLigaDesligaDto);
+        vigasTras         = new VigasTras(maquinaDto.VigasDto);
         bordasFrenteVidro = new BordasVidroFrente(maquinaDto.BordasFrenteDto);
 
         arcoIrisEfeito = new ArcoIrisEfeito(maquinaDto.FactorHdr)//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW            
@@ -67,6 +69,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     public void update(InputGame inputGame)
     {
         botoesPowerUp.update(inputGame);
+        botaoLigaDesliga.update(inputGame);
         displayTimer.update();
     }
 

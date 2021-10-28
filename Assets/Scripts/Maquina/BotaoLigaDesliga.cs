@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BotaoLigaDesliga 
@@ -16,9 +14,9 @@ public class BotaoLigaDesliga
         if (inputGame.aconteceuTapNaAreaInferior())
         {
             Vector2 posicaoTap = inputGame.getPosicaoTap();
-            if ()
+            if (btnsLigaDesligaDto.SprRendererBtnOnOff.bounds.Contains(posicaoTap))
             {
-
+                btnsLigaDesligaDto.SprRendererBtnOnOff.color = Color.red;
             }
         }
     }
