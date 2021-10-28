@@ -8,14 +8,11 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     private MovimentacaoParaBaixo movPBaixo;
     private MovimentacaoParaCima  movPCima;
     private MovimentacaoDaGarra movLateral;//GUARDA ESTADO DE DIRECAO    
-    private MovimentacaoDaGarra   movParado;
 
     public GerenciadorDeMovimentacaoNormal()
     {        
         MovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
-
-        movLateral        = new MovimentacaoLateralZigZag();        
-        movParado         = new MovimentacaoParadoNormal();
+        movLateral        = new MovimentacaoLateralZigZag();               
 
         ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra = new ProdutorDeEvento<InformacoesDaGarraDto>();
         movPCima          = new MovimentacaoParaCima(produtorEventoInfoGarra);
@@ -96,7 +93,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoParado()
     {
-        trocarMovimentador(movParado);
+        trocarMovimentador(new MovimentacaoParadoNormal());
     }
     //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL FIM
 
@@ -113,6 +110,6 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public override ProdutorDeEvento<DirecaoDaGarra> getProdutorDeEvento()
     {
-        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)movParado).getProdutorDeEvento();
+        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)movLateral).getProdutorDeEvento();
     }
 }
