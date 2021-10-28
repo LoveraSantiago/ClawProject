@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class BotaoLigaDesliga 
 {
-    private BotoesLigaDesligaDto btnsLigaDesligaDto;
+    private BotaoLigaDesligaDto btnsLigaDesligaDto;
 
-    public BotaoLigaDesliga(BotoesLigaDesligaDto btnsLigaDesligaDto)
+    public BotaoLigaDesliga(BotaoLigaDesligaDto btnsLigaDesligaDto)
     {
         this.btnsLigaDesligaDto = btnsLigaDesligaDto;
     }

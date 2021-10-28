@@ -18,7 +18,7 @@ public class MaquinaDto
     [Space(5)]
     [SerializeField] private BotoesPowerUpDto botoesPowerUpDto;
     [Space(5)]
-    [SerializeField] private BotoesLigaDesligaDto botoesLigaDesligaDto;
+    [SerializeField] private BotaoLigaDesligaDto botoesLigaDesligaDto;
     [Space(5)]
     [SerializeField] private VigasDto vigasDto;
     [Space(5)]
@@ -35,7 +35,7 @@ public class MaquinaDto
     public DisplayTimerDto DisplayTimerDto { get { return displayTimerDto; } }
     
     public BotoesPowerUpDto BotoesPowerUpDto { get { return botoesPowerUpDto; } }
-    public BotoesLigaDesligaDto BotoesLigaDesligaDto { get { return botoesLigaDesligaDto; } }
+    public BotaoLigaDesligaDto BotoesLigaDesligaDto { get { return botoesLigaDesligaDto; } }
 
     public VigasDto VigasDto { get { return vigasDto; } }
     public BordasFrenteDto BordasFrenteDto { get { return bordasFrenteDto; } }
