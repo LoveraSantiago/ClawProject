@@ -10806,6 +10806,9 @@ MonoBehaviour:
           sprImagem: {fileID: 1420270366}
           sprEfeito: {fileID: 6406990385049082689}
           goExclamacao: {fileID: 293416723}
+      botaoLigaDesligaDto:
+        sprRendererBtnBordas: {fileID: 6406990385049082672}
+        sprRendererBtnOnOff: {fileID: 6406990385049082673}
       vigasDto:
         vigaTrasEsquerda: {fileID: 946233168}
         vigaTrasDireita: {fileID: 108455522}
@@ -58079,6 +58082,16 @@ SpriteRenderer:
 --- !u!212 &6406990385049082671 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7925361988018793745, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082672 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1857737637918611704, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6406990385049082673 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3027024895253427581, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &6406990385049082676 stripped
