@@ -4,9 +4,9 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
                                                ComunicadorComGerMovNormal,
                                                AcaoInfoDaGarra.ProdutorEvento
 {
-    private MovimentacaoDaGarra   movAtual;
-    private MovimentacaoParaBaixo movPBaixo;
-    private MovimentacaoParaCima  movPCima;
+    private MovimentacaoDaGarra   movAtual;//COMPARTILHAM PRODUTOR DE EVENTO
+    private MovimentacaoParaBaixo movPBaixo;//COMPARTILHAM PRODUTOR DE EVENTO
+    private MovimentacaoParaCima  movPCima;//GUARDA ESTADO DE DIRECAO    
     private MovimentacaoDaGarra movLateral;//GUARDA ESTADO DE DIRECAO    
 
     public GerenciadorDeMovimentacaoNormal()
