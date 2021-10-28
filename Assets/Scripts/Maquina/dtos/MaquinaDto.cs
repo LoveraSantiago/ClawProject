@@ -7,6 +7,7 @@ public class MaquinaDto
     [Space(5)]
     [SerializeField] private float factorHdr;
     [SerializeField] private Transform referenciaChao;
+    [SerializeField] private GameObject goBtnOnOff;
     [Space(5)]
     [SerializeField] private JoystickDto joystickDto;    
     [Space(5)]    
