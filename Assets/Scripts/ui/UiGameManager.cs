@@ -7,12 +7,14 @@ public class UiGameManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
                              AcaoPUpAcionado.ConsumidorEvento
 {
     private ModalPontos modalPontos;
+    private ModalSair modalSair;
     private ScrollManager scrollManager;
 
     public UiGameManager(UIGameDto uiDto)
     {
         modalPontos = new ModalPontos(uiDto.ModalPontosDto);
         scrollManager = new ScrollManager(uiDto.PrefabBottomBar);
+        modalSair = new ModalSair();
     }
 
     public void configurandoLevel(AbstractLevel levelEscolhido)
