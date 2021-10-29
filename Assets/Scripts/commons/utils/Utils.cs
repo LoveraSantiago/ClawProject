@@ -15,6 +15,16 @@ public class Utils
         materialGrayScale = materialGrayScaleArg;
     }
 
+    public static void pauseTime()
+    {
+        Time.timeScale = 0;
+    }
+
+    public static void continuTime()
+    {
+        Time.timeScale = 1;
+    }
+
     public static Color getCorByHex(string hex)
     {
         Color cor;
