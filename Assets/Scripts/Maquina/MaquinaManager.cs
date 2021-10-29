@@ -4,6 +4,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetadoFim.ProdutorEvento,
                               AcaoBotaoPUpVazio.ProdutorEvento,
                               AcaoCacaNiquel.ProdutorEvento,
+                              AcaoDesligarMaquina.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,                                
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPUpAcionado.ConsumidorEvento,                                                            
@@ -164,5 +165,10 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     ProdutorDeEvento<CacaNiquelResult> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoCacaNiquel.ProdutorEvento)displaysDeSlots).getProdutorDeEvento();
+    }
+
+    ProdutorDeEvento<AcaoDesligar> AcaoDesligarMaquina.ProdutorEvento.getProdutorDeEvento()
+    {
+        return ((AcaoDesligarMaquina.ProdutorEvento)botaoLigaDesliga).getProdutorDeEvento();
     }
 }
