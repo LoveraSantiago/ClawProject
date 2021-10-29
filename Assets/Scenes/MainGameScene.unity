@@ -11207,6 +11207,10 @@ MonoBehaviour:
           imgLinha: {fileID: 2746075170554837616}
           lblText2: {fileID: 2746075170554837615}
           goLinha: {fileID: 2746075170554837618}
+      modalSairDto:
+        modalSair: {fileID: 1306329716}
+        btnSair: {fileID: 1200365936}
+        btnCancelar: {fileID: 381730343}
       prefabBottomBar: {fileID: 1411617376}
 --- !u!61 &491158116
 BoxCollider2D:
