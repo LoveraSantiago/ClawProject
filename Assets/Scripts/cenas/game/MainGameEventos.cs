@@ -62,5 +62,9 @@ public class MainGameEventos
             .adicionarConsumidor(cameraManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(uiManager);
+
+        new AcaoDesligarMaquina()
+            .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(uiManager);
     }
 }

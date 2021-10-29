@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ModalSair 
+public class ModalSair : AcaoDesligarMaquina.ConsumidorEvento
 {
     private ModalSairDto modalSairDto;
 
     public ModalSair(ModalSairDto modalSairDto)
     {
         this.modalSairDto = modalSairDto;
+    }
+
+    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(AcaoDesligar evento)
+    {
+        modalSairDto.ModalSair.SetActive(true);
     }
 }
