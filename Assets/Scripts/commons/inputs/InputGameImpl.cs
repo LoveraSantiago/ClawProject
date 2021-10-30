@@ -5,18 +5,18 @@ public class InputGameImpl : InputGame,
 {
     private bool isTapAreaSuperior;
     private bool isTapAreaInferior;
-    private bool opcaoDesligarInativa;
+    private bool ativado;
 
     private Vector3 posicaoTap;        
 
     public InputGameImpl()
     {
-        opcaoDesligarInativa = true;
+        ativado = true;
     }
 
     public void update(Transform referenciaChao)
     {        
-        if (Input.GetMouseButtonDown(0) && opcaoDesligarInativa)
+        if (Input.GetMouseButtonDown(0) && ativado)
         {
             posicaoTap = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (isPosicaoAcimaPosicaoDeReferencia(referenciaChao))
@@ -68,8 +68,8 @@ public class InputGameImpl : InputGame,
         return posicaoTap.y > referenciaChaoMaquina.position.y;
     }
 
-    public void consumirEvento(AcaoDesligar evento)
+    public void consumirEvento(bool evento)
     {
-        opcaoDesligarInativa = false;
+        ativado = false;
     }
 }

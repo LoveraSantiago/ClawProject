@@ -3,8 +3,7 @@ using UnityEngine.SceneManagement;
 public class ModalSair : AcaoDesligarMaquina.ConsumidorEvento
 {
     private string nomeCenaVoltar;
-    private ModalSairDto modalSairDto;
-    private CallbackDesligar callBackDesligar;
+    private ModalSairDto modalSairDto;    
 
     public ModalSair(ModalSairDto modalSairDto)
     {
@@ -27,8 +26,7 @@ public class ModalSair : AcaoDesligarMaquina.ConsumidorEvento
 
     private void cancelarSaida()
     {
-        modalSairDto.ModalSair.SetActive(false);
-        callBackDesligar.cancelarDesligamento();
+        modalSairDto.ModalSair.SetActive(false);        
     }
 
     private void sairDoGame()
@@ -36,9 +34,8 @@ public class ModalSair : AcaoDesligarMaquina.ConsumidorEvento
         SceneManager.LoadScene(nomeCenaVoltar);
     }
 
-    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(AcaoDesligar evento)
+    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(bool evento)
     {
-        modalSairDto.ModalSair.SetActive(true);
-        callBackDesligar = evento.callbackDesligar;
+        modalSairDto.ModalSair.SetActive(true);        
     }
 }

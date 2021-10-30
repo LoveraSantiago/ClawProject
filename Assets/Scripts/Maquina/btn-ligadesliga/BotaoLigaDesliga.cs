@@ -1,15 +1,14 @@
 using UnityEngine;
 
-public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
-                                CallbackDesligar
+public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento
 {
     private BotaoLigaDesligaDto btnsLigaDesligaDto;
-    private ProdutorDeEvento<AcaoDesligar> produtorDeEvento;
+    private ProdutorDeEvento<bool> produtorDeEvento;
 
     public BotaoLigaDesliga(BotaoLigaDesligaDto btnsLigaDesligaDto)
     {
         this.btnsLigaDesligaDto = btnsLigaDesligaDto;
-        produtorDeEvento = new ProdutorDeEvento<AcaoDesligar>();
+        produtorDeEvento = new ProdutorDeEvento<bool>();
     }   
 
     public void update(InputGame inputGame)
@@ -21,7 +20,7 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
             {
                 btnsLigaDesligaDto.SprRendererBtnOnOff.color = Color.red;
                 Utils.pausarGame();
-                produtorDeEvento.produziuEvento(new AcaoDesligar(this));
+                produtorDeEvento.produziuEvento(true);
             }
         }
     }
@@ -32,7 +31,7 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
         Utils.continuarGame();
     }
 
-    ProdutorDeEvento<AcaoDesligar> AcaoDesligarMaquina.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<bool> AcaoDesligarMaquina.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }
