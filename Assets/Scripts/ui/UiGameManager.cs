@@ -22,6 +22,7 @@ public class UiGameManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
     {
         modalPontos.configurarLevel(levelEscolhido.getLevelName());
         scrollManager.configuradoPeloLevel(levelEscolhido);
+        modalSair.configuradoPeloLevel(levelEscolhido);
     }
 
     public void start()
