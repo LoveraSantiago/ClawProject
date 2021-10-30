@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoParaBaixo : MovimentacaoDaGarraNormal
+public class MovimentacaoParaBaixo : MovimentadorProdutorInformacaoGarra
 {   
     private ContadorDeTempo contadorDeTempoTravamento;
     public ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra { get; private set; }

@@ -1,10 +1,11 @@
-public class MovimentacaoParaCima : MovimentacaoDaGarraNormal
+public class MovimentacaoParaCima : MovimentadorProdutorInformacaoGarra
 {
     private readonly int ACAO_NORMAL  = 0;
     private readonly int ACAO_ESPERAR = 1;
 
     private int acaoAtual;
     private int contadorDeSubidas;
+
     public ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra { get; private set; }
 
     public MovimentacaoParaCima(ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra)
