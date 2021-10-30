@@ -10,7 +10,7 @@ public class ModalSair : AcaoDesligarMaquina.ConsumidorEvento
 
     public void cancelarSaida()
     {
-
+        modalSairDto.ModalSair.SetActive(false);
     }
 
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(AcaoDesligar evento)
