@@ -1,15 +1,18 @@
 using UnityEngine.SceneManagement;
 
-public class ModalSair : AcaoDesligarMaquina.ConsumidorEvento
+public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento, 
+                         AcaoDesligarMaquina.ConsumidorEvento    
 {
     private string nomeCenaVoltar;
-    private ModalSairDto modalSairDto;    
+    private ModalSairDto modalSairDto;
+    private ProdutorDeEvento<CancelarDesligarMaquina> produtorDeEvento;
 
     public ModalSair(ModalSairDto modalSairDto)
     {
         this.modalSairDto = modalSairDto;
         this.modalSairDto.BtnCancelar.onClick.AddListener(()=>cancelarSaida());
         this.modalSairDto.BtnSair.onClick.AddListener(()=>sairDoGame());
+        produtorDeEvento = new ProdutorDeEvento<CancelarDesligarMaquina>();
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
@@ -26,7 +29,8 @@ public class ModalSair : AcaoDesligarMaquina.ConsumidorEvento
 
     private void cancelarSaida()
     {
-        modalSairDto.ModalSair.SetActive(false);        
+        modalSairDto.ModalSair.SetActive(false);
+        produtorDeEvento.produziuEvento(null);
     }
 
     private void sairDoGame()
@@ -34,8 +38,13 @@ public class ModalSair : AcaoDesligarMaquina.ConsumidorEvento
         SceneManager.LoadScene(nomeCenaVoltar);
     }
 
-    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(bool evento)
+    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
     {
         modalSairDto.ModalSair.SetActive(true);        
+    }
+
+    ProdutorDeEvento<CancelarDesligarMaquina> AcaoDesligarMaquinaCancelado.ProdutorEvento.getProdutorDeEvento()
+    {
+        return produtorDeEvento;
     }
 }

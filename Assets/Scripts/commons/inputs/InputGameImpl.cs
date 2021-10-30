@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class InputGameImpl : InputGame,
-                             AcaoDesligarMaquina.ConsumidorEvento
+                             AcaoDesligarMaquina.ConsumidorEvento,
+                             AcaoDesligarMaquinaCancelado.ConsumidorEvento
 {
     private bool isTapAreaSuperior;
     private bool isTapAreaInferior;
@@ -68,8 +69,13 @@ public class InputGameImpl : InputGame,
         return posicaoTap.y > referenciaChaoMaquina.position.y;
     }
 
-    public void consumirEvento(bool evento)
+    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
     {
         ativado = false;
+    }
+
+    void AcaoDesligarMaquinaCancelado.ConsumidorEvento.consumirEvento(CancelarDesligarMaquina evento)
+    {
+        ativado = true;
     }
 }

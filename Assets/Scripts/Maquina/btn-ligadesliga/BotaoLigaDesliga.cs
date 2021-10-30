@@ -1,14 +1,15 @@
 using UnityEngine;
 
-public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento
+public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
+                                AcaoDesligarMaquinaCancelado.ConsumidorEvento
 {
     private BotaoLigaDesligaDto btnsLigaDesligaDto;
-    private ProdutorDeEvento<bool> produtorDeEvento;
+    private ProdutorDeEvento<DesligarMaquina> produtorDeEvento;
 
     public BotaoLigaDesliga(BotaoLigaDesligaDto btnsLigaDesligaDto)
     {
         this.btnsLigaDesligaDto = btnsLigaDesligaDto;
-        produtorDeEvento = new ProdutorDeEvento<bool>();
+        produtorDeEvento = new ProdutorDeEvento<DesligarMaquina>();
     }   
 
     public void update(InputGame inputGame)
@@ -20,18 +21,18 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento
             {
                 btnsLigaDesligaDto.SprRendererBtnOnOff.color = Color.red;
                 Utils.pausarGame();
-                produtorDeEvento.produziuEvento(true);
+                produtorDeEvento.produziuEvento(null);
             }
         }
-    }
+    }   
 
-    public void cancelarDesligamento()
+    void AcaoDesligarMaquinaCancelado.ConsumidorEvento.consumirEvento(CancelarDesligarMaquina evento)
     {
         btnsLigaDesligaDto.SprRendererBtnOnOff.color = Color.green;
-        Utils.continuarGame();
+        Utils.continuarGame();        
     }
 
-    ProdutorDeEvento<bool> AcaoDesligarMaquina.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<DesligarMaquina> AcaoDesligarMaquina.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

@@ -68,5 +68,10 @@ public class MainGameEventos
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(uiManager)
             .adicionarConsumidor(inputGameImpl);
+
+        new AcaoDesligarMaquinaCancelado()
+            .configurarProdutor(uiManager)
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(inputGameImpl);
     }
 }

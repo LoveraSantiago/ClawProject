@@ -1,4 +1,5 @@
 public class UiGameManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento,
+                             AcaoDesligarMaquinaCancelado.ProdutorEvento,
                              AcaoColetado.ConsumidorEvento,
                              AcaoTempoEsgotado.ConsumidorEvento,
                              AcaoBoardElevadoFim.ConsumidorEvento,
@@ -60,7 +61,7 @@ public class UiGameManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
         ((AcaoPUpAcionado.ConsumidorEvento)scrollManager).consumirEvento(evento);
     }
 
-    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(bool evento)
+    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
     {
         ((AcaoDesligarMaquina.ConsumidorEvento)modalSair).consumirEvento(evento);
     }
@@ -68,5 +69,10 @@ public class UiGameManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
     ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollManager).getProdutorDeEvento();
+    }
+
+    ProdutorDeEvento<CancelarDesligarMaquina> AcaoDesligarMaquinaCancelado.ProdutorEvento.getProdutorDeEvento()
+    {
+        return ((AcaoDesligarMaquinaCancelado.ProdutorEvento)modalSair).getProdutorDeEvento();
     }
 }

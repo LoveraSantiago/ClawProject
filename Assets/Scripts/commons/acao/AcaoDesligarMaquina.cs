@@ -1,3 +1,3 @@
-public class AcaoDesligarMaquina : ProdutorConsumidoresDeEvento<bool>
+public class AcaoDesligarMaquina : ProdutorConsumidoresDeEvento<DesligarMaquina>
 {    
 }

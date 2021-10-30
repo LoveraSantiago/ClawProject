@@ -9,7 +9,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,
-                              AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento
+                              AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
+                              AcaoDesligarMaquinaCancelado.ConsumidorEvento
 {    
     private PartesMaquinaDto partesDto;
 
@@ -147,6 +148,11 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         ((AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
     }
 
+    void AcaoDesligarMaquinaCancelado.ConsumidorEvento.consumirEvento(CancelarDesligarMaquina evento)
+    {
+        ((AcaoDesligarMaquinaCancelado.ConsumidorEvento)botaoLigaDesliga).consumirEvento(evento);
+    }
+
     ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoTempoEsgotado.ProdutorEvento)displayTimer).getProdutorDeEvento();
@@ -167,8 +173,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         return ((AcaoCacaNiquel.ProdutorEvento)displaysDeSlots).getProdutorDeEvento();
     }
 
-    ProdutorDeEvento<bool> AcaoDesligarMaquina.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<DesligarMaquina> AcaoDesligarMaquina.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoDesligarMaquina.ProdutorEvento)botaoLigaDesliga).getProdutorDeEvento();
-    }
+    }  
 }
