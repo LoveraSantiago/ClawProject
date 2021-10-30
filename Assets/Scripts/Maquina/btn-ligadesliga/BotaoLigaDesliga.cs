@@ -20,7 +20,7 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
             if (btnsLigaDesligaDto.SprRendererBtnOnOff.bounds.Contains(posicaoTap))
             {
                 btnsLigaDesligaDto.SprRendererBtnOnOff.color = Color.red;
-                Utils.pauseTime();
+                Utils.pausarGame();
                 produtorDeEvento.produziuEvento(new AcaoDesligar(this));
             }
         }
@@ -29,6 +29,7 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
     public void cancelarDesligamento()
     {
         btnsLigaDesligaDto.SprRendererBtnOnOff.color = Color.green;
+        Utils.continuarGame();
     }
 
     ProdutorDeEvento<AcaoDesligar> AcaoDesligarMaquina.ProdutorEvento.getProdutorDeEvento()

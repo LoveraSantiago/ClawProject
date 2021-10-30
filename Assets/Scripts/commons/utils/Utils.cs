@@ -15,12 +15,12 @@ public class Utils
         materialGrayScale = materialGrayScaleArg;
     }
 
-    public static void pauseTime()
+    public static void pausarGame()
     {
         Time.timeScale = 0;
     }
 
-    public static void continuTime()
+    public static void continuarGame()
     {
         Time.timeScale = 1;
     }

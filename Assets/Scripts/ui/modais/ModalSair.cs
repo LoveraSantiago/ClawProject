@@ -1,6 +1,7 @@
 public class ModalSair : AcaoDesligarMaquina.ConsumidorEvento
 {
     private ModalSairDto modalSairDto;
+    private CallbackDesligar callBackDesligar;
 
     public ModalSair(ModalSairDto modalSairDto)
     {
@@ -11,10 +12,12 @@ public class ModalSair : AcaoDesligarMaquina.ConsumidorEvento
     public void cancelarSaida()
     {
         modalSairDto.ModalSair.SetActive(false);
+        callBackDesligar.cancelarDesligamento();
     }
 
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(AcaoDesligar evento)
     {
         modalSairDto.ModalSair.SetActive(true);
+        callBackDesligar = evento.callbackDesligar;
     }
 }
