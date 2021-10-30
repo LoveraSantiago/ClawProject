@@ -38,7 +38,7 @@ public class BotaoPowerUp : Draggavel
         {
             //Debug.Log("Btn clicado sem pup");
             glow.ligarGlow();
-            Time.timeScale = 0;
+            Utils.pausarGame();
             controlePup.desabilitarPowerUp();
             produtorEventoEscolhaPup.produziuEvento(indice);
         }

@@ -4,22 +4,15 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
                                                ComunicadorComGerMovNormal,
                                                AcaoInfoDaGarra.ProdutorEvento
 {
-    private MovimentacaoDaGarra   movAtual;
-    private MovimentacaoParaBaixo movPBaixo;
-    private MovimentacaoDaGarra   movAgarrandoBaixo;
-    private MovimentacaoParaCima  movPCima;
-    private MovimentacaoDaGarra   movLateral;
-    private MovimentacaoDaGarra   movVoltarMeio;
-    private MovimentacaoDaGarra   movParado;
+    private MovimentacaoDaGarra   movAtual;//COMPARTILHAM PRODUTOR DE EVENTO
+    private MovimentacaoParaBaixo movPBaixo;//COMPARTILHAM PRODUTOR DE EVENTO
+    private MovimentacaoParaCima  movPCima;//GUARDA ESTADO DE DIRECAO    
+    private MovimentacaoDaGarra movLateral;//GUARDA ESTADO DE DIRECAO    
 
     public GerenciadorDeMovimentacaoNormal()
     {        
         MovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
-
-        movLateral        = new MovimentacaoLateralZigZag();
-        movAgarrandoBaixo = new MovimentacaoAgarrandoEmbaixo();
-        movVoltarMeio     = new MovimentacaoVoltarParaMeioNormal();
-        movParado         = new MovimentacaoParadoNormal();
+        movLateral        = new MovimentacaoLateralZigZag();               
 
         ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra = new ProdutorDeEvento<InformacoesDaGarraDto>();
         movPCima          = new MovimentacaoParaCima(produtorEventoInfoGarra);
@@ -84,7 +77,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoAgarrada()
     {
-        trocarMovimentador(movAgarrandoBaixo);
+        trocarMovimentador(new MovimentacaoAgarrandoEmbaixo());
     }
 
     public void trocarParaAcaoVoltarParaCima()
@@ -95,12 +88,12 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoVoltarParaMeio()
     {
-        trocarMovimentador(movVoltarMeio);
+        trocarMovimentador(new MovimentacaoVoltarParaMeioNormal());
     }
 
     public void trocarParaAcaoParado()
     {
-        trocarMovimentador(movParado);
+        trocarMovimentador(new MovimentacaoParadoNormal());
     }
     //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL FIM
 
@@ -117,6 +110,6 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public override ProdutorDeEvento<DirecaoDaGarra> getProdutorDeEvento()
     {
-        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)movParado).getProdutorDeEvento();
+        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)movLateral).getProdutorDeEvento();
     }
 }

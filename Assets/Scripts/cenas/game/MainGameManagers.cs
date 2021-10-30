@@ -6,7 +6,7 @@ public class MainGameManagers
     public ColetaveisManager coletaveisManager { get; private set; }
     public CameraManager     cameraManager     { get; private set; }
     public UiGameManager     uiManager         { get; private set; }    
-    public InputGame         inputGame         { get; private set; }
+    public InputGameImpl     inputGame         { get; private set; }
 
     public MainGameManagers(MainGameDto mainDto, AbstractLevel levelEscolhido)
     {

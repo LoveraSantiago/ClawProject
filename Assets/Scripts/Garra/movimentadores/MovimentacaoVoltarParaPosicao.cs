@@ -2,25 +2,17 @@ using UnityEngine;
 
 public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
 {
-    private float posicaoHorizontal;
-    private DirecaoDaGarra direcaoVoltar;   
+    private DirecaoDaGarra direcaoVoltar;       
+    public bool isDirecaoEsquerda { get { return direcaoVoltar == DirecaoDaGarra.ESQUERDA; } }
+    public bool isDirecaoDireita  { get { return direcaoVoltar == DirecaoDaGarra.DIREITA; } }
+    public bool isDirecaoCentralizada { get { return direcaoVoltar == DirecaoDaGarra.CENTRALIZADA; } }
 
-    public MovimentacaoVoltarParaPosicao(float posicaoHorizontal)
+    public void preInicio(float posicaoHorizontal)
     {
-        this.posicaoHorizontal = posicaoHorizontal;                
-    }
+        determinarDirecaoParaVoltarAoMeio(posicaoHorizontal);
+    }    
 
-    public DirecaoDaGarra getDirecaoAtual()
-    {
-        return direcaoVoltar;
-    }
-
-    public override void preInicio()
-    {
-        determinarDirecaoParaVoltarAoMeio();
-    }
-
-    public void voltarVindoPelaEsquerda(float velocidadeDirecao)
+    public void voltarVindoPelaEsquerda(float posicaoHorizontal, float velocidadeDirecao)
     {
         if (!isMenorPosHorizontal(posicaoHorizontal))
         {
@@ -31,11 +23,11 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
         }
         else
         {
-            voltaFinalizada();
+            voltaFinalizada(posicaoHorizontal);
         }
     }
 
-    public void voltarVindoPelaDireita(float velocidadeDirecao)
+    public void voltarVindoPelaDireita(float posicaoHorizontal, float velocidadeDirecao)
     {
         if (!isMaiorPosHorizontal(posicaoHorizontal))
         {
@@ -46,11 +38,11 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
         }
         else
         {
-            voltaFinalizada();
+            voltaFinalizada(posicaoHorizontal);
         }
     }
 
-    private void determinarDirecaoParaVoltarAoMeio()
+    private void determinarDirecaoParaVoltarAoMeio(float posicaoHorizontal)
     {
         if (isMaiorPosHorizontal(posicaoHorizontal))
         {
@@ -64,7 +56,7 @@ public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
         }
     }
 
-    private void voltaFinalizada()
+    private void voltaFinalizada(float posicaoHorizontal)
     {
         parar();
         colocarNaPosHorizontal(posicaoHorizontal);

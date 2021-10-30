@@ -1,31 +1,28 @@
-using UnityEngine;
-
 public class MovimentacaoVoltarParaMeioPowerUp : MovimentacaoDaGarraPowerUp
 {
     private MovimentacaoVoltarParaPosicao movVoltarParaMeio;
 
     public MovimentacaoVoltarParaMeioPowerUp()
     {
-        movVoltarParaMeio = new MovimentacaoVoltarParaPosicao(0);
+        movVoltarParaMeio = new MovimentacaoVoltarParaPosicao();
     }
 
     public override void preInicio()
     {
-        movVoltarParaMeio.preInicio();
+        movVoltarParaMeio.preInicio(getPosicaoHorizontalMeio());
     }
 
     public override void fixedUpdate()
-    {
-        DirecaoDaGarra direcaoVoltar = movVoltarParaMeio.getDirecaoAtual();
-        if (direcaoVoltar == DirecaoDaGarra.ESQUERDA)
+    {        
+        if (movVoltarParaMeio.isDirecaoEsquerda)
         {
-            movVoltarParaMeio.voltarVindoPelaEsquerda(-1);
+            movVoltarParaMeio.voltarVindoPelaEsquerda(getPosicaoHorizontalMeio(), -1);
         }
-        else if(direcaoVoltar == DirecaoDaGarra.DIREITA)
+        else if(movVoltarParaMeio.isDirecaoDireita)
         {
-            movVoltarParaMeio.voltarVindoPelaDireita(1);
+            movVoltarParaMeio.voltarVindoPelaDireita(getPosicaoHorizontalMeio(), 1);
         }
-        else if(direcaoVoltar == DirecaoDaGarra.CENTRALIZADA)
+        else if(movVoltarParaMeio.isDirecaoCentralizada)
         {
             if (garraInteracaoComPowerUp.getInteracaoComGarra() == PowerUpEnums.INTERACAOGARRA.MOVIMENTO)
             {

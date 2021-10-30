@@ -8,6 +8,7 @@ public class MainGameEventos
         UiGameManager     uiManager         = mainGameManagers.uiManager;
         PowerUpManager    powerUpManager    = mainGameManagers.powerUpManager;
         CameraManager     cameraManager     = mainGameManagers.cameraManager;
+        InputGameImpl inputGameImpl = mainGameManagers.inputGame;
 
         new AcaoColetado()
             .configurarProdutor(coletaveisManager)
@@ -62,5 +63,15 @@ public class MainGameEventos
             .adicionarConsumidor(cameraManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(uiManager);
+
+        new AcaoDesligarMaquina()
+            .configurarProdutor(maquinaManager)
+            .adicionarConsumidor(uiManager)
+            .adicionarConsumidor(inputGameImpl);
+
+        new AcaoDesligarMaquinaCancelado()
+            .configurarProdutor(uiManager)
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(inputGameImpl);
     }
 }

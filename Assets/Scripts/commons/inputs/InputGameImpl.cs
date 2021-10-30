@@ -1,15 +1,23 @@
 using UnityEngine;
 
-public class InputGameImpl : InputGame
+public class InputGameImpl : InputGame,
+                             AcaoDesligarMaquina.ConsumidorEvento,
+                             AcaoDesligarMaquinaCancelado.ConsumidorEvento
 {
     private bool isTapAreaSuperior;
-    private bool isTapAreaInferior;    
+    private bool isTapAreaInferior;
+    private bool ativado;
 
     private Vector3 posicaoTap;        
 
+    public InputGameImpl()
+    {
+        ativado = true;
+    }
+
     public void update(Transform referenciaChao)
     {        
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && ativado)
         {
             posicaoTap = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (isPosicaoAcimaPosicaoDeReferencia(referenciaChao))
@@ -59,5 +67,15 @@ public class InputGameImpl : InputGame
     private bool isPosicaoAcimaPosicaoDeReferencia(Transform referenciaChaoMaquina)
     {
         return posicaoTap.y > referenciaChaoMaquina.position.y;
+    }
+
+    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
+    {
+        ativado = false;
+    }
+
+    void AcaoDesligarMaquinaCancelado.ConsumidorEvento.consumirEvento(CancelarDesligarMaquina evento)
+    {
+        ativado = true;
     }
 }

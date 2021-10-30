@@ -6,7 +6,7 @@ public class MaquinaDto
 {
     [Space(5)]
     [SerializeField] private float factorHdr;
-    [SerializeField] private Transform referenciaChao;
+    [SerializeField] private Transform referenciaChao;    
     [Space(5)]
     [SerializeField] private JoystickDto joystickDto;    
     [Space(5)]    
@@ -17,6 +17,8 @@ public class MaquinaDto
     [SerializeField] private DisplayDeScoreDto displayDeScoreDto;
     [Space(5)]
     [SerializeField] private BotoesPowerUpDto botoesPowerUpDto;
+    [Space(5)]
+    [SerializeField] private BotaoLigaDesligaDto botaoLigaDesligaDto;
     [Space(5)]
     [SerializeField] private VigasDto vigasDto;
     [Space(5)]
@@ -33,6 +35,8 @@ public class MaquinaDto
     public DisplayTimerDto DisplayTimerDto { get { return displayTimerDto; } }
     
     public BotoesPowerUpDto BotoesPowerUpDto { get { return botoesPowerUpDto; } }
+    public BotaoLigaDesligaDto BotaoLigaDesligaDto { get { return botaoLigaDesligaDto; } }
+
     public VigasDto VigasDto { get { return vigasDto; } }
     public BordasFrenteDto BordasFrenteDto { get { return bordasFrenteDto; } }
     public PartesMaquinaDto PartesDto { get { return partesDto; } }

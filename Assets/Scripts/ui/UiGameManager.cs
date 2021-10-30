@@ -1,24 +1,29 @@
 public class UiGameManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento,
+                             AcaoDesligarMaquinaCancelado.ProdutorEvento,
                              AcaoColetado.ConsumidorEvento,
                              AcaoTempoEsgotado.ConsumidorEvento,
                              AcaoBoardElevadoFim.ConsumidorEvento,
                              AcaoBotaoPUpVazio.ConsumidorEvento,
                              AcaoCacaNiquel.ConsumidorEvento,
-                             AcaoPUpAcionado.ConsumidorEvento
+                             AcaoPUpAcionado.ConsumidorEvento,
+                             AcaoDesligarMaquina.ConsumidorEvento
 {
     private ModalPontos modalPontos;
+    private ModalSair modalSair;
     private ScrollManager scrollManager;
 
     public UiGameManager(UIGameDto uiDto)
     {
         modalPontos = new ModalPontos(uiDto.ModalPontosDto);
         scrollManager = new ScrollManager(uiDto.PrefabBottomBar);
+        modalSair = new ModalSair(uiDto.ModalSairDto);
     }
 
     public void configurandoLevel(AbstractLevel levelEscolhido)
     {
         modalPontos.configurarLevel(levelEscolhido.getLevelName());
         scrollManager.configuradoPeloLevel(levelEscolhido);
+        modalSair.configuradoPeloLevel(levelEscolhido);
     }
 
     public void start()
@@ -56,8 +61,18 @@ public class UiGameManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
         ((AcaoPUpAcionado.ConsumidorEvento)scrollManager).consumirEvento(evento);
     }
 
+    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
+    {
+        ((AcaoDesligarMaquina.ConsumidorEvento)modalSair).consumirEvento(evento);
+    }
+
     ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollManager).getProdutorDeEvento();
+    }
+
+    ProdutorDeEvento<CancelarDesligarMaquina> AcaoDesligarMaquinaCancelado.ProdutorEvento.getProdutorDeEvento()
+    {
+        return ((AcaoDesligarMaquinaCancelado.ProdutorEvento)modalSair).getProdutorDeEvento();
     }
 }
