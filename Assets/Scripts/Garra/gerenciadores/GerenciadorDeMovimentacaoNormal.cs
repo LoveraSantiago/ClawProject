@@ -6,7 +6,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 {
     private MovimentacaoDaGarra   movAtual;    
     private MovimentacaoParaCima  movPCima;//GUARDA ESTADO DE SUBIDAS    
-    private MovimentacaoDaGarra movLateral;//GUARDA ESTADO DE DIRECAO    
+    private MovimentacaoDaGarra movLateral;//GUARDA ESTADO DE DIRECAO RESOLVER PROBLEMA DE DIRECAO
 
     public GerenciadorDeMovimentacaoNormal()
     {        
