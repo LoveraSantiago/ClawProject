@@ -1,14 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ParteEfeitoMaquina : ArcoIrisConjunto
 {
     private ParteEfeitoDto parteEfeitoDto;
+    private MaterialGlow materialGlow;
 
     protected ParteEfeitoMaquina(ParteEfeitoDto parteEfeitoDto)
     {
         this.parteEfeitoDto = parteEfeitoDto;
+        materialGlow = new MaterialGlow(parteEfeitoDto.SprRenderEfeito.material);
     }
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
@@ -25,5 +26,20 @@ public abstract class ParteEfeitoMaquina : ArcoIrisConjunto
     protected virtual float getTransparencia()
     {
         return 1;
+    }
+
+    public void desligar()
+    {
+        parteEfeitoDto.GoEfeito.SetActive(false);
+    }
+
+    public void ligar()
+    {
+        parteEfeitoDto.GoEfeito.SetActive(true);
+    }
+
+    public void passarCor(Color cor)
+    {
+        materialGlow.setCorNoMaterial(cor);
     }
 }
