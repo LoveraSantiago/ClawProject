@@ -12,7 +12,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private ColetavelTile coletavelImantado;
     
     private BoardManager board;
-    private TuboDeSaida tuboSaida;
+    private TuboDeDescarte tuboDeDescarte;
     private EfeitoColetado efeito;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contador;
@@ -28,11 +28,11 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
         configurarPoolDeColetaveis(coletaveisDto);
 
-        board     = new BoardManager(coletaveisDto.BoardDto);
-        contador  = new ContadorDeColetaveis(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
+        board            = new BoardManager(coletaveisDto.BoardDto);
+        contador         = new ContadorDeColetaveis(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
         contadorOrdenado = new ContadorOrdenadoDeColetaveis(coletaveisDto.EfeitoOutline);
-        tuboSaida = new TuboDeSaida(coletaveisDto.DescarteTuboDto);
-        efeito    = new EfeitoColetado(coletaveisDto.EfeitoColetado);
+        tuboDeDescarte   = new TuboDeDescarte(coletaveisDto.DescarteTuboDto);
+        efeito           = new EfeitoColetado(coletaveisDto.EfeitoColetado);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();
 
@@ -42,7 +42,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     public void configuradoPeloLevel(AbstractLevel level)
     {
         board.configuradoPeloLevel(level);
-        tuboSaida.configuradoPeloLevel(level.devolverParaBoard());
+        tuboDeDescarte.configuradoPeloLevel(level.devolverParaBoard());
         contadorOrdenado.configuradoPeloLevel(level);
     }
 
@@ -152,7 +152,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {
-        tuboSaida.devolver(contador.resultCombinacao, evento, contador.coletados, poolDeColetaveis);        
+        tuboDeDescarte.devolver(contador.resultCombinacao, evento, contador.coletados, poolDeColetaveis);        
         board.devolver(contador.resultCombinacao, evento, contador.coletados);
         contador.reajustarContagem(evento, board.isDevolverBoard());
     }
