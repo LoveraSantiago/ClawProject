@@ -15,8 +15,8 @@ public class ColetaveisDto
     [SerializeField] private Material efeitoOutline;
     [Space(5)]        
     [SerializeField] private GameObject prefabColetaveisDto;
-    [Space(5)]
-    [SerializeField] private TuboDto tuboDto;    
+    [Space(5)]    
+    [SerializeField] private DescarteTuboDto descarteTuboDto;
     [Space(5)]    
     [SerializeField] private BoardDto boardDto;
 
@@ -32,8 +32,8 @@ public class ColetaveisDto
     public Material EfeitoOutline { get { return efeitoOutline; } }
     
     public GameObject PrefabColetaveisDto { get { return prefabColetaveisDto; } }
-
-    public TuboDto TuboDto { get { return tuboDto; } }    
+   
+    public DescarteTuboDto DescarteTuboDto { get { return descarteTuboDto; } }
 
     public BoardDto BoardDto { get { return boardDto; } }
 }

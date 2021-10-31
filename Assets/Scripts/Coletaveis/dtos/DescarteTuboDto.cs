@@ -2,7 +2,7 @@ using UnityEngine;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class TuboDto 
+public class DescarteTuboDto 
 {
     [SerializeField] private float torque;    
     [SerializeField] private float gravidade;

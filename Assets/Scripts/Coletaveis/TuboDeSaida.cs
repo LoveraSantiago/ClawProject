@@ -7,9 +7,9 @@ public class TuboDeSaida : ConsumidorDeEventoTrigger
     private float torque;    
 
     private Vector3[] posicoesOriginais;
-    private TuboDto tuboDto;
+    private DescarteTuboDto tuboDto;
 
-    public TuboDeSaida(TuboDto tuboDto)
+    public TuboDeSaida(DescarteTuboDto tuboDto)
     {
         this.tuboDto = tuboDto;
 
