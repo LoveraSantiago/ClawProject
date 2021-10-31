@@ -57,6 +57,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         vigasTras.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         bordasFrenteVidro.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        tuboDeSaida.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
 
         AntesExecutorTimerRestart executor = new AntesExecutorTimerRestart(botoesPowerUp, displayTimer, arcoIrisEfeito);
         displayTimer.configuradoPeloLevel(levelEscolhido, executor);
