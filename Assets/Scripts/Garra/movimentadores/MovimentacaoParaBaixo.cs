@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class MovimentacaoParaBaixo : MovimentadorProdutorInformacaoGarra
 {   
-    private ContadorDeTempo contadorDeTempoTravamento;
-    public ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra { get; private set; }
+    private ContadorDeTempo contadorDeTempoTravamento;    
 
-    public MovimentacaoParaBaixo(ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra)
+    public MovimentacaoParaBaixo()
     {
-        contadorDeTempoTravamento  = new ContadorDeTempo(1.0f);
-        this.produtorEventoInfoGarra = produtorEventoInfoGarra;
+        contadorDeTempoTravamento  = new ContadorDeTempo(1.0f);        
     }
 
     public override void preInicio()

@@ -4,14 +4,11 @@ public class MovimentacaoParaCima : MovimentadorProdutorInformacaoGarra
     private readonly int ACAO_ESPERAR = 1;
 
     private int acaoAtual;
-    private int contadorDeSubidas;
+    private int contadorDeSubidas;    
 
-    public ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra { get; private set; }
-
-    public MovimentacaoParaCima(ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra)
+    public MovimentacaoParaCima()
     {
-        contadorDeSubidas = 0;
-        this.produtorEventoInfoGarra = produtorEventoInfoGarra;
+        contadorDeSubidas = 0;        
     }
 
     public override void preInicio()

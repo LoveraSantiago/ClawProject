@@ -12,11 +12,11 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     public GerenciadorDeMovimentacaoNormal()
     {        
         MovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
-        movLateral        = new MovimentacaoLateralZigZag();               
+        movLateral        = new MovimentacaoLateralZigZag();
 
-        ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra = new ProdutorDeEvento<InformacoesDaGarraDto>();
-        movPCima          = new MovimentacaoParaCima(produtorEventoInfoGarra);
-        movPBaixo         = new MovimentacaoParaBaixo(produtorEventoInfoGarra);
+        MovimentadorProdutorInformacaoGarra.configurar();        
+        movPCima          = new MovimentacaoParaCima();
+        movPBaixo         = new MovimentacaoParaBaixo();
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
