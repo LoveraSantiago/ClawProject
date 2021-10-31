@@ -1,21 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BordasVidroFrente : ArcoIrisConjunto
+public class BordasVidroFrente : ParteEfeitoMaquina
 {
     private BordasFrenteDto bordasDto;
     private MaterialGlow materialGlow;
 
     public BordasVidroFrente(BordasFrenteDto bordasDto)
+        :base(bordasDto)
     {
         this.bordasDto = bordasDto;
         materialGlow = new MaterialGlow(bordasDto.SprBordaVidroEfeito.material);
-    }
+    }   
 
-    public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
+    protected override string getNomeParteMaquina()
     {
-        string corHex = dicionarioDeCores[ConstantesCoresMaquina.BORDA_VIDRO];
-        bordasDto.SprBordaVidro.color = Utils.getCorByHex(corHex);
+        return ConstantesCoresMaquina.BORDA_VIDRO;
     }
 
     public void desligar()
@@ -32,4 +32,6 @@ public class BordasVidroFrente : ArcoIrisConjunto
     {
         materialGlow.setCorNoMaterial(cor);
     }
+
+   
 }

@@ -21,9 +21,10 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     private BotaoLigaDesliga  botaoLigaDesliga;
     private ArcoIrisEfeito    arcoIrisEfeito;
     private DisplayDeScores   displayDeScores;    
-    public DisplaysDeSlots    displaysDeSlots { get; private set; }
+    public  DisplaysDeSlots   displaysDeSlots { get; private set; }
     private BordasVidroFrente bordasFrenteVidro;
-    
+    private TudoDeSaida       tuboDeSaida;
+
     public MaquinaManager(MaquinaDto maquinaDto, InputGame inputGame)
     {
         partesDto = maquinaDto.PartesDto;
@@ -36,6 +37,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botaoLigaDesliga  = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
         vigasTras         = new VigasTras(maquinaDto.VigasDto);
         bordasFrenteVidro = new BordasVidroFrente(maquinaDto.BordasFrenteDto);
+        tuboDeSaida       = new TudoDeSaida(maquinaDto.TuboDto);
 
         arcoIrisEfeito = new ArcoIrisEfeito(maquinaDto.FactorHdr)//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW            
             .addArcoIrisConjunto(displaysDeSlots.getDisplayColetadoGlow())
@@ -43,7 +45,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow(maquinaDto.DisplayTimerDto))
             .addArcoIrisConjunto(vigasTras)
             .addArcoIrisConjunto(botoesPowerUp.getBotoesGlow())
-            .addArcoIrisConjunto(bordasFrenteVidro);        
+            .addArcoIrisConjunto(bordasFrenteVidro)
+            .addArcoIrisConjunto(tuboDeSaida);        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)

@@ -10703,23 +10703,6 @@ MonoBehaviour:
       efeitoColetado: {fileID: 1488198865}
       efeitoOutline: {fileID: 2100000, guid: cbad35fbf462a4f4bb8e2451dc3cf1a3, type: 2}
       prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
-      tuboDto:
-        torque: 550
-        gravidade: 0.65
-        parentColetavelTubo: {fileID: 1607848931}
-        coletavelTuboDeSaida:
-        - rigidBodyColetavel: {fileID: 650369890}
-          sprRendererColetavel: {fileID: 650369889}
-          rigidBodyTrail: {fileID: 153266962}
-          particulasTrail: {fileID: 153266961}
-        - rigidBodyColetavel: {fileID: 1171204410}
-          sprRendererColetavel: {fileID: 1171204409}
-          rigidBodyTrail: {fileID: 1296627890}
-          particulasTrail: {fileID: 1296627887}
-        - rigidBodyColetavel: {fileID: 911244735}
-          sprRendererColetavel: {fileID: 911244734}
-          rigidBodyTrail: {fileID: 310144667}
-          particulasTrail: {fileID: 310144664}
       descarteTuboDto:
         torque: 550
         gravidade: 0.65
@@ -11032,9 +11015,11 @@ MonoBehaviour:
         sprVigasTrasEsquerdaEfeito: {fileID: 1780505045}
         sprVigasTrasDireitaEfeito: {fileID: 6406990385049082698}
       bordasFrenteDto:
-        sprRenderColorir: {fileID: 0}
+        sprRenderColorir: {fileID: 320505972}
         sprBordaVidro: {fileID: 320505972}
         sprBordaVidroEfeito: {fileID: 6406990385049082696}
+      tuboDto:
+        sprRenderColorir: {fileID: 1914492973}
       partesDto:
         placaCima: {fileID: 702916761}
         baseParteCima: {fileID: 243475117}
