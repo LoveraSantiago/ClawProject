@@ -2,7 +2,7 @@ using UnityEngine;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class BordasFrenteDto 
+public class BordasFrenteDto : ParteEfeitoDto
 {
     [SerializeField] private SpriteRenderer sprBordaVidro;
     [SerializeField] private SpriteRenderer sprBordaVidroEfeito;
