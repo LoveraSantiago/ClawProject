@@ -27,12 +27,7 @@ public class ColoridorMaquina
         partesDto.ChaoDentro.color = Utils.getCorByHex(corHex);
 
         corHex = dicionarioDeCores[ConstantesCoresMaquina.PLACA_SAIDA];
-        partesDto.PlacaDeSaida.color = Utils.getCorByHex(corHex);
-
-        corHex = dicionarioDeCores[ConstantesCoresMaquina.TUBO];
-        Color corTubo = Utils.getCorByHex(corHex);
-        corTubo.a = 0.88f;
-        partesDto.Tubo.color = corTubo;        
+        partesDto.PlacaDeSaida.color = Utils.getCorByHex(corHex);        
 
         corHex = dicionarioDeCores[ConstantesCoresMaquina.PLACA_FICHA];
         partesDto.PlacaFicha.color = Utils.getCorByHex(corHex);
