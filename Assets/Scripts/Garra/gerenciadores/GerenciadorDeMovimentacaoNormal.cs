@@ -4,19 +4,17 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
                                                ComunicadorComGerMovNormal,
                                                AcaoInfoDaGarra.ProdutorEvento
 {
-    private MovimentacaoDaGarra   movAtual;//COMPARTILHAM PRODUTOR DE EVENTO
-    private MovimentacaoParaBaixo movPBaixo;//COMPARTILHAM PRODUTOR DE EVENTO
-    private MovimentacaoParaCima  movPCima;//GUARDA ESTADO DE DIRECAO    
+    private MovimentacaoDaGarra   movAtual;    
+    private MovimentacaoParaCima  movPCima;//GUARDA ESTADO DE SUBIDAS    
     private MovimentacaoDaGarra movLateral;//GUARDA ESTADO DE DIRECAO    
 
     public GerenciadorDeMovimentacaoNormal()
     {        
         MovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
-        movLateral        = new MovimentacaoLateralZigZag();
-
-        MovimentadorProdutorInformacaoGarra.configurar();        
-        movPCima          = new MovimentacaoParaCima();
-        movPBaixo         = new MovimentacaoParaBaixo();
+        MovimentadorProdutorInformacaoGarra.configurar();
+        
+        movLateral = new MovimentacaoLateralZigZag();
+        movPCima   = new MovimentacaoParaCima();        
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
@@ -51,7 +49,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     public void trocarParaAcaoDescendo()
     {
         AudioController.current.PlayAudioGarra();        
-        trocarMovimentador(movPBaixo);
+        trocarMovimentador(new MovimentacaoParaBaixo());
     }
 
     public void trocarParaAcaoSubindo()
@@ -104,8 +102,8 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     }
 
     ProdutorDeEvento<InformacoesDaGarraDto> AcaoInfoDaGarra.ProdutorEvento.getProdutorDeEvento()
-    {        
-        return movPBaixo.produtorEventoInfoGarra;
+    {
+        return MovimentadorProdutorInformacaoGarra.produtorEventoInfoGarra;
     }
 
     public override ProdutorDeEvento<DirecaoDaGarra> getProdutorDeEvento()
