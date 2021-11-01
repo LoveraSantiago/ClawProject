@@ -68,7 +68,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - text_glow:
-        m_Texture: {fileID: 2800000, guid: e60ef3a8d3f5cfd4cae30a355ffba368, type: 3}
+        m_Texture: {fileID: 2800000, guid: 827980b9676abda45a268571106696e7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - text_outline:
