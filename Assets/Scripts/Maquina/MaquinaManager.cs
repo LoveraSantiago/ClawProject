@@ -16,6 +16,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     private Joystick          joystick;
     private VigasTras         vigasTras;
+    private VigaEsquerda      vigaEsquerda;
     private DisplayTimer      displayTimer;
     private BotoesPowerUp     botoesPowerUp;
     private BotaoLigaDesliga  botaoLigaDesliga;
@@ -36,6 +37,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp     = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         botaoLigaDesliga  = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
         vigasTras         = new VigasTras(maquinaDto.VigasDto);
+        vigaEsquerda      = new VigaEsquerda(maquinaDto.VigaEsquerdaDto);
         bordasFrenteVidro = new BordasVidroFrente(maquinaDto.BordasFrenteDto);
         tuboDeSaida       = new TudoDeSaida(maquinaDto.TuboDto);
 
@@ -44,6 +46,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             .addArcoIrisConjunto(displayDeScores)
             .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow(maquinaDto.DisplayTimerDto))
             .addArcoIrisConjunto(vigasTras)
+            .addArcoIrisConjunto(vigaEsquerda)
             .addArcoIrisConjunto(botoesPowerUp.getBotoesGlow())
             .addArcoIrisConjunto(bordasFrenteVidro)
             .addArcoIrisConjunto(tuboDeSaida);        
@@ -56,6 +59,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displaysDeSlots.configuradoPeloLevel(levelEscolhido);
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         vigasTras.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        vigaEsquerda.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         bordasFrenteVidro.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         tuboDeSaida.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
 

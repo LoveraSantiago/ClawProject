@@ -22,6 +22,8 @@ public class MaquinaDto
     [Space(5)]
     [SerializeField] private VigasDto vigasDto;
     [Space(5)]
+    [SerializeField] private VigaEsquerdaDto vigaEsquerdaDto;
+    [Space(5)]
     [SerializeField] private BordasFrenteDto bordasFrenteDto;
     [Space(5)]
     [SerializeField] private TuboDto tuboDto;
@@ -40,6 +42,7 @@ public class MaquinaDto
     public BotaoLigaDesligaDto BotaoLigaDesligaDto { get { return botaoLigaDesligaDto; } }
 
     public VigasDto VigasDto { get { return vigasDto; } }
+    public VigaEsquerdaDto VigaEsquerdaDto { get { return vigaEsquerdaDto; } }
     public BordasFrenteDto BordasFrenteDto { get { return bordasFrenteDto; } }
     public TuboDto TuboDto { get { return tuboDto; } }
 

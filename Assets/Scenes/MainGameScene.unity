@@ -11014,6 +11014,9 @@ MonoBehaviour:
         vigaTrasDireita: {fileID: 108455522}
         sprVigasTrasEsquerdaEfeito: {fileID: 1780505045}
         sprVigasTrasDireitaEfeito: {fileID: 6406990385049082698}
+      vigaEsquerdaDto:
+        sprRenderColorir: {fileID: 946233168}
+        sprRenderEfeito: {fileID: 1780505045}
       bordasFrenteDto:
         sprRenderColorir: {fileID: 320505972}
         sprRenderEfeito: {fileID: 6406990385049082696}
