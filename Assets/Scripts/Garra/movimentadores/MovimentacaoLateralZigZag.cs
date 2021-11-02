@@ -26,9 +26,9 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         if (inputGame.aconteceuTapNaAreaSuperior())
         {
             produziuEventoDeDirecao(DirecaoDaGarra.PARADA);
-            comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
             desafixar();
             acionarColliderDasPincas();
+            comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
         }
     }
     
