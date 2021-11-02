@@ -1,21 +1,17 @@
-using UnityEngine;
-
 public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 {    
-    private bool isUsandoMaxAngulo;    
-    private int direcao;    
-
-    private Quaternion anguloDesejadoEsquerdaAtual;
-    private Quaternion anguloDesejadoDireitaAtual;    
+    private int direcao;
+    private MovimentacaoPincaZigZag movPincaZigZag;    
 
     public MovimentacaoLateralZigZag()
     {       
-        direcao = 1;        
+        direcao = 1;
+        movPincaZigZag = new MovimentacaoPincaZigZag();
     }
 
     public override void preInicio()
     {        
-        configurarAngulosParaMax();
+        movPincaZigZag.preInicio();
         produziuEventoDeDirecao(direcao);
         acionarTriggerDasPincas();        
         moverHorizontalmenteFreeze(direcao);        
@@ -35,8 +31,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     public override void fixedUpdate()
     {        
         verificarSeMovimentacaoAtingiuLimites();
-        verificarSePincaAtingiuLimites();
-        rotacionarPincaVelocidadeIdleFDT(anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
+        movPincaZigZag.fixedUpdate();     
     }
 
     private void verificarSeMovimentacaoAtingiuLimites()
@@ -55,34 +50,5 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
             playAnimacaoIrPDireita();
             produziuEventoDeDirecao(DirecaoDaGarra.DIREITA);
         }      
-    }
-
-    private void verificarSePincaAtingiuLimites()
-    {
-        if (isPincaDireitaNoAngulo(anguloDesejadoDireitaAtual))
-        {
-            if (isUsandoMaxAngulo)
-            {
-                configurarAngulosParaMin();
-            }
-            else
-            {
-                configurarAngulosParaMax();
-            }
-        }       
-    }    
-
-    private void configurarAngulosParaMax()
-    {
-        isUsandoMaxAngulo = true;
-        anguloDesejadoDireitaAtual  = getAnguloIdleMaxDireita();
-        anguloDesejadoEsquerdaAtual = getAnguloIdleMaxEsquerda();
-    }
-
-    private void configurarAngulosParaMin()
-    {
-        isUsandoMaxAngulo = false;        
-        anguloDesejadoDireitaAtual  = getAnguloIdleMinDireita();
-        anguloDesejadoEsquerdaAtual = getAnguloIdleMinEsquerda();
     }
 }
