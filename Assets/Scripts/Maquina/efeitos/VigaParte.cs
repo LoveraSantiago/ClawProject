@@ -1,6 +1,6 @@
-public class VigaEsquerda : ParteEfeitoMaquina
+public class VigaParte : ParteEfeitoMaquina
 {
-    public VigaEsquerda(VigaEsquerdaDto vigaEsquerdaDto) 
+    public VigaParte(ParteEfeitoDto vigaEsquerdaDto) 
         : base(vigaEsquerdaDto){}
 
     protected override string getNomeParteMaquina()
