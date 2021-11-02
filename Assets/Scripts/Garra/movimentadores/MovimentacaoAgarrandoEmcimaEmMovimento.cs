@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
 {
-    private int direcao;
-
+    
     private Quaternion anguloDesejadoEsquerdaFechado;
     private Quaternion anguloDesejadoDireitaFechado;
 
+    private MovimentacaoDirecao movDirecao;
+
     public MovimentacaoAgarrandoEmcimaEmMovimento()
     {
+        movDirecao = new MovimentacaoDirecao();
     }
 
     public override void preInicio()
@@ -17,8 +19,7 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
         acionarColliderDasPincas();
         interagirComPup();
 
-        direcao = 1;
-        produziuEventoDeDirecao(direcao);//reesincronizarJoystick
+        movDirecao.produziuEventoDeDirecao();//reesincronizarJoystick
     }
 
     public override void update(InputGame inputGame)
@@ -32,27 +33,8 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
     public override void fixedUpdate()
     {
         rotacionarPincaVelocidadeFechamentoFDT(anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);
-        verificarSeMovimentacaoAtingiuLimites();
-        moverHorizontalmenteFreeze(direcao);
-    }
-
-    //TODO duplicidade com MovimentacaoLateralZigZag
-    private void verificarSeMovimentacaoAtingiuLimites()
-    {
-        if (isMaiorPosHorizontal(LIMITE_LATERAL_TELA - 0.1f))
-        {
-            direcao = -1;
-            moverHorizontalmenteFreeze(direcao);
-            playAnimacaoIrPEsquerda();
-            produziuEventoDeDirecao(DirecaoDaGarra.ESQUERDA);
-        }
-        else if (isMenorPosHorizontal(-LIMITE_LATERAL_TELA + 0.1f))
-        {
-            direcao = 1;
-            moverHorizontalmenteFreeze(direcao);
-            playAnimacaoIrPDireita();
-            produziuEventoDeDirecao(DirecaoDaGarra.DIREITA);
-        }      
+        movDirecao.fixedUpdate();
+        movDirecao.moverHorizontalmenteFreeze();
     }
 
     private void configurarAngulos()
