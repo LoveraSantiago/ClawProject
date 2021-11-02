@@ -54,11 +54,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
             moverHorizontalmenteFreeze(direcao);
             playAnimacaoIrPDireita();
             produziuEventoDeDirecao(DirecaoDaGarra.DIREITA);
-        }
-        else
-        {
-            //nada
-        }
+        }      
     }
 
     private void verificarSePincaAtingiuLimites()
