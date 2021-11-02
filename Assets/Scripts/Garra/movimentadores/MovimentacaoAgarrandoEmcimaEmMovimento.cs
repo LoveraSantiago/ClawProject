@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
 {
+    private int direcao;
+
     private Quaternion anguloDesejadoEsquerdaFechado;
     private Quaternion anguloDesejadoDireitaFechado;
-    private int direcao;
+
+    public MovimentacaoAgarrandoEmcimaEmMovimento()
+    {
+    }
 
     public override void preInicio()
     {
-        anguloDesejadoDireitaFechado  = Quaternion.Euler(0, 0,  garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
-        anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
-
-        acionarColliderDasPincas();        
-
-        garraInteracaoComPowerUp.iniciar();
-        garraInteracaoComPowerUp.ligarGravidadeZero();
-        garraInteracaoComPowerUp.colocarNaPosicao(getPosicaoCentroGarra());
+        configurarAngulos();
+        acionarColliderDasPincas();
+        interagirComPup();
 
         direcao = 1;
         produziuEventoDeDirecao(direcao);//reesincronizarJoystick
@@ -50,10 +50,19 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
             direcao = 1;
             moverHorizontalmenteFreeze(direcao);
             produziuEventoDeDirecao(DirecaoDaGarra.DIREITA);
-        }
-        else
-        {
-            //nada
-        }
+        }      
+    }
+
+    private void configurarAngulos()
+    {
+        anguloDesejadoDireitaFechado = Quaternion.Euler(0, 0, garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
+        anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
+    }
+
+    private void interagirComPup()
+    {
+        garraInteracaoComPowerUp.iniciar();
+        garraInteracaoComPowerUp.ligarGravidadeZero();
+        garraInteracaoComPowerUp.colocarNaPosicao(getPosicaoCentroGarra());
     }
 }
