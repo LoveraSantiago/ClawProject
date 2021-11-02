@@ -43,12 +43,14 @@ public class MovimentacaoAgarrandoEmcimaEmMovimento : MovimentacaoDaGarraPowerUp
         {
             direcao = -1;
             moverHorizontalmenteFreeze(direcao);
+            playAnimacaoIrPEsquerda();
             produziuEventoDeDirecao(DirecaoDaGarra.ESQUERDA);
         }
         else if (isMenorPosHorizontal(-LIMITE_LATERAL_TELA + 0.1f))
         {
             direcao = 1;
             moverHorizontalmenteFreeze(direcao);
+            playAnimacaoIrPDireita();
             produziuEventoDeDirecao(DirecaoDaGarra.DIREITA);
         }      
     }
