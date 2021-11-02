@@ -10666,7 +10666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 999999997
+  level: 1
   mainDto:
     garraDto:
       velocidades:
@@ -10703,7 +10703,7 @@ MonoBehaviour:
       efeitoColetado: {fileID: 1488198865}
       efeitoOutline: {fileID: 2100000, guid: cbad35fbf462a4f4bb8e2451dc3cf1a3, type: 2}
       prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
-      tuboDto:
+      descarteTuboDto:
         torque: 550
         gravidade: 0.65
         parentColetavelTubo: {fileID: 1607848931}
@@ -11009,14 +11009,21 @@ MonoBehaviour:
       botaoLigaDesligaDto:
         sprRendererBtnBordas: {fileID: 6406990385049082672}
         sprRendererBtnOnOff: {fileID: 6406990385049082673}
-      vigasDto:
-        vigaTrasEsquerda: {fileID: 946233168}
-        vigaTrasDireita: {fileID: 108455522}
-        sprVigasTrasEsquerdaEfeito: {fileID: 1780505045}
-        sprVigasTrasDireitaEfeito: {fileID: 6406990385049082698}
+      vigaEsquerdaDto:
+        sprRenderColorir: {fileID: 946233168}
+        sprRenderEfeito: {fileID: 1780505045}
+      vigaLadoEsquerdoDto:
+        sprRenderColorir: {fileID: 946233168}
+        sprRenderEfeito: {fileID: 1780505045}
+      vigaLadoDireitoDto:
+        sprRenderColorir: {fileID: 108455522}
+        sprRenderEfeito: {fileID: 6406990385049082698}
       bordasFrenteDto:
-        sprBordaVidro: {fileID: 320505972}
-        sprBordaVidroEfeito: {fileID: 6406990385049082696}
+        sprRenderColorir: {fileID: 320505972}
+        sprRenderEfeito: {fileID: 6406990385049082696}
+      tuboDto:
+        sprRenderColorir: {fileID: 1914492973}
+        sprRenderEfeito: {fileID: 1202769893}
       partesDto:
         placaCima: {fileID: 702916761}
         baseParteCima: {fileID: 243475117}
@@ -11025,7 +11032,6 @@ MonoBehaviour:
         placaFrontal: {fileID: 1814315205}
         barra: {fileID: 186092669}
         chaoDentro: {fileID: 522769647}
-        tubo: {fileID: 1914492973}
         placaSaida: {fileID: 201901775}
         placaFicha: {fileID: 1266331362}
         placaParteCima: {fileID: 2086796815}
@@ -27831,6 +27837,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200365934}
   m_CullTransparentMesh: 1
+--- !u!212 &1202769893 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1202769893, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1210446111 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4205780949442342408, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}

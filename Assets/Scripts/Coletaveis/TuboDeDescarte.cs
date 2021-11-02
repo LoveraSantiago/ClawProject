@@ -1,15 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class TuboDeSaida : ConsumidorDeEventoTrigger
+public class TuboDeDescarte : ConsumidorDeEventoTrigger
 {
     private bool devolverTubo;    
     private float torque;    
 
     private Vector3[] posicoesOriginais;
-    private TuboDto tuboDto;
+    private DescarteTuboDto tuboDto;
 
-    public TuboDeSaida(TuboDto tuboDto)
+    public TuboDeDescarte(DescarteTuboDto tuboDto)
     {
         this.tuboDto = tuboDto;
 
