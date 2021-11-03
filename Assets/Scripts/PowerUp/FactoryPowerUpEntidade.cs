@@ -130,7 +130,7 @@ public class FactoryPowerUpEntidade
                 .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
                 .configPreco(1)
                 .configDuracao(9)
-                .configSupplierDePowerUpGo(null)
+                .configSupplierDePowerUpGo(CoringaPowerUpGo.getFornecedor())
                 .configIsClicavel(true)
                 .configDescricao(
                     "Troque um coletavel por um outro coletavel aleatorio",
@@ -222,6 +222,7 @@ public class FactoryPowerUpEntidade
             case PowerUpEnums.TIPO.MISSIL_TELEGUIADO: return getMissilTeleguiado();
             case PowerUpEnums.TIPO.IGUAL            : return getIgual();
             case PowerUpEnums.TIPO.TELEPORTE        : return getTeleporte();
+            case PowerUpEnums.TIPO.CORINGA          : return getCoringa();
             case PowerUpEnums.TIPO.MINI_ASAS        : return getMiniAsas();
             case PowerUpEnums.TIPO.ASAS             : return getAsas();
             case PowerUpEnums.TIPO.ROLLBACK         : return getRollBack();
@@ -239,6 +240,7 @@ public class FactoryPowerUpEntidade
             getMissilTeleguiado(),
             getIgual(),
             getTeleporte(),
+            getCoringa(),
             getMiniAsas(),
             getAsas(),
             getRollBack(),
