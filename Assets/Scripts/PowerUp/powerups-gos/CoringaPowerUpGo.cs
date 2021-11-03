@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 {
-    public CoringaPowerUpGo(GameObject goTile, string nome) : base(goTile, nome)
-    {
-    }
+    public CoringaPowerUpGo() : 
+        base(powerUpDto.VazioPUp, "coringa"){}
 
     public override void configurarPup()
     {
