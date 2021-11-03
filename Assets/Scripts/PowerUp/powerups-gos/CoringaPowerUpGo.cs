@@ -7,10 +7,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
     public CoringaPowerUpGo() : 
         base(powerUpDto.VazioPUp, "coringa"){}
 
-    public override void configurarPup()
-    {
-        throw new System.NotImplementedException();
-    }
+    public override void configurarPup(){}
 
     public override void iniciarPup()
     {

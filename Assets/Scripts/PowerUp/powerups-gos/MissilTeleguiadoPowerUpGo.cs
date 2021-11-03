@@ -7,7 +7,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     private static readonly int MISSIL_IDLE      = Animator.StringToHash("idle");
     private static readonly int MISSIL_ACIONADO  = Animator.StringToHash("missil-acionado");
     private static readonly int MISSIL_EXPLODIDO = Animator.StringToHash("missil-explodido");
-    
+
     private bool hitColetavel;
     private float distanciaAnterior;
     
@@ -72,23 +72,28 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     private IEnumerator selecionarAlvo()
     {
         hitColetavel = false;           
-        while (!hitColetavel)
-        {
-            if (inputGame.aconteceuTapNaAreaSuperior())
-            {                
-                ColetavelTile coletavelAcertado = ColetavelHit.hit(inputGame);
-                if (coletavelAcertado != null)
-                {
-                    string nomeAlvo = coletavelAcertado.nome;
-                    ColetavelHelper coletaveisHelper = new ColetavelHelper();
-                    coletaveisHelper.ligarMiraAlvoFinalNoColetavel(nomeAlvo);                    
-                    hitColetavel = true;
-                    Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelAcertado));
-                }
-            }
-            yield return null;
-        }
-        yield return null;
+        //while (!hitColetavel)
+        //{
+        //    if (inputGame.aconteceuTapNaAreaSuperior())
+        //    {                
+        //        ColetavelTile coletavelAcertado = ColetavelHit.hit(inputGame);
+        //        if (coletavelAcertado != null)
+        //        {
+        //            string nomeAlvo = coletavelAcertado.nome;
+        //            ColetavelHelper coletaveisHelper = new ColetavelHelper();
+        //            coletaveisHelper.ligarMiraAlvoFinalNoColetavel(nomeAlvo);                    
+        //            hitColetavel = true;
+        //            Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelAcertado));
+        //        }
+        //    }
+        //    yield return null;
+        //}
+        //yield return null;
+
+        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();
+        yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
+        hitColetavel = true;
+        Utils.MonoBehaviour.StartCoroutine(disparandoMissil(selecionadorDeAlvos.coletavelAcertado));
     }
 
     
