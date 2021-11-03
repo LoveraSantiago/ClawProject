@@ -34,10 +34,9 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
         while (!hitColetavel1)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
-            {
-                bool resultACertado = false;
-                coletavel1 = ColetavelHit.hit(inputGame, out resultACertado);
-                if (resultACertado)
+            {                
+                coletavel1 = ColetavelHit.hit(inputGame);
+                if (coletavel1 != null)
                 {
                     string nomeAlvo = coletavel1.nome;
                     coletavel1.ligarAnimacaoMiraSelecionado();
@@ -50,10 +49,9 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
         while (!hitColetavel2)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
-            {
-                bool resultACertado = false;
-                coletavel2 = ColetavelHit.hit(inputGame, out resultACertado);
-                if (resultACertado)
+            {                
+                coletavel2 = ColetavelHit.hit(inputGame);
+                if (coletavel2 != null)
                 {
                     string nomeAlvo = coletavel2.nome;
                     if (!coletavel1.nome.Equals(coletavel2.nome))

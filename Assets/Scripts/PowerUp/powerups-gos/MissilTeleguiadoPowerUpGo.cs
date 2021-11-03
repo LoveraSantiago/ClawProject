@@ -75,10 +75,9 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         while (!hitColetavel)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
-            {
-                bool resultACertado = false;
-                ColetavelTile coletavelAcertado = ColetavelHit.hit(inputGame, out resultACertado);
-                if (resultACertado)
+            {                
+                ColetavelTile coletavelAcertado = ColetavelHit.hit(inputGame);
+                if (coletavelAcertado != null)
                 {
                     string nomeAlvo = coletavelAcertado.nome;
                     ColetavelHelper coletaveisHelper = new ColetavelHelper();

@@ -34,10 +34,9 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
         while (!hitColetavel)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
-            {
-                bool resultAcertado = false;
-                ColetavelTile coletavelParaVoar = ColetavelHit.hit(inputGame, out resultAcertado);
-                if (resultAcertado)
+            {                
+                ColetavelTile coletavelParaVoar = ColetavelHit.hit(inputGame);
+                if (coletavelParaVoar != null)
                 {
                     string nomeAlvo = coletavelParaVoar.nome;
                     //Debug.Log("Acertou " + nomeAlvo);
