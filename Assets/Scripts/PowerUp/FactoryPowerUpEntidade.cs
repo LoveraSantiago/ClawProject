@@ -8,6 +8,7 @@ public class FactoryPowerUpEntidade
     private static PowerUpEntidade missilTeleguiado;
     private static PowerUpEntidade igual;
     private static PowerUpEntidade teleporte;
+    private static PowerUpEntidade coringa;
     private static PowerUpEntidade miniAsas;
     private static PowerUpEntidade asa;
     private static PowerUpEntidade rollback;
@@ -118,6 +119,24 @@ public class FactoryPowerUpEntidade
                     "Selecione o primeiro coletavel a ser trocado de lugar. Selecione o segundo coletavel que será trocado de posicao com o primeiro");
         }
         return teleporte;
+    }
+
+    private static PowerUpEntidade getCoringa()
+    {
+        if(coringa == null)
+        {
+            coringa = new PowerUpEntidade()
+                .configNomes(PowerUpEnums.TIPO.CORINGA, "Coringa", "coringa-btn")
+                .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
+                .configPreco(1)
+                .configDuracao(9)
+                .configSupplierDePowerUpGo(null)
+                .configIsClicavel(true)
+                .configDescricao(
+                    "Troque um coletavel por um outro coletavel aleatorio",
+                    "Selecione o coletavel de interesse de ser trocado. Toque novamente nele durante para fixar a transformação.");
+        }
+        return coringa;
     }
 
     private static PowerUpEntidade getMiniAsas()
