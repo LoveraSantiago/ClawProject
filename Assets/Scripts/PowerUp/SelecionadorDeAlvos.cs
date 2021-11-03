@@ -2,18 +2,24 @@ using System.Collections;
 
 public class SelecionadorDeAlvos 
 {
-    public ColetavelTile coletavelAcertado { get; private set; }
+    public ColetavelTile coletavelSelecionado { get; private set; }
+
+    public void ligarMirasNosColetaveis()
+    {
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        coletavelHelper.ligarMirasNosColetaveis();
+    }
 
     public IEnumerator selecionarAlvo(InputGame inputGame)
     {        
-        while (coletavelAcertado == null)
+        while (coletavelSelecionado == null)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
-                coletavelAcertado = ColetavelHit.hit(inputGame);
-                if (coletavelAcertado != null)
+                coletavelSelecionado = ColetavelHit.hit(inputGame);
+                if (coletavelSelecionado != null)
                 {
-                    string nomeAlvo = coletavelAcertado.nome;
+                    string nomeAlvo = coletavelSelecionado.nome;
                     ColetavelHelper coletaveisHelper = new ColetavelHelper();
                     coletaveisHelper.ligarMiraAlvoFinalNoColetavel(nomeAlvo);                
                 }

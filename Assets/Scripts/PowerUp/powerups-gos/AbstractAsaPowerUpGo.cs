@@ -31,34 +31,21 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
     private IEnumerator selecionarAlvo()
     {
         hitColetavel = false;
-        while (!hitColetavel)
-        {
-            if (inputGame.aconteceuTapNaAreaSuperior())
-            {                
-                ColetavelTile coletavelParaVoar = ColetavelHit.hit(inputGame);
-                if (coletavelParaVoar != null)
-                {
-                    string nomeAlvo = coletavelParaVoar.nome;
-                    //Debug.Log("Acertou " + nomeAlvo);
-                    ColetavelHelper coletavelHelper = new ColetavelHelper();
-                    coletavelHelper.desligarMirasNosColetaveis();
-
-                    colocarNaPosicao(coletavelParaVoar.getPosicao());
-                    receberSprite(coletavelParaVoar.getSprite(), powerUpDto.AsaDto.Layer);
-
-                    coletavelParaVoar.desligar();
-                    ligar();
-                    Utils.MonoBehaviour.StartCoroutine(voar(coletavelParaVoar));
-                    hitColetavel = true;
-                }
-            }
-            yield return null;
-        }
-        yield return null;
+        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();
+        selecionadorDeAlvos.ligarMirasNosColetaveis();
+        yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
+        Utils.MonoBehaviour.StartCoroutine(voar(selecionadorDeAlvos.coletavelSelecionado));
     }
 
     private IEnumerator voar(ColetavelTile coletavelAcertado)
     {
+        hitColetavel = true;
+
+        colocarNaPosicao(coletavelAcertado.getPosicao());
+        receberSprite(coletavelAcertado.getSprite(), powerUpDto.AsaDto.Layer);
+        coletavelAcertado.desligar();
+        ligar();
+
         setGravidade(getGravidadeNegativa());
         acionarTriggerNoCollider();
         playAnimacaoVoar();
