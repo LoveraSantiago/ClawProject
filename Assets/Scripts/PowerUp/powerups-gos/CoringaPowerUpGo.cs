@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 {
+    private bool hitColetavel;
+    private Coroutine coroutine;
+
     public CoringaPowerUpGo() : 
         base(powerUpDto.VazioPUp, "coringa"){}
 
@@ -11,15 +14,27 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
-        throw new System.NotImplementedException();
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        coletavelHelper.ligarMirasNosColetaveis();
+        coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
-    public override void resetPup()
+    public override void resetPup(){}
+
+    private IEnumerator selecionarAlvo()
     {
-        throw new System.NotImplementedException();
+        hitColetavel = false;
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        coletavelHelper.ligarMirasNosColetaveis();
+
+        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();
+        yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
+
+        ColetavelTile coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;        
+        coletavelHelper.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
     }
 
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
+        public static Fornecedor<AbstractPowerUpGo> getFornecedor()
     {
         return new FornecedorCoringa();
     }
