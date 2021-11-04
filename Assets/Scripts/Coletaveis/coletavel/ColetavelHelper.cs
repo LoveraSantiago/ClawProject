@@ -54,6 +54,22 @@ public class ColetavelHelper
         }        
     }
 
+    public List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamiliaExcluindo(ColetavelEntidade coletavel)
+    {
+        List<ColetavelEntidade> listaFamilia = getListaDeColetaveisEntidadeByFamilia(coletavel.familia);
+        int indiceRemover = 0;
+        for(int contador = 0; contador < listaFamilia.Count; contador++)
+        {
+            if (listaFamilia[contador].nomeSprite.Equals(coletavel.nomeSprite))
+            {
+                indiceRemover = contador;
+                break;
+            }
+        }
+        listaFamilia.RemoveAt(indiceRemover);
+        return listaFamilia;
+    }
+
     public List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamilia(ColetavelEntidade.FAMILIA familia)
     {
         return dicionarioDeFamilias[familia];
@@ -108,8 +124,8 @@ public class ColetavelHelper
     {
         if (dicionarioDeIds == null)
         {
-            dicionarioDeIds = new Dictionary<int, ColetavelEntidade>();
-            dicionarioDeSprites = new Dictionary<string, ColetavelEntidade>();
+            dicionarioDeIds      = new Dictionary<int, ColetavelEntidade>();
+            dicionarioDeSprites  = new Dictionary<string, ColetavelEntidade>();
             dicionarioDeFamilias = new Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>>();
 
             popularDicionarios();
