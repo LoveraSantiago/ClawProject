@@ -21,8 +21,19 @@ public class UtilsMath
         return lerp(p0, p1, t);
     }
 
-    public static int escolherDeZeroAteLimiteArray(int limite)
+    public static int escolherDeZeroAteLimite(int limite)
     {        
         return Random.Range(0, limite);
+    }
+
+    public static int escolherDeZeroAteLimiteDiferenteDe(int limite, int diferente)
+    {
+        int sorteado = 0;
+        do
+        {
+            sorteado = escolherDeZeroAteLimite(limite);
+        }
+        while (sorteado == diferente);
+        return sorteado;
     }
 }
