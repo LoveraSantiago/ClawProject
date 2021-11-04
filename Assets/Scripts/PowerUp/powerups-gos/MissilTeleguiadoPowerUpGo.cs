@@ -69,11 +69,16 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
 
     private IEnumerator selecionarAlvo()
     {
-        hitColetavel = false;           
-        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();
-        selecionadorDeAlvos.ligarMirasNosColetaveis();
+        hitColetavel = false;
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        coletavelHelper.ligarMirasNosColetaveis();
+
+        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
-        Utils.MonoBehaviour.StartCoroutine(disparandoMissil(selecionadorDeAlvos.coletavelSelecionado));
+        ColetavelTile coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;
+
+        coletavelHelper.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
+        Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelSelecionado));
     }
 
     

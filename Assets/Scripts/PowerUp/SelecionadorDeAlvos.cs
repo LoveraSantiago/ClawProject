@@ -2,13 +2,7 @@ using System.Collections;
 
 public class SelecionadorDeAlvos 
 {
-    public ColetavelTile coletavelSelecionado { get; private set; }
-
-    public void ligarMirasNosColetaveis()
-    {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
-        coletavelHelper.ligarMirasNosColetaveis();
-    }
+    public ColetavelTile coletavelSelecionado { get; private set; }    
 
     public IEnumerator selecionarAlvo(InputGame inputGame)
     {
@@ -17,18 +11,16 @@ public class SelecionadorDeAlvos
 
     public IEnumerator selecionarAlvoDiferenteDe(InputGame inputGame, string nome)
     {
-        coletavelSelecionado = null;
+        ColetavelTile coletavel = null;
         while (coletavelSelecionado == null)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
-                coletavelSelecionado = ColetavelHit.hit(inputGame);
-                if (coletavelSelecionado != null &&
-                    isNotEqualsColetavel(coletavelSelecionado, nome))
+                coletavel = ColetavelHit.hit(inputGame);
+                if (coletavel != null &&
+                    isNotEqualsColetavel(coletavel, nome))
                 {
-                    string nomeAlvo = coletavelSelecionado.nome;
-                    ColetavelHelper coletaveisHelper = new ColetavelHelper();
-                    coletaveisHelper.ligarMiraAlvoFinalNoColetavel(nomeAlvo);
+                    coletavelSelecionado = coletavel;
                 }                
             }
             yield return null;

@@ -31,10 +31,15 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
     private IEnumerator selecionarAlvo()
     {
         hitColetavel = false;
-        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();
-        selecionadorDeAlvos.ligarMirasNosColetaveis();
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        coletavelHelper.ligarMirasNosColetaveis();
+
+        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
-        Utils.MonoBehaviour.StartCoroutine(voar(selecionadorDeAlvos.coletavelSelecionado));
+        ColetavelTile coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;
+
+        coletavelHelper.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
+        Utils.MonoBehaviour.StartCoroutine(voar(coletavelSelecionado));
     }
 
     private IEnumerator voar(ColetavelTile coletavelAcertado)
