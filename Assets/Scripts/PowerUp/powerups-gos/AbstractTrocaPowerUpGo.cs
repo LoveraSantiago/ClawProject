@@ -17,55 +17,27 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
     public override void configurarPup() { }
 
     public override void iniciarPup()
-    {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
-        coletavelHelper.ligarMirasNosColetaveis();
+    {        
         coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvos());
     }
 
     private IEnumerator selecionarAlvos()
-    {
-        bool hitColetavel1 = false;
+    {        
         hitColetavel2 = false;
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        coletavelHelper.ligarMirasNosColetaveis();
 
-        ColetavelTile coletavel1 = null;
-        ColetavelTile coletavel2 = null;
+        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
+        yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
+        ColetavelTile coletavel1 = selecionadorDeAlvos.coletavelSelecionado;
+        coletavel1.ligarAnimacaoMiraSelecionado();
 
-        while (!hitColetavel1)
-        {
-            if (inputGame.aconteceuTapNaAreaSuperior())
-            {                
-                coletavel1 = ColetavelHit.hit(inputGame);
-                if (coletavel1 != null)
-                {
-                    string nomeAlvo = coletavel1.nome;
-                    coletavel1.ligarAnimacaoMiraSelecionado();
-                    hitColetavel1 = true;
-                }
-            }
-            yield return null;
-        }
+        yield return selecionadorDeAlvos.selecionarAlvoDiferenteDe(inputGame, coletavel1.nome);
+        ColetavelTile coletavel2 = selecionadorDeAlvos.coletavelSelecionado;
+        coletavelHelper.ligarMiraAlvoFinalNoColetavel(coletavel2.nome);
 
-        while (!hitColetavel2)
-        {
-            if (inputGame.aconteceuTapNaAreaSuperior())
-            {                
-                coletavel2 = ColetavelHit.hit(inputGame);
-                if (coletavel2 != null)
-                {
-                    string nomeAlvo = coletavel2.nome;
-                    if (!coletavel1.nome.Equals(coletavel2.nome))
-                    {
-                        ColetavelHelper coletavelHelper = new ColetavelHelper();
-                        coletavelHelper.ligarMiraAlvoFinalNoColetavel(nomeAlvo);                        
-                        hitColetavel2 = true;
-                        Utils.MonoBehaviour.StartCoroutine(realizarTroca(coletavel1, coletavel2));
-                    }
-                }
-            }
-            yield return null;
-        }
-        yield return null;
+        hitColetavel2 = true;
+        Utils.MonoBehaviour.StartCoroutine(realizarTroca(coletavel1, coletavel2));        
     }
 
     protected abstract IEnumerator realizarTroca(ColetavelTile coletavel1, ColetavelTile coletavel2);
