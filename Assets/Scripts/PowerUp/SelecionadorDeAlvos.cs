@@ -11,6 +11,7 @@ public class SelecionadorDeAlvos
 
     public IEnumerator selecionarAlvoDiferenteDe(InputGame inputGame, string nome)
     {
+        coletavelSelecionado = null;
         ColetavelTile coletavel = null;
         while (coletavelSelecionado == null)
         {
