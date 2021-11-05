@@ -71,7 +71,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
             while (contador < 1.01f)
             {
                 houveToque = houveToque ? houveToque : inputGame.aconteceuTap();
-                contador += Time.deltaTime * powerUpDto.TeleporteDto.Velocidade;
+                contador += Time.deltaTime * powerUpDto.TeleporteDto.VelocidadeCoringa;
                 matTroca.SetFloat(PROP_VALOR, contador);                
                 yield return null;
             }
@@ -90,7 +90,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
             while (contador > -0.09f)
             {
                 houveToque = houveToque ? houveToque : inputGame.aconteceuTap();
-                contador -= Time.deltaTime * powerUpDto.TeleporteDto.Velocidade;
+                contador -= Time.deltaTime * powerUpDto.TeleporteDto.VelocidadeCoringa;
                 matTroca.SetFloat(PROP_VALOR, contador);
                 yield return null;
             }

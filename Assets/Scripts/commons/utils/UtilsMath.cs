@@ -29,11 +29,25 @@ public class UtilsMath
     public static int escolherDeZeroAteLimiteDiferenteDe(int limite, int diferente)
     {
         int sorteado = 0;
+        int contador = 0;
         do
         {
             sorteado = escolherDeZeroAteLimite(limite);
+            contador++;
         }
-        while (sorteado == diferente);
+        while (sorteado == diferente && contador < 3);
+
+        if (sorteado == diferente)
+        {
+            if(sorteado != 0)
+            {
+                sorteado = 0;
+            }
+            else if(sorteado != limite)
+            {
+                sorteado = limite;
+            }
+        }       
         return sorteado;
     }
 }

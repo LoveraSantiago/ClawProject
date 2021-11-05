@@ -5407,7 +5407,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10666,7 +10666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 999999999
   mainDto:
     garraDto:
       velocidades:
@@ -11009,9 +11009,6 @@ MonoBehaviour:
       botaoLigaDesligaDto:
         sprRendererBtnBordas: {fileID: 6406990385049082672}
         sprRendererBtnOnOff: {fileID: 6406990385049082673}
-      vigaEsquerdaDto:
-        sprRenderColorir: {fileID: 946233168}
-        sprRenderEfeito: {fileID: 1780505045}
       vigaLadoEsquerdoDto:
         sprRenderColorir: {fileID: 946233168}
         sprRenderEfeito: {fileID: 1780505045}
@@ -11098,7 +11095,8 @@ MonoBehaviour:
           - {fileID: 1245264350}
           - {fileID: 1245264348}
       teleporteDto:
-        velocidade: 0.75
+        velocidadeTeleporte: 0.75
+        velocidadeCoringa: 1.25
         delayFinal: 0.5
         matTeleporte: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
       asaDto:
@@ -27604,7 +27602,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -53584,7 +53582,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

@@ -4,11 +4,13 @@ using UnityEngine;
 [System.Serializable]
 public class TeleporteDto 
 {
-    [SerializeField] private float velocidade;
+    [SerializeField] private float velocidadeTeleporte;
+    [SerializeField] private float velocidadeCoringa;
     [SerializeField] private float delayFinal;
     [SerializeField] private Material matTeleporte;    
 
-    public float Velocidade { get { return velocidade; } }
+    public float VelocidadeTeleporte { get { return velocidadeTeleporte; } }
+    public float VelocidadeCoringa { get { return velocidadeCoringa; } }
     public float DelayFinal { get { return delayFinal; } }
     public Material MatTeleporte { get { return matTeleporte; } }    
 }
