@@ -36,6 +36,8 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
         ColetavelTile coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;        
         coletavelHelper.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
+
+        Utils.MonoBehaviour.StartCoroutine(fazerTroca(coletavelSelecionado));
     }
 
     private IEnumerator fazerTroca(ColetavelTile coletavelTile)
@@ -46,11 +48,15 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
         Material matTroca = new Material(powerUpDto.TeleporteDto.MatTeleporte);
         matTroca.SetTexture(PROP_SPRITE_IN, coletavelTile.getSprite().texture);
+        coletavelTile.addMaterial(matTroca);
+
+        int indiceSorteado = UtilsMath.escolherDeZeroAteLimite(listaFamilia.Count);
 
         while (true)
         {
-            
-            matTroca.SetTexture(PROP_SPRITE_OUT, null);
+            ColetavelEntidade coletavelSorteado = listaFamilia[indiceSorteado];
+            Sprite sprSorteado = context.dicionarioDeSprites[coletavelSorteado.nomeSprite];
+            matTroca.SetTexture(PROP_SPRITE_OUT, sprSorteado.texture);
 
             float contador = 0;
             while (contador < 1.01f)
@@ -60,13 +66,19 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
                 yield return null;
             }
 
+            indiceSorteado = UtilsMath.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
+            coletavelSorteado = listaFamilia[indiceSorteado];
+            sprSorteado = context.dicionarioDeSprites[coletavelSorteado.nomeSprite];
+            matTroca.SetTexture(PROP_SPRITE_IN, sprSorteado.texture);
 
-            while(contador > -0.09f)
+            while (contador > -0.09f)
             {
                 contador -= Time.deltaTime * powerUpDto.TeleporteDto.Velocidade;
                 matTroca.SetFloat(PROP_VALOR, contador);
                 yield return null;
             }
+
+            indiceSorteado = UtilsMath.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
         }
 
         yield return null;
