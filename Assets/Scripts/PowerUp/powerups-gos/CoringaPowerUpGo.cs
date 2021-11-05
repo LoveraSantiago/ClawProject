@@ -7,9 +7,9 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
     protected static readonly string PROP_VALOR = "valor";
     protected static readonly string PROP_SPRITE_IN = "inSprite";
     protected static readonly string PROP_SPRITE_OUT = "outSprite";
-
-    private bool hitColetavel;
+        
     private Coroutine coroutine;
+    private ColetavelTile coletavelSelecionado;
 
     public CoringaPowerUpGo() : 
         base(powerUpDto.VazioPUp, "coringa"){}
@@ -23,21 +23,23 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
         coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
-    public override void resetPup(){}
+    public override void resetPup()
+    {
+        coletavelSelecionado = null;
+    }
 
     private IEnumerator selecionarAlvo()
-    {
-        hitColetavel = false;
+    {        
         ColetavelHelper coletavelHelper = new ColetavelHelper();
         coletavelHelper.ligarMirasNosColetaveis();
 
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
 
-        ColetavelTile coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;        
+        coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;        
         coletavelHelper.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
 
-        Utils.MonoBehaviour.StartCoroutine(fazerTroca(coletavelSelecionado));
+        yield return Utils.MonoBehaviour.StartCoroutine(fazerTroca(coletavelSelecionado));
     }
 
     private IEnumerator fazerTroca(ColetavelTile coletavelTile)
@@ -82,6 +84,18 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
         }
 
         yield return null;
+    }
+
+    public override void timeout()
+    {
+        Utils.MonoBehaviour.StopCoroutine(coroutine);
+        if(coletavelSelecionado != null)
+        {
+            coletavelSelecionado.clearMaterial();
+        }
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        coletavelHelper.desligarMirasNosColetaveis();
+        powerUpFinalizacao.finalizado();
     }
 
     public static Fornecedor<AbstractPowerUpGo> getFornecedor()
