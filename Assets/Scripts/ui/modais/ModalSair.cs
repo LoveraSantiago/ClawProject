@@ -31,15 +31,18 @@ public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento,
     {
         modalSairDto.ModalSair.SetActive(false);
         produtorDeEvento.produziuEvento(null);
+        Utils.continuarGame();
     }
 
     private void sairDoGame()
     {
+        Utils.continuarGame();
         SceneManager.LoadScene(nomeCenaVoltar);
     }
 
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
     {
+        Utils.pausarGame();
         modalSairDto.ModalSair.SetActive(true);        
     }
 
