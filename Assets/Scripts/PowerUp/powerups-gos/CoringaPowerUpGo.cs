@@ -9,7 +9,8 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
     protected static readonly string PROP_SPRITE_OUT = "outSprite";
 
     private bool finalizando;
-    private Coroutine coroutine;
+    private Coroutine coroutineAlvo;
+    private Coroutine coroutineTroca;
     private ColetavelTile coletavelSelecionado;
 
     public CoringaPowerUpGo() : 
@@ -21,13 +22,16 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
     {
         ColetavelHelper coletavelHelper = new ColetavelHelper();
         coletavelHelper.ligarMirasNosColetaveis();
-        coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
+        coroutineAlvo = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
     public override void resetPup()
     {
+        Debug.Log("Reset chamado");
         coletavelSelecionado = null;
         finalizando = false;
+        coroutineAlvo = null;
+        coroutineTroca = null;
     }
 
     private IEnumerator selecionarAlvo()
@@ -41,7 +45,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
         coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;        
         coletavelHelper.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
 
-        yield return Utils.MonoBehaviour.StartCoroutine(fazerTroca(coletavelSelecionado));
+        coroutineTroca = Utils.MonoBehaviour.StartCoroutine(fazerTroca(coletavelSelecionado));
     }
 
     private IEnumerator fazerTroca(ColetavelTile coletavelTile)
@@ -56,7 +60,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
         int indiceSorteado = UtilsMath.escolherDeZeroAteLimite(listaFamilia.Count);
         Sprite sprSorteado = null;
-        while (true)
+        while (!finalizando)
         {
             ColetavelEntidade coletavelSorteado = listaFamilia[indiceSorteado];
             sprSorteado = context.dicionarioDeSprites[coletavelSorteado.nomeSprite];
@@ -103,6 +107,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
         coletavelHelper.desligarMirasNosColetaveis();
         powerUpFinalizacao.preFinalizar();
         coletavelTile.receberSprite(sprSorteado);
+        resetPup();
         coletavelTile.clearMaterial();
         powerUpFinalizacao.finalizado();
         yield return null;
@@ -112,7 +117,11 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
     {
         if (!finalizando)
         {
-            Utils.MonoBehaviour.StopCoroutine(coroutine);
+            Utils.MonoBehaviour.StopCoroutine(coroutineAlvo);
+            if(coroutineTroca != null)
+            {
+                Utils.MonoBehaviour.StopCoroutine(coroutineTroca);
+            }
             if(coletavelSelecionado != null)
             {
                 coletavelSelecionado.clearMaterial();
@@ -120,6 +129,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
             ColetavelHelper coletavelHelper = new ColetavelHelper();
             coletavelHelper.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
+            resetPup();
         }
     }
 
