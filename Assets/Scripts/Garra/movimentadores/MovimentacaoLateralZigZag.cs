@@ -1,24 +1,20 @@
-using UnityEngine;
-
 public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 {    
-    private bool isUsandoMaxAngulo;    
-    private int direcao;    
-
-    private Quaternion anguloDesejadoEsquerdaAtual;
-    private Quaternion anguloDesejadoDireitaAtual;    
+    private MovimentacaoDirecao movDirecao;
+    private MovimentacaoPincaZigZag movPincaZigZag;
 
     public MovimentacaoLateralZigZag()
-    {       
-        direcao = 1;        
+    {
+        movDirecao     = new MovimentacaoDirecao();
+        movPincaZigZag = new MovimentacaoPincaZigZag();
     }
 
     public override void preInicio()
     {        
-        configurarAngulosParaMax();
-        produziuEventoDeDirecao(direcao);
-        acionarTriggerDasPincas();        
-        moverHorizontalmenteFreeze(direcao);        
+        movPincaZigZag.preInicio();
+        movDirecao.produziuEventoDeDirecao();
+        acionarTriggerDasPincas();
+        movDirecao.moverHorizontalmenteFreeze();
     }
 
     public override void update(InputGame inputGame)
@@ -26,67 +22,15 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
         if (inputGame.aconteceuTapNaAreaSuperior())
         {
             produziuEventoDeDirecao(DirecaoDaGarra.PARADA);
-            comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
             desafixar();
             acionarColliderDasPincas();
+            comunicadorComGerMovimentacao.trocarParaAcaoDescendo();
         }
     }
     
     public override void fixedUpdate()
     {        
-        verificarSeMovimentacaoAtingiuLimites();
-        verificarSePincaAtingiuLimites();
-        rotacionarPincaVelocidadeIdleFDT(anguloDesejadoEsquerdaAtual, anguloDesejadoDireitaAtual);        
-    }
-
-    private void verificarSeMovimentacaoAtingiuLimites()
-    {
-        if (isMaiorPosHorizontal(LIMITE_LATERAL_TELA))            
-        {
-            direcao = -1;     
-            moverHorizontalmenteFreeze(direcao);
-            playAnimacaoIrPEsquerda();
-            produziuEventoDeDirecao(DirecaoDaGarra.ESQUERDA);
-        }
-        else if (isMenorPosHorizontal(-LIMITE_LATERAL_TELA))
-        {
-            direcao = 1;
-            moverHorizontalmenteFreeze(direcao);
-            playAnimacaoIrPDireita();
-            produziuEventoDeDirecao(DirecaoDaGarra.DIREITA);
-        }
-        else
-        {
-            //nada
-        }
-    }
-
-    private void verificarSePincaAtingiuLimites()
-    {
-        if (isPincaDireitaNoAngulo(anguloDesejadoDireitaAtual))
-        {
-            if (isUsandoMaxAngulo)
-            {
-                configurarAngulosParaMin();
-            }
-            else
-            {
-                configurarAngulosParaMax();
-            }
-        }       
-    }    
-
-    private void configurarAngulosParaMax()
-    {
-        isUsandoMaxAngulo = true;
-        anguloDesejadoDireitaAtual  = getAnguloIdleMaxDireita();
-        anguloDesejadoEsquerdaAtual = getAnguloIdleMaxEsquerda();
-    }
-
-    private void configurarAngulosParaMin()
-    {
-        isUsandoMaxAngulo = false;        
-        anguloDesejadoDireitaAtual  = getAnguloIdleMinDireita();
-        anguloDesejadoEsquerdaAtual = getAnguloIdleMinEsquerda();
+        movDirecao.fixedUpdate();
+        movPincaZigZag.fixedUpdate();     
     }
 }

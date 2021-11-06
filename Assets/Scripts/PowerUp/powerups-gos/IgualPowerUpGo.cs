@@ -21,7 +21,7 @@ public class IgualPowerUpGo : AbstractTrocaPowerUpGo
         float contador = 0;
         while (contador < 1.01f)
         {
-            contador += Time.deltaTime * powerUpDto.TeleporteDto.Velocidade;            
+            contador += Time.deltaTime * powerUpDto.TeleporteDto.VelocidadeTeleporte;            
             matIn.SetFloat(PROP_VALOR, contador);
             yield return null;
         }

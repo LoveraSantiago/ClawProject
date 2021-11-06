@@ -5,22 +5,20 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
                                                AcaoInfoDaGarra.ProdutorEvento
 {
     private MovimentacaoDaGarra   movAtual;    
-    private MovimentacaoParaCima  movPCima;//GUARDA ESTADO DE SUBIDAS    
-    private MovimentacaoDaGarra movLateral;//GUARDA ESTADO DE DIRECAO RESOLVER PROBLEMA DE DIRECAO
+    private MovimentacaoParaCima  movPCima;//GUARDA ESTADO DE SUBIDAS        
 
     public GerenciadorDeMovimentacaoNormal()
     {        
         MovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
-        MovimentadorProdutorInformacaoGarra.configurar();
+        MovimentadorProdutorInformacaoGarra.configurar();        
         
-        movLateral = new MovimentacaoLateralZigZag();
         movPCima   = new MovimentacaoParaCima();        
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
     public override void iniciarMovimentacoes()
     {
-        trocarMovimentador(movLateral);
+        trocarParaMovLateral();        
     }
 
     public override void update(InputGame inputGame)
@@ -69,7 +67,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         else
         {
             //Debug.Log("normal");
-            trocarMovimentador(movLateral);
+            trocarParaMovLateral();            
         }
     }
 
@@ -93,6 +91,11 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     {
         trocarMovimentador(new MovimentacaoParadoNormal());
     }
+
+    public void trocarParaMovLateral()
+    {
+        trocarMovimentador(new MovimentacaoLateralZigZag());
+    }
     //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL FIM
 
     private void trocarMovimentador(MovimentacaoDaGarra movimentador)
@@ -108,6 +111,6 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public override ProdutorDeEvento<DirecaoDaGarra> getProdutorDeEvento()
     {
-        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)movLateral).getProdutorDeEvento();
-    }
+        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)new MovimentacaoLateralZigZag()).getProdutorDeEvento();
+    }    
 }

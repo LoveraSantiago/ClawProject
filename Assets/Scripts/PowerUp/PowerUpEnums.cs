@@ -3,7 +3,7 @@ public class PowerUpEnums
     public enum TIPO
     {
         BOMBA_DA_GARRA, MISSIL_NUCLEAR, MINA_TERRESTRE, MISSIL_TELEGUIADO,
-        IGUAL, TELEPORTE,
+        IGUAL, TELEPORTE, CORINGA,
         MINI_ASAS, ASAS,
         ROLLBACK, DESCARTE, NONE
     }

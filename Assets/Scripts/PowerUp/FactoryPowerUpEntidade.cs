@@ -8,6 +8,7 @@ public class FactoryPowerUpEntidade
     private static PowerUpEntidade missilTeleguiado;
     private static PowerUpEntidade igual;
     private static PowerUpEntidade teleporte;
+    private static PowerUpEntidade coringa;
     private static PowerUpEntidade miniAsas;
     private static PowerUpEntidade asa;
     private static PowerUpEntidade rollback;
@@ -120,6 +121,24 @@ public class FactoryPowerUpEntidade
         return teleporte;
     }
 
+    private static PowerUpEntidade getCoringa()
+    {
+        if(coringa == null)
+        {
+            coringa = new PowerUpEntidade()
+                .configNomes(PowerUpEnums.TIPO.CORINGA, "Coringa", "coringa-btn")
+                .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
+                .configPreco(1)
+                .configDuracao(9)
+                .configSupplierDePowerUpGo(CoringaPowerUpGo.getFornecedor())
+                .configIsClicavel(true)
+                .configDescricao(
+                    "Troque um coletavel por um outro coletavel aleatorio",
+                    "Selecione o coletavel de interesse de ser trocado. Toque novamente nele durante para fixar a transformação.");
+        }
+        return coringa;
+    }
+
     private static PowerUpEntidade getMiniAsas()
     {
         if(miniAsas == null)
@@ -203,6 +222,7 @@ public class FactoryPowerUpEntidade
             case PowerUpEnums.TIPO.MISSIL_TELEGUIADO: return getMissilTeleguiado();
             case PowerUpEnums.TIPO.IGUAL            : return getIgual();
             case PowerUpEnums.TIPO.TELEPORTE        : return getTeleporte();
+            case PowerUpEnums.TIPO.CORINGA          : return getCoringa();
             case PowerUpEnums.TIPO.MINI_ASAS        : return getMiniAsas();
             case PowerUpEnums.TIPO.ASAS             : return getAsas();
             case PowerUpEnums.TIPO.ROLLBACK         : return getRollBack();
@@ -220,6 +240,7 @@ public class FactoryPowerUpEntidade
             getMissilTeleguiado(),
             getIgual(),
             getTeleporte(),
+            getCoringa(),
             getMiniAsas(),
             getAsas(),
             getRollBack(),

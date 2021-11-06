@@ -74,7 +74,7 @@ public class BotaoPowerUp : Draggavel
 
     public void receberAcaoPowerUp(PowerUpBtnInfo evento, ControleAcionamentoPowerUp controlePup)
     {
-        Time.timeScale = 1;
+        Utils.continuarGame();
         controlePup.habilitarPowerUp();
         glow.desligarGlow();
         mudarParaMaterialArcoIris();

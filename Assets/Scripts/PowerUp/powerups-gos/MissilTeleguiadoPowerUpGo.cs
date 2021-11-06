@@ -7,7 +7,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     private static readonly int MISSIL_IDLE      = Animator.StringToHash("idle");
     private static readonly int MISSIL_ACIONADO  = Animator.StringToHash("missil-acionado");
     private static readonly int MISSIL_EXPLODIDO = Animator.StringToHash("missil-explodido");
-    
+
     private bool hitColetavel;
     private float distanciaAnterior;
     
@@ -54,9 +54,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
 
     public override void iniciarPup()
     {
-        ligar();
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
-        coletavelHelper.ligarMirasNosColetaveis();
+        ligar();        
         coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
@@ -71,30 +69,23 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
 
     private IEnumerator selecionarAlvo()
     {
-        hitColetavel = false;           
-        while (!hitColetavel)
-        {
-            if (inputGame.aconteceuTapNaAreaSuperior())
-            {
-                bool resultACertado = false;
-                ColetavelTile coletavelAcertado = ColetavelHit.hit(inputGame, out resultACertado);
-                if (resultACertado)
-                {
-                    string nomeAlvo = coletavelAcertado.nome;
-                    ColetavelHelper coletaveisHelper = new ColetavelHelper();
-                    coletaveisHelper.ligarMiraAlvoFinalNoColetavel(nomeAlvo);                    
-                    hitColetavel = true;
-                    Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelAcertado));
-                }
-            }
-            yield return null;
-        }
-        yield return null;
+        hitColetavel = false;
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        coletavelHelper.ligarMirasNosColetaveis();
+
+        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
+        yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
+        ColetavelTile coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;
+
+        coletavelHelper.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
+        Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelSelecionado));
     }
 
     
     private IEnumerator disparandoMissil(ColetavelTile coletavel)
     {
+        hitColetavel = true;
+
         animator.Play(MISSIL_ACIONADO);
         efeitoFaiscas.gameObject.SetActive(true);
         efeitoFaiscas.Play();

@@ -4,7 +4,7 @@ public class ColetavelHit
 {
     private static ColetavelHelper coletavelHelper = new ColetavelHelper();
 
-    public static ColetavelTile hit(InputGame inputGame, out bool result)
+    public static ColetavelTile hit(InputGame inputGame)
     {
         Vector3 posicaoTap = inputGame.getPosicaoTap();
         posicaoTap.z = 0;
@@ -15,13 +15,11 @@ public class ColetavelHit
 
         Collider2D colliderResult = raycastHit.collider;
         if(colliderResult != null)
-        {
-            result = true;
+        {            
             return coletavelHelper.getColetavelInGameByName(colliderResult.name);
         }
         else
-        {
-            result = false;
+        {         
             return null;
         }       
     }
