@@ -4,6 +4,7 @@ public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento,
                          AcaoDesligarMaquina.ConsumidorEvento    
 {
     private string nomeCenaVoltar;
+    private string msgSair;
     private ModalSairDto modalSairDto;
     private ProdutorDeEvento<CancelarDesligarMaquina> produtorDeEvento;
 
@@ -20,10 +21,12 @@ public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento,
         if(level.isNormalLevel() || level.isOrdemLevel() || level.isElevadorLevel())
         {
             nomeCenaVoltar = "MapScene";
+            msgSair = "Tem certeza que deseja sair?\nVocê perderá sua ficha!";
         }
         else
         {
             nomeCenaVoltar = "PupScene";
+            msgSair = "Tem certeza que deseja sair do treinamento?";
         }
     }
 
@@ -43,6 +46,7 @@ public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento,
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
     {
         Utils.pausarGame();
+        modalSairDto.TextoSair.text = msgSair;
         modalSairDto.ModalSair.SetActive(true);        
     }
 
