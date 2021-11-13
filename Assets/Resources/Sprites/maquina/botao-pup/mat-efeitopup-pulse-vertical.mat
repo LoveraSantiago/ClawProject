@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat-efeitopup-pulse
+  m_Name: mat-efeitopup-pulse-vertical
   m_Shader: {fileID: -6465566751694194690, guid: 19e77649ba17f9e4d83659834d5556a3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -75,7 +75,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     m_Colors:
-    - _Color: {r: 383.49805, g: 361.41177, b: 0, a: 1}
+    - _Color: {r: 191.74902, g: 180.70589, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
