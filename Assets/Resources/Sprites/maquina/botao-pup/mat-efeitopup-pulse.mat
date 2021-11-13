@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: material-teste-3d-glow
+  m_Name: mat-efeitopup-pulse
   m_Shader: {fileID: -6465566751694194690, guid: 19e77649ba17f9e4d83659834d5556a3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
