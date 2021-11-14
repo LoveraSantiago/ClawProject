@@ -36,7 +36,7 @@ public class PlayerPrefsPup
 
     public static void adicionarPup(PowerUpEnums.TIPO tipo, int qtd)
     {
-        string nomePup = FactoryPowerUpEntidade.getNomePupByTipo(tipo);
+        string nomePup = PowerUpHelper.getNomePupByTipo(tipo);
         adicionarPup(nomePup, qtd);
     }
 

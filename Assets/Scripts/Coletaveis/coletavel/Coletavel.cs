@@ -38,7 +38,7 @@ public abstract class Coletavel
         return rigidbody.velocity.y > 0;
     }
 
-    public virtual void colocarNaPosicao(Vector3 posicao) {
+    public virtual void colocarNaPosicao(Vector3 posicao) {        
         goColetavel.transform.position = posicao;
     }
 

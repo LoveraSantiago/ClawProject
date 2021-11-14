@@ -20,6 +20,7 @@ public class BotaoPowerUpDto
 
     public SpriteRenderer SprContorno { get { return sprContorno; } }
 
+    public GameObject GoParent { get { return sprAreaExterna.transform.parent.gameObject; } }
     public GameObject GoImagem { get { return sprImagem.gameObject;  } }
     public SpriteRenderer SprImagem { get { return sprImagem; } }
 
