@@ -2,23 +2,13 @@ using UnityEngine;
 
 public class FactoryPowerUpEntidade 
 {
-    private static PowerUpEntidade bombaDaGarra;
-    private static PowerUpEntidade missilNuclear;
-    private static PowerUpEntidade minaTerrestre;
-    private static PowerUpEntidade missilTeleguiado;
-    private static PowerUpEntidade igual;
-    private static PowerUpEntidade teleporte;
-    private static PowerUpEntidade coringa;
-    private static PowerUpEntidade miniAsas;
-    private static PowerUpEntidade asa;
-    private static PowerUpEntidade rollback;
-    private static PowerUpEntidade descarte;
+    private static PropriedadesPupEntidade props;    
 
     private static PowerUpEntidade getBombaDaGarra()
     {
-        if (bombaDaGarra == null)
+        if (props.bombaDaGarra == null)
         {
-            bombaDaGarra = new PowerUpEntidade()
+            props.bombaDaGarra = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.BOMBA_DA_GARRA, "Bomba", "bomba")
                 .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configDuracao(9)                
@@ -28,14 +18,14 @@ public class FactoryPowerUpEntidade
                     "Jogue uma bomba nos coletaveis para espalhar suas posições.", 
                     "A bomba é segurada pela garra e no momento exato toque na tela para que ela solte em cima do seu alvo. Você tem 9 segundos antes que ela solte em um lugar aleatorio.");
         }
-        return bombaDaGarra;
+        return props.bombaDaGarra;
     }
 
     private static PowerUpEntidade getMissilNuclear()
     {
-        if (missilNuclear == null)
+        if (props.missilNuclear == null)
         {
-            missilNuclear = new PowerUpEntidade()                
+            props.missilNuclear = new PowerUpEntidade()                
                 .configNomes(PowerUpEnums.TIPO.MISSIL_NUCLEAR, "Bomba Nuclear", "nuclear-bomba-btn")
                 .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)                
                 .configDuracao(9)                
@@ -45,14 +35,14 @@ public class FactoryPowerUpEntidade
                     "Jogue uma bomba de grande raio de explosão nos coletaveis para espalhar suas posições.",
                     "A bomba nuclear é segurada pela garra e no momento exato toque na tela para que ela solte em cima do seu alvo. Você tem 9 segundos antes que ela solte em um lugar aleatorio.");
         }
-        return missilNuclear;
+        return props.missilNuclear;
     }
 
     private static PowerUpEntidade getMinaTerrestre()
     {
-        if (minaTerrestre == null)
+        if (props.minaTerrestre == null)
         {
-            minaTerrestre = new PowerUpEntidade()
+            props.minaTerrestre = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.MINA_TERRESTRE, "Mina Terrestre", "mina-terrestre")
                 .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configPreco(2)
@@ -64,14 +54,14 @@ public class FactoryPowerUpEntidade
                     "Plante uma mina de explosão terrestre nos coletaveis para espalhar suas posições.",
                     "Arraste o botão da mina terrestre para a area azulada indicada. Um explosão abaixo dos coletaveis é acionada quando a mina é solta no lugar que foi posicionada.");
         }
-        return minaTerrestre;
+        return props.minaTerrestre;
     }
 
     private static PowerUpEntidade getMissilTeleguiado()
     {
-        if (missilTeleguiado == null)
+        if (props.missilTeleguiado == null)
         {
-            missilTeleguiado = new PowerUpEntidade()
+            props.missilTeleguiado = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.MISSIL_TELEGUIADO, "Missil Teleguiado", "missil-btnv2")
                 .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configPreco(2)
@@ -82,14 +72,14 @@ public class FactoryPowerUpEntidade
                     "Acerte um missil teleguiado no coletavel de interesse para mudar a posição atual dele.",
                     "Selecione a mira do coletavel de interesse a ser acertado pelo missil teleguiado.");
         }
-        return missilTeleguiado;
+        return props.missilTeleguiado;
     }
 
     private static PowerUpEntidade getIgual()
     {
-        if(igual == null)
+        if(props.igual == null)
         {
-            igual = new PowerUpEntidade()
+            props.igual = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.IGUAL, "Igual", "igual-botao")
                 .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
                 .configPreco(2)
@@ -100,14 +90,14 @@ public class FactoryPowerUpEntidade
                     "Troque as posições de um par de coletaveis para mudar suas respectivas posições.",
                     "Selecione o primeiro coletavel a ser igualado com o segundo coletavel.");
         }
-        return igual;
+        return props.igual;
     }
 
     private static PowerUpEntidade getTeleporte()
     {
-        if(teleporte == null)
+        if(props.teleporte == null)
         {
-            teleporte = new PowerUpEntidade()
+            props.teleporte = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.TELEPORTE, "Tele-Transporte", "teleport-btn")
                 .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
                 .configPreco(3)
@@ -118,14 +108,14 @@ public class FactoryPowerUpEntidade
                     "Troque as posições de um par de coletaveis para mudar suas respectivas posições.",
                     "Selecione o primeiro coletavel a ser trocado de lugar. Selecione o segundo coletavel que será trocado de posicao com o primeiro");
         }
-        return teleporte;
+        return props.teleporte;
     }
 
     private static PowerUpEntidade getCoringa()
     {
-        if(coringa == null)
+        if(props.coringa == null)
         {
-            coringa = new PowerUpEntidade()
+            props.coringa = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.CORINGA, "Coringa", "coringa-btn")
                 .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
                 .configPreco(1)
@@ -136,14 +126,14 @@ public class FactoryPowerUpEntidade
                     "Troque um coletavel por um outro coletavel aleatorio",
                     "Selecione o coletavel de interesse de ser trocado. Toque novamente nele durante para fixar a transformação.");
         }
-        return coringa;
+        return props.coringa;
     }
 
     private static PowerUpEntidade getMiniAsas()
     {
-        if(miniAsas == null)
+        if(props.miniAsas == null)
         {
-            miniAsas = new PowerUpEntidade()
+            props.miniAsas = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.MINI_ASAS, "Mini Asas de Escape", "mini-asas-botao")
                 .configFamilia(PowerUpEnums.FAMILIA.LEVITACAO)
                 .configPreco(2)
@@ -154,14 +144,14 @@ public class FactoryPowerUpEntidade
                     "Dê um par de mini asas ao coletavel do seu interesse para que ele tente alcançar a liberdade.",
                     "Selecione o coletavel de interesse a tentar alcançar a liberdade.");
         }
-        return miniAsas;
+        return props.miniAsas;
     }
 
     private static PowerUpEntidade getAsas()
     {
-        if(asa == null)
+        if(props.asa == null)
         {
-            asa = new PowerUpEntidade()
+            props.asa = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.ASAS, "Asas da Liberdade", "asas-botao")
                 .configFamilia(PowerUpEnums.FAMILIA.LEVITACAO)
                 .configPreco(4)
@@ -173,14 +163,14 @@ public class FactoryPowerUpEntidade
                     "Dê um par de asas ao coletavel do seu interesse para que ele alcance a liberdade.",
                     "Selecione o coletavel de interesse a alcançar a liberdade.");
         }
-        return asa;
+        return props.asa;
     }
 
     private static PowerUpEntidade getRollBack()
     {
-        if(rollback == null)
+        if(props.rollback == null)
         {
-            rollback = new PowerUpEntidade()
+            props.rollback = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.ROLLBACK, "Rollback", "rollback-botao")
                 .configFamilia(PowerUpEnums.FAMILIA.MECANISMO)
                 .configDuracao(9)                
@@ -191,14 +181,14 @@ public class FactoryPowerUpEntidade
                     "Selecione um coletado para retornar ao board para tentar uma melhor combinação de coletados.",
                     "Selecione no display de coletados o coletado que deseja ser retornado ao boarde.");
         }
-        return rollback;
+        return props.rollback;
     }
 
     private static PowerUpEntidade getDescarte()
     {
-        if(descarte == null)
+        if(props.descarte == null)
         {
-            descarte = new PowerUpEntidade()
+            props.descarte = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.DESCARTE, "Descarte", "descarte-botao")
                 .configFamilia(PowerUpEnums.FAMILIA.MECANISMO)
                 .configPreco(2)
@@ -209,7 +199,7 @@ public class FactoryPowerUpEntidade
                 .configDescricao("Descarte um coletado para tentar uma melhor combinação de coletados.",
                 "Selecione no display de coletados o coletado que deseja ser descartado.");
         }
-        return descarte;
+        return props.descarte;
     }
 
     public static PowerUpEntidade getPowerUpEntidadeByEnum(PowerUpEnums.TIPO tipo)
@@ -302,16 +292,6 @@ public class FactoryPowerUpEntidade
 
     public static void resetContextoEstatico()
     {
-        bombaDaGarra = null;
-        missilNuclear = null;
-        minaTerrestre = null;
-        missilTeleguiado = null;
-        igual = null;
-        teleporte = null;
-        coringa = null;
-        miniAsas = null;
-        asa = null;
-        rollback = null;
-        descarte = null;
+        props = new PropriedadesPupEntidade();
     }
 }
