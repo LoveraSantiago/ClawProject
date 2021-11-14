@@ -6,15 +6,7 @@ public class FactoryPowerUpEntidade
     {
         if (props.bomba == null)
         {
-            props.bomba = new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.BOMBA_DA_GARRA, "Bomba", "bomba")
-                .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
-                .configDuracao(9)                
-                .configSupplierDePowerUpGo(BombaPowerUpGo.getFornecedor())
-                .configIsClicavel(true)
-                .configDescricao(
-                    "Jogue uma bomba nos coletaveis para espalhar suas posições.", 
-                    "A bomba é segurada pela garra e no momento exato toque na tela para que ela solte em cima do seu alvo. Você tem 9 segundos antes que ela solte em um lugar aleatorio.");
+            props.bomba = FactoryPupBomba.factory();
         }
         return props.bomba;
     }
@@ -23,15 +15,7 @@ public class FactoryPowerUpEntidade
     {
         if (props.missilNuclear == null)
         {
-            props.missilNuclear = new PowerUpEntidade()                
-                .configNomes(PowerUpEnums.TIPO.MISSIL_NUCLEAR, "Bomba Nuclear", "nuclear-bomba-btn")
-                .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)                
-                .configDuracao(9)                
-                .configSupplierDePowerUpGo(MissilNuclearPowerUpGo.getFornecedor())
-                .configIsClicavel(true)
-                .configDescricao(
-                    "Jogue uma bomba de grande raio de explosão nos coletaveis para espalhar suas posições.",
-                    "A bomba nuclear é segurada pela garra e no momento exato toque na tela para que ela solte em cima do seu alvo. Você tem 9 segundos antes que ela solte em um lugar aleatorio.");
+            props.missilNuclear = FactoryPupMissilNuclear.factory();
         }
         return props.missilNuclear;
     }
@@ -40,17 +24,7 @@ public class FactoryPowerUpEntidade
     {
         if (props.minaTerrestre == null)
         {
-            props.minaTerrestre = new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.MINA_TERRESTRE, "Mina Terrestre", "mina-terrestre")
-                .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
-                .configPreco(2)
-                .configDuracao(3)
-                .configArea(PowerUpEnums.AREA.CHAO)
-                .configSupplierDePowerUpGo(MinaTerrestrePowerUpGo.getFornecedor())
-                .configIsClicavel(false)
-                .configDescricao(
-                    "Plante uma mina de explosão terrestre nos coletaveis para espalhar suas posições.",
-                    "Arraste o botão da mina terrestre para a area azulada indicada. Um explosão abaixo dos coletaveis é acionada quando a mina é solta no lugar que foi posicionada.");
+            props.minaTerrestre = FactoryPupMinaTerrestre.factory();
         }
         return props.minaTerrestre;
     }
@@ -59,16 +33,7 @@ public class FactoryPowerUpEntidade
     {
         if (props.missilTeleguiado == null)
         {
-            props.missilTeleguiado = new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.MISSIL_TELEGUIADO, "Missil Teleguiado", "missil-btnv2")
-                .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
-                .configPreco(2)
-                .configDuracao(9)                
-                .configSupplierDePowerUpGo(MissilTeleguiadoPowerUpGo.getFornecedor())
-                .configIsClicavel(true)
-                .configDescricao(
-                    "Acerte um missil teleguiado no coletavel de interesse para mudar a posição atual dele.",
-                    "Selecione a mira do coletavel de interesse a ser acertado pelo missil teleguiado.");
+            props.missilTeleguiado = FactoryPupMissilTeleguiado.factory();
         }
         return props.missilTeleguiado;
     }
@@ -77,16 +42,7 @@ public class FactoryPowerUpEntidade
     {
         if(props.igual == null)
         {
-            props.igual = new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.IGUAL, "Igual", "igual-botao")
-                .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
-                .configPreco(2)
-                .configDuracao(9)
-                .configSupplierDePowerUpGo(IgualPowerUpGo.getFornecedor())
-                .configIsClicavel(true)
-                .configDescricao(
-                    "Troque as posições de um par de coletaveis para mudar suas respectivas posições.",
-                    "Selecione o primeiro coletavel a ser igualado com o segundo coletavel.");
+            props.igual = FactoryPupIgual.factory();
         }
         return props.igual;
     }
@@ -95,16 +51,7 @@ public class FactoryPowerUpEntidade
     {
         if(props.teleporte == null)
         {
-            props.teleporte = new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.TELEPORTE, "Tele-Transporte", "teleport-btn")
-                .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
-                .configPreco(3)
-                .configDuracao(9)         
-                .configSupplierDePowerUpGo(TeleportePowerUpGo.getFornecedor())
-                .configIsClicavel(true)
-                .configDescricao(
-                    "Troque as posições de um par de coletaveis para mudar suas respectivas posições.",
-                    "Selecione o primeiro coletavel a ser trocado de lugar. Selecione o segundo coletavel que será trocado de posicao com o primeiro");
+            props.teleporte = FactoryPupTeleporte.factory();
         }
         return props.teleporte;
     }
@@ -113,16 +60,7 @@ public class FactoryPowerUpEntidade
     {
         if(props.coringa == null)
         {
-            props.coringa = new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.CORINGA, "Coringa", "coringa-btn")
-                .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
-                .configPreco(1)
-                .configDuracao(9)
-                .configSupplierDePowerUpGo(CoringaPowerUpGo.getFornecedor())
-                .configIsClicavel(true)
-                .configDescricao(
-                    "Troque um coletavel por um outro coletavel aleatorio",
-                    "Selecione o coletavel de interesse de ser trocado. Toque novamente nele durante para fixar a transformação.");
+            props.coringa = FactoryPupCoringa.factory();
         }
         return props.coringa;
     }
@@ -131,16 +69,7 @@ public class FactoryPowerUpEntidade
     {
         if(props.miniAsas == null)
         {
-            props.miniAsas = new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.MINI_ASAS, "Mini Asas de Escape", "mini-asas-botao")
-                .configFamilia(PowerUpEnums.FAMILIA.LEVITACAO)
-                .configPreco(2)
-                .configDuracao(9)
-                .configSupplierDePowerUpGo(AsaMiniPowerUpGo.getFornecedor())
-                .configIsClicavel(true)                
-                .configDescricao(
-                    "Dê um par de mini asas ao coletavel do seu interesse para que ele tente alcançar a liberdade.",
-                    "Selecione o coletavel de interesse a tentar alcançar a liberdade.");
+            props.miniAsas = FactoryPupMiniAsas.factory();
         }
         return props.miniAsas;
     }
@@ -149,17 +78,7 @@ public class FactoryPowerUpEntidade
     {
         if(props.asa == null)
         {
-            props.asa = new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.ASAS, "Asas da Liberdade", "asas-botao")
-                .configFamilia(PowerUpEnums.FAMILIA.LEVITACAO)
-                .configPreco(4)
-                .configDuracao(9)                
-                .configSupplierDePowerUpGo(AsaPowerUpGo.getFornecedor())
-                .configIsClicavel(true)
-                .configIsColetavel(true)
-                .configDescricao(
-                    "Dê um par de asas ao coletavel do seu interesse para que ele alcance a liberdade.",
-                    "Selecione o coletavel de interesse a alcançar a liberdade.");
+            props.asa = FactoryPupAsas.factory();
         }
         return props.asa;
     }
@@ -168,16 +87,7 @@ public class FactoryPowerUpEntidade
     {
         if(props.rollback == null)
         {
-            props.rollback = new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.ROLLBACK, "Rollback", "rollback-botao")
-                .configFamilia(PowerUpEnums.FAMILIA.MECANISMO)
-                .configDuracao(9)                
-                .configSupplierDePowerUpGo(RollbackPowerUpGo.getFornecedor())
-                .configIsClicavel(true)
-                .configIsColetavel(true)
-                .configDescricao(
-                    "Selecione um coletado para retornar ao board para tentar uma melhor combinação de coletados.",
-                    "Selecione no display de coletados o coletado que deseja ser retornado ao boarde.");
+            props.rollback = FactoryPupRollback.factory();
         }
         return props.rollback;
     }
@@ -186,16 +96,7 @@ public class FactoryPowerUpEntidade
     {
         if(props.descarte == null)
         {
-            props.descarte = new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.DESCARTE, "Descarte", "descarte-botao")
-                .configFamilia(PowerUpEnums.FAMILIA.MECANISMO)
-                .configPreco(2)
-                .configDuracao(9)
-                .configSupplierDePowerUpGo(DescartePowerUpGo.getFornecedor())
-                .configIsClicavel(true)
-                .configIsColetavel(true)
-                .configDescricao("Descarte um coletado para tentar uma melhor combinação de coletados.",
-                "Selecione no display de coletados o coletado que deseja ser descartado.");
+            props.descarte = FactoryPupDescarte.factory();
         }
         return props.descarte;
     }
