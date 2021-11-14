@@ -1,4 +1,4 @@
-public class FactoryPupMinaTerrestre 
+public class FactoryPupMinaTerrestre
 {
     public static PowerUpEntidade factory()
     {
@@ -12,5 +12,6 @@ public class FactoryPupMinaTerrestre
                 .configIsClicavel(false)
                 .configDescricao(
                     "Plante uma mina de explosão terrestre nos coletaveis para espalhar suas posições.",
-                    "Arraste o botão da mina terrestre para a area azulada indicada. Um explosão abaixo dos coletaveis é acionada quando a mina é solta no lugar que foi posicionada."); 
+                    "Arraste o botão da mina terrestre para a area azulada indicada. Um explosão abaixo dos coletaveis é acionada quando a mina é solta no lugar que foi posicionada.");
     }
+}

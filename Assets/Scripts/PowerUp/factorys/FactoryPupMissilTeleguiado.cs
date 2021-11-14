@@ -1,4 +1,4 @@
-public class FactoryPupMissilTeleguiado 
+public class FactoryPupMissilTeleguiado
 {
     public static PowerUpEntidade factory()
     {
@@ -13,3 +13,4 @@ public class FactoryPupMissilTeleguiado
                     "Acerte um missil teleguiado no coletavel de interesse para mudar a posição atual dele.",
                     "Selecione a mira do coletavel de interesse a ser acertado pelo missil teleguiado.");
     }
+}
