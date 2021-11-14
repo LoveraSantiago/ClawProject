@@ -14,7 +14,7 @@ public class ProcuradorColetavelMaisAlto : Consumidor<ColetavelTile>
             if(alturaIt > alturaMaisAlta)
             {
                 coletavelMaisAlto = coletavelIt;
-                Debug.Log("Setado mais alto");
+                //Debug.Log("Setado mais alto");
             }
         }        
     }    

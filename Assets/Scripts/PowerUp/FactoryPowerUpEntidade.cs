@@ -299,4 +299,19 @@ public class FactoryPowerUpEntidade
         }
         return null;
     }
+
+    public static void resetContextoEstatico()
+    {
+        bombaDaGarra = null;
+        missilNuclear = null;
+        minaTerrestre = null;
+        missilTeleguiado = null;
+        igual = null;
+        teleporte = null;
+        coringa = null;
+        miniAsas = null;
+        asa = null;
+        rollback = null;
+        descarte = null;
+    }
 }
