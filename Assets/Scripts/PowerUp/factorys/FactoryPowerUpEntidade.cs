@@ -1,6 +1,6 @@
 public class FactoryPowerUpEntidade 
 {
-    private static PropriedadesPupEntidade props;    
+    private static PropriedadesFactoryPup props;    
 
     private static PowerUpEntidade getBombaDaGarra()
     {
@@ -243,6 +243,6 @@ public class FactoryPowerUpEntidade
 
     public static void resetContextoEstatico()
     {
-        props = new PropriedadesPupEntidade();
+        props = new PropriedadesFactoryPup();
     }
 }

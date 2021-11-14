@@ -1,4 +1,4 @@
-public class PropriedadesPupEntidade 
+public class PropriedadesFactoryPup 
 {
     public PowerUpEntidade bombaDaGarra;
     public PowerUpEntidade missilNuclear;
