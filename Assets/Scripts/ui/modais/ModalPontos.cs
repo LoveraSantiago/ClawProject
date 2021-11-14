@@ -132,7 +132,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
             linhasModal[2].ligar();
             linhasModal[3].desligar();
 
-            string[] nomes = FactoryPowerUpEntidade.getNomesPupsBySprites(evento.sprResultados);
+            string[] nomes = PowerUpHelper.getNomesPupsBySprites(evento.sprResultados);
 
             linhasModal[0].passarInfos(nomes[0], evento.sprResultados[0], "1");
             linhasModal[1].passarInfos(nomes[1], evento.sprResultados[1], "1");

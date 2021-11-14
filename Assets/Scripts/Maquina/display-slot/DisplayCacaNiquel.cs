@@ -81,7 +81,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         }
         else
         {
-            Sprite[] sprites = FactoryPowerUpEntidade.getAllSpritesPowerUp();
+            Sprite[] sprites = PowerUpHelper.getAllSpritesPowerUp();
             Sprite[][] allSprites = new Sprite[][] { sprites, sprites, sprites };
             return allSprites;
         }
