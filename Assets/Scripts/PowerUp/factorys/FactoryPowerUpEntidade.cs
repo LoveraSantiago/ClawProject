@@ -4,9 +4,9 @@ public class FactoryPowerUpEntidade
 
     private static PowerUpEntidade getBombaDaGarra()
     {
-        if (props.bombaDaGarra == null)
+        if (props.bomba == null)
         {
-            props.bombaDaGarra = new PowerUpEntidade()
+            props.bomba = new PowerUpEntidade()
                 .configNomes(PowerUpEnums.TIPO.BOMBA_DA_GARRA, "Bomba", "bomba")
                 .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configDuracao(9)                
@@ -16,7 +16,7 @@ public class FactoryPowerUpEntidade
                     "Jogue uma bomba nos coletaveis para espalhar suas posições.", 
                     "A bomba é segurada pela garra e no momento exato toque na tela para que ela solte em cima do seu alvo. Você tem 9 segundos antes que ela solte em um lugar aleatorio.");
         }
-        return props.bombaDaGarra;
+        return props.bomba;
     }
 
     private static PowerUpEntidade getMissilNuclear()

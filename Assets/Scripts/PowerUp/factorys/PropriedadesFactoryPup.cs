@@ -1,6 +1,6 @@
 public class PropriedadesFactoryPup 
 {
-    public PowerUpEntidade bombaDaGarra;
+    public PowerUpEntidade bomba;
     public PowerUpEntidade missilNuclear;
     public PowerUpEntidade minaTerrestre;
     public PowerUpEntidade missilTeleguiado;
