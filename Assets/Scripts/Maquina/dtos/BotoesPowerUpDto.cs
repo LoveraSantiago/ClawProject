@@ -7,12 +7,14 @@ public class BotoesPowerUpDto
     [SerializeField] private Sprite[] bordasBtns = new Sprite[2];    
     [Space(5)]        
     [SerializeField] private GameObject areaDraggavel;
-    [Space(5)]   
+    [Space(5)]
+    [SerializeField] private GameObject efeitoHolograma;
     [SerializeField] private BotaoPowerUpDto[] btnPowerUp = new BotaoPowerUpDto[4];
 
     public Sprite[] BordasBtns { get { return bordasBtns;  } }       
 
     public GameObject AreaDraggavel { get { return areaDraggavel; } }    
 
+    public GameObject EfeitoHolograma { get { return efeitoHolograma; } }
     public BotaoPowerUpDto[] BtnPowerUp { get { return btnPowerUp;  } }
 }

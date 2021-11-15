@@ -20,6 +20,7 @@ public class MainGameScene : MonoBehaviour,
     {
         CameraManager.forceAspectCameraAsRatio();
         Utils.configMainMono(this);
+        FactoryPowerUpEntidade.resetContextoEstatico();
 
         AbstractLevel levelEscolhido = carregandoLevelEscolhido();
         MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido);

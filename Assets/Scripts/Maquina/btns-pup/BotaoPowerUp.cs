@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class BotaoPowerUp : Draggavel
 {
+    private static EfeitoHolograma efeitoHolograma;
+
     private bool isDraggavel;
     public bool hasPowerUp { get; private set; }
     private int indice;
@@ -32,6 +34,7 @@ public class BotaoPowerUp : Draggavel
             aparencia.colorirBotao();
             controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
+            efeitoHolograma.ligar(aparencia.getPosicaoParent(), aparencia.getRotacaoParent());
             acaoBtnPowerUp.acionar(indice);
         }
         else
@@ -60,6 +63,7 @@ public class BotaoPowerUp : Draggavel
         aparencia.voltarCorOriginalBotao();
         aparencia.limparImg();
         transformarEmBotaoClicavel();
+        efeitoHolograma.desligar();
     }
 
     public void mudarParaMaterialArcoIris()
@@ -154,6 +158,7 @@ public class BotaoPowerUp : Draggavel
     public static void configurar(BotoesPowerUpDto btnsPowerUpsDto)
     {
         AparenciaBotaoPowerUp.configurarSpriteBordas(btnsPowerUpsDto.BordasBtns);
-        AcaoDragPowerUp.configurarAreaDraggavel(btnsPowerUpsDto.AreaDraggavel);        
+        AcaoDragPowerUp.configurarAreaDraggavel(btnsPowerUpsDto.AreaDraggavel);
+        efeitoHolograma = new EfeitoHolograma(btnsPowerUpsDto.EfeitoHolograma);
     }
 }
