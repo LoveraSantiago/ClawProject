@@ -26,9 +26,7 @@ public class ColetaveisScene : MonoBehaviour,
         Utils.configMainMono(this);
         Utils.configMainMatGrayScale(materialGrayScale);
         ColetavelHelper.configurar();
-        PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI
-        PlayerPrefsColetaveis.disponibilizarColetavel("Laranja");//TEMPORARIAMENTE AQUI
-        PlayerPrefsColetaveis.disponibilizarColetavel("Aspargo");//TEMPORARIAMENTE AQUI
+        PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI       
 
         ColetavelEntidade.FAMILIA[] familias = { ColetavelEntidade.FAMILIA.FRUTAS,
                                                  ColetavelEntidade.FAMILIA.FAKE };
