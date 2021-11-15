@@ -51,7 +51,7 @@ public class LevelPup : AbstractLevel
     {
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-cima", "#7D4427");
-        dicionario.Add("base-parte", "#486B00");
+        dicionario.Add("base-parte", "#C96D3E");
         dicionario.Add("base-chao", "#2E4600");
         dicionario.Add("borda-vidro", "#7D4427");
         dicionario.Add("placa-frontal", "#7D4427");
@@ -64,10 +64,10 @@ public class LevelPup : AbstractLevel
         dicionario.Add("parte-dentro1", "#C9E466");
         dicionario.Add("contorno1", "#2E4600");
         dicionario.Add("btnPowerUp2", "#A2C523");
-        dicionario.Add("parte-dentro2", "#C9E466");
+        dicionario.Add("parte-dentro2", "#7BE371");
         dicionario.Add("contorno2", "#2E4600");
         dicionario.Add("btnPowerUp3", "#A2C523");
-        dicionario.Add("parte-dentro3", "#C9E466");
+        dicionario.Add("parte-dentro3", "#7BE371");
         dicionario.Add("contorno3", "#2E4600");
         dicionario.Add("btnPowerUp4", "#A2C523");
         dicionario.Add("parte-dentro4", "#C9E466");
@@ -91,17 +91,14 @@ public class LevelPup : AbstractLevel
         dicionario.Add("placa-coletado2", "#A2C523");
         dicionario.Add("placa-coletado3", "#A2C523");
         dicionario.Add("display-timer", "#2E4600");
-        dicionario.Add("digitos-timer", "#A2C523");
+        dicionario.Add("digitos-timer", "#486B00");
         dicionario.Add("display-pontos1", "#2E4600");
         dicionario.Add("display-pontos2", "#2E4600");
         dicionario.Add("display-pontos3", "#2E4600");
-        dicionario.Add("leds1", "#A2C523");
-        dicionario.Add("leds2", "#A2C523");
-        dicionario.Add("leds3", "#A2C523");
-        dicionario.Add("cabo-da-garra", "#C9E466");
-
-
-
+        dicionario.Add("leds1", "#486B00");
+        dicionario.Add("leds2", "#486B00");
+        dicionario.Add("leds3", "#486B00");
+        dicionario.Add("cabo-da-garra", "#16C9BD");
         return dicionario;
     }    
 }
