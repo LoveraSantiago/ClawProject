@@ -126,15 +126,14 @@ public class Level4 : AbstractLevel
         dicionario.Add("placa-coletado2", "#BA5536");
         dicionario.Add("placa-coletado3", "#BA5536");
         dicionario.Add("display-timer", "#693D3D");
-        dicionario.Add("digitos-timer", "#BA5536");
+        dicionario.Add("digitos-timer", "#A1492F");
         dicionario.Add("display-pontos1", "#693D3D");
         dicionario.Add("display-pontos2", "#693D3D");
         dicionario.Add("display-pontos3", "#693D3D");
-        dicionario.Add("leds1", "#BA5536");
-        dicionario.Add("leds2", "#BA5536");
-        dicionario.Add("leds3", "#BA5536");
-        dicionario.Add("cabo-da-garra", "#376961");
-
+        dicionario.Add("leds1", "#A1492F");
+        dicionario.Add("leds2", "#A1492F");
+        dicionario.Add("leds3", "#A1492F");
+        dicionario.Add("cabo-da-garra", "#199162");
         return dicionario;
     }
 }
