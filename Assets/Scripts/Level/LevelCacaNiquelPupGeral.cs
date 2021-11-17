@@ -86,20 +86,18 @@ public class LevelCacaNiquelPupGeral : AbstractLevel
         dicionario.Add("quadrado-menor", "#505160");
         dicionario.Add("furo-cima", "#505160");
         dicionario.Add("furo-baixo", "#505160");
-        dicionario.Add("display-coletados", "#68829E");
-        dicionario.Add("placa-coletado1", "#505160");
-        dicionario.Add("placa-coletado2", "#505160");
-        dicionario.Add("placa-coletado3", "#505160");
-        dicionario.Add("display-timer", "#68829E");
-        dicionario.Add("digitos-timer", "#505160");
-        dicionario.Add("display-pontos1", "#68829E");
-        dicionario.Add("display-pontos2", "#68829E");
-        dicionario.Add("display-pontos3", "#68829E");
-        dicionario.Add("leds1", "#505160");
-        dicionario.Add("leds2", "#505160");
-        dicionario.Add("leds3", "#505160");
-        dicionario.Add("cabo-da-garra", "#68829E");
-
-        return dicionario;        
+        dicionario.Add("display-coletados", "#505160");
+        dicionario.Add("placa-coletado1", "#9BC1EB");
+        dicionario.Add("placa-coletado2", "#9BC1EB");
+        dicionario.Add("placa-coletado3", "#9BC1EB");
+        dicionario.Add("display-timer", "#505160");
+        dicionario.Add("digitos-timer", "#576F88");
+        dicionario.Add("display-pontos1", "#505160");
+        dicionario.Add("display-pontos2", "#505160");
+        dicionario.Add("display-pontos3", "#505160");
+        dicionario.Add("leds1", "#576F88");
+        dicionario.Add("leds2", "#576F88");
+        dicionario.Add("leds3", "#576F88");
+        dicionario.Add("cabo-da-garra", "#8CCF53");        return dicionario;        
     }   
 }
