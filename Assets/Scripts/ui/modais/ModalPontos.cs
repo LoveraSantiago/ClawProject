@@ -1,15 +1,11 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ModalPontos : AcaoColetado.ConsumidorEvento,
                            AcaoTempoEsgotado.ConsumidorEvento,
                            AcaoBoardElevadoFim.ConsumidorEvento,
                            AcaoCacaNiquel.ConsumidorEvento
 {
-    private static readonly string MAPSCENE = "MapScene";
-    private static readonly string PUPSCENE = "PupScene";
-
     private string scoreAtual;
     private bool mostrandoModal;
 
@@ -66,7 +62,8 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         {
             setPontuacao();
             naoMostrarLinhasResult();
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(MAPSCENE));
+            configurarBotaoIrCenaMap();
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
 
@@ -101,7 +98,8 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
 
             scoreAtual = "Power Ups Ganhos";
             setPontuacao();
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(PUPSCENE));
+            configurarBotaoIrCenaPup();
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
 
@@ -145,7 +143,8 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
             scoreAtual = "Power Ups Ganhos";
             setPontuacao();
 
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(PUPSCENE));
+            configurarBotaoIrCenaPup();
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
 
@@ -154,15 +153,28 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         naoMostrarLinhasResult();
         scoreAtual = "Não seguiu ordem " + ordem;
         setPontuacao();
-        Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(MAPSCENE));
+        configurarBotaoIrCenaMap();
+        Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
     }
 
-    private IEnumerator coroutineMostrarModal(string nomeCena)
+    private void configurarBotaoIrCenaMap()
     {
         modalPontosDto.BtnAvancar.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene(nomeCena);
+            CenaUtils.irParaCenaMap();
         });
+    }
+
+    private void configurarBotaoIrCenaPup()
+    {
+        modalPontosDto.BtnAvancar.onClick.AddListener(() =>
+        {
+            CenaUtils.irParaCenaPup();
+        });
+    }
+
+    private IEnumerator coroutineMostrarModal()
+    {      
         mostrandoModal = true;                   
         yield return new WaitForSeconds(0.5f);
         ligar();

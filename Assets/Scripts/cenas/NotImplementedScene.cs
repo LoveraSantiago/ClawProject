@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class NotImplementedScene : MonoBehaviour
@@ -9,11 +8,6 @@ public class NotImplementedScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        btnVoltar.onClick.AddListener(() => goToMapScene());
-    }
-
-    private void goToMapScene()
-    {
-        SceneManager.LoadScene("MapScene");
+        btnVoltar.onClick.AddListener(() => CenaUtils.irParaCenaMap());
     }    
 }

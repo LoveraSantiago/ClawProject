@@ -45,7 +45,7 @@ public class PupScene : MonoBehaviour
 
     private void configBtnBack(Button btnBack)
     {
-        btnBack.onClick.AddListener(() => SceneManager.LoadScene("MapScene"));
+        btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMap());
     }
 
     private void configBtnPratica(Button btnPratica, BlocoImgPup blocoImg)

@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
 
     public void goTotMapScene()
     {
-        SceneManager.LoadScene("MapScene");
+        CenaUtils.irParaCenaMap();
     }   
 
     public void closeDescricaoObjetivo()

@@ -57,7 +57,7 @@ public class ColetaveisScene : MonoBehaviour,
 
     private void configBtnBack(Button btnBack)
     {
-        btnBack.onClick.AddListener(() => SceneManager.LoadScene("MapScene"));
+        btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMap());
     }
 
     private void configBtnGanharColetado(Button btnBack)
