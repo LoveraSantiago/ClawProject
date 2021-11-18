@@ -6,8 +6,8 @@ public class EditorUtils
     {
         List<string> listaDeLEvels = new List<string> {
             "0", "1", "2", "3", "4",
-            "999999996", "999999997",
-            "999999998", "999999999"
+            "Coletavel", "CacaNiquelIndividual",
+            "CacaNiquelGeral", "TreinoPup"
         };
 
         return listaDeLEvels;

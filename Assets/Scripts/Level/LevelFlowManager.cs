@@ -5,14 +5,10 @@ public class LevelFlowManager
 {
     public enum LEVEL
     {
-        HUM  = 1,
-        DOIS = 2,
-        TRES = 3,
-        QUATRO = 4,
-        COLETAVEL = 999999996,
-        CACANIQUEL_PUP_G = 999999997,
-        CACANIQUEL_PUP_I = 999999998,
-        PUP  = 999999999,
+        HUM, DOIS, TRES, QUATRO,
+        COLETAVEL,
+        CACANIQUEL_PUP_G, CACANIQUEL_PUP_I,
+        PUP,
     }
 
     public static AbstractLevel getLevelByEnum(LEVEL level)
@@ -39,10 +35,10 @@ public class LevelFlowManager
             case "2": return getLevelByEnum(LEVEL.DOIS);
             case "3": return getLevelByEnum(LEVEL.TRES);
             case "4": return getLevelByEnum(LEVEL.QUATRO);
-            case "999999996": return getLevelByEnum(LEVEL.COLETAVEL);
-            case "999999997": return getLevelByEnum(LEVEL.CACANIQUEL_PUP_G);
-            case "999999998": return getLevelByEnum(LEVEL.CACANIQUEL_PUP_I);
-            case "999999999": return getLevelByEnum(LEVEL.PUP);
+            case "Coletavel": return getLevelByEnum(LEVEL.COLETAVEL);
+            case "CacaNiquelIndividual": return getLevelByEnum(LEVEL.CACANIQUEL_PUP_G);
+            case "CacaNiquelGeral": return getLevelByEnum(LEVEL.CACANIQUEL_PUP_I);
+            case "TreinoPup": return getLevelByEnum(LEVEL.PUP);
             default: return null;
         }        
     }
