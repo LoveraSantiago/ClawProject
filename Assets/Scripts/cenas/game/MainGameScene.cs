@@ -30,8 +30,7 @@ public class MainGameScene : MonoBehaviour,
     private AbstractLevel carregandoLevelEscolhido()
     {
         LevelFlowManager.LEVEL levelFlow = PlayerPrefsLevel.recuperarELimparLevel(level);
-        AbstractLevel levelEscolhido     = LevelFlowManager.getLevelByEnum(levelFlow);
-        levelEscolhido.validar();
+        AbstractLevel levelEscolhido     = LevelFlowManager.getLevelByEnum(levelFlow);        
         return levelEscolhido;
     }       
     
