@@ -19,15 +19,17 @@ public class LevelColetavel : AbstractLevel
 
     public override int[,] getArrayDeColetaveis()
     {
-        return new int[,] {
-            {11, 11, 11, 11, 11, 11, 11},
-            {12, 12, 12, 12, 12, 12, 0},
-            {0, 15, 15, 15, 15, 15, 0},
-            {0, 16, 16, 16, 16, 0, 0},
-            {0, 0, 13, 13, 13, 0, 0},
-            {0, 0, 14, 14, 0, 0, 0},
-            {0, 0, 0, 10, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}};
+        return new int[,]
+        {
+            {0, 0, 0, 1, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0}
+        };
     }
     
     public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
