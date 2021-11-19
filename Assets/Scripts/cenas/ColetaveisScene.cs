@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class ColetaveisScene : MonoBehaviour, 
@@ -63,6 +62,6 @@ public class ColetaveisScene : MonoBehaviour,
     private void configBtnGanharColetado(Button btnBack)
     {
         PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.COLETAVEL);
-        btnBack.onClick.AddListener(() => SceneManager.LoadScene("MainGameScene"));
+        btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMainGame());
     }   
 }

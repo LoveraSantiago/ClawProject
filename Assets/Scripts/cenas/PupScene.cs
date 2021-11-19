@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 #pragma warning disable 0649
@@ -73,6 +72,6 @@ public class PupScene : MonoBehaviour
     {
         PlayerPrefsLevel.salvarLevel(level);
         PlayerPrefsPup.salvarIndicePup(blocoImg.getIndicePupAtual());
-        SceneManager.LoadScene("MainGameScene");
+        CenaUtils.irParaCenaMainGame();
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 #pragma warning disable 0649
@@ -25,27 +24,12 @@ public class MapaScene : MonoBehaviour
         btnLevel3.onClick.AddListener(() => goToLevelFase(LevelFlowManager.LEVEL.TRES  , new Level3()));
         btnLevel4.onClick.AddListener(() => goToLevelFase(LevelFlowManager.LEVEL.QUATRO, new Level4()));
 
-        btnCards  .onClick.AddListener(() => goToPupScene());
-        btnStore  .onClick.AddListener(() => goToNotImplementedScene());
-        btnScore  .onClick.AddListener(() => goToNotImplementedScene());
-        btnPelucia.onClick.AddListener(() => gotoColetaveisScene());
-        btnConfig .onClick.AddListener(() => goToNotImplementedScene());
-    }   
-
-    private void goToPupScene()
-    {
-        SceneManager.LoadScene("PupScene");
-    }   
-
-    private void gotoColetaveisScene()
-    {
-        SceneManager.LoadScene("ColetaveisScene");
-    }
-
-    private void goToNotImplementedScene()
-    {
-        SceneManager.LoadScene("NotImplementedScene");
-    }
+        btnCards  .onClick.AddListener(() => CenaUtils.irParaCenaPup());
+        btnStore  .onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
+        btnScore  .onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
+        btnPelucia.onClick.AddListener(() => CenaUtils.irParaCenaColetaveis());
+        btnConfig .onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
+    }             
 
     private void goToLevelFase(LevelFlowManager.LEVEL levelEnum, AbstractLevel level)
     {

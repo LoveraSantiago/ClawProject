@@ -11,4 +11,19 @@ public class CenaUtils
     {
         SceneManager.LoadScene("PupScene");
     }
+
+    public static void irParaCenaMainGame()
+    {
+        SceneManager.LoadScene("MainGameScene");
+    }
+
+    public static void irParaCenaColetaveis()
+    {
+        SceneManager.LoadScene("ColetaveisScene");
+    }
+
+    public static void irParaCenaNaoImplementada()
+    {
+        SceneManager.LoadScene("NotImplementedScene");
+    }
 }

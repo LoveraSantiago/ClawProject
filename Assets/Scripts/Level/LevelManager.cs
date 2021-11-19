@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
@@ -9,7 +8,7 @@ public class LevelManager : MonoBehaviour
 
     public void startLevel()
     {
-        SceneManager.LoadScene("MainGameScene");
+        CenaUtils.irParaCenaMainGame();
     }
 
     public void goTotMapScene()
