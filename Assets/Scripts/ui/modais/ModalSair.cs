@@ -1,10 +1,8 @@
-using UnityEngine.SceneManagement;
-
 public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento, 
                          AcaoDesligarMaquina.ConsumidorEvento    
 {
-    private string nomeCenaVoltar;
-    private string msgSair;
+    private bool isLevelGame;
+    
     private ModalSairDto modalSairDto;
     private ProdutorDeEvento<CancelarDesligarMaquina> produtorDeEvento;
 
@@ -20,13 +18,11 @@ public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento,
     {
         if(level.isNormalLevel() || level.isOrdemLevel() || level.isElevadorLevel())
         {
-            nomeCenaVoltar = "MapScene";
-            msgSair = "Tem certeza que deseja sair?\nVocê perderá sua ficha!";
+            isLevelGame = true;                       
         }
         else
         {
-            nomeCenaVoltar = "PupScene";
-            msgSair = "Tem certeza que deseja sair do treinamento?";
+            isLevelGame = false;                        
         }
     }
 
@@ -40,13 +36,27 @@ public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento,
     private void sairDoGame()
     {
         Utils.continuarGame();
-        SceneManager.LoadScene(nomeCenaVoltar);
+        if (isLevelGame)
+        {
+            CenaUtils.irParaCenaMap();
+        }
+        else
+        {
+            CenaUtils.irParaCenaPup();
+        }        
     }
 
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
     {
         Utils.pausarGame();
-        modalSairDto.TextoSair.text = msgSair;
+        if (isLevelGame)
+        {
+            modalSairDto.TextoSair.text = "Tem certeza que deseja sair?\nVocê perderá sua ficha!";
+        }
+        else
+        {
+            modalSairDto.TextoSair.text = "Tem certeza que deseja sair do treinamento?";
+        }       
         modalSairDto.ModalSair.SetActive(true);        
     }
 
