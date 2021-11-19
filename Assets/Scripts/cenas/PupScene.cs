@@ -20,6 +20,7 @@ public class PupScene : MonoBehaviour
     void Start()
     {
         Utils.configMainMono(this);
+        FactoryPowerUpEntidade.resetContextoEstatico();
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
 
         BlocoImgPup blocoImg   = new BlocoImgPup(blocoImgDto);
