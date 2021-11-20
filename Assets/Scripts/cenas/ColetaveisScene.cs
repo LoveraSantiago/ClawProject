@@ -25,6 +25,7 @@ public class ColetaveisScene : MonoBehaviour,
         Utils.configMainMono(this);
         Utils.configMainMatGrayScale(materialGrayScale);
         ColetavelHelper.configurar();
+
         PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI       
 
         ColetavelEntidade.FAMILIA[] familias = { ColetavelEntidade.FAMILIA.FRUTAS,
@@ -40,7 +41,7 @@ public class ColetaveisScene : MonoBehaviour,
             .configurarProdutor(blocoImg)
             .adicionarConsumidor(blocoImgDetalhe);
 
-        new AcaoBBarPupEscolhido<int>()
+        new AcaoBBarItemEscolhido<int>()
             .configurarProdutor(scBottomBar)
             .adicionarConsumidor(blocoImg);
 

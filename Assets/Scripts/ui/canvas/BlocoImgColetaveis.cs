@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
-                                  AcaoBBarPupEscolhido<int>.ConsumidorEvento
+                                  AcaoBBarItemEscolhido<int>.ConsumidorEvento
 {
     private BlocoImgColetaveisDto blocoImgsDto;
     private Dictionary<string, Sprite> dicionarioDeSprites;
@@ -111,7 +111,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
         }
     }    
 
-    void AcaoBBarPupEscolhido<int>.ConsumidorEvento.consumirEvento(int evento)
+    void AcaoBBarItemEscolhido<int>.ConsumidorEvento.consumirEvento(int evento)
     {
         controleFamilia.setIndiceAtual(evento);
         ColetavelEntidade.FAMILIA familiaAtual = controleFamilia.getItemIndiceAtual();

@@ -41,7 +41,7 @@ public class MainGameEventos
             .adicionarConsumidor(cameraManager)
             .adicionarConsumidor(uiManager);
 
-        new AcaoBBarPupEscolhido<PowerUpBtnInfo>()
+        new AcaoBBarItemEscolhido<PowerUpBtnInfo>()
             .configurarProdutor(uiManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(cameraManager);

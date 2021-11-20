@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ScrollBottomBarSceneColetaveis : ScrollBottomBar,
-                                              AcaoBBarPupEscolhido<int>.ProdutorEvento
+                                              AcaoBBarItemEscolhido<int>.ProdutorEvento
 {
     private ProdutorDeEvento<int> produtorDeIndiceEscolhido;
 
@@ -24,7 +24,7 @@ public class ScrollBottomBarSceneColetaveis : ScrollBottomBar,
         btnBottomBar.btnBottomPressionado(this);
     }    
 
-    ProdutorDeEvento<int> AcaoBBarPupEscolhido<int>.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<int> AcaoBBarItemEscolhido<int>.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeIndiceEscolhido;
     }    

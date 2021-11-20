@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 
 public class ScrollBottomBarSceneGame : ScrollBottomBar,
-                                        AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento,
+                                        AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
                                         AcaoBotaoPUpVazio.ConsumidorEvento
 {
     private int indiceBtn;
@@ -87,7 +87,7 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
         btnBottomBar.subirBotao(this);
     }
 
-    ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

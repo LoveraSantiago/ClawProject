@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento,
+public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
                              AcaoPUpAcionado.ConsumidorEvento,
                              AcaoBotaoPUpVazio.ConsumidorEvento        
 {
@@ -76,8 +76,8 @@ public class ScrollManager : AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento
         }
     }
 
-    ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoBBarPupEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollBottomBar).getProdutorDeEvento();
+        return ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollBottomBar).getProdutorDeEvento();
     }
 }
