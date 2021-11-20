@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
 
-public class BotaoIrGameColetaveis 
+public class BotaoIrGameColetaveis : AcaoBlocoImgColetavelAtual.ConsumidorEvento
 {
+    private Level levelAtual;
+
     public BotaoIrGameColetaveis(Button btnColetavel)
     {
         btnColetavel.onClick.AddListener(() => irParaLevelDeColetado());
@@ -12,6 +11,13 @@ public class BotaoIrGameColetaveis
 
     private void irParaLevelDeColetado()
     {
-        PlayerPrefsLevel.salvarLevel(Level.COLETAVEL);        
+        PlayerPrefsLevel.salvarLevel(levelAtual);
+        CenaUtils.irParaCenaMainGame();
+
+    }
+
+    void AcaoBlocoImgColetavelAtual.ConsumidorEvento.consumirEvento(UiColetavelInfo evento)
+    {
+        levelAtual = evento.coletavelEntidade.level;
     }
 }

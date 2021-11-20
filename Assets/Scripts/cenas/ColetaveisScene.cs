@@ -40,7 +40,8 @@ public class ColetaveisScene : MonoBehaviour,
 
         new AcaoBlocoImgColetavelAtual()
             .configurarProdutor(blocoImg)
-            .adicionarConsumidor(blocoImgDetalhe);
+            .adicionarConsumidor(blocoImgDetalhe)
+            .adicionarConsumidor(btnColetaveis);
 
         new AcaoBBarItemEscolhido<int>()
             .configurarProdutor(scBottomBar)
