@@ -1,0 +1,7 @@
+public enum Level 
+{
+    HUM, DOIS, TRES, QUATRO,
+    COLETAVEL, COLETAVEL_LEITE,
+    CACANIQUEL_PUP_G, CACANIQUEL_PUP_I,
+    PUP,
+}

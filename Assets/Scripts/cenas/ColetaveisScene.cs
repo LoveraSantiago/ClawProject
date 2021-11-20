@@ -61,7 +61,7 @@ public class ColetaveisScene : MonoBehaviour,
 
     private void configBtnGanharColetado(Button btnBack)
     {
-        PlayerPrefsLevel.salvarLevel(LevelFlowManager.LEVEL.COLETAVEL);
+        PlayerPrefsLevel.salvarLevel(Level.COLETAVEL);
         btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMainGame());
     }   
 }

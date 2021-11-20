@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public class MainGameScene : MonoBehaviour, 
                         IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private LevelFlowManager.LEVEL level;
+    [SerializeField] private Level level;
     [Space(5)]
     [SerializeField] private MainGameDto mainDto;
 
@@ -29,7 +29,7 @@ public class MainGameScene : MonoBehaviour,
 
     private AbstractLevel carregandoLevelEscolhido()
     {
-        LevelFlowManager.LEVEL levelFlow = PlayerPrefsLevel.recuperarELimparLevel(level);
+        Level levelFlow = PlayerPrefsLevel.recuperarELimparLevel(level);
         AbstractLevel levelEscolhido     = LevelFlowManager.getLevelByEnum(levelFlow);        
         return levelEscolhido;
     }       

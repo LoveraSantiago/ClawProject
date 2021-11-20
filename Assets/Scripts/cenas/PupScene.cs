@@ -51,25 +51,25 @@ public class PupScene : MonoBehaviour
     private void configBtnPratica(Button btnPratica, BlocoImgPup blocoImg)
     {
         btnPratica.onClick.AddListener(() => {            
-            irGameScene(LevelFlowManager.LEVEL.PUP, blocoImg);            
+            irGameScene(Level.PUP, blocoImg);            
         });
     }
 
     private void configBtnCacaNiquelIndividual(Button btnCacaNiquel, BlocoImgPup blocoImg)
     {
         btnCacaNiquel.onClick.AddListener(() => {            
-            irGameScene(LevelFlowManager.LEVEL.CACANIQUEL_PUP_I, blocoImg);            
+            irGameScene(Level.CACANIQUEL_PUP_I, blocoImg);            
         });
     }
 
     private void configBtnCacaNiquelGeral(Button btnCacaNiquel, BlocoImgPup blocoImg)
     {
         btnCacaNiquel.onClick.AddListener(() => {
-            irGameScene(LevelFlowManager.LEVEL.CACANIQUEL_PUP_G, blocoImg);
+            irGameScene(Level.CACANIQUEL_PUP_G, blocoImg);
         });
     }
 
-    private void irGameScene(LevelFlowManager.LEVEL level, BlocoImgPup blocoImg)
+    private void irGameScene(Level level, BlocoImgPup blocoImg)
     {
         PlayerPrefsLevel.salvarLevel(level);
         PlayerPrefsPup.salvarIndicePup(blocoImg.getIndicePupAtual());

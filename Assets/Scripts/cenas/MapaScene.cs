@@ -19,10 +19,10 @@ public class MapaScene : MonoBehaviour
 
     private void Start()
     {
-        btnLevel1.onClick.AddListener(() => goToLevelFase(LevelFlowManager.LEVEL.HUM   , new Level1()));
-        btnLevel2.onClick.AddListener(() => goToLevelFase(LevelFlowManager.LEVEL.DOIS  , new Level2()));
-        btnLevel3.onClick.AddListener(() => goToLevelFase(LevelFlowManager.LEVEL.TRES  , new Level3()));
-        btnLevel4.onClick.AddListener(() => goToLevelFase(LevelFlowManager.LEVEL.QUATRO, new Level4()));
+        btnLevel1.onClick.AddListener(() => goToLevelFase(Level.HUM   , new Level1()));
+        btnLevel2.onClick.AddListener(() => goToLevelFase(Level.DOIS  , new Level2()));
+        btnLevel3.onClick.AddListener(() => goToLevelFase(Level.TRES  , new Level3()));
+        btnLevel4.onClick.AddListener(() => goToLevelFase(Level.QUATRO, new Level4()));
 
         btnCards  .onClick.AddListener(() => CenaUtils.irParaCenaPup());
         btnStore  .onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
@@ -31,7 +31,7 @@ public class MapaScene : MonoBehaviour
         btnConfig .onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
     }             
 
-    private void goToLevelFase(LevelFlowManager.LEVEL levelEnum, AbstractLevel level)
+    private void goToLevelFase(Level levelEnum, AbstractLevel level)
     {
         modalObjetivo.SetActive(true);
         PlayerPrefsLevel.salvarLevel(levelEnum);
