@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelEstrelaMarinha : MonoBehaviour
+public class LevelEstrelaMarinha : LevelColetavel
 {
-    // Start is called before the first frame update
-    void Start()
+    public static new Fornecedor<AbstractLevel> getFornecedor()
     {
-        
+        return new FornecedorEstrelaMarinha();
     }
 
-    // Update is called once per frame
-    void Update()
+    public class FornecedorEstrelaMarinha : Fornecedor<AbstractLevel>
     {
-        
+        public AbstractLevel fornecer()
+        {
+            return new LevelEstrelaMarinha();
+        }
     }
 }

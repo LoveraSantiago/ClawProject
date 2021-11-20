@@ -35,6 +35,14 @@ public class LevelEntidade
 
             new LevelEntidade(Level.COLETAVEL, "Coletavel", LevelColetavel.getFornecedor()),
 
+            new LevelEntidade(Level.COLETAVEL, "LevelPao"           , LevelPao.getFornecedor()),
+            new LevelEntidade(Level.COLETAVEL, "LevelMaca"          , LevelMaca.getFornecedor()),
+            new LevelEntidade(Level.COLETAVEL, "LevelLeite"         , LevelLeite.getFornecedor()),
+            new LevelEntidade(Level.COLETAVEL, "LevelCoco"          , LevelCoco.getFornecedor()),
+            new LevelEntidade(Level.COLETAVEL, "LevelAspargo"       , LevelAspargo.getFornecedor()),
+            new LevelEntidade(Level.COLETAVEL, "LevelLaranja"       , LevelLaranja.getFornecedor()),
+            new LevelEntidade(Level.COLETAVEL, "LevelEstrelaMarinha", LevelEstrelaMarinha.getFornecedor()),
+
             new LevelEntidade(Level.CACANIQUEL_PUP_G, "CacaNiquelGeral"     , LevelCacaNiquelPupGeral.getFornecedor()),
             new LevelEntidade(Level.CACANIQUEL_PUP_I, "CacaNiquelIndividual", LevelCacaNiquelPupIndividual.getFornecedor()),
         };
