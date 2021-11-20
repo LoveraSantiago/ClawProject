@@ -111,7 +111,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
         }
     }    
 
-    void ProdutorConsumidoresDeEvento<int>.ConsumidorEvento.consumirEvento(int evento)
+    void AcaoBBarPupEscolhido<int>.ConsumidorEvento.consumirEvento(int evento)
     {
         controleFamilia.setIndiceAtual(evento);
         ColetavelEntidade.FAMILIA familiaAtual = controleFamilia.getItemIndiceAtual();
