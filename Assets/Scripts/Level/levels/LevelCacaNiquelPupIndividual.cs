@@ -102,5 +102,18 @@ public class LevelCacaNiquelPupIndividual : AbstractLevel
         dicionario.Add("leds2", "#07575B");
         dicionario.Add("leds3", "#07575B");
         dicionario.Add("cabo-da-garra", "#14EAF5");        return dicionario;
-    }     
+    }
+
+    public static Fornecedor<AbstractLevel> getFornecedor()
+    {
+        return new FornecedorLevelCacaNiquelPupIndividual();
+    }
+
+    public class FornecedorLevelCacaNiquelPupIndividual : Fornecedor<AbstractLevel>
+    {
+        public AbstractLevel fornecer()
+        {
+            return new LevelCacaNiquelPupIndividual();
+        }
+    }
 }

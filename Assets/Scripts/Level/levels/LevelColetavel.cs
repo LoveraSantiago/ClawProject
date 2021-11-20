@@ -101,4 +101,17 @@ public class LevelColetavel : AbstractLevel
         dicionario.Add("cabo-da-garra", "#9F5CFC");
         return dicionario;
     }
+
+    public static Fornecedor<AbstractLevel> getFornecedor()
+    {
+        return new FornecedorLevelColetavel();
+    }
+
+    public class FornecedorLevelColetavel : Fornecedor<AbstractLevel>
+    {
+        public AbstractLevel fornecer()
+        {
+            return new LevelColetavel();
+        }
+    }
 }

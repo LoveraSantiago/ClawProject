@@ -101,5 +101,18 @@ public class Level2 : AbstractLevel
 
         return dicionario;
     }
+
+    public static Fornecedor<AbstractLevel> getFornecedor()
+    {
+        return new FornecedorLevel2();
+    }
+
+    public class FornecedorLevel2: Fornecedor<AbstractLevel>
+    {
+        public AbstractLevel fornecer()
+        {
+            return new Level2();
+        }
+    }
 }
 

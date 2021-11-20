@@ -108,4 +108,17 @@ public class Level1 : AbstractLevel
         dicionario.Add("cabo-da-garra", "#FFFFFF");
         return dicionario;
     }    
+
+    public static Fornecedor<AbstractLevel> getFornecedor()
+    {
+        return new FornecedorLevel1();
+    }
+
+    public class FornecedorLevel1 : Fornecedor<AbstractLevel>
+    {
+        public AbstractLevel fornecer()
+        {
+            return new Level1();
+        }
+    }
 }
