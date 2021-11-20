@@ -36,6 +36,7 @@ public class ColetaveisScene : MonoBehaviour,
         blocoImg = new BlocoImgColetaveis(familias, dicionarioDeSprites, blocoImgDto);
         BlocoImgColetaveisDetalhe blocoImgDetalhe = new BlocoImgColetaveisDetalhe(blocoImgDetalheDto);
         ScrollBottomBarSceneColetaveis scBottomBar = new ScrollBottomBarSceneColetaveis(prefabBottomBar, familias, dicionarioDeSprites);
+        BotaoIrGameColetaveis btnColetaveis = new BotaoIrGameColetaveis(blocoImgDetalheDto.BtnGanharColetavel);
 
         new AcaoBlocoImgColetavelAtual()
             .configurarProdutor(blocoImg)
@@ -45,8 +46,7 @@ public class ColetaveisScene : MonoBehaviour,
             .configurarProdutor(scBottomBar)
             .adicionarConsumidor(blocoImg);
 
-        configBtnBack(btnBack);
-        configBtnGanharColetado(blocoImgDetalheDto.BtnGanharColetavel);
+        configBtnBack(btnBack);        
         blocoImg.startLaizy();
     }   
 
@@ -58,11 +58,5 @@ public class ColetaveisScene : MonoBehaviour,
     private void configBtnBack(Button btnBack)
     {
         btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMap());
-    }
-
-    private void configBtnGanharColetado(Button btnBack)
-    {
-        PlayerPrefsLevel.salvarLevel(Level.COLETAVEL);
-        btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMainGame());
-    }   
+    }    
 }

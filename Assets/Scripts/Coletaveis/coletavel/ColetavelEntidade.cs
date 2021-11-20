@@ -8,13 +8,18 @@ public class ColetavelEntidade
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }//Deve ser unico
     public FAMILIA familia { get; private set; }    
+    public Level level { get; private set; }
 
     public ColetavelEntidade(int id, string nome, string nomeSprite, FAMILIA familia)
+        :this(id, nome, nomeSprite, familia, Level.NONE){}
+
+    public ColetavelEntidade(int id, string nome, string nomeSprite, FAMILIA familia, Level level)
     {
         this.id = id;
         this.nome = nome;
         this.nomeSprite = nomeSprite;
         this.familia = familia;
+        this.level = level;
     }
 
     public static ColetavelEntidade[] getColetaveisEntidades()
@@ -32,13 +37,13 @@ public class ColetavelEntidade
             new ColetavelEntidade(0, "vazio" , "tile-vazio" , FAMILIA.DEFAULTS),//Range de 0 a 9 pra defaults
             new ColetavelEntidade(1, "random", "tile-random", FAMILIA.DEFAULTS),
 
-            new ColetavelEntidade(10, "Leite"          , "characters_0001", FAMILIA.FRUTAS),//Range de 10 a 19 frutas
-            new ColetavelEntidade(11, "Maca"           , "characters_0002", FAMILIA.FRUTAS),
-            new ColetavelEntidade(12, "Laranja"        , "characters_0003", FAMILIA.FRUTAS),
-            new ColetavelEntidade(13, "Pao"            , "characters_0004", FAMILIA.FRUTAS),
-            new ColetavelEntidade(14, "Aspargo"        , "characters_0005", FAMILIA.FRUTAS),
-            new ColetavelEntidade(15, "Coco"           , "characters_0006", FAMILIA.FRUTAS),
-            new ColetavelEntidade(16, "Estrela Marinha", "characters_0007", FAMILIA.FRUTAS),
+            new ColetavelEntidade(10, "Leite"          , "characters_0001", FAMILIA.FRUTAS, Level.COLETAVEL_LEITE),//Range de 10 a 19 frutas
+            new ColetavelEntidade(11, "Maca"           , "characters_0002", FAMILIA.FRUTAS, Level.COLETAVEL_MACA),
+            new ColetavelEntidade(12, "Laranja"        , "characters_0003", FAMILIA.FRUTAS, Level.COLETAVEL_LARANJA),
+            new ColetavelEntidade(13, "Pao"            , "characters_0004", FAMILIA.FRUTAS, Level.COLETAVEL_PAO),
+            new ColetavelEntidade(14, "Aspargo"        , "characters_0005", FAMILIA.FRUTAS, Level.COLETAVEL_ASPARGO),
+            new ColetavelEntidade(15, "Coco"           , "characters_0006", FAMILIA.FRUTAS, Level.COLETAVEL_COCO),
+            new ColetavelEntidade(16, "Estrela Marinha", "characters_0007", FAMILIA.FRUTAS, Level.COLETAVEL_ESTRELAMARINHA),
 
             new ColetavelEntidade(17, "Fake1", "tile-random-temp1", FAMILIA.FAKE),
             new ColetavelEntidade(18, "Fake2", "tile-random-temp2", FAMILIA.FAKE),
