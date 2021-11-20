@@ -1,9 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class LevelPao : LevelColetavel
 {
+    public override int[,] getArrayDeColetaveis()
+    {
+        return new int[,]
+        {
+            {13, 11, 12, 13, 14, 15, 13},
+            {16, 15, 14, 12, 11, 10, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0}
+        };        
+    }
 
     public static new Fornecedor<AbstractLevel> getFornecedor()
     {
