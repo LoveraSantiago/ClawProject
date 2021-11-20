@@ -1,5 +1,7 @@
 public class ColetavelEntidade 
 {
+    private static ColetavelEntidade[] ARRAY_COLETAVEIS_ENTIDADES;
+
     public enum FAMILIA { DEFAULTS, FRUTAS, FAKE}
 
     public int id { get; private set; }//Deve ser unico
@@ -15,26 +17,38 @@ public class ColetavelEntidade
         this.familia = familia;
     }
 
-    public static ColetavelEntidade[] ARRAY_COLETAVEIS_ENTIDADES = new ColetavelEntidade[] {
-        new ColetavelEntidade(0, "vazio" , "tile-vazio" , FAMILIA.DEFAULTS),//Range de 0 a 9 pra defaults
-        new ColetavelEntidade(1, "random", "tile-random", FAMILIA.DEFAULTS),
+    public static ColetavelEntidade[] getColetaveisEntidades()
+    {
+        if(ARRAY_COLETAVEIS_ENTIDADES == null)
+        {
+            inicializarColetaveisEntidades();
+        }
+        return ARRAY_COLETAVEIS_ENTIDADES;
+    }
 
-        new ColetavelEntidade(10, "Leite"          , "characters_0001", FAMILIA.FRUTAS),//Range de 10 a 19 frutas
-        new ColetavelEntidade(11, "Maca"           , "characters_0002", FAMILIA.FRUTAS),
-        new ColetavelEntidade(12, "Laranja"        , "characters_0003", FAMILIA.FRUTAS),
-        new ColetavelEntidade(13, "Pao"            , "characters_0004", FAMILIA.FRUTAS),
-        new ColetavelEntidade(14, "Aspargo"        , "characters_0005", FAMILIA.FRUTAS),
-        new ColetavelEntidade(15, "Coco"           , "characters_0006", FAMILIA.FRUTAS),
-        new ColetavelEntidade(16, "Estrela Marinha", "characters_0007", FAMILIA.FRUTAS),
+    private static void inicializarColetaveisEntidades()
+    {
+        ARRAY_COLETAVEIS_ENTIDADES = new ColetavelEntidade[] {
+            new ColetavelEntidade(0, "vazio" , "tile-vazio" , FAMILIA.DEFAULTS),//Range de 0 a 9 pra defaults
+            new ColetavelEntidade(1, "random", "tile-random", FAMILIA.DEFAULTS),
 
-        new ColetavelEntidade(17, "Fake1", "tile-random-temp1", FAMILIA.FAKE),
-        new ColetavelEntidade(18, "Fake2", "tile-random-temp2", FAMILIA.FAKE),
-        new ColetavelEntidade(19, "Fake3", "tile-random-temp3", FAMILIA.FAKE),
-        new ColetavelEntidade(20, "Fake4", "tile-random-temp4", FAMILIA.FAKE),
-        new ColetavelEntidade(21, "Fake5", "tile-random-temp5", FAMILIA.FAKE),
-        new ColetavelEntidade(22, "Fake6", "tile-random-temp6", FAMILIA.FAKE),
-        new ColetavelEntidade(23, "Fake7", "tile-random-temp7", FAMILIA.FAKE),
-    };
+            new ColetavelEntidade(10, "Leite"          , "characters_0001", FAMILIA.FRUTAS),//Range de 10 a 19 frutas
+            new ColetavelEntidade(11, "Maca"           , "characters_0002", FAMILIA.FRUTAS),
+            new ColetavelEntidade(12, "Laranja"        , "characters_0003", FAMILIA.FRUTAS),
+            new ColetavelEntidade(13, "Pao"            , "characters_0004", FAMILIA.FRUTAS),
+            new ColetavelEntidade(14, "Aspargo"        , "characters_0005", FAMILIA.FRUTAS),
+            new ColetavelEntidade(15, "Coco"           , "characters_0006", FAMILIA.FRUTAS),
+            new ColetavelEntidade(16, "Estrela Marinha", "characters_0007", FAMILIA.FRUTAS),
+
+            new ColetavelEntidade(17, "Fake1", "tile-random-temp1", FAMILIA.FAKE),
+            new ColetavelEntidade(18, "Fake2", "tile-random-temp2", FAMILIA.FAKE),
+            new ColetavelEntidade(19, "Fake3", "tile-random-temp3", FAMILIA.FAKE),
+            new ColetavelEntidade(20, "Fake4", "tile-random-temp4", FAMILIA.FAKE),
+            new ColetavelEntidade(21, "Fake5", "tile-random-temp5", FAMILIA.FAKE),
+            new ColetavelEntidade(22, "Fake6", "tile-random-temp6", FAMILIA.FAKE),
+            new ColetavelEntidade(23, "Fake7", "tile-random-temp7", FAMILIA.FAKE),
+        };
+    }
 
     public bool isVazio()
     {

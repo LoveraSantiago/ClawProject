@@ -98,10 +98,11 @@ public class ColetavelHelper
     }
     
     private static void popularDicionarios()
-    {           
-        for (int contador = 0; contador < ColetavelEntidade.ARRAY_COLETAVEIS_ENTIDADES.Length; contador++)
+    {
+        ColetavelEntidade[] coletaveisEntidades = ColetavelEntidade.getColetaveisEntidades();
+        for (int contador = 0; contador < coletaveisEntidades.Length; contador++)
         {
-            ColetavelEntidade coletavelEntidadeIt = ColetavelEntidade.ARRAY_COLETAVEIS_ENTIDADES[contador];
+            ColetavelEntidade coletavelEntidadeIt = coletaveisEntidades[contador];
 
             dicionarioDeIds.Add(coletavelEntidadeIt.id, coletavelEntidadeIt);
             dicionarioDeSprites.Add(coletavelEntidadeIt.nomeSprite, coletavelEntidadeIt);
