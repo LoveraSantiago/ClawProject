@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+//SENDO USADO EM MAPSCENE COMPONATE PLAYBUTTON
 public class LevelManager : MonoBehaviour
 {
     [SerializeField]
