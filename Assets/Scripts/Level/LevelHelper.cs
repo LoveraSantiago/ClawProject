@@ -3,7 +3,7 @@ using System.Collections.Generic;
 public class LevelHelper
 {
     private static Dictionary<Level, LevelEntidade> dicionarioDeEnum = inicializarDicionarioDeEnum();
-    private static Dictionary<string, LevelEntidade> dicionarioDeAlias;
+    private static Dictionary<string, LevelEntidade> dicionarioDeAlias = inicializarDicionarioDeAlias();
 
     public static AbstractLevel getLevelByEnum(Level level)
     {
