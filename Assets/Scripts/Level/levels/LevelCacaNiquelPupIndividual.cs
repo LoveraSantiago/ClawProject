@@ -39,7 +39,6 @@ public class LevelCacaNiquelPupIndividual : AbstractLevel
         return false;
     }
 
-
     public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
     {
         return ColetavelEntidade.FAMILIA.FRUTAS;
@@ -101,7 +100,8 @@ public class LevelCacaNiquelPupIndividual : AbstractLevel
         dicionario.Add("leds1", "#07575B");
         dicionario.Add("leds2", "#07575B");
         dicionario.Add("leds3", "#07575B");
-        dicionario.Add("cabo-da-garra", "#14EAF5");        return dicionario;
+        dicionario.Add("cabo-da-garra", "#14EAF5");
+        return dicionario;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
