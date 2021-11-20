@@ -96,40 +96,16 @@ public class ColetavelHelper
         poolDeColetaveis.executeEmTodosColetaveis(procurador);
         return procurador.coletavelMaisAlto;
     }
-    
-    private static void popularDicionarios()
-    {
-        ColetavelEntidade[] coletaveisEntidades = ColetavelEntidade.getColetaveisEntidades();
-        for (int contador = 0; contador < coletaveisEntidades.Length; contador++)
-        {
-            ColetavelEntidade coletavelEntidadeIt = coletaveisEntidades[contador];
-
-            dicionarioDeIds.Add(coletavelEntidadeIt.id, coletavelEntidadeIt);
-            dicionarioDeSprites.Add(coletavelEntidadeIt.nomeSprite, coletavelEntidadeIt);
-            addAoDicionarioDeFamilias(coletavelEntidadeIt);
-        }        
-    }    
-
-    private static void addAoDicionarioDeFamilias(ColetavelEntidade coletavelEntidadeIt)
-    {
-        if (!dicionarioDeFamilias.ContainsKey(coletavelEntidadeIt.familia))
-        {
-            dicionarioDeFamilias.Add(coletavelEntidadeIt.familia, new List<ColetavelEntidade>());
-        }
-
-        List<ColetavelEntidade> lista = dicionarioDeFamilias[coletavelEntidadeIt.familia];
-        lista.Add(coletavelEntidadeIt);
-    }    
 
     public static void configurar()
     {
         if (dicionarioDeIds == null)
         {
-            dicionarioDeIds      = new Dictionary<int, ColetavelEntidade>();
-            dicionarioDeSprites  = new Dictionary<string, ColetavelEntidade>();
-            dicionarioDeFamilias = new Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>>();
-
-            popularDicionarios();
+            MontadorDicionariosColetaveis montador = new MontadorDicionariosColetaveis();
+            montador.montarDicionariosDeColetaveis();
+            dicionarioDeIds      = montador.dicionarioDeIds;
+            dicionarioDeSprites  = montador.dicionarioDeSprites;
+            dicionarioDeFamilias = montador.dicionarioDeFamilias;
         }
     }
 
