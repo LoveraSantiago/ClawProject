@@ -83,7 +83,7 @@ public class BoardAssemblerNegativo : EditorWindow
             if (evt.newValue != "0")
             {
 
-                AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
+                AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
                 int[,] coletaveis = level.getArrayDeColetaveisSub();
                 if(coletaveis != null)
                 {
