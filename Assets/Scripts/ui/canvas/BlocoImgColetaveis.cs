@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
                                   AcaoBBarItemEscolhido<int>.ConsumidorEvento
 {
     private BlocoImgColetaveisDto blocoImgsDto;
-    private Dictionary<string, Sprite> dicionarioDeSprites;
+    private MontadorBlocoImgFamilia montadorBlocoImg;
+
     private NavegacaoDeArray<ColetavelEntidade.FAMILIA> controleFamilia;
+
     private ProdutorDeEvento<UiColetavelInfo> produtorDeEvento;
 
     public BlocoImgColetaveis(
@@ -15,7 +16,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
         BlocoImgColetaveisDto blocoImgsDto)
     {
         this.blocoImgsDto = blocoImgsDto;
-        this.dicionarioDeSprites = dicionarioDeSprites;
+        
         produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();
 
         ColetavelEntidade.FAMILIA[] familias = ColetavelEntidade.getFamiliasDeColetaveis();
@@ -24,7 +25,9 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
         blocoImgsDto.BtnEsquerda.onClick.AddListener(()=> irParaEsquerda());
 
         ColetavelEntidade.FAMILIA familia = controleFamilia.getItemIndiceAtual();
-        montarBlocoImagemComFamilia(familia);
+
+        montadorBlocoImg = new MontadorBlocoImgFamilia(dicionarioDeSprites);
+        montadorBlocoImg.montarBlocoImagemComFamilia(blocoImgsDto, familia);
     }
 
     public void startLaizy()
@@ -46,48 +49,15 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
     private void irParaDireita()
     {
         ColetavelEntidade.FAMILIA familia = controleFamilia.getItemAnterior();
-        montarBlocoImagemComFamilia(familia);
+        montadorBlocoImg.montarBlocoImagemComFamilia(blocoImgsDto, familia);
         produzirEventoDeColetavelAtual(0);
     }
 
     private void irParaEsquerda()
     {
         ColetavelEntidade.FAMILIA familia = controleFamilia.getItemProximo();
-        montarBlocoImagemComFamilia(familia);
+        montadorBlocoImg.montarBlocoImagemComFamilia(blocoImgsDto, familia);
         produzirEventoDeColetavelAtual(0);
-    }
-
-    private void montarBlocoImagemComFamilia(ColetavelEntidade.FAMILIA familia)
-    {
-        blocoImgsDto.LblNomeFamilia.text = familia.ToString();
-
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
-        List<ColetavelEntidade> coletaveis = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
-        for (int contador = 0; contador < coletaveis.Count; contador++)
-        {
-            Sprite sprIt = dicionarioDeSprites[coletaveis[contador].nomeSprite];
-
-            Image imageIt = blocoImgsDto.GrupoImgColetaveis[contador];
-            imageIt.sprite = sprIt;            
-
-            ColetavelEntidade coletavelIt = coletavelHelper.getColetavelEntidadeBySprite(sprIt.name);
-
-            if (PlayerPrefsColetaveis.isFamiliaNotLocked(familia.ToString()))
-            {
-                if (PlayerPrefsColetaveis.isColetavelIndisponivel(coletavelIt.nome))
-                {
-                    Material matGray = new Material(Utils.materialGrayScale);
-                    matGray.SetTexture("main_text", sprIt.texture);
-                    imageIt.material = matGray;
-                }
-                imageIt.color = Color.white;
-            }
-            else
-            {
-                imageIt.color = Color.black;
-                imageIt.material = null;
-            }
-        }
     }
 
     private void produzirEventoDeColetavelAtual(int indice)
@@ -115,7 +85,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
     {
         controleFamilia.setIndiceAtual(evento);
         ColetavelEntidade.FAMILIA familiaAtual = controleFamilia.getItemIndiceAtual();
-        montarBlocoImagemComFamilia(familiaAtual);
+        montadorBlocoImg.montarBlocoImagemComFamilia(blocoImgsDto, familiaAtual);
         produzirEventoDeColetavelAtual(0);
     }
 
