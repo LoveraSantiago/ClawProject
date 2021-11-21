@@ -58,6 +58,13 @@ public class PlayerPrefsColetaveis : MonoBehaviour
         PlayerPrefs.SetInt(TAG_INDICE_FAMILIA, indice);
     }
 
+    public static int recuperarEApagarIndiceFamilia()
+    {
+        int indice = PlayerPrefs.GetInt(TAG_INDICE_FAMILIA);
+        PlayerPrefs.DeleteKey(TAG_INDICE_FAMILIA);
+        return indice;
+    }
+
     public static void salvarNavegacaoColetavel(string nomeColetavel)
     {
         PlayerPrefs.SetString(TAG_NAVEGACAO_COLETAVEL, nomeColetavel);
