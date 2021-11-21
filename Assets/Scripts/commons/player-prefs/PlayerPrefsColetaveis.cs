@@ -49,4 +49,14 @@ public class PlayerPrefsColetaveis : MonoBehaviour
     {
         PlayerPrefs.SetInt(nomeFamilia, 1);
     }
+
+    public static void salvarIndiceFamilia(ColetavelEntidade.FAMILIA familia)
+    {
+        PlayerPrefs.SetString("IndiceFamilia", familia.ToString());
+    }
+
+    public static void salvarIndiceColetavel(string nomeColetavel)
+    {
+        PlayerPrefs.SetString("IndiceColetavel", nomeColetavel);
+    }
 }
