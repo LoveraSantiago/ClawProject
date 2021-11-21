@@ -27,15 +27,12 @@ public class ColetaveisScene : MonoBehaviour,
         ColetavelHelper.configurar();
 
         PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI       
-
-        ColetavelEntidade.FAMILIA[] familias = { ColetavelEntidade.FAMILIA.FRUTAS,
-                                                 ColetavelEntidade.FAMILIA.FAKE };
-
+        
         PrefabDeSpriteDto prefabSpritesDto = prefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
         Dictionary<string, Sprite> dicionarioDeSprites = prefabSpritesDto.getDicionarioDeSprites();
-        blocoImg = new BlocoImgColetaveis(familias, dicionarioDeSprites, blocoImgDto);
+        blocoImg = new BlocoImgColetaveis(dicionarioDeSprites, blocoImgDto);
         BlocoImgColetaveisDetalhe blocoImgDetalhe = new BlocoImgColetaveisDetalhe(blocoImgDetalheDto);
-        ScrollBottomBarSceneColetaveis scBottomBar = new ScrollBottomBarSceneColetaveis(prefabBottomBar, familias, dicionarioDeSprites);
+        ScrollBottomBarSceneColetaveis scBottomBar = new ScrollBottomBarSceneColetaveis(prefabBottomBar, dicionarioDeSprites);
         BotaoIrGameColetaveis btnColetaveis = new BotaoIrGameColetaveis(blocoImgDetalheDto.BtnGanharColetavel);
 
         new AcaoBlocoImgColetavelAtual()

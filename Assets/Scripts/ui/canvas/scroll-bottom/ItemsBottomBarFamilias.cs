@@ -2,23 +2,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemsBottomBarFamilias : ItemsBottomBar
-{
-    private ColetavelEntidade.FAMILIA[] familias;
+{    
     private string lblQtdAtual;
     private Sprite spriteAtual;
     private Color corAtual;
     private Material materialAtual;
     private Dictionary<string, Sprite> dicionarioDeSprites;
 
-    public ItemsBottomBarFamilias(ColetavelEntidade.FAMILIA[] familias, Dictionary<string, Sprite> dicionarioDeSprites)
-    {
-        this.familias = familias;
+    public ItemsBottomBarFamilias(Dictionary<string, Sprite> dicionarioDeSprites)
+    { 
         this.dicionarioDeSprites = dicionarioDeSprites;
     }
 
     public void configurarIndicePesquisado(int indice)
     {
-        ColetavelEntidade.FAMILIA familiaAtual = familias[indice];
+        ColetavelEntidade.FAMILIA familiaAtual = ColetavelEntidade.getFamiliasDeColetais()[indice];
         ColetavelHelper coletavelHelper = new ColetavelHelper();
         List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familiaAtual);
         ColetavelEntidade coletavelEntidade = coletaveisDaFamilia[0];

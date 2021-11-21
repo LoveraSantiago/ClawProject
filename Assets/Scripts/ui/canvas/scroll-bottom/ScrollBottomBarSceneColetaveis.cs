@@ -9,10 +9,9 @@ public class ScrollBottomBarSceneColetaveis : ScrollBottomBar,
     private ProdutorDeEvento<int> produtorDeIndiceEscolhido;
 
     public ScrollBottomBarSceneColetaveis(
-        GameObject prefabBottomBar,
-        ColetavelEntidade.FAMILIA[] familias,
+        GameObject prefabBottomBar,        
         Dictionary<string, Sprite> dicionarioDeSprites) 
-        : base(prefabBottomBar, new ItemsBottomBarFamilias(familias, dicionarioDeSprites))
+        : base(prefabBottomBar, new ItemsBottomBarFamilias(dicionarioDeSprites))
     {
         produtorDeIndiceEscolhido = new ProdutorDeEvento<int>();
     }

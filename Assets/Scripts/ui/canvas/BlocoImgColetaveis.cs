@@ -11,14 +11,14 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
     private ProdutorDeEvento<UiColetavelInfo> produtorDeEvento;
 
     public BlocoImgColetaveis(
-        ColetavelEntidade.FAMILIA[] familias,
         Dictionary<string, Sprite> dicionarioDeSprites, 
         BlocoImgColetaveisDto blocoImgsDto)
     {
         this.blocoImgsDto = blocoImgsDto;
         this.dicionarioDeSprites = dicionarioDeSprites;
-        produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();        
+        produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();
 
+        ColetavelEntidade.FAMILIA[] familias = ColetavelEntidade.getFamiliasDeColetais();
         controleFamilia = new NavegacaoDeArray<ColetavelEntidade.FAMILIA>(familias, 0);
         blocoImgsDto.BtnDireita.onClick.AddListener(()=> irParaDireita());
         blocoImgsDto.BtnEsquerda.onClick.AddListener(()=> irParaEsquerda());
