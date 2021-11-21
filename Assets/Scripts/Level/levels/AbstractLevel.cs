@@ -50,6 +50,11 @@ public abstract class AbstractLevel
         return getTipoGame() == TIPO_GAME.ELEVADOR;
     }
 
+    public bool isColetavelLevel()
+    {
+        return getTipoGame() == TIPO_GAME.COLETAVEL;
+    }
+
     public bool isCacaNiquelLevel()
     {
         TIPO_GAME tipoGame = getTipoGame();

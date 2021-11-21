@@ -1,7 +1,11 @@
 public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento, 
                          AcaoDesligarMaquina.ConsumidorEvento    
 {
-    private bool isLevelGame;
+    private const int SAIR_NORMAL    = 0;
+    private const int SAIR_COLETAVEL = 1;
+    private const int SAIR_EXTRA     = 2;
+
+    private int estadoSairPara;    
     
     private ModalSairDto modalSairDto;
     private ProdutorDeEvento<CancelarDesligarMaquina> produtorDeEvento;
@@ -18,11 +22,15 @@ public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento,
     {
         if(level.isNormalLevel() || level.isOrdemLevel() || level.isElevadorLevel())
         {
-            isLevelGame = true;                       
+            estadoSairPara = SAIR_NORMAL;                       
+        }
+        else if (level.isColetavelLevel())
+        {
+            estadoSairPara = SAIR_COLETAVEL;
         }
         else
         {
-            isLevelGame = false;                        
+            estadoSairPara = SAIR_EXTRA;                        
         }
     }
 
@@ -36,27 +44,26 @@ public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento,
     private void sairDoGame()
     {
         Utils.continuarGame();
-        if (isLevelGame)
+        switch (estadoSairPara)
         {
-            CenaUtils.irParaCenaMap();
-        }
-        else
-        {
-            CenaUtils.irParaCenaPup();
+            case SAIR_NORMAL:    CenaUtils.irParaCenaMap();        break;
+            case SAIR_COLETAVEL: CenaUtils.irParaCenaColetaveis(); break;
+            case SAIR_EXTRA:     CenaUtils.irParaCenaPup();        break;
         }        
     }
 
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
     {
         Utils.pausarGame();
-        if (isLevelGame)
+        string text = null;
+        switch (estadoSairPara)
         {
-            modalSairDto.TextoSair.text = "Tem certeza que deseja sair?\nVocê perderá sua ficha!";
+            case SAIR_NORMAL:    text = "Tem certeza que deseja sair?\nVocê perderá sua ficha!"; break;
+            case SAIR_COLETAVEL: text = "Tem certeza que deseja sair?\nVocê perderá sua ficha!"; break;
+            case SAIR_EXTRA:     text = "Tem certeza que deseja sair do treinamento?"; break;
         }
-        else
-        {
-            modalSairDto.TextoSair.text = "Tem certeza que deseja sair do treinamento?";
-        }       
+        
+        modalSairDto.TextoSair.text = text;
         modalSairDto.ModalSair.SetActive(true);        
     }
 
