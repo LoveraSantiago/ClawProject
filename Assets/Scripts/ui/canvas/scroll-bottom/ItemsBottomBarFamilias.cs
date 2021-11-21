@@ -65,6 +65,6 @@ public class ItemsBottomBarFamilias : ItemsBottomBar
 
     public int getQtdItems()
     {
-        return familias.Length;
+        return ColetavelEntidade.getFamiliasDeColetais().Length;
     }
 }
