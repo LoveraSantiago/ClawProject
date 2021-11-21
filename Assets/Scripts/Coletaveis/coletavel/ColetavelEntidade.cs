@@ -1,6 +1,7 @@
 public class ColetavelEntidade 
 {
     private static ColetavelEntidade[] ARRAY_COLETAVEIS_ENTIDADES;
+    private static FAMILIA[] ARRAY_FAMILIAS;
 
     public enum FAMILIA { DEFAULTS, FRUTAS, FAKE}
 
@@ -29,6 +30,15 @@ public class ColetavelEntidade
             inicializarColetaveisEntidades();
         }
         return ARRAY_COLETAVEIS_ENTIDADES;
+    }
+
+    public FAMILIA[] getFamiliasDeColetais()
+    {
+        if(ARRAY_FAMILIAS == null)
+        {
+            ARRAY_FAMILIAS = new FAMILIA[]{ FAMILIA.FRUTAS, FAMILIA.FAKE };
+        }
+        return ARRAY_FAMILIAS;
     }
 
     private static void inicializarColetaveisEntidades()
