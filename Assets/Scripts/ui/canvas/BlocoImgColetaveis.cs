@@ -18,7 +18,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
         this.dicionarioDeSprites = dicionarioDeSprites;
         produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();
 
-        ColetavelEntidade.FAMILIA[] familias = ColetavelEntidade.getFamiliasDeColetais();
+        ColetavelEntidade.FAMILIA[] familias = ColetavelEntidade.getFamiliasDeColetaveis();
         controleFamilia = new NavegacaoDeArray<ColetavelEntidade.FAMILIA>(familias, 0);
         blocoImgsDto.BtnDireita.onClick.AddListener(()=> irParaDireita());
         blocoImgsDto.BtnEsquerda.onClick.AddListener(()=> irParaEsquerda());

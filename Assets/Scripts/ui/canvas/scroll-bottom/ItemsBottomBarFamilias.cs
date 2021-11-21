@@ -16,7 +16,7 @@ public class ItemsBottomBarFamilias : ItemsBottomBar
 
     public void configurarIndicePesquisado(int indice)
     {
-        ColetavelEntidade.FAMILIA familiaAtual = ColetavelEntidade.getFamiliasDeColetais()[indice];
+        ColetavelEntidade.FAMILIA familiaAtual = ColetavelEntidade.getFamiliasDeColetaveis()[indice];
         ColetavelHelper coletavelHelper = new ColetavelHelper();
         List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familiaAtual);
         ColetavelEntidade coletavelEntidade = coletaveisDaFamilia[0];
@@ -65,6 +65,6 @@ public class ItemsBottomBarFamilias : ItemsBottomBar
 
     public int getQtdItems()
     {
-        return ColetavelEntidade.getFamiliasDeColetais().Length;
+        return ColetavelEntidade.getFamiliasDeColetaveis().Length;
     }
 }

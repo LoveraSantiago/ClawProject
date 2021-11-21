@@ -32,7 +32,7 @@ public class ColetavelEntidade
         return ARRAY_COLETAVEIS_ENTIDADES;
     }
 
-    public static FAMILIA[] getFamiliasDeColetais()
+    public static FAMILIA[] getFamiliasDeColetaveis()
     {
         if(ARRAY_FAMILIAS == null)
         {

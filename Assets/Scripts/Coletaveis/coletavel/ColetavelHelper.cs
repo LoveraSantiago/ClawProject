@@ -75,6 +75,26 @@ public class ColetavelHelper
         return dicionarioDeFamilias[familia];
     }
 
+    public ColetavelTile getColetavelMaisAlto()
+    {
+        ProcuradorColetavelMaisAlto procurador = new ProcuradorColetavelMaisAlto();
+        poolDeColetaveis.executeEmTodosColetaveis(procurador);
+        return procurador.coletavelMaisAlto;
+    }
+
+    public int getIndiceDaFamilia(ColetavelEntidade.FAMILIA familia)
+    {
+        ColetavelEntidade.FAMILIA[] familias = ColetavelEntidade.getFamiliasDeColetaveis();
+        for(int contador = 0; contador < familias.Length; contador++)
+        {
+            if(familia == familias[contador])
+            {
+                return contador;
+            }
+        }
+        return 0;
+    }
+
     public void ligarMiraAlvoFinalNoColetavel(string nomeAlvo)
     {        
         poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
@@ -90,12 +110,6 @@ public class ColetavelHelper
         poolDeColetaveis.executeEmTodosColetaveis(new DesligadorDeMiras());
     }    
 
-    public ColetavelTile getColetavelMaisAlto()
-    {
-        ProcuradorColetavelMaisAlto procurador = new ProcuradorColetavelMaisAlto();
-        poolDeColetaveis.executeEmTodosColetaveis(procurador);
-        return procurador.coletavelMaisAlto;
-    }
 
     public static void configurar()
     {

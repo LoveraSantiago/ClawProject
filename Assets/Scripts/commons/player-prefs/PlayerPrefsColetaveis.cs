@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 public class PlayerPrefsColetaveis : MonoBehaviour
 {
+    private const string TAG_INDICE_FAMILIA   = "IndiceFamilia";
+    private const string TAG_INDICE_COLETAVEL = "IndiceColetavel";
+
     public static bool isFamiliaNotLocked(string nomeFamilia)
     {
         return !isFamiliaLocked(nomeFamilia);
@@ -50,13 +53,13 @@ public class PlayerPrefsColetaveis : MonoBehaviour
         PlayerPrefs.SetInt(nomeFamilia, 1);
     }
 
-    public static void salvarIndiceFamilia(ColetavelEntidade.FAMILIA familia)
+    public static void salvarIndiceFamilia(int indice)
     {
-        PlayerPrefs.SetString("IndiceFamilia", familia.ToString());
+        PlayerPrefs.SetInt(TAG_INDICE_FAMILIA, indice);
     }
 
     public static void salvarIndiceColetavel(string nomeColetavel)
     {
-        PlayerPrefs.SetString("IndiceColetavel", nomeColetavel);
+        PlayerPrefs.SetString(TAG_INDICE_COLETAVEL, nomeColetavel);
     }
 }
