@@ -33,7 +33,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
 
     public void startLaizy()
     {
-        produzirEventoDeColetavelAtual(0);
+        produzirEventoDeColetavelAtual(controleFamilia.indiceAtual);
     }
 
     public void clicouNaImg(GameObject goClicado)
