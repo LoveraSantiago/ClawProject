@@ -16,7 +16,7 @@ public class BotaoIrGameColetaveis : AcaoBlocoImgColetavelAtual.ConsumidorEvento
 
         PlayerPrefsLevel.salvarLevel(coletavelEntidade.level);
         PlayerPrefsColetaveis.salvarIndiceFamilia(indiceFamilia);
-        PlayerPrefsColetaveis.salvarNavegacaoColetavel(coletavelEntidade.nome);
+        PlayerPrefsColetaveis.salvarNavegacaoColetavel(coletavelEntidade.id);
         CenaUtils.irParaCenaMainGame();
     }
 
