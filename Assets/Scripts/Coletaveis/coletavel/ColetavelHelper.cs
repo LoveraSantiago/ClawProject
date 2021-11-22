@@ -108,8 +108,7 @@ public class ColetavelHelper
     public void desligarMirasNosColetaveis()
     {     
         poolDeColetaveis.executeEmTodosColetaveis(new DesligadorDeMiras());
-    }    
-
+    }  
 
     public static void configurar()
     {

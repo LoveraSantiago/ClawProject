@@ -65,8 +65,15 @@ public class PlayerPrefsColetaveis : MonoBehaviour
         return indice;
     }
 
-    public static void salvarNavegacaoColetavel(string nomeColetavel)
+    public static void salvarNavegacaoColetavel(int idColetavel)
     {
-        PlayerPrefs.SetString(TAG_NAVEGACAO_COLETAVEL, nomeColetavel);
+        PlayerPrefs.SetInt(TAG_NAVEGACAO_COLETAVEL, idColetavel);
+    }
+
+    public static int recuperarEApagarNavegacaoColetavel()
+    {
+        int id = PlayerPrefs.GetInt(TAG_NAVEGACAO_COLETAVEL);
+        PlayerPrefs.DeleteKey(TAG_NAVEGACAO_COLETAVEL);
+        return id;
     }
 }

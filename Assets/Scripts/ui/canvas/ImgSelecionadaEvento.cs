@@ -10,6 +10,26 @@ public class ImgSelecionadaEvento : AcaoBlocoImgColetavelAtual.ProdutorEvento
         produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();
     }
 
+    public void selecionadoDefault(Image[] imgs)
+    {
+      
+        int indice = PlayerPrefsColetaveis.recuperarEApagarNavegacaoColetavel();
+        if(indice == 0)
+        {
+            selecionadoImg(0, imgs);
+        }
+        else
+        {
+
+        }        
+    }
+
+    public void recuperadoNavegacao(int idColetavel)
+    {
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        coletavelHelper.get
+    }
+
     public void selecionadoImg(int indice, Image[] imgs)
     {
         ColetavelHelper coletavelHelper = new ColetavelHelper();
