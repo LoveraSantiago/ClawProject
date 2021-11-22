@@ -6,18 +6,16 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
 {
     private BlocoImgColetaveisDto blocoImgsDto;
     private MontadorBlocoImgFamilia montadorBlocoImg;
-
+    private ImgSelecionadaEvento imgSelecionadaEvento;
     private NavegacaoDeArray<ColetavelEntidade.FAMILIA> controleFamilia;
-
-    private ProdutorDeEvento<UiColetavelInfo> produtorDeEvento;
 
     public BlocoImgColetaveis(
         Dictionary<string, Sprite> dicionarioDeSprites, 
         BlocoImgColetaveisDto blocoImgsDto)
     {
         this.blocoImgsDto = blocoImgsDto;
-        
-        produtorDeEvento = new ProdutorDeEvento<UiColetavelInfo>();
+
+        imgSelecionadaEvento = new ImgSelecionadaEvento();        
 
         ColetavelEntidade.FAMILIA[] familias = ColetavelEntidade.getFamiliasDeColetaveis();
         int indiceInicial = PlayerPrefsColetaveis.recuperarEApagarIndiceFamilia();
@@ -43,7 +41,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
         {
             string subStringIndice = nomeGo.Replace("img-coletavel", "");
             int indice = int.Parse(subStringIndice) - 1;
-            produzirEventoDeColetavelAtual(indice);
+            imgSelecionadaEvento.selecionadoImg(indice, blocoImgsDto.GrupoImgColetaveis);            
         }
     }
 
@@ -51,47 +49,26 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
     {
         ColetavelEntidade.FAMILIA familia = controleFamilia.getItemAnterior();
         montadorBlocoImg.montarBlocoImagemComFamilia(blocoImgsDto, familia);
-        produzirEventoDeColetavelAtual(0);
+        imgSelecionadaEvento.selecionadoImg(0, blocoImgsDto.GrupoImgColetaveis);        
     }
 
     private void irParaEsquerda()
     {
         ColetavelEntidade.FAMILIA familia = controleFamilia.getItemProximo();
         montadorBlocoImg.montarBlocoImagemComFamilia(blocoImgsDto, familia);
-        produzirEventoDeColetavelAtual(0);
+        imgSelecionadaEvento.selecionadoImg(0, blocoImgsDto.GrupoImgColetaveis);
     }
-
-    private void produzirEventoDeColetavelAtual(int indice)
-    {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
-
-        Sprite sprProcurado = blocoImgsDto.GrupoImgColetaveis[indice].sprite;
-        ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeBySprite(sprProcurado.name);
-
-        if (PlayerPrefsColetaveis.isFamiliaLocked(coletavelEntidade.familia.ToString()))
-        {
-            produtorDeEvento.produziuEvento(UiColetavelInfo.ofLockado(sprProcurado, coletavelEntidade));
-        }
-        else if (PlayerPrefsColetaveis.isColetavelDisponivel(coletavelEntidade.nome))
-        {
-            produtorDeEvento.produziuEvento(UiColetavelInfo.ofColetado(sprProcurado, coletavelEntidade));
-        }
-        else
-        {
-            produtorDeEvento.produziuEvento(UiColetavelInfo.ofNaoColetado(sprProcurado, coletavelEntidade));
-        }
-    }    
 
     void AcaoBBarItemEscolhido<int>.ConsumidorEvento.consumirEvento(int evento)
     {
         controleFamilia.setIndiceAtual(evento);
         ColetavelEntidade.FAMILIA familiaAtual = controleFamilia.getItemIndiceAtual();
         montadorBlocoImg.montarBlocoImagemComFamilia(blocoImgsDto, familiaAtual);
-        produzirEventoDeColetavelAtual(0);
+        imgSelecionadaEvento.selecionadoImg(0, blocoImgsDto.GrupoImgColetaveis);
     }
 
     ProdutorDeEvento<UiColetavelInfo> AcaoBlocoImgColetavelAtual.ProdutorEvento.getProdutorDeEvento()
     {
-        return produtorDeEvento;
+        return ((AcaoBlocoImgColetavelAtual.ProdutorEvento)imgSelecionadaEvento).getProdutorDeEvento();
     }
 }
