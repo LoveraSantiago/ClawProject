@@ -4,15 +4,17 @@ using UnityEngine;
 public class ColetavelHelper 
 {
     private static PoolDeColetaveis poolDeColetaveis;
-    private static Dictionary<int, ColetavelEntidade> dicionarioDeIds;
-    private static Dictionary<string, ColetavelEntidade> dicionarioDeSprites;
-    private static Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>> dicionarioDeFamilias;   
+
+    private static Dictionary<int, ColetavelEntidade> coletaveisPorId;
+    private static Dictionary<string, ColetavelEntidade> coletaveisPorSpriteNome;
+    private static Dictionary<string, Sprite> spritesPorNome;
+    private static Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>> familiasPorEnum;   
 
     public ColetavelEntidade getColetavelEntidadeById(int idQuery)
     {   
-        if (dicionarioDeIds.ContainsKey(idQuery))
+        if (coletaveisPorId.ContainsKey(idQuery))
         {
-            return dicionarioDeIds[idQuery];
+            return coletaveisPorId[idQuery];
         }
         else
         {
@@ -28,9 +30,9 @@ public class ColetavelHelper
 
     public ColetavelEntidade getColetavelEntidadeBySprite(string spriteName)
     {     
-        if (dicionarioDeSprites.ContainsKey(spriteName))
+        if (coletaveisPorSpriteNome.ContainsKey(spriteName))
         {
-            return dicionarioDeSprites[spriteName];
+            return coletaveisPorSpriteNome[spriteName];
         }
         else
         {
@@ -41,9 +43,9 @@ public class ColetavelHelper
 
     public ColetavelEntidade getRandomColetavelEntidadeByFamilia(ColetavelEntidade.FAMILIA familia)
     {
-        if (dicionarioDeFamilias.ContainsKey(familia))
+        if (familiasPorEnum.ContainsKey(familia))
         {
-            List<ColetavelEntidade> listaDeFamilias = dicionarioDeFamilias[familia];
+            List<ColetavelEntidade> listaDeFamilias = familiasPorEnum[familia];
             int indiceSorteadoDaLista = Random.Range(0, listaDeFamilias.Count);
             return listaDeFamilias[indiceSorteadoDaLista];
         }
@@ -72,7 +74,7 @@ public class ColetavelHelper
 
     public List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamilia(ColetavelEntidade.FAMILIA familia)
     {
-        return dicionarioDeFamilias[familia];
+        return familiasPorEnum[familia];
     }
 
     public ColetavelTile getColetavelMaisAlto()
@@ -95,6 +97,11 @@ public class ColetavelHelper
         return 0;
     }
 
+    public Sprite getSpriteColetavelByNomeSprite(string nomeSprite)
+    {
+        return spritesPorNome[nomeSprite];
+    }
+
     public void ligarMiraAlvoFinalNoColetavel(string nomeAlvo)
     {        
         poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
@@ -112,14 +119,21 @@ public class ColetavelHelper
 
     public static void configurar()
     {
-        if (dicionarioDeIds == null)
+        if (coletaveisPorId == null)
         {
             MontadorDicionariosColetaveis montador = new MontadorDicionariosColetaveis();
             montador.montarDicionariosDeColetaveis();
-            dicionarioDeIds      = montador.dicionarioDeIds;
-            dicionarioDeSprites  = montador.dicionarioDeSprites;
-            dicionarioDeFamilias = montador.dicionarioDeFamilias;
+            coletaveisPorId      = montador.dicionarioDeIds;
+            coletaveisPorSpriteNome  = montador.dicionarioDeSprites;
+            familiasPorEnum = montador.dicionarioDeFamilias;
         }
+    }
+
+    public static void configurar(GameObject goPrefabSprites)
+    {
+        PrefabDeSpriteDto prefabSpritesDto = goPrefabSprites.GetComponent<PrefabDeSpriteDto>();
+        spritesPorNome = prefabSpritesDto.getDicionarioDeSprites();
+        configurar();
     }
 
     public static void configurar(PoolDeColetaveis poolDeColetaveisArg)

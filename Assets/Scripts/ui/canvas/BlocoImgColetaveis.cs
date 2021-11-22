@@ -9,9 +9,7 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
     private ImgSelecionadaEvento imgSelecionadaEvento;
     private NavegacaoDeArray<ColetavelEntidade.FAMILIA> controleFamilia;
 
-    public BlocoImgColetaveis(
-        Dictionary<string, Sprite> dicionarioDeSprites, 
-        BlocoImgColetaveisDto blocoImgsDto)
+    public BlocoImgColetaveis(BlocoImgColetaveisDto blocoImgsDto)
     {
         this.blocoImgsDto = blocoImgsDto;
 
@@ -25,13 +23,13 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
 
         ColetavelEntidade.FAMILIA familia = controleFamilia.getItemIndiceAtual();
 
-        montadorBlocoImg = new MontadorBlocoImgFamilia(dicionarioDeSprites);
+        montadorBlocoImg = new MontadorBlocoImgFamilia();
         montadorBlocoImg.montarBlocoImagemComFamilia(blocoImgsDto, familia);
     }
 
     public void startLaizy()
     {
-        produzirEventoDeColetavelAtual(controleFamilia.indiceAtual);
+        //produzirEventoDeColetavelAtual(controleFamilia.indiceAtual);
     }
 
     public void clicouNaImg(GameObject goClicado)

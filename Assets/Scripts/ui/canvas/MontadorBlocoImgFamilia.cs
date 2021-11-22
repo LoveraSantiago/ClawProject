@@ -4,22 +4,17 @@ using UnityEngine.UI;
 
 public class MontadorBlocoImgFamilia 
 {
-    private Dictionary<string, Sprite> dicionarioDeSprites;
-
-    public MontadorBlocoImgFamilia(Dictionary<string, Sprite> dicionarioDeSprites)
-    {
-        this.dicionarioDeSprites = dicionarioDeSprites;
-    }
-
     public void montarBlocoImagemComFamilia(BlocoImgColetaveisDto blocoImgsDto, ColetavelEntidade.FAMILIA familia)
     {
         blocoImgsDto.LblNomeFamilia.text = familia.ToString();
 
         ColetavelHelper coletavelHelper = new ColetavelHelper();
         List<ColetavelEntidade> coletaveis = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
+
         for (int contador = 0; contador < coletaveis.Count; contador++)
         {
-            Sprite sprIt = dicionarioDeSprites[coletaveis[contador].nomeSprite];
+            string nomeSprite = coletaveis[contador].nomeSprite;
+            Sprite sprIt = coletavelHelper.getSpriteColetavelByNomeSprite(nomeSprite);
 
             Image imageIt = blocoImgsDto.GrupoImgColetaveis[contador];
             imageIt.sprite = sprIt;

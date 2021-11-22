@@ -6,13 +6,7 @@ public class ItemsBottomBarFamilias : ItemsBottomBar
     private string lblQtdAtual;
     private Sprite spriteAtual;
     private Color corAtual;
-    private Material materialAtual;
-    private Dictionary<string, Sprite> dicionarioDeSprites;
-
-    public ItemsBottomBarFamilias(Dictionary<string, Sprite> dicionarioDeSprites)
-    { 
-        this.dicionarioDeSprites = dicionarioDeSprites;
-    }
+    private Material materialAtual;        
 
     public void configurarIndicePesquisado(int indice)
     {
@@ -20,7 +14,7 @@ public class ItemsBottomBarFamilias : ItemsBottomBar
         ColetavelHelper coletavelHelper = new ColetavelHelper();
         List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familiaAtual);
         ColetavelEntidade coletavelEntidade = coletaveisDaFamilia[0];
-        spriteAtual = dicionarioDeSprites[coletavelEntidade.nomeSprite]; 
+        spriteAtual = coletavelHelper.getSpriteColetavelByNomeSprite(coletavelEntidade.nomeSprite); 
 
         if (PlayerPrefsColetaveis.isFamiliaLocked(familiaAtual.ToString()))
         {

@@ -27,7 +27,7 @@ public class ImgSelecionadaEvento : AcaoBlocoImgColetavelAtual.ProdutorEvento
     public void recuperadoNavegacao(int idColetavel)
     {
         ColetavelHelper coletavelHelper = new ColetavelHelper();
-        coletavelHelper.get
+        //coletavelHelper.get
     }
 
     public void selecionadoImg(int indice, Image[] imgs)
