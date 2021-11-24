@@ -20,7 +20,7 @@ public class PlayerPrefsColetaveis : MonoBehaviour
 
     public static bool isAllFamiliaComColetaveisDisponiveis(ColetavelEntidade.FAMILIA familia)
     {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
         List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
         for(int contador = 0; contador < coletaveisDaFamilia.Count; contador++)
         {

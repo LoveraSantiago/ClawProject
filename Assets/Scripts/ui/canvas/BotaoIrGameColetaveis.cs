@@ -11,7 +11,7 @@ public class BotaoIrGameColetaveis : AcaoBlocoImgColetavelAtual.ConsumidorEvento
 
     private void irParaLevelDeColetado()
     {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
         int indiceFamilia = coletavelHelper.getIndiceDaFamilia(coletavelEntidade.familia);
 
         PlayerPrefsLevel.salvarLevel(coletavelEntidade.level);

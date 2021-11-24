@@ -17,7 +17,7 @@ public class RemontadorBoard
 
     public void montarColetaveis(int[,] arrayDeColetaveis, Action<GameObject, Sprite> consumidorDeSprite)
     {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
 
         for (int contadorLinha = 0; contadorLinha < arrayDeColetaveis.GetLength(0); contadorLinha++)
         {

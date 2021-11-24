@@ -28,13 +28,18 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
         bool combinacaoValida, ColetadoFim evento, 
         ColetavelTile[] coletados, PoolDeColetaveis poolDeColetaveis)
     {
-        if (isLigadoECompleto(evento) || 
-            isDesligadoMasValido(combinacaoValida) || 
-            evento.isDescarte)
+        if (isDevolver(combinacaoValida, evento))
         {
             //Debug.Log("Devolver tubo acionado");
             Utils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, coletados, poolDeColetaveis));
         }
+    }
+
+    private bool isDevolver(bool combinacaoValida, ColetadoFim evento)
+    {
+        return isLigadoECompleto(evento) ||
+               isDesligadoMasValido(combinacaoValida) ||
+               evento.isDescarte;
     }
 
     private bool isLigadoECompleto(ColetadoFim evento)

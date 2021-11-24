@@ -2,10 +2,11 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 {   
     private BoardDto boardDto;
 
-    private BoardDevolvedor devolvedor;
-    private BoardMontadorNormal montador;
-    private BoardMontadorExtra montadorExtra;
     private BoardElevador elevador;   
+    private BoardDevolvedor devolvedor;
+
+    private BoardMontadorNormal montador;
+    private BoardMontadorExtra  montadorExtra;
 
     public BoardManager(BoardDto boardDto)
     {

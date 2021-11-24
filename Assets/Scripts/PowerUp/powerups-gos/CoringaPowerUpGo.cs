@@ -20,7 +20,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
         coletavelHelper.ligarMirasNosColetaveis();
         coroutineAlvo = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
@@ -36,7 +36,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator selecionarAlvo()
     {        
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
         coletavelHelper.ligarMirasNosColetaveis();
 
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();
@@ -50,7 +50,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator fazerTroca(ColetavelTile coletavelTile)
     {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
         ColetavelEntidade coletavel = coletavelHelper.getColetavelEntidadeBySprite(coletavelTile.nomeSprite);
         List<ColetavelEntidade> listaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavel);
 
@@ -126,7 +126,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
             {
                 coletavelSelecionado.clearMaterial();
             }
-            ColetavelHelper coletavelHelper = new ColetavelHelper();
+            ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
             coletavelHelper.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
             resetPup();

@@ -70,7 +70,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     private IEnumerator selecionarAlvo()
     {
         hitColetavel = false;
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
         coletavelHelper.ligarMirasNosColetaveis();
 
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
@@ -184,7 +184,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
 
-            ColetavelHelper coletavelHelper = new ColetavelHelper();
+            ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
             coletavelHelper.desligarMirasNosColetaveis();
             resetPup();
         }

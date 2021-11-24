@@ -12,7 +12,7 @@ public abstract class BoardMontador
 
     protected void montarLinha(float[] eixoX, int contadorLinha, float altura, PoolDeColetaveis poolDeColetaveis)
     {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
         for (int contadorColuna = 0; contadorColuna < eixoX.Length; contadorColuna++)
         {
             int id = arrayDeColetaveis[contadorLinha, contadorColuna];

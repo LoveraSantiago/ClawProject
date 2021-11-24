@@ -11,7 +11,7 @@ public class ItemsBottomBarFamilias : ItemsBottomBar
     public void configurarIndicePesquisado(int indice)
     {
         ColetavelEntidade.FAMILIA familiaAtual = ColetavelEntidade.getFamiliasDeColetaveis()[indice];
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
         List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familiaAtual);
         ColetavelEntidade coletavelEntidade = coletaveisDaFamilia[0];
         spriteAtual = coletavelHelper.getSpriteColetavelByNomeSprite(coletavelEntidade.nomeSprite); 

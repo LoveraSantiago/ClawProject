@@ -24,7 +24,7 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
     private IEnumerator selecionarAlvos()
     {        
         hitColetavel2 = false;
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
         coletavelHelper.ligarMirasNosColetaveis();
 
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
@@ -47,7 +47,7 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
         if (!hitColetavel2)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
-            ColetavelHelper coletavelHelper = new ColetavelHelper();
+            ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
             coletavelHelper.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
         }

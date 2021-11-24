@@ -26,7 +26,7 @@ public class ImgSelecionadaEvento : AcaoBlocoImgColetavelAtual.ProdutorEvento
 
     public void selecionadoImg(int indice, Image[] imgs)
     {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
 
         Sprite sprProcurado = imgs[indice].sprite;
         ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeBySprite(sprProcurado.name);
@@ -35,7 +35,7 @@ public class ImgSelecionadaEvento : AcaoBlocoImgColetavelAtual.ProdutorEvento
 
     private void recuperadoNavegacao(int idColetavel)
     {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
         ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeById(idColetavel);
         Sprite sprProcurado = coletavelHelper.getSpriteColetavelByNomeSprite(coletavelEntidade.nomeSprite);
 

@@ -8,7 +8,7 @@ public class MontadorBlocoImgFamilia
     {
         blocoImgsDto.LblNomeFamilia.text = familia.ToString();
 
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
         List<ColetavelEntidade> coletaveis = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
 
         for (int contador = 0; contador < coletaveis.Count; contador++)
