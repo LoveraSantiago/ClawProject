@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColetavelEntidadeHelper 
+public class HelperColetavelEntidade 
 {
     private static PoolDeColetaveis poolDeColetaveis;
 

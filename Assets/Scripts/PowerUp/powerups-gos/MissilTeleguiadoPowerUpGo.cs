@@ -70,14 +70,14 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     private IEnumerator selecionarAlvo()
     {
         hitColetavel = false;
-        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
-        coletavelHelper.ligarMirasNosColetaveis();
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        helperColetavel.ligarMirasNosColetaveis();
 
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
         ColetavelTile coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;
 
-        coletavelHelper.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
+        helperColetavel.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
         Utils.MonoBehaviour.StartCoroutine(disparandoMissil(coletavelSelecionado));
     }
 
@@ -184,8 +184,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
 
-            ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
-            coletavelHelper.desligarMirasNosColetaveis();
+            HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+            helperColetavel.desligarMirasNosColetaveis();
             resetPup();
         }
     }

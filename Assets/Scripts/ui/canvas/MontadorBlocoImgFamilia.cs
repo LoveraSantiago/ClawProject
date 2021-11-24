@@ -8,18 +8,18 @@ public class MontadorBlocoImgFamilia
     {
         blocoImgsDto.LblNomeFamilia.text = familia.ToString();
 
-        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
-        List<ColetavelEntidade> coletaveis = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        List<ColetavelEntidade> coletaveis = helperColetavel.getListaDeColetaveisEntidadeByFamilia(familia);
 
         for (int contador = 0; contador < coletaveis.Count; contador++)
         {
             string nomeSprite = coletaveis[contador].nomeSprite;
-            Sprite sprIt = coletavelHelper.getSpriteColetavelByNomeSprite(nomeSprite);
+            Sprite sprIt = helperColetavel.getSpriteColetavelByNomeSprite(nomeSprite);
 
             Image imageIt = blocoImgsDto.GrupoImgColetaveis[contador];
             imageIt.sprite = sprIt;
 
-            ColetavelEntidade coletavelIt = coletavelHelper.getColetavelEntidadeBySprite(sprIt.name);
+            ColetavelEntidade coletavelIt = helperColetavel.getColetavelEntidadeBySprite(sprIt.name);
 
             if (PlayerPrefsColetaveis.isFamiliaNotLocked(familia.ToString()))
             {

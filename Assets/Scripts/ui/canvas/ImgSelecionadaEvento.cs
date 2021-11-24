@@ -26,18 +26,18 @@ public class ImgSelecionadaEvento : AcaoBlocoImgColetavelAtual.ProdutorEvento
 
     public void selecionadoImg(int indice, Image[] imgs)
     {
-        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
 
         Sprite sprProcurado = imgs[indice].sprite;
-        ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeBySprite(sprProcurado.name);
+        ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeBySprite(sprProcurado.name);
         selecionadoImg(sprProcurado, coletavelEntidade);
     }
 
     private void recuperadoNavegacao(int idColetavel)
     {
-        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
-        ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeById(idColetavel);
-        Sprite sprProcurado = coletavelHelper.getSpriteColetavelByNomeSprite(coletavelEntidade.nomeSprite);
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeById(idColetavel);
+        Sprite sprProcurado = helperColetavel.getSpriteColetavelByNomeSprite(coletavelEntidade.nomeSprite);
 
         selecionadoImg(sprProcurado, coletavelEntidade);
     }

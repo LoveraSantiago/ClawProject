@@ -14,7 +14,7 @@ public class ProcessadorResult
 
     public void gerarArrayDeIds()
     {
-        ColetavelEntidadeHelper coletavelHelper = new ColetavelEntidadeHelper();
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
         string result = "int[,] coletaveis = new int[,]{" + Environment.NewLine;
 
         for (int contadorLinha = 0; contadorLinha < referencias.dicionarioGosBoard.Count; contadorLinha++)
@@ -26,7 +26,7 @@ public class ProcessadorResult
                 GameObject goIt = referencias.dicionarioGosBoard[contadorLinha][contadorColuna];
                 Sprite spriteIt = goIt.GetComponent<SpriteRenderer>().sprite;
 
-                ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeBySprite(spriteIt.name);
+                ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeBySprite(spriteIt.name);
 
                 string separador = contadorColuna == dicionarioLinha.Count - 1 ? "" : ", ";
                 result += coletavelEntidade.id + separador;

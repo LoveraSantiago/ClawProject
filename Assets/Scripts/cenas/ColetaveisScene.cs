@@ -23,7 +23,7 @@ public class ColetaveisScene : MonoBehaviour,
     {
         Utils.configMainMono(this);
         Utils.configMainMatGrayScale(materialGrayScale);
-        ColetavelEntidadeHelper.configurar(prefabColetaveisDto);
+        HelperColetavelEntidade.configurar(prefabColetaveisDto);
 
         PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
                 
