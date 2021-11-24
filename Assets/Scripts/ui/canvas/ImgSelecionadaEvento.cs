@@ -20,14 +20,17 @@ public class ImgSelecionadaEvento : AcaoBlocoImgColetavelAtual.ProdutorEvento
         }
         else
         {
-
+            recuperadoNavegacao(indice);
         }        
     }
 
     public void recuperadoNavegacao(int idColetavel)
     {
         ColetavelHelper coletavelHelper = new ColetavelHelper();
-        //coletavelHelper.get
+        ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeById(idColetavel);
+        Sprite sprProcurado = coletavelHelper.getSpriteColetavelByNomeSprite(coletavel.nomeSprite);
+
+        selecionadoImg(sprProcurado, coletavelEntidade);
     }
 
     public void selecionadoImg(int indice, Image[] imgs)
@@ -36,6 +39,11 @@ public class ImgSelecionadaEvento : AcaoBlocoImgColetavelAtual.ProdutorEvento
 
         Sprite sprProcurado = imgs[indice].sprite;
         ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeBySprite(sprProcurado.name);
+        selecionadoImg(sprProcurado, coletavelEntidade);
+    }
+
+    public void selecionadoImg(Sprite sprProcurado, ColetavelEntidade coletavelEntidade)
+    {
 
         if (PlayerPrefsColetaveis.isFamiliaLocked(coletavelEntidade.familia.ToString()))
         {
@@ -49,6 +57,7 @@ public class ImgSelecionadaEvento : AcaoBlocoImgColetavelAtual.ProdutorEvento
         {
             produtorDeEvento.produziuEvento(UiColetavelInfo.ofNaoColetado(sprProcurado, coletavelEntidade));
         }
+
     }
 
     ProdutorDeEvento<UiColetavelInfo> AcaoBlocoImgColetavelAtual.ProdutorEvento.getProdutorDeEvento()
