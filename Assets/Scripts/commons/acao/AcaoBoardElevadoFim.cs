@@ -1,3 +1,3 @@
-public class AcaoBoardElevadoFim : ProdutorConsumidoresDeEvento<BoardAcaoFim>
+public class AcaoBoardElevadoFim : ProdutorConsumidoresDeEvento<SubidaBoardAcaoFim>
 {    
 }

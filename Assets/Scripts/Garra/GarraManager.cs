@@ -105,7 +105,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         gerDeMovAtual = gerDeMovNormal;
     }
 
-    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
+    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
     {
         if (!evento.isGameOver)
         {

@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
 {
-    private ProdutorDeEvento<BoardAcaoFim> produtorDeEvento;
+    private ProdutorDeEvento<SubidaBoardAcaoFim> produtorDeEvento;
 
     public BoardElevador()
     {
-        produtorDeEvento = new ProdutorDeEvento<BoardAcaoFim>();
+        produtorDeEvento = new ProdutorDeEvento<SubidaBoardAcaoFim>();
     }
 
     public IEnumerator subirBoardComPool(BoardDto boardDto, BoardMontadorExtra montadorExtra, PoolDeColetaveis poolDeColetaveis)
@@ -30,7 +30,7 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
 
         if (isAlgumColetavelAcimaDoLimiteGameOver(boardDto, poolDeColetaveis))
         {
-            produtorDeEvento.produziuEvento(BoardAcaoFim.ofGameOver());
+            produtorDeEvento.produziuEvento(SubidaBoardAcaoFim.ofGameOver());
         }
         else
         {
@@ -42,7 +42,7 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
             montadorExtra.create(boardDto, poolDeColetaveis);
 
             acrescimo = boardDto.BoardPosicao.position.y - acrescimo;
-            produtorDeEvento.produziuEvento(BoardAcaoFim.of(acrescimo));
+            produtorDeEvento.produziuEvento(SubidaBoardAcaoFim.of(acrescimo));
         }
         yield return null;
     }
@@ -62,7 +62,7 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
         return poolDeColetaveis.temEmAlgumColetavel(new AcimaHalturaColetavel(boardDto.LimiteSubida))
     }
 
-    ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

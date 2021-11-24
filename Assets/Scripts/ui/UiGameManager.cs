@@ -41,7 +41,7 @@ public class UiGameManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         ((AcaoTempoEsgotado.ConsumidorEvento)modalPontos).consumirEvento(evento);
     }
 
-    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
+    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
     {
         ((AcaoBoardElevadoFim.ConsumidorEvento)modalPontos).consumirEvento(evento);
     }

@@ -166,7 +166,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         return produtorDeInformacoesDoColetado;
     }
 
-    ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoBoardElevadoFim.ProdutorEvento)board).getProdutorDeEvento();
     }

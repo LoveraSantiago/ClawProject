@@ -201,7 +201,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
         }
     }
 
-    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
+    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
     {
         if (evento.isGameOver)
         {

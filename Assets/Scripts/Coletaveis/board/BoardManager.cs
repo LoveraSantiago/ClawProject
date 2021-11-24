@@ -51,7 +51,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         return devolvedor.devolverBoard;
     }
 
-    ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoBoardElevadoFim.ProdutorEvento)elevador).getProdutorDeEvento();
     }

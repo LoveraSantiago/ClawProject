@@ -136,7 +136,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         }
     }              
 
-    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
+    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
     {
         if (!evento.isGameOver)
         {
