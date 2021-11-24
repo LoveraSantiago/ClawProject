@@ -18,33 +18,48 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
         Vector3 posInicialParedeAlta  = boardDto.ParedeAlta.position;
         Vector3 posInicialParedeBaixa = boardDto.ParedeBaixa.position;
         Vector3 posVoltaBoard         = boardDto.PosicaoRefVoltaBoard.position;
+        float acrescimo               = boardDto.BoardPosicao.position.y;
 
         poolDeColetaveis.executeEmTodosColetaveis(new FixadorEixosXY());
 
-        float acrescimo = boardDto.BoardPosicao.position.y;
-        while (boardDto.BoardPosicao.position.y < limite)
+        while (isBoardAbaixoDoLimite(boardDto, limite))
         {
-            boardDto.BoardPosicao.position += new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
+            subirBoard(boardDto);
             yield return new WaitForFixedUpdate();
         }
-        if (poolDeColetaveis.temEmAlgumColetavel(new AcimaHalturaColetavel(boardDto.LimiteSubida)))
+
+        if (isAlgumColetavelAcimaDoLimiteGameOver(boardDto, poolDeColetaveis))
         {
-            produtorDeEvento.produziuEvento(new BoardAcaoFim(true, 0));
+            produtorDeEvento.produziuEvento(BoardAcaoFim.ofGameOver());
         }
         else
         {
-            acrescimo = boardDto.BoardPosicao.position.y - acrescimo;
-
-            boardDto.ParedeAlta.position = posInicialParedeAlta;
-            boardDto.ParedeBaixa.position = posInicialParedeBaixa;
+            boardDto.ParedeAlta.position           = posInicialParedeAlta;
+            boardDto.ParedeBaixa.position          = posInicialParedeBaixa;
             boardDto.PosicaoRefVoltaBoard.position = posVoltaBoard;
 
             poolDeColetaveis.executeEmTodosColetaveis(new DesafixadorEixosXY());
             montadorExtra.create(boardDto, poolDeColetaveis);
 
-            produtorDeEvento.produziuEvento(new BoardAcaoFim(false, acrescimo));
+            acrescimo = boardDto.BoardPosicao.position.y - acrescimo;
+            produtorDeEvento.produziuEvento(BoardAcaoFim.of(acrescimo));
         }
         yield return null;
+    }
+
+    private bool isBoardAbaixoDoLimite(BoardDto boardDto, float limite)
+    {
+        return boardDto.BoardPosicao.position.y < limite;
+    }
+
+    private void subirBoard(BoardDto boardDto)
+    {
+        boardDto.BoardPosicao.position += new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
+    }    
+
+    private bool isAlgumColetavelAcimaDoLimiteGameOver(BoardDto boardDto, PoolDeColetaveis poolDeColetaveis)
+    {
+        return poolDeColetaveis.temEmAlgumColetavel(new AcimaHalturaColetavel(boardDto.LimiteSubida))
     }
 
     ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()

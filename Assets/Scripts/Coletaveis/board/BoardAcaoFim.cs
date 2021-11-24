@@ -8,4 +8,14 @@ public class BoardAcaoFim
         this.isGameOver = isGameOver;
         this.acrescimo = acrescimo;
     }
+
+    public static BoardAcaoFim of(float acrescimo)
+    {
+        return new BoardAcaoFim(false, acrescimo);
+    }
+
+    public static BoardAcaoFim ofGameOver()
+    {
+        return new BoardAcaoFim(true, 0);
+    }
 }
