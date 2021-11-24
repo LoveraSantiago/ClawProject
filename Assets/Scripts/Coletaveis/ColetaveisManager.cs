@@ -7,25 +7,25 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoInfoDaGarra.ConsumidorEvento,                                
                                 AcaoPUpAcionado.ConsumidorEvento,                                
                                 AcaoTempoEsgotado.ConsumidorEvento
-{
-    private ColetaveisDto coletaveisDto;
+{    
     private ColetavelTile coletavelImantado;
     
     private BoardManager board;
     private TuboDeDescarte tuboDeDescarte;
     private EfeitoColetado efeito;
     private PoolDeColetaveis poolDeColetaveis;
-    private ContadorDeColetaveis contador;
+
+    private ContadorDeColetaveis         contador;
     public  ContadorDeColetaveisOrdenado contadorOrdenado { get; private set; }
+
     private DetectorDeTriggers detectorDeTrigger;
 
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;    
 
     public ColetaveisManager(ColetaveisDto coletaveisDto)
-    {
-        this.coletaveisDto = coletaveisDto;
+    {        
         poolDeColetaveis = new PoolDeColetaveis();
-        configuracoes();        
+        configuracoes(coletaveisDto);        
 
         board            = new BoardManager(coletaveisDto.BoardDto);
         contador         = new ContadorDeColetaveis(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
@@ -36,7 +36,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
-    private void configuracoes()
+    private void configuracoes(ColetaveisDto coletaveisDto)
     {
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
         configurarColetaveis(coletaveisDto);
