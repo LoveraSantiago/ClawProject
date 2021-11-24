@@ -28,7 +28,7 @@ public class ImgSelecionadaEvento : AcaoBlocoImgColetavelAtual.ProdutorEvento
     {
         ColetavelHelper coletavelHelper = new ColetavelHelper();
         ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeById(idColetavel);
-        Sprite sprProcurado = coletavelHelper.getSpriteColetavelByNomeSprite(coletavel.nomeSprite);
+        Sprite sprProcurado = coletavelHelper.getSpriteColetavelByNomeSprite(coletavelEntidade.nomeSprite);
 
         selecionadoImg(sprProcurado, coletavelEntidade);
     }
