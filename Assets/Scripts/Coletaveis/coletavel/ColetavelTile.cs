@@ -64,7 +64,7 @@ public class ColetavelTile : Coletavel
         return referenciaColliderColetado == collider2d && rigidbody.velocity.y > 0;
     }
 
-    public static void configReferenciaColliderColetado(CircleCollider2D referenciaColliderColetadoArg)
+    public static void configurar(CircleCollider2D referenciaColliderColetadoArg)
     {
         referenciaColliderColetado = referenciaColliderColetadoArg;
     }

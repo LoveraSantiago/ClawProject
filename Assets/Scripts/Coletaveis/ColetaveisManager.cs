@@ -16,7 +16,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private EfeitoColetado efeito;
     private PoolDeColetaveis poolDeColetaveis;
     private ContadorDeColetaveis contador;
-    public ContadorOrdenadoDeColetaveis contadorOrdenado { get; private set; }
+    public  ContadorOrdenadoDeColetaveis contadorOrdenado { get; private set; }
     private DetectorDeTriggers detectorDeTrigger;
 
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;    
@@ -34,8 +34,6 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         efeito           = new EfeitoColetado(coletaveisDto.EfeitoColetado);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();
-
-        ColetavelTile.configReferenciaColliderColetado(coletaveisDto.ReferenciaColliderColetado);
     }
 
     private void configuracoes()
@@ -69,6 +67,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         Coletavel.configurar(coletaveisDto);
         ColetavelHelper.configurar(poolDeColetaveis);
+        ColetavelTile.configurar(coletaveisDto.ReferenciaColliderColetado);
     }
 
     private void processarColetado(GameObject gameObjectColetado)
