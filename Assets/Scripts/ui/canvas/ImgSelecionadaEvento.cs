@@ -24,15 +24,6 @@ public class ImgSelecionadaEvento : AcaoBlocoImgColetavelAtual.ProdutorEvento
         }        
     }
 
-    public void recuperadoNavegacao(int idColetavel)
-    {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
-        ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeById(idColetavel);
-        Sprite sprProcurado = coletavelHelper.getSpriteColetavelByNomeSprite(coletavelEntidade.nomeSprite);
-
-        selecionadoImg(sprProcurado, coletavelEntidade);
-    }
-
     public void selecionadoImg(int indice, Image[] imgs)
     {
         ColetavelHelper coletavelHelper = new ColetavelHelper();
@@ -42,7 +33,16 @@ public class ImgSelecionadaEvento : AcaoBlocoImgColetavelAtual.ProdutorEvento
         selecionadoImg(sprProcurado, coletavelEntidade);
     }
 
-    public void selecionadoImg(Sprite sprProcurado, ColetavelEntidade coletavelEntidade)
+    private void recuperadoNavegacao(int idColetavel)
+    {
+        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeById(idColetavel);
+        Sprite sprProcurado = coletavelHelper.getSpriteColetavelByNomeSprite(coletavelEntidade.nomeSprite);
+
+        selecionadoImg(sprProcurado, coletavelEntidade);
+    }
+
+    private void selecionadoImg(Sprite sprProcurado, ColetavelEntidade coletavelEntidade)
     {
 
         if (PlayerPrefsColetaveis.isFamiliaLocked(coletavelEntidade.familia.ToString()))
