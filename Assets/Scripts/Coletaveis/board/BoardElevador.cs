@@ -59,7 +59,7 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
 
     private bool isAlgumColetavelAcimaDoLimiteGameOver(BoardDto boardDto, PoolDeColetaveis poolDeColetaveis)
     {
-        return poolDeColetaveis.temEmAlgumColetavel(new AcimaHalturaColetavel(boardDto.LimiteSubida))
+        return poolDeColetaveis.temEmAlgumColetavel(new AcimaHalturaColetavel(boardDto.LimiteSubida));
     }
 
     ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
