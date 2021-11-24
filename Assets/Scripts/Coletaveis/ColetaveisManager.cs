@@ -24,9 +24,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     public ColetaveisManager(ColetaveisDto coletaveisDto)
     {
         this.coletaveisDto = coletaveisDto;
-
-        configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
-        configurarPoolDeColetaveis(coletaveisDto);
+        poolDeColetaveis = new PoolDeColetaveis();
+        configuracoes();        
 
         board            = new BoardManager(coletaveisDto.BoardDto);
         contador         = new ContadorDeColetaveis(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
@@ -37,6 +36,12 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();
 
         ColetavelTile.configReferenciaColliderColetado(coletaveisDto.ReferenciaColliderColetado);
+    }
+
+    private void configuracoes()
+    {
+        configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
+        configurarColetaveis(coletaveisDto);
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
@@ -60,10 +65,9 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         detectorDeTrigger.registrarConsumidorDeTrigger(this);
     }
 
-    private void configurarPoolDeColetaveis(ColetaveisDto coletaveisDto)
+    private void configurarColetaveis(ColetaveisDto coletaveisDto)
     {
         Coletavel.configurar(coletaveisDto);
-        poolDeColetaveis = new PoolDeColetaveis();
         ColetavelHelper.configurar(poolDeColetaveis);
     }
 
