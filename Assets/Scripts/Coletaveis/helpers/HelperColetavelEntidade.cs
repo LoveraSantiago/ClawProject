@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class HelperColetavelEntidade 
 {
-    private static PoolDeColetaveis poolDeColetaveis;
-
     private static Dictionary<int, ColetavelEntidade> coletaveisPorId;
     private static Dictionary<string, ColetavelEntidade> coletaveisPorSpriteNome;
     private static Dictionary<string, Sprite> spritesPorNome;
@@ -22,11 +20,6 @@ public class HelperColetavelEntidade
             return null;
         }
     }
-
-    public ColetavelTile getColetavelInGameByName(string name)
-    {
-        return poolDeColetaveis.getColetavelPeloNome(name);
-    }   
 
     public ColetavelEntidade getColetavelEntidadeBySprite(string spriteName)
     {     
@@ -75,14 +68,7 @@ public class HelperColetavelEntidade
     public List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamilia(ColetavelEntidade.FAMILIA familia)
     {
         return familiasPorEnum[familia];
-    }
-
-    public ColetavelTile getColetavelMaisAlto()
-    {
-        ProcuradorColetavelMaisAlto procurador = new ProcuradorColetavelMaisAlto();
-        poolDeColetaveis.executeEmTodosColetaveis(procurador);
-        return procurador.coletavelMaisAlto;
-    }
+    }    
 
     public int getIndiceDaFamilia(ColetavelEntidade.FAMILIA familia)
     {
@@ -101,21 +87,6 @@ public class HelperColetavelEntidade
     {
         return spritesPorNome[nomeSprite];
     }
-
-    public void ligarMiraAlvoFinalNoColetavel(string nomeAlvo)
-    {        
-        poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
-    }
-
-    public void ligarMirasNosColetaveis()
-    {     
-        poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeMiras());
-    }
-
-    public void desligarMirasNosColetaveis()
-    {     
-        poolDeColetaveis.executeEmTodosColetaveis(new DesligadorDeMiras());
-    }  
 
     public static void configurar()
     {
