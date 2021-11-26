@@ -53,8 +53,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
 
     private IEnumerator descerPeloTubo(bool[] resultados, ColetavelTile[] coletados)
     {
-        HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
-
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         for (int contador = 0; contador < coletados.Length; contador++)
         {
             if (resultados[contador])
@@ -70,7 +69,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
                 coletavelTuboSaidaIt.RigidBodyTrail.gravityScale = tuboDto.Gravidade;
                 coletavelTuboSaidaIt.ParticulasTrail.Play();
 
-                helperColetaveis.inativarColetavel(coletados[contador]);                
+                helperInGame.inativarColetavel(coletados[contador]);                
             }
         }        
         yield return null;

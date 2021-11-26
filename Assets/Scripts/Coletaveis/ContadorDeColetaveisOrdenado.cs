@@ -56,8 +56,8 @@ public class ContadorDeColetaveisOrdenado : TrocadorDeOrdem
         {
             BoardOrdem ordemIt = ordem[contador];
 
-            HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
-            ColetavelTile coletavelTile = helperColetaveis.getColetavelInGameByName(ordemIt.nome);
+            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+            ColetavelTile coletavelTile = helperInGame.getColetavelInGameByName(ordemIt.nome);
 
             materialOutline.SetTexture(PROP_MAINTTEXT, coletavelTile.getSprite().texture);
             coletavelTile.addMaterial(materialOutline);

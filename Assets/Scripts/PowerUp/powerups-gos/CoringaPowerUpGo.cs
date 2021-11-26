@@ -20,8 +20,8 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
-        HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
-        helperColetavel.ligarMirasNosColetaveis();
+        HelperColetaveisInGame helprInGame = new HelperColetaveisInGame();
+        helprInGame.ligarMirasNosColetaveis();
         coroutineAlvo = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
@@ -36,14 +36,14 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator selecionarAlvo()
     {
-        HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
-        helperColetavel.ligarMirasNosColetaveis();
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        helperInGame.ligarMirasNosColetaveis();
 
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
 
         coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;        
-        helperColetavel.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
+        helperInGame.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
 
         coroutineTroca = Utils.MonoBehaviour.StartCoroutine(fazerTroca(coletavelSelecionado));
     }
@@ -105,8 +105,8 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
         finalizando = true;
 
-        HelperColetaveisInGame helperColetavelInGame = new HelperColetaveisInGame();
-        helperColetavelInGame.desligarMirasNosColetaveis();
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        helperInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.preFinalizar();
         coletavelTile.receberSprite(sprSorteado);
         resetPup();
@@ -128,8 +128,8 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
             {
                 coletavelSelecionado.clearMaterial();
             }
-            HelperColetaveisInGame helperColetavelInGame = new HelperColetaveisInGame();
-            helperColetavelInGame.desligarMirasNosColetaveis();
+            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+            helperInGame.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
             resetPup();
         }

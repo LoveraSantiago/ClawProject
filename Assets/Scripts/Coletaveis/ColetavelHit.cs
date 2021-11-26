@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ColetavelHit 
 {
-    private static HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
+    private static HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
 
     public static ColetavelTile hit(InputGame inputGame)
     {
@@ -16,7 +16,7 @@ public class ColetavelHit
         Collider2D colliderResult = raycastHit.collider;
         if(colliderResult != null)
         {            
-            return helperColetavel.getColetavelInGameByName(colliderResult.name);
+            return helperInGame.getColetavelInGameByName(colliderResult.name);
         }
         else
         {         

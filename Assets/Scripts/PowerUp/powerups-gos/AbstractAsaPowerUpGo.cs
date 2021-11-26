@@ -21,8 +21,8 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
-        HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
-        helperColetavel.ligarMirasNosColetaveis();
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        helperInGame.ligarMirasNosColetaveis();
         coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
 
@@ -31,14 +31,14 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
     private IEnumerator selecionarAlvo()
     {
         hitColetavel = false;
-        HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
-        helperColetavel.ligarMirasNosColetaveis();
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        helperInGame.ligarMirasNosColetaveis();
 
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
         ColetavelTile coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;
 
-        helperColetavel.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
+        helperInGame.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
         Utils.MonoBehaviour.StartCoroutine(voar(coletavelSelecionado));
     }
 
@@ -82,8 +82,8 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
         if (!hitColetavel)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
-            HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
-            helperColetavel.desligarMirasNosColetaveis();
+            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+            helperInGame.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
         }
     }

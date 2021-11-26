@@ -52,8 +52,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         int qtdColetaveisDoBoard = board.create();
         contador.configurarTotalColetaveis(qtdColetaveisDoBoard);
 
-        HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
-        coletavelImantado = helperColetaveis.getColetavelInGameByName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK        
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        coletavelImantado = helperInGame.getColetavelInGameByName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK        
         contadorOrdenado.iniciar();
     }    
 
@@ -75,8 +75,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         contador.subtrairColetavel();
 
-        HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
-        ColetavelTile coletavelAcertado = helperColetaveis.getColetavelInGameByName(gameObjectColetado.name);
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        ColetavelTile coletavelAcertado = helperInGame.getColetavelInGameByName(gameObjectColetado.name);
         coletavelAcertado.desligar();        
 
         contador.adicionarColetado(coletavelAcertado);
@@ -103,10 +103,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     public void consumir(Collider2D goColetado)
     {
         //Debug.Log("Nome Coletado: " + goColetado.name);
-        HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
-        if (helperColetaveis.temColetavlInGameByNome(goColetado.name))
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        if (helperInGame.temColetavlInGameByNome(goColetado.name))
         {
-            ColetavelTile coletado = helperColetaveis.getColetavelInGameByName(goColetado.name);            
+            ColetavelTile coletado = helperInGame.getColetavelInGameByName(goColetado.name);            
             if(coletado.isTouchingCentroDaGarra())
             {            
                 processarColetado(goColetado.gameObject);
@@ -119,8 +119,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         if (evento.isImantadoInfo)
         {
-            HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
-            coletavelImantado = helperColetaveis.getColetavelInGameByName(evento.nomeColetado);
+            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+            coletavelImantado = helperInGame.getColetavelInGameByName(evento.nomeColetado);
             coletavelImantado.imantar();
         }
         else if (evento.isNotImantadoInfo)
