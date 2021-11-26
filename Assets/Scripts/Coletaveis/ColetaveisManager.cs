@@ -66,7 +66,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private void configurarColetaveis(ColetaveisDto coletaveisDto)
     {
         Coletavel.configurar(coletaveisDto);
-        HelperColetavelEntidade.configurar(poolDeColetaveis);
+        HelperColetavelEntidade.configurar();
+        HelperColetaveisInGame.configurar(poolDeColetaveis);
         ColetavelTile.configurar(coletaveisDto.ReferenciaColliderColetado);
     }
 

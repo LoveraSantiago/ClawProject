@@ -134,11 +134,5 @@ public class HelperColetavelEntidade
         PrefabDeSpriteDto prefabSpritesDto = goPrefabSprites.GetComponent<PrefabDeSpriteDto>();
         spritesPorNome = prefabSpritesDto.getDicionarioDeSprites();
         configurar();
-    }
-
-    public static void configurar(PoolDeColetaveis poolDeColetaveisArg)
-    {
-        poolDeColetaveis = poolDeColetaveisArg;
-        configurar();
-    }
+    }    
 }
