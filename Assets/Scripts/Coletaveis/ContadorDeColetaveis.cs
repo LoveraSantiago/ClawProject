@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class ContadorDeColetaveis
 {
     public bool resultCombinacao { get; private set; }
