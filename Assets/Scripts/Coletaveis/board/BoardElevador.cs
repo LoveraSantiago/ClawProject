@@ -10,7 +10,7 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
         produtorDeEvento = new ProdutorDeEvento<SubidaBoardAcaoFim>();
     }
 
-    public IEnumerator subirBoardComPool(BoardDto boardDto, BoardMontadorExtra montadorExtra, PoolDeColetaveis poolDeColetaveis)
+    public IEnumerator subirBoardComPool(BoardDto boardDto, BoardMontadorExtra montadorExtra)
     {
         yield return new WaitForSeconds(0.6f);
 
@@ -20,7 +20,8 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
         Vector3 posVoltaBoard         = boardDto.PosicaoRefVoltaBoard.position;
         float acrescimo               = boardDto.BoardPosicao.position.y;
 
-        poolDeColetaveis.executeEmTodosColetaveis(new FixadorEixosXY());
+        HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
+        helperColetaveis.fixarTodosColetaveisEixoXY();
 
         while (isBoardAbaixoDoLimite(boardDto, limite))
         {
@@ -28,7 +29,7 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
             yield return new WaitForFixedUpdate();
         }
 
-        if (isAlgumColetavelAcimaDoLimiteGameOver(boardDto, poolDeColetaveis))
+        if (isAlgumColetavelAcimaDoLimiteGameOver(boardDto))
         {
             produtorDeEvento.produziuEvento(SubidaBoardAcaoFim.ofGameOver());
         }
@@ -38,7 +39,7 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
             boardDto.ParedeBaixa.position          = posInicialParedeBaixa;
             boardDto.PosicaoRefVoltaBoard.position = posVoltaBoard;
 
-            poolDeColetaveis.executeEmTodosColetaveis(new DesafixadorEixosXY());
+            helperColetaveis.desafixarTodosColetaveisXY();
             montadorExtra.create(boardDto);
 
             acrescimo = boardDto.BoardPosicao.position.y - acrescimo;
@@ -57,9 +58,10 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
         boardDto.BoardPosicao.position += new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
     }    
 
-    private bool isAlgumColetavelAcimaDoLimiteGameOver(BoardDto boardDto, PoolDeColetaveis poolDeColetaveis)
+    private bool isAlgumColetavelAcimaDoLimiteGameOver(BoardDto boardDto)
     {
-        return poolDeColetaveis.temEmAlgumColetavel(new AcimaHalturaColetavel(boardDto.LimiteSubida));
+        HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
+        return helperColetaveis.isAlgumColetavelAcimaDaHaltura(boardDto.LimiteSubida);        
     }
 
     ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()

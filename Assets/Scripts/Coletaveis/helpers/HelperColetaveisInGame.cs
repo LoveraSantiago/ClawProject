@@ -12,6 +12,11 @@ public class HelperColetaveisInGame
         return poolDeColetaveis.getQtdDeColetaveis();
     }
 
+    public bool temColetavlInGameByNome(string name)
+    {
+        return poolDeColetaveis.contemNome(name);
+    }
+
     public ColetavelTile getColetavelInGameByName(string name)
     {
         return poolDeColetaveis.getColetavelPeloNome(name);
@@ -39,7 +44,27 @@ public class HelperColetaveisInGame
         poolDeColetaveis.executeEmTodosColetaveis(new DesligadorDeMiras());
     }
 
-    public static void configurar(PoolDeColetaveis poolDeColetaveisArg)
+    public void fixarTodosColetaveisEixoXY()
+    {
+        poolDeColetaveis.executeEmTodosColetaveis(new FixadorEixosXY());
+    }
+
+    public void desafixarTodosColetaveisXY()
+    {
+        poolDeColetaveis.executeEmTodosColetaveis(new DesafixadorEixosXY());
+    }
+
+    public bool isAlgumColetavelAcimaDaHaltura(float haltura)
+    {
+        return poolDeColetaveis.temEmAlgumColetavel(new AcimaHalturaColetavel(haltura));
+    }
+
+    public void inativarColetavel(ColetavelTile coletado)
+    {
+        poolDeColetaveis.inativarColetavel(coletado);
+    }
+
+    public static void configurar()
     {
         poolDeColetaveis = new PoolDeColetaveis(); ;        
     }

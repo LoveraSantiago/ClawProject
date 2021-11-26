@@ -37,10 +37,10 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         return qtdColetaveisCriados;
     }   
 
-    public int subirBoard(PoolDeColetaveis poolDeColetaveis)
+    public int subirBoard()
     {
         int qtdColetaveis = montadorExtra.getQtdExtras();
-        Utils.MonoBehaviour.StartCoroutine(elevador.subirBoardComPool(boardDto, montadorExtra, poolDeColetaveis));
+        Utils.MonoBehaviour.StartCoroutine(elevador.subirBoardComPool(boardDto, montadorExtra));
         return qtdColetaveis;
     }       
 

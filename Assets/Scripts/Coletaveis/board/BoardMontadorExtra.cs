@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class BoardMontadorExtra : BoardMontador
 {
     private int contadorEixoX;

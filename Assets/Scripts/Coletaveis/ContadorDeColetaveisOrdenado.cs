@@ -22,15 +22,15 @@ public class ContadorDeColetaveisOrdenado : TrocadorDeOrdem
         }
     }
 
-    public void iniciar(PoolDeColetaveis poolDeColetaveis)
+    public void iniciar()
     {
         if(isLevelOrdem())
         {
-            indicarProximoColetavel(poolDeColetaveis);
+            indicarProximoColetavel();
         }
     }
 
-    public bool contarOrdem(ColetavelTile coletavelTile, PoolDeColetaveis poolDeColetaveis)
+    public bool contarOrdem(ColetavelTile coletavelTile)
     {
         if (isLevelOrdem())
         {
@@ -39,7 +39,7 @@ public class ContadorDeColetaveisOrdenado : TrocadorDeOrdem
             {
                 coletavelTile.clearMaterial();
                 contador++;
-                indicarProximoColetavel(poolDeColetaveis);
+                indicarProximoColetavel();
                 return false;
             }
             else
@@ -50,12 +50,15 @@ public class ContadorDeColetaveisOrdenado : TrocadorDeOrdem
         return false;        
     }
        
-    public void indicarProximoColetavel(PoolDeColetaveis poolDeColetaveis)
+    public void indicarProximoColetavel()
     {
         if(contador < ordem.Length)
         {
             BoardOrdem ordemIt = ordem[contador];
-            ColetavelTile coletavelTile = poolDeColetaveis.getColetavelPeloNome(ordemIt.nome);
+
+            HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
+            ColetavelTile coletavelTile = helperColetaveis.getColetavelInGameByName(ordemIt.nome);
+
             materialOutline.SetTexture(PROP_MAINTTEXT, coletavelTile.getSprite().texture);
             coletavelTile.addMaterial(materialOutline);
         }

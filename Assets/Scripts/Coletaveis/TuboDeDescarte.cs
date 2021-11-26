@@ -25,13 +25,12 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
     }
 
     public void devolver(
-        bool combinacaoValida, ColetadoFim evento, 
-        ColetavelTile[] coletados, PoolDeColetaveis poolDeColetaveis)
+        bool combinacaoValida, ColetadoFim evento, ColetavelTile[] coletados)
     {
         if (isDevolver(combinacaoValida, evento))
         {
             //Debug.Log("Devolver tubo acionado");
-            Utils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, coletados, poolDeColetaveis));
+            Utils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, coletados));
         }
     }
 
@@ -52,10 +51,10 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
         return !devolverTubo && combinacaoValida;
     }
 
-    private IEnumerator descerPeloTubo(
-        bool[] resultados, ColetavelTile[] coletados, PoolDeColetaveis poolDeColetaveis)
-    {        
-        
+    private IEnumerator descerPeloTubo(bool[] resultados, ColetavelTile[] coletados)
+    {
+        HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
+
         for (int contador = 0; contador < coletados.Length; contador++)
         {
             if (resultados[contador])
@@ -71,7 +70,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
                 coletavelTuboSaidaIt.RigidBodyTrail.gravityScale = tuboDto.Gravidade;
                 coletavelTuboSaidaIt.ParticulasTrail.Play();
 
-                poolDeColetaveis.inativarColetavel(coletados[contador]);
+                helperColetaveis.inativarColetavel(coletados[contador]);                
             }
         }        
         yield return null;

@@ -12,8 +12,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     
     private BoardManager board;
     private TuboDeDescarte tuboDeDescarte;
-    private EfeitoColetado efeito;
-    private PoolDeColetaveis poolDeColetaveis;
+    private EfeitoColetado efeito;    
 
     private ContadorDeColetaveis         contador;
     public  ContadorDeColetaveisOrdenado contadorOrdenado { get; private set; }
@@ -23,8 +22,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;    
 
     public ColetaveisManager(ColetaveisDto coletaveisDto)
-    {        
-        //poolDeColetaveis = new PoolDeColetaveis();
+    {   
         configuracoes(coletaveisDto);        
 
         board            = new BoardManager(coletaveisDto.BoardDto);
@@ -51,10 +49,12 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
     {
-        int qtdColetaveisDoBoard = board.create(poolDeColetaveis);
+        int qtdColetaveisDoBoard = board.create();
         contador.configurarTotalColetaveis(qtdColetaveisDoBoard);
-        coletavelImantado = poolDeColetaveis.getColetavelPeloNome("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK        
-        contadorOrdenado.iniciar(poolDeColetaveis);
+
+        HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
+        coletavelImantado = helperColetaveis.getColetavelInGameByName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK        
+        contadorOrdenado.iniciar();
     }    
 
     private void configurarSensorDeColetado(GameObject goSensorDeColetado)
@@ -67,18 +67,20 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         Coletavel.configurar(coletaveisDto);
         HelperColetavelEntidade.configurar();
-        HelperColetaveisInGame.configurar(poolDeColetaveis);
+        HelperColetaveisInGame.configurar();
         ColetavelTile.configurar(coletaveisDto.ReferenciaColliderColetado);
     }
 
     private void processarColetado(GameObject gameObjectColetado)
     {
         contador.subtrairColetavel();
-        ColetavelTile coletavelAcertado = poolDeColetaveis.getColetavelPeloNome(gameObjectColetado.name);
+
+        HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
+        ColetavelTile coletavelAcertado = helperColetaveis.getColetavelInGameByName(gameObjectColetado.name);
         coletavelAcertado.desligar();        
 
         contador.adicionarColetado(coletavelAcertado);
-        bool resultOrdem = contadorOrdenado.contarOrdem(coletavelAcertado, poolDeColetaveis);
+        bool resultOrdem = contadorOrdenado.contarOrdem(coletavelAcertado);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
@@ -101,9 +103,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     public void consumir(Collider2D goColetado)
     {
         //Debug.Log("Nome Coletado: " + goColetado.name);
-        if (poolDeColetaveis.contemNome(goColetado.name))
+        HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
+        if (helperColetaveis.temColetavlInGameByNome(goColetado.name))
         {
-            ColetavelTile coletado = poolDeColetaveis.getColetavelPeloNome(goColetado.name);            
+            ColetavelTile coletado = helperColetaveis.getColetavelInGameByName(goColetado.name);            
             if(coletado.isTouchingCentroDaGarra())
             {            
                 processarColetado(goColetado.gameObject);
@@ -116,7 +119,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         if (evento.isImantadoInfo)
         {
-            coletavelImantado = poolDeColetaveis.getColetavelPeloNome(evento.nomeColetado);
+            HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
+            coletavelImantado = helperColetaveis.getColetavelInGameByName(evento.nomeColetado);
             coletavelImantado.imantar();
         }
         else if (evento.isNotImantadoInfo)
@@ -149,14 +153,14 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         if (evento.restart)
         {
-            int qtdAtivados = board.subirBoard(poolDeColetaveis);
+            int qtdAtivados = board.subirBoard();
             contador.adicionarColetaveisExtras(qtdAtivados);            
         }        
     }
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {
-        tuboDeDescarte.devolver(contador.resultCombinacao, evento, contador.coletados, poolDeColetaveis);        
+        tuboDeDescarte.devolver(contador.resultCombinacao, evento, contador.coletados);        
         board.devolver(contador.resultCombinacao, evento, contador.coletados);
         contador.reajustarContagem(evento, board.isDevolverBoard());
     }
