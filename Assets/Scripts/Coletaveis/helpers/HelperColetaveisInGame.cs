@@ -2,14 +2,19 @@ public class HelperColetaveisInGame
 {
     private static PoolDeColetaveis poolDeColetaveis;
 
+    public ColetavelTile criarColetavel()
+    {
+        return poolDeColetaveis.criarColetavel();
+    }
+
+    public int getQtdColetaveisInGame()
+    {
+        return poolDeColetaveis.getQtdDeColetaveis();
+    }
+
     public ColetavelTile getColetavelInGameByName(string name)
     {
         return poolDeColetaveis.getColetavelPeloNome(name);
-    }
-
-    public static void configurar(PoolDeColetaveis poolDeColetaveisArg)
-    {
-        poolDeColetaveis = poolDeColetaveisArg;        
     }
 
     public ColetavelTile getColetavelMaisAlto()
@@ -32,5 +37,10 @@ public class HelperColetaveisInGame
     public void desligarMirasNosColetaveis()
     {
         poolDeColetaveis.executeEmTodosColetaveis(new DesligadorDeMiras());
+    }
+
+    public static void configurar(PoolDeColetaveis poolDeColetaveisArg)
+    {
+        poolDeColetaveis = new PoolDeColetaveis(); ;        
     }
 }

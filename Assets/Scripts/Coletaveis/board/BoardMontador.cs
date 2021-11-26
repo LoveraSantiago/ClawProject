@@ -10,13 +10,15 @@ public abstract class BoardMontador
         familia = familiaArg;
     }    
 
-    protected void montarLinha(float[] eixoX, int contadorLinha, float altura, PoolDeColetaveis poolDeColetaveis)
+    protected void montarLinha(float[] eixoX, int contadorLinha, float altura)
     {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        HelperColetavelEntidade helperColetavelEntidade = new HelperColetavelEntidade();
+        HelperColetaveisInGame  helperColetaveisInGame  = new HelperColetaveisInGame();
+
         for (int contadorColuna = 0; contadorColuna < eixoX.Length; contadorColuna++)
         {
             int id = arrayDeColetaveis[contadorLinha, contadorColuna];
-            ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeById(id);
+            ColetavelEntidade coletavelEntidade = helperColetavelEntidade.getColetavelEntidadeById(id);
 
             if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
             {
@@ -24,11 +26,11 @@ public abstract class BoardMontador
             }
             else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
             {
-                coletavelEntidade = helperColetavel.getRandomColetavelEntidadeByFamilia(familia);
+                coletavelEntidade = helperColetavelEntidade.getRandomColetavelEntidadeByFamilia(familia);
             }
 
             Vector3 posicao = new Vector3(eixoX[contadorColuna], altura, 0);
-            ColetavelTile coletavel = poolDeColetaveis.criarColetavel();
+            ColetavelTile coletavel = helperColetaveisInGame.criarColetavel();
             coletavel.receberSprite(coletavelEntidade.nomeSprite);
             coletavel.colocarNaPosicao(posicao);
             coletavel.ligar();

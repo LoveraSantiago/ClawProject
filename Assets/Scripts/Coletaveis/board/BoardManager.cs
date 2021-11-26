@@ -26,12 +26,14 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         devolvedor.configuradoPeloLevel(level.devolverParaBoard());        
     }
 
-    public int create(PoolDeColetaveis poolDeColetaveis)
+    public int create()
     {
-        montador.create(boardDto, poolDeColetaveis);
-        int qtdColetaveisCriados = poolDeColetaveis.getQtdDeColetaveis();
+        montador.create(boardDto);
 
-        montadorExtra.create(boardDto, poolDeColetaveis);
+        HelperColetaveisInGame helperColetaveis = new HelperColetaveisInGame();
+        int qtdColetaveisCriados = helperColetaveis.getQtdColetaveisInGame();
+
+        montadorExtra.create(boardDto);
         return qtdColetaveisCriados;
     }   
 

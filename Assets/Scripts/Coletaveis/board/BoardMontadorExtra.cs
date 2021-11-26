@@ -17,12 +17,12 @@ public class BoardMontadorExtra : BoardMontador
         }
     }
 
-    public void create(BoardDto boardDto, PoolDeColetaveis poolDeColetaveis)
+    public void create(BoardDto boardDto)
     {
         if (hasExtraSubColetaveis())
         {            
             float[] eixoX = getEixoX(boardDto, ++contadorEixoX);            
-            montarLinha(eixoX, contadorLinhaAtual, boardDto.PosAlturaSub, poolDeColetaveis);
+            montarLinha(eixoX, contadorLinhaAtual, boardDto.PosAlturaSub);
             incrementarContadorDeLinha();
         }
     }

@@ -39,7 +39,7 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
             boardDto.PosicaoRefVoltaBoard.position = posVoltaBoard;
 
             poolDeColetaveis.executeEmTodosColetaveis(new DesafixadorEixosXY());
-            montadorExtra.create(boardDto, poolDeColetaveis);
+            montadorExtra.create(boardDto);
 
             acrescimo = boardDto.BoardPosicao.position.y - acrescimo;
             produtorDeEvento.produziuEvento(SubidaBoardAcaoFim.of(acrescimo));

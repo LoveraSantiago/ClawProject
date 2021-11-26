@@ -24,7 +24,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     public ColetaveisManager(ColetaveisDto coletaveisDto)
     {        
-        poolDeColetaveis = new PoolDeColetaveis();
+        //poolDeColetaveis = new PoolDeColetaveis();
         configuracoes(coletaveisDto);        
 
         board            = new BoardManager(coletaveisDto.BoardDto);
