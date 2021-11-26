@@ -21,7 +21,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
         helperColetavel.ligarMirasNosColetaveis();
         coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
@@ -31,7 +31,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
     private IEnumerator selecionarAlvo()
     {
         hitColetavel = false;
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
         helperColetavel.ligarMirasNosColetaveis();
 
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
@@ -82,7 +82,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
         if (!hitColetavel)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
-            HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+            HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
             helperColetavel.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
         }

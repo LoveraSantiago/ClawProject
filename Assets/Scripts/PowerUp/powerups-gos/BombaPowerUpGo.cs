@@ -89,7 +89,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     {
         LayerMask mask = LayerMask.GetMask("Coletavel");
         Collider2D[] acertados = Physics2D.OverlapCircleAll(goColetavel.transform.position, powerUpDto.BombaDto.RaioExplosao, mask);
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
 
         for (int contador = 0; contador < acertados.Length; contador++)
         {

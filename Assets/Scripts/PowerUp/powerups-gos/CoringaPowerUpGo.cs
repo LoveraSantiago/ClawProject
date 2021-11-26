@@ -20,7 +20,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
         helperColetavel.ligarMirasNosColetaveis();
         coroutineAlvo = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
     }
@@ -35,8 +35,8 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
     }
 
     private IEnumerator selecionarAlvo()
-    {        
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+    {
+        HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
         helperColetavel.ligarMirasNosColetaveis();
 
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();
@@ -50,9 +50,9 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator fazerTroca(ColetavelTile coletavelTile)
     {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-        ColetavelEntidade coletavel = helperColetavel.getColetavelEntidadeBySprite(coletavelTile.nomeSprite);
-        List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavel);
+        HelperColetavelEntidade helperColetavelEntidade = new HelperColetavelEntidade();
+        ColetavelEntidade coletavel = helperColetavelEntidade.getColetavelEntidadeBySprite(coletavelTile.nomeSprite);
+        List<ColetavelEntidade> listaFamilia = helperColetavelEntidade.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavel);
 
         Material matTroca = new Material(powerUpDto.TeleporteDto.MatTeleporte);
         matTroca.SetTexture(PROP_SPRITE_IN, coletavelTile.getSprite().texture);
@@ -104,7 +104,9 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
         }
 
         finalizando = true;
-        helperColetavel.desligarMirasNosColetaveis();
+
+        HelperColetaveisInGame helperColetavelInGame = new HelperColetaveisInGame();
+        helperColetavelInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.preFinalizar();
         coletavelTile.receberSprite(sprSorteado);
         resetPup();
@@ -126,8 +128,8 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
             {
                 coletavelSelecionado.clearMaterial();
             }
-            HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-            helperColetavel.desligarMirasNosColetaveis();
+            HelperColetaveisInGame helperColetavelInGame = new HelperColetaveisInGame();
+            helperColetavelInGame.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
             resetPup();
         }

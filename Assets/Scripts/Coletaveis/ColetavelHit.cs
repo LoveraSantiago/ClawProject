@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ColetavelHit 
 {
-    private static HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+    private static HelperColetaveisInGame helperColetavel = new HelperColetaveisInGame();
 
     public static ColetavelTile hit(InputGame inputGame)
     {
