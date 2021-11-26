@@ -50,9 +50,9 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator fazerTroca(ColetavelTile coletavelTile)
     {
-        HelperColetavelEntidade helperColetavelEntidade = new HelperColetavelEntidade();
-        ColetavelEntidade coletavel = helperColetavelEntidade.getColetavelEntidadeBySprite(coletavelTile.nomeSprite);
-        List<ColetavelEntidade> listaFamilia = helperColetavelEntidade.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavel);
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        ColetavelEntidade coletavel = helperColetavel.getColetavelEntidadeBySprite(coletavelTile.nomeSprite);
+        List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavel);
 
         Material matTroca = new Material(powerUpDto.TeleporteDto.MatTeleporte);
         matTroca.SetTexture(PROP_SPRITE_IN, coletavelTile.getSprite().texture);

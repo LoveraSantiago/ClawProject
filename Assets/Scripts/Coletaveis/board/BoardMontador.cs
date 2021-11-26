@@ -12,13 +12,13 @@ public abstract class BoardMontador
 
     protected void montarLinha(float[] eixoX, int contadorLinha, float altura)
     {
-        HelperColetavelEntidade helperColetaveis = new HelperColetavelEntidade();
+        HelperColetavelEntidade helperColetal = new HelperColetavelEntidade();
         HelperColetaveisInGame  helperInGame     = new HelperColetaveisInGame();
 
         for (int contadorColuna = 0; contadorColuna < eixoX.Length; contadorColuna++)
         {
             int id = arrayDeColetaveis[contadorLinha, contadorColuna];
-            ColetavelEntidade coletavelEntidade = helperColetaveis.getColetavelEntidadeById(id);
+            ColetavelEntidade coletavelEntidade = helperColetal.getColetavelEntidadeById(id);
 
             if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
             {
@@ -26,7 +26,7 @@ public abstract class BoardMontador
             }
             else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
             {
-                coletavelEntidade = helperColetaveis.getRandomColetavelEntidadeByFamilia(familia);
+                coletavelEntidade = helperColetal.getRandomColetavelEntidadeByFamilia(familia);
             }
 
             Vector3 posicao = new Vector3(eixoX[contadorColuna], altura, 0);
