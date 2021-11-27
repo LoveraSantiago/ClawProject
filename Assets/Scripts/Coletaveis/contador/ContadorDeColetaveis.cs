@@ -1,4 +1,4 @@
-public class ContadorDeColetaveis
+public class ContadorDeColetaveis : AbstractContadorDeColetaveis
 {
     public bool resultCombinacao { get; private set; }
     public bool isFinished { get { return totalColetaveis == 0; } }

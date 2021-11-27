@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class ContadorDeColetaveisOrdenado : TrocadorDeOrdem
+public class ContadorDeColetaveisOrdenado : AbstractContadorDeColetaveis, 
+                                            TrocadorDeOrdem
 {
     private static readonly string PROP_MAINTTEXT = "_MaintText";
 
