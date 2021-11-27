@@ -50,7 +50,7 @@ public class ContadorDeColetaveisOrdenado : TrocadorDeOrdem
         return false;        
     }
        
-    public void indicarProximoColetavel()
+    private void indicarProximoColetavel()
     {
         if(contador < ordem.Length)
         {

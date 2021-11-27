@@ -27,6 +27,7 @@ public class ContadorDeColetaveis
     public void adicionarColetado(ColetavelTile coletado)
     {
         // Debug.Log(nomeColetado);
+        subtrairColetavel();
         adicionaAoContainerDeColetados(coletado);
         if (isTodasPosicoesOcupadas())
         {
@@ -55,7 +56,7 @@ public class ContadorDeColetaveis
         //Debug.Log("PosAdicionado Total: " + totalColetaveis);
     }
 
-    public void subtrairColetavel()
+    private void subtrairColetavel()
     {
         totalColetaveis -= 1;
         //Debug.Log("Total: " + totalColetaveis);

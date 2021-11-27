@@ -15,8 +15,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private EfeitoColetado efeito;
 
     private ContadorManager contador2;
-    //private ContadorDeColetaveis         contador;
-    //public  ContadorDeColetaveisOrdenado contadorOrdenado { get; private set; }
+    private ContadorDeColetaveis contador;
+    public ContadorDeColetaveisOrdenado contadorOrdenado { get; private set; }
 
     private DetectorDeTriggers detectorDeTrigger;
 
@@ -74,9 +74,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     }
 
     private void processarColetado(GameObject gameObjectColetado)
-    {
-        contador.subtrairColetavel();
-
+    {        
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         ColetavelTile coletavelAcertado = helperInGame.getColetavelInGameByName(gameObjectColetado.name);
         coletavelAcertado.desligar();        
