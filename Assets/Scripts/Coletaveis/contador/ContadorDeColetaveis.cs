@@ -1,9 +1,8 @@
 public class ContadorDeColetaveis : AbstractContadorDeColetaveis
 {
-    public bool resultCombinacao { get; private set; }
-    public bool isFinished { get { return totalColetaveis == 0; } }
+    private bool resultCombinacao;
 
-    public int score { get; private set; }    
+    private int score;
     private int pontosColetado;
     private int pontosAcerto;    
     private int totalColetaveis;
@@ -18,17 +17,16 @@ public class ContadorDeColetaveis : AbstractContadorDeColetaveis
         coletados = new ColetavelTile[3];        
     }
 
-    public void configurarTotalColetaveis(int total)
+    public override void iniciar(int totalColetaveis)
     {
-        totalColetaveis = total;
-        //Debug.Log("Total: " + totalColetaveis);
+        this.totalColetaveis = totalColetaveis;        
     }
 
-    public void adicionarColetado(ColetavelTile coletado)
+    public override int contarColetado(ColetavelTile coletavelTile)
     {
         // Debug.Log(nomeColetado);
         subtrairColetavel();
-        adicionaAoContainerDeColetados(coletado);
+        adicionaAoContainerDeColetados(coletavelTile);
         if (isTodasPosicoesOcupadas())
         {
             if (isCombinacaoValida())
@@ -48,7 +46,8 @@ public class ContadorDeColetaveis : AbstractContadorDeColetaveis
             resultCombinacao = false;            
         }
         score += pontosColetado;
-    }
+        return score;
+    }    
 
     public void adicionarColetaveisExtras(int qtd)
     {
@@ -84,6 +83,16 @@ public class ContadorDeColetaveis : AbstractContadorDeColetaveis
         }
     }
 
+    public override bool getResultCombinacao()
+    {
+        return resultCombinacao;
+    }
+
+    public override bool isFinished()
+    {
+        return totalColetaveis == 0;
+    }
+
     private bool isCombinacaoValida()
     {
         return coletados[0].hasEqualsSprite(coletados[1]) &&
@@ -114,5 +123,5 @@ public class ContadorDeColetaveis : AbstractContadorDeColetaveis
     private bool isTodasPosicoesOcupadas()
     {
         return coletados[0] != null && coletados[1] != null && coletados[2] != null;
-    }
+    }   
 }

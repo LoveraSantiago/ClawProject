@@ -1,61 +1,62 @@
 using UnityEngine;
 
-public class ContadorDeColetaveisOrdenado : AbstractContadorDeColetaveis, 
+public class ContadorDeColetaveisOrdenado : ContadorDeColetaveis, 
                                             TrocadorDeOrdem
 {
     private static readonly string PROP_MAINTTEXT = "_MaintText";
 
-    public int contador { get; private set; }
+    private bool resultErroOrdem;
+    private int contadorOrdem;
+
     private BoardOrdem[] ordem;
     private Material materialOutline;
 
-    public ContadorDeColetaveisOrdenado(Material materialOutline)
+    public ContadorDeColetaveisOrdenado(int pontosColetado, int pontosAcerto, Material materialOutline)
+        :base(pontosColetado, pontosAcerto)
     {
-        contador = 0;
+        contadorOrdem = 0;
         this.materialOutline = new Material(materialOutline);        
     }
 
-    public void configuradoPeloLevel(AbstractLevel level)
+    public override void configuradoPeloLevel(AbstractLevel level)
     {
-        if (level.isOrdemLevel())
-        {
-            ordem = level.getBoardOrdem();            
-        }
+        ordem = level.getBoardOrdem();                    
     }
 
-    public void iniciar()
+    public override void iniciar(int totalColetaveis)
     {
-        if(isLevelOrdem())
+        base.iniciar(totalColetaveis);
+        indicarProximoColetavel();             
+    }
+
+    public override int contarColetado(ColetavelTile coletavelTile)
+    {
+        int score = base.contarColetado(coletavelTile);
+        BoardOrdem ordemIt = ordem[contadorOrdem];
+        if (coletavelTile.nome.Equals(ordemIt.nome))
         {
+            coletavelTile.clearMaterial();
+            contadorOrdem++;
             indicarProximoColetavel();
+            resultErroOrdem = false;            
         }
+        else
+        {
+            resultErroOrdem = true;            
+        }
+        return score;
     }
 
-    public bool contarOrdem(ColetavelTile coletavelTile)
+    public override bool isErroOrdem()
     {
-        if (isLevelOrdem())
-        {
-            BoardOrdem ordemIt = ordem[contador];
-            if (coletavelTile.nome.Equals(ordemIt.nome))
-            {
-                coletavelTile.clearMaterial();
-                contador++;
-                indicarProximoColetavel();
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        return false;        
+        return resultErroOrdem;
     }
-       
+
     private void indicarProximoColetavel()
     {
-        if(contador < ordem.Length)
+        if(contadorOrdem < ordem.Length)
         {
-            BoardOrdem ordemIt = ordem[contador];
+            BoardOrdem ordemIt = ordem[contadorOrdem];
 
             HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
             ColetavelTile coletavelTile = helperInGame.getColetavelInGameByName(ordemIt.nome);
@@ -63,67 +64,61 @@ public class ContadorDeColetaveisOrdenado : AbstractContadorDeColetaveis,
             materialOutline.SetTexture(PROP_MAINTTEXT, coletavelTile.getSprite().texture);
             coletavelTile.addMaterial(materialOutline);
         }
-    }
-
-    private bool isLevelOrdem()
-    {
-        return ordem != null;
-    }
+    }    
 
     public void trocarOrdem(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
-    {
-        if (isLevelOrdem())
-        {
-            BoardOrdem ordemPrimeiro = null;
-            BoardOrdem ordemSegundo = null;            
+    {      
+        BoardOrdem ordemPrimeiro = null;
+        BoardOrdem ordemSegundo = null;            
             
-            for(int contadorAtual = contador; contadorAtual < ordem.Length; contadorAtual++)
+        for(int contadorAtual = contadorOrdem; contadorAtual < ordem.Length; contadorAtual++)
+        {
+            BoardOrdem ordemIt = ordem[contadorAtual];
+            if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
             {
-                BoardOrdem ordemIt = ordem[contadorAtual];
-                if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
-                {
-                    ordemPrimeiro = ordemIt;
-                }
-                else if (ordemIt.nome.Equals(coletavelSegundo.nome))
-                {
-                    ordemSegundo = ordemIt;
-                }
-
-                if(ordemPrimeiro != null && ordemSegundo != null)
-                {
-                    break;
-                }
+                ordemPrimeiro = ordemIt;
+            }
+            else if (ordemIt.nome.Equals(coletavelSegundo.nome))
+            {
+                ordemSegundo = ordemIt;
             }
 
-            if(ordemPrimeiro.ordem == contador + 1)
+            if(ordemPrimeiro != null && ordemSegundo != null)
             {
-                trocarMaterial(coletavelPrimeiro, coletavelSegundo);
+                break;
             }
-            else if(ordemSegundo.ordem == contador + 1)
-            {
-                trocarMaterial(coletavelSegundo, coletavelPrimeiro);
-            }
-            trocarNomes(ordemPrimeiro, ordemSegundo);
         }
+
+        if(ordemPrimeiro.ordem == contadorOrdem + 1)
+        {
+            trocarMaterial(coletavelPrimeiro, coletavelSegundo);
+        }
+        else if(ordemSegundo.ordem == contadorOrdem + 1)
+        {
+            trocarMaterial(coletavelSegundo, coletavelPrimeiro);
+        }
+        trocarNomes(ordemPrimeiro, ordemSegundo);        
     }
 
     public void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
-    {
-        if (isLevelOrdem())
+    {       
+        for (int contadorAtual = contadorOrdem; contadorAtual < ordem.Length; contadorAtual++)
         {
-            for (int contadorAtual = contador; contadorAtual < ordem.Length; contadorAtual++)
+            BoardOrdem ordemIt = ordem[contadorAtual];
+            if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
             {
-                BoardOrdem ordemIt = ordem[contadorAtual];
-                if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
+                if(ordemIt.ordem == contadorOrdem + 1)
                 {
-                    if(ordemIt.ordem == contador + 1)
-                    {
-                        trocarSpriteMaterial(coletavelPrimeiro, coletavelSegundo.getSprite());
-                    }
-                    break;
+                    trocarSpriteMaterial(coletavelPrimeiro, coletavelSegundo.getSprite());
                 }
+                break;
             }
-        }
+        }       
+    }
+
+    public override int getIndiceOrdem()
+    {
+        return contadorOrdem;
     }
 
     private void trocarNomes(BoardOrdem ordemPrimeiro, BoardOrdem ordemSegundo)
