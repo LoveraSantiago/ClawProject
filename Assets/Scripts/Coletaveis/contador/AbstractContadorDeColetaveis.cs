@@ -6,6 +6,8 @@ public abstract class AbstractContadorDeColetaveis
 
     public abstract int contarColetado(ColetavelTile coletavelTile);
 
+    public abstract void adicionarColetaveisExtras(int qtd);
+
     public abstract bool getResultCombinacao();
 
     public virtual int getIndiceOrdem()

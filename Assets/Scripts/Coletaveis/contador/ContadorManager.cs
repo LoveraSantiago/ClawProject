@@ -30,6 +30,11 @@ public class ContadorManager
         return contador.contarColetado(coletavelTile);
     }
 
+    public void adicionarColetaveisExtras(int qtd)
+    {
+        contador.adicionarColetaveisExtras(qtd);
+    }
+
     public bool getResultCombinacao()
     {
         return contador.getResultCombinacao();

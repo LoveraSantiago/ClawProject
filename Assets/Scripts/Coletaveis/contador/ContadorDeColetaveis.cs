@@ -49,7 +49,7 @@ public class ContadorDeColetaveis : AbstractContadorDeColetaveis
         return score;
     }    
 
-    public void adicionarColetaveisExtras(int qtd)
+    public override void adicionarColetaveisExtras(int qtd)
     {
         totalColetaveis += qtd;
         //Debug.Log("PosAdicionado Total: " + totalColetaveis);
