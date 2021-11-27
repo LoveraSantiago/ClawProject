@@ -15,8 +15,6 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private EfeitoColetado efeito;
 
     private ContadorManager contador2;
-    //private ContadorDeColetaveis contador;
-    //public ContadorDeColetaveisOrdenado contadorOrdenado { get; private set; }
 
     private DetectorDeTriggers detectorDeTrigger;
 
@@ -28,8 +26,6 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
         board            = new BoardManager(coletaveisDto.BoardDto);
         contador2        = new ContadorManager(coletaveisDto);
-        //contador         = new ContadorDeColetaveis(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
-        //contadorOrdenado = new ContadorDeColetaveisOrdenado(coletaveisDto.EfeitoOutline);
         tuboDeDescarte   = new TuboDeDescarte(coletaveisDto.DescarteTuboDto);
         efeito           = new EfeitoColetado(coletaveisDto.EfeitoColetado);
 
@@ -47,18 +43,15 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         board.configuradoPeloLevel(level);
         tuboDeDescarte.configuradoPeloLevel(level.devolverParaBoard());
         contador2.configuradoPeloLevel(level);
-        //contadorOrdenado.configuradoPeloLevel(level);
     }
 
     public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
     {
         int qtdColetaveisDoBoard = board.create();
         contador2.iniciar(qtdColetaveisDoBoard);
-        //contador.configurarTotalColetaveis(qtdColetaveisDoBoard);
 
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         coletavelImantado = helperInGame.getColetavelInGameByName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK    
-        //contadorOrdenado.iniciar();        
     }    
 
     private void configurarSensorDeColetado(GameObject goSensorDeColetado)
@@ -82,17 +75,12 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         coletavelAcertado.desligar();
 
         int score = contador2.contarColetado(coletavelAcertado);
-        //contador.adicionarColetado(coletavelAcertado);
-        //bool resultOrdem = contadorOrdenado.contarOrdem(coletavelAcertado);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
         InformacoesColetadoDto infoColetadoDto = new InformacoesColetadoDto();
-        //infoColetadoDto.addInfosDisplayColetados(coletavelAcertado.getSprite(), contador.resultCombinacao);
         infoColetadoDto.addInfosDisplayColetados(coletavelAcertado.getSprite(), contador2.getResultCombinacao());
-        //infoColetadoDto.addInfosDisplayScore(contador.score, contadorOrdenado.contador);
         infoColetadoDto.addInfosDisplayScore(score, contador2.getIndiceOrdem());
-        //infoColetadoDto.addInfoFinalizado(contador.isFinished, resultOrdem);
         infoColetadoDto.addInfoFinalizado(contador2.isFinished(), contador2.isErroOrdem());
 
         efeito.acionarEfeito(gameObjectColetado.transform.position);
