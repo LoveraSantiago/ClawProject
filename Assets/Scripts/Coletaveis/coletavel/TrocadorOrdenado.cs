@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TrocadorOrdenado : TrocadorDeOrdem
 {
     private static readonly string PROP_MAINTTEXT = "_MaintText";
-    NavegacaoDeArray<BoardOrdem> navegacaoOrdem
+    NavegacaoDeArray<BoardOrdem> navegacaoOrdem;
 
     public TrocadorOrdenado(NavegacaoDeArray<BoardOrdem> navegacaoOrdem)
     {
@@ -22,11 +20,11 @@ public class TrocadorOrdenado : TrocadorDeOrdem
         for (int contador = indiceNavegacao; contador < tamanhoArray; contador++)
         {
             BoardOrdem ordemIt = navegacaoOrdem.getItemDoIndice(contador);
-            if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
+            if (ordemIt.isNomeEquals(coletavelPrimeiro.nome))
             {
                 ordemPrimeiro = ordemIt;
             }
-            else if (ordemIt.nome.Equals(coletavelSegundo.nome))
+            else if (ordemIt.isNomeEquals(coletavelSegundo.nome))
             {
                 ordemSegundo = ordemIt;
             }
@@ -37,11 +35,11 @@ public class TrocadorOrdenado : TrocadorDeOrdem
             }
         }
 
-        if (ordemPrimeiro.ordem == indiceNavegacao + 1)
+        if (ordemPrimeiro.isOrdem(indiceNavegacao + 1))
         {
             trocarMaterial(coletavelPrimeiro, coletavelSegundo);
         }
-        else if (ordemSegundo.ordem == indiceNavegacao + 1)
+        else if (ordemSegundo.isOrdem(indiceNavegacao + 1))
         {
             trocarMaterial(coletavelSegundo, coletavelPrimeiro);
         }
@@ -57,7 +55,7 @@ public class TrocadorOrdenado : TrocadorDeOrdem
             BoardOrdem ordemIt = navegacaoOrdem.getItemDoIndice(contador);
             if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
             {
-                if (ordemIt.ordem == indiceNavegacao + 1)
+                if (ordemIt.isOrdem(indiceNavegacao + 1))
                 {
                     trocarSpriteMaterial(coletavelPrimeiro, coletavelSegundo.getSprite());
                 }
