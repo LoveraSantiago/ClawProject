@@ -27,9 +27,10 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         // Debug.Log(nomeColetado);
         subtrairColetavel();
         adicionaAoContainerDeColetados(coletavelTile);
-        if (isTodasPosicoesOcupadas())
+        TrincaColetaveisTiles trinca = new TrincaColetaveisTiles(coletados);
+        if (trinca.isTodasPosicoesOcupadas())
         {
-            if (isCombinacaoValida())
+            if (trinca.isCombinacaoValida())
             {
                 resultCombinacao = true;
                 score += pontosAcerto;
@@ -75,7 +76,8 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         }
         else if (evento.isNormal && evento.isTodosColetados())
         {
-            resetarColetados();
+            TrincaColetaveisTiles trinca = new TrincaColetaveisTiles(coletados);
+            coletados = trinca.resetarColetados();
             if (devolverBoard && !resultCombinacao)
             {
                 adicionarColetaveisExtras(3);
@@ -100,33 +102,9 @@ public class ContadorNormal : AbstractContadorDeColetaveis
 
     private void adicionaAoContainerDeColetados(ColetavelTile coletado)
     {
-        int indice = getPrimeiroIndiceVazio();
+        TrincaColetaveisTiles trinca = new TrincaColetaveisTiles(coletados);
+        int indice = trinca.getPrimeiroIndiceVazio();
         //Debug.Log("Indice contador de coletaveis " + indice);
         coletados[indice] = coletado;        
-    }
-    
-    private bool isCombinacaoValida()
-    {
-        return coletados[0].hasEqualsSprite(coletados[1]) &&
-               coletados[0].hasEqualsSprite(coletados[2]); 
-    }        
-
-    private void resetarColetados()
-    {
-        coletados[0] = null;
-        coletados[1] = null;
-        coletados[2] = null;
-    }
-
-    private int getPrimeiroIndiceVazio()
-    {
-        if (coletados[0] == null) return 0;
-        if (coletados[1] == null) return 1;
-        return 2;        
-    }
-
-    private bool isTodasPosicoesOcupadas()
-    {
-        return coletados[0] != null && coletados[1] != null && coletados[2] != null;
     }    
 }
