@@ -6,22 +6,17 @@ public class ContadorOrdenado : ContadorNormal,
     private static readonly string PROP_MAINTTEXT = "_MaintText";
 
     private bool resultErroOrdem;
-    //private int contadorOrdem;
-
-    //private BoardOrdem[] ordem;
     private NavegacaoDeArray<BoardOrdem> navegacaoOrdem;
     private Material materialOutline;
 
     public ContadorOrdenado(int pontosColetado, int pontosAcerto, Material materialOutline)
         :base(pontosColetado, pontosAcerto)
     {
-        //contadorOrdem = 0;
         this.materialOutline = new Material(materialOutline);        
     }
 
     public override void configuradoPeloLevel(AbstractLevel level)
     {
-        //ordem = level.getBoardOrdem();                  
         BoardOrdem[] ordens = level.getBoardOrdem();
         navegacaoOrdem = new NavegacaoDeArray<BoardOrdem>(ordens, 0);
     }
@@ -35,12 +30,10 @@ public class ContadorOrdenado : ContadorNormal,
     public override int contarColetado(ColetavelTile coletavelTile)
     {
         int score = base.contarColetado(coletavelTile);
-        //BoardOrdem ordemIt = ordem[contadorOrdem];
         BoardOrdem ordemIt = navegacaoOrdem.getItemIndiceAtual();
         if (coletavelTile.nome.Equals(ordemIt.nome))
         {
             coletavelTile.clearMaterial();
-            //contadorOrdem++;
             navegacaoOrdem.incrementar();
             indicarProximoColetavel();
             resultErroOrdem = false;            
@@ -59,10 +52,8 @@ public class ContadorOrdenado : ContadorNormal,
 
     private void indicarProximoColetavel()
     {
-        //if(contadorOrdem < ordem.Length)
         if (navegacaoOrdem.isIndiceAtualMenorQtdItensArray())
         {
-            //BoardOrdem ordemIt = ordem[contadorOrdem];
             BoardOrdem ordemIt = navegacaoOrdem.getItemIndiceAtual();
 
             HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
@@ -125,7 +116,6 @@ public class ContadorOrdenado : ContadorNormal,
 
     public override int getIndiceOrdem()
     {
-        //return contadorOrdem;
         return navegacaoOrdem.indiceAtual;
     }
 
