@@ -31,8 +31,7 @@ public class ItemsBottomBarFamilias : ItemsBottomBar
         else
         {
             lblQtdAtual = "Nok";
-            materialAtual = new Material(Utils.materialGrayScale);
-            materialAtual.SetTexture("main_text", spriteAtual.texture);
+            materialAtual = MaterialGrayScale.of(spriteAtual);            
             corAtual = Color.white;
         }
     }
