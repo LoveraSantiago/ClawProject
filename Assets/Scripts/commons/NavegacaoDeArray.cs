@@ -17,6 +17,11 @@ public class NavegacaoDeArray<T>
         return array[indiceAtual];
     }
 
+    public T getItemDoIndice(int indice)
+    {
+        return array[indice];
+    }
+
     public T getItemProximo()
     {
         if (indiceAtual == array.Length - 1)
@@ -53,11 +58,16 @@ public class NavegacaoDeArray<T>
     {
         indiceAtual--;
         return indiceAtual;
-    }
+    }    
 
     public void setIndiceAtual(int indice)
     {
         indiceAtual = indice;
+    }
+
+    public int getTamanhoArray()
+    {
+        return array.Length;
     }
 
     public bool isIndiceAtualMenorQtdItensArray()
