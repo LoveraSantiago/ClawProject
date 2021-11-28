@@ -25,8 +25,7 @@ public class MontadorBlocoImgFamilia
             {
                 if (PlayerPrefsColetaveis.isColetavelIndisponivel(coletavelIt.nome))
                 {
-                    Material matGray = new Material(Utils.materialGrayScale);
-                    matGray.SetTexture("main_text", sprIt.texture);
+                    Material matGray = MaterialGrayScale.of(sprIt);                        
                     imageIt.material = matGray;
                 }
                 imageIt.color = Color.white;
