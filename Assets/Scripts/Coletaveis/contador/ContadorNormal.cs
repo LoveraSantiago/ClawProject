@@ -1,4 +1,4 @@
-public class ContadorDeColetaveis : AbstractContadorDeColetaveis
+public class ContadorNormal : AbstractContadorDeColetaveis
 {
     private bool resultCombinacao;
 
@@ -9,7 +9,7 @@ public class ContadorDeColetaveis : AbstractContadorDeColetaveis
 
     private ColetavelTile[] coletados;
 
-    public ContadorDeColetaveis(int pontosColetado, int pontosAcerto)
+    public ContadorNormal(int pontosColetado, int pontosAcerto)
     {
         score = 0;
         this.pontosAcerto = pontosAcerto;

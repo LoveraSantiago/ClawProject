@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public class ContadorDeColetaveisOrdenado : ContadorDeColetaveis, 
-                                            TrocadorDeOrdem
+public class ContadorOrdenado : ContadorNormal, 
+                                TrocadorDeOrdem
 {
     private static readonly string PROP_MAINTTEXT = "_MaintText";
 
@@ -11,7 +11,7 @@ public class ContadorDeColetaveisOrdenado : ContadorDeColetaveis,
     private BoardOrdem[] ordem;
     private Material materialOutline;
 
-    public ContadorDeColetaveisOrdenado(int pontosColetado, int pontosAcerto, Material materialOutline)
+    public ContadorOrdenado(int pontosColetado, int pontosAcerto, Material materialOutline)
         :base(pontosColetado, pontosAcerto)
     {
         contadorOrdem = 0;

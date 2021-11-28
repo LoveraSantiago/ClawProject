@@ -12,11 +12,11 @@ public class ContadorManager
     {
         if (level.isOrdemLevel())
         {
-            contador = new ContadorDeColetaveisOrdenado(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto, coletaveisDto.EfeitoOutline);
+            contador = new ContadorOrdenado(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto, coletaveisDto.EfeitoOutline);
         }
         else
         {
-            contador = new ContadorDeColetaveis(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
+            contador = new ContadorNormal(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
         }
     }
 
