@@ -14,7 +14,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private TuboDeDescarte tuboDeDescarte;
     private EfeitoColetado efeito;
 
-    private ContadorManager contador2;
+    private ContadorManager contador;
 
     private DetectorDeTriggers detectorDeTrigger;
 
@@ -25,7 +25,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         configuracoes(coletaveisDto);        
 
         board            = new BoardManager(coletaveisDto.BoardDto);
-        contador2        = new ContadorManager(coletaveisDto);
+        contador        = new ContadorManager(coletaveisDto);
         tuboDeDescarte   = new TuboDeDescarte(coletaveisDto.DescarteTuboDto);
         efeito           = new EfeitoColetado(coletaveisDto.EfeitoColetado);
 
@@ -42,13 +42,13 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         board.configuradoPeloLevel(level);
         tuboDeDescarte.configuradoPeloLevel(level.devolverParaBoard());
-        contador2.configuradoPeloLevel(level);
+        contador.configuradoPeloLevel(level);
     }
 
     public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
     {
         int qtdColetaveisDoBoard = board.create();
-        contador2.iniciar(qtdColetaveisDoBoard);
+        contador.iniciar(qtdColetaveisDoBoard);
 
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         coletavelImantado = helperInGame.getColetavelInGameByName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK    
@@ -74,14 +74,14 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         ColetavelTile coletavelAcertado = helperInGame.getColetavelInGameByName(gameObjectColetado.name);
         coletavelAcertado.desligar();
 
-        int score = contador2.contarColetado(coletavelAcertado);
+        int score = contador.contarColetado(coletavelAcertado);
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
         InformacoesColetadoDto infoColetadoDto = new InformacoesColetadoDto();
-        infoColetadoDto.addInfosDisplayColetados(coletavelAcertado.getSprite(), contador2.getResultCombinacao());
-        infoColetadoDto.addInfosDisplayScore(score, contador2.getIndiceOrdem());
-        infoColetadoDto.addInfoFinalizado(contador2.isFinished(), contador2.isErroOrdem());
+        infoColetadoDto.addInfosDisplayColetados(coletavelAcertado.getSprite(), contador.getResultCombinacao());
+        infoColetadoDto.addInfosDisplayScore(score, contador.getIndiceOrdem());
+        infoColetadoDto.addInfoFinalizado(contador.isFinished(), contador.isErroOrdem());
 
         efeito.acionarEfeito(gameObjectColetado.transform.position);
         produtorDeInformacoesDoColetado.produziuEvento(infoColetadoDto);         
@@ -148,15 +148,15 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         if (evento.restart)
         {
             int qtdAtivados = board.subirBoard();
-            contador2.adicionarColetaveisExtras(qtdAtivados);            
+            contador.adicionarColetaveisExtras(qtdAtivados);            
         }        
     }
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {        
-        tuboDeDescarte.devolver(contador2.getResultCombinacao(), evento, contador2.getColetados());                
-        board.devolver(contador2.getResultCombinacao(), evento, contador2.getColetados());        
-        contador2.reajustarContagem(evento, board.isDevolverBoard());
+        tuboDeDescarte.devolver(contador.getResultCombinacao(), evento, contador.getColetados());                
+        board.devolver(contador.getResultCombinacao(), evento, contador.getColetados());        
+        contador.reajustarContagem(evento, board.isDevolverBoard());
     }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
