@@ -1,9 +1,8 @@
 using UnityEngine;
 
 public class TrocadorOrdenado : TrocadorDeOrdem
-{
-    private static readonly string PROP_MAINTTEXT = "_MaintText";
-    NavegacaoDeArray<BoardOrdem> navegacaoOrdem;
+{    
+    private NavegacaoDeArray<BoardOrdem> navegacaoOrdem;
 
     public TrocadorOrdenado(NavegacaoDeArray<BoardOrdem> navegacaoOrdem)
     {
@@ -75,12 +74,13 @@ public class TrocadorOrdenado : TrocadorDeOrdem
     {
         Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
+        Material materialOutline = MaterialOutline.of(coletavelComMaterial.getSprite());
         coletavelSemMaterial.addMaterial(materialOutline);
     }
 
     private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
-    {
-        materialOutline.SetTexture(PROP_MAINTTEXT, spr.texture);
+    {        
+        Material materialOutline = MaterialOutline.of(spr);
         coletavelComMaterial.addMaterial(materialOutline);
     }
 

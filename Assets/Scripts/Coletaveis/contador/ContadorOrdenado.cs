@@ -6,14 +6,10 @@ public class ContadorOrdenado : ContadorNormal,
     private static readonly string PROP_MAINTTEXT = "_MaintText";
 
     private bool resultErroOrdem;
-    private NavegacaoDeArray<BoardOrdem> navegacaoOrdem;
-    private Material materialOutline;
+    private NavegacaoDeArray<BoardOrdem> navegacaoOrdem;    
 
-    public ContadorOrdenado(int pontosColetado, int pontosAcerto, Material materialOutline)
-        :base(pontosColetado, pontosAcerto)
-    {
-        this.materialOutline = new Material(materialOutline);        
-    }
+    public ContadorOrdenado(int pontosColetado, int pontosAcerto)
+        :base(pontosColetado, pontosAcerto){}
 
     public override void configuradoPeloLevel(AbstractLevel level)
     {
@@ -58,8 +54,8 @@ public class ContadorOrdenado : ContadorNormal,
 
             HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
             ColetavelTile coletavelTile = helperInGame.getColetavelInGameByName(ordemIt.nome);
-
-            materialOutline.SetTexture(PROP_MAINTTEXT, coletavelTile.getSprite().texture);
+                        
+            Material materialOutline = MaterialOutline.of(coletavelTile.getSprite());
             coletavelTile.addMaterial(materialOutline);
         }
     }    

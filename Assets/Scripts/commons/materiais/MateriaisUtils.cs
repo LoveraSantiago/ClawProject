@@ -6,5 +6,11 @@ public class MateriaisUtils
     {
         MaterialGrayScale.configurar(materialGrayScale);
         return this;
-    }   
+    }      
+
+    public MateriaisUtils configurarOutline(Material materialOutline)
+    {
+        MaterialOutline.configurar(materialOutline);
+        return this;
+    }
 }
