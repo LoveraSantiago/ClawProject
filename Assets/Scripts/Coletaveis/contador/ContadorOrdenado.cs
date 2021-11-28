@@ -6,21 +6,24 @@ public class ContadorOrdenado : ContadorNormal,
     private static readonly string PROP_MAINTTEXT = "_MaintText";
 
     private bool resultErroOrdem;
-    private int contadorOrdem;
+    //private int contadorOrdem;
 
-    private BoardOrdem[] ordem;
+    //private BoardOrdem[] ordem;
+    private NavegacaoDeArray<BoardOrdem> navegacaoOrdem;
     private Material materialOutline;
 
     public ContadorOrdenado(int pontosColetado, int pontosAcerto, Material materialOutline)
         :base(pontosColetado, pontosAcerto)
     {
-        contadorOrdem = 0;
+        //contadorOrdem = 0;
         this.materialOutline = new Material(materialOutline);        
     }
 
     public override void configuradoPeloLevel(AbstractLevel level)
     {
-        ordem = level.getBoardOrdem();                    
+        //ordem = level.getBoardOrdem();                  
+        BoardOrdem[] ordens = level.getBoardOrdem();
+        navegacaoOrdem = new NavegacaoDeArray<BoardOrdem>(ordens, 0);
     }
 
     public override void iniciar(int totalColetaveis)
@@ -32,11 +35,13 @@ public class ContadorOrdenado : ContadorNormal,
     public override int contarColetado(ColetavelTile coletavelTile)
     {
         int score = base.contarColetado(coletavelTile);
-        BoardOrdem ordemIt = ordem[contadorOrdem];
+        //BoardOrdem ordemIt = ordem[contadorOrdem];
+        BoardOrdem ordemIt = navegacaoOrdem.getItemIndiceAtual();
         if (coletavelTile.nome.Equals(ordemIt.nome))
         {
             coletavelTile.clearMaterial();
-            contadorOrdem++;
+            //contadorOrdem++;
+            navegacaoOrdem.incrementar();
             indicarProximoColetavel();
             resultErroOrdem = false;            
         }
@@ -54,9 +59,11 @@ public class ContadorOrdenado : ContadorNormal,
 
     private void indicarProximoColetavel()
     {
-        if(contadorOrdem < ordem.Length)
+        //if(contadorOrdem < ordem.Length)
+        if (navegacaoOrdem.isIndiceAtualMenorQtdItensArray())
         {
-            BoardOrdem ordemIt = ordem[contadorOrdem];
+            //BoardOrdem ordemIt = ordem[contadorOrdem];
+            BoardOrdem ordemIt = navegacaoOrdem.getItemIndiceAtual();
 
             HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
             ColetavelTile coletavelTile = helperInGame.getColetavelInGameByName(ordemIt.nome);
@@ -68,76 +75,77 @@ public class ContadorOrdenado : ContadorNormal,
 
     public void trocarOrdem(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {      
-        BoardOrdem ordemPrimeiro = null;
-        BoardOrdem ordemSegundo = null;            
+        //BoardOrdem ordemPrimeiro = null;
+        //BoardOrdem ordemSegundo = null;            
             
-        for(int contadorAtual = contadorOrdem; contadorAtual < ordem.Length; contadorAtual++)
-        {
-            BoardOrdem ordemIt = ordem[contadorAtual];
-            if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
-            {
-                ordemPrimeiro = ordemIt;
-            }
-            else if (ordemIt.nome.Equals(coletavelSegundo.nome))
-            {
-                ordemSegundo = ordemIt;
-            }
+        //for(int contadorAtual = contadorOrdem; contadorAtual < ordem.Length; contadorAtual++)
+        //{
+        //    BoardOrdem ordemIt = ordem[contadorAtual];
+        //    if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
+        //    {
+        //        ordemPrimeiro = ordemIt;
+        //    }
+        //    else if (ordemIt.nome.Equals(coletavelSegundo.nome))
+        //    {
+        //        ordemSegundo = ordemIt;
+        //    }
 
-            if(ordemPrimeiro != null && ordemSegundo != null)
-            {
-                break;
-            }
-        }
+        //    if(ordemPrimeiro != null && ordemSegundo != null)
+        //    {
+        //        break;
+        //    }
+        //}
 
-        if(ordemPrimeiro.ordem == contadorOrdem + 1)
-        {
-            trocarMaterial(coletavelPrimeiro, coletavelSegundo);
-        }
-        else if(ordemSegundo.ordem == contadorOrdem + 1)
-        {
-            trocarMaterial(coletavelSegundo, coletavelPrimeiro);
-        }
-        trocarNomes(ordemPrimeiro, ordemSegundo);        
+        //if(ordemPrimeiro.ordem == contadorOrdem + 1)
+        //{
+        //    trocarMaterial(coletavelPrimeiro, coletavelSegundo);
+        //}
+        //else if(ordemSegundo.ordem == contadorOrdem + 1)
+        //{
+        //    trocarMaterial(coletavelSegundo, coletavelPrimeiro);
+        //}
+        //trocarNomes(ordemPrimeiro, ordemSegundo);        
     }
 
     public void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {       
-        for (int contadorAtual = contadorOrdem; contadorAtual < ordem.Length; contadorAtual++)
-        {
-            BoardOrdem ordemIt = ordem[contadorAtual];
-            if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
-            {
-                if(ordemIt.ordem == contadorOrdem + 1)
-                {
-                    trocarSpriteMaterial(coletavelPrimeiro, coletavelSegundo.getSprite());
-                }
-                break;
-            }
-        }       
+        //for (int contadorAtual = contadorOrdem; contadorAtual < ordem.Length; contadorAtual++)
+        //{
+        //    BoardOrdem ordemIt = ordem[contadorAtual];
+        //    if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
+        //    {
+        //        if(ordemIt.ordem == contadorOrdem + 1)
+        //        {
+        //            trocarSpriteMaterial(coletavelPrimeiro, coletavelSegundo.getSprite());
+        //        }
+        //        break;
+        //    }
+        //}       
     }
 
     public override int getIndiceOrdem()
     {
-        return contadorOrdem;
+        //return contadorOrdem;
+        return navegacaoOrdem.indiceAtual;
     }
 
-    private void trocarNomes(BoardOrdem ordemPrimeiro, BoardOrdem ordemSegundo)
-    {
-        string nomeTemp = ordemPrimeiro.nome;
-        ordemPrimeiro.trocarNome(ordemSegundo.nome);
-        ordemSegundo.trocarNome(nomeTemp);
-    }
+    //private void trocarNomes(BoardOrdem ordemPrimeiro, BoardOrdem ordemSegundo)
+    //{
+    //    string nomeTemp = ordemPrimeiro.nome;
+    //    ordemPrimeiro.trocarNome(ordemSegundo.nome);
+    //    ordemSegundo.trocarNome(nomeTemp);
+    //}
 
-    private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
-    {
-        materialOutline.SetTexture(PROP_MAINTTEXT, spr.texture);
-        coletavelComMaterial.addMaterial(materialOutline);
-    }
+    //private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
+    //{
+    //    materialOutline.SetTexture(PROP_MAINTTEXT, spr.texture);
+    //    coletavelComMaterial.addMaterial(materialOutline);
+    //}
 
-    private void trocarMaterial(ColetavelTile coletavelComMaterial, ColetavelTile coletavelSemMaterial)
-    {
-        Debug.Log("Troca de material acionada");
-        coletavelComMaterial.clearMaterial();
-        coletavelSemMaterial.addMaterial(materialOutline);
-    }    
+    //private void trocarMaterial(ColetavelTile coletavelComMaterial, ColetavelTile coletavelSemMaterial)
+    //{
+    //    Debug.Log("Troca de material acionada");
+    //    coletavelComMaterial.clearMaterial();
+    //    coletavelSemMaterial.addMaterial(materialOutline);
+    //}    
 }

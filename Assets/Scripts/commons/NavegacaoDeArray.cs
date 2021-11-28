@@ -25,7 +25,7 @@ public class NavegacaoDeArray<T>
         }
         else
         {
-            indiceAtual++;
+            incrementar();
         }
         return getItemIndiceAtual();
     }
@@ -38,13 +38,30 @@ public class NavegacaoDeArray<T>
         }
         else
         {
-            indiceAtual--;
+            decrementar();
         }
         return getItemIndiceAtual();
+    }
+
+    public int incrementar()
+    {
+        indiceAtual++;
+        return indiceAtual;
+    }
+
+    public int decrementar()
+    {
+        indiceAtual--;
+        return indiceAtual;
     }
 
     public void setIndiceAtual(int indice)
     {
         indiceAtual = indice;
+    }
+
+    public bool isIndiceAtualMenorQtdItensArray()
+    {
+        return indiceAtual < array.Length;
     }
 }
