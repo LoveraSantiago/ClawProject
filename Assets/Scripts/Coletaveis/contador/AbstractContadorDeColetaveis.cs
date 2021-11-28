@@ -8,7 +8,11 @@ public abstract class AbstractContadorDeColetaveis
 
     public abstract void adicionarColetaveisExtras(int qtd);
 
+    public abstract void reajustarContagem(ColetadoFim evento, bool devolverBoard);
+
     public abstract bool getResultCombinacao();
+
+    public abstract ColetavelTile[] getColetados();
 
     public virtual int getIndiceOrdem()
     {

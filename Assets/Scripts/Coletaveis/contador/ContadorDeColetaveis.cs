@@ -7,7 +7,7 @@ public class ContadorDeColetaveis : AbstractContadorDeColetaveis
     private int pontosAcerto;    
     private int totalColetaveis;
 
-    public ColetavelTile[] coletados { get; private set; }
+    private ColetavelTile[] coletados;
 
     public ContadorDeColetaveis(int pontosColetado, int pontosAcerto)
     {
@@ -61,7 +61,7 @@ public class ContadorDeColetaveis : AbstractContadorDeColetaveis
         //Debug.Log("Total: " + totalColetaveis);
     }       
 
-    public void reajustarContagem(ColetadoFim evento, bool devolverBoard)
+    public override void reajustarContagem(ColetadoFim evento, bool devolverBoard)
     {
         if (!evento.isNormal)
         {
@@ -88,23 +88,28 @@ public class ContadorDeColetaveis : AbstractContadorDeColetaveis
         return resultCombinacao;
     }
 
+    public override ColetavelTile[] getColetados()
+    {
+        return coletados;
+    }
+
     public override bool isFinished()
     {
         return totalColetaveis == 0;
     }
-
-    private bool isCombinacaoValida()
-    {
-        return coletados[0].hasEqualsSprite(coletados[1]) &&
-               coletados[0].hasEqualsSprite(coletados[2]); 
-    }        
 
     private void adicionaAoContainerDeColetados(ColetavelTile coletado)
     {
         int indice = getPrimeiroIndiceVazio();
         //Debug.Log("Indice contador de coletaveis " + indice);
         coletados[indice] = coletado;        
-    }                    
+    }
+    
+    private bool isCombinacaoValida()
+    {
+        return coletados[0].hasEqualsSprite(coletados[1]) &&
+               coletados[0].hasEqualsSprite(coletados[2]); 
+    }        
 
     private void resetarColetados()
     {
@@ -123,5 +128,5 @@ public class ContadorDeColetaveis : AbstractContadorDeColetaveis
     private bool isTodasPosicoesOcupadas()
     {
         return coletados[0] != null && coletados[1] != null && coletados[2] != null;
-    }   
+    }    
 }

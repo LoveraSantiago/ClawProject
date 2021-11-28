@@ -35,6 +35,11 @@ public class ContadorManager
         contador.adicionarColetaveisExtras(qtd);
     }
 
+    public void reajustarContagem(ColetadoFim evento, bool devolverBoard)
+    {
+        contador.reajustarContagem(evento, devolverBoard);
+    }
+
     public bool getResultCombinacao()
     {
         return contador.getResultCombinacao();
@@ -43,6 +48,11 @@ public class ContadorManager
     public int getIndiceOrdem()
     {
         return contador.getIndiceOrdem();
+    }
+
+    public ColetavelTile[] getColetados()
+    {
+        return contador.getColetados();
     }
 
     public bool isFinished()

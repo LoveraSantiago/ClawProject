@@ -153,10 +153,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     }
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
-    {
-        tuboDeDescarte.devolver(contador.resultCombinacao, evento, contador.coletados);        
-        board.devolver(contador.resultCombinacao, evento, contador.coletados);
-        contador.reajustarContagem(evento, board.isDevolverBoard());
+    {        
+        tuboDeDescarte.devolver(contador2.getResultCombinacao(), evento, contador2.getColetados());                
+        board.devolver(contador2.getResultCombinacao(), evento, contador2.getColetados());        
+        contador2.reajustarContagem(evento, board.isDevolverBoard());
     }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
