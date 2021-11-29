@@ -50,8 +50,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
         ColetavelEntidade coletavel = helperColetavel.getColetavelEntidadeBySprite(coletavelTile.nomeSprite);
         List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavel);
 
-        MaterialTeleporte materialTeleporte = new MaterialTeleporte();
-        //Material matTroca = new Material(powerUpDto.TeleporteDto.MatTeleporte);
+        MaterialTeleporte materialTeleporte = new MaterialTeleporte();        
         materialTeleporte.addTrocaIn(coletavelTile.getSprite());
         coletavelTile.addMaterial(materialTeleporte.materialTeleporte);
 

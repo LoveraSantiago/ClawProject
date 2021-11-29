@@ -10,6 +10,12 @@ public class MaterialTeleporte
         materialTeleporte = new Material(matEstaticoTeleporte);
     }
 
+    public void addTroca(Sprite sprIn, Sprite sprOut)
+    {
+        addTrocaIn(sprIn);
+        addTrocaOut(sprOut);
+    }
+
     public void addTrocaIn(Sprite sprite)
     {
         materialTeleporte.SetTexture("inSprite", sprite.texture);
