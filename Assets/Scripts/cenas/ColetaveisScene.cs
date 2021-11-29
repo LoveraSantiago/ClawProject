@@ -10,8 +10,7 @@ public class ColetaveisScene : MonoBehaviour,
     [Space(5)]
     [SerializeField] private BlocoImgColetaveisDto blocoImgDto;
     [SerializeField] private BlocoImgDetalheColetavelDto blocoImgDetalheDto;
-    [Space(5)]
-    [SerializeField] private Material materialGrayScale;
+    [Space(5)]    
     [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabColetaveisDto;
     [Space(5)]
