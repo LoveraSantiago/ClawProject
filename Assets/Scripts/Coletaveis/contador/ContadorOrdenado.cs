@@ -3,8 +3,6 @@ using UnityEngine;
 public class ContadorOrdenado : ContadorNormal, 
                                 TrocadorDeOrdem
 {
-    private static readonly string PROP_MAINTTEXT = "_MaintText";
-
     private bool resultErroOrdem;
     private NavegacaoDeArray<BoardOrdem> navegacaoOrdem;    
 

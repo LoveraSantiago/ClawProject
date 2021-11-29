@@ -25,7 +25,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         configuracoes(coletaveisDto);        
 
         board            = new BoardManager(coletaveisDto.BoardDto);
-        contador        = new ContadorManager(coletaveisDto);
+        contador         = new ContadorManager(coletaveisDto);
         tuboDeDescarte   = new TuboDeDescarte(coletaveisDto.DescarteTuboDto);
         efeito           = new EfeitoColetado(coletaveisDto.EfeitoColetado);
 
@@ -36,6 +36,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
         configurarColetaveis(coletaveisDto);
+        new MateriaisUtils()
+            .configurarOutline(coletaveisDto.EfeitoOutline);
     }
 
     public void configuradoPeloLevel(AbstractLevel level)

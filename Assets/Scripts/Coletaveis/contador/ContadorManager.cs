@@ -12,7 +12,7 @@ public class ContadorManager
     {
         if (level.isOrdemLevel())
         {
-            contador = new ContadorOrdenado(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto, coletaveisDto.EfeitoOutline);
+            contador = new ContadorOrdenado(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
         }
         else
         {
