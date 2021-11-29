@@ -5407,7 +5407,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -11148,6 +11148,7 @@ MonoBehaviour:
         btnCancelar: {fileID: 381730343}
         textoSair: {fileID: 1038405836}
       prefabBottomBar: {fileID: 1411617376}
+    prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
 --- !u!61 &491158116
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27613,7 +27614,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -53593,7 +53594,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

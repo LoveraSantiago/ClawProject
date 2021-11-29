@@ -2470,6 +2470,7 @@ MonoBehaviour:
     btnGanharColetavel: {fileID: 795270389}
     lblBtnGanharColetavel: {fileID: 1946674154}
   materialGrayScale: {fileID: 2100000, guid: 1d9f4e4f1aa232148ad37c81fd61aee6, type: 2}
+  prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
   prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
   prefabBottomBar: {fileID: 1677297773}
 --- !u!1001 &1751718904

@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394928e2ca08cf34b8384b417e03c81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialGrayScale: {fileID: 0}
+  materialGrayScale: {fileID: 2100000, guid: 1d9f4e4f1aa232148ad37c81fd61aee6, type: 2}
   materialOutline: {fileID: 0}
   materialGlow: {fileID: 0}

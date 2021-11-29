@@ -12,6 +12,7 @@ public class ColetaveisScene : MonoBehaviour,
     [SerializeField] private BlocoImgDetalheColetavelDto blocoImgDetalheDto;
     [Space(5)]
     [SerializeField] private Material materialGrayScale;
+    [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabColetaveisDto;
     [Space(5)]
     [SerializeField] private GameObject prefabBottomBar;
@@ -22,8 +23,7 @@ public class ColetaveisScene : MonoBehaviour,
     void Start()
     {
         Utils.configMainMono(this);
-        //new MateriaisUtils()
-        //    .configurarGrayScale(materialGrayScale);
+        MateriaisUtils.configurar(prefabMateriais);        
         
         HelperColetavelEntidade.configurar(prefabColetaveisDto);
 
