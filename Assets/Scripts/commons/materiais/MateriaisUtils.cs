@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class MateriaisUtils 
 {
-    public MateriaisUtils configurarGrayScale(Material materialGrayScale)
+    public static void configurar(GameObject goPrefabMaterias)
     {
-        MaterialGrayScale.configurar(materialGrayScale);
-        return this;
-    }      
-
-    public MateriaisUtils configurarOutline(Material materialOutline)
-    {
-        MaterialOutline.configurar(materialOutline);
-        return this;
-    }
+        PrefabDeMateriaisDto prefabDeMateriais = goPrefabMaterias.GetComponent<PrefabDeMateriaisDto>();
+        MaterialGrayScale.configurar(prefabDeMateriais.MaterialGrayScale);
+        MaterialOutline.configurar(prefabDeMateriais.MaterialOutline);
+    }    
 }

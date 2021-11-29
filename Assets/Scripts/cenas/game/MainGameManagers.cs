@@ -55,7 +55,8 @@ public class MainGameManagers
 
     private TrocadorDeOrdem getTrocadorDeOrdem()
     {
-        return coletaveisManager.contadorOrdenado;
+        return null;
+        //return coletaveisManager.contadorOrdenado;
     }
 
     private InformacaoDisplayColetado getInformacaoDisplayColetado()

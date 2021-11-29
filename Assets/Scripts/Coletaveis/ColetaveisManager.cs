@@ -36,8 +36,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
         configurarColetaveis(coletaveisDto);
-        new MateriaisUtils()
-            .configurarOutline(coletaveisDto.EfeitoOutline);
+        //new MateriaisUtils()
+        //    .configurarOutline(coletaveisDto.EfeitoOutline);
     }
 
     public void configuradoPeloLevel(AbstractLevel level)

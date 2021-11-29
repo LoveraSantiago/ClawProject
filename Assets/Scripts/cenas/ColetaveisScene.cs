@@ -22,8 +22,8 @@ public class ColetaveisScene : MonoBehaviour,
     void Start()
     {
         Utils.configMainMono(this);
-        new MateriaisUtils()
-            .configurarGrayScale(materialGrayScale);
+        //new MateriaisUtils()
+        //    .configurarGrayScale(materialGrayScale);
         
         HelperColetavelEntidade.configurar(prefabColetaveisDto);
 
