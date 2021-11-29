@@ -12,23 +12,21 @@ public class TeleportePowerUpGo : AbstractTrocaPowerUpGo
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();
 
-        Material matIn  = new Material(powerUpDto.TeleporteDto.MatTeleporte);
-        Material matOut = new Material(powerUpDto.TeleporteDto.MatTeleporte);
-        matIn.SetTexture(PROP_SPRITE_IN, spr1.texture);
-        matIn.SetTexture(PROP_SPRITE_OUT, spr2.texture);
+        MaterialTeleporte materialTeleporteIn  = new MaterialTeleporte();
+        MaterialTeleporte materialTeleporteOut = new MaterialTeleporte();
 
-        matOut.SetTexture(PROP_SPRITE_IN, spr2.texture);
-        matOut.SetTexture(PROP_SPRITE_OUT, spr1.texture);
+        materialTeleporteIn.addTroca(spr1, spr2);
+        materialTeleporteOut.addTroca(spr2, spr1);
 
-        coletavel1.addMaterial(matIn);
-        coletavel2.addMaterial(matOut);
+        coletavel1.addMaterial(materialTeleporteIn.materialTeleporte);
+        coletavel2.addMaterial(materialTeleporteOut.materialTeleporte);
 
         float contador = 0;
         while(contador < 1.01f)
         {
             contador += Time.deltaTime * powerUpDto.TeleporteDto.VelocidadeTeleporte;
-            matOut.SetFloat(PROP_VALOR, contador);
-            matIn.SetFloat(PROP_VALOR, contador);
+            materialTeleporteIn.addValorDeTroca(contador);
+            materialTeleporteOut.addValorDeTroca(contador);
             yield return null;
         }
         powerUpFinalizacao.preFinalizar();
