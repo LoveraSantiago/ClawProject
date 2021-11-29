@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 {
-    protected static readonly string PROP_VALOR = "valor";
-    protected static readonly string PROP_SPRITE_IN = "inSprite";
-    protected static readonly string PROP_SPRITE_OUT = "outSprite";
-
     private bool finalizando;
     private Coroutine coroutineAlvo;
     private Coroutine coroutineTroca;
@@ -54,9 +50,10 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
         ColetavelEntidade coletavel = helperColetavel.getColetavelEntidadeBySprite(coletavelTile.nomeSprite);
         List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavel);
 
-        Material matTroca = new Material(powerUpDto.TeleporteDto.MatTeleporte);
-        matTroca.SetTexture(PROP_SPRITE_IN, coletavelTile.getSprite().texture);
-        coletavelTile.addMaterial(matTroca);
+        MaterialTeleporte materialTeleporte = new MaterialTeleporte();
+        //Material matTroca = new Material(powerUpDto.TeleporteDto.MatTeleporte);
+        materialTeleporte.addTrocaIn(coletavelTile.getSprite());
+        coletavelTile.addMaterial(materialTeleporte.materialTeleporte);
 
         int indiceSorteado = UtilsMath.escolherDeZeroAteLimite(listaFamilia.Count);
         Sprite sprSorteado = null;
@@ -64,7 +61,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
         {
             ColetavelEntidade coletavelSorteado = listaFamilia[indiceSorteado];
             sprSorteado = context.dicionarioDeSprites[coletavelSorteado.nomeSprite];
-            matTroca.SetTexture(PROP_SPRITE_OUT, sprSorteado.texture);
+            materialTeleporte.addTrocaOut(sprSorteado);
 
             bool houveToque = false;
             float contador = 0;
@@ -72,7 +69,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
             {
                 houveToque = houveToque ? houveToque : inputGame.aconteceuTap();
                 contador += Time.deltaTime * powerUpDto.TeleporteDto.VelocidadeCoringa;
-                matTroca.SetFloat(PROP_VALOR, contador);                
+                materialTeleporte.addValorDeTroca(contador);
                 yield return null;
             }
 
@@ -84,14 +81,14 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
             indiceSorteado = UtilsMath.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
             coletavelSorteado = listaFamilia[indiceSorteado];
             sprSorteado = context.dicionarioDeSprites[coletavelSorteado.nomeSprite];
-            matTroca.SetTexture(PROP_SPRITE_IN, sprSorteado.texture);
+            materialTeleporte.addTrocaIn(sprSorteado);
 
             houveToque = false;
             while (contador > -0.09f)
             {
                 houveToque = houveToque ? houveToque : inputGame.aconteceuTap();
                 contador -= Time.deltaTime * powerUpDto.TeleporteDto.VelocidadeCoringa;
-                matTroca.SetFloat(PROP_VALOR, contador);
+                materialTeleporte.addValorDeTroca(contador);
                 yield return null;
             }
 

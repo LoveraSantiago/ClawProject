@@ -45,4 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialGrayScale: {fileID: 2100000, guid: 1d9f4e4f1aa232148ad37c81fd61aee6, type: 2}
   materialOutline: {fileID: 2100000, guid: cbad35fbf462a4f4bb8e2451dc3cf1a3, type: 2}
+  materialTroca: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
   materialGlow: {fileID: 0}
