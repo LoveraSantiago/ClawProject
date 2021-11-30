@@ -95,6 +95,6 @@ public class DisplayScoreDigito
     public static void configurar()
     {
         segmentos = new SegmentosScore();
-        materialEfeitoLed = MaterialLed.of();
+        materialEfeitoLed = MaterialHdr.ofLed();
     }
 }

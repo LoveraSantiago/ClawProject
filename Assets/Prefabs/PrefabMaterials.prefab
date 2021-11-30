@@ -47,3 +47,5 @@ MonoBehaviour:
   materialOutline: {fileID: 2100000, guid: cbad35fbf462a4f4bb8e2451dc3cf1a3, type: 2}
   materialTroca: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
   materialLed: {fileID: 2100000, guid: abed1645fe487b746993f7a08c0e4223, type: 2}
+  materialHdrLed: {fileID: 2100000, guid: abed1645fe487b746993f7a08c0e4223, type: 2}
+  materialHdr: {fileID: 2100000, guid: 196dc0d105cbf5b42b7d0c07e836b107, type: 2}

@@ -9,6 +9,6 @@ public class MateriaisUtils
         MaterialGrayScale.configurar(prefabDeMateriais.MaterialGrayScale);
         MaterialOutline.configurar(prefabDeMateriais.MaterialOutline);
         MaterialTeleporte.configurar(prefabDeMateriais.MaterialTroca);
-        MaterialLed.configurar(prefabDeMateriais.MaterialLed);
+        MaterialHdr.configurar(prefabDeMateriais.MaterialHdr, prefabDeMateriais.MaterialHdrLed);
     }    
 }
