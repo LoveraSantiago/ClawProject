@@ -92,9 +92,9 @@ public class DisplayScoreDigito
         ligarPosicoes(array, corOriginal, defaultMaterial);        
     }
 
-    public static void configurar(Material materialEfeitoLedArg)
+    public static void configurar()
     {
         segmentos = new SegmentosScore();
-        materialEfeitoLed = new Material(materialEfeitoLedArg);
+        materialEfeitoLed = MaterialLed.of();
     }
 }

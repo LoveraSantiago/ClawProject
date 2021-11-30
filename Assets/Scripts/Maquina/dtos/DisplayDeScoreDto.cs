@@ -5,14 +5,12 @@ using UnityEngine;
 public class DisplayDeScoreDto 
 {
     [SerializeField] private int qtdBlinks;
-    [SerializeField] private float tempoBlink;
-    [SerializeField] private Material materialEfeitoLed;
+    [SerializeField] private float tempoBlink;    
     [Space(5)]
     [SerializeField] private SingleDisplayScoreDto[] singleDisplayScoreDto = new SingleDisplayScoreDto[3];
 
     public int QtdBlinks { get { return qtdBlinks; } }
-    public float TempoBlink { get { return tempoBlink; } }    
-    public Material MaterialEfeitoLed { get { return materialEfeitoLed; }}
+    public float TempoBlink { get { return tempoBlink; } }        
 
     public SingleDisplayScoreDto[] SingleDisplayScoreDto { get { return singleDisplayScoreDto;  } }
 }
