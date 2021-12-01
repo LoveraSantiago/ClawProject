@@ -24,10 +24,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {   
         configuracoes(coletaveisDto);        
 
-        board            = new BoardManager(coletaveisDto.BoardDto);
-        contador         = new ContadorManager(coletaveisDto);
-        tuboDeDescarte   = new TuboDeDescarte(coletaveisDto.DescarteTuboDto);
-        efeito           = new EfeitoColetado(coletaveisDto.EfeitoColetado);
+        board          = new BoardManager(coletaveisDto.BoardDto);
+        contador       = new ContadorManager(coletaveisDto);
+        tuboDeDescarte = new TuboDeDescarte(coletaveisDto.DescarteTuboDto);
+        efeito         = new EfeitoColetado(coletaveisDto.EfeitoColetado);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
