@@ -34,7 +34,7 @@ public class IgualPowerUpGo : AbstractTrocaPowerUpGo
         coletavel2.desligarAnimacao();
         yield return null;
 
-        trocadorDeOrdem.trocarFigura(coletavel1, coletavel2);
+        getTrocadorDeOrdem().trocarFigura(coletavel1, coletavel2);
 
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
         powerUpFinalizacao.finalizado();

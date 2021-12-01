@@ -7,7 +7,7 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
     protected static readonly string PROP_SPRITE_OUT = "outSprite";
     protected static readonly string PROP_VALOR = "valor";
 
-    protected static TrocadorDeOrdem trocadorDeOrdem;
+    private static Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdem;
 
     private bool hitColetavel2;
     private Coroutine coroutine;
@@ -42,6 +42,11 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     protected abstract IEnumerator realizarTroca(ColetavelTile coletavel1, ColetavelTile coletavel2);
 
+    protected TrocadorDeOrdem getTrocadorDeOrdem()
+    {
+        return fornecedorTrocadorDeOrdem.fornecer();
+    }
+
     public override void timeout()
     {
         if (!hitColetavel2)
@@ -53,8 +58,8 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
         }
     }
 
-    public static void configurarTrocadorDeOrdem(TrocadorDeOrdem trocadorDeOrdemArg)
+    public static void configurarTrocadorDeOrdem(Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdemArg)
     {
-        trocadorDeOrdem = trocadorDeOrdemArg;
+        fornecedorTrocadorDeOrdem = fornecedorTrocadorDeOrdemArg;
     }
 }
