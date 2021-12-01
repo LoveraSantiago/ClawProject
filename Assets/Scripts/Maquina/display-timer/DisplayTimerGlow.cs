@@ -27,7 +27,7 @@ public class DisplayTimerGlow : ArcoIrisConjunto
 
     public DisplayTimerGlow(DisplayTimerDto displayDto)
     {
-        glowEfeito = new GlowEfeito(displayDto.PlacaEfeito, new MaterialGlow(displayDto.MaterialEfeito));
+        glowEfeito = new GlowEfeito(displayDto.PlacaEfeito, displayDto.MaterialEfeito);
     }
 
     public void desligar()

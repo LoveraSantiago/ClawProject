@@ -24,9 +24,8 @@ public class DisplayScoreDigito
         arrayDeLeds[2] = singleDisplayDto.Fileira3;
         arrayDeLeds[3] = singleDisplayDto.Fileira4;
         arrayDeLeds[4] = singleDisplayDto.Fileira5;
-
-        MaterialGlow materialGlow = new MaterialGlow(singleDisplayDto.MaterialEfeito);
-        glowEfeito = new GlowEfeito(singleDisplayDto.PlacaEfeito, materialGlow);
+        
+        glowEfeito = new GlowEfeito(singleDisplayDto.PlacaEfeito, singleDisplayDto.MaterialEfeito);
     }
 
     public void configuradoPeloLevel(string corScore, string corLeds)
