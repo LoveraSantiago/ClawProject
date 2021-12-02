@@ -18,6 +18,7 @@ public class ContadorManager
         {
             contador = new ContadorNormal(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
         }
+        contador.configuradoPeloLevel(level);
     }
 
     public void iniciar(int totalColetaveis)

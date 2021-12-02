@@ -10671,7 +10671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 999999996
+  level: 3
   mainDto:
     garraDto:
       velocidades:
@@ -10706,7 +10706,6 @@ MonoBehaviour:
       tile: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       referenciaColliderColetado: {fileID: 1930189876}
       efeitoColetado: {fileID: 1488198865}
-      efeitoOutline: {fileID: 2100000, guid: cbad35fbf462a4f4bb8e2451dc3cf1a3, type: 2}
       prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
       descarteTuboDto:
         torque: 550
@@ -10810,7 +10809,6 @@ MonoBehaviour:
       displayTimerDto:
         sprRendererPlaca: {fileID: 1404465311}
         sprRendererPlacaEfeito: {fileID: 2146911256}
-        materialEmptyTimer: {fileID: 2100000, guid: 196dc0d105cbf5b42b7d0c07e836b107, type: 2}
         sprRendererMiniSegmentos:
         - {fileID: 802050896}
         - {fileID: 655932435}
@@ -10853,7 +10851,6 @@ MonoBehaviour:
       displayDeScoreDto:
         qtdBlinks: 3
         tempoBlink: 0.2
-        materialEfeitoLed: {fileID: 2100000, guid: abed1645fe487b746993f7a08c0e4223, type: 2}
         singleDisplayScoreDto:
         - sprRendererPlaca: {fileID: 6406990385049082671}
           sprRendererPlacaEfeito: {fileID: 6406990385049082702}
@@ -11104,7 +11101,6 @@ MonoBehaviour:
         velocidadeTeleporte: 0.75
         velocidadeCoringa: 1.25
         delayFinal: 0.5
-        matTeleporte: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
       asaDto:
         layer: 32
         gravidadeNeg: -0.1
