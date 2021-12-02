@@ -28,7 +28,7 @@ public class MaterialTeleporte
 
     public void addValorDeTroca(float troca)
     {
-        matEstaticoTeleporte.SetFloat("valor", troca);
+        materialTeleporte.SetFloat("valor", troca);
     }
 
     public static void configurar(Material materialTrocaArg)
