@@ -30,13 +30,13 @@ public class MainGameManagers
 
     private void configurandoLevel(MainGameDto mainDto, AbstractLevel levelEscolhido)
     {
-        garraManager.configuradoPeloLevel(mainDto.GarraDto, levelEscolhido);
+        garraManager     .configuradoPeloLevel(mainDto.GarraDto, levelEscolhido);
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
-        maquinaManager.configuradoPeloLevel(levelEscolhido);
-        uiManager.configurandoLevel(levelEscolhido);
+        maquinaManager   .configuradoPeloLevel(levelEscolhido);
+        uiManager        .configurandoLevel(levelEscolhido);
 
         powerUpManager.configurarGosPowerUps(
-            getInformacaoDisplayColetado(), getTrocadorDeOrdem());
+            getInformacaoDisplayColetado(), coletaveisManager.getFornecedorTrocadorDeOrdem());
     }
 
     private void configurandoEventos()
@@ -51,13 +51,7 @@ public class MainGameManagers
         maquinaManager.start();
         uiManager.start();        
         garraManager.start(mainDto.GarraDto);
-    }      
-
-    private TrocadorDeOrdem getTrocadorDeOrdem()
-    {
-        return null;
-        //return coletaveisManager.contadorOrdenado;
-    }
+    }         
 
     private InformacaoDisplayColetado getInformacaoDisplayColetado()
     {

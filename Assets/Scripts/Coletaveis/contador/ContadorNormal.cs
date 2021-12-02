@@ -100,6 +100,11 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         return totalColetaveis == 0;
     }
 
+    public override TrocadorDeOrdem fornecer()
+    {
+        return new TrocadorDeOrdemVazio();
+    }
+
     private void adicionaAoContainerDeColetados(ColetavelTile coletado)
     {
         TrincaColetaveisTiles trinca = new TrincaColetaveisTiles(coletados);

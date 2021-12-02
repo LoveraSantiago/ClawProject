@@ -22,9 +22,9 @@ public class PowerUpManager : PowerUpAcionamento,
 
     public void configurarGosPowerUps(
         InformacaoDisplayColetado informacaoDisplayColetado,
-        TrocadorDeOrdem trocadorDeOrdem)
+        Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdem)
     {
-        AbstractTrocaPowerUpGo.configurarTrocadorDeOrdem(trocadorDeOrdem);
+        AbstractTrocaPowerUpGo.configurarTrocadorDeOrdem(fornecedorTrocadorDeOrdem);
         AbstractDisplaySlotPowerUpGo.configurar(informacaoDisplayColetado);
     }
 

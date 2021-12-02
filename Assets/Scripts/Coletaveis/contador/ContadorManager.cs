@@ -64,4 +64,9 @@ public class ContadorManager
     {
         return contador.isErroOrdem();
     }
+
+    public Fornecedor<TrocadorDeOrdem> getFornecedorTrocadorDeOrdem()
+    {
+        return contador;
+    }
 }

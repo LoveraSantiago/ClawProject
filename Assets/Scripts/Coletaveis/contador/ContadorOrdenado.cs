@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class ContadorOrdenado : ContadorNormal, 
-                                TrocadorDeOrdem
+public class ContadorOrdenado : ContadorNormal
 {
     private bool resultErroOrdem;
     private NavegacaoDeArray<BoardOrdem> navegacaoOrdem;    
@@ -56,80 +55,15 @@ public class ContadorOrdenado : ContadorNormal,
             Material materialOutline = MaterialOutline.of(coletavelTile.getSprite());
             coletavelTile.addMaterial(materialOutline);
         }
-    }    
-
-    public void trocarOrdem(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
-    {      
-        //BoardOrdem ordemPrimeiro = null;
-        //BoardOrdem ordemSegundo = null;            
-            
-        //for(int contadorAtual = contadorOrdem; contadorAtual < ordem.Length; contadorAtual++)
-        //{
-        //    BoardOrdem ordemIt = ordem[contadorAtual];
-        //    if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
-        //    {
-        //        ordemPrimeiro = ordemIt;
-        //    }
-        //    else if (ordemIt.nome.Equals(coletavelSegundo.nome))
-        //    {
-        //        ordemSegundo = ordemIt;
-        //    }
-
-        //    if(ordemPrimeiro != null && ordemSegundo != null)
-        //    {
-        //        break;
-        //    }
-        //}
-
-        //if(ordemPrimeiro.ordem == contadorOrdem + 1)
-        //{
-        //    trocarMaterial(coletavelPrimeiro, coletavelSegundo);
-        //}
-        //else if(ordemSegundo.ordem == contadorOrdem + 1)
-        //{
-        //    trocarMaterial(coletavelSegundo, coletavelPrimeiro);
-        //}
-        //trocarNomes(ordemPrimeiro, ordemSegundo);        
-    }
-
-    public void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
-    {       
-        //for (int contadorAtual = contadorOrdem; contadorAtual < ordem.Length; contadorAtual++)
-        //{
-        //    BoardOrdem ordemIt = ordem[contadorAtual];
-        //    if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
-        //    {
-        //        if(ordemIt.ordem == contadorOrdem + 1)
-        //        {
-        //            trocarSpriteMaterial(coletavelPrimeiro, coletavelSegundo.getSprite());
-        //        }
-        //        break;
-        //    }
-        //}       
-    }
+    }        
 
     public override int getIndiceOrdem()
     {
         return navegacaoOrdem.indiceAtual;
     }
 
-    //private void trocarNomes(BoardOrdem ordemPrimeiro, BoardOrdem ordemSegundo)
-    //{
-    //    string nomeTemp = ordemPrimeiro.nome;
-    //    ordemPrimeiro.trocarNome(ordemSegundo.nome);
-    //    ordemSegundo.trocarNome(nomeTemp);
-    //}
-
-    //private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
-    //{
-    //    materialOutline.SetTexture(PROP_MAINTTEXT, spr.texture);
-    //    coletavelComMaterial.addMaterial(materialOutline);
-    //}
-
-    //private void trocarMaterial(ColetavelTile coletavelComMaterial, ColetavelTile coletavelSemMaterial)
-    //{
-    //    Debug.Log("Troca de material acionada");
-    //    coletavelComMaterial.clearMaterial();
-    //    coletavelSemMaterial.addMaterial(materialOutline);
-    //}    
+    public override TrocadorDeOrdem fornecer()
+    {
+        return new TrocadorOrdenado(navegacaoOrdem);
+    }
 }

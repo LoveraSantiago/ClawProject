@@ -13,7 +13,6 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private BoardManager board;
     private TuboDeDescarte tuboDeDescarte;
     private EfeitoColetado efeito;
-
     private ContadorManager contador;
 
     private DetectorDeTriggers detectorDeTrigger;
@@ -55,6 +54,11 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         coletavelImantado = helperInGame.getColetavelInGameByName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK    
     }    
+
+    public Fornecedor<TrocadorDeOrdem> getFornecedorTrocadorDeOrdem()
+    {
+        return contador.getFornecedorTrocadorDeOrdem();
+    }
 
     private void configurarSensorDeColetado(GameObject goSensorDeColetado)
     {

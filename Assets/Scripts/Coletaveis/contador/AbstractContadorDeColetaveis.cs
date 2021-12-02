@@ -1,4 +1,4 @@
-public abstract class AbstractContadorDeColetaveis 
+public abstract class AbstractContadorDeColetaveis : Fornecedor<TrocadorDeOrdem>
 {
     public abstract void iniciar(int totalColetaveis);
 
@@ -24,5 +24,7 @@ public abstract class AbstractContadorDeColetaveis
     public virtual bool isErroOrdem()
     {
         return false;
-    }    
+    }
+
+    public abstract TrocadorDeOrdem fornecer();
 }
