@@ -25,6 +25,7 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
 
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
+
         ColetavelTile coletavel1 = selecionadorDeAlvos.coletavelSelecionado;
         coletavel1.ligarAnimacaoMiraSelecionado();
 
