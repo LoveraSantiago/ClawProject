@@ -3,10 +3,6 @@ using UnityEngine;
 
 public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
 {
-    protected static readonly string PROP_SPRITE_IN = "inSprite";
-    protected static readonly string PROP_SPRITE_OUT = "outSprite";
-    protected static readonly string PROP_VALOR = "valor";
-
     private static Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdem;
 
     private bool hitColetavel2;
