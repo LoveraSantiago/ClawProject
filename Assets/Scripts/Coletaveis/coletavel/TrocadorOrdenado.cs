@@ -6,10 +6,11 @@ public class TrocadorOrdenado : TrocadorDeOrdem
 
     public TrocadorOrdenado(NavegacaoDeArray<BoardOrdem> navegacaoOrdem)
     {
+        Debug.Log("Trocador ordenado chamado");
         this.navegacaoOrdem = navegacaoOrdem;
     }
 
-    public void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
+    public void trocarOrdem(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {
         BoardOrdem ordemPrimeiro = null;
         BoardOrdem ordemSegundo = null;
@@ -45,7 +46,7 @@ public class TrocadorOrdenado : TrocadorDeOrdem
         trocarNomes(ordemPrimeiro, ordemSegundo);
     }
 
-    public void trocarOrdem(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
+    public void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {
         int indiceNavegacao = navegacaoOrdem.indiceAtual;
         int tamanhoArray = navegacaoOrdem.getTamanhoArray();
@@ -74,7 +75,7 @@ public class TrocadorOrdenado : TrocadorDeOrdem
     {
         Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
-        Material materialOutline = MaterialOutline.of(coletavelComMaterial.getSprite());
+        Material materialOutline = MaterialOutline.of(coletavelSemMaterial.getSprite());
         coletavelSemMaterial.addMaterial(materialOutline);
     }
 
