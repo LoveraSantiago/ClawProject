@@ -93,6 +93,7 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
             if (houveToque)
             {
+                
                 break;
             }
 

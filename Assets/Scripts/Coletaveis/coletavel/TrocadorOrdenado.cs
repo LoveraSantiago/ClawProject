@@ -10,6 +10,12 @@ public class TrocadorOrdenado : TrocadorDeOrdem
         this.navegacaoOrdem = navegacaoOrdem;
     }
 
+    public void atualizarOrdem(ColetavelTile coletavelPrimeiro)
+    {
+        Material materialOutline = MaterialOutline.of(coletavelPrimeiro.getSprite());
+        coletavelPrimeiro.addMaterial(materialOutline);
+    }
+
     public void trocarOrdem(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {
         BoardOrdem ordemPrimeiro = null;
@@ -75,14 +81,12 @@ public class TrocadorOrdenado : TrocadorDeOrdem
     {
         Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
-        Material materialOutline = MaterialOutline.of(coletavelSemMaterial.getSprite());
-        coletavelSemMaterial.addMaterial(materialOutline);
+        atualizarOrdem(coletavelSemMaterial);        
     }
 
     private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
     {        
         Material materialOutline = MaterialOutline.of(spr);
         coletavelComMaterial.addMaterial(materialOutline);
-    }
-
+    }   
 }
