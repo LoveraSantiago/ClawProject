@@ -30,15 +30,17 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator selecionarAlvo()
     {
-        hitColetavel = false;
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        helperInGame.ligarMirasNosColetaveis();
+        hitColetavel = false;        
 
-        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
+        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos()
+            .ligarMiras();      
+        
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
+
         ColetavelTile coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;
 
-        helperInGame.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
+        selecionadorDeAlvos.ligarMiraFinal();
+
         Utils.MonoBehaviour.StartCoroutine(voar(coletavelSelecionado));
     }
 

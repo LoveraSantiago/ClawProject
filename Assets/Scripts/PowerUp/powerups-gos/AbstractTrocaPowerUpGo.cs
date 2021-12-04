@@ -19,11 +19,11 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator selecionarAlvos()
     {        
-        hitColetavel2 = false;
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        helperInGame.ligarMirasNosColetaveis();
+        hitColetavel2 = false;       
 
-        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
+        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos()
+            .ligarMiras();        
+
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
 
         ColetavelTile coletavel1 = selecionadorDeAlvos.coletavelSelecionado;
@@ -31,7 +31,8 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
 
         yield return selecionadorDeAlvos.selecionarAlvoDiferenteDe(inputGame, coletavel1.nome);
         ColetavelTile coletavel2 = selecionadorDeAlvos.coletavelSelecionado;
-        helperInGame.ligarMiraAlvoFinalNoColetavel(coletavel2.nome);
+
+        selecionadorDeAlvos.ligarMiraFinal();
 
         hitColetavel2 = true;
         Utils.MonoBehaviour.StartCoroutine(realizarTroca(coletavel1, coletavel2));        

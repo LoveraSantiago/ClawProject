@@ -32,14 +32,14 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     private IEnumerator selecionarAlvo()
     {
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        helperInGame.ligarMirasNosColetaveis();
+        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos()
+            .ligarMiras();
 
-        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
 
-        coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;        
-        helperInGame.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
+        coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;
+
+        selecionadorDeAlvos.ligarMiraFinal();        
 
         coroutineTroca = Utils.MonoBehaviour.StartCoroutine(fazerTroca(coletavelSelecionado));
     }

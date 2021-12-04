@@ -4,6 +4,23 @@ public class SelecionadorDeAlvos
 {
     public ColetavelTile coletavelSelecionado { get; private set; }    
 
+    public SelecionadorDeAlvos ligarMiras()
+    {
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        helperInGame.ligarMirasNosColetaveis();
+        return this;
+    }
+
+    public SelecionadorDeAlvos ligarMiraFinal()
+    {
+        if(coletavelSelecionado != null)
+        {
+            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+            helperInGame.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
+        }
+        return this;
+    }
+
     public IEnumerator selecionarAlvo(InputGame inputGame)
     {
         return selecionarAlvoDiferenteDe(inputGame, "");
@@ -18,8 +35,7 @@ public class SelecionadorDeAlvos
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
                 coletavel = ColetavelHit.hit(inputGame);
-                if (coletavel != null &&
-                    isNotEqualsColetavel(coletavel, nome))
+                if (coletavel != null && isNotEqualsColetavel(coletavel, nome))
                 {
                     coletavelSelecionado = coletavel;
                 }                
