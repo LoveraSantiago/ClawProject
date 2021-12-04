@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra,
+public abstract class AbstractTrocaDuplaPowerUpGo : PowerUpNaoInteracaoComGarra,
                                              Transformador<ColetavelTile, IEnumerator>
 {
     private static readonly int VOADA = Animator.StringToHash("voada");
@@ -11,7 +11,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra,
     private CircleCollider2D circleCollider;
     private Coroutine coroutine;
 
-    public AbstractAsaPowerUpGo(GameObject goDto, string nome)
+    public AbstractTrocaDuplaPowerUpGo(GameObject goDto, string nome)
          : base(goDto, new GetGoComSpriteRenderer(), nome){}
 
     public override void configurarPup()

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AsaMiniPowerUpGo : AbstractAsaPowerUpGo
+public class AsaMiniPowerUpGo : AbstractTrocaDuplaPowerUpGo
 {
     public AsaMiniPowerUpGo() 
         : base(powerUpDto.AsaMiniDto.AsaMiniGo, "MiniAsas"){}
