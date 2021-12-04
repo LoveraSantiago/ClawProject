@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra,
+public abstract class AbstractTrocaDuplaPowerUpGo : PowerUpNaoInteracaoComGarra,
                                                BiTransformadorUnario<ColetavelTile, IEnumerator>
 {
     private static Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdem;
@@ -9,7 +9,7 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra,
     private bool hitColetavel2;
     private Coroutine coroutine;
 
-    public AbstractTrocaPowerUpGo(GameObject goTile, string nome) : base(goTile, nome) { }
+    public AbstractTrocaDuplaPowerUpGo(GameObject goTile, string nome) : base(goTile, nome) { }
 
     public override void configurarPup() { }
 

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class IgualPowerUpGo : AbstractTrocaPowerUpGo
+public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
 {
     public IgualPowerUpGo() : base(powerUpDto.VazioPUp, "igual"){ }    
     

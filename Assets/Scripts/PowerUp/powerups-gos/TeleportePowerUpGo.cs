@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class TeleportePowerUpGo : AbstractTrocaPowerUpGo
+public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
 {  
     public TeleportePowerUpGo() : base(powerUpDto.VazioPUp, "teleporte"){}    
    
