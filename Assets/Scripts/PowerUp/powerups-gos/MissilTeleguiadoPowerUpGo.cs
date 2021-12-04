@@ -56,6 +56,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     public override void iniciarPup()
     {
         ligar();
+        hitColetavel = false;
         HumAlvoSelecionado alvoSelecionado = new HumAlvoSelecionado();
         coroutine = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionado(inputGame, this));        
     }
