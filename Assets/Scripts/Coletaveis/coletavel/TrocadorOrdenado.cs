@@ -12,6 +12,7 @@ public class TrocadorOrdenado : TrocadorDeOrdem
 
     public void atualizarOrdem(ColetavelTile coletavelPrimeiro)
     {
+        Debug.Log("Atualizado ordem");
         Material materialOutline = MaterialOutline.of(coletavelPrimeiro.getSprite());
         coletavelPrimeiro.addMaterial(materialOutline);
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra,
+public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
                                 Transformador<ColetavelTile, IEnumerator>
 {
     private bool finalizando;
@@ -90,7 +90,6 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra,
 
             if (houveToque)
             {
-                
                 break;
             }
 
@@ -103,8 +102,8 @@ public class CoringaPowerUpGo : PowerUpNaoInteracaoComGarra,
         helperInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.preFinalizar();
         coletavelTile.receberSprite(sprSorteado);
-        resetPup();
-        coletavelTile.clearMaterial();
+        getTrocadorDeOrdem().atualizarOrdem(coletavelTile);
+        resetPup();        
         powerUpFinalizacao.finalizado();
         yield return null;
     }
