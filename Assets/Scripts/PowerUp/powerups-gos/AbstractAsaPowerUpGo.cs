@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
+public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra,
+                                             Transformador<ColetavelTile, IEnumerator>
 {
     private static readonly int VOADA = Animator.StringToHash("voada");
 
@@ -23,25 +24,17 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
     {
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         helperInGame.ligarMirasNosColetaveis();
-        coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
+
+        hitColetavel = false;
+        HumAlvoSelecionado alvoSelecionado = new HumAlvoSelecionado();
+        coroutine = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionado(inputGame, this));
     }
 
     public override void resetPup() { }
 
-    private IEnumerator selecionarAlvo()
+    public IEnumerator transformar(ColetavelTile entrada)
     {
-        hitColetavel = false;        
-
-        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos()
-            .ligarMiras();      
-        
-        yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
-
-        ColetavelTile coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;
-
-        selecionadorDeAlvos.ligarMiraFinal();
-
-        Utils.MonoBehaviour.StartCoroutine(voar(coletavelSelecionado));
+        return voar(entrada);
     }
 
     private IEnumerator voar(ColetavelTile coletavelAcertado)
