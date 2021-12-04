@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
+public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra,
+                                               BiTransformadorUnario<ColetavelTile, IEnumerator>
 {
     private static Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdem;
 
@@ -14,29 +15,16 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {        
-        coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvos());
+        hitColetavel2 = false;
+        DoisAlvosSelecionados alvosSelecionados = new DoisAlvosSelecionados();
+        coroutine = Utils.MonoBehaviour.StartCoroutine(alvosSelecionados.onSelecionados(inputGame, this));
     }
 
-    private IEnumerator selecionarAlvos()
-    {        
-        hitColetavel2 = false;       
-
-        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos()
-            .ligarMiras();        
-
-        yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
-
-        ColetavelTile coletavel1 = selecionadorDeAlvos.coletavelSelecionado;
-        coletavel1.ligarAnimacaoMiraSelecionado();
-
-        yield return selecionadorDeAlvos.selecionarAlvoDiferenteDe(inputGame, coletavel1.nome);
-        ColetavelTile coletavel2 = selecionadorDeAlvos.coletavelSelecionado;
-
-        selecionadorDeAlvos.ligarMiraFinal();
-
+    public IEnumerator transformar(ColetavelTile entrada1, ColetavelTile entrada2)
+    {
         hitColetavel2 = true;
-        Utils.MonoBehaviour.StartCoroutine(realizarTroca(coletavel1, coletavel2));        
-    }
+        return realizarTroca(entrada1, entrada2);
+    }    
 
     protected abstract IEnumerator realizarTroca(ColetavelTile coletavel1, ColetavelTile coletavel2);
 
@@ -59,5 +47,5 @@ public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
     public static void configurarTrocadorDeOrdem(Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdemArg)
     {
         fornecedorTrocadorDeOrdem = fornecedorTrocadorDeOrdemArg;
-    }
+    }   
 }
