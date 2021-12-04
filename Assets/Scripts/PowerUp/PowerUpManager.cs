@@ -24,7 +24,7 @@ public class PowerUpManager : PowerUpAcionamento,
         InformacaoDisplayColetado informacaoDisplayColetado,
         Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdem)
     {
-        AbstractTrocaDuplaPowerUpGo.configurarTrocadorDeOrdem(fornecedorTrocadorDeOrdem);
+        AbstractTrocaPowerUpGo.configurarTrocadorDeOrdem(fornecedorTrocadorDeOrdem);
         AbstractDisplaySlotPowerUpGo.configurar(informacaoDisplayColetado);
     }
 

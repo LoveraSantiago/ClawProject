@@ -1,11 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class AbstractTrocaDuplaPowerUpGo : PowerUpNaoInteracaoComGarra,
-                                               BiTransformadorUnario<ColetavelTile, IEnumerator>
+public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
+                                                    BiTransformadorUnario<ColetavelTile, IEnumerator>
 {
-    private static Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdem;
-
     private bool hitColetavel2;
     private Coroutine coroutine;
 
@@ -26,12 +24,7 @@ public abstract class AbstractTrocaDuplaPowerUpGo : PowerUpNaoInteracaoComGarra,
         return realizarTroca(entrada1, entrada2);
     }    
 
-    protected abstract IEnumerator realizarTroca(ColetavelTile coletavel1, ColetavelTile coletavel2);
-
-    protected TrocadorDeOrdem getTrocadorDeOrdem()
-    {
-        return fornecedorTrocadorDeOrdem.fornecer();
-    }
+    protected abstract IEnumerator realizarTroca(ColetavelTile coletavel1, ColetavelTile coletavel2);    
 
     public override void timeout()
     {
@@ -42,10 +35,5 @@ public abstract class AbstractTrocaDuplaPowerUpGo : PowerUpNaoInteracaoComGarra,
             helperInGame.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
         }
-    }
-
-    public static void configurarTrocadorDeOrdem(Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdemArg)
-    {
-        fornecedorTrocadorDeOrdem = fornecedorTrocadorDeOrdemArg;
-    }   
+    }    
 }
