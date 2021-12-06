@@ -31,15 +31,15 @@ public class BoardMontadorExtra : BoardMontador
         poolExtraSubs.addObjeto(coletavel);
     }
 
-    public void ativarColetaveisSub()
-    {        
-        while (poolExtraSubs.hasObjeto())
-        {
-            ColetavelTile coletavel = poolExtraSubs.getObjeto();
-            coletavel.colocarNoLayerNormal();            
-        }
-        poolExtraSubs.reclicarPool();     
-    }
+    //public void ativarColetaveisSub() //NAO SENDO USADO 06/12/2021
+    //{        
+    //    while (poolExtraSubs.hasObjeto())
+    //    {
+    //        ColetavelTile coletavel = poolExtraSubs.getObjeto();
+    //        coletavel.colocarNoLayerNormal();            
+    //    }
+    //    poolExtraSubs.reclicarPool();     
+    //}
 
     public int getQtdExtras()
     {
