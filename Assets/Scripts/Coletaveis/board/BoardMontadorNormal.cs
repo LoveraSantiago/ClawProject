@@ -2,10 +2,10 @@ public class BoardMontadorNormal : BoardMontador
 {
     public void configuradoPeloLevel(AbstractLevel level)
     {        
-        arrayDeColetaveis = level.getArrayDeColetaveis();
+        setArrayDeColetavel(level.getArrayDeColetaveis());
     }
 
-    public void create(BoardDto boardDto)
+    protected override void create(BoardDto boardDto)
     {   
         for (int contadorLinha = 0; contadorLinha < boardDto.PosicoesEixoY.Length; contadorLinha++)
         {
@@ -13,5 +13,7 @@ public class BoardMontadorNormal : BoardMontador
             float alturaY = boardDto.PosicoesEixoY[contadorLinha];
             montarLinha(eixoX, contadorLinha, alturaY);            
         }     
-    }   
+    }
+
+    protected override void onColetavelCriado(ColetavelTile coletavel){}
 }

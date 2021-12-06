@@ -28,12 +28,12 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 
     public int create()
     {
-        montador.create(boardDto);
+        montador.createBoard(boardDto);
 
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         int qtdColetaveisCriados = helperInGame.getQtdColetaveisInGame();
 
-        montadorExtra.create(boardDto);
+        montadorExtra.createBoard(boardDto);
         return qtdColetaveisCriados;
     }   
 

@@ -40,7 +40,7 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
             boardDto.PosicaoRefVoltaBoard.position = posVoltaBoard;
 
             helperInGame.desafixarTodosColetaveisXY();
-            montadorExtra.create(boardDto);
+            montadorExtra.createBoard(boardDto);
 
             acrescimo = boardDto.BoardPosicao.position.y - acrescimo;
             produtorDeEvento.produziuEvento(SubidaBoardAcaoFim.of(acrescimo));
