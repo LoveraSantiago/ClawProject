@@ -14,16 +14,13 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
     {
         yield return new WaitForSeconds(0.6f);
 
-        float limite                  = boardDto.BoardPosicao.position.y + boardDto.Subida;
-        Vector3 posInicialParedeAlta  = boardDto.ParedeAlta.position;
-        Vector3 posInicialParedeBaixa = boardDto.ParedeBaixa.position;
-        Vector3 posVoltaBoard         = boardDto.PosicaoRefVoltaBoard.position;
-        float acrescimo               = boardDto.BoardPosicao.position.y;
+        BoardElevadorReferencias refs = new BoardElevadorReferencias();
+        refs.iniciarRefs(boardDto);
 
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         helperInGame.fixarTodosColetaveisEixoXY();
 
-        while (isBoardAbaixoDoLimite(boardDto, limite))
+        while (isBoardAbaixoDoLimite(boardDto, refs.limite))
         {
             subirBoard(boardDto);
             yield return new WaitForFixedUpdate();
@@ -35,15 +32,13 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
         }
         else
         {
-            boardDto.ParedeAlta.position           = posInicialParedeAlta;
-            boardDto.ParedeBaixa.position          = posInicialParedeBaixa;
-            boardDto.PosicaoRefVoltaBoard.position = posVoltaBoard;
+            refs.setarRefs(boardDto);
 
             helperInGame.desafixarTodosColetaveisXY();
             montadorExtra.createBoard(boardDto);
 
-            acrescimo = boardDto.BoardPosicao.position.y - acrescimo;
-            produtorDeEvento.produziuEvento(SubidaBoardAcaoFim.of(acrescimo));
+            float acrescimoFinal = boardDto.BoardPosicao.position.y - refs.acrescimo;
+            produtorDeEvento.produziuEvento(SubidaBoardAcaoFim.of(acrescimoFinal));
         }
         yield return null;
     }

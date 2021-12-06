@@ -17,3 +17,4 @@ public class BoardMontadorNormal : BoardMontador
 
     protected override void onColetavelCriado(ColetavelTile coletavel){}
 }
+ 
