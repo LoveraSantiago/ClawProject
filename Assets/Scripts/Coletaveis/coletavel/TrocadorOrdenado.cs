@@ -45,10 +45,12 @@ public class TrocadorOrdenado : TrocadorDeOrdem
         if (ordemPrimeiro.isOrdem(indiceNavegacao + 1))
         {
             trocarMaterial(coletavelPrimeiro, coletavelSegundo);
+            destaqueGrayScale(coletavelPrimeiro);
         }
         else if (ordemSegundo.isOrdem(indiceNavegacao + 1))
         {
             trocarMaterial(coletavelSegundo, coletavelPrimeiro);
+            destaqueGrayScale(coletavelSegundo);
         }
         trocarNomes(ordemPrimeiro, ordemSegundo);
     }
@@ -90,4 +92,10 @@ public class TrocadorOrdenado : TrocadorDeOrdem
         Material materialOutline = MaterialOutline.of(spr);
         coletavelComMaterial.addMaterial(materialOutline);
     }   
+
+    private void destaqueGrayScale(ColetavelTile coletavel)
+    {
+        DestaqueGrayScale destaque = new DestaqueGrayScale();
+        destaque.destacar(coletavel);
+    }
 }

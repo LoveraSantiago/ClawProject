@@ -4,6 +4,11 @@ public class DestaqueGrayScale
 {
     private bool destaque;
 
+    public DestaqueGrayScale()
+    {
+        destaque = true;
+    }
+
     public DestaqueGrayScale(AbstractLevel level)
     {
         if (level.isColetavelLevel() || level.isOrdemLevel())
