@@ -104,7 +104,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         //Debug.Log("Nome Coletado: " + goColetado.name);
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        if (helperInGame.temColetavlInGameByNome(goColetado.name))
+        if (helperInGame.temColetavelInGameByNome(goColetado.name))
         {
             ColetavelTile coletado = helperInGame.getColetavelInGameByName(goColetado.name);            
             if(coletado.isTouchingCentroDaGarra())

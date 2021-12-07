@@ -12,7 +12,7 @@ public class HelperColetaveisInGame
         return poolDeColetaveis.getQtdDeColetaveis();
     }
 
-    public bool temColetavlInGameByNome(string name)
+    public bool temColetavelInGameByNome(string name)
     {
         return poolDeColetaveis.contemNome(name);
     }
