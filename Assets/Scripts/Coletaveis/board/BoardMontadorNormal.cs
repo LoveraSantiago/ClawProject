@@ -1,8 +1,13 @@
+using UnityEngine;
+
 public class BoardMontadorNormal : BoardMontador
 {
+    private DestaqueGrayScale destaque;
+
     public void configuradoPeloLevel(AbstractLevel level)
-    {        
+    {   
         setArrayDeColetavel(level.getArrayDeColetaveis());
+        destaque = new DestaqueGrayScale(level);
     }
 
     protected override void create(BoardDto boardDto)
@@ -17,7 +22,7 @@ public class BoardMontadorNormal : BoardMontador
 
     protected override void onColetavelCriado(ColetavelTile coletavel)
     {
-
+        destaque.destacar(coletavel);        
     }
 }
  

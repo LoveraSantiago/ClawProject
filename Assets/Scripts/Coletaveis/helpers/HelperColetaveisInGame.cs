@@ -1,6 +1,10 @@
+using System.Collections.Generic;
+using UnityEngine;
+
 public class HelperColetaveisInGame 
 {
     private static PoolDeColetaveis poolDeColetaveis;
+    private static Dictionary<string, Material> poolGrayscale;
 
     public ColetavelTile criarColetavel()
     {
@@ -64,8 +68,20 @@ public class HelperColetaveisInGame
         poolDeColetaveis.inativarColetavel(coletado);
     }
 
+    public Material getMaterialGrayscaleTo(ColetavelTile coletavel)
+    {
+        Sprite spr = coletavel.getSprite();
+        if (!poolGrayscale.ContainsKey(spr.name))
+        {
+            Material material = MaterialGrayScale.of(spr);
+            poolGrayscale.Add(spr.name, material);
+        }
+        return poolGrayscale[spr.name];
+    }
+
     public static void configurar()
     {
-        poolDeColetaveis = new PoolDeColetaveis(); ;        
+        poolDeColetaveis = new PoolDeColetaveis(); ;
+        poolGrayscale = new Dictionary<string, Material>();
     }
 }
