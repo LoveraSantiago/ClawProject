@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class Level3 : AbstractLevel
+public class Level3 : AbstractElevadorLevel
 {
     public override string getLevelName()
     {
@@ -10,11 +10,6 @@ public class Level3 : AbstractLevel
     public override string getMsgObjetivoLevel()
     {
         return "Cuidado com o numero de coletaveis";
-    }
-
-    protected override TIPO_GAME getTipoGame()
-    {
-        return TIPO_GAME.ELEVADOR;
     }   
 
     public override int[,] getArrayDeColetaveis()

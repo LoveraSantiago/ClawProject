@@ -12,7 +12,7 @@ public class ContadorNormal : AbstractContadorDeColetaveis
     public ContadorNormal(int pontosColetado, int pontosAcerto)
     {
         score = 0;
-        this.pontosAcerto = pontosAcerto;
+        this.pontosAcerto   = pontosAcerto;
         this.pontosColetado = pontosColetado;
         coletados = new ColetavelTile[3];        
     }

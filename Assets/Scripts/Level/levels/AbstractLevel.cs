@@ -18,7 +18,7 @@ public abstract class AbstractLevel
 
     public abstract int[,] getArrayDeColetaveis();
 
-    public virtual int[,] getArrayDeColetaveisSub(){return null;}
+    
 
     public virtual BoardOrdem[] getBoardOrdem() { return null; }
 
