@@ -54,6 +54,7 @@ public class ContadorOrdenado : ContadorNormal
                         
             Material materialOutline = MaterialOutline.of(coletavelTile.getSprite());
             coletavelTile.addMaterial(materialOutline);
+            coletavelTile.colocarNoLayerDestaque();
         }
     }        
 

@@ -46,11 +46,13 @@ public class TrocadorOrdenado : TrocadorDeOrdem
         {
             trocarMaterial(coletavelPrimeiro, coletavelSegundo);
             destaqueGrayScale(coletavelPrimeiro);
+            destacarLayer(coletavelSegundo, coletavelPrimeiro);
         }
         else if (ordemSegundo.isOrdem(indiceNavegacao + 1))
         {
             trocarMaterial(coletavelSegundo, coletavelPrimeiro);
             destaqueGrayScale(coletavelSegundo);
+            destacarLayer(coletavelPrimeiro, coletavelSegundo);
         }
         trocarNomes(ordemPrimeiro, ordemSegundo);
     }
@@ -97,5 +99,11 @@ public class TrocadorOrdenado : TrocadorDeOrdem
     {
         DestaqueGrayScale destaque = new DestaqueGrayScale();
         destaque.destacar(coletavel);
+    }
+
+    private void destacarLayer(ColetavelTile coletavelDestaque, ColetavelTile coletavelDesfoque)
+    {
+        coletavelDestaque.colocarNoLayerDestaque();
+        coletavelDesfoque.colocarNoLayerComum();
     }
 }
