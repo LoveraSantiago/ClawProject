@@ -22,7 +22,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 
     public void iniciar(GrupoDisplays grupoDisplays)
     {
-        if (AbstractLevel.isCacaNiquelLevel(tipoGame))
+        if (LevelUtils.isCacaNiquelLevel(tipoGame))
         {
             Utils.MonoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel(grupoDisplays));
         }
@@ -67,7 +67,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 
     private Sprite[][] montarSpritesTipoCacaNiquel(DisplaysSlotsDto displaysSlotsDto)
     {
-        if(AbstractLevel.isCacaNiquelSingleLevel(tipoGame))        
+        if(LevelUtils.isCacaNiquelSingleLevel(tipoGame))        
         {
             int indicePup = PlayerPrefsPup.recuperarIndicePup();
             PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
@@ -89,7 +89,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 
     private Sprite getSprDeSucesso()
     {
-        if(AbstractLevel.isCacaNiquelSingleLevel(tipoGame))        
+        if(LevelUtils.isCacaNiquelSingleLevel(tipoGame))        
         {
             int indicePup = PlayerPrefsPup.recuperarIndicePup();
             PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
@@ -103,7 +103,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 
     private void avaliarResultados(PowerUpEntidade pupEscolhido , Sprite[] resultados, GrupoDisplays grupoDisplays)
     {
-        if (AbstractLevel.isCacaNiquelSingleLevel(tipoGame))
+        if (LevelUtils.isCacaNiquelSingleLevel(tipoGame))
         {
             if (resultados[2] == grupoDisplays.displaysSlotsDto.SprMoeda)
             {

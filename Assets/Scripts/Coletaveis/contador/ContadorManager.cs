@@ -10,7 +10,7 @@ public class ContadorManager
 
     public void configuradoPeloLevel(AbstractLevel level)
     {
-        if (level.isOrdemLevel())
+        if (LevelUtils.isOrdemLevel(level))
         {
             contador = new ContadorOrdenado(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
         }

@@ -48,11 +48,11 @@ public class CacaNiquelResult
 
     public bool isPupGeral()
     {
-        return AbstractLevel.isCacaNiquelGeralLevel(tipoGame);
+        return LevelUtils.isCacaNiquelGeralLevel(tipoGame);
     }
 
     public bool isPupSingle()
     {
-        return AbstractLevel.isCacaNiquelSingleLevel(tipoGame);
+        return LevelUtils.isCacaNiquelSingleLevel(tipoGame);
     }
 }

@@ -34,53 +34,5 @@ public abstract class AbstractLevel
     public bool hasPupLevel()
     {
         return getPupsLevel() != null;
-    }
-
-    public bool isNormalLevel()
-    {
-        return getTipoGame() == TIPO_GAME.NORMAL;
-    }
-
-    public bool isElevadorLevel()
-    {
-        return getTipoGame() == TIPO_GAME.ELEVADOR;
-    }
-
-    public bool isColetavelLevel()
-    {
-        return getTipoGame() == TIPO_GAME.COLETAVEL;
-    }
-
-    public bool isCacaNiquelLevel()
-    {
-        TIPO_GAME tipoGame = getTipoGame();
-        return tipoGame == TIPO_GAME.CACANIQUEL_PUP_GERAL || 
-               tipoGame == TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
-    }
-
-    public bool isPupLevel()
-    {
-        return getTipoGame() == TIPO_GAME.PUP;
-    }
-
-    public bool isOrdemLevel()
-    {
-        return getTipoGame() == TIPO_GAME.ORDENADO;
-    }
-
-    public static bool isCacaNiquelLevel(string desc)
-    {
-        return isCacaNiquelGeralLevel(desc) ||
-               isCacaNiquelSingleLevel(desc);
-    }
-
-    public static bool isCacaNiquelGeralLevel(string desc)
-    {
-        return TIPO_GAME.CACANIQUEL_PUP_GERAL.ToString().Equals(desc);
-    }
-
-    public static bool isCacaNiquelSingleLevel(string desc)
-    {
-        return TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL.ToString().Equals(desc);
-    }
+    }   
 }

@@ -53,7 +53,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 
     private void inicializarMontadorExtra(AbstractLevel level)
     {
-        if (level.isElevadorLevel())
+        if (LevelUtils.isElevadorLevel(level))
         {
             montadorExtra = new BoardMontadorExtra();
             montadorExtra.configuradoPeloLevel(level);

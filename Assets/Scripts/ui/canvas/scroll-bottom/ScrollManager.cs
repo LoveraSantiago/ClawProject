@@ -17,7 +17,7 @@ public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
 
     public void configuradoPeloLevel(AbstractLevel level)
     {
-        if(level.isPupLevel())
+        if(LevelUtils.isPupLevel(level))
         {
             isLevelPup = true;
         }

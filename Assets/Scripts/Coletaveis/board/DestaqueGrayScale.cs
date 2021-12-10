@@ -11,7 +11,7 @@ public class DestaqueGrayScale
 
     public DestaqueGrayScale(AbstractLevel level)
     {
-        if (level.isColetavelLevel() || level.isOrdemLevel())
+        if (LevelUtils.isColetavelLevel(level) || LevelUtils.isOrdemLevel(level))
         {
             destaque = true;
         }

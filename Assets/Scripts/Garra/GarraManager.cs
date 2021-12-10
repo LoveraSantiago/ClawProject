@@ -27,7 +27,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         cabo = new CaboDaGarra();
         cabo.configuradoPeloLevel(garraDto.CaboDaGarraDto, level.getDicionarioDeCores());
 
-        if(level.isCacaNiquelLevel())
+        if(LevelUtils.isCacaNiquelLevel(level))
         {
             gerDeMovAtual = new GerenciadorDeMovimentacaoCacaNiquel();
         }
