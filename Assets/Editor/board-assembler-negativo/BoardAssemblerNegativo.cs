@@ -84,12 +84,12 @@ public class BoardAssemblerNegativo : EditorWindow
             {
 
                 AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
-                int[,] coletaveis = getArrayExtraDeColetaveisSubFromLevel(level);
+                int[,] coletaveis = LevelUtils.getArrayDeColetaveisLevelElevador(level);
                 if (coletaveis != null)
                 {
                     remontador.montarColetaveis(coletaveis, (go, spr) => preenchedor.colocarSprite(go, spr));
 
-                    BoardOrdem[] ordens = getBoardOrdemFromLevel(level);
+                    BoardOrdem[] ordens = LevelUtils.getBoardOrdensFromLevelOrdenado(level);
                     remontador.montarLabels(ordens);
                 }
                 else
@@ -102,28 +102,4 @@ public class BoardAssemblerNegativo : EditorWindow
         root.Q<VisualElement>("espacoDropDown")
                .Add(dropDownField);
     }
-
-    private int[,] getArrayExtraDeColetaveisSubFromLevel(AbstractLevel level)
-    {
-        if (level.isElevadorLevel())
-        {
-            return ((AbstractLevelElevador)level).getArrayDeColetaveisSub();
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    private BoardOrdem[] getBoardOrdemFromLevel(AbstractLevel level)
-    {
-        if (level.isOrdemLevel()){
-            return ((AbstractLevelOrdem)level).getBoardOrdem();
-        }
-        else
-        {
-            return null;
-        }
-    }
-
 }

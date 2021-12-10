@@ -87,7 +87,7 @@ public class BoardAssemblerV5 : EditorWindow
                 int[,] coletaveis = level.getArrayDeColetaveis();                
                 remontador.montarColetaveis(coletaveis, (go, spr) => preenchedor.colocarSprite(go, spr));
 
-                BoardOrdem[] ordens = level.getBoardOrdem();
+                BoardOrdem[] ordens = LevelUtils.getBoardOrdensFromLevelOrdenado(level);
                 remontador.montarLabels(ordens);
             }
         });
