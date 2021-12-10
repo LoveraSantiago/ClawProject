@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class Level4 : AbstractLevel
+public class Level4 : AbstractLevelOrdem
 {
     public override string getLevelName()
     {
@@ -10,11 +10,6 @@ public class Level4 : AbstractLevel
     public override string getMsgObjetivoLevel()
     {
         return "Siga a ordem dos coletaveis";
-    }
-
-    protected override TIPO_GAME getTipoGame()
-    {
-        return TIPO_GAME.ORDENADO;
     }   
 
     public override int[,] getArrayDeColetaveis()

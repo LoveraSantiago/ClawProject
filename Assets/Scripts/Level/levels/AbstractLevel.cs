@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevel 
 {
-    protected enum TIPO_GAME {
+    public enum TIPO_GAME {
         NORMAL, ELEVADOR, ORDENADO, PUP, COLETAVEL,
         CACANIQUEL_PUP_INDIVIDUAL, CACANIQUEL_PUP_GERAL }
 
@@ -16,9 +16,7 @@ public abstract class AbstractLevel
 
     public abstract ColetavelEntidade.FAMILIA getFamiliaColetavel();
 
-    public abstract int[,] getArrayDeColetaveis();    
-
-    public virtual BoardOrdem[] getBoardOrdem() { return null; }
+    public abstract int[,] getArrayDeColetaveis();        
 
     public virtual PowerUpsToLevel getPupsLevel() { return null; }
 
@@ -27,7 +25,7 @@ public abstract class AbstractLevel
         return getTipoGame().ToString();
     }
 
-    protected abstract TIPO_GAME getTipoGame();
+    public abstract TIPO_GAME getTipoGame();
 
     public abstract TipoContagemTempoDto getTempoContagem();
 

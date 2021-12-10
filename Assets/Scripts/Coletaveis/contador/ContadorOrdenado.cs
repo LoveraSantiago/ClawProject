@@ -10,7 +10,7 @@ public class ContadorOrdenado : ContadorNormal
 
     public override void configuradoPeloLevel(AbstractLevel level)
     {
-        BoardOrdem[] ordens = level.getBoardOrdem();
+        BoardOrdem[] ordens = ((AbstractLevelOrdem)level).getBoardOrdem();
         navegacaoOrdem = new NavegacaoDeArray<BoardOrdem>(ordens, 0);
     }
 

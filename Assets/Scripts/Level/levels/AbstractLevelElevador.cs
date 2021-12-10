@@ -1,6 +1,6 @@
 public abstract class AbstractLevelElevador : AbstractLevel
 {
-    protected override TIPO_GAME getTipoGame()
+    public override TIPO_GAME getTipoGame()
     {
         return TIPO_GAME.ELEVADOR;
     }
