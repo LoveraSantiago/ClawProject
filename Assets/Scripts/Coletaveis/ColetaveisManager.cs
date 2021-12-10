@@ -52,7 +52,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         contador.iniciar(qtdColetaveisDoBoard);
 
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        coletavelImantado = helperInGame.getColetavelInGameByName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK    
+        coletavelImantado = helperInGame.getColetavelInGameByGoName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK    
     }    
 
     public Fornecedor<TrocadorDeOrdem> getFornecedorTrocadorDeOrdem()
@@ -77,7 +77,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private void processarColetado(GameObject gameObjectColetado)
     {        
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        ColetavelTile coletavelAcertado = helperInGame.getColetavelInGameByName(gameObjectColetado.name);
+        ColetavelTile coletavelAcertado = helperInGame.getColetavelInGameByGoName(gameObjectColetado.name);
         coletavelAcertado.desligar();
 
         int score = contador.contarColetado(coletavelAcertado);
@@ -106,7 +106,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         if (helperInGame.temColetavelInGameByNome(goColetado.name))
         {
-            ColetavelTile coletado = helperInGame.getColetavelInGameByName(goColetado.name);            
+            ColetavelTile coletado = helperInGame.getColetavelInGameByGoName(goColetado.name);            
             if(coletado.isTouchingCentroDaGarra())
             {            
                 processarColetado(goColetado.gameObject);
@@ -120,7 +120,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         if (evento.isImantadoInfo)
         {
             HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-            coletavelImantado = helperInGame.getColetavelInGameByName(evento.nomeColetado);
+            coletavelImantado = helperInGame.getColetavelInGameByGoName(evento.nomeColetado);
             coletavelImantado.imantar();
         }
         else if (evento.isNotImantadoInfo)

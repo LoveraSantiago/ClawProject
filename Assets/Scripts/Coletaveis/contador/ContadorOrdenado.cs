@@ -50,7 +50,7 @@ public class ContadorOrdenado : ContadorNormal
             BoardOrdem ordemIt = navegacaoOrdem.getItemIndiceAtual();
 
             HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-            ColetavelTile coletavelTile = helperInGame.getColetavelInGameByName(ordemIt.nome);
+            ColetavelTile coletavelTile = helperInGame.getColetavelInGameByGoName(ordemIt.nome);
                         
             Material materialOutline = MaterialOutline.of(coletavelTile.getSprite());
             coletavelTile.addMaterial(materialOutline);

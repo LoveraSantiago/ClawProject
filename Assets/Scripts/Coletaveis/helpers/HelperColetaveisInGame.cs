@@ -21,9 +21,9 @@ public class HelperColetaveisInGame
         return poolDeColetaveis.contemNome(name);
     }
 
-    public ColetavelTile getColetavelInGameByName(string name)
+    public ColetavelTile getColetavelInGameByGoName(string name)
     {
-        return poolDeColetaveis.getColetavelPeloNome(name);
+        return poolDeColetaveis.getColetavelPeloGoNome(name);
     }
 
     public ColetavelTile getColetavelMaisAlto()

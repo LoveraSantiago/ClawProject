@@ -16,7 +16,7 @@ public class ColetavelHit
         Collider2D colliderResult = raycastHit.collider;
         if(colliderResult != null)
         {            
-            return helperInGame.getColetavelInGameByName(colliderResult.name);
+            return helperInGame.getColetavelInGameByGoName(colliderResult.name);
         }
         else
         {         
