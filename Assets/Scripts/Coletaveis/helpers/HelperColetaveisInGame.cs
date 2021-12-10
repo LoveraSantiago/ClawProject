@@ -26,6 +26,11 @@ public class HelperColetaveisInGame
         return poolDeColetaveis.getColetavelPeloGoNome(name);
     }
 
+    public ColetavelTile[] getColetavelInGameDoTipo(ColetavelEntidade coletavelEntidade)
+    {
+
+    }
+
     public ColetavelTile getColetavelMaisAlto()
     {
         ProcuradorColetavelMaisAlto procurador = new ProcuradorColetavelMaisAlto();
