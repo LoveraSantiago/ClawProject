@@ -12,7 +12,7 @@ public class LevelColetavel : AbstractLevel
         return "Colete o coletavel de interesse";
     }
 
-    protected override TIPO_GAME getTipoGame()
+    public override TIPO_GAME getTipoGame()
     {
         return TIPO_GAME.COLETAVEL;
     }

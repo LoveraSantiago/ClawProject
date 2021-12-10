@@ -12,7 +12,7 @@ public class LevelPup : AbstractLevel
         return "Treinar Habilidades em Power Up";
     }
 
-    protected override TIPO_GAME getTipoGame()
+    public override TIPO_GAME getTipoGame()
     {
         return TIPO_GAME.PUP;
     }   

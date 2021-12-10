@@ -12,7 +12,7 @@ public class LevelCacaNiquelPupGeral : AbstractLevel
         return "Ganhar power ups gerais.";
     }   
 
-    protected override TIPO_GAME getTipoGame()
+    public override TIPO_GAME getTipoGame()
     {
         return TIPO_GAME.CACANIQUEL_PUP_GERAL;
     }
