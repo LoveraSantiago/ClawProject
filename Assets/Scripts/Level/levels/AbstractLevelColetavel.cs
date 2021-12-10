@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 
-public class LevelColetavel : AbstractLevel
+public abstract class AbstractLevelColetavel : AbstractLevel
 {
+    public abstract int getIdColetavel();
+
     public override string getLevelName()
     {
         return "Coletavel Level";
@@ -31,7 +33,7 @@ public class LevelColetavel : AbstractLevel
             {0, 0, 0, 0, 0, 0, 0}
         };
     }
-    
+
     public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
     {
         return ColetavelEntidade.FAMILIA.FRUTAS;
@@ -100,18 +102,5 @@ public class LevelColetavel : AbstractLevel
         dicionario.Add("leds3", "#BCB004");
         dicionario.Add("cabo-da-garra", "#9F5CFC");
         return dicionario;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevelColetavel();
-    }
-
-    public class FornecedorLevelColetavel : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelColetavel();
-        }
     }
 }

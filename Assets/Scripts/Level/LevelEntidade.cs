@@ -31,16 +31,14 @@ public class LevelEntidade
             new LevelEntidade(Level.TRES  , "3", Level3.getFornecedor()),
             new LevelEntidade(Level.QUATRO, "4", Level4.getFornecedor()),
 
-            new LevelEntidade(Level.PUP, "TreinoPup", LevelPup.getFornecedor()),
+            new LevelEntidade(Level.PUP, "TreinoPup", LevelPup.getFornecedor()),            
 
-            new LevelEntidade(Level.COLETAVEL, "Coletavel", LevelColetavel.getFornecedor()),
-
-            new LevelEntidade(Level.COLETAVEL_PAO, "LevelPao", LevelPao.getFornecedor()),
-            new LevelEntidade(Level.COLETAVEL_MACA, "LevelMaca", LevelMaca.getFornecedor()),
-            new LevelEntidade(Level.COLETAVEL_LEITE, "LevelLeite", LevelLeite.getFornecedor()),
-            new LevelEntidade(Level.COLETAVEL_COCO, "LevelCoco", LevelCoco.getFornecedor()),
-            new LevelEntidade(Level.COLETAVEL_ASPARGO, "LevelAspargo", LevelAspargo.getFornecedor()),
-            new LevelEntidade(Level.COLETAVEL_LARANJA, "LevelLaranja", LevelLaranja.getFornecedor()),
+            new LevelEntidade(Level.COLETAVEL_PAO           , "LevelPao"           , LevelPao.getFornecedor()),
+            new LevelEntidade(Level.COLETAVEL_MACA          , "LevelMaca"          , LevelMaca.getFornecedor()),
+            new LevelEntidade(Level.COLETAVEL_LEITE         , "LevelLeite"         , LevelLeite.getFornecedor()),
+            new LevelEntidade(Level.COLETAVEL_COCO          , "LevelCoco"          , LevelCoco.getFornecedor()),
+            new LevelEntidade(Level.COLETAVEL_ASPARGO       , "LevelAspargo"       , LevelAspargo.getFornecedor()),
+            new LevelEntidade(Level.COLETAVEL_LARANJA       , "LevelLaranja"       , LevelLaranja.getFornecedor()),
             new LevelEntidade(Level.COLETAVEL_ESTRELAMARINHA, "LevelEstrelaMarinha", LevelEstrelaMarinha.getFornecedor()),
 
             new LevelEntidade(Level.CACANIQUEL_PUP_G, "CacaNiquelGeral"     , LevelCacaNiquelPupGeral.getFornecedor()),

@@ -1,4 +1,4 @@
-public class LevelPao : LevelColetavel
+public class LevelPao : AbstractLevelColetavel
 {
     public override int[,] getArrayDeColetaveis()
     {
@@ -15,10 +15,15 @@ public class LevelPao : LevelColetavel
         };        
     }
 
-    public static new Fornecedor<AbstractLevel> getFornecedor()
+    public override int getIdColetavel()
+    {
+        return 13;
+    }
+
+    public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorPao();
-    }
+    }  
 
     public class FornecedorPao : Fornecedor<AbstractLevel>
     {

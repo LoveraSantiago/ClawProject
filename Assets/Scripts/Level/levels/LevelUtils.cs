@@ -1,29 +1,5 @@
 public class LevelUtils 
 {
-    public static int[,] getArrayDeColetaveisLevelElevador(AbstractLevel level)
-    {
-        if (isElevadorLevel(level))
-        {
-            return ((AbstractLevelElevador)level).getArrayDeColetaveisSub();
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    public static BoardOrdem[] getBoardOrdensFromLevelOrdenado(AbstractLevel level)
-    {
-        if (isOrdemLevel(level))
-        {
-            return ((AbstractLevelOrdem)level).getBoardOrdem();
-        }
-        else
-        {
-            return null;
-        }
-    }
-
     public static bool isNormalLevel(AbstractLevel level)
     {
         return level.getTipoGame() == AbstractLevel.TIPO_GAME.NORMAL;
@@ -70,5 +46,29 @@ public class LevelUtils
     public static bool isCacaNiquelSingleLevel(string desc)
     {
         return AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL.ToString().Equals(desc);
+    }
+
+    public static int[,] getArrayDeColetaveisLevelElevador(AbstractLevel level)
+    {
+        if (isElevadorLevel(level))
+        {
+            return ((AbstractLevelElevador)level).getArrayDeColetaveisSub();
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public static BoardOrdem[] getBoardOrdensFromLevelOrdenado(AbstractLevel level)
+    {
+        if (isOrdemLevel(level))
+        {
+            return ((AbstractLevelOrdem)level).getBoardOrdem();
+        }
+        else
+        {
+            return null;
+        }
     }
 }

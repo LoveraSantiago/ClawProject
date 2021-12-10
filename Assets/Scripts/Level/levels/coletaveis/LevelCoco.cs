@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class LevelCoco : LevelColetavel
+public class LevelCoco : AbstractLevelColetavel
 {
     public override int[,] getArrayDeColetaveis()
     {
@@ -19,10 +15,15 @@ public class LevelCoco : LevelColetavel
         };
     }
 
-    public static new Fornecedor<AbstractLevel> getFornecedor()
+    public override int getIdColetavel()
+    {
+        return 15;
+    }
+
+    public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorCoco();
-    }
+    }    
 
     public class FornecedorCoco : Fornecedor<AbstractLevel>
     {
