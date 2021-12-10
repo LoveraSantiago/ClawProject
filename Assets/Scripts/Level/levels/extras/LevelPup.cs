@@ -98,7 +98,8 @@ public class LevelPup : AbstractLevel
         dicionario.Add("leds1", "#486B00");
         dicionario.Add("leds2", "#486B00");
         dicionario.Add("leds3", "#486B00");
-        dicionario.Add("cabo-da-garra", "#16C9BD");
+        dicionario.Add("cabo-da-garra", "#16C9BD");
+
         return dicionario;
     }
 

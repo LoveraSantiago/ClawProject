@@ -21,9 +21,9 @@ public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         {
             isLevelPup = true;
         }
-        else if (level.hasPupLevel())
+        else if (level.hasPupToLevel())
         {
-            pupsToLevel = level.getPupsLevel();
+            pupsToLevel = level.getPupsToLevel();
             isPupsToLevel = true;
         }        
     }

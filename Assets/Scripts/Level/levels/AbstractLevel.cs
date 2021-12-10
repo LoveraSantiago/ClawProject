@@ -18,7 +18,7 @@ public abstract class AbstractLevel
 
     public abstract int[,] getArrayDeColetaveis();        
 
-    public virtual PowerUpsToLevel getPupsLevel() { return null; }
+    public virtual PowerUpsToLevel getPupsToLevel() { return null; }
 
     public string getTipoGameDesc()
     {
@@ -31,8 +31,8 @@ public abstract class AbstractLevel
 
     public abstract Dictionary<string, string> getDicionarioDeCores();      
 
-    public bool hasPupLevel()
+    public bool hasPupToLevel()
     {
-        return getPupsLevel() != null;
+        return getPupsToLevel() != null;
     }   
 }
