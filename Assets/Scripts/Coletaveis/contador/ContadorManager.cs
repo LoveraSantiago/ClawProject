@@ -10,13 +10,20 @@ public class ContadorManager
 
     public void configuradoPeloLevel(AbstractLevel level)
     {
+        int pontosColetados = coletaveisDto.PontosColetados;
+        int pontosAcerto    = coletaveisDto.PontosAcerto;
+
         if (LevelUtils.isOrdemLevel(level))
         {
-            contador = new ContadorOrdenado(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
+            contador = new ContadorOrdenado(pontosColetados, pontosAcerto);
+        }
+        else if (LevelUtils.isColetavelLevel(level))
+        {
+            contador = new ContadorColetavel(pontosColetados, pontosAcerto);
         }
         else
         {
-            contador = new ContadorNormal(coletaveisDto.PontosColetados, coletaveisDto.PontosAcerto);
+            contador = new ContadorNormal(pontosColetados, pontosAcerto);
         }
         contador.configuradoPeloLevel(level);
     }

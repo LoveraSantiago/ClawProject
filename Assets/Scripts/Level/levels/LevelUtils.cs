@@ -53,6 +53,14 @@ public class LevelUtils
         return AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL.ToString().Equals(desc);
     }
 
+    public static ColetavelEntidade getColetavelFromLevelColetavel(AbstractLevel level)
+    {
+        int id = ((AbstractLevelColetavel)level).getIdColetavel();
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeById(id);
+        return coletavelEntidade;
+    }
+
     public static int[,] getArrayDeColetaveisLevelElevador(AbstractLevel level)
     {
         if (isElevadorLevel(level))
