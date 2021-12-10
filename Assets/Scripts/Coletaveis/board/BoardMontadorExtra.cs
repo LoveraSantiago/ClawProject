@@ -9,7 +9,7 @@ public class BoardMontadorExtra : BoardMontador
 
     public override void configuradoPeloLevel(AbstractLevel level)
     {
-        setArrayDeColetavel(((AbstractLevelElevador) level).getArrayDeColetaveisSub());
+        setArrayDeColetavel(LevelUtils.getArrayDeColetaveisLevelElevador(level));
         poolExtraSubs = new PoolList<ColetavelTile>();
 
         destaque = new DestaqueGrayScale(level);
