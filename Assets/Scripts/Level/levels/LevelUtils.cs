@@ -32,6 +32,11 @@ public class LevelUtils
         return level.getTipoGame() == AbstractLevel.TIPO_GAME.ORDENADO;
     }
 
+    public static bool isLevelDeDestaque(AbstractLevel level)
+    {
+        return isColetavelLevel(level) || isOrdemLevel(level);
+    }
+
     public static bool isCacaNiquelLevel(string desc)
     {
         return isCacaNiquelGeralLevel(desc) ||
