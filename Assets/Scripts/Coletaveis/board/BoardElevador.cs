@@ -10,7 +10,7 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
         produtorDeEvento = new ProdutorDeEvento<SubidaBoardAcaoFim>();
     }
 
-    public IEnumerator subirBoardComPool(BoardDto boardDto, BoardMontadorExtra montadorExtra)
+    public IEnumerator subirBoardComPool(BoardDto boardDto, BoardMontador montadorExtra)
     {
         yield return new WaitForSeconds(0.6f);
 

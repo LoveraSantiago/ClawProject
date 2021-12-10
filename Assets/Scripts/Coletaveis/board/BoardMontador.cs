@@ -37,8 +37,14 @@ public abstract class BoardMontador
         }
     }
 
+    public abstract void configuradoPeloLevel(AbstractLevel level);
     protected abstract void create(BoardDto boardDto);
     protected abstract void onColetavelCriado(ColetavelTile coletavelTile);
+
+    public virtual int getQtdAcrescentada()
+    {
+        return 0;
+    }
 
     protected float[] getEixoX(BoardDto boardDto, int indice)
     {

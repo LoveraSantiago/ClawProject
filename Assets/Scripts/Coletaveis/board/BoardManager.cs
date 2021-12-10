@@ -5,15 +5,14 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
     private BoardElevador elevador;   
     private BoardDevolvedor devolvedor;
 
-    private BoardMontadorNormal montador;
-    private BoardMontadorExtra  montadorExtra;
+    private BoardMontador montador;
+    private BoardMontador montadorExtra;
 
     public BoardManager(BoardDto boardDto)
     {
         this.boardDto = boardDto;
         devolvedor    = new BoardDevolvedor();
-        montador      = new BoardMontadorNormal();
-        montadorExtra = new BoardMontadorExtra();
+        montador      = new BoardMontadorNormal();        
         elevador      = new BoardElevador();        
     }
 
@@ -21,9 +20,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
     {
         BoardMontador.configurar(level.getFamiliaColetavel());
         montador.configuradoPeloLevel(level);
-
-        montadorExtra.configuradoPeloLevel(level);
-        devolvedor.configuradoPeloLevel(level.devolverParaBoard());        
+        inicializarMontadorExtra(level);        
     }
 
     public int create()
@@ -39,7 +36,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 
     public int subirBoard()
     {
-        int qtdColetaveis = montadorExtra.getQtdExtras();
+        int qtdColetaveis = montadorExtra.getQtdAcrescentada();
         Utils.MonoBehaviour.StartCoroutine(elevador.subirBoardComPool(boardDto, montadorExtra));
         return qtdColetaveis;
     }       
@@ -52,6 +49,20 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
     public bool isDevolverBoard()
     {
         return devolvedor.devolverBoard;
+    }
+
+    private void inicializarMontadorExtra(AbstractLevel level)
+    {
+        if (level.isElevadorLevel())
+        {
+            montadorExtra = new BoardMontadorExtra();
+            montadorExtra.configuradoPeloLevel(level);
+            devolvedor.configuradoPeloLevel(level.devolverParaBoard());
+        }
+        else
+        {
+            montadorExtra = new BoardMontadorVazio();
+        }
     }
 
     ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()

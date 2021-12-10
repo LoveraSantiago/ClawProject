@@ -1,10 +1,8 @@
-using UnityEngine;
-
 public class BoardMontadorNormal : BoardMontador
 {
     private DestaqueGrayScale destaque;
 
-    public void configuradoPeloLevel(AbstractLevel level)
+    public override void configuradoPeloLevel(AbstractLevel level)
     {   
         setArrayDeColetavel(level.getArrayDeColetaveis());
         destaque = new DestaqueGrayScale(level);
