@@ -107,7 +107,7 @@ public class BoardAssemblerNegativo : EditorWindow
     {
         if (level.isElevadorLevel())
         {
-            return ((AbstractElevadorLevel)level).getArrayDeColetaveisSub();
+            return ((AbstractLevelElevador)level).getArrayDeColetaveisSub();
         }
         else
         {

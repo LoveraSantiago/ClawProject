@@ -16,9 +16,7 @@ public abstract class AbstractLevel
 
     public abstract ColetavelEntidade.FAMILIA getFamiliaColetavel();
 
-    public abstract int[,] getArrayDeColetaveis();
-
-    
+    public abstract int[,] getArrayDeColetaveis();    
 
     public virtual BoardOrdem[] getBoardOrdem() { return null; }
 

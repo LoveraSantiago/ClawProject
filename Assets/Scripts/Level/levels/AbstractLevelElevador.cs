@@ -1,4 +1,4 @@
-public abstract class AbstractElevadorLevel : AbstractLevel
+public abstract class AbstractLevelElevador : AbstractLevel
 {
     protected override TIPO_GAME getTipoGame()
     {

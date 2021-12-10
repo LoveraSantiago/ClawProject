@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class Level3 : AbstractElevadorLevel
+public class Level3 : AbstractLevelElevador
 {
     public override string getLevelName()
     {
