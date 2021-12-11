@@ -21,8 +21,7 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         }
         else
         {
-            destaqueGrayScale(coletavelPrimeiro);
-            coletavelPrimeiro.colocarNoLayerComum();
+            destaqueGrayScale(coletavelPrimeiro);            
         }
     }
 
@@ -54,14 +53,12 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         if (ordemPrimeiro.isOrdem(indiceNavegacao + 1))
         {
             trocarMaterial(coletavelPrimeiro, coletavelSegundo);
-            destaqueGrayScale(coletavelPrimeiro);
-            destacarLayer(coletavelSegundo, coletavelPrimeiro);
+            destaqueGrayScale(coletavelPrimeiro);            
         }
         else if (ordemSegundo.isOrdem(indiceNavegacao + 1))
         {
             trocarMaterial(coletavelSegundo, coletavelPrimeiro);
-            destaqueGrayScale(coletavelSegundo);
-            destacarLayer(coletavelPrimeiro, coletavelSegundo);
+            destaqueGrayScale(coletavelSegundo);            
         }
         trocarNomes(ordemPrimeiro, ordemSegundo);
     }
@@ -95,7 +92,7 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
     {
         Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
-        destaqueOutline(coletavelSemMaterial);        
+        destaqueOutline(coletavelSemMaterial);                
     }
 
     private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
@@ -114,11 +111,6 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
     {
         Material materialOutline = MaterialOutline.of(coletavel.getSprite());
         coletavel.addMaterial(materialOutline);
-    }
-
-    private void destacarLayer(ColetavelTile coletavelDestaque, ColetavelTile coletavelDesfoque)
-    {
-        coletavelDestaque.colocarNoLayerDestaque();
-        coletavelDesfoque.colocarNoLayerComum();
-    }
+        coletavel.colocarNoLayerDestaque();
+    }    
 }

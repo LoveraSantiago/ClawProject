@@ -24,6 +24,7 @@ public class DestaqueGrayScale
             HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
             Material materialGray = helperInGame.getMaterialGrayscaleTo(coletavel);
             coletavel.addMaterial(materialGray);
+            coletavel.colocarNoLayerComum();
         }
     }
 }
