@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class TrocadorOrdenado : TrocadorDeOrdem
+public class TrocadorLevelOrdenado : TrocadorDeOrdem
 {    
     private NavegacaoDeArray<BoardOrdem> navegacaoOrdem;
 
-    public TrocadorOrdenado(NavegacaoDeArray<BoardOrdem> navegacaoOrdem)
+    public TrocadorLevelOrdenado(NavegacaoDeArray<BoardOrdem> navegacaoOrdem)
     {
         Debug.Log("Trocador ordenado chamado");
         this.navegacaoOrdem = navegacaoOrdem;

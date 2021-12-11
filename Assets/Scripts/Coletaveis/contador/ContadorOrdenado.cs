@@ -65,6 +65,6 @@ public class ContadorOrdenado : ContadorNormal
 
     public override TrocadorDeOrdem fornecer()
     {
-        return new TrocadorOrdenado(navegacaoOrdem);
+        return new TrocadorLevelOrdenado(navegacaoOrdem);
     }
 }
