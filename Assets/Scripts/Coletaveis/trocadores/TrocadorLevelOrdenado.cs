@@ -13,8 +13,17 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
     public void atualizar(ColetavelTile coletavelPrimeiro)
     {
         Debug.Log("Atualizado ordem");
-        Material materialOutline = MaterialOutline.of(coletavelPrimeiro.getSprite());
-        coletavelPrimeiro.addMaterial(materialOutline);
+        BoardOrdem ordemAtual = navegacaoOrdem.getItemIndiceAtual();
+        if (ordemAtual.isNomeEquals(coletavelPrimeiro.nome))
+        {
+            destaqueOutline(coletavelPrimeiro);
+            coletavelPrimeiro.colocarNoLayerDestaque();
+        }
+        else
+        {
+            destaqueGrayScale(coletavelPrimeiro);
+            coletavelPrimeiro.colocarNoLayerComum();
+        }
     }
 
     public void trocar(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
@@ -86,7 +95,7 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
     {
         Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
-        atualizar(coletavelSemMaterial);        
+        destaqueOutline(coletavelSemMaterial);        
     }
 
     private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
@@ -99,6 +108,12 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
     {
         DestaqueGrayScale destaque = new DestaqueGrayScale();
         destaque.destacar(coletavel);
+    }
+
+    private void destaqueOutline(ColetavelTile coletavel)
+    {
+        Material materialOutline = MaterialOutline.of(coletavel.getSprite());
+        coletavel.addMaterial(materialOutline);
     }
 
     private void destacarLayer(ColetavelTile coletavelDestaque, ColetavelTile coletavelDesfoque)
