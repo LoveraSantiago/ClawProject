@@ -14,7 +14,7 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
         Debug.Log("atualizar ordem chamado");
         if (trincaColetaveis.isColetavelNaTrinca(coletavelPrimeiro))
         {
-
+            addMaterialOutline(coletavelPrimeiro);
         }
         else
         {
