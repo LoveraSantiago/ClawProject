@@ -28,7 +28,7 @@ public class HelperColetaveisInGame
 
     public ColetavelTile[] getColetavelInGameDoTipo(ColetavelEntidade coletavelEntidade)
     {
-
+        return poolDeColetaveis.getTrincaDeColetaveis(coletavelEntidade);
     }
 
     public ColetavelTile getColetavelMaisAlto()
