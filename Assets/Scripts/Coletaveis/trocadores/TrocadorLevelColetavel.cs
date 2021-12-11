@@ -18,7 +18,7 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
         }
         else
         {
-            colocarMaterialGrayscaleDeVolta(coletavelPrimeiro);
+            addMaterialGrayScale(coletavelPrimeiro);
         }
     }
 
@@ -33,7 +33,7 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
         }
         else
         {
-            colocarMaterialGrayscaleDeVolta(coletavelPrimeiro);
+            addMaterialGrayScale(coletavelPrimeiro);
         }
     }
 
@@ -56,13 +56,5 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
             //coletavelPrimeiro.colocarNoLayerComum();
         }
 
-    }   
-
-    private void colocarMaterialGrayscaleDeVolta(ColetavelTile coletavel)
-    {
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        Material materialGrayScale = helperInGame.getMaterialGrayscaleTo(coletavel);
-        coletavel.addMaterial(materialGrayScale);
-        coletavel.colocarNoLayerComum();
-    }
+    }      
 }

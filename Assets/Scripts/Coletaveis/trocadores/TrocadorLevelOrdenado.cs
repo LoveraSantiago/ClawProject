@@ -16,12 +16,11 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         BoardOrdem ordemAtual = navegacaoOrdem.getItemIndiceAtual();
         if (ordemAtual.isNomeEquals(coletavelPrimeiro.nome))
         {
-            destaqueOutline(coletavelPrimeiro);
-            coletavelPrimeiro.colocarNoLayerDestaque();
+            addMaterialOutline(coletavelPrimeiro);            
         }
         else
         {
-            destaqueGrayScale(coletavelPrimeiro);            
+            addMaterialGrayScale(coletavelPrimeiro);            
         }
     }
 
@@ -53,12 +52,12 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         if (ordemPrimeiro.isOrdem(indiceNavegacao + 1))
         {
             trocarMaterial(coletavelPrimeiro, coletavelSegundo);
-            destaqueGrayScale(coletavelPrimeiro);            
+            addMaterialGrayScale(coletavelPrimeiro);            
         }
         else if (ordemSegundo.isOrdem(indiceNavegacao + 1))
         {
             trocarMaterial(coletavelSegundo, coletavelPrimeiro);
-            destaqueGrayScale(coletavelSegundo);            
+            addMaterialGrayScale(coletavelSegundo);            
         }
         trocarNomes(ordemPrimeiro, ordemSegundo);
     }
@@ -92,25 +91,12 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
     {
         Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
-        destaqueOutline(coletavelSemMaterial);                
+        addMaterialOutline(coletavelSemMaterial);                
     }
 
     private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
     {        
         Material materialOutline = MaterialOutline.of(spr);
         coletavelComMaterial.addMaterial(materialOutline);
-    }   
-
-    private void destaqueGrayScale(ColetavelTile coletavel)
-    {
-        DestaqueGrayScale destaque = new DestaqueGrayScale();
-        destaque.destacar(coletavel);
     }
-
-    private void destaqueOutline(ColetavelTile coletavel)
-    {
-        Material materialOutline = MaterialOutline.of(coletavel.getSprite());
-        coletavel.addMaterial(materialOutline);
-        coletavel.colocarNoLayerDestaque();
-    }    
 }
