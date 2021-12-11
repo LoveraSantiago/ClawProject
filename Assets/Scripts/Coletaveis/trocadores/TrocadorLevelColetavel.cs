@@ -12,6 +12,14 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
     public void atualizar(ColetavelTile coletavelPrimeiro)
     {
         Debug.Log("atualizar ordem chamado");
+        if (trincaColetaveis.isColetavelNaTrinca(coletavelPrimeiro))
+        {
+
+        }
+        else
+        {
+            colocarMaterialGrayscaleDeVolta(coletavelPrimeiro);
+        }
     }
 
     public void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
@@ -25,10 +33,7 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
         }
         else
         {
-            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-            Material materialGrayScale = helperInGame.getMaterialGrayscaleTo(coletavelPrimeiro);
-            coletavelPrimeiro.addMaterial(materialGrayScale);
-            coletavelPrimeiro.colocarNoLayerComum();
+            colocarMaterialGrayscaleDeVolta(coletavelPrimeiro);
         }
     }
 
@@ -52,4 +57,12 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
         }
 
     }   
+
+    private void colocarMaterialGrayscaleDeVolta(ColetavelTile coletavel)
+    {
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        Material materialGrayScale = helperInGame.getMaterialGrayscaleTo(coletavel);
+        coletavel.addMaterial(materialGrayScale);
+        coletavel.colocarNoLayerComum();
+    }
 }

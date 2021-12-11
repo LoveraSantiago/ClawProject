@@ -118,6 +118,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
             if(coletavelSelecionado != null)
             {
                 coletavelSelecionado.clearMaterial();
+                getTrocadorDeOrdem().atualizar(coletavelSelecionado);
             }
             HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
             helperInGame.desligarMirasNosColetaveis();
