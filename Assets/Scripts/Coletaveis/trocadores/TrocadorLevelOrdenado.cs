@@ -10,7 +10,7 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         this.navegacaoOrdem = navegacaoOrdem;
     }
 
-    public void atualizar(ColetavelTile coletavelPrimeiro)
+    public override void atualizar(ColetavelTile coletavelPrimeiro)
     {
         Debug.Log("Atualizado ordem");
         BoardOrdem ordemAtual = navegacaoOrdem.getItemIndiceAtual();
@@ -25,7 +25,7 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         }
     }
 
-    public void trocar(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
+    public override void trocar(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {
         BoardOrdem ordemPrimeiro = null;
         BoardOrdem ordemSegundo = null;
@@ -63,7 +63,7 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         trocarNomes(ordemPrimeiro, ordemSegundo);
     }
 
-    public void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
+    public override void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {
         int indiceNavegacao = navegacaoOrdem.indiceAtual;
         int tamanhoArray = navegacaoOrdem.getTamanhoArray();

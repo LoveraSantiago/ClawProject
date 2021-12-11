@@ -1,7 +1,7 @@
-public interface TrocadorDeOrdem
+public abstract class TrocadorDeOrdem
 {
     //CONFIGURAR VIA POWERUPMANAGER VIA ALLMANAGERS
-    void trocar(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo);
-    void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo);
-    void atualizar(ColetavelTile coletavelPrimeiro);
+    public abstract void trocar(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo);
+    public abstract void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo);
+    public abstract void atualizar(ColetavelTile coletavelPrimeiro);
 }
