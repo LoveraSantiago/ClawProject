@@ -102,7 +102,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         helperInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.preFinalizar();
         coletavelTile.receberSprite(sprSorteado);
-        getTrocadorDeOrdem().atualizarOrdem(coletavelTile);
+        getTrocadorDeOrdem().atualizar(coletavelTile);
         resetPup();        
         powerUpFinalizacao.finalizado();
         yield return null;

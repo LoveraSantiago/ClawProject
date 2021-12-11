@@ -10,14 +10,14 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         this.navegacaoOrdem = navegacaoOrdem;
     }
 
-    public void atualizarOrdem(ColetavelTile coletavelPrimeiro)
+    public void atualizar(ColetavelTile coletavelPrimeiro)
     {
         Debug.Log("Atualizado ordem");
         Material materialOutline = MaterialOutline.of(coletavelPrimeiro.getSprite());
         coletavelPrimeiro.addMaterial(materialOutline);
     }
 
-    public void trocarOrdem(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
+    public void trocar(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {
         BoardOrdem ordemPrimeiro = null;
         BoardOrdem ordemSegundo = null;
@@ -86,7 +86,7 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
     {
         Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
-        atualizarOrdem(coletavelSemMaterial);        
+        atualizar(coletavelSemMaterial);        
     }
 
     private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)

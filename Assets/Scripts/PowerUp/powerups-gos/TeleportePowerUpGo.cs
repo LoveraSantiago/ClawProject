@@ -40,7 +40,7 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         coletavel2.desligarAnimacao();
         yield return null;
 
-        getTrocadorDeOrdem().trocarOrdem(coletavel1, coletavel2);
+        getTrocadorDeOrdem().trocar(coletavel1, coletavel2);
 
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
         powerUpFinalizacao.finalizado();
