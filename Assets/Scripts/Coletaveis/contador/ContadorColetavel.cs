@@ -3,6 +3,7 @@ using UnityEngine;
 public class ContadorColetavel : ContadorNormal
 {
     private ColetavelEntidade coletavelEntidade;
+    private TrincaColetaveisTiles trincaColetaveis;    
 
     public ContadorColetavel(int pontosColetado, int pontosAcerto) 
         : base(pontosColetado, pontosAcerto){}
@@ -29,10 +30,17 @@ public class ContadorColetavel : ContadorNormal
             coletavelIt.addMaterial(materialOutline);
             coletavelIt.colocarNoLayerDestaque();
         }
+
+        trincaColetaveis = new TrincaColetaveisTiles(coletaveis);
     }
 
     public override int contarColetado(ColetavelTile coletavelTile)
     {
         return base.contarColetado(coletavelTile);        
+    }
+
+    public override TrocadorDeOrdem fornecer()
+    {
+        return new TrocadorLevelColetavel(coletaveis);
     }
 }

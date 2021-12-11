@@ -25,6 +25,19 @@ public class TrincaColetaveisTiles
         return arrayColetados[0] != null && arrayColetados[1] != null && arrayColetados[2] != null;
     }
 
+    public bool isColetavelNaTrinca(ColetavelTile coletavelTile)
+    {
+        for (int contador = 0; contador < arrayColetados.Length; contador++)
+        {
+            ColetavelTile coletavelIt = arrayColetados[contador];
+            if (coletavelIt.nome.Equals(coletavelTile.nome))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ColetavelTile[] resetarColetados()
     {
         arrayColetados[0] = null;
