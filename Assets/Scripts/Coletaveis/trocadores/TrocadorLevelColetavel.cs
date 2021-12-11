@@ -17,9 +17,11 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
     public void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {
         Debug.Log("trocar figura chamado");
-        if (trincaColetaveis.isColetavelNaTrinca(coletavelPrimeiro))
+        if (trincaColetaveis.isColetavelNaTrinca(coletavelPrimeiro) &&
+            trincaColetaveis.isColetavelNaTrinca(coletavelSegundo))
         {
-
+            Material materialOutline = MaterialOutline.of(coletavelPrimeiro.getSprite());
+            coletavelPrimeiro.addMaterial(materialOutline);
         }
         else
         {

@@ -41,6 +41,6 @@ public class ContadorColetavel : ContadorNormal
 
     public override TrocadorDeOrdem fornecer()
     {
-        return new TrocadorLevelColetavel(coletaveis);
+        return new TrocadorLevelColetavel(trincaColetaveis);
     }
 }
