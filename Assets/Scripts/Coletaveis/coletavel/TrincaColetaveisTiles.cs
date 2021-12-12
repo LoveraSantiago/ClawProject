@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class TrincaColetaveisTiles 
 {
     private ColetavelTile[] arrayColetados;
@@ -7,7 +5,7 @@ public class TrincaColetaveisTiles
     public TrincaColetaveisTiles(ColetavelTile[] arrayColetados)
     {
         this.arrayColetados = arrayColetados;
-        logarTrinca();
+        //logarTrinca();
     }
 
     public bool isCombinacaoValida()
@@ -57,7 +55,7 @@ public class TrincaColetaveisTiles
     public void trocarIndice(int indice, ColetavelTile coletavel)
     {
         arrayColetados[indice] = coletavel;
-        logarTrinca();
+        //logarTrinca();
     }
 
     public ColetavelTile[] resetarColetados()
@@ -68,14 +66,14 @@ public class TrincaColetaveisTiles
         return arrayColetados;
     }
 
-    public void logarTrinca()
-    {
-        string naLista = "";
-        for (int contador = 0; contador < arrayColetados.Length; contador++)
-        {
-            ColetavelTile coletavelIt = arrayColetados[contador];
-            naLista = naLista + coletavelIt.nome + " - ";
-        }
-        Debug.Log(naLista);
-    }
+    //public void logarTrinca()
+    //{
+    //    string naLista = "";
+    //    for (int contador = 0; contador < arrayColetados.Length; contador++)
+    //    {
+    //        ColetavelTile coletavelIt = arrayColetados[contador];
+    //        naLista = naLista + coletavelIt.nome + " - ";
+    //    }
+    //    Debug.Log(naLista);
+    //}
 }

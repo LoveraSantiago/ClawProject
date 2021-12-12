@@ -6,13 +6,13 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
 
     public TrocadorLevelOrdenado(NavegacaoDeArray<BoardOrdem> navegacaoOrdem)
     {
-        Debug.Log("Trocador ordenado chamado");
+        //Debug.Log("Trocador ordenado chamado");
         this.navegacaoOrdem = navegacaoOrdem;
     }
 
     public override void atualizar(ColetavelTile coletavelPrimeiro)
     {
-        Debug.Log("Atualizado ordem");
+        //Debug.Log("Atualizado ordem");
         BoardOrdem ordemAtual = navegacaoOrdem.getItemIndiceAtual();
         if (ordemAtual.isNomeEquals(coletavelPrimeiro.nome))
         {
@@ -89,7 +89,7 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
 
     private void trocarMaterial(ColetavelTile coletavelComMaterial, ColetavelTile coletavelSemMaterial)
     {
-        Debug.Log("Troca de material acionada");
+        //Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
         addMaterialOutline(coletavelSemMaterial);                
     }

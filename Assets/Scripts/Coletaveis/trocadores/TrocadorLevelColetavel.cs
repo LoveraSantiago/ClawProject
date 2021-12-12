@@ -11,7 +11,7 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
 
     public override void atualizar(ColetavelTile coletavelPrimeiro)
     {
-        Debug.Log("atualizar ordem chamado");
+        //Debug.Log("atualizar ordem chamado");
         if (trincaColetaveis.isColetavelNaTrinca(coletavelPrimeiro))
         {
             addMaterialOutline(coletavelPrimeiro);
@@ -24,7 +24,7 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
 
     public override void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {
-        Debug.Log("trocar figura chamado");
+        //Debug.Log("trocar figura chamado");
         if (trincaColetaveis.isColetavelNaTrinca(coletavelPrimeiro) &&
             trincaColetaveis.isColetavelNaTrinca(coletavelSegundo))
         {
@@ -39,7 +39,7 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
 
     public override void trocar(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {
-        Debug.Log("trocar ordem chamado");
+        //Debug.Log("trocar ordem chamado");
 
         bool primeiroNaTrinca = trincaColetaveis.isColetavelNaTrinca(coletavelPrimeiro);
         bool segundoNaTrinca  = trincaColetaveis.isColetavelNaTrinca(coletavelSegundo);
@@ -53,16 +53,16 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
         {
             addMaterialOutline(coletavelSegundo);
             addMaterialGrayScale(coletavelPrimeiro);
-            Debug.Log("Na trinca" + coletavelPrimeiro.nome);
-            Debug.Log("Nao trinca" + coletavelSegundo.nome);
+            //Debug.Log("Na trinca" + coletavelPrimeiro.nome);
+            //Debug.Log("Nao trinca" + coletavelSegundo.nome);
             trocarNaTrinca(coletavelPrimeiro, coletavelSegundo);            
         }
         else if(!primeiroNaTrinca && segundoNaTrinca)
         {
             addMaterialOutline(coletavelPrimeiro);
             addMaterialGrayScale(coletavelSegundo);
-            Debug.Log("Na trinca" + coletavelSegundo.nome);
-            Debug.Log("Nao trinca" + coletavelPrimeiro.nome);
+            //Debug.Log("Na trinca" + coletavelSegundo.nome);
+            //Debug.Log("Nao trinca" + coletavelPrimeiro.nome);
             trocarNaTrinca(coletavelSegundo, coletavelPrimeiro);
         }
         else if(!primeiroNaTrinca && !segundoNaTrinca)
