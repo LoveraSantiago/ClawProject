@@ -1,68 +1,45 @@
 using System.Collections;
 using UnityEngine;
 
-public class ModalPontos : AcaoColetado.ConsumidorEvento,
+public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
                            AcaoTempoEsgotado.ConsumidorEvento,
                            AcaoBoardElevadoFim.ConsumidorEvento,
                            AcaoCacaNiquel.ConsumidorEvento
-{
-    private string scoreAtual;
+{    
     private bool mostrandoModal;
 
-    private ModalPontosDto modalPontosDto;
-    private LinhaModalPontos[] linhasModal;
+    private ModalPontosDto modalPontosDto;    
+    private ModalResultados modalResultado;
 
-    public ModalPontos(ModalPontosDto modalPontosDto)
+    public ModalResultadosManager(ModalPontosDto modalPontosDto)
     {
-        this.modalPontosDto = modalPontosDto;
-        linhasModal = new LinhaModalPontos[modalPontosDto.Linhas.Length];
-        for(int contador = 0; contador < linhasModal.Length; contador++)
-        {
-            linhasModal[contador] = new LinhaModalPontos(modalPontosDto.Linhas[contador]);
-        }
+        this.modalPontosDto = modalPontosDto;        
     }
 
     public void configurarLevel(string levelName)
-    {
-        setNivel(levelName);
-    }
-
-    private void ligar()
-    {
-        modalPontosDto.GoModalPontos.SetActive(true);
-    }
-
-    private void setPontuacao()
-    {
-        modalPontosDto.TextoPontos.text = scoreAtual;
-    }
-
-    private void setNivel(string levelName)
-    {
-        modalPontosDto.TextoNivel.text = levelName;
-    }
-
-    private void naoMostrarLinhasResult()
-    {
-        linhasModal[0].desligar();
-        linhasModal[1].desligar();
-        linhasModal[2].desligar();
-        linhasModal[3].desligar();
-    }
+    {        
+        modalResultado = new ModalResultados(levelName, modalPontosDto);
+    }          
 
     private void mostrarModalResultLevel()
-    {
-        setPontuacao();
-        naoMostrarLinhasResult();        
+    {   
+        modalResultado.naoMostrarLinhasResult();        
     }
 
     private void mostrarModalPontuacao()
     {
         if (!mostrandoModal)
         {
-            setPontuacao();
-            naoMostrarLinhasResult();
-            configurarBotaoIrCenaMap();
+            modalResultado.configurarResultado();   
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+        }
+    }
+
+    private void mostrarModalColetados()
+    {
+        if (!mostrandoModal)
+        {
+            modalResultado.naoMostrarLinhasResult();            
             Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
@@ -96,9 +73,7 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
                 PlayerPrefsPup.adicionarPup(pupEscolhido.nome, 1);
             }
 
-            scoreAtual = "Power Ups Ganhos";
-            setPontuacao();
-            configurarBotaoIrCenaPup();
+            modalResultado.setScoreAtual("Power Ups Ganhos");                        
             Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
@@ -140,58 +115,42 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
             PlayerPrefsPup.adicionarPup(nomes[1], 1);
             PlayerPrefsPup.adicionarPup(nomes[2], 1);
 
-            scoreAtual = "Power Ups Ganhos";
-            setPontuacao();
-
-            configurarBotaoIrCenaPup();
+            modalResultado.setScoreAtual("Power Ups Ganhos");            
+            
             Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
 
     private void mostrarModalOrdemFail(int ordem)
     {
-        naoMostrarLinhasResult();
-        scoreAtual = "Não seguiu ordem " + ordem;
-        setPontuacao();
-        configurarBotaoIrCenaMap();
+        modalResultado.naoMostrarLinhasResult();
+        modalResultado.setScoreAtual("Não seguiu ordem " + ordem);                
         Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
-    }
-
-    private void configurarBotaoIrCenaMap()
-    {
-        modalPontosDto.BtnAvancar.onClick.AddListener(() =>
-        {
-            CenaUtils.irParaCenaMap();
-        });
-    }
-
-    private void configurarBotaoIrCenaPup()
-    {
-        modalPontosDto.BtnAvancar.onClick.AddListener(() =>
-        {
-            CenaUtils.irParaCenaPup();
-        });
-    }
+    }  
 
     private IEnumerator coroutineMostrarModal()
     {      
         mostrandoModal = true;                   
         yield return new WaitForSeconds(0.5f);
-        ligar();
+        modalResultado.ligar();
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
-    {
-        scoreAtual = evento.score.ToString();
-        if (evento.infosFimDeJogo.fimColetados)
+    {        
+        modalResultado.setScoreAtual(evento.score.ToString());
+        InformacoesFimDeJogoDto infoFimDeJogo = evento.infosFimDeJogo;
+        if (infoFimDeJogo.fimColetados)
         {
             mostrarModalPontuacao();
         }
-        else if (evento.infosFimDeJogo.erroOrdem)
+        else if (infoFimDeJogo.erroOrdem)
         {
             mostrarModalOrdemFail(evento.ordem);
         }
-
+        else if (infoFimDeJogo.trincaColetaveis)
+        {
+            mostrarModalPontuacao();
+        }
     }
 
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
