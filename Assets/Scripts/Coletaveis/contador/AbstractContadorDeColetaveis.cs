@@ -19,12 +19,7 @@ public abstract class AbstractContadorDeColetaveis : Fornecedor<TrocadorDeOrdem>
         return 0;
     }
 
-    public abstract bool isFinished();
-
-    public virtual bool isErroOrdem()
-    {
-        return false;
-    }
+    public abstract InformacoesFimDeJogoDto getInfoFimDeJogo();
 
     public abstract TrocadorDeOrdem fornecer();
 }

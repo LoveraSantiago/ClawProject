@@ -11,9 +11,9 @@ public class InformacoesFimDeJogoDto
         this.trincaColetaveis = trincaColetaveis;
     }
 
-    public static InformacoesFimDeJogoDto ofFimColetados()
+    public static InformacoesFimDeJogoDto ofFimColetados(bool fimDeColetaveis)
     {
-        return new InformacoesFimDeJogoDto(true, false, false);
+        return new InformacoesFimDeJogoDto(fimDeColetaveis, false, false);
     }
 
     public static InformacoesFimDeJogoDto ofErroOrdem()

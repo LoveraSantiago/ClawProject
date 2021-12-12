@@ -22,7 +22,7 @@ public class InformacoesColetadoDto
         this.resultCombinacao = resultCombinacao;
     }
 
-    public void addInfoFinalizado(InformacoesFimDeJogoDto infosFimDeJogo)
+    public void addInfoFimDeJogo(InformacoesFimDeJogoDto infosFimDeJogo)
     {
         this.infosFimDeJogo = infosFimDeJogo;
     }

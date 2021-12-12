@@ -63,15 +63,10 @@ public class ContadorManager
         return contador.getColetados();
     }
 
-    public bool isFinished()
+    public InformacoesFimDeJogoDto getInfoFimDeJogo()
     {
-        return contador.isFinished();
-    }
-
-    public virtual bool isErroOrdem()
-    {
-        return contador.isErroOrdem();
-    }
+        return contador.getInfoFimDeJogo();
+    }   
 
     public Fornecedor<TrocadorDeOrdem> getFornecedorTrocadorDeOrdem()
     {
