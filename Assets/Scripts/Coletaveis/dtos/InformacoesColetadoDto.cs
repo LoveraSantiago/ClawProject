@@ -3,7 +3,7 @@ using UnityEngine;
 public class InformacoesColetadoDto
 {    
     public bool resultCombinacao { get; private set; }    
-    public InformacoesFimDeJogo infosFimDeJogo { get; private set; }
+    public InformacoesFimDeJogoDto infosFimDeJogo { get; private set; }
 
     public int score { get; private set; }
     public int ordem { get; private set; }
@@ -22,7 +22,7 @@ public class InformacoesColetadoDto
         this.resultCombinacao = resultCombinacao;
     }
 
-    public void addInfoFinalizado(InformacoesFimDeJogo infosFimDeJogo)
+    public void addInfoFinalizado(InformacoesFimDeJogoDto infosFimDeJogo)
     {
         this.infosFimDeJogo = infosFimDeJogo;
     }
