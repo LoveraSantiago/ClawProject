@@ -40,21 +40,41 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
     public override void trocar(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
     {
         Debug.Log("trocar ordem chamado");
-        if (trincaColetaveis.isColetavelNaTrinca(coletavelPrimeiro))
-        {
 
-        }
-        else if (trincaColetaveis.isColetavelNaTrinca(coletavelSegundo))
-        {
+        bool primeiroNaTrinca = trincaColetaveis.isColetavelNaTrinca(coletavelPrimeiro);
+        bool segundoNaTrinca  = trincaColetaveis.isColetavelNaTrinca(coletavelSegundo);
 
-        }
-        else
+        if (primeiroNaTrinca && segundoNaTrinca)
         {
-            //HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-            //Material materialGrayScale = helperInGame.getMaterialGrayscaleTo(coletavelPrimeiro);
-            //coletavelPrimeiro.addMaterial(materialGrayScale);
-            //coletavelPrimeiro.colocarNoLayerComum();
+            addMaterialOutline(coletavelPrimeiro);
+            addMaterialOutline(coletavelSegundo);
         }
-
-    }      
+        else if(primeiroNaTrinca && !segundoNaTrinca)
+        {
+            addMaterialOutline(coletavelSegundo);
+            addMaterialGrayScale(coletavelPrimeiro);
+            Debug.Log("Na trinca" + coletavelPrimeiro.nome);
+            Debug.Log("Nao trinca" + coletavelSegundo.nome);
+            trocarNaTrinca(coletavelPrimeiro, coletavelSegundo);            
+        }
+        else if(!primeiroNaTrinca && segundoNaTrinca)
+        {
+            addMaterialOutline(coletavelPrimeiro);
+            addMaterialGrayScale(coletavelSegundo);
+            Debug.Log("Na trinca" + coletavelSegundo.nome);
+            Debug.Log("Nao trinca" + coletavelPrimeiro.nome);
+            trocarNaTrinca(coletavelSegundo, coletavelPrimeiro);
+        }
+        else if(!primeiroNaTrinca && !segundoNaTrinca)
+        {
+            addMaterialGrayScale(coletavelPrimeiro);
+            addMaterialGrayScale(coletavelSegundo);
+        }
+    }    
+    
+    private void trocarNaTrinca(ColetavelTile coletavelRemocao, ColetavelTile coletavelInsercao)
+    {
+        int indice = trincaColetaveis.getIndiceNaTrinca(coletavelRemocao);
+        trincaColetaveis.trocarIndice(indice, coletavelInsercao);
+    }   
 }
