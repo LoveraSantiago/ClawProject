@@ -39,6 +39,19 @@ public class TrincaColetaveisTiles
         return false;
     }
 
+    public bool isColetaveisNaTrinca(ColetavelTile[] coletaveis)
+    {
+        for(int contador = 0; contador < coletaveis.Length; contador++)
+        {
+            bool resultIt = isColetavelNaTrinca(coletaveis[contador]);
+            if (!resultIt)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public int getIndiceNaTrinca(ColetavelTile coletavel)
     {
         for (int contador = 0; contador < arrayColetados.Length; contador++)

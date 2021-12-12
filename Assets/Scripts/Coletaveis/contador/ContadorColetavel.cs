@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class ContadorColetavel : ContadorNormal
 {
+    private bool resultSucessoColetavel;
     private ColetavelEntidade coletavelEntidade;
-    private TrincaColetaveisTiles trincaColetaveis;    
+    private TrincaColetaveisTiles trincaLevelColetaveis;    
 
     public ContadorColetavel(int pontosColetado, int pontosAcerto) 
         : base(pontosColetado, pontosAcerto){}
@@ -31,16 +32,35 @@ public class ContadorColetavel : ContadorNormal
             coletavelIt.colocarNoLayerDestaque();
         }
 
-        trincaColetaveis = new TrincaColetaveisTiles(coletaveis);
+        trincaLevelColetaveis = new TrincaColetaveisTiles(coletaveis);
     }
 
     public override int contarColetado(ColetavelTile coletavelTile)
     {
-        return base.contarColetado(coletavelTile);        
+        resultSucessoColetavel = false;
+        int score = base.contarColetado(coletavelTile);
+
+        if (resultCombinacao && trincaLevelColetaveis.isColetaveisNaTrinca(coletados))
+        {
+            resultSucessoColetavel = true;            
+        }        
+        return score;
+    }    
+
+    public override InformacoesFimDeJogoDto getInfoFimDeJogo()
+    {
+        if (resultSucessoColetavel)
+        {
+            return InformacoesFimDeJogoDto.ofTrinca();
+        }
+        else
+        {
+            return base.getInfoFimDeJogo();
+        }
     }
 
     public override TrocadorDeOrdem fornecer()
     {
-        return new TrocadorLevelColetavel(trincaColetaveis);
+        return new TrocadorLevelColetavel(trincaLevelColetaveis);
     }
 }

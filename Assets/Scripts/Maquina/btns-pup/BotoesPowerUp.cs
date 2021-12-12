@@ -151,7 +151,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
     void ProdutorConsumidoresDeEvento<InformacoesColetadoDto>.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         controlePup.suspenderPowerUp();
-        if (evento.fimColetados)
+        if (evento.infosFimDeJogo.fimColetados)
         {
             btnsPowerUp[0].devolverPowerUp();
             btnsPowerUp[1].devolverPowerUp();

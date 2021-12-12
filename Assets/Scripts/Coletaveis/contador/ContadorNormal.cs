@@ -1,13 +1,13 @@
 public class ContadorNormal : AbstractContadorDeColetaveis
 {
-    private bool resultCombinacao;
+    protected bool resultCombinacao;
 
     private int score;
     private int pontosColetado;
     private int pontosAcerto;    
     private int totalColetaveis;
 
-    private ColetavelTile[] coletados;
+    protected ColetavelTile[] coletados;
 
     public ContadorNormal(int pontosColetado, int pontosAcerto)
     {
@@ -93,11 +93,11 @@ public class ContadorNormal : AbstractContadorDeColetaveis
     public override ColetavelTile[] getColetados()
     {
         return coletados;
-    }
+    }    
 
-    public override bool isFinished()
+    public override InformacoesFimDeJogoDto getInfoFimDeJogo()
     {
-        return totalColetaveis == 0;
+        return InformacoesFimDeJogoDto.ofFimColetados(totalColetaveis == 0);
     }
 
     public override TrocadorDeOrdem fornecer()

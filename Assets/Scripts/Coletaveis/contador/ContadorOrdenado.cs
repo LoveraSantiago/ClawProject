@@ -38,10 +38,17 @@ public class ContadorOrdenado : ContadorNormal
         return score;
     }
 
-    public override bool isErroOrdem()
+    public override InformacoesFimDeJogoDto getInfoFimDeJogo()
     {
-        return resultErroOrdem;
-    }
+        if (resultErroOrdem)
+        {
+            return InformacoesFimDeJogoDto.ofErroOrdem();
+        }
+        else
+        {
+            return base.getInfoFimDeJogo();
+        }
+    }    
 
     private void indicarProximoColetavel()
     {

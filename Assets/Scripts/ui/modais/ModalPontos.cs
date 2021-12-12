@@ -183,14 +183,15 @@ public class ModalPontos : AcaoColetado.ConsumidorEvento,
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         scoreAtual = evento.score.ToString();
-        if (evento.fimColetados)
+        if (evento.infosFimDeJogo.fimColetados)
         {
             mostrarModalPontuacao();
         }
-        else if (evento.fimErroOrdem)
+        else if (evento.infosFimDeJogo.erroOrdem)
         {
             mostrarModalOrdemFail(evento.ordem);
         }
+
     }
 
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
