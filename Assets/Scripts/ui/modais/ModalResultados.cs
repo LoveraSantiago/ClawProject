@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ModalResultados 
+public class ModalResultados : ModalManipulacao
 {
     private ModalPontosDto modalPontosDto;
     private LinhaModalPontos[] linhasModal;
@@ -24,22 +20,30 @@ public class ModalResultados
         modalPontosDto.TextoNivel.text = levelName;
     }
 
-    public void configurarResultado()
+    public void configurar()
     {
         naoMostrarLinhasResult();
-
         AbstractModalFim modalFim = new ModalFimPontos();
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
     }
 
-    public void configurarResultadoPup()
+    public void configurarCacaNiquelIndividual(CacaNiquelResult evento)
     {
-        AbstractModalFim modalFim = new ModalFimPup();
+        naoMostrarLinhasResult();
+        AbstractModalFim modalFim = new ModalFimCacaNiquelIndividual(evento, linhasModal);
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
     }
 
-    public void configurarResultadoColetavel()
+    public void configurarCacaNiquelGeral(CacaNiquelResult evento)
     {
+        naoMostrarLinhasResult();
+        AbstractModalFim modalFim = new ModalFimCacaNiquelGeral(evento, linhasModal);
+        modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
+    }
+
+    public void configurarColetavel()
+    {
+        naoMostrarLinhasResult();
         AbstractModalFim modalFim = new ModalFimColetaveis();
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
     }

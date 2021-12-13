@@ -19,18 +19,13 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     public void configurarLevel(string levelName)
     {        
         modalResultado = new ModalResultados(levelName, modalPontosDto);
-    }          
-
-    private void mostrarModalResultLevel()
-    {   
-        modalResultado.naoMostrarLinhasResult();        
-    }
+    }              
 
     private void mostrarModalPontuacao()
     {
         if (!mostrandoModal)
         {
-            modalResultado.configurarResultado();   
+            modalResultado.configurar();   
             Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
@@ -39,7 +34,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            modalResultado.naoMostrarLinhasResult();            
+            modalResultado.configurarColetavel();
             Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
@@ -48,82 +43,22 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            linhasModal[0].ligar();
-            linhasModal[1].ligar();
-            linhasModal[2].ligar();
-            linhasModal[3].desligar();
-
-            int indicePup = PlayerPrefsPup.recuperarIndicePup();
-            PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
-
-            montarLinhaPupSingle(0, evento, pupEscolhido);
-            montarLinhaPupSingle(1, evento, pupEscolhido);
-            montarLinhaPupSingle(2, evento, pupEscolhido);
-
-            if (evento.isTripleSucess())
-            {
-                linhasModal[3].ligar();
-                linhasModal[3].passarInfos("Bonus!!!", pupEscolhido.sprPowerUp, "3");
-                PlayerPrefsPup.adicionarPup(pupEscolhido.nome, 3);
-            }     
-            else if (evento.isTripleFail())
-            {
-                linhasModal[3].ligar();
-                linhasModal[3].passarInfos("Consolação", pupEscolhido.sprPowerUp, "1");
-                PlayerPrefsPup.adicionarPup(pupEscolhido.nome, 1);
-            }
-
-            modalResultado.setScoreAtual("Power Ups Ganhos");                        
+            modalResultado.configurarCacaNiquelIndividual(evento);           
             Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
-    }
-
-    private void montarLinhaPupSingle(int indice, CacaNiquelResult evento, PowerUpEntidade pup)
-    {
-
-        if(evento.isResultSucesso(indice))
-        {
-            linhasModal[indice].passarInfos(pup.nome, evento.sprResultados[indice], "OK");
-            PlayerPrefsPup.adicionarPup(pup.nome, 1);
-        }
-        else if(evento.isResultFail(indice))
-        {
-            linhasModal[indice].passarInfos("Nada", evento.sprResultados[indice], "NOK");
-        }
-        else
-        {
-            linhasModal[indice].passarInfos("Ficha", evento.sprResultados[indice], "OK");
-        }
-    }
+    }   
 
     private void mostrarModalCacaNiquelAllPups(CacaNiquelResult evento)
     {
         if (!mostrandoModal)
         {
-            linhasModal[0].ligar();
-            linhasModal[1].ligar();
-            linhasModal[2].ligar();
-            linhasModal[3].desligar();
-
-            string[] nomes = PowerUpHelper.getNomesPupsBySprites(evento.sprResultados);
-
-            linhasModal[0].passarInfos(nomes[0], evento.sprResultados[0], "1");
-            linhasModal[1].passarInfos(nomes[1], evento.sprResultados[1], "1");
-            linhasModal[2].passarInfos(nomes[2], evento.sprResultados[2], "1");
-
-            PlayerPrefsPup.adicionarPup(nomes[0], 1);
-            PlayerPrefsPup.adicionarPup(nomes[1], 1);
-            PlayerPrefsPup.adicionarPup(nomes[2], 1);
-
-            modalResultado.setScoreAtual("Power Ups Ganhos");            
-            
+            modalResultado.configurarCacaNiquelGeral(evento);
             Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
 
     private void mostrarModalOrdemFail(int ordem)
-    {
-        modalResultado.naoMostrarLinhasResult();
+    {        
         modalResultado.setScoreAtual("Não seguiu ordem " + ordem);                
         Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
     }  

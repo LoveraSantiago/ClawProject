@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ModalFimColetaveis : AbstractModalFim
 {
+    public override void configurar(ModalManipulacao modalManipulacao)
+    {
+        
+    }
+
     protected override void irParaCena()
     {
         CenaUtils.irParaCenaColetaveis();

@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class AbstractModalFim 
 {
+    public abstract void configurar(ModalManipulacao modalManipulacao);
+
     public void configurarBotaoAvancar(Button btn)
     {
         btn.onClick.AddListener(() => irParaCena());
