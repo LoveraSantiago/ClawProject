@@ -1,5 +1,3 @@
-using System;
-
 public class ModalResultados : ModalManipulacao
 {
     private ModalPontosDto modalPontosDto;
