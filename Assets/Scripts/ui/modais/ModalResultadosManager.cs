@@ -84,7 +84,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         }
         else if (infoFimDeJogo.trincaColetaveis)
         {
-            
+            mostrarModalColetados();
         }
     }
 
