@@ -59,7 +59,9 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
 
     private void mostrarModalOrdemFail(int ordem)
     {        
-        modalResultado.setScoreAtual("Não seguiu ordem " + ordem);                
+        modalResultado.setScoreAtual("Não seguiu ordem " + ordem);
+        //faltando navegacao de volta
+        modalResultado.configurarModalFailOrdem();
         Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
     }  
 

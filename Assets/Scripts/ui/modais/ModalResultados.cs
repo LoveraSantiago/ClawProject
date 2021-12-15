@@ -1,3 +1,5 @@
+using System;
+
 public class ModalResultados : ModalManipulacao
 {
     private ModalPontosDto modalPontosDto;
@@ -24,6 +26,7 @@ public class ModalResultados : ModalManipulacao
     {
         naoMostrarLinhasResult();
         AbstractModalFim modalFim = new ModalFimPontos();
+        modalFim.configurar(this);
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
     }
 
@@ -31,6 +34,7 @@ public class ModalResultados : ModalManipulacao
     {
         naoMostrarLinhasResult();
         AbstractModalFim modalFim = new ModalFimCacaNiquelIndividual(evento, linhasModal);
+        modalFim.configurar(this);
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
     }
 
@@ -38,6 +42,7 @@ public class ModalResultados : ModalManipulacao
     {
         naoMostrarLinhasResult();
         AbstractModalFim modalFim = new ModalFimCacaNiquelGeral(evento, linhasModal);
+        modalFim.configurar(this);
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
     }
 
@@ -45,6 +50,15 @@ public class ModalResultados : ModalManipulacao
     {
         naoMostrarLinhasResult();
         AbstractModalFim modalFim = new ModalFimColetaveis();
+        modalFim.configurar(this);
+        modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
+    }
+
+    public void configurarModalFailOrdem()
+    {
+        naoMostrarLinhasResult();
+        AbstractModalFim modalFim = new ModalFimOrdem();
+        modalFim.configurar(this);
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
     }
 
@@ -64,5 +78,5 @@ public class ModalResultados : ModalManipulacao
         linhasModal[1].desligar();
         linhasModal[2].desligar();
         linhasModal[3].desligar();
-    }
+    }    
 }
