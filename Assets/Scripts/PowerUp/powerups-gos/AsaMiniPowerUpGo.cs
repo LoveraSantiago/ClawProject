@@ -18,8 +18,8 @@ public class AsaMiniPowerUpGo : AbstractAsaPowerUpGo
 
     protected override float getHalturaLimite()
     {
-        ColetavelHelper coletaveisHelper = new ColetavelHelper();
-        ColetavelTile coletavelMaisAlto = coletaveisHelper.getColetavelMaisAlto();
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        ColetavelTile coletavelMaisAlto = helperInGame.getColetavelMaisAlto();
         return coletavelMaisAlto.getPosicao().y + powerUpDto.AsaMiniDto.IncrementoHaltura;
     }
 

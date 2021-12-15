@@ -13,4 +13,14 @@ public class BoardOrdem
     {
         this.nome = nome;
     }
+
+    public bool isNomeEquals(string nome)
+    {
+        return this.nome.Equals(nome);
+    }
+
+    public bool isOrdem(int ordem)
+    {
+        return this.ordem == ordem;
+    }
 }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
+public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra,
+                                             Transformador<ColetavelTile, IEnumerator>
 {
     private static readonly int VOADA = Animator.StringToHash("voada");
 
@@ -21,25 +22,19 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
-        coletavelHelper.ligarMirasNosColetaveis();
-        coroutine = Utils.MonoBehaviour.StartCoroutine(selecionarAlvo());
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        helperInGame.ligarMirasNosColetaveis();
+
+        hitColetavel = false;
+        HumAlvoSelecionado alvoSelecionado = new HumAlvoSelecionado();
+        coroutine = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionado(inputGame, this));
     }
 
     public override void resetPup() { }
 
-    private IEnumerator selecionarAlvo()
+    public IEnumerator transformar(ColetavelTile entrada)
     {
-        hitColetavel = false;
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
-        coletavelHelper.ligarMirasNosColetaveis();
-
-        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();        
-        yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
-        ColetavelTile coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;
-
-        coletavelHelper.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
-        Utils.MonoBehaviour.StartCoroutine(voar(coletavelSelecionado));
+        return voar(entrada);
     }
 
     private IEnumerator voar(ColetavelTile coletavelAcertado)
@@ -82,8 +77,8 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra
         if (!hitColetavel)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
-            ColetavelHelper coletavelHelper = new ColetavelHelper();
-            coletavelHelper.desligarMirasNosColetaveis();
+            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+            helperInGame.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
         }
     }

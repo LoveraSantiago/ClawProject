@@ -2,12 +2,15 @@ using UnityEngine;
 
 public abstract class Coletavel 
 {
+    private static readonly int LAYER_COMUM = 32;
+    private static readonly int LAYER_DESTAQUE = 33;
+
     protected static ColetavelContextoEstatico context;
 
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }
 
-    private bool ativo;
+    private bool ativo;   
     
     protected GameObject goColetavel;
     protected Rigidbody2D rigidbody;
@@ -146,13 +149,28 @@ public abstract class Coletavel
 
     public void receberSprite(Sprite sprite)
     {
-        receberSprite(sprite, 31);
+        receberSprite(sprite, LAYER_COMUM);
     }
 
     public void receberSprite(Sprite sprite, int layer)
     {
         spriteRenderer.sprite = sprite;
         nomeSprite = sprite.name;
+        colocarSpriteNoLayer(layer);
+    }
+
+    public void colocarNoLayerDestaque()
+    {
+        colocarSpriteNoLayer(LAYER_DESTAQUE);
+    }
+
+    public void colocarNoLayerComum()
+    {
+        colocarSpriteNoLayer(LAYER_COMUM);
+    }
+
+    private void colocarSpriteNoLayer(int layer)
+    {
         spriteRenderer.sortingOrder = layer;
     }
 

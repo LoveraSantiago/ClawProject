@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class PoolDeColetaveis 
 {
     private PoolList<ColetavelTile> poolInativos;
@@ -24,7 +26,7 @@ public class PoolDeColetaveis
         }
     }
 
-    public ColetavelTile getColetavelPeloNome(string nome)
+    public ColetavelTile getColetavelPeloGoNome(string nome)
     {
         return poolDeNomes.getObjetoPeloNome(nome);
     }   
@@ -37,6 +39,21 @@ public class PoolDeColetaveis
     public bool temEmAlgumColetavel(Predicate<ColetavelTile> predicate)
     {
         return poolDeNomes.temEmAlgum(predicate);
+    }
+
+    public ColetavelTile[] getTrincaDeColetaveis(ColetavelEntidade coletavelEntidade)
+    {
+        List<ColetavelTile> listaColetaveis = poolDeNomes.getListaDeObjetos();
+        List<ColetavelTile> listaResult = new List<ColetavelTile>(3);
+        for(int contador = 0; contador < listaColetaveis.Count && listaResult.Count <3; contador++)
+        {
+            ColetavelTile coletavelIt = listaColetaveis[contador];
+            if (coletavelIt.getSprite().name.Equals(coletavelEntidade.nomeSprite))
+            {
+                listaResult.Add(coletavelIt);
+            }
+        }
+        return listaResult.ToArray();
     }
 
     public void inativarColetaveis(ColetavelTile[] coletaveis)

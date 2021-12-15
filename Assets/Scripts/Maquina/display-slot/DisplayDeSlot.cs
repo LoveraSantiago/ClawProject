@@ -18,12 +18,9 @@ public class DisplayDeSlot
     {
         this.singleDisplaySlotDto = singleDisplaySlotDto;
 
-        animacao = new AnimacaoDisplayColetado(singleDisplaySlotDto.Animator);
-
-        MaterialGlow materialGlow = new MaterialGlow(singleDisplaySlotDto.SprRendererDentroEfeito.material);
-        glowEfeito = new GlowEfeito(singleDisplaySlotDto.SprRendererDentroEfeito.gameObject, materialGlow);
-                
-        slots = new MovimentadorDeSlots(singleDisplaySlotDto);
+        animacao   = new AnimacaoDisplayColetado(singleDisplaySlotDto.Animator);        
+        glowEfeito = new GlowEfeito(singleDisplaySlotDto.SprRendererDentroEfeito.gameObject, singleDisplaySlotDto.SprRendererDentroEfeito.material);                
+        slots      = new MovimentadorDeSlots(singleDisplaySlotDto);
     }    
 
     public void configuradoPeloLevel(Color corDisplay, Color corDentro)

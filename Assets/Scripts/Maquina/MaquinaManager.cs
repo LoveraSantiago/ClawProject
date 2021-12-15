@@ -9,7 +9,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,
-                              AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
+                              AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
                               AcaoDesligarMaquinaCancelado.ConsumidorEvento
 {    
     private PartesMaquinaDto partesDto;
@@ -136,7 +136,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         }
     }              
 
-    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
+    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
     {
         if (!evento.isGameOver)
         {
@@ -151,9 +151,9 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
     }
 
-    void AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {
-        ((AcaoBBarPupEscolhido<PowerUpBtnInfo>.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
+        ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
     }
 
     void AcaoDesligarMaquinaCancelado.ConsumidorEvento.consumirEvento(CancelarDesligarMaquina evento)

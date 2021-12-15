@@ -1,48 +1,43 @@
-using System.Collections;
-using UnityEngine;
-
 public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 {   
     private BoardDto boardDto;
 
+    private BoardElevador elevador;   
     private BoardDevolvedor devolvedor;
-    private BoardMontadorNormal montador;
-    private BoardMontadorExtra montadorExtra;
 
-    private ProdutorDeEvento<BoardAcaoFim> produtorDeEvento;
+    private BoardMontador montador;
+    private BoardMontador montadorExtra;
 
     public BoardManager(BoardDto boardDto)
     {
         this.boardDto = boardDto;
         devolvedor    = new BoardDevolvedor();
-        montador      = new BoardMontadorNormal();
-        montadorExtra = new BoardMontadorExtra();
-
-        produtorDeEvento = new ProdutorDeEvento<BoardAcaoFim>();
+        montador      = new BoardMontadorNormal();        
+        elevador      = new BoardElevador();        
     }
 
-    public void configuradoPeloLevel(AbstractLevel level)//TODO CRIAR INTERFACE PADRONIZAR CONFIGURADOS PELO LEVEL ALEM DE ADICIONAR SEMANTICA
+    public void configuradoPeloLevel(AbstractLevel level)
     {
         BoardMontador.configurar(level.getFamiliaColetavel());
         montador.configuradoPeloLevel(level);
-
-        montadorExtra.configuradoPeloLevel(level);
-        devolvedor.configuradoPeloLevel(level.devolverParaBoard());        
+        inicializarMontadorExtra(level);        
     }
 
-    public int create(PoolDeColetaveis poolDeColetaveis)
+    public int create()
     {
-        montador.create(boardDto, poolDeColetaveis);
-        int qtdColetaveisCriados = poolDeColetaveis.getQtdDeColetaveis();
+        montador.createBoard(boardDto);
 
-        montadorExtra.create(boardDto, poolDeColetaveis);
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        int qtdColetaveisCriados = helperInGame.getQtdColetaveisInGame();
+
+        montadorExtra.createBoard(boardDto);
         return qtdColetaveisCriados;
     }   
 
-    public int subirBoard(PoolDeColetaveis poolDeColetaveis)
+    public int subirBoard()
     {
-        int qtdColetaveis = montadorExtra.getQtdExtras();
-        Utils.MonoBehaviour.StartCoroutine(subirBoardComPool(poolDeColetaveis));
+        int qtdColetaveis = montadorExtra.getQtdAcrescentada();
+        Utils.MonoBehaviour.StartCoroutine(elevador.subirBoardComPool(boardDto, montadorExtra));
         return qtdColetaveis;
     }       
 
@@ -56,44 +51,22 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         return devolvedor.devolverBoard;
     }
 
-    private IEnumerator subirBoardComPool(PoolDeColetaveis poolDeColetaveis)
+    private void inicializarMontadorExtra(AbstractLevel level)
     {
-        yield return new WaitForSeconds(0.6f);
-        float limite = boardDto.BoardPosicao.position.y + boardDto.Subida;        
-        Vector3 posInicialParedeAlta  = boardDto.ParedeAlta.position;
-        Vector3 posInicialParedeBaixa = boardDto.ParedeBaixa.position;
-        Vector3 posVoltaBoard         = boardDto.PosicaoRefVoltaBoard.position;
-
-        poolDeColetaveis.executeEmTodosColetaveis(new FixadorEixosXY());
-
-        float acrescimo = boardDto.BoardPosicao.position.y;
-        while (boardDto.BoardPosicao.position.y < limite)
+        if (LevelUtils.isElevadorLevel(level))
         {
-            boardDto.BoardPosicao.position += new Vector3(0, boardDto.VelocidadeSubida * Time.fixedDeltaTime, 0);
-            yield return new WaitForFixedUpdate();
-        }
-        if(poolDeColetaveis.temEmAlgumColetavel(new AcimaHalturaColetavel(boardDto.LimiteSubida)))
-        {
-            produtorDeEvento.produziuEvento(new BoardAcaoFim(true, 0));
+            montadorExtra = new BoardMontadorExtra();
+            montadorExtra.configuradoPeloLevel(level);
+            devolvedor.configuradoPeloLevel(level.devolverParaBoard());
         }
         else
         {
-            acrescimo = boardDto.BoardPosicao.position.y - acrescimo;
-
-            boardDto.ParedeAlta.position           = posInicialParedeAlta;
-            boardDto.ParedeBaixa.position          = posInicialParedeBaixa;
-            boardDto.PosicaoRefVoltaBoard.position = posVoltaBoard;
-
-            poolDeColetaveis.executeEmTodosColetaveis(new DesafixadorEixosXY());
-            montadorExtra.create(boardDto, poolDeColetaveis);
-
-            produtorDeEvento.produziuEvento(new BoardAcaoFim(false, acrescimo));
+            montadorExtra = new BoardMontadorVazio();
         }
-        yield return null;
     }
 
-    ProdutorDeEvento<BoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
     {
-        return produtorDeEvento;
+        return ((AcaoBoardElevadoFim.ProdutorEvento)elevador).getProdutorDeEvento();
     }
 }

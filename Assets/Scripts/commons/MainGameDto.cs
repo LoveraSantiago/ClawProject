@@ -14,7 +14,9 @@ public class MainGameDto
     [Space(5)]
     [SerializeField] private PowerUpDto powerUpDto;
     [Space(5)]
-    [SerializeField] private UIGameDto uiDto;    
+    [SerializeField] private UIGameDto uiDto;
+    [Space(5)]
+    [SerializeField] private GameObject prefabMateriais;
 
     public GarraDto GarraDto { get { return garraDto; } }
     public ColetaveisDto ColetaveisDto { get { return coletaveisDto; } }
@@ -22,4 +24,5 @@ public class MainGameDto
     public CameraDto CameraDto { get { return cameraDto;  } }
     public PowerUpDto PowerUpDto { get { return powerUpDto; } }
     public UIGameDto UiDto { get { return uiDto; } }    
+    public GameObject PrefabMateriais { get { return prefabMateriais; } }
 }

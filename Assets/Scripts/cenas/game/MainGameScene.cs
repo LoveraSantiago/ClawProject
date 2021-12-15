@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public class MainGameScene : MonoBehaviour, 
                         IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private LevelFlowManager.LEVEL level;
+    [SerializeField] private Level level;
     [Space(5)]
     [SerializeField] private MainGameDto mainDto;
 
@@ -20,20 +20,13 @@ public class MainGameScene : MonoBehaviour,
     {
         CameraManager.forceAspectCameraAsRatio();
         Utils.configMainMono(this);
+        MateriaisUtils.configurar(mainDto.PrefabMateriais);
         FactoryPowerUpEntidade.resetContextoEstatico();
 
-        AbstractLevel levelEscolhido = carregandoLevelEscolhido();
+        AbstractLevel levelEscolhido = LevelUtils.loadLevelEscolhido(level);
         MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido);
         updatableManagers = managers.getUpdatables();
-    }    
-
-    private AbstractLevel carregandoLevelEscolhido()
-    {
-        LevelFlowManager.LEVEL levelFlow = PlayerPrefsLevel.recuperarELimparLevel(level);
-        AbstractLevel levelEscolhido     = LevelFlowManager.getLevelByEnum(levelFlow);
-        levelEscolhido.validar();
-        return levelEscolhido;
-    }       
+    }        
     
     void Update()
     {

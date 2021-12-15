@@ -27,7 +27,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         cabo = new CaboDaGarra();
         cabo.configuradoPeloLevel(garraDto.CaboDaGarraDto, level.getDicionarioDeCores());
 
-        if(level.isCacaNiquelLevel())
+        if(LevelUtils.isCacaNiquelLevel(level))
         {
             gerDeMovAtual = new GerenciadorDeMovimentacaoCacaNiquel();
         }
@@ -105,7 +105,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         gerDeMovAtual = gerDeMovNormal;
     }
 
-    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(BoardAcaoFim evento)
+    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
     {
         if (!evento.isGameOver)
         {

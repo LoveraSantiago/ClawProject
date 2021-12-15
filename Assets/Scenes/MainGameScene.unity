@@ -5407,7 +5407,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10671,7 +10671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 999999999
+  level: 7
   mainDto:
     garraDto:
       velocidades:
@@ -10706,7 +10706,6 @@ MonoBehaviour:
       tile: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       referenciaColliderColetado: {fileID: 1930189876}
       efeitoColetado: {fileID: 1488198865}
-      efeitoOutline: {fileID: 2100000, guid: cbad35fbf462a4f4bb8e2451dc3cf1a3, type: 2}
       prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
       descarteTuboDto:
         torque: 550
@@ -10810,7 +10809,6 @@ MonoBehaviour:
       displayTimerDto:
         sprRendererPlaca: {fileID: 1404465311}
         sprRendererPlacaEfeito: {fileID: 2146911256}
-        materialEmptyTimer: {fileID: 2100000, guid: 196dc0d105cbf5b42b7d0c07e836b107, type: 2}
         sprRendererMiniSegmentos:
         - {fileID: 802050896}
         - {fileID: 655932435}
@@ -10853,7 +10851,6 @@ MonoBehaviour:
       displayDeScoreDto:
         qtdBlinks: 3
         tempoBlink: 0.2
-        materialEfeitoLed: {fileID: 2100000, guid: abed1645fe487b746993f7a08c0e4223, type: 2}
         singleDisplayScoreDto:
         - sprRendererPlaca: {fileID: 6406990385049082671}
           sprRendererPlacaEfeito: {fileID: 6406990385049082702}
@@ -11104,7 +11101,6 @@ MonoBehaviour:
         velocidadeTeleporte: 0.75
         velocidadeCoringa: 1.25
         delayFinal: 0.5
-        matTeleporte: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
       asaDto:
         layer: 32
         gravidadeNeg: -0.1
@@ -11148,6 +11144,7 @@ MonoBehaviour:
         btnCancelar: {fileID: 381730343}
         textoSair: {fileID: 1038405836}
       prefabBottomBar: {fileID: 1411617376}
+    prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
 --- !u!61 &491158116
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22101,6 +22098,10 @@ PrefabInstance:
       value: cabo-da-garra
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Positions.Array.data[0].y
       value: 3.7
       objectReference: {fileID: 0}
@@ -22198,15 +22199,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
-      value: 1
+      value: 0.9882353
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
-      value: 1
+      value: 0.36078432
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
-      value: 1
+      value: 0.62352943
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.a
@@ -22214,15 +22215,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.b
-      value: 1
+      value: 0.9882353
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.g
-      value: 1
+      value: 0.36078432
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.r
-      value: 1
+      value: 0.62352943
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key2.a
@@ -27609,7 +27610,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -53589,7 +53590,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -58664,6 +58665,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5448968826095850268, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 33
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
 --- !u!95 &2086766167889621232 stripped
@@ -58965,18 +58970,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
-    - target: {fileID: 3590067367850977611, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3916093444469994850, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 3916093444469994850, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 6406990384449578760, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_RootOrder
       value: 0

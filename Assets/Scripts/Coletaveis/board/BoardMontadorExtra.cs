@@ -1,61 +1,43 @@
-using UnityEngine;
-
 public class BoardMontadorExtra : BoardMontador
 {
     private int contadorEixoX;
     private int contadorLinhaAtual;
 
+    private DestaqueGrayScale destaque;
+
     private PoolList<ColetavelTile> poolExtraSubs;
 
-    public void configuradoPeloLevel(AbstractLevel level)
+    public override void configuradoPeloLevel(AbstractLevel level)
     {
-        arrayDeColetaveis = level.getArrayDeColetaveisSub();
+        setArrayDeColetavel(LevelUtils.getArrayDeColetaveisLevelElevador(level));
+        poolExtraSubs = new PoolList<ColetavelTile>();
 
-        if (hasExtraSubColetaveis())
-        {
-            poolExtraSubs = new PoolList<ColetavelTile>();
-        }
+        destaque = new DestaqueGrayScale(level);
     }
 
-    public void create(BoardDto boardDto, PoolDeColetaveis poolDeColetaveis)
-    {
-        if (hasExtraSubColetaveis())
-        {            
-            float[] eixoX = getEixoX(boardDto, ++contadorEixoX);            
-            montarLinha(eixoX, contadorLinhaAtual, boardDto.PosAlturaSub, poolDeColetaveis);
-            incrementarContadorDeLinha();
-        }
+    protected override void create(BoardDto boardDto)
+    {        
+        float[] eixoX = getEixoX(boardDto, ++contadorEixoX);            
+        montarLinha(eixoX, contadorLinhaAtual, boardDto.PosAlturaSub);
+        incrementarContadorDeLinha();        
     }
 
     protected override void onColetavelCriado(ColetavelTile coletavel)
     {
         coletavel.colocarNoLayerElevador();        
         poolExtraSubs.addObjeto(coletavel);
+
+        destaque.destacar(coletavel);
     }
 
-    public void ativarColetaveisSub()
-    {        
-        while (poolExtraSubs.hasObjeto())
-        {
-            ColetavelTile coletavel = poolExtraSubs.getObjeto();
-            coletavel.colocarNoLayerNormal();            
-        }
-        poolExtraSubs.reclicarPool();     
-    }
-
-    public int getQtdExtras()
+    public override int getQtdAcrescentada()
     {
-        return poolExtraSubs.getQtd();
-    }
-
-    private bool hasExtraSubColetaveis()
-    {
-        return arrayDeColetaveis != null;
-    }
+        return poolExtraSubs.getQtd();        
+    }    
 
     private void incrementarContadorDeLinha()
     {
-        if(arrayDeColetaveis.GetLength(0) - 1 <= contadorLinhaAtual)
+        if(getQtdItensDimensaoZero() - 1 <= contadorLinhaAtual)
         {
             contadorLinhaAtual = 0;
         }

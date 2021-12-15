@@ -37,7 +37,7 @@ public class BoardAssemblerNegativo : EditorWindow
         //labelWithStyle.styleSheets.Add(styleSheet);
         //root.Add(labelWithStyle);
 
-        ColetavelHelper.configurar();
+        HelperColetavelEntidade.configurar();
         ReferenciasDoBoardAssemblerNegativo referenciasDoBoard = new ReferenciasDoBoardAssemblerNegativo();
         NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);
         ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
@@ -55,20 +55,20 @@ public class BoardAssemblerNegativo : EditorWindow
             listaDeSprites.receberSprite((Sprite)e1.newValue);
         });
 
-        root.Q<Button>("botaoMenosTodos")    .clicked += () => listaDeSprites.limparTodaLista();
-        root.Q<Button>("botaoMenos")         .clicked += () => listaDeSprites.removerUltimaLinha();
-        root.Q<Button>("botaoClean")         .clicked += () => cleaner.clean();
-        root.Q<Button>("botaoProcessar")     .clicked += () => processador.gerarArrayDeIds();
+        root.Q<Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
+        root.Q<Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
+        root.Q<Button>("botaoClean").clicked += () => cleaner.clean();
+        root.Q<Button>("botaoProcessar").clicked += () => processador.gerarArrayDeIds();
         root.Q<Button>("botaoProcessarOrdem").clicked += () => processador.gerarArrayDeOrdem();
-        root.Q<Button>("botaoCimaAll")       .clicked += () => navegacao.navegarBaixoTotal();
-        root.Q<Button>("botaoBaixoAll")      .clicked += () => navegacao.navegarCimaTotal();
-        root.Q<Button>("botaoEsquerdaAll")   .clicked += () => navegacao.navegarTrasTotal();
-        root.Q<Button>("botaoDireitaAll")    .clicked += () => navegacao.navegarFrenteTotal();
+        root.Q<Button>("botaoCimaAll").clicked += () => navegacao.navegarBaixoTotal();
+        root.Q<Button>("botaoBaixoAll").clicked += () => navegacao.navegarCimaTotal();
+        root.Q<Button>("botaoEsquerdaAll").clicked += () => navegacao.navegarTrasTotal();
+        root.Q<Button>("botaoDireitaAll").clicked += () => navegacao.navegarFrenteTotal();
         root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => preenchedor.colocarTexto(navegacao, evento.newValue, spriteVazio));
 
         spriteVazio = listaDeSprites.getSpriteVazio();
         cleaner.clean();
-    }            
+    }
 
     private void criarComponentDropDownField(
         VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
@@ -83,13 +83,13 @@ public class BoardAssemblerNegativo : EditorWindow
             if (evt.newValue != "0")
             {
 
-                AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
-                int[,] coletaveis = level.getArrayDeColetaveisSub();
-                if(coletaveis != null)
+                AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
+                int[,] coletaveis = LevelUtils.getArrayDeColetaveisLevelElevador(level);
+                if (coletaveis != null)
                 {
                     remontador.montarColetaveis(coletaveis, (go, spr) => preenchedor.colocarSprite(go, spr));
 
-                    BoardOrdem[] ordens = level.getBoardOrdem();
+                    BoardOrdem[] ordens = LevelUtils.getBoardOrdensFromLevelOrdenado(level);
                     remontador.montarLabels(ordens);
                 }
                 else

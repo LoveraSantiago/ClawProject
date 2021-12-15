@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class IgualPowerUpGo : AbstractTrocaPowerUpGo
+public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
 {
     public IgualPowerUpGo() : base(powerUpDto.VazioPUp, "igual"){ }    
     
@@ -12,17 +12,16 @@ public class IgualPowerUpGo : AbstractTrocaPowerUpGo
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();
 
-        Material matIn = new Material(powerUpDto.TeleporteDto.MatTeleporte);
-        matIn.SetTexture(PROP_SPRITE_IN, spr1.texture);
-        matIn.SetTexture(PROP_SPRITE_OUT, spr2.texture);
+        MaterialTeleporte materialTeleporte = new MaterialTeleporte();
+        materialTeleporte.addTroca(spr1, spr2);       
 
-        coletavel1.addMaterial(matIn);
+        coletavel1.addMaterial(materialTeleporte.materialTeleporte);
 
         float contador = 0;
         while (contador < 1.01f)
         {
-            contador += Time.deltaTime * powerUpDto.TeleporteDto.VelocidadeTeleporte;            
-            matIn.SetFloat(PROP_VALOR, contador);
+            contador += Time.deltaTime * powerUpDto.TeleporteDto.VelocidadeTeleporte;
+            materialTeleporte.addValorDeTroca(contador);            
             yield return null;
         }
 
@@ -35,7 +34,7 @@ public class IgualPowerUpGo : AbstractTrocaPowerUpGo
         coletavel2.desligarAnimacao();
         yield return null;
 
-        trocadorDeOrdem.trocarFigura(coletavel1, coletavel2);
+        getTrocadorDeOrdem().trocarFigura(coletavel1, coletavel2);
 
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
         powerUpFinalizacao.finalizado();

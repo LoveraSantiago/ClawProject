@@ -1,17 +1,26 @@
 public class BoardMontadorNormal : BoardMontador
 {
-    public void configuradoPeloLevel(AbstractLevel level)
-    {        
-        arrayDeColetaveis = level.getArrayDeColetaveis();
+    private DestaqueGrayScale destaque;
+
+    public override void configuradoPeloLevel(AbstractLevel level)
+    {   
+        setArrayDeColetavel(level.getArrayDeColetaveis());
+        destaque = new DestaqueGrayScale(level);
     }
 
-    public void create(BoardDto boardDto, PoolDeColetaveis poolDeColetaveis)
+    protected override void create(BoardDto boardDto)
     {   
         for (int contadorLinha = 0; contadorLinha < boardDto.PosicoesEixoY.Length; contadorLinha++)
         {
             float[] eixoX = getEixoX(boardDto, contadorLinha);
             float alturaY = boardDto.PosicoesEixoY[contadorLinha];
-            montarLinha(eixoX, contadorLinha, alturaY, poolDeColetaveis);            
+            montarLinha(eixoX, contadorLinha, alturaY);            
         }     
-    }   
+    }
+
+    protected override void onColetavelCriado(ColetavelTile coletavel)
+    {
+        destaque.destacar(coletavel);        
+    }
 }
+ 

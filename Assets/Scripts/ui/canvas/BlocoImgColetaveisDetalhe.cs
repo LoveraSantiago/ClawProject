@@ -24,8 +24,7 @@ public class BlocoImgColetaveisDetalhe : AcaoBlocoImgColetavelAtual.ConsumidorEv
         }
         else if (evento.isNaoColetado)
         {
-            Material matGrayScale = new Material(Utils.materialGrayScale);
-            matGrayScale.SetTexture("main_text", evento.sprite.texture);
+            Material matGrayScale = MaterialGrayScale.of(evento.sprite);            
             blocoImgDto.ImgDetalhe.material = matGrayScale;
             blocoImgDto.ImgDetalhe.color = Color.white;
             blocoImgDto.BtnGanharColetavel.enabled = true;

@@ -10,9 +10,7 @@ public class GlowBotaoPowerUp
     public GlowBotaoPowerUp(SpriteRenderer sprEfeito)
     {
         this.sprEfeito = sprEfeito;
-
-        MaterialGlow materialGlow = new MaterialGlow(sprEfeito.material);
-        glowEfeito = new GlowEfeito(sprEfeito.gameObject, materialGlow);
+        glowEfeito = new GlowEfeito(sprEfeito.gameObject, sprEfeito.material);
     }
 
     public void ligarGlow()

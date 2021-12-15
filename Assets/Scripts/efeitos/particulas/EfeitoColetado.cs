@@ -1,20 +1,20 @@
 using UnityEngine;
 
 public class EfeitoColetado 
-{    
-    private Vector3 posOriginalEfeito;
+{   
     private ParticleSystem efeitoColetado;        
 
     public EfeitoColetado(ParticleSystem efeitoColetado)
     {
-        this.efeitoColetado      = efeitoColetado;
-        posOriginalEfeito = this.efeitoColetado.transform.position; 
+        this.efeitoColetado = efeitoColetado;    
         this.efeitoColetado.Stop();
     }
 
     public void acionarEfeito(Vector3 posicao)
     {
-        efeitoColetado.transform.position = new Vector3(posicao.x, posOriginalEfeito.y, posOriginalEfeito.z);
+        float posY = efeitoColetado.transform.position.y;
+        float posZ = efeitoColetado.transform.position.z;
+        efeitoColetado.transform.position = new Vector3(posicao.x, posY, posZ);
         efeitoColetado.Play();
     }    
 }

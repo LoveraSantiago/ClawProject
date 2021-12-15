@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class ColetaveisScene : MonoBehaviour, 
@@ -12,8 +10,8 @@ public class ColetaveisScene : MonoBehaviour,
     [Space(5)]
     [SerializeField] private BlocoImgColetaveisDto blocoImgDto;
     [SerializeField] private BlocoImgDetalheColetavelDto blocoImgDetalheDto;
-    [Space(5)]
-    [SerializeField] private Material materialGrayScale;
+    [Space(5)]    
+    [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabColetaveisDto;
     [Space(5)]
     [SerializeField] private GameObject prefabBottomBar;
@@ -24,31 +22,27 @@ public class ColetaveisScene : MonoBehaviour,
     void Start()
     {
         Utils.configMainMono(this);
-        Utils.configMainMatGrayScale(materialGrayScale);
-        ColetavelHelper.configurar();
-        PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI
-        PlayerPrefsColetaveis.disponibilizarColetavel("Laranja");//TEMPORARIAMENTE AQUI
-        PlayerPrefsColetaveis.disponibilizarColetavel("Aspargo");//TEMPORARIAMENTE AQUI
+        MateriaisUtils.configurar(prefabMateriais);        
+        
+        HelperColetavelEntidade.configurar(prefabColetaveisDto);
 
-        ColetavelEntidade.FAMILIA[] familias = { ColetavelEntidade.FAMILIA.FRUTAS,
-                                                 ColetavelEntidade.FAMILIA.FAKE };
-
-        PrefabDeSpriteDto prefabSpritesDto = prefabColetaveisDto.GetComponent<PrefabDeSpriteDto>();
-        Dictionary<string, Sprite> dicionarioDeSprites = prefabSpritesDto.getDicionarioDeSprites();
-        blocoImg = new BlocoImgColetaveis(familias, dicionarioDeSprites, blocoImgDto);
+        PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
+                
+        blocoImg = new BlocoImgColetaveis(blocoImgDto);
         BlocoImgColetaveisDetalhe blocoImgDetalhe = new BlocoImgColetaveisDetalhe(blocoImgDetalheDto);
-        ScrollBottomBarSceneColetaveis scBottomBar = new ScrollBottomBarSceneColetaveis(prefabBottomBar, familias, dicionarioDeSprites);
+        ScrollBottomBarSceneColetaveis scBottomBar = new ScrollBottomBarSceneColetaveis(prefabBottomBar);
+        BotaoIrGameColetaveis btnColetaveis = new BotaoIrGameColetaveis(blocoImgDetalheDto.BtnGanharColetavel);
 
         new AcaoBlocoImgColetavelAtual()
             .configurarProdutor(blocoImg)
-            .adicionarConsumidor(blocoImgDetalhe);
+            .adicionarConsumidor(blocoImgDetalhe)
+            .adicionarConsumidor(btnColetaveis);
 
-        new AcaoBBarPupEscolhido<int>()
+        new AcaoBBarItemEscolhido<int>()
             .configurarProdutor(scBottomBar)
             .adicionarConsumidor(blocoImg);
 
-        configBtnBack(btnBack);
-        configBtnGanharColetado(blocoImgDetalheDto.BtnGanharColetavel);
+        configBtnBack(btnBack);        
         blocoImg.startLaizy();
     }   
 
@@ -59,11 +53,6 @@ public class ColetaveisScene : MonoBehaviour,
 
     private void configBtnBack(Button btnBack)
     {
-        btnBack.onClick.AddListener(() => SceneManager.LoadScene("MapScene"));
-    }
-
-    private void configBtnGanharColetado(Button btnBack)
-    {
-        btnBack.onClick.AddListener(() => SceneManager.LoadScene("NotImplementedScene"));
-    }   
+        btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMap());
+    }    
 }

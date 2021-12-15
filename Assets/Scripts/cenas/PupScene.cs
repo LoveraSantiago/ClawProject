@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 #pragma warning disable 0649
@@ -21,6 +20,7 @@ public class PupScene : MonoBehaviour
     void Start()
     {
         Utils.configMainMono(this);
+        FactoryPowerUpEntidade.resetContextoEstatico();
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
 
         BlocoImgPup blocoImg   = new BlocoImgPup(blocoImgDto);
@@ -36,7 +36,7 @@ public class PupScene : MonoBehaviour
             .configurarProdutor(blocoImg)
             .adicionarConsumidor(allLables);
 
-        new AcaoBBarPupEscolhido<int>()
+        new AcaoBBarItemEscolhido<int>()
             .configurarProdutor(scBottomBar)
             .adicionarConsumidor(blocoImg);
 
@@ -45,34 +45,34 @@ public class PupScene : MonoBehaviour
 
     private void configBtnBack(Button btnBack)
     {
-        btnBack.onClick.AddListener(() => SceneManager.LoadScene("MapScene"));
+        btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMap());
     }
 
     private void configBtnPratica(Button btnPratica, BlocoImgPup blocoImg)
     {
         btnPratica.onClick.AddListener(() => {            
-            irGameScene(LevelFlowManager.LEVEL.PUP, blocoImg);            
+            irGameScene(Level.PUP, blocoImg);            
         });
     }
 
     private void configBtnCacaNiquelIndividual(Button btnCacaNiquel, BlocoImgPup blocoImg)
     {
         btnCacaNiquel.onClick.AddListener(() => {            
-            irGameScene(LevelFlowManager.LEVEL.CACANIQUEL_PUP_I, blocoImg);            
+            irGameScene(Level.CACANIQUEL_PUP_I, blocoImg);            
         });
     }
 
     private void configBtnCacaNiquelGeral(Button btnCacaNiquel, BlocoImgPup blocoImg)
     {
         btnCacaNiquel.onClick.AddListener(() => {
-            irGameScene(LevelFlowManager.LEVEL.CACANIQUEL_PUP_G, blocoImg);
+            irGameScene(Level.CACANIQUEL_PUP_G, blocoImg);
         });
     }
 
-    private void irGameScene(LevelFlowManager.LEVEL level, BlocoImgPup blocoImg)
+    private void irGameScene(Level level, BlocoImgPup blocoImg)
     {
         PlayerPrefsLevel.salvarLevel(level);
         PlayerPrefsPup.salvarIndicePup(blocoImg.getIndicePupAtual());
-        SceneManager.LoadScene("MainGameScene");
+        CenaUtils.irParaCenaMainGame();
     }
 }

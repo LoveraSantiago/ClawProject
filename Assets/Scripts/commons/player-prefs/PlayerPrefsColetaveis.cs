@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 public class PlayerPrefsColetaveis : MonoBehaviour
 {
+    private const string TAG_INDICE_FAMILIA = "IndiceFamilia";
+    private const string TAG_NAVEGACAO_COLETAVEL = "IndiceColetavel";
+
     public static bool isFamiliaNotLocked(string nomeFamilia)
     {
         return !isFamiliaLocked(nomeFamilia);
@@ -17,8 +20,8 @@ public class PlayerPrefsColetaveis : MonoBehaviour
 
     public static bool isAllFamiliaComColetaveisDisponiveis(ColetavelEntidade.FAMILIA familia)
     {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
-        List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familia);
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        List<ColetavelEntidade> coletaveisDaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamilia(familia);
         for(int contador = 0; contador < coletaveisDaFamilia.Count; contador++)
         {
             ColetavelEntidade coletavelIt = coletaveisDaFamilia[contador];
@@ -48,5 +51,35 @@ public class PlayerPrefsColetaveis : MonoBehaviour
     public static void unlockFamilia(string nomeFamilia)
     {
         PlayerPrefs.SetInt(nomeFamilia, 1);
+    }
+
+    public static void salvarIndiceFamilia(int indice)
+    {
+        PlayerPrefs.SetInt(TAG_INDICE_FAMILIA, indice);
+    }
+
+    public static int recuperarEApagarIndiceFamilia()
+    {
+        int indice = PlayerPrefs.GetInt(TAG_INDICE_FAMILIA);
+        PlayerPrefs.DeleteKey(TAG_INDICE_FAMILIA);
+        return indice;
+    }
+
+    public static void salvarNavegacaoColetavel(int idColetavel)
+    {
+        PlayerPrefs.SetInt(TAG_NAVEGACAO_COLETAVEL, idColetavel);
+    }
+
+    public static int recuperarNavegacaoColetavel()
+    {
+        int id = PlayerPrefs.GetInt(TAG_NAVEGACAO_COLETAVEL);
+        return id;
+    }
+
+    public static int recuperarEApagarNavegacaoColetavel()
+    {
+        int id = recuperarNavegacaoColetavel();
+        PlayerPrefs.DeleteKey(TAG_NAVEGACAO_COLETAVEL);
+        return id;
     }
 }

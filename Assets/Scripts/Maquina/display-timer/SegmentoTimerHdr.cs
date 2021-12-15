@@ -7,17 +7,16 @@ public class SegmentoTimerHdr
 
     public SegmentoTimerHdr(DisplayTimerDto displayTimerDto)
     {
-        configurarMateriais(displayTimerDto.MaterialEmptyTimer, displayTimerDto.SingleDisplay[0].Segmentos);
+        configurarMateriais(displayTimerDto.SingleDisplay[0].Segmentos);
         configurarMaterialMiniDisplay(displayTimerDto.SprRendererMiniSegmentos);        
     }
 
-    private void configurarMateriais(Material materialEmpty, SpriteRenderer[] segmentosDisplays)
+    private void configurarMateriais(SpriteRenderer[] segmentosDisplays)
     {
         materiaisSegmentosHdr = new Material[segmentosDisplays.Length];
         for (int contador = 0; contador < segmentosDisplays.Length; contador++)
         {
-            Material materialHdr = new Material(materialEmpty);
-            materialHdr.SetTexture("MainTexture", segmentosDisplays[contador].sprite.texture);
+            Material materialHdr = MaterialHdr.of(segmentosDisplays[contador].sprite);
             materiaisSegmentosHdr[contador] = materialHdr;
         }
 

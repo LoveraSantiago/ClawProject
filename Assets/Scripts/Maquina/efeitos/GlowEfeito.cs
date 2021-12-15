@@ -5,10 +5,10 @@ public class GlowEfeito
     private GameObject goEfeito;
     public MaterialGlow materialGlow { get; private set; }
 
-    public GlowEfeito(GameObject goEfeito, MaterialGlow materialGlow)
+    public GlowEfeito(GameObject goEfeito, Material material)
     {
         this.goEfeito = goEfeito;
-        this.materialGlow = materialGlow;
+        this.materialGlow = new MaterialGlow(material);
     }
 
     public void mudarMaterial(MaterialGlow materialGlow)

@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+//SENDO USADO EM MAPSCENE COMPONATE PLAYBUTTON
 public class LevelManager : MonoBehaviour
 {
     [SerializeField]
@@ -9,12 +8,12 @@ public class LevelManager : MonoBehaviour
 
     public void startLevel()
     {
-        SceneManager.LoadScene("MainGameScene");
+        CenaUtils.irParaCenaMainGame();
     }
 
     public void goTotMapScene()
     {
-        SceneManager.LoadScene("MapScene");
+        CenaUtils.irParaCenaMap();
     }   
 
     public void closeDescricaoObjetivo()

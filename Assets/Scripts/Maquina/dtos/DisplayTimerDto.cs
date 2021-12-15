@@ -6,8 +6,7 @@ public class DisplayTimerDto
 {
 
     [SerializeField] private SpriteRenderer sprRendererPlaca;
-    [SerializeField] private SpriteRenderer sprRendererPlacaEfeito;    
-    [SerializeField] private Material materialEmptyTimer;
+    [SerializeField] private SpriteRenderer sprRendererPlacaEfeito;        
     [Space(5)]
     [SerializeField] private SpriteRenderer[] sprRendererMiniSegmentos;
     [Space(5)]
@@ -15,9 +14,7 @@ public class DisplayTimerDto
 
     public SpriteRenderer SprRendererPlaca { get { return sprRendererPlaca; } }
     public GameObject PlacaEfeito { get { return sprRendererPlacaEfeito.gameObject; } }
-    public Material MaterialEfeito { get { return sprRendererPlacaEfeito.material; } }
-
-    public Material MaterialEmptyTimer { get { return materialEmptyTimer; } }
+    public Material MaterialEfeito { get { return sprRendererPlacaEfeito.material; } }    
 
     public SpriteRenderer[] SprRendererMiniSegmentos { get { return sprRendererMiniSegmentos; } }
 

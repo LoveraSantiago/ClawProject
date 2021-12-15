@@ -2,27 +2,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemsBottomBarFamilias : ItemsBottomBar
-{
-    private ColetavelEntidade.FAMILIA[] familias;
+{    
     private string lblQtdAtual;
     private Sprite spriteAtual;
     private Color corAtual;
-    private Material materialAtual;
-    private Dictionary<string, Sprite> dicionarioDeSprites;
-
-    public ItemsBottomBarFamilias(ColetavelEntidade.FAMILIA[] familias, Dictionary<string, Sprite> dicionarioDeSprites)
-    {
-        this.familias = familias;
-        this.dicionarioDeSprites = dicionarioDeSprites;
-    }
+    private Material materialAtual;        
 
     public void configurarIndicePesquisado(int indice)
     {
-        ColetavelEntidade.FAMILIA familiaAtual = familias[indice];
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
-        List<ColetavelEntidade> coletaveisDaFamilia = coletavelHelper.getListaDeColetaveisEntidadeByFamilia(familiaAtual);
+        ColetavelEntidade.FAMILIA familiaAtual = ColetavelEntidade.getFamiliasDeColetaveis()[indice];
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        List<ColetavelEntidade> coletaveisDaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamilia(familiaAtual);
         ColetavelEntidade coletavelEntidade = coletaveisDaFamilia[0];
-        spriteAtual = dicionarioDeSprites[coletavelEntidade.nomeSprite]; 
+        spriteAtual = helperColetavel.getSpriteColetavelByNomeSprite(coletavelEntidade.nomeSprite); 
 
         if (PlayerPrefsColetaveis.isFamiliaLocked(familiaAtual.ToString()))
         {
@@ -39,8 +31,7 @@ public class ItemsBottomBarFamilias : ItemsBottomBar
         else
         {
             lblQtdAtual = "Nok";
-            materialAtual = new Material(Utils.materialGrayScale);
-            materialAtual.SetTexture("main_text", spriteAtual.texture);
+            materialAtual = MaterialGrayScale.of(spriteAtual);            
             corAtual = Color.white;
         }
     }
@@ -67,6 +58,6 @@ public class ItemsBottomBarFamilias : ItemsBottomBar
 
     public int getQtdItems()
     {
-        return familias.Length;
+        return ColetavelEntidade.getFamiliasDeColetaveis().Length;
     }
 }

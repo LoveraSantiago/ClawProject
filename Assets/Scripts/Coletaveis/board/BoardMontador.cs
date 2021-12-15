@@ -2,21 +2,25 @@ using UnityEngine;
 
 public abstract class BoardMontador 
 {
-    protected static ColetavelEntidade.FAMILIA familia;
-    protected int[,] arrayDeColetaveis;
+    private static ColetavelEntidade.FAMILIA familia;
+    private int[,] arrayDeColetaveis;   
 
-    public static void configurar(ColetavelEntidade.FAMILIA familiaArg)
+    public void createBoard(BoardDto boardDto)
     {
-        familia = familiaArg;
-    }    
+        if (hasColetaveisInArray())
+        {
+            create(boardDto);
+        }
+    }
 
-    protected void montarLinha(float[] eixoX, int contadorLinha, float altura, PoolDeColetaveis poolDeColetaveis)
+    protected void montarLinha(float[] eixoX, int contadorLinha, float altura)
     {
-        ColetavelHelper coletavelHelper = new ColetavelHelper();
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();        
+
         for (int contadorColuna = 0; contadorColuna < eixoX.Length; contadorColuna++)
         {
             int id = arrayDeColetaveis[contadorLinha, contadorColuna];
-            ColetavelEntidade coletavelEntidade = coletavelHelper.getColetavelEntidadeById(id);
+            ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeById(id);
 
             if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
             {
@@ -24,19 +28,23 @@ public abstract class BoardMontador
             }
             else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
             {
-                coletavelEntidade = coletavelHelper.getRandomColetavelEntidadeByFamilia(familia);
+                coletavelEntidade = helperColetavel.getRandomColetavelEntidadeByFamilia(familia);
             }
 
             Vector3 posicao = new Vector3(eixoX[contadorColuna], altura, 0);
-            ColetavelTile coletavel = poolDeColetaveis.criarColetavel();
-            coletavel.receberSprite(coletavelEntidade.nomeSprite);
-            coletavel.colocarNaPosicao(posicao);
-            coletavel.ligar();
+            ColetavelTile coletavel = criarColetavel(coletavelEntidade.nomeSprite, posicao);            
             onColetavelCriado(coletavel);
         }
     }
 
-    protected virtual void onColetavelCriado(ColetavelTile coletavelTile){}    
+    public abstract void configuradoPeloLevel(AbstractLevel level);
+    protected abstract void create(BoardDto boardDto);
+    protected abstract void onColetavelCriado(ColetavelTile coletavelTile);
+
+    public virtual int getQtdAcrescentada()
+    {
+        return 0;
+    }
 
     protected float[] getEixoX(BoardDto boardDto, int indice)
     {
@@ -48,5 +56,37 @@ public abstract class BoardMontador
         {
             return boardDto.PosicoesEixoXImpar;
         }
+    }
+
+    protected void setArrayDeColetavel(int[,] arrayDeColetaveis)
+    {
+        this.arrayDeColetaveis = arrayDeColetaveis;
+    }
+
+    protected bool hasColetaveisInArray()
+    {
+        return arrayDeColetaveis != null;
+    }
+
+    protected int getQtdItensDimensaoZero()
+    {
+        return arrayDeColetaveis.GetLength(0);
+    }
+
+    private ColetavelTile criarColetavel(string nomeSprite, Vector3 posicao)
+    {
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+
+        ColetavelTile coletavel = helperInGame.criarColetavel();
+        coletavel.receberSprite(nomeSprite);
+        coletavel.colocarNaPosicao(posicao);
+        coletavel.ligar();
+
+        return coletavel;
+    }
+
+    public static void configurar(ColetavelEntidade.FAMILIA familiaArg)
+    {
+        familia = familiaArg;
     }
 }

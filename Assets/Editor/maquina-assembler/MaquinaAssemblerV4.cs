@@ -108,7 +108,7 @@ public class MaquinaAssemblerV4 : EditorWindow
         dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {
             if (evt.newValue != "0")
             {
-                AbstractLevel level = LevelFlowManager.getLevelByString(evt.newValue);
+                AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
                 Dictionary<string, string> dicionarioDeCores = level.getDicionarioDeCores();
                 foreach (KeyValuePair<string, string> entry in dicionarioDeCores)
                 {
