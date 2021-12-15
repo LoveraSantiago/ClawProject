@@ -1,5 +1,12 @@
 public class LevelUtils 
 {
+    public static AbstractLevel loadLevelEscolhido(Level levelDefault)
+    {
+        Level levelFlow = PlayerPrefsLevel.recuperarELimparLevel(levelDefault);
+        AbstractLevel levelEscolhido = LevelHelper.getLevelByEnum(levelFlow);
+        return levelEscolhido;
+    }
+
     public static bool isNormalLevel(AbstractLevel level)
     {
         return level.getTipoGame() == AbstractLevel.TIPO_GAME.NORMAL;

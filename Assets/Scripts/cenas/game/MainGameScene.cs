@@ -23,17 +23,10 @@ public class MainGameScene : MonoBehaviour,
         MateriaisUtils.configurar(mainDto.PrefabMateriais);
         FactoryPowerUpEntidade.resetContextoEstatico();
 
-        AbstractLevel levelEscolhido = carregandoLevelEscolhido();
+        AbstractLevel levelEscolhido = LevelUtils.loadLevelEscolhido(level);
         MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido);
         updatableManagers = managers.getUpdatables();
-    }    
-
-    private AbstractLevel carregandoLevelEscolhido()
-    {
-        Level levelFlow = PlayerPrefsLevel.recuperarELimparLevel(level);
-        AbstractLevel levelEscolhido = LevelHelper.getLevelByEnum(levelFlow);        
-        return levelEscolhido;
-    }       
+    }        
     
     void Update()
     {
