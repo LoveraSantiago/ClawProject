@@ -39,7 +39,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public override void garraComemorar()
     {
-        movAtual.playAnimcaoComemorar();
+        movAtual.playAnimacaoComemorar();
     }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 

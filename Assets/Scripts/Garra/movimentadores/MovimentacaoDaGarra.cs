@@ -12,7 +12,7 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
 
     public virtual void garraColidiuCom(GameObject gameObject) { }
 
-    public void playAnimcaoComemorar()
+    public void playAnimacaoComemorar()
     {
         garra.animacao.comemorar();
     }
