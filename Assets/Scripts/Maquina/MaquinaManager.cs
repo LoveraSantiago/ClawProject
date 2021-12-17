@@ -25,6 +25,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     public  DisplaysDeSlots   displaysDeSlots { get; private set; }
     private BordasVidroFrente bordasFrenteVidro;
     private TudoDeSaida       tuboDeSaida;
+    private Chao              chao;
 
     public MaquinaManager(MaquinaDto maquinaDto, InputGame inputGame)
     {
@@ -40,6 +41,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         vigaDireita       = new VigaParte(maquinaDto.VigaLadoDireitoDto);
         bordasFrenteVidro = new BordasVidroFrente(maquinaDto.BordasFrenteDto);
         tuboDeSaida       = new TudoDeSaida(maquinaDto.TuboDto);
+        chao              = new Chao(maquinaDto.ChaoDto);
 
         arcoIrisEfeito = new ArcoIrisEfeito(maquinaDto.FactorHdr)//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW            
             .addArcoIrisConjunto(displaysDeSlots.getDisplayColetadoGlow())
@@ -49,7 +51,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             .addArcoIrisConjunto(vigaDireita)
             .addArcoIrisConjunto(botoesPowerUp.getBotoesGlow())
             .addArcoIrisConjunto(bordasFrenteVidro)
-            .addArcoIrisConjunto(tuboDeSaida);        
+            .addArcoIrisConjunto(tuboDeSaida)
+            .addArcoIrisConjunto(chao);        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido)
@@ -62,6 +65,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         vigaDireita.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         bordasFrenteVidro.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         tuboDeSaida.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        chao.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
 
         AntesExecutorTimerRestart executor = new AntesExecutorTimerRestart(botoesPowerUp, displayTimer, arcoIrisEfeito);
         displayTimer.configuradoPeloLevel(levelEscolhido, executor);
