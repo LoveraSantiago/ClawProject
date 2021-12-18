@@ -7,8 +7,8 @@ public class EditorUtils
         List<string> listaDeLEvels = new List<string> {
             "0", "1", "2", "3", "4",
 
-            "Coletavel", "LevelPao", "LevelMaca", "LevelLeite",
-            "LevelCoco", "LevelAspargo", "LevelLaranja", "LevelEstrelaMarinha",
+            "LevelPao", "LevelMaca", "LevelLeite", "LevelCoco",
+            "LevelAspargo", "LevelLaranja", "LevelEstrelaMarinha",
 
             "CacaNiquelIndividual", "CacaNiquelGeral", "TreinoPup",
         };
