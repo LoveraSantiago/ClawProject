@@ -37,7 +37,7 @@ public class MovimentacaoParaBaixo : MovimentadorProdutorInformacaoGarra
     {        
         if (UtilsTags.isColetavel(gameObject))
         {
-            produtorEventoInfoGarra.produziuEvento(new InformacoesDaGarraDto(gameObject.name));
+            produzirEventoInfoDaGarra(gameObject.name);            
             comunicadorComGerMovimentacao.trocarParaAcaoAgarrada();
         }
     }   

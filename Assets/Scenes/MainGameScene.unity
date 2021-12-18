@@ -10671,7 +10671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 7
+  level: 1
   mainDto:
     garraDto:
       velocidades:
@@ -11024,6 +11024,9 @@ MonoBehaviour:
       tuboDto:
         sprRenderColorir: {fileID: 1914492973}
         sprRenderEfeito: {fileID: 1202769893}
+      chaoDto:
+        sprRenderColorir: {fileID: 522769647}
+        sprRenderEfeito: {fileID: 1500699939}
       partesDto:
         placaCima: {fileID: 702916761}
         baseParteCima: {fileID: 243475117}
@@ -11031,7 +11034,6 @@ MonoBehaviour:
         baseChao: {fileID: 753857306}
         placaFrontal: {fileID: 1814315205}
         barra: {fileID: 186092669}
-        chaoDentro: {fileID: 522769647}
         placaSaida: {fileID: 201901775}
         placaFicha: {fileID: 1266331362}
         placaParteCima: {fileID: 2086796815}
@@ -43242,6 +43244,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6406990385412141467, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1500699939 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 731631279107951601, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+  m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1508959791 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5155913249873527538, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -58970,6 +58977,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 1202769891, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202769893, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202769893, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202769893, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 731631279107951601, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 731631279107951601, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 731631279107951601, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429750138738742075, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6406990384449578760, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -59018,6 +59057,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: maquina
       objectReference: {fileID: 0}
+    - target: {fileID: 6406990385869860178, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 784079659e70d3646a0c53a220222778, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
 --- !u!4 &6406990385049082668 stripped
