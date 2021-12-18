@@ -4,15 +4,12 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
                                                ComunicadorComGerMovNormal,
                                                AcaoInfoDaGarra.ProdutorEvento
 {
-    private MovimentacaoDaGarra   movAtual;    
-    private MovimentacaoParaCima  movPCima;//GUARDA ESTADO DE SUBIDAS        
+    private MovimentacaoDaGarra   movAtual;        
 
     public GerenciadorDeMovimentacaoNormal()
     {        
         MovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
-        MovimentadorProdutorInformacaoGarra.configurar();        
-        
-        movPCima   = new MovimentacaoParaCima();        
+        MovimentadorProdutorInformacaoGarra.configurar();               
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
@@ -51,9 +48,8 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     }
 
     public void trocarParaAcaoSubindo()
-    {
-        movPCima.toAcaoNormal();
-        trocarMovimentador(movPCima);
+    {   
+        trocarMovimentador(new MovimentacaoParaCima());
     }
 
     public void trocarParaAcaoNormal()
@@ -77,9 +73,8 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     }
 
     public void trocarParaAcaoVoltarParaCima()
-    {
-        movPCima.toAcaoEsperar();
-        trocarMovimentador(movPCima);
+    {   
+        trocarMovimentador(new MovimentacaoParaCimaVoltarMeio());
     }
 
     public void trocarParaAcaoVoltarParaMeio()
