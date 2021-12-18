@@ -3,20 +3,13 @@ public class MovimentacaoParaCima : MovimentadorProdutorInformacaoGarra
     private readonly int ACAO_NORMAL  = 0;
     private readonly int ACAO_ESPERAR = 1;
 
-    private int acaoAtual;
-    private int contadorDeSubidas;    
-
-    public MovimentacaoParaCima()
-    {
-        contadorDeSubidas = 0;        
-    }
+    private int acaoAtual;       
 
     public override void preInicio()
     {
-        colocarMassa(3);        
+        colocarMassa(3);
 
-        contadorDeSubidas++;
-        produtorEventoInfoGarra.produziuEvento(new InformacoesDaGarraDto(contadorDeSubidas));
+        contabilizarSubida();                
         playAnimacaoIrPBaixo();        
     }
 
