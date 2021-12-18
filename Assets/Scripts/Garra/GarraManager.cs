@@ -56,12 +56,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     {
         gerDeMovAtual.fixedUpdate();
         cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.RigidBody.transform);
-    }
-
-    private void processarGarraColidiuCom(Collider2D other)
-    {
-        gerDeMovAtual.garraColidiuCom(other);
-    }
+    }    
 
     private void configurarColisorCentroDaPinca(GameObject goColisor)
     {
@@ -88,8 +83,8 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
     //ACIONADO QDO GARRA COLLIDE COM UM COLETAVEL
     public void consumir(Collider2D colliderDeColetavel)
-    {
-        processarGarraColidiuCom(colliderDeColetavel);
+    {        
+        gerDeMovAtual.garraColidiuCom(colliderDeColetavel);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
    
