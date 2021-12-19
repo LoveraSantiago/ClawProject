@@ -9,5 +9,6 @@ public class InformacoesDaGarraDto
     public InformacoesDaGarraDto(int qtdSubidas, string nomeColetado)
     {
         this.qtdSubidas = qtdSubidas;
+        this.nomeColetado = nomeColetado;
     }   
 }
