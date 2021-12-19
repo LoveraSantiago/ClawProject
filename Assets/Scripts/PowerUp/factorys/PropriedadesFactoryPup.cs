@@ -11,4 +11,5 @@ public class PropriedadesFactoryPup
     public PowerUpEntidade asa;
     public PowerUpEntidade rollback;
     public PowerUpEntidade descarte;
+    public PowerUpEntidade mola;
 }

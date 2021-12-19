@@ -101,6 +101,15 @@ public class FactoryPowerUpEntidade
         return props.descarte;
     }
 
+    private static PowerUpEntidade getMola()
+    {
+        if(props.mola == null)
+        {
+            props.mola = FactoryPupMola.factory();
+        }
+        return props.mola;
+    }
+
     public static PowerUpEntidade getPowerUpEntidadeByEnum(PowerUpEnums.TIPO tipo)
     {
         switch (tipo)
@@ -115,7 +124,7 @@ public class FactoryPowerUpEntidade
             case PowerUpEnums.TIPO.MINI_ASAS        : return getMiniAsas();
             case PowerUpEnums.TIPO.ASAS             : return getAsas();
             case PowerUpEnums.TIPO.ROLLBACK         : return getRollBack();
-            case PowerUpEnums.TIPO.DESCARTE         : return getDescarte();
+            case PowerUpEnums.TIPO.DESCARTE         : return getDescarte();            
             default: return null;
         }        
     }
