@@ -4,10 +4,10 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     private ContadorDeTempo contadorDeFimTempo;
 
     private MovimentacaoDaGarraPowerUp movAtual;        
-    private MovimentacaoDaGarraPowerUp movSegCima;
-    private MovimentacaoDaGarraPowerUp movSegCimaMov;
-    
-    private MovimentacaoDaGarraPowerUp movParado;
+    private MovimentacaoDaGarraPowerUp movSegCima;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
+    private MovimentacaoDaGarraPowerUp movSegCimaMov;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
+
+    private MovimentacaoDaGarraPowerUp movParado;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
