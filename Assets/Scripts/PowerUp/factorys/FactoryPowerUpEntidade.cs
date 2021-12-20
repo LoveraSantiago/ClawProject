@@ -1,7 +1,7 @@
 public class FactoryPowerUpEntidade 
 {
     private static PropriedadesFactoryPup props;
-    private static PoolPups poolPups;
+    private static PoolPowerUps poolPups;
 
     private static PowerUpEntidade getBombaDaGarra()
     {
@@ -156,6 +156,6 @@ public class FactoryPowerUpEntidade
     {
         props = new PropriedadesFactoryPup();
 
-        poolPups = new PoolPups();
+        poolPups = new PoolPowerUps();
     }
 }
