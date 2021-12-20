@@ -13,7 +13,10 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
     private Coroutine coroutineAlvo;    
 
     public CoringaPowerUpGo() : 
-        base(powerUpDto.VazioPUp, "coringa"){}
+        base(powerUpDto.VazioPUp, "coringa")
+    {
+        Debug.Log("Coringa instanciado");
+    }
 
     public override void configurarPup(){}
 
