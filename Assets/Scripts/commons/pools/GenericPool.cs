@@ -12,26 +12,26 @@ public class GenericPool<K, V>
         dicionario = new Dictionary<K, V>();
     }
 
-    public bool contemNome(K chave)
+    public bool contem(K chave)
     {
         return dicionario.ContainsKey(chave);
     }
 
-    public V getObjetoPeloNome(K chave)
+    public V getValor(K chave)
     {
         return dicionario[chave];
     }
 
-    public void executeSeTiverObjeto(K chave, Consumidor<V> consumidor)
+    public void executeSeTiverChave(K chave, Consumidor<V> consumidor)
     {
-        if (contemNome(chave))
+        if (contem(chave))
         {
-            objetoTemp = getObjetoPeloNome(chave);
+            objetoTemp = getValor(chave);
             consumidor.consumir(objetoTemp);
         }
     }
 
-    public void executeEmTodosOsObj(Consumidor<V> consumidor)
+    public void executeEmTodosOsValores(Consumidor<V> consumidor)
     {
         foreach (KeyValuePair<K, V> entry in dicionario)
         {
@@ -39,7 +39,7 @@ public class GenericPool<K, V>
         }
     }
 
-    public bool temEmAlgum(Predicate<V> predicate)
+    public bool temEmAlgumValor(Predicate<V> predicate)
     {
         foreach (KeyValuePair<K, V> entry in dicionario)
         {
@@ -49,9 +49,9 @@ public class GenericPool<K, V>
         return false;
     }
 
-    public void removerObjetoDoDicionario(K chave)
+    public void remover(K chave)
     {
-        if (contemNome(chave))
+        if (contem(chave))
         {
             dicionario.Remove(chave);
         }
@@ -66,20 +66,21 @@ public class GenericPool<K, V>
         dicionario.Clear();
     }
 
-    public void addObjetoAoDicionario(K chave, V objeto)
+    public GenericPool<K, V> addChaveValor(K chave, V objeto)
     {
         if (!dicionario.ContainsKey(chave))
         {
             dicionario.Add(chave, objeto);
         }
+        return this;
     }
 
-    public List<V> getListaDeObjetos()
+    public List<V> getListaDeValores()
     {        
         return dicionario.Values.ToList();
     }
 
-    public V[] getArrayDeObjetos()
+    public V[] getArrayDeValores()
     {
         V[] values = new V[dicionario.Count];
         dicionario.Values.CopyTo(values, 0);

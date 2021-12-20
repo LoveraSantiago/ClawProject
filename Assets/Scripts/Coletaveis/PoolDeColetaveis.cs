@@ -21,29 +21,29 @@ public class PoolDeColetaveis
         else
         {
             ColetavelTile coletavel = new ColetavelTile();
-            poolDeNomes.addObjetoAoDicionario(coletavel.nome, coletavel);
+            poolDeNomes.addChaveValor(coletavel.nome, coletavel);
             return coletavel;
         }
     }
 
     public ColetavelTile getColetavelPeloGoNome(string nome)
     {
-        return poolDeNomes.getObjetoPeloNome(nome);
+        return poolDeNomes.getValor(nome);
     }   
 
     public void executeEmTodosColetaveis(Consumidor<ColetavelTile> consumidor)
     {
-        poolDeNomes.executeEmTodosOsObj(consumidor);
+        poolDeNomes.executeEmTodosOsValores(consumidor);
     }
 
     public bool temEmAlgumColetavel(Predicate<ColetavelTile> predicate)
     {
-        return poolDeNomes.temEmAlgum(predicate);
+        return poolDeNomes.temEmAlgumValor(predicate);
     }
 
     public ColetavelTile[] getTrincaDeColetaveis(ColetavelEntidade coletavelEntidade)
     {
-        List<ColetavelTile> listaColetaveis = poolDeNomes.getListaDeObjetos();
+        List<ColetavelTile> listaColetaveis = poolDeNomes.getListaDeValores();
         List<ColetavelTile> listaResult = new List<ColetavelTile>(3);
         for(int contador = 0; contador < listaColetaveis.Count && listaResult.Count <3; contador++)
         {
@@ -76,6 +76,6 @@ public class PoolDeColetaveis
 
     public bool contemNome(string nome)
     {
-        return poolDeNomes.contemNome(nome);
+        return poolDeNomes.contem(nome);
     }
 }
