@@ -1,32 +1,15 @@
 public class FactoryPowerUpEntidade 
 {   
-    private static PoolPowerUps poolPups;                                      
-
-    private static PowerUpEntidade getMola()
-    {
-        if(props.mola == null)
-        {
-            props.mola = FactoryPupMola.factory();
-        }
-        return props.mola;
-    }
+    private static PoolPowerUps poolPups;                                         
 
     public static PowerUpEntidade getPowerUpEntidadeByEnum(PowerUpEnums.TIPO tipo)
     {
-        switch (tipo)
-        {               
-            
-            
-            default: return null;
-        }        
+        return poolPups.getValor(tipo);        
     }
 
     public static PowerUpEntidade[] getAllPowerUps()
     {
-        return new PowerUpEntidade[] {                      
-            
-            
-        };
+        return poolPups.getArrayDeValores();       
     }
 
     public static PowerUpEntidade getPowerUpFromIndice(int indice)
