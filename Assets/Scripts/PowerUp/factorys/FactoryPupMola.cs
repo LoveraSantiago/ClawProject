@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FactoryPupMola 
+public class FactoryPupMola : AbstractFactoryPup
 {
-    public static PowerUpEntidade factory()
+    public override PowerUpEntidade factoryPupEntidade()
     {
-        return null;
+        throw new System.NotImplementedException();
+    }
+
+    public override AbstractPowerUpGo fornecer()
+    {
+        throw new System.NotImplementedException();
     }
 }

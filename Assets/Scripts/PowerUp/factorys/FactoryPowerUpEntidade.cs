@@ -30,6 +30,7 @@ public class FactoryPowerUpEntidade
             .addPup(PowerUpEnums.TIPO.MINI_ASAS        , new FactoryPupMiniAsas())
             .addPup(PowerUpEnums.TIPO.ASAS             , new FactoryPupAsas())
             .addPup(PowerUpEnums.TIPO.ROLLBACK         , new FactoryPupRollback())
-            .addPup(PowerUpEnums.TIPO.DESCARTE         , new FactoryPupDescarte());
+            .addPup(PowerUpEnums.TIPO.DESCARTE         , new FactoryPupDescarte())
+            .addPup(PowerUpEnums.TIPO.MOLA             , new FactoryPupMola());
     }
 }
