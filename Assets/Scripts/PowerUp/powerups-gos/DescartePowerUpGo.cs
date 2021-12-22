@@ -14,18 +14,5 @@ public class DescartePowerUpGo : AbstractDisplaySlotPowerUpGo
     protected override PowerUpEnums.TIPO getTipoRestartPup()
     {
         return PowerUpEnums.TIPO.DESCARTE;
-    }
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorDescarte();
-    }
-
-    public class FornecedorDescarte : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new DescartePowerUpGo();
-        }
-    }
+    }    
 }
