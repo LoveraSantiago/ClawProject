@@ -39,18 +39,5 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
         powerUpFinalizacao.finalizado();
         yield return null;
-    }        
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorIgual();
-    }
-
-    public class FornecedorIgual : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new IgualPowerUpGo();
-        }
-    }
+    }          
 }

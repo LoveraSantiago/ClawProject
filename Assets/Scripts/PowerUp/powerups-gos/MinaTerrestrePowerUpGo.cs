@@ -66,18 +66,4 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
     public override void ligarGravidadeZero() { }
     public override void ligarGravidadeHum() { }
     public override void fixarEixoX() { }
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorMina();
-    }
-
-    public class FornecedorMina : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new MinaTerrestrePowerUpGo();
-        }
-    }
-
 }

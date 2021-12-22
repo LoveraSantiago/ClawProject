@@ -45,18 +45,5 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
         powerUpFinalizacao.finalizado();
         yield return null;
-    }   
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorTeleporte();
-    }
-
-    public class FornecedorTeleporte : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new TeleportePowerUpGo();
-        }
-    }   
+    }      
 }

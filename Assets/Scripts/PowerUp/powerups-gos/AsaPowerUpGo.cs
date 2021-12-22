@@ -31,19 +31,5 @@ public class AsaPowerUpGo : AbstractAsaPowerUpGo
 
         powerUpFinalizacao.finalizado();
         yield return null;        
-    }
-
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorAsa();
-    }
-
-    public class FornecedorAsa : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new AsaPowerUpGo();
-        }
     }   
 }

@@ -104,18 +104,5 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     {        
         if (getPosicao().x < posicao.x) return -powerUpDto.BombaDto.AnguloHit;
         else return powerUpDto.BombaDto.AnguloHit;
-    }
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorBomba();
-    }
-
-    public class FornecedorBomba : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new BombaPowerUpGo();
-        }
-    }
+    }    
 }

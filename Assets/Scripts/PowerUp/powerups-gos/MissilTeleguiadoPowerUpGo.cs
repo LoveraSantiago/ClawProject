@@ -181,18 +181,5 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
             helperInGame.desligarMirasNosColetaveis();
             resetPup();
         }
-    }
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorMissilTeleguiado();
-    }  
-
-    public class FornecedorMissilTeleguiado : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new MissilTeleguiadoPowerUpGo();
-        }
-    }
+    }   
 }

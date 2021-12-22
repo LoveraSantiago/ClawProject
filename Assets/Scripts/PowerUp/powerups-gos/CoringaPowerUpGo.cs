@@ -128,18 +128,5 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
             powerUpFinalizacao.finalizado();
             resetPup();
         }
-    }
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorCoringa();
-    }
-
-    public class FornecedorCoringa : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new CoringaPowerUpGo();
-        }
-    }
+    }    
 }
