@@ -9,9 +9,7 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
     private GameObject goExplosao;    
 
     public MinaTerrestrePowerUpGo()
-        :base(powerUpDto.MinaDto.MinaTerrestreGo, "mina-terrestre")
-    {        
-    }    
+        :base(powerUpDto.MinaDto.MinaTerrestreGo, "mina-terrestre"){}    
 
     public override void iniciarNaPosicao(Vector3 posicao)
     {
