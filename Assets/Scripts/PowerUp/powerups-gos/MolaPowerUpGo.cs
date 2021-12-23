@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
 {
-    public MolaPowerUpGo() : base(null, null){}
+    public MolaPowerUpGo() 
+        : base(null, null){}
 
     public override void configurarPup()
     {
