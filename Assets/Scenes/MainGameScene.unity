@@ -11117,6 +11117,8 @@ MonoBehaviour:
         asaMiniGo: {fileID: 4127936681606313068, guid: 3d5bbd7b9b7d372408b0b38de7933937, type: 3}
       rollBackDto:
         delayReset: 1.5
+      molaDto:
+        molaGo: {fileID: 4127936681606313068, guid: 726671bcf599b5647aba20a381f66cfc, type: 3}
     uiDto:
       modalPontosDto:
         textoNivel: {fileID: 376184029}
