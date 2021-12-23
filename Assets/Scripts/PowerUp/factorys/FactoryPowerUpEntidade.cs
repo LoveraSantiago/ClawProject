@@ -4,7 +4,11 @@ public class FactoryPowerUpEntidade
 
     public static PowerUpEntidade getPowerUpEntidadeByEnum(PowerUpEnums.TIPO tipo)
     {
-        return poolPups.getValor(tipo);        
+        if (poolPups.contem(tipo))
+        {
+            return poolPups.getValor(tipo);
+        }
+        return null;
     }
 
     public static PowerUpEntidade[] getAllPowerUps()
