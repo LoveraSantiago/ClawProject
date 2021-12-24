@@ -21,7 +21,7 @@ public class BotaoPowerUp : Draggavel
 
         aparencia = new AparenciaBotaoPowerUp(botaoDto);
         acaoDrag  = new AcaoDragPowerUp(botaoDto);
-        glow   = new GlowBotaoPowerUp(botaoDto.SprEfeito);
+        glow      = new GlowBotaoPowerUp(botaoDto.SprEfeito);
     }
 
     public void clicar(
