@@ -9,7 +9,6 @@ public class BotaoPowerUp : Draggavel
     private int indice;
     
     private AparenciaBotaoPowerUp aparencia;
-    private PosicaoBotaoPowerUp posicao;
     public GlowBotaoPowerUp glow { get; private set; }
 
     private AcaoDragPowerUp acaoDrag;
@@ -22,7 +21,6 @@ public class BotaoPowerUp : Draggavel
 
         BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
         aparencia = new AparenciaBotaoPowerUp(botaoDto);
-        posicao   = new PosicaoBotaoPowerUp(botaoDto);
         acaoDrag  = new AcaoDragPowerUp(botaoDto);
         glow      = new GlowBotaoPowerUp(botaoDto.SprEfeito);
     }
@@ -157,12 +155,12 @@ public class BotaoPowerUp : Draggavel
 
     public void updateDrag(Vector2 posicaoDrag)
     {
-        acaoDrag.updateDrag(posicaoDrag, posicao, aparencia);
+        acaoDrag.updateDrag(posicaoDrag, aparencia);
     }
 
     public bool isDragFinalizadoAtivouPowerUp()
     {
-        return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, posicao, aparencia);        
+        return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, aparencia);        
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 

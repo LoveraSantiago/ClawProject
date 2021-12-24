@@ -13,11 +13,15 @@ public class AcaoDragPowerUp
     private Vector3 posicaoOriginal;
     private Quaternion rotacaoOriginal;
 
+    private PosicaoBotaoPowerUp posicao;
+
     public AcaoDragPowerUp(BotaoPowerUpDto botaoDto)
     {
         rotacaoOriginal = botaoDto.GoBtnPowerUp.transform.localRotation;
         posicaoOriginal = botaoDto.GoParteDentro.transform.position;
         areaBotao = botaoDto.SprAreaExterna.bounds;
+
+        posicao = new PosicaoBotaoPowerUp(botaoDto);
     }
 
     public bool isPosicaoDentroAreaBotao(Vector2 posicao)
@@ -32,7 +36,7 @@ public class AcaoDragPowerUp
         aparencia.prepararRotacaoImgDrag();
     }
 
-    public void updateDrag(Vector2 posicaoDrag, PosicaoBotaoPowerUp posicao, AparenciaBotaoPowerUp aparencia)
+    public void updateDrag(Vector2 posicaoDrag, AparenciaBotaoPowerUp aparencia)
     {
         Vector2 delta = posicaoDrag - posicaoInicialDrag;
         posicaoInicialDrag = posicaoDrag;
@@ -52,7 +56,7 @@ public class AcaoDragPowerUp
         }
     }
 
-    public bool dragFinalizado(int indice, AcaoBotaoPowerUp acaoPowerUp, PosicaoBotaoPowerUp posicao, AparenciaBotaoPowerUp aparencia)
+    public bool dragFinalizado(int indice, AcaoBotaoPowerUp acaoPowerUp, AparenciaBotaoPowerUp aparencia)
     {
         if (aparencia.isMostrandoImagem())
         {
