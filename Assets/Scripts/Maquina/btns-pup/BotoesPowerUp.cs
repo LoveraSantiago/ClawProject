@@ -6,8 +6,6 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
 {
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
-
-    private ProdutorDeEvento<int> produtorDeEventoEscolhaPup;
     private ControleAcionamentoPowerUp controlePup;
 
     private Draggavel dragavelAtual;
@@ -17,7 +15,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
     {        
         BotaoPowerUp.configurar(btnsPowerUpsDto);
         inicializarBotoes(btnsPowerUpsDto);
-        produtorDeEventoEscolhaPup = new ProdutorDeEvento<int>();
+        
         controlePup   = new ControleAcionamentoPowerUp();
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
@@ -124,7 +122,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
     {
         colocarBtnsEmMaterialArcoIris();
         BotaoPowerUp btn = btnsPowerUp[indice];
-        btn.clicar(btnsPowerUpsDto, controlePup, produtorDeEventoEscolhaPup);
+        btn.clicar(btnsPowerUpsDto, controlePup);
         btnAcionado = btn;
     }   
 
@@ -162,6 +160,6 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
 
     ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEvento()
     {
-        return produtorDeEventoEscolhaPup;
+        return controlePup.produtorDeEventoEscolhaPup;
     }   
 }

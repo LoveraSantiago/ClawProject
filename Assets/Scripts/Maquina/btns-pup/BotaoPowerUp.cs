@@ -25,10 +25,7 @@ public class BotaoPowerUp : Draggavel
         glow      = new GlowBotaoPowerUp(botaoDto.SprEfeito);
     }
 
-    public void clicar(
-        BotoesPowerUpDto btnsPowerUpsDto,
-        ControleAcionamentoPowerUp controlePup, 
-        ProdutorDeEvento<int> produtorEventoEscolhaPup)
+    public void clicar(BotoesPowerUpDto btnsPowerUpsDto, ControleAcionamentoPowerUp controlePup)
     {
         glow.mudarParaMaterialIndividual();
         if (hasPowerUp)
@@ -47,7 +44,7 @@ public class BotaoPowerUp : Draggavel
             glow.ligarGlow();
             Utils.pausarGame();
             controlePup.desabilitarPowerUp();
-            produtorEventoEscolhaPup.produziuEvento(indice);
+            controlePup.escolhendoPupParaIndice(indice);            
         }
     }
 
