@@ -11,17 +11,13 @@ public class AcaoDragPowerUp
     private Bounds  areaBotao;   
     private Vector2 posicaoInicialDrag;
     private Vector3 posicaoOriginal;
-    private Quaternion rotacaoOriginal;
-
-    private PosicaoBotaoPowerUp posicao;
+    private Quaternion rotacaoOriginal;   
 
     public AcaoDragPowerUp(BotaoPowerUpDto botaoDto)
     {
         rotacaoOriginal = botaoDto.GoBtnPowerUp.transform.localRotation;
         posicaoOriginal = botaoDto.GoParteDentro.transform.position;
-        areaBotao = botaoDto.SprAreaExterna.bounds;
-
-        posicao = new PosicaoBotaoPowerUp(botaoDto);
+        areaBotao = botaoDto.SprAreaExterna.bounds;        
     }
 
     public bool isPosicaoDentroAreaBotao(Vector2 posicao)
@@ -36,11 +32,12 @@ public class AcaoDragPowerUp
         aparencia.prepararRotacaoImgDrag();
     }
 
-    public void updateDrag(Vector2 posicaoDrag, AparenciaBotaoPowerUp aparencia)
+    public void updateDrag(Vector2 posicaoDrag, AparenciaBotaoPowerUp aparencia, BotaoPowerUpDto btnDto)
     {
         Vector2 delta = posicaoDrag - posicaoInicialDrag;
         posicaoInicialDrag = posicaoDrag;
 
+        PosicaoBotaoPowerUp posicao = new PosicaoBotaoPowerUp(btnDto);
         Vector3 posicaoCalculada = posicao.adicionarNaPosicao(delta);
         if(areaDraggavel.Contains(posicaoCalculada))
         {
@@ -56,8 +53,9 @@ public class AcaoDragPowerUp
         }
     }
 
-    public bool dragFinalizado(int indice, AcaoBotaoPowerUp acaoPowerUp, AparenciaBotaoPowerUp aparencia)
+    public bool dragFinalizado(int indice, AcaoBotaoPowerUp acaoPowerUp, AparenciaBotaoPowerUp aparencia, BotaoPowerUpDto btnDto)
     {
+        PosicaoBotaoPowerUp posicao = new PosicaoBotaoPowerUp(btnDto);
         if (aparencia.isMostrandoImagem())
         {
             acaoPowerUp.acionar(indice, posicao.getPosicao());

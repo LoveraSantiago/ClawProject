@@ -97,14 +97,14 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp.beginDrag(posicao);
     }
 
-    public void onDragPowerUp(Vector2 delta)
+    public void onDragPowerUp(Vector2 delta, MaquinaDto maquinaDto)
     {
-        botoesPowerUp.drag(delta);
+        botoesPowerUp.drag(delta, maquinaDto.BotoesPowerUpDto);
     }
 
-    public void onEndDragPowerUp()
+    public void onEndDragPowerUp(MaquinaDto maquinaDto)
     {
-        botoesPowerUp.endDrag();
+        botoesPowerUp.endDrag(maquinaDto.BotoesPowerUpDto);
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)

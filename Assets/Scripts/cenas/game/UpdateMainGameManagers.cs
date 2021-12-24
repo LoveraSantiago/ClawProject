@@ -37,14 +37,14 @@ public class UpdateMainGameManagers
         }
     }
 
-    public void onEndDrag(PointerEventData eventData)
+    public void onEndDrag(PointerEventData eventData, MainGameDto mainDto)
     {
-        maquinaManager.onEndDragPowerUp();
+        maquinaManager.onEndDragPowerUp(mainDto.MaquinaDto);
     }
 
-    public void onDrag(PointerEventData eventData)
+    public void onDrag(PointerEventData eventData, MainGameDto mainDto)
     {
         Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
-        maquinaManager.onDragPowerUp(posicaoToque);
+        maquinaManager.onDragPowerUp(posicaoToque, mainDto.MaquinaDto);
     }
 }

@@ -77,19 +77,19 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         }
     }
 
-    public void drag(Vector2 delta)
+    public void drag(Vector2 delta, BotoesPowerUpDto botoesPowerUpDto)
     {
         if (controlePup.podeAcionarPupDraggavel())
         {
-            dragavelAtual.updateDrag(delta);
+            dragavelAtual.updateDrag(delta, botoesPowerUpDto);
         }
     }
 
-    public void endDrag()
+    public void endDrag(BotoesPowerUpDto botoesPowerUpDto)
     {
         if (controlePup.podeAcionarPupDraggavel())
         {
-            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp();            
+            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp(botoesPowerUpDto);            
             if (result)
             {
                 draggarBotao(btnAcionado);

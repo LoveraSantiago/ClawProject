@@ -46,12 +46,12 @@ public class MainGameScene : MonoBehaviour,
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        updatableManagers.onEndDrag(eventData);
+        updatableManagers.onEndDrag(eventData, mainDto);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        updatableManagers.onDrag(eventData);        
+        updatableManagers.onDrag(eventData, mainDto);        
     }
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM
 }

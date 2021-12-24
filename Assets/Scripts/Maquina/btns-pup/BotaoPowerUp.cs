@@ -153,14 +153,16 @@ public class BotaoPowerUp : Draggavel
         acaoDrag.prepararDraggagem(posInicialDrag, aparencia);
     }
 
-    public void updateDrag(Vector2 posicaoDrag)
+    public void updateDrag(Vector2 posicaoDrag, BotoesPowerUpDto botoesPowerUpsDto)
     {
-        acaoDrag.updateDrag(posicaoDrag, aparencia);
+        BotaoPowerUpDto btnDto = getBotaoPowerUpDto(botoesPowerUpsDto);
+        acaoDrag.updateDrag(posicaoDrag, aparencia, btnDto);
     }
 
-    public bool isDragFinalizadoAtivouPowerUp()
+    public bool isDragFinalizadoAtivouPowerUp(BotoesPowerUpDto botoesPowerUpsDto)
     {
-        return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, aparencia);        
+        BotaoPowerUpDto btnDto = getBotaoPowerUpDto(botoesPowerUpsDto);
+        return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, aparencia, btnDto);        
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 
