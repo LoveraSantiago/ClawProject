@@ -42,7 +42,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         return new BotoesPowerUpArcoIris(btnsPowerUp);
     }
     
-    public void update(InputGame inputGame)
+    public void update(BotoesPowerUpDto botoesPowerUpDto, InputGame inputGame)
     {
         if (inputGame.aconteceuTapNaAreaInferior())
         {
@@ -51,7 +51,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
             {
                 if (btnsPowerUp[contador].isCliqueValido(controlePup, posicaoTap))
                 {
-                    acionarBotao(contador);
+                    acionarBotao(contador, botoesPowerUpDto);
                     break;
                 }
             }
@@ -120,11 +120,11 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         controlePup.habilitarPowerUpPosDisplay();
     }
 
-    private void acionarBotao(int indice)
+    private void acionarBotao(int indice, BotoesPowerUpDto btnsPowerUpsDto)
     {
         colocarBtnsEmMaterialArcoIris();
         BotaoPowerUp btn = btnsPowerUp[indice];
-        btn.clicar(controlePup, produtorDeEventoEscolhaPup);
+        btn.clicar(btnsPowerUpsDto, controlePup, produtorDeEventoEscolhaPup);
         btnAcionado = btn;
     }   
 

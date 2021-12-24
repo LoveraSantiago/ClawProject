@@ -80,9 +80,9 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displaysDeSlots.iniciar();
     }
 
-    public void update(InputGame inputGame)
+    public void update(MaquinaDto maquinaDto, InputGame inputGame)
     {
-        botoesPowerUp.update(inputGame);
+        botoesPowerUp.update(maquinaDto.BotoesPowerUpDto, inputGame);
         botaoLigaDesliga.update(inputGame);
         displayTimer.update();
     }

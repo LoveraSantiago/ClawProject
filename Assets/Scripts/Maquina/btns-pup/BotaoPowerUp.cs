@@ -28,6 +28,7 @@ public class BotaoPowerUp : Draggavel
     }
 
     public void clicar(
+        BotoesPowerUpDto btnsPowerUpsDto,
         ControleAcionamentoPowerUp controlePup, 
         ProdutorDeEvento<int> produtorEventoEscolhaPup)
     {

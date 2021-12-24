@@ -19,7 +19,7 @@ public class UpdateMainGameManagers
     {
         inputGame.update(mainDto.MaquinaDto.ReferenciaChao);
         garraManager.update(mainDto.GarraDto, inputGame);
-        maquinaManager.update(inputGame);
+        maquinaManager.update(mainDto.MaquinaDto, inputGame);
     }
 
     public void fixedUpdate(MainGameDto mainDto)
