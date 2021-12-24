@@ -80,8 +80,7 @@ public class AcaoDragPowerUp
             yield return null;
         }
         goAreaDraggavel.SetActive(false);
-        posicao.colocarNaPosicaoOriginal(posicaoOriginal, rotacaoOriginal);
-        aparencia.limparImg();
+        posicao.colocarNaPosicaoOriginal(posicaoOriginal, rotacaoOriginal);        
         aparencia.mostrarBotao();
     }
 
