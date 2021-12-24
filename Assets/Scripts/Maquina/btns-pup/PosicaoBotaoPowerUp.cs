@@ -23,17 +23,7 @@ public class PosicaoBotaoPowerUp
     public Vector3 getPosicao()
     {
         return btnDto.GoParteDentro.transform.position;
-    }
-
-    public Vector3 getPosicaoParent()
-    {
-        return btnDto.GoParent.transform.position;
-    }
-
-    public Quaternion getRotacaoParent()
-    {
-        return btnDto.GoParent.transform.rotation;
-    }
+    }  
 
     public void moveTowards(Vector3 posicaoDestino, float velocidade)
     {

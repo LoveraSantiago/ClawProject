@@ -38,7 +38,9 @@ public class BotaoPowerUp : Draggavel
             aparencia.colorirBotao();
             controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
-            efeitoHolograma.ligar(posicao.getPosicaoParent(), posicao.getRotacaoParent());
+
+            BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
+            efeitoHolograma.ligar(botaoDto);
             acaoBtnPowerUp.acionar(indice);
         }
         else
