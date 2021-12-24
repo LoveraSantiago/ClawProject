@@ -9,6 +9,7 @@ public class BotaoPowerUp : Draggavel
     private int indice;
     
     private AparenciaBotaoPowerUp aparencia;
+    private PosicaoBotaoPowerUp posicao;
     public GlowBotaoPowerUp glow { get; private set; }
 
     private AcaoDragPowerUp acaoDrag;
@@ -20,6 +21,7 @@ public class BotaoPowerUp : Draggavel
         this.indice = indice;
 
         aparencia = new AparenciaBotaoPowerUp(botaoDto);
+        posicao   = new PosicaoBotaoPowerUp(botaoDto);
         acaoDrag  = new AcaoDragPowerUp(botaoDto);
         glow      = new GlowBotaoPowerUp(botaoDto.SprEfeito);
     }
@@ -34,7 +36,7 @@ public class BotaoPowerUp : Draggavel
             aparencia.colorirBotao();
             controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
-            efeitoHolograma.ligar(aparencia.getPosicaoParent(), aparencia.getRotacaoParent());
+            efeitoHolograma.ligar(posicao.getPosicaoParent(), posicao.getRotacaoParent());
             acaoBtnPowerUp.acionar(indice);
         }
         else
@@ -146,12 +148,12 @@ public class BotaoPowerUp : Draggavel
 
     public void updateDrag(Vector2 posicaoDrag)
     {
-        acaoDrag.updateDrag(posicaoDrag, aparencia);
+        acaoDrag.updateDrag(posicaoDrag, posicao, aparencia);
     }
 
     public bool isDragFinalizadoAtivouPowerUp()
     {
-        return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, aparencia);        
+        return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, posicao, aparencia);        
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 

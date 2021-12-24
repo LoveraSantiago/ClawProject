@@ -32,12 +32,12 @@ public class AcaoDragPowerUp
         aparencia.prepararRotacaoImgDrag();
     }
 
-    public void updateDrag(Vector2 posicaoDrag, AparenciaBotaoPowerUp aparencia)
+    public void updateDrag(Vector2 posicaoDrag, PosicaoBotaoPowerUp posicao, AparenciaBotaoPowerUp aparencia)
     {
         Vector2 delta = posicaoDrag - posicaoInicialDrag;
         posicaoInicialDrag = posicaoDrag;
 
-        Vector3 posicaoCalculada = aparencia.adicionarNaPosicao(delta);
+        Vector3 posicaoCalculada = posicao.adicionarNaPosicao(delta);
         if(areaDraggavel.Contains(posicaoCalculada))
         {
             aparencia.mostrarSoImagem();
@@ -52,34 +52,36 @@ public class AcaoDragPowerUp
         }
     }
 
-    public bool dragFinalizado(int indice, AcaoBotaoPowerUp acaoPowerUp, AparenciaBotaoPowerUp aparencia)
+    public bool dragFinalizado(int indice, AcaoBotaoPowerUp acaoPowerUp, PosicaoBotaoPowerUp posicao, AparenciaBotaoPowerUp aparencia)
     {
         if (aparencia.isMostrandoImagem())
         {
-            acaoPowerUp.acionar(indice, aparencia.getPosicao());
-            aparencia.mostrarBotao();                        
-            aparencia.colocarNaPosicaoOriginalAcionado(posicaoOriginal, rotacaoOriginal);
+            acaoPowerUp.acionar(indice, posicao.getPosicao());
+            aparencia.mostrarBotao();
+            posicao.colocarNaPosicaoOriginalAcionado(posicaoOriginal, rotacaoOriginal);
+            aparencia.limparImg();
             goAreaDraggavel.SetActive(false);
             return true;
         }
         else
         {
-            Utils.MonoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal(aparencia));
+            Utils.MonoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal(posicao, aparencia));
             goAreaDraggavel.SetActive(false);
             return false;
         }
     }
 
-    private IEnumerator voltarBotaoDragPosOriginal(AparenciaBotaoPowerUp aparencia)
+    private IEnumerator voltarBotaoDragPosOriginal(PosicaoBotaoPowerUp posicao, AparenciaBotaoPowerUp aparencia)
     {
-        while ((Vector3.Distance(aparencia.getPosicao(), posicaoOriginal))
+        while ((Vector3.Distance(posicao.getPosicao(), posicaoOriginal))
                > (VELOCIDADE_VOLTA * Time.deltaTime))
-        {            
-            aparencia.moveTowards(posicaoOriginal, VELOCIDADE_VOLTA * Time.deltaTime);
+        {
+            posicao.moveTowards(posicaoOriginal, VELOCIDADE_VOLTA * Time.deltaTime);
             yield return null;
         }
         goAreaDraggavel.SetActive(false);
-        aparencia.colocarNaPosicaoOriginal(posicaoOriginal, rotacaoOriginal);
+        posicao.colocarNaPosicaoOriginal(posicaoOriginal, rotacaoOriginal);
+        aparencia.limparImg();
         aparencia.mostrarBotao();
     }
 
