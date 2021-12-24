@@ -15,11 +15,12 @@ public class BotaoPowerUp : Draggavel
     private AcaoDragPowerUp acaoDrag;
     private AcaoBotaoPowerUp acaoBtnPowerUp;
 
-    public BotaoPowerUp(int indice, BotaoPowerUpDto botaoDto)
+    public BotaoPowerUp(int indice, BotoesPowerUpDto btnsPowerUpsDto)
     {
         isDraggavel = false;
         this.indice = indice;
 
+        BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
         aparencia = new AparenciaBotaoPowerUp(botaoDto);
         posicao   = new PosicaoBotaoPowerUp(botaoDto);
         acaoDrag  = new AcaoDragPowerUp(botaoDto);
@@ -139,6 +140,11 @@ public class BotaoPowerUp : Draggavel
                && hasPowerUp 
                && acaoDrag.isPosicaoDentroAreaBotao(posicao);
     }           
+
+    private BotaoPowerUpDto getBotaoPowerUpDto(BotoesPowerUpDto btnPowerUpsDto)
+    {
+        return btnPowerUpsDto.BtnPowerUp[indice];
+    }
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
     public void prepararDraggagem(Vector3 posInicialDrag)

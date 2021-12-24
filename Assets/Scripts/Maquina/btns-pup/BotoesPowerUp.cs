@@ -26,10 +26,10 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
     private void inicializarBotoes(BotoesPowerUpDto btnsPowerUpsDto)
     {
         btnsPowerUp = new BotaoPowerUp[4];
-        btnsPowerUp[0] = new BotaoPowerUp(0, btnsPowerUpsDto.BtnPowerUp[0]);
-        btnsPowerUp[1] = new BotaoPowerUp(1, btnsPowerUpsDto.BtnPowerUp[1]);
-        btnsPowerUp[2] = new BotaoPowerUp(2, btnsPowerUpsDto.BtnPowerUp[2]);
-        btnsPowerUp[3] = new BotaoPowerUp(3, btnsPowerUpsDto.BtnPowerUp[3]);
+        btnsPowerUp[0] = new BotaoPowerUp(0, btnsPowerUpsDto);
+        btnsPowerUp[1] = new BotaoPowerUp(1, btnsPowerUpsDto);
+        btnsPowerUp[2] = new BotaoPowerUp(2, btnsPowerUpsDto);
+        btnsPowerUp[3] = new BotaoPowerUp(3, btnsPowerUpsDto);
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
