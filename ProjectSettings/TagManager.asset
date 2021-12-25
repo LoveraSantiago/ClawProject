@@ -24,7 +24,7 @@ TagManager:
   - ContainerParede
   - 
   - PowerUp
-  - 
+  - PowerUpNaoInteracao
   - ElevadorColetavel
   - ElevadorParede
   - 

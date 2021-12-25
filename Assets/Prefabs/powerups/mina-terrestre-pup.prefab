@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 4127936681606313064}
   - component: {fileID: 4127936681606313067}
   - component: {fileID: 4817202808016088623}
-  m_Layer: 14
+  m_Layer: 15
   m_Name: mina-terrestre-pup
   m_TagString: Laranja
   m_Icon: {fileID: 0}
