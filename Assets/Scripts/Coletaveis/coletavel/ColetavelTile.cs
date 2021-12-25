@@ -5,30 +5,29 @@ public class ColetavelTile : GO
     private static CircleCollider2D referenciaColliderColetado;
 
     private bool miraSelecionada;
-
-    private Animator animator;        
+    private ColetavelAnimacao animacao;      
 
     public ColetavelTile()
         : base()
     {
-        animator = goColetavel.transform.Find("animacao").GetComponent<Animator>();                
+        animacao = new ColetavelAnimacao(goColetavel);
     }
 
     public void ligarAnimacaoMira()
     {
-        animator.Play(context.MIRAR_ON);
+        animacao.ligarMira();
         miraSelecionada = false;
     }
 
     public void ligarAnimacaoMiraSelecionado()
     {
-        animator.Play(context.MIRAR_SELECTED);
+        animacao.ligarMiraSelecionada();
         miraSelecionada = true;
     }
 
     public void desligarAnimacao()
     {
-        animator.Play(context.IDLE);
+        animacao.desligar();
         miraSelecionada = false;
     }
 
