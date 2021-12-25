@@ -74,8 +74,11 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayInicial);
 
-        goExplosao.SetActive(true);        
-        acionarEfeitoExplosao(getPosicao());
+        goExplosao.SetActive(true);
+
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
+        efeitoExplosao.explodir(getPosicao());
+        
         yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayExplosao);
 
         goExplosao.SetActive(false);

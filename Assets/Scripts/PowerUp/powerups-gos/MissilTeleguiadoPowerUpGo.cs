@@ -134,7 +134,11 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         parar();
         efeitoFaiscas.Stop();
         animator.Play(MISSIL_EXPLODIDO);
-        acionarEfeitoExplosao(getPosicao() + new Vector3(0, powerUpDto.MissilTeleguiadoDto.HalturaExplosao, 0));
+
+        Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MissilTeleguiadoDto.HalturaExplosao, 0);
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
+        efeitoExplosao.explodir(posicaoExplosao);
+
         coletavel.disparar(powerUpDto.MissilTeleguiadoDto.VelocidadeHit, powerUpDto.MissilTeleguiadoDto.VelocidadeHit);
         coletavel.desligarAnimacao();
 
