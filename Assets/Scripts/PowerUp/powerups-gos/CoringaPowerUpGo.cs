@@ -22,8 +22,8 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 
     public override void iniciarPup()
     {
-        HelperColetaveisInGame helprInGame = new HelperColetaveisInGame();
-        helprInGame.ligarMirasNosColetaveis();
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        helperInGame.ligarMirasNosColetaveis();
 
         alvoSelecionado = new HumAlvoSelecionado();
         coroutineAlvo = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionado(inputGame, this));
@@ -47,6 +47,8 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         coletavelSelecionado = coletavelTile;
 
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        HelperColetaveisInGame helperInGame     = new HelperColetaveisInGame();
+
         ColetavelEntidade coletavel = helperColetavel.getColetavelEntidadeBySprite(coletavelTile.nomeSprite);
         List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavel);
 
@@ -59,7 +61,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         while (!finalizando)
         {
             ColetavelEntidade coletavelSorteado = listaFamilia[indiceSorteado];
-            sprSorteado = context.dicionarioDeSprites[coletavelSorteado.nomeSprite];
+            sprSorteado = helperColetavel.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);
             materialTeleporte.addTrocaOut(sprSorteado);
 
             bool houveToque = false;
@@ -79,7 +81,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 
             indiceSorteado = UtilsMath.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
             coletavelSorteado = listaFamilia[indiceSorteado];
-            sprSorteado = context.dicionarioDeSprites[coletavelSorteado.nomeSprite];
+            sprSorteado = helperColetavel.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);
             materialTeleporte.addTrocaIn(sprSorteado);
 
             houveToque = false;
@@ -100,8 +102,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         }
 
         finalizando = true;
-
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        
         helperInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.preFinalizar();
         coletavelTile.receberSprite(sprSorteado);

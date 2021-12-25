@@ -172,12 +172,7 @@ public abstract class GO
     private void colocarSpriteNoLayer(int layer)
     {
         spriteRenderer.sortingOrder = layer;
-    }
-
-    public void receberSprite(string nomeSprite)
-    {
-        receberSprite(context.dicionarioDeSprites[nomeSprite]);
-    }
+    }    
 
     public Sprite getSprite()
     {

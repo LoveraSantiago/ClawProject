@@ -76,9 +76,11 @@ public abstract class BoardMontador
     private ColetavelTile criarColetavel(string nomeSprite, Vector3 posicao)
     {
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
 
         ColetavelTile coletavel = helperInGame.criarColetavel();
-        coletavel.receberSprite(nomeSprite);
+        Sprite sprite = helperColetavel.getSpriteColetavelByNomeSprite(nomeSprite);
+        coletavel.receberSprite(sprite);
         coletavel.colocarNaPosicao(posicao);
         coletavel.ligar();
 
