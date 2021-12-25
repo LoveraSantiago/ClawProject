@@ -84,7 +84,7 @@ public class HelperColetavelEntidade
     }
 
     public Sprite getSpriteColetavelByNomeSprite(string nomeSprite)
-    {
+    {   
         return spritesPorNome[nomeSprite];
     }
 
@@ -101,7 +101,7 @@ public class HelperColetavelEntidade
     }
 
     public static void configurar(GameObject goPrefabSprites)
-    {
+    {     
         PrefabDeSpriteDto prefabSpritesDto = goPrefabSprites.GetComponent<PrefabDeSpriteDto>();
         spritesPorNome = prefabSpritesDto.getDicionarioDeSprites();
         configurar();
