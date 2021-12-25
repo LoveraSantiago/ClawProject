@@ -43,8 +43,7 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
         animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayInicial);
 
-        goExplosao.SetActive(true);
-        goExplosao.transform.position = new Vector3(goExplosao.transform.position.x, goExplosao.transform.position.y + 0.4f, goExplosao.transform.position.z);
+        goExplosao.SetActive(true);        
         
         acionarEfeitoExplosao(getPosicao() + new Vector3(0, powerUpDto.MinaDto.HalturaExplosao, 0));        
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayExplosao);
