@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class AbstractPowerUpGo : Coletavel
+public abstract class AbstractPowerUpGo : GO
 {    
     protected static PowerUpDto powerUpDto;    
 

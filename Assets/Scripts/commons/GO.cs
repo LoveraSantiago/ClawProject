@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public abstract class Coletavel 
+public abstract class GO 
 {
     private static readonly int LAYER_COMUM = 32;
     private static readonly int LAYER_DESTAQUE = 33;
 
-    protected static ColetavelContextoEstatico context;
+    protected static GOContexto context;
 
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }
@@ -16,9 +16,9 @@ public abstract class Coletavel
     protected Rigidbody2D rigidbody;
     protected SpriteRenderer spriteRenderer;    
     
-    public Coletavel() :this(context.mainTile, context.nomeador.getName()){}   
+    public GO() :this(context.mainTile, context.nomeador.getName()){}   
 
-    public Coletavel(GameObject go, string nome)
+    public GO(GameObject go, string nome)
     {
         goColetavel = GameObject.Instantiate(go, go.transform.position, Quaternion.Euler(Vector3.zero), context.mainTileParent);
         this.nome = nome;
@@ -27,7 +27,7 @@ public abstract class Coletavel
         rigidbody = goColetavel.GetComponent<Rigidbody2D>();        
     }   
 
-    public Coletavel(GameObject go, 
+    public GO(GameObject go, 
                      Transformador<GameObject, GameObject> getGoComSprRenderer, 
                      string nome)
         :this(go, nome)
@@ -184,7 +184,7 @@ public abstract class Coletavel
         return spriteRenderer.sprite;
     }   
 
-    public bool hasEqualsSprite(Coletavel coletavelOutro)
+    public bool hasEqualsSprite(GO coletavelOutro)
     {
         //Debug.Log("spr this " + nomeSprite + " spr other " + coletavelOutro.nomeSprite);
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
@@ -192,7 +192,7 @@ public abstract class Coletavel
 
     public static void configurar(ColetaveisDto coletaveisDto)
     {
-        context = new ColetavelContextoEstatico();
+        context = new GOContexto();
         context.configurar(coletaveisDto);
     }
 }

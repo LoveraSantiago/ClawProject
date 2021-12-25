@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColetavelContextoEstatico 
+public class GOContexto 
 {
     public readonly int IDLE           = Animator.StringToHash("idle");
     public readonly int MIRAR_ON       = Animator.StringToHash("mirar-on");

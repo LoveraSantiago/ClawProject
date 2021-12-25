@@ -95,7 +95,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         for (int contador = 0; contador < acertados.Length; contador++)
         {
             string nomeAcertado = acertados[contador].name;
-            Coletavel acertado = helperInGame.getColetavelInGameByGoName(nomeAcertado);
+            GO acertado = helperInGame.getColetavelInGameByGoName(nomeAcertado);
             int angulo = determinarAngulo(acertado.getPosicao());
             acertado.disparar(angulo, powerUpDto.BombaDto.VelocidadeHit);
         }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ColetavelTile : Coletavel
+public class ColetavelTile : GO
 {
     private static CircleCollider2D referenciaColliderColetado;
 
