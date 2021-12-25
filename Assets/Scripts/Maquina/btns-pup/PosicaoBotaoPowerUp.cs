@@ -14,7 +14,7 @@ public class PosicaoBotaoPowerUp
         Vector3 posicaoCalculada = new Vector3(
            btnDto.GoParteDentro.transform.position.x + posAdicionar.x,
            btnDto.GoParteDentro.transform.position.y + posAdicionar.y,
-           btnDto.GoParteDentro.transform.position.z + posAdicionar.z);
+           0);
 
         btnDto.GoParteDentro.transform.position = posicaoCalculada;
         return posicaoCalculada;
