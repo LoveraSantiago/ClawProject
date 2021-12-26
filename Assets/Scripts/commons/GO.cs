@@ -2,9 +2,6 @@ using UnityEngine;
 
 public abstract class GO 
 {
-    private static readonly int LAYER_COMUM = 32;
-    private static readonly int LAYER_DESTAQUE = 33;
-
     protected static GOContexto context;
 
     public string nome { get; private set; }
@@ -102,7 +99,7 @@ public abstract class GO
         goColetavel.layer = layer;
     }
 
-    public GameObject getGoColetavel()
+    public GameObject getGo()
     {
         return goColetavel;
     }   
@@ -140,31 +137,16 @@ public abstract class GO
     public void desafixarVerticalmente()
     {
         rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-    }
-
-    public void receberSprite(Sprite sprite)
-    {
-        receberSprite(sprite, LAYER_COMUM);
-    }
+    }    
 
     public void receberSprite(Sprite sprite, int layer)
     {
         spriteRenderer.sprite = sprite;
         nomeSprite = sprite.name;
         colocarSpriteNoLayer(layer);
-    }
+    }    
 
-    public void colocarNoLayerDestaque()
-    {
-        colocarSpriteNoLayer(LAYER_DESTAQUE);
-    }
-
-    public void colocarNoLayerComum()
-    {
-        colocarSpriteNoLayer(LAYER_COMUM);
-    }
-
-    private void colocarSpriteNoLayer(int layer)
+    protected void colocarSpriteNoLayer(int layer)
     {
         spriteRenderer.sortingOrder = layer;
     }    

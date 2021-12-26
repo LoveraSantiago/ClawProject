@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class ColetavelTile : GO
 {
+    private static readonly int SPR_ORDER_COMUM    = 32;
+    private static readonly int SPR_ORDER_DESTAQUE = 33;
+
+    private static readonly int LAYER_ELEVADOR = 16;
+    private static readonly int LAYER_NORMAL   = 7;
+
     private static CircleCollider2D referenciaColliderColetado;
 
     private bool miraSelecionada;
@@ -48,12 +54,22 @@ public class ColetavelTile : GO
 
     public void colocarNoLayerElevador()
     {        
-        setLayer(16);
+        setLayer(LAYER_ELEVADOR);
     }
 
     public void colocarNoLayerNormal()
     {
-        setLayer(7);        
+        setLayer(LAYER_NORMAL);        
+    }
+
+    public void colocarNoLayerDestaque()
+    {
+        colocarSpriteNoLayer(SPR_ORDER_DESTAQUE);
+    }
+
+    public void colocarNoLayerComum()
+    {
+        colocarSpriteNoLayer(SPR_ORDER_COMUM);
     }
 
     public void imantar()
@@ -64,7 +80,11 @@ public class ColetavelTile : GO
     public void desimantar()
     {
         setLayer(LayerMask.NameToLayer("Coletavel"));
+    }
 
+    public void receberSprite(Sprite sprite)
+    {
+        receberSprite(sprite, SPR_ORDER_COMUM);
     }
 
     public bool isTouchingCentroDaGarra()
