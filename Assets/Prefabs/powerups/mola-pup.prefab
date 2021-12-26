@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 963391463966577656}
   - component: {fileID: 6743520823141608748}
   - component: {fileID: 3265491571206695168}
-  m_Layer: 15
+  - component: {fileID: 3115990399197237336}
+  m_Layer: 14
   m_Name: imagem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,6 +104,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &3115990399197237336
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686654297092072938}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.08}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.50666666, y: 0.53333336}
+    newSize: {x: 0.38, y: 0.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.45, y: 0.16}
+  m_EdgeRadius: 0
 --- !u!1 &4127936681606313068
 GameObject:
   m_ObjectHideFlags: 0

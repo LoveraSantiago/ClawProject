@@ -11069,7 +11069,6 @@ MonoBehaviour:
         delayPosExplosao: 1.1
         missilNuclearGo: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
       minaDto:
-        haltura: -3.7
         halturaExplosao: 0.4
         delayInicial: 0.5
         delayExplosao: 0.25
@@ -11119,6 +11118,7 @@ MonoBehaviour:
       rollBackDto:
         delayReset: 1.5
       molaDto:
+        delayInicial: 0.2
         molaGo: {fileID: 4127936681606313068, guid: 726671bcf599b5647aba20a381f66cfc, type: 3}
     uiDto:
       modalPontosDto:
