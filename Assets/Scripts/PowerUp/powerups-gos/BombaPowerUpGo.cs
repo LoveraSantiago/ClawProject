@@ -36,8 +36,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         goColetavel.GetComponent<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);
 
-        Animator animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-        animacao = new AnimacaoExplosaoPup(animator);
+        animacao = new AnimacaoExplosaoPup(goColetavel);
 
         circleCollider = goColetavel.GetComponent<CircleCollider2D>();
     }

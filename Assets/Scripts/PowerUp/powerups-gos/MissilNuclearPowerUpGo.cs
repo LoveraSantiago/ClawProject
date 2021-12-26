@@ -41,8 +41,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
             .registrarConsumidorCollision2dOnEnter(this);
 
         goExplosao = goColetavel.transform.Find("explosao").gameObject;
-        Animator animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-        animacao = new AnimacaoExplosaoPup(animator);
+        animacao = new AnimacaoExplosaoPup(goColetavel);
     }
 
     public override void iniciarPup()

@@ -18,8 +18,7 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void configurarPup()
     {        
-        Animator animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-        animacao = new AnimacaoExplosaoPup(animator);
+        animacao = new AnimacaoExplosaoPup(goColetavel);
         goExplosao = goColetavel.transform.Find("explosao").gameObject;
     }
 
