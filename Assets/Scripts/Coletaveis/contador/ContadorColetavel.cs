@@ -23,10 +23,10 @@ public class ContadorColetavel : ContadorNormal
     private void destacarColetaveis()
     {
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        Coletavel[] coletaveis = helperInGame.getColetavelInGameDoTipo(coletavelEntidade);
+        ColetavelTile[] coletaveis = helperInGame.getColetavelInGameDoTipo(coletavelEntidade);
         for(int contador = 0; contador < coletaveis.Length; contador++)
         {
-            Coletavel coletavelIt = coletaveis[contador];
+            ColetavelTile coletavelIt = coletaveis[contador];
             Material materialOutline = MaterialOutline.of(coletavelIt.getSprite());
             coletavelIt.addMaterial(materialOutline);
             coletavelIt.colocarNoLayerDestaque();
@@ -35,7 +35,7 @@ public class ContadorColetavel : ContadorNormal
         trincaLevelColetaveis = new TrincaColetaveisTiles(coletaveis);
     }
 
-    public override int contarColetado(Coletavel coletavel)
+    public override int contarColetado(ColetavelTile coletavel)
     {
         resultSucessoColetavel = false;
         int score = base.contarColetado(coletavel);

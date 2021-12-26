@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
 {
+    private static Vector3 posInicial;
+
     public MolaPowerUpGo() 
         : base(powerUpDto.MolaDto.MolaGo, "mola"){}
+
+    public override void iniciarNaPosicao(Vector3 posicao)
+    {
+        posInicial = posicao;
+    }
 
     public override void configurarPup()
     {
@@ -14,7 +21,7 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void iniciarPup()
     {
-        
+        ligar();
     }
 
     public override void resetPup()

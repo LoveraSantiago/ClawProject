@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra,
-                                             Transformador<Coletavel, IEnumerator>
+                                             Transformador<ColetavelTile, IEnumerator>
 {
     private static readonly int VOADA = Animator.StringToHash("voada");
 
@@ -32,12 +32,12 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra,
 
     public override void resetPup() { }
 
-    public IEnumerator transformar(Coletavel coletavel)
+    public IEnumerator transformar(ColetavelTile coletavel)
     {
         return voar(coletavel);
     }
 
-    private IEnumerator voar(Coletavel coletavelAcertado)
+    private IEnumerator voar(ColetavelTile coletavelAcertado)
     {
         hitColetavel = true;
 
@@ -70,7 +70,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra,
     protected abstract float getGravidadeNegativa();
     protected abstract float getOffset();
     protected abstract float getHalturaLimite();
-    protected abstract IEnumerator finalizarVoar(Coletavel coletavelAcertado);
+    protected abstract IEnumerator finalizarVoar(ColetavelTile coletavelAcertado);
 
     public override void timeout()
     {

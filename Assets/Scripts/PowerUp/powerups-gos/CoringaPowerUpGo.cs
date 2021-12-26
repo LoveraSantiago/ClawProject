@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
-                                Transformador<Coletavel, IEnumerator>
+                                Transformador<ColetavelTile, IEnumerator>
 {
     private bool finalizando;
 
     private HumAlvoSelecionado alvoSelecionado;
-    private Coletavel coletavelSelecionado;
+    private ColetavelTile coletavelSelecionado;
 
     private Coroutine coroutineAlvo;    
 
@@ -37,20 +37,20 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         coroutineAlvo = null;        
     }
 
-    public IEnumerator transformar(Coletavel entrada)
+    public IEnumerator transformar(ColetavelTile entrada)
     {
         return fazerTroca(entrada);
     }
 
-    private IEnumerator fazerTroca(Coletavel coletavel)
+    private IEnumerator fazerTroca(ColetavelTile coletavel)
     {
         coletavelSelecionado = coletavel;
 
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
         HelperColetaveisInGame helperInGame     = new HelperColetaveisInGame();
 
-        ColetavelEntidade coletavel = helperColetavel.getColetavelEntidadeBySprite(coletavel.nomeSprite);
-        List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavel);
+        ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeBySprite(coletavel.nomeSprite);
+        List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavelEntidade);
 
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();        
         materialTeleporte.addTrocaIn(coletavel.getSprite());

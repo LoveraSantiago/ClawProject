@@ -32,14 +32,14 @@ public abstract class BoardMontador
             }
 
             Vector3 posicao = new Vector3(eixoX[contadorColuna], altura, 0);
-            Coletavel coletavel = criarColetavel(coletavelEntidade.nomeSprite, posicao);            
+            ColetavelTile coletavel = criarColetavel(coletavelEntidade.nomeSprite, posicao);            
             onColetavelCriado(coletavel);
         }
     }
 
     public abstract void configuradoPeloLevel(AbstractLevel level);
     protected abstract void create(BoardDto boardDto);
-    protected abstract void onColetavelCriado(Coletavel coletavel);
+    protected abstract void onColetavelCriado(ColetavelTile coletavel);
 
     public virtual int getQtdAcrescentada()
     {
@@ -73,12 +73,12 @@ public abstract class BoardMontador
         return arrayDeColetaveis.GetLength(0);
     }
 
-    private Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
+    private ColetavelTile criarColetavel(string nomeSprite, Vector3 posicao)
     {
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
 
-        Coletavel coletavel = helperInGame.criarColetavel();
+        ColetavelTile coletavel = helperInGame.criarColetavel();
         Sprite sprite = helperColetavel.getSpriteColetavelByNomeSprite(nomeSprite);
         coletavel.receberSprite(sprite);
         coletavel.colocarNaPosicao(posicao);

@@ -1,6 +1,6 @@
-public class FixadorEixosXY : Consumidor<Coletavel>
+public class FixadorEixosXY : Consumidor<ColetavelTile>
 {
-    public void consumir(Coletavel coletavel)
+    public void consumir(ColetavelTile coletavel)
     {
         if (coletavel.isAtivo())
         {

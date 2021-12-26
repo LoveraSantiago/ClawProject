@@ -2,52 +2,52 @@ using System.Collections.Generic;
 
 public class PoolDeColetaveis 
 {
-    private PoolList<Coletavel> poolInativos;
-    private PoolDeNomes<Coletavel> poolDeNomes;
+    private PoolList<ColetavelTile> poolInativos;
+    private PoolDeNomes<ColetavelTile> poolDeNomes;
 
     public PoolDeColetaveis()
     {
-        poolInativos = new PoolList<Coletavel>();
-        poolDeNomes = new PoolDeNomes<Coletavel>();
+        poolInativos = new PoolList<ColetavelTile>();
+        poolDeNomes = new PoolDeNomes<ColetavelTile>();
     }
 
-    public Coletavel criarColetavel()
+    public ColetavelTile criarColetavel()
     {
         if (poolInativos.hasObjeto())
         {
-            Coletavel coletavel = poolInativos.getObjeto();
+            ColetavelTile coletavel = poolInativos.getObjeto();
             return coletavel;
         }
         else
         {
-            Coletavel coletavel = new Coletavel();
+            ColetavelTile coletavel = new ColetavelTile();
             poolDeNomes.addChaveValor(coletavel.nome, coletavel);
             return coletavel;
         }
     }
 
-    public Coletavel getColetavelPeloGoNome(string nome)
+    public ColetavelTile getColetavelPeloGoNome(string nome)
     {
         return poolDeNomes.getValor(nome);
     }   
 
-    public void executeEmTodosColetaveis(Consumidor<Coletavel> consumidor)
+    public void executeEmTodosColetaveis(Consumidor<ColetavelTile> consumidor)
     {
         poolDeNomes.executeEmTodosOsValores(consumidor);
     }
 
-    public bool temEmAlgumColetavel(Predicate<Coletavel> predicate)
+    public bool temEmAlgumColetavel(Predicate<ColetavelTile> predicate)
     {
         return poolDeNomes.temEmAlgumValor(predicate);
     }
 
-    public Coletavel[] getTrincaDeColetaveis(ColetavelEntidade coletavelEntidade)
+    public ColetavelTile[] getTrincaDeColetaveis(ColetavelEntidade coletavelEntidade)
     {
-        List<Coletavel> listaColetaveis = poolDeNomes.getListaDeValores();
-        List<Coletavel> listaResult = new List<Coletavel>(3);
+        List<ColetavelTile> listaColetaveis = poolDeNomes.getListaDeValores();
+        List<ColetavelTile> listaResult = new List<ColetavelTile>(3);
         for(int contador = 0; contador < listaColetaveis.Count && listaResult.Count <3; contador++)
         {
-            Coletavel coletavelIt = listaColetaveis[contador];
+            ColetavelTile coletavelIt = listaColetaveis[contador];
             if (coletavelIt.getSprite().name.Equals(coletavelEntidade.nomeSprite))
             {
                 listaResult.Add(coletavelIt);
@@ -56,7 +56,7 @@ public class PoolDeColetaveis
         return listaResult.ToArray();
     }
 
-    public void inativarColetaveis(Coletavel[] coletaveis)
+    public void inativarColetaveis(ColetavelTile[] coletaveis)
     {
         for(int contador = 0; contador < coletaveis.Length; contador++)
         {
@@ -64,7 +64,7 @@ public class PoolDeColetaveis
         }
     }
 
-    public void inativarColetavel(Coletavel coletavel)
+    public void inativarColetavel(ColetavelTile coletavel)
     {
         poolInativos.addObjeto(coletavel);
     }

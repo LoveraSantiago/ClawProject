@@ -1,6 +1,6 @@
-public class DesligadorDeMiras : Consumidor<Coletavel>
+public class DesligadorDeMiras : Consumidor<ColetavelTile>
 {
-    public void consumir(Coletavel coletavel)
+    public void consumir(ColetavelTile coletavel)
     {
         if (coletavel.isAtivo())
         {

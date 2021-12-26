@@ -1,13 +1,13 @@
 public class ColetavelConsumer 
 {
-    public static Consumidor<Coletavel> desligarAnimacoes()
+    public static Consumidor<ColetavelTile> desligarAnimacoes()
     {
         return new DesligadorDeMiras();
     }
 
-    private class DesligadorDeMiras : Consumidor<Coletavel>
+    private class DesligadorDeMiras : Consumidor<ColetavelTile>
     {
-        public void consumir(Coletavel coletavel)
+        public void consumir(ColetavelTile coletavel)
         {
             if (coletavel.isAtivo())
             {
@@ -16,7 +16,7 @@ public class ColetavelConsumer
         }
     }
 
-    private class LigadorDeAlvoFinal : Consumidor<Coletavel>
+    private class LigadorDeAlvoFinal : Consumidor<ColetavelTile>
     {
         private string nameAlvo;
 
@@ -25,7 +25,7 @@ public class ColetavelConsumer
             this.nameAlvo = nameAlvo;
         }
 
-        public void consumir(Coletavel coletavel)
+        public void consumir(ColetavelTile coletavel)
         {
             if (coletavel.isAtivo())
             {

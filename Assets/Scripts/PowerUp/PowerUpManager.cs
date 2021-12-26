@@ -47,7 +47,7 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofPreFinalizar());
     }
 
-    public void preFinalizar(Coletavel coletavel)
+    public void preFinalizar(ColetavelTile coletavel)
     {
         PowerUpInfo powerUpInfo = PowerUpInfo.ofPreFinalizar(coletavel);            
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);

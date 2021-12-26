@@ -8,7 +8,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoPUpAcionado.ConsumidorEvento,                                
                                 AcaoTempoEsgotado.ConsumidorEvento
 {    
-    private Coletavel coletavelImantado;
+    private ColetavelTile coletavelImantado;
     
     private BoardManager board;
     private TuboDeDescarte tuboDeDescarte;
@@ -71,13 +71,13 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         GO.configurar(coletaveisDto);
         HelperColetavelEntidade.configurar(coletaveisDto.PrefabColetaveisDto);
         HelperColetaveisInGame.configurar();
-        Coletavel.configurar(coletaveisDto.ReferenciaColliderColetado);
+        ColetavelTile.configurar(coletaveisDto.ReferenciaColliderColetado);
     }
 
     private void processarColetado(GameObject gameObjectColetado)
     {        
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        Coletavel coletavelAcertado = helperInGame.getColetavelInGameByGoName(gameObjectColetado.name);
+        ColetavelTile coletavelAcertado = helperInGame.getColetavelInGameByGoName(gameObjectColetado.name);
         coletavelAcertado.desligar();
 
         int score = contador.contarColetado(coletavelAcertado);
@@ -106,7 +106,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         if (helperInGame.temColetavelInGameByNome(goColetado.name))
         {
-            Coletavel coletado = helperInGame.getColetavelInGameByGoName(goColetado.name);            
+            ColetavelTile coletado = helperInGame.getColetavelInGameByGoName(goColetado.name);            
             if(coletado.isTouchingCentroDaGarra())
             {            
                 processarColetado(goColetado.gameObject);

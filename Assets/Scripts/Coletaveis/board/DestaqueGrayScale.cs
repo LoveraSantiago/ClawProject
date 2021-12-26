@@ -17,7 +17,7 @@ public class DestaqueGrayScale
         }
     }
 
-    public void destacar(Coletavel coletavel)
+    public void destacar(ColetavelTile coletavel)
     {
         if (destaque)
         {

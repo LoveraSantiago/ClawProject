@@ -22,7 +22,7 @@ public class AsaPowerUpGo : AbstractAsaPowerUpGo
         return powerUpDto.AsaDto.Haltura;
     }
 
-    protected override IEnumerator finalizarVoar(Coletavel coletavelAcertado)
+    protected override IEnumerator finalizarVoar(ColetavelTile coletavelAcertado)
     {
         powerUpFinalizacao.preFinalizar(coletavelAcertado);
         desligar();

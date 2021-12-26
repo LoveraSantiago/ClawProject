@@ -5,12 +5,12 @@ public class BoardMontadorExtra : BoardMontador
 
     private DestaqueGrayScale destaque;
 
-    private PoolList<Coletavel> poolExtraSubs;
+    private PoolList<ColetavelTile> poolExtraSubs;
 
     public override void configuradoPeloLevel(AbstractLevel level)
     {
         setArrayDeColetavel(LevelUtils.getArrayDeColetaveisLevelElevador(level));
-        poolExtraSubs = new PoolList<Coletavel>();
+        poolExtraSubs = new PoolList<ColetavelTile>();
 
         destaque = new DestaqueGrayScale(level);
     }
@@ -22,7 +22,7 @@ public class BoardMontadorExtra : BoardMontador
         incrementarContadorDeLinha();        
     }
 
-    protected override void onColetavelCriado(Coletavel coletavel)
+    protected override void onColetavelCriado(ColetavelTile coletavel)
     {
         coletavel.colocarNoLayerElevador();        
         poolExtraSubs.addObjeto(coletavel);

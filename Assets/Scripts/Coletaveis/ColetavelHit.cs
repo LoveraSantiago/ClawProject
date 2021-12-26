@@ -4,7 +4,7 @@ public class ColetavelHit
 {
     private static HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
 
-    public static Coletavel hit(InputGame inputGame)
+    public static ColetavelTile hit(InputGame inputGame)
     {
         Vector3 posicaoTap = inputGame.getPosicaoTap();
         posicaoTap.z = 0;

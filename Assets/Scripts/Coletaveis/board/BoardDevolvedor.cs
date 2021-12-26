@@ -11,24 +11,24 @@ public class BoardDevolvedor
     }
 
     public void devolver(
-        bool combinacaoValida, ColetadoFim evento, BoardDto boardDto, Coletavel[] coletados)
+        bool combinacaoValida, ColetadoFim evento, BoardDto boardDto, ColetavelTile[] coletados)
     {
         if ((devolverBoard && evento.isTodosColetados() && !combinacaoValida) || 
             evento.isRollback)
         {
-            Coletavel[] coletadosOriginais = Utils.copiarArray(coletados);
+            ColetavelTile[] coletadosOriginais = Utils.copiarArray(coletados);
             Utils.MonoBehaviour.StartCoroutine(devolverParaBoard(evento.clears, boardDto, coletadosOriginais));            
         }
     }
 
-    private IEnumerator devolverParaBoard(bool[]resultados, BoardDto boardDto, Coletavel[] coletados)
+    private IEnumerator devolverParaBoard(bool[]resultados, BoardDto boardDto, ColetavelTile[] coletados)
     {
         for (int contador = 0; contador < coletados.Length; contador++)
         {
             if(coletados[contador] != null && resultados[contador])
             {
                 float anguloDevolucao = Random.Range(180, 230);
-                Coletavel coletavel = coletados[contador];
+                ColetavelTile coletavel = coletados[contador];
                 coletavel.ligar();            
                 coletavel.disparar(boardDto.PosicaoRefVoltaBoard.position, anguloDevolucao, 10f);
 

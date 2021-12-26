@@ -10,7 +10,7 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         this.navegacaoOrdem = navegacaoOrdem;
     }
 
-    public override void atualizar(Coletavel coletavel)
+    public override void atualizar(ColetavelTile coletavel)
     {
         //Debug.Log("Atualizado ordem");
         BoardOrdem ordemAtual = navegacaoOrdem.getItemIndiceAtual();
@@ -24,7 +24,7 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         }
     }
 
-    public override void trocar(Coletavel coletavel1, Coletavel coletavel2)
+    public override void trocar(ColetavelTile coletavel1, ColetavelTile coletavel2)
     {
         BoardOrdem ordemPrimeiro = null;
         BoardOrdem ordemSegundo = null;
@@ -62,7 +62,7 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         trocarNomes(ordemPrimeiro, ordemSegundo);
     }
 
-    public override void trocarFigura(Coletavel coletavel1, Coletavel coletavel2)
+    public override void trocarFigura(ColetavelTile coletavel1, ColetavelTile coletavel2)
     {
         int indiceNavegacao = navegacaoOrdem.indiceAtual;
         int tamanhoArray = navegacaoOrdem.getTamanhoArray();
@@ -87,14 +87,14 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         ordemSegundo.trocarNome(nomeTemp);
     }
 
-    private void trocarMaterial(Coletavel coletavelComMaterial, Coletavel coletavelSemMaterial)
+    private void trocarMaterial(ColetavelTile coletavelComMaterial, ColetavelTile coletavelSemMaterial)
     {
         //Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
         addMaterialOutline(coletavelSemMaterial);                
     }
 
-    private void trocarSpriteMaterial(Coletavel coletavelComMaterial, Sprite spr)
+    private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
     {        
         Material materialOutline = MaterialOutline.of(spr);
         coletavelComMaterial.addMaterial(materialOutline);

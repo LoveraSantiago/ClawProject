@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Coletavel : GO
+public class ColetavelTile : GO
 {
     private static readonly int SPR_ORDER_COMUM    = 32;
     private static readonly int SPR_ORDER_DESTAQUE = 33;
@@ -13,7 +13,7 @@ public class Coletavel : GO
     private bool miraSelecionada;
     private ColetavelAnimacao animacao;      
 
-    public Coletavel()
+    public ColetavelTile()
         : base()
     {
         animacao = new ColetavelAnimacao(goColetavel);

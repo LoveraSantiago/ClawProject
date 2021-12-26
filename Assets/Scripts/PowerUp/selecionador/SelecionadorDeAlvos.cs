@@ -2,7 +2,7 @@ using System.Collections;
 
 public class SelecionadorDeAlvos 
 {
-    public Coletavel coletavelSelecionado { get; private set; }    
+    public ColetavelTile coletavelSelecionado { get; private set; }    
 
     public SelecionadorDeAlvos ligarMiras()
     {
@@ -29,7 +29,7 @@ public class SelecionadorDeAlvos
     public IEnumerator selecionarAlvoDiferenteDe(InputGame inputGame, string nome)
     {
         coletavelSelecionado = null;
-        Coletavel coletavel = null;
+        ColetavelTile coletavel = null;
         while (coletavelSelecionado == null)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
@@ -45,7 +45,7 @@ public class SelecionadorDeAlvos
         yield return null;
     }
 
-    private bool isNotEqualsColetavel(Coletavel coletavel, string nome)
+    private bool isNotEqualsColetavel(ColetavelTile coletavel, string nome)
     {
         return !coletavel.nome.Equals(nome);
     }
