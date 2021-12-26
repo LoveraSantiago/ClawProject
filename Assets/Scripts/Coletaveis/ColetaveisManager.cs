@@ -8,7 +8,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoPUpAcionado.ConsumidorEvento,                                
                                 AcaoTempoEsgotado.ConsumidorEvento
 {    
-    private ColetavelTile coletavelImantado;
+    private Coletavel coletavelImantado;
     
     private BoardManager board;
     private TuboDeDescarte tuboDeDescarte;
@@ -71,13 +71,13 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         GO.configurar(coletaveisDto);
         HelperColetavelEntidade.configurar(coletaveisDto.PrefabColetaveisDto);
         HelperColetaveisInGame.configurar();
-        ColetavelTile.configurar(coletaveisDto.ReferenciaColliderColetado);
+        Coletavel.configurar(coletaveisDto.ReferenciaColliderColetado);
     }
 
     private void processarColetado(GameObject gameObjectColetado)
     {        
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        ColetavelTile coletavelAcertado = helperInGame.getColetavelInGameByGoName(gameObjectColetado.name);
+        Coletavel coletavelAcertado = helperInGame.getColetavelInGameByGoName(gameObjectColetado.name);
         coletavelAcertado.desligar();
 
         int score = contador.contarColetado(coletavelAcertado);
@@ -106,7 +106,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         if (helperInGame.temColetavelInGameByNome(goColetado.name))
         {
-            ColetavelTile coletado = helperInGame.getColetavelInGameByGoName(goColetado.name);            
+            Coletavel coletado = helperInGame.getColetavelInGameByGoName(goColetado.name);            
             if(coletado.isTouchingCentroDaGarra())
             {            
                 processarColetado(goColetado.gameObject);
@@ -141,7 +141,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         }
         else if (evento.isPreFinalizar && evento.hasColetavel)
         {
-            processarColetado(evento.coletavelTile.getGo());
+            processarColetado(evento.coletavel.getGo());
         }        
         else if (evento.isFinalizar)
         {

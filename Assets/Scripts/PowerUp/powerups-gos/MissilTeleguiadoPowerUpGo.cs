@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
                                          PowerUpInteracaoComGarra,
-                                         Transformador<ColetavelTile, IEnumerator>
+                                         Transformador<Coletavel, IEnumerator>
 {
     private static readonly int MISSIL_IDLE      = Animator.StringToHash("idle");
     private static readonly int MISSIL_ACIONADO  = Animator.StringToHash("missil-acionado");
@@ -61,7 +61,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         coroutine = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionado(inputGame, this));        
     }
 
-    public IEnumerator transformar(ColetavelTile entrada)
+    public IEnumerator transformar(Coletavel entrada)
     {
         return disparandoMissil(entrada);
     }
@@ -75,7 +75,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         colocarNoAngulo(0);
     }   
     
-    private IEnumerator disparandoMissil(ColetavelTile coletavel)
+    private IEnumerator disparandoMissil(Coletavel coletavel)
     {
         hitColetavel = true;
 

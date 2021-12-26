@@ -20,13 +20,13 @@ public class ContadorOrdenado : ContadorNormal
         indicarProximoColetavel();             
     }
 
-    public override int contarColetado(ColetavelTile coletavelTile)
+    public override int contarColetado(Coletavel coletavel)
     {
-        int score = base.contarColetado(coletavelTile);
+        int score = base.contarColetado(coletavel);
         BoardOrdem ordemIt = navegacaoOrdem.getItemIndiceAtual();
-        if (coletavelTile.nome.Equals(ordemIt.nome))
+        if (coletavel.nome.Equals(ordemIt.nome))
         {
-            coletavelTile.clearMaterial();
+            coletavel.clearMaterial();
             navegacaoOrdem.incrementar();
             indicarProximoColetavel();
             resultErroOrdem = false;            
@@ -57,7 +57,7 @@ public class ContadorOrdenado : ContadorNormal
             BoardOrdem ordemIt = navegacaoOrdem.getItemIndiceAtual();
 
             HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-            ColetavelTile coletavelTile = helperInGame.getColetavelInGameByGoName(ordemIt.nome);
+            Coletavel coletavelTile = helperInGame.getColetavelInGameByGoName(ordemIt.nome);
                         
             Material materialOutline = MaterialOutline.of(coletavelTile.getSprite());
             coletavelTile.addMaterial(materialOutline);

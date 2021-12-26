@@ -7,7 +7,7 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
    
     public override void resetPup(){}
 
-    protected override IEnumerator realizarTroca(ColetavelTile coletavel1, ColetavelTile coletavel2)
+    protected override IEnumerator realizarTroca(Coletavel coletavel1, Coletavel coletavel2)
     {
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();

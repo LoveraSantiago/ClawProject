@@ -12,14 +12,14 @@ public class PowerUpInfo
 
     public bool isColetavel { get { return pupEntidade.isColetavel; } }
     public bool isNotColetavel { get { return !isColetavel; } }
-    public bool hasColetavel { get { return coletavelTile != null; } }
+    public bool hasColetavel { get { return coletavel != null; } }
 
     public int indiceBtn { get; private set; }
     public int duracaoTempo { get { return pupEntidade.duracao; }}
 
     public PowerUpEnums.TIPO tipo { get { return pupEntidade.tipo; } }
     private PowerUpEntidade pupEntidade;
-    public  ColetavelTile coletavelTile { get; private set; }
+    public  Coletavel coletavel { get; private set; }
 
     public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }
 
@@ -51,9 +51,9 @@ public class PowerUpInfo
         return this;
     }    
 
-    public PowerUpInfo addColetavel(ColetavelTile coletavelTile)
+    public PowerUpInfo addColetavel(Coletavel coletavel)
     {
-        this.coletavelTile = coletavelTile;        
+        this.coletavel = coletavel;        
         return this;
     }
     
@@ -77,10 +77,10 @@ public class PowerUpInfo
         return pupInfo;
     }
 
-    public static PowerUpInfo ofPreFinalizar(ColetavelTile coletavelTile)
+    public static PowerUpInfo ofPreFinalizar(Coletavel coletavel)
     {
         PowerUpInfo pupInfo = new PowerUpInfo(ESTADO.PREFINALIZAR);
-        pupInfo.coletavelTile = coletavelTile;
+        pupInfo.coletavel = coletavel;
         return pupInfo;
     }
 

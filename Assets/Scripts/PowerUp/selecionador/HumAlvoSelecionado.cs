@@ -5,14 +5,14 @@ public class HumAlvoSelecionado
 {   
     private Coroutine coroutineAtual;    
 
-    public IEnumerator onSelecionado(InputGame inputGame, Transformador<ColetavelTile, IEnumerator> coroutineConsumidora)
+    public IEnumerator onSelecionado(InputGame inputGame, Transformador<Coletavel, IEnumerator> coroutineConsumidora)
     {
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos()
            .ligarMiras();
 
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
 
-        ColetavelTile coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;
+        Coletavel coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;
 
         selecionadorDeAlvos.ligarMiraFinal();
 

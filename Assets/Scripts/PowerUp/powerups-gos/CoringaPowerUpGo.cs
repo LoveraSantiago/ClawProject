@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
-                                Transformador<ColetavelTile, IEnumerator>
+                                Transformador<Coletavel, IEnumerator>
 {
     private bool finalizando;
 
     private HumAlvoSelecionado alvoSelecionado;
-    private ColetavelTile coletavelSelecionado;
+    private Coletavel coletavelSelecionado;
 
     private Coroutine coroutineAlvo;    
 
@@ -37,24 +37,24 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         coroutineAlvo = null;        
     }
 
-    public IEnumerator transformar(ColetavelTile entrada)
+    public IEnumerator transformar(Coletavel entrada)
     {
         return fazerTroca(entrada);
     }
 
-    private IEnumerator fazerTroca(ColetavelTile coletavelTile)
+    private IEnumerator fazerTroca(Coletavel coletavel)
     {
-        coletavelSelecionado = coletavelTile;
+        coletavelSelecionado = coletavel;
 
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
         HelperColetaveisInGame helperInGame     = new HelperColetaveisInGame();
 
-        ColetavelEntidade coletavel = helperColetavel.getColetavelEntidadeBySprite(coletavelTile.nomeSprite);
+        ColetavelEntidade coletavel = helperColetavel.getColetavelEntidadeBySprite(coletavel.nomeSprite);
         List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavel);
 
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();        
-        materialTeleporte.addTrocaIn(coletavelTile.getSprite());
-        coletavelTile.addMaterial(materialTeleporte.materialTeleporte);
+        materialTeleporte.addTrocaIn(coletavel.getSprite());
+        coletavel.addMaterial(materialTeleporte.materialTeleporte);
 
         int indiceSorteado = UtilsMath.escolherDeZeroAteLimite(listaFamilia.Count);
         Sprite sprSorteado = null;
@@ -105,8 +105,8 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         
         helperInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.preFinalizar();
-        coletavelTile.receberSprite(sprSorteado);
-        getTrocadorDeOrdem().atualizar(coletavelTile);
+        coletavel.receberSprite(sprSorteado);
+        getTrocadorDeOrdem().atualizar(coletavel);
         resetPup();        
         powerUpFinalizacao.finalizado();
         yield return null;

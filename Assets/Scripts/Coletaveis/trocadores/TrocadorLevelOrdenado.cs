@@ -10,21 +10,21 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         this.navegacaoOrdem = navegacaoOrdem;
     }
 
-    public override void atualizar(ColetavelTile coletavelPrimeiro)
+    public override void atualizar(Coletavel coletavel)
     {
         //Debug.Log("Atualizado ordem");
         BoardOrdem ordemAtual = navegacaoOrdem.getItemIndiceAtual();
-        if (ordemAtual.isNomeEquals(coletavelPrimeiro.nome))
+        if (ordemAtual.isNomeEquals(coletavel.nome))
         {
-            addMaterialOutline(coletavelPrimeiro);            
+            addMaterialOutline(coletavel);            
         }
         else
         {
-            addMaterialGrayScale(coletavelPrimeiro);            
+            addMaterialGrayScale(coletavel);            
         }
     }
 
-    public override void trocar(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
+    public override void trocar(Coletavel coletavel1, Coletavel coletavel2)
     {
         BoardOrdem ordemPrimeiro = null;
         BoardOrdem ordemSegundo = null;
@@ -34,11 +34,11 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         for (int contador = indiceNavegacao; contador < tamanhoArray; contador++)
         {
             BoardOrdem ordemIt = navegacaoOrdem.getItemDoIndice(contador);
-            if (ordemIt.isNomeEquals(coletavelPrimeiro.nome))
+            if (ordemIt.isNomeEquals(coletavel1.nome))
             {
                 ordemPrimeiro = ordemIt;
             }
-            else if (ordemIt.isNomeEquals(coletavelSegundo.nome))
+            else if (ordemIt.isNomeEquals(coletavel2.nome))
             {
                 ordemSegundo = ordemIt;
             }
@@ -51,29 +51,29 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
 
         if (ordemPrimeiro.isOrdem(indiceNavegacao + 1))
         {
-            trocarMaterial(coletavelPrimeiro, coletavelSegundo);
-            addMaterialGrayScale(coletavelPrimeiro);            
+            trocarMaterial(coletavel1, coletavel2);
+            addMaterialGrayScale(coletavel1);            
         }
         else if (ordemSegundo.isOrdem(indiceNavegacao + 1))
         {
-            trocarMaterial(coletavelSegundo, coletavelPrimeiro);
-            addMaterialGrayScale(coletavelSegundo);            
+            trocarMaterial(coletavel2, coletavel1);
+            addMaterialGrayScale(coletavel2);            
         }
         trocarNomes(ordemPrimeiro, ordemSegundo);
     }
 
-    public override void trocarFigura(ColetavelTile coletavelPrimeiro, ColetavelTile coletavelSegundo)
+    public override void trocarFigura(Coletavel coletavel1, Coletavel coletavel2)
     {
         int indiceNavegacao = navegacaoOrdem.indiceAtual;
         int tamanhoArray = navegacaoOrdem.getTamanhoArray();
         for (int contador = indiceNavegacao; contador < tamanhoArray; contador++)
         {
             BoardOrdem ordemIt = navegacaoOrdem.getItemDoIndice(contador);
-            if (ordemIt.nome.Equals(coletavelPrimeiro.nome))
+            if (ordemIt.nome.Equals(coletavel1.nome))
             {
                 if (ordemIt.isOrdem(indiceNavegacao + 1))
                 {
-                    trocarSpriteMaterial(coletavelPrimeiro, coletavelSegundo.getSprite());
+                    trocarSpriteMaterial(coletavel1, coletavel2.getSprite());
                 }
                 break;
             }
@@ -87,14 +87,14 @@ public class TrocadorLevelOrdenado : TrocadorDeOrdem
         ordemSegundo.trocarNome(nomeTemp);
     }
 
-    private void trocarMaterial(ColetavelTile coletavelComMaterial, ColetavelTile coletavelSemMaterial)
+    private void trocarMaterial(Coletavel coletavelComMaterial, Coletavel coletavelSemMaterial)
     {
         //Debug.Log("Troca de material acionada");
         coletavelComMaterial.clearMaterial();
         addMaterialOutline(coletavelSemMaterial);                
     }
 
-    private void trocarSpriteMaterial(ColetavelTile coletavelComMaterial, Sprite spr)
+    private void trocarSpriteMaterial(Coletavel coletavelComMaterial, Sprite spr)
     {        
         Material materialOutline = MaterialOutline.of(spr);
         coletavelComMaterial.addMaterial(materialOutline);

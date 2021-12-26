@@ -1,7 +1,7 @@
 public interface PowerUpFinalizacao 
 {
     void preFinalizar();
-    void preFinalizar(ColetavelTile coletavelTile);
+    void preFinalizar(Coletavel coletavel);
 
     void finalizado();
 }

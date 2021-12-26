@@ -6,7 +6,7 @@ public class HelperColetaveisInGame
     private static PoolDeColetaveis poolDeColetaveis;
     private static Dictionary<string, Material> poolGrayscale;
 
-    public ColetavelTile criarColetavel()
+    public Coletavel criarColetavel()
     {
         return poolDeColetaveis.criarColetavel();
     }
@@ -21,17 +21,17 @@ public class HelperColetaveisInGame
         return poolDeColetaveis.contemNome(name);
     }
 
-    public ColetavelTile getColetavelInGameByGoName(string name)
+    public Coletavel getColetavelInGameByGoName(string name)
     {
         return poolDeColetaveis.getColetavelPeloGoNome(name);
     }
 
-    public ColetavelTile[] getColetavelInGameDoTipo(ColetavelEntidade coletavelEntidade)
+    public Coletavel[] getColetavelInGameDoTipo(ColetavelEntidade coletavelEntidade)
     {
         return poolDeColetaveis.getTrincaDeColetaveis(coletavelEntidade);
     }
 
-    public ColetavelTile getColetavelMaisAlto()
+    public Coletavel getColetavelMaisAlto()
     {
         ProcuradorColetavelMaisAlto procurador = new ProcuradorColetavelMaisAlto();
         poolDeColetaveis.executeEmTodosColetaveis(procurador);
@@ -68,12 +68,12 @@ public class HelperColetaveisInGame
         return poolDeColetaveis.temEmAlgumColetavel(new AcimaHalturaColetavel(haltura));
     }
 
-    public void inativarColetavel(ColetavelTile coletado)
+    public void inativarColetavel(Coletavel coletado)
     {
         poolDeColetaveis.inativarColetavel(coletado);
     }
 
-    public Material getMaterialGrayscaleTo(ColetavelTile coletavel)
+    public Material getMaterialGrayscaleTo(Coletavel coletavel)
     {
         Sprite spr = coletavel.getSprite();
         if (!poolGrayscale.ContainsKey(spr.name))
