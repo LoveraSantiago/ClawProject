@@ -22,7 +22,7 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
     public override void iniciarPup()
     {
         ligar();
-        posInicial.y = powerUpDto.MinaDto.Haltura;
+        posInicial.y = powerUpDto.HalturaPupDraggavel;
         base.colocarNaPosicao(posInicial);
     }
 

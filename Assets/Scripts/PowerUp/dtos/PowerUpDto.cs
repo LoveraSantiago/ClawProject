@@ -4,6 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class PowerUpDto 
 {    
+    [SerializeField] private float halturaPupDraggavel;
+    [Space(3)]
     [SerializeField] private GameObject vazioPUp;
     [SerializeField] private GameObject prefabPowerUpDto;
     [Space(3)]
@@ -27,6 +29,8 @@ public class PowerUpDto
     [Space(5)]
     [SerializeField] private MolaDto molaDto;
  
+    public float HalturaPupDraggavel { get { return halturaPupDraggavel; } }
+
     public GameObject VazioPUp { get { return vazioPUp; } }
     public GameObject PrefabPowerUpDto { get { return prefabPowerUpDto; } }
     public ParticleSystem EfeitoExplosao { get { return efeitoExplosao;  } }
