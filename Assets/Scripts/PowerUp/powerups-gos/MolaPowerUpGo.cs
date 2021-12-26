@@ -22,6 +22,8 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
     public override void iniciarPup()
     {
         ligar();
+        posInicial.y = powerUpDto.MinaDto.Haltura;
+        base.colocarNaPosicao(posInicial);
     }
 
     public override void resetPup()
