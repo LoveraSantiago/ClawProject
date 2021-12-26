@@ -47,13 +47,24 @@ public class ColetavelTile : GO
     }
 
     public void colocarNoLayerElevador()
-    {
-        goColetavel.layer = 16;
+    {        
+        setLayer(16);
     }
 
     public void colocarNoLayerNormal()
     {
-        goColetavel.layer = 7;
+        setLayer(7);        
+    }
+
+    public void imantar()
+    {        
+        setLayer(LayerMask.NameToLayer("Atracao"));
+    }
+
+    public void desimantar()
+    {
+        setLayer(LayerMask.NameToLayer("Coletavel"));
+
     }
 
     public bool isTouchingCentroDaGarra()

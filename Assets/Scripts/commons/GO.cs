@@ -28,8 +28,8 @@ public abstract class GO
     }   
 
     public GO(GameObject go, 
-                     Transformador<GameObject, GameObject> getGoComSprRenderer, 
-                     string nome)
+              Transformador<GameObject, GameObject> getGoComSprRenderer, 
+              string nome)
         :this(go, nome)
     {
         GameObject goSprite = getGoComSprRenderer.transformar(goColetavel);
@@ -72,17 +72,7 @@ public abstract class GO
     public void disparar(float angulo, float velocidade)
     {
         disparar(goColetavel.transform.position, angulo, velocidade);
-    }
-
-    public void imantar()
-    {
-        goColetavel.layer = LayerMask.NameToLayer("Atracao");
-    }
-
-    public void desimantar()
-    {
-        goColetavel.layer = LayerMask.NameToLayer("Coletavel");
-    }    
+    }   
 
     public virtual void parar()
     {
@@ -105,6 +95,11 @@ public abstract class GO
     public Vector3 getPosicao()
     {
         return goColetavel.transform.position;
+    }
+
+    protected void setLayer(int layer)
+    {
+        goColetavel.layer = layer;
     }
 
     public GameObject getGoColetavel()
