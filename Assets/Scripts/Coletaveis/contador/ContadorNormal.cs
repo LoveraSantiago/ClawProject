@@ -7,14 +7,14 @@ public class ContadorNormal : AbstractContadorDeColetaveis
     private int pontosAcerto;    
     private int totalColetaveis;
 
-    protected ColetavelTile[] coletados;
+    protected Coletavel[] coletados;
 
     public ContadorNormal(int pontosColetado, int pontosAcerto)
     {
         score = 0;
         this.pontosAcerto   = pontosAcerto;
         this.pontosColetado = pontosColetado;
-        coletados = new ColetavelTile[3];        
+        coletados = new Coletavel[3];        
     }
 
     public override void iniciar(int totalColetaveis)
@@ -22,7 +22,7 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         this.totalColetaveis = totalColetaveis;        
     }
 
-    public override int contarColetado(ColetavelTile coletavel)
+    public override int contarColetado(Coletavel coletavel)
     {
         // Debug.Log(nomeColetado);
         subtrairColetavel();
@@ -90,7 +90,7 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         return resultCombinacao;
     }
 
-    public override ColetavelTile[] getColetados()
+    public override Coletavel[] getColetados()
     {
         return coletados;
     }    
@@ -105,7 +105,7 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         return new TrocadorDeOrdemVazio();
     }
 
-    private void adicionaAoContainerDeColetados(ColetavelTile coletado)
+    private void adicionaAoContainerDeColetados(Coletavel coletado)
     {
         TrincaColetaveisTiles trinca = new TrincaColetaveisTiles(coletados);
         int indice = trinca.getPrimeiroIndiceVazio();

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
-                                Transformador<ColetavelTile, IEnumerator>
+                                Transformador<Coletavel, IEnumerator>
 {
     private bool finalizando;
 
     private HumAlvoSelecionado alvoSelecionado;
-    private ColetavelTile coletavelSelecionado;
+    private Coletavel coletavelSelecionado;
 
     private Coroutine coroutineAlvo;    
 
@@ -37,12 +37,12 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         coroutineAlvo = null;        
     }
 
-    public IEnumerator transformar(ColetavelTile entrada)
+    public IEnumerator transformar(Coletavel entrada)
     {
         return fazerTroca(entrada);
     }
 
-    private IEnumerator fazerTroca(ColetavelTile coletavel)
+    private IEnumerator fazerTroca(Coletavel coletavel)
     {
         coletavelSelecionado = coletavel;
 

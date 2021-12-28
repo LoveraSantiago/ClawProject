@@ -1,8 +1,8 @@
 public class TrincaColetaveisTiles 
 {
-    private ColetavelTile[] arrayColetados;
+    private Coletavel[] arrayColetados;
 
-    public TrincaColetaveisTiles(ColetavelTile[] arrayColetados)
+    public TrincaColetaveisTiles(Coletavel[] arrayColetados)
     {
         this.arrayColetados = arrayColetados;
         //logarTrinca();
@@ -26,11 +26,11 @@ public class TrincaColetaveisTiles
         return arrayColetados[0] != null && arrayColetados[1] != null && arrayColetados[2] != null;
     }
 
-    public bool isColetavelNaTrinca(ColetavelTile coletavel)
+    public bool isColetavelNaTrinca(Coletavel coletavel)
     {
         for (int contador = 0; contador < arrayColetados.Length; contador++)
         {
-            ColetavelTile coletavelIt = arrayColetados[contador];
+            Coletavel coletavelIt = arrayColetados[contador];
             if (coletavelIt.nome.Equals(coletavel.nome))
             {
                 return true;
@@ -39,7 +39,7 @@ public class TrincaColetaveisTiles
         return false;
     }
 
-    public bool isColetaveisNaTrinca(ColetavelTile[] coletaveis)
+    public bool isColetaveisNaTrinca(Coletavel[] coletaveis)
     {
         for(int contador = 0; contador < coletaveis.Length; contador++)
         {
@@ -52,11 +52,11 @@ public class TrincaColetaveisTiles
         return true;
     }
 
-    public int getIndiceNaTrinca(ColetavelTile coletavel)
+    public int getIndiceNaTrinca(Coletavel coletavel)
     {
         for (int contador = 0; contador < arrayColetados.Length; contador++)
         {
-            ColetavelTile coletavelIt = arrayColetados[contador];
+            Coletavel coletavelIt = arrayColetados[contador];
             if (coletavelIt.nome.Equals(coletavel.nome))
             {
                 return contador;
@@ -65,13 +65,13 @@ public class TrincaColetaveisTiles
         return -1;
     }
 
-    public void trocarIndice(int indice, ColetavelTile coletavel)
+    public void trocarIndice(int indice, Coletavel coletavel)
     {
         arrayColetados[indice] = coletavel;
         //logarTrinca();
     }
 
-    public ColetavelTile[] resetarColetados()
+    public Coletavel[] resetarColetados()
     {
         arrayColetados[0] = null;
         arrayColetados[1] = null;

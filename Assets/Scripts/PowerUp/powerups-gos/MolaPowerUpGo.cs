@@ -46,7 +46,7 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
     {
         yield return new WaitForSeconds(powerUpDto.MolaDto.DelayInicial);
 
-        ColetavelTile[] coletaveis = getNomeColetaveisColididosComMola();
+        Coletavel[] coletaveis = getNomeColetaveisColididosComMola();
         animator.Play(JUMP);
 
         yield return new WaitForSeconds(powerUpDto.MolaDto.DelayInicial * 5);
@@ -56,9 +56,9 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
         yield return null;
     }
 
-    private ColetavelTile[] getNomeColetaveisColididosComMola()
+    private Coletavel[] getNomeColetaveisColididosComMola()
     {
-        List<ColetavelTile> listaDeColetaveis = new List<ColetavelTile>();
+        List<Coletavel> listaDeColetaveis = new List<Coletavel>();
         int tamanhoArray = 5;
 
         Collider2D[] colliders = new Collider2D[tamanhoArray];
@@ -77,13 +77,13 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
                 bool isNomeColetavel = int.TryParse(nomeCollider, out inteiro);
                 if (isNomeColetavel)
                 {
-                    ColetavelTile coletavel = helperInGame.getColetavelInGameByGoName(nomeCollider);
+                    Coletavel coletavel = helperInGame.getColetavelInGameByGoName(nomeCollider);
                     listaDeColetaveis.Add(coletavel);
                 }
             }            
         }
 
-        ColetavelTile[] coletaveis = listaDeColetaveis.ToArray();
+        Coletavel[] coletaveis = listaDeColetaveis.ToArray();
         return coletaveis;
     }
 }

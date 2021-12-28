@@ -19,7 +19,7 @@ public class PowerUpInfo
 
     public PowerUpEnums.TIPO tipo { get { return pupEntidade.tipo; } }
     private PowerUpEntidade pupEntidade;
-    public  ColetavelTile coletavel { get; private set; }
+    public  Coletavel coletavel { get; private set; }
 
     public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }
 
@@ -51,7 +51,7 @@ public class PowerUpInfo
         return this;
     }    
 
-    public PowerUpInfo addColetavel(ColetavelTile coletavel)
+    public PowerUpInfo addColetavel(Coletavel coletavel)
     {
         this.coletavel = coletavel;        
         return this;
@@ -77,7 +77,7 @@ public class PowerUpInfo
         return pupInfo;
     }
 
-    public static PowerUpInfo ofPreFinalizar(ColetavelTile coletavel)
+    public static PowerUpInfo ofPreFinalizar(Coletavel coletavel)
     {
         PowerUpInfo pupInfo = new PowerUpInfo(ESTADO.PREFINALIZAR);
         pupInfo.coletavel = coletavel;

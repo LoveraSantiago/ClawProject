@@ -9,7 +9,7 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
         this.trincaColetaveis = trincaColetaveis;
     }
 
-    public override void atualizar(ColetavelTile coletavel)
+    public override void atualizar(Coletavel coletavel)
     {
         //Debug.Log("atualizar ordem chamado");
         if (trincaColetaveis.isColetavelNaTrinca(coletavel))
@@ -22,7 +22,7 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
         }
     }
 
-    public override void trocarFigura(ColetavelTile coletavel1, ColetavelTile coletavel2)
+    public override void trocarFigura(Coletavel coletavel1, Coletavel coletavel2)
     {
         //Debug.Log("trocar figura chamado");
         if (trincaColetaveis.isColetavelNaTrinca(coletavel1) &&
@@ -37,7 +37,7 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
         }
     }
 
-    public override void trocar(ColetavelTile coletavel1, ColetavelTile coletavel2)
+    public override void trocar(Coletavel coletavel1, Coletavel coletavel2)
     {
         //Debug.Log("trocar ordem chamado");
 
@@ -72,7 +72,7 @@ public class TrocadorLevelColetavel : TrocadorDeOrdem
         }
     }    
     
-    private void trocarNaTrinca(ColetavelTile coletavelRemocao, ColetavelTile coletavelInsercao)
+    private void trocarNaTrinca(Coletavel coletavelRemocao, Coletavel coletavelInsercao)
     {
         int indice = trincaColetaveis.getIndiceNaTrinca(coletavelRemocao);
         trincaColetaveis.trocarIndice(indice, coletavelInsercao);
