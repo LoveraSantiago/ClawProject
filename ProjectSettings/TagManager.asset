@@ -16,21 +16,21 @@ TagManager:
   - Water
   - UI
   - Garra
+  - GarraCentro
+  - 
   - Coletavel
+  - ColetavelNaoInteracao
   - Detector
   - Atracao
-  - GarraCentro
+  - 
   - ContainerColetavel
   - ContainerParede
   - 
   - PowerUp
   - PowerUpNaoInteracao
+  - 
   - ElevadorColetavel
   - ElevadorParede
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
