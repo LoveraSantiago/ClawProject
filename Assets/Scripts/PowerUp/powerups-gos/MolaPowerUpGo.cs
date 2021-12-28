@@ -46,30 +46,7 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
     {
         yield return new WaitForSeconds(powerUpDto.MolaDto.DelayInicial);
 
-        Collider2D[] result = new Collider2D[5];
-        ContactFilter2D filter = new ContactFilter2D().NoFilter();
-        //filter.SetLayerMask(LayerMask.NameToLayer("Coletavel"));
-        boxCollider2d.OverlapCollider(filter, result);
-
-        for(int i = 0; i < 5; i++)
-        {
-            Collider2D coliderIt = result[i];
-            if(coliderIt != null)
-            {
-                int resultado;
-                bool isNomeNumerico = int.TryParse(result[i].name, out resultado);
-                if (isNomeNumerico)
-                {
-                    Debug.Log("Coletavel " + resultado);
-                }
-            }
-            else
-            {
-                //Debug.Log("Collider " + i + " Nulo");
-            }
-        }
-        //Debug.Log("Varredura completa");
-
+        ColetavelTile[] coletaveis = getNomeColetaveisColididosComMola();
         animator.Play(JUMP);
 
         yield return new WaitForSeconds(powerUpDto.MolaDto.DelayInicial * 5);
@@ -79,8 +56,34 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
         yield return null;
     }
 
-    private string[] getNomeColetaveisColididosComMola()
+    private ColetavelTile[] getNomeColetaveisColididosComMola()
     {
-        return null;
+        List<ColetavelTile> listaDeColetaveis = new List<ColetavelTile>();
+        int tamanhoArray = 5;
+
+        Collider2D[] colliders = new Collider2D[tamanhoArray];
+        ContactFilter2D filter = new ContactFilter2D().NoFilter();        
+        boxCollider2d.OverlapCollider(filter, colliders);
+
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();        
+
+        for (int contador = 0; contador < tamanhoArray; contador++)
+        {
+            Collider2D coliderIt = colliders[contador];
+            if (coliderIt != null)
+            {
+                int inteiro;
+                string nomeCollider = colliders[contador].name;
+                bool isNomeColetavel = int.TryParse(nomeCollider, out inteiro);
+                if (isNomeColetavel)
+                {
+                    ColetavelTile coletavel = helperInGame.getColetavelInGameByGoName(nomeCollider);
+                    listaDeColetaveis.Add(coletavel);
+                }
+            }            
+        }
+
+        ColetavelTile[] coletaveis = listaDeColetaveis.ToArray();
+        return coletaveis;
     }
 }
