@@ -46,7 +46,7 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
     {
         yield return new WaitForSeconds(powerUpDto.MolaDto.DelayInicial);
 
-        Coletavel[] coletaveis = getNomeColetaveisColididosComMola();
+        Coletavel[] coletaveis = getColetaveisColididosComMola();
         animator.Play(JUMP);
 
         yield return new WaitForSeconds(powerUpDto.MolaDto.DelayInicial * 5);
@@ -56,7 +56,7 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
         yield return null;
     }
 
-    private Coletavel[] getNomeColetaveisColididosComMola()
+    private Coletavel[] getColetaveisColididosComMola()
     {
         List<Coletavel> listaDeColetaveis = new List<Coletavel>();
         int tamanhoArray = 5;
