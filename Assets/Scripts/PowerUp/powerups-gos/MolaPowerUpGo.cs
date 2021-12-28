@@ -79,6 +79,7 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
                 {
                     Coletavel coletavel = helperInGame.getColetavelInGameByGoName(nomeCollider);
                     listaDeColetaveis.Add(coletavel);
+                    coletavel.naoInteracaoComOutrosColetaveis();
                 }
             }            
         }

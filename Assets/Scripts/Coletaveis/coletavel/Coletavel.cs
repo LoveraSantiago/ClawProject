@@ -82,6 +82,16 @@ public class Coletavel : GO
         setLayer(LayerMask.NameToLayer("Coletavel"));
     }
 
+    public void naoInteracaoComOutrosColetaveis()
+    {
+        setLayer(LayerMask.NameToLayer("ColetavelNaoInteracao"));
+    }
+
+    public void interacaoComOutrosColetaveis()
+    {
+        desimantar();
+    }
+
     public void receberSprite(Sprite sprite)
     {
         receberSprite(sprite, SPR_ORDER_COMUM);
