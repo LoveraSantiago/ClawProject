@@ -49,7 +49,7 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
         Coletavel[] coletaveis = getColetaveisColididosComMola();
         animator.Play(JUMP);
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
 
         for(int contador = 0; contador < coletaveis.Length; contador++)
         {
