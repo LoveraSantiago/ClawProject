@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6743520823141608748}
   - component: {fileID: 3265491571206695168}
   - component: {fileID: 3115990399197237336}
-  m_Layer: 14
+  m_Layer: 17
   m_Name: imagem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4127936681606313064}
   - component: {fileID: 4127936681606313067}
   - component: {fileID: 4817202808016088623}
-  m_Layer: 15
+  m_Layer: 18
   m_Name: mola-pup
   m_TagString: Laranja
   m_Icon: {fileID: 0}
