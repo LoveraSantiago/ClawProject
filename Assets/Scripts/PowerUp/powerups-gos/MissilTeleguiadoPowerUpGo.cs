@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
                                          PowerUpInteracaoComGarra,
-                                         Transformador<ColetavelTile, IEnumerator>
+                                         Transformador<Coletavel, IEnumerator>
 {
     private static readonly int MISSIL_IDLE      = Animator.StringToHash("idle");
     private static readonly int MISSIL_ACIONADO  = Animator.StringToHash("missil-acionado");
@@ -61,7 +61,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         coroutine = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionado(inputGame, this));        
     }
 
-    public IEnumerator transformar(ColetavelTile entrada)
+    public IEnumerator transformar(Coletavel entrada)
     {
         return disparandoMissil(entrada);
     }
@@ -75,7 +75,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         colocarNoAngulo(0);
     }   
     
-    private IEnumerator disparandoMissil(ColetavelTile coletavel)
+    private IEnumerator disparandoMissil(Coletavel coletavel)
     {
         hitColetavel = true;
 
@@ -134,7 +134,11 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         parar();
         efeitoFaiscas.Stop();
         animator.Play(MISSIL_EXPLODIDO);
-        acionarEfeitoExplosao(getPosicao() + new Vector3(0, powerUpDto.MissilTeleguiadoDto.HalturaExplosao, 0));
+
+        Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MissilTeleguiadoDto.HalturaExplosao, 0);
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
+        efeitoExplosao.explodir(posicaoExplosao);
+
         coletavel.disparar(powerUpDto.MissilTeleguiadoDto.VelocidadeHit, powerUpDto.MissilTeleguiadoDto.VelocidadeHit);
         coletavel.desligarAnimacao();
 
@@ -181,18 +185,5 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
             helperInGame.desligarMirasNosColetaveis();
             resetPup();
         }
-    }
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorMissilTeleguiado();
-    }  
-
-    public class FornecedorMissilTeleguiado : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new MissilTeleguiadoPowerUpGo();
-        }
-    }
+    }   
 }

@@ -1,4 +1,4 @@
-public class AcimaHalturaColetavel : Predicate<ColetavelTile>
+public class AcimaHalturaColetavel : Predicate<Coletavel>
 {
     private float alturaLimite;
 
@@ -7,7 +7,7 @@ public class AcimaHalturaColetavel : Predicate<ColetavelTile>
         this.alturaLimite = alturaLimite;
     }
 
-    public bool test(ColetavelTile coletavel)
+    public bool test(Coletavel coletavel)
     {
         if (coletavel.isAtivo())
         {

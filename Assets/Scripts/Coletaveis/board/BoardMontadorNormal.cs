@@ -18,7 +18,7 @@ public class BoardMontadorNormal : BoardMontador
         }     
     }
 
-    protected override void onColetavelCriado(ColetavelTile coletavel)
+    protected override void onColetavelCriado(Coletavel coletavel)
     {
         destaque.destacar(coletavel);        
     }

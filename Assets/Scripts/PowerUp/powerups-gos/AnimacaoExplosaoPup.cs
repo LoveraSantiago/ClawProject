@@ -7,9 +7,9 @@ public class AnimacaoExplosaoPup
 
     private Animator animator;
 
-    public AnimacaoExplosaoPup(Animator animator)
+    public AnimacaoExplosaoPup(GameObject gameObject)
     {
-        this.animator = animator;
+        animator = gameObject.transform.Find("imagem").GetComponent<Animator>();
     }
 
     public void playIdle()

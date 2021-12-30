@@ -1,198 +1,111 @@
 using UnityEngine;
 
-public abstract class Coletavel 
+public class Coletavel : GO
 {
-    private static readonly int LAYER_COMUM = 32;
-    private static readonly int LAYER_DESTAQUE = 33;
+    private static readonly int SPR_ORDER_COMUM    = 32;
+    private static readonly int SPR_ORDER_DESTAQUE = 33;
 
-    protected static ColetavelContextoEstatico context;
+    private static readonly int LAYER_ELEVADOR = 16;
+    private static readonly int LAYER_NORMAL   = 7;
 
-    public string nome { get; private set; }
-    public string nomeSprite { get; private set; }
+    private static CircleCollider2D referenciaColliderColetado;
 
-    private bool ativo;   
-    
-    protected GameObject goColetavel;
-    protected Rigidbody2D rigidbody;
-    protected SpriteRenderer spriteRenderer;    
-    
-    public Coletavel() :this(context.mainTile, context.nomeador.getName()){}   
+    private bool miraSelecionada;
+    private ColetavelAnimacao animacao;      
 
-    public Coletavel(GameObject go, string nome)
+    public Coletavel()
+        : base()
     {
-        goColetavel = GameObject.Instantiate(go, go.transform.position, Quaternion.Euler(Vector3.zero), context.mainTileParent);
-        this.nome = nome;
-        goColetavel.name = nome;
-        spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();        
-        rigidbody = goColetavel.GetComponent<Rigidbody2D>();        
+        animacao = new ColetavelAnimacao(goColetavel);
+    }
+
+    public void ligarAnimacaoMira()
+    {
+        animacao.ligarMira();
+        miraSelecionada = false;
+    }
+
+    public void ligarAnimacaoMiraSelecionado()
+    {
+        animacao.ligarMiraSelecionada();
+        miraSelecionada = true;
+    }
+
+    public void desligarAnimacao()
+    {
+        animacao.desligar();
+        miraSelecionada = false;
+    }
+
+    public bool isMiraSelecionada()
+    {
+        return miraSelecionada;
+    }
+
+    public void addMaterial(Material material)
+    {
+        spriteRenderer.material = material;
     }   
 
-    public Coletavel(GameObject go, 
-                     Transformador<GameObject, GameObject> getGoComSprRenderer, 
-                     string nome)
-        :this(go, nome)
+    public void clearMaterial()
     {
-        GameObject goSprite = getGoComSprRenderer.transformar(goColetavel);
-        spriteRenderer = goSprite.GetComponent<SpriteRenderer>();
+        addMaterial(context.mainMaterial);
     }
 
-    public bool isVelocidadeYPositiva()
-    {
-        return rigidbody.velocity.y > 0;
+    public void colocarNoLayerElevador()
+    {        
+        setLayer(LAYER_ELEVADOR);
     }
 
-    public virtual void colocarNaPosicao(Vector3 posicao) {        
-        goColetavel.transform.position = posicao;
-    }
-
-    public void colocarNaPosicao(Vector3 posicao, Quaternion rotacao) {
-        colocarNaPosicao(posicao);
-        rigidbody.transform.rotation = rotacao;
-    } 
-    
-    public void colocarNoAngulo(Quaternion quaternion)
+    public void colocarNoLayerNormal()
     {
-        rigidbody.transform.rotation = quaternion;
-    }
-
-    public void colocarNoAngulo(float angulo)
-    {
-        rigidbody.transform.rotation = Quaternion.Euler(0, 0, angulo);
-    }   
-
-    public void disparar(Vector3 posicao, float angulo, float velocidade)
-    {
-        Quaternion quatAngulo = Quaternion.Euler(0, 0, angulo);
-        context.mainTile.transform.rotation = quatAngulo;
-        colocarNaPosicao(posicao, quatAngulo);
-        rigidbody.AddForce(context.mainTile.transform.up * velocidade, ForceMode2D.Impulse);
-        context.mainTile.transform.rotation = Quaternion.Euler(Vector3.zero);
-    }
-
-    public void disparar(float angulo, float velocidade)
-    {
-        disparar(goColetavel.transform.position, angulo, velocidade);
-    }
-
-    public void imantar()
-    {
-        goColetavel.layer = LayerMask.NameToLayer("Atracao");
-    }
-
-    public void desimantar()
-    {
-        goColetavel.layer = LayerMask.NameToLayer("Coletavel");
-    }    
-
-    public virtual void parar()
-    {
-        rigidbody.velocity = Vector2.zero;
-        rigidbody.angularVelocity = 0;
-    }
-
-    public void ligar()
-    {
-        ativo = true;
-        goColetavel.SetActive(true);
-    }
-
-    public void desligar()
-    {
-        ativo = false;
-        goColetavel.SetActive(false);
-    }
-
-    public Vector3 getPosicao()
-    {
-        return goColetavel.transform.position;
-    }
-
-    public GameObject getGoColetavel()
-    {
-        return goColetavel;
-    }   
-
-    public bool isAtivo()
-    {
-        return ativo;
-    }
-
-    public virtual void ligarGravidadeZero()
-    {
-        rigidbody.gravityScale = 0;
-    }
-
-    public virtual void ligarGravidadeHum()
-    {
-        rigidbody.gravityScale = 1;
-    }
-
-    public void setGravidade(float gravidade)
-    {
-        rigidbody.gravityScale = gravidade;
-    }
-
-    public virtual void fixarEixoX()
-    {
-        rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-    }
-
-    public virtual void fixarEixoXY()
-    {
-        rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-    }
-
-    public void desafixarVerticalmente()
-    {
-        rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-    }
-
-    public void receberSprite(Sprite sprite)
-    {
-        receberSprite(sprite, LAYER_COMUM);
-    }
-
-    public void receberSprite(Sprite sprite, int layer)
-    {
-        spriteRenderer.sprite = sprite;
-        nomeSprite = sprite.name;
-        colocarSpriteNoLayer(layer);
+        setLayer(LAYER_NORMAL);        
     }
 
     public void colocarNoLayerDestaque()
     {
-        colocarSpriteNoLayer(LAYER_DESTAQUE);
+        colocarSpriteNoLayer(SPR_ORDER_DESTAQUE);
     }
 
     public void colocarNoLayerComum()
     {
-        colocarSpriteNoLayer(LAYER_COMUM);
+        colocarSpriteNoLayer(SPR_ORDER_COMUM);
     }
 
-    private void colocarSpriteNoLayer(int layer)
-    {
-        spriteRenderer.sortingOrder = layer;
+    public void imantar()
+    {        
+        setLayer(LayerMask.NameToLayer("Atracao"));
     }
 
-    public void receberSprite(string nomeSprite)
+    public void desimantar()
     {
-        receberSprite(context.dicionarioDeSprites[nomeSprite]);
+        setLayer(LayerMask.NameToLayer("Coletavel"));
     }
 
-    public Sprite getSprite()
+    public void naoInteracaoComOutrosColetaveis()
     {
-        return spriteRenderer.sprite;
-    }   
+        setLayer(LayerMask.NameToLayer("ColetavelNaoInteracao"));
+    }
 
-    public bool hasEqualsSprite(Coletavel coletavelOutro)
+    public void interacaoComOutrosColetaveis()
     {
-        //Debug.Log("spr this " + nomeSprite + " spr other " + coletavelOutro.nomeSprite);
-        return nomeSprite.Equals(coletavelOutro.nomeSprite);
-    }       
+        desimantar();
+    }
 
-    public static void configurar(ColetaveisDto coletaveisDto)
+    public void receberSprite(Sprite sprite)
     {
-        context = new ColetavelContextoEstatico();
-        context.configurar(coletaveisDto);
+        receberSprite(sprite, SPR_ORDER_COMUM);
+    }
+
+    public bool isTouchingCentroDaGarra()
+    {
+        LayerMask mask = LayerMask.GetMask("GarraCentro");
+        Collider2D collider2d = Physics2D.OverlapCircle(rigidbody.position, 0.3f, mask);        
+        return referenciaColliderColetado == collider2d && rigidbody.velocity.y > 0;
+    }
+
+    public static void configurar(CircleCollider2D referenciaColliderColetadoArg)
+    {
+        referenciaColliderColetado = referenciaColliderColetadoArg;
     }
 }

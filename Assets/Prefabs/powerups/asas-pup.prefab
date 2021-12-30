@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 963391463966577656}
   - component: {fileID: 6743520823141608748}
-  m_Layer: 14
+  m_Layer: 17
   m_Name: imagem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5740383458316719177}
   - component: {fileID: 2587472514398227533}
-  m_Layer: 14
+  m_Layer: 17
   m_Name: asas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 4127936681606313064}
   - component: {fileID: 4127936681606313067}
   - component: {fileID: 4127936681606313066}
-  m_Layer: 14
+  m_Layer: 17
   m_Name: asas-pup
   m_TagString: Laranja
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 906952434376547524}
   - component: {fileID: 117676093786293473}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: asaDireita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 113391900876646129}
   - component: {fileID: 6718594735688246543}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: asaEsquerda
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -19,11 +19,11 @@ public class AsaMiniPowerUpGo : AbstractAsaPowerUpGo
     protected override float getHalturaLimite()
     {
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        ColetavelTile coletavelMaisAlto = helperInGame.getColetavelMaisAlto();
+        Coletavel coletavelMaisAlto = helperInGame.getColetavelMaisAlto();
         return coletavelMaisAlto.getPosicao().y + powerUpDto.AsaMiniDto.IncrementoHaltura;
     }
 
-    protected override IEnumerator finalizarVoar(ColetavelTile coletavelAcertado)
+    protected override IEnumerator finalizarVoar(Coletavel coletavelAcertado)
     {
         coletavelAcertado.colocarNaPosicao(getPosicao());
         coletavelAcertado.ligar();
@@ -34,18 +34,5 @@ public class AsaMiniPowerUpGo : AbstractAsaPowerUpGo
 
         powerUpFinalizacao.finalizado();
         yield return null;
-    }
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorAsaMini();
-    }
-
-    public class FornecedorAsaMini : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new AsaMiniPowerUpGo();
-        }
-    }   
+    }    
 }

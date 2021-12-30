@@ -541,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1865125382853477707}
   - component: {fileID: 731631279107951601}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: chao-dentro-efeito
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -714,7 +714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4605902619341151190}
   - component: {fileID: 1345061731216858424}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: barra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2955,7 +2955,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6406990385869860179}
   - component: {fileID: 6406990385869860178}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: chao-dentro
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}

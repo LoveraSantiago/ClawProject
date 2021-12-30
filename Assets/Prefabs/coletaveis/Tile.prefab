@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6120097133494333996}
   - component: {fileID: 595935116064501819}
   - component: {fileID: 2265395957420171513}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: animacao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 4127936681606313067}
   - component: {fileID: 4127936681606313065}
   - component: {fileID: 4127936681606313066}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Tile
   m_TagString: Coletavel
   m_Icon: {fileID: 0}

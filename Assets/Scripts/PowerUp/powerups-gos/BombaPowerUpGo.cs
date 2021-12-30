@@ -36,8 +36,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         goColetavel.GetComponent<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);
 
-        Animator animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-        animacao = new AnimacaoExplosaoPup(animator);
+        animacao = new AnimacaoExplosaoPup(goColetavel);
 
         circleCollider = goColetavel.GetComponent<CircleCollider2D>();
     }
@@ -68,9 +67,10 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     private IEnumerator explodir()
     {        
         animacao.playPreExplodir();
-        yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);        
-        
-        acionarEfeitoExplosao(getPosicao());        
+        yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);
+
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
+        efeitoExplosao.explodir(getPosicao());        
         processarExplosao();
 
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayExplosao);
@@ -94,7 +94,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         for (int contador = 0; contador < acertados.Length; contador++)
         {
             string nomeAcertado = acertados[contador].name;
-            Coletavel acertado = helperInGame.getColetavelInGameByGoName(nomeAcertado);
+            GO acertado = helperInGame.getColetavelInGameByGoName(nomeAcertado);
             int angulo = determinarAngulo(acertado.getPosicao());
             acertado.disparar(angulo, powerUpDto.BombaDto.VelocidadeHit);
         }
@@ -104,18 +104,5 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     {        
         if (getPosicao().x < posicao.x) return -powerUpDto.BombaDto.AnguloHit;
         else return powerUpDto.BombaDto.AnguloHit;
-    }
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorBomba();
-    }
-
-    public class FornecedorBomba : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new BombaPowerUpGo();
-        }
-    }
+    }    
 }

@@ -41,8 +41,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
             .registrarConsumidorCollision2dOnEnter(this);
 
         goExplosao = goColetavel.transform.Find("explosao").gameObject;
-        Animator animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-        animacao = new AnimacaoExplosaoPup(animator);
+        animacao = new AnimacaoExplosaoPup(goColetavel);
     }
 
     public override void iniciarPup()
@@ -74,8 +73,11 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayInicial);
 
-        goExplosao.SetActive(true);        
-        acionarEfeitoExplosao(getPosicao());
+        goExplosao.SetActive(true);
+
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
+        efeitoExplosao.explodir(getPosicao());
+        
         yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayExplosao);
 
         goExplosao.SetActive(false);
@@ -86,18 +88,5 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
         powerUpFinalizacao.finalizado();
         yield return null;
-    }
-    
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorMissilNuclear();
-    }
-
-    public class FornecedorMissilNuclear : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new MissilNuclearPowerUpGo();
-        }
     }
 }

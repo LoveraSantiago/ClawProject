@@ -9,9 +9,12 @@ public class ControleAcionamentoPowerUp
     private bool powerUpEmAcao;
     private bool powerUpDisplayEmAcao;
 
+    public ProdutorDeEvento<int> produtorDeEventoEscolhaPup { get; private set; }
+
     public ControleAcionamentoPowerUp()
     {
         estadoAtual = ESTADO_LIGADO;
+        produtorDeEventoEscolhaPup = new ProdutorDeEvento<int>();
     }   
 
     public void habilitarPowerUp()
@@ -66,6 +69,11 @@ public class ControleAcionamentoPowerUp
         {
             powerUpDisplayEmAcao = true;
         }
+    }
+
+    public void escolhendoPupParaIndice(int indice)
+    {
+        produtorDeEventoEscolhaPup.produziuEvento(indice);
     }
 
     private bool isEstadoLigado()

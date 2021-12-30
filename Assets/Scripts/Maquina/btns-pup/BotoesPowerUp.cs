@@ -6,8 +6,6 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
 {
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
-
-    private ProdutorDeEvento<int> produtorDeEventoEscolhaPup;
     private ControleAcionamentoPowerUp controlePup;
 
     private Draggavel dragavelAtual;
@@ -17,7 +15,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
     {        
         BotaoPowerUp.configurar(btnsPowerUpsDto);
         inicializarBotoes(btnsPowerUpsDto);
-        produtorDeEventoEscolhaPup = new ProdutorDeEvento<int>();
+        
         controlePup   = new ControleAcionamentoPowerUp();
         dragavelVazio = new AdapterDraggavelVazio();
         dragavelAtual = dragavelVazio;
@@ -26,10 +24,10 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
     private void inicializarBotoes(BotoesPowerUpDto btnsPowerUpsDto)
     {
         btnsPowerUp = new BotaoPowerUp[4];
-        btnsPowerUp[0] = new BotaoPowerUp(0, btnsPowerUpsDto.BtnPowerUp[0]);
-        btnsPowerUp[1] = new BotaoPowerUp(1, btnsPowerUpsDto.BtnPowerUp[1]);
-        btnsPowerUp[2] = new BotaoPowerUp(2, btnsPowerUpsDto.BtnPowerUp[2]);
-        btnsPowerUp[3] = new BotaoPowerUp(3, btnsPowerUpsDto.BtnPowerUp[3]);
+        btnsPowerUp[0] = new BotaoPowerUp(0, btnsPowerUpsDto);
+        btnsPowerUp[1] = new BotaoPowerUp(1, btnsPowerUpsDto);
+        btnsPowerUp[2] = new BotaoPowerUp(2, btnsPowerUpsDto);
+        btnsPowerUp[3] = new BotaoPowerUp(3, btnsPowerUpsDto);
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
@@ -42,7 +40,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         return new BotoesPowerUpArcoIris(btnsPowerUp);
     }
     
-    public void update(InputGame inputGame)
+    public void update(BotoesPowerUpDto botoesPowerUpDto, InputGame inputGame)
     {
         if (inputGame.aconteceuTapNaAreaInferior())
         {
@@ -51,7 +49,7 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
             {
                 if (btnsPowerUp[contador].isCliqueValido(controlePup, posicaoTap))
                 {
-                    acionarBotao(contador);
+                    acionarBotao(contador, botoesPowerUpDto);
                     break;
                 }
             }
@@ -77,19 +75,19 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         }
     }
 
-    public void drag(Vector2 delta)
+    public void drag(Vector2 delta, BotoesPowerUpDto botoesPowerUpDto)
     {
         if (controlePup.podeAcionarPupDraggavel())
         {
-            dragavelAtual.updateDrag(delta);
+            dragavelAtual.updateDrag(delta, botoesPowerUpDto);
         }
     }
 
-    public void endDrag()
+    public void endDrag(BotoesPowerUpDto botoesPowerUpDto)
     {
         if (controlePup.podeAcionarPupDraggavel())
         {
-            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp();            
+            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp(botoesPowerUpDto);            
             if (result)
             {
                 draggarBotao(btnAcionado);
@@ -120,11 +118,11 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
         controlePup.habilitarPowerUpPosDisplay();
     }
 
-    private void acionarBotao(int indice)
+    private void acionarBotao(int indice, BotoesPowerUpDto btnsPowerUpsDto)
     {
         colocarBtnsEmMaterialArcoIris();
         BotaoPowerUp btn = btnsPowerUp[indice];
-        btn.clicar(controlePup, produtorDeEventoEscolhaPup);
+        btn.clicar(btnsPowerUpsDto, controlePup);
         btnAcionado = btn;
     }   
 
@@ -162,6 +160,6 @@ public class BotoesPowerUp : AcaoBotaoPUpVazio.ProdutorEvento,
 
     ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEvento()
     {
-        return produtorDeEventoEscolhaPup;
+        return controlePup.produtorDeEventoEscolhaPup;
     }   
 }

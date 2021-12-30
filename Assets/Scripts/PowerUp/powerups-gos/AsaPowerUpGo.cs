@@ -22,7 +22,7 @@ public class AsaPowerUpGo : AbstractAsaPowerUpGo
         return powerUpDto.AsaDto.Haltura;
     }
 
-    protected override IEnumerator finalizarVoar(ColetavelTile coletavelAcertado)
+    protected override IEnumerator finalizarVoar(Coletavel coletavelAcertado)
     {
         powerUpFinalizacao.preFinalizar(coletavelAcertado);
         desligar();
@@ -31,19 +31,5 @@ public class AsaPowerUpGo : AbstractAsaPowerUpGo
 
         powerUpFinalizacao.finalizado();
         yield return null;        
-    }
-
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorAsa();
-    }
-
-    public class FornecedorAsa : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new AsaPowerUpGo();
-        }
     }   
 }

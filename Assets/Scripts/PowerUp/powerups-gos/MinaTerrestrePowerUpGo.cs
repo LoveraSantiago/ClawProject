@@ -9,9 +9,7 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
     private GameObject goExplosao;    
 
     public MinaTerrestrePowerUpGo()
-        :base(powerUpDto.MinaDto.MinaTerrestreGo, "mina-terrestre")
-    {        
-    }    
+        :base(powerUpDto.MinaDto.MinaTerrestreGo, "mina-terrestre"){}    
 
     public override void iniciarNaPosicao(Vector3 posicao)
     {
@@ -20,15 +18,14 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void configurarPup()
     {        
-        Animator animator = goColetavel.transform.Find("imagem").GetComponent<Animator>();
-        animacao = new AnimacaoExplosaoPup(animator);
+        animacao = new AnimacaoExplosaoPup(goColetavel);
         goExplosao = goColetavel.transform.Find("explosao").gameObject;
     }
 
     public override void iniciarPup()
     {
         ligar();
-        posInicial.y = powerUpDto.MinaDto.Haltura;
+        posInicial.y = powerUpDto.HalturaPupDraggavel;
         base.colocarNaPosicao(posInicial);
         Utils.MonoBehaviour.StartCoroutine(explodir());
     }
@@ -46,9 +43,11 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayInicial);
 
         goExplosao.SetActive(true);
-        goExplosao.transform.position = new Vector3(goExplosao.transform.position.x, goExplosao.transform.position.y + 0.4f, goExplosao.transform.position.z);
+
+        Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MinaDto.HalturaExplosao, 0);
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
+        efeitoExplosao.explodir(posicaoExplosao);
         
-        acionarEfeitoExplosao(getPosicao() + new Vector3(0, powerUpDto.MinaDto.HalturaExplosao, 0));        
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayExplosao);
 
         goExplosao.SetActive(false);
@@ -66,18 +65,4 @@ public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
     public override void ligarGravidadeZero() { }
     public override void ligarGravidadeHum() { }
     public override void fixarEixoX() { }
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorMina();
-    }
-
-    public class FornecedorMina : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new MinaTerrestrePowerUpGo();
-        }
-    }
-
 }

@@ -25,7 +25,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
     }
 
     public void devolver(
-        bool combinacaoValida, ColetadoFim evento, ColetavelTile[] coletados)
+        bool combinacaoValida, ColetadoFim evento, Coletavel[] coletados)
     {
         if (isDevolver(combinacaoValida, evento))
         {
@@ -51,7 +51,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
         return !devolverTubo && combinacaoValida;
     }
 
-    private IEnumerator descerPeloTubo(bool[] resultados, ColetavelTile[] coletados)
+    private IEnumerator descerPeloTubo(bool[] resultados, Coletavel[] coletados)
     {
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         for (int contador = 0; contador < coletados.Length; contador++)

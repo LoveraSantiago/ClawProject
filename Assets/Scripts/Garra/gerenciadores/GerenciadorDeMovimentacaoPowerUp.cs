@@ -3,22 +3,17 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 {
     private ContadorDeTempo contadorDeFimTempo;
 
-    private MovimentacaoDaGarraPowerUp movAtual;
-    private MovimentacaoDaGarraPowerUp movVoltarPCima;
-    private MovimentacaoDaGarraPowerUp movVoltarMeio;
-    private MovimentacaoDaGarraPowerUp movSegCima;
-    private MovimentacaoDaGarraPowerUp movSegCimaMov;
-    private MovimentacaoDaGarraPowerUp movSoltar;
-    private MovimentacaoDaGarraPowerUp movParado;
+    private MovimentacaoDaGarraPowerUp movAtual;        
+    private MovimentacaoDaGarraPowerUp movSegCima;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
+    private MovimentacaoDaGarraPowerUp movSegCimaMov;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
+
+    private MovimentacaoDaGarraPowerUp movParado;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
-        MovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);
-        movVoltarPCima = new MovimentacaoVoltarParaCima();
-        movVoltarMeio  = new MovimentacaoVoltarParaMeioPowerUp();
+        MovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);                
         movSegCima     = new MovimentacaoAgarrandoEmcima();
-        movSegCimaMov  = new MovimentacaoAgarrandoEmcimaEmMovimento();
-        movSoltar      = new MovimentacaoSoltar();
+        movSegCimaMov  = new MovimentacaoAgarrandoEmcimaEmMovimento();        
         movParado      = new MovimentacaoParadoPowerUp();
 
         contadorDeFimTempo = new ContadorDeTempo();
@@ -78,12 +73,12 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP INICIO
     public void trocarParaAcaoVoltarParaCima()
     {
-        trocarMovimentador(movVoltarPCima);
+        trocarMovimentador(new MovimentacaoVoltarParaCima());
     }
 
     public void trocarParaAcaoVoltarParaMeio()
     {
-        trocarMovimentador(movVoltarMeio);
+        trocarMovimentador(new MovimentacaoVoltarParaMeioPowerUp());
     }
 
     public void trocarParaAcaoSegurandoParado()
@@ -98,7 +93,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoSoltar()
     {
-        trocarMovimentador(movSoltar);
+        trocarMovimentador(new MovimentacaoSoltar());
     }
 
     public void trocarParaAcaoParado()

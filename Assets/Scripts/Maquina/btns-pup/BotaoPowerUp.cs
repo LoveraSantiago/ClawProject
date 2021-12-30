@@ -14,19 +14,18 @@ public class BotaoPowerUp : Draggavel
     private AcaoDragPowerUp acaoDrag;
     private AcaoBotaoPowerUp acaoBtnPowerUp;
 
-    public BotaoPowerUp(int indice, BotaoPowerUpDto botaoDto)
+    public BotaoPowerUp(int indice, BotoesPowerUpDto btnsPowerUpsDto)
     {
         isDraggavel = false;
         this.indice = indice;
 
+        BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
         aparencia = new AparenciaBotaoPowerUp(botaoDto);
         acaoDrag  = new AcaoDragPowerUp(botaoDto);
-        glow   = new GlowBotaoPowerUp(botaoDto.SprEfeito);
+        glow      = new GlowBotaoPowerUp(botaoDto.SprEfeito);
     }
 
-    public void clicar(
-        ControleAcionamentoPowerUp controlePup, 
-        ProdutorDeEvento<int> produtorEventoEscolhaPup)
+    public void clicar(BotoesPowerUpDto btnsPowerUpsDto, ControleAcionamentoPowerUp controlePup)
     {
         glow.mudarParaMaterialIndividual();
         if (hasPowerUp)
@@ -34,7 +33,9 @@ public class BotaoPowerUp : Draggavel
             aparencia.colorirBotao();
             controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
-            efeitoHolograma.ligar(aparencia.getPosicaoParent(), aparencia.getRotacaoParent());
+
+            BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
+            efeitoHolograma.ligar(botaoDto);
             acaoBtnPowerUp.acionar(indice);
         }
         else
@@ -43,7 +44,7 @@ public class BotaoPowerUp : Draggavel
             glow.ligarGlow();
             Utils.pausarGame();
             controlePup.desabilitarPowerUp();
-            produtorEventoEscolhaPup.produziuEvento(indice);
+            controlePup.escolhendoPupParaIndice(indice);            
         }
     }
 
@@ -138,20 +139,27 @@ public class BotaoPowerUp : Draggavel
                && acaoDrag.isPosicaoDentroAreaBotao(posicao);
     }           
 
+    private BotaoPowerUpDto getBotaoPowerUpDto(BotoesPowerUpDto btnPowerUpsDto)
+    {
+        return btnPowerUpsDto.BtnPowerUp[indice];
+    }
+
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
     public void prepararDraggagem(Vector3 posInicialDrag)
     {        
         acaoDrag.prepararDraggagem(posInicialDrag, aparencia);
     }
 
-    public void updateDrag(Vector2 posicaoDrag)
+    public void updateDrag(Vector2 posicaoDrag, BotoesPowerUpDto botoesPowerUpsDto)
     {
-        acaoDrag.updateDrag(posicaoDrag, aparencia);
+        BotaoPowerUpDto btnDto = getBotaoPowerUpDto(botoesPowerUpsDto);
+        acaoDrag.updateDrag(posicaoDrag, aparencia, btnDto);
     }
 
-    public bool isDragFinalizadoAtivouPowerUp()
+    public bool isDragFinalizadoAtivouPowerUp(BotoesPowerUpDto botoesPowerUpsDto)
     {
-        return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, aparencia);        
+        BotaoPowerUpDto btnDto = getBotaoPowerUpDto(botoesPowerUpsDto);
+        return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, aparencia, btnDto);        
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 

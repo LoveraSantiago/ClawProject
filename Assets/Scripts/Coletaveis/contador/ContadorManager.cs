@@ -33,9 +33,9 @@ public class ContadorManager
         contador.iniciar(totalColetaveis);
     }
 
-    public int contarColetado(ColetavelTile coletavelTile)
+    public int contarColetado(Coletavel coletavel)
     {
-        return contador.contarColetado(coletavelTile);
+        return contador.contarColetado(coletavel);
     }
 
     public void adicionarColetaveisExtras(int qtd)
@@ -58,7 +58,7 @@ public class ContadorManager
         return contador.getIndiceOrdem();
     }
 
-    public ColetavelTile[] getColetados()
+    public Coletavel[] getColetados()
     {
         return contador.getColetados();
     }

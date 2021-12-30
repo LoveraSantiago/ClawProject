@@ -9,8 +9,12 @@ public class EfeitoHolograma
         this.goEfeitoHolograma = goEfeitoHolograma;
     }
 
-    public void ligar(Vector3 posicao, Quaternion rotacao)
+    public void ligar(BotaoPowerUpDto btnDto)
     {
+        Transform tranformParent = btnDto.GoParent.transform;
+        Vector3 posicao = tranformParent.position;
+        Quaternion rotacao = tranformParent.rotation;
+
         goEfeitoHolograma.transform.position = posicao;
         goEfeitoHolograma.transform.rotation = rotacao;
         goEfeitoHolograma.SetActive(true);

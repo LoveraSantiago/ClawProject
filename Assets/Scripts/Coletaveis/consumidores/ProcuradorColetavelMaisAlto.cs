@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class ProcuradorColetavelMaisAlto : Consumidor<ColetavelTile>
+public class ProcuradorColetavelMaisAlto : Consumidor<Coletavel>
 {
-    public ColetavelTile coletavelMaisAlto { get; private set; }
+    public Coletavel coletavelMaisAlto { get; private set; }
 
-    public void consumir(ColetavelTile coletavelIt)
+    public void consumir(Coletavel coletavelIt)
     {
         if (coletavelIt.isAtivo())
         {

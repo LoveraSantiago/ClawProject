@@ -7,7 +7,7 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
    
     public override void resetPup(){}
 
-    protected override IEnumerator realizarTroca(ColetavelTile coletavel1, ColetavelTile coletavel2)
+    protected override IEnumerator realizarTroca(Coletavel coletavel1, Coletavel coletavel2)
     {
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();
@@ -45,18 +45,5 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
         powerUpFinalizacao.finalizado();
         yield return null;
-    }   
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorTeleporte();
-    }
-
-    public class FornecedorTeleporte : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new TeleportePowerUpGo();
-        }
-    }   
+    }      
 }

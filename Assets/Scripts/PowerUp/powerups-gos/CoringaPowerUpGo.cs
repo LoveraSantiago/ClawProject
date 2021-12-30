@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
-                                Transformador<ColetavelTile, IEnumerator>
+                                Transformador<Coletavel, IEnumerator>
 {
     private bool finalizando;
 
     private HumAlvoSelecionado alvoSelecionado;
-    private ColetavelTile coletavelSelecionado;
+    private Coletavel coletavelSelecionado;
 
     private Coroutine coroutineAlvo;    
 
     public CoringaPowerUpGo() : 
-        base(powerUpDto.VazioPUp, "coringa"){}
+        base(powerUpDto.VazioPUp, "coringa")
+    {
+        Debug.Log("Coringa instanciado");
+    }
 
     public override void configurarPup(){}
 
     public override void iniciarPup()
     {
-        HelperColetaveisInGame helprInGame = new HelperColetaveisInGame();
-        helprInGame.ligarMirasNosColetaveis();
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        helperInGame.ligarMirasNosColetaveis();
 
         alvoSelecionado = new HumAlvoSelecionado();
         coroutineAlvo = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionado(inputGame, this));
@@ -34,29 +37,31 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         coroutineAlvo = null;        
     }
 
-    public IEnumerator transformar(ColetavelTile entrada)
+    public IEnumerator transformar(Coletavel entrada)
     {
         return fazerTroca(entrada);
     }
 
-    private IEnumerator fazerTroca(ColetavelTile coletavelTile)
+    private IEnumerator fazerTroca(Coletavel coletavel)
     {
-        coletavelSelecionado = coletavelTile;
+        coletavelSelecionado = coletavel;
 
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-        ColetavelEntidade coletavel = helperColetavel.getColetavelEntidadeBySprite(coletavelTile.nomeSprite);
-        List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavel);
+        HelperColetaveisInGame helperInGame     = new HelperColetaveisInGame();
+
+        ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeBySprite(coletavel.nomeSprite);
+        List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavelEntidade);
 
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();        
-        materialTeleporte.addTrocaIn(coletavelTile.getSprite());
-        coletavelTile.addMaterial(materialTeleporte.materialTeleporte);
+        materialTeleporte.addTrocaIn(coletavel.getSprite());
+        coletavel.addMaterial(materialTeleporte.materialTeleporte);
 
         int indiceSorteado = UtilsMath.escolherDeZeroAteLimite(listaFamilia.Count);
         Sprite sprSorteado = null;
         while (!finalizando)
         {
             ColetavelEntidade coletavelSorteado = listaFamilia[indiceSorteado];
-            sprSorteado = context.dicionarioDeSprites[coletavelSorteado.nomeSprite];
+            sprSorteado = helperColetavel.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);
             materialTeleporte.addTrocaOut(sprSorteado);
 
             bool houveToque = false;
@@ -76,7 +81,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 
             indiceSorteado = UtilsMath.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
             coletavelSorteado = listaFamilia[indiceSorteado];
-            sprSorteado = context.dicionarioDeSprites[coletavelSorteado.nomeSprite];
+            sprSorteado = helperColetavel.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);
             materialTeleporte.addTrocaIn(sprSorteado);
 
             houveToque = false;
@@ -97,12 +102,11 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         }
 
         finalizando = true;
-
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        
         helperInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.preFinalizar();
-        coletavelTile.receberSprite(sprSorteado);
-        getTrocadorDeOrdem().atualizar(coletavelTile);
+        coletavel.receberSprite(sprSorteado);
+        getTrocadorDeOrdem().atualizar(coletavel);
         resetPup();        
         powerUpFinalizacao.finalizado();
         yield return null;
@@ -125,18 +129,5 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
             powerUpFinalizacao.finalizado();
             resetPup();
         }
-    }
-
-    public static Fornecedor<AbstractPowerUpGo> getFornecedor()
-    {
-        return new FornecedorCoringa();
-    }
-
-    public class FornecedorCoringa : Fornecedor<AbstractPowerUpGo>
-    {
-        public AbstractPowerUpGo fornecer()
-        {
-            return new CoringaPowerUpGo();
-        }
-    }
+    }    
 }
