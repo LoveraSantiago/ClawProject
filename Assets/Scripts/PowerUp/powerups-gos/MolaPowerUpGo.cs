@@ -41,7 +41,7 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
         animator.Play(IDLE);
         powerUpFinalizacao.preFinalizar();
     }
-
+    
     private IEnumerator jumpar()
     {
         yield return new WaitForSeconds(powerUpDto.MolaDto.DelayInicial);
@@ -51,12 +51,23 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
 
         yield return new WaitForSeconds(0.1f);
 
-        for(int contador = 0; contador < coletaveis.Length; contador++)
-        {
-            float anguloPulo = Random.Range(0,90);
-            coletaveis[contador].disparar(anguloPulo, 10f);
-        }
+        dispararColetaveis(coletaveis);       
+        yield return null;
 
+        List<Coletavel> coletaveisQueda = new List<Coletavel>(coletaveis.Length);
+        while(coletaveisQueda.Count < coletaveis.Length)
+        {
+            for(int contador = 0; contador < coletaveis.Length; contador++)
+            {
+                Coletavel coletavelIt = coletaveis[contador];
+                if (!coletavelIt.isVelocidadeYPositiva() && !coletaveisQueda.Contains(coletavelIt))
+                {
+                    coletavelIt.interacaoComOutrosColetaveis();
+                    coletaveisQueda.Add(coletavelIt);
+                }
+            }
+            yield return null;
+        }
         yield return new WaitForSeconds(powerUpDto.MolaDto.DelayInicial * 5);
 
         resetPup();
@@ -73,8 +84,7 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
         ContactFilter2D filter = new ContactFilter2D().NoFilter();        
         boxCollider2d.OverlapCollider(filter, colliders);
 
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();        
-
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         for (int contador = 0; contador < tamanhoArray; contador++)
         {
             Collider2D coliderIt = colliders[contador];
@@ -87,12 +97,30 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
                 {
                     Coletavel coletavel = helperInGame.getColetavelInGameByGoName(nomeCollider);
                     listaDeColetaveis.Add(coletavel);
-                    coletavel.naoInteracaoComOutrosColetaveis();
+                    coletavel.naoInteracaoComOutrosColetaveis();                    
                 }
             }            
         }
-
         Coletavel[] coletaveis = listaDeColetaveis.ToArray();
         return coletaveis;
+    }
+
+    private void dispararColetaveis(Coletavel[] coletaveis)
+    {
+        for (int contador = 0; contador < coletaveis.Length; contador++)
+        {
+            float anguloDisparo;
+            Coletavel coletavelIt = coletaveis[contador];
+            if (coletavelIt.getPosicao().x < 0)
+            {
+                anguloDisparo = Random.Range(-30, -5);
+            }
+            else
+            {
+                anguloDisparo = Random.Range(5, 30);
+            }
+            //Debug.Log("Angulo " + anguloDisparo);
+            coletaveis[contador].disparar(anguloDisparo, 15f);
+        }
     }
 }
