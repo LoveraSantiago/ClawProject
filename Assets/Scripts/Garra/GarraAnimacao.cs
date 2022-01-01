@@ -10,6 +10,7 @@ public class GarraAnimacao
     private readonly int ANIM_ESQUERDA = Animator.StringToHash("indoesquerda");
     private readonly int ANIM_PISCANDO = Animator.StringToHash("piscando");
     private readonly int ANIM_FELIZ    = Animator.StringToHash("feliz");
+    private readonly int ANIM_RODANDO  = Animator.StringToHash("girandov2");
 
     private int animacaoAtual;
 

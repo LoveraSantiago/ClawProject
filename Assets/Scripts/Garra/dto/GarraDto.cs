@@ -11,12 +11,14 @@ public class GarraDto
     [SerializeField] private CaboGarraDto caboDto;       
     [Space(5)]        
     [SerializeField] private float posCacaNiquel;    
+    [Space(3)]
     [SerializeField] private Rigidbody2D rigidBody;    
     [SerializeField] private Transform  centroDaGarra;
     [SerializeField] private Transform  pincaEsquerda;
     [SerializeField] private Transform  pincaDireita;
     [SerializeField] private GameObject colisor;
     [SerializeField] private Animator   animator;
+    [Space(3)]
     [SerializeField] private ParticleSystem efeitoTrail;
 
     public GarraVelocidadesDto Velocidades { get { return velocidades; } }
