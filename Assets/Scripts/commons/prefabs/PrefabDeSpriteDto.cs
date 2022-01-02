@@ -28,7 +28,7 @@ public class PrefabDeSpriteDto : MonoBehaviour
         }
     }
 
-    private void montarDicionarioDeSprites(Sprite[] arrayDeSprites )
+    private void montarDicionarioDeSprites(Sprite[] arrayDeSprites)
     {
         dicionarioDeSprites = new Dictionary<string, Sprite>();
         for (int contador = 0; contador < arrayDeSprites.Length; contador++)
