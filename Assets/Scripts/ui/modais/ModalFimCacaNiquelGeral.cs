@@ -1,9 +1,9 @@
 public class ModalFimCacaNiquelGeral : AbstractModalFim
 {
-    private CacaNiquelResultadoDto evento;
+    private CacaNiquelEventoDto evento;
     private LinhaModalPontos[] linhasModal;
 
-    public ModalFimCacaNiquelGeral(CacaNiquelResultadoDto evento, LinhaModalPontos[] linhasModal)
+    public ModalFimCacaNiquelGeral(CacaNiquelEventoDto evento, LinhaModalPontos[] linhasModal)
     {
         this.evento = evento;
         this.linhasModal = linhasModal;

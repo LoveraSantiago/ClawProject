@@ -33,7 +33,7 @@ public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento,
         }
     }
 
-    void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelResultadoDto evento)
+    void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelEventoDto evento)
     {
         if (evento.isInicio)
         {

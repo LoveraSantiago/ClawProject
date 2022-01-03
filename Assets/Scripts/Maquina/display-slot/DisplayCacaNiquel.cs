@@ -6,14 +6,14 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     public enum RESULTADO_CACANIQUEL { SUCESSO, FAIL, COIN };
 
     private string tipoGame;
-    private ProdutorDeEvento<CacaNiquelResultadoDto> produtorDeEvento;
+    private ProdutorDeEvento<CacaNiquelEventoDto> produtorDeEvento;
     private CacaNiquel cacaNiquel;
     private InputGame inputGame;
 
     public DisplayCacaNiquel(InputGame inputGame)
     {
         this.inputGame = inputGame;
-        produtorDeEvento = new ProdutorDeEvento<CacaNiquelResultadoDto>();
+        produtorDeEvento = new ProdutorDeEvento<CacaNiquelEventoDto>();
         cacaNiquel = new CacaNiquel();
     }
 
@@ -34,7 +34,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     private IEnumerator iniciarDisplayCacaNiquel(GrupoDisplays grupoDisplays)
     {
         yield return new WaitForSeconds(0.5f);
-        produtorDeEvento.produziuEvento(new CacaNiquelResultadoDto());
+        produtorDeEvento.produziuEvento(new CacaNiquelEventoDto());
         grupoDisplays.ligarGlowLuz();
 
         DisplaysSlotsDto displaysSlotsDto = grupoDisplays.displaysSlotsDto;
@@ -62,10 +62,10 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         cacaNiquel.passarResultadosParaGrupoDisplay(pupEscolhido, resultadosSprs, grupoDisplays);
         RESULTADO_CACANIQUEL[] resultados = cacaNiquel.montarResultados(pupEscolhido, resultadosSprs, displaysSlotsDto);
 
-        produtorDeEvento.produziuEvento(new CacaNiquelResultadoDto(tipoGame, resultadosSprs, resultados));       
+        produtorDeEvento.produziuEvento(new CacaNiquelEventoDto(tipoGame, resultadosSprs, resultados));       
     }       
 
-    ProdutorDeEvento<CacaNiquelResultadoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<CacaNiquelEventoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

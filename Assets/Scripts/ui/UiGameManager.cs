@@ -51,7 +51,7 @@ public class UiGameManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         ((AcaoBotaoPUpVazio.ConsumidorEvento)scrollManager).consumirEvento(evento);       
     }
 
-    void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelResultadoDto evento)
+    void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelEventoDto evento)
     {
         ((AcaoCacaNiquel.ConsumidorEvento)modalResultados).consumirEvento(evento);
     }

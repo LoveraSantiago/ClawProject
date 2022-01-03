@@ -28,7 +28,7 @@ public class ModalResultados : ModalManipulacao
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
     }
 
-    public void configurarCacaNiquelIndividual(CacaNiquelResultadoDto evento)
+    public void configurarCacaNiquelIndividual(CacaNiquelEventoDto evento)
     {
         naoMostrarLinhasResult();
         AbstractModalFim modalFim = new ModalFimCacaNiquelIndividual(evento, linhasModal);
@@ -36,7 +36,7 @@ public class ModalResultados : ModalManipulacao
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
     }
 
-    public void configurarCacaNiquelGeral(CacaNiquelResultadoDto evento)
+    public void configurarCacaNiquelGeral(CacaNiquelEventoDto evento)
     {
         naoMostrarLinhasResult();
         AbstractModalFim modalFim = new ModalFimCacaNiquelGeral(evento, linhasModal);
