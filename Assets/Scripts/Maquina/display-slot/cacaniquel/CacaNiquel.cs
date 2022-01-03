@@ -72,18 +72,17 @@ public class CacaNiquel
         }
     }
 
-    public CacaNiquelResultadoEnum[] montarResultados(PowerUpEntidade pupEscolhido, Sprite[] resultadosSprs, DisplaysSlotsDto displaysSlotsDto)
+    public CacaNiquelResultadoEnum[] montarResultados(PowerUpEntidade pupEscolhido, Sprite[] resultadosSprs)
     {
         CacaNiquelResultadoEnum[] resultados = new CacaNiquelResultadoEnum[] {
-            avaliarResultado(pupEscolhido, resultadosSprs[0], displaysSlotsDto),
-            avaliarResultado(pupEscolhido, resultadosSprs[1], displaysSlotsDto),
-            avaliarResultado(pupEscolhido, resultadosSprs[2], displaysSlotsDto)};
+            avaliarResultado(pupEscolhido, resultadosSprs[0]),
+            avaliarResultado(pupEscolhido, resultadosSprs[1]),
+            avaliarResultado(pupEscolhido, resultadosSprs[2])};
 
         return resultados;
     }
 
-    private CacaNiquelResultadoEnum avaliarResultado(
-        PowerUpEntidade pupEscolhido, Sprite sprSorteado, DisplaysSlotsDto displaysSlotsDto)
+    private CacaNiquelResultadoEnum avaliarResultado(PowerUpEntidade pupEscolhido, Sprite sprSorteado)
     {
         if (sprSorteado == pupEscolhido.sprPowerUp)
         {
