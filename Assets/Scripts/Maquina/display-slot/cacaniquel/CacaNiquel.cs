@@ -72,14 +72,15 @@ public class CacaNiquel
         }
     }
 
-    public CacaNiquelResultadoEnum[] montarResultados(PowerUpEntidade pupEscolhido, Sprite[] resultadosSprs)
+    public CacaNiquelEventoDto montarResultados(PowerUpEntidade pupEscolhido, Sprite[] resultadosSprs)
     {
         CacaNiquelResultadoEnum[] resultados = new CacaNiquelResultadoEnum[] {
             avaliarResultado(pupEscolhido, resultadosSprs[0]),
             avaliarResultado(pupEscolhido, resultadosSprs[1]),
             avaliarResultado(pupEscolhido, resultadosSprs[2])};
 
-        return resultados;
+        CacaNiquelEventoDto evento = new CacaNiquelEventoDto(tipoGame, resultadosSprs, resultados);
+        return evento;
     }
 
     private CacaNiquelResultadoEnum avaliarResultado(PowerUpEntidade pupEscolhido, Sprite sprSorteado)

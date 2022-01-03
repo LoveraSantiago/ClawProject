@@ -2,8 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
-{
-    private string tipoGame;
+{   
     private ProdutorDeEvento<CacaNiquelEventoDto> produtorDeEvento;
     private CacaNiquel cacaNiquel;
     private InputGame inputGame;
@@ -15,8 +14,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     }
 
     public void configuradoPeloLevel(string tipoGame, CacaNiquelDto cacaNiquelDto)
-    {
-        this.tipoGame = tipoGame;
+    {   
         cacaNiquel = new CacaNiquel(cacaNiquelDto);
         cacaNiquel.configuradoPeloLevel(tipoGame);
     }
@@ -58,9 +56,9 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
         cacaNiquel.passarResultadosParaGrupoDisplay(pupEscolhido, resultadosSprs, grupoDisplays);
-        CacaNiquelResultadoEnum[] resultados = cacaNiquel.montarResultados(pupEscolhido, resultadosSprs);
 
-        produtorDeEvento.produziuEvento(new CacaNiquelEventoDto(tipoGame, resultadosSprs, resultados));       
+        CacaNiquelEventoDto evento = cacaNiquel.montarResultados(pupEscolhido, resultadosSprs);        
+        produtorDeEvento.produziuEvento(evento);       
     }       
 
     ProdutorDeEvento<CacaNiquelEventoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
