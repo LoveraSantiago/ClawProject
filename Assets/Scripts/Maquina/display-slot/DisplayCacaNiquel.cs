@@ -60,30 +60,10 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
         cacaNiquel.passarResultadosParaGrupoDisplay(pupEscolhido, resultadosSprs, grupoDisplays);
-        RESULTADO_CACANIQUEL[] resultados = new RESULTADO_CACANIQUEL[] {
-            avaliarResultado(pupEscolhido, resultadosSprs[0], displaysSlotsDto),
-            avaliarResultado(pupEscolhido, resultadosSprs[1], displaysSlotsDto),
-            avaliarResultado(pupEscolhido, resultadosSprs[2], displaysSlotsDto)};
+        RESULTADO_CACANIQUEL[] resultados = cacaNiquel.montarResultados(pupEscolhido, resultadosSprs, displaysSlotsDto);
 
         produtorDeEvento.produziuEvento(new CacaNiquelResult(tipoGame, resultadosSprs, resultados));       
-    }    
-
-    private RESULTADO_CACANIQUEL avaliarResultado(
-        PowerUpEntidade pupEscolhido, Sprite sprSorteado, DisplaysSlotsDto displaysSlotsDto)
-    {
-        if(sprSorteado == pupEscolhido.sprPowerUp)
-        {
-            return RESULTADO_CACANIQUEL.SUCESSO;
-        }
-        else if(sprSorteado == displaysSlotsDto.SprVazio)
-        {
-            return RESULTADO_CACANIQUEL.FAIL;
-        }
-        else
-        {
-            return RESULTADO_CACANIQUEL.COIN;
-        }
-    }
+    }       
 
     ProdutorDeEvento<CacaNiquelResult> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {

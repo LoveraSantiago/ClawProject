@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CacaNiquel 
@@ -68,4 +66,30 @@ public class CacaNiquel
         }
     }
 
+    public DisplayCacaNiquel.RESULTADO_CACANIQUEL[] montarResultados(PowerUpEntidade pupEscolhido, Sprite[] resultadosSprs, DisplaysSlotsDto displaysSlotsDto)
+    {
+        DisplayCacaNiquel.RESULTADO_CACANIQUEL[] resultados = new DisplayCacaNiquel.RESULTADO_CACANIQUEL[] {
+            avaliarResultado(pupEscolhido, resultadosSprs[0], displaysSlotsDto),
+            avaliarResultado(pupEscolhido, resultadosSprs[1], displaysSlotsDto),
+            avaliarResultado(pupEscolhido, resultadosSprs[2], displaysSlotsDto)};
+
+        return resultados;
+    }
+
+    private DisplayCacaNiquel.RESULTADO_CACANIQUEL avaliarResultado(
+        PowerUpEntidade pupEscolhido, Sprite sprSorteado, DisplaysSlotsDto displaysSlotsDto)
+    {
+        if (sprSorteado == pupEscolhido.sprPowerUp)
+        {
+            return DisplayCacaNiquel.RESULTADO_CACANIQUEL.SUCESSO;
+        }
+        else if (sprSorteado == displaysSlotsDto.SprVazio)
+        {
+            return DisplayCacaNiquel.RESULTADO_CACANIQUEL.FAIL;
+        }
+        else
+        {
+            return DisplayCacaNiquel.RESULTADO_CACANIQUEL.COIN;
+        }
+    }
 }
