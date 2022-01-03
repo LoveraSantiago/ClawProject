@@ -14,10 +14,10 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
         displayCacaNiquel  = new DisplayCacaNiquel(inputGame);
     }
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido)
+    public void configuradoPeloLevel(AbstractLevel levelEscolhido, DisplaysSlotsDto displaysSlotsDto)
     {        
         grupoDisplays.colorirDisplays(levelEscolhido.getDicionarioDeCores());
-        displayCacaNiquel.configuradoPeloLevel(levelEscolhido.getTipoGameDesc());
+        displayCacaNiquel.configuradoPeloLevel(levelEscolhido.getTipoGameDesc(), displaysSlotsDto.CacaNiquelDto);
     }
 
     public void iniciar()

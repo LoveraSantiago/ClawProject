@@ -88,7 +88,7 @@ public class DisplayDeSlot
     
     public IEnumerator mostrarSprNone(DisplaysSlotsDto displaysSlotsDto, Executor executor)
     {
-        singleDisplaySlotDto.SlotSpriteCima.sprite = displaysSlotsDto.SprVazio;
+        singleDisplaySlotDto.SlotSpriteCima.sprite = displaysSlotsDto.SprNone;
         singleDisplaySlotDto.SlotSpriteCima.color = Color.red;
         yield return slots.descerSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);
         Debug.Log("Finalizado mostrado none");

@@ -11,13 +11,13 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     public DisplayCacaNiquel(InputGame inputGame)
     {
         this.inputGame = inputGame;
-        produtorDeEvento = new ProdutorDeEvento<CacaNiquelEventoDto>();
-        cacaNiquel = new CacaNiquel();
+        produtorDeEvento = new ProdutorDeEvento<CacaNiquelEventoDto>();        
     }
 
-    public void configuradoPeloLevel(string tipoGame)
+    public void configuradoPeloLevel(string tipoGame, CacaNiquelDto cacaNiquelDto)
     {
         this.tipoGame = tipoGame;
+        cacaNiquel = new CacaNiquel(cacaNiquelDto);
         cacaNiquel.configuradoPeloLevel(tipoGame);
     }
 

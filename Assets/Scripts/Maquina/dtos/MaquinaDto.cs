@@ -10,7 +10,7 @@ public class MaquinaDto
     [Space(5)]
     [SerializeField] private JoystickDto joystickDto;    
     [Space(5)]    
-    [SerializeField] private DisplaysSlotsDto displaysSlotsDto;
+    [SerializeField] private DisplaysSlotsDto displaysSlotsDto;    
     [Space(5)]
     [SerializeField] private DisplayTimerDto displayTimerDto;
     [Space(5)]
@@ -35,7 +35,8 @@ public class MaquinaDto
     public Transform ReferenciaChao { get { return referenciaChao; } }
     public JoystickDto JoystickDto { get { return joystickDto; } }
 
-    public DisplaysSlotsDto DisplaysSlotsDto { get { return displaysSlotsDto; } }    
+    public DisplaysSlotsDto DisplaysSlotsDto { get { return displaysSlotsDto; } }        
+
     public DisplayDeScoreDto DisplayDeScoreDto { get { return displayDeScoreDto; } }
     public DisplayTimerDto DisplayTimerDto { get { return displayTimerDto; } }
     

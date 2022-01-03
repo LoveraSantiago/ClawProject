@@ -32,7 +32,7 @@ public class MainGameManagers
     {
         garraManager     .configuradoPeloLevel(mainDto.GarraDto, levelEscolhido);
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
-        maquinaManager   .configuradoPeloLevel(levelEscolhido);
+        maquinaManager   .configuradoPeloLevel(levelEscolhido, mainDto.MaquinaDto);
         uiManager        .configurandoLevel(levelEscolhido);
 
         powerUpManager.configurarGosPowerUps(

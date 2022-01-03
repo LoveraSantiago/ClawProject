@@ -55,11 +55,11 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             .addArcoIrisConjunto(chao);        
     }
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido)
+    public void configuradoPeloLevel(AbstractLevel levelEscolhido, MaquinaDto maquinaDto)
     {
         botoesPowerUp.configuradoPeloLevel(levelEscolhido);
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
-        displaysDeSlots.configuradoPeloLevel(levelEscolhido);
+        displaysDeSlots.configuradoPeloLevel(levelEscolhido, maquinaDto.DisplaysSlotsDto);
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
         vigaEsquerda.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         vigaDireita.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());

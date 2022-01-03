@@ -3,6 +3,12 @@ using UnityEngine;
 public class CacaNiquel 
 {
     private string tipoGame;
+    private CacaNiquelDto cacaNiquelDto;
+
+    public CacaNiquel(CacaNiquelDto cacaNiquelDto)
+    {
+        this.cacaNiquelDto = cacaNiquelDto;
+    }
 
     public void configuradoPeloLevel(string tipoGame)
     {
@@ -16,9 +22,9 @@ public class CacaNiquel
             int indicePup = PlayerPrefsPup.recuperarIndicePup();
             PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
-            Sprite[] spritesSlot1 = new Sprite[] { pupEscolhido.sprPowerUp, displaysSlotsDto.SprVazio };
-            Sprite[] spritesSlot2 = new Sprite[] { pupEscolhido.sprPowerUp, displaysSlotsDto.SprVazio };
-            Sprite[] spritesSlot3 = new Sprite[] { pupEscolhido.sprPowerUp, displaysSlotsDto.SprVazio, displaysSlotsDto.SprMoeda };
+            Sprite[] spritesSlot1 = new Sprite[] { pupEscolhido.sprPowerUp, cacaNiquelDto.SprVazio};
+            Sprite[] spritesSlot2 = new Sprite[] { pupEscolhido.sprPowerUp, cacaNiquelDto.SprVazio};
+            Sprite[] spritesSlot3 = new Sprite[] { pupEscolhido.sprPowerUp, cacaNiquelDto.SprVazio, cacaNiquelDto.SprMoeda};
 
             Sprite[][] allSrites = new Sprite[][] { spritesSlot1, spritesSlot2, spritesSlot3 };
             return allSrites;
@@ -49,7 +55,7 @@ public class CacaNiquel
     {
         if (LevelUtils.isCacaNiquelSingleLevel(tipoGame))
         {
-            if (resultados[2] == grupoDisplays.displaysSlotsDto.SprMoeda)
+            if (resultados[2] == cacaNiquelDto.SprMoeda)
             {
                 grupoDisplays.ligarGlowLuz();
             }
@@ -83,7 +89,7 @@ public class CacaNiquel
         {
             return CacaNiquelResultadoEnum.SUCESSO;
         }
-        else if (sprSorteado == displaysSlotsDto.SprVazio)
+        else if (sprSorteado == cacaNiquelDto.SprVazio)
         {
             return CacaNiquelResultadoEnum.FAIL;
         }
