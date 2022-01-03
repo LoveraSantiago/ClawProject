@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CacaNiquelResult    
+public class CacaNiquelResultadoDto    
 {
     public bool isInicio { get; private set; }
     public bool isFinalizado { get { return !isInicio; } }
@@ -9,12 +9,12 @@ public class CacaNiquelResult
     private string tipoGame;
     private DisplayCacaNiquel.RESULTADO_CACANIQUEL[] resultados;
 
-    public CacaNiquelResult()
+    public CacaNiquelResultadoDto()
     {
         isInicio = true;
     }
 
-    public CacaNiquelResult(
+    public CacaNiquelResultadoDto(
         string tipoGame, Sprite[] sprResultados, DisplayCacaNiquel.RESULTADO_CACANIQUEL[] resultados)
     {
         this.tipoGame = tipoGame;

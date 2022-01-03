@@ -1,9 +1,9 @@
 public class ModalFimCacaNiquelIndividual : AbstractModalFim
 {
-    private CacaNiquelResult evento;
+    private CacaNiquelResultadoDto evento;
     private LinhaModalPontos[] linhasModal;
 
-    public ModalFimCacaNiquelIndividual(CacaNiquelResult evento, LinhaModalPontos[] linhasModal)
+    public ModalFimCacaNiquelIndividual(CacaNiquelResultadoDto evento, LinhaModalPontos[] linhasModal)
     {
         this.evento = evento;
         this.linhasModal = linhasModal;
@@ -39,7 +39,7 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         modalManipulacao.setScoreAtual("Power Ups Ganhos");        
     }
 
-    private void montarLinhaPupSingle(int indice, CacaNiquelResult evento, PowerUpEntidade pup)
+    private void montarLinhaPupSingle(int indice, CacaNiquelResultadoDto evento, PowerUpEntidade pup)
     {
 
         if (evento.isResultSucesso(indice))

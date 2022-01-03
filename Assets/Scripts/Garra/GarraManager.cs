@@ -118,7 +118,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         }
     }
 
-    void ProdutorConsumidoresDeEvento<CacaNiquelResult>.ConsumidorEvento.consumirEvento(CacaNiquelResult evento)
+    void ProdutorConsumidoresDeEvento<CacaNiquelResultadoDto>.ConsumidorEvento.consumirEvento(CacaNiquelResultadoDto evento)
     {
         if (evento.isInicio)
         {

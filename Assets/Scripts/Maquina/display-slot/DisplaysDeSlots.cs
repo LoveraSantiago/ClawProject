@@ -53,7 +53,7 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
         return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEvento();
     }
 
-    ProdutorDeEvento<CacaNiquelResult> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<CacaNiquelResultadoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoCacaNiquel.ProdutorEvento)displayCacaNiquel).getProdutorDeEvento();
     }

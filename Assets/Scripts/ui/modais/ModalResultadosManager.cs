@@ -39,7 +39,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         }
     }
 
-    private void mostrarModalCacaNiquelSinglePup(CacaNiquelResult evento)
+    private void mostrarModalCacaNiquelSinglePup(CacaNiquelResultadoDto evento)
     {
         if (!mostrandoModal)
         {
@@ -48,7 +48,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         }
     }   
 
-    private void mostrarModalCacaNiquelAllPups(CacaNiquelResult evento)
+    private void mostrarModalCacaNiquelAllPups(CacaNiquelResultadoDto evento)
     {
         if (!mostrandoModal)
         {
@@ -106,7 +106,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         }
     }    
 
-    void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelResult evento)
+    void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelResultadoDto evento)
     {
         if (evento.isFinalizado)
         {
