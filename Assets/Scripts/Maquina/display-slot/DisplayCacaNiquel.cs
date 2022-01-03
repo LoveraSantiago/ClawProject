@@ -36,7 +36,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         grupoDisplays.ligarGlowLuz();
 
         DisplaysSlotsDto displaysSlotsDto = grupoDisplays.displaysSlotsDto;
-        Sprite[][] allSrites = cacaNiquel.montarSpritesTipoCacaNiquel(displaysSlotsDto);
+        Sprite[][] allSrites = cacaNiquel.montarSpritesTipoCacaNiquel();
         grupoDisplays.ligarCacaNiquel(allSrites[0], allSrites[1], allSrites[2]);
         yield return new WaitForSeconds(0.1f);
 

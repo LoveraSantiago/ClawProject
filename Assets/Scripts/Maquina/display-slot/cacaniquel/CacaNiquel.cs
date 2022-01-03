@@ -15,7 +15,7 @@ public class CacaNiquel
         this.tipoGame = tipoGame;
     }
 
-    public Sprite[][] montarSpritesTipoCacaNiquel(DisplaysSlotsDto displaysSlotsDto)
+    public Sprite[][] montarSpritesTipoCacaNiquel()
     {
         if (LevelUtils.isCacaNiquelSingleLevel(tipoGame))
         {
