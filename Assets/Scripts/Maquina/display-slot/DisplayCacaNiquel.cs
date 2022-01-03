@@ -58,7 +58,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
         cacaNiquel.passarResultadosParaGrupoDisplay(pupEscolhido, resultadosSprs, grupoDisplays);
-        CacaNiquelResultado[] resultados = cacaNiquel.montarResultados(pupEscolhido, resultadosSprs, displaysSlotsDto);
+        CacaNiquelResultadoEnum[] resultados = cacaNiquel.montarResultados(pupEscolhido, resultadosSprs, displaysSlotsDto);
 
         produtorDeEvento.produziuEvento(new CacaNiquelEventoDto(tipoGame, resultadosSprs, resultados));       
     }       
