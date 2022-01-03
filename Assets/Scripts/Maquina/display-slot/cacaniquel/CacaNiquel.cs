@@ -66,9 +66,9 @@ public class CacaNiquel
         }
     }
 
-    public DisplayCacaNiquel.RESULTADO_CACANIQUEL[] montarResultados(PowerUpEntidade pupEscolhido, Sprite[] resultadosSprs, DisplaysSlotsDto displaysSlotsDto)
+    public CacaNiquelResultado[] montarResultados(PowerUpEntidade pupEscolhido, Sprite[] resultadosSprs, DisplaysSlotsDto displaysSlotsDto)
     {
-        DisplayCacaNiquel.RESULTADO_CACANIQUEL[] resultados = new DisplayCacaNiquel.RESULTADO_CACANIQUEL[] {
+        CacaNiquelResultado[] resultados = new CacaNiquelResultado[] {
             avaliarResultado(pupEscolhido, resultadosSprs[0], displaysSlotsDto),
             avaliarResultado(pupEscolhido, resultadosSprs[1], displaysSlotsDto),
             avaliarResultado(pupEscolhido, resultadosSprs[2], displaysSlotsDto)};
@@ -76,20 +76,20 @@ public class CacaNiquel
         return resultados;
     }
 
-    private DisplayCacaNiquel.RESULTADO_CACANIQUEL avaliarResultado(
+    private CacaNiquelResultado avaliarResultado(
         PowerUpEntidade pupEscolhido, Sprite sprSorteado, DisplaysSlotsDto displaysSlotsDto)
     {
         if (sprSorteado == pupEscolhido.sprPowerUp)
         {
-            return DisplayCacaNiquel.RESULTADO_CACANIQUEL.SUCESSO;
+            return CacaNiquelResultado.SUCESSO;
         }
         else if (sprSorteado == displaysSlotsDto.SprVazio)
         {
-            return DisplayCacaNiquel.RESULTADO_CACANIQUEL.FAIL;
+            return CacaNiquelResultado.FAIL;
         }
         else
         {
-            return DisplayCacaNiquel.RESULTADO_CACANIQUEL.COIN;
+            return CacaNiquelResultado.COIN;
         }
     }
 }

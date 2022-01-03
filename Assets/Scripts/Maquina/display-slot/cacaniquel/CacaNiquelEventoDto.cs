@@ -7,7 +7,7 @@ public class CacaNiquelEventoDto
     public Sprite[] sprResultados { get; private set; }
 
     private string tipoGame;
-    private DisplayCacaNiquel.RESULTADO_CACANIQUEL[] resultados;
+    private CacaNiquelResultado[] resultados;
 
     public CacaNiquelEventoDto()
     {
@@ -15,7 +15,7 @@ public class CacaNiquelEventoDto
     }
 
     public CacaNiquelEventoDto(
-        string tipoGame, Sprite[] sprResultados, DisplayCacaNiquel.RESULTADO_CACANIQUEL[] resultados)
+        string tipoGame, Sprite[] sprResultados, CacaNiquelResultado[] resultados)
     {
         this.tipoGame = tipoGame;
         this.sprResultados = sprResultados;
@@ -24,12 +24,12 @@ public class CacaNiquelEventoDto
 
     public bool isResultSucesso(int indice)
     {
-        return resultados[indice] == DisplayCacaNiquel.RESULTADO_CACANIQUEL.SUCESSO;
+        return resultados[indice] == CacaNiquelResultado.SUCESSO;
     }
 
     public bool isResultFail(int indice)
     {
-        return resultados[indice] == DisplayCacaNiquel.RESULTADO_CACANIQUEL.FAIL;
+        return resultados[indice] == CacaNiquelResultado.FAIL;
     }
 
     public bool isTripleSucess()

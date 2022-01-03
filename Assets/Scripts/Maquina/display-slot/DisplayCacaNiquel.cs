@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 {
-    public enum RESULTADO_CACANIQUEL { SUCESSO, FAIL, COIN };
-
     private string tipoGame;
     private ProdutorDeEvento<CacaNiquelEventoDto> produtorDeEvento;
     private CacaNiquel cacaNiquel;
@@ -60,7 +58,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
         cacaNiquel.passarResultadosParaGrupoDisplay(pupEscolhido, resultadosSprs, grupoDisplays);
-        RESULTADO_CACANIQUEL[] resultados = cacaNiquel.montarResultados(pupEscolhido, resultadosSprs, displaysSlotsDto);
+        CacaNiquelResultado[] resultados = cacaNiquel.montarResultados(pupEscolhido, resultadosSprs, displaysSlotsDto);
 
         produtorDeEvento.produziuEvento(new CacaNiquelEventoDto(tipoGame, resultadosSprs, resultados));       
     }       
