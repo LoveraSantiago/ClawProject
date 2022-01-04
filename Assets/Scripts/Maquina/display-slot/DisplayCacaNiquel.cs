@@ -4,12 +4,10 @@ using UnityEngine;
 public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 {   
     private ProdutorDeEvento<CacaNiquelEventoDto> produtorDeEvento;
-    private CacaNiquel cacaNiquel;
-    private InputGame inputGame;
+    private CacaNiquel cacaNiquel;    
 
-    public DisplayCacaNiquel(InputGame inputGame)
-    {
-        this.inputGame = inputGame;
+    public DisplayCacaNiquel()
+    {   
         produtorDeEvento = new ProdutorDeEvento<CacaNiquelEventoDto>();        
     }
 
@@ -19,15 +17,15 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         cacaNiquel.configuradoPeloLevel(tipoGame);
     }
 
-    public void iniciar(GrupoDisplays grupoDisplays)
+    public void iniciar(GrupoDisplays grupoDisplays, InputGame inputGame)
     {
         if (LevelUtils.isCacaNiquelLevel(tipoGame))
         {
-            Utils.MonoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel(grupoDisplays));
+            Utils.MonoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel(grupoDisplays, inputGame));
         }
     }   
 
-    private IEnumerator iniciarDisplayCacaNiquel(GrupoDisplays grupoDisplays)
+    private IEnumerator iniciarDisplayCacaNiquel(GrupoDisplays grupoDisplays, InputGame inputGame)
     {
         yield return new WaitForSeconds(0.5f);
         produtorDeEvento.produziuEvento(new CacaNiquelEventoDto());

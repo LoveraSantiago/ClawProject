@@ -27,11 +27,11 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     private TudoDeSaida       tuboDeSaida;
     private Chao              chao;
 
-    public MaquinaManager(MaquinaDto maquinaDto, InputGame inputGame)
+    public MaquinaManager(MaquinaDto maquinaDto)
     {
         partesDto = maquinaDto.PartesDto;
 
-        displaysDeSlots   = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto, inputGame);        
+        displaysDeSlots   = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto);        
         displayDeScores   = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
         displayTimer      = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick          = new Joystick(maquinaDto.JoystickDto);
@@ -74,10 +74,10 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());
     }
 
-    public void start()
+    public void start(InputGame inputGame)
     {
         displayTimer.iniciarContagemTempo();
-        displaysDeSlots.iniciar();
+        displaysDeSlots.iniciar(inputGame);
     }
 
     public void update(MaquinaDto maquinaDto, InputGame inputGame)

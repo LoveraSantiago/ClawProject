@@ -6,12 +6,12 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
     public DisplaysDeColetados displayDeColetados { get; private set; }
     private DisplayCacaNiquel displayCacaNiquel;
 
-    public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto, InputGame inputGame)
+    public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto)
     {
         grupoDisplays = new GrupoDisplays(displaysSlotsDto, displaysSlotsDto.SingleDisplaySlotDto);
 
         displayDeColetados = new DisplaysDeColetados(displaysSlotsDto, grupoDisplays);
-        displayCacaNiquel  = new DisplayCacaNiquel(inputGame);
+        displayCacaNiquel  = new DisplayCacaNiquel();
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido, DisplaysSlotsDto displaysSlotsDto)
@@ -20,9 +20,9 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
         displayCacaNiquel.configuradoPeloLevel(levelEscolhido.getTipoGameDesc(), displaysSlotsDto.CacaNiquelDto);
     }
 
-    public void iniciar()
+    public void iniciar(InputGame inputGame)
     {
-        displayCacaNiquel.iniciar(grupoDisplays);
+        displayCacaNiquel.iniciar(grupoDisplays, inputGame);
     }
 
     public ArcoIrisConjunto getDisplayColetadoGlow()
