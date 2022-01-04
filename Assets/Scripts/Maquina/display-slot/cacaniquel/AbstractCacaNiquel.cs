@@ -1,19 +1,13 @@
 using UnityEngine;
 
 public abstract class AbstractCacaNiquel 
-{
-    private string tipoGame;
+{   
     private CacaNiquelDto cacaNiquelDto;
 
     public AbstractCacaNiquel(CacaNiquelDto cacaNiquelDto)
     {
         this.cacaNiquelDto = cacaNiquelDto;
-    }
-
-    public void configuradoPeloLevel(string tipoGame)
-    {
-        this.tipoGame = tipoGame;
-    }
+    }  
 
     public Sprite[][] montarSpritesTipoCacaNiquel()
     {
