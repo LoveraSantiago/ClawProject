@@ -18,11 +18,8 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     }
 
     public void iniciar(GrupoDisplays grupoDisplays, InputGame inputGame)
-    {
-        if (LevelUtils.isCacaNiquelLevel(tipoGame))
-        {
-            Utils.MonoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel(grupoDisplays, inputGame));
-        }
+    {   
+        Utils.MonoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel(grupoDisplays, inputGame));
     }   
 
     private IEnumerator iniciarDisplayCacaNiquel(GrupoDisplays grupoDisplays, InputGame inputGame)
