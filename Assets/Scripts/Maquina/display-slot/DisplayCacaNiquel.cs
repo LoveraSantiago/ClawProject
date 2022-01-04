@@ -4,17 +4,23 @@ using UnityEngine;
 public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 {   
     private ProdutorDeEvento<CacaNiquelEventoDto> produtorDeEvento;
-    private CacaNiquel cacaNiquel;    
+    private AbstractCacaNiquel cacaNiquel;    
 
     public DisplayCacaNiquel()
     {   
         produtorDeEvento = new ProdutorDeEvento<CacaNiquelEventoDto>();        
     }
 
-    public void configuradoPeloLevel(string tipoGame, CacaNiquelDto cacaNiquelDto)
-    {   
-        cacaNiquel = new CacaNiquel(cacaNiquelDto);
-        cacaNiquel.configuradoPeloLevel(tipoGame);
+    public void configuradoPeloLevel(AbstractLevel levelEscolhido, CacaNiquelDto cacaNiquelDto)
+    {
+        if (LevelUtils.isCacaNiquelGeralLevel(levelEscolhido))
+        {
+            cacaNiquel = new CacaNiquelGeral();
+        }
+        else
+        {
+            cacaNiquel = new CacaNiquelIndividual();
+        }        
     }
 
     public void iniciar(GrupoDisplays grupoDisplays, InputGame inputGame)

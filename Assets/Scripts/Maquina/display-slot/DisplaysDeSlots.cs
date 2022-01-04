@@ -18,7 +18,7 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
         if (LevelUtils.isCacaNiquelLevel(levelEscolhido))
         {
             displayCacaNiquel = new DisplayCacaNiquel();
-            displayCacaNiquel.configuradoPeloLevel(levelEscolhido.getTipoGameDesc(), displaysSlotsDto.CacaNiquelDto);
+            displayCacaNiquel.configuradoPeloLevel(levelEscolhido, displaysSlotsDto.CacaNiquelDto);
         }
     }
 

@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class CacaNiquel 
+public abstract class AbstractCacaNiquel 
 {
     private string tipoGame;
     private CacaNiquelDto cacaNiquelDto;
 
-    public CacaNiquel(CacaNiquelDto cacaNiquelDto)
+    public AbstractCacaNiquel(CacaNiquelDto cacaNiquelDto)
     {
         this.cacaNiquelDto = cacaNiquelDto;
     }
