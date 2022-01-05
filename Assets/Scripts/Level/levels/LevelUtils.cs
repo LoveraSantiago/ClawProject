@@ -25,7 +25,7 @@ public class LevelUtils
     public static bool isCacaNiquelLevel(AbstractLevel level)
     {
         return isCacaNiquelGeralLevel(level) ||
-            isCacaNiquelSingleLevel(level);        
+               isCacaNiquelSingleLevel(level);        
     }
 
     public static bool isPupLevel(AbstractLevel level)

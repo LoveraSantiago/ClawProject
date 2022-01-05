@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CacaNiquelGeral : AbstractCacaNiquel
 {
-    // Start is called before the first frame update
-    void Start()
+    public CacaNiquelGeral(CacaNiquelDto cacaNiquelDto) 
+        : base(cacaNiquelDto){}
+
+    public override Sprite[][] montarSpritesTipoCacaNiquel()
     {
-        
+        Sprite[] sprites = PowerUpHelper.getAllSpritesPowerUp();
+        Sprite[][] allSprites = new Sprite[][] { sprites, sprites, sprites };
+        return allSprites;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override Sprite getSprDeSucesso()
     {
-        
+        return null;
+    }
+
+    public override void passarResultadosParaGrupoDisplay(PowerUpEntidade pupEscolhido, Sprite[] resultados, GrupoDisplays grupoDisplays)
+    {        
+    }
+
+    protected override CacaNiquelEventoDto getEvento(Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
+    {
+        return CacaNiquelEventoDto.ofGeral(sprResultados, resultados);
     }
 }

@@ -6,7 +6,7 @@ public class CacaNiquelEventoDto
     public bool isFinalizado { get { return !isInicio; } }
     public Sprite[] sprResultados { get; private set; }
 
-    private string tipoGame;
+    private bool isSingle;
     private CacaNiquelResultadoEnum[] resultados;
 
     public CacaNiquelEventoDto()
@@ -14,10 +14,9 @@ public class CacaNiquelEventoDto
         isInicio = true;
     }
 
-    public CacaNiquelEventoDto(
-        string tipoGame, Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
+    private CacaNiquelEventoDto(bool isSingle, Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
     {
-        this.tipoGame = tipoGame;
+        this.isSingle = isSingle;
         this.sprResultados = sprResultados;
         this.resultados = resultados;
     }
@@ -48,11 +47,23 @@ public class CacaNiquelEventoDto
 
     public bool isPupGeral()
     {
-        return LevelUtils.isCacaNiquelGeralLevel(tipoGame);
+        return !isPupSingle();
     }
 
     public bool isPupSingle()
     {
-        return LevelUtils.isCacaNiquelSingleLevel(tipoGame);
+        return isSingle;
+    }
+
+    public static CacaNiquelEventoDto ofSingle(Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
+    {
+        CacaNiquelEventoDto evento = new CacaNiquelEventoDto(true, sprResultados, resultados);
+        return evento;
+    }
+
+    public static CacaNiquelEventoDto ofGeral(Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
+    {
+        CacaNiquelEventoDto evento = new CacaNiquelEventoDto(false, sprResultados, resultados);
+        return evento;
     }
 }

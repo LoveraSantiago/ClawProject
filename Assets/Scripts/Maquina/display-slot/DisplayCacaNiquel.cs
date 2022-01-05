@@ -15,11 +15,11 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     {
         if (LevelUtils.isCacaNiquelGeralLevel(levelEscolhido))
         {
-            cacaNiquel = new CacaNiquelGeral();
+            cacaNiquel = new CacaNiquelGeral(cacaNiquelDto);
         }
         else
         {
-            cacaNiquel = new CacaNiquelIndividual();
+            cacaNiquel = new CacaNiquelIndividual(cacaNiquelDto);
         }        
     }
 
