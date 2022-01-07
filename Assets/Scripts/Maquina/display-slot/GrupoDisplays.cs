@@ -93,7 +93,7 @@ public class GrupoDisplays : ArcoIrisConjunto
         displayDeSlot[2].ligarCacaNiquel(sprSlot3);
     }
 
-    public void pararCacaNiquel(int indice, Sprite[] sprSlots, Sprite sprSucesso)
+    public void pararSlotCacaNiquel(int indice, Sprite[] sprSlots, Sprite sprSucesso)
     {
         displayDeSlot[indice].pararCacaNiquel(sprSlots, sprSucesso);
     }

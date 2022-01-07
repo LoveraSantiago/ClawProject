@@ -44,7 +44,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         {
             if (inputGame.aconteceuTap())
             {                
-                grupoDisplays.pararCacaNiquel(clicado, allSrites[clicado], cacaNiquel.getSprDeSucesso());
+                grupoDisplays.pararSlotCacaNiquel(clicado, allSrites[clicado], cacaNiquel.getSprDeSucesso());
                 clicado++;
             }            
             yield return null;
