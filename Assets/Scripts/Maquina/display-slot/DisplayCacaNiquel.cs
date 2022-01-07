@@ -31,7 +31,8 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     private IEnumerator iniciarDisplayCacaNiquel(GrupoDisplays grupoDisplays, InputGame inputGame)
     {
         yield return new WaitForSeconds(0.5f);
-        produtorDeEvento.produziuEvento(new CacaNiquelEventoDto());
+        CacaNiquelEventoDto eventoInicio = new CacaNiquelEventoDto();
+        produtorDeEvento.produziuEvento(eventoInicio);
         grupoDisplays.ligarGlowLuz();
 
         DisplaysSlotsDto displaysSlotsDto = grupoDisplays.displaysSlotsDto;
@@ -39,12 +40,21 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         grupoDisplays.ligarCacaNiquel(allSrites[0], allSrites[1], allSrites[2]);
         yield return new WaitForSeconds(0.1f);
 
+        int indicePup = PlayerPrefsPup.recuperarIndicePup();
+        PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
+
         int clicado = 0;
         while(clicado < 3)
         {
             if (inputGame.aconteceuTap())
             {                
                 grupoDisplays.pararSlotCacaNiquel(clicado, allSrites[clicado], cacaNiquel.getSprDeSucesso());
+
+                Sprite sprSorteado = grupoDisplays.getResultadoCacaNiquel(clicado);
+                CacaNiquelResultadoEnum resultado = cacaNiquel.avaliarResultado(pupEscolhido, sprSorteado);
+                CacaNiquelEventoDto eventoEmAndamento = CacaNiquelEventoDto.ofEmAndamento(resultado);
+                produtorDeEvento.produziuEvento(eventoEmAndamento);
+
                 clicado++;
             }            
             yield return null;
@@ -52,14 +62,12 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 
         yield return new WaitForSeconds(0.1f);
         Sprite[] resultadosSprs = grupoDisplays.getResultadosCacaNiquel();
-
-        int indicePup = PlayerPrefsPup.recuperarIndicePup();
-        PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
+        
 
         cacaNiquel.passarResultadosParaGrupoDisplay(pupEscolhido, resultadosSprs, grupoDisplays);
 
-        CacaNiquelEventoDto evento = cacaNiquel.montarResultados(pupEscolhido, resultadosSprs);        
-        produtorDeEvento.produziuEvento(evento);       
+        CacaNiquelEventoDto eventoFim = cacaNiquel.montarResultados(pupEscolhido, resultadosSprs);        
+        produtorDeEvento.produziuEvento(eventoFim);       
     }       
 
     ProdutorDeEvento<CacaNiquelEventoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()

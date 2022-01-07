@@ -15,18 +15,25 @@ public class CacaNiquelEventoDto
 
     public Sprite[] sprResultados { get; private set; }
     private CacaNiquelResultadoEnum[] resultados;
+    private CacaNiquelResultadoEnum resultado;
 
     public CacaNiquelEventoDto()
     {
         estadoAtual = ESTADO_INICIO;
     }
 
-    private CacaNiquelEventoDto(bool isSingle, int estadoAtual, Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
+    private CacaNiquelEventoDto(bool isSingle, Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
     {
-        this.estadoAtual = estadoAtual;
-        this.isSingle = isSingle;
+        estadoAtual   = ESTADO_FIM;
+        this.isSingle      = isSingle;
         this.sprResultados = sprResultados;
-        this.resultados = resultados;
+        this.resultados    = resultados;
+    }
+
+    private CacaNiquelEventoDto(CacaNiquelResultadoEnum resultado)
+    {
+        estadoAtual = ESTADO_ANDAMENTO;
+        this.resultado = resultado;
     }
 
     public bool isResultSucesso(int indice)
@@ -65,25 +72,19 @@ public class CacaNiquelEventoDto
 
     public static CacaNiquelEventoDto ofSingle(Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
     {
-        CacaNiquelEventoDto evento = new CacaNiquelEventoDto(true, ESTADO_FIM, sprResultados, resultados);
+        CacaNiquelEventoDto evento = new CacaNiquelEventoDto(true, sprResultados, resultados);
         return evento;
     }
 
-    public static CacaNiquelEventoDto ofEmAndamentoSingle(Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
+    public static CacaNiquelEventoDto ofEmAndamento(CacaNiquelResultadoEnum resultado)
     {
-        CacaNiquelEventoDto evento = new CacaNiquelEventoDto(true, ESTADO_ANDAMENTO, sprResultados, resultados);
+        CacaNiquelEventoDto evento = new CacaNiquelEventoDto(resultado);
         return evento;
     }
 
     public static CacaNiquelEventoDto ofGeral(Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
     {
-        CacaNiquelEventoDto evento = new CacaNiquelEventoDto(false, ESTADO_FIM, sprResultados, resultados);
+        CacaNiquelEventoDto evento = new CacaNiquelEventoDto(false, sprResultados, resultados);
         return evento;
-    }
-
-    public static CacaNiquelEventoDto ofEmAndamentoGeral(Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
-    {
-        CacaNiquelEventoDto evento = new CacaNiquelEventoDto(false, ESTADO_ANDAMENTO, sprResultados, resultados);
-        return evento;
-    }
+    }    
 }

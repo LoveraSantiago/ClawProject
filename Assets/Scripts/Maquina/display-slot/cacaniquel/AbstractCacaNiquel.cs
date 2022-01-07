@@ -23,9 +23,9 @@ public abstract class AbstractCacaNiquel
 
         CacaNiquelEventoDto evento = getEvento(resultadosSprs, resultados);            
         return evento;
-    }
+    }    
 
-    private CacaNiquelResultadoEnum avaliarResultado(PowerUpEntidade pupEscolhido, Sprite sprSorteado)
+    public CacaNiquelResultadoEnum avaliarResultado(PowerUpEntidade pupEscolhido, Sprite sprSorteado)
     {
         if (sprSorteado == pupEscolhido.sprPowerUp)
         {

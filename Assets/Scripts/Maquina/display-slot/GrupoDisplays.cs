@@ -101,10 +101,15 @@ public class GrupoDisplays : ArcoIrisConjunto
     public Sprite[] getResultadosCacaNiquel()
     {
         return new Sprite[] {
-            displayDeSlot[0].getSprResultCacaNiquel(),
-            displayDeSlot[1].getSprResultCacaNiquel(),
-            displayDeSlot[2].getSprResultCacaNiquel()
+            getResultadoCacaNiquel(0),
+            getResultadoCacaNiquel(1),
+            getResultadoCacaNiquel(2)            
         };
+    }
+
+    public Sprite getResultadoCacaNiquel(int indice)
+    {
+        return displayDeSlot[indice].getSprResultCacaNiquel();
     }
 
     public void ligarGlowFail()
