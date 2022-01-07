@@ -59,13 +59,10 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
             }            
             yield return null;
         }
-
         yield return new WaitForSeconds(0.1f);
-        Sprite[] resultadosSprs = grupoDisplays.getResultadosCacaNiquel();
-        
 
+        Sprite[] resultadosSprs = grupoDisplays.getResultadosCacaNiquel();        
         cacaNiquel.passarResultadosParaGrupoDisplay(pupEscolhido, resultadosSprs, grupoDisplays);
-
         CacaNiquelEventoDto eventoFim = cacaNiquel.montarResultados(pupEscolhido, resultadosSprs);        
         produtorDeEvento.produziuEvento(eventoFim);       
     }       
