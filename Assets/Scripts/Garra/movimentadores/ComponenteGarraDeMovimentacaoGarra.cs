@@ -1,4 +1,4 @@
-public class AbstractMovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
+public abstract class ComponenteGarraDeMovimentacaoGarra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     private static Garra garra;
 
