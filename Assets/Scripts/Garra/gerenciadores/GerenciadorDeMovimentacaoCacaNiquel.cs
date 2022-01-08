@@ -30,7 +30,7 @@ public class GerenciadorDeMovimentacaoCacaNiquel : GerenciadorDeMovimentacao,
 
     public override void garraComemorar()
     {
-        
+        movAtual.playAnimacaoGirando();
     }
 
     public void trocarParaAcaoParado()

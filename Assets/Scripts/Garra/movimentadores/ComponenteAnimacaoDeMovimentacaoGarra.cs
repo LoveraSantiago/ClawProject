@@ -28,7 +28,12 @@ public abstract class ComponenteAnimacaoDeMovimentacaoGarra : ComponenteGarraDeM
     public void playAnimacaoIrPBaixo()
     {
         getGarra().animacao.irParaBaixo();
-    }    
+    }
+    
+    public void playAnimacaoGirando()
+    {
+        getGarra().animacao.girando();
+    }
 
     public bool isPlayAnimacaoComemorando()
     {
