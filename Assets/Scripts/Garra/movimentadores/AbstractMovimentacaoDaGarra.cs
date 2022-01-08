@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class AbstractMovimentacaoDaGarra : ComponenteGarraDeMovimentacaoGarra, 
+public abstract class AbstractMovimentacaoDaGarra : ComponenteAnimacaoDeMovimentacaoGarra, 
                                             AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
@@ -11,47 +11,7 @@ public abstract class AbstractMovimentacaoDaGarra : ComponenteGarraDeMovimentaca
     public virtual void update(InputGame inputGame) { }
     public virtual void fixedUpdate() { }
 
-    public virtual void garraColidiuCom(GameObject gameObject) { }
-
-    public void playAnimacaoComemorar()
-    {
-        getGarra().animacao.comemorar();
-    }
-
-    public void playAnimacaoPiscar()
-    {
-        getGarra().animacao.piscar();
-    }
-
-    public void playAnimacaoIrPDireita()
-    {
-        getGarra().animacao.irParaDireita();
-    }
-
-    public void playAnimacaoIrPEsquerda()
-    {
-        getGarra().animacao.irParaEsquerda();
-    }
-
-    public void playAnimacaoIrPCima()
-    {
-        getGarra().animacao.irParaCima();
-    }
-
-    public void playAnimacaoIrPBaixo()
-    {
-        getGarra().animacao.irParaBaixo();
-    }
-
-    public bool isPlayAnimacaoComemorando()
-    {
-        return getGarra().animacao.isComemorando();
-    }
-
-    public bool isNotPlayAnimacaoComemorando()
-    {
-        return !isPlayAnimacaoComemorando();
-    }
+    public virtual void garraColidiuCom(GameObject gameObject) { }    
 
     protected void parar()
     {
