@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class MovimentacaoDaGarra : ComponenteGarraDeMovimentacaoGarra, 
+public abstract class AbstractMovimentacaoDaGarra : ComponenteGarraDeMovimentacaoGarra, 
                                             AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;

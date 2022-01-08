@@ -1,4 +1,4 @@
-public class MovimentacaoDirecao : MovimentacaoDaGarra
+public class MovimentacaoDirecao : AbstractMovimentacaoDaGarra
 {
     private static int direcao = 1;
 

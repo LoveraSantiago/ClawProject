@@ -1,9 +1,9 @@
 public class GerenciadorDeMovimentacaoCacaNiquel : GerenciadorDeMovimentacao,
                                                    ComunicadorComGerMovCacaNiquel
 {
-    private MovimentacaoDaGarra movParado;
-    private MovimentacaoDaGarra movIrCacaNiquel;
-    private MovimentacaoDaGarra movAtual;
+    private AbstractMovimentacaoDaGarra movParado;
+    private AbstractMovimentacaoDaGarra movIrCacaNiquel;
+    private AbstractMovimentacaoDaGarra movAtual;
 
     public GerenciadorDeMovimentacaoCacaNiquel()
     {

@@ -1,4 +1,4 @@
-public abstract class MovimentacaoDaGarraCacaNiquel : MovimentacaoDaGarra
+public abstract class MovimentacaoDaGarraCacaNiquel : AbstractMovimentacaoDaGarra
 {
     protected static ComunicadorComGerMovCacaNiquel comunicadorComGerMovimentacao;
 

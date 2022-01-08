@@ -19,7 +19,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     public GarraManager(GarraDto garraDto)
     {
-        MovimentacaoDaGarra.configurar(garraDto);
+        AbstractMovimentacaoDaGarra.configurar(garraDto);
     }  
 
     public void configuradoPeloLevel(GarraDto garraDto, AbstractLevel level)
