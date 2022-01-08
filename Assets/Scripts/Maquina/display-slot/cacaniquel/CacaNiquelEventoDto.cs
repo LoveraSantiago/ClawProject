@@ -36,6 +36,11 @@ public class CacaNiquelEventoDto
         this.resultado = resultado;
     }
 
+    public bool isResultSucesso()
+    {
+        return resultado == CacaNiquelResultadoEnum.SUCESSO;
+    }
+
     public bool isResultSucesso(int indice)
     {
         return resultados[indice] == CacaNiquelResultadoEnum.SUCESSO;

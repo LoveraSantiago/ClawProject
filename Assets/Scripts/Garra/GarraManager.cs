@@ -124,6 +124,10 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         {
             gerDeMovAtual.iniciarMovimentacoes();
         }
+        else if (evento.isEmAndamento && evento.isResultSucesso())
+        {
+            gerDeMovAtual.garraComemorar();
+        }
     }
 
     //TODO tentar unificar
