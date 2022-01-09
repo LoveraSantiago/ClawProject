@@ -26,4 +26,14 @@ public abstract class AbstractMovimentacaoDaGarraPowerUp : AbstractMovimentacaoD
     {
         garraInteracaoComPowerUp = null;
     }
+
+    public bool isEstadoSegurandoParado()
+    {
+        return (this is MovimentacaoAgarrandoEmcima) || (this is MovimentacaoParadoPowerUp);
+    }
+
+    public bool isEstadoSegurandoEmCimaMovimentando()
+    {
+        return (this is MovimentacaoAgarrandoEmcimaEmMovimento);
+    }
 }

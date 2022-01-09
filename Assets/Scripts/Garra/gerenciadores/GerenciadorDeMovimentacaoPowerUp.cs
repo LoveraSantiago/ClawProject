@@ -3,26 +3,20 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 {
     private ContadorDeTempo contadorDeFimTempo;//PROBLEMA GRANDE CONTADOR DE TEMPO DA GARRA CONTAR TIMEOUT DE PUP!!!!!!
 
-    private AbstractMovimentacaoDaGarraPowerUp movAtual;        
-    //private MovimentacaoDaGarraPowerUp movSegCima;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
-    private AbstractMovimentacaoDaGarraPowerUp movSegCimaMov;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
-
-    private AbstractMovimentacaoDaGarraPowerUp movParado;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
+    private AbstractMovimentacaoDaGarraPowerUp movAtual;    
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
-        AbstractMovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);                
-        movSegCima     = new MovimentacaoAgarrandoEmcima();
-        movSegCimaMov  = new MovimentacaoAgarrandoEmcimaEmMovimento();        
-        movParado      = new MovimentacaoParadoPowerUp();
+        AbstractMovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);
 
+        trocarParaAcaoParado();
         contadorDeFimTempo = new ContadorDeTempo();
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
     public override void iniciarMovimentacoes()
-    {        
-        movParado.produziuEventoDeDirecao(DirecaoDaGarra.CENTRALIZADA);
+    {
+        movAtual.produziuEventoDeDirecao(DirecaoDaGarra.CENTRALIZADA);        
         trocarParaAcaoVoltarParaCima();
     }    
 
@@ -30,11 +24,11 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     {
         if (contadorDeFimTempo.contarTempoDT())
         {
-            if (isEstadoAtualSegurandoEmCimaMovimentando())
+            if (movAtual.isEstadoSegurandoEmCimaMovimentando())
             {
                 trocarParaAcaoSoltar();
             }
-            else if (isEstadoAtualSegurandoParado())
+            else if (movAtual.isEstadoSegurandoParado())
             {
                 movAtual.acionarTimeout();
                 contadorDeFimTempo.addTempoLongo();
@@ -58,17 +52,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     {
         AbstractMovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(garraInteracaoPowerUp);                
         contadorDeFimTempo.configTempoParaAcao(tempoDuracao);
-    }
-
-    private bool isEstadoAtualSegurandoEmCimaMovimentando()
-    {
-        return movAtual == movSegCimaMov;        
-    }
-
-    private bool isEstadoAtualSegurandoParado()
-    {
-        return movAtual == movSegCima || movAtual == movParado;
-    }
+    }   
 
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP INICIO
     public void trocarParaAcaoVoltarParaCima()
@@ -83,12 +67,12 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoSegurandoParado()
     {
-        trocarMovimentador(movSegCima);
+        trocarMovimentador(new MovimentacaoAgarrandoEmcima());
     }
 
     public void trocarParaAcaoSegurandoEmMovimento()
     {
-        trocarMovimentador(movSegCimaMov);
+        trocarMovimentador(new MovimentacaoAgarrandoEmcimaEmMovimento());
     }
 
     public void trocarParaAcaoSoltar()
@@ -98,7 +82,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoParado()
     {
-        trocarMovimentador(movParado);        
+        trocarMovimentador(new MovimentacaoParadoPowerUp());        
     }
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
 
