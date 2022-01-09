@@ -10671,7 +10671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 13
+  level: 12
   mainDto:
     garraDto:
       velocidades:
@@ -10808,9 +10808,6 @@ MonoBehaviour:
         cacaNiquelDto:
           sprVazio: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
           sprMoeda: {fileID: 21300000, guid: 22e8134d9d8bf1547bf8ac4263f6314f, type: 3}
-      cacaNiquelDto:
-        sprVazio: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
-        sprMoeda: {fileID: 21300000, guid: 22e8134d9d8bf1547bf8ac4263f6314f, type: 3}
       displayTimerDto:
         sprRendererPlaca: {fileID: 1404465311}
         sprRendererPlacaEfeito: {fileID: 2146911256}
