@@ -12,8 +12,9 @@ public abstract class AbstractCacaNiquel
     public abstract Sprite[][] montarSpritesTipoCacaNiquel();
     public abstract Sprite getSprDeSucesso();
     public abstract void passarResultadosParaGrupoDisplay(PowerUpEntidade pupEscolhido, Sprite[] resultados, GrupoDisplays grupoDisplays);
-    protected abstract CacaNiquelEventoDto getEvento(Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados);
-    
+
+    public abstract CacaNiquelEventoDto montarResultado(PowerUpEntidade pupEscolhido, Sprite spriteEscolhido);
+
     public CacaNiquelEventoDto montarResultados(PowerUpEntidade pupEscolhido, Sprite[] resultadosSprs)
     {
         CacaNiquelResultadoEnum[] resultados = new CacaNiquelResultadoEnum[] {
@@ -25,7 +26,9 @@ public abstract class AbstractCacaNiquel
         return evento;
     }    
 
-    public CacaNiquelResultadoEnum avaliarResultado(PowerUpEntidade pupEscolhido, Sprite sprSorteado)
+    protected abstract CacaNiquelEventoDto getEvento(Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados);
+
+    protected CacaNiquelResultadoEnum avaliarResultado(PowerUpEntidade pupEscolhido, Sprite sprSorteado)
     {
         if (sprSorteado == pupEscolhido.sprPowerUp)
         {

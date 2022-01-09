@@ -51,8 +51,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
                 grupoDisplays.pararSlotCacaNiquel(clicado, allSrites[clicado], cacaNiquel.getSprDeSucesso());
 
                 Sprite sprSorteado = grupoDisplays.getResultadoCacaNiquel(clicado);
-                CacaNiquelResultadoEnum resultado = cacaNiquel.avaliarResultado(pupEscolhido, sprSorteado);
-                CacaNiquelEventoDto eventoEmAndamento = CacaNiquelEventoDto.ofEmAndamento(resultado);
+                CacaNiquelEventoDto eventoEmAndamento = cacaNiquel.montarResultado(pupEscolhido, sprSorteado);
                 produtorDeEvento.produziuEvento(eventoEmAndamento);
 
                 clicado++;

@@ -47,8 +47,15 @@ public class CacaNiquelIndividual : AbstractCacaNiquel
         }
     }
 
+    public override CacaNiquelEventoDto montarResultado(PowerUpEntidade pupEscolhido, Sprite spriteEscolhido)
+    {
+        CacaNiquelResultadoEnum resultado = avaliarResultado(pupEscolhido, spriteEscolhido);
+        CacaNiquelEventoDto eventoEmAndamento = CacaNiquelEventoDto.ofEmAndamento(resultado);
+        return eventoEmAndamento;
+    }
+
     protected override CacaNiquelEventoDto getEvento(Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
     {
         return CacaNiquelEventoDto.ofSingle(sprResultados, resultados);
-    }
+    }    
 }
