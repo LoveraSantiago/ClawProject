@@ -56,8 +56,12 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
                 produtorDeEvento.produziuEvento(eventoEmAndamento);
 
                 clicado++;
-            }            
-            yield return null;
+                yield return new WaitForSeconds(1f);
+            }
+            else
+            {
+                yield return null;
+            }
         }
         yield return new WaitForSeconds(0.1f);
 
