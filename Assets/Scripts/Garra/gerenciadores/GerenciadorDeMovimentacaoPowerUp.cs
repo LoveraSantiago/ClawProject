@@ -1,17 +1,17 @@
 public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
                                                 ComunicadorComGerMovPowerUp
 {
-    private ContadorDeTempo contadorDeFimTempo;
+    private ContadorDeTempo contadorDeFimTempo;//PROBLEMA GRANDE CONTADOR DE TEMPO DA GARRA CONTAR TIMEOUT DE PUP!!!!!!
 
-    private MovimentacaoDaGarraPowerUp movAtual;        
-    private MovimentacaoDaGarraPowerUp movSegCima;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
-    private MovimentacaoDaGarraPowerUp movSegCimaMov;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
+    private AbstractMovimentacaoDaGarraPowerUp movAtual;        
+    //private MovimentacaoDaGarraPowerUp movSegCima;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
+    private AbstractMovimentacaoDaGarraPowerUp movSegCimaMov;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
 
-    private MovimentacaoDaGarraPowerUp movParado;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
+    private AbstractMovimentacaoDaGarraPowerUp movParado;//MANAGER ATUAL TEM IFS DEPENDENDO DESSE PROPRIEDADE (ADICIONAR RESP EM MovimentacaoDaGarraPowerUp)
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
-        MovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);                
+        AbstractMovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);                
         movSegCima     = new MovimentacaoAgarrandoEmcima();
         movSegCimaMov  = new MovimentacaoAgarrandoEmcimaEmMovimento();        
         movParado      = new MovimentacaoParadoPowerUp();
@@ -56,7 +56,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     public void receberGarraInteracaoComPowerUp(PowerUpInteracaoComGarra garraInteracaoPowerUp, float tempoDuracao)
     {
-        MovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(garraInteracaoPowerUp);                
+        AbstractMovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(garraInteracaoPowerUp);                
         contadorDeFimTempo.configTempoParaAcao(tempoDuracao);
     }
 
@@ -108,7 +108,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     }
 
     //TODO REFATORAR COM GERENCIADOR DE MOVIMENTACAO NORMAL
-    private void trocarMovimentador(MovimentacaoDaGarraPowerUp movimentador)
+    private void trocarMovimentador(AbstractMovimentacaoDaGarraPowerUp movimentador)
     {
         movimentador.preInicio();
         movAtual = movimentador;

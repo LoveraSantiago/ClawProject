@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoAgarrandoEmcima : MovimentacaoDaGarraPowerUp
+public class MovimentacaoAgarrandoEmcima : AbstractMovimentacaoDaGarraPowerUp
 {
     private Quaternion anguloDesejadoEsquerdaFechado;
     private Quaternion anguloDesejadoDireitaFechado;       

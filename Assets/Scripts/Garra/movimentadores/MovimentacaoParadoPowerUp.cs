@@ -1,4 +1,4 @@
-public class MovimentacaoParadoPowerUp : MovimentacaoDaGarraPowerUp
+public class MovimentacaoParadoPowerUp : AbstractMovimentacaoDaGarraPowerUp
 {
     private MovimentacaoParado movParado;
 

@@ -1,4 +1,4 @@
-public abstract class MovimentacaoDaGarraPowerUp : AbstractMovimentacaoDaGarra
+public abstract class AbstractMovimentacaoDaGarraPowerUp : AbstractMovimentacaoDaGarra
 {
     protected static ComunicadorComGerMovPowerUp comunicadorComGerMovimentacao;
     protected static PowerUpInteracaoComGarra garraInteracaoComPowerUp;
