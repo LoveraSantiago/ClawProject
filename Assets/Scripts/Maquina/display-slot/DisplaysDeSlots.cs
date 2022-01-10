@@ -2,27 +2,32 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
                                AcaoCacaNiquel.ProdutorEvento
 {
     private GrupoDisplays grupoDisplays;
-
     public DisplaysDeColetados displayDeColetados { get; private set; }
     private DisplayCacaNiquel displayCacaNiquel;
 
-    public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto, InputGame inputGame)
+    public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto)
     {
-        grupoDisplays = new GrupoDisplays(displaysSlotsDto, displaysSlotsDto.SingleDisplaySlotDto);
-
-        displayDeColetados = new DisplaysDeColetados(displaysSlotsDto, grupoDisplays);
-        displayCacaNiquel  = new DisplayCacaNiquel(inputGame);
+        grupoDisplays      = new GrupoDisplays(displaysSlotsDto, displaysSlotsDto.SingleDisplaySlotDto);
+        displayDeColetados = new DisplaysDeColetados(displaysSlotsDto, grupoDisplays);        
     }
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido)
+    public void configuradoPeloLevel(AbstractLevel levelEscolhido, DisplaysSlotsDto displaysSlotsDto)
     {        
         grupoDisplays.colorirDisplays(levelEscolhido.getDicionarioDeCores());
-        displayCacaNiquel.configuradoPeloLevel(levelEscolhido.getTipoGameDesc());
+
+        if (LevelUtils.isCacaNiquelLevel(levelEscolhido))
+        {
+            displayCacaNiquel = new DisplayCacaNiquel();
+            displayCacaNiquel.configuradoPeloLevel(levelEscolhido, displaysSlotsDto.CacaNiquelDto);
+        }
     }
 
-    public void iniciar()
+    public void iniciar(InputGame inputGame)
     {
-        displayCacaNiquel.iniciar(grupoDisplays);
+        if (isDisplayCacaNiquelAtivado())
+        {
+            displayCacaNiquel.iniciar(grupoDisplays, inputGame);
+        }
     }
 
     public ArcoIrisConjunto getDisplayColetadoGlow()
@@ -48,13 +53,18 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
         displayDeColetados.processarFimPowerUp(botoesPup);
     }
 
+    private bool isDisplayCacaNiquelAtivado()
+    {
+        return displayCacaNiquel != null;
+    }
+
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEvento();
     }
 
-    ProdutorDeEvento<CacaNiquelResult> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<CacaNiquelEventoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoCacaNiquel.ProdutorEvento)displayCacaNiquel).getProdutorDeEvento();
+        return isDisplayCacaNiquelAtivado() ? ((AcaoCacaNiquel.ProdutorEvento)displayCacaNiquel).getProdutorDeEvento() : null;
     }
 }

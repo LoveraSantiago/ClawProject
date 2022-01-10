@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GarraAnimacao 
@@ -10,9 +9,9 @@ public class GarraAnimacao
     private readonly int ANIM_ESQUERDA = Animator.StringToHash("indoesquerda");
     private readonly int ANIM_PISCANDO = Animator.StringToHash("piscando");
     private readonly int ANIM_FELIZ    = Animator.StringToHash("feliz");
+    private readonly int ANIM_RODANDO  = Animator.StringToHash("girandov2");
 
     private int animacaoAtual;
-
     private Animator animator;   
 
     public GarraAnimacao(Animator animator)
@@ -22,14 +21,12 @@ public class GarraAnimacao
 
     public void irParaDireita()
     {
-        animator.Play(ANIM_DIREITA);
-        animacaoAtual = ANIM_DIREITA;
+        play(ANIM_DIREITA);
     }
 
     public void irParaEsquerda()
     {
-        animator.Play(ANIM_ESQUERDA);
-        animacaoAtual = ANIM_ESQUERDA;
+        play(ANIM_ESQUERDA);
     }
 
     public void irParaLadoAnterior(int lado)
@@ -46,26 +43,33 @@ public class GarraAnimacao
 
     public void irParaBaixo()
     {
-        animator.Play(ANIM_BAIXO);
-        animacaoAtual = ANIM_BAIXO;
+        play(ANIM_BAIXO);
     }
 
     public void irParaCima()
     {
-        animator.Play(ANIM_CIMA);
-        animacaoAtual = ANIM_CIMA;
+        play(ANIM_CIMA);
     }
 
     public void comemorar()
     {
-        animator.Play(ANIM_FELIZ);
-        animacaoAtual = ANIM_FELIZ;
+        play(ANIM_FELIZ);
     }
 
     public void piscar()
     {
-        animator.Play(ANIM_PISCANDO);
-        animacaoAtual = ANIM_PISCANDO;
+        play(ANIM_PISCANDO);
+    }
+
+    public void girando()
+    {   
+        play(ANIM_RODANDO);
+    }
+
+    private void play(int estado)
+    {
+        animator.Play(estado);
+        animacaoAtual = estado;
     }
 
     public bool isComemorando()

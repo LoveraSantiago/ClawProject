@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoParado : MovimentacaoDaGarra
+public class MovimentacaoParado : AbstractMovimentacaoDaGarra
 {  
     public override void preInicio()
     {

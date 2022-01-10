@@ -10776,8 +10776,7 @@ MonoBehaviour:
         inicialDelay: 0.3
         fimDelay: 0.1
         velocImg: 4.5
-        sprVazio: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
-        sprMoeda: {fileID: 21300000, guid: 22e8134d9d8bf1547bf8ac4263f6314f, type: 3}
+        sprNone: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
         singleDisplaySlotDto:
         - sprDisplay: {fileID: 1936649351}
           sprRendererDentro: {fileID: 6406990385049082679}
@@ -10806,6 +10805,9 @@ MonoBehaviour:
           animator: {fileID: 6406990385049082676}
           goSlotBaixo: {fileID: 878217980}
           goSlotCima: {fileID: 1493040373}
+        cacaNiquelDto:
+          sprVazio: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
+          sprMoeda: {fileID: 21300000, guid: 22e8134d9d8bf1547bf8ac4263f6314f, type: 3}
       displayTimerDto:
         sprRendererPlaca: {fileID: 1404465311}
         sprRendererPlacaEfeito: {fileID: 2146911256}
@@ -58613,6 +58615,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 469031665988364412, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2086766168026856960, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409955862992834664, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956093876148325866, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -19,7 +19,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     public GarraManager(GarraDto garraDto)
     {
-        MovimentacaoDaGarra.configurar(garraDto);
+        AbstractMovimentacaoDaGarra.configurar(garraDto);
     }  
 
     public void configuradoPeloLevel(GarraDto garraDto, AbstractLevel level)
@@ -118,11 +118,15 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         }
     }
 
-    void ProdutorConsumidoresDeEvento<CacaNiquelResult>.ConsumidorEvento.consumirEvento(CacaNiquelResult evento)
+    void ProdutorConsumidoresDeEvento<CacaNiquelEventoDto>.ConsumidorEvento.consumirEvento(CacaNiquelEventoDto evento)
     {
         if (evento.isInicio)
         {
             gerDeMovAtual.iniciarMovimentacoes();
+        }
+        else if (evento.isEmAndamento && evento.isResultSucesso())
+        {
+            gerDeMovAtual.garraComemorar();
         }
     }
 

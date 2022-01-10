@@ -4,7 +4,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
                                                ComunicadorComGerMovNormal,
                                                AcaoInfoDaGarra.ProdutorEvento
 {
-    private MovimentacaoDaGarra movAtual;        
+    private AbstractMovimentacaoDaGarra movAtual;        
 
     public GerenciadorDeMovimentacaoNormal()
     {        
@@ -93,7 +93,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     }
     //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL FIM
 
-    private void trocarMovimentador(MovimentacaoDaGarra movimentador)
+    private void trocarMovimentador(AbstractMovimentacaoDaGarra movimentador)
     {
         movimentador.preInicio();
         movAtual = movimentador;

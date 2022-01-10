@@ -24,9 +24,8 @@ public class LevelUtils
 
     public static bool isCacaNiquelLevel(AbstractLevel level)
     {
-        AbstractLevel.TIPO_GAME tipoGame = level.getTipoGame();
-        return tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL ||
-               tipoGame == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
+        return isCacaNiquelGeralLevel(level) ||
+               isCacaNiquelSingleLevel(level);        
     }
 
     public static bool isPupLevel(AbstractLevel level)
@@ -42,22 +41,16 @@ public class LevelUtils
     public static bool isLevelDeDestaque(AbstractLevel level)
     {
         return isColetavelLevel(level) || isOrdemLevel(level);
+    }    
+
+    public static bool isCacaNiquelGeralLevel(AbstractLevel level)
+    {
+        return level.getTipoGame() == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL;        
     }
 
-    public static bool isCacaNiquelLevel(string desc)
+    public static bool isCacaNiquelSingleLevel(AbstractLevel level)
     {
-        return isCacaNiquelGeralLevel(desc) ||
-               isCacaNiquelSingleLevel(desc);
-    }
-
-    public static bool isCacaNiquelGeralLevel(string desc)
-    {
-        return AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL.ToString().Equals(desc);
-    }
-
-    public static bool isCacaNiquelSingleLevel(string desc)
-    {
-        return AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL.ToString().Equals(desc);
+        return level.getTipoGame() == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
     }
 
     public static ColetavelEntidade getColetavelFromLevelColetavel(AbstractLevel level)

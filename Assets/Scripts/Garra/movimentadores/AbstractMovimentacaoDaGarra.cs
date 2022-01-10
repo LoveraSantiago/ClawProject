@@ -1,126 +1,87 @@
 using UnityEngine;
 
-public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
+public abstract class AbstractMovimentacaoDaGarra : ComponenteAnimacaoDeMovimentacaoGarra, 
+                                            AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
-    private static Garra garra;
+    
     private static AngulosPropriedades angulosProps;
 
     public virtual void preInicio() { }
     public virtual void update(InputGame inputGame) { }
     public virtual void fixedUpdate() { }
 
-    public virtual void garraColidiuCom(GameObject gameObject) { }
-
-    public void playAnimacaoComemorar()
-    {
-        garra.animacao.comemorar();
-    }
-
-    public void playAnimacaoPiscar()
-    {
-        garra.animacao.piscar();
-    }
-
-    public void playAnimacaoIrPDireita()
-    {
-        garra.animacao.irParaDireita();
-    }
-
-    public void playAnimacaoIrPEsquerda()
-    {
-        garra.animacao.irParaEsquerda();
-    }
-
-    public void playAnimacaoIrPCima()
-    {
-        garra.animacao.irParaCima();
-    }
-
-    public void playAnimacaoIrPBaixo()
-    {
-        garra.animacao.irParaBaixo();
-    }
-
-    public bool isPlayAnimacaoComemorando()
-    {
-        return garra.animacao.isComemorando();
-    }
-
-    public bool isNotPlayAnimacaoComemorando()
-    {
-        return !isPlayAnimacaoComemorando();
-    }
+    public virtual void garraColidiuCom(GameObject gameObject) { }    
 
     protected void parar()
     {
-        garra.rigidBody.parar();
+        getGarra().rigidBody.parar();
     }
 
     protected void moverParaCimaFreeze()
     {
-        garra.efeito.ligarTrailPCima();
-        garra.rigidBody.fixarVerticalmente();
-        garra.rigidBody.moverPCima();
+        getGarra().efeito.ligarTrailPCima();
+        getGarra().rigidBody.fixarVerticalmente();
+        getGarra().rigidBody.moverPCima();
     }
 
     protected void moverParaBaixoFreeze()
     {
-        garra.efeito.ligarTrailPBaixo();
-        garra.rigidBody.fixarVerticalmente();
-        garra.rigidBody.moverPBaixo();        
+        getGarra().efeito.ligarTrailPBaixo();
+        getGarra().rigidBody.fixarVerticalmente();
+        getGarra().rigidBody.moverPBaixo();        
     }
 
     protected void moverHorizontalmenteFreeze(float direcao)
     {
-        garra.efeito.desligarTrail();
-        garra.rigidBody.fixarHorizontalmente();
-        garra.rigidBody.moverPHorizontal(direcao);          
+        getGarra().efeito.desligarTrail();
+        getGarra().rigidBody.fixarHorizontalmente();
+        getGarra().rigidBody.moverPHorizontal(direcao);          
     }    
 
     protected void agarrando()
     {
-        garra.efeito.desligarTrail();
+        getGarra().efeito.desligarTrail();
     }
 
     protected void voltando()
     {
-        garra.efeito.desligarTrail();
+        getGarra().efeito.desligarTrail();
     }
 
     protected void colocarNaAlturaInicial()
     {
-        garra.rigidBody.colocarNaHalturaInicial();
+        getGarra().rigidBody.colocarNaHalturaInicial();
     }
 
     protected void colocarNaPosInicial()//REMOVER
     {
-        garra.rigidBody.colocarNaPosicaoInicial();
+        getGarra().rigidBody.colocarNaPosicaoInicial();
     }
 
     protected void colocarNaPosHorizontal(float posHorizontal)
     {
-        garra.rigidBody.colocarNaPosicaoHorizontal(posHorizontal);        
+        getGarra().rigidBody.colocarNaPosicaoHorizontal(posHorizontal);        
     }
 
     protected void colocarMassa(int massa)
     {
-        garra.rigidBody.colocarMassa(massa);        
+        getGarra().rigidBody.colocarMassa(massa);        
     }
 
     protected void fixarVerticalEHorizontal()
     {
-        garra.rigidBody.fixarVerticalEHorizontal();
+        getGarra().rigidBody.fixarVerticalEHorizontal();
     }
 
     protected void desafixar()
     {
-        garra.rigidBody.desafixar();
+        getGarra().rigidBody.desafixar();
     }
 
     protected bool isAcimaPosInicial()
     {
-        return garra.rigidBody.isAcimaPosInicial();
+        return getGarra().rigidBody.isAcimaPosInicial();
     }
 
     protected bool isParada()//REMOVER
@@ -130,17 +91,17 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
 
     protected bool isMaiorPosHorizontal(float posHorizontal)
     {
-        return garra.rigidBody.isMaiorPosHorizontal(posHorizontal);
+        return getGarra().rigidBody.isMaiorPosHorizontal(posHorizontal);
     }
 
     protected bool isMenorPosHorizontal(float posHorizontal)
     {
-        return garra.rigidBody.isMenorPosHorizontal(posHorizontal);
+        return getGarra().rigidBody.isMenorPosHorizontal(posHorizontal);
     }
 
     protected Vector3 getPosicaoCentroGarra()
     {
-        return garra.getPosicaoCentroGarra();
+        return getGarra().getPosicaoCentroGarra();
     }
 
     protected float getPosicaoHorizontalMeio()
@@ -150,22 +111,22 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
 
     protected float getPosicaoCacaNiquel()
     {
-        return garra.garraDto.PosCacaNiquel;
+        return getGarra().garraDto.PosCacaNiquel;
     }
 
     protected void acionarColliderDasPincas()
     {
-        garra.pincas.acionarCollider();
+        getGarra().pincas.acionarCollider();
     }
 
     protected void acionarTriggerDasPincas()
     {
-        garra.pincas.acionarTrigger();
+        getGarra().pincas.acionarTrigger();
     }
 
     protected bool isPincaDireitaNoAngulo(Quaternion anguloDesejado)
     {
-        return garra.pincas.isDireitaNoAngulo(anguloDesejado);
+        return getGarra().pincas.isDireitaNoAngulo(anguloDesejado);
     }
 
     protected bool isPincaDireitaNoAnguloDeFechamento()
@@ -175,7 +136,7 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
 
     protected void rotacionarPincaVelocidadeAberturaFDT(Quaternion angEsquerda, Quaternion angDireita)
     {
-        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloAbertura, angEsquerda, angDireita);
+        rotacionarPincaFDT(getGarra().garraDto.Velocidades.MovAnguloAbertura, angEsquerda, angDireita);
     }
 
     protected void rotacionarPincaVelocidadeFechamentoFDT()
@@ -185,17 +146,17 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
 
     protected void rotacionarPincaVelocidadeFechamentoFDT(Quaternion angEsquerda, Quaternion angDireita)
     {
-        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloFechamento, angEsquerda, angDireita);
+        rotacionarPincaFDT(getGarra().garraDto.Velocidades.MovAnguloFechamento, angEsquerda, angDireita);
     }
 
     protected void rotacionarPincaVelocidadeIdleFDT(Quaternion angEsquerda, Quaternion angDireita)
     {
-        rotacionarPincaFDT(garra.garraDto.Velocidades.MovAnguloIdle, angEsquerda, angDireita);
+        rotacionarPincaFDT(getGarra().garraDto.Velocidades.MovAnguloIdle, angEsquerda, angDireita);
     }
 
     protected void rotacionarPincaFDT(float velocidade, Quaternion angEsquerda, Quaternion angDireita)
     {
-        garra.pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);
+        getGarra().pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);
     }
 
     protected Quaternion getAnguloIdleMaxDireita()
@@ -230,22 +191,17 @@ public abstract class MovimentacaoDaGarra : AcaoSincroniaComDirecaoDaGarra.Produ
 
     protected void produziuEventoDeDirecao(int direcao)
     {
-        garra.dispararEventoDirecao(direcao);        
+        getGarra().dispararEventoDirecao(direcao);        
     }     
 
     public void produziuEventoDeDirecao(DirecaoDaGarra direcao)
     {
-        garra.dispararEventoDirecao(direcao);        
+        getGarra().dispararEventoDirecao(direcao);        
     }
 
     public static void configurar(GarraDto garraDto)
     {
-        garra = new Garra(garraDto);
+        configurarGarraDto(garraDto);
         angulosProps = new AngulosPropriedades(garraDto.Angulos);
-    }
-
-    ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
-    {
-        return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)garra).getProdutorDeEvento();
-    }
+    }   
 }

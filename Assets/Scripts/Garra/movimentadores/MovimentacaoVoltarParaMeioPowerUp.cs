@@ -1,4 +1,4 @@
-public class MovimentacaoVoltarParaMeioPowerUp : MovimentacaoDaGarraPowerUp
+public class MovimentacaoVoltarParaMeioPowerUp : AbstractMovimentacaoDaGarraPowerUp
 {
     private MovimentacaoVoltarParaPosicao movVoltarParaMeio;
 

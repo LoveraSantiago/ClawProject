@@ -13,7 +13,7 @@ public class MainGameManagers
         inputGame         = new InputGameImpl();
         garraManager      = new GarraManager(mainDto.GarraDto);
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
-        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, inputGame);
+        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto);
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
         uiManager         = new UiGameManager(mainDto.UiDto);        
         cameraManager     = new CameraManager(mainDto.CameraDto);
@@ -32,7 +32,7 @@ public class MainGameManagers
     {
         garraManager     .configuradoPeloLevel(mainDto.GarraDto, levelEscolhido);
         coletaveisManager.configuradoPeloLevel(levelEscolhido);
-        maquinaManager   .configuradoPeloLevel(levelEscolhido);
+        maquinaManager   .configuradoPeloLevel(levelEscolhido, mainDto.MaquinaDto);
         uiManager        .configurandoLevel(levelEscolhido);
 
         powerUpManager.configurarGosPowerUps(
@@ -48,7 +48,7 @@ public class MainGameManagers
     private void startLaizy(MainGameDto mainDto)
     {
         coletaveisManager.start();
-        maquinaManager.start();
+        maquinaManager.start(inputGame);
         uiManager.start();        
         garraManager.start(mainDto.GarraDto);
     }         

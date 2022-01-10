@@ -1,4 +1,4 @@
-public abstract class MovimentacaoDaGarraPowerUp : MovimentacaoDaGarra
+public abstract class AbstractMovimentacaoDaGarraPowerUp : AbstractMovimentacaoDaGarra
 {
     protected static ComunicadorComGerMovPowerUp comunicadorComGerMovimentacao;
     protected static PowerUpInteracaoComGarra garraInteracaoComPowerUp;
@@ -25,5 +25,15 @@ public abstract class MovimentacaoDaGarraPowerUp : MovimentacaoDaGarra
     public void finalizarPowerUp()
     {
         garraInteracaoComPowerUp = null;
+    }
+
+    public bool isEstadoSegurandoParado()
+    {
+        return (this is MovimentacaoAgarrandoEmcima) || (this is MovimentacaoParadoPowerUp);
+    }
+
+    public bool isEstadoSegurandoEmCimaMovimentando()
+    {
+        return (this is MovimentacaoAgarrandoEmcimaEmMovimento);
     }
 }

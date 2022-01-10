@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoSoltar : MovimentacaoDaGarraPowerUp
+public class MovimentacaoSoltar : AbstractMovimentacaoDaGarraPowerUp
 {   
     public override void preInicio()
     {

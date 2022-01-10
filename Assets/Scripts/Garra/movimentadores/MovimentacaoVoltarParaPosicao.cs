@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoVoltarParaPosicao : MovimentacaoDaGarra
+public class MovimentacaoVoltarParaPosicao : AbstractMovimentacaoDaGarra
 {
     private DirecaoDaGarra direcaoVoltar;       
     public bool isDirecaoEsquerda { get { return direcaoVoltar == DirecaoDaGarra.ESQUERDA; } }

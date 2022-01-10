@@ -27,11 +27,11 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     private TudoDeSaida       tuboDeSaida;
     private Chao              chao;
 
-    public MaquinaManager(MaquinaDto maquinaDto, InputGame inputGame)
+    public MaquinaManager(MaquinaDto maquinaDto)
     {
         partesDto = maquinaDto.PartesDto;
 
-        displaysDeSlots   = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto, inputGame);        
+        displaysDeSlots   = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto);        
         displayDeScores   = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
         displayTimer      = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick          = new Joystick(maquinaDto.JoystickDto);
@@ -55,11 +55,11 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             .addArcoIrisConjunto(chao);        
     }
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido)
+    public void configuradoPeloLevel(AbstractLevel levelEscolhido, MaquinaDto maquinaDto)
     {
         botoesPowerUp.configuradoPeloLevel(levelEscolhido);
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
-        displaysDeSlots.configuradoPeloLevel(levelEscolhido);
+        displaysDeSlots.configuradoPeloLevel(levelEscolhido, maquinaDto.DisplaysSlotsDto);
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
         vigaEsquerda.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         vigaDireita.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
@@ -74,10 +74,10 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());
     }
 
-    public void start()
+    public void start(InputGame inputGame)
     {
         displayTimer.iniciarContagemTempo();
-        displaysDeSlots.iniciar();
+        displaysDeSlots.iniciar(inputGame);
     }
 
     public void update(MaquinaDto maquinaDto, InputGame inputGame)
@@ -180,7 +180,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         return ((AcaoBotaoPUpVazio.ProdutorEvento)botoesPowerUp).getProdutorDeEvento();
     }
 
-    ProdutorDeEvento<CacaNiquelResult> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<CacaNiquelEventoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoCacaNiquel.ProdutorEvento)displaysDeSlots).getProdutorDeEvento();
     }
