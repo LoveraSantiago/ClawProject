@@ -46,7 +46,5 @@
         </engine:VisualElement>
       </engine:VisualElement>
     </engine:VisualElement>
-  </engine:VisualElement>
-  <!--<engine:VisualElement name="containerListSprites">
-  </engine:VisualElement>-->
+  </engine:VisualElement>  
 </engine:UXML>
