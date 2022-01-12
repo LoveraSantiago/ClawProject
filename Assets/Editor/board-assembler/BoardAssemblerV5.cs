@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class BoardAssemblerV5 : EditorWindow
 {
-    [MenuItem("Window/BoardAssemblerV5")]
+    [MenuItem("Window/assemblers/BoardAssemblerV5")]
     public static void ShowExample()
     {
         BoardAssemblerV5 wnd = GetWindow<BoardAssemblerV5>();

@@ -6,7 +6,7 @@ using UnityEditor.UIElements;
 
 public class BoardAssemblerObstaculos : EditorWindow
 {
-    [MenuItem("Window/BoardAssemblerObstaculos")]
+    [MenuItem("Window/assemblers/BoardAssemblerObstaculos")]
     public static void ShowExample()
     {
         BoardAssemblerObstaculos wnd = GetWindow<BoardAssemblerObstaculos>();

@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class BoardAssemblerNegativo : EditorWindow
 {
-    [MenuItem("Window/BoardAssemblerNegativo")]
+    [MenuItem("Window/assemblers/BoardAssemblerNegativo")]
     public static void ShowExample()
     {
         BoardAssemblerNegativo wnd = GetWindow<BoardAssemblerNegativo>();

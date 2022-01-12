@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class MaquinaAssemblerV4 : EditorWindow
 {
-    [MenuItem("Window/MaquinaAssemblerV4")]
+    [MenuItem("Window/assemblers/MaquinaAssemblerV4")]
     public static void ShowExample()
     {
         MaquinaAssemblerV4 wnd = GetWindow<MaquinaAssemblerV4>();
