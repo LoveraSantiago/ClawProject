@@ -32,8 +32,9 @@ public class BoardAssemblerNegativo : EditorWindow
 
         HelperColetavelEntidade.configurar();
         ReferenciasDoBoardAssemblerNegativo referenciasDoBoard = new ReferenciasDoBoardAssemblerNegativo();
-        NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);
-        ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
+        NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);        
+        ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
+        ProcessadorDeOrdem processadorDeOrdem = new ProcessadorDeOrdem(referenciasDoBoard);
         Preenchedor preenchedor = new Preenchedor();
         BoardCleanerNegativo cleaner = new BoardCleanerNegativo(referenciasDoBoard, navegacao, () => spriteVazio);
         navegacao.resetMira();
@@ -51,8 +52,8 @@ public class BoardAssemblerNegativo : EditorWindow
         root.Q<Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
         root.Q<Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
         root.Q<Button>("botaoClean").clicked += () => cleaner.clean();
-        root.Q<Button>("botaoProcessar").clicked += () => processador.gerarArrayDeIds();
-        root.Q<Button>("botaoProcessarOrdem").clicked += () => processador.gerarArrayDeOrdem();
+        root.Q<Button>("botaoProcessar").clicked += () => processadorColetaveis.processar();
+        root.Q<Button>("botaoProcessarOrdem").clicked += () => processadorDeOrdem.processar();
         root.Q<Button>("botaoCimaAll").clicked += () => navegacao.navegarBaixoTotal();
         root.Q<Button>("botaoBaixoAll").clicked += () => navegacao.navegarCimaTotal();
         root.Q<Button>("botaoEsquerdaAll").clicked += () => navegacao.navegarTrasTotal();
