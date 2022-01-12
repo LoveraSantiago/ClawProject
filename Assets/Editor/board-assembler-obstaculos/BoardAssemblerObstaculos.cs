@@ -29,5 +29,6 @@ public class BoardAssemblerObstaculos : EditorWindow
 
         HelperColetavelEntidade.configurar();
         ReferenciasDoBoardAssemblerObstaculo referenciasDoBoard = new ReferenciasDoBoardAssemblerObstaculo();
+        NavegacaoPeloBoardObstaculos navegacao = new NavegacaoPeloBoardObstaculos(root, referenciasDoBoard);
     }
 }
