@@ -52,7 +52,6 @@ public class BoardAssemblerNegativo : EditorWindow
         root.Q<Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
         root.Q<Button>("botaoClean").clicked += () => cleaner.clean();
         root.Q<Button>("botaoProcessar").clicked += () => processadorColetaveis.processar();
-        root.Q<Button>("botaoProcessarOrdem").visible = false;
         root.Q<Button>("botaoCimaAll").clicked += () => navegacao.navegarBaixoTotal();
         root.Q<Button>("botaoBaixoAll").clicked += () => navegacao.navegarCimaTotal();
         root.Q<Button>("botaoEsquerdaAll").clicked += () => navegacao.navegarTrasTotal();
