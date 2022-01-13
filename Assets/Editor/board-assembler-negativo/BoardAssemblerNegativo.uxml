@@ -33,10 +33,6 @@
       </engine:VisualElement>
     </engine:VisualElement>
 
-    <engine:VisualElement name="container">
-      <editor:IntegerField label="Ordem" name="ordem"/>
-    </engine:VisualElement>
-
     <engine:VisualElement name="container2">
       <engine:VisualElement name="containerBtns">
         <engine:VisualElement name="containerBtnLinha">
