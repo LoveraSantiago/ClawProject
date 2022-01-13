@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class GenericPool<K, V>
-{
-    private V objetoTemp;
+{    
     private Dictionary<K, V> dicionario;
 
     public GenericPool()
@@ -26,7 +25,7 @@ public class GenericPool<K, V>
     {
         if (contem(chave))
         {
-            objetoTemp = getValor(chave);
+            V objetoTemp = getValor(chave);
             consumidor.consumir(objetoTemp);
         }
     }
