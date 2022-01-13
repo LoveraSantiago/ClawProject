@@ -1,42 +1,42 @@
-using System.Collections.Generic;
-
 public class LevelHelper
 {
-    private static Dictionary<Level, LevelEntidade> dicionarioDeEnum = inicializarDicionarioDeEnum();
-    private static Dictionary<string, LevelEntidade> dicionarioDeAlias = inicializarDicionarioDeAlias();
+    private static GenericPool<Level, LevelEntidade> poolByEnum   = inicializarDicionarioDeEnum();
+    private static GenericPool<string, LevelEntidade> poolByAlias = inicializarDicionarioDeAlias();
 
     public static AbstractLevel getLevelByEnum(Level level)
     {
-        return dicionarioDeEnum[level].supplierLevel.fornecer();
+        LevelEntidade levelEntidade = poolByEnum.getValor(level);
+        return levelEntidade.supplierLevel.fornecer();
     }
 
     public static AbstractLevel getLevelByString(string level)
     {
-        return dicionarioDeAlias[level].supplierLevel.fornecer();
+        LevelEntidade levelEntidade = poolByAlias.getValor(level);
+        return levelEntidade.supplierLevel.fornecer();
     }
 
-    private static Dictionary<Level, LevelEntidade> inicializarDicionarioDeEnum()
+    private static GenericPool<Level, LevelEntidade> inicializarDicionarioDeEnum()
     {
-        Dictionary<Level, LevelEntidade> dicionarioDeEnum = new Dictionary<Level, LevelEntidade>();
+        GenericPool<Level, LevelEntidade> dicionarioDeEnum = new GenericPool<Level, LevelEntidade>();
 
         LevelEntidade[] levelsEntidades = LevelEntidade.getLevelsEntidades();
         for(int contador = 0; contador < levelsEntidades.Length; contador++)
         {
             LevelEntidade levelEntidade = levelsEntidades[contador];
-            dicionarioDeEnum.Add(levelEntidade.level, levelEntidade);
+            dicionarioDeEnum.addChaveValor(levelEntidade.level, levelEntidade);
         }
         return dicionarioDeEnum;
     }
 
-    private static Dictionary<string, LevelEntidade> inicializarDicionarioDeAlias()
+    private static GenericPool<string, LevelEntidade> inicializarDicionarioDeAlias()
     {
-        Dictionary<string, LevelEntidade>  dicionarioDeAlias = new Dictionary<string, LevelEntidade>();
+        GenericPool<string, LevelEntidade>  dicionarioDeAlias = new GenericPool<string, LevelEntidade>();
 
         LevelEntidade[] levelsEntidades = LevelEntidade.getLevelsEntidades();
         for (int contador = 0; contador < levelsEntidades.Length; contador++)
         {
             LevelEntidade levelEntidade = levelsEntidades[contador];
-            dicionarioDeAlias.Add(levelEntidade.alias, levelEntidade);
+            dicionarioDeAlias.addChaveValor(levelEntidade.alias, levelEntidade);
         }
         return dicionarioDeAlias;
     }
