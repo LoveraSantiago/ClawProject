@@ -13,6 +13,8 @@ public class BoardAssemblerObstaculos : EditorWindow
         wnd.titleContent = new GUIContent("BoardAssemblerObstaculos");
     }
 
+    private Sprite spriteVazio;
+
     public void CreateGUI()
     {
         // Each editor window contains a root VisualElement object
@@ -30,7 +32,12 @@ public class BoardAssemblerObstaculos : EditorWindow
         HelperColetavelEntidade.configurar();
         ReferenciasDoBoardAssemblerObstaculo referenciasDoBoard = new ReferenciasDoBoardAssemblerObstaculo();
         NavegacaoPeloBoardObstaculos navegacao = new NavegacaoPeloBoardObstaculos(root, referenciasDoBoard);
+        ProcessadorDeColetaveis processaodrColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
+        Preenchedor preenchedor = new Preenchedor();
+        BoardCleanerObstaculos cleaner = new BoardCleanerObstaculos(referenciasDoBoard, navegacao, () => spriteVazio);
+        navegacao.resetMira();
 
-        //root.Q<Button>("botaoProcessarOrdem").visible = false;
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
+        RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
     }
 }
