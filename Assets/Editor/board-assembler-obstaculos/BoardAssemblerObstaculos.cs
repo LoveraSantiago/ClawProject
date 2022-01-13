@@ -31,6 +31,6 @@ public class BoardAssemblerObstaculos : EditorWindow
         ReferenciasDoBoardAssemblerObstaculo referenciasDoBoard = new ReferenciasDoBoardAssemblerObstaculo();
         NavegacaoPeloBoardObstaculos navegacao = new NavegacaoPeloBoardObstaculos(root, referenciasDoBoard);
 
-        root.Q<Button>("botaoProcessarOrdem").visible = false;
+        //root.Q<Button>("botaoProcessarOrdem").visible = false;
     }
 }
