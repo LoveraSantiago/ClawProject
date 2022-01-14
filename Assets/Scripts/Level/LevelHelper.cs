@@ -15,6 +15,11 @@ public class LevelHelper
         return levelEntidade.supplierLevel.fornecer();
     }
 
+    public static string[] getAllAliasLevels()
+    {
+        return poolByAlias.getArrayDeChaves();
+    }
+
     private static GenericPool<Level, LevelEntidade> inicializarDicionarioDeEnum()
     {
         GenericPool<Level, LevelEntidade> dicionarioDeEnum = new GenericPool<Level, LevelEntidade>();

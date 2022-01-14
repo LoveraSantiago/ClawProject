@@ -79,11 +79,23 @@ public class GenericPool<K, V>
         return dicionario.Values.ToList();
     }
 
+    public List<K> getListaDeChaves()
+    {
+        return dicionario.Keys.ToList();
+    }
+
     public V[] getArrayDeValores()
     {
         V[] values = new V[dicionario.Count];
         dicionario.Values.CopyTo(values, 0);
         return values;
+    }
+
+    public K[] getArrayDeChaves()
+    {
+        K[] chaves = new K[dicionario.Count];
+        dicionario.Keys.CopyTo(chaves, 0);
+        return chaves;
     }
 
     public int getTamanhoDoPool()
