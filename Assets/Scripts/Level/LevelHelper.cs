@@ -15,7 +15,7 @@ public class LevelHelper
         return levelEntidade.supplierLevel.fornecer();
     }
 
-    public static string[] getAllAliasLevels()
+    public static string[] getNormalLevelsAlias()
     {
         return poolByAlias.getArrayDeChaves();
     }

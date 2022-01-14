@@ -38,6 +38,14 @@ public class GenericPool<K, V>
         }
     }
 
+    public void executeEmTodosAsChavesValores(BiConsumidor<K, V> biConsumidor)
+    {
+        foreach (KeyValuePair<K, V> entry in dicionario)
+        {
+            biConsumidor.consumir(entry.Key, entry.Value);
+        }
+    }
+
     public bool temEmAlgumValor(Predicate<V> predicate)
     {
         foreach (KeyValuePair<K, V> entry in dicionario)
