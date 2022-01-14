@@ -1,7 +1,6 @@
 public class LevelHelper
 {
-    private static GenericPool<Level, LevelEntidade> poolByEnum   = inicializarDicionarioDeEnum();
-    private static GenericPool<string, LevelEntidade> poolByAlias = inicializarDicionarioDeAlias();
+    private static GenericPool<Level, LevelEntidade> poolByEnum = inicializarDicionarioDeEnum();
 
     public static AbstractLevel getLevelByEnum(Level level)
     {
@@ -31,18 +30,5 @@ public class LevelHelper
             dicionarioDeEnum.addChaveValor(levelEntidade.level, levelEntidade);
         }
         return dicionarioDeEnum;
-    }
-
-    private static GenericPool<string, LevelEntidade> inicializarDicionarioDeAlias()
-    {
-        GenericPool<string, LevelEntidade>  dicionarioDeAlias = new GenericPool<string, LevelEntidade>();
-
-        LevelEntidade[] levelsEntidades = LevelEntidade.getLevelsEntidades();
-        for (int contador = 0; contador < levelsEntidades.Length; contador++)
-        {
-            LevelEntidade levelEntidade = levelsEntidades[contador];
-            dicionarioDeAlias.addChaveValor(levelEntidade.alias, levelEntidade);
-        }
-        return dicionarioDeAlias;
-    }
+    }  
 }
