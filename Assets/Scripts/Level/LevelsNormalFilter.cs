@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelsNormalFilter : Consumidor<>
+public class LevelsNormalFilter : Consumidor<LevelEntidade>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private List<string> levelAlias;
 
-    // Update is called once per frame
-    void Update()
+    public void consumir(LevelEntidade evento)
     {
-        
+        throw new System.NotImplementedException();
     }
 }
