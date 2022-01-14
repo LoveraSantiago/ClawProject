@@ -64,11 +64,12 @@ public class BoardAssemblerNegativo : EditorWindow
     private void criarComponentDropDownField(
         VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {
-        List<string> listaDeLevels = EditorUtils.getListaDeLevels();
+        List<string> listaDeLevels = LevelHelper.getElevadorLevelsAlias();
         Preenchedor preenchedor = new Preenchedor();
         DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
         dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {
 
+            Debug.Log("dropdown chamado");
             cleaner.clean();
 
             if (evt.newValue != "0")

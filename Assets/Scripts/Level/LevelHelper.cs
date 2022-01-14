@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class LevelHelper
 {
     private static GenericPool<string, LevelEntidade> poolLevels = inicializarDicionarioDeEnum();
@@ -14,9 +16,18 @@ public class LevelHelper
         return levelEntidade.supplierLevel.fornecer();
     }
 
-    public static string[] getNormalLevelsAlias()
+    public static List<string> getNormalLevelsAlias()
     {
-        return poolByAlias.getArrayDeChaves();
+        LevelsNormalFilter filterLevels = new LevelsNormalFilter();
+        poolLevels.executeEmTodosOsValores(filterLevels);
+        return filterLevels.levelAlias;
+    }
+
+    public static List<string> getElevadorLevelsAlias()
+    {
+        LevelsElevadorFilter filterLevels = new LevelsElevadorFilter();
+        poolLevels.executeEmTodosOsValores(filterLevels);
+        return filterLevels.levelAlias;
     }
 
     private static GenericPool<string, LevelEntidade> inicializarDicionarioDeEnum()

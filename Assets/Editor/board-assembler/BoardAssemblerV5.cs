@@ -67,7 +67,7 @@ public class BoardAssemblerV5 : EditorWindow
     private void criarComponentDropDownField(
         VisualElement root, BoardCleanerPositivo cleaner, RemontadorBoard remontador)
     {
-        List<string> listaDeLevels = EditorUtils.getListaDeLevels();
+        List<string> listaDeLevels = LevelHelper.getNormalLevelsAlias();
         Preenchedor preenchedor = new Preenchedor();
         DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
         dropDownField.RegisterCallback<ChangeEvent<string>>((evt) =>{
@@ -76,7 +76,6 @@ public class BoardAssemblerV5 : EditorWindow
 
             if (evt.newValue != "0")
             {
-
                 AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
                 int[,] coletaveis = level.getArrayDeColetaveis();                
                 remontador.montarColetaveis(coletaveis, (go, spr) => preenchedor.colocarSprite(go, spr));
