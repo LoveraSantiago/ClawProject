@@ -4,7 +4,8 @@ public abstract class AbstractLevel
 {
     public enum TIPO_GAME {
         NORMAL, ELEVADOR, ORDENADO, PUP, COLETAVEL,
-        CACANIQUEL_PUP_INDIVIDUAL, CACANIQUEL_PUP_GERAL }
+        CACANIQUEL_PUP_INDIVIDUAL, CACANIQUEL_PUP_GERAL,
+        OBSTACULO }
 
     public static readonly string TIMER_ZERO = "00:00";
 

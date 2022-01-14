@@ -53,6 +53,11 @@ public class LevelUtils
         return level.getTipoGame() == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
     }
 
+    public static bool isObstaculoLevel(AbstractLevel level)
+    {
+        return level.getTipoGame() == AbstractLevel.TIPO_GAME.OBSTACULO;
+    }
+
     public static ColetavelEntidade getColetavelFromLevelColetavel(AbstractLevel level)
     {
         int id = ((AbstractLevelColetavel)level).getIdColetavel();
