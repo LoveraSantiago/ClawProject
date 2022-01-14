@@ -1,8 +1,8 @@
 public abstract class AbstractLevelElevador : AbstractLevel
 {
-    public override TIPO_GAME getTipoGame()
+    public override TipoGame getTipoGame()
     {
-        return TIPO_GAME.ELEVADOR;
+        return TipoGame.ELEVADOR;
     }
 
     public abstract int[,] getArrayDeColetaveisSub();

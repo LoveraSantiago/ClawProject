@@ -12,9 +12,9 @@ public class Level1 : AbstractLevel
         return "Colete todos os itens";
     }
 
-    public override TIPO_GAME getTipoGame()
+    public override TipoGame getTipoGame()
     {
-        return TIPO_GAME.NORMAL;
+        return TipoGame.NORMAL;
     }    
 
     public override int[,] getArrayDeColetaveis()

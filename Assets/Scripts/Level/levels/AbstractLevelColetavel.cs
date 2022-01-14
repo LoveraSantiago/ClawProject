@@ -14,9 +14,9 @@ public abstract class AbstractLevelColetavel : AbstractLevel
         return "Colete o coletavel de interesse";
     }
 
-    public override TIPO_GAME getTipoGame()
+    public override TipoGame getTipoGame()
     {
-        return TIPO_GAME.COLETAVEL;
+        return TipoGame.COLETAVEL;
     }
 
     public override int[,] getArrayDeColetaveis()
