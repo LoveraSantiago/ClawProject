@@ -19,7 +19,7 @@ public class DropDownLevels
 
             cleaner.clean();
 
-            if (evt.newValue != "0")
+            if (evt.newValue != "0" && evt.newValue != "-")
             {
                 AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
                 int[,] coletaveis = level.getArrayDeColetaveis();
