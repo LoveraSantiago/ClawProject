@@ -30,6 +30,13 @@ public class LevelHelper
         return filterLevels.levelAlias;
     }
 
+    public static List<string> getObstaculoLevelsAlias()
+    {
+        LevelObstaculosFilter filterLevels = new LevelObstaculosFilter();
+        poolLevels.executeEmTodosOsValores(filterLevels);
+        return filterLevels.levelAlias;
+    }
+
     private static GenericPool<string, LevelEntidade> inicializarDicionarioDeEnum()
     {
         GenericPool<string, LevelEntidade> dicionarioDeEnum = new GenericPool<string, LevelEntidade>();

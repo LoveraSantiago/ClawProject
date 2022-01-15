@@ -39,5 +39,7 @@ public class BoardAssemblerObstaculos : EditorWindow
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
         RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
+        DropDownLevels dropoDownLevels = new DropDownLevels(LevelHelper.getObstaculoLevelsAlias());
+        dropoDownLevels.criarComponentDropDownField(root, cleaner, remontador);
     }
 }
