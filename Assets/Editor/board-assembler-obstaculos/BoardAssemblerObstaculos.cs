@@ -32,7 +32,7 @@ public class BoardAssemblerObstaculos : EditorWindow
         HelperColetavelEntidade.configurar();
         ReferenciasDoBoardAssemblerObstaculo referenciasDoBoard = new ReferenciasDoBoardAssemblerObstaculo();
         NavegacaoPeloBoardObstaculos navegacao = new NavegacaoPeloBoardObstaculos(root, referenciasDoBoard);
-        ProcessadorDeColetaveis processaodrColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
+        ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
         Preenchedor preenchedor = new Preenchedor();
         BoardCleanerObstaculos cleaner = new BoardCleanerObstaculos(referenciasDoBoard, navegacao, () => spriteVazio);
         navegacao.resetMira();
@@ -41,5 +41,22 @@ public class BoardAssemblerObstaculos : EditorWindow
         RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
         DropDownLevels dropoDownLevels = new DropDownLevels(LevelHelper.getObstaculoLevelsAlias());
         dropoDownLevels.criarComponentDropDownField(root, cleaner, remontador);
+
+        root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
+        {
+            listaDeSprites.receberSprite((Sprite)e1.newValue);
+        });
+
+        root.Q<Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
+        root.Q<Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
+        root.Q<Button>("botaoClean").clicked += () => cleaner.clean();
+        root.Q<Button>("botaoProcessar").clicked += () => processadorColetaveis.processar();
+        root.Q<Button>("botaoCimaAll").clicked += () => navegacao.navegarCimaTotal();
+        root.Q<Button>("botaoBaixoAll").clicked += () => navegacao.navegarBaixoTotal();
+        root.Q<Button>("botaoEsquerdaAll").clicked += () => navegacao.navegarTrasTotal();
+        root.Q<Button>("botaoDireitaAll").clicked += () => navegacao.navegarFrenteTotal();
+
+        spriteVazio = listaDeSprites.getSpriteVazio();
+        cleaner.clean();
     }
 }
