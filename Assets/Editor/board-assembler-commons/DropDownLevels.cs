@@ -3,10 +3,16 @@ using UnityEngine.UIElements;
 
 public class DropDownLevels 
 {
-    public void criarComponentDropDownField(
-       VisualElement root, BoardCleanerPositivo cleaner, RemontadorBoard remontador)
+    private List<string> listaDeLevels;
+
+    public DropDownLevels(List<string> listaDeLevels)
     {
-        List<string> listaDeLevels = LevelHelper.getNormalLevelsAlias();
+        this.listaDeLevels = listaDeLevels;
+    }
+
+    public void criarComponentDropDownField(
+       VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
+    {        
         Preenchedor preenchedor = new Preenchedor();
         DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
         dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -41,7 +40,8 @@ public class BoardAssemblerNegativo : EditorWindow
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
 
         RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
-        criarComponentDropDownField(root, cleaner, remontador);
+        DropDownLevels dropDownLevels = new DropDownLevels(LevelHelper.getElevadorLevelsAlias());
+        dropDownLevels.criarComponentDropDownField(root, cleaner, remontador);
 
         root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
         {
@@ -59,39 +59,5 @@ public class BoardAssemblerNegativo : EditorWindow
 
         spriteVazio = listaDeSprites.getSpriteVazio();
         cleaner.clean();
-    }
-
-    private void criarComponentDropDownField(
-        VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
-    {
-        List<string> listaDeLevels = LevelHelper.getElevadorLevelsAlias();
-        Preenchedor preenchedor = new Preenchedor();
-        DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
-        dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {
-
-            Debug.Log("dropdown chamado");
-            cleaner.clean();
-
-            if (evt.newValue != "0")
-            {
-
-                AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
-                int[,] coletaveis = LevelUtils.getArrayDeColetaveisLevelElevador(level);
-                if (coletaveis != null)
-                {
-                    remontador.montarColetaveis(coletaveis, (go, spr) => preenchedor.colocarSprite(go, spr));
-
-                    BoardOrdem[] ordens = LevelUtils.getBoardOrdensFromLevelOrdenado(level);
-                    remontador.montarLabels(ordens);
-                }
-                else
-                {
-                    Debug.Log("Level " + evt.newValue + " nao possui coletaveis sub");
-                }
-            }
-        });
-
-        root.Q<VisualElement>("espacoDropDown")
-               .Add(dropDownField);
-    }
+    }    
 }
