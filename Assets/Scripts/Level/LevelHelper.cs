@@ -32,7 +32,7 @@ public class LevelHelper
 
     public static List<string> getObstaculoLevelsAlias()
     {
-        LevelObstaculosFilter filterLevels = new LevelObstaculosFilter();
+        LevelsObstaculosFilter filterLevels = new LevelsObstaculosFilter();
         poolLevels.executeEmTodosOsValores(filterLevels);
         return filterLevels.levelAlias;
     }
