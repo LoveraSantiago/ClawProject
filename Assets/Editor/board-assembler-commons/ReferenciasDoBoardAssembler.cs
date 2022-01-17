@@ -7,7 +7,6 @@ public abstract class ReferenciasDoBoardAssembler
 {
     public GameObject goMira { get; private set; }
     public Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard { get; private set; }
-    //public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels { get; private set; }
 
     public ReferenciasDoBoardAssembler(string nomePrefab)
     {
@@ -26,7 +25,6 @@ public abstract class ReferenciasDoBoardAssembler
         GameObject[] gos = SceneManager.GetActiveScene().GetRootGameObjects();
         for (int contador = 0; contador < gos.Length; contador++)
         {
-            //Debug.Log("Nome: " + gos[contador].name);
             if (gos[contador].name.Equals(nomePrefab))
             {
                 return gos[contador];
@@ -40,38 +38,32 @@ public abstract class ReferenciasDoBoardAssembler
     private void inicializarDicionarios(GameObject goBoardAssembler)
     {
         dicionarioGosBoard = new Dictionary<int, Dictionary<int, GameObject>>();
-        //dicionarioTextLabels = new Dictionary<int, Dictionary<int, Text>>();
         preIteracaoLinha();
 
         for (int contadorLinha = 0; contadorLinha < goBoardAssembler.transform.Find("gos").childCount; contadorLinha++)
         {
             GameObject goLinha = goBoardAssembler.transform.Find("gos").GetChild(contadorLinha).gameObject;
-            //GameObject goLabel = goBoardAssembler.transform.Find("lbls").GetChild(contadorLinha).gameObject;
             iteracaoLinha(contadorLinha, goBoardAssembler);
 
             if (isNumerico(goLinha.name))
             {
                 Dictionary<int, GameObject> dicionarioGoColuna = new Dictionary<int, GameObject>();
                 preIteracaoColuna();
-                //Dictionary<int, Text> dicionarioTextColuna = new Dictionary<int, Text>();
 
                 for (int contadorColuna = 0; contadorColuna < goLinha.transform.childCount; contadorColuna++)
                 {
                     GameObject goColuna = goLinha.transform.GetChild(contadorColuna).gameObject;
-                    //Text textColuna = goLabel.transform.GetChild(contadorColuna).GetComponent<Text>();
 
                     if (isNumerico(goColuna.name))
                     {
                         int indiceColuna = toNumeric(goColuna.name);
                         iteracaoColuna(contadorColuna, indiceColuna);
                         dicionarioGoColuna.Add(indiceColuna, goColuna);
-                        //dicionarioTextColuna.Add(indiceColuna, textColuna);
                     }
                 }
                 int indiceLinha = toNumeric(goLinha.name);
                 dicionarioGosBoard.Add(indiceLinha, dicionarioGoColuna);
                 posIteracaoColuna(contadorLinha);
-                //dicionarioTextLabels.Add(indiceLinha, dicionarioTextColuna);
             }
         }
     }
