@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ProcessadorDeColetaveis 
 {
-    private ReferenciasDoBoardAssembler referencias;
+    private ReferenciasDoBoard referencias;
 
-    public ProcessadorDeColetaveis(ReferenciasDoBoardAssembler referencias)
+    public ProcessadorDeColetaveis(ReferenciasDoBoard referencias)
     {
         this.referencias = referencias;
     }

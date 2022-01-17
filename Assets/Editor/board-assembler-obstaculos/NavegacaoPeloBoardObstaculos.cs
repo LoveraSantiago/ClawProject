@@ -2,7 +2,7 @@ using UnityEngine.UIElements;
 
 public class NavegacaoPeloBoardObstaculos : NavegacaoPeloBoard
 {
-    public NavegacaoPeloBoardObstaculos(VisualElement root, ReferenciasDoBoardAssembler referencias)
+    public NavegacaoPeloBoardObstaculos(VisualElement root, ReferenciasDoBoard referencias)
         : base(root, referencias){}
 
     protected override string getNomeBtnIrParaBaixo()

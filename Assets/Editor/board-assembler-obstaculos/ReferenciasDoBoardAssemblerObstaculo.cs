@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ReferenciasDoBoardAssemblerObstaculo : ReferenciasDoBoardAssembler
+public class ReferenciasDoBoardAssemblerObstaculo : ReferenciasDoBoard
 {
     public ReferenciasDoBoardAssemblerObstaculo() :
         base("BoardAssembler-Obstaculos")

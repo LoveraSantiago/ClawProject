@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReferenciasDoBoardAssemblerPositivo : ReferenciasDoBoardAssembler
+public class ReferenciasDoBoardAssemblerPositivo : ReferenciasDoBoard
 {
     public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels { get; private set; }
     private GameObject goLinhaLabel;

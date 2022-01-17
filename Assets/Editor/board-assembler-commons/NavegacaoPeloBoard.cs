@@ -7,9 +7,9 @@ public abstract class NavegacaoPeloBoard
     private int linhaAtual;
     private int colunaAtual;
 
-    private ReferenciasDoBoardAssembler referencias;
+    private ReferenciasDoBoard referencias;
 
-    public NavegacaoPeloBoard(VisualElement root, ReferenciasDoBoardAssembler referencias)
+    public NavegacaoPeloBoard(VisualElement root, ReferenciasDoBoard referencias)
     {
         this.referencias = referencias;
         configurarBotoes(root);

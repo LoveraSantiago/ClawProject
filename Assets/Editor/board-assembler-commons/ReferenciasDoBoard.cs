@@ -1,14 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public abstract class ReferenciasDoBoardAssembler
+public abstract class ReferenciasDoBoard
 {
     public GameObject goMira { get; private set; }
     public Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard { get; private set; }
 
-    public ReferenciasDoBoardAssembler(string nomePrefab)
+    public ReferenciasDoBoard(string nomePrefab)
     {
         configurarReferenciasComBoard(nomePrefab);
     }

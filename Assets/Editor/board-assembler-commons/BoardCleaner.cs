@@ -4,12 +4,12 @@ using UnityEngine;
 
 public abstract class BoardCleaner 
 {    
-    private ReferenciasDoBoardAssembler referenciasDoBoard;
+    private ReferenciasDoBoard referenciasDoBoard;
     private NavegacaoPeloBoard navegacao;
     private Func<Sprite> fornecedorSpriteVazio;
 
     public BoardCleaner(
-        ReferenciasDoBoardAssembler referenciasDoBoard,
+        ReferenciasDoBoard referenciasDoBoard,
         NavegacaoPeloBoard navegacao,
         Func<Sprite> fornecedorSpriteVazio)
     {     
@@ -47,7 +47,7 @@ public abstract class BoardCleaner
         navegacao.resetMira();
     }
 
-    protected abstract void cleanElement(int indiceLinha, int indiceColuna, ReferenciasDoBoardAssembler referencias, bool estado);
+    protected abstract void cleanElement(int indiceLinha, int indiceColuna, ReferenciasDoBoard referencias, bool estado);
 
     protected bool isSextoElementoLinhaPar(int linha, int coluna)
     {
