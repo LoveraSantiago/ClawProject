@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ReferenciasDoBoardAssemblerNegativo : ReferenciasDoBoard
+public class ReferenciasDoBoardNegativo : ReferenciasDoBoard
 {
-    public ReferenciasDoBoardAssemblerNegativo() :
+    public ReferenciasDoBoardNegativo() :
        base("BoardAssembler-Negativo")
     { }
 

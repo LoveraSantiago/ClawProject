@@ -30,7 +30,7 @@ public class BoardAssemblerNegativo : EditorWindow
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler-negativo/BoardAssemblerNegativo.uss");
 
         HelperColetavelEntidade.configurar();
-        ReferenciasDoBoardAssemblerNegativo referenciasDoBoard = new ReferenciasDoBoardAssemblerNegativo();
+        ReferenciasDoBoardNegativo referenciasDoBoard = new ReferenciasDoBoardNegativo();
         NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);        
         ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);                
         BoardCleanerNegativo cleaner = new BoardCleanerNegativo(referenciasDoBoard, navegacao, () => spriteVazio);
