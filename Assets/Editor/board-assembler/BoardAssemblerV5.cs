@@ -57,7 +57,7 @@ public class BoardAssemblerV5 : EditorWindow
         root.Q<Button>("botaoBaixoAll")      .clicked += () => navegacao.navegarBaixoTotal();
         root.Q<Button>("botaoEsquerdaAll")   .clicked += () => navegacao.navegarTrasTotal();
         root.Q<Button>("botaoDireitaAll")    .clicked += () => navegacao.navegarFrenteTotal();
-        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => preenchedor.colocarTexto(navegacao, evento.newValue, spriteVazio));
+        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => Preenchedor.colocarTexto(navegacao, evento.newValue, spriteVazio));
 
         spriteVazio = listaDeSprites.getSpriteVazio();
         cleaner.clean();

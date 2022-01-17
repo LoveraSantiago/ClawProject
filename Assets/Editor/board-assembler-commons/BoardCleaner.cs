@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public abstract class BoardCleaner 
 {    
@@ -30,25 +29,25 @@ public abstract class BoardCleaner
             {
                 GameObject goIt = referenciasDoBoard.dicionarioGosBoard[contadorLinha][contadorColuna];                
                 Preenchedor.colocarSprVazio(goIt, fornecedorSpriteVazio.Invoke());
-
-                Text textIt = referenciasDoBoard.dicionarioTextLabels[contadorLinha][contadorColuna];
-                Preenchedor.resetText(textIt);                
+                
 
                 //Debug.Log("linha " + contadorLinha + " coluna " + contadorColuna);
                 if (isSextoElementoTipoLinha(contadorLinha, contadorColuna))
                 {
                     goIt.SetActive(false);
-                    textIt.gameObject.SetActive(false);
+                    cleanElement(contadorLinha, contadorColuna, referenciasDoBoard, false);                    
                 }
                 else
                 {
                     goIt.SetActive(true);
-                    textIt.gameObject.SetActive(true);
+                    cleanElement(contadorLinha, contadorColuna, referenciasDoBoard, true);                    
                 }
             }
         }
         navegacao.resetMira();
     }
+
+    protected abstract void cleanElement(int indiceLinha, int indiceColuna, ReferenciasDoBoardAssembler referencias, bool estado);
 
     protected bool isSextoElementoLinhaPar(int linha, int coluna)
     {

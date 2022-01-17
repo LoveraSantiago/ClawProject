@@ -8,6 +8,10 @@ public class BoardCleanerNegativo : BoardCleaner
         Func<Sprite> fornecedorSpriteVazio) 
         : base(referenciasDoBoard, navegacao, fornecedorSpriteVazio){}
 
+    protected override void cleanElement(int indiceLinha, int indiceColuna, ReferenciasDoBoardAssembler referencias, bool estado)
+    {        
+    }
+
     protected override bool isSextoElementoTipoLinha(int linha, int coluna)
     {
         return isSextoElementoLinhaImpar(linha, coluna);
