@@ -11,7 +11,7 @@ public class BoardCleanerPositivo : BoardCleaner
 
     protected override void cleanElement(int indiceLinha, int indiceColuna, ReferenciasDoBoard referencias, bool estado)
     {
-        Text textIt = ((ReferenciasDoBoardAssemblerPositivo)referencias).dicionarioTextLabels[indiceLinha][indiceColuna];
+        Text textIt = ((ReferenciasDoBoardPositivo)referencias).dicionarioTextLabels[indiceLinha][indiceColuna];
         Preenchedor.resetText(textIt);
         textIt.gameObject.SetActive(estado);
     }

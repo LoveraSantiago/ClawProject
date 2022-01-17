@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReferenciasDoBoardAssemblerPositivo : ReferenciasDoBoard
+public class ReferenciasDoBoardPositivo : ReferenciasDoBoard
 {
     public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels { get; private set; }
     private GameObject goLinhaLabel;
     private Dictionary<int, Text> dicionarioTextColuna;
 
-    public ReferenciasDoBoardAssemblerPositivo() : 
+    public ReferenciasDoBoardPositivo() : 
         base("BoardAssembler"){}
 
     protected override void preIteracaoLinha()

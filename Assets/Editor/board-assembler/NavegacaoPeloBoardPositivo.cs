@@ -2,7 +2,7 @@ using UnityEngine.UIElements;
 
 public class NavegacaoPeloBoardPositivo : NavegacaoPeloBoard
 {
-    public NavegacaoPeloBoardPositivo(VisualElement root, ReferenciasDoBoardAssemblerPositivo referencias)
+    public NavegacaoPeloBoardPositivo(VisualElement root, ReferenciasDoBoardPositivo referencias)
         : base(root, referencias){}
 
     protected override string getNomeBtnIrParaBaixo()
