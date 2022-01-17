@@ -22,18 +22,17 @@ public abstract class BoardCleaner
     protected abstract bool isSextoElementoTipoLinha(int linha, int coluna);
 
     public void clean()
-    {
-        Preenchedor preenchedor = new Preenchedor();
+    {        
         for (int contadorLinha = 0; contadorLinha < referenciasDoBoard.dicionarioGosBoard.Count; contadorLinha++)
         {
             Dictionary<int, GameObject> dicionarioLinha = referenciasDoBoard.dicionarioGosBoard[0];
             for (int contadorColuna = 0; contadorColuna < dicionarioLinha.Count; contadorColuna++)
             {
                 GameObject goIt = referenciasDoBoard.dicionarioGosBoard[contadorLinha][contadorColuna];                
-                preenchedor.colocarSprVazio(goIt, fornecedorSpriteVazio.Invoke());
+                Preenchedor.colocarSprVazio(goIt, fornecedorSpriteVazio.Invoke());
 
                 Text textIt = referenciasDoBoard.dicionarioTextLabels[contadorLinha][contadorColuna];
-                preenchedor.resetText(textIt);                
+                Preenchedor.resetText(textIt);                
 
                 //Debug.Log("linha " + contadorLinha + " coluna " + contadorColuna);
                 if (isSextoElementoTipoLinha(contadorLinha, contadorColuna))
