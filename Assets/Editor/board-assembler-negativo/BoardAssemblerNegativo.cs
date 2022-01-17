@@ -3,7 +3,6 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-
 public class BoardAssemblerNegativo : EditorWindow
 {
     [MenuItem("Window/assemblers/BoardAssemblerNegativo")]
@@ -47,14 +46,14 @@ public class BoardAssemblerNegativo : EditorWindow
             listaDeSprites.receberSprite((Sprite)e1.newValue);
         });
 
-        root.Q<Button>("botaoMenosTodos").clicked += () => listaDeSprites.limparTodaLista();
-        root.Q<Button>("botaoMenos").clicked += () => listaDeSprites.removerUltimaLinha();
-        root.Q<Button>("botaoClean").clicked += () => cleaner.clean();
-        root.Q<Button>("botaoProcessar").clicked += () => processadorColetaveis.processar();
-        root.Q<Button>("botaoCimaAll").clicked += () => navegacao.navegarBaixoTotal();
-        root.Q<Button>("botaoBaixoAll").clicked += () => navegacao.navegarCimaTotal();
+        root.Q<Button>("botaoMenosTodos") .clicked += () => listaDeSprites.limparTodaLista();
+        root.Q<Button>("botaoMenos")      .clicked += () => listaDeSprites.removerUltimaLinha();
+        root.Q<Button>("botaoClean")      .clicked += () => cleaner.clean();
+        root.Q<Button>("botaoProcessar")  .clicked += () => processadorColetaveis.processar();
+        root.Q<Button>("botaoCimaAll")    .clicked += () => navegacao.navegarBaixoTotal();
+        root.Q<Button>("botaoBaixoAll")   .clicked += () => navegacao.navegarCimaTotal();
         root.Q<Button>("botaoEsquerdaAll").clicked += () => navegacao.navegarTrasTotal();
-        root.Q<Button>("botaoDireitaAll").clicked += () => navegacao.navegarFrenteTotal();
+        root.Q<Button>("botaoDireitaAll") .clicked += () => navegacao.navegarFrenteTotal();
 
         spriteVazio = listaDeSprites.getSpriteVazio();
         cleaner.clean();
