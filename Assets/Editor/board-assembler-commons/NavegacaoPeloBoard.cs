@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public abstract class NavegacaoPeloBoard
 {
-    private int linhaAtual;
-    private int colunaAtual;
+    protected int linhaAtual;
+    protected int colunaAtual;
 
-    private ReferenciasDoBoard referencias;
+    protected ReferenciasDoBoard referencias;
 
     public NavegacaoPeloBoard(VisualElement root, ReferenciasDoBoard referencias)
     {
@@ -29,12 +29,7 @@ public abstract class NavegacaoPeloBoard
     public GameObject getGoDaMira()
     {
         return referencias.dicionarioGosBoard[linhaAtual][colunaAtual];
-    }
-
-    public Text getTextDaMira()
-    {
-        return referencias.dicionarioTextLabels[linhaAtual][colunaAtual];
-    }
+    }    
 
     public void navegarCimaTotal()
     {

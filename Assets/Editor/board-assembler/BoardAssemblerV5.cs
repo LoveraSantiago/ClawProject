@@ -39,9 +39,10 @@ public class BoardAssemblerV5 : EditorWindow
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => Preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
 
-        RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
-        DropDownLevels dropDownLevels = new DropDownLevels(LevelHelper.getNormalLevelsAlias());
-        dropDownLevels.criarComponentDropDownField(root, cleaner, remontador);
+        RemontadorBoard remontadorObj         = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
+        RemontadorLabelsBoard remontadorLbls  = new RemontadorLabelsBoard(referenciasDoBoard, listaDeSprites);
+        DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(LevelHelper.getNormalLevelsAlias(), remontadorLbls);
+        dropDownLevels.criarComponentDropDownField(root, cleaner, remontadorObj);
 
         root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
         {

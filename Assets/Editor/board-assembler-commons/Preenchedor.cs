@@ -19,7 +19,7 @@ public class Preenchedor
         text.text = "00";
     }
 
-    public static void colocarTexto(NavegacaoPeloBoard navegacao, int novoValor, Sprite spriteVazio)
+    public static void colocarTexto(NavegacaoPeloBoardPositivo navegacao, int novoValor, Sprite spriteVazio)
     {
         //Debug.Log("Troca de texto chamada");
         GameObject go = navegacao.getGoDaMira();

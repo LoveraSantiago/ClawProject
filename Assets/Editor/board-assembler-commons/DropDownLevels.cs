@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 
-public class DropDownLevels 
+public abstract class DropDownLevels 
 {
     private List<string> listaDeLevels;
 
@@ -24,12 +24,13 @@ public class DropDownLevels
                 int[,] coletaveis = level.getArrayDeColetaveis();
                 remontador.montarColetaveis(coletaveis, (go, spr) => Preenchedor.colocarSprite(go, spr));
 
-                BoardOrdem[] ordens = LevelUtils.getBoardOrdensFromLevelOrdenado(level);
-                remontador.montarLabels(ordens);
+                onDropDownSelected(level);                
             }
         });
 
         root.Q<VisualElement>("espacoDropDown")
                .Add(dropDownField);
     }
+
+    protected abstract void onDropDownSelected(AbstractLevel level);
 }
