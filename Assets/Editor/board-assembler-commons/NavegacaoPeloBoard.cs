@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEngine.UI;
 
 public abstract class NavegacaoPeloBoard
 {
@@ -30,6 +29,11 @@ public abstract class NavegacaoPeloBoard
     {
         return referencias.dicionarioGosBoard[linhaAtual][colunaAtual];
     }    
+
+    public PosicaoMira getPosicaoDaMira()
+    {
+        return new PosicaoMira(linhaAtual, colunaAtual);
+    }
 
     public void navegarCimaTotal()
     {
