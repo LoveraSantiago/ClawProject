@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 
-public abstract class DropDownLevels 
+public class DropDownLevels 
 {
     private List<string> listaDeLevels;
 
@@ -32,5 +32,5 @@ public abstract class DropDownLevels
                .Add(dropDownField);
     }
 
-    protected abstract void onDropDownSelected(AbstractLevel level);
+    protected virtual void onDropDownSelected(AbstractLevel level) { }
 }
