@@ -50,4 +50,10 @@ public class UtilsMath
         }       
         return sorteado;
     }
+
+    public static bool isNumerico(string valor)
+    {
+        int numero;
+        return int.TryParse(valor, out numero);
+    }
 }
