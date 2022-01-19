@@ -45,7 +45,7 @@ public abstract class ReferenciasDoBoard
             GameObject goLinha = goBoardAssembler.transform.Find("gos").GetChild(contadorLinha).gameObject;
             iteracaoLinha(contadorLinha, goBoardAssembler);
 
-            if (isNumerico(goLinha.name))
+            if (UtilsMath.isNumerico(goLinha.name))
             {
                 Dictionary<int, GameObject> dicionarioGoColuna = new Dictionary<int, GameObject>();
                 preIteracaoColuna();
@@ -54,14 +54,14 @@ public abstract class ReferenciasDoBoard
                 {
                     GameObject goColuna = goLinha.transform.GetChild(contadorColuna).gameObject;
 
-                    if (isNumerico(goColuna.name))
+                    if (UtilsMath.isNumerico(goColuna.name))
                     {
-                        int indiceColuna = toNumeric(goColuna.name);
+                        int indiceColuna = UtilsMath.toNumerico(goColuna.name);
                         iteracaoColuna(contadorColuna, indiceColuna);
                         dicionarioGoColuna.Add(indiceColuna, goColuna);
                     }
                 }
-                int indiceLinha = toNumeric(goLinha.name);
+                int indiceLinha = UtilsMath.toNumerico(goLinha.name);
                 dicionarioGosBoard.Add(indiceLinha, dicionarioGoColuna);
                 posIteracaoColuna(contadorLinha);
             }
@@ -72,20 +72,7 @@ public abstract class ReferenciasDoBoard
     protected abstract void iteracaoLinha(int contadorLinha, GameObject goBoardAssembler);
     protected abstract void preIteracaoColuna();
     protected abstract void iteracaoColuna(int contadorColuna, int indiceColuna);
-    protected abstract void posIteracaoColuna(int contadorLinha);
-
-    private bool isNumerico(string name)
-    {
-        int nomeNumericoLinha;
-        return int.TryParse(name, out nomeNumericoLinha);
-    }
-
-    private int toNumeric(string name)
-    {
-        int nomeNumericoLinha;
-        bool result = int.TryParse(name, out nomeNumericoLinha);
-        return nomeNumericoLinha;
-    }
+    protected abstract void posIteracaoColuna(int contadorLinha);        
 
     private GameObject inicializarGoMira(GameObject goBoardAssembler)
     {

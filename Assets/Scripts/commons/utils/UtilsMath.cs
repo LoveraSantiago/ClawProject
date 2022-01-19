@@ -56,4 +56,11 @@ public class UtilsMath
         int numero;
         return int.TryParse(valor, out numero);
     }
+
+    public static int toNumerico(string name)
+    {
+        int nomeNumericoLinha;
+        bool result = int.TryParse(name, out nomeNumericoLinha);
+        return nomeNumericoLinha;
+    }
 }
