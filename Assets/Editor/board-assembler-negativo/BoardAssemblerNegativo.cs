@@ -10,9 +10,7 @@ public class BoardAssemblerNegativo : EditorWindow
     {
         BoardAssemblerNegativo wnd = GetWindow<BoardAssemblerNegativo>();
         wnd.titleContent = new GUIContent("BoardAssemblerNegativo");
-    }
-
-    private Sprite spriteVazio;
+    }    
 
     public void CreateGUI()
     {
@@ -32,10 +30,10 @@ public class BoardAssemblerNegativo : EditorWindow
         ReferenciasDoBoardNegativo referenciasDoBoard = new ReferenciasDoBoardNegativo();
         NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);        
         ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);                
-        BoardCleanerNegativo cleaner = new BoardCleanerNegativo(referenciasDoBoard, navegacao, () => spriteVazio);
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => Preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
+        BoardCleanerNegativo cleaner = new BoardCleanerNegativo(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());
         navegacao.resetMira();
 
-        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => Preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
 
         RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
         DropDownLevels dropDownLevels = new DropDownLevels(LevelHelper.getElevadorLevelsAlias());
@@ -54,8 +52,7 @@ public class BoardAssemblerNegativo : EditorWindow
         root.Q<Button>("botaoBaixoAll")   .clicked += () => navegacao.navegarCimaTotal();
         root.Q<Button>("botaoEsquerdaAll").clicked += () => navegacao.navegarTrasTotal();
         root.Q<Button>("botaoDireitaAll") .clicked += () => navegacao.navegarFrenteTotal();
-
-        spriteVazio = listaDeSprites.getSpriteVazio();
+        
         cleaner.clean();
     }    
 }

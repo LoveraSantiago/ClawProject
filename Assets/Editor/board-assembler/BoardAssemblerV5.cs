@@ -12,8 +12,6 @@ public class BoardAssemblerV5 : EditorWindow
         wnd.titleContent = new GUIContent("BoardAssemblerV5");
     }
 
-    private Sprite spriteVazio;    
-
     public void CreateGUI()
     {
         // Each editor window contains a root VisualElement object
@@ -32,12 +30,13 @@ public class BoardAssemblerV5 : EditorWindow
         ReferenciasDoBoardPositivo referenciasDoBoard = new ReferenciasDoBoardPositivo();
         NavegacaoPeloBoardPositivo navegacao  = new NavegacaoPeloBoardPositivo(root, referenciasDoBoard);        
         ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
-        ProcessadorDeOrdem processadorDeOrdem = new ProcessadorDeOrdem(referenciasDoBoard);        
-        BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, () => spriteVazio);
+        ProcessadorDeOrdem processadorDeOrdem = new ProcessadorDeOrdem(referenciasDoBoard);
+
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => Preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
+        BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());
 
         navegacao.resetMira();
 
-        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => Preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
 
         RemontadorBoard remontadorObj         = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
         RemontadorLabelsBoard remontadorLbls  = new RemontadorLabelsBoard(referenciasDoBoard, listaDeSprites);
@@ -58,9 +57,8 @@ public class BoardAssemblerV5 : EditorWindow
         root.Q<Button>("botaoBaixoAll")      .clicked += () => navegacao.navegarBaixoTotal();
         root.Q<Button>("botaoEsquerdaAll")   .clicked += () => navegacao.navegarTrasTotal();
         root.Q<Button>("botaoDireitaAll")    .clicked += () => navegacao.navegarFrenteTotal();
-        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => Preenchedor.colocarTexto(navegacao, evento.newValue, spriteVazio));
+        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => Preenchedor.colocarTexto(navegacao, evento.newValue, listaDeSprites.getSpriteVazio()));
 
-        spriteVazio = listaDeSprites.getSpriteVazio();
         cleaner.clean();
     }               
 }

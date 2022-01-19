@@ -1,7 +1,7 @@
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEditor.UIElements;
 
 public class BoardAssemblerObstaculos : EditorWindow
 {
@@ -11,8 +11,6 @@ public class BoardAssemblerObstaculos : EditorWindow
         BoardAssemblerObstaculos wnd = GetWindow<BoardAssemblerObstaculos>();
         wnd.titleContent = new GUIContent("BoardAssemblerObstaculos");
     }
-
-    private Sprite spriteVazio;
 
     public void CreateGUI()
     {
@@ -32,10 +30,10 @@ public class BoardAssemblerObstaculos : EditorWindow
         ReferenciasDoBoardObstaculo referenciasDoBoard = new ReferenciasDoBoardObstaculo();
         NavegacaoPeloBoardObstaculos navegacao = new NavegacaoPeloBoardObstaculos(root, referenciasDoBoard);
         ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);        
-        BoardCleanerObstaculos cleaner = new BoardCleanerObstaculos(referenciasDoBoard, navegacao, () => spriteVazio);
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => Preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
+        BoardCleanerObstaculos cleaner = new BoardCleanerObstaculos(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());
         navegacao.resetMira();
 
-        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => Preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
         RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
         DropDownLevels dropoDownLevels = new DropDownLevels(LevelHelper.getObstaculoLevelsAlias());
         dropoDownLevels.criarComponentDropDownField(root, cleaner, remontador);
@@ -54,8 +52,7 @@ public class BoardAssemblerObstaculos : EditorWindow
         root.Q<Button>("botaoEsquerdaAll")  .clicked += () => navegacao.navegarTrasTotal();
         root.Q<Button>("botaoDireitaAll")   .clicked += () => navegacao.navegarFrenteTotal();
         root.Q<Button>("botaoAddObstaculos").clicked += () => { };
-
-        spriteVazio = listaDeSprites.getSpriteVazio();
+        
         cleaner.clean();
     }
 }
