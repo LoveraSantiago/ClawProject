@@ -23,6 +23,11 @@ public abstract class ReferenciasDoBoard
         return dicionarioGosBoard[linha].Count;
     }
 
+    public Vector3 getPosicaoElemento(int linha, int coluna)
+    {
+        return dicionarioGosBoard[linha][coluna].transform.position;
+    }
+
     public void cleanElemento(int linha, int coluna, bool estado, Sprite sprite)
     {
         GameObject go = dicionarioGosBoard[linha][coluna];

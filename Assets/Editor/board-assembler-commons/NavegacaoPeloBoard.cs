@@ -25,10 +25,10 @@ public abstract class NavegacaoPeloBoard
         colunaAtual = 0;
     }
 
-    public GameObject getGoDaMira()
-    {
-        return referencias.dicionarioGosBoard[linhaAtual][colunaAtual];
-    }    
+    //public GameObject getGoDaMira()
+    //{
+    //    return referencias.dicionarioGosBoard[linhaAtual][colunaAtual];
+    //}    
 
     public PosicaoMira getPosicaoDaMira()
     {
@@ -37,7 +37,7 @@ public abstract class NavegacaoPeloBoard
 
     public void navegarCimaTotal()
     {
-        linhaAtual = referencias.dicionarioGosBoard.Count - 1;
+        linhaAtual = referencias.getQtdLinhasGos() - 1;
         posicionarMira(linhaAtual, colunaAtual);
     }
 
@@ -57,11 +57,11 @@ public abstract class NavegacaoPeloBoard
     {
         if (isLinhaMenor(linhaAtual))
         {
-            colunaAtual = referencias.dicionarioGosBoard[linhaAtual].Count - 2;
+            colunaAtual = referencias.getQtdColunasDaLinha(linhaAtual) - 2;
         }
         else
         {
-            colunaAtual = referencias.dicionarioGosBoard[linhaAtual].Count - 1;
+            colunaAtual = referencias.getQtdColunasDaLinha(linhaAtual) - 1;
         }
         posicionarMira(linhaAtual, colunaAtual);
     }
@@ -122,7 +122,7 @@ public abstract class NavegacaoPeloBoard
 
     private bool podeAndarUmaColuna()
     {
-        bool resultProximaColuna = colunaAtual + 1 < referencias.dicionarioGosBoard[linhaAtual].Count;        
+        bool resultProximaColuna = colunaAtual + 1 < referencias.getQtdColunasDaLinha(linhaAtual);        
         bool resultPos7Par = isLinhaMenor(linhaAtual) && colunaAtual + 1 == 6;
         return resultProximaColuna && !resultPos7Par;
     } 
@@ -141,14 +141,14 @@ public abstract class NavegacaoPeloBoard
 
     private bool podeDescerUmaLinha()
     {
-        bool resultProximaLinha = linhaAtual + 1 < referencias.dicionarioGosBoard.Count;        
+        bool resultProximaLinha = linhaAtual + 1 < referencias.getQtdLinhasGos();        
         bool resultPos7Par = isLinhaMenor(linhaAtual + 1) && colunaAtual == 6;
         return resultProximaLinha && !resultPos7Par;
     }
 
     private void posicionarMira(int linha, int coluna)
-    {
-        GameObject go00 = referencias.dicionarioGosBoard[linha][coluna];
-        referencias.goMira.transform.position = go00.transform.position;
+    {        
+        Vector3 posicao = referencias.getPosicaoElemento(linha, coluna);
+        referencias.goMira.transform.position = posicao;
     }   
 }
