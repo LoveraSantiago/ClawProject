@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class BoardCleaner 
@@ -21,27 +20,26 @@ public abstract class BoardCleaner
     protected abstract bool isSextoElementoTipoLinha(int linha, int coluna);
 
     public void clean()
-    {        
-        for (int contadorLinha = 0; contadorLinha < referenciasDoBoard.dicionarioGosBoard.Count; contadorLinha++)
-        {
-            Dictionary<int, GameObject> dicionarioLinha = referenciasDoBoard.dicionarioGosBoard[0];
-            for (int contadorColuna = 0; contadorColuna < dicionarioLinha.Count; contadorColuna++)
+    {
+        int qtdLinhas = referenciasDoBoard.getQtdLinhasGos();
+        for (int contadorLinha = 0; contadorLinha < qtdLinhas; contadorLinha++)
+        {            
+            int qtdColunas = referenciasDoBoard.getQtdColunasDaLinha(contadorLinha);
+            for (int contadorColuna = 0; contadorColuna < qtdColunas; contadorColuna++)
             {
-                GameObject goIt = referenciasDoBoard.dicionarioGosBoard[contadorLinha][contadorColuna];                
-                Preenchedor.colocarSprVazio(goIt, fornecedorSpriteVazio.Invoke());
-                
-
-                //Debug.Log("linha " + contadorLinha + " coluna " + contadorColuna);
+                bool estadoGo = false;
                 if (isSextoElementoTipoLinha(contadorLinha, contadorColuna))
                 {
-                    goIt.SetActive(false);
+                    estadoGo = false;
                     cleanElement(contadorLinha, contadorColuna, referenciasDoBoard, false);                    
                 }
                 else
                 {
-                    goIt.SetActive(true);
+                    estadoGo = true;
                     cleanElement(contadorLinha, contadorColuna, referenciasDoBoard, true);                    
                 }
+
+                referenciasDoBoard.cleanElemento(contadorLinha, contadorColuna, estadoGo, fornecedorSpriteVazio.Invoke());
             }
         }
         navegacao.resetMira();

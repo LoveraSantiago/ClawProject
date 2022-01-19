@@ -5,12 +5,29 @@ using UnityEngine.SceneManagement;
 public abstract class ReferenciasDoBoard
 {
     public GameObject goMira { get; private set; }
-    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
-    //public Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard { get; private set; }
+    //private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
+    public Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard { get; private set; }
 
     public ReferenciasDoBoard(string nomePrefab)
     {
         configurarReferenciasComBoard(nomePrefab);
+    }
+
+    public int getQtdLinhasGos()
+    {
+        return dicionarioGosBoard.Count;
+    }
+
+    public int getQtdColunasDaLinha(int linha)
+    {
+        return dicionarioGosBoard[linha].Count;
+    }
+
+    public void cleanElemento(int linha, int coluna, bool estado, Sprite sprite)
+    {
+        GameObject go = dicionarioGosBoard[linha][coluna];
+        Preenchedor.colocarSprVazio(go, sprite);
+        go.SetActive(estado);
     }
 
     private void configurarReferenciasComBoard(string nomePrefab)
