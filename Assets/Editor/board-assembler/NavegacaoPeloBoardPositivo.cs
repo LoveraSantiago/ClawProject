@@ -19,10 +19,5 @@ public class NavegacaoPeloBoardPositivo : NavegacaoPeloBoard
     protected override bool isLinhaMenor(int value)
     {
         return isImpar(value);
-    }
-
-    public Text getTextDaMira()
-    {
-        return ((ReferenciasDoBoardPositivo)referencias).dicionarioTextLabels[linhaAtual][colunaAtual];
-    }
+    }   
 }

@@ -6,22 +6,5 @@ public class Preenchedor
     public static void resetText(Text text)
     {
         text.text = "00";
-    }
-
-    public static void colocarTexto(NavegacaoPeloBoardPositivo navegacao, int novoValor, Sprite spriteVazio)
-    {
-        //Debug.Log("Troca de texto chamada");
-        GameObject go = navegacao.getGoDaMira();
-        Sprite spr = go.GetComponent<SpriteRenderer>().sprite;
-        if (spr != null && !spr.name.Equals(spriteVazio.name))
-        {
-            Text text = navegacao.getTextDaMira();
-            text.text = novoValor.ToString();
-            //Debug.Log("Troca de texto realizada no text " + text.gameObject.name);
-        }
-        else
-        {
-            //Debug.Log("Troca de texto NAO realizada");
-        }
-    }
+    }   
 }

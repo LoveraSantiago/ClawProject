@@ -33,7 +33,7 @@ public class BoardAssemblerObstaculos : EditorWindow
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => {
                 PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
-                referenciasDoBoard.updateElemento(posicaoMira.linha, posicaoMira.coluna, spr);
+                referenciasDoBoard.updateElementoGo(posicaoMira.linha, posicaoMira.coluna, spr);
             });
 
         BoardCleanerObstaculos cleaner = new BoardCleanerObstaculos(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());

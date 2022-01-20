@@ -34,7 +34,7 @@ public class BoardAssemblerV5 : EditorWindow
 
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => {
                 PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
-                referenciasDoBoard.updateElemento(posicaoMira.linha, posicaoMira.coluna, spr);            
+                referenciasDoBoard.updateElementoGo(posicaoMira.linha, posicaoMira.coluna, spr);            
             });
 
         BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());
@@ -60,7 +60,11 @@ public class BoardAssemblerV5 : EditorWindow
         root.Q<Button>("botaoBaixoAll")      .clicked += () => navegacao.navegarBaixoTotal();
         root.Q<Button>("botaoEsquerdaAll")   .clicked += () => navegacao.navegarTrasTotal();
         root.Q<Button>("botaoDireitaAll")    .clicked += () => navegacao.navegarFrenteTotal();
-        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => Preenchedor.colocarTexto(navegacao, evento.newValue, listaDeSprites.getSpriteVazio()));
+        root.Q<IntegerField>("ordem").RegisterValueChangedCallback((evento) => 
+            {
+                PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
+                referenciasDoBoard.updateElementoTexto(posicaoMira.linha, posicaoMira.coluna, evento.newValue);                
+            });
 
         cleaner.clean();
     }               

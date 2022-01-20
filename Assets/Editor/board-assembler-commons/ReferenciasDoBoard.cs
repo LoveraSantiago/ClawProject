@@ -28,22 +28,29 @@ public abstract class ReferenciasDoBoard
         return dicionarioGosBoard[linha][coluna].transform.position;
     }
 
-    public void updateElemento(int linha, int coluna, Sprite sprite)
+    public void updateElementoGo(int linha, int coluna, Sprite sprite)
     {
-        updateElemento(linha, coluna, true, sprite);
+        updateElementoGo(linha, coluna, true, sprite);
     }
 
-    public void cleanElemento(int linha, int coluna, bool estado, Sprite sprite)
+    public void cleanElementoGo(int linha, int coluna, bool estado, Sprite sprite)
     {
-        updateElemento(linha, coluna, estado, sprite);
+        updateElementoGo(linha, coluna, estado, sprite);
     }
 
-    private void updateElemento(int linha, int coluna, bool estado, Sprite sprite)
+    private void updateElementoGo(int linha, int coluna, bool estado, Sprite sprite)
     {
         GameObject go = dicionarioGosBoard[linha][coluna];
         go.GetComponent<SpriteRenderer>().sprite = sprite;
         go.transform.rotation = Quaternion.Euler(Vector3.zero);
         go.SetActive(estado);
+    }
+
+    public bool isElementoGoVazio(int linha, int coluna)
+    {
+        GameObject go = dicionarioGosBoard[linha][coluna];
+        Sprite spr = go.GetComponent<SpriteRenderer>().sprite;
+        return spr.name.Equals(spriteVazio.name);
     }
 
     private void configurarReferenciasComBoard(string nomePrefab)

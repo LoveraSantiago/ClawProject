@@ -39,7 +39,7 @@ public abstract class BoardCleaner
                     cleanElement(contadorLinha, contadorColuna, referenciasDoBoard, true);                    
                 }
 
-                referenciasDoBoard.cleanElemento(contadorLinha, contadorColuna, estadoGo, fornecedorSpriteVazio.Invoke());
+                referenciasDoBoard.cleanElementoGo(contadorLinha, contadorColuna, estadoGo, fornecedorSpriteVazio.Invoke());
             }
         }
         navegacao.resetMira();

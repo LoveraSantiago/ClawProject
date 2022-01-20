@@ -11,6 +11,15 @@ public class ReferenciasDoBoardPositivo : ReferenciasDoBoard
     public ReferenciasDoBoardPositivo() : 
         base("BoardAssembler"){}
 
+    public void updateElementoTexto(int linha, int coluna, int valor)
+    {
+        bool isVazio = isElementoGoVazio(linha, coluna);
+        if (!isVazio)
+        {
+            dicionarioTextLabels[linha][coluna].text = valor.ToString();
+        }
+    }
+
     protected override void preIteracaoLinha()
     {
         dicionarioTextLabels = new Dictionary<int, Dictionary<int, Text>>();

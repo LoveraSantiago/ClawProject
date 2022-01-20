@@ -6,7 +6,7 @@ public abstract class NavegacaoPeloBoard
     protected int linhaAtual;
     protected int colunaAtual;
 
-    protected ReferenciasDoBoard referencias;
+    private ReferenciasDoBoard referencias;
 
     public NavegacaoPeloBoard(VisualElement root, ReferenciasDoBoard referencias)
     {
@@ -23,12 +23,7 @@ public abstract class NavegacaoPeloBoard
         posicionarMira(0, 0);
         linhaAtual = 0;
         colunaAtual = 0;
-    }
-
-    //public GameObject getGoDaMira()
-    //{
-    //    return referencias.dicionarioGosBoard[linhaAtual][colunaAtual];
-    //}    
+    }    
 
     public PosicaoMira getPosicaoDaMira()
     {
