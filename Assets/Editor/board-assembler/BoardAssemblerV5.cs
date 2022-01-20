@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
 
 public class BoardAssemblerV5 : EditorWindow
 {
@@ -32,10 +33,12 @@ public class BoardAssemblerV5 : EditorWindow
         ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
         ProcessadorDeOrdem processadorDeOrdem = new ProcessadorDeOrdem(referenciasDoBoard);
 
-        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => {
-                PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
-                referenciasDoBoard.updateElementoGo(posicaoMira.linha, posicaoMira.coluna, spr);            
-            });
+        Action<Sprite> onItemSelecionado = (spr) =>
+        {
+            PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
+            referenciasDoBoard.updateElementoGo(posicaoMira.linha, posicaoMira.coluna, spr);
+        };
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, onItemSelecionado);
 
         BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());
 
@@ -46,10 +49,11 @@ public class BoardAssemblerV5 : EditorWindow
         DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(LevelHelper.getNormalLevelsAlias(), remontadorLbls);
         dropDownLevels.criarComponentDropDownField(root, cleaner, remontadorObj);
 
-        root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
+        EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>
         {
             listaDeSprites.receberSprite((Sprite)e1.newValue);
-        });
+        };
+        root.Q<ObjectField>("objectFieldSprite").RegisterCallback(onSpriteAdicionado);
 
         root.Q<Button>("botaoMenosTodos")    .clicked += () => listaDeSprites.limparTodaLista();
         root.Q<Button>("botaoMenos")         .clicked += () => listaDeSprites.removerUltimaLinha();
@@ -60,15 +64,17 @@ public class BoardAssemblerV5 : EditorWindow
         root.Q<Button>("botaoBaixoAll")      .clicked += () => navegacao.navegarBaixoTotal();
         root.Q<Button>("botaoEsquerdaAll")   .clicked += () => navegacao.navegarTrasTotal();
         root.Q<Button>("botaoDireitaAll")    .clicked += () => navegacao.navegarFrenteTotal();
-        root.Q<IntegerField>("ordem").RegisterValueChangedCallback((evento) => 
+
+        EventCallback<ChangeEvent<int>> onOrdemAcionado = (evento) =>
+        {
+            PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
+            bool isGoComSpriteVazio = referenciasDoBoard.isElementoGoComSprite(posicaoMira.linha, posicaoMira.coluna, listaDeSprites.getSpriteVazio());
+            if (!isGoComSpriteVazio)
             {
-                PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
-                bool isGoComSpriteVazio = referenciasDoBoard.isElementoGoComSprite(posicaoMira.linha, posicaoMira.coluna, listaDeSprites.getSpriteVazio());
-                if (!isGoComSpriteVazio)
-                {
-                    referenciasDoBoard.updateElementoTexto(posicaoMira.linha, posicaoMira.coluna, evento.newValue);                
-                }
-            });
+                referenciasDoBoard.updateElementoTexto(posicaoMira.linha, posicaoMira.coluna, evento.newValue);
+            }
+        };
+        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(onOrdemAcionado);
 
         cleaner.clean();
     }               

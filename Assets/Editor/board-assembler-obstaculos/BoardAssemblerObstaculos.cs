@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
 
 public class BoardAssemblerObstaculos : EditorWindow
 {
@@ -31,10 +32,12 @@ public class BoardAssemblerObstaculos : EditorWindow
         NavegacaoPeloBoardObstaculos navegacao = new NavegacaoPeloBoardObstaculos(root, referenciasDoBoard);
         ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
 
-        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => {
-                PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
-                referenciasDoBoard.updateElementoGo(posicaoMira.linha, posicaoMira.coluna, spr);
-            });
+        Action<Sprite> onItemSelecionado = (spr) =>
+        {
+            PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
+            referenciasDoBoard.updateElementoGo(posicaoMira.linha, posicaoMira.coluna, spr);
+        };
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, onItemSelecionado);
 
         BoardCleanerObstaculos cleaner = new BoardCleanerObstaculos(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());
         navegacao.resetMira();
@@ -43,10 +46,11 @@ public class BoardAssemblerObstaculos : EditorWindow
         DropDownLevels dropoDownLevels = new DropDownLevels(LevelHelper.getObstaculoLevelsAlias());
         dropoDownLevels.criarComponentDropDownField(root, cleaner, remontador);
 
-        root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
+        EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>
         {
             listaDeSprites.receberSprite((Sprite)e1.newValue);
-        });
+        };
+        root.Q<ObjectField>("objectFieldSprite").RegisterCallback(onSpriteAdicionado);
 
         root.Q<Button>("botaoMenosTodos")   .clicked += () => listaDeSprites.limparTodaLista();
         root.Q<Button>("botaoMenos")        .clicked += () => listaDeSprites.removerUltimaLinha();

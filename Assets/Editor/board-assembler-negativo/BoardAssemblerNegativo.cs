@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
 
 public class BoardAssemblerNegativo : EditorWindow
 {
@@ -31,10 +32,12 @@ public class BoardAssemblerNegativo : EditorWindow
         NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);        
         ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
 
-        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => {
-                PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
-                referenciasDoBoard.updateElementoGo(posicaoMira.linha, posicaoMira.coluna, spr);
-            });
+        Action<Sprite> onItemSelecionado = (spr) =>
+        {
+            PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
+            referenciasDoBoard.updateElementoGo(posicaoMira.linha, posicaoMira.coluna, spr);
+        };
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, onItemSelecionado);
 
         BoardCleanerNegativo cleaner = new BoardCleanerNegativo(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());
         navegacao.resetMira();
@@ -44,10 +47,11 @@ public class BoardAssemblerNegativo : EditorWindow
         DropDownLevels dropDownLevels = new DropDownLevels(LevelHelper.getElevadorLevelsAlias());
         dropDownLevels.criarComponentDropDownField(root, cleaner, remontador);
 
-        root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
+        EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>
         {
             listaDeSprites.receberSprite((Sprite)e1.newValue);
-        });
+        };
+        root.Q<ObjectField>("objectFieldSprite").RegisterCallback(onSpriteAdicionado);
 
         root.Q<Button>("botaoMenosTodos") .clicked += () => listaDeSprites.limparTodaLista();
         root.Q<Button>("botaoMenos")      .clicked += () => listaDeSprites.removerUltimaLinha();
