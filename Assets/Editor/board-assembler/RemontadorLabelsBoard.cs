@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class RemontadorLabelsBoard 
@@ -27,9 +26,8 @@ public class RemontadorLabelsBoard
             Dictionary<int, Text> dicionarioLinha = referencias.dicionarioTextLabels[0];
             for (int contadorColuna = 0; contadorColuna < dicionarioLinha.Count; contadorColuna++)
             {
-                GameObject goReferencias = referencias.dicionarioGosBoard[contadorLinha][contadorColuna];
-                SpriteRenderer sprRenderer = goReferencias.GetComponent<SpriteRenderer>();
-                if (!sprRenderer.sprite.name.Equals(listaDeSprites.getSpriteVazio().name))
+                bool isSpriteVazio = referencias.isElementoGoComSprite(contadorLinha, contadorColuna, listaDeSprites.getSpriteVazio());                
+                if (!isSpriteVazio)
                 {
                     int nomeOrdem = contadorNome + 1;
                     BoardOrdem boardOrdemIt = getOrdemByNome(nomeOrdem, boardOrdem);

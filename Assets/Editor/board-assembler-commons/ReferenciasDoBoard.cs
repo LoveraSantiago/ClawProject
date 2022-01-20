@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 public abstract class ReferenciasDoBoard
 {
     public GameObject goMira { get; private set; }
-    //private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
-    public Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard { get; private set; }
+    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
 
     public ReferenciasDoBoard(string nomePrefab)
     {
