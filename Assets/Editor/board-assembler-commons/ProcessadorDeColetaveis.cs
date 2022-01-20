@@ -15,10 +15,10 @@ public class ProcessadorDeColetaveis
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
         string result = "int[,] coletaveis = new int[,]{" + Environment.NewLine;
 
-        int totalLinhas = referencias.getQtdLinhasGos();
+        int totalLinhas = referencias.getQtdLinhasDoBoard();
         for (int contadorLinha = 0; contadorLinha < totalLinhas; contadorLinha++)
         {
-            int colunasDalinha = referencias.getQtdColunasDaLinha(contadorLinha);
+            int colunasDalinha = referencias.getQtdColunasDoBoard(contadorLinha);
             result += "{";
             for (int contadorColuna = 0; contadorColuna < colunasDalinha; contadorColuna++)
             {   

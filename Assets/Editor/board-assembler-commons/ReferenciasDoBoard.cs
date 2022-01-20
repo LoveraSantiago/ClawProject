@@ -13,17 +13,17 @@ public abstract class ReferenciasDoBoard
         configurarReferenciasComBoard(nomePrefab);
     }
 
-    public int getQtdLinhasGos()
+    public int getQtdLinhasDoBoard()
     {
         return dicionarioGosBoard.Count;
     }
 
-    public int getQtdColunasDaLinha(int linha)
+    public int getQtdColunasDoBoard(int linha)
     {
         return dicionarioGosBoard[linha].Count;
     }
 
-    public Vector3 getPosicaoElemento(int linha, int coluna)
+    public Vector3 getPosicaoElementoGo(int linha, int coluna)
     {
         return dicionarioGosBoard[linha][coluna].transform.position;
     }

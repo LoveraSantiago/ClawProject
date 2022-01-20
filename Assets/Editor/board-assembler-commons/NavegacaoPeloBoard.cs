@@ -32,7 +32,7 @@ public abstract class NavegacaoPeloBoard
 
     public void navegarCimaTotal()
     {
-        linhaAtual = referencias.getQtdLinhasGos() - 1;
+        linhaAtual = referencias.getQtdLinhasDoBoard() - 1;
         posicionarMira(linhaAtual, colunaAtual);
     }
 
@@ -52,11 +52,11 @@ public abstract class NavegacaoPeloBoard
     {
         if (isLinhaMenor(linhaAtual))
         {
-            colunaAtual = referencias.getQtdColunasDaLinha(linhaAtual) - 2;
+            colunaAtual = referencias.getQtdColunasDoBoard(linhaAtual) - 2;
         }
         else
         {
-            colunaAtual = referencias.getQtdColunasDaLinha(linhaAtual) - 1;
+            colunaAtual = referencias.getQtdColunasDoBoard(linhaAtual) - 1;
         }
         posicionarMira(linhaAtual, colunaAtual);
     }
@@ -117,7 +117,7 @@ public abstract class NavegacaoPeloBoard
 
     private bool podeAndarUmaColuna()
     {
-        bool resultProximaColuna = colunaAtual + 1 < referencias.getQtdColunasDaLinha(linhaAtual);        
+        bool resultProximaColuna = colunaAtual + 1 < referencias.getQtdColunasDoBoard(linhaAtual);        
         bool resultPos7Par = isLinhaMenor(linhaAtual) && colunaAtual + 1 == 6;
         return resultProximaColuna && !resultPos7Par;
     } 
@@ -136,14 +136,14 @@ public abstract class NavegacaoPeloBoard
 
     private bool podeDescerUmaLinha()
     {
-        bool resultProximaLinha = linhaAtual + 1 < referencias.getQtdLinhasGos();        
+        bool resultProximaLinha = linhaAtual + 1 < referencias.getQtdLinhasDoBoard();        
         bool resultPos7Par = isLinhaMenor(linhaAtual + 1) && colunaAtual == 6;
         return resultProximaLinha && !resultPos7Par;
     }
 
     private void posicionarMira(int linha, int coluna)
     {        
-        Vector3 posicao = referencias.getPosicaoElemento(linha, coluna);
+        Vector3 posicao = referencias.getPosicaoElementoGo(linha, coluna);
         referencias.goMira.transform.position = posicao;
     }   
 }

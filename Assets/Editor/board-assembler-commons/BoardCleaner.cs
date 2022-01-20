@@ -21,10 +21,10 @@ public abstract class BoardCleaner
 
     public void clean()
     {
-        int qtdLinhas = referenciasDoBoard.getQtdLinhasGos();
+        int qtdLinhas = referenciasDoBoard.getQtdLinhasDoBoard();
         for (int contadorLinha = 0; contadorLinha < qtdLinhas; contadorLinha++)
         {            
-            int qtdColunas = referenciasDoBoard.getQtdColunasDaLinha(contadorLinha);
+            int qtdColunas = referenciasDoBoard.getQtdColunasDoBoard(contadorLinha);
             for (int contadorColuna = 0; contadorColuna < qtdColunas; contadorColuna++)
             {
                 bool estadoGo = false;
