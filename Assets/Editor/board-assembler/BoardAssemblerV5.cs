@@ -32,7 +32,11 @@ public class BoardAssemblerV5 : EditorWindow
         ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
         ProcessadorDeOrdem processadorDeOrdem = new ProcessadorDeOrdem(referenciasDoBoard);
 
-        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => Preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => {
+                PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
+                referenciasDoBoard.updateElemento(posicaoMira.linha, posicaoMira.coluna, spr);            
+            });
+
         BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());
 
         navegacao.resetMira();

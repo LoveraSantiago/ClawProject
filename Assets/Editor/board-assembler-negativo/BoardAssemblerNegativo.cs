@@ -29,8 +29,13 @@ public class BoardAssemblerNegativo : EditorWindow
         HelperColetavelEntidade.configurar();
         ReferenciasDoBoardNegativo referenciasDoBoard = new ReferenciasDoBoardNegativo();
         NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);        
-        ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);                
-        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => Preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
+        ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
+
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => {
+                PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
+                referenciasDoBoard.updateElemento(posicaoMira.linha, posicaoMira.coluna, spr);
+            });
+
         BoardCleanerNegativo cleaner = new BoardCleanerNegativo(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());
         navegacao.resetMira();
 

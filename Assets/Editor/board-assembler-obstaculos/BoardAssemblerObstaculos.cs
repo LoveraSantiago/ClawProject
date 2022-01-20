@@ -29,8 +29,13 @@ public class BoardAssemblerObstaculos : EditorWindow
         HelperColetavelEntidade.configurar();
         ReferenciasDoBoardObstaculo referenciasDoBoard = new ReferenciasDoBoardObstaculo();
         NavegacaoPeloBoardObstaculos navegacao = new NavegacaoPeloBoardObstaculos(root, referenciasDoBoard);
-        ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);        
-        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => Preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
+        ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
+
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => {
+                PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
+                referenciasDoBoard.updateElemento(posicaoMira.linha, posicaoMira.coluna, spr);
+            });
+
         BoardCleanerObstaculos cleaner = new BoardCleanerObstaculos(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());
         navegacao.resetMira();
 
