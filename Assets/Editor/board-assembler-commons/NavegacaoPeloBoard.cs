@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEngine.UIElements;
 
 public abstract class NavegacaoPeloBoard
@@ -142,8 +141,7 @@ public abstract class NavegacaoPeloBoard
     }
 
     private void posicionarMira(int linha, int coluna)
-    {        
-        Vector3 posicao = referencias.getPosicaoElementoGo(linha, coluna);
-        referencias.goMira.transform.position = posicao;
+    {
+        referencias.posicionarMiraNoElemento(linha, coluna);        
     }   
 }

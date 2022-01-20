@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public abstract class ReferenciasDoBoard
 {
-    public GameObject goMira { get; private set; }
+    private GameObject goMira;
     private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosBoard;
 
     public ReferenciasDoBoard(string nomePrefab)
@@ -56,6 +56,12 @@ public abstract class ReferenciasDoBoard
         GameObject go = dicionarioGosBoard[linha][coluna];
         Sprite spr = go.GetComponent<SpriteRenderer>().sprite;
         return spr.name.Equals(sprite.name);
+    }
+
+    public void posicionarMiraNoElemento(int linha, int coluna)
+    {
+        Vector3 posicao = getPosicaoElementoGo(linha, coluna);
+        goMira.transform.position = posicao;
     }
 
     private void configurarReferenciasComBoard(string nomePrefab)
