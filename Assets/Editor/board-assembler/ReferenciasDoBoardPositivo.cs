@@ -13,11 +13,7 @@ public class ReferenciasDoBoardPositivo : ReferenciasDoBoard
 
     public void updateElementoTexto(int linha, int coluna, int valor)
     {
-        bool isVazio = isElementoGoVazio(linha, coluna);
-        if (!isVazio)
-        {
-            dicionarioTextLabels[linha][coluna].text = valor.ToString();
-        }
+        dicionarioTextLabels[linha][coluna].text = valor.ToString();        
     }
 
     protected override void preIteracaoLinha()

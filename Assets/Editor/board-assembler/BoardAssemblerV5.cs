@@ -63,7 +63,11 @@ public class BoardAssemblerV5 : EditorWindow
         root.Q<IntegerField>("ordem").RegisterValueChangedCallback((evento) => 
             {
                 PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
-                referenciasDoBoard.updateElementoTexto(posicaoMira.linha, posicaoMira.coluna, evento.newValue);                
+                bool isGoComSpriteVazio = referenciasDoBoard.isElementoGoComSprite(posicaoMira.linha, posicaoMira.coluna, listaDeSprites.getSpriteVazio());
+                if (isGoComSpriteVazio)
+                {
+                    referenciasDoBoard.updateElementoTexto(posicaoMira.linha, posicaoMira.coluna, evento.newValue);                
+                }
             });
 
         cleaner.clean();

@@ -46,11 +46,11 @@ public abstract class ReferenciasDoBoard
         go.SetActive(estado);
     }
 
-    public bool isElementoGoVazio(int linha, int coluna)
+    public bool isElementoGoComSprite(int linha, int coluna, Sprite sprite)
     {
         GameObject go = dicionarioGosBoard[linha][coluna];
         Sprite spr = go.GetComponent<SpriteRenderer>().sprite;
-        return spr.name.Equals(spriteVazio.name);
+        return spr.name.Equals(sprite.name);
     }
 
     private void configurarReferenciasComBoard(string nomePrefab)
