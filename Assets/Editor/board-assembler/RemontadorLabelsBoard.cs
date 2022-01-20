@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using UnityEngine.UI;
-
 public class RemontadorLabelsBoard 
 {
     private ListaDeSprites listaDeSprites;
@@ -21,10 +18,11 @@ public class RemontadorLabelsBoard
         }
 
         int contadorNome = 0;
-        for (int contadorLinha = 0; contadorLinha < referencias.dicionarioTextLabels.Count; contadorLinha++)
+        int qtdLinhas = referencias.getQtdLinhasDoBoard();
+        for (int contadorLinha = 0; contadorLinha < qtdLinhas; contadorLinha++)
         {
-            Dictionary<int, Text> dicionarioLinha = referencias.dicionarioTextLabels[0];
-            for (int contadorColuna = 0; contadorColuna < dicionarioLinha.Count; contadorColuna++)
+            int qtdColunas = referencias.getQtdColunasDoBoard(contadorLinha);
+            for (int contadorColuna = 0; contadorColuna < qtdColunas; contadorColuna++)
             {
                 bool isSpriteVazio = referencias.isElementoGoComSprite(contadorLinha, contadorColuna, listaDeSprites.getSpriteVazio());                
                 if (!isSpriteVazio)
@@ -33,8 +31,7 @@ public class RemontadorLabelsBoard
                     BoardOrdem boardOrdemIt = getOrdemByNome(nomeOrdem, boardOrdem);
                     if (boardOrdem != null)
                     {
-                        Text text = referencias.dicionarioTextLabels[contadorLinha][contadorColuna];
-                        text.text = boardOrdemIt.ordem.ToString();
+                        referencias.updateElementoTexto(contadorLinha, contadorColuna, boardOrdemIt.ordem.ToString());                        
                     }
                     contadorNome++;
                 }

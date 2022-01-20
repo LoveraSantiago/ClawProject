@@ -5,9 +5,8 @@ using UnityEngine.UI;
 public class ReferenciasDoBoardPositivo : ReferenciasDoBoard
 {
     private GameObject goLinhaLabel;
-    private Dictionary<int, Text> dicionarioTextColuna;
-    public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels { get; private set; }
-    //private Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels;
+    private Dictionary<int, Text> dicionarioTextColuna;    
+    private Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels;
 
     public ReferenciasDoBoardPositivo() : 
         base("BoardAssembler"){}
