@@ -64,7 +64,7 @@ public class BoardAssemblerV5 : EditorWindow
             {
                 PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
                 bool isGoComSpriteVazio = referenciasDoBoard.isElementoGoComSprite(posicaoMira.linha, posicaoMira.coluna, listaDeSprites.getSpriteVazio());
-                if (isGoComSpriteVazio)
+                if (!isGoComSpriteVazio)
                 {
                     referenciasDoBoard.updateElementoTexto(posicaoMira.linha, posicaoMira.coluna, evento.newValue);                
                 }
