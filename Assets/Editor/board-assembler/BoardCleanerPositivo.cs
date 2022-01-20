@@ -5,15 +5,13 @@ using UnityEngine.UI;
 public class BoardCleanerPositivo : BoardCleaner
 {
     public BoardCleanerPositivo(
-        ReferenciasDoBoard referenciasDoBoard, NavegacaoPeloBoard navegacao,
+        ReferenciasDoBoardPositivo referenciasDoBoard, NavegacaoPeloBoard navegacao,
         Func<Sprite> fornecedorSpriteVazio) 
         : base(referenciasDoBoard, navegacao, fornecedorSpriteVazio){}
 
     protected override void cleanElement(int indiceLinha, int indiceColuna, ReferenciasDoBoard referencias, bool estado)
     {
-        Text textIt = ((ReferenciasDoBoardPositivo)referencias).dicionarioTextLabels[indiceLinha][indiceColuna];
-        Preenchedor.resetText(textIt);
-        textIt.gameObject.SetActive(estado);
+        ((ReferenciasDoBoardPositivo)referencias).updateElementoTexto(indiceLinha, indiceColuna, "00", estado);        
     }
 
     protected override bool isSextoElementoTipoLinha(int linha, int coluna)

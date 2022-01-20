@@ -6,15 +6,27 @@ public class ReferenciasDoBoardPositivo : ReferenciasDoBoard
 {
     private GameObject goLinhaLabel;
     private Dictionary<int, Text> dicionarioTextColuna;
-    //public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels { get; private set; }
-    private Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels;
+    public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels { get; private set; }
+    //private Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels;
 
     public ReferenciasDoBoardPositivo() : 
         base("BoardAssembler"){}
 
     public void updateElementoTexto(int linha, int coluna, int valor)
     {
-        dicionarioTextLabels[linha][coluna].text = valor.ToString();        
+        updateElementoTexto(linha, coluna, valor.ToString());        
+    }
+
+    public void updateElementoTexto(int linha, int coluna, string valor)
+    {
+        updateElementoTexto(linha, coluna, valor, true);
+    }
+
+    public void updateElementoTexto(int linha, int coluna, string valor, bool estado)
+    {
+        Text textGo = dicionarioTextLabels[linha][coluna];
+        textGo.text = valor;
+        textGo.gameObject.SetActive(estado);
     }
 
     public int getOrdemDoElementoTexto(int linha, int coluna)
