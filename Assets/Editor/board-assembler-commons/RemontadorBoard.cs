@@ -14,7 +14,7 @@ public class RemontadorBoard
         this.referencias = referencias;
     }
 
-    public void montarColetaveis(int[,] arrayDeColetaveis, Action<GameObject, Sprite> consumidorDeSprite)
+    public void montarColetaveis(int[,] arrayDeColetaveis)
     {
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
 
@@ -32,13 +32,13 @@ public class RemontadorBoard
                 }
                 else if (coletavelEntidade.isRandom())
                 {
-                    consumidorDeSprite.Invoke(referenciasLinha[contadorColuna], listaDeSprites.getSpriteRandom());                    
+                    referencias.updateElementoGo(contadorLinha, contadorColuna, listaDeSprites.getSpriteRandom());                                        
                 }
                 else
                 {
                     string nomeSprite = coletavelEntidade.nomeSprite;
                     Sprite spr = listaDeSprites.getSpriteByName(nomeSprite);
-                    consumidorDeSprite.Invoke(referenciasLinha[contadorColuna], spr);
+                    referencias.updateElementoGo(contadorLinha, contadorColuna, spr);                    
                 }
             }
         }

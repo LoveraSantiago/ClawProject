@@ -22,7 +22,7 @@ public class DropDownLevels
             {
                 AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
                 int[,] coletaveis = level.getArrayDeColetaveis();
-                remontador.montarColetaveis(coletaveis, (go, spr) => Preenchedor.colocarSprite(go, spr));
+                remontador.montarColetaveis(coletaveis);
 
                 onDropDownSelected(level);                
             }
