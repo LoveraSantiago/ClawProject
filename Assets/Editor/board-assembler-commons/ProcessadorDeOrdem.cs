@@ -1,7 +1,6 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using System;
 
 public class ProcessadorDeOrdem 
 {
@@ -16,16 +15,16 @@ public class ProcessadorDeOrdem
     {
         SortedList<int, BoardOrdem> sortedList = new SortedList<int, BoardOrdem>();
         int contadorNome = 0;
-        for (int contadorLinha = 0; contadorLinha < referencias.dicionarioTextLabels.Count; contadorLinha++)
+        int totalLinhas = referencias.getQtdLinhasDoBoard();
+        for (int contadorLinha = 0; contadorLinha < totalLinhas; contadorLinha++)
         {
-            Dictionary<int, Text> dicionarioLinha = referencias.dicionarioTextLabels[0];
-            for (int contadorColuna = 0; contadorColuna < dicionarioLinha.Count; contadorColuna++)
-            {
-                Text textIt = referencias.dicionarioTextLabels[contadorLinha][contadorColuna];
-                if (int.Parse(textIt.text) != 0)
+            int totalColunas = referencias.getQtdColunasDoBoard(contadorLinha);
+            for (int contadorColuna = 0; contadorColuna < totalColunas; contadorColuna++)
+            {   
+                int ordem = referencias.getOrdemDoElementoTexto(contadorLinha, contadorColuna);
+                if (ordem != 0)
                 {
-                    contadorNome++;
-                    int ordem = int.Parse(textIt.text);
+                    contadorNome++;                    
                     BoardOrdem boardOrdem = new BoardOrdem(ordem, contadorNome.ToString());
                     sortedList.Add(boardOrdem.ordem, boardOrdem);
                 }

@@ -6,7 +6,8 @@ public class ReferenciasDoBoardPositivo : ReferenciasDoBoard
 {
     private GameObject goLinhaLabel;
     private Dictionary<int, Text> dicionarioTextColuna;
-    public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels { get; private set; }
+    //public Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels { get; private set; }
+    private Dictionary<int, Dictionary<int, Text>> dicionarioTextLabels;
 
     public ReferenciasDoBoardPositivo() : 
         base("BoardAssembler"){}
@@ -14,6 +15,12 @@ public class ReferenciasDoBoardPositivo : ReferenciasDoBoard
     public void updateElementoTexto(int linha, int coluna, int valor)
     {
         dicionarioTextLabels[linha][coluna].text = valor.ToString();        
+    }
+
+    public int getOrdemDoElementoTexto(int linha, int coluna)
+    {
+        string valor = dicionarioTextLabels[linha][coluna].text;
+        return int.Parse(valor);
     }
 
     protected override void preIteracaoLinha()
