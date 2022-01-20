@@ -28,10 +28,21 @@ public abstract class ReferenciasDoBoard
         return dicionarioGosBoard[linha][coluna].transform.position;
     }
 
+    public void updateElemento(int linha, int coluna, Sprite sprite)
+    {
+        updateElemento(linha, coluna, true, sprite);
+    }
+
     public void cleanElemento(int linha, int coluna, bool estado, Sprite sprite)
     {
+        updateElemento(linha, coluna, estado, sprite);
+    }
+
+    private void updateElemento(int linha, int coluna, bool estado, Sprite sprite)
+    {
         GameObject go = dicionarioGosBoard[linha][coluna];
-        Preenchedor.colocarSprVazio(go, sprite);
+        go.GetComponent<SpriteRenderer>().sprite = sprite;
+        go.transform.rotation = Quaternion.Euler(Vector3.zero);
         go.SetActive(estado);
     }
 

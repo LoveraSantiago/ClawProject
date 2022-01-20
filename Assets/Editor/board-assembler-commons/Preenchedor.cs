@@ -3,17 +3,6 @@ using UnityEngine.UI;
 
 public class Preenchedor 
 {
-    public static void colocarSprite(GameObject go, Sprite sprite)
-    {
-        go.GetComponent<SpriteRenderer>().sprite = sprite;
-        go.transform.rotation = Quaternion.Euler(Vector3.zero);
-    }
-
-    public static void colocarSprVazio(GameObject go, Sprite spriteVazio)
-    {
-        colocarSprite(go, spriteVazio);
-    }
-
     public static void resetText(Text text)
     {
         text.text = "00";
