@@ -28,6 +28,12 @@ public abstract class ReferenciasDoBoard
         return dicionarioGosBoard[linha][coluna].transform.position;
     }
 
+    public Sprite getSpriteElementoGo(int linha, int coluna)
+    {
+        GameObject go = dicionarioGosBoard[linha][coluna];
+        return go.GetComponent<SpriteRenderer>().sprite;
+    }
+
     public void updateElementoGo(int linha, int coluna, Sprite sprite)
     {
         updateElementoGo(linha, coluna, true, sprite);

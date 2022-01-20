@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProcessadorDeColetaveis 
@@ -16,21 +15,20 @@ public class ProcessadorDeColetaveis
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
         string result = "int[,] coletaveis = new int[,]{" + Environment.NewLine;
 
-        for (int contadorLinha = 0; contadorLinha < referencias.dicionarioGosBoard.Count; contadorLinha++)
+        int totalLinhas = referencias.getQtdLinhasGos();
+        for (int contadorLinha = 0; contadorLinha < totalLinhas; contadorLinha++)
         {
-            Dictionary<int, GameObject> dicionarioLinha = referencias.dicionarioGosBoard[0];
+            int colunasDalinha = referencias.getQtdColunasDaLinha(contadorLinha);
             result += "{";
-            for (int contadorColuna = 0; contadorColuna < dicionarioLinha.Count; contadorColuna++)
-            {
-                GameObject goIt = referencias.dicionarioGosBoard[contadorLinha][contadorColuna];
-                Sprite spriteIt = goIt.GetComponent<SpriteRenderer>().sprite;
-
+            for (int contadorColuna = 0; contadorColuna < colunasDalinha; contadorColuna++)
+            {   
+                Sprite spriteIt = referencias.getSpriteElementoGo(contadorLinha, contadorColuna);
                 ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeBySprite(spriteIt.name);
 
-                string separador = contadorColuna == dicionarioLinha.Count - 1 ? "" : ", ";
+                string separador = contadorColuna == colunasDalinha - 1 ? "" : ", ";
                 result += coletavelEntidade.id + separador;
             }
-            string separadorFim = contadorLinha == referencias.dicionarioGosBoard.Count - 1 ? "" : (", " + Environment.NewLine);
+            string separadorFim = contadorLinha == totalLinhas - 1 ? "" : (", " + Environment.NewLine);
             result += "}" + separadorFim;
         }
         result += "};";
