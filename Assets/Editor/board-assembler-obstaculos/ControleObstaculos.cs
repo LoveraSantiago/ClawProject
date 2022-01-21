@@ -28,6 +28,17 @@ public class ControleObstaculos
         }
     }
 
+    public void resetControle()
+    {
+        for(int contadorLinha = 0; contadorLinha < dicionarioEstadosGaiola.Count; contadorLinha++)
+        {
+            for(int contadorColuna = 0; contadorColuna < dicionarioEstadosGaiola[contadorLinha].Count; contadorColuna++)
+            {
+                dicionarioEstadosGaiola[contadorLinha][contadorColuna] = false;
+            }
+        }
+    }
+
     private void inicializarDicionarioEstados()
     {
         int qtdLinhas = referencias.getQtdLinhasDoBoard();

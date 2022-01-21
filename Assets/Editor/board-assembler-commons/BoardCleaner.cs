@@ -19,7 +19,7 @@ public abstract class BoardCleaner
 
     protected abstract bool isSextoElementoTipoLinha(int linha, int coluna);
 
-    public void clean()
+    public virtual void clean()
     {
         int qtdLinhas = referenciasDoBoard.getQtdLinhasDoBoard();
         for (int contadorLinha = 0; contadorLinha < qtdLinhas; contadorLinha++)
