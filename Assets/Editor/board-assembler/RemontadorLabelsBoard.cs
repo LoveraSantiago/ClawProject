@@ -1,6 +1,6 @@
 public class RemontadorLabelsBoard : RemontadorBoard
 {
-    public RemontadorLabelsBoard(ReferenciasDoBoard referencias, ListaDeSprites listaDeSprites)
+    public RemontadorLabelsBoard(ReferenciasDoBoardPositivo referencias, ListaDeSprites listaDeSprites)
         : base(referencias, listaDeSprites)
     {
     }
@@ -26,7 +26,7 @@ public class RemontadorLabelsBoard : RemontadorBoard
                     BoardOrdem boardOrdemIt = getOrdemByNome(nomeOrdem, boardOrdem);
                     if (boardOrdem != null)
                     {
-                        referencias.updateElementoTexto(contadorLinha, contadorColuna, boardOrdemIt.ordem.ToString());                        
+                        ((ReferenciasDoBoardPositivo)referencias).updateElementoTexto(contadorLinha, contadorColuna, boardOrdemIt.ordem.ToString());                        
                     }
                     contadorNome++;
                 }

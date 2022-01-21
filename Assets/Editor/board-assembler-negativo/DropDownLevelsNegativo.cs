@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class DropDownLevelsNegativo : DropDownLevels
 {
@@ -9,6 +10,7 @@ public class DropDownLevelsNegativo : DropDownLevels
 
     protected override int[,] getArrayParaOBoard(AbstractLevel level)
     {
+        Debug.Log("dropdown negativo");
         return ((AbstractLevelElevador)level).getArrayDeColetaveisSub();
     }
 
