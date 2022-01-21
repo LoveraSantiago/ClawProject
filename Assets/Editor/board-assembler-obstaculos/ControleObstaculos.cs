@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public class ControleObstaculos 
 {
@@ -9,7 +8,7 @@ public class ControleObstaculos
     public ControleObstaculos(ReferenciasDoBoardObstaculo referencias)
     {
         this.referencias = referencias;
-        inicializarDicionarioEstados(referencias.dicionarioGosGaiolas.Count, referencias.dicionarioGosGaiolas[0].Count);
+        inicializarDicionarioEstados();
     }
 
     public void processarObstaculo(PosicaoMira posicaoMira)
@@ -18,22 +17,22 @@ public class ControleObstaculos
         bool estado = dicionarioLinha[posicaoMira.coluna];
         bool estadoAtual = !estado;
 
-        dicionarioLinha[posicaoMira.coluna] = estadoAtual;
-
-        Dictionary<int, GameObject> dicionarioGosGaiolaLinha = referencias.dicionarioGosGaiolas[posicaoMira.linha];
-        GameObject goGaiola = dicionarioGosGaiolaLinha[posicaoMira.coluna];
+        dicionarioLinha[posicaoMira.coluna] = estadoAtual;        
         if (estadoAtual)
         {
-            goGaiola.SetActive(true);
+            referencias.updateElementoGaiola(posicaoMira.linha, posicaoMira.coluna, true);            
         }
         else
         {
-            goGaiola.SetActive(false);
+            referencias.updateElementoGaiola(posicaoMira.linha, posicaoMira.coluna, false);            
         }
     }
 
-    private void inicializarDicionarioEstados(int qtdLinhas, int qtdColunas)
+    private void inicializarDicionarioEstados()
     {
+        int qtdLinhas = referencias.getQtdLinhasDoBoard();
+        int qtdColunas = referencias.getQtdColunasDoBoard(0);
+
         dicionarioEstadosGaiola = new Dictionary<int, Dictionary<int, bool>>();
         for(int contadorLinha = 0; contadorLinha < qtdLinhas; contadorLinha++)
         {

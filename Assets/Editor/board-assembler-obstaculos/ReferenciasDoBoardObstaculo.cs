@@ -5,11 +5,16 @@ public class ReferenciasDoBoardObstaculo : ReferenciasDoBoard
 {
     private GameObject goGaiolaLinha;
     private Dictionary<int, GameObject> dicionarioGaiolaColuna;
-    public Dictionary<int, Dictionary<int, GameObject>> dicionarioGosGaiolas { get; private set; }
+    private Dictionary<int, Dictionary<int, GameObject>> dicionarioGosGaiolas;
 
     public ReferenciasDoBoardObstaculo() :
         base("BoardAssembler-Obstaculos")
     { }
+
+    public void updateElementoGaiola(int linha, int coluna, bool estado)
+    {
+        dicionarioGosGaiolas[linha][coluna].SetActive(estado);
+    }
 
     protected override void preIteracaoLinha()
     {
