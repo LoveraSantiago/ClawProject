@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class RemontadorBoard
 {
-    private ListaDeSprites listaDeSprites;
-    private ReferenciasDoBoard referencias;
+    protected ListaDeSprites listaDeSprites;
+    protected ReferenciasDoBoard referencias;
 
     public RemontadorBoard(
         ReferenciasDoBoard referencias, ListaDeSprites listaDeSprites)

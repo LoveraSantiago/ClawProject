@@ -1,13 +1,8 @@
-public class RemontadorLabelsBoard 
+public class RemontadorLabelsBoard : RemontadorBoard
 {
-    private ListaDeSprites listaDeSprites;
-    private ReferenciasDoBoardPositivo referencias;
-
-    public RemontadorLabelsBoard(
-        ReferenciasDoBoardPositivo referencias, ListaDeSprites listaDeSprites)
+    public RemontadorLabelsBoard(ReferenciasDoBoard referencias, ListaDeSprites listaDeSprites)
+        : base(referencias, listaDeSprites)
     {
-        this.listaDeSprites = listaDeSprites;
-        this.referencias = referencias;
     }
 
     public void montarLabels(BoardOrdem[] boardOrdem)

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 
-public class DropDownLevels 
+public abstract class DropDownLevels 
 {
     private List<string> listaDeLevels;
 
@@ -21,10 +21,10 @@ public class DropDownLevels
             if (evt.newValue != "0" && evt.newValue != "-")
             {
                 AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
-                int[,] coletaveis = level.getArrayDeColetaveis();
+                int[,] coletaveis = getArrayParaOBoard(level);
                 remontador.montarColetaveis(coletaveis);
 
-                onDropDownSelected(level);                
+                onDropDownSelected(level, remontador);                
             }
         });
 
@@ -32,5 +32,7 @@ public class DropDownLevels
                .Add(dropDownField);
     }
 
-    protected virtual void onDropDownSelected(AbstractLevel level) { }
+    protected abstract int[,] getArrayParaOBoard(AbstractLevel level);
+
+    protected abstract void onDropDownSelected(AbstractLevel level, RemontadorBoard remontador);
 }

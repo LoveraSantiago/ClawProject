@@ -1,8 +1,8 @@
+using System;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using System;
 
 public class BoardAssemblerNegativo : EditorWindow
 {
@@ -44,7 +44,7 @@ public class BoardAssemblerNegativo : EditorWindow
 
 
         RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
-        DropDownLevels dropDownLevels = new DropDownLevels(LevelHelper.getElevadorLevelsAlias());
+        DropDownLevels dropDownLevels = new DropDownLevelsNegativo(LevelHelper.getElevadorLevelsAlias());
         dropDownLevels.criarComponentDropDownField(root, cleaner, remontador);
 
         EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>

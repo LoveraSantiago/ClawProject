@@ -43,7 +43,7 @@ public class BoardAssemblerObstaculos : EditorWindow
         navegacao.resetMira();
 
         RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
-        DropDownLevels dropoDownLevels = new DropDownLevels(LevelHelper.getObstaculoLevelsAlias());
+        DropDownLevels dropoDownLevels = new DropDownLevelsObstaculo(LevelHelper.getObstaculoLevelsAlias());
         dropoDownLevels.criarComponentDropDownField(root, cleaner, remontador);
 
         EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>

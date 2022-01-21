@@ -1,8 +1,8 @@
+using System;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using System;
 
 public class BoardAssemblerV5 : EditorWindow
 {
@@ -44,10 +44,9 @@ public class BoardAssemblerV5 : EditorWindow
 
         navegacao.resetMira();
 
-        RemontadorBoard remontadorObj         = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
-        RemontadorLabelsBoard remontadorLbls  = new RemontadorLabelsBoard(referenciasDoBoard, listaDeSprites);
-        DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(LevelHelper.getNormalLevelsAlias(), remontadorLbls);
-        dropDownLevels.criarComponentDropDownField(root, cleaner, remontadorObj);
+        RemontadorBoard remontadorLbls  = new RemontadorLabelsBoard(referenciasDoBoard, listaDeSprites);
+        DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(LevelHelper.getNormalLevelsAlias());
+        dropDownLevels.criarComponentDropDownField(root, cleaner, remontadorLbls);
 
         EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>
         {
