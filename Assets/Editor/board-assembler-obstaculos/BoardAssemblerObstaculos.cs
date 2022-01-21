@@ -46,6 +46,8 @@ public class BoardAssemblerObstaculos : EditorWindow
         DropDownLevels dropoDownLevels = new DropDownLevelsObstaculo(LevelHelper.getObstaculoLevelsAlias());
         dropoDownLevels.criarComponentDropDownField(root, cleaner, remontador);
 
+        ControleObstaculos controleObstaculos = new ControleObstaculos(referenciasDoBoard);
+
         EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>
         {
             listaDeSprites.receberSprite((Sprite)e1.newValue);
@@ -60,7 +62,10 @@ public class BoardAssemblerObstaculos : EditorWindow
         root.Q<Button>("botaoBaixoAll")     .clicked += () => navegacao.navegarBaixoTotal();
         root.Q<Button>("botaoEsquerdaAll")  .clicked += () => navegacao.navegarTrasTotal();
         root.Q<Button>("botaoDireitaAll")   .clicked += () => navegacao.navegarFrenteTotal();
-        root.Q<Button>("botaoAddObstaculos").clicked += () => { };
+        root.Q<Button>("botaoAddObstaculos").clicked += () => {
+            PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
+            controleObstaculos.processarObstaculo(posicaoMira);
+        };
         
         cleaner.clean();
     }
