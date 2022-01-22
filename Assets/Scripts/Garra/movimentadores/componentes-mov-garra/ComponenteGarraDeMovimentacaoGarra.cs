@@ -1,10 +1,12 @@
 public abstract class ComponenteGarraDeMovimentacaoGarra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     private static Garra garra;
+    protected static AngulosPropriedades angulosProps;
 
-    public static void configurarGarraDto(GarraDto garraDto)
+    public static void configurarComponenteGarra(GarraDto garraDto)
     {
-        garra = new Garra(garraDto);        
+        garra = new Garra(garraDto);
+        angulosProps = new AngulosPropriedades(garraDto.Angulos);
     }
 
     public Garra getGarra()
