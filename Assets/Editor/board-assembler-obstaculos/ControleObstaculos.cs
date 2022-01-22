@@ -11,6 +11,11 @@ public class ControleObstaculos
         inicializarDicionarioEstados();
     }
 
+    public bool getEstadoObstaculo(int linha, int coluna)
+    {
+        return dicionarioEstadosGaiola[linha][coluna];
+    }
+
     public void processarObstaculo(PosicaoMira posicaoMira)
     {
         Dictionary<int, bool> dicionarioLinha = dicionarioEstadosGaiola[posicaoMira.linha];

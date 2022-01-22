@@ -14,7 +14,7 @@ public class ReferenciasDoBoardObstaculo : ReferenciasDoBoard
     public void updateElementoGaiola(int linha, int coluna, bool estado)
     {
         dicionarioGosGaiolas[linha][coluna].SetActive(estado);
-    }
+    }    
 
     protected override void preIteracaoLinha()
     {

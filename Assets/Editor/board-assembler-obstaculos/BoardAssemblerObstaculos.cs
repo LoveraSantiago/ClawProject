@@ -30,7 +30,8 @@ public class BoardAssemblerObstaculos : EditorWindow
         HelperColetavelEntidade.configurar();
         ReferenciasDoBoardObstaculo referenciasDoBoard = new ReferenciasDoBoardObstaculo();
         NavegacaoPeloBoardObstaculos navegacao = new NavegacaoPeloBoardObstaculos(root, referenciasDoBoard);
-        ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
+        ControleObstaculos controleObstaculos = new ControleObstaculos(referenciasDoBoard);
+        ProcessadorDeObstaculos processador = new ProcessadorDeObstaculos(referenciasDoBoard, controleObstaculos);
 
         Action<Sprite> onItemSelecionado = (spr) =>
         {
@@ -39,7 +40,6 @@ public class BoardAssemblerObstaculos : EditorWindow
         };
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, onItemSelecionado);
 
-        ControleObstaculos controleObstaculos = new ControleObstaculos(referenciasDoBoard);
         BoardCleanerObstaculos cleaner = new BoardCleanerObstaculos(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio(), controleObstaculos);
         navegacao.resetMira();
 
@@ -54,15 +54,16 @@ public class BoardAssemblerObstaculos : EditorWindow
         };
         root.Q<ObjectField>("objectFieldSprite").RegisterCallback(onSpriteAdicionado);
 
-        root.Q<Button>("botaoMenosTodos")   .clicked += () => listaDeSprites.limparTodaLista();
-        root.Q<Button>("botaoMenos")        .clicked += () => listaDeSprites.removerUltimaLinha();
-        root.Q<Button>("botaoClean")        .clicked += () => cleaner.clean();
-        root.Q<Button>("botaoProcessar")    .clicked += () => processadorColetaveis.processar();
-        root.Q<Button>("botaoCimaAll")      .clicked += () => navegacao.navegarCimaTotal();
-        root.Q<Button>("botaoBaixoAll")     .clicked += () => navegacao.navegarBaixoTotal();
-        root.Q<Button>("botaoEsquerdaAll")  .clicked += () => navegacao.navegarTrasTotal();
-        root.Q<Button>("botaoDireitaAll")   .clicked += () => navegacao.navegarFrenteTotal();
-        root.Q<Button>("botaoAddObstaculos").clicked += () => {
+        root.Q<Button>("botaoMenosTodos")         .clicked += () => listaDeSprites.limparTodaLista();
+        root.Q<Button>("botaoMenos")              .clicked += () => listaDeSprites.removerUltimaLinha();
+        root.Q<Button>("botaoClean")              .clicked += () => cleaner.clean();
+        root.Q<Button>("botaoProcessar")          .clicked += () => processador.processar();
+        root.Q<Button>("botaoCimaAll")            .clicked += () => navegacao.navegarCimaTotal();
+        root.Q<Button>("botaoBaixoAll")           .clicked += () => navegacao.navegarBaixoTotal();
+        root.Q<Button>("botaoEsquerdaAll")        .clicked += () => navegacao.navegarTrasTotal();
+        root.Q<Button>("botaoDireitaAll")         .clicked += () => navegacao.navegarFrenteTotal();
+        root.Q<Button>("botaoProcessarObstaculos").clicked += () => processador.processarObstaculos();
+        root.Q<Button>("botaoAddObstaculos")      .clicked += () => {
             PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
             controleObstaculos.processarObstaculo(posicaoMira);
         };
