@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ProcessadorDeColetaveis 
 {
-    private ReferenciasDoBoard referencias;
+    protected ReferenciasDoBoard referencias;
 
     public ProcessadorDeColetaveis(ReferenciasDoBoard referencias)
     {

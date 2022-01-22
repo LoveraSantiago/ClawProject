@@ -30,8 +30,7 @@ public class BoardAssemblerV5 : EditorWindow
         HelperColetavelEntidade.configurar();
         ReferenciasDoBoardPositivo referenciasDoBoard = new ReferenciasDoBoardPositivo();
         NavegacaoPeloBoardPositivo navegacao  = new NavegacaoPeloBoardPositivo(root, referenciasDoBoard);        
-        ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
-        ProcessadorDeOrdem processadorDeOrdem = new ProcessadorDeOrdem(referenciasDoBoard);
+        ProcessadorDeOrdem processador = new ProcessadorDeOrdem(referenciasDoBoard);
 
         Action<Sprite> onItemSelecionado = (spr) =>
         {
@@ -57,8 +56,8 @@ public class BoardAssemblerV5 : EditorWindow
         root.Q<Button>("botaoMenosTodos")    .clicked += () => listaDeSprites.limparTodaLista();
         root.Q<Button>("botaoMenos")         .clicked += () => listaDeSprites.removerUltimaLinha();
         root.Q<Button>("botaoClean")         .clicked += () => cleaner.clean();
-        root.Q<Button>("botaoProcessar")     .clicked += () => processadorColetaveis.processar();
-        root.Q<Button>("botaoProcessarOrdem").clicked += () => processadorDeOrdem.processar();
+        root.Q<Button>("botaoProcessar")     .clicked += () => processador.processar();
+        root.Q<Button>("botaoProcessarOrdem").clicked += () => processador.processarOrdem();
         root.Q<Button>("botaoCimaAll")       .clicked += () => navegacao.navegarCimaTotal();
         root.Q<Button>("botaoBaixoAll")      .clicked += () => navegacao.navegarBaixoTotal();
         root.Q<Button>("botaoEsquerdaAll")   .clicked += () => navegacao.navegarTrasTotal();

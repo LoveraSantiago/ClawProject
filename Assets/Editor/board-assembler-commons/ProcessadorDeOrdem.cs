@@ -2,16 +2,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProcessadorDeOrdem 
+public class ProcessadorDeOrdem : ProcessadorDeColetaveis
 {
-    private ReferenciasDoBoardPositivo referencias;
+    public ProcessadorDeOrdem(ReferenciasDoBoardPositivo referencias):
+        base(referencias){}
 
-    public ProcessadorDeOrdem(ReferenciasDoBoardPositivo referencias)
-    {
-        this.referencias = referencias;
-    }
-
-    public void processar()
+    public void processarOrdem()
     {
         SortedList<int, BoardOrdem> sortedList = new SortedList<int, BoardOrdem>();
         int contadorNome = 0;
@@ -21,7 +17,7 @@ public class ProcessadorDeOrdem
             int totalColunas = referencias.getQtdColunasDoBoard(contadorLinha);
             for (int contadorColuna = 0; contadorColuna < totalColunas; contadorColuna++)
             {   
-                int ordem = referencias.getOrdemDoElementoTexto(contadorLinha, contadorColuna);
+                int ordem = ((ReferenciasDoBoardPositivo)referencias).getOrdemDoElementoTexto(contadorLinha, contadorColuna);
                 if (ordem != 0)
                 {
                     contadorNome++;                    
