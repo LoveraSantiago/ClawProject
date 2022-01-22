@@ -32,17 +32,12 @@ public class ListaDeSprites
         listView.bindItem = (e, i) => actionBindItem(e, i);
         listView.selectionType = SelectionType.Single;
         listView.styleSheets.Add(styleSheet);
+
         listView.onSelectionChange += objects => {
-            //Debug.Log("onSelectionChange: " + objects);
-            //Debug.Log("onSelectionChange: " + objects.GetEnumerator());
-            //objects[0]//PEGA o SPRITE    
-
-            //IEnumerator<object> enumerator = objects.GetEnumerator();
             Sprite spr = (Sprite)((List<System.Object>)objects)[0];
-
             consumidorDeSprite.Invoke(spr);
-            //colocarSprite(navegacao.getGoDaMira(), spr);
         };
+
         root.Add(listView);
     }
 

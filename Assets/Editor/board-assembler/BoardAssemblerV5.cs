@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -6,23 +6,17 @@ using UnityEngine.UIElements;
 
 public class BoardAssemblerV5 : EditorWindow
 {
-    [MenuItem("Window/BoardAssemblerV5")]
+    [MenuItem("Window/assemblers/BoardAssemblerV5")]
     public static void ShowExample()
     {
         BoardAssemblerV5 wnd = GetWindow<BoardAssemblerV5>();
         wnd.titleContent = new GUIContent("BoardAssemblerV5");
     }
 
-    private Sprite spriteVazio;    
-
     public void CreateGUI()
     {
         // Each editor window contains a root VisualElement object
         VisualElement root = rootVisualElement;
-
-        // VisualElements objects can contain other VisualElement following a tree hierarchy.
-        //VisualElement label = new Label("Hello World! From C#");
-        //root.Add(label);
 
         // Import UXML
         var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/board-assembler/BoardAssemblerV5.uxml");
@@ -32,67 +26,54 @@ public class BoardAssemblerV5 : EditorWindow
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler/BoardAssemblerV5.uss");
-        //VisualElement labelWithStyle = new Label("Hello World! With Style");
-        //labelWithStyle.styleSheets.Add(styleSheet);
-        //root.Add(labelWithStyle);
 
         HelperColetavelEntidade.configurar();
-        ReferenciasDoBoardAssemblerPositivo referenciasDoBoard = new ReferenciasDoBoardAssemblerPositivo();
-        NavegacaoPeloBoardPositivo navegacao  = new NavegacaoPeloBoardPositivo(root, referenciasDoBoard);
-        ProcessadorResult processador = new ProcessadorResult(referenciasDoBoard);
-        Preenchedor preenchedor = new Preenchedor();
-        BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, () => spriteVazio);
+        ReferenciasDoBoardPositivo referenciasDoBoard = new ReferenciasDoBoardPositivo();
+        NavegacaoPeloBoardPositivo navegacao  = new NavegacaoPeloBoardPositivo(root, referenciasDoBoard);        
+        ProcessadorDeOrdem processador = new ProcessadorDeOrdem(referenciasDoBoard);
+
+        Action<Sprite> onItemSelecionado = (spr) =>
+        {
+            PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
+            referenciasDoBoard.updateElementoGo(posicaoMira.linha, posicaoMira.coluna, spr);
+        };
+        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, onItemSelecionado);
+
+        BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());
 
         navegacao.resetMira();
 
-        ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, (spr) => preenchedor.colocarSprite(navegacao.getGoDaMira(), spr));
+        RemontadorBoard remontadorLbls  = new RemontadorLabelsBoard(referenciasDoBoard, listaDeSprites);
+        DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(LevelHelper.getNormalLevelsAlias());
+        dropDownLevels.criarComponentDropDownField(root, cleaner, remontadorLbls);
 
-        RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
-        criarComponentDropDownField(root, cleaner, remontador);
-
-        root.Q<ObjectField>("objectFieldSprite").RegisterCallback<ChangeEvent<UnityEngine.Object>>(e1 =>
+        EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>
         {
             listaDeSprites.receberSprite((Sprite)e1.newValue);
-        });
+        };
+        root.Q<ObjectField>("objectFieldSprite").RegisterCallback(onSpriteAdicionado);
 
         root.Q<Button>("botaoMenosTodos")    .clicked += () => listaDeSprites.limparTodaLista();
         root.Q<Button>("botaoMenos")         .clicked += () => listaDeSprites.removerUltimaLinha();
         root.Q<Button>("botaoClean")         .clicked += () => cleaner.clean();
-        root.Q<Button>("botaoProcessar")     .clicked += () => processador.gerarArrayDeIds();
-        root.Q<Button>("botaoProcessarOrdem").clicked += () => processador.gerarArrayDeOrdem();
+        root.Q<Button>("botaoProcessar")     .clicked += () => processador.processar();
+        root.Q<Button>("botaoProcessarOrdem").clicked += () => processador.processarOrdem();
         root.Q<Button>("botaoCimaAll")       .clicked += () => navegacao.navegarCimaTotal();
         root.Q<Button>("botaoBaixoAll")      .clicked += () => navegacao.navegarBaixoTotal();
         root.Q<Button>("botaoEsquerdaAll")   .clicked += () => navegacao.navegarTrasTotal();
         root.Q<Button>("botaoDireitaAll")    .clicked += () => navegacao.navegarFrenteTotal();
-        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(evento => preenchedor.colocarTexto(navegacao, evento.newValue, spriteVazio));
 
-        spriteVazio = listaDeSprites.getSpriteVazio();
-        cleaner.clean();
-    }           
-
-    private void criarComponentDropDownField(
-        VisualElement root, BoardCleanerPositivo cleaner, RemontadorBoard remontador)
-    {
-        List<string> listaDeLevels = EditorUtils.getListaDeLevels();
-        Preenchedor preenchedor = new Preenchedor();
-        DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
-        dropDownField.RegisterCallback<ChangeEvent<string>>((evt) =>{
-
-            cleaner.clean();
-
-            if (evt.newValue != "0")
+        EventCallback<ChangeEvent<int>> onOrdemAcionado = (evento) =>
+        {
+            PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
+            bool isGoComSpriteVazio = referenciasDoBoard.isElementoGoComSprite(posicaoMira.linha, posicaoMira.coluna, listaDeSprites.getSpriteVazio());
+            if (!isGoComSpriteVazio)
             {
-
-                AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
-                int[,] coletaveis = level.getArrayDeColetaveis();                
-                remontador.montarColetaveis(coletaveis, (go, spr) => preenchedor.colocarSprite(go, spr));
-
-                BoardOrdem[] ordens = LevelUtils.getBoardOrdensFromLevelOrdenado(level);
-                remontador.montarLabels(ordens);
+                referenciasDoBoard.updateElementoTexto(posicaoMira.linha, posicaoMira.coluna, evento.newValue);
             }
-        });
+        };
+        root.Q<IntegerField>("ordem").RegisterValueChangedCallback(onOrdemAcionado);
 
-        root.Q<VisualElement>("espacoDropDown")
-               .Add(dropDownField);
-    }
+        cleaner.clean();
+    }               
 }

@@ -4,9 +4,13 @@ using UnityEngine;
 public class BoardCleanerNegativo : BoardCleaner
 {
     public BoardCleanerNegativo(
-        ReferenciasDoBoardAssembler referenciasDoBoard, NavegacaoPeloBoard navegacao,
+        ReferenciasDoBoard referenciasDoBoard, NavegacaoPeloBoard navegacao,
         Func<Sprite> fornecedorSpriteVazio) 
         : base(referenciasDoBoard, navegacao, fornecedorSpriteVazio){}
+
+    protected override void cleanElement(int indiceLinha, int indiceColuna, ReferenciasDoBoard referencias, bool estado)
+    {        
+    }
 
     protected override bool isSextoElementoTipoLinha(int linha, int coluna)
     {

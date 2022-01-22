@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class GenericPool<K, V>
-{
-    private V objetoTemp;
+{    
     private Dictionary<K, V> dicionario;
 
     public GenericPool()
@@ -26,7 +25,7 @@ public class GenericPool<K, V>
     {
         if (contem(chave))
         {
-            objetoTemp = getValor(chave);
+            V objetoTemp = getValor(chave);
             consumidor.consumir(objetoTemp);
         }
     }
@@ -36,6 +35,14 @@ public class GenericPool<K, V>
         foreach (KeyValuePair<K, V> entry in dicionario)
         {
             consumidor.consumir(entry.Value);
+        }
+    }
+
+    public void executeEmTodosAsChavesValores(BiConsumidor<K, V> biConsumidor)
+    {
+        foreach (KeyValuePair<K, V> entry in dicionario)
+        {
+            biConsumidor.consumir(entry.Key, entry.Value);
         }
     }
 
@@ -80,11 +87,23 @@ public class GenericPool<K, V>
         return dicionario.Values.ToList();
     }
 
+    public List<K> getListaDeChaves()
+    {
+        return dicionario.Keys.ToList();
+    }
+
     public V[] getArrayDeValores()
     {
         V[] values = new V[dicionario.Count];
         dicionario.Values.CopyTo(values, 0);
         return values;
+    }
+
+    public K[] getArrayDeChaves()
+    {
+        K[] chaves = new K[dicionario.Count];
+        dicionario.Keys.CopyTo(chaves, 0);
+        return chaves;
     }
 
     public int getTamanhoDoPool()

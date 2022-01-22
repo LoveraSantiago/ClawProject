@@ -1,8 +1,9 @@
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class NavegacaoPeloBoardPositivo : NavegacaoPeloBoard
 {
-    public NavegacaoPeloBoardPositivo(VisualElement root, ReferenciasDoBoardAssemblerPositivo referencias)
+    public NavegacaoPeloBoardPositivo(VisualElement root, ReferenciasDoBoardPositivo referencias)
         : base(root, referencias){}
 
     protected override string getNomeBtnIrParaBaixo()
@@ -18,5 +19,5 @@ public class NavegacaoPeloBoardPositivo : NavegacaoPeloBoard
     protected override bool isLinhaMenor(int value)
     {
         return isImpar(value);
-    }
+    }   
 }

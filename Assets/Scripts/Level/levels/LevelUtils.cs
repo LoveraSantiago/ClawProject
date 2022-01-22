@@ -9,17 +9,17 @@ public class LevelUtils
 
     public static bool isNormalLevel(AbstractLevel level)
     {
-        return level.getTipoGame() == AbstractLevel.TIPO_GAME.NORMAL;
+        return level.getTipoGame() == TipoGame.NORMAL;
     }
 
     public static bool isElevadorLevel(AbstractLevel level)
     {
-        return level.getTipoGame() == AbstractLevel.TIPO_GAME.ELEVADOR;
+        return level.getTipoGame() == TipoGame.ELEVADOR;
     }
 
     public static bool isColetavelLevel(AbstractLevel level)
     {
-        return level.getTipoGame() == AbstractLevel.TIPO_GAME.COLETAVEL;
+        return level.getTipoGame() == TipoGame.COLETAVEL;
     }
 
     public static bool isCacaNiquelLevel(AbstractLevel level)
@@ -30,12 +30,12 @@ public class LevelUtils
 
     public static bool isPupLevel(AbstractLevel level)
     {
-        return level.getTipoGame() == AbstractLevel.TIPO_GAME.PUP;
+        return level.getTipoGame() == TipoGame.PUP;
     }
 
     public static bool isOrdemLevel(AbstractLevel level)
     {
-        return level.getTipoGame() == AbstractLevel.TIPO_GAME.ORDENADO;
+        return level.getTipoGame() == TipoGame.ORDENADO;
     }
 
     public static bool isLevelDeDestaque(AbstractLevel level)
@@ -45,12 +45,17 @@ public class LevelUtils
 
     public static bool isCacaNiquelGeralLevel(AbstractLevel level)
     {
-        return level.getTipoGame() == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_GERAL;        
+        return level.getTipoGame() == TipoGame.CACANIQUEL_PUP_GERAL;        
     }
 
     public static bool isCacaNiquelSingleLevel(AbstractLevel level)
     {
-        return level.getTipoGame() == AbstractLevel.TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
+        return level.getTipoGame() == TipoGame.CACANIQUEL_PUP_INDIVIDUAL;
+    }
+
+    public static bool isObstaculoLevel(AbstractLevel level)
+    {
+        return level.getTipoGame() == TipoGame.OBSTACULO;
     }
 
     public static ColetavelEntidade getColetavelFromLevelColetavel(AbstractLevel level)

@@ -2,10 +2,6 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevel 
 {
-    public enum TIPO_GAME {
-        NORMAL, ELEVADOR, ORDENADO, PUP, COLETAVEL,
-        CACANIQUEL_PUP_INDIVIDUAL, CACANIQUEL_PUP_GERAL }
-
     public static readonly string TIMER_ZERO = "00:00";
 
     public abstract string getLevelName();
@@ -25,7 +21,7 @@ public abstract class AbstractLevel
         return getTipoGame().ToString();
     }
 
-    public abstract TIPO_GAME getTipoGame();
+    public abstract TipoGame getTipoGame();
 
     public abstract TipoContagemTempoDto getTempoContagem();
 

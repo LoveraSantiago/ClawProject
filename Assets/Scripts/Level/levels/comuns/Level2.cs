@@ -13,9 +13,9 @@ public class Level2 : AbstractLevel
         return "Faça o maior número de combinações";
     }
 
-    public override TIPO_GAME getTipoGame()
+    public override TipoGame getTipoGame()
     {
-        return TIPO_GAME.NORMAL;
+        return TipoGame.NORMAL;
     }   
 
     public override int[,] getArrayDeColetaveis()

@@ -2,42 +2,51 @@ using System.Collections.Generic;
 
 public class LevelHelper
 {
-    private static Dictionary<Level, LevelEntidade> dicionarioDeEnum = inicializarDicionarioDeEnum();
-    private static Dictionary<string, LevelEntidade> dicionarioDeAlias = inicializarDicionarioDeAlias();
+    private static GenericPool<string, LevelEntidade> poolLevels = inicializarDicionarioDeEnum();
 
     public static AbstractLevel getLevelByEnum(Level level)
     {
-        return dicionarioDeEnum[level].supplierLevel.fornecer();
+        LevelEntidade levelEntidade = poolLevels.getValor(level.ToString());
+        return levelEntidade.supplierLevel.fornecer();
     }
 
     public static AbstractLevel getLevelByString(string level)
     {
-        return dicionarioDeAlias[level].supplierLevel.fornecer();
+        LevelEntidade levelEntidade = poolLevels.getValor(level);
+        return levelEntidade.supplierLevel.fornecer();
     }
 
-    private static Dictionary<Level, LevelEntidade> inicializarDicionarioDeEnum()
+    public static List<string> getNormalLevelsAlias()
     {
-        Dictionary<Level, LevelEntidade> dicionarioDeEnum = new Dictionary<Level, LevelEntidade>();
+        LevelsNormalFilter filterLevels = new LevelsNormalFilter();
+        poolLevels.executeEmTodosOsValores(filterLevels);
+        return filterLevels.levelAlias;
+    }
+
+    public static List<string> getElevadorLevelsAlias()
+    {
+        LevelsElevadorFilter filterLevels = new LevelsElevadorFilter();
+        poolLevels.executeEmTodosOsValores(filterLevels);
+        return filterLevels.levelAlias;
+    }
+
+    public static List<string> getObstaculoLevelsAlias()
+    {
+        LevelsObstaculosFilter filterLevels = new LevelsObstaculosFilter();
+        poolLevels.executeEmTodosOsValores(filterLevels);
+        return filterLevels.levelAlias;
+    }
+
+    private static GenericPool<string, LevelEntidade> inicializarDicionarioDeEnum()
+    {
+        GenericPool<string, LevelEntidade> dicionarioDeEnum = new GenericPool<string, LevelEntidade>();
 
         LevelEntidade[] levelsEntidades = LevelEntidade.getLevelsEntidades();
         for(int contador = 0; contador < levelsEntidades.Length; contador++)
         {
             LevelEntidade levelEntidade = levelsEntidades[contador];
-            dicionarioDeEnum.Add(levelEntidade.level, levelEntidade);
+            dicionarioDeEnum.addChaveValor(levelEntidade.level.ToString(), levelEntidade);
         }
         return dicionarioDeEnum;
-    }
-
-    private static Dictionary<string, LevelEntidade> inicializarDicionarioDeAlias()
-    {
-        Dictionary<string, LevelEntidade>  dicionarioDeAlias = new Dictionary<string, LevelEntidade>();
-
-        LevelEntidade[] levelsEntidades = LevelEntidade.getLevelsEntidades();
-        for (int contador = 0; contador < levelsEntidades.Length; contador++)
-        {
-            LevelEntidade levelEntidade = levelsEntidades[contador];
-            dicionarioDeAlias.Add(levelEntidade.alias, levelEntidade);
-        }
-        return dicionarioDeAlias;
-    }
+    }  
 }

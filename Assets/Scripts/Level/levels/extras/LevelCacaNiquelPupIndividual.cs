@@ -14,9 +14,9 @@ public class LevelCacaNiquelPupIndividual : AbstractLevel
         return "Ganhar power up escolhido.";
     }
 
-    public override TIPO_GAME getTipoGame()
+    public override TipoGame getTipoGame()
     {
-        return TIPO_GAME.CACANIQUEL_PUP_INDIVIDUAL;
+        return TipoGame.CACANIQUEL_PUP_INDIVIDUAL;
     }   
 
     public override int[,] getArrayDeColetaveis()

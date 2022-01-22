@@ -1,8 +1,8 @@
 public abstract class AbstractLevelOrdem : AbstractLevel
 {
-    public override TIPO_GAME getTipoGame()
+    public override TipoGame getTipoGame()
     {
-        return TIPO_GAME.ORDENADO;
+        return TipoGame.ORDENADO;
     }
 
     public abstract BoardOrdem[] getBoardOrdem();
