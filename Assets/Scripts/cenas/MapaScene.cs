@@ -17,9 +17,7 @@ public class MapaScene : MonoBehaviour
     [Space(5)]
     [SerializeField] private BotoesCenasDto botoesCenasDto;
 
-    private ContadorDeTempo contadorTempo;
-    private int contadorSegundosParaMinutos;
-    private int contadorSegundosParaHoras;
+    private Relogio relogio;
 
     private void Start()
     {
@@ -30,41 +28,13 @@ public class MapaScene : MonoBehaviour
 
         new BotoesCenasMapa(botoesCenasDto);
 
-        contadorTempo = new ContadorDeTempo(1.0f);
+        relogio = new Relogio(transformSegundos, transformMinutos, transformHoras);
     }
 
     private void Update()
     {
-        bool contou1Segundo = contadorTempo.contarTempoFDT();
-        if (contou1Segundo)
-        {
-            Vector3 result = transformSegundos.rotation.eulerAngles - new Vector3(0, 0, 6);
-            Quaternion rotacao = Quaternion.Euler(result);
-            transformSegundos.rotation = rotacao;
-
-            contadorSegundosParaMinutos++;
-            if(contadorSegundosParaMinutos == 60)
-            {
-                Vector3 resultMinuto = transformMinutos.rotation.eulerAngles - new Vector3(0, 0, 6);
-                Quaternion rotacaoMinuto = Quaternion.Euler(resultMinuto);
-                transformMinutos.rotation = rotacaoMinuto;
-
-                contadorSegundosParaMinutos = 0;
-            }
-
-            contadorSegundosParaHoras++;
-            if(contadorSegundosParaHoras == 3600)
-            {
-                Vector3 resultHora = transformHoras.rotation.eulerAngles - new Vector3(0, 0, 6);
-                Quaternion rotacaoHora = Quaternion.Euler(resultHora);
-                transformHoras.rotation = rotacaoHora;
-
-                contadorSegundosParaHoras = 0;
-            }
-
-            contadorTempo.resetContador();
-        }
-    }
+        relogio.updateSegundo();
+    }   
 
     private void goToLevelFase(Level levelEnum, AbstractLevel level)
     {
