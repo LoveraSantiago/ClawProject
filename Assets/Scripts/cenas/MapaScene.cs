@@ -17,9 +17,9 @@ public class MapaScene : MonoBehaviour
     [Space(5)]
     [SerializeField] private BotoesCenasDto botoesCenasDto;
 
-    private ContadorDeTempo contadorSegundos;
-    private ContadorDeTempo contadorMinutos;
-    private ContadorDeTempo contadorHoras;
+    private ContadorDeTempo contadorTempo;
+    private int contadorSegundosParaMinutos;
+    private int contadorSegundosParaHoras;
 
     private void Start()
     {
@@ -30,41 +30,39 @@ public class MapaScene : MonoBehaviour
 
         new BotoesCenasMapa(botoesCenasDto);
 
-        contadorSegundos = new ContadorDeTempo(1.0f);
-        contadorMinutos = new ContadorDeTempo(60.0f);
-        contadorHoras = new ContadorDeTempo(3600.0f);
+        contadorTempo = new ContadorDeTempo(1.0f);
     }
 
     private void Update()
     {
-        bool contou1Segundo = contadorSegundos.contarTempoFDT();
+        bool contou1Segundo = contadorTempo.contarTempoFDT();
         if (contou1Segundo)
         {
             Vector3 result = transformSegundos.rotation.eulerAngles - new Vector3(0, 0, 6);
             Quaternion rotacao = Quaternion.Euler(result);
             transformSegundos.rotation = rotacao;
 
-            contadorSegundos.resetContador();
-        }
+            contadorSegundosParaMinutos++;
+            if(contadorSegundosParaMinutos == 60)
+            {
+                Vector3 resultMinuto = transformMinutos.rotation.eulerAngles - new Vector3(0, 0, 6);
+                Quaternion rotacaoMinuto = Quaternion.Euler(resultMinuto);
+                transformMinutos.rotation = rotacaoMinuto;
 
-        bool contou1Minuto = contadorMinutos.contarTempoFDT();
-        if (contou1Minuto)
-        {
-            Vector3 result = transformMinutos.rotation.eulerAngles - new Vector3(0, 0, 6);
-            Quaternion rotacao = Quaternion.Euler(result);
-            transformMinutos.rotation = rotacao;
+                contadorSegundosParaMinutos = 0;
+            }
 
-            contadorMinutos.resetContador();
-        }
+            contadorSegundosParaHoras++;
+            if(contadorSegundosParaHoras == 3600)
+            {
+                Vector3 resultHora = transformHoras.rotation.eulerAngles - new Vector3(0, 0, 6);
+                Quaternion rotacaoHora = Quaternion.Euler(resultHora);
+                transformHoras.rotation = rotacaoHora;
 
-        bool contou1Hora = contadorHoras.contarTempoFDT();
-        if (contou1Hora)
-        {
-            Vector3 result = transformHoras.rotation.eulerAngles - new Vector3(0, 0, 6);
-            Quaternion rotacao = Quaternion.Euler(result);
-            transformHoras.rotation = rotacao;
+                contadorSegundosParaHoras = 0;
+            }
 
-            contadorHoras.resetContador();
+            contadorTempo.resetContador();
         }
     }
 
