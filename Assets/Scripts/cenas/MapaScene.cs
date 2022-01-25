@@ -35,10 +35,10 @@ public class MapaScene : MonoBehaviour
     {
         modalObjetivo.SetActive(true);
         PlayerPrefsLevel.salvarLevel(levelEnum);
-        updateModal(level);
+        showModalParaOLevel(level);
     }
 
-    private void updateModal(AbstractLevel level)
+    private void showModalParaOLevel(AbstractLevel level)
     {
         string nivelName = level.getLevelName();
         string objetivo = level.getMsgObjetivoLevel();
