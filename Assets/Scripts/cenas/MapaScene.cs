@@ -11,11 +11,7 @@ public class MapaScene : MonoBehaviour
     [SerializeField] private Button btnLevel3;
     [SerializeField] private Button btnLevel4;
     [Space(5)]
-    [SerializeField] private Button btnCards;
-    [SerializeField] private Button btnScore;
-    [SerializeField] private Button btnStore;
-    [SerializeField] private Button btnPelucia;
-    [SerializeField] private Button btnConfig;
+    [SerializeField] private BotoesCenasDto botoesCenasDto;
 
     private void Start()
     {
@@ -24,11 +20,7 @@ public class MapaScene : MonoBehaviour
         btnLevel3.onClick.AddListener(() => goToLevelFase(Level.TRES  , new Level3()));
         btnLevel4.onClick.AddListener(() => goToLevelFase(Level.QUATRO, new Level4()));
 
-        btnCards  .onClick.AddListener(() => CenaUtils.irParaCenaPup());
-        btnStore  .onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
-        btnScore  .onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
-        btnPelucia.onClick.AddListener(() => CenaUtils.irParaCenaColetaveis());
-        btnConfig .onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
+        new BotoesCenasMapa(botoesCenasDto);        
     }             
 
     private void goToLevelFase(Level levelEnum, AbstractLevel level)

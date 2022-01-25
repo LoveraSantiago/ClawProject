@@ -1,0 +1,16 @@
+public class BotoesCenasMapa 
+{
+    public BotoesCenasMapa(BotoesCenasDto botoesCenasDto)
+    {
+        configurarBotoesCenas(botoesCenasDto);
+    }
+
+    private void configurarBotoesCenas(BotoesCenasDto botoesCenasDto)
+    {
+        botoesCenasDto.BtnCards.onClick.AddListener(() => CenaUtils.irParaCenaPup());
+        botoesCenasDto.BtnStore.onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
+        botoesCenasDto.BtnScore.onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
+        botoesCenasDto.BtnPelucia.onClick.AddListener(() => CenaUtils.irParaCenaColetaveis());
+        botoesCenasDto.BtnConfig.onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
+    }
+}
