@@ -11,7 +11,11 @@ public class MapaScene : MonoBehaviour
     [SerializeField] private Button btnLevel3;
     [SerializeField] private Button btnLevel4;
     [Space(5)]
+    [SerializeField] private Transform transformSegundos;
+    [Space(5)]
     [SerializeField] private BotoesCenasDto botoesCenasDto;
+
+    private ContadorDeTempo contadorSegundos;
 
     private void Start()
     {
@@ -20,8 +24,23 @@ public class MapaScene : MonoBehaviour
         btnLevel3.onClick.AddListener(() => goToLevelFase(Level.TRES  , new Level3()));
         btnLevel4.onClick.AddListener(() => goToLevelFase(Level.QUATRO, new Level4()));
 
-        new BotoesCenasMapa(botoesCenasDto);        
-    }             
+        new BotoesCenasMapa(botoesCenasDto);
+
+        contadorSegundos = new ContadorDeTempo(1.0f);
+    }
+
+    private void Update()
+    {
+        bool contou1Segundo = contadorSegundos.contarTempoFDT();
+        if (contou1Segundo)
+        {
+            Vector3 result = transformSegundos.rotation.eulerAngles - new Vector3(0, 0, 6);
+            Quaternion rotacao = Quaternion.Euler(result);
+            transformSegundos.rotation = rotacao;
+
+            contadorSegundos.resetContador();
+        }
+    }
 
     private void goToLevelFase(Level levelEnum, AbstractLevel level)
     {
