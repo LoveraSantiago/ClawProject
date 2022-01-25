@@ -2212,6 +2212,8 @@ MonoBehaviour:
   btnLevel3: {fileID: 663014699}
   btnLevel4: {fileID: 1847712419}
   transformSegundos: {fileID: 2016376342}
+  transformMinutos: {fileID: 688400143}
+  transformHoras: {fileID: 637592631}
   botoesCenasDto:
     btnCards: {fileID: 250196780}
     btnScore: {fileID: 1357853671}

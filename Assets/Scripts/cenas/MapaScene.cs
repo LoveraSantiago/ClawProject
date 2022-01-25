@@ -12,10 +12,14 @@ public class MapaScene : MonoBehaviour
     [SerializeField] private Button btnLevel4;
     [Space(5)]
     [SerializeField] private Transform transformSegundos;
+    [SerializeField] private Transform transformMinutos;
+    [SerializeField] private Transform transformHoras;
     [Space(5)]
     [SerializeField] private BotoesCenasDto botoesCenasDto;
 
     private ContadorDeTempo contadorSegundos;
+    private ContadorDeTempo contadorMinutos;
+    private ContadorDeTempo contadorHoras;
 
     private void Start()
     {
@@ -27,6 +31,8 @@ public class MapaScene : MonoBehaviour
         new BotoesCenasMapa(botoesCenasDto);
 
         contadorSegundos = new ContadorDeTempo(1.0f);
+        contadorMinutos = new ContadorDeTempo(60.0f);
+        contadorHoras = new ContadorDeTempo(3600.0f);
     }
 
     private void Update()
@@ -39,6 +45,26 @@ public class MapaScene : MonoBehaviour
             transformSegundos.rotation = rotacao;
 
             contadorSegundos.resetContador();
+        }
+
+        bool contou1Minuto = contadorMinutos.contarTempoFDT();
+        if (contou1Minuto)
+        {
+            Vector3 result = transformMinutos.rotation.eulerAngles - new Vector3(0, 0, 6);
+            Quaternion rotacao = Quaternion.Euler(result);
+            transformMinutos.rotation = rotacao;
+
+            contadorMinutos.resetContador();
+        }
+
+        bool contou1Hora = contadorHoras.contarTempoFDT();
+        if (contou1Hora)
+        {
+            Vector3 result = transformHoras.rotation.eulerAngles - new Vector3(0, 0, 6);
+            Quaternion rotacao = Quaternion.Euler(result);
+            transformHoras.rotation = rotacao;
+
+            contadorHoras.resetContador();
         }
     }
 
