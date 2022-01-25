@@ -1,17 +1,17 @@
 using UnityEngine;
 
-public class ContadorDeTempo 
+public class IntervaloDeTempo 
 {
-    private float tempoParaAcao;
+    private float intervalo;
     private float contadorTempo;
 
-    public ContadorDeTempo()
+    public IntervaloDeTempo()
     {
     }
 
-    public ContadorDeTempo(float tempoEmSegundosParaAcao)
+    public IntervaloDeTempo(float tempoEmSegundos)
     {
-        configTempoParaAcao(tempoEmSegundosParaAcao);
+        configTempoParaAcao(tempoEmSegundos);
     }
 
     public bool contarTempoDT()
@@ -34,15 +34,15 @@ public class ContadorDeTempo
         return false;
     }
 
-    public void configTempoParaAcao(float tempoParaAcao)
+    public void configTempoParaAcao(float tempoEmSegundos)
     {
-        this.tempoParaAcao = tempoParaAcao;
+        intervalo = tempoEmSegundos;
         resetContador();
     }    
 
     public void resetContador()
     {
-        contadorTempo = tempoParaAcao;
+        contadorTempo = intervalo;
     }
 
     public void addTempoLongo()
