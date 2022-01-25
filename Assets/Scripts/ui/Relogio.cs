@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Relogio 
 {
@@ -6,10 +7,8 @@ public class Relogio
     private Transform transformMinutos;
     private Transform transformHoras;
 
-    private int contadorSegundosParaMinutos;
-    private int contadorSegundosParaHoras;
-
     private ContadorDeTempo contadorTempo;
+    private ContadorTimerPositivo timer;
 
     public Relogio(Transform transformSegundos, Transform transformMinutos, Transform transformHoras)
     {
@@ -18,6 +17,7 @@ public class Relogio
         this.transformHoras = transformHoras;
 
         contadorTempo = new ContadorDeTempo(1.0f);
+        timer = new ContadorTimerPositivo();
     }
 
     public void updateSegundo()
@@ -25,29 +25,18 @@ public class Relogio
         bool contou1Segundo = contadorTempo.contarTempoFDT();
         if (contou1Segundo)
         {
-            andarPonteiro(transformSegundos);
-
-            contadorSegundosParaMinutos++;
-            if (contadorSegundosParaMinutos == 60)
-            {
-                andarPonteiro(transformMinutos);
-                contadorSegundosParaMinutos = 0;
-            }
-
-            contadorSegundosParaHoras++;
-            if (contadorSegundosParaHoras == 3600)
-            {
-                andarPonteiro(transformHoras);
-                contadorSegundosParaHoras = 0;
-            }
+            TimeSpan timeSpan = timer.processarContagem();
+            andarPonteiro(transformSegundos, timeSpan.Seconds);
+            andarPonteiro(transformMinutos, timeSpan.Minutes);
+            andarPonteiro(transformHoras, timeSpan.Hours);            
 
             contadorTempo.resetContador();
         }
     }
 
-    private void andarPonteiro(Transform transform)
+    private void andarPonteiro(Transform transform, int tempo)
     {
-        Vector3 acrescimo = transform.rotation.eulerAngles - new Vector3(0, 0, 6);
+        Vector3 acrescimo = - new Vector3(0, 0, 6 * tempo);
         Quaternion rotacao = Quaternion.Euler(acrescimo);
         transform.rotation = rotacao;
     }

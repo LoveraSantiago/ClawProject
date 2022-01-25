@@ -2,8 +2,7 @@ using System;
 using UnityEngine;
 
 public class ContadorTimerPositivo : TipoContadorTimer
-{         
-
+{
     public override bool isNearTimeOver()
     {
         return false;

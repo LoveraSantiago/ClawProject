@@ -9,7 +9,7 @@ public abstract class TipoContadorTimer
 
     public void iniciarContagem()
     {
-        tempoInicial = Time.time;
+        tempoInicial = Time.time;        
     }
 
     public abstract TimeSpan processarContagem();
