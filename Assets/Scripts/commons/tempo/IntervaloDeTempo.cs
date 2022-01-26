@@ -24,16 +24,6 @@ public class IntervaloDeTempo
         return false;
     }
 
-    public bool contarTempoFDT()
-    {
-        contadorTempo -= Time.fixedDeltaTime;
-        if (contadorTempo <= 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
     public void configTempoParaAcao(float tempoEmSegundos)
     {
         intervalo = tempoEmSegundos;
@@ -42,7 +32,7 @@ public class IntervaloDeTempo
 
     public void resetContador()
     {
-        contadorTempo = intervalo;
+        contadorTempo = intervalo;        
     }
 
     public void addTempoLongo()

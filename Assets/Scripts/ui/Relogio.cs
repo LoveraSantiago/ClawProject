@@ -8,7 +8,7 @@ public class Relogio
     private Transform transformHoras;
 
     private IntervaloDeTempo intervaloDeTempo;
-    private ContadorDeTempoFramePositivo timer;
+    private ContadorDeTempo contadorDeTempo;
 
     public Relogio(Transform transformSegundos, Transform transformMinutos, Transform transformHoras)
     {
@@ -17,15 +17,15 @@ public class Relogio
         this.transformHoras = transformHoras;
 
         intervaloDeTempo = new IntervaloDeTempo(1.0f);
-        timer = new ContadorDeTempoFramePositivo();
+        contadorDeTempo = new ContadorDeTempoData();
     }
 
     public void updateSegundo()
     {
-        bool contou1Segundo = intervaloDeTempo.contarTempoFDT();
+        bool contou1Segundo = intervaloDeTempo.contarTempoDT();
         if (contou1Segundo)
         {
-            TimeSpan timeSpan = timer.processarContagem();
+            TimeSpan timeSpan = contadorDeTempo.processarContagem();
             andarPonteiro(transformSegundos, timeSpan.Seconds);
             andarPonteiro(transformMinutos, timeSpan.Minutes);
             andarPonteiro(transformHoras, timeSpan.Hours);            
