@@ -1,11 +1,11 @@
 using System;
 
-public class ContadorTimerContinuo : ContadorDeTempoFrameNegativo
+public class ContadorDeTempoFrameContinuo : ContadorDeTempoFrameNegativo
 {
     private string tempoRestart;
     private Executor executorAntes;
 
-    public ContadorTimerContinuo(string tempo, Executor executorAntes)
+    public ContadorDeTempoFrameContinuo(string tempo, Executor executorAntes)
         : base(tempo)
     {
         tempoRestart = tempo;
