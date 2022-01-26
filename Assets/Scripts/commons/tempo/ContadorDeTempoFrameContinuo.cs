@@ -1,18 +1,14 @@
 using System;
 
-public class ContadorDeTempoFrameContinuo : ContadorDeTempoFrameNegativo
+public class ContadorTimerContinuo : ContadorDeTempoFrameNegativo
 {
     private string tempoRestart;
-    private ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado;
-
     private Executor executorAntes;
 
-    public ContadorDeTempoFrameContinuo(
-        string tempo, ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado, Executor executorAntes)
+    public ContadorTimerContinuo(string tempo, Executor executorAntes)
         : base(tempo)
     {
         tempoRestart = tempo;
-        this.produtorDeEventoTempoEsgotado = produtorDeEventoTempoEsgotado;
         this.executorAntes = executorAntes;
     }
 
@@ -30,7 +26,6 @@ public class ContadorDeTempoFrameContinuo : ContadorDeTempoFrameNegativo
             iniciarContagem();
             setTempoRegressivoInicial(tempoRestart);
             executorAntes.execute();
-            produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(true));
         }
 
         return timeSpan;

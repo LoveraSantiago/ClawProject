@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
+public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
+                            Executor
 {  
     private float tempoInicial;
     private bool isPausado;
@@ -12,6 +13,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
     private Coroutine coroutineBlink;    
 
     private ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado;
+    private Executor executorTimerRestartOutrosComponentes;
 
     public DisplayTimer(DisplayTimerDto displayDto)
     {   
@@ -21,12 +23,19 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
         contadorTimer = new ContadorTimer();        
     }
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido, Executor executorTimerRestart)
+    public void configuradoPeloLevel(AbstractLevel levelEscolhido, Executor executorTimerRestartOutrosComponentes)
     {
-        contadorTimer.definirContador(
-            levelEscolhido.getTempoContagem(), produtorDeEventoTempoEsgotado, executorTimerRestart);        
+        this.executorTimerRestartOutrosComponentes = executorTimerRestartOutrosComponentes;
 
+        contadorTimer.definirContador(levelEscolhido.getTempoContagem(), this);        
         digitos.passarCoresAosDisplayDigitos(levelEscolhido.getDicionarioDeCores());        
+    }
+
+    public void execute()
+    {
+        executorTimerRestartOutrosComponentes.execute();
+        pause();
+        produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(true));
     }
 
     public void iniciarContagemTempo()
@@ -95,5 +104,5 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento
     ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoTempoEsgotado;
-    }
+    }    
 }

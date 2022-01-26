@@ -67,7 +67,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         tuboDeSaida.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         chao.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
 
-        AntesExecutorTimerRestart executor = new AntesExecutorTimerRestart(botoesPowerUp, displayTimer, arcoIrisEfeito);
+        AntesExecutorTimerRestart executor = new AntesExecutorTimerRestart(botoesPowerUp, arcoIrisEfeito);
         displayTimer.configuradoPeloLevel(levelEscolhido, executor);
 
         new ColoridorMaquina()

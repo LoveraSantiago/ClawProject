@@ -5,8 +5,7 @@ public class ContadorTimer
     public enum Contagem { NORMAL, REGRESSIVA, CONTINUA };
     private ContadorDeTempo contadorDeTempo;
 
-    public void definirContador(
-        TipoContagemTempoDto tipoContagemTempo, ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado, Executor executorTimerRestart)
+    public void definirContador(TipoContagemTempoDto tipoContagemTempo, Executor executorTimerRestart)
     {
         switch (tipoContagemTempo.contagem)
         {
@@ -22,8 +21,7 @@ public class ContadorTimer
             }
             case Contagem.CONTINUA:
             {
-                contadorDeTempo = new ContadorDeTempoFrameContinuo(
-                    tipoContagemTempo.tempo, produtorDeEventoTempoEsgotado, executorTimerRestart);
+                contadorDeTempo = new ContadorTimerContinuo(tipoContagemTempo.tempo, executorTimerRestart);
                 break;
             }
         }        
