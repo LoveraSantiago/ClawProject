@@ -12,7 +12,7 @@ public class ContadorTimer
         {
             case Contagem.NORMAL:
             {
-                contadorDeTempo = new ContadorTimerPositivo();
+                contadorDeTempo = new ContadorDeTempoFramePositivo();
                 break;
             }
             case Contagem.REGRESSIVA:

@@ -8,7 +8,7 @@ public class Relogio
     private Transform transformHoras;
 
     private IntervaloDeTempo intervaloDeTempo;
-    private ContadorTimerPositivo timer;
+    private ContadorDeTempoFramePositivo timer;
 
     public Relogio(Transform transformSegundos, Transform transformMinutos, Transform transformHoras)
     {
@@ -17,7 +17,7 @@ public class Relogio
         this.transformHoras = transformHoras;
 
         intervaloDeTempo = new IntervaloDeTempo(1.0f);
-        timer = new ContadorTimerPositivo();
+        timer = new ContadorDeTempoFramePositivo();
     }
 
     public void updateSegundo()
