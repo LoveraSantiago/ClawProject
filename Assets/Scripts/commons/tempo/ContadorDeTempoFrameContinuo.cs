@@ -1,13 +1,13 @@
 using System;
 
-public class ContadorTimerContinuo : ContadorDeTempoFrameNegativo
+public class ContadorDeTempoFrameContinuo : ContadorDeTempoFrameNegativo
 {
     private string tempoRestart;
     private ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado;
 
     private Executor executorAntes;
 
-    public ContadorTimerContinuo(
+    public ContadorDeTempoFrameContinuo(
         string tempo, ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado, Executor executorAntes)
         : base(tempo)
     {
