@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using System.Globalization;
 
 public abstract class ContadorDeTempoFrame : ContadorDeTempo
 {
@@ -27,10 +26,4 @@ public abstract class ContadorDeTempoFrame : ContadorDeTempo
     
     public abstract bool isTimeOver();
     public abstract bool isNearTimeOver();
-
-    protected double parseTimeFromString(string tempo)
-    {
-        TimeSpan intervalo = DateTime.ParseExact(tempo, "mm:ss", CultureInfo.InvariantCulture).TimeOfDay;
-        return intervalo.TotalSeconds;
-    }
 }

@@ -13,7 +13,7 @@ public class ContadorDeTempoFrameNegativo : ContadorDeTempoFrame
 
     protected void setTempoRegressivoInicial(string tempo)
     {
-        tempoRegressivoInicial = parseTimeFromString(tempo);
+        tempoRegressivoInicial = TempoUtils.parseTimeFromString(tempo);
     }
         
     public override bool isTimeOver()
