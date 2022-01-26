@@ -1,6 +1,6 @@
 using System;
 
-public class ContadorTimerContinuo : ContadorTimerNegativo
+public class ContadorTimerContinuo : ContadorDeTempoFrameNegativo
 {
     private string tempoRestart;
     private ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado;

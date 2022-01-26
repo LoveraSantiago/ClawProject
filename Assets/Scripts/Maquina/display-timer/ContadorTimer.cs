@@ -17,7 +17,7 @@ public class ContadorTimer
             }
             case Contagem.REGRESSIVA:
             {
-                contadorDeTempo = new ContadorTimerNegativo(tipoContagemTempo.tempo);
+                contadorDeTempo = new ContadorDeTempoFrameNegativo(tipoContagemTempo.tempo);
                 break;
             }
             case Contagem.CONTINUA:

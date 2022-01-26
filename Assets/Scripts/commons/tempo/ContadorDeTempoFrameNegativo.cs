@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 
-public class ContadorTimerNegativo : ContadorDeTempoFrame
+public class ContadorDeTempoFrameNegativo : ContadorDeTempoFrame
 {
     private double tempoRegressivoInicial;    
     private double tempoResult;
 
-    public ContadorTimerNegativo(string tempo)
+    public ContadorDeTempoFrameNegativo(string tempo)
     {
         setTempoRegressivoInicial(tempo);
     }    
