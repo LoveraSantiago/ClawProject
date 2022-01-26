@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ContadorTimerNegativo : TipoContadorTimer
+public class ContadorTimerNegativo : ContadorDeTempoFrame
 {
     private double tempoRegressivoInicial;    
     private double tempoResult;

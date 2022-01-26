@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using System.Globalization;
 
-public abstract class TipoContadorTimer 
+public abstract class ContadorDeTempoFrame : ContadorDeTempo
 {
     protected float tempoInicial;
     protected float tempoPause;
