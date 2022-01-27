@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 #pragma warning disable 0649
 public class MapaScene : MonoBehaviour
@@ -11,6 +12,7 @@ public class MapaScene : MonoBehaviour
     [SerializeField] private Button btnLevel3;
     [SerializeField] private Button btnLevel4;
     [Space(5)]
+    [SerializeField] private TextMeshProUGUI lblHoras;
     [SerializeField] private Transform transformSegundos;
     [SerializeField] private Transform transformMinutos;
     [SerializeField] private Transform transformHoras;
@@ -28,7 +30,7 @@ public class MapaScene : MonoBehaviour
 
         new BotoesCenasMapa(botoesCenasDto);
 
-        relogio = new Relogio(transformSegundos, transformMinutos, transformHoras);
+        relogio = new Relogio(lblHoras, transformSegundos, transformMinutos, transformHoras);
     }
 
     private void Update()

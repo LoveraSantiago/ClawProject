@@ -2498,6 +2498,7 @@ MonoBehaviour:
   btnLevel2: {fileID: 83325897}
   btnLevel3: {fileID: 663014699}
   btnLevel4: {fileID: 1847712419}
+  lblHoras: {fileID: 1230615357}
   transformSegundos: {fileID: 2016376342}
   transformMinutos: {fileID: 688400143}
   transformHoras: {fileID: 637592631}
