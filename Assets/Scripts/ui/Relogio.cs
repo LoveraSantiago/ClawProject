@@ -18,6 +18,7 @@ public class Relogio
 
         intervaloDeTempo = new IntervaloDeTempo(1.0f);
         contadorDeTempo = new ContadorDeTempoData();
+        contadorDeTempo.iniciarContagem();
     }
 
     public void updateSegundo()
@@ -26,17 +27,17 @@ public class Relogio
         if (contou1Segundo)
         {
             TimeSpan timeSpan = contadorDeTempo.processarContagem();
-            andarPonteiro(transformSegundos, timeSpan.Seconds);
-            andarPonteiro(transformMinutos, timeSpan.Minutes);
-            andarPonteiro(transformHoras, timeSpan.Hours);            
+            andarPonteiro(transformSegundos, timeSpan.Seconds, 6);
+            andarPonteiro(transformMinutos, timeSpan.Minutes, 6);
+            andarPonteiro(transformHoras, timeSpan.Hours, 30);            
 
             intervaloDeTempo.resetContador();
         }
     }
 
-    private void andarPonteiro(Transform transform, int tempo)
+    private void andarPonteiro(Transform transform, int tempo, int graus)
     {
-        Vector3 acrescimo = - new Vector3(0, 0, 6 * tempo);
+        Vector3 acrescimo = - new Vector3(0, 0, graus * tempo);
         Quaternion rotacao = Quaternion.Euler(acrescimo);
         transform.rotation = rotacao;
     }

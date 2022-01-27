@@ -14,7 +14,7 @@ public class ContadorDeTempoData : ContadorDeTempo
     public TimeSpan processarContagem()
     {
         TimeSpan resultado = DateTime.Now - tempoInicial;
-        Debug.Log(resultado);
+        //Debug.Log(resultado);
         return resultado;
     }
 
