@@ -32,9 +32,9 @@ public class MapaScene : MonoBehaviour
 
         new BotoesCenasMapa(botoesCenasDto);
 
-        TimerFicha timerFichaOuro   = new TimerFicha(timerFichaDto[0]);
-        TimerFicha timerFichaPrata  = new TimerFicha(timerFichaDto[1]);
-        TimerFicha timerFichaBronze = new TimerFicha(timerFichaDto[2]);
+        TimerFicha timerFichaOuro   = new TimerFicha(timerFichaDto[0], Ficha.OURO);
+        TimerFicha timerFichaPrata  = new TimerFicha(timerFichaDto[1], Ficha.PRATA);
+        TimerFicha timerFichaBronze = new TimerFicha(timerFichaDto[2], Ficha.BRONZE);
         relogio = new Relogio(lblHoras, transformSegundos, transformMinutos, transformHoras);
     }
 
