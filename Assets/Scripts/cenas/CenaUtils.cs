@@ -29,6 +29,6 @@ public class CenaUtils
 
     public static void irParaCenaLoja()
     {
-
+        SceneManager.LoadScene("LojaScene");
     }
 }

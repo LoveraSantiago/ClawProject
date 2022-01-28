@@ -10,7 +10,9 @@ public class TimerFichaDto
     [SerializeField] private Sprite sprMoeda;
     [Space(5)]
     [SerializeField] private Image imgMoeda;
+    [SerializeField] private Button btnMais;
 
     public Sprite SprMoeda { get { return sprMoeda; } }
     public Image ImgMoeda { get { return imgMoeda; } }
+    public Button BtnMais { get { return btnMais; } }
 }

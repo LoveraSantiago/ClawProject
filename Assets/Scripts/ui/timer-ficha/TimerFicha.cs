@@ -7,5 +7,6 @@ public class TimerFicha
     public TimerFicha(TimerFichaDto timerFichaDto)
     {
         timerFichaDto.ImgMoeda.sprite = timerFichaDto.SprMoeda;
+        timerFichaDto.BtnMais.onClick.AddListener(() => CenaUtils.irParaCenaLoja());
     }
 }
