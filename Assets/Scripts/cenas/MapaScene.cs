@@ -12,6 +12,8 @@ public class MapaScene : MonoBehaviour
     [SerializeField] private Button btnLevel3;
     [SerializeField] private Button btnLevel4;
     [Space(5)]
+    [SerializeField] private TimerFichaDto[] timerFichaDto = new TimerFichaDto[3];
+    [Space(5)]
     [SerializeField] private TextMeshProUGUI lblHoras;
     [SerializeField] private Transform transformSegundos;
     [SerializeField] private Transform transformMinutos;
