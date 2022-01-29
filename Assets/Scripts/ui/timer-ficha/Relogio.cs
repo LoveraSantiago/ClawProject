@@ -2,16 +2,12 @@ using System;
 
 public class Relogio 
 {
-    private TimeSpan tempoLblHoras;
-
-    private Ponteiros ponteiros;
+    private TimeSpan tempoLblHoras;    
     private IntervaloDeTempo intervaloDeTempo;
-
     private ContadorDeTempo contadorDeTempo;    
 
     public Relogio()
     {   
-        ponteiros = new Ponteiros();
         intervaloDeTempo = new IntervaloDeTempo(1.0f);
         contadorDeTempo = new ContadorDeTempoData();
         contadorDeTempo.iniciarContagem();
@@ -25,6 +21,8 @@ public class Relogio
         if (contou1Segundo)
         {
             TimeSpan timeSpan = contadorDeTempo.processarContagem();
+
+            Ponteiros ponteiros = new Ponteiros();
             ponteiros.andarPonteiros(timeSpan, relogioDto);
 
             intervaloDeTempo.resetContador();
@@ -37,7 +35,7 @@ public class Relogio
     public void zerarPonteiros(RelogioDto relogioDto)
     {
         relogioDto.LblHoras.SetText("cheio");
-    }
-
-    
+        Ponteiros ponteiros = new Ponteiros();
+        ponteiros.zerarPonteiros(relogioDto);
+    }    
 }

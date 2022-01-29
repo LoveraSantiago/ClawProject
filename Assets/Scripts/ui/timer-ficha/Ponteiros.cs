@@ -10,6 +10,13 @@ public class Ponteiros
         andarPonteiro(relogioDto.TransfHoras, timeSpan.Hours, 30);       
     }
 
+    public void zerarPonteiros(RelogioDto relogioDto)
+    {
+        andarPonteiro(relogioDto.TransfSegundos, 0, 0);
+        andarPonteiro(relogioDto.TransfMinutos, 0, 0);
+        andarPonteiro(relogioDto.TransfHoras, 0, 0);
+    }
+
     private void andarPonteiro(Transform transform, int tempo, int graus)
     {
         Vector3 acrescimo = -new Vector3(0, 0, graus * tempo);
