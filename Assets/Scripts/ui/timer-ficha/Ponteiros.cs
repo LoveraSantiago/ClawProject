@@ -3,22 +3,11 @@ using UnityEngine;
 
 public class Ponteiros 
 {
-    private Transform transformSegundos;
-    private Transform transformMinutos;
-    private Transform transformHoras;
-
-    public Ponteiros(Transform transformSegundos, Transform transformMinutos, Transform transformHoras)
-    {
-        this.transformSegundos = transformSegundos;
-        this.transformMinutos = transformMinutos;
-        this.transformHoras = transformHoras;
-    }
-
-    public void andarPonteiros(TimeSpan timeSpan)
+    public void andarPonteiros(TimeSpan timeSpan, RelogioDto relogioDto)
     {   
-        andarPonteiro(transformSegundos, timeSpan.Seconds, 6);
-        andarPonteiro(transformMinutos, timeSpan.Minutes, 6);
-        andarPonteiro(transformHoras, timeSpan.Hours, 30);       
+        andarPonteiro(relogioDto.TransfSegundos, timeSpan.Seconds, 6);
+        andarPonteiro(relogioDto.TransfMinutos, timeSpan.Minutes, 6);
+        andarPonteiro(relogioDto.TransfHoras, timeSpan.Hours, 30);       
     }
 
     private void andarPonteiro(Transform transform, int tempo, int graus)

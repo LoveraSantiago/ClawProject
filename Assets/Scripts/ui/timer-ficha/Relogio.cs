@@ -1,40 +1,43 @@
 using System;
-using UnityEngine;
-using TMPro;
 
 public class Relogio 
 {
-    private IntervaloDeTempo intervaloDeTempo;
-    private ContadorDeTempo contadorDeTempo;
-    private Ponteiros ponteiros;
-
-    private TextMeshProUGUI lblHoras;
     private TimeSpan tempoLblHoras;
 
-    public Relogio(TextMeshProUGUI lblHoras,
-        Transform transformSegundos, Transform transformMinutos, Transform transformHoras)
+    private Ponteiros ponteiros;
+    private IntervaloDeTempo intervaloDeTempo;
+
+    private ContadorDeTempo contadorDeTempo;    
+
+    public Relogio()
     {   
-        ponteiros = new Ponteiros(transformSegundos, transformMinutos, transformHoras);
+        ponteiros = new Ponteiros();
         intervaloDeTempo = new IntervaloDeTempo(1.0f);
         contadorDeTempo = new ContadorDeTempoData();
         contadorDeTempo.iniciarContagem();
-
-        this.lblHoras = lblHoras;
+        
         tempoLblHoras = new TimeSpan(1, 30, 0);
     }
 
-    public void updateSegundo()
+    public void updateSegundo(RelogioDto relogioDto)
     {
         bool contou1Segundo = intervaloDeTempo.contarTempoDT();
         if (contou1Segundo)
         {
             TimeSpan timeSpan = contadorDeTempo.processarContagem();
-            ponteiros.andarPonteiros(timeSpan);
+            ponteiros.andarPonteiros(timeSpan, relogioDto);
 
             intervaloDeTempo.resetContador();
 
             TimeSpan diferenca = tempoLblHoras - timeSpan;
-            lblHoras.SetText(diferenca.Hours + "h" + diferenca.Minutes + "m");
+            relogioDto.LblHoras.SetText(diferenca.Hours + "h" + diferenca.Minutes + "m");
         }
-    }    
+    }   
+    
+    public void zerarPonteiros(RelogioDto relogioDto)
+    {
+        relogioDto.LblHoras.SetText("cheio");
+    }
+
+    
 }

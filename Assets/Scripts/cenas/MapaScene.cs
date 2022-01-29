@@ -12,16 +12,14 @@ public class MapaScene : MonoBehaviour
     [SerializeField] private Button btnLevel3;
     [SerializeField] private Button btnLevel4;
     [Space(5)]
-    [SerializeField] private TimerFichaDto[] timerFichaDto = new TimerFichaDto[3];
-    [Space(5)]
-    [SerializeField] private TextMeshProUGUI lblHoras;
-    [SerializeField] private Transform transformSegundos;
-    [SerializeField] private Transform transformMinutos;
-    [SerializeField] private Transform transformHoras;
+    [SerializeField] private TimerFichaDto[] timerFichaDto = new TimerFichaDto[3];   
     [Space(5)]
     [SerializeField] private BotoesCenasDto botoesCenasDto;
 
-    private Relogio relogio;
+    private TimerFicha timerFichaOuro;
+    private TimerFicha timerFichaPrata;
+    private TimerFicha timerFichaBronze;
+
 
     private void Start()
     {
@@ -32,15 +30,16 @@ public class MapaScene : MonoBehaviour
 
         new BotoesCenasMapa(botoesCenasDto);
 
-        TimerFicha timerFichaOuro   = new TimerFicha(timerFichaDto[0], Ficha.OURO);
-        TimerFicha timerFichaPrata  = new TimerFicha(timerFichaDto[1], Ficha.PRATA);
-        TimerFicha timerFichaBronze = new TimerFicha(timerFichaDto[2], Ficha.BRONZE);
-        relogio = new Relogio(lblHoras, transformSegundos, transformMinutos, transformHoras);
+        timerFichaOuro   = new TimerFicha(timerFichaDto[0], Ficha.OURO);
+        timerFichaPrata  = new TimerFicha(timerFichaDto[1], Ficha.PRATA);
+        timerFichaBronze = new TimerFicha(timerFichaDto[2], Ficha.BRONZE);        
     }
 
     private void Update()
     {
-        relogio.updateSegundo();
+        timerFichaOuro.update();
+        timerFichaPrata.update();
+        timerFichaBronze.update();
     }   
 
     private void goToLevelFase(Level levelEnum, AbstractLevel level)
