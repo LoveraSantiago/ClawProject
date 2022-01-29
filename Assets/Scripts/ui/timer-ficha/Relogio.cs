@@ -1,10 +1,10 @@
 using System;
 
-public class Relogio 
+public abstract class Relogio 
 {
-    private TimeSpan tempoLblHoras;    
-    private IntervaloDeTempo intervaloDeTempo;
-    private ContadorDeTempo contadorDeTempo;    
+    protected TimeSpan tempoLblHoras;
+    protected IntervaloDeTempo intervaloDeTempo;
+    protected ContadorDeTempo contadorDeTempo;    
 
     public Relogio()
     {   
@@ -15,22 +15,7 @@ public class Relogio
         tempoLblHoras = new TimeSpan(1, 30, 0);
     }
 
-    public void updateSegundo(RelogioDto relogioDto)
-    {
-        bool contou1Segundo = intervaloDeTempo.contarTempoDT();
-        if (contou1Segundo)
-        {
-            TimeSpan timeSpan = contadorDeTempo.processarContagem();
-
-            Ponteiros ponteiros = new Ponteiros();
-            ponteiros.andarPonteiros(timeSpan, relogioDto);
-
-            intervaloDeTempo.resetContador();
-
-            TimeSpan diferenca = tempoLblHoras - timeSpan;
-            relogioDto.LblHoras.SetText(diferenca.Hours + "h" + diferenca.Minutes + "m");
-        }
-    }   
+    public abstract void updateSegundo(RelogioDto relogioDto);    
     
     public void zerarPonteiros(RelogioDto relogioDto)
     {

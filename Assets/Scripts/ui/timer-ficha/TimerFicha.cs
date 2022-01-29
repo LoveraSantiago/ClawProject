@@ -6,7 +6,7 @@ public class TimerFicha
     public TimerFicha(TimerFichaDto timerFichaDto, Ficha ficha)
     {
         this.timerFichaDto = timerFichaDto;
-        relogio = new Relogio();
+        relogio = new RelogioConcluido();
 
         configurarImgFicha();
         configurarBotao();
