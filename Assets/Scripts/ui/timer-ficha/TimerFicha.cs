@@ -1,3 +1,5 @@
+using System;
+
 public class TimerFicha 
 {
     private TimerFichaDto timerFichaDto;
@@ -20,18 +22,48 @@ public class TimerFicha
 
     private void setupDeFichas(Ficha ficha)
     {
-        int fichas = PlayerPrefsFichas.getQtdFichas(ficha);
-        setLabelQtdDeFichas(fichas);
+        int qtdFichas = PlayerPrefsFichas.getQtdFichas(ficha);
+        setLabelQtdDeFichas(qtdFichas);
 
         FichaEntidade fichaEntidade = FichaEntidade.getFichaEntidade(ficha);
-        if(fichas >= fichaEntidade.limiteFree)
+        if(qtdFichas >= fichaEntidade.limiteFree)
         {
             relogio.zerarPonteiros(timerFichaDto.RelogioDto);
         }
         else
         {
+            DateTime dataSalva = PlayerPrefsFichas.getDataFicha(ficha);
+            atualizarTempoDesdeUltimaFicha(qtdFichas, dataSalva, fichaEntidade);
 
+            qtdFichas = PlayerPrefsFichas.getQtdFichas(ficha);
+            setLabelQtdDeFichas(qtdFichas);
+
+            if(qtdFichas < fichaEntidade.limiteFree)
+            {
+                relogio = new RelogioContador(dataSalva, fichaEntidade);
+            }
+            else
+            {
+                relogio.zerarPonteiros(timerFichaDto.RelogioDto);
+            }
         }
+    }
+
+    private void atualizarTempoDesdeUltimaFicha(int fichasAtuais, DateTime dataSalva, FichaEntidade fichaEntidade)
+    {
+        int resultado = 0;
+        while(fichasAtuais < fichaEntidade.limiteFree)
+        {
+            DateTime dataProjetada = dataSalva.AddHours(fichaEntidade.intervaloHoras)
+                                              .AddMinutes(fichaEntidade.intervaloMinutos);
+
+            if(dataProjetada < DateTime.Now)
+            {
+                resultado++;
+                PlayerPrefsFichas.adicionarFicha(fichaEntidade.ficha, 1);
+            }
+            fichasAtuais++;
+        }                
     }
 
     private void setLabelQtdDeFichas(int fichas)

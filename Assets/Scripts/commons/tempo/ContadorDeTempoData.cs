@@ -5,10 +5,24 @@ public class ContadorDeTempoData : ContadorDeTempo
 {
     private DateTime tempoInicial;
 
+    public ContadorDeTempoData()
+    {
+    }
+
+    public ContadorDeTempoData(DateTime dateTime)
+    {
+        iniciarContagem(dateTime);
+    }
+
     public void iniciarContagem()
     {
         tempoInicial = DateTime.Now;
         Debug.Log(tempoInicial);
+    }
+
+    public void iniciarContagem(DateTime dateTime)
+    {
+        tempoInicial = dateTime;
     }
 
     public TimeSpan processarContagem()

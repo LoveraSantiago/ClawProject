@@ -40,7 +40,14 @@ public class MapaScene : MonoBehaviour
         timerFichaOuro.update();
         timerFichaPrata.update();
         timerFichaBronze.update();
-    }   
+    }
+
+    private void OnDisable()
+    {
+        //PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, 1);
+        //PlayerPrefsFichas.consumirFicha(Ficha.PRATA, 1);
+        //PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
+    }
 
     private void goToLevelFase(Level levelEnum, AbstractLevel level)
     {
