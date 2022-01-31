@@ -6,13 +6,11 @@ using UnityEngine.UI;
 [System.Serializable]
 public class TimerFichaDto 
 {   
-    [SerializeField] private Image imgMoeda;
     [SerializeField] private Button btnMais;
     [SerializeField] private TextMeshProUGUI lblQdtFichas;
     [Space(5)]
-    [SerializeField] private RelogioDto relogioDto;
+    [SerializeField] private RelogioDto relogioDto;    
     
-    public Image ImgMoeda { get { return imgMoeda; } }
     public Button BtnMais { get { return btnMais; } }
 
     public TextMeshProUGUI LblQdtFichas { get { return lblQdtFichas; } }

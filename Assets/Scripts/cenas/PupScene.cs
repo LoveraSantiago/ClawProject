@@ -4,6 +4,8 @@ using UnityEngine.UI;
 #pragma warning disable 0649
 public class PupScene : MonoBehaviour
 {
+    [SerializeField] private TimerFichaDto timerFichaDto;
+    [Space(5)]
     [SerializeField] private Button btnBack;
     [SerializeField] private Button btnPratica;    
     [SerializeField] private Button btnCacaNiquelPupIndividual;
@@ -15,7 +17,9 @@ public class PupScene : MonoBehaviour
     [Space(5)]
     [SerializeField] private GameObject prefabPowerUpDto;
     [SerializeField] private GameObject prefabBottomBar;
-    
+
+    private TimerFicha timerFichaBronze;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +45,13 @@ public class PupScene : MonoBehaviour
             .adicionarConsumidor(blocoImg);
 
         blocoImg.startLaizy();
-    }   
+        timerFichaBronze = new TimerFicha(timerFichaDto, Ficha.BRONZE);
+    }
+
+    private void Update()
+    {
+        timerFichaBronze.update();
+    }
 
     private void configBtnBack(Button btnBack)
     {

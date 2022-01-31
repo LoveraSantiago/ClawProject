@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 #pragma warning disable 0649
 public class MapaScene : MonoBehaviour
@@ -19,7 +18,6 @@ public class MapaScene : MonoBehaviour
     private TimerFicha timerFichaOuro;
     private TimerFicha timerFichaPrata;
     private TimerFicha timerFichaBronze;
-
 
     private void Start()
     {
