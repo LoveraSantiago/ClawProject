@@ -44,7 +44,7 @@ public class MapaScene : MonoBehaviour
 
     private void OnDisable()
     {
-        //PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, 5);
+        //PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, 2);
         //PlayerPrefsFichas.consumirFicha(Ficha.PRATA, 1);
         //PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
     }
