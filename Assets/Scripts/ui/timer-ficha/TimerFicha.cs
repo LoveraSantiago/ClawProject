@@ -40,6 +40,7 @@ public class TimerFicha
 
             if(qtdFichas < fichaEntidade.limiteFree)
             {
+                dataSalva = PlayerPrefsFichas.getDataFicha(ficha);
                 relogio = new RelogioContador(dataSalva, fichaEntidade);
             }
             else
@@ -62,10 +63,10 @@ public class TimerFicha
             if(dataProjetada < DateTime.Now)
             {
                 resultado++;
-                PlayerPrefsFichas.adicionarFicha(fichaEntidade.ficha, 1);
             }
             fichasAtuais++;
         }                
+        PlayerPrefsFichas.adicionarFicha(fichaEntidade.ficha, 1);
     }
 
     private void setLabelQtdDeFichas(int fichas)

@@ -27,39 +27,56 @@ public class PlayerPrefsFichas
 
     public static void consumirFicha(Ficha ficha, int qtd)
     {
-        string chaveQtd = gerarChaveQtdFichas(ficha);
-
-        int qtdAtual = PlayerPrefs.GetInt(chaveQtd);
-        qtdAtual -= qtd;
-        PlayerPrefs.SetInt(chaveQtd, qtdAtual);
-
-        FichaEntidade fichaEntidade = FichaEntidade.getFichaEntidade(ficha);
-        if(qtdAtual < fichaEntidade.limiteFree)
+        if (qtd > 0)
         {
-            string chaveTempo = gerarChaveTempo(ficha);
-            if (!PlayerPrefs.HasKey(chaveTempo))
+            string chaveQtd = gerarChaveQtdFichas(ficha);
+
+            int qtdAtual = PlayerPrefs.GetInt(chaveQtd);
+            qtdAtual -= qtd;
+            PlayerPrefs.SetInt(chaveQtd, qtdAtual);
+
+            FichaEntidade fichaEntidade = FichaEntidade.getFichaEntidade(ficha);
+            if(qtdAtual < fichaEntidade.limiteFree)
             {
-                DateTime dateTimeNow = DateTime.Now;
-                dateTimeNow = dateTimeNow.AddHours(-2);
-                Debug.Log("Registrando hora " + dateTimeNow.ToString());
-                PlayerPrefs.SetString(chaveTempo, dateTimeNow.ToString());
+                string chaveTempo = gerarChaveTempo(ficha);
+                if (!PlayerPrefs.HasKey(chaveTempo))
+                {
+                    DateTime dateTimeNow = DateTime.Now;
+                    dateTimeNow = dateTimeNow.AddHours(-2);
+                    Debug.Log("Registrando hora " + dateTimeNow.ToString());
+                    saveDataFicha(ficha, dateTimeNow);
+                }
             }
         }
     }
 
     public static void adicionarFicha(Ficha ficha, int qtd)
     {
-        string chaveQtd = gerarChaveQtdFichas(ficha);
-
-        int qtdAtual = PlayerPrefs.GetInt(chaveQtd);
-        qtdAtual += qtd;
-        PlayerPrefs.SetInt(chaveQtd, qtdAtual);
-
-        FichaEntidade fichaEntidade = FichaEntidade.getFichaEntidade(ficha);
-        if (qtdAtual >= fichaEntidade.limiteFree)
+        if(qtd > 0)
         {
-            string chaveTempo = gerarChaveTempo(ficha);
-            PlayerPrefs.DeleteKey(chaveTempo);
+            string chaveQtd = gerarChaveQtdFichas(ficha);
+
+            int qtdAnterior = PlayerPrefs.GetInt(chaveQtd);
+            int qtdAtual = qtdAnterior + qtd;
+            PlayerPrefs.SetInt(chaveQtd, qtdAtual);
+
+            FichaEntidade fichaEntidade = FichaEntidade.getFichaEntidade(ficha);
+            if (qtdAtual >= fichaEntidade.limiteFree)
+            {
+                string chaveTempo = gerarChaveTempo(ficha);
+                PlayerPrefs.DeleteKey(chaveTempo);
+            }
+            else
+            {
+                DateTime ultimaData = getDataFicha(ficha);
+                while(qtdAnterior < qtdAtual)
+                {
+                    ultimaData = ultimaData.AddHours(fichaEntidade.intervaloHoras)
+                                           .AddMinutes(fichaEntidade.intervaloMinutos);
+                    qtdAnterior++;
+                }
+                saveDataFicha(ficha, ultimaData);
+            }
         }
     }
 
@@ -68,6 +85,12 @@ public class PlayerPrefsFichas
         string chaveTempo = gerarChaveTempo(ficha);
         string tempoFicha = PlayerPrefs.GetString(chaveTempo);
         return DateTime.Parse(tempoFicha);
+    }
+
+    private static void saveDataFicha(Ficha ficha, DateTime dataFicha)
+    {
+        string chaveTempo = gerarChaveTempo(ficha);
+        PlayerPrefs.SetString(chaveTempo, dataFicha.ToString());
     }
 
     private static string gerarChaveQtdFichas(Ficha ficha)
