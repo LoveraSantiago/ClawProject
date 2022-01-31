@@ -1019,7 +1019,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1360404545}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1537,9 +1537,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1360404545}
     m_Modifications:
+    - target: {fileID: 7590549816797380793, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 22e8134d9d8bf1547bf8ac4263f6314f, type: 3}
     - target: {fileID: 7590549816884906465, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
       propertyPath: m_Name
       value: timer-ficha-bronze
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590549816884906465, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7590549816884906470, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
       propertyPath: m_Pivot.x
@@ -1551,7 +1559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7590549816884906470, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7590549816884906470, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1938,8 +1946,8 @@ RectTransform:
   - {fileID: 1770993063}
   - {fileID: 35420564}
   - {fileID: 2053571110}
-  - {fileID: 1145818209}
   - {fileID: 1274495453}
+  - {fileID: 1145818209}
   - {fileID: 1261413182}
   - {fileID: 592234355}
   - {fileID: 1357853670}
@@ -1976,8 +1984,7 @@ MonoBehaviour:
   btnLevel3: {fileID: 663014699}
   btnLevel4: {fileID: 1847712419}
   timerFichaDto:
-  - sprMoeda: {fileID: 21300000, guid: 613ef3de94c699c4fa719b27792b284b, type: 3}
-    imgMoeda: {fileID: 1949896676}
+  - imgMoeda: {fileID: 1949896676}
     btnMais: {fileID: 7590549816917667955}
     lblQdtFichas: {fileID: 629066646}
     relogioDto:
@@ -1985,8 +1992,7 @@ MonoBehaviour:
       transfSegundos: {fileID: 2016376342}
       transfMinutos: {fileID: 688400143}
       transfHoras: {fileID: 637592631}
-  - sprMoeda: {fileID: 21300000, guid: 4f65f6ab8c741e0488b961b5e3c17241, type: 3}
-    imgMoeda: {fileID: 1798196049}
+  - imgMoeda: {fileID: 1798196049}
     btnMais: {fileID: 2053571111}
     lblQdtFichas: {fileID: 538125770}
     relogioDto:
@@ -1994,8 +2000,7 @@ MonoBehaviour:
       transfSegundos: {fileID: 527848700}
       transfMinutos: {fileID: 1613830221}
       transfHoras: {fileID: 1218783897}
-  - sprMoeda: {fileID: 21300000, guid: 22e8134d9d8bf1547bf8ac4263f6314f, type: 3}
-    imgMoeda: {fileID: 2102048891}
+  - imgMoeda: {fileID: 2102048891}
     btnMais: {fileID: 1274495454}
     lblQdtFichas: {fileID: 963554058}
     relogioDto:
@@ -2792,6 +2797,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1360404545}
     m_Modifications:
+    - target: {fileID: 7590549816797380793, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f65f6ab8c741e0488b961b5e3c17241, type: 3}
     - target: {fileID: 7590549816884906465, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
       propertyPath: m_Name
       value: timer-ficha-prata

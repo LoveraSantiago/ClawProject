@@ -11,8 +11,7 @@ public class TimerFicha : Executor
     {
         this.ficha = ficha;
         this.timerFichaDto = timerFichaDto;
-
-        configurarImgFicha();
+        
         configurarBotao();
         setupDeFichas();
     }
@@ -86,12 +85,7 @@ public class TimerFicha : Executor
     private void setLabelQtdDeFichas(int fichas)
     {
         timerFichaDto.LblQdtFichas.text = fichas.ToString();
-    }   
-
-    private void configurarImgFicha()
-    {
-        timerFichaDto.ImgMoeda.sprite = timerFichaDto.SprMoeda;
-    }
+    }     
 
     private void configurarBotao()
     {
