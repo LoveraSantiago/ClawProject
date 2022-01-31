@@ -12,10 +12,16 @@ public class PlayerPrefsFichas
 
         if (!PlayerPrefs.HasKey(chave))
         {
-            FichaEntidade fichaEntidade = FichaEntidade.getFichaEntidade(ficha);
-            PlayerPrefs.SetInt(chave, fichaEntidade.limiteFree);
+            salvarLimiteParaFicha(ficha);
         }
         return PlayerPrefs.GetInt(chave);
+    }
+
+    private static void salvarLimiteParaFicha(Ficha ficha)
+    {
+        string chave = gerarChaveQtdFichas(ficha);
+        FichaEntidade fichaEntidade = FichaEntidade.getFichaEntidade(ficha);
+        PlayerPrefs.SetInt(chave, fichaEntidade.limiteFree);
     }
 
     public static bool possueFichas(Ficha ficha, int qtd)
