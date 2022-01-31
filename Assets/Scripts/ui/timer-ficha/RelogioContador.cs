@@ -10,7 +10,7 @@ public class RelogioContador : Relogio
     {
         intervaloDeTempo = new IntervaloDeTempo(1.0f);
         contadorDeTempo  = new ContadorDeTempoData(dataFicha);
-        tempoLblHoras = new TimeSpan(fichaEntidade.intervaloHoras, fichaEntidade.intervaloMinutos, 0);
+        tempoLblHoras    = new TimeSpan(fichaEntidade.intervaloHoras, fichaEntidade.intervaloMinutos, 0);
     }
 
     public override void updateSegundo(RelogioDto relogioDto)

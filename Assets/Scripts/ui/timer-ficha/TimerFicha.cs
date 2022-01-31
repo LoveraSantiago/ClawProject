@@ -8,8 +8,6 @@ public class TimerFicha
     public TimerFicha(TimerFichaDto timerFichaDto, Ficha ficha)
     {
         this.timerFichaDto = timerFichaDto;
-        relogio = new RelogioConcluido();
-
         configurarImgFicha();
         configurarBotao();
         setupDeFichas(ficha);
@@ -28,32 +26,33 @@ public class TimerFicha
         FichaEntidade fichaEntidade = FichaEntidade.getFichaEntidade(ficha);
         if(qtdFichas >= fichaEntidade.limiteFree)
         {
+            relogio = new RelogioConcluido();
             relogio.zerarPonteiros(timerFichaDto.RelogioDto);
         }
         else
-        {
-            DateTime dataSalva = PlayerPrefsFichas.getDataFicha(ficha);
-            atualizarTempoDesdeUltimaFicha(qtdFichas, dataSalva, fichaEntidade);
+        {   
+            atualizarTempoDesdeUltimaFicha(qtdFichas, fichaEntidade);
 
             qtdFichas = PlayerPrefsFichas.getQtdFichas(ficha);
             setLabelQtdDeFichas(qtdFichas);
 
             if(qtdFichas < fichaEntidade.limiteFree)
             {
-                dataSalva = PlayerPrefsFichas.getDataFicha(ficha);
+                DateTime dataSalva = PlayerPrefsFichas.getDataFicha(ficha);
                 relogio = new RelogioContador(dataSalva, fichaEntidade);
             }
             else
             {
+                relogio = new RelogioConcluido();
                 relogio.zerarPonteiros(timerFichaDto.RelogioDto);
             }
         }
     }
 
-    private void atualizarTempoDesdeUltimaFicha(int fichasAtuais, DateTime dataSalva, FichaEntidade fichaEntidade)
+    private void atualizarTempoDesdeUltimaFicha(int fichasAtuais, FichaEntidade fichaEntidade)
     {
         int resultado = 0;
-        DateTime dataProjetada = dataSalva;
+        DateTime dataProjetada = PlayerPrefsFichas.getDataFicha(fichaEntidade.ficha);
 
         while (fichasAtuais < fichaEntidade.limiteFree)
         {
