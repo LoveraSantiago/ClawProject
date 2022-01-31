@@ -40,6 +40,8 @@ public class PlayerPrefsFichas
             if (!PlayerPrefs.HasKey(chaveTempo))
             {
                 DateTime dateTimeNow = DateTime.Now;
+                dateTimeNow = dateTimeNow.AddHours(-2);
+                Debug.Log("Registrando hora " + dateTimeNow.ToString());
                 PlayerPrefs.SetString(chaveTempo, dateTimeNow.ToString());
             }
         }

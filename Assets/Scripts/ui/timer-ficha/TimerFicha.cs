@@ -52,10 +52,12 @@ public class TimerFicha
     private void atualizarTempoDesdeUltimaFicha(int fichasAtuais, DateTime dataSalva, FichaEntidade fichaEntidade)
     {
         int resultado = 0;
-        while(fichasAtuais < fichaEntidade.limiteFree)
+        DateTime dataProjetada = dataSalva;
+
+        while (fichasAtuais < fichaEntidade.limiteFree)
         {
-            DateTime dataProjetada = dataSalva.AddHours(fichaEntidade.intervaloHoras)
-                                              .AddMinutes(fichaEntidade.intervaloMinutos);
+            dataProjetada = dataProjetada.AddHours(fichaEntidade.intervaloHoras)
+                                         .AddMinutes(fichaEntidade.intervaloMinutos);
 
             if(dataProjetada < DateTime.Now)
             {

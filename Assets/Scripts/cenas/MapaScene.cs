@@ -30,21 +30,21 @@ public class MapaScene : MonoBehaviour
 
         new BotoesCenasMapa(botoesCenasDto);
 
-        timerFichaOuro   = new TimerFicha(timerFichaDto[0], Ficha.OURO);
-        timerFichaPrata  = new TimerFicha(timerFichaDto[1], Ficha.PRATA);
+        //timerFichaOuro   = new TimerFicha(timerFichaDto[0], Ficha.OURO);
+        //timerFichaPrata  = new TimerFicha(timerFichaDto[1], Ficha.PRATA);
         timerFichaBronze = new TimerFicha(timerFichaDto[2], Ficha.BRONZE);        
     }
 
     private void Update()
     {
-        timerFichaOuro.update();
-        timerFichaPrata.update();
+        //timerFichaOuro.update();
+        //timerFichaPrata.update();
         timerFichaBronze.update();
     }
 
     private void OnDisable()
     {
-        //PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, 1);
+        PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, 5);
         //PlayerPrefsFichas.consumirFicha(Ficha.PRATA, 1);
         //PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
     }
