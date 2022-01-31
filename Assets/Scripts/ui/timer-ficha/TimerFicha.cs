@@ -66,7 +66,7 @@ public class TimerFicha
             }
             fichasAtuais++;
         }                
-        PlayerPrefsFichas.adicionarFicha(fichaEntidade.ficha, 1);
+        PlayerPrefsFichas.adicionarFicha(fichaEntidade.ficha, resultado);
     }
 
     private void setLabelQtdDeFichas(int fichas)
