@@ -1,16 +1,20 @@
 using System;
 
-public class TimerFicha 
+public class TimerFicha : Executor
 {
+    private readonly Ficha ficha;
+
     private TimerFichaDto timerFichaDto;
     private Relogio relogio;
 
     public TimerFicha(TimerFichaDto timerFichaDto, Ficha ficha)
     {
+        this.ficha = ficha;
         this.timerFichaDto = timerFichaDto;
+
         configurarImgFicha();
         configurarBotao();
-        setupDeFichas(ficha);
+        setupDeFichas();
     }
 
     public void update()
@@ -18,7 +22,13 @@ public class TimerFicha
         relogio.updateSegundo(timerFichaDto.RelogioDto);
     }
 
-    private void setupDeFichas(Ficha ficha)
+    public void execute()
+    {
+        PlayerPrefsFichas.adicionarFicha(ficha, 1);
+        recontarFichas();
+    }
+
+    private void setupDeFichas()
     {
         int qtdFichas = PlayerPrefsFichas.getQtdFichas(ficha);
         setLabelQtdDeFichas(qtdFichas);
@@ -32,20 +42,7 @@ public class TimerFicha
         else
         {   
             atualizarTempoDesdeUltimaFicha(qtdFichas, fichaEntidade);
-
-            qtdFichas = PlayerPrefsFichas.getQtdFichas(ficha);
-            setLabelQtdDeFichas(qtdFichas);
-
-            if(qtdFichas < fichaEntidade.limiteFree)
-            {
-                DateTime dataSalva = PlayerPrefsFichas.getDataFicha(ficha);
-                relogio = new RelogioContador(dataSalva, fichaEntidade);
-            }
-            else
-            {
-                relogio = new RelogioConcluido();
-                relogio.zerarPonteiros(timerFichaDto.RelogioDto);
-            }
+            recontarFichas();
         }
     }
 
@@ -68,6 +65,24 @@ public class TimerFicha
         PlayerPrefsFichas.adicionarFicha(fichaEntidade.ficha, resultado);
     }
 
+    private void recontarFichas()
+    {
+        int qtdFichas = PlayerPrefsFichas.getQtdFichas(ficha);
+        setLabelQtdDeFichas(qtdFichas);
+
+        FichaEntidade fichaEntidade = FichaEntidade.getFichaEntidade(ficha);
+        if (qtdFichas < fichaEntidade.limiteFree)
+        {
+            DateTime dataSalva = PlayerPrefsFichas.getDataFicha(ficha);
+            relogio = new RelogioContador(dataSalva, fichaEntidade, this);
+        }
+        else
+        {
+            relogio = new RelogioConcluido();
+            relogio.zerarPonteiros(timerFichaDto.RelogioDto);
+        }
+    }
+
     private void setLabelQtdDeFichas(int fichas)
     {
         timerFichaDto.LblQdtFichas.text = fichas.ToString();
@@ -81,5 +96,5 @@ public class TimerFicha
     private void configurarBotao()
     {
         timerFichaDto.BtnMais.onClick.AddListener(() => CenaUtils.irParaCenaLoja());
-    }
+    }    
 }
