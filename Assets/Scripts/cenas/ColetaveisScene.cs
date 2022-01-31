@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ColetaveisScene : MonoBehaviour, 
                                IPointerClickHandler     
 {
+    [SerializeField] private TimerFichaDto timerFichaDto;
+    [Space(5)]
     [SerializeField] private Button btnBack;   
     [Space(5)]
     [SerializeField] private BlocoImgColetaveisDto blocoImgDto;
@@ -17,6 +19,7 @@ public class ColetaveisScene : MonoBehaviour,
     [SerializeField] private GameObject prefabBottomBar;
 
     private BlocoImgColetaveis blocoImg;
+    private TimerFicha timerFichaOuro;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +47,14 @@ public class ColetaveisScene : MonoBehaviour,
 
         configBtnBack(btnBack);        
         blocoImg.startLaizy();
-    }   
+
+        timerFichaOuro = new TimerFicha(timerFichaDto, Ficha.OURO);
+    }
+
+    private void Update()
+    {
+        timerFichaOuro.update();     
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
