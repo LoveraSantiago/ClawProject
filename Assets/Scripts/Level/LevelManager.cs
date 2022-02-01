@@ -1,28 +1,28 @@
-using UnityEngine;
-using UnityEngine.UI;
-//SENDO USADO EM MAPSCENE COMPONATE PLAYBUTTON
-public class LevelManager : MonoBehaviour
-{
-    [SerializeField]
-    private Text pontuacaoFinal;
+//using UnityEngine;
+//using UnityEngine.UI;
+////SENDO USADO EM MAPSCENE COMPONATE PLAYBUTTON
+//public class LevelManager : MonoBehaviour
+//{
+//    [SerializeField]
+//    private Text pontuacaoFinal;
 
-    public void startLevel()
-    {
-        CenaUtils.irParaCenaMainGame();
-    }
+//    public void startLevel()
+//    {
+//        CenaUtils.irParaCenaMainGame();
+//    }
 
-    public void goTotMapScene()
-    {
-        CenaUtils.irParaCenaMap();
-    }   
+//    public void goTotMapScene()
+//    {
+//        CenaUtils.irParaCenaMap();
+//    }   
 
-    public void closeDescricaoObjetivo()
-    {
-        gameObject.SetActive(false);
-    }
+//    public void closeDescricaoObjetivo()
+//    {
+//        gameObject.SetActive(false);
+//    }
 
-    public void atualizarPontuacaoFinal(int points)
-    {
-        pontuacaoFinal.text = points.ToString();
-    }
-}
+//    public void atualizarPontuacaoFinal(int points)
+//    {
+//        pontuacaoFinal.text = points.ToString();
+//    }
+//}
