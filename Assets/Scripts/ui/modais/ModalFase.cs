@@ -23,7 +23,7 @@ public class ModalFase
     private void irParaCenaGame()
     {
         PlayerPrefsFichas.consumirFicha(Ficha.PRATA, 1);
-        CenaUtils.irParaCenaMainGame()
+        CenaUtils.irParaCenaMainGame();
     }
 
     private void desligar()
