@@ -6,6 +6,8 @@ public class MapaScene : MonoBehaviour
 {   
     [SerializeField] private ModalFaseDto modalFaseDto;
     [Space(5)]
+    [SerializeField] private ModalNoFichaDto modalNoFicha;
+    [Space(5)]
     [SerializeField] private Button btnLevel1;
     [SerializeField] private Button btnLevel2;
     [SerializeField] private Button btnLevel3;
