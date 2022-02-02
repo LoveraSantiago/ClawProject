@@ -82,7 +82,20 @@ public class PupScene : MonoBehaviour
     private void irGameScene(Level level, BlocoImgPup blocoImg)
     {
         PlayerPrefsLevel.salvarLevel(level);
-        PlayerPrefsPup.salvarIndicePup(blocoImg.getIndicePupAtual());
-        CenaUtils.irParaCenaMainGame();
+
+        int indicePup = blocoImg.getIndicePupAtual();
+        PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
+        int precoFicha = int.Parse(pupEntidade.preco);
+
+        if(PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
+        {
+            PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);
+            PlayerPrefsPup.salvarIndicePup(indicePup);
+            CenaUtils.irParaCenaMainGame();
+        }
+        else
+        {
+            //ABRIR modal sem ficha
+        }        
     }
 }
