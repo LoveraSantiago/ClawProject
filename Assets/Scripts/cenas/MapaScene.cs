@@ -23,12 +23,12 @@ public class MapaScene : MonoBehaviour
 
     private void Start()
     {
-        ModalFase modalFase = new ModalFase(modalFaseDto);
+        ModalMapsManager modalManager = new ModalMapsManager(modalFaseDto, modalNoFicha);
 
-        btnLevel1.onClick.AddListener(() => modalFase.ligar(Level.HUM));
-        btnLevel2.onClick.AddListener(() => modalFase.ligar(Level.DOIS));
-        btnLevel3.onClick.AddListener(() => modalFase.ligar(Level.TRES));
-        btnLevel4.onClick.AddListener(() => modalFase.ligar(Level.QUATRO));
+        btnLevel1.onClick.AddListener(() => modalManager.abrirModal(Level.HUM));
+        btnLevel2.onClick.AddListener(() => modalManager.abrirModal(Level.DOIS));
+        btnLevel3.onClick.AddListener(() => modalManager.abrirModal(Level.TRES));
+        btnLevel4.onClick.AddListener(() => modalManager.abrirModal(Level.QUATRO));
 
         new BotoesCenasMapa(botoesCenasDto);
 
