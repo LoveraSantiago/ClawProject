@@ -23,6 +23,5 @@ public class ModalFase
     private void desligar()
     {
         modalFaseDto.ModalFase.SetActive(false);
-    }
-   
+    }   
 }
