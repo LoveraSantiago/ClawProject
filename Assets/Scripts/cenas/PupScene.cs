@@ -17,7 +17,10 @@ public class PupScene : MonoBehaviour
     [Space(5)]
     [SerializeField] private GameObject prefabPowerUpDto;
     [SerializeField] private GameObject prefabBottomBar;
+    [Space(5)]
+    [SerializeField] private ModalNoFichaDto modalNoFichaDto;
 
+    private ModalNoFicha modalNoFicha;
     private TimerFicha timerFichaBronze;
 
     // Start is called before the first frame update
@@ -46,6 +49,8 @@ public class PupScene : MonoBehaviour
 
         blocoImg.startLaizy();
         timerFichaBronze = new TimerFicha(timerFichaDto, Ficha.BRONZE);
+
+        modalNoFicha = new ModalNoFicha(modalNoFichaDto);
     }
 
     private void Update()
@@ -60,42 +65,59 @@ public class PupScene : MonoBehaviour
 
     private void configBtnPratica(Button btnPratica, BlocoImgPup blocoImg)
     {
-        btnPratica.onClick.AddListener(() => {            
-            irGameScene(Level.PUP, blocoImg);            
+        btnPratica.onClick.AddListener(() => {
+            irGameScenePupPratica(blocoImg);            
         });
     }
 
     private void configBtnCacaNiquelIndividual(Button btnCacaNiquel, BlocoImgPup blocoImg)
     {
         btnCacaNiquel.onClick.AddListener(() => {            
-            irGameScene(Level.CACANIQUEL_PUP_I, blocoImg);            
+            irGameScenePupIndividual(blocoImg);            
         });
     }
 
     private void configBtnCacaNiquelGeral(Button btnCacaNiquel, BlocoImgPup blocoImg)
     {
         btnCacaNiquel.onClick.AddListener(() => {
-            irGameScene(Level.CACANIQUEL_PUP_G, blocoImg);
+            irGameScenePupGeral(blocoImg);
         });
     }
 
-    private void irGameScene(Level level, BlocoImgPup blocoImg)
+    private void irGameScenePupPratica(BlocoImgPup blocoImg)
     {
-        PlayerPrefsLevel.salvarLevel(level);
+        PlayerPrefsLevel.salvarLevel(Level.PUP);
+        abrirCenaOuModal(blocoImg.getIndicePupAtual(), 0);
+    }
+
+    private void irGameScenePupIndividual(BlocoImgPup blocoImg)
+    {
+        PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_I);
 
         int indicePup = blocoImg.getIndicePupAtual();
         PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
         int precoFicha = int.Parse(pupEntidade.preco);
 
-        if(PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
+        abrirCenaOuModal(indicePup, precoFicha);        
+    }
+
+    private void irGameScenePupGeral(BlocoImgPup blocoImg)
+    {
+        PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_G);
+        abrirCenaOuModal(blocoImg.getIndicePupAtual(), 1);        
+    }
+
+    private void abrirCenaOuModal(int indiceAtual, int precoFicha)
+    {
+        if (PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
         {
             PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);
-            PlayerPrefsPup.salvarIndicePup(indicePup);
+            PlayerPrefsPup.salvarIndicePup(indiceAtual);
             CenaUtils.irParaCenaMainGame();
         }
         else
         {
-            //ABRIR modal sem ficha
-        }        
+            modalNoFicha.ligar();
+        }
     }
 }

@@ -1519,6 +1519,22 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7455996002371540703, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
   m_PrefabInstance: {fileID: 913691521}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &913691523 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7455996003005887476, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+  m_PrefabInstance: {fileID: 913691521}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &913691524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7455996002371540699, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+  m_PrefabInstance: {fileID: 913691521}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &921798730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,6 +2546,9 @@ MonoBehaviour:
     lblExplicacao: {fileID: 1059423808}
   prefabPowerUpDto: {fileID: 5653745407918303698, guid: 264fd96ffd92c7d4899adb12d26ef4f1, type: 3}
   prefabBottomBar: {fileID: 2110723316}
+  modalNoFichaDto:
+    modalNoFicha: {fileID: 913691524}
+    btnOk: {fileID: 913691523}
 --- !u!222 &1668072988
 CanvasRenderer:
   m_ObjectHideFlags: 0
