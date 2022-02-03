@@ -3,17 +3,17 @@ using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class MapaScene : MonoBehaviour
-{   
-    [SerializeField] private ModalFaseDto modalFaseDto;
-    [Space(5)]
-    [SerializeField] private ModalNoFichaDto modalNoFicha;
-    [Space(5)]
+{       
     [SerializeField] private Button btnLevel1;
     [SerializeField] private Button btnLevel2;
     [SerializeField] private Button btnLevel3;
     [SerializeField] private Button btnLevel4;
     [Space(5)]
     [SerializeField] private TimerFichaDto[] timerFichaDto = new TimerFichaDto[3];   
+    [Space(5)]
+    [SerializeField] private ModalFaseDto modalFaseDto;
+    [Space(5)]    
+    [SerializeField] private ModalNoFichaDto modalNoFichaDto;
     [Space(5)]
     [SerializeField] private BotoesCenasDto botoesCenasDto;
 
@@ -23,7 +23,7 @@ public class MapaScene : MonoBehaviour
 
     private void Start()
     {
-        ModalMapsManager modalManager = new ModalMapsManager(modalFaseDto, modalNoFicha);
+        ModalMapsManager modalManager = new ModalMapsManager(modalFaseDto, modalNoFichaDto);
 
         btnLevel1.onClick.AddListener(() => modalManager.abrirModal(Level.HUM));
         btnLevel2.onClick.AddListener(() => modalManager.abrirModal(Level.DOIS));

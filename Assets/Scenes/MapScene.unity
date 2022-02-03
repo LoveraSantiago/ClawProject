@@ -2024,15 +2024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16da4b80d168b4cafa36b6465327e1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modalFaseDto:
-    modalFase: {fileID: 1990500530}
-    lblNivel: {fileID: 303498680}
-    lblObjetivo: {fileID: 1063225411}
-    btnFechar: {fileID: 741590892}
-    btnLevel: {fileID: 933756021}
-  modalNoFicha:
-    modalNoFicha: {fileID: 4837428847216123165}
-    btnOk: {fileID: 4837428846761883698}
   btnLevel1: {fileID: 1488078935}
   btnLevel2: {fileID: 83325897}
   btnLevel3: {fileID: 663014699}
@@ -2059,6 +2050,15 @@ MonoBehaviour:
       transfSegundos: {fileID: 357575424}
       transfMinutos: {fileID: 832065659}
       transfHoras: {fileID: 996434554}
+  modalFaseDto:
+    modalFase: {fileID: 1990500530}
+    lblNivel: {fileID: 303498680}
+    lblObjetivo: {fileID: 1063225411}
+    btnFechar: {fileID: 741590892}
+    btnLevel: {fileID: 933756021}
+  modalNoFichaDto:
+    modalNoFicha: {fileID: 4837428847216123165}
+    btnOk: {fileID: 4837428846761883698}
   botoesCenasDto:
     btnCards: {fileID: 250196780}
     btnScore: {fileID: 1357853671}
