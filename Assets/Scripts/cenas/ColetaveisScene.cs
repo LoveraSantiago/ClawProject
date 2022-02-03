@@ -17,6 +17,8 @@ public class ColetaveisScene : MonoBehaviour,
     [SerializeField] private GameObject prefabColetaveisDto;
     [Space(5)]
     [SerializeField] private GameObject prefabBottomBar;
+    [Space(5)]
+    [SerializeField] private ModalNoFichaDto modalNoFichaDto;
 
     private BlocoImgColetaveis blocoImg;
     private TimerFicha timerFichaOuro;
@@ -34,7 +36,7 @@ public class ColetaveisScene : MonoBehaviour,
         blocoImg = new BlocoImgColetaveis(blocoImgDto);
         BlocoImgColetaveisDetalhe blocoImgDetalhe = new BlocoImgColetaveisDetalhe(blocoImgDetalheDto);
         ScrollBottomBarSceneColetaveis scBottomBar = new ScrollBottomBarSceneColetaveis(prefabBottomBar);
-        BotaoIrGameColetaveis btnColetaveis = new BotaoIrGameColetaveis(blocoImgDetalheDto.BtnGanharColetavel);
+        BotaoIrGameColetaveis btnColetaveis = new BotaoIrGameColetaveis(blocoImgDetalheDto.BtnGanharColetavel, modalNoFichaDto);
 
         new AcaoBlocoImgColetavelAtual()
             .configurarProdutor(blocoImg)
