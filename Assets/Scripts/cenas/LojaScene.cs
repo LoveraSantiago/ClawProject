@@ -29,12 +29,12 @@ public class LojaScene : MonoBehaviour
 
         btnPrata.onClick.AddListener(() => {
             PlayerPrefsFichas.adicionarFicha(Ficha.PRATA, 1);
-            lblQtdFichasOuro.text = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
+            lblQtdFichasPrata.text = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
         });
 
         btnBronze.onClick.AddListener(() => {
             PlayerPrefsFichas.adicionarFicha(Ficha.BRONZE, 1);
-            lblQtdFichasOuro.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
+            lblQtdFichasBronze.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
         });
 
         btnAssinatura.onClick.AddListener(() =>
@@ -43,10 +43,10 @@ public class LojaScene : MonoBehaviour
             lblQtdFichasOuro.text = PlayerPrefsFichas.getQtdFichas(Ficha.OURO).ToString();
 
             PlayerPrefsFichas.adicionarFicha(Ficha.PRATA, 20);
-            lblQtdFichasOuro.text = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
+            lblQtdFichasPrata.text = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
 
             PlayerPrefsFichas.adicionarFicha(Ficha.BRONZE, 30);
-            lblQtdFichasOuro.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
+            lblQtdFichasBronze.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
         });
     }
 
