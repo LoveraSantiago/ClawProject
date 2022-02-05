@@ -5,6 +5,8 @@ using UnityEngine.UI;
 #pragma warning disable 0649
 public class LojaScene : MonoBehaviour
 {
+    [SerializeField] private Button btnVoltar;
+    [Space(5)]
     [SerializeField] private TextMeshProUGUI lblQtdFichasOuro;
     [SerializeField] private TextMeshProUGUI lblQtdFichasPrata;
     [SerializeField] private TextMeshProUGUI lblQtdFichasBronze;
@@ -18,6 +20,8 @@ public class LojaScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        btnVoltar.onClick.AddListener(() => CenaUtils.irParaCenaMap());
+
         lblQtdFichasOuro.text   = PlayerPrefsFichas.getQtdFichas(Ficha.OURO).ToString();
         lblQtdFichasPrata.text  = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
         lblQtdFichasBronze.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
