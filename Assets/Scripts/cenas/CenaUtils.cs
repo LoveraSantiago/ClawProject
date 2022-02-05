@@ -26,4 +26,9 @@ public class CenaUtils
     {
         SceneManager.LoadScene("NotImplementedScene");
     }
+
+    public static void irParaCenaLoja()
+    {
+        SceneManager.LoadScene("LojaScene");
+    }
 }

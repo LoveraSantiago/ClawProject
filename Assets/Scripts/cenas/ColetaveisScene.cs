@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ColetaveisScene : MonoBehaviour, 
                                IPointerClickHandler     
 {
+    [SerializeField] private TimerFichaDto timerFichaDto;
+    [Space(5)]
     [SerializeField] private Button btnBack;   
     [Space(5)]
     [SerializeField] private BlocoImgColetaveisDto blocoImgDto;
@@ -15,8 +17,11 @@ public class ColetaveisScene : MonoBehaviour,
     [SerializeField] private GameObject prefabColetaveisDto;
     [Space(5)]
     [SerializeField] private GameObject prefabBottomBar;
+    [Space(5)]
+    [SerializeField] private ModalNoFichaDto modalNoFichaDto;
 
     private BlocoImgColetaveis blocoImg;
+    private TimerFicha timerFichaOuro;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +36,7 @@ public class ColetaveisScene : MonoBehaviour,
         blocoImg = new BlocoImgColetaveis(blocoImgDto);
         BlocoImgColetaveisDetalhe blocoImgDetalhe = new BlocoImgColetaveisDetalhe(blocoImgDetalheDto);
         ScrollBottomBarSceneColetaveis scBottomBar = new ScrollBottomBarSceneColetaveis(prefabBottomBar);
-        BotaoIrGameColetaveis btnColetaveis = new BotaoIrGameColetaveis(blocoImgDetalheDto.BtnGanharColetavel);
+        BotaoIrGameColetaveis btnColetaveis = new BotaoIrGameColetaveis(blocoImgDetalheDto.BtnGanharColetavel, modalNoFichaDto);
 
         new AcaoBlocoImgColetavelAtual()
             .configurarProdutor(blocoImg)
@@ -44,7 +49,14 @@ public class ColetaveisScene : MonoBehaviour,
 
         configBtnBack(btnBack);        
         blocoImg.startLaizy();
-    }   
+
+        timerFichaOuro = new TimerFicha(timerFichaDto, Ficha.OURO);
+    }
+
+    private void Update()
+    {
+        timerFichaOuro.update();     
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {

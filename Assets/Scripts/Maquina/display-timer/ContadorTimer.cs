@@ -3,27 +3,25 @@ using System;
 public class ContadorTimer 
 {
     public enum Contagem { NORMAL, REGRESSIVA, CONTINUA };
-    private TipoContadorTimer tipoContadorTimer;
+    private ContadorDeTempo contadorDeTempo;
 
-    public void definirContador(
-        TipoContagemTempoDto tipoContagemTempo, ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado, Executor executorTimerRestart)
+    public void definirContador(TipoContagemTempoDto tipoContagemTempo, Executor executorTimerRestart)
     {
         switch (tipoContagemTempo.contagem)
         {
             case Contagem.NORMAL:
             {
-                tipoContadorTimer = new ContadorTimerPositivo();
+                contadorDeTempo = new ContadorDeTempoFramePositivo();
                 break;
             }
             case Contagem.REGRESSIVA:
             {
-                tipoContadorTimer = new ContadorTimerNegativo(tipoContagemTempo.tempo);
+                contadorDeTempo = new ContadorDeTempoFrameNegativo(tipoContagemTempo.tempo);
                 break;
             }
             case Contagem.CONTINUA:
             {
-                tipoContadorTimer = new ContadorTimerContinuo(
-                    tipoContagemTempo.tempo, produtorDeEventoTempoEsgotado, executorTimerRestart);
+                contadorDeTempo = new ContadorDeTempoFrameContinuo(tipoContagemTempo.tempo, executorTimerRestart);
                 break;
             }
         }        
@@ -31,32 +29,32 @@ public class ContadorTimer
 
     public void iniciarContagemTempo()
     {
-        tipoContadorTimer.iniciarContagem();
+        contadorDeTempo.iniciarContagem();
     }
 
     public void pause()
     {
-        tipoContadorTimer.pause();
+        contadorDeTempo.pause();
     }
 
     public void continuar()
     {
-        tipoContadorTimer.continuar();
+        contadorDeTempo.continuar();
     }
 
     public bool isTimeOver()
     {
-        return tipoContadorTimer.isTimeOver();
+        return contadorDeTempo.isTimeOver();
     }
 
     public bool isNearTimeOver()
     {
-        return tipoContadorTimer.isNearTimeOver();
+        return contadorDeTempo.isNearTimeOver();
     }
 
     public void passarTempoAosScores(DisplayTimerDigitos digitos)
     {
-        TimeSpan timeSpan = tipoContadorTimer.processarContagem();
+        TimeSpan timeSpan = contadorDeTempo.processarContagem();
 
         double segundos = timeSpan.Seconds;
         int dezenaSegundos = (int)(segundos / 10);

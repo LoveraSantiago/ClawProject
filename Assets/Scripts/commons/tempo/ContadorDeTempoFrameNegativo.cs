@@ -1,19 +1,19 @@
 using System;
 using UnityEngine;
 
-public class ContadorTimerNegativo : TipoContadorTimer
+public class ContadorDeTempoFrameNegativo : ContadorDeTempoFrame
 {
     private double tempoRegressivoInicial;    
     private double tempoResult;
 
-    public ContadorTimerNegativo(string tempo)
+    public ContadorDeTempoFrameNegativo(string tempo)
     {
         setTempoRegressivoInicial(tempo);
     }    
 
     protected void setTempoRegressivoInicial(string tempo)
     {
-        tempoRegressivoInicial = parseTimeFromString(tempo);
+        tempoRegressivoInicial = TempoUtils.parseTimeFromString(tempo);
     }
         
     public override bool isTimeOver()

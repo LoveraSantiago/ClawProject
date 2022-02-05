@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class MovimentacaoParaBaixo : MovimentadorProdutorInformacaoGarra
 {   
-    private ContadorDeTempo contadorDeTempoTravamento;    
+    private IntervaloDeTempo intervaloTempoDeTravamento;    
 
     public MovimentacaoParaBaixo()
     {
-        contadorDeTempoTravamento  = new ContadorDeTempo(1.0f);        
+        intervaloTempoDeTravamento = new IntervaloDeTempo(1.0f);        
     }
 
     public override void preInicio()
     {   
         colocarMassa(2);
-        contadorDeTempoTravamento.resetContador();
+        intervaloTempoDeTravamento.resetContador();
         playAnimacaoIrPBaixo();
     }
 
     public override void update(InputGame inputGame)
     {
-        if (contadorDeTempoTravamento.contarTempoDT())
+        if (intervaloTempoDeTravamento.contarTempoDT())
         {
             comunicadorComGerMovimentacao.trocarParaAcaoAgarrada();
         }

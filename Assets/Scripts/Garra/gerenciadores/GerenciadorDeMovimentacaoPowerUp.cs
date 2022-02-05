@@ -1,7 +1,7 @@
 public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
                                                 ComunicadorComGerMovPowerUp
 {
-    private ContadorDeTempo contadorDeFimTempo;//PROBLEMA GRANDE CONTADOR DE TEMPO DA GARRA CONTAR TIMEOUT DE PUP!!!!!!
+    private IntervaloDeTempo intervaloFimTempo;//PROBLEMA GRANDE CONTADOR DE TEMPO DA GARRA CONTAR TIMEOUT DE PUP!!!!!!
 
     private AbstractMovimentacaoDaGarraPowerUp movAtual;    
 
@@ -10,7 +10,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         AbstractMovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);
 
         trocarParaAcaoParado();
-        contadorDeFimTempo = new ContadorDeTempo();
+        intervaloFimTempo = new IntervaloDeTempo();
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
@@ -22,7 +22,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     public override void update(InputGame inputGame)
     {
-        if (contadorDeFimTempo.contarTempoDT())
+        if (intervaloFimTempo.contarTempoDT())
         {
             if (movAtual.isEstadoSegurandoEmCimaMovimentando())
             {
@@ -31,7 +31,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
             else if (movAtual.isEstadoSegurandoParado())
             {
                 movAtual.acionarTimeout();
-                contadorDeFimTempo.addTempoLongo();
+                intervaloFimTempo.addTempoLongo();
             }
         }
         movAtual.update(inputGame);
@@ -51,7 +51,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     public void receberGarraInteracaoComPowerUp(PowerUpInteracaoComGarra garraInteracaoPowerUp, float tempoDuracao)
     {
         AbstractMovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(garraInteracaoPowerUp);                
-        contadorDeFimTempo.configTempoParaAcao(tempoDuracao);
+        intervaloFimTempo.configTempoParaAcao(tempoDuracao);
     }   
 
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP INICIO

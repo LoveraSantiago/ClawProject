@@ -19,7 +19,7 @@ public class ComponentePincasDeMovimentacaoGarra : ComponenteAnimacaoDeMovimenta
 
     protected bool isPincaDireitaNoAnguloDeFechamento()
     {
-        return isPincaDireitaNoAngulo(angulosProps.angFechamentoDireita);
+        return isPincaDireitaNoAngulo(getAngulosProps().angFechamentoDireita);
     }
 
     protected void rotacionarPincaVelocidadeAberturaFDT(Quaternion angEsquerda, Quaternion angDireita)
@@ -29,7 +29,7 @@ public class ComponentePincasDeMovimentacaoGarra : ComponenteAnimacaoDeMovimenta
 
     protected void rotacionarPincaVelocidadeFechamentoFDT()
     {
-        rotacionarPincaVelocidadeFechamentoFDT(angulosProps.angFechamentoEsquerda, angulosProps.angFechamentoDireita);
+        rotacionarPincaVelocidadeFechamentoFDT(getAngulosProps().angFechamentoEsquerda, getAngulosProps().angFechamentoDireita);
     }
 
     protected void rotacionarPincaVelocidadeFechamentoFDT(Quaternion angEsquerda, Quaternion angDireita)

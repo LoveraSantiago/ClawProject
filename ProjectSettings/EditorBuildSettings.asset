@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ColetaveisScene.unity
     guid: b98310ac55222c04d937bd89c96e15ae
+  - enabled: 1
+    path: Assets/Scenes/LojaScene.unity
+    guid: f0d182880cc89af49ab4f26a0f37abb4
   m_configObjects: {}

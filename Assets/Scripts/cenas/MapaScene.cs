@@ -3,50 +3,51 @@ using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class MapaScene : MonoBehaviour
-{
-    [SerializeField] private GameObject modalObjetivo;
-    [Space(5)]
+{       
     [SerializeField] private Button btnLevel1;
     [SerializeField] private Button btnLevel2;
     [SerializeField] private Button btnLevel3;
     [SerializeField] private Button btnLevel4;
     [Space(5)]
-    [SerializeField] private Button btnCards;
-    [SerializeField] private Button btnScore;
-    [SerializeField] private Button btnStore;
-    [SerializeField] private Button btnPelucia;
-    [SerializeField] private Button btnConfig;
+    [SerializeField] private TimerFichaDto[] timerFichaDto = new TimerFichaDto[3];   
+    [Space(5)]
+    [SerializeField] private ModalFaseDto modalFaseDto;
+    [Space(5)]    
+    [SerializeField] private ModalNoFichaDto modalNoFichaDto;
+    [Space(5)]
+    [SerializeField] private BotoesCenasDto botoesCenasDto;
+
+    private TimerFicha timerFichaOuro;
+    private TimerFicha timerFichaPrata;
+    private TimerFicha timerFichaBronze;
 
     private void Start()
     {
-        btnLevel1.onClick.AddListener(() => goToLevelFase(Level.HUM   , new Level1()));
-        btnLevel2.onClick.AddListener(() => goToLevelFase(Level.DOIS  , new Level2()));
-        btnLevel3.onClick.AddListener(() => goToLevelFase(Level.TRES  , new Level3()));
-        btnLevel4.onClick.AddListener(() => goToLevelFase(Level.QUATRO, new Level4()));
+        ModalMapsManager modalManager = new ModalMapsManager(modalFaseDto, modalNoFichaDto);
 
-        btnCards  .onClick.AddListener(() => CenaUtils.irParaCenaPup());
-        btnStore  .onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
-        btnScore  .onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
-        btnPelucia.onClick.AddListener(() => CenaUtils.irParaCenaColetaveis());
-        btnConfig .onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
-    }             
+        btnLevel1.onClick.AddListener(() => modalManager.abrirModal(Level.HUM));
+        btnLevel2.onClick.AddListener(() => modalManager.abrirModal(Level.DOIS));
+        btnLevel3.onClick.AddListener(() => modalManager.abrirModal(Level.TRES));
+        btnLevel4.onClick.AddListener(() => modalManager.abrirModal(Level.QUATRO));
 
-    private void goToLevelFase(Level levelEnum, AbstractLevel level)
-    {
-        modalObjetivo.SetActive(true);
-        PlayerPrefsLevel.salvarLevel(levelEnum);
-        updateModal(level);
+        new BotoesCenasMapa(botoesCenasDto);
+
+        timerFichaOuro   = new TimerFicha(timerFichaDto[0], Ficha.OURO);
+        timerFichaPrata  = new TimerFicha(timerFichaDto[1], Ficha.PRATA);
+        timerFichaBronze = new TimerFicha(timerFichaDto[2], Ficha.BRONZE);        
     }
 
-    private void updateModal(AbstractLevel level)
+    private void Update()
     {
-        string nivelName = level.getLevelName();
-        string objetivo = level.getMsgObjetivoLevel();
+        timerFichaOuro.update();
+        timerFichaPrata.update();
+        timerFichaBronze.update();
+    }
 
-        GameObject nivelText    = GameObject.Find("NivelText");
-        GameObject objetivoText = GameObject.Find("ObjetivoText");
-
-        nivelText.GetComponent<Text>().text = nivelName;
-        objetivoText.GetComponent<Text>().text = objetivo;
+    private void OnDisable()
+    {
+        //PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, 2);
+        //PlayerPrefsFichas.consumirFicha(Ficha.PRATA, 1);
+        //PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
     }
 }
