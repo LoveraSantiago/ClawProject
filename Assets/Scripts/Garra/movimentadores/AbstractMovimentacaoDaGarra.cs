@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class AbstractMovimentacaoDaGarra : ComponentePincasDeMovimentacaoGarra, 
+public abstract class AbstractMovimentacaoDaGarra : ComponenteAngulosPincaDeMovimentacaoGarra, 
                                                     AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
@@ -110,37 +110,7 @@ public abstract class AbstractMovimentacaoDaGarra : ComponentePincasDeMovimentac
     protected float getPosicaoCacaNiquel()
     {
         return getGarra().garraDto.PosCacaNiquel;
-    }    
-
-    protected Quaternion getAnguloIdleMaxDireita()
-    {
-        return getAngulosProps().angIdleMaxDireita;
-    }
-
-    protected Quaternion getAnguloIdleMaxEsquerda()
-    {
-        return getAngulosProps().angIdleMaxEsquerda;
-    }
-
-    protected Quaternion getAnguloIdleMinDireita()
-    {
-        return getAngulosProps().angIdleMinDireita;
-    }
-
-    protected Quaternion getAnguloIdleMinEsquerda()
-    {
-        return getAngulosProps().angIdleMinEsquerda;
-    }
-
-    protected Quaternion getAnguloAberturaEsquerda()
-    {
-        return getAngulosProps().angAberturaEsquerda;
-    }
-
-    protected Quaternion getAnguloAberturaDireita()
-    {
-        return getAngulosProps().angAberturaDireita;
-    }
+    }       
 
     protected void produziuEventoDeDirecao(int direcao)
     {
