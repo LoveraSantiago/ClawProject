@@ -1,7 +1,7 @@
 public abstract class ComponenteGarraDeMovimentacaoGarra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     private static Garra garra;
-    protected static AngulosPropriedades angulosProps;
+    private static AngulosPropriedades angulosProps;
 
     public static void configurarComponenteGarra(GarraDto garraDto)
     {
@@ -12,6 +12,11 @@ public abstract class ComponenteGarraDeMovimentacaoGarra : AcaoSincroniaComDirec
     public Garra getGarra()
     {
         return garra;
+    }
+
+    public AngulosPropriedades getAngulosProps()
+    {
+        return angulosProps;
     }
 
     ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()

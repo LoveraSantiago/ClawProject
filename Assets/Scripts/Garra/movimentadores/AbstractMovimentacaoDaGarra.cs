@@ -114,32 +114,32 @@ public abstract class AbstractMovimentacaoDaGarra : ComponentePincasDeMovimentac
 
     protected Quaternion getAnguloIdleMaxDireita()
     {
-        return angulosProps.angIdleMaxDireita;
+        return getAngulosProps().angIdleMaxDireita;
     }
 
     protected Quaternion getAnguloIdleMaxEsquerda()
     {
-        return angulosProps.angIdleMaxEsquerda;
+        return getAngulosProps().angIdleMaxEsquerda;
     }
 
     protected Quaternion getAnguloIdleMinDireita()
     {
-        return angulosProps.angIdleMinDireita;
+        return getAngulosProps().angIdleMinDireita;
     }
 
     protected Quaternion getAnguloIdleMinEsquerda()
     {
-        return angulosProps.angIdleMinEsquerda;
+        return getAngulosProps().angIdleMinEsquerda;
     }
 
     protected Quaternion getAnguloAberturaEsquerda()
     {
-        return angulosProps.angAberturaEsquerda;
+        return getAngulosProps().angAberturaEsquerda;
     }
 
     protected Quaternion getAnguloAberturaDireita()
     {
-        return angulosProps.angAberturaDireita;
+        return getAngulosProps().angAberturaDireita;
     }
 
     protected void produziuEventoDeDirecao(int direcao)
