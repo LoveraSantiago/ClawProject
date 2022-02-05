@@ -1085,7 +1085,7 @@ GameObject:
   - component: {fileID: 966274682}
   - component: {fileID: 966274681}
   m_Layer: 5
-  m_Name: Claw
+  m_Name: claw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
