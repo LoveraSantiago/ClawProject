@@ -563,8 +563,8 @@ MonoBehaviour:
   materialMacho: {fileID: 2100000, guid: 93da1243e80407341a5621c36bc5b382, type: 2}
   materialFemea: {fileID: 2100000, guid: e8c416f1cbd30654a831a13d06cfcb6f, type: 2}
   imgBackground: {fileID: 953145805}
-  corMacho: {r: 0.5372549, g: 1, b: 0.8901961, a: 1}
-  corFemea: {r: 0.91764706, g: 0.50980395, b: 1, a: 1}
+  btnVerde: {fileID: 21300000, guid: d1a90a8621118204cbd8be9c5551f9b0, type: 3}
+  btnRosa: {fileID: 21300000, guid: 744fcc0bb5158574f9f6e45079b02e3a, type: 3}
   imgBtnPlay: {fileID: 1561186520}
 --- !u!1 &689170617
 GameObject:
@@ -1033,8 +1033,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
-  m_fontSizeBase: 150
+  m_fontSize: 160
+  m_fontSizeBase: 160
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1466,7 +1466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5372549, g: 1, b: 0.89019614, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -12,8 +12,8 @@ public class TitleScene : MonoBehaviour
     [SerializeField] private Material materialFemea;
     [SerializeField] private Image imgBackground;
     [Space(5)]
-    [SerializeField] private Color corMacho;
-    [SerializeField] private Color corFemea;
+    [SerializeField] private Sprite btnVerde;
+    [SerializeField] private Sprite btnRosa;
     [SerializeField] private Image imgBtnPlay;
 
     
@@ -25,13 +25,13 @@ public class TitleScene : MonoBehaviour
         {
             imgGarra.sprite = garraMacho;
             imgBackground.material = materialMacho;
-            imgBtnPlay.color = corMacho;
+            imgBtnPlay.sprite = btnVerde;
         }
         else
         {
             imgGarra.sprite = garraFemea;
             imgBackground.material = materialFemea;
-            imgBtnPlay.color = corFemea;
+            imgBtnPlay.sprite = btnRosa;
         }
     }
 
