@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class AbstractMovimentacaoDaGarra : ComponenteAngulosPincaDeMovimentacaoGarra, 
+public abstract class AbstractMovimentacaoDaGarra : ComponenteRigidBodyDeMovimentacaoGarra, 
                                                     AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     protected readonly float LIMITE_LATERAL_TELA = 2.25f;
@@ -9,32 +9,27 @@ public abstract class AbstractMovimentacaoDaGarra : ComponenteAngulosPincaDeMovi
     public virtual void update(InputGame inputGame) { }
     public virtual void fixedUpdate() { }
 
-    public virtual void garraColidiuCom(GameObject gameObject) { }    
-
-    protected void parar()
-    {
-        getGarra().rigidBody.parar();
-    }
+    public virtual void garraColidiuCom(GameObject gameObject) { }       
 
     protected void moverParaCimaFreeze()
     {
-        getGarra().efeito.ligarTrailPCima();
-        getGarra().rigidBody.fixarVerticalmente();
-        getGarra().rigidBody.moverPCima();
+        getGarra().efeito.ligarTrailPCima();//deveria estar aqui?
+        fixarVerticalmente();
+        moverParaCima();        
     }
 
     protected void moverParaBaixoFreeze()
     {
         getGarra().efeito.ligarTrailPBaixo();
-        getGarra().rigidBody.fixarVerticalmente();
-        getGarra().rigidBody.moverPBaixo();        
+        fixarVerticalmente();
+        moverParaBaixo();
     }
 
     protected void moverHorizontalmenteFreeze(float direcao)
     {
         getGarra().efeito.desligarTrail();
-        getGarra().rigidBody.fixarHorizontalmente();
-        getGarra().rigidBody.moverPHorizontal(direcao);          
+        fixarHorizontalmente();
+        moverParaHorizontal(direcao);
     }    
 
     protected void agarrando()
@@ -45,57 +40,12 @@ public abstract class AbstractMovimentacaoDaGarra : ComponenteAngulosPincaDeMovi
     protected void voltando()
     {
         getGarra().efeito.desligarTrail();
-    }
-
-    protected void colocarNaAlturaInicial()
-    {
-        getGarra().rigidBody.colocarNaHalturaInicial();
-    }
-
-    protected void colocarNaPosInicial()//REMOVER
-    {
-        getGarra().rigidBody.colocarNaPosicaoInicial();
-    }
-
-    protected void colocarNaPosHorizontal(float posHorizontal)
-    {
-        getGarra().rigidBody.colocarNaPosicaoHorizontal(posHorizontal);        
-    }
-
-    protected void colocarMassa(int massa)
-    {
-        getGarra().rigidBody.colocarMassa(massa);        
-    }
-
-    protected void fixarVerticalEHorizontal()
-    {
-        getGarra().rigidBody.fixarVerticalEHorizontal();
-    }
-
-    protected void desafixar()
-    {
-        getGarra().rigidBody.desafixar();
-    }
-
-    protected bool isAcimaPosInicial()
-    {
-        return getGarra().rigidBody.isAcimaPosInicial();
-    }
+    }   
 
     protected bool isParada()//REMOVER
     {
         return false;
-    }
-
-    protected bool isMaiorPosHorizontal(float posHorizontal)
-    {
-        return getGarra().rigidBody.isMaiorPosHorizontal(posHorizontal);
-    }
-
-    protected bool isMenorPosHorizontal(float posHorizontal)
-    {
-        return getGarra().rigidBody.isMenorPosHorizontal(posHorizontal);
-    }
+    }    
 
     protected Vector3 getPosicaoCentroGarra()
     {
