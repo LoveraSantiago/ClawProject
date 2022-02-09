@@ -1,18 +1,78 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ComponenteRigidBodyDeMovimentacaoGarra : MonoBehaviour
+public class ComponenteRigidBodyDeMovimentacaoGarra : ComponenteAngulosPincaDeMovimentacaoGarra
 {
-    // Start is called before the first frame update
-    void Start()
+    protected void parar()
     {
-        
+        getGarra().rigidBody.parar();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void colocarNaPosInicial()//REMOVER
     {
-        
+        getGarra().rigidBody.colocarNaPosicaoInicial();
     }
+
+    protected void colocarNaPosHorizontal(float posHorizontal)
+    {
+        getGarra().rigidBody.colocarNaPosicaoHorizontal(posHorizontal);
+    }
+
+    protected void colocarMassa(int massa)
+    {
+        getGarra().rigidBody.colocarMassa(massa);
+    }
+
+    protected void moverParaCima()
+    {
+        getGarra().rigidBody.moverPCima();
+    }
+
+    protected void moverParaBaixo()
+    {
+        getGarra().rigidBody.moverPBaixo();
+    }
+
+    protected void moverParaHorizontal(float direcao)
+    {
+        getGarra().rigidBody.moverPHorizontal(direcao);
+    }
+
+    protected void colocarNaAlturaInicial()
+    {
+        getGarra().rigidBody.colocarNaHalturaInicial();
+    }
+
+    protected void fixarVerticalmente()
+    {
+        getGarra().rigidBody.fixarVerticalmente();
+    }
+
+    protected void fixarHorizontalmente()
+    {
+        getGarra().rigidBody.fixarHorizontalmente();
+    }
+
+    protected void fixarVerticalEHorizontal()
+    {
+        getGarra().rigidBody.fixarVerticalEHorizontal();
+    }
+
+    protected void desafixar()
+    {
+        getGarra().rigidBody.desafixar();
+    }
+
+    protected bool isAcimaPosInicial()
+    {
+        return getGarra().rigidBody.isAcimaPosInicial();
+    }
+
+    protected bool isMaiorPosHorizontal(float posHorizontal)
+    {
+        return getGarra().rigidBody.isMaiorPosHorizontal(posHorizontal);
+    }
+
+    protected bool isMenorPosHorizontal(float posHorizontal)
+    {
+        return getGarra().rigidBody.isMenorPosHorizontal(posHorizontal);
+    }
+
 }
