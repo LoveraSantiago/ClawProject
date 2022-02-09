@@ -163,9 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: DressedBook SDF-roxo
   m_EditorClassIdentifier: 
-  hashCode: 1295409083
+  hashCode: -38072179
   material: {fileID: -3792962795776052331}
-  materialHashCode: 1711306939
+  materialHashCode: -1066147315
   m_Version: 1.1.0
   m_SourceFontFileGUID: 4b21ea227b8e54e16bc05cdc27ec0090
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 4b21ea227b8e54e16bc05cdc27ec0090, type: 3}
