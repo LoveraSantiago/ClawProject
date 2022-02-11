@@ -8,8 +8,7 @@ public class PartesMaquinaDto
     [SerializeField] private SpriteRenderer baseParteCima;
     [SerializeField] private SpriteRenderer baseParteBaixo;
     [SerializeField] private SpriteRenderer baseChao;    
-    [SerializeField] private SpriteRenderer placaFrontal;
-    [SerializeField] private SpriteRenderer barra;       
+    [SerializeField] private SpriteRenderer placaFrontal;    
     [SerializeField] private SpriteRenderer placaSaida;
     [SerializeField] private SpriteRenderer placaFicha;
     [SerializeField] private SpriteRenderer placaParteCima;
@@ -23,8 +22,7 @@ public class PartesMaquinaDto
     public SpriteRenderer BaseParteCima { get { return baseParteCima; } }
     public SpriteRenderer BaseParteBaixo { get { return baseParteBaixo; } }
     public SpriteRenderer BaseChao { get { return baseChao; } }    
-    public SpriteRenderer PlacaFrontal { get { return placaFrontal; } }
-    public SpriteRenderer Barra { get { return barra; } }          
+    public SpriteRenderer PlacaFrontal { get { return placaFrontal; } }         
     public SpriteRenderer PlacaDeSaida { get { return placaSaida; } }
     public SpriteRenderer PlacaFicha { get { return placaFicha; } }
     public SpriteRenderer PlacaParteCima { get { return placaParteCima; } }
