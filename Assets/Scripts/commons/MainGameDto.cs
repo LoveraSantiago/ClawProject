@@ -8,8 +8,8 @@ public class MainGameDto
     [Space(5)]
     [SerializeField] private ColetaveisDto coletaveisDto;
     [Space(5)]
-    [SerializeField] private MaquinaDto maquinaDto;
-    [Space(5)]    
+    [SerializeField] private MaquinaDto maquinaDto;    
+    [Space(5)]
     [SerializeField] private CameraDto cameraDto;
     [Space(5)]
     [SerializeField] private PowerUpDto powerUpDto;

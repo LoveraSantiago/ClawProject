@@ -1,4 +1,4 @@
-public abstract class ComponenteAnimacaoDeMovimentacaoGarra : ComponenteGarraDeMovimentacaoGarra
+public abstract class ComponenteAnimacaoDeMovimentacaoGarra : ComponenteEventosDeMovimentacaoDaGarra
 {
     public void playAnimacaoComemorar()
     {

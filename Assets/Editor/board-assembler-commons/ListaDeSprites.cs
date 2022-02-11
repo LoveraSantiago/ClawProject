@@ -65,7 +65,7 @@ public class ListaDeSprites
     public void receberSprite(Sprite sprite)
     {
         listaDeSprites.Add(sprite);
-        listView.Refresh();
+        listView.Rebuild();
     }
 
     public void removerUltimaLinha()
@@ -74,7 +74,7 @@ public class ListaDeSprites
         {
             listaDeSprites.RemoveAt(listaDeSprites.Count - 1);
 
-            listView.Refresh();
+            listView.Rebuild();
         }
     }
 
@@ -84,7 +84,7 @@ public class ListaDeSprites
         {
             removerUltimaLinha();
         }
-        listView.Refresh();
+        listView.Rebuild();
     }
 
     public Sprite getSpriteVazio()

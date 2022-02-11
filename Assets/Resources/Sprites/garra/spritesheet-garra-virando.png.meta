@@ -63,6 +63,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -424,6 +425,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      spritesheet-garra-virando_10: 6414051308578209648
+      spritesheet-garra-virando_4: -750342974318384460
+      spritesheet-garra-virando_12: 3154216979399645595
+      spritesheet-garra-virando_8: 7398234041155086680
+      spritesheet-garra-virando_6: 2489178906865623370
+      spritesheet-garra-virando_7: 6005565963612731262
+      spritesheet-garra-virando_9: -1825779635385550421
+      spritesheet-garra-virando_2: -7698222180083111950
+      spritesheet-garra-virando_5: -8091981349486180706
+      spritesheet-garra-virando_11: 5115235718661850265
+      spritesheet-garra-virando_0: 7076857233044712939
+      spritesheet-garra-virando_1: -2996268471530081639
+      spritesheet-garra-virando_3: -7216597358902648246
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

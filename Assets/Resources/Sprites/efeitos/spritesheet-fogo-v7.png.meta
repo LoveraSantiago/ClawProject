@@ -78,6 +78,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -544,6 +545,25 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      spritesheet-fogo-v7_11: -2748117662559848853
+      spritesheet-fogo-v7_2: -8719251221656717083
+      spritesheet-fogo-v7_0: 9062342643227322744
+      spritesheet-fogo-v7_15: 4964825658061955951
+      spritesheet-fogo-v7_10: -111025236838348235
+      spritesheet-fogo-v7_1: 2082289964273448331
+      spritesheet-fogo-v7_17: -279748849568211844
+      spritesheet-fogo-v7_8: -2438616526432718351
+      spritesheet-fogo-v7_5: 1760413493400891100
+      spritesheet-fogo-v7_6: -520672097336844721
+      spritesheet-fogo-v7_4: -5145833794665872498
+      spritesheet-fogo-v7_14: -232726087664225978
+      spritesheet-fogo-v7_16: 6763161490694574567
+      spritesheet-fogo-v7_13: 4509514120450194617
+      spritesheet-fogo-v7_3: -7801567707368408453
+      spritesheet-fogo-v7_12: 1723783913860988646
+      spritesheet-fogo-v7_9: -3901901027015182135
+      spritesheet-fogo-v7_7: -8365705605965599107
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

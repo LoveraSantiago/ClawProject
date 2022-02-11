@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -304,6 +305,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      spritesheet-face-garrav4_6: -8152828866690942847
+      spritesheet-face-garrav4_5: 3634613293567823785
+      spritesheet-face-garrav4_3: -9154602190377688394
+      spritesheet-face-garrav4_7: -7166708232575162547
+      spritesheet-face-garrav4_0: 7965413427085364869
+      spritesheet-face-garrav4_1: -7378754338403445475
+      spritesheet-face-garrav4_2: -8147722574674659348
+      spritesheet-face-garrav4_4: -8652980891419938619
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

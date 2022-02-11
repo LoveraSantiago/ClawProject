@@ -60,17 +60,7 @@ public abstract class AbstractMovimentacaoDaGarra : ComponenteRigidBodyDeMovimen
     protected float getPosicaoCacaNiquel()
     {
         return getGarra().garraDto.PosCacaNiquel;
-    }       
-
-    protected void produziuEventoDeDirecao(int direcao)
-    {
-        getGarra().dispararEventoDirecao(direcao);        
-    }     
-
-    public void produziuEventoDeDirecao(DirecaoDaGarra direcao)
-    {
-        getGarra().dispararEventoDirecao(direcao);        
-    }
+    }          
 
     public static void configurar(GarraDto garraDto)
     {

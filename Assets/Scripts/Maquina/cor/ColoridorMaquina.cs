@@ -20,9 +20,6 @@ public class ColoridorMaquina
         corHex = dicionarioDeCores[ConstantesCoresMaquina.PLACA_FRONTAL];
         partesDto.PlacaFrontal.color = Utils.getCorByHex(corHex);
 
-        corHex = dicionarioDeCores[ConstantesCoresMaquina.BARRA];
-        partesDto.Barra.color = Utils.getCorByHex(corHex);        
-
         corHex = dicionarioDeCores[ConstantesCoresMaquina.PLACA_SAIDA];
         partesDto.PlacaDeSaida.color = Utils.getCorByHex(corHex);        
 
