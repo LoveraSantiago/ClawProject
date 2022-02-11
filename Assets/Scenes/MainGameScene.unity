@@ -11059,7 +11059,6 @@ MonoBehaviour:
         baseParteBaixo: {fileID: 594860183}
         baseChao: {fileID: 753857306}
         placaFrontal: {fileID: 1814315205}
-        barra: {fileID: 186092669}
         placaSaida: {fileID: 201901775}
         placaFicha: {fileID: 1266331362}
         placaParteCima: {fileID: 2086796815}
@@ -59085,14 +59084,6 @@ PrefabInstance:
     - target: {fileID: 6406990384449578761, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_Name
       value: maquina
-      objectReference: {fileID: 0}
-    - target: {fileID: 8903433777761142565, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1284199
-      objectReference: {fileID: 0}
-    - target: {fileID: 8903433777761142565, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
