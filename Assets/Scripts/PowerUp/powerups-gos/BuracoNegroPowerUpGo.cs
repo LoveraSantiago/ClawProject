@@ -2,28 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuracoNegroPowerUpGo : AbstractAsaPowerUpGo
+public class BuracoNegroPowerUpGo : PowerUpNaoInteracaoComGarra
 {
     public BuracoNegroPowerUpGo() : 
-        base(powerUpDto.AsaDto.AsaGo, "Buraco Negro"){}
+        base(powerUpDto.BuracoNegroDto.BuracoNegroGo, "Buraco Negro"){}
 
-    protected override IEnumerator finalizarVoar(Coletavel coletavelAcertado)
+    public override void configurarPup()
     {
-        throw new System.NotImplementedException();
+        
     }
 
-    protected override float getGravidadeNegativa()
+    public override void iniciarPup()
     {
-        throw new System.NotImplementedException();
+        ligar();
     }
 
-    protected override float getHalturaLimite()
+    public override void resetPup()
     {
-        throw new System.NotImplementedException();
-    }
-
-    protected override float getOffset()
-    {
-        throw new System.NotImplementedException();
+        
     }
 }

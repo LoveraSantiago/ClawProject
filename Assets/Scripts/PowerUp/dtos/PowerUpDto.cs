@@ -25,6 +25,8 @@ public class PowerUpDto
     [Space(5)]
     [SerializeField] private AsaMiniDto asaMiniDto;
     [Space(5)]
+    [SerializeField] private BuracoNegroDto buracoNegroDto;
+    [Space(5)]
     [SerializeField] private RollbackDto rollBackDto;
     [Space(5)]
     [SerializeField] private MolaDto molaDto;
@@ -45,8 +47,9 @@ public class PowerUpDto
 
     public AsaDto AsaDto { get { return asaDto; } }
     public AsaMiniDto AsaMiniDto { get { return asaMiniDto; } }
+    public BuracoNegroDto BuracoNegroDto { get { return buracoNegroDto; } }
 
     public RollbackDto RollBackDto { get { return rollBackDto;  }}
-
+    
     public MolaDto MolaDto { get { return molaDto;  } }
 }
