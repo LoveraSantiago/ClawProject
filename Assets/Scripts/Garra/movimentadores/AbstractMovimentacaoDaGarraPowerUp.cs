@@ -1,14 +1,14 @@
 public abstract class AbstractMovimentacaoDaGarraPowerUp : AbstractMovimentacaoDaGarra
 {
     protected static ComunicadorComGerMovPowerUp comunicadorComGerMovimentacao;
-    protected static PowerUpInteracaoComGarra garraInteracaoComPowerUp;
+    protected static PupInteracaoComGarra garraInteracaoComPowerUp;
 
     public static void configurarComunicadorComGerMovimentacao(ComunicadorComGerMovPowerUp comunicadorComGerMovimentacaoArg)
     {
         comunicadorComGerMovimentacao = comunicadorComGerMovimentacaoArg;
     }
 
-    public static void receberInteracaoComPowerUp(PowerUpInteracaoComGarra garraInteracaoComPowerUpArg)
+    public static void receberInteracaoComPowerUp(PupInteracaoComGarra garraInteracaoComPowerUpArg)
     {
         garraInteracaoComPowerUp = garraInteracaoComPowerUpArg;
         if (garraInteracaoComPowerUp.getInteracaoComGarra() == PowerUpEnums.INTERACAOGARRA.NAO_INTERACAO)

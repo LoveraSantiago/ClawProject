@@ -21,7 +21,7 @@ public class PowerUpInfo
     private PowerUpEntidade pupEntidade;
     public  Coletavel coletavel { get; private set; }
 
-    public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }    
+    public PupInteracaoComGarra interacaoComGarra { get; private set; }    
     public PowerUpInteracaoDisplayColetado interacaoDisplayColetado { get; private set; }
 
     private PowerUpInfo(ESTADO estado)

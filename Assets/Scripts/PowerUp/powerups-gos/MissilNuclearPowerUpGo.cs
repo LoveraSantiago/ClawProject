@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
                                       ConsumidorDeEventoCollider,
-                                      PowerUpInteracaoComGarra
+                                      PupInteracaoComGarra
 {   
     private bool acionado;
     private AnimacaoExplosaoPup animacao;
@@ -20,7 +20,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         return PowerUpEnums.INTERACAOGARRA.MOVIMENTO;
     }
 
-    public override PowerUpInteracaoComGarra getObjInteracaoComGarra()
+    public override PupInteracaoComGarra getObjInteracaoComGarra()
     {
         return this;
     }
