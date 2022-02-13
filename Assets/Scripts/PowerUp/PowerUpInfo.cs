@@ -21,11 +21,7 @@ public class PowerUpInfo
     private PowerUpEntidade pupEntidade;
     public  Coletavel coletavel { get; private set; }
 
-    public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }
-
-    //TODO dar um jeito de remover essa propriedade. 
-    //Vai precisar q AbstractPowerUpGO iniciar receba quem iniciou.
-    //Conforme quem iniciou acionar o powerup AbstractDisplaySlotPowerUpGO na terceira vez
+    public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }    
     public PowerUpInteracaoDisplayColetado interacaoDisplayColetado { get; private set; }
 
     private PowerUpInfo(ESTADO estado)
@@ -39,7 +35,7 @@ public class PowerUpInfo
 
         AbstractPowerUpGo interacaoComPowerUp = pupEntidade.getPowerUpGo();
         interacaoComGarra = interacaoComPowerUp.getObjInteracaoComGarra();
-        interacaoDisplayColetado = interacaoComPowerUp.getObjInteracaoDisplayColetado();        
+        interacaoDisplayColetado = interacaoComPowerUp.getObjInteracaoDisplayColetado();
     }
 
     public PowerUpInfo configurarPupEntidade(PowerUpEntidade pupEntidade, Vector3 posInicial)
