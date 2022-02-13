@@ -1,8 +1,7 @@
 using System;
 
 public class RelogioContador : Relogio
-{
-    private TimeSpan tempoLblHoras;
+{   
     private IntervaloDeTempo intervaloDeTempo;
     private ContadorDeTempo contadorDeTempo;
 
