@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface PowerUpInteracaoComGarra 
+public interface PowerUpInteracaoComGarra : InteracaoPupComComponente
 {
     PowerUpEnums.INTERACAOGARRA getInteracaoComGarra();
 

@@ -1,4 +1,4 @@
-public interface PowerUpInteracaoDisplayColetado 
+public interface PowerUpInteracaoDisplayColetado : InteracaoPupComComponente
 {    
     Executor getExecutorDeInicio();    
 }
