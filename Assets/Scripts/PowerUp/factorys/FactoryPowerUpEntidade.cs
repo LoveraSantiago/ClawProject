@@ -32,7 +32,7 @@ public class FactoryPowerUpEntidade
             .addPup(PowerUpEnums.TIPO.TELEPORTE        , new FactoryPupTeleporte())            
             .addPup(PowerUpEnums.TIPO.CORINGA          , new FactoryPupCoringa())
             .addPup(PowerUpEnums.TIPO.MINI_ASAS        , new FactoryPupMiniAsas())
-            .addPup(PowerUpEnums.TIPO.ASAS             , new FactoryPupAsas())
+            .addPup(PowerUpEnums.TIPO.ASAS             , new FactoryPowerUpAsas())
             .addPup(PowerUpEnums.TIPO.BURACO_NEGRO     , new FactoryPupBuracoNegro())
             .addPup(PowerUpEnums.TIPO.ROLLBACK         , new FactoryPupRollback())
             .addPup(PowerUpEnums.TIPO.DESCARTE         , new FactoryPupDescarte())
