@@ -31,7 +31,7 @@ public class PupScene : MonoBehaviour
 
         BlocoImgPowerUp blocoImg   = new BlocoImgPowerUp(blocoImgDto);
         AllLabelsPowerUp allLables = new AllLabelsPowerUp(labelsDto);
-        ScrollBottomBarScenePup scBottomBar = new ScrollBottomBarScenePup(prefabBottomBar);
+        ScrollBottomBarScenePowerUp scBottomBar = new ScrollBottomBarScenePowerUp(prefabBottomBar);
 
         NavegacaoPowerUp navegacao = new NavegacaoPowerUp(modalNoFichaDto);
 
