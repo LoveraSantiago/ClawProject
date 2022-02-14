@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class LevelCacaNiquelPupIndividual : AbstractLevel
+public class LevelCacaNiquelPowerUpIndividual : AbstractLevel
 {
 
     public override string getLevelName()
@@ -113,7 +113,7 @@ public class LevelCacaNiquelPupIndividual : AbstractLevel
     {
         public AbstractLevel fornecer()
         {
-            return new LevelCacaNiquelPupIndividual();
+            return new LevelCacaNiquelPowerUpIndividual();
         }
     }
 }
