@@ -27,7 +27,7 @@ public class FactoryPowerUpEntidade
             .addPup(PowerUpEnums.TIPO.BOMBA_DA_GARRA   , new FactoryPowerUpBomba())
             .addPup(PowerUpEnums.TIPO.MISSIL_NUCLEAR   , new FactoryPowerUpMissilNuclear())
             .addPup(PowerUpEnums.TIPO.MINA_TERRESTRE   , new FactoryPowerUpMinaTerrestre())
-            .addPup(PowerUpEnums.TIPO.MISSIL_TELEGUIADO, new FactoryPupMissilTeleguiado())
+            .addPup(PowerUpEnums.TIPO.MISSIL_TELEGUIADO, new FactoryPowerUpMissilTeleguiado())
             .addPup(PowerUpEnums.TIPO.IGUAL            , new FactoryPowerUpIgual())
             .addPup(PowerUpEnums.TIPO.TELEPORTE        , new FactoryPupTeleporte())            
             .addPup(PowerUpEnums.TIPO.CORINGA          , new FactoryPowerUpCoringa())
