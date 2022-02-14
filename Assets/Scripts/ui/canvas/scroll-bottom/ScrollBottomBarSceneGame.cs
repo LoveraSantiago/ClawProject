@@ -5,7 +5,7 @@ using TMPro;
 
 public class ScrollBottomBarSceneGame : ScrollBottomBar,
                                         AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
-                                        AcaoBotaoPUpVazio.ConsumidorEvento
+                                        AcaoBotaoPowerUpVazio.ConsumidorEvento
 {
     private int indiceBtn;
     
@@ -66,7 +66,7 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
         }
     }
 
-    void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
+    void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
         indiceBtn = evento;
         Utils.MonoBehaviour.StartCoroutine(mostrarBottomBar());

@@ -3,7 +3,7 @@ public class UiGameManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
                              AcaoColetado.ConsumidorEvento,
                              AcaoTempoEsgotado.ConsumidorEvento,
                              AcaoBoardElevadoFim.ConsumidorEvento,
-                             AcaoBotaoPUpVazio.ConsumidorEvento,
+                             AcaoBotaoPowerUpVazio.ConsumidorEvento,
                              AcaoCacaNiquel.ConsumidorEvento,
                              AcaoPUpAcionado.ConsumidorEvento,
                              AcaoDesligarMaquina.ConsumidorEvento
@@ -46,9 +46,9 @@ public class UiGameManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         ((AcaoBoardElevadoFim.ConsumidorEvento)modalResultados).consumirEvento(evento);
     }
 
-    void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
+    void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {       
-        ((AcaoBotaoPUpVazio.ConsumidorEvento)scrollManager).consumirEvento(evento);       
+        ((AcaoBotaoPowerUpVazio.ConsumidorEvento)scrollManager).consumirEvento(evento);       
     }
 
     void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelEventoDto evento)

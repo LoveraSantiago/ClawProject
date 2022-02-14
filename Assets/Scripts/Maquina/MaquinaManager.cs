@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetadoFim.ProdutorEvento,
-                              AcaoBotaoPUpVazio.ProdutorEvento,
+                              AcaoBotaoPowerUpVazio.ProdutorEvento,
                               AcaoCacaNiquel.ProdutorEvento,
                               AcaoDesligarMaquina.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,                                
@@ -178,9 +178,9 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         return ((AcaoColetadoFim.ProdutorEvento)displaysDeSlots).getProdutorDeEvento();
     }
 
-    ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<int> AcaoBotaoPowerUpVazio.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoBotaoPUpVazio.ProdutorEvento)botoesPowerUp).getProdutorDeEvento();
+        return ((AcaoBotaoPowerUpVazio.ProdutorEvento)botoesPowerUp).getProdutorDeEvento();
     }
 
     ProdutorDeEvento<CacaNiquelEventoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()

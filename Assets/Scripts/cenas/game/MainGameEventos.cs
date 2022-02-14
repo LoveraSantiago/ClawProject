@@ -36,7 +36,7 @@ public class MainGameEventos
             .adicionarConsumidor(coletaveisManager)
             .adicionarConsumidor(uiManager);
 
-        new AcaoBotaoPUpVazio()
+        new AcaoBotaoPowerUpVazio()
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(cameraManager)
             .adicionarConsumidor(uiManager);

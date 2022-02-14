@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento,
+public class CameraManager : AcaoBotaoPowerUpVazio.ConsumidorEvento,
                              AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
                              AcaoCacaNiquel.ConsumidorEvento
 {
@@ -17,7 +17,7 @@ public class CameraManager : AcaoBotaoPUpVazio.ConsumidorEvento,
         cameraDto.VirtualCam3.Priority = 0;
     }
 
-    void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
+    void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {     
         if(cameraDto.VirtualCam2.Priority == 0)
         {
