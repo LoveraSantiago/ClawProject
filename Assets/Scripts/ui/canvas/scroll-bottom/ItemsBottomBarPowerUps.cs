@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class ItemsBottomBarPups : ItemsBottomBar
+public class ItemsBottomBarPowerUps : ItemsBottomBar
 {
     private PowerUpEntidade[] allPups;
     private PowerUpEntidade pupAtual;
 
-    public ItemsBottomBarPups()
+    public ItemsBottomBarPowerUps()
     {
         allPups = FactoryPowerUpEntidade.getAllPowerUps();
     }

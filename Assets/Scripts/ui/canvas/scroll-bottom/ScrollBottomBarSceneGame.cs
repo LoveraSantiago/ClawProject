@@ -13,7 +13,7 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
     private ProdutorDeEvento<PowerUpBtnInfo> produtorDeEvento;
 
     public ScrollBottomBarSceneGame(GameObject prefabBottomBar)
-       : base(prefabBottomBar, new ItemsBottomBarPups())
+       : base(prefabBottomBar, new ItemsBottomBarPowerUps())
     {
         this.prefabBottomBar = prefabBottomBar;
         produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfo>();

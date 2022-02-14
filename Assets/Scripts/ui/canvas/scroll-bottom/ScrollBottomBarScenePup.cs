@@ -8,7 +8,7 @@ public class ScrollBottomBarScenePup : ScrollBottomBar,
     private ProdutorDeEvento<int> produtorDeIndiceEscolhido;
 
     public ScrollBottomBarScenePup(GameObject prefabBottomBar)
-        : base(prefabBottomBar, new ItemsBottomBarPups())
+        : base(prefabBottomBar, new ItemsBottomBarPowerUps())
     {
         produtorDeIndiceEscolhido = new ProdutorDeEvento<int>();
     }
