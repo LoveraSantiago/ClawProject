@@ -24,7 +24,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         Utils.MonoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris, executorPosEvento));        
     }    
     
-    public void processarPowerUp(PowerUpEnums.TIPO tipoPup, PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
+    public void processarPowerUp(PowerUpEnums.TIPO tipoPup, PowerUpInteracaoComDisplayColetado interacaoDisplayColetado)
     {
         agendados.agendar(tipoPup);
         if (displayColetando)
@@ -71,7 +71,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         grupoDisplays.desligarAlvos(executor);
     }
 
-    private void acionarPowerUp(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
+    private void acionarPowerUp(PowerUpInteracaoComDisplayColetado interacaoDisplayColetado)
     {
         //Debug.Log("Pup acionado no display de coletado inicio");
         powerUpAcionado = true;
@@ -188,7 +188,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         return grupoDisplays.isTodosDisplaysDesocupados();
     }
 
-    public void restartPowerUp(PowerUpEnums.TIPO tipo, PowerUpInteracaoDisplayColetado interacao)
+    public void restartPowerUp(PowerUpEnums.TIPO tipo, PowerUpInteracaoComDisplayColetado interacao)
     {
         processarPowerUp(tipo, interacao);
     }

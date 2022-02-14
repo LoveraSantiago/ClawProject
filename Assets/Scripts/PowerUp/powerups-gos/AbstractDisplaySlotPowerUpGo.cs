@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public abstract class AbstractDisplaySlotPowerUpGo : PowerUpNaoInteracaoComGarra,
-                                                     PowerUpInteracaoDisplayColetado
+                                                     PowerUpInteracaoComDisplayColetado
 {
     private static InformacaoDisplayColetado informacaoDisplayColetado;   
 
@@ -15,7 +15,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpNaoInteracaoComGarra
     {
     }
 
-    public override PowerUpInteracaoDisplayColetado getObjInteracaoDisplayColetado()
+    public override PowerUpInteracaoComDisplayColetado getObjInteracaoDisplayColetado()
     {
         return this;
     }
