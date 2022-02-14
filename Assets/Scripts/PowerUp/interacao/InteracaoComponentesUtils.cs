@@ -2,7 +2,7 @@ public class InteracaoComponentesUtils
 {
     public static bool isInteracaoComGarra(InteracaoPowerUpComComponente interacao)
     {
-        return interacao.GetType() == typeof(PupInteracaoComGarra);
+        return interacao.GetType() == typeof(PowerUpInteracaoComGarra);
     }
 
     public static bool isInteracaoComDisplayColetado(InteracaoPowerUpComComponente interacao)
@@ -10,11 +10,11 @@ public class InteracaoComponentesUtils
         return interacao.GetType() == typeof(PowerUpInteracaoDisplayColetado);
     }
 
-    public PupInteracaoComGarra getAsInteracaoComGarra(InteracaoPowerUpComComponente interacao)
+    public PowerUpInteracaoComGarra getAsInteracaoComGarra(InteracaoPowerUpComComponente interacao)
     {
         if (isInteracaoComGarra(interacao))
         {
-            return (PupInteracaoComGarra)interacao;
+            return (PowerUpInteracaoComGarra)interacao;
         }
         else
         {

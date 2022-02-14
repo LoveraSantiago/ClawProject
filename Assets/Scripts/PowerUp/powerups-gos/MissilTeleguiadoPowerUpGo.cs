@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
-                                         PupInteracaoComGarra,
+                                         PowerUpInteracaoComGarra,
                                          Transformador<Coletavel, IEnumerator>
 {
     private static readonly int MISSIL_IDLE      = Animator.StringToHash("idle");
@@ -28,7 +28,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         return PowerUpEnums.INTERACAOGARRA.PARADO;
     }
 
-    public override PupInteracaoComGarra getObjInteracaoComGarra()
+    public override PowerUpInteracaoComGarra getObjInteracaoComGarra()
     {
         return this;
     }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo,
-                                                    PupInteracaoComGarra
+                                                    PowerUpInteracaoComGarra
 {
     public PowerUpNaoInteracaoComGarra(GameObject goTile, string nome): base(goTile, nome){}
 
@@ -11,7 +11,7 @@ public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo,
     {
     }
 
-    public override PupInteracaoComGarra getObjInteracaoComGarra()
+    public override PowerUpInteracaoComGarra getObjInteracaoComGarra()
     {
         return this;
     }
