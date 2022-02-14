@@ -1,4 +1,4 @@
-public class FactoryPupRollback : AbstractFactoryPup
+public class FactoryPupRollback : AbstractFactoryPowerUp
 {
     public override PowerUpEntidade factoryPupEntidade()
     {

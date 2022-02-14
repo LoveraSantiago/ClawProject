@@ -1,4 +1,4 @@
-public class FactoryPupIgual : AbstractFactoryPup
+public class FactoryPupIgual : AbstractFactoryPowerUp
 {
     public override PowerUpEntidade factoryPupEntidade()
     {
