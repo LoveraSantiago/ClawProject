@@ -24,7 +24,7 @@ public class FactoryPowerUpEntidade
     public static void resetContextoEstatico()
     {
         poolPups = new PoolPowerUps()
-            .addPup(PowerUpEnums.TIPO.BOMBA_DA_GARRA   , new FactoryPupBomba())
+            .addPup(PowerUpEnums.TIPO.BOMBA_DA_GARRA   , new FactoryPowerUpBomba())
             .addPup(PowerUpEnums.TIPO.MISSIL_NUCLEAR   , new FactoryPupMissilNuclear())
             .addPup(PowerUpEnums.TIPO.MINA_TERRESTRE   , new FactoryPupMinaTerrestre())
             .addPup(PowerUpEnums.TIPO.MISSIL_TELEGUIADO, new FactoryPupMissilTeleguiado())
