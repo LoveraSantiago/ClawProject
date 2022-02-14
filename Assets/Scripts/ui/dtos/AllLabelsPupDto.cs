@@ -3,7 +3,7 @@ using UnityEngine;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class AllLabelsPupDto    
+public class AllLabelsPupDto    //TODO renomear padronizando Pup - para - PowerUp
 {
     [SerializeField] private TextMeshProUGUI lblPup;
     [SerializeField] private TextMeshProUGUI lblTipo;

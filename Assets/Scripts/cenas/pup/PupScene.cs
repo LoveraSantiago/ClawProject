@@ -29,7 +29,7 @@ public class PupScene : MonoBehaviour
         FactoryPowerUpEntidade.resetContextoEstatico();
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
 
-        BlocoImgPup blocoImg   = new BlocoImgPup(blocoImgDto);
+        BlocoImgPowerUp blocoImg   = new BlocoImgPowerUp(blocoImgDto);
         AllLabelsPowerUp allLables = new AllLabelsPowerUp(labelsDto);
         ScrollBottomBarScenePup scBottomBar = new ScrollBottomBarScenePup(prefabBottomBar);
 

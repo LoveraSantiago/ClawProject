@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BlocoImgPup : AcaoBlocoImgPowerUpAtual.ProdutorEvento,
+public class BlocoImgPowerUp : AcaoBlocoImgPowerUpAtual.ProdutorEvento,
                            AcaoBBarItemEscolhido<int>.ConsumidorEvento
 {
     private readonly int ANIM_IR_ESQUERDA  = Animator.StringToHash("irEsquerda");
@@ -16,7 +16,7 @@ public class BlocoImgPup : AcaoBlocoImgPowerUpAtual.ProdutorEvento,
     private NavegacaoDeArray<PowerUpEntidade> controlePups;    
     private ProdutorDeEvento<PowerUpEntidade> produtorDeEvento;    
 
-    public BlocoImgPup(BlocoImgPupDto blocoImgDto)
+    public BlocoImgPowerUp(BlocoImgPupDto blocoImgDto)
     {
         this.blocoImgDto = blocoImgDto;
         blocoImgDto.BtnEsquerda.onClick.AddListener(()=> irParaEsquerda());

@@ -7,13 +7,13 @@ public class NavegacaoPup
         this.modalNoFicha = new ModalNoFicha(modalNoFichaDto);
     }
 
-    public void irGameScenePupPratica(BlocoImgPup blocoImg)
+    public void irGameScenePupPratica(BlocoImgPowerUp blocoImg)
     {
         PlayerPrefsLevel.salvarLevel(Level.PUP);
         abrirCenaOuModal(blocoImg.getIndicePupAtual(), 0);
     }
 
-    public void irGameScenePupIndividual(BlocoImgPup blocoImg)
+    public void irGameScenePupIndividual(BlocoImgPowerUp blocoImg)
     {
         PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_I);
 
@@ -24,7 +24,7 @@ public class NavegacaoPup
         abrirCenaOuModal(indicePup, precoFicha);
     }
 
-    public void irGameScenePupGeral(BlocoImgPup blocoImg)
+    public void irGameScenePupGeral(BlocoImgPowerUp blocoImg)
     {
         PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_G);
         abrirCenaOuModal(blocoImg.getIndicePupAtual(), 1);
