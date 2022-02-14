@@ -39,7 +39,7 @@ public class LevelEntidade
             new LevelEntidade(Level.COLETAVEL_LARANJA       , LevelLaranja.getFornecedor()),
             new LevelEntidade(Level.COLETAVEL_ESTRELAMARINHA, LevelEstrelaMarinha.getFornecedor()),
 
-            new LevelEntidade(Level.CACANIQUEL_PUP_G, LevelCacaNiquelPupGeral.getFornecedor()),
+            new LevelEntidade(Level.CACANIQUEL_PUP_G, LevelCacaNiquelPowerUpGeral.getFornecedor()),
             new LevelEntidade(Level.CACANIQUEL_PUP_I, LevelCacaNiquelPupIndividual.getFornecedor()),
         };
     }
