@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class LevelPup : AbstractLevel
+public class LevelPowerUp : AbstractLevel
 {
     public override string getLevelName()
     {
@@ -112,7 +112,7 @@ public class LevelPup : AbstractLevel
     {
         public AbstractLevel fornecer()
         {
-            return new LevelPup();
+            return new LevelPowerUp();
         }
     }
 }

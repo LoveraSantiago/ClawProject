@@ -29,7 +29,7 @@ public class LevelEntidade
             new LevelEntidade(Level.TRES  , Level3.getFornecedor()),
             new LevelEntidade(Level.QUATRO, Level4.getFornecedor()),
 
-            new LevelEntidade(Level.PUP, LevelPup.getFornecedor()),            
+            new LevelEntidade(Level.PUP, LevelPowerUp.getFornecedor()),            
 
             new LevelEntidade(Level.COLETAVEL_PAO           , LevelPao.getFornecedor()),
             new LevelEntidade(Level.COLETAVEL_MACA          , LevelMaca.getFornecedor()),
