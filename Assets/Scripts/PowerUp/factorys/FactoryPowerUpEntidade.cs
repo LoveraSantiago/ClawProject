@@ -36,6 +36,6 @@ public class FactoryPowerUpEntidade
             .addPup(PowerUpEnums.TIPO.BURACO_NEGRO     , new FactoryPowerUpBuracoNegro())
             .addPup(PowerUpEnums.TIPO.ROLLBACK         , new FactoryPupRollback())
             .addPup(PowerUpEnums.TIPO.DESCARTE         , new FactoryPowerUpDescarte())
-            .addPup(PowerUpEnums.TIPO.MOLA             , new FactoryPupMola());
+            .addPup(PowerUpEnums.TIPO.MOLA             , new FactoryPowerUpMola());
     }
 }
