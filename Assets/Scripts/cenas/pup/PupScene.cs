@@ -40,7 +40,7 @@ public class PupScene : MonoBehaviour
         btnCacaNiquelPupIndividual.onClick.AddListener(() => navegacao.irGameScenePupIndividual(blocoImg));
         btnCacaNiquelPupGeral.onClick.AddListener(() => navegacao.irGameScenePupGeral(blocoImg));        
 
-        new AcaoBlocoImgPUpAtual()
+        new AcaoBlocoImgPowerUpAtual()
             .configurarProdutor(blocoImg)
             .adicionarConsumidor(allLables);
 

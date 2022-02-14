@@ -1,4 +1,4 @@
-public class AllLabelsPup : AcaoBlocoImgPUpAtual.ConsumidorEvento
+public class AllLabelsPup : AcaoBlocoImgPowerUpAtual.ConsumidorEvento
 {
     private AllLabelsPupDto labelsDto;
 
@@ -7,7 +7,7 @@ public class AllLabelsPup : AcaoBlocoImgPUpAtual.ConsumidorEvento
         this.labelsDto = labelsDto;
     }
 
-    void AcaoBlocoImgPUpAtual.ConsumidorEvento.consumirEvento(PowerUpEntidade evento)
+    void AcaoBlocoImgPowerUpAtual.ConsumidorEvento.consumirEvento(PowerUpEntidade evento)
     {
         labelsDto.LblPup.text        = evento.nome;
         labelsDto.LblTipo.text       = evento.familia;

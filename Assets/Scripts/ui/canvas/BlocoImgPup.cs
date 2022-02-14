@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BlocoImgPup : AcaoBlocoImgPUpAtual.ProdutorEvento,
+public class BlocoImgPup : AcaoBlocoImgPowerUpAtual.ProdutorEvento,
                            AcaoBBarItemEscolhido<int>.ConsumidorEvento
 {
     private readonly int ANIM_IR_ESQUERDA  = Animator.StringToHash("irEsquerda");
@@ -82,7 +82,7 @@ public class BlocoImgPup : AcaoBlocoImgPUpAtual.ProdutorEvento,
         irParaPupAtual();
     }
 
-    ProdutorDeEvento<PowerUpEntidade> AcaoBlocoImgPUpAtual.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<PowerUpEntidade> AcaoBlocoImgPowerUpAtual.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }
