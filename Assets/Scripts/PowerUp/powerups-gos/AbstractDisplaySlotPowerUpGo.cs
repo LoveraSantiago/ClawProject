@@ -15,10 +15,10 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpNaoInteracaoComGarra
     {
     }
 
-    public override PowerUpInteracaoComDisplayColetado getObjInteracaoDisplayColetado()
+    public override InteracaoPowerUpComComponente getInteracaoComComponente()
     {
         return this;
-    }
+    }    
 
     public override void configurarPup() { }
 

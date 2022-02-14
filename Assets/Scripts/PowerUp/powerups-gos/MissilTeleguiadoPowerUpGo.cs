@@ -28,10 +28,10 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         return PowerUpEnums.INTERACAOGARRA.PARADO;
     }
 
-    public override PowerUpInteracaoComGarra getObjInteracaoComGarra()
+    public override InteracaoPowerUpComComponente getInteracaoComComponente()
     {
         return this;
-    }
+    }    
 
     public float getAnguloParaGarraSegurar()
     {

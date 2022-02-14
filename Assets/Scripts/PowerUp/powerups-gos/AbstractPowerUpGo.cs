@@ -16,7 +16,7 @@ public abstract class AbstractPowerUpGo : GO
     public virtual void iniciarNaPosicao(Vector3 posicao) { }
     public virtual void timeout() { }
 
-    public abstract InteracaoPowerUpComComponente interacaoComComponente();
+    public abstract InteracaoPowerUpComComponente getInteracaoComComponente();
 
     public AbstractPowerUpGo(GameObject goTile, string nome)
         : base(goTile, nome)

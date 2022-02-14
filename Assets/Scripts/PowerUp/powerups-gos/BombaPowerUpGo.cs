@@ -21,7 +21,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         return PowerUpEnums.INTERACAOGARRA.MOVIMENTO;
     }
 
-    public override PowerUpInteracaoComGarra getObjInteracaoComGarra()
+    public override InteracaoPowerUpComComponente getInteracaoComComponente()
     {
         return this;
     }

@@ -20,10 +20,10 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         return PowerUpEnums.INTERACAOGARRA.MOVIMENTO;
     }
 
-    public override PowerUpInteracaoComGarra getObjInteracaoComGarra()
+    public override InteracaoPowerUpComComponente getInteracaoComComponente()
     {
         return this;
-    }
+    }    
 
     public float getAnguloParaGarraSegurar()
     {

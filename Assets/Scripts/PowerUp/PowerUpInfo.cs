@@ -20,7 +20,7 @@ public class PowerUpInfo
     public PowerUpEnums.TIPO tipo { get { return pupEntidade.tipo; } }
     private PowerUpEntidade pupEntidade;
     public  Coletavel coletavel { get; private set; }
-
+    
     public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }    
     public PowerUpInteracaoComDisplayColetado interacaoDisplayColetado { get; private set; }
 

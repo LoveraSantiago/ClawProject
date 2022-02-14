@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo,
-                                                    PowerUpInteracaoComGarra
+public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo, 
+                                                    InteracaoPowerUpComComponente
 {
     public PowerUpNaoInteracaoComGarra(GameObject goTile, string nome): base(goTile, nome){}
 
@@ -11,7 +11,7 @@ public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo,
     {
     }
 
-    public override PowerUpInteracaoComGarra getObjInteracaoComGarra()
+    public override InteracaoPowerUpComComponente getInteracaoComComponente()
     {
         return this;
     }
@@ -19,17 +19,5 @@ public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo,
     public PowerUpEnums.INTERACAOGARRA getInteracaoComGarra()
     {
         return PowerUpEnums.INTERACAOGARRA.NAO_INTERACAO;
-    }   
-
-    public override void fixarEixoX(){}
-
-    public float getAnguloParaGarraSegurar(){ return 0; }        
-
-    public override void ligarGravidadeHum(){}
-
-    public override void ligarGravidadeZero(){}
-
-    public override void parar(){}
-
-    public override void timeout(){}
+    }                   
 }
