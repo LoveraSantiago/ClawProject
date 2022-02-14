@@ -23,11 +23,11 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
     {
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;        
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeBtnSelecionado));
-        int qtdPup = PlayerPrefsPup.recuperarQtdPup(pupEscolhido.nome);
+        int qtdPup = PlayerPrefsPowerUp.recuperarQtdPup(pupEscolhido.nome);
         btnBottomBar.descerBotao(this);
         if(qtdPup > 0)
         {
-            int qtdAtual = PlayerPrefsPup.subtrairPup(pupEscolhido.nome);
+            int qtdAtual = PlayerPrefsPowerUp.subtrairPup(pupEscolhido.nome);
             PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
             lblQtd.text = qtdAtual.ToString();
             Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));       

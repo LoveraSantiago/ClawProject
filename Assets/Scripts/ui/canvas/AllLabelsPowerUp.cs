@@ -14,6 +14,6 @@ public class AllLabelsPowerUp : AcaoBlocoImgPowerUpAtual.ConsumidorEvento
         labelsDto.LblDescCurta.text  = evento.descCurta;
         labelsDto.LblExplicacao.text = evento.descDetalhada;
         labelsDto.LblPreco.text      = evento.preco;
-        labelsDto.LblQtd.text        = PlayerPrefsPup.recuperarQtdPup(evento.nome) + "";
+        labelsDto.LblQtd.text        = PlayerPrefsPowerUp.recuperarQtdPup(evento.nome) + "";
     }
 }

@@ -17,7 +17,7 @@ public class ItemsBottomBarPowerUps : ItemsBottomBar
 
     public string getLabelQtdDoItem()
     {        
-        return PlayerPrefsPup.recuperarQtdPup(pupAtual.nome).ToString();
+        return PlayerPrefsPowerUp.recuperarQtdPup(pupAtual.nome).ToString();
     }
 
     public Sprite getSprDoItem()

@@ -94,7 +94,7 @@ public class BotaoPowerUp : Draggavel
     {
         if (hasPowerUp)
         {
-            PlayerPrefsPup.adicionarPup(acaoBtnPowerUp.getTipo(), 1);
+            PlayerPrefsPowerUp.adicionarPup(acaoBtnPowerUp.getTipo(), 1);
         }
     }
 

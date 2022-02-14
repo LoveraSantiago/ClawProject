@@ -22,9 +22,9 @@ public class ModalFimCacaNiquelGeral : AbstractModalFim
         linhasModal[1].passarInfos(nomes[1], evento.sprResultados[1], "1");
         linhasModal[2].passarInfos(nomes[2], evento.sprResultados[2], "1");
 
-        PlayerPrefsPup.adicionarPup(nomes[0], 1);
-        PlayerPrefsPup.adicionarPup(nomes[1], 1);
-        PlayerPrefsPup.adicionarPup(nomes[2], 1);
+        PlayerPrefsPowerUp.adicionarPup(nomes[0], 1);
+        PlayerPrefsPowerUp.adicionarPup(nomes[1], 1);
+        PlayerPrefsPowerUp.adicionarPup(nomes[2], 1);
 
         modalManipulacao.setScoreAtual("Power Ups Ganhos");
     }

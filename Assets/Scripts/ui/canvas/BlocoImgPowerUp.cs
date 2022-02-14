@@ -23,7 +23,7 @@ public class BlocoImgPowerUp : AcaoBlocoImgPowerUpAtual.ProdutorEvento,
         blocoImgDto.BtnDireita.onClick.AddListener (()=> irParaDireita());
 
         PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
-        int indiceInicial = PlayerPrefsPup.recuperarEApagarIndicePup();
+        int indiceInicial = PlayerPrefsPowerUp.recuperarEApagarIndicePup();
         controlePups      = new NavegacaoDeArray<PowerUpEntidade>(allPups, indiceInicial);        
         produtorDeEvento  = new ProdutorDeEvento<PowerUpEntidade>();
     }

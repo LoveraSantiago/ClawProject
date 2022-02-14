@@ -35,7 +35,7 @@ public class NavegacaoPowerUp
         if (PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
         {
             PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);
-            PlayerPrefsPup.salvarIndicePup(indiceAtual);
+            PlayerPrefsPowerUp.salvarIndicePup(indiceAtual);
             CenaUtils.irParaCenaMainGame();
         }
         else

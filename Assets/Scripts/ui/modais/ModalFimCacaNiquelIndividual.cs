@@ -16,7 +16,7 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         linhasModal[2].ligar();
         linhasModal[3].desligar();
 
-        int indicePup = PlayerPrefsPup.recuperarIndicePup();
+        int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
         montarLinhaPupSingle(0, evento, pupEscolhido);
@@ -27,13 +27,13 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         {
             linhasModal[3].ligar();
             linhasModal[3].passarInfos("Bonus!!!", pupEscolhido.sprPowerUp, "3");
-            PlayerPrefsPup.adicionarPup(pupEscolhido.nome, 3);
+            PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 3);
         }
         else if (evento.isTripleFail())
         {
             linhasModal[3].ligar();
             linhasModal[3].passarInfos("Consolação", pupEscolhido.sprPowerUp, "1");
-            PlayerPrefsPup.adicionarPup(pupEscolhido.nome, 1);
+            PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 1);
         }
 
         modalManipulacao.setScoreAtual("Power Ups Ganhos");        
@@ -45,7 +45,7 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         if (evento.isResultSucesso(indice))
         {
             linhasModal[indice].passarInfos(pup.nome, evento.sprResultados[indice], "OK");
-            PlayerPrefsPup.adicionarPup(pup.nome, 1);
+            PlayerPrefsPowerUp.adicionarPup(pup.nome, 1);
         }
         else if (evento.isResultFail(indice))
         {

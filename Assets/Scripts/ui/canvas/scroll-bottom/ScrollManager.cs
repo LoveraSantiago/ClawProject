@@ -32,7 +32,7 @@ public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
     {
         if (isLevelPup)
         {
-            int indicePup = PlayerPrefsPup.recuperarIndicePup();
+            int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
             for(int contador = 0; contador < 4; contador++)
             {
                 scrollBottomBar.simularCliqueBoxAcionado(contador, indicePup);
@@ -51,7 +51,7 @@ public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
     {
         if (isLevelPup)
         {
-            int indicePup = PlayerPrefsPup.recuperarIndicePup();
+            int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
             scrollBottomBar.simularCliqueBoxAcionado(evento, indicePup);
         }
         else
@@ -66,7 +66,7 @@ public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         {
             if (isLevelPup)
             {
-                int indicePup = PlayerPrefsPup.recuperarIndicePup();
+                int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
                 scrollBottomBar.simularCliqueBoxAcionado(evento.indiceBtn, indicePup);
             }
             else if (isPupsToLevel)
