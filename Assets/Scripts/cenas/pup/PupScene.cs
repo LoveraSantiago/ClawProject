@@ -33,7 +33,7 @@ public class PupScene : MonoBehaviour
         AllLabelsPowerUp allLables = new AllLabelsPowerUp(labelsDto);
         ScrollBottomBarScenePup scBottomBar = new ScrollBottomBarScenePup(prefabBottomBar);
 
-        NavegacaoPup navegacao = new NavegacaoPup(modalNoFichaDto);
+        NavegacaoPowerUp navegacao = new NavegacaoPowerUp(modalNoFichaDto);
 
         configBtnBack(btnBack);
         btnPratica.onClick.AddListener(() => navegacao.irGameScenePupPratica(blocoImg));

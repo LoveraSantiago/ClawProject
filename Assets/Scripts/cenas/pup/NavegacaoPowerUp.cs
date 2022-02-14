@@ -1,8 +1,8 @@
-public class NavegacaoPup 
+public class NavegacaoPowerUp 
 {
     private ModalNoFicha modalNoFicha;
 
-    public NavegacaoPup(ModalNoFichaDto modalNoFichaDto)
+    public NavegacaoPowerUp(ModalNoFichaDto modalNoFichaDto)
     {
         this.modalNoFicha = new ModalNoFicha(modalNoFichaDto);
     }
