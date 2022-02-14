@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PowerUpManager : PowerUpAcionamento,
                               PowerUpFinalizacao,
-                              AcaoPUpAcionado.ProdutorEvento
+                              AcaoPowerUpAcionado.ProdutorEvento
 {
     private int indiceBtnEmAcao;
     private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;    
@@ -58,7 +58,7 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofFinalizar(indiceBtnEmAcao));
     }    
 
-    ProdutorDeEvento<PowerUpInfo> AcaoPUpAcionado.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<PowerUpInfo> AcaoPowerUpAcionado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoPowerUp;
     }    

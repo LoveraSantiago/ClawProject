@@ -7,7 +7,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoDesligarMaquina.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,                                
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
-                              AcaoPUpAcionado.ConsumidorEvento,                                                            
+                              AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,
                               AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
                               AcaoDesligarMaquinaCancelado.ConsumidorEvento
@@ -120,7 +120,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         ((AcaoColetado.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
     }   
 
-    void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isInicio)
         {

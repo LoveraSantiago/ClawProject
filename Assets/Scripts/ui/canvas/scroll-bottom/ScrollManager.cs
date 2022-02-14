@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
-                             AcaoPUpAcionado.ConsumidorEvento,
+                             AcaoPowerUpAcionado.ConsumidorEvento,
                              AcaoBotaoPowerUpVazio.ConsumidorEvento        
 {
     private bool isLevelPup;
@@ -60,7 +60,7 @@ public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         }
     }
 
-    void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isFinalizar)
         {

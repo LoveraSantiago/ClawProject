@@ -29,7 +29,7 @@ public class MainGameEventos
             .configurarProdutor(garraManager)
             .adicionarConsumidor(maquinaManager);
 
-        new AcaoPUpAcionado()
+        new AcaoPowerUpAcionado()
             .configurarProdutor(powerUpManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)

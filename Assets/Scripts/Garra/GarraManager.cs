@@ -3,7 +3,7 @@ using UnityEngine;
 public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,                            
                             AcaoSincroniaComDirecaoDaGarra.ProdutorEvento,
                             AcaoColetado.ConsumidorEvento,
-                            AcaoPUpAcionado.ConsumidorEvento,                            
+                            AcaoPowerUpAcionado.ConsumidorEvento,                            
                             AcaoTempoEsgotado.ConsumidorEvento,
                             AcaoBoardElevadoFim.ConsumidorEvento,
                             AcaoColetadoFim.ConsumidorEvento,
@@ -64,7 +64,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         detectorDeColisoes.registrarConsumidorDeTrigger(this);
     }
 
-    void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isInicio)
         {

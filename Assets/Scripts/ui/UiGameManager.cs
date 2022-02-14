@@ -5,7 +5,7 @@ public class UiGameManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
                              AcaoBoardElevadoFim.ConsumidorEvento,
                              AcaoBotaoPowerUpVazio.ConsumidorEvento,
                              AcaoCacaNiquel.ConsumidorEvento,
-                             AcaoPUpAcionado.ConsumidorEvento,
+                             AcaoPowerUpAcionado.ConsumidorEvento,
                              AcaoDesligarMaquina.ConsumidorEvento
 {
     private ModalResultadosManager modalResultados;
@@ -56,9 +56,9 @@ public class UiGameManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         ((AcaoCacaNiquel.ConsumidorEvento)modalResultados).consumirEvento(evento);
     }
 
-    void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        ((AcaoPUpAcionado.ConsumidorEvento)scrollManager).consumirEvento(evento);
+        ((AcaoPowerUpAcionado.ConsumidorEvento)scrollManager).consumirEvento(evento);
     }
 
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
