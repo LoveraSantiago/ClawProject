@@ -26,7 +26,7 @@ public class FactoryPowerUpEntidade
         poolPups = new PoolPowerUps()
             .addPup(PowerUpEnums.TIPO.BOMBA_DA_GARRA   , new FactoryPowerUpBomba())
             .addPup(PowerUpEnums.TIPO.MISSIL_NUCLEAR   , new FactoryPupMissilNuclear())
-            .addPup(PowerUpEnums.TIPO.MINA_TERRESTRE   , new FactoryPupMinaTerrestre())
+            .addPup(PowerUpEnums.TIPO.MINA_TERRESTRE   , new FactoryPowerUpMinaTerrestre())
             .addPup(PowerUpEnums.TIPO.MISSIL_TELEGUIADO, new FactoryPupMissilTeleguiado())
             .addPup(PowerUpEnums.TIPO.IGUAL            , new FactoryPowerUpIgual())
             .addPup(PowerUpEnums.TIPO.TELEPORTE        , new FactoryPupTeleporte())            
