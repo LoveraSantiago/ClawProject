@@ -30,7 +30,7 @@ public class FactoryPowerUpEntidade
             .addPup(PowerUpEnums.TIPO.MISSIL_TELEGUIADO, new FactoryPupMissilTeleguiado())
             .addPup(PowerUpEnums.TIPO.IGUAL            , new FactoryPupIgual())
             .addPup(PowerUpEnums.TIPO.TELEPORTE        , new FactoryPupTeleporte())            
-            .addPup(PowerUpEnums.TIPO.CORINGA          , new FactoryPupCoringa())
+            .addPup(PowerUpEnums.TIPO.CORINGA          , new FactoryPowerUpCoringa())
             .addPup(PowerUpEnums.TIPO.MINI_ASAS        , new FactoryPupMiniAsas())
             .addPup(PowerUpEnums.TIPO.ASAS             , new FactoryPowerUpAsas())
             .addPup(PowerUpEnums.TIPO.BURACO_NEGRO     , new FactoryPowerUpBuracoNegro())
