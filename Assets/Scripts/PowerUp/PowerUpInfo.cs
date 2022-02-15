@@ -21,8 +21,7 @@ public class PowerUpInfo
     private PowerUpEntidade pupEntidade;
     public  Coletavel coletavel { get; private set; }
     
-    public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }    
-    public PowerUpInteracaoComDisplayColetado interacaoDisplayColetado { get; private set; }
+    public InteracaoPowerUpComComponente interacaoComComponentes { get; private set; }    
 
     private PowerUpInfo(ESTADO estado)
     {
@@ -33,9 +32,8 @@ public class PowerUpInfo
     {
         this.pupEntidade = pupEntidade;
 
-        AbstractPowerUpGo interacaoComPowerUp = pupEntidade.getPowerUpGo();
-        interacaoComGarra = interacaoComPowerUp.getObjInteracaoComGarra();
-        interacaoDisplayColetado = interacaoComPowerUp.getObjInteracaoDisplayColetado();
+        AbstractPowerUpGo powerUpGo = pupEntidade.getPowerUpGo();
+        interacaoComComponentes = powerUpGo.getInteracaoComComponente();        
     }
 
     public PowerUpInfo configurarPupEntidade(PowerUpEntidade pupEntidade, Vector3 posInicial)

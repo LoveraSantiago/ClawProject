@@ -48,9 +48,13 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
-    public void receberGarraInteracaoComPowerUp(PowerUpInteracaoComGarra garraInteracaoPowerUp, float tempoDuracao)
+    public void receberGarraInteracaoComPowerUp(InteracaoPowerUpComComponente interacaoPupComComponentes, float tempoDuracao)
     {
-        AbstractMovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(garraInteracaoPowerUp);                
+        if (InteracaoComponentesUtils.isInteracaoComGarra(interacaoPupComComponentes))
+        {
+            PowerUpInteracaoComGarra interacaoComGarra = InteracaoComponentesUtils.getAsInteracaoComGarra(interacaoPupComComponentes);
+            AbstractMovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(interacaoComGarra);
+        }
         intervaloFimTempo.configTempoParaAcao(tempoDuracao);
     }   
 

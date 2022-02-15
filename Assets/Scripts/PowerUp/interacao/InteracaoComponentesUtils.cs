@@ -10,7 +10,7 @@ public class InteracaoComponentesUtils
         return interacao.GetType() == typeof(PowerUpInteracaoComDisplayColetado);
     }
 
-    public PowerUpInteracaoComGarra getAsInteracaoComGarra(InteracaoPowerUpComComponente interacao)
+    public static PowerUpInteracaoComGarra getAsInteracaoComGarra(InteracaoPowerUpComComponente interacao)
     {
         if (isInteracaoComGarra(interacao))
         {
@@ -22,7 +22,7 @@ public class InteracaoComponentesUtils
         }
     }
 
-    public PowerUpInteracaoComDisplayColetado getAsInteracaoComDisplayColetado(InteracaoPowerUpComComponente interacao)
+    public static PowerUpInteracaoComDisplayColetado getAsInteracaoComDisplayColetado(InteracaoPowerUpComComponente interacao)
     {
         if (isInteracaoComDisplayColetado(interacao))
         {

@@ -42,9 +42,11 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
 
     public void processarPowerUp(PowerUpInfo evento)
     {
-        if (evento.interacaoDisplayColetado != null)
+        InteracaoPowerUpComComponente interacaoPupCComponentes = evento.interacaoComComponentes;
+        if (InteracaoComponentesUtils.isInteracaoComDisplayColetado(interacaoPupCComponentes))            
         {
-            displayDeColetados.processarPowerUp(evento.tipo, evento.interacaoDisplayColetado);
+            PowerUpInteracaoComDisplayColetado interacaoDisplayColetado = InteracaoComponentesUtils.getAsInteracaoComDisplayColetado(interacaoPupCComponentes);
+            displayDeColetados.processarPowerUp(evento.tipo, interacaoDisplayColetado);
         }
     }
 
