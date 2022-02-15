@@ -2,12 +2,12 @@ public class InteracaoComponentesUtils
 {
     public static bool isInteracaoComGarra(InteracaoPowerUpComComponente interacao)
     {
-        return interacao.GetType() == typeof(PowerUpInteracaoComGarra);
+        return typeof(PowerUpInteracaoComGarra).IsAssignableFrom(interacao.GetType());        
     }
 
     public static bool isInteracaoComDisplayColetado(InteracaoPowerUpComComponente interacao)
     {
-        return interacao.GetType() == typeof(PowerUpInteracaoComDisplayColetado);
+        return typeof(PowerUpInteracaoComDisplayColetado).IsAssignableFrom(interacao.GetType());        
     }
 
     public static PowerUpInteracaoComGarra getAsInteracaoComGarra(InteracaoPowerUpComComponente interacao)
