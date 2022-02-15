@@ -23,9 +23,9 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     public MissilTeleguiadoPowerUpGo() : 
         base(powerUpDto.MissilTeleguiadoDto.MissilGo, "missil-teleguiado"){}
 
-    public PowerUpEnums.INTERACAOGARRA getInteracaoComGarra()
+    public TipoInteracaoGarra getInteracaoComGarra()
     {
-        return PowerUpEnums.INTERACAOGARRA.PARADO;
+        return TipoInteracaoGarra.PARADO;
     }
 
     public override InteracaoPowerUpComComponente getInteracaoComComponente()

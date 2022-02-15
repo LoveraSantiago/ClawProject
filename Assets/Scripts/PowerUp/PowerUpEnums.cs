@@ -21,10 +21,5 @@ public class PowerUpEnums
         public static readonly string LEVITACAO    = "LEVITAÇÃO";
         public static readonly string MECANISMO    = "MECANISMO";
         public static readonly string IMPULSO      = "IMPULSO";
-    }
-
-    public enum INTERACAOGARRA
-    {
-        MOVIMENTO, PARADO, NAO_INTERACAO
-    }
+    }  
 }

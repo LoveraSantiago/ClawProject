@@ -14,10 +14,5 @@ public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo,
     public override InteracaoPowerUpComComponente getInteracaoComComponente()
     {
         return this;
-    }
-
-    public PowerUpEnums.INTERACAOGARRA getInteracaoComGarra()
-    {
-        return PowerUpEnums.INTERACAOGARRA.NAO_INTERACAO;
-    }                   
+    }                    
 }

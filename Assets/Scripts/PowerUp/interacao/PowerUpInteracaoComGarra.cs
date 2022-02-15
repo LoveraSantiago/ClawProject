@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface PowerUpInteracaoComGarra : InteracaoPowerUpComComponente
 {
-    PowerUpEnums.INTERACAOGARRA getInteracaoComGarra();
+    TipoInteracaoGarra getInteracaoComGarra();
 
     float getAnguloParaGarraSegurar();    
     void iniciar();
@@ -12,5 +12,5 @@ public interface PowerUpInteracaoComGarra : InteracaoPowerUpComComponente
     void ligarGravidadeHum();
     void fixarEixoX();
     //TODO garra nao deve cuidar de timeout
-    void timeout();
+    void timeout();    
 }

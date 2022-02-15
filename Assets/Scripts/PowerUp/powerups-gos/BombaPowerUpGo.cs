@@ -16,9 +16,9 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         goColetavel.SetActive(false);
     }
 
-    public PowerUpEnums.INTERACAOGARRA getInteracaoComGarra()
+    public TipoInteracaoGarra getInteracaoComGarra()
     {
-        return PowerUpEnums.INTERACAOGARRA.MOVIMENTO;
+        return TipoInteracaoGarra.MOVIMENTO;
     }
 
     public override InteracaoPowerUpComComponente getInteracaoComComponente()
