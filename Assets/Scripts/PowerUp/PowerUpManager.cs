@@ -33,6 +33,7 @@ public class PowerUpManager : PowerUpAcionamento,
         indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
+        iniciarPowerUp(powerUpInfo);
     }
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp, Vector3 posicaoAtual)
@@ -40,6 +41,7 @@ public class PowerUpManager : PowerUpAcionamento,
         indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp, posicaoAtual);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
+        iniciarPowerUp(powerUpInfo);
     }   
 
     public void preFinalizar()
@@ -62,4 +64,13 @@ public class PowerUpManager : PowerUpAcionamento,
     {
         return produtorDeEventoPowerUp;
     }    
+
+    private void iniciarPowerUp(PowerUpInfo powerUpInfo)
+    {
+        InteracaoPowerUpComComponente interacao = powerUpInfo.interacaoComComponentes;
+        if (InteracaoComponentesUtils.isNotInteracaoComGarra(interacao))
+        {
+            interacao.iniciar();
+        }
+    }
 }

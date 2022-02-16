@@ -1,8 +1,13 @@
 public class InteracaoComponentesUtils 
 {
-    private static bool isInteracaoComGarra(InteracaoPowerUpComComponente interacao)
+    public static bool isInteracaoComGarra(InteracaoPowerUpComComponente interacao)
     {
         return typeof(PowerUpInteracaoComGarra).IsAssignableFrom(interacao.GetType());        
+    }
+
+    public static bool isNotInteracaoComGarra(InteracaoPowerUpComComponente interacao)
+    {
+        return !isInteracaoComGarra(interacao);
     }
 
     public static bool isInteracaoComDisplayColetado(InteracaoPowerUpComComponente interacao)
