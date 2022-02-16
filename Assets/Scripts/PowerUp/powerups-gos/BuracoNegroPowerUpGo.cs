@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuracoNegroPowerUpGo : PowerUpNaoInteracaoComGarra
+public class BuracoNegroPowerUpGo : PowerUpSemInteracao
 {
     public BuracoNegroPowerUpGo() : 
         base(powerUpDto.BuracoNegroDto.BuracoNegroGo, "Buraco Negro"){}

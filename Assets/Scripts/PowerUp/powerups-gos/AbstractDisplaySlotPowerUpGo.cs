@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class AbstractDisplaySlotPowerUpGo : PowerUpNaoInteracaoComGarra,
+public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
                                                      PowerUpInteracaoComDisplayColetado
 {
     private static InformacaoDisplayColetado informacaoDisplayColetado;   

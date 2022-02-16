@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
+public class MolaPowerUpGo : PowerUpSemInteracao
 {
     private static readonly int IDLE = Animator.StringToHash("idle");
     private static readonly int JUMP = Animator.StringToHash("mola-jump");

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra,
+public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
                                              Transformador<Coletavel, IEnumerator>
 {
     private static readonly int VOADA = Animator.StringToHash("voada");

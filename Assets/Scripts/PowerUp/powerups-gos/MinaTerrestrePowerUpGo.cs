@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MinaTerrestrePowerUpGo : PowerUpNaoInteracaoComGarra
+public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
 {
     private static Vector3 posInicial;
 

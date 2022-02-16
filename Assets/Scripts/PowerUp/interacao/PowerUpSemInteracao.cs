@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public abstract class PowerUpNaoInteracaoComGarra : AbstractPowerUpGo, 
+public abstract class PowerUpSemInteracao : AbstractPowerUpGo, 
                                                     InteracaoPowerUpComComponente
 {
-    public PowerUpNaoInteracaoComGarra(GameObject goTile, string nome): base(goTile, nome){}
+    public PowerUpSemInteracao(GameObject goTile, string nome): base(goTile, nome){}
 
-    public PowerUpNaoInteracaoComGarra(
+    public PowerUpSemInteracao(
         GameObject goTile, Transformador<GameObject, GameObject> getGoComSprRenderer, string nome) 
         : base(goTile, getGoComSprRenderer, nome)
     {
