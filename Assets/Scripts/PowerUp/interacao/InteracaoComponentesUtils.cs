@@ -1,6 +1,6 @@
 public class InteracaoComponentesUtils 
 {
-    public static bool isInteracaoComGarra(InteracaoPowerUpComComponente interacao)
+    private static bool isInteracaoComGarra(InteracaoPowerUpComComponente interacao)
     {
         return typeof(PowerUpInteracaoComGarra).IsAssignableFrom(interacao.GetType());        
     }
@@ -18,7 +18,7 @@ public class InteracaoComponentesUtils
         }
         else
         {
-            return null;
+            return new PowerUpInteracaoComGarraVazio();
         }
     }
 
