@@ -47,16 +47,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
             if (agendados.possuiAgendamentoDeEvento())
             {
-                if (grupoDisplays.isTodosDisplayOcupados())
-                {
-                    Utils.MonoBehaviour.StartCoroutine(
-                        finalizacaoCompletaTodosDisplaysOcupados(
-                            agendados.infoColetadoDto, agendados.arcoIris, agendados.executor));
-                }
-                else
-                {
-                    finalizacaoTodosDisplaysNaoOcupados(agendados.executor);
-                }
+                finalizacaoPeloEstadoDisplay();
                 agendados.cleanOutros();
             }
             else
@@ -146,6 +137,23 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         yield return grupoDisplays.limparSprColetado(1);
         yield return grupoDisplays.limparSprColetado(2);
         yield return new WaitForSeconds(grupoDisplays.displaysSlotsDto.FimDelay);
+    }
+
+    private void finalizacaoPeloEstadoDisplay()
+    {
+        if (grupoDisplays.isTodosDisplayOcupados())
+        {
+            Utils.MonoBehaviour.StartCoroutine(finalizacaoCompletaTodosDisplaysOcupados(agendados));
+        }
+        else
+        {
+            finalizacaoTodosDisplaysNaoOcupados(agendados.executor);
+        }
+    }
+
+    private IEnumerator finalizacaoCompletaTodosDisplaysOcupados(AgendamentoDisplayColetados agendados)
+    {
+        yield return finalizacaoCompletaTodosDisplaysOcupados(agendados.infoColetadoDto, agendados.arcoIris, agendados.executor);
     }
 
     private IEnumerator finalizacaoCompletaTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
