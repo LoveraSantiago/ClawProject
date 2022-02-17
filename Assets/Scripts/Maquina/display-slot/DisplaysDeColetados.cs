@@ -50,12 +50,12 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
                 if (grupoDisplays.isTodosDisplayOcupados())
                 {
                     Utils.MonoBehaviour.StartCoroutine(
-                        limpezaEFimTodosDisplaysOcupados(
+                        finalizacaoCompletaTodosDisplaysOcupados(
                             agendados.infoColetadoDto, agendados.arcoIris, agendados.executor));
                 }
                 else
                 {
-                    fimLimpezaTodosDisplaysNaoOcupados(agendados.executor);
+                    finalizacaoTodosDisplaysNaoOcupados(agendados.executor);
                 }
                 agendados.cleanOutros();
             }
@@ -100,7 +100,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
             }
             else
             {
-                fimLimpezaTodosDisplaysOcupados(arcoIris, executorPosEvento);                
+                finalizacaoTodosDisplaysOcupados(arcoIris, executorPosEvento);                
             }
         }
         else if (powerUpAcionado)
@@ -109,7 +109,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         }
         else if(!powerUpAcionado)
         {
-            fimLimpezaTodosDisplaysNaoOcupados(executorPosEvento);                        
+            finalizacaoTodosDisplaysNaoOcupados(executorPosEvento);                        
         }
         displayColetando = false;
     }                
@@ -148,20 +148,20 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         yield return new WaitForSeconds(grupoDisplays.displaysSlotsDto.FimDelay);
     }
 
-    private IEnumerator limpezaEFimTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
+    private IEnumerator finalizacaoCompletaTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
         yield return limpezaTodosDisplaysOcupados(evento, arcoIris);
-        fimLimpezaTodosDisplaysOcupados(arcoIris, executorPosEvento);
+        finalizacaoTodosDisplaysOcupados(arcoIris, executorPosEvento);
     }
 
-    private void fimLimpezaTodosDisplaysOcupados(ArcoIrisEfeito arcoIris, Executor executorPosEvento)
+    private void finalizacaoTodosDisplaysOcupados(ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
         arcoIris.desligarEfeito();
         produtorDeEventoFimColetagem.produziuEvento(ColetadoFim.ofNormal(new bool[] { true, true, true }));
         executorPosEvento.execute();
     }
 
-    private void fimLimpezaTodosDisplaysNaoOcupados(Executor executorPosEvento)
+    private void finalizacaoTodosDisplaysNaoOcupados(Executor executorPosEvento)
     {        
         produtorDeEventoFimColetagem.produziuEvento(ColetadoFim.ofNormal(new bool[] { false, false, false }));
         executorPosEvento.execute();
