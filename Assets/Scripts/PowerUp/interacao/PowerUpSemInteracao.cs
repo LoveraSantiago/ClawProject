@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public abstract class PowerUpSemInteracao : AbstractPowerUpGo, 
-                                                    InteracaoPowerUpComComponente
+                                            InteracaoPowerUpComComponente
 {
     public PowerUpSemInteracao(GameObject goTile, string nome): base(goTile, nome){}
 
