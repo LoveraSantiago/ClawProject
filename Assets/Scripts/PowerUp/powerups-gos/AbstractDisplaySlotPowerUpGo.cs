@@ -4,8 +4,6 @@ using UnityEngine;
 public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
                                                      PowerUpInteracaoComDisplayColetado
 {
-    private static InformacaoDisplayColetado informacaoDisplayColetado;   
-
     private bool finalizado;
     private int contador;
     private Coroutine coroutine;
@@ -126,10 +124,5 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
         }
     }
 
-    protected abstract PowerUpEnums.TIPO getTipoRestartPup();        
-
-    public static void configurar(InformacaoDisplayColetado informacaoDisplayColetadoArg)
-    {
-        informacaoDisplayColetado = informacaoDisplayColetadoArg;
-    }
+    protected abstract PowerUpEnums.TIPO getTipoRestartPup();            
 }

@@ -25,7 +25,7 @@ public class PowerUpManager : PowerUpAcionamento,
         Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdem)
     {
         AbstractTrocaPowerUpGo.configurarTrocadorDeOrdem(fornecedorTrocadorDeOrdem);
-        AbstractDisplaySlotPowerUpGo.configurar(informacaoDisplayColetado);
+        AbstractPowerUpGo.configurar(informacaoDisplayColetado);
     }
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp)
