@@ -196,6 +196,11 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         return grupoDisplays.isTodosDisplaysDesocupados();
     }
 
+    public int getQtdDisplaysOcupados()
+    {
+        return grupoDisplays.getQtdDisplaysOcupados();
+    }
+
     public void restartPowerUp(PowerUpEnums.TIPO tipo, PowerUpInteracaoComDisplayColetado interacao)
     {
         processarPowerUp(tipo, interacao);
