@@ -17,6 +17,6 @@ public class DoisAlvosSelecionados
 
         selecionadorDeAlvos.ligarMiraFinal();
 
-        Utils.MonoBehaviour.StartCoroutine(coroutineConsumidora.transformar(coletavel1, coletavel2));
+        yield return Utils.MonoBehaviour.StartCoroutine(coroutineConsumidora.transformar(coletavel1, coletavel2));
     }
 }
