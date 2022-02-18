@@ -12,7 +12,7 @@ public class DoisAlvosSelecionados
         Coletavel coletavel1 = selecionadorDeAlvos.coletavelSelecionado;
         coletavel1.ligarAnimacaoMiraSelecionado();
 
-        yield return selecionadorDeAlvos.selecionarAlvoDiferenteDe(inputGame, coletavel1.nome);
+        yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
         Coletavel coletavel2 = selecionadorDeAlvos.coletavelSelecionado;
 
         selecionadorDeAlvos.ligarMiraFinal();

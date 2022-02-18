@@ -1,8 +1,15 @@
 using System.Collections;
+using System.Collections.Generic;
 
 public class SelecionadorDeAlvos 
 {
-    public Coletavel coletavelSelecionado { get; private set; }    
+    public Coletavel coletavelSelecionado { get; private set; }
+    private List<Coletavel> coletaveisJaSelecionados;
+
+    public SelecionadorDeAlvos()
+    {
+        coletaveisJaSelecionados = new List<Coletavel>();
+    }
 
     public SelecionadorDeAlvos ligarMiras()
     {
@@ -23,11 +30,6 @@ public class SelecionadorDeAlvos
 
     public IEnumerator selecionarAlvo(InputGame inputGame)
     {
-        return selecionarAlvoDiferenteDe(inputGame, "");
-    }
-
-    public IEnumerator selecionarAlvoDiferenteDe(InputGame inputGame, string nome)
-    {
         coletavelSelecionado = null;
         Coletavel coletavel = null;
         while (coletavelSelecionado == null)
@@ -35,18 +37,18 @@ public class SelecionadorDeAlvos
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
                 coletavel = ColetavelHit.hit(inputGame);
-                if (coletavel != null && isNotEqualsColetavel(coletavel, nome))
+                if (coletavel != null && isColetavelNaoSelecionadoAntes(coletavel))
                 {
                     coletavelSelecionado = coletavel;
-                }                
+                }
             }
             yield return null;
         }
         yield return null;
-    }
+    }    
 
-    private bool isNotEqualsColetavel(Coletavel coletavel, string nome)
+    private bool isColetavelNaoSelecionadoAntes(Coletavel coletavel)
     {
-        return !coletavel.nome.Equals(nome);
+        return !coletaveisJaSelecionados.Contains(coletavel);        
     }
 }
