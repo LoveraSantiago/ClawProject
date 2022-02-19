@@ -26,6 +26,11 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao
     public override void iniciarPup()
     {
         ligar();
+
+        int totalOcupados = 3 - informacaoDisplayColetado.getQtdDisplaysOcupados();
+
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        helperInGame.ligarMirasNosColetaveis();
     }
 
     public override void resetPup()

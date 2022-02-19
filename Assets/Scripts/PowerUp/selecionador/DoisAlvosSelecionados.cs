@@ -2,6 +2,7 @@ using System.Collections;
 
 public class DoisAlvosSelecionados 
 {
+    //BiTransformadorUnario refatorar para usar Transformador 
     public IEnumerator onSelecionados(InputGame inputGame, BiTransformadorUnario<Coletavel, IEnumerator> coroutineConsumidora)
     {
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos()
