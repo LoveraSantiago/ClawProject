@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class HumAlvoSelecionado 
+public class HumAlvoSelecionado : SelecaoDeAlvos<Coletavel>
 {   
     public IEnumerator onSelecionado(InputGame inputGame, Transformador<Coletavel, IEnumerator> coroutineConsumidora)
     {

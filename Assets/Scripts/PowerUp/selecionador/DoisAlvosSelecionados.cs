@@ -1,8 +1,8 @@
 using System.Collections;
 
-public class DoisAlvosSelecionados 
+public class DoisAlvosSelecionados : SelecaoDeAlvos<DuplaDeColetaveisDto>
 {    
-    public IEnumerator onSelecionados(InputGame inputGame, Transformador<DuplaDeColetaveisDto, IEnumerator> coroutineConsumidora)
+    public IEnumerator onSelecionado(InputGame inputGame, Transformador<DuplaDeColetaveisDto, IEnumerator> coroutineConsumidora)
     {
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos()
            .ligarMiras();
