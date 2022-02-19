@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
-                                                    BiTransformadorUnario<Coletavel, IEnumerator>
+                                                    Transformador<DuplaDeColetaveisDto, IEnumerator>
 {
     private bool hitColetavel2;
     private Coroutine coroutine;
@@ -18,13 +18,13 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
         coroutine = Utils.MonoBehaviour.StartCoroutine(alvosSelecionados.onSelecionados(inputGame, this));
     }
 
-    public IEnumerator transformar(Coletavel coletavel1, Coletavel coletavel2)
+    public IEnumerator transformar(DuplaDeColetaveisDto duplaDeColetaveis)
     {
         hitColetavel2 = true;
-        return realizarTroca(coletavel1, coletavel2);
+        return realizarTroca(duplaDeColetaveis);
     }    
 
-    protected abstract IEnumerator realizarTroca(Coletavel coletavel1, Coletavel coletavel2);    
+    protected abstract IEnumerator realizarTroca(DuplaDeColetaveisDto duplaDeColetaveis);    
 
     public override void timeout()
     {

@@ -1,9 +1,8 @@
 using System.Collections;
 
 public class DoisAlvosSelecionados 
-{
-    //BiTransformadorUnario refatorar para usar Transformador 
-    public IEnumerator onSelecionados(InputGame inputGame, BiTransformadorUnario<Coletavel, IEnumerator> coroutineConsumidora)
+{    
+    public IEnumerator onSelecionados(InputGame inputGame, Transformador<DuplaDeColetaveisDto, IEnumerator> coroutineConsumidora)
     {
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos()
            .ligarMiras();
@@ -18,6 +17,7 @@ public class DoisAlvosSelecionados
 
         selecionadorDeAlvos.ligarMiraFinal();
 
-        yield return Utils.MonoBehaviour.StartCoroutine(coroutineConsumidora.transformar(coletavel1, coletavel2));
+        DuplaDeColetaveisDto duplaDeColetaveis = new DuplaDeColetaveisDto(coletavel1, coletavel2);
+        yield return Utils.MonoBehaviour.StartCoroutine(coroutineConsumidora.transformar(duplaDeColetaveis));
     }
 }
