@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuracoNegroPowerUpGo : PowerUpSemInteracao
+public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
+                                    Transformador<TrioDeColetaveis, IEnumerator>
 {
     public Coletavel atraido1;
     public Coletavel atraido2;
     public Coletavel atraido3;
+
+    private Coroutine coroutine;
 
     public BuracoNegroPowerUpGo() : 
         base(powerUpDto.BuracoNegroDto.BuracoNegroGo, "Buraco Negro"){}
@@ -27,10 +30,13 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao
     {
         ligar();
 
-        int totalOcupados = 3 - informacaoDisplayColetado.getQtdDisplaysOcupados();
+        int totalDesocupados = 3 - informacaoDisplayColetado.getQtdDisplaysOcupados();
 
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         helperInGame.ligarMirasNosColetaveis();
+
+        AteTresAlvosSelecionados alvosSelecionados = new AteTresAlvosSelecionados(totalDesocupados);
+        coroutine = Utils.MonoBehaviour.StartCoroutine(alvosSelecionados.onSelecionado(inputGame, this));
     }
 
     public override void resetPup()
@@ -38,5 +44,28 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao
         atraido1.desligar();
         atraido2.desligar();
         atraido3.desligar();
+    }
+
+    public IEnumerator transformar(TrioDeColetaveis trioDeColetaveis)
+    {
+        yield return new WaitForSeconds(1);
+
+        ligarColetavelAtraido(atraido1, trioDeColetaveis.coletavel1);
+        ligarColetavelAtraido(atraido2, trioDeColetaveis.coletavel2);
+        ligarColetavelAtraido(atraido3, trioDeColetaveis.coletavel3);
+
+        yield return null;   
+    }
+
+    private void ligarColetavelAtraido(Coletavel coletavelAtracao, Coletavel coletavelSelecionado)
+    {
+        if(coletavelSelecionado != null)
+        {
+            coletavelAtracao.colocarNaPosicao(coletavelSelecionado.getPosicao());
+            coletavelAtracao.receberSprite(coletavelSelecionado.getSprite());
+            coletavelAtracao.ligar();
+
+            coletavelSelecionado.desligar();
+        }
     }
 }
