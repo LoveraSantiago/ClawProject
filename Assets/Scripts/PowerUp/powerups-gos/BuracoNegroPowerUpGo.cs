@@ -44,17 +44,52 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         atraido1.desligar();
         atraido2.desligar();
         atraido3.desligar();
+
+        desligar();
     }
 
     public IEnumerator transformar(TrioDeColetaveis trioDeColetaveis)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         ligarColetavelAtraido(atraido1, trioDeColetaveis.coletavel1);
         ligarColetavelAtraido(atraido2, trioDeColetaveis.coletavel2);
         ligarColetavelAtraido(atraido3, trioDeColetaveis.coletavel3);
+        
+        while (!isTodosColetados(trioDeColetaveis))
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
 
+        powerUpFinalizacao.finalizado();
+        resetPup();
         yield return null;   
+    }    
+
+    public bool isTodosColetados(TrioDeColetaveis trioDeColetaveis)
+    {
+        return (isColetado(atraido1, trioDeColetaveis.coletavel1) &
+                isColetado(atraido2, trioDeColetaveis.coletavel2) &
+                isColetado(atraido3, trioDeColetaveis.coletavel3));
+    }
+
+    public bool isColetado(Coletavel atraido, Coletavel coletavelSelecionado)
+    {
+        if (atraido.isNotAtivo())
+        {
+            return true;
+        }
+        else
+        {
+            Debug.Log("nome" + atraido.nome +  " pos " + atraido.getPosicao());
+            if (atraido.getPosicao().y > 3)
+            {
+                coletavelSelecionado.colocarNaPosicao(atraido.getPosicao());
+                atraido.desligar();
+                powerUpFinalizacao.preFinalizar(coletavelSelecionado);
+            }
+            return false;
+        }
     }
 
     private void ligarColetavelAtraido(Coletavel coletavelAtracao, Coletavel coletavelSelecionado)
