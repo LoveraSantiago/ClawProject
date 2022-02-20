@@ -102,6 +102,11 @@ public abstract class GO
         return go.transform.position;
     }
 
+    public Quaternion getAngulo()
+    {
+        return go.transform.rotation;
+    }
+
     protected void setLayer(int layer)
     {
         go.layer = layer;
