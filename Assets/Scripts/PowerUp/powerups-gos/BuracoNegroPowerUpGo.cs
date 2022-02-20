@@ -11,6 +11,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
 
     private Coroutine coroutine;
     private bool delayTresOcupados;
+    private bool preFinalizadoJaAcionado;
 
     public BuracoNegroPowerUpGo() : 
         base(powerUpDto.BuracoNegroDto.BuracoNegroGo, "Buraco Negro"){}
@@ -69,6 +70,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         
         while (!isTodosColetados(trioDeColetaveis))
         {
+            preFinalizadoJaAcionado = false;
             yield return new WaitForSeconds(0.5f);
         }
 
@@ -93,11 +95,13 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         else
         {
             Debug.Log("nome" + atraido.nome +  " pos " + atraido.getPosicao());
-            if (atraido.getPosicao().y > 3)
+            if (atraido.getPosicao().y > 3 && !preFinalizadoJaAcionado)
             {
                 coletavelSelecionado.colocarNaPosicao(atraido.getPosicao());
                 atraido.desligar();
                 powerUpFinalizacao.preFinalizar(coletavelSelecionado);
+
+                preFinalizadoJaAcionado = true;
             }
             return false;
         }
@@ -108,8 +112,8 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         if(coletavelSelecionado != null)
         {
             coletavelAtracao.colocarNaPosicao(coletavelSelecionado.getPosicao());
-            coletavelAtracao.receberSprite(coletavelSelecionado.getSprite());
-            coletavelAtracao.ligar();
+            coletavelAtracao.receberSprite(coletavelSelecionado.getSprite(), coletavelSelecionado.ro);
+            coletavelAtracao.ligar();            
 
             coletavelSelecionado.desligar();
         }
