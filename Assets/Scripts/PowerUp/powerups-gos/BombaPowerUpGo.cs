@@ -13,7 +13,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     public BombaPowerUpGo()
         : base(powerUpDto.BombaDto.BombaGo, "bomba")
     {            
-        goColetavel.SetActive(false);
+        go.SetActive(false);
     }
 
     public TipoInteracaoGarra getInteracaoComGarra()
@@ -33,12 +33,12 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
 
     public override void configurarPup()
     {
-        goColetavel.GetComponent<DetectorDeColisoes>()
+        go.GetComponent<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);
 
-        animacao = new AnimacaoExplosaoPup(goColetavel);
+        animacao = new AnimacaoExplosaoPup(go);
 
-        circleCollider = goColetavel.GetComponent<CircleCollider2D>();
+        circleCollider = go.GetComponent<CircleCollider2D>();
     }
 
     public override void iniciarPup()
@@ -88,7 +88,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     private void processarExplosao()
     {
         LayerMask mask = LayerMask.GetMask("Coletavel");
-        Collider2D[] acertados = Physics2D.OverlapCircleAll(goColetavel.transform.position, powerUpDto.BombaDto.RaioExplosao, mask);
+        Collider2D[] acertados = Physics2D.OverlapCircleAll(go.transform.position, powerUpDto.BombaDto.RaioExplosao, mask);
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
 
         for (int contador = 0; contador < acertados.Length; contador++)

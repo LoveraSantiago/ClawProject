@@ -16,13 +16,13 @@ public class Coletavel : GO
     public Coletavel()
         : base()
     {
-        animacao = new ColetavelAnimacao(goColetavel);
+        animacao = new ColetavelAnimacao(go);
     }
 
-    public Coletavel(GameObject goTile, string nome)
-        : base(goTile, nome)
+    public Coletavel(Transform transform)
+        : base(transform)
     {
-        animacao = new ColetavelAnimacao(goColetavel);
+        animacao = new ColetavelAnimacao(go);
     }
 
     public void ligarAnimacaoMira()

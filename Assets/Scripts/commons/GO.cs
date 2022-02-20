@@ -9,19 +9,26 @@ public abstract class GO
 
     private bool ativo;   
     
-    protected GameObject goColetavel;
+    protected GameObject go;
     protected Rigidbody2D rigidbody;
     protected SpriteRenderer spriteRenderer;    
     
     public GO() :this(context.mainTile, context.nomeador.getName()){}   
 
+    public GO(Transform tranform)
+    {
+        go = tranform.gameObject;
+        spriteRenderer = go.GetComponent<SpriteRenderer>();
+        rigidbody = go.GetComponent<Rigidbody2D>();
+    }
+
     public GO(GameObject go, string nome)
     {
-        goColetavel = GameObject.Instantiate(go, go.transform.position, Quaternion.Euler(Vector3.zero), context.mainTileParent);
+        this.go = GameObject.Instantiate(go, go.transform.position, Quaternion.Euler(Vector3.zero), context.mainTileParent);
         this.nome = nome;
-        goColetavel.name = nome;
-        spriteRenderer = goColetavel.GetComponent<SpriteRenderer>();        
-        rigidbody = goColetavel.GetComponent<Rigidbody2D>();        
+        this.go.name = nome;
+        spriteRenderer = this.go.GetComponent<SpriteRenderer>();
+        rigidbody = this.go.GetComponent<Rigidbody2D>();        
     }   
 
     public GO(GameObject go, 
@@ -29,7 +36,7 @@ public abstract class GO
               string nome)
         :this(go, nome)
     {
-        GameObject goSprite = getGoComSprRenderer.transformar(goColetavel);
+        GameObject goSprite = getGoComSprRenderer.transformar(this.go);
         spriteRenderer = goSprite.GetComponent<SpriteRenderer>();
     }
 
@@ -39,7 +46,7 @@ public abstract class GO
     }
 
     public virtual void colocarNaPosicao(Vector3 posicao) {        
-        goColetavel.transform.position = posicao;
+        go.transform.position = posicao;
     }
 
     public void colocarNaPosicao(Vector3 posicao, Quaternion rotacao) {
@@ -68,7 +75,7 @@ public abstract class GO
 
     public void disparar(float angulo, float velocidade)
     {
-        disparar(goColetavel.transform.position, angulo, velocidade);
+        disparar(go.transform.position, angulo, velocidade);
     }   
 
     public virtual void parar()
@@ -80,28 +87,28 @@ public abstract class GO
     public void ligar()
     {
         ativo = true;
-        goColetavel.SetActive(true);
+        go.SetActive(true);
     }
 
     public void desligar()
     {
         ativo = false;
-        goColetavel.SetActive(false);
+        go.SetActive(false);
     }
 
     public Vector3 getPosicao()
     {
-        return goColetavel.transform.position;
+        return go.transform.position;
     }
 
     protected void setLayer(int layer)
     {
-        goColetavel.layer = layer;
+        go.layer = layer;
     }
 
     public GameObject getGo()
     {
-        return goColetavel;
+        return go;
     }   
 
     public bool isAtivo()
