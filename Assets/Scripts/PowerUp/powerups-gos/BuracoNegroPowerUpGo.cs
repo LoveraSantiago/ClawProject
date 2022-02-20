@@ -10,6 +10,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
     public Coletavel atraido3;
 
     private Coroutine coroutine;
+    private bool delayTresOcupados;
 
     public BuracoNegroPowerUpGo() : 
         base(powerUpDto.BuracoNegroDto.BuracoNegroGo, "Buraco Negro"){}
@@ -31,6 +32,11 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         ligar();
 
         int totalDesocupados = 3 - informacaoDisplayColetado.getQtdDisplaysOcupados();
+        if(totalDesocupados == 0)
+        {
+            delayTresOcupados = true;
+            totalDesocupados = 3;
+        }
 
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         helperInGame.ligarMirasNosColetaveis();
@@ -46,11 +52,16 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         atraido3.desligar();
 
         desligar();
+        delayTresOcupados = false;
     }
 
     public IEnumerator transformar(TrioDeColetaveis trioDeColetaveis)
     {
         yield return new WaitForSeconds(0.5f);
+        if (delayTresOcupados)
+        {
+            yield return new WaitForSeconds(1f);
+        }
 
         ligarColetavelAtraido(atraido1, trioDeColetaveis.coletavel1);
         ligarColetavelAtraido(atraido2, trioDeColetaveis.coletavel2);
