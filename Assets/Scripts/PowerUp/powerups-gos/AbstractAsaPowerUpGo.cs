@@ -43,7 +43,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
 
         colocarNaPosicao(coletavelAcertado.getPosicao());
         receberSprite(coletavelAcertado.getSprite(), powerUpDto.AsaDto.Layer);
-        coletavelAcertado.desligar();
+        coletavelAcertado.desligar();        
         ligar();
 
         setGravidade(getGravidadeNegativa());
