@@ -19,13 +19,13 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
     public override void configurarPup()
     {
         Transform transform1 = go.transform.Find("atraido1").transform;
-        atraido1 = new Coletavel(transform1);
+        atraido1 = new Coletavel(transform1);        
 
         Transform transform2 = go.transform.Find("atraido2").transform;
-        atraido2 = new Coletavel(transform2);
+        atraido2 = new Coletavel(transform2);        
 
         Transform transform3 = go.transform.Find("atraido3").transform;
-        atraido3 = new Coletavel(transform3);
+        atraido3 = new Coletavel(transform3);        
     }
 
     public override void iniciarPup()
@@ -113,6 +113,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         {
             coletavelAtracao.colocarNaPosicao(coletavelSelecionado.getPosicao(), coletavelSelecionado.getAngulo());
             coletavelAtracao.receberSprite(coletavelSelecionado.getSprite());
+            coletavelAtracao.colocarNoLayerDestaque();
             coletavelAtracao.ligar();            
 
             coletavelSelecionado.desligar();
