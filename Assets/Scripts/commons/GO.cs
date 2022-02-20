@@ -20,6 +20,7 @@ public abstract class GO
         go = tranform.gameObject;
         spriteRenderer = go.GetComponent<SpriteRenderer>();
         rigidbody = go.GetComponent<Rigidbody2D>();
+        this.nome = go.name;
     }
 
     public GO(GameObject go, string nome)
@@ -114,6 +115,11 @@ public abstract class GO
     public bool isAtivo()
     {
         return ativo;
+    }
+
+    public bool isNotAtivo()
+    {
+        return !isAtivo();
     }
 
     public virtual void ligarGravidadeZero()
