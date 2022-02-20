@@ -1,17 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
                                     Transformador<TrioDeColetaveis, IEnumerator>
 {
+    private bool delayTresOcupados;
+    private bool preFinalizadoJaAcionado;
+    private bool alvosSelecionados;
+
     public Coletavel atraido1;
     public Coletavel atraido2;
     public Coletavel atraido3;
 
     private Coroutine coroutine;
-    private bool delayTresOcupados;
-    private bool preFinalizadoJaAcionado;
 
     public BuracoNegroPowerUpGo() : 
         base(powerUpDto.BuracoNegroDto.BuracoNegroGo, "Buraco Negro"){}
@@ -54,10 +55,13 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
 
         desligar();
         delayTresOcupados = false;
+        alvosSelecionados = false;
     }
 
     public IEnumerator transformar(TrioDeColetaveis trioDeColetaveis)
     {
+        alvosSelecionados = true;
+
         yield return new WaitForSeconds(0.5f);
         if (delayTresOcupados)
         {
@@ -117,6 +121,15 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
             coletavelAtracao.ligar();            
 
             coletavelSelecionado.desligar();
+        }
+    }
+
+    public override void timeout()
+    {
+        if (!alvosSelecionados)
+        {
+            resetPup();
+            powerUpFinalizacao.finalizado();
         }
     }
 }
