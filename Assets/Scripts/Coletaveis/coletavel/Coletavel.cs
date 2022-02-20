@@ -25,6 +25,12 @@ public class Coletavel : GO
         animacao = new ColetavelAnimacao(go);
     }
 
+    public Coletavel(GameObject goTile, string nome)
+        : base(goTile, nome)
+    {
+        animacao = new ColetavelAnimacao(go);
+    }
+
     public void ligarAnimacaoMira()
     {
         animacao.ligarMira();
