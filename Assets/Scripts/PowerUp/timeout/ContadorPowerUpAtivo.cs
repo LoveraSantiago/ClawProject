@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ContadorPowerUpAtivo : ContadorTimeout
 {
     private IntervaloDeTempo intervaloFimTempo;
@@ -11,11 +7,11 @@ public class ContadorPowerUpAtivo : ContadorTimeout
         intervaloFimTempo = new IntervaloDeTempo(duracaoTempo);
     }
 
-    public void contarTimeout()
+    public void contarTimeout(PowerUpAcaoExpirado pupExpiracao)
     {
         if (intervaloFimTempo.contarTempo())
         {
-
+            pupExpiracao.expirar();
         }
     }
 }

@@ -1,4 +1,4 @@
 public class ContadorPowerUpInativo : ContadorTimeout
 {
-    public void contarTimeout(){}
+    public void contarTimeout(PowerUpAcaoExpirado pupExpiracao){}
 }

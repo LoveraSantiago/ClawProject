@@ -1,4 +1,4 @@
 public interface ContadorTimeout 
 {
-    void contarTimeout();
+    void contarTimeout(PowerUpAcaoExpirado pupExpiracao);
 }

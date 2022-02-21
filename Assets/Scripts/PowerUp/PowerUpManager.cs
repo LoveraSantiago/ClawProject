@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PowerUpManager : PowerUpAcaoAcionamento,
                               PowerUpAcaoFinalizacao,
+                              PowerUpAcaoExpirado,
                               AcaoPowerUpAcionado.ProdutorEvento
 {
     private int indiceBtnEmAcao;
@@ -33,7 +34,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void update()
     {
-        contadorTimeout.contarTimeout();
+        contadorTimeout.contarTimeout(this);
     }
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp)
@@ -63,14 +64,14 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
+    public void expirar()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void finalizado()
     {        
         produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofFinalizar(indiceBtnEmAcao));
-    }    
-
-    ProdutorDeEvento<PowerUpInfo> AcaoPowerUpAcionado.ProdutorEvento.getProdutorDeEvento()
-    {
-        return produtorDeEventoPowerUp;
     }    
 
     private void iniciarPowerUp(PowerUpInfo powerUpInfo)
@@ -82,5 +83,10 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
         {
             interacao.iniciar();
         }
-    }
+    }   
+
+    ProdutorDeEvento<PowerUpInfo> AcaoPowerUpAcionado.ProdutorEvento.getProdutorDeEvento()
+    {
+        return produtorDeEventoPowerUp;
+    }    
 }
