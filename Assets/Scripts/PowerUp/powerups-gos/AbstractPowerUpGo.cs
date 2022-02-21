@@ -5,7 +5,7 @@ public abstract class AbstractPowerUpGo : GO
     protected static PowerUpDto powerUpDto;    
 
     protected static InputGame inputGame;
-    protected static PowerUpFinalizacao powerUpFinalizacao;
+    protected static PowerUpAcaoFinalizacao powerUpFinalizacao;
     protected static InformacaoDisplayColetado informacaoDisplayColetado;
 
     private bool configurado;    
@@ -41,7 +41,7 @@ public abstract class AbstractPowerUpGo : GO
         iniciarPup();
     }
 
-    public static void configurarAbstractPowerUp(PowerUpDto powerUpDtoArg, PowerUpFinalizacao powerUpFinalizacaoArg, 
+    public static void configurarAbstractPowerUp(PowerUpDto powerUpDtoArg, PowerUpAcaoFinalizacao powerUpFinalizacaoArg, 
         InputGame inputGameArg)
     {
         powerUpDto = powerUpDtoArg;        

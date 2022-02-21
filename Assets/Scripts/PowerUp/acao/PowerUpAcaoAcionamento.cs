@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface PowerUpAcionamento 
+public interface PowerUpAcaoAcionamento 
 {
     void acionado(int indiceBtn, PowerUpEntidade powerUp);
     void acionado(int indiceBtn, PowerUpEntidade powerUp, Vector3 posicaoAtual);

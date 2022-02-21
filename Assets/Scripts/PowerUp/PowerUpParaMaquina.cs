@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PowerUpParaMaquina : AcaoBotaoPowerUp
 {
-    private static PowerUpAcionamento powerUpAcionamento;
+    private static PowerUpAcaoAcionamento powerUpAcionamento;
     
     private PowerUpEntidade powerUpEntidade;    
 
@@ -31,7 +31,7 @@ public class PowerUpParaMaquina : AcaoBotaoPowerUp
         return !isClicavel();
     }
 
-    public static void configAcionadorDePowerUp(PowerUpAcionamento powerUpAcionamentoArg)
+    public static void configAcionadorDePowerUp(PowerUpAcaoAcionamento powerUpAcionamentoArg)
     {
         powerUpAcionamento = powerUpAcionamentoArg;
     }

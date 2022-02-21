@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class PowerUpManager : PowerUpAcionamento,
-                              PowerUpFinalizacao,
+public class PowerUpManager : PowerUpAcaoAcionamento,
+                              PowerUpAcaoFinalizacao,
                               AcaoPowerUpAcionado.ProdutorEvento
 {
     private int indiceBtnEmAcao;
-    private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;    
+    private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;
+
+    private ContadorTimeout contadorTimeout;
 
     public PowerUpManager(PowerUpDto powerUpDto, InputGame inputGame)
     {
         configurarPowerUps(powerUpDto, inputGame);
-        produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();        
+        produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
+        contadorTimeout = new ContadorPowerUpInativo();
     }    
 
     private void configurarPowerUps(PowerUpDto powerUpDto, InputGame inputGame)
@@ -30,7 +33,7 @@ public class PowerUpManager : PowerUpAcionamento,
 
     public void update()
     {
-
+        contadorTimeout.contarTimeout();
     }
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp)
@@ -72,6 +75,8 @@ public class PowerUpManager : PowerUpAcionamento,
 
     private void iniciarPowerUp(PowerUpInfo powerUpInfo)
     {
+        contadorTimeout = new ContadorPowerUpAtivo(powerUpInfo.duracaoTempo);
+
         InteracaoPowerUpComComponente interacao = powerUpInfo.interacaoComComponentes;
         if (InteracaoComponentesUtils.isNotInteracaoComGarra(interacao))
         {
