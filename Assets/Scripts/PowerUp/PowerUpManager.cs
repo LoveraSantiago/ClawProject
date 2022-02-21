@@ -28,6 +28,11 @@ public class PowerUpManager : PowerUpAcionamento,
         AbstractPowerUpGo.configurar(informacaoDisplayColetado);
     }
 
+    public void update()
+    {
+
+    }
+
     public void acionado(int indiceBtn, PowerUpEntidade powerUp)
     {
         indiceBtnEmAcao = indiceBtn;
