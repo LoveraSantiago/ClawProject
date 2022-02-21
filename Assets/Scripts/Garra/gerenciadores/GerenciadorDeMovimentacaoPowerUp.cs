@@ -22,7 +22,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
 
     public override void update(InputGame inputGame)
     {
-        if (intervaloFimTempo.contarTempoDT())
+        if (intervaloFimTempo.contarTempo())
         {
             if (movAtual.isEstadoSegurandoEmCimaMovimentando())
             {

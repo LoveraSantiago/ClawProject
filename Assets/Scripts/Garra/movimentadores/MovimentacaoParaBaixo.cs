@@ -18,7 +18,7 @@ public class MovimentacaoParaBaixo : MovimentadorProdutorInformacaoGarra
 
     public override void update(InputGame inputGame)
     {
-        if (intervaloTempoDeTravamento.contarTempoDT())
+        if (intervaloTempoDeTravamento.contarTempo())
         {
             comunicadorComGerMovimentacao.trocarParaAcaoAgarrada();
         }

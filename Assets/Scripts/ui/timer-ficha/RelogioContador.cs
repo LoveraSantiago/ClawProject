@@ -18,7 +18,7 @@ public class RelogioContador : Relogio
 
     public override void updateSegundo(RelogioDto relogioDto)
     {
-        bool contou1Segundo = intervaloDeTempo.contarTempoDT();
+        bool contou1Segundo = intervaloDeTempo.contarTempo();
         if (contou1Segundo)
         {
             TimeSpan timeSpan = contadorDeTempo.processarContagem();
