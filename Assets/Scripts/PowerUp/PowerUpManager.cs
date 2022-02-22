@@ -1,8 +1,7 @@
 using UnityEngine;
 
 public class PowerUpManager : PowerUpAcaoAcionamento,
-                              PowerUpAcaoFinalizacao,
-                              PowerUpAcaoExpirado,
+                              PowerUpAcaoFinalizacao,                              
                               AcaoPowerUpAcionado.ProdutorEvento
 {
     private int indiceBtnEmAcao;
@@ -34,7 +33,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void update()
     {
-        contadorTimeout.contarTimeout(this);
+        contadorTimeout.contarTimeout();
     }
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp)
@@ -62,12 +61,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     {
         PowerUpInfo powerUpInfo = PowerUpInfo.ofPreFinalizar(coletavel);            
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
-    }
-
-    public void expirar()
-    {
-        throw new System.NotImplementedException();
-    }
+    }   
 
     public void finalizado()
     {        
@@ -76,7 +70,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     private void iniciarPowerUp(PowerUpInfo powerUpInfo)
     {
-        contadorTimeout = new ContadorPowerUpAtivo(powerUpInfo.duracaoTempo);
+        contadorTimeout = new ContadorPowerUpAtivo(powerUpInfo);
 
         InteracaoPowerUpComComponente interacao = powerUpInfo.interacaoComComponentes;
         if (InteracaoComponentesUtils.isNotInteracaoComGarra(interacao))

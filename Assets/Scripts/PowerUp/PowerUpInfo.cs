@@ -22,6 +22,7 @@ public class PowerUpInfo
     public  Coletavel coletavel { get; private set; }
     
     public InteracaoPowerUpComComponente interacaoComComponentes { get; private set; }    
+    public PowerUpAcaoExpirado pupAcaoExpirado { get { return pupEntidade.getPowerUpGo(); } }
 
     private PowerUpInfo(ESTADO estado)
     {

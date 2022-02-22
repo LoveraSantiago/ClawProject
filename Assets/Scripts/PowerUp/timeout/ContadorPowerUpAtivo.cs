@@ -1,13 +1,15 @@
 public class ContadorPowerUpAtivo : ContadorTimeout
 {
     private IntervaloDeTempo intervaloFimTempo;
+    PowerUpAcaoExpirado pupExpiracao;
 
-    public ContadorPowerUpAtivo(int duracaoTempo)
+    public ContadorPowerUpAtivo(PowerUpInfo pupInfo)
     {
-        intervaloFimTempo = new IntervaloDeTempo(duracaoTempo);
+        intervaloFimTempo = new IntervaloDeTempo(pupInfo.duracaoTempo);
+        pupExpiracao = pupInfo.pupAcaoExpirado;
     }
 
-    public void contarTimeout(PowerUpAcaoExpirado pupExpiracao)
+    public void contarTimeout()
     {
         if (intervaloFimTempo.contarTempo())
         {

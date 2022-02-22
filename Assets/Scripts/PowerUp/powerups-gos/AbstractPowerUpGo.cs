@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public abstract class AbstractPowerUpGo : GO
+public abstract class AbstractPowerUpGo : GO,
+                                          PowerUpAcaoExpirado
 {    
     protected static PowerUpDto powerUpDto;    
 
@@ -53,5 +54,10 @@ public abstract class AbstractPowerUpGo : GO
     public static void configurar(InformacaoDisplayColetado informacaoDisplayColetadoArg)
     {
         informacaoDisplayColetado = informacaoDisplayColetadoArg;
+    }
+
+    public void expirar()
+    {
+        timeout();
     }
 }
