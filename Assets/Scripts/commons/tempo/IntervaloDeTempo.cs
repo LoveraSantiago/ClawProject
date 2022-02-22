@@ -14,7 +14,7 @@ public class IntervaloDeTempo
         configTempoParaAcao(tempoEmSegundos);
     }
 
-    public bool contarTempoDT()
+    public bool contarTempo()
     {
         contadorTempo -= Time.deltaTime;
         if (contadorTempo <= 0)

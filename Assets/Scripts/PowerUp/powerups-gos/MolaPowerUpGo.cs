@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
+public class MolaPowerUpGo : PowerUpSemInteracao
 {
     private static readonly int IDLE = Animator.StringToHash("idle");
     private static readonly int JUMP = Animator.StringToHash("mola-jump");
@@ -22,7 +22,7 @@ public class MolaPowerUpGo : PowerUpNaoInteracaoComGarra
 
     public override void configurarPup()
     {
-        Transform transformImg = goColetavel.transform.Find("imagem");
+        Transform transformImg = go.transform.Find("imagem");
         animator = transformImg.GetComponent<Animator>();
         boxCollider2d = transformImg.GetComponent<BoxCollider2D>();
     }

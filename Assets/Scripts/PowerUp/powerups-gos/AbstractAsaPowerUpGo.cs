@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra,
+public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
                                              Transformador<Coletavel, IEnumerator>
 {
     private static readonly int VOADA = Animator.StringToHash("voada");
@@ -16,8 +16,8 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra,
 
     public override void configurarPup()
     {
-        animator = goColetavel.transform.Find("asas").GetComponent<Animator>();
-        circleCollider = goColetavel.GetComponent<CircleCollider2D>();
+        animator = go.transform.Find("asas").GetComponent<Animator>();
+        circleCollider = go.GetComponent<CircleCollider2D>();
     }
 
     public override void iniciarPup()
@@ -43,7 +43,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpNaoInteracaoComGarra,
 
         colocarNaPosicao(coletavelAcertado.getPosicao());
         receberSprite(coletavelAcertado.getSprite(), powerUpDto.AsaDto.Layer);
-        coletavelAcertado.desligar();
+        coletavelAcertado.desligar();        
         ligar();
 
         setGravidade(getGravidadeNegativa());

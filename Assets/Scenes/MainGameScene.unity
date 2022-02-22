@@ -5417,7 +5417,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4787234, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -11140,6 +11140,8 @@ MonoBehaviour:
         offset: 0.15
         incrementoHaltura: 0.9
         asaMiniGo: {fileID: 4127936681606313068, guid: 3d5bbd7b9b7d372408b0b38de7933937, type: 3}
+      buracoNegroDto:
+        buracoNegroGo: {fileID: 6487671133722059723, guid: a6d0d3b2d60d76b479a70c8d08650e90, type: 3}
       rollBackDto:
         delayReset: 1.5
       molaDto:
@@ -27686,7 +27688,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4787234, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -53727,7 +53729,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4787234, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

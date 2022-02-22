@@ -1,11 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class AbstractDisplaySlotPowerUpGo : PowerUpNaoInteracaoComGarra,
-                                                     PowerUpInteracaoDisplayColetado
+public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
+                                                     PowerUpInteracaoComDisplayColetado
 {
-    private static InformacaoDisplayColetado informacaoDisplayColetado;   
-
     private bool finalizado;
     private int contador;
     private Coroutine coroutine;
@@ -15,10 +13,10 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpNaoInteracaoComGarra
     {
     }
 
-    public override PowerUpInteracaoDisplayColetado getObjInteracaoDisplayColetado()
+    public override InteracaoPowerUpComComponente getInteracaoComComponente()
     {
         return this;
-    }
+    }    
 
     public override void configurarPup() { }
 
@@ -126,10 +124,5 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpNaoInteracaoComGarra
         }
     }
 
-    protected abstract PowerUpEnums.TIPO getTipoRestartPup();        
-
-    public static void configurar(InformacaoDisplayColetado informacaoDisplayColetadoArg)
-    {
-        informacaoDisplayColetado = informacaoDisplayColetadoArg;
-    }
+    protected abstract PowerUpEnums.TIPO getTipoRestartPup();            
 }

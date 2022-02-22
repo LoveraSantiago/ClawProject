@@ -5,7 +5,7 @@ using TMPro;
 
 public class ScrollBottomBarSceneGame : ScrollBottomBar,
                                         AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
-                                        AcaoBotaoPUpVazio.ConsumidorEvento
+                                        AcaoBotaoPowerUpVazio.ConsumidorEvento
 {
     private int indiceBtn;
     
@@ -13,7 +13,7 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
     private ProdutorDeEvento<PowerUpBtnInfo> produtorDeEvento;
 
     public ScrollBottomBarSceneGame(GameObject prefabBottomBar)
-       : base(prefabBottomBar, new ItemsBottomBarPups())
+       : base(prefabBottomBar, new ItemsBottomBarPowerUps())
     {
         this.prefabBottomBar = prefabBottomBar;
         produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfo>();
@@ -23,11 +23,11 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
     {
         string nomeBtnSelecionado = EventSystem.current.currentSelectedGameObject.name;        
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeBtnSelecionado));
-        int qtdPup = PlayerPrefsPup.recuperarQtdPup(pupEscolhido.nome);
+        int qtdPup = PlayerPrefsPowerUp.recuperarQtdPup(pupEscolhido.nome);
         btnBottomBar.descerBotao(this);
         if(qtdPup > 0)
         {
-            int qtdAtual = PlayerPrefsPup.subtrairPup(pupEscolhido.nome);
+            int qtdAtual = PlayerPrefsPowerUp.subtrairPup(pupEscolhido.nome);
             PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
             lblQtd.text = qtdAtual.ToString();
             Utils.MonoBehaviour.StartCoroutine(finalizarBottomBar(pupBtnInfo));       
@@ -66,7 +66,7 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
         }
     }
 
-    void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
+    void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
         indiceBtn = evento;
         Utils.MonoBehaviour.StartCoroutine(mostrarBottomBar());

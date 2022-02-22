@@ -24,17 +24,18 @@ public class FactoryPowerUpEntidade
     public static void resetContextoEstatico()
     {
         poolPups = new PoolPowerUps()
-            .addPup(PowerUpEnums.TIPO.BOMBA_DA_GARRA   , new FactoryPupBomba())
-            .addPup(PowerUpEnums.TIPO.MISSIL_NUCLEAR   , new FactoryPupMissilNuclear())
-            .addPup(PowerUpEnums.TIPO.MINA_TERRESTRE   , new FactoryPupMinaTerrestre())
-            .addPup(PowerUpEnums.TIPO.MISSIL_TELEGUIADO, new FactoryPupMissilTeleguiado())
-            .addPup(PowerUpEnums.TIPO.IGUAL            , new FactoryPupIgual())
-            .addPup(PowerUpEnums.TIPO.TELEPORTE        , new FactoryPupTeleporte())            
-            .addPup(PowerUpEnums.TIPO.CORINGA          , new FactoryPupCoringa())
-            .addPup(PowerUpEnums.TIPO.MINI_ASAS        , new FactoryPupMiniAsas())
-            .addPup(PowerUpEnums.TIPO.ASAS             , new FactoryPupAsas())
-            .addPup(PowerUpEnums.TIPO.ROLLBACK         , new FactoryPupRollback())
-            .addPup(PowerUpEnums.TIPO.DESCARTE         , new FactoryPupDescarte())
-            .addPup(PowerUpEnums.TIPO.MOLA             , new FactoryPupMola());
+            .addPup(PowerUpEnums.TIPO.BOMBA_DA_GARRA   , new FactoryPowerUpBomba())
+            .addPup(PowerUpEnums.TIPO.MISSIL_NUCLEAR   , new FactoryPowerUpMissilNuclear())
+            .addPup(PowerUpEnums.TIPO.MINA_TERRESTRE   , new FactoryPowerUpMinaTerrestre())
+            .addPup(PowerUpEnums.TIPO.MISSIL_TELEGUIADO, new FactoryPowerUpMissilTeleguiado())
+            .addPup(PowerUpEnums.TIPO.IGUAL            , new FactoryPowerUpIgual())
+            .addPup(PowerUpEnums.TIPO.TELEPORTE        , new FactoryPowerUpTeleporte())            
+            .addPup(PowerUpEnums.TIPO.CORINGA          , new FactoryPowerUpCoringa())
+            .addPup(PowerUpEnums.TIPO.MINI_ASAS        , new FactoryPowerUpMiniAsas())
+            .addPup(PowerUpEnums.TIPO.ASAS             , new FactoryPowerUpAsas())
+            .addPup(PowerUpEnums.TIPO.BURACO_NEGRO     , new FactoryPowerUpBuracoNegro())
+            .addPup(PowerUpEnums.TIPO.ROLLBACK         , new FactoryPowerUpRollback())
+            .addPup(PowerUpEnums.TIPO.DESCARTE         , new FactoryPowerUpDescarte())
+            .addPup(PowerUpEnums.TIPO.MOLA             , new FactoryPowerUpMola());
     }
 }

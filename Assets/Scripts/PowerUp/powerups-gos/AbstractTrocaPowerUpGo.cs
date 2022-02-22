@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class AbstractTrocaPowerUpGo : PowerUpNaoInteracaoComGarra
+public abstract class AbstractTrocaPowerUpGo : PowerUpSemInteracao
 {
     private static Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdem;
 

@@ -1,11 +1,13 @@
 using UnityEngine;
 
-public abstract class AbstractPowerUpGo : GO
+public abstract class AbstractPowerUpGo : GO,
+                                          PowerUpAcaoExpirado
 {    
     protected static PowerUpDto powerUpDto;    
 
     protected static InputGame inputGame;
-    protected static PowerUpFinalizacao powerUpFinalizacao;
+    protected static PowerUpAcaoFinalizacao powerUpFinalizacao;
+    protected static InformacaoDisplayColetado informacaoDisplayColetado;
 
     private bool configurado;    
     
@@ -16,8 +18,7 @@ public abstract class AbstractPowerUpGo : GO
     public virtual void iniciarNaPosicao(Vector3 posicao) { }
     public virtual void timeout() { }
 
-    public abstract PowerUpInteracaoComGarra getObjInteracaoComGarra();
-    public virtual PowerUpInteracaoDisplayColetado getObjInteracaoDisplayColetado() { return null; }
+    public abstract InteracaoPowerUpComComponente getInteracaoComComponente();
 
     public AbstractPowerUpGo(GameObject goTile, string nome)
         : base(goTile, nome)
@@ -41,11 +42,23 @@ public abstract class AbstractPowerUpGo : GO
         iniciarPup();
     }
 
-    public static void configurarAbstractPowerUp(PowerUpDto powerUpDtoArg, PowerUpFinalizacao powerUpFinalizacaoArg, 
+    public static void configurarAbstractPowerUp(PowerUpDto powerUpDtoArg, PowerUpAcaoFinalizacao powerUpFinalizacaoArg, 
         InputGame inputGameArg)
     {
         powerUpDto = powerUpDtoArg;        
         powerUpFinalizacao = powerUpFinalizacaoArg;
         inputGame = inputGameArg;        
-    }       
+    }
+
+    //TODO unificar configuracao
+    public static void configurar(InformacaoDisplayColetado informacaoDisplayColetadoArg)
+    {
+        informacaoDisplayColetado = informacaoDisplayColetadoArg;
+    }
+
+    public void expirar()
+    {
+        powerUpFinalizacao.expirado();
+        timeout();
+    }
 }

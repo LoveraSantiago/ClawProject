@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetadoFim.ProdutorEvento,
-                              AcaoBotaoPUpVazio.ProdutorEvento,
+                              AcaoBotaoPowerUpVazio.ProdutorEvento,
                               AcaoCacaNiquel.ProdutorEvento,
                               AcaoDesligarMaquina.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,                                
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
-                              AcaoPUpAcionado.ConsumidorEvento,                                                            
+                              AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,
                               AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
                               AcaoDesligarMaquinaCancelado.ConsumidorEvento
@@ -120,7 +120,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         ((AcaoColetado.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
     }   
 
-    void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isInicio)
         {
@@ -178,9 +178,9 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         return ((AcaoColetadoFim.ProdutorEvento)displaysDeSlots).getProdutorDeEvento();
     }
 
-    ProdutorDeEvento<int> AcaoBotaoPUpVazio.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<int> AcaoBotaoPowerUpVazio.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoBotaoPUpVazio.ProdutorEvento)botoesPowerUp).getProdutorDeEvento();
+        return ((AcaoBotaoPowerUpVazio.ProdutorEvento)botoesPowerUp).getProdutorDeEvento();
     }
 
     ProdutorDeEvento<CacaNiquelEventoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()

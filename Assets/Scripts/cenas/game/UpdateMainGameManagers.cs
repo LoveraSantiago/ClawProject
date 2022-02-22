@@ -5,14 +5,16 @@ public class UpdateMainGameManagers
 {
     private GarraManager garraManager;
     private MaquinaManager maquinaManager;
+    private PowerUpManager pupManager;
     private InputGame inputGame;
 
     public UpdateMainGameManagers(
-        GarraManager garraManager, MaquinaManager maquinaManager, InputGame inputGame)
+        GarraManager garraManager, MaquinaManager maquinaManager, PowerUpManager pupManager, InputGame inputGame)
     {
         this.garraManager = garraManager;
         this.inputGame = inputGame;
         this.maquinaManager = maquinaManager;
+        this.pupManager = pupManager;
     }
 
     public void update(MainGameDto mainDto)
@@ -20,6 +22,7 @@ public class UpdateMainGameManagers
         inputGame.update(mainDto.MaquinaDto.ReferenciaChao);
         garraManager.update(mainDto.GarraDto, inputGame);
         maquinaManager.update(mainDto.MaquinaDto, inputGame);
+        pupManager.update();
     }
 
     public void fixedUpdate(MainGameDto mainDto)

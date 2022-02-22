@@ -29,18 +29,18 @@ public class PupScene : MonoBehaviour
         FactoryPowerUpEntidade.resetContextoEstatico();
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
 
-        BlocoImgPup blocoImg   = new BlocoImgPup(blocoImgDto);
-        AllLabelsPup allLables = new AllLabelsPup(labelsDto);
-        ScrollBottomBarScenePup scBottomBar = new ScrollBottomBarScenePup(prefabBottomBar);
+        BlocoImgPowerUp blocoImg   = new BlocoImgPowerUp(blocoImgDto);
+        AllLabelsPowerUp allLables = new AllLabelsPowerUp(labelsDto);
+        ScrollBottomBarScenePowerUp scBottomBar = new ScrollBottomBarScenePowerUp(prefabBottomBar);
 
-        NavegacaoPup navegacao = new NavegacaoPup(modalNoFichaDto);
+        NavegacaoPowerUp navegacao = new NavegacaoPowerUp(modalNoFichaDto);
 
         configBtnBack(btnBack);
         btnPratica.onClick.AddListener(() => navegacao.irGameScenePupPratica(blocoImg));
         btnCacaNiquelPupIndividual.onClick.AddListener(() => navegacao.irGameScenePupIndividual(blocoImg));
         btnCacaNiquelPupGeral.onClick.AddListener(() => navegacao.irGameScenePupGeral(blocoImg));        
 
-        new AcaoBlocoImgPUpAtual()
+        new AcaoBlocoImgPowerUpAtual()
             .configurarProdutor(blocoImg)
             .adicionarConsumidor(allLables);
 

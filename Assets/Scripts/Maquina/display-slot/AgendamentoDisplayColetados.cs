@@ -4,7 +4,7 @@ public class AgendamentoDisplayColetados
     public InformacoesColetadoDto infoColetadoDto { get; private set; }
     public ArcoIrisEfeito arcoIris { get; private set; }
     public Executor executor { get; private set; }
-    public PowerUpInteracaoDisplayColetado interacaoDisplayColetado { get; private set; }    
+    public PowerUpInteracaoComDisplayColetado interacaoDisplayColetado { get; private set; }    
 
     public bool possuiAgendamentoDePowerUp()
     {
@@ -21,7 +21,7 @@ public class AgendamentoDisplayColetados
         tipoPup = tipo;
     }
 
-    public void agendar(PowerUpInteracaoDisplayColetado interacaoDisplayColetado)
+    public void agendar(PowerUpInteracaoComDisplayColetado interacaoDisplayColetado)
     {
         this.interacaoDisplayColetado = interacaoDisplayColetado;
     }

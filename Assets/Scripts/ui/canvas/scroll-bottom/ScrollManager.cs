@@ -1,8 +1,8 @@
 using UnityEngine;
 
 public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
-                             AcaoPUpAcionado.ConsumidorEvento,
-                             AcaoBotaoPUpVazio.ConsumidorEvento        
+                             AcaoPowerUpAcionado.ConsumidorEvento,
+                             AcaoBotaoPowerUpVazio.ConsumidorEvento        
 {
     private bool isLevelPup;
     private bool isPupsToLevel;
@@ -32,7 +32,7 @@ public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
     {
         if (isLevelPup)
         {
-            int indicePup = PlayerPrefsPup.recuperarIndicePup();
+            int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
             for(int contador = 0; contador < 4; contador++)
             {
                 scrollBottomBar.simularCliqueBoxAcionado(contador, indicePup);
@@ -47,26 +47,26 @@ public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         }
     }
 
-    void AcaoBotaoPUpVazio.ConsumidorEvento.consumirEvento(int evento)
+    void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
         if (isLevelPup)
         {
-            int indicePup = PlayerPrefsPup.recuperarIndicePup();
+            int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
             scrollBottomBar.simularCliqueBoxAcionado(evento, indicePup);
         }
         else
         {
-            ((AcaoBotaoPUpVazio.ConsumidorEvento)scrollBottomBar).consumirEvento(evento);
+            ((AcaoBotaoPowerUpVazio.ConsumidorEvento)scrollBottomBar).consumirEvento(evento);
         }
     }
 
-    void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isFinalizar)
         {
             if (isLevelPup)
             {
-                int indicePup = PlayerPrefsPup.recuperarIndicePup();
+                int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
                 scrollBottomBar.simularCliqueBoxAcionado(evento.indiceBtn, indicePup);
             }
             else if (isPupsToLevel)

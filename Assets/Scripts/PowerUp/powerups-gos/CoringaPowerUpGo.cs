@@ -117,8 +117,6 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         if (!finalizando)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutineAlvo);
-            alvoSelecionado.stopCoroutine();
-            
             if(coletavelSelecionado != null)
             {
                 coletavelSelecionado.clearMaterial();

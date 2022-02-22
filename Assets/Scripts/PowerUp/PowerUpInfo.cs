@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class PowerUpInfo
 {
-    private enum ESTADO { INICIO, PREFINALIZAR, FINALIZAR}
+    private enum ESTADO { INICIO, PREFINALIZAR, FINALIZAR, EXPIRADO}
 
     private ESTADO estadoAtual;
 
     public bool isInicio       { get { return estadoAtual == ESTADO.INICIO; } }
     public bool isPreFinalizar { get { return estadoAtual == ESTADO.PREFINALIZAR; } }
     public bool isFinalizar    { get { return estadoAtual == ESTADO.FINALIZAR; } }
+    public bool isExpirado     { get { return estadoAtual == ESTADO.EXPIRADO; } }
 
     public bool isColetavel { get { return pupEntidade.isColetavel; } }
     public bool isNotColetavel { get { return !isColetavel; } }
@@ -20,13 +21,9 @@ public class PowerUpInfo
     public PowerUpEnums.TIPO tipo { get { return pupEntidade.tipo; } }
     private PowerUpEntidade pupEntidade;
     public  Coletavel coletavel { get; private set; }
-
-    public PowerUpInteracaoComGarra interacaoComGarra { get; private set; }
-
-    //TODO dar um jeito de remover essa propriedade. 
-    //Vai precisar q AbstractPowerUpGO iniciar receba quem iniciou.
-    //Conforme quem iniciou acionar o powerup AbstractDisplaySlotPowerUpGO na terceira vez
-    public PowerUpInteracaoDisplayColetado interacaoDisplayColetado { get; private set; }
+    
+    public InteracaoPowerUpComComponente interacaoComComponentes { get; private set; }    
+    public PowerUpAcaoExpirado pupAcaoExpirado { get { return pupEntidade.getPowerUpGo(); } }
 
     private PowerUpInfo(ESTADO estado)
     {
@@ -37,9 +34,8 @@ public class PowerUpInfo
     {
         this.pupEntidade = pupEntidade;
 
-        AbstractPowerUpGo interacaoComPowerUp = pupEntidade.getPowerUpGo();
-        interacaoComGarra = interacaoComPowerUp.getObjInteracaoComGarra();
-        interacaoDisplayColetado = interacaoComPowerUp.getObjInteracaoDisplayColetado();        
+        AbstractPowerUpGo powerUpGo = pupEntidade.getPowerUpGo();
+        interacaoComComponentes = powerUpGo.getInteracaoComComponente();        
     }
 
     public PowerUpInfo configurarPupEntidade(PowerUpEntidade pupEntidade, Vector3 posInicial)
@@ -81,6 +77,12 @@ public class PowerUpInfo
     {
         PowerUpInfo pupInfo = new PowerUpInfo(ESTADO.PREFINALIZAR);
         pupInfo.coletavel = coletavel;
+        return pupInfo;
+    }
+
+    public static PowerUpInfo ofExpirado()
+    {
+        PowerUpInfo pupInfo = new PowerUpInfo(ESTADO.EXPIRADO);
         return pupInfo;
     }
 

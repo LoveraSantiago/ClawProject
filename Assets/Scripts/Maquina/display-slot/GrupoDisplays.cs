@@ -79,6 +79,16 @@ public class GrupoDisplays : ArcoIrisConjunto
                displayDeSlot[2].isDesocupado;
     }   
 
+    public int getQtdDisplaysOcupados()
+    {
+        int total = 0;
+        if (displayDeSlot[0].isOcupado) total++;
+        if (displayDeSlot[1].isOcupado) total++;
+        if (displayDeSlot[2].isOcupado) total++;
+
+        return total;
+    }
+
     public void ligarGlowLuz()
     {
         displayDeSlot[0].ligarGlowLuz();

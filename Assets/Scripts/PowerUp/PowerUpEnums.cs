@@ -4,7 +4,7 @@ public class PowerUpEnums
     {
         BOMBA_DA_GARRA, MISSIL_NUCLEAR, MINA_TERRESTRE, MISSIL_TELEGUIADO,
         IGUAL, TELEPORTE, CORINGA,
-        MINI_ASAS, ASAS,
+        MINI_ASAS, ASAS, BURACO_NEGRO,
         MOLA,
         ROLLBACK, DESCARTE, NONE
     }
@@ -21,10 +21,5 @@ public class PowerUpEnums
         public static readonly string LEVITACAO    = "LEVITAÇÃO";
         public static readonly string MECANISMO    = "MECANISMO";
         public static readonly string IMPULSO      = "IMPULSO";
-    }
-
-    public enum INTERACAOGARRA
-    {
-        MOVIMENTO, PARADO, NAO_INTERACAO
-    }
+    }  
 }

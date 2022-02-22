@@ -25,7 +25,7 @@ public class MainGameManagers
 
     public UpdateMainGameManagers getUpdatables()
     {
-        return new UpdateMainGameManagers(garraManager, maquinaManager, inputGame);
+        return new UpdateMainGameManagers(garraManager, maquinaManager, powerUpManager, inputGame);
     }
 
     private void configurandoLevel(MainGameDto mainDto, AbstractLevel levelEscolhido)

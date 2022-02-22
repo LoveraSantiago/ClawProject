@@ -23,15 +23,15 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     public MissilTeleguiadoPowerUpGo() : 
         base(powerUpDto.MissilTeleguiadoDto.MissilGo, "missil-teleguiado"){}
 
-    public PowerUpEnums.INTERACAOGARRA getInteracaoComGarra()
+    public TipoInteracaoGarra getInteracaoComGarra()
     {
-        return PowerUpEnums.INTERACAOGARRA.PARADO;
+        return TipoInteracaoGarra.PARADO;
     }
 
-    public override PowerUpInteracaoComGarra getObjInteracaoComGarra()
+    public override InteracaoPowerUpComComponente getInteracaoComComponente()
     {
         return this;
-    }
+    }    
 
     public float getAnguloParaGarraSegurar()
     {
@@ -45,9 +45,9 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
 
     public override void configurarPup()
     {        
-        capsuleCollider = goColetavel.GetComponent<CapsuleCollider2D>();
+        capsuleCollider = go.GetComponent<CapsuleCollider2D>();
 
-        Transform transfImagem = goColetavel.transform.Find("imagem");
+        Transform transfImagem = go.transform.Find("imagem");
         animator = transfImagem.GetComponent<Animator>();
         efeitoFaiscas = transfImagem.transform.Find("faiscas")
                                .GetComponent<ParticleSystem>();

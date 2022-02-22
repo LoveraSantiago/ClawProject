@@ -5,7 +5,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoBoardElevadoFim.ProdutorEvento,
                                 AcaoColetadoFim.ConsumidorEvento,
                                 AcaoInfoDaGarra.ConsumidorEvento,                                
-                                AcaoPUpAcionado.ConsumidorEvento,                                
+                                AcaoPowerUpAcionado.ConsumidorEvento,                                
                                 AcaoTempoEsgotado.ConsumidorEvento
 {    
     private Coletavel coletavelImantado;
@@ -129,7 +129,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         }
     }   
 
-    void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isInicio)
         {

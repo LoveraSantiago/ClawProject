@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class PowerUpManager : PowerUpAcionamento,
-                              PowerUpFinalizacao,
-                              AcaoPUpAcionado.ProdutorEvento
+public class PowerUpManager : PowerUpAcaoAcionamento,
+                              PowerUpAcaoFinalizacao,                              
+                              AcaoPowerUpAcionado.ProdutorEvento
 {
     private int indiceBtnEmAcao;
-    private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;    
+    private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;
+
+    private ContadorTimeout contadorTimeout;
 
     public PowerUpManager(PowerUpDto powerUpDto, InputGame inputGame)
     {
         configurarPowerUps(powerUpDto, inputGame);
-        produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();        
+        produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
+        contadorTimeout = new ContadorPowerUpInativo();
     }    
 
     private void configurarPowerUps(PowerUpDto powerUpDto, InputGame inputGame)
@@ -25,7 +28,12 @@ public class PowerUpManager : PowerUpAcionamento,
         Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdem)
     {
         AbstractTrocaPowerUpGo.configurarTrocadorDeOrdem(fornecedorTrocadorDeOrdem);
-        AbstractDisplaySlotPowerUpGo.configurar(informacaoDisplayColetado);
+        AbstractPowerUpGo.configurar(informacaoDisplayColetado);
+    }
+
+    public void update()
+    {
+        contadorTimeout.contarTimeout();
     }
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp)
@@ -33,6 +41,7 @@ public class PowerUpManager : PowerUpAcionamento,
         indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
+        iniciarPowerUp(powerUpInfo);
     }
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp, Vector3 posicaoAtual)
@@ -40,6 +49,7 @@ public class PowerUpManager : PowerUpAcionamento,
         indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp, posicaoAtual);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
+        iniciarPowerUp(powerUpInfo);
     }   
 
     public void preFinalizar()
@@ -53,12 +63,30 @@ public class PowerUpManager : PowerUpAcionamento,
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
+    public void expirado()
+    {
+        PowerUpInfo powerUpInfo = PowerUpInfo.ofExpirado();
+        produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
+    }
+
     public void finalizado()
-    {        
+    {
+        contadorTimeout = new ContadorPowerUpInativo();
         produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofFinalizar(indiceBtnEmAcao));
     }    
 
-    ProdutorDeEvento<PowerUpInfo> AcaoPUpAcionado.ProdutorEvento.getProdutorDeEvento()
+    private void iniciarPowerUp(PowerUpInfo powerUpInfo)
+    {
+        contadorTimeout = new ContadorPowerUpAtivo(powerUpInfo);
+
+        InteracaoPowerUpComComponente interacao = powerUpInfo.interacaoComComponentes;
+        if (InteracaoComponentesUtils.isNotInteracaoComGarra(interacao))
+        {
+            interacao.iniciar();
+        }
+    }   
+
+    ProdutorDeEvento<PowerUpInfo> AcaoPowerUpAcionado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoPowerUp;
     }    

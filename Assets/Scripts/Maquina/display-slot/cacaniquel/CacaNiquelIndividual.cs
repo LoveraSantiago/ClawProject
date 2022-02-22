@@ -7,7 +7,7 @@ public class CacaNiquelIndividual : AbstractCacaNiquel
 
     public override Sprite[][] montarSpritesTipoCacaNiquel()
     {
-        int indicePup = PlayerPrefsPup.recuperarIndicePup();
+        int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
         Sprite sprPowerUp = pupEscolhido.sprPowerUp;
@@ -24,7 +24,7 @@ public class CacaNiquelIndividual : AbstractCacaNiquel
 
     public override Sprite getSprDeSucesso()
     {
-        int indicePup = PlayerPrefsPup.recuperarIndicePup();
+        int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
         return pupEscolhido.sprPowerUp;
     }

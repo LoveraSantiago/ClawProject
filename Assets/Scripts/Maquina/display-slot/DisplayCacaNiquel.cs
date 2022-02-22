@@ -40,7 +40,7 @@ public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         grupoDisplays.ligarCacaNiquel(allSrites[0], allSrites[1], allSrites[2]);
         yield return new WaitForSeconds(0.1f);
 
-        int indicePup = PlayerPrefsPup.recuperarIndicePup();
+        int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
         int clicado = 0;

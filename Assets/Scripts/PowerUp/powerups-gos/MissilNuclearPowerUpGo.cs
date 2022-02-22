@@ -12,18 +12,18 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
     public MissilNuclearPowerUpGo()
         : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, "missil-nuclear")
     {   
-        goColetavel.SetActive(false);
+        go.SetActive(false);
     }
 
-    public PowerUpEnums.INTERACAOGARRA getInteracaoComGarra()
+    public TipoInteracaoGarra getInteracaoComGarra()
     {
-        return PowerUpEnums.INTERACAOGARRA.MOVIMENTO;
+        return TipoInteracaoGarra.MOVIMENTO;
     }
 
-    public override PowerUpInteracaoComGarra getObjInteracaoComGarra()
+    public override InteracaoPowerUpComComponente getInteracaoComComponente()
     {
         return this;
-    }
+    }    
 
     public float getAnguloParaGarraSegurar()
     {
@@ -37,11 +37,11 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
     public override void configurarPup()
     {
-        goColetavel.GetComponent<DetectorDeColisoes>()
+        go.GetComponent<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);
 
-        goExplosao = goColetavel.transform.Find("explosao").gameObject;
-        animacao = new AnimacaoExplosaoPup(goColetavel);
+        goExplosao = go.transform.Find("explosao").gameObject;
+        animacao = new AnimacaoExplosaoPup(go);
     }
 
     public override void iniciarPup()

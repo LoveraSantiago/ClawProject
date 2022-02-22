@@ -3,7 +3,7 @@ using UnityEngine;
 public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,                            
                             AcaoSincroniaComDirecaoDaGarra.ProdutorEvento,
                             AcaoColetado.ConsumidorEvento,
-                            AcaoPUpAcionado.ConsumidorEvento,                            
+                            AcaoPowerUpAcionado.ConsumidorEvento,                            
                             AcaoTempoEsgotado.ConsumidorEvento,
                             AcaoBoardElevadoFim.ConsumidorEvento,
                             AcaoColetadoFim.ConsumidorEvento,
@@ -64,19 +64,23 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         detectorDeColisoes.registrarConsumidorDeTrigger(this);
     }
 
-    void AcaoPUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isInicio)
         {
-            gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.interacaoComGarra, evento.duracaoTempo);
+            gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.interacaoComComponentes, evento.duracaoTempo);
             gerDeMovPowerUp.iniciarMovimentacoes();
             gerDeMovAtual = gerDeMovPowerUp;
         }
+        else if (evento.isExpirado)
+        {
+            gerDeMovPowerUp.largarPowerUp();
+        }
         else if (evento.isFinalizar)
         {
+            gerDeMovPowerUp.finalizarPowerUp();
             gerDeMovNormal.trocarParaAcaoNormal();
             gerDeMovAtual = gerDeMovNormal;
-            gerDeMovPowerUp.finalizarPowerUp();
         }
     }
 

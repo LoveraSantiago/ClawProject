@@ -1,8 +1,7 @@
 using System;
 
 public class RelogioContador : Relogio
-{
-    private TimeSpan tempoLblHoras;
+{   
     private IntervaloDeTempo intervaloDeTempo;
     private ContadorDeTempo contadorDeTempo;
 
@@ -19,7 +18,7 @@ public class RelogioContador : Relogio
 
     public override void updateSegundo(RelogioDto relogioDto)
     {
-        bool contou1Segundo = intervaloDeTempo.contarTempoDT();
+        bool contou1Segundo = intervaloDeTempo.contarTempo();
         if (contou1Segundo)
         {
             TimeSpan timeSpan = contadorDeTempo.processarContagem();
