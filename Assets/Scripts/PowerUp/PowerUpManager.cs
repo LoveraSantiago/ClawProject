@@ -70,7 +70,8 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     }
 
     public void finalizado()
-    {        
+    {
+        contadorTimeout = new ContadorPowerUpInativo();
         produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofFinalizar(indiceBtnEmAcao));
     }    
 
