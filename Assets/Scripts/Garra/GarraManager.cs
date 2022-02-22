@@ -72,11 +72,15 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
             gerDeMovPowerUp.iniciarMovimentacoes();
             gerDeMovAtual = gerDeMovPowerUp;
         }
+        else if (evento.isExpirado)
+        {
+            gerDeMovPowerUp.largarPowerUp();
+        }
         else if (evento.isFinalizar)
         {
+            gerDeMovPowerUp.finalizarPowerUp();
             gerDeMovNormal.trocarParaAcaoNormal();
             gerDeMovAtual = gerDeMovNormal;
-            gerDeMovPowerUp.finalizarPowerUp();
         }
     }
 

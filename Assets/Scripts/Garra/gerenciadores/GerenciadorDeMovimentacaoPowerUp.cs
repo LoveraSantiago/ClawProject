@@ -1,16 +1,13 @@
 public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
                                                 ComunicadorComGerMovPowerUp
 {
-    private IntervaloDeTempo intervaloFimTempo;//PROBLEMA GRANDE CONTADOR DE TEMPO DA GARRA CONTAR TIMEOUT DE PUP!!!!!!
-
     private AbstractMovimentacaoDaGarraPowerUp movAtual;    
 
     public GerenciadorDeMovimentacaoPowerUp()
     {
         AbstractMovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);
 
-        trocarParaAcaoParado();
-        intervaloFimTempo = new IntervaloDeTempo();
+        trocarParaAcaoParado();     
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
@@ -21,19 +18,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     }    
 
     public override void update(InputGame inputGame)
-    {
-        if (intervaloFimTempo.contarTempo())
-        {
-            if (movAtual.isEstadoSegurandoEmCimaMovimentando())
-            {
-                trocarParaAcaoSoltar();
-            }
-            else if (movAtual.isEstadoSegurandoParado())
-            {
-                movAtual.acionarTimeout();
-                intervaloFimTempo.addTempoLongo();
-            }
-        }
+    {   
         movAtual.update(inputGame);
     }
 
@@ -51,9 +36,21 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     public void receberGarraInteracaoComPowerUp(InteracaoPowerUpComComponente interacaoPupComComponentes, float tempoDuracao)
     {        
         PowerUpInteracaoComGarra interacaoComGarra = InteracaoComponentesUtils.getAsInteracaoComGarra(interacaoPupComComponentes);
-        AbstractMovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(interacaoComGarra);        
-        intervaloFimTempo.configTempoParaAcao(tempoDuracao);
-    }   
+        AbstractMovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(interacaoComGarra);                
+    }
+
+    public void largarPowerUp()
+    {
+        if (movAtual.isEstadoSegurandoEmCimaMovimentando())
+        {
+            trocarParaAcaoSoltar();
+        }
+    }
+
+    public void finalizarPowerUp()
+    {
+        movAtual.finalizarPowerUp();
+    }
 
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP INICIO
     public void trocarParaAcaoVoltarParaCima()
@@ -85,12 +82,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     {
         trocarMovimentador(new MovimentacaoParadoPowerUp());        
     }
-    //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM
-
-    public void finalizarPowerUp()
-    {
-        movAtual.finalizarPowerUp();
-    }
+    //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP FIM    
 
     //TODO REFATORAR COM GERENCIADOR DE MOVIMENTACAO NORMAL
     private void trocarMovimentador(AbstractMovimentacaoDaGarraPowerUp movimentador)

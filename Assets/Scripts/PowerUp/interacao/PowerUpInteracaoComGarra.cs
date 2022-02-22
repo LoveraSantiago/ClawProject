@@ -9,7 +9,5 @@ public interface PowerUpInteracaoComGarra : InteracaoPowerUpComComponente
     void colocarNaPosicao(Vector3 posicao);
     void ligarGravidadeZero();
     void ligarGravidadeHum();
-    void fixarEixoX();
-    //TODO garra nao deve cuidar de timeout
-    void timeout();    
+    void fixarEixoX();    
 }

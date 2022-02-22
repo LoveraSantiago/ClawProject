@@ -58,6 +58,7 @@ public abstract class AbstractPowerUpGo : GO,
 
     public void expirar()
     {
+        powerUpFinalizacao.expirado();
         timeout();
     }
 }

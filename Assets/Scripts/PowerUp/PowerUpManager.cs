@@ -61,7 +61,13 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     {
         PowerUpInfo powerUpInfo = PowerUpInfo.ofPreFinalizar(coletavel);            
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
-    }   
+    }
+
+    public void expirado()
+    {
+        PowerUpInfo powerUpInfo = PowerUpInfo.ofExpirado();
+        produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
+    }
 
     public void finalizado()
     {        

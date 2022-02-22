@@ -11,12 +11,7 @@ public abstract class AbstractMovimentacaoDaGarraPowerUp : AbstractMovimentacaoD
     public static void receberInteracaoComPowerUp(PowerUpInteracaoComGarra garraInteracaoComPowerUpArg)
     {
         garraInteracaoComPowerUp = garraInteracaoComPowerUpArg;        
-    }
-
-    public void acionarTimeout()
-    {
-        garraInteracaoComPowerUp.timeout();        
-    }
+    }    
 
     public void finalizarPowerUp()
     {

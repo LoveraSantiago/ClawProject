@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class PowerUpInfo
 {
-    private enum ESTADO { INICIO, PREFINALIZAR, FINALIZAR}
+    private enum ESTADO { INICIO, PREFINALIZAR, FINALIZAR, EXPIRADO}
 
     private ESTADO estadoAtual;
 
     public bool isInicio       { get { return estadoAtual == ESTADO.INICIO; } }
     public bool isPreFinalizar { get { return estadoAtual == ESTADO.PREFINALIZAR; } }
     public bool isFinalizar    { get { return estadoAtual == ESTADO.FINALIZAR; } }
+    public bool isExpirado     { get { return estadoAtual == ESTADO.EXPIRADO; } }
 
     public bool isColetavel { get { return pupEntidade.isColetavel; } }
     public bool isNotColetavel { get { return !isColetavel; } }
@@ -76,6 +77,12 @@ public class PowerUpInfo
     {
         PowerUpInfo pupInfo = new PowerUpInfo(ESTADO.PREFINALIZAR);
         pupInfo.coletavel = coletavel;
+        return pupInfo;
+    }
+
+    public static PowerUpInfo ofExpirado()
+    {
+        PowerUpInfo pupInfo = new PowerUpInfo(ESTADO.EXPIRADO);
         return pupInfo;
     }
 

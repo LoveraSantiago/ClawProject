@@ -22,7 +22,5 @@ public class PowerUpInteracaoComGarraVazio : PowerUpInteracaoComGarra
 
     public void ligarGravidadeZero(){}
 
-    public void parar(){}
-
-    public void timeout(){}
+    public void parar(){}    
 }
