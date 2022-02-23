@@ -18,7 +18,9 @@ public class LevelHelper
 
     public static List<string> getAllLevels()
     {
-        return filterLevels.levelAlias;
+        //TODO FAZER HIERARQUIA DE LEVELSFILTERS
+        //ADICIONAR UM FILTER P ALLLEVELS
+        return null;
     }
 
     public static List<string> getNormalLevelsAlias()
