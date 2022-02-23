@@ -102,7 +102,7 @@ public class MaquinaAssemblerV4 : EditorWindow
 
     private void criarComponentDropDownField(VisualElement root)
     {
-        List<string> listaDeLevels = EditorUtils.getListaDeLevels();
+        List<string> listaDeLevels = LevelHelper.getNormalLevelsAlias();
 
         DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
         dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {
