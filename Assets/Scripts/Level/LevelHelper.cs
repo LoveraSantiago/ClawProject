@@ -16,6 +16,11 @@ public class LevelHelper
         return levelEntidade.supplierLevel.fornecer();
     }
 
+    public static List<string> getAllLevels()
+    {
+        return filterLevels.levelAlias;
+    }
+
     public static List<string> getNormalLevelsAlias()
     {
         LevelsNormalFilter filterLevels = new LevelsNormalFilter();
