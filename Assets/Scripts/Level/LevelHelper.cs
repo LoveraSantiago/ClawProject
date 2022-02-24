@@ -18,27 +18,27 @@ public class LevelHelper
 
     public static List<string> getAllLevels()
     {
-        //TODO FAZER HIERARQUIA DE LEVELSFILTERS
-        //ADICIONAR UM FILTER P ALLLEVELS
-        return null;
+        return getLevelsFiltradosPor(new FilterLevelsAll());
     }
 
     public static List<string> getNormalLevelsAlias()
     {
-        FilterLevels filterLevels = new FilterLevelsNormal();
-        return filterLevels.getLevelsAlias(poolLevels);        
+        return getLevelsFiltradosPor(new FilterLevelsNormal());
     }
 
     public static List<string> getElevadorLevelsAlias()
     {
-        FilterLevels filterLevels = new FilterLevelsElevador();
-        return filterLevels.getLevelsAlias(poolLevels);        
+        return getLevelsFiltradosPor(new FilterLevelsElevador());
     }
 
     public static List<string> getObstaculoLevelsAlias()
     {
-        FilterLevels filterLevels = new FilterLevelsObstaculos();
-        return filterLevels.getLevelsAlias(poolLevels);      
+        return getLevelsFiltradosPor(new FilterLevelsObstaculos());
+    }
+
+    private static List<string> getLevelsFiltradosPor(FilterLevels filterLevels)
+    {
+        return filterLevels.getLevelsAlias(poolLevels);
     }
 
     private static GenericPool<string, LevelEntidade> inicializarDicionarioDeEnum()
