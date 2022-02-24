@@ -1,16 +1,8 @@
 using System.Collections.Generic;
 
-public class LevelsObstaculosFilter : Consumidor<LevelEntidade>
+public class LevelsObstaculosFilter : LevelsFilter
 {
-    public List<string> levelAlias { get; private set; }
-
-    public LevelsObstaculosFilter()
-    {
-        levelAlias = new List<string>();
-        levelAlias.Add("-");
-    }
-
-    public void consumir(LevelEntidade levelEntidade)
+    protected override void filtrar(List<string> levelAlias, LevelEntidade levelEntidade)
     {
         Fornecedor<AbstractLevel> fornecedorLevel = levelEntidade.supplierLevel;
         AbstractLevel level = fornecedorLevel.fornecer();

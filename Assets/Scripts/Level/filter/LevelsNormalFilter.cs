@@ -1,16 +1,8 @@
 using System.Collections.Generic;
 
-public class LevelsNormalFilter : Consumidor<LevelEntidade>
-{   
-    public List<string> levelAlias { get; private set; }
-
-    public LevelsNormalFilter()
-    {        
-        levelAlias = new List<string>();
-        levelAlias.Add("-");
-    }
-
-    public void consumir(LevelEntidade levelEntidade)
+public class LevelsNormalFilter : LevelsFilter
+{
+    protected override void filtrar(List<string> levelAlias, LevelEntidade levelEntidade)
     {
         Fornecedor<AbstractLevel> fornecedorLevel = levelEntidade.supplierLevel;
         AbstractLevel level = fornecedorLevel.fornecer();
@@ -18,6 +10,6 @@ public class LevelsNormalFilter : Consumidor<LevelEntidade>
         if (!LevelUtils.isObstaculoLevel(level))
         {
             levelAlias.Add(levelEntidade.level.ToString());
-        }        
-    }    
+        }                
+    }
 }
