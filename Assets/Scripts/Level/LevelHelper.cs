@@ -25,19 +25,19 @@ public class LevelHelper
 
     public static List<string> getNormalLevelsAlias()
     {
-        LevelsFilter filterLevels = new LevelsNormalFilter();
+        FilterLevels filterLevels = new FilterLevelsNormal();
         return filterLevels.getLevelsAlias(poolLevels);        
     }
 
     public static List<string> getElevadorLevelsAlias()
     {
-        LevelsFilter filterLevels = new LevelsElevadorFilter();
+        FilterLevels filterLevels = new FilterLevelsElevador();
         return filterLevels.getLevelsAlias(poolLevels);        
     }
 
     public static List<string> getObstaculoLevelsAlias()
     {
-        LevelsFilter filterLevels = new LevelsObstaculosFilter();
+        FilterLevels filterLevels = new FilterLevelsObstaculos();
         return filterLevels.getLevelsAlias(poolLevels);      
     }
 

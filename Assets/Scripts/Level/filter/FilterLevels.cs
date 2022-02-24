@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
-public abstract class LevelsFilter : Consumidor<LevelEntidade>
+public abstract class FilterLevels : Consumidor<LevelEntidade>
 {
     private List<string> levelAlias;
 
-    public LevelsFilter()
+    public FilterLevels()
     {
         levelAlias = new List<string>();
         levelAlias.Add("-");
