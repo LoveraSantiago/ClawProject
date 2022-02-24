@@ -5,7 +5,7 @@
     xmlns:editor="UnityEditor.UIElements"
     xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
 >
-  <engine:Style src="BoardAssemblerObstaculos.uss"/>
+  <engine:Style src="BoardAssemblerObstaculosV2.uss"/>
   <engine:VisualElement name="main">
     <engine:VisualElement name="containerCima">
       <engine:VisualElement name="container1">
@@ -35,7 +35,7 @@
         <engine:Button name="botaoAddObstaculos" text="Add Obstaculos"/>
         <engine:Button name="botaoProcessarObstaculos" text="Proc Obstaculos"/>
       </engine:VisualElement>
-    </engine:VisualElement>    
+    </engine:VisualElement>
 
     <engine:VisualElement name="container2">
       <engine:VisualElement name="containerBtns">
