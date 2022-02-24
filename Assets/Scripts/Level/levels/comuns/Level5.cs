@@ -16,7 +16,16 @@ public class Level5 : AbstractLevelObstaculos
 
     public override int[,] getArrayDeColetaveis()
     {
-        throw new System.NotImplementedException();
+        int[,] coletaveis = new int[,]{
+            {12, 12, 12, 11, 15, 15, 15},
+            {15, 15, 15, 11, 12, 12, 12},
+            {12, 12, 12, 11, 15, 15, 15},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0}
+        };
+        return coletaveis;
     }
 
     public override int[,] getArrayDeObstaculos()
