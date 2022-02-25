@@ -30,8 +30,6 @@ public class BoardAssemblerObstaculosV2 : EditorWindow
         HelperColetavelEntidade.configurar();
         ReferenciasDoBoardObstaculo referenciasDoBoard = new ReferenciasDoBoardObstaculo();
         NavegacaoPeloBoardObstaculos navegacao = new NavegacaoPeloBoardObstaculos(root, referenciasDoBoard);
-        ControleObstaculos controleObstaculos = new ControleObstaculos(referenciasDoBoard);
-        ProcessadorDeObstaculos processador = new ProcessadorDeObstaculos(referenciasDoBoard, controleObstaculos);
 
         Action<Sprite> onItemSelecionado = (spr) =>
         {
@@ -39,13 +37,14 @@ public class BoardAssemblerObstaculosV2 : EditorWindow
             referenciasDoBoard.updateElementoGo(posicaoMira.linha, posicaoMira.coluna, spr);
         };
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, onItemSelecionado);
+        ControleObstaculos controleObstaculos = new ControleObstaculos(referenciasDoBoard, listaDeSprites);
+        ProcessadorDeObstaculos processador = new ProcessadorDeObstaculos(referenciasDoBoard, controleObstaculos);
 
         BoardCleanerObstaculos cleaner = new BoardCleanerObstaculos(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio(), controleObstaculos);
         navegacao.resetMira();
-
-        RemontadorBoard remontador = new RemontadorBoardDeObstaculos(referenciasDoBoard, listaDeSprites);
+        
         DropDownLevels dropoDownLevels = new DropDownLevelsObstaculo(LevelHelper.getObstaculoLevelsAlias());
-        dropoDownLevels.criarComponentDropDownField(root, cleaner, remontador);
+        dropoDownLevels.criarComponentDropDownField(root, cleaner, controleObstaculos);
 
         EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>
         {

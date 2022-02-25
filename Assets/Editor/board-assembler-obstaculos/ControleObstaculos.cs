@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 
-public class ControleObstaculos 
+public class ControleObstaculos : RemontadorBoard
 {
-    public Dictionary<int, Dictionary<int, bool>> dicionarioEstadosGaiola;
-    private ReferenciasDoBoardObstaculo referencias;
+    public Dictionary<int, Dictionary<int, bool>> dicionarioEstadosGaiola;    
 
-    public ControleObstaculos(ReferenciasDoBoardObstaculo referencias)
+    public ControleObstaculos(ReferenciasDoBoardObstaculo referencias, ListaDeSprites listaDeSprites)
+        :base(referencias, listaDeSprites)
     {
         this.referencias = referencias;
         inicializarDicionarioEstados();
@@ -24,12 +24,12 @@ public class ControleObstaculos
 
         dicionarioLinha[posicaoMira.coluna] = estadoAtual;        
         if (estadoAtual)
-        {
-            referencias.updateElementoGaiola(posicaoMira.linha, posicaoMira.coluna, true);            
+        {   
+            updateGaiola(posicaoMira.linha, posicaoMira.coluna, true);
         }
         else
-        {
-            referencias.updateElementoGaiola(posicaoMira.linha, posicaoMira.coluna, false);            
+        {            
+            updateGaiola(posicaoMira.linha, posicaoMira.coluna, false);
         }
     }
 
@@ -42,6 +42,31 @@ public class ControleObstaculos
                 dicionarioEstadosGaiola[contadorLinha][contadorColuna] = false;
             }
         }
+    }
+
+    public void montarObstaculos(bool[,] obstaculos)
+    {
+        if (obstaculos == null)
+        {
+            return;
+        }
+
+        int qtdLinhas = referencias.getQtdLinhasDoBoard();
+        for (int contadorLinha = 0; contadorLinha < qtdLinhas; contadorLinha++)
+        {
+            int qtdColunas = referencias.getQtdColunasDoBoard(contadorLinha);
+            for (int contadorColuna = 0; contadorColuna < qtdColunas; contadorColuna++)
+            {
+                bool estadoGaiola = obstaculos[contadorLinha, contadorColuna];
+                dicionarioEstadosGaiola[contadorLinha][contadorColuna] = estadoGaiola;                
+                updateGaiola(contadorLinha, contadorColuna, estadoGaiola);
+            }
+        }
+    }
+
+    private void updateGaiola(int linha, int coluna, bool estado)
+    {
+        ((ReferenciasDoBoardObstaculo)referencias).updateElementoGaiola(linha, coluna, estado);
     }
 
     private void inicializarDicionarioEstados()

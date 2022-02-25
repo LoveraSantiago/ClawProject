@@ -13,6 +13,6 @@ public class DropDownLevelsObstaculo : DropDownLevels
     protected override void onDropDownSelected(AbstractLevel level, RemontadorBoard remontador)
     {
         bool[,] obstaculos = LevelUtils.getArrayDeObstaculos(level);
-        ((RemontadorBoardDeObstaculos)remontador).montarObstaculos(obstaculos);
+        ((ControleObstaculos)remontador).montarObstaculos(obstaculos);
     }
 }

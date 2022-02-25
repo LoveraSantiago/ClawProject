@@ -22,7 +22,7 @@ public class ProcessadorDeObstaculos : ProcessadorDeColetaveis
             int totalColunas = referencias.getQtdColunasDoBoard(contadorLinha);
             for(int contadorColuna = 0; contadorColuna < totalColunas; contadorColuna++)
             {
-                result += controleObstaculos.getEstadoObstaculo(contadorLinha, contadorColuna) + addVirgula(contadorColuna, totalColunas);
+                result += controleObstaculos.getEstadoObstaculo(contadorLinha, contadorColuna).ToString().ToLower() + addVirgula(contadorColuna, totalColunas);
             }
             result += "}" + addNovaLinha(contadorLinha, totalLinhas);
         }
