@@ -43,7 +43,7 @@ public class BoardAssemblerObstaculosV2 : EditorWindow
         BoardCleanerObstaculos cleaner = new BoardCleanerObstaculos(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio(), controleObstaculos);
         navegacao.resetMira();
 
-        RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
+        RemontadorBoard remontador = new RemontadorBoardDeObstaculos(referenciasDoBoard, listaDeSprites);
         DropDownLevels dropoDownLevels = new DropDownLevelsObstaculo(LevelHelper.getObstaculoLevelsAlias());
         dropoDownLevels.criarComponentDropDownField(root, cleaner, remontador);
 

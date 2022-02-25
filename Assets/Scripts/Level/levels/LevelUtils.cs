@@ -89,4 +89,16 @@ public class LevelUtils
             return null;
         }
     }
+
+    public static int[,] getArrayDeObstaculos(AbstractLevel level)
+    {
+        if (isObstaculoLevel(level))
+        {
+            return ((AbstractLevelObstaculos)level).getArrayDeObstaculos();
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
