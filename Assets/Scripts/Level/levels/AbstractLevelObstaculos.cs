@@ -5,5 +5,5 @@ public abstract class AbstractLevelObstaculos : AbstractLevel
         return TipoGame.OBSTACULO;
     }
 
-    public abstract int[,] getArrayDeObstaculos();    
+    public abstract bool[,] getArrayDeObstaculos();    
 }

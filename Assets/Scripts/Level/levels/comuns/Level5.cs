@@ -28,9 +28,18 @@ public class Level5 : AbstractLevelObstaculos
         return coletaveis;
     }
 
-    public override int[,] getArrayDeObstaculos()
+    public override bool[,] getArrayDeObstaculos()
     {
-        throw new System.NotImplementedException();
+        bool[,] gaiolas = new bool[,]{
+            {false, true, false, true, false, true, false},
+            {true, false, true, false, true, false, true},
+            {false, false, false, false, false, false, false},
+            {true, true, true, true, true, true, true},
+            {false, false, false, false, false, false, false},
+            {false, false, false, false, false, false, false},
+            {false, false, false, false, false, false, false}
+        };
+        return gaiolas;
     }
 
     public override ColetavelEntidade.FAMILIA getFamiliaColetavel()

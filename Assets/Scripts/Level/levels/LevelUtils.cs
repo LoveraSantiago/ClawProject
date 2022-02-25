@@ -90,7 +90,7 @@ public class LevelUtils
         }
     }
 
-    public static int[,] getArrayDeObstaculos(AbstractLevel level)
+    public static bool[,] getArrayDeObstaculos(AbstractLevel level)
     {
         if (isObstaculoLevel(level))
         {
