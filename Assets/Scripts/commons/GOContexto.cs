@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class GOContexto 
+public class GOContexto //PERTENCE AO COLETAVEL
 {
     public Nomeador nomeador { get; private set; }
     public GameObject mainTile { get; private set; }
     public Material mainMaterial { get; private set; }
-    public Transform mainTileParent { get; private set; }    
+    public Transform mainTileParent { get; private set; }    //PERTENCE AO GO
 
     public void configurar(ColetaveisDto coletaveisDto)
     {
