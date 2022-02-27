@@ -10,13 +10,18 @@ public class BoardMontadorNormal : BoardMontador
 
     protected override void create(BoardDto boardDto)
     {
-        PosicaoItensDoBoardDto posYItem = boardDto.PosicoesY;
+        PosicaoItensDoBoardDto posYItem = getPosYITem(boardDto);
         for (int contadorLinha = 0; contadorLinha < posYItem.Total; contadorLinha++)
         {
             PosicaoItensDoBoardDto posXItem = getPosicaoItem(boardDto, contadorLinha);
             float alturaY = posYItem.Inicio + (posYItem.Acrescimo * contadorLinha);
             montarLinha(posXItem, contadorLinha, alturaY);
         }     
+    }
+    
+    protected virtual PosicaoItensDoBoardDto getPosYITem(BoardDto boardDto)
+    {
+        return boardDto.PosicoesY;
     }
 
     protected override void onColetavelCriado(Coletavel coletavel)

@@ -10756,15 +10756,6 @@ MonoBehaviour:
         posicaoRefVoltaBoard: {fileID: 1476824515}
         startBoard: {fileID: 422691799}
         posAlturaSub: -4.3
-        posicoesEixoY:
-        - -3.5
-        - -2.85
-        - -2.2
-        - -1.55
-        - -0.9
-        - -0.25
-        - 0.4
-        - 1.05
         posicoesXPares:
           inicio: -2.25
           total: 7
@@ -10777,6 +10768,10 @@ MonoBehaviour:
           inicio: -3.5
           total: 8
           acrescimo: 0.65
+        posicoesYObstaculos:
+          inicio: -3.55
+          total: 7
+          acrescimo: 0.75
     maquinaDto:
       factorHdr: 5
       referenciaChao: {fileID: 1270622651}
@@ -22713,37 +22708,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 231076174110980929, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1050303217
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1050303218}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1050303218
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050303217}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.25, y: -3.5, z: -0.14627422}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1054674719 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8958436621082421627, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
