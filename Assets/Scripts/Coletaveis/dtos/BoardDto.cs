@@ -19,7 +19,11 @@ public class BoardDto
     [SerializeField] private float posAlturaSub;
     [SerializeField] private float[] posicoesEixoXPar = new float[7];
     [SerializeField] private float[] posicoesEixoXImpar = new float[7];
-    [SerializeField] private float[] posicoesEixoY = new float[8];   
+    [SerializeField] private float[] posicoesEixoY = new float[8];    
+    [Space(5)]
+    [SerializeField] private float acrescimoItemBoard;
+    [SerializeField] private PosicaoItensDoBoardDto posicoesPares;
+    [SerializeField] private PosicaoItensDoBoardDto posicoesImpares;
         
     public float DelayVoltaBoard { get { return delayVoltaBoard; } }
 
@@ -38,4 +42,8 @@ public class BoardDto
     public float[] PosicoesEixoXPar { get { return posicoesEixoXPar;  } }
     public float[] PosicoesEixoXImpar { get { return posicoesEixoXImpar;  } }
     public float[] PosicoesEixoY { get { return posicoesEixoY;  } }
+   
+    public float AcrescimoItemBoard { get { return acrescimoItemBoard; } }
+    public PosicaoItensDoBoardDto PosicoesPares { get { return posicoesPares; } }
+    public PosicaoItensDoBoardDto PosicoesImpares { get { return posicoesImpares; } }
 }

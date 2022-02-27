@@ -12,9 +12,13 @@ public class BoardMontadorNormal : BoardMontador
     {   
         for (int contadorLinha = 0; contadorLinha < boardDto.PosicoesEixoY.Length; contadorLinha++)
         {
-            float[] eixoX = getEixoX(boardDto, contadorLinha);
+            //float[] eixoX = getEixoX(boardDto, contadorLinha);
+            //float alturaY = boardDto.PosicoesEixoY[contadorLinha];
+            //montarLinha(eixoX, contadorLinha, alturaY);
+
+            PosicaoItensDoBoardDto posItem = getPosicaoItem(boardDto, contadorLinha);
             float alturaY = boardDto.PosicoesEixoY[contadorLinha];
-            montarLinha(eixoX, contadorLinha, alturaY);            
+            montarLinha(posItem, contadorLinha, alturaY);
         }     
     }
 
