@@ -31,9 +31,9 @@ public abstract class BoardMontador
                 coletavelEntidade = helperColetavel.getRandomColetavelEntidadeByFamilia(familia);
             }
 
-            float posX = posItem.Inicio + (0.75f * contadorColuna);
+            float posX = posItem.Inicio + (posItem.acrescimo * contadorColuna);
             Vector3 posicao = new Vector3(posX, altura, 0);
-            Coletavel coletavel = criarColetavel(coletavelEntidade.nomeSprite, posicao);
+            Coletavel coletavel = HelperColetaveisInGame.criarColetavel(coletavelEntidade.nomeSprite, posicao);
             onColetavelCriado(coletavel);
         }
     }
@@ -49,14 +49,17 @@ public abstract class BoardMontador
 
     protected PosicaoItensDoBoardDto getPosicaoItem(BoardDto boardDto, int indice)
     {
+        PosicaoItensDoBoardDto posicaoItens = null;
         if (indice % 2 == 0)
         {
-            return boardDto.PosicoesPares;
+            posicaoItens = boardDto.PosicoesPares;
         }
         else
         {
-            return boardDto.PosicoesImpares;
+            posicaoItens = boardDto.PosicoesImpares;
         }
+        posicaoItens.addAcrescimo(boardDto.AcrescimoYItemBoard);
+        return posicaoItens;
     }
 
     protected void setArrayDeColetavel(int[,] arrayDeColetaveis)
@@ -72,21 +75,7 @@ public abstract class BoardMontador
     protected int getQtdItensDimensaoZero()
     {
         return arrayDeColetaveis.GetLength(0);
-    }
-
-    private Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
-    {
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-
-        Coletavel coletavel = helperInGame.criarColetavel();
-        Sprite sprite = helperColetavel.getSpriteColetavelByNomeSprite(nomeSprite);
-        coletavel.receberSprite(sprite);
-        coletavel.colocarNaPosicao(posicao);
-        coletavel.ligar();
-
-        return coletavel;
-    }
+    }   
 
     public static void configurar(ColetavelEntidade.FAMILIA familiaArg)
     {

@@ -84,6 +84,20 @@ public class HelperColetaveisInGame
         return poolGrayscale[spr.name];
     }
 
+    public static Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
+    {
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+
+        Coletavel coletavel = helperInGame.criarColetavel();
+        Sprite sprite = helperColetavel.getSpriteColetavelByNomeSprite(nomeSprite);
+        coletavel.receberSprite(sprite);
+        coletavel.colocarNaPosicao(posicao);
+        coletavel.ligar();
+
+        return coletavel;
+    }
+
     public static void configurar()
     {
         poolDeColetaveis = new PoolDeColetaveis(); ;
