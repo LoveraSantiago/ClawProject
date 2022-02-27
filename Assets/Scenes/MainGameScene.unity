@@ -10692,7 +10692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 3
+  level: 1
   mainDto:
     garraDto:
       velocidades:
@@ -10765,7 +10765,6 @@ MonoBehaviour:
         - -0.25
         - 0.4
         - 1.05
-        acrescimoYItemBoard: 0.65
         posicoesXPares:
           inicio: -2.25
           total: 7
@@ -10774,6 +10773,10 @@ MonoBehaviour:
           inicio: -1.88
           total: 6
           acrescimo: 0.75
+        posicoesY:
+          inicio: -3.5
+          total: 8
+          acrescimo: 0.65
     maquinaDto:
       factorHdr: 5
       referenciaChao: {fileID: 1270622651}

@@ -9,12 +9,13 @@ public class BoardMontadorNormal : BoardMontador
     }
 
     protected override void create(BoardDto boardDto)
-    {   
-        for (int contadorLinha = 0; contadorLinha < boardDto.PosicoesEixoY.Length; contadorLinha++)
+    {
+        PosicaoItensDoBoardDto posYItem = boardDto.PosicoesY;
+        for (int contadorLinha = 0; contadorLinha < posYItem.Total; contadorLinha++)
         {
-            PosicaoItensDoBoardDto posItem = getPosicaoItem(boardDto, contadorLinha);
-            float alturaY = boardDto.PosicoesEixoY[contadorLinha];
-            montarLinha(posItem, contadorLinha, alturaY);
+            PosicaoItensDoBoardDto posXItem = getPosicaoItem(boardDto, contadorLinha);
+            float alturaY = posYItem.Inicio + (posYItem.Acrescimo * contadorLinha);
+            montarLinha(posXItem, contadorLinha, alturaY);
         }     
     }
 

@@ -48,8 +48,7 @@ public abstract class BoardMontador
     }   
 
     protected PosicaoItensDoBoardDto getPosicaoItem(BoardDto boardDto, int indice)
-    {
-        PosicaoItensDoBoardDto posicaoItens = null;
+    {   
         if (indice % 2 == 0)
         {
             return boardDto.PosicoesXPares;
