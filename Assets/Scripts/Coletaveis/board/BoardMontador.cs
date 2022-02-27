@@ -31,7 +31,7 @@ public abstract class BoardMontador
                 coletavelEntidade = helperColetavel.getRandomColetavelEntidadeByFamilia(familia);
             }
 
-            float posX = posItem.Inicio + (posItem.acrescimo * contadorColuna);
+            float posX = posItem.Inicio + (posItem.Acrescimo * contadorColuna);
             Vector3 posicao = new Vector3(posX, altura, 0);
             Coletavel coletavel = HelperColetaveisInGame.criarColetavel(coletavelEntidade.nomeSprite, posicao);
             onColetavelCriado(coletavel);
@@ -52,14 +52,12 @@ public abstract class BoardMontador
         PosicaoItensDoBoardDto posicaoItens = null;
         if (indice % 2 == 0)
         {
-            posicaoItens = boardDto.PosicoesPares;
+            return boardDto.PosicoesXPares;
         }
         else
         {
-            posicaoItens = boardDto.PosicoesImpares;
-        }
-        posicaoItens.addAcrescimo(boardDto.AcrescimoYItemBoard);
-        return posicaoItens;
+            return boardDto.PosicoesXImpares;
+        }        
     }
 
     protected void setArrayDeColetavel(int[,] arrayDeColetaveis)

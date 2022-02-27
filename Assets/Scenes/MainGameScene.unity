@@ -10756,21 +10756,6 @@ MonoBehaviour:
         posicaoRefVoltaBoard: {fileID: 1476824515}
         startBoard: {fileID: 422691799}
         posAlturaSub: -4.3
-        posicoesEixoXPar:
-        - -2.25
-        - -1.5
-        - -0.75
-        - 0
-        - 0.75
-        - 1.5
-        - 2.25
-        posicoesEixoXImpar:
-        - -1.88
-        - -1.13
-        - -0.38
-        - 0.37
-        - 1.12
-        - 1.87
         posicoesEixoY:
         - -3.5
         - -2.85
@@ -10780,13 +10765,15 @@ MonoBehaviour:
         - -0.25
         - 0.4
         - 1.05
-        acrescimoItemBoard: 0.75
-        posicoesPares:
+        acrescimoYItemBoard: 0.65
+        posicoesXPares:
           inicio: -2.25
           total: 7
-        posicoesImpares:
+          acrescimo: 0.75
+        posicoesXImpares:
           inicio: -1.88
           total: 6
+          acrescimo: 0.75
     maquinaDto:
       factorHdr: 5
       referenciaChao: {fileID: 1270622651}
