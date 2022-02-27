@@ -13,4 +13,9 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
     {
         base.onColetavelCriado(coletavel);        
     }
+
+    protected override PosicaoItensDoBoardDto getPosicaoItem(BoardDto boardDto, int indice)
+    {
+        return boardDto.PosicoesXPares;        
+    }
 }

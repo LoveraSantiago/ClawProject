@@ -1,3 +1,5 @@
+using System;
+
 public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 {   
     private BoardDto boardDto;
@@ -11,17 +13,16 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
     public BoardManager(BoardDto boardDto)
     {
         this.boardDto = boardDto;
-        devolvedor    = new BoardDevolvedor();
-        montador      = new BoardMontadorNormal();        
+        devolvedor    = new BoardDevolvedor();        
         elevador      = new BoardElevador();        
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
     {
         BoardMontador.configurar(level.getFamiliaColetavel());
-        montador.configuradoPeloLevel(level);
+        inicializarMontador(level);        
         inicializarMontadorExtra(level);        
-    }
+    }   
 
     public int create()
     {
@@ -49,6 +50,19 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
     public bool isDevolverBoard()
     {
         return devolvedor.devolverBoard;
+    }
+
+    private void inicializarMontador(AbstractLevel level)
+    {
+        if (LevelUtils.isObstaculoLevel(level))
+        {
+            montador = new BoardMontadorObstaculos();
+        }
+        else
+        {
+            montador = new BoardMontadorNormal();
+        }
+        montador.configuradoPeloLevel(level);
     }
 
     private void inicializarMontadorExtra(AbstractLevel level)

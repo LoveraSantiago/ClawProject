@@ -47,7 +47,7 @@ public abstract class BoardMontador
         return 0;
     }   
 
-    protected PosicaoItensDoBoardDto getPosicaoItem(BoardDto boardDto, int indice)
+    protected virtual PosicaoItensDoBoardDto getPosicaoItem(BoardDto boardDto, int indice)
     {   
         if (indice % 2 == 0)
         {
