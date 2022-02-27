@@ -9,13 +9,13 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
         return boardDto.PosicoesYObstaculos;
     }
 
-    protected override void onColetavelCriado(Coletavel coletavel)
-    {
-        base.onColetavelCriado(coletavel);        
-    }
-
     protected override PosicaoItensDoBoardDto getPosicaoItem(BoardDto boardDto, int indice)
     {
         return boardDto.PosicoesXPares;        
+    }
+
+    protected override void onColetavelCriado(Coletavel coletavel)
+    {
+        base.onColetavelCriado(coletavel);        
     }
 }
