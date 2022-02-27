@@ -17,9 +17,6 @@ public class BoardMontadorExtra : BoardMontador
 
     protected override void create(BoardDto boardDto)
     {        
-        //float[] eixoX = getEixoX(boardDto, ++contadorEixoX);            
-        //montarLinha(eixoX, contadorLinhaAtual, boardDto.PosAlturaSub);
-
         PosicaoItensDoBoardDto posItem = getPosicaoItem(boardDto, ++contadorEixoX);
         float alturaY = boardDto.PosAlturaSub;
         montarLinha(posItem, contadorLinhaAtual, alturaY);

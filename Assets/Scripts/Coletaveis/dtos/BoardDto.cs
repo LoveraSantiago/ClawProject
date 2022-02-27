@@ -17,8 +17,6 @@ public class BoardDto
     [SerializeField] private Transform startBoard;
     [Space(5)]
     [SerializeField] private float posAlturaSub;
-    [SerializeField] private float[] posicoesEixoXPar = new float[7];
-    [SerializeField] private float[] posicoesEixoXImpar = new float[7];
     [SerializeField] private float[] posicoesEixoY = new float[8];    
     [Space(5)]
     [SerializeField] private float acrescimoItemBoard;
@@ -38,9 +36,7 @@ public class BoardDto
     public Transform StartBoard { get { return startBoard; } }
     public Transform PosicaoRefVoltaBoard { get { return posicaoRefVoltaBoard; } }
     
-    public float PosAlturaSub { get { return posAlturaSub;  } }
-    public float[] PosicoesEixoXPar { get { return posicoesEixoXPar;  } }
-    public float[] PosicoesEixoXImpar { get { return posicoesEixoXImpar;  } }
+    public float PosAlturaSub { get { return posAlturaSub;  } }    
     public float[] PosicoesEixoY { get { return posicoesEixoY;  } }
    
     public float AcrescimoItemBoard { get { return acrescimoItemBoard; } }
