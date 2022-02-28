@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ColetavelContexto
+public class ColetavelContexto : MainGOContexto
 {
     public Nomeador nomeador { get; private set; }
 
-    public void configurar(ColetaveisDto coletaveisDto)
+    public ColetavelContexto(ColetaveisDto coletaveisDto)
+        :base(coletaveisDto.Tile, coletaveisDto.BoardDto.StartBoard)
     {
         nomeador = new Nomeador();
-    }
+    }    
 }

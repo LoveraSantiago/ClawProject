@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class GO 
 {
-    protected static GOContexto context;
+    //protected static GOContexto context;
 
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }
@@ -12,33 +12,34 @@ public abstract class GO
     protected GameObject go;
     protected Rigidbody2D rigidbody;
     protected SpriteRenderer spriteRenderer;    
-    
-    public GO(string nome) :this(context.mainTile, nome){}   
 
     public GO(Transform tranform)
+        :this(tranform, tranform.gameObject.name){}
+
+    public GO(Transform tranform, string nome)
     {
-        go = tranform.gameObject;
+        go             = tranform.gameObject;
         spriteRenderer = go.GetComponent<SpriteRenderer>();
-        rigidbody = go.GetComponent<Rigidbody2D>();
-        this.nome = go.name;
+        rigidbody      = go.GetComponent<Rigidbody2D>();
+        this.nome      = nome;
+        this.go.name   = nome;
     }
 
-    public GO(GameObject go, string nome)
-    {
-        this.go = GameObject.Instantiate(go, go.transform.position, Quaternion.Euler(Vector3.zero), context.mainTileParent);
-        this.nome = nome;
-        this.go.name = nome;
-        spriteRenderer = this.go.GetComponent<SpriteRenderer>();
-        rigidbody = this.go.GetComponent<Rigidbody2D>();        
-    }   
+    public GO(MainGOContexto mainGoContext, string nome)
+        :this(GameObject.Instantiate(
+                mainGoContext.mainGO, 
+                mainGoContext.mainGO.transform.position, 
+                Quaternion.Euler(Vector3.zero), 
+                mainGoContext.mainGOParent).transform, 
+              nome){}   
 
     public GO(GameObject go, 
               Transformador<GameObject, GameObject> getGoComSprRenderer, 
               string nome)
-        :this(go, nome)
+        :this(go.transform, nome)
     {
         GameObject goSprite = getGoComSprRenderer.transformar(this.go);
-        spriteRenderer = goSprite.GetComponent<SpriteRenderer>();
+        spriteRenderer      = goSprite.GetComponent<SpriteRenderer>();
     }
 
     public bool isVelocidadeYPositiva()

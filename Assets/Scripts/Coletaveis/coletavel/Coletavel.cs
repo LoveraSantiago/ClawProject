@@ -9,13 +9,13 @@ public class Coletavel : GO
     private static readonly int LAYER_NORMAL   = 7;
 
     private static CircleCollider2D referenciaColliderColetado;
-    private static ColetavelContexto contextColevatel;
+    private static ColetavelContexto contextoColevatel;
 
     private bool miraSelecionada;
     private ColetavelAnimacao animacao;      
 
     public Coletavel()
-        : base(contextColevatel.nomeador.getName())
+        : base(contextoColevatel, contextoColevatel.nomeador.getName())
     {
         animacao = new ColetavelAnimacao(go);
     }
@@ -24,13 +24,7 @@ public class Coletavel : GO
         : base(transform)
     {
         animacao = new ColetavelAnimacao(go);
-    }
-
-    public Coletavel(GameObject goTile, string nome)
-        : base(goTile, nome)
-    {
-        animacao = new ColetavelAnimacao(go);
-    }
+    }    
 
     public void ligarAnimacaoMira()
     {
@@ -119,8 +113,7 @@ public class Coletavel : GO
 
     public static void configurar(CircleCollider2D referenciaColliderColetadoArg, ColetaveisDto coletaveisDto)
     {
-        contextColevatel = new ColetavelContexto();
-        contextColevatel.configurar(coletaveisDto);
+        contextoColevatel = new ColetavelContexto(coletaveisDto);        
 
         referenciaColliderColetado = referenciaColliderColetadoArg;
     }
