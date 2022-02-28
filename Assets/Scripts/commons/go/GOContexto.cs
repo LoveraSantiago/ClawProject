@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GOContexto //TODO fazer rename p GOContexto
+public class GOContexto 
 {
     public GameObject mainGO { get; private set; }
     public Material mainMaterial { get; private set; }

@@ -2,12 +2,6 @@ using UnityEngine;
 
 public class Coletavel : GO
 {
-    private static readonly int SPR_ORDER_COMUM    = 32;
-    private static readonly int SPR_ORDER_DESTAQUE = 33;
-
-    private static readonly int LAYER_ELEVADOR = 16;
-    private static readonly int LAYER_NORMAL   = 7;
-
     private static CircleCollider2D referenciaColliderColetado;
     private static ColetavelContexto contexto;
 
@@ -61,22 +55,22 @@ public class Coletavel : GO
 
     public void colocarNoLayerElevador()
     {        
-        setLayer(LAYER_ELEVADOR);
+        setLayer(contexto.LAYER_ELEVADOR);
     }
 
     public void colocarNoLayerNormal()
     {
-        setLayer(LAYER_NORMAL);        
+        setLayer(contexto.LAYER_NORMAL);        
     }
 
     public void colocarNoLayerDestaque()
     {
-        colocarSpriteNoLayer(SPR_ORDER_DESTAQUE);
+        colocarSpriteNoLayer(contexto.SPR_ORDER_DESTAQUE);
     }
 
     public void colocarNoLayerComum()
     {
-        colocarSpriteNoLayer(SPR_ORDER_COMUM);
+        colocarSpriteNoLayer(contexto.SPR_ORDER_COMUM);
     }
 
     public void imantar()
@@ -101,7 +95,7 @@ public class Coletavel : GO
 
     public void receberSprite(Sprite sprite)
     {
-        receberSprite(sprite, SPR_ORDER_COMUM);
+        receberSprite(sprite, contexto.SPR_ORDER_COMUM);
     }
 
     public bool isTouchingCentroDaGarra()
