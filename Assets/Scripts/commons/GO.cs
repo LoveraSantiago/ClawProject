@@ -13,7 +13,7 @@ public abstract class GO
     protected Rigidbody2D rigidbody;
     protected SpriteRenderer spriteRenderer;    
     
-    public GO() :this(context.mainTile, context.nomeador.getName()){}   
+    public GO(string nome) :this(context.mainTile, nome){}   
 
     public GO(Transform tranform)
     {

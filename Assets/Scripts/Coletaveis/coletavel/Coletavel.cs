@@ -9,12 +9,13 @@ public class Coletavel : GO
     private static readonly int LAYER_NORMAL   = 7;
 
     private static CircleCollider2D referenciaColliderColetado;
+    private static ColetavelContexto contextColevatel;
 
     private bool miraSelecionada;
     private ColetavelAnimacao animacao;      
 
     public Coletavel()
-        : base()
+        : base(contextColevatel.nomeador.getName())
     {
         animacao = new ColetavelAnimacao(go);
     }
@@ -116,8 +117,11 @@ public class Coletavel : GO
         return referenciaColliderColetado == collider2d && rigidbody.velocity.y > 0;
     }
 
-    public static void configurar(CircleCollider2D referenciaColliderColetadoArg)
+    public static void configurar(CircleCollider2D referenciaColliderColetadoArg, ColetaveisDto coletaveisDto)
     {
+        contextColevatel = new ColetavelContexto();
+        contextColevatel.configurar(coletaveisDto);
+
         referenciaColliderColetado = referenciaColliderColetadoArg;
     }
 }
