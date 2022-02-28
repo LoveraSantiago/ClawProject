@@ -40,6 +40,8 @@ public abstract class GO
         spriteRenderer      = goSprite.GetComponent<SpriteRenderer>();
     }
 
+    protected abstract GOContexto getGOContext();
+
     public bool isVelocidadeYPositiva()
     {
         return rigidbody.velocity.y > 0;
@@ -67,10 +69,13 @@ public abstract class GO
     public void disparar(Vector3 posicao, float angulo, float velocidade)
     {
         Quaternion quatAngulo = Quaternion.Euler(0, 0, angulo);
-        context.mainTile.transform.rotation = quatAngulo;
+
+        GOContexto goContexto = getGOContext();
+        GameObject mainGO = goContexto.mainGO;
+        
         colocarNaPosicao(posicao, quatAngulo);
-        rigidbody.AddForce(context.mainTile.transform.up * velocidade, ForceMode2D.Impulse);
-        context.mainTile.transform.rotation = Quaternion.Euler(Vector3.zero);
+        rigidbody.AddForce(mainGO.transform.up * velocidade, ForceMode2D.Impulse);
+        mainGO.transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
     public void disparar(float angulo, float velocidade)
