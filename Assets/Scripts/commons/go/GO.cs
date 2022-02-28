@@ -23,12 +23,12 @@ public abstract class GO
         this.go.name   = nome;
     }
 
-    public GO(MainGOContexto mainGoContext, string nome)
+    public GO(GOContexto contextoGO, string nome)
         :this(GameObject.Instantiate(
-                mainGoContext.mainGO, 
-                mainGoContext.mainGO.transform.position, 
+                contextoGO.mainGO, 
+                contextoGO.mainGO.transform.position, 
                 Quaternion.Euler(Vector3.zero), 
-                mainGoContext.mainGOParent).transform, 
+                contextoGO.mainGOParent).transform, 
               nome){}   
 
     public GO(GameObject go, 

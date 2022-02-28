@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ColetavelContexto : MainGOContexto
+public class ColetavelContexto : GOContexto
 {
     public Nomeador nomeador { get; private set; }
 
