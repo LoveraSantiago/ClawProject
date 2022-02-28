@@ -67,11 +67,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     }
 
     private void configurarColetaveis(ColetaveisDto coletaveisDto)
-    {
-        GO.configurar(coletaveisDto);
+    {   
         HelperColetavelEntidade.configurar(coletaveisDto.PrefabColetaveisDto);
         HelperColetaveisInGame.configurar();
-        Coletavel.configurar(coletaveisDto.ReferenciaColliderColetado);
+        Coletavel.configurar(coletaveisDto.ReferenciaColliderColetado, coletaveisDto);
     }
 
     private void processarColetado(GameObject gameObjectColetado)

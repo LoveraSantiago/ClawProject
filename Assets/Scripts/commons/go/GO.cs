@@ -2,8 +2,6 @@ using UnityEngine;
 
 public abstract class GO 
 {
-    //protected static GOContexto context;
-
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }
 
@@ -179,11 +177,5 @@ public abstract class GO
     {
         //Debug.Log("spr this " + nomeSprite + " spr other " + coletavelOutro.nomeSprite);
         return nomeSprite.Equals(coletavelOutro.nomeSprite);
-    }       
-
-    public static void configurar(ColetaveisDto coletaveisDto)
-    {
-        context = new GOContexto();
-        context.configurar(coletaveisDto);
-    }
+    }         
 }
