@@ -9,10 +9,12 @@ public class ColetavelContexto : GOContexto
     public readonly int LAYER_NORMAL = 7;
 
     public Nomeador nomeador { get; private set; }
+    public CircleCollider2D referenciaColliderColetado { get; private set; }
 
-    public ColetavelContexto(ColetaveisDto coletaveisDto)
-        :base(coletaveisDto.Tile, coletaveisDto.BoardDto.StartBoard)
+    public ColetavelContexto(ColetaveisDto coletaveisDto, CircleCollider2D referenciaColliderColetado)
+        : base(coletaveisDto.Tile, coletaveisDto.BoardDto.StartBoard)
     {
         nomeador = new Nomeador();
+        this.referenciaColliderColetado = referenciaColliderColetado;
     }    
 }

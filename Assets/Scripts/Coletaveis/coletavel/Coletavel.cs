@@ -1,8 +1,7 @@
 using UnityEngine;
 
 public class Coletavel : GO
-{
-    private static CircleCollider2D referenciaColliderColetado;
+{    
     private static ColetavelContexto contexto;
 
     private bool miraSelecionada;
@@ -102,7 +101,7 @@ public class Coletavel : GO
     {
         LayerMask mask = LayerMask.GetMask("GarraCentro");
         Collider2D collider2d = Physics2D.OverlapCircle(rigidbody.position, 0.3f, mask);        
-        return referenciaColliderColetado == collider2d && rigidbody.velocity.y > 0;
+        return contexto.referenciaColliderColetado == collider2d && rigidbody.velocity.y > 0;
     }
 
     protected override GOContexto getGOContext()
@@ -112,8 +111,6 @@ public class Coletavel : GO
 
     public static void configurar(CircleCollider2D referenciaColliderColetadoArg, ColetaveisDto coletaveisDto)
     {
-        contexto = new ColetavelContexto(coletaveisDto);        
-
-        referenciaColliderColetado = referenciaColliderColetadoArg;
+        contexto = new ColetavelContexto(coletaveisDto, referenciaColliderColetadoArg);                
     }
 }
