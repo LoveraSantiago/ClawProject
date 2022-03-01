@@ -11,12 +11,12 @@ public abstract class GO
     protected Rigidbody2D rigidbody;
     protected SpriteRenderer spriteRenderer;    
 
-    public GO(Transform tranform)
-        :this(tranform, tranform.gameObject.name){}
+    public GO(Transform transform)
+        :this(transform, transform.gameObject.name){}
 
-    public GO(Transform tranform, string nome)
+    public GO(Transform transform, string nome)
     {
-        go             = tranform.gameObject;
+        go             = transform.gameObject;
         spriteRenderer = go.GetComponent<SpriteRenderer>();
         rigidbody      = go.GetComponent<Rigidbody2D>();
         this.nome      = nome;
