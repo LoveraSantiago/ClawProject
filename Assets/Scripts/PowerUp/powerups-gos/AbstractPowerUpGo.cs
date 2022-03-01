@@ -3,7 +3,8 @@ using UnityEngine;
 public abstract class AbstractPowerUpGo : GO,
                                           PowerUpAcaoExpirado
 {    
-    protected static PowerUpDto powerUpDto;    
+    protected static PowerUpDto powerUpDto;
+    private static GOContexto contexto;
 
     protected static InputGame inputGame;
     protected static PowerUpAcaoFinalizacao powerUpFinalizacao;
@@ -50,7 +51,7 @@ public abstract class AbstractPowerUpGo : GO,
     
     protected override GOContexto getGOContext()
     {
-        return null;
+        return contexto;
     }
 
     public static void configurarAbstractPowerUp(PowerUpDto powerUpDtoArg, PowerUpAcaoFinalizacao powerUpFinalizacaoArg, 
@@ -58,7 +59,9 @@ public abstract class AbstractPowerUpGo : GO,
     {
         powerUpDto = powerUpDtoArg;        
         powerUpFinalizacao = powerUpFinalizacaoArg;
-        inputGame = inputGameArg;        
+        inputGame = inputGameArg;
+
+        contexto = new GOContexto(powerUpDto.MainGoPup, powerUpDto.MainParentPup);
     }
 
     //TODO unificar configuracao
@@ -66,5 +69,4 @@ public abstract class AbstractPowerUpGo : GO,
     {
         informacaoDisplayColetado = informacaoDisplayColetadoArg;
     }
-
 }
