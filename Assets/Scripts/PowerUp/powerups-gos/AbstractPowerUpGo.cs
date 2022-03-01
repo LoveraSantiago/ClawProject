@@ -21,7 +21,7 @@ public abstract class AbstractPowerUpGo : GO,
     public abstract InteracaoPowerUpComComponente getInteracaoComComponente();
 
     public AbstractPowerUpGo(GameObject goTile, string nome)
-        : base(goTile, nome)
+        : base(goTile.transform, nome)
     {
     }
 
@@ -42,6 +42,17 @@ public abstract class AbstractPowerUpGo : GO,
         iniciarPup();
     }
 
+    public void expirar()
+    {
+        powerUpFinalizacao.expirado();
+        timeout();
+    }
+    
+    protected override GOContexto getGOContext()
+    {
+        return null;
+    }
+
     public static void configurarAbstractPowerUp(PowerUpDto powerUpDtoArg, PowerUpAcaoFinalizacao powerUpFinalizacaoArg, 
         InputGame inputGameArg)
     {
@@ -56,9 +67,4 @@ public abstract class AbstractPowerUpGo : GO,
         informacaoDisplayColetado = informacaoDisplayColetadoArg;
     }
 
-    public void expirar()
-    {
-        powerUpFinalizacao.expirado();
-        timeout();
-    }
 }
