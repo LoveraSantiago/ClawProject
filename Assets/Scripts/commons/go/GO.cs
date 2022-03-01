@@ -38,7 +38,9 @@ public abstract class GO : ComponenteRigidBodyDeGO
 
         GOContexto goContexto = getGOContext();
         GameObject mainGO = goContexto.mainGO;
-        
+        mainGO.transform.rotation = quatAngulo;
+
+
         colocarNaPosicao(posicao, quatAngulo);
         addImpulso(mainGO.transform.up * velocidade);        
         mainGO.transform.rotation = Quaternion.Euler(Vector3.zero);
