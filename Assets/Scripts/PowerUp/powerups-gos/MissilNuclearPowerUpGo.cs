@@ -40,6 +40,8 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         extrairComponente<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);
 
+        goExplosao = extrairTransform("explosao").gameObject;
+
         Animator animator = extrairAnimator("imagem");//TODO REPLICADO NOS PUPS EXPLOSIVOS REFATORAR!!!
         animacao = new AnimacaoExplosaoPup(animator);
     }
