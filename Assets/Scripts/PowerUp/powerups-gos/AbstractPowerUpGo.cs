@@ -21,15 +21,15 @@ public abstract class AbstractPowerUpGo : GO,
 
     public abstract InteracaoPowerUpComComponente getInteracaoComComponente();
 
-    public AbstractPowerUpGo(GameObject goTile, string nome)
-        : base(goTile.transform, nome)
+    public AbstractPowerUpGo(GameObject go, string nome)
+        : base(new GOContexto(go, contexto), nome)
     {
     }
 
-    public AbstractPowerUpGo(GameObject goTile, 
+    public AbstractPowerUpGo(GameObject go, 
                              Transformador<GameObject, GameObject> getGoComSprRenderer, 
                              string nome)
-        : base(goTile, getGoComSprRenderer, nome)
+        : base(new GOContexto(go, contexto), getGoComSprRenderer, nome)
     {
     }
 

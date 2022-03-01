@@ -12,4 +12,11 @@ public class GOContexto
         mainMaterial = mainGO.GetComponent<SpriteRenderer>().sharedMaterial;
         this.mainGOParent = transformMainTileParent;
     }
+
+    public GOContexto(GameObject mainGO, GOContexto goContexto)
+    {
+        this.mainGO = mainGO;
+        mainMaterial = goContexto.mainMaterial;
+        mainGOParent = goContexto.mainGOParent;
+    }
 }

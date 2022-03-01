@@ -31,10 +31,10 @@ public abstract class GO
                 contextoGO.mainGOParent).transform, 
               nome){}   
 
-    public GO(GameObject go, 
+    public GO(GOContexto contextoGO, 
               Transformador<GameObject, GameObject> getGoComSprRenderer, 
               string nome)
-        :this(go.transform, nome)
+        :this(contextoGO, nome)
     {
         GameObject goSprite = getGoComSprRenderer.transformar(this.go);
         spriteRenderer      = goSprite.GetComponent<SpriteRenderer>();
