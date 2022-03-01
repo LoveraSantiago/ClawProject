@@ -44,10 +44,10 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     }
 
     public override void configurarPup()
-    {        
-        capsuleCollider = go.GetComponent<CapsuleCollider2D>();
+    {
+        capsuleCollider = extrairCapsuleCollider();
 
-        Transform transfImagem = go.transform.Find("imagem");
+        Transform transfImagem = extrairTransform("imagem");
         animator = transfImagem.GetComponent<Animator>();
         efeitoFaiscas = transfImagem.transform.Find("faiscas")
                                .GetComponent<ParticleSystem>();

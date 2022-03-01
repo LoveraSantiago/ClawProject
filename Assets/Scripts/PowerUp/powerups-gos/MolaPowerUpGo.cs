@@ -22,7 +22,7 @@ public class MolaPowerUpGo : PowerUpSemInteracao
 
     public override void configurarPup()
     {
-        Transform transformImg = go.transform.Find("imagem");
+        Transform transformImg = extrairTransform("imagem");
         animator = transformImg.GetComponent<Animator>();
         boxCollider2d = transformImg.GetComponent<BoxCollider2D>();
     }

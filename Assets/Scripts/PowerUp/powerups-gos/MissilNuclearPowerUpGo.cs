@@ -11,8 +11,8 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
  
     public MissilNuclearPowerUpGo()
         : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, "missil-nuclear")
-    {   
-        go.SetActive(false);
+    {
+        desligar();        
     }
 
     public TipoInteracaoGarra getInteracaoComGarra()
@@ -37,11 +37,11 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
     public override void configurarPup()
     {
-        go.GetComponent<DetectorDeColisoes>()
+        extrairComponente<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);
 
-        goExplosao = go.transform.Find("explosao").gameObject;
-        animacao = new AnimacaoExplosaoPup(go);
+        Animator animator = extrairAnimator("imagem");//TODO REPLICADO NOS PUPS EXPLOSIVOS REFATORAR!!!
+        animacao = new AnimacaoExplosaoPup(animator);
     }
 
     public override void iniciarPup()

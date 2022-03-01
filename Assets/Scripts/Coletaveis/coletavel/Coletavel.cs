@@ -10,13 +10,13 @@ public class Coletavel : GO
     public Coletavel()
         : base(contexto, contexto.nomeador.getName())
     {
-        animacao = new ColetavelAnimacao(go);
+        iniciarColetavelAnimacao();
     }
 
     public Coletavel(Transform transform)
         : base(transform)
     {
-        animacao = new ColetavelAnimacao(go);
+        iniciarColetavelAnimacao();
     }    
 
     public void ligarAnimacaoMira()
@@ -40,11 +40,6 @@ public class Coletavel : GO
     public bool isMiraSelecionada()
     {
         return miraSelecionada;
-    }
-
-    public void addMaterial(Material material)
-    {
-        spriteRenderer.material = material;
     }   
 
     public void clearMaterial()
@@ -100,13 +95,24 @@ public class Coletavel : GO
     public bool isTouchingCentroDaGarra()
     {
         LayerMask mask = LayerMask.GetMask("GarraCentro");
-        Collider2D collider2d = Physics2D.OverlapCircle(rigidbody.position, 0.3f, mask);        
-        return contexto.referenciaColliderColetado == collider2d && rigidbody.velocity.y > 0;
+        Collider2D collider2d = Physics2D.OverlapCircle(getPosicao(), 0.3f, mask);
+        return contexto.referenciaColliderColetado == collider2d && isVelocidadeYPositiva();
+    }
+
+    public GameObject getGOColetavel()
+    {
+        return getGo();
     }
 
     protected override GOContexto getGOContext()
     {
         return contexto;
+    }
+
+    private void iniciarColetavelAnimacao()
+    {
+        Animator animator = extrairAnimator("animacao");
+        animacao = new ColetavelAnimacao(animator);
     }
 
     public static void configurar(CircleCollider2D referenciaColliderColetadoArg, ColetaveisDto coletaveisDto)

@@ -16,8 +16,8 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
 
     public override void configurarPup()
     {
-        animator = go.transform.Find("asas").GetComponent<Animator>();
-        circleCollider = go.GetComponent<CircleCollider2D>();
+        animator = extrairAnimator("asas");
+        circleCollider = extrairCircleCollider();
     }
 
     public override void iniciarPup()

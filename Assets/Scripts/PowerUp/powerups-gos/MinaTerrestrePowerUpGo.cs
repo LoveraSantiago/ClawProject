@@ -17,9 +17,11 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
     }
 
     public override void configurarPup()
-    {        
-        animacao = new AnimacaoExplosaoPup(go);
-        goExplosao = go.transform.Find("explosao").gameObject;
+    {
+        Animator animator = extrairAnimator("imagem");
+        animacao = new AnimacaoExplosaoPup(animator);
+
+        goExplosao = extrairTransform("explosao").gameObject;
     }
 
     public override void iniciarPup()

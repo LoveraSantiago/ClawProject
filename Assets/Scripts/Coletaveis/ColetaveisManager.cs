@@ -140,7 +140,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         }
         else if (evento.isPreFinalizar && evento.hasColetavel)
         {
-            processarColetado(evento.coletavel.getGo());
+            processarColetado(evento.coletavel.getGOColetavel());
         }        
         else if (evento.isFinalizar)
         {
