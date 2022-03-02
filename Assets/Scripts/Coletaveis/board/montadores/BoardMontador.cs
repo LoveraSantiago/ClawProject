@@ -34,13 +34,13 @@ public abstract class BoardMontador
             float posX = posItem.Inicio + (posItem.Acrescimo * contadorColuna);
             Vector3 posicao = new Vector3(posX, altura, 0);
             Coletavel coletavel = HelperColetaveisInGame.criarColetavel(coletavelEntidade.nomeSprite, posicao);
-            onColetavelCriado(coletavel);
+            onColetavelCriado(contadorColuna, contadorLinha,coletavel);
         }
     }
 
     public abstract void configuradoPeloLevel(AbstractLevel level);
     protected abstract void create(BoardDto boardDto);
-    protected abstract void onColetavelCriado(Coletavel coletavel);
+    protected abstract void onColetavelCriado(int posX, int posY, Coletavel coletavel);
 
     public virtual int getQtdAcrescentada()
     {

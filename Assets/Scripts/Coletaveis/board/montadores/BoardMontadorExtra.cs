@@ -24,7 +24,7 @@ public class BoardMontadorExtra : BoardMontador
         incrementarContadorDeLinha();        
     }
 
-    protected override void onColetavelCriado(Coletavel coletavel)
+    protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
         coletavel.colocarNoLayerElevador();        
         poolExtraSubs.addObjeto(coletavel);

@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class BoardMontadorObstaculos : BoardMontadorNormal
 {
+    private bool[,] obstaculos;
+
+    public override void configuradoPeloLevel(AbstractLevel level)
+    {
+        base.configuradoPeloLevel(level);
+        obstaculos = LevelUtils.getArrayDeObstaculos(level);
+    }
+
     protected override PosicaoItensDoBoardDto getPosYITem(BoardDto boardDto)
     {
         return boardDto.PosicoesYObstaculos;
@@ -14,10 +22,14 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
         return boardDto.PosicoesXPares;        
     }
 
-    protected override void onColetavelCriado(Coletavel coletavel)
+    protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
-        base.onColetavelCriado(coletavel);
-        Gaiola gaiola = new Gaiola();
-        gaiola.colocarNaPosicao(coletavel.getPosicao());
+        base.onColetavelCriado(posX, posY, coletavel);
+        bool temGaiola = obstaculos[posY, posX];
+        if (temGaiola)
+        {
+            Gaiola gaiola = new Gaiola();
+            gaiola.colocarNaPosicao(coletavel.getPosicao());
+        }
     }
 }

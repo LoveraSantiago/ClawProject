@@ -24,7 +24,7 @@ public class BoardMontadorNormal : BoardMontador
         return boardDto.PosicoesY;
     }
 
-    protected override void onColetavelCriado(Coletavel coletavel)
+    protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
         destaque.destacar(coletavel);        
     }

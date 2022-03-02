@@ -4,5 +4,5 @@ public class BoardMontadorVazio : BoardMontador
 
     protected override void create(BoardDto boardDto){}
 
-    protected override void onColetavelCriado(Coletavel coletavel){}
+    protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel){}
 }
