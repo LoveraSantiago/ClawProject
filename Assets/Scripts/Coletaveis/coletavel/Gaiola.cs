@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gaiola : MonoBehaviour
+public class Gaiola : GO
 {
-    // Start is called before the first frame update
-    void Start()
+    public Gaiola(GOContexto contextoGO, string nome) : base(contextoGO, nome)
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override GOContexto getGOContext()
     {
-        
+        throw new System.NotImplementedException();
     }
 }
