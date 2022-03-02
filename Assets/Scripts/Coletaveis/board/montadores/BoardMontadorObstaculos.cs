@@ -22,14 +22,24 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
         return boardDto.PosicoesXPares;        
     }
 
+    protected override void onPosicaoVaziaCriado(int posX, int posY, Vector3 posicao)
+    {
+        montarGaiola(posX, posY, posicao);
+    }
+
     protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
         base.onColetavelCriado(posX, posY, coletavel);
+        montarGaiola(posX, posY, coletavel.getPosicao());
+    }
+
+    private void montarGaiola(int posX, int posY, Vector3 posicao)
+    {
         bool temGaiola = obstaculos[posY, posX];
         if (temGaiola)
         {
             Gaiola gaiola = new Gaiola();
-            gaiola.colocarNaPosicao(coletavel.getPosicao());
+            gaiola.colocarNaPosicao(posicao);
         }
     }
 }

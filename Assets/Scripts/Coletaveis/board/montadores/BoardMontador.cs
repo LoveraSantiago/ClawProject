@@ -21,9 +21,11 @@ public abstract class BoardMontador
         {
             int id = arrayDeColetaveis[contadorLinha, contadorColuna];
             ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeById(id);
+            Vector3 posicao = calcularPosicao(posItem, contadorColuna, altura);            
 
             if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
-            {
+            {               
+                onPosicaoVaziaCriado(contadorColuna, contadorLinha, posicao);
                 continue;
             }
             else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
@@ -31,16 +33,23 @@ public abstract class BoardMontador
                 coletavelEntidade = helperColetavel.getRandomColetavelEntidadeByFamilia(familia);
             }
 
-            float posX = posItem.Inicio + (posItem.Acrescimo * contadorColuna);
-            Vector3 posicao = new Vector3(posX, altura, 0);
             Coletavel coletavel = HelperColetaveisInGame.criarColetavel(coletavelEntidade.nomeSprite, posicao);
             onColetavelCriado(contadorColuna, contadorLinha,coletavel);
         }
     }
 
+    private Vector3 calcularPosicao(PosicaoItensDoBoardDto posItem, int contadorColuna, float altura)
+    {
+        float posX = posItem.Inicio + (posItem.Acrescimo * contadorColuna);
+        Vector3 posicao = new Vector3(posX, altura, 0);
+        return posicao;
+    }
+
     public abstract void configuradoPeloLevel(AbstractLevel level);
     protected abstract void create(BoardDto boardDto);
     protected abstract void onColetavelCriado(int posX, int posY, Coletavel coletavel);
+
+    protected virtual void onPosicaoVaziaCriado(int posX, int posY, Vector3 posicao) { }
 
     public virtual int getQtdAcrescentada()
     {
