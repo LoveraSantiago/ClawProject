@@ -6,6 +6,9 @@ public class GOContexto
     public Material mainMaterial { get; private set; }
     public Transform mainGOParent { get; private set; }
 
+    public GOContexto(ContextoDto contextoDto)
+        :this(contextoDto.Go, contextoDto.ParentGo){}
+
     public GOContexto(GameObject mainGO, Transform transformMainTileParent)
     {
         this.mainGO = mainGO;

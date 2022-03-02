@@ -12,7 +12,7 @@ public class ColetavelContexto : GOContexto
     public CircleCollider2D referenciaColliderColetado { get; private set; }
 
     public ColetavelContexto(ColetaveisDto coletaveisDto, CircleCollider2D referenciaColliderColetado)
-        : base(coletaveisDto.Tile, coletaveisDto.BoardDto.StartBoard)
+        : base(coletaveisDto.ContextoColetavel)
     {
         nomeador = new Nomeador();
         this.referenciaColliderColetado = referenciaColliderColetado;

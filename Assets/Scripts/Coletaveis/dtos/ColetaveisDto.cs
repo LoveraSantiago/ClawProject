@@ -7,13 +7,14 @@ public class ColetaveisDto
     [SerializeField] private int pontosColetado;
     [SerializeField] private int pontosAcerto;
     [Space(5)]
-    [SerializeField] private GameObject sensorDeColetado;
-    [SerializeField] private GameObject tile;    
+    [SerializeField] private GameObject sensorDeColetado;     
     [SerializeField] private CircleCollider2D referenciaColliderColetado;
     [Space(5)]
     [SerializeField] private ParticleSystem efeitoColetado;    
     [Space(5)]        
     [SerializeField] private GameObject prefabColetaveisDto;
+    [Space(5)]
+    [SerializeField] private ContextoDto contextoColetavel;
     [Space(5)]    
     [SerializeField] private DescarteTuboDto descarteTuboDto;
     [Space(5)]    
@@ -24,7 +25,7 @@ public class ColetaveisDto
 
     public GameObject SensorDeColetado { get { return sensorDeColetado; } }    
 
-    public GameObject Tile { get { return tile; } }        
+    public ContextoDto ContextoColetavel { get { return contextoColetavel; } }      
 
     public CircleCollider2D ReferenciaColliderColetado { get { return referenciaColliderColetado; } }
     public ParticleSystem EfeitoColetado { get { return efeitoColetado; } }    

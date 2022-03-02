@@ -13,8 +13,7 @@ public class BoardDto
     [SerializeField] private Transform paredeBaixa;
     [Space(5)]
     [SerializeField] private Transform boardPosicao;
-    [SerializeField] private Transform posicaoRefVoltaBoard;
-    [SerializeField] private Transform startBoard;
+    [SerializeField] private Transform posicaoRefVoltaBoard;    
     [Space(5)]
     [SerializeField] private float posAlturaSub;     
     [Space(5)]        
@@ -32,8 +31,7 @@ public class BoardDto
     public Transform ParedeAlta { get { return paredeAlta; } }
     public Transform ParedeBaixa { get { return paredeBaixa; } }
 
-    public Transform BoardPosicao { get { return boardPosicao; } }
-    public Transform StartBoard { get { return startBoard; } }
+    public Transform BoardPosicao { get { return boardPosicao; } }    
     public Transform PosicaoRefVoltaBoard { get { return posicaoRefVoltaBoard; } }
     
     public float PosAlturaSub { get { return posAlturaSub;  } }       
