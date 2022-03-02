@@ -9,10 +9,9 @@ public class PowerUpDto
     [SerializeField] private GameObject vazioPUp;
     [SerializeField] private GameObject prefabPowerUpDto;
     [Space(3)]
-    [SerializeField] private GameObject mainGoPup;
-    [SerializeField] private Transform mainParentPup;
-    [Space(3)]
     [SerializeField] private ParticleSystem efeitoExplosao;
+    [Space(5)]
+    [SerializeField] private ContextoDto contextoPup;
     [Space(5)]
     [SerializeField] private BombaDto bombaDto;
     [Space(5)]    
@@ -39,11 +38,10 @@ public class PowerUpDto
     public GameObject VazioPUp { get { return vazioPUp; } }
     public GameObject PrefabPowerUpDto { get { return prefabPowerUpDto; } }
 
-    public GameObject MainGoPup { get { return mainGoPup; } }
-    public Transform MainParentPup { get { return mainParentPup; } }
-
     public ParticleSystem EfeitoExplosao { get { return efeitoExplosao;  } }
     public GameObject GoEfeitoExplosao { get { return efeitoExplosao.gameObject; } }
+
+    public ContextoDto ContextoPup { get { return contextoPup; } }
 
     public BombaDto BombaDto { get { return bombaDto; } }
     public MissilNuclearDto MissilNuclearDto { get { return missilNuclearDto; } }    

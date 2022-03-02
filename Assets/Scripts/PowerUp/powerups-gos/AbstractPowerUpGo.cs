@@ -61,7 +61,7 @@ public abstract class AbstractPowerUpGo : GO,
         powerUpFinalizacao = powerUpFinalizacaoArg;
         inputGame = inputGameArg;
 
-        contexto = new GOContexto(powerUpDto.MainGoPup, powerUpDto.MainParentPup);
+        contexto = new GOContexto(powerUpDto.ContextoPup);
     }
 
     //TODO unificar configuracao
