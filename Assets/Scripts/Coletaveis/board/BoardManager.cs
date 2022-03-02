@@ -7,7 +7,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
     private BoardElevador elevador;   
     private BoardDevolvedor devolvedor;
 
-    private BoardMontador montador;
+    private BoardMontador montador; 
     private BoardMontador montadorExtra;
 
     public BoardManager(BoardDto boardDto)
@@ -30,7 +30,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         int qtdColetaveisCriados = helperInGame.getQtdColetaveisInGame();
-
+        
         montadorExtra.createBoard(boardDto);
         return qtdColetaveisCriados;
     }   

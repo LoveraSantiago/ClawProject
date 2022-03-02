@@ -16,6 +16,8 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
 
     protected override void onColetavelCriado(Coletavel coletavel)
     {
-        base.onColetavelCriado(coletavel);        
+        base.onColetavelCriado(coletavel);
+        Gaiola gaiola = new Gaiola();
+        gaiola.colocarNaPosicao(coletavel.getPosicao());
     }
 }
