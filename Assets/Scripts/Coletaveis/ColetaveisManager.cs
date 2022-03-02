@@ -83,10 +83,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
-        InformacoesColetadoDto infoColetadoDto = new InformacoesColetadoDto();
-        infoColetadoDto.addInfosDisplayColetados(coletavelAcertado.getSprite(), contador.getResultCombinacao());
-        infoColetadoDto.addInfosDisplayScore(score, contador.getIndiceOrdem());
-        infoColetadoDto.addInfoFimDeJogo(contador.getInfoFimDeJogo());
+        InformacoesColetadoDto infoColetadoDto = new InformacoesColetadoDto()
+            .addInfosDisplayColetados(coletavelAcertado.getSprite(), contador.getResultCombinacao())
+            .addInfosDisplayScore(score, contador.getIndiceOrdem())
+            .addInfoFimDeJogo(contador.getInfoFimDeJogo());
 
         efeito.acionarEfeito(gameObjectColetado.transform.position);
         produtorDeInformacoesDoColetado.produziuEvento(infoColetadoDto);         

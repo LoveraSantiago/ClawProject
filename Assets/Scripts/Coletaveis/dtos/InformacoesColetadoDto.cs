@@ -10,20 +10,23 @@ public class InformacoesColetadoDto
 
     public Sprite sprite { get; private set; }
 
-    public void addInfosDisplayScore(int score, int ordem)
+    public InformacoesColetadoDto addInfosDisplayScore(int score, int ordem)
     {
         this.ordem = ordem;
         this.score = score;
+        return this;
     }
 
-    public void addInfosDisplayColetados(Sprite sprite, bool resultCombinacao)
+    public InformacoesColetadoDto addInfosDisplayColetados(Sprite sprite, bool resultCombinacao)
     {
         this.sprite = sprite;        
         this.resultCombinacao = resultCombinacao;
+        return this;
     }
 
-    public void addInfoFimDeJogo(InformacoesFimDeJogoDto infosFimDeJogo)
+    public InformacoesColetadoDto addInfoFimDeJogo(InformacoesFimDeJogoDto infosFimDeJogo)
     {
         this.infosFimDeJogo = infosFimDeJogo;
+        return this;
     }
 }
