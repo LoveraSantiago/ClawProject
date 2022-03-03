@@ -79,19 +79,10 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     private void processarExplosao()
     {
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
-        efeitoExplosao.explodir(getPosicao());        
+        efeitoExplosao.explodir(getPosicao());
 
-        LayerMask mask = LayerMask.GetMask("Coletavel");
-        Collider2D[] acertados = Physics2D.OverlapCircleAll(getPosicao(), powerUpDto.BombaDto.RaioExplosao, mask);
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-
-        for (int contador = 0; contador < acertados.Length; contador++)
-        {
-            string nomeAcertado = acertados[contador].name;
-            Coletavel acertado = helperInGame.getColetavelInGameByGoName(nomeAcertado);
-            int angulo = determinarAngulo(acertado.getPosicao());
-            acertado.disparar(angulo, powerUpDto.BombaDto.VelocidadeHit);
-        }
+        BombaExplosaoHit explosaoHit = new BombaExplosaoHit();
+        explosaoHit.acertar(getPosicao(), powerUpDto);        
     }
 
     private void processarPosExplosao()
@@ -105,11 +96,5 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
     {
         resetPup();
         powerUpFinalizacao.finalizado();
-    }
-
-    private int determinarAngulo(Vector3 posicao)
-    {        
-        if (getPosicao().x < posicao.x) return -powerUpDto.BombaDto.AnguloHit;
-        else return powerUpDto.BombaDto.AnguloHit;
     }    
 }
