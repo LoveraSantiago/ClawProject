@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class PowerUpParaMaquina : AcaoBotaoPowerUp
+public class PowerUpsParaMaquina : AcaoBotaoPowerUp
 {
     private static PowerUpAcaoAcionamento powerUpAcionamento;
     
     private PowerUpEntidade powerUpEntidade;    
 
-    public PowerUpParaMaquina(PowerUpEntidade powerUpEntidade)
+    public PowerUpsParaMaquina(PowerUpEntidade powerUpEntidade)
     {
         this.powerUpEntidade = powerUpEntidade;
     }

@@ -14,7 +14,7 @@ public abstract class AbstractLevel
 
     public abstract int[,] getArrayDeColetaveis();        
 
-    public virtual PowerUpsToLevel getPupsToLevel() { return null; }
+    public virtual PowerUpsParaLevel getPupsToLevel() { return null; }
 
     public string getTipoGameDesc()
     {

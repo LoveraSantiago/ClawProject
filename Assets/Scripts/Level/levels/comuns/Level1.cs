@@ -47,9 +47,9 @@ public class Level1 : AbstractLevel
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
 
-    public override PowerUpsToLevel getPupsToLevel()
+    public override PowerUpsParaLevel getPupsToLevel()
     {
-        return new PowerUpsToLevel()
+        return new PowerUpsParaLevel()
             .addBtn0(new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.BOMBA_DA_GARRA })
             .addBtn3(new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.ASAS});
     }
