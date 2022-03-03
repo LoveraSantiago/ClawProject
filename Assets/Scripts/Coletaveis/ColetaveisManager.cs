@@ -35,7 +35,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
         configurarColetaveis(coletaveisDto);
-        Gaiola.configurar(coletaveisDto.ContextoGaiola);
+        configurarGaiolas(coletaveisDto);
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
@@ -70,6 +70,12 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         HelperColetavelEntidade.configurar(coletaveisDto.PrefabColetaveisDto);
         HelperColetaveisInGame.configurar();
         Coletavel.configurar(coletaveisDto.ReferenciaColliderColetado, coletaveisDto);
+    }
+
+    private void configurarGaiolas(ColetaveisDto coletaveisDto)
+    {
+        Gaiola.configurar(coletaveisDto.ContextoGaiola);
+        HelperGaiolasInGame.configurar();
     }
 
     private void processarColetado(GameObject gameObjectColetado)

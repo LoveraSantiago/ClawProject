@@ -36,7 +36,7 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
         bool temGaiola = obstaculos[posY, posX];
         if (temGaiola)
         {
-            Gaiola gaiola = new Gaiola();
+            Gaiola gaiola = criarGaiola();
             gaiola.colocarNaPosicao(posicao);            
         }
     }
@@ -46,9 +46,16 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
         bool temGaiola = obstaculos[posY, posX];
         if (temGaiola)
         {
-            Gaiola gaiola = new Gaiola();
+            Gaiola gaiola = criarGaiola();
             gaiola.colocarNaPosicao(coletavel.getPosicao());
             coletavel.preso();
         }
+    }
+
+    private Gaiola criarGaiola()
+    {
+        HelperGaiolasInGame helperGaiolas = new HelperGaiolasInGame();
+        Gaiola gaiola = helperGaiolas.criarGaiola();
+        return gaiola;
     }
 }
