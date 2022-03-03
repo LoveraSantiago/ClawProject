@@ -22,24 +22,33 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
 
     protected override void onPosicaoVaziaCriado(int posX, int posY, Vector3 posicao)
     {
-        montarGaiola(posX, posY, posicao, null);
+        montarGaiola(posX, posY, posicao);
     }
 
     protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
         base.onColetavelCriado(posX, posY, coletavel);
-        montarGaiola(posX, posY, coletavel.getPosicao(), coletavel.nome);
-        coletavel.naoInteracaoComOutrosColetaveis();
+        montarGaiola(posX, posY, coletavel.getPosicao());        
     }
 
-    private void montarGaiola(int posX, int posY, Vector3 posicao, string nomeColetado)
+    private void montarGaiola(int posX, int posY, Vector3 posicao)
     {
         bool temGaiola = obstaculos[posY, posX];
         if (temGaiola)
         {
             Gaiola gaiola = new Gaiola();
-            gaiola.colocarNaPosicao(posicao);
-            gaiola.aprisionarColetavel(nomeColetado);
+            gaiola.colocarNaPosicao(posicao);            
+        }
+    }
+
+    private void montarGaiola(int posX, int posY, Coletavel coletavel)
+    {
+        bool temGaiola = obstaculos[posY, posX];
+        if (temGaiola)
+        {
+            Gaiola gaiola = new Gaiola();
+            gaiola.colocarNaPosicao(coletavel.getPosicao());
+            coletavel.preso();
         }
     }
 }

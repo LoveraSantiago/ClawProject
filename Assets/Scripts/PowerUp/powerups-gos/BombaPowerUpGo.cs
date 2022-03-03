@@ -6,9 +6,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
                               PowerUpInteracaoComGarra
 {    
     private bool acionado;    
-
     private AnimacaoExplosaoPup animacao;
-    private CircleCollider2D circleCollider;
 
     public BombaPowerUpGo()
         : base(powerUpDto.BombaDto.BombaGo, "bomba")
@@ -38,8 +36,6 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         
         Animator animator = extrairAnimator("imagem");
         animacao = new AnimacaoExplosaoPup(animator);
-
-        circleCollider = extrairCircleCollider();            
     }
 
     public override void iniciarPup()

@@ -82,6 +82,11 @@ public class Coletavel : GO
         setLayer(LayerMask.NameToLayer("ColetavelNaoInteracao"));
     }
 
+    public void preso()
+    {
+        setLayer(LayerMask.NameToLayer("Gaiola"));
+    }
+
     public void interacaoComOutrosColetaveis()
     {
         desimantar();
