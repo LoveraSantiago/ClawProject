@@ -5,6 +5,7 @@ using UnityEngine;
 public class Gaiola : GO
 {
     public static GaiolaContexto contexto;
+    private string nomeColetavel;
 
     public Gaiola() 
         : base(contexto, contexto.nomeador.getName()) {}
@@ -17,5 +18,10 @@ public class Gaiola : GO
     public static void configurar(ContextoDto contextoDto)
     {
         contexto = new GaiolaContexto(contextoDto);
+    }
+
+    public void aprisionarColetavel(string nome)
+    {
+        nomeColetavel = nome;
     }
 }

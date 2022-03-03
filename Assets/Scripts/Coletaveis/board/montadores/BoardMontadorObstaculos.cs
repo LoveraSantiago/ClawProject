@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoardMontadorObstaculos : BoardMontadorNormal
@@ -24,22 +22,24 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
 
     protected override void onPosicaoVaziaCriado(int posX, int posY, Vector3 posicao)
     {
-        montarGaiola(posX, posY, posicao);
+        montarGaiola(posX, posY, posicao, null);
     }
 
     protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
         base.onColetavelCriado(posX, posY, coletavel);
-        montarGaiola(posX, posY, coletavel.getPosicao());
+        montarGaiola(posX, posY, coletavel.getPosicao(), coletavel.nome);
+        coletavel.naoInteracaoComOutrosColetaveis();
     }
 
-    private void montarGaiola(int posX, int posY, Vector3 posicao)
+    private void montarGaiola(int posX, int posY, Vector3 posicao, string nomeColetado)
     {
         bool temGaiola = obstaculos[posY, posX];
         if (temGaiola)
         {
             Gaiola gaiola = new Gaiola();
             gaiola.colocarNaPosicao(posicao);
+            gaiola.aprisionarColetavel(nomeColetado);
         }
     }
 }
