@@ -66,24 +66,21 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);
 
-        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
-        efeitoExplosao.explodir(getPosicao());        
         processarExplosao();
-
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayExplosao);
 
-        CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
-        powerUpFinalizacao.preFinalizar();
-        resetPup();
+        processarPosExplosao();
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayPosExplosao);
 
-        powerUpFinalizacao.finalizado();
+        processarFinalizacao();
         yield return null;
     }    
 
     private void processarExplosao()
     {
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
+        efeitoExplosao.explodir(getPosicao());        
+
         LayerMask mask = LayerMask.GetMask("Coletavel");
         Collider2D[] acertados = Physics2D.OverlapCircleAll(getPosicao(), powerUpDto.BombaDto.RaioExplosao, mask);
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
@@ -91,10 +88,23 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         for (int contador = 0; contador < acertados.Length; contador++)
         {
             string nomeAcertado = acertados[contador].name;
-            GO acertado = helperInGame.getColetavelInGameByGoName(nomeAcertado);
+            Coletavel acertado = helperInGame.getColetavelInGameByGoName(nomeAcertado);
             int angulo = determinarAngulo(acertado.getPosicao());
             acertado.disparar(angulo, powerUpDto.BombaDto.VelocidadeHit);
         }
+    }
+
+    private void processarPosExplosao()
+    {
+        CameraShake cameraShake = new CameraShake();
+        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
+        powerUpFinalizacao.preFinalizar();
+    }
+
+    private void processarFinalizacao()
+    {
+        resetPup();
+        powerUpFinalizacao.finalizado();
     }
 
     private int determinarAngulo(Vector3 posicao)
