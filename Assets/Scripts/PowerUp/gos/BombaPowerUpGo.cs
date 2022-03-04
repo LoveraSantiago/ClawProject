@@ -54,11 +54,16 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
 
     public void consumir(Collision2D evento)
     {        
-        if(!acionado && UtilsTags.isColetavel(evento))
+        if(!acionado && isAlvoExplosivel(evento))
         {
             acionado = true;
             Utils.MonoBehaviour.StartCoroutine(explodir());
         }
+    }
+
+    private bool isAlvoExplosivel(Collision2D evento)
+    {
+        return UtilsTags.isColetavel(evento) || UtilsTags.isGaiola(evento);
     }
     
     private IEnumerator explodir()
