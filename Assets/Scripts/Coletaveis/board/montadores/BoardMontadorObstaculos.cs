@@ -28,7 +28,7 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
     protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
         base.onColetavelCriado(posX, posY, coletavel);
-        montarGaiola(posX, posY, coletavel.getPosicao());        
+        montarGaiola(posX, posY, coletavel);        
     }
 
     private void montarGaiola(int posX, int posY, Vector3 posicao)
@@ -49,6 +49,7 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
             Gaiola gaiola = criarGaiola();
             gaiola.colocarNaPosicao(coletavel.getPosicao());
             coletavel.preso();
+            Debug.Log("Gaiola " + gaiola.nome + " Coletavel " + coletavel.nome);
         }
     }
 
