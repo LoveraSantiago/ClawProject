@@ -3,6 +3,7 @@ using UnityEngine;
 public class TagUtils 
 {
     public static readonly string TAG_LAYER_COLETAVEL = "Coletavel";
+    public static readonly string LAYER_GAIOLA = "Gaiola";
 
     public static bool isColetavel(Collision2D collision)
     {
@@ -21,7 +22,7 @@ public class TagUtils
 
     public static bool isGaiola(GameObject gameObject)
     {
-        return isTag(gameObject, "Gaiola");
+        return isTag(gameObject, LAYER_GAIOLA);
     }
 
     public static bool isNome(Collider2D collider, string nomeTag)

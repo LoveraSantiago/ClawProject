@@ -4,8 +4,13 @@ public class BombaExplosaoHit
 {
     public void acertar(Vector3 posicaoBomba, PowerUpDto powerUpDto)
     {
+        acertarColetaveis(posicaoBomba, powerUpDto);
 
+       
+    }
 
+    private void acertarColetaveis(Vector3 posicaoBomba, PowerUpDto powerUpDto)
+    {
         LayerMask mask = LayerMask.GetMask(TagUtils.TAG_LAYER_COLETAVEL);
         Collider2D[] acertados = Physics2D.OverlapCircleAll(posicaoBomba, powerUpDto.BombaDto.RaioExplosao, mask);
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
@@ -14,8 +19,11 @@ public class BombaExplosaoHit
         {
             string nomeAcertado = acertados[contador].name;
             Coletavel acertado = helperInGame.getColetavelInGameByGoName(nomeAcertado);
-            int angulo = determinarAngulo(posicaoBomba, acertado.getPosicao(), powerUpDto);
-            acertado.disparar(angulo, powerUpDto.BombaDto.VelocidadeHit);
+            if (acertado.isLivre())
+            {
+                int angulo = determinarAngulo(posicaoBomba, acertado.getPosicao(), powerUpDto);
+                acertado.disparar(angulo, powerUpDto.BombaDto.VelocidadeHit);
+            }
         }
     }
 

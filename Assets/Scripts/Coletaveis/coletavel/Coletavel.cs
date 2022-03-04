@@ -84,7 +84,17 @@ public class Coletavel : GO
 
     public void preso()
     {
-        setLayer(LayerMask.NameToLayer("Gaiola"));
+        setLayer(LayerMask.NameToLayer(TagUtils.LAYER_GAIOLA));
+    }
+
+    public bool isPreso()
+    {
+        return isLayer(LayerMask.NameToLayer(TagUtils.LAYER_GAIOLA));
+    }
+
+    public bool isLivre()
+    {
+        return !isPreso();
     }
 
     public void interacaoComOutrosColetaveis()

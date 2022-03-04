@@ -24,6 +24,11 @@ public class ComponenteGameObjectDeGO
         go.layer = layer;
     }   
 
+    protected bool isLayer(int layer)
+    {
+        return go.layer == layer;
+    }
+
     protected GameObject getGo()
     {
         return go;
