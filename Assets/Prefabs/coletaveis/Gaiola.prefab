@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 2201802074926508177}
   m_Layer: 25
   m_Name: Gaiola
-  m_TagString: Coletavel
+  m_TagString: Gaiola
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
