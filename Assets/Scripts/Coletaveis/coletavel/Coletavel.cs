@@ -65,6 +65,7 @@ public class Coletavel : GO
     public void colocarNoLayerComum()
     {
         colocarSpriteNoLayer(contexto.SPR_ORDER_COMUM);
+        desafixarVerticalmente();
     }
 
     public void imantar()
@@ -84,12 +85,13 @@ public class Coletavel : GO
 
     public void preso()
     {
-        setLayer(LayerMask.NameToLayer(TagUtils.LAYER_GAIOLA));
+        setLayer(LayerMask.NameToLayer(TagUtils.LAYER_COLETAVELGAIOLA));
+        fixarEixoXY();
     }
 
     public bool isPreso()
     {
-        return isLayer(LayerMask.NameToLayer(TagUtils.LAYER_GAIOLA));
+        return isLayer(LayerMask.NameToLayer(TagUtils.LAYER_COLETAVELGAIOLA));
     }
 
     public bool isLivre()

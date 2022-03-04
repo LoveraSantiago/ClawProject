@@ -4,6 +4,7 @@ public class TagUtils
 {
     public static readonly string TAG_LAYER_COLETAVEL = "Coletavel";
     public static readonly string LAYER_GAIOLA = "Gaiola";
+    public static readonly string LAYER_COLETAVELGAIOLA = "GaiolaColetavel";
 
     public static bool isColetavel(Collision2D collision)
     {
