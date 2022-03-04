@@ -56,7 +56,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         materialTeleporte.addTrocaIn(coletavel.getSprite());
         coletavel.addMaterial(materialTeleporte.materialTeleporte);
 
-        int indiceSorteado = UtilsMath.escolherDeZeroAteLimite(listaFamilia.Count);
+        int indiceSorteado = MathUtils.escolherDeZeroAteLimite(listaFamilia.Count);
         Sprite sprSorteado = null;
         while (!finalizando)
         {
@@ -79,7 +79,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
                 break;
             }
 
-            indiceSorteado = UtilsMath.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
+            indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
             coletavelSorteado = listaFamilia[indiceSorteado];
             sprSorteado = helperColetavel.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);
             materialTeleporte.addTrocaIn(sprSorteado);
@@ -98,7 +98,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
                 break;
             }
 
-            indiceSorteado = UtilsMath.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
+            indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
         }
 
         finalizando = true;

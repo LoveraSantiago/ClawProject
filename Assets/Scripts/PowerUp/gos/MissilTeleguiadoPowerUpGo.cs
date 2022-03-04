@@ -96,8 +96,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
         while (true)
         {
             contador += (powerUpDto.MissilTeleguiadoDto.Velocidade * Time.deltaTime);
-            Vector2 posicao = UtilsMath.cubicCurve(p1, p2, p3, p4, contador);
-            Vector2 posNext = UtilsMath.cubicCurve(p1, p2, p3, p4, contador + 0.01f);
+            Vector2 posicao = MathUtils.cubicCurve(p1, p2, p3, p4, contador);
+            Vector2 posNext = MathUtils.cubicCurve(p1, p2, p3, p4, contador + 0.01f);
             colocarNaPosicao(posicao);
 
             Vector2 diferenca = posicao - posNext;

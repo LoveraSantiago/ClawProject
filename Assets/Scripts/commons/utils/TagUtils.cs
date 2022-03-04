@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UtilsTags 
+public class TagUtils 
 {
     public static readonly string TAG_LAYER_COLETAVEL = "Coletavel";
 

@@ -74,7 +74,7 @@ public class Coletavel : GO
 
     public void desimantar()
     {
-        setLayer(LayerMask.NameToLayer(UtilsTags.TAG_LAYER_COLETAVEL));
+        setLayer(LayerMask.NameToLayer(TagUtils.TAG_LAYER_COLETAVEL));
     }
 
     public void naoInteracaoComOutrosColetaveis()

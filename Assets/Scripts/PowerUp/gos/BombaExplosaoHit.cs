@@ -6,7 +6,7 @@ public class BombaExplosaoHit
     {
 
 
-        LayerMask mask = LayerMask.GetMask(UtilsTags.TAG_LAYER_COLETAVEL);
+        LayerMask mask = LayerMask.GetMask(TagUtils.TAG_LAYER_COLETAVEL);
         Collider2D[] acertados = Physics2D.OverlapCircleAll(posicaoBomba, powerUpDto.BombaDto.RaioExplosao, mask);
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
 

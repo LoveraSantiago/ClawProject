@@ -63,7 +63,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
 
     private bool isAlvoExplosivel(Collision2D evento)
     {
-        return UtilsTags.isColetavel(evento) || UtilsTags.isGaiola(evento);
+        return TagUtils.isColetavel(evento) || TagUtils.isGaiola(evento);
     }
     
     private IEnumerator explodir()

@@ -35,7 +35,7 @@ public class MovimentacaoParaBaixo : MovimentadorProdutorInformacaoGarra
 
     public override void garraColidiuCom(GameObject gameObject)
     {        
-        if (UtilsTags.isColetavel(gameObject))
+        if (TagUtils.isColetavel(gameObject))
         {
             produzirEventoInfoDaGarra(gameObject.name);            
             comunicadorComGerMovimentacao.trocarParaAcaoAgarrada();

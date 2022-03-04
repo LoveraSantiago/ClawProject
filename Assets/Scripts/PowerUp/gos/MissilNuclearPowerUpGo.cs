@@ -63,7 +63,7 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
 
     public void consumir(Collision2D evento)
     {
-        if (!acionado && UtilsTags.isColetavel(evento))
+        if (!acionado && TagUtils.isColetavel(evento))
         {
             acionado = true;
             Utils.MonoBehaviour.StartCoroutine(explodir());

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UtilsMath 
+public class MathUtils 
 {
     public static Vector2 lerp(Vector2 a, Vector2 b, float t)
     {
