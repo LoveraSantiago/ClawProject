@@ -13,7 +13,7 @@ public class ComponenteEstadoDeGO : ComponentePosicaoDeGO
         getGo().SetActive(true);
     }
 
-    public void desligar()
+    public virtual void desligar()
     {
         ativo = false;
         getGo().SetActive(false);

@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Gaiola : GO
 {
     public static GaiolaContexto contexto;
-    private string nomeColetavel;
+    public string coletavelPreso { get; private set; }
 
     public Gaiola() 
         : base(contexto, contexto.nomeador.getName()) {}
@@ -22,6 +18,22 @@ public class Gaiola : GO
 
     public void aprisionarColetavel(string nome)
     {
-        nomeColetavel = nome;
+        coletavelPreso = nome;
+    }
+
+    public bool isVazia()
+    {
+        return coletavelPreso == null;
+    }
+
+    public bool isNaoVazia()
+    {
+        return !isVazia();
+    }    
+
+    public override void desligar()
+    {
+        base.desligar();
+        coletavelPreso = null;
     }
 }

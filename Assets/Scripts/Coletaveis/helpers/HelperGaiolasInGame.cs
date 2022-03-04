@@ -9,6 +9,11 @@ public class HelperGaiolasInGame
         return gaiola;
     }
 
+    public Gaiola getGaiolaInGameByGoName(string name)
+    {
+        return poolDeNomes.getValor(name);
+    }
+
     public static void configurar()
     {
         poolDeNomes = new PoolDeNomes<Gaiola>();
