@@ -21,6 +21,11 @@ public class Gaiola : GO
         coletavelPreso = nome;
     }
 
+    public void soltarColetavel()
+    {
+        coletavelPreso = null;
+    }
+
     public bool isVazia()
     {
         return coletavelPreso == null;
@@ -33,7 +38,6 @@ public class Gaiola : GO
 
     public override void desligar()
     {
-        base.desligar();
-        coletavelPreso = null;
+        base.desligar();        
     }
 }

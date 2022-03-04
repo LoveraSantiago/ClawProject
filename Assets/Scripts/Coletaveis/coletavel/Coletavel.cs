@@ -94,6 +94,11 @@ public class Coletavel : GO
         return isLayer(LayerMask.NameToLayer(TagUtils.LAYER_COLETAVELGAIOLA));
     }
 
+    public void soltar()
+    {
+        desimantar();
+    }
+
     public bool isLivre()
     {
         return !isPreso();

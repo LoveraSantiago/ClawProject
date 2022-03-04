@@ -48,6 +48,7 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
         {
             Gaiola gaiola = criarGaiola();
             gaiola.colocarNaPosicao(coletavel.getPosicao());
+            gaiola.aprisionarColetavel(coletavel.nome);
             coletavel.preso();
             Debug.Log("Gaiola " + gaiola.nome + " Coletavel " + coletavel.nome);
         }

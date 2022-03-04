@@ -42,10 +42,12 @@ public class BombaExplosaoHit
             string nomeAcertado = acertados[contador].name;
             Gaiola gaiola = gaiolasInGame.getGaiolaInGameByGoName(nomeAcertado);
             gaiola.desligar();
+            Debug.Log("Gaiola " + gaiola.nome + " coletavel " + gaiola.coletavelPreso);
             if (gaiola.isNaoVazia())
             {
                 Coletavel coletavelPreso = coletaveisInGame.getColetavelInGameByGoName(gaiola.coletavelPreso);
-                coletavelPreso.colocarNoLayerNormal();
+                coletavelPreso.soltar();
+                coletavelPreso.desafixarVerticalmente();
             }
         }
     }
