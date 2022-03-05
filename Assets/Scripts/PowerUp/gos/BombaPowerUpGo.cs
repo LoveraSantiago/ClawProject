@@ -23,7 +23,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         extrairComponente<DetectorDeColisoes>()        
             .registrarConsumidorCollision2dOnEnter(this);
         
-        Animator animator = extrairAnimator("imagem");
+        Animator animator = extrairAnimatorFrom("imagem");
         animacao = new AnimacaoExplosaoPup(animator);
     }
 

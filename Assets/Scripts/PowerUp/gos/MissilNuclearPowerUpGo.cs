@@ -31,7 +31,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
 
         goExplosao = extrairTransform("explosao").gameObject;
 
-        Animator animator = extrairAnimator("imagem");//TODO REPLICADO NOS PUPS EXPLOSIVOS REFATORAR!!!
+        Animator animator = extrairAnimatorFrom("imagem");//TODO REPLICADO NOS PUPS EXPLOSIVOS REFATORAR!!!
         animacao = new AnimacaoExplosaoPup(animator);
     }
 
@@ -52,7 +52,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
 
     public void consumir(Collision2D evento)
     {
-        if (!acionado && TagUtils.isColetavel(evento))
+        if (!acionado && isAlvoExplosivel(evento))
         {
             acionado = true;
             Utils.MonoBehaviour.StartCoroutine(explodir());
@@ -64,20 +64,29 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayInicial);
 
-        goExplosao.SetActive(true);
-
-        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
-        efeitoExplosao.explodir(getPosicao());
-        
+        processarExplosao();
         yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayExplosao);
 
-        goExplosao.SetActive(false);
-        CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEDiminuir(1f, new Vector3(150, 150, 150), 25f, 0.4f);
-        resetPup();
+        processarPosExplosao();
         yield return new WaitForSeconds(powerUpDto.MissilNuclearDto.DelayPosExplosao);
 
         powerUpFinalizacao.finalizado();
         yield return null;
+    }
+
+    private void processarExplosao()
+    {
+        goExplosao.SetActive(true);
+
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
+        efeitoExplosao.explodir(getPosicao());
+    }
+
+    private void processarPosExplosao()
+    {
+        goExplosao.SetActive(false);
+        CameraShake cameraShake = new CameraShake();
+        cameraShake.shakeEDiminuir(1f, new Vector3(150, 150, 150), 25f, 0.4f);
+        resetPup();
     }
 }

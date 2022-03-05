@@ -18,7 +18,7 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
 
     public override void configurarPup()
     {
-        Animator animator = extrairAnimator("imagem");
+        Animator animator = extrairAnimatorFrom("imagem");
         animacao = new AnimacaoExplosaoPup(animator);
 
         goExplosao = extrairTransform("explosao").gameObject;

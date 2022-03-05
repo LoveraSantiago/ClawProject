@@ -9,7 +9,7 @@ public class ComponenteRigidBodyDeGO : ComponenteSpriteDeGO
 
     protected void carregarRigidBody()
     {
-        rigidbody = extrairRigidBody();
+        rigidbody = extrairComponente<Rigidbody2D>();
     }
 
     public bool isVelocidadeYPositiva()

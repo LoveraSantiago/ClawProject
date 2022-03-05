@@ -133,7 +133,7 @@ public class Coletavel : GO
 
     private void iniciarColetavelAnimacao()
     {
-        Animator animator = extrairAnimator("animacao");
+        Animator animator = extrairAnimatorFrom("animacao");
         animacao = new ColetavelAnimacao(animator);
     }
 

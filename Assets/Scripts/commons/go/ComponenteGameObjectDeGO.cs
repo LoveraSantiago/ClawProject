@@ -34,25 +34,10 @@ public class ComponenteGameObjectDeGO
         return go;
     }
 
-    protected Animator extrairAnimator(string nome)
+    protected Animator extrairAnimatorFrom(string nome)
     {
         return extrairTransform(nome).GetComponent<Animator>();
-    }
-
-    protected CircleCollider2D extrairCircleCollider()
-    {
-        return go.GetComponent<CircleCollider2D>();
-    }
-
-    protected CapsuleCollider2D extrairCapsuleCollider()
-    {
-        return go.GetComponent<CapsuleCollider2D>();
-    }
-
-    protected Rigidbody2D extrairRigidBody()
-    {
-        return go.GetComponent<Rigidbody2D>(); ;
-    }
+    }           
 
     protected Transform extrairTransform(string nome)
     {

@@ -39,7 +39,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
 
     public override void configurarPup()
     {
-        capsuleCollider = extrairCapsuleCollider();
+        capsuleCollider = extrairComponente<CapsuleCollider2D>();
 
         Transform transfImagem = extrairTransform("imagem");
         animator = transfImagem.GetComponent<Animator>();
