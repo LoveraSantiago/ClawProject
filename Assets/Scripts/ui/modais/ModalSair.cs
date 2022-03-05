@@ -1,4 +1,4 @@
-public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento, 
+public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento, 
                          AcaoDesligarMaquina.ConsumidorEvento    
 {
     private const int SAIR_NORMAL    = 0;
@@ -8,14 +8,14 @@ public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento,
     private int estadoSairPara;    
     
     private ModalSairDto modalSairDto;
-    private ProdutorDeEvento<CancelarDesligarMaquina> produtorDeEvento;
+    private ProdutorDeEvento<ResultadoDesligarMaquinaDto> produtorDeEvento;
 
     public ModalSair(ModalSairDto modalSairDto)
     {
         this.modalSairDto = modalSairDto;
         this.modalSairDto.BtnCancelar.onClick.AddListener(()=>cancelarSaida());
         this.modalSairDto.BtnSair.onClick.AddListener(()=>sairDoGame());
-        produtorDeEvento = new ProdutorDeEvento<CancelarDesligarMaquina>();
+        produtorDeEvento = new ProdutorDeEvento<ResultadoDesligarMaquinaDto>();
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
@@ -42,13 +42,14 @@ public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento,
     private void cancelarSaida()
     {
         modalSairDto.ModalSair.SetActive(false);
-        produtorDeEvento.produziuEvento(null);
+        produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(false));
         Utils.continuarGame();
     }
 
     private void sairDoGame()
     {
         Utils.continuarGame();
+        produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true));
         switch (estadoSairPara)
         {
             case SAIR_NORMAL:    CenaUtils.irParaCenaMap();        break;
@@ -72,7 +73,7 @@ public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento,
         modalSairDto.ModalSair.SetActive(true);        
     }
 
-    ProdutorDeEvento<CancelarDesligarMaquina> AcaoDesligarMaquinaCancelado.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<ResultadoDesligarMaquinaDto> AcaoDesligarMaquinaResultado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

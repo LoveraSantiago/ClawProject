@@ -10,7 +10,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,
                               AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
-                              AcaoDesligarMaquinaCancelado.ConsumidorEvento
+                              AcaoDesligarMaquinaResultado.ConsumidorEvento
 {    
     private PartesMaquinaDto partesDto;
 
@@ -116,7 +116,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
         PosExecutorAcaoColetadoFim posExecucao = new PosExecutorAcaoColetadoFim(displayTimer, botoesPowerUp);
         displaysDeSlots.mostrarColetadoNoDisplay(evento, arcoIrisEfeito, posExecucao);        
-        displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);
+        displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);        
         ((AcaoColetado.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
     }   
 
@@ -163,9 +163,10 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
     }
 
-    void AcaoDesligarMaquinaCancelado.ConsumidorEvento.consumirEvento(CancelarDesligarMaquina evento)
+    void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
     {
-        ((AcaoDesligarMaquinaCancelado.ConsumidorEvento)botaoLigaDesliga).consumirEvento(evento);
+        ((AcaoDesligarMaquinaResultado.ConsumidorEvento)botaoLigaDesliga).consumirEvento(evento);
+        ((AcaoDesligarMaquinaResultado.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
     }
 
     ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()

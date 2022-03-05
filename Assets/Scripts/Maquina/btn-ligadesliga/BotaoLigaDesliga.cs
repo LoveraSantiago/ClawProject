@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
-                                AcaoDesligarMaquinaCancelado.ConsumidorEvento
+                                AcaoDesligarMaquinaResultado.ConsumidorEvento
 {
     private BotaoLigaDesligaDto btnsLigaDesligaDto;
     private ProdutorDeEvento<DesligarMaquinaDto> produtorDeEvento;
@@ -25,9 +25,12 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
         }
     }   
 
-    void AcaoDesligarMaquinaCancelado.ConsumidorEvento.consumirEvento(CancelarDesligarMaquina evento)
+    void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
     {
-        btnsLigaDesligaDto.SprRendererBtnOnOff.color = Color.green;     
+        if (!evento.resultadoSair)
+        {
+            btnsLigaDesligaDto.SprRendererBtnOnOff.color = Color.green;     
+        }
     }
 
     ProdutorDeEvento<DesligarMaquinaDto> AcaoDesligarMaquina.ProdutorEvento.getProdutorDeEvento()
