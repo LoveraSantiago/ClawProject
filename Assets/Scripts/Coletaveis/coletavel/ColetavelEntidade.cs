@@ -49,7 +49,7 @@ public class ColetavelEntidade
 
             new ColetavelEntidade(10, "Leite"          , "characters_0001", FAMILIA.FRUTAS, Level.COLETAVEL_LEITE),//Range de 10 a 19 frutas
             new ColetavelEntidade(11, "Maca"           , "characters_0002", FAMILIA.FRUTAS, Level.COLETAVEL_MACA),
-            new ColetavelEntidade(12, "Laranja"        , "aboborav2"      , FAMILIA.FRUTAS, Level.COLETAVEL_LARANJA),
+            new ColetavelEntidade(12, "Laranja"        , "aboborav3"      , FAMILIA.FRUTAS, Level.COLETAVEL_LARANJA),
             new ColetavelEntidade(13, "Pao"            , "characters_0004", FAMILIA.FRUTAS, Level.COLETAVEL_PAO),
             new ColetavelEntidade(14, "Aspargo"        , "characters_0005", FAMILIA.FRUTAS, Level.COLETAVEL_ASPARGO),
             new ColetavelEntidade(15, "Coco"           , "characters_0006", FAMILIA.FRUTAS, Level.COLETAVEL_COCO),
