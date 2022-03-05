@@ -10775,7 +10775,7 @@ MonoBehaviour:
         posicoesYObstaculos:
           inicio: -3.55
           total: 7
-          acrescimo: 0.75
+          acrescimo: 0.77
     maquinaDto:
       factorHdr: 5
       referenciaChao: {fileID: 1270622651}
