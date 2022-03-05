@@ -61,7 +61,7 @@ public class UiGameManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         ((AcaoPowerUpAcionado.ConsumidorEvento)scrollManager).consumirEvento(evento);
     }
 
-    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
+    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
     {
         ((AcaoDesligarMaquina.ConsumidorEvento)modalSair).consumirEvento(evento);
     }

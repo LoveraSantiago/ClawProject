@@ -69,7 +69,7 @@ public class InputGameImpl : InputGame,
         return posicaoTap.y > referenciaChaoMaquina.position.y;
     }
 
-    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
+    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
     {
         ativado = false;
     }

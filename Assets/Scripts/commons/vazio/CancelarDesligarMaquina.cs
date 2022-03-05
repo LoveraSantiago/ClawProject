@@ -1,3 +1,3 @@
-public class CancelarDesligarMaquina : Vazio
+public class CancelarDesligarMaquina : VazioDto
 {    
 }

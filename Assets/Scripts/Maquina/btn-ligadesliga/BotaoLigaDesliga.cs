@@ -4,12 +4,12 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
                                 AcaoDesligarMaquinaCancelado.ConsumidorEvento
 {
     private BotaoLigaDesligaDto btnsLigaDesligaDto;
-    private ProdutorDeEvento<DesligarMaquina> produtorDeEvento;
+    private ProdutorDeEvento<DesligarMaquinaDto> produtorDeEvento;
 
     public BotaoLigaDesliga(BotaoLigaDesligaDto btnsLigaDesligaDto)
     {
         this.btnsLigaDesligaDto = btnsLigaDesligaDto;
-        produtorDeEvento = new ProdutorDeEvento<DesligarMaquina>();
+        produtorDeEvento = new ProdutorDeEvento<DesligarMaquinaDto>();
     }   
 
     public void update(InputGame inputGame)
@@ -30,7 +30,7 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
         btnsLigaDesligaDto.SprRendererBtnOnOff.color = Color.green;     
     }
 
-    ProdutorDeEvento<DesligarMaquina> AcaoDesligarMaquina.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<DesligarMaquinaDto> AcaoDesligarMaquina.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

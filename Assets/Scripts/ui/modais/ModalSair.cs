@@ -57,7 +57,7 @@ public class ModalSair : AcaoDesligarMaquinaCancelado.ProdutorEvento,
         }        
     }
 
-    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquina evento)
+    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
     {
         Utils.pausarGame();
         string text = null;
