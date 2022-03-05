@@ -1,9 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class BombaPowerUpGo : AbstractPowerUpGo,
-                              ConsumidorDeEventoCollider,
-                              PowerUpInteracaoComGarra
+public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
+                              ConsumidorDeEventoCollider                              
 {    
     private bool acionado;    
     private AnimacaoExplosaoPup animacao;
@@ -12,19 +11,9 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
         : base(powerUpDto.BombaDto.BombaGo, "bomba")
     {
         desligar();        
-    }
+    }     
 
-    public TipoInteracaoGarra getInteracaoComGarra()
-    {
-        return TipoInteracaoGarra.MOVIMENTO;
-    }
-
-    public override InteracaoPowerUpComComponente getInteracaoComComponente()
-    {
-        return this;
-    }
-
-    public float getAnguloParaGarraSegurar()
+    public override float getAnguloParaGarraSegurar()
     {
         return powerUpDto.BombaDto.AngGarra;
     }    
@@ -59,12 +48,7 @@ public class BombaPowerUpGo : AbstractPowerUpGo,
             acionado = true;
             Utils.MonoBehaviour.StartCoroutine(explodir());
         }
-    }
-
-    private bool isAlvoExplosivel(Collision2D evento)
-    {
-        return TagUtils.isColetavel(evento) || TagUtils.isGaiola(evento);
-    }
+    }    
     
     private IEnumerator explodir()
     {        

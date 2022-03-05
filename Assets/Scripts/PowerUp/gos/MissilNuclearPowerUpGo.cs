@@ -1,9 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
-                                      ConsumidorDeEventoCollider,
-                                      PowerUpInteracaoComGarra
+public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
+                                      ConsumidorDeEventoCollider
 {   
     private bool acionado;
     private AnimacaoExplosaoPup animacao;
@@ -13,19 +12,9 @@ public class MissilNuclearPowerUpGo : AbstractPowerUpGo,
         : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, "missil-nuclear")
     {
         desligar();        
-    }
+    }        
 
-    public TipoInteracaoGarra getInteracaoComGarra()
-    {
-        return TipoInteracaoGarra.MOVIMENTO;
-    }
-
-    public override InteracaoPowerUpComComponente getInteracaoComComponente()
-    {
-        return this;
-    }    
-
-    public float getAnguloParaGarraSegurar()
+    public override float getAnguloParaGarraSegurar()
     {
         return powerUpDto.MissilNuclearDto.AngGarra;
     }

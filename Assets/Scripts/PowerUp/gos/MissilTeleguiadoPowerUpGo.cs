@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
-                                         PowerUpInteracaoComGarra,
+public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
                                          Transformador<Coletavel, IEnumerator>
 {
     private static readonly int MISSIL_IDLE      = Animator.StringToHash("idle");
@@ -23,17 +22,12 @@ public class MissilTeleguiadoPowerUpGo : AbstractPowerUpGo,
     public MissilTeleguiadoPowerUpGo() : 
         base(powerUpDto.MissilTeleguiadoDto.MissilGo, "missil-teleguiado"){}
 
-    public TipoInteracaoGarra getInteracaoComGarra()
+    public override TipoInteracaoGarra getInteracaoComGarra()
     {
         return TipoInteracaoGarra.PARADO;
-    }
-
-    public override InteracaoPowerUpComComponente getInteracaoComComponente()
-    {
-        return this;
     }    
 
-    public float getAnguloParaGarraSegurar()
+    public override float getAnguloParaGarraSegurar()
     {
         return powerUpDto.MissilTeleguiadoDto.AngGarra;
     }
