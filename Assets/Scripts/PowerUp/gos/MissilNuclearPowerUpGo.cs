@@ -7,7 +7,6 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     private bool acionado;
     private AnimacaoExplosaoPup animacao;
     private CircleCollider2D colliderExplosao;
-    //private GameObject goExplosao;        
  
     public MissilNuclearPowerUpGo()
         : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, "missil-nuclear")
