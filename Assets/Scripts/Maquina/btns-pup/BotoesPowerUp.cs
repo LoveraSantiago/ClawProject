@@ -171,7 +171,7 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
 
     void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
     {
-        if (evento.resultadoSair)
+        if (evento.resultadoSair && evento.isGameLevel)
         {
             devolverPowerUps();
         }

@@ -36,7 +36,8 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
 
     private bool isSairByLevel(AbstractLevel level)
     {
-        return LevelUtils.isNormalLevel(level) || LevelUtils.isOrdemLevel(level) || LevelUtils.isElevadorLevel(level);
+        return LevelUtils.isNormalLevel(level) || LevelUtils.isOrdemLevel(level) || 
+            LevelUtils.isObstaculoLevel(level) || LevelUtils.isElevadorLevel(level);
     }
 
     private void cancelarSaida()
@@ -48,13 +49,27 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
 
     private void sairDoGame()
     {
-        Utils.continuarGame();
-        produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true));
+        Utils.continuarGame();        
         switch (estadoSairPara)
         {
-            case SAIR_NORMAL:    CenaUtils.irParaCenaMap();        break;
-            case SAIR_COLETAVEL: CenaUtils.irParaCenaColetaveis(); break;
-            case SAIR_EXTRA:     CenaUtils.irParaCenaPup();        break;
+            case SAIR_NORMAL:
+                {
+                    produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, true));
+                    CenaUtils.irParaCenaMap();
+                    break;
+                }
+            case SAIR_COLETAVEL:
+                {
+                    produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, false));
+                    CenaUtils.irParaCenaColetaveis();
+                    break;
+                }
+            case SAIR_EXTRA:
+                {
+                    produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, false));
+                    CenaUtils.irParaCenaPup();
+                    break;
+                }
         }        
     }
 
