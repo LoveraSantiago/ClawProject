@@ -69,11 +69,5 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         CameraShake cameraShake = new CameraShake();
         cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
         resetPup();
-    }
-
-    public override void parar() { }//TODO TESTAR ACHO Q DA PRA REMOVER
-    public override void colocarNaPosicao(Vector3 posicao) { }
-    public override void ligarGravidadeZero() { }
-    public override void ligarGravidadeHum() { }
-    public override void fixarEixoX() { }
+    }    
 }
