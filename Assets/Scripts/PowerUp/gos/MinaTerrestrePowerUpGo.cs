@@ -44,23 +44,32 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayInicial);
 
-        goExplosao.SetActive(true);
-
-        Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MinaDto.HalturaExplosao, 0);
-        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
-        efeitoExplosao.explodir(posicaoExplosao);
-        
+        processarExplosao();
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayExplosao);
 
-        goExplosao.SetActive(false);
-        CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
-        resetPup();
+        processarPosExplosao();
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayPosExplosao);
 
         powerUpFinalizacao.finalizado();
         yield return null;
     }    
+
+    private void processarExplosao()
+    {
+        goExplosao.SetActive(true);
+
+        Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MinaDto.HalturaExplosao, 0);
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
+        efeitoExplosao.explodir(posicaoExplosao);
+    }
+
+    private void processarPosExplosao()
+    {
+        goExplosao.SetActive(false);
+        CameraShake cameraShake = new CameraShake();
+        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
+        resetPup();
+    }
 
     public override void parar() { }//TODO TESTAR ACHO Q DA PRA REMOVER
     public override void colocarNaPosicao(Vector3 posicao) { }
