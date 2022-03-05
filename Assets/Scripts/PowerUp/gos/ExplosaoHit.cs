@@ -1,25 +1,25 @@
 using UnityEngine;
 
-public class BombaExplosaoHit 
+public class ExplosaoHit 
 {
     private HelperGaiolasInGame gaiolasInGame;
     private HelperColetaveisInGame coletaveisInGame;
 
-    public BombaExplosaoHit()
+    public ExplosaoHit()
     {
         gaiolasInGame    = new HelperGaiolasInGame();
         coletaveisInGame = new HelperColetaveisInGame();
     }
 
-    public void acertar(Vector3 posicaoBomba, PowerUpDto powerUpDto)
+    public void acertarTudo(Vector3 posicaoBomba, float raio, int anguloHit, float velocidadeHit)
     {
-        acertarColetaveis(posicaoBomba, powerUpDto);
-        acertarGaiolas(posicaoBomba, powerUpDto);       
+        acertarColetaveis(posicaoBomba, raio, anguloHit, velocidadeHit);
+        acertarGaiolas(posicaoBomba, raio);       
     }
 
-    private void acertarColetaveis(Vector3 posicaoBomba, PowerUpDto powerUpDto)
+    private void acertarColetaveis(Vector3 posicaoBomba, float raio, int anguloHit, float velocidadeHit)
     {
-        Collider2D[] acertados = acertarAlvos(posicaoBomba, powerUpDto, TagUtils.TAG_LAYER_COLETAVEL);                    
+        Collider2D[] acertados = acertarAlvos(posicaoBomba, raio, TagUtils.TAG_LAYER_COLETAVEL);                    
 
         for (int contador = 0; contador < acertados.Length; contador++)
         {
@@ -27,15 +27,15 @@ public class BombaExplosaoHit
             Coletavel acertado = coletaveisInGame.getColetavelInGameByGoName(nomeAcertado);
             if (acertado.isLivre())
             {
-                int angulo = determinarAngulo(posicaoBomba, acertado.getPosicao(), powerUpDto);
-                acertado.disparar(angulo, powerUpDto.BombaDto.VelocidadeHit);
+                int angulo = determinarAngulo(posicaoBomba, acertado.getPosicao(), anguloHit);
+                acertado.disparar(angulo, velocidadeHit);
             }
         }
     }
 
-    private void acertarGaiolas(Vector3 posicaoBomba, PowerUpDto powerUpDto)
+    public void acertarGaiolas(Vector3 posicaoBomba, float raio)
     {
-        Collider2D[] acertados = acertarAlvos(posicaoBomba, powerUpDto, TagUtils.LAYER_GAIOLA);        
+        Collider2D[] acertados = acertarAlvos(posicaoBomba, raio, TagUtils.LAYER_GAIOLA);        
 
         for (int contador = 0; contador < acertados.Length; contador++)
         {
@@ -52,16 +52,16 @@ public class BombaExplosaoHit
         }
     }
 
-    private Collider2D[] acertarAlvos(Vector3 posicaoBomba, PowerUpDto powerUpDto, string mascara)
+    private Collider2D[] acertarAlvos(Vector3 posicaoBomba, float raio, string mascara)
     {
         LayerMask mask = LayerMask.GetMask(mascara);
-        Collider2D[] acertados = Physics2D.OverlapCircleAll(posicaoBomba, powerUpDto.BombaDto.RaioExplosao, mask);
+        Collider2D[] acertados = Physics2D.OverlapCircleAll(posicaoBomba, raio, mask);
         return acertados;
     }
 
-    private int determinarAngulo(Vector3 posicaoBomba, Vector3 posicaoAcertado, PowerUpDto powerUpDto)
+    private int determinarAngulo(Vector3 posicaoBomba, Vector3 posicaoAcertado, int anguloHit)
     {
-        if (posicaoBomba.x < posicaoAcertado.x) return -powerUpDto.BombaDto.AnguloHit;
-        else return powerUpDto.BombaDto.AnguloHit;
+        if (posicaoBomba.x < posicaoAcertado.x) return -anguloHit;
+        else return anguloHit;
     }
 }

@@ -6,7 +6,8 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
 {   
     private bool acionado;
     private AnimacaoExplosaoPup animacao;
-    private GameObject goExplosao;        
+    private CircleCollider2D colliderExplosao;
+    //private GameObject goExplosao;        
  
     public MissilNuclearPowerUpGo()
         : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, "missil-nuclear")
@@ -28,8 +29,8 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         extrairComponente<DetectorDeColisoes>()
             .registrarConsumidorCollision2dOnEnter(this);
-
-        goExplosao = extrairTransform("explosao").gameObject;
+        
+        colliderExplosao = extrairComponenteFrom<CircleCollider2D>("explosao");
 
         Animator animator = extrairAnimatorFrom("imagem");//TODO REPLICADO NOS PUPS EXPLOSIVOS REFATORAR!!!
         animacao = new AnimacaoExplosaoPup(animator);
@@ -76,7 +77,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
 
     private void processarExplosao()
     {
-        goExplosao.SetActive(true);
+        colliderExplosao.gameObject.SetActive(true);        
 
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
         efeitoExplosao.explodir(getPosicao());
@@ -84,7 +85,11 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
 
     private void processarPosExplosao()
     {
-        goExplosao.SetActive(false);
+        colliderExplosao.gameObject.SetActive(false);
+
+        ExplosaoHit explosaoHit = new ExplosaoHit();
+        explosaoHit.acertarGaiolas(colliderExplosao.transform.position, colliderExplosao.radius);
+
         CameraShake cameraShake = new CameraShake();
         cameraShake.shakeEDiminuir(1f, new Vector3(150, 150, 150), 25f, 0.4f);
         resetPup();

@@ -48,4 +48,10 @@ public class ComponenteGameObjectDeGO
     {
         return go.GetComponent<T>();
     }
+
+    protected T extrairComponenteFrom<T>(string nome)
+    {
+        Transform from = extrairTransform(nome);
+        return from.GetComponent<T>();
+    }
 }
