@@ -76,6 +76,6 @@ public class InputGameImpl : InputGame,
 
     void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
     {
-        ativado = evento.resultadoSair;
+        ativado = !evento.resultadoSair;
     }
 }
