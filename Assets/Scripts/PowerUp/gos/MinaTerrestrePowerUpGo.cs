@@ -6,7 +6,7 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
     private static Vector3 posInicial;
 
     private AnimacaoExplosaoPup animacao;
-    private GameObject goExplosao;    
+    private CircleCollider2D colliderExplosao;
 
     public MinaTerrestrePowerUpGo()
         :base(powerUpDto.MinaDto.MinaTerrestreGo, "mina-terrestre"){}    
@@ -21,7 +21,7 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         Animator animator = extrairAnimatorFrom("imagem");
         animacao = new AnimacaoExplosaoPup(animator);
 
-        goExplosao = extrairTransform("explosao").gameObject;
+        colliderExplosao = extrairComponenteFrom<CircleCollider2D>("explosao");
     }
 
     public override void iniciarPup()
@@ -56,7 +56,7 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
 
     private void processarExplosao()
     {
-        goExplosao.SetActive(true);
+        colliderExplosao.gameObject.SetActive(true);
 
         Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MinaDto.HalturaExplosao, 0);
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
@@ -65,7 +65,11 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
 
     private void processarPosExplosao()
     {
-        goExplosao.SetActive(false);
+        colliderExplosao.gameObject.SetActive(false);
+
+        ExplosaoHit explosaoHit = new ExplosaoHit();
+        explosaoHit.acertarGaiolas(colliderExplosao.transform.position, colliderExplosao.radius);
+
         CameraShake cameraShake = new CameraShake();
         cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
         resetPup();
