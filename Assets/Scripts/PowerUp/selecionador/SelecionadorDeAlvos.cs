@@ -9,24 +9,7 @@ public class SelecionadorDeAlvos
     public SelecionadorDeAlvos()
     {
         coletaveisJaSelecionados = new List<Coletavel>();
-    }
-
-    public SelecionadorDeAlvos ligarMiras(bool filtrarGaiolas)
-    {
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        helperInGame.ligarMirasNosColetaveis(filtrarGaiolas);
-        return this;
-    }
-
-    public SelecionadorDeAlvos ligarMiraFinal()
-    {
-        if(coletavelSelecionado != null)
-        {
-            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-            helperInGame.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
-        }
-        return this;
-    }
+    }   
 
     public IEnumerator selecionarAlvo(InputGame inputGame)
     {

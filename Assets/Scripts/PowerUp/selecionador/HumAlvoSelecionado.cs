@@ -3,16 +3,15 @@ using System.Collections;
 public class HumAlvoSelecionado : SelecaoDeAlvos<Coletavel>
 {   
 
-    public IEnumerator onSelecionado(bool filtrarGaiolas, InputGame inputGame, Transformador<Coletavel, IEnumerator> coroutineConsumidora)
+    public override IEnumerator onSelecionado(bool filtrarGaiolas, InputGame inputGame, Transformador<Coletavel, IEnumerator> coroutineConsumidora)
     {
-        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos()
-           .ligarMiras(filtrarGaiolas);
+        ligarMiras(filtrarGaiolas);
+        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();
 
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
 
         Coletavel coletavelSelecionado = selecionadorDeAlvos.coletavelSelecionado;
-
-        selecionadorDeAlvos.ligarMiraFinal();
+        ligarMiraFinal(coletavelSelecionado);
 
         yield return Utils.MonoBehaviour.StartCoroutine(coroutineConsumidora.transformar(coletavelSelecionado));
     }
