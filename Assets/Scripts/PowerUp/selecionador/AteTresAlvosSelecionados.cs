@@ -1,7 +1,6 @@
 using System.Collections;
 
-public class AteTresAlvosSelecionados : SelecaoDeAlvos<TrioDeColetaveis>,
-                                        Transformador<InputGame, Coletavel>
+public class AteTresAlvosSelecionados : SelecaoDeAlvos<TrioDeColetaveis>
 {
     private int qtdDeSelecionados;
 
@@ -45,10 +44,5 @@ public class AteTresAlvosSelecionados : SelecaoDeAlvos<TrioDeColetaveis>,
 
         TrioDeColetaveis trioDeColetaveis = new TrioDeColetaveis(coletavel1, coletavel2, coletavel3);
         yield return Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(trioDeColetaveis));
-    }
-
-    public Coletavel transformar(InputGame entrada)
-    {
-        return ColetavelHit.hit(entrada);
-    }
+    }   
 }

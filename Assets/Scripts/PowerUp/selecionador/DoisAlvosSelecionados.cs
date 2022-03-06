@@ -1,7 +1,6 @@
 using System.Collections;
 
-public class DoisAlvosSelecionados : SelecaoDeAlvos<DuplaDeColetaveisDto>,
-                                     Transformador<InputGame, Coletavel>
+public class DoisAlvosSelecionados : SelecaoDeAlvos<DuplaDeColetaveisDto>
 {    
     public override IEnumerator onSelecionar(
         bool filtrarGaiolas, InputGame inputGame, Transformador<DuplaDeColetaveisDto, IEnumerator> coroutineOnSelecionado)
@@ -21,10 +20,5 @@ public class DoisAlvosSelecionados : SelecaoDeAlvos<DuplaDeColetaveisDto>,
 
         DuplaDeColetaveisDto duplaDeColetaveis = new DuplaDeColetaveisDto(coletavel1, coletavel2);
         yield return Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(duplaDeColetaveis));
-    }
-
-    public Coletavel transformar(InputGame entrada)
-    {
-        return ColetavelHit.hit(entrada);
-    }
+    }    
 }

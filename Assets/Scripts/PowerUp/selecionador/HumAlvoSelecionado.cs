@@ -1,9 +1,7 @@
 using System.Collections;
 
-public class HumAlvoSelecionado : SelecaoDeAlvos<Coletavel>,
-                                  Transformador<InputGame, Coletavel>
+public class HumAlvoSelecionado : SelecaoDeAlvos<Coletavel>
 {   
-
     public override IEnumerator onSelecionar(
         bool filtrarGaiolas, InputGame inputGame, Transformador<Coletavel, IEnumerator> coroutineOnSelecionado)
     {
@@ -16,10 +14,5 @@ public class HumAlvoSelecionado : SelecaoDeAlvos<Coletavel>,
         ligarMiraFinal(coletavelSelecionado);
 
         yield return Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(coletavelSelecionado));
-    }
-
-    public Coletavel transformar(InputGame entrada)
-    {
-        return ColetavelHit.hit(entrada);
-    }
+    }    
 }
