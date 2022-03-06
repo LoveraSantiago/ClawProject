@@ -32,6 +32,6 @@ public class HumAlvoGOSelecionado : SelecaoDeAlvos<GO>,
 
     public Gaiola transformar(InputGame entrada)
     {
-        return GaiolaHit.hit(entrada);
+        return GaiolaInputHit.hit(entrada);
     }
 }

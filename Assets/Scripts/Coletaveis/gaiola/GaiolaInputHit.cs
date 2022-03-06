@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GaiolaHit 
+public class GaiolaInputHit 
 {
     private static HelperGaiolasInGame helperInGame = new HelperGaiolasInGame();
 

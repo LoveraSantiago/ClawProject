@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ColetavelHit 
+public class ColetavelInputHit 
 {
     private static HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
 

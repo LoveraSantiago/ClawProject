@@ -3,6 +3,6 @@ public abstract class SelecaoDeAlvosColetaveis<T> : SelecaoDeAlvos<T>,
 {
     public Coletavel transformar(InputGame entrada)
     {
-        return ColetavelHit.hit(entrada);
+        return ColetavelInputHit.hit(entrada);
     }
 }
