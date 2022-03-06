@@ -2,10 +2,10 @@ using System.Collections;
 
 public class DoisAlvosSelecionados : SelecaoDeAlvos<DuplaDeColetaveisDto>
 {    
-    public IEnumerator onSelecionado(InputGame inputGame, Transformador<DuplaDeColetaveisDto, IEnumerator> coroutineConsumidora)
+    public IEnumerator onSelecionado(bool filtrarGaiolas, InputGame inputGame, Transformador<DuplaDeColetaveisDto, IEnumerator> coroutineConsumidora)
     {
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos()
-           .ligarMiras();
+           .ligarMiras(filtrarGaiolas);
 
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
 

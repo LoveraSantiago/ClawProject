@@ -43,9 +43,9 @@ public class HelperColetaveisInGame
         poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
     }
 
-    public void ligarMirasNosColetaveis()
+    public void ligarMirasNosColetaveis(bool filtrarGaiolas)
     {
-        poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeMiras());
+        poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeMiras(filtrarGaiolas));
     }
 
     public void desligarMirasNosColetaveis()

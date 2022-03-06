@@ -9,10 +9,10 @@ public class AteTresAlvosSelecionados : SelecaoDeAlvos<TrioDeColetaveis>
         this.qtdDeSelecionados = qtdDeSelecionados;
     }
 
-    public IEnumerator onSelecionado(InputGame inputGame, Transformador<TrioDeColetaveis, IEnumerator> coroutineConsumidora)
+    public IEnumerator onSelecionado(bool filtrarGaiolas, InputGame inputGame, Transformador<TrioDeColetaveis, IEnumerator> coroutineConsumidora)
     {
         SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos()
-           .ligarMiras();
+           .ligarMiras(filtrarGaiolas);
 
         Coletavel coletavel1 = null;
         Coletavel coletavel2 = null;

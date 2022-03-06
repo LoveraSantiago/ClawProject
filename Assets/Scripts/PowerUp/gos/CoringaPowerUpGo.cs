@@ -23,10 +23,10 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
     public override void iniciarPup()
     {
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        helperInGame.ligarMirasNosColetaveis();
+        helperInGame.ligarMirasNosColetaveis(true);
 
         alvoSelecionado = new HumAlvoSelecionado();
-        coroutineAlvo = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionado(inputGame, this));
+        coroutineAlvo = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionado(true, inputGame, this));
     }
 
     public override void resetPup()

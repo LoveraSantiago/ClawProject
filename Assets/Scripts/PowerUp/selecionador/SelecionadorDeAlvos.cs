@@ -11,10 +11,10 @@ public class SelecionadorDeAlvos
         coletaveisJaSelecionados = new List<Coletavel>();
     }
 
-    public SelecionadorDeAlvos ligarMiras()
+    public SelecionadorDeAlvos ligarMiras(bool filtrarGaiolas)
     {
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        helperInGame.ligarMirasNosColetaveis();
+        helperInGame.ligarMirasNosColetaveis(filtrarGaiolas);
         return this;
     }
 
