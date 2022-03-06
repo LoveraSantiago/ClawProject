@@ -10,7 +10,8 @@ public class AteTresAlvosSelecionados : SelecaoDeAlvos<TrioDeColetaveis>,
         this.qtdDeSelecionados = qtdDeSelecionados;
     }
 
-    public override IEnumerator onSelecionado(bool filtrarGaiolas, InputGame inputGame, Transformador<TrioDeColetaveis, IEnumerator> coroutineConsumidora)
+    public override IEnumerator onSelecionar(
+        bool filtrarGaiolas, InputGame inputGame, Transformador<TrioDeColetaveis, IEnumerator> coroutineOnSelecionado)
     {
         ligarMiras(filtrarGaiolas);
         SelecionadorDeAlvos<Coletavel> selecionadorDeAlvos = new SelecionadorDeAlvos<Coletavel>();
@@ -43,7 +44,7 @@ public class AteTresAlvosSelecionados : SelecaoDeAlvos<TrioDeColetaveis>,
         ligarMiraFinal(coletavel1);
 
         TrioDeColetaveis trioDeColetaveis = new TrioDeColetaveis(coletavel1, coletavel2, coletavel3);
-        yield return Utils.MonoBehaviour.StartCoroutine(coroutineConsumidora.transformar(trioDeColetaveis));
+        yield return Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(trioDeColetaveis));
     }
 
     public Coletavel transformar(InputGame entrada)

@@ -4,7 +4,8 @@ public class HumAlvoSelecionado : SelecaoDeAlvos<Coletavel>,
                                   Transformador<InputGame, Coletavel>
 {   
 
-    public override IEnumerator onSelecionado(bool filtrarGaiolas, InputGame inputGame, Transformador<Coletavel, IEnumerator> coroutineConsumidora)
+    public override IEnumerator onSelecionar(
+        bool filtrarGaiolas, InputGame inputGame, Transformador<Coletavel, IEnumerator> coroutineOnSelecionado)
     {
         ligarMiras(filtrarGaiolas);
         SelecionadorDeAlvos<Coletavel> selecionadorDeAlvos = new SelecionadorDeAlvos<Coletavel>();
@@ -14,7 +15,7 @@ public class HumAlvoSelecionado : SelecaoDeAlvos<Coletavel>,
         Coletavel coletavelSelecionado = selecionadorDeAlvos.goSelecionado;
         ligarMiraFinal(coletavelSelecionado);
 
-        yield return Utils.MonoBehaviour.StartCoroutine(coroutineConsumidora.transformar(coletavelSelecionado));
+        yield return Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(coletavelSelecionado));
     }
 
     public Coletavel transformar(InputGame entrada)

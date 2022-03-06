@@ -3,7 +3,8 @@ using System.Collections;
 public class DoisAlvosSelecionados : SelecaoDeAlvos<DuplaDeColetaveisDto>,
                                      Transformador<InputGame, Coletavel>
 {    
-    public override IEnumerator onSelecionado(bool filtrarGaiolas, InputGame inputGame, Transformador<DuplaDeColetaveisDto, IEnumerator> coroutineConsumidora)
+    public override IEnumerator onSelecionar(
+        bool filtrarGaiolas, InputGame inputGame, Transformador<DuplaDeColetaveisDto, IEnumerator> coroutineOnSelecionado)
     {
         ligarMiras(filtrarGaiolas);
         SelecionadorDeAlvos<Coletavel> selecionadorDeAlvos = new SelecionadorDeAlvos<Coletavel>();
@@ -19,7 +20,7 @@ public class DoisAlvosSelecionados : SelecaoDeAlvos<DuplaDeColetaveisDto>,
         ligarMiraFinal(coletavel1);
 
         DuplaDeColetaveisDto duplaDeColetaveis = new DuplaDeColetaveisDto(coletavel1, coletavel2);
-        yield return Utils.MonoBehaviour.StartCoroutine(coroutineConsumidora.transformar(duplaDeColetaveis));
+        yield return Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(duplaDeColetaveis));
     }
 
     public Coletavel transformar(InputGame entrada)

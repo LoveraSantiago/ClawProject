@@ -17,5 +17,5 @@ public abstract class SelecaoDeAlvos<T>
         }        
     }
 
-    public abstract IEnumerator onSelecionado(bool filtrarGaiolas, InputGame inputGame, Transformador<T, IEnumerator> coroutineConsumidora);
+    public abstract IEnumerator onSelecionar(bool filtrarGaiolas, InputGame inputGame, Transformador<T, IEnumerator> coroutineOnSelecionado);
 }
