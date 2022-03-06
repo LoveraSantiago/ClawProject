@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvos<TrioDeColetaveis>
+public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<TrioDeColetaveis>
 {
     private int qtdDeSelecionados;
 

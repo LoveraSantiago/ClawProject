@@ -1,6 +1,6 @@
 using System.Collections;
 
-public abstract class SelecaoDeAlvos<T> : Transformador<InputGame, Coletavel>
+public abstract class SelecaoDeAlvos<T>
 {
     public void ligarMiras(bool filtrarGaiolas)
     {
@@ -18,9 +18,4 @@ public abstract class SelecaoDeAlvos<T> : Transformador<InputGame, Coletavel>
     }
 
     public abstract IEnumerator onSelecionar(bool filtrarGaiolas, InputGame inputGame, Transformador<T, IEnumerator> coroutineOnSelecionado);
-
-    public Coletavel transformar(InputGame entrada)
-    {
-        return ColetavelHit.hit(entrada);
-    }
 }
