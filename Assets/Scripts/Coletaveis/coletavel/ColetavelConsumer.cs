@@ -33,7 +33,7 @@ public class ColetavelConsumer
                 {
                     coletavel.ligarAnimacaoMiraSelecionado();
                 }
-                else if (coletavel.isMiraSelecionada())
+                else if (coletavel.isMiraSelecionada)
                 {
 
                 }

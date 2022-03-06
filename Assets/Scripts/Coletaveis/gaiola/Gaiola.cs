@@ -1,7 +1,7 @@
 public class Gaiola : GO
 {
     public static GaiolaContexto contexto;
-    public string coletavelPreso { get; private set; }
+    public string nomeColetavelPreso { get; private set; }
 
     public Gaiola() 
         : base(contexto, contexto.nomeador.getName()) {}
@@ -18,26 +18,35 @@ public class Gaiola : GO
 
     public void aprisionarColetavel(string nome)
     {
-        coletavelPreso = nome;
+        nomeColetavelPreso = nome;
     }
 
-    public void soltarColetavel()
+    private void soltarColetavel()
     {
-        coletavelPreso = null;
+        if (isNaoVazia())
+        {
+            HelperColetaveisInGame coletaveisInGame = new HelperColetaveisInGame();
+            Coletavel coletavelPreso = coletaveisInGame.getColetavelInGameByGoName(nomeColetavelPreso);
+            coletavelPreso.soltar();
+            coletavelPreso.desafixarVerticalmente();
+            coletavelPreso.desligarAnimacao();
+        }
+        nomeColetavelPreso = null;
     }
 
-    public bool isVazia()
+    private bool isVazia()
     {
-        return coletavelPreso == null;
+        return nomeColetavelPreso == null;
     }
 
-    public bool isNaoVazia()
+    private bool isNaoVazia()
     {
         return !isVazia();
-    }    
+    }
 
     public override void desligar()
     {
-        base.desligar();        
+        base.desligar();
+        soltarColetavel();
     }
 }

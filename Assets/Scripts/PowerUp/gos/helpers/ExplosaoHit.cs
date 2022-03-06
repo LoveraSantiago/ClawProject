@@ -2,15 +2,6 @@ using UnityEngine;
 
 public class ExplosaoHit 
 {
-    private HelperGaiolasInGame gaiolasInGame;
-    private HelperColetaveisInGame coletaveisInGame;
-
-    public ExplosaoHit()
-    {
-        gaiolasInGame    = new HelperGaiolasInGame();
-        coletaveisInGame = new HelperColetaveisInGame();
-    }
-
     public void acertarTudo(Vector3 posicaoBomba, float raio, int anguloHit, float velocidadeHit)
     {
         acertarColetaveis(posicaoBomba, raio, anguloHit, velocidadeHit);
@@ -24,6 +15,8 @@ public class ExplosaoHit
         for (int contador = 0; contador < acertados.Length; contador++)
         {
             string nomeAcertado = acertados[contador].name;
+
+            HelperColetaveisInGame coletaveisInGame = new HelperColetaveisInGame();
             Coletavel acertado = coletaveisInGame.getColetavelInGameByGoName(nomeAcertado);
             if (acertado.isLivre())
             {
@@ -40,15 +33,11 @@ public class ExplosaoHit
         for (int contador = 0; contador < acertados.Length; contador++)
         {
             string nomeAcertado = acertados[contador].name;
+
+            HelperGaiolasInGame gaiolasInGame = new HelperGaiolasInGame();
             Gaiola gaiola = gaiolasInGame.getGaiolaInGameByGoName(nomeAcertado);
             gaiola.desligar();
-            Debug.Log("Gaiola " + gaiola.nome + " coletavel " + gaiola.coletavelPreso);
-            if (gaiola.isNaoVazia())
-            {
-                Coletavel coletavelPreso = coletaveisInGame.getColetavelInGameByGoName(gaiola.coletavelPreso);
-                coletavelPreso.soltar();
-                coletavelPreso.desafixarVerticalmente();
-            }
+            Debug.Log("Gaiola " + gaiola.nome + " coletavel " + gaiola.nomeColetavelPreso);            
         }
     }
 

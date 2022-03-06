@@ -19,8 +19,10 @@ public class HumAlvoGOSelecionado : SelecaoDeAlvos<GO>,
         }
         else
         {
-            SelecionadorDeAlvos<Gaiola> selecionadorDeAlvos = new SelecionadorDeAlvos<Gaiola>();
-            yield return selecionadorDeAlvos.selecionarAlvo(inputGame, this);
+            string nomeGaiola = coletavelSelecionado.nomeGaiolaAprisionadora;
+            HelperGaiolasInGame helperInGame = new HelperGaiolasInGame();
+            Gaiola gaiolaSelecionada = helperInGame.getGaiolaInGameByGoName(nomeGaiola);
+            yield return coroutineOnSelecionado.transformar(gaiolaSelecionada);
         }
     }
 

@@ -4,8 +4,9 @@ public class Coletavel : GO
 {    
     private static ColetavelContexto contexto;
 
-    private bool miraSelecionada;
-    private string aprisionadoNaGaiola;
+    public bool isMiraSelecionada { get; private set; }
+    public string nomeGaiolaAprisionadora { get; private set; }
+
     private ColetavelAnimacao animacao;      
 
     public Coletavel()
@@ -23,24 +24,19 @@ public class Coletavel : GO
     public void ligarAnimacaoMira()
     {
         animacao.ligarMira();
-        miraSelecionada = false;
+        isMiraSelecionada = false;
     }
 
     public void ligarAnimacaoMiraSelecionado()
     {
         animacao.ligarMiraSelecionada();
-        miraSelecionada = true;
+        isMiraSelecionada = true;
     }
 
     public void desligarAnimacao()
     {
         animacao.desligar();
-        miraSelecionada = false;
-    }
-
-    public bool isMiraSelecionada()
-    {
-        return miraSelecionada;
+        isMiraSelecionada = false;
     }   
 
     public void clearMaterial()
@@ -87,18 +83,18 @@ public class Coletavel : GO
     public void preso(string nomeGaiola)
     {
         setLayer(LayerMask.NameToLayer(TagUtils.LAYER_COLETAVELGAIOLA));
-        aprisionadoNaGaiola = nomeGaiola;
+        nomeGaiolaAprisionadora = nomeGaiola;
         fixarEixoXY();
     }
 
     public bool isPreso()
     {
-        return aprisionadoNaGaiola != null;
+        return nomeGaiolaAprisionadora != null;
     }
 
     public void soltar()
     {
-        aprisionadoNaGaiola = null;
+        nomeGaiolaAprisionadora = null;
         desimantar();
     }
 
