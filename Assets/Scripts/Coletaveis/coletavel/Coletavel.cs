@@ -5,6 +5,7 @@ public class Coletavel : GO
     private static ColetavelContexto contexto;
 
     private bool miraSelecionada;
+    private string aprisionadoNaGaiola;
     private ColetavelAnimacao animacao;      
 
     public Coletavel()
@@ -83,19 +84,21 @@ public class Coletavel : GO
         setLayer(LayerMask.NameToLayer("ColetavelNaoInteracao"));
     }
 
-    public void preso()
+    public void preso(string nomeGaiola)
     {
         setLayer(LayerMask.NameToLayer(TagUtils.LAYER_COLETAVELGAIOLA));
+        aprisionadoNaGaiola = nomeGaiola;
         fixarEixoXY();
     }
 
     public bool isPreso()
     {
-        return isLayer(LayerMask.NameToLayer(TagUtils.LAYER_COLETAVELGAIOLA));
+        return aprisionadoNaGaiola != null;
     }
 
     public void soltar()
     {
+        aprisionadoNaGaiola = null;
         desimantar();
     }
 
