@@ -7,7 +7,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 {
     private bool finalizando;
 
-    private HumAlvoSelecionado alvoSelecionado;
+    private HumAlvoColetavelSelecionado alvoSelecionado;
     private Coletavel coletavelSelecionado;
 
     private Coroutine coroutineAlvo;    
@@ -25,7 +25,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         helperInGame.ligarMirasNosColetaveis(true);
 
-        alvoSelecionado = new HumAlvoSelecionado();
+        alvoSelecionado = new HumAlvoColetavelSelecionado();
         coroutineAlvo = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(true, inputGame, this));
     }
 

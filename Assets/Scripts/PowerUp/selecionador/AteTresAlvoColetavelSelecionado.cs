@@ -1,10 +1,10 @@
 using System.Collections;
 
-public class AteTresAlvosSelecionados : SelecaoDeAlvos<TrioDeColetaveis>
+public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvos<TrioDeColetaveis>
 {
     private int qtdDeSelecionados;
 
-    public AteTresAlvosSelecionados(int qtdDeSelecionados)
+    public AteTresAlvoColetavelSelecionado(int qtdDeSelecionados)
     {
         this.qtdDeSelecionados = qtdDeSelecionados;
     }

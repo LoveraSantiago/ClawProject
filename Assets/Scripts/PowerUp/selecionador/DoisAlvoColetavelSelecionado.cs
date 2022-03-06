@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class DoisAlvosSelecionados : SelecaoDeAlvos<DuplaDeColetaveisDto>
+public class DoisAlvoColetavelSelecionado : SelecaoDeAlvos<DuplaDeColetaveisDto>
 {    
     public override IEnumerator onSelecionar(
         bool filtrarGaiolas, InputGame inputGame, Transformador<DuplaDeColetaveisDto, IEnumerator> coroutineOnSelecionado)

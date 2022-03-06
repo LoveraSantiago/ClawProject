@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class HumAlvoSelecionado : SelecaoDeAlvos<Coletavel>
+public class HumAlvoColetavelSelecionado : SelecaoDeAlvos<Coletavel>
 {   
     public override IEnumerator onSelecionar(
         bool filtrarGaiolas, InputGame inputGame, Transformador<Coletavel, IEnumerator> coroutineOnSelecionado)

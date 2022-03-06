@@ -44,7 +44,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         ligar();
         hitColetavel = false;
-        HumAlvoSelecionado alvoSelecionado = new HumAlvoSelecionado();
+        HumAlvoColetavelSelecionado alvoSelecionado = new HumAlvoColetavelSelecionado();
         coroutine = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(false, inputGame, this));        
     }
 

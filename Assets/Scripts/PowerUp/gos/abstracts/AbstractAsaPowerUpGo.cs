@@ -26,7 +26,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
         helperInGame.ligarMirasNosColetaveis(true);
 
         hitColetavel = false;
-        HumAlvoSelecionado alvoSelecionado = new HumAlvoSelecionado();
+        HumAlvoColetavelSelecionado alvoSelecionado = new HumAlvoColetavelSelecionado();
         coroutine = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(true, inputGame, this));
     }
 
