@@ -1,23 +1,29 @@
 using System.Collections;
 
-public class DoisAlvosSelecionados : SelecaoDeAlvos<DuplaDeColetaveisDto>
+public class DoisAlvosSelecionados : SelecaoDeAlvos<DuplaDeColetaveisDto>,
+                                     Transformador<InputGame, Coletavel>
 {    
     public override IEnumerator onSelecionado(bool filtrarGaiolas, InputGame inputGame, Transformador<DuplaDeColetaveisDto, IEnumerator> coroutineConsumidora)
     {
         ligarMiras(filtrarGaiolas);
-        SelecionadorDeAlvos selecionadorDeAlvos = new SelecionadorDeAlvos();
+        SelecionadorDeAlvos<Coletavel> selecionadorDeAlvos = new SelecionadorDeAlvos<Coletavel>();
 
-        yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
+        yield return selecionadorDeAlvos.selecionarAlvo(inputGame, this);
 
-        Coletavel coletavel1 = selecionadorDeAlvos.coletavelSelecionado;
+        Coletavel coletavel1 = selecionadorDeAlvos.goSelecionado;
         coletavel1.ligarAnimacaoMiraSelecionado();
 
-        yield return selecionadorDeAlvos.selecionarAlvo(inputGame);
-        Coletavel coletavel2 = selecionadorDeAlvos.coletavelSelecionado;
+        yield return selecionadorDeAlvos.selecionarAlvo(inputGame, this);
+        Coletavel coletavel2 = selecionadorDeAlvos.goSelecionado;
 
         ligarMiraFinal(coletavel1);
 
         DuplaDeColetaveisDto duplaDeColetaveis = new DuplaDeColetaveisDto(coletavel1, coletavel2);
         yield return Utils.MonoBehaviour.StartCoroutine(coroutineConsumidora.transformar(duplaDeColetaveis));
+    }
+
+    public Coletavel transformar(InputGame entrada)
+    {
+        return ColetavelHit.hit(entrada);
     }
 }
