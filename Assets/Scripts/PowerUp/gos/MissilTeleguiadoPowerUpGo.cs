@@ -48,11 +48,6 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         coroutine = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(false, inputGame, this));        
     }
 
-    public IEnumerator transformar(GO entrada)
-    {
-        return disparandoMissil(entrada);
-    }
-
     public override void resetPup()
     {
         desligar();
@@ -61,21 +56,48 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         animacao.parado();
         colocarNoAngulo(0);
     }   
+
+    public IEnumerator transformar(GO entrada)
+    {
+        return dispararMissil(entrada);
+    }
     
-    private IEnumerator disparandoMissil(GO go)
+    private IEnumerator dispararMissil(GO go)
+    {
+        processarPreExplosao();
+        yield return processarMissilEmRota(go);
+
+        processarExplosao(go);
+        processarPosExplosao();
+        yield return new WaitForSeconds(powerUpDto.MissilTeleguiadoDto.DelayPosExplosao);
+
+        resetPup();
+        yield return null;
+    } 
+    
+    private void processarPreExplosao()
     {
         hitColetavel = true;
-
         animacao.acionado();
         efeitoFaiscas.gameObject.SetActive(true);
         efeitoFaiscas.Play();
+        capsuleCollider.isTrigger = true;
+    }
+
+    private IEnumerator processarMissilEmRota(GO go)
+    {
+        MissilTeleguiadoDto missiTeleguiadoDto = powerUpDto.MissilTeleguiadoDto;
+        PathMissilDto pathMissilDto = missiTeleguiadoDto.PathMissilDto;
+        float velocidadeMissil = missiTeleguiadoDto.Velocidade;
+        int tamanhoDaRota = pathMissilDto.PathPointsMissil.Length;
 
         RotaDoMissilTeleguiado rota = new RotaDoMissilTeleguiado();
-        rota.recalcularRota(go.getPosicao(), powerUpDto.MissilTeleguiadoDto.PathMissilDto);
-        
-        capsuleCollider.isTrigger = true;
-        yield return rota.rotaParaOAlvo(this, powerUpDto.MissilTeleguiadoDto.Velocidade, powerUpDto.MissilTeleguiadoDto.PathMissilDto.PathPointsMissil.Length);
+        rota.recalcularRota(go.getPosicao(), pathMissilDto);
+        yield return rota.rotaParaOAlvo(this, velocidadeMissil, tamanhoDaRota);
+    }
 
+    private void processarExplosao(GO go)
+    {
         colocarNaPosicao(go.getPosicao());
         parar();
         efeitoFaiscas.Stop();
@@ -84,17 +106,15 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
 
         Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MissilTeleguiadoDto.HalturaExplosao, 0);
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
-        efeitoExplosao.explodir(posicaoExplosao);        
+        efeitoExplosao.explodir(posicaoExplosao);
+    }
 
+    private void processarPosExplosao()
+    {
         CameraShake cameraShake = new CameraShake();
         cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
         powerUpFinalizacao.preFinalizar();
-
-        yield return new WaitForSeconds(powerUpDto.MissilTeleguiadoDto.DelayPosExplosao);
-
-        resetPup();
-        yield return null;
-    }    
+    }
 
     private void acertarGo(GO go)
     {
