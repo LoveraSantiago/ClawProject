@@ -4,18 +4,12 @@ using UnityEngine;
 public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
                                          Transformador<Coletavel, IEnumerator>
 {
-    private static readonly int MISSIL_IDLE      = Animator.StringToHash("idle");
-    private static readonly int MISSIL_ACIONADO  = Animator.StringToHash("missil-acionado");
-    private static readonly int MISSIL_EXPLODIDO = Animator.StringToHash("missil-explodido");
-
     private bool hitColetavel;
     private float distanciaAnterior;
-    
-    private CapsuleCollider2D capsuleCollider;
-    
-    private Vector2[] pathMissilRecalculado;    
-    private Animator animator;
 
+    private AnimacaoMissilTeleguiado animacao;
+    private CapsuleCollider2D capsuleCollider;    
+    private Vector2[] pathMissilRecalculado;  
     private ParticleSystem efeitoFaiscas;
     private Coroutine coroutine;
 
@@ -42,7 +36,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         capsuleCollider = extrairComponente<CapsuleCollider2D>();
 
         Transform transfImagem = extrairTransform("imagem");
-        animator = transfImagem.GetComponent<Animator>();
+        Animator animator = transfImagem.GetComponent<Animator>();
+        animacao = new AnimacaoMissilTeleguiado(animator);
         efeitoFaiscas = transfImagem.transform.Find("faiscas")
                                .GetComponent<ParticleSystem>();
     }
@@ -65,7 +60,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         desligar();
         powerUpFinalizacao.finalizado();
         efeitoFaiscas.gameObject.SetActive(false);
-        animator.Play(MISSIL_IDLE);
+        animacao.parado();
         colocarNoAngulo(0);
     }   
     
@@ -73,7 +68,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         hitColetavel = true;
 
-        animator.Play(MISSIL_ACIONADO);
+        animacao.acionado();
         efeitoFaiscas.gameObject.SetActive(true);
         efeitoFaiscas.Play();
         recalcularPath(coletavel.getPosicao());
@@ -127,7 +122,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         colocarNaPosicao(coletavel.getPosicao());
         parar();
         efeitoFaiscas.Stop();
-        animator.Play(MISSIL_EXPLODIDO);
+        animacao.explodir();
 
         Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MissilTeleguiadoDto.HalturaExplosao, 0);
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
