@@ -4,12 +4,10 @@ using UnityEngine;
 public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
                                          Transformador<Coletavel, IEnumerator>
 {
-    private bool hitColetavel;
-    private float distanciaAnterior;
+    private bool hitColetavel;    
 
     private AnimacaoMissilTeleguiado animacao;
-    private CapsuleCollider2D capsuleCollider;    
-    private Vector2[] pathMissilRecalculado;  
+    private CapsuleCollider2D capsuleCollider;        
     private ParticleSystem efeitoFaiscas;
     private Coroutine coroutine;
 
@@ -71,54 +69,13 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         animacao.acionado();
         efeitoFaiscas.gameObject.SetActive(true);
         efeitoFaiscas.Play();
-        recalcularPath(coletavel.getPosicao());
+
+        RotaDoMissilTeleguiado rota = new RotaDoMissilTeleguiado();
+        rota.recalcularRota(coletavel.getPosicao(), powerUpDto.MissilTeleguiadoDto.PathMissilDto);
+        
         capsuleCollider.isTrigger = true;
-        int contadorIndice = 0;
-        float contador = 0;
-        Vector2 p1 = pathMissilRecalculado[contadorIndice * 3];
-        Vector2 p2 = pathMissilRecalculado[contadorIndice * 3 + 1];
-        Vector2 p3 = pathMissilRecalculado[contadorIndice * 3 + 2];
-        Vector2 p4 = pathMissilRecalculado[contadorIndice * 3 + 3];
+        yield return rota.rotaParaOAlvo(this, powerUpDto.MissilTeleguiadoDto.Velocidade, powerUpDto.MissilTeleguiadoDto.PathMissilDto.PathPointsMissil.Length);
 
-        distanciaAnterior = 100;
-
-        while (true)
-        {
-            contador += (powerUpDto.MissilTeleguiadoDto.Velocidade * Time.deltaTime);
-            Vector2 posicao = MathUtils.cubicCurve(p1, p2, p3, p4, contador);
-            Vector2 posNext = MathUtils.cubicCurve(p1, p2, p3, p4, contador + 0.01f);
-            colocarNaPosicao(posicao);
-
-            Vector2 diferenca = posicao - posNext;
-            diferenca.Normalize();
-            float z = Mathf.Atan2(diferenca.y, diferenca.x) * Mathf.Rad2Deg;
-            Quaternion quat = Quaternion.Euler(0f, 0f, z - 90);
-            colocarNoAngulo(quat);
-
-            float distanciaAtual = (p4 - posicao).magnitude;
-            //Debug.Log("Dist: " + distanciaAtual + " Ang: " + z);
-            
-            if (distanciaAtual > distanciaAnterior)
-            {
-                distanciaAnterior = 100;
-                //Debug.Log("********************");
-                contador = 0;
-                contadorIndice++;
-                if ((contadorIndice * 3 + 3) > powerUpDto.MissilTeleguiadoDto.PathMissilDto.PathPointsMissil.Length)
-                {
-                    break;
-                }
-                p1 = pathMissilRecalculado[contadorIndice * 3];
-                p2 = pathMissilRecalculado[contadorIndice * 3 + 1];
-                p3 = pathMissilRecalculado[contadorIndice * 3 + 2];
-                p4 = pathMissilRecalculado[contadorIndice * 3 + 3];
-            }
-            else
-            {
-                distanciaAnterior = distanciaAtual;
-            }
-            yield return null;
-        }
         colocarNaPosicao(coletavel.getPosicao());
         parar();
         efeitoFaiscas.Stop();
@@ -136,33 +93,10 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         powerUpFinalizacao.preFinalizar();
 
         yield return new WaitForSeconds(powerUpDto.MissilTeleguiadoDto.DelayPosExplosao);
+
         resetPup();
         yield return null;
     }    
-
-    private void recalcularPath(Vector3 posicaoFim)
-    {
-        PathMissilDto pathMissil = powerUpDto.MissilTeleguiadoDto.PathMissilDto;
-        Transform tranformMain = pathMissil.GoMainPath.transform;
-        if (posicaoFim.x > 0)
-        {
-            tranformMain.localScale = new Vector3(-1f, 1f, 1f);
-        }
-        else
-        {
-            tranformMain.localScale = new Vector3(1f, 1f, 1f);
-        }
-
-        int lenghPath = pathMissil.PathPointsMissil.Length;
-        pathMissilRecalculado = new Vector2[lenghPath];
-        for(int contador = 0; contador < lenghPath; contador++)
-        {
-            pathMissilRecalculado[contador] = pathMissil.PathPointsMissil[contador].position;
-        }
-
-        pathMissilRecalculado[lenghPath - 1] = posicaoFim;
-        pathMissilRecalculado[lenghPath - 2] = new Vector2(posicaoFim.x, pathMissilRecalculado[lenghPath - 2].y);
-    }
 
     public override void timeout()
     {
