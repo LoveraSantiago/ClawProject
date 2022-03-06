@@ -9,13 +9,15 @@ public class ColetavelHit
         Vector3 posicaoTap = inputGame.getPosicaoTap();
         posicaoTap.z = 0;
         //Debug.Log("Posicao tap " + posicaoTap);
-        int layerMask = LayerMask.GetMask(TagUtils.TAG_LAYER_COLETAVEL);
+        string[] layers = new string[] { TagUtils.TAG_LAYER_COLETAVEL, TagUtils.LAYER_COLETAVELGAIOLA };
+        int layerMask = LayerMask.GetMask(layers);
         RaycastHit2D raycastHit;
         raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
 
         Collider2D colliderResult = raycastHit.collider;
         if(colliderResult != null)
-        {            
+        {
+            Debug.Log("Coletavel acertado no input " + inputGame.getPosicaoTap());
             return helperInGame.getColetavelInGameByGoName(colliderResult.name);
         }
         else
