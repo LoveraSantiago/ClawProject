@@ -20,7 +20,7 @@ public class SelecionadorDeAlvos<T> where T : GO
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
                 go = tranformadorHit.transformar(inputGame);
-                if (go != null && isColetavelNaoSelecionadoAntes(go))
+                if (go != null && isGoNaoSelecionadoAntes(go))
                 {
                     goSelecionado = go;
                 }
@@ -30,7 +30,7 @@ public class SelecionadorDeAlvos<T> where T : GO
         yield return null;
     }    
 
-    private bool isColetavelNaoSelecionadoAntes(T coletavel)
+    private bool isGoNaoSelecionadoAntes(T coletavel)
     {
         return !gosJaSelecionados.Contains(coletavel);        
     }
