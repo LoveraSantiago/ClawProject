@@ -8,10 +8,10 @@ public class HumAlvoGOSelecionado : SelecaoDeAlvos<GO>,
     private Coletavel coletavelSelecionado;
 
     public override IEnumerator onSelecionar(
-        bool filtrarGaiolas, InputGame inputGame, Transformador<GO, IEnumerator> coroutineOnSelecionado)
+        InputGame inputGame, Transformador<GO, IEnumerator> coroutineOnSelecionado)
     {
-        HumAlvoColetavelSelecionado alvoColetavelSelecionado = new HumAlvoColetavelSelecionado();
-        yield return alvoColetavelSelecionado.onSelecionar(filtrarGaiolas, inputGame, this);
+        HumAlvoColetavelSelecionado alvoColetavelSelecionado = new HumAlvoColetavelSelecionado(false);
+        yield return alvoColetavelSelecionado.onSelecionar(inputGame, this);
 
         if (coletavelSelecionado.isLivre())
         {

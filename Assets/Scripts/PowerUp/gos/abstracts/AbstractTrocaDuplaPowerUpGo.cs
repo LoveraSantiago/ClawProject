@@ -14,8 +14,8 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
     public override void iniciarPup()
     {        
         hitColetavel2 = false;
-        DoisAlvoColetavelSelecionado alvosSelecionados = new DoisAlvoColetavelSelecionado();
-        coroutine = Utils.MonoBehaviour.StartCoroutine(alvosSelecionados.onSelecionar(true, inputGame, this));
+        DoisAlvoColetavelSelecionado alvosSelecionados = new DoisAlvoColetavelSelecionado(true);
+        coroutine = Utils.MonoBehaviour.StartCoroutine(alvosSelecionados.onSelecionar(inputGame, this));
     }
 
     public IEnumerator transformar(DuplaDeColetaveisDto duplaDeColetaveis)

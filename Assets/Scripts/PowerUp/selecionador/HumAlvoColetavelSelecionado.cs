@@ -1,9 +1,12 @@
 using System.Collections;
 
 public class HumAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<Coletavel>
-{   
+{
+    public HumAlvoColetavelSelecionado(bool filtrarGaiolas)
+        : base(filtrarGaiolas){}
+
     public override IEnumerator onSelecionar(
-        bool filtrarGaiolas, InputGame inputGame, Transformador<Coletavel, IEnumerator> coroutineOnSelecionado)
+        InputGame inputGame, Transformador<Coletavel, IEnumerator> coroutineOnSelecionado)
     {
         ligarMiras(filtrarGaiolas);
         SelecionadorDeAlvos<Coletavel> selecionadorDeAlvos = new SelecionadorDeAlvos<Coletavel>();

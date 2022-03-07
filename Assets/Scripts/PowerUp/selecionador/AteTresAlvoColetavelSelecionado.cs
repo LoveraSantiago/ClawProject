@@ -4,13 +4,14 @@ public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<TrioDeCo
 {
     private int qtdDeSelecionados;
 
-    public AteTresAlvoColetavelSelecionado(int qtdDeSelecionados)
+    public AteTresAlvoColetavelSelecionado(int qtdDeSelecionados, bool filtrarGaiolas)
+        :base(filtrarGaiolas)
     {
         this.qtdDeSelecionados = qtdDeSelecionados;
     }
 
     public override IEnumerator onSelecionar(
-        bool filtrarGaiolas, InputGame inputGame, Transformador<TrioDeColetaveis, IEnumerator> coroutineOnSelecionado)
+        InputGame inputGame, Transformador<TrioDeColetaveis, IEnumerator> coroutineOnSelecionado)
     {
         ligarMiras(filtrarGaiolas);
         SelecionadorDeAlvos<Coletavel> selecionadorDeAlvos = new SelecionadorDeAlvos<Coletavel>();
