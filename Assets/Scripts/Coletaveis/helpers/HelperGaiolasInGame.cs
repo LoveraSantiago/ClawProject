@@ -14,6 +14,13 @@ public class HelperGaiolasInGame
         return poolDeNomes.getValor(name);
     }
 
+    public Gaiola getGaiolaMaisAlta()
+    {
+        ProcuradorColetavelMaisAlto<Gaiola> procurador = new ProcuradorColetavelMaisAlto<Gaiola>();
+        poolDeNomes.executeEmTodosOsValores(procurador);
+        return procurador.goMaisAlto;
+    }
+
     public static void configurar()
     {
         poolDeNomes = new PoolDeNomes<Gaiola>();

@@ -33,9 +33,9 @@ public class HelperColetaveisInGame
 
     public Coletavel getColetavelMaisAlto()
     {
-        ProcuradorColetavelMaisAlto procurador = new ProcuradorColetavelMaisAlto();
+        ProcuradorColetavelMaisAlto<Coletavel> procurador = new ProcuradorColetavelMaisAlto<Coletavel>();
         poolDeColetaveis.executeEmTodosColetaveis(procurador);
-        return procurador.coletavelMaisAlto;
+        return procurador.goMaisAlto;
     }    
 
     public void ligarMiraAlvoFinalNoColetavel(string nomeAlvo)

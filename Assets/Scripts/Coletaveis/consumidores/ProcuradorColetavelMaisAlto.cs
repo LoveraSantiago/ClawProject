@@ -1,19 +1,17 @@
-using UnityEngine;
-
-public class ProcuradorColetavelMaisAlto : Consumidor<Coletavel>
+public class ProcuradorColetavelMaisAlto<T> : Consumidor<T> where T : GO
 {
-    public Coletavel coletavelMaisAlto { get; private set; }
+    public T goMaisAlto { get; private set; }
 
-    public void consumir(Coletavel coletavelIt)
+    public void consumir(T goIt)
     {
-        if (coletavelIt.isAtivo())
+        if (goIt.isAtivo())
         {
-            float alturaIt = coletavelIt.getPosicao().y;
+            float alturaIt = goIt.getPosicao().y;
             float alturaMaisAlta = getHalturaAtual();
 
             if(alturaIt > alturaMaisAlta)
             {
-                coletavelMaisAlto = coletavelIt;
+                goMaisAlto = goIt;
                 //Debug.Log("Setado mais alto");
             }
         }        
@@ -21,9 +19,9 @@ public class ProcuradorColetavelMaisAlto : Consumidor<Coletavel>
 
     private float getHalturaAtual()
     {
-        if(coletavelMaisAlto != null)
+        if(goMaisAlto != null)
         {
-            return coletavelMaisAlto.getPosicao().y;
+            return goMaisAlto.getPosicao().y;
         }
         return -100;
     }
