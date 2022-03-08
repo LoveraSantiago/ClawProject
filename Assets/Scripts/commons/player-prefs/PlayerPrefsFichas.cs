@@ -55,8 +55,8 @@ public class PlayerPrefsFichas
             }
         }
     }
-
-    public static void adicionarFicha(Ficha ficha, int qtd)
+    
+    public static void ganharFicha(Ficha ficha, int qtd)
     {
         if(qtd > 0)
         {
@@ -75,7 +75,7 @@ public class PlayerPrefsFichas
             else
             {
                 DateTime ultimaData = getDataFicha(ficha);
-                while(qtdAnterior < qtdAtual)
+                while (qtdAnterior < qtdAtual)
                 {
                     ultimaData = ultimaData.AddHours(fichaEntidade.intervaloHoras)
                                            .AddMinutes(fichaEntidade.intervaloMinutos);
@@ -83,6 +83,18 @@ public class PlayerPrefsFichas
                 }
                 saveDataFicha(ficha, ultimaData);
             }
+        }
+    }
+
+    public static void comprarFicha(Ficha ficha, int qtd)
+    {
+        if(qtd > 0)
+        {
+            string chaveQtd = gerarChaveQtdFichas(ficha);
+
+            int qtdAnterior = PlayerPrefs.GetInt(chaveQtd);
+            int qtdAtual = qtdAnterior + qtd;
+            PlayerPrefs.SetInt(chaveQtd, qtdAtual);
         }
     }
 
