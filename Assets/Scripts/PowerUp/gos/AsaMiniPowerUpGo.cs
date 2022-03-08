@@ -18,9 +18,25 @@ public class AsaMiniPowerUpGo : AbstractAsaPowerUpGo
 
     protected override float getHalturaLimite()
     {
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        Coletavel coletavelMaisAlto = helperInGame.getColetavelMaisAlto();
-        return coletavelMaisAlto.getPosicao().y + powerUpDto.AsaMiniDto.IncrementoHaltura;
+        HelperColetaveisInGame coletaveisInGame = new HelperColetaveisInGame();
+        Coletavel coletavelMaisAlto = coletaveisInGame.getColetavelMaisAlto();
+
+        HelperGaiolasInGame gaiolasInGame = new HelperGaiolasInGame();
+        Gaiola gaiolaMaisAlta = gaiolasInGame.getGaiolaMaisAlta();
+
+        float altura = 0;
+        if(gaiolaMaisAlta == null)
+        {
+            altura = coletavelMaisAlto.getPosicao().y;
+        }
+        else
+        {
+            Debug.Log("Altura coletavel " + coletavelMaisAlto.getPosicao().y);
+            Debug.Log("Altura gaiola " + gaiolaMaisAlta.getPosicao().y);
+
+            altura = Mathf.Max(coletavelMaisAlto.getPosicao().y, gaiolaMaisAlta.getPosicao().y);
+        }
+        return altura + powerUpDto.AsaMiniDto.IncrementoHaltura;
     }
 
     protected override IEnumerator finalizarVoar(Coletavel coletavelAcertado)

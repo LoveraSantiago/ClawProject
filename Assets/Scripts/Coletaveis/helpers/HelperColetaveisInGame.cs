@@ -33,7 +33,7 @@ public class HelperColetaveisInGame
 
     public Coletavel getColetavelMaisAlto()
     {
-        ProcuradorColetavelMaisAlto<Coletavel> procurador = new ProcuradorColetavelMaisAlto<Coletavel>();
+        ProcuradorGOMaisAlto<Coletavel> procurador = new ProcuradorGOMaisAlto<Coletavel>();
         poolDeColetaveis.executeEmTodosColetaveis(procurador);
         return procurador.goMaisAlto;
     }    

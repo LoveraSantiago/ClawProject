@@ -17,7 +17,7 @@ public class ColetavelInputHit
         Collider2D colliderResult = raycastHit.collider;
         if(colliderResult != null)
         {
-            Debug.Log("Coletavel acertado no input " + inputGame.getPosicaoTap());
+            //Debug.Log("Coletavel acertado no input " + inputGame.getPosicaoTap());
             return helperInGame.getColetavelInGameByGoName(colliderResult.name);
         }
         else

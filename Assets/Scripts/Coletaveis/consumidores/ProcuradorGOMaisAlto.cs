@@ -1,4 +1,4 @@
-public class ProcuradorColetavelMaisAlto<T> : Consumidor<T> where T : GO
+public class ProcuradorGOMaisAlto<T> : Consumidor<T> where T : GO
 {
     public T goMaisAlto { get; private set; }
 

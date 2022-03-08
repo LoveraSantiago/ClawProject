@@ -16,7 +16,7 @@ public class HelperGaiolasInGame
 
     public Gaiola getGaiolaMaisAlta()
     {
-        ProcuradorColetavelMaisAlto<Gaiola> procurador = new ProcuradorColetavelMaisAlto<Gaiola>();
+        ProcuradorGOMaisAlto<Gaiola> procurador = new ProcuradorGOMaisAlto<Gaiola>();
         poolDeNomes.executeEmTodosOsValores(procurador);
         return procurador.goMaisAlto;
     }
