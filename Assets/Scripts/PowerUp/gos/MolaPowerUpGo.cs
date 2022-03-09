@@ -47,26 +47,12 @@ public class MolaPowerUpGo : PowerUpSemInteracao
 
         Coletavel[] coletaveis = getColetaveisColididosComMola();
         animacao.pular();
-
         yield return new WaitForSeconds(0.1f);
 
         dispararColetaveis(coletaveis);       
         yield return null;
 
-        List<Coletavel> coletaveisQueda = new List<Coletavel>(coletaveis.Length);
-        while(coletaveisQueda.Count < coletaveis.Length)
-        {
-            for(int contador = 0; contador < coletaveis.Length; contador++)
-            {
-                Coletavel coletavelIt = coletaveis[contador];
-                if (!coletavelIt.isVelocidadeYPositiva() && !coletaveisQueda.Contains(coletavelIt))
-                {
-                    coletavelIt.interacaoComOutrosColetaveis();
-                    coletaveisQueda.Add(coletavelIt);
-                }
-            }
-            yield return null;
-        }
+        yield return pousarColetaveis(coletaveis);
         yield return new WaitForSeconds(powerUpDto.MolaDto.DelayInicial * 5);
 
         resetPup();
@@ -117,6 +103,24 @@ public class MolaPowerUpGo : PowerUpSemInteracao
             }
             //Debug.Log("Angulo " + anguloDisparo);
             coletaveis[contador].disparar(anguloDisparo, 15f);
+        }
+    }
+
+    private IEnumerator pousarColetaveis(Coletavel[] coletaveis)
+    {
+        List<Coletavel> coletaveisQueda = new List<Coletavel>(coletaveis.Length);
+        while (coletaveisQueda.Count < coletaveis.Length)
+        {
+            for (int contador = 0; contador < coletaveis.Length; contador++)
+            {
+                Coletavel coletavelIt = coletaveis[contador];
+                if (!coletavelIt.isVelocidadeYPositiva() && !coletaveisQueda.Contains(coletavelIt))
+                {
+                    coletavelIt.interacaoComOutrosColetaveis();
+                    coletaveisQueda.Add(coletavelIt);
+                }
+            }
+            yield return null;
         }
     }
 }
