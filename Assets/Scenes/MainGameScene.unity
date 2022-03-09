@@ -10753,6 +10753,7 @@ MonoBehaviour:
       boardDto:
         delayVoltaBoard: 0.2
         velocidadeSubida: 0.25
+        velocidadeDevolucao: 7
         subida: 0.78
         limiteSubida: 1.4
         paredeAlta: {fileID: 50493998}
