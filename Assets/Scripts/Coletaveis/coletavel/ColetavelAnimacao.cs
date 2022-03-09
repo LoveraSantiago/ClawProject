@@ -8,9 +8,9 @@ public class ColetavelAnimacao
 
     private Animator animator;
 
-    public ColetavelAnimacao(GameObject gameObject)
+    public ColetavelAnimacao(Animator animator)
     {
-        animator = gameObject.transform.Find("animacao").GetComponent<Animator>();
+        this.animator = animator;
     }
 
     public void ligarMira()

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 public class DropDownLevelsPositivo : DropDownLevels
 {
     public DropDownLevelsPositivo(List<string> listaDeLevels) 
-        : base(listaDeLevels)
-    {  
-    }
+        : base(listaDeLevels){}
 
     protected override int[,] getArrayParaOBoard(AbstractLevel level)
     {

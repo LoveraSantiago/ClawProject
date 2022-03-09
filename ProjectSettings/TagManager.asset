@@ -8,6 +8,8 @@ TagManager:
   - ColetavelDoTubo
   - Coletavel
   - Laranja
+  - Coco
+  - Gaiola
   layers:
   - Default
   - TransparentFX
@@ -34,8 +36,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Gaiola
+  - GaiolaColetavel
   - 
   - 
   - 

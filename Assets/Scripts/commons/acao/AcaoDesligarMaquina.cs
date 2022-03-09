@@ -1,3 +1,3 @@
-public class AcaoDesligarMaquina : ProdutorConsumidoresDeEvento<DesligarMaquina>
+public class AcaoDesligarMaquina : ProdutorConsumidoresDeEvento<DesligarMaquinaDto>
 {    
 }

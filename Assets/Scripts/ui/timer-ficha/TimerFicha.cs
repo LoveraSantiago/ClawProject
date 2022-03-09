@@ -23,7 +23,7 @@ public class TimerFicha : Executor
 
     public void execute()
     {
-        PlayerPrefsFichas.adicionarFicha(ficha, 1);
+        PlayerPrefsFichas.ganharFicha(ficha, 1);
         recontarFichas();
     }
 
@@ -61,7 +61,7 @@ public class TimerFicha : Executor
             }
             fichasAtuais++;
         }                
-        PlayerPrefsFichas.adicionarFicha(fichaEntidade.ficha, resultado);
+        PlayerPrefsFichas.ganharFicha(fichaEntidade.ficha, resultado);
     }
 
     private void recontarFichas()

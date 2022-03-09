@@ -1,45 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SelecionadorDeAlvos 
+public class SelecionadorDeAlvos<T> where T : GO
 {
-    public Coletavel coletavelSelecionado { get; private set; }
-    private List<Coletavel> coletaveisJaSelecionados;
+    public T goSelecionado { get; private set; }
+    private List<T> gosJaSelecionados;
 
     public SelecionadorDeAlvos()
     {
-        coletaveisJaSelecionados = new List<Coletavel>();
-    }
+        gosJaSelecionados = new List<T>();
+    }   
 
-    public SelecionadorDeAlvos ligarMiras()
+    public IEnumerator selecionarAlvo(InputGame inputGame, Transformador<InputGame, T> tranformadorHit)
     {
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        helperInGame.ligarMirasNosColetaveis();
-        return this;
-    }
-
-    public SelecionadorDeAlvos ligarMiraFinal()
-    {
-        if(coletavelSelecionado != null)
-        {
-            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-            helperInGame.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
-        }
-        return this;
-    }
-
-    public IEnumerator selecionarAlvo(InputGame inputGame)
-    {
-        coletavelSelecionado = null;
-        Coletavel coletavel = null;
-        while (coletavelSelecionado == null)
+        goSelecionado = null;
+        T go = null;
+        while (goSelecionado == null)
         {
             if (inputGame.aconteceuTapNaAreaSuperior())
             {
-                coletavel = ColetavelHit.hit(inputGame);
-                if (coletavel != null && isColetavelNaoSelecionadoAntes(coletavel))
+                go = tranformadorHit.transformar(inputGame);
+                if (go != null && isGoNaoSelecionadoAntes(go))
                 {
-                    coletavelSelecionado = coletavel;
+                    goSelecionado = go;
                 }
             }
             yield return null;
@@ -47,8 +30,8 @@ public class SelecionadorDeAlvos
         yield return null;
     }    
 
-    private bool isColetavelNaoSelecionadoAntes(Coletavel coletavel)
+    private bool isGoNaoSelecionadoAntes(T coletavel)
     {
-        return !coletaveisJaSelecionados.Contains(coletavel);        
+        return !gosJaSelecionados.Contains(coletavel);        
     }
 }

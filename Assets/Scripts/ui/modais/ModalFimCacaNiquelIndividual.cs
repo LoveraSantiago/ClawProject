@@ -54,7 +54,7 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         else
         {
             linhasModal[indice].passarInfos("Ficha", evento.sprResultados[indice], "OK");
-            PlayerPrefsFichas.adicionarFicha(Ficha.BRONZE, 1);
+            PlayerPrefsFichas.comprarFicha(Ficha.BRONZE, 1);
         }
     }
 

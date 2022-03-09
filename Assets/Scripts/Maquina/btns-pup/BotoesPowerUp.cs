@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
                              AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
-                             AcaoColetado.ConsumidorEvento
+                             AcaoColetado.ConsumidorEvento,
+                             AcaoDesligarMaquinaResultado.ConsumidorEvento
 {
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
@@ -141,25 +142,38 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
         btnAcionado = btn;
     }   
 
+    private void devolverPowerUps()
+    {
+        btnsPowerUp[0].devolverPowerUp();
+        btnsPowerUp[1].devolverPowerUp();
+        btnsPowerUp[2].devolverPowerUp();
+        btnsPowerUp[3].devolverPowerUp();
+    }
+
     void AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {        
         btnsPowerUp[evento.indiceBotao].receberAcaoPowerUp(evento, controlePup);
     }
 
-    void ProdutorConsumidoresDeEvento<InformacoesColetadoDto>.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         controlePup.suspenderPowerUp();
         if (evento.infosFimDeJogo.fimColetados)
         {
-            btnsPowerUp[0].devolverPowerUp();
-            btnsPowerUp[1].devolverPowerUp();
-            btnsPowerUp[2].devolverPowerUp();
-            btnsPowerUp[3].devolverPowerUp();
+            devolverPowerUps();
         }
-    }
+    }   
 
     ProdutorDeEvento<int> AcaoBotaoPowerUpVazio.ProdutorEvento.getProdutorDeEvento()
     {
         return controlePup.produtorDeEventoEscolhaPup;
-    }   
+    }
+
+    void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
+    {
+        if (evento.resultadoSair && evento.isGameLevel)
+        {
+            devolverPowerUps();
+        }
+    }
 }

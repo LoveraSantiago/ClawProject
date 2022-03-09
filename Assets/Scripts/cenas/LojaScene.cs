@@ -27,29 +27,29 @@ public class LojaScene : MonoBehaviour
         lblQtdFichasBronze.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
 
         btnOuro.onClick.AddListener(()=> {
-            PlayerPrefsFichas.adicionarFicha(Ficha.OURO, 1);
+            PlayerPrefsFichas.comprarFicha(Ficha.OURO, 1);
             lblQtdFichasOuro.text = PlayerPrefsFichas.getQtdFichas(Ficha.OURO).ToString();
         });
 
         btnPrata.onClick.AddListener(() => {
-            PlayerPrefsFichas.adicionarFicha(Ficha.PRATA, 1);
+            PlayerPrefsFichas.comprarFicha(Ficha.PRATA, 1);
             lblQtdFichasPrata.text = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
         });
 
         btnBronze.onClick.AddListener(() => {
-            PlayerPrefsFichas.adicionarFicha(Ficha.BRONZE, 1);
+            PlayerPrefsFichas.comprarFicha(Ficha.BRONZE, 1);
             lblQtdFichasBronze.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
         });
 
         btnAssinatura.onClick.AddListener(() =>
         {
-            PlayerPrefsFichas.adicionarFicha(Ficha.OURO, 10);
+            PlayerPrefsFichas.comprarFicha(Ficha.OURO, 10);
             lblQtdFichasOuro.text = PlayerPrefsFichas.getQtdFichas(Ficha.OURO).ToString();
 
-            PlayerPrefsFichas.adicionarFicha(Ficha.PRATA, 20);
+            PlayerPrefsFichas.comprarFicha(Ficha.PRATA, 20);
             lblQtdFichasPrata.text = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
 
-            PlayerPrefsFichas.adicionarFicha(Ficha.BRONZE, 30);
+            PlayerPrefsFichas.comprarFicha(Ficha.BRONZE, 30);
             lblQtdFichasBronze.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
         });
     }

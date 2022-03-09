@@ -32,9 +32,6 @@ public class MaquinaAssemblerV4 : EditorWindow
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/maquina-assembler/MaquinaAssemblerV4.uss");
-        //VisualElement labelWithStyle = new Label("Hello World! With Style");
-        //labelWithStyle.styleSheets.Add(styleSheet);
-        //root.Add(labelWithStyle);
 
         criarComponentDropDownField(root);
 
@@ -102,7 +99,7 @@ public class MaquinaAssemblerV4 : EditorWindow
 
     private void criarComponentDropDownField(VisualElement root)
     {
-        List<string> listaDeLevels = EditorUtils.getListaDeLevels();
+        List<string> listaDeLevels = LevelHelper.getAllLevels();
 
         DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
         dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {

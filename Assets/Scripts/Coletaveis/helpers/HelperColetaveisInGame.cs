@@ -33,9 +33,9 @@ public class HelperColetaveisInGame
 
     public Coletavel getColetavelMaisAlto()
     {
-        ProcuradorColetavelMaisAlto procurador = new ProcuradorColetavelMaisAlto();
+        ProcuradorGOMaisAlto<Coletavel> procurador = new ProcuradorGOMaisAlto<Coletavel>();
         poolDeColetaveis.executeEmTodosColetaveis(procurador);
-        return procurador.coletavelMaisAlto;
+        return procurador.goMaisAlto;
     }    
 
     public void ligarMiraAlvoFinalNoColetavel(string nomeAlvo)
@@ -43,9 +43,9 @@ public class HelperColetaveisInGame
         poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
     }
 
-    public void ligarMirasNosColetaveis()
+    public void ligarMirasNosColetaveis(bool filtrarGaiolas)
     {
-        poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeMiras());
+        poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeMiras(filtrarGaiolas));
     }
 
     public void desligarMirasNosColetaveis()
@@ -82,6 +82,20 @@ public class HelperColetaveisInGame
             poolGrayscale.Add(spr.name, material);
         }
         return poolGrayscale[spr.name];
+    }
+
+    public static Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
+    {
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+
+        Coletavel coletavel = helperInGame.criarColetavel();
+        Sprite sprite = helperColetavel.getSpriteColetavelByNomeSprite(nomeSprite);
+        coletavel.receberSprite(sprite);
+        coletavel.colocarNaPosicao(posicao);
+        coletavel.ligar();
+
+        return coletavel;
     }
 
     public static void configurar()

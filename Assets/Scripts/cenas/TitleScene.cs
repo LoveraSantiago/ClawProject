@@ -20,7 +20,7 @@ public class TitleScene : MonoBehaviour
 
     private void Start()
     {
-        int result = UtilsMath.escolherDeZeroAteLimite(2);        
+        int result = MathUtils.escolherDeZeroAteLimite(2);        
         if(result == 0)
         {
             imgGarra.sprite = garraMacho;

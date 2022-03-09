@@ -16,25 +16,29 @@ public class LevelHelper
         return levelEntidade.supplierLevel.fornecer();
     }
 
+    public static List<string> getAllLevels()
+    {
+        return getLevelsFiltradosPor(new FilterLevelsAll());
+    }
+
     public static List<string> getNormalLevelsAlias()
     {
-        LevelsNormalFilter filterLevels = new LevelsNormalFilter();
-        poolLevels.executeEmTodosOsValores(filterLevels);
-        return filterLevels.levelAlias;
+        return getLevelsFiltradosPor(new FilterLevelsNormal());
     }
 
     public static List<string> getElevadorLevelsAlias()
     {
-        LevelsElevadorFilter filterLevels = new LevelsElevadorFilter();
-        poolLevels.executeEmTodosOsValores(filterLevels);
-        return filterLevels.levelAlias;
+        return getLevelsFiltradosPor(new FilterLevelsElevador());
     }
 
     public static List<string> getObstaculoLevelsAlias()
     {
-        LevelsObstaculosFilter filterLevels = new LevelsObstaculosFilter();
-        poolLevels.executeEmTodosOsValores(filterLevels);
-        return filterLevels.levelAlias;
+        return getLevelsFiltradosPor(new FilterLevelsObstaculos());
+    }
+
+    private static List<string> getLevelsFiltradosPor(FilterLevels filterLevels)
+    {
+        return filterLevels.getLevelsAlias(poolLevels);
     }
 
     private static GenericPool<string, LevelEntidade> inicializarDicionarioDeEnum()

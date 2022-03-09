@@ -86,7 +86,7 @@ public class BotaoPowerUp : Draggavel
         if(evento.hasEntidade)
         {
             PowerUpEntidade pupEntidade = evento.powerUpEntidade;
-            receberAcaoPowerUp(new PowerUpParaMaquina(pupEntidade));
+            receberAcaoPowerUp(new PowerUpsParaMaquina(pupEntidade));
         }
     }
 

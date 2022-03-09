@@ -1,87 +1,68 @@
 using UnityEngine;
 
 public class Coletavel : GO
-{
-    private static readonly int SPR_ORDER_COMUM    = 32;
-    private static readonly int SPR_ORDER_DESTAQUE = 33;
+{    
+    private static ColetavelContexto contexto;
 
-    private static readonly int LAYER_ELEVADOR = 16;
-    private static readonly int LAYER_NORMAL   = 7;
+    public bool isMiraSelecionada { get; private set; }
+    public string nomeGaiolaAprisionadora { get; private set; }
 
-    private static CircleCollider2D referenciaColliderColetado;
-
-    private bool miraSelecionada;
     private ColetavelAnimacao animacao;      
 
     public Coletavel()
-        : base()
+        : base(contexto, contexto.nomeador.getName())
     {
-        animacao = new ColetavelAnimacao(go);
+        iniciarColetavelAnimacao();
     }
 
     public Coletavel(Transform transform)
         : base(transform)
     {
-        animacao = new ColetavelAnimacao(go);
-    }
-
-    public Coletavel(GameObject goTile, string nome)
-        : base(goTile, nome)
-    {
-        animacao = new ColetavelAnimacao(go);
-    }
+        iniciarColetavelAnimacao();
+    }    
 
     public void ligarAnimacaoMira()
     {
         animacao.ligarMira();
-        miraSelecionada = false;
+        isMiraSelecionada = false;
     }
 
     public void ligarAnimacaoMiraSelecionado()
     {
         animacao.ligarMiraSelecionada();
-        miraSelecionada = true;
+        isMiraSelecionada = true;
     }
 
     public void desligarAnimacao()
     {
         animacao.desligar();
-        miraSelecionada = false;
-    }
-
-    public bool isMiraSelecionada()
-    {
-        return miraSelecionada;
-    }
-
-    public void addMaterial(Material material)
-    {
-        spriteRenderer.material = material;
+        isMiraSelecionada = false;
     }   
 
     public void clearMaterial()
     {
-        addMaterial(context.mainMaterial);
+        addMaterial(contexto.mainMaterial);
     }
 
     public void colocarNoLayerElevador()
     {        
-        setLayer(LAYER_ELEVADOR);
+        setLayer(contexto.LAYER_ELEVADOR);
     }
 
     public void colocarNoLayerNormal()
     {
-        setLayer(LAYER_NORMAL);        
+        setLayer(contexto.LAYER_NORMAL);        
     }
 
     public void colocarNoLayerDestaque()
     {
-        colocarSpriteNoLayer(SPR_ORDER_DESTAQUE);
+        colocarSpriteNoLayer(contexto.SPR_ORDER_DESTAQUE);
     }
 
     public void colocarNoLayerComum()
     {
-        colocarSpriteNoLayer(SPR_ORDER_COMUM);
+        colocarSpriteNoLayer(contexto.SPR_ORDER_COMUM);
+        desafixarVerticalmente();
     }
 
     public void imantar()
@@ -91,12 +72,35 @@ public class Coletavel : GO
 
     public void desimantar()
     {
-        setLayer(LayerMask.NameToLayer("Coletavel"));
+        setLayer(LayerMask.NameToLayer(TagUtils.TAG_LAYER_COLETAVEL));
     }
 
     public void naoInteracaoComOutrosColetaveis()
     {
         setLayer(LayerMask.NameToLayer("ColetavelNaoInteracao"));
+    }
+
+    public void preso(string nomeGaiola)
+    {
+        setLayer(LayerMask.NameToLayer(TagUtils.LAYER_COLETAVELGAIOLA));
+        nomeGaiolaAprisionadora = nomeGaiola;
+        fixarEixoXY();
+    }
+
+    public bool isPreso()
+    {
+        return nomeGaiolaAprisionadora != null;
+    }
+
+    public void soltar()
+    {
+        nomeGaiolaAprisionadora = null;
+        desimantar();
+    }
+
+    public bool isLivre()
+    {
+        return !isPreso();
     }
 
     public void interacaoComOutrosColetaveis()
@@ -106,18 +110,34 @@ public class Coletavel : GO
 
     public void receberSprite(Sprite sprite)
     {
-        receberSprite(sprite, SPR_ORDER_COMUM);
+        receberSprite(sprite, contexto.SPR_ORDER_COMUM);
     }
 
     public bool isTouchingCentroDaGarra()
     {
         LayerMask mask = LayerMask.GetMask("GarraCentro");
-        Collider2D collider2d = Physics2D.OverlapCircle(rigidbody.position, 0.3f, mask);        
-        return referenciaColliderColetado == collider2d && rigidbody.velocity.y > 0;
+        Collider2D collider2d = Physics2D.OverlapCircle(getPosicao(), 0.3f, mask);
+        return contexto.referenciaColliderColetado == collider2d && isVelocidadeYPositiva();
     }
 
-    public static void configurar(CircleCollider2D referenciaColliderColetadoArg)
+    public GameObject getGOColetavel()
     {
-        referenciaColliderColetado = referenciaColliderColetadoArg;
+        return getGo();
+    }
+
+    protected override GOContexto getGOContext()
+    {
+        return contexto;
+    }
+
+    private void iniciarColetavelAnimacao()
+    {
+        Animator animator = extrairAnimatorFrom("animacao");
+        animacao = new ColetavelAnimacao(animator);
+    }
+
+    public static void configurar(CircleCollider2D referenciaColliderColetadoArg, ColetaveisDto coletaveisDto)
+    {
+        contexto = new ColetavelContexto(coletaveisDto, referenciaColliderColetadoArg);                
     }
 }

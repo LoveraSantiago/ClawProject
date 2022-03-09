@@ -35,8 +35,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         configurarSensorDeColetado(coletaveisDto.SensorDeColetado);
         configurarColetaveis(coletaveisDto);
-        //new MateriaisUtils()
-        //    .configurarOutline(coletaveisDto.EfeitoOutline);
+        configurarGaiolas(coletaveisDto);
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
@@ -67,11 +66,16 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     }
 
     private void configurarColetaveis(ColetaveisDto coletaveisDto)
-    {
-        GO.configurar(coletaveisDto);
+    {   
         HelperColetavelEntidade.configurar(coletaveisDto.PrefabColetaveisDto);
         HelperColetaveisInGame.configurar();
-        Coletavel.configurar(coletaveisDto.ReferenciaColliderColetado);
+        Coletavel.configurar(coletaveisDto.ReferenciaColliderColetado, coletaveisDto);
+    }
+
+    private void configurarGaiolas(ColetaveisDto coletaveisDto)
+    {
+        Gaiola.configurar(coletaveisDto.ContextoGaiola);
+        HelperGaiolasInGame.configurar();
     }
 
     private void processarColetado(GameObject gameObjectColetado)
@@ -84,10 +88,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
         AudioController.current.PlayAudio(AudioController.current.coletar);
 
-        InformacoesColetadoDto infoColetadoDto = new InformacoesColetadoDto();
-        infoColetadoDto.addInfosDisplayColetados(coletavelAcertado.getSprite(), contador.getResultCombinacao());
-        infoColetadoDto.addInfosDisplayScore(score, contador.getIndiceOrdem());
-        infoColetadoDto.addInfoFimDeJogo(contador.getInfoFimDeJogo());
+        InformacoesColetadoDto infoColetadoDto = new InformacoesColetadoDto()
+            .addInfosDisplayColetados(coletavelAcertado.getSprite(), contador.getResultCombinacao())
+            .addInfosDisplayScore(score, contador.getIndiceOrdem())
+            .addInfoFimDeJogo(contador.getInfoFimDeJogo());
 
         efeito.acionarEfeito(gameObjectColetado.transform.position);
         produtorDeInformacoesDoColetado.produziuEvento(infoColetadoDto);         
@@ -141,7 +145,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         }
         else if (evento.isPreFinalizar && evento.hasColetavel)
         {
-            processarColetado(evento.coletavel.getGo());
+            processarColetado(evento.coletavel.getGOColetavel());
         }        
         else if (evento.isFinalizar)
         {

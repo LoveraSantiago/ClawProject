@@ -1,4 +1,6 @@
-public class ComponenteRigidBodyDeMovimentacaoGarra : ComponenteAngulosPincaDeMovimentacaoGarra
+using UnityEngine;
+
+public class ComponenteRigidBodyDeMovimentacaoGarra : ComponenteEfeitoDeMovimentacaoGarra
 {
     protected void parar()
     {
@@ -75,4 +77,18 @@ public class ComponenteRigidBodyDeMovimentacaoGarra : ComponenteAngulosPincaDeMo
         return getGarra().rigidBody.isMenorPosHorizontal(posHorizontal);
     }
 
+    protected Vector3 getPosicaoCentroGarra()
+    {
+        return getGarra().getPosicaoCentroGarra();
+    }
+
+    protected float getPosicaoHorizontalMeio()
+    {
+        return 0;
+    }
+
+    protected float getPosicaoCacaNiquel()
+    {
+        return getGarra().garraDto.PosCacaNiquel;
+    }
 }

@@ -1,6 +1,21 @@
 using System.Collections;
 
-public interface SelecaoDeAlvos<T> 
+public abstract class SelecaoDeAlvos<T>
 {
-    IEnumerator onSelecionado(InputGame inputGame, Transformador<T, IEnumerator> coroutineConsumidora);
+    public void ligarMiras(bool filtrarGaiolas)
+    {
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        helperInGame.ligarMirasNosColetaveis(filtrarGaiolas);        
+    }
+
+    public void ligarMiraFinal(Coletavel coletavelSelecionado)
+    {
+        if (coletavelSelecionado != null)
+        {
+            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+            helperInGame.ligarMiraAlvoFinalNoColetavel(coletavelSelecionado.nome);
+        }        
+    }
+
+    public abstract IEnumerator onSelecionar(InputGame inputGame, Transformador<T, IEnumerator> coroutineOnSelecionado);
 }

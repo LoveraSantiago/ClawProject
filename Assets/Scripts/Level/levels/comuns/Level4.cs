@@ -126,7 +126,8 @@ public class Level4 : AbstractLevelOrdem
         dicionario.Add("leds1", "#A1492F");
         dicionario.Add("leds2", "#A1492F");
         dicionario.Add("leds3", "#A1492F");
-        dicionario.Add("cabo-da-garra", "#199162");
+        dicionario.Add("cabo-da-garra", "#199162");
+
         return dicionario;
     }
 

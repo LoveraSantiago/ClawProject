@@ -29,8 +29,9 @@ public class BoardDevolvedor
             {
                 float anguloDevolucao = Random.Range(180, 230);
                 Coletavel coletavel = coletados[contador];
-                coletavel.ligar();            
-                coletavel.disparar(boardDto.PosicaoRefVoltaBoard.position, anguloDevolucao, 10f);
+                coletavel.ligar();
+                coletavel.desimantar();
+                coletavel.disparar(boardDto.PosicaoRefVoltaBoard.position, anguloDevolucao, boardDto.VelocidadeDevolucao);
 
                 yield return new WaitForSeconds(boardDto.DelayVoltaBoard);
             }

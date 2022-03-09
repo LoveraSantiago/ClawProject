@@ -96,7 +96,7 @@ public abstract class ReferenciasDoBoard
             GameObject goLinha = goBoardAssembler.transform.Find("gos").GetChild(contadorLinha).gameObject;
             iteracaoLinha(contadorLinha, goBoardAssembler);
 
-            if (UtilsMath.isNumerico(goLinha.name))
+            if (MathUtils.isNumerico(goLinha.name))
             {
                 Dictionary<int, GameObject> dicionarioGoColuna = new Dictionary<int, GameObject>();
                 preIteracaoColuna();
@@ -105,14 +105,14 @@ public abstract class ReferenciasDoBoard
                 {
                     GameObject goColuna = goLinha.transform.GetChild(contadorColuna).gameObject;
 
-                    if (UtilsMath.isNumerico(goColuna.name))
+                    if (MathUtils.isNumerico(goColuna.name))
                     {
-                        int indiceColuna = UtilsMath.toNumerico(goColuna.name);
+                        int indiceColuna = MathUtils.toNumerico(goColuna.name);
                         iteracaoColuna(contadorColuna, indiceColuna);
                         dicionarioGoColuna.Add(indiceColuna, goColuna);
                     }
                 }
-                int indiceLinha = UtilsMath.toNumerico(goLinha.name);
+                int indiceLinha = MathUtils.toNumerico(goLinha.name);
                 dicionarioGosBoard.Add(indiceLinha, dicionarioGoColuna);
                 posIteracaoColuna(contadorLinha);
             }

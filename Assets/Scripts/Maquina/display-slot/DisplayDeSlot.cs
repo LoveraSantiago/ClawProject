@@ -108,7 +108,7 @@ public class DisplayDeSlot
     
     public void pararCacaNiquel(Sprite[] sprites, Sprite sprSucesso)
     {
-        int indiceEscolhido = UtilsMath.escolherDeZeroAteLimite(sprites.Length);
+        int indiceEscolhido = MathUtils.escolherDeZeroAteLimite(sprites.Length);
         Utils.MonoBehaviour.StopCoroutine(coroutineCacaNiquel);
         singleDisplaySlotDto.SlotSpriteMeio.sprite = sprites[indiceEscolhido];
 

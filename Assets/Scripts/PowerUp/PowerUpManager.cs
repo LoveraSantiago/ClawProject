@@ -19,7 +19,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     private void configurarPowerUps(PowerUpDto powerUpDto, InputGame inputGame)
     {        
         PowerUpEntidade.configurarDicionarioDeSpritesPup(powerUpDto.PrefabPowerUpDto);
-        PowerUpParaMaquina.configAcionadorDePowerUp(this);
+        PowerUpsParaMaquina.configAcionadorDePowerUp(this);
         AbstractPowerUpGo.configurarAbstractPowerUp(powerUpDto, this, inputGame);        
     }
 

@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public abstract class AbstractLevelObstaculos : AbstractLevel
 {
-    
+    public override TipoGame getTipoGame()
+    {
+        return TipoGame.OBSTACULO;
+    }
+
+    public abstract bool[,] getArrayDeObstaculos();    
 }
