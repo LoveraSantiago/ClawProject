@@ -8,6 +8,7 @@ public class MapaScene : MonoBehaviour
     [SerializeField] private Button btnLevel2;
     [SerializeField] private Button btnLevel3;
     [SerializeField] private Button btnLevel4;
+    [SerializeField] private Button btnLevel5;
     [Space(5)]
     [SerializeField] private TimerFichaDto[] timerFichaDto = new TimerFichaDto[3];   
     [Space(5)]
@@ -29,6 +30,7 @@ public class MapaScene : MonoBehaviour
         btnLevel2.onClick.AddListener(() => modalManager.abrirModal(Level.DOIS));
         btnLevel3.onClick.AddListener(() => modalManager.abrirModal(Level.TRES));
         btnLevel4.onClick.AddListener(() => modalManager.abrirModal(Level.QUATRO));
+        btnLevel5.onClick.AddListener(() => modalManager.abrirModal(Level.CINCO));
 
         new BotoesCenasMapa(botoesCenasDto);
 
