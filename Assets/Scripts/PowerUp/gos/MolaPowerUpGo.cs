@@ -88,16 +88,13 @@ public class MolaPowerUpGo : PowerUpSemInteracao
         for (int contador = 0; contador < tamanhoArray; contador++)
         {
             Collider2D coliderIt = colliders[contador];
-            if (coliderIt != null)
-            {
-                int inteiro;
-                string nomeCollider = colliders[contador].name;
-                bool isNomeColetavel = int.TryParse(nomeCollider, out inteiro);
-                if (isNomeColetavel)
+            if (coliderIt != null && TagUtils.isColetavel(coliderIt.gameObject))
+            {   
+                Coletavel coletavel = helperInGame.getColetavelInGameByGoName(coliderIt.name);
+                if (coletavel.isLivre())
                 {
-                    Coletavel coletavel = helperInGame.getColetavelInGameByGoName(nomeCollider);
                     listaDeColetaveis.Add(coletavel);
-                    coletavel.naoInteracaoComOutrosColetaveis();                    
+                    coletavel.naoInteracaoComOutrosColetaveis();
                 }
             }            
         }

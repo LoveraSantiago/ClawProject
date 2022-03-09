@@ -50,7 +50,7 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
             gaiola.colocarNaPosicao(coletavel.getPosicao());
             gaiola.aprisionarColetavel(coletavel.nome);
             coletavel.preso(gaiola.nome);
-            Debug.Log("Gaiola " + gaiola.nome + " Coletavel " + coletavel.nome);
+            //Debug.Log("Gaiola " + gaiola.nome + " Coletavel " + coletavel.nome);
         }
     }
 
