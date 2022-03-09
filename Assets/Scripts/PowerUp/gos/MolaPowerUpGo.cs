@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class MolaPowerUpGo : PowerUpSemInteracao
 {
-    private static readonly int IDLE = Animator.StringToHash("idle");
-    private static readonly int JUMP = Animator.StringToHash("mola-jump");
-
     private static Vector3 posInicial;
-
-    private Animator animator;
+    
+    private AnimacaoMola animacao;
     private BoxCollider2D boxCollider2d;
 
     public MolaPowerUpGo() 
@@ -23,7 +20,9 @@ public class MolaPowerUpGo : PowerUpSemInteracao
     public override void configurarPup()
     {
         Transform transformImg = extrairTransform("imagem");
-        animator = transformImg.GetComponent<Animator>();
+        Animator animator = transformImg.GetComponent<Animator>();
+        animacao = new AnimacaoMola(animator);
+
         boxCollider2d = transformImg.GetComponent<BoxCollider2D>();
     }
 
@@ -38,7 +37,7 @@ public class MolaPowerUpGo : PowerUpSemInteracao
     public override void resetPup()
     {
         desligar();
-        animator.Play(IDLE);
+        animacao.parar();        
         powerUpFinalizacao.preFinalizar();
     }
     
@@ -47,7 +46,7 @@ public class MolaPowerUpGo : PowerUpSemInteracao
         yield return new WaitForSeconds(powerUpDto.MolaDto.DelayInicial);
 
         Coletavel[] coletaveis = getColetaveisColididosComMola();
-        animator.Play(JUMP);
+        animacao.pular();
 
         yield return new WaitForSeconds(0.1f);
 
