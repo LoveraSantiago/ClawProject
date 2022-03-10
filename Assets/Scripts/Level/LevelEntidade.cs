@@ -29,6 +29,7 @@ public class LevelEntidade
             new LevelEntidade(Level.TRES  , Level3.getFornecedor()),
             new LevelEntidade(Level.QUATRO, Level4.getFornecedor()),
             new LevelEntidade(Level.CINCO , Level5.getFornecedor()),
+            new LevelEntidade(Level.SEIS  , Level6.getFornecedor()),
 
             new LevelEntidade(Level.CACANIQUEL_PUP_G, LevelCacaNiquelPowerUpGeral.getFornecedor()),
             new LevelEntidade(Level.CACANIQUEL_PUP_I, LevelCacaNiquelPowerUpIndividual.getFornecedor()),
