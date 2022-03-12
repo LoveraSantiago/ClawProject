@@ -54,6 +54,11 @@ public class Coletavel : GO
         setLayer(contexto.LAYER_NORMAL);        
     }
 
+    public bool isLayerNormal()
+    {
+        return isLayer(contexto.LAYER_NORMAL);
+    }
+
     public void colocarNoLayerDestaque()
     {
         colocarSpriteNoLayer(contexto.SPR_ORDER_DESTAQUE);

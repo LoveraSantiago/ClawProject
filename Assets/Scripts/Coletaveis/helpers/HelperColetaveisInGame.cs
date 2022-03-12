@@ -13,7 +13,9 @@ public class HelperColetaveisInGame
 
     public int getQtdColetaveisInGame()
     {
-        return poolDeColetaveis.getQtdDeColetaveis();
+        ContadorDeColetaveisInGame contador = new ContadorDeColetaveisInGame();
+        poolDeColetaveis.executeEmTodosColetaveis(contador);
+        return contador.qtd;        
     }
 
     public bool temColetavelInGameByNome(string name)
