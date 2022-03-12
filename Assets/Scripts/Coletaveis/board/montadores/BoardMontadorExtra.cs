@@ -1,3 +1,5 @@
+using System.Collections;
+
 public class BoardMontadorExtra : BoardMontador
 {
     private int contadorEixoX;
@@ -15,11 +17,11 @@ public class BoardMontadorExtra : BoardMontador
         destaque = new DestaqueGrayScale(level);
     }
 
-    protected override void create(BoardDto boardDto)
+    protected override IEnumerator create(BoardDto boardDto)
     {        
         PosicaoItensDoBoardDto posItem = getPosicaoItem(boardDto, ++contadorEixoX);
         float alturaY = boardDto.PosAlturaSub;
-        montarLinha(posItem, contadorLinhaAtual, alturaY);
+        yield return montarLinha(posItem, contadorLinhaAtual, alturaY);
 
         incrementarContadorDeLinha();        
     }

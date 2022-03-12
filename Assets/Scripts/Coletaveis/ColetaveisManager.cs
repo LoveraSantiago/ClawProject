@@ -54,8 +54,6 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         int qtdColetaveisDoBoard = helperInGame.getQtdColetaveisInGame();
         contador.iniciar(qtdColetaveisDoBoard);        
         coletavelImantado = helperInGame.getColetavelInGameByGoName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK    
-
-        yield return null;
     }    
 
     public Fornecedor<TrocadorDeOrdem> getFornecedorTrocadorDeOrdem()

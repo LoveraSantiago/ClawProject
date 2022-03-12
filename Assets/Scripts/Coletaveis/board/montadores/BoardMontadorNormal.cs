@@ -1,3 +1,5 @@
+using System.Collections;
+
 public class BoardMontadorNormal : BoardMontador
 {
     private DestaqueGrayScale destaque;
@@ -8,15 +10,15 @@ public class BoardMontadorNormal : BoardMontador
         destaque = new DestaqueGrayScale(level);
     }
 
-    protected override void create(BoardDto boardDto)
+    protected override IEnumerator create(BoardDto boardDto)
     {
         PosicaoItensDoBoardDto posYItem = getPosYITem(boardDto);
         for (int contadorLinha = 0; contadorLinha < posYItem.Total; contadorLinha++)
         {
             PosicaoItensDoBoardDto posXItem = getPosicaoItem(boardDto, contadorLinha);
             float alturaY = posYItem.Inicio + (posYItem.Acrescimo * contadorLinha);
-            montarLinha(posXItem, contadorLinha, alturaY);
-        }     
+            yield return montarLinha(posXItem, contadorLinha, alturaY);
+        }        
     }
     
     protected virtual PosicaoItensDoBoardDto getPosYITem(BoardDto boardDto)

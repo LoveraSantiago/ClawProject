@@ -1,19 +1,20 @@
 using UnityEngine;
+using System.Collections;
 
 public abstract class BoardMontador 
 {
     private static ColetavelEntidade.FAMILIA familia;
     private int[,] arrayDeColetaveis;   
 
-    public void createBoard(BoardDto boardDto)
+    public IEnumerator createBoard(BoardDto boardDto)
     {
         if (hasColetaveisInArray())
         {
-            create(boardDto);
-        }
+            yield return create(boardDto);
+        }        
     }    
 
-    protected void montarLinha(PosicaoItensDoBoardDto posItem, int contadorLinha, float altura)
+    protected IEnumerator montarLinha(PosicaoItensDoBoardDto posItem, int contadorLinha, float altura)
     {
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
 
@@ -26,6 +27,7 @@ public abstract class BoardMontador
             if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
             {               
                 onPosicaoVaziaCriado(contadorColuna, contadorLinha, posicao);
+                yield return new WaitForSeconds(0.1f);
                 continue;
             }
             else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
@@ -35,6 +37,7 @@ public abstract class BoardMontador
 
             Coletavel coletavel = HelperColetaveisInGame.criarColetavel(coletavelEntidade.nomeSprite, posicao);
             onColetavelCriado(contadorColuna, contadorLinha,coletavel);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -46,7 +49,7 @@ public abstract class BoardMontador
     }
 
     public abstract void configuradoPeloLevel(AbstractLevel level);
-    protected abstract void create(BoardDto boardDto);
+    protected abstract IEnumerator create(BoardDto boardDto);
     protected abstract void onColetavelCriado(int posX, int posY, Coletavel coletavel);
 
     protected virtual void onPosicaoVaziaCriado(int posX, int posY, Vector3 posicao) { }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 
 public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
@@ -27,10 +26,8 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 
     public IEnumerator create()
     {
-        montador.createBoard(boardDto);
-        montadorExtra.createBoard(boardDto);
-
-        yield return null;
+        yield return montador.createBoard(boardDto);
+        yield return montadorExtra.createBoard(boardDto);        
     }   
 
     public int subirBoard()

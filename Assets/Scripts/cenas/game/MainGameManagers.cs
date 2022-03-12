@@ -52,9 +52,7 @@ public class MainGameManagers
         maquinaManager.start(inputGame);
         uiManager.start();        
         garraManager.start(mainDto.GarraDto);
-        consumidorUpdateManagers.consumir(getUpdatables());
-
-        yield return null;
+        consumidorUpdateManagers.consumir(getUpdatables());        
     }
 
     private UpdaterMainGameManagers getUpdatables()
