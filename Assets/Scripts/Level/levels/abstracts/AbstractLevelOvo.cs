@@ -17,6 +17,6 @@ public abstract class AbstractLevelOvo : AbstractLevel
 
     public override TipoGame getTipoGame()
     {
-        return TipoGame.TAZO;
+        return TipoGame.OVO;
     }
 }

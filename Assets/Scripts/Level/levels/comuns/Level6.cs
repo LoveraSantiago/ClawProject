@@ -14,16 +14,17 @@ public class Level6 : AbstractLevelOvo
 
     public override int[,] getArrayDeColetaveis()
     {
-        int[,] coletaveis = new int[,]{
-            {12, 12, 12, 11, 15, 15, 15},
-            {15, 15, 15, 11, 12, 12, 12},
-            {12, 12, 12, 11, 15, 15, 15},
+        return new int[,]
+        {
+            {14, 12, 11, 12, 11, 12, 11},
+            {12, 11, 14, 11, 11, 13, 0},
+            {0, 0, 14, 14, 14, 0, 0},
+            {0, 0, 0, 14, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0}
         };
-        return coletaveis;
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()

@@ -4,7 +4,7 @@ public class ContadorDeColetaveisInGame : Consumidor<Coletavel>
 
     public void consumir(Coletavel coletavel)
     {
-        if(coletavel.isAtivo() && coletavel.isLayerNormal())
+        if(coletavel.isLayerNormal())
         {
             qtd++;
         }

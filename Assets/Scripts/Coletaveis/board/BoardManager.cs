@@ -49,9 +49,17 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 
     private void inicializarMontador(AbstractLevel level)
     {
-        if (LevelUtils.isObstaculoLevel(level))
+        if (LevelUtils.isNormalLevel(level))
+        {
+            montador = new BoardMontadorNormal();            
+        }
+        else if(LevelUtils.isObstaculoLevel(level)) 
         {
             montador = new BoardMontadorObstaculos();
+        }
+        else if (LevelUtils.isOvoLevel(level))
+        {
+            montador = new BoardMontadorOvo();
         }
         else
         {

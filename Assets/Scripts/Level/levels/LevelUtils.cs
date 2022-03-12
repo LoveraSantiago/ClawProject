@@ -58,6 +58,11 @@ public class LevelUtils
         return level.getTipoGame() == TipoGame.OBSTACULO;
     }
 
+    public static bool isOvoLevel(AbstractLevel level)
+    {
+        return level.getTipoGame() == TipoGame.OVO;
+    }
+
     public static ColetavelEntidade getColetavelFromLevelColetavel(AbstractLevel level)
     {
         int id = ((AbstractLevelColetavel)level).getIdColetavel();
