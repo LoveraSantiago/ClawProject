@@ -47,12 +47,13 @@ public class MainGameManagers
 
     private IEnumerator startLaizy(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
-        coletaveisManager.start();
+        yield return coletaveisManager.start();
+
         maquinaManager.start(inputGame);
         uiManager.start();        
         garraManager.start(mainDto.GarraDto);
-
         consumidorUpdateManagers.consumir(getUpdatables());
+
         yield return null;
     }
 

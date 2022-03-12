@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoColetado.ProdutorEvento,                              
@@ -45,13 +46,14 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         contador.configuradoPeloLevel(level);
     }
 
-    public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
+    public IEnumerator start()
     {
         int qtdColetaveisDoBoard = board.create();
         contador.iniciar(qtdColetaveisDoBoard);
-
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         coletavelImantado = helperInGame.getColetavelInGameByGoName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK    
+
+        yield return null;
     }    
 
     public Fornecedor<TrocadorDeOrdem> getFornecedorTrocadorDeOrdem()
