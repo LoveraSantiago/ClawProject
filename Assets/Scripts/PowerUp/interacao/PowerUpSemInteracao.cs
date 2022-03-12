@@ -6,7 +6,7 @@ public abstract class PowerUpSemInteracao : AbstractPowerUpGo,
     public PowerUpSemInteracao(GameObject goTile, string nome): base(goTile, nome){}
 
     public PowerUpSemInteracao(
-        GameObject goTile, Transformador<GameObject, GameObject> getGoComSprRenderer, string nome) 
+        GameObject goTile, Transformador<GameObject, SpriteRenderer> getGoComSprRenderer, string nome) 
         : base(goTile, getGoComSprRenderer, nome)
     {
     }

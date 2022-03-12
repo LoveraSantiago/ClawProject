@@ -18,6 +18,11 @@ public class ComponenteSpriteDeGO : ComponenteEstadoDeGO
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
+    protected void carregarSpriteRenderer(SpriteRenderer spriteRenderer)
+    {
+        this.spriteRenderer = spriteRenderer;
+    }
+
     public void receberSprite(Sprite sprite, int layer)
     {
         spriteRenderer.sprite = sprite;

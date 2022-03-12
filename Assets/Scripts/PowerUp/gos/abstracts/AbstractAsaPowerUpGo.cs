@@ -12,7 +12,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
     private Coroutine coroutine;
 
     public AbstractAsaPowerUpGo(GameObject goDto, string nome)
-         : base(goDto, new GetGoComSpriteRenderer(), nome){}
+         : base(goDto, new ProcuradorDeSpriteRenderer("imagem"), nome){}
 
     public override void configurarPup()
     {
@@ -81,15 +81,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
             helperInGame.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
         }
-    }
-
-    private class GetGoComSpriteRenderer : Transformador<GameObject, GameObject>
-    {
-        public GameObject transformar(GameObject goColetavel)
-        {
-            return goColetavel.transform.Find("imagem").gameObject;
-        }
-    }
+    }   
 
     protected void playAnimacaoVoar()
     {

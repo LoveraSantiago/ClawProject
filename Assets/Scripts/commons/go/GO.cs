@@ -22,12 +22,11 @@ public abstract class GO : ComponenteRigidBodyDeGO
               nome){}   
 
     public GO(GOContexto contextoGO, 
-              Transformador<GameObject, GameObject> getGoComSprRenderer, 
+              Transformador<GameObject, SpriteRenderer> getGoComSprRenderer, 
               string nome)
         :this(contextoGO, nome)
-    {
-        GameObject goSprite = getGoComSprRenderer.transformar(getGo());
-        carregarSpriteRenderer(goSprite);        
+    {       
+        carregarSpriteRenderer(getGoComSprRenderer.transformar(getGo()));        
     }
 
     protected abstract GOContexto getGOContext();        
