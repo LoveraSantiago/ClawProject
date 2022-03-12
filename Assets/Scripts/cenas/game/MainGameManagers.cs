@@ -1,3 +1,5 @@
+using System.Collections;
+
 public class MainGameManagers 
 {    
     public GarraManager      garraManager      { get; private set; }
@@ -8,7 +10,8 @@ public class MainGameManagers
     public UiGameManager     uiManager         { get; private set; }    
     public InputGameImpl     inputGame         { get; private set; }
 
-    public MainGameManagers(MainGameDto mainDto, AbstractLevel levelEscolhido)
+    public MainGameManagers(
+        MainGameDto mainDto, AbstractLevel levelEscolhido, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
         inputGame         = new InputGameImpl();
         garraManager      = new GarraManager(mainDto.GarraDto);
@@ -20,13 +23,10 @@ public class MainGameManagers
 
         configurandoLevel(mainDto, levelEscolhido);
         configurandoEventos();
-        startLaizy(mainDto);
-    }
+        consumidorUpdateManagers.consumir(new UpdaterEmptyManagers());
 
-    public UpdaterMainGameManagers getUpdatables()
-    {
-        return new UpdaterMainGameManagers(garraManager, maquinaManager, powerUpManager, inputGame);
-    }
+        Utils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));        
+    }   
 
     private void configurandoLevel(MainGameDto mainDto, AbstractLevel levelEscolhido)
     {
@@ -45,13 +45,21 @@ public class MainGameManagers
         eventos.configurarEventos(this);
     }
 
-    private void startLaizy(MainGameDto mainDto)
+    private IEnumerator startLaizy(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
         coletaveisManager.start();
         maquinaManager.start(inputGame);
         uiManager.start();        
         garraManager.start(mainDto.GarraDto);
-    }         
+
+        consumidorUpdateManagers.consumir(getUpdatables());
+        yield return null;
+    }
+
+    private UpdaterMainGameManagers getUpdatables()
+    {
+        return new UpdaterMainGameManagers(garraManager, maquinaManager, powerUpManager, inputGame);
+    }
 
     private InformacaoDisplayColetado getInformacaoDisplayColetado()
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UpdaterMainGameManagers 
+public class UpdaterMainGameManagers : UpdaterManagers
 {
     private GarraManager garraManager;
     private MaquinaManager maquinaManager;
