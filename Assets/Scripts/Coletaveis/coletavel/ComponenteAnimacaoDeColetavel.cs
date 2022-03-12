@@ -31,6 +31,16 @@ public abstract class ComponenteAnimacaoDeColetavel : GO
         isMiraSelecionada = true;
     }
 
+    public void ligarAnimacaoFecharOvo()
+    {
+        animacao.fecharOvo();
+    }
+
+    public void ligarAnimacaoAbrirOvo()
+    {
+        animacao.abrirOvo();
+    }
+
     public void desligarAnimacao()
     {
         animacao.desligar();

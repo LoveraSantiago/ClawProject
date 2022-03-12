@@ -5,6 +5,8 @@ public class ColetavelAnimacao
     private static readonly int IDLE           = Animator.StringToHash("idle");
     private static readonly int MIRAR_ON       = Animator.StringToHash("mirar-on");
     private static readonly int MIRAR_SELECTED = Animator.StringToHash("mirar-selected");
+    private static readonly int OVO_FECHAR = Animator.StringToHash("ovo-fechar");
+    private static readonly int OVO_ABRIR  = Animator.StringToHash("ovo-abrir");
 
     private Animator animator;
 
@@ -21,6 +23,16 @@ public class ColetavelAnimacao
     public void ligarMiraSelecionada()
     {
         animator.Play(MIRAR_SELECTED);
+    }
+
+    public void fecharOvo()
+    {
+        animator.Play(OVO_FECHAR);
+    }
+
+    public void abrirOvo()
+    {
+        animator.Play(OVO_ABRIR);
     }
 
     public void desligar()
