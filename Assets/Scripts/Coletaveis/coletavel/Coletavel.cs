@@ -1,43 +1,15 @@
 using UnityEngine;
 
-public class Coletavel : GO
+public class Coletavel : ComponenteAnimacaoDeColetavel
 {    
-    private static ColetavelContexto contexto;
-
-    public bool isMiraSelecionada { get; private set; }
-    public string nomeGaiolaAprisionadora { get; private set; }
-
-    private ColetavelAnimacao animacao;      
+    private static ColetavelContexto contexto;    
+    public string nomeGaiolaAprisionadora { get; private set; }    
 
     public Coletavel()
-        : base(contexto, new ProcuradorDeSpriteRenderer("imagem"), contexto.nomeador.getName())
-    {
-        iniciarColetavelAnimacao();
-    }
+        : base(contexto, new ProcuradorDeSpriteRenderer("imagem"), contexto.nomeador.getName()){}
 
     public Coletavel(Transform transform)
-        : base(transform)
-    {
-        iniciarColetavelAnimacao();
-    }    
-
-    public void ligarAnimacaoMira()
-    {
-        animacao.ligarMira();
-        isMiraSelecionada = false;
-    }
-
-    public void ligarAnimacaoMiraSelecionado()
-    {
-        animacao.ligarMiraSelecionada();
-        isMiraSelecionada = true;
-    }
-
-    public void desligarAnimacao()
-    {
-        animacao.desligar();
-        isMiraSelecionada = false;
-    }   
+        : base(transform){}       
 
     public void clearMaterial()
     {
@@ -133,13 +105,7 @@ public class Coletavel : GO
     protected override GOContexto getGOContext()
     {
         return contexto;
-    }
-
-    private void iniciarColetavelAnimacao()
-    {
-        Animator animator = extrairComponente<Animator>();
-        animacao = new ColetavelAnimacao(animator);
-    }
+    }   
 
     public static void configurar(CircleCollider2D referenciaColliderColetadoArg, ColetaveisDto coletaveisDto)
     {
