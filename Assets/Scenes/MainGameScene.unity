@@ -10739,15 +10739,15 @@ MonoBehaviour:
         parentColetavelTubo: {fileID: 1607848931}
         coletavelTuboDeSaida:
         - rigidBodyColetavel: {fileID: 650369890}
-          sprRendererColetavel: {fileID: 0}
+          sprRendererColetavel: {fileID: 915541799}
           rigidBodyTrail: {fileID: 153266962}
           particulasTrail: {fileID: 153266961}
         - rigidBodyColetavel: {fileID: 1171204410}
-          sprRendererColetavel: {fileID: 0}
+          sprRendererColetavel: {fileID: 1171204412}
           rigidBodyTrail: {fileID: 1296627890}
           particulasTrail: {fileID: 1296627887}
         - rigidBodyColetavel: {fileID: 911244735}
-          sprRendererColetavel: {fileID: 0}
+          sprRendererColetavel: {fileID: 1522107841}
           rigidBodyTrail: {fileID: 310144667}
           particulasTrail: {fileID: 310144664}
       boardDto:
@@ -22109,6 +22109,11 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4127936681606313067, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 911244730}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &915541799 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+  m_PrefabInstance: {fileID: 650369885}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &920390407 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3630881235371991031, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -27812,6 +27817,11 @@ Transform:
 --- !u!50 &1171204410 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4127936681606313067, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+  m_PrefabInstance: {fileID: 1171204405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1171204412 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 1171204405}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1182516293 stripped
@@ -43386,6 +43396,11 @@ SpriteRenderer:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3630881236822778173, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1522107841 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+  m_PrefabInstance: {fileID: 911244730}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1535001094 stripped
 SpriteRenderer:
