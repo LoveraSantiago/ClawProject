@@ -10,7 +10,7 @@ public class Coletavel : GO
     private ColetavelAnimacao animacao;      
 
     public Coletavel()
-        : base(contexto, contexto.nomeador.getName())
+        : base(contexto, new ProcuradorDeSpriteRenderer("imagem"), contexto.nomeador.getName())
     {
         iniciarColetavelAnimacao();
     }
