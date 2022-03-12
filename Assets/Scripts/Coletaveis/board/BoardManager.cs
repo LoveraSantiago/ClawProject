@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 
 public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 {   
@@ -24,15 +25,12 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         inicializarMontadorExtra(level);        
     }   
 
-    public int create()
+    public IEnumerator create()
     {
         montador.createBoard(boardDto);
-
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        int qtdColetaveisCriados = helperInGame.getQtdColetaveisInGame();
-        
         montadorExtra.createBoard(boardDto);
-        return qtdColetaveisCriados;
+
+        yield return null;
     }   
 
     public int subirBoard()

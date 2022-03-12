@@ -48,9 +48,11 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     public IEnumerator start()
     {
-        int qtdColetaveisDoBoard = board.create();
-        contador.iniciar(qtdColetaveisDoBoard);
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        yield return board.create();
+
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();        
+        int qtdColetaveisDoBoard = helperInGame.getQtdColetaveisInGame();
+        contador.iniciar(qtdColetaveisDoBoard);        
         coletavelImantado = helperInGame.getColetavelInGameByGoName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK    
 
         yield return null;
