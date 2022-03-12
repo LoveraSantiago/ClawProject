@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class Level6 : AbstractLevelTazo
+public class Level6 : AbstractLevelOvo
 {
     public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
     {

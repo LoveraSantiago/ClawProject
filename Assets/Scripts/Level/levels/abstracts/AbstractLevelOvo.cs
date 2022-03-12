@@ -1,4 +1,4 @@
-public abstract class AbstractLevelTazo : AbstractLevel
+public abstract class AbstractLevelOvo : AbstractLevel
 {
     public override string getLevelName()
     {
