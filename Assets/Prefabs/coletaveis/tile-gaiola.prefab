@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 4127936681606313065}
   - component: {fileID: 2201802074926508177}
   m_Layer: 25
-  m_Name: Gaiola
+  m_Name: tile-gaiola
   m_TagString: Gaiola
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
