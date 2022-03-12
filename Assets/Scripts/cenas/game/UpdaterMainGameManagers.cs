@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UpdateMainGameManagers 
+public class UpdaterMainGameManagers 
 {
     private GarraManager garraManager;
     private MaquinaManager maquinaManager;
     private PowerUpManager pupManager;
     private InputGame inputGame;
 
-    public UpdateMainGameManagers(
+    public UpdaterMainGameManagers(
         GarraManager garraManager, MaquinaManager maquinaManager, PowerUpManager pupManager, InputGame inputGame)
     {
         this.garraManager = garraManager;

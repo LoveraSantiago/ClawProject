@@ -9,7 +9,7 @@ public class MainGameScene : MonoBehaviour,
     [Space(5)]
     [SerializeField] private MainGameDto mainDto;
 
-    private UpdateMainGameManagers updatableManagers;
+    private UpdaterMainGameManagers updaterManagers;
 
     void OnEnable()
     {
@@ -25,33 +25,33 @@ public class MainGameScene : MonoBehaviour,
 
         AbstractLevel levelEscolhido = LevelUtils.loadLevelEscolhido(level);
         MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido);
-        updatableManagers = managers.getUpdatables();
+        updaterManagers = managers.getUpdatables();
     }        
     
     void Update()
     {
-        updatableManagers.update(mainDto);
+        updaterManagers.update(mainDto);
     }
 
     private void FixedUpdate()
     {
-        updatableManagers.fixedUpdate(mainDto);
+        updaterManagers.fixedUpdate(mainDto);
     }
 
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP INICIO
     public void OnBeginDrag(PointerEventData eventData)
     {
-        updatableManagers.onBeginDrag(eventData, mainDto);        
+        updaterManagers.onBeginDrag(eventData, mainDto);        
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        updatableManagers.onEndDrag(eventData, mainDto);
+        updaterManagers.onEndDrag(eventData, mainDto);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        updatableManagers.onDrag(eventData, mainDto);        
+        updaterManagers.onDrag(eventData, mainDto);        
     }
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM
 }

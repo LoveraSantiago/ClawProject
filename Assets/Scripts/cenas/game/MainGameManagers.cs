@@ -23,9 +23,9 @@ public class MainGameManagers
         startLaizy(mainDto);
     }
 
-    public UpdateMainGameManagers getUpdatables()
+    public UpdaterMainGameManagers getUpdatables()
     {
-        return new UpdateMainGameManagers(garraManager, maquinaManager, powerUpManager, inputGame);
+        return new UpdaterMainGameManagers(garraManager, maquinaManager, powerUpManager, inputGame);
     }
 
     private void configurandoLevel(MainGameDto mainDto, AbstractLevel levelEscolhido)
