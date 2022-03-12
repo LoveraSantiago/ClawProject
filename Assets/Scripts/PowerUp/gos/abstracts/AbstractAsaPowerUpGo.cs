@@ -16,7 +16,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
 
     public override void configurarPup()
     {
-        animator = extrairAnimatorFrom("asas");
+        animator = extrairComponenteFrom<Animator>("asas");
         circleCollider = extrairComponente<CircleCollider2D>();
     }
 

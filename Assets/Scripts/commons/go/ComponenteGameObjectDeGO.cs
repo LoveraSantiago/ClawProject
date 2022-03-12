@@ -32,12 +32,7 @@ public class ComponenteGameObjectDeGO
     protected GameObject getGo()
     {
         return go;
-    }
-
-    protected Animator extrairAnimatorFrom(string nome)
-    {
-        return extrairTransform(nome).GetComponent<Animator>();
-    }           
+    }    
 
     protected Transform extrairTransform(string nome)
     {
