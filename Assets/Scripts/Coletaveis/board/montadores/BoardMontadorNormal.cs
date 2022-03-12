@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 
 public class BoardMontadorNormal : BoardMontador
 {
@@ -26,9 +27,10 @@ public class BoardMontadorNormal : BoardMontador
         return boardDto.PosicoesY;
     }
 
-    protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel)
+    protected override IEnumerator onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
-        destaque.destacar(coletavel);        
+        destaque.destacar(coletavel);
+        yield return new WaitForSeconds(getDelay());
     }
 }
  

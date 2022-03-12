@@ -5,7 +5,7 @@ public class BoardMontadorExtra : BoardMontador
     private int contadorEixoX;
     private int contadorLinhaAtual;
 
-    private DestaqueGrayScale destaque;
+    private DestaqueGrayScale destaque;//?
 
     private PoolList<Coletavel> poolExtraSubs;
 
@@ -26,12 +26,13 @@ public class BoardMontadorExtra : BoardMontador
         incrementarContadorDeLinha();        
     }
 
-    protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel)
+    protected override IEnumerator onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
         coletavel.colocarNoLayerElevador();        
         poolExtraSubs.addObjeto(coletavel);
 
         destaque.destacar(coletavel);
+        yield return null;
     }
 
     public override int getQtdAcrescentada()

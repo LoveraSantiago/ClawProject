@@ -9,5 +9,8 @@ public class BoardMontadorVazio : BoardMontador
         yield return null;
     }
 
-    protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel){}
+    protected override IEnumerator onColetavelCriado(int posX, int posY, Coletavel coletavel)
+    {
+        yield return null;
+    }
 }

@@ -26,8 +26,7 @@ public abstract class BoardMontador
 
             if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
             {               
-                onPosicaoVaziaCriado(contadorColuna, contadorLinha, posicao);
-                yield return new WaitForSeconds(getDelay());
+                yield return onPosicaoVaziaCriado(contadorColuna, contadorLinha, posicao);                
                 continue;
             }
             else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
@@ -36,8 +35,7 @@ public abstract class BoardMontador
             }
 
             Coletavel coletavel = HelperColetaveisInGame.criarColetavel(coletavelEntidade.nomeSprite, posicao);
-            onColetavelCriado(contadorColuna, contadorLinha,coletavel);
-            yield return new WaitForSeconds(getDelay());
+            yield return onColetavelCriado(contadorColuna, contadorLinha,coletavel);            
         }
     }
 
@@ -50,9 +48,13 @@ public abstract class BoardMontador
 
     public abstract void configuradoPeloLevel(AbstractLevel level);
     protected abstract IEnumerator create(BoardDto boardDto);
-    protected abstract void onColetavelCriado(int posX, int posY, Coletavel coletavel);
+    protected abstract IEnumerator onColetavelCriado(int posX, int posY, Coletavel coletavel);
 
-    protected virtual void onPosicaoVaziaCriado(int posX, int posY, Vector3 posicao) { }
+    protected virtual IEnumerator onPosicaoVaziaCriado(int posX, int posY, Vector3 posicao)
+    {
+        yield return null;
+
+    }
 
     public virtual int getQtdAcrescentada()
     {
@@ -91,7 +93,7 @@ public abstract class BoardMontador
         familia = familiaArg;
     }
 
-    public virtual float getDelay()
+    protected virtual float getDelay()
     {
         return 0.1f;
     }

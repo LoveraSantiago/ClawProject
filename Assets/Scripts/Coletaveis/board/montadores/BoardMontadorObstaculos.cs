@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BoardMontadorObstaculos : BoardMontadorNormal
 {
@@ -20,28 +21,28 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
         return boardDto.PosicoesXPares;        
     }
 
-    protected override void onPosicaoVaziaCriado(int posX, int posY, Vector3 posicao)
+    protected override IEnumerator onPosicaoVaziaCriado(int posX, int posY, Vector3 posicao)
     {
-        montarGaiola(posX, posY, posicao);
+        yield return montarGaiola(posX, posY, posicao);
     }
 
-    protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel)
-    {
-        base.onColetavelCriado(posX, posY, coletavel);
-        montarGaiola(posX, posY, coletavel);        
+    protected override IEnumerator onColetavelCriado(int posX, int posY, Coletavel coletavel)
+    {   
+        yield return montarGaiola(posX, posY, coletavel);        
     }
 
-    private void montarGaiola(int posX, int posY, Vector3 posicao)
+    private IEnumerator montarGaiola(int posX, int posY, Vector3 posicao)
     {
         bool temGaiola = obstaculos[posY, posX];
         if (temGaiola)
         {
             Gaiola gaiola = criarGaiola();
-            gaiola.colocarNaPosicao(posicao);            
-        }
+            gaiola.colocarNaPosicao(posicao);
+            yield return new WaitForSeconds(getDelay());
+        }       
     }
 
-    private void montarGaiola(int posX, int posY, Coletavel coletavel)
+    private IEnumerator montarGaiola(int posX, int posY, Coletavel coletavel)
     {
         bool temGaiola = obstaculos[posY, posX];
         if (temGaiola)
@@ -51,7 +52,8 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
             gaiola.aprisionarColetavel(coletavel.nome);
             coletavel.preso(gaiola.nome);
             //Debug.Log("Gaiola " + gaiola.nome + " Coletavel " + coletavel.nome);
-        }
+            yield return new WaitForSeconds(getDelay());
+        }       
     }
 
     private Gaiola criarGaiola()
