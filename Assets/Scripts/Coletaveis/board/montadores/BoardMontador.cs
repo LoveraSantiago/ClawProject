@@ -27,7 +27,7 @@ public abstract class BoardMontador
             if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
             {               
                 onPosicaoVaziaCriado(contadorColuna, contadorLinha, posicao);
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(getDelay());
                 continue;
             }
             else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
@@ -37,7 +37,7 @@ public abstract class BoardMontador
 
             Coletavel coletavel = HelperColetaveisInGame.criarColetavel(coletavelEntidade.nomeSprite, posicao);
             onColetavelCriado(contadorColuna, contadorLinha,coletavel);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(getDelay());
         }
     }
 
@@ -89,5 +89,10 @@ public abstract class BoardMontador
     public static void configurar(ColetavelEntidade.FAMILIA familiaArg)
     {
         familia = familiaArg;
+    }
+
+    public virtual float getDelay()
+    {
+        return 0.1f;
     }
 }
