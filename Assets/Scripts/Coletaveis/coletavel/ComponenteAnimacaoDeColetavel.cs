@@ -69,14 +69,19 @@ public abstract class ComponenteAnimacaoDeColetavel : GO
     {
         if(estadoAtual == ESTADO_MIRA_SELECIONADA_OVO || estadoAtual == ESTADO_OVO)
         {
-            animacao.idleOvo();
-            estadoAtual = ESTADO_OVO;
+            ligarAnimacaoIdleOvo();
         }
         else
         {
             animacao.idle();
             estadoAtual = ESTADO_NORMAL;        
         }
+    }
+
+    public void ligarAnimacaoIdleOvo()
+    {
+        animacao.idleOvo();
+        estadoAtual = ESTADO_OVO;
     }
 
     public bool isMiraSelecionada()
