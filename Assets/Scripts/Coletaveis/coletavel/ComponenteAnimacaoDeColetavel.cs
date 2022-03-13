@@ -3,15 +3,15 @@ using UnityEngine;
 public abstract class ComponenteAnimacaoDeColetavel : GO
 {
     private static readonly int ESTADO_NORMAL = 0;
-    private static readonly int ESTADO_MIRA_SELECIONADA = 1;
+    private static readonly int ESTADO_MIRA_SELECIONADA_NORMAL = 1;
     private static readonly int ESTADO_OVO = 2;
+    private static readonly int ESTADO_MIRA_SELECIONADA_OVO = 3;
 
     private int estadoAtual;
     private ColetavelAnimacao animacao;
 
-    public ComponenteAnimacaoDeColetavel(GOContexto contextoGO,
-              Transformador<GameObject, SpriteRenderer> getGoComSprRenderer,
-              string nome)
+    public ComponenteAnimacaoDeColetavel(
+        GOContexto contextoGO, Transformador<GameObject, SpriteRenderer> getGoComSprRenderer, string nome)
         : base(contextoGO, getGoComSprRenderer, nome)
     {
         iniciarColetavelAnimacao();
@@ -25,14 +25,27 @@ public abstract class ComponenteAnimacaoDeColetavel : GO
 
     public void ligarAnimacaoMira()
     {
-        animacao.ligarMira();
-        estadoAtual = ESTADO_NORMAL;        
+        if(estadoAtual == ESTADO_OVO)
+        {
+            animacao.ligarMiraOnOvo();
+        }
+        else
+        {
+            animacao.ligarMira();            
+        }
     }
 
     public void ligarAnimacaoMiraSelecionado()
     {
-        animacao.ligarMiraSelecionada();
-        estadoAtual = ESTADO_MIRA_SELECIONADA;        
+        if(estadoAtual == ESTADO_OVO)
+        {
+            estadoAtual = ESTADO_MIRA_SELECIONADA_OVO;
+        }
+        else
+        {
+            animacao.ligarMiraSelecionada();
+            estadoAtual = ESTADO_MIRA_SELECIONADA_NORMAL;
+        }
     }
 
     public void ligarAnimacaoFecharOvo()
@@ -50,12 +63,20 @@ public abstract class ComponenteAnimacaoDeColetavel : GO
     public void desligarAnimacao()
     {
         animacao.desligar();
-        estadoAtual = ESTADO_NORMAL;        
+        if(estadoAtual == ESTADO_MIRA_SELECIONADA_OVO)
+        {
+            estadoAtual = ESTADO_OVO;
+        }
+        else
+        {
+            estadoAtual = ESTADO_NORMAL;        
+        }
     }
 
     public bool isMiraSelecionada()
     {
-        return estadoAtual == ESTADO_MIRA_SELECIONADA;
+        return estadoAtual == ESTADO_MIRA_SELECIONADA_NORMAL ||
+               estadoAtual == ESTADO_MIRA_SELECIONADA_OVO;
     }
 
     public bool isOvo()
