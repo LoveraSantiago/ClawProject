@@ -9,7 +9,7 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
         : base(contexto, new ProcuradorDeSpriteRenderer("imagem"), contexto.nomeador.getName()){}
 
     public Coletavel(Transform transform)
-        : base(transform){}       
+        : base(transform, new ProcuradorDeSpriteRenderer("imagem")) {}       
 
     public void clearMaterial()
     {

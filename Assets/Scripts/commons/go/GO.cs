@@ -1,16 +1,22 @@
 using UnityEngine;
 
 public abstract class GO : ComponenteRigidBodyDeGO
-{   
-    public GO(Transform transform)
-        :this(transform, transform.gameObject.name){}
-
+{  
     public GO(Transform transform, string nome)
         :base(transform.gameObject)
     {
         carregarSpriteRenderer();
         carregarRigidBody();
         setNome(nome);                
+    }
+
+    public GO(
+        Transform transform,
+        Transformador<GameObject, SpriteRenderer> getGoComSprRenderer, 
+        string nome)
+       : base(transform.gameObject)
+    {
+        carregarSpriteRenderer(getGoComSprRenderer.transformar(getGo()));
     }
 
     public GO(GOContexto contextoGO, string nome)
@@ -38,7 +44,6 @@ public abstract class GO : ComponenteRigidBodyDeGO
         GOContexto goContexto = getGOContext();
         GameObject mainGO = goContexto.mainGO;
         mainGO.transform.rotation = quatAngulo;
-
 
         colocarNaPosicao(posicao, quatAngulo);
         addImpulso(mainGO.transform.up * velocidade);        

@@ -11,14 +11,18 @@ public abstract class ComponenteAnimacaoDeColetavel : GO
     private ColetavelAnimacao animacao;
 
     public ComponenteAnimacaoDeColetavel(
-        GOContexto contextoGO, Transformador<GameObject, SpriteRenderer> getGoComSprRenderer, string nome)
+        GOContexto contextoGO, 
+        Transformador<GameObject, SpriteRenderer> getGoComSprRenderer, 
+        string nome)
         : base(contextoGO, getGoComSprRenderer, nome)
     {
         iniciarColetavelAnimacao();
     }
 
-    public ComponenteAnimacaoDeColetavel(Transform transform)
-        : base(transform)
+    public ComponenteAnimacaoDeColetavel(
+        Transform transform,
+        Transformador<GameObject, SpriteRenderer> getGoComSprRenderer)
+        : base(transform, getGoComSprRenderer, transform.gameObject.name)
     {
         iniciarColetavelAnimacao();
     }    
