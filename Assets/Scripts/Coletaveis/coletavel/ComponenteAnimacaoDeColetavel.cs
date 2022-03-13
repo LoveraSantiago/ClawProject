@@ -58,6 +58,11 @@ public abstract class ComponenteAnimacaoDeColetavel : GO
         return estadoAtual == ESTADO_MIRA_SELECIONADA;
     }
 
+    public bool isOvo()
+    {
+        return estadoAtual == ESTADO_OVO;
+    }
+
     private void iniciarColetavelAnimacao()
     {
         Animator animator = extrairComponente<Animator>();

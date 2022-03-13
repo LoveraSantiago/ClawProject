@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoardDto
 {       
     [SerializeField] private float delayVoltaBoard;
+    [SerializeField] private float delayVoltaBoardOvo;
     [Space(5)]
     [SerializeField] private float velocidadeSubida;
     [SerializeField] private float velocidadeDevolucao;
@@ -24,6 +25,7 @@ public class BoardDto
     [SerializeField] private PosicaoItensDoBoardDto posicoesYObstaculos;
         
     public float DelayVoltaBoard { get { return delayVoltaBoard; } }
+    public float DelayVoltaBoardOvo { get { return delayVoltaBoardOvo; } }
 
     public float VelocidadeSubida { get { return velocidadeSubida; } }
     public float VelocidadeDevolucao { get { return velocidadeDevolucao; } }
