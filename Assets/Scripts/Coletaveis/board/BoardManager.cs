@@ -21,7 +21,8 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
     {
         BoardMontador.configurar(level.getFamiliaColetavel());
         inicializarMontador(level);        
-        inicializarMontadorExtra(level);        
+        inicializarMontadorExtra(level);
+        devolvedor.configuradoPeloLevel(level.devolverParaBoard());
     }   
 
     public IEnumerator create()
@@ -73,8 +74,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         if (LevelUtils.isElevadorLevel(level))
         {
             montadorExtra = new BoardMontadorExtra();
-            montadorExtra.configuradoPeloLevel(level);
-            devolvedor.configuradoPeloLevel(level.devolverParaBoard());
+            montadorExtra.configuradoPeloLevel(level);            
         }
         else
         {
