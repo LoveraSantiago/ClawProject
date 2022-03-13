@@ -23,6 +23,16 @@ public class HelperColetaveisInGame
         return poolDeColetaveis.contemNome(name);
     }
 
+    public bool temColetavelOvoInGame()
+    {
+        return poolDeColetaveis.getColetavelPeloGoNome("1").isOvo();
+    }
+
+    public bool naoTemColetavelOvoInGame()
+    {
+        return !temColetavelOvoInGame();
+    }
+
     public Coletavel getColetavelInGameByGoName(string name)
     {
         return poolDeColetaveis.getColetavelPeloGoNome(name);
