@@ -33,7 +33,7 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
         return realizarTroca(duplaDeColetaveis);
     }    
 
-    public IEnumerator ativacaoFalha()
+    private IEnumerator ativacaoFalha()
     {
         yield return new WaitForSeconds(1f);
         finalizar();
@@ -45,16 +45,13 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
     {
         if (!hitColetavel2)
         {
+            Utils.MonoBehaviour.StopCoroutine(coroutine);
             finalizar();
         }
     }  
     
     private void finalizar()
-    {
-        if(coroutine != null)
-        {
-            Utils.MonoBehaviour.StopCoroutine(coroutine);
-        }
+    {   
         HelperColetaveisInGame coletaveisInGame = new HelperColetaveisInGame();
         coletaveisInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.finalizado();
