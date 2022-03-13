@@ -2,8 +2,12 @@ using UnityEngine;
 
 public abstract class ComponenteAnimacaoDeColetavel : GO
 {
+    private static readonly int ESTADO_NORMAL = 0;
+    private static readonly int ESTADO_MIRA_SELECIONADA = 1;
+    private static readonly int ESTADO_OVO = 2;
+
+    private int estadoAtual;
     private ColetavelAnimacao animacao;
-    public bool isMiraSelecionada { get; private set; }
 
     public ComponenteAnimacaoDeColetavel(GOContexto contextoGO,
               Transformador<GameObject, SpriteRenderer> getGoComSprRenderer,
@@ -22,29 +26,36 @@ public abstract class ComponenteAnimacaoDeColetavel : GO
     public void ligarAnimacaoMira()
     {
         animacao.ligarMira();
-        isMiraSelecionada = false;
+        estadoAtual = ESTADO_NORMAL;        
     }
 
     public void ligarAnimacaoMiraSelecionado()
     {
         animacao.ligarMiraSelecionada();
-        isMiraSelecionada = true;
+        estadoAtual = ESTADO_MIRA_SELECIONADA;        
     }
 
     public void ligarAnimacaoFecharOvo()
     {
         animacao.fecharOvo();
+        estadoAtual = ESTADO_OVO;
     }
 
     public void ligarAnimacaoAbrirOvo()
     {
         animacao.abrirOvo();
+        estadoAtual = ESTADO_NORMAL;
     }
 
     public void desligarAnimacao()
     {
         animacao.desligar();
-        isMiraSelecionada = false;
+        estadoAtual = ESTADO_NORMAL;        
+    }
+
+    public bool isMiraSelecionada()
+    {
+        return estadoAtual == ESTADO_MIRA_SELECIONADA;
     }
 
     private void iniciarColetavelAnimacao()
