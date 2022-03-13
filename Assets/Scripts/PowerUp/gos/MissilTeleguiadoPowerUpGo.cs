@@ -122,7 +122,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         {
             Coletavel coletavel = (Coletavel)go;
             coletavel.disparar(powerUpDto.MissilTeleguiadoDto.VelocidadeHit, powerUpDto.MissilTeleguiadoDto.VelocidadeHit);
-            coletavel.ligarAnimacaoIdle();
+            coletavel.desligarMira();
         }
         else
         {

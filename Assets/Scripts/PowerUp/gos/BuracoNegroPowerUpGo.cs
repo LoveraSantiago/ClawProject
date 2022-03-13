@@ -98,7 +98,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         }
         else
         {
-            Debug.Log("nome" + atraido.nome +  " pos " + atraido.getPosicao());
+            //Debug.Log("nome" + atraido.nome +  " pos " + atraido.getPosicao());
             if (atraido.getPosicao().y > 2.9 && !preFinalizadoJaAcionado)
             {
                 coletavelSelecionado.colocarNaPosicao(atraido.getPosicao());

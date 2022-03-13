@@ -83,7 +83,7 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
     public void restaurar()
     {
         base.ligar();
-        ligarAnimacaoIdle();
+        ligarAnimacaoIdleOvo();
     }
 
     public void interacaoComOutrosColetaveis()

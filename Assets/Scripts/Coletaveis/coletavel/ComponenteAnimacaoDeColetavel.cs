@@ -65,17 +65,22 @@ public abstract class ComponenteAnimacaoDeColetavel : GO
         estadoAtual = ESTADO_NORMAL;
     }
 
-    public void ligarAnimacaoIdle()
+    public void desligarMira()
     {
-        if(estadoAtual == ESTADO_MIRA_SELECIONADA_OVO || estadoAtual == ESTADO_OVO)
+        if(estadoAtual == ESTADO_OVO || estadoAtual == ESTADO_MIRA_SELECIONADA_OVO)
         {
             ligarAnimacaoIdleOvo();
         }
         else
         {
-            animacao.idle();
-            estadoAtual = ESTADO_NORMAL;        
+            ligarAnimacaoIdle();
         }
+    }
+
+    public void ligarAnimacaoIdle()
+    {
+        animacao.idle();
+        estadoAtual = ESTADO_NORMAL;                
     }
 
     public void ligarAnimacaoIdleOvo()

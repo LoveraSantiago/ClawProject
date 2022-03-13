@@ -41,7 +41,7 @@ public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<TrioDeCo
             coletavel1.ligarAnimacaoMiraSelecionado();
         }
 
-        ligarMiraFinal(coletavel1);
+        desligarMiras();
 
         TrioDeColetaveis trioDeColetaveis = new TrioDeColetaveis(coletavel1, coletavel2, coletavel3);
         yield return Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(trioDeColetaveis));

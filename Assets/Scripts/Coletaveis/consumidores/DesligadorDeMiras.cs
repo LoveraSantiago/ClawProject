@@ -4,7 +4,7 @@ public class DesligadorDeMiras : Consumidor<Coletavel>
     {
         if (coletavel.isAtivo())
         {
-            coletavel.ligarAnimacaoIdle();
+            coletavel.desligarMira();
         }
     }
 }
