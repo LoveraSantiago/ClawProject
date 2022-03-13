@@ -46,6 +46,7 @@ public class ColetavelEntidade
         ARRAY_COLETAVEIS_ENTIDADES = new ColetavelEntidade[] {
             new ColetavelEntidade(0, "vazio" , "tile-vazio" , FAMILIA.DEFAULTS),//Range de 0 a 9 pra defaults
             new ColetavelEntidade(1, "random", "tile-random", FAMILIA.DEFAULTS),
+            new ColetavelEntidade(2, "ovo", "capsula-completa", FAMILIA.DEFAULTS),
 
             new ColetavelEntidade(10, "Leite"          , "characters_0001", FAMILIA.FRUTAS, Level.COLETAVEL_LEITE),//Range de 10 a 19 frutas
             new ColetavelEntidade(11, "Maca"           , "characters_0002", FAMILIA.FRUTAS, Level.COLETAVEL_MACA),
