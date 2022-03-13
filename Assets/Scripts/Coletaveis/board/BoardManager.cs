@@ -20,8 +20,8 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
     public void configuradoPeloLevel(AbstractLevel level)
     {
         BoardMontador.configurar(level.getFamiliaColetavel());
-        inicializarMontador(level);        
-        inicializarMontadorExtra(level);
+        montador      = FactoryBoardMontador.getMontadorByLevel(level);
+        montadorExtra = FactoryBoardMontador.getMontadorExtraByLevel(level);
         devolvedor.configuradoPeloLevel(level.devolverParaBoard());
     }   
 
@@ -46,41 +46,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
     public bool isDevolverBoard()
     {
         return devolvedor.devolverBoard;
-    }
-
-    private void inicializarMontador(AbstractLevel level)
-    {
-        if (LevelUtils.isNormalLevel(level))
-        {
-            montador = new BoardMontadorNormal();            
-        }
-        else if(LevelUtils.isObstaculoLevel(level)) 
-        {
-            montador = new BoardMontadorObstaculos();
-        }
-        else if (LevelUtils.isOvoLevel(level))
-        {
-            montador = new BoardMontadorOvo();
-        }
-        else
-        {
-            montador = new BoardMontadorNormal();
-        }
-        montador.configuradoPeloLevel(level);
-    }
-
-    private void inicializarMontadorExtra(AbstractLevel level)
-    {
-        if (LevelUtils.isElevadorLevel(level))
-        {
-            montadorExtra = new BoardMontadorExtra();
-            montadorExtra.configuradoPeloLevel(level);            
-        }
-        else
-        {
-            montadorExtra = new BoardMontadorVazio();
-        }
-    }
+    }     
 
     ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
     {
