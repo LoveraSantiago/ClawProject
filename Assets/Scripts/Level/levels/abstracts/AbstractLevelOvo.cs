@@ -2,7 +2,7 @@ public abstract class AbstractLevelOvo : AbstractLevel
 {
     public override string getLevelName()
     {
-        return "Tazo Level";
+        return "Momorizacao Level";
     }
 
     public override string getMsgObjetivoLevel()

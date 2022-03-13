@@ -21,7 +21,7 @@ public class LigadorDeAlvoFinal : Consumidor<Coletavel>
             }
             else
             {
-                coletavel.desligarAnimacao();
+                coletavel.ligarAnimacaoIdle();
             }
         }
     }

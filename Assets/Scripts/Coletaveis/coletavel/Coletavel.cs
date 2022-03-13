@@ -80,6 +80,12 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
         return !isPreso();
     }
 
+    public override void ligar()
+    {
+        base.ligar();
+        ligarAnimacaoIdle();
+    }
+
     public void interacaoComOutrosColetaveis()
     {
         desimantar();

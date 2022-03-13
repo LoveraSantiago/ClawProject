@@ -61,7 +61,7 @@ public abstract class ComponenteAnimacaoDeColetavel : GO
         estadoAtual = ESTADO_NORMAL;
     }
 
-    public void desligarAnimacao()
+    public void ligarAnimacaoIdle()
     {
         if(estadoAtual == ESTADO_MIRA_SELECIONADA_OVO || estadoAtual == ESTADO_OVO)
         {
@@ -83,7 +83,7 @@ public abstract class ComponenteAnimacaoDeColetavel : GO
 
     public bool isOvo()
     {
-        return estadoAtual == ESTADO_OVO;
+        return estadoAtual == ESTADO_OVO || estadoAtual == ESTADO_MIRA_SELECIONADA_OVO;
     }
 
     private void iniciarColetavelAnimacao()

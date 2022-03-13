@@ -42,7 +42,8 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
         hitColetavel = true;
 
         colocarNaPosicao(coletavelAcertado.getPosicao());
-        receberSprite(coletavelAcertado.getSprite(), powerUpDto.AsaDto.Layer);
+        Sprite spriteAcertado = getSpriteAcertado(coletavelAcertado);
+        receberSprite(spriteAcertado, powerUpDto.AsaDto.Layer);
         coletavelAcertado.desligar();        
         ligar();
 
@@ -91,5 +92,18 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
     protected void acionarTriggerNoCollider()
     {
         circleCollider.isTrigger = true;
+    }
+
+    private Sprite getSpriteAcertado(Coletavel coletavelAcertado)
+    {
+        if (coletavelAcertado.isOvo())
+        {
+            HelperColetavelEntidade helperColetavelEntidade = new HelperColetavelEntidade();
+            return helperColetavelEntidade.getSpriteOvo();
+        }
+        else
+        {
+            return coletavelAcertado.getSprite();
+        }
     }
 }

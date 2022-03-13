@@ -11,7 +11,7 @@ public class ColetavelConsumer
         {
             if (coletavel.isAtivo())
             {
-                coletavel.desligarAnimacao();
+                coletavel.ligarAnimacaoIdle();
             }
         }
     }
@@ -39,7 +39,7 @@ public class ColetavelConsumer
                 }
                 else
                 {
-                    coletavel.desligarAnimacao();
+                    coletavel.ligarAnimacaoIdle();
                 }
             }
         }
