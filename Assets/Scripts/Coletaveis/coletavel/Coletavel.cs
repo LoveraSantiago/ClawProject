@@ -80,7 +80,7 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
         return !isPreso();
     }
 
-    public override void ligar()
+    public void restaurar()
     {
         base.ligar();
         ligarAnimacaoIdle();

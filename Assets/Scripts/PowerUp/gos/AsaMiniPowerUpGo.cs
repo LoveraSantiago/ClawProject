@@ -42,7 +42,7 @@ public class AsaMiniPowerUpGo : AbstractAsaPowerUpGo
     protected override IEnumerator finalizarVoar(Coletavel coletavelAcertado)
     {
         coletavelAcertado.colocarNaPosicao(getPosicao());
-        coletavelAcertado.ligar();
+        coletavelAcertado.restaurar();
         desligar();
 
         powerUpFinalizacao.preFinalizar();
