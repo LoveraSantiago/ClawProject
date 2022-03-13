@@ -10752,7 +10752,7 @@ MonoBehaviour:
           particulasTrail: {fileID: 310144664}
       boardDto:
         delayVoltaBoard: 0.2
-        delayVoltaBoardOvo: 0.7
+        delayVoltaBoardOvo: 0.5
         velocidadeSubida: 0.25
         velocidadeDevolucao: 7
         subida: 0.78
