@@ -6,6 +6,7 @@ public class BoardDto
 {       
     [SerializeField] private float delayVoltaBoard;
     [SerializeField] private float delayVoltaBoardOvo;
+    [SerializeField] private float delayMontagemOvo;
     [Space(5)]
     [SerializeField] private float velocidadeSubida;
     [SerializeField] private float velocidadeDevolucao;
@@ -26,6 +27,7 @@ public class BoardDto
         
     public float DelayVoltaBoard { get { return delayVoltaBoard; } }
     public float DelayVoltaBoardOvo { get { return delayVoltaBoardOvo; } }
+    public float DelayMontagemOvo { get { return delayMontagemOvo; } }
 
     public float VelocidadeSubida { get { return velocidadeSubida; } }
     public float VelocidadeDevolucao { get { return velocidadeDevolucao; } }

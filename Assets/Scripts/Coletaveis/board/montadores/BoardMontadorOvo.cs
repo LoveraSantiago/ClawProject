@@ -7,7 +7,7 @@ public class BoardMontadorOvo : BoardMontadorNormal
     {
         yield return base.create(boardDto);
         
-        yield return new WaitForSeconds(1f);        
+        yield return new WaitForSeconds(boardDto.DelayMontagemOvo);        
 
         HelperColetaveisInGame helperColetaveisInGame = new HelperColetaveisInGame();
         int qtdColetaveis = helperColetaveisInGame.getQtdColetaveisInGame();        
