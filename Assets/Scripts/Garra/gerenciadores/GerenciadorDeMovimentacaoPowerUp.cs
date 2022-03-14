@@ -6,7 +6,6 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     public GerenciadorDeMovimentacaoPowerUp()
     {
         AbstractMovimentacaoDaGarraPowerUp.configurarComunicadorComGerMovimentacao(this);
-
         trocarParaAcaoParado();     
     }
 

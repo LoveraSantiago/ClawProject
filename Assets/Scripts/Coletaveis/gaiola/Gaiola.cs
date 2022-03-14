@@ -29,7 +29,7 @@ public class Gaiola : GO
             Coletavel coletavelPreso = coletaveisInGame.getColetavelInGameByGoName(nomeColetavelPreso);
             coletavelPreso.soltar();
             coletavelPreso.desafixarVerticalmente();
-            coletavelPreso.desligarAnimacao();
+            coletavelPreso.ligarAnimacaoIdle();
         }
         nomeColetavelPreso = null;
     }

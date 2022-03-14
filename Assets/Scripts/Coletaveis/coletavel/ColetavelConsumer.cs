@@ -11,7 +11,7 @@ public class ColetavelConsumer
         {
             if (coletavel.isAtivo())
             {
-                coletavel.desligarAnimacao();
+                coletavel.ligarAnimacaoIdle();
             }
         }
     }
@@ -33,13 +33,13 @@ public class ColetavelConsumer
                 {
                     coletavel.ligarAnimacaoMiraSelecionado();
                 }
-                else if (coletavel.isMiraSelecionada)
+                else if (coletavel.isMiraSelecionada())
                 {
 
                 }
                 else
                 {
-                    coletavel.desligarAnimacao();
+                    coletavel.ligarAnimacaoIdle();
                 }
             }
         }

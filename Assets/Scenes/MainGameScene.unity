@@ -5417,7 +5417,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.5622189, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10692,7 +10692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 5
+  level: 6
   mainDto:
     garraDto:
       velocidades:
@@ -10728,7 +10728,7 @@ MonoBehaviour:
       efeitoColetado: {fileID: 1488198865}
       prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
       contextoColetavel:
-        go: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+        go: {fileID: 5086955511063805750, guid: 922cd5882161dbc43b6822ea4e60efc2, type: 3}
         parentGo: {fileID: 422691799}
       contextoGaiola:
         go: {fileID: 4127936681606313068, guid: ec66f55dc2dbd2e4a99c4e9958eb980f, type: 3}
@@ -10739,19 +10739,21 @@ MonoBehaviour:
         parentColetavelTubo: {fileID: 1607848931}
         coletavelTuboDeSaida:
         - rigidBodyColetavel: {fileID: 650369890}
-          sprRendererColetavel: {fileID: 650369889}
+          sprRendererColetavel: {fileID: 915541799}
           rigidBodyTrail: {fileID: 153266962}
           particulasTrail: {fileID: 153266961}
         - rigidBodyColetavel: {fileID: 1171204410}
-          sprRendererColetavel: {fileID: 1171204409}
+          sprRendererColetavel: {fileID: 1171204412}
           rigidBodyTrail: {fileID: 1296627890}
           particulasTrail: {fileID: 1296627887}
         - rigidBodyColetavel: {fileID: 911244735}
-          sprRendererColetavel: {fileID: 911244734}
+          sprRendererColetavel: {fileID: 1522107841}
           rigidBodyTrail: {fileID: 310144667}
           particulasTrail: {fileID: 310144664}
       boardDto:
         delayVoltaBoard: 0.2
+        delayVoltaBoardOvo: 0.5
+        delayMontagemOvo: 0.75
         velocidadeSubida: 0.25
         velocidadeDevolucao: 7
         subida: 0.78
@@ -21590,11 +21592,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4127936681606313064, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 650369885}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &650369889 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-  m_PrefabInstance: {fileID: 650369885}
-  m_PrefabAsset: {fileID: 0}
 --- !u!50 &650369890 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4127936681606313067, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
@@ -22109,15 +22106,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4127936681606313064, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 911244730}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &911244734 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-  m_PrefabInstance: {fileID: 911244730}
-  m_PrefabAsset: {fileID: 0}
 --- !u!50 &911244735 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4127936681606313067, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 911244730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &915541799 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+  m_PrefabInstance: {fileID: 650369885}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &920390407 stripped
 SpriteRenderer:
@@ -22296,15 +22293,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0.83137256
+      value: 0.25882354
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
-      value: 1
+      value: 0.39607844
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
-      value: 0.7019608
+      value: 0.9843137
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.a
@@ -22312,15 +22309,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.b
-      value: 0.83137256
+      value: 0.25882354
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.g
-      value: 1
+      value: 0.39607844
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.r
-      value: 0.7019608
+      value: 0.9843137
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key2.a
@@ -27719,7 +27716,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.5622189, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -27819,14 +27816,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4127936681606313064, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 1171204405}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &1171204409 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-  m_PrefabInstance: {fileID: 1171204405}
-  m_PrefabAsset: {fileID: 0}
 --- !u!50 &1171204410 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4127936681606313067, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+  m_PrefabInstance: {fileID: 1171204405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1171204412 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 1171204405}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1182516293 stripped
@@ -43402,6 +43399,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3630881236822778173, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1522107841 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+  m_PrefabInstance: {fileID: 911244730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1535001094 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5249480216762795345, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -53793,7 +53795,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.5622189, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -59150,18 +59152,6 @@ PrefabInstance:
     - target: {fileID: 6406990384449578761, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_Name
       value: maquina
-      objectReference: {fileID: 0}
-    - target: {fileID: 6406990384597975245, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6406990385412141444, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6406990385869860188, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-      propertyPath: m_Icon
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}

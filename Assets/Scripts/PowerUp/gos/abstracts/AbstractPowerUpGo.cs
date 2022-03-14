@@ -27,7 +27,7 @@ public abstract class AbstractPowerUpGo : GO,
     }
 
     public AbstractPowerUpGo(GameObject go, 
-                             Transformador<GameObject, GameObject> getGoComSprRenderer, 
+                             Transformador<GameObject, SpriteRenderer> getGoComSprRenderer, 
                              string nome)
         : base(new GOContexto(go, contexto), getGoComSprRenderer, nome)
     {

@@ -3,13 +3,14 @@ using UnityEngine.EventSystems;
 
 #pragma warning disable 0649
 public class MainGameScene : MonoBehaviour, 
-                        IBeginDragHandler, IEndDragHandler, IDragHandler
+                             Consumidor<UpdaterManagers>,
+                             IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Level level;
     [Space(5)]
     [SerializeField] private MainGameDto mainDto;
 
-    private UpdateMainGameManagers updatableManagers;
+    private UpdaterManagers updaterManagers;
 
     void OnEnable()
     {
@@ -24,34 +25,38 @@ public class MainGameScene : MonoBehaviour,
         FactoryPowerUpEntidade.resetContextoEstatico();
 
         AbstractLevel levelEscolhido = LevelUtils.loadLevelEscolhido(level);
-        MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido);
-        updatableManagers = managers.getUpdatables();
+        MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido, this);        
     }        
     
     void Update()
     {
-        updatableManagers.update(mainDto);
+        updaterManagers.update(mainDto);
     }
 
     private void FixedUpdate()
     {
-        updatableManagers.fixedUpdate(mainDto);
+        updaterManagers.fixedUpdate(mainDto);
     }
 
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP INICIO
     public void OnBeginDrag(PointerEventData eventData)
     {
-        updatableManagers.onBeginDrag(eventData, mainDto);        
+        updaterManagers.onBeginDrag(eventData, mainDto);        
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        updatableManagers.onEndDrag(eventData, mainDto);
+        updaterManagers.onEndDrag(eventData, mainDto);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        updatableManagers.onDrag(eventData, mainDto);        
+        updaterManagers.onDrag(eventData, mainDto);        
+    }
+
+    public void consumir(UpdaterManagers evento)
+    {
+        this.updaterManagers = evento;
     }
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM
 }

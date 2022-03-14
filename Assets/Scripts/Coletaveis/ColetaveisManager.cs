@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoColetado.ProdutorEvento,                              
@@ -45,12 +46,13 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         contador.configuradoPeloLevel(level);
     }
 
-    public void start()//TODO TALVEZ START POSSA SER CHAMADO PELO CONFIGURADOPELOLEVEL
+    public IEnumerator start()
     {
-        int qtdColetaveisDoBoard = board.create();
-        contador.iniciar(qtdColetaveisDoBoard);
+        yield return board.create();
 
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();        
+        int qtdColetaveisDoBoard = helperInGame.getQtdColetaveisInGame();
+        contador.iniciar(qtdColetaveisDoBoard);        
         coletavelImantado = helperInGame.getColetavelInGameByGoName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK    
     }    
 
@@ -163,7 +165,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     }
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
-    {        
+    {
+        //Debug.Log("Evento acao coletado fim chamado");
         tuboDeDescarte.devolver(contador.getResultCombinacao(), evento, contador.getColetados());                
         board.devolver(contador.getResultCombinacao(), evento, contador.getColetados());        
         contador.reajustarContagem(evento, board.isDevolverBoard());

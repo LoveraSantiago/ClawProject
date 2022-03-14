@@ -31,7 +31,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         
         colliderExplosao = extrairComponenteFrom<CircleCollider2D>("explosao");
 
-        Animator animator = extrairAnimatorFrom("imagem");//TODO REPLICADO NOS PUPS EXPLOSIVOS REFATORAR!!!
+        Animator animator = extrairComponenteFrom<Animator>("imagem");//TODO REPLICADO NOS PUPS EXPLOSIVOS REFATORAR!!!
         animacao = new AnimacaoExplosaoPup(animator);
     }
 

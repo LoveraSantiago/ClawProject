@@ -43,6 +43,7 @@ public class AsaMiniPowerUpGo : AbstractAsaPowerUpGo
     {
         coletavelAcertado.colocarNaPosicao(getPosicao());
         coletavelAcertado.ligar();
+        coletavelAcertado.desligarMira();
         desligar();
 
         powerUpFinalizacao.preFinalizar();

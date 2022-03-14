@@ -13,12 +13,24 @@ public class HelperColetaveisInGame
 
     public int getQtdColetaveisInGame()
     {
-        return poolDeColetaveis.getQtdDeColetaveis();
+        ContadorDeColetaveisInGame contador = new ContadorDeColetaveisInGame();
+        poolDeColetaveis.executeEmTodosColetaveis(contador);
+        return contador.qtd;        
     }
 
     public bool temColetavelInGameByNome(string name)
     {
         return poolDeColetaveis.contemNome(name);
+    }
+
+    public bool temColetavelOvoInGame()
+    {
+        return poolDeColetaveis.getColetavelPeloGoNome("1").isOvo();
+    }
+
+    public bool naoTemColetavelOvoInGame()
+    {
+        return !temColetavelOvoInGame();
     }
 
     public Coletavel getColetavelInGameByGoName(string name)

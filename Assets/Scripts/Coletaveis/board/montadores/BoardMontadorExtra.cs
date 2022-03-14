@@ -1,9 +1,11 @@
+using System.Collections;
+
 public class BoardMontadorExtra : BoardMontador
 {
     private int contadorEixoX;
     private int contadorLinhaAtual;
 
-    private DestaqueGrayScale destaque;
+    private DestaqueGrayScale destaque;//?
 
     private PoolList<Coletavel> poolExtraSubs;
 
@@ -15,21 +17,22 @@ public class BoardMontadorExtra : BoardMontador
         destaque = new DestaqueGrayScale(level);
     }
 
-    protected override void create(BoardDto boardDto)
+    protected override IEnumerator create(BoardDto boardDto)
     {        
         PosicaoItensDoBoardDto posItem = getPosicaoItem(boardDto, ++contadorEixoX);
         float alturaY = boardDto.PosAlturaSub;
-        montarLinha(posItem, contadorLinhaAtual, alturaY);
+        yield return montarLinha(posItem, contadorLinhaAtual, alturaY);
 
         incrementarContadorDeLinha();        
     }
 
-    protected override void onColetavelCriado(int posX, int posY, Coletavel coletavel)
+    protected override IEnumerator onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
         coletavel.colocarNoLayerElevador();        
         poolExtraSubs.addObjeto(coletavel);
 
         destaque.destacar(coletavel);
+        yield return null;
     }
 
     public override int getQtdAcrescentada()

@@ -23,17 +23,12 @@ public class BoardDevolvedor
 
     private IEnumerator devolverParaBoard(bool[]resultados, BoardDto boardDto, Coletavel[] coletados)
     {
+        Debug.Log("Devolver para o board chamado");
         for (int contador = 0; contador < coletados.Length; contador++)
         {
-            if(coletados[contador] != null && resultados[contador])
+            if(deveDevolver(contador, coletados, resultados))
             {
-                float anguloDevolucao = Random.Range(180, 230);
-                Coletavel coletavel = coletados[contador];
-                coletavel.ligar();
-                coletavel.desimantar();
-                coletavel.disparar(boardDto.PosicaoRefVoltaBoard.position, anguloDevolucao, boardDto.VelocidadeDevolucao);
-
-                yield return new WaitForSeconds(boardDto.DelayVoltaBoard);
+                yield return devolverColetavel(coletados[contador], boardDto);
             }
             else
             {
@@ -41,5 +36,30 @@ public class BoardDevolvedor
             }
         }
         yield return null;
+    }
+
+    private bool deveDevolver(int contador, Coletavel[] coletados, bool[] resultados)
+    {
+        return coletados[contador] != null && resultados[contador];
+    }
+
+    private IEnumerator devolverColetavel(Coletavel coletavel, BoardDto boardDto)
+    {
+        coletavel.ligar();
+        coletavel.desimantar();
+
+        float anguloDevolucao = Random.Range(180, 230);        
+        coletavel.disparar(boardDto.PosicaoRefVoltaBoard.position, anguloDevolucao, boardDto.VelocidadeDevolucao);
+
+        if (coletavel.isOvo())
+        {
+            yield return new WaitForSeconds(boardDto.DelayVoltaBoardOvo);
+            coletavel.ligarAnimacaoFecharOvo();
+            yield return new WaitForSeconds(boardDto.DelayVoltaBoard);
+        }
+        else
+        {
+            yield return new WaitForSeconds(boardDto.DelayVoltaBoard);
+        }
     }
 }

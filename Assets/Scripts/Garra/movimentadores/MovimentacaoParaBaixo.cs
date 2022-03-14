@@ -38,7 +38,7 @@ public class MovimentacaoParaBaixo : MovimentadorProdutorInformacaoGarra
         if (TagUtils.isColetavel(gameObject))
         {
             produzirEventoInfoDaGarra(gameObject.name);
-            Debug.Log("Colidiu com " + gameObject.name + " de " + gameObject.transform.parent.name);
+            //Debug.Log("Colidiu com " + gameObject.name + " de " + gameObject.transform.parent.name);
             comunicadorComGerMovimentacao.trocarParaAcaoAgarrada();
         }
         else if (TagUtils.isGaiola(gameObject))

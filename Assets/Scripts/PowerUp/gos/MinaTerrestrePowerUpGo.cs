@@ -18,7 +18,7 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
 
     public override void configurarPup()
     {
-        Animator animator = extrairAnimatorFrom("imagem");
+        Animator animator = extrairComponenteFrom<Animator>("imagem");
         animacao = new AnimacaoExplosaoPup(animator);
 
         colliderExplosao = extrairComponenteFrom<CircleCollider2D>("explosao");

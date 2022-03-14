@@ -12,11 +12,11 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
     private Coroutine coroutine;
 
     public AbstractAsaPowerUpGo(GameObject goDto, string nome)
-         : base(goDto, new GetGoComSpriteRenderer(), nome){}
+         : base(goDto, new ProcuradorDeSpriteRenderer("imagem"), nome){}
 
     public override void configurarPup()
     {
-        animator = extrairAnimatorFrom("asas");
+        animator = extrairComponenteFrom<Animator>("asas");
         circleCollider = extrairComponente<CircleCollider2D>();
     }
 
@@ -42,7 +42,8 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
         hitColetavel = true;
 
         colocarNaPosicao(coletavelAcertado.getPosicao());
-        receberSprite(coletavelAcertado.getSprite(), powerUpDto.AsaDto.Layer);
+        Sprite spriteAcertado = getSpriteAcertado(coletavelAcertado);
+        receberSprite(spriteAcertado, powerUpDto.AsaDto.Layer);
         coletavelAcertado.desligar();        
         ligar();
 
@@ -81,15 +82,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
             helperInGame.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
         }
-    }
-
-    private class GetGoComSpriteRenderer : Transformador<GameObject, GameObject>
-    {
-        public GameObject transformar(GameObject goColetavel)
-        {
-            return goColetavel.transform.Find("imagem").gameObject;
-        }
-    }
+    }   
 
     protected void playAnimacaoVoar()
     {
@@ -99,5 +92,18 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
     protected void acionarTriggerNoCollider()
     {
         circleCollider.isTrigger = true;
+    }
+
+    private Sprite getSpriteAcertado(Coletavel coletavelAcertado)
+    {
+        if (coletavelAcertado.isOvo())
+        {
+            HelperColetavelEntidade helperColetavelEntidade = new HelperColetavelEntidade();
+            return helperColetavelEntidade.getSpriteOvo();
+        }
+        else
+        {
+            return coletavelAcertado.getSprite();
+        }
     }
 }

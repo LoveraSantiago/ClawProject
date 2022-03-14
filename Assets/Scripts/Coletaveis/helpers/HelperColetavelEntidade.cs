@@ -88,6 +88,12 @@ public class HelperColetavelEntidade
         return spritesPorNome[nomeSprite];
     }
 
+    public Sprite getSpriteOvo()
+    {
+        ColetavelEntidade coletavelEntidadeOvo = getColetavelEntidadeById(2);
+        return spritesPorNome[coletavelEntidadeOvo.nomeSprite];
+    }
+
     public static void configurar()
     {
         if (coletaveisPorId == null)

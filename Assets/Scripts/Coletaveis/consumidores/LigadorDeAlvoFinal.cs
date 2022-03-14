@@ -15,13 +15,13 @@ public class LigadorDeAlvoFinal : Consumidor<Coletavel>
             {
                 coletavel.ligarAnimacaoMiraSelecionado();
             }
-            else if (coletavel.isMiraSelecionada)
+            else if (coletavel.isMiraSelecionada())
             {
 
             }
             else
             {
-                coletavel.desligarAnimacao();
+                coletavel.desligarMira();
             }
         }
     }

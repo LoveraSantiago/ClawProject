@@ -20,7 +20,7 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
 
     public void configuradoPeloLevel(AbstractLevel level)
     {
-        if(isSairByLevel(level))
+        if(LevelUtils.isPlayableLevel(level))
         {
             estadoSairPara = SAIR_NORMAL;                       
         }
@@ -32,13 +32,7 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
         {
             estadoSairPara = SAIR_EXTRA;                        
         }
-    }
-
-    private bool isSairByLevel(AbstractLevel level)
-    {
-        return LevelUtils.isNormalLevel(level) || LevelUtils.isOrdemLevel(level) || 
-            LevelUtils.isObstaculoLevel(level) || LevelUtils.isElevadorLevel(level);
-    }
+    }   
 
     private void cancelarSaida()
     {

@@ -98,7 +98,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         }
         else
         {
-            Debug.Log("nome" + atraido.nome +  " pos " + atraido.getPosicao());
+            //Debug.Log("nome" + atraido.nome +  " pos " + atraido.getPosicao());
             if (atraido.getPosicao().y > 2.9 && !preFinalizadoJaAcionado)
             {
                 coletavelSelecionado.colocarNaPosicao(atraido.getPosicao());
@@ -116,10 +116,17 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         if(coletavelSelecionado != null)
         {
             coletavelAtracao.colocarNaPosicao(coletavelSelecionado.getPosicao(), coletavelSelecionado.getAngulo());
-            coletavelAtracao.receberSprite(coletavelSelecionado.getSprite());
             coletavelAtracao.colocarNoLayerDestaque();
-            coletavelAtracao.ligar();            
+            coletavelAtracao.ligar();
 
+            if (coletavelSelecionado.isOvo())
+            {
+                coletavelAtracao.ligarAnimacaoIdleOvo();
+            }
+            else
+            {
+                coletavelAtracao.receberSprite(coletavelSelecionado.getSprite());
+            }
             coletavelSelecionado.desligar();
         }
     }
