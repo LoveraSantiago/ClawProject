@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class ConfigScene : MonoBehaviour
 {
+    [SerializeField] private Button btnBack;
+    [Space(5)]
     [SerializeField] private Toggle toggleMacho;
     [SerializeField] private Toggle toggleFemea;
     [SerializeField] private Toggle toggleRandom;
@@ -38,5 +40,7 @@ public class ConfigScene : MonoBehaviour
         {
             PlayerPrefsGarra.saveEscolhaGarraRandom();
         });
+
+        btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMap());
     }   
 }
