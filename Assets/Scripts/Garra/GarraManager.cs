@@ -33,7 +33,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         }
         else
         {
-            configurarColisorCentroDaPinca(garraDto.Colisor);
+            configurarColisorCentroDaPinca(garraDto.Corpo.Colisor);
             gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
             gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
             gerDeMovAtual   = gerDeMovNormal;
@@ -55,7 +55,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     public void fixedUpdate(GarraDto garraDto)
     {
         gerDeMovAtual.fixedUpdate();
-        cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.RigidBody.transform);
+        cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.Corpo.RigidBody.transform);
     }    
 
     private void configurarColisorCentroDaPinca(GameObject goColisor)

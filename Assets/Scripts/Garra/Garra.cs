@@ -15,8 +15,8 @@ public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
     {
         this.garraDto = garraDto;                
 
-        pincas    = new GarraPincas(garraDto.PincaEsquerda, garraDto.PincaDireita);
-        animacao  = new GarraAnimacao(garraDto.Animator);
+        pincas    = new GarraPincas(garraDto.Corpo.PincaEsquerda, garraDto.Corpo.PincaDireita);
+        animacao  = new GarraAnimacao(garraDto.Corpo.Animator);
         rigidBody = new GarraRigidBody(garraDto);
         efeito    = new GarraEfeito(garraDto.EfeitoTrail);
 
@@ -25,7 +25,7 @@ public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
     
     public Vector3 getPosicaoCentroGarra()
     {
-        return garraDto.CentroDaGarra.position;
+        return garraDto.Corpo.CentroDaGarra.position;
     }
 
     public void dispararEventoDirecao(int direcao)

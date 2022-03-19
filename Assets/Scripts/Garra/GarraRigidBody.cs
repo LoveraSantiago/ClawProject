@@ -8,8 +8,8 @@ public class GarraRigidBody
 
     public GarraRigidBody(GarraDto garraDto)
     {
-        garraRigidBody = garraDto.RigidBody;
-        posInicial     = garraDto.RigidBody.transform.localPosition;
+        garraRigidBody = garraDto.Corpo.RigidBody;
+        posInicial     = garraDto.Corpo.RigidBody.transform.localPosition;
         velocidadesDto = garraDto.Velocidades;
     }    
 
