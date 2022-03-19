@@ -89,6 +89,6 @@ public class ComponenteRigidBodyDeMovimentacaoGarra : ComponenteEfeitoDeMoviment
 
     protected float getPosicaoCacaNiquel()
     {
-        return getGarra().garraDto.PosCacaNiquel;
+        return getGarra().getPosicaoCacaNiquel();
     }
 }
