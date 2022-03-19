@@ -5,7 +5,7 @@ public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
     public GarraDto garraDto;
 
     public GarraPincas    pincas { get; private set; }
-    public GarraAnimacao  animacao { get; private set; }
+    public AbstractGarraAnimacao  animacao { get; private set; }
     public GarraRigidBody rigidBody { get; private set; }    
     public GarraEfeito    efeito { get; private set; }
 
@@ -16,8 +16,7 @@ public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
         this.garraDto = garraDto;
         definindoGenero(garraDto);
 
-        pincas    = new GarraPincas(garraDto.Corpo.TransformPincaEsquerda, garraDto.Corpo.TransformPincaDireita);
-        animacao  = new GarraAnimacao(garraDto.Corpo.Animator);
+        pincas    = new GarraPincas(garraDto.Corpo.TransformPincaEsquerda, garraDto.Corpo.TransformPincaDireita);        
         rigidBody = new GarraRigidBody(garraDto);
         efeito    = new GarraEfeito(garraDto.EfeitoTrail);
 
@@ -48,11 +47,13 @@ public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
         {
             GeneroGarraDto generoMacho = garraDto.GeneroMacho;
             setarGenero(garraDto.Corpo, generoMacho);
+            animacao = new GarraAnimacaoMacho(garraDto.Corpo.Animator);
         }
         else
         {
             GeneroGarraDto generoFemea = garraDto.GeneroFemea;
             setarGenero(garraDto.Corpo, generoFemea);
+            animacao = new GarraAnimacaoFemea(garraDto.Corpo.Animator);
         }
     }
 
