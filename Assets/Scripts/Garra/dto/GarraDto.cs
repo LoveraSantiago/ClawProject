@@ -14,6 +14,10 @@ public class GarraDto
     [SerializeField] private CorpoGarraDto corpo;
     [Space(3)]
     [SerializeField] private ParticleSystem efeitoTrail;
+    [Space(3)]
+    [SerializeField] private GeneroGarraDto generoMacho;
+    [SerializeField] private GeneroGarraDto generoFemea;
+
 
     public GarraVelocidadesDto Velocidades { get { return velocidades; } }
     public GarraAngulosDto Angulos { get { return angulos; } }    
@@ -25,4 +29,7 @@ public class GarraDto
     public ParticleSystem EfeitoTrail { get { return efeitoTrail; } }
 
     public CaboGarraDto CaboDaGarraDto { get { return caboDto; } }
+
+    public GeneroGarraDto GeneroMacho { get { return generoMacho; } }
+    public GeneroGarraDto GeneroFemea { get { return generoFemea; } }
 }

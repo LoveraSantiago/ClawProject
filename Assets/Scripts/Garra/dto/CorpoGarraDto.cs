@@ -6,8 +6,12 @@ public class CorpoGarraDto
 {
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Transform centroDaGarra;
+    [Space(3)]
+    [SerializeField] private SpriteRenderer sprRendererBaseCorpo;    
+    [Space(3)]
     [SerializeField] private Transform pincaEsquerda;
     [SerializeField] private Transform pincaDireita;
+    [Space(3)]
     [SerializeField] private GameObject colisor;
     [SerializeField] private Animator animator;
 
@@ -18,4 +22,6 @@ public class CorpoGarraDto
     public Transform PincaDireita { get { return pincaDireita; } }
     public GameObject Colisor { get { return colisor; } }
     public Animator Animator { get { return animator; } }
+
+    public SpriteRenderer SprRendererBaseCorpo { get { return sprRendererBaseCorpo; } }
 }

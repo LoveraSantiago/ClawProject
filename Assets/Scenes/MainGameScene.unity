@@ -10713,20 +10713,19 @@ MonoBehaviour:
         tamanhoSegmento: 0.15
         transfInicioCabo: {fileID: 1336653433}
         lineRenderer: {fileID: 958265029}
-      rigidBody: {fileID: 1907269041974171794}
-      centroDaGarra: {fileID: 1379266187116345345}
-      pincaEsquerda: {fileID: 1907269041649210802}
-      pincaDireita: {fileID: 6299144451050955760}
-      colisor: {fileID: 3777820026685026688}
-      animator: {fileID: 2086766167889621232}
       corpo:
         rigidBody: {fileID: 1907269041974171794}
         centroDaGarra: {fileID: 1379266187116345345}
+        sprRendererBase: {fileID: 2086766167889621233}
         pincaEsquerda: {fileID: 1907269041649210802}
         pincaDireita: {fileID: 6299144451050955760}
         colisor: {fileID: 3777820026685026688}
         animator: {fileID: 2086766167889621232}
       efeitoTrail: {fileID: 1267725515}
+      generoMacho:
+        corpoBase: {fileID: 21300000, guid: e9614544b51db9340816976f8f6c7c20, type: 3}
+      generoFemea:
+        corpoBase: {fileID: 21300000, guid: 4ec02856de7f6414c889187d5e200cb0, type: 3}
     coletaveisDto:
       pontosColetado: 2
       pontosAcerto: 8
@@ -58819,6 +58818,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5448968826095850270, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8956093876148325866, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -58828,6 +58831,11 @@ PrefabInstance:
 --- !u!95 &2086766167889621232 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6633404403826901508, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+  m_PrefabInstance: {fileID: 2086766167889621231}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2086766167889621233 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1204909763, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
   m_PrefabInstance: {fileID: 2086766167889621231}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2746075170554837613

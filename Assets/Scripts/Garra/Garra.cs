@@ -13,7 +13,8 @@ public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 
     public Garra(GarraDto garraDto)
     {
-        this.garraDto = garraDto;                
+        this.garraDto = garraDto;
+        definindoGenero(garraDto);
 
         pincas    = new GarraPincas(garraDto.Corpo.PincaEsquerda, garraDto.Corpo.PincaDireita);
         animacao  = new GarraAnimacao(garraDto.Corpo.Animator);
@@ -37,6 +38,19 @@ public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
         else
         {
             produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
+        }
+    }
+
+    private void definindoGenero(GarraDto garraDto)
+    {
+        int genero = PlayerPrefsGarra.getGarraMachoOrFemea();
+        if(genero == 1)
+        {
+            garraDto.Corpo.SprRendererBaseCorpo.sprite = garraDto.GeneroMacho.CorpoBase;
+        }
+        else
+        {
+            garraDto.Corpo.SprRendererBaseCorpo.sprite = garraDto.GeneroFemea.CorpoBase;
         }
     }
 
