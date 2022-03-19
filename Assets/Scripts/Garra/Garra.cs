@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Garra : ComponenteGarraDtoDaGarra,
+public class Garra : ComponenteRigidBodyDaGarra,
                      AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     public GarraPincas           pincas { get; private set; }

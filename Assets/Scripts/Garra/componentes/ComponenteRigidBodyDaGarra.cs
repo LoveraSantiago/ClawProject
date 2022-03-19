@@ -1,0 +1,95 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ComponenteRigidBodyDaGarra : ComponenteGarraDtoDaGarra
+{
+    public ComponenteRigidBodyDaGarra(GarraDto garraDto)
+        : base(garraDto){}
+
+    public void setVelocidade(Vector2 velocidade)
+    {
+        getRigidBody().velocity = velocidade;
+    }
+
+    public void parar()
+    {
+        getRigidBody().velocity = Vector3.zero;
+        getRigidBody().angularVelocity = 0;
+    }
+
+    public void colocarNaHalturaInicial()
+    {
+        getRigidBody().transform.localPosition = new Vector2(getRigidBody().position.x, posInicial.y);
+    }
+
+    public void colocarNaPosicaoInicial()
+    {
+        getRigidBody().transform.localPosition = posInicial;
+    }
+
+    public void colocarNaPosicaoHorizontal(float posHorizontal)
+    {
+        getRigidBody().transform.localPosition = new Vector3(posHorizontal, posInicial.y, 0);
+    }
+
+    public void moverPCima()
+    {
+        setVelocidade(new Vector2(0, velocidadesDto.MovCima));
+    }
+
+    public void moverPBaixo()
+    {
+        setVelocidade(new Vector2(0, velocidadesDto.MovBaixo));
+    }
+
+    public void moverPHorizontal(float direcao)
+    {
+        setVelocidade(new Vector2(direcao * velocidadesDto.MovHorizontal, 0));
+    }
+
+    public void colocarMassa(int massa)
+    {
+        getRigidBody().mass = massa;
+    }
+
+    public void fixarVerticalEHorizontal()
+    {
+        getRigidBody().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public void fixarHorizontalmente()
+    {
+        getRigidBody().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public void fixarVerticalmente()
+    {
+        getRigidBody().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public void desafixar()
+    {
+        getRigidBody().constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public bool isAcimaPosInicial()
+    {
+        return getRigidBody().transform.localPosition.y >= posInicial.y;
+    }
+
+    public bool isMaiorPosHorizontal(float posHorizontal)
+    {
+        return getRigidBody().transform.localPosition.x > posHorizontal;
+    }
+
+    public bool isMenorPosHorizontal(float posHorizontal)
+    {
+        return getRigidBody().transform.localPosition.x < posHorizontal;
+    }
+
+    private Rigidbody2D getRigidBody()
+    {
+        return garraDto.Corpo.RigidBody;
+    }
+}
