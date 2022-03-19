@@ -5,7 +5,7 @@ public class MovimentacaoParaCima : MovimentadorProdutorInformacaoGarra
         colocarMassa(3);
 
         contabilizarSubida();                
-        playAnimacaoIrPBaixo();        
+        playAnimacaoIrPCima();        
     }
 
     public override void update(InputGame inputGame)
