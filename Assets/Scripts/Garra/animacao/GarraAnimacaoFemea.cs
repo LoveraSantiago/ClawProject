@@ -9,7 +9,7 @@ public class GarraAnimacaoFemea : AbstractGarraAnimacao
     private readonly int ANIM_ESQUERDA = Animator.StringToHash("indoesquerda-femea");
     private readonly int ANIM_PISCANDO = Animator.StringToHash("piscando-femea");
     private readonly int ANIM_FELIZ = Animator.StringToHash("feliz-femea");
-    private readonly int ANIM_RODANDO = Animator.StringToHash("girandov-femea");
+    private readonly int ANIM_RODANDO = Animator.StringToHash("girando-femea");
 
 
     public GarraAnimacaoFemea(Animator animator) :
