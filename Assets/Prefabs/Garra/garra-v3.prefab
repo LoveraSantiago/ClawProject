@@ -5405,7 +5405,7 @@ GameObject:
   - component: {fileID: 8798458103487563554}
   - component: {fileID: 21880370418925681}
   m_Layer: 6
-  m_Name: star
+  m_Name: simbolo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

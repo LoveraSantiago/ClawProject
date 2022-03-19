@@ -10608,6 +10608,11 @@ Transform:
   m_Father: {fileID: 1496791513}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &432826845 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 21880370418925681, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+  m_PrefabInstance: {fileID: 2086766167889621231}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &446848367 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4735565012551977140, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -10717,6 +10722,7 @@ MonoBehaviour:
         rigidBody: {fileID: 1907269041974171794}
         centroDaGarra: {fileID: 1379266187116345345}
         sprRendererBaseCorpo: {fileID: 2086766167889621233}
+        sprRendererSimbolo: {fileID: 432826845}
         sprRendererPincaEsquerda: {fileID: 1907269041649210804}
         sprRendererPincaDireita: {fileID: 6299144451050955762}
         colisor: {fileID: 3777820026685026688}
@@ -10725,9 +10731,11 @@ MonoBehaviour:
       generoMacho:
         corpoBase: {fileID: 21300000, guid: e9614544b51db9340816976f8f6c7c20, type: 3}
         pinca: {fileID: 21300000, guid: c41957f9077439046959e4c91999cef1, type: 3}
+        simbolo: {fileID: 21300000, guid: e27d64ba6ac8fea4a85452f05f311dce, type: 3}
       generoFemea:
         corpoBase: {fileID: 21300000, guid: 4ec02856de7f6414c889187d5e200cb0, type: 3}
         pinca: {fileID: 21300000, guid: ae631092dc5c81845a3674d9d8102a0c, type: 3}
+        simbolo: {fileID: 21300000, guid: ccd757fe66bc8ec40ad0559c1dd13312, type: 3}
     coletaveisDto:
       pontosColetado: 2
       pontosAcerto: 8
@@ -58752,21 +58760,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
-    - target: {fileID: 1204909761, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 469031665585460422, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 469031665988364410, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
       propertyPath: m_Name
       value: garra
-      objectReference: {fileID: 0}
-    - target: {fileID: 469031665988364410, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 469031665988364412, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
       propertyPath: m_RootOrder
@@ -58810,22 +58806,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 469031665988364412, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2086766168026856960, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2409955862992834664, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5448968826095850270, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956093876148325866, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

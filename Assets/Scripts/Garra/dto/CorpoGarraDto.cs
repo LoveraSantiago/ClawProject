@@ -8,6 +8,7 @@ public class CorpoGarraDto
     [SerializeField] private Transform centroDaGarra;
     [Space(3)]
     [SerializeField] private SpriteRenderer sprRendererBaseCorpo;
+    [SerializeField] private SpriteRenderer sprRendererSimbolo;
     [Space(3)]
     [SerializeField] private SpriteRenderer sprRendererPincaEsquerda;
     [SerializeField] private SpriteRenderer sprRendererPincaDireita;    
@@ -28,4 +29,5 @@ public class CorpoGarraDto
     public Animator Animator { get { return animator; } }
 
     public SpriteRenderer SprRendererBaseCorpo { get { return sprRendererBaseCorpo; } }
+    public SpriteRenderer SprRendererSimbolo { get { return sprRendererSimbolo; } }
 }

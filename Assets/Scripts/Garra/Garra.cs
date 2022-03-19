@@ -61,6 +61,7 @@ public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
         corpo.SprRendererBaseCorpo.sprite = genero.CorpoBase;
         corpo.SprRendererPincaDireita.sprite  = genero.Pinca;
         corpo.SprRendererPincaEsquerda.sprite = genero.Pinca;
+        corpo.SprRendererSimbolo.sprite = genero.Simbolo;
     }
 
     public void dispararEventoDirecao(DirecaoDaGarra direcao)
