@@ -11,6 +11,6 @@ public class BotoesCenasMapa
         botoesCenasDto.BtnStore.onClick.AddListener(() => CenaUtils.irParaCenaLoja());
         botoesCenasDto.BtnScore.onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
         botoesCenasDto.BtnPelucia.onClick.AddListener(() => CenaUtils.irParaCenaColetaveis());
-        botoesCenasDto.BtnConfig.onClick.AddListener(() => CenaUtils.irParaCenaNaoImplementada());
+        botoesCenasDto.BtnConfig.onClick.AddListener(() => CenaUtils.irParaCenaConfig());
     }
 }
