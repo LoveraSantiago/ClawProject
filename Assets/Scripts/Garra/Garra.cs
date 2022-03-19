@@ -16,7 +16,7 @@ public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
         this.garraDto = garraDto;
         definindoGenero(garraDto);
 
-        pincas    = new GarraPincas(garraDto.Corpo.PincaEsquerda, garraDto.Corpo.PincaDireita);
+        pincas    = new GarraPincas(garraDto.Corpo.TransformPincaEsquerda, garraDto.Corpo.TransformPincaDireita);
         animacao  = new GarraAnimacao(garraDto.Corpo.Animator);
         rigidBody = new GarraRigidBody(garraDto);
         efeito    = new GarraEfeito(garraDto.EfeitoTrail);
@@ -43,15 +43,24 @@ public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 
     private void definindoGenero(GarraDto garraDto)
     {
-        int genero = PlayerPrefsGarra.getGarraMachoOrFemea();
-        if(genero == 1)
+        int generoConfigurado = PlayerPrefsGarra.getGarraMachoOrFemea();        
+        if(generoConfigurado == 1)
         {
-            garraDto.Corpo.SprRendererBaseCorpo.sprite = garraDto.GeneroMacho.CorpoBase;
+            GeneroGarraDto generoMacho = garraDto.GeneroMacho;
+            setarGenero(garraDto.Corpo, generoMacho);
         }
         else
         {
-            garraDto.Corpo.SprRendererBaseCorpo.sprite = garraDto.GeneroFemea.CorpoBase;
+            GeneroGarraDto generoFemea = garraDto.GeneroFemea;
+            setarGenero(garraDto.Corpo, generoFemea);
         }
+    }
+
+    private void setarGenero(CorpoGarraDto corpo, GeneroGarraDto genero)
+    {
+        corpo.SprRendererBaseCorpo.sprite = genero.CorpoBase;
+        corpo.SprRendererPincaDireita.sprite  = genero.Pinca;
+        corpo.SprRendererPincaEsquerda.sprite = genero.Pinca;
     }
 
     public void dispararEventoDirecao(DirecaoDaGarra direcao)

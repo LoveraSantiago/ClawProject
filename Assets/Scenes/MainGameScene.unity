@@ -10692,7 +10692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 6
+  level: 1
   mainDto:
     garraDto:
       posCacaNiquel: -1.75
@@ -10716,16 +10716,18 @@ MonoBehaviour:
       corpo:
         rigidBody: {fileID: 1907269041974171794}
         centroDaGarra: {fileID: 1379266187116345345}
-        sprRendererBase: {fileID: 2086766167889621233}
-        pincaEsquerda: {fileID: 1907269041649210802}
-        pincaDireita: {fileID: 6299144451050955760}
+        sprRendererBaseCorpo: {fileID: 2086766167889621233}
+        sprRendererPincaEsquerda: {fileID: 1907269041649210804}
+        sprRendererPincaDireita: {fileID: 6299144451050955762}
         colisor: {fileID: 3777820026685026688}
         animator: {fileID: 2086766167889621232}
       efeitoTrail: {fileID: 1267725515}
       generoMacho:
         corpoBase: {fileID: 21300000, guid: e9614544b51db9340816976f8f6c7c20, type: 3}
+        pinca: {fileID: 21300000, guid: c41957f9077439046959e4c91999cef1, type: 3}
       generoFemea:
         corpoBase: {fileID: 21300000, guid: 4ec02856de7f6414c889187d5e200cb0, type: 3}
+        pinca: {fileID: 21300000, guid: ae631092dc5c81845a3674d9d8102a0c, type: 3}
     coletaveisDto:
       pontosColetado: 2
       pontosAcerto: 8
@@ -58728,9 +58730,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1139847813599578350, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
   m_PrefabInstance: {fileID: 2086766167889621231}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1907269041649210802 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 469031665470334301, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+--- !u!212 &1907269041649210804 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 469031665470334302, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
   m_PrefabInstance: {fileID: 2086766167889621231}
   m_PrefabAsset: {fileID: 0}
 --- !u!50 &1907269041974171794 stripped
@@ -59120,9 +59122,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2925138030546633071, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
   m_PrefabInstance: {fileID: 2086766167889621231}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6299144451050955760 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5448968826095850271, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+--- !u!212 &6299144451050955762 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5448968826095850268, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
   m_PrefabInstance: {fileID: 2086766167889621231}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6406990385049082667

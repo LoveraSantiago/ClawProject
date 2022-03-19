@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -7,6 +5,8 @@ using UnityEngine;
 public class GeneroGarraDto 
 {
     [SerializeField] private Sprite corpoBase;
+    [SerializeField] private Sprite pinca;
 
     public Sprite CorpoBase { get { return corpoBase; } }
+    public Sprite Pinca { get { return pinca; } }
 }
