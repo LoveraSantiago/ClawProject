@@ -4,10 +4,10 @@ public class Garra : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     public GarraDto garraDto;
 
-    public GarraPincas    pincas { get; private set; }
-    public AbstractGarraAnimacao  animacao { get; private set; }
-    public GarraRigidBody rigidBody { get; private set; }    
-    public GarraEfeito    efeito { get; private set; }
+    public GarraPincas           pincas { get; private set; }
+    public AbstractGarraAnimacao animacao { get; private set; }
+    public GarraRigidBody        rigidBody { get; private set; }    
+    public GarraEfeito           efeito { get; private set; }
 
     private ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao;
 
