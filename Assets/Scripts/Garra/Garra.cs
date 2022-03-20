@@ -4,8 +4,7 @@ public class Garra : ComponenteRigidBodyDaGarra,
                      AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
     public GarraPincas           pincas { get; private set; }
-    public AbstractGarraAnimacao animacao { get; private set; }
-    public GarraRigidBody        rigidBody { get; private set; }    
+    public AbstractGarraAnimacao animacao { get; private set; }     
     public GarraEfeito           efeito { get; private set; }
 
     private ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao;
@@ -15,8 +14,7 @@ public class Garra : ComponenteRigidBodyDaGarra,
     {        
         definindoGenero(garraDto);
 
-        pincas    = new GarraPincas(garraDto.Corpo.TransformPincaEsquerda, garraDto.Corpo.TransformPincaDireita);        
-        rigidBody = new GarraRigidBody(garraDto);
+        pincas    = new GarraPincas(garraDto.Corpo.TransformPincaEsquerda, garraDto.Corpo.TransformPincaDireita);                
         efeito    = new GarraEfeito(garraDto.EfeitoTrail);
 
         produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();

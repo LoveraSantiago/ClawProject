@@ -4,77 +4,77 @@ public class ComponenteRigidBodyDeMovimentacaoGarra : ComponenteEfeitoDeMoviment
 {
     protected void parar()
     {
-        getGarra().rigidBody.parar();
+        getGarra().parar();
     }
 
     protected void colocarNaPosInicial()//REMOVER
     {
-        getGarra().rigidBody.colocarNaPosicaoInicial();
+        getGarra().colocarNaPosicaoInicial();
     }
 
     protected void colocarNaPosHorizontal(float posHorizontal)
     {
-        getGarra().rigidBody.colocarNaPosicaoHorizontal(posHorizontal);
+        getGarra().colocarNaPosicaoHorizontal(posHorizontal);
     }
 
     protected void colocarMassa(int massa)
     {
-        getGarra().rigidBody.colocarMassa(massa);
+        getGarra().colocarMassa(massa);
     }
 
     protected void moverParaCima()
     {
-        getGarra().rigidBody.moverPCima();
+        getGarra().moverPCima();
     }
 
     protected void moverParaBaixo()
     {
-        getGarra().rigidBody.moverPBaixo();
+        getGarra().moverPBaixo();
     }
 
     protected void moverParaHorizontal(float direcao)
     {
-        getGarra().rigidBody.moverPHorizontal(direcao);
+        getGarra().moverPHorizontal(direcao);
     }
 
     protected void colocarNaAlturaInicial()
     {
-        getGarra().rigidBody.colocarNaHalturaInicial();
+        getGarra().colocarNaHalturaInicial();
     }
 
     protected void fixarVerticalmente()
     {
-        getGarra().rigidBody.fixarVerticalmente();
+        getGarra().fixarVerticalmente();
     }
 
     protected void fixarHorizontalmente()
     {
-        getGarra().rigidBody.fixarHorizontalmente();
+        getGarra().fixarHorizontalmente();
     }
 
     protected void fixarVerticalEHorizontal()
     {
-        getGarra().rigidBody.fixarVerticalEHorizontal();
+        getGarra().fixarVerticalEHorizontal();
     }
 
     protected void desafixar()
     {
-        getGarra().rigidBody.desafixar();
+        getGarra().desafixar();
     }
 
     protected bool isAcimaPosInicial()
     {
-        return getGarra().rigidBody.isAcimaPosInicial();
+        return getGarra().isAcimaPosInicial();
     }
 
     protected bool isMaiorPosHorizontal(float posHorizontal)
     {
-        return getGarra().rigidBody.isMaiorPosHorizontal(posHorizontal);
+        return getGarra().isMaiorPosHorizontal(posHorizontal);
     }
 
     protected bool isMenorPosHorizontal(float posHorizontal)
     {
-        return getGarra().rigidBody.isMenorPosHorizontal(posHorizontal);
+        return getGarra().isMenorPosHorizontal(posHorizontal);
     }
 
     protected Vector3 getPosicaoCentroGarra()
