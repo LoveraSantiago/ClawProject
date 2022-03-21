@@ -4,17 +4,17 @@ public class ComponentePincasDeMovimentacaoGarra : ComponenteAnimacaoDeMovimenta
 {
     protected void acionarColliderDasPincas()
     {
-        getGarra().pincas.acionarCollider();
+        getGarra().acionarCollider();
     }
 
     protected void acionarTriggerDasPincas()
     {
-        getGarra().pincas.acionarTrigger();
+        getGarra().acionarTrigger();
     }
 
     protected bool isPincaDireitaNoAngulo(Quaternion anguloDesejado)
     {
-        return getGarra().pincas.isDireitaNoAngulo(anguloDesejado);
+        return getGarra().isDireitaNoAngulo(anguloDesejado);
     }
 
     protected bool isPincaDireitaNoAnguloDeFechamento()
@@ -47,6 +47,6 @@ public class ComponentePincasDeMovimentacaoGarra : ComponenteAnimacaoDeMovimenta
 
     protected void rotacionarPincaFDT(float velocidade, Quaternion angEsquerda, Quaternion angDireita)
     {
-        getGarra().pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);
+        getGarra().rotacionarFDT(velocidade, angEsquerda, angDireita);
     }
 }

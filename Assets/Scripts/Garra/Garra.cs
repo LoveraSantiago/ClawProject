@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class Garra : ComponenteRigidBodyDaGarra,
+public class Garra : ComponentePincasDaGarrra,
                      AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
-{
-    public GarraPincas           pincas { get; private set; }
+{   
     public AbstractGarraAnimacao animacao { get; private set; }     
     public GarraEfeito           efeito { get; private set; }
 
@@ -12,9 +11,7 @@ public class Garra : ComponenteRigidBodyDaGarra,
     public Garra(GarraDto garraDto)
         :base(garraDto)
     {        
-        definindoGenero(garraDto);
-
-        pincas    = new GarraPincas(garraDto.Corpo.TransformPincaEsquerda, garraDto.Corpo.TransformPincaDireita);                
+        definindoGenero(garraDto);        
         efeito    = new GarraEfeito(garraDto.EfeitoTrail);
 
         produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
