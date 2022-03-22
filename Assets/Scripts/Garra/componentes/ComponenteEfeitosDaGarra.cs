@@ -1,37 +1,42 @@
 using UnityEngine;
 
-public class GarraEfeito 
+public class ComponenteEfeitosDaGarra : ComponentePincasDaGarrra
 {
     public float alturaLocalEfeitoTrail { get; private set; }
-    private ParticleSystem efeitoTrail;
 
-    public GarraEfeito(ParticleSystem efeitoTrail)
+    public ComponenteEfeitosDaGarra(GarraDto garraDto) 
+        : base(garraDto)
     {
-        this.efeitoTrail = efeitoTrail;
-        alturaLocalEfeitoTrail = efeitoTrail.transform.localPosition.y;
+        alturaLocalEfeitoTrail = garraDto.EfeitoTrail.transform.localPosition.y;
     }
 
-    public void ligarTrailPCima()
+    public void ligarEfeitoTrailPCima()
     {
         ligarEfeitoTrailAngulo(-0.4f, 180);
     }
 
-    public void ligarTrailPBaixo()
+    public void ligarEfeitoTrailPBaixo()
     {
         ligarEfeitoTrailAngulo(0.8f, 0);
     }
 
-    public void desligarTrail()
+    public void desligarEfeitoTrail()
     {
-        efeitoTrail.Stop();
+        getEfeitoTrail().Stop();
     }
 
     private void ligarEfeitoTrailAngulo(float incremento, float angulo)
     {
+        ParticleSystem efeitoTrail = getEfeitoTrail();
         efeitoTrail.transform.rotation = Quaternion.Euler(0, 0, angulo);
         efeitoTrail.Play();
 
         Vector3 localPos = efeitoTrail.transform.localPosition;
         efeitoTrail.transform.localPosition = new Vector3(localPos.x, alturaLocalEfeitoTrail + incremento, localPos.z);
+    }
+
+    private ParticleSystem getEfeitoTrail()
+    {
+        return garraDto.EfeitoTrail;
     }
 }
