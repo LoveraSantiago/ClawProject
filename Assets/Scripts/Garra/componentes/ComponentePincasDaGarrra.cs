@@ -15,7 +15,7 @@ public class ComponentePincasDaGarrra : ComponenteRigidBodyDaGarra
     }   
 
     //FDT fixed delta time
-    public void rotacionarFDT(float velocidade, Quaternion angEsquerda, Quaternion angDireita)
+    public void rotacionarPincaFDT(float velocidade, Quaternion angEsquerda, Quaternion angDireita)
     {
         incremento = Time.fixedDeltaTime + velocidade;
 
@@ -26,18 +26,18 @@ public class ComponentePincasDaGarrra : ComponenteRigidBodyDaGarra
         pincaDireita.rotation = Quaternion.RotateTowards(pincaDireita.rotation, angDireita, incremento);
     }
 
-    public bool isDireitaNoAngulo(Quaternion anguloDesejado)
+    public bool isPincaDireitaNoAngulo(Quaternion anguloDesejado)
     {
         return Mathf.Round(getTransformPincaDireita().rotation.eulerAngles.z) == Mathf.Round(anguloDesejado.eulerAngles.z);
     }
 
-    public void acionarTrigger()
+    public void acionarTriggerDaPinca()
     {
         colliderPEsquerda.isTrigger = true;
         colliderPDireita.isTrigger = true;
     }
 
-    public void acionarCollider()
+    public void acionarColliderDaPinca()
     {
         colliderPEsquerda.isTrigger = false;
         colliderPDireita.isTrigger = false;
