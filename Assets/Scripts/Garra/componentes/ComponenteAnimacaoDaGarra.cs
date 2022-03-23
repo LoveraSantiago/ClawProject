@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class ComponenteAnimacaoDaGarra : ComponenteEfeitosDaGarra
 {
     private AbstractGarraAnimacao animacao;
@@ -7,51 +9,56 @@ public class ComponenteAnimacaoDaGarra : ComponenteEfeitosDaGarra
 
     public void irParaDireita()
     {
-        animacao.irParaDireita();
+        animacao.irParaDireita(getAnimator());
     }
 
     public void irParaEsquerda()
     {
-        animacao.irParaEsquerda();
+        animacao.irParaEsquerda(getAnimator());
     }
 
     public void irParaBaixo()
     {
-        animacao.irParaBaixo();
+        animacao.irParaBaixo(getAnimator());
     }
 
     public void irParaCima()
     {
-        animacao.irParaCima();
+        animacao.irParaCima(getAnimator());
     }
 
     public void comemorar()
     {
-        animacao.comemorar();
+        animacao.comemorar(getAnimator());
     }
 
     public void piscar()
     {
-        animacao.piscar();
+        animacao.piscar(getAnimator());
     }
 
     public void girando()
     {
-        animacao.girando();
+        animacao.girando(getAnimator());
     }
 
     public bool isComemorando()
     {
-        return animacao.isComemorando();
+        return animacao.isComemorando(getAnimator());
     }
 
     protected void animacaoMacho()
     {
-        animacao = new GarraAnimacaoMacho(garraDto.Corpo.Animator);
+        animacao = new GarraAnimacaoMacho();
     }
 
     protected void animacaoFemea()
     {
-        animacao = new GarraAnimacaoFemea(garraDto.Corpo.Animator);
+        animacao = new GarraAnimacaoFemea();
+    }
+
+    protected Animator getAnimator()
+    {
+        return garraDto.Corpo.Animator;
     }
 }
