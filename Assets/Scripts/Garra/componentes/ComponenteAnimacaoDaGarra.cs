@@ -7,42 +7,42 @@ public class ComponenteAnimacaoDaGarra : ComponenteEfeitosDaGarra
     public ComponenteAnimacaoDaGarra(GarraDto garraDto) : 
         base(garraDto){}
 
-    public void irParaDireita()
+    public void animacaoParaDireita()
     {
         animacao.irParaDireita(getAnimator());
     }
 
-    public void irParaEsquerda()
+    public void animacaoParaEsquerda()
     {
         animacao.irParaEsquerda(getAnimator());
     }
 
-    public void irParaBaixo()
+    public void animacaoParaBaixo()
     {
         animacao.irParaBaixo(getAnimator());
     }
 
-    public void irParaCima()
+    public void animacaoParaCima()
     {
         animacao.irParaCima(getAnimator());
     }
 
-    public void comemorar()
+    public void animacaoComemorar()
     {
         animacao.comemorar(getAnimator());
     }
 
-    public void piscar()
+    public void animacaoPiscar()
     {
         animacao.piscar(getAnimator());
     }
 
-    public void girando()
+    public void animacaoGirando()
     {
         animacao.girando(getAnimator());
     }
 
-    public bool isComemorando()
+    public bool isAnimacaoComemorando()
     {
         return animacao.isComemorando(getAnimator());
     }
