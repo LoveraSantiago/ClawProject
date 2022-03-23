@@ -1,10 +1,8 @@
 using UnityEngine;
 
-public class Garra : ComponenteEfeitosDaGarra,
+public class Garra : ComponenteAnimacaoDaGarra,
                      AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {   
-    public AbstractGarraAnimacao animacao { get; private set; }
-
     private ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao;
 
     public Garra(GarraDto garraDto)
@@ -38,13 +36,13 @@ public class Garra : ComponenteEfeitosDaGarra,
         {
             GeneroGarraDto generoMacho = garraDto.GeneroMacho;
             setarGenero(garraDto.Corpo, generoMacho);
-            animacao = new GarraAnimacaoMacho(garraDto.Corpo.Animator);
+            animacaoMacho();
         }
         else
         {
             GeneroGarraDto generoFemea = garraDto.GeneroFemea;
             setarGenero(garraDto.Corpo, generoFemea);
-            animacao = new GarraAnimacaoFemea(garraDto.Corpo.Animator);
+            animacaoFemea();
         }
     }
 
