@@ -2,42 +2,42 @@ public abstract class ComponenteAnimacaoDeMovimentacaoGarra : ComponenteEventosD
 {
     public void playAnimacaoComemorar()
     {
-        getGarra().animacao.comemorar();
+        getGarra().animacaoComemorar();
     }
 
     public void playAnimacaoPiscar()
     {
-        getGarra().animacao.piscar();
+        getGarra().animacaoPiscar();
     }
 
     public void playAnimacaoIrPDireita()
     {
-        getGarra().animacao.irParaDireita();
+        getGarra().animacaoParaDireita();
     }
 
     public void playAnimacaoIrPEsquerda()
     {
-        getGarra().animacao.irParaEsquerda();
+        getGarra().animacaoParaEsquerda();
     }
 
     public void playAnimacaoIrPCima()
     {
-        getGarra().animacao.irParaCima();
+        getGarra().animacaoParaCima();
     }
 
     public void playAnimacaoIrPBaixo()
     {
-        getGarra().animacao.irParaBaixo();
+        getGarra().animacaoParaBaixo();
     }
     
     public void playAnimacaoGirando()
     {
-        getGarra().animacao.girando();
+        getGarra().animacaoGirando();
     }
 
     public bool isPlayAnimacaoComemorando()
     {
-        return getGarra().animacao.isComemorando();
+        return getGarra().isAnimacaoComemorando();
     }
 
     public bool isNotPlayAnimacaoComemorando()

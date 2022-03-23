@@ -4,7 +4,7 @@ public class MovimentacaoVoltarParaCima : AbstractMovimentacaoDaGarraPowerUp
 {
     public override void preInicio()
     {
-        colocarMassa(3);
+        colocarMassa(3);        
         playAnimacaoIrPCima();
     }
 

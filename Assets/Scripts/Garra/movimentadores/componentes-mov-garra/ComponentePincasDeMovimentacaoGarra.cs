@@ -4,17 +4,17 @@ public class ComponentePincasDeMovimentacaoGarra : ComponenteAnimacaoDeMovimenta
 {
     protected void acionarColliderDasPincas()
     {
-        getGarra().pincas.acionarCollider();
+        getGarra().acionarColliderDaPinca();
     }
 
     protected void acionarTriggerDasPincas()
     {
-        getGarra().pincas.acionarTrigger();
+        getGarra().acionarTriggerDaPinca();
     }
 
     protected bool isPincaDireitaNoAngulo(Quaternion anguloDesejado)
     {
-        return getGarra().pincas.isDireitaNoAngulo(anguloDesejado);
+        return getGarra().isPincaDireitaNoAngulo(anguloDesejado);
     }
 
     protected bool isPincaDireitaNoAnguloDeFechamento()
@@ -24,7 +24,8 @@ public class ComponentePincasDeMovimentacaoGarra : ComponenteAnimacaoDeMovimenta
 
     protected void rotacionarPincaVelocidadeAberturaFDT(Quaternion angEsquerda, Quaternion angDireita)
     {
-        rotacionarPincaFDT(getGarra().garraDto.Velocidades.MovAnguloAbertura, angEsquerda, angDireita);
+        float velocMovAngAbertura = getGarra().getVelocidadeMovAnguloAbertura();
+        rotacionarPincaFDT(velocMovAngAbertura, angEsquerda, angDireita);
     }
 
     protected void rotacionarPincaVelocidadeFechamentoFDT()
@@ -34,16 +35,18 @@ public class ComponentePincasDeMovimentacaoGarra : ComponenteAnimacaoDeMovimenta
 
     protected void rotacionarPincaVelocidadeFechamentoFDT(Quaternion angEsquerda, Quaternion angDireita)
     {
-        rotacionarPincaFDT(getGarra().garraDto.Velocidades.MovAnguloFechamento, angEsquerda, angDireita);
+        float velocidadeMovAngFechamento = getGarra().getVelocidadeMovAnguloFechamento();
+        rotacionarPincaFDT(velocidadeMovAngFechamento, angEsquerda, angDireita);
     }
 
     protected void rotacionarPincaVelocidadeIdleFDT(Quaternion angEsquerda, Quaternion angDireita)
     {
-        rotacionarPincaFDT(getGarra().garraDto.Velocidades.MovAnguloIdle, angEsquerda, angDireita);
+        float velocidadeMovAngIdle = getGarra().getVelocidadeMovAnguloIdle();
+        rotacionarPincaFDT(velocidadeMovAngIdle, angEsquerda, angDireita);
     }
 
     protected void rotacionarPincaFDT(float velocidade, Quaternion angEsquerda, Quaternion angDireita)
     {
-        getGarra().pincas.rotacionarFDT(velocidade, angEsquerda, angDireita);
+        getGarra().rotacionarPincaFDT(velocidade, angEsquerda, angDireita);
     }
 }

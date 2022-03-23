@@ -13,33 +13,33 @@ public abstract class AbstractMovimentacaoDaGarra : ComponenteRigidBodyDeMovimen
 
     protected void moverParaCimaFreeze()
     {
-        ligarTrailParaCima();
+        ligarEfeitoTrailParaCima();
         fixarVerticalmente();
         moverParaCima();        
     }
 
     protected void moverParaBaixoFreeze()
     {
-        ligarTrailParaBaixo();
+        ligarEfeitoTrailParaBaixo();
         fixarVerticalmente();
         moverParaBaixo();
     }
 
     protected void moverHorizontalmenteFreeze(float direcao)
     {
-        desligarTrail();
+        desligarEfeitoTrail();
         fixarHorizontalmente();
         moverParaHorizontal(direcao);
     }    
 
     protected void agarrando()
     {
-        desligarTrail();
+        desligarEfeitoTrail();
     }
 
     protected void voltando()
     {
-        desligarTrail();
+        desligarEfeitoTrail();
     }          
 
     public static void configurar(GarraDto garraDto)

@@ -4,37 +4,32 @@ using UnityEngine;
 [System.Serializable]
 public class GarraDto 
 {       
+    [SerializeField] private float posCacaNiquel;    
     [SerializeField] private GarraVelocidadesDto velocidades;
     [Space(3)]
     [SerializeField] private GarraAngulosDto angulos;    
     [Space(5)]
     [SerializeField] private CaboGarraDto caboDto;       
-    [Space(5)]        
-    [SerializeField] private float posCacaNiquel;    
-    [Space(3)]
-    [SerializeField] private Rigidbody2D rigidBody;    
-    [SerializeField] private Transform  centroDaGarra;
-    [SerializeField] private Transform  pincaEsquerda;
-    [SerializeField] private Transform  pincaDireita;
-    [SerializeField] private GameObject colisor;
-    [SerializeField] private Animator   animator;
+    [Space(5)]               
+    [SerializeField] private CorpoGarraDto corpo;
     [Space(3)]
     [SerializeField] private ParticleSystem efeitoTrail;
+    [Space(3)]
+    [SerializeField] private GeneroGarraDto generoMacho;
+    [SerializeField] private GeneroGarraDto generoFemea;
+
 
     public GarraVelocidadesDto Velocidades { get { return velocidades; } }
     public GarraAngulosDto Angulos { get { return angulos; } }    
 
     public float PosCacaNiquel { get { return posCacaNiquel; } }
 
-    public Rigidbody2D RigidBody { get { return rigidBody; } }
+    public CorpoGarraDto Corpo { get { return corpo; } }
     
-    public Transform CentroDaGarra { get { return centroDaGarra; } }
-    public Transform PincaEsquerda { get { return pincaEsquerda; } }
-    public Transform PincaDireita { get { return pincaDireita; } }
-    public GameObject Colisor { get { return colisor; } }
-    public Animator Animator { get { return animator; } }
     public ParticleSystem EfeitoTrail { get { return efeitoTrail; } }
 
     public CaboGarraDto CaboDaGarraDto { get { return caboDto; } }
 
+    public GeneroGarraDto GeneroMacho { get { return generoMacho; } }
+    public GeneroGarraDto GeneroFemea { get { return generoFemea; } }
 }

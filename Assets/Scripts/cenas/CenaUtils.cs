@@ -31,4 +31,9 @@ public class CenaUtils
     {
         SceneManager.LoadScene("LojaScene");
     }
+
+    public static void irParaCenaConfig()
+    {
+        SceneManager.LoadScene("ConfigScene");
+    }
 }

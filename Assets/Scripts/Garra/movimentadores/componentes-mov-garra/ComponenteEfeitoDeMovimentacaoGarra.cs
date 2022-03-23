@@ -1,17 +1,17 @@
 public class ComponenteEfeitoDeMovimentacaoGarra : ComponenteAngulosPincaDeMovimentacaoGarra
 {
-    protected void ligarTrailParaCima()
+    protected void ligarEfeitoTrailParaCima()
     {
-        getGarra().efeito.ligarTrailPCima();//deveria estar aqui?
+        getGarra().ligarEfeitoTrailPCima();//deveria estar aqui?
     }
 
-    protected void ligarTrailParaBaixo()
+    protected void ligarEfeitoTrailParaBaixo()
     {
-        getGarra().efeito.ligarTrailPBaixo();
+        getGarra().ligarEfeitoTrailPBaixo();
     }
 
-    protected void desligarTrail()
+    protected void desligarEfeitoTrail()
     {
-        getGarra().efeito.desligarTrail();
+        getGarra().desligarEfeitoTrail();
     }
 }

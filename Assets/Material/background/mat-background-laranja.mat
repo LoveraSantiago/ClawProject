@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: mat-background-laranja
+  m_Shader: {fileID: -6465566751694194690, guid: d805d3ead2975d649a851102914ed874, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - MainTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_01bf9563050c419b8100969233084bcf_Out_0:
+        m_Texture: {fileID: 2800000, guid: 8df5effa488b4634d8af26244c057b1f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_1c4da6acb52a4df9ab46741e90328a01_Out_0:
+        m_Texture: {fileID: 2800000, guid: ae9a5455752677b45b2b2f015910e9f2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_62b0dafc0c5e4960a95cb87c832a5f59_Out_0:
+        m_Texture: {fileID: 2800000, guid: 7bfde24c9a356d74bb9be29f09ae4a8b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_66ec4042db884cada5dfbdac23de2da1_Out_0:
+        m_Texture: {fileID: 2800000, guid: 120eba7df0fc410418798b20e0591033, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_716e47a3cb4043cc9aadb4cce96241b2_Out_0:
+        m_Texture: {fileID: 2800000, guid: dbbcffd439971674c91147290b45c714, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_81bc52a1fc544e8590bb5e14668f04d5_Out_0:
+        m_Texture: {fileID: 2800000, guid: 04785e06ac9bfc146aadf02b264061c9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_86a9f4f850d04ee3b250516d2008702f_Out_0:
+        m_Texture: {fileID: 2800000, guid: 2f24794862267e74896c6bdc557edb02, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_86bad76523da416ebb611c77c478756d_Out_0:
+        m_Texture: {fileID: 2800000, guid: 821c39520542c2649996e39ec45fec03, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_9fc7a5d403704ba6af55550abb4e774f_Out_0:
+        m_Texture: {fileID: 2800000, guid: 31ab3e63b33347841821dc4e4e25ac37, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_a7384ff7dcb5404db16c143906416311_Out_0:
+        m_Texture: {fileID: 2800000, guid: db8161900a1b20c418fdf6c55cc91d3e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_c0f44b4860fa4e378a136332765e403b_Out_0:
+        m_Texture: {fileID: 2800000, guid: 9b070d1259d781d49aa240858fb26cfd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _EnableExternalAlpha: 0
+    - valor_clareamento: 0.57
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - cor_background: {r: 0.4, g: 0.98039216, b: 0.827451, a: 0}
+    - cor_contorno: {r: 0.99215686, g: 0.6901961, b: 0.35686275, a: 0}
+    - cor_g1: {r: 0.8901961, g: 0.5372549, b: 0.32156864, a: 0}
+    - cor_g2: {r: 0.9764706, g: 0.53333336, b: 0.4, a: 0}
+    - cor_g3: {r: 0.8901961, g: 0.36862746, b: 0.32156864, a: 0}
+    - cor_g4: {r: 0.99215686, g: 0.35686275, b: 0.48235294, a: 0}
+    - cor_g5: {r: 0.9843137, g: 0.7647059, b: 0.69803923, a: 0}
+    - cor_g6: {r: 0.98039216, g: 0.7294118, b: 0.4509804, a: 0}
+    - cor_g7: {r: 0.98039216, g: 0.3529412, b: 0.47843137, a: 0}
+    - cor_g8: {r: 0.98039216, g: 0.4627451, b: 0.3019608, a: 0}
+    - cor_g9: {r: 0.8784314, g: 0.48235294, b: 0.36078432, a: 0}
+  m_BuildTextureStacks: []
