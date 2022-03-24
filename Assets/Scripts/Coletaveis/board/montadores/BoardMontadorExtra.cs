@@ -31,7 +31,9 @@ public class BoardMontadorExtra : BoardMontador
 
     public override int getQtdAcrescentada()
     {
-        return poolExtraSubs.getQtd();        
+        int qtdAnterior = poolExtraSubs.getQtd();
+        poolExtraSubs.reclicarPool();
+        return qtdAnterior;
     }    
 
     private void incrementarContadorDeLinha()
