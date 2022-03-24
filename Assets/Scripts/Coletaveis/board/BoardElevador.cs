@@ -35,7 +35,7 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
             refs.setarRefs(boardDto);
 
             helperInGame.desafixarTodosColetaveisXY();
-            montadorExtra.createBoard(boardDto);
+            yield return montadorExtra.createBoard(boardDto);
 
             float acrescimoFinal = boardDto.BoardPosicao.position.y - refs.acrescimo;
             produtorDeEvento.produziuEvento(SubidaBoardAcaoFim.of(acrescimoFinal));
