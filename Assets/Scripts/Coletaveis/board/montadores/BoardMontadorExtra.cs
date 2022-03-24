@@ -3,9 +3,7 @@ using System.Collections;
 public class BoardMontadorExtra : BoardMontador
 {
     private int contadorEixoX;
-    private int contadorLinhaAtual;
-
-    private DestaqueGrayScale destaque;//?
+    private int contadorLinhaAtual;    
 
     private PoolList<Coletavel> poolExtraSubs;
 
@@ -13,8 +11,6 @@ public class BoardMontadorExtra : BoardMontador
     {
         setArrayDeColetavel(LevelUtils.getArrayDeColetaveisLevelElevador(level));
         poolExtraSubs = new PoolList<Coletavel>();
-
-        destaque = new DestaqueGrayScale(level);
     }
 
     protected override IEnumerator create(BoardDto boardDto)
@@ -29,15 +25,15 @@ public class BoardMontadorExtra : BoardMontador
     protected override IEnumerator onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
         coletavel.colocarNoLayerElevador();        
-        poolExtraSubs.addObjeto(coletavel);
-
-        destaque.destacar(coletavel);
+        poolExtraSubs.addObjeto(coletavel);        
         yield return null;
     }
 
     public override int getQtdAcrescentada()
     {
-        return poolExtraSubs.getQtd();        
+        int qtdAnterior = poolExtraSubs.getQtd();
+        poolExtraSubs.reclicarPool();
+        return qtdAnterior;
     }    
 
     private void incrementarContadorDeLinha()
