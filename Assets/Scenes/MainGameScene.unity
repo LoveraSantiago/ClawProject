@@ -42819,7 +42819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6406990384449578761, guid: 3507e6a1fc5827e47b181a94e3750b46, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6406990384469692900, guid: 3507e6a1fc5827e47b181a94e3750b46, type: 3}
       propertyPath: m_IsActive
@@ -66114,46 +66114,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
-    - target: {fileID: 1605699965, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1705469833, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1705469834, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1705469835, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Size.x
-      value: 0.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 1705469835, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Size.y
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 1705469835, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 10c9f1c8d92d13d468f707cc37f2765e, type: 3}
-    - target: {fileID: 1705469835, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3811835652608885286, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074596547239427030, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5261970274719766758, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: d0ea255ad15fc3547857183010124220, type: 3}
     - target: {fileID: 5845699465068917843, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -66201,14 +66161,6 @@ PrefabInstance:
     - target: {fileID: 6015691810215975126, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_Name
       value: maquina-v3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6015691810215975126, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7800823189731715194, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Name
-      value: botao-pup-direita
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c301260e6514149bc0e163ff994732, type: 3}
