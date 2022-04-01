@@ -514,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3952490933850929637}
   m_Layer: 0
-  m_Name: display-timer-digito-v4
+  m_Name: display-timer-digitov4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
