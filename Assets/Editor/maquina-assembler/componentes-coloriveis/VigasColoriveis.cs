@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VigasColoriveis : Fornecedor<ComponenteColorivel>
+public class VigasColoriveis 
 {
     private FinderComponente finder;
 
@@ -9,7 +9,7 @@ public class VigasColoriveis : Fornecedor<ComponenteColorivel>
         this.finder = finder;
     }
 
-    public ComponenteColorivel fornecer()
+    public ComponenteColorivel getVigas()
     {
         GameObject goVigas = finder.findNaMaquina("vigas");
         GameObject vigaDireita  = finder.findNoComponente(goVigas, ConstantesCoresMaquinaV2.VIGAS + "-direita");
