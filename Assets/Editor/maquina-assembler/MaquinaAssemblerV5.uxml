@@ -30,5 +30,17 @@
         <engine:Button name="reset-placa-timer" text="Reset" />
       </engine:VisualElement>
 
+      <engine:VisualElement name="linha4" class="linha">
+        <editor:ColorField label="Timer Placa Digito" name="display-timer-digito" class="campoCor"/>
+        <engine:Button name="select-display-timer-digito" text="Select" />
+        <engine:Button name="reset-display-timer-digito" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha5" class="linha">
+        <editor:ColorField label="Timer Segmentos" name="seg" class="campoCor"/>
+        <engine:Button name="select-seg" text="Select" />
+        <engine:Button name="reset-seg" text="Reset" />
+      </engine:VisualElement>
+
     </engine:ScrollView>
 </engine:UXML>

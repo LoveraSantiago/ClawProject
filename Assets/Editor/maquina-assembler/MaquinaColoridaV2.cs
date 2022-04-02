@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -22,6 +21,8 @@ public class MaquinaColoridaV2 : FinderComponente
 
         TimerColorivel timerColorivel = new TimerColorivel(this);
         dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL, timerColorivel.getPlacaPrincipal());
+        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO, timerColorivel.getPlacaDigitos());
+        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_DISPLAY_SEGMENTOS, timerColorivel.getSegmentos());
     }
 
     private void inicializarGos()
