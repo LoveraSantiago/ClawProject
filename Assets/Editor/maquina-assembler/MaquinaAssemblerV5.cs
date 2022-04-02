@@ -36,6 +36,7 @@ public class MaquinaAssemblerV5 : EditorWindow
         maquina = new MaquinaColoridaV2();
 
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.PLACA_FRENTE);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.VIGAS);
     }
 
     private void bindarComponentes(VisualElement root, MaquinaColoridaV2 maquina, string componente)

@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MaquinaColoridaV2 
+public class MaquinaColoridaV2 : FinderComponente
 {
     private GameObject goMaquina;
     private GameObject goCabo;
@@ -15,7 +15,10 @@ public class MaquinaColoridaV2
         inicializarGos();
 
         dicionario = new Dictionary<string, ComponenteColorivel>();
-        dicionario.Add(ConstantesCoresMaquinaV2.PLACA_FRENTE, new SingleCompColorivel(find(ConstantesCoresMaquinaV2.PLACA_FRENTE)));
+        dicionario.Add(ConstantesCoresMaquinaV2.PLACA_FRENTE, new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.PLACA_FRENTE)));
+
+        Fornecedor<ComponenteColorivel> vigasColoriveis = new VigasColoriveis(this);
+        dicionario.Add(ConstantesCoresMaquinaV2.VIGAS, vigasColoriveis.fornecer());
     }
 
     private void inicializarGos()
@@ -25,20 +28,20 @@ public class MaquinaColoridaV2
         {
             if (gos[contador].name == "main-object")
             {
-                goMaquina = find(gos[contador], "maquina-v3");                
-                goCabo = find(gos[contador], "cabo-da-garra");
+                goMaquina = findNoComponente(gos[contador], "maquina-v3");                
+                goCabo = findNoComponente(gos[contador], "cabo-da-garra");
                 return;
             }
         }
         Debug.LogError("Cena nao contem game object maquina");
     }
 
-    private GameObject find(string nome)
+    public GameObject findNaMaquina(string nome)
     {
         return goMaquina.transform.Find(nome).gameObject;
     }
 
-    private GameObject find(GameObject go, string nome)
+    public GameObject findNoComponente(GameObject go, string nome)
     {
         return go.transform.Find(nome).gameObject;
     }
