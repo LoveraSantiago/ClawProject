@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class TimerColorivel 
 {
-    private readonly string go_principal = "timer";
     private GameObject goTimer;
     private FinderComponente finder;
 
@@ -46,7 +45,7 @@ public class TimerColorivel
 
     private GameObject getTimerPrincipal()
     {
-        return finder.findNaMaquina(go_principal);
+        return finder.findNaMaquina("timer");
     }
 
     private GameObject getGoDigito(string numero)

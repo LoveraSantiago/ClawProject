@@ -1815,7 +1815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5453273484624607540}
   m_Layer: 0
-  m_Name: coletados
+  m_Name: display-coletados
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1835,8 +1835,8 @@ Transform:
   m_Children:
   - {fileID: 5074122183342793821}
   - {fileID: 2688670418626222083}
-  - {fileID: 8948655487342173709}
   - {fileID: 7257830030571261405}
+  - {fileID: 8948655487342173709}
   m_Father: {fileID: 5845699465068917843}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2909,7 +2909,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4656773734700749023, guid: 31d82e73a08c0df4e8ec8b10bf4ea61f, type: 3}
       propertyPath: m_Name
-      value: display-coletado2
+      value: display-coletado3
       objectReference: {fileID: 0}
     - target: {fileID: 6340195705740792833, guid: 31d82e73a08c0df4e8ec8b10bf4ea61f, type: 3}
       propertyPath: m_SortingOrder
@@ -2917,7 +2917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8653183968274069209, guid: 31d82e73a08c0df4e8ec8b10bf4ea61f, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8653183968274069209, guid: 31d82e73a08c0df4e8ec8b10bf4ea61f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4037,7 +4037,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4656773734700749023, guid: 31d82e73a08c0df4e8ec8b10bf4ea61f, type: 3}
       propertyPath: m_Name
-      value: display-coletado3
+      value: display-coletado2
       objectReference: {fileID: 0}
     - target: {fileID: 6340195705740792833, guid: 31d82e73a08c0df4e8ec8b10bf4ea61f, type: 3}
       propertyPath: m_SortingOrder
@@ -4045,7 +4045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8653183968274069209, guid: 31d82e73a08c0df4e8ec8b10bf4ea61f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8653183968274069209, guid: 31d82e73a08c0df4e8ec8b10bf4ea61f, type: 3}
       propertyPath: m_LocalPosition.x

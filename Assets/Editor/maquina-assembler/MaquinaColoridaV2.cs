@@ -17,14 +17,19 @@ public class MaquinaColoridaV2 : FinderComponente
         dicionario.Add(ConstantesCoresMaquinaV2.PLACA_FRENTE, new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.PLACA_FRENTE)));
         dicionario.Add(ConstantesCoresMaquinaV2.BASE_CHAO, new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.BASE_CHAO)));
 
-        Fornecedor<ComponenteColorivel> vigasColoriveis = new VigasColoriveis(this);
-        dicionario.Add(ConstantesCoresMaquinaV2.VIGAS, vigasColoriveis.fornecer());
+        Fornecedor<ComponenteColorivel> vigas = new VigasColoriveis(this);
+        dicionario.Add(ConstantesCoresMaquinaV2.VIGAS, vigas.fornecer());
 
+        TimerColorivel timer = new TimerColorivel(this);
+        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL, timer.getPlacaPrincipal());
+        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO, timer.getPlacaDigitos());
+        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_DISPLAY_SEGMENTOS, timer.getSegmentos());
 
-        TimerColorivel timerColorivel = new TimerColorivel(this);
-        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL, timerColorivel.getPlacaPrincipal());
-        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO, timerColorivel.getPlacaDigitos());
-        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_DISPLAY_SEGMENTOS, timerColorivel.getSegmentos());
+        DisplayColetavelColorivel dispColetavel = new DisplayColetavelColorivel(this);
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO, dispColetavel.getPlacaPrincipal());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL1, dispColetavel.getPlacaIndividual1());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL2, dispColetavel.getPlacaIndividual2());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL3, dispColetavel.getPlacaIndividual3());
     }
 
     private void inicializarGos()

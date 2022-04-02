@@ -48,5 +48,29 @@
         <engine:Button name="reset-seg" text="Reset" />
       </engine:VisualElement>
 
+      <engine:VisualElement name="linha3-1" class="linha inicio">
+        <editor:ColorField label="Disp Colet Grupo" name="placa-coletados" class="campoCor"/>
+        <engine:Button name="select-placa-coletados" text="Select" />
+        <engine:Button name="reset-placa-coletados" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha3-2" class="linha">
+        <editor:ColorField label="Disp Colet Placa 1" name="display-coletado1" class="campoCor"/>
+        <engine:Button name="select-display-coletado1" text="Select" />
+        <engine:Button name="reset-display-coletado1" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha3-3" class="linha">
+        <editor:ColorField label="Disp Colet Placa 2" name="display-coletado2" class="campoCor"/>
+        <engine:Button name="select-display-coletado2" text="Select" />
+        <engine:Button name="reset-display-coletado2" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha3-4" class="linha">
+        <editor:ColorField label="Disp Colet Placa 3" name="display-coletado3" class="campoCor"/>
+        <engine:Button name="select-display-coletado3" text="Select" />
+        <engine:Button name="reset-display-coletado3" text="Reset" />
+      </engine:VisualElement>
+
     </engine:ScrollView>
 </engine:UXML>

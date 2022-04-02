@@ -42,6 +42,13 @@ public class MaquinaAssemblerV5 : EditorWindow
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TIMER_DISPLAY_SEGMENTOS);
+
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL1);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL2);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL3);
+
+
     }
     
     private void bindarComponentes(VisualElement root, MaquinaColoridaV2 maquina, string componente)
