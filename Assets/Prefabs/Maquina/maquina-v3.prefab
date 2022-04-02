@@ -3517,7 +3517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3718975022406015246, guid: bfd783b14037e90438db2c23bf746a58, type: 3}
       propertyPath: m_Name
-      value: display-pontosv3
+      value: display-pontos3
       objectReference: {fileID: 0}
     - target: {fileID: 4721618311503257228, guid: bfd783b14037e90438db2c23bf746a58, type: 3}
       propertyPath: m_Color.b

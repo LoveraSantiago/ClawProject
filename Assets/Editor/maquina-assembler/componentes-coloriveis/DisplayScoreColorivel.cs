@@ -36,26 +36,23 @@ public class DisplayScoreColorivel
         return new SingleCompColorivel(goPlaca);
     }
 
-    public ComponenteColorivel getGrupoLeds1()
+    public ComponenteColorivel getGrupoLeds()
     {
-        GameObject goPlaca = getPlacaIndividual(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1);
-        List<GameObject> leds = getGrupoDeLedsFrom(goPlaca);
+        GameObject goPlaca1 = getPlacaIndividual(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1);
+        List<GameObject> leds1 = getGrupoDeLedsFrom(goPlaca1);
+
+        GameObject goPlaca2 = getPlacaIndividual(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL2);
+        List<GameObject> leds2 = getGrupoDeLedsFrom(goPlaca2);
+
+        GameObject goPlaca3 = getPlacaIndividual(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL3);
+        List<GameObject> leds3 = getGrupoDeLedsFrom(goPlaca3);
+
+        List<GameObject> leds = new List<GameObject>();
+        leds.AddRange(leds1);
+        leds.AddRange(leds2);
+        leds.AddRange(leds3);
         return new MultipleCompColorivel(leds.ToArray()); 
-    }
-
-    public ComponenteColorivel getGrupoLeds2()
-    {
-        GameObject goPlaca = getPlacaIndividual(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL2);
-        List<GameObject> leds = getGrupoDeLedsFrom(goPlaca);
-        return new MultipleCompColorivel(leds.ToArray());
-    }
-
-    public ComponenteColorivel getGrupoLeds3()
-    {
-        GameObject goPlaca = getPlacaIndividual(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL3);
-        List<GameObject> leds = getGrupoDeLedsFrom(goPlaca);
-        return new MultipleCompColorivel(leds.ToArray());
-    }
+    }       
 
     private GameObject getPlacaIndividual(string placaIndividual)
     {
@@ -69,12 +66,10 @@ public class DisplayScoreColorivel
         for(int contadorFileira = 1; contadorFileira < 6; contadorFileira++)
         {
             string nomeFileira = "fileira" + contadorFileira;
-            GameObject goFileira = finder.findNoComponente(displayPontos, nomeFileira);
-            Debug.Log("recuperando fileira " + nomeFileira);
+            GameObject goFileira = finder.findNoComponente(displayPontos, nomeFileira);            
             for(int contadorLed = 0; contadorLed < goFileira.transform.childCount; contadorLed++)
             {   
-                GameObject goLed = goFileira.transform.GetChild(contadorLed).gameObject;
-                Debug.Log("Led recuperado " + goLed.name);
+                GameObject goLed = goFileira.transform.GetChild(contadorLed).gameObject;                
                 listLeds.Add(goLed);
             }
         }

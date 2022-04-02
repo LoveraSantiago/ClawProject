@@ -36,9 +36,7 @@ public class MaquinaColoridaV2 : FinderComponente
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1, displayScore.getPlacaIndividual1());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL2, displayScore.getPlacaIndividual2());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL3, displayScore.getPlacaIndividual3());
-        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS1, displayScore.getGrupoLeds1());
-        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS2, displayScore.getGrupoLeds2());
-        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS3, displayScore.getGrupoLeds3());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS, displayScore.getGrupoLeds());        
     }
 
     private void inicializarGos()

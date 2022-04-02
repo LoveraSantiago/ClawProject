@@ -52,9 +52,8 @@ public class MaquinaAssemblerV5 : EditorWindow
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL2);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL3);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS1);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS2);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS3);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS);       
+        
     }
     
     private void bindarComponentes(VisualElement root, MaquinaColoridaV2 maquina, string componente)

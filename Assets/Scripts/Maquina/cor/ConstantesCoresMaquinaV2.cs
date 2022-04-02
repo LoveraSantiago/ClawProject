@@ -17,7 +17,6 @@ public class ConstantesCoresMaquinaV2
     public static readonly string DISPLAY_SCORE_PLACA_INDIVIDUAL1 = "display-pontos1";
     public static readonly string DISPLAY_SCORE_PLACA_INDIVIDUAL2 = "display-pontos2";
     public static readonly string DISPLAY_SCORE_PLACA_INDIVIDUAL3 = "display-pontos3";
-    public static readonly string DISPLAY_SCORE_LEDS1 = "leds1";
-    public static readonly string DISPLAY_SCORE_LEDS2 = "leds2";
-    public static readonly string DISPLAY_SCORE_LEDS3 = "leds3";
+    public static readonly string DISPLAY_SCORE_LEDS = "leds";
+    
 }

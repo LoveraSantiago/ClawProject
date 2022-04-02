@@ -97,22 +97,10 @@
       </engine:VisualElement>
 
       <engine:VisualElement name="linha4-5" class="linha">
-        <editor:ColorField label="Leds Score 1" name="leds1" class="campoCor"/>
-        <engine:Button name="select-leds1" text="Select" />
-        <engine:Button name="reset-leds1" text="Reset" />
-      </engine:VisualElement>
-
-      <engine:VisualElement name="linha4-6" class="linha">
-        <editor:ColorField label="Leds Score 2" name="leds2" class="campoCor"/>
-        <engine:Button name="select-leds2" text="Select" />
-        <engine:Button name="reset-leds2" text="Reset" />
-      </engine:VisualElement>
-
-      <engine:VisualElement name="linha4-7" class="linha">
-        <editor:ColorField label="Leds Score 3" name="leds3" class="campoCor"/>
-        <engine:Button name="select-leds3" text="Select" />
-        <engine:Button name="reset-leds3" text="Reset" />
-      </engine:VisualElement>
+        <editor:ColorField label="Leds Score" name="leds" class="campoCor"/>
+        <engine:Button name="select-leds" text="Select" />
+        <engine:Button name="reset-leds" text="Reset" />
+      </engine:VisualElement>   
 
     </engine:ScrollView>
 </engine:UXML>
