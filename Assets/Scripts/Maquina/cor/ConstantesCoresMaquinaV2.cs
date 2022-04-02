@@ -12,4 +12,12 @@ public class ConstantesCoresMaquinaV2
     public static readonly string DISPLAY_COLETADOS_PLACA_INDIVIDUAL1 = "display-coletado1";
     public static readonly string DISPLAY_COLETADOS_PLACA_INDIVIDUAL2 = "display-coletado2";
     public static readonly string DISPLAY_COLETADOS_PLACA_INDIVIDUAL3 = "display-coletado3";
+
+    public static readonly string DISPLAY_SCORE_PLACA_GRUPO = "placa-scores";
+    public static readonly string DISPLAY_SCORE_PLACA_INDIVIDUAL1 = "display-pontos1";
+    public static readonly string DISPLAY_SCORE_PLACA_INDIVIDUAL2 = "display-pontos2";
+    public static readonly string DISPLAY_SCORE_PLACA_INDIVIDUAL3 = "display-pontos3";
+    public static readonly string DISPLAY_SCORE_LEDS1 = "leds1";
+    public static readonly string DISPLAY_SCORE_LEDS2 = "leds2";
+    public static readonly string DISPLAY_SCORE_LEDS3 = "leds3";
 }

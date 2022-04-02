@@ -30,6 +30,15 @@ public class MaquinaColoridaV2 : FinderComponente
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL1, dispColetavel.getPlacaIndividual1());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL2, dispColetavel.getPlacaIndividual2());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL3, dispColetavel.getPlacaIndividual3());
+
+        DisplayScoreColorivel displayScore = new DisplayScoreColorivel(this);
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_GRUPO, displayScore.getPlacaGrupo());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1, displayScore.getPlacaIndividual1());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL2, displayScore.getPlacaIndividual2());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL3, displayScore.getPlacaIndividual3());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS1, displayScore.getGrupoLeds1());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS2, displayScore.getGrupoLeds2());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS3, displayScore.getGrupoLeds3());
     }
 
     private void inicializarGos()

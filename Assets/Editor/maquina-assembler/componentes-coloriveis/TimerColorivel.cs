@@ -45,7 +45,7 @@ public class TimerColorivel
 
     private GameObject getTimerPrincipal()
     {
-        return finder.findNaMaquina("timer");
+        return finder.findNaMaquina("display-timer");
     }
 
     private GameObject getGoDigito(string numero)
