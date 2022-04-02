@@ -37,8 +37,10 @@ public class MaquinaAssemblerV5 : EditorWindow
 
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.PLACA_FRENTE);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.VIGAS);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL);
     }
 
+    
     private void bindarComponentes(VisualElement root, MaquinaColoridaV2 maquina, string componente)
     {
         root.Q<ColorField>(componente).RegisterCallback<ChangeEvent<Color>>(

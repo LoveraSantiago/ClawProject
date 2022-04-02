@@ -10,3 +10,8 @@ Label {
 .campoCor{
 	width: 200px;
 }
+
+.inicio{
+	border-top-width: 1px;
+	border-color: #808080;
+}

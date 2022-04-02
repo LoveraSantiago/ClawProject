@@ -23,6 +23,12 @@
         <engine:Button name="select-viga" text="Select" />
         <engine:Button name="reset-viga" text="Reset" />
       </engine:VisualElement>
+      
+      <engine:VisualElement name="linha3" class="linha inicio">
+        <editor:ColorField label="Timer Placa Principal" name="placa-timer" class="campoCor"/>
+        <engine:Button name="select-placa-timer" text="Select" />
+        <engine:Button name="reset-placa-timer" text="Reset" />
+      </engine:VisualElement>
 
     </engine:ScrollView>
 </engine:UXML>

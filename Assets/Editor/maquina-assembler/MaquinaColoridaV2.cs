@@ -19,6 +19,9 @@ public class MaquinaColoridaV2 : FinderComponente
 
         Fornecedor<ComponenteColorivel> vigasColoriveis = new VigasColoriveis(this);
         dicionario.Add(ConstantesCoresMaquinaV2.VIGAS, vigasColoriveis.fornecer());
+
+        TimerColorivel timerColorivel = new TimerColorivel(this);
+        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL, timerColorivel.getPlacaPrincipal());
     }
 
     private void inicializarGos()

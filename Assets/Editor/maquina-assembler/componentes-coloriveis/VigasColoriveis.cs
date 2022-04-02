@@ -11,9 +11,9 @@ public class VigasColoriveis : Fornecedor<ComponenteColorivel>
 
     public ComponenteColorivel fornecer()
     {
-        GameObject vigas = finder.findNaMaquina("vigas");
-        GameObject vigaDireita  = finder.findNoComponente(vigas, ConstantesCoresMaquinaV2.VIGAS + "-direita");
-        GameObject vigaEsquerda = finder.findNoComponente(vigas, ConstantesCoresMaquinaV2.VIGAS + "-esquerda");
+        GameObject goVigas = finder.findNaMaquina("vigas");
+        GameObject vigaDireita  = finder.findNoComponente(goVigas, ConstantesCoresMaquinaV2.VIGAS + "-direita");
+        GameObject vigaEsquerda = finder.findNoComponente(goVigas, ConstantesCoresMaquinaV2.VIGAS + "-esquerda");
 
         return new MultipleCompColorivel(new GameObject[] { vigaDireita, vigaEsquerda });
     }    
