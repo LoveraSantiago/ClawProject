@@ -5,5 +5,18 @@
     xmlns:editor="UnityEditor.UIElements"
     xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
 >
-    <engine:Label text="Hello World! From UXML" />
+    <engine:Style src="MaquinaAssemblerV5.uss"/>
+
+    <engine:ScrollView name="itemContainer">
+
+      <engine:VisualElement name="linha0" class="linha">
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha1" class="linha">
+        <editor:ColorField label="Placa Frente" name="placa-frente" class="campoCor"/>
+        <engine:Button name="select-placa-frente" text="Select" />
+        <engine:Button name="reset-placa-frente" text="Reset" />
+      </engine:VisualElement>  
+      
+    </engine:ScrollView>
 </engine:UXML>

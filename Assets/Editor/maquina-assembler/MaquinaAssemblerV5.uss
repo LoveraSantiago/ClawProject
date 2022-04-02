@@ -1,5 +1,12 @@
 Label {
-    font-size: 20px;
-    -unity-font-style: bold;
+    font-size: 13px;
     color: rgb(68, 138, 255);
+}
+
+.linha{
+	flex-direction: Row;
+}
+
+.campoCor{
+	width: 200px;
 }
