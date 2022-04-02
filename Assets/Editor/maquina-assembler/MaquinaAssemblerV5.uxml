@@ -12,31 +12,37 @@
       <engine:VisualElement name="linha0" class="linha">
       </engine:VisualElement>
       
-      <engine:VisualElement name="linha1" class="linha">
+      <engine:VisualElement name="linha1-1" class="linha">
         <editor:ColorField label="Placa Frente" name="placa-frente" class="campoCor"/>
         <engine:Button name="select-placa-frente" text="Select" />
         <engine:Button name="reset-placa-frente" text="Reset" />
       </engine:VisualElement>
 
-      <engine:VisualElement name="linha2" class="linha">
+      <engine:VisualElement name="linha1-2" class="linha">
         <editor:ColorField label="Vigas" name="viga" class="campoCor"/>
         <engine:Button name="select-viga" text="Select" />
         <engine:Button name="reset-viga" text="Reset" />
       </engine:VisualElement>
+
+      <engine:VisualElement name="linha1-3" class="linha">
+        <editor:ColorField label="Base Chao" name="base-chao" class="campoCor"/>
+        <engine:Button name="select-base-chao" text="Select" />
+        <engine:Button name="reset-base-chao" text="Reset" />
+      </engine:VisualElement>
       
-      <engine:VisualElement name="linha3" class="linha inicio">
+      <engine:VisualElement name="linha2-1" class="linha inicio">
         <editor:ColorField label="Timer Placa Principal" name="placa-timer" class="campoCor"/>
         <engine:Button name="select-placa-timer" text="Select" />
         <engine:Button name="reset-placa-timer" text="Reset" />
       </engine:VisualElement>
 
-      <engine:VisualElement name="linha4" class="linha">
+      <engine:VisualElement name="linha2-2" class="linha">
         <editor:ColorField label="Timer Placa Digito" name="display-timer-digito" class="campoCor"/>
         <engine:Button name="select-display-timer-digito" text="Select" />
         <engine:Button name="reset-display-timer-digito" text="Reset" />
       </engine:VisualElement>
 
-      <engine:VisualElement name="linha5" class="linha">
+      <engine:VisualElement name="linha2-3" class="linha">
         <editor:ColorField label="Timer Segmentos" name="seg" class="campoCor"/>
         <engine:Button name="select-seg" text="Select" />
         <engine:Button name="reset-seg" text="Reset" />
