@@ -29,6 +29,12 @@
         <engine:Button name="select-base-chao" text="Select" />
         <engine:Button name="reset-base-chao" text="Reset" />
       </engine:VisualElement>
+
+      <engine:VisualElement name="linha1-3" class="linha">
+        <editor:ColorField label="Barra" name="barra" class="campoCor"/>
+        <engine:Button name="select-barra" text="Select" />
+        <engine:Button name="reset-barra" text="Reset" />
+      </engine:VisualElement>
       
       <engine:VisualElement name="linha2-1" class="linha inicio">
         <editor:ColorField label="Timer Placa Principal" name="placa-timer" class="campoCor"/>

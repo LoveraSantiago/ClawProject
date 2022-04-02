@@ -38,6 +38,7 @@ public class MaquinaAssemblerV5 : EditorWindow
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.PLACA_FRENTE);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.VIGAS);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BASE_CHAO);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BARRA);
 
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO);
@@ -52,8 +53,7 @@ public class MaquinaAssemblerV5 : EditorWindow
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL2);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL3);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS);       
-        
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS);               
     }
     
     private void bindarComponentes(VisualElement root, MaquinaColoridaV2 maquina, string componente)

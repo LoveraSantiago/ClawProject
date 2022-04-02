@@ -20,6 +20,9 @@ public class MaquinaColoridaV2 : FinderComponente
         VigasColoriveis vigas = new VigasColoriveis(this);
         dicionario.Add(ConstantesCoresMaquinaV2.VIGAS, vigas.getVigas());
 
+        BarraColorivel barra = new BarraColorivel(this);
+        dicionario.Add(ConstantesCoresMaquinaV2.BARRA, barra.getBarra());
+
         TimerColorivel timer = new TimerColorivel(this);
         dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL, timer.getPlacaPrincipal());
         dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO, timer.getPlacaDigitos());
