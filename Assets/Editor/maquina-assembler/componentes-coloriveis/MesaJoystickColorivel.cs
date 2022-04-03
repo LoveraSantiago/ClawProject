@@ -64,6 +64,52 @@ public class MesaJoystickColorivel
         return new SingleCompColorivel(goBtn);
     }
 
+    public ComponenteColorivel getOrificioFicha()
+    {
+        GameObject goFicha = finder.findNoComponente(goMesaBaixo, ConstantesCoresMaquinaV2.ORIFICIO_FICHA);
+        return new SingleCompColorivel(goFicha);
+    }
+
+    public ComponenteColorivel getOrificioCard()
+    {
+        GameObject goCard = finder.findNoComponente(goMesaBaixo, ConstantesCoresMaquinaV2.ORIFICIO_CARD);
+        return new SingleCompColorivel(goCard);
+    }
+
+    public ComponenteColorivel getOrificioTrianguloFicha()
+    {
+        GameObject goSeta = finder.findNoComponente(goMesaBaixo, ConstantesCoresMaquinaV2.ORIFICIO_SETA);
+        return new SingleCompColorivel(goSeta);
+    }
+
+    public ComponenteColorivel getBtnPupBaseDireita()
+    {
+        GameObject goBtnPup = getBtnPupDireita();
+        GameObject goBtnBase = extrairBtnBaixoFrom(goBtnPup);
+        return new SingleCompColorivel(goBtnBase);
+    }
+
+    public ComponenteColorivel getBtnPupTopoDireita()
+    {
+        GameObject goBtnPup = getBtnPupDireita();
+        GameObject goBtnTampa = extrairBtnTampaFrom(goBtnPup);
+        return new SingleCompColorivel(goBtnTampa);
+    }
+
+    public ComponenteColorivel getBtnPupBaseEsquerda()
+    {
+        GameObject goBtnPup = getBtnPupEsquerda();
+        GameObject goBtnBase = extrairBtnBaixoFrom(goBtnPup);
+        return new SingleCompColorivel(goBtnBase);
+    }
+
+    public ComponenteColorivel getBtnPupTopoEsquerda()
+    {
+        GameObject goBtnPup = getBtnPupEsquerda();
+        GameObject goBtnTampa = extrairBtnTampaFrom(goBtnPup);
+        return new SingleCompColorivel(goBtnTampa);
+    }
+
     private GameObject getGoMesaJoystickCima()
     {
         return finder.findNoComponente(goMesaCima, ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA);
@@ -77,5 +123,25 @@ public class MesaJoystickColorivel
     private GameObject getBotaoJoystick()
     {
         return finder.findNoComponente(goMesaCima, "botao-joystick");
+    }
+
+    private GameObject getBtnPupDireita()
+    {
+        return finder.findNoComponente(goMesaCima, "btn-powerup-direita");
+    }
+
+    private GameObject getBtnPupEsquerda()
+    {
+        return finder.findNoComponente(goMesaCima, "btn-powerup-esquerda");
+    }
+
+    private GameObject extrairBtnBaixoFrom(GameObject goBtn)
+    {
+        return finder.findNoComponente(goBtn, "botao-baixo");
+    }
+
+    private GameObject extrairBtnTampaFrom(GameObject goBtn)
+    {
+        return finder.findNoComponente(goBtn, "botao-tampa");
     }
 }

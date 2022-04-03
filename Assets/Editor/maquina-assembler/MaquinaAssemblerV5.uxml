@@ -173,6 +173,48 @@
         <engine:Button name="select-botao" text="Select" />
         <engine:Button name="reset-botao" text="Reset" />
       </engine:VisualElement>
+      
+      <engine:VisualElement name="linha7-1" class="linha inicio">
+        <editor:ColorField label="Buraco Ficha" name="buraco-ficha" class="campoCor"/>
+        <engine:Button name="select-buraco-ficha" text="Select" />
+        <engine:Button name="reset-buraco-ficha" text="Reset" />
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha7-2" class="linha">
+        <editor:ColorField label="Buraco Ficha" name="buraco-card" class="campoCor"/>
+        <engine:Button name="select-buraco-card" text="Select" />
+        <engine:Button name="reset-buraco-card" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha7-3" class="linha">
+        <editor:ColorField label="Buraco Ficha" name="triangulo-card" class="campoCor"/>
+        <engine:Button name="select-triangulo-card" text="Select" />
+        <engine:Button name="reset-triangulo-card" text="Reset" />
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha8-1" class="linha inicio">
+        <editor:ColorField label="Btn Pup Base Esq" name="btn-pup-base-e" class="campoCor"/>
+        <engine:Button name="select-btn-pup-base-e" text="Select" />
+        <engine:Button name="reset-btn-pup-base-e" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha8-2" class="linha">
+        <editor:ColorField label="Btn Pup Tampa Esq" name="btn-pup-topo-e" class="campoCor"/>
+        <engine:Button name="select-btn-pup-topo-e" text="Select" />
+        <engine:Button name="reset-btn-pup-topo-e" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha8-3" class="linha">
+        <editor:ColorField label="Btn Pup Base Dir" name="btn-pup-base-d" class="campoCor"/>
+        <engine:Button name="select-btn-pup-base-d" text="Select" />
+        <engine:Button name="reset-btn-pup-base-d" text="Reset" />
+      </engine:VisualElement>
+
+     <engine:VisualElement name="linha8-4" class="linha">
+        <editor:ColorField label="Btn Pup Tampa Dir" name="btn-pup-topo-d" class="campoCor"/>
+        <engine:Button name="select-btn-pup-topo-d" text="Select" />
+        <engine:Button name="reset-btn-pup-topo-d" text="Reset" />
+      </engine:VisualElement>
 
     </engine:ScrollView>
 </engine:UXML>

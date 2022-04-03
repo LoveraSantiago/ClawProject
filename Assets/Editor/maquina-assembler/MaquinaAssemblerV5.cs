@@ -66,7 +66,16 @@ public class MaquinaAssemblerV5 : EditorWindow
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.JOYSTICK_HASTE);               
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.JOYSTICK_BOLA);               
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.JOYSTICK_BTN_SUPORTE);               
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.JOYSTICK_BTN);               
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.JOYSTICK_BTN);
+
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.ORIFICIO_FICHA);               
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.ORIFICIO_CARD);               
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.ORIFICIO_SETA);
+
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_BASE_DIREITA);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_TOPO_DIREITA);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_BASE_ESQUERDA);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_TOPO_ESQUERDA);
     }
     
     private void bindarComponentes(VisualElement root, MaquinaColoridaV2 maquina, string componente)

@@ -55,6 +55,14 @@ public class MaquinaColoridaV2 : FinderComponente
         dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_BOLA       , mesa.getJoystickBola());
         dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_BTN_SUPORTE, mesa.getJoystickBtnSuporte());
         dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_BTN        , mesa.getJoystickBtn());
+        dicionario.Add(ConstantesCoresMaquinaV2.ORIFICIO_FICHA      , mesa.getOrificioFicha());
+        dicionario.Add(ConstantesCoresMaquinaV2.ORIFICIO_CARD       , mesa.getOrificioCard());
+        dicionario.Add(ConstantesCoresMaquinaV2.ORIFICIO_SETA       , mesa.getOrificioTrianguloFicha());
+
+        dicionario.Add(ConstantesCoresMaquinaV2.BTN_PUP_BASE_DIREITA , mesa.getBtnPupBaseDireita());
+        dicionario.Add(ConstantesCoresMaquinaV2.BTN_PUP_TOPO_DIREITA , mesa.getBtnPupTopoDireita());
+        dicionario.Add(ConstantesCoresMaquinaV2.BTN_PUP_BASE_ESQUERDA, mesa.getBtnPupBaseEsquerda());
+        dicionario.Add(ConstantesCoresMaquinaV2.BTN_PUP_TOPO_ESQUERDA, mesa.getBtnPupTopoEsquerda());
     }
 
     private void inicializarGos()

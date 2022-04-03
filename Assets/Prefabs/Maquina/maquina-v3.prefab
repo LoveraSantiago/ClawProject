@@ -4543,7 +4543,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1499397873550667270, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
       propertyPath: m_Name
-      value: btn-power-direita
+      value: btn-powerup-direita
       objectReference: {fileID: 0}
     - target: {fileID: 1991786008714251574, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
       propertyPath: m_SortingOrder
@@ -5573,7 +5573,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1499397873550667270, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
       propertyPath: m_Name
-      value: btn-power-esquerda
+      value: btn-powerup-esquerda
       objectReference: {fileID: 0}
     - target: {fileID: 1991786008714251574, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
       propertyPath: m_SortingOrder
