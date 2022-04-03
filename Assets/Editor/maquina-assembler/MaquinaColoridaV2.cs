@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class MaquinaColoridaV2 : FinderComponente
 {
@@ -113,5 +114,16 @@ public class MaquinaColoridaV2 : FinderComponente
     public void reset(string nome)
     {
         dicionario[nome].resetCor();
+    }
+
+    public void gerarMapa()
+    {
+        string texto = "Dictionary<string, string> dicionario = new Dictionary<string, string>();" + Environment.NewLine;
+
+        foreach (KeyValuePair<string, ComponenteColorivel> entry in dicionario)
+        {
+            texto += "dicionario.Add(\"" + entry.Key + "\", \"#" + ColorUtility.ToHtmlStringRGB(entry.Value.getCor()) + "\");" + Environment.NewLine;
+        }
+        Debug.Log(texto);
     }
 }

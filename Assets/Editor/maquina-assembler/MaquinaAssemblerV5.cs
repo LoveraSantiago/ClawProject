@@ -84,6 +84,8 @@ public class MaquinaAssemblerV5 : EditorWindow
 
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
+
+        root.Q<Button>("mapa").clicked += () => maquina.gerarMapa();
     }
     
     private void bindarComponentes(VisualElement root, MaquinaColoridaV2 maquina, string componente)
