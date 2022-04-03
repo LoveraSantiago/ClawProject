@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class VigasColoriveis 
+public class ColorivelVigas 
 {
     private FinderComponente finder;
 
-    public VigasColoriveis(FinderComponente finder)
+    public ColorivelVigas(FinderComponente finder)
     {
         this.finder = finder;
     }

@@ -19,18 +19,18 @@ public class MaquinaColoridaV2 : FinderComponente
         dicionario.Add(ConstantesCoresMaquinaV2.CHAO_DENTRO  , new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.CHAO_DENTRO)));
         dicionario.Add(ConstantesCoresMaquinaV2.CABO_DA_GARRA, new SingleCompLineRendererColorivel(goCabo));
 
-        VigasColoriveis vigas = new VigasColoriveis(this);
+        ColorivelVigas vigas = new ColorivelVigas(this);
         dicionario.Add(ConstantesCoresMaquinaV2.VIGAS, vigas.getVigas());
 
-        BarraColorivel barra = new BarraColorivel(this);
+        ColorivelBarra barra = new ColorivelBarra(this);
         dicionario.Add(ConstantesCoresMaquinaV2.BARRA, barra.getBarra());
 
-        TimerColorivel timer = new TimerColorivel(this);
+        ColorivelTimer timer = new ColorivelTimer(this);
         dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL  , timer.getPlacaPrincipal());
         dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO     , timer.getPlacaDigitos());
         dicionario.Add(ConstantesCoresMaquinaV2.TIMER_DISPLAY_SEGMENTOS, timer.getSegmentos());
 
-        DisplayColetavelColorivel dispColetavel = new DisplayColetavelColorivel(this);
+        ColorivelDisplayColetavel dispColetavel = new ColorivelDisplayColetavel(this);
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO      , dispColetavel.getPlacaPrincipal());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL1, dispColetavel.getPlacaIndividual1());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL2, dispColetavel.getPlacaIndividual2());
@@ -43,11 +43,11 @@ public class MaquinaColoridaV2 : FinderComponente
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL3, displayScore.getPlacaIndividual3());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS             , displayScore.getGrupoLeds());
 
-        TuboColorivel tubo = new TuboColorivel(this);
+        ColorivelTubo tubo = new ColorivelTubo(this);
         dicionario.Add(ConstantesCoresMaquinaV2.TUBO_BORDA, tubo.getBorda());
         dicionario.Add(ConstantesCoresMaquinaV2.TUBO_BASE , tubo.getBase());
 
-        MesaJoystickColorivel mesa = new MesaJoystickColorivel(this);
+        ColorivelMesaJoystick mesa = new ColorivelMesaJoystick(this);
         dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA  , mesa.getMesaCima());
         dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_MESA_BAIXO , mesa.getMesaBaixo());
         dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_SUPORTE    , mesa.getJoystickSuporte());

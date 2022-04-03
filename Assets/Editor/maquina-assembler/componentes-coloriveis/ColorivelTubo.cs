@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class TuboColorivel
+public class ColorivelTubo
 {
     private FinderComponente finder;
     private GameObject goTubo;
 
-    public TuboColorivel(FinderComponente finder)
+    public ColorivelTubo(FinderComponente finder)
     {
         this.finder = finder;
         goTubo = finder.findNaMaquina("tubo");

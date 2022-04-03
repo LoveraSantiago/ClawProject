@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class TimerColorivel 
+public class ColorivelTimer 
 {
     private GameObject goTimer;
     private FinderComponente finder;
 
-    public TimerColorivel(FinderComponente finder)
+    public ColorivelTimer(FinderComponente finder)
     {
         this.finder = finder;
         goTimer = getTimerPrincipal();

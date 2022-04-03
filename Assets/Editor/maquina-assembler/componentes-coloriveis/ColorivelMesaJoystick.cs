@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MesaJoystickColorivel
+public class ColorivelMesaJoystick
 {
     private GameObject goMesaCima;
     private GameObject goMesaBaixo;
@@ -8,7 +8,7 @@ public class MesaJoystickColorivel
 
     private FinderComponente finder;
 
-    public MesaJoystickColorivel(FinderComponente finder)
+    public ColorivelMesaJoystick(FinderComponente finder)
     {
         this.finder = finder;
         GameObject goMesa = finder.findNaMaquina("mesa-joystick");

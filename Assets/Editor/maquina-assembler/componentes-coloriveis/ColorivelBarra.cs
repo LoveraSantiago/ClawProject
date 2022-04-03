@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class BarraColorivel
+public class ColorivelBarra
 {
     private FinderComponente finder;
 
-    public BarraColorivel(FinderComponente finder)
+    public ColorivelBarra(FinderComponente finder)
     {
         this.finder = finder;
     }

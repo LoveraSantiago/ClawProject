@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class DisplayColetavelColorivel 
+public class ColorivelDisplayColetavel 
 {
     private FinderComponente finder;
     private GameObject goDisplayColetado;
 
-    public DisplayColetavelColorivel(FinderComponente finder)
+    public ColorivelDisplayColetavel(FinderComponente finder)
     {
         this.finder = finder;
         goDisplayColetado = finder.findNaMaquina("display-coletados");
