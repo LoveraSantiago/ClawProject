@@ -29,16 +29,8 @@ public class DisplayTimerDigitos
 
     public void passarCoresAosDisplayDigitos(Dictionary<string, string> dicionarioDeCores)
     {
-        string corTimerHex = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_TIMER];
-        string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquina.DIGITOS_TIMERS];
-
-        placaTimer.color = Utils.getCorByHex(corTimerHex);
-
-        Color corDigito = Utils.getCorByHex(corDigitosHex);
-        displayTimerDigito[0].configuradoPeloLevel(corDigito);
-        displayTimerDigito[1].configuradoPeloLevel(corDigito);
-        displayTimerDigito[2].configuradoPeloLevel(corDigito);
-        displayTimerDigito[3].configuradoPeloLevel(corDigito);
+        ColoridorTimerV2 coloridor = new ColoridorTimerV2(placaTimer, displayTimerDigito);
+        coloridor.colorir(dicionarioDeCores);
     }
 
     public void blinkar(bool estadoBlink)

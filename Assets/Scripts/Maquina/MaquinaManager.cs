@@ -14,19 +14,19 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 {    
     private PartesMaquinaDto partesDto;
 
-    private Joystick          joystick;    
-    private VigaParte         vigaEsquerda;
-    private VigaParte         vigaDireita;
-    private DisplayTimer      displayTimer;
-    private BotoesPowerUp     botoesPowerUp;
-    private BotaoLigaDesliga  botaoLigaDesliga;
-    private ArcoIrisEfeito    arcoIrisEfeito;
-    private DisplayDeScores   displayDeScores;    
-    public  DisplaysDeSlots   displaysDeSlots { get; private set; }
-    private BordasVidroFrente bordasFrenteVidro;
-    private TudoDeSaida       tuboDeSaida;
-    private Chao              chao;
-    private Barra             barra;
+    private Joystick            joystick;    
+    private VigaParteV2         vigaEsquerda;
+    private VigaParteV2         vigaDireita;
+    private DisplayTimer        displayTimer;
+    private BotoesPowerUp       botoesPowerUp;
+    private BotaoLigaDesliga    botaoLigaDesliga;
+    private ArcoIrisEfeito      arcoIrisEfeito;
+    private DisplayDeScores     displayDeScores;    
+    public  DisplaysDeSlots     displaysDeSlots { get; private set; }
+    private BordasVidroFrenteV2 bordasFrenteVidro;
+    private TudoDeSaidaV2       tuboDeSaida;
+    private ChaoV2              chao;
+    private BarraV2             barra;
 
     public MaquinaManager(MaquinaDto maquinaDto)
     {
@@ -38,12 +38,12 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         joystick          = new Joystick(maquinaDto.JoystickDto);
         botoesPowerUp     = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         botaoLigaDesliga  = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);        
-        vigaEsquerda      = new VigaParte(maquinaDto.VigaLadoEsquerdoDto);
-        vigaDireita       = new VigaParte(maquinaDto.VigaLadoDireitoDto);
-        bordasFrenteVidro = new BordasVidroFrente(maquinaDto.BordasFrenteDto);
-        tuboDeSaida       = new TudoDeSaida(maquinaDto.TuboDto);
-        chao              = new Chao(maquinaDto.ChaoDto);
-        barra             = new Barra(maquinaDto.BarraDto);
+        vigaEsquerda      = new VigaParteV2(maquinaDto.VigaLadoEsquerdoDto);
+        vigaDireita       = new VigaParteV2(maquinaDto.VigaLadoDireitoDto);
+        bordasFrenteVidro = new BordasVidroFrenteV2(maquinaDto.BordasFrenteDto);
+        tuboDeSaida       = new TudoDeSaidaV2(maquinaDto.TuboDto);
+        chao              = new ChaoV2(maquinaDto.ChaoDto);
+        barra             = new BarraV2(maquinaDto.BarraDto);
 
         arcoIrisEfeito = new ArcoIrisEfeito(maquinaDto.FactorHdr)//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW            
             .addArcoIrisConjunto(displaysDeSlots.getDisplayColetadoGlow())
@@ -73,7 +73,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         AntesExecutorTimerRestart executor = new AntesExecutorTimerRestart(botoesPowerUp, arcoIrisEfeito);
         displayTimer.configuradoPeloLevel(levelEscolhido, executor);
 
-        new ColoridorMaquina()
+        new ColoridorMaquinaV2()
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());
     }
 

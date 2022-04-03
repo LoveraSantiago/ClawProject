@@ -33,7 +33,7 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
 
     public void configuradoPeloLevel(AbstractLevel level)
     {        
-        new ColoridorBotoes().colorir(btnsPowerUp, level.getDicionarioDeCores());        
+        new ColoridorBotoesV2().colorir(btnsPowerUp, level.getDicionarioDeCores());        
     }
 
     public ArcoIrisConjunto getBotoesGlow()

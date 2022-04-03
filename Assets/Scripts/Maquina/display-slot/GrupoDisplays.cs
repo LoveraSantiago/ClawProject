@@ -20,7 +20,7 @@ public class GrupoDisplays : ArcoIrisConjunto
 
     public void colorirDisplays(Dictionary<string, string> dicionarioDeCores)
     {
-        new ColoridorDisplaysColetados().colorir(displayDeSlot, dicionarioDeCores);
+        new ColoridorDisplaysColetadosV2().colorir(displayDeSlot, dicionarioDeCores);
     }
 
     public void setarEstadoPowerUp(bool estado)

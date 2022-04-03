@@ -36,26 +36,8 @@ public class Joystick : AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioCores)
     {
-        string hexCor = dicionarioCores[ConstantesCoresMaquina.PARTE_CIMA];
-        joystickDto.ParteCima.color = Utils.getCorByHex(hexCor);
-
-        hexCor = dicionarioCores[ConstantesCoresMaquina.PARTE_BAIXO];
-        joystickDto.ParteBaixo.color = Utils.getCorByHex(hexCor);
-
-        hexCor = dicionarioCores[ConstantesCoresMaquina.FURO_HASTE];
-        joystickDto.FuroHaste.color = Utils.getCorByHex(hexCor);
-
-        hexCor = dicionarioCores[ConstantesCoresMaquina.HASTE];
-        joystickDto.Haste.color = Utils.getCorByHex(hexCor);
-
-        hexCor = dicionarioCores[ConstantesCoresMaquina.JOYSTICK_BOLA];
-        joystickDto.Bola.color = Utils.getCorByHex(hexCor);
-
-        hexCor = dicionarioCores[ConstantesCoresMaquina.FURO_BOTAO];
-        joystickDto.FuroBotao.color = Utils.getCorByHex(hexCor);
-
-        hexCor = dicionarioCores[ConstantesCoresMaquina.BOTAO];
-        joystickDto.JoystickBotao.color = Utils.getCorByHex(hexCor);
+        ColoridorJoystickV2 coloridorJoystick = new ColoridorJoystickV2();
+        coloridorJoystick.colorir(joystickDto, dicionarioCores);        
     }
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<Direcao> INICIO

@@ -27,17 +27,8 @@ public class DisplayDeScores : ArcoIrisConjunto
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
     {
-        string hexCor = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_SCORES1];
-        string hexLed = dicionarioDeCores[ConstantesCoresMaquina.LEDS1];
-        displayCentena.configuradoPeloLevel(hexCor, hexLed);
-
-        hexCor = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_SCORES2];
-        hexLed = dicionarioDeCores[ConstantesCoresMaquina.LEDS2];
-        displayDezena.configuradoPeloLevel(hexCor, hexLed);
-
-        hexCor = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_SCORES3];
-        hexLed = dicionarioDeCores[ConstantesCoresMaquina.LEDS3];
-        displayUnidade.configuradoPeloLevel(hexCor, hexLed);
+        ColoridorDeLedsV2 coloridor = new ColoridorDeLedsV2(displayCentena, displayDezena, displayUnidade);
+        coloridor.colorir(dicionarioDeCores);
     }
     
     public void mostrarScore(int score, bool result)
