@@ -14,9 +14,9 @@ public class MaquinaColoridaV2 : FinderComponente
         inicializarGos();
 
         dicionario = new Dictionary<string, ComponenteColorivel>();
-        dicionario.Add(ConstantesCoresMaquinaV2.PLACA_FRENTE, new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.PLACA_FRENTE)));
-        dicionario.Add(ConstantesCoresMaquinaV2.BASE_CHAO, new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.BASE_CHAO)));
-        dicionario.Add(ConstantesCoresMaquinaV2.CHAO_DENTRO, new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.CHAO_DENTRO)));
+        dicionario.Add(ConstantesCoresMaquinaV2.PLACA_FRENTE , new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.PLACA_FRENTE)));
+        dicionario.Add(ConstantesCoresMaquinaV2.BASE_CHAO    , new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.BASE_CHAO)));
+        dicionario.Add(ConstantesCoresMaquinaV2.CHAO_DENTRO  , new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.CHAO_DENTRO)));
         dicionario.Add(ConstantesCoresMaquinaV2.CABO_DA_GARRA, new SingleCompLineRendererColorivel(goCabo));
 
         VigasColoriveis vigas = new VigasColoriveis(this);
@@ -26,26 +26,35 @@ public class MaquinaColoridaV2 : FinderComponente
         dicionario.Add(ConstantesCoresMaquinaV2.BARRA, barra.getBarra());
 
         TimerColorivel timer = new TimerColorivel(this);
-        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL, timer.getPlacaPrincipal());
-        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO, timer.getPlacaDigitos());
+        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL  , timer.getPlacaPrincipal());
+        dicionario.Add(ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO     , timer.getPlacaDigitos());
         dicionario.Add(ConstantesCoresMaquinaV2.TIMER_DISPLAY_SEGMENTOS, timer.getSegmentos());
 
         DisplayColetavelColorivel dispColetavel = new DisplayColetavelColorivel(this);
-        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO, dispColetavel.getPlacaPrincipal());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO      , dispColetavel.getPlacaPrincipal());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL1, dispColetavel.getPlacaIndividual1());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL2, dispColetavel.getPlacaIndividual2());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL3, dispColetavel.getPlacaIndividual3());
 
         DisplayScoreColorivel displayScore = new DisplayScoreColorivel(this);
-        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_GRUPO, displayScore.getPlacaGrupo());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_GRUPO      , displayScore.getPlacaGrupo());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1, displayScore.getPlacaIndividual1());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL2, displayScore.getPlacaIndividual2());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL3, displayScore.getPlacaIndividual3());
-        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS, displayScore.getGrupoLeds());
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS             , displayScore.getGrupoLeds());
 
         TuboColorivel tubo = new TuboColorivel(this);
         dicionario.Add(ConstantesCoresMaquinaV2.TUBO_BORDA, tubo.getBorda());
-        dicionario.Add(ConstantesCoresMaquinaV2.TUBO_BASE, tubo.getBase());
+        dicionario.Add(ConstantesCoresMaquinaV2.TUBO_BASE , tubo.getBase());
+
+        MesaJoystickColorivel mesa = new MesaJoystickColorivel(this);
+        dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA  , mesa.getMesaCima());
+        dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_MESA_BAIXO , mesa.getMesaBaixo());
+        dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_SUPORTE    , mesa.getJoystickSuporte());
+        dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_HASTE      , mesa.getJoystickHaste());
+        dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_BOLA       , mesa.getJoystickBola());
+        dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_BTN_SUPORTE, mesa.getJoystickBtnSuporte());
+        dicionario.Add(ConstantesCoresMaquinaV2.JOYSTICK_BTN        , mesa.getJoystickBtn());
     }
 
     private void inicializarGos()

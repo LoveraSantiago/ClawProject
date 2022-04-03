@@ -132,5 +132,47 @@
         <engine:Button name="reset-topo" text="Reset" />
       </engine:VisualElement>
 
+      <engine:VisualElement name="linha5-1" class="linha inicio">
+        <editor:ColorField label="Mesa Joyst Cima" name="mesa-joystick-cima" class="campoCor"/>
+        <engine:Button name="select-mesa-joystick-cima" text="Select" />
+        <engine:Button name="reset-mesa-joystick-cima" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha5-2" class="linha">
+        <editor:ColorField label="Mesa Joyst Baixo" name="mesa-joystick-baixo" class="campoCor"/>
+        <engine:Button name="select-mesa-joystick-baixo" text="Select" />
+        <engine:Button name="reset-mesa-joystick-baixo" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha6-1" class="linha inicio">
+        <editor:ColorField label="Joyst Suporte" name="buraco-joystick" class="campoCor"/>
+        <engine:Button name="select-buraco-joystick" text="Select" />
+        <engine:Button name="reset-buraco-joystick" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha6-2" class="linha">
+        <editor:ColorField label="Joyst Haste" name="haste-joystick" class="campoCor"/>
+        <engine:Button name="select-haste-joystick" text="Select" />
+        <engine:Button name="reset-haste-joystick" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha6-3" class="linha">
+        <editor:ColorField label="Joyst Bola" name="bola-joystick" class="campoCor"/>
+        <engine:Button name="select-bola-joystick" text="Select" />
+        <engine:Button name="reset-bola-joystick" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha6-4" class="linha">
+        <editor:ColorField label="Joyst Botao Suporte" name="buraco-botao" class="campoCor"/>
+        <engine:Button name="select-buraco-botao" text="Select" />
+        <engine:Button name="reset-buraco-botao" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha6-5" class="linha">
+        <editor:ColorField label="Joyst Botao" name="botao" class="campoCor"/>
+        <engine:Button name="select-botao" text="Select" />
+        <engine:Button name="reset-botao" text="Reset" />
+      </engine:VisualElement>
+
     </engine:ScrollView>
 </engine:UXML>

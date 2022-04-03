@@ -25,6 +25,14 @@ public class ConstantesCoresMaquinaV2
     public static readonly string TUBO_BASE  = "base";
     public static readonly string TUBO_BORDA = "topo";
 
+    public static readonly string JOYSTICK_MESA_CIMA   = "mesa-joystick-cima";
+    public static readonly string JOYSTICK_MESA_BAIXO  = "mesa-joystick-baixo";
+    public static readonly string JOYSTICK_SUPORTE     = "buraco-joystick";
+    public static readonly string JOYSTICK_HASTE       = "haste-joystick";
+    public static readonly string JOYSTICK_BOLA        = "bola-joystick";
+    public static readonly string JOYSTICK_BTN_SUPORTE = "buraco-botao";
+    public static readonly string JOYSTICK_BTN         = "botao";
+
 
     
 }
