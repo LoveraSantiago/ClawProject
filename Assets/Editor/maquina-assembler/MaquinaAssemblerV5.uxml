@@ -118,7 +118,19 @@
         <editor:ColorField label="Leds Score" name="leds" class="campoCor"/>
         <engine:Button name="select-leds" text="Select" />
         <engine:Button name="reset-leds" text="Reset" />
-      </engine:VisualElement>   
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha5-1" class="linha inicio">
+        <editor:ColorField label="Tubo Base" name="base" class="campoCor"/>
+        <engine:Button name="select-base" text="Select" />
+        <engine:Button name="reset-base" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha5-2" class="linha">
+        <editor:ColorField label="Tubo Topo" name="topo" class="campoCor"/>
+        <engine:Button name="select-topo" text="Select" />
+        <engine:Button name="reset-topo" text="Reset" />
+      </engine:VisualElement>
 
     </engine:ScrollView>
 </engine:UXML>

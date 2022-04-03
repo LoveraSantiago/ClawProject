@@ -41,7 +41,11 @@ public class MaquinaColoridaV2 : FinderComponente
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1, displayScore.getPlacaIndividual1());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL2, displayScore.getPlacaIndividual2());
         dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL3, displayScore.getPlacaIndividual3());
-        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS, displayScore.getGrupoLeds());        
+        dicionario.Add(ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS, displayScore.getGrupoLeds());
+
+        TuboColorivel tubo = new TuboColorivel(this);
+        dicionario.Add(ConstantesCoresMaquinaV2.TUBO_BORDA, tubo.getBorda());
+        dicionario.Add(ConstantesCoresMaquinaV2.TUBO_BASE, tubo.getBase());
     }
 
     private void inicializarGos()
