@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
-
+using System.Collections.Generic;
 
 public class MaquinaAssemblerV5 : EditorWindow
 {
@@ -33,6 +33,7 @@ public class MaquinaAssemblerV5 : EditorWindow
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/maquina-assembler/MaquinaAssemblerV5.uss");
 
+        criarComponentDropDownField(root);
         maquina = new MaquinaColoridaV2();
 
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.PLACA_FRENTE);
@@ -98,5 +99,29 @@ public class MaquinaAssemblerV5 : EditorWindow
 
         root.Q<Button>("reset-" + componente)
             .clicked += () => maquina.reset(componente);
+    }
+
+    private void criarComponentDropDownField(VisualElement root)
+    {
+        List<string> listaDeLevels = LevelHelper.getAllLevels();
+
+        DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
+        dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {
+            if (evt.newValue != "0")
+            {
+                AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
+                Dictionary<string, string> dicionarioDeCores = level.getDicionarioDeCores();
+                foreach (KeyValuePair<string, string> entry in dicionarioDeCores)
+                {
+                    ColorField colorField = root.Q<ColorField>(entry.Key);
+                    Color cor = Utils.getCorByHex(entry.Value);
+                    colorField.value = cor;
+                    maquina.colorir(entry.Key, cor);
+                }
+            }
+        });
+
+        root.Q<VisualElement>("linha0")
+               .Add(dropDownField);
     }
 }
