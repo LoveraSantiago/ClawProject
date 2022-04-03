@@ -16,6 +16,8 @@ public class MaquinaColoridaV2 : FinderComponente
         dicionario = new Dictionary<string, ComponenteColorivel>();
         dicionario.Add(ConstantesCoresMaquinaV2.PLACA_FRENTE, new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.PLACA_FRENTE)));
         dicionario.Add(ConstantesCoresMaquinaV2.BASE_CHAO, new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.BASE_CHAO)));
+        dicionario.Add(ConstantesCoresMaquinaV2.CHAO_DENTRO, new SingleCompColorivel(findNaMaquina(ConstantesCoresMaquinaV2.CHAO_DENTRO)));
+        dicionario.Add(ConstantesCoresMaquinaV2.CABO_DA_GARRA, new SingleCompLineRendererColorivel(goCabo));
 
         VigasColoriveis vigas = new VigasColoriveis(this);
         dicionario.Add(ConstantesCoresMaquinaV2.VIGAS, vigas.getVigas());

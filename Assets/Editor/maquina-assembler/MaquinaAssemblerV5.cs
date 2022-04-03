@@ -39,6 +39,8 @@ public class MaquinaAssemblerV5 : EditorWindow
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.VIGAS);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BASE_CHAO);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BARRA);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.CHAO_DENTRO);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.CABO_DA_GARRA);
 
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO);
