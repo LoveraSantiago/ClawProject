@@ -76,6 +76,12 @@ public class MaquinaAssemblerV5 : EditorWindow
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_TOPO_DIREITA);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_BASE_ESQUERDA);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_TOPO_ESQUERDA);
+
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_SETA_CIMA);
+
     }
     
     private void bindarComponentes(VisualElement root, MaquinaColoridaV2 maquina, string componente)

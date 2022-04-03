@@ -216,5 +216,29 @@
         <engine:Button name="reset-btn-pup-topo-d" text="Reset" />
       </engine:VisualElement>
 
+      <engine:VisualElement name="linha9-1" class="linha inicio">
+        <editor:ColorField label="Scroll Placa Externa" name="placa-externa" class="campoCor"/>
+        <engine:Button name="select-placa-externa" text="Select" />
+        <engine:Button name="reset-placa-externa" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha9-2" class="linha">
+        <editor:ColorField label="Scroll Placa Interna" name="placa-interna" class="campoCor"/>
+        <engine:Button name="select-placa-interna" text="Select" />
+        <engine:Button name="reset-placa-interna" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha9-3" class="linha">
+        <editor:ColorField label="Scroll Setas Laterais" name="setas-laterais" class="campoCor"/>
+        <engine:Button name="select-setas-laterais" text="Select" />
+        <engine:Button name="reset-setas-laterais" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha9-4" class="linha">
+        <editor:ColorField label="Scroll Seta Cima" name="seta-cima" class="campoCor"/>
+        <engine:Button name="select-seta-cima" text="Select" />
+        <engine:Button name="reset-seta-cima" text="Reset" />
+      </engine:VisualElement>
+
     </engine:ScrollView>
 </engine:UXML>
