@@ -82,6 +82,9 @@ public class MaquinaAssemblerV5 : EditorWindow
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_SETA_CIMA);
 
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
+
     }
     
     private void bindarComponentes(VisualElement root, MaquinaColoridaV2 maquina, string componente)

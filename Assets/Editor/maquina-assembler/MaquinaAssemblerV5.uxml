@@ -239,6 +239,18 @@
         <engine:Button name="select-seta-cima" text="Select" />
         <engine:Button name="reset-seta-cima" text="Reset" />
       </engine:VisualElement>
+      
+      <engine:VisualElement name="linha10-1" class="linha">
+        <editor:ColorField label="Scroll Seta Cima" name="circulo-externo" class="campoCor"/>
+        <engine:Button name="select-circulo-externo" text="Select" />
+        <engine:Button name="reset-circulo-externo" text="Reset" />
+      </engine:VisualElement>
+
+    <engine:VisualElement name="linha11-2" class="linha">
+        <editor:ColorField label="Scroll Seta Cima" name="circulo-interno" class="campoCor"/>
+        <engine:Button name="select-circulo-interno" text="Select" />
+        <engine:Button name="reset-circulo-interno" text="Reset" />
+      </engine:VisualElement>
 
     </engine:ScrollView>
 </engine:UXML>

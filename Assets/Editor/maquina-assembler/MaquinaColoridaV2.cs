@@ -69,6 +69,10 @@ public class MaquinaColoridaV2 : FinderComponente
         dicionario.Add(ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA , scrollPup.getPlacaInterna());
         dicionario.Add(ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS, scrollPup.getSetasLaterais());
         dicionario.Add(ConstantesCoresMaquinaV2.SCROLL_PUP_SETA_CIMA     , scrollPup.getSetaSuperior());
+
+        ColorivelSimbolo simbolos = new ColorivelSimbolo(this);
+        dicionario.Add(ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO, simbolos.getSimbolosExternos());
+        dicionario.Add(ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO, simbolos.getSimbolosInternos());
     }
 
     private void inicializarGos()
