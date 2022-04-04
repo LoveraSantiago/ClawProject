@@ -8,7 +8,8 @@ public class MaquinaDto
     [SerializeField] private float factorHdr;
     [SerializeField] private Transform referenciaChao;    
     [Space(5)]
-    [SerializeField] private JoystickDto joystickDto;    
+    [SerializeField] private JoystickDto joystickDto;
+    [SerializeField] private MesaJoystickDto mesaJoystickDto;
     [Space(5)]    
     [SerializeField] private DisplaysSlotsDto displaysSlotsDto;    
     [Space(5)]
@@ -35,7 +36,9 @@ public class MaquinaDto
 
     public float FactorHdr { get { return factorHdr; } }
     public Transform ReferenciaChao { get { return referenciaChao; } }
+
     public JoystickDto JoystickDto { get { return joystickDto; } }
+    public MesaJoystickDto MesaJoystickDto { get { return mesaJoystickDto; } }
 
     public DisplaysSlotsDto DisplaysSlotsDto { get { return displaysSlotsDto; } }        
 

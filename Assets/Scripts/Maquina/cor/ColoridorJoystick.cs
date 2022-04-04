@@ -5,10 +5,10 @@ public class ColoridorJoystick
     public void colorir(JoystickDto joystickDto, Dictionary<string, string> dicionarioCores)
     {
         string hexCor = dicionarioCores[ConstantesCoresMaquina.PARTE_CIMA];
-        joystickDto.ParteCima.color = Utils.getCorByHex(hexCor);
+        //joystickDto.ParteCima.color = Utils.getCorByHex(hexCor);
 
         hexCor = dicionarioCores[ConstantesCoresMaquina.PARTE_BAIXO];
-        joystickDto.ParteBaixo.color = Utils.getCorByHex(hexCor);
+        //joystickDto.ParteBaixo.color = Utils.getCorByHex(hexCor);
 
         hexCor = dicionarioCores[ConstantesCoresMaquina.FURO_HASTE];
         joystickDto.FuroHaste.color = Utils.getCorByHex(hexCor);
