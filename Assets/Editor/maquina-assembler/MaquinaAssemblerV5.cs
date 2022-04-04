@@ -74,9 +74,9 @@ public class MaquinaAssemblerV5 : EditorWindow
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.ORIFICIO_SETA);
 
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_BASE_DIREITA);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_TOPO_DIREITA);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_TAMPA_DIREITA);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_BASE_ESQUERDA);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_TOPO_ESQUERDA);
+        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_TAMPA_ESQUERDA);
 
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA);
         bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA);

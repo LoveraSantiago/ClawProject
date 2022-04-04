@@ -61,9 +61,9 @@ public class MaquinaColoridaV2 : FinderComponente
         dicionario.Add(ConstantesCoresMaquinaV2.ORIFICIO_SETA       , mesa.getOrificioTrianguloFicha());
 
         dicionario.Add(ConstantesCoresMaquinaV2.BTN_PUP_BASE_DIREITA , mesa.getBtnPupBaseDireita());
-        dicionario.Add(ConstantesCoresMaquinaV2.BTN_PUP_TOPO_DIREITA , mesa.getBtnPupTopoDireita());
+        dicionario.Add(ConstantesCoresMaquinaV2.BTN_PUP_TAMPA_DIREITA , mesa.getBtnPupTopoDireita());
         dicionario.Add(ConstantesCoresMaquinaV2.BTN_PUP_BASE_ESQUERDA, mesa.getBtnPupBaseEsquerda());
-        dicionario.Add(ConstantesCoresMaquinaV2.BTN_PUP_TOPO_ESQUERDA, mesa.getBtnPupTopoEsquerda());
+        dicionario.Add(ConstantesCoresMaquinaV2.BTN_PUP_TAMPA_ESQUERDA, mesa.getBtnPupTopoEsquerda());
 
         ColorivelScrollPups scrollPup = new ColorivelScrollPups(this);
         dicionario.Add(ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA , scrollPup.getPlacaExterna());

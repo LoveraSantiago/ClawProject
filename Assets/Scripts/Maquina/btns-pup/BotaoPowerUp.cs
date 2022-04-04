@@ -20,7 +20,8 @@ public class BotaoPowerUp : Draggavel
         this.indice = indice;
 
         BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
-        aparencia = new AparenciaBotaoPowerUp(botaoDto);
+        BotaoPowerUpDtoV2 botaoDtoV2 = getBotaoPowerUpDtoV2(btnsPowerUpsDto);
+        aparencia = new AparenciaBotaoPowerUp(botaoDto, botaoDtoV2);
         acaoDrag  = new AcaoDragPowerUp(botaoDto);
         glow      = new GlowBotaoPowerUp(botaoDto.SprEfeito);
     }
@@ -72,9 +73,14 @@ public class BotaoPowerUp : Draggavel
         glow.mudarParaMaterialArcoIris();
     }
 
-    public void receberCorLevel(string corBotao, string corDentro, string corContorno)
+    //public void receberCorLevel(string corBotao, string corDentro, string corContorno)
+    //{
+    //    aparencia.colorirBotaoFromLevel(corBotao, corDentro, corContorno);
+    //}
+
+    public void receberCorLevelV2(string corBase, string corTampa)
     {
-        aparencia.colorirBotaoFromLevel(corBotao, corDentro, corContorno);
+        aparencia.colorirBotaoFromLevelV2(corBase, corTampa);
     }
 
     public void receberAcaoPowerUp(PowerUpBtnInfo evento, ControleAcionamentoPowerUp controlePup)
@@ -142,6 +148,11 @@ public class BotaoPowerUp : Draggavel
     private BotaoPowerUpDto getBotaoPowerUpDto(BotoesPowerUpDto btnPowerUpsDto)
     {
         return btnPowerUpsDto.BtnPowerUp[indice];
+    }
+
+    private BotaoPowerUpDtoV2 getBotaoPowerUpDtoV2(BotoesPowerUpDto btnPowerUpsDto)
+    {
+        return btnPowerUpsDto.BtnPowerUpV2[indice];
     }
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO

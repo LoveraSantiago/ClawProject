@@ -13,11 +13,13 @@ public class AparenciaBotaoPowerUp
 
     private Color corOriginal;    
     private BotaoPowerUpDto btnDto;
+    private BotaoPowerUpDtoV2 botaoDtoV2;
 
-    public AparenciaBotaoPowerUp(BotaoPowerUpDto botaoDto)
+    public AparenciaBotaoPowerUp(BotaoPowerUpDto botaoDto, BotaoPowerUpDtoV2 botaoDtoV2)
     {
         mostrandoAtual = MOSTRANDO_BOTAO;
-        btnDto = botaoDto;                                         
+        btnDto = botaoDto;
+        this.botaoDtoV2 = botaoDtoV2;
         corOriginal = btnDto.SprParteDentro.color;
     }
 
@@ -36,12 +38,19 @@ public class AparenciaBotaoPowerUp
         btnDto.SprParteDentro.color = Color.black;
     }
 
-    public void colorirBotaoFromLevel(string corBotao, string corDentro, string corContorno)
+    //public void colorirBotaoFromLevel(string corBotao, string corDentro, string corContorno)
+    //{
+    //    corOriginal = Utils.getCorByHex(corDentro);
+    //    btnDto.SprAreaExterna.color = Utils.getCorByHex(corBotao);
+    //    btnDto.SprParteDentro.color = corOriginal;
+    //    btnDto.SprContorno.color = Utils.getCorByHex(corContorno);
+    //}
+
+    public void colorirBotaoFromLevelV2(string corBase, string corTampa)
     {
-        corOriginal = Utils.getCorByHex(corDentro);
-        btnDto.SprAreaExterna.color = Utils.getCorByHex(corBotao);
-        btnDto.SprParteDentro.color = corOriginal;
-        btnDto.SprContorno.color = Utils.getCorByHex(corContorno);
+        corOriginal = Utils.getCorByHex(corTampa);
+        botaoDtoV2.SprRendererBtnBase.color = Utils.getCorByHex(corBase);
+        botaoDtoV2.SprRendererBtnTampa.color = Utils.getCorByHex(corTampa);
     }
 
     public void voltarCorOriginalBotao()

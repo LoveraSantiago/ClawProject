@@ -38,9 +38,9 @@ public class ConstantesCoresMaquinaV2
     public static readonly string ORIFICIO_SETA  = "triangulo-card";
 
     public static readonly string BTN_PUP_BASE_ESQUERDA = "btn-pup-base-e";
-    public static readonly string BTN_PUP_TOPO_ESQUERDA = "btn-pup-topo-e";
+    public static readonly string BTN_PUP_TAMPA_ESQUERDA = "btn-pup-topo-e";
     public static readonly string BTN_PUP_BASE_DIREITA  = "btn-pup-base-d";
-    public static readonly string BTN_PUP_TOPO_DIREITA  = "btn-pup-topo-d";
+    public static readonly string BTN_PUP_TAMPA_DIREITA  = "btn-pup-topo-d";
 
     public static readonly string SCROLL_PUP_PLACA_EXTERNA  = "placa-externa";
     public static readonly string SCROLL_PUP_PLACA_INTERNA  = "placa-interna";

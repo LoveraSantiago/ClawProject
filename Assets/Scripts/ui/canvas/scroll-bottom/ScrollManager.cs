@@ -40,7 +40,7 @@ public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         }
         else if(isPupsToLevel)
         {
-            for(int contador = 0; contador < 4; contador++)
+            for(int contador = 0; contador < 2; contador++)
             {
                 scrollBottomBar.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
             }
