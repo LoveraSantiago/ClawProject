@@ -3,7 +3,7 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
 {
     private GrupoDisplays grupoDisplays;
     public DisplaysDeColetados displayDeColetados { get; private set; }
-    private DisplayCacaNiquel displayCacaNiquel;
+    private ModoCacaNiquel modoCacaNiquel;
 
     public DisplaysDeSlots(DisplaysColetadosDto displaysSlotsDto)
     {
@@ -17,8 +17,8 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
 
         if (LevelUtils.isCacaNiquelLevel(levelEscolhido))
         {
-            displayCacaNiquel = new DisplayCacaNiquel();
-            displayCacaNiquel.configuradoPeloLevel(levelEscolhido, displaysSlotsDto.CacaNiquelDto);
+            modoCacaNiquel = new ModoCacaNiquel();
+            modoCacaNiquel.configuradoPeloLevel(levelEscolhido, displaysSlotsDto.CacaNiquelDto);
         }
     }
 
@@ -26,7 +26,7 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
     {
         if (isDisplayCacaNiquelAtivado())
         {
-            displayCacaNiquel.iniciar(grupoDisplays, inputGame);
+            modoCacaNiquel.iniciar(grupoDisplays, inputGame);
         }
     }
 
@@ -57,7 +57,7 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
 
     private bool isDisplayCacaNiquelAtivado()
     {
-        return displayCacaNiquel != null;
+        return modoCacaNiquel != null;
     }
 
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
@@ -67,6 +67,6 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
 
     ProdutorDeEvento<CacaNiquelEventoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {
-        return isDisplayCacaNiquelAtivado() ? ((AcaoCacaNiquel.ProdutorEvento)displayCacaNiquel).getProdutorDeEvento() : null;
+        return isDisplayCacaNiquelAtivado() ? ((AcaoCacaNiquel.ProdutorEvento)modoCacaNiquel).getProdutorDeEvento() : null;
     }
 }

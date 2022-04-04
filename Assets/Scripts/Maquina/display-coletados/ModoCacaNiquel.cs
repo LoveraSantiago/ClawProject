@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class DisplayCacaNiquel : AcaoCacaNiquel.ProdutorEvento
+public class ModoCacaNiquel : AcaoCacaNiquel.ProdutorEvento
 {   
     private ProdutorDeEvento<CacaNiquelEventoDto> produtorDeEvento;
     private AbstractCacaNiquel cacaNiquel;    
 
-    public DisplayCacaNiquel()
+    public ModoCacaNiquel()
     {   
         produtorDeEvento = new ProdutorDeEvento<CacaNiquelEventoDto>();        
     }
