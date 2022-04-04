@@ -2,7 +2,7 @@ using UnityEngine;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class DisplaysSlotsDto 
+public class DisplaysColetadosDto 
 {
     [SerializeField] private float inicialDelay;
     [SerializeField] private float fimDelay;

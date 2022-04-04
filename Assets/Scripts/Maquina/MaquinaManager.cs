@@ -32,7 +32,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         partesDto = maquinaDto.PartesDto;
 
-        displaysDeSlots   = new DisplaysDeSlots(maquinaDto.DisplaysSlotsDto);        
+        displaysDeSlots   = new DisplaysDeSlots(maquinaDto.DisplayColetadosDto);        
         displayDeScores   = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
         displayTimer      = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick          = new Joystick(maquinaDto.MesaJoystickDto);
@@ -62,7 +62,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         botoesPowerUp.configuradoPeloLevel(levelEscolhido);
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
-        displaysDeSlots.configuradoPeloLevel(levelEscolhido, maquinaDto.DisplaysSlotsDto);
+        displaysDeSlots.configuradoPeloLevel(levelEscolhido, maquinaDto.DisplayColetadosDto);
         displayDeScores.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
         vigaEsquerda.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         vigaDireita.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());

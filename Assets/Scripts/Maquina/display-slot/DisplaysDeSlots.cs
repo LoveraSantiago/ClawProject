@@ -5,13 +5,13 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
     public DisplaysDeColetados displayDeColetados { get; private set; }
     private DisplayCacaNiquel displayCacaNiquel;
 
-    public DisplaysDeSlots(DisplaysSlotsDto displaysSlotsDto)
+    public DisplaysDeSlots(DisplaysColetadosDto displaysSlotsDto)
     {
         grupoDisplays      = new GrupoDisplays(displaysSlotsDto, displaysSlotsDto.SingleDisplaySlotDto);
         displayDeColetados = new DisplaysDeColetados(displaysSlotsDto, grupoDisplays);        
     }
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido, DisplaysSlotsDto displaysSlotsDto)
+    public void configuradoPeloLevel(AbstractLevel levelEscolhido, DisplaysColetadosDto displaysSlotsDto)
     {        
         grupoDisplays.colorirDisplays(levelEscolhido.getDicionarioDeCores());
 

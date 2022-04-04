@@ -6,10 +6,10 @@ public class GrupoDisplays : ArcoIrisConjunto
 {
     private bool powerUpDisplayColetado;
 
-    public DisplaysSlotsDto displaysSlotsDto { get; private set; }
+    public DisplaysColetadosDto displaysSlotsDto { get; private set; }
     public DisplayDeSlot[] displayDeSlot { get; private set; }
 
-    public GrupoDisplays(DisplaysSlotsDto displaysSlotsDto, SingleDisplaySlotDto[] singleDisplaySlotDto)
+    public GrupoDisplays(DisplaysColetadosDto displaysSlotsDto, SingleDisplaySlotDto[] singleDisplaySlotDto)
     {
         this.displaysSlotsDto = displaysSlotsDto;
         displayDeSlot = new DisplayDeSlot[singleDisplaySlotDto.Length];
