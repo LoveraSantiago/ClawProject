@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
+public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
                                    InformacaoDisplayColetado
 {
     private bool powerUpAcionado;
@@ -11,7 +11,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private AgendamentoDisplayColetados agendados;    
     private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
 
-    public DisplaysDeColetados(DisplaysColetadosDto displaysSlotsDto, GrupoDisplays grupoDisplays)
+    public ModoColetados(DisplaysColetadosDto displaysSlotsDto, GrupoDisplays grupoDisplays)
     {    
         this.grupoDisplays = grupoDisplays;
         agendados = new AgendamentoDisplayColetados();

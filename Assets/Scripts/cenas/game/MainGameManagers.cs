@@ -62,6 +62,6 @@ public class MainGameManagers
 
     private InformacaoDisplayColetado getInformacaoDisplayColetado()
     {
-        return maquinaManager.displayDeColetados.displayDeColetados;
+        return maquinaManager.displayDeColetados.modoColetados;
     }
 }

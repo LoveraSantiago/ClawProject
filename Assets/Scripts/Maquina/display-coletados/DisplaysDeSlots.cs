@@ -2,13 +2,13 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
                                AcaoCacaNiquel.ProdutorEvento
 {
     private GrupoDisplays grupoDisplays;
-    public DisplaysDeColetados displayDeColetados { get; private set; }
+    public ModoColetados modoColetados { get; private set; }
     private ModoCacaNiquel modoCacaNiquel;
 
     public DisplaysDeSlots(DisplaysColetadosDto displaysSlotsDto)
     {
-        grupoDisplays      = new GrupoDisplays(displaysSlotsDto, displaysSlotsDto.SingleDisplaySlotDto);
-        displayDeColetados = new DisplaysDeColetados(displaysSlotsDto, grupoDisplays);        
+        grupoDisplays = new GrupoDisplays(displaysSlotsDto, displaysSlotsDto.SingleDisplaySlotDto);
+        modoColetados = new ModoColetados(displaysSlotsDto, grupoDisplays);        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido, DisplaysColetadosDto displaysSlotsDto)
@@ -37,7 +37,7 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
 
     public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {
-        displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIris, executorPosEvento);
+        modoColetados.mostrarColetadoNoDisplay(evento, arcoIris, executorPosEvento);
     }
 
     public void processarPowerUp(PowerUpInfo evento)
@@ -46,13 +46,13 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
         if (InteracaoComponentesUtils.isInteracaoComDisplayColetado(interacaoPupCComponentes))            
         {
             PowerUpInteracaoComDisplayColetado interacaoDisplayColetado = InteracaoComponentesUtils.getAsInteracaoComDisplayColetado(interacaoPupCComponentes);
-            displayDeColetados.processarPowerUp(evento.tipo, interacaoDisplayColetado);
+            modoColetados.processarPowerUp(evento.tipo, interacaoDisplayColetado);
         }
     }
 
     public void processarFimPowerUp(BotoesPowerUp botoesPup)
     {
-        displayDeColetados.processarFimPowerUp(botoesPup);
+        modoColetados.processarFimPowerUp(botoesPup);
     }
 
     private bool isDisplayCacaNiquelAtivado()
@@ -62,7 +62,7 @@ public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
 
     ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoColetadoFim.ProdutorEvento)displayDeColetados).getProdutorDeEvento();
+        return ((AcaoColetadoFim.ProdutorEvento)modoColetados).getProdutorDeEvento();
     }
 
     ProdutorDeEvento<CacaNiquelEventoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
