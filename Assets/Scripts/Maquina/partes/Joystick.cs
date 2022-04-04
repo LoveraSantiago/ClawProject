@@ -8,7 +8,6 @@ public class Joystick : AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento
     private float incremento;
     private int multiplicador;
         
-    private JoystickDto joystickDto;
     private MesaJoystickDto mesaJoystickDto;
 
     private Quaternion anguloDesejadoEsquerda;
@@ -19,21 +18,20 @@ public class Joystick : AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento
     //UTILIZANDO MESMA VELOCIDADE DE MOVIMENTACAO HORIZONTAL DA GARRA
     /* A VELOCIDADE VAI PEGAR O VALOR INICIAL DE VELOCIDADE SE MUDADO 
        DURANTE GAMEPLAY NAO REFLETE AQUI SO NO PROXIMO START*/
-    public Joystick(JoystickDto joystickDto, MesaJoystickDto mesaJoystickDto)
+    public Joystick(MesaJoystickDto mesaJoystickDto)
     {
-        this.joystickDto = joystickDto;
         this.mesaJoystickDto = mesaJoystickDto;
 
         anguloDesejadoDireita  = Quaternion.Euler(0, 0, -ANGULO);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0, ANGULO);
         anguloDesejadoAtual    = Quaternion.Euler(0, 0, 0);
-        anguloInicial          = this.joystickDto.JoystickTransform.rotation;
+        anguloInicial          = this.mesaJoystickDto.HasteTransform.rotation;
     }
 
     public void fixedUpdate()
     {
         incremento = (Time.fixedDeltaTime + mesaJoystickDto.Velocidade) * multiplicador;
-        joystickDto.JoystickTransform.rotation = Quaternion.RotateTowards(joystickDto.JoystickTransform.rotation, anguloDesejadoAtual, incremento);
+        mesaJoystickDto.HasteTransform.rotation = Quaternion.RotateTowards(mesaJoystickDto.HasteTransform.rotation, anguloDesejadoAtual, incremento);
     }
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioCores)
