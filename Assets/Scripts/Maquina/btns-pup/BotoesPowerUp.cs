@@ -24,11 +24,11 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
 
     private void inicializarBotoes(BotoesPowerUpDto btnsPowerUpsDto)
     {
-        btnsPowerUp = new BotaoPowerUp[4];
-        btnsPowerUp[0] = new BotaoPowerUp(0, btnsPowerUpsDto);
-        btnsPowerUp[1] = new BotaoPowerUp(1, btnsPowerUpsDto);
-        btnsPowerUp[2] = new BotaoPowerUp(2, btnsPowerUpsDto);
-        btnsPowerUp[3] = new BotaoPowerUp(3, btnsPowerUpsDto);
+        btnsPowerUp = new BotaoPowerUp[btnsPowerUp.Length];
+        for(int contador = 0; contador < btnsPowerUp.Length; contador++)
+        {
+            btnsPowerUp[contador] = new BotaoPowerUp(contador, btnsPowerUpsDto);
+        }        
     }
 
     public void configuradoPeloLevel(AbstractLevel level)
@@ -144,10 +144,10 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
 
     private void devolverPowerUps()
     {
-        btnsPowerUp[0].devolverPowerUp();
-        btnsPowerUp[1].devolverPowerUp();
-        btnsPowerUp[2].devolverPowerUp();
-        btnsPowerUp[3].devolverPowerUp();
+        for(int contador = 0; contador < btnsPowerUp.Length; contador++)
+        {
+            btnsPowerUp[contador].devolverPowerUp();
+        }        
     }
 
     void AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
