@@ -24,7 +24,7 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
 
     private void inicializarBotoes(BotoesPowerUpDto btnsPowerUpsDto)
     {
-        btnsPowerUp = new BotaoPowerUp[btnsPowerUp.Length];
+        btnsPowerUp = new BotaoPowerUp[btnsPowerUpsDto.BtnPowerUp.Length];
         for(int contador = 0; contador < btnsPowerUp.Length; contador++)
         {
             btnsPowerUp[contador] = new BotaoPowerUp(contador, btnsPowerUpsDto);
