@@ -1,11 +1,11 @@
-public class DisplaysDeSlots : AcaoColetadoFim.ProdutorEvento,
+public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
                                AcaoCacaNiquel.ProdutorEvento
 {
     private GrupoDisplays grupoDisplays;
     public ModoColetados modoColetados { get; private set; }
     private ModoCacaNiquel modoCacaNiquel;
 
-    public DisplaysDeSlots(DisplaysColetadosDto displaysSlotsDto)
+    public DisplaysDeColetados(DisplaysColetadosDto displaysSlotsDto)
     {
         grupoDisplays = new GrupoDisplays(displaysSlotsDto, displaysSlotsDto.SingleDisplaySlotDto);
         modoColetados = new ModoColetados(displaysSlotsDto, grupoDisplays);        

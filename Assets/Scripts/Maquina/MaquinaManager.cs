@@ -22,7 +22,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     private BotaoLigaDesliga    botaoLigaDesliga;
     private ArcoIrisEfeito      arcoIrisEfeito;
     private DisplayDeScores     displayDeScores;    
-    public  DisplaysDeSlots     displayDeColetados { get; private set; }
+    public  DisplaysDeColetados displayDeColetados { get; private set; }
     private BordasVidroFrenteV2 bordasFrenteVidro;
     private TudoDeSaidaV2       tuboDeSaida;
     private ChaoV2              chao;
@@ -32,7 +32,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         partesDto = maquinaDto.PartesDto;
 
-        displayDeColetados   = new DisplaysDeSlots(maquinaDto.DisplayColetadosDto);        
+        displayDeColetados   = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto);        
         displayDeScores   = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
         displayTimer      = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick          = new Joystick(maquinaDto.MesaJoystickDto);
