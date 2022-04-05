@@ -7,7 +7,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
 
     public DisplaysDeColetados(DisplaysColetadosDto displaysSlotsDto)
     {
-        grupoDisplays = new GrupoDisplays(displaysSlotsDto, displaysSlotsDto.SingleDisplaySlotDto);
+        grupoDisplays = new GrupoDisplays(displaysSlotsDto);
         modoColetados = new ModoColetados(displaysSlotsDto, grupoDisplays);        
     }
 

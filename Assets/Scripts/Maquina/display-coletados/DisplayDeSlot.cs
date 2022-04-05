@@ -11,23 +11,30 @@ public class DisplayDeSlot
     private AnimacaoDisplayColetado animacao;
 
     private SingleDisplaySlotDto singleDisplaySlotDto;
+    private SingleSlotColetadoDto singleSlotColetadoDto;
 
     private Coroutine coroutineCacaNiquel;
 
-    public DisplayDeSlot(SingleDisplaySlotDto singleDisplaySlotDto)
+    public DisplayDeSlot(SingleDisplaySlotDto singleDisplaySlotDto, SingleSlotColetadoDto singleSlotColetadoDto)
     {
         this.singleDisplaySlotDto = singleDisplaySlotDto;
+        this.singleSlotColetadoDto = singleSlotColetadoDto;
 
         animacao   = new AnimacaoDisplayColetado(singleDisplaySlotDto.Animator);        
         glowEfeito = new GlowEfeito(singleDisplaySlotDto.SprRendererDentroEfeito.gameObject, singleDisplaySlotDto.SprRendererDentroEfeito.material);                
         slots      = new MovimentadorDeSlots(singleDisplaySlotDto);
-    }    
+    }
 
-    public void configuradoPeloLevel(Color corDisplay, Color corDentro)
+    //public void configuradoPeloLevel(Color corDisplay, Color corDentro)
+    //{
+    //    singleDisplaySlotDto.SprDisplay.color = corDisplay;
+    //    singleDisplaySlotDto.SprRendererDentro.color = corDentro;
+    //}   
+
+    public void configuradoPeloLevel(Color corDisplay)
     {
-        singleDisplaySlotDto.SprDisplay.color = corDisplay;
-        singleDisplaySlotDto.SprRendererDentro.color = corDentro;
-    }   
+        singleSlotColetadoDto.SprRendererSlotColetado.color = corDisplay;
+    }
 
     public IEnumerator mostrarAlvo(DisplaysColetadosDto displaysSlotsDto, Executor executorFimMovimentacao)
     {

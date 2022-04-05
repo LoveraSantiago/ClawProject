@@ -9,18 +9,23 @@ public class GrupoDisplays : ArcoIrisConjunto
     public DisplaysColetadosDto displaysSlotsDto { get; private set; }
     public DisplayDeSlot[] displayDeSlot { get; private set; }
 
-    public GrupoDisplays(DisplaysColetadosDto displaysSlotsDto, SingleDisplaySlotDto[] singleDisplaySlotDto)
+    public GrupoDisplays(DisplaysColetadosDto displaysSlotsDto)
     {
         this.displaysSlotsDto = displaysSlotsDto;
+
+        SingleDisplaySlotDto[] singleDisplaySlotDto = displaysSlotsDto.SingleDisplaySlotDto;
+        SingleSlotColetadoDto[] singleSlotColetadoDto = displaysSlotsDto.SingleSlotColetadoDto;
+
         displayDeSlot = new DisplayDeSlot[singleDisplaySlotDto.Length];
-        displayDeSlot[0] = new DisplayDeSlot(singleDisplaySlotDto[0]);
-        displayDeSlot[1] = new DisplayDeSlot(singleDisplaySlotDto[1]);
-        displayDeSlot[2] = new DisplayDeSlot(singleDisplaySlotDto[2]);
+        displayDeSlot[0] = new DisplayDeSlot(singleDisplaySlotDto[0], singleSlotColetadoDto[0]);
+        displayDeSlot[1] = new DisplayDeSlot(singleDisplaySlotDto[1], singleSlotColetadoDto[1]);
+        displayDeSlot[2] = new DisplayDeSlot(singleDisplaySlotDto[2], singleSlotColetadoDto[2]);
     }
 
     public void colorirDisplays(Dictionary<string, string> dicionarioDeCores)
     {
-        new ColoridorDisplaysColetadosV2().colorir(displayDeSlot, dicionarioDeCores);
+        ColoridorDisplaysColetadosV2 coloridor = new ColoridorDisplaysColetadosV2();
+        coloridor.colorir(displaysSlotsDto.SprRendererPlacaGrupo, displayDeSlot, dicionarioDeCores);
     }
 
     public void setarEstadoPowerUp(bool estado)

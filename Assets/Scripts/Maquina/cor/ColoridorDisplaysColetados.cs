@@ -9,12 +9,12 @@ public class ColoridorDisplaysColetados
         Color corDisplay = Utils.getCorByHex(hexCorDisplay);
 
         string hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO1];
-        displayDeSlot[0].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
+        //displayDeSlot[0].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
 
         hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO2];
-        displayDeSlot[1].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
+        //displayDeSlot[1].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
 
         hexCorDentro = dicionarioDeCores[ConstantesCoresMaquina.PLACA_COLETADO3];
-        displayDeSlot[2].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
+        //displayDeSlot[2].configuradoPeloLevel(corDisplay, Utils.getCorByHex(hexCorDentro));
     }
 }
