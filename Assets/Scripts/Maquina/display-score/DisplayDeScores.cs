@@ -25,10 +25,10 @@ public class DisplayDeScores : ArcoIrisConjunto
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
 
-    public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
+    public void configuradoPeloLevel(DisplayDeScoreDto displayDeScoresDto, Dictionary<string, string> dicionarioDeCores)
     {
         ColoridorDeLedsV2 coloridor = new ColoridorDeLedsV2(displayCentena, displayDezena, displayUnidade);
-        coloridor.colorir(dicionarioDeCores);
+        coloridor.colorir(displayDeScoresDto.SprRendererPlacaGrupo, dicionarioDeCores);
     }
     
     public void mostrarScore(int score, bool result)
