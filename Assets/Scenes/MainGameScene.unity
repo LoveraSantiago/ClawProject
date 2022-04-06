@@ -11079,6 +11079,9 @@ MonoBehaviour:
       tuboDto:
         sprRenderColorir: {fileID: 1914492973}
         sprRenderEfeito: {fileID: 1202769893}
+      tuboDtoV2:
+        sprRendererBase: {fileID: 924364534}
+        sprRendererTopo: {fileID: 2125364880}
       chaoDto:
         sprRenderColorir: {fileID: 522769647}
         sprRenderEfeito: {fileID: 1500699939}
@@ -22172,6 +22175,11 @@ SpriteRenderer:
 --- !u!212 &918452084 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6939879562855280347, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &924364534 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2558448816106890129, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &935888526 stripped
@@ -53872,6 +53880,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4016679694573104438, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &2125364880 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4106799619402785298, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2125492025
 GameObject:
   m_ObjectHideFlags: 0
@@ -59282,7 +59295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6406990384539481423, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6406990384597975245, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
       propertyPath: m_IsActive

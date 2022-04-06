@@ -41,7 +41,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         vigaEsquerda      = new VigaParteV2(maquinaDto.VigaLadoEsquerdoDto);
         vigaDireita       = new VigaParteV2(maquinaDto.VigaLadoDireitoDto);
         bordasFrenteVidro = new BordasVidroFrenteV2(maquinaDto.BordasFrenteDto);
-        tuboDeSaida       = new TudoDeSaidaV2(maquinaDto.TuboDto);
+        tuboDeSaida       = new TudoDeSaidaV2(maquinaDto.TuboDtoV2);
         chao              = new ChaoV2(maquinaDto.ChaoDto);
         barra             = new BarraV2(maquinaDto.BarraDto);
 
@@ -53,7 +53,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             .addArcoIrisConjunto(vigaDireita)
             .addArcoIrisConjunto(botoesPowerUp.getBotoesGlow())
             .addArcoIrisConjunto(bordasFrenteVidro)
-            .addArcoIrisConjunto(tuboDeSaida)
+            //.addArcoIrisConjunto(tuboDeSaida) REVER SE VAI CONTINUAR COMO EFEITO
             .addArcoIrisConjunto(chao)
             .addArcoIrisConjunto(barra);        
     }

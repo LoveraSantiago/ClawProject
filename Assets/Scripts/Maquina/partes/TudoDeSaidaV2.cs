@@ -1,19 +1,23 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TudoDeSaidaV2 : ParteEfeitoMaquinaV2
+public class TudoDeSaidaV2 
 {
-    public TudoDeSaidaV2(TuboDto tuboDto)
-        : base(tuboDto) { }
+    private TuboDtoV2 tuboDto;
 
-    protected override string getNomeParteMaquina()
+    public TudoDeSaidaV2(TuboDtoV2 tuboDto)
     {
-        return ConstantesCoresMaquina.TUBO;
+        this.tuboDto = tuboDto;
     }
 
-    protected override float getTransparencia()
+    public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
     {
-        return 0.88f;
-    }
+        string hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.TUBO_BASE];
+        Color corBase = Utils.getCorByHex(hexCor);
+        corBase.a = 0.88f;
+        tuboDto.SprRendererBase.color = corBase;
+
+        hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.TUBO_BORDA];
+        tuboDto.SprRendererTopo.color = Utils.getCorByHex(hexCor);
+    }   
 }
