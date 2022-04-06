@@ -341,11 +341,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3210569914142981911, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &108455522 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6406990385393414263, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &121857696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1214428719979739542, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -11073,10 +11068,10 @@ MonoBehaviour:
         sprRendererBtnBordas: {fileID: 6406990385049082672}
         sprRendererBtnOnOff: {fileID: 6406990385049082673}
       vigaLadoEsquerdoDto:
-        sprRenderColorir: {fileID: 946233168}
+        sprRenderColorir: {fileID: 980786069}
         sprRenderEfeito: {fileID: 1780505045}
       vigaLadoDireitoDto:
-        sprRenderColorir: {fileID: 108455522}
+        sprRenderColorir: {fileID: 1041678792}
         sprRenderEfeito: {fileID: 6406990385049082698}
       bordasFrenteDto:
         sprRenderColorir: {fileID: 320505972}
@@ -22189,11 +22184,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5007021405240391982, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &946233168 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6406990385770677648, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &958179889 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6423956346347713253, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -22422,6 +22412,11 @@ SpriteRenderer:
 --- !u!212 &980103593 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5378356122667511428, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &980786069 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5412640658593936267, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &992576124
@@ -22797,6 +22792,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038405834}
   m_CullTransparentMesh: 1
+--- !u!212 &1041678792 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 482766459, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1045359091 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6389506948696927131, guid: 60c301260e6514149bc0e163ff994732, type: 3}

@@ -5,6 +5,6 @@ public class VigaParteV2 : ParteEfeitoMaquinaV2
 
     protected override string getNomeParteMaquina()
     {
-        return ConstantesCoresMaquina.VIGA_TRAS;
+        return ConstantesCoresMaquinaV2.VIGAS;
     }
 }

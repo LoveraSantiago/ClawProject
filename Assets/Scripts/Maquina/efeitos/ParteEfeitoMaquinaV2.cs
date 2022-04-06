@@ -14,7 +14,11 @@ public abstract class ParteEfeitoMaquinaV2 : ArcoIrisConjunto
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
     {
-        
+        string nomeParteMaquina = getNomeParteMaquina();
+        string corHex = dicionarioDeCores[nomeParteMaquina];
+        Color cor = Utils.getCorByHex(corHex);
+        cor.a = getTransparencia();
+        parteEfeitoDto.SprRenderColorir.color = cor;
     }
 
     protected abstract string getNomeParteMaquina();
