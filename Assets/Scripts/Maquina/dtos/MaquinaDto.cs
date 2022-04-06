@@ -32,7 +32,6 @@ public class MaquinaDto
     [Space(5)]
     [SerializeField] private BarraDto barraDto;
     [Space(5)]
-    [SerializeField] private PartesMaquinaDto partesDto;
     [SerializeField] private PartesMaquinaDtoV2 partesDtoV2;
 
     public float FactorHdr { get { return factorHdr; } }
@@ -59,6 +58,5 @@ public class MaquinaDto
     public ChaoDto ChaoDto { get { return chaoDto; } }
     public BarraDto BarraDto { get { return barraDto; } }
 
-    public PartesMaquinaDto PartesDto { get { return partesDto; } }
     public PartesMaquinaDtoV2 PartesDtoV2 { get { return partesDtoV2; } }
 }
