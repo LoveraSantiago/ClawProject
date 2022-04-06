@@ -12,7 +12,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
                               AcaoDesligarMaquinaResultado.ConsumidorEvento
 {    
-    private PartesMaquinaDto partesDto;
+    private PartesMaquinaDtoV2 partesDto;
 
     private Joystick            joystick;    
     private VigaParteV2         vigaEsquerda;
@@ -30,7 +30,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     public MaquinaManager(MaquinaDto maquinaDto)
     {
-        partesDto = maquinaDto.PartesDto;
+        partesDto = maquinaDto.PartesDtoV2;
 
         displayDeColetados   = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto);        
         displayDeScores   = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
