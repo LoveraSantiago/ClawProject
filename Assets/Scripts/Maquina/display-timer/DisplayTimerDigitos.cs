@@ -7,28 +7,23 @@ public class DisplayTimerDigitos
     public int segundosDezenaAtual { get; private set; }
     public int minutosUnidadeAtual { get; private set; }
     public int minutosDezenaAtual  { get; private set; }
-
-    private SpriteRenderer placaTimer;
-
-    private DisplayTimerDigito2Pontos displayTimer2Pontos;
+    
     public DisplayTimerDigito[] displayTimerDigito { get; private set; }
 
     public DisplayTimerDigitos(DisplayTimerDto displayDto)
     {
-        placaTimer = displayDto.SprRendererPlaca;
-
-        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
-
         DisplayTimerDigito.configurar(displayDto);
-        displayTimerDigito = new DisplayTimerDigito[4];
+        displayTimerDigito = new DisplayTimerDigito[5];
         displayTimerDigito[0] = new DisplayTimerDigito(displayDto.SingleDisplay[0]);
         displayTimerDigito[1] = new DisplayTimerDigito(displayDto.SingleDisplay[1]);
         displayTimerDigito[2] = new DisplayTimerDigito(displayDto.SingleDisplay[2]);
         displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);
+        displayTimerDigito[4] = new DisplayTimerDigito(displayDto.SingleDisplay[4]);
     }
 
-    public void passarCoresAosDisplayDigitos(Dictionary<string, string> dicionarioDeCores)
+    public void passarCoresAosDisplayDigitos(DisplayTimerDto displayDto, Dictionary<string, string> dicionarioDeCores)
     {
+        SpriteRenderer placaTimer = displayDto.SprRendererPlacaGrupo;
         ColoridorTimerV2 coloridor = new ColoridorTimerV2(placaTimer, displayTimerDigito);
         coloridor.colorir(dicionarioDeCores);
     }
@@ -40,7 +35,7 @@ public class DisplayTimerDigitos
         displayTimerDigito[1].estadoBlink(estadoBlink);
         displayTimerDigito[0].estadoBlink(estadoBlink);
 
-        displayTimer2Pontos.estadoBlink(estadoBlink);
+        displayTimerDigito[4].estadoBlink(estadoBlink);
     }
 
     public void setSegundosUnidade(int unidadeSegundos)

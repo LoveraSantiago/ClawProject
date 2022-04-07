@@ -78,7 +78,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());
 
         AntesExecutorTimerRestart executor = new AntesExecutorTimerRestart(botoesPowerUp, arcoIrisEfeito);
-        displayTimer.configuradoPeloLevel(levelEscolhido, executor);
+        displayTimer.configuradoPeloLevel(maquinaDto.DisplayTimerDto, levelEscolhido, executor);
     }
 
     public void start(InputGame inputGame)

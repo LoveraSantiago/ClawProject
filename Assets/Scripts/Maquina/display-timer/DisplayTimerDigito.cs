@@ -16,14 +16,14 @@ public class DisplayTimerDigito
         this.sDisplayDto = sDisplayDto;
     }
 
-    public void configuradoPeloLevel(Color corDigito)
+    public void configuradoPeloLevel(Color corDigito, Color corPlaca)
     {
-        corOriginal = corDigito;        
+        corOriginal = corDigito;
+        colorirPlaca(corPlaca);
         for(int contador = 0; contador < sDisplayDto.Segmentos.Length; contador++)
         {
             sDisplayDto.Segmentos[contador].color = corDigito;
-        }
-        mostrarDigito(0);
+        }        
     }
 
     public void mostrarDigito(int digito)
@@ -35,7 +35,7 @@ public class DisplayTimerDigito
         {
             ligarPosicoes(arrayLigado);
         }
-    }
+    }    
 
     public void estadoBlink(bool blink)
     {
@@ -70,6 +70,14 @@ public class DisplayTimerDigito
             sprRenderer.material = segmentHdr.getMaterialSegmento(array[contador]);
         }
     }   
+
+    private void colorirPlaca(Color corPlaca)
+    {
+        if (sDisplayDto.PlacaIndividual != null)
+        {
+            sDisplayDto.PlacaIndividual.color = corPlaca;
+        }
+    }
 
     public static void configurar(DisplayTimerDto displayTimerDto)
     {

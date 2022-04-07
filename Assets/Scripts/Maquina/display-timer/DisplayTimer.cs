@@ -23,12 +23,12 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
         contadorTimer = new ContadorTimer();        
     }
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido, Executor executorTimerRestartOutrosComponentes)
+    public void configuradoPeloLevel(DisplayTimerDto displayDto, AbstractLevel levelEscolhido, Executor executorTimerRestartOutrosComponentes)
     {
         this.executorTimerRestartOutrosComponentes = executorTimerRestartOutrosComponentes;
 
         contadorTimer.definirContador(levelEscolhido.getTempoContagem(), this);        
-        digitos.passarCoresAosDisplayDigitos(levelEscolhido.getDicionarioDeCores());        
+        digitos.passarCoresAosDisplayDigitos(displayDto, levelEscolhido.getDicionarioDeCores());        
     }
 
     public void execute()
