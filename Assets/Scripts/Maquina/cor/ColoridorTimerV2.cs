@@ -4,12 +4,12 @@ using UnityEngine;
 public class ColoridorTimerV2 
 {
     private SpriteRenderer placaTimer;
-    private DisplayTimerDigito[] displayTimerDigito;
+    private DisplayTimerDigitos displayTimerDigitos;
 
-    public ColoridorTimerV2(SpriteRenderer placaTimer, DisplayTimerDigito[] displayTimerDigito)
+    public ColoridorTimerV2(SpriteRenderer placaTimer, DisplayTimerDigitos displayTimerDigito)
     {
         this.placaTimer = placaTimer;
-        this.displayTimerDigito = displayTimerDigito;
+        this.displayTimerDigitos = displayTimerDigito;
     }
 
     public void colorir(Dictionary<string, string> dicionarioDeCores)
@@ -24,22 +24,17 @@ public class ColoridorTimerV2
         Color corPlaca = Utils.getCorByHex(corDigitosHex);
 
         passarCoresAosDisplaysDigitos(corDigito, corPlaca);
-        iniciarDisplayTimers();        
+        DisplayTimerDigito2Pontos displayTimer2Pontos = displayTimerDigitos.getDisplayTimer2Segmentos();
+        displayTimer2Pontos.configuradoPeloLevel(corDigito);
+
     }
 
     private void passarCoresAosDisplaysDigitos(Color corDigito, Color corPlaca)
     {
-        for (int contador = 0; contador < displayTimerDigito.Length; contador++)
+        for (int contador = 0; contador < displayTimerDigitos.getQtdDisplaysDigitos(); contador++)
         {
-            displayTimerDigito[contador].configuradoPeloLevel(corDigito, corPlaca);
+            DisplayTimerDigito displayTimerDigito = displayTimerDigitos.getDisplayTimer(contador);
+            displayTimerDigito.configuradoPeloLevel(corDigito, corPlaca);
         }
-    }
-
-    private void iniciarDisplayTimers()
-    {
-        for (int contador = 0; contador < displayTimerDigito.Length - 1; contador++)
-        {
-            displayTimerDigito[contador].mostrarDigito(0);
-        }
-    }
+    }    
 }

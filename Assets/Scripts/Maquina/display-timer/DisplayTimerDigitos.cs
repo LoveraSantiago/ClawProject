@@ -7,24 +7,26 @@ public class DisplayTimerDigitos
     public int segundosDezenaAtual { get; private set; }
     public int minutosUnidadeAtual { get; private set; }
     public int minutosDezenaAtual  { get; private set; }
-    
-    public DisplayTimerDigito[] displayTimerDigito { get; private set; }
+
+    private DisplayTimerDigito2Pontos displayTimer2Pontos;
+    private DisplayTimerDigito[] displayTimerDigito;
 
     public DisplayTimerDigitos(DisplayTimerDto displayDto)
     {
         DisplayTimerDigito.configurar(displayDto);
-        displayTimerDigito = new DisplayTimerDigito[5];
+        displayTimerDigito = new DisplayTimerDigito[4];
         displayTimerDigito[0] = new DisplayTimerDigito(displayDto.SingleDisplay[0]);
         displayTimerDigito[1] = new DisplayTimerDigito(displayDto.SingleDisplay[1]);
         displayTimerDigito[2] = new DisplayTimerDigito(displayDto.SingleDisplay[2]);
-        displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);
-        displayTimerDigito[4] = new DisplayTimerDigito(displayDto.SingleDisplay[4]);
+        displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);        
+
+        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
     }
 
     public void passarCoresAosDisplayDigitos(DisplayTimerDto displayDto, Dictionary<string, string> dicionarioDeCores)
     {
         SpriteRenderer placaTimer = displayDto.SprRendererPlacaGrupo;
-        ColoridorTimerV2 coloridor = new ColoridorTimerV2(placaTimer, displayTimerDigito);
+        ColoridorTimerV2 coloridor = new ColoridorTimerV2(placaTimer, this);
         coloridor.colorir(dicionarioDeCores);
     }
 
@@ -35,7 +37,7 @@ public class DisplayTimerDigitos
         displayTimerDigito[1].estadoBlink(estadoBlink);
         displayTimerDigito[0].estadoBlink(estadoBlink);
 
-        displayTimerDigito[4].estadoBlink(estadoBlink);
+        displayTimer2Pontos.estadoBlink(estadoBlink);
     }
 
     public void setSegundosUnidade(int unidadeSegundos)
@@ -60,5 +62,20 @@ public class DisplayTimerDigitos
     {
         minutosDezenaAtual = dezenaMinutos;
         displayTimerDigito[0].mostrarDigito(dezenaMinutos);
+    }
+
+    public DisplayTimerDigito getDisplayTimer(int indice)
+    {
+        return displayTimerDigito[indice];
+    }
+
+    public DisplayTimerDigito2Pontos getDisplayTimer2Segmentos()
+    {
+        return displayTimer2Pontos;
+    }
+
+    public int getQtdDisplaysDigitos()
+    {
+        return displayTimerDigito.Length;
     }
 }

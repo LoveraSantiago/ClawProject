@@ -23,7 +23,8 @@ public class DisplayTimerDigito
         for(int contador = 0; contador < sDisplayDto.Segmentos.Length; contador++)
         {
             sDisplayDto.Segmentos[contador].color = corDigito;
-        }        
+        }
+        mostrarDigito(0);
     }
 
     public void mostrarDigito(int digito)
@@ -69,7 +70,7 @@ public class DisplayTimerDigito
             sprRenderer.color = Color.red;
             sprRenderer.material = segmentHdr.getMaterialSegmento(array[contador]);
         }
-    }   
+    }  
 
     private void colorirPlaca(Color corPlaca)
     {
