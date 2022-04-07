@@ -71,11 +71,14 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         chao.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         barra.configuradoPeloLevel(maquinaDto.BarraDtoV2, levelEscolhido.getDicionarioDeCores());
 
-        AntesExecutorTimerRestart executor = new AntesExecutorTimerRestart(botoesPowerUp, arcoIrisEfeito);
-        displayTimer.configuradoPeloLevel(levelEscolhido, executor);
+        new ScrollPups()
+            .configuradoPeloLevel(maquinaDto.ScrollPupsDto, levelEscolhido.getDicionarioDeCores());
 
         new ColoridorMaquinaV2()
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());
+
+        AntesExecutorTimerRestart executor = new AntesExecutorTimerRestart(botoesPowerUp, arcoIrisEfeito);
+        displayTimer.configuradoPeloLevel(levelEscolhido, executor);
     }
 
     public void start(InputGame inputGame)
