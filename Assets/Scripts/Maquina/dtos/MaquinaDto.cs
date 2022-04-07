@@ -31,6 +31,7 @@ public class MaquinaDto
     [SerializeField] private ChaoDto chaoDto;
     [Space(5)]
     [SerializeField] private BarraDto barraDto;
+    [SerializeField] private BarraDtoV2 barraDtoV2;
     [Space(5)]
     [SerializeField] private PartesMaquinaDtoV2 partesDtoV2;
 
@@ -56,7 +57,9 @@ public class MaquinaDto
     public TuboDtoV2 TuboDtoV2 { get { return tuboDtoV2; } }
 
     public ChaoDto ChaoDto { get { return chaoDto; } }
+
     public BarraDto BarraDto { get { return barraDto; } }
+    public BarraDtoV2 BarraDtoV2 { get { return barraDtoV2; } }
 
     public PartesMaquinaDtoV2 PartesDtoV2 { get { return partesDtoV2; } }
 }
