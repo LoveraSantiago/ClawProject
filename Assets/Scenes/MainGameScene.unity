@@ -10890,11 +10890,13 @@ MonoBehaviour:
       displayTimerDto:
         sprRendererPlaca: {fileID: 1404465311}
         sprRendererPlacaEfeito: {fileID: 2146911256}
+        sprRendererPlacaGrupo: {fileID: 1574098589}
         sprRendererMiniSegmentos:
         - {fileID: 1067574532}
         - {fileID: 89787617}
         singleDisplay:
-        - segmentos:
+        - placaIndividual: {fileID: 747817520}
+          segmentos:
           - {fileID: 8870112}
           - {fileID: 1452622473}
           - {fileID: 1465120083}
@@ -10902,7 +10904,8 @@ MonoBehaviour:
           - {fileID: 1738943585}
           - {fileID: 194075352}
           - {fileID: 1025332712}
-        - segmentos:
+        - placaIndividual: {fileID: 1267927971}
+          segmentos:
           - {fileID: 1265609395}
           - {fileID: 118754867}
           - {fileID: 70735345}
@@ -10910,7 +10913,8 @@ MonoBehaviour:
           - {fileID: 141069283}
           - {fileID: 1824383909}
           - {fileID: 763833712}
-        - segmentos:
+        - placaIndividual: {fileID: 813072713}
+          segmentos:
           - {fileID: 263833695}
           - {fileID: 1806419761}
           - {fileID: 881381730}
@@ -10918,7 +10922,8 @@ MonoBehaviour:
           - {fileID: 1259727989}
           - {fileID: 278527156}
           - {fileID: 386941092}
-        - segmentos:
+        - placaIndividual: {fileID: 1946607746}
+          segmentos:
           - {fileID: 1644994628}
           - {fileID: 277852702}
           - {fileID: 1942337738}
@@ -10926,7 +10931,8 @@ MonoBehaviour:
           - {fileID: 855118128}
           - {fileID: 1778464019}
           - {fileID: 1441577269}
-        - segmentos:
+        - placaIndividual: {fileID: 0}
+          segmentos:
           - {fileID: 1067574532}
           - {fileID: 89787617}
       displayDeScoreDto:
@@ -21885,6 +21891,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1939758284032199629, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &747817520 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1419583645591784554, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &755569873
 GameObject:
   m_ObjectHideFlags: 3
@@ -22009,6 +22020,11 @@ SpriteRenderer:
 --- !u!212 &796890187 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 814877020036264204, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &813072713 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6752979503049628630, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &825515325 stripped
@@ -33116,6 +33132,11 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1267725515, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
   m_PrefabInstance: {fileID: 2086766167889621231}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1267927971 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2035073605, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1270622651 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6406990385869860179, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -43596,6 +43617,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 326749042446558330, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1574098589 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1555554158, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1582774531 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2245422215511317049, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -48778,6 +48804,11 @@ SpriteRenderer:
 --- !u!212 &1945736026 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 814877021777151791, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1946607746 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4081686567994181512, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1954733696
