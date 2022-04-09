@@ -20,6 +20,11 @@ public class LevelAspargo : AbstractLevelColetavel
         return 14;
     }
 
+    public override bool isAlbedo1()
+    {
+        return false;
+    }
+
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorAspargo();

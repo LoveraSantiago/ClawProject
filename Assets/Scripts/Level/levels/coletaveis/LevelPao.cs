@@ -20,6 +20,11 @@ public class LevelPao : AbstractLevelColetavel
         return 13;
     }
 
+    public override bool isAlbedo1()
+    {
+        return false;
+    }
+
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorPao();

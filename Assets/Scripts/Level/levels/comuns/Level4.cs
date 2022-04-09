@@ -131,6 +131,11 @@ public class Level4 : AbstractLevelOrdem
         return dicionario;
     }
 
+    public override bool isAlbedo1()
+    {
+        return false;
+    }
+
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorLevel4();

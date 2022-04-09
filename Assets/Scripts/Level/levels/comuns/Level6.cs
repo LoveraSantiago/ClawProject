@@ -82,6 +82,11 @@ public class Level6 : AbstractLevelOvo
         return dicionario;
     }
 
+    public override bool isAlbedo1()
+    {
+        return false;
+    }
+
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorLevel6();

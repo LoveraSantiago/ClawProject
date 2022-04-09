@@ -20,6 +20,11 @@ public class LevelCoco : AbstractLevelColetavel
         return 15;
     }
 
+    public override bool isAlbedo1()
+    {
+        return false;
+    }
+
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorCoco();

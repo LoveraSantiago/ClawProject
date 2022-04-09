@@ -20,6 +20,11 @@ public class LevelLaranja : AbstractLevelColetavel
         return 12;
     }
 
+    public override bool isAlbedo1()
+    {
+        return false;
+    }
+
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorLaranja();

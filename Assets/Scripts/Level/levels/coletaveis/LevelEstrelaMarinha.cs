@@ -19,6 +19,11 @@ public class LevelEstrelaMarinha : AbstractLevelColetavel
         return 16;
     }
 
+    public override bool isAlbedo1()
+    {
+        return false;
+    }
+
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorEstrelaMarinha();
