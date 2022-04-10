@@ -49,7 +49,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -399,7 +399,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spritesheet-garra-femea-virando_7: -1146045613
+      spritesheet-garra-femea-virando_3: -1527810768
       spritesheet-garra-femea-virando_10: 1606127838
       spritesheet-garra-femea-virando_2: 2120286589
       spritesheet-garra-femea-virando_11: -1347093840
@@ -411,7 +411,7 @@ TextureImporter:
       spritesheet-garra-femea-virando_8: 1684476404
       spritesheet-garra-femea-virando_4: -133778493
       spritesheet-garra-femea-virando_6: 1942001967
-      spritesheet-garra-femea-virando_3: -1527810768
+      spritesheet-garra-femea-virando_7: -1146045613
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
