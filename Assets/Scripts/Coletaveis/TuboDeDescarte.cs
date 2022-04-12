@@ -61,10 +61,10 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
                 torque *= -1;
                 Sprite spriteAtual = coletados[contador].getSprite();
                 ColetavelTuboDeSaidaDto coletavelTuboSaidaIt = tuboDto.ColetavelTuboDeSaida[contador];
+                coletavelTuboSaidaIt.RigidBodyColetavel.gameObject.SetActive(true);
                 coletavelTuboSaidaIt.RigidBodyColetavel.gravityScale = tuboDto.Gravidade;
                 coletavelTuboSaidaIt.RigidBodyColetavel.AddTorque(torque);
-                coletavelTuboSaidaIt.SprRendererColetavel.sprite = spriteAtual;
-
+                coletavelTuboSaidaIt.SprRendererColetavel.sprite = spriteAtual;                
                 coletavelTuboSaidaIt.GoTrail.SetActive(true);
                 coletavelTuboSaidaIt.RigidBodyTrail.gravityScale = tuboDto.Gravidade;
                 coletavelTuboSaidaIt.ParticulasTrail.Play();
@@ -79,6 +79,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
     {
         ColetavelTuboDeSaidaDto coletavelTuboSaidaIt = tuboDto.ColetavelTuboDeSaida[indice];
         float zero = 0f;
+        coletavelTuboSaidaIt.RigidBodyColetavel.gameObject.SetActive(false);
         coletavelTuboSaidaIt.RigidBodyColetavel.gravityScale = zero;
         coletavelTuboSaidaIt.RigidBodyColetavel.angularVelocity = zero;
         coletavelTuboSaidaIt.RigidBodyColetavel.velocity = Vector2.zero;
