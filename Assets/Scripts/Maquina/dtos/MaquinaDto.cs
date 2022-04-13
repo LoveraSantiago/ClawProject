@@ -30,8 +30,7 @@ public class MaquinaDto
     [Space(5)]
     [SerializeField] private ChaoDto chaoDto;
     [Space(5)]
-    [SerializeField] private BarraDto barraDto;
-    [SerializeField] private BarraDtoV2 barraDtoV2;
+    [SerializeField] private BarraDto barraDto;    
     [Space(5)]
     [SerializeField] private ScrollPupsDto scrollPupsDto;
     [Space(5)]
@@ -60,8 +59,7 @@ public class MaquinaDto
 
     public ChaoDto ChaoDto { get { return chaoDto; } }
 
-    public BarraDto BarraDto { get { return barraDto; } }
-    public BarraDtoV2 BarraDtoV2 { get { return barraDtoV2; } }
+    public BarraDto BarraDto { get { return barraDto; } }    
 
     public ScrollPupsDto ScrollPupsDto { get { return scrollPupsDto; } }
     public PartesMaquinaDtoV2 PartesDtoV2 { get { return partesDtoV2; } }

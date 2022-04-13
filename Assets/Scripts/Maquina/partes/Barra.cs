@@ -5,6 +5,6 @@ public class Barra : ParteEfeitoMaquina
 
     protected override string getNomeParteMaquina()
     {
-        return ConstantesCoresMaquina.BARRA;
+        return ConstantesCoresMaquinaV2.BARRA;
     }
 }
