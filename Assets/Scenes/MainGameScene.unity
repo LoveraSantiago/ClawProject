@@ -5243,11 +5243,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4247215976206769802, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &186092669 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1345061731216858424, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &187744863
 GameObject:
   m_ObjectHideFlags: 3
@@ -11111,12 +11106,8 @@ MonoBehaviour:
         sprRenderColorir: {fileID: 605089188}
         sprRenderEfeito: {fileID: 1500699939}
       barraDto:
-        sprRenderColorir: {fileID: 186092669}
+        sprRenderColorir: {fileID: 1628489478}
         sprRenderEfeito: {fileID: 1690391164}
-      barraDtoV2:
-        sprRendererBarra: {fileID: 4106799619402785298}
-        sprRendererSuporteEsquerda: {fileID: 4106799619402785300}
-        sprRendererSuporteDireita: {fileID: 4106799619402785299}
       scrollPupsDto:
         sprRendererPlacaExterna: {fileID: 1382398206}
         sprRendererPlacaInterna: {fileID: 991189264}
@@ -22381,15 +22372,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0.9254902
+      value: 0.25882354
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0.8980392
+      value: 0.39607844
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
-      value: 0.6
+      value: 0.9843137
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.a
@@ -22397,15 +22388,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.b
-      value: 0.9254902
+      value: 0.25882354
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.g
-      value: 0.8980392
+      value: 0.39607844
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.r
-      value: 0.6
+      value: 0.9843137
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key2.a
@@ -48531,6 +48522,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1825407855973308065, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1628489478 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3025406782920195367, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1632403940 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6042331374199176405, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -58817,6 +58813,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 469031665470334302, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 33
+      objectReference: {fileID: 0}
     - target: {fileID: 469031665988364410, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
       propertyPath: m_Name
       value: garra
@@ -59228,21 +59228,6 @@ Transform:
 --- !u!212 &4106799619402785297 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5473208772646066894, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-  m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &4106799619402785298 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7994112515065212990, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-  m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &4106799619402785299 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 695030686, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-  m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &4106799619402785300 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1202801130, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &6299144451050955762 stripped
