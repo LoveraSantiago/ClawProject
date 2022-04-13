@@ -81,7 +81,7 @@ public class DisplayScoreDigito
         {
             SpriteRenderer sprLed = arrayDeLeds[array[contadorX, 0]][array[contadorX, 1]];
             sprLed.color = cor;
-            sprLed.material = material;
+            sprLed.sharedMaterial = material;
         }
     }
 

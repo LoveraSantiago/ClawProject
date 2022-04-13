@@ -7,7 +7,8 @@ public class MaterialHdr
 
     public static Material ofLed()
     {
-        return new Material(materialHdrLed);
+        return materialHdrLed;
+        //return new Material(materialHdrLed);
     }
 
     public static Material of(Sprite sprite)
