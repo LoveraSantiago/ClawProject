@@ -16,7 +16,7 @@ public class DisplayDeScores : ArcoIrisConjunto
 
     public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto)
     {
-        DisplayScoreDigito.configurar(displayDeScoresDto.MaterialEfeitoLed);
+        DisplayScoreDigito.configurar(displayDeScoresDto.MaterialEfeitoLedAditivo);
         SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;        
         displayCentena = new DisplayScoreDigito(singleDisplays[0]);
         displayDezena  = new DisplayScoreDigito(singleDisplays[1]);
