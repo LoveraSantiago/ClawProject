@@ -15,8 +15,7 @@ public class DisplayDeScores : ArcoIrisConjunto
     private Coroutine coroutineAtual;
 
     public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto)
-    {
-        DisplayScoreDigito.configurar(displayDeScoresDto.MaterialEfeitoLedAditivo);
+    {        
         SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;        
         displayCentena = new DisplayScoreDigito(singleDisplays[0]);
         displayDezena  = new DisplayScoreDigito(singleDisplays[1]);
@@ -27,8 +26,8 @@ public class DisplayDeScores : ArcoIrisConjunto
 
     public void configuradoPeloLevel(DisplayDeScoreDto displayDeScoresDto, Dictionary<string, string> dicionarioDeCores)
     {
-        ColoridorDeLedsV2 coloridor = new ColoridorDeLedsV2(displayCentena, displayDezena, displayUnidade);
-        coloridor.colorir(displayDeScoresDto.SprRendererPlacaGrupo, dicionarioDeCores);
+        ConfiguradorDeDisplayScoreDigito configuradorDisplayDigito = new ConfiguradorDeDisplayScoreDigito(displayCentena, displayDezena, displayUnidade);
+        configuradorDisplayDigito.configurar(displayDeScoresDto.SprRendererPlacaGrupo, dicionarioDeCores);
     }
     
     public void mostrarScore(int score, bool result)

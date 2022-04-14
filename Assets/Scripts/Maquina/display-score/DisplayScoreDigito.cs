@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class DisplayScoreDigito 
-{
-    private static SegmentosScore segmentos;
+public class DisplayScoreDigito : ComponentePropriedadesDeDisplayScoreDigito
+{   
     private static Material materialEfeitoLed;
 
     private int[,] arrayLigados;
@@ -89,11 +88,5 @@ public class DisplayScoreDigito
     {
         if (array == null) return;
         ligarPosicoes(array, corOriginal, defaultMaterial);        
-    }
-
-    public static void configurar(Material MaterialEfeitoLedArg)
-    {
-        segmentos = new SegmentosScore();
-        materialEfeitoLed = MaterialEfeitoLedArg;
-    }
+    }    
 }
