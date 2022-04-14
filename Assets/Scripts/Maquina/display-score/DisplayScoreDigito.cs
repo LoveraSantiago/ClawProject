@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class DisplayScoreDigito : ComponentePropriedadesDeDisplayScoreDigito
-{   
+public class DisplayScoreDigito 
+{
+    private static ContextoEstaticoDisplayScoresDigito contexto;
+
     private int[,] arrayLigados;
     public int digito { get; private set; }
     public string letra { get; private set; }
@@ -26,7 +28,7 @@ public class DisplayScoreDigito : ComponentePropriedadesDeDisplayScoreDigito
     public void configuradoPeloLevel(string corScore)
     {   
         sprDisplay.color = Utils.getCorByHex(corScore);
-        ligarPosicoes(segmentos.ARRAY_CHEIO, corOriginalLed, defaultMaterial);
+        ligarPosicoes(contexto.Segmentos.ARRAY_CHEIO, contexto.CorOriginalLed, contexto.DefaultMaterial);
 
         mostrarDigito(0, Color.red);
     }
@@ -35,16 +37,16 @@ public class DisplayScoreDigito : ComponentePropriedadesDeDisplayScoreDigito
     {
         letra = digito;
         desligarPosicoes(arrayLigados);
-        arrayLigados = segmentos.getArrayParaLigar(digito);
-        ligarPosicoes(arrayLigados, cor, materialEfeitoLed);
+        arrayLigados = contexto.Segmentos.getArrayParaLigar(digito);
+        ligarPosicoes(arrayLigados, cor, contexto.MaterialEfeitoLed);
     }
 
     public void mostrarDigito(int digito, Color cor)
     {
         this.digito = digito;
         desligarPosicoes(arrayLigados);
-        arrayLigados = segmentos.getArrayParaLigar(digito);
-        ligarPosicoes(arrayLigados, cor, materialEfeitoLed);
+        arrayLigados = contexto.Segmentos.getArrayParaLigar(digito);
+        ligarPosicoes(arrayLigados, cor, contexto.MaterialEfeitoLed);
     }    
 
     public void desligarDigito()
@@ -80,6 +82,11 @@ public class DisplayScoreDigito : ComponentePropriedadesDeDisplayScoreDigito
     private void desligarPosicoes(int[,] array)
     {
         if (array == null) return;
-        ligarPosicoes(array, corOriginalLed, defaultMaterial);        
-    }    
+        ligarPosicoes(array, contexto.CorOriginalLed, contexto.DefaultMaterial);        
+    } 
+    
+    public static void configurar(Material materialEfeitoLedArg, Material defaultMaterialArg, Color corOriginalLed)
+    {
+        contexto = new ContextoEstaticoDisplayScoresDigito(materialEfeitoLedArg, defaultMaterialArg, corOriginalLed);
+    }
 }

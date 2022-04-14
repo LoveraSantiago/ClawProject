@@ -24,7 +24,7 @@ public class ConfiguradorDeDisplayScoreDigito
         string hexLed = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS];
         Color corOriginalDoLed = Utils.getCorByHex(hexLed);
 
-        ComponentePropriedadesDeDisplayScoreDigito.configurar(materialEfeitoLed, materialDefaultLed, corOriginalDoLed);
+        DisplayScoreDigito.configurar(materialEfeitoLed, materialDefaultLed, corOriginalDoLed);
 
         string hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1];
         displayCentena.configuradoPeloLevel(hexCor);
