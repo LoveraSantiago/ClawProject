@@ -91,9 +91,9 @@ public class DisplayScoreDigito
         ligarPosicoes(array, corOriginal, defaultMaterial);        
     }
 
-    public static void configurar()
+    public static void configurar(Material MaterialEfeitoLedArg)
     {
         segmentos = new SegmentosScore();
-        materialEfeitoLed = MaterialHdr.ofLed();
+        materialEfeitoLed = MaterialEfeitoLedArg;
     }
 }

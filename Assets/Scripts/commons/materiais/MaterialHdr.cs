@@ -2,14 +2,7 @@ using UnityEngine;
 
 public class MaterialHdr 
 {
-    private static Material materialHdr;
-    private static Material materialHdrLed;
-
-    public static Material ofLed()
-    {
-        return materialHdrLed;
-        //return new Material(materialHdrLed);
-    }
+    private static Material materialHdr;    
 
     public static Material of(Sprite sprite)
     {
@@ -18,9 +11,8 @@ public class MaterialHdr
         return material;
     }
 
-    public static void configurar(Material materialHdrArg, Material materialHdrLedArg)
+    public static void configurar(Material materialHdrArg)
     {
-        materialHdr = materialHdrArg;
-        materialHdrLed = materialHdrLedArg;
+        materialHdr = materialHdrArg;        
     }
 }

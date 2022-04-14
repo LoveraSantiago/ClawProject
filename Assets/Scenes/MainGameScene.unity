@@ -10932,6 +10932,7 @@ MonoBehaviour:
       displayDeScoreDto:
         qtdBlinks: 3
         tempoBlink: 0.2
+        materialEfeitoLed: {fileID: 2100000, guid: abed1645fe487b746993f7a08c0e4223, type: 2}
         sprRendererPlacaGrupo: {fileID: 916340637}
         singleDisplayScoreDto:
         - sprRendererPlaca: {fileID: 129948557}
