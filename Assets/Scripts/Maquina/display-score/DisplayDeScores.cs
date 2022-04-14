@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class DisplayDeScores : ArcoIrisConjunto
 {
@@ -24,10 +23,10 @@ public class DisplayDeScores : ArcoIrisConjunto
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
 
-    public void configuradoPeloLevel(DisplayDeScoreDto displayDeScoresDto, Dictionary<string, string> dicionarioDeCores)
+    public void configuradoPeloLevel(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)
     {
         ConfiguradorDeDisplayScoreDigito configuradorDisplayDigito = new ConfiguradorDeDisplayScoreDigito(displayCentena, displayDezena, displayUnidade);
-        configuradorDisplayDigito.configurar(displayDeScoresDto.SprRendererPlacaGrupo, dicionarioDeCores);
+        configuradorDisplayDigito.configurar(displayDeScoresDto, levelEscolhido);
     }
     
     public void mostrarScore(int score, bool result)

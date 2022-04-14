@@ -2,17 +2,13 @@ using UnityEngine;
 
 public class DisplayScoreDigito : ComponentePropriedadesDeDisplayScoreDigito
 {   
-    private static Material materialEfeitoLed;
-
     private int[,] arrayLigados;
     public int digito { get; private set; }
     public string letra { get; private set; }
-
-    private Color corOriginal;
+    
     private GlowEfeito glowEfeito;
     private SpriteRenderer sprDisplay;
-    private SpriteRenderer[][] arrayDeLeds;
-    private Material defaultMaterial;
+    private SpriteRenderer[][] arrayDeLeds;    
 
     public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto)
     {
@@ -27,13 +23,10 @@ public class DisplayScoreDigito : ComponentePropriedadesDeDisplayScoreDigito
         glowEfeito = new GlowEfeito(singleDisplayDto.PlacaEfeito, singleDisplayDto.MaterialEfeito);
     }
 
-    public void configuradoPeloLevel(string corScore, string corLeds)
-    {
-        corOriginal = Utils.getCorByHex(corLeds);
+    public void configuradoPeloLevel(string corScore)
+    {   
         sprDisplay.color = Utils.getCorByHex(corScore);
-        defaultMaterial = arrayDeLeds[0][0].sharedMaterial;
-
-        ligarPosicoes(segmentos.ARRAY_CHEIO, corOriginal, defaultMaterial);
+        ligarPosicoes(segmentos.ARRAY_CHEIO, corOriginalLed, defaultMaterial);
 
         mostrarDigito(0, Color.red);
     }
@@ -87,6 +80,6 @@ public class DisplayScoreDigito : ComponentePropriedadesDeDisplayScoreDigito
     private void desligarPosicoes(int[,] array)
     {
         if (array == null) return;
-        ligarPosicoes(array, corOriginal, defaultMaterial);        
+        ligarPosicoes(array, corOriginalLed, defaultMaterial);        
     }    
 }

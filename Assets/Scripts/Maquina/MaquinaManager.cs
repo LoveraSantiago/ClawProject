@@ -63,7 +63,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp.configuradoPeloLevel(levelEscolhido);
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
         displayDeColetados.configuradoPeloLevel(levelEscolhido, maquinaDto.DisplayColetadosDto);
-        displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto, levelEscolhido.getDicionarioDeCores());        
+        displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto, levelEscolhido);        
         vigaEsquerda.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         vigaDireita.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         bordasFrenteVidro.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());

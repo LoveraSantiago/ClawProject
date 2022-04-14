@@ -17,7 +17,7 @@ public class DisplayDeScoreDto
     public float TempoBlink { get { return tempoBlink; } }
 
     public Material MaterialEfeitoLedAditivo { get { return materialEfeitoLedAditivo;  } }
-    public Material AaterialEfeitoLedAlpha { get { return materialEfeitoLedAlpha;  } }
+    public Material MaterialEfeitoLedAlpha { get { return materialEfeitoLedAlpha;  } }
 
     public SpriteRenderer SprRendererPlacaGrupo { get { return sprRendererPlacaGrupo; } }
     public SingleDisplayScoreDto[] SingleDisplayScoreDto { get { return singleDisplayScoreDto;  } }

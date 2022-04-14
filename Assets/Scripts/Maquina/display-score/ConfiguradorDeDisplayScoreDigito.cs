@@ -15,21 +15,40 @@ public class ConfiguradorDeDisplayScoreDigito
         this.displayUnidade = displayUnidade;
     }
 
-    public void configurar(SpriteRenderer sprRendererPlacaGrupo, Dictionary<string, string> dicionarioDeCores)
+    public void configurar(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)
     {
-        ComponentePropriedadesDeDisplayScoreDigito.configurar();
+        Material materialEfeitoLed = getMateialLedToLevel(displayDeScoresDto, levelEscolhido);
+        Material materialDefaultLed= displayDeScoresDto.SingleDisplayScoreDto[0].Fileira1[0].sharedMaterial;
+
+        Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
+        string hexLed = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS];
+        Color corOriginalDoLed = Utils.getCorByHex(hexLed);
+
+        ComponentePropriedadesDeDisplayScoreDigito.configurar(materialEfeitoLed, materialDefaultLed, corOriginalDoLed);
 
         string hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1];
-        string hexLed = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS];
-        displayCentena.configuradoPeloLevel(hexCor, hexLed);
+        displayCentena.configuradoPeloLevel(hexCor);
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL2];        
-        displayDezena.configuradoPeloLevel(hexCor, hexLed);
+        displayDezena.configuradoPeloLevel(hexCor);
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL3];        
-        displayUnidade.configuradoPeloLevel(hexCor, hexLed);
+        displayUnidade.configuradoPeloLevel(hexCor);
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_GRUPO];
+        SpriteRenderer sprRendererPlacaGrupo = displayDeScoresDto.SprRendererPlacaGrupo;
         sprRendererPlacaGrupo.color = Utils.getCorByHex(hexCor);
+    }
+
+    private Material getMateialLedToLevel(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)
+    {
+        if (levelEscolhido.isAlbedo0())
+        {
+            return displayDeScoresDto.MaterialEfeitoLedAditivo;
+        }
+        else
+        {
+            return displayDeScoresDto.MaterialEfeitoLedAlpha;
+        }
     }
 }
