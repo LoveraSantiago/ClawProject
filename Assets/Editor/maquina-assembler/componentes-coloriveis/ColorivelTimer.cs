@@ -20,10 +20,10 @@ public class ColorivelTimer
 
     public ComponenteColorivel getPlacaDigitos()
     {   
-        GameObject placaDisplayTimer1 = getGoDigito("1");
-        GameObject placaDisplayTimer2 = getGoDigito("2");
-        GameObject placaDisplayTimer3 = getGoDigito("3");
-        GameObject placaDisplayTimer4 = getGoDigito("4");
+        GameObject placaDisplayTimer1 = getGoDigito("v61");
+        GameObject placaDisplayTimer2 = getGoDigito("v62");
+        GameObject placaDisplayTimer3 = getGoDigito("v63");
+        GameObject placaDisplayTimer4 = getGoDigito("v64");
 
         return new MultipleCompColorivel(new GameObject[] {
             placaDisplayTimer1, placaDisplayTimer2, placaDisplayTimer3, placaDisplayTimer4
@@ -35,10 +35,10 @@ public class ColorivelTimer
         GameObject goTimer = getTimerPrincipal();
 
         List<GameObject> gosSegmentos = new List<GameObject>();
-        gosSegmentos.AddRange(getSegmentos("1"));
-        gosSegmentos.AddRange(getSegmentos("2"));
-        gosSegmentos.AddRange(getSegmentos("3"));
-        gosSegmentos.AddRange(getSegmentos("4"));
+        gosSegmentos.Add(getSegmentos("v61"));
+        gosSegmentos.Add(getSegmentos("v62"));
+        gosSegmentos.Add(getSegmentos("v63"));
+        gosSegmentos.Add(getSegmentos("v64"));
         gosSegmentos.AddRange(getSegmentos2Pontos());
         return new MultipleCompColorivel(gosSegmentos.ToArray());
     }
@@ -53,18 +53,19 @@ public class ColorivelTimer
         return finder.findNoComponente(goTimer, ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO + numero);
     }
 
-    private List<GameObject> getSegmentos(string digito)
+    private GameObject getSegmentos(string digito)
     {
         GameObject placaDisplayTimer = getGoDigito(digito);
-        GameObject displayTimer = finder.findNoComponente(placaDisplayTimer, "display-timer-digitov4");
+        GameObject displayTimer = finder.findNoComponente(placaDisplayTimer, "display");
+        return displayTimer;
 
-        List<GameObject> gosSegmentos = new List<GameObject>();
-        for(int contador = 0; contador < 7; contador++)
-        {
-            GameObject singleDisplay = finder.findNoComponente(displayTimer, ConstantesCoresMaquinaV2.TIMER_DISPLAY_SEGMENTOS + "-" + (contador + 1));
-            gosSegmentos.Add(singleDisplay);
-        }
-        return gosSegmentos;
+        //List<GameObject> gosSegmentos = new List<GameObject>();
+        //for(int contador = 0; contador < 7; contador++)
+        //{
+        //    GameObject singleDisplay = finder.findNoComponente(displayTimer, ConstantesCoresMaquinaV2.TIMER_DISPLAY_SEGMENTOS + "-" + (contador + 1));
+        //    gosSegmentos.Add(singleDisplay);
+        //}
+        //return gosSegmentos;
     }
 
     private List<GameObject> getSegmentos2Pontos()
