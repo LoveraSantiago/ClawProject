@@ -8,6 +8,7 @@ public class MaterialHdr //REMOVER ESSA CLASSE ASSIM Q POSSIVEL
     {
         Material material = new Material(materialHdr);
         material.SetTexture("MainTexture", sprite.texture);
+        material.SetMatrix()
         return material;
     }
 
