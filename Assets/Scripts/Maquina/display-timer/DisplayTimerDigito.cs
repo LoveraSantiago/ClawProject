@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DisplayTimerDigito 
 {
-    private static SegmentosTimer segmentos;
+    private static SegmentosTimer segmentos = new SegmentosTimer();
     //private static SegmentoTimerHdr segmentHdr;
 
     private int[] arrayLigado;
@@ -77,9 +77,9 @@ public class DisplayTimerDigito
         }
     }
 
-    public static void configurar(DisplayTimerDto displayTimerDto)
-    {
-        segmentos = new SegmentosTimer();
-        //segmentHdr = new SegmentoTimerHdr(displayTimerDto);
-    }
+    //public static void configurar(DisplayTimerDto displayTimerDto)
+    //{
+    //    segmentos = new SegmentosTimer();
+    //    //segmentHdr = new SegmentoTimerHdr(displayTimerDto);
+    //}
 }

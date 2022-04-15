@@ -13,7 +13,7 @@ public class DisplayTimerDigitos
 
     public DisplayTimerDigitos(DisplayTimerDto displayDto)
     {
-        DisplayTimerDigito.configurar(displayDto);
+        //DisplayTimerDigito.configurar(displayDto);
         displayTimerDigito = new DisplayTimerDigito[4];
         displayTimerDigito[0] = new DisplayTimerDigito(displayDto.SingleDisplay[0]);
         displayTimerDigito[1] = new DisplayTimerDigito(displayDto.SingleDisplay[1]);

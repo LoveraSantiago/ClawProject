@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MaterialHdr 
+public class MaterialHdr //REMOVER ESSA CLASSE ASSIM Q POSSIVEL
 {
     private static Material materialHdr;    
 
