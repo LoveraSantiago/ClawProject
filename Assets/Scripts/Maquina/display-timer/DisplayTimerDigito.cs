@@ -3,7 +3,7 @@ using UnityEngine;
 public class DisplayTimerDigito 
 {
     private static SegmentosTimer segmentos;
-    private static SegmentoTimerHdr segmentHdr;
+    //private static SegmentoTimerHdr segmentHdr;
 
     private int[] arrayLigado;
     private bool blink;
@@ -20,10 +20,7 @@ public class DisplayTimerDigito
     {
         corOriginal = corDigito;
         colorirPlaca(corPlaca);
-        for(int contador = 0; contador < sDisplayDto.Segmentos.Length; contador++)
-        {
-            sDisplayDto.Segmentos[contador].color = corDigito;
-        }
+        sDisplayDto.Segmentos.color = corOriginal;        
         mostrarDigito(0);
     }
 
@@ -56,9 +53,9 @@ public class DisplayTimerDigito
         if (array == null) return;
         for (int contador = 0; contador < array.Length; contador++)
         {
-            SpriteRenderer sprRenderer = sDisplayDto.Segmentos[array[contador]];
-            sprRenderer.color = corOriginal;
-            sprRenderer.material = segmentHdr.originalMaterial;
+            //SpriteRenderer sprRenderer = sDisplayDto.Segmentos[array[contador]];
+            //sprRenderer.color = corOriginal;
+            //sprRenderer.material = segmentHdr.originalMaterial;
         }
     }
 
@@ -66,9 +63,9 @@ public class DisplayTimerDigito
     {
         for (int contador = 0; contador < array.Length; contador++)
         {
-            SpriteRenderer sprRenderer = sDisplayDto.Segmentos[array[contador]];
-            sprRenderer.color = Color.red;
-            sprRenderer.material = segmentHdr.getMaterialSegmento(array[contador]);
+            //SpriteRenderer sprRenderer = sDisplayDto.Segmentos[array[contador]];
+            //sprRenderer.color = Color.red;
+            //sprRenderer.material = segmentHdr.getMaterialSegmento(array[contador]);
         }
     }  
 
@@ -83,6 +80,6 @@ public class DisplayTimerDigito
     public static void configurar(DisplayTimerDto displayTimerDto)
     {
         segmentos = new SegmentosTimer();
-        segmentHdr = new SegmentoTimerHdr(displayTimerDto);
+        //segmentHdr = new SegmentoTimerHdr(displayTimerDto);
     }
 }

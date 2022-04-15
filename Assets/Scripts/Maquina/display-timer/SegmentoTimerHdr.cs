@@ -7,7 +7,7 @@ public class SegmentoTimerHdr
 
     public SegmentoTimerHdr(DisplayTimerDto displayTimerDto)
     {
-        configurarMateriais(displayTimerDto.SingleDisplay[0].Segmentos);
+        //configurarMateriais(displayTimerDto.SingleDisplay[0].Segmentos);
         configurarMaterialMiniDisplay(displayTimerDto.SprRendererMiniSegmentos);        
     }
 

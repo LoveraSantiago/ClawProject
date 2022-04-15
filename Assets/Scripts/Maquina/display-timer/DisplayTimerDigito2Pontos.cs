@@ -30,7 +30,7 @@ public class DisplayTimerDigito2Pontos
 
     private void setCor(Color cor)
     {
-        sDisplayDto.Segmentos[0].color = cor;
-        sDisplayDto.Segmentos[1].color = cor;
+        //sDisplayDto.Segmentos[0].color = cor;
+        //sDisplayDto.Segmentos[1].color = cor;
     }
 }
