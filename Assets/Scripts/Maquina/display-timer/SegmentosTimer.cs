@@ -1,15 +1,15 @@
 public class SegmentosTimer 
-{
-    private readonly int[] ARRAY_ZERO   = new int[] { 0, 1, 2, 3, 4, 5 };
-    private readonly int[] ARRAY_HUM    = new int[] { 1, 2 };
-    private readonly int[] ARRAY_DOIS   = new int[] { 0, 1, 3, 4, 6 };
-    private readonly int[] ARRAY_TRES   = new int[] { 0, 1, 2, 3, 6 };
-    private readonly int[] ARRAY_QUATRO = new int[] { 1, 2, 5, 6 };
-    private readonly int[] ARRAY_CINCO  = new int[] { 0, 2, 3, 5, 6 };
-    private readonly int[] ARRAY_SEIS   = new int[] { 0, 2, 3, 4, 5, 6 };
-    private readonly int[] ARRAY_SETE   = new int[] { 0, 1, 2 };
-    private readonly int[] ARRAY_OITO   = new int[] { 0, 1, 2, 3, 4, 5, 6 };
-    private readonly int[] ARRAY_NOVE   = new int[] { 0, 1, 2, 5, 6 };
+{                                                   // A, B, C, D, E, F, G
+    private readonly int[] ARRAY_ZERO   = new int[7] { 1, 1, 1, 1, 1, 1, 0 };
+    private readonly int[] ARRAY_HUM    = new int[7] { 0, 1, 1, 0, 0, 0, 0 };
+    private readonly int[] ARRAY_DOIS   = new int[7] { 1, 1, 0, 1, 1, 0, 1 };
+    private readonly int[] ARRAY_TRES   = new int[7] { 1, 1, 1, 1, 0, 0, 1 };
+    private readonly int[] ARRAY_QUATRO = new int[7] { 0, 1, 1, 0, 0, 1, 1 };
+    private readonly int[] ARRAY_CINCO  = new int[7] { 1, 0, 1, 1, 0, 1, 1 };
+    private readonly int[] ARRAY_SEIS   = new int[7] { 1, 0, 1, 1, 1, 1, 1 };
+    private readonly int[] ARRAY_SETE   = new int[7] { 1, 1, 1, 0, 0, 1, 0 };
+    private readonly int[] ARRAY_OITO   = new int[7] { 1, 1, 1, 1, 1, 1, 1 };
+    private readonly int[] ARRAY_NOVE   = new int[7] { 1, 1, 1, 1, 0, 1, 1 };
 
     public int[] getArrayParaLigar(int digito)
     {
