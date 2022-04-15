@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: material-teste
+  m_Name: mat-display-timer-aditive
   m_Shader: {fileID: -6465566751694194690, guid: 12aebd96a9554f24bad574779ccbddcf, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -54,6 +54,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
+    - _segA: 0
+    - _segB: 0
+    - _segC: 0
+    - _segD: 0
+    - _segE: 0
+    - _segF: 0
+    - _segG: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
