@@ -20,10 +20,10 @@ public class ColorivelTimer
 
     public ComponenteColorivel getPlacaDigitos()
     {   
-        GameObject placaDisplayTimer1 = getGoDigito("v61");
-        GameObject placaDisplayTimer2 = getGoDigito("v62");
-        GameObject placaDisplayTimer3 = getGoDigito("v63");
-        GameObject placaDisplayTimer4 = getGoDigito("v64");
+        GameObject placaDisplayTimer1 = getGoDigito("1");
+        GameObject placaDisplayTimer2 = getGoDigito("2");
+        GameObject placaDisplayTimer3 = getGoDigito("3");
+        GameObject placaDisplayTimer4 = getGoDigito("4");
 
         return new MultipleCompColorivel(new GameObject[] {
             placaDisplayTimer1, placaDisplayTimer2, placaDisplayTimer3, placaDisplayTimer4
@@ -35,10 +35,10 @@ public class ColorivelTimer
         GameObject goTimer = getTimerPrincipal();
 
         List<GameObject> gosSegmentos = new List<GameObject>();
-        gosSegmentos.Add(getSegmentos("v61"));
-        gosSegmentos.Add(getSegmentos("v62"));
-        gosSegmentos.Add(getSegmentos("v63"));
-        gosSegmentos.Add(getSegmentos("v64"));
+        gosSegmentos.Add(getSegmentos("1"));
+        gosSegmentos.Add(getSegmentos("2"));
+        gosSegmentos.Add(getSegmentos("3"));
+        gosSegmentos.Add(getSegmentos("4"));
         gosSegmentos.AddRange(getSegmentos2Pontos());
         return new MultipleCompColorivel(gosSegmentos.ToArray());
     }
