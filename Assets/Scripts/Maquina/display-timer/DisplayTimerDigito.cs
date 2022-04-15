@@ -7,20 +7,20 @@ public class DisplayTimerDigito
 
     private int[] arrayLigado;
     private bool blink;
-    private Color corOriginal;
+    //private Color corOriginal;
 
-    private SingleDisplayTimerDto sDisplayDto;
+    //private SingleDisplayTimerDto sDisplayDto;
 
-    public DisplayTimerDigito(SingleDisplayTimerDto sDisplayDto)
+    //public DisplayTimerDigito(SingleDisplayTimerDto sDisplayDto)
+    //{
+    //    this.sDisplayDto = sDisplayDto;
+    //}
+
+    public void configuradoPeloLevel(SingleDisplayTimerDto sDisplayDto, Color corDigito, Color corPlaca)
     {
-        this.sDisplayDto = sDisplayDto;
-    }
-
-    public void configuradoPeloLevel(Color corDigito, Color corPlaca)
-    {
-        corOriginal = corDigito;
-        colorirPlaca(corPlaca);
-        sDisplayDto.Segmentos.color = corOriginal;        
+        //corOriginal = corDigito;
+        colorirPlaca(sDisplayDto, corPlaca);
+        sDisplayDto.Segmentos.color = corDigito;        
         mostrarDigito(0);
     }
 
@@ -69,7 +69,7 @@ public class DisplayTimerDigito
         }
     }  
 
-    private void colorirPlaca(Color corPlaca)
+    private void colorirPlaca(SingleDisplayTimerDto sDisplayDto, Color corPlaca)
     {
         if (sDisplayDto.PlacaIndividual != null)
         {

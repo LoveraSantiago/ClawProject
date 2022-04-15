@@ -15,18 +15,17 @@ public class DisplayTimerDigitos
     {
         //DisplayTimerDigito.configurar(displayDto);
         displayTimerDigito = new DisplayTimerDigito[4];
-        displayTimerDigito[0] = new DisplayTimerDigito(displayDto.SingleDisplay[0]);
-        displayTimerDigito[1] = new DisplayTimerDigito(displayDto.SingleDisplay[1]);
-        displayTimerDigito[2] = new DisplayTimerDigito(displayDto.SingleDisplay[2]);
-        displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);        
+        displayTimerDigito[0] = new DisplayTimerDigito();
+        displayTimerDigito[1] = new DisplayTimerDigito();
+        displayTimerDigito[2] = new DisplayTimerDigito();
+        displayTimerDigito[3] = new DisplayTimerDigito();        
 
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
     }
 
     public void passarCoresAosDisplayDigitos(DisplayTimerDto displayDto, Dictionary<string, string> dicionarioDeCores)
-    {
-        SpriteRenderer placaTimer = displayDto.SprRendererPlacaGrupo;
-        ColoridorTimerV2 coloridor = new ColoridorTimerV2(placaTimer, this);
+    {   
+        ColoridorTimerV2 coloridor = new ColoridorTimerV2(displayDto, this);
         coloridor.colorir(dicionarioDeCores);
     }
 

@@ -3,18 +3,19 @@ using UnityEngine;
 
 public class ColoridorTimerV2 
 {
-    private SpriteRenderer placaTimer;
+    private DisplayTimerDto displayDto;
     private DisplayTimerDigitos displayTimerDigitos;
 
-    public ColoridorTimerV2(SpriteRenderer placaTimer, DisplayTimerDigitos displayTimerDigito)
+    public ColoridorTimerV2(DisplayTimerDto displayDto, DisplayTimerDigitos displayTimerDigito)
     {
-        this.placaTimer = placaTimer;
+        this.displayDto = displayDto;
         this.displayTimerDigitos = displayTimerDigito;
     }
 
     public void colorir(Dictionary<string, string> dicionarioDeCores)
     {
         string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL];
+        SpriteRenderer placaTimer = displayDto.SprRendererPlacaGrupo;
         placaTimer.color = Utils.getCorByHex(corDigitosHex);
 
         corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_DISPLAY_SEGMENTOS];
@@ -34,7 +35,7 @@ public class ColoridorTimerV2
         for (int contador = 0; contador < displayTimerDigitos.getQtdDisplaysDigitos(); contador++)
         {
             DisplayTimerDigito displayTimerDigito = displayTimerDigitos.getDisplayTimer(contador);
-            displayTimerDigito.configuradoPeloLevel(corDigito, corPlaca);
+            displayTimerDigito.configuradoPeloLevel(displayDto.SingleDisplay[contador], corDigito, corPlaca);
         }
     }    
 }
