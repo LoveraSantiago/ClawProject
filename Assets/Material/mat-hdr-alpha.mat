@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat-hdr-luz-additive
-  m_Shader: {fileID: -6465566751694194690, guid: 63d987b75618d13499130c9122f7680b, type: 3}
+  m_Name: mat-hdr-alpha
+  m_Shader: {fileID: -6465566751694194690, guid: b5eb196acbbed6e4b8cc8fdac6800a03, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -70,7 +70,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 1.4980392, g: 1.3647059, b: 0, a: 1}
+    - _Color: {r: 23.968628, g: 23.968628, b: 23.968628, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

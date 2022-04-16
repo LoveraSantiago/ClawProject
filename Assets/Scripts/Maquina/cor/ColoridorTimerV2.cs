@@ -24,10 +24,12 @@ public class ColoridorTimerV2
         corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO];
         Color corPlaca = Utils.getCorByHex(corDigitosHex);
 
-        Material materialDisplay = getMaterialToLevel(isAlbedo0);
-        passarCoresAosDisplaysDigitos(materialDisplay, corDigito, corPlaca);
+        Material materialDisplay = getMaterialSegmentos(isAlbedo0);
+        passarCoresAosDisplaysDigitos(materialDisplay, corDigito, corPlaca);        
+
         DisplayTimerDigito2Pontos displayTimer2Pontos = displayTimerDigitos.getDisplayTimer2Segmentos();
-        displayTimer2Pontos.configuradoPeloLevel(corDigito);
+        Material materialDisplay2Pontos = getMaterialSegmentos2Pontos(isAlbedo0);
+        displayTimer2Pontos.configuradoPeloLevel(materialDisplay2Pontos, corDigito);
     }
 
     private void passarCoresAosDisplaysDigitos(Material materialDisplay, Color corDigito, Color corPlaca)
@@ -41,7 +43,7 @@ public class ColoridorTimerV2
         }
     }    
 
-    private Material getMaterialToLevel(bool isAlbedo0)
+    private Material getMaterialSegmentos(bool isAlbedo0)
     {
         if (isAlbedo0)
         {
@@ -50,6 +52,18 @@ public class ColoridorTimerV2
         else
         {
             return displayDto.MatSegmentosAlpha;
+        }
+    }
+
+    private Material getMaterialSegmentos2Pontos(bool isAlbedo0)
+    {
+        if (isAlbedo0)
+        {
+            return MaterialHdr.ofAditivo();
+        }
+        else
+        {
+            return MaterialHdr.ofAlpha();
         }
     }
 }

@@ -2,17 +2,40 @@ using UnityEngine;
 
 public class MaterialHdr //REMOVER ESSA CLASSE ASSIM Q POSSIVEL
 {
-    private static Material materialHdr;    
+    private static Material materialHdrAditivo;    
+    private static Material materialHdrAlpha;
 
-    public static Material of(Sprite sprite)
+    public static Material ofAditivo()
     {
-        Material material = new Material(materialHdr);
-        material.SetTexture("MainTexture", sprite.texture);        
+        return new Material(materialHdrAditivo); ;
+    }
+
+    public static Material ofAditivo(Sprite sprite)
+    {
+        Material material = ofAditivo();
+        return setTexture(material, sprite);
+    }
+
+    public static Material ofAlpha()
+    {
+        return new Material(materialHdrAlpha);
+    }
+
+    public static Material ofAlpha(Sprite sprite)
+    {
+        Material material = ofAlpha();
+        return setTexture(material, sprite);
+    }
+
+    public static Material setTexture(Material material, Sprite sprite)
+    {
+        material.SetTexture("MainTexture", sprite.texture);
         return material;
     }
 
-    public static void configurar(Material materialHdrArg)
+    public static void configurar(Material materialHdrAditivoArg, Material materialHdrAlphaArg)
     {
-        materialHdr = materialHdrArg;        
+        materialHdrAditivo = materialHdrAditivoArg;
+        materialHdrAlpha = materialHdrAlphaArg;
     }
 }
