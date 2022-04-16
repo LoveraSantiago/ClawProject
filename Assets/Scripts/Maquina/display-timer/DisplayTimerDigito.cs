@@ -3,35 +3,30 @@ using UnityEngine;
 public class DisplayTimerDigito 
 {
     private static SegmentosTimer segmentos = new SegmentosTimer();
-    //private static SegmentoTimerHdr segmentHdr;
 
-    private int[] arrayLigado;
     private bool blink;
-    //private Color corOriginal;
+    private Vector4 digito;
+    private Material materialDisplay;
 
-    //private SingleDisplayTimerDto sDisplayDto;
-
-    //public DisplayTimerDigito(SingleDisplayTimerDto sDisplayDto)
-    //{
-    //    this.sDisplayDto = sDisplayDto;
-    //}
+    public DisplayTimerDigito(Material materialDisplay)
+    {
+        this.materialDisplay = new Material(materialDisplay);
+    }
 
     public void configuradoPeloLevel(SingleDisplayTimerDto sDisplayDto, Color corDigito, Color corPlaca)
     {
-        //corOriginal = corDigito;
         colorirPlaca(sDisplayDto, corPlaca);
-        sDisplayDto.Segmentos.color = corDigito;        
+        sDisplayDto.Segmentos.color = corDigito;
+        sDisplayDto.Segmentos.sharedMaterial = materialDisplay;
         mostrarDigito(0);
     }
 
     public void mostrarDigito(int digito)
-    {
-        desligarPosicoes(arrayLigado);
-
-        arrayLigado = segmentos.getArrayParaLigar(digito);
+    {   
+        this.digito = segmentos.getSegmentosDigito(digito);
         if (!blink)
         {
-            ligarPosicoes(arrayLigado);
+            ligarPosicoes(this.digito);
         }
     }    
 
@@ -40,33 +35,22 @@ public class DisplayTimerDigito
         this.blink = blink;
         if (blink)
         {
-            desligarPosicoes(arrayLigado);
+            desligarPosicoes();
         }
         else
         {
-            ligarPosicoes(arrayLigado);
+            ligarPosicoes(digito);
         }
     }
 
-    private void desligarPosicoes(int[] array)
+    private void desligarPosicoes()
     {
-        if (array == null) return;
-        for (int contador = 0; contador < array.Length; contador++)
-        {
-            //SpriteRenderer sprRenderer = sDisplayDto.Segmentos[array[contador]];
-            //sprRenderer.color = corOriginal;
-            //sprRenderer.material = segmentHdr.originalMaterial;
-        }
+        ligarPosicoes(segmentos.getSegmentosOff());
     }
 
-    private void ligarPosicoes(int[] array)
+    private void ligarPosicoes(Vector4 digito)
     {
-        for (int contador = 0; contador < array.Length; contador++)
-        {
-            //SpriteRenderer sprRenderer = sDisplayDto.Segmentos[array[contador]];
-            //sprRenderer.color = Color.red;
-            //sprRenderer.material = segmentHdr.getMaterialSegmento(array[contador]);
-        }
+        materialDisplay.SetVector("_digitos", digito);        
     }  
 
     private void colorirPlaca(SingleDisplayTimerDto sDisplayDto, Color corPlaca)
@@ -76,10 +60,4 @@ public class DisplayTimerDigito
             sDisplayDto.PlacaIndividual.color = corPlaca;
         }
     }
-
-    //public static void configurar(DisplayTimerDto displayTimerDto)
-    //{
-    //    segmentos = new SegmentosTimer();
-    //    //segmentHdr = new SegmentoTimerHdr(displayTimerDto);
-    //}
 }

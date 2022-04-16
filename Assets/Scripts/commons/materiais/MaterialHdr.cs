@@ -7,8 +7,7 @@ public class MaterialHdr //REMOVER ESSA CLASSE ASSIM Q POSSIVEL
     public static Material of(Sprite sprite)
     {
         Material material = new Material(materialHdr);
-        material.SetTexture("MainTexture", sprite.texture);
-        material.SetMatrix()
+        material.SetTexture("MainTexture", sprite.texture);        
         return material;
     }
 

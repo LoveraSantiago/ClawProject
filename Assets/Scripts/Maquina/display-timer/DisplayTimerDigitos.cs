@@ -12,13 +12,12 @@ public class DisplayTimerDigitos
     private DisplayTimerDigito[] displayTimerDigito;
 
     public DisplayTimerDigitos(DisplayTimerDto displayDto)
-    {
-        //DisplayTimerDigito.configurar(displayDto);
+    {   
         displayTimerDigito = new DisplayTimerDigito[4];
-        displayTimerDigito[0] = new DisplayTimerDigito();
-        displayTimerDigito[1] = new DisplayTimerDigito();
-        displayTimerDigito[2] = new DisplayTimerDigito();
-        displayTimerDigito[3] = new DisplayTimerDigito();        
+        displayTimerDigito[0] = new DisplayTimerDigito(displayDto.MatSegmentosAlpha);
+        displayTimerDigito[1] = new DisplayTimerDigito(displayDto.MatSegmentosAlpha);
+        displayTimerDigito[2] = new DisplayTimerDigito(displayDto.MatSegmentosAlpha);
+        displayTimerDigito[3] = new DisplayTimerDigito(displayDto.MatSegmentosAlpha);        
 
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
     }
