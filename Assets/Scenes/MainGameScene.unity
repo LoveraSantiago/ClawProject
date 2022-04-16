@@ -341,11 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &89787617 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4403919476984781929, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-  m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &102444467 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3210569914142981911, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -10672,7 +10667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 2
   mainDto:
     garraDto:
       posCacaNiquel: -1.75
@@ -10832,9 +10827,7 @@ MonoBehaviour:
         matSegmentosAditivos: {fileID: 2100000, guid: 9f69d2b4a5d3be5409d3cbaa4a2b18a1, type: 2}
         matSegmentosAlpha: {fileID: 2100000, guid: 1eebc4ef93c5087479c71d4af13004b1, type: 2}
         sprRendererPlacaGrupo: {fileID: 1574098589}
-        sprRendererMiniSegmentos:
-        - {fileID: 1067574532}
-        - {fileID: 89787617}
+        sprRenderer2Pontos: {fileID: 1812027756}
         singleDisplay:
         - placaIndividual: {fileID: 4106799619402785305}
           segmentos: {fileID: 4106799619402785304}
@@ -10844,8 +10837,6 @@ MonoBehaviour:
           segmentos: {fileID: 4106799619402785300}
         - placaIndividual: {fileID: 4106799619402785299}
           segmentos: {fileID: 4106799619402785298}
-        - placaIndividual: {fileID: 1067574532}
-          segmentos: {fileID: 89787617}
       displayDeScoreDto:
         qtdBlinks: 3
         tempoBlink: 0.2
@@ -22261,15 +22252,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0.25882354
+      value: 0.9254902
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0.39607844
+      value: 0.8980392
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
-      value: 0.9843137
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.a
@@ -22277,15 +22268,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.b
-      value: 0.25882354
+      value: 0.9254902
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.g
-      value: 0.39607844
+      value: 0.8980392
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.r
-      value: 0.9843137
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key2.a
@@ -22652,11 +22643,6 @@ GameObject:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3633540520976747335, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1067574532 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7452942191931928786, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-  m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1090931684 stripped
 SpriteRenderer:
@@ -48455,6 +48441,11 @@ SpriteRenderer:
 --- !u!212 &1811085726 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8776125175664333602, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1812027756 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1832815894022648519, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1814368437 stripped

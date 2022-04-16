@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class DisplayTimerDigito2Pontos 
 {
-    private SingleDisplayTimerDto sDisplayDto;
+    private SpriteRenderer sprRenderer2Pontos;
     private Color corOriginal;
 
-    public DisplayTimerDigito2Pontos(SingleDisplayTimerDto singleDisplayTimer)
+    public DisplayTimerDigito2Pontos(SpriteRenderer sprRenderer2Pontos)
     {
-        sDisplayDto = singleDisplayTimer;
+        this.sprRenderer2Pontos = sprRenderer2Pontos;
         setCor(Color.red);
     } 
 
@@ -30,7 +30,6 @@ public class DisplayTimerDigito2Pontos
 
     private void setCor(Color cor)
     {
-        //sDisplayDto.Segmentos[0].color = cor;
-        //sDisplayDto.Segmentos[1].color = cor;
+        sprRenderer2Pontos.color = cor;
     }
 }

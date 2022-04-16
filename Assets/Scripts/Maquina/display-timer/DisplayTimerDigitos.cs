@@ -16,7 +16,7 @@ public class DisplayTimerDigitos
         displayTimerDigito[2] = new DisplayTimerDigito();
         displayTimerDigito[3] = new DisplayTimerDigito();        
 
-        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
+        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SprRenderer2Pontos);
     }
 
     public void passarCoresAosDisplayDigitos(DisplayTimerDto displayDto, AbstractLevel levelEscolhido)

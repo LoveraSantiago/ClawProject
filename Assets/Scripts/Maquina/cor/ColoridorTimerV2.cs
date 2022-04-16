@@ -28,7 +28,6 @@ public class ColoridorTimerV2
         passarCoresAosDisplaysDigitos(materialDisplay, corDigito, corPlaca);
         DisplayTimerDigito2Pontos displayTimer2Pontos = displayTimerDigitos.getDisplayTimer2Segmentos();
         displayTimer2Pontos.configuradoPeloLevel(corDigito);
-
     }
 
     private void passarCoresAosDisplaysDigitos(Material materialDisplay, Color corDigito, Color corPlaca)
