@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using UnityEngine;
-
 public class DisplayTimerDigitos 
 {
     public int segundosUnidadeAtual{ get; private set; }
