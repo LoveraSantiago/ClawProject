@@ -28,7 +28,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
         this.executorTimerRestartOutrosComponentes = executorTimerRestartOutrosComponentes;
 
         contadorTimer.definirContador(levelEscolhido.getTempoContagem(), this);        
-        digitos.passarCoresAosDisplayDigitos(displayDto, levelEscolhido.getDicionarioDeCores());        
+        digitos.passarCoresAosDisplayDigitos(displayDto, levelEscolhido);        
     }
 
     public void execute()

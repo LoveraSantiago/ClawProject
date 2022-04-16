@@ -12,8 +12,8 @@ public class ColoridorTimerV2
         this.displayTimerDigitos = displayTimerDigito;
     }
 
-    public void colorir(Dictionary<string, string> dicionarioDeCores)
-    {
+    public void colorir(bool isAlbedo0, Dictionary<string, string> dicionarioDeCores)
+    {   
         string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL];
         SpriteRenderer placaTimer = displayDto.SprRendererPlacaGrupo;
         placaTimer.color = Utils.getCorByHex(corDigitosHex);
@@ -24,18 +24,33 @@ public class ColoridorTimerV2
         corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO];
         Color corPlaca = Utils.getCorByHex(corDigitosHex);
 
-        passarCoresAosDisplaysDigitos(corDigito, corPlaca);
+        Material materialDisplay = getMaterialToLevel(isAlbedo0);
+        passarCoresAosDisplaysDigitos(materialDisplay, corDigito, corPlaca);
         DisplayTimerDigito2Pontos displayTimer2Pontos = displayTimerDigitos.getDisplayTimer2Segmentos();
         displayTimer2Pontos.configuradoPeloLevel(corDigito);
 
     }
 
-    private void passarCoresAosDisplaysDigitos(Color corDigito, Color corPlaca)
+    private void passarCoresAosDisplaysDigitos(Material materialDisplay, Color corDigito, Color corPlaca)
     {
+        CorDisplayTimerDto coresDisplay = new CorDisplayTimerDto(corDigito, corPlaca);
+
         for (int contador = 0; contador < displayTimerDigitos.getQtdDisplaysDigitos(); contador++)
         {
             DisplayTimerDigito displayTimerDigito = displayTimerDigitos.getDisplayTimer(contador);
-            displayTimerDigito.configuradoPeloLevel(displayDto.SingleDisplay[contador], corDigito, corPlaca);
+            displayTimerDigito.configuradoPeloLevel(materialDisplay, displayDto.SingleDisplay[contador], coresDisplay);
         }
     }    
+
+    private Material getMaterialToLevel(bool isAlbedo0)
+    {
+        if (isAlbedo0)
+        {
+            return displayDto.MatSegmentosAditivos;
+        }
+        else
+        {
+            return displayDto.MatSegmentosAlpha;
+        }
+    }
 }

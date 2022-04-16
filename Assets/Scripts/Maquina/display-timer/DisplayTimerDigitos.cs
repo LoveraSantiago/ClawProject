@@ -14,18 +14,18 @@ public class DisplayTimerDigitos
     public DisplayTimerDigitos(DisplayTimerDto displayDto)
     {   
         displayTimerDigito = new DisplayTimerDigito[4];
-        displayTimerDigito[0] = new DisplayTimerDigito(displayDto.MatSegmentosAditivos);
-        displayTimerDigito[1] = new DisplayTimerDigito(displayDto.MatSegmentosAditivos);
-        displayTimerDigito[2] = new DisplayTimerDigito(displayDto.MatSegmentosAditivos);
-        displayTimerDigito[3] = new DisplayTimerDigito(displayDto.MatSegmentosAditivos);        
+        displayTimerDigito[0] = new DisplayTimerDigito();
+        displayTimerDigito[1] = new DisplayTimerDigito();
+        displayTimerDigito[2] = new DisplayTimerDigito();
+        displayTimerDigito[3] = new DisplayTimerDigito();        
 
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
     }
 
-    public void passarCoresAosDisplayDigitos(DisplayTimerDto displayDto, Dictionary<string, string> dicionarioDeCores)
+    public void passarCoresAosDisplayDigitos(DisplayTimerDto displayDto, AbstractLevel levelEscolhido)
     {   
         ColoridorTimerV2 coloridor = new ColoridorTimerV2(displayDto, this);
-        coloridor.colorir(dicionarioDeCores);
+        coloridor.colorir(levelEscolhido.isAlbedo0(), levelEscolhido.getDicionarioDeCores());
     }
 
     public void blinkar(bool estadoBlink)

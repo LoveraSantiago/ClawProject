@@ -8,17 +8,19 @@ public class DisplayTimerDigito
     private Vector4 digito;
     private Material materialDisplay;
 
-    public DisplayTimerDigito(Material materialDisplay)
+    public DisplayTimerDigito()
     {
-        this.materialDisplay = new Material(materialDisplay);
     }
 
-    public void configuradoPeloLevel(SingleDisplayTimerDto sDisplayDto, Color corDigito, Color corPlaca)
+    public void configuradoPeloLevel(Material materialDisplay, SingleDisplayTimerDto sDisplayDto, CorDisplayTimerDto coresDisplay)
     {
-        colorirPlaca(sDisplayDto, corPlaca);
+        colorirPlaca(sDisplayDto, coresDisplay.CorPlaca);
         sDisplayDto.Segmentos.color = Color.white;
-        materialDisplay.SetColor("_cor_desligado", corDigito);
-        sDisplayDto.Segmentos.sharedMaterial = materialDisplay;
+
+        this.materialDisplay = new Material(materialDisplay);
+        this.materialDisplay.SetColor("_cor_desligado", coresDisplay.CorDigito);
+        sDisplayDto.Segmentos.sharedMaterial = this.materialDisplay;
+
         mostrarDigito(0);
     }
 
