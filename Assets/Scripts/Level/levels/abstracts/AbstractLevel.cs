@@ -25,13 +25,13 @@ public abstract class AbstractLevel
 
     public abstract TipoContagemTempoDto getTempoContagem();
 
-    public abstract Dictionary<string, string> getDicionarioDeCores();
+    public abstract Dictionary<string, string> getDicionarioDeCores();    
 
-    public abstract bool isAlbedo1();
-    
-    public bool isAlbedo0()
+    public abstract bool isLevelAlbedo0();    
+
+    public virtual bool isLevelAlbedo0Timer2Pontos()
     {
-        return !isAlbedo1();
+        return isLevelAlbedo0();
     }
 
     public bool hasPupToLevel()

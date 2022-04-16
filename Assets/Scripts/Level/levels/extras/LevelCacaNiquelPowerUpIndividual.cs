@@ -104,9 +104,9 @@ public class LevelCacaNiquelPowerUpIndividual : AbstractLevel
         return dicionario;
     }
 
-    public override bool isAlbedo1()
+    public override bool isLevelAlbedo0()
     {
-        return false;
+        return true;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()

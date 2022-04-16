@@ -96,7 +96,8 @@ public class Level1 : AbstractLevel
         dicionario.Add("setas-laterais", "#00BEDD");
         dicionario.Add("seta-cima", "#00BEDD");
         dicionario.Add("circulo-externo", "#FF8096");
-        dicionario.Add("circulo-interno", "#6CAED9");        return dicionario;
+        dicionario.Add("circulo-interno", "#6CAED9");
+        return dicionario;
 
         //Dictionary<string, string> dicionario = new Dictionary<string, string>();
         //dicionario.Add("placa-cima", "#5D5B5B");
@@ -149,11 +150,11 @@ public class Level1 : AbstractLevel
         //dicionario.Add("leds3", "#5D5B5B");
         //dicionario.Add("cabo-da-garra", "#FFFFFF");
         //return dicionario;
-    }    
+    }
 
-    public override bool isAlbedo1()
+    public override bool isLevelAlbedo0()
     {
-        return true;
+        return false;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()

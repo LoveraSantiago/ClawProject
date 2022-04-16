@@ -22,7 +22,7 @@ public class DisplayTimerDigitos
     public void passarCoresAosDisplayDigitos(DisplayTimerDto displayDto, AbstractLevel levelEscolhido)
     {   
         ColoridorTimerV2 coloridor = new ColoridorTimerV2(displayDto, this);
-        coloridor.colorir(levelEscolhido.isAlbedo0(), levelEscolhido.getDicionarioDeCores());
+        coloridor.colorir(levelEscolhido);
     }
 
     public void blinkar(bool estadoBlink)

@@ -88,7 +88,9 @@ public class Level2 : AbstractLevel
         dicionario.Add("setas-laterais", "#00BDCF");
         dicionario.Add("seta-cima", "#00BDCF");
         dicionario.Add("circulo-externo", "#BEBEBE");
-        dicionario.Add("circulo-interno", "#99E5EC");        return dicionario;
+        dicionario.Add("circulo-interno", "#99E5EC");
+        return dicionario;
+
         //Dictionary<string, string> dicionario = new Dictionary<string, string>();
         //dicionario.Add("placa-cima", "#80BD9E");
         //dicionario.Add("base-parte", "#89DA59");
@@ -143,7 +145,12 @@ public class Level2 : AbstractLevel
         //return dicionario;
     }
 
-    public override bool isAlbedo1()
+    public override bool isLevelAlbedo0()
+    {
+        return true;
+    }
+
+    public override bool isLevelAlbedo0Timer2Pontos()
     {
         return false;
     }

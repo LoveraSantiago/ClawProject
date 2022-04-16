@@ -20,9 +20,9 @@ public class LevelLeite : AbstractLevelColetavel
         return 10;
     }
 
-    public override bool isAlbedo1()
+    public override bool isLevelAlbedo0()
     {
-        return false;
+        return true;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()

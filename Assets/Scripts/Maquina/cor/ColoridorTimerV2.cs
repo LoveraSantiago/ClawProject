@@ -12,7 +12,12 @@ public class ColoridorTimerV2
         this.displayTimerDigitos = displayTimerDigito;
     }
 
-    public void colorir(bool isAlbedo0, Dictionary<string, string> dicionarioDeCores)
+    public void colorir(AbstractLevel levelEscolhido)
+    {
+        colorir(levelEscolhido.isLevelAlbedo0(), levelEscolhido.isLevelAlbedo0Timer2Pontos(), levelEscolhido.getDicionarioDeCores());
+    }
+
+    public void colorir(bool isAlbedo0Level, bool isAlbedo0Timer2Pontos, Dictionary<string, string> dicionarioDeCores)
     {   
         string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL];
         SpriteRenderer placaTimer = displayDto.SprRendererPlacaGrupo;
@@ -24,11 +29,11 @@ public class ColoridorTimerV2
         corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO];
         Color corPlaca = Utils.getCorByHex(corDigitosHex);
 
-        Material materialDisplay = getMaterialSegmentos(isAlbedo0);
+        Material materialDisplay = getMaterialSegmentos(isAlbedo0Level);
         passarCoresAosDisplaysDigitos(materialDisplay, corDigito, corPlaca);        
 
         DisplayTimerDigito2Pontos displayTimer2Pontos = displayTimerDigitos.getDisplayTimer2Segmentos();
-        Material materialDisplay2Pontos = getMaterialSegmentos2Pontos(isAlbedo0);
+        Material materialDisplay2Pontos = getMaterialSegmentos2Pontos(isAlbedo0Timer2Pontos);
         displayTimer2Pontos.configuradoPeloLevel(materialDisplay2Pontos, corDigito);
     }
 
