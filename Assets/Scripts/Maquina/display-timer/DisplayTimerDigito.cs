@@ -16,7 +16,8 @@ public class DisplayTimerDigito
     public void configuradoPeloLevel(SingleDisplayTimerDto sDisplayDto, Color corDigito, Color corPlaca)
     {
         colorirPlaca(sDisplayDto, corPlaca);
-        sDisplayDto.Segmentos.color = corDigito;
+        sDisplayDto.Segmentos.color = Color.white;
+        materialDisplay.SetColor("_cor_desligado", corDigito);
         sDisplayDto.Segmentos.sharedMaterial = materialDisplay;
         mostrarDigito(0);
     }

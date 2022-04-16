@@ -14,10 +14,10 @@ public class DisplayTimerDigitos
     public DisplayTimerDigitos(DisplayTimerDto displayDto)
     {   
         displayTimerDigito = new DisplayTimerDigito[4];
-        displayTimerDigito[0] = new DisplayTimerDigito(displayDto.MatSegmentosAlpha);
-        displayTimerDigito[1] = new DisplayTimerDigito(displayDto.MatSegmentosAlpha);
-        displayTimerDigito[2] = new DisplayTimerDigito(displayDto.MatSegmentosAlpha);
-        displayTimerDigito[3] = new DisplayTimerDigito(displayDto.MatSegmentosAlpha);        
+        displayTimerDigito[0] = new DisplayTimerDigito(displayDto.MatSegmentosAditivos);
+        displayTimerDigito[1] = new DisplayTimerDigito(displayDto.MatSegmentosAditivos);
+        displayTimerDigito[2] = new DisplayTimerDigito(displayDto.MatSegmentosAditivos);
+        displayTimerDigito[3] = new DisplayTimerDigito(displayDto.MatSegmentosAditivos);        
 
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
     }
