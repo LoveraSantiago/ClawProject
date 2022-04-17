@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class MovimentadorDeSlots 
 {
+    private static int POS_Y_FINAL = 0;
+    private static float POS_Y_BAIXO_INICIAL = -0.7f;
+
     private bool continuarMovimentacao;
     private PosicoesSlots posicoes;
 
@@ -22,8 +25,8 @@ public class MovimentadorDeSlots
     {
         float velocidade = displaysSlotsDto.VelocImg;
         float delay = displaysSlotsDto.InicialDelay;
-        slot.transform.localPosition = posicoes.posSlotBaixoInicial;
-        Vector3 posFinal = new Vector3(slot.transform.localPosition.x, 0, slot.transform.localPosition.z);
+        slot.transform.localPosition = new Vector3(slot.transform.localPosition.x, POS_Y_BAIXO_INICIAL, slot.transform.localPosition.z);
+        Vector3 posFinal = new Vector3(slot.transform.localPosition.x, POS_Y_FINAL, slot.transform.localPosition.z);
         yield return movimentarSlot(velocidade, delay, slot, posFinal);
     }
 
@@ -31,13 +34,14 @@ public class MovimentadorDeSlots
     {
         float velocidade = displaysSlotsDto.VelocImg;
         float fimDelay = displaysSlotsDto.FimDelay;
-        yield return movimentarSlot(velocidade, fimDelay, slot, posicoes.posSlotBaixoInicial);
+        Vector3 posSlotBaixoInicial = new Vector3(slot.transform.localPosition.x, POS_Y_BAIXO_INICIAL, slot.transform.localPosition.z);
+        yield return movimentarSlot(velocidade, fimDelay, slot, posSlotBaixoInicial);
     }
 
     public IEnumerator descerSlotNone(GameObject slot, DisplaysColetadosDto displaysSlotsDto, Executor executorFimMovimentacao)
     {
         float velocidade = displaysSlotsDto.VelocImg;
-        Vector3 posFinal = new Vector3(slot.transform.localPosition.x, 0, slot.transform.localPosition.z);
+        Vector3 posFinal = new Vector3(slot.transform.localPosition.x, POS_Y_FINAL, slot.transform.localPosition.z);
         yield return movimentarSlot(velocidade, 0, slot, posFinal, executorFimMovimentacao);        
     }
 
