@@ -23,7 +23,8 @@ public class MovimentadorDeSlots
         float velocidade = displaysSlotsDto.VelocImg;
         float delay = displaysSlotsDto.InicialDelay;
         slot.transform.localPosition = posicoes.posSlotBaixoInicial;
-        yield return movimentarSlot(velocidade, delay, slot, posicoes.posFinal);
+        Vector3 posFinal = new Vector3(slot.transform.localPosition.x, 0, slot.transform.localPosition.z);
+        yield return movimentarSlot(velocidade, delay, slot, posFinal);
     }
 
     public IEnumerator descerSlotColetado(GameObject slot, DisplaysColetadosDto displaysSlotsDto)
@@ -36,7 +37,8 @@ public class MovimentadorDeSlots
     public IEnumerator descerSlotNone(GameObject slot, DisplaysColetadosDto displaysSlotsDto, Executor executorFimMovimentacao)
     {
         float velocidade = displaysSlotsDto.VelocImg;
-        yield return movimentarSlot(velocidade, 0, slot, posicoes.posFinal, executorFimMovimentacao);        
+        Vector3 posFinal = new Vector3(slot.transform.localPosition.x, 0, slot.transform.localPosition.z);
+        yield return movimentarSlot(velocidade, 0, slot, posFinal, executorFimMovimentacao);        
     }
 
     public IEnumerator subirSlotNone(GameObject slot, DisplaysColetadosDto displaysSlotsDto, Executor executorFimMovimentacao)
