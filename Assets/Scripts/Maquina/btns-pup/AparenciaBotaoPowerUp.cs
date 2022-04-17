@@ -60,7 +60,9 @@ public class AparenciaBotaoPowerUp
 
     public void receberImg(Sprite img)
     {
-        btnDto.SprImagem.sprite = img;
+        //btnDto.SprImagem.sprite = img;
+        botaoDtoV2.SprRendererImgBtn.sprite = img;
+        
     }
 
     public void limparImg()

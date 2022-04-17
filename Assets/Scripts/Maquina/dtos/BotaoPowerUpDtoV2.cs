@@ -6,7 +6,9 @@ public class BotaoPowerUpDtoV2
 {
     [SerializeField] private SpriteRenderer sprRendererBtnBase;
     [SerializeField] private SpriteRenderer sprRendererBtnTampa;
+    [SerializeField] private SpriteRenderer sprRendererImgBtn;
 
     public SpriteRenderer SprRendererBtnBase { get { return sprRendererBtnBase; } }
     public SpriteRenderer SprRendererBtnTampa { get { return sprRendererBtnTampa; } }
+    public SpriteRenderer SprRendererImgBtn { get { return sprRendererImgBtn; } }
 }
