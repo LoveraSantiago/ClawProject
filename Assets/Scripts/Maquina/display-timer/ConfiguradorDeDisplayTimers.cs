@@ -1,23 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColoridorTimerV2 
+public class ConfiguradorDeDisplayTimers 
 {
     private DisplayTimerDto displayDto;
     private DisplayTimerDigitos displayTimerDigitos;
 
-    public ColoridorTimerV2(DisplayTimerDto displayDto, DisplayTimerDigitos displayTimerDigito)
+    public ConfiguradorDeDisplayTimers(DisplayTimerDto displayDto, DisplayTimerDigitos displayTimerDigito)
     {
         this.displayDto = displayDto;
         this.displayTimerDigitos = displayTimerDigito;
     }
 
-    public void colorir(AbstractLevel levelEscolhido)
+    public void configurarPeloLevel(AbstractLevel levelEscolhido)
     {
-        colorir(levelEscolhido.isLevelAlbedo0(), levelEscolhido.isLevelAlbedo0Timer2Pontos(), levelEscolhido.getDicionarioDeCores());
+        configurarPeloLevel(levelEscolhido.isLevelAlbedo0(), levelEscolhido.isLevelAlbedo0Timer2Pontos(), levelEscolhido.getDicionarioDeCores());
     }
 
-    public void colorir(bool isAlbedo0Level, bool isAlbedo0Timer2Pontos, Dictionary<string, string> dicionarioDeCores)
+    private void configurarPeloLevel(bool isAlbedo0Level, bool isAlbedo0Timer2Pontos, Dictionary<string, string> dicionarioDeCores)
     {   
         string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL];
         SpriteRenderer placaTimer = displayDto.SprRendererPlacaGrupo;
