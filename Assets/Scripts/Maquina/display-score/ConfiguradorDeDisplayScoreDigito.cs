@@ -17,7 +17,7 @@ public class ConfiguradorDeDisplayScoreDigito
 
     public void configurar(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)
     {
-        Material materialEfeitoLed = getMateialLedToLevel(displayDeScoresDto, levelEscolhido);
+        Material materialEfeitoLed = getMaterialLedToLevel(displayDeScoresDto, levelEscolhido);
         Material materialDefaultLed= displayDeScoresDto.SingleDisplayScoreDto[0].Fileira1[0].sharedMaterial;
 
         Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
@@ -40,7 +40,7 @@ public class ConfiguradorDeDisplayScoreDigito
         sprRendererPlacaGrupo.color = Utils.getCorByHex(hexCor);
     }
 
-    private Material getMateialLedToLevel(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)
+    private Material getMaterialLedToLevel(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)
     {
         if (levelEscolhido.isLevelAlbedo0())
         {
