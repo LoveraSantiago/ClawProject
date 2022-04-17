@@ -23,13 +23,7 @@ public class DisplayDeSlot
         animacao   = new AnimacaoDisplayColetado(singleDisplaySlotDto.Animator);        
         glowEfeito = new GlowEfeito(singleDisplaySlotDto.SprRendererDentroEfeito.gameObject, singleDisplaySlotDto.SprRendererDentroEfeito.material);                
         slots      = new MovimentadorDeSlots(singleDisplaySlotDto);
-    }
-
-    //public void configuradoPeloLevel(Color corDisplay, Color corDentro)
-    //{
-    //    singleDisplaySlotDto.SprDisplay.color = corDisplay;
-    //    singleDisplaySlotDto.SprRendererDentro.color = corDentro;
-    //}   
+    }    
 
     public void configuradoPeloLevel(Color corDisplay)
     {
@@ -164,8 +158,8 @@ public class DisplayDeSlot
     }
 
     public bool isCliqueDentroArea(Vector2 posicao)
-    {
-        return isOcupado && singleDisplaySlotDto.SprRendererDentro.bounds.Contains(posicao);
+    {   
+        return isOcupado && singleSlotColetadoDto.SprRendererSlotColetado.bounds.Contains(posicao);
     }    
 
     public MaterialGlow getMaterialGlow()
