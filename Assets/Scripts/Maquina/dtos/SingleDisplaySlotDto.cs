@@ -7,7 +7,7 @@ public class SingleDisplaySlotDto
     [SerializeField] private SpriteRenderer sprDisplay;    
     [SerializeField] private SpriteRenderer sprRendererDentroEfeito;
     [Space(3)]
-    [SerializeField] private SpriteRenderer slotSpriteBaixo;
+    //[SerializeField] private SpriteRenderer slotSpriteBaixo;
     [SerializeField] private SpriteRenderer slotSpriteMeio;
     [SerializeField] private SpriteRenderer slotSpriteCima;
     [Space(3)]
@@ -18,11 +18,11 @@ public class SingleDisplaySlotDto
     public SpriteRenderer SprDisplay { get { return sprDisplay; } }    
     public SpriteRenderer SprRendererDentroEfeito { get { return sprRendererDentroEfeito; } }
 
-    public SpriteRenderer SlotSpriteBaixo { get { return slotSpriteBaixo; } }
+    //public SpriteRenderer SlotSpriteBaixo { get { return slotSpriteBaixo; } }
     public SpriteRenderer SlotSpriteMeio { get { return slotSpriteMeio; } }
     public SpriteRenderer SlotSpriteCima { get { return slotSpriteCima; } }
 
     public Animator Animator { get { return animator; } }
-    public GameObject GoSlotBaixo { get { return goSlotBaixo; } }
+    //public GameObject GoSlotBaixo { get { return goSlotBaixo; } }
     public GameObject GoSlotCima { get { return goSlotCima; } }
 }

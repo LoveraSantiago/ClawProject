@@ -6,10 +6,10 @@ public class MovimentadorDeSlots
     private bool continuarMovimentacao;
     private PosicoesSlots posicoes;
 
-    public MovimentadorDeSlots(SingleDisplaySlotDto singleDisplaySlotDto)
+    public MovimentadorDeSlots(SingleDisplaySlotDto singleDisplaySlotDto, SingleSlotColetadoDto singleSlotColetadoDto)
     {
         continuarMovimentacao = true;
-        posicoes = new PosicoesSlots(singleDisplaySlotDto);
+        posicoes = new PosicoesSlots(singleDisplaySlotDto, singleSlotColetadoDto);
     }
 
     public void cancelarMovimentacaoDeSlot()
@@ -22,6 +22,7 @@ public class MovimentadorDeSlots
     {
         float velocidade = displaysSlotsDto.VelocImg;
         float delay = displaysSlotsDto.InicialDelay;
+        slot.transform.localPosition = posicoes.posSlotBaixoInicial;
         yield return movimentarSlot(velocidade, delay, slot, posicoes.posFinal);
     }
 

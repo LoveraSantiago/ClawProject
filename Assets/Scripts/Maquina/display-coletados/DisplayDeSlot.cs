@@ -22,7 +22,7 @@ public class DisplayDeSlot
 
         animacao   = new AnimacaoDisplayColetado(singleDisplaySlotDto.Animator);        
         glowEfeito = new GlowEfeito(singleDisplaySlotDto.SprRendererDentroEfeito.gameObject, singleDisplaySlotDto.SprRendererDentroEfeito.material);                
-        slots      = new MovimentadorDeSlots(singleDisplaySlotDto);
+        slots      = new MovimentadorDeSlots(singleDisplaySlotDto, singleSlotColetadoDto);
     }    
 
     public void configuradoPeloLevel(Color corDisplay)
@@ -69,9 +69,11 @@ public class DisplayDeSlot
         Sprite sprite, bool mostrarMira, DisplaysColetadosDto displaysSlotsDto)
     {        
         yield return limparSprNoneCasoOcupado(displaysSlotsDto);
-        singleDisplaySlotDto.SlotSpriteBaixo.sprite = sprite;
+        //singleDisplaySlotDto.SlotSpriteBaixo.sprite = sprite;
+        singleSlotColetadoDto.SprRendererSlot.sprite = sprite;
         isOcupado = true;
-        yield return slots.subirSlotColetado(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
+        //yield return slots.subirSlotColetado(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
+        yield return slots.subirSlotColetado(singleSlotColetadoDto.GoSlot, displaysSlotsDto);        
         desligarGlow();
 
         if (mostrarMira)
@@ -84,7 +86,8 @@ public class DisplayDeSlot
     public IEnumerator limparSprColetado(DisplaysColetadosDto displaysSlotsDto)
     {
         isOcupado = false;
-        yield return slots.descerSlotColetado(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
+        //yield return slots.descerSlotColetado(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
+        yield return slots.descerSlotColetado(singleSlotColetadoDto.GoSlot, displaysSlotsDto);        
     }     
     
     public IEnumerator mostrarSprNone(DisplaysColetadosDto displaysSlotsDto, Executor executor)
