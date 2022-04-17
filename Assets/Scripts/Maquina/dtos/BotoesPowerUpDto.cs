@@ -4,16 +4,22 @@ using UnityEngine;
 [System.Serializable]
 public class BotoesPowerUpDto 
 {
-    [SerializeField] private Sprite[] bordasBtns = new Sprite[2];    
-    [Space(5)]        
+    [SerializeField] private Sprite[] bordasBtns = new Sprite[2];
+    [Space(3)]
+    [SerializeField] private Sprite tampaBtnPup;
+    [SerializeField] private Sprite tampaBtnPupPressionada;
+    [Space(3)]        
     [SerializeField] private GameObject areaDraggavel;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private GameObject efeitoHolograma;
-    [Space(2)]
+    [Space(3)]
     [SerializeField] private BotaoPowerUpDto[] btnPowerUp = new BotaoPowerUpDto[2];
     [SerializeField] private BotaoPowerUpDtoV2[] btnPowerUpV2 = new BotaoPowerUpDtoV2[2];
 
-    public Sprite[] BordasBtns { get { return bordasBtns;  } }       
+    public Sprite[] BordasBtns { get { return bordasBtns;  } }
+
+    public Sprite TampaBtnPup { get { return tampaBtnPup; } }
+    public Sprite TampaBtnPupPressionada { get { return tampaBtnPupPressionada; } }
 
     public GameObject AreaDraggavel { get { return areaDraggavel; } }    
     public GameObject EfeitoHolograma { get { return efeitoHolograma; } }

@@ -11,6 +11,9 @@ public class AparenciaBotaoPowerUp
     private static Sprite spriteBordaNormal;
     private static Sprite spriteBordaSerrilhada;
 
+    private static Sprite tampaBtnPup;
+    private static Sprite tampaBtnPupPressionada;
+
     private Color corOriginal;    
     private BotaoPowerUpDto btnDto;
     private BotaoPowerUpDtoV2 botaoDtoV2;
@@ -33,9 +36,14 @@ public class AparenciaBotaoPowerUp
         btnDto.SprContorno.sprite = spriteBordaNormal;
     }
 
-    public void colorirBotao()
-    {
-        btnDto.SprParteDentro.color = Color.black;
+    //public void colorirBotao()
+    //{
+    //    btnDto.SprParteDentro.color = Color.black;    //    
+    //}
+
+    public void pressionarBotao()
+    {    
+        botaoDtoV2.SprRendererBtnTampa.sprite = tampaBtnPupPressionada;
     }
 
     //public void colorirBotaoFromLevel(string corBotao, string corDentro, string corContorno)
@@ -53,9 +61,14 @@ public class AparenciaBotaoPowerUp
         botaoDtoV2.SprRendererBtnTampa.color = Utils.getCorByHex(corTampa);
     }
 
-    public void voltarCorOriginalBotao()
-    {
-        btnDto.SprParteDentro.color = corOriginal;
+    //public void voltarCorOriginalBotao()
+    //{
+    //    btnDto.SprParteDentro.color = corOriginal;
+    //}
+
+    public void despressionarBotao()
+    {   
+        botaoDtoV2.SprRendererBtnTampa.sprite = tampaBtnPup;
     }
 
     public void receberImg(Sprite img)
@@ -121,9 +134,13 @@ public class AparenciaBotaoPowerUp
         return mostrandoAtual == MOSTRANDO_IMAGEM;
     }      
 
-    public static void configurarSpriteBordas(Sprite[] spritesBordas)
+    public static void configurarSpriteBordas(
+        Sprite[] spritesBordas,  Sprite tampaBtnPupArg, Sprite tampaBtnPupPressionadaArg)
     {
         spriteBordaNormal = spritesBordas[0];
         spriteBordaSerrilhada = spritesBordas[1];
+
+        tampaBtnPup = tampaBtnPupArg;
+        tampaBtnPupPressionada = tampaBtnPupPressionadaArg;
     }
 }

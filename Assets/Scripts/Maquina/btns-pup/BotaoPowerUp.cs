@@ -22,7 +22,7 @@ public class BotaoPowerUp : Draggavel
         BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
         BotaoPowerUpDtoV2 botaoDtoV2 = getBotaoPowerUpDtoV2(btnsPowerUpsDto);
         aparencia = new AparenciaBotaoPowerUp(botaoDto, botaoDtoV2);
-        acaoDrag  = new AcaoDragPowerUp(botaoDto);
+        acaoDrag  = new AcaoDragPowerUp(botaoDto, botaoDtoV2);
         glow      = new GlowBotaoPowerUp(botaoDto.SprEfeito);
     }
 
@@ -31,7 +31,7 @@ public class BotaoPowerUp : Draggavel
         glow.mudarParaMaterialIndividual();
         if (hasPowerUp)
         {
-            aparencia.colorirBotao();
+            aparencia.pressionarBotao();
             controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
 
@@ -51,7 +51,7 @@ public class BotaoPowerUp : Draggavel
 
     public void draggar(ControleAcionamentoPowerUp controlePup)
     {
-        aparencia.colorirBotao();
+        aparencia.pressionarBotao();
         glow.mudarParaMaterialIndividual();
         if (hasPowerUp)
         {
@@ -62,7 +62,7 @@ public class BotaoPowerUp : Draggavel
 
     public void desclicar()
     {
-        aparencia.voltarCorOriginalBotao();
+        aparencia.despressionarBotao();
         aparencia.limparImg();
         transformarEmBotaoClicavel();
         efeitoHolograma.desligar();
@@ -176,7 +176,7 @@ public class BotaoPowerUp : Draggavel
 
     public static void configurar(BotoesPowerUpDto btnsPowerUpsDto)
     {
-        AparenciaBotaoPowerUp.configurarSpriteBordas(btnsPowerUpsDto.BordasBtns);
+        AparenciaBotaoPowerUp.configurarSpriteBordas(btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.TampaBtnPup, btnsPowerUpsDto.TampaBtnPupPressionada);
         AcaoDragPowerUp.configurarAreaDraggavel(btnsPowerUpsDto.AreaDraggavel);
         efeitoHolograma = new EfeitoHolograma(btnsPowerUpsDto.EfeitoHolograma);
     }

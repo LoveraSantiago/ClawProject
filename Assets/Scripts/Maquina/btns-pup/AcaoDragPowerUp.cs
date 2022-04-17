@@ -13,11 +13,12 @@ public class AcaoDragPowerUp
     private Vector3 posicaoOriginal;
     private Quaternion rotacaoOriginal;   
 
-    public AcaoDragPowerUp(BotaoPowerUpDto botaoDto)
+    public AcaoDragPowerUp(BotaoPowerUpDto botaoDto, BotaoPowerUpDtoV2 botaoDtoV2)
     {
         rotacaoOriginal = botaoDto.GoBtnPowerUp.transform.localRotation;
         posicaoOriginal = botaoDto.GoParteDentro.transform.position;
-        areaBotao = botaoDto.SprAreaExterna.bounds;        
+        //areaBotao = botaoDto.SprAreaExterna.bounds;        
+        areaBotao = botaoDtoV2.SprRendererBtnBase.bounds;        
     }
 
     public bool isPosicaoDentroAreaBotao(Vector2 posicao)
