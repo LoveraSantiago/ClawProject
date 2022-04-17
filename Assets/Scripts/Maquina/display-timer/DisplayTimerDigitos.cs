@@ -21,8 +21,8 @@ public class DisplayTimerDigitos
 
     public void passarCoresAosDisplayDigitos(DisplayTimerDto displayDto, AbstractLevel levelEscolhido)
     {   
-        ColoridorTimerV2 coloridor = new ColoridorTimerV2(displayDto, this);
-        coloridor.colorir(levelEscolhido);
+        ConfiguradorDeDisplayTimers configuradorDisplayTimers = new ConfiguradorDeDisplayTimers(displayDto, this);
+        configuradorDisplayTimers.configurarPeloLevel(levelEscolhido);
     }
 
     public void blinkar(bool estadoBlink)
