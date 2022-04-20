@@ -59031,6 +59031,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: maquina-v3
       objectReference: {fileID: 0}
+    - target: {fileID: 6640958127853610304, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 742726642477556439f058e98bc14064, type: 2}
+    - target: {fileID: 8409971268504147270, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8bc8b2678d891646bac2458be2e2453, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c301260e6514149bc0e163ff994732, type: 3}
 --- !u!4 &4106799619402785296 stripped
