@@ -123,14 +123,26 @@ public class AparenciaBotaoPowerUp
         //transformBtnPup.localRotation = Quaternion.identity;
     }
 
+    //public void mostrarSoImagem()
+    //{
+    //    if(mostrandoAtual != MOSTRANDO_IMAGEM)
+    //    {
+    //        btnDto.SprParteDentro.enabled = false;
+    //        btnDto.SprContorno.enabled = false;
+    //        btnDto.GoImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+    //        btnDto.GoExclamacao.SetActive(false);
+
+    //        mostrandoAtual = MOSTRANDO_IMAGEM;
+    //    }
+    //}
+
     public void mostrarSoImagem()
     {
         if(mostrandoAtual != MOSTRANDO_IMAGEM)
         {
-            btnDto.SprParteDentro.enabled = false;
-            btnDto.SprContorno.enabled = false;
-            btnDto.GoImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            btnDto.GoExclamacao.SetActive(false);
+            botaoDtoV2.SprRendererBtnTampa.enabled = false;
+            botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
+            botaoDtoV2.TransformImgBtn.localScale = new Vector3(1.25f, 1.25f, 1.25f);            
 
             mostrandoAtual = MOSTRANDO_IMAGEM;
         }

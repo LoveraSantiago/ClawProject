@@ -10992,7 +10992,7 @@ MonoBehaviour:
         tampaBtnPup: {fileID: 21300000, guid: bccbaa856d0d7b04a875ec95a0b734d9, type: 3}
         tampaBtnPupPressionada: {fileID: 21300000, guid: a10342754a0c16d44b523d6831c58738, type: 3}
         tampaBtnPupSerrilhada: {fileID: 21300000, guid: 102558ade26a0164b93897d6d8252a55, type: 3}
-        areaDraggavel: {fileID: 2139442905}
+        areaDraggavel: {fileID: 1812955823}
         efeitoHolograma: {fileID: 392464708}
         btnPowerUp:
         - sprAreaExterna: {fileID: 6406990385049082688}
@@ -48463,6 +48463,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1832815894022648519, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1812955823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6869666927805037547, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1814368437 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1258064833904829688, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
@@ -58586,11 +58591,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7212539480035697343, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2139442905 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 973390123626049547, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &2140618242 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7674434527245920513, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -59033,14 +59033,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: maquina-v3
       objectReference: {fileID: 0}
-    - target: {fileID: 6640958127853610304, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-    - target: {fileID: 8409971268504147270, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a8bc8b2678d891646bac2458be2e2453, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c301260e6514149bc0e163ff994732, type: 3}
 --- !u!4 &4106799619402785296 stripped
