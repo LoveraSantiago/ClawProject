@@ -25,6 +25,11 @@ public class PowerUpsParaLevel
         return pupTipo;       
     }
 
+    public int getQtdBotoes()
+    {
+        return acionamentosAtuais.Length;
+    }
+
     private bool deveRecuperarPup(int indiceBtn)
     {
         return isIndiceValido(indiceBtn) && 
@@ -47,7 +52,7 @@ public class PowerUpsParaLevel
     {
         PowerUpEnums.TIPO[] pupsBtn = pupsParaLevel[indiceBtn];
         int numeroAcionamentos = acionamentosAtuais[indiceBtn];
-        return numeroAcionamentos < pupsBtn.Length - 1;
+        return numeroAcionamentos < pupsBtn.Length;
     }
 
     private PowerUpEnums.TIPO getPupEntidadeFromAcionamento(int indiceBtn)

@@ -33,14 +33,14 @@ public class ScrollManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         if (isLevelPup)
         {
             int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
-            for(int contador = 0; contador < 4; contador++)
+            for(int contador = 0; contador < 2; contador++)
             {
                 scrollBottomBar.simularCliqueBoxAcionado(contador, indicePup);
             }
         }
         else if(isPupsToLevel)
         {
-            for(int contador = 0; contador < 2; contador++)
+            for(int contador = 0; contador < pupsToLevel.getQtdBotoes(); contador++)
             {
                 scrollBottomBar.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
             }
