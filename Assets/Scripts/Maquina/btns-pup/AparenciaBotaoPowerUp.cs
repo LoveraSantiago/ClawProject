@@ -109,11 +109,18 @@ public class AparenciaBotaoPowerUp
         botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
     }
 
+    //public void prepararRotacaoImgDrag()
+    //{
+    //    Transform transformBtnPup = btnDto.GoBtnPowerUp.transform;
+    //    btnDto.GoAreaExterna.transform.localRotation = transformBtnPup.localRotation;
+    //    transformBtnPup.localRotation = Quaternion.identity;
+    //}
+
     public void prepararRotacaoImgDrag()
     {
-        Transform transformBtnPup = btnDto.GoBtnPowerUp.transform;
-        btnDto.GoAreaExterna.transform.localRotation = transformBtnPup.localRotation;
-        transformBtnPup.localRotation = Quaternion.identity;
+        //Transform transformBtnPup = botaoDtoV2.TransformBtnTampa;
+        //btnDto.GoAreaExterna.transform.localRotation = transformBtnPup.localRotation;
+        //transformBtnPup.localRotation = Quaternion.identity;
     }
 
     public void mostrarSoImagem()
@@ -166,6 +173,7 @@ public class AparenciaBotaoPowerUp
         //spriteBordaNormal = spritesBordas[0];
         //spriteBordaSerrilhada = spritesBordas[1];
 
+        //TRANSFORMAR EM UM UNICO DTO
         tampaBtnPup = tampaBtnPupArg;
         tampaBtnPupPressionada = tampaBtnPupPressionadaArg;
         tampaBtnPupSerrilhada = tampaBtnPupSerrilhadaArg;

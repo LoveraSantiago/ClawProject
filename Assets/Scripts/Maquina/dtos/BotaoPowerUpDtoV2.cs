@@ -11,4 +11,6 @@ public class BotaoPowerUpDtoV2
     public SpriteRenderer SprRendererBtnBase { get { return sprRendererBtnBase; } }
     public SpriteRenderer SprRendererBtnTampa { get { return sprRendererBtnTampa; } }
     public SpriteRenderer SprRendererImgBtn { get { return sprRendererImgBtn; } }
+
+    public Transform TransformBtnTampa { get { return sprRendererBtnTampa.transform; } }
 }

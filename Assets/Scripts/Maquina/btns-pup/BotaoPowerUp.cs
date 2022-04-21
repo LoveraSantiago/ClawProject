@@ -22,7 +22,8 @@ public class BotaoPowerUp : Draggavel
         BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
         BotaoPowerUpDtoV2 botaoDtoV2 = getBotaoPowerUpDtoV2(btnsPowerUpsDto);
         aparencia = new AparenciaBotaoPowerUp(btnsPowerUpsDto.MaterialImgPup, botaoDto, botaoDtoV2);
-        acaoDrag  = new AcaoDragPowerUp(botaoDto, botaoDtoV2);
+        //acaoDrag  = new AcaoDragPowerUp(botaoDto, botaoDtoV2);
+        acaoDrag  = new AcaoDragPowerUp(botaoDtoV2);
         glow      = new GlowBotaoPowerUp(botaoDto.SprEfeito);
     }
 
@@ -143,7 +144,7 @@ public class BotaoPowerUp : Draggavel
         return isDraggavel 
                && hasPowerUp 
                && acaoDrag.isPosicaoDentroAreaBotao(posicao);
-    }           
+    }
 
     private BotaoPowerUpDto getBotaoPowerUpDto(BotoesPowerUpDto btnPowerUpsDto)
     {
@@ -161,15 +162,27 @@ public class BotaoPowerUp : Draggavel
         acaoDrag.prepararDraggagem(posInicialDrag, aparencia);
     }
 
+    //public void updateDrag(Vector2 posicaoDrag, BotoesPowerUpDto botoesPowerUpsDto)
+    //{
+    //    BotaoPowerUpDto btnDto = getBotaoPowerUpDto(botoesPowerUpsDto);
+    //    acaoDrag.updateDrag(posicaoDrag, aparencia, btnDto);
+    //}
+
     public void updateDrag(Vector2 posicaoDrag, BotoesPowerUpDto botoesPowerUpsDto)
     {
-        BotaoPowerUpDto btnDto = getBotaoPowerUpDto(botoesPowerUpsDto);
+        BotaoPowerUpDtoV2 btnDto = getBotaoPowerUpDtoV2(botoesPowerUpsDto);
         acaoDrag.updateDrag(posicaoDrag, aparencia, btnDto);
     }
 
+    //public bool isDragFinalizadoAtivouPowerUp(BotoesPowerUpDto botoesPowerUpsDto)
+    //{
+    //    BotaoPowerUpDto btnDto = getBotaoPowerUpDto(botoesPowerUpsDto);
+    //    return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, aparencia, btnDto);        
+    //}
+
     public bool isDragFinalizadoAtivouPowerUp(BotoesPowerUpDto botoesPowerUpsDto)
     {
-        BotaoPowerUpDto btnDto = getBotaoPowerUpDto(botoesPowerUpsDto);
+        BotaoPowerUpDtoV2 btnDto = getBotaoPowerUpDtoV2(botoesPowerUpsDto);
         return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, aparencia, btnDto);        
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
