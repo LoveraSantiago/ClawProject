@@ -148,18 +148,43 @@ public class AparenciaBotaoPowerUp
         }
     }
 
+    //public void mostrarBotao()
+    //{
+    //    if(mostrandoAtual != MOSTRANDO_BOTAO)
+    //    {
+    //        btnDto.SprParteDentro.enabled = true;
+    //        btnDto.SprContorno.enabled = true;
+    //        btnDto.GoImagem.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+    //        btnDto.GoExclamacao.SetActive(false);
+
+    //        mostrandoAtual = MOSTRANDO_BOTAO;
+    //    }
+    //}
+
     public void mostrarBotao()
     {
         if(mostrandoAtual != MOSTRANDO_BOTAO)
         {
-            btnDto.SprParteDentro.enabled = true;
-            btnDto.SprContorno.enabled = true;
-            btnDto.GoImagem.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
-            btnDto.GoExclamacao.SetActive(false);
+            botaoDtoV2.SprRendererBtnTampa.enabled = true;
+            botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialImgPup;
+            botaoDtoV2.TransformImgBtn.localScale = new Vector3(0.6f, 0.6f, 0.6f);//TAMANHO ORIGINAL DEIXAR ASSIM?
 
             mostrandoAtual = MOSTRANDO_BOTAO;
         }
     }
+
+    //public void mostrarErro()
+    //{
+    //    if(mostrandoAtual != MOSTRANDO_ERROR)
+    //    {
+    //        btnDto.SprParteDentro.enabled = false;
+    //        btnDto.SprContorno.enabled = false;
+    //        btnDto.GoImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+    //        btnDto.GoExclamacao.SetActive(true);
+
+    //        mostrandoAtual = MOSTRANDO_ERROR;
+    //    }
+    //}
 
     public void mostrarErro()
     {
@@ -179,8 +204,7 @@ public class AparenciaBotaoPowerUp
         return mostrandoAtual == MOSTRANDO_IMAGEM;
     }      
 
-    public static void configurarSpritesTampaBotao(
-        Sprite[] spritesBordas,  Sprite tampaBtnPupArg, Sprite tampaBtnPupPressionadaArg, Sprite tampaBtnPupSerrilhadaArg)
+    public static void configurarSpritesTampaBotao(Sprite tampaBtnPupArg, Sprite tampaBtnPupPressionadaArg, Sprite tampaBtnPupSerrilhadaArg)
     {
         //spriteBordaNormal = spritesBordas[0];
         //spriteBordaSerrilhada = spritesBordas[1];
