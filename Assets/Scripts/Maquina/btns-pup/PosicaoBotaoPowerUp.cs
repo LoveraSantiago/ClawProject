@@ -32,13 +32,13 @@ public class PosicaoBotaoPowerUp
             btnDto.TransformBtnTampa.transform.position, posicaoDestino, velocidade);
     }
 
-    public void colocarNaPosicaoOriginal(Vector3 posicao, Quaternion rotacao)
+    public void colocarNaPosicaoOriginal(Vector3 posicao)
     {
         btnDto.TransformBtnTampa.transform.position = posicao;     
     }
 
-    public void colocarNaPosicaoOriginalAcionado(Vector3 posicao, Quaternion rotacao)
+    public void colocarNaPosicaoOriginalAcionado(Vector3 posicao)
     {
-        colocarNaPosicaoOriginal(posicao, rotacao);        
+        colocarNaPosicaoOriginal(posicao);        
     }
 }

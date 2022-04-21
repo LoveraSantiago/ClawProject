@@ -11,11 +11,9 @@ public class AcaoDragPowerUp
     private Bounds  areaBotao;   
     private Vector2 posicaoInicialDrag;
     private Vector3 posicaoOriginal;
-    private Quaternion rotacaoOriginal;   
 
     public AcaoDragPowerUp(BotaoPowerUpDtoV2 botaoDtoV2)
     {
-        rotacaoOriginal = botaoDtoV2.TransformBtnTampa.localRotation;
         posicaoOriginal = botaoDtoV2.TransformBtnTampa.position;
         areaBotao = botaoDtoV2.SprRendererBtnBase.bounds;        
     }
@@ -59,7 +57,7 @@ public class AcaoDragPowerUp
         {
             acaoPowerUp.acionar(indice, posicao.getPosicao());
             aparencia.mostrarBotao();
-            posicao.colocarNaPosicaoOriginalAcionado(posicaoOriginal, rotacaoOriginal);
+            posicao.colocarNaPosicaoOriginalAcionado(posicaoOriginal);
             aparencia.limparImg();
             goAreaDraggavel.SetActive(false);
             return true;
@@ -81,7 +79,7 @@ public class AcaoDragPowerUp
             yield return null;
         }
         goAreaDraggavel.SetActive(false);
-        posicao.colocarNaPosicaoOriginal(posicaoOriginal, rotacaoOriginal);        
+        posicao.colocarNaPosicaoOriginal(posicaoOriginal);        
         aparencia.mostrarBotao();
     }
 
