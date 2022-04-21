@@ -10989,9 +10989,10 @@ MonoBehaviour:
         - {fileID: 21300000, guid: a23ddb0e1a97a7145a4f2adebb8447e9, type: 3}
         - {fileID: 21300000, guid: 8c942bfafa862a64a97c76dca69e4b90, type: 3}
         materialImgPup: {fileID: 2100000, guid: 742726642477556439f058e98bc14064, type: 2}
-        tampaBtnPup: {fileID: 21300000, guid: bccbaa856d0d7b04a875ec95a0b734d9, type: 3}
-        tampaBtnPupPressionada: {fileID: 21300000, guid: a10342754a0c16d44b523d6831c58738, type: 3}
-        tampaBtnPupSerrilhada: {fileID: 21300000, guid: 102558ade26a0164b93897d6d8252a55, type: 3}
+        spritesTampaDto:
+          tampaNormal: {fileID: 21300000, guid: bccbaa856d0d7b04a875ec95a0b734d9, type: 3}
+          tampaPressionada: {fileID: 21300000, guid: a10342754a0c16d44b523d6831c58738, type: 3}
+          tampaSerrilhada: {fileID: 21300000, guid: 102558ade26a0164b93897d6d8252a55, type: 3}
         areaDraggavel: {fileID: 1812955823}
         efeitoHolograma: {fileID: 392464708}
         btnPowerUp:

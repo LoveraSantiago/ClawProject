@@ -11,9 +11,7 @@ public class AparenciaBotaoPowerUp
     //private static Sprite spriteBordaNormal;
     //private static Sprite spriteBordaSerrilhada;
 
-    private static Sprite tampaBtnPup;
-    private static Sprite tampaBtnPupPressionada;
-    private static Sprite tampaBtnPupSerrilhada;
+    private static SpritesTampaBtnPupDto spritesTampaDto;        
 
     private Color corOriginal;    
     private BotaoPowerUpDto btnDto;
@@ -40,7 +38,7 @@ public class AparenciaBotaoPowerUp
 
     public void mostrarBordaSerrilhada()
     {
-        botaoDtoV2.SprRendererBtnTampa.sprite = tampaBtnPupSerrilhada;
+        botaoDtoV2.SprRendererBtnTampa.sprite = spritesTampaDto.TampaSerrilhada;
     }
 
     //public void mostrarBordaNormal()
@@ -50,7 +48,7 @@ public class AparenciaBotaoPowerUp
 
     public void mostrarBordaNormal()
     {
-        botaoDtoV2.SprRendererBtnTampa.sprite = tampaBtnPup;        
+        botaoDtoV2.SprRendererBtnTampa.sprite = spritesTampaDto.TampaNormal;
     }
 
     //public void colorirBotao()
@@ -60,7 +58,7 @@ public class AparenciaBotaoPowerUp
 
     public void pressionarBotao()
     {    
-        botaoDtoV2.SprRendererBtnTampa.sprite = tampaBtnPupPressionada;
+        botaoDtoV2.SprRendererBtnTampa.sprite = spritesTampaDto.TampaPressionada;
         botaoDtoV2.SprRendererImgBtn.transform.localPosition -= new Vector3(0.02f, 0.02f, 0);
     }
 
@@ -86,7 +84,7 @@ public class AparenciaBotaoPowerUp
 
     public void despressionarBotao()
     {   
-        botaoDtoV2.SprRendererBtnTampa.sprite = tampaBtnPup;
+        botaoDtoV2.SprRendererBtnTampa.sprite = spritesTampaDto.TampaNormal; 
         botaoDtoV2.SprRendererImgBtn.transform.localPosition += new Vector3(0.02f, 0.02f, 0);
     }
 
@@ -204,14 +202,12 @@ public class AparenciaBotaoPowerUp
         return mostrandoAtual == MOSTRANDO_IMAGEM;
     }      
 
-    public static void configurarSpritesTampaBotao(Sprite tampaBtnPupArg, Sprite tampaBtnPupPressionadaArg, Sprite tampaBtnPupSerrilhadaArg)
+    public static void configurarSpritesTampaBotao(SpritesTampaBtnPupDto spritesTampaDtoArg)
     {
         //spriteBordaNormal = spritesBordas[0];
         //spriteBordaSerrilhada = spritesBordas[1];
 
         //TRANSFORMAR EM UM UNICO DTO
-        tampaBtnPup = tampaBtnPupArg;
-        tampaBtnPupPressionada = tampaBtnPupPressionadaArg;
-        tampaBtnPupSerrilhada = tampaBtnPupSerrilhadaArg;
+        spritesTampaDto = spritesTampaDtoArg;                        
     }
 }
