@@ -4,26 +4,11 @@ using UnityEngine;
 [System.Serializable]
 public class BotaoPowerUpDto 
 {
-    [SerializeField] private SpriteRenderer sprAreaExterna;
-    [SerializeField] private SpriteRenderer sprParteDentro;    
-    [SerializeField] private SpriteRenderer sprContorno;
-    [SerializeField] private SpriteRenderer sprImagem;    
-    [SerializeField] private SpriteRenderer sprEfeito;
-    [SerializeField] private GameObject goExclamacao;
-
-    public GameObject GoBtnPowerUp { get { return sprAreaExterna.transform.parent.gameObject; } }
-    public GameObject GoAreaExterna { get { return sprAreaExterna.gameObject;  } }
-    public SpriteRenderer SprAreaExterna { get { return sprAreaExterna; } }
-
-    public GameObject GoParteDentro { get { return sprParteDentro.gameObject; } }
-    public SpriteRenderer SprParteDentro { get { return sprParteDentro; } }
-
-    public SpriteRenderer SprContorno { get { return sprContorno; } }
+    [SerializeField] private SpriteRenderer sprAreaExterna;      
+    [SerializeField] private SpriteRenderer sprEfeito;    
 
     public GameObject GoParent { get { return sprAreaExterna.transform.parent.gameObject; } }
-    public GameObject GoImagem { get { return sprImagem.gameObject;  } }
-    public SpriteRenderer SprImagem { get { return sprImagem; } }
+    
 
-    public SpriteRenderer SprEfeito { get { return sprEfeito; } }
-    public GameObject GoExclamacao { get { return goExclamacao; } }
+    public SpriteRenderer SprEfeito { get { return sprEfeito; } }    
 }
