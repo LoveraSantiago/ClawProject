@@ -11,7 +11,8 @@ public class AparenciaBotaoPowerUp
     //private static Sprite spriteBordaNormal;
     //private static Sprite spriteBordaSerrilhada;
 
-    private static SpritesTampaBtnPupDto spritesTampaDto;        
+    private static SpritesTampaBtnPupDto spritesTampaDto;
+    private Sprite spritePupAtual;
 
     private Color corOriginal;    
     private BotaoPowerUpDto btnDto;
@@ -91,6 +92,7 @@ public class AparenciaBotaoPowerUp
     public void receberImg(Sprite img)
     {
         //btnDto.SprImagem.sprite = img;
+        spritePupAtual = img;
         botaoDtoV2.SprRendererImgBtn.sprite = img;
         materialImgPup.SetTexture("_MaintText", img.texture);
         botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialImgPup;
@@ -137,9 +139,11 @@ public class AparenciaBotaoPowerUp
     public void mostrarSoImagem()
     {
         if(mostrandoAtual != MOSTRANDO_IMAGEM)
-        {
+        {   
             botaoDtoV2.SprRendererBtnTampa.enabled = false;
+            botaoDtoV2.SprRendererImgBtn.sprite = spritePupAtual;
             botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
+            botaoDtoV2.SprRendererImgBtn.color = Color.white;
             botaoDtoV2.TransformImgBtn.localScale = new Vector3(1.25f, 1.25f, 1.25f);            
 
             mostrandoAtual = MOSTRANDO_IMAGEM;
@@ -164,7 +168,9 @@ public class AparenciaBotaoPowerUp
         if(mostrandoAtual != MOSTRANDO_BOTAO)
         {
             botaoDtoV2.SprRendererBtnTampa.enabled = true;
+            botaoDtoV2.SprRendererImgBtn.sprite = spritePupAtual;
             botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialImgPup;
+            botaoDtoV2.SprRendererImgBtn.color = Color.white;
             botaoDtoV2.TransformImgBtn.localScale = new Vector3(0.6f, 0.6f, 0.6f);//TAMANHO ORIGINAL DEIXAR ASSIM?
 
             mostrandoAtual = MOSTRANDO_BOTAO;
@@ -188,14 +194,15 @@ public class AparenciaBotaoPowerUp
     {
         if(mostrandoAtual != MOSTRANDO_ERROR)
         {
-            btnDto.SprParteDentro.enabled = false;
-            btnDto.SprContorno.enabled = false;
-            btnDto.GoImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            btnDto.GoExclamacao.SetActive(true);
+            botaoDtoV2.SprRendererBtnTampa.enabled = false;
+            botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
+            botaoDtoV2.SprRendererImgBtn.sprite = spritesTampaDto.TampaErro;
+            botaoDtoV2.SprRendererImgBtn.color = Color.yellow;
+            botaoDtoV2.TransformImgBtn.localScale = new Vector3(1.25f, 1.25f, 1.25f);
 
             mostrandoAtual = MOSTRANDO_ERROR;
         }
-    }
+    }   
 
     public bool isMostrandoImagem()
     {
