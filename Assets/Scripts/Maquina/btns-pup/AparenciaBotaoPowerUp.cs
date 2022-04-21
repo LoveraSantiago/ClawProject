@@ -8,11 +8,12 @@ public class AparenciaBotaoPowerUp
 
     private int mostrandoAtual;
 
-    private static Sprite spriteBordaNormal;
-    private static Sprite spriteBordaSerrilhada;
+    //private static Sprite spriteBordaNormal;
+    //private static Sprite spriteBordaSerrilhada;
 
     private static Sprite tampaBtnPup;
     private static Sprite tampaBtnPupPressionada;
+    private static Sprite tampaBtnPupSerrilhada;
 
     private Color corOriginal;    
     private BotaoPowerUpDto btnDto;
@@ -32,14 +33,24 @@ public class AparenciaBotaoPowerUp
         materialDefault = botaoDtoV2.SprRendererImgBtn.sharedMaterial;
     }
 
+    //public void mostrarBordaSerrilhada()
+    //{
+    //    btnDto.SprContorno.sprite = spriteBordaSerrilhada;
+    //}
+
     public void mostrarBordaSerrilhada()
     {
-        btnDto.SprContorno.sprite = spriteBordaSerrilhada;
+        botaoDtoV2.SprRendererBtnTampa.sprite = tampaBtnPupSerrilhada;
     }
+
+    //public void mostrarBordaNormal()
+    //{
+    //    btnDto.SprContorno.sprite = spriteBordaNormal;
+    //}
 
     public void mostrarBordaNormal()
     {
-        btnDto.SprContorno.sprite = spriteBordaNormal;
+        botaoDtoV2.SprRendererBtnTampa.sprite = tampaBtnPup;        
     }
 
     //public void colorirBotao()
@@ -149,13 +160,14 @@ public class AparenciaBotaoPowerUp
         return mostrandoAtual == MOSTRANDO_IMAGEM;
     }      
 
-    public static void configurarSpriteBordas(
-        Sprite[] spritesBordas,  Sprite tampaBtnPupArg, Sprite tampaBtnPupPressionadaArg)
+    public static void configurarSpritesTampaBotao(
+        Sprite[] spritesBordas,  Sprite tampaBtnPupArg, Sprite tampaBtnPupPressionadaArg, Sprite tampaBtnPupSerrilhadaArg)
     {
-        spriteBordaNormal = spritesBordas[0];
-        spriteBordaSerrilhada = spritesBordas[1];
+        //spriteBordaNormal = spritesBordas[0];
+        //spriteBordaSerrilhada = spritesBordas[1];
 
         tampaBtnPup = tampaBtnPupArg;
         tampaBtnPupPressionada = tampaBtnPupPressionadaArg;
+        tampaBtnPupSerrilhada = tampaBtnPupSerrilhadaArg;
     }
 }

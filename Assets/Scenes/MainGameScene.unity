@@ -10991,6 +10991,7 @@ MonoBehaviour:
         materialImgPup: {fileID: 2100000, guid: 742726642477556439f058e98bc14064, type: 2}
         tampaBtnPup: {fileID: 21300000, guid: bccbaa856d0d7b04a875ec95a0b734d9, type: 3}
         tampaBtnPupPressionada: {fileID: 21300000, guid: a10342754a0c16d44b523d6831c58738, type: 3}
+        tampaBtnPupSerrilhada: {fileID: 21300000, guid: 102558ade26a0164b93897d6d8252a55, type: 3}
         areaDraggavel: {fileID: 2139442905}
         efeitoHolograma: {fileID: 392464708}
         btnPowerUp:

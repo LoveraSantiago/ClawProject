@@ -9,6 +9,7 @@ public class BotoesPowerUpDto
     [SerializeField] private Material materialImgPup;
     [SerializeField] private Sprite tampaBtnPup;
     [SerializeField] private Sprite tampaBtnPupPressionada;
+    [SerializeField] private Sprite tampaBtnPupSerrilhada;
     [Space(3)]        
     [SerializeField] private GameObject areaDraggavel;
     [Space(3)]
@@ -22,6 +23,7 @@ public class BotoesPowerUpDto
     public Material MaterialImgPup { get { return materialImgPup; } }
     public Sprite TampaBtnPup { get { return tampaBtnPup; } }
     public Sprite TampaBtnPupPressionada { get { return tampaBtnPupPressionada; } }
+    public Sprite TampaBtnPupSerrilhada { get { return tampaBtnPupSerrilhada; } }
 
     public GameObject AreaDraggavel { get { return areaDraggavel; } }    
     public GameObject EfeitoHolograma { get { return efeitoHolograma; } }
