@@ -190,7 +190,7 @@ public class BotaoPowerUp : Draggavel
     public static void configurar(BotoesPowerUpDto btnsPowerUpsDto)
     {
         AparenciaBotaoPowerUp.configurarSpritesTampaBotao(
-            btnsPowerUpsDto.BordasBtns, btnsPowerUpsDto.TampaBtnPup, btnsPowerUpsDto.TampaBtnPupPressionada, btnsPowerUpsDto.TampaBtnPupSerrilhada);
+            btnsPowerUpsDto.TampaBtnPup, btnsPowerUpsDto.TampaBtnPupPressionada, btnsPowerUpsDto.TampaBtnPupSerrilhada);
         AcaoDragPowerUp.configurarAreaDraggavel(btnsPowerUpsDto.AreaDraggavel);
         efeitoHolograma = new EfeitoHolograma(btnsPowerUpsDto.EfeitoHolograma);
     }
