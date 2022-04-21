@@ -49,9 +49,9 @@ public class Level1 : AbstractLevel
 
     public override PowerUpsParaLevel getPupsToLevel()
     {
-        return new PowerUpsParaLevel()
-            .addBtn0(new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.BOMBA_DA_GARRA })
-            .addBtn3(new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.ASAS});
+        return new PowerUpsParaLevel(2)
+            .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.BOMBA_DA_GARRA })
+            .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.ASAS});
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()
