@@ -8,54 +8,31 @@ public class AparenciaBotaoPowerUp
 
     private int mostrandoAtual;
 
-    //private static Sprite spriteBordaNormal;
-    //private static Sprite spriteBordaSerrilhada;
-
-    private static SpritesTampaBtnPupDto spritesTampaDto;
     private Sprite spritePupAtual;
-
-    private Color corOriginal;    
-    private BotaoPowerUpDto btnDto;
+    private static SpritesTampaBtnPupDto spritesTampaDto;    
     private BotaoPowerUpDtoV2 botaoDtoV2;
 
     private Material materialImgPup;
     private Material materialDefault;
 
-    public AparenciaBotaoPowerUp(Material materialImgPup, BotaoPowerUpDto botaoDto, BotaoPowerUpDtoV2 botaoDtoV2)
+    public AparenciaBotaoPowerUp(Material materialImgPup, BotaoPowerUpDtoV2 botaoDtoV2)
     {
         mostrandoAtual = MOSTRANDO_BOTAO;
-        btnDto = botaoDto;
         this.botaoDtoV2 = botaoDtoV2;
-        corOriginal = btnDto.SprParteDentro.color;
 
         this.materialImgPup = new Material(materialImgPup);
         materialDefault = botaoDtoV2.SprRendererImgBtn.sharedMaterial;
     }
-
-    //public void mostrarBordaSerrilhada()
-    //{
-    //    btnDto.SprContorno.sprite = spriteBordaSerrilhada;
-    //}
 
     public void mostrarBordaSerrilhada()
     {
         botaoDtoV2.SprRendererBtnTampa.sprite = spritesTampaDto.TampaSerrilhada;
     }
 
-    //public void mostrarBordaNormal()
-    //{
-    //    btnDto.SprContorno.sprite = spriteBordaNormal;
-    //}
-
     public void mostrarBordaNormal()
     {
         botaoDtoV2.SprRendererBtnTampa.sprite = spritesTampaDto.TampaNormal;
     }
-
-    //public void colorirBotao()
-    //{
-    //    btnDto.SprParteDentro.color = Color.black;    //    
-    //}
 
     public void pressionarBotao()
     {    
@@ -63,25 +40,11 @@ public class AparenciaBotaoPowerUp
         botaoDtoV2.SprRendererImgBtn.transform.localPosition -= new Vector3(0.02f, 0.02f, 0);
     }
 
-    //public void colorirBotaoFromLevel(string corBotao, string corDentro, string corContorno)
-    //{
-    //    corOriginal = Utils.getCorByHex(corDentro);
-    //    btnDto.SprAreaExterna.color = Utils.getCorByHex(corBotao);
-    //    btnDto.SprParteDentro.color = corOriginal;
-    //    btnDto.SprContorno.color = Utils.getCorByHex(corContorno);
-    //}
-
     public void colorirBotaoFromLevelV2(string corBase, string corTampa)
-    {
-        corOriginal = Utils.getCorByHex(corTampa);
+    {   
         botaoDtoV2.SprRendererBtnBase.color = Utils.getCorByHex(corBase);
         botaoDtoV2.SprRendererBtnTampa.color = Utils.getCorByHex(corTampa);
     }
-
-    //public void voltarCorOriginalBotao()
-    //{
-    //    btnDto.SprParteDentro.color = corOriginal;
-    //}
 
     public void despressionarBotao()
     {   
@@ -91,50 +54,17 @@ public class AparenciaBotaoPowerUp
 
     public void receberImg(Sprite img)
     {
-        //btnDto.SprImagem.sprite = img;
         spritePupAtual = img;
         botaoDtoV2.SprRendererImgBtn.sprite = img;
         materialImgPup.SetTexture("_MaintText", img.texture);
         botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialImgPup;
     }
 
-    //public void limparImg()
-    //{
-    //    btnDto.SprImagem.sprite = null;        
-    //}
-
     public void limparImg()
     {
         botaoDtoV2.SprRendererImgBtn.sprite = null;
         botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
     }
-
-    //public void prepararRotacaoImgDrag()
-    //{
-    //    Transform transformBtnPup = btnDto.GoBtnPowerUp.transform;
-    //    btnDto.GoAreaExterna.transform.localRotation = transformBtnPup.localRotation;
-    //    transformBtnPup.localRotation = Quaternion.identity;
-    //}
-
-    public void prepararRotacaoImgDrag()
-    {
-        //Transform transformBtnPup = botaoDtoV2.TransformBtnTampa;
-        //btnDto.GoAreaExterna.transform.localRotation = transformBtnPup.localRotation;
-        //transformBtnPup.localRotation = Quaternion.identity;
-    }
-
-    //public void mostrarSoImagem()
-    //{
-    //    if(mostrandoAtual != MOSTRANDO_IMAGEM)
-    //    {
-    //        btnDto.SprParteDentro.enabled = false;
-    //        btnDto.SprContorno.enabled = false;
-    //        btnDto.GoImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-    //        btnDto.GoExclamacao.SetActive(false);
-
-    //        mostrandoAtual = MOSTRANDO_IMAGEM;
-    //    }
-    //}
 
     public void mostrarSoImagem()
     {
@@ -150,19 +80,6 @@ public class AparenciaBotaoPowerUp
         }
     }
 
-    //public void mostrarBotao()
-    //{
-    //    if(mostrandoAtual != MOSTRANDO_BOTAO)
-    //    {
-    //        btnDto.SprParteDentro.enabled = true;
-    //        btnDto.SprContorno.enabled = true;
-    //        btnDto.GoImagem.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
-    //        btnDto.GoExclamacao.SetActive(false);
-
-    //        mostrandoAtual = MOSTRANDO_BOTAO;
-    //    }
-    //}
-
     public void mostrarBotao()
     {
         if(mostrandoAtual != MOSTRANDO_BOTAO)
@@ -176,19 +93,6 @@ public class AparenciaBotaoPowerUp
             mostrandoAtual = MOSTRANDO_BOTAO;
         }
     }
-
-    //public void mostrarErro()
-    //{
-    //    if(mostrandoAtual != MOSTRANDO_ERROR)
-    //    {
-    //        btnDto.SprParteDentro.enabled = false;
-    //        btnDto.SprContorno.enabled = false;
-    //        btnDto.GoImagem.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-    //        btnDto.GoExclamacao.SetActive(true);
-
-    //        mostrandoAtual = MOSTRANDO_ERROR;
-    //    }
-    //}
 
     public void mostrarErro()
     {
@@ -211,10 +115,6 @@ public class AparenciaBotaoPowerUp
 
     public static void configurarSpritesTampaBotao(SpritesTampaBtnPupDto spritesTampaDtoArg)
     {
-        //spriteBordaNormal = spritesBordas[0];
-        //spriteBordaSerrilhada = spritesBordas[1];
-
-        //TRANSFORMAR EM UM UNICO DTO
         spritesTampaDto = spritesTampaDtoArg;                        
     }
 }

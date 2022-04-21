@@ -36,7 +36,7 @@ public class AcaoDragPowerUp
     {
         posicaoInicialDrag = posInicialDrag;
         goAreaDraggavel.SetActive(true);
-        aparencia.prepararRotacaoImgDrag();
+        //aparencia.prepararRotacaoImgDrag();
     }
 
     //public void updateDrag(Vector2 posicaoDrag, AparenciaBotaoPowerUp aparencia, BotaoPowerUpDto btnDto)
