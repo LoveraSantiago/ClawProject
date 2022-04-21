@@ -18,12 +18,18 @@ public class AparenciaBotaoPowerUp
     private BotaoPowerUpDto btnDto;
     private BotaoPowerUpDtoV2 botaoDtoV2;
 
-    public AparenciaBotaoPowerUp(BotaoPowerUpDto botaoDto, BotaoPowerUpDtoV2 botaoDtoV2)
+    private Material materialImgPup;
+    private Material materialDefault;
+
+    public AparenciaBotaoPowerUp(Material materialImgPup, BotaoPowerUpDto botaoDto, BotaoPowerUpDtoV2 botaoDtoV2)
     {
         mostrandoAtual = MOSTRANDO_BOTAO;
         btnDto = botaoDto;
         this.botaoDtoV2 = botaoDtoV2;
         corOriginal = btnDto.SprParteDentro.color;
+
+        this.materialImgPup = new Material(materialImgPup);
+        materialDefault = botaoDtoV2.SprRendererImgBtn.sharedMaterial;
     }
 
     public void mostrarBordaSerrilhada()
@@ -44,6 +50,7 @@ public class AparenciaBotaoPowerUp
     public void pressionarBotao()
     {    
         botaoDtoV2.SprRendererBtnTampa.sprite = tampaBtnPupPressionada;
+        botaoDtoV2.SprRendererImgBtn.transform.localPosition -= new Vector3(0.02f, 0.02f, 0);
     }
 
     //public void colorirBotaoFromLevel(string corBotao, string corDentro, string corContorno)
@@ -69,18 +76,26 @@ public class AparenciaBotaoPowerUp
     public void despressionarBotao()
     {   
         botaoDtoV2.SprRendererBtnTampa.sprite = tampaBtnPup;
+        botaoDtoV2.SprRendererImgBtn.transform.localPosition += new Vector3(0.02f, 0.02f, 0);
     }
 
     public void receberImg(Sprite img)
     {
         //btnDto.SprImagem.sprite = img;
         botaoDtoV2.SprRendererImgBtn.sprite = img;
-        
+        materialImgPup.SetTexture("_MaintText", img.texture);
+        botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialImgPup;
     }
+
+    //public void limparImg()
+    //{
+    //    btnDto.SprImagem.sprite = null;        
+    //}
 
     public void limparImg()
     {
-        btnDto.SprImagem.sprite = null;
+        botaoDtoV2.SprRendererImgBtn.sprite = null;
+        botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
     }
 
     public void prepararRotacaoImgDrag()

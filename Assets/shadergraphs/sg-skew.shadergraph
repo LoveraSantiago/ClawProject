@@ -675,10 +675,10 @@
     "m_Guid": {
         "m_GuidSerialized": "ba9f7399-9530-427b-aeb7-e24840b72308"
     },
-    "m_Name": "img",
+    "m_Name": "MaintText",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "img",
-    "m_DefaultReferenceName": "_img",
+    "m_RefNameGeneratedByDisplayName": "MaintText",
+    "m_DefaultReferenceName": "_MaintText",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -777,7 +777,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "96a1d9f03de5463bb0f237d7d09c4617",
     "m_Id": 0,
-    "m_DisplayName": "img",
+    "m_DisplayName": "MaintText",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",

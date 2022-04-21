@@ -21,7 +21,7 @@ public class BotaoPowerUp : Draggavel
 
         BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
         BotaoPowerUpDtoV2 botaoDtoV2 = getBotaoPowerUpDtoV2(btnsPowerUpsDto);
-        aparencia = new AparenciaBotaoPowerUp(botaoDto, botaoDtoV2);
+        aparencia = new AparenciaBotaoPowerUp(btnsPowerUpsDto.MaterialImgPup, botaoDto, botaoDtoV2);
         acaoDrag  = new AcaoDragPowerUp(botaoDto, botaoDtoV2);
         glow      = new GlowBotaoPowerUp(botaoDto.SprEfeito);
     }
