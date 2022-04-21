@@ -21,8 +21,7 @@ public class BotaoPowerUp : Draggavel
 
         BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
         BotaoPowerUpDtoV2 botaoDtoV2 = getBotaoPowerUpDtoV2(btnsPowerUpsDto);
-        aparencia = new AparenciaBotaoPowerUp(btnsPowerUpsDto.MaterialImgPup, botaoDtoV2);
-        //acaoDrag  = new AcaoDragPowerUp(botaoDto, botaoDtoV2);
+        aparencia = new AparenciaBotaoPowerUp(btnsPowerUpsDto.MaterialImgPup, botaoDtoV2);        
         acaoDrag  = new AcaoDragPowerUp(botaoDtoV2);
         glow      = new GlowBotaoPowerUp(botaoDto.SprEfeito);
     }
@@ -73,12 +72,7 @@ public class BotaoPowerUp : Draggavel
     {
         glow.mudarParaMaterialArcoIris();
     }
-
-    //public void receberCorLevel(string corBotao, string corDentro, string corContorno)
-    //{
-    //    aparencia.colorirBotaoFromLevel(corBotao, corDentro, corContorno);
-    //}
-
+      
     public void receberCorLevelV2(string corBase, string corTampa)
     {
         aparencia.colorirBotaoFromLevelV2(corBase, corTampa);
@@ -162,23 +156,11 @@ public class BotaoPowerUp : Draggavel
         acaoDrag.prepararDraggagem(posInicialDrag, aparencia);
     }
 
-    //public void updateDrag(Vector2 posicaoDrag, BotoesPowerUpDto botoesPowerUpsDto)
-    //{
-    //    BotaoPowerUpDto btnDto = getBotaoPowerUpDto(botoesPowerUpsDto);
-    //    acaoDrag.updateDrag(posicaoDrag, aparencia, btnDto);
-    //}
-
     public void updateDrag(Vector2 posicaoDrag, BotoesPowerUpDto botoesPowerUpsDto)
     {
         BotaoPowerUpDtoV2 btnDto = getBotaoPowerUpDtoV2(botoesPowerUpsDto);
         acaoDrag.updateDrag(posicaoDrag, aparencia, btnDto);
     }
-
-    //public bool isDragFinalizadoAtivouPowerUp(BotoesPowerUpDto botoesPowerUpsDto)
-    //{
-    //    BotaoPowerUpDto btnDto = getBotaoPowerUpDto(botoesPowerUpsDto);
-    //    return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, aparencia, btnDto);        
-    //}
 
     public bool isDragFinalizadoAtivouPowerUp(BotoesPowerUpDto botoesPowerUpsDto)
     {
