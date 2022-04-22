@@ -12,9 +12,8 @@ public class ColorivelTubo
     }
 
     public ComponenteColorivel getBase()
-    {
-        GameObject goBase = finder.findNoComponente(goTubo, ConstantesCoresMaquinaV2.TUBO_BASE);
-        return new SingleCompColorivel(goBase, 0.88f);
+    {   
+        return new SingleCompColorivel(goTubo, 0.88f);
     }
 
     public ComponenteColorivel getBorda()
