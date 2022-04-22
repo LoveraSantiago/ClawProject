@@ -24,39 +24,32 @@ public class ColorivelSimbolo
 
     private void inicializarArrays()
     {
-        GameObject goSimboloSupEsquerdo = finder.findNaMaquina("simbolo-superior-esquerdo");
-        GameObject circuloExterno1 = finder.findNoComponente(goSimboloSupEsquerdo, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO);
+        GameObject goSimboloSupEsquerdo = finder.findNaMaquina("simbolo-superior-esquerdo");        
         GameObject circuloInterno1 = finder.findNoComponente(goSimboloSupEsquerdo, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
 
-        GameObject goSimboloSupMaior = finder.findNaMaquina("simbolo-superior-maior");
-        GameObject circuloExterno2 = finder.findNoComponente(goSimboloSupMaior, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO);
+        GameObject goSimboloSupMaior = finder.findNaMaquina("simbolo-superior-maior");        
         GameObject circuloInterno2 = finder.findNoComponente(goSimboloSupMaior, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
 
-        GameObject goSimboloSupDireito = finder.findNaMaquina("simbolo-superior-direito");
-        GameObject circuloExterno3 = finder.findNoComponente(goSimboloSupDireito, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO);
+        GameObject goSimboloSupDireito = finder.findNaMaquina("simbolo-superior-direito");        
         GameObject circuloInterno3 = finder.findNoComponente(goSimboloSupDireito, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
 
         GameObject goTubo = finder.findNaMaquina("tubo");
-        GameObject goSimboloTubo = finder.findNoComponente(goTubo, "simbolo-menor");
-        GameObject circuloExterno4 = finder.findNoComponente(goSimboloTubo, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO);
+        GameObject goSimboloTubo = finder.findNoComponente(goTubo, "simbolo-menor");        
         GameObject circuloInterno4 = finder.findNoComponente(goSimboloTubo, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
 
         GameObject goMesa = finder.findNaMaquina("mesa-joystick");
         GameObject goMesaBaixo = finder.findNoComponente(goMesa, ConstantesCoresMaquinaV2.JOYSTICK_MESA_BAIXO);
-        GameObject goSimboloMesa = finder.findNoComponente(goMesaBaixo, "simbolo-menor");
-        GameObject circuloExterno5 = finder.findNoComponente(goSimboloMesa, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO);
+        GameObject goSimboloMesa = finder.findNoComponente(goMesaBaixo, "simbolo-menor");        
         GameObject circuloInterno5 = finder.findNoComponente(goSimboloMesa, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
 
-        GameObject goSimbInfEsquerdo = finder.findNaMaquina("simbolo-inferior-esquerdo");
-        GameObject circuloExterno6 = finder.findNoComponente(goSimbInfEsquerdo, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO);
+        GameObject goSimbInfEsquerdo = finder.findNaMaquina("simbolo-inferior-esquerdo");        
         GameObject circuloInterno6 = finder.findNoComponente(goSimbInfEsquerdo, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
 
-        GameObject goSimbInfDireito  = finder.findNaMaquina("simbolo-inferior-direito");
-        GameObject circuloExterno7 = finder.findNoComponente(goSimbInfDireito, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO);
+        GameObject goSimbInfDireito  = finder.findNaMaquina("simbolo-inferior-direito");        
         GameObject circuloInterno7 = finder.findNoComponente(goSimbInfDireito, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
 
         gosCirculoExternos = new GameObject[] {
-            circuloExterno1, circuloExterno2, circuloExterno3, circuloExterno4, circuloExterno5, circuloExterno6, circuloExterno7
+            goSimboloSupEsquerdo, goSimboloSupMaior, goSimboloSupDireito, goSimboloTubo, goSimboloMesa, goSimbInfEsquerdo, goSimbInfDireito
         };
 
         gosCirculoInternos = new GameObject[] {
