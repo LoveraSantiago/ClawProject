@@ -4,7 +4,6 @@ public class ColorivelMesaJoystick
 {
     private GameObject goMesaCima;
     private GameObject goMesaBaixo;
-    private GameObject goMesaJoystickCima;
 
     private FinderComponente finder;
 
@@ -12,14 +11,13 @@ public class ColorivelMesaJoystick
     {
         this.finder = finder;
         GameObject goMesa = finder.findNaMaquina("mesa-joystick");
-        goMesaCima  = finder.findNoComponente(goMesa, "cima");
+        goMesaCima  = finder.findNoComponente(goMesa, ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA);
         goMesaBaixo = finder.findNoComponente(goMesa, "baixo");
-        goMesaJoystickCima = getGoMesaJoystickCima();
     }
 
     public ComponenteColorivel getMesaCima()
     {
-        return new SingleCompColorivel(goMesaJoystickCima);
+        return new SingleCompColorivel(goMesaCima);
     }
 
     public ComponenteColorivel getMesaBaixo()
@@ -108,12 +106,7 @@ public class ColorivelMesaJoystick
         GameObject goBtnPup = getBtnPupEsquerda();
         GameObject goBtnTampa = extrairBtnTampaFrom(goBtnPup);
         return new SingleCompColorivel(goBtnTampa);
-    }
-
-    private GameObject getGoMesaJoystickCima()
-    {
-        return finder.findNoComponente(goMesaCima, ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA);
-    }    
+    }   
 
     private GameObject getGoJoystick()
     {

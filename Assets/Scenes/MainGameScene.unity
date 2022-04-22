@@ -10785,7 +10785,7 @@ MonoBehaviour:
       referenciaChao: {fileID: 1270622651}
       mesaJoystickDto:
         velocidade: 0.9
-        sprRendererMesaCima: {fileID: 2046936648}
+        sprRendererMesaCima: {fileID: 568524388}
         sprRendererMesaBaixo: {fileID: 909988089}
         sprRendererBaseJoystick: {fileID: 2104599724}
         sprRendererHaste: {fileID: 1627681067}
@@ -11596,6 +11596,11 @@ SpriteRenderer:
 --- !u!212 &556133382 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 403257779101162212, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &568524388 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 568524388, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &574387010
@@ -53486,11 +53491,6 @@ SpriteRenderer:
 --- !u!212 &2024925725 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3937799430760949472, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-  m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &2046936648 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 913207779, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &2056725774 stripped
