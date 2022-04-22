@@ -5296,6 +5296,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &191022235 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3403190249757667642, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &199678859 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2245422215099632476, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -10677,7 +10682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 2
   mainDto:
     garraDto:
       posCacaNiquel: -1.75
@@ -10795,7 +10800,7 @@ MonoBehaviour:
         fimDelay: 0.1
         velocImg: 4.5
         sprNone: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
-        sprRendererPlacaGrupo: {fileID: 4106799619402785297}
+        sprRendererPlacaGrupo: {fileID: 191022235}
         singleDisplaySlotDto:
         - sprDisplay: {fileID: 1936649351}
           sprRendererDentroEfeito: {fileID: 1765276500}
@@ -22241,15 +22246,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0.25882354
+      value: 0.9254902
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0.39607844
+      value: 0.8980392
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
-      value: 0.9843137
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.a
@@ -22257,15 +22262,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.b
-      value: 0.25882354
+      value: 0.9254902
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.g
-      value: 0.39607844
+      value: 0.8980392
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.r
-      value: 0.9843137
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key2.a
@@ -58992,11 +58997,6 @@ PrefabInstance:
 --- !u!4 &4106799619402785296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5845699465068917843, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-  m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &4106799619402785297 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5473208772646066894, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &4106799619402785298 stripped

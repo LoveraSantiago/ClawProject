@@ -12,9 +12,8 @@ public class ColorivelDisplayColetavel
     }
 
     public ComponenteColorivel getPlacaPrincipal()
-    {
-        GameObject goPlacaGrupo = finder.findNoComponente(goDisplayColetado, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO);
-        return new SingleCompColorivel(goPlacaGrupo);
+    {   
+        return new SingleCompColorivel(goDisplayColetado);
     }
 
     public ComponenteColorivel getPlacaIndividual1()
