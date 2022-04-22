@@ -13,9 +13,8 @@ public class DisplayScoreColorivel
     }
 
     public ComponenteColorivel getPlacaGrupo()
-    {
-        GameObject goPlacaGrupo = finder.findNoComponente(goDisplayScore, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_GRUPO);
-        return new SingleCompColorivel(goPlacaGrupo);
+    {   
+        return new SingleCompColorivel(goDisplayScore);
     }
 
     public ComponenteColorivel getPlacaIndividual1()
