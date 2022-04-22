@@ -42,7 +42,7 @@ public class ColorivelSimbolo
         GameObject circuloInterno4 = finder.findNoComponente(goSimboloTubo, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
 
         GameObject goMesa = finder.findNaMaquina("mesa-joystick");
-        GameObject goMesaBaixo = finder.findNoComponente(goMesa, "baixo");
+        GameObject goMesaBaixo = finder.findNoComponente(goMesa, ConstantesCoresMaquinaV2.JOYSTICK_MESA_BAIXO);
         GameObject goSimboloMesa = finder.findNoComponente(goMesaBaixo, "simbolo-menor");
         GameObject circuloExterno5 = finder.findNoComponente(goSimboloMesa, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO);
         GameObject circuloInterno5 = finder.findNoComponente(goSimboloMesa, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
