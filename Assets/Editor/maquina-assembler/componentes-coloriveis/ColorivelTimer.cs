@@ -13,9 +13,8 @@ public class ColorivelTimer
     }
 
     public ComponenteColorivel getPlacaPrincipal()
-    {
-        GameObject placaPrincipal = finder.findNoComponente(goTimer, ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL);
-        return new SingleCompColorivel(placaPrincipal);
+    {   
+        return new SingleCompColorivel(goTimer);
     }
 
     public ComponenteColorivel getPlacaDigitos()
