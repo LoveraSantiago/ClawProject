@@ -57,9 +57,8 @@ public class ColorivelMesaJoystick
 
     public ComponenteColorivel getJoystickBtn()
     {
-        GameObject goBotaoJoystick = getBotaoJoystick();
-        GameObject goBtn = finder.findNoComponente(goBotaoJoystick, ConstantesCoresMaquinaV2.JOYSTICK_BTN);
-        return new SingleCompColorivel(goBtn);
+        GameObject goBotaoJoystick = getBotaoJoystick();        
+        return new SingleCompColorivel(goBotaoJoystick);
     }
 
     public ComponenteColorivel getOrificioFicha()
