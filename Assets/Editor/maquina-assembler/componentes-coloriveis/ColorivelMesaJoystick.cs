@@ -81,9 +81,8 @@ public class ColorivelMesaJoystick
 
     public ComponenteColorivel getBtnPupBaseDireita()
     {
-        GameObject goBtnPup = getBtnPupDireita();
-        GameObject goBtnBase = extrairBtnBaixoFrom(goBtnPup);
-        return new SingleCompColorivel(goBtnBase);
+        GameObject goBtnPup = getBtnPupDireita();        
+        return new SingleCompColorivel(goBtnPup);
     }
 
     public ComponenteColorivel getBtnPupTopoDireita()
@@ -95,9 +94,8 @@ public class ColorivelMesaJoystick
 
     public ComponenteColorivel getBtnPupBaseEsquerda()
     {
-        GameObject goBtnPup = getBtnPupEsquerda();
-        GameObject goBtnBase = extrairBtnBaixoFrom(goBtnPup);
-        return new SingleCompColorivel(goBtnBase);
+        GameObject goBtnPup = getBtnPupEsquerda();        
+        return new SingleCompColorivel(goBtnPup);
     }
 
     public ComponenteColorivel getBtnPupTopoEsquerda()
@@ -127,10 +125,10 @@ public class ColorivelMesaJoystick
         return finder.findNoComponente(goMesaCima, "btn-powerup-esquerda");
     }
 
-    private GameObject extrairBtnBaixoFrom(GameObject goBtn)
-    {
-        return finder.findNoComponente(goBtn, "botao-baixo");
-    }
+    //private GameObject extrairBtnBaixoFrom(GameObject goBtn)
+    //{
+    //    return finder.findNoComponente(goBtn, "botao-baixo");
+    //}
 
     private GameObject extrairBtnTampaFrom(GameObject goBtn)
     {
