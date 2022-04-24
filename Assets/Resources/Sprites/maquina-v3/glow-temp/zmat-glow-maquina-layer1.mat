@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: zmat-glow-maquina
+  m_Name: zmat-glow-maquina-layer1
   m_Shader: {fileID: -6465566751694194690, guid: b1def4f3601fb4546b88ca8857b8a6ea, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -68,11 +68,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - text_glow:
-        m_Texture: {fileID: 2800000, guid: 18738e5f3e20b274d8814426626ba143, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9204d106c0241614b9fb9ea665cedd13, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - text_outline:
-        m_Texture: {fileID: 2800000, guid: f51cc1a40a30b444baf61aa6beedabf7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2896d1c4d64295144a35c86b76c24cc5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
