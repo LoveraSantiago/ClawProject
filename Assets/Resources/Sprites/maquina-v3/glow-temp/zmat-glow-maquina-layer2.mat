@@ -68,11 +68,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - text_glow:
-        m_Texture: {fileID: 2800000, guid: da77ada4d82ffae418ec67d1e0d62f02, type: 3}
+        m_Texture: {fileID: 2800000, guid: f5e0583ea4aa39e4fbe3e657a4b325ff, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - text_outline:
-        m_Texture: {fileID: 2800000, guid: 4ff2dcd803baf1d4f8c2f7fa9c809996, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2aa4c1f0b431b884f9c642a2a3b76a36, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
