@@ -10374,11 +10374,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!212 &320505972 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6406990384539481421, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &320550303 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 401355965253841673, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -11021,21 +11016,12 @@ MonoBehaviour:
       botaoLigaDesligaDto:
         sprRendererBtnBordas: {fileID: 6406990385049082672}
         sprRendererBtnOnOff: {fileID: 6406990385049082673}
-      bordasFrenteDto:
-        sprRenderColorir: {fileID: 320505972}
-        sprRenderEfeito: {fileID: 6406990385049082696}
       tuboDto:
         sprRenderColorir: {fileID: 1914492973}
         sprRenderEfeito: {fileID: 1202769893}
       tuboDtoV2:
         sprRendererBase: {fileID: 729429936}
         sprRendererTopo: {fileID: 2125364880}
-      chaoDto:
-        sprRenderColorir: {fileID: 605089188}
-        sprRenderEfeito: {fileID: 1500699939}
-      barraDto:
-        sprRenderColorir: {fileID: 1628489478}
-        sprRenderEfeito: {fileID: 1690391164}
       scrollPupsDto:
         sprRendererPlacaExterna: {fileID: 1382398206}
         sprRendererPlacaInterna: {fileID: 991189264}
@@ -11045,8 +11031,10 @@ MonoBehaviour:
       partesDtoV2:
         placaFrente: {fileID: 1441889957}
         baseChao: {fileID: 294387047}
-        spriteRendererVigaEsquerda: {fileID: 980786069}
-        spriteRendererVigaDireita: {fileID: 1041678792}
+        sprRendererBarra: {fileID: 1628489478}
+        sprRendererVigaEsquerda: {fileID: 980786069}
+        sprRendererVigaDireita: {fileID: 1041678792}
+        sprRendererChao: {fileID: 605089188}
         simbolosParteExterna:
         - {fileID: 765937863}
         - {fileID: 765937862}
@@ -43270,11 +43258,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6406990385412141467, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &1500699939 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 731631279107951601, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1514111671 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2699307417863312524, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -48373,11 +48356,6 @@ SpriteRenderer:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4320605484159820483, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1690391164 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6522801511994879877, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1718459111 stripped
 SpriteRenderer:
@@ -61253,10 +61231,5 @@ SpriteRenderer:
 --- !u!212 &6406990385049082695 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 49801543049135062, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6406990385049082696 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 848549023, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}

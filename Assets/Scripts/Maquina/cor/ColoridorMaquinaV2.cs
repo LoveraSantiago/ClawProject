@@ -14,11 +14,11 @@ public class ColoridorMaquinaV2
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.VIGAS];
         Color cor = Utils.getCorByHex(hexCor);
-        partesDto.SpriteRendererVigaDireita.color = cor;
-        partesDto.SpriteRendererVigaEsquerda.color = cor;
+        partesDto.SprRendererVigaDireita.color = cor;
+        partesDto.SprRendererVigaEsquerda.color = cor;
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.BARRA];
-        partesDto.SpriteRendererBarra.color = Utils.getCorByHex(hexCor);
+        partesDto.SprRendererBarra.color = Utils.getCorByHex(hexCor);
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO];
         colorirSimbolos(hexCor, partesDto.SimbolosParteExterna);
@@ -27,7 +27,7 @@ public class ColoridorMaquinaV2
         colorirSimbolos(hexCor, partesDto.SimbolosParteInterna);
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.CHAO_DENTRO];
-        partesDto.SpriteRendererChao.color = Utils.getCorByHex(hexCor);
+        partesDto.SprRendererChao.color = Utils.getCorByHex(hexCor);
     }
 
     private void colorirSimbolos(string hexCor, SpriteRenderer[] spriteRenderers)
