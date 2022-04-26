@@ -73,12 +73,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
             isPausado = false;
             contadorTimer.continuar();
         }
-    }
-
-    public ArcoIrisConjunto getDisplayTimerGlow(DisplayTimerDto displayDto)
-    {
-        return new DisplayTimerGlow(displayDto);        
-    }    
+    }  
 
     private void atualizarTempo()
     {
