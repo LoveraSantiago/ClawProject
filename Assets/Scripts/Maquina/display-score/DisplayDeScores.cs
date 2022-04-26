@@ -51,8 +51,7 @@ public class DisplayDeScores
 
     public void finalizarContagemRegressiva()
     {
-        finalizarCoroutineAtual();
-        finalizarCoroutineArcoIris();
+        finalizarCoroutineAtual();        
         orquestrador.passarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual);
     }
 
@@ -84,10 +83,5 @@ public class DisplayDeScores
     private void finalizarCoroutineAtual()
     {
         Utils.MonoBehaviour.StopCoroutine(coroutineAtual);        
-    }    
-
-    private void finalizarCoroutineArcoIris()
-    {
-        orquestrador.desligarGlows();
-    }   
+    }       
 }
