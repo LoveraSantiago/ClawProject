@@ -1,5 +1,7 @@
 using UnityEngine;
+using System;
 
+[Obsolete]
 public interface ArcoIrisConjunto 
 {
     void ligar();

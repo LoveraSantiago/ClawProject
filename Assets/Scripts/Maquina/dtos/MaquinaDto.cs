@@ -4,37 +4,39 @@ using UnityEngine;
 [System.Serializable]
 public class MaquinaDto
 {
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private float factorHdr;
     [SerializeField] private Transform referenciaChao;    
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private MesaJoystickDto mesaJoystickDto;
-    [Space(5)]    
+    [Space(3)]    
     [SerializeField] private DisplaysColetadosDto displaysColetadosDto;    
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private DisplayTimerDto displayTimerDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private DisplayDeScoreDto displayDeScoreDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private BotoesPowerUpDto botoesPowerUpDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private BotaoLigaDesligaDto botaoLigaDesligaDto;    
-    [Space(5)]    
+    [Space(3)]    
     [SerializeField] private VigaDto vigaLadoEsquerdoDto;
     [SerializeField] private VigaDto vigaLadoDireitoDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private BordasFrenteDto bordasFrenteDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private TuboDto tuboDto;
     [SerializeField] private TuboDtoV2 tuboDtoV2;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private ChaoDto chaoDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private BarraDto barraDto;    
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private ScrollPupsDto scrollPupsDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private PartesMaquinaDtoV2 partesDtoV2;
+    [Space(3)]
+    [SerializeField] private MaquinaEfeitoGlowDto maquinaEfeitoGlow;
 
     public float FactorHdr { get { return factorHdr; } }
     public Transform ReferenciaChao { get { return referenciaChao; } }
@@ -63,4 +65,6 @@ public class MaquinaDto
 
     public ScrollPupsDto ScrollPupsDto { get { return scrollPupsDto; } }
     public PartesMaquinaDtoV2 PartesDtoV2 { get { return partesDtoV2; } }
+
+    public MaquinaEfeitoGlowDto MaquinaEfeitoGlowDto { get { return maquinaEfeitoGlow; } }
 }
