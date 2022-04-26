@@ -3,9 +3,7 @@ using UnityEngine;
 #pragma warning disable 0649
 [System.Serializable]
 public class MaquinaDto
-{
-    [Space(3)]
-    [SerializeField] private float factorHdr;
+{   
     [SerializeField] private Transform referenciaChao;    
     [Space(3)]
     [SerializeField] private MesaJoystickDto mesaJoystickDto;
@@ -37,8 +35,7 @@ public class MaquinaDto
     [SerializeField] private PartesMaquinaDtoV2 partesDtoV2;
     [Space(3)]
     [SerializeField] private MaquinaEfeitoGlowDto maquinaEfeitoGlow;
-
-    public float FactorHdr { get { return factorHdr; } }
+    
     public Transform ReferenciaChao { get { return referenciaChao; } }
 
     public MesaJoystickDto MesaJoystickDto { get { return mesaJoystickDto; } }

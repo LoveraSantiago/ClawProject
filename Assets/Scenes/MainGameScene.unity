@@ -10618,6 +10618,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4657305490244849436, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &432249338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 664979614075275720, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &432826845 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 21880370418925681, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
@@ -11067,6 +11072,13 @@ MonoBehaviour:
         - {fileID: 1224485396}
         - {fileID: 1689283372}
         - {fileID: 1466928253}
+      maquinaEfeitoGlow:
+        factorHdr: 5
+        goEfeito: {fileID: 432249338}
+        materialLayers:
+        - {fileID: 2100000, guid: ad8c49788763354459227818737a4985, type: 2}
+        - {fileID: 2100000, guid: 7c0fda5c368c6ca4492c8467b70c86d2, type: 2}
+        - {fileID: 2100000, guid: 2641516f013b57c478b0ee492e0a1bd8, type: 2}
     cameraDto:
       noise6d: {fileID: 11400000, guid: a31f2eaada77af94689f0b0d7e781fb6, type: 2}
       virtualCam1: {fileID: 250677996}

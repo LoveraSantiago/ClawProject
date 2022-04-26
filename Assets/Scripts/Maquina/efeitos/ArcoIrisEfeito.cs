@@ -8,15 +8,15 @@ public class ArcoIrisEfeito
     public static Color redHdr    { get; private set; }
     public static Color yellowHdr { get; private set; }
 
-    private float factorHdr;
+    private MaquinaEfeitoGlowDto maquinaEfeitoGlowDto;    
     private Coroutine coroutineAtual;    
     private List<ArcoIrisConjunto> listaArcoIrisConjunto;
 
-    public ArcoIrisEfeito(float factorHdr)
+    public ArcoIrisEfeito(MaquinaEfeitoGlowDto maquinaEfeitoGlowDto)
     {
-        this.factorHdr = factorHdr;
+        this.maquinaEfeitoGlowDto = maquinaEfeitoGlowDto;        
         listaArcoIrisConjunto = new List<ArcoIrisConjunto>();
-        configurarCoresHdr(factorHdr);
+        configurarCoresHdr(maquinaEfeitoGlowDto.FactorHdr);
     }
 
     public void ligarEfeitoArcoIris()
@@ -52,6 +52,8 @@ public class ArcoIrisEfeito
 
     private void ligarGlows()
     {
+        maquinaEfeitoGlowDto.GoEfeito.SetActive(true);
+
         for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
         {
             listaArcoIrisConjunto[contador].ligar();
@@ -60,6 +62,7 @@ public class ArcoIrisEfeito
 
     private void desligarGlows()
     {
+        maquinaEfeitoGlowDto.GoEfeito.SetActive(false);
         for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
         {
             listaArcoIrisConjunto[contador].desligar();
@@ -80,7 +83,11 @@ public class ArcoIrisEfeito
         while (true)
         {            
             Color singleColor    = HSBColor.ToColor(new HSBColor(Mathf.PingPong(Time.time * 0.5f, 1), 1, 1));
-            Color singleColorHdr = HSBColor.toHdrColor(singleColor, factorHdr);
+            Color singleColorHdr = HSBColor.toHdrColor(singleColor, maquinaEfeitoGlowDto.FactorHdr);
+
+            maquinaEfeitoGlowDto.GoEfeito.SetActive(true);
+            setCorNosMateriaisLayers(singleColorHdr);            
+
             for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
             {
                 listaArcoIrisConjunto[contador].passarCor(singleColorHdr);
@@ -94,13 +101,15 @@ public class ArcoIrisEfeito
     {
         while (true)
         {
-            ligarGlows();
+            ligarGlows();            
+            setCorNosMateriaisLayers(cor);
+
             for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
             {
                 listaArcoIrisConjunto[contador].passarCor(cor);
             }
             yield return new WaitForSeconds(0.2f);
-            desligarGlows();
+            desligarGlows();            
             yield return new WaitForSeconds(0.2f);
         }
     }
@@ -110,5 +119,13 @@ public class ArcoIrisEfeito
         greenHdr  = HSBColor.toHdrColor(Color.green, factorHdr);
         redHdr    = HSBColor.toHdrColor(Color.red, factorHdr);
         yellowHdr = HSBColor.toHdrColor(Color.yellow, factorHdr);
+    }
+
+    private void setCorNosMateriaisLayers(Color cor)
+    {
+        for (int contador = 0; contador < maquinaEfeitoGlowDto.MaterialLayers.Length; contador++)
+        {
+            maquinaEfeitoGlowDto.MaterialLayers[contador].SetColor("_corGlow", cor);
+        }
     }
 }

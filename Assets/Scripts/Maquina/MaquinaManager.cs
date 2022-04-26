@@ -45,7 +45,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         chao               = new ChaoV2(maquinaDto.ChaoDto);
         barra              = new Barra(maquinaDto.BarraDto);
 
-        arcoIrisEfeito = new ArcoIrisEfeito(maquinaDto.FactorHdr)//REFATORAR FORMAS DE MONTAR CONJUNTO REVER INSTANCIAS DE MATERIALGLOW            
+        arcoIrisEfeito = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto)
             .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())
             .addArcoIrisConjunto(displayDeScores)
             .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow(maquinaDto.DisplayTimerDto))
