@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat-glow-v2-display-score
+  m_Name: mat-glow-v2-display-score-REMOVER
   m_Shader: {fileID: -6465566751694194690, guid: 80386587e6c7b0142a1624561fd29f84, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4

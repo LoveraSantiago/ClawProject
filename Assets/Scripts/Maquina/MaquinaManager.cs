@@ -46,8 +46,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         barra              = new Barra(maquinaDto.BarraDto);
 
         arcoIrisEfeito = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto)
-            .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())
-            .addArcoIrisConjunto(displayDeScores)
+            .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())            
             .addArcoIrisConjunto(displayTimer.getDisplayTimerGlow(maquinaDto.DisplayTimerDto))
             .addArcoIrisConjunto(vigaEsquerda)
             .addArcoIrisConjunto(vigaDireita)

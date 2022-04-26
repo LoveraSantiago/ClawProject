@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DisplayDeScores : ArcoIrisConjunto
+public class DisplayDeScores 
 {
     private int scoreCentenaAtual;
     private int scoreDezenaAtual;
@@ -89,26 +89,5 @@ public class DisplayDeScores : ArcoIrisConjunto
     private void finalizarCoroutineArcoIris()
     {
         orquestrador.desligarGlows();
-    }
-
-    public void ligar()
-    {
-        displayCentena.ligarGlowSucesso();
-        displayDezena.ligarGlowSucesso();
-        displayUnidade.ligarGlowSucesso();
-    }
-
-    public void desligar()
-    {
-        displayCentena.desligarGlow();
-        displayDezena.desligarGlow();
-        displayUnidade.desligarGlow();
-    }
-
-    public void passarCor(Color cor)
-    {
-        displayCentena.getMaterialGlow().setCorNoMaterial(cor);
-        displayDezena.getMaterialGlow().setCorNoMaterial(cor);
-        displayUnidade.getMaterialGlow().setCorNoMaterial(cor);
-    }
+    }   
 }
