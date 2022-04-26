@@ -25,6 +25,9 @@ public class ColoridorMaquinaV2
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO];
         colorirSimbolos(hexCor, partesDto.SimbolosParteInterna);
+
+        hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.CHAO_DENTRO];
+        partesDto.SpriteRendererChao.color = Utils.getCorByHex(hexCor);
     }
 
     private void colorirSimbolos(string hexCor, SpriteRenderer[] spriteRenderers)

@@ -19,9 +19,7 @@ public class MaquinaDto
     [SerializeField] private BotaoLigaDesligaDto botaoLigaDesligaDto;        
     [Space(3)]
     [SerializeField] private TuboDto tuboDto;
-    [SerializeField] private TuboDtoV2 tuboDtoV2;
-    [Space(3)]
-    [SerializeField] private ChaoDto chaoDto;    
+    [SerializeField] private TuboDtoV2 tuboDtoV2;    
     [Space(3)]
     [SerializeField] private ScrollPupsDto scrollPupsDto;
     [Space(3)]
@@ -42,9 +40,7 @@ public class MaquinaDto
     public BotaoLigaDesligaDto BotaoLigaDesligaDto { get { return botaoLigaDesligaDto; } }    
 
     public TuboDto TuboDto { get { return tuboDto; } }
-    public TuboDtoV2 TuboDtoV2 { get { return tuboDtoV2; } }
-
-    public ChaoDto ChaoDto { get { return chaoDto; } }
+    public TuboDtoV2 TuboDtoV2 { get { return tuboDtoV2; } }    
     
     public ScrollPupsDto ScrollPupsDto { get { return scrollPupsDto; } }
     public PartesMaquinaDtoV2 PartesDtoV2 { get { return partesDtoV2; } }
