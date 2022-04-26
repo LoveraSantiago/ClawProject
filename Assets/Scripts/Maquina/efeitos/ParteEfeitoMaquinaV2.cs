@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Obsolete]
 public abstract class ParteEfeitoMaquinaV2 : ArcoIrisConjunto
 {
     private ParteEfeitoDto parteEfeitoDto;
