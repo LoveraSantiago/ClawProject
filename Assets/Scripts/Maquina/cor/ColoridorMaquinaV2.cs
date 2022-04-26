@@ -28,6 +28,14 @@ public class ColoridorMaquinaV2
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.CHAO_DENTRO];
         partesDto.SprRendererChao.color = Utils.getCorByHex(hexCor);
+
+        hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.TUBO_BASE];
+        Color corBase = Utils.getCorByHex(hexCor);
+        corBase.a = 0.88f;
+        partesDto.SprRendererTuboBase.color = corBase;
+
+        hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.TUBO_BORDA];
+        partesDto.SprRendererTuboTopo.color = Utils.getCorByHex(hexCor);
     }
 
     private void colorirSimbolos(string hexCor, SpriteRenderer[] spriteRenderers)
