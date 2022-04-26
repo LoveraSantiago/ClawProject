@@ -17,6 +17,9 @@ public class ColoridorMaquinaV2
         partesDto.SpriteRendererVigaDireita.color = cor;
         partesDto.SpriteRendererVigaEsquerda.color = cor;
 
+        hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.BARRA];
+        partesDto.SpriteRendererBarra.color = Utils.getCorByHex(hexCor);
+
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO];
         colorirSimbolos(hexCor, partesDto.SimbolosParteExterna);
 

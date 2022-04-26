@@ -22,8 +22,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     private DisplayDeScores     displayDeScores;    
     public  DisplaysDeColetados displayDeColetados { get; private set; }    
     private TudoDeSaidaV2       tuboDeSaida;
-    private ChaoV2              chao;
-    private Barra               barra;
+    private ChaoV2              chao;    
 
     public MaquinaManager(MaquinaDto maquinaDto)
     {
@@ -37,14 +36,12 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);                        
         tuboDeSaida        = new TudoDeSaidaV2(maquinaDto.TuboDtoV2);
         chao               = new ChaoV2(maquinaDto.ChaoDto);
-        barra              = new Barra(maquinaDto.BarraDto);
 
         arcoIrisEfeito = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto)
-            .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())                        
-            .addArcoIrisConjunto(botoesPowerUp.getBotoesGlow())            
+            .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())
+            .addArcoIrisConjunto(botoesPowerUp.getBotoesGlow())
             //.addArcoIrisConjunto(tuboDeSaida) REVER SE VAI CONTINUAR COMO EFEITO
-            .addArcoIrisConjunto(chao)
-            .addArcoIrisConjunto(barra);      
+            .addArcoIrisConjunto(chao);
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido, MaquinaDto maquinaDto)
@@ -54,8 +51,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayDeColetados.configuradoPeloLevel(levelEscolhido, maquinaDto.DisplayColetadosDto);
         displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto, levelEscolhido);                        
         tuboDeSaida.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
-        chao.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
-        barra.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        chao.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
 
         new ScrollPups()
             .configuradoPeloLevel(maquinaDto.ScrollPupsDto, levelEscolhido.getDicionarioDeCores());
