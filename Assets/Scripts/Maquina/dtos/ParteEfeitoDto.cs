@@ -1,6 +1,8 @@
 using UnityEngine;
+using System;
 
 #pragma warning disable 0649
+[Obsolete]
 public class ParteEfeitoDto
 {
     [SerializeField] private SpriteRenderer sprRenderColorir;

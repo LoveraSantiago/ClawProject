@@ -6,6 +6,10 @@ public class PartesMaquinaDtoV2
 {
     [SerializeField] private SpriteRenderer placaFrente;
     [SerializeField] private SpriteRenderer baseChao;
+    [Space(3)]
+    [SerializeField] private SpriteRenderer spriteRendererVigaEsquerda;
+    [SerializeField] private SpriteRenderer spriteRendererVigaDireita;
+    [Space(3)]
     [SerializeField] private SpriteRenderer[] simbolosParteExterna;
     [SerializeField] private SpriteRenderer[] simbolosParteInterna;
 
@@ -14,4 +18,7 @@ public class PartesMaquinaDtoV2
 
     public SpriteRenderer[] SimbolosParteExterna { get { return simbolosParteExterna; } }
     public SpriteRenderer[] SimbolosParteInterna { get { return simbolosParteInterna; } }
+
+    public SpriteRenderer SpriteRendererVigaEsquerda { get { return spriteRendererVigaEsquerda; } }
+    public SpriteRenderer SpriteRendererVigaDireita  { get { return spriteRendererVigaDireita; } }
 }

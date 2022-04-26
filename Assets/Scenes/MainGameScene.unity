@@ -10702,7 +10702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 2
   mainDto:
     garraDto:
       posCacaNiquel: -1.75
@@ -10801,7 +10801,6 @@ MonoBehaviour:
           total: 7
           acrescimo: 0.77
     maquinaDto:
-      factorHdr: 5
       referenciaChao: {fileID: 1270622651}
       mesaJoystickDto:
         velocidade: 0.9
@@ -10852,7 +10851,6 @@ MonoBehaviour:
           sprMoeda: {fileID: 21300000, guid: 22e8134d9d8bf1547bf8ac4263f6314f, type: 3}
       displayTimerDto:
         sprRendererPlaca: {fileID: 1404465311}
-        sprRendererPlacaEfeito: {fileID: 2146911256}
         matSegmentosAditivos: {fileID: 2100000, guid: 9f69d2b4a5d3be5409d3cbaa4a2b18a1, type: 2}
         matSegmentosAlpha: {fileID: 2100000, guid: 1eebc4ef93c5087479c71d4af13004b1, type: 2}
         sprRendererPlacaGrupo: {fileID: 4106799619402785297}
@@ -10874,7 +10872,6 @@ MonoBehaviour:
         sprRendererPlacaGrupo: {fileID: 1446453405}
         singleDisplayScoreDto:
         - sprRendererPlaca: {fileID: 129948557}
-          sprRendererPlacaEfeito: {fileID: 6406990385049082702}
           fileira1:
           - {fileID: 1589503380}
           - {fileID: 2024925725}
@@ -10916,7 +10913,6 @@ MonoBehaviour:
           - {fileID: 592084699}
           - {fileID: 424840236}
         - sprRendererPlaca: {fileID: 1990750477}
-          sprRendererPlacaEfeito: {fileID: 6406990385049082700}
           fileira1:
           - {fileID: 1151694356}
           - {fileID: 1248786073}
@@ -10958,7 +10954,6 @@ MonoBehaviour:
           - {fileID: 1882963364}
           - {fileID: 615663953}
         - sprRendererPlaca: {fileID: 936982935}
-          sprRendererPlacaEfeito: {fileID: 6406990385049082697}
           fileira1:
           - {fileID: 1548346945}
           - {fileID: 1459217593}
@@ -11026,12 +11021,6 @@ MonoBehaviour:
       botaoLigaDesligaDto:
         sprRendererBtnBordas: {fileID: 6406990385049082672}
         sprRendererBtnOnOff: {fileID: 6406990385049082673}
-      vigaLadoEsquerdoDto:
-        sprRenderColorir: {fileID: 980786069}
-        sprRenderEfeito: {fileID: 1780505045}
-      vigaLadoDireitoDto:
-        sprRenderColorir: {fileID: 1041678792}
-        sprRenderEfeito: {fileID: 6406990385049082698}
       bordasFrenteDto:
         sprRenderColorir: {fileID: 320505972}
         sprRenderEfeito: {fileID: 6406990385049082696}
@@ -11056,6 +11045,8 @@ MonoBehaviour:
       partesDtoV2:
         placaFrente: {fileID: 1441889957}
         baseChao: {fileID: 294387047}
+        spriteRendererVigaEsquerda: {fileID: 980786069}
+        spriteRendererVigaDireita: {fileID: 1041678792}
         simbolosParteExterna:
         - {fileID: 765937863}
         - {fileID: 765937862}
@@ -48439,11 +48430,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4767438956470005840, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &1780505045 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1780505045, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1811085726 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8776125175664333602, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -58562,11 +58548,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7674434527245920513, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &2146911256 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5136154638387615519, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1379266187116345345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1139847813599578350, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
@@ -61277,25 +61258,5 @@ SpriteRenderer:
 --- !u!212 &6406990385049082696 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 848549023, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6406990385049082697 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4846072195584892813, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6406990385049082698 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7255724115426048151, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6406990385049082700 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4846072195394286012, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6406990385049082702 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2207061872168529104, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}

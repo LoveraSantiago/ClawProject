@@ -14,9 +14,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 {    
     private PartesMaquinaDtoV2 partesDto;
 
-    private Joystick            joystick;    
-    private VigaParteV2         vigaEsquerda;
-    private VigaParteV2         vigaDireita;
+    private Joystick            joystick;       
     private DisplayTimer        displayTimer;
     private BotoesPowerUp       botoesPowerUp;
     private BotaoLigaDesliga    botaoLigaDesliga;
@@ -37,18 +35,14 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick           = new Joystick(maquinaDto.MesaJoystickDto);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
-        botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);        
-        vigaEsquerda       = new VigaParteV2(maquinaDto.VigaLadoEsquerdoDto);
-        vigaDireita        = new VigaParteV2(maquinaDto.VigaLadoDireitoDto);
+        botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);                
         bordasFrenteVidro  = new BordasVidroFrenteV2(maquinaDto.BordasFrenteDto);
         tuboDeSaida        = new TudoDeSaidaV2(maquinaDto.TuboDtoV2);
         chao               = new ChaoV2(maquinaDto.ChaoDto);
         barra              = new Barra(maquinaDto.BarraDto);
 
         arcoIrisEfeito = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto)
-            .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())            
-            .addArcoIrisConjunto(vigaEsquerda)
-            .addArcoIrisConjunto(vigaDireita)
+            .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())                        
             .addArcoIrisConjunto(botoesPowerUp.getBotoesGlow())
             .addArcoIrisConjunto(bordasFrenteVidro)
             //.addArcoIrisConjunto(tuboDeSaida) REVER SE VAI CONTINUAR COMO EFEITO
@@ -61,9 +55,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp.configuradoPeloLevel(levelEscolhido);
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
         displayDeColetados.configuradoPeloLevel(levelEscolhido, maquinaDto.DisplayColetadosDto);
-        displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto, levelEscolhido);        
-        vigaEsquerda.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
-        vigaDireita.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
+        displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto, levelEscolhido);                
         bordasFrenteVidro.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         tuboDeSaida.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
         chao.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());
