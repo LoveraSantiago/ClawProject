@@ -40,6 +40,7 @@ public class MovimentadorDeSlots
     public IEnumerator descerSlotNone(GameObject slot, DisplaysColetadosDto displaysSlotsDto, Executor executorFimMovimentacao)
     {
         float velocidade = displaysSlotsDto.VelocImg;
+        slot.transform.localPosition = new Vector3(slot.transform.localPosition.x, POS_Y_CIMA_INICIAL, slot.transform.localPosition.z);
         Vector3 posFinal = new Vector3(slot.transform.localPosition.x, POS_Y_FINAL, slot.transform.localPosition.z);
         yield return movimentarSlot(velocidade, 0, slot, posFinal, executorFimMovimentacao);        
     }
