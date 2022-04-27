@@ -34,12 +34,7 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
     public void configuradoPeloLevel(AbstractLevel level)
     {        
         new ColoridorBotoesV2().colorir(btnsPowerUp, level.getDicionarioDeCores());        
-    }
-
-    public ArcoIrisConjunto getBotoesGlow()
-    {
-        return new BotoesPowerUpArcoIris(btnsPowerUp);
-    }
+    }   
     
     public void update(BotoesPowerUpDto botoesPowerUpDto, InputGame inputGame)
     {
@@ -120,24 +115,14 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
     }
 
     private void acionarBotao(int indice, BotoesPowerUpDto btnsPowerUpsDto)
-    {
-        colocarBtnsEmMaterialArcoIris();
+    {   
         BotaoPowerUp btn = btnsPowerUp[indice];
         btn.clicar(btnsPowerUpsDto, controlePup);
         btnAcionado = btn;
-    }   
-
-    private void colocarBtnsEmMaterialArcoIris()
-    {
-        for (int contador = 0; contador < btnsPowerUp.Length; contador++)
-        {
-            btnsPowerUp[contador].mudarParaMaterialArcoIris();
-        }
-    }
+    }       
 
     private void draggarBotao(BotaoPowerUp btn)
-    {
-        colocarBtnsEmMaterialArcoIris();
+    {   
         btn.draggar(controlePup);
         btnAcionado = btn;
     }   

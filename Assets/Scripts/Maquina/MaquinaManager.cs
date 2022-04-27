@@ -31,11 +31,10 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick           = new Joystick(maquinaDto.MesaJoystickDto);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
-        botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);                                
+        botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
 
         arcoIrisEfeito = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto)
-            .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow())
-            .addArcoIrisConjunto(botoesPowerUp.getBotoesGlow());
+            .addArcoIrisConjunto(displayDeColetados.getDisplayColetadoGlow());            
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido, MaquinaDto maquinaDto)

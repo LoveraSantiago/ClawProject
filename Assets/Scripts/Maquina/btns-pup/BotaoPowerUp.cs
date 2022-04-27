@@ -9,7 +9,6 @@ public class BotaoPowerUp : Draggavel
     private int indice;
     
     private AparenciaBotaoPowerUp aparencia;
-    public GlowBotaoPowerUp glow { get; private set; }
 
     private AcaoDragPowerUp acaoDrag;
     private AcaoBotaoPowerUp acaoBtnPowerUp;
@@ -23,13 +22,11 @@ public class BotaoPowerUp : Draggavel
         aparencia = new AparenciaBotaoPowerUp(btnsPowerUpsDto.MaterialImgPup, botaoDtoV2);        
         acaoDrag  = new AcaoDragPowerUp(botaoDtoV2);
 
-        BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
-        glow      = new GlowBotaoPowerUp(botaoDto.SprEfeito);
+        BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);        
     }
 
     public void clicar(BotoesPowerUpDto btnsPowerUpsDto, ControleAcionamentoPowerUp controlePup)
-    {
-        glow.mudarParaMaterialIndividual();
+    {   
         if (hasPowerUp)
         {
             aparencia.pressionarBotao();
@@ -42,8 +39,7 @@ public class BotaoPowerUp : Draggavel
         }
         else
         {
-            //Debug.Log("Btn clicado sem pup");
-            glow.ligarGlow();
+            //Debug.Log("Btn clicado sem pup");            
             Utils.pausarGame();
             controlePup.desabilitarPowerUp();
             controlePup.escolhendoPupParaIndice(indice);            
@@ -52,8 +48,7 @@ public class BotaoPowerUp : Draggavel
 
     public void draggar(ControleAcionamentoPowerUp controlePup)
     {
-        aparencia.pressionarBotao();
-        glow.mudarParaMaterialIndividual();
+        aparencia.pressionarBotao();        
         if (hasPowerUp)
         {
             controlePup.notificarAcionado(acaoBtnPowerUp);
@@ -68,11 +63,6 @@ public class BotaoPowerUp : Draggavel
         transformarEmBotaoClicavel();
         efeitoHolograma.desligar();
     }
-
-    public void mudarParaMaterialArcoIris()
-    {
-        glow.mudarParaMaterialArcoIris();
-    }
       
     public void receberCorLevelV2(string corBase, string corTampa)
     {
@@ -82,9 +72,7 @@ public class BotaoPowerUp : Draggavel
     public void receberAcaoPowerUp(PowerUpBtnInfo evento, ControleAcionamentoPowerUp controlePup)
     {
         Utils.continuarGame();
-        controlePup.habilitarPowerUp();
-        glow.desligarGlow();
-        mudarParaMaterialArcoIris();
+        controlePup.habilitarPowerUp();        
         if(evento.hasEntidade)
         {
             PowerUpEntidade pupEntidade = evento.powerUpEntidade;

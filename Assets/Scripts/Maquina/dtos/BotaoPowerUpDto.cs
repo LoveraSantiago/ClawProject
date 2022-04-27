@@ -4,11 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class BotaoPowerUpDto 
 {
-    [SerializeField] private SpriteRenderer sprAreaExterna;      
-    [SerializeField] private SpriteRenderer sprEfeito;    
+    [SerializeField] private SpriteRenderer sprAreaExterna;          
 
     public GameObject GoParent { get { return sprAreaExterna.transform.parent.gameObject; } }
-    
-
-    public SpriteRenderer SprEfeito { get { return sprEfeito; } }    
 }
