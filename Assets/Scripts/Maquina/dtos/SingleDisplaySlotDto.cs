@@ -4,15 +4,12 @@ using UnityEngine;
 [System.Serializable]
 public class SingleDisplaySlotDto 
 {
-    [SerializeField] private SpriteRenderer sprDisplay;    
     [Space(3)]
     [SerializeField] private SpriteRenderer slotSpriteMeio;
     [SerializeField] private SpriteRenderer slotSpriteCima;
     [Space(3)]
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject goSlotCima;
-
-    public SpriteRenderer SprDisplay { get { return sprDisplay; } }    
 
     public SpriteRenderer SlotSpriteMeio { get { return slotSpriteMeio; } }
     public SpriteRenderer SlotSpriteCima { get { return slotSpriteCima; } }

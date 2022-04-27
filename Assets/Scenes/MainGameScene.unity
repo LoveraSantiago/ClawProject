@@ -10633,11 +10633,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3210569915184402616, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &482185736 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4767438955442284893, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &488074050 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8776125173915051265, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -10816,21 +10811,15 @@ MonoBehaviour:
         sprNone: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
         sprRendererPlacaGrupo: {fileID: 191022235}
         singleDisplaySlotDto:
-        - sprDisplay: {fileID: 1936649351}
-          sprRendererDentroEfeito: {fileID: 1765276500}
-          slotSpriteMeio: {fileID: 6406990385049082695}
+        - slotSpriteMeio: {fileID: 6406990385049082695}
           slotSpriteCima: {fileID: 1066551477}
           animator: {fileID: 6406990385049082684}
           goSlotCima: {fileID: 1066551475}
-        - sprDisplay: {fileID: 1814368437}
-          sprRendererDentroEfeito: {fileID: 482185736}
-          slotSpriteMeio: {fileID: 6406990385049082694}
+        - slotSpriteMeio: {fileID: 6406990385049082694}
           slotSpriteCima: {fileID: 1446966422}
           animator: {fileID: 6406990385049082683}
           goSlotCima: {fileID: 1446966420}
-        - sprDisplay: {fileID: 1937059052}
-          sprRendererDentroEfeito: {fileID: 1743591685}
-          slotSpriteMeio: {fileID: 6406990385049082693}
+        - slotSpriteMeio: {fileID: 6406990385049082693}
           slotSpriteCima: {fileID: 1493040375}
           animator: {fileID: 6406990385049082676}
           goSlotCima: {fileID: 1493040373}
@@ -48382,20 +48371,10 @@ Transform:
   m_Father: {fileID: 1496791513}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1743591685 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4767438955148188365, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1759597411 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8741790312509234029, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1765276500 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4767438956470005840, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1811085726 stripped
 SpriteRenderer:
@@ -48411,11 +48390,6 @@ SpriteRenderer:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6869666927805037547, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1814368437 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1258064833904829688, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1821663760 stripped
 SpriteRenderer:
@@ -48466,16 +48440,6 @@ SpriteRenderer:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4247215974486532160, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1936649351 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1258064835005988341, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1937059052 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1258064834214647656, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1945736026 stripped
 SpriteRenderer:
@@ -58918,6 +58882,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 4496460457253365429, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 5845699465068917843, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_RootOrder
       value: 1
