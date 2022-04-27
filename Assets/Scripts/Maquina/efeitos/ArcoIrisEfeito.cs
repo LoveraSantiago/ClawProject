@@ -9,13 +9,11 @@ public class ArcoIrisEfeito
     public static Color yellowHdr { get; private set; }
 
     private MaquinaEfeitoGlowDto maquinaEfeitoGlowDto;    
-    private Coroutine coroutineAtual;    
-    private List<ArcoIrisConjunto> listaArcoIrisConjunto;
+    private Coroutine coroutineAtual;        
 
     public ArcoIrisEfeito(MaquinaEfeitoGlowDto maquinaEfeitoGlowDto)
     {
-        this.maquinaEfeitoGlowDto = maquinaEfeitoGlowDto;        
-        listaArcoIrisConjunto = new List<ArcoIrisConjunto>();
+        this.maquinaEfeitoGlowDto = maquinaEfeitoGlowDto;                
         configurarCoresHdr(maquinaEfeitoGlowDto.FactorHdr);
     }
 
@@ -42,31 +40,16 @@ public class ArcoIrisEfeito
     {
         desligarGlows();
         cleanCoroutineEmAndamento();
-    }
-
-    public ArcoIrisEfeito addArcoIrisConjunto(ArcoIrisConjunto arcoIrisConjunto)
-    {
-        listaArcoIrisConjunto.Add(arcoIrisConjunto);
-        return this;
-    }
+    }   
 
     private void ligarGlows()
     {
         maquinaEfeitoGlowDto.GoEfeito.SetActive(true);
-
-        for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
-        {
-            listaArcoIrisConjunto[contador].ligar();
-        }
     }
 
     private void desligarGlows()
     {
-        maquinaEfeitoGlowDto.GoEfeito.SetActive(false);
-        for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
-        {
-            listaArcoIrisConjunto[contador].desligar();
-        }
+        maquinaEfeitoGlowDto.GoEfeito.SetActive(false);        
     }
 
     private void cleanCoroutineEmAndamento()
@@ -86,13 +69,7 @@ public class ArcoIrisEfeito
             Color singleColorHdr = HSBColor.toHdrColor(singleColor, maquinaEfeitoGlowDto.FactorHdr);
 
             maquinaEfeitoGlowDto.GoEfeito.SetActive(true);
-            setCorNosMateriaisLayers(singleColorHdr);            
-
-            for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
-            {
-                listaArcoIrisConjunto[contador].passarCor(singleColorHdr);
-            }
-
+            setCorNosMateriaisLayers(singleColorHdr);
             yield return null;
         }
     }
@@ -102,13 +79,9 @@ public class ArcoIrisEfeito
         while (true)
         {
             ligarGlows();            
-            setCorNosMateriaisLayers(cor);
-
-            for (int contador = 0; contador < listaArcoIrisConjunto.Count; contador++)
-            {
-                listaArcoIrisConjunto[contador].passarCor(cor);
-            }
+            setCorNosMateriaisLayers(cor);            
             yield return new WaitForSeconds(0.2f);
+
             desligarGlows();            
             yield return new WaitForSeconds(0.2f);
         }
