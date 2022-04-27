@@ -5,14 +5,13 @@ public class MovimentadorDeSlots
 {
     private static int POS_Y_FINAL = 0;
     private static float POS_Y_BAIXO_INICIAL = -0.7f;
+    private static float POS_Y_CIMA_INICIAL = 0.7f;
 
     private bool continuarMovimentacao;
-    private PosicoesSlots posicoes;
 
     public MovimentadorDeSlots(SingleDisplaySlotDto singleDisplaySlotDto, SingleSlotColetadoDto singleSlotColetadoDto)
     {
-        continuarMovimentacao = true;
-        posicoes = new PosicoesSlots(singleDisplaySlotDto, singleSlotColetadoDto);
+        continuarMovimentacao = true;        
     }
 
     public void cancelarMovimentacaoDeSlot()
@@ -48,7 +47,8 @@ public class MovimentadorDeSlots
     public IEnumerator subirSlotNone(GameObject slot, DisplaysColetadosDto displaysSlotsDto, Executor executorFimMovimentacao)
     {
         float velocidade = displaysSlotsDto.VelocImg;
-        yield return movimentarSlot(velocidade, 0, slot, posicoes.posSlotCimaInicial, executorFimMovimentacao);        
+        Vector3 posInicial = new Vector3(slot.transform.localPosition.x, POS_Y_CIMA_INICIAL, slot.transform.localPosition.z);
+        yield return movimentarSlot(velocidade, 0, slot, posInicial, executorFimMovimentacao);        
     }
 
     private IEnumerator movimentarSlot(

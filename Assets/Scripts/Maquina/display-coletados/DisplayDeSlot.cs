@@ -68,10 +68,10 @@ public class DisplayDeSlot
     {        
         yield return limparSprNoneCasoOcupado(displaysSlotsDto);
         //singleDisplaySlotDto.SlotSpriteBaixo.sprite = sprite;
-        singleSlotColetadoDto.SprRendererSlot.sprite = sprite;
+        singleSlotColetadoDto.SprRendererSlotBaixo.sprite = sprite;
         isOcupado = true;
         //yield return slots.subirSlotColetado(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
-        yield return slots.subirSlotColetado(singleSlotColetadoDto.GoSlot, displaysSlotsDto);        
+        yield return slots.subirSlotColetado(singleSlotColetadoDto.GoSlotBaixo, displaysSlotsDto);        
         desligarGlow();
 
         if (mostrarMira)
@@ -85,21 +85,26 @@ public class DisplayDeSlot
     {
         isOcupado = false;
         //yield return slots.descerSlotColetado(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
-        yield return slots.descerSlotColetado(singleSlotColetadoDto.GoSlot, displaysSlotsDto);        
+        yield return slots.descerSlotColetado(singleSlotColetadoDto.GoSlotBaixo, displaysSlotsDto);        
     }     
     
     public IEnumerator mostrarSprNone(DisplaysColetadosDto displaysSlotsDto, Executor executor)
     {
-        singleDisplaySlotDto.SlotSpriteCima.sprite = displaysSlotsDto.SprNone;
-        singleDisplaySlotDto.SlotSpriteCima.color = Color.red;
-        yield return slots.descerSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);
+        //singleDisplaySlotDto.SlotSpriteCima.sprite = displaysSlotsDto.SprNone;
+        //singleDisplaySlotDto.SlotSpriteCima.color = Color.red;
+        singleSlotColetadoDto.SprRendererSlotCima.sprite = displaysSlotsDto.SprNone;
+        singleSlotColetadoDto.SprRendererSlotCima.color = Color.red;
+        //yield return slots.descerSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);
+        yield return slots.descerSlotNone(singleSlotColetadoDto.GoSlotCima, displaysSlotsDto, executor);
         Debug.Log("Finalizado mostrado none");
     }    
 
     public IEnumerator limparSprNone(DisplaysColetadosDto displaysSlotsDto, Executor executor)
     {
-        yield return slots.subirSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);        
-        singleDisplaySlotDto.SlotSpriteCima.sprite = null;
+        //yield return slots.subirSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);        
+        yield return slots.subirSlotNone(singleSlotColetadoDto.GoSlotCima, displaysSlotsDto, executor);        
+        //singleDisplaySlotDto.SlotSpriteCima.sprite = null;
+        singleSlotColetadoDto.SprRendererSlotCima.sprite = null;
     }
 
     public void ligarCacaNiquel(Sprite[] sprites)

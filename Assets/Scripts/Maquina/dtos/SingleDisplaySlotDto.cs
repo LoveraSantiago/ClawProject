@@ -12,8 +12,8 @@ public class SingleDisplaySlotDto
     [SerializeField] private GameObject goSlotCima;
 
     public SpriteRenderer SlotSpriteMeio { get { return slotSpriteMeio; } }
-    public SpriteRenderer SlotSpriteCima { get { return slotSpriteCima; } }
+    //public SpriteRenderer SlotSpriteCima { get { return slotSpriteCima; } }
 
     public Animator Animator { get { return animator; } }
-    public GameObject GoSlotCima { get { return goSlotCima; } }
+    //public GameObject GoSlotCima { get { return goSlotCima; } }
 }
