@@ -39,7 +39,7 @@ public class CacaNiquelIndividual : AbstractCacaNiquel
                  resultados[1] == pupEscolhido.sprPowerUp &&
                  resultados[2] == pupEscolhido.sprPowerUp)
         {
-            grupoDisplays.ligar();
+            //grupoDisplays.ligar();
         }
         else
         {

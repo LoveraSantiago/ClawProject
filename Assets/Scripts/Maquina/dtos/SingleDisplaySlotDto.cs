@@ -5,7 +5,6 @@ using UnityEngine;
 public class SingleDisplaySlotDto 
 {
     [SerializeField] private SpriteRenderer sprDisplay;    
-    [SerializeField] private SpriteRenderer sprRendererDentroEfeito;
     [Space(3)]
     [SerializeField] private SpriteRenderer slotSpriteMeio;
     [SerializeField] private SpriteRenderer slotSpriteCima;
@@ -14,7 +13,6 @@ public class SingleDisplaySlotDto
     [SerializeField] private GameObject goSlotCima;
 
     public SpriteRenderer SprDisplay { get { return sprDisplay; } }    
-    public SpriteRenderer SprRendererDentroEfeito { get { return sprRendererDentroEfeito; } }
 
     public SpriteRenderer SlotSpriteMeio { get { return slotSpriteMeio; } }
     public SpriteRenderer SlotSpriteCima { get { return slotSpriteCima; } }

@@ -28,12 +28,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         {
             modoCacaNiquel.iniciar(grupoDisplays, inputGame);
         }
-    }
-
-    public ArcoIrisConjunto getDisplayColetadoGlow()
-    {
-        return grupoDisplays;
-    }
+    }  
 
     public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
     {

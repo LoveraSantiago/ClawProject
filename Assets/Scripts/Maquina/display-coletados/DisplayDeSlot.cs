@@ -6,7 +6,6 @@ public class DisplayDeSlot
     public bool isOcupado { get; private set; }
     public bool isDesocupado { get { return !isOcupado; }}
     
-    private GlowEfeito glowEfeito;    
     private MovimentadorDeSlots slots;
     private AnimacaoDisplayColetado animacao;
 
@@ -21,7 +20,6 @@ public class DisplayDeSlot
         this.singleSlotColetadoDto = singleSlotColetadoDto;
 
         animacao   = new AnimacaoDisplayColetado(singleDisplaySlotDto.Animator);        
-        glowEfeito = new GlowEfeito(singleDisplaySlotDto.SprRendererDentroEfeito.gameObject, singleDisplaySlotDto.SprRendererDentroEfeito.material);                
         slots      = new MovimentadorDeSlots(singleDisplaySlotDto, singleSlotColetadoDto);
     }    
 
@@ -142,33 +140,24 @@ public class DisplayDeSlot
 
     public void ligarGlowSucesso()
     {
-        glowEfeito.ligarGlowSucesso();        
     }
 
     public void ligarGlowFail()
     {
-        glowEfeito.ligarGlowFail();
     }
 
     public void ligarGlowLuz()
     {
-        glowEfeito.ligarGlowLuz();        
     }    
 
     public void desligarGlow()
     {
-        glowEfeito.desligarGlow();
     }
 
     public bool isCliqueDentroArea(Vector2 posicao)
     {   
         return isOcupado && singleSlotColetadoDto.SprRendererSlotColetado.bounds.Contains(posicao);
     }    
-
-    public MaterialGlow getMaterialGlow()
-    {
-        return glowEfeito.materialGlow;
-    }
 
     private IEnumerator limparSprNoneCasoOcupado(DisplaysColetadosDto displaysSlotsDto)
     {

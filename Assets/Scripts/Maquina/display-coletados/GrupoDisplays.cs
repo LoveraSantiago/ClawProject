@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 
-public class GrupoDisplays : ArcoIrisConjunto
+public class GrupoDisplays 
 {
     private bool powerUpDisplayColetado;
 
@@ -132,34 +132,5 @@ public class GrupoDisplays : ArcoIrisConjunto
         displayDeSlot[0].ligarGlowFail();
         displayDeSlot[1].ligarGlowFail();
         displayDeSlot[2].ligarGlowFail();
-    }
-
-    //***** INICIO IMPLEMENTACAO INTERFACE ARCO IRIS CONJUNTO *****
-    public void ligar()
-    {
-        if (!powerUpDisplayColetado)
-        {
-            displayDeSlot[0].ligarGlowSucesso();
-            displayDeSlot[1].ligarGlowSucesso();
-            displayDeSlot[2].ligarGlowSucesso();
-        }
-    }
-
-    public void desligar()
-    {
-        displayDeSlot[0].desligarGlow();
-        displayDeSlot[1].desligarGlow();
-        displayDeSlot[2].desligarGlow();
-    }
-
-    public void passarCor(Color cor)
-    {
-        if (!powerUpDisplayColetado)
-        {
-            displayDeSlot[0].getMaterialGlow().setCorNoMaterial(cor);
-            displayDeSlot[1].getMaterialGlow().setCorNoMaterial(cor);
-            displayDeSlot[2].getMaterialGlow().setCorNoMaterial(cor);
-        }
-    }
-    //***** FIM IMPLEMENTACAO INTERFACE ARCO IRIS CONJUNTO *****
+    }   
 }
