@@ -109,8 +109,7 @@ public class DisplayDeSlot
     }
 
     public void ligarCacaNiquel(Sprite[] sprites)
-    {
-        singleDisplaySlotDto.SlotSpriteMeio.gameObject.SetActive(true);
+    {   
         coroutineCacaNiquel = Utils.MonoBehaviour.StartCoroutine(ligarCacaNiquelCoroutine(sprites));
     } 
     
@@ -118,7 +117,7 @@ public class DisplayDeSlot
     {
         int indiceEscolhido = MathUtils.escolherDeZeroAteLimite(sprites.Length);
         Utils.MonoBehaviour.StopCoroutine(coroutineCacaNiquel);
-        singleDisplaySlotDto.SlotSpriteMeio.sprite = sprites[indiceEscolhido];
+        singleSlotColetadoDto.SprRendererSlotMeio.sprite = sprites[indiceEscolhido];
 
         if(sprSucesso == null)
         {
@@ -136,12 +135,12 @@ public class DisplayDeSlot
 
     public Sprite getSprResultCacaNiquel()
     {
-        return singleDisplaySlotDto.SlotSpriteMeio.sprite;
+        return singleSlotColetadoDto.SprRendererSlotMeio.sprite;
     }
 
     public void desligarSprsSlotMeio()
     {
-        singleDisplaySlotDto.SlotSpriteMeio.gameObject.SetActive(false);
+        singleSlotColetadoDto.SprRendererSlotMeio.sprite = null;
     }
 
     public void ligarGlowSucesso()
@@ -177,7 +176,7 @@ public class DisplayDeSlot
         int indiceAtual = 0;
         while (true)
         {
-            singleDisplaySlotDto.SlotSpriteMeio.sprite = sprites[indiceAtual];
+            singleSlotColetadoDto.SprRendererSlotMeio.sprite = sprites[indiceAtual];
             if (indiceAtual < sprites.Length - 1)
             {
                 indiceAtual++;

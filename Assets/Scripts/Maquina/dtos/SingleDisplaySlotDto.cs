@@ -7,6 +7,6 @@ public class SingleDisplaySlotDto
     [Space(3)]
     [SerializeField] private SpriteRenderer slotSpriteMeio;
 
-    public SpriteRenderer SlotSpriteMeio { get { return slotSpriteMeio; } }
+    //public SpriteRenderer SlotSpriteMeio { get { return slotSpriteMeio; } }
 
 }

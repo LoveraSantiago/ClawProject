@@ -10819,14 +10819,17 @@ MonoBehaviour:
         - animator: {fileID: 890794886}
           sprRendererSlotColetado: {fileID: 1033512237}
           sprRendererSlotBaixo: {fileID: 292278086}
+          sprRendererSlotMeio: {fileID: 0}
           sprRendererSlotCima: {fileID: 1741533510}
         - animator: {fileID: 890794885}
           sprRendererSlotColetado: {fileID: 726165964}
           sprRendererSlotBaixo: {fileID: 292278085}
+          sprRendererSlotMeio: {fileID: 918276164}
           sprRendererSlotCima: {fileID: 1741533509}
         - animator: {fileID: 890794884}
           sprRendererSlotColetado: {fileID: 1632403940}
           sprRendererSlotBaixo: {fileID: 292278084}
+          sprRendererSlotMeio: {fileID: 1831559279}
           sprRendererSlotCima: {fileID: 1741533508}
         cacaNiquelDto:
           sprVazio: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
@@ -22100,6 +22103,11 @@ Rigidbody2D:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 650369885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &918276164 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 365874533211989815, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &918452084 stripped
 SpriteRenderer:
@@ -48402,6 +48410,11 @@ SpriteRenderer:
 --- !u!212 &1829805153 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5717709487278047773, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1831559279 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2133342581596878055, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1843079363 stripped
