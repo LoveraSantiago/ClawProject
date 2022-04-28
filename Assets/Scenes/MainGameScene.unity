@@ -10812,19 +10812,19 @@ MonoBehaviour:
         sprRendererPlacaGrupo: {fileID: 191022235}
         singleDisplaySlotDto:
         - slotSpriteMeio: {fileID: 6406990385049082695}
-          animator: {fileID: 6406990385049082684}
         - slotSpriteMeio: {fileID: 6406990385049082694}
-          animator: {fileID: 6406990385049082683}
         - slotSpriteMeio: {fileID: 6406990385049082693}
-          animator: {fileID: 6406990385049082676}
         singleSlotColetadoDto:
-        - sprRendererSlotColetado: {fileID: 1033512237}
+        - animator: {fileID: 890794886}
+          sprRendererSlotColetado: {fileID: 1033512237}
           sprRendererSlotBaixo: {fileID: 292278086}
           sprRendererSlotCima: {fileID: 1741533510}
-        - sprRendererSlotColetado: {fileID: 726165964}
+        - animator: {fileID: 890794885}
+          sprRendererSlotColetado: {fileID: 726165964}
           sprRendererSlotBaixo: {fileID: 292278085}
           sprRendererSlotCima: {fileID: 1741533509}
-        - sprRendererSlotColetado: {fileID: 1632403940}
+        - animator: {fileID: 890794884}
+          sprRendererSlotColetado: {fileID: 1632403940}
           sprRendererSlotBaixo: {fileID: 292278084}
           sprRendererSlotCima: {fileID: 1741533508}
         cacaNiquelDto:
@@ -21969,6 +21969,21 @@ SpriteRenderer:
 --- !u!212 &887660497 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8776125174556064909, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &890794884 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2888508550839210875, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &890794885 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3503505894385025195, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &890794886 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8175751283874157941, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &894725917 stripped
@@ -58864,6 +58879,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 365874533211989815, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4496460457253365429, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_Icon
       value: 
@@ -58890,7 +58909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4970626565982106345, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5845699465068917843, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_RootOrder
@@ -59159,21 +59178,6 @@ SpriteRenderer:
 --- !u!212 &6406990385049082673 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3027024895253427581, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &6406990385049082676 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 583451327840301946, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &6406990385049082683 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 583451327530402026, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &6406990385049082684 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 583451328627464679, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &6406990385049082687 stripped

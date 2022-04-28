@@ -19,7 +19,7 @@ public class DisplayDeSlot
         this.singleDisplaySlotDto = singleDisplaySlotDto;
         this.singleSlotColetadoDto = singleSlotColetadoDto;
 
-        animacao   = new AnimacaoDisplayColetado(singleDisplaySlotDto.Animator);        
+        animacao   = new AnimacaoDisplayColetado(singleSlotColetadoDto.Animator);        
         slots      = new MovimentadorDeSlots(singleDisplaySlotDto, singleSlotColetadoDto);
     }    
 
