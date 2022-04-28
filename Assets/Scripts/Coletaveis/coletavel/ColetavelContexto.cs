@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ColetavelContexto : GOContexto
 {
-    public readonly int SPR_ORDER_COMUM = 32;//TRANFORMAR EM CONFIGURACAO
-    public readonly int SPR_ORDER_DESTAQUE = 33;
+    public int sprOrderComum;
+    public int sprOrdemDestaque;
 
     public readonly int LAYER_ELEVADOR = 20;
     public readonly int LAYER_NORMAL = 9;
@@ -16,5 +16,7 @@ public class ColetavelContexto : GOContexto
     {
         nomeador = new Nomeador();
         this.referenciaColliderColetado = referenciaColliderColetado;
+        sprOrderComum = coletaveisDto.OrderLayerColetaveis;
+        sprOrdemDestaque = coletaveisDto.OrderDestaqueLayerColetaveis;
     }    
 }

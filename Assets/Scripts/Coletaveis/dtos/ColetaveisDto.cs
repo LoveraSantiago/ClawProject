@@ -6,6 +6,8 @@ public class ColetaveisDto
 {
     [SerializeField] private int pontosColetado;
     [SerializeField] private int pontosAcerto;
+    [SerializeField] private int orderLayerColetaveis;
+    [SerializeField] private int orderDestaqueLayerColetaveis;
     [Space(5)]
     [SerializeField] private GameObject sensorDeColetado;     
     [SerializeField] private CircleCollider2D referenciaColliderColetado;
@@ -24,6 +26,8 @@ public class ColetaveisDto
 
     public int PontosColetados { get { return pontosColetado; } }
     public int PontosAcerto { get { return pontosAcerto; } }
+    public int OrderLayerColetaveis { get { return orderLayerColetaveis; } }
+    public int OrderDestaqueLayerColetaveis { get { return orderDestaqueLayerColetaveis; } }
 
     public GameObject SensorDeColetado { get { return sensorDeColetado; } }    
 

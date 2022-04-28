@@ -33,12 +33,12 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
 
     public void colocarNoLayerDestaque()
     {
-        colocarSpriteNoLayer(contexto.SPR_ORDER_DESTAQUE);
+        colocarSpriteNoLayer(contexto.sprOrdemDestaque);
     }
 
     public void colocarNoLayerComum()
     {
-        colocarSpriteNoLayer(contexto.SPR_ORDER_COMUM);
+        colocarSpriteNoLayer(contexto.sprOrderComum);
         desafixarVerticalmente();
     }
 
@@ -93,7 +93,7 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
 
     public void receberSprite(Sprite sprite)
     {
-        receberSprite(sprite, contexto.SPR_ORDER_COMUM);
+        receberSprite(sprite, contexto.sprOrderComum);
     }
 
     public bool isTouchingCentroDaGarra()
