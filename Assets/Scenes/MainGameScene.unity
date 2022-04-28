@@ -10734,6 +10734,8 @@ MonoBehaviour:
     coletaveisDto:
       pontosColetado: 2
       pontosAcerto: 8
+      orderLayerColetaveis: 52
+      orderDestaqueLayerColetaveis: 53
       sensorDeColetado: {fileID: 2083913115}
       referenciaColliderColetado: {fileID: 1930189876}
       efeitoColetado: {fileID: 1488198865}
@@ -10811,10 +10813,6 @@ MonoBehaviour:
         velocImg: 4.5
         sprNone: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
         sprRendererPlacaGrupo: {fileID: 191022235}
-        singleDisplaySlotDto:
-        - slotSpriteMeio: {fileID: 6406990385049082695}
-        - slotSpriteMeio: {fileID: 6406990385049082694}
-        - slotSpriteMeio: {fileID: 6406990385049082693}
         singleSlotColetadoDto:
         - animator: {fileID: 890794886}
           sprRendererSlotColetado: {fileID: 1033512237}
@@ -22186,7 +22184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_SortingOrder
-      value: 24
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Positions.Array.data[0].y
@@ -58893,38 +58891,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
-    - target: {fileID: 365874533211989815, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4496460457253365429, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 4970626565982106345, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4970626565982106345, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4970626565982106345, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4970626565982106345, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4970626565982106345, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4970626565982106345, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5845699465068917843, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -59202,20 +59168,5 @@ SpriteRenderer:
 --- !u!212 &6406990385049082688 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8608572314238549957, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6406990385049082693 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 49801541720385867, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6406990385049082694 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 49801541947366107, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6406990385049082695 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 49801543049135062, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}
