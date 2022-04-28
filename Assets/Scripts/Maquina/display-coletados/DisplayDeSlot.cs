@@ -96,7 +96,7 @@ public class DisplayDeSlot
         singleSlotColetadoDto.SprRendererSlotCima.color = Color.red;
         //yield return slots.descerSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);
         yield return slots.descerSlotNone(singleSlotColetadoDto.GoSlotCima, displaysSlotsDto, executor);
-        Debug.Log("Finalizado mostrado none");
+        //Debug.Log("Finalizado mostrado none");
     }    
 
     public IEnumerator limparSprNone(DisplaysColetadosDto displaysSlotsDto, Executor executor)
