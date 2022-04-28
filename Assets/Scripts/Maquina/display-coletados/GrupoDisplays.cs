@@ -13,13 +13,13 @@ public class GrupoDisplays
     {
         this.displaysSlotsDto = displaysSlotsDto;
 
-        SingleDisplaySlotDto[] singleDisplaySlotDto = displaysSlotsDto.SingleDisplaySlotDto;
         SingleSlotColetadoDto[] singleSlotColetadoDto = displaysSlotsDto.SingleSlotColetadoDto;
+        displayDeSlot = new DisplayDeSlot[singleSlotColetadoDto.Length];
 
-        displayDeSlot = new DisplayDeSlot[singleDisplaySlotDto.Length];
-        displayDeSlot[0] = new DisplayDeSlot(singleDisplaySlotDto[0], singleSlotColetadoDto[0]);
-        displayDeSlot[1] = new DisplayDeSlot(singleDisplaySlotDto[1], singleSlotColetadoDto[1]);
-        displayDeSlot[2] = new DisplayDeSlot(singleDisplaySlotDto[2], singleSlotColetadoDto[2]);
+        for(int contador = 0; contador < displayDeSlot.Length; contador++)
+        {
+            displayDeSlot[contador] = new DisplayDeSlot(singleSlotColetadoDto[contador]);
+        }        
     }
 
     public void colorirDisplays(Dictionary<string, string> dicionarioDeCores)

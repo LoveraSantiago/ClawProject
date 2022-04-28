@@ -13,7 +13,6 @@ public class DisplaysColetadosDto
     [Space(3)]
     [SerializeField] private SpriteRenderer sprRendererPlacaGrupo;
     [Space(3)]
-    [SerializeField] private SingleDisplaySlotDto[] singleDisplaySlotDto = new SingleDisplaySlotDto[3];
     [SerializeField] private SingleSlotColetadoDto[] singleSlotColetadoDto = new SingleSlotColetadoDto[3];
     [Space(3)]
     [SerializeField] private CacaNiquelDto cacaNiquelDto;
@@ -26,7 +25,6 @@ public class DisplaysColetadosDto
     public Sprite SprNone { get { return sprNone; } }
     public SpriteRenderer SprRendererPlacaGrupo { get { return sprRendererPlacaGrupo; } }
 
-    public SingleDisplaySlotDto[] SingleDisplaySlotDto { get { return singleDisplaySlotDto; } }    
     public SingleSlotColetadoDto[] SingleSlotColetadoDto { get { return singleSlotColetadoDto; } }    
 
     public CacaNiquelDto CacaNiquelDto { get { return cacaNiquelDto; } }

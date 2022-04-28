@@ -9,18 +9,16 @@ public class DisplayDeSlot
     private MovimentadorDeSlots slots;
     private AnimacaoDisplayColetado animacao;
 
-    private SingleDisplaySlotDto singleDisplaySlotDto;
     private SingleSlotColetadoDto singleSlotColetadoDto;
 
     private Coroutine coroutineCacaNiquel;
 
-    public DisplayDeSlot(SingleDisplaySlotDto singleDisplaySlotDto, SingleSlotColetadoDto singleSlotColetadoDto)
+    public DisplayDeSlot(SingleSlotColetadoDto singleSlotColetadoDto)
     {
-        this.singleDisplaySlotDto = singleDisplaySlotDto;
         this.singleSlotColetadoDto = singleSlotColetadoDto;
 
         animacao   = new AnimacaoDisplayColetado(singleSlotColetadoDto.Animator);        
-        slots      = new MovimentadorDeSlots(singleDisplaySlotDto, singleSlotColetadoDto);
+        slots      = new MovimentadorDeSlots(singleSlotColetadoDto);
     }    
 
     public void configuradoPeloLevel(Color corDisplay)
@@ -68,10 +66,8 @@ public class DisplayDeSlot
         Sprite sprite, bool mostrarMira, DisplaysColetadosDto displaysSlotsDto)
     {        
         yield return limparSprNoneCasoOcupado(displaysSlotsDto);
-        //singleDisplaySlotDto.SlotSpriteBaixo.sprite = sprite;
         singleSlotColetadoDto.SprRendererSlotBaixo.sprite = sprite;
         isOcupado = true;
-        //yield return slots.subirSlotColetado(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
         yield return slots.subirSlotColetado(singleSlotColetadoDto.GoSlotBaixo, displaysSlotsDto);        
         desligarGlow();
 
@@ -85,26 +81,19 @@ public class DisplayDeSlot
     public IEnumerator limparSprColetado(DisplaysColetadosDto displaysSlotsDto)
     {
         isOcupado = false;
-        //yield return slots.descerSlotColetado(singleDisplaySlotDto.GoSlotBaixo, displaysSlotsDto);        
         yield return slots.descerSlotColetado(singleSlotColetadoDto.GoSlotBaixo, displaysSlotsDto);        
     }     
     
     public IEnumerator mostrarSprNone(DisplaysColetadosDto displaysSlotsDto, Executor executor)
     {
-        //singleDisplaySlotDto.SlotSpriteCima.sprite = displaysSlotsDto.SprNone;
-        //singleDisplaySlotDto.SlotSpriteCima.color = Color.red;
         singleSlotColetadoDto.SprRendererSlotCima.sprite = displaysSlotsDto.SprNone;
         singleSlotColetadoDto.SprRendererSlotCima.color = Color.red;
-        //yield return slots.descerSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);
         yield return slots.descerSlotNone(singleSlotColetadoDto.GoSlotCima, displaysSlotsDto, executor);
-        //Debug.Log("Finalizado mostrado none");
     }    
 
     public IEnumerator limparSprNone(DisplaysColetadosDto displaysSlotsDto, Executor executor)
     {
-        //yield return slots.subirSlotNone(singleDisplaySlotDto.GoSlotCima, displaysSlotsDto, executor);        
         yield return slots.subirSlotNone(singleSlotColetadoDto.GoSlotCima, displaysSlotsDto, executor);        
-        //singleDisplaySlotDto.SlotSpriteCima.sprite = null;
         singleSlotColetadoDto.SprRendererSlotCima.sprite = null;
     }
 
