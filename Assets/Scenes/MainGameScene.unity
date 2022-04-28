@@ -58891,6 +58891,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 664979614075275720, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286179197675747234, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5845699465068917843, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -58938,6 +58946,14 @@ PrefabInstance:
     - target: {fileID: 6015691810215975126, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_Name
       value: maquina-v3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688676769356553370, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 663185d6edeba2b4aaac21b4c8baa6a6, type: 3}
+    - target: {fileID: 9182698339455595088, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c301260e6514149bc0e163ff994732, type: 3}
