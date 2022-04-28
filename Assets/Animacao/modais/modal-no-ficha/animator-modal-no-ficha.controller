@@ -28,7 +28,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Modal
+  m_Name: animator-modal-no-ficha
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -64,7 +64,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 872c774ec18de458abb864dc09e4e3ee, type: 2}
+  m_Motion: {fileID: 7400000, guid: b04004d4c0887c445a55f1e35ca334f8, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
