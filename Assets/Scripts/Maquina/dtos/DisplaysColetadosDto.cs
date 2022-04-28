@@ -6,6 +6,7 @@ public class DisplaysColetadosDto
 {
     [SerializeField] private float inicialDelay;
     [SerializeField] private float fimDelay;
+    [SerializeField] private float delayMiraSelecionada;
     [SerializeField] private float velocImg;
     [Space(3)]
     [SerializeField] private Sprite sprNone;
@@ -20,6 +21,7 @@ public class DisplaysColetadosDto
     public float InicialDelay { get { return inicialDelay; } }
     public float FimDelay { get { return fimDelay; } }
     public float VelocImg { get { return velocImg; } }
+    public float DelayMiraSelecionada { get { return delayMiraSelecionada; } }
 
     public Sprite SprNone { get { return sprNone; } }
     public SpriteRenderer SprRendererPlacaGrupo { get { return sprRendererPlacaGrupo; } }

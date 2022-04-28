@@ -10807,6 +10807,7 @@ MonoBehaviour:
       displaysColetadosDto:
         inicialDelay: 0.3
         fimDelay: 0.1
+        delayMiraSelecionada: 0.75
         velocImg: 4.5
         sprNone: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
         sprRendererPlacaGrupo: {fileID: 191022235}

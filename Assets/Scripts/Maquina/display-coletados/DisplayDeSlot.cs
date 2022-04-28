@@ -54,6 +54,7 @@ public class DisplayDeSlot
     {
         if (animacao.isMiraLigado)
         {
+            yield return new WaitForSeconds(displaysSlotsDto.InicialDelay * 2);
             animacao.desligarAnimacao();
             executorFimMovimentacao.execute();
         }

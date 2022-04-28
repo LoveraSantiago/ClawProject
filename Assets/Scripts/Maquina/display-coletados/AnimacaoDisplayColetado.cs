@@ -22,13 +22,13 @@ public class AnimacaoDisplayColetado
 
     public void ligarAnimacaoMiraSelecionado()
     {
-        Debug.Log("Mira Selecionada");
+        //Debug.Log("Mira Selecionada");
         animator.Play(MIRAR_SELECTED);        
     }
 
     public void desligarAnimacao()
     {
-        Debug.Log("Idle Chamado");
+        //Debug.Log("Idle Chamado");
         animator.Play(IDLE);
         isMiraLigado = false;
     }    

@@ -68,7 +68,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
 
     private IEnumerator getCliqueNoDisplayDeColetados()
     {
-        Debug.Log("Pup Ativado");
+        //Debug.Log("Pup Ativado");
         if (informacaoDisplayColetado.isTodosDisplaysDesocupados())
         {
             yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayReset);
@@ -78,7 +78,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
             }
             else
             {
-                Debug.Log("Pup Restartado");
+                //Debug.Log("Pup Restartado");
                 contador = 0;
                 informacaoDisplayColetado.restartPowerUp(getTipoRestartPup(), this);
             }
