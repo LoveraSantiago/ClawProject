@@ -11,7 +11,7 @@ public class PowerUpDto
     [Space(3)]
     [SerializeField] private ParticleSystem efeitoExplosao;
     [Space(5)]
-    [SerializeField] private ContextoDto contextoPup;
+    [SerializeField] private GameObject goMainPup;
     [Space(5)]
     [SerializeField] private BombaDto bombaDto;
     [Space(5)]    
@@ -41,7 +41,7 @@ public class PowerUpDto
     public ParticleSystem EfeitoExplosao { get { return efeitoExplosao;  } }
     public GameObject GoEfeitoExplosao { get { return efeitoExplosao.gameObject; } }
 
-    public ContextoDto ContextoPup { get { return contextoPup; } }
+    public GameObject GoMainPup { get { return goMainPup; } }
 
     public BombaDto BombaDto { get { return bombaDto; } }
     public MissilNuclearDto MissilNuclearDto { get { return missilNuclearDto; } }    

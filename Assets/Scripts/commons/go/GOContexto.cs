@@ -3,15 +3,9 @@ using UnityEngine;
 public class GOContexto 
 {
     public GameObject mainGO { get; private set; }
-    public Material mainMaterial { get; private set; }
+    public Material mainMaterial { get; private set; }    
 
-    public GOContexto(ContextoDto contextoDto)
-        :this(contextoDto.Go){}
-
-    public GOContexto(ContextoDto contextoDto, Transformador<GameObject, SpriteRenderer> getGoComSprRenderer)
-        : this(contextoDto.Go, getGoComSprRenderer) { }
-
-    protected GOContexto(GameObject mainGO)
+    public GOContexto(GameObject mainGO)
     {
         this.mainGO = mainGO;
         mainMaterial = mainGO.GetComponent<SpriteRenderer>().sharedMaterial;

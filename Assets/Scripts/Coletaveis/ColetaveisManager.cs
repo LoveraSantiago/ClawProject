@@ -76,7 +76,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     private void configurarGaiolas(ColetaveisDto coletaveisDto)
     {
-        Gaiola.configurar(coletaveisDto.ContextoGaiola);
+        Gaiola.configurar(coletaveisDto.GoMainGaiola);
         HelperGaiolasInGame.configurar();
     }
 

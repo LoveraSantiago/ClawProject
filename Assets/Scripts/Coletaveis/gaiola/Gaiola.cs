@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Gaiola : GO
 {
     public static GaiolaContexto contexto;
@@ -11,9 +13,9 @@ public class Gaiola : GO
         return contexto;
     }
 
-    public static void configurar(ContextoDto contextoDto)
+    public static void configurar(GameObject goMainGaiola)
     {
-        contexto = new GaiolaContexto(contextoDto);
+        contexto = new GaiolaContexto(goMainGaiola);
     }
 
     public void aprisionarColetavel(string nome)

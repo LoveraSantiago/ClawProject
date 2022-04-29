@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GaiolaContexto : GOContexto
 {
     public Nomeador nomeador { get; private set; }
 
-    public GaiolaContexto(ContextoDto contextoDto) 
-        : base(contextoDto)
+    public GaiolaContexto(GameObject goMainGaiola) 
+        : base(goMainGaiola)
     {
         nomeador = new Nomeador();
     }
