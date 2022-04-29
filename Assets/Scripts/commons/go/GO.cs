@@ -20,11 +20,16 @@ public abstract class GO : ComponenteRigidBodyDeGO
     }
 
     public GO(GOContexto contextoGO, string nome)
+        //:this(GameObject.Instantiate(
+        //        contextoGO.mainGO, 
+        //        contextoGO.mainGO.transform.position, 
+        //        Quaternion.Euler(Vector3.zero), 
+        //        contextoGO.mainGOParent).transform, 
+        //      nome){}   
         :this(GameObject.Instantiate(
                 contextoGO.mainGO, 
                 contextoGO.mainGO.transform.position, 
-                Quaternion.Euler(Vector3.zero), 
-                contextoGO.mainGOParent).transform, 
+                Quaternion.Euler(Vector3.zero)).transform, 
               nome){}   
 
     public GO(GOContexto contextoGO, 
