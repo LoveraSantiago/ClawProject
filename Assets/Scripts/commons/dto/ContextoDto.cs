@@ -4,9 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class ContextoDto 
 {
-    [SerializeField] private GameObject go;
-    [SerializeField] private Transform parentGo;
+    [SerializeField] private GameObject go;    
 
-    public GameObject Go { get { return go; } }
-    public Transform ParentGo { get { return parentGo; } }
+    public GameObject Go { get { return go; } }    
 }

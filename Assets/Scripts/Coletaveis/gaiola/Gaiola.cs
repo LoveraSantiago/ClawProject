@@ -4,7 +4,7 @@ public class Gaiola : GO
     public string nomeColetavelPreso { get; private set; }
 
     public Gaiola() 
-        : base(contexto, contexto.nomeador.getName()) {}
+        : base(contexto, "G" + contexto.nomeador.getName()) {}
 
     protected override GOContexto getGOContext()
     {

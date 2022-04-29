@@ -10572,37 +10572,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4531407011028758255, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &422691798
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 422691799}
-  m_Layer: 0
-  m_Name: posicoes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &422691799
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422691798}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1496791513}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &423612606 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 157339484434826173, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -10742,10 +10711,8 @@ MonoBehaviour:
       prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
       contextoColetavel:
         go: {fileID: 5086955511063805750, guid: 922cd5882161dbc43b6822ea4e60efc2, type: 3}
-        parentGo: {fileID: 422691799}
       contextoGaiola:
         go: {fileID: 4127936681606313068, guid: ec66f55dc2dbd2e4a99c4e9958eb980f, type: 3}
-        parentGo: {fileID: 1736083233}
       descarteTuboDto:
         torque: 550
         gravidade: 0.65
@@ -11052,7 +11019,6 @@ MonoBehaviour:
       efeitoExplosao: {fileID: 2125492028}
       contextoPup:
         go: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-        parentGo: {fileID: 620532054}
       bombaDto:
         angGarra: 5
         raioExplosao: 1
@@ -16526,37 +16492,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6939879561746727284, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &620532053
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 620532054}
-  m_Layer: 0
-  m_Name: powerups
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &620532054
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620532053}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1496791513}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &630032969
 GameObject:
   m_ObjectHideFlags: 0
@@ -43214,9 +43149,6 @@ Transform:
   - {fileID: 50493998}
   - {fileID: 1392206646}
   - {fileID: 1476824515}
-  - {fileID: 422691799}
-  - {fileID: 620532054}
-  - {fileID: 1736083233}
   m_Father: {fileID: 491158114}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48329,37 +48261,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8084223845730908345, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1736083232
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1736083233}
-  m_Layer: 0
-  m_Name: gaiolas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1736083233
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736083232}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1496791513}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1741533508 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6829262897953946400, guid: 60c301260e6514149bc0e163ff994732, type: 3}

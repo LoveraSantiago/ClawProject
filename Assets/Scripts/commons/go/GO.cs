@@ -19,13 +19,7 @@ public abstract class GO : ComponenteRigidBodyDeGO
         carregarSpriteRenderer(getGoComSprRenderer.transformar(getGo()));
     }
 
-    public GO(GOContexto contextoGO, string nome)
-        //:this(GameObject.Instantiate(
-        //        contextoGO.mainGO, 
-        //        contextoGO.mainGO.transform.position, 
-        //        Quaternion.Euler(Vector3.zero), 
-        //        contextoGO.mainGOParent).transform, 
-        //      nome){}   
+    public GO(GOContexto contextoGO, string nome)        
         :this(GameObject.Instantiate(
                 contextoGO.mainGO, 
                 contextoGO.mainGO.transform.position, 

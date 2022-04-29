@@ -4,33 +4,29 @@ public class GOContexto
 {
     public GameObject mainGO { get; private set; }
     public Material mainMaterial { get; private set; }
-    public Transform mainGOParent { get; private set; }
 
     public GOContexto(ContextoDto contextoDto)
-        :this(contextoDto.Go, contextoDto.ParentGo){}
+        :this(contextoDto.Go){}
 
     public GOContexto(ContextoDto contextoDto, Transformador<GameObject, SpriteRenderer> getGoComSprRenderer)
-        : this(contextoDto.Go, getGoComSprRenderer, contextoDto.ParentGo) { }
+        : this(contextoDto.Go, getGoComSprRenderer) { }
 
-    protected GOContexto(GameObject mainGO, Transform transformMainTileParent)
+    protected GOContexto(GameObject mainGO)
     {
         this.mainGO = mainGO;
         mainMaterial = mainGO.GetComponent<SpriteRenderer>().sharedMaterial;
-        this.mainGOParent = transformMainTileParent;
     }
     
     protected GOContexto(
-        GameObject mainGO, Transformador<GameObject, SpriteRenderer> getGoComSprRenderer, Transform transformMainTileParent)
+        GameObject mainGO, Transformador<GameObject, SpriteRenderer> getGoComSprRenderer)
     {
         this.mainGO = mainGO;
         mainMaterial = getGoComSprRenderer.transformar(mainGO).sharedMaterial;
-        this.mainGOParent = transformMainTileParent;
     }
 
     public GOContexto(GameObject mainGO, GOContexto goContexto)
     {
         this.mainGO = mainGO;
         mainMaterial = goContexto.mainMaterial;
-        mainGOParent = goContexto.mainGOParent;
     }
 }
