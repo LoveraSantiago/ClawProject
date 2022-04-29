@@ -11034,7 +11034,7 @@ MonoBehaviour:
         - {fileID: 1689283372}
         - {fileID: 1466928253}
       maquinaEfeitoGlow:
-        factorHdr: 4.25
+        factorHdr: 4
         goEfeito: {fileID: 432249338}
         materialLayers:
         - {fileID: 2100000, guid: ad8c49788763354459227818737a4985, type: 2}

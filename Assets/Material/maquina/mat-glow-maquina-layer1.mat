@@ -68,7 +68,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - text_glow:
-        m_Texture: {fileID: 2800000, guid: 0119a4f3d2a930c4796cae723f24b8c6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 845c2b22b1a8739449834ec038310e99, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - text_outline:
@@ -98,5 +98,5 @@ Material:
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _corFora: {r: 1, g: 1, b: 1, a: 0}
-    - _corGlow: {r: 0, g: 18.112219, b: 19.027313, a: 1}
+    - _corGlow: {r: 0, g: 7.1718097, b: 32, a: 1}
   m_BuildTextureStacks: []
