@@ -60,6 +60,7 @@ public class AparenciaBotaoPowerUp
         spritePupAtual = img;
         botaoDtoV2.SprRendererImgBtn.sprite = img;
         materialImgPup.SetTexture("_MaintText", img.texture);
+        materialImgPup.SetInt("_ligado", 1);
         botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialImgPup;
     }
 
@@ -76,7 +77,9 @@ public class AparenciaBotaoPowerUp
         {   
             botaoDtoV2.SprRendererBtnTampa.enabled = false;
             botaoDtoV2.SprRendererImgBtn.sprite = spritePupAtual;
+            materialImgPup.SetTexture("_MaintText", spritePupAtual.texture);
             //botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
+            materialImgPup.SetInt("_ligado", 0);
             botaoDtoV2.SprRendererImgBtn.color = Color.white;
             botaoDtoV2.TransformImgBtn.localScale = new Vector3(1.25f, 1.25f, 1.25f);            
 
@@ -91,6 +94,8 @@ public class AparenciaBotaoPowerUp
             botaoDtoV2.SprRendererBtnTampa.enabled = true;
             botaoDtoV2.SprRendererImgBtn.sprite = spritePupAtual;
             botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialImgPup;
+            materialImgPup.SetInt("_ligado", 1);
+            materialImgPup.SetTexture("_MaintText", spritePupAtual.texture);
             botaoDtoV2.SprRendererImgBtn.color = Color.white;
             botaoDtoV2.TransformImgBtn.localScale = new Vector3(0.6f, 0.6f, 0.6f);//TAMANHO ORIGINAL DEIXAR ASSIM?
 
@@ -105,7 +110,9 @@ public class AparenciaBotaoPowerUp
             botaoDtoV2.SprRendererBtnTampa.enabled = false;
             //botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
             botaoDtoV2.SprRendererImgBtn.sprite = spritesTampaDto.TampaErro;
+            materialImgPup.SetTexture("_MaintText", spritesTampaDto.TampaErro.texture);
             botaoDtoV2.SprRendererImgBtn.color = Color.yellow;
+            materialImgPup.SetInt("_ligado", 0);
             botaoDtoV2.TransformImgBtn.localScale = new Vector3(1.25f, 1.25f, 1.25f);
 
             mostrandoAtual = MOSTRANDO_ERROR;
