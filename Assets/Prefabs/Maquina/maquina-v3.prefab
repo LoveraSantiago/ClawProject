@@ -2326,7 +2326,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 53
+  m_SortingOrder: 56
   m_Sprite: {fileID: 21300000, guid: 73aaecb137814ba438ef9fc8835e4f07, type: 3}
   m_Color: {r: 0, g: 0.9648645, b: 1, a: 1}
   m_FlipX: 0
@@ -4951,7 +4951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954454456700673199, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
       propertyPath: m_SortingOrder
-      value: 53
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 5954454456700673199, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5008,6 +5008,10 @@ PrefabInstance:
     - target: {fileID: 8062910204719664477, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
       propertyPath: m_Color.g
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937762745777807549, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
+      propertyPath: m_SortingOrder
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 8937762745777807549, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6435,7 +6439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954454456700673199, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
       propertyPath: m_SortingOrder
-      value: 53
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 5954454456700673199, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6500,6 +6504,10 @@ PrefabInstance:
     - target: {fileID: 8062910204719664477, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
       propertyPath: m_Color.g
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937762745777807549, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
+      propertyPath: m_SortingOrder
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 8937762745777807549, guid: f1f8fe1f05d71f1409aa18a203e1ff42, type: 3}
       propertyPath: m_Materials.Array.data[0]
