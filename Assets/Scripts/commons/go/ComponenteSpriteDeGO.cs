@@ -24,10 +24,15 @@ public class ComponenteSpriteDeGO : ComponenteEstadoDeGO
     }
 
     public void receberSprite(Sprite sprite, int layer)
+    {   
+        receberSprite(sprite);
+        colocarSpriteNoLayer(layer);
+    }
+
+    public void receberSprite(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;
-        nomeSprite = sprite.name;
-        colocarSpriteNoLayer(layer);
+        nomeSprite = sprite.name;        
     }
 
     protected void colocarSpriteNoLayer(int layer)

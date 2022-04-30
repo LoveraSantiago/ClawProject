@@ -42,8 +42,8 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
         hitColetavel = true;
 
         colocarNaPosicao(coletavelAcertado.getPosicao());
-        Sprite spriteAcertado = getSpriteAcertado(coletavelAcertado);
-        receberSprite(spriteAcertado, powerUpDto.AsaDto.Layer);
+        Sprite spriteAcertado = getSpriteAcertado(coletavelAcertado);        
+        receberSprite(spriteAcertado);
         coletavelAcertado.desligar();        
         ligar();
 

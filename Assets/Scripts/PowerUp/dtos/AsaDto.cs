@@ -4,7 +4,6 @@ using UnityEngine;
 [System.Serializable]
 public class AsaDto 
 {
-    [SerializeField] private int layer;
     [SerializeField] private float gravidadeNeg;
     [SerializeField] private float offset;
     [SerializeField] private float haltura;
@@ -12,7 +11,6 @@ public class AsaDto
     [Space(3)]
     [SerializeField] private GameObject asaGo;    
 
-    public int Layer { get { return layer; } }
     public float GravidadeNeg { get { return gravidadeNeg; } }
     public float Offset { get { return offset; } }
     public float Haltura { get { return haltura; } }
