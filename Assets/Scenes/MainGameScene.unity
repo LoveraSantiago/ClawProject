@@ -10717,15 +10717,15 @@ MonoBehaviour:
         parentColetavelTubo: {fileID: 1607848931}
         coletavelTuboDeSaida:
         - rigidBodyColetavel: {fileID: 650369890}
-          sprRendererColetavel: {fileID: 0}
+          sprRendererColetavel: {fileID: 1879646339}
           rigidBodyTrail: {fileID: 153266962}
           particulasTrail: {fileID: 153266961}
         - rigidBodyColetavel: {fileID: 1171204410}
-          sprRendererColetavel: {fileID: 0}
+          sprRendererColetavel: {fileID: 1171204411}
           rigidBodyTrail: {fileID: 1296627890}
           particulasTrail: {fileID: 1296627887}
         - rigidBodyColetavel: {fileID: 911244735}
-          sprRendererColetavel: {fileID: 0}
+          sprRendererColetavel: {fileID: 1230735247}
           rigidBodyTrail: {fileID: 310144667}
           particulasTrail: {fileID: 310144664}
       boardDto:
@@ -10946,10 +10946,9 @@ MonoBehaviour:
         bordasBtns:
         - {fileID: 21300000, guid: a23ddb0e1a97a7145a4f2adebb8447e9, type: 3}
         - {fileID: 21300000, guid: 8c942bfafa862a64a97c76dca69e4b90, type: 3}
-        materialImgPup: {fileID: 2100000, guid: 742726642477556439f058e98bc14064, type: 2}
         spritesTampaDto:
           tampaNormal: {fileID: 21300000, guid: e36ecb3cd28cd2d4cb45fb493d49f7e1, type: 3}
-          tampaPressionada: {fileID: 21300000, guid: 3efab54294090714d96822b3d08e0c40, type: 3}
+          tampaPressionada: {fileID: 21300000, guid: 090ef51f5e16b8f44a925ff653c50630, type: 3}
           tampaSerrilhada: {fileID: 21300000, guid: 1b477af7ce0aa1847a0c651ae64f9976, type: 3}
           tampaErro: {fileID: 21300000, guid: 22fd06643b5fe89409de588d5aa2fc42, type: 3}
         areaDraggavel: {fileID: 1812955823}
@@ -27644,6 +27643,11 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4127936681606313067, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 1171204405}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1171204411 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5685411794652682584, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+  m_PrefabInstance: {fileID: 1171204405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1172475307 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8151689687314405186, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -32665,6 +32669,11 @@ SpriteRenderer:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3346871155338909186, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1230735247 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5685411794652682584, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+  m_PrefabInstance: {fileID: 911244730}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1243953953 stripped
 SpriteRenderer:
@@ -48303,6 +48312,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6939879561084669969, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1879646339 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5685411794652682584, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+  m_PrefabInstance: {fileID: 650369885}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1882963364 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4247215975527698415, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -58774,54 +58788,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
-    - target: {fileID: 262761771918950175, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 401355965253841673, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 401355965253841673, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7af9972895802c04397bf4649da13996, type: 2}
-    - target: {fileID: 664979614075275720, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1620626125389438697, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2295864188347974722, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3115030810417991450, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3115030810417991450, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3115030810417991451, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3246729654965043983, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 742726642477556439f058e98bc14064, type: 2}
-    - target: {fileID: 4286179197675747234, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5028571196192705972, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5845699465068917843, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -58869,50 +58835,6 @@ PrefabInstance:
     - target: {fileID: 6015691810215975126, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_Name
       value: maquina-v3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7187179031194064229, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7688676769356553370, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 63b9e188dff05314dac60c4bf20818ea, type: 3}
-    - target: {fileID: 7688676769356553370, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7688676769356553370, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7688676769356553370, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7688676769356553370, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7688676769356553370, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7853840117904293404, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386970458206131452, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_SortingOrder
-      value: 52
-      objectReference: {fileID: 0}
-    - target: {fileID: 9157266248139213794, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182698339455595088, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c301260e6514149bc0e163ff994732, type: 3}
