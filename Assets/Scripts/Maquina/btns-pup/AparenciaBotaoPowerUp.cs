@@ -50,10 +50,10 @@ public class AparenciaBotaoPowerUp
     }
 
     public void receberImg(Sprite img)
-    {
+    {   
         spritePupAtual = img;
         botaoDtoV2.SprRendererImgBtn.sprite = img;        
-        updateMaterial(1, img);
+        updateMaterial(1, img.texture);
     }
     
     public void limparImg()
@@ -67,7 +67,7 @@ public class AparenciaBotaoPowerUp
         if(mostrandoAtual != MOSTRANDO_IMAGEM)
         {
             updateBotao(false, spritePupAtual, Color.white, new Vector3(1.25f, 1.25f, 1.25f));                              
-            updateMaterial(0, spritePupAtual);                             
+            updateMaterial(0, spritePupAtual.texture);                             
 
             mostrandoAtual = MOSTRANDO_IMAGEM;
         }
@@ -78,7 +78,7 @@ public class AparenciaBotaoPowerUp
         if(mostrandoAtual != MOSTRANDO_BOTAO)
         {
             updateBotao(true, spritePupAtual, Color.white, new Vector3(0.6f, 0.6f, 0.6f)); //TAMANHO ORIGINAL DEIXAR ASSIM?
-            updateMaterial(1, spritePupAtual);
+            updateMaterial(1, spritePupAtual.texture);
             mostrandoAtual = MOSTRANDO_BOTAO;
         }
     }
@@ -88,7 +88,7 @@ public class AparenciaBotaoPowerUp
         if(mostrandoAtual != MOSTRANDO_ERROR)
         {
             updateBotao(false, spritesTampaDto.TampaErro, Color.yellow, new Vector3(1.25f, 1.25f, 1.25f));
-            updateMaterial(0, spritesTampaDto.TampaErro);
+            updateMaterial(0, spritesTampaDto.TampaErro.texture);
             mostrandoAtual = MOSTRANDO_ERROR;
         }
     }
@@ -101,15 +101,15 @@ public class AparenciaBotaoPowerUp
         botaoDtoV2.TransformImgBtn.localScale  = posAcrescimo;
     }
 
-    private void updateMaterial(int estado, Sprite img)
+    private void updateMaterial(int estado, Texture texture)
     {
-        updateMaterial(img);
+        updateMaterial(texture);
         materialImgPup.SetInt("_ligado", estado);
     }
 
-    private void updateMaterial(Sprite img)
+    private void updateMaterial(Texture texture)
     {
-        materialImgPup.SetTexture("_MaintText", img.texture);
+        materialImgPup.SetTexture("_MaintText", texture);
     }
 
     public bool isMostrandoImagem()
