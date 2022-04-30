@@ -10717,15 +10717,15 @@ MonoBehaviour:
         parentColetavelTubo: {fileID: 1607848931}
         coletavelTuboDeSaida:
         - rigidBodyColetavel: {fileID: 650369890}
-          sprRendererColetavel: {fileID: 915541799}
+          sprRendererColetavel: {fileID: 0}
           rigidBodyTrail: {fileID: 153266962}
           particulasTrail: {fileID: 153266961}
         - rigidBodyColetavel: {fileID: 1171204410}
-          sprRendererColetavel: {fileID: 1171204412}
+          sprRendererColetavel: {fileID: 0}
           rigidBodyTrail: {fileID: 1296627890}
           particulasTrail: {fileID: 1296627887}
         - rigidBodyColetavel: {fileID: 911244735}
-          sprRendererColetavel: {fileID: 1522107841}
+          sprRendererColetavel: {fileID: 0}
           rigidBodyTrail: {fileID: 310144667}
           particulasTrail: {fileID: 310144664}
       boardDto:
@@ -22029,11 +22029,6 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4127936681606313067, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 911244730}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &915541799 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-  m_PrefabInstance: {fileID: 650369885}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &918276164 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 365874533211989815, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -27647,11 +27642,6 @@ Transform:
 --- !u!50 &1171204410 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4127936681606313067, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-  m_PrefabInstance: {fileID: 1171204405}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1171204412 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
   m_PrefabInstance: {fileID: 1171204405}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1172475307 stripped
@@ -43158,11 +43148,6 @@ Transform:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2699307417863312524, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1522107841 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4127936681606313065, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-  m_PrefabInstance: {fileID: 911244730}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1537741833 stripped
 SpriteRenderer:
@@ -58789,11 +58774,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 262761771918950175, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 401355965253841673, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401355965253841673, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7af9972895802c04397bf4649da13996, type: 2}
     - target: {fileID: 664979614075275720, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1620626125389438697, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295864188347974722, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115030810417991450, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115030810417991450, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115030810417991451, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3246729654965043983, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 742726642477556439f058e98bc14064, type: 2}
     - target: {fileID: 4286179197675747234, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028571196192705972, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -58844,6 +58869,10 @@ PrefabInstance:
     - target: {fileID: 6015691810215975126, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_Name
       value: maquina-v3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187179031194064229, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7688676769356553370, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_Sprite

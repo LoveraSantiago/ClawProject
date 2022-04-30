@@ -13,15 +13,18 @@ public class AparenciaBotaoPowerUp
     private BotaoPowerUpDtoV2 botaoDtoV2;
 
     private Material materialImgPup;
-    private Material materialDefault;
+    //private Material materialDefault;
 
     public AparenciaBotaoPowerUp(Material materialImgPup, BotaoPowerUpDtoV2 botaoDtoV2)
     {
         mostrandoAtual = MOSTRANDO_BOTAO;
         this.botaoDtoV2 = botaoDtoV2;
 
-        this.materialImgPup = new Material(materialImgPup);
-        materialDefault = botaoDtoV2.SprRendererImgBtn.sharedMaterial;
+        //this.materialImgPup = new Material(materialImgPup);
+        //materialDefault = botaoDtoV2.SprRendererImgBtn.sharedMaterial;
+
+        this.materialImgPup = botaoDtoV2.SprRendererImgBtn.sharedMaterial;
+        //materialDefault = botaoDtoV2.SprRendererImgBtn.sharedMaterial;
     }
 
     public void mostrarBordaSerrilhada()
@@ -37,7 +40,7 @@ public class AparenciaBotaoPowerUp
     public void pressionarBotao()
     {    
         botaoDtoV2.SprRendererBtnTampa.sprite = spritesTampaDto.TampaPressionada;
-        botaoDtoV2.SprRendererImgBtn.transform.localPosition -= new Vector3(0.02f, 0.02f, 0);
+        botaoDtoV2.SprRendererImgBtn.transform.localPosition -= new Vector3(0, 0.02f, 0);
     }
 
     public void colorirBotaoFromLevelV2(string corBase, string corTampa)
@@ -49,7 +52,7 @@ public class AparenciaBotaoPowerUp
     public void despressionarBotao()
     {   
         botaoDtoV2.SprRendererBtnTampa.sprite = spritesTampaDto.TampaNormal; 
-        botaoDtoV2.SprRendererImgBtn.transform.localPosition += new Vector3(0.02f, 0.02f, 0);
+        botaoDtoV2.SprRendererImgBtn.transform.localPosition += new Vector3(0, 0.02f, 0);
     }
 
     public void receberImg(Sprite img)
@@ -63,7 +66,8 @@ public class AparenciaBotaoPowerUp
     public void limparImg()
     {
         botaoDtoV2.SprRendererImgBtn.sprite = null;
-        botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
+        materialImgPup.SetTexture("_MaintText", null);
+        //botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
     }
 
     public void mostrarSoImagem()
@@ -72,7 +76,7 @@ public class AparenciaBotaoPowerUp
         {   
             botaoDtoV2.SprRendererBtnTampa.enabled = false;
             botaoDtoV2.SprRendererImgBtn.sprite = spritePupAtual;
-            botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
+            //botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
             botaoDtoV2.SprRendererImgBtn.color = Color.white;
             botaoDtoV2.TransformImgBtn.localScale = new Vector3(1.25f, 1.25f, 1.25f);            
 
@@ -99,7 +103,7 @@ public class AparenciaBotaoPowerUp
         if(mostrandoAtual != MOSTRANDO_ERROR)
         {
             botaoDtoV2.SprRendererBtnTampa.enabled = false;
-            botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
+            //botaoDtoV2.SprRendererImgBtn.sharedMaterial = materialDefault;
             botaoDtoV2.SprRendererImgBtn.sprite = spritesTampaDto.TampaErro;
             botaoDtoV2.SprRendererImgBtn.color = Color.yellow;
             botaoDtoV2.TransformImgBtn.localScale = new Vector3(1.25f, 1.25f, 1.25f);
