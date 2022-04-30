@@ -6,7 +6,6 @@ public class BotoesPowerUpDto
 {
     [SerializeField] private Sprite[] bordasBtns = new Sprite[2];
     [Space(3)]
-    [SerializeField] private Material materialImgPup;
     [SerializeField] private SpritesTampaBtnPupDto spritesTampaDto;            
     [Space(3)]        
     [SerializeField] private GameObject areaDraggavel;
@@ -18,7 +17,6 @@ public class BotoesPowerUpDto
 
     public Sprite[] BordasBtns { get { return bordasBtns;  } }
 
-    public Material MaterialImgPup { get { return materialImgPup; } }            
     public SpritesTampaBtnPupDto SpritesTampaDto { get { return spritesTampaDto; } }
 
     public GameObject AreaDraggavel { get { return areaDraggavel; } }    

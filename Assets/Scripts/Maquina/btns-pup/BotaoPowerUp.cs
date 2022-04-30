@@ -19,7 +19,7 @@ public class BotaoPowerUp : Draggavel
         this.indice = indice;
 
         BotaoPowerUpDtoV2 botaoDtoV2 = getBotaoPowerUpDtoV2(btnsPowerUpsDto);
-        aparencia = new AparenciaBotaoPowerUp(btnsPowerUpsDto.MaterialImgPup, botaoDtoV2);        
+        aparencia = new AparenciaBotaoPowerUp(botaoDtoV2);        
         acaoDrag  = new AcaoDragPowerUp(botaoDtoV2);
 
         BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);        
