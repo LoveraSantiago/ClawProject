@@ -13,6 +13,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
     public Coletavel atraido3;
 
     private Coroutine coroutine;
+    private AteTresAlvoColetavelSelecionado tresAlvosSelecionados;
 
     public BuracoNegroPowerUpGo() : 
         base(powerUpDto.BuracoNegroDto.BuracoNegroGo, "Buraco Negro"){}
@@ -43,8 +44,8 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
         helperInGame.ligarMirasNosColetaveis(true);
 
-        AteTresAlvoColetavelSelecionado alvosSelecionados = new AteTresAlvoColetavelSelecionado(totalDesocupados, true);
-        coroutine = Utils.MonoBehaviour.StartCoroutine(alvosSelecionados.onSelecionar(inputGame, this));
+        tresAlvosSelecionados = new AteTresAlvoColetavelSelecionado(totalDesocupados, true);
+        coroutine = Utils.MonoBehaviour.StartCoroutine(tresAlvosSelecionados.onSelecionar(inputGame, this));
     }
 
     public override void resetPup()
@@ -137,6 +138,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         {
             resetPup();
             powerUpFinalizacao.finalizado();
+            tresAlvosSelecionados.timeout();
         }
     }
 }

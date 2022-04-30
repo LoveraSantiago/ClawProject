@@ -94,6 +94,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
             }
 
             indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
+            Debug.Log("indice sorteado " + indiceSorteado);
             coletavelSorteado = listaFamilia[indiceSorteado];
             sprSorteado = helperColetavel.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);
             materialTeleporte.addTrocaIn(sprSorteado);
@@ -131,6 +132,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         if (!finalizando)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutineAlvo);
+            alvoSelecionado.timeout();
             finalizar();   
         }
     }  

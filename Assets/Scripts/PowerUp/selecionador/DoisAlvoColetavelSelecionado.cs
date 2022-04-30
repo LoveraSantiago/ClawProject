@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 
 public class DoisAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<DuplaDeColetaveisDto>
 {
@@ -22,6 +23,9 @@ public class DoisAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<DuplaDeCole
         ligarMiraFinal(coletavel1);
 
         DuplaDeColetaveisDto duplaDeColetaveis = new DuplaDeColetaveisDto(coletavel1, coletavel2);
-        yield return Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(duplaDeColetaveis));
+
+        Coroutine coroutine = Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(duplaDeColetaveis));
+        cacheCoroutineOnSelecionado(coroutine);
+        yield return coroutine;
     }    
 }

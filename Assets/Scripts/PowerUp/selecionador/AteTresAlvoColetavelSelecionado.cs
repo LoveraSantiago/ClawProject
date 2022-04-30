@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 
 public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<TrioDeColetaveis>
 {
@@ -44,6 +45,8 @@ public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<TrioDeCo
         desligarMiras();
 
         TrioDeColetaveis trioDeColetaveis = new TrioDeColetaveis(coletavel1, coletavel2, coletavel3);
-        yield return Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(trioDeColetaveis));
+        Coroutine coroutine = Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(trioDeColetaveis));
+        cacheCoroutineOnSelecionado(coroutine);
+        yield return coroutine;
     }   
 }
