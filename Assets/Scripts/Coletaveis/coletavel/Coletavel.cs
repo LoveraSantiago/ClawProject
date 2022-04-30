@@ -89,12 +89,7 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
     public void interacaoComOutrosColetaveis()
     {
         desimantar();
-    }
-
-    public void receberSprite(Sprite sprite)
-    {
-        receberSprite(sprite, contexto.sprOrderComum);
-    }
+    }   
 
     public bool isTouchingCentroDaGarra()
     {
