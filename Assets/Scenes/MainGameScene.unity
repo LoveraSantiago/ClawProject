@@ -10552,11 +10552,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3176199869435192893, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &392464708 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3590067367850977611, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &393955083 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 326749041384194876, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -10952,10 +10947,6 @@ MonoBehaviour:
           tampaSerrilhada: {fileID: 21300000, guid: 1b477af7ce0aa1847a0c651ae64f9976, type: 3}
           tampaErro: {fileID: 21300000, guid: 22fd06643b5fe89409de588d5aa2fc42, type: 3}
         areaDraggavel: {fileID: 1812955823}
-        efeitoHolograma: {fileID: 392464708}
-        btnPowerUp:
-        - sprAreaExterna: {fileID: 6406990385049082688}
-        - sprAreaExterna: {fileID: 6406990385049082687}
         btnPowerUpV2:
         - sprRendererBtnBase: {fileID: 419732521}
           sprRendererBtnTampa: {fileID: 1117396095}
@@ -10963,6 +10954,10 @@ MonoBehaviour:
         - sprRendererBtnBase: {fileID: 419732522}
           sprRendererBtnTampa: {fileID: 679524672}
           sprRendererImgBtn: {fileID: 1278007399}
+        efeitoHologramaDto:
+          transfMainEfeito: {fileID: 1223888410}
+          meshRendererEfeitoHorizontal: {fileID: 603503303}
+          transfEfeitoVertical: {fileID: 1289563624}
       botaoLigaDesligaDto:
         sprRendererBtnBordas: {fileID: 6406990385049082672}
         sprRendererBtnOnOff: {fileID: 6406990385049082673}
@@ -16470,6 +16465,11 @@ SpriteRenderer:
 --- !u!212 &599559369 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8741790312097778184, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &603503303 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4800496796747126052, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &605089188 stripped
@@ -32669,6 +32669,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6423956344610655279, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1223888410 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6151740923965911651, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1224485396 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3346871155338909186, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -32849,6 +32854,11 @@ SpriteRenderer:
 --- !u!212 &1285931506 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3210569915623295284, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1289563624 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5968930574299838999, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1296627885
@@ -60406,7 +60416,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6457658388387750061, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457658389134374129, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6696043603684762798, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_Color.b
@@ -61078,15 +61092,5 @@ SpriteRenderer:
 --- !u!212 &6406990385049082673 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3027024895253427581, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6406990385049082687 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8608572314704596736, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6406990385049082688 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8608572314238549957, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
   m_PrefabInstance: {fileID: 6406990385049082667}
   m_PrefabAsset: {fileID: 0}

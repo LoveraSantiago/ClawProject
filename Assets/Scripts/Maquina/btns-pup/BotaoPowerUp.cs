@@ -31,7 +31,7 @@ public class BotaoPowerUp : Draggavel
             controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
             
-            efeitoHolograma.ligar();
+            efeitoHolograma.ligar(btnsPowerUpsDto.EfeitoHologramaDto);
             acaoBtnPowerUp.acionar(indice);
         }
         else
@@ -154,6 +154,6 @@ public class BotaoPowerUp : Draggavel
     {
         AparenciaBotaoPowerUp.configurarSpritesTampaBotao(btnsPowerUpsDto.SpritesTampaDto);
         AcaoDragPowerUp.configurarAreaDraggavel(btnsPowerUpsDto.AreaDraggavel);
-        efeitoHolograma = new EfeitoHolograma(btnsPowerUpsDto.EfeitoHolograma);
+        efeitoHolograma = new EfeitoHolograma(btnsPowerUpsDto.EfeitoHologramaDto.GoMainEfeito);
     }
 }
