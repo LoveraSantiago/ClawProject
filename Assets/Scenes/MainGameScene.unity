@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0.62, y: -0.73, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: -1.2, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -22591,6 +22591,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3115030810417991451, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1131434265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 432435967, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1151694356 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5784741207971901435, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -27501,7 +27506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162031988}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.6207004, y: -2.59, z: -10}
+  m_LocalPosition: {x: 0, y: -2.6900003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27528,7 +27533,7 @@ MonoBehaviour:
   m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1500368944}
+  m_Follow: {fileID: 1131434265}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -37819,6 +37824,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8245793874599924410, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
   m_PrefabInstance: {fileID: 958265028}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1337357927 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5453273484624607540, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1347148837 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7674434527673259979, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -43147,11 +43157,6 @@ Transform:
   m_Father: {fileID: 491158114}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1500368944 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6406990385412141467, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1514111671 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2699307417863312524, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -53430,7 +53435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101427128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.3907, y: 3.17, z: -10}
+  m_LocalPosition: {x: -1.8500001, y: 3.0249999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53457,7 +53462,7 @@ MonoBehaviour:
   m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 6406990385049082668}
+  m_Follow: {fileID: 1337357927}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 1.8
@@ -59041,11 +59046,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
---- !u!4 &6406990385049082668 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6406990386099675116, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &6406990385049082672 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1857737637918611704, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
