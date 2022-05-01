@@ -31,13 +31,13 @@ public class BotaoPowerUp : Draggavel
             controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
             
-            efeitoHolograma.ligar(btnsPowerUpsDto.EfeitoHologramaDto);
             acaoBtnPowerUp.acionar(indice);
         }
         else
         {
             //Debug.Log("Btn clicado sem pup");            
             Utils.pausarGame();
+            efeitoHolograma.ligar(btnsPowerUpsDto.EfeitoHologramaDto);
             controlePup.desabilitarPowerUp();
             controlePup.escolhendoPupParaIndice(indice);            
         }
