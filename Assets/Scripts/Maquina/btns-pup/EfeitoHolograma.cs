@@ -9,15 +9,15 @@ public class EfeitoHolograma
         this.goEfeitoHolograma = goEfeitoHolograma;
     }
 
-    public void ligar(BotaoPowerUpDto btnDto)
+    public void ligar()
     {
-        Transform tranformParent = btnDto.GoParent.transform;
-        Vector3 posicao = tranformParent.position;
-        Quaternion rotacao = tranformParent.rotation;
+        
+        //Vector3 posicao = tranformParent.position;
+        //Quaternion rotacao = tranformParent.rotation;
 
-        goEfeitoHolograma.transform.position = posicao;
-        goEfeitoHolograma.transform.rotation = rotacao;
-        goEfeitoHolograma.SetActive(true);
+        //goEfeitoHolograma.transform.position = posicao;
+        //goEfeitoHolograma.transform.rotation = rotacao;
+        //goEfeitoHolograma.SetActive(true);
     }
 
     public void desligar()

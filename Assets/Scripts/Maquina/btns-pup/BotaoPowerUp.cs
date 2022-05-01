@@ -21,8 +21,6 @@ public class BotaoPowerUp : Draggavel
         BotaoPowerUpDtoV2 botaoDtoV2 = getBotaoPowerUpDtoV2(btnsPowerUpsDto);
         aparencia = new AparenciaBotaoPowerUp(botaoDtoV2);        
         acaoDrag  = new AcaoDragPowerUp(botaoDtoV2);
-
-        BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);        
     }
 
     public void clicar(BotoesPowerUpDto btnsPowerUpsDto, ControleAcionamentoPowerUp controlePup)
@@ -32,9 +30,8 @@ public class BotaoPowerUp : Draggavel
             aparencia.pressionarBotao();
             controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
-
-            BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
-            efeitoHolograma.ligar(botaoDto);
+            
+            efeitoHolograma.ligar();
             acaoBtnPowerUp.acionar(indice);
         }
         else
@@ -127,11 +124,6 @@ public class BotaoPowerUp : Draggavel
         return isDraggavel 
                && hasPowerUp 
                && acaoDrag.isPosicaoDentroAreaBotao(posicao);
-    }
-
-    private BotaoPowerUpDto getBotaoPowerUpDto(BotoesPowerUpDto btnPowerUpsDto)
-    {
-        return btnPowerUpsDto.BtnPowerUp[indice];
     }
 
     private BotaoPowerUpDtoV2 getBotaoPowerUpDtoV2(BotoesPowerUpDto btnPowerUpsDto)
