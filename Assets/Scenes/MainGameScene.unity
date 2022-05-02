@@ -10948,10 +10948,16 @@ MonoBehaviour:
           tampaErro: {fileID: 21300000, guid: 22fd06643b5fe89409de588d5aa2fc42, type: 3}
         areaDraggavel: {fileID: 1812955823}
         btnPowerUpV2:
-        - sprRendererBtnBase: {fileID: 419732521}
+        - posXBotao: 1.62
+          posXPlaca: -0.06
+          rotacaoY: 20
+          sprRendererBtnBase: {fileID: 419732521}
           sprRendererBtnTampa: {fileID: 1117396095}
           sprRendererImgBtn: {fileID: 320550303}
-        - sprRendererBtnBase: {fileID: 419732522}
+        - posXBotao: 4.18
+          posXPlaca: 0.06
+          rotacaoY: -20
+          sprRendererBtnBase: {fileID: 419732522}
           sprRendererBtnTampa: {fileID: 679524672}
           sprRendererImgBtn: {fileID: 1278007399}
         efeitoHologramaDto:
@@ -60262,22 +60268,6 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.3647059
       objectReference: {fileID: 0}
-    - target: {fileID: 5968930574299838999, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 65
-      objectReference: {fileID: 0}
-    - target: {fileID: 5968930574299838999, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 5968930574299838999, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 5968930574794796619, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 91
-      objectReference: {fileID: 0}
     - target: {fileID: 6015691810215975126, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_Name
       value: maquina-v3
@@ -60309,38 +60299,6 @@ PrefabInstance:
     - target: {fileID: 6151740923965911650, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6151740923965911651, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 6151740923965911651, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 6151740923965911651, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9392279
-      objectReference: {fileID: 0}
-    - target: {fileID: 6151740923965911651, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.29613733
-      objectReference: {fileID: 0}
-    - target: {fileID: 6151740923965911651, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.16561128
-      objectReference: {fileID: 0}
-    - target: {fileID: 6151740923965911651, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.052217025
-      objectReference: {fileID: 0}
-    - target: {fileID: 6151740923965911651, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6151740923965911651, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 6299348851102330760, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_Color.b
