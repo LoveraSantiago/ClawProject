@@ -9,8 +9,8 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
     private BotaoPowerUp btnAcionado;
     private ControleAcionamentoPowerUp controlePup;
 
-    private Draggavel dragavelAtual;
-    private Draggavel dragavelVazio;
+    private BotaoDraggavel btnDragavelAtual;
+    private BotaoDraggavel btnDragavelVazio;
 
     public BotoesPowerUp(BotoesPowerUpDto btnsPowerUpsDto)
     {        
@@ -18,8 +18,8 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
         inicializarBotoes(btnsPowerUpsDto);
         
         controlePup   = new ControleAcionamentoPowerUp();
-        dragavelVazio = new AdapterDraggavelVazio();
-        dragavelAtual = dragavelVazio;
+        btnDragavelVazio = new AdapterBotaoDraggavelVazio();
+        btnDragavelAtual = btnDragavelVazio;
     }
 
     private void inicializarBotoes(BotoesPowerUpDto btnsPowerUpsDto)
@@ -57,17 +57,17 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
         //Debug.Log("begindrag");
         if (controlePup.podeAcionarPupDraggavel())
         {
-            dragavelAtual = dragavelVazio;
+            btnDragavelAtual = btnDragavelVazio;
             for (int contador = 0; contador < btnsPowerUp.Length; contador++)
             {
                 if (btnsPowerUp[contador].isDragValido(posicaoDrag))
                 {
-                    dragavelAtual = btnsPowerUp[contador];                   
+                    btnDragavelAtual = btnsPowerUp[contador];                   
                     btnAcionado = btnsPowerUp[contador];
                     break;
                 }
             }
-            dragavelAtual.prepararDraggagem(posicaoDrag);
+            btnDragavelAtual.prepararDraggagem(posicaoDrag);
         }
     }
 
@@ -75,7 +75,7 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
     {
         if (controlePup.podeAcionarPupDraggavel())
         {
-            dragavelAtual.updateDrag(delta, botoesPowerUpDto);
+            btnDragavelAtual.updateDrag(delta, botoesPowerUpDto);
         }
     }
 
@@ -83,12 +83,12 @@ public class BotoesPowerUp : AcaoBotaoPowerUpVazio.ProdutorEvento,
     {
         if (controlePup.podeAcionarPupDraggavel())
         {
-            bool result = dragavelAtual.isDragFinalizadoAtivouPowerUp(botoesPowerUpDto);            
+            bool result = btnDragavelAtual.isDragFinalizadoAtivouPowerUp(botoesPowerUpDto);            
             if (result)
             {
                 draggarBotao(btnAcionado);
             }
-            dragavelAtual = dragavelVazio;
+            btnDragavelAtual = btnDragavelVazio;
         }
     }
 

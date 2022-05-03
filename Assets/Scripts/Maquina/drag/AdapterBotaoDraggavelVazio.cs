@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AdapterDraggavelVazio : Draggavel
+public class AdapterBotaoDraggavelVazio : BotaoDraggavel
 {
     public void prepararDraggagem(Vector3 posInicialDrag){}
     public void updateDrag(Vector2 delta, BotoesPowerUpDto btnPowerUpsDto) {}

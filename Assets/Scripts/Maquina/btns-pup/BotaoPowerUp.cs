@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BotaoPowerUp : Draggavel
+public class BotaoPowerUp : BotaoDraggavel
 {
     private static EfeitoHolograma efeitoHolograma;
 
