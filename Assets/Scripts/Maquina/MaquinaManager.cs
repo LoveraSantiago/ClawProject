@@ -9,7 +9,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,
-                              AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
+                              //AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
                               AcaoDesligarMaquinaResultado.ConsumidorEvento
 {    
     private PartesMaquinaDtoV2 partesDto;
@@ -133,10 +133,10 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
     }
 
-    void AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
-    {
-        ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
-    }
+    //void AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    //{
+    //    ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
+    //}
 
     void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
     {

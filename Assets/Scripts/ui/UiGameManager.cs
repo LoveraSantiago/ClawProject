@@ -1,34 +1,35 @@
-public class UiGameManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
+public class UiGameManager : 
+                            //AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
                              AcaoDesligarMaquinaResultado.ProdutorEvento,
                              AcaoColetado.ConsumidorEvento,
                              AcaoTempoEsgotado.ConsumidorEvento,
                              AcaoBoardElevadoFim.ConsumidorEvento,
-                             AcaoBotaoPowerUpVazio.ConsumidorEvento,
+                             //AcaoBotaoPowerUpVazio.ConsumidorEvento,
                              AcaoCacaNiquel.ConsumidorEvento,
-                             AcaoPowerUpAcionado.ConsumidorEvento,
+                             //AcaoPowerUpAcionado.ConsumidorEvento,
                              AcaoDesligarMaquina.ConsumidorEvento
 {
     private ModalResultadosManager modalResultados;
     private ModalSair modalSair;
-    private ScrollManager scrollManager;
+    //private ScrollManager scrollManager;
 
     public UiGameManager(UIGameDto uiDto)
     {
         modalResultados   = new ModalResultadosManager(uiDto.ModalPontosDto);
-        scrollManager = new ScrollManager(uiDto.PrefabBottomBar);
+        //scrollManager = new ScrollManager(uiDto.PrefabBottomBar);
         modalSair     = new ModalSair(uiDto.ModalSairDto);
     }
 
     public void configurandoLevel(AbstractLevel levelEscolhido)
     {
         modalResultados.configurarLevel(levelEscolhido.getLevelName());
-        scrollManager.configuradoPeloLevel(levelEscolhido);
+        //scrollManager.configuradoPeloLevel(levelEscolhido);
         modalSair.configuradoPeloLevel(levelEscolhido);
     }
 
     public void start()
     {
-        scrollManager.start();
+        //scrollManager.start();
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
@@ -46,30 +47,30 @@ public class UiGameManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         ((AcaoBoardElevadoFim.ConsumidorEvento)modalResultados).consumirEvento(evento);
     }
 
-    void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
-    {       
-        ((AcaoBotaoPowerUpVazio.ConsumidorEvento)scrollManager).consumirEvento(evento);       
-    }
+    //void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
+    //{       
+    //    ((AcaoBotaoPowerUpVazio.ConsumidorEvento)scrollManager).consumirEvento(evento);       
+    //}
 
     void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelEventoDto evento)
     {
         ((AcaoCacaNiquel.ConsumidorEvento)modalResultados).consumirEvento(evento);
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
-    {
-        ((AcaoPowerUpAcionado.ConsumidorEvento)scrollManager).consumirEvento(evento);
-    }
+    //void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    //{
+    //    ((AcaoPowerUpAcionado.ConsumidorEvento)scrollManager).consumirEvento(evento);
+    //}
 
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
     {
         ((AcaoDesligarMaquina.ConsumidorEvento)modalSair).consumirEvento(evento);
     }
 
-    ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
-    {
-        return ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollManager).getProdutorDeEvento();
-    }
+    //ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
+    //{
+    //    return ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollManager).getProdutorDeEvento();
+    //}
 
     ProdutorDeEvento<ResultadoDesligarMaquinaDto> AcaoDesligarMaquinaResultado.ProdutorEvento.getProdutorDeEvento()
     {
