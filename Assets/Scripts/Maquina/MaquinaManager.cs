@@ -20,7 +20,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     private BotaoLigaDesliga    botaoLigaDesliga;
     private ArcoIrisEfeito      arcoIrisEfeito;
     private DisplayDeScores     displayDeScores;    
-    public  DisplaysDeColetados displayDeColetados { get; private set; }        
+    public  DisplaysDeColetados displayDeColetados { get; private set; }
+    private Draggavel           draggavel;
 
     public MaquinaManager(MaquinaDto maquinaDto)
     {
@@ -32,7 +33,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         joystick           = new Joystick(maquinaDto.MesaJoystickDto);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
-        arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);            
+        arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
+        draggavel          = botoesPowerUp;
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido, MaquinaDto maquinaDto)
@@ -70,19 +72,31 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         joystick.fixedUpdate();
     }   
 
-    public void beginDragPowerUp(Vector2 posicao)
+    public void onBeginDrag(Vector2 posicao)
     {
-        botoesPowerUp.beginDrag(posicao);
+        if (draggavel.isDragAcionavel(posicao))
+        {
+            draggavel.onBeginDrag(posicao);
+        }
+        //botoesPowerUp.beginDrag(posicao);
     }
 
     public void onDragPowerUp(Vector2 delta, MaquinaDto maquinaDto)
     {
-        botoesPowerUp.drag(delta, maquinaDto.BotoesPowerUpDto);
+        if (draggavel.foiDragAcionado())
+        {
+            draggavel.onDrag(delta, maquinaDto);
+        }
+        //botoesPowerUp.drag(delta, maquinaDto.BotoesPowerUpDto);
     }
 
     public void onEndDragPowerUp(MaquinaDto maquinaDto)
     {
-        botoesPowerUp.endDrag(maquinaDto.BotoesPowerUpDto);
+        if (draggavel.foiDragAcionado())
+        {
+            draggavel.onEndDrag(maquinaDto);
+        }
+        //botoesPowerUp.endDrag(maquinaDto.BotoesPowerUpDto);
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)

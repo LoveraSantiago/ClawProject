@@ -36,18 +36,18 @@ public class UpdaterMainGameManagers : UpdaterManagers
         Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
         if (inputGame.aconteceuDragNaAreaInferior(posicaoToque, mainDto.MaquinaDto.ReferenciaChao))
         {
-            maquinaManager.beginDragPowerUp(posicaoToque);
+            maquinaManager.onBeginDrag(posicaoToque);
         }
-    }
-
-    public void onEndDrag(PointerEventData eventData, MainGameDto mainDto)
-    {
-        maquinaManager.onEndDragPowerUp(mainDto.MaquinaDto);
     }
 
     public void onDrag(PointerEventData eventData, MainGameDto mainDto)
     {
         Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
         maquinaManager.onDragPowerUp(posicaoToque, mainDto.MaquinaDto);
+    }
+
+    public void onEndDrag(PointerEventData eventData, MainGameDto mainDto)
+    {
+        maquinaManager.onEndDragPowerUp(mainDto.MaquinaDto);
     }
 }

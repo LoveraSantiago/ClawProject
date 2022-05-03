@@ -71,9 +71,9 @@ public class ControleAcionamentoPowerUp
         }
     }
 
-    public void escolhendoPupParaIndice(int indice)
+    public void escolhendoPupParaIndice(int indiceBtn)
     {
-        produtorDeEventoEscolhaPup.produziuEvento(indice);
+        produtorDeEventoEscolhaPup.produziuEvento(indiceBtn);
     }
 
     private bool isEstadoLigado()
