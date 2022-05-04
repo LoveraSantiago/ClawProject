@@ -21,6 +21,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     public  ArcoIrisEfeito      arcoIrisEfeito { get; private set; }
     private DisplayDeScores     displayDeScores;    
     public  DisplaysDeColetados displayDeColetados { get; private set; }
+    private ScrollPups          scrollPups;
     private Draggavel           draggavel;
 
     public MaquinaManager(MaquinaDto maquinaDto)
@@ -34,6 +35,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
         arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
+        scrollPups         = new ScrollPups();
         draggavel          = botoesPowerUp;
     }
 
@@ -42,10 +44,9 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp.configuradoPeloLevel(levelEscolhido);
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
         displayDeColetados.configuradoPeloLevel(levelEscolhido, maquinaDto.DisplayColetadosDto);
-        displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto, levelEscolhido);        
+        displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto, levelEscolhido);
 
-        new ScrollPups()
-            .configuradoPeloLevel(maquinaDto.ScrollPupsDto, levelEscolhido.getDicionarioDeCores());
+        scrollPups.configuradoPeloLevel(maquinaDto.ScrollPupsDto, levelEscolhido.getDicionarioDeCores());
 
         new ColoridorMaquinaV2()
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());

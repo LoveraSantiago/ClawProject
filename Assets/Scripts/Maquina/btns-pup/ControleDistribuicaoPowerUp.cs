@@ -22,7 +22,7 @@ public class ControleDistribuicaoPowerUp
         }
     }
 
-    public void iniciar(int qtdBotoes, AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento consumidor)//TEMPORARIO
+    public void iniciar(int qtdBotoes)//TEMPORARIO
     {
         if (isLevelPup)
         {
@@ -34,7 +34,7 @@ public class ControleDistribuicaoPowerUp
                 if (pupEscolhido != null)
                 {
                     PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(contador, pupEscolhido);
-                    consumidor.consumirEvento(pupBtnInfo);                    
+                    //consumidor.consumirEvento(pupBtnInfo);                    
                 }
             }
         }

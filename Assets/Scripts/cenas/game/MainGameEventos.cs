@@ -10,6 +10,7 @@ public class MainGameEventos
         CameraManager     cameraManager     = mainGameManagers.cameraManager;
         InputGameImpl inputGameImpl = mainGameManagers.inputGame;
 
+        //TODO sugestao de especificar exatamente os consumidores e os produtores
         new AcaoColetado()
             .configurarProdutor(coletaveisManager)
             .adicionarConsumidor(garraManager)

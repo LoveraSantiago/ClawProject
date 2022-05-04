@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BotoesPowerUp : Draggavel,
                              AcaoBotaoPowerUpVazio.ProdutorEvento,
-                             AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
+                             //AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
                              AcaoColetado.ConsumidorEvento,
                              AcaoDesligarMaquinaResultado.ConsumidorEvento,
                              AcaoTempoEsgotado.ConsumidorEvento,
@@ -44,7 +44,7 @@ public class BotoesPowerUp : Draggavel,
 
     public void iniciar()
     {
-        controleDistribuicaoPup.iniciar(btnsPowerUp.Length, this);
+        controleDistribuicaoPup.iniciar(btnsPowerUp.Length);
     }
     
     public void update(BotoesPowerUpDto botoesPowerUpDto, InputGame inputGame)
@@ -189,10 +189,10 @@ public class BotoesPowerUp : Draggavel,
         }        
     }
 
-    void AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
-    {        
-        btnsPowerUp[evento.indiceBotao].receberAcaoPowerUp(evento, controleAcionamentoPup);
-    }
+    //void AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    //{        
+    //    btnsPowerUp[evento.indiceBotao].receberAcaoPowerUp(evento, controleAcionamentoPup);
+    //}
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
