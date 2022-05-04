@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BotoesPowerUp : Draggavel
+public class BotoesPowerUp : Draggavel,
                              AcaoBotaoPowerUpVazio.ProdutorEvento,
                              AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
                              AcaoColetado.ConsumidorEvento,
@@ -53,7 +53,7 @@ public class BotoesPowerUp : Draggavel
         }           
     }
 
-    public bool isDragAcionavel(Vector3 posicaoDrag)
+    public bool isDragAcionavel(Vector2 posicaoDrag)
     {
         if (controlePup.podeAcionarPupDraggavel())
         {
@@ -73,7 +73,7 @@ public class BotoesPowerUp : Draggavel
 
     public bool foiDragAcionado()
     {
-        return btnDragavelAtual != btnDragavelVazio; 
+        return btnDragavelAtual != btnDragavelVazio && controlePup.podeAcionarPupDraggavel(); 
     }
 
     public void onBeginDrag(Vector3 posicao)
@@ -83,12 +83,17 @@ public class BotoesPowerUp : Draggavel
 
     public void onDrag(Vector2 delta, MaquinaDto maquinaDto)
     {
-        throw new System.NotImplementedException();
+        btnDragavelAtual.updateDrag(delta, maquinaDto.BotoesPowerUpDto);
     }
 
     public void onEndDrag(MaquinaDto maquinaDto)
     {
-        throw new System.NotImplementedException();
+        bool result = btnDragavelAtual.isDragFinalizadoAtivouPowerUp(maquinaDto.BotoesPowerUpDto);
+        if (result)
+        {
+            draggarBotao(btnAcionado);
+        }
+        btnDragavelAtual = btnDragavelVazio;
     }
 
     //public void beginDrag(Vector2 posicaoDrag)
@@ -110,26 +115,26 @@ public class BotoesPowerUp : Draggavel
     //    }
     //}
 
-    public void drag(Vector2 delta, BotoesPowerUpDto botoesPowerUpDto)
-    {
-        if (controlePup.podeAcionarPupDraggavel())
-        {
-            btnDragavelAtual.updateDrag(delta, botoesPowerUpDto);
-        }
-    }
+    //public void drag(Vector2 delta, BotoesPowerUpDto botoesPowerUpDto)
+    //{
+    //    if (controlePup.podeAcionarPupDraggavel())
+    //    {
+    //        btnDragavelAtual.updateDrag(delta, botoesPowerUpDto);
+    //    }
+    //}
 
-    public void endDrag(BotoesPowerUpDto botoesPowerUpDto)
-    {
-        if (controlePup.podeAcionarPupDraggavel())
-        {
-            bool result = btnDragavelAtual.isDragFinalizadoAtivouPowerUp(botoesPowerUpDto);            
-            if (result)
-            {
-                draggarBotao(btnAcionado);
-            }
-            btnDragavelAtual = btnDragavelVazio;
-        }
-    }
+    //public void endDrag(BotoesPowerUpDto botoesPowerUpDto)
+    //{
+    //    if (controlePup.podeAcionarPupDraggavel())
+    //    {
+    //        bool result = btnDragavelAtual.isDragFinalizadoAtivouPowerUp(botoesPowerUpDto);            
+    //        if (result)
+    //        {
+    //            draggarBotao(btnAcionado);
+    //        }
+    //        btnDragavelAtual = btnDragavelVazio;
+    //    }
+    //}
 
     public void processarFimPowerUp()
     {
@@ -199,5 +204,5 @@ public class BotoesPowerUp : Draggavel
         {
             devolverPowerUps();
         }
-    }    
+    }
 }
