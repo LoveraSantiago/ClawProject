@@ -13,7 +13,6 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
     private Coroutine coroutineBlink;    
 
     private ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado;
-    private Executor executorTimerRestartOutrosComponentes;
 
     public DisplayTimer(DisplayTimerDto displayDto)
     {   
@@ -23,17 +22,14 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
         contadorTimer = new ContadorTimer();        
     }
 
-    public void configuradoPeloLevel(DisplayTimerDto displayDto, AbstractLevel levelEscolhido, Executor executorTimerRestartOutrosComponentes)
+    public void configuradoPeloLevel(DisplayTimerDto displayDto, AbstractLevel levelEscolhido)
     {
-        this.executorTimerRestartOutrosComponentes = executorTimerRestartOutrosComponentes;
-
         contadorTimer.definirContador(levelEscolhido.getTempoContagem(), this);        
         digitos.passarCoresAosDisplayDigitos(displayDto, levelEscolhido);        
     }
 
     public void execute()
     {
-        executorTimerRestartOutrosComponentes.execute();
         pause();
         produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(true));
     }

@@ -16,9 +16,9 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     private Joystick            joystick;       
     private DisplayTimer        displayTimer;
-    private BotoesPowerUp       botoesPowerUp;
+    public BotoesPowerUp        botoesPowerUp { get; private set; }
     private BotaoLigaDesliga    botaoLigaDesliga;
-    private ArcoIrisEfeito      arcoIrisEfeito;
+    public  ArcoIrisEfeito      arcoIrisEfeito { get; private set; }
     private DisplayDeScores     displayDeScores;    
     public  DisplaysDeColetados displayDeColetados { get; private set; }
     private Draggavel           draggavel;
@@ -49,9 +49,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
         new ColoridorMaquinaV2()
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());
-
-        AntesExecutorTimerRestart executor = new AntesExecutorTimerRestart(botoesPowerUp, arcoIrisEfeito);
-        displayTimer.configuradoPeloLevel(maquinaDto.DisplayTimerDto, levelEscolhido, executor);
+        
+        displayTimer.configuradoPeloLevel(maquinaDto.DisplayTimerDto, levelEscolhido);
     }
 
     public void start(InputGame inputGame)

@@ -4,7 +4,8 @@ public class BotoesPowerUp : Draggavel,
                              AcaoBotaoPowerUpVazio.ProdutorEvento,
                              AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
                              AcaoColetado.ConsumidorEvento,
-                             AcaoDesligarMaquinaResultado.ConsumidorEvento
+                             AcaoDesligarMaquinaResultado.ConsumidorEvento,
+                             AcaoTempoEsgotado.ConsumidorEvento
 {
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
@@ -212,5 +213,10 @@ public class BotoesPowerUp : Draggavel,
         {
             devolverPowerUps();
         }
+    }
+
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    {
+        desativarPowerUp();
     }
 }

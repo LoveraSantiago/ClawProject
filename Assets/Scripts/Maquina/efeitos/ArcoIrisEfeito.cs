@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ArcoIrisEfeito 
+public class ArcoIrisEfeito : AcaoTempoEsgotado.ConsumidorEvento
 {
     public static Color greenHdr  { get; private set; }
     public static Color redHdr    { get; private set; }
@@ -99,5 +99,10 @@ public class ArcoIrisEfeito
         {
             maquinaEfeitoGlowDto.MaterialLayers[contador].SetColor("_corGlow", cor);
         }
+    }
+
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    {
+        ligarBlinkRed();
     }
 }
