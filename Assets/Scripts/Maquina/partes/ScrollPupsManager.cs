@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollPups 
+public class ScrollPupsManager 
 {
     public void configuradoPeloLevel(ScrollPupsDto scrollPupsDto, Dictionary<string, string> dicionarioDeCores)
     {

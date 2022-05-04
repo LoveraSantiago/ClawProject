@@ -21,7 +21,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     public  ArcoIrisEfeito      arcoIrisEfeito { get; private set; }
     private DisplayDeScores     displayDeScores;    
     public  DisplaysDeColetados displayDeColetados { get; private set; }
-    private ScrollPups          scrollPups;
+    private ScrollPupsManager          scrollPups;
     private Draggavel           draggavel;
 
     public MaquinaManager(MaquinaDto maquinaDto)
@@ -35,7 +35,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
         arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
-        scrollPups         = new ScrollPups();
+        scrollPups         = new ScrollPupsManager();
         draggavel          = botoesPowerUp;
     }
 
