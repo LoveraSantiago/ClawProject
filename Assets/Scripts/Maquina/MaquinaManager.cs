@@ -21,7 +21,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     public  ArcoIrisEfeito      arcoIrisEfeito { get; private set; }
     private DisplayDeScores     displayDeScores;    
     public  DisplaysDeColetados displayDeColetados { get; private set; }
-    private ScrollPupsManager          scrollPups;
+    private ScrollPupsManager   scrollPupsManager;
     private Draggavel           draggavel;
 
     public MaquinaManager(MaquinaDto maquinaDto)
@@ -35,7 +35,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
         arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
-        scrollPups         = new ScrollPupsManager();
+        scrollPupsManager  = new ScrollPupsManager();
         draggavel          = botoesPowerUp;
     }
 
@@ -45,19 +45,18 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
         displayDeColetados.configuradoPeloLevel(levelEscolhido, maquinaDto.DisplayColetadosDto);
         displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto, levelEscolhido);
-
-        scrollPups.configuradoPeloLevel(maquinaDto.ScrollPupsDto, levelEscolhido.getDicionarioDeCores());
+        scrollPupsManager.configuradoPeloLevel(maquinaDto.ScrollPupsDto, levelEscolhido);
+        displayTimer.configuradoPeloLevel(maquinaDto.DisplayTimerDto, levelEscolhido);
 
         new ColoridorMaquinaV2()
-            .colorir(partesDto, levelEscolhido.getDicionarioDeCores());
-        
-        displayTimer.configuradoPeloLevel(maquinaDto.DisplayTimerDto, levelEscolhido);
+            .colorir(partesDto, levelEscolhido.getDicionarioDeCores());        
     }
 
     public void start(InputGame inputGame)
     {
         displayTimer.iniciarContagemTempo();
-        displayDeColetados.iniciar(inputGame);        
+        displayDeColetados.iniciar(inputGame);
+        scrollPupsManager.iniciar();
     }
 
     public void update(MaquinaDto maquinaDto, InputGame inputGame)

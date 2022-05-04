@@ -1,22 +1,82 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollPupsManager 
+public class ScrollPupsManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
+                                 AcaoPowerUpAcionado.ConsumidorEvento,
+                                 AcaoBotaoPowerUpVazio.ConsumidorEvento
 {
-    public void configuradoPeloLevel(ScrollPupsDto scrollPupsDto, Dictionary<string, string> dicionarioDeCores)
+    private bool isLevelPup;
+    private bool isPupsToLevel;
+
+    private PowerUpsParaLevel pupsToLevel;
+    public ScrollPups scrollPups { get; private set; }
+
+    public void configuradoPeloLevel(ScrollPupsDto scrollPupsDto, AbstractLevel level)
     {
-        string hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA];
-        scrollPupsDto.SprRendererPlacaExterna.color = Utils.getCorByHex(hexCor);
+        if (LevelUtils.isPupLevel(level))
+        {
+            isLevelPup = true;
+        }
+        else if (level.hasPupToLevel())
+        {
+            pupsToLevel = level.getPupsToLevel();
+            isPupsToLevel = true;
+        }
 
-        hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA];
-        scrollPupsDto.SprRendererPlacaInterna.color = Utils.getCorByHex(hexCor);
+        new ColoridorScrollPups().colorir(scrollPupsDto, level.getDicionarioDeCores());
+    }
 
-        hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS];
-        Color cor = Utils.getCorByHex(hexCor);
-        scrollPupsDto.SprRendererPlacaSetaDireita.color = cor;
-        scrollPupsDto.SprRendererPlacaSetaEsquerda.color = cor;
+    public void iniciar()
+    {
+        if (isLevelPup)
+        {
+            int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
+            for (int contador = 0; contador < 2; contador++)
+            {
+                //scrollBottomBar.simularCliqueBoxAcionado(contador, indicePup);
+            }
+        }
+        else if (isPupsToLevel)
+        {
+            for (int contador = 0; contador < pupsToLevel.getQtdBotoes(); contador++)
+            {
+                //scrollBottomBar.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
+            }
+        }
+    }
 
-        hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SCROLL_PUP_SETA_CIMA];
-        scrollPupsDto.SprRendererPlacaSetaCima.color = cor;
+    void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
+    {
+        if (isLevelPup)
+        {
+            int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
+            //scrollBottomBar.simularCliqueBoxAcionado(evento, indicePup);
+        }
+        else
+        {
+            //((AcaoBotaoPowerUpVazio.ConsumidorEvento)scrollBottomBar).consumirEvento(evento);
+        }
+    }
+
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    {
+        if (evento.isFinalizar)
+        {
+            if (isLevelPup)
+            {
+                int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
+                //scrollBottomBar.simularCliqueBoxAcionado(evento.indiceBtn, indicePup);
+            }
+            else if (isPupsToLevel)
+            {
+                //scrollBottomBar.simularCliqueBoxAcionado(evento.indiceBtn, pupsToLevel.getPupEntidade(evento.indiceBtn));
+            }
+        }
+    }
+
+    ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
+    {
+        //return ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollBottomBar).getProdutorDeEvento();
+        return null;
     }
 }
