@@ -57,8 +57,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     public void start(InputGame inputGame)
     {
         displayTimer.iniciarContagemTempo();
-        displayDeColetados.iniciar(inputGame);
-        botoesPowerUp.iniciar();
+        displayDeColetados.iniciar(inputGame);        
     }
 
     public void update(MaquinaDto maquinaDto, InputGame inputGame)

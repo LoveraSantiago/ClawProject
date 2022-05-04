@@ -10,8 +10,7 @@ public class BotoesPowerUp : Draggavel,
 {
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
-    private ControleAcionamentoPowerUp  controleAcionamentoPup;
-    private ControleDistribuicaoPowerUp controleDistribuicaoPup;
+    private ControleAcionamentoPowerUp  controleAcionamentoPup;    
 
     private BotaoDraggavel btnDragavelAtual;
     private BotaoDraggavel btnDragavelVazio;
@@ -21,8 +20,7 @@ public class BotoesPowerUp : Draggavel,
         BotaoPowerUp.configurar(btnsPowerUpsDto);
         inicializarBotoes(btnsPowerUpsDto);
         
-        controleAcionamentoPup  = new ControleAcionamentoPowerUp();
-        controleDistribuicaoPup = new ControleDistribuicaoPowerUp();
+        controleAcionamentoPup  = new ControleAcionamentoPowerUp();        
         btnDragavelVazio = new AdapterBotaoDraggavelVazio();
         btnDragavelAtual = btnDragavelVazio;
     }
@@ -38,14 +36,8 @@ public class BotoesPowerUp : Draggavel,
 
     public void configuradoPeloLevel(AbstractLevel level)
     {        
-        new ColoridorBotoesV2().colorir(btnsPowerUp, level.getDicionarioDeCores());
-        controleDistribuicaoPup.configuradoPeloLevel(level);
+        new ColoridorBotoesV2().colorir(btnsPowerUp, level.getDicionarioDeCores());        
     }   
-
-    public void iniciar()
-    {
-        controleDistribuicaoPup.iniciar(btnsPowerUp.Length);
-    }
     
     public void update(BotoesPowerUpDto botoesPowerUpDto, InputGame inputGame)
     {
