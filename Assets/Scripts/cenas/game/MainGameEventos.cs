@@ -14,6 +14,7 @@ public class MainGameEventos
         new AcaoColetado()
             .configurarProdutor(coletaveisManager)
             .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(maquinaManager.displayTimer)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(uiManager);
 

@@ -102,8 +102,6 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
-        displayTimer.pause();
-        
         displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIrisEfeito);        
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);        
         ((AcaoColetado.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);

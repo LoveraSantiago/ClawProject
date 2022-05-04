@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
+                            AcaoColetado.ConsumidorEvento,
                             AcaoColetadoFim.ConsumidorEvento,
                             Executor
 {  
@@ -101,5 +102,10 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
     {
         continuar();
+    }
+
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
+    {
+        pause();
     }
 }
