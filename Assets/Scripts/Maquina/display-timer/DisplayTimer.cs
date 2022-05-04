@@ -14,13 +14,13 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
 
     private Coroutine coroutineBlink;    
 
-    private ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado;
+    private ProdutorDeEvento<TempoEsgotadoDto> produtorDeEventoTempoEsgotado;
 
     public DisplayTimer(DisplayTimerDto displayDto)
     {   
         digitos = new DisplayTimerDigitos(displayDto);
         
-        produtorDeEventoTempoEsgotado = new ProdutorDeEvento<TempoEsgotado>();
+        produtorDeEventoTempoEsgotado = new ProdutorDeEvento<TempoEsgotadoDto>();
         contadorTimer = new ContadorTimer();        
     }
 
@@ -33,7 +33,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
     public void execute()
     {
         pause();
-        produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(true));
+        produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotadoDto(true));
     }
 
     public void iniciarContagemTempo()
@@ -48,7 +48,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
             atualizarTempo();
             if (contadorTimer.isTimeOver())
             {
-                produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(false));
+                produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotadoDto(false));
                 Utils.MonoBehaviour.StopCoroutine(coroutineBlink);
                 coroutineBlink = null;
             }
@@ -94,7 +94,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
         yield return null;
     }
 
-    ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<TempoEsgotadoDto> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoTempoEsgotado;
     }

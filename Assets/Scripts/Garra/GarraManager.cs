@@ -97,7 +97,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         gerDeMovAtual.garraComemorar();
     }        
 
-    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
         tempoEsgotadoEmAcao = true;
         gerDeMovNormal.trocarParaAcaoVoltarParaCima();

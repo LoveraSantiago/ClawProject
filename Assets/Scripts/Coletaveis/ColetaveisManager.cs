@@ -155,7 +155,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         }
     }            
     
-    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
         if (evento.restart)
         {

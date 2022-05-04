@@ -216,7 +216,7 @@ public class BotoesPowerUp : Draggavel,
         }
     }
 
-    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
         desativarPowerUp();
     }

@@ -90,7 +90,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         }
     }
 
-    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
         if (evento.isTimeOver())
         {

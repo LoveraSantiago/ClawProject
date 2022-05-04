@@ -37,7 +37,7 @@ public class UiGameManager :
         ((AcaoColetado.ConsumidorEvento)modalResultados).consumirEvento(evento);
     }
 
-    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
         ((AcaoTempoEsgotado.ConsumidorEvento)modalResultados).consumirEvento(evento);
     }

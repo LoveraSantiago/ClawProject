@@ -101,7 +101,7 @@ public class ArcoIrisEfeito : AcaoTempoEsgotado.ConsumidorEvento
         }
     }
 
-    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
         ligarBlinkRed();
     }

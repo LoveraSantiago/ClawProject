@@ -1,8 +1,8 @@
-public class TempoEsgotado 
+public class TempoEsgotadoDto 
 {
     public bool restart { get; private set; }
 
-    public TempoEsgotado(bool restart)
+    public TempoEsgotadoDto(bool restart)
     {
         this.restart = restart;
     }
