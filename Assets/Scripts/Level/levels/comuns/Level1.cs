@@ -50,7 +50,7 @@ public class Level1 : AbstractLevel
 
     public override PowerUpsParaLevel getPupsToLevel()
     {
-        return new PowerUpsParaLevel(2)
+        return new PowerUpsParaLevel(1)
            .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MOLA });
 
         return new PowerUpsParaLevel(2)
