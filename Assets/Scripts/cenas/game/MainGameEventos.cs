@@ -19,7 +19,9 @@ public class MainGameEventos
         new AcaoColetadoFim()
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(coletaveisManager)
-            .adicionarConsumidor(garraManager);
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(maquinaManager.displayTimer)
+            .adicionarConsumidor(maquinaManager.botoesPowerUp);
 
         new AcaoInfoDaGarra()
             .configurarProdutor(garraManager)

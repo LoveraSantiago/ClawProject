@@ -2,8 +2,7 @@ public class AgendamentoDisplayColetados
 {
     public PowerUpEnums.TIPO tipoPup { get; private set; }
     public InformacoesColetadoDto infoColetadoDto { get; private set; }
-    public ArcoIrisEfeito arcoIris { get; private set; }
-    public Executor executor { get; private set; }
+    public ArcoIrisEfeito arcoIris { get; private set; }    
     public PowerUpInteracaoComDisplayColetado interacaoDisplayColetado { get; private set; }    
 
     public bool possuiAgendamentoDePowerUp()
@@ -27,11 +26,10 @@ public class AgendamentoDisplayColetados
     }
 
     public void agendar(
-        InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
+        InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
     {
         infoColetadoDto = evento;
-        this.arcoIris = arcoIris;
-        executor = executorPosEvento;
+        this.arcoIris = arcoIris;        
     }
 
     public void cleanInteracao()
@@ -42,7 +40,6 @@ public class AgendamentoDisplayColetados
     public void cleanOutros()
     {
         infoColetadoDto = null;
-        arcoIris = null;
-        executor = null;
+        arcoIris = null;        
     }
 }

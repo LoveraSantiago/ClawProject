@@ -15,8 +15,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     private PartesMaquinaDtoV2 partesDto;
 
     private Joystick            joystick;       
-    private DisplayTimer        displayTimer;
-    public BotoesPowerUp        botoesPowerUp { get; private set; }
+    public  DisplayTimer        displayTimer { get; private set; }
+    public  BotoesPowerUp       botoesPowerUp { get; private set; }
     private BotaoLigaDesliga    botaoLigaDesliga;
     public  ArcoIrisEfeito      arcoIrisEfeito { get; private set; }
     private DisplayDeScores     displayDeScores;    
@@ -102,9 +102,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         displayTimer.pause();
-
-        PosExecutorAcaoColetadoFim posExecucao = new PosExecutorAcaoColetadoFim(displayTimer, botoesPowerUp);
-        displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIrisEfeito, posExecucao);        
+        
+        displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIrisEfeito);        
         displayDeScores.mostrarScore(evento.score, evento.resultCombinacao);        
         ((AcaoColetado.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
     }   

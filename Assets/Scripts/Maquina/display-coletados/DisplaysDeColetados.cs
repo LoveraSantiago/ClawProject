@@ -30,9 +30,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         }
     }  
 
-    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris, Executor executorPosEvento)
+    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
     {
-        modoColetados.mostrarColetadoNoDisplay(evento, arcoIris, executorPosEvento);
+        modoColetados.mostrarColetadoNoDisplay(evento, arcoIris);
     }
 
     public void processarPowerUp(PowerUpInfo evento)

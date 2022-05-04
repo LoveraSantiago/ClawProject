@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
+                            AcaoColetadoFim.ConsumidorEvento,
                             Executor
 {  
     private float tempoInicial;
@@ -95,5 +96,10 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
     ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoTempoEsgotado;
-    }    
+    }
+
+    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
+    {
+        continuar();
+    }
 }
