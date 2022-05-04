@@ -62,7 +62,7 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         //Debug.Log("Total: " + totalColetaveis);
     }       
 
-    public override void reajustarContagem(ColetadoFim evento, bool devolverBoard)
+    public override void reajustarContagem(ColetadoFimDto evento, bool devolverBoard)
     {
         if (!evento.isNormal)
         {

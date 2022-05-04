@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ColetadoFim 
+public class ColetadoFimDto 
 {
     private static readonly int ESTADO_NORMAL    = 0;
     private static readonly int ESTADO_ROLLBACK     = 1;
@@ -12,7 +12,7 @@ public class ColetadoFim
     public bool isDescarte { get { return estadoAtual == ESTADO_DESCARTE; } }
     public bool[] clears { get; private set; }
 
-    private ColetadoFim(int estadoAtual, bool[] clears)        
+    private ColetadoFimDto(int estadoAtual, bool[] clears)        
     {
         this.estadoAtual = estadoAtual;
         this.clears = clears;
@@ -30,26 +30,26 @@ public class ColetadoFim
         return clears[0] && clears[1] && clears[2];
     }
 
-    public static ColetadoFim ofNormal(bool[] clears)
+    public static ColetadoFimDto ofNormal(bool[] clears)
     {
-        return new ColetadoFim(ESTADO_NORMAL, clears);        
+        return new ColetadoFimDto(ESTADO_NORMAL, clears);        
     }
 
-    public static ColetadoFim ofPup(PowerUpEnums.TIPO tipo, bool[] clears)
+    public static ColetadoFimDto ofPup(PowerUpEnums.TIPO tipo, bool[] clears)
     {
         if(tipo == PowerUpEnums.TIPO.ROLLBACK)
         {
-            Debug.Log("Tipo Rollback criado");
-            return new ColetadoFim(ESTADO_ROLLBACK, clears);
+            //Debug.Log("Tipo Rollback criado");
+            return new ColetadoFimDto(ESTADO_ROLLBACK, clears);
         }
         else if(tipo == PowerUpEnums.TIPO.DESCARTE)
         {
-            Debug.Log("Tipo Descarte criado");
-            return new ColetadoFim(ESTADO_DESCARTE, clears);
+            //Debug.Log("Tipo Descarte criado");
+            return new ColetadoFimDto(ESTADO_DESCARTE, clears);
         }
         else
         {
-            Debug.Log("Tipo Normal criado");
+            //Debug.Log("Tipo Normal criado");
             return ofNormal(clears);
         }
     }

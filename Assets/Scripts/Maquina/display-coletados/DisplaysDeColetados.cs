@@ -55,7 +55,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         return modoCacaNiquel != null;
     }
 
-    ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<ColetadoFimDto> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoColetadoFim.ProdutorEvento)modoColetados).getProdutorDeEvento();
     }

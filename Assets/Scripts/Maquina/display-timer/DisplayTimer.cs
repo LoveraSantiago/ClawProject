@@ -99,7 +99,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
         return produtorDeEventoTempoEsgotado;
     }
 
-    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
+    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
         continuar();
     }

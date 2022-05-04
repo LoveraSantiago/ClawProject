@@ -43,7 +43,7 @@ public class ContadorManager
         contador.adicionarColetaveisExtras(qtd);
     }
 
-    public void reajustarContagem(ColetadoFim evento, bool devolverBoard)
+    public void reajustarContagem(ColetadoFimDto evento, bool devolverBoard)
     {
         contador.reajustarContagem(evento, devolverBoard);
     }

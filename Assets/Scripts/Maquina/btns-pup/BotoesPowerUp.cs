@@ -221,7 +221,7 @@ public class BotoesPowerUp : Draggavel,
         desativarPowerUp();
     }
 
-    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
+    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
         reativarPowerUpPosDisplay();
     }

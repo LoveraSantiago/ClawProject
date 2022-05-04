@@ -11,7 +11,7 @@ public class BoardDevolvedor
     }
 
     public void devolver(
-        bool combinacaoValida, ColetadoFim evento, BoardDto boardDto, Coletavel[] coletados)
+        bool combinacaoValida, ColetadoFimDto evento, BoardDto boardDto, Coletavel[] coletados)
     {
         if ((devolverBoard && evento.isTodosColetados() && !combinacaoValida) || 
             evento.isRollback)

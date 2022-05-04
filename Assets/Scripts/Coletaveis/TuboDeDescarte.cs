@@ -25,7 +25,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
     }
 
     public void devolver(
-        bool combinacaoValida, ColetadoFim evento, Coletavel[] coletados)
+        bool combinacaoValida, ColetadoFimDto evento, Coletavel[] coletados)
     {
         if (isDevolver(combinacaoValida, evento))
         {
@@ -34,14 +34,14 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
         }
     }
 
-    private bool isDevolver(bool combinacaoValida, ColetadoFim evento)
+    private bool isDevolver(bool combinacaoValida, ColetadoFimDto evento)
     {
         return isLigadoECompleto(evento) ||
                isDesligadoMasValido(combinacaoValida) ||
                evento.isDescarte;
     }
 
-    private bool isLigadoECompleto(ColetadoFim evento)
+    private bool isLigadoECompleto(ColetadoFimDto evento)
     {
         return devolverTubo && evento.isTodosColetados();
     }

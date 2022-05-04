@@ -114,7 +114,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         }
     }
 
-    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
+    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
         if (gerDeMovAtual != gerDeMovPowerUp && !tempoEsgotadoEmAcao)
         {

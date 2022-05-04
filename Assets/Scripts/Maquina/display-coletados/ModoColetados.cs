@@ -9,13 +9,13 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
         
     private GrupoDisplays grupoDisplays;    
     private AgendamentoDisplayColetados agendados;    
-    private ProdutorDeEvento<ColetadoFim> produtorDeEventoFimColetagem;
+    private ProdutorDeEvento<ColetadoFimDto> produtorDeEventoFimColetagem;
 
     public ModoColetados(DisplaysColetadosDto displaysSlotsDto, GrupoDisplays grupoDisplays)
     {    
         this.grupoDisplays = grupoDisplays;
         agendados = new AgendamentoDisplayColetados();
-        produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFim>();            
+        produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFimDto>();            
     }        
 
     public void mostrarColetadoNoDisplay(
@@ -118,7 +118,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
 
         bool[] result = new bool[3] { false, false, false };
         result[indice] = true;
-        produtorDeEventoFimColetagem.produziuEvento(ColetadoFim.ofPup(agendados.tipoPup, result));
+        produtorDeEventoFimColetagem.produziuEvento(ColetadoFimDto.ofPup(agendados.tipoPup, result));
     }
 
     private IEnumerator limpezaTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito  arcoIris)
@@ -165,12 +165,12 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
     private void finalizacaoTodosDisplaysOcupados(ArcoIrisEfeito arcoIris)
     {
         arcoIris.desligarEfeito();
-        produtorDeEventoFimColetagem.produziuEvento(ColetadoFim.ofNormal(new bool[] { true, true, true }));        
+        produtorDeEventoFimColetagem.produziuEvento(ColetadoFimDto.ofNormal(new bool[] { true, true, true }));        
     }
 
     private void finalizacaoTodosDisplaysNaoOcupados()
     {        
-        produtorDeEventoFimColetagem.produziuEvento(ColetadoFim.ofNormal(new bool[] { false, false, false }));        
+        produtorDeEventoFimColetagem.produziuEvento(ColetadoFimDto.ofNormal(new bool[] { false, false, false }));        
     }
 
     //***** IMPLEMENTACAO INTERFACE INFORMACAODISPLAYCOLETADO INICIO *****
@@ -205,7 +205,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
     }
     //***** IMPLEMENTACAO INTERFACE INFORMACAODISPLAYCOLETADO FIM *****
 
-    ProdutorDeEvento<ColetadoFim> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<ColetadoFimDto> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoFimColetagem;
     }   
