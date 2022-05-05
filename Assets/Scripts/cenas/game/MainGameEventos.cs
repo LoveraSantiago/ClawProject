@@ -42,7 +42,7 @@ public class MainGameEventos
             .adicionarConsumidor(maquinaManager.scrollPupsManager);
 
         new AcaoBotaoPowerUpVazio()
-            .configurarProdutor(maquinaManager)
+            .configurarProdutor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(cameraManager)
             .adicionarConsumidor(maquinaManager.scrollPupsManager);
 
