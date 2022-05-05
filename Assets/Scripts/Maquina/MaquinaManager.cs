@@ -8,7 +8,6 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,
-                              //AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
                               AcaoDesligarMaquinaResultado.ConsumidorEvento
 {    
     private PartesMaquinaDtoV2 partesDto;
@@ -76,7 +75,6 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         {
             draggavel.onBeginDrag(posicao);
         }
-        //botoesPowerUp.beginDrag(posicao);
     }
 
     public void onDragPowerUp(Vector2 delta, MaquinaDto maquinaDto)
@@ -85,7 +83,6 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         {
             draggavel.onDrag(delta, maquinaDto);
         }
-        //botoesPowerUp.drag(delta, maquinaDto.BotoesPowerUpDto);
     }
 
     public void onEndDragPowerUp(MaquinaDto maquinaDto)
@@ -94,7 +91,6 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         {
             draggavel.onEndDrag(maquinaDto);
         }
-        //botoesPowerUp.endDrag(maquinaDto.BotoesPowerUpDto);
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
@@ -141,11 +137,6 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
     }
-
-    //void AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
-    //{
-    //    ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
-    //}
 
     void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
     {

@@ -98,46 +98,6 @@ public class BotoesPowerUp : Draggavel,
         btnDragavelAtual = btnDragavelVazio;
     }
 
-    //public void beginDrag(Vector2 posicaoDrag)
-    //{
-    //    //Debug.Log("begindrag");
-    //    if (controlePup.podeAcionarPupDraggavel())
-    //    {
-    //        btnDragavelAtual = btnDragavelVazio;
-    //        for (int contador = 0; contador < btnsPowerUp.Length; contador++)
-    //        {
-    //            if (btnsPowerUp[contador].isDragValido(posicaoDrag))
-    //            {
-    //                btnDragavelAtual = btnsPowerUp[contador];                   
-    //                btnAcionado = btnsPowerUp[contador];
-    //                break;
-    //            }
-    //        }
-    //        btnDragavelAtual.prepararDraggagem(posicaoDrag);
-    //    }
-    //}
-
-    //public void drag(Vector2 delta, BotoesPowerUpDto botoesPowerUpDto)
-    //{
-    //    if (controlePup.podeAcionarPupDraggavel())
-    //    {
-    //        btnDragavelAtual.updateDrag(delta, botoesPowerUpDto);
-    //    }
-    //}
-
-    //public void endDrag(BotoesPowerUpDto botoesPowerUpDto)
-    //{
-    //    if (controlePup.podeAcionarPupDraggavel())
-    //    {
-    //        bool result = btnDragavelAtual.isDragFinalizadoAtivouPowerUp(botoesPowerUpDto);            
-    //        if (result)
-    //        {
-    //            draggarBotao(btnAcionado);
-    //        }
-    //        btnDragavelAtual = btnDragavelVazio;
-    //    }
-    //}
-
     public void processarFimPowerUp()
     {
         controleAcionamentoPup.habilitarPowerUp();
