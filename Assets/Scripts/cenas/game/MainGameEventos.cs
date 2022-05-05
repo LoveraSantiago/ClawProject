@@ -43,12 +43,12 @@ public class MainGameEventos
         new AcaoBotaoPowerUpVazio()
             .configurarProdutor(maquinaManager)
             .adicionarConsumidor(cameraManager);
-            //.adicionarConsumidor(uiManager);
+        //.adicionarConsumidor(uiManager);
 
-        //new AcaoBBarItemEscolhido<PowerUpBtnInfo>()
-        //    .configurarProdutor(uiManager)
-        //    .adicionarConsumidor(maquinaManager)
-        //    .adicionarConsumidor(cameraManager);
+        new AcaoBBarItemEscolhido<PowerUpBtnInfo>()
+            .configurarProdutor(maquinaManager.scrollPupsManager)
+            .adicionarConsumidor(maquinaManager.botoesPowerUp)
+            .adicionarConsumidor(cameraManager);
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)

@@ -80,7 +80,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
 
         if (agendados.possuiAgendamentoDePowerUp())
         {
-            acionarPowerUpAgendado(evento, arcoIris);//ANALISANDO
+            acionarPowerUpAgendado(evento, arcoIris);
         }
         else if (grupoDisplays.isTodosDisplayOcupados() && !powerUpAcionado)
         {

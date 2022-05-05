@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class CameraManager : AcaoBotaoPowerUpVazio.ConsumidorEvento,
-                             //AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
+                             AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
                              AcaoCacaNiquel.ConsumidorEvento
 {
     private static readonly float RATIO_SCREEN = 0.5625f;
@@ -25,13 +25,13 @@ public class CameraManager : AcaoBotaoPowerUpVazio.ConsumidorEvento,
         }
     }
 
-    //void AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
-    //{        
-    //    if(cameraDto.VirtualCam2.Priority == 2)
-    //    {
-    //        cameraDto.VirtualCam2.Priority -= 2;
-    //    }
-    //}
+    void AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    {
+        if (cameraDto.VirtualCam2.Priority == 2)
+        {
+            cameraDto.VirtualCam2.Priority -= 2;
+        }
+    }
 
     void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelEventoDto evento)
     {

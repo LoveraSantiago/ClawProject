@@ -21,7 +21,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     public  ArcoIrisEfeito      arcoIrisEfeito { get; private set; }
     private DisplayDeScores     displayDeScores;    
     public  DisplaysDeColetados displayDeColetados { get; private set; }
-    private ScrollPupsManager   scrollPupsManager;
+    public  ScrollPupsManager   scrollPupsManager { get; private set; }
     private Draggavel           draggavel;
 
     public MaquinaManager(MaquinaDto maquinaDto)

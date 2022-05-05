@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ScrollPupsManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
                                  AcaoPowerUpAcionado.ConsumidorEvento,
                                  AcaoBotaoPowerUpVazio.ConsumidorEvento
@@ -10,6 +7,11 @@ public class ScrollPupsManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorE
 
     private PowerUpsParaLevel pupsToLevel;
     public ScrollPups scrollPups { get; private set; }
+
+    public ScrollPupsManager()
+    {
+        scrollPups = new ScrollPups();
+    }
 
     public void configuradoPeloLevel(ScrollPupsDto scrollPupsDto, AbstractLevel level)
     {
@@ -33,14 +35,14 @@ public class ScrollPupsManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorE
             int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
             for (int contador = 0; contador < 2; contador++)
             {
-                //scrollBottomBar.simularCliqueBoxAcionado(contador, indicePup);
+                scrollPups.simularCliqueBoxAcionado(contador, indicePup);
             }
         }
         else if (isPupsToLevel)
         {
             for (int contador = 0; contador < pupsToLevel.getQtdBotoes(); contador++)
             {
-                //scrollBottomBar.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
+                scrollPups.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
             }
         }
     }
@@ -50,7 +52,7 @@ public class ScrollPupsManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorE
         if (isLevelPup)
         {
             int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
-            //scrollBottomBar.simularCliqueBoxAcionado(evento, indicePup);
+            scrollPups.simularCliqueBoxAcionado(evento, indicePup);
         }
         else
         {
@@ -65,18 +67,17 @@ public class ScrollPupsManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorE
             if (isLevelPup)
             {
                 int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
-                //scrollBottomBar.simularCliqueBoxAcionado(evento.indiceBtn, indicePup);
+                scrollPups.simularCliqueBoxAcionado(evento.indiceBtn, indicePup);
             }
             else if (isPupsToLevel)
             {
-                //scrollBottomBar.simularCliqueBoxAcionado(evento.indiceBtn, pupsToLevel.getPupEntidade(evento.indiceBtn));
+                scrollPups.simularCliqueBoxAcionado(evento.indiceBtn, pupsToLevel.getPupEntidade(evento.indiceBtn));
             }
         }
     }
 
     ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
     {
-        //return ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollBottomBar).getProdutorDeEvento();
-        return null;
+        return ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollPups).getProdutorDeEvento();
     }
 }
