@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DisplayDeScores 
+public class DisplayDeScores : AcaoColetado.ConsumidorEvento
 {
     private int scoreCentenaAtual;
     private int scoreDezenaAtual;
@@ -83,5 +83,10 @@ public class DisplayDeScores
     private void finalizarCoroutineAtual()
     {
         Utils.MonoBehaviour.StopCoroutine(coroutineAtual);        
-    }       
+    }
+
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
+    {   
+        mostrarScore(evento.score, evento.resultCombinacao);
+    }
 }

@@ -16,6 +16,7 @@ public class MainGameEventos
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager.displayTimer)
             .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(maquinaManager.displayDeScores)
             .adicionarConsumidor(uiManager);
 
         new AcaoColetadoFim()

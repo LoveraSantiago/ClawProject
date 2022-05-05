@@ -19,7 +19,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     public  BotoesPowerUp       botoesPowerUp { get; private set; }
     private BotaoLigaDesliga    botaoLigaDesliga;
     public  ArcoIrisEfeito      arcoIrisEfeito { get; private set; }
-    private DisplayDeScores     displayDeScores;    
+    public  DisplayDeScores     displayDeScores { get; private set; }
     public  DisplaysDeColetados displayDeColetados { get; private set; }
     public  ScrollPupsManager   scrollPupsManager { get; private set; }
     private Draggavel           draggavel;
