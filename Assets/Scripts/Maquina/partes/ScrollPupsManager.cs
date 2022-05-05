@@ -10,6 +10,8 @@ public class ScrollPupsManager : Draggavel,
     private PowerUpsParaLevel pupsToLevel;
     public ScrollPups scrollPups { get; private set; }
 
+    private Vector2 posicaoInicialDrag;
+
     public ScrollPupsManager()
     {
         scrollPups = new ScrollPups();
@@ -61,12 +63,16 @@ public class ScrollPupsManager : Draggavel,
 
     public void onBeginDrag(Vector3 posicao)
     {
-        
+        posicaoInicialDrag = posicao;
     }
 
     public void onDrag(Vector2 delta, MaquinaDto maquinaDto)
     {
-        
+        Debug.Log("Drag Scroll chamado");
+        Vector2 diferenca = delta - posicaoInicialDrag;
+        posicaoInicialDrag = delta;
+        PosicaoTransform posicao = new PosicaoTransform(maquinaDto.ScrollPupsDto.TransfBarraRolagem);
+        posicao.adicionarNaPosicaoHorizontal(delta);
     }
 
     public void onEndDrag(MaquinaDto maquinaDto)

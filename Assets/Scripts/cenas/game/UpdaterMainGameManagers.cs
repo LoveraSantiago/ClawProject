@@ -34,8 +34,12 @@ public class UpdaterMainGameManagers : UpdaterManagers
     public void onBeginDrag(PointerEventData eventData, MainGameDto mainDto)
     {
         Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
+        Debug.Log("onBenginDrag chamado world pos " + posicaoToque);
+        Debug.Log("world normal pos " + eventData.pointerCurrentRaycast.worldNormal);
+        Debug.Log("screen pos " + eventData.pointerCurrentRaycast.screenPosition);
         if (inputGame.aconteceuDragNaAreaInferior(posicaoToque, mainDto.MaquinaDto.ReferenciaChao))
         {
+            Debug.Log("onBenginDrag acionado");
             maquinaManager.onBeginDrag(posicaoToque);
         }
     }

@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class PosicaoInicialDrag 
+public class PosicaoTransform 
 {   
     private Transform transform;
  
-    public PosicaoInicialDrag(Transform transform)
+    public PosicaoTransform(Transform transform)
     {
         this.transform = transform;
     }
