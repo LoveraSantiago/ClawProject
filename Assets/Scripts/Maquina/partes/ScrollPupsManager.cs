@@ -1,6 +1,8 @@
-public class ScrollPupsManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
-                                 AcaoPowerUpAcionado.ConsumidorEvento,
-                                 AcaoBotaoPowerUpVazio.ConsumidorEvento
+using UnityEngine;
+
+public class ScrollPupsManager : Draggavel,
+                                 AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
+                                 AcaoPowerUpAcionado.ConsumidorEvento
 {
     private bool isLevelPup;
     private bool isPupsToLevel;
@@ -45,19 +47,31 @@ public class ScrollPupsManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorE
                 scrollPups.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
             }
         }
+    }    
+
+    public bool isDragAcionavel(Vector2 posicaoDrag)
+    {
+        return true;
     }
 
-    void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
+    public bool foiDragAcionado()
     {
-        if (isLevelPup)
-        {
-            int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
-            scrollPups.simularCliqueBoxAcionado(evento, indicePup);
-        }
-        else
-        {
-            //((AcaoBotaoPowerUpVazio.ConsumidorEvento)scrollBottomBar).consumirEvento(evento);
-        }
+        return true;
+    }
+
+    public void onBeginDrag(Vector3 posicao)
+    {
+        
+    }
+
+    public void onDrag(Vector2 delta, MaquinaDto maquinaDto)
+    {
+        
+    }
+
+    public void onEndDrag(MaquinaDto maquinaDto)
+    {
+        
     }
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
@@ -80,4 +94,5 @@ public class ScrollPupsManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorE
     {
         return ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollPups).getProdutorDeEvento();
     }
+
 }

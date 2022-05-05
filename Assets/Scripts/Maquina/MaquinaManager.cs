@@ -8,7 +8,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,
-                              AcaoDesligarMaquinaResultado.ConsumidorEvento
+                              AcaoDesligarMaquinaResultado.ConsumidorEvento,
+                              AcaoBotaoPowerUpVazio.ConsumidorEvento
 {    
     private PartesMaquinaDtoV2 partesDto;
 
@@ -131,7 +132,12 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             arcoIrisEfeito.desligarEfeito();
             displayTimer.continuar();
         }
-    }   
+    }
+
+    void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
+    {
+        draggavel = scrollPupsManager;
+    }
 
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)
     {
