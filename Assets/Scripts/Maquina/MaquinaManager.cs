@@ -60,7 +60,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     }
 
     public void update(MaquinaDto maquinaDto, InputGame inputGame)
-    {
+    {        
         botoesPowerUp.update(maquinaDto.BotoesPowerUpDto, inputGame);
         botaoLigaDesliga.update(inputGame);
         displayTimer.update();

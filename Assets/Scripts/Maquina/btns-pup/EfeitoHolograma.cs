@@ -12,7 +12,7 @@ public class EfeitoHolograma
     }
 
     public void ligar(EfeitoHologramaBtnPupDto efeitoHologramaDto, BotaoPowerUpDtoV2 btnPowerUpDto)
-    {
+    {   
         efeitoHologramaDto.GoMainEfeito.SetActive(true);
         efeitoHologramaDto.TransfMainEfeito.localPosition = new Vector3(btnPowerUpDto.PosXBotao, efeitoHologramaDto.TransfMainEfeito.localPosition.y, efeitoHologramaDto.TransfMainEfeito.localPosition.z);
         Vector3 localRotation = efeitoHologramaDto.TransfMainEfeito.localRotation.eulerAngles;
@@ -25,7 +25,10 @@ public class EfeitoHolograma
     public void desligar()
     {
         goEfeitoHolograma.SetActive(false);
-        Utils.MonoBehaviour.StopCoroutine(coroutineUpdateTime);
+        if(coroutineUpdateTime != null)
+        {
+            Utils.MonoBehaviour.StopCoroutine(coroutineUpdateTime);
+        }
     }
 
     private IEnumerator updateTime(Material material)
