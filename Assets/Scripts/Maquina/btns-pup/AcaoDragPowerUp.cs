@@ -34,7 +34,7 @@ public class AcaoDragPowerUp
         Vector2 delta = posicaoDrag - posicaoInicialDrag;
         posicaoInicialDrag = posicaoDrag;
 
-        PosicaoBotaoPowerUp posicao = new PosicaoBotaoPowerUp(btnDto);
+        PosicaoInicialDrag posicao = new PosicaoInicialDrag(btnDto.TransformBtnTampa);
         Vector3 posicaoCalculada = posicao.adicionarNaPosicao(delta);
         if(areaDraggavel.Contains(posicaoCalculada))
         {
@@ -52,12 +52,12 @@ public class AcaoDragPowerUp
 
     public bool dragFinalizado(int indice, AcaoBotaoPowerUp acaoPowerUp, AparenciaBotaoPowerUp aparencia, BotaoPowerUpDtoV2 btnDto)
     {
-        PosicaoBotaoPowerUp posicao = new PosicaoBotaoPowerUp(btnDto);
+        posicaoInicialDrag posicao = new posicaoInicialDrag(btnDto);
         if (aparencia.isMostrandoImagem())
         {
             acaoPowerUp.acionar(indice, posicao.getPosicao());
             aparencia.mostrarBotao();
-            posicao.colocarNaPosicaoOriginalAcionado(posicaoOriginal);
+            posicao.colocarNaPosicaoOriginal(posicaoOriginal);
             aparencia.limparImg();
             goAreaDraggavel.SetActive(false);
             return true;
@@ -70,7 +70,7 @@ public class AcaoDragPowerUp
         }
     }
 
-    private IEnumerator voltarBotaoDragPosOriginal(PosicaoBotaoPowerUp posicao, AparenciaBotaoPowerUp aparencia)
+    private IEnumerator voltarBotaoDragPosOriginal(posicaoInicialDrag posicao, AparenciaBotaoPowerUp aparencia)
     {
         while ((Vector3.Distance(posicao.getPosicao(), posicaoOriginal))
                > (VELOCIDADE_VOLTA * Time.deltaTime))
