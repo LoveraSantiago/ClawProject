@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class DraggavelManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
-                                AcaoPowerUpAcionado.ConsumidorEvento
+                                AcaoPowerUpAcionado.ConsumidorEvento,
+                                AcaoBotaoPowerUpVazio.ConsumidorEvento
 {
     private int qtdDraggaveis;
     private BoxCollider2D colliderDrag;
@@ -22,6 +23,13 @@ public class DraggavelManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.Consumidor
                 qtdDraggaveis++;
             }
         }
+        else
+        {
+            if(qtdDraggaveis == 0)
+            {
+                colliderDrag.enabled = false;
+            }
+        }
     }
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
@@ -38,5 +46,10 @@ public class DraggavelManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.Consumidor
                 }
             }
         }
+    }
+
+    void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
+    {
+        colliderDrag.enabled = true;
     }
 }

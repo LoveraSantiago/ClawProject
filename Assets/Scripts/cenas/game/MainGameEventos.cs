@@ -47,7 +47,8 @@ public class MainGameEventos
         new AcaoBotaoPowerUpVazio()
             .configurarProdutor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(cameraManager)            
-            .adicionarConsumidor(maquinaManager);
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(draggavelManager);
 
         new AcaoBBarItemEscolhido<PowerUpBtnInfo>()
             .configurarProdutor(maquinaManager.scrollPupsManager)
