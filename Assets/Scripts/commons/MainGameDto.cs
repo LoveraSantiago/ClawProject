@@ -4,6 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class MainGameDto 
 {
+    [SerializeField] private BoxCollider2D dragCollider;
+    [Space(5)]
     [SerializeField] private GarraDto garraDto;
     [Space(5)]
     [SerializeField] private ColetaveisDto coletaveisDto;
