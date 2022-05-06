@@ -6,19 +6,22 @@ public class ScrollPupsManager : Draggavel,
 {
     private bool isLevelPup;
     private bool isPupsToLevel;
+    private bool toqueAreaDraggavelValida;
 
     private PowerUpsParaLevel pupsToLevel;
     public ScrollPups scrollPups { get; private set; }
-
+    
+    private ScrollPupsDto scrollPupsDto;
     private Vector2 posicaoInicialDrag;
 
     public ScrollPupsManager()
     {
-        scrollPups = new ScrollPups();
+        scrollPups = new ScrollPups();        
     }
 
     public void configuradoPeloLevel(ScrollPupsDto scrollPupsDto, AbstractLevel level)
     {
+        this.scrollPupsDto = scrollPupsDto;
         if (LevelUtils.isPupLevel(level))
         {
             isLevelPup = true;
@@ -53,12 +56,13 @@ public class ScrollPupsManager : Draggavel,
 
     public bool isDragAcionavel(Vector2 posicaoDrag)
     {
-        return true;
+        toqueAreaDraggavelValida = scrollPupsDto.SprRendererPlacaInterna.bounds.Contains(posicaoDrag);
+        return toqueAreaDraggavelValida;        
     }
 
     public bool foiDragAcionado()
     {
-        return true;
+        return toqueAreaDraggavelValida;
     }
 
     public void onBeginDrag(Vector3 posicao)
@@ -71,13 +75,13 @@ public class ScrollPupsManager : Draggavel,
         Debug.Log("Drag Scroll chamado");
         Vector2 diferenca = delta - posicaoInicialDrag;
         posicaoInicialDrag = delta;
-        PosicaoTransform posicao = new PosicaoTransform(maquinaDto.ScrollPupsDto.TransfBarraRolagem);
+        PosicaoTransform posicao = new PosicaoTransform(scrollPupsDto.TransfBarraRolagem);
         posicao.adicionarNaPosicaoHorizontal(diferenca);
     }
 
     public void onEndDrag(MaquinaDto maquinaDto)
     {
-        
+        toqueAreaDraggavelValida = false;
     }
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)

@@ -41,7 +41,7 @@ public class MainGameScene : MonoBehaviour,
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP INICIO
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("original begin drag");
+        //Debug.Log("original begin drag");
         updaterManagers.onBeginDrag(eventData, mainDto);        
     }
 
