@@ -72,7 +72,7 @@ public class ScrollPupsManager : Draggavel,
         Vector2 diferenca = delta - posicaoInicialDrag;
         posicaoInicialDrag = delta;
         PosicaoTransform posicao = new PosicaoTransform(maquinaDto.ScrollPupsDto.TransfBarraRolagem);
-        posicao.adicionarNaPosicaoHorizontal(delta);
+        posicao.adicionarNaPosicaoHorizontal(diferenca);
     }
 
     public void onEndDrag(MaquinaDto maquinaDto)
