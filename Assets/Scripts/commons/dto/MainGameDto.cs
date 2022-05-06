@@ -20,6 +20,7 @@ public class MainGameDto
     [Space(5)]
     [SerializeField] private GameObject prefabMateriais;
 
+    public BoxCollider2D DragCollider { get { return dragCollider; } }
     public GarraDto GarraDto { get { return garraDto; } }
     public ColetaveisDto ColetaveisDto { get { return coletaveisDto; } }
     public MaquinaDto MaquinaDto { get { return maquinaDto; } }    

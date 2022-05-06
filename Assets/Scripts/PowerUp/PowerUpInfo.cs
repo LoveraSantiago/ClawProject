@@ -10,6 +10,7 @@ public class PowerUpInfo
     public bool isPreFinalizar { get { return estadoAtual == ESTADO.PREFINALIZAR; } }
     public bool isFinalizar    { get { return estadoAtual == ESTADO.FINALIZAR; } }
     public bool isExpirado     { get { return estadoAtual == ESTADO.EXPIRADO; } }
+    public bool isClicavel     { get { return pupEntidade.isClicavel; } }
 
     public bool isColetavel { get { return pupEntidade.isColetavel; } }
     public bool isNotColetavel { get { return !isColetavel; } }

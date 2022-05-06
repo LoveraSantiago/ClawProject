@@ -9,6 +9,7 @@ public class MainGameManagers
     public CameraManager     cameraManager     { get; private set; }
     public UiGameManager     uiManager         { get; private set; }    
     public InputGameImpl     inputGame         { get; private set; }
+    public DraggavelManager  draggavelManager  { get; private set; }
 
     public MainGameManagers(
         MainGameDto mainDto, AbstractLevel levelEscolhido, Consumidor<UpdaterManagers> consumidorUpdateManagers)
@@ -20,6 +21,7 @@ public class MainGameManagers
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
         uiManager         = new UiGameManager(mainDto.UiDto);        
         cameraManager     = new CameraManager(mainDto.CameraDto);
+        draggavelManager = new DraggavelManager(mainDto.DragCollider);
 
         configurandoLevel(mainDto, levelEscolhido);
         configurandoEventos();

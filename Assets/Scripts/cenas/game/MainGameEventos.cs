@@ -9,6 +9,7 @@ public class MainGameEventos
         PowerUpManager    powerUpManager    = mainGameManagers.powerUpManager;
         CameraManager     cameraManager     = mainGameManagers.cameraManager;
         InputGameImpl     inputGameImpl     = mainGameManagers.inputGame;
+        DraggavelManager  draggavelManager = mainGameManagers.draggavelManager;
 
         //TODO sugestao de especificar exatamente os consumidores e os produtores
         new AcaoColetado()
@@ -40,7 +41,8 @@ public class MainGameEventos
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(coletaveisManager)
-            .adicionarConsumidor(maquinaManager.scrollPupsManager);
+            .adicionarConsumidor(maquinaManager.scrollPupsManager)
+            .adicionarConsumidor(draggavelManager);
 
         new AcaoBotaoPowerUpVazio()
             .configurarProdutor(maquinaManager.botoesPowerUp)
@@ -50,7 +52,8 @@ public class MainGameEventos
         new AcaoBBarItemEscolhido<PowerUpBtnInfo>()
             .configurarProdutor(maquinaManager.scrollPupsManager)
             .adicionarConsumidor(maquinaManager.botoesPowerUp)
-            .adicionarConsumidor(cameraManager);
+            .adicionarConsumidor(cameraManager)
+            .adicionarConsumidor(draggavelManager);
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)
