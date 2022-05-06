@@ -8,7 +8,7 @@ public class MainGameEventos
         UiGameManager     uiManager         = mainGameManagers.uiManager;
         PowerUpManager    powerUpManager    = mainGameManagers.powerUpManager;
         CameraManager     cameraManager     = mainGameManagers.cameraManager;
-        InputGameImpl inputGameImpl = mainGameManagers.inputGame;
+        InputGameImpl     inputGameImpl     = mainGameManagers.inputGame;
 
         //TODO sugestao de especificar exatamente os consumidores e os produtores
         new AcaoColetado()
@@ -17,6 +17,7 @@ public class MainGameEventos
             .adicionarConsumidor(maquinaManager.displayTimer)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(maquinaManager.displayDeScores)
+            .adicionarConsumidor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(uiManager);
 
         new AcaoColetadoFim()
