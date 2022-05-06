@@ -18,7 +18,7 @@ public class DraggavelManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.Consumidor
         {
             if (!evento.powerUpEntidade.isClicavel)
             {
-                Debug.Log("Ligando box collider");
+                //Debug.Log("Ligando box collider");
                 colliderDrag.enabled = true;
                 qtdDraggaveis++;
             }
@@ -41,7 +41,7 @@ public class DraggavelManager : AcaoBBarItemEscolhido<PowerUpBtnInfo>.Consumidor
                 qtdDraggaveis--;
                 if(qtdDraggaveis == 0)
                 {
-                    Debug.Log("Desligando box collider");
+                    //Debug.Log("Desligando box collider");
                     colliderDrag.enabled = false;
                 }
             }
