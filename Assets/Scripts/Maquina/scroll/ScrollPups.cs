@@ -17,9 +17,9 @@ public class ScrollPups
     public void iniciar()
     {
         pupsSprites = PowerUpHelper.getAllSpritesPowerUp();
-        for(int contador = 0; contador < scrollPupsDto.ItensBarraRolagem.Length; contador++)
+        for(int contador = 1; contador < scrollPupsDto.ItensBarraRolagem.Length - 1; contador++)
         {
-            scrollPupsDto.ItensBarraRolagem[contador].sprite = pupsSprites[contador];
+            scrollPupsDto.ItensBarraRolagem[contador].sprite = pupsSprites[contador - 1];
         }
     }
 
@@ -35,10 +35,10 @@ public class ScrollPups
 
     public void dragBarraDeRolagem(Vector2 posToque)
     {
-        movimentarBarraDeRollagem(posToque);
+        Vector2 delta = movimentarBarraDeRollagem(posToque);
     }
 
-    private void movimentarBarraDeRollagem(Vector2 posToque)
+    private Vector2 movimentarBarraDeRollagem(Vector2 posToque)
     {
         Vector2 delta = posToque - posicaoInicialDrag;
         posicaoInicialDrag = posToque;
@@ -46,5 +46,6 @@ public class ScrollPups
         posicao.adicionarNaPosicaoHorizontal(delta);
 
         Debug.Log(delta.x > 0 ? "POS" : "NEG");
+        return delta;
     }
 }
