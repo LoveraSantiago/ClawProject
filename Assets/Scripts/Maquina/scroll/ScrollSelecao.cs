@@ -1,8 +1,8 @@
-public class ScrollPups : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento
+public class ScrollSelecao : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento
 {
     private ProdutorDeEvento<PowerUpBtnInfo> produtorDeEvento;
 
-    public ScrollPups()
+    public ScrollSelecao()
     {
         produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfo>();
     }

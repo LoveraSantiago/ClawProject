@@ -11,6 +11,7 @@ public class ScrollPupsDto
     [SerializeField] private SpriteRenderer sprRendererPlacaSetaCima;
     [Space(3)]
     [SerializeField] private Transform transfBarraRolagem;
+    [SerializeField] private SpriteRenderer[] itensBarraRolagem = new SpriteRenderer[5];
 
     public SpriteRenderer SprRendererPlacaExterna { get { return sprRendererPlacaExterna; } }
     public SpriteRenderer SprRendererPlacaInterna { get { return sprRendererPlacaInterna; } }
@@ -19,4 +20,5 @@ public class ScrollPupsDto
     public SpriteRenderer SprRendererPlacaSetaCima { get { return sprRendererPlacaSetaCima; } }
 
     public Transform TransfBarraRolagem { get { return transfBarraRolagem; } }
+    public SpriteRenderer[] ItensBarraRolagem { get { return itensBarraRolagem; } }
 }

@@ -34,7 +34,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
         arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
-        scrollPupsManager  = new ScrollPupsManager();
+        scrollPupsManager  = new ScrollPupsManager(maquinaDto.ScrollPupsDto);
         draggavel          = botoesPowerUp;
     }
 

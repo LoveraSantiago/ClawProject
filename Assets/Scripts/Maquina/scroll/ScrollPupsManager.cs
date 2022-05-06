@@ -9,19 +9,17 @@ public class ScrollPupsManager : Draggavel,
     private bool toqueAreaDraggavelValida;
 
     private PowerUpsParaLevel pupsToLevel;
-    public ScrollPups scrollPups { get; private set; }
-    
-    private ScrollPupsDto scrollPupsDto;
-    private Vector2 posicaoInicialDrag;
+    private ScrollPups scrollPups;
+    private ScrollSelecao scrollSelecao;
 
-    public ScrollPupsManager()
+    public ScrollPupsManager(ScrollPupsDto scrollPupsDto)
     {
-        scrollPups = new ScrollPups();        
+        scrollPups = new ScrollPups(scrollPupsDto);
+        scrollSelecao = new ScrollSelecao();
     }
 
     public void configuradoPeloLevel(ScrollPupsDto scrollPupsDto, AbstractLevel level)
-    {
-        this.scrollPupsDto = scrollPupsDto;
+    {   
         if (LevelUtils.isPupLevel(level))
         {
             isLevelPup = true;
@@ -42,21 +40,22 @@ public class ScrollPupsManager : Draggavel,
             int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
             for (int contador = 0; contador < 2; contador++)
             {
-                scrollPups.simularCliqueBoxAcionado(contador, indicePup);
+                scrollSelecao.simularCliqueBoxAcionado(contador, indicePup);
             }
         }
         else if (isPupsToLevel)
         {
             for (int contador = 0; contador < pupsToLevel.getQtdBotoes(); contador++)
             {
-                scrollPups.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
+                scrollSelecao.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
             }
         }
+        scrollPups.iniciar();
     }    
 
     public bool isDragAcionavel(Vector2 posicaoDrag)
     {
-        toqueAreaDraggavelValida = scrollPupsDto.SprRendererPlacaInterna.bounds.Contains(posicaoDrag);
+        toqueAreaDraggavelValida = scrollPups.isToqueDentroPlacaInterna(posicaoDrag);
         return toqueAreaDraggavelValida;        
     }
 
@@ -67,16 +66,12 @@ public class ScrollPupsManager : Draggavel,
 
     public void onBeginDrag(Vector3 posicao)
     {
-        posicaoInicialDrag = posicao;
+        scrollPups.prepararBarraDeRolagem(posicao);
     }
 
     public void onDrag(Vector2 delta, MaquinaDto maquinaDto)
     {
-        Debug.Log("Drag Scroll chamado");
-        Vector2 diferenca = delta - posicaoInicialDrag;
-        posicaoInicialDrag = delta;
-        PosicaoTransform posicao = new PosicaoTransform(scrollPupsDto.TransfBarraRolagem);
-        posicao.adicionarNaPosicaoHorizontal(diferenca);
+        scrollPups.dragBarraDeRolagem(delta);     
     }
 
     public void onEndDrag(MaquinaDto maquinaDto)
@@ -91,18 +86,17 @@ public class ScrollPupsManager : Draggavel,
             if (isLevelPup)
             {
                 int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
-                scrollPups.simularCliqueBoxAcionado(evento.indiceBtn, indicePup);
+                scrollSelecao.simularCliqueBoxAcionado(evento.indiceBtn, indicePup);
             }
             else if (isPupsToLevel)
             {
-                scrollPups.simularCliqueBoxAcionado(evento.indiceBtn, pupsToLevel.getPupEntidade(evento.indiceBtn));
+                scrollSelecao.simularCliqueBoxAcionado(evento.indiceBtn, pupsToLevel.getPupEntidade(evento.indiceBtn));
             }
         }
     }
 
     ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollPups).getProdutorDeEvento();
+        return ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollSelecao).getProdutorDeEvento();
     }
-
 }
