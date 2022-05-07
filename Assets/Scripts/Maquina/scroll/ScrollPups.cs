@@ -21,14 +21,10 @@ public class ScrollPups
         {
             scrollPupsDto.ItensBarraRolagem[contador].sprite = pupsSprites[contador];
         }
-        itemPrimeiro = new ItemScrollPup();
-        //Debug.DrawLine(Vector3.zero, scrollPupsDto.ItensBarraRolagem[0].bounds.min, Color.red, 1000);
-        //Debug.DrawLine(Vector3.zero, scrollPupsDto.ItensBarraRolagem[0].bounds.max, Color.green, 1000);
-        //Debug.DrawLine(Vector3.zero, scrollPupsDto.ItensBarraRolagem[0].bounds.max, Color.blue, 1000);
+        itemPrimeiro = new ItemScrollPup();       
         itemPrimeiro.addItemInfo(0, scrollPupsDto.ItensBarraRolagem[0]);
 
         itemUltimo = new ItemScrollPup();
-
         int indiceUltimoItem = scrollPupsDto.ItensBarraRolagem.Length - 1;
         itemUltimo.addItemInfo(indiceUltimoItem, scrollPupsDto.ItensBarraRolagem[indiceUltimoItem]);
     }
@@ -83,20 +79,18 @@ public class ScrollPups
 
     private bool podeRolarParaDireita()
     {
-        Debug.Log("podeRolarParaDireita");
+        //Debug.Log("podeRolarParaDireita");
         if(itemPrimeiro.indice == 0)
         {
             float posX = itemPrimeiro.getPosEsquerda();
             return scrollPupsDto.SprRendererPlacaInterna.bounds.min.x > posX;
-        }
-        {
-            return true;
-        }
+        }        
+       return true;        
     } 
     
     private bool podeRolarParaEsquerda()
     {
-        Debug.Log("podeRolarParaEsquerda");
+        //Debug.Log("podeRolarParaEsquerda");
         if (itemUltimo.indice == (pupsSprites.Length - 1))
         {
             float poxX = itemUltimo.getPosDireita();
@@ -123,7 +117,7 @@ public class ScrollPups
     private void updateLadoEsquerdo()
     {
         int novoIndicePrimeiro = itemPrimeiro.indice - 1;
-        Debug.Log("<<< Indice Primeiro " + novoIndicePrimeiro);
+        //Debug.Log("<<< Indice Primeiro " + novoIndicePrimeiro);
         if (novoIndicePrimeiro >= 0)
         {
             float novaPosPrimeiro = itemPrimeiro.spriteRenderer.transform.position.x - 1;
@@ -134,7 +128,7 @@ public class ScrollPups
             itemPrimeiro.addItemInfo(novoIndicePrimeiro, sprRendererUltimo);
 
             int novoIndiceUltimo = itemUltimo.indice - 1;
-            Debug.Log("<<< Indice Update Ultimo " + novoIndiceUltimo);
+            //Debug.Log("<<< Indice Update Ultimo " + novoIndiceUltimo);
             itemUltimo.addItemInfo(novoIndiceUltimo, scrollPupsDto.ItensBarraRolagem[novoIndiceUltimo % scrollPupsDto.ItensBarraRolagem.Length]);
         }
     }
@@ -145,7 +139,7 @@ public class ScrollPups
         if(novoIndiceUltimo < pupsSprites.Length)
         {
             float novaPosXUltimo = itemUltimo.spriteRenderer.transform.position.x + 1;
-            Debug.Log(">>> Indice Ultimo " + novoIndiceUltimo);
+            //Debug.Log(">>> Indice Ultimo " + novoIndiceUltimo);
 
             SpriteRenderer sprRendererHum = itemPrimeiro.spriteRenderer;
             sprRendererHum.sprite = pupsSprites[novoIndiceUltimo];
@@ -154,7 +148,7 @@ public class ScrollPups
             itemUltimo.addItemInfo(novoIndiceUltimo, sprRendererHum);
 
             int novoIndicePrimeiro = itemPrimeiro.indice + 1;
-            Debug.Log(">>> Indice Update Primeiro " + novoIndicePrimeiro);
+            //Debug.Log(">>> Indice Update Primeiro " + novoIndicePrimeiro);
             itemPrimeiro.addItemInfo(novoIndicePrimeiro, scrollPupsDto.ItensBarraRolagem[novoIndicePrimeiro % scrollPupsDto.ItensBarraRolagem.Length]);
         }
     }
