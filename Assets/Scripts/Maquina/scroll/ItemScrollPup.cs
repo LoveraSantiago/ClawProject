@@ -20,12 +20,4 @@ public class ItemScrollPup
     {
         return spriteRenderer.bounds.max.x;
     }
-
-    public void print()
-    {
-        Debug.Log("Pos " + spriteRenderer.transform.position.x + 
-            " | Bounds max " + spriteRenderer.bounds.max + 
-            " | Local Pos " + spriteRenderer.transform.localPosition.x);
-    }
-    
 }
