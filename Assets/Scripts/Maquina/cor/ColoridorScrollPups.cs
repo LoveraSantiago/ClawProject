@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,5 +18,12 @@ public class ColoridorScrollPups
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SCROLL_PUP_SETA_CIMA];
         scrollPupsDto.SprRendererPlacaSetaCima.color = cor;
+
+        hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SCROLL_PUP_DIVISORIA];
+        cor = Utils.getCorByHex(hexCor);
+        for(int contador = 0; contador < scrollPupsDto.Divisorias.Length; contador++)
+        {
+            scrollPupsDto.Divisorias[contador].color = cor;
+        }
     }
 }

@@ -5528,6 +5528,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3144202271853300039, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &288571883 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4344844130965553443, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &292278084 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5015859664965957984, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -10623,6 +10628,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2055572827286704536, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &461778613 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5786571377809477012, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &479053422 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3210569915184402616, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -11013,6 +11023,13 @@ MonoBehaviour:
         - {fileID: 1914491313}
         - {fileID: 1699830911}
         - {fileID: 701993282}
+        divisorias:
+        - {fileID: 461778613}
+        - {fileID: 906206970}
+        - {fileID: 1579925270}
+        - {fileID: 288571883}
+        - {fileID: 1821914647}
+        - {fileID: 1540776661}
       partesDtoV2:
         placaFrente: {fileID: 1441889957}
         baseChao: {fileID: 294387047}
@@ -21984,6 +22001,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1578267165635437353, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &906206970 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4344844130833395906, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &907452400 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 934872854626666490, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -22270,15 +22292,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
-      value: 1
+      value: 0.9254902
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
-      value: 1
+      value: 0.8980392
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.a
@@ -22286,15 +22308,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.b
-      value: 1
+      value: 0.9254902
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.g
-      value: 1
+      value: 0.8980392
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.r
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Parameters.colorGradient.key2.a
@@ -43243,6 +43265,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7674434528372461127, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1540776661 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4344844131443220465, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1546124758
 GameObject:
   m_ObjectHideFlags: 0
@@ -43332,6 +43359,11 @@ SpriteRenderer:
 --- !u!212 &1557097759 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 326749042446558330, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1579925270 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4344844132584552091, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1582774531 stripped
@@ -48375,6 +48407,11 @@ GameObject:
 --- !u!212 &1821663760 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5894626488501546761, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1821914647 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4344844131222138914, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1828766896 stripped
