@@ -1,14 +1,17 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ColorivelScrollPups 
 {
     private FinderComponente finder;
     private GameObject goScrollPups;
+    private GameObject goPlacaInterna;
 
     public ColorivelScrollPups(FinderComponente finder)
     {
         this.finder = finder;
         goScrollPups = finder.findNaMaquina("scrollpups");
+        goPlacaInterna = finder.findNoComponente(goScrollPups, ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA);
     }
 
     public ComponenteColorivel getPlacaExterna()
@@ -19,7 +22,6 @@ public class ColorivelScrollPups
 
     public ComponenteColorivel getPlacaInterna()
     {
-        GameObject goPlacaInterna = finder.findNoComponente(goScrollPups, ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA);
         return new SingleCompColorivel(goPlacaInterna);
     }
 
@@ -30,6 +32,20 @@ public class ColorivelScrollPups
         return new MultipleCompColorivel(new GameObject[] {
             goSetaEsquerda, goSetaDireita
         });
+    }
+
+    public ComponenteColorivel getDivisorias()
+    {
+        List<GameObject> listaDivisorias = new List<GameObject>();
+
+        GameObject goBarraRolagem = finder.findNoComponente(goPlacaInterna, "barra-rolagem");
+        for(int contador = 0; contador < 6; contador++)
+        {
+            GameObject goItemRolagem = finder.findNoComponente(goBarraRolagem, "item-rolagem" + (contador + 1));
+            GameObject goDivisoria = finder.findNoComponente(goItemRolagem, ConstantesCoresMaquinaV2.SCROLL_PUP_DIVISORIA);
+            listaDivisorias.Add(goDivisoria);
+        }
+        return new MultipleCompColorivel(listaDivisorias.ToArray());
     }
 
     public ComponenteColorivel getSetaSuperior()

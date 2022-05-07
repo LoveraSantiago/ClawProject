@@ -238,6 +238,12 @@
         <editor:ColorField label="Scroll Seta Cima" name="seta-cima" class="campoCor"/>
         <engine:Button name="select-seta-cima" text="Select" />
         <engine:Button name="reset-seta-cima" text="Reset" />
+      </engine:VisualElement> 
+        
+      <engine:VisualElement name="linha9-5" class="linha">
+        <editor:ColorField label="Scroll Divisorias" name="divisoria" class="campoCor"/>
+        <engine:Button name="select-divisoria" text="Select" />
+        <engine:Button name="reset-divisoria" text="Reset" />
       </engine:VisualElement>
       
       <engine:VisualElement name="linha10-1" class="linha inicio">
