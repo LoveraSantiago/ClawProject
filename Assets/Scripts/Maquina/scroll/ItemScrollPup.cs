@@ -3,7 +3,7 @@ using UnityEngine;
 public class ItemScrollPup 
 {
     public int indice { get; private set; }
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer { get; private set; }
 
     public void addItemInfo(int indice, SpriteRenderer spriteRenderer)
     {

@@ -22152,10 +22152,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 617937743}
     m_Modifications:
-    - target: {fileID: 127086424996092961, guid: f08d8a764f5a59f4e815d577be3128ec, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3048732539538920882, guid: f08d8a764f5a59f4e815d577be3128ec, type: 3}
       propertyPath: m_Name
       value: item-rolagem3
@@ -38046,10 +38042,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 617937743}
     m_Modifications:
-    - target: {fileID: 127086424996092961, guid: f08d8a764f5a59f4e815d577be3128ec, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3048732539538920882, guid: f08d8a764f5a59f4e815d577be3128ec, type: 3}
       propertyPath: m_Name
       value: item-rolagem2
@@ -38325,10 +38317,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 617937743}
     m_Modifications:
-    - target: {fileID: 127086424996092961, guid: f08d8a764f5a59f4e815d577be3128ec, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3048732539538920882, guid: f08d8a764f5a59f4e815d577be3128ec, type: 3}
       propertyPath: m_Name
       value: item-rolagem4
@@ -48630,10 +48618,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 617937743}
     m_Modifications:
-    - target: {fileID: 127086424996092961, guid: f08d8a764f5a59f4e815d577be3128ec, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3048732539538920882, guid: f08d8a764f5a59f4e815d577be3128ec, type: 3}
       propertyPath: m_Name
       value: item-rolagem5
@@ -48806,10 +48790,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 617937743}
     m_Modifications:
-    - target: {fileID: 127086424996092961, guid: f08d8a764f5a59f4e815d577be3128ec, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3048732539538920882, guid: f08d8a764f5a59f4e815d577be3128ec, type: 3}
       propertyPath: m_Name
       value: item-rolagem6
@@ -61560,10 +61540,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 617937743}
     m_Modifications:
-    - target: {fileID: 127086424996092961, guid: f08d8a764f5a59f4e815d577be3128ec, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3048732539538920882, guid: f08d8a764f5a59f4e815d577be3128ec, type: 3}
       propertyPath: m_Name
       value: item-rolagem1

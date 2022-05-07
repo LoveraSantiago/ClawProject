@@ -69,7 +69,7 @@ public class ScrollPups
 
             if (isUltimoElementoDentroArea())
             {
-                Debug.Log("update");
+                updateLastItem();                
             }
         }
     }
@@ -92,5 +92,20 @@ public class ScrollPups
         float xPlacaExterna = scrollPupsDto.SprRendererPlacaInterna.bounds.max.x;
         Debug.Log("item " + xUltimoItem + " placa " + xPlacaExterna + " r " + (xUltimoItem < xPlacaExterna));
         return xUltimoItem < xPlacaExterna;            
+    }
+
+    private void updateLastItem()
+    {
+        float novaPosXUltimo = itemUltimo.spriteRenderer.transform.position.x + 1;
+        int novoIndiceUltimo = itemUltimo.indice + 1;
+
+        SpriteRenderer sprRendererHum = itemPrimeiro.spriteRenderer;
+        sprRendererHum.sprite = pupsSprites[novoIndiceUltimo];
+        sprRendererHum.transform.position = new Vector3(novaPosXUltimo, sprRendererHum.transform.position.y, sprRendererHum.transform.position.z);
+
+        itemUltimo.addItemInfo(novoIndiceUltimo, sprRendererHum);
+
+        int novoIndicePrimeiro = (itemPrimeiro.indice + 1) % scrollPupsDto.ItensBarraRolagem.Length;
+        itemPrimeiro.addItemInfo(novoIndicePrimeiro, scrollPupsDto.ItensBarraRolagem[novoIndicePrimeiro]);
     }
 }
