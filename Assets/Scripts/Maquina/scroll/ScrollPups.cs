@@ -22,6 +22,9 @@ public class ScrollPups
             scrollPupsDto.ItensBarraRolagem[contador].sprite = pupsSprites[contador];
         }
         itemPrimeiro = new ItemScrollPup();
+        //Debug.DrawLine(Vector3.zero, scrollPupsDto.ItensBarraRolagem[0].bounds.min, Color.red, 1000);
+        //Debug.DrawLine(Vector3.zero, scrollPupsDto.ItensBarraRolagem[0].bounds.max, Color.green, 1000);
+        //Debug.DrawLine(Vector3.zero, scrollPupsDto.ItensBarraRolagem[0].bounds.max, Color.blue, 1000);
         itemPrimeiro.addItemInfo(0, scrollPupsDto.ItensBarraRolagem[0]);
 
         itemUltimo = new ItemScrollPup();
@@ -42,11 +45,10 @@ public class ScrollPups
 
     public void dragBarraDeRolagem(Vector2 posToque)
     {
-        Vector2 delta = movimentarBarraDeRollagem(posToque);
-        updateItens(delta);
+        movimentarBarraDeRollagem(posToque);        
     }
 
-    private Vector2 movimentarBarraDeRollagem(Vector2 posToque)
+    private void movimentarBarraDeRollagem(Vector2 posToque)
     {
         Vector2 delta = posToque - posicaoInicialDrag;
         posicaoInicialDrag = posToque;
@@ -57,28 +59,18 @@ public class ScrollPups
             {
                 PosicaoTransform posicao = new PosicaoTransform(scrollPupsDto.TransfBarraRolagem);
                 posicao.adicionarNaPosicaoHorizontal(delta);
+
             }
         }
         else
         {
             PosicaoTransform posicao = new PosicaoTransform(scrollPupsDto.TransfBarraRolagem);
             posicao.adicionarNaPosicaoHorizontal(delta);
-        }
 
-
-        Debug.Log(delta.x > 0 ? "POS" : "NEG");
-        return delta;
-    }
-
-    private void updateItens(Vector2 delta)
-    {
-        if(delta.x > 0)
-        {
-            
-        }
-        else
-        {
-            
+            if (isUltimoElementoDentroArea())
+            {
+                Debug.Log("update");
+            }
         }
     }
 
@@ -87,15 +79,18 @@ public class ScrollPups
         if(itemPrimeiro.indice == 0)
         {
             float posX = itemPrimeiro.getPosEsquerda();
-            return scrollPupsDto.SprRendererPlacaExterna.transform.position.x < posX;
+            return scrollPupsDto.SprRendererPlacaInterna.transform.position.x < posX;
         }
         {
             return true;
         }
-    }
+    }    
 
-    private void rolandoParaEsquerda()
+    private bool isUltimoElementoDentroArea()
     {
-
+        float xUltimoItem = itemUltimo.getPosDireita();
+        float xPlacaExterna = scrollPupsDto.SprRendererPlacaInterna.bounds.max.x;
+        Debug.Log("item " + xUltimoItem + " placa " + xPlacaExterna + " r " + (xUltimoItem < xPlacaExterna));
+        return xUltimoItem < xPlacaExterna;            
     }
 }

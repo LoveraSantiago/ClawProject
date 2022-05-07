@@ -12,8 +12,13 @@ public class ItemScrollPup
     }
 
     public float getPosEsquerda()
+    {   
+        return spriteRenderer.bounds.min.x;
+    }
+
+    public float getPosDireita()
     {
-        return spriteRenderer.transform.position.x;
+        return spriteRenderer.bounds.max.x;
     }
 
     public void print()
