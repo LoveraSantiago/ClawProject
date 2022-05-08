@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class SegmentosTimer 
-{                                                      //0A, BC, DE, FG
+{                                                       //0A, BC, DE, FG
     private readonly Vector4 DIGITO_ZERO   = new Vector4( 01, 11, 11, 10 );
     private readonly Vector4 DIGITO_HUM    = new Vector4( 00, 11, 00, 00 );
     private readonly Vector4 DIGITO_DOIS   = new Vector4( 01, 10, 11, 01 );

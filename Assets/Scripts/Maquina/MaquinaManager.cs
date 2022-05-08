@@ -45,7 +45,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         displayDeColetados.configuradoPeloLevel(levelEscolhido, maquinaDto.DisplayColetadosDto);
         displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto, levelEscolhido);
         scrollPupsManager.configuradoPeloLevel(maquinaDto.ScrollPupsDto, levelEscolhido);
-        displayTimer.configuradoPeloLevel(maquinaDto.DisplayTimerDto, levelEscolhido);
+        displayTimer.configuradoPeloLevel(maquinaDto.DisplayTimerDto, maquinaDto.Material7SegsDto, levelEscolhido);
 
         new ColoridorMaquinaV2()
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());        

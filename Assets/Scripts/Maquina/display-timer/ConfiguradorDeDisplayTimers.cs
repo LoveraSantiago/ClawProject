@@ -12,13 +12,9 @@ public class ConfiguradorDeDisplayTimers
         this.displayTimerDigitos = displayTimerDigito;
     }
 
-    public void configurarPeloLevel(AbstractLevel levelEscolhido)
+    public void configurarPeloLevel(Materiais7SegmentosDto materiais7SegsDto, AbstractLevel levelEscolhido)
     {
-        configurarPeloLevel(levelEscolhido.isLevelAlbedo0(), levelEscolhido.isLevelAlbedo0Timer2Pontos(), levelEscolhido.getDicionarioDeCores());
-    }
-
-    private void configurarPeloLevel(bool isAlbedo0Level, bool isAlbedo0Timer2Pontos, Dictionary<string, string> dicionarioDeCores)
-    {   
+        Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
         string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL];
         SpriteRenderer placaTimer = displayDto.SprRendererPlacaGrupo;
         placaTimer.color = Utils.getCorByHex(corDigitosHex);
@@ -29,13 +25,15 @@ public class ConfiguradorDeDisplayTimers
         corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO];
         Color corPlaca = Utils.getCorByHex(corDigitosHex);
 
-        Material materialDisplay = getMaterialSegmentos(isAlbedo0Level);
+        bool isAlbedo0Level = levelEscolhido.isLevelAlbedo0();
+        Material materialDisplay = getMaterialSegmentos(isAlbedo0Level, materiais7SegsDto);
         passarCoresAosDisplaysDigitos(materialDisplay, corDigito, corPlaca);        
 
         DisplayTimerDigito2Pontos displayTimer2Pontos = displayTimerDigitos.getDisplayTimer2Segmentos();
+        bool isAlbedo0Timer2Pontos = levelEscolhido.isLevelAlbedo0Timer2Pontos();
         Material materialDisplay2Pontos = getMaterialSegmentos2Pontos(isAlbedo0Timer2Pontos);
         displayTimer2Pontos.configuradoPeloLevel(materialDisplay2Pontos, corDigito);
-    }
+    }    
 
     private void passarCoresAosDisplaysDigitos(Material materialDisplay, Color corDigito, Color corPlaca)
     {
@@ -48,15 +46,15 @@ public class ConfiguradorDeDisplayTimers
         }
     }    
 
-    private Material getMaterialSegmentos(bool isAlbedo0)
+    private Material getMaterialSegmentos(bool isAlbedo0, Materiais7SegmentosDto materiais7SegsDto)
     {
         if (isAlbedo0)
         {
-            return displayDto.MatSegmentosAditivos;
+            return materiais7SegsDto.Mat7SegmentosAditivos;
         }
         else
         {
-            return displayDto.MatSegmentosAlpha;
+            return materiais7SegsDto.Mat7SegmentosAlpha;
         }
     }
 

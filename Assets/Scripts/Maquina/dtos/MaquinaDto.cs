@@ -23,6 +23,8 @@ public class MaquinaDto
     [SerializeField] private PartesMaquinaDtoV2 partesDtoV2;
     [Space(3)]
     [SerializeField] private MaquinaEfeitoGlowDto maquinaEfeitoGlow;
+    [Space(3)]
+    [SerializeField] private Materiais7SegmentosDto material7SegsDto;
     
     public Transform ReferenciaChao { get { return referenciaChao; } }
 
@@ -41,4 +43,5 @@ public class MaquinaDto
     public PartesMaquinaDtoV2 PartesDtoV2 { get { return partesDtoV2; } }
 
     public MaquinaEfeitoGlowDto MaquinaEfeitoGlowDto { get { return maquinaEfeitoGlow; } }
+    public Materiais7SegmentosDto Material7SegsDto { get { return material7SegsDto; } }
 }

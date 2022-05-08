@@ -5,10 +5,7 @@ using UnityEngine;
 public class DisplayTimerDto
 {
 
-    [SerializeField] private SpriteRenderer sprRendererPlaca;    
-    [Space(3)]
-    [SerializeField] private Material matSegmentosAditivos;
-    [SerializeField] private Material matSegmentosAlpha;
+    [SerializeField] private SpriteRenderer sprRendererPlaca;        
     [Space(3)]
     [SerializeField] private SpriteRenderer sprRendererPlacaGrupo;    
     [SerializeField] private SpriteRenderer sprRenderer2Pontos;    
@@ -17,9 +14,6 @@ public class DisplayTimerDto
 
     public SpriteRenderer SprRendererPlaca { get { return sprRendererPlaca; } }
     public SpriteRenderer SprRendererPlacaGrupo { get { return sprRendererPlacaGrupo; } }    
-
-    public Material MatSegmentosAditivos { get { return matSegmentosAditivos; } }
-    public Material MatSegmentosAlpha { get { return matSegmentosAlpha; } }    
 
     public SpriteRenderer SprRenderer2Pontos { get { return sprRenderer2Pontos; } }
 
