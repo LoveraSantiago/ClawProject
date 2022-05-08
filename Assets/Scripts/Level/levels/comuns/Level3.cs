@@ -104,7 +104,7 @@ public class Level3 : AbstractLevelElevador
         return dicionario;
     }
 
-    public override bool isLevelAlbedo0()
+    public override bool isLevelAlbedo0Timers()
     {
         return true;
     }

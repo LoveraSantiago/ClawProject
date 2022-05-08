@@ -147,7 +147,7 @@ public class Level2 : AbstractLevel
         //return dicionario;
     }
 
-    public override bool isLevelAlbedo0()
+    public override bool isLevelAlbedo0Timers()
     {
         return true;
     }

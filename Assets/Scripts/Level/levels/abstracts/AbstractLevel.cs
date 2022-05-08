@@ -27,11 +27,16 @@ public abstract class AbstractLevel
 
     public abstract Dictionary<string, string> getDicionarioDeCores();    
 
-    public abstract bool isLevelAlbedo0();    
+    public abstract bool isLevelAlbedo0Timers();    
 
     public virtual bool isLevelAlbedo0Timer2Pontos()
     {
-        return isLevelAlbedo0();
+        return isLevelAlbedo0Timers();
+    }
+
+    public virtual bool isLevelAlbedo0DigitosScrollPup()
+    {
+        return isLevelAlbedo0Timers();
     }
 
     public bool hasPupToLevel()

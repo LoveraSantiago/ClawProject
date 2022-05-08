@@ -20,7 +20,7 @@ public class LevelCoco : AbstractLevelColetavel
         return 15;
     }
 
-    public override bool isLevelAlbedo0()
+    public override bool isLevelAlbedo0Timers()
     {
         return true;
     }

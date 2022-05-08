@@ -25,7 +25,7 @@ public class ConfiguradorDeDisplayTimers
         corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO];
         Color corPlaca = Utils.getCorByHex(corDigitosHex);
 
-        bool isAlbedo0Level = levelEscolhido.isLevelAlbedo0();
+        bool isAlbedo0Level = levelEscolhido.isLevelAlbedo0Timers();
         Material materialDisplay = getMaterialSegmentos(isAlbedo0Level, materiais7SegsDto);
         passarCoresAosDisplaysDigitos(materialDisplay, corDigito, corPlaca);        
 

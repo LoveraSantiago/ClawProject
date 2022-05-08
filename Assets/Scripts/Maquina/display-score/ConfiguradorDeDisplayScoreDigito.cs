@@ -42,7 +42,7 @@ public class ConfiguradorDeDisplayScoreDigito
 
     private Material getMaterialLedToLevel(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)
     {
-        if (levelEscolhido.isLevelAlbedo0())
+        if (levelEscolhido.isLevelAlbedo0Timers())
         {
             return displayDeScoresDto.MaterialEfeitoLedAditivo;
         }

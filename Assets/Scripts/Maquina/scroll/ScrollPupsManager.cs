@@ -18,7 +18,7 @@ public class ScrollPupsManager : Draggavel,
         scrollSelecao = new ScrollSelecao();
     }
 
-    public void configuradoPeloLevel(ScrollPupsDto scrollPupsDto, AbstractLevel level)
+    public void configuradoPeloLevel(ScrollPupsDto scrollPupsDto, Materiais7SegmentosDto mat7Segmentos, AbstractLevel level)
     {   
         if (LevelUtils.isPupLevel(level))
         {
@@ -29,11 +29,11 @@ public class ScrollPupsManager : Draggavel,
             pupsToLevel = level.getPupsToLevel();
             isPupsToLevel = true;
         }
-
         new ColoridorScrollPups().colorir(scrollPupsDto, level.getDicionarioDeCores());
+        scrollPups.configuradoPeloLevel(mat7Segmentos, level);
     }
 
-    public void iniciar(Materiais7SegmentosDto mat7Segmentos)
+    public void iniciar()
     {
         if (isLevelPup)
         {
@@ -50,7 +50,7 @@ public class ScrollPupsManager : Draggavel,
                 scrollSelecao.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
             }
         }
-        scrollPups.iniciar(mat7Segmentos);
+        scrollPups.iniciar();
     }    
 
     public bool isDragAcionavel(Vector2 posicaoDrag)

@@ -14,10 +14,14 @@ public class ScrollPups
         this.scrollPupsDto = scrollPupsDto;
     }
 
-    public void iniciar(Materiais7SegmentosDto mat7Segmentos)
+    public void configuradoPeloLevel(Materiais7SegmentosDto mat7Segmentos, AbstractLevel level)
     {
         pupsSprites = PowerUpHelper.getAllSpritesPowerUp();
-        configurarItens(mat7Segmentos);
+        configurarItens(mat7Segmentos, level);
+    }
+
+    public void iniciar()
+    {
         inicializarItens();
     }
 
@@ -36,25 +40,45 @@ public class ScrollPups
         movimentarBarraDeRollagem(posToque);        
     }
 
-    private void configurarItens(Materiais7SegmentosDto mat7Segmentos)
+    private void configurarItens(Materiais7SegmentosDto mat7Segmentos, AbstractLevel level)
     {
+        string hexCor = level.getDicionarioDeCores()[ConstantesCoresMaquinaV2.SCROLL_PUP_DIGITOS];
+        Color corDigito = Utils.getCorByHex(hexCor);
+
+        Material material7Segmentos = getMaterial7DigitosFromAlbedoLevel(level, mat7Segmentos);
+
         for (int contador = 0; contador < scrollPupsDto.ItensScrollPup.Length; contador++)
         {
             ItemScrollDto itemScrollDto = scrollPupsDto.ItensScrollPup[contador];
             itemScrollDto.SprRendererImgPup.sprite = pupsSprites[contador];
 
             int qtdPup = getQtdPupsDoIndice(contador);
-            itemScrollDto.SprRendererDigito1.sharedMaterial = configMaterialDigito(mat7Segmentos, qtdPup / 10);
-            itemScrollDto.SprRendererDigito2.sharedMaterial = configMaterialDigito(mat7Segmentos, qtdPup % 10);
+            itemScrollDto.SprRendererDigito1.color = Color.white;
+            itemScrollDto.SprRendererDigito2.color = Color.white;
+
+            itemScrollDto.SprRendererDigito1.sharedMaterial = configMaterialDigito(material7Segmentos, qtdPup / 10, corDigito);
+            itemScrollDto.SprRendererDigito2.sharedMaterial = configMaterialDigito(material7Segmentos, qtdPup % 10, corDigito);
         }
     }
 
-    private Material configMaterialDigito(Materiais7SegmentosDto mat7Segmentos, int digito)
+    private Material configMaterialDigito(Material material, int digito, Color cor)
     {
-        Material7Digitos material7Digitos = new Material7Digitos(mat7Segmentos.Mat7SegmentosAlpha);
-        material7Digitos.addCorDesligado(Color.white);
+        Material7Digitos material7Digitos = new Material7Digitos(material);
+        material7Digitos.addCorDesligado(cor);
         material7Digitos.addDigito(digito);
         return material7Digitos.material;
+    }
+
+    private Material getMaterial7DigitosFromAlbedoLevel(AbstractLevel level, Materiais7SegmentosDto mat7Segmentos)
+    {
+        if (level.isLevelAlbedo0DigitosScrollPup())
+        {
+            return mat7Segmentos.Mat7SegmentosAditivos;
+        }
+        else
+        {
+            return mat7Segmentos.Mat7SegmentosAlpha;
+        }
     }
 
     private void inicializarItens()

@@ -44,18 +44,18 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
         displayDeColetados.configuradoPeloLevel(levelEscolhido, maquinaDto.DisplayColetadosDto);
         displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto, levelEscolhido);
-        scrollPupsManager.configuradoPeloLevel(maquinaDto.ScrollPupsDto, levelEscolhido);
+        scrollPupsManager.configuradoPeloLevel(maquinaDto.ScrollPupsDto, maquinaDto.Material7SegsDto, levelEscolhido);
         displayTimer.configuradoPeloLevel(maquinaDto.DisplayTimerDto, maquinaDto.Material7SegsDto, levelEscolhido);
 
         new ColoridorMaquinaV2()
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());        
     }
 
-    public void start(InputGame inputGame, Materiais7SegmentosDto mat7Segmentos)
+    public void start(InputGame inputGame)
     {
         displayTimer.iniciarContagemTempo();
         displayDeColetados.iniciar(inputGame);
-        scrollPupsManager.iniciar(mat7Segmentos);
+        scrollPupsManager.iniciar();
     }
 
     public void update(MaquinaDto maquinaDto, InputGame inputGame)

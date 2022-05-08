@@ -20,7 +20,7 @@ public class LevelPao : AbstractLevelColetavel
         return 13;
     }
 
-    public override bool isLevelAlbedo0()
+    public override bool isLevelAlbedo0Timers()
     {
         return true;
     }

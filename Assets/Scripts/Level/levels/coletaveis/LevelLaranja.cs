@@ -20,7 +20,7 @@ public class LevelLaranja : AbstractLevelColetavel
         return 12;
     }
 
-    public override bool isLevelAlbedo0()
+    public override bool isLevelAlbedo0Timers()
     {
         return true;
     }

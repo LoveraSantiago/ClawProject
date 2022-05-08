@@ -51,7 +51,7 @@ public class MainGameManagers
     {
         yield return coletaveisManager.start();
 
-        maquinaManager.start(inputGame, mainDto.MaquinaDto.Material7SegsDto);
+        maquinaManager.start(inputGame);
         uiManager.start();        
         garraManager.start(mainDto.GarraDto);
         consumidorUpdateManagers.consumir(getUpdatables());        
