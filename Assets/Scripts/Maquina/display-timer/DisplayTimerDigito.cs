@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class DisplayTimerDigito 
 {
-    private static SegmentosTimer segmentos = new SegmentosTimer();
-
     private bool blink;
     private Vector4 digito;
     private Material materialDisplay;
@@ -26,7 +24,7 @@ public class DisplayTimerDigito
 
     public void mostrarDigito(int digito)
     {   
-        this.digito = segmentos.getSegmentosDigito(digito);
+        this.digito = Digitos7Segmentos.getSegmentosDigito(digito);
         if (!blink)
         {
             ligarPosicoes(this.digito);
@@ -48,7 +46,7 @@ public class DisplayTimerDigito
 
     private void desligarPosicoes()
     {
-        ligarPosicoes(segmentos.getSegmentosOff());
+        ligarPosicoes(Digitos7Segmentos.getSegmentosOff());
     }
 
     private void ligarPosicoes(Vector4 digito)
