@@ -17,16 +17,18 @@ public class ScrollPups
     public void iniciar()
     {
         pupsSprites = PowerUpHelper.getAllSpritesPowerUp();
-        for(int contador = 0; contador < scrollPupsDto.ItensBarraRolagem.Length; contador++)
+        for(int contador = 0; contador < scrollPupsDto.ItensScrollPup.Length; contador++)
         {
-            scrollPupsDto.ItensBarraRolagem[contador].sprite = pupsSprites[contador];
+            scrollPupsDto.ItensScrollPup[contador].SprRendererImgPup.sprite = pupsSprites[contador];
         }
+
+        int indiceZero = 0;
         itemPrimeiro = new ItemScrollPup();       
-        itemPrimeiro.addItemInfo(0, scrollPupsDto.ItensBarraRolagem[0]);
+        itemPrimeiro.addItemInfo(indiceZero, scrollPupsDto.ItensScrollPup[indiceZero].SprRendererDivisoria);
 
         itemUltimo = new ItemScrollPup();
-        int indiceUltimoItem = scrollPupsDto.ItensBarraRolagem.Length - 1;
-        itemUltimo.addItemInfo(indiceUltimoItem, scrollPupsDto.ItensBarraRolagem[indiceUltimoItem]);
+        int indiceUltimoItem = scrollPupsDto.ItensScrollPup.Length - 1;
+        itemUltimo.addItemInfo(indiceUltimoItem, scrollPupsDto.ItensScrollPup[indiceUltimoItem].SprRendererDivisoria);
     }
 
     public bool isToqueDentroPlacaInterna(Vector2 posToque)
@@ -121,7 +123,7 @@ public class ScrollPups
         if (novoIndicePrimeiro >= 0)
         {
             float novaPosPrimeiro = itemPrimeiro.spriteRenderer.transform.position.x - 1;
-            SpriteRenderer sprRendererUltimo = itemUltimo.spriteRenderer;
+            SpriteRenderer sprRendererUltimo = itemUltimo.spriteRenderer;            
             sprRendererUltimo.sprite = pupsSprites[novoIndicePrimeiro];
             Vector3 novaPos = new Vector3(novaPosPrimeiro, sprRendererUltimo.transform.position.y, sprRendererUltimo.transform.position.z);
             sprRendererUltimo.transform.position = novaPos;
@@ -129,7 +131,8 @@ public class ScrollPups
 
             int novoIndiceUltimo = itemUltimo.indice - 1;
             //Debug.Log("<<< Indice Update Ultimo " + novoIndiceUltimo);
-            itemUltimo.addItemInfo(novoIndiceUltimo, scrollPupsDto.ItensBarraRolagem[novoIndiceUltimo % scrollPupsDto.ItensBarraRolagem.Length]);
+            int indiceItem = novoIndiceUltimo % scrollPupsDto.ItensScrollPup.Length;
+            itemUltimo.addItemInfo(novoIndiceUltimo, scrollPupsDto.ItensScrollPup[indiceItem].SprRendererDivisoria);
         }
     }
 
@@ -149,7 +152,8 @@ public class ScrollPups
 
             int novoIndicePrimeiro = itemPrimeiro.indice + 1;
             //Debug.Log(">>> Indice Update Primeiro " + novoIndicePrimeiro);
-            itemPrimeiro.addItemInfo(novoIndicePrimeiro, scrollPupsDto.ItensBarraRolagem[novoIndicePrimeiro % scrollPupsDto.ItensBarraRolagem.Length]);
+            int indiceItem = novoIndicePrimeiro % scrollPupsDto.ItensScrollPup.Length;
+            itemPrimeiro.addItemInfo(novoIndicePrimeiro, scrollPupsDto.ItensScrollPup[indiceItem].SprRendererDivisoria);
         }
     }
 }

@@ -21,9 +21,9 @@ public class ColoridorScrollPups
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SCROLL_PUP_DIVISORIA];
         cor = Utils.getCorByHex(hexCor);
-        for(int contador = 0; contador < scrollPupsDto.Divisorias.Length; contador++)
+        for(int contador = 0; contador < scrollPupsDto.ItensScrollPup.Length; contador++)
         {
-            scrollPupsDto.Divisorias[contador].color = cor;
+            scrollPupsDto.ItensScrollPup[contador].SprRendererDivisoria.color = cor;
         }
     }
 }

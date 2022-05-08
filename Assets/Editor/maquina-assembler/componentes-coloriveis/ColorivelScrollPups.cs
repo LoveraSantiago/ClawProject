@@ -41,9 +41,8 @@ public class ColorivelScrollPups
         GameObject goBarraRolagem = finder.findNoComponente(goPlacaInterna, "barra-rolagem");
         for(int contador = 0; contador < 6; contador++)
         {
-            GameObject goItemRolagem = finder.findNoComponente(goBarraRolagem, "item-rolagem" + (contador + 1));
-            GameObject goDivisoria = finder.findNoComponente(goItemRolagem, ConstantesCoresMaquinaV2.SCROLL_PUP_DIVISORIA);
-            listaDivisorias.Add(goDivisoria);
+            GameObject goItemRolagem = finder.findNoComponente(goBarraRolagem, "item-rolagem" + (contador + 1));            
+            listaDivisorias.Add(goItemRolagem);
         }
         return new MultipleCompColorivel(listaDivisorias.ToArray());
     }
