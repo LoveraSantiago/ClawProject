@@ -24,11 +24,11 @@ public class ScrollPups
 
         int indiceZero = 0;
         itemPrimeiro = new ItemScrollPup();       
-        itemPrimeiro.addItemInfo(indiceZero, scrollPupsDto.ItensScrollPup[indiceZero].SprRendererDivisoria);
+        itemPrimeiro.addItemInfo(indiceZero, scrollPupsDto.ItensScrollPup[indiceZero]);
 
         itemUltimo = new ItemScrollPup();
         int indiceUltimoItem = scrollPupsDto.ItensScrollPup.Length - 1;
-        itemUltimo.addItemInfo(indiceUltimoItem, scrollPupsDto.ItensScrollPup[indiceUltimoItem].SprRendererDivisoria);
+        itemUltimo.addItemInfo(indiceUltimoItem, scrollPupsDto.ItensScrollPup[indiceUltimoItem]);
     }
 
     public bool isToqueDentroPlacaInterna(Vector2 posToque)
@@ -122,17 +122,14 @@ public class ScrollPups
         //Debug.Log("<<< Indice Primeiro " + novoIndicePrimeiro);
         if (novoIndicePrimeiro >= 0)
         {
-            float novaPosPrimeiro = itemPrimeiro.spriteRenderer.transform.position.x - 1;
-            SpriteRenderer sprRendererUltimo = itemUltimo.spriteRenderer;            
-            sprRendererUltimo.sprite = pupsSprites[novoIndicePrimeiro];
-            Vector3 novaPos = new Vector3(novaPosPrimeiro, sprRendererUltimo.transform.position.y, sprRendererUltimo.transform.position.z);
-            sprRendererUltimo.transform.position = novaPos;
-            itemPrimeiro.addItemInfo(novoIndicePrimeiro, sprRendererUltimo);
+            float novaPosPrimeiro = itemPrimeiro.getPosicaoDeslocadaAEsquerda();
+            itemUltimo.addItemInfo(novaPosPrimeiro, pupsSprites[novoIndicePrimeiro]);
+            itemPrimeiro.addItemInfo(novoIndicePrimeiro, itemUltimo.itemScrollDto);
 
             int novoIndiceUltimo = itemUltimo.indice - 1;
             //Debug.Log("<<< Indice Update Ultimo " + novoIndiceUltimo);
             int indiceItem = novoIndiceUltimo % scrollPupsDto.ItensScrollPup.Length;
-            itemUltimo.addItemInfo(novoIndiceUltimo, scrollPupsDto.ItensScrollPup[indiceItem].SprRendererDivisoria);
+            itemUltimo.addItemInfo(novoIndiceUltimo, scrollPupsDto.ItensScrollPup[indiceItem]);
         }
     }
 
@@ -141,19 +138,15 @@ public class ScrollPups
         int novoIndiceUltimo = itemUltimo.indice + 1;
         if(novoIndiceUltimo < pupsSprites.Length)
         {
-            float novaPosXUltimo = itemUltimo.spriteRenderer.transform.position.x + 1;
+            float novaPosXUltimo = itemUltimo.getPosicaoDeslocadaADireita();
             //Debug.Log(">>> Indice Ultimo " + novoIndiceUltimo);
-
-            SpriteRenderer sprRendererHum = itemPrimeiro.spriteRenderer;
-            sprRendererHum.sprite = pupsSprites[novoIndiceUltimo];
-            Vector3 novaPos = new Vector3(novaPosXUltimo, sprRendererHum.transform.position.y, sprRendererHum.transform.position.z);
-            sprRendererHum.transform.position = novaPos;
-            itemUltimo.addItemInfo(novoIndiceUltimo, sprRendererHum);
+            itemPrimeiro.addItemInfo(novaPosXUltimo, pupsSprites[novoIndiceUltimo]);
+            itemUltimo.addItemInfo(novoIndiceUltimo, itemPrimeiro.itemScrollDto);
 
             int novoIndicePrimeiro = itemPrimeiro.indice + 1;
             //Debug.Log(">>> Indice Update Primeiro " + novoIndicePrimeiro);
             int indiceItem = novoIndicePrimeiro % scrollPupsDto.ItensScrollPup.Length;
-            itemPrimeiro.addItemInfo(novoIndicePrimeiro, scrollPupsDto.ItensScrollPup[indiceItem].SprRendererDivisoria);
+            itemPrimeiro.addItemInfo(novoIndicePrimeiro, scrollPupsDto.ItensScrollPup[indiceItem]);
         }
     }
 }

@@ -11026,21 +11026,7 @@ MonoBehaviour:
         sprRendererPlacaSetaDireita: {fileID: 359636736}
         sprRendererPlacaSetaCima: {fileID: 554489270}
         transfBarraRolagem: {fileID: 617937743}
-        itensBarraRolagem:
-        - {fileID: 7783896592183468493}
-        - {fileID: 1316822175}
-        - {fileID: 1507789602}
-        - {fileID: 1914491313}
-        - {fileID: 1699830911}
-        - {fileID: 701993282}
-        divisorias:
-        - {fileID: 461778613}
-        - {fileID: 906206970}
-        - {fileID: 1579925270}
-        - {fileID: 288571883}
-        - {fileID: 1821914647}
-        - {fileID: 1540776661}
-        itemScrollPup:
+        itensScrollPup:
         - sprRendererDivisoria: {fileID: 7783896592183468493}
           sprRendererImgPup: {fileID: 461778613}
           sprRednererDigito1: {fileID: 1539387512}
@@ -59016,6 +59002,10 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3665719842429880430, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5845699465068917843, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -59063,6 +59053,26 @@ PrefabInstance:
     - target: {fileID: 6015691810215975126, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_Name
       value: maquina-v3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834973792818378200, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834973793135991307, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834973793206105400, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834973793610368217, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834973794138911585, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c301260e6514149bc0e163ff994732, type: 3}
