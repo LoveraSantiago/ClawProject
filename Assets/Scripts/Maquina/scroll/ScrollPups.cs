@@ -14,10 +14,10 @@ public class ScrollPups
         this.scrollPupsDto = scrollPupsDto;
     }
 
-    public void iniciar()
+    public void iniciar(Materiais7SegmentosDto mat7Segmentos)
     {
         pupsSprites = PowerUpHelper.getAllSpritesPowerUp();
-        configurarItens();
+        configurarItens(mat7Segmentos);
         inicializarItens();
     }
 
@@ -36,12 +36,24 @@ public class ScrollPups
         movimentarBarraDeRollagem(posToque);        
     }
 
-    private void configurarItens()
+    private void configurarItens(Materiais7SegmentosDto mat7Segmentos)
     {
         for (int contador = 0; contador < scrollPupsDto.ItensScrollPup.Length; contador++)
         {
-            scrollPupsDto.ItensScrollPup[contador].SprRendererImgPup.sprite = pupsSprites[contador];
+            ItemScrollDto itemScrollDto = scrollPupsDto.ItensScrollPup[contador];
+            itemScrollDto.SprRendererImgPup.sprite = pupsSprites[contador];
+            
+            itemScrollDto.SprRendererDigito1.sharedMaterial = configMaterialDigito(mat7Segmentos);
+            itemScrollDto.SprRendererDigito2.sharedMaterial = configMaterialDigito(mat7Segmentos);
         }
+    }
+
+    private Material configMaterialDigito(Materiais7SegmentosDto mat7Segmentos)
+    {
+        Material7Digitos material7Digitos = new Material7Digitos(mat7Segmentos.Mat7SegmentosAditivos);
+        material7Digitos.addCorDesligado(Color.black);
+        material7Digitos.addDigito(0);
+        return material7Digitos.material;
     }
 
     private void inicializarItens()

@@ -33,7 +33,7 @@ public class ScrollPupsManager : Draggavel,
         new ColoridorScrollPups().colorir(scrollPupsDto, level.getDicionarioDeCores());
     }
 
-    public void iniciar()
+    public void iniciar(Materiais7SegmentosDto mat7Segmentos)
     {
         if (isLevelPup)
         {
@@ -50,7 +50,7 @@ public class ScrollPupsManager : Draggavel,
                 scrollSelecao.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
             }
         }
-        scrollPups.iniciar();
+        scrollPups.iniciar(mat7Segmentos);
     }    
 
     public bool isDragAcionavel(Vector2 posicaoDrag)

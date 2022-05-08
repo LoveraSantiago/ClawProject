@@ -51,11 +51,11 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
             .colorir(partesDto, levelEscolhido.getDicionarioDeCores());        
     }
 
-    public void start(InputGame inputGame)
+    public void start(InputGame inputGame, Materiais7SegmentosDto mat7Segmentos)
     {
         displayTimer.iniciarContagemTempo();
         displayDeColetados.iniciar(inputGame);
-        scrollPupsManager.iniciar();
+        scrollPupsManager.iniciar(mat7Segmentos);
     }
 
     public void update(MaquinaDto maquinaDto, InputGame inputGame)

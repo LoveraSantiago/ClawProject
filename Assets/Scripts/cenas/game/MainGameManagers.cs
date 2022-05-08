@@ -21,7 +21,7 @@ public class MainGameManagers
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
         uiManager         = new UiGameManager(mainDto.UiDto);        
         cameraManager     = new CameraManager(mainDto.CameraDto);
-        draggavelManager = new DraggavelManager(mainDto.DragCollider);
+        draggavelManager  = new DraggavelManager(mainDto.DragCollider);
 
         configurandoLevel(mainDto, levelEscolhido);
         configurandoEventos();
@@ -51,7 +51,7 @@ public class MainGameManagers
     {
         yield return coletaveisManager.start();
 
-        maquinaManager.start(inputGame);
+        maquinaManager.start(inputGame, mainDto.MaquinaDto.Material7SegsDto);
         uiManager.start();        
         garraManager.start(mainDto.GarraDto);
         consumidorUpdateManagers.consumir(getUpdatables());        
