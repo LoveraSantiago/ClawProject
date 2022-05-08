@@ -17,18 +17,8 @@ public class ScrollPups
     public void iniciar()
     {
         pupsSprites = PowerUpHelper.getAllSpritesPowerUp();
-        for(int contador = 0; contador < scrollPupsDto.ItensScrollPup.Length; contador++)
-        {
-            scrollPupsDto.ItensScrollPup[contador].SprRendererImgPup.sprite = pupsSprites[contador];
-        }
-
-        int indiceZero = 0;
-        itemPrimeiro = new ItemScrollPup();       
-        itemPrimeiro.addItemInfo(indiceZero, scrollPupsDto.ItensScrollPup[indiceZero]);
-
-        itemUltimo = new ItemScrollPup();
-        int indiceUltimoItem = scrollPupsDto.ItensScrollPup.Length - 1;
-        itemUltimo.addItemInfo(indiceUltimoItem, scrollPupsDto.ItensScrollPup[indiceUltimoItem]);
+        configurarItens();
+        inicializarItens();
     }
 
     public bool isToqueDentroPlacaInterna(Vector2 posToque)
@@ -46,6 +36,25 @@ public class ScrollPups
         movimentarBarraDeRollagem(posToque);        
     }
 
+    private void configurarItens()
+    {
+        for (int contador = 0; contador < scrollPupsDto.ItensScrollPup.Length; contador++)
+        {
+            scrollPupsDto.ItensScrollPup[contador].SprRendererImgPup.sprite = pupsSprites[contador];
+        }
+    }
+
+    private void inicializarItens()
+    {
+        int indiceZero = 0;
+        itemPrimeiro = new ItemScrollPup();
+        itemPrimeiro.addItemInfo(indiceZero, scrollPupsDto.ItensScrollPup[indiceZero]);
+
+        itemUltimo = new ItemScrollPup();
+        int indiceUltimoItem = scrollPupsDto.ItensScrollPup.Length - 1;
+        itemUltimo.addItemInfo(indiceUltimoItem, scrollPupsDto.ItensScrollPup[indiceUltimoItem]);
+    }
+
     private void movimentarBarraDeRollagem(Vector2 posToque)
     {
         Vector2 delta = posToque - posicaoInicialDrag;
@@ -55,28 +64,30 @@ public class ScrollPups
         {
             if (podeRolarParaDireita())
             {
-                PosicaoTransform posicao = new PosicaoTransform(scrollPupsDto.TransfBarraRolagem);
-                posicao.adicionarNaPosicaoHorizontal(delta);
-
+                atualizarPosicaoBarra(delta);
                 if (isPrimeiroElementoDentroArea())
                 {
                     updateLadoEsquerdo();
                 }
             }
         }
-        else
+        else if(delta.x < 0)
         {
             if (podeRolarParaEsquerda())
             {
-                PosicaoTransform posicao = new PosicaoTransform(scrollPupsDto.TransfBarraRolagem);
-                posicao.adicionarNaPosicaoHorizontal(delta);
-
+                atualizarPosicaoBarra(delta);
                 if (isUltimoElementoDentroArea())
                 {
                     updateLadoDireito();                
                 }
             }
         }
+    }
+
+    private void atualizarPosicaoBarra(Vector2 delta)
+    {
+        PosicaoTransform posicao = new PosicaoTransform(scrollPupsDto.TransfBarraRolagem);
+        posicao.adicionarNaPosicaoHorizontal(delta);
     }
 
     private bool podeRolarParaDireita()
