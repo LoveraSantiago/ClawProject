@@ -45,7 +45,7 @@ public class ScrollPups
         string hexCor = level.getDicionarioDeCores()[ConstantesCoresMaquinaV2.SCROLL_PUP_DIGITOS];
         Color corDigito = Utils.getCorByHex(hexCor);
 
-        Material material7Segmentos = getMaterial7DigitosFromAlbedoLevel(level, mat7Segmentos);
+        Material material7Segmentos = mat7Segmentos.getMaterialFromAlbedo(level.isLevelAlbedo0DigitosScrollPup());
 
         for (int contador = 0; contador < scrollPupsDto.ItensScrollPup.Length; contador++)
         {
@@ -67,18 +67,6 @@ public class ScrollPups
         material7Digitos.addCorDesligado(cor);
         material7Digitos.addDigito(digito);
         return material7Digitos.material;
-    }
-
-    private Material getMaterial7DigitosFromAlbedoLevel(AbstractLevel level, Materiais7SegmentosDto mat7Segmentos)
-    {
-        if (level.isLevelAlbedo0DigitosScrollPup())
-        {
-            return mat7Segmentos.Mat7SegmentosAditivos;
-        }
-        else
-        {
-            return mat7Segmentos.Mat7SegmentosAlpha;
-        }
     }
 
     private void inicializarItens()

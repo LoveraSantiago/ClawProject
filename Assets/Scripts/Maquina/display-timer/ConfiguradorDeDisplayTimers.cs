@@ -26,7 +26,7 @@ public class ConfiguradorDeDisplayTimers
         Color corPlaca = Utils.getCorByHex(corDigitosHex);
 
         bool isAlbedo0Level = levelEscolhido.isLevelAlbedo0Timers();
-        Material materialDisplay = getMaterialSegmentos(isAlbedo0Level, materiais7SegsDto);
+        Material materialDisplay = materiais7SegsDto.getMaterialFromAlbedo(isAlbedo0Level);
         passarCoresAosDisplaysDigitos(materialDisplay, corDigito, corPlaca);        
 
         DisplayTimerDigito2Pontos displayTimer2Pontos = displayTimerDigitos.getDisplayTimer2Segmentos();
@@ -45,18 +45,6 @@ public class ConfiguradorDeDisplayTimers
             displayTimerDigito.configuradoPeloLevel(materialDisplay, displayDto.SingleDisplay[contador], coresDisplay);
         }
     }    
-
-    private Material getMaterialSegmentos(bool isAlbedo0, Materiais7SegmentosDto materiais7SegsDto)
-    {
-        if (isAlbedo0)
-        {
-            return materiais7SegsDto.Mat7SegmentosAditivos;
-        }
-        else
-        {
-            return materiais7SegsDto.Mat7SegmentosAlpha;
-        }
-    }
 
     private Material getMaterialSegmentos2Pontos(bool isAlbedo0)
     {

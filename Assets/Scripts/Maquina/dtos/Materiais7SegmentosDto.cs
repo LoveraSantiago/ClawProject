@@ -9,4 +9,10 @@ public class Materiais7SegmentosDto
 
     public Material Mat7SegmentosAditivos { get { return mat7SegmentosAditivos; } }
     public Material Mat7SegmentosAlpha { get { return mat7SegmentosAlpha; } }
+
+    public Material getMaterialFromAlbedo(bool albedo)
+    {
+        if (albedo) return Mat7SegmentosAditivos;
+        else return Mat7SegmentosAlpha;
+    }
 }
