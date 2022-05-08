@@ -42,17 +42,18 @@ public class ScrollPups
         {
             ItemScrollDto itemScrollDto = scrollPupsDto.ItensScrollPup[contador];
             itemScrollDto.SprRendererImgPup.sprite = pupsSprites[contador];
-            
-            itemScrollDto.SprRendererDigito1.sharedMaterial = configMaterialDigito(mat7Segmentos);
-            itemScrollDto.SprRendererDigito2.sharedMaterial = configMaterialDigito(mat7Segmentos);
+
+            int qtdPup = getQtdPupsDoIndice(contador);
+            itemScrollDto.SprRendererDigito1.sharedMaterial = configMaterialDigito(mat7Segmentos, qtdPup / 10);
+            itemScrollDto.SprRendererDigito2.sharedMaterial = configMaterialDigito(mat7Segmentos, qtdPup % 10);
         }
     }
 
-    private Material configMaterialDigito(Materiais7SegmentosDto mat7Segmentos)
+    private Material configMaterialDigito(Materiais7SegmentosDto mat7Segmentos, int digito)
     {
-        Material7Digitos material7Digitos = new Material7Digitos(mat7Segmentos.Mat7SegmentosAditivos);
-        material7Digitos.addCorDesligado(Color.black);
-        material7Digitos.addDigito(0);
+        Material7Digitos material7Digitos = new Material7Digitos(mat7Segmentos.Mat7SegmentosAlpha);
+        material7Digitos.addCorDesligado(Color.white);
+        material7Digitos.addDigito(digito);
         return material7Digitos.material;
     }
 
@@ -142,11 +143,11 @@ public class ScrollPups
     private void updateLadoEsquerdo()
     {
         int novoIndicePrimeiro = itemPrimeiro.indice - 1;
-        //Debug.Log("<<< Indice Primeiro " + novoIndicePrimeiro);
         if (novoIndicePrimeiro >= 0)
         {
             float novaPosPrimeiro = itemPrimeiro.getPosicaoDeslocadaAEsquerda();
-            itemUltimo.addItemInfo(novaPosPrimeiro, pupsSprites[novoIndicePrimeiro]);
+            //Debug.Log("<<< Indice Primeiro " + novoIndicePrimeiro);
+            itemUltimo.updateItemInfo(novaPosPrimeiro, pupsSprites[novoIndicePrimeiro], getQtdPupsDoIndice(novoIndicePrimeiro));
             itemPrimeiro.addItemInfo(novoIndicePrimeiro, itemUltimo.itemScrollDto);
 
             int novoIndiceUltimo = itemUltimo.indice - 1;
@@ -163,7 +164,7 @@ public class ScrollPups
         {
             float novaPosXUltimo = itemUltimo.getPosicaoDeslocadaADireita();
             //Debug.Log(">>> Indice Ultimo " + novoIndiceUltimo);
-            itemPrimeiro.addItemInfo(novaPosXUltimo, pupsSprites[novoIndiceUltimo]);
+            itemPrimeiro.updateItemInfo(novaPosXUltimo, pupsSprites[novoIndiceUltimo], getQtdPupsDoIndice(novoIndiceUltimo));
             itemUltimo.addItemInfo(novoIndiceUltimo, itemPrimeiro.itemScrollDto);
 
             int novoIndicePrimeiro = itemPrimeiro.indice + 1;
@@ -171,5 +172,12 @@ public class ScrollPups
             int indiceItem = novoIndicePrimeiro % scrollPupsDto.ItensScrollPup.Length;
             itemPrimeiro.addItemInfo(novoIndicePrimeiro, scrollPupsDto.ItensScrollPup[indiceItem]);
         }
+    }
+
+    private int getQtdPupsDoIndice(int indice)
+    {
+        PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indice);
+        int qtdPup = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome);
+        return qtdPup;
     }
 }

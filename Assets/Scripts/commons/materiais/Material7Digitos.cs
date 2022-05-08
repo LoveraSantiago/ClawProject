@@ -9,6 +9,11 @@ public class Material7Digitos
         this.material = new Material(material);
     }
 
+    public Material7Digitos(SpriteRenderer spriteRenderer)
+    {
+        this.material = spriteRenderer.sharedMaterial;
+    }
+
     public void addCorDesligado(Color cor)
     {
         material.SetColor("_cor_desligado", cor);
