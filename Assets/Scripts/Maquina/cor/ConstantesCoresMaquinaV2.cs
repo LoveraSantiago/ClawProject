@@ -47,6 +47,7 @@ public class ConstantesCoresMaquinaV2
     public static readonly string SCROLL_PUP_SETAS_LATERAIS = "setas-laterais";
     public static readonly string SCROLL_PUP_SETA_CIMA      = "seta-cima";
     public static readonly string SCROLL_PUP_DIVISORIA      = "divisoria";
+    public static readonly string SCROLL_PUP_DIGITOS        = "digitos";
 
     public static readonly string SIMBOLO_CIRC_EXTERNO = "circulo-externo";
     public static readonly string SIMBOLO_CIRC_INTERNO = "circulo-interno";
