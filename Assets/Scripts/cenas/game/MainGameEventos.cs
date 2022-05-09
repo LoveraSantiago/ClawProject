@@ -19,7 +19,7 @@ public class MainGameEventos
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(maquinaManager.displayDeScores)
             .adicionarConsumidor(maquinaManager.botoesPowerUp)
-            .adicionarConsumidor(uiManager);
+            .adicionarConsumidor(uiManager.modalResultados);
 
         new AcaoColetadoFim()
             .configurarProdutor(maquinaManager)
