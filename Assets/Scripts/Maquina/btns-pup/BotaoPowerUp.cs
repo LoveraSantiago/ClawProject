@@ -69,11 +69,15 @@ public class BotaoPowerUp : BotaoDraggavel
     public void receberAcaoPowerUp(PowerUpBtnInfo evento, ControleAcionamentoPowerUp controlePup)
     {
         Utils.continuarGame();
-        controlePup.habilitarPowerUp();        
-        if(evento.hasEntidade)
+        controlePup.habilitarPowerUp();
+        if (evento.hasEntidade)
         {
             PowerUpEntidade pupEntidade = evento.powerUpEntidade;
             receberAcaoPowerUp(new PowerUpsParaMaquina(pupEntidade));
+        }
+        else
+        {
+            efeitoHolograma.desligar();
         }
     }
 

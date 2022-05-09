@@ -9,7 +9,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,
                               AcaoDesligarMaquinaResultado.ConsumidorEvento,
-                              AcaoBotaoPowerUpVazio.ConsumidorEvento
+                              AcaoBotaoPowerUpVazio.ConsumidorEvento,
+                              AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento
 {
     private bool isGamePlay;
     private PartesMaquinaDtoV2 partesDto;
@@ -145,6 +146,11 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     {
         draggavel = scrollPupsManager;
         isGamePlay = false;
+    }
+
+    void AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    {   
+        isGamePlay = true;
     }
 
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)

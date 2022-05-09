@@ -54,7 +54,8 @@ public class MainGameEventos
             .configurarProdutor(maquinaManager.scrollPupsManager)
             .adicionarConsumidor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(draggavelManager);
+            .adicionarConsumidor(draggavelManager)
+            .adicionarConsumidor(maquinaManager);
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager)
