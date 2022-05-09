@@ -70,6 +70,12 @@ public class InputGameImpl : InputGame,
         return posicaoTap.y > referenciaChaoMaquina.position.y;
     }
 
+    public void consumirTap()
+    {
+        isTapAreaSuperior = false;
+        isTapAreaInferior = false;
+    }
+
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
     {
         ativado = false;
@@ -78,5 +84,5 @@ public class InputGameImpl : InputGame,
     void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
     {
         ativado = !evento.resultadoSair;
-    }
+    }   
 }

@@ -62,6 +62,7 @@ public class ScrollPupsManager : Draggavel,
         else if (inputGame.aconteceuTapNaAreaSuperior())
         {
             Debug.Log("TAP SUPERIOR SCROLL");
+            inputGame.consumirTap();
             scrollSelecao.cancelouSelecao();
         }
     }
