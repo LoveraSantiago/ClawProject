@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
 {    
     private MovimentacaoDirecao movDirecao;
@@ -21,6 +23,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     {
         if (inputGame.aconteceuTapNaAreaSuperior())
         {
+            Debug.Log("TAP SUPERIOR GARRA");
             produziuEventoDeDirecao(DirecaoDaGarra.PARADA);
             desafixar();
             acionarColliderDasPincas();

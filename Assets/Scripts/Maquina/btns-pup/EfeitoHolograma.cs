@@ -3,8 +3,11 @@ using System.Collections;
 
 public class EfeitoHolograma 
 {
-    private GameObject goEfeitoHolograma;
-    private Coroutine coroutineUpdateTime;
+    private readonly int ESTADO_DESLIGADO   = 0;
+    private readonly int ESTADO_ESCOLHA_PUP = 1;
+
+    private int estadoAtual;
+    private GameObject goEfeitoHolograma;    
 
     public EfeitoHolograma(GameObject goEfeitoHolograma)
     {
@@ -19,24 +22,29 @@ public class EfeitoHolograma
         efeitoHologramaDto.TransfMainEfeito.localRotation = Quaternion.Euler(localRotation.x, btnPowerUpDto.RotacaoY, localRotation.z);
         efeitoHologramaDto.GoEfeitoHorizontal.SetActive(true);
 
-        coroutineUpdateTime = Utils.MonoBehaviour.StartCoroutine(updateTime(efeitoHologramaDto.MeshRendererEfeitoHorizontal.sharedMaterial));
+        estadoAtual = ESTADO_ESCOLHA_PUP;
+        Utils.MonoBehaviour.StartCoroutine(updateTime(efeitoHologramaDto.MeshRendererEfeitoHorizontal.sharedMaterial));
     }
 
     public void desligar()
     {
-        goEfeitoHolograma.SetActive(false);
-        if(coroutineUpdateTime != null)
-        {
-            Utils.MonoBehaviour.StopCoroutine(coroutineUpdateTime);
-        }
+        Debug.Log("Estado desligado chamado");
+        estadoAtual = ESTADO_DESLIGADO;    
     }
 
     private IEnumerator updateTime(Material material)
     {
-        while (true)
+        while (estadoAtual == ESTADO_ESCOLHA_PUP)
         {
             material.SetFloat("_updateTime", Time.unscaledTime);
             yield return null;
+        }
+
+        if(estadoAtual == ESTADO_DESLIGADO)
+        {
+            yield return null;
+            goEfeitoHolograma.SetActive(false);            
+            Utils.continuarGame();
         }
     }
 }
