@@ -7,7 +7,7 @@ public class BotoesPowerUp : Draggavel,
                              AcaoDesligarMaquinaResultado.ConsumidorEvento,
                              AcaoTempoEsgotado.ConsumidorEvento,
                              AcaoColetadoFim.ConsumidorEvento
-{
+{   
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
     private ControleAcionamentoPowerUp  controleAcionamentoPup;    
@@ -22,7 +22,7 @@ public class BotoesPowerUp : Draggavel,
         
         controleAcionamentoPup  = new ControleAcionamentoPowerUp();        
         btnDragavelVazio = new AdapterBotaoDraggavelVazio();
-        btnDragavelAtual = btnDragavelVazio;
+        btnDragavelAtual = btnDragavelVazio; 
     }
 
     private void inicializarBotoes(BotoesPowerUpDto btnsPowerUpsDto)

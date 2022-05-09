@@ -1,7 +1,7 @@
 using System.Collections;
 
 public class MainGameManagers 
-{    
+{   
     public GarraManager      garraManager      { get; private set; }
     public MaquinaManager    maquinaManager    { get; private set; }
     public PowerUpManager    powerUpManager    { get; private set; }

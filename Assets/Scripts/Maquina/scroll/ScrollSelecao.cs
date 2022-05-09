@@ -7,19 +7,25 @@ public class ScrollSelecao : AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvent
         produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfo>();
     }
 
-    public void simularCliqueBoxAcionado(int indiceBtn, int indicePup)
+    public void selecionouIndicePup(int indiceBtn, int indicePup)
     {
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
-        simularCliqueBoxAcionado(indiceBtn, pupEscolhido);
+        produzirEventoPupEscolhido(indiceBtn, pupEscolhido);
     }
 
-    public void simularCliqueBoxAcionado(int indiceBtn, PowerUpEnums.TIPO tipoPup)
+    public void selecionouPup(int indiceBtn, PowerUpEnums.TIPO tipoPup)
     {
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(tipoPup);
-        simularCliqueBoxAcionado(indiceBtn, pupEscolhido);
+        produzirEventoPupEscolhido(indiceBtn, pupEscolhido);
     }
 
-    private void simularCliqueBoxAcionado(int indiceBtn, PowerUpEntidade pupEscolhido)
+    public void cancelouSelecao()
+    {
+        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(0);
+        produtorDeEvento.produziuEvento(pupBtnInfo);
+    }
+
+    private void produzirEventoPupEscolhido(int indiceBtn, PowerUpEntidade pupEscolhido)
     {
         if (pupEscolhido != null)
         {

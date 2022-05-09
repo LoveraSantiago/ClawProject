@@ -10,7 +10,8 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoBoardElevadoFim.ConsumidorEvento,
                               AcaoDesligarMaquinaResultado.ConsumidorEvento,
                               AcaoBotaoPowerUpVazio.ConsumidorEvento
-{    
+{
+    private bool isGamePlay;
     private PartesMaquinaDtoV2 partesDto;
 
     private Joystick            joystick;       
@@ -36,6 +37,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
         arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
         scrollPupsManager  = new ScrollPupsManager(maquinaDto.ScrollPupsDto);
         draggavel          = botoesPowerUp;
+        isGamePlay = true;
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido, MaquinaDto maquinaDto)
@@ -59,10 +61,17 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     }
 
     public void update(MaquinaDto maquinaDto, InputGame inputGame)
-    {        
-        botoesPowerUp.update(maquinaDto.BotoesPowerUpDto, inputGame);
-        botaoLigaDesliga.update(inputGame);
-        displayTimer.update();
+    {
+        if (isGamePlay)
+        {
+            botoesPowerUp.update(maquinaDto.BotoesPowerUpDto, inputGame);
+            botaoLigaDesliga.update(inputGame);
+            displayTimer.update();
+        }
+        else
+        {
+            scrollPupsManager.update(inputGame);
+        }
     }
 
     public void fixedUpdate()
@@ -135,6 +144,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
         draggavel = scrollPupsManager;
+        isGamePlay = false;
     }
 
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)

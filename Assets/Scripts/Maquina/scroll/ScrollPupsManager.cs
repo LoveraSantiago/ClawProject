@@ -40,18 +40,30 @@ public class ScrollPupsManager : Draggavel,
             int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
             for (int contador = 0; contador < 2; contador++)
             {
-                scrollSelecao.simularCliqueBoxAcionado(contador, indicePup);
+                scrollSelecao.selecionouIndicePup(contador, indicePup);
             }
         }
         else if (isPupsToLevel)
         {
             for (int contador = 0; contador < pupsToLevel.getQtdBotoes(); contador++)
             {
-                scrollSelecao.simularCliqueBoxAcionado(contador, pupsToLevel.getPupEntidade(contador));
+                scrollSelecao.selecionouPup(contador, pupsToLevel.getPupEntidade(contador));
             }
         }
         scrollPups.iniciar();
     }    
+
+    public void update(InputGame inputGame)
+    {
+        if (inputGame.aconteceuTapNaAreaInferior())
+        {
+            Debug.Log("PRESSIONADO");
+        }
+        else if (inputGame.aconteceuTapNaAreaSuperior())
+        {
+            scrollSelecao.cancelouSelecao();
+        }
+    }
 
     public bool isDragAcionavel(Vector2 posicaoDrag)
     {
@@ -86,11 +98,11 @@ public class ScrollPupsManager : Draggavel,
             if (isLevelPup)
             {
                 int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
-                scrollSelecao.simularCliqueBoxAcionado(evento.indiceBtn, indicePup);
+                scrollSelecao.selecionouIndicePup(evento.indiceBtn, indicePup);
             }
             else if (isPupsToLevel)
             {
-                scrollSelecao.simularCliqueBoxAcionado(evento.indiceBtn, pupsToLevel.getPupEntidade(evento.indiceBtn));
+                scrollSelecao.selecionouPup(evento.indiceBtn, pupsToLevel.getPupEntidade(evento.indiceBtn));
             }
         }
     }
