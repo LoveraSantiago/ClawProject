@@ -42,9 +42,9 @@ public class EfeitoHolograma
 
         if(estadoAtual == ESTADO_DESLIGADO)
         {
-            yield return null;
-            goEfeitoHolograma.SetActive(false);            
             Utils.continuarGame();
+            yield return new WaitForSeconds(0.25f);
+            goEfeitoHolograma.SetActive(false);            
         }
     }
 }
