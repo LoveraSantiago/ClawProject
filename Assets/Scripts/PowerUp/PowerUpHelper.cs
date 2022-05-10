@@ -32,12 +32,32 @@ public class PowerUpHelper
         string[] result = new string[sprites.Length];
         for (int contador = 0; contador < sprites.Length; contador++)
         {
-            result[contador] = getPupNomeBySprite(allPups, sprites[contador]);
+            result[contador] = getNomePupBySprite(allPups, sprites[contador]);
         }
         return result;
     }
 
-    private static string getPupNomeBySprite(PowerUpEntidade[] allPups, Sprite sprite)
+    public static int getQtdPupsFromIndice(int indice)
+    {
+        PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indice);
+        int qtdPup = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome);
+        return qtdPup;
+    }   
+
+    public static PowerUpEntidade getTipoPupBySprite(Sprite sprite)
+    {
+        PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
+        for (int contador = 0; contador < allPups.Length; contador++)
+        {
+            if (allPups[contador].sprPowerUp == sprite)
+            {
+                return allPups[contador];
+            }
+        }
+        return null;
+    }
+
+    private static string getNomePupBySprite(PowerUpEntidade[] allPups, Sprite sprite)
     {
         for (int contador = 0; contador < allPups.Length; contador++)
         {

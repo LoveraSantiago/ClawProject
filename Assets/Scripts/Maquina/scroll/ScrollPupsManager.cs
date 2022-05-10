@@ -8,9 +8,11 @@ public class ScrollPupsManager : Draggavel,
     private bool isPupsToLevel;
     private bool toqueAreaDraggavelValida;
 
-    private PowerUpsParaLevel pupsToLevel;
+    private int indiceBtnDesocupado;
+
     private ScrollPups scrollPups;
     private ScrollSelecao scrollSelecao;
+    private PowerUpsParaLevel pupsToLevel;
 
     public ScrollPupsManager(ScrollPupsDto scrollPupsDto)
     {
@@ -57,7 +59,22 @@ public class ScrollPupsManager : Draggavel,
     {
         if (inputGame.aconteceuTapNaAreaInferior())
         {
-            //Debug.Log("PRESSIONADO");
+            Vector3 posicaoTap = inputGame.getPosicaoTap();
+            if (scrollPups.isToqueDentroPlacaInterna(posicaoTap))
+            {
+                Sprite sprPup = scrollPups.getSpritePupTocado(posicaoTap);
+                PowerUpEntidade pupEntidade = PowerUpHelper.getTipoPupBySprite(sprPup);
+                int qtdPup = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome);
+                if(qtdPup > 0)
+                {
+                    scrollSelecao.selecionouPup(indiceBtnDesocupado, pupEntidade.tipo);
+                }
+                else
+                {
+                    scrollSelecao.cancelouSelecao();
+                }
+            }
+            inputGame.consumirTap();
         }
         else if (inputGame.aconteceuTapNaAreaSuperior())
         {
@@ -65,6 +82,11 @@ public class ScrollPupsManager : Draggavel,
             inputGame.consumirTap();
             scrollSelecao.cancelouSelecao();
         }
+    }
+
+    public void setIndiceBotaoVazioAtual(int indice)
+    {
+        indiceBtnDesocupado = indice;
     }
 
     public bool isDragAcionavel(Vector2 posicaoDrag)

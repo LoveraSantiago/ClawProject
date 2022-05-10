@@ -144,6 +144,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
 
     void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
+        scrollPupsManager.setIndiceBotaoVazioAtual(evento);
         draggavel = scrollPupsManager;
         isGamePlay = false;
     }

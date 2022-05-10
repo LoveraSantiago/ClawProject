@@ -30,6 +30,19 @@ public class ScrollPups
         return scrollPupsDto.SprRendererPlacaInterna.bounds.Contains(posToque);
     }
 
+    public Sprite getSpritePupTocado(Vector2 posToque)
+    {
+        for(int contador = 0; contador < scrollPupsDto.ItensScrollPup.Length; contador++)
+        {
+            ItemScrollDto item = scrollPupsDto.ItensScrollPup[contador];
+            if (item.SprRendererDivisoria.bounds.Contains(posToque))
+            {
+                return item.SprRendererImgPup.sprite;
+            }
+        }
+        return null;
+    }
+
     public void prepararBarraDeRolagem(Vector3 posicao)
     {
         posicaoInicialDrag = posicao;
@@ -44,21 +57,25 @@ public class ScrollPups
     {
         string hexCor = level.getDicionarioDeCores()[ConstantesCoresMaquinaV2.SCROLL_PUP_DIGITOS];
         Color corDigito = Utils.getCorByHex(hexCor);
-
         Material material7Segmentos = mat7Segmentos.getMaterialFromAlbedo(level.isLevelAlbedo0DigitosScrollPup());
 
         for (int contador = 0; contador < scrollPupsDto.ItensScrollPup.Length; contador++)
         {
-            ItemScrollDto itemScrollDto = scrollPupsDto.ItensScrollPup[contador];
-            itemScrollDto.SprRendererImgPup.sprite = pupsSprites[contador];
-
-            int qtdPup = getQtdPupsDoIndice(contador);
-            itemScrollDto.SprRendererDigito1.color = Color.white;
-            itemScrollDto.SprRendererDigito2.color = Color.white;
-
-            itemScrollDto.SprRendererDigito1.sharedMaterial = configMaterialDigito(material7Segmentos, qtdPup / 10, corDigito);
-            itemScrollDto.SprRendererDigito2.sharedMaterial = configMaterialDigito(material7Segmentos, qtdPup % 10, corDigito);
+            configurarItem(contador, material7Segmentos, corDigito);
         }
+    }
+
+    private void configurarItem(int contador, Material material7Segmentos, Color corDigito)
+    {
+        ItemScrollDto itemScrollDto = scrollPupsDto.ItensScrollPup[contador];
+        itemScrollDto.SprRendererImgPup.sprite = pupsSprites[contador];
+
+        int qtdPup = PowerUpHelper.getQtdPupsFromIndice(contador);
+        itemScrollDto.SprRendererDigito1.color = Color.white;
+        itemScrollDto.SprRendererDigito2.color = Color.white;
+
+        itemScrollDto.SprRendererDigito1.sharedMaterial = configMaterialDigito(material7Segmentos, qtdPup / 10, corDigito);
+        itemScrollDto.SprRendererDigito2.sharedMaterial = configMaterialDigito(material7Segmentos, qtdPup % 10, corDigito);
     }
 
     private Material configMaterialDigito(Material material, int digito, Color cor)
@@ -159,7 +176,8 @@ public class ScrollPups
         {
             float novaPosPrimeiro = itemPrimeiro.getPosicaoDeslocadaAEsquerda();
             //Debug.Log("<<< Indice Primeiro " + novoIndicePrimeiro);
-            itemUltimo.updateItemInfo(novaPosPrimeiro, pupsSprites[novoIndicePrimeiro], getQtdPupsDoIndice(novoIndicePrimeiro));
+            int qtdPups = PowerUpHelper.getQtdPupsFromIndice(novoIndicePrimeiro);
+            itemUltimo.updateItemInfo(novaPosPrimeiro, pupsSprites[novoIndicePrimeiro], qtdPups);
             itemPrimeiro.addItemInfo(novoIndicePrimeiro, itemUltimo.itemScrollDto);
 
             int novoIndiceUltimo = itemUltimo.indice - 1;
@@ -176,7 +194,8 @@ public class ScrollPups
         {
             float novaPosXUltimo = itemUltimo.getPosicaoDeslocadaADireita();
             //Debug.Log(">>> Indice Ultimo " + novoIndiceUltimo);
-            itemPrimeiro.updateItemInfo(novaPosXUltimo, pupsSprites[novoIndiceUltimo], getQtdPupsDoIndice(novoIndiceUltimo));
+            int qtdPups = PowerUpHelper.getQtdPupsFromIndice(novoIndiceUltimo);
+            itemPrimeiro.updateItemInfo(novaPosXUltimo, pupsSprites[novoIndiceUltimo], qtdPups);
             itemUltimo.addItemInfo(novoIndiceUltimo, itemPrimeiro.itemScrollDto);
 
             int novoIndicePrimeiro = itemPrimeiro.indice + 1;
@@ -184,12 +203,5 @@ public class ScrollPups
             int indiceItem = novoIndicePrimeiro % scrollPupsDto.ItensScrollPup.Length;
             itemPrimeiro.addItemInfo(novoIndicePrimeiro, scrollPupsDto.ItensScrollPup[indiceItem]);
         }
-    }
-
-    private int getQtdPupsDoIndice(int indice)
-    {
-        PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indice);
-        int qtdPup = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome);
-        return qtdPup;
     }
 }
