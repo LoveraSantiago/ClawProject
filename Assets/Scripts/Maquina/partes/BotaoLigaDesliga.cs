@@ -21,6 +21,7 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
             {
                 btnsLigaDesligaDto.SprRendererBtnOnOff.color = Color.red;                
                 produtorDeEvento.produziuEvento(null);
+                inputGame.consumirTap();
             }
         }
     }   

@@ -48,6 +48,7 @@ public class BotoesPowerUp : Draggavel,
             {
                 if (btnsPowerUp[contador].isCliqueValido(controleAcionamentoPup, posicaoTap))
                 {
+                    inputGame.consumirTap();
                     acionarBotao(contador, botoesPowerUpDto);
                     break;
                 }
