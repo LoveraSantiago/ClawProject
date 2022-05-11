@@ -6,7 +6,7 @@ public class EfeitoHologramaBtnPupDto
 {
     [SerializeField] private Transform transfMainEfeito;
     [SerializeField] private MeshRenderer meshRendererEfeitoHorizontal;
-    [SerializeField] private Transform transfEfeitoVertical;    
+    [SerializeField] private MeshRenderer meshRendererEfeitoVertical;    
 
     public Transform TransfMainEfeito { get { return transfMainEfeito; } }
     public GameObject GoMainEfeito { get { return transfMainEfeito.gameObject; } }
@@ -14,5 +14,6 @@ public class EfeitoHologramaBtnPupDto
     public MeshRenderer MeshRendererEfeitoHorizontal { get { return meshRendererEfeitoHorizontal; } }
     public GameObject GoEfeitoHorizontal { get { return meshRendererEfeitoHorizontal.gameObject; } }
 
-    public Transform TransfEfeitoVertical { get { return transfEfeitoVertical; } }
+    public MeshRenderer MeshRendererEfeitoVertical   { get { return meshRendererEfeitoVertical; } }
+    public GameObject GoEfeitoVertical  { get { return meshRendererEfeitoVertical.gameObject; } }
 }

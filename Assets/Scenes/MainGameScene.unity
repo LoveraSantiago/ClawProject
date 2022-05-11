@@ -11013,7 +11013,7 @@ MonoBehaviour:
         efeitoHologramaDto:
           transfMainEfeito: {fileID: 1223888410}
           meshRendererEfeitoHorizontal: {fileID: 603503303}
-          transfEfeitoVertical: {fileID: 1289563624}
+          meshRendererEfeitoVertical: {fileID: 1289563625}
       botaoLigaDesligaDto:
         sprRendererBtnBordas: {fileID: 6406990385049082672}
         sprRendererBtnOnOff: {fileID: 6406990385049082673}
@@ -32991,9 +32991,9 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3210569915623295284, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1289563624 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5968930574299838999, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+--- !u!23 &1289563625 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4800496797191750008, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1296627885

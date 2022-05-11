@@ -3,27 +3,34 @@ using System.Collections;
 
 public class EfeitoHolograma 
 {
-    private readonly int ESTADO_DESLIGADO   = 0;
-    private readonly int ESTADO_ESCOLHA_PUP = 1;
+    private readonly int ESTADO_DESLIGADO          = 0;
+    private readonly int ESTADO_LIGADO_EFEITO_HOR  = 1;
+    private readonly int ESTADO_LIGADO_EFEITO_VERT = 2;
 
     private int estadoAtual;
-    private GameObject goEfeitoHolograma;    
+    private EfeitoHologramaBtnPupDto efeitoHologramaDto;    
 
-    public EfeitoHolograma(GameObject goEfeitoHolograma)
+    public EfeitoHolograma(EfeitoHologramaBtnPupDto efeitoHologramaDto)
     {
-        this.goEfeitoHolograma = goEfeitoHolograma;
+        this.efeitoHologramaDto = efeitoHologramaDto;
     }
 
-    public void ligar(EfeitoHologramaBtnPupDto efeitoHologramaDto, BotaoPowerUpDtoV2 btnPowerUpDto)
+    public void ligarNaPosicao(BotaoPowerUpDtoV2 btnPowerUpDto)
     {   
         efeitoHologramaDto.GoMainEfeito.SetActive(true);
         efeitoHologramaDto.TransfMainEfeito.localPosition = new Vector3(btnPowerUpDto.PosXBotao, efeitoHologramaDto.TransfMainEfeito.localPosition.y, efeitoHologramaDto.TransfMainEfeito.localPosition.z);
         Vector3 localRotation = efeitoHologramaDto.TransfMainEfeito.localRotation.eulerAngles;
         efeitoHologramaDto.TransfMainEfeito.localRotation = Quaternion.Euler(localRotation.x, btnPowerUpDto.RotacaoY, localRotation.z);
         efeitoHologramaDto.GoEfeitoHorizontal.SetActive(true);
+        efeitoHologramaDto.GoEfeitoVertical.SetActive(false);
 
-        estadoAtual = ESTADO_ESCOLHA_PUP;
-        Utils.MonoBehaviour.StartCoroutine(updateTime(efeitoHologramaDto.MeshRendererEfeitoHorizontal.sharedMaterial));
+        estadoAtual = ESTADO_LIGADO_EFEITO_HOR;
+        Utils.MonoBehaviour.StartCoroutine(updateTime());
+    }
+
+    public void ligarEfeitoExtra()
+    {
+        estadoAtual = ESTADO_LIGADO_EFEITO_VERT;
     }
 
     public void desligar()
@@ -32,19 +39,33 @@ public class EfeitoHolograma
         estadoAtual = ESTADO_DESLIGADO;    
     }
 
-    private IEnumerator updateTime(Material material)
+    private IEnumerator updateTime()
     {
-        while (estadoAtual == ESTADO_ESCOLHA_PUP)
+
+        while (estadoAtual == ESTADO_LIGADO_EFEITO_HOR)
         {
-            material.SetFloat("_updateTime", Time.unscaledTime);
+            efeitoHologramaDto.MeshRendererEfeitoHorizontal.sharedMaterial.SetFloat("_updateTime", Time.unscaledTime);
             yield return null;
+        }
+
+        if(estadoAtual == ESTADO_LIGADO_EFEITO_VERT)
+        {
+            IntervaloDeTempo intervalo = new IntervaloDeTempo(0.4f);            
+            while(estadoAtual == ESTADO_LIGADO_EFEITO_VERT && !intervalo.contarTempoUnescaled())
+            {
+                efeitoHologramaDto.GoEfeitoHorizontal.SetActive(false);
+                efeitoHologramaDto.MeshRendererEfeitoVertical.gameObject.SetActive(true);                
+                efeitoHologramaDto.MeshRendererEfeitoVertical.sharedMaterial.SetFloat("_updateTime", Time.unscaledTime);
+                yield return null;
+            }
+            estadoAtual = ESTADO_DESLIGADO;            
         }
 
         if(estadoAtual == ESTADO_DESLIGADO)
         {
             Utils.continuarGame();
             yield return new WaitForSeconds(0.25f);
-            goEfeitoHolograma.SetActive(false);            
+            efeitoHologramaDto.GoMainEfeito.SetActive(false);            
         }
     }
 }

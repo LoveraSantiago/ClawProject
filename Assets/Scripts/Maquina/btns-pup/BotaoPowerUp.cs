@@ -37,7 +37,7 @@ public class BotaoPowerUp : BotaoDraggavel
         {
             //Debug.Log("Btn clicado sem pup");            
             Utils.pausarGame();
-            efeitoHolograma.ligar(btnsPowerUpsDto.EfeitoHologramaDto, getBotaoPowerUpDtoV2(btnsPowerUpsDto));
+            efeitoHolograma.ligarNaPosicao(getBotaoPowerUpDtoV2(btnsPowerUpsDto));
             controlePup.desabilitarPowerUp();
             controlePup.escolhendoPupParaIndice(indice);            
         }
@@ -73,6 +73,7 @@ public class BotaoPowerUp : BotaoDraggavel
         {
             PowerUpEntidade pupEntidade = evento.powerUpEntidade;
             receberAcaoPowerUp(new PowerUpsParaMaquina(pupEntidade));
+            efeitoHolograma.ligarEfeitoExtra();
         }
         else
         {
@@ -157,6 +158,6 @@ public class BotaoPowerUp : BotaoDraggavel
     {
         AparenciaBotaoPowerUp.configurarSpritesTampaBotao(btnsPowerUpsDto.SpritesTampaDto);
         AcaoDragPowerUp.configurarAreaDraggavel(btnsPowerUpsDto.AreaDraggavel);
-        efeitoHolograma = new EfeitoHolograma(btnsPowerUpsDto.EfeitoHologramaDto.GoMainEfeito);
+        efeitoHolograma = new EfeitoHolograma(btnsPowerUpsDto.EfeitoHologramaDto);
     }
 }
