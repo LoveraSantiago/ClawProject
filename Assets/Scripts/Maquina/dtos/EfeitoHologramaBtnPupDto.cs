@@ -15,5 +15,6 @@ public class EfeitoHologramaBtnPupDto
     public GameObject GoEfeitoHorizontal { get { return meshRendererEfeitoHorizontal.gameObject; } }
 
     public MeshRenderer MeshRendererEfeitoVertical   { get { return meshRendererEfeitoVertical; } }
+    public Transform TransfEfeitoVertical { get { return meshRendererEfeitoVertical.transform; } }
     public GameObject GoEfeitoVertical  { get { return meshRendererEfeitoVertical.gameObject; } }
 }

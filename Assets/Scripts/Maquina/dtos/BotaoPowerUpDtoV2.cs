@@ -13,6 +13,7 @@ public class BotaoPowerUpDtoV2
     [SerializeField] private SpriteRenderer sprRendererImgBtn;
 
     public float PosXBotao { get { return posXBotao; } }
+    public float PosXPlaca { get { return posXPlaca; } }
     public float RotacaoY { get { return rotacaoY; } }
 
     public SpriteRenderer SprRendererBtnBase { get { return sprRendererBtnBase; } }
