@@ -30,14 +30,14 @@ public class ScrollPups
         return scrollPupsDto.SprRendererPlacaInterna.bounds.Contains(posToque);
     }
 
-    public Sprite getSpritePupTocado(Vector2 posToque)
+    public ItemScrollDto getSpritePupTocado(Vector2 posToque)
     {
         for(int contador = 0; contador < scrollPupsDto.ItensScrollPup.Length; contador++)
         {
             ItemScrollDto item = scrollPupsDto.ItensScrollPup[contador];
             if (item.SprRendererDivisoria.bounds.Contains(posToque))
             {
-                return item.SprRendererImgPup.sprite;
+                return item;
             }
         }
         return null;
@@ -69,21 +69,13 @@ public class ScrollPups
     {
         ItemScrollDto itemScrollDto = scrollPupsDto.ItensScrollPup[contador];
         itemScrollDto.SprRendererImgPup.sprite = pupsSprites[contador];
-
-        int qtdPup = PowerUpHelper.getQtdPupsFromIndice(contador);
         itemScrollDto.SprRendererDigito1.color = Color.white;
         itemScrollDto.SprRendererDigito2.color = Color.white;
 
-        itemScrollDto.SprRendererDigito1.sharedMaterial = configMaterialDigito(material7Segmentos, qtdPup / 10, corDigito);
-        itemScrollDto.SprRendererDigito2.sharedMaterial = configMaterialDigito(material7Segmentos, qtdPup % 10, corDigito);
-    }
-
-    private Material configMaterialDigito(Material material, int digito, Color cor)
-    {
-        Material7Digitos material7Digitos = new Material7Digitos(material);
-        material7Digitos.addCorDesligado(cor);
-        material7Digitos.addDigito(digito);
-        return material7Digitos.material;
+        int qtdPup = PowerUpHelper.getQtdPupsFromIndice(contador);
+        DigitosItemScrollPup digitos = new DigitosItemScrollPup(material7Segmentos, itemScrollDto);
+        digitos.addCor(corDigito);
+        digitos.addQuantidade(qtdPup);
     }
 
     private void inicializarItens()

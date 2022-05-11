@@ -62,11 +62,15 @@ public class ScrollPupsManager : Draggavel,
             Vector3 posicaoTap = inputGame.getPosicaoTap();
             if (scrollPups.isToqueDentroPlacaInterna(posicaoTap))
             {
-                Sprite sprPup = scrollPups.getSpritePupTocado(posicaoTap);
+                ItemScrollDto itemSelecionado = scrollPups.getSpritePupTocado(posicaoTap);
+                Sprite sprPup = itemSelecionado.SprRendererImgPup.sprite;
                 PowerUpEntidade pupEntidade = PowerUpHelper.getTipoPupBySprite(sprPup);
                 int qtdPup = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome);
                 if(qtdPup > 0)
                 {
+                    qtdPup = PlayerPrefsPowerUp.subtrairPup(pupEntidade.nome);
+                    DigitosItemScrollPup digitos = new DigitosItemScrollPup(itemSelecionado);
+                    digitos.addQuantidade(qtdPup);
                     scrollSelecao.selecionouPup(indiceBtnDesocupado, pupEntidade.tipo);
                 }
                 else
@@ -78,7 +82,7 @@ public class ScrollPupsManager : Draggavel,
         }
         else if (inputGame.aconteceuTapNaAreaSuperior())
         {
-            Debug.Log("TAP SUPERIOR SCROLL");
+            //Debug.Log("TAP SUPERIOR SCROLL");
             inputGame.consumirTap();
             scrollSelecao.cancelouSelecao();
         }

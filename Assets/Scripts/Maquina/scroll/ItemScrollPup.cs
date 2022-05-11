@@ -18,14 +18,8 @@ public class ItemScrollPup
         itemScrollDto.SprRendererDivisoria.transform.position = novaPos;
         itemScrollDto.SprRendererImgPup.sprite = spritePup;
 
-        int digito1 = qtdPup / 10;
-        int digito2 = qtdPup % 10;
-
-        Material7Digitos matDigito1 = new Material7Digitos(itemScrollDto.SprRendererDigito1);
-        matDigito1.addDigito(digito1);
-
-        Material7Digitos matDigito2 = new Material7Digitos(itemScrollDto.SprRendererDigito2);
-        matDigito2.addDigito(digito2);
+        DigitosItemScrollPup digitos = new DigitosItemScrollPup(itemScrollDto);
+        digitos.addQuantidade(qtdPup);        
     }
 
     public float getPosEsquerda()
