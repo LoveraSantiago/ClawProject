@@ -3,7 +3,7 @@ using UnityEngine;
 public class ScrollPupsManager : Draggavel,
                                  AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
                                  AcaoPowerUpAcionado.ConsumidorEvento
-{
+{   
     private bool isLevelPup;
     private bool isPupsToLevel;
     private bool toqueAreaDraggavelValida;
@@ -13,11 +13,13 @@ public class ScrollPupsManager : Draggavel,
     private ScrollPups scrollPups;
     private ScrollSelecao scrollSelecao;
     private PowerUpsParaLevel pupsToLevel;
+    private IntervaloDeTempo intervaloTempo;
 
     public ScrollPupsManager(ScrollPupsDto scrollPupsDto)
     {
         scrollPups = new ScrollPups(scrollPupsDto);
         scrollSelecao = new ScrollSelecao();
+        intervaloTempo = new IntervaloDeTempo(0);
     }
 
     public void configuradoPeloLevel(ScrollPupsDto scrollPupsDto, Materiais7SegmentosDto mat7Segmentos, AbstractLevel level)
@@ -57,7 +59,11 @@ public class ScrollPupsManager : Draggavel,
 
     public void update(InputGame inputGame)
     {
-        if (inputGame.aconteceuTapNaAreaInferior())
+        if (desconsiderarTap())
+        {
+            return;
+        }
+        else if (inputGame.aconteceuTapNaAreaInferior())
         {
             Vector3 posicaoTap = inputGame.getPosicaoTap();
             if (scrollPups.isToqueDentroPlacaInterna(posicaoTap))
@@ -106,6 +112,7 @@ public class ScrollPupsManager : Draggavel,
 
     public void onBeginDrag(Vector3 posicao)
     {
+        intervaloTempo.addTempoLongo();
         scrollPups.prepararBarraDeRolagem(posicao);
     }
 
@@ -116,7 +123,18 @@ public class ScrollPupsManager : Draggavel,
 
     public void onEndDrag(MaquinaDto maquinaDto)
     {
+        intervaloTempo.configTempoParaAcao(0.1f);
         toqueAreaDraggavelValida = false;
+    }
+
+    private bool considerarTap()
+    {
+        return intervaloTempo.contarTempoUnescaled();
+    }
+
+    private bool desconsiderarTap()
+    {
+        return !considerarTap();
     }
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)

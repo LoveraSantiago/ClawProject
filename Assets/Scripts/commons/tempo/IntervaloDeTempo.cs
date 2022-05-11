@@ -24,6 +24,16 @@ public class IntervaloDeTempo
         return false;
     }
 
+    public bool contarTempoUnescaled()
+    {
+        contadorTempo -= Time.unscaledDeltaTime;
+        if (contadorTempo <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void configTempoParaAcao(float tempoEmSegundos)
     {
         intervalo = tempoEmSegundos;
@@ -37,6 +47,6 @@ public class IntervaloDeTempo
 
     public void addTempoLongo()
     {
-        contadorTempo = 9999;
+        contadorTempo = float.MaxValue;
     }
 }

@@ -17,7 +17,7 @@ public class InputGameImpl : InputGame,
 
     public void update(Transform referenciaChao)
     {        
-        if (Input.GetMouseButtonDown(0) && ativado)
+        if (Input.GetMouseButtonUp(0) && ativado)
         {
             posicaoTap = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (isPosicaoAcimaPosicaoDeReferencia(referenciaChao))
