@@ -7,17 +7,19 @@ public class InputGameImpl : InputGame,
     private bool isTapAreaSuperior;
     private bool isTapAreaInferior;
     private bool ativado;
+    private bool jump1Frame;
 
     private Vector3 posicaoTap;        
 
     public InputGameImpl()
     {
         ativado = true;
+        jump1Frame = false;
     }
 
     public void update(Transform referenciaChao)
     {        
-        if (Input.GetMouseButtonUp(0) && ativado)
+        if (Input.GetMouseButtonUp(0) && ativado && !jump1Frame)
         {
             posicaoTap = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (isPosicaoAcimaPosicaoDeReferencia(referenciaChao))
@@ -34,7 +36,8 @@ public class InputGameImpl : InputGame,
         else
         {
             isTapAreaInferior = false;
-            isTapAreaSuperior = false;            
+            isTapAreaSuperior = false;
+            jump1Frame = false;
         }
     }
 
@@ -73,16 +76,19 @@ public class InputGameImpl : InputGame,
     public void consumirTap()
     {
         isTapAreaSuperior = false;
-        isTapAreaInferior = false;
+        isTapAreaInferior = false;        
     }
 
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
-    {
-        ativado = false;
+    {   
+        ativado = false;        
     }
 
     void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
     {
+        Debug.Log("Religando Input");
         ativado = !evento.resultadoSair;
+        jump1Frame = true;
+        consumirTap();
     }   
 }

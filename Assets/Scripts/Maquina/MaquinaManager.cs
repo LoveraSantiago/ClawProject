@@ -7,8 +7,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,                                
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,                                                            
-                              AcaoBoardElevadoFim.ConsumidorEvento,
-                              AcaoDesligarMaquinaResultado.ConsumidorEvento,
+                              AcaoBoardElevadoFim.ConsumidorEvento,                              
                               AcaoBotaoPowerUpVazio.ConsumidorEvento,
                               AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento
 {
@@ -18,7 +17,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     private Joystick            joystick;       
     public  DisplayTimer        displayTimer { get; private set; }
     public  BotoesPowerUp       botoesPowerUp { get; private set; }
-    private BotaoLigaDesliga    botaoLigaDesliga;
+    public  BotaoLigaDesliga    botaoLigaDesliga { get; private set; }
     public  ArcoIrisEfeito      arcoIrisEfeito { get; private set; }
     public  DisplayDeScores     displayDeScores { get; private set; }
     public  DisplaysDeColetados displayDeColetados { get; private set; }
@@ -157,12 +156,6 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)
     {
         ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
-    }
-
-    void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
-    {
-        ((AcaoDesligarMaquinaResultado.ConsumidorEvento)botaoLigaDesliga).consumirEvento(evento);
-        ((AcaoDesligarMaquinaResultado.ConsumidorEvento)botoesPowerUp).consumirEvento(evento);
     }
 
     ProdutorDeEvento<TempoEsgotadoDto> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()

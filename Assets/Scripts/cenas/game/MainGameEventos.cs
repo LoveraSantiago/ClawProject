@@ -83,8 +83,9 @@ public class MainGameEventos
             .adicionarConsumidor(inputGameImpl);
 
         new AcaoDesligarMaquinaResultado()
-            .configurarProdutor(uiManager)
-            .adicionarConsumidor(maquinaManager)
+            .configurarProdutor(uiManager.modalSair)
+            .adicionarConsumidor(maquinaManager.botaoLigaDesliga)
+            .adicionarConsumidor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(inputGameImpl);
     }
 }

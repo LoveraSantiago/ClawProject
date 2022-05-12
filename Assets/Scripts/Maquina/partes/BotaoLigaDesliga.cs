@@ -10,6 +10,7 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
     {
         this.btnLigaDesligaDto = btnLigaDesligaDto;
         produtorDeEvento = new ProdutorDeEvento<DesligarMaquinaDto>();
+        desacionarBtnLigaDesliga();
     }   
 
     public void update(InputGame inputGame)

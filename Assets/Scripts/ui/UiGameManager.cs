@@ -1,11 +1,10 @@
-public class UiGameManager : AcaoDesligarMaquinaResultado.ProdutorEvento,                             
-                             AcaoTempoEsgotado.ConsumidorEvento,
+public class UiGameManager : AcaoTempoEsgotado.ConsumidorEvento,
                              AcaoBoardElevadoFim.ConsumidorEvento,                             
                              AcaoCacaNiquel.ConsumidorEvento,                             
                              AcaoDesligarMaquina.ConsumidorEvento
 {
     public ModalResultadosManager modalResultados { get; private set; }
-    private ModalSair modalSair;    
+    public ModalSair modalSair { get; private set; }
 
     public UiGameManager(UIGameDto uiDto)
     {
@@ -37,10 +36,5 @@ public class UiGameManager : AcaoDesligarMaquinaResultado.ProdutorEvento,
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
     {
         ((AcaoDesligarMaquina.ConsumidorEvento)modalSair).consumirEvento(evento);
-    }
-    
-    ProdutorDeEvento<ResultadoDesligarMaquinaDto> AcaoDesligarMaquinaResultado.ProdutorEvento.getProdutorDeEvento()
-    {
-        return ((AcaoDesligarMaquinaResultado.ProdutorEvento)modalSair).getProdutorDeEvento();
     }
 }

@@ -47,7 +47,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     }
 
     public void update(GarraDto garraDto, InputGame inputGame)
-    {
+    {   
         gerDeMovAtual.update(inputGame);
         cabo.update(garraDto.CaboDaGarraDto);
     }
