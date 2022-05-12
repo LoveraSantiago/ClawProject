@@ -3,12 +3,12 @@ using UnityEngine;
 public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
                                 AcaoDesligarMaquinaResultado.ConsumidorEvento
 {
-    private BotaoLigaDesligaDto btnsLigaDesligaDto;
+    private BotaoLigaDesligaDto btnLigaDesligaDto;
     private ProdutorDeEvento<DesligarMaquinaDto> produtorDeEvento;
 
-    public BotaoLigaDesliga(BotaoLigaDesligaDto btnsLigaDesligaDto)
+    public BotaoLigaDesliga(BotaoLigaDesligaDto btnLigaDesligaDto)
     {
-        this.btnsLigaDesligaDto = btnsLigaDesligaDto;
+        this.btnLigaDesligaDto = btnLigaDesligaDto;
         produtorDeEvento = new ProdutorDeEvento<DesligarMaquinaDto>();
     }   
 
@@ -17,20 +17,35 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
         if (inputGame.aconteceuTapNaAreaInferior())
         {
             Vector2 posicaoTap = inputGame.getPosicaoTap();
-            if (btnsLigaDesligaDto.SprRendererBtnOnOff.bounds.Contains(posicaoTap))
+            if (btnLigaDesligaDto.SprRendererBtnLigaDesliga.bounds.Contains(posicaoTap))
             {
-                btnsLigaDesligaDto.SprRendererBtnOnOff.color = Color.red;                
+                acionarBtnLigaDesliga();           
                 produtorDeEvento.produziuEvento(null);
                 inputGame.consumirTap();
             }
         }
     }   
 
+    private void acionarBtnLigaDesliga()
+    {
+        setarAparenciaBtnLigaDesliga(0);
+    }
+
+    private void desacionarBtnLigaDesliga()
+    {
+        setarAparenciaBtnLigaDesliga(1);
+    }
+
+    private void setarAparenciaBtnLigaDesliga(int estado)
+    {
+        btnLigaDesligaDto.SprRendererBtnLigaDesliga.sharedMaterial.SetInt("_ligado", estado);
+    }
+
     void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
     {
         if (!evento.resultadoSair)
         {
-            btnsLigaDesligaDto.SprRendererBtnOnOff.color = Color.green;     
+            desacionarBtnLigaDesliga();
         }
     }
 

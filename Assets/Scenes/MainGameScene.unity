@@ -11015,8 +11015,7 @@ MonoBehaviour:
           meshRendererEfeitoHorizontal: {fileID: 603503303}
           meshRendererEfeitoVertical: {fileID: 1289563625}
       botaoLigaDesligaDto:
-        sprRendererBtnBordas: {fileID: 6406990385049082672}
-        sprRendererBtnOnOff: {fileID: 6406990385049082673}
+        sprRendererBtnLigaDesliga: {fileID: 810769995}
       scrollPupsDto:
         sprRendererPlacaExterna: {fileID: 1382398206}
         sprRendererPlacaInterna: {fileID: 991189264}
@@ -21991,6 +21990,11 @@ SpriteRenderer:
 --- !u!212 &796890187 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 814877020036264204, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &810769995 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1705469835, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &825515325 stripped
@@ -59253,16 +59257,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
---- !u!212 &6406990385049082672 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1857737637918611704, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6406990385049082673 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3027024895253427581, guid: 9f029d4bb5f870f40a4815bbeb919921, type: 3}
-  m_PrefabInstance: {fileID: 6406990385049082667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &7783896592183468493 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6140724772073693157, guid: 60c301260e6514149bc0e163ff994732, type: 3}

@@ -4,10 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class BotaoLigaDesligaDto
 {
-    [SerializeField] private SpriteRenderer sprRendererBtnBordas;
-    [SerializeField] private SpriteRenderer sprRendererBtnOnOff;
+    [SerializeField] private SpriteRenderer sprRendererBtnLigaDesliga;
 
-    public SpriteRenderer SprRendererBtnBordas { get { return sprRendererBtnBordas; } }
-    public SpriteRenderer SprRendererBtnOnOff  { get { return sprRendererBtnOnOff; } }
+    public SpriteRenderer SprRendererBtnLigaDesliga { get { return sprRendererBtnLigaDesliga; } }
 
 }
