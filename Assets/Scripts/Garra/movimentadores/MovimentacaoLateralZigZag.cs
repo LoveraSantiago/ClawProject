@@ -23,7 +23,7 @@ public class MovimentacaoLateralZigZag : MovimentacaoDaGarraNormal
     {
         if (inputGame.aconteceuTapNaAreaSuperior())
         {
-            Debug.Log("TAP SUPERIOR GARRA");
+            //Debug.Log("TAP SUPERIOR GARRA");
             produziuEventoDeDirecao(DirecaoDaGarra.PARADA);
             desafixar();
             acionarColliderDasPincas();
