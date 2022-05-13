@@ -92,20 +92,11 @@ public class Level3 : AbstractLevelElevador
         dicionario.Add("divisoria", "#80BD9E");
         dicionario.Add("digitos", "#F98866");
         dicionario.Add("circulo-externo", "#80BD9E");
-        dicionario.Add("circulo-interno", "#BBEA9F");        return dicionario;
+        dicionario.Add("circulo-interno", "#BBEA9F");
+        return dicionario;
     }
 
-    public override bool isLevelAlbedo0Timers()
-    {
-        return false;
-    }
-
-    public override bool isLevelAlbedo0Timer2Pontos()
-    {
-        return false;
-    }
-
-    public override bool isLevelAlbedo0DigitosScrollPup()
+    public override bool isLevelAlbedo0()
     {
         return false;
     }

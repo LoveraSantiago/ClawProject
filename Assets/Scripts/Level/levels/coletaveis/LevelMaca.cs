@@ -20,7 +20,7 @@ public class LevelMaca : AbstractLevelColetavel
         return 11;
     }
 
-    public override bool isLevelAlbedo0Timers()
+    public override bool isLevelAlbedo0()
     {
         return true;
     }

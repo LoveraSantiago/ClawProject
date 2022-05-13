@@ -19,7 +19,7 @@ public class LevelEstrelaMarinha : AbstractLevelColetavel
         return 16;
     }
 
-    public override bool isLevelAlbedo0Timers()
+    public override bool isLevelAlbedo0()
     {
         return true;
     }

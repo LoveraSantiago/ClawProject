@@ -131,7 +131,7 @@ public class Level4 : AbstractLevelOrdem
         return dicionario;
     }
 
-    public override bool isLevelAlbedo0Timers()
+    public override bool isLevelAlbedo0()
     {
         return true;
     }
