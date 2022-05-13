@@ -181,13 +181,13 @@
       </engine:VisualElement>
       
       <engine:VisualElement name="linha7-2" class="linha">
-        <editor:ColorField label="Buraco Ficha" name="buraco-card" class="campoCor"/>
+        <editor:ColorField label="Buraco Card" name="buraco-card" class="campoCor"/>
         <engine:Button name="select-buraco-card" text="Select" />
         <engine:Button name="reset-buraco-card" text="Reset" />
       </engine:VisualElement>
 
       <engine:VisualElement name="linha7-3" class="linha">
-        <editor:ColorField label="Buraco Ficha" name="triangulo-card" class="campoCor"/>
+        <editor:ColorField label="Buraco Triang" name="triangulo-card" class="campoCor"/>
         <engine:Button name="select-triangulo-card" text="Select" />
         <engine:Button name="reset-triangulo-card" text="Reset" />
       </engine:VisualElement>
@@ -259,7 +259,7 @@
       </engine:VisualElement>
 
       <engine:VisualElement name="linha11-2" class="linha">
-        <editor:ColorField label="Simbolo Circ Externo" name="circulo-interno" class="campoCor"/>
+        <editor:ColorField label="Simbolo Circ Interno" name="circulo-interno" class="campoCor"/>
         <engine:Button name="select-circulo-interno" text="Select" />
         <engine:Button name="reset-circulo-interno" text="Reset" />
       </engine:VisualElement>
