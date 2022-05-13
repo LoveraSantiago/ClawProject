@@ -47,7 +47,7 @@ public class Level2 : AbstractLevel
     }   
 
     public override Dictionary<string, string> getDicionarioDeCores()
-    {
+    {   
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-frente", "#000000");
         dicionario.Add("base-chao", "#5D5B5B");

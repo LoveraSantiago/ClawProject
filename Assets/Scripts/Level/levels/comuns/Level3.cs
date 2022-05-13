@@ -50,6 +50,7 @@ public class Level3 : AbstractLevelElevador
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {
+        //01.Fresh & Bright
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-frente", "#89DA59");
         dicionario.Add("base-chao", "#80BD9E");

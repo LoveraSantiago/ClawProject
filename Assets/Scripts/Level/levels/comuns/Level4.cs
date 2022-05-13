@@ -77,6 +77,7 @@ public class Level4 : AbstractLevelOrdem
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {
+        //02. Subdued & Professional
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-frente", "#90AFC5");
         dicionario.Add("base-chao", "#336B87");
@@ -119,7 +120,8 @@ public class Level4 : AbstractLevelOrdem
         dicionario.Add("divisoria", "#90AFC5");
         dicionario.Add("digitos", "#2A3132");
         dicionario.Add("circulo-externo", "#B05139");
-        dicionario.Add("circulo-interno", "#276777");        return dicionario;
+        dicionario.Add("circulo-interno", "#276777");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
