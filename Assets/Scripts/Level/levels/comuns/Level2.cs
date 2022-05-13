@@ -90,7 +90,8 @@ public class Level2 : AbstractLevel
         dicionario.Add("divisoria", "#FFFFFF");
         dicionario.Add("digitos", "#3A3A3A");
         dicionario.Add("circulo-externo", "#FFFFFF");
-        dicionario.Add("circulo-interno", "#606986");        return dicionario;
+        dicionario.Add("circulo-interno", "#606986");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0Timers()
