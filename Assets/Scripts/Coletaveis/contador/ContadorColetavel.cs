@@ -29,7 +29,7 @@ public class ContadorColetavel : ContadorNormal
             Coletavel coletavelIt = coletaveis[contador];
             Material materialOutline = MaterialOutline.of(coletavelIt.getSprite());
             coletavelIt.addMaterial(materialOutline);
-            coletavelIt.colocarNoLayerDestaque();
+            coletavelIt.colocarNoOrderDestaque();
         }
 
         trincaLevelColetaveis = new TrincaColetaveisTiles(coletaveis);

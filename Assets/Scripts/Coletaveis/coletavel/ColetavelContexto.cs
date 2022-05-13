@@ -4,6 +4,7 @@ public class ColetavelContexto : GOContexto
 {
     public int sprOrderComum;
     public int sprOrdemDestaque;
+    public int sprOrdemEscondido;
 
     public readonly int LAYER_ELEVADOR = 20;
     public readonly int LAYER_NORMAL = 9;
@@ -16,7 +17,8 @@ public class ColetavelContexto : GOContexto
     {
         nomeador = new Nomeador();
         this.referenciaColliderColetado = referenciaColliderColetado;
-        sprOrderComum = coletaveisDto.OrderLayerColetaveis;
-        sprOrdemDestaque = coletaveisDto.OrderDestaqueLayerColetaveis;
+        sprOrderComum     = coletaveisDto.OrderColetaveis;
+        sprOrdemDestaque  = coletaveisDto.OrderDestaqueColetaveis;
+        sprOrdemEscondido = coletaveisDto.OrderEscondidoColetaveis;
     }    
 }

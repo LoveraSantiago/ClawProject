@@ -31,15 +31,20 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
         return isLayer(contexto.LAYER_NORMAL);
     }
 
-    public void colocarNoLayerDestaque()
+    public void colocarNoOrderDestaque()
     {
-        colocarSpriteNoLayer(contexto.sprOrdemDestaque);
+        colocarSpriteNoOrder(contexto.sprOrdemDestaque);
     }
 
-    public void colocarNoLayerComum()
+    public void colocarNoOrderComum()
     {
-        colocarSpriteNoLayer(contexto.sprOrderComum);
+        colocarSpriteNoOrder(contexto.sprOrderComum);
         desafixarVerticalmente();
+    }
+
+    public void colocarNoOrderEscondido()
+    {
+        colocarSpriteNoOrder(contexto.sprOrdemEscondido);
     }
 
     public void imantar()

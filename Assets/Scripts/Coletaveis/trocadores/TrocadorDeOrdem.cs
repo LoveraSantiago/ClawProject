@@ -11,7 +11,7 @@ public abstract class TrocadorDeOrdem
     {
         Material materialOutline = MaterialOutline.of(coletavel.getSprite());
         coletavel.addMaterial(materialOutline);
-        coletavel.colocarNoLayerDestaque();
+        coletavel.colocarNoOrderDestaque();
     }
 
     protected void addMaterialGrayScale(Coletavel coletavel)

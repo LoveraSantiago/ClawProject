@@ -24,6 +24,7 @@ public class BoardMontadorExtra : BoardMontador
 
     protected override IEnumerator onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
+        coletavel.colocarNoOrderEscondido();
         coletavel.colocarNoLayerElevador();        
         poolExtraSubs.addObjeto(coletavel);        
         yield return null;
