@@ -59,7 +59,7 @@ public class Level3 : AbstractLevelElevador
         dicionario.Add("barra", "#F98866");
         dicionario.Add("placa-timer", "#80BD9E");
         dicionario.Add("display-timer-digito", "#BBEA9F");
-        dicionario.Add("seg", "#F98866");
+        dicionario.Add("seg", "#FABB66");
         dicionario.Add("placa-coletados", "#80BD9E");
         dicionario.Add("display-coletado1", "#BBEA9F");
         dicionario.Add("display-coletado2", "#BBEA9F");
@@ -68,7 +68,7 @@ public class Level3 : AbstractLevelElevador
         dicionario.Add("display-pontos1", "#BBEA9F");
         dicionario.Add("display-pontos2", "#BBEA9F");
         dicionario.Add("display-pontos3", "#BBEA9F");
-        dicionario.Add("leds", "#F98866");
+        dicionario.Add("leds", "#FABB66");
         dicionario.Add("topo", "#80BD9E");
         dicionario.Add("base", "#F98866");
         dicionario.Add("mesa-joystick-cima", "#FF420E");
@@ -90,7 +90,7 @@ public class Level3 : AbstractLevelElevador
         dicionario.Add("setas-laterais", "#F98866");
         dicionario.Add("seta-cima", "#F98866");
         dicionario.Add("divisoria", "#80BD9E");
-        dicionario.Add("digitos", "#F98866");
+        dicionario.Add("digitos", "#FABB66");
         dicionario.Add("circulo-externo", "#80BD9E");
         dicionario.Add("circulo-interno", "#BBEA9F");
         return dicionario;
