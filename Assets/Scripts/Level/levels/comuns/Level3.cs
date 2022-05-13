@@ -97,7 +97,17 @@ public class Level3 : AbstractLevelElevador
 
     public override bool isLevelAlbedo0Timers()
     {
-        return true;
+        return false;
+    }
+
+    public override bool isLevelAlbedo0Timer2Pontos()
+    {
+        return false;
+    }
+
+    public override bool isLevelAlbedo0DigitosScrollPup()
+    {
+        return false;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
