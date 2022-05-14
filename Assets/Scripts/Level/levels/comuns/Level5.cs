@@ -66,16 +66,16 @@ public class Level5 : AbstractLevelObstaculos
         dicionario.Add("viga", "#5C3535");
         dicionario.Add("barra", "#BA5536");
         dicionario.Add("placa-timer", "#A43820");
-        dicionario.Add("display-timer-digito", "#BA5536");
+        dicionario.Add("display-timer-digito", "#D88F78");
         dicionario.Add("seg", "#46211A");
         dicionario.Add("placa-coletados", "#A43820");
-        dicionario.Add("display-coletado1", "#BA5536");
-        dicionario.Add("display-coletado2", "#BA5536");
-        dicionario.Add("display-coletado3", "#BA5536");
+        dicionario.Add("display-coletado1", "#D88F78");
+        dicionario.Add("display-coletado2", "#D88F78");
+        dicionario.Add("display-coletado3", "#D88F78");
         dicionario.Add("placa-scores", "#A43820");
-        dicionario.Add("display-pontos1", "#BA5536");
-        dicionario.Add("display-pontos2", "#BA5536");
-        dicionario.Add("display-pontos3", "#BA5536");
+        dicionario.Add("display-pontos1", "#D88F78");
+        dicionario.Add("display-pontos2", "#D88F78");
+        dicionario.Add("display-pontos3", "#D88F78");
         dicionario.Add("leds", "#46211A");
         dicionario.Add("topo", "#BA5536");
         dicionario.Add("base", "#D88F78");
@@ -99,9 +99,8 @@ public class Level5 : AbstractLevelObstaculos
         dicionario.Add("seta-cima", "#46211A");
         dicionario.Add("divisoria", "#A43820");
         dicionario.Add("digitos", "#46211A");
-        dicionario.Add("circulo-externo", "#A77639");
-        dicionario.Add("circulo-interno", "#BA5536");
-        return dicionario;
+        dicionario.Add("circulo-externo", "#693D3D");
+        dicionario.Add("circulo-interno", "#BA5536");        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
