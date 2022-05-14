@@ -82,7 +82,7 @@ public class Level4 : AbstractLevelOrdem
         dicionario.Add("placa-frente", "#90AFC5");
         dicionario.Add("base-chao", "#336B87");
         dicionario.Add("chao-dentro", "#2A3132");
-        dicionario.Add("cabo-da-garra", "#FF420E");
+        dicionario.Add("cabo-da-garra", "#2A3132");
         dicionario.Add("viga", "#5480A0");
         dicionario.Add("barra", "#336B87");
         dicionario.Add("placa-timer", "#336B87");
@@ -101,11 +101,11 @@ public class Level4 : AbstractLevelOrdem
         dicionario.Add("base", "#90AFC5");
         dicionario.Add("mesa-joystick-cima", "#336B87");
         dicionario.Add("mesa-joystick-baixo", "#2B5A72");
-        dicionario.Add("buraco-joystick", "#FFFFFF");
-        dicionario.Add("haste-joystick", "#FFFFFF");
-        dicionario.Add("bola-joystick", "#763626");
-        dicionario.Add("buraco-botao", "#FFFFFF");
-        dicionario.Add("botao", "#763626");
+        dicionario.Add("buraco-joystick", "#2A3132");
+        dicionario.Add("haste-joystick", "#336B87");
+        dicionario.Add("bola-joystick", "#90AFC5");
+        dicionario.Add("buraco-botao", "#2A3132");
+        dicionario.Add("botao", "#90AFC5");
         dicionario.Add("buraco-ficha", "#90AFC5");
         dicionario.Add("buraco-card", "#90AFC5");
         dicionario.Add("triangulo-card", "#90AFC5");
@@ -120,8 +120,7 @@ public class Level4 : AbstractLevelOrdem
         dicionario.Add("divisoria", "#90AFC5");
         dicionario.Add("digitos", "#2A3132");
         dicionario.Add("circulo-externo", "#B05139");
-        dicionario.Add("circulo-interno", "#276777");
-        return dicionario;
+        dicionario.Add("circulo-interno", "#276777");        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
