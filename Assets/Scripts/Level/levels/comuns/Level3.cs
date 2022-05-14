@@ -83,9 +83,9 @@ public class Level3 : AbstractLevelElevador
         dicionario.Add("buraco-card", "#F98866");
         dicionario.Add("triangulo-card", "#F98866");
         dicionario.Add("btn-pup-base-d", "#80BD9E");
-        dicionario.Add("btn-pup-topo-d", "#89DA59");
+        dicionario.Add("btn-pup-topo-d", "#BBEA9F");
         dicionario.Add("btn-pup-base-e", "#80BD9E");
-        dicionario.Add("btn-pup-topo-e", "#89DA59");
+        dicionario.Add("btn-pup-topo-e", "#BBEA9F");
         dicionario.Add("placa-externa", "#FF420E");
         dicionario.Add("placa-interna", "#BBEA9F");
         dicionario.Add("setas-laterais", "#F98866");
@@ -93,8 +93,7 @@ public class Level3 : AbstractLevelElevador
         dicionario.Add("divisoria", "#80BD9E");
         dicionario.Add("digitos", "#FABB66");
         dicionario.Add("circulo-externo", "#80BD9E");
-        dicionario.Add("circulo-interno", "#BBEA9F");
-        return dicionario;
+        dicionario.Add("circulo-interno", "#BBEA9F");        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
