@@ -265,5 +265,6 @@
       </engine:VisualElement>
 
       <engine:Button name="mapa" text="Gerar Mapa" />
+      <engine:Button name="reset-mapa" text="Resetar Cores" />
     </engine:ScrollView>
 </engine:UXML>

@@ -19,11 +19,6 @@ public class SingleCompColorivel : ComponenteColorivel
         this.alpha = alpha;
     }
 
-    public void resetCor()
-    {
-        sprRenderer.color = Color.white;
-    }
-
     public void passarCor(Color cor)
     {
         cor.a = alpha;

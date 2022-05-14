@@ -11,12 +11,6 @@ public class SingleCompLineRendererColorivel : ComponenteColorivel
         lineRenderer = go.GetComponent<LineRenderer>();
     }
 
-    public void resetCor()
-    {
-        lineRenderer.startColor = Color.white;
-        lineRenderer.endColor = Color.white;
-    }
-
     public void passarCor(Color cor)
     {
         lineRenderer.startColor = cor;

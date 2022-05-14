@@ -110,12 +110,7 @@ public class MaquinaColoridaV2 : FinderComponente
     public void select(string nome)
     {
         Selection.activeGameObject = dicionario[nome].getGo();
-    }
-
-    public void reset(string nome)
-    {
-        dicionario[nome].resetCor();
-    }
+    }  
 
     public void gerarMapa()
     {
@@ -126,5 +121,5 @@ public class MaquinaColoridaV2 : FinderComponente
             texto += "dicionario.Add(\"" + entry.Key + "\", \"#" + ColorUtility.ToHtmlStringRGB(entry.Value.getCor()) + "\");" + Environment.NewLine;
         }
         Debug.Log(texto);
-    }
+    }    
 }

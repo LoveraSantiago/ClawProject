@@ -24,14 +24,6 @@ public class MultipleCompColorivel : ComponenteColorivel
         }
     }
 
-    public void resetCor()
-    {
-        for (int contador = 0; contador < sprRenderers.Length; contador++)
-        {
-            sprRenderers[contador].color = Color.white;
-        }
-    }
-
     public GameObject getGo()
     {
         return go;

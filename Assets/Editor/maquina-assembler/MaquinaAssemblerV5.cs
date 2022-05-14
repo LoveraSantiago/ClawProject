@@ -35,72 +35,82 @@ public class MaquinaAssemblerV5 : EditorWindow
 
         criarComponentDropDownField(root);
         maquina = new MaquinaColoridaV2();
+        List<ColorField>  listaDeColorFields = new List<ColorField>();
 
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.PLACA_FRENTE);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.VIGAS);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BASE_CHAO);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BARRA);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.CHAO_DENTRO);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.CABO_DA_GARRA);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.PLACA_FRENTE);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.VIGAS);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.BASE_CHAO);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.BARRA);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.CHAO_DENTRO);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.CABO_DA_GARRA);
 
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TIMER_DISPLAY_SEGMENTOS);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.TIMER_DISPLAY_SEGMENTOS);
 
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL1);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL2);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL3);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL1);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL2);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL3);
 
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_GRUPO);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL2);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL3);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS);      
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_GRUPO);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL2);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL3);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS);      
         
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TUBO_BASE);               
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.TUBO_BORDA);  
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.TUBO_BASE);               
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.TUBO_BORDA);  
         
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA);               
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.JOYSTICK_MESA_BAIXO);               
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.JOYSTICK_SUPORTE);               
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.JOYSTICK_HASTE);               
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.JOYSTICK_BOLA);               
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.JOYSTICK_BTN_SUPORTE);               
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.JOYSTICK_BTN);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA);               
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.JOYSTICK_MESA_BAIXO);               
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.JOYSTICK_SUPORTE);               
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.JOYSTICK_HASTE);               
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.JOYSTICK_BOLA);               
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.JOYSTICK_BTN_SUPORTE);               
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.JOYSTICK_BTN);
 
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.ORIFICIO_FICHA);               
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.ORIFICIO_CARD);               
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.ORIFICIO_SETA);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.ORIFICIO_FICHA);               
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.ORIFICIO_CARD);               
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.ORIFICIO_SETA);
 
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_BASE_DIREITA);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_TAMPA_DIREITA);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_BASE_ESQUERDA);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.BTN_PUP_TAMPA_ESQUERDA);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.BTN_PUP_BASE_DIREITA);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.BTN_PUP_TAMPA_DIREITA);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.BTN_PUP_BASE_ESQUERDA);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.BTN_PUP_TAMPA_ESQUERDA);
 
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_SETA_CIMA);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_DIVISORIA);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SCROLL_PUP_DIGITOS);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.SCROLL_PUP_SETA_CIMA);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.SCROLL_PUP_DIVISORIA);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.SCROLL_PUP_DIGITOS);
 
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO);
-        bindarComponentes(root, maquina, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO);
+        bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO);
 
         root.Q<Button>("mapa").clicked += () => maquina.gerarMapa();
+        root.Q<Button>("reset-mapa").clicked += () => {
+            for(int contador = 0; contador < listaDeColorFields.Count; contador++)
+            {
+                listaDeColorFields[contador].value = Color.white;
+            }
+        };
     }
     
-    private void bindarComponentes(VisualElement root, MaquinaColoridaV2 maquina, string componente)
+    private void bindarComponentes(VisualElement root, MaquinaColoridaV2 maquina, List<ColorField> listaDeColorFields, string componente)
     {
-        root.Q<ColorField>(componente).RegisterCallback<ChangeEvent<Color>>(
+        ColorField colorField = root.Q<ColorField>(componente);
+        listaDeColorFields.Add(colorField);
+
+        colorField.RegisterCallback<ChangeEvent<Color>>(
             evt => maquina.colorir(componente, evt.newValue));
 
         root.Q<Button>("select-" + componente)
            .clicked += () => maquina.select(componente);
 
         root.Q<Button>("reset-" + componente)
-            .clicked += () => maquina.reset(componente);
+            .clicked += () => colorField.value = Color.white;
     }
 
     private void criarComponentDropDownField(VisualElement root)
