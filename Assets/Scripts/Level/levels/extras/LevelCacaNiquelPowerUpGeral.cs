@@ -49,6 +49,7 @@ public class LevelCacaNiquelPowerUpGeral : AbstractLevel
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {
+        //05. Cool Blues
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-frente", "#66A5AD");
         dicionario.Add("base-chao", "#4C858D");
