@@ -13,7 +13,6 @@ public class MaquinaAssemblerV5 : EditorWindow
         wnd.titleContent = new GUIContent("MaquinaAssemblerV5");
     }
 
-
     private MaquinaColoridaV2 maquina;
 
     public void CreateGUI()
