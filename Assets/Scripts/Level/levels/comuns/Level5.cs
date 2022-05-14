@@ -100,7 +100,8 @@ public class Level5 : AbstractLevelObstaculos
         dicionario.Add("divisoria", "#A43820");
         dicionario.Add("digitos", "#46211A");
         dicionario.Add("circulo-externo", "#A77639");
-        dicionario.Add("circulo-interno", "#BA5536");        return dicionario;
+        dicionario.Add("circulo-interno", "#BA5536");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
