@@ -88,7 +88,7 @@ public class Level2 : AbstractLevel
         dicionario.Add("setas-laterais", "#606986");
         dicionario.Add("seta-cima", "#606986");
         dicionario.Add("divisoria", "#FFFFFF");
-        dicionario.Add("digitos", "#3A3A3A");
+        dicionario.Add("digitos", "#digitos");
         dicionario.Add("circulo-externo", "#FFFFFF");
         dicionario.Add("circulo-interno", "#606986");
         return dicionario;
