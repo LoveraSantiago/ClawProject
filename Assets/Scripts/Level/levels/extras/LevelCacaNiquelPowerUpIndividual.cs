@@ -93,7 +93,8 @@ public class LevelCacaNiquelPowerUpIndividual : AbstractLevel
         dicionario.Add("divisoria", "#2E4600");
         dicionario.Add("digitos", "#59301C");
         dicionario.Add("circulo-externo", "#A2C523");
-        dicionario.Add("circulo-interno", "#CFE777");        return dicionario;
+        dicionario.Add("circulo-interno", "#CFE777");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
