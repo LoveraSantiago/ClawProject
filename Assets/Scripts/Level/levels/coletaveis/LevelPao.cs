@@ -72,7 +72,8 @@ public class LevelPao : AbstractLevelColetavel
         dicionario.Add("divisoria", "#3F681C");
         dicionario.Add("digitos", "#FB512B");
         dicionario.Add("circulo-externo", "#375E97");
-        dicionario.Add("circulo-interno", "#41D9FB");        return dicionario;
+        dicionario.Add("circulo-interno", "#41D9FB");
+        return dicionario;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
