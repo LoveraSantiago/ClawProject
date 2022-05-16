@@ -72,7 +72,8 @@ public class LevelLaranja : AbstractLevelColetavel
         dicionario.Add("divisoria", "#C99E10");
         dicionario.Add("digitos", "#1E434C");
         dicionario.Add("circulo-externo", "#9B4F0F");
-        dicionario.Add("circulo-interno", "#C99E10");        return dicionario;
+        dicionario.Add("circulo-interno", "#C99E10");
+        return dicionario;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()

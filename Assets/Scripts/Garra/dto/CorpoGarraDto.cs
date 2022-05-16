@@ -21,6 +21,8 @@ public class CorpoGarraDto
     public Transform CentroDaGarra { get { return centroDaGarra; } }
 
     public SpriteRenderer SprRendererPincaEsquerda { get { return sprRendererPincaEsquerda; } }
+    public Transform TransformBaseCorpo { get { return sprRendererBaseCorpo.transform; } }
+
     public SpriteRenderer SprRendererPincaDireita { get { return sprRendererPincaDireita; } }
     public Transform TransformPincaEsquerda { get { return sprRendererPincaEsquerda.transform; } }
     public Transform TransformPincaDireita { get { return sprRendererPincaDireita.transform; } }

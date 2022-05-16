@@ -54,8 +54,8 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     public void fixedUpdate(GarraDto garraDto)
     {
-        gerDeMovAtual.fixedUpdate();
-        cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.Corpo.RigidBody.transform);
+        gerDeMovAtual.fixedUpdate();        
+        cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.Corpo.TransformBaseCorpo.transform);
     }    
 
     private void configurarColisorCentroDaPinca(GameObject goColisor)
