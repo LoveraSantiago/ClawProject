@@ -5235,7 +5235,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 42
-  m_Sprite: {fileID: 21300000, guid: ee278371f3fcc244c804a67bf448046d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1fa12176eac372b479b2c2b3a1fc8ca5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5244,7 +5244,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &469031665988364410
 GameObject:
@@ -5326,7 +5326,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 45e6b7dea5b32954a8e144ffdcffb129, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6c3a2ed9e15f8843b298360a8eb3e37, type: 3}
   m_MaskAlphaCutoff: 0
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
