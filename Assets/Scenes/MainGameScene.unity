@@ -58572,6 +58572,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 469031665585460424, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1fa12176eac372b479b2c2b3a1fc8ca5, type: 3}
+    - target: {fileID: 469031665585460424, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 469031665988364410, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
       propertyPath: m_Name
       value: garra
@@ -58660,6 +58668,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3249706106696491384, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6c3a2ed9e15f8843b298360a8eb3e37, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
 --- !u!95 &2086766167889621232 stripped
