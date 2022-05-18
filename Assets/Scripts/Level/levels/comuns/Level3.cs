@@ -45,7 +45,8 @@ public class Level3 : AbstractLevelElevador
 
     public override TipoContagemTempoDto getTempoContagem()
     {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:26");        
+        //return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:26");        
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:10");        
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()
@@ -93,7 +94,8 @@ public class Level3 : AbstractLevelElevador
         dicionario.Add("divisoria", "#80BD9E");
         dicionario.Add("digitos", "#FABB66");
         dicionario.Add("circulo-externo", "#80BD9E");
-        dicionario.Add("circulo-interno", "#BBEA9F");        return dicionario;
+        dicionario.Add("circulo-interno", "#BBEA9F");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
