@@ -104,6 +104,11 @@ public class Level2 : AbstractLevel
         return false;
     }
 
+    public override bool isLevelAlbedo0DigitosScrollPup()
+    {
+        return false;
+    }
+
     public override PowerUpsParaLevel getPupsToLevel()
     {
         //return new PowerUpsParaLevel(2)
