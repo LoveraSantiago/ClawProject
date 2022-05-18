@@ -34,9 +34,14 @@ public abstract class BoardMontador
                 coletavelEntidade = helperColetavel.getRandomColetavelEntidadeByFamilia(familia);
             }
 
-            Coletavel coletavel = HelperColetaveisInGame.criarColetavel(coletavelEntidade.nomeSprite, posicao);
+            Coletavel coletavel = criarColetavel(coletavelEntidade.nomeSprite, posicao);
             yield return onColetavelCriado(contadorColuna, contadorLinha,coletavel);            
         }
+    }
+
+    protected virtual Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
+    {
+        return HelperColetaveisInGame.criarColetavel(nomeSprite, posicao); 
     }
 
     private Vector3 calcularPosicao(PosicaoItensDoBoardDto posItem, int contadorColuna, float altura)

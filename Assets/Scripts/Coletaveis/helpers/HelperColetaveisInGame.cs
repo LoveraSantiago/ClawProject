@@ -4,12 +4,7 @@ using UnityEngine;
 public class HelperColetaveisInGame 
 {
     private static PoolDeColetaveis poolDeColetaveis;
-    private static Dictionary<string, Material> poolGrayscale;
-
-    public Coletavel criarColetavel()
-    {
-        return poolDeColetaveis.criarColetavel();
-    }
+    private static Dictionary<string, Material> poolGrayscale;   
 
     public int getQtdColetaveisInGame()
     {
@@ -96,18 +91,28 @@ public class HelperColetaveisInGame
         return poolGrayscale[spr.name];
     }
 
+    public Coletavel criarColetavel()
+    {
+        return poolDeColetaveis.criarColetavel();
+    }
+
     public static Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
     {
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-
         Coletavel coletavel = helperInGame.criarColetavel();
+
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
         Sprite sprite = helperColetavel.getSpriteColetavelByNomeSprite(nomeSprite);
         coletavel.receberSprite(sprite);
         coletavel.colocarNaPosicao(posicao);
         coletavel.ligar();
 
         return coletavel;
+    }
+
+    public static Coletavel criarColetavel(string nomeSprite, Vector3 posicao, Transform tranformParent)
+    {
+        return criarColetavel(nomeSprite, posicao);
     }
 
     public static void configurar()
