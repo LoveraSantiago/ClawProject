@@ -37,7 +37,8 @@ public class BoardDto
     public Transform ParedeAlta { get { return paredeAlta; } }
     public Transform ParedeBaixa { get { return paredeBaixa; } }
 
-    public Transform BoardPosicao { get { return boardPosicao; } }    
+    public Transform BoardPosicao { get { return boardPosicao; } }   
+    public GameObject GoBoardPosicao { get { return boardPosicao.gameObject; } }
     public Transform PosicaoRefVoltaBoard { get { return posicaoRefVoltaBoard; } }
     
     public float PosAlturaSub { get { return posAlturaSub;  } }       

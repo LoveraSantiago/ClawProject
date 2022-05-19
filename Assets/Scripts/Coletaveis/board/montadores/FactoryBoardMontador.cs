@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class FactoryBoardMontador 
 {
     public static BoardMontador getMontadorByLevel(AbstractLevel level)
@@ -23,12 +25,12 @@ public class FactoryBoardMontador
         return montador;
     }
 
-    public static BoardMontador getMontadorExtraByLevel(AbstractLevel level)
+    public static BoardMontador getMontadorExtraByLevel(AbstractLevel level, GameObject goParent)
     {
         BoardMontador montadorExtra = null;
         if (LevelUtils.isElevadorLevel(level))
         {
-            montadorExtra = new BoardMontadorExtra();
+            montadorExtra = new BoardMontadorExtra(goParent);
         }
         else
         {

@@ -39,9 +39,9 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         configurarGaiolas(coletaveisDto);
     }
 
-    public void configuradoPeloLevel(AbstractLevel level)
+    public void configuradoPeloLevel(AbstractLevel level, ColetaveisDto coletaveisDto)
     {
-        board.configuradoPeloLevel(level);
+        board.configuradoPeloLevel(level, coletaveisDto.BoardDto);
         tuboDeDescarte.configuradoPeloLevel(level.devolverParaBoard());
         contador.configuradoPeloLevel(level);
     }
