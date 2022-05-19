@@ -8,6 +8,9 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
     public Coletavel()
         : base(contexto, new ProcuradorDeSpriteRenderer("imagem"), contexto.nomeador.getName()){}
 
+    public Coletavel(GameObject goParent)
+        : base(contexto, new ProcuradorDeSpriteRenderer("imagem"), contexto.nomeador.getName()){}
+
     public Coletavel(Transform transform)
         : base(transform, new ProcuradorDeSpriteRenderer("imagem")) {}       
 
