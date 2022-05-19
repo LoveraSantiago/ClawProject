@@ -12,7 +12,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
     private Coroutine coroutine;
 
     public AbstractAsaPowerUpGo(GameObject goDto, string nome)
-         : base(goDto, new ProcuradorDeSpriteRenderer("imagem"), nome){}
+         : base(goDto, new FinderDeSprRenderer1Nivel("imagem"), nome){}
 
     public override void configurarPup()
     {

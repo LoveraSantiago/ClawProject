@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class ProcuradorDeSpriteRenderer : Transformador<GameObject, SpriteRenderer>
+public class FinderDeSprRenderer1Nivel : FinderDeSprRenderer
 {
     private string nomeComponente;
 
-    public ProcuradorDeSpriteRenderer(string nomeComponente)
+    public FinderDeSprRenderer1Nivel(string nomeComponente)
     {
         this.nomeComponente = nomeComponente;
     }

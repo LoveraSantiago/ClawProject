@@ -6,13 +6,13 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
     public string nomeGaiolaAprisionadora { get; private set; }    
 
     public Coletavel()
-        : base(contexto, new ProcuradorDeSpriteRenderer("imagem"), contexto.nomeador.getName()){}
+        : base(contexto, new FinderDeSprRenderer1Nivel("imagem"), contexto.nomeador.getName()){}
 
     public Coletavel(GameObject goParent)
-        : base(contexto, new ProcuradorDeSpriteRenderer("imagem"), contexto.nomeador.getName()){}
+        : base(contexto, new FinderDeSprRenderer1Nivel("imagem"), contexto.nomeador.getName()){}
 
     public Coletavel(Transform transform)
-        : base(transform, new ProcuradorDeSpriteRenderer("imagem")) {}       
+        : base(transform, new FinderDeSprRenderer1Nivel("imagem")) {}       
 
     public void clearMaterial()
     {
