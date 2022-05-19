@@ -18,6 +18,13 @@ public abstract class ComponenteAnimacaoDeColetavel : GO
     }
 
     public ComponenteAnimacaoDeColetavel(
+        GOContexto contextoGO, GameObject goParent, FinderDeSprRenderer finderDeSprRenderer, string nome)
+        : base(contextoGO, goParent, finderDeSprRenderer, nome)
+    {
+        iniciarColetavelAnimacao();
+    }
+
+    public ComponenteAnimacaoDeColetavel(
         Transform transform, FinderDeSprRenderer finderDeSprRenderer)
         : base(transform, finderDeSprRenderer, transform.gameObject.name)
     {

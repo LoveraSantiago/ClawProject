@@ -34,7 +34,7 @@ public class PoolDeColetaveis
         }
         else
         {
-            Coletavel coletavel = new Coletavel();
+            Coletavel coletavel = new Coletavel(goParent);
             poolDeNomes.addChaveValor(coletavel.nome, coletavel);
             return coletavel;
         }

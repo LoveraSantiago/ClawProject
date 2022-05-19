@@ -9,7 +9,7 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
         : base(contexto, new FinderDeSprRenderer1Nivel("imagem"), contexto.nomeador.getName()){}
 
     public Coletavel(GameObject goParent)
-        : base(contexto, new FinderDeSprRenderer1Nivel("imagem"), contexto.nomeador.getName()){}
+        : base(contexto, goParent, new FinderDeSprRenderer1Nivel("imagem"), contexto.nomeador.getName()) {}
 
     public Coletavel(Transform transform)
         : base(transform, new FinderDeSprRenderer1Nivel("imagem")) {}       
