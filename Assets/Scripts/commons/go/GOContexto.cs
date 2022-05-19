@@ -11,11 +11,10 @@ public class GOContexto
         mainMaterial = mainGO.GetComponent<SpriteRenderer>().sharedMaterial;
     }
     
-    protected GOContexto(
-        GameObject mainGO, Transformador<GameObject, SpriteRenderer> getGoComSprRenderer)
+    protected GOContexto(GameObject mainGO, FinderDeSprRenderer finderDeSprRenderer)
     {
         this.mainGO = mainGO;
-        mainMaterial = getGoComSprRenderer.transformar(mainGO).sharedMaterial;
+        mainMaterial = finderDeSprRenderer.transformar(mainGO).sharedMaterial;
     }
 
     public GOContexto(GameObject mainGO, GOContexto goContexto)

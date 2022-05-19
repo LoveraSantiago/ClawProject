@@ -11,12 +11,10 @@ public abstract class GO : ComponenteRigidBodyDeGO
     }
 
     public GO(
-        Transform transform,
-        Transformador<GameObject, SpriteRenderer> getGoComSprRenderer, 
-        string nome)
+        Transform transform, FinderDeSprRenderer finderDeSprRenderer,  string nome)
        : base(transform.gameObject)
     {
-        carregarSpriteRenderer(getGoComSprRenderer.transformar(getGo()));
+        carregarSpriteRenderer(finderDeSprRenderer.transformar(getGo()));
     }
 
     public GO(GOContexto contextoGO, string nome)        
@@ -26,12 +24,10 @@ public abstract class GO : ComponenteRigidBodyDeGO
                 Quaternion.Euler(Vector3.zero)).transform, 
               nome){}   
 
-    public GO(GOContexto contextoGO, 
-              Transformador<GameObject, SpriteRenderer> getGoComSprRenderer, 
-              string nome)
+    public GO(GOContexto contextoGO, FinderDeSprRenderer finderDeSprRenderer, string nome)
         :this(contextoGO, nome)
     {       
-        carregarSpriteRenderer(getGoComSprRenderer.transformar(getGo()));        
+        carregarSpriteRenderer(finderDeSprRenderer.transformar(getGo()));        
     }
 
     protected abstract GOContexto getGOContext();        
