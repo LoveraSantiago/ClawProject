@@ -110,7 +110,7 @@ public class HelperColetaveisInGame
     public static Coletavel criarColetavel(string nomeSprite, Vector3 posicao, GameObject goParent)
     {
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        return criarColetavel(nomeSprite, posicao);
+        return configColetavel(helperInGame.criarColetavel(goParent), nomeSprite, posicao);
     }
 
     private static Coletavel configColetavel(Coletavel coletavel, string nomeSprite, Vector3 posicao)
