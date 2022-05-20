@@ -22,7 +22,7 @@ public class MainGameEventos
             .adicionarConsumidor(uiManager.modalResultados);
 
         new AcaoColetadoFim()
-            .configurarProdutor(maquinaManager)
+            .configurarProdutor(maquinaManager.displayDeColetados)
             .adicionarConsumidor(coletaveisManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager.displayTimer)

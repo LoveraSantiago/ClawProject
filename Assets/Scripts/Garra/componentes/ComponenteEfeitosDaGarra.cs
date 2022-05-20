@@ -12,11 +12,13 @@ public class ComponenteEfeitosDaGarra : ComponentePincasDaGarrra
 
     public void ligarEfeitoTrailPCima()
     {
+        Debug.Log("ligarEfeitoTrailPCima");
         ligarEfeitoTrailAngulo(-0.4f, 180);
     }
 
     public void ligarEfeitoTrailPBaixo()
     {
+        Debug.Log("ligarEfeitoTrailPBaixo");
         ligarEfeitoTrailAngulo(0.8f, 0);
     }
 
