@@ -6,6 +6,7 @@ public class DesafixadorEixosXY : Consumidor<Coletavel>
         {
             coletavel.desafixarVerticalmente();
             coletavel.colocarNoLayerNormal();
+            coletavel.colocarNoOrderComum();
         }
     }
 }

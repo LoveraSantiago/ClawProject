@@ -34,7 +34,6 @@ public class BoardMontadorExtra : BoardMontador
         return HelperColetaveisInGame.criarColetavel(nomeSprite, posicao, goParent);
     }
 
-
     protected override IEnumerator onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
         coletavel.colocarNoOrderEscondido();
