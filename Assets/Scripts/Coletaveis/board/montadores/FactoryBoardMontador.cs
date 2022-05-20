@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FactoryBoardMontador 
 {
-    public static BoardMontador getMontadorByLevel(AbstractLevel level)
+    public static BoardMontador getMontadorByLevel(AbstractLevel level, GameObject goParent)
     {
         BoardMontador montador = null;
         if (LevelUtils.isNormalLevel(level))
@@ -16,6 +16,10 @@ public class FactoryBoardMontador
         else if (LevelUtils.isOvoLevel(level))
         {
             montador = new BoardMontadorOvo();
+        }
+        else if (LevelUtils.isElevadorLevel(level))
+        {
+            montador = new BoardMontadorElevadorNormal(goParent);
         }
         else
         {

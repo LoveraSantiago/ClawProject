@@ -20,7 +20,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
     public void configuradoPeloLevel(AbstractLevel level, BoardDto boardDto)
     {
         BoardMontador.configurar(level.getFamiliaColetavel());
-        montador      = FactoryBoardMontador.getMontadorByLevel(level);
+        montador      = FactoryBoardMontador.getMontadorByLevel(level, boardDto.GoBoardPosicao);
         montadorExtra = FactoryBoardMontador.getMontadorExtraByLevel(level, boardDto.GoBoardPosicao);
         devolvedor.configuradoPeloLevel(level.devolverParaBoard());
     }   
