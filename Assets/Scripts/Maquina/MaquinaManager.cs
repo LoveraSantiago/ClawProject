@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
-                              AcaoCacaNiquel.ProdutorEvento,
+public class MaquinaManager : AcaoCacaNiquel.ProdutorEvento,
                               AcaoDesligarMaquina.ProdutorEvento,
                               AcaoColetado.ConsumidorEvento,                                
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
@@ -155,12 +154,7 @@ public class MaquinaManager : AcaoTempoEsgotado.ProdutorEvento,
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)
     {
         ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
-    }
-
-    ProdutorDeEvento<TempoEsgotadoDto> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()
-    {
-        return ((AcaoTempoEsgotado.ProdutorEvento)displayTimer).getProdutorDeEvento();
-    }
+    }    
 
     ProdutorDeEvento<CacaNiquelEventoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {

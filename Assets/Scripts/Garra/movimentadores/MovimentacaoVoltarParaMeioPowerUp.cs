@@ -8,7 +8,7 @@ public class MovimentacaoVoltarParaMeioPowerUp : AbstractMovimentacaoDaGarraPowe
     }
 
     public override void preInicio()
-    {
+    {   
         movVoltarParaMeio.preInicio(getPosicaoHorizontalMeio());
     }
 

@@ -58,7 +58,7 @@ public class MainGameEventos
             .adicionarConsumidor(maquinaManager);
 
         new AcaoTempoEsgotado()
-            .configurarProdutor(maquinaManager)
+            .configurarProdutor(maquinaManager.displayTimer)
             .adicionarConsumidor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(maquinaManager.arcoIrisEfeito)
             .adicionarConsumidor(garraManager)
