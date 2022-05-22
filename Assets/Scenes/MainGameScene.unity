@@ -10682,7 +10682,7 @@ MonoBehaviour:
       posCacaNiquel: -1.75
       velocidades:
         movHorizontal: 3.1
-        movCima: 7.5
+        movCima: 8
         movBaixo: 7.5
         movAnguloIdle: 0.3
         movAnguloAbertura: 4
