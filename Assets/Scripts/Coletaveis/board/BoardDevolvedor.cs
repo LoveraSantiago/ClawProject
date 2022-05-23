@@ -23,7 +23,7 @@ public class BoardDevolvedor
 
     private IEnumerator devolverParaBoard(bool[]resultados, BoardDto boardDto, Coletavel[] coletados)
     {
-        Debug.Log("Devolver para o board chamado");
+        //Debug.Log("Devolver para o board chamado");
         for (int contador = 0; contador < coletados.Length; contador++)
         {
             if(deveDevolver(contador, coletados, resultados))
