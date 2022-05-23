@@ -114,11 +114,11 @@ public class Level4 : AbstractLevelOrdem
         dicionario.Add("btn-pup-base-e", "#763626");
         dicionario.Add("btn-pup-topo-e", "#90AFC5");
         dicionario.Add("placa-externa", "#336B87");
-        dicionario.Add("placa-interna", "#B05139");
-        dicionario.Add("setas-laterais", "#2A3132");
-        dicionario.Add("seta-cima", "#2A3132");
+        dicionario.Add("placa-interna", "#2A3132");
+        dicionario.Add("setas-laterais", "#763626");
+        dicionario.Add("seta-cima", "#763626");
         dicionario.Add("divisoria", "#90AFC5");
-        dicionario.Add("digitos", "#2A3132");
+        dicionario.Add("digitos", "#000000");        
         dicionario.Add("circulo-externo", "#B05139");
         dicionario.Add("circulo-interno", "#276777");        return dicionario;
     }
@@ -126,6 +126,11 @@ public class Level4 : AbstractLevelOrdem
     public override bool isLevelAlbedo0()
     {
         return true;
+    }
+
+    public override bool isLevelAlbedo0Timer2Pontos()
+    {
+        return false;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
