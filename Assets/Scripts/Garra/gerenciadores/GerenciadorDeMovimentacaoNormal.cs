@@ -74,7 +74,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoVoltarParaCima()
     {   
-        trocarMovimentador(new MovimentacaoVoltarParaCima());
+        trocarMovimentador(new MovimentacaoVoltarParaCimaNormal());
     }
 
     public void trocarParaAcaoVoltarParaMeio()
