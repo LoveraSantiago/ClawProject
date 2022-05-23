@@ -24,7 +24,7 @@ public class ComponenteRigidBodyDaGarra : ComponenteGarraDtoDaGarra
 
     public void colocarNaHalturaInicial()
     {
-        getRigidBody().transform.localPosition = new Vector2(getRigidBody().position.x, posInicial.y);
+        getRigidBody().transform.localPosition = new Vector2(getRigidBody().transform.localPosition.x, posInicial.y);
     }
 
     public void colocarNaPosicaoInicial()
@@ -39,6 +39,7 @@ public class ComponenteRigidBodyDaGarra : ComponenteGarraDtoDaGarra
 
     public void moverPCima()
     {
+        //Debug.Log("noverPCima");
         setVelocidade(new Vector2(0, getVelocidades().MovCima));
     }
 
@@ -79,6 +80,7 @@ public class ComponenteRigidBodyDaGarra : ComponenteGarraDtoDaGarra
 
     public bool isAcimaPosInicial()
     {
+        //Debug.Log(getRigidBody().transform.localPosition.y + " - " + posInicial.y + " - isacima = " + (getRigidBody().transform.localPosition.y >= posInicial.y));
         return getRigidBody().transform.localPosition.y >= posInicial.y;
     }
 

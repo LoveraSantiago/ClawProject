@@ -1,4 +1,4 @@
-public class MovimentacaoVoltarParaMeioNormal : MovimentacaoDaGarraNormal
+public class MovimentacaoVoltarParaMeioNormal : AbstractMovimentacaoDaGarraNormal
 {    
     private MovimentacaoVoltarParaPosicao movVoltarParaMeio;
 

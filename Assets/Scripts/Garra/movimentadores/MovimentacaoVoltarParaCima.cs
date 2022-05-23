@@ -12,6 +12,7 @@ public class MovimentacaoVoltarParaCima : AbstractMovimentacaoDaGarraPowerUp
     {
         if (isAcimaPosInicial())
         {
+            Debug.Log("isAcimaPosInicial");
             parar();
             colocarNaAlturaInicial();
             comunicadorComGerMovimentacao.trocarParaAcaoVoltarParaMeio();

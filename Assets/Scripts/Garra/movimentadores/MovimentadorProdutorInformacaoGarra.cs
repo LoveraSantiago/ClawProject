@@ -1,4 +1,4 @@
-public abstract class MovimentadorProdutorInformacaoGarra : MovimentacaoDaGarraNormal
+public abstract class MovimentadorProdutorInformacaoGarra : AbstractMovimentacaoDaGarraNormal
 {
     private static int contadorDeSubidas;
     public static ProdutorDeEvento<InformacoesDaGarraDto> produtorEventoInfoGarra { get; private set; }
