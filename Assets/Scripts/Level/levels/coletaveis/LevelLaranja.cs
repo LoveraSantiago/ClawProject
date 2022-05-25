@@ -65,12 +65,12 @@ public class LevelLaranja : AbstractLevelColetavel
         dicionario.Add("btn-pup-topo-d", "#9B4F0F");
         dicionario.Add("btn-pup-base-e", "#8D230F");
         dicionario.Add("btn-pup-topo-e", "#9B4F0F");
-        dicionario.Add("placa-externa", "#1E434C");
-        dicionario.Add("placa-interna", "#3F8C9F");
-        dicionario.Add("setas-laterais", "#9B4F0F");
-        dicionario.Add("seta-cima", "#9B4F0F");
+        dicionario.Add("placa-externa", "#9B4F0F");
+        dicionario.Add("placa-interna", "#1E434C");
+        dicionario.Add("setas-laterais", "#F1CC52");
+        dicionario.Add("seta-cima", "#F1CC52");
         dicionario.Add("divisoria", "#C99E10");
-        dicionario.Add("digitos", "#1E434C");
+        dicionario.Add("digitos", "#000000");
         dicionario.Add("circulo-externo", "#9B4F0F");
         dicionario.Add("circulo-interno", "#C99E10");
         return dicionario;
