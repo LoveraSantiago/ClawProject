@@ -22,12 +22,6 @@ public class LevelLeite : AbstractLevelColetavel
         return 10;
     }
 
-    public override bool isLevelAlbedo0()
-    {
-        return true;
-    }
-
-
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         //10. Playful Greens & Blues
@@ -40,16 +34,16 @@ public class LevelLeite : AbstractLevelColetavel
         dicionario.Add("barra", "#7DA3A1");
         dicionario.Add("placa-timer", "#34675C");
         dicionario.Add("display-timer-digito", "#7DA3A1");
-        dicionario.Add("seg", "#324851");
+        dicionario.Add("seg", "#86AC41");
         dicionario.Add("placa-coletados", "#34675C");
         dicionario.Add("display-coletado1", "#7DA3A1");
         dicionario.Add("display-coletado2", "#7DA3A1");
         dicionario.Add("display-coletado3", "#7DA3A1");
         dicionario.Add("placa-scores", "#34675C");
-        dicionario.Add("display-pontos1", "#7DA3A1");
-        dicionario.Add("display-pontos2", "#7DA3A1");
-        dicionario.Add("display-pontos3", "#7DA3A1");
-        dicionario.Add("leds", "#324851");
+        dicionario.Add("display-pontos1", "#324851");
+        dicionario.Add("display-pontos2", "#324851");
+        dicionario.Add("display-pontos3", "#324851");
+        dicionario.Add("leds", "#7DA3A1");
         dicionario.Add("topo", "#86AC41");
         dicionario.Add("base", "#7DA3A1");
         dicionario.Add("mesa-joystick-cima", "#34675C");
@@ -66,15 +60,25 @@ public class LevelLeite : AbstractLevelColetavel
         dicionario.Add("btn-pup-topo-d", "#7DA3A1");
         dicionario.Add("btn-pup-base-e", "#86AC41");
         dicionario.Add("btn-pup-topo-e", "#7DA3A1");
-        dicionario.Add("placa-externa", "#34675C");
+        dicionario.Add("placa-externa", "#324851");
         dicionario.Add("placa-interna", "#7DA3A1");
-        dicionario.Add("setas-laterais", "#324851");
-        dicionario.Add("seta-cima", "#324851");
+        dicionario.Add("setas-laterais", "#7DA3A1");
+        dicionario.Add("seta-cima", "#7DA3A1");
         dicionario.Add("divisoria", "#324851");
-        dicionario.Add("digitos", "#324851");
+        dicionario.Add("digitos", "#7DA3A1");
         dicionario.Add("circulo-externo", "#324851");
         dicionario.Add("circulo-interno", "#7DA3A1");        return dicionario;
     }
+
+    public override bool isLevelAlbedo0()
+    {
+        return false;
+    }
+
+    //public override bool isLevelAlbedo0Timers()
+    //{
+    //    return true;
+    //}
 
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
