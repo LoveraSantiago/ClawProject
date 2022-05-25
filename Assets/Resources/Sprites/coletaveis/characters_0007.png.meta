@@ -128,14 +128,10 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline:
-    - - {x: -44, y: 106}
-      - {x: -106, y: 47}
-      - {x: -106, y: -54}
-      - {x: -60, y: -106}
-      - {x: 63, y: -106}
-      - {x: 105, y: -38}
-      - {x: 106, y: 50}
-      - {x: 25, y: 106}
+    - - {x: -128, y: 128}
+      - {x: -128, y: -128}
+      - {x: 128, y: -128}
+      - {x: 128, y: 128}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
