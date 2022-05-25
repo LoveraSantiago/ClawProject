@@ -59,7 +59,7 @@ public class LevelCacaNiquelPowerUpGeral : AbstractLevel
         dicionario.Add("barra", "#C4DFE6");
         dicionario.Add("placa-timer", "#07575B");
         dicionario.Add("display-timer-digito", "#C4DFE6");
-        dicionario.Add("seg", "#003B46");
+        dicionario.Add("seg", "#4C858D");
         dicionario.Add("placa-coletados", "#07575B");
         dicionario.Add("display-coletado1", "#C4DFE6");
         dicionario.Add("display-coletado2", "#C4DFE6");
@@ -68,7 +68,7 @@ public class LevelCacaNiquelPowerUpGeral : AbstractLevel
         dicionario.Add("display-pontos1", "#C4DFE6");
         dicionario.Add("display-pontos2", "#C4DFE6");
         dicionario.Add("display-pontos3", "#C4DFE6");
-        dicionario.Add("leds", "#003B46");
+        dicionario.Add("leds", "#4C858D");
         dicionario.Add("topo", "#66A5AD");
         dicionario.Add("base", "#C4DFE6");
         dicionario.Add("mesa-joystick-cima", "#003B46");
@@ -90,7 +90,7 @@ public class LevelCacaNiquelPowerUpGeral : AbstractLevel
         dicionario.Add("setas-laterais", "#C4DFE6");
         dicionario.Add("seta-cima", "#66A5AD");
         dicionario.Add("divisoria", "#66A5AD");
-        dicionario.Add("digitos", "#003B46");
+        dicionario.Add("digitos", "#4C858D");
         dicionario.Add("circulo-externo", "#07575B");
         dicionario.Add("circulo-interno", "#C4DFE6");        return dicionario;
     }
