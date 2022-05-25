@@ -57,18 +57,18 @@ public class LevelPowerUp : AbstractLevel
         dicionario.Add("cabo-da-garra", "#FFFFFF");
         dicionario.Add("viga", "#4C9D6F");
         dicionario.Add("barra", "#2C7873");
-        dicionario.Add("placa-timer", "#2C7873");
-        dicionario.Add("display-timer-digito", "#C1E1CF");
-        dicionario.Add("seg", "#021C1E");
-        dicionario.Add("placa-coletados", "#2C7873");
+        dicionario.Add("placa-timer", "#021C1E");
+        dicionario.Add("display-timer-digito", "#2C7873");
+        dicionario.Add("seg", "#C1E1CF");
+        dicionario.Add("placa-coletados", "#021C1E");
         dicionario.Add("display-coletado1", "#C1E1CF");
         dicionario.Add("display-coletado2", "#C1E1CF");
         dicionario.Add("display-coletado3", "#C1E1CF");
-        dicionario.Add("placa-scores", "#2C7873");
-        dicionario.Add("display-pontos1", "#C1E1CF");
-        dicionario.Add("display-pontos2", "#C1E1CF");
-        dicionario.Add("display-pontos3", "#C1E1CF");
-        dicionario.Add("leds", "#021C1E");
+        dicionario.Add("placa-scores", "#021C1E");
+        dicionario.Add("display-pontos1", "#2C7873");
+        dicionario.Add("display-pontos2", "#2C7873");
+        dicionario.Add("display-pontos3", "#2C7873");
+        dicionario.Add("leds", "#C1E1CF");
         dicionario.Add("topo", "#2C7873");
         dicionario.Add("base", "#C1E1CF");
         dicionario.Add("mesa-joystick-cima", "#004445");
@@ -86,19 +86,18 @@ public class LevelPowerUp : AbstractLevel
         dicionario.Add("btn-pup-base-e", "#2C7873");
         dicionario.Add("btn-pup-topo-e", "#6FB98F");
         dicionario.Add("placa-externa", "#021C1E");
-        dicionario.Add("placa-interna", "#C1E1CF");
+        dicionario.Add("placa-interna", "#2C7873");
         dicionario.Add("setas-laterais", "#2C7873");
         dicionario.Add("seta-cima", "#2C7873");
-        dicionario.Add("divisoria", "#2C7873");
-        dicionario.Add("digitos", "#021C1E");
+        dicionario.Add("divisoria", "#C1E1CF");
+        dicionario.Add("digitos", "#C1E1CF");
         dicionario.Add("circulo-externo", "#021C1E");
-        dicionario.Add("circulo-interno", "#2C7873");
-        return dicionario;        
+        dicionario.Add("circulo-interno", "#2C7873");        return dicionario;        
     }
 
     public override bool isLevelAlbedo0()
     {
-        return true;
+        return false;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
