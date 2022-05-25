@@ -20,12 +20,7 @@ public class LevelMaca : AbstractLevelColetavel
     public override int getIdColetavel()
     {
         return 11;
-    }
-
-    public override bool isLevelAlbedo0()
-    {
-        return true;
-    }
+    }   
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {
@@ -72,7 +67,13 @@ public class LevelMaca : AbstractLevelColetavel
         dicionario.Add("divisoria", "#F18D9E");
         dicionario.Add("digitos", "#5BC8AC");
         dicionario.Add("circulo-externo", "#F1E08E");
-        dicionario.Add("circulo-interno", "#F1E08E");        return dicionario;
+        dicionario.Add("circulo-interno", "#F1E08E");
+        return dicionario;
+    }
+
+    public override bool isLevelAlbedo0()
+    {
+        return false;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
