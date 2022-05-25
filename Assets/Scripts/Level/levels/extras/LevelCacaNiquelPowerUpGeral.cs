@@ -97,7 +97,7 @@ public class LevelCacaNiquelPowerUpGeral : AbstractLevel
 
     public override bool isLevelAlbedo0()
     {
-        return true;
+        return false;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
