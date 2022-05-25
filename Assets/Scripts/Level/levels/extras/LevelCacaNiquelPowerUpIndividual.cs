@@ -60,7 +60,7 @@ public class LevelCacaNiquelPowerUpIndividual : AbstractLevel
         dicionario.Add("barra", "#A2C523");
         dicionario.Add("placa-timer", "#A2C523");
         dicionario.Add("display-timer-digito", "#CFE777");
-        dicionario.Add("seg", "#2E4600");
+        dicionario.Add("seg", "#A2C523");
         dicionario.Add("placa-coletados", "#A2C523");
         dicionario.Add("display-coletado1", "#CFE777");
         dicionario.Add("display-coletado2", "#CFE777");
@@ -69,7 +69,7 @@ public class LevelCacaNiquelPowerUpIndividual : AbstractLevel
         dicionario.Add("display-pontos1", "#CFE777");
         dicionario.Add("display-pontos2", "#CFE777");
         dicionario.Add("display-pontos3", "#CFE777");
-        dicionario.Add("leds", "#2E4600");
+        dicionario.Add("leds", "#A2C523");
         dicionario.Add("topo", "#486B00");
         dicionario.Add("base", "#A8B937");
         dicionario.Add("mesa-joystick-cima", "#7D4427");
@@ -86,20 +86,19 @@ public class LevelCacaNiquelPowerUpIndividual : AbstractLevel
         dicionario.Add("btn-pup-topo-d", "#C46E43");
         dicionario.Add("btn-pup-base-e", "#6A3A22");
         dicionario.Add("btn-pup-topo-e", "#C46E43");
-        dicionario.Add("placa-externa", "#C46E43");
-        dicionario.Add("placa-interna", "#A2C523");
+        dicionario.Add("placa-externa", "#6A3A22");
+        dicionario.Add("placa-interna", "#C46E43");
         dicionario.Add("setas-laterais", "#CFE777");
         dicionario.Add("seta-cima", "#CFE777");
         dicionario.Add("divisoria", "#2E4600");
-        dicionario.Add("digitos", "#59301C");
+        dicionario.Add("digitos", "#A2C523");
         dicionario.Add("circulo-externo", "#A2C523");
-        dicionario.Add("circulo-interno", "#CFE777");
-        return dicionario;
+        dicionario.Add("circulo-interno", "#CFE777");        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
     {
-        return true;
+        return false;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
