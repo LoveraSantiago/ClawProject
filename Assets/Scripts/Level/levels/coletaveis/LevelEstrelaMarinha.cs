@@ -19,12 +19,7 @@ public class LevelEstrelaMarinha : AbstractLevelColetavel
     public override int getIdColetavel()
     {
         return 16;
-    }
-
-    public override bool isLevelAlbedo0()
-    {
-        return true;
-    }
+    }  
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {
@@ -69,9 +64,15 @@ public class LevelEstrelaMarinha : AbstractLevelColetavel
         dicionario.Add("setas-laterais", "#1995AD");
         dicionario.Add("seta-cima", "#1995AD");
         dicionario.Add("divisoria", "#F1F1F2");
-        dicionario.Add("digitos", "#1995AD");
+        dicionario.Add("digitos", "#A1D6E2");
         dicionario.Add("circulo-externo", "#1995AD");
-        dicionario.Add("circulo-interno", "#CECED2");        return dicionario;
+        dicionario.Add("circulo-interno", "#CECED2");
+        return dicionario;
+    }
+
+    public override bool isLevelAlbedo0()
+    {
+        return false;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
