@@ -20,12 +20,7 @@ public class LevelCoco : AbstractLevelColetavel
     public override int getIdColetavel()
     {
         return 15;
-    }
-
-    public override bool isLevelAlbedo0()
-    {
-        return true;
-    }
+    }   
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {   
@@ -39,7 +34,7 @@ public class LevelCoco : AbstractLevelColetavel
         dicionario.Add("barra", "#B3C100");
         dicionario.Add("placa-timer", "#B7B8B6");
         dicionario.Add("display-timer-digito", "#DBDCDB");
-        dicionario.Add("seg", "#838482");
+        dicionario.Add("seg", "#FFFFFF");
         dicionario.Add("placa-coletados", "#B7B8B6");
         dicionario.Add("display-coletado1", "#DBDCDB");
         dicionario.Add("display-coletado2", "#DBDCDB");
@@ -48,7 +43,7 @@ public class LevelCoco : AbstractLevelColetavel
         dicionario.Add("display-pontos1", "#DBDCDB");
         dicionario.Add("display-pontos2", "#DBDCDB");
         dicionario.Add("display-pontos3", "#DBDCDB");
-        dicionario.Add("leds", "#838482");
+        dicionario.Add("leds", "#FFFFFF");
         dicionario.Add("topo", "#B3C100");
         dicionario.Add("base", "#F6FF77");
         dicionario.Add("mesa-joystick-cima", "#34675C");
@@ -70,9 +65,14 @@ public class LevelCoco : AbstractLevelColetavel
         dicionario.Add("setas-laterais", "#34675C");
         dicionario.Add("seta-cima", "#34675C");
         dicionario.Add("divisoria", "#838482");
-        dicionario.Add("digitos", "#838482");
+        dicionario.Add("digitos", "#FFFFFF");
         dicionario.Add("circulo-externo", "#838482");
         dicionario.Add("circulo-interno", "#4D9988");        return dicionario;
+    }
+
+    public override bool isLevelAlbedo0()
+    {
+        return false;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
