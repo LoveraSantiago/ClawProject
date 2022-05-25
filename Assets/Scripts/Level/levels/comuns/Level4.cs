@@ -120,7 +120,8 @@ public class Level4 : AbstractLevelOrdem
         dicionario.Add("divisoria", "#90AFC5");
         dicionario.Add("digitos", "#000000");        
         dicionario.Add("circulo-externo", "#B05139");
-        dicionario.Add("circulo-interno", "#276777");        return dicionario;
+        dicionario.Add("circulo-interno", "#276777");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
@@ -128,10 +129,10 @@ public class Level4 : AbstractLevelOrdem
         return true;
     }
 
-    public override bool isLevelAlbedo0Timer2Pontos()
-    {
-        return false;
-    }
+    //public override bool isLevelAlbedo0Timer2Pontos()
+    //{
+    //    return false;
+    //}
 
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
