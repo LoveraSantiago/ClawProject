@@ -129,6 +129,7 @@ public class DisplayDeSlot
 
     public void desligarSprsSlotMeio()
     {
+        Debug.Log("desligarSprsSlotMeio");
         singleSlotColetadoDto.SprRendererSlotMeio.sprite = null;
     }
 
@@ -163,8 +164,11 @@ public class DisplayDeSlot
     private IEnumerator ligarCacaNiquelCoroutine(Sprite[] sprites)
     {
         int indiceAtual = 0;
+        Debug.Log("caca niquel ligado");
         while (true)
         {
+            Sprite spriteAtual = sprites[indiceAtual];
+            Debug.Log("Passado sprite " + spriteAtual.name);
             singleSlotColetadoDto.SprRendererSlotMeio.sprite = sprites[indiceAtual];
             if (indiceAtual < sprites.Length - 1)
             {

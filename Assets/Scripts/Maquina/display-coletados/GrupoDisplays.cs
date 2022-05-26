@@ -104,8 +104,8 @@ public class GrupoDisplays
     public void ligarCacaNiquel(Sprite[] sprSlot1, Sprite[] sprSlot2, Sprite[] sprSlot3)
     {
         displayDeSlot[0].ligarCacaNiquel(sprSlot1);
-        displayDeSlot[1].ligarCacaNiquel(sprSlot2);
-        displayDeSlot[2].ligarCacaNiquel(sprSlot3);
+        //displayDeSlot[1].ligarCacaNiquel(sprSlot2);
+        //displayDeSlot[2].ligarCacaNiquel(sprSlot3);
     }
 
     public void pararSlotCacaNiquel(int indice, Sprite[] sprSlots, Sprite sprSucesso)
