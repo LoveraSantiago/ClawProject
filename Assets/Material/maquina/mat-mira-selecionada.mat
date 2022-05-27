@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: mat-mira-selecionada
   m_Shader: {fileID: -6465566751694194690, guid: 6f5d6dea1e0735e4e985b44e07ad805c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
