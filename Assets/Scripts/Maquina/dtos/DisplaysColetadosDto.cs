@@ -9,7 +9,8 @@ public class DisplaysColetadosDto
     [SerializeField] private float delayMiraSelecionada;
     [SerializeField] private float velocImg;
     [Space(3)]
-    [SerializeField] private Sprite sprNone;
+    [SerializeField] private Sprite sprNone;//FALTANDO SPRITE MIRA SELECIONADA  
+    [SerializeField] private Material materialAlvoSelecionado;
     [Space(3)]
     [SerializeField] private SpriteRenderer sprRendererPlacaGrupo;
     [Space(3)]
@@ -23,6 +24,7 @@ public class DisplaysColetadosDto
     public float DelayMiraSelecionada { get { return delayMiraSelecionada; } }
 
     public Sprite SprNone { get { return sprNone; } }
+    public Material MaterialAlvoSelecionado { get { return materialAlvoSelecionado; } }
     public SpriteRenderer SprRendererPlacaGrupo { get { return sprRendererPlacaGrupo; } }
 
     public SingleSlotColetadoDto[] SingleSlotColetadoDto { get { return singleSlotColetadoDto; } }    

@@ -20,11 +20,11 @@ public class AnimacaoDisplayColetado
         isMiraLigado = true;
     }
 
-    public void ligarAnimacaoMiraSelecionado()
-    {
-        //Debug.Log("Mira Selecionada");
-        animator.Play(MIRAR_SELECTED);        
-    }
+    //public void ligarAnimacaoMiraSelecionado()
+    //{
+    //    //Debug.Log("Mira Selecionada");
+    //    animator.Play(MIRAR_SELECTED);        
+    //}
 
     public void desligarAnimacao()
     {

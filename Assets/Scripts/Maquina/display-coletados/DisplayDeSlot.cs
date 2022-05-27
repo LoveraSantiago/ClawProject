@@ -43,9 +43,10 @@ public class DisplayDeSlot
         ligarGlowLuz();
     }
 
-    public void mostrarAlvoSelecionado()
+    public void mostrarAlvoSelecionado(Material materialAlvoSelecionado)
     {
-        animacao.ligarAnimacaoMiraSelecionado();
+        singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = materialAlvoSelecionado;
+        //animacao.ligarAnimacaoMiraSelecionado();
     }
 
     public IEnumerator desligarAlvo(DisplaysColetadosDto displaysSlotsDto, Executor executorFimMovimentacao)
