@@ -16,7 +16,7 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
 
     public void clearMaterial()
     {
-        addMaterial(contexto.mainMaterial);
+        addMaterial(MaterialSprUnlitDefault.getMaterial());
     }
 
     public void colocarNoLayerElevador()

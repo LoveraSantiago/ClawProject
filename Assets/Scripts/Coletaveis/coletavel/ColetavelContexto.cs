@@ -13,7 +13,7 @@ public class ColetavelContexto : GOContexto
     public CircleCollider2D referenciaColliderColetado { get; private set; }
 
     public ColetavelContexto(ColetaveisDto coletaveisDto, CircleCollider2D referenciaColliderColetado)
-        : base(coletaveisDto.GoMainColetavel, new FinderDeSprRenderer1Nivel("imagem"))
+        : base(coletaveisDto.GoMainColetavel)
     {
         nomeador = new Nomeador();
         this.referenciaColliderColetado = referenciaColliderColetado;

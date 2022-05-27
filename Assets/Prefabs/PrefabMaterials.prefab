@@ -49,3 +49,4 @@ MonoBehaviour:
   materialTroca: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
   materialHdrAditivo: {fileID: 2100000, guid: 0c67568e8ae728b439336607ddb1da50, type: 2}
   materialHdrAlpha: {fileID: 2100000, guid: 7a1b25d620d5fde448e686111b12b2d6, type: 2}
+  materialSprUnlitDefault: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}

@@ -10,5 +10,6 @@ public class MateriaisUtils
         MaterialOutline.configurar(prefabDeMateriais.MaterialOutline);
         MaterialTeleporte.configurar(prefabDeMateriais.MaterialTroca);
         MaterialHdr.configurar(prefabDeMateriais.MaterialHdrAditivo, prefabDeMateriais.MaterialHdrAlpha);
+        MaterialSprUnlitDefault.configurar(prefabDeMateriais.MaterialSprUnlitDefault);
     }    
 }

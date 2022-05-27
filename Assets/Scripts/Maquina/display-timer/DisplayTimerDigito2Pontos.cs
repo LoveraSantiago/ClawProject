@@ -3,14 +3,12 @@ using UnityEngine;
 public class DisplayTimerDigito2Pontos 
 {
     private Color corOriginal;
-    private Material material2Pontos;
-    private Material defaultMaterial;
+    private Material material2Pontos;    
     private SpriteRenderer sprRenderer2Pontos;
 
     public DisplayTimerDigito2Pontos(SpriteRenderer sprRenderer2Pontos)
     {
-        this.sprRenderer2Pontos = sprRenderer2Pontos;
-        this.defaultMaterial = sprRenderer2Pontos.sharedMaterial;
+        this.sprRenderer2Pontos = sprRenderer2Pontos;        
     } 
 
     public void configuradoPeloLevel(Material material2Pontos, Color corDigito)
@@ -43,7 +41,7 @@ public class DisplayTimerDigito2Pontos
     public void desligar()
     {
         setCor(corOriginal);
-        sprRenderer2Pontos.sharedMaterial = defaultMaterial;
+        sprRenderer2Pontos.sharedMaterial = MaterialSprUnlitDefault.getMaterial();
     }
 
     private void setCor(Color cor)

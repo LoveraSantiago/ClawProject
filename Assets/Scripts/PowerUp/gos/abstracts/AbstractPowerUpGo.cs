@@ -22,13 +22,13 @@ public abstract class AbstractPowerUpGo : GO,
     public abstract InteracaoPowerUpComComponente getInteracaoComComponente();
 
     public AbstractPowerUpGo(GameObject go, string nome)
-        : base(new GOContexto(go, contexto), nome)
+        : base(new GOContexto(go), nome)
     {
     }
 
     public AbstractPowerUpGo(
         GameObject go, FinderDeSprRenderer finderDeSprRenderer, string nome)
-        : base(new GOContexto(go, contexto), finderDeSprRenderer, nome)
+        : base(new GOContexto(go), finderDeSprRenderer, nome)
     {
     }
 
