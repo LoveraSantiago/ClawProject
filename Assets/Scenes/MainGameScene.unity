@@ -10793,20 +10793,21 @@ MonoBehaviour:
         velocImg: 4.5
         sprNone: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
         sprMiraGrossa: {fileID: 21300000, guid: 2e900bf8ef536f74fa6bff3b4c4c6ec5, type: 3}
+        materialAlvoPiscando: {fileID: 2100000, guid: 7b3131845a666d94b8d97652155a4917, type: 2}
         materialAlvoSelecionado: {fileID: 2100000, guid: a80df8b71f8290543902c960ab824000, type: 2}
         sprRendererPlacaGrupo: {fileID: 191022235}
         singleSlotColetadoDto:
-        - animator: {fileID: 890794886}
+        - animator: {fileID: 0}
           sprRendererSlotColetado: {fileID: 1033512237}
           sprRendererSlotBaixo: {fileID: 292278086}
           sprRendererSlotMeio: {fileID: 1966319445}
           sprRendererSlotCima: {fileID: 1741533510}
-        - animator: {fileID: 890794885}
+        - animator: {fileID: 0}
           sprRendererSlotColetado: {fileID: 726165964}
           sprRendererSlotBaixo: {fileID: 292278085}
           sprRendererSlotMeio: {fileID: 918276164}
           sprRendererSlotCima: {fileID: 1741533509}
-        - animator: {fileID: 890794884}
+        - animator: {fileID: 0}
           sprRendererSlotColetado: {fileID: 1632403940}
           sprRendererSlotBaixo: {fileID: 292278084}
           sprRendererSlotMeio: {fileID: 1831559279}
@@ -21990,21 +21991,6 @@ SpriteRenderer:
 --- !u!212 &887660497 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8776125174556064909, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-  m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &890794884 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2888508550839210875, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-  m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &890794885 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3503505894385025195, guid: 60c301260e6514149bc0e163ff994732, type: 3}
-  m_PrefabInstance: {fileID: 4106799619402785295}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &890794886 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8175751283874157941, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &894725917 stripped
@@ -58972,6 +58958,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 4970626565982106345, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5845699465068917843, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_RootOrder
       value: 0

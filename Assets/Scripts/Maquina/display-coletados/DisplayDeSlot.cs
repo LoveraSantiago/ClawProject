@@ -49,7 +49,7 @@ public class DisplayDeSlot
 
     public IEnumerator desligarAlvo(DisplaysColetadosDto displaysSlotsDto, Executor executorFimMovimentacao)
     {
-        if (animacao.isMiraLigado)
+        if (isMiraSelecionado(displaysSlotsDto))
         {
             yield return new WaitForSeconds(displaysSlotsDto.InicialDelay * 2);
             singleSlotColetadoDto.SprRendererSlotMeio.sprite = null;
@@ -152,7 +152,13 @@ public class DisplayDeSlot
     public bool isCliqueDentroArea(Vector2 posicao)
     {   
         return isOcupado && singleSlotColetadoDto.SprRendererSlotColetado.bounds.Contains(posicao);
-    }    
+    }
+
+    private bool isMiraSelecionado(DisplaysColetadosDto displaysSlotsDto)
+    {
+        return singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial == displaysSlotsDto.MaterialAlvoPiscando ||
+               singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial == displaysSlotsDto.MaterialAlvoSelecionado;
+    }
 
     private IEnumerator limparSprNoneCasoOcupado(DisplaysColetadosDto displaysSlotsDto)
     {
