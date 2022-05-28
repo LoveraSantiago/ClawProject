@@ -59,7 +59,8 @@ public class GrupoDisplays
 
     public IEnumerator mostrarAlvoELimparSprColetado(int indice)
     {
-        displayDeSlot[indice].mostrarAlvoSelecionado(displaysSlotsDto.MaterialAlvoSelecionado);
+
+        displayDeSlot[indice].mostrarAlvoSelecionado(displaysSlotsDto.SprMiraGrossa, displaysSlotsDto.MaterialAlvoSelecionado);
         yield return displayDeSlot[indice].limparSprColetado(displaysSlotsDto);
     }
 

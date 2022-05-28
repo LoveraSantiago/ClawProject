@@ -25,6 +25,13 @@ public class Level4 : AbstractLevelOrdem
             {0, 0, 0, 0, 0, 0, 0}};
     }
 
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        return new PowerUpsParaLevel(1)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.DESCARTE,
+               PowerUpEnums.TIPO.DESCARTE, PowerUpEnums.TIPO.DESCARTE, PowerUpEnums.TIPO.DESCARTE, PowerUpEnums.TIPO.DESCARTE});
+    }
+
     public override BoardOrdem[] getBoardOrdem()
     {
         BoardOrdem[] ordem = new BoardOrdem[]{

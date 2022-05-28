@@ -10792,6 +10792,7 @@ MonoBehaviour:
         delayMiraSelecionada: 0.75
         velocImg: 4.5
         sprNone: {fileID: 21300000, guid: 7dbac0d9c7b1845409aae7a1ce059452, type: 3}
+        sprMiraGrossa: {fileID: 21300000, guid: 2e900bf8ef536f74fa6bff3b4c4c6ec5, type: 3}
         materialAlvoSelecionado: {fileID: 2100000, guid: a80df8b71f8290543902c960ab824000, type: 2}
         sprRendererPlacaGrupo: {fileID: 191022235}
         singleSlotColetadoDto:

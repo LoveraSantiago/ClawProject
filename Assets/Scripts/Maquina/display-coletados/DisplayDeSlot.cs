@@ -43,8 +43,9 @@ public class DisplayDeSlot
         ligarGlowLuz();
     }
 
-    public void mostrarAlvoSelecionado(Material materialAlvoSelecionado)
+    public void mostrarAlvoSelecionado(Sprite sprMiraGrossa, Material materialAlvoSelecionado)
     {
+        singleSlotColetadoDto.SprRendererSlotMeio.sprite = sprMiraGrossa;
         singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = materialAlvoSelecionado;
         //animacao.ligarAnimacaoMiraSelecionado();
     }
