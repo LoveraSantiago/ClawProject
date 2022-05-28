@@ -6,8 +6,7 @@ public class DisplayDeSlot
     public bool isOcupado { get; private set; }
     public bool isDesocupado { get { return !isOcupado; }}
     
-    private MovimentadorDeSlots slots;
-    private AnimacaoDisplayColetado animacao;
+    private MovimentadorDeSlots slots;    
 
     private SingleSlotColetadoDto singleSlotColetadoDto;
 
@@ -16,8 +15,6 @@ public class DisplayDeSlot
     public DisplayDeSlot(SingleSlotColetadoDto singleSlotColetadoDto)
     {
         this.singleSlotColetadoDto = singleSlotColetadoDto;
-
-        animacao   = new AnimacaoDisplayColetado(singleSlotColetadoDto.Animator);        
         slots      = new MovimentadorDeSlots(singleSlotColetadoDto);
     }    
 
