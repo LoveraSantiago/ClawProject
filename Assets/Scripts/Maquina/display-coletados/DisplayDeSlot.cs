@@ -7,9 +7,7 @@ public class DisplayDeSlot
     public bool isDesocupado { get { return !isOcupado; }}
     
     private MovimentadorDeSlots slots;    
-
     private SingleSlotColetadoDto singleSlotColetadoDto;
-
     private Coroutine coroutineCacaNiquel;
 
     public DisplayDeSlot(SingleSlotColetadoDto singleSlotColetadoDto)
@@ -171,20 +169,55 @@ public class DisplayDeSlot
     {
         int indiceAtual = 0;
         Debug.Log("caca niquel ligado");
+
+        singleSlotColetadoDto.SprRendererSlotBaixo.transform.localPosition = new Vector3(0, 0, 0);
+        singleSlotColetadoDto.SprRendererSlotBaixo.sprite = sprites[indiceAtual++ % sprites.Length];
+
+        singleSlotColetadoDto.SprRendererSlotMeio.transform.localPosition  = new Vector3(0, 0.6f, 0);
+        singleSlotColetadoDto.SprRendererSlotMeio.sprite = sprites[indiceAtual++ % sprites.Length];
+
+        singleSlotColetadoDto.SprRendererSlotCima.transform.localPosition  = new Vector3(0, 1.2f, 0);
+        singleSlotColetadoDto.SprRendererSlotCima.sprite = sprites[indiceAtual++ % sprites.Length];
+
+        Transform[] transforms = new Transform[] {
+            singleSlotColetadoDto.SprRendererSlotBaixo.transform,
+            singleSlotColetadoDto.SprRendererSlotMeio.transform,
+            singleSlotColetadoDto.SprRendererSlotCima.transform
+        };
+
         while (true)
         {
-            Sprite spriteAtual = sprites[indiceAtual];
-            Debug.Log("Passado sprite " + spriteAtual.name);
-            singleSlotColetadoDto.SprRendererSlotMeio.sprite = sprites[indiceAtual];
-            if (indiceAtual < sprites.Length - 1)
+            Vector3 deslocamento = new Vector3(0, -2f * Time.deltaTime, 0);
+            for(int contador = 0; contador < transforms.Length; contador++)
             {
-                indiceAtual++;
+                transforms[contador].localPosition += deslocamento;
             }
-            else
+            if(transforms[0].localPosition.y < -0.6f)
             {
-                indiceAtual = 0;
+                Transform temp = transforms[0];
+                temp.localPosition = new Vector3(0, 1.2f, 0);
+                transforms[0] = transforms[1];
+                transforms[1] = transforms[2];
+                transforms[2] = temp;
             }
             yield return null;
         }
+
+
+        //while (true)
+        //{
+        //    Sprite spriteAtual = sprites[indiceAtual];
+        //    Debug.Log("Passado sprite " + spriteAtual.name);
+        //    singleSlotColetadoDto.SprRendererSlotMeio.sprite = sprites[indiceAtual];
+        //    if (indiceAtual < sprites.Length - 1)
+        //    {
+        //        indiceAtual++;
+        //    }
+        //    else
+        //    {
+        //        indiceAtual = 0;
+        //    }
+        //    yield return null;
+        //}
     }
 }

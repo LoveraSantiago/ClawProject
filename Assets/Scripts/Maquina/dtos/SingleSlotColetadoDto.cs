@@ -4,14 +4,11 @@ using UnityEngine;
 [System.Serializable]
 public class SingleSlotColetadoDto 
 {
-    [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer sprRendererSlotColetado;
     [Space(3)]
     [SerializeField] private SpriteRenderer sprRendererSlotBaixo;
     [SerializeField] private SpriteRenderer sprRendererSlotMeio;
     [SerializeField] private SpriteRenderer sprRendererSlotCima;
-
-    public Animator Animator { get { return animator; } }
 
     public SpriteRenderer SprRendererSlotColetado { get { return sprRendererSlotColetado; } }
     public SpriteRenderer SprRendererSlotBaixo { get { return sprRendererSlotBaixo; } }
