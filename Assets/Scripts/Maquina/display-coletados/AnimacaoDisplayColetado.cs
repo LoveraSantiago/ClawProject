@@ -26,10 +26,10 @@ public class AnimacaoDisplayColetado
     //    animator.Play(MIRAR_SELECTED);        
     //}
 
-    public void desligarAnimacao()
-    {
-        //Debug.Log("Idle Chamado");
-        animator.Play(IDLE);
-        isMiraLigado = false;
-    }    
+    //public void desligarAnimacao()
+    //{
+    //    //Debug.Log("Idle Chamado");
+    //    animator.Play(IDLE);
+    //    isMiraLigado = false;
+    //}    
 }

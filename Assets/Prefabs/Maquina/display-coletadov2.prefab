@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 8653183968274069209}
   - component: {fileID: 6340195705740792833}
   - component: {fileID: 6038007224812967823}
-  - component: {fileID: 3184116409605487535}
   m_Layer: 0
   m_Name: display-coletadov2
   m_TagString: Untagged
@@ -224,26 +223,6 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
---- !u!95 &3184116409605487535
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4656773734700749023}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dd02d8cb89261d44c9bc892dee140155, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7142983400317044847
 GameObject:
   m_ObjectHideFlags: 0
