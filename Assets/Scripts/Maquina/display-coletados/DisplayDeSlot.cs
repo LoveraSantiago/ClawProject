@@ -13,7 +13,7 @@ public class DisplayDeSlot
     public DisplayDeSlot(SingleSlotColetadoDto singleSlotColetadoDto)
     {
         this.singleSlotColetadoDto = singleSlotColetadoDto;
-        slots      = new MovimentadorDeSlots(singleSlotColetadoDto);
+        slots = new MovimentadorDeSlots();
     }    
 
     public void configuradoPeloLevel(Color corDisplay)

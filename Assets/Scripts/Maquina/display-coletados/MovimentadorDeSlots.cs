@@ -9,7 +9,7 @@ public class MovimentadorDeSlots
 
     private bool continuarMovimentacao;
 
-    public MovimentadorDeSlots(SingleSlotColetadoDto singleSlotColetadoDto)
+    public MovimentadorDeSlots()
     {
         continuarMovimentacao = true;        
     }
