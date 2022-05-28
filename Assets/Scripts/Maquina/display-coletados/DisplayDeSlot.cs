@@ -187,7 +187,7 @@ public class DisplayDeSlot
 
         while (true)
         {
-            Vector3 deslocamento = new Vector3(0, -3f * Time.deltaTime, 0);
+            Vector3 deslocamento = new Vector3(0, -4f * Time.deltaTime, 0);
             for(int contador = 0; contador < sprRenderers.Length; contador++)
             {
                 sprRenderers[contador].transform.localPosition += deslocamento;
@@ -195,7 +195,7 @@ public class DisplayDeSlot
             if(sprRenderers[0].transform.localPosition.y < -0.6f)
             {
                 SpriteRenderer tempSprRenderer = sprRenderers[0];
-                tempSprRenderer.transform.localPosition = new Vector3(0, 1.2f, 0);
+                tempSprRenderer.transform.localPosition = new Vector3(0, sprRenderers[2].transform.localPosition.y + 0.6f, 0);
                 tempSprRenderer.sprite = sprites[indiceAtual++ % sprites.Length];
                 sprRenderers[0] = sprRenderers[1];
                 sprRenderers[1] = sprRenderers[2];
