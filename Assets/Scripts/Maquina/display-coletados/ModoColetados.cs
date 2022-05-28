@@ -11,7 +11,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
     private AgendamentoDisplayColetados agendados;    
     private ProdutorDeEvento<ColetadoFimDto> produtorDeEventoFimColetagem;
 
-    public ModoColetados(DisplaysColetadosDto displaysSlotsDto, GrupoDisplays grupoDisplays)
+    public ModoColetados(GrupoDisplays grupoDisplays)
     {    
         this.grupoDisplays = grupoDisplays;
         agendados = new AgendamentoDisplayColetados();

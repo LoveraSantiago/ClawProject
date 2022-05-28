@@ -8,7 +8,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     public DisplaysDeColetados(DisplaysColetadosDto displaysSlotsDto)
     {
         grupoDisplays = new GrupoDisplays(displaysSlotsDto);
-        modoColetados = new ModoColetados(displaysSlotsDto, grupoDisplays);        
+        modoColetados = new ModoColetados(grupoDisplays);        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido, DisplaysColetadosDto displaysSlotsDto)
