@@ -10797,18 +10797,15 @@ MonoBehaviour:
         materialAlvoSelecionado: {fileID: 2100000, guid: a80df8b71f8290543902c960ab824000, type: 2}
         sprRendererPlacaGrupo: {fileID: 191022235}
         singleSlotColetadoDto:
-        - animator: {fileID: 0}
-          sprRendererSlotColetado: {fileID: 1033512237}
+        - sprRendererSlotColetado: {fileID: 1033512237}
           sprRendererSlotBaixo: {fileID: 292278086}
           sprRendererSlotMeio: {fileID: 1966319445}
           sprRendererSlotCima: {fileID: 1741533510}
-        - animator: {fileID: 0}
-          sprRendererSlotColetado: {fileID: 726165964}
+        - sprRendererSlotColetado: {fileID: 726165964}
           sprRendererSlotBaixo: {fileID: 292278085}
           sprRendererSlotMeio: {fileID: 918276164}
           sprRendererSlotCima: {fileID: 1741533509}
-        - animator: {fileID: 0}
-          sprRendererSlotColetado: {fileID: 1632403940}
+        - sprRendererSlotColetado: {fileID: 1632403940}
           sprRendererSlotBaixo: {fileID: 292278084}
           sprRendererSlotMeio: {fileID: 1831559279}
           sprRendererSlotCima: {fileID: 1741533508}
@@ -58958,6 +58955,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491158114}
     m_Modifications:
+    - target: {fileID: 551263437175192878, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088536126316953454, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970626565982106345, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4970626565982106345, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0

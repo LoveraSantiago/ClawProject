@@ -179,45 +179,29 @@ public class DisplayDeSlot
         singleSlotColetadoDto.SprRendererSlotCima.transform.localPosition  = new Vector3(0, 1.2f, 0);
         singleSlotColetadoDto.SprRendererSlotCima.sprite = sprites[indiceAtual++ % sprites.Length];
 
-        Transform[] transforms = new Transform[] {
-            singleSlotColetadoDto.SprRendererSlotBaixo.transform,
-            singleSlotColetadoDto.SprRendererSlotMeio.transform,
-            singleSlotColetadoDto.SprRendererSlotCima.transform
+        SpriteRenderer[] sprRenderers = new SpriteRenderer[] {
+            singleSlotColetadoDto.SprRendererSlotBaixo,
+            singleSlotColetadoDto.SprRendererSlotMeio,
+            singleSlotColetadoDto.SprRendererSlotCima
         };
 
         while (true)
         {
-            Vector3 deslocamento = new Vector3(0, -2f * Time.deltaTime, 0);
-            for(int contador = 0; contador < transforms.Length; contador++)
+            Vector3 deslocamento = new Vector3(0, -3f * Time.deltaTime, 0);
+            for(int contador = 0; contador < sprRenderers.Length; contador++)
             {
-                transforms[contador].localPosition += deslocamento;
+                sprRenderers[contador].transform.localPosition += deslocamento;
             }
-            if(transforms[0].localPosition.y < -0.6f)
+            if(sprRenderers[0].transform.localPosition.y < -0.6f)
             {
-                Transform temp = transforms[0];
-                temp.localPosition = new Vector3(0, 1.2f, 0);
-                transforms[0] = transforms[1];
-                transforms[1] = transforms[2];
-                transforms[2] = temp;
+                SpriteRenderer tempSprRenderer = sprRenderers[0];
+                tempSprRenderer.transform.localPosition = new Vector3(0, 1.2f, 0);
+                tempSprRenderer.sprite = sprites[indiceAtual++ % sprites.Length];
+                sprRenderers[0] = sprRenderers[1];
+                sprRenderers[1] = sprRenderers[2];
+                sprRenderers[2] = tempSprRenderer;
             }
             yield return null;
         }
-
-
-        //while (true)
-        //{
-        //    Sprite spriteAtual = sprites[indiceAtual];
-        //    Debug.Log("Passado sprite " + spriteAtual.name);
-        //    singleSlotColetadoDto.SprRendererSlotMeio.sprite = sprites[indiceAtual];
-        //    if (indiceAtual < sprites.Length - 1)
-        //    {
-        //        indiceAtual++;
-        //    }
-        //    else
-        //    {
-        //        indiceAtual = 0;
-        //    }
-        //    yield return null;
-        //}
     }
 }
