@@ -29,9 +29,10 @@ public class DisplayDeSlot
     public IEnumerator mostrarAlvo(DisplaysColetadosDto displaysSlotsDto, Executor executorFimMovimentacao)
     {
         if (isOcupado)
-        {
-            animacao.ligarAnimacaoMira();
-            if(executorFimMovimentacao != null)
+        {   
+            singleSlotColetadoDto.SprRendererSlotMeio.sprite = displaysSlotsDto.SprMiraGrossa;
+            singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = displaysSlotsDto.MaterialAlvoPiscando;
+            if (executorFimMovimentacao != null)
             {
                 executorFimMovimentacao.execute();
             }
@@ -47,7 +48,6 @@ public class DisplayDeSlot
     {
         singleSlotColetadoDto.SprRendererSlotMeio.sprite = sprMiraGrossa;
         singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = materialAlvoSelecionado;
-        //animacao.ligarAnimacaoMiraSelecionado();
     }
 
     public IEnumerator desligarAlvo(DisplaysColetadosDto displaysSlotsDto, Executor executorFimMovimentacao)
@@ -55,7 +55,8 @@ public class DisplayDeSlot
         if (animacao.isMiraLigado)
         {
             yield return new WaitForSeconds(displaysSlotsDto.InicialDelay * 2);
-            animacao.desligarAnimacao();
+            singleSlotColetadoDto.SprRendererSlotMeio.sprite = null;
+            singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = MaterialSprUnlitDefault.getMaterial();
             executorFimMovimentacao.execute();
         }
         else{

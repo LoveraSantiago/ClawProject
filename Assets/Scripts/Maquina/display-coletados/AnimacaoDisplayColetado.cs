@@ -14,11 +14,11 @@ public class AnimacaoDisplayColetado
         this.animator = animator;
     }
 
-    public void ligarAnimacaoMira()
-    {
-        animator.Play(MIRAR_ON);
-        isMiraLigado = true;
-    }
+    //public void ligarAnimacaoMira()
+    //{
+    //    animator.Play(MIRAR_ON);
+    //    isMiraLigado = true;
+    //}
 
     //public void ligarAnimacaoMiraSelecionado()
     //{
