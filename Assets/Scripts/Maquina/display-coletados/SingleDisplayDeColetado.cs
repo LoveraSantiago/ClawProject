@@ -15,11 +15,6 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
         slots = new MovimentadorDeSlots();
     }    
 
-    public void configuradoPeloLevel(Color corDisplay)
-    {
-        getSingleSlotColetadoDto().SprRendererSlotColetado.color = corDisplay;
-    }
-
     public IEnumerator mostrarAlvo(Executor executorFimMovimentacao)
     {
         if (isOcupado)

@@ -30,6 +30,11 @@ public abstract class ComponenteDtoDeSingleDisplayDeColetado
         return singleSlotColetadoDto;
     }
 
+    public void configuradoPeloLevel(Color corDisplay)
+    {
+        singleSlotColetadoDto.SprRendererSlotColetado.color = corDisplay;
+    }
+
     public float getFimDelay()
     {
         return displaysColetadosDto.FimDelay;
