@@ -5,15 +5,12 @@ using System.Collections;
 public class GrupoDisplays 
 {
     private bool powerUpDisplayColetado;
-
-    private DisplaysColetadosDto displaysSlotsDto;
+    
     public SingleDisplayDeColetado[] singleDisplayDeColetado { get; private set; }
 
     public GrupoDisplays(DisplaysColetadosDto displaysSlotsDto)
-    {
-        this.displaysSlotsDto = displaysSlotsDto;
+    {   
         SingleDisplayDeColetado.configurar(displaysSlotsDto);
-
         SingleSlotColetadoDto[] singleSlotColetadoDto = displaysSlotsDto.SingleSlotColetadoDto;
         singleDisplayDeColetado = new SingleDisplayDeColetado[singleSlotColetadoDto.Length];
 
@@ -26,7 +23,7 @@ public class GrupoDisplays
     public void colorirDisplays(Dictionary<string, string> dicionarioDeCores)
     {
         ColoridorDisplaysColetadosV2 coloridor = new ColoridorDisplaysColetadosV2();
-        coloridor.colorir(displaysSlotsDto.SprRendererPlacaGrupo, singleDisplayDeColetado, dicionarioDeCores);
+        coloridor.colorir(singleDisplayDeColetado, dicionarioDeCores);
     }
 
     public void setarEstadoPowerUp(bool estado)

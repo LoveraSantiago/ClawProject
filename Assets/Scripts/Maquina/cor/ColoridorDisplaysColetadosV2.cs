@@ -1,15 +1,13 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public class ColoridorDisplaysColetadosV2
 {
-    public void colorir(
-        SpriteRenderer sprRendererPlacaGrupo,
+    public void colorir(        
         SingleDisplayDeColetado[] displayDeSlot, 
         Dictionary<string, string> dicionarioDeCores)
     {
         string hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO];
-        sprRendererPlacaGrupo.color = Utils.getCorByHex(hexCor);
+        displayDeSlot[0].colorirPlacaGrupo(Utils.getCorByHex(hexCor));
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL1];
         displayDeSlot[0].configuradoPeloLevel(Utils.getCorByHex(hexCor));
