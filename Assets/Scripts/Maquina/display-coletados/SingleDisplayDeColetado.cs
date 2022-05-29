@@ -19,8 +19,7 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
     {
         if (isOcupado)
         {
-            getSingleSlotColetadoDto().SprRendererSlotMeio.sprite = getDisplaysColetadosDto().SprMiraGrossa;
-            getSingleSlotColetadoDto().SprRendererSlotMeio.sharedMaterial = getDisplaysColetadosDto().MaterialAlvoPiscando;
+            mostrarAlvo();            
             if (executorFimMovimentacao != null)
             {
                 executorFimMovimentacao.execute();
@@ -31,21 +30,14 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
             yield return mostrarSprNone(executorFimMovimentacao);
         }
         ligarGlowLuz();
-    }
-
-    public void mostrarAlvoSelecionado()
-    {
-        getSingleSlotColetadoDto().SprRendererSlotMeio.sprite = getDisplaysColetadosDto().SprMiraGrossa;
-        getSingleSlotColetadoDto().SprRendererSlotMeio.sharedMaterial = getDisplaysColetadosDto().MaterialAlvoSelecionado;
-    }
+    }    
 
     public IEnumerator desligarAlvo(Executor executorFimMovimentacao)
     {
         if (isMiraSelecionado())
         {
             yield return new WaitForSeconds(getDisplaysColetadosDto().InicialDelay * 2);
-            getSingleSlotColetadoDto().SprRendererSlotMeio.sprite = null;
-            getSingleSlotColetadoDto().SprRendererSlotMeio.sharedMaterial = MaterialSprUnlitDefault.getMaterial();
+            desligarAlvo();            
             executorFimMovimentacao.execute();
         }
         else{
@@ -57,7 +49,7 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
     public IEnumerator mostrarSprColetado(Sprite sprite, bool mostrarMira)
     {        
         yield return limparSprNoneCasoOcupado();
-        getSingleSlotColetadoDto().SprRendererSlotBaixo.sprite = sprite;
+        mostrarColetado(sprite);
         isOcupado = true;
         yield return slots.subirSlotColetado(getSingleSlotColetadoDto().GoSlotBaixo, getDisplaysColetadosDto());        
         desligarGlow();
@@ -77,15 +69,14 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
     
     public IEnumerator mostrarSprNone(Executor executor)
     {
-        getSingleSlotColetadoDto().SprRendererSlotCima.sprite = getDisplaysColetadosDto().SprNone;
-        getSingleSlotColetadoDto().SprRendererSlotCima.color = Color.red;
+        mostrarNone();
         yield return slots.descerSlotNone(getSingleSlotColetadoDto().GoSlotCima, getDisplaysColetadosDto(), executor);
     }    
 
     public IEnumerator limparSprNone(Executor executor)
     {
         yield return slots.subirSlotNone(getSingleSlotColetadoDto().GoSlotCima, getDisplaysColetadosDto(), executor);
-        getSingleSlotColetadoDto().SprRendererSlotCima.sprite = null;
+        limparNone();
     }
 
     public void ligarCacaNiquel(Sprite[] sprites)
@@ -116,13 +107,7 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
     public Sprite getSprResultCacaNiquel()
     {
         return getSingleSlotColetadoDto().SprRendererSlotMeio.sprite;
-    }
-
-    public void desligarSprsSlotMeio()
-    {
-        Debug.Log("desligarSprsSlotMeio");
-        getSingleSlotColetadoDto().SprRendererSlotMeio.sprite = null;
-    }
+    }    
 
     public void ligarGlowSucesso()
     {
@@ -143,13 +128,7 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
     public bool isCliqueDentroArea(Vector2 posicao)
     {   
         return isOcupado && getSingleSlotColetadoDto().SprRendererSlotColetado.bounds.Contains(posicao);
-    }
-
-    private bool isMiraSelecionado()
-    {
-        return getSingleSlotColetadoDto().SprRendererSlotMeio.sharedMaterial == getDisplaysColetadosDto().MaterialAlvoPiscando ||
-               getSingleSlotColetadoDto().SprRendererSlotMeio.sharedMaterial == getDisplaysColetadosDto().MaterialAlvoSelecionado;
-    }
+    }   
 
     private IEnumerator limparSprNoneCasoOcupado()
     {
