@@ -123,7 +123,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
 
     private IEnumerator limpezaTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito  arcoIris)
     {
-        DisplayDeSlot[] displayDeSlot = grupoDisplays.displayDeSlot;
+        SingleDisplayDeColetado[] displayDeSlot = grupoDisplays.singleDisplayDeColetado;
         if (evento.resultCombinacao)
         {
             arcoIris.ligarBlinkVerde();
@@ -176,7 +176,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
     //***** IMPLEMENTACAO INTERFACE INFORMACAODISPLAYCOLETADO INICIO *****
     public bool acertouDisplay(Vector2 toque)
     {
-        DisplayDeSlot[] displayDeColetado = grupoDisplays.displayDeSlot;
+        SingleDisplayDeColetado[] displayDeColetado = grupoDisplays.singleDisplayDeColetado;
         for (int contador = 0; contador < displayDeColetado.Length; contador++)
         {
             bool result = displayDeColetado[contador].isCliqueDentroArea(toque);

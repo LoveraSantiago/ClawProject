@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class DisplayDeSlot 
+public class SingleDisplayDeColetado 
 {
     public bool isOcupado { get; private set; }
     public bool isDesocupado { get { return !isOcupado; }}
@@ -10,7 +10,7 @@ public class DisplayDeSlot
     private SingleSlotColetadoDto singleSlotColetadoDto;
     private Coroutine coroutineCacaNiquel;
 
-    public DisplayDeSlot(SingleSlotColetadoDto singleSlotColetadoDto)
+    public SingleDisplayDeColetado(SingleSlotColetadoDto singleSlotColetadoDto)
     {
         this.singleSlotColetadoDto = singleSlotColetadoDto;
         slots = new MovimentadorDeSlots();

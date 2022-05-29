@@ -5,7 +5,7 @@ public class ColoridorDisplaysColetadosV2
 {
     public void colorir(
         SpriteRenderer sprRendererPlacaGrupo,
-        DisplayDeSlot[] displayDeSlot, 
+        SingleDisplayDeColetado[] displayDeSlot, 
         Dictionary<string, string> dicionarioDeCores)
     {
         string hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO];
