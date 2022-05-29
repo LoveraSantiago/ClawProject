@@ -123,7 +123,6 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
 
     private IEnumerator limpezaTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito  arcoIris)
     {
-        SingleDisplayDeColetado[] displayDeSlot = grupoDisplays.singleDisplayDeColetado;
         if (evento.resultCombinacao)
         {
             arcoIris.ligarBlinkVerde();
@@ -136,7 +135,9 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
         yield return grupoDisplays.limparSprColetado(0);
         yield return grupoDisplays.limparSprColetado(1);
         yield return grupoDisplays.limparSprColetado(2);
-        yield return new WaitForSeconds(grupoDisplays.getFimDelay());
+
+        SingleDisplayDeColetado[] singleDisplayDeColetado = grupoDisplays.singleDisplayDeColetado;
+        yield return new WaitForSeconds(singleDisplayDeColetado[0].getFimDelay());
     }
 
     private void finalizacaoPeloEstadoDisplay()

@@ -132,9 +132,4 @@ public class GrupoDisplays
         singleDisplayDeColetado[1].ligarGlowFail();
         singleDisplayDeColetado[2].ligarGlowFail();
     } 
-    
-    public float getFimDelay()
-    {
-        return displaysSlotsDto.FimDelay;
-    }
 }

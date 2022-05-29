@@ -25,8 +25,8 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
     {
         if (isOcupado)
         {   
-            singleSlotColetadoDto.SprRendererSlotMeio.sprite = displaysColetadosDto.SprMiraGrossa;
-            singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = displaysColetadosDto.MaterialAlvoPiscando;
+            singleSlotColetadoDto.SprRendererSlotMeio.sprite = getDisplaysColetadosDto().SprMiraGrossa;
+            singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = getDisplaysColetadosDto().MaterialAlvoPiscando;
             if (executorFimMovimentacao != null)
             {
                 executorFimMovimentacao.execute();
@@ -41,15 +41,15 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
 
     public void mostrarAlvoSelecionado()
     {
-        singleSlotColetadoDto.SprRendererSlotMeio.sprite = displaysColetadosDto.SprMiraGrossa;
-        singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = displaysColetadosDto.MaterialAlvoSelecionado;
+        singleSlotColetadoDto.SprRendererSlotMeio.sprite = getDisplaysColetadosDto().SprMiraGrossa;
+        singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = getDisplaysColetadosDto().MaterialAlvoSelecionado;
     }
 
     public IEnumerator desligarAlvo(Executor executorFimMovimentacao)
     {
         if (isMiraSelecionado())
         {
-            yield return new WaitForSeconds(displaysColetadosDto.InicialDelay * 2);
+            yield return new WaitForSeconds(getDisplaysColetadosDto().InicialDelay * 2);
             singleSlotColetadoDto.SprRendererSlotMeio.sprite = null;
             singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = MaterialSprUnlitDefault.getMaterial();
             executorFimMovimentacao.execute();
@@ -65,7 +65,7 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
         yield return limparSprNoneCasoOcupado();
         singleSlotColetadoDto.SprRendererSlotBaixo.sprite = sprite;
         isOcupado = true;
-        yield return slots.subirSlotColetado(singleSlotColetadoDto.GoSlotBaixo, displaysColetadosDto);        
+        yield return slots.subirSlotColetado(singleSlotColetadoDto.GoSlotBaixo, getDisplaysColetadosDto());        
         desligarGlow();
 
         if (mostrarMira)
@@ -78,19 +78,19 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
     public IEnumerator limparSprColetado()
     {
         isOcupado = false;
-        yield return slots.descerSlotColetado(singleSlotColetadoDto.GoSlotBaixo, displaysColetadosDto);        
+        yield return slots.descerSlotColetado(singleSlotColetadoDto.GoSlotBaixo, getDisplaysColetadosDto());        
     }     
     
     public IEnumerator mostrarSprNone(Executor executor)
     {
-        singleSlotColetadoDto.SprRendererSlotCima.sprite = displaysColetadosDto.SprNone;
+        singleSlotColetadoDto.SprRendererSlotCima.sprite = getDisplaysColetadosDto().SprNone;
         singleSlotColetadoDto.SprRendererSlotCima.color = Color.red;
-        yield return slots.descerSlotNone(singleSlotColetadoDto.GoSlotCima, displaysColetadosDto, executor);
+        yield return slots.descerSlotNone(singleSlotColetadoDto.GoSlotCima, getDisplaysColetadosDto(), executor);
     }    
 
     public IEnumerator limparSprNone(Executor executor)
     {
-        yield return slots.subirSlotNone(singleSlotColetadoDto.GoSlotCima, displaysColetadosDto, executor);        
+        yield return slots.subirSlotNone(singleSlotColetadoDto.GoSlotCima, getDisplaysColetadosDto(), executor);        
         singleSlotColetadoDto.SprRendererSlotCima.sprite = null;
     }
 
@@ -153,8 +153,8 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
 
     private bool isMiraSelecionado()
     {
-        return singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial == displaysColetadosDto.MaterialAlvoPiscando ||
-               singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial == displaysColetadosDto.MaterialAlvoSelecionado;
+        return singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial == getDisplaysColetadosDto().MaterialAlvoPiscando ||
+               singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial == getDisplaysColetadosDto().MaterialAlvoSelecionado;
     }
 
     private IEnumerator limparSprNoneCasoOcupado()

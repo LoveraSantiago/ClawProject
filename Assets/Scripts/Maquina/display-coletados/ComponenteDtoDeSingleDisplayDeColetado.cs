@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class ComponenteDtoDeSingleDisplayDeColetado 
 {
-    protected static DisplaysColetadosDto displaysColetadosDto;
+    private static DisplaysColetadosDto displaysColetadosDto;
 
     protected static void configurar(DisplaysColetadosDto displayColetadosDtoArg)
     {
@@ -12,5 +12,15 @@ public abstract class ComponenteDtoDeSingleDisplayDeColetado
     public void colorirPlacaGrupo(Color cor)
     {
         displaysColetadosDto.SprRendererPlacaGrupo.color = cor;
+    }
+
+    protected DisplaysColetadosDto getDisplaysColetadosDto()
+    {
+        return displaysColetadosDto;
+    }
+
+    public float getFimDelay()
+    {
+        return displaysColetadosDto.FimDelay;
     }
 }
