@@ -6,7 +6,7 @@ public class GrupoDisplays
 {
     private bool powerUpDisplayColetado;
 
-    public DisplaysColetadosDto displaysSlotsDto { get; private set; }
+    private DisplaysColetadosDto displaysSlotsDto;
     public DisplayDeSlot[] displayDeSlot { get; private set; }
 
     public GrupoDisplays(DisplaysColetadosDto displaysSlotsDto)
@@ -133,5 +133,10 @@ public class GrupoDisplays
         displayDeSlot[0].ligarGlowFail();
         displayDeSlot[1].ligarGlowFail();
         displayDeSlot[2].ligarGlowFail();
-    }   
+    } 
+    
+    public float getFimDelay()
+    {
+        return displaysSlotsDto.FimDelay;
+    }
 }

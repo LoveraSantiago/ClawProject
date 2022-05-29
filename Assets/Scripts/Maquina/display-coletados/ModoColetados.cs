@@ -136,7 +136,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
         yield return grupoDisplays.limparSprColetado(0);
         yield return grupoDisplays.limparSprColetado(1);
         yield return grupoDisplays.limparSprColetado(2);
-        yield return new WaitForSeconds(grupoDisplays.displaysSlotsDto.FimDelay);
+        yield return new WaitForSeconds(grupoDisplays.getFimDelay());
     }
 
     private void finalizacaoPeloEstadoDisplay()
