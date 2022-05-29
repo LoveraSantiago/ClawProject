@@ -64,7 +64,7 @@ public class MovimentadorDeSlots
     {
         yield return new WaitForSeconds(delay);
 
-        while (slotaAtingiuPosicao(slot, posicaoDesejada, velocidade) && continuarMovimentacao)
+        while (slotAtingiuPosicao(slot, posicaoDesejada, velocidade) && continuarMovimentacao)
         {
             moverSlotAtePosicao(slot, posicaoDesejada, velocidade);
             yield return null;
@@ -89,7 +89,7 @@ public class MovimentadorDeSlots
         }
     }
 
-    private bool slotaAtingiuPosicao(GameObject slot, Vector3 posicao, float velocidade)
+    private bool slotAtingiuPosicao(GameObject slot, Vector3 posicao, float velocidade)
     {
         return (Vector3.Distance(slot.transform.localPosition, posicao))
                > (velocidade * Time.deltaTime);
