@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class SingleDisplayDeColetado 
+public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
 {
     public bool isOcupado { get; private set; }
     public bool isDesocupado { get { return !isOcupado; }}
@@ -21,12 +21,12 @@ public class SingleDisplayDeColetado
         singleSlotColetadoDto.SprRendererSlotColetado.color = corDisplay;
     }
 
-    public IEnumerator mostrarAlvo(DisplaysColetadosDto displaysSlotsDto, Executor executorFimMovimentacao)
+    public IEnumerator mostrarAlvo(Executor executorFimMovimentacao)
     {
         if (isOcupado)
         {   
-            singleSlotColetadoDto.SprRendererSlotMeio.sprite = displaysSlotsDto.SprMiraGrossa;
-            singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = displaysSlotsDto.MaterialAlvoPiscando;
+            singleSlotColetadoDto.SprRendererSlotMeio.sprite = displaysColetadosDto.SprMiraGrossa;
+            singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = displaysColetadosDto.MaterialAlvoPiscando;
             if (executorFimMovimentacao != null)
             {
                 executorFimMovimentacao.execute();
@@ -34,64 +34,63 @@ public class SingleDisplayDeColetado
         }
         else
         {
-            yield return mostrarSprNone(displaysSlotsDto, executorFimMovimentacao);
+            yield return mostrarSprNone(executorFimMovimentacao);
         }
         ligarGlowLuz();
     }
 
-    public void mostrarAlvoSelecionado(Sprite sprMiraGrossa, Material materialAlvoSelecionado)
+    public void mostrarAlvoSelecionado()
     {
-        singleSlotColetadoDto.SprRendererSlotMeio.sprite = sprMiraGrossa;
-        singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = materialAlvoSelecionado;
+        singleSlotColetadoDto.SprRendererSlotMeio.sprite = displaysColetadosDto.SprMiraGrossa;
+        singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = displaysColetadosDto.MaterialAlvoSelecionado;
     }
 
-    public IEnumerator desligarAlvo(DisplaysColetadosDto displaysSlotsDto, Executor executorFimMovimentacao)
+    public IEnumerator desligarAlvo(Executor executorFimMovimentacao)
     {
-        if (isMiraSelecionado(displaysSlotsDto))
+        if (isMiraSelecionado())
         {
-            yield return new WaitForSeconds(displaysSlotsDto.InicialDelay * 2);
+            yield return new WaitForSeconds(displaysColetadosDto.InicialDelay * 2);
             singleSlotColetadoDto.SprRendererSlotMeio.sprite = null;
             singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = MaterialSprUnlitDefault.getMaterial();
             executorFimMovimentacao.execute();
         }
         else{
-            yield return limparSprNone(displaysSlotsDto, executorFimMovimentacao);
+            yield return limparSprNone(executorFimMovimentacao);
         }
         desligarGlow();
     }
 
-    public IEnumerator mostrarSprColetado(
-        Sprite sprite, bool mostrarMira, DisplaysColetadosDto displaysSlotsDto)
+    public IEnumerator mostrarSprColetado(Sprite sprite, bool mostrarMira)
     {        
-        yield return limparSprNoneCasoOcupado(displaysSlotsDto);
+        yield return limparSprNoneCasoOcupado();
         singleSlotColetadoDto.SprRendererSlotBaixo.sprite = sprite;
         isOcupado = true;
-        yield return slots.subirSlotColetado(singleSlotColetadoDto.GoSlotBaixo, displaysSlotsDto);        
+        yield return slots.subirSlotColetado(singleSlotColetadoDto.GoSlotBaixo, displaysColetadosDto);        
         desligarGlow();
 
         if (mostrarMira)
         {
-            yield return mostrarAlvo(displaysSlotsDto, null);
+            yield return mostrarAlvo(null);
             ligarGlowLuz();
         }        
     }      
 
-    public IEnumerator limparSprColetado(DisplaysColetadosDto displaysSlotsDto)
+    public IEnumerator limparSprColetado()
     {
         isOcupado = false;
-        yield return slots.descerSlotColetado(singleSlotColetadoDto.GoSlotBaixo, displaysSlotsDto);        
+        yield return slots.descerSlotColetado(singleSlotColetadoDto.GoSlotBaixo, displaysColetadosDto);        
     }     
     
-    public IEnumerator mostrarSprNone(DisplaysColetadosDto displaysSlotsDto, Executor executor)
+    public IEnumerator mostrarSprNone(Executor executor)
     {
-        singleSlotColetadoDto.SprRendererSlotCima.sprite = displaysSlotsDto.SprNone;
+        singleSlotColetadoDto.SprRendererSlotCima.sprite = displaysColetadosDto.SprNone;
         singleSlotColetadoDto.SprRendererSlotCima.color = Color.red;
-        yield return slots.descerSlotNone(singleSlotColetadoDto.GoSlotCima, displaysSlotsDto, executor);
+        yield return slots.descerSlotNone(singleSlotColetadoDto.GoSlotCima, displaysColetadosDto, executor);
     }    
 
-    public IEnumerator limparSprNone(DisplaysColetadosDto displaysSlotsDto, Executor executor)
+    public IEnumerator limparSprNone(Executor executor)
     {
-        yield return slots.subirSlotNone(singleSlotColetadoDto.GoSlotCima, displaysSlotsDto, executor);        
+        yield return slots.subirSlotNone(singleSlotColetadoDto.GoSlotCima, displaysColetadosDto, executor);        
         singleSlotColetadoDto.SprRendererSlotCima.sprite = null;
     }
 
@@ -152,16 +151,16 @@ public class SingleDisplayDeColetado
         return isOcupado && singleSlotColetadoDto.SprRendererSlotColetado.bounds.Contains(posicao);
     }
 
-    private bool isMiraSelecionado(DisplaysColetadosDto displaysSlotsDto)
+    private bool isMiraSelecionado()
     {
-        return singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial == displaysSlotsDto.MaterialAlvoPiscando ||
-               singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial == displaysSlotsDto.MaterialAlvoSelecionado;
+        return singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial == displaysColetadosDto.MaterialAlvoPiscando ||
+               singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial == displaysColetadosDto.MaterialAlvoSelecionado;
     }
 
-    private IEnumerator limparSprNoneCasoOcupado(DisplaysColetadosDto displaysSlotsDto)
+    private IEnumerator limparSprNoneCasoOcupado()
     {
         slots.cancelarMovimentacaoDeSlot();
-        yield return limparSprNone(displaysSlotsDto, null);
+        yield return limparSprNone(null);
         //Debug.Log("Pos Cancelado limpando spr none");
     }
 
@@ -203,5 +202,10 @@ public class SingleDisplayDeColetado
             }
             yield return null;
         }
+    }
+
+    public new static void configurar(DisplaysColetadosDto displayColetadosDtoArg)
+    {
+        ComponenteDtoDeSingleDisplayDeColetado.configurar(displayColetadosDtoArg);
     }
 }
