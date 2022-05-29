@@ -3,6 +3,12 @@ using UnityEngine;
 public abstract class ComponenteDtoDeSingleDisplayDeColetado 
 {
     private static DisplaysColetadosDto displaysColetadosDto;
+    private SingleSlotColetadoDto singleSlotColetadoDto;
+
+    protected ComponenteDtoDeSingleDisplayDeColetado(SingleSlotColetadoDto singleSlotColetadoDto)
+    {
+        this.singleSlotColetadoDto = singleSlotColetadoDto;
+    }
 
     protected static void configurar(DisplaysColetadosDto displayColetadosDtoArg)
     {
@@ -17,6 +23,11 @@ public abstract class ComponenteDtoDeSingleDisplayDeColetado
     protected DisplaysColetadosDto getDisplaysColetadosDto()
     {
         return displaysColetadosDto;
+    }
+
+    protected SingleSlotColetadoDto getSingleSlotColetadoDto()
+    {
+        return singleSlotColetadoDto;
     }
 
     public float getFimDelay()
