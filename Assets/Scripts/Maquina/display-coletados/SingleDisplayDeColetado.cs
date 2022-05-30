@@ -1,19 +1,15 @@
 using UnityEngine;
 using System.Collections;
 
-public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
+public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeColetado
 {
     public bool isOcupado { get; private set; }
-    public bool isDesocupado { get { return !isOcupado; }}
-    
-    private MovimentadorDeSlots slots;        
+    public bool isDesocupado { get { return !isOcupado; }}    
+        
     private Coroutine coroutineCacaNiquel;
 
     public SingleDisplayDeColetado(SingleSlotColetadoDto singleSlotColetadoDto)
-        :base(singleSlotColetadoDto)
-    {   
-        slots = new MovimentadorDeSlots();
-    }    
+        :base(singleSlotColetadoDto){}    
 
     public IEnumerator mostrarAlvo(Executor executorFimMovimentacao)
     {
@@ -51,7 +47,7 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
         yield return limparSprNoneCasoOcupado();
         mostrarColetado(sprite);
         isOcupado = true;
-        yield return slots.subirSlotColetado(getSingleSlotColetadoDto().GoSlotBaixo, getDisplaysColetadosDto());        
+        yield return subirSlotColetado();        
         desligarGlow();
 
         if (mostrarMira)
@@ -64,18 +60,18 @@ public class SingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
     public IEnumerator limparSprColetado()
     {
         isOcupado = false;
-        yield return slots.descerSlotColetado(getSingleSlotColetadoDto().GoSlotBaixo, getDisplaysColetadosDto());        
+        yield return descerSlotColetado();        
     }     
     
     public IEnumerator mostrarSprNone(Executor executor)
     {
         mostrarNone();
-        yield return slots.descerSlotNone(getSingleSlotColetadoDto().GoSlotCima, getDisplaysColetadosDto(), executor);
+        yield return descerSlotNone(executor);
     }    
 
     public IEnumerator limparSprNone(Executor executor)
     {
-        yield return slots.subirSlotNone(getSingleSlotColetadoDto().GoSlotCima, getDisplaysColetadosDto(), executor);
+        yield return subirSlotNone(executor);
         limparNone();
     }
 
