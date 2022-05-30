@@ -138,39 +138,42 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
         int indiceAtual = 0;
         Debug.Log("caca niquel ligado");
 
-        getSingleSlotColetadoDto().SprRendererSlotBaixo.transform.localPosition = new Vector3(0, 0, 0);
-        getSingleSlotColetadoDto().SprRendererSlotBaixo.sprite = sprites[indiceAtual++ % sprites.Length];
+        configSlotBaixo(getDisplaysColetadosDto().PosYSlot, sprites[indiceAtual++ % sprites.Length]);
+        configSlotMeio(getDisplaysColetadosDto().PosYSlotAcrescimo, sprites[indiceAtual++ % sprites.Length]);
+        configSlotCima(getDisplaysColetadosDto().PosYSlotAcrescimo * 2, sprites[indiceAtual++ % sprites.Length]);        
 
-        getSingleSlotColetadoDto().SprRendererSlotMeio.transform.localPosition  = new Vector3(0, 0.6f, 0);
-        getSingleSlotColetadoDto().SprRendererSlotMeio.sprite = sprites[indiceAtual++ % sprites.Length];
-
-        getSingleSlotColetadoDto().SprRendererSlotCima.transform.localPosition  = new Vector3(0, 1.2f, 0);
-        getSingleSlotColetadoDto().SprRendererSlotCima.sprite = sprites[indiceAtual++ % sprites.Length];
-
-        SpriteRenderer[] sprRenderers = new SpriteRenderer[] {
-            getSingleSlotColetadoDto().SprRendererSlotBaixo,
-            getSingleSlotColetadoDto().SprRendererSlotMeio,
-            getSingleSlotColetadoDto().SprRendererSlotCima
-        };
+        SpriteRenderer[] sprRenderers = getSlotsSprRenderers();
 
         while (true)
         {
-            Vector3 deslocamento = new Vector3(0, -4f * Time.deltaTime, 0);
+            float velocidade = getSingleSlotColetadoDto().VelocidadeSlot * Time.deltaTime;
+            Vector3 deslocamento = new Vector3(0, -velocidade, 0);
             for(int contador = 0; contador < sprRenderers.Length; contador++)
             {
                 sprRenderers[contador].transform.localPosition += deslocamento;
             }
-            if(sprRenderers[0].transform.localPosition.y < -0.6f)
+            if(isSlot0AbaixoLimite(sprRenderers[0]))
             {
-                SpriteRenderer tempSprRenderer = sprRenderers[0];
-                tempSprRenderer.transform.localPosition = new Vector3(0, sprRenderers[2].transform.localPosition.y + 0.6f, 0);
-                tempSprRenderer.sprite = sprites[indiceAtual++ % sprites.Length];
-                sprRenderers[0] = sprRenderers[1];
-                sprRenderers[1] = sprRenderers[2];
-                sprRenderers[2] = tempSprRenderer;
+                float yPosMaisAlta = sprRenderers[2].transform.localPosition.y + getDisplaysColetadosDto().PosYSlotAcrescimo;
+                sprRenderers[0].transform.localPosition = new Vector3(0, yPosMaisAlta, 0);
+                sprRenderers[0].sprite = sprites[indiceAtual++ % sprites.Length];
+                rotacionarArray(sprRenderers);
             }
             yield return null;
         }
+    }
+
+    private bool isSlot0AbaixoLimite(SpriteRenderer sprRenderer)
+    {
+        return sprRenderer.transform.localPosition.y < getDisplaysColetadosDto().PosYSlotAcrescimoNeg;
+    }
+
+    private void rotacionarArray(SpriteRenderer[] sprRenderers)
+    {
+        SpriteRenderer tempSprRenderer = sprRenderers[0];
+        sprRenderers[0] = sprRenderers[1];
+        sprRenderers[1] = sprRenderers[2];
+        sprRenderers[2] = tempSprRenderer;
     }
 
     public new static void configurar(DisplaysColetadosDto displayColetadosDtoArg)

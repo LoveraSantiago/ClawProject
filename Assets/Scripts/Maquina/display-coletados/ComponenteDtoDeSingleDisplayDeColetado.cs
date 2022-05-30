@@ -65,6 +65,33 @@ public abstract class ComponenteDtoDeSingleDisplayDeColetado
                getSingleSlotColetadoDto().SprRendererSlotMeio.sharedMaterial == getDisplaysColetadosDto().MaterialAlvoSelecionado;
     }
 
+    protected void configSlotBaixo(float y, Sprite sprite)
+    {
+        singleSlotColetadoDto.SprRendererSlotBaixo.transform.localPosition = new Vector3(0, y, 0);
+        singleSlotColetadoDto.SprRendererSlotBaixo.sprite = sprite;
+    }
+
+    protected void configSlotMeio(float y, Sprite sprite)
+    {
+        singleSlotColetadoDto.SprRendererSlotMeio.transform.localPosition = new Vector3(0, y, 0);
+        singleSlotColetadoDto.SprRendererSlotMeio.sprite = sprite;
+    }
+
+    protected void configSlotCima(float y, Sprite sprite)
+    {
+        singleSlotColetadoDto.SprRendererSlotCima.transform.localPosition = new Vector3(0, y, 0);
+        singleSlotColetadoDto.SprRendererSlotCima.sprite = sprite;
+    }
+
+    protected SpriteRenderer[] getSlotsSprRenderers()
+    {
+       return new SpriteRenderer[] {
+            getSingleSlotColetadoDto().SprRendererSlotBaixo,
+            getSingleSlotColetadoDto().SprRendererSlotMeio,
+            getSingleSlotColetadoDto().SprRendererSlotCima
+        };
+    }
+
     protected DisplaysColetadosDto getDisplaysColetadosDto()
     {
         return displaysColetadosDto;
