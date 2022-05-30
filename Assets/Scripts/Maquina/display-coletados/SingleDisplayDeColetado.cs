@@ -128,7 +128,7 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
 
     private IEnumerator limparSprNoneCasoOcupado()
     {
-        slots.cancelarMovimentacaoDeSlot();
+        cancelarMovimentacaoDeSlot();
         yield return limparSprNone(null);
         //Debug.Log("Pos Cancelado limpando spr none");
     }

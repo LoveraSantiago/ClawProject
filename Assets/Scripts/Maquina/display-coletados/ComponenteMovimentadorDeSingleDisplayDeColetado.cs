@@ -2,11 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class ComponenteMovimentadorDeSingleDisplayDeColetado : ComponenteDtoDeSingleDisplayDeColetado
-{
-    private static int POS_Y_FINAL = 0;
-    private static float POS_Y_BAIXO_INICIAL = -0.7f;
-    private static float POS_Y_CIMA_INICIAL = 0.7f;
-
+{   
     private bool continuarMovimentacao;
 
     public ComponenteMovimentadorDeSingleDisplayDeColetado(SingleSlotColetadoDto singleSlotColetadoDto)
@@ -27,9 +23,11 @@ public class ComponenteMovimentadorDeSingleDisplayDeColetado : ComponenteDtoDeSi
         float delay = getDisplaysColetadosDto().InicialDelay;
 
         GameObject goSlotBaixo = getSingleSlotColetadoDto().GoSlotBaixo;
-        goSlotBaixo.transform.localPosition = new Vector3(goSlotBaixo.transform.localPosition.x, POS_Y_BAIXO_INICIAL, goSlotBaixo.transform.localPosition.z);
+        float posYBaixoInicial = getDisplaysColetadosDto().PosYSlotAcrescimoNeg;
+        goSlotBaixo.transform.localPosition = new Vector3(goSlotBaixo.transform.localPosition.x, posYBaixoInicial, goSlotBaixo.transform.localPosition.z);
 
-        Vector3 posFinal = new Vector3(goSlotBaixo.transform.localPosition.x, POS_Y_FINAL, goSlotBaixo.transform.localPosition.z);
+        float posYFinal = getDisplaysColetadosDto().PosYSlot;
+        Vector3 posFinal = new Vector3(goSlotBaixo.transform.localPosition.x, posYFinal, goSlotBaixo.transform.localPosition.z);
         yield return movimentarSlot(velocidade, delay, goSlotBaixo, posFinal);
     }
 
@@ -39,7 +37,8 @@ public class ComponenteMovimentadorDeSingleDisplayDeColetado : ComponenteDtoDeSi
         float fimDelay = getDisplaysColetadosDto().FimDelay;
 
         GameObject goSlotBaixo = getSingleSlotColetadoDto().GoSlotBaixo;
-        Vector3 posSlotBaixoInicial = new Vector3(goSlotBaixo.transform.localPosition.x, POS_Y_BAIXO_INICIAL, goSlotBaixo.transform.localPosition.z);
+        float posYBaixoInicial = getDisplaysColetadosDto().PosYSlotAcrescimoNeg;
+        Vector3 posSlotBaixoInicial = new Vector3(goSlotBaixo.transform.localPosition.x, posYBaixoInicial, goSlotBaixo.transform.localPosition.z);
 
         yield return movimentarSlot(velocidade, fimDelay, goSlotBaixo, posSlotBaixoInicial);
     }
@@ -49,8 +48,10 @@ public class ComponenteMovimentadorDeSingleDisplayDeColetado : ComponenteDtoDeSi
         float velocidade = getDisplaysColetadosDto().VelocImg;
 
         GameObject goSlotCima = getSingleSlotColetadoDto().GoSlotCima;
-        goSlotCima.transform.localPosition = new Vector3(goSlotCima.transform.localPosition.x, POS_Y_CIMA_INICIAL, goSlotCima.transform.localPosition.z);
-        Vector3 posFinal = new Vector3(goSlotCima.transform.localPosition.x, POS_Y_FINAL, goSlotCima.transform.localPosition.z);
+        float posYCimaInicial = getDisplaysColetadosDto().PosYSlotAcrescimo;
+        goSlotCima.transform.localPosition = new Vector3(goSlotCima.transform.localPosition.x, posYCimaInicial, goSlotCima.transform.localPosition.z);
+        float posYFinal = getDisplaysColetadosDto().PosYSlot;
+        Vector3 posFinal = new Vector3(goSlotCima.transform.localPosition.x, posYFinal, goSlotCima.transform.localPosition.z);
 
         yield return movimentarSlot(velocidade, 0, goSlotCima, posFinal, executorFimMovimentacao);        
     }
@@ -60,7 +61,8 @@ public class ComponenteMovimentadorDeSingleDisplayDeColetado : ComponenteDtoDeSi
         float velocidade = getDisplaysColetadosDto().VelocImg;
 
         GameObject goSlotCima = getSingleSlotColetadoDto().GoSlotCima;
-        Vector3 posInicial = new Vector3(goSlotCima.transform.localPosition.x, POS_Y_CIMA_INICIAL, goSlotCima.transform.localPosition.z);
+        float posYCimaInicial = getDisplaysColetadosDto().PosYSlotAcrescimo;
+        Vector3 posInicial = new Vector3(goSlotCima.transform.localPosition.x, posYCimaInicial, goSlotCima.transform.localPosition.z);
 
         yield return movimentarSlot(velocidade, 0, goSlotCima, posInicial, executorFimMovimentacao);        
     }
