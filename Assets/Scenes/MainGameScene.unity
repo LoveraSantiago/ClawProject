@@ -58964,6 +58964,10 @@ PrefabInstance:
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1048517293492779349, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eda2f9295843f6e43a99a8c2bba5b167, type: 3}
     - target: {fileID: 2088536126316953454, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_MaskInteraction
       value: 1
@@ -58976,6 +58980,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5721254440899472523, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eda2f9295843f6e43a99a8c2bba5b167, type: 3}
     - target: {fileID: 5845699465068917843, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -59024,6 +59032,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: maquina-v3
       objectReference: {fileID: 0}
+    - target: {fileID: 6335726489275596635, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eda2f9295843f6e43a99a8c2bba5b167, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c301260e6514149bc0e163ff994732, type: 3}
 --- !u!4 &4106799619402785296 stripped
