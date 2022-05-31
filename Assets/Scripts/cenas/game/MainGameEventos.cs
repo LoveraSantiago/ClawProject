@@ -72,10 +72,10 @@ public class MainGameEventos
             .adicionarConsumidor(uiManager);
 
         new AcaoCacaNiquel()
-            .configurarProdutor(maquinaManager)
+            .configurarProdutor(maquinaManager.displayDeColetados)
             .adicionarConsumidor(cameraManager)
             .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(uiManager);
+            .adicionarConsumidor(uiManager.modalResultados);
 
         new AcaoDesligarMaquina()
             .configurarProdutor(maquinaManager)

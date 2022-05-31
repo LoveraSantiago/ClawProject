@@ -1,5 +1,5 @@
 public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
-                               AcaoCacaNiquel.ProdutorEvento
+                                   AcaoCacaNiquel.ProdutorEvento
 {
     private GrupoDisplays grupoDisplays;
     public ModoColetados modoColetados { get; private set; }

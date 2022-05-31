@@ -1,6 +1,5 @@
 public class UiGameManager : AcaoTempoEsgotado.ConsumidorEvento,
-                             AcaoBoardElevadoFim.ConsumidorEvento,                             
-                             AcaoCacaNiquel.ConsumidorEvento,                             
+                             AcaoBoardElevadoFim.ConsumidorEvento,                                                          
                              AcaoDesligarMaquina.ConsumidorEvento
 {
     public ModalResultadosManager modalResultados { get; private set; }
@@ -26,11 +25,6 @@ public class UiGameManager : AcaoTempoEsgotado.ConsumidorEvento,
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
     {
         ((AcaoBoardElevadoFim.ConsumidorEvento)modalResultados).consumirEvento(evento);
-    }
-
-    void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelEventoDto evento)
-    {
-        ((AcaoCacaNiquel.ConsumidorEvento)modalResultados).consumirEvento(evento);
     }
 
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
