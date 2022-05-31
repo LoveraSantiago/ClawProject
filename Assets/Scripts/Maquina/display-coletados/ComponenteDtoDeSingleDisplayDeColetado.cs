@@ -86,10 +86,29 @@ public abstract class ComponenteDtoDeSingleDisplayDeColetado
     protected SpriteRenderer[] getSlotsSprRenderers()
     {
        return new SpriteRenderer[] {
-            getSingleSlotColetadoDto().SprRendererSlotBaixo,
-            getSingleSlotColetadoDto().SprRendererSlotMeio,
-            getSingleSlotColetadoDto().SprRendererSlotCima
+            singleSlotColetadoDto.SprRendererSlotBaixo,
+            singleSlotColetadoDto.SprRendererSlotMeio,
+            singleSlotColetadoDto.SprRendererSlotCima
         };
+    }
+
+    protected SpriteRenderer getSprRenderMaisProximo(float y)
+    {
+        float distBaixo = Mathf.Abs(y - singleSlotColetadoDto.SprRendererSlotBaixo.transform.localPosition.y);
+        float distMedio = Mathf.Abs(y - singleSlotColetadoDto.SprRendererSlotMeio.transform.localPosition.y);
+        float distCima  = Mathf.Abs(y - singleSlotColetadoDto.SprRendererSlotCima.transform.localPosition.y);
+        if(distBaixo < distMedio && distBaixo < distCima)
+        {
+            return singleSlotColetadoDto.SprRendererSlotBaixo;
+        }
+        else if(distMedio < distBaixo && distMedio < distCima)
+        {
+            return singleSlotColetadoDto.SprRendererSlotMeio;
+        }
+        else
+        {
+            return singleSlotColetadoDto.SprRendererSlotCima;
+        }
     }
 
     protected DisplaysColetadosDto getDisplaysColetadosDto()

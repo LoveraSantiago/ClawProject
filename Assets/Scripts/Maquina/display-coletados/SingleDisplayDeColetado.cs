@@ -82,15 +82,15 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
     
     public void pararCacaNiquel(Sprite[] sprites, Sprite sprSucesso)
     {
-        int indiceEscolhido = MathUtils.escolherDeZeroAteLimite(sprites.Length);
-        Utils.MonoBehaviour.StopCoroutine(coroutineCacaNiquel);
-        getSingleSlotColetadoDto().SprRendererSlotMeio.sprite = sprites[indiceEscolhido];
+        SpriteRenderer sprRendererEscolhido = getSprRenderMaisProximo(getDisplaysColetadosDto().PosYSlot);
+        Sprite sprEscolhido = sprRendererEscolhido.sprite;
+        Utils.MonoBehaviour.StopCoroutine(coroutineCacaNiquel);        
 
         if(sprSucesso == null)
         {
             ligarGlowSucesso();
         }
-        else if(sprSucesso == sprites[indiceEscolhido])
+        else if(sprSucesso == sprEscolhido)
         {
             ligarGlowSucesso();
         }
