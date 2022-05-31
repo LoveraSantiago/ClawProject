@@ -111,6 +111,11 @@ public abstract class ComponenteDtoDeSingleDisplayDeColetado
         }
     }
 
+    protected SpriteRenderer getSprRendererMaisProximo()
+    {
+        return getSprRendererMaisProximo(displaysColetadosDto.PosYSlot);
+    }
+
     protected DisplaysColetadosDto getDisplaysColetadosDto()
     {
         return displaysColetadosDto;

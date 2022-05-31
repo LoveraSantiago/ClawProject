@@ -82,7 +82,7 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
     
     public void pararCacaNiquel(Sprite[] sprites, Sprite sprSucesso)
     {
-        SpriteRenderer sprRendererEscolhido = getSprRendererMaisProximo(getDisplaysColetadosDto().PosYSlot);
+        SpriteRenderer sprRendererEscolhido = getSprRendererMaisProximo();
         Sprite sprEscolhido = sprRendererEscolhido.sprite;
         Utils.MonoBehaviour.StopCoroutine(coroutineCacaNiquel);
         Utils.MonoBehaviour.StartCoroutine(reposicionarCacaNiquel());        
@@ -102,7 +102,7 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
 
     public Sprite getSprResultCacaNiquel()
     {
-        return getSprRendererMaisProximo(getDisplaysColetadosDto().PosYSlot).sprite;
+        return getSprRendererMaisProximo().sprite;
     }    
 
     public void ligarGlowSucesso()
@@ -163,7 +163,7 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
 
     private IEnumerator reposicionarCacaNiquel()
     {
-        SpriteRenderer sprRenderer = getSprRendererMaisProximo(getDisplaysColetadosDto().PosYSlot);
+        SpriteRenderer sprRenderer = getSprRendererMaisProximo();
         float diferenca = 0 + sprRenderer.transform.localPosition.y;
         float velocidade = diferenca > 0 ? -getSingleSlotColetadoDto().VelocidadeSlot : getSingleSlotColetadoDto().VelocidadeSlot;
         float contadorStep = 0;
