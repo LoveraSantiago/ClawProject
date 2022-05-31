@@ -82,10 +82,10 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
     
     public void pararCacaNiquel(Sprite[] sprites, Sprite sprSucesso)
     {
-        SpriteRenderer sprRendererEscolhido = getSprRenderMaisProximo(getDisplaysColetadosDto().PosYSlot);
+        SpriteRenderer sprRendererEscolhido = getSprRendererMaisProximo(getDisplaysColetadosDto().PosYSlot);
         Sprite sprEscolhido = sprRendererEscolhido.sprite;
-        Utils.MonoBehaviour.StopCoroutine(coroutineCacaNiquel);        
-
+        Utils.MonoBehaviour.StopCoroutine(coroutineCacaNiquel);
+        Utils.MonoBehaviour.StartCoroutine(reposicionarCacaNiquel());        
         if(sprSucesso == null)
         {
             ligarGlowSucesso();
@@ -102,7 +102,7 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
 
     public Sprite getSprResultCacaNiquel()
     {
-        return getSingleSlotColetadoDto().SprRendererSlotMeio.sprite;
+        return getSprRendererMaisProximo(getDisplaysColetadosDto().PosYSlot).sprite;
     }    
 
     public void ligarGlowSucesso()
@@ -136,8 +136,6 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
     private IEnumerator ligarCacaNiquelCoroutine(Sprite[] sprites)
     {
         int indiceAtual = 0;
-        Debug.Log("caca niquel ligado");
-
         configSlotBaixo(getDisplaysColetadosDto().PosYSlot, sprites[indiceAtual++ % sprites.Length]);
         configSlotMeio(getDisplaysColetadosDto().PosYSlotAcrescimo, sprites[indiceAtual++ % sprites.Length]);
         configSlotCima(getDisplaysColetadosDto().PosYSlotAcrescimo * 2, sprites[indiceAtual++ % sprites.Length]);        
@@ -161,6 +159,30 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
             }
             yield return null;
         }
+    }
+
+    private IEnumerator reposicionarCacaNiquel()
+    {
+        SpriteRenderer sprRenderer = getSprRendererMaisProximo(getDisplaysColetadosDto().PosYSlot);
+        float diferenca = 0 + sprRenderer.transform.localPosition.y;
+        float velocidade = diferenca > 0 ? -getSingleSlotColetadoDto().VelocidadeSlot : getSingleSlotColetadoDto().VelocidadeSlot;
+        float contadorStep = 0;
+
+        SpriteRenderer[] sprRenderers = getSlotsSprRenderers();
+
+        while (contadorStep < Mathf.Abs(diferenca))
+        {
+            float deslocamentoY = (velocidade * Time.deltaTime) / 10;
+            Vector3 deslocamento = new Vector3(0, deslocamentoY, 0);
+            for (int contador = 0; contador < sprRenderers.Length; contador++)
+            {
+                sprRenderers[contador].transform.localPosition += deslocamento;
+            }
+            yield return null;            
+            contadorStep += Mathf.Abs(deslocamentoY);
+        }
+        sprRenderer.transform.localPosition = new Vector3(0, getDisplaysColetadosDto().PosYSlot, 0);
+        yield return null;        
     }
 
     private bool isSlot0AbaixoLimite(SpriteRenderer sprRenderer)

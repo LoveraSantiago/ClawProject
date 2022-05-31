@@ -10,7 +10,8 @@ public class DisplaysColetadosDto
     [SerializeField] private float velocImg;
     [Space(3)]
     [SerializeField] private float posYSlot;
-    [SerializeField] private float posYSlotAcrescimo;    
+    [SerializeField] private float posYSlotAcrescimo;
+    [SerializeField] private float velocReposicionamento;
     [Space(3)]
     [SerializeField] private Sprite sprNone;
     [SerializeField] private Sprite sprMiraGrossa;
@@ -28,6 +29,7 @@ public class DisplaysColetadosDto
     public float VelocImg { get { return velocImg; } }
     public float DelayMiraSelecionada { get { return delayMiraSelecionada; } }
 
+    public float VelocReposicionamento { get { return velocReposicionamento; } }
     public float PosYSlot { get { return posYSlot; } }
     public float PosYSlotAcrescimo { get { return posYSlotAcrescimo; } }
     public float PosYSlotAcrescimoNeg { get { return -posYSlotAcrescimo; } }
