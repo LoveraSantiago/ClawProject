@@ -24,8 +24,7 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
         else
         {
             yield return mostrarSprNone(executorFimMovimentacao);
-        }
-        ligarGlowLuz();
+        }        
     }    
 
     public IEnumerator desligarAlvo(Executor executorFimMovimentacao)
@@ -38,8 +37,7 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
         }
         else{
             yield return limparSprNone(executorFimMovimentacao);
-        }
-        desligarGlow();
+        }        
     }
 
     public IEnumerator mostrarSprColetado(Sprite sprite, bool mostrarMira)
@@ -47,13 +45,11 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
         yield return limparSprNoneCasoOcupado();
         mostrarColetado(sprite);
         isOcupado = true;
-        yield return subirSlotColetado();        
-        desligarGlow();
+        yield return subirSlotColetado();                
 
         if (mostrarMira)
         {
-            yield return mostrarAlvo(null);
-            ligarGlowLuz();
+            yield return mostrarAlvo(null);            
         }        
     }      
 
@@ -88,15 +84,19 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
         Utils.MonoBehaviour.StartCoroutine(reposicionarCacaNiquel());        
         if(sprSucesso == null)
         {
-            ligarGlowSucesso();
+            colorirSucesso();
         }
         else if(sprSucesso == sprEscolhido)
         {
-            ligarGlowSucesso();
+            colorirSucesso();
+        }
+        else if(getDisplaysColetadosDto().CacaNiquelDto.SprMoeda == sprEscolhido)
+        {
+            colorirMeio();
         }
         else
         {
-            ligarGlowFail();
+            colorirFalha();
         }
     }
 
@@ -104,22 +104,6 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
     {
         return getSprRendererMaisProximo().sprite;
     }    
-
-    public void ligarGlowSucesso()
-    {
-    }
-
-    public void ligarGlowFail()
-    {
-    }
-
-    public void ligarGlowLuz()
-    {
-    }    
-
-    public void desligarGlow()
-    {
-    }
 
     public bool isCliqueDentroArea(Vector2 posicao)
     {   

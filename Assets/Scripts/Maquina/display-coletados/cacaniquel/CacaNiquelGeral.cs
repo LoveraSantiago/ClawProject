@@ -17,10 +17,6 @@ public class CacaNiquelGeral : AbstractCacaNiquel
         return null;
     }
 
-    public override void passarResultadosParaGrupoDisplay(PowerUpEntidade pupEscolhido, Sprite[] resultados, GrupoDisplays grupoDisplays)
-    {        
-    }
-
     public override CacaNiquelEventoDto montarResultado(PowerUpEntidade pupEscolhido, Sprite spriteEscolhido)
     {
         return CacaNiquelEventoDto.ofEmAndamento(CacaNiquelResultadoEnum.SUCESSO);

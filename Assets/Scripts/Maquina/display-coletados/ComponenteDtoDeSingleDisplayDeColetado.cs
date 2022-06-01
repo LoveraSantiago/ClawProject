@@ -126,6 +126,21 @@ public abstract class ComponenteDtoDeSingleDisplayDeColetado
         return singleSlotColetadoDto;
     }
 
+    protected void colorirSucesso()
+    {
+        singleSlotColetadoDto.SprRendererSlotColetado.color = displaysColetadosDto.CacaNiquelDto.CorSucesso;
+    }
+
+    protected void colorirMeio()
+    {
+        singleSlotColetadoDto.SprRendererSlotColetado.color = displaysColetadosDto.CacaNiquelDto.CorMeio;
+    }
+
+    protected void colorirFalha()
+    {
+        singleSlotColetadoDto.SprRendererSlotColetado.color = displaysColetadosDto.CacaNiquelDto.CorFalha;
+    }
+
     protected static void configurar(DisplaysColetadosDto displayColetadosDtoArg)
     {
         displaysColetadosDto = displayColetadosDtoArg;

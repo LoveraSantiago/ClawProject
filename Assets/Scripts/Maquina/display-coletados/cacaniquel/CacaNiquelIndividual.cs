@@ -27,25 +27,7 @@ public class CacaNiquelIndividual : AbstractCacaNiquel
         int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
         return pupEscolhido.sprPowerUp;
-    }
-
-    public override void passarResultadosParaGrupoDisplay(PowerUpEntidade pupEscolhido, Sprite[] resultados, GrupoDisplays grupoDisplays)
-    {
-        if (resultados[2] == cacaNiquelDto.SprMoeda)
-        {
-            grupoDisplays.ligarGlowLuz();
-        }
-        else if (resultados[0] == pupEscolhido.sprPowerUp &&
-                 resultados[1] == pupEscolhido.sprPowerUp &&
-                 resultados[2] == pupEscolhido.sprPowerUp)
-        {
-            //grupoDisplays.ligar();
-        }
-        else
-        {
-            grupoDisplays.ligarGlowFail();
-        }
-    }
+    }    
 
     public override CacaNiquelEventoDto montarResultado(PowerUpEntidade pupEscolhido, Sprite spriteEscolhido)
     {

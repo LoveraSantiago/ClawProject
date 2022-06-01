@@ -93,13 +93,6 @@ public class GrupoDisplays
         return total;
     }
 
-    public void ligarGlowLuz()
-    {
-        singleDisplayDeColetado[0].ligarGlowLuz();
-        singleDisplayDeColetado[1].ligarGlowLuz();
-        singleDisplayDeColetado[2].ligarGlowLuz();
-    }
-
     public void ligarCacaNiquel(Sprite[] sprSlot1, Sprite[] sprSlot2, Sprite[] sprSlot3)
     {
         singleDisplayDeColetado[0].ligarCacaNiquel(sprSlot1);
@@ -125,11 +118,4 @@ public class GrupoDisplays
     {
         return singleDisplayDeColetado[indice].getSprResultCacaNiquel();
     }
-
-    public void ligarGlowFail()
-    {
-        singleDisplayDeColetado[0].ligarGlowFail();
-        singleDisplayDeColetado[1].ligarGlowFail();
-        singleDisplayDeColetado[2].ligarGlowFail();
-    } 
 }

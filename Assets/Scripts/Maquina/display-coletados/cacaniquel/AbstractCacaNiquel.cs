@@ -10,8 +10,7 @@ public abstract class AbstractCacaNiquel
     }
 
     public abstract Sprite[][] montarSpritesTipoCacaNiquel();
-    public abstract Sprite getSprDeSucesso();
-    public abstract void passarResultadosParaGrupoDisplay(PowerUpEntidade pupEscolhido, Sprite[] resultados, GrupoDisplays grupoDisplays);
+    public abstract Sprite getSprDeSucesso();    
 
     public abstract CacaNiquelEventoDto montarResultado(PowerUpEntidade pupEscolhido, Sprite spriteEscolhido);
 

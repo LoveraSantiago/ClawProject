@@ -32,8 +32,7 @@ public class ModoCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     {
         yield return new WaitForSeconds(0.5f);
         CacaNiquelEventoDto eventoInicio = new CacaNiquelEventoDto();
-        produtorDeEvento.produziuEvento(eventoInicio);
-        grupoDisplays.ligarGlowLuz();
+        produtorDeEvento.produziuEvento(eventoInicio);        
         
         Sprite[][] allSrites = cacaNiquel.montarSpritesTipoCacaNiquel();
         grupoDisplays.ligarCacaNiquel(allSrites[0], allSrites[1], allSrites[2]);
@@ -63,8 +62,7 @@ public class ModoCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         }
         yield return new WaitForSeconds(0.1f);
 
-        Sprite[] resultadosSprs = grupoDisplays.getResultadosCacaNiquel();        
-        cacaNiquel.passarResultadosParaGrupoDisplay(pupEscolhido, resultadosSprs, grupoDisplays);
+        Sprite[] resultadosSprs = grupoDisplays.getResultadosCacaNiquel();                
         CacaNiquelEventoDto eventoFim = cacaNiquel.montarResultados(pupEscolhido, resultadosSprs);        
         produtorDeEvento.produziuEvento(eventoFim);       
     }       

@@ -52,8 +52,8 @@ public abstract class AbstractLevelCacaNiquel : AbstractLevel
         dicionario.Add("display-timer-digito", "#DFE6E9");
         dicionario.Add("seg", "#FFFFFF");
         dicionario.Add("placa-coletados", "#636E72");
-        dicionario.Add("display-coletado1", "#29A8AB");
-        dicionario.Add("display-coletado2", "#E4314E");
+        dicionario.Add("display-coletado1", "#DFE6E9");
+        dicionario.Add("display-coletado2", "#DFE6E9");
         dicionario.Add("display-coletado3", "#DFE6E9");
         dicionario.Add("placa-scores", "#636E72");
         dicionario.Add("display-pontos1", "#DFE6E9");
