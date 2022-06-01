@@ -127,7 +127,7 @@ public abstract class ComponenteDtoDeSingleDisplayDeColetado
     }
 
     protected void colorirSucesso()
-    {
+    {   
         singleSlotColetadoDto.SprRendererSlotColetado.color = displaysColetadosDto.CacaNiquelDto.CorSucesso;
     }
 
@@ -137,7 +137,7 @@ public abstract class ComponenteDtoDeSingleDisplayDeColetado
     }
 
     protected void colorirFalha()
-    {
+    {     
         singleSlotColetadoDto.SprRendererSlotColetado.color = displaysColetadosDto.CacaNiquelDto.CorFalha;
     }
 
