@@ -24,13 +24,18 @@ public class ComponenteSpriteDeGO : ComponenteEstadoDeGO
     }
 
     public void receberSprite(Sprite sprite, int layer)
-    {
-        spriteRenderer.sprite = sprite;
-        nomeSprite = sprite.name;
-        colocarSpriteNoLayer(layer);
+    {   
+        receberSprite(sprite);
+        colocarSpriteNoOrder(layer);
     }
 
-    protected void colocarSpriteNoLayer(int layer)
+    public void receberSprite(Sprite sprite)
+    {
+        spriteRenderer.sprite = sprite;
+        nomeSprite = sprite.name;        
+    }
+
+    protected void colocarSpriteNoOrder(int layer)
     {
         spriteRenderer.sortingOrder = layer;
     }

@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: mat-btm-liga-desliga
+  m_Shader: {fileID: -6465566751694194690, guid: 0547867dd3efc514dba44cb2d9c04bb7, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_01bf9563050c419b8100969233084bcf_Out_0:
+        m_Texture: {fileID: 2800000, guid: 1af4dcfde31655f4aacb15e6e4b9a8a3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_86bad76523da416ebb611c77c478756d_Out_0:
+        m_Texture: {fileID: 2800000, guid: 71a1fd27eca642f4ba94437db4902913, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_c0f44b4860fa4e378a136332765e403b_Out_0:
+        m_Texture: {fileID: 2800000, guid: d591127b94414bd46bfa0b739db7353b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _EnableExternalAlpha: 0
+    - _ligado: 1
+    - valor_clareamento: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - cor_background: {r: 0.9801969, g: 1, b: 0.02264148, a: 0}
+    - cor_contorno: {r: 1, g: 1, b: 1, a: 0}
+    - cor_g1: {r: 0.007843138, g: 0.5411765, b: 0.8313726, a: 0}
+    - cor_g2: {r: 0.8039216, g: 0.09019608, b: 0.8313726, a: 0}
+    - cor_g3: {r: 0.05098039, g: 0.8313726, b: 0.682353, a: 0}
+    - cor_g4: {r: 0.2627451, g: 0.4588235, b: 0.9411765, a: 0}
+    - cor_g5: {r: 0.3607843, g: 0.8313726, b: 0.05098039, a: 0}
+    - cor_g6: {r: 0.1764706, g: 0.2078431, b: 0.4313726, a: 0}
+    - cor_g7: {r: 0.8313726, g: 0.2901961, b: 0.09019608, a: 0}
+    - cor_g8: {r: 0.8313726, g: 0.6627451, b: 0.09019608, a: 0}
+    - cor_g9: {r: 0.8313726, g: 0.09019608, b: 0.1411765, a: 0}
+  m_BuildTextureStacks: []

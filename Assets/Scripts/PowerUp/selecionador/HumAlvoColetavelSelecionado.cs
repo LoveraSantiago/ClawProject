@@ -1,4 +1,6 @@
 using System.Collections;
+using UnityEngine;
+
 
 public class HumAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<Coletavel>
 {
@@ -16,6 +18,8 @@ public class HumAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<Coletavel>
         Coletavel coletavelSelecionado = selecionadorDeAlvos.goSelecionado;
         ligarMiraFinal(coletavelSelecionado);
 
-        yield return Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(coletavelSelecionado));
+        Coroutine coroutine = Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(coletavelSelecionado));
+        cacheCoroutineOnSelecionado(coroutine);
+        yield return coroutine;
     }    
 }

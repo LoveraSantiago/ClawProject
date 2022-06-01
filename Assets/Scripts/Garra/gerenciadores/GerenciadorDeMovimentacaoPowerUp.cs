@@ -54,7 +54,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     //IMPLEMENTANDO INTERFACE COMUNICADORCOMGERMOVPOWERUP INICIO
     public void trocarParaAcaoVoltarParaCima()
     {
-        trocarMovimentador(new MovimentacaoVoltarParaCima());
+        trocarMovimentador(new MovimentacaoVoltarParaCimaPowerUp());
     }
 
     public void trocarParaAcaoVoltarParaMeio()

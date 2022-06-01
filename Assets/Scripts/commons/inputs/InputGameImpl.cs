@@ -7,17 +7,19 @@ public class InputGameImpl : InputGame,
     private bool isTapAreaSuperior;
     private bool isTapAreaInferior;
     private bool ativado;
+    private bool jump1Frame;
 
     private Vector3 posicaoTap;        
 
     public InputGameImpl()
     {
         ativado = true;
+        jump1Frame = false;
     }
 
     public void update(Transform referenciaChao)
     {        
-        if (Input.GetMouseButtonDown(0) && ativado)
+        if (Input.GetMouseButtonUp(0) && ativado && !jump1Frame)
         {
             posicaoTap = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (isPosicaoAcimaPosicaoDeReferencia(referenciaChao))
@@ -34,7 +36,8 @@ public class InputGameImpl : InputGame,
         else
         {
             isTapAreaInferior = false;
-            isTapAreaSuperior = false;            
+            isTapAreaSuperior = false;
+            jump1Frame = false;
         }
     }
 
@@ -56,6 +59,7 @@ public class InputGameImpl : InputGame,
     public bool aconteceuDragNaAreaInferior(
         Vector3 dragPosicao, Transform referenciaChaoMaquina)
     {
+        //Debug.Log(dragPosicao.y + " | " + referenciaChaoMaquina.position.y + " | " + (dragPosicao.y < referenciaChaoMaquina.position.y));
         return dragPosicao.y < referenciaChaoMaquina.position.y;
     }
 
@@ -69,13 +73,22 @@ public class InputGameImpl : InputGame,
         return posicaoTap.y > referenciaChaoMaquina.position.y;
     }
 
-    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
+    public void consumirTap()
     {
-        ativado = false;
+        isTapAreaSuperior = false;
+        isTapAreaInferior = false;        
+    }
+
+    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
+    {   
+        ativado = false;        
     }
 
     void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
     {
+        Debug.Log("Religando Input");
         ativado = !evento.resultadoSair;
-    }
+        jump1Frame = true;
+        consumirTap();
+    }   
 }

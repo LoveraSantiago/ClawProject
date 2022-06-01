@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class ColetavelContexto : GOContexto
 {
-    public readonly int SPR_ORDER_COMUM = 32;//TRANFORMAR EM CONFIGURACAO
-    public readonly int SPR_ORDER_DESTAQUE = 33;
+    public int sprOrderComum;
+    public int sprOrdemDestaque;
+    public int sprOrdemEscondido;
 
     public readonly int LAYER_ELEVADOR = 20;
     public readonly int LAYER_NORMAL = 9;
@@ -12,9 +13,12 @@ public class ColetavelContexto : GOContexto
     public CircleCollider2D referenciaColliderColetado { get; private set; }
 
     public ColetavelContexto(ColetaveisDto coletaveisDto, CircleCollider2D referenciaColliderColetado)
-        : base(coletaveisDto.ContextoColetavel, new ProcuradorDeSpriteRenderer("imagem"))
+        : base(coletaveisDto.GoMainColetavel)
     {
         nomeador = new Nomeador();
         this.referenciaColliderColetado = referenciaColliderColetado;
+        sprOrderComum     = coletaveisDto.OrderColetaveis;
+        sprOrdemDestaque  = coletaveisDto.OrderDestaqueColetaveis;
+        sprOrdemEscondido = coletaveisDto.OrderEscondidoColetaveis;
     }    
 }

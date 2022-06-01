@@ -1,10 +1,17 @@
 using UnityEngine;
 
-public class MovimentacaoVoltarParaCima : AbstractMovimentacaoDaGarraPowerUp
+public class MovimentacaoVoltarParaCima : AbstractMovimentacaoDaGarra
 {
+    private ComunicadorComGerenciadorComum comunicadorComGerMovimentacaoComum;
+
+    public MovimentacaoVoltarParaCima(ComunicadorComGerenciadorComum comunicadorComGerMovimentacaoComum)
+    {
+        this.comunicadorComGerMovimentacaoComum = comunicadorComGerMovimentacaoComum;
+    }
+
     public override void preInicio()
     {
-        colocarMassa(3);        
+        colocarMassa(3);
         playAnimacaoIrPCima();
     }
 
@@ -12,9 +19,10 @@ public class MovimentacaoVoltarParaCima : AbstractMovimentacaoDaGarraPowerUp
     {
         if (isAcimaPosInicial())
         {
+            //Debug.Log("isAcimaPosInicial");
             parar();
             colocarNaAlturaInicial();
-            comunicadorComGerMovimentacao.trocarParaAcaoVoltarParaMeio();
+            comunicadorComGerMovimentacaoComum.trocarParaAcaoVoltarParaMeio();
         }
     }
 
@@ -22,7 +30,7 @@ public class MovimentacaoVoltarParaCima : AbstractMovimentacaoDaGarraPowerUp
     {
         moverParaCimaFreeze();
         Quaternion angIdleMinEsquerda = getAnguloIdleMinEsquerda();
-        Quaternion angIdleMinDireita  = getAnguloIdleMinDireita();        
+        Quaternion angIdleMinDireita = getAnguloIdleMinDireita();
         rotacionarPincaVelocidadeAberturaFDT(angIdleMinEsquerda, angIdleMinDireita);
     }
 }

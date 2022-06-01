@@ -3,11 +3,12 @@ using UnityEngine;
 public abstract class PowerUpSemInteracao : AbstractPowerUpGo, 
                                             InteracaoPowerUpComComponente
 {
-    public PowerUpSemInteracao(GameObject goTile, string nome): base(goTile, nome){}
+    public PowerUpSemInteracao(GameObject goTile, string nome): 
+        base(goTile, nome){}
 
     public PowerUpSemInteracao(
-        GameObject goTile, Transformador<GameObject, SpriteRenderer> getGoComSprRenderer, string nome) 
-        : base(goTile, getGoComSprRenderer, nome)
+        GameObject goTile, FinderDeSprRenderer finderDeSprRenderer, string nome) 
+        : base(goTile, finderDeSprRenderer, nome)
     {
     }
 

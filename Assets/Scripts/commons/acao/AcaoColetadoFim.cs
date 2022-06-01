@@ -1,4 +1,4 @@
-public class AcaoColetadoFim : ProdutorConsumidoresDeEvento<ColetadoFim>
+public class AcaoColetadoFim : ProdutorConsumidoresDeEvento<ColetadoFimDto>
 {
     
 }

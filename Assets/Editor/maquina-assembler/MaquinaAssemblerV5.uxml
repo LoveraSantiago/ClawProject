@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+>
+    <engine:Style src="MaquinaAssemblerV5.uss"/>
+
+    <engine:ScrollView name="itemContainer">
+
+      <engine:VisualElement name="linha0" class="linha">
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha1-1" class="linha">
+        <editor:ColorField label="Placa Frente" name="placa-frente" class="campoCor"/>
+        <engine:Button name="select-placa-frente" text="Select" />
+        <engine:Button name="reset-placa-frente" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha1-2" class="linha">
+        <editor:ColorField label="Vigas" name="viga" class="campoCor"/>
+        <engine:Button name="select-viga" text="Select" />
+        <engine:Button name="reset-viga" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha1-3" class="linha">
+        <editor:ColorField label="Base Chao" name="base-chao" class="campoCor"/>
+        <engine:Button name="select-base-chao" text="Select" />
+        <engine:Button name="reset-base-chao" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha1-4" class="linha">
+        <editor:ColorField label="Barra" name="barra" class="campoCor"/>
+        <engine:Button name="select-barra" text="Select" />
+        <engine:Button name="reset-barra" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha1-5" class="linha">
+        <editor:ColorField label="Chao Dentro" name="chao-dentro" class="campoCor"/>
+        <engine:Button name="select-chao-dentro" text="Select" />
+        <engine:Button name="reset-chao-dentro" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha1-6" class="linha">
+        <editor:ColorField label="Cabo" name="cabo-da-garra" class="campoCor"/>
+        <engine:Button name="select-cabo-da-garra" text="Select" />
+        <engine:Button name="reset-cabo-da-garra" text="Reset" />
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha2-1" class="linha inicio">
+        <editor:ColorField label="Timer Placa Principal" name="placa-timer" class="campoCor"/>
+        <engine:Button name="select-placa-timer" text="Select" />
+        <engine:Button name="reset-placa-timer" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha2-2" class="linha">
+        <editor:ColorField label="Timer Placa Digito" name="display-timer-digito" class="campoCor"/>
+        <engine:Button name="select-display-timer-digito" text="Select" />
+        <engine:Button name="reset-display-timer-digito" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha2-3" class="linha">
+        <editor:ColorField label="Timer Segmentos" name="seg" class="campoCor"/>
+        <engine:Button name="select-seg" text="Select" />
+        <engine:Button name="reset-seg" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha3-1" class="linha inicio">
+        <editor:ColorField label="Disp Colet Grupo" name="placa-coletados" class="campoCor"/>
+        <engine:Button name="select-placa-coletados" text="Select" />
+        <engine:Button name="reset-placa-coletados" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha3-2" class="linha">
+        <editor:ColorField label="Disp Colet Placa 1" name="display-coletado1" class="campoCor"/>
+        <engine:Button name="select-display-coletado1" text="Select" />
+        <engine:Button name="reset-display-coletado1" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha3-3" class="linha">
+        <editor:ColorField label="Disp Colet Placa 2" name="display-coletado2" class="campoCor"/>
+        <engine:Button name="select-display-coletado2" text="Select" />
+        <engine:Button name="reset-display-coletado2" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha3-4" class="linha">
+        <editor:ColorField label="Disp Colet Placa 3" name="display-coletado3" class="campoCor"/>
+        <engine:Button name="select-display-coletado3" text="Select" />
+        <engine:Button name="reset-display-coletado3" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha4-1" class="linha inicio">
+        <editor:ColorField label="Disp Score Grupo" name="placa-scores" class="campoCor"/>
+        <engine:Button name="select-placa-scores" text="Select" />
+        <engine:Button name="reset-placa-scores" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha4-2" class="linha">
+        <editor:ColorField label="Disp Score Placa1" name="display-pontos1" class="campoCor"/>
+        <engine:Button name="select-display-pontos1" text="Select" />
+        <engine:Button name="reset-display-pontos1" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha4-3" class="linha">
+        <editor:ColorField label="Disp Score Placa2" name="display-pontos2" class="campoCor"/>
+        <engine:Button name="select-display-pontos2" text="Select" />
+        <engine:Button name="reset-display-pontos2" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha4-4" class="linha">
+        <editor:ColorField label="Disp Score Placa3" name="display-pontos3" class="campoCor"/>
+        <engine:Button name="select-display-pontos3" text="Select" />
+        <engine:Button name="reset-display-pontos3" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha4-5" class="linha">
+        <editor:ColorField label="Leds Score" name="leds" class="campoCor"/>
+        <engine:Button name="select-leds" text="Select" />
+        <engine:Button name="reset-leds" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha5-1" class="linha inicio">
+        <editor:ColorField label="Tubo Base" name="base" class="campoCor"/>
+        <engine:Button name="select-base" text="Select" />
+        <engine:Button name="reset-base" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha5-2" class="linha">
+        <editor:ColorField label="Tubo Topo" name="topo" class="campoCor"/>
+        <engine:Button name="select-topo" text="Select" />
+        <engine:Button name="reset-topo" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha5-1" class="linha inicio">
+        <editor:ColorField label="Mesa Joyst Cima" name="mesa-joystick-cima" class="campoCor"/>
+        <engine:Button name="select-mesa-joystick-cima" text="Select" />
+        <engine:Button name="reset-mesa-joystick-cima" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha5-2" class="linha">
+        <editor:ColorField label="Mesa Joyst Baixo" name="mesa-joystick-baixo" class="campoCor"/>
+        <engine:Button name="select-mesa-joystick-baixo" text="Select" />
+        <engine:Button name="reset-mesa-joystick-baixo" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha6-1" class="linha inicio">
+        <editor:ColorField label="Joyst Suporte" name="buraco-joystick" class="campoCor"/>
+        <engine:Button name="select-buraco-joystick" text="Select" />
+        <engine:Button name="reset-buraco-joystick" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha6-2" class="linha">
+        <editor:ColorField label="Joyst Haste" name="haste-joystick" class="campoCor"/>
+        <engine:Button name="select-haste-joystick" text="Select" />
+        <engine:Button name="reset-haste-joystick" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha6-3" class="linha">
+        <editor:ColorField label="Joyst Bola" name="bola-joystick" class="campoCor"/>
+        <engine:Button name="select-bola-joystick" text="Select" />
+        <engine:Button name="reset-bola-joystick" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha6-4" class="linha">
+        <editor:ColorField label="Joyst Botao Suporte" name="buraco-botao" class="campoCor"/>
+        <engine:Button name="select-buraco-botao" text="Select" />
+        <engine:Button name="reset-buraco-botao" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha6-5" class="linha">
+        <editor:ColorField label="Joyst Botao" name="botao" class="campoCor"/>
+        <engine:Button name="select-botao" text="Select" />
+        <engine:Button name="reset-botao" text="Reset" />
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha7-1" class="linha inicio">
+        <editor:ColorField label="Buraco Ficha" name="buraco-ficha" class="campoCor"/>
+        <engine:Button name="select-buraco-ficha" text="Select" />
+        <engine:Button name="reset-buraco-ficha" text="Reset" />
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha7-2" class="linha">
+        <editor:ColorField label="Buraco Card" name="buraco-card" class="campoCor"/>
+        <engine:Button name="select-buraco-card" text="Select" />
+        <engine:Button name="reset-buraco-card" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha7-3" class="linha">
+        <editor:ColorField label="Buraco Triang" name="triangulo-card" class="campoCor"/>
+        <engine:Button name="select-triangulo-card" text="Select" />
+        <engine:Button name="reset-triangulo-card" text="Reset" />
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha8-1" class="linha inicio">
+        <editor:ColorField label="Btn Pup Base Esq" name="btn-pup-base-e" class="campoCor"/>
+        <engine:Button name="select-btn-pup-base-e" text="Select" />
+        <engine:Button name="reset-btn-pup-base-e" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha8-2" class="linha">
+        <editor:ColorField label="Btn Pup Tampa Esq" name="btn-pup-topo-e" class="campoCor"/>
+        <engine:Button name="select-btn-pup-topo-e" text="Select" />
+        <engine:Button name="reset-btn-pup-topo-e" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha8-3" class="linha">
+        <editor:ColorField label="Btn Pup Base Dir" name="btn-pup-base-d" class="campoCor"/>
+        <engine:Button name="select-btn-pup-base-d" text="Select" />
+        <engine:Button name="reset-btn-pup-base-d" text="Reset" />
+      </engine:VisualElement>
+
+     <engine:VisualElement name="linha8-4" class="linha">
+        <editor:ColorField label="Btn Pup Tampa Dir" name="btn-pup-topo-d" class="campoCor"/>
+        <engine:Button name="select-btn-pup-topo-d" text="Select" />
+        <engine:Button name="reset-btn-pup-topo-d" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha9-1" class="linha inicio">
+        <editor:ColorField label="Scroll Placa Externa" name="placa-externa" class="campoCor"/>
+        <engine:Button name="select-placa-externa" text="Select" />
+        <engine:Button name="reset-placa-externa" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha9-2" class="linha">
+        <editor:ColorField label="Scroll Placa Interna" name="placa-interna" class="campoCor"/>
+        <engine:Button name="select-placa-interna" text="Select" />
+        <engine:Button name="reset-placa-interna" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha9-3" class="linha">
+        <editor:ColorField label="Scroll Setas Laterais" name="setas-laterais" class="campoCor"/>
+        <engine:Button name="select-setas-laterais" text="Select" />
+        <engine:Button name="reset-setas-laterais" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha9-4" class="linha">
+        <editor:ColorField label="Scroll Seta Cima" name="seta-cima" class="campoCor"/>
+        <engine:Button name="select-seta-cima" text="Select" />
+        <engine:Button name="reset-seta-cima" text="Reset" />
+      </engine:VisualElement> 
+        
+      <engine:VisualElement name="linha9-5" class="linha">
+        <editor:ColorField label="Scroll Divisorias" name="divisoria" class="campoCor"/>
+        <engine:Button name="select-divisoria" text="Select" />
+        <engine:Button name="reset-divisoria" text="Reset" />
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha9-6" class="linha">
+        <editor:ColorField label="Scroll Digitos" name="digitos" class="campoCor"/>
+        <engine:Button name="select-digitos" text="Select" />
+        <engine:Button name="reset-digitos" text="Reset" />
+      </engine:VisualElement>
+      
+      <engine:VisualElement name="linha10-1" class="linha inicio">
+        <editor:ColorField label="Simbolo Circ Externo" name="circulo-externo" class="campoCor"/>
+        <engine:Button name="select-circulo-externo" text="Select" />
+        <engine:Button name="reset-circulo-externo" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:VisualElement name="linha11-2" class="linha">
+        <editor:ColorField label="Simbolo Circ Interno" name="circulo-interno" class="campoCor"/>
+        <engine:Button name="select-circulo-interno" text="Select" />
+        <engine:Button name="reset-circulo-interno" text="Reset" />
+      </engine:VisualElement>
+
+      <engine:Button name="mapa" text="Gerar Mapa" />
+      <engine:Button name="reset-mapa" text="Resetar Cores" />
+    </engine:ScrollView>
+</engine:UXML>

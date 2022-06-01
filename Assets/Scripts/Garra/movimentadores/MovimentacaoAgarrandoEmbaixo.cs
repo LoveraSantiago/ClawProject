@@ -1,4 +1,4 @@
-public class MovimentacaoAgarrandoEmbaixo : MovimentacaoDaGarraNormal
+public class MovimentacaoAgarrandoEmbaixo : AbstractMovimentacaoDaGarraNormal
 {   
     public override void preInicio()
     {

@@ -6,6 +6,7 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
 {
     private bool hitColetavel2;
     private Coroutine coroutine;
+    private DoisAlvoColetavelSelecionado alvosSelecionados;
 
     public AbstractTrocaDuplaPowerUpGo(GameObject goTile, string nome) : base(goTile, nome) { }
 
@@ -18,7 +19,7 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
         HelperColetaveisInGame coletaveisInGame = new HelperColetaveisInGame();
         if (coletaveisInGame.naoTemColetavelOvoInGame())
         {
-            DoisAlvoColetavelSelecionado alvosSelecionados = new DoisAlvoColetavelSelecionado(true);
+            alvosSelecionados = new DoisAlvoColetavelSelecionado(true);
             coroutine = Utils.MonoBehaviour.StartCoroutine(alvosSelecionados.onSelecionar(inputGame, this));
         }
         else
@@ -46,6 +47,7 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
         if (!hitColetavel2)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
+            alvosSelecionados.timeout();
             finalizar();
         }
     }  

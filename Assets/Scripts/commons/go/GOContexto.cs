@@ -2,35 +2,10 @@ using UnityEngine;
 
 public class GOContexto 
 {
-    public GameObject mainGO { get; private set; }
-    public Material mainMaterial { get; private set; }
-    public Transform mainGOParent { get; private set; }
+    public GameObject mainGO { get; private set; }    
 
-    public GOContexto(ContextoDto contextoDto)
-        :this(contextoDto.Go, contextoDto.ParentGo){}
-
-    public GOContexto(ContextoDto contextoDto, Transformador<GameObject, SpriteRenderer> getGoComSprRenderer)
-        : this(contextoDto.Go, getGoComSprRenderer, contextoDto.ParentGo) { }
-
-    protected GOContexto(GameObject mainGO, Transform transformMainTileParent)
+    public GOContexto(GameObject mainGO)
     {
-        this.mainGO = mainGO;
-        mainMaterial = mainGO.GetComponent<SpriteRenderer>().sharedMaterial;
-        this.mainGOParent = transformMainTileParent;
-    }
-    
-    protected GOContexto(
-        GameObject mainGO, Transformador<GameObject, SpriteRenderer> getGoComSprRenderer, Transform transformMainTileParent)
-    {
-        this.mainGO = mainGO;
-        mainMaterial = getGoComSprRenderer.transformar(mainGO).sharedMaterial;
-        this.mainGOParent = transformMainTileParent;
-    }
-
-    public GOContexto(GameObject mainGO, GOContexto goContexto)
-    {
-        this.mainGO = mainGO;
-        mainMaterial = goContexto.mainMaterial;
-        mainGOParent = goContexto.mainGOParent;
+        this.mainGO = mainGO;        
     }
 }

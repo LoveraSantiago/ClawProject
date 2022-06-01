@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class PoolDeColetaveis 
 {
@@ -15,12 +16,25 @@ public class PoolDeColetaveis
     {
         if (poolInativos.hasObjeto())
         {
-            Coletavel coletavel = poolInativos.getObjeto();
-            return coletavel;
+            return poolInativos.getObjeto();            
         }
         else
         {
             Coletavel coletavel = new Coletavel();
+            poolDeNomes.addChaveValor(coletavel.nome, coletavel);
+            return coletavel;
+        }
+    }
+
+    public Coletavel criarColetavel(GameObject goParent)
+    {
+        if (poolInativos.hasObjeto())
+        {
+            return poolInativos.getObjeto();            
+        }
+        else
+        {
+            Coletavel coletavel = new Coletavel(goParent);
             poolDeNomes.addChaveValor(coletavel.nome, coletavel);
             return coletavel;
         }

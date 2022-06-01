@@ -39,13 +39,13 @@ public class MathUtils
 
         if (sorteado == diferente)
         {
-            if(sorteado != 0)
+            if(sorteado + 1 < limite)
             {
-                sorteado = 0;
+                return sorteado + 1;
             }
-            else if(sorteado != limite)
+            else
             {
-                sorteado = limite;
+                return sorteado - 1;
             }
         }       
         return sorteado;

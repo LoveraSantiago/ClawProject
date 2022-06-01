@@ -25,7 +25,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
     }
 
     public void devolver(
-        bool combinacaoValida, ColetadoFim evento, Coletavel[] coletados)
+        bool combinacaoValida, ColetadoFimDto evento, Coletavel[] coletados)
     {
         if (isDevolver(combinacaoValida, evento))
         {
@@ -34,14 +34,14 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
         }
     }
 
-    private bool isDevolver(bool combinacaoValida, ColetadoFim evento)
+    private bool isDevolver(bool combinacaoValida, ColetadoFimDto evento)
     {
         return isLigadoECompleto(evento) ||
                isDesligadoMasValido(combinacaoValida) ||
                evento.isDescarte;
     }
 
-    private bool isLigadoECompleto(ColetadoFim evento)
+    private bool isLigadoECompleto(ColetadoFimDto evento)
     {
         return devolverTubo && evento.isTodosColetados();
     }
@@ -60,15 +60,9 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
             {
                 torque *= -1;
                 Sprite spriteAtual = coletados[contador].getSprite();
-                ColetavelTuboDeSaidaDto coletavelTuboSaidaIt = tuboDto.ColetavelTuboDeSaida[contador];
-                coletavelTuboSaidaIt.RigidBodyColetavel.gravityScale = tuboDto.Gravidade;
-                coletavelTuboSaidaIt.RigidBodyColetavel.AddTorque(torque);
-                coletavelTuboSaidaIt.SprRendererColetavel.sprite = spriteAtual;
 
-                coletavelTuboSaidaIt.GoTrail.SetActive(true);
-                coletavelTuboSaidaIt.RigidBodyTrail.gravityScale = tuboDto.Gravidade;
-                coletavelTuboSaidaIt.ParticulasTrail.Play();
-
+                ColetavelTuboDeSaida coletavelDescarte = new ColetavelTuboDeSaida(tuboDto.ColetavelTuboDeSaida[contador]);
+                coletavelDescarte.prepararParaDescarte(torque, tuboDto.Gravidade, spriteAtual);
                 helperInGame.inativarColetavel(coletados[contador]);                
             }
         }        
@@ -76,20 +70,9 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
     }
 
     private void restaurandoColetaveisParaOTubo(int indice)
-    {
-        ColetavelTuboDeSaidaDto coletavelTuboSaidaIt = tuboDto.ColetavelTuboDeSaida[indice];
-        float zero = 0f;
-        coletavelTuboSaidaIt.RigidBodyColetavel.gravityScale = zero;
-        coletavelTuboSaidaIt.RigidBodyColetavel.angularVelocity = zero;
-        coletavelTuboSaidaIt.RigidBodyColetavel.velocity = Vector2.zero;
-        coletavelTuboSaidaIt.TransformColetavel.position = posicoesOriginais[indice];
-
-        coletavelTuboSaidaIt.RigidBodyTrail.gravityScale = zero;
-        coletavelTuboSaidaIt.RigidBodyTrail.angularVelocity = zero;
-        coletavelTuboSaidaIt.RigidBodyTrail.velocity = Vector2.zero;
-        coletavelTuboSaidaIt.ParticulasTrail.Stop();
-        coletavelTuboSaidaIt.GoTrail.SetActive(false);
-        coletavelTuboSaidaIt.TransformTrail.position = posicoesOriginais[indice];
+    {   
+        ColetavelTuboDeSaida coletavelDescarte = new ColetavelTuboDeSaida(tuboDto.ColetavelTuboDeSaida[indice]);
+        coletavelDescarte.restaurarParaProximoDescarte(posicoesOriginais[indice]);
     }
 
     private void triggerDeSaidaDeTuboAcionado(Collider2D coletavelSaindo)

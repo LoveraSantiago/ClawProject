@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,6 +47,6 @@ MonoBehaviour:
   materialGrayScale: {fileID: 2100000, guid: 1d9f4e4f1aa232148ad37c81fd61aee6, type: 2}
   materialOutline: {fileID: 2100000, guid: cbad35fbf462a4f4bb8e2451dc3cf1a3, type: 2}
   materialTroca: {fileID: 2100000, guid: 2e72f10164ff7c340abb9e624bf9d1e2, type: 2}
-  materialLed: {fileID: 2100000, guid: abed1645fe487b746993f7a08c0e4223, type: 2}
-  materialHdrLed: {fileID: 2100000, guid: abed1645fe487b746993f7a08c0e4223, type: 2}
-  materialHdr: {fileID: 2100000, guid: 196dc0d105cbf5b42b7d0c07e836b107, type: 2}
+  materialHdrAditivo: {fileID: 2100000, guid: 0c67568e8ae728b439336607ddb1da50, type: 2}
+  materialHdrAlpha: {fileID: 2100000, guid: 7a1b25d620d5fde448e686111b12b2d6, type: 2}
+  materialSprUnlitDefault: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}

@@ -4,19 +4,12 @@ using UnityEngine;
 [System.Serializable]
 public class DisplayTimerDto
 {
-
-    [SerializeField] private SpriteRenderer sprRendererPlaca;
-    [SerializeField] private SpriteRenderer sprRendererPlacaEfeito;        
-    [Space(5)]
-    [SerializeField] private SpriteRenderer[] sprRendererMiniSegmentos;
-    [Space(5)]
+    [SerializeField] private SpriteRenderer sprRendererPlacaGrupo;    
+    [SerializeField] private SpriteRenderer sprRenderer2Pontos;    
+    [Space(3)]
     [SerializeField] private SingleDisplayTimerDto[] singleDisplay = new SingleDisplayTimerDto[5];    
 
-    public SpriteRenderer SprRendererPlaca { get { return sprRendererPlaca; } }
-    public GameObject PlacaEfeito { get { return sprRendererPlacaEfeito.gameObject; } }
-    public Material MaterialEfeito { get { return sprRendererPlacaEfeito.material; } }    
-
-    public SpriteRenderer[] SprRendererMiniSegmentos { get { return sprRendererMiniSegmentos; } }
-
+    public SpriteRenderer SprRendererPlacaGrupo { get { return sprRendererPlacaGrupo; } }    
+    public SpriteRenderer SprRenderer2Pontos { get { return sprRenderer2Pontos; } }
     public SingleDisplayTimerDto[] SingleDisplay { get { return singleDisplay; } }
 }

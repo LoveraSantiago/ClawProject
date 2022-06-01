@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using UnityEngine;
-
 public class DisplayTimerDigitos 
 {
     public int segundosUnidadeAtual{ get; private set; }
@@ -8,37 +5,24 @@ public class DisplayTimerDigitos
     public int minutosUnidadeAtual { get; private set; }
     public int minutosDezenaAtual  { get; private set; }
 
-    private SpriteRenderer placaTimer;
-
     private DisplayTimerDigito2Pontos displayTimer2Pontos;
-    public DisplayTimerDigito[] displayTimerDigito { get; private set; }
+    private DisplayTimerDigito[] displayTimerDigito;
 
     public DisplayTimerDigitos(DisplayTimerDto displayDto)
-    {
-        placaTimer = displayDto.SprRendererPlaca;
-
-        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SingleDisplay[4]);
-
-        DisplayTimerDigito.configurar(displayDto);
+    {   
         displayTimerDigito = new DisplayTimerDigito[4];
-        displayTimerDigito[0] = new DisplayTimerDigito(displayDto.SingleDisplay[0]);
-        displayTimerDigito[1] = new DisplayTimerDigito(displayDto.SingleDisplay[1]);
-        displayTimerDigito[2] = new DisplayTimerDigito(displayDto.SingleDisplay[2]);
-        displayTimerDigito[3] = new DisplayTimerDigito(displayDto.SingleDisplay[3]);
+        displayTimerDigito[0] = new DisplayTimerDigito();
+        displayTimerDigito[1] = new DisplayTimerDigito();
+        displayTimerDigito[2] = new DisplayTimerDigito();
+        displayTimerDigito[3] = new DisplayTimerDigito();        
+
+        displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SprRenderer2Pontos);
     }
 
-    public void passarCoresAosDisplayDigitos(Dictionary<string, string> dicionarioDeCores)
-    {
-        string corTimerHex = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_TIMER];
-        string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquina.DIGITOS_TIMERS];
-
-        placaTimer.color = Utils.getCorByHex(corTimerHex);
-
-        Color corDigito = Utils.getCorByHex(corDigitosHex);
-        displayTimerDigito[0].configuradoPeloLevel(corDigito);
-        displayTimerDigito[1].configuradoPeloLevel(corDigito);
-        displayTimerDigito[2].configuradoPeloLevel(corDigito);
-        displayTimerDigito[3].configuradoPeloLevel(corDigito);
+    public void passarCoresAosDisplayDigitos(DisplayTimerDto displayDto, Materiais7SegmentosDto materiais7SegsDto, AbstractLevel levelEscolhido)
+    {   
+        ConfiguradorDeDisplayTimers configuradorDisplayTimers = new ConfiguradorDeDisplayTimers(displayDto, this);
+        configuradorDisplayTimers.configurarPeloLevel(materiais7SegsDto, levelEscolhido);
     }
 
     public void blinkar(bool estadoBlink)
@@ -73,5 +57,20 @@ public class DisplayTimerDigitos
     {
         minutosDezenaAtual = dezenaMinutos;
         displayTimerDigito[0].mostrarDigito(dezenaMinutos);
+    }
+
+    public DisplayTimerDigito getDisplayTimer(int indice)
+    {
+        return displayTimerDigito[indice];
+    }
+
+    public DisplayTimerDigito2Pontos getDisplayTimer2Segmentos()
+    {
+        return displayTimer2Pontos;
+    }
+
+    public int getQtdDisplaysDigitos()
+    {
+        return displayTimerDigito.Length;
     }
 }

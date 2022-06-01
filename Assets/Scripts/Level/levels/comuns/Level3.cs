@@ -45,63 +45,62 @@ public class Level3 : AbstractLevelElevador
 
     public override TipoContagemTempoDto getTempoContagem()
     {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:26");        
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "01:00");
+        //return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:10");        
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {
+        //01.Fresh & Bright
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
-        dicionario.Add("placa-cima", "#336B87");
-        dicionario.Add("base-parte", "#763626");
-        dicionario.Add("base-chao", "#336B87");
-        dicionario.Add("borda-vidro", "#90AFC5");
-        dicionario.Add("placa-frontal", "#336B87");
-        dicionario.Add("placa-saida", "#90AFC5");
-        dicionario.Add("barra", "#BF5940");
-        dicionario.Add("chao-dentro", "#BF5940");
-        dicionario.Add("tubo", "#6B3224");
-        dicionario.Add("viga-tras", "#1B3947");
-        dicionario.Add("btnPowerUp1", "#90AFC5");
-        dicionario.Add("parte-dentro1", "#607173");
-        dicionario.Add("contorno1", "#2A3132");
-        dicionario.Add("btnPowerUp2", "#90AFC5");
-        dicionario.Add("parte-dentro2", "#569CBF");
-        dicionario.Add("contorno2", "#336B87");
-        dicionario.Add("btnPowerUp3", "#90AFC5");
-        dicionario.Add("parte-dentro3", "#569CBF");
-        dicionario.Add("contorno3", "#336B87");
-        dicionario.Add("btnPowerUp4", "#90AFC5");
-        dicionario.Add("parte-dentro4", "#607173");
-        dicionario.Add("contorno4", "#2A3132");
-        dicionario.Add("parte-cima", "#BF5940");
-        dicionario.Add("parte-baixo", "#863E2D");
-        dicionario.Add("furo-haste", "#6B3224");
-        dicionario.Add("haste", "#607173");
-        dicionario.Add("joystick-bola", "#6B3224");
-        dicionario.Add("furo-botao", "#607173");
-        dicionario.Add("botao", "#6B3224");
-        dicionario.Add("placa-ficha", "#2A3132");
-        dicionario.Add("placa-parte-cima", "#575757");
-        dicionario.Add("placa-parte-baixo", "#575757");
-        dicionario.Add("quadrado-maior", "#90AFC5");
-        dicionario.Add("quadrado-menor", "#455375");
-        dicionario.Add("furo-cima", "#90AFC5");
-        dicionario.Add("furo-baixo", "#90AFC5");
-        dicionario.Add("display-coletados", "#2A3132");
-        dicionario.Add("placa-coletado1", "#607173");
-        dicionario.Add("placa-coletado2", "#607173");
-        dicionario.Add("placa-coletado3", "#607173");
-        dicionario.Add("display-timer", "#2A3132");
-        dicionario.Add("digitos-timer", "#607173");
-        dicionario.Add("display-pontos1", "#2A3132");
-        dicionario.Add("display-pontos2", "#2A3132");
-        dicionario.Add("display-pontos3", "#2A3132");
-        dicionario.Add("leds1", "#536163");
-        dicionario.Add("leds2", "#536163");
-        dicionario.Add("leds3", "#536163");
-        dicionario.Add("cabo-da-garra", "#2C9FBF");
-
+        dicionario.Add("placa-frente", "#89DA59");
+        dicionario.Add("base-chao", "#80BD9E");
+        dicionario.Add("chao-dentro", "#80BD9E");
+        dicionario.Add("cabo-da-garra", "#FF420E");
+        dicionario.Add("viga", "#64C52B");
+        dicionario.Add("barra", "#F98866");
+        dicionario.Add("placa-timer", "#80BD9E");
+        dicionario.Add("display-timer-digito", "#BBEA9F");
+        dicionario.Add("seg", "#FABB66");
+        dicionario.Add("placa-coletados", "#80BD9E");
+        dicionario.Add("display-coletado1", "#BBEA9F");
+        dicionario.Add("display-coletado2", "#BBEA9F");
+        dicionario.Add("display-coletado3", "#BBEA9F");
+        dicionario.Add("placa-scores", "#80BD9E");
+        dicionario.Add("display-pontos1", "#BBEA9F");
+        dicionario.Add("display-pontos2", "#BBEA9F");
+        dicionario.Add("display-pontos3", "#BBEA9F");
+        dicionario.Add("leds", "#FABB66");
+        dicionario.Add("topo", "#80BD9E");
+        dicionario.Add("base", "#F98866");
+        dicionario.Add("mesa-joystick-cima", "#FF420E");
+        dicionario.Add("mesa-joystick-baixo", "#E83200");
+        dicionario.Add("buraco-joystick", "#80BD9E");
+        dicionario.Add("haste-joystick", "#89DA59");
+        dicionario.Add("bola-joystick", "#F98866");
+        dicionario.Add("buraco-botao", "#80BD9E");
+        dicionario.Add("botao", "#F98866");
+        dicionario.Add("buraco-ficha", "#F98866");
+        dicionario.Add("buraco-card", "#F98866");
+        dicionario.Add("triangulo-card", "#F98866");
+        dicionario.Add("btn-pup-base-d", "#80BD9E");
+        dicionario.Add("btn-pup-topo-d", "#BBEA9F");
+        dicionario.Add("btn-pup-base-e", "#80BD9E");
+        dicionario.Add("btn-pup-topo-e", "#BBEA9F");
+        dicionario.Add("placa-externa", "#FF420E");
+        dicionario.Add("placa-interna", "#BBEA9F");
+        dicionario.Add("setas-laterais", "#F98866");
+        dicionario.Add("seta-cima", "#F98866");
+        dicionario.Add("divisoria", "#80BD9E");
+        dicionario.Add("digitos", "#FABB66");
+        dicionario.Add("circulo-externo", "#80BD9E");
+        dicionario.Add("circulo-interno", "#BBEA9F");
         return dicionario;
+    }
+
+    public override bool isLevelAlbedo0()
+    {
+        return false;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()

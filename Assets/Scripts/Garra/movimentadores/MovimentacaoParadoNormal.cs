@@ -1,4 +1,4 @@
-public class MovimentacaoParadoNormal : MovimentacaoDaGarraNormal
+public class MovimentacaoParadoNormal : AbstractMovimentacaoDaGarraNormal
 {
     private MovimentacaoParado movParado;
 

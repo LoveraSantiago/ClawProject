@@ -89,21 +89,7 @@ public class OrquestradorDisplayDigitos
             desligarTodosDigitos();
             yield return waitForSeconds;
         }
-    }   
-
-    public void ligarGlows()
-    {
-        displayCentena.ligarGlowSucesso();
-        displayDezena.ligarGlowSucesso();
-        displayUnidade.ligarGlowSucesso();
-    }
-
-    public void desligarGlows()
-    {
-        displayCentena.desligarGlow();
-        displayDezena.desligarGlow();
-        displayUnidade.desligarGlow();
-    }
+    }      
    
     public void passarScore(int centena, int dezena, int unidade)
     {

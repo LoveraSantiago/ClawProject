@@ -1,15 +1,11 @@
-using UnityEngine;
-
-//INTERFACE PARA ESTADOS DA GARRA SE COMUNICAR MUDANCA DE ESTADO
-public interface ComunicadorComGerMovNormal
+public interface ComunicadorComGerMovNormal : ComunicadorComGerenciadorComum
 {
     void trocarParaAcaoNormal();
     void trocarParaAcaoSubindo();
     void trocarParaAcaoAgarrada();
     void trocarParaAcaoDescendo();    
-    void trocarParaAcaoParado();
+    
     void trocarParaMovLateral();
 
-    void trocarParaAcaoVoltarParaCima();
-    void trocarParaAcaoVoltarParaMeio();
+    
 }

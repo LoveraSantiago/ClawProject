@@ -8,7 +8,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public GerenciadorDeMovimentacaoNormal()
     {        
-        MovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
+        AbstractMovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
         MovimentadorProdutorInformacaoGarra.configurar();               
     }
 
@@ -21,7 +21,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     public override void update(InputGame inputGame)
     {
         movAtual.update(inputGame);
-        //Debug.Log(movimentacaoAtual);
+        //Debug.Log(movAtual);
     }
 
     public override void fixedUpdate()
@@ -74,7 +74,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public void trocarParaAcaoVoltarParaCima()
     {   
-        trocarMovimentador(new MovimentacaoVoltarParaCima());
+        trocarMovimentador(new MovimentacaoVoltarParaCimaNormal());
     }
 
     public void trocarParaAcaoVoltarParaMeio()

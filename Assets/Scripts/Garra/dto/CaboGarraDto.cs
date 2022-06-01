@@ -5,12 +5,11 @@ using UnityEngine;
 public class CaboGarraDto 
 {
     [SerializeField] private float grossuraLinha;
-    [SerializeField] private float tamanhoSegmento;
-    [SerializeField] private Transform transfInicioCabo;
+    [SerializeField] private float tamanhoSegmento;    
     [SerializeField] private LineRenderer lineRenderer;
 
     public float GrossuraLinha { get { return grossuraLinha; } }
     public float TamanhoSegmento { get { return tamanhoSegmento; } }
-    public Transform TransfInicioCabo { get { return transfInicioCabo; }}
+    public Transform TransfInicioCabo { get { return lineRenderer.transform; }}
     public LineRenderer LineRenderer { get { return lineRenderer;  }}
 }

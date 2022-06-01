@@ -2,7 +2,9 @@ using UnityEngine;
 
 public interface Draggavel 
 {
-    void prepararDraggagem(Vector3 posInicialDrag);
-    void updateDrag(Vector2 delta, BotoesPowerUpDto btnPowerUpsDto);
-    bool isDragFinalizadoAtivouPowerUp(BotoesPowerUpDto btnPowerUpsDto);
+    bool isDragAcionavel(Vector2 posicaoDrag);
+    bool foiDragAcionado();
+    void onBeginDrag(Vector3 posicao);
+    void onDrag(Vector2 delta, MaquinaDto maquinaDto);
+    void onEndDrag(MaquinaDto maquinaDto);
 }

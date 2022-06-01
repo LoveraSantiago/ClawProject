@@ -67,7 +67,7 @@ public class HelperColetavelEntidade
 
     public List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamilia(ColetavelEntidade.FAMILIA familia)
     {
-        return familiasPorEnum[familia];
+        return new List<ColetavelEntidade>(familiasPorEnum[familia]);
     }    
 
     public int getIndiceDaFamilia(ColetavelEntidade.FAMILIA familia)

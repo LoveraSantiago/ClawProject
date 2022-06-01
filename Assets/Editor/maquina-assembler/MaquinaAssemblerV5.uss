@@ -1,0 +1,17 @@
+Label {
+    font-size: 13px;
+    color: rgb(68, 138, 255);
+}
+
+.linha{
+	flex-direction: Row;
+}
+
+.campoCor{
+	width: 200px;
+}
+
+.inicio{
+	border-top-width: 1px;
+	border-color: #808080;
+}

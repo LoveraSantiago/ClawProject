@@ -2,78 +2,59 @@ using UnityEngine;
 
 public class DisplayTimerDigito 
 {
-    private static SegmentosTimer segmentos;
-    private static SegmentoTimerHdr segmentHdr;
-
-    private int[] arrayLigado;
     private bool blink;
-    private Color corOriginal;
+    private int digitoAtual;
+    private Material7Digitos material7Digitos;
 
-    private SingleDisplayTimerDto sDisplayDto;
-
-    public DisplayTimerDigito(SingleDisplayTimerDto sDisplayDto)
+    public void configuradoPeloLevel(Material materialDisplay, SingleDisplayTimerDto sDisplayDto, CorDisplayTimerDto coresDisplay)
     {
-        this.sDisplayDto = sDisplayDto;
-    }
+        colorirPlaca(sDisplayDto, coresDisplay.CorPlaca);
+        sDisplayDto.Segmentos.color = Color.white;
 
-    public void configuradoPeloLevel(Color corDigito)
-    {
-        corOriginal = corDigito;        
-        for(int contador = 0; contador < sDisplayDto.Segmentos.Length; contador++)
-        {
-            sDisplayDto.Segmentos[contador].color = corDigito;
-        }
+        material7Digitos = new Material7Digitos(materialDisplay);
+        material7Digitos.addCorDesligado(coresDisplay.CorDigito);        
+        sDisplayDto.Segmentos.sharedMaterial = material7Digitos.material;
+
         mostrarDigito(0);
     }
 
     public void mostrarDigito(int digito)
     {
-        desligarPosicoes(arrayLigado);
-
-        arrayLigado = segmentos.getArrayParaLigar(digito);
+        digitoAtual = digito;
         if (!blink)
         {
-            ligarPosicoes(arrayLigado);
+            ligarPosicoes(digito);
         }
-    }
+    }    
 
     public void estadoBlink(bool blink)
     {
         this.blink = blink;
         if (blink)
         {
-            desligarPosicoes(arrayLigado);
+            desligarPosicoes();
         }
         else
         {
-            ligarPosicoes(arrayLigado);
+            ligarPosicoes(digitoAtual);
         }
     }
 
-    private void desligarPosicoes(int[] array)
+    private void desligarPosicoes()
     {
-        if (array == null) return;
-        for (int contador = 0; contador < array.Length; contador++)
-        {
-            SpriteRenderer sprRenderer = sDisplayDto.Segmentos[array[contador]];
-            sprRenderer.color = corOriginal;
-            sprRenderer.material = segmentHdr.originalMaterial;
-        }
+        material7Digitos.desligarDigitos();
     }
 
-    private void ligarPosicoes(int[] array)
+    private void ligarPosicoes(int digito)
     {
-        for (int contador = 0; contador < array.Length; contador++)
-        {
-            SpriteRenderer sprRenderer = sDisplayDto.Segmentos[array[contador]];
-            sprRenderer.color = Color.red;
-            sprRenderer.material = segmentHdr.getMaterialSegmento(array[contador]);
-        }
-    }   
+        material7Digitos.addDigito(digito);        
+    }  
 
-    public static void configurar(DisplayTimerDto displayTimerDto)
+    private void colorirPlaca(SingleDisplayTimerDto sDisplayDto, Color corPlaca)
     {
-        segmentos = new SegmentosTimer();
-        segmentHdr = new SegmentoTimerHdr(displayTimerDto);
+        if (sDisplayDto.PlacaIndividual != null)
+        {
+            sDisplayDto.PlacaIndividual.color = corPlaca;
+        }
     }
 }

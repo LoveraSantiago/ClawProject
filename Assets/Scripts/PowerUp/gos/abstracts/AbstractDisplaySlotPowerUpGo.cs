@@ -48,7 +48,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
     private void inicio()
     {
         contador++;
-        Debug.Log("Inicio chamado " + contador + " vezes");
+        //Debug.Log("Inicio chamado " + contador + " vezes");
         if (contador == 3)
         {
             coroutine = Utils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados());
@@ -58,7 +58,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
     private void fim()
     {
         contador--;
-        Debug.Log("Fim chamado " + (3 - contador) + " vezes");
+        //Debug.Log("Fim chamado " + (3 - contador) + " vezes");
         if (contador == 0)
         {
             powerUpFinalizacao.preFinalizar();
@@ -68,7 +68,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
 
     private IEnumerator getCliqueNoDisplayDeColetados()
     {
-        Debug.Log("Pup Ativado");
+        //Debug.Log("Pup Ativado");
         if (informacaoDisplayColetado.isTodosDisplaysDesocupados())
         {
             yield return new WaitForSeconds(powerUpDto.RollBackDto.DelayReset);
@@ -78,7 +78,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
             }
             else
             {
-                Debug.Log("Pup Restartado");
+                //Debug.Log("Pup Restartado");
                 contador = 0;
                 informacaoDisplayColetado.restartPowerUp(getTipoRestartPup(), this);
             }

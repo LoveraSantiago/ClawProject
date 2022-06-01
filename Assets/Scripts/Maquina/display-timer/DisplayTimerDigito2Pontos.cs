@@ -2,35 +2,50 @@ using UnityEngine;
 
 public class DisplayTimerDigito2Pontos 
 {
-    private SingleDisplayTimerDto sDisplayDto;
     private Color corOriginal;
+    private Material material2Pontos;    
+    private SpriteRenderer sprRenderer2Pontos;
 
-    public DisplayTimerDigito2Pontos(SingleDisplayTimerDto singleDisplayTimer)
+    public DisplayTimerDigito2Pontos(SpriteRenderer sprRenderer2Pontos)
     {
-        sDisplayDto = singleDisplayTimer;
-        setCor(Color.red);
+        this.sprRenderer2Pontos = sprRenderer2Pontos;        
     } 
 
-    public void configuradoPeloLevel(Color corDigito)
+    public void configuradoPeloLevel(Material material2Pontos, Color corDigito)
     {
-        corOriginal = corDigito;
+        this.material2Pontos = material2Pontos;
+        MaterialHdr.setTexture(this.material2Pontos, sprRenderer2Pontos.sprite);       
+
+        corOriginal = corDigito;        
+        ligar();
     }
 
     public void estadoBlink(bool estadoBlink)
     {
         if (estadoBlink)
         {
-            setCor(corOriginal);
+            desligar();
         }
         else
         {
-            setCor(Color.red);
+            ligar();            
         }
+    }
+
+    private void ligar()
+    {
+        setCor(Color.red);
+        sprRenderer2Pontos.sharedMaterial = material2Pontos;        
+    }
+
+    public void desligar()
+    {
+        setCor(corOriginal);
+        sprRenderer2Pontos.sharedMaterial = MaterialSprUnlitDefault.getMaterial();
     }
 
     private void setCor(Color cor)
     {
-        sDisplayDto.Segmentos[0].color = cor;
-        sDisplayDto.Segmentos[1].color = cor;
-    }
+        sprRenderer2Pontos.color = cor;
+    }    
 }

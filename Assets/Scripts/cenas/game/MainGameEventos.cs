@@ -8,18 +8,25 @@ public class MainGameEventos
         UiGameManager     uiManager         = mainGameManagers.uiManager;
         PowerUpManager    powerUpManager    = mainGameManagers.powerUpManager;
         CameraManager     cameraManager     = mainGameManagers.cameraManager;
-        InputGameImpl inputGameImpl = mainGameManagers.inputGame;
+        InputGameImpl     inputGameImpl     = mainGameManagers.inputGame;
+        DraggavelManager  draggavelManager = mainGameManagers.draggavelManager;
 
+        //TODO sugestao de especificar exatamente os consumidores e os produtores
         new AcaoColetado()
             .configurarProdutor(coletaveisManager)
             .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(maquinaManager.displayTimer)
             .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(uiManager);
+            .adicionarConsumidor(maquinaManager.displayDeScores)
+            .adicionarConsumidor(maquinaManager.botoesPowerUp)
+            .adicionarConsumidor(uiManager.modalResultados);
 
         new AcaoColetadoFim()
-            .configurarProdutor(maquinaManager)
+            .configurarProdutor(maquinaManager.displayDeColetados)
             .adicionarConsumidor(coletaveisManager)
-            .adicionarConsumidor(garraManager);
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(maquinaManager.displayTimer)
+            .adicionarConsumidor(maquinaManager.botoesPowerUp);
 
         new AcaoInfoDaGarra()
             .configurarProdutor(garraManager)
@@ -34,20 +41,26 @@ public class MainGameEventos
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(coletaveisManager)
-            .adicionarConsumidor(uiManager);
+            .adicionarConsumidor(maquinaManager.scrollPupsManager)
+            .adicionarConsumidor(draggavelManager);
 
         new AcaoBotaoPowerUpVazio()
-            .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(uiManager);
+            .configurarProdutor(maquinaManager.botoesPowerUp)
+            .adicionarConsumidor(cameraManager)            
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(draggavelManager);
 
         new AcaoBBarItemEscolhido<PowerUpBtnInfo>()
-            .configurarProdutor(uiManager)
-            .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(cameraManager);
+            .configurarProdutor(maquinaManager.scrollPupsManager)
+            .adicionarConsumidor(maquinaManager.botoesPowerUp)
+            .adicionarConsumidor(cameraManager)
+            .adicionarConsumidor(draggavelManager)
+            .adicionarConsumidor(maquinaManager);
 
         new AcaoTempoEsgotado()
-            .configurarProdutor(maquinaManager)
+            .configurarProdutor(maquinaManager.displayTimer)
+            .adicionarConsumidor(maquinaManager.botoesPowerUp)
+            .adicionarConsumidor(maquinaManager.arcoIrisEfeito)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(uiManager)
             .adicionarConsumidor(coletaveisManager);
@@ -59,10 +72,11 @@ public class MainGameEventos
             .adicionarConsumidor(uiManager);
 
         new AcaoCacaNiquel()
-            .configurarProdutor(maquinaManager)
+            .configurarProdutor(maquinaManager.displayDeColetados)
             .adicionarConsumidor(cameraManager)
             .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(uiManager);
+            .adicionarConsumidor(uiManager.modalResultados)
+            .adicionarConsumidor(maquinaManager.arcoIrisEfeito);
 
         new AcaoDesligarMaquina()
             .configurarProdutor(maquinaManager)
@@ -70,8 +84,9 @@ public class MainGameEventos
             .adicionarConsumidor(inputGameImpl);
 
         new AcaoDesligarMaquinaResultado()
-            .configurarProdutor(uiManager)
-            .adicionarConsumidor(maquinaManager)
+            .configurarProdutor(uiManager.modalSair)
+            .adicionarConsumidor(maquinaManager.botaoLigaDesliga)
+            .adicionarConsumidor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(inputGameImpl);
     }
 }

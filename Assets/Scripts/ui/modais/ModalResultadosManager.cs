@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 
 public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
-                           AcaoTempoEsgotado.ConsumidorEvento,
-                           AcaoBoardElevadoFim.ConsumidorEvento,
-                           AcaoCacaNiquel.ConsumidorEvento
+                                      AcaoTempoEsgotado.ConsumidorEvento,
+                                      AcaoBoardElevadoFim.ConsumidorEvento,
+                                      AcaoCacaNiquel.ConsumidorEvento
 {    
     private bool mostrandoModal;
 
@@ -90,7 +90,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         }
     }
 
-    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
         if (evento.isTimeOver())
         {

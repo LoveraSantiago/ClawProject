@@ -8,7 +8,7 @@ public class Joystick : AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento
     private float incremento;
     private int multiplicador;
         
-    private JoystickDto joystickDto;
+    private MesaJoystickDto mesaJoystickDto;
 
     private Quaternion anguloDesejadoEsquerda;
     private Quaternion anguloDesejadoDireita;
@@ -18,44 +18,26 @@ public class Joystick : AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento
     //UTILIZANDO MESMA VELOCIDADE DE MOVIMENTACAO HORIZONTAL DA GARRA
     /* A VELOCIDADE VAI PEGAR O VALOR INICIAL DE VELOCIDADE SE MUDADO 
        DURANTE GAMEPLAY NAO REFLETE AQUI SO NO PROXIMO START*/
-    public Joystick(JoystickDto joystickDto)
+    public Joystick(MesaJoystickDto mesaJoystickDto)
     {
-        this.joystickDto = joystickDto;    
+        this.mesaJoystickDto = mesaJoystickDto;
 
-        anguloDesejadoDireita = Quaternion.Euler(0, 0, -ANGULO);
+        anguloDesejadoDireita  = Quaternion.Euler(0, 0, -ANGULO);
         anguloDesejadoEsquerda = Quaternion.Euler(0, 0, ANGULO);
-        anguloDesejadoAtual = Quaternion.Euler(0, 0, 0);
-        anguloInicial = this.joystickDto.JoystickTransform.rotation;
+        anguloDesejadoAtual    = Quaternion.Euler(0, 0, 0);
+        anguloInicial          = this.mesaJoystickDto.HasteTransform.rotation;
     }
 
     public void fixedUpdate()
     {
-        incremento = (Time.fixedDeltaTime + joystickDto.Velocidade) * multiplicador;
-        joystickDto.JoystickTransform.rotation = Quaternion.RotateTowards(joystickDto.JoystickTransform.rotation, anguloDesejadoAtual, incremento);
+        incremento = (Time.fixedDeltaTime + mesaJoystickDto.Velocidade) * multiplicador;
+        mesaJoystickDto.HasteTransform.rotation = Quaternion.RotateTowards(mesaJoystickDto.HasteTransform.rotation, anguloDesejadoAtual, incremento);
     }
 
     public void configuradoPeloLevel(Dictionary<string, string> dicionarioCores)
     {
-        string hexCor = dicionarioCores[ConstantesCoresMaquina.PARTE_CIMA];
-        joystickDto.ParteCima.color = Utils.getCorByHex(hexCor);
-
-        hexCor = dicionarioCores[ConstantesCoresMaquina.PARTE_BAIXO];
-        joystickDto.ParteBaixo.color = Utils.getCorByHex(hexCor);
-
-        hexCor = dicionarioCores[ConstantesCoresMaquina.FURO_HASTE];
-        joystickDto.FuroHaste.color = Utils.getCorByHex(hexCor);
-
-        hexCor = dicionarioCores[ConstantesCoresMaquina.HASTE];
-        joystickDto.Haste.color = Utils.getCorByHex(hexCor);
-
-        hexCor = dicionarioCores[ConstantesCoresMaquina.JOYSTICK_BOLA];
-        joystickDto.Bola.color = Utils.getCorByHex(hexCor);
-
-        hexCor = dicionarioCores[ConstantesCoresMaquina.FURO_BOTAO];
-        joystickDto.FuroBotao.color = Utils.getCorByHex(hexCor);
-
-        hexCor = dicionarioCores[ConstantesCoresMaquina.BOTAO];
-        joystickDto.JoystickBotao.color = Utils.getCorByHex(hexCor);
+        ColoridorJoystickV2 coloridorJoystick = new ColoridorJoystickV2();
+        coloridorJoystick.colorir(mesaJoystickDto, dicionarioCores);        
     }
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<Direcao> INICIO

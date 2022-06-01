@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
+                            AcaoColetado.ConsumidorEvento,
+                            AcaoColetadoFim.ConsumidorEvento,
                             Executor
 {  
     private float tempoInicial;
@@ -12,30 +14,26 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
 
     private Coroutine coroutineBlink;    
 
-    private ProdutorDeEvento<TempoEsgotado> produtorDeEventoTempoEsgotado;
-    private Executor executorTimerRestartOutrosComponentes;
+    private ProdutorDeEvento<TempoEsgotadoDto> produtorDeEventoTempoEsgotado;
 
     public DisplayTimer(DisplayTimerDto displayDto)
     {   
         digitos = new DisplayTimerDigitos(displayDto);
         
-        produtorDeEventoTempoEsgotado = new ProdutorDeEvento<TempoEsgotado>();
+        produtorDeEventoTempoEsgotado = new ProdutorDeEvento<TempoEsgotadoDto>();
         contadorTimer = new ContadorTimer();        
     }
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido, Executor executorTimerRestartOutrosComponentes)
+    public void configuradoPeloLevel(DisplayTimerDto displayDto, Materiais7SegmentosDto materiais7SegsDto, AbstractLevel levelEscolhido)
     {
-        this.executorTimerRestartOutrosComponentes = executorTimerRestartOutrosComponentes;
-
         contadorTimer.definirContador(levelEscolhido.getTempoContagem(), this);        
-        digitos.passarCoresAosDisplayDigitos(levelEscolhido.getDicionarioDeCores());        
+        digitos.passarCoresAosDisplayDigitos(displayDto, materiais7SegsDto, levelEscolhido);        
     }
 
     public void execute()
     {
-        executorTimerRestartOutrosComponentes.execute();
         pause();
-        produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(true));
+        produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotadoDto(true));
     }
 
     public void iniciarContagemTempo()
@@ -50,7 +48,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
             atualizarTempo();
             if (contadorTimer.isTimeOver())
             {
-                produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotado(false));
+                produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotadoDto(false));
                 Utils.MonoBehaviour.StopCoroutine(coroutineBlink);
                 coroutineBlink = null;
             }
@@ -73,12 +71,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
             isPausado = false;
             contadorTimer.continuar();
         }
-    }
-
-    public ArcoIrisConjunto getDisplayTimerGlow(DisplayTimerDto displayDto)
-    {
-        return new DisplayTimerGlow(displayDto);        
-    }    
+    }  
 
     private void atualizarTempo()
     {
@@ -101,8 +94,18 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
         yield return null;
     }
 
-    ProdutorDeEvento<TempoEsgotado> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<TempoEsgotadoDto> AcaoTempoEsgotado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoTempoEsgotado;
-    }    
+    }
+
+    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
+    {
+        continuar();
+    }
+
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
+    {
+        pause();
+    }
 }

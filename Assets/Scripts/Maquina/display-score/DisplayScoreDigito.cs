@@ -2,18 +2,14 @@ using UnityEngine;
 
 public class DisplayScoreDigito 
 {
-    private static SegmentosScore segmentos;
-    private static Material materialEfeitoLed;
+    private static ContextoEstaticoDisplayScoresDigito contexto;
 
     private int[,] arrayLigados;
     public int digito { get; private set; }
-    public string letra { get; private set; }
-
-    private Color corOriginal;
-    private GlowEfeito glowEfeito;
+    public string letra { get; private set; }    
+    
     private SpriteRenderer sprDisplay;
-    private SpriteRenderer[][] arrayDeLeds;
-    private Material defaultMaterial;
+    private SpriteRenderer[][] arrayDeLeds;    
 
     public DisplayScoreDigito(SingleDisplayScoreDto singleDisplayDto)
     {
@@ -24,17 +20,12 @@ public class DisplayScoreDigito
         arrayDeLeds[2] = singleDisplayDto.Fileira3;
         arrayDeLeds[3] = singleDisplayDto.Fileira4;
         arrayDeLeds[4] = singleDisplayDto.Fileira5;
-        
-        glowEfeito = new GlowEfeito(singleDisplayDto.PlacaEfeito, singleDisplayDto.MaterialEfeito);
     }
 
-    public void configuradoPeloLevel(string corScore, string corLeds)
-    {
-        corOriginal = Utils.getCorByHex(corLeds);
+    public void configuradoPeloLevel(string corScore)
+    {   
         sprDisplay.color = Utils.getCorByHex(corScore);
-        defaultMaterial = arrayDeLeds[0][0].sharedMaterial;
-
-        ligarPosicoes(segmentos.ARRAY_CHEIO, corOriginal, defaultMaterial);
+        ligarPosicoes(contexto.Segmentos.ARRAY_CHEIO, contexto.CorOriginalLed, contexto.DefaultMaterial);
 
         mostrarDigito(0, Color.red);
     }
@@ -43,37 +34,22 @@ public class DisplayScoreDigito
     {
         letra = digito;
         desligarPosicoes(arrayLigados);
-        arrayLigados = segmentos.getArrayParaLigar(digito);
-        ligarPosicoes(arrayLigados, cor, materialEfeitoLed);
+        arrayLigados = contexto.Segmentos.getArrayParaLigar(digito);
+        ligarPosicoes(arrayLigados, cor, contexto.MaterialEfeitoLed);
     }
 
     public void mostrarDigito(int digito, Color cor)
     {
         this.digito = digito;
         desligarPosicoes(arrayLigados);
-        arrayLigados = segmentos.getArrayParaLigar(digito);
-        ligarPosicoes(arrayLigados, cor, materialEfeitoLed);
+        arrayLigados = contexto.Segmentos.getArrayParaLigar(digito);
+        ligarPosicoes(arrayLigados, cor, contexto.MaterialEfeitoLed);
     }    
 
     public void desligarDigito()
     {
         desligarPosicoes(arrayLigados);
-    }
-
-    public void ligarGlowSucesso()
-    {
-        glowEfeito.ligarGlowSucesso();
-    }
-
-    public void desligarGlow()
-    {
-        glowEfeito.desligarGlow();
-    }    
-
-    public MaterialGlow getMaterialGlow()
-    {
-        return glowEfeito.materialGlow;
-    }
+    }   
 
     private void ligarPosicoes(int[,] array, Color cor, Material material)
     {
@@ -81,19 +57,18 @@ public class DisplayScoreDigito
         {
             SpriteRenderer sprLed = arrayDeLeds[array[contadorX, 0]][array[contadorX, 1]];
             sprLed.color = cor;
-            sprLed.material = material;
+            sprLed.sharedMaterial = material;
         }
     }
 
     private void desligarPosicoes(int[,] array)
     {
         if (array == null) return;
-        ligarPosicoes(array, corOriginal, defaultMaterial);        
-    }
-
-    public static void configurar()
+        ligarPosicoes(array, contexto.CorOriginalLed, contexto.DefaultMaterial);        
+    } 
+    
+    public static void configurar(Material materialEfeitoLedArg, Material defaultMaterialArg, Color corOriginalLed)
     {
-        segmentos = new SegmentosScore();
-        materialEfeitoLed = MaterialHdr.ofLed();
+        contexto = new ContextoEstaticoDisplayScoresDigito(materialEfeitoLedArg, defaultMaterialArg, corOriginalLed);
     }
 }

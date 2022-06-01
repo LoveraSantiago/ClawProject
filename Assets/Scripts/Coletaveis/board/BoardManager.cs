@@ -17,11 +17,11 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         elevador      = new BoardElevador();        
     }
 
-    public void configuradoPeloLevel(AbstractLevel level)
+    public void configuradoPeloLevel(AbstractLevel level, BoardDto boardDto)
     {
         BoardMontador.configurar(level.getFamiliaColetavel());
-        montador      = FactoryBoardMontador.getMontadorByLevel(level);
-        montadorExtra = FactoryBoardMontador.getMontadorExtraByLevel(level);
+        montador      = FactoryBoardMontador.getMontadorByLevel(level, boardDto.GoBoardPosicao);
+        montadorExtra = FactoryBoardMontador.getMontadorExtraByLevel(level, boardDto.GoBoardPosicao);
         devolvedor.configuradoPeloLevel(level.devolverParaBoard());
     }   
 
@@ -38,7 +38,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
         return qtdColetaveis;
     }       
 
-    public void devolver(bool combinacaoValida, ColetadoFim evento, Coletavel[] coletados)
+    public void devolver(bool combinacaoValida, ColetadoFimDto evento, Coletavel[] coletados)
     {
         devolvedor.devolver(combinacaoValida, evento, boardDto, coletados);        
     }

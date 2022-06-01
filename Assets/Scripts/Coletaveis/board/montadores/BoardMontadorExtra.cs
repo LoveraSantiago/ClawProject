@@ -1,11 +1,18 @@
 using System.Collections;
+using UnityEngine;
 
 public class BoardMontadorExtra : BoardMontador
 {
     private int contadorEixoX;
-    private int contadorLinhaAtual;    
+    private int contadorLinhaAtual;
 
+    private GameObject goParent;
     private PoolList<Coletavel> poolExtraSubs;
+
+    public BoardMontadorExtra(GameObject goParent)
+    {
+        this.goParent = goParent;
+    }
 
     public override void configuradoPeloLevel(AbstractLevel level)
     {
@@ -22,8 +29,14 @@ public class BoardMontadorExtra : BoardMontador
         incrementarContadorDeLinha();        
     }
 
+    protected override Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
+    {
+        return HelperColetaveisInGame.criarColetavel(nomeSprite, posicao, goParent);
+    }
+
     protected override IEnumerator onColetavelCriado(int posX, int posY, Coletavel coletavel)
     {
+        coletavel.colocarNoOrderEscondido();
         coletavel.colocarNoLayerElevador();        
         poolExtraSubs.addObjeto(coletavel);        
         yield return null;

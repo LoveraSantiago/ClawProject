@@ -20,8 +20,8 @@ public class UpdaterMainGameManagers : UpdaterManagers
     public void update(MainGameDto mainDto)
     {
         inputGame.update(mainDto.MaquinaDto.ReferenciaChao);
-        garraManager.update(mainDto.GarraDto, inputGame);
         maquinaManager.update(mainDto.MaquinaDto, inputGame);
+        garraManager.update(mainDto.GarraDto, inputGame);
         pupManager.update();
     }
 
@@ -33,21 +33,21 @@ public class UpdaterMainGameManagers : UpdaterManagers
 
     public void onBeginDrag(PointerEventData eventData, MainGameDto mainDto)
     {
-        Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
+        Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;       
         if (inputGame.aconteceuDragNaAreaInferior(posicaoToque, mainDto.MaquinaDto.ReferenciaChao))
-        {
-            maquinaManager.beginDragPowerUp(posicaoToque);
+        {   
+            maquinaManager.onBeginDrag(posicaoToque);
         }
-    }
-
-    public void onEndDrag(PointerEventData eventData, MainGameDto mainDto)
-    {
-        maquinaManager.onEndDragPowerUp(mainDto.MaquinaDto);
     }
 
     public void onDrag(PointerEventData eventData, MainGameDto mainDto)
     {
         Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
         maquinaManager.onDragPowerUp(posicaoToque, mainDto.MaquinaDto);
+    }
+
+    public void onEndDrag(PointerEventData eventData, MainGameDto mainDto)
+    {
+        maquinaManager.onEndDragPowerUp(mainDto.MaquinaDto);
     }
 }

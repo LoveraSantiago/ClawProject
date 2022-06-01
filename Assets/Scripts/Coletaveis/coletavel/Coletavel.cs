@@ -6,14 +6,17 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
     public string nomeGaiolaAprisionadora { get; private set; }    
 
     public Coletavel()
-        : base(contexto, new ProcuradorDeSpriteRenderer("imagem"), contexto.nomeador.getName()){}
+        : base(contexto, new FinderDeSprRenderer1Nivel("imagem"), contexto.nomeador.getName()){}
+
+    public Coletavel(GameObject goParent)
+        : base(contexto, goParent, new FinderDeSprRenderer1Nivel("imagem"), contexto.nomeador.getName()) {}
 
     public Coletavel(Transform transform)
-        : base(transform, new ProcuradorDeSpriteRenderer("imagem")) {}       
+        : base(transform, new FinderDeSprRenderer1Nivel("imagem")) {}       
 
     public void clearMaterial()
     {
-        addMaterial(contexto.mainMaterial);
+        addMaterial(MaterialSprUnlitDefault.getMaterial());
     }
 
     public void colocarNoLayerElevador()
@@ -31,15 +34,20 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
         return isLayer(contexto.LAYER_NORMAL);
     }
 
-    public void colocarNoLayerDestaque()
+    public void colocarNoOrderDestaque()
     {
-        colocarSpriteNoLayer(contexto.SPR_ORDER_DESTAQUE);
+        colocarSpriteNoOrder(contexto.sprOrdemDestaque);
     }
 
-    public void colocarNoLayerComum()
+    public void colocarNoOrderComum()
     {
-        colocarSpriteNoLayer(contexto.SPR_ORDER_COMUM);
+        colocarSpriteNoOrder(contexto.sprOrderComum);
         desafixarVerticalmente();
+    }
+
+    public void colocarNoOrderEscondido()
+    {
+        colocarSpriteNoOrder(contexto.sprOrdemEscondido);
     }
 
     public void imantar()
@@ -89,12 +97,7 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
     public void interacaoComOutrosColetaveis()
     {
         desimantar();
-    }
-
-    public void receberSprite(Sprite sprite)
-    {
-        receberSprite(sprite, contexto.SPR_ORDER_COMUM);
-    }
+    }   
 
     public bool isTouchingCentroDaGarra()
     {

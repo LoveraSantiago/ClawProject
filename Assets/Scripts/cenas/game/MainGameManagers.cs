@@ -1,7 +1,7 @@
 using System.Collections;
 
 public class MainGameManagers 
-{    
+{   
     public GarraManager      garraManager      { get; private set; }
     public MaquinaManager    maquinaManager    { get; private set; }
     public PowerUpManager    powerUpManager    { get; private set; }
@@ -9,6 +9,7 @@ public class MainGameManagers
     public CameraManager     cameraManager     { get; private set; }
     public UiGameManager     uiManager         { get; private set; }    
     public InputGameImpl     inputGame         { get; private set; }
+    public DraggavelManager  draggavelManager  { get; private set; }
 
     public MainGameManagers(
         MainGameDto mainDto, AbstractLevel levelEscolhido, Consumidor<UpdaterManagers> consumidorUpdateManagers)
@@ -20,6 +21,7 @@ public class MainGameManagers
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
         uiManager         = new UiGameManager(mainDto.UiDto);        
         cameraManager     = new CameraManager(mainDto.CameraDto);
+        draggavelManager  = new DraggavelManager(mainDto.DragCollider);
 
         configurandoLevel(mainDto, levelEscolhido);
         configurandoEventos();
@@ -31,7 +33,7 @@ public class MainGameManagers
     private void configurandoLevel(MainGameDto mainDto, AbstractLevel levelEscolhido)
     {
         garraManager     .configuradoPeloLevel(mainDto.GarraDto, levelEscolhido);
-        coletaveisManager.configuradoPeloLevel(levelEscolhido);
+        coletaveisManager.configuradoPeloLevel(levelEscolhido, mainDto.ColetaveisDto);
         maquinaManager   .configuradoPeloLevel(levelEscolhido, mainDto.MaquinaDto);
         uiManager        .configurandoLevel(levelEscolhido);
 
@@ -49,8 +51,7 @@ public class MainGameManagers
     {
         yield return coletaveisManager.start();
 
-        maquinaManager.start(inputGame);
-        uiManager.start();        
+        maquinaManager.start(inputGame);         
         garraManager.start(mainDto.GarraDto);
         consumidorUpdateManagers.consumir(getUpdatables());        
     }
@@ -62,6 +63,6 @@ public class MainGameManagers
 
     private InformacaoDisplayColetado getInformacaoDisplayColetado()
     {
-        return maquinaManager.displaysDeSlots.displayDeColetados;
+        return maquinaManager.displayDeColetados.modoColetados;
     }
 }

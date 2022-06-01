@@ -11,13 +11,11 @@ public class AcaoDragPowerUp
     private Bounds  areaBotao;   
     private Vector2 posicaoInicialDrag;
     private Vector3 posicaoOriginal;
-    private Quaternion rotacaoOriginal;   
 
-    public AcaoDragPowerUp(BotaoPowerUpDto botaoDto)
+    public AcaoDragPowerUp(BotaoPowerUpDtoV2 botaoDtoV2)
     {
-        rotacaoOriginal = botaoDto.GoBtnPowerUp.transform.localRotation;
-        posicaoOriginal = botaoDto.GoParteDentro.transform.position;
-        areaBotao = botaoDto.SprAreaExterna.bounds;        
+        posicaoOriginal = botaoDtoV2.TransformBtnTampa.position;
+        areaBotao = botaoDtoV2.SprRendererBtnBase.bounds;        
     }
 
     public bool isPosicaoDentroAreaBotao(Vector2 posicao)
@@ -29,15 +27,14 @@ public class AcaoDragPowerUp
     {
         posicaoInicialDrag = posInicialDrag;
         goAreaDraggavel.SetActive(true);
-        aparencia.prepararRotacaoImgDrag();
     }
 
-    public void updateDrag(Vector2 posicaoDrag, AparenciaBotaoPowerUp aparencia, BotaoPowerUpDto btnDto)
+    public void updateDrag(Vector2 posicaoDrag, AparenciaBotaoPowerUp aparencia, BotaoPowerUpDtoV2 btnDto)
     {
         Vector2 delta = posicaoDrag - posicaoInicialDrag;
         posicaoInicialDrag = posicaoDrag;
 
-        PosicaoBotaoPowerUp posicao = new PosicaoBotaoPowerUp(btnDto);
+        PosicaoTransform posicao = new PosicaoTransform(btnDto.TransformBtnTampa);
         Vector3 posicaoCalculada = posicao.adicionarNaPosicao(delta);
         if(areaDraggavel.Contains(posicaoCalculada))
         {
@@ -53,14 +50,14 @@ public class AcaoDragPowerUp
         }
     }
 
-    public bool dragFinalizado(int indice, AcaoBotaoPowerUp acaoPowerUp, AparenciaBotaoPowerUp aparencia, BotaoPowerUpDto btnDto)
+    public bool dragFinalizado(int indice, AcaoBotaoPowerUp acaoPowerUp, AparenciaBotaoPowerUp aparencia, BotaoPowerUpDtoV2 btnDto)
     {
-        PosicaoBotaoPowerUp posicao = new PosicaoBotaoPowerUp(btnDto);
+        PosicaoTransform posicao = new PosicaoTransform(btnDto.TransformBtnTampa);
         if (aparencia.isMostrandoImagem())
         {
             acaoPowerUp.acionar(indice, posicao.getPosicao());
             aparencia.mostrarBotao();
-            posicao.colocarNaPosicaoOriginalAcionado(posicaoOriginal, rotacaoOriginal);
+            posicao.colocarNaPosicaoOriginal(posicaoOriginal);
             aparencia.limparImg();
             goAreaDraggavel.SetActive(false);
             return true;
@@ -73,7 +70,7 @@ public class AcaoDragPowerUp
         }
     }
 
-    private IEnumerator voltarBotaoDragPosOriginal(PosicaoBotaoPowerUp posicao, AparenciaBotaoPowerUp aparencia)
+    private IEnumerator voltarBotaoDragPosOriginal(PosicaoTransform posicao, AparenciaBotaoPowerUp aparencia)
     {
         while ((Vector3.Distance(posicao.getPosicao(), posicaoOriginal))
                > (VELOCIDADE_VOLTA * Time.deltaTime))
@@ -82,7 +79,7 @@ public class AcaoDragPowerUp
             yield return null;
         }
         goAreaDraggavel.SetActive(false);
-        posicao.colocarNaPosicaoOriginal(posicaoOriginal, rotacaoOriginal);        
+        posicao.colocarNaPosicaoOriginal(posicaoOriginal);        
         aparencia.mostrarBotao();
     }
 

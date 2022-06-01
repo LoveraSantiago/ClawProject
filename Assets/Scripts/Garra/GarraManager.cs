@@ -47,15 +47,15 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     }
 
     public void update(GarraDto garraDto, InputGame inputGame)
-    {
+    {   
         gerDeMovAtual.update(inputGame);
         cabo.update(garraDto.CaboDaGarraDto);
     }
 
     public void fixedUpdate(GarraDto garraDto)
     {
-        gerDeMovAtual.fixedUpdate();
-        cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.Corpo.RigidBody.transform);
+        gerDeMovAtual.fixedUpdate();        
+        cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.Corpo.TransformBaseCorpo.transform);
     }    
 
     private void configurarColisorCentroDaPinca(GameObject goColisor)
@@ -97,9 +97,9 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         gerDeMovAtual.garraComemorar();
     }        
 
-    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
-        tempoEsgotadoEmAcao = true;
+        tempoEsgotadoEmAcao = true;        
         gerDeMovNormal.trocarParaAcaoVoltarParaCima();
         gerDeMovAtual = gerDeMovNormal;
     }
@@ -114,7 +114,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         }
     }
 
-    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
+    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
         if (gerDeMovAtual != gerDeMovPowerUp && !tempoEsgotadoEmAcao)
         {
@@ -122,7 +122,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         }
     }
 
-    void ProdutorConsumidoresDeEvento<CacaNiquelEventoDto>.ConsumidorEvento.consumirEvento(CacaNiquelEventoDto evento)
+    void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelEventoDto evento)
     {
         if (evento.isInicio)
         {

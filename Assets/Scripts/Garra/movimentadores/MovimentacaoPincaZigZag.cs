@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoPincaZigZag : MovimentacaoDaGarraNormal
+public class MovimentacaoPincaZigZag : AbstractMovimentacaoDaGarraNormal
 {
     private bool isUsandoMaxAngulo;
 

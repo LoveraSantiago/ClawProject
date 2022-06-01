@@ -8,7 +8,7 @@ public abstract class AbstractContadorDeColetaveis : Fornecedor<TrocadorDeOrdem>
 
     public abstract void adicionarColetaveisExtras(int qtd);
 
-    public abstract void reajustarContagem(ColetadoFim evento, bool devolverBoard);
+    public abstract void reajustarContagem(ColetadoFimDto evento, bool devolverBoard);
 
     public abstract bool getResultCombinacao();
 

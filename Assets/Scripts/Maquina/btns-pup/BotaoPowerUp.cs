@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BotaoPowerUp : Draggavel
+public class BotaoPowerUp : BotaoDraggavel
 {
     private static EfeitoHolograma efeitoHolograma;
 
@@ -9,7 +9,6 @@ public class BotaoPowerUp : Draggavel
     private int indice;
     
     private AparenciaBotaoPowerUp aparencia;
-    public GlowBotaoPowerUp glow { get; private set; }
 
     private AcaoDragPowerUp acaoDrag;
     private AcaoBotaoPowerUp acaoBtnPowerUp;
@@ -19,30 +18,26 @@ public class BotaoPowerUp : Draggavel
         isDraggavel = false;
         this.indice = indice;
 
-        BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
-        aparencia = new AparenciaBotaoPowerUp(botaoDto);
-        acaoDrag  = new AcaoDragPowerUp(botaoDto);
-        glow      = new GlowBotaoPowerUp(botaoDto.SprEfeito);
+        BotaoPowerUpDtoV2 botaoDtoV2 = getBotaoPowerUpDtoV2(btnsPowerUpsDto);
+        aparencia = new AparenciaBotaoPowerUp(botaoDtoV2);        
+        acaoDrag  = new AcaoDragPowerUp(botaoDtoV2);
     }
 
     public void clicar(BotoesPowerUpDto btnsPowerUpsDto, ControleAcionamentoPowerUp controlePup)
-    {
-        glow.mudarParaMaterialIndividual();
+    {   
         if (hasPowerUp)
         {
-            aparencia.colorirBotao();
+            aparencia.pressionarBotao();
             controlePup.notificarAcionado(acaoBtnPowerUp);
             hasPowerUp = false;
-
-            BotaoPowerUpDto botaoDto = getBotaoPowerUpDto(btnsPowerUpsDto);
-            efeitoHolograma.ligar(botaoDto);
+            
             acaoBtnPowerUp.acionar(indice);
         }
         else
         {
-            //Debug.Log("Btn clicado sem pup");
-            glow.ligarGlow();
+            //Debug.Log("Btn clicado sem pup");            
             Utils.pausarGame();
+            efeitoHolograma.ligarNaPosicao(getBotaoPowerUpDtoV2(btnsPowerUpsDto));
             controlePup.desabilitarPowerUp();
             controlePup.escolhendoPupParaIndice(indice);            
         }
@@ -50,8 +45,7 @@ public class BotaoPowerUp : Draggavel
 
     public void draggar(ControleAcionamentoPowerUp controlePup)
     {
-        aparencia.colorirBotao();
-        glow.mudarParaMaterialIndividual();
+        aparencia.pressionarBotao();        
         if (hasPowerUp)
         {
             controlePup.notificarAcionado(acaoBtnPowerUp);
@@ -61,32 +55,29 @@ public class BotaoPowerUp : Draggavel
 
     public void desclicar()
     {
-        aparencia.voltarCorOriginalBotao();
+        aparencia.despressionarBotao();
         aparencia.limparImg();
         transformarEmBotaoClicavel();
         efeitoHolograma.desligar();
     }
-
-    public void mudarParaMaterialArcoIris()
+      
+    public void receberCorLevelV2(string corBase, string corTampa)
     {
-        glow.mudarParaMaterialArcoIris();
-    }
-
-    public void receberCorLevel(string corBotao, string corDentro, string corContorno)
-    {
-        aparencia.colorirBotaoFromLevel(corBotao, corDentro, corContorno);
+        aparencia.colorirBotaoFromLevelV2(corBase, corTampa);
     }
 
     public void receberAcaoPowerUp(PowerUpBtnInfo evento, ControleAcionamentoPowerUp controlePup)
-    {
-        Utils.continuarGame();
+    {   
         controlePup.habilitarPowerUp();
-        glow.desligarGlow();
-        mudarParaMaterialArcoIris();
-        if(evento.hasEntidade)
+        if (evento.hasEntidade)
         {
             PowerUpEntidade pupEntidade = evento.powerUpEntidade;
             receberAcaoPowerUp(new PowerUpsParaMaquina(pupEntidade));
+            efeitoHolograma.ligarEfeitoExtra();
+        }
+        else
+        {
+            efeitoHolograma.desligar();
         }
     }
 
@@ -137,11 +128,11 @@ public class BotaoPowerUp : Draggavel
         return isDraggavel 
                && hasPowerUp 
                && acaoDrag.isPosicaoDentroAreaBotao(posicao);
-    }           
+    }
 
-    private BotaoPowerUpDto getBotaoPowerUpDto(BotoesPowerUpDto btnPowerUpsDto)
+    private BotaoPowerUpDtoV2 getBotaoPowerUpDtoV2(BotoesPowerUpDto btnPowerUpsDto)
     {
-        return btnPowerUpsDto.BtnPowerUp[indice];
+        return btnPowerUpsDto.BtnPowerUpV2[indice];
     }
 
     //IMPLEMENTANDO INTERFACE DRAGGAVEL INICIO
@@ -152,21 +143,21 @@ public class BotaoPowerUp : Draggavel
 
     public void updateDrag(Vector2 posicaoDrag, BotoesPowerUpDto botoesPowerUpsDto)
     {
-        BotaoPowerUpDto btnDto = getBotaoPowerUpDto(botoesPowerUpsDto);
+        BotaoPowerUpDtoV2 btnDto = getBotaoPowerUpDtoV2(botoesPowerUpsDto);
         acaoDrag.updateDrag(posicaoDrag, aparencia, btnDto);
     }
 
     public bool isDragFinalizadoAtivouPowerUp(BotoesPowerUpDto botoesPowerUpsDto)
     {
-        BotaoPowerUpDto btnDto = getBotaoPowerUpDto(botoesPowerUpsDto);
+        BotaoPowerUpDtoV2 btnDto = getBotaoPowerUpDtoV2(botoesPowerUpsDto);
         return acaoDrag.dragFinalizado(indice, acaoBtnPowerUp, aparencia, btnDto);        
     }
     //IMPLEMENTANDO INTERFACE DRAGGAVEL FIM
 
     public static void configurar(BotoesPowerUpDto btnsPowerUpsDto)
     {
-        AparenciaBotaoPowerUp.configurarSpriteBordas(btnsPowerUpsDto.BordasBtns);
+        AparenciaBotaoPowerUp.configurarSpritesTampaBotao(btnsPowerUpsDto.SpritesTampaDto);
         AcaoDragPowerUp.configurarAreaDraggavel(btnsPowerUpsDto.AreaDraggavel);
-        efeitoHolograma = new EfeitoHolograma(btnsPowerUpsDto.EfeitoHolograma);
+        efeitoHolograma = new EfeitoHolograma(btnsPowerUpsDto.EfeitoHologramaDto);
     }
 }

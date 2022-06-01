@@ -1,11 +1,8 @@
-public interface ComunicadorComGerMovPowerUp 
+public interface ComunicadorComGerMovPowerUp : ComunicadorComGerenciadorComum
 {
-    void trocarParaAcaoSoltar();
-    void trocarParaAcaoParado();
+    void trocarParaAcaoSoltar();    
 
     void trocarParaAcaoSegurandoParado();
     void trocarParaAcaoSegurandoEmMovimento();
 
-    void trocarParaAcaoVoltarParaCima();
-    void trocarParaAcaoVoltarParaMeio();
 }

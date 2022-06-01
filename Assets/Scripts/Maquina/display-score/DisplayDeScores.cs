@@ -1,7 +1,6 @@
 using UnityEngine;
-using System.Collections.Generic;
 
-public class DisplayDeScores : ArcoIrisConjunto
+public class DisplayDeScores : AcaoColetado.ConsumidorEvento
 {
     private int scoreCentenaAtual;
     private int scoreDezenaAtual;
@@ -15,8 +14,7 @@ public class DisplayDeScores : ArcoIrisConjunto
     private Coroutine coroutineAtual;
 
     public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto)
-    {
-        DisplayScoreDigito.configurar();
+    {        
         SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;        
         displayCentena = new DisplayScoreDigito(singleDisplays[0]);
         displayDezena  = new DisplayScoreDigito(singleDisplays[1]);
@@ -25,19 +23,10 @@ public class DisplayDeScores : ArcoIrisConjunto
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
     }
 
-    public void configuradoPeloLevel(Dictionary<string, string> dicionarioDeCores)
+    public void configuradoPeloLevel(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)
     {
-        string hexCor = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_SCORES1];
-        string hexLed = dicionarioDeCores[ConstantesCoresMaquina.LEDS1];
-        displayCentena.configuradoPeloLevel(hexCor, hexLed);
-
-        hexCor = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_SCORES2];
-        hexLed = dicionarioDeCores[ConstantesCoresMaquina.LEDS2];
-        displayDezena.configuradoPeloLevel(hexCor, hexLed);
-
-        hexCor = dicionarioDeCores[ConstantesCoresMaquina.DISPLAY_SCORES3];
-        hexLed = dicionarioDeCores[ConstantesCoresMaquina.LEDS3];
-        displayUnidade.configuradoPeloLevel(hexCor, hexLed);
+        ConfiguradorDeDisplayScoreDigito configuradorDisplayDigito = new ConfiguradorDeDisplayScoreDigito(displayCentena, displayDezena, displayUnidade);
+        configuradorDisplayDigito.configurar(displayDeScoresDto, levelEscolhido);
     }
     
     public void mostrarScore(int score, bool result)
@@ -62,8 +51,7 @@ public class DisplayDeScores : ArcoIrisConjunto
 
     public void finalizarContagemRegressiva()
     {
-        finalizarCoroutineAtual();
-        finalizarCoroutineArcoIris();
+        finalizarCoroutineAtual();        
         orquestrador.passarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual);
     }
 
@@ -95,31 +83,10 @@ public class DisplayDeScores : ArcoIrisConjunto
     private void finalizarCoroutineAtual()
     {
         Utils.MonoBehaviour.StopCoroutine(coroutineAtual);        
-    }    
-
-    private void finalizarCoroutineArcoIris()
-    {
-        orquestrador.desligarGlows();
     }
 
-    public void ligar()
-    {
-        displayCentena.ligarGlowSucesso();
-        displayDezena.ligarGlowSucesso();
-        displayUnidade.ligarGlowSucesso();
-    }
-
-    public void desligar()
-    {
-        displayCentena.desligarGlow();
-        displayDezena.desligarGlow();
-        displayUnidade.desligarGlow();
-    }
-
-    public void passarCor(Color cor)
-    {
-        displayCentena.getMaterialGlow().setCorNoMaterial(cor);
-        displayDezena.getMaterialGlow().setCorNoMaterial(cor);
-        displayUnidade.getMaterialGlow().setCorNoMaterial(cor);
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
+    {   
+        mostrarScore(evento.score, evento.resultCombinacao);
     }
 }

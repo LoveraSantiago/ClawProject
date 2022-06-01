@@ -39,9 +39,9 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         configurarGaiolas(coletaveisDto);
     }
 
-    public void configuradoPeloLevel(AbstractLevel level)
+    public void configuradoPeloLevel(AbstractLevel level, ColetaveisDto coletaveisDto)
     {
-        board.configuradoPeloLevel(level);
+        board.configuradoPeloLevel(level, coletaveisDto.BoardDto);
         tuboDeDescarte.configuradoPeloLevel(level.devolverParaBoard());
         contador.configuradoPeloLevel(level);
     }
@@ -76,7 +76,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     private void configurarGaiolas(ColetaveisDto coletaveisDto)
     {
-        Gaiola.configurar(coletaveisDto.ContextoGaiola);
+        Gaiola.configurar(coletaveisDto.GoMainGaiola);
         HelperGaiolasInGame.configurar();
     }
 
@@ -155,7 +155,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         }
     }            
     
-    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotado evento)
+    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
         if (evento.restart)
         {
@@ -164,7 +164,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         }        
     }
 
-    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFim evento)
+    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
         //Debug.Log("Evento acao coletado fim chamado");
         tuboDeDescarte.devolver(contador.getResultCombinacao(), evento, contador.getColetados());                

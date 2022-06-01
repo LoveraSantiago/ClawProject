@@ -4,12 +4,7 @@ using UnityEngine;
 public class HelperColetaveisInGame 
 {
     private static PoolDeColetaveis poolDeColetaveis;
-    private static Dictionary<string, Material> poolGrayscale;
-
-    public Coletavel criarColetavel()
-    {
-        return poolDeColetaveis.criarColetavel();
-    }
+    private static Dictionary<string, Material> poolGrayscale;   
 
     public int getQtdColetaveisInGame()
     {
@@ -96,17 +91,35 @@ public class HelperColetaveisInGame
         return poolGrayscale[spr.name];
     }
 
+    public Coletavel criarColetavel()
+    {
+        return poolDeColetaveis.criarColetavel();
+    }
+
+    public Coletavel criarColetavel(GameObject goParent)
+    {
+        return poolDeColetaveis.criarColetavel(goParent);
+    }
+
     public static Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
     {
         HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        return configColetavel(helperInGame.criarColetavel(), nomeSprite, posicao);
+    }
 
-        Coletavel coletavel = helperInGame.criarColetavel();
+    public static Coletavel criarColetavel(string nomeSprite, Vector3 posicao, GameObject goParent)
+    {
+        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        return configColetavel(helperInGame.criarColetavel(goParent), nomeSprite, posicao);
+    }
+
+    private static Coletavel configColetavel(Coletavel coletavel, string nomeSprite, Vector3 posicao)
+    {
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
         Sprite sprite = helperColetavel.getSpriteColetavelByNomeSprite(nomeSprite);
         coletavel.receberSprite(sprite);
         coletavel.colocarNaPosicao(posicao);
         coletavel.ligar();
-
         return coletavel;
     }
 

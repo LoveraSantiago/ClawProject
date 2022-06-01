@@ -46,7 +46,7 @@ public class ScrollBottomBarSceneGame : ScrollBottomBar,
     }
 
     public void simularCliqueBoxAcionado(int indiceBtn, PowerUpEnums.TIPO tipoPup)
-    {
+    {   
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(tipoPup);
         simularCliqueBoxAcionado(indiceBtn, pupEscolhido);
     }
