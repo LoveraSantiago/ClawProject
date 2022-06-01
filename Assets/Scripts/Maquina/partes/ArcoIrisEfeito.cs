@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class ArcoIrisEfeito : AcaoTempoEsgotado.ConsumidorEvento
+public class ArcoIrisEfeito : AcaoTempoEsgotado.ConsumidorEvento,
+                              AcaoCacaNiquel.ConsumidorEvento
 {
     public static Color greenHdr  { get; private set; }
     public static Color redHdr    { get; private set; }
@@ -33,6 +34,12 @@ public class ArcoIrisEfeito : AcaoTempoEsgotado.ConsumidorEvento
     {
         cleanCoroutineEmAndamento();
         coroutineAtual = Utils.MonoBehaviour.StartCoroutine(blinkarCor(greenHdr));
+    }
+
+    public void ligarBlinkYellow()
+    {
+        cleanCoroutineEmAndamento();
+        coroutineAtual = Utils.MonoBehaviour.StartCoroutine(blinkarCor(yellowHdr));
     }
 
     public void desligarEfeito()
@@ -104,5 +111,24 @@ public class ArcoIrisEfeito : AcaoTempoEsgotado.ConsumidorEvento
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
         ligarBlinkRed();
+    }
+
+    void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelEventoDto evento)
+    {
+        if (evento.isEmAndamento)
+        {
+            if (evento.isResultSucesso())
+            {
+                ligarBlinkVerde();
+            }
+            else if (evento.isResultFail())
+            {
+                ligarBlinkRed();
+            }
+            else
+            {
+                ligarBlinkYellow();
+            }
+        }
     }
 }

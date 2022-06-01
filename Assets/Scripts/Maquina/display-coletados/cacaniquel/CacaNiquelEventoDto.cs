@@ -24,7 +24,7 @@ public class CacaNiquelEventoDto
 
     private CacaNiquelEventoDto(bool isSingle, Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados)
     {
-        estadoAtual   = ESTADO_FIM;
+        estadoAtual        = ESTADO_FIM;
         this.isSingle      = isSingle;
         this.sprResultados = sprResultados;
         this.resultados    = resultados;
@@ -49,6 +49,11 @@ public class CacaNiquelEventoDto
     public bool isResultFail(int indice)
     {
         return resultados[indice] == CacaNiquelResultadoEnum.FAIL;
+    }
+
+    public bool isResultFail()
+    {
+        return resultado == CacaNiquelResultadoEnum.FAIL;
     }
 
     public bool isTripleSucess()

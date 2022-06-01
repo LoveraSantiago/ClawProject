@@ -75,7 +75,8 @@ public class MainGameEventos
             .configurarProdutor(maquinaManager.displayDeColetados)
             .adicionarConsumidor(cameraManager)
             .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(uiManager.modalResultados);
+            .adicionarConsumidor(uiManager.modalResultados)
+            .adicionarConsumidor(maquinaManager.arcoIrisEfeito);
 
         new AcaoDesligarMaquina()
             .configurarProdutor(maquinaManager)
