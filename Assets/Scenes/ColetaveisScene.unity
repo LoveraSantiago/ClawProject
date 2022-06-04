@@ -893,6 +893,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1729035073}
     m_Modifications:
+    - target: {fileID: 7590549816797380793, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590549816797380793, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_Color.g
+      value: 0.96657693
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590549816797380793, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7590549816884906465, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
       propertyPath: m_Name
       value: timer-ficha-ouro
