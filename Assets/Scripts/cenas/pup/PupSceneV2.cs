@@ -7,9 +7,10 @@ public class PupSceneV2 : MonoBehaviour
     [SerializeField] private float velocidade;
     [SerializeField] private GameObject cardDetalhe;
     [SerializeField] private Button[] cardBtns = new Button[13];
+    [SerializeField] private Animator animator;
 
     private Vector3 posOriginal;
-    private bool isClicado;
+    private bool isClicado;    
 
     // Start is called before the first frame update
     void Start()
@@ -25,14 +26,15 @@ public class PupSceneV2 : MonoBehaviour
     void Update()
     {
         if (isClicado)
-        {
+        {           
             Vector3 result = Vector3.MoveTowards(cardDetalhe.transform.position, posOriginal, velocidade * Time.deltaTime);
             cardDetalhe.transform.position = result;
             float distancia = Vector3.Distance(cardDetalhe.transform.position, posOriginal);            
             if(distancia < 0.1f)
             {
+                animator.Play("flip-down");
                 cardDetalhe.transform.position = posOriginal;
-                isClicado = false;
+                isClicado = false;                
             }
         }
     }
@@ -41,10 +43,12 @@ public class PupSceneV2 : MonoBehaviour
     {
         if(isClicado == false)
         {
+            animator.Play("flip-up-stop");
+
             GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
             cardDetalhe.transform.position = goSelecionado.transform.position;
             cardDetalhe.SetActive(true);
-            isClicado = true;
+            isClicado = true;            
         }
     }
 }
