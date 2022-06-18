@@ -10,11 +10,15 @@ public class PupSceneV2 : MonoBehaviour
     [SerializeField] private Animator animator;
 
     private Vector3 posOriginal;
-    private bool isClicado;    
+    private bool isClicado;
+
+    private CanvasPupAnimacao animacao;
 
     // Start is called before the first frame update
     void Start()
     {
+        animacao = new CanvasPupAnimacao(animator);
+
         for(int contador = 0; contador < cardBtns.Length; contador++)
         {
             cardBtns[contador].onClick.AddListener(() => clicado());
@@ -32,7 +36,7 @@ public class PupSceneV2 : MonoBehaviour
             float distancia = Vector3.Distance(cardDetalhe.transform.position, posOriginal);            
             if(distancia < 0.1f)
             {
-                animator.Play("flip-down");
+                animacao.playFlipDown();
                 cardDetalhe.transform.position = posOriginal;
                 isClicado = false;                
             }
@@ -43,7 +47,7 @@ public class PupSceneV2 : MonoBehaviour
     {
         if(isClicado == false)
         {
-            animator.Play("flip-up-stop");
+            animacao.playFlipUpStop();            
 
             GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
             cardDetalhe.transform.position = goSelecionado.transform.position;
