@@ -3,7 +3,7 @@ public class FactoryPowerUpAsas : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-                .configNomes(8, PowerUpEnums.TIPO.ASAS, "Asas da Liberdade", "asas-botao")
+                .configNomes(8, PowerUpEnums.TIPO.ASAS, "Asas da Liberdade")
                 .configFamilia(PowerUpEnums.FAMILIA.LEVITACAO)
                 .configPreco(4)
                 .configDuracao(9)

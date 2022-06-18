@@ -1,13 +1,11 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUpEntidade 
 {
-    private static Dictionary<string, Sprite> dicionarioDeSprites;   
+    private static PowerUpPrefabDto[] powerUpDtos;
 
     public int indice { get; private set; }
-    public string nome { get; private set; }
-    public string nomeSpriteBtn { get; private set; }
+    public string nome { get; private set; }    
     public string familia { get; private set; }
     public string descCurta { get; private set; }
     public string descDetalhada { get; private set; }
@@ -20,7 +18,7 @@ public class PowerUpEntidade
 
     public PowerUpEnums.TIPO tipo { get; private set; }
     public PowerUpEnums.AREA area { get; private set; }
-    public Sprite sprPowerUp { get { return dicionarioDeSprites[nomeSpriteBtn]; }}
+    public Sprite sprPowerUp { get { return powerUpDtos[indice].SprGO; }}
 
     private Fornecedor<AbstractPowerUpGo> fornecedorPowerUpGo;
     private AbstractPowerUpGo powerUpGo;
@@ -32,12 +30,11 @@ public class PowerUpEntidade
         this.preco = "1";
     }    
 
-    public PowerUpEntidade configNomes(int indice, PowerUpEnums.TIPO tipoEntidade, string nome, string nomeSpriteBtn)
+    public PowerUpEntidade configNomes(int indice, PowerUpEnums.TIPO tipoEntidade, string nome)
     {
         this.indice = indice;
         tipo = tipoEntidade;
-        this.nome = nome;
-        this.nomeSpriteBtn = nomeSpriteBtn;
+        this.nome = nome;        
         return this;
     }
 
@@ -101,7 +98,7 @@ public class PowerUpEntidade
 
     public static void configurarDicionarioDeSpritesPup(GameObject goPrefabPupDto)
     {
-        PrefabDeSpriteDto prefabPUpDto = goPrefabPupDto.GetComponent<PrefabDeSpriteDto>();
-        dicionarioDeSprites = prefabPUpDto.getDicionarioDeSprites();
+        PrefabDePowerUpsDto prefabPUpDto = goPrefabPupDto.GetComponent<PrefabDePowerUpsDto>();
+        powerUpDtos = prefabPUpDto.PowerUpDtos;
     }
 }

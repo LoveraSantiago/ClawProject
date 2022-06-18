@@ -3,7 +3,7 @@ public class FactoryPowerUpMissilNuclear : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-                .configNomes(1, PowerUpEnums.TIPO.MISSIL_NUCLEAR, "Bomba Nuclear", "nuclear-bomba-btn")
+                .configNomes(1, PowerUpEnums.TIPO.MISSIL_NUCLEAR, "Bomba Nuclear")
                 .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configDuracao(9)
                 .configSupplierDePowerUpGo(this)

@@ -3,7 +3,7 @@ public class FactoryPowerUpMola : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-            .configNomes(12, PowerUpEnums.TIPO.MOLA, "Mola", "btn-mola")
+            .configNomes(12, PowerUpEnums.TIPO.MOLA, "Mola")
             .configFamilia(PowerUpEnums.FAMILIA.IMPULSO)
             .configPreco(2)
             .configDuracao(3)

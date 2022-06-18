@@ -3,7 +3,7 @@ public class FactoryPowerUpMinaTerrestre : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-                .configNomes(2, PowerUpEnums.TIPO.MINA_TERRESTRE, "Mina Terrestre", "mina-terrestre")
+                .configNomes(2, PowerUpEnums.TIPO.MINA_TERRESTRE, "Mina Terrestre")
                 .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configPreco(2)
                 .configDuracao(3)

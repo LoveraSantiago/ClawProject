@@ -3,7 +3,7 @@ public class FactoryPowerUpMissilTeleguiado : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-                .configNomes(3, PowerUpEnums.TIPO.MISSIL_TELEGUIADO, "Missil Teleguiado", "missil-btnv2")
+                .configNomes(3, PowerUpEnums.TIPO.MISSIL_TELEGUIADO, "Missil Teleguiado")
                 .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configPreco(2)
                 .configDuracao(9)
