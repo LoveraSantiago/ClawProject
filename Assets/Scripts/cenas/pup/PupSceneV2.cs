@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+#pragma warning disable 0649
 public class PupSceneV2 : MonoBehaviour
 {
     [SerializeField] private TimerFichaDto timerFichaDto;
@@ -10,6 +11,8 @@ public class PupSceneV2 : MonoBehaviour
     [SerializeField] private GameObject cardDetalhe;
     [SerializeField] private Button[] cardBtns = new Button[13];
     [SerializeField] private Animator animator;
+    [Space(5)]
+    [SerializeField] private GameObject prefabPowerUpDto;
 
     private Vector3 posOriginal;
     private bool isClicado;
@@ -24,7 +27,9 @@ public class PupSceneV2 : MonoBehaviour
         timerFichaBronze = new TimerFicha(timerFichaDto, Ficha.BRONZE);
         animacao = new CanvasPupAnimacao(animator);
 
-        for(int contador = 0; contador < cardBtns.Length; contador++)
+        FactoryPowerUpEntidade.resetContextoEstatico();
+
+        for (int contador = 0; contador < cardBtns.Length; contador++)
         {
             cardBtns[contador].onClick.AddListener(() => clicado());
         }

@@ -3,7 +3,7 @@ public class FactoryPowerUpDescarte : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.DESCARTE, "Descarte", "descarte-botao")
+                .configNomes(11, PowerUpEnums.TIPO.DESCARTE, "Descarte", "descarte-botao")
                 .configFamilia(PowerUpEnums.FAMILIA.MECANISMO)
                 .configPreco(2)
                 .configDuracao(9)

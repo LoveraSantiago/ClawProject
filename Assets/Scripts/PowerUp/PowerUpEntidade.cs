@@ -5,6 +5,7 @@ public class PowerUpEntidade
 {
     private static Dictionary<string, Sprite> dicionarioDeSprites;   
 
+    public int indice { get; private set; }
     public string nome { get; private set; }
     public string nomeSpriteBtn { get; private set; }
     public string familia { get; private set; }
@@ -31,8 +32,9 @@ public class PowerUpEntidade
         this.preco = "1";
     }    
 
-    public PowerUpEntidade configNomes(PowerUpEnums.TIPO tipoEntidade, string nome, string nomeSpriteBtn)
+    public PowerUpEntidade configNomes(int indice, PowerUpEnums.TIPO tipoEntidade, string nome, string nomeSpriteBtn)
     {
+        this.indice = indice;
         tipo = tipoEntidade;
         this.nome = nome;
         this.nomeSpriteBtn = nomeSpriteBtn;

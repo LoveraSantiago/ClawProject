@@ -3,7 +3,7 @@ public class FactoryPowerUpIgual : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.IGUAL, "Igual", "igual-botao")
+                .configNomes(4, PowerUpEnums.TIPO.IGUAL, "Igual", "igual-botao")
                 .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
                 .configPreco(2)
                 .configDuracao(9)

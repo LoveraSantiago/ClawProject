@@ -3,7 +3,7 @@ public class FactoryPowerUpBomba : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.BOMBA_DA_GARRA, "Bomba", "bomba")
+                .configNomes(0, PowerUpEnums.TIPO.BOMBA_DA_GARRA, "Bomba", "bomba")
                 .configFamilia(PowerUpEnums.FAMILIA.EXPLOSIVOS)
                 .configDuracao(9)
                 .configSupplierDePowerUpGo(this)

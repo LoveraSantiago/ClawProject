@@ -3,7 +3,7 @@ public class FactoryPowerUpCoringa : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.CORINGA, "Coringa", "coringa-btn")
+                .configNomes(6, PowerUpEnums.TIPO.CORINGA, "Coringa", "coringa-btn")
                 .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
                 .configPreco(1)
                 .configDuracao(9)

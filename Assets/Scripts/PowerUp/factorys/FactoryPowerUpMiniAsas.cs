@@ -3,7 +3,7 @@ public class FactoryPowerUpMiniAsas : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.MINI_ASAS, "Mini Asas de Escape", "mini-asas-botao")
+                .configNomes(7, PowerUpEnums.TIPO.MINI_ASAS, "Mini Asas de Escape", "mini-asas-botao")
                 .configFamilia(PowerUpEnums.FAMILIA.LEVITACAO)
                 .configPreco(2)
                 .configDuracao(9)
