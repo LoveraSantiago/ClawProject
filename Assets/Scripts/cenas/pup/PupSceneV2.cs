@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class PupSceneV2 : MonoBehaviour
 {
+    [SerializeField] private TimerFichaDto timerFichaDto;
+    [Space(5)]
     [SerializeField] private float velocidade;
     [SerializeField] private GameObject cardDetalhe;
     [SerializeField] private Button[] cardBtns = new Button[13];
@@ -13,10 +15,14 @@ public class PupSceneV2 : MonoBehaviour
     private bool isClicado;
 
     private CanvasPupAnimacao animacao;
+    private TimerFicha timerFichaBronze;
 
     // Start is called before the first frame update
     void Start()
     {
+        Utils.configMainMono(this);
+        timerFichaBronze = new TimerFicha(timerFichaDto, Ficha.BRONZE);
+
         animacao = new CanvasPupAnimacao(animator);
 
         for(int contador = 0; contador < cardBtns.Length; contador++)
@@ -29,6 +35,8 @@ public class PupSceneV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timerFichaBronze.update();
+
         if (isClicado)
         {           
             Vector3 result = Vector3.MoveTowards(cardDetalhe.transform.position, posOriginal, velocidade * Time.deltaTime);
