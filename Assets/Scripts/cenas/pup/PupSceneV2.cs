@@ -22,7 +22,6 @@ public class PupSceneV2 : MonoBehaviour
     {
         Utils.configMainMono(this);
         timerFichaBronze = new TimerFicha(timerFichaDto, Ficha.BRONZE);
-
         animacao = new CanvasPupAnimacao(animator);
 
         for(int contador = 0; contador < cardBtns.Length; contador++)

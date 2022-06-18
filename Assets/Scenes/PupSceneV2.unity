@@ -997,7 +997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &477344583
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3490,6 +3490,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2802f8ad40c918c42be86b09c5f776eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerFichaDto:
+    btnMais: {fileID: 2080252812}
+    lblQdtFichas: {fileID: 2080252811}
+    relogioDto:
+      lblHoras: {fileID: 2080252810}
+      transfSegundos: {fileID: 2080252809}
+      transfMinutos: {fileID: 2080252808}
+      transfHoras: {fileID: 2080252807}
   velocidade: 15
   cardDetalhe: {fileID: 477344582}
   cardBtns:
