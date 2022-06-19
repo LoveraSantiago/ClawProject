@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class CardsPupsDto
 {
     [SerializeField] private Button btn;
+    [SerializeField] private Image imgCard;
 
     public Button Btn { get { return btn; } }
+    public Image ImgCard { get { return imgCard; } }
 }

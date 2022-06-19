@@ -19,6 +19,7 @@ public class PowerUpEntidade
     public PowerUpEnums.TIPO tipo { get; private set; }
     public PowerUpEnums.AREA area { get; private set; }
     public Sprite sprPowerUp { get { return powerUpDtos[indice].SprGO; }}
+    public Sprite sprCard { get { return powerUpDtos[indice].SprCard;  }}
 
     private Fornecedor<AbstractPowerUpGo> fornecedorPowerUpGo;
     private AbstractPowerUpGo powerUpGo;

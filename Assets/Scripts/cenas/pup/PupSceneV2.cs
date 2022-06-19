@@ -22,12 +22,13 @@ public class PupSceneV2 : MonoBehaviour
     void Start()
     {
         Utils.configMainMono(this);
+        FactoryPowerUpEntidade.resetContextoEstatico();
+        PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
+
         timerFichaBronze = new TimerFicha(timerFichaDto, Ficha.BRONZE);
         cardDetalhe      = new CardDetalhePup(cardDetalheDto);
         animacao         = new AnimacaoCardsPup(animator);
         cardsPups        = new CardsPups(cardsPupsDto);
-
-        FactoryPowerUpEntidade.resetContextoEstatico();        
 
         new AcaoCardPupDetalheMovimentado()
             .configurarProdutor(cardDetalhe)

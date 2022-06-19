@@ -12,10 +12,11 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento
         isClicado = false;
         this.cardsPupsDto = cardsPupsDto;
         produtorDeEvento = new ProdutorDeEvento<CardPupSelecionadoDto>();
-
+        PowerUpEntidade[] pupEntidades = FactoryPowerUpEntidade.getAllPowerUps();
         for (int contador = 0; contador < cardsPupsDto.Length; contador++)
         {
             cardsPupsDto[contador].Btn.onClick.AddListener(() => clicado());
+            cardsPupsDto[contador].ImgCard.sprite = pupEntidades[contador].sprCard;
         }
     }
 
