@@ -37,12 +37,14 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento
         if (isClicado == false)
         {
             GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
-            string nomeParent = goSelecionado.transform.parent.name;
+            GameObject goParent = goSelecionado.transform.parent.gameObject;
+            string nomeParent = goParent.name;
 
             PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeParent));            
             CardPupSelecionadoDto cardSelecionado = new CardPupSelecionadoDto(goSelecionado.transform.position, pupEntidade);
-
+            
             produtorDeEvento.produziuEvento(cardSelecionado);
+            goParent.SetActive(false);
         }
     }
 
