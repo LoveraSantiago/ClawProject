@@ -47,27 +47,40 @@ MonoBehaviour:
   powerUpDto:
   - indice: 0
     sprGO: {fileID: 21300000, guid: ff767bdfc020f404783fe84614e5a795, type: 3}
+    sprCard: {fileID: 21300000, guid: ca52e2b4972d0ae4188e2808e20a4b5d, type: 3}
   - indice: 1
     sprGO: {fileID: 21300000, guid: 2b953ba433bc90440a548aaf1b916cab, type: 3}
+    sprCard: {fileID: 21300000, guid: 4a2e5e78f5742c044a6b2656d7096bb9, type: 3}
   - indice: 2
     sprGO: {fileID: 21300000, guid: a7d45f520d37bf4489a4bb139dcd9335, type: 3}
+    sprCard: {fileID: 21300000, guid: 71b2f0aab95c7954dafb1f9dc41b1d33, type: 3}
   - indice: 3
     sprGO: {fileID: 21300000, guid: ae6ca25e5fa8ba54fa8ab0a8edb2c9ae, type: 3}
+    sprCard: {fileID: 21300000, guid: 26955dfe3ade8f8498c2a3f86bad0bf8, type: 3}
   - indice: 4
     sprGO: {fileID: 21300000, guid: 814e615b7dfd786469089e22070dbbbf, type: 3}
+    sprCard: {fileID: 21300000, guid: ac8e9718b94ca504dae52b7922d8bddf, type: 3}
   - indice: 5
     sprGO: {fileID: 21300000, guid: df5f1b9b2a0044c49a6881e8b375936c, type: 3}
+    sprCard: {fileID: 21300000, guid: 4b837735322eee34c9716d87b9c3e167, type: 3}
   - indice: 6
     sprGO: {fileID: 21300000, guid: 1cb0a640db3114041b01a26f82d2cb46, type: 3}
+    sprCard: {fileID: 21300000, guid: 3d51ba46f43762f479280d54e9172a0d, type: 3}
   - indice: 7
     sprGO: {fileID: 21300000, guid: 4ecd459daaea2d14b8aab1734780df07, type: 3}
+    sprCard: {fileID: 21300000, guid: d0cbf107ba1fb164db4b22c4cd698139, type: 3}
   - indice: 8
     sprGO: {fileID: 21300000, guid: 1fbc70667d57b1d4d939f69d53be7265, type: 3}
+    sprCard: {fileID: 21300000, guid: 3eb024469f54bae40a96be252a44498b, type: 3}
   - indice: 9
     sprGO: {fileID: 21300000, guid: 9c1de91ed420b6444a14684891fca418, type: 3}
+    sprCard: {fileID: 21300000, guid: 6a40015790257cf41a9c410109611dbb, type: 3}
   - indice: 10
     sprGO: {fileID: 21300000, guid: f37fd421c42edc64cbca345eee4ee033, type: 3}
+    sprCard: {fileID: 21300000, guid: 3683064357b817f40ac7047f83c7e56a, type: 3}
   - indice: 11
     sprGO: {fileID: 21300000, guid: b65c4e597e687b3488b8fd41f5ac4dff, type: 3}
+    sprCard: {fileID: 21300000, guid: 299878bb186e0844797526f062097e0e, type: 3}
   - indice: 12
     sprGO: {fileID: 21300000, guid: cab58f82c89dde645bd4ce722967a8de, type: 3}
+    sprCard: {fileID: 21300000, guid: b77449b8bda46f54da2692a7299ee9d7, type: 3}
