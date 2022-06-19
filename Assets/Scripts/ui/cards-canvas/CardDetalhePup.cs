@@ -53,7 +53,11 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
     void AcaoCardPowerUpSelecionado.ConsumidorEvento.consumirEvento(CardPupSelecionadoDto evento)
     {
         movimentar(evento.posicaoCard);
-        cardDetalheDto.LblPreco.text = evento.powerUpEntidade.preco;
-        cardDetalheDto.LblQtd.text = PlayerPrefsPowerUp.recuperarQtdPup(evento.powerUpEntidade.nome).ToString();
+
+        PowerUpEntidade pupEntidade = evento.powerUpEntidade;
+        cardDetalheDto.LblPreco.text = pupEntidade.preco;
+        cardDetalheDto.LblQtd.text = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome).ToString();
+
+        cardDetalheDto.MaterialDetalhe.SetTexture("_imgCard", pupEntidade.sprCard.texture);
     }
 }
