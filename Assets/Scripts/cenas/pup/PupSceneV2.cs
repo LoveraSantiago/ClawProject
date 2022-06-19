@@ -7,9 +7,9 @@ public class PupSceneV2 : MonoBehaviour
 {
     [SerializeField] private TimerFichaDto timerFichaDto;
     [Space(5)]
-    [SerializeField] private float velocidade;
-    [SerializeField] private GameObject cardDetalhe;
+    [SerializeField] private CardPupDetalheDto cardDetalheDto;    
     [SerializeField] private Button[] cardBtns = new Button[13];
+    [Space(5)]
     [SerializeField] private Animator animator;
     [Space(5)]
     [SerializeField] private GameObject prefabPowerUpDto;
@@ -17,14 +17,16 @@ public class PupSceneV2 : MonoBehaviour
     private Vector3 posOriginal;
     private bool isClicado;
 
-    private CanvasPupAnimacao animacao;
     private TimerFicha timerFichaBronze;
+    private CardDetalhePup cardDetalhe;
+    private CanvasPupAnimacao animacao;
 
     // Start is called before the first frame update
     void Start()
     {
         Utils.configMainMono(this);
         timerFichaBronze = new TimerFicha(timerFichaDto, Ficha.BRONZE);
+        cardDetalhe = new CardDetalhePup(cardDetalheDto);
         animacao = new CanvasPupAnimacao(animator);
 
         FactoryPowerUpEntidade.resetContextoEstatico();
@@ -33,26 +35,17 @@ public class PupSceneV2 : MonoBehaviour
         {
             cardBtns[contador].onClick.AddListener(() => clicado());
         }
-        posOriginal = cardDetalhe.transform.position;
+
+        new AcaoCardPupDetalheMovimentado()
+            .configurarProdutor(cardDetalhe)
+            .adicionarConsumidor(animacao);
     }
 
     // Update is called once per frame
     void Update()
     {
         timerFichaBronze.update();
-
-        if (isClicado)
-        {           
-            Vector3 result = Vector3.MoveTowards(cardDetalhe.transform.position, posOriginal, velocidade * Time.deltaTime);
-            cardDetalhe.transform.position = result;
-            float distancia = Vector3.Distance(cardDetalhe.transform.position, posOriginal);            
-            if(distancia < 0.1f)
-            {
-                animacao.playFlipDown();
-                cardDetalhe.transform.position = posOriginal;
-                isClicado = false;                
-            }
-        }
+        cardDetalhe.update();
     }
 
     public void clicado()
@@ -62,8 +55,7 @@ public class PupSceneV2 : MonoBehaviour
             animacao.playFlipUpStop();            
 
             GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
-            cardDetalhe.transform.position = goSelecionado.transform.position;
-            cardDetalhe.SetActive(true);
+            cardDetalhe.movimentar(goSelecionado.transform.position);            
             isClicado = true;            
         }
     }

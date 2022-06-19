@@ -3498,8 +3498,9 @@ MonoBehaviour:
       transfSegundos: {fileID: 2080252809}
       transfMinutos: {fileID: 2080252808}
       transfHoras: {fileID: 2080252807}
-  velocidade: 15
-  cardDetalhe: {fileID: 477344582}
+  cardDetalheDto:
+    velocidade: 15
+    cardDetalhe: {fileID: 477344582}
   cardBtns:
   - {fileID: 1097314354}
   - {fileID: 1489691082}

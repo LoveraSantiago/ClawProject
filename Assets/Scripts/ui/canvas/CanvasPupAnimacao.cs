@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CanvasPupAnimacao 
+public class CanvasPupAnimacao : AcaoCardPupDetalheMovimentado.ConsumidorEvento
 {
     private static readonly int FLIP_DOWN = Animator.StringToHash("flip-down");
     private static readonly int FLIP_UP_STOP = Animator.StringToHash("flip-up-stop");
@@ -20,5 +20,10 @@ public class CanvasPupAnimacao
     public void playFlipUpStop()
     {
         animator.Play(FLIP_UP_STOP);
+    }
+
+    public void consumirEvento(bool evento)
+    {
+        playFlipDown();
     }
 }
