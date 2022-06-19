@@ -84,3 +84,9 @@ MonoBehaviour:
   - indice: 12
     sprGO: {fileID: 21300000, guid: cab58f82c89dde645bd4ce722967a8de, type: 3}
     sprCard: {fileID: 21300000, guid: b77449b8bda46f54da2692a7299ee9d7, type: 3}
+  materiaisPup:
+    matExplosivos: {fileID: 2100000, guid: e9d4722b412cafa4ea939330e3d6d2e0, type: 2}
+    matMecanimso: {fileID: 2100000, guid: 34e248d882c22f64cb7f6eed8c5fae56, type: 2}
+    matImpulso: {fileID: 2100000, guid: 05c6f43ee81e20646bb3ff4d0c85e74a, type: 2}
+    matLevitacao: {fileID: 2100000, guid: 9ddcc05073e3b8e4faffced108e5f1be, type: 2}
+    matTransmutacao: {fileID: 2100000, guid: 370588ab3cc76cc4c80f146fd75b7da3, type: 2}

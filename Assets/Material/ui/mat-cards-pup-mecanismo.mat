@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat-cards-pup-descarte
+  m_Name: mat-cards-pup-mecanismo
   m_Shader: {fileID: -6465566751694194690, guid: f05527429b5b5a242ba6cb54be26897a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

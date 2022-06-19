@@ -3,6 +3,7 @@ using UnityEngine;
 public class PowerUpEntidade 
 {
     private static PowerUpPrefabDto[] powerUpDtos;
+    private static MaterialsPowerUpDto materiaisPupDto;
 
     public int indice { get; private set; }
     public string nome { get; private set; }    
@@ -88,6 +89,18 @@ public class PowerUpEntidade
         return this;
     }
 
+    public Material getMaterial()
+    {
+        switch (familia) {
+            case PowerUpEnums.FAMILIA.EXPLOSIVOS  : return materiaisPupDto.MatExplosivos;
+            case PowerUpEnums.FAMILIA.TRANSMUTACAO: return materiaisPupDto.MatTransmutacao;
+            case PowerUpEnums.FAMILIA.LEVITACAO   : return materiaisPupDto.MatLevitacao;
+            case PowerUpEnums.FAMILIA.MECANISMO   : return materiaisPupDto.MatMecanismo;
+            case PowerUpEnums.FAMILIA.IMPULSO     : return materiaisPupDto.MatImpulso;
+        }
+        return materiaisPupDto.MatExplosivos;
+    }
+
     public AbstractPowerUpGo getPowerUpGo()
     {
         if(powerUpGo == null)
@@ -101,5 +114,6 @@ public class PowerUpEntidade
     {
         PrefabDePowerUpsDto prefabPUpDto = goPrefabPupDto.GetComponent<PrefabDePowerUpsDto>();
         powerUpDtos = prefabPUpDto.PowerUpDtos;
+        materiaisPupDto = prefabPUpDto.MateriaisPup;
     }
 }

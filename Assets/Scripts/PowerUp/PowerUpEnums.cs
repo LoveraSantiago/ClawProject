@@ -16,10 +16,10 @@ public class PowerUpEnums
 
     public class FAMILIA
     {
-        public static readonly string EXPLOSIVOS   = "EXPLOSIVOS";
-        public static readonly string TRANSMUTACAO = "TRANSMUTA플O";
-        public static readonly string LEVITACAO    = "LEVITA플O";
-        public static readonly string MECANISMO    = "MECANISMO";
-        public static readonly string IMPULSO      = "IMPULSO";
+        public const string EXPLOSIVOS   = "EXPLOSIVOS";
+        public const string TRANSMUTACAO = "TRANSMUTA플O";
+        public const string LEVITACAO    = "LEVITA플O";
+        public const string MECANISMO    = "MECANISMO";
+        public const string IMPULSO      = "IMPULSO";
     }  
 }
