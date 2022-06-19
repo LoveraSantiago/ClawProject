@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class PupSceneV2 : MonoBehaviour
 {
     [SerializeField] private TimerFichaDto timerFichaDto;
     [Space(5)]
-    [SerializeField] private CardPupDetalheDto cardDetalheDto;    
-    [SerializeField] private Button[] cardBtns = new Button[13];
+    [SerializeField] private CardPupDetalheDto cardDetalheDto;
+    [Space(5)]
+    [SerializeField] private CardsPupsDto[] cardsPupsDto;    
     [Space(5)]
     [SerializeField] private Animator animator;
     [Space(5)]
@@ -26,14 +26,14 @@ public class PupSceneV2 : MonoBehaviour
     {
         Utils.configMainMono(this);
         timerFichaBronze = new TimerFicha(timerFichaDto, Ficha.BRONZE);
-        cardDetalhe = new CardDetalhePup(cardDetalheDto);
-        animacao = new CanvasPupAnimacao(animator);
+        cardDetalhe      = new CardDetalhePup(cardDetalheDto);
+        animacao         = new CanvasPupAnimacao(animator);
 
         FactoryPowerUpEntidade.resetContextoEstatico();
 
-        for (int contador = 0; contador < cardBtns.Length; contador++)
+        for (int contador = 0; contador < cardsPupsDto.Length; contador++)
         {
-            cardBtns[contador].onClick.AddListener(() => clicado());
+            cardsPupsDto[contador].Btn.onClick.AddListener(() => clicado());
         }
 
         new AcaoCardPupDetalheMovimentado()
