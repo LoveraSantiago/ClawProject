@@ -18,8 +18,6 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento
     private void popularCards()
     {
         PowerUpEntidade[] pupEntidades = FactoryPowerUpEntidade.getAllPowerUps();
-        PowerUpHelper pupHelper = new PowerUpHelper();
-
         for (int contador = 0; contador < cardsPupsDto.Length; contador++)
         {
             CardsPupsDto cardPupIt = cardsPupsDto[contador];
@@ -28,6 +26,7 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento
             PowerUpEntidade pupEntidade = pupEntidades[contador];
             cardPupIt.ImgCard.sprite    = pupEntidade.sprCard;
             cardPupIt.LblPreco.text     = pupEntidade.preco;
+            cardPupIt.LblQtd.text = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome).ToString();
         }
 
     }

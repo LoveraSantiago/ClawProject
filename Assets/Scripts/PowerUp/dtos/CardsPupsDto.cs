@@ -9,8 +9,10 @@ public class CardsPupsDto
     [SerializeField] private Button btn;
     [SerializeField] private Image imgCard;
     [SerializeField] private TextMeshProUGUI lblPreco;
+    [SerializeField] private TextMeshProUGUI lblQtd;
 
     public Button Btn { get { return btn; } }
     public Image ImgCard { get { return imgCard; } }
     public TextMeshProUGUI LblPreco { get { return lblPreco; } }
+    public TextMeshProUGUI LblQtd { get { return lblQtd; } }
 }
