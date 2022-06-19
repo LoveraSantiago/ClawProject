@@ -12,12 +12,24 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento
         isClicado = false;
         this.cardsPupsDto = cardsPupsDto;
         produtorDeEvento = new ProdutorDeEvento<CardPupSelecionadoDto>();
+        popularCards();
+    }
+
+    private void popularCards()
+    {
         PowerUpEntidade[] pupEntidades = FactoryPowerUpEntidade.getAllPowerUps();
+        PowerUpHelper pupHelper = new PowerUpHelper();
+
         for (int contador = 0; contador < cardsPupsDto.Length; contador++)
         {
-            cardsPupsDto[contador].Btn.onClick.AddListener(() => clicado());
-            cardsPupsDto[contador].ImgCard.sprite = pupEntidades[contador].sprCard;
+            CardsPupsDto cardPupIt = cardsPupsDto[contador];
+            cardPupIt.Btn.onClick.AddListener(() => clicado());
+
+            PowerUpEntidade pupEntidade = pupEntidades[contador];
+            cardPupIt.ImgCard.sprite    = pupEntidade.sprCard;
+            cardPupIt.LblPreco.text     = pupEntidade.preco;
         }
+
     }
 
     private void clicado()
