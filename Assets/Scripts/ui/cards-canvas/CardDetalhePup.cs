@@ -53,5 +53,7 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
     void AcaoCardPowerUpSelecionado.ConsumidorEvento.consumirEvento(CardPupSelecionadoDto evento)
     {
         movimentar(evento.posicaoCard);
+        cardDetalheDto.LblPreco.text = evento.powerUpEntidade.preco;
+        cardDetalheDto.LblQtd.text = PlayerPrefsPowerUp.recuperarQtdPup(evento.powerUpEntidade.nome).ToString();
     }
 }
