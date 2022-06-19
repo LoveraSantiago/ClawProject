@@ -4,15 +4,19 @@ using UnityEngine;
 [System.Serializable]
 public class MaterialsPowerUpDto 
 {
-    [SerializeField] private Material matExplosivos;
-    [SerializeField] private Material matMecanimso;
-    [SerializeField] private Material matImpulso;
-    [SerializeField] private Material matLevitacao;
-    [SerializeField] private Material matTransmutacao;
+    [SerializeField] private MaterialTipoPowerUpDto matExplosivos;
+    [Space(3)]
+    [SerializeField] private MaterialTipoPowerUpDto matMecanimso;
+    [Space(3)]
+    [SerializeField] private MaterialTipoPowerUpDto matImpulso;
+    [Space(3)]
+    [SerializeField] private MaterialTipoPowerUpDto matLevitacao;
+    [Space(3)]
+    [SerializeField] private MaterialTipoPowerUpDto matTransmutacao;
 
-    public Material MatExplosivos { get { return matExplosivos; } }
-    public Material MatMecanismo { get { return matMecanimso; } }
-    public Material MatImpulso { get { return matImpulso; } }
-    public Material MatLevitacao { get { return matLevitacao; } }
-    public Material MatTransmutacao { get { return matTransmutacao; } }
+    public MaterialTipoPowerUpDto MatExplosivos { get { return matExplosivos; } }
+    public MaterialTipoPowerUpDto MatMecanismo { get { return matMecanimso; } }
+    public MaterialTipoPowerUpDto MatImpulso { get { return matImpulso; } }
+    public MaterialTipoPowerUpDto MatLevitacao { get { return matLevitacao; } }
+    public MaterialTipoPowerUpDto MatTransmutacao { get { return matTransmutacao; } }
 }

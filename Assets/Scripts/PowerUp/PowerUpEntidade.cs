@@ -89,7 +89,7 @@ public class PowerUpEntidade
         return this;
     }
 
-    public Material getMaterial()
+    public MaterialTipoPowerUpDto getMaterial()
     {
         switch (familia) {
             case PowerUpEnums.FAMILIA.EXPLOSIVOS  : return materiaisPupDto.MatExplosivos;

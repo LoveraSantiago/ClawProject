@@ -58,6 +58,10 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
         cardDetalheDto.LblPreco.text = pupEntidade.preco;
         cardDetalheDto.LblQtd.text = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome).ToString();
 
-        cardDetalheDto.MaterialDetalhe.SetTexture("_imgCard", pupEntidade.sprCard.texture);
+        MaterialTipoPowerUpDto materialPup = pupEntidade.getMaterial();
+        Material materialDetalhe = cardDetalheDto.MaterialDetalhe;
+        materialDetalhe.SetTexture("_imgCard", pupEntidade.sprCard.texture);
+        materialDetalhe.SetColor("_corPrincipal", materialPup.CorPrincipal);
+        materialDetalhe.SetColor("_corCirculo", materialPup.CorCirculo);
     }
 }
