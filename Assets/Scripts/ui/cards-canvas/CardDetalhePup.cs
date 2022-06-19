@@ -63,5 +63,6 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
         materialDetalhe.SetTexture("_imgCard", pupEntidade.sprCard.texture);
         materialDetalhe.SetColor("_corPrincipal", materialPup.CorPrincipal);
         materialDetalhe.SetColor("_corCirculo", materialPup.CorCirculo);
+        materialDetalhe.SetColor("_corEscura", materialPup.CorEscura);
     }
 }
