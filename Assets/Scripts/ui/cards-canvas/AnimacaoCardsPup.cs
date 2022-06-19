@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class CanvasPupAnimacao : AcaoCardPupDetalheMovimentado.ConsumidorEvento
+public class AnimacaoCardsPup : AcaoCardPupDetalheMovimentado.ConsumidorEvento
 {
     private static readonly int FLIP_DOWN = Animator.StringToHash("flip-down");
     private static readonly int FLIP_UP_STOP = Animator.StringToHash("flip-up-stop");
 
     private Animator animator;
 
-    public CanvasPupAnimacao(Animator animator)
+    public AnimacaoCardsPup(Animator animator)
     {
         this.animator = animator;
     }

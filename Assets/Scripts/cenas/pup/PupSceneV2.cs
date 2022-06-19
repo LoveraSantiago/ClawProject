@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 #pragma warning disable 0649
 public class PupSceneV2 : MonoBehaviour
@@ -12,14 +11,12 @@ public class PupSceneV2 : MonoBehaviour
     [Space(5)]
     [SerializeField] private Animator animator;
     [Space(5)]
-    [SerializeField] private GameObject prefabPowerUpDto;
-
-    private Vector3 posOriginal;
-    private bool isClicado;
+    [SerializeField] private GameObject prefabPowerUpDto;    
 
     private TimerFicha timerFichaBronze;
     private CardDetalhePup cardDetalhe;
-    private CanvasPupAnimacao animacao;
+    private CardsPups cardsPups;
+    private AnimacaoCardsPup animacao;
 
     // Start is called before the first frame update
     void Start()
@@ -27,18 +24,18 @@ public class PupSceneV2 : MonoBehaviour
         Utils.configMainMono(this);
         timerFichaBronze = new TimerFicha(timerFichaDto, Ficha.BRONZE);
         cardDetalhe      = new CardDetalhePup(cardDetalheDto);
-        animacao         = new CanvasPupAnimacao(animator);
+        animacao         = new AnimacaoCardsPup(animator);
+        cardsPups        = new CardsPups(cardsPupsDto);
 
-        FactoryPowerUpEntidade.resetContextoEstatico();
-
-        for (int contador = 0; contador < cardsPupsDto.Length; contador++)
-        {
-            cardsPupsDto[contador].Btn.onClick.AddListener(() => clicado());
-        }
+        FactoryPowerUpEntidade.resetContextoEstatico();        
 
         new AcaoCardPupDetalheMovimentado()
             .configurarProdutor(cardDetalhe)
             .adicionarConsumidor(animacao);
+
+        new AcaoCardPowerUpSelecionado()
+            .configurarProdutor(cardsPups)
+            .adicionarConsumidor(cardDetalhe);
     }
 
     // Update is called once per frame
@@ -46,17 +43,5 @@ public class PupSceneV2 : MonoBehaviour
     {
         timerFichaBronze.update();
         cardDetalhe.update();
-    }
-
-    public void clicado()
-    {
-        if(isClicado == false)
-        {
-            animacao.playFlipUpStop();            
-
-            GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
-            cardDetalhe.movimentar(goSelecionado.transform.position);            
-            isClicado = true;            
-        }
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento
+public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
+                              AcaoCardPowerUpSelecionado.ConsumidorEvento
 {
     private Vector3 posOriginal;
     private Vector3 posDestino;
@@ -47,5 +48,10 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento
     ProdutorDeEvento<bool> AcaoCardPupDetalheMovimentado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
+    }
+
+    void AcaoCardPowerUpSelecionado.ConsumidorEvento.consumirEvento(CardPupSelecionadoDto evento)
+    {
+        movimentar(evento.posicaoCard);
     }
 }

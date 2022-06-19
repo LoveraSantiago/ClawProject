@@ -3501,20 +3501,20 @@ MonoBehaviour:
   cardDetalheDto:
     velocidade: 15
     cardDetalhe: {fileID: 477344582}
-  cardBtns:
-  - {fileID: 1097314354}
-  - {fileID: 1489691082}
-  - {fileID: 791131045}
-  - {fileID: 336143854}
-  - {fileID: 1409321679}
-  - {fileID: 2074579757}
-  - {fileID: 1835433918}
-  - {fileID: 2049457507}
-  - {fileID: 1712552280}
-  - {fileID: 1177681979}
-  - {fileID: 1961826578}
-  - {fileID: 1453340348}
-  - {fileID: 1022272071}
+  cardsPupsDto:
+  - btn: {fileID: 1097314354}
+  - btn: {fileID: 1489691082}
+  - btn: {fileID: 791131045}
+  - btn: {fileID: 336143854}
+  - btn: {fileID: 1409321679}
+  - btn: {fileID: 2074579757}
+  - btn: {fileID: 1835433918}
+  - btn: {fileID: 2049457507}
+  - btn: {fileID: 1712552280}
+  - btn: {fileID: 1177681979}
+  - btn: {fileID: 1961826578}
+  - btn: {fileID: 1453340348}
+  - btn: {fileID: 1022272071}
   animator: {fileID: 1668072994}
   prefabPowerUpDto: {fileID: 0}
 --- !u!95 &1668072994
