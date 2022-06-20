@@ -7,6 +7,8 @@ public class PupSceneV2 : MonoBehaviour
     [Space(5)]
     [SerializeField] private CardPupDetalheDto cardDetalheDto;
     [Space(5)]
+    [SerializeField] private CanvasDetalheCardPupDto canvasDetalheDto;
+    [Space(5)]
     [SerializeField] private CardsPupsDto[] cardsPupsDto;    
     [Space(5)]
     [SerializeField] private Animator animator;
@@ -17,6 +19,7 @@ public class PupSceneV2 : MonoBehaviour
     private CardDetalhePup cardDetalhe;
     private CardsPups cardsPups;
     private AnimacaoCardsPup animacao;
+    private CanvasDetalhePup canvasDetalhe;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,7 @@ public class PupSceneV2 : MonoBehaviour
         cardDetalhe      = new CardDetalhePup(cardDetalheDto);
         animacao         = new AnimacaoCardsPup(animator);
         cardsPups        = new CardsPups(cardsPupsDto);
+        canvasDetalhe    = new CanvasDetalhePup(canvasDetalheDto);
 
         new AcaoCardPupDetalheMovimentado()
             .configurarProdutor(cardDetalhe)
