@@ -1,6 +1,5 @@
-using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+using UnityEngine;
 
 #pragma warning disable 0649
 [System.Serializable]
