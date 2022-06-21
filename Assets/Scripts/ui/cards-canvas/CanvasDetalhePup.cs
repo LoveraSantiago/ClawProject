@@ -1,5 +1,6 @@
 public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
 {
+    public bool isAberto { get; private set; }
     private CanvasDetalheCardPupDto canvasDetalheDto;
 
     public CanvasDetalhePup(CanvasDetalheCardPupDto canvasDetalheDto)
@@ -9,6 +10,8 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
 
     void AcaoCardPowerUpSelecionado.ConsumidorEvento.consumirEvento(CardPupSelecionadoDto evento)
     {
+        isAberto = true;
+
         PowerUpEntidade pupEntidade = evento.powerUpEntidade;
         MaterialTipoPowerUpDto materialDetalhe = pupEntidade.getMaterial();
         canvasDetalheDto.ImgBackground.color   = materialDetalhe.CorPrincipal;

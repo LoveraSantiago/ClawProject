@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class PupSceneV2 : MonoBehaviour
 {
     [SerializeField] private TimerFichaDto timerFichaDto;
+    [Space(5)]
+    [SerializeField] private Button btnBack;
     [Space(5)]
     [SerializeField] private CardPupDetalheDto cardDetalheDto;
     [Space(5)]
@@ -19,7 +22,7 @@ public class PupSceneV2 : MonoBehaviour
     private CardDetalhePup cardDetalhe;
     private CardsPups cardsPups;
     private AnimacaoCardsPup animacao;
-    private CanvasDetalhePup canvasDetalhe;
+    private CanvasDetalhePup canvasDetalhe;   
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,7 @@ public class PupSceneV2 : MonoBehaviour
         Utils.configMainMono(this);
         FactoryPowerUpEntidade.resetContextoEstatico();
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
+        configBtnBack(btnBack);
 
         timerFichaBronze = new TimerFicha(timerFichaDto, Ficha.BRONZE);
         cardDetalhe      = new CardDetalhePup(cardDetalheDto);
@@ -50,4 +54,16 @@ public class PupSceneV2 : MonoBehaviour
         timerFichaBronze.update();
         cardDetalhe.update();
     }
+
+    private void configBtnBack(Button btnBack)
+    {
+        if (canvasDetalhe.isAberto)
+        {
+
+        }
+        else
+        {
+            btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMap());
+        }
+    }    
 }
