@@ -7,12 +7,19 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento
     private CardsPupsDto[] cardsPupsDto;
     private ProdutorDeEvento<CardPupSelecionadoDto> produtorDeEvento;
 
+    private CardPupSelecionadoDto cardSelecionado;
+
     public CardsPups(CardsPupsDto[] cardsPupsDto)
     {
         isClicado = false;
         this.cardsPupsDto = cardsPupsDto;
         produtorDeEvento = new ProdutorDeEvento<CardPupSelecionadoDto>();
         popularCards();
+    }
+
+    public CardPupSelecionadoDto recuperarUltimoCardSelecionado()
+    {
+        return cardSelecionado;
     }
 
     private void popularCards()
@@ -41,7 +48,7 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento
             string nomeParent = goParent.name;
 
             PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeParent));            
-            CardPupSelecionadoDto cardSelecionado = new CardPupSelecionadoDto(goSelecionado.transform.position, pupEntidade);
+            cardSelecionado = new CardPupSelecionadoDto(goSelecionado.transform.position, pupEntidade);
             
             produtorDeEvento.produziuEvento(cardSelecionado);
             goParent.SetActive(false);

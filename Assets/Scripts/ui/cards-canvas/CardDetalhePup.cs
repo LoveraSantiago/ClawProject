@@ -4,6 +4,7 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
                               AcaoCardPowerUpSelecionado.ConsumidorEvento
 {
     private Vector3 posOriginal;
+    private Vector3 posOrigem;
     private Vector3 posDestino;
     private CardPupDetalheDto cardDetalheDto;
 
@@ -21,12 +22,12 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
     {
         if (deveMovimentar())
         {
-            Vector3 result = Vector3.MoveTowards(cardDetalheDto.CardDetalhe.transform.position, posOriginal, cardDetalheDto.Velocidade * Time.deltaTime);
+            Vector3 result = Vector3.MoveTowards(cardDetalheDto.CardDetalhe.transform.position, posOrigem, cardDetalheDto.Velocidade * Time.deltaTime);
             cardDetalheDto.CardDetalhe.transform.position = result;
-            float distancia = Vector3.Distance(cardDetalheDto.CardDetalhe.transform.position, posOriginal);
+            float distancia = Vector3.Distance(cardDetalheDto.CardDetalhe.transform.position, posOrigem);
             if (distancia < 0.1f)
             {   
-                cardDetalheDto.CardDetalhe.transform.position = posOriginal;
+                cardDetalheDto.CardDetalhe.transform.position = posOrigem;
                 posDestino = Vector3.zero;
                 produtorDeEvento.produziuEvento(true);
             }
@@ -36,8 +37,14 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
     public void movimentar(Vector3 posicaoInicial)
     {
         posDestino = posicaoInicial;
+        posOrigem  = posOriginal;
         cardDetalheDto.CardDetalhe.transform.position = posDestino;
         cardDetalheDto.CardDetalhe.SetActive(true);
+    }
+
+    public void voltar(Vector3 posicaoVoltar)
+    {
+
     }
 
     private bool deveMovimentar()

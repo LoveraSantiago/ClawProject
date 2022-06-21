@@ -30,13 +30,13 @@ public class PupSceneV2 : MonoBehaviour
         Utils.configMainMono(this);
         FactoryPowerUpEntidade.resetContextoEstatico();
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
-        configBtnBack(btnBack);
 
         timerFichaBronze = new TimerFicha(timerFichaDto, Ficha.BRONZE);
         cardDetalhe      = new CardDetalhePup(cardDetalheDto);
         animacao         = new AnimacaoCardsPup(animator);
         cardsPups        = new CardsPups(cardsPupsDto);
         canvasDetalhe    = new CanvasDetalhePup(canvasDetalheDto);
+        btnBack.onClick.AddListener(()=>voltar());
 
         new AcaoCardPupDetalheMovimentado()
             .configurarProdutor(cardDetalhe)
@@ -55,15 +55,21 @@ public class PupSceneV2 : MonoBehaviour
         cardDetalhe.update();
     }
 
-    private void configBtnBack(Button btnBack)
+    private void voltar()
     {
         if (canvasDetalhe.isAberto)
         {
-
+            animacao.playFlipUp();
         }
         else
         {
-            btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMap());
+            CenaUtils.irParaCenaMap();
         }
-    }    
+    }      
+    
+    public void animacaoFlipUpEnd()
+    {
+        canvasDetalhe.dismiss();
+        CardPupSelecionadoDto cardSelecionado = cardsPups.recuperarUltimoCardSelecionado();
+    }
 }
