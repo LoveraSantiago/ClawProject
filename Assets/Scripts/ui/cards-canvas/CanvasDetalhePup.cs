@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
 {
     private CanvasDetalheCardPupDto canvasDetalheDto;
@@ -13,6 +9,9 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
 
     void AcaoCardPowerUpSelecionado.ConsumidorEvento.consumirEvento(CardPupSelecionadoDto evento)
     {
-        
+        MaterialTipoPowerUpDto materialDetalhe = evento.powerUpEntidade.getMaterial();
+        canvasDetalheDto.ImgBackground.color = materialDetalhe.CorPrincipal;
+        canvasDetalheDto.ImgCirculo.color      = materialDetalhe.CorCirculo;
+        canvasDetalheDto.ImgExplicacao.color   = materialDetalhe.CorEscura;
     }
 }

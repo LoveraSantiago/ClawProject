@@ -87,26 +87,26 @@ MonoBehaviour:
   materiaisPup:
     matExplosivos:
       material: {fileID: 2100000, guid: e9d4722b412cafa4ea939330e3d6d2e0, type: 2}
-      corPrincipal: {r: 1, g: 0, b: 0, a: 0}
-      corEscura: {r: 0.7019608, g: 0.07058824, b: 0.07058824, a: 0}
-      corCirculo: {r: 1, g: 1, b: 1, a: 0}
+      corPrincipal: {r: 1, g: 0, b: 0, a: 1}
+      corEscura: {r: 0.7019608, g: 0.07058824, b: 0.07058824, a: 1}
+      corCirculo: {r: 1, g: 1, b: 1, a: 1}
     matMecanimso:
       material: {fileID: 2100000, guid: 34e248d882c22f64cb7f6eed8c5fae56, type: 2}
-      corPrincipal: {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 0}
-      corEscura: {r: 0.52156866, g: 0.46666667, b: 0.46666667, a: 0}
-      corCirculo: {r: 1, g: 0.8745098, b: 0, a: 0}
+      corPrincipal: {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 1}
+      corEscura: {r: 0.52156866, g: 0.46666667, b: 0.46666667, a: 1}
+      corCirculo: {r: 1, g: 0.8745098, b: 0, a: 1}
     matImpulso:
       material: {fileID: 2100000, guid: 05c6f43ee81e20646bb3ff4d0c85e74a, type: 2}
-      corPrincipal: {r: 0.25490198, g: 0.8980392, b: 0, a: 0}
-      corEscura: {r: 0.21176471, g: 0.6, b: 0.05882353, a: 0}
-      corCirculo: {r: 0.9019608, g: 0, b: 0.8156863, a: 0}
+      corPrincipal: {r: 0.25490198, g: 0.8980392, b: 0, a: 1}
+      corEscura: {r: 0.21176471, g: 0.6, b: 0.05882353, a: 1}
+      corCirculo: {r: 0.9019608, g: 0, b: 0.8156863, a: 1}
     matLevitacao:
       material: {fileID: 2100000, guid: 9ddcc05073e3b8e4faffced108e5f1be, type: 2}
-      corPrincipal: {r: 0, g: 0.5921569, b: 1, a: 0}
-      corEscura: {r: 0.07058824, g: 0.44705883, b: 0.7019608, a: 0}
-      corCirculo: {r: 1, g: 0.4, b: 0, a: 0}
+      corPrincipal: {r: 0, g: 0.5921569, b: 1, a: 1}
+      corEscura: {r: 0.07058824, g: 0.44705883, b: 0.7019608, a: 1}
+      corCirculo: {r: 1, g: 0.4, b: 0, a: 1}
     matTransmutacao:
       material: {fileID: 2100000, guid: 370588ab3cc76cc4c80f146fd75b7da3, type: 2}
-      corPrincipal: {r: 1, g: 0.83137256, b: 0, a: 0}
-      corEscura: {r: 0.7019608, g: 0.59607846, b: 0.07058824, a: 0}
-      corCirculo: {r: 0.3882353, g: 0.16470589, b: 0.48235294, a: 0}
+      corPrincipal: {r: 1, g: 0.83137256, b: 0, a: 1}
+      corEscura: {r: 0.7019608, g: 0.59607846, b: 0.07058824, a: 1}
+      corCirculo: {r: 0.3882353, g: 0.16470589, b: 0.48235294, a: 1}

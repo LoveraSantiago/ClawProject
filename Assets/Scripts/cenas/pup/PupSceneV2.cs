@@ -40,7 +40,8 @@ public class PupSceneV2 : MonoBehaviour
 
         new AcaoCardPowerUpSelecionado()
             .configurarProdutor(cardsPups)
-            .adicionarConsumidor(cardDetalhe);
+            .adicionarConsumidor(cardDetalhe)
+            .adicionarConsumidor(canvasDetalhe);
     }
 
     // Update is called once per frame

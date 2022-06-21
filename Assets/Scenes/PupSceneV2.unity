@@ -2335,7 +2335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1011788919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4205,6 +4205,10 @@ MonoBehaviour:
     materialDetalhe: {fileID: 2100000, guid: 5c307d6e140da704d86f900ede344223, type: 2}
     lblPreco: {fileID: 193887634}
     lblQtd: {fileID: 1932365738}
+  canvasDetalheDto:
+    imgBackground: {fileID: 1011788920}
+    imgCirculo: {fileID: 468711134}
+    imgExplicacao: {fileID: 148039480}
   cardsPupsDto:
   - btn: {fileID: 1097314354}
     imgContornoCard: {fileID: 1097314356}
