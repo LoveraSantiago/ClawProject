@@ -56,7 +56,7 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
 
         PowerUpEntidade pupEntidade = evento.powerUpEntidade;
         cardDetalheDto.LblPreco.text = pupEntidade.preco;
-        cardDetalheDto.LblQtd.text = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome).ToString();
+        cardDetalheDto.LblQtd.text = pupEntidade.getQtd().ToString();
 
         MaterialTipoPowerUpDto materialPup = pupEntidade.getMaterial();
         Material materialDetalhe = cardDetalheDto.MaterialDetalhe;

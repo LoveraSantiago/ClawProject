@@ -26,7 +26,7 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento
             PowerUpEntidade pupEntidade = pupEntidades[contador];
             cardPupIt.ImgCard.sprite    = pupEntidade.sprCard;
             cardPupIt.LblPreco.text     = pupEntidade.preco;
-            cardPupIt.LblQtd.text = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome).ToString();
+            cardPupIt.LblQtd.text       = pupEntidade.getQtd().ToString();
             cardPupIt.ImgContornoCard.material = pupEntidade.getMaterial().Material;
         }
 

@@ -89,6 +89,11 @@ public class PowerUpEntidade
         return this;
     }
 
+    public int getQtd()
+    {
+        return PlayerPrefsPowerUp.recuperarQtdPup(nome);
+    }
+
     public MaterialTipoPowerUpDto getMaterial()
     {
         switch (familia) {
