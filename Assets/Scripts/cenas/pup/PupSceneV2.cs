@@ -40,7 +40,8 @@ public class PupSceneV2 : MonoBehaviour
 
         new AcaoCardPupDetalheMovimentado()
             .configurarProdutor(cardDetalhe)
-            .adicionarConsumidor(animacao);
+            .adicionarConsumidor(animacao)
+            .adicionarConsumidor(cardsPups);
 
         new AcaoCardPowerUpSelecionado()
             .configurarProdutor(cardsPups)
@@ -71,5 +72,6 @@ public class PupSceneV2 : MonoBehaviour
     {
         canvasDetalhe.dismiss();
         CardPupSelecionadoDto cardSelecionado = cardsPups.recuperarUltimoCardSelecionado();
+        cardDetalhe.voltar(cardSelecionado.posicaoCard);
     }
 }

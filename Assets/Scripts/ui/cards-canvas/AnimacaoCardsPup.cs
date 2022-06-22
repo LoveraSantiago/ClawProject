@@ -21,15 +21,18 @@ public class AnimacaoCardsPup : AcaoCardPupDetalheMovimentado.ConsumidorEvento
     public void playFlipUpStop()
     {
         animator.Play(FLIP_UP_STOP);
-    }
-
-    public void consumirEvento(bool evento)
-    {
-        playFlipDown();
-    }
+    }    
 
     public void playFlipUp()
     {
         animator.Play(FLIP_UP);
+    }
+
+    void AcaoCardPupDetalheMovimentado.ConsumidorEvento.consumirEvento(bool evento)
+    {
+        if (evento)
+        {
+            playFlipDown();
+        }
     }
 }

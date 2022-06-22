@@ -4,8 +4,8 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
                               AcaoCardPowerUpSelecionado.ConsumidorEvento
 {
     private Vector3 posOriginal;
-    private Vector3 posOrigem;
-    private Vector3 posDestino;
+    private Vector3 posFinal;
+    private Vector3 posInicial;
     private CardPupDetalheDto cardDetalheDto;
 
     private ProdutorDeEvento<bool> produtorDeEvento;
@@ -14,7 +14,7 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
     {
         this.cardDetalheDto = cardDetalheDto;
         posOriginal = cardDetalheDto.CardDetalhe.transform.position;
-        posDestino = Vector3.zero;
+        posInicial = Vector3.zero;
         produtorDeEvento = new ProdutorDeEvento<bool>();
     }
 
@@ -22,34 +22,45 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
     {
         if (deveMovimentar())
         {
-            Vector3 result = Vector3.MoveTowards(cardDetalheDto.CardDetalhe.transform.position, posOrigem, cardDetalheDto.Velocidade * Time.deltaTime);
+            Vector3 result = Vector3.MoveTowards(cardDetalheDto.CardDetalhe.transform.position, posFinal, cardDetalheDto.Velocidade * Time.deltaTime);
             cardDetalheDto.CardDetalhe.transform.position = result;
-            float distancia = Vector3.Distance(cardDetalheDto.CardDetalhe.transform.position, posOrigem);
+            float distancia = Vector3.Distance(cardDetalheDto.CardDetalhe.transform.position, posFinal);
             if (distancia < 0.1f)
-            {   
-                cardDetalheDto.CardDetalhe.transform.position = posOrigem;
-                posDestino = Vector3.zero;
-                produtorDeEvento.produziuEvento(true);
+            {
+                cardDetalheDto.CardDetalhe.transform.position = posFinal;
+                posInicial = Vector3.zero;
+                if (posOriginal == posFinal)
+                {                
+                    produtorDeEvento.produziuEvento(true);
+                }
+                else
+                {
+                    produtorDeEvento.produziuEvento(false);
+                    cardDetalheDto.CardDetalhe.SetActive(false);
+                }
             }
         }
     }
 
     public void movimentar(Vector3 posicaoInicial)
     {
-        posDestino = posicaoInicial;
-        posOrigem  = posOriginal;
-        cardDetalheDto.CardDetalhe.transform.position = posDestino;
+        posInicial = posicaoInicial;
+        posFinal   = posOriginal;
+        cardDetalheDto.CardDetalhe.transform.position = posInicial;
         cardDetalheDto.CardDetalhe.SetActive(true);
     }
 
     public void voltar(Vector3 posicaoVoltar)
     {
-
+        posInicial = posOriginal;
+        posFinal   = posicaoVoltar;
+        cardDetalheDto.CardDetalhe.transform.position = posOriginal;
+        cardDetalheDto.CardDetalhe.SetActive(true);
     }
 
     private bool deveMovimentar()
     {
-        return posDestino != Vector3.zero;
+        return posInicial != Vector3.zero;
     }
 
     ProdutorDeEvento<bool> AcaoCardPupDetalheMovimentado.ProdutorEvento.getProdutorDeEvento()

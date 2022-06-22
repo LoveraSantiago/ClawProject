@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento
+public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
+                         AcaoCardPupDetalheMovimentado.ConsumidorEvento
 {
     private bool isClicado;
     private CardsPupsDto[] cardsPupsDto;
@@ -36,7 +37,6 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento
             cardPupIt.LblQtd.text       = pupEntidade.getQtd().ToString();
             cardPupIt.ImgContornoCard.material = pupEntidade.getMaterial().Material;
         }
-
     }
 
     private void clicado()
@@ -47,11 +47,23 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento
             GameObject goParent = goSelecionado.transform.parent.gameObject;
             string nomeParent = goParent.name;
 
-            PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(int.Parse(nomeParent));            
-            cardSelecionado = new CardPupSelecionadoDto(goSelecionado.transform.position, pupEntidade);
+            int indice = int.Parse(nomeParent);
+            PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indice);            
+            cardSelecionado = new CardPupSelecionadoDto(indice, goSelecionado.transform.position, pupEntidade);
             
             produtorDeEvento.produziuEvento(cardSelecionado);
             goParent.SetActive(false);
+        }
+    }
+
+    void AcaoCardPupDetalheMovimentado.ConsumidorEvento.consumirEvento(bool evento)
+    {
+        if (!evento)
+        {
+            isClicado = false;
+            CardsPupsDto cardPupDto = cardsPupsDto[cardSelecionado.indice];
+            GameObject goParent = cardPupDto.ImgCard.transform.parent.parent.gameObject;
+            goParent.SetActive(true);            
         }
     }
 
