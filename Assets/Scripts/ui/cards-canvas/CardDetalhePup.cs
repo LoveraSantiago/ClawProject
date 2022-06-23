@@ -35,8 +35,8 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
                 }
                 else
                 {
-                    produtorDeEvento.produziuEvento(false);
                     cardDetalheDto.CardDetalhe.SetActive(false);
+                    produtorDeEvento.produziuEvento(false);
                 }
             }
         }

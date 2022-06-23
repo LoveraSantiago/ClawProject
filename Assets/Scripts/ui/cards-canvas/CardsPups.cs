@@ -53,6 +53,7 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
             
             produtorDeEvento.produziuEvento(cardSelecionado);
             goParent.SetActive(false);
+            isClicado = true;
         }
     }
 
@@ -60,10 +61,10 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
     {
         if (!evento)
         {
-            isClicado = false;
             CardsPupsDto cardPupDto = cardsPupsDto[cardSelecionado.indice];
             GameObject goParent = cardPupDto.ImgCard.transform.parent.parent.gameObject;
             goParent.SetActive(true);            
+            isClicado = false;
         }
     }
 

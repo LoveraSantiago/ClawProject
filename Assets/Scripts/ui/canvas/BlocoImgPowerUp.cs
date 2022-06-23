@@ -61,7 +61,7 @@ public class BlocoImgPowerUp : AcaoBlocoImgPowerUpAtual.ProdutorEvento,
         animacaoEmAndamento = true;
         blocoImgDto.AnimatorBlocoImg.Play(animInicio);
         yield return new WaitForSeconds(0.4f);
-        blocoImgDto.ImgPowerUp.sprite = pupEntidade.sprPowerUp;
+        blocoImgDto.ImgPowerUp.sprite = pupEntidade.sprIconPowerUp;
         blocoImgDto.AnimatorBlocoImg.Play(animFim);
         produtorDeEvento.produziuEvento(pupEntidade);
         yield return new WaitForSeconds(0.4f);
@@ -72,7 +72,7 @@ public class BlocoImgPowerUp : AcaoBlocoImgPowerUpAtual.ProdutorEvento,
     private void irParaPupAtual()
     {        
         PowerUpEntidade pupEntidade = controlePups.getItemIndiceAtual();
-        blocoImgDto.ImgPowerUp.sprite = pupEntidade.sprPowerUp;
+        blocoImgDto.ImgPowerUp.sprite = pupEntidade.sprIconPowerUp;
         produtorDeEvento.produziuEvento(pupEntidade);
     }
     
