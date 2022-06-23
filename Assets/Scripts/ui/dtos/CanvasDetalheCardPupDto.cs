@@ -11,6 +11,9 @@ public class CanvasDetalheCardPupDto
     [SerializeField] private Image imgExplicacao;
     [SerializeField] private Image imgPup;
     [SerializeField] private Image imgBtn;
+    [SerializeField] private Image imgCorBtn1;
+    [SerializeField] private Image imgCorBtn2;
+    [SerializeField] private Image imgCorBtn3;
     [SerializeField] private TextMeshProUGUI lblPreco;
     [SerializeField] private TextMeshProUGUI lblExplicacao;
     [SerializeField] private TextMeshProUGUI lblQtd;
@@ -22,6 +25,9 @@ public class CanvasDetalheCardPupDto
     public Image ImgExplicacao { get { return imgExplicacao; } }
     public Image ImgPup { get { return imgPup; } }
     public Image ImgBtn { get { return imgBtn; } }
+    public Image ImgCorBtn1 { get { return imgCorBtn1; } }
+    public Image ImgCorBtn2 { get { return imgCorBtn2; } }
+    public Image ImgCorBtn3 { get { return imgCorBtn3; } }
     public TextMeshProUGUI LblPreco { get { return lblPreco; } }
     public TextMeshProUGUI LblExplicacao { get { return lblExplicacao; } }
     public TextMeshProUGUI LblQtd { get { return lblQtd; } }
