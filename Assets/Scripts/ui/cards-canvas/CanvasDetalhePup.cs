@@ -24,6 +24,7 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
         canvasDetalheDto.ImgBackground.color   = materialDetalhe.CorPrincipal;
         canvasDetalheDto.ImgCirculo.color      = materialDetalhe.CorCirculo;
         canvasDetalheDto.ImgExplicacao.color   = materialDetalhe.CorEscura;
+        canvasDetalheDto.ImgPup.sprite         = pupEntidade.sprPup;
         canvasDetalheDto.LblPreco.text         = pupEntidade.preco;
         canvasDetalheDto.LblExplicacao.text    = pupEntidade.descDetalhada;
         canvasDetalheDto.LblQtd.text           = pupEntidade.getQtd().ToString();

@@ -21,6 +21,7 @@ public class PowerUpEntidade
     public PowerUpEnums.AREA area { get; private set; }
     public Sprite sprPowerUp { get { return powerUpDtos[indice].SprGO; }}
     public Sprite sprCard { get { return powerUpDtos[indice].SprCard;  }}
+    public Sprite sprPup { get { return powerUpDtos[indice].SprPup; } }
 
     private Fornecedor<AbstractPowerUpGo> fornecedorPowerUpGo;
     private AbstractPowerUpGo powerUpGo;
