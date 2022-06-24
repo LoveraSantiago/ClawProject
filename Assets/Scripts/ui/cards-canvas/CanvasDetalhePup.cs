@@ -1,4 +1,4 @@
-using UnityEngine;
+using System;
 
 public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
 {
@@ -30,7 +30,7 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
         canvasDetalheDto.ImgCorBtn2.color      = materialDetalhe.CorVariacao2;
         canvasDetalheDto.ImgCorBtn3.color      = materialDetalhe.CorVariacao3;
         canvasDetalheDto.LblPreco.text         = pupEntidade.preco;
-        canvasDetalheDto.LblExplicacao.text    = pupEntidade.descDetalhada;
+        canvasDetalheDto.LblExplicacao.text    = pupEntidade.descCurta + Environment.NewLine +  pupEntidade.descDetalhada;
         canvasDetalheDto.LblQtd.text           = pupEntidade.getQtd().ToString();
         canvasDetalheDto.LblNome.text          = pupEntidade.nome;
         canvasDetalheDto.LblTipo.text          = pupEntidade.familia;
