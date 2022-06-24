@@ -9,7 +9,7 @@ public class CenaUtils
 
     public static void irParaCenaPup()
     {
-        SceneManager.LoadScene("PupScene");
+        SceneManager.LoadScene("PupSceneV2");
     }
 
     public static void irParaCenaMainGame()
