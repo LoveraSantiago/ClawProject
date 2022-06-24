@@ -37,7 +37,7 @@ public class PupSceneV2 : MonoBehaviour
         cardDetalhe      = new CardDetalhePup(cardDetalheDto);
         animacao         = new AnimacaoCardsPup(animator);
         cardsPups        = new CardsPups(cardsPupsDto);
-        canvasDetalhe    = new CanvasDetalhePup(canvasDetalheDto);
+        canvasDetalhe    = new CanvasDetalhePup(canvasDetalheDto, modalNoFichaDto);
         btnBack.onClick.AddListener(()=>voltar());
 
         new AcaoCardPupDetalheMovimentado()
