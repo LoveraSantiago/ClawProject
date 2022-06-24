@@ -17,6 +17,8 @@ public class PupSceneV2 : MonoBehaviour
     [SerializeField] private Animator animator;
     [Space(5)]
     [SerializeField] private GameObject prefabPowerUpDto;    
+    [Space(5)]
+    [SerializeField] private ModalNoFichaDto modalNoFichaDto;
 
     private TimerFicha timerFichaBronze;
     private CardDetalhePup cardDetalhe;
