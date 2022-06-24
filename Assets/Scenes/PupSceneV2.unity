@@ -4367,7 +4367,7 @@ MonoBehaviour:
   prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
   modalNoFichaDto:
     modalNoFicha: {fileID: 913691524}
-    btnOk: {fileID: 0}
+    btnOk: {fileID: 913691523}
 --- !u!95 &1668072994
 Animator:
   serializedVersion: 4
