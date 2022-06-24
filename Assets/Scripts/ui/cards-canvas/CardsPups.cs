@@ -23,6 +23,12 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
         return cardSelecionado;
     }
 
+    public void forceClique(int indice)
+    {
+        CardsPupsDto cardPupIt = cardsPupsDto[indice];
+        clicado(cardPupIt.Btn.gameObject);
+    }
+
     private void popularCards()
     {
         PowerUpEntidade[] pupEntidades = FactoryPowerUpEntidade.getAllPowerUps();
@@ -41,16 +47,21 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
 
     private void clicado()
     {
-        if (isClicado == false)
+        GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
+        clicado(goSelecionado);
+    }    
+
+    private void clicado(GameObject goSelecionado)
+    {
+        if (isClicado == false && goSelecionado != null)
         {
-            GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
             GameObject goParent = goSelecionado.transform.parent.gameObject;
             string nomeParent = goParent.name;
 
             int indice = int.Parse(nomeParent);
-            PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indice);            
+            PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indice);
             cardSelecionado = new CardPupSelecionadoDto(indice, goSelecionado.transform.position, pupEntidade);
-            
+
             produtorDeEvento.produziuEvento(cardSelecionado);
             goParent.SetActive(false);
             isClicado = true;

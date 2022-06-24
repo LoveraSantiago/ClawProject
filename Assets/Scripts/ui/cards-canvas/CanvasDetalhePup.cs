@@ -64,19 +64,19 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
         indicePupSelecionado = pupEntidade.indice;
 
         MaterialTipoPowerUpDto materialDetalhe = pupEntidade.getMaterial();
-        canvasDetalheDto.ImgBackground.color = materialDetalhe.CorPrincipal;
-        canvasDetalheDto.ImgCirculo.color = materialDetalhe.CorCirculo;
-        canvasDetalheDto.ImgExplicacao.color = materialDetalhe.CorEscura;
-        canvasDetalheDto.ImgPup.sprite = pupEntidade.sprPersonagemPup;
-        canvasDetalheDto.ImgBtn.sprite = pupEntidade.sprIconPowerUp;
-        canvasDetalheDto.ImgCorBtn1.color = materialDetalhe.CorVariacao1;
-        canvasDetalheDto.ImgCorBtn2.color = materialDetalhe.CorVariacao2;
-        canvasDetalheDto.ImgCorBtn3.color = materialDetalhe.CorVariacao3;
-        canvasDetalheDto.LblPreco.text = pupEntidade.preco;
-        canvasDetalheDto.LblExplicacao.text = pupEntidade.descCurta + Environment.NewLine + pupEntidade.descDetalhada;
-        canvasDetalheDto.LblQtd.text = pupEntidade.getQtd().ToString();
-        canvasDetalheDto.LblNome.text = pupEntidade.nome;
-        canvasDetalheDto.LblTipo.text = pupEntidade.familia;
+        canvasDetalheDto.ImgBackground.color   = materialDetalhe.CorPrincipal;
+        canvasDetalheDto.ImgCirculo.color      = materialDetalhe.CorCirculo;
+        canvasDetalheDto.ImgExplicacao.color   = materialDetalhe.CorEscura;
+        canvasDetalheDto.ImgPup.sprite         = pupEntidade.sprPersonagemPup;
+        canvasDetalheDto.ImgBtn.sprite         = pupEntidade.sprIconPowerUp;
+        canvasDetalheDto.ImgCorBtn1.color      = materialDetalhe.CorVariacao1;
+        canvasDetalheDto.ImgCorBtn2.color      = materialDetalhe.CorVariacao2;
+        canvasDetalheDto.ImgCorBtn3.color      = materialDetalhe.CorVariacao3;
+        canvasDetalheDto.LblPreco.text         = pupEntidade.preco;
+        canvasDetalheDto.LblExplicacao.text    = pupEntidade.descCurta + Environment.NewLine + pupEntidade.descDetalhada;
+        canvasDetalheDto.LblQtd.text           = pupEntidade.getQtd().ToString();
+        canvasDetalheDto.LblNome.text          = pupEntidade.nome;
+        canvasDetalheDto.LblTipo.text          = pupEntidade.familia;
     }
 
     void AcaoCardPowerUpSelecionado.ConsumidorEvento.consumirEvento(CardPupSelecionadoDto evento)

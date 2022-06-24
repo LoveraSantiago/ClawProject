@@ -49,6 +49,8 @@ public class PupSceneV2 : MonoBehaviour
             .configurarProdutor(cardsPups)
             .adicionarConsumidor(cardDetalhe)
             .adicionarConsumidor(canvasDetalhe);
+
+        restaurarTela();
     }
 
     // Update is called once per frame
@@ -75,5 +77,14 @@ public class PupSceneV2 : MonoBehaviour
         canvasDetalhe.dismiss();
         CardPupSelecionadoDto cardSelecionado = cardsPups.recuperarUltimoCardSelecionado();
         cardDetalhe.voltar(cardSelecionado.posicaoCard);
+    }
+
+    private void restaurarTela()
+    {
+        int indicePrevio = PlayerPrefsPowerUp.recuperarEApagarIndicePup();        
+        if(indicePrevio > -1)
+        {
+            cardsPups.forceClique(indicePrevio);
+        }
     }
 }
