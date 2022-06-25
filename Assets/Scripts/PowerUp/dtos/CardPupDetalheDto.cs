@@ -10,10 +10,14 @@ public class CardPupDetalheDto
     [SerializeField] private Material materialDetalhe;
     [SerializeField] private TextMeshProUGUI lblPreco;
     [SerializeField] private TextMeshProUGUI lblQtd;
+    [Space(3)]
+    [SerializeField] private Animator animatorFicha;
 
     public float Velocidade { get { return velocidade; } }
     public GameObject CardDetalhe { get { return cardDetalhe; } }
     public Material MaterialDetalhe { get { return materialDetalhe; } }
     public TextMeshProUGUI LblPreco { get { return lblPreco; } }
     public TextMeshProUGUI LblQtd { get { return lblQtd; } }
+
+    public Animator AnimatorFicha { get { return animatorFicha; } }
 }
