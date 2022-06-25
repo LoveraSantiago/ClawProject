@@ -13,6 +13,7 @@ public class FichaAnimada
     public void girarFicha(Vector3 posicao)
     {
         animatorFicha.gameObject.transform.position = posicao;
+        animatorFicha.gameObject.SetActive(true);
         animatorFicha.Play(FICHA_GIRANDO);
     }
 }

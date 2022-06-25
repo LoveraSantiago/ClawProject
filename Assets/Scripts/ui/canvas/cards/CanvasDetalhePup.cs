@@ -30,7 +30,7 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
     private void gotoScenePupPratica()
     {
         PlayerPrefsLevel.salvarLevel(Level.PUP);
-        abrirCenaOuModal(Vector3.zero, 0);
+        abrirCenaOuModal(canvasDetalheDto.PosFichas[0], 0);
     }
 
     private void gotoScenePupCacaNiquelIndividual()
@@ -38,22 +38,23 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
         PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_I);
         PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePupSelecionado);
         int precoFicha = int.Parse(pupEntidade.preco);
-        abrirCenaOuModal(Vector3.zero, precoFicha);
+        abrirCenaOuModal(canvasDetalheDto.PosFichas[1], precoFicha);
     }
 
     private void gotoScenePupCacaNiquelGeral()
     {
         PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_G);
-        abrirCenaOuModal(Vector3.zero, 1);
+        abrirCenaOuModal(canvasDetalheDto.PosFichas[2], 1);
     }
 
-    private void abrirCenaOuModal(Vector3 posicao, int precoFicha)
+    private void abrirCenaOuModal(Transform posFicha, int precoFicha)
     {
         if (PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
         {
             PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);
             PlayerPrefsPowerUp.salvarIndicePup(indicePupSelecionado);
-            fichaAnimada.girarFicha(posicao);
+            fichaAnimada.girarFicha(posFicha.position);
+            posFicha.gameObject.SetActive(false);
             CenaUtils.irParaCenaMainGame(0.9f);
         }
         else

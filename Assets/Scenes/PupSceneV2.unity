@@ -2357,7 +2357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1011788919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3199,6 +3199,11 @@ PrefabInstance:
 --- !u!224 &1290136929 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8509958741943219004, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
+  m_PrefabInstance: {fileID: 1290136928}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1290136930 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8509958742103440324, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
   m_PrefabInstance: {fileID: 1290136928}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292401154
@@ -4104,7 +4109,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1668072992}
   - component: {fileID: 1668072993}
-  - component: {fileID: 1668072987}
   - component: {fileID: 1668072991}
   - component: {fileID: 1668072990}
   - component: {fileID: 1668072989}
@@ -4117,47 +4121,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1668072987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668072986}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d4534f9fc0527647a2dbb19be08158e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerFichaDto:
-    btnMais: {fileID: 2080252812}
-    lblQdtFichas: {fileID: 2080252811}
-    relogioDto:
-      lblHoras: {fileID: 2080252810}
-      transfSegundos: {fileID: 2080252809}
-      transfMinutos: {fileID: 2080252808}
-      transfHoras: {fileID: 2080252807}
-  btnBack: {fileID: 98718867}
-  btnPratica: {fileID: 0}
-  btnCacaNiquelPupIndividual: {fileID: 0}
-  btnCacaNiquelPupGeral: {fileID: 0}
-  blocoImgDto:
-    animatorBlocoImg: {fileID: 0}
-    btnEsquerda: {fileID: 0}
-    btnDireita: {fileID: 0}
-    imgPowerUp: {fileID: 0}
-  labelsDto:
-    lblPup: {fileID: 0}
-    lblTipo: {fileID: 0}
-    lblQtd: {fileID: 0}
-    lblPreco: {fileID: 0}
-    lblDescCurta: {fileID: 0}
-    lblExplicacao: {fileID: 0}
-  prefabPowerUpDto: {fileID: 5653745407918303698, guid: 264fd96ffd92c7d4899adb12d26ef4f1, type: 3}
-  prefabBottomBar: {fileID: 0}
-  modalNoFichaDto:
-    modalNoFicha: {fileID: 913691524}
-    btnOk: {fileID: 913691523}
 --- !u!222 &1668072988
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4287,9 +4250,14 @@ MonoBehaviour:
     imgExplicacao: {fileID: 148039480}
     imgPup: {fileID: 1249506848}
     imgBtn: {fileID: 462469563}
-    imgCorBtn1: {fileID: 1193500555}
-    imgCorBtn2: {fileID: 1309820836}
-    imgCorBtn3: {fileID: 174873529}
+    posFichas:
+    - {fileID: 8509958741005101044}
+    - {fileID: 1290136930}
+    - {fileID: 2001463828}
+    imgsCorBtns:
+    - {fileID: 1193500555}
+    - {fileID: 1309820836}
+    - {fileID: 174873529}
     lblPreco: {fileID: 2119918193}
     lblExplicacao: {fileID: 2065954064}
     lblQtd: {fileID: 1400807178}
@@ -4298,6 +4266,7 @@ MonoBehaviour:
     btnPratica: {fileID: 1425523258}
     btnCacaNiquelPupIndividual: {fileID: 1309820838}
     btnCacaNiquelPupGeral: {fileID: 2054206807}
+    animatorFicha: {fileID: 1723204384}
   cardsPupsDto:
   - btn: {fileID: 1097314354}
     imgContornoCard: {fileID: 1097314356}
@@ -5206,6 +5175,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8509958741943219004, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
   m_PrefabInstance: {fileID: 2001463826}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &2001463828 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8509958742103440324, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
+  m_PrefabInstance: {fileID: 2001463826}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2014811343 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8509958741943219004, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
@@ -5492,7 +5466,7 @@ MonoBehaviour:
   m_margin: {x: 25, y: 0, z: 25, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2065954065
@@ -6176,3 +6150,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
+--- !u!224 &8509958741005101044 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8509958742103440324, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
+  m_PrefabInstance: {fileID: 8509958741005101043}
+  m_PrefabAsset: {fileID: 0}
