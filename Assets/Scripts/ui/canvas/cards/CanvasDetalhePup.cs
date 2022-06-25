@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
 {
@@ -7,6 +8,7 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
     private int indicePupSelecionado;
     private CanvasDetalheCardPupDto canvasDetalheDto;
     private ModalNoFicha modalNoFicha;//Temporariamente aqui
+    private FichaAnimada fichaAnimada;
 
     public CanvasDetalhePup(CanvasDetalheCardPupDto canvasDetalheDto, ModalNoFichaDto modalNoFichaDto)
     {
@@ -17,6 +19,7 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
         isAberto = false;
 
         modalNoFicha = new ModalNoFicha(modalNoFichaDto);
+        fichaAnimada = new FichaAnimada(canvasDetalheDto.AnimatorFicha);
     }
 
     public void dismiss()
@@ -27,7 +30,7 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
     private void gotoScenePupPratica()
     {
         PlayerPrefsLevel.salvarLevel(Level.PUP);
-        abrirCenaOuModal(0);
+        abrirCenaOuModal(Vector3.zero, 0);
     }
 
     private void gotoScenePupCacaNiquelIndividual()
@@ -35,22 +38,23 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
         PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_I);
         PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePupSelecionado);
         int precoFicha = int.Parse(pupEntidade.preco);
-        abrirCenaOuModal(precoFicha);
+        abrirCenaOuModal(Vector3.zero, precoFicha);
     }
 
     private void gotoScenePupCacaNiquelGeral()
     {
         PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_G);
-        abrirCenaOuModal(1);
+        abrirCenaOuModal(Vector3.zero 1);
     }
 
-    private void abrirCenaOuModal(int precoFicha)
+    private void abrirCenaOuModal(Vector3 posicao, int precoFicha)
     {
         if (PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
         {
             PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);
             PlayerPrefsPowerUp.salvarIndicePup(indicePupSelecionado);
-            CenaUtils.irParaCenaMainGame();
+            fichaAnimada.girarFicha(posicao);
+            CenaUtils.irParaCenaMainGame(0.9f);
         }
         else
         {

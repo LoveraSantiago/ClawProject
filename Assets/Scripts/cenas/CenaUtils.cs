@@ -1,4 +1,6 @@
 using UnityEngine.SceneManagement;
+using System.Collections;
+using UnityEngine;
 
 public class CenaUtils 
 {
@@ -15,6 +17,18 @@ public class CenaUtils
     public static void irParaCenaMainGame()
     {
         SceneManager.LoadScene("MainGameScene");
+    }
+
+    public static void irParaCenaMainGame(float delay)
+    {
+        Utils.MonoBehaviour.StartCoroutine(coroutineIrParaCenaMainGame(delay));
+    }
+
+    private static IEnumerator coroutineIrParaCenaMainGame(float delay)
+    {
+        new WaitForSeconds(delay);
+        irParaCenaMainGame();
+        yield return null;
     }
 
     public static void irParaCenaColetaveis()

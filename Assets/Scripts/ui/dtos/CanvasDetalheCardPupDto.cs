@@ -24,6 +24,8 @@ public class CanvasDetalheCardPupDto
     [SerializeField] private Button btnPratica;
     [SerializeField] private Button btnCacaNiquelPupIndividual;
     [SerializeField] private Button btnCacaNiquelPupGeral;
+    [Space(3)]
+    [SerializeField] private Animator animatorFicha;
 
     public Image ImgBackground { get { return imgBackground; } }
     public Image ImgCirculo { get { return imgCirculo; } }
@@ -43,4 +45,6 @@ public class CanvasDetalheCardPupDto
     public Button BtnPratica { get { return btnPratica; } }
     public Button BtnCacaNiquelPupIndividual { get { return btnCacaNiquelPupIndividual; } }
     public Button BtnCacaNiquelPupGeral { get { return btnCacaNiquelPupGeral; } }
+
+    public Animator AnimatorFicha { get { return animatorFicha; } }
 }
