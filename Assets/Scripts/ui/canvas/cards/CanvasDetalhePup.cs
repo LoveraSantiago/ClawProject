@@ -44,7 +44,7 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
     private void gotoScenePupCacaNiquelGeral()
     {
         PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_G);
-        abrirCenaOuModal(Vector3.zero 1);
+        abrirCenaOuModal(Vector3.zero, 1);
     }
 
     private void abrirCenaOuModal(Vector3 posicao, int precoFicha)
@@ -73,9 +73,9 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
         canvasDetalheDto.ImgExplicacao.color   = materialDetalhe.CorEscura;
         canvasDetalheDto.ImgPup.sprite         = pupEntidade.sprPersonagemPup;
         canvasDetalheDto.ImgBtn.sprite         = pupEntidade.sprIconPowerUp;
-        canvasDetalheDto.ImgCorBtn1.color      = materialDetalhe.CorVariacao1;
-        canvasDetalheDto.ImgCorBtn2.color      = materialDetalhe.CorVariacao2;
-        canvasDetalheDto.ImgCorBtn3.color      = materialDetalhe.CorVariacao3;
+        canvasDetalheDto.ImgsCorBtns[0].color      = materialDetalhe.CorVariacao1;
+        canvasDetalheDto.ImgsCorBtns[1].color      = materialDetalhe.CorVariacao2;
+        canvasDetalheDto.ImgsCorBtns[2].color      = materialDetalhe.CorVariacao3;
         canvasDetalheDto.LblPreco.text         = pupEntidade.preco;
         canvasDetalheDto.LblExplicacao.text    = pupEntidade.descCurta + Environment.NewLine + pupEntidade.descDetalhada;
         canvasDetalheDto.LblQtd.text           = pupEntidade.getQtd().ToString();
