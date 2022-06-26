@@ -26,13 +26,13 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         if (evento.isTripleSucess())
         {
             linhasModal[3].ligar();
-            linhasModal[3].passarInfos("Bonus!!!", pupEscolhido.sprPowerUp, "3");
+            linhasModal[3].passarInfos("Bonus!!!", pupEscolhido.sprIconPowerUp, "3");
             PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 3);
         }
         else if (evento.isTripleFail())
         {
             linhasModal[3].ligar();
-            linhasModal[3].passarInfos("Consolação", pupEscolhido.sprPowerUp, "1");
+            linhasModal[3].passarInfos("Consolação", pupEscolhido.sprIconPowerUp, "1");
             PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 1);
         }
 

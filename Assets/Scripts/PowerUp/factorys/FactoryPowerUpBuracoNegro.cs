@@ -3,7 +3,7 @@ public class FactoryPowerUpBuracoNegro : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-            .configNomes(PowerUpEnums.TIPO.BURACO_NEGRO, "Buraco Negro", "buraco-negro")
+            .configNomes(9, PowerUpEnums.TIPO.BURACO_NEGRO, "Buraco Negro")
             .configFamilia(PowerUpEnums.FAMILIA.LEVITACAO)
             .configPreco(10)
             .configDuracao(9)

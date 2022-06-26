@@ -893,6 +893,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1729035073}
     m_Modifications:
+    - target: {fileID: 7590549816797380793, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590549816797380793, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_Color.g
+      value: 0.96657693
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590549816797380793, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7590549816884906465, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
       propertyPath: m_Name
       value: timer-ficha-ouro
@@ -2372,6 +2384,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493387762}
   m_CullTransparentMesh: 1
+--- !u!1 &1524707868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7059477540732606421, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
+  m_PrefabInstance: {fileID: 1751718904}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1673316346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2507,11 +2524,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673316346}
   m_CullTransparentMesh: 1
---- !u!1 &1677297773 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7059477540732606421, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
-  m_PrefabInstance: {fileID: 1751718904}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1729035069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,7 +2671,7 @@ MonoBehaviour:
     lblBtnGanharColetavel: {fileID: 1946674154}
   prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
   prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
-  prefabBottomBar: {fileID: 1677297773}
+  prefabBottomBar: {fileID: 1524707868}
   modalNoFichaDto:
     modalNoFicha: {fileID: 1927668547}
     btnOk: {fileID: 1927668546}
@@ -2789,6 +2801,10 @@ PrefabInstance:
     - target: {fileID: 7059477540732606421, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059477541578152041, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 766.96295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73b4139ed5d028842836efa56fc14a4b, type: 3}

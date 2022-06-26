@@ -38,7 +38,7 @@ public class PowerUpsParaMaquina : AcaoBotaoPowerUp
 
     public Sprite getImgBotao()
     {
-        return powerUpEntidade.sprPowerUp;
+        return powerUpEntidade.sprIconPowerUp;
     }
 
     public PowerUpEnums.TIPO getTipo()

@@ -1,4 +1,6 @@
 using UnityEngine.SceneManagement;
+using System.Collections;
+using UnityEngine;
 
 public class CenaUtils 
 {
@@ -9,12 +11,24 @@ public class CenaUtils
 
     public static void irParaCenaPup()
     {
-        SceneManager.LoadScene("PupScene");
+        SceneManager.LoadScene("PupSceneV2");
     }
 
     public static void irParaCenaMainGame()
     {
         SceneManager.LoadScene("MainGameScene");
+    }
+
+    public static void irParaCenaMainGame(float delay)
+    {
+        Utils.MonoBehaviour.StartCoroutine(coroutineIrParaCenaMainGame(delay));
+    }
+
+    private static IEnumerator coroutineIrParaCenaMainGame(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        irParaCenaMainGame();
+        yield return null;
     }
 
     public static void irParaCenaColetaveis()

@@ -3,7 +3,7 @@ public class FactoryPowerUpRollback : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.ROLLBACK, "Rollback", "rollback-botao")
+                .configNomes(10, PowerUpEnums.TIPO.ROLLBACK, "Rollback")
                 .configFamilia(PowerUpEnums.FAMILIA.MECANISMO)
                 .configDuracao(9)
                 .configSupplierDePowerUpGo(this)

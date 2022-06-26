@@ -6,13 +6,17 @@ public class PlayerPrefsPowerUp
 
     public static void salvarIndicePup(int indicePup)
     {
-        PlayerPrefs.SetInt(PUP, indicePup);
+        PlayerPrefs.SetString(PUP, indicePup.ToString());
     }
 
     public static int recuperarIndicePup()
     {
-        int indiceSalvo = PlayerPrefs.GetInt(PUP);        
-        return indiceSalvo;
+        string textoIndiceSalvo = PlayerPrefs.GetString(PUP);
+        if(textoIndiceSalvo != null && !textoIndiceSalvo.Equals(""))
+        {
+            return int.Parse(textoIndiceSalvo);
+        }
+        return -1;        
     }
 
     public static int recuperarEApagarIndicePup()

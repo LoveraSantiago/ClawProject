@@ -8,7 +8,7 @@ public class PowerUpHelper
         Sprite[] sprites = new Sprite[allPups.Length];
         for (int contador = 0; contador < sprites.Length; contador++)
         {
-            sprites[contador] = allPups[contador].sprPowerUp;
+            sprites[contador] = allPups[contador].sprIconPowerUp;
         }
         return sprites;
     }
@@ -49,7 +49,7 @@ public class PowerUpHelper
         PowerUpEntidade[] allPups = FactoryPowerUpEntidade.getAllPowerUps();
         for (int contador = 0; contador < allPups.Length; contador++)
         {
-            if (allPups[contador].sprPowerUp == sprite)
+            if (allPups[contador].sprIconPowerUp == sprite)
             {
                 return allPups[contador];
             }
@@ -61,7 +61,7 @@ public class PowerUpHelper
     {
         for (int contador = 0; contador < allPups.Length; contador++)
         {
-            if (allPups[contador].sprPowerUp == sprite)
+            if (allPups[contador].sprIconPowerUp == sprite)
             {
                 return allPups[contador].nome;
             }

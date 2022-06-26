@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class AbstractPowerUpGo : GO,
                                           PowerUpAcaoExpirado
 {    
-    protected static PowerUpDto powerUpDto;
+    protected static PowerUpGameDto powerUpDto;
     private static GOContexto contexto;
 
     protected static InputGame inputGame;
@@ -53,7 +53,7 @@ public abstract class AbstractPowerUpGo : GO,
         return contexto;
     }
 
-    public static void configurarAbstractPowerUp(PowerUpDto powerUpDtoArg, PowerUpAcaoFinalizacao powerUpFinalizacaoArg, 
+    public static void configurarAbstractPowerUp(PowerUpGameDto powerUpDtoArg, PowerUpAcaoFinalizacao powerUpFinalizacaoArg, 
         InputGame inputGameArg)
     {
         powerUpDto = powerUpDtoArg;        

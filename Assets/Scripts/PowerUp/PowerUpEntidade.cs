@@ -1,12 +1,12 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUpEntidade 
 {
-    private static Dictionary<string, Sprite> dicionarioDeSprites;   
+    private static PowerUpPrefabDto[] powerUpDtos;
+    private static MaterialsPowerUpDto materiaisPupDto;
 
-    public string nome { get; private set; }
-    public string nomeSpriteBtn { get; private set; }
+    public int indice { get; private set; }
+    public string nome { get; private set; }    
     public string familia { get; private set; }
     public string descCurta { get; private set; }
     public string descDetalhada { get; private set; }
@@ -19,7 +19,9 @@ public class PowerUpEntidade
 
     public PowerUpEnums.TIPO tipo { get; private set; }
     public PowerUpEnums.AREA area { get; private set; }
-    public Sprite sprPowerUp { get { return dicionarioDeSprites[nomeSpriteBtn]; }}
+    public Sprite sprIconPowerUp { get { return powerUpDtos[indice].SprGO; }}
+    public Sprite sprCard { get { return powerUpDtos[indice].SprCard;  }}
+    public Sprite sprPersonagemPup { get { return powerUpDtos[indice].SprPup; } }
 
     private Fornecedor<AbstractPowerUpGo> fornecedorPowerUpGo;
     private AbstractPowerUpGo powerUpGo;
@@ -31,11 +33,11 @@ public class PowerUpEntidade
         this.preco = "1";
     }    
 
-    public PowerUpEntidade configNomes(PowerUpEnums.TIPO tipoEntidade, string nome, string nomeSpriteBtn)
+    public PowerUpEntidade configNomes(int indice, PowerUpEnums.TIPO tipoEntidade, string nome)
     {
+        this.indice = indice;
         tipo = tipoEntidade;
-        this.nome = nome;
-        this.nomeSpriteBtn = nomeSpriteBtn;
+        this.nome = nome;        
         return this;
     }
 
@@ -88,6 +90,23 @@ public class PowerUpEntidade
         return this;
     }
 
+    public int getQtd()
+    {
+        return PlayerPrefsPowerUp.recuperarQtdPup(nome);
+    }
+
+    public MaterialTipoPowerUpDto getMaterial()
+    {
+        switch (familia) {
+            case PowerUpEnums.FAMILIA.EXPLOSIVOS  : return materiaisPupDto.MatExplosivos;
+            case PowerUpEnums.FAMILIA.TRANSMUTACAO: return materiaisPupDto.MatTransmutacao;
+            case PowerUpEnums.FAMILIA.LEVITACAO   : return materiaisPupDto.MatLevitacao;
+            case PowerUpEnums.FAMILIA.MECANISMO   : return materiaisPupDto.MatMecanismo;
+            case PowerUpEnums.FAMILIA.IMPULSO     : return materiaisPupDto.MatImpulso;
+        }
+        return materiaisPupDto.MatExplosivos;
+    }
+
     public AbstractPowerUpGo getPowerUpGo()
     {
         if(powerUpGo == null)
@@ -99,7 +118,8 @@ public class PowerUpEntidade
 
     public static void configurarDicionarioDeSpritesPup(GameObject goPrefabPupDto)
     {
-        PrefabDeSpriteDto prefabPUpDto = goPrefabPupDto.GetComponent<PrefabDeSpriteDto>();
-        dicionarioDeSprites = prefabPUpDto.getDicionarioDeSprites();
+        PrefabDePowerUpsDto prefabPUpDto = goPrefabPupDto.GetComponent<PrefabDePowerUpsDto>();
+        powerUpDtos = prefabPUpDto.PowerUpDtos;
+        materiaisPupDto = prefabPUpDto.MateriaisPup;
     }
 }

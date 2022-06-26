@@ -19,14 +19,15 @@ public class MovimentacaoDirecao : AbstractMovimentacaoDaGarra
 
     private void verificarSeMovimentacaoAtingiuLimites()
     {
-        if (isMaiorPosHorizontal(LIMITE_LATERAL_TELA))
+        float limiteGarra = getGarra().getPosicaoLimiteGarra();
+        if(isMaiorPosHorizontal(limiteGarra))
         {
             direcao = -1;
             moverHorizontalmenteFreeze(direcao);
             playAnimacaoIrPEsquerda();
             produziuEventoDeDirecao(DirecaoDaGarra.ESQUERDA);
         }
-        else if (isMenorPosHorizontal(-LIMITE_LATERAL_TELA))
+        else if (isMenorPosHorizontal(-limiteGarra))
         {
             direcao = 1;
             moverHorizontalmenteFreeze(direcao);

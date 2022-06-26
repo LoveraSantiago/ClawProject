@@ -26,4 +26,9 @@ public class ComponenteGarraDtoDaGarra
     {
         return garraDto.PosCacaNiquel;
     }
+
+    public float getPosicaoLimiteGarra()
+    {
+        return garraDto.PosLimiteGarra;
+    }
 }

@@ -3,7 +3,7 @@ public class FactoryPowerUpTeleporte : AbstractFactoryPowerUp
     public override PowerUpEntidade factoryPupEntidade()
     {
         return new PowerUpEntidade()
-                .configNomes(PowerUpEnums.TIPO.TELEPORTE, "Tele-Transporte", "teleport-btn")
+                .configNomes(5, PowerUpEnums.TIPO.TELEPORTE, "Tele-Transporte")
                 .configFamilia(PowerUpEnums.FAMILIA.TRANSMUTACAO)
                 .configPreco(3)
                 .configDuracao(9)

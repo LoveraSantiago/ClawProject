@@ -85,8 +85,7 @@ public class InputGameImpl : InputGame,
     }
 
     void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
-    {
-        Debug.Log("Religando Input");
+    {   
         ativado = !evento.resultadoSair;
         jump1Frame = true;
         consumirTap();

@@ -22,7 +22,7 @@ public class ItemsBottomBarPowerUps : ItemsBottomBar
 
     public Sprite getSprDoItem()
     {
-        return pupAtual.sprPowerUp;
+        return pupAtual.sprIconPowerUp;
     }
 
     public Color getCorImgDoItem()

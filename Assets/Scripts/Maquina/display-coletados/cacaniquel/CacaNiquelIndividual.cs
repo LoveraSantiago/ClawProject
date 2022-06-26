@@ -10,7 +10,7 @@ public class CacaNiquelIndividual : AbstractCacaNiquel
         int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
-        Sprite sprPowerUp = pupEscolhido.sprPowerUp;
+        Sprite sprPowerUp = pupEscolhido.sprIconPowerUp;
         Sprite sprVazio   = cacaNiquelDto.SprVazio;
         Sprite sprMoeda   = cacaNiquelDto.SprMoeda;
 
@@ -26,7 +26,7 @@ public class CacaNiquelIndividual : AbstractCacaNiquel
     {
         int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
-        return pupEscolhido.sprPowerUp;
+        return pupEscolhido.sprIconPowerUp;
     }    
 
     public override CacaNiquelEventoDto montarResultado(PowerUpEntidade pupEscolhido, Sprite spriteEscolhido)

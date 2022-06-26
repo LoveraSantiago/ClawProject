@@ -9,14 +9,14 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     private ContadorTimeout contadorTimeout;
 
-    public PowerUpManager(PowerUpDto powerUpDto, InputGame inputGame)
+    public PowerUpManager(PowerUpGameDto powerUpDto, InputGame inputGame)
     {
         configurarPowerUps(powerUpDto, inputGame);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         contadorTimeout = new ContadorPowerUpInativo();
     }    
 
-    private void configurarPowerUps(PowerUpDto powerUpDto, InputGame inputGame)
+    private void configurarPowerUps(PowerUpGameDto powerUpDto, InputGame inputGame)
     {        
         PowerUpEntidade.configurarDicionarioDeSpritesPup(powerUpDto.PrefabPowerUpDto);
         PowerUpsParaMaquina.configAcionadorDePowerUp(this);

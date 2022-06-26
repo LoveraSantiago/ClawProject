@@ -29,7 +29,7 @@ public abstract class AbstractCacaNiquel
 
     protected CacaNiquelResultadoEnum avaliarResultado(PowerUpEntidade pupEscolhido, Sprite sprSorteado)
     {
-        if (sprSorteado == pupEscolhido.sprPowerUp)
+        if (sprSorteado == pupEscolhido.sprIconPowerUp)
         {
             return CacaNiquelResultadoEnum.SUCESSO;
         }

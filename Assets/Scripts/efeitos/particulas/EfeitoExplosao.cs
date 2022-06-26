@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EfeitoExplosao 
 {
-    private PowerUpDto powerUpDto;
+    private PowerUpGameDto powerUpDto;
 
-    public EfeitoExplosao(PowerUpDto powerUpDto)
+    public EfeitoExplosao(PowerUpGameDto powerUpDto)
     {
         this.powerUpDto = powerUpDto;
     }

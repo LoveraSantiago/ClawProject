@@ -3,8 +3,6 @@ using UnityEngine;
 public abstract class AbstractMovimentacaoDaGarra : ComponenteRigidBodyDeMovimentacaoGarra, 
                                                     AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
-    protected readonly float LIMITE_LATERAL_TELA = 2.25f;
-
     public virtual void preInicio() { }
     public virtual void update(InputGame inputGame) { }
     public virtual void fixedUpdate() { }
