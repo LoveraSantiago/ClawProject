@@ -4,7 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class GarraDto 
 {       
-    [SerializeField] private float posCacaNiquel;    
+    [SerializeField] private float posCacaNiquel;
+    [SerializeField] private float posLimiteGarra;
+    [Space(3)]
     [SerializeField] private GarraVelocidadesDto velocidades;
     [Space(3)]
     [SerializeField] private GarraAngulosDto angulos;    
@@ -23,6 +25,7 @@ public class GarraDto
     public GarraAngulosDto Angulos { get { return angulos; } }    
 
     public float PosCacaNiquel { get { return posCacaNiquel; } }
+    public float PosLimiteGarra { get { return posLimiteGarra; } }
 
     public CorpoGarraDto Corpo { get { return corpo; } }
     

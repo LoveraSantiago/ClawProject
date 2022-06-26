@@ -10680,6 +10680,7 @@ MonoBehaviour:
     dragCollider: {fileID: 491158116}
     garraDto:
       posCacaNiquel: -1.75
+      posLimiteGarra: 2.25
       velocidades:
         movHorizontal: 3.1
         movCima: 8
