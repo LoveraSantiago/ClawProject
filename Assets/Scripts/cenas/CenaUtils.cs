@@ -26,7 +26,7 @@ public class CenaUtils
 
     private static IEnumerator coroutineIrParaCenaMainGame(float delay)
     {
-        new WaitForSeconds(delay);
+        yield return new WaitForSeconds(delay);
         irParaCenaMainGame();
         yield return null;
     }
