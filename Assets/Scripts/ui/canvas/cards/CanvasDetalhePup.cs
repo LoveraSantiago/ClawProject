@@ -55,7 +55,7 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
             PlayerPrefsPowerUp.salvarIndicePup(indicePupSelecionado);
             fichaAnimada.girarFicha(posFicha.position);
             posFicha.gameObject.SetActive(false);
-            CenaUtils.irParaCenaMainGame(0.9f);
+            CenaUtils.irParaCenaMainGame(0.9f);            
         }
         else
         {
