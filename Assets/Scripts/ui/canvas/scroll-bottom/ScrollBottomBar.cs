@@ -57,17 +57,17 @@ public abstract class ScrollBottomBar
         items.configurarIndicePesquisado(indiceName);
         text.text = items.getLabelQtdDoItem();
 
-        Button btnIt = box.transform.Find("btn").GetComponent<Button>();
-        btnIt.name = indiceName.ToString();
-        btnIt.image.sprite = items.getSprDoItem();
-        btnIt.image.material = items.getMaterialDoItem();
-        btnIt.image.color = items.getCorImgDoItem();
-        btnIt.onClick.AddListener(() => {
-            if (!btnBottomBar.animacaoEmAndamento)
-            {
-                cliqueBoxAcionado(text);
-            }
-        });
+        //Button btnIt = box.transform.Find("btn").GetComponent<Button>();
+        //btnIt.name = indiceName.ToString();
+        //btnIt.image.sprite = items.getSprDoItem();
+        //btnIt.image.material = items.getMaterialDoItem();
+        //btnIt.image.color = items.getCorImgDoItem();
+        //btnIt.onClick.AddListener(() => {
+        //    if (!btnBottomBar.animacaoEmAndamento)
+        //    {
+        //        cliqueBoxAcionado(text);
+        //    }
+        //});
 
         bordasBotoes[indiceName] = box.transform.Find("img-back-pup-borda").gameObject;
     }        
