@@ -2398,7 +2398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: e52ee3662400a9b45b02ebd7eb26aab8, type: 2}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2406,8 +2406,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 8df5effa488b4634d8af26244c057b1f, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2415,7 +2415,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.6
 --- !u!222 &1011788921
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3193,6 +3193,10 @@ PrefabInstance:
     - target: {fileID: 8509958741943219005, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
       propertyPath: m_Name
       value: btns-pup-detalhe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8509958742103440325, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
@@ -4250,10 +4254,6 @@ MonoBehaviour:
     imgExplicacao: {fileID: 148039480}
     imgPup: {fileID: 1249506848}
     imgBtn: {fileID: 462469563}
-    posFichas:
-    - {fileID: 8509958741005101044}
-    - {fileID: 1290136930}
-    - {fileID: 2001463828}
     imgsCorBtns:
     - {fileID: 1193500555}
     - {fileID: 1309820836}
@@ -4266,7 +4266,6 @@ MonoBehaviour:
     btnPratica: {fileID: 1425523258}
     btnCacaNiquelPupIndividual: {fileID: 1309820838}
     btnCacaNiquelPupGeral: {fileID: 2054206807}
-    animatorFicha: {fileID: 1723204384}
   cardsPupsDto:
   - btn: {fileID: 1097314354}
     imgContornoCard: {fileID: 1097314356}
@@ -4333,6 +4332,12 @@ MonoBehaviour:
     imgCard: {fileID: 846679531}
     lblPreco: {fileID: 753132951}
     lblQtd: {fileID: 1976098459}
+  fichaAnimadaDto:
+    animatorFicha: {fileID: 1723204384}
+    posFichas:
+    - {fileID: 8509958741005101044}
+    - {fileID: 1290136930}
+    - {fileID: 2001463828}
   animator: {fileID: 1668072994}
   prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
   modalNoFichaDto:
@@ -5167,6 +5172,10 @@ PrefabInstance:
     - target: {fileID: 8509958741943219005, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
       propertyPath: m_Name
       value: btns-pup-detalhe3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8509958742103440325, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
@@ -6147,6 +6156,10 @@ PrefabInstance:
     - target: {fileID: 8509958741943219005, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
       propertyPath: m_Name
       value: btns-pup-detalhe1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8509958742103440325, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
