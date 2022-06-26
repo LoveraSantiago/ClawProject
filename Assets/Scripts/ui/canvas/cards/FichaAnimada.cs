@@ -1,19 +1,26 @@
 using UnityEngine;
 
-public class FichaAnimada 
+public class FichaAnimada : AcaoBotaoPowerUpEscolhido.ConsumidorEvento
 {
     private static readonly int FICHA_GIRANDO = Animator.StringToHash("ficha-girando");
-    private Animator animatorFicha; 
+    private FichaAnimadaDto fichaAnimadaDto;
 
-    public FichaAnimada(Animator animatorFicha)
+    public FichaAnimada(FichaAnimadaDto fichaAnimadaDto)
     {
-        this.animatorFicha = animatorFicha;
+        this.fichaAnimadaDto = fichaAnimadaDto;
     }
 
-    public void girarFicha(Vector3 posicao)
+    public void girarFicha(int indiceBtn)
     {
-        animatorFicha.gameObject.transform.position = posicao;
-        animatorFicha.gameObject.SetActive(true);
-        animatorFicha.Play(FICHA_GIRANDO);
+        Transform posBtnEscolhido = fichaAnimadaDto.PosFichas[indiceBtn];        
+
+        fichaAnimadaDto.AnimatorFicha.gameObject.transform.position = posBtnEscolhido.position;
+        fichaAnimadaDto.AnimatorFicha.gameObject.SetActive(true);
+        fichaAnimadaDto.AnimatorFicha.Play(FICHA_GIRANDO);
+    }
+
+    void AcaoBotaoPowerUpEscolhido.ConsumidorEvento.consumirEvento(int evento)
+    {
+        girarFicha(evento);
     }
 }

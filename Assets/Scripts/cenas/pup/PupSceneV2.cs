@@ -12,7 +12,9 @@ public class PupSceneV2 : MonoBehaviour
     [Space(5)]
     [SerializeField] private CanvasDetalheCardPupDto canvasDetalheDto;
     [Space(5)]
-    [SerializeField] private CardsPupsDto[] cardsPupsDto;    
+    [SerializeField] private CardsPupsDto[] cardsPupsDto;
+    [Space(5)]
+    [SerializeField] private FichaAnimadaDto fichaAnimadaDto;
     [Space(5)]
     [SerializeField] private Animator animator;
     [Space(5)]
@@ -20,11 +22,12 @@ public class PupSceneV2 : MonoBehaviour
     [Space(5)]
     [SerializeField] private ModalNoFichaDto modalNoFichaDto;
 
-    private TimerFicha timerFichaBronze;
-    private CardDetalhePup cardDetalhe;
-    private CardsPups cardsPups;
+    private TimerFicha       timerFichaBronze;
+    private CardDetalhePup   cardDetalhe;
+    private CardsPups        cardsPups;
     private AnimacaoCardsPup animacao;
-    private CanvasDetalhePup canvasDetalhe;   
+    private CanvasDetalhePup canvasDetalhe;
+    private FichaAnimada     fichaAnimada;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,7 @@ public class PupSceneV2 : MonoBehaviour
         animacao         = new AnimacaoCardsPup(animator);
         cardsPups        = new CardsPups(cardsPupsDto);
         canvasDetalhe    = new CanvasDetalhePup(canvasDetalheDto, modalNoFichaDto);
+        fichaAnimada     = new FichaAnimada(fichaAnimadaDto);
         btnBack.onClick.AddListener(()=>voltar());
 
         new AcaoCardPupDetalheMovimentado()
@@ -49,6 +53,11 @@ public class PupSceneV2 : MonoBehaviour
             .configurarProdutor(cardsPups)
             .adicionarConsumidor(cardDetalhe)
             .adicionarConsumidor(canvasDetalhe);
+
+        new AcaoBotaoPowerUpEscolhido()
+            .configurarProdutor(canvasDetalhe)
+            .adicionarConsumidor(fichaAnimada)
+            .adicionarConsumidor(animacao);
 
         restaurarTela();
     }

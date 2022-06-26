@@ -1,14 +1,15 @@
 using System;
 using UnityEngine;
 
-public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
+public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
+                                AcaoCardPowerUpSelecionado.ConsumidorEvento
 {
     public bool isAberto { get; private set; }
-
     private int indicePupSelecionado;
+
     private CanvasDetalheCardPupDto canvasDetalheDto;
-    private ModalNoFicha modalNoFicha;//Temporariamente aqui
-    private FichaAnimada fichaAnimada;
+    private ModalNoFicha modalNoFicha;//Temporariamente aqui    
+    private ProdutorDeEvento<int> produtorEventoBtnEscohido;
 
     public CanvasDetalhePup(CanvasDetalheCardPupDto canvasDetalheDto, ModalNoFichaDto modalNoFichaDto)
     {
@@ -19,7 +20,7 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
         isAberto = false;
 
         modalNoFicha = new ModalNoFicha(modalNoFichaDto);
-        fichaAnimada = new FichaAnimada(canvasDetalheDto.AnimatorFicha);
+        produtorEventoBtnEscohido = new ProdutorDeEvento<int>();
     }
 
     public void dismiss()
@@ -30,7 +31,7 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
     private void gotoScenePupPratica()
     {
         PlayerPrefsLevel.salvarLevel(Level.PUP);
-        abrirCenaOuModal(canvasDetalheDto.PosFichas[0], 0);
+        abrirCenaOuModal(0, 0);
     }
 
     private void gotoScenePupCacaNiquelIndividual()
@@ -38,23 +39,22 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
         PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_I);
         PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePupSelecionado);
         int precoFicha = int.Parse(pupEntidade.preco);
-        abrirCenaOuModal(canvasDetalheDto.PosFichas[1], precoFicha);
+        abrirCenaOuModal(1, precoFicha);
     }
 
     private void gotoScenePupCacaNiquelGeral()
     {
         PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_G);
-        abrirCenaOuModal(canvasDetalheDto.PosFichas[2], 1);
+        abrirCenaOuModal(2, 1);
     }
 
-    private void abrirCenaOuModal(Transform posFicha, int precoFicha)
+    private void abrirCenaOuModal(int indiceBtn, int precoFicha)
     {
         if (PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
         {
             PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);
             PlayerPrefsPowerUp.salvarIndicePup(indicePupSelecionado);
-            fichaAnimada.girarFicha(posFicha.position);
-            posFicha.gameObject.SetActive(false);
+            produtorEventoBtnEscohido.produziuEvento(indiceBtn);            
             CenaUtils.irParaCenaMainGame(0.9f);            
         }
         else
@@ -74,9 +74,9 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
         canvasDetalheDto.ImgExplicacao.color   = materialDetalhe.CorEscura;
         canvasDetalheDto.ImgPup.sprite         = pupEntidade.sprPersonagemPup;
         canvasDetalheDto.ImgBtn.sprite         = pupEntidade.sprIconPowerUp;
-        canvasDetalheDto.ImgsCorBtns[0].color      = materialDetalhe.CorVariacao1;
-        canvasDetalheDto.ImgsCorBtns[1].color      = materialDetalhe.CorVariacao2;
-        canvasDetalheDto.ImgsCorBtns[2].color      = materialDetalhe.CorVariacao3;
+        canvasDetalheDto.ImgsCorBtns[0].color  = materialDetalhe.CorVariacao1;
+        canvasDetalheDto.ImgsCorBtns[1].color  = materialDetalhe.CorVariacao2;
+        canvasDetalheDto.ImgsCorBtns[2].color  = materialDetalhe.CorVariacao3;
         canvasDetalheDto.LblPreco.text         = pupEntidade.preco;
         canvasDetalheDto.LblExplicacao.text    = pupEntidade.descCurta + Environment.NewLine + pupEntidade.descDetalhada;
         canvasDetalheDto.LblQtd.text           = pupEntidade.getQtd().ToString();
@@ -87,5 +87,10 @@ public class CanvasDetalhePup : AcaoCardPowerUpSelecionado.ConsumidorEvento
     void AcaoCardPowerUpSelecionado.ConsumidorEvento.consumirEvento(CardPupSelecionadoDto evento)
     {
         popularCanvasDetalhe(evento.powerUpEntidade);
+    }
+
+    ProdutorDeEvento<int> AcaoBotaoPowerUpEscolhido.ProdutorEvento.getProdutorDeEvento()
+    {
+        return produtorEventoBtnEscohido;
     }
 }

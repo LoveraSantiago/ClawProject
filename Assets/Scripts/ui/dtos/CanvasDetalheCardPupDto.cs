@@ -11,8 +11,7 @@ public class CanvasDetalheCardPupDto
     [SerializeField] private Image imgExplicacao;
     [SerializeField] private Image imgPup;
     [SerializeField] private Image imgBtn;
-    [Space(3)]
-    [SerializeField] private Transform[] posFichas = new Transform[3];
+    [Space(3)]    
     [SerializeField] private Image[] imgsCorBtns = new Image[3];    
     [Space(3)]
     [SerializeField] private TextMeshProUGUI lblPreco;
@@ -23,17 +22,14 @@ public class CanvasDetalheCardPupDto
     [Space(3)]
     [SerializeField] private Button btnPratica;
     [SerializeField] private Button btnCacaNiquelPupIndividual;
-    [SerializeField] private Button btnCacaNiquelPupGeral;
-    [Space(3)]
-    [SerializeField] private Animator animatorFicha;
+    [SerializeField] private Button btnCacaNiquelPupGeral;    
 
     public Image ImgBackground { get { return imgBackground; } }
     public Image ImgCirculo { get { return imgCirculo; } }
     public Image ImgExplicacao { get { return imgExplicacao; } }
     public Image ImgPup { get { return imgPup; } }
     public Image ImgBtn { get { return imgBtn; } }
-
-    public Transform[] PosFichas { get { return posFichas; } }
+    
     public Image[] ImgsCorBtns { get { return imgsCorBtns; } }    
 
     public TextMeshProUGUI LblPreco { get { return lblPreco; } }
@@ -44,7 +40,5 @@ public class CanvasDetalheCardPupDto
 
     public Button BtnPratica { get { return btnPratica; } }
     public Button BtnCacaNiquelPupIndividual { get { return btnCacaNiquelPupIndividual; } }
-    public Button BtnCacaNiquelPupGeral { get { return btnCacaNiquelPupGeral; } }
-
-    public Animator AnimatorFicha { get { return animatorFicha; } }
+    public Button BtnCacaNiquelPupGeral { get { return btnCacaNiquelPupGeral; } }    
 }
