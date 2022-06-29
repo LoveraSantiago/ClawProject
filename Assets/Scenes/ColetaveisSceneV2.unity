@@ -1765,8 +1765,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1729035073}
-  - component: {fileID: 1729035074}
   - component: {fileID: 1729035075}
+  - component: {fileID: 1729035074}
   - component: {fileID: 1729035072}
   - component: {fileID: 1729035071}
   - component: {fileID: 1729035070}
@@ -1919,6 +1919,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58dcf0902b596394ba87598cf6e37fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerFichaDto:
+    btnMais: {fileID: 373956815}
+    lblQdtFichas: {fileID: 373956814}
+    relogioDto:
+      lblHoras: {fileID: 0}
+      transfSegundos: {fileID: 0}
+      transfMinutos: {fileID: 0}
+      transfHoras: {fileID: 0}
+  prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
 --- !u!1001 &1895251952
 PrefabInstance:
   m_ObjectHideFlags: 0
