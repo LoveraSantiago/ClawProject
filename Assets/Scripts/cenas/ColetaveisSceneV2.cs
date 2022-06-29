@@ -8,6 +8,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
     [SerializeField] private TimerFichaDto timerFichaDto;
     [Space(5)]
     [SerializeField] private GameObject prefabMateriais;
+    [SerializeField] private GameObject prefabColetaveisDto;
 
     private TimerFicha timerFichaOuro;
 
@@ -15,6 +16,9 @@ public class ColetaveisSceneV2 : MonoBehaviour
     {
         Utils.configMainMono(this);
         MateriaisUtils.configurar(prefabMateriais);
+        HelperColetavelEntidade.configurar(prefabColetaveisDto);
+
+        PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
 
         timerFichaOuro = new TimerFicha(timerFichaDto, Ficha.OURO);
     }
