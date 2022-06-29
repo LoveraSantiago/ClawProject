@@ -7,6 +7,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
 {
     [SerializeField] private TimerFichaDto timerFichaDto;
     [Space(5)]
+    [SerializeField] private PrateleiraArmarioDto[] prateleiraDto;
+    [Space(5)]
     [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabColetaveisDto;
 
