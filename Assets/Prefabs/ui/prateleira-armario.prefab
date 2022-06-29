@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 5468921719091776298}
   - component: {fileID: 5084394647295602404}
   m_Layer: 5
-  m_Name: linha-armario
+  m_Name: prateleira-armario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
