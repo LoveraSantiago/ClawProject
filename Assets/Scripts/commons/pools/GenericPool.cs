@@ -32,28 +32,25 @@ public class GenericPool<K, V>
 
     public void executeEmTodosOsValores(Consumidor<V> consumidor)
     {
-        for(int contador = 0; contador < dicionario.Count; contador++)
+        foreach (KeyValuePair<K, V> entry in dicionario)
         {
-            KeyValuePair<K, V> chaveValor = dicionario.ElementAt(contador);
-            consumidor.consumir(chaveValor.Value);
+            consumidor.consumir(entry.Value);
         }
     }
 
     public void executeEmTodosAsChavesValores(BiConsumidor<K, V> biConsumidor)
-    {        
-        for(int contador = 0; contador < dicionario.Count; contador++)
+    {
+        foreach (KeyValuePair<K, V> entry in dicionario)
         {
-            KeyValuePair<K, V> chaveValor = dicionario.ElementAt(contador);
-            biConsumidor.consumir(chaveValor.Key, chaveValor.Value);
+            biConsumidor.consumir(entry.Key, entry.Value);
         }
     }
 
     public bool temEmAlgumValor(Predicate<V> predicate)
     {
-        for (int contador = 0; contador < dicionario.Count; contador++)
+        foreach (KeyValuePair<K, V> entry in dicionario)
         {
-            KeyValuePair<K, V> chaveValor = dicionario.ElementAt(contador);
-            bool result = predicate.test(chaveValor.Value);
+            bool result = predicate.test(entry.Value);
             if (result) return true;
         }
         return false;
