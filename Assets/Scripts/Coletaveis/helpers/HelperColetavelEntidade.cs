@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class HelperColetavelEntidade 
 {
@@ -92,6 +93,28 @@ public class HelperColetavelEntidade
     {
         ColetavelEntidade coletavelEntidadeOvo = getColetavelEntidadeById(2);
         return spritesPorNome[coletavelEntidadeOvo.nomeSprite];
+    }
+
+    public Sprite[] getAllSpritesColetaveisOrdenados()
+    {
+        int totalDefault = familiasPorEnum[ColetavelEntidade.FAMILIA.DEFAULTS].Count;
+        Sprite[] array = new Sprite[coletaveisPorId.Count - totalDefault];
+        int contador = 0;
+        foreach(KeyValuePair<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>> entry in familiasPorEnum)
+        {
+            if(entry.Key != ColetavelEntidade.FAMILIA.DEFAULTS)
+            {
+                List <ColetavelEntidade> coletaveis = entry.Value;
+                for(int contadorColetavel = 0; contadorColetavel < coletaveis.Count; contadorColetavel++)
+                {
+                    ColetavelEntidade coletavelIt = coletaveis[contadorColetavel];
+                    Sprite sprite = spritesPorNome[coletavelIt.nomeSprite];
+                    array[contador] = sprite;
+                    contador++;
+                }
+            }
+        }
+        return array;
     }
 
     public static void configurar()
