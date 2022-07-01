@@ -23,6 +23,10 @@ public class ColetaveisSceneV2 : MonoBehaviour
         PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
 
         timerFichaOuro = new TimerFicha(timerFichaDto, Ficha.OURO);
+        for(int contadorPrateleiras = 0; contadorPrateleiras < prateleiraDto.Length; contadorPrateleiras++)
+        {
+
+        }
     }
 
     private void Update()
