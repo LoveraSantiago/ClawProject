@@ -2429,10 +2429,10 @@ MonoBehaviour:
     btnMais: {fileID: 373956815}
     lblQdtFichas: {fileID: 373956814}
     relogioDto:
-      lblHoras: {fileID: 0}
-      transfSegundos: {fileID: 0}
-      transfMinutos: {fileID: 0}
-      transfHoras: {fileID: 0}
+      lblHoras: {fileID: 373956813}
+      transfSegundos: {fileID: 373956812}
+      transfMinutos: {fileID: 373956811}
+      transfHoras: {fileID: 373956810}
   prateleiraDto:
   - itensPrateleira:
     - imgItem: {fileID: 1832271359}
