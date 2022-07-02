@@ -3,7 +3,7 @@ public class ColetavelEntidade
     private static ColetavelEntidade[] ARRAY_COLETAVEIS_ENTIDADES;
     private static FAMILIA[] ARRAY_FAMILIAS;
 
-    public enum FAMILIA { DEFAULTS, FRUTAS, DINO, BOLAS, FALLGUYS}
+    public enum FAMILIA { DEFAULTS, FRUTAS, DINO, BOLAS, FALLGUYS, YUYU}
 
     public int id { get; private set; }//Deve ser unico
     public string nome { get; private set; }
@@ -82,6 +82,11 @@ public class ColetavelEntidade
             new ColetavelEntidade(46, "FG7", "fg7", FAMILIA.FALLGUYS),
             new ColetavelEntidade(47, "FG8", "fg8", FAMILIA.FALLGUYS),
             new ColetavelEntidade(48, "FG9", "fg9", FAMILIA.FALLGUYS),
+
+            new ColetavelEntidade(50, "Yusuke"  , "hiei"    , FAMILIA.YUYU),
+            new ColetavelEntidade(51, "Kuwabara", "kurama"  , FAMILIA.YUYU),
+            new ColetavelEntidade(52, "Hiei"    , "kuwabara", FAMILIA.YUYU),
+            new ColetavelEntidade(53, "Kurama"  , "yusuke"  , FAMILIA.YUYU),
             
         };
     }
