@@ -10,4 +10,6 @@ public class ItemPrateleiraDto
 
     public Image ImgItem { get { return imgItem; } }
     public Button BtnItem { get { return btnItem; } }
+
+    public GameObject GoItem { get { return imgItem.transform.gameObject; } }
 }

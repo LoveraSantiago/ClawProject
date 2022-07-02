@@ -23,9 +23,26 @@ public class ColetaveisSceneV2 : MonoBehaviour
         PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
 
         timerFichaOuro = new TimerFicha(timerFichaDto, Ficha.OURO);
+
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        Sprite[] sprites = helperColetavel.getAllSpritesColetaveisOrdenados();
+        int contadorSprites = 0;
         for(int contadorPrateleiras = 0; contadorPrateleiras < prateleiraDto.Length; contadorPrateleiras++)
         {
-
+            PrateleiraArmarioDto prateleiraDtoIt = prateleiraDto[contadorPrateleiras];
+            for (int contadorItens = 0; contadorItens < prateleiraDtoIt.ItensPrateleira.Length; contadorItens++)
+            {
+                ItemPrateleiraDto itemPrateleiraIt = prateleiraDtoIt.ItensPrateleira[contadorItens];
+                if (contadorSprites < sprites.Length)
+                {
+                    itemPrateleiraIt.ImgItem.sprite = sprites[contadorSprites];
+                    contadorSprites++;
+                }
+                else
+                {
+                    itemPrateleiraIt.GoItem.SetActive(false);
+                }
+            }
         }
     }
 
