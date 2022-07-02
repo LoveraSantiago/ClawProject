@@ -3,7 +3,7 @@ public class ColetavelEntidade
     private static ColetavelEntidade[] ARRAY_COLETAVEIS_ENTIDADES;
     private static FAMILIA[] ARRAY_FAMILIAS;
 
-    public enum FAMILIA { DEFAULTS, FRUTAS, DINO}
+    public enum FAMILIA { DEFAULTS, FRUTAS, DINO, BOLAS}
 
     public int id { get; private set; }//Deve ser unico
     public string nome { get; private set; }
@@ -62,6 +62,16 @@ public class ColetavelEntidade
             new ColetavelEntidade(22, "Pterodatilo"      , "pterodatilo256"      , FAMILIA.DINO),
             new ColetavelEntidade(23, "Parassauro"       , "parassauro256"       , FAMILIA.DINO),
             new ColetavelEntidade(24, "Pachicefalossauro", "pachicefalossauro256", FAMILIA.DINO),
+
+            new ColetavelEntidade(30, "Bola de Beisebol"       , "baseball"        , FAMILIA.BOLAS),
+            new ColetavelEntidade(31, "Bola de Basquete"       , "basket"          , FAMILIA.BOLAS),
+            new ColetavelEntidade(32, "Bola de Bilhar"         , "bilhar"          , FAMILIA.BOLAS),
+            new ColetavelEntidade(33, "Bocha"                  , "bocha"           , FAMILIA.BOLAS),
+            new ColetavelEntidade(34, "Bola de Leite"          , "boladeleite"     , FAMILIA.BOLAS),
+            new ColetavelEntidade(35, "Bola de Boliche"        , "boliche"         , FAMILIA.BOLAS),
+            new ColetavelEntidade(36, "Bola de Capotao"        , "football"        , FAMILIA.BOLAS),
+            new ColetavelEntidade(37, "Bola de Futebol"        , "footbolamericano", FAMILIA.BOLAS),
+            new ColetavelEntidade(38, "Bola de Tenis"          , "tenis"           , FAMILIA.BOLAS),
             
         };
     }
