@@ -4,7 +4,7 @@ public class ColetavelEntidade
     private static FAMILIA[] ARRAY_FAMILIAS;
 
     public enum FAMILIA { DEFAULTS, FRUTAS, DINO, BOLAS, FALLGUYS, YUYU,
-                          GELEIA}
+                          GELEIA, MARIO}
 
     public int id { get; private set; }//Deve ser unico
     public string nome { get; private set; }
@@ -98,6 +98,12 @@ public class ColetavelEntidade
             new ColetavelEntidade(66, "Geleia 7"  , "geleia7"  , FAMILIA.GELEIA),
             new ColetavelEntidade(67, "Geleia 8"  , "geleia8"  , FAMILIA.GELEIA),
             new ColetavelEntidade(68, "Geleia 9"  , "geleia9"  , FAMILIA.GELEIA),
+
+            new ColetavelEntidade(70, "Kopa"    , "kopa"    , FAMILIA.MARIO),
+            new ColetavelEntidade(71, "Luigi"   , "luigi"   , FAMILIA.MARIO),
+            new ColetavelEntidade(72, "Mario"   , "mario"   , FAMILIA.MARIO),
+            new ColetavelEntidade(73, "Princesa", "princesa", FAMILIA.MARIO),
+            new ColetavelEntidade(74, "Todi"    , "todi"    , FAMILIA.MARIO),
             
         };
     }
