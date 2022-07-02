@@ -4,7 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class PrateleiraArmarioDto 
 {
+    [SerializeField] private RectTransform rectTransformPrateleira;
     [SerializeField] private ItemPrateleiraDto[] itensPrateleira;
 
+    public RectTransform RectTransformPrateleira { get { return rectTransformPrateleira; } }
     public ItemPrateleiraDto[] ItensPrateleira { get { return itensPrateleira; } }
 }

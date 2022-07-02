@@ -2815,8 +2815,11 @@ MonoBehaviour:
       transfSegundos: {fileID: 373956812}
       transfMinutos: {fileID: 373956811}
       transfHoras: {fileID: 373956810}
+  rTransformArmario: {fileID: 1481599767}
+  scrollRect: {fileID: 1600028417}
   prateleiraDto:
-  - itensPrateleira:
+  - rectTransformPrateleira: {fileID: 1963792649}
+    itensPrateleira:
     - imgItem: {fileID: 1832271359}
       btnItem: {fileID: 1832271361}
     - imgItem: {fileID: 2106149304}
@@ -2827,9 +2830,8 @@ MonoBehaviour:
       btnItem: {fileID: 5468921717297467939}
     - imgItem: {fileID: 1166718144}
       btnItem: {fileID: 5468921717297467938}
-    - imgItem: {fileID: 1166718144}
-      btnItem: {fileID: 5468921717297467938}
-  - itensPrateleira:
+  - rectTransformPrateleira: {fileID: 687549848}
+    itensPrateleira:
     - imgItem: {fileID: 1681496090}
       btnItem: {fileID: 1681496092}
     - imgItem: {fileID: 123284760}
@@ -2840,7 +2842,8 @@ MonoBehaviour:
       btnItem: {fileID: 687549850}
     - imgItem: {fileID: 1249197765}
       btnItem: {fileID: 687549849}
-  - itensPrateleira:
+  - rectTransformPrateleira: {fileID: 218605943}
+    itensPrateleira:
     - imgItem: {fileID: 657936388}
       btnItem: {fileID: 657936390}
     - imgItem: {fileID: 1195882635}
@@ -2851,7 +2854,8 @@ MonoBehaviour:
       btnItem: {fileID: 218605945}
     - imgItem: {fileID: 1129605269}
       btnItem: {fileID: 218605944}
-  - itensPrateleira:
+  - rectTransformPrateleira: {fileID: 106071519}
+    itensPrateleira:
     - imgItem: {fileID: 2054527924}
       btnItem: {fileID: 2054527926}
     - imgItem: {fileID: 526443738}
@@ -2862,7 +2866,8 @@ MonoBehaviour:
       btnItem: {fileID: 106071521}
     - imgItem: {fileID: 1662049292}
       btnItem: {fileID: 106071520}
-  - itensPrateleira:
+  - rectTransformPrateleira: {fileID: 606322377}
+    itensPrateleira:
     - imgItem: {fileID: 1483817519}
       btnItem: {fileID: 1483817521}
     - imgItem: {fileID: 1220980897}
@@ -2873,7 +2878,8 @@ MonoBehaviour:
       btnItem: {fileID: 606322379}
     - imgItem: {fileID: 860122232}
       btnItem: {fileID: 606322378}
-  - itensPrateleira:
+  - rectTransformPrateleira: {fileID: 1895251953}
+    itensPrateleira:
     - imgItem: {fileID: 967834126}
       btnItem: {fileID: 967834128}
     - imgItem: {fileID: 551562844}
@@ -2884,7 +2890,8 @@ MonoBehaviour:
       btnItem: {fileID: 1895251955}
     - imgItem: {fileID: 988046926}
       btnItem: {fileID: 1895251954}
-  - itensPrateleira:
+  - rectTransformPrateleira: {fileID: 1389853996}
+    itensPrateleira:
     - imgItem: {fileID: 571676069}
       btnItem: {fileID: 571676068}
     - imgItem: {fileID: 642204476}
@@ -2895,7 +2902,8 @@ MonoBehaviour:
       btnItem: {fileID: 1573171683}
     - imgItem: {fileID: 335678023}
       btnItem: {fileID: 335678020}
-  - itensPrateleira:
+  - rectTransformPrateleira: {fileID: 525297709}
+    itensPrateleira:
     - imgItem: {fileID: 186208969}
       btnItem: {fileID: 186208968}
     - imgItem: {fileID: 2078831744}

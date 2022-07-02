@@ -9,13 +9,18 @@ public class ColetaveisSceneV2 : MonoBehaviour
     [SerializeField] private TimerFichaDto timerFichaDto;
     [Space(5)]
     [SerializeField] private RectTransform rTransformArmario;
+    [SerializeField] private ScrollRect scrollRect;
     [Space(5)]
     [SerializeField] private PrateleiraArmarioDto[] prateleiraDto;
     [Space(5)]
     [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabColetaveisDto;
 
-    private TimerFicha timerFichaOuro;    
+    private TimerFicha timerFichaOuro;
+
+    private float ultimaPosicao;
+    private PrateleiraArmarioDto prateleiraCima;
+    private PrateleiraArmarioDto prateleiraBaixo;
 
     void Start()
     {
@@ -29,11 +34,9 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
         Sprite[] sprites = helperColetavel.getAllSpritesColetaveisOrdenados();        
-        float result = ((float)sprites.Length)/ ((float)prateleiraDto[0].ItensPrateleira.Length);
-        Debug.Log("result " + result);
-        int qtdPrateleira =(int) Math.Ceiling(result);
-        int acrescimoPrateleiras = prateleiraDto.Length - qtdPrateleira;
-        Debug.Log("Total Prateleiras " + qtdPrateleira);
+        float result = ((float)sprites.Length)/ ((float)prateleiraDto[0].ItensPrateleira.Length);        
+        int qtdPrateleira = (int) Math.Ceiling(result);
+        int acrescimoPrateleiras = prateleiraDto.Length - qtdPrateleira;        
         rTransformArmario.offsetMin += new Vector2(rTransformArmario.offsetMin.x, (acrescimoPrateleiras * 400));
 
         int contadorSprites = 0;
@@ -54,10 +57,34 @@ public class ColetaveisSceneV2 : MonoBehaviour
                 }
             }
         }
+
+        prateleiraCima = prateleiraDto[0];
+        prateleiraBaixo = prateleiraDto[prateleiraDto.Length - 1];
+
+        scrollRect.onValueChanged.AddListener((pos) => movimentado(pos));
+        ultimaPosicao = 1;
     }
 
     private void Update()
     {
         timerFichaOuro.update();
+    }
+
+    private void movimentado(Vector2 posicao)
+    {
+        float result = ultimaPosicao - posicao.y;
+        if(result > 0)
+        {
+            Debug.Log("Sobe");
+            float posYArmario    = scrollRect.content.position.y;
+            float posYPrateleira = prateleiraBaixo.RectTransformPrateleira.position.y;
+            Debug.Log("Pos Armario Y = " + posYArmario + " Pos Prateleira Y = " + posYPrateleira);
+        }
+        else if(result < 0)
+        {
+            Debug.Log("Desce");
+
+        }
+        ultimaPosicao = posicao.y;        
     }
 }
