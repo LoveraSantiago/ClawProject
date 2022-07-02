@@ -8,12 +8,14 @@ public class ColetaveisSceneV2 : MonoBehaviour
 {
     [SerializeField] private TimerFichaDto timerFichaDto;
     [Space(5)]
+    [SerializeField] private RectTransform rTransformArmario;
+    [Space(5)]
     [SerializeField] private PrateleiraArmarioDto[] prateleiraDto;
     [Space(5)]
     [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabColetaveisDto;
 
-    private TimerFicha timerFichaOuro;
+    private TimerFicha timerFichaOuro;    
 
     void Start()
     {
@@ -26,9 +28,13 @@ public class ColetaveisSceneV2 : MonoBehaviour
         timerFichaOuro = new TimerFicha(timerFichaDto, Ficha.OURO);
 
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-        Sprite[] sprites = helperColetavel.getAllSpritesColetaveisOrdenados();
-        int qtdPrateleira =(int) Math.Ceiling(sprites.Length / 5.0f);
+        Sprite[] sprites = helperColetavel.getAllSpritesColetaveisOrdenados();        
+        float result = ((float)sprites.Length)/ ((float)prateleiraDto[0].ItensPrateleira.Length);
+        Debug.Log("result " + result);
+        int qtdPrateleira =(int) Math.Ceiling(result);
+        int acrescimoPrateleiras = prateleiraDto.Length - qtdPrateleira;
         Debug.Log("Total Prateleiras " + qtdPrateleira);
+        rTransformArmario.offsetMin += new Vector2(rTransformArmario.offsetMin.x, (acrescimoPrateleiras * 400));
 
         int contadorSprites = 0;
         for(int contadorPrateleiras = 0; contadorPrateleiras < prateleiraDto.Length; contadorPrateleiras++)
