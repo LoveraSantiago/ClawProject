@@ -3,7 +3,8 @@ public class ColetavelEntidade
     private static ColetavelEntidade[] ARRAY_COLETAVEIS_ENTIDADES;
     private static FAMILIA[] ARRAY_FAMILIAS;
 
-    public enum FAMILIA { DEFAULTS, FRUTAS, DINO, BOLAS, FALLGUYS, YUYU}
+    public enum FAMILIA { DEFAULTS, FRUTAS, DINO, BOLAS, FALLGUYS, YUYU,
+                          GELEIA}
 
     public int id { get; private set; }//Deve ser unico
     public string nome { get; private set; }
@@ -87,6 +88,16 @@ public class ColetavelEntidade
             new ColetavelEntidade(51, "Kuwabara", "kurama"  , FAMILIA.YUYU),
             new ColetavelEntidade(52, "Hiei"    , "kuwabara", FAMILIA.YUYU),
             new ColetavelEntidade(53, "Kurama"  , "yusuke"  , FAMILIA.YUYU),
+
+            new ColetavelEntidade(60, "Geleia 1"  , "geleia1"  , FAMILIA.GELEIA),
+            new ColetavelEntidade(61, "Geleia 2"  , "geleia2"  , FAMILIA.GELEIA),
+            new ColetavelEntidade(62, "Geleia 3"  , "geleia3"  , FAMILIA.GELEIA),
+            new ColetavelEntidade(63, "Geleia 4"  , "geleia4"  , FAMILIA.GELEIA),
+            new ColetavelEntidade(64, "Geleia 5"  , "geleia5"  , FAMILIA.GELEIA),
+            new ColetavelEntidade(65, "Geleia 6"  , "geleia6"  , FAMILIA.GELEIA),
+            new ColetavelEntidade(66, "Geleia 7"  , "geleia7"  , FAMILIA.GELEIA),
+            new ColetavelEntidade(67, "Geleia 8"  , "geleia8"  , FAMILIA.GELEIA),
+            new ColetavelEntidade(68, "Geleia 9"  , "geleia9"  , FAMILIA.GELEIA),
             
         };
     }
