@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
 
 #pragma warning disable 0649
 public class ColetaveisSceneV2 : MonoBehaviour 
@@ -26,6 +27,9 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
         Sprite[] sprites = helperColetavel.getAllSpritesColetaveisOrdenados();
+        int qtdPrateleira =(int) Math.Ceiling(sprites.Length / 5.0f);
+        Debug.Log("Total Prateleiras " + qtdPrateleira);
+
         int contadorSprites = 0;
         for(int contadorPrateleiras = 0; contadorPrateleiras < prateleiraDto.Length; contadorPrateleiras++)
         {
