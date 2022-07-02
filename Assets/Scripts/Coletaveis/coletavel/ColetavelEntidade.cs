@@ -3,7 +3,7 @@ public class ColetavelEntidade
     private static ColetavelEntidade[] ARRAY_COLETAVEIS_ENTIDADES;
     private static FAMILIA[] ARRAY_FAMILIAS;
 
-    public enum FAMILIA { DEFAULTS, FRUTAS, DINO, BOLAS}
+    public enum FAMILIA { DEFAULTS, FRUTAS, DINO, BOLAS, FALLGUYS}
 
     public int id { get; private set; }//Deve ser unico
     public string nome { get; private set; }
@@ -72,6 +72,16 @@ public class ColetavelEntidade
             new ColetavelEntidade(36, "Bola de Capotao"        , "football"        , FAMILIA.BOLAS),
             new ColetavelEntidade(37, "Bola de Futebol"        , "footbolamericano", FAMILIA.BOLAS),
             new ColetavelEntidade(38, "Bola de Tenis"          , "tenis"           , FAMILIA.BOLAS),
+
+            new ColetavelEntidade(40, "FG1", "fg1", FAMILIA.FALLGUYS),
+            new ColetavelEntidade(41, "FG2", "fg2", FAMILIA.FALLGUYS),
+            new ColetavelEntidade(42, "FG3", "fg3", FAMILIA.FALLGUYS),
+            new ColetavelEntidade(43, "FG4", "fg4", FAMILIA.FALLGUYS),
+            new ColetavelEntidade(44, "FG5", "fg5", FAMILIA.FALLGUYS),
+            new ColetavelEntidade(45, "FG6", "fg6", FAMILIA.FALLGUYS),
+            new ColetavelEntidade(46, "FG7", "fg7", FAMILIA.FALLGUYS),
+            new ColetavelEntidade(47, "FG8", "fg8", FAMILIA.FALLGUYS),
+            new ColetavelEntidade(48, "FG9", "fg9", FAMILIA.FALLGUYS),
             
         };
     }
