@@ -12,6 +12,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect;
     [Space(5)]
     [SerializeField] private int qtdPrateleirasVisiveis;
+    [SerializeField] private RectTransform rTransformRefCima;
     [SerializeField] private RectTransform rTransformRefBaixo;
     [SerializeField] private PrateleiraArmarioDto[] prateleiraDto;
     [Space(5)]
@@ -22,12 +23,13 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
     private float ultimaPosicao;
     private float posYReferenciaBaixo;
+    private float posYReferenciaCima;
     private PrateleiraArmarioDto prateleiraCima;
     private PrateleiraArmarioDto prateleiraBaixo;
 
     private Sprite[] sprites;
-    private int contadorSprites;
-    private int contadorPrateleiraCima;
+    private int contadorBaixoSprites;
+    private int contadorCimaSprites;    
 
     void Start()
     {
@@ -45,31 +47,33 @@ public class ColetaveisSceneV2 : MonoBehaviour
         int qtdPrateleira = (int) Math.Ceiling(result);
         int acrescimoPrateleiras = qtdPrateleirasVisiveis - qtdPrateleira;
 
-        Debug.Log("Pos Antes " + rTransformRefBaixo.position.y);
         rTransformArmario.offsetMin += new Vector2(rTransformArmario.offsetMin.x, (acrescimoPrateleiras * 400));
         posYReferenciaBaixo = rTransformRefBaixo.position.y;
+        posYReferenciaCima = rTransformRefCima.position.y;
+
         Debug.Log("Pos Depois " + rTransformRefBaixo.position.y);
 
-        contadorSprites = 0;
+        contadorBaixoSprites = 0;
+        contadorCimaSprites = 0;
         for (int contadorPrateleiras = 0; contadorPrateleiras < prateleiraDto.Length; contadorPrateleiras++)
         {
             PrateleiraArmarioDto prateleiraDtoIt = prateleiraDto[contadorPrateleiras];
             for (int contadorItens = 0; contadorItens < prateleiraDtoIt.ItensPrateleira.Length; contadorItens++)
             {
                 ItemPrateleiraDto itemPrateleiraIt = prateleiraDtoIt.ItensPrateleira[contadorItens];
-                if (contadorSprites < sprites.Length)
+                if (contadorBaixoSprites < sprites.Length)
                 {
-                    itemPrateleiraIt.ImgItem.sprite = sprites[contadorSprites];
-                    contadorSprites++;
+                    itemPrateleiraIt.ImgItem.sprite = sprites[contadorBaixoSprites];                    
                 }
                 else
                 {
                     itemPrateleiraIt.GoItem.SetActive(false);
                 }
+                contadorBaixoSprites++;
             }
         }
 
-        prateleiraCima = prateleiraDto[contadorPrateleiraCima++];
+        prateleiraCima  = prateleiraDto[0];
         prateleiraBaixo = prateleiraDto[prateleiraDto.Length - 1];        
 
         scrollRect.onValueChanged.AddListener((pos) => movimentado(pos));
@@ -88,31 +92,53 @@ public class ColetaveisSceneV2 : MonoBehaviour
         {
             float posYPrateleira = prateleiraBaixo.RectTransformPrateleira.transform.position.y;
             Debug.Log("Ref = " + posYReferenciaBaixo + " prat = " + posYPrateleira);
-            if(contadorSprites < sprites.Length && posYPrateleira > posYReferenciaBaixo)
+            if(contadorBaixoSprites < sprites.Length && posYPrateleira > posYReferenciaBaixo)
             {
                 for(int contadorItens = 0; contadorItens < prateleiraCima.ItensPrateleira.Length; contadorItens++)
                 {
                     ItemPrateleiraDto itemPrateleiraIt = prateleiraCima.ItensPrateleira[contadorItens];
-                    if (contadorSprites < sprites.Length)
+                    if (contadorBaixoSprites < sprites.Length)
                     {
-                        itemPrateleiraIt.ImgItem.sprite = sprites[contadorSprites];
-                        contadorSprites++;
+                        itemPrateleiraIt.ImgItem.sprite = sprites[contadorBaixoSprites];
+                    }
+                    else
+                    {
+                        itemPrateleiraIt.GoItem.SetActive(false);
+                    }
+                    contadorBaixoSprites++;
+                }
+                Vector2 posBaixo = prateleiraBaixo.RectTransformPrateleira.anchoredPosition;
+                prateleiraCima.RectTransformPrateleira.anchoredPosition = new Vector2(posBaixo.x, posBaixo.y - 400f);
+                prateleiraBaixo = prateleiraCima;
+                prateleiraCima  = prateleiraDto[(int.Parse(prateleiraCima.RectTransformPrateleira.name) + 1) % prateleiraDto.Length];
+
+                contadorCimaSprites += 5;
+            }
+        }
+        else if(result < 0)
+        {
+            float posYPrateleira = prateleiraCima.RectTransformPrateleira.transform.position.y;
+            if(contadorCimaSprites > 0 && posYPrateleira < posYReferenciaCima)
+            {
+                for(int contadorItens = prateleiraBaixo.ItensPrateleira.Length - 1; contadorItens >= 0; contadorItens--)
+                {
+                    ItemPrateleiraDto itemPrateleiraIt = prateleiraBaixo.ItensPrateleira[contadorItens];
+                    if(contadorCimaSprites >= 0)
+                    {
+                        itemPrateleiraIt.ImgItem.sprite = sprites[--contadorCimaSprites];
                     }
                     else
                     {
                         itemPrateleiraIt.GoItem.SetActive(false);
                     }
                 }
-                Vector2 posBaixo = prateleiraBaixo.RectTransformPrateleira.anchoredPosition;
-                prateleiraCima.RectTransformPrateleira.anchoredPosition = new Vector2(posBaixo.x, posBaixo.y - 400f);
-                prateleiraBaixo = prateleiraCima;
-                prateleiraCima  = prateleiraDto[contadorPrateleiraCima++ % prateleiraDto.Length];
-            }
-        }
-        else if(result < 0)
-        {
-            Debug.Log("Desce");
+                Vector2 posCima = prateleiraCima.RectTransformPrateleira.anchoredPosition;
+                prateleiraBaixo.RectTransformPrateleira.anchoredPosition = new Vector2(posCima.x, posCima.y + 400);
+                prateleiraCima = prateleiraBaixo;
+                prateleiraBaixo = prateleiraDto[((int.Parse(prateleiraBaixo.RectTransformPrateleira.name) + 8) -1) % prateleiraDto.Length];
 
+                contadorBaixoSprites -= 5;
+            }
         }
         ultimaPosicao = posicao.y;        
     }
