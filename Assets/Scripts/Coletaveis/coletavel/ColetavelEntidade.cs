@@ -4,7 +4,7 @@ public class ColetavelEntidade
     private static FAMILIA[] ARRAY_FAMILIAS;
 
     public enum FAMILIA { DEFAULTS, FRUTAS, DINO, BOLAS, FALLGUYS, YUYU,
-                          GELEIA, MARIO, MEGAMAN, COGUMELOS}
+                          GELEIA, MARIO, MEGAMAN, COGUMELOS, POOPS}
 
     public int id { get; private set; }//Deve ser unico
     public string nome { get; private set; }
@@ -118,6 +118,17 @@ public class ColetavelEntidade
             new ColetavelEntidade(96, "Congumelo7", "cogumelo7", FAMILIA.COGUMELOS),
             new ColetavelEntidade(97, "Congumelo8", "cogumelo8", FAMILIA.COGUMELOS),
             new ColetavelEntidade(98, "Congumelo9", "cogumelo9", FAMILIA.COGUMELOS),
+
+            new ColetavelEntidade(100, "Poop 1",  "poop1", FAMILIA.POOPS),
+            new ColetavelEntidade(101, "Poop 2",  "poop2", FAMILIA.POOPS),
+            new ColetavelEntidade(102, "Poop 3",  "poop3", FAMILIA.POOPS),
+            new ColetavelEntidade(103, "Poop 4",  "poop4", FAMILIA.POOPS),
+            new ColetavelEntidade(104, "Poop 5",  "poop5", FAMILIA.POOPS),
+            new ColetavelEntidade(105, "Poop 6",  "poop6", FAMILIA.POOPS),
+            new ColetavelEntidade(106, "Poop 7",  "poop7", FAMILIA.POOPS),
+            new ColetavelEntidade(107, "Poop 8",  "poop8", FAMILIA.POOPS),
+            new ColetavelEntidade(108, "Poop 9",  "poop9", FAMILIA.POOPS),
+            new ColetavelEntidade(109, "Poop 10", "poop10", FAMILIA.POOPS),
             
         };
     }
