@@ -88,7 +88,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         {
             float posYPrateleira = prateleiraBaixo.RectTransformPrateleira.transform.position.y;
             Debug.Log("Ref = " + posYReferenciaBaixo + " prat = " + posYPrateleira);
-            if(posYPrateleira > posYReferenciaBaixo)
+            if(contadorSprites < sprites.Length && posYPrateleira > posYReferenciaBaixo)
             {
                 for(int contadorItens = 0; contadorItens < prateleiraCima.ItensPrateleira.Length; contadorItens++)
                 {
