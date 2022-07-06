@@ -97,6 +97,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
                     if (contadorBaixoSprites < sprites.Length)
                     {
                         itemPrateleiraIt.ImgItem.sprite = sprites[contadorBaixoSprites];
+                        itemPrateleiraIt.GoItem.SetActive(true);
                     }
                     else
                     {
@@ -111,7 +112,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
                 prateleiraCima  = prateleiraDto[indicePrateleira];
 
                 contadorCimaSprites += 5;
-                Debug.Log("DESCER " + " PCima = " + prateleiraCima.RectTransformPrateleira.name + " PBaixo = " + prateleiraBaixo.RectTransformPrateleira.name);
+                Debug.Log("DESCER " + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
             }
         }
         else if(result < 0)
@@ -125,6 +126,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
                     if(contadorCimaSprites >= 0)
                     {
                         itemPrateleiraIt.ImgItem.sprite = sprites[--contadorCimaSprites];
+                        itemPrateleiraIt.GoItem.SetActive(true);
+
                     }
                     else
                     {
@@ -138,7 +141,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
                 prateleiraBaixo = prateleiraDto[indicePrateleira];
 
                 contadorBaixoSprites -= 5;
-                Debug.Log("SUBIR" + " PCima = " + prateleiraCima.RectTransformPrateleira.name + " PBaixo = " + prateleiraBaixo.RectTransformPrateleira.name);
+                Debug.Log("SUBIR" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
             }
         }
         ultimaPosicao = posicao.y;        
