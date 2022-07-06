@@ -4,8 +4,7 @@ using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class ColetaveisSceneV2 : MonoBehaviour 
-{   
-    [Space(5)]
+{       
     [SerializeField] private TimerFichaDto timerFichaDto;
     [Space(5)]
     [SerializeField] private RectTransform rTransformArmario;
@@ -15,6 +14,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
     [SerializeField] private RectTransform rTransformRefCima;
     [SerializeField] private RectTransform rTransformRefBaixo;
     [SerializeField] private PrateleiraArmarioDto[] prateleiraDto;
+    [Space(5)]
+    [SerializeField] private PrateleirasDto prateleirasDto;
     [Space(5)]
     [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabColetaveisDto;
@@ -29,7 +30,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
     private Sprite[] sprites;
     private int contadorBaixoSprites;
-    private int contadorCimaSprites;    
+    private int contadorCimaSprites;
+    private Prateleiras prateleiras;
 
     void Start()
     {
@@ -40,14 +42,15 @@ public class ColetaveisSceneV2 : MonoBehaviour
         PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
 
         timerFichaOuro = new TimerFicha(timerFichaDto, Ficha.OURO);
+        prateleiras    = new Prateleiras(prateleirasDto);
 
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-        sprites = helperColetavel.getAllSpritesColetaveisOrdenados();        
-        float result = ((float)sprites.Length)/ ((float)prateleiraDto[0].ItensPrateleira.Length);        
-        int qtdPrateleira = (int) Math.Ceiling(result);
-        int acrescimoPrateleiras = qtdPrateleirasVisiveis - qtdPrateleira;
+        //HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        //sprites = helperColetavel.getAllSpritesColetaveisOrdenados();        
+        //float result = ((float)sprites.Length)/ ((float)prateleiraDto[0].ItensPrateleira.Length);        
+        //int qtdPrateleira = (int) Math.Ceiling(result);
+        //int acrescimoPrateleiras = qtdPrateleirasVisiveis - qtdPrateleira;
 
-        rTransformArmario.offsetMin += new Vector2(rTransformArmario.offsetMin.x, (acrescimoPrateleiras * 400));
+        //rTransformArmario.offsetMin += new Vector2(rTransformArmario.offsetMin.x, (acrescimoPrateleiras * 400));
         posYReferenciaBaixo = rTransformRefBaixo.position.y;
         posYReferenciaCima = rTransformRefCima.position.y;        
 

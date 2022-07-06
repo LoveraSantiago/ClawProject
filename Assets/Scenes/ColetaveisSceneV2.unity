@@ -3061,6 +3061,66 @@ MonoBehaviour:
       btnItem: {fileID: 370669041}
     - imgItem: {fileID: 1510036066}
       btnItem: {fileID: 1510036063}
+  prateleirasDto:
+    prateleiraDto:
+    - rectTransformPrateleira: {fileID: 1963792649}
+      itensPrateleira:
+      - imgItem: {fileID: 1832271359}
+        btnItem: {fileID: 1832271361}
+      - imgItem: {fileID: 2106149304}
+        btnItem: {fileID: 5468921717297467941}
+      - imgItem: {fileID: 1248113638}
+        btnItem: {fileID: 5468921717297467940}
+      - imgItem: {fileID: 178738547}
+        btnItem: {fileID: 5468921717297467939}
+      - imgItem: {fileID: 1166718144}
+        btnItem: {fileID: 5468921717297467938}
+    - rectTransformPrateleira: {fileID: 687549848}
+      itensPrateleira:
+      - imgItem: {fileID: 1681496090}
+        btnItem: {fileID: 1681496092}
+      - imgItem: {fileID: 123284760}
+        btnItem: {fileID: 687549852}
+      - imgItem: {fileID: 1328874988}
+        btnItem: {fileID: 687549851}
+      - imgItem: {fileID: 1100007438}
+        btnItem: {fileID: 687549850}
+      - imgItem: {fileID: 1249197765}
+        btnItem: {fileID: 687549849}
+    - rectTransformPrateleira: {fileID: 218605943}
+      itensPrateleira:
+      - imgItem: {fileID: 657936388}
+        btnItem: {fileID: 657936390}
+      - imgItem: {fileID: 1195882635}
+        btnItem: {fileID: 0}
+      - imgItem: {fileID: 536415455}
+        btnItem: {fileID: 218605946}
+      - imgItem: {fileID: 930608674}
+        btnItem: {fileID: 218605945}
+      - imgItem: {fileID: 1129605269}
+        btnItem: {fileID: 218605944}
+    - rectTransformPrateleira: {fileID: 106071519}
+      itensPrateleira:
+      - imgItem: {fileID: 0}
+        btnItem: {fileID: 0}
+      - imgItem: {fileID: 0}
+        btnItem: {fileID: 0}
+      - imgItem: {fileID: 0}
+        btnItem: {fileID: 0}
+      - imgItem: {fileID: 0}
+        btnItem: {fileID: 0}
+      - imgItem: {fileID: 0}
+        btnItem: {fileID: 0}
+    - rectTransformPrateleira: {fileID: 0}
+      itensPrateleira: []
+    - rectTransformPrateleira: {fileID: 0}
+      itensPrateleira: []
+    - rectTransformPrateleira: {fileID: 0}
+      itensPrateleira: []
+    - rectTransformPrateleira: {fileID: 0}
+      itensPrateleira: []
+    - rectTransformPrateleira: {fileID: 0}
+      itensPrateleira: []
   prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
   prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
 --- !u!114 &1740410186 stripped
