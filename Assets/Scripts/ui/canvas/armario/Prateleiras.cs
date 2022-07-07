@@ -54,7 +54,7 @@ public class Prateleiras
             prateleiraCima = prateleirasDto.PrateleiraDto[indicePrateleira];
 
             contadorCimaSprites += 5;
-            Debug.Log("DESCER " + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
+            //Debug.Log("DESCER " + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
         }
     }
 
@@ -84,7 +84,7 @@ public class Prateleiras
             prateleiraBaixo = prateleirasDto.PrateleiraDto[indicePrateleira];
 
             contadorBaixoSprites -= 5;
-            Debug.Log("SUBIR" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
+            //Debug.Log("SUBIR" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
         }
     }
 
