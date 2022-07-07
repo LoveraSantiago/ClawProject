@@ -51,16 +51,11 @@ public class Prateleiras
                 }
                 contadorBaixoSprites++;
             }
-            Vector2 posBaixo = prateleiraBaixo.RectTransformPrateleira.anchoredPosition;
-            prateleiraCima.RectTransformPrateleira.anchoredPosition = new Vector2(posBaixo.x, posBaixo.y - 400f);
-            prateleiraBaixo = prateleiraCima;
-            int indicePrateleira = (int.Parse(prateleiraCima.RectTransformPrateleira.name) + 1) % prateleirasDto.PrateleiraDto.Length;
-            prateleiraCima = prateleirasDto.PrateleiraDto[indicePrateleira];
-
+            reposicionarPrateleiraParaUltimaPosicao();
             contadorCimaSprites += 5;
             //Debug.Log("DESCER " + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
         }
-    }
+    }   
 
     public void movimentarParaCima()
     {
@@ -79,15 +74,30 @@ public class Prateleiras
                     itemPrateleiraIt.GoItem.SetActive(false);
                 }
             }
-            Vector2 posCima = prateleiraCima.RectTransformPrateleira.anchoredPosition;
-            prateleiraBaixo.RectTransformPrateleira.anchoredPosition = new Vector2(posCima.x, posCima.y + 400);
-            prateleiraCima = prateleiraBaixo;
-            int indicePrateleira = ((int.Parse(prateleiraBaixo.RectTransformPrateleira.name) + prateleirasDto.PrateleiraDto.Length) - 1) % prateleirasDto.PrateleiraDto.Length;
-            prateleiraBaixo = prateleirasDto.PrateleiraDto[indicePrateleira];
-
+            reposicionarPrateleiraParaPrimeiraPosicao();
             contadorBaixoSprites -= 5;
             //Debug.Log("SUBIR" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
         }
+    }
+
+    private void reposicionarPrateleiraParaUltimaPosicao()
+    {
+        Vector2 posBaixo = prateleiraBaixo.RectTransformPrateleira.anchoredPosition;
+        prateleiraCima.RectTransformPrateleira.anchoredPosition = new Vector2(posBaixo.x, posBaixo.y - 400f);
+
+        prateleiraBaixo = prateleiraCima;
+        int indicePrateleira = (int.Parse(prateleiraCima.RectTransformPrateleira.name) + 1) % prateleirasDto.PrateleiraDto.Length;
+        prateleiraCima = prateleirasDto.PrateleiraDto[indicePrateleira];
+    }
+
+    private void reposicionarPrateleiraParaPrimeiraPosicao()
+    {
+        Vector2 posCima = prateleiraCima.RectTransformPrateleira.anchoredPosition;
+        prateleiraBaixo.RectTransformPrateleira.anchoredPosition = new Vector2(posCima.x, posCima.y + 400);
+
+        prateleiraCima = prateleiraBaixo;
+        int indicePrateleira = ((int.Parse(prateleiraBaixo.RectTransformPrateleira.name) + prateleirasDto.PrateleiraDto.Length) - 1) % prateleirasDto.PrateleiraDto.Length;
+        prateleiraBaixo = prateleirasDto.PrateleiraDto[indicePrateleira];
     }
 
     private void carregarSpritesColetaveis()
