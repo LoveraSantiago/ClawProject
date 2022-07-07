@@ -4,6 +4,7 @@ using UnityEngine;
 public class Prateleiras 
 {
     private PrateleirasDto prateleirasDto;
+
     private Sprite[] sprites;
 
     private float posYReferenciaBaixo;
@@ -14,6 +15,8 @@ public class Prateleiras
 
     private PrateleiraArmarioDto prateleiraCima;
     private PrateleiraArmarioDto prateleiraBaixo;
+
+    private PopuladorPrateleira populadorPrateleira;
 
     public Prateleiras(PrateleirasDto prateleirasDto)
     {
@@ -26,6 +29,8 @@ public class Prateleiras
 
         prateleiraCima = prateleirasDto.PrateleiraDto[0];
         prateleiraBaixo = prateleirasDto.PrateleiraDto[prateleirasDto.PrateleiraDto.Length - 1];
+
+        populadorPrateleira = new PopuladorPrateleira();
     }
 
     public void movimentarParaBaixo()
@@ -38,8 +43,7 @@ public class Prateleiras
                 ItemPrateleiraDto itemPrateleiraIt = prateleiraCima.ItensPrateleira[contadorItens];
                 if (contadorBaixoSprites < sprites.Length)
                 {
-                    itemPrateleiraIt.ImgItem.sprite = sprites[contadorBaixoSprites];
-                    itemPrateleiraIt.GoItem.SetActive(true);
+                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, sprites[contadorBaixoSprites]);                    
                 }
                 else
                 {
@@ -68,9 +72,7 @@ public class Prateleiras
                 ItemPrateleiraDto itemPrateleiraIt = prateleiraBaixo.ItensPrateleira[contadorItens];
                 if (contadorCimaSprites >= 0)
                 {
-                    itemPrateleiraIt.ImgItem.sprite = sprites[--contadorCimaSprites];
-                    itemPrateleiraIt.GoItem.SetActive(true);
-
+                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, sprites[--contadorCimaSprites]);
                 }
                 else
                 {
@@ -118,7 +120,7 @@ public class Prateleiras
                 ItemPrateleiraDto itemPrateleiraIt = prateleiraDtoIt.ItensPrateleira[contadorItens];
                 if (contadorBaixoSprites < sprites.Length)
                 {
-                    itemPrateleiraIt.ImgItem.sprite = sprites[contadorBaixoSprites];
+                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, sprites[contadorBaixoSprites]);                    
                 }
                 else
                 {
