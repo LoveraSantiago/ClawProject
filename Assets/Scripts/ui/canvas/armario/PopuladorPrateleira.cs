@@ -4,12 +4,15 @@ public class PopuladorPrateleira
 {
     private bool estadoUltimaFamilia;
     private ColetavelEntidade.FAMILIA ultimaFamilia;
+
+    private PoolMaterialGrayscale poolMaterialGrayScale;
     private HelperColetavelEntidade helperColetavelEntidade;
 
     public PopuladorPrateleira()
     {
         helperColetavelEntidade = new HelperColetavelEntidade();
         ultimaFamilia = ColetavelEntidade.FAMILIA.DEFAULTS;
+        poolMaterialGrayScale = new PoolMaterialGrayscale();
     }
 
     public void popularItemDaPrateleira(ItemPrateleiraDto itemPrateleira, Sprite sprite)
@@ -46,11 +49,21 @@ public class PopuladorPrateleira
         }
     }
 
+    public void disposePrateleira(PrateleiraArmarioDto prateleira)
+    {
+        for(int contador = 0; contador < prateleira.ItensPrateleira.Length; contador++)
+        {
+            ItemPrateleiraDto itemPrateleiraIT = prateleira.ItensPrateleira[contador];
+            Material matReuso = itemPrateleiraIT.ImgItem.material;
+            poolMaterialGrayScale.addObjeto(matReuso);
+        }
+    }
+
     private void popularMaterialItem(ItemPrateleiraDto itemPrateleira, ColetavelEntidade coletavel, Sprite sprite)
     {
         if (PlayerPrefsColetaveis.isColetavelIndisponivel(coletavel.nome))
         {
-            Material matGray = MaterialGrayScale.of(sprite);
+            Material matGray = poolMaterialGrayScale.getObjeto(sprite);
             itemPrateleira.ImgItem.material = matGray;
         }
         else

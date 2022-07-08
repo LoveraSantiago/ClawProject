@@ -88,6 +88,7 @@ public class Prateleiras
         prateleiraBaixo = prateleiraCima;
         int indicePrateleira = (int.Parse(prateleiraCima.RectTransformPrateleira.name) + 1) % prateleirasDto.PrateleiraDto.Length;
         prateleiraCima = prateleirasDto.PrateleiraDto[indicePrateleira];
+        populadorPrateleira.disposePrateleira(prateleiraCima);
     }
 
     private void reposicionarPrateleiraParaPrimeiraPosicao()
@@ -98,6 +99,7 @@ public class Prateleiras
         prateleiraCima = prateleiraBaixo;
         int indicePrateleira = ((int.Parse(prateleiraBaixo.RectTransformPrateleira.name) + prateleirasDto.PrateleiraDto.Length) - 1) % prateleirasDto.PrateleiraDto.Length;
         prateleiraBaixo = prateleirasDto.PrateleiraDto[indicePrateleira];
+        populadorPrateleira.disposePrateleira(prateleiraBaixo);
     }
 
     private void carregarSpritesColetaveis()

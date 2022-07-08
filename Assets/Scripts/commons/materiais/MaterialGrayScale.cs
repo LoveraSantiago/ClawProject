@@ -7,6 +7,11 @@ public class MaterialGrayScale
     public static Material of(Sprite sprite)
     {
         Material material = new Material(matGrayScale);
+        return changeSprite(material, sprite);
+    }
+
+    public static Material changeSprite(Material material, Sprite sprite)
+    {
         material.SetTexture("main_text", sprite.texture);
         return material;
     }
