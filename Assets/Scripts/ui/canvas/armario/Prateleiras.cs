@@ -21,6 +21,7 @@ public class Prateleiras
     public Prateleiras(PrateleirasDto prateleirasDto)
     {
         this.prateleirasDto = prateleirasDto;
+        populadorPrateleira = new PopuladorPrateleira();
 
         carregarSpritesColetaveis();
         calcularTamanhoArmario();
@@ -30,7 +31,6 @@ public class Prateleiras
         prateleiraCima = prateleirasDto.PrateleiraDto[0];
         prateleiraBaixo = prateleirasDto.PrateleiraDto[prateleirasDto.PrateleiraDto.Length - 1];
 
-        populadorPrateleira = new PopuladorPrateleira();
     }
 
     public void movimentarParaBaixo()
