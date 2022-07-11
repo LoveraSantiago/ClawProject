@@ -17,6 +17,7 @@ public class PopuladorPrateleira
 
     public void popularItemDaPrateleira(ItemPrateleiraDto itemPrateleira, Sprite sprite)
     {
+        Debug.Log("Vai popular item " + itemPrateleira.ImgItem.gameObject.name + " sprite " + sprite.name);
         itemPrateleira.ImgItem.sprite = sprite;
         itemPrateleira.GoItem.SetActive(true);
 
@@ -51,7 +52,7 @@ public class PopuladorPrateleira
 
     public void disposePrateleira(PrateleiraArmarioDto prateleira)
     {
-        for(int contador = 0; contador < prateleira.ItensPrateleira.Length; contador++)
+        for (int contador = 0; contador < prateleira.ItensPrateleira.Length; contador++)
         {
             ItemPrateleiraDto itemPrateleiraIT = prateleira.ItensPrateleira[contador];
             Material matReuso = itemPrateleiraIT.ImgItem.material;

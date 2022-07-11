@@ -53,7 +53,8 @@ public class Prateleiras
             }
             reposicionarPrateleiraParaUltimaPosicao();
             contadorCimaSprites += 5;
-            //Debug.Log("DESCER " + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
+            Debug.Log("DESCER" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
+            Debug.Log("DESCER" + " PCima = " + prateleiraCima.RectTransformPrateleira.name + " PBaixo = " + prateleiraBaixo.RectTransformPrateleira.name);
         }
     }   
 
@@ -76,7 +77,8 @@ public class Prateleiras
             }
             reposicionarPrateleiraParaPrimeiraPosicao();
             contadorBaixoSprites -= 5;
-            //Debug.Log("SUBIR" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
+            Debug.Log("SUBIR" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
+            Debug.Log("SUBIR" + " PCima = " + prateleiraCima.RectTransformPrateleira.name + " PBaixo = " + prateleiraBaixo.RectTransformPrateleira.name);
         }
     }
 
@@ -100,6 +102,34 @@ public class Prateleiras
         int indicePrateleira = ((int.Parse(prateleiraBaixo.RectTransformPrateleira.name) + prateleirasDto.PrateleiraDto.Length) - 1) % prateleirasDto.PrateleiraDto.Length;
         prateleiraBaixo = prateleirasDto.PrateleiraDto[indicePrateleira];
         populadorPrateleira.disposePrateleira(prateleiraBaixo);
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
+        //PROBLEMA AQUI NO DISPOSE
     }
 
     private void carregarSpritesColetaveis()
