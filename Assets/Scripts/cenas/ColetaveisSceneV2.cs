@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System.Collections;
 
 #pragma warning disable 0649
 public class ColetaveisSceneV2 : MonoBehaviour 
@@ -49,5 +51,33 @@ public class ColetaveisSceneV2 : MonoBehaviour
             prateleiras.movimentarParaCima();
         }
         ultimaPosicao = posicao.y;        
+    }
+
+    private void popularBotoes()
+    {
+        for (int contadorPrateleiras = 0; contadorPrateleiras < prateleirasDto.PrateleiraDto.Length; contadorPrateleiras++)
+        {
+            PrateleiraArmarioDto prateleiraDtoIt = prateleirasDto.PrateleiraDto[contadorPrateleiras];
+            for (int contadorItens = 0; contadorItens < prateleiraDtoIt.ItensPrateleira.Length; contadorItens++)
+            {
+                ItemPrateleiraDto itemPrateleiraIt = prateleiraDtoIt.ItensPrateleira[contadorItens];
+                itemPrateleiraIt.BtnItem.onClick.AddListener(() => cricado());
+            }
+        }
+    }
+
+    private void cricado()
+    {
+        GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
+        int nomeBtn    = int.Parse(goSelecionado.name);
+        int nomeParent = int.Parse(goSelecionado.transform.parent.name);
+
+        ItemPrateleiraDto itemSelecionado = prateleirasDto.PrateleiraDto[nomeParent].ItensPrateleira[nomeBtn];
+        Utils.MonoBehaviour.StartCoroutine(zoomando());
+    }
+
+    private IEnumerator zoomando()
+    {
+        yield return null;
     }
 }
