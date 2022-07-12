@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PoolMaterialGrayscale : PoolList<Material>
@@ -13,7 +11,7 @@ public class PoolMaterialGrayscale : PoolList<Material>
         }
         else
         {
-            Debug.Log("criando material");
+            //Debug.Log("criando material");
             return MaterialGrayScale.of(sprite);
         }
     }
