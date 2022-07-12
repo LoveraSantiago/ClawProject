@@ -2799,6 +2799,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1195882636 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8674931942141103675, guid: 18a58123b2c2ed043a93a40128551ae6, type: 3}
+  m_PrefabInstance: {fileID: 218605942}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1220980897 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2634615015031594780, guid: 18a58123b2c2ed043a93a40128551ae6, type: 3}
@@ -4145,6 +4156,7 @@ MonoBehaviour:
       transfSegundos: {fileID: 373956812}
       transfMinutos: {fileID: 373956811}
       transfHoras: {fileID: 373956810}
+  rTransformScrollRect: {fileID: 1600028414}
   scrollRect: {fileID: 1600028417}
   prateleirasDto:
     qtdPrateleirasVisiveis: 5
@@ -4181,7 +4193,7 @@ MonoBehaviour:
       - imgItem: {fileID: 657936388}
         btnItem: {fileID: 657936390}
       - imgItem: {fileID: 1195882635}
-        btnItem: {fileID: 0}
+        btnItem: {fileID: 1195882636}
       - imgItem: {fileID: 536415455}
         btnItem: {fileID: 218605946}
       - imgItem: {fileID: 930608674}

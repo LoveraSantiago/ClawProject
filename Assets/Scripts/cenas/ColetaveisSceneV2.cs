@@ -7,7 +7,7 @@ using System.Collections;
 public class ColetaveisSceneV2 : MonoBehaviour 
 {       
     [SerializeField] private TimerFichaDto timerFichaDto;
-    [Space(5)]
+    [Space(5)]    
     [SerializeField] private ScrollRect scrollRect;
     [Space(5)]
     [SerializeField] private PrateleirasDto prateleirasDto;
@@ -32,6 +32,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
         scrollRect.onValueChanged.AddListener((pos) => movimentado(pos));
         ultimaPosicao = 1;
+
+        popularBotoes();
     }
 
     private void Update()
@@ -72,7 +74,16 @@ public class ColetaveisSceneV2 : MonoBehaviour
         int nomeBtn    = int.Parse(goSelecionado.name);
         int nomeParent = int.Parse(goSelecionado.transform.parent.name);
 
+        Debug.Log("Cricado nome " + nomeBtn + " parent " + nomeParent);
+
         ItemPrateleiraDto itemSelecionado = prateleirasDto.PrateleiraDto[nomeParent].ItensPrateleira[nomeBtn];
+        RectTransform rItemSelecionado = (RectTransform)itemSelecionado.BtnItem.gameObject.transform;
+        Debug.Log("Cast funciona " + rItemSelecionado.name);
+        //Vector2 pivot = rTransformScrollRect.pivot;
+        //Debug.Log("Pivot " + pivot);
+        Vector2 centro = ((RectTransform)scrollRect.transform).rect.center;
+        Debug.Log("Centro " + centro);
+
         Utils.MonoBehaviour.StartCoroutine(zoomando());
     }
 
