@@ -38,6 +38,7 @@ public class Prateleiras
         float posYPrateleira = prateleiraBaixo.RectTransformPrateleira.transform.position.y;
         if (contadorBaixoSprites < sprites.Length && posYPrateleira > posYReferenciaBaixo)
         {
+            populadorPrateleira.disposePrateleira(prateleiraCima);
             for (int contadorItens = 0; contadorItens < prateleiraCima.ItensPrateleira.Length; contadorItens++)
             {
                 ItemPrateleiraDto itemPrateleiraIt = prateleiraCima.ItensPrateleira[contadorItens];
@@ -53,8 +54,8 @@ public class Prateleiras
             }
             reposicionarPrateleiraParaUltimaPosicao();
             contadorCimaSprites += 5;
-            Debug.Log("DESCER" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
-            Debug.Log("DESCER" + " PCima = " + prateleiraCima.RectTransformPrateleira.name + " PBaixo = " + prateleiraBaixo.RectTransformPrateleira.name);
+            //Debug.Log("DESCER" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
+            //Debug.Log("DESCER" + " PCima = " + prateleiraCima.RectTransformPrateleira.name + " PBaixo = " + prateleiraBaixo.RectTransformPrateleira.name);
         }
     }   
 
@@ -63,6 +64,7 @@ public class Prateleiras
         float posYPrateleira = prateleiraCima.RectTransformPrateleira.transform.position.y;
         if (contadorCimaSprites > 0 && posYPrateleira < posYReferenciaCima)
         {
+            populadorPrateleira.disposePrateleira(prateleiraBaixo);
             for (int contadorItens = prateleiraBaixo.ItensPrateleira.Length - 1; contadorItens >= 0; contadorItens--)
             {
                 ItemPrateleiraDto itemPrateleiraIt = prateleiraBaixo.ItensPrateleira[contadorItens];
@@ -77,8 +79,8 @@ public class Prateleiras
             }
             reposicionarPrateleiraParaPrimeiraPosicao();
             contadorBaixoSprites -= 5;
-            Debug.Log("SUBIR" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
-            Debug.Log("SUBIR" + " PCima = " + prateleiraCima.RectTransformPrateleira.name + " PBaixo = " + prateleiraBaixo.RectTransformPrateleira.name);
+            //Debug.Log("SUBIR" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
+            //Debug.Log("SUBIR" + " PCima = " + prateleiraCima.RectTransformPrateleira.name + " PBaixo = " + prateleiraBaixo.RectTransformPrateleira.name);
         }
     }
 
@@ -86,50 +88,20 @@ public class Prateleiras
     {
         Vector2 posBaixo = prateleiraBaixo.RectTransformPrateleira.anchoredPosition;
         prateleiraCima.RectTransformPrateleira.anchoredPosition = new Vector2(posBaixo.x, posBaixo.y - 400f);
-
+                
         prateleiraBaixo = prateleiraCima;
         int indicePrateleira = (int.Parse(prateleiraCima.RectTransformPrateleira.name) + 1) % prateleirasDto.PrateleiraDto.Length;
         prateleiraCima = prateleirasDto.PrateleiraDto[indicePrateleira];
-        populadorPrateleira.disposePrateleira(prateleiraCima);
     }
 
     private void reposicionarPrateleiraParaPrimeiraPosicao()
     {
         Vector2 posCima = prateleiraCima.RectTransformPrateleira.anchoredPosition;
         prateleiraBaixo.RectTransformPrateleira.anchoredPosition = new Vector2(posCima.x, posCima.y + 400);
-
+                
         prateleiraCima = prateleiraBaixo;
         int indicePrateleira = ((int.Parse(prateleiraBaixo.RectTransformPrateleira.name) + prateleirasDto.PrateleiraDto.Length) - 1) % prateleirasDto.PrateleiraDto.Length;
         prateleiraBaixo = prateleirasDto.PrateleiraDto[indicePrateleira];
-        populadorPrateleira.disposePrateleira(prateleiraBaixo);
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
-        //PROBLEMA AQUI NO DISPOSE
     }
 
     private void carregarSpritesColetaveis()

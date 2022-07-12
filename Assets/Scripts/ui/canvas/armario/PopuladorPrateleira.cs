@@ -17,7 +17,7 @@ public class PopuladorPrateleira
 
     public void popularItemDaPrateleira(ItemPrateleiraDto itemPrateleira, Sprite sprite)
     {
-        Debug.Log("Vai popular item " + itemPrateleira.ImgItem.gameObject.name + " sprite " + sprite.name);
+        //Debug.Log("Vai popular item " + itemPrateleira.ImgItem.gameObject.name + " sprite " + sprite.name);
         itemPrateleira.ImgItem.sprite = sprite;
         itemPrateleira.GoItem.SetActive(true);
 
@@ -52,11 +52,19 @@ public class PopuladorPrateleira
 
     public void disposePrateleira(PrateleiraArmarioDto prateleira)
     {
+        //Debug.Log("Dispose " + prateleira.RectTransformPrateleira.name);
         for (int contador = 0; contador < prateleira.ItensPrateleira.Length; contador++)
-        {
+        {   
             ItemPrateleiraDto itemPrateleiraIT = prateleira.ItensPrateleira[contador];
-            Material matReuso = itemPrateleiraIT.ImgItem.material;
-            poolMaterialGrayScale.addObjeto(matReuso);
+            if(itemPrateleiraIT.ImgItem.color != Color.black)
+            {
+                Material matReuso = itemPrateleiraIT.ImgItem.material;
+                if ("mat-grayscale".Equals(matReuso.name))
+                {
+                    poolMaterialGrayScale.addObjeto(matReuso);
+                    itemPrateleiraIT.ImgItem.material = null;
+                }
+            }
         }
     }
 
@@ -64,11 +72,13 @@ public class PopuladorPrateleira
     {
         if (PlayerPrefsColetaveis.isColetavelIndisponivel(coletavel.nome))
         {
+            //Debug.Log("Vai popular item grayscale" + itemPrateleira.ImgItem.gameObject.name + " sprite " + sprite.name);
             Material matGray = poolMaterialGrayScale.getObjeto(sprite);
             itemPrateleira.ImgItem.material = matGray;
         }
         else
         {
+            //Debug.Log("NAO Vai popular item grayscale" + itemPrateleira.ImgItem.gameObject.name + " sprite " + sprite.name);
             itemPrateleira.ImgItem.material = null;
         }
         itemPrateleira.ImgItem.color = Color.white;
