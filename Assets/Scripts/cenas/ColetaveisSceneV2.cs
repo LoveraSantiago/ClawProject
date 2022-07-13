@@ -19,6 +19,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
     private TimerFicha timerFichaOuro;
     private Prateleiras prateleiras;
 
+    private Vector2 posicaoReferencia;
+
     void Start()
     {
         Utils.configMainMono(this);
@@ -34,6 +36,10 @@ public class ColetaveisSceneV2 : MonoBehaviour
         ultimaPosicao = 1;
 
         popularBotoes();
+
+        ItemPrateleiraDto item = prateleirasDto.PrateleiraDto[0].ItensPrateleira[2];
+        Debug.Log("Referencia nome " + item.GoItem.name + " parent " + item.GoItem.transform.parent.name);
+        posicaoReferencia = ((RectTransform)item.GoItem.transform).position;
     }
 
     private void Update()
@@ -68,6 +74,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         }
     }
 
+    
     private void cricado()
     {
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
@@ -78,17 +85,33 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
         ItemPrateleiraDto itemSelecionado = prateleirasDto.PrateleiraDto[nomeParent].ItensPrateleira[nomeBtn];
         RectTransform rItemSelecionado = (RectTransform)itemSelecionado.BtnItem.gameObject.transform;
-        Debug.Log("Cast funciona " + rItemSelecionado.name);
+        
         //Vector2 pivot = rTransformScrollRect.pivot;
         //Debug.Log("Pivot " + pivot);
-        Vector2 centro = ((RectTransform)scrollRect.transform).rect.center;
-        Debug.Log("Centro " + centro);
+        RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
+        Vector2 centro = rtScrollRect.rect.center;
+        //Debug.Log("Centro " + centro);
 
-        Utils.MonoBehaviour.StartCoroutine(zoomando());
+        Utils.MonoBehaviour.StartCoroutine(zoomando(rtScrollRect, rItemSelecionado));
     }
 
-    private IEnumerator zoomando()
+    private IEnumerator zoomando(RectTransform rTransformScroll, RectTransform rTransformItem)
     {
+        Debug.Log("Referencia " + posicaoReferencia + " Item " + (Vector2)rTransformItem.position + " Scroll anchor " + rTransformScroll.anchoredPosition);
+
+        Vector2 distancia = new Vector2(1, 1);
+        while (distancia.x > 0 && distancia.y > 0)
+        {
+            Vector2 diferenca = Vector2.MoveTowards(rTransformItem.position, posicaoReferencia, 2 * Time.deltaTime);
+            Vector2 anchorPosition = rTransformScroll.anchoredPosition;
+            distancia = diferenca;
+            Vector2 result = new Vector2(anchorPosition.x - diferenca.x, anchorPosition.y - diferenca.y);
+            rTransformScroll.anchoredPosition = result;
+            
+            Debug.Log("Referencia " + posicaoReferencia + " Item " + (Vector2)rTransformItem.position + " diferenca " + diferenca + " Scroll anchor " + rTransformScroll.anchoredPosition + " Distancia " + distancia);            
+            yield return null;
+        }
+        Debug.Log("Terminado");
         yield return null;
     }
 }
