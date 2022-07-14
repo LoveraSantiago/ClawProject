@@ -19,7 +19,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
     private TimerFicha timerFichaOuro;
     private Prateleiras prateleiras;
 
-    private Vector2 posicaoReferencia;
+    private RectTransform rectTransformReferencia;
+    private Vector2 referencia;
 
     void Start()
     {
@@ -39,7 +40,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
         ItemPrateleiraDto item = prateleirasDto.PrateleiraDto[0].ItensPrateleira[2];
         Debug.Log("Referencia nome " + item.GoItem.name + " parent " + item.GoItem.transform.parent.name);
-        posicaoReferencia = ((RectTransform)item.GoItem.transform).position;
+        rectTransformReferencia = (RectTransform)item.GoItem.transform;        
     }
 
     private void Update()
@@ -92,26 +93,33 @@ public class ColetaveisSceneV2 : MonoBehaviour
         Vector2 centro = rtScrollRect.rect.center;
         //Debug.Log("Centro " + centro);
 
+        if(referencia == null)
+        {
+            referencia = rectTransformReferencia.position;
+        }
+
         Utils.MonoBehaviour.StartCoroutine(zoomando(rtScrollRect, rItemSelecionado));
     }
 
     private IEnumerator zoomando(RectTransform rTransformScroll, RectTransform rTransformItem)
     {
-        Debug.Log("Referencia " + posicaoReferencia + " Item " + (Vector2)rTransformItem.position + " Scroll anchor " + rTransformScroll.anchoredPosition);
 
-        Vector2 distancia = new Vector2(1, 1);
-        while (distancia.x > 0 && distancia.y > 0)
-        {
-            Vector2 diferenca = Vector2.MoveTowards(rTransformItem.position, posicaoReferencia, 2 * Time.deltaTime);
-            Vector2 anchorPosition = rTransformScroll.anchoredPosition;
-            distancia = diferenca;
-            Vector2 result = new Vector2(anchorPosition.x - diferenca.x, anchorPosition.y - diferenca.y);
-            rTransformScroll.anchoredPosition = result;
-            
-            Debug.Log("Referencia " + posicaoReferencia + " Item " + (Vector2)rTransformItem.position + " diferenca " + diferenca + " Scroll anchor " + rTransformScroll.anchoredPosition + " Distancia " + distancia);            
-            yield return null;
-        }
-        Debug.Log("Terminado");
+        rTransformScroll.anchoredPosition -= (rTransformItem.anchoredPosition - rectTransformReferencia.anchoredPosition);
+
+        //TENTATIVA 1
+        //Debug.Log("Referencia " + rectTransformReferencia + " Item " + (Vector2)rTransformItem.position + " Scroll anchor " + rTransformScroll.anchoredPosition);
+
+        //float distancia = Vector2.Distance(rTransformItem.position, referencia);
+        //while (distancia > 0.1f)
+        //{
+        //    Vector2 diferenca = Vector2.MoveTowards(rTransformItem.position, referencia, 2 * Time.deltaTime);            
+        //    rTransformScroll.anchoredPosition = diferenca;
+        //    distancia = Vector2.Distance(rTransformItem.position, referencia);
+
+        //    Debug.Log("Referencia " + referencia + " Item " + (Vector2)rTransformItem.position + " diferenca " + diferenca + " Scroll anchor " + rTransformScroll.anchoredPosition + " Distancia " + distancia);            
+        //    yield return null;
+        //}
+        //Debug.Log("Terminado");
         yield return null;
     }
 }
