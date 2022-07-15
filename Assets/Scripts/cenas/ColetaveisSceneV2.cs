@@ -48,11 +48,11 @@ public class ColetaveisSceneV2 : MonoBehaviour
         float result = ultimaPosicao - posicao.y;
         if(result > 0)
         {
-            prateleiras.movimentarParaBaixo();
+            prateleiras.movimentarParaBaixo(prateleirasDto);
         }
         else if(result < 0)
         {
-            prateleiras.movimentarParaCima();
+            prateleiras.movimentarParaCima(prateleirasDto);
         }
         ultimaPosicao = posicao.y;        
     }

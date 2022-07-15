@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Prateleiras 
 {
-    private PrateleirasDto prateleirasDto;
-
     private Sprite[] sprites;
 
     private float posYReferenciaBaixo;
@@ -19,20 +17,19 @@ public class Prateleiras
     private PopuladorPrateleira populadorPrateleira;
 
     public Prateleiras(PrateleirasDto prateleirasDto)
-    {
-        this.prateleirasDto = prateleirasDto;
+    {        
         populadorPrateleira = new PopuladorPrateleira();
 
         carregarSpritesColetaveis();
-        calcularTamanhoArmario();
-        carregarReferenciasPosicoes();
-        popularArmario();
+        calcularTamanhoArmario(prateleirasDto);
+        carregarReferenciasPosicoes(prateleirasDto);
+        popularArmario(prateleirasDto);
 
         prateleiraCima = prateleirasDto.PrateleiraDto[0];
         prateleiraBaixo = prateleirasDto.PrateleiraDto[prateleirasDto.PrateleiraDto.Length - 1];
     }
 
-    public void movimentarParaBaixo()
+    public void movimentarParaBaixo(PrateleirasDto prateleirasDto)
     {
         float posYPrateleira = prateleiraBaixo.RectTransformPrateleira.transform.position.y;
         if (contadorBaixoSprites < sprites.Length && posYPrateleira > posYReferenciaBaixo)
@@ -51,14 +48,14 @@ public class Prateleiras
                 }
                 contadorBaixoSprites++;
             }
-            reposicionarPrateleiraParaUltimaPosicao();
+            reposicionarPrateleiraParaUltimaPosicao(prateleirasDto);
             contadorCimaSprites += 5;
             //Debug.Log("DESCER" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
             //Debug.Log("DESCER" + " PCima = " + prateleiraCima.RectTransformPrateleira.name + " PBaixo = " + prateleiraBaixo.RectTransformPrateleira.name);
         }
     }   
 
-    public void movimentarParaCima()
+    public void movimentarParaCima(PrateleirasDto prateleirasDto)
     {
         float posYPrateleira = prateleiraCima.RectTransformPrateleira.transform.position.y;
         if (contadorCimaSprites > 0 && posYPrateleira < posYReferenciaCima)
@@ -76,14 +73,14 @@ public class Prateleiras
                     itemPrateleiraIt.GoItem.SetActive(false);
                 }
             }
-            reposicionarPrateleiraParaPrimeiraPosicao();
+            reposicionarPrateleiraParaPrimeiraPosicao(prateleirasDto);
             contadorBaixoSprites -= 5;
             //Debug.Log("SUBIR" + " PCima = " + contadorCimaSprites + " PBaixo = " + contadorBaixoSprites);
             //Debug.Log("SUBIR" + " PCima = " + prateleiraCima.RectTransformPrateleira.name + " PBaixo = " + prateleiraBaixo.RectTransformPrateleira.name);
         }
     }
 
-    private void reposicionarPrateleiraParaUltimaPosicao()
+    private void reposicionarPrateleiraParaUltimaPosicao(PrateleirasDto prateleirasDto)
     {
         Vector2 posBaixo = prateleiraBaixo.RectTransformPrateleira.anchoredPosition;
         prateleiraCima.RectTransformPrateleira.anchoredPosition = new Vector2(posBaixo.x, posBaixo.y - 400f);
@@ -93,7 +90,7 @@ public class Prateleiras
         prateleiraCima = prateleirasDto.PrateleiraDto[indicePrateleira];
     }
 
-    private void reposicionarPrateleiraParaPrimeiraPosicao()
+    private void reposicionarPrateleiraParaPrimeiraPosicao(PrateleirasDto prateleirasDto)
     {
         Vector2 posCima = prateleiraCima.RectTransformPrateleira.anchoredPosition;
         prateleiraBaixo.RectTransformPrateleira.anchoredPosition = new Vector2(posCima.x, posCima.y + 400);
@@ -109,7 +106,7 @@ public class Prateleiras
         sprites = helperColetavel.getAllSpritesColetaveisOrdenados();
     }
 
-    private void calcularTamanhoArmario()
+    private void calcularTamanhoArmario(PrateleirasDto prateleirasDto)
     {
         float result = ((float)sprites.Length) / ((float)prateleirasDto.PrateleiraDto[0].ItensPrateleira.Length);
         int qtdPrateleira = (int)Math.Ceiling(result);
@@ -117,13 +114,13 @@ public class Prateleiras
         prateleirasDto.RTransformArmario.offsetMin += new Vector2(prateleirasDto.RTransformArmario.offsetMin.x, (acrescimoPrateleiras * 400));
     }
 
-    private void carregarReferenciasPosicoes()
+    private void carregarReferenciasPosicoes(PrateleirasDto prateleirasDto)
     {
         posYReferenciaBaixo = prateleirasDto.RTransformRefBaixo.position.y;
         posYReferenciaCima = prateleirasDto.RTransformRefCima.position.y;
     }
 
-    private void popularArmario()
+    private void popularArmario(PrateleirasDto prateleirasDto)
     {
         for (int contadorPrateleiras = 0; contadorPrateleiras < prateleirasDto.PrateleiraDto.Length; contadorPrateleiras++)
         {
