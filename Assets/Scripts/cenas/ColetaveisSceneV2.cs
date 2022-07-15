@@ -33,8 +33,9 @@ public class ColetaveisSceneV2 : MonoBehaviour
         scrollRect.onValueChanged.AddListener((pos) => movimentado(pos));
         ultimaPosicao = 1;
 
-        popularBotoes();        
-        movimentadorArmario = new MovimentadorDeArmarioFixo(prateleirasDto);
+        popularBotoes();
+        //movimentadorArmario = new MovimentadorDeArmarioFixo(prateleirasDto);
+        movimentadorArmario = new MovimentadorDeArmarioMovel(prateleirasDto);
     }
 
     private void Update()
