@@ -18,6 +18,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
     private float ultimaPosicao;
     private TimerFicha timerFichaOuro;
     private Prateleiras prateleiras;
+    private Vector2 posItemReferencia;
 
     void Start()
     {
@@ -33,7 +34,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
         scrollRect.onValueChanged.AddListener((pos) => movimentado(pos));
         ultimaPosicao = 1;
 
-        popularBotoes();       
+        popularBotoes();
+        posItemReferencia = pegarPosicaoReferencia();
     }
 
     private void Update()
@@ -76,8 +78,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
     }
 
     private IEnumerator zoomando(GameObject goSelecionado)
-    {   
-        Vector2 referencia = pegarPosicaoReferencia();
+    {
+        Vector2 referencia = new Vector2(posItemReferencia.x, posItemReferencia.y - prateleirasDto.RTransformArmario.offsetMax.y);
         Vector2 posicaoAnchored = pegarPosicaoClicado(goSelecionado);
 
         Vector2 diferenca = posicaoAnchored - referencia;
@@ -109,8 +111,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         ItemPrateleiraDto itemSelecionado = prateleira.ItensPrateleira[nomeBtn];
         RectTransform rItemSelecionado = (RectTransform)itemSelecionado.BtnItem.gameObject.transform;
         RectTransform rPrateleira = prateleira.RectTransformPrateleira;
-
-        float y = rPrateleira.anchoredPosition.y + prateleirasDto.RTransformArmario.offsetMax.y;
-        return new Vector2(rItemSelecionado.anchoredPosition.x, y);
+        
+        return new Vector2(rItemSelecionado.anchoredPosition.x, rPrateleira.anchoredPosition.y);
     }
 }
