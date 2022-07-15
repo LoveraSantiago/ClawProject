@@ -4156,7 +4156,6 @@ MonoBehaviour:
       transfSegundos: {fileID: 373956812}
       transfMinutos: {fileID: 373956811}
       transfHoras: {fileID: 373956810}
-  rTransformScrollRect: {fileID: 1600028414}
   scrollRect: {fileID: 1600028417}
   prateleirasDto:
     qtdPrateleirasVisiveis: 5
