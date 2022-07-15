@@ -36,11 +36,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         scrollRect.onValueChanged.AddListener((pos) => movimentado(pos));
         ultimaPosicao = 1;
 
-        popularBotoes();
-
-        ItemPrateleiraDto item = prateleirasDto.PrateleiraDto[0].ItensPrateleira[2];
-        Debug.Log("Referencia nome " + item.GoItem.name + " parent " + item.GoItem.transform.parent.name);
-        rectTransformReferencia = (RectTransform)item.GoItem.transform;        
+        popularBotoes();       
     }
 
     private void Update()
@@ -75,51 +71,44 @@ public class ColetaveisSceneV2 : MonoBehaviour
         }
     }
 
-    
+    bool iniciado = false;
     private void cricado()
     {
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
-        int nomeBtn    = int.Parse(goSelecionado.name);
-        int nomeParent = int.Parse(goSelecionado.transform.parent.name);
-
-        Debug.Log("Cricado nome " + nomeBtn + " parent " + nomeParent);
-
-        ItemPrateleiraDto itemSelecionado = prateleirasDto.PrateleiraDto[nomeParent].ItensPrateleira[nomeBtn];
-        RectTransform rItemSelecionado = (RectTransform)itemSelecionado.BtnItem.gameObject.transform;
-        
-        //Vector2 pivot = rTransformScrollRect.pivot;
-        //Debug.Log("Pivot " + pivot);
-        RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
-        Vector2 centro = rtScrollRect.rect.center;
-        //Debug.Log("Centro " + centro);
-
-        if(referencia == null)
+        if(!iniciado)
         {
-            referencia = rectTransformReferencia.position;
+            PrateleiraArmarioDto prateleira = prateleirasDto.PrateleiraDto[0];
+            ItemPrateleiraDto item = prateleira.ItensPrateleira[2];
+
+            RectTransform rTransformPrateleira = prateleira.RectTransformPrateleira;
+            RectTransform rTransformItem = (RectTransform)item.BtnItem.transform;            
+            
+            referencia = new Vector2(rTransformItem.anchoredPosition.x, rTransformPrateleira.anchoredPosition.y);
+
+            iniciado = true;
         }
 
-        Utils.MonoBehaviour.StartCoroutine(zoomando(rtScrollRect, rItemSelecionado));
+        Utils.MonoBehaviour.StartCoroutine(zoomando(goSelecionado));
     }
 
-    private IEnumerator zoomando(RectTransform rTransformScroll, RectTransform rTransformItem)
+    private IEnumerator zoomando(GameObject goSelecionado)
     {
+        int nomeBtn = int.Parse(goSelecionado.name);
+        int nomeParent = int.Parse(goSelecionado.transform.parent.name);
 
-        rTransformScroll.anchoredPosition -= (rTransformItem.anchoredPosition - rectTransformReferencia.anchoredPosition);
+        PrateleiraArmarioDto prateleira = prateleirasDto.PrateleiraDto[nomeParent];
+        ItemPrateleiraDto itemSelecionado = prateleira.ItensPrateleira[nomeBtn];
+        RectTransform rItemSelecionado = (RectTransform)itemSelecionado.BtnItem.gameObject.transform;
+        RectTransform rPrateleira = prateleira.RectTransformPrateleira;
 
-        //TENTATIVA 1
-        //Debug.Log("Referencia " + rectTransformReferencia + " Item " + (Vector2)rTransformItem.position + " Scroll anchor " + rTransformScroll.anchoredPosition);
+        Vector2 posicaoAnchored = new Vector2(rItemSelecionado.anchoredPosition.x, rPrateleira.anchoredPosition.y);
 
-        //float distancia = Vector2.Distance(rTransformItem.position, referencia);
-        //while (distancia > 0.1f)
-        //{
-        //    Vector2 diferenca = Vector2.MoveTowards(rTransformItem.position, referencia, 2 * Time.deltaTime);            
-        //    rTransformScroll.anchoredPosition = diferenca;
-        //    distancia = Vector2.Distance(rTransformItem.position, referencia);
+        Vector2 diferenca = posicaoAnchored - referencia;
+        Debug.Log("Referencia " + referencia + " Atual " + posicaoAnchored + " Dif " + diferenca);
 
-        //    Debug.Log("Referencia " + referencia + " Item " + (Vector2)rTransformItem.position + " diferenca " + diferenca + " Scroll anchor " + rTransformScroll.anchoredPosition + " Distancia " + distancia);            
-        //    yield return null;
-        //}
-        //Debug.Log("Terminado");
+        RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
+        rtScrollRect.anchoredPosition -= diferenca;
+
         yield return null;
     }
 }
