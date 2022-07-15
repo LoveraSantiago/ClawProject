@@ -78,26 +78,29 @@ public class ColetaveisSceneV2 : MonoBehaviour
     }
 
     private IEnumerator zoomando(GameObject goSelecionado)
-    {
-        Vector2 referencia = new Vector2(posItemReferencia.x, posItemReferencia.y - prateleirasDto.RTransformArmario.offsetMax.y);
+    {        
         Vector2 posicaoAnchored = pegarPosicaoClicado(goSelecionado);
+        posicaoAnchored = new Vector2(posicaoAnchored.x, posicaoAnchored.y + prateleirasDto.RTransformArmario.offsetMax.y);
 
-        Vector2 diferenca = posicaoAnchored - referencia;
-        Debug.Log("Referencia " + referencia + " Atual " + posicaoAnchored + " Dif " + diferenca);
+        Vector2 diferenca = posicaoAnchored - posItemReferencia;
+        Debug.Log("Referencia " + posItemReferencia + " Atual " + posicaoAnchored + " Dif " + diferenca);
 
         RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
-        rtScrollRect.anchoredPosition -= diferenca;
 
         float xPivot = diferenca.x / rtScrollRect.rect.width;
-        float yPivot = diferenca.y / rtScrollRect.rect.height;
-        rtScrollRect.pivot = new Vector2(rtScrollRect.pivot.x + xPivot, rtScrollRect.pivot.y - yPivot);
+        float yPivot = posicaoAnchored.y / rtScrollRect.rect.height;
+        Debug.Log("Pivot X " + xPivot + " Pivot Y " + yPivot + " rect " + rtScrollRect.rect);
+
+        rtScrollRect.pivot = new Vector2(rtScrollRect.pivot.x + xPivot, 1f - Mathf.Abs(yPivot));
         rtScrollRect.localScale *= 4;
+
+        rtScrollRect.anchoredPosition -= diferenca;
         yield return null;
     }
 
     private Vector2 pegarPosicaoReferencia()
     {
-        PrateleiraArmarioDto prateleira = prateleirasDto.PrateleiraDto[0];
+        PrateleiraArmarioDto prateleira = prateleirasDto.PrateleiraDto[2];
         ItemPrateleiraDto item = prateleira.ItensPrateleira[2];
 
         RectTransform rTransformPrateleira = prateleira.RectTransformPrateleira;
