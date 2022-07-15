@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
 {
+    private MovimentadorArmarioDto movimentadorDto;
     private Vector2 posItemReferencia;
 
-    public MovimentadorDeArmarioMovel(PrateleirasDto prateleirasDto)
+    public MovimentadorDeArmarioMovel(PrateleirasDto prateleirasDto, MovimentadorArmarioDto movimentadorDto)
     {
+        this.movimentadorDto = movimentadorDto;
         posItemReferencia = pegarPosicaoReferencia(prateleirasDto);
     }
 
@@ -37,15 +39,14 @@ public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
         Vector2 posDestino = rtScrollRect.anchoredPosition - diferenca;
         float time          = 1f;
         float escalaIt      = 0f;
-        float escalaInicial = 1;
-        float escalaFinal   = 4;
+        float escalaInicial = 1;        
 
         while(rtScrollRect.anchoredPosition != posDestino)
         {
-            Vector2 result = Vector2.MoveTowards(rtScrollRect.anchoredPosition, posDestino, 2 * 1000f * Time.deltaTime);
+            Vector2 result = Vector2.MoveTowards(rtScrollRect.anchoredPosition, posDestino, movimentadorDto.VelocidadeMovimentacao * 1000f * Time.deltaTime);
             rtScrollRect.anchoredPosition = result;
 
-            escalaIt = Mathf.Clamp(time, escalaInicial, escalaFinal);
+            escalaIt = Mathf.Clamp(time, escalaInicial, movimentadorDto.EscalaFinal);
             rtScrollRect.localScale = new Vector3(escalaIt, escalaIt, escalaInicial);
 
             time = incrementarTimer(time);
@@ -53,9 +54,9 @@ public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
         }
 
         Debug.Log("Escala atual " + escalaIt);
-        while (escalaIt < escalaFinal)
+        while (escalaIt < movimentadorDto.EscalaFinal)
         {
-            escalaIt = Mathf.Clamp(time, escalaInicial, escalaFinal);
+            escalaIt = Mathf.Clamp(time, escalaInicial, movimentadorDto.EscalaFinal);
             rtScrollRect.localScale = new Vector3(escalaIt, escalaIt, escalaInicial);
 
             time = incrementarTimer(time);
@@ -67,7 +68,7 @@ public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
 
     private float incrementarTimer(float timeAtual)
     {
-        return timeAtual += (5f * Time.deltaTime);
+        return timeAtual += (movimentadorDto.VelocidadeZoom * Time.deltaTime);
     }
 
     private Vector2 pegarPosicaoReferencia(PrateleirasDto prateleirasDto)

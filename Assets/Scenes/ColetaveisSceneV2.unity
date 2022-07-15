@@ -4157,6 +4157,10 @@ MonoBehaviour:
       transfMinutos: {fileID: 373956811}
       transfHoras: {fileID: 373956810}
   scrollRect: {fileID: 1600028417}
+  movimentadorDto:
+    velocidadeMovimentacao: 1.7
+    velocidadeZoom: 4
+    escalaFinal: 4
   prateleirasDto:
     qtdPrateleirasVisiveis: 5
     rTransformRefCima: {fileID: 932677080}

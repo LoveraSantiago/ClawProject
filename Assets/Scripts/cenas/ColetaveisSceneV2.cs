@@ -8,6 +8,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
     [Space(5)]    
     [SerializeField] private ScrollRect scrollRect;
     [Space(5)]
+    [SerializeField] private MovimentadorArmarioDto movimentadorDto;
+    [Space(5)]
     [SerializeField] private PrateleirasDto prateleirasDto;
     [Space(5)]
     [SerializeField] private GameObject prefabMateriais;
@@ -35,7 +37,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
         popularBotoes();
         //movimentadorArmario = new MovimentadorDeArmarioFixo(prateleirasDto);
-        movimentadorArmario = new MovimentadorDeArmarioMovel(prateleirasDto);
+        movimentadorArmario = new MovimentadorDeArmarioMovel(prateleirasDto, movimentadorDto);
     }
 
     private void Update()
