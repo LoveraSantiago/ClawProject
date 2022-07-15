@@ -88,6 +88,10 @@ public class ColetaveisSceneV2 : MonoBehaviour
         RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
         rtScrollRect.anchoredPosition -= diferenca;
 
+        float xPivot = diferenca.x / rtScrollRect.rect.width;
+        float yPivot = diferenca.y / rtScrollRect.rect.height;
+        rtScrollRect.pivot = new Vector2(rtScrollRect.pivot.x + xPivot, rtScrollRect.pivot.y - yPivot);
+        rtScrollRect.localScale *= 4;
         yield return null;
     }
 
