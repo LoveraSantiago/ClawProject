@@ -30,7 +30,6 @@ public class Prateleiras
 
         prateleiraCima = prateleirasDto.PrateleiraDto[0];
         prateleiraBaixo = prateleirasDto.PrateleiraDto[prateleirasDto.PrateleiraDto.Length - 1];
-
     }
 
     public void movimentarParaBaixo()
