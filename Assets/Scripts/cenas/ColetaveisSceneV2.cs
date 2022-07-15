@@ -19,9 +19,6 @@ public class ColetaveisSceneV2 : MonoBehaviour
     private TimerFicha timerFichaOuro;
     private Prateleiras prateleiras;
 
-    private RectTransform rectTransformReferencia;
-    private Vector2 referencia;
-
     void Start()
     {
         Utils.configMainMono(this);
@@ -75,23 +72,35 @@ public class ColetaveisSceneV2 : MonoBehaviour
     private void cricado()
     {
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
-        if(!iniciado)
-        {
-            PrateleiraArmarioDto prateleira = prateleirasDto.PrateleiraDto[0];
-            ItemPrateleiraDto item = prateleira.ItensPrateleira[2];
-
-            RectTransform rTransformPrateleira = prateleira.RectTransformPrateleira;
-            RectTransform rTransformItem = (RectTransform)item.BtnItem.transform;            
-            
-            referencia = new Vector2(rTransformItem.anchoredPosition.x, rTransformPrateleira.anchoredPosition.y);
-
-            iniciado = true;
-        }
-
         Utils.MonoBehaviour.StartCoroutine(zoomando(goSelecionado));
     }
 
     private IEnumerator zoomando(GameObject goSelecionado)
+    {   
+        Vector2 referencia = pegarPosicaoReferencia();
+        Vector2 posicaoAnchored = pegarPosicaoClicado(goSelecionado);
+
+        Vector2 diferenca = posicaoAnchored - referencia;
+        Debug.Log("Referencia " + referencia + " Atual " + posicaoAnchored + " Dif " + diferenca);
+
+        RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
+        rtScrollRect.anchoredPosition -= diferenca;
+
+        yield return null;
+    }
+
+    private Vector2 pegarPosicaoReferencia()
+    {
+        PrateleiraArmarioDto prateleira = prateleirasDto.PrateleiraDto[0];
+        ItemPrateleiraDto item = prateleira.ItensPrateleira[2];
+
+        RectTransform rTransformPrateleira = prateleira.RectTransformPrateleira;
+        RectTransform rTransformItem = (RectTransform)item.BtnItem.transform;
+
+        return new Vector2(rTransformItem.anchoredPosition.x, rTransformPrateleira.anchoredPosition.y);
+    }
+
+    private Vector2 pegarPosicaoClicado(GameObject goSelecionado)
     {
         int nomeBtn = int.Parse(goSelecionado.name);
         int nomeParent = int.Parse(goSelecionado.transform.parent.name);
@@ -101,14 +110,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         RectTransform rItemSelecionado = (RectTransform)itemSelecionado.BtnItem.gameObject.transform;
         RectTransform rPrateleira = prateleira.RectTransformPrateleira;
 
-        Vector2 posicaoAnchored = new Vector2(rItemSelecionado.anchoredPosition.x, rPrateleira.anchoredPosition.y);
-
-        Vector2 diferenca = posicaoAnchored - referencia;
-        Debug.Log("Referencia " + referencia + " Atual " + posicaoAnchored + " Dif " + diferenca);
-
-        RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
-        rtScrollRect.anchoredPosition -= diferenca;
-
-        yield return null;
+        float y = rPrateleira.anchoredPosition.y + prateleirasDto.RTransformArmario.offsetMax.y;
+        return new Vector2(rItemSelecionado.anchoredPosition.x, y);
     }
 }
