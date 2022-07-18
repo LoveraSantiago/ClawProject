@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class MovimentadorDeArmarioFixo : MovimentadorDeArmario
 {
+    private bool movimentado;
     private Vector2 posItemReferencia;
 
     public MovimentadorDeArmarioFixo(PrateleirasDto prateleirasDto)
@@ -13,6 +14,7 @@ public class MovimentadorDeArmarioFixo : MovimentadorDeArmario
 
     public void movimentar(ScrollRect scrollRect, PrateleirasDto prateleirasDto)
     {
+        movimentado = true;
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;        
     
         Vector2 posicaoAnchored = pegarPosicaoClicado(prateleirasDto, goSelecionado);
@@ -31,7 +33,17 @@ public class MovimentadorDeArmarioFixo : MovimentadorDeArmario
         rtScrollRect.localScale *= 4;
 
         rtScrollRect.anchoredPosition -= diferenca;
-    }    
+    }
+
+    public bool isArmarioMovimentado()
+    {
+        return movimentado;
+    }
+
+    public void voltar()
+    {
+        throw new System.NotImplementedException();
+    }
 
     private Vector2 pegarPosicaoReferencia(PrateleirasDto prateleirasDto)
     {

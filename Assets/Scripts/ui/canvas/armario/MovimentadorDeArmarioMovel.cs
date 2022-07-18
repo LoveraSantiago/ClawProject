@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
 {
+    private bool movimentado;
     private MovimentadorArmarioDto movimentadorDto;
     private Vector2 posItemReferencia;
 
@@ -16,6 +17,7 @@ public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
 
     public void movimentar(ScrollRect scrollRect, PrateleirasDto prateleirasDto)
     {
+        movimentado = true;
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
         Vector2 posicaoAnchored = pegarPosicaoClicado(prateleirasDto, goSelecionado);
         posicaoAnchored = new Vector2(posicaoAnchored.x, posicaoAnchored.y + prateleirasDto.RTransformArmario.offsetMax.y);
@@ -32,6 +34,16 @@ public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
         rtScrollRect.pivot = new Vector2(rtScrollRect.pivot.x + xPivot, 1f - Mathf.Abs(yPivot));
 
         Utils.MonoBehaviour.StartCoroutine(movimentarArmario(rtScrollRect, diferenca));
+    }
+
+    public bool isArmarioMovimentado()
+    {
+        return movimentado;
+    }
+
+    public void voltar()
+    {
+        throw new System.NotImplementedException();
     }
 
     private IEnumerator movimentarArmario(RectTransform rtScrollRect, Vector2 diferenca)
@@ -93,5 +105,5 @@ public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
         RectTransform rPrateleira = prateleira.RectTransformPrateleira;
 
         return new Vector2(rItemSelecionado.anchoredPosition.x, rPrateleira.anchoredPosition.y);
-    }
+    }   
 }

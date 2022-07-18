@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class ColetaveisSceneV2 : MonoBehaviour 
 {       
     [SerializeField] private TimerFichaDto timerFichaDto;
+    [Space(5)]
+    [SerializeField] private Button btnBack;
     [Space(5)]    
     [SerializeField] private ScrollRect scrollRect;
     [Space(5)]
@@ -38,6 +40,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         popularBotoes();
         //movimentadorArmario = new MovimentadorDeArmarioFixo(prateleirasDto);
         movimentadorArmario = new MovimentadorDeArmarioMovel(prateleirasDto, movimentadorDto);
+        configBtnBack(btnBack);
     }
 
     private void Update()
@@ -71,10 +74,21 @@ public class ColetaveisSceneV2 : MonoBehaviour
             }
         }
     }
-
-    bool iniciado = false;
+    
     private void movimentarArmario()
     {
         movimentadorArmario.movimentar(scrollRect, prateleirasDto);       
+    }
+
+    private void configBtnBack(Button btnBack)
+    {
+        if (movimentadorArmario.isArmarioMovimentado())
+        {
+            movimentadorArmario.voltar();
+        }
+        else
+        {
+            btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMap());
+        }
     }
 }
