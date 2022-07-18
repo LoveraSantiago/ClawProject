@@ -77,18 +77,23 @@ public class ColetaveisSceneV2 : MonoBehaviour
     
     private void movimentarArmario()
     {
-        movimentadorArmario.movimentar(scrollRect, prateleirasDto);       
+        if (!movimentadorArmario.isArmarioMovimentado())
+        {
+            movimentadorArmario.movimentar(scrollRect, prateleirasDto);       
+        }
     }
 
     private void configBtnBack(Button btnBack)
     {
-        if (movimentadorArmario.isArmarioMovimentado())
-        {
-            movimentadorArmario.voltar();
-        }
-        else
-        {
-            btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMap());
-        }
+        btnBack.onClick.AddListener(() => {
+                if (movimentadorArmario.isArmarioMovimentado())
+                {
+                    movimentadorArmario.voltar(scrollRect);
+                }
+                else
+                {
+                    CenaUtils.irParaCenaMap();
+                }
+            });
     }
 }

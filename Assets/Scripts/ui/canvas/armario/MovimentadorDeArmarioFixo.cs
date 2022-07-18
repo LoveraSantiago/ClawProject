@@ -40,7 +40,7 @@ public class MovimentadorDeArmarioFixo : MovimentadorDeArmario
         return movimentado;
     }
 
-    public void voltar()
+    public void voltar(ScrollRect scrollRect)
     {
         throw new System.NotImplementedException();
     }

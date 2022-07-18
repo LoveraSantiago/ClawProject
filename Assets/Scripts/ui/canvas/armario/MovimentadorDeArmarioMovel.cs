@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
 {
     private bool movimentado;
-    private MovimentadorArmarioDto movimentadorDto;
     private Vector2 posItemReferencia;
+    private Vector2 posOriginal;
+    private Vector2 pivotOriginal;
+
+    private MovimentadorArmarioDto movimentadorDto;
 
     public MovimentadorDeArmarioMovel(PrateleirasDto prateleirasDto, MovimentadorArmarioDto movimentadorDto)
     {
@@ -31,6 +34,7 @@ public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
         float yPivot = posicaoAnchored.y / rtScrollRect.rect.height;
         Debug.Log("Pivot X " + xPivot + " Pivot Y " + yPivot + " rect " + rtScrollRect.rect);
 
+        pivotOriginal = rtScrollRect.pivot;
         rtScrollRect.pivot = new Vector2(rtScrollRect.pivot.x + xPivot, 1f - Mathf.Abs(yPivot));
 
         Utils.MonoBehaviour.StartCoroutine(movimentarArmario(rtScrollRect, diferenca));
@@ -41,13 +45,17 @@ public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
         return movimentado;
     }
 
-    public void voltar()
+    public void voltar(ScrollRect scrollRect)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Voltar chamado");
+        RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);        
+        Utils.MonoBehaviour.StartCoroutine(voltarArmario(rtScrollRect));
     }
 
     private IEnumerator movimentarArmario(RectTransform rtScrollRect, Vector2 diferenca)
-    {        
+    {
+        posOriginal = rtScrollRect.anchoredPosition;
+
         Vector2 posDestino = rtScrollRect.anchoredPosition - diferenca;
         float time          = 1f;
         float escalaIt      = 0f;
@@ -78,9 +86,47 @@ public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
         yield return null;
     }
 
+    private IEnumerator voltarArmario(RectTransform rtScrollRect)
+    {
+        float time = 4f;
+        float escalaIt = 0f;
+        float escalaInicial = 1;
+
+        while (rtScrollRect.anchoredPosition != posOriginal)
+        {
+            Vector2 result = Vector2.MoveTowards(rtScrollRect.anchoredPosition, posOriginal, movimentadorDto.VelocidadeMovimentacao * 1000f * Time.deltaTime);
+            rtScrollRect.anchoredPosition = result;
+
+            escalaIt = Mathf.Clamp(time, escalaInicial, movimentadorDto.EscalaFinal);
+            rtScrollRect.localScale = new Vector3(escalaIt, escalaIt, escalaInicial);
+
+            time = decrementarTimer(time);
+            yield return null;
+        }
+
+        while (escalaIt > 1)
+        {
+            escalaIt = Mathf.Clamp(time, escalaInicial, movimentadorDto.EscalaFinal);
+            rtScrollRect.localScale = new Vector3(escalaIt, escalaIt, escalaInicial);
+
+            time = decrementarTimer(time);
+            yield return null;
+        }
+        Debug.Log("Finalizado");
+
+        rtScrollRect.pivot = pivotOriginal;
+        movimentado = false;
+        yield return null;
+    }
+
     private float incrementarTimer(float timeAtual)
     {
         return timeAtual += (movimentadorDto.VelocidadeZoom * Time.deltaTime);
+    }
+
+    private float decrementarTimer(float timeAtual)
+    {
+        return timeAtual -= (movimentadorDto.VelocidadeZoom * Time.deltaTime);
     }
 
     private Vector2 pegarPosicaoReferencia(PrateleirasDto prateleirasDto)
