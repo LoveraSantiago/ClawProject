@@ -107,6 +107,6 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
     void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
     {
-        detalheColetavel.abrirDetalhe();
+        detalheColetavel.abrirDetalhe(evento.indicePrateleira, evento.indiceItem, prateleirasDto);
     }
 }

@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class CanvasDetalheColetavel 
 {
     private CanvasDetalheColetavelDto canvasDetalheDto;
@@ -11,8 +7,14 @@ public class CanvasDetalheColetavel
         this.canvasDetalheDto = canvasDetalheDto;
     }
 
-    public void abrirDetalhe()
+    public void abrirDetalhe(int indicePrateleira, int indiceItem, PrateleirasDto prateleirasDto)
     {
+        ItemPrateleiraDto itemSelecionado = prateleirasDto.PrateleiraDto[indicePrateleira].ItensPrateleira[indiceItem];
+
+
+        canvasDetalheDto.ImgDetalhe.sprite   = itemSelecionado.ImgItem.sprite;
+        canvasDetalheDto.ImgDetalhe.color    = itemSelecionado.ImgItem.color;
+        canvasDetalheDto.ImgDetalhe.material = itemSelecionado.ImgItem.material;
         canvasDetalheDto.AnimatorCanvas.Play("abrir-detalhe");
     }    
 }
