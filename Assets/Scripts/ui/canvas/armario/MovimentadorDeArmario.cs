@@ -95,7 +95,7 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
     private IEnumerator voltarArmario(RectTransform rtScrollRect)
     {
         float time = 4f;
-        float escalaIt = 0f;
+        float escalaIt = 4f;
         float escalaInicial = 1;
 
         while (rtScrollRect.anchoredPosition != posOriginal)
