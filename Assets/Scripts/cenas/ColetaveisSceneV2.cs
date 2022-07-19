@@ -21,7 +21,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
     private TimerFicha timerFichaOuro;
     private Prateleiras prateleiras;    
-    private MovimentadorDeArmarioMovel movimentadorArmario;
+    private MovimentadorDeArmario movimentadorArmario;
 
     void Start()
     {
@@ -38,7 +38,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         ultimaPosicao = 1;
 
         popularBotoes();
-        movimentadorArmario = new MovimentadorDeArmarioMovel(prateleirasDto, movimentadorDto);
+        movimentadorArmario = new MovimentadorDeArmario(prateleirasDto, movimentadorDto);
         configBtnBack(btnBack);
     }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MovimentadorDeArmarioMovel
+public class MovimentadorDeArmario
 {
     private bool movimentado;
     private Vector2 posItemReferencia;
@@ -12,7 +12,7 @@ public class MovimentadorDeArmarioMovel
 
     private MovimentadorArmarioDto movimentadorDto;
 
-    public MovimentadorDeArmarioMovel(PrateleirasDto prateleirasDto, MovimentadorArmarioDto movimentadorDto)
+    public MovimentadorDeArmario(PrateleirasDto prateleirasDto, MovimentadorArmarioDto movimentadorDto)
     {
         this.movimentadorDto = movimentadorDto;
         posItemReferencia = pegarPosicaoReferencia(prateleirasDto);
