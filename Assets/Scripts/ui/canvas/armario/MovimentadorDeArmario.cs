@@ -160,6 +160,6 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
 
     ProdutorDeEvento<IndiceArmarioSelecionadoDto> AcaoItemArmarioSelecionado.ProdutorEvento.getProdutorDeEvento()
     {
-        
+        return produtorDeEvento;
     }
 }

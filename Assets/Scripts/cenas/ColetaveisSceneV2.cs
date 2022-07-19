@@ -14,6 +14,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
     [Space(5)]
     [SerializeField] private PrateleirasDto prateleirasDto;
     [Space(5)]
+    [SerializeField] private CanvasDetalheColetavelDto canvasDetalheColetavelDto;
+    [Space(5)]
     [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabColetaveisDto;
 
@@ -22,6 +24,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
     private TimerFicha timerFichaOuro;
     private Prateleiras prateleiras;    
     private MovimentadorDeArmario movimentadorArmario;
+    private CanvasDetalheColetavel detalheColetavel;
 
     void Start()
     {
@@ -39,7 +42,12 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
         popularBotoes();
         movimentadorArmario = new MovimentadorDeArmario(prateleirasDto, movimentadorDto);
+        detalheColetavel = new CanvasDetalheColetavel(canvasDetalheColetavelDto);
         configBtnBack(btnBack);
+
+        new AcaoItemArmarioSelecionado()
+            .configurarProdutor(movimentadorArmario)
+            .adicionarConsumidor(detalheColetavel);
     }
 
     private void Update()
