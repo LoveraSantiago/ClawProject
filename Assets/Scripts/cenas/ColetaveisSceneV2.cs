@@ -96,13 +96,18 @@ public class ColetaveisSceneV2 : MonoBehaviour,
         btnBack.onClick.AddListener(() => {
                 if (movimentadorArmario.isArmarioMovimentado())
                 {
-                    movimentadorArmario.voltar(scrollRect);
+                    detalheColetavel.fecharDetalhe();
                 }
                 else
                 {
                     CenaUtils.irParaCenaMap();
                 }
             });
+    }
+
+    public void animacaoFecharDetalheEnd()
+    {
+        movimentadorArmario.voltar(scrollRect);
     }
 
     void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
