@@ -110,8 +110,9 @@ public class Prateleiras
     {
         float result = ((float)sprites.Length) / ((float)prateleirasDto.PrateleiraDto[0].ItensPrateleira.Length);
         int qtdPrateleira = (int)Math.Ceiling(result);
-        int acrescimoPrateleiras = prateleirasDto.QtdPrateleirasVisiveis - qtdPrateleira;        
-        prateleirasDto.RTransformArmario.offsetMin += new Vector2(prateleirasDto.RTransformArmario.offsetMin.x, (acrescimoPrateleiras * 400));
+        int acrescimoPrateleiras = prateleirasDto.QtdPrateleirasVisiveis - qtdPrateleira;
+        float yAcrescimo = acrescimoPrateleiras * prateleirasDto.PrateleiraDto[0].RectTransformPrateleira.rect.height;
+        prateleirasDto.RTransformArmario.offsetMin += new Vector2(prateleirasDto.RTransformArmario.offsetMin.x, yAcrescimo);
     }
 
     private void carregarReferenciasPosicoes(PrateleirasDto prateleirasDto)
