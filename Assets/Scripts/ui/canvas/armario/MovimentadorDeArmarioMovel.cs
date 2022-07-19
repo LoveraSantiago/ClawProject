@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MovimentadorDeArmarioMovel : MovimentadorDeArmario
+public class MovimentadorDeArmarioMovel
 {
     private bool movimentado;
     private Vector2 posItemReferencia;
