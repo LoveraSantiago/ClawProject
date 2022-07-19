@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CanvasDetalheColetavel : AcaoItemArmarioSelecionado.ConsumidorEvento
+public class CanvasDetalheColetavel 
 {
     private CanvasDetalheColetavelDto canvasDetalheDto;
 
@@ -11,8 +11,8 @@ public class CanvasDetalheColetavel : AcaoItemArmarioSelecionado.ConsumidorEvent
         this.canvasDetalheDto = canvasDetalheDto;
     }
 
-    void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
+    public void abrirDetalhe()
     {
         canvasDetalheDto.AnimatorCanvas.Play("abrir-detalhe");
-    }
+    }    
 }

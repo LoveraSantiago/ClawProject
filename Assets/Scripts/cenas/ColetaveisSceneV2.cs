@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 #pragma warning disable 0649
-public class ColetaveisSceneV2 : MonoBehaviour 
+public class ColetaveisSceneV2 : MonoBehaviour,
+                                 AcaoItemArmarioSelecionado.ConsumidorEvento
 {       
     [SerializeField] private TimerFichaDto timerFichaDto;
     [Space(5)]
@@ -47,7 +48,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
         new AcaoItemArmarioSelecionado()
             .configurarProdutor(movimentadorArmario)
-            .adicionarConsumidor(detalheColetavel);
+            .adicionarConsumidor(this);
     }
 
     private void Update()
@@ -102,5 +103,10 @@ public class ColetaveisSceneV2 : MonoBehaviour
                     CenaUtils.irParaCenaMap();
                 }
             });
+    }
+
+    void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
+    {
+        detalheColetavel.abrirDetalhe();
     }
 }
