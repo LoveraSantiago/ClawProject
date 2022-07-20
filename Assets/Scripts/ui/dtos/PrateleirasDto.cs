@@ -11,6 +11,8 @@ public class PrateleirasDto
     [Space(3)]
     [SerializeField] private RectTransform rTransformArmario;
     [SerializeField] private PrateleiraArmarioDto[] prateleiraDto;
+    [Space(3)]
+    [SerializeField] private RectTransform rPrateleiraBottom;
 
     public PrateleiraArmarioDto[] PrateleiraDto { get { return prateleiraDto; } }
 
@@ -19,4 +21,6 @@ public class PrateleirasDto
 
     public RectTransform RTransformArmario { get { return rTransformArmario; } }
     public int QtdPrateleirasVisiveis { get { return qtdPrateleirasVisiveis; } }
+
+    public RectTransform RPrateleiraBottom { get { return rPrateleiraBottom; } }
 }

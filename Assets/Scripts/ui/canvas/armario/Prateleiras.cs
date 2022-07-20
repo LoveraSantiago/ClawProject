@@ -83,7 +83,8 @@ public class Prateleiras
     private void reposicionarPrateleiraParaUltimaPosicao(PrateleirasDto prateleirasDto)
     {
         Vector2 posBaixo = prateleiraBaixo.RectTransformPrateleira.anchoredPosition;
-        prateleiraCima.RectTransformPrateleira.anchoredPosition = new Vector2(posBaixo.x, posBaixo.y - 400f);
+        float haltura = posBaixo.y - prateleirasDto.PrateleiraDto[0].RectTransformPrateleira.rect.height;
+        prateleiraCima.RectTransformPrateleira.anchoredPosition = new Vector2(posBaixo.x, haltura);
                 
         prateleiraBaixo = prateleiraCima;
         int indicePrateleira = (int.Parse(prateleiraCima.RectTransformPrateleira.name) + 1) % prateleirasDto.PrateleiraDto.Length;
@@ -93,7 +94,8 @@ public class Prateleiras
     private void reposicionarPrateleiraParaPrimeiraPosicao(PrateleirasDto prateleirasDto)
     {
         Vector2 posCima = prateleiraCima.RectTransformPrateleira.anchoredPosition;
-        prateleiraBaixo.RectTransformPrateleira.anchoredPosition = new Vector2(posCima.x, posCima.y + 400);
+        float haltura = posCima.y + prateleirasDto.PrateleiraDto[0].RectTransformPrateleira.rect.height;
+        prateleiraBaixo.RectTransformPrateleira.anchoredPosition = new Vector2(posCima.x, haltura);
                 
         prateleiraCima = prateleiraBaixo;
         int indicePrateleira = ((int.Parse(prateleiraBaixo.RectTransformPrateleira.name) + prateleirasDto.PrateleiraDto.Length) - 1) % prateleirasDto.PrateleiraDto.Length;
@@ -111,8 +113,12 @@ public class Prateleiras
         float result = ((float)sprites.Length) / ((float)prateleirasDto.PrateleiraDto[0].ItensPrateleira.Length);
         int qtdPrateleira = (int)Math.Ceiling(result);
         int acrescimoPrateleiras = prateleirasDto.QtdPrateleirasVisiveis - qtdPrateleira;
+        Debug.Log("result " + result + " qtdPrateleiras " + qtdPrateleira + " acrescimo " + acrescimoPrateleiras);
         float yAcrescimo = acrescimoPrateleiras * prateleirasDto.PrateleiraDto[0].RectTransformPrateleira.rect.height;
         prateleirasDto.RTransformArmario.offsetMin += new Vector2(prateleirasDto.RTransformArmario.offsetMin.x, yAcrescimo);
+
+        float haltura = - (qtdPrateleira + 2) * prateleirasDto.PrateleiraDto[0].RectTransformPrateleira.rect.height;
+        prateleirasDto.RPrateleiraBottom.anchoredPosition = new Vector2(prateleirasDto.RPrateleiraBottom.anchoredPosition.x, haltura);
     }
 
     private void carregarReferenciasPosicoes(PrateleirasDto prateleirasDto)
