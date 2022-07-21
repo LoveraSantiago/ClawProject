@@ -18,8 +18,7 @@ public class CanvasDetalheColetavel
 
         canvasDetalheDto.ImgDetalhe.sprite   = itemSelecionado.ImgItem.sprite;
         canvasDetalheDto.ImgDetalhe.color    = itemSelecionado.ImgItem.color;
-        canvasDetalheDto.ImgDetalhe.material = itemSelecionado.ImgItem.material;
-        canvasDetalheDto.ImgDetalhe.transform.gameObject.SetActive(true);
+        canvasDetalheDto.ImgDetalhe.material = itemSelecionado.ImgItem.material;        
         canvasDetalheDto.ImgDetalhe.transform.position = itemSelecionado.ImgItem.transform.position;
         canvasDetalheDto.AnimatorCanvas.Play(ABRIR_DETALHE);
     }    
@@ -27,10 +26,5 @@ public class CanvasDetalheColetavel
     public void fecharDetalhe()
     {
         canvasDetalheDto.AnimatorCanvas.Play(FECHAR_DETALHE);        
-    }
-
-    public void fecharDetalheColetavel()
-    {
-        canvasDetalheDto.ImgDetalhe.transform.gameObject.SetActive(false);
-    }
+    }    
 }
