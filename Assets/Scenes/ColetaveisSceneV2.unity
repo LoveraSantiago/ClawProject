@@ -2337,8 +2337,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2522,7 +2522,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TEXTO
+  m_text: texto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -2623,7 +2623,6 @@ GameObject:
   - component: {fileID: 1344838665}
   - component: {fileID: 1344838664}
   - component: {fileID: 1344838663}
-  - component: {fileID: 1344838662}
   m_Layer: 5
   m_Name: btns
   m_TagString: Untagged
@@ -2653,36 +2652,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -695}
   m_SizeDelta: {x: 1532, y: 410}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1344838662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344838660}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1344838663
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2837,8 +2806,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 140
-  m_fontSizeBase: 140
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3215,7 +3184,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -1373}
-  m_SizeDelta: {x: 1152, y: 1152}
+  m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486025653
 MonoBehaviour:
@@ -3941,7 +3910,7 @@ MonoBehaviour:
   btnBack: {fileID: 818320628}
   scrollRect: {fileID: 1600028417}
   movimentadorDto:
-    velocidadeMovimentacao: 1.7
+    velocidadeMovimentacao: 1.8
     velocidadeZoom: 4
     escalaFinal: 4.5
   prateleirasDto:
@@ -4062,6 +4031,10 @@ MonoBehaviour:
   canvasDetalheColetavelDto:
     animatorCanvas: {fileID: 1729035076}
     imgDetalhe: {fileID: 1486025653}
+    lblNome: {fileID: 1345600534}
+    lblFamilia: {fileID: 1156071475}
+    lblTexto: {fileID: 1305474768}
+    canvasBotoes: {fileID: 1344838666}
   prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
   prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
 --- !u!95 &1729035076

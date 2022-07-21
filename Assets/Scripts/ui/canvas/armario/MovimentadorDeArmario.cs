@@ -148,8 +148,6 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
 
     private Vector2 pegarPosicaoClicado(int indicePrateleira, int indiceItem, PrateleirasDto prateleirasDto)
     {
-       
-
         PrateleiraArmarioDto prateleira = prateleirasDto.PrateleiraDto[indicePrateleira];
         ItemPrateleiraDto itemSelecionado = prateleira.ItensPrateleira[indiceItem];
         RectTransform rItemSelecionado = (RectTransform)itemSelecionado.BtnItem.gameObject.transform;

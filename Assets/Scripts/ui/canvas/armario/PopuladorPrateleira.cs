@@ -59,7 +59,7 @@ public class PopuladorPrateleira
             if(itemPrateleiraIT.ImgItem.color != Color.black)
             {
                 Material matReuso = itemPrateleiraIT.ImgItem.material;
-                if ("mat-grayscale".Equals(matReuso.name))
+                if (MaterialGrayScale.isMaterialGrayScale(matReuso))
                 {
                     poolMaterialGrayScale.addObjeto(matReuso);
                     itemPrateleiraIT.ImgItem.material = null;

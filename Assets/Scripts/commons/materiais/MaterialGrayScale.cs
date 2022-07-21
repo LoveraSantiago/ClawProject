@@ -20,4 +20,10 @@ public class MaterialGrayScale
     {
         matGrayScale = matGrayScaleArg;
     }
+
+    public static bool isMaterialGrayScale(Material material)
+    {
+        if (material == null) return false;
+        return "mat-grayscale".Equals(material.name);
+    }
 }
