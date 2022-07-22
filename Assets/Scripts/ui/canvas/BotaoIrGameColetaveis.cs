@@ -4,6 +4,7 @@ public class BotaoIrGameColetaveis
 {
     private ColetavelEntidade coletavelEntidade;
     private ModalNoFicha modalNoFicha;
+    private float posicaoScroll;
 
     public BotaoIrGameColetaveis(Button btnColetavel, ModalNoFichaDto modalNoFichaDto)
     {
@@ -30,8 +31,9 @@ public class BotaoIrGameColetaveis
         }
     }
 
-    public void prepararColetavelEntidade(ColetavelEntidade coletavelEntidade)
+    public void prepararColetavelEntidade(ColetavelEntidade coletavelEntidade, float posicaoScroll)
     {
         this.coletavelEntidade = coletavelEntidade;
+        this.posicaoScroll = posicaoScroll;
     }
 }

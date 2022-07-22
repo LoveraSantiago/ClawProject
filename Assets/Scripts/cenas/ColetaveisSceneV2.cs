@@ -114,6 +114,6 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
     void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
     {
-        detalheColetavel.abrirDetalhe(evento.indicePrateleira, evento.indiceItem, prateleirasDto);
+        detalheColetavel.abrirDetalhe(evento, prateleirasDto, scrollRect.verticalNormalizedPosition);
     }
 }

@@ -17,9 +17,10 @@ public class CanvasDetalheColetavel
         helperColetavelEntidade = new HelperColetavelEntidade();
     }
 
-    public void abrirDetalhe(int indicePrateleira, int indiceItem, PrateleirasDto prateleirasDto)
+    public void abrirDetalhe(IndiceArmarioSelecionadoDto indiceArmarioSelecionado, PrateleirasDto prateleirasDto, float posicaoScroll)
     {
-        ItemPrateleiraDto itemSelecionado = prateleirasDto.PrateleiraDto[indicePrateleira].ItensPrateleira[indiceItem];
+        PrateleiraArmarioDto prateleira = prateleirasDto.PrateleiraDto[indiceArmarioSelecionado.indicePrateleira];
+        ItemPrateleiraDto itemSelecionado = prateleira.ItensPrateleira[indiceArmarioSelecionado.indiceItem];
         Image imgItemPrateleria = itemSelecionado.ImgItem;
         Sprite sprColetavel = imgItemPrateleria.sprite;
         ColetavelEntidade coletavelEntidade = helperColetavelEntidade.getColetavelEntidadeBySprite(sprColetavel.name);
