@@ -19,6 +19,8 @@ public class ColetaveisSceneV2 : MonoBehaviour,
     [Space(5)]
     [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabColetaveisDto;
+    [Space(5)]
+    [SerializeField] private ModalNoFichaDto modalNoFichaDto;
 
     private float ultimaPosicao;
 
@@ -43,7 +45,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
         popularBotoes();
         movimentadorArmario = new MovimentadorDeArmario(prateleirasDto, movimentadorDto);
-        detalheColetavel = new CanvasDetalheColetavel(canvasDetalheColetavelDto);
+        detalheColetavel = new CanvasDetalheColetavel(canvasDetalheColetavelDto, modalNoFichaDto);
         configBtnBack(btnBack);
 
         new AcaoItemArmarioSelecionado()

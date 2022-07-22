@@ -33,7 +33,7 @@ public class CenaUtils
 
     public static void irParaCenaColetaveis()
     {
-        SceneManager.LoadScene("ColetaveisScene");
+        SceneManager.LoadScene("ColetaveisSceneV2");
     }
 
     public static void irParaCenaNaoImplementada()

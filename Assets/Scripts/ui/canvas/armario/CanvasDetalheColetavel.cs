@@ -8,10 +8,12 @@ public class CanvasDetalheColetavel
 
     private CanvasDetalheColetavelDto canvasDetalheDto;
     private HelperColetavelEntidade helperColetavelEntidade;
+    private BotaoIrGameColetaveis btnIrGameColetavel;
 
-    public CanvasDetalheColetavel(CanvasDetalheColetavelDto canvasDetalheDto)
+    public CanvasDetalheColetavel(CanvasDetalheColetavelDto canvasDetalheDto, ModalNoFichaDto modalNoFichaDto)
     {
         this.canvasDetalheDto = canvasDetalheDto;
+        btnIrGameColetavel = new BotaoIrGameColetaveis(canvasDetalheDto.BtnColetavel, modalNoFichaDto);
         helperColetavelEntidade = new HelperColetavelEntidade();
     }
 
@@ -21,6 +23,7 @@ public class CanvasDetalheColetavel
         Image imgItemPrateleria = itemSelecionado.ImgItem;
         Sprite sprColetavel = imgItemPrateleria.sprite;
         ColetavelEntidade coletavelEntidade = helperColetavelEntidade.getColetavelEntidadeBySprite(sprColetavel.name);
+        btnIrGameColetavel.prepararColetavelEntidade(coletavelEntidade);
 
         Image imgDetalhe    = canvasDetalheDto.ImgDetalhe;
         imgDetalhe.sprite   = sprColetavel;

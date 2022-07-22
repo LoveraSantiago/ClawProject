@@ -1,6 +1,6 @@
 using UnityEngine.UI;
 
-public class BotaoIrGameColetaveis : AcaoBlocoImgColetavelAtual.ConsumidorEvento
+public class BotaoIrGameColetaveis 
 {
     private ColetavelEntidade coletavelEntidade;
     private ModalNoFicha modalNoFicha;
@@ -30,8 +30,8 @@ public class BotaoIrGameColetaveis : AcaoBlocoImgColetavelAtual.ConsumidorEvento
         }
     }
 
-    void AcaoBlocoImgColetavelAtual.ConsumidorEvento.consumirEvento(UiColetavelInfo evento)
+    public void prepararColetavelEntidade(ColetavelEntidade coletavelEntidade)
     {
-        coletavelEntidade = evento.coletavelEntidade;
+        this.coletavelEntidade = coletavelEntidade;
     }
 }

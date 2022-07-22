@@ -1928,6 +1928,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1034266202 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8509958741727034357, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
+  m_PrefabInstance: {fileID: 1801550764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1074246855
 GameObject:
   m_ObjectHideFlags: 0
@@ -3910,7 +3921,7 @@ MonoBehaviour:
   btnBack: {fileID: 818320628}
   scrollRect: {fileID: 1600028417}
   movimentadorDto:
-    velocidadeMovimentacao: 1.8
+    velocidadeMovimentacao: 1.9
     velocidadeZoom: 4
     escalaFinal: 4.5
   prateleirasDto:
@@ -4035,8 +4046,12 @@ MonoBehaviour:
     lblFamilia: {fileID: 1156071475}
     lblTexto: {fileID: 1305474768}
     canvasBotoes: {fileID: 1344838666}
+    btnColetavel: {fileID: 1034266202}
   prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
   prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
+  modalNoFichaDto:
+    modalNoFicha: {fileID: 1927668547}
+    btnOk: {fileID: 1927668546}
 --- !u!95 &1729035076
 Animator:
   serializedVersion: 4
