@@ -87,7 +87,7 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
             time = incrementarTimer(time);
             yield return null;
         }
-        //Debug.Log("Finalizado");
+        //Debug.Log("Finalizado");        
         produtorDeEvento.produziuEvento(new IndiceArmarioSelecionadoDto(indicePrateleira, indiceItem));
         yield return null;
     }

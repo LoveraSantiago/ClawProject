@@ -23,6 +23,7 @@ public class BotaoIrGameColetaveis
             PlayerPrefsLevel.salvarLevel(coletavelEntidade.level);
             PlayerPrefsColetaveis.salvarIndiceFamilia(indiceFamilia);
             PlayerPrefsColetaveis.salvarNavegacaoColetavel(coletavelEntidade.id);
+            PlayerPrefsScrollPosition.salvarPosScrollRectColetaveis(posicaoScroll);
             CenaUtils.irParaCenaMainGame();
         }
         else
