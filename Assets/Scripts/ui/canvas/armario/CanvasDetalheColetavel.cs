@@ -24,7 +24,7 @@ public class CanvasDetalheColetavel
         Image imgItemPrateleria = itemSelecionado.ImgItem;
         Sprite sprColetavel = imgItemPrateleria.sprite;
         ColetavelEntidade coletavelEntidade = helperColetavelEntidade.getColetavelEntidadeBySprite(sprColetavel.name);
-        btnIrGameColetavel.prepararColetavelEntidade(coletavelEntidade);
+        btnIrGameColetavel.prepararColetavelEntidade(coletavelEntidade, posicaoScroll);
 
         Image imgDetalhe    = canvasDetalheDto.ImgDetalhe;
         imgDetalhe.sprite   = sprColetavel;
