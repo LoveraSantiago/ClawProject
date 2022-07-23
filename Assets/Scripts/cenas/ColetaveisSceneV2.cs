@@ -51,6 +51,8 @@ public class ColetaveisSceneV2 : MonoBehaviour,
         new AcaoItemArmarioSelecionado()
             .configurarProdutor(movimentadorArmario)
             .adicionarConsumidor(this);
+
+        restaurarArmario();
     }
 
     private void Update()
@@ -105,6 +107,24 @@ public class ColetaveisSceneV2 : MonoBehaviour,
                     CenaUtils.irParaCenaMap();
                 }
             });
+    }
+
+    private void restaurarArmario()
+    {
+        int indice = PlayerPrefsColetaveis.recuperarEApagarNavegacaoColetavel();
+        if(indice != 0)
+        {
+            Debug.Log("Restauracao SIM");
+            scrollRect.verticalNormalizedPosition = PlayerPrefsScrollPosition.recuperarELimparPosScrollRectColetaveis();
+            while (prateleiras.isPrateleiraBaixoVisivel())
+            {
+                prateleiras.movimentarParaBaixo(prateleirasDto);
+            }
+        }
+        else
+        {
+            Debug.Log("Restauracao NAO");
+        }
     }
 
     public void animacaoFecharDetalheEnd()

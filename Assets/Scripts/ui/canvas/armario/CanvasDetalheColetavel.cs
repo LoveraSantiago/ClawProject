@@ -34,18 +34,57 @@ public class CanvasDetalheColetavel
         canvasDetalheDto.LblFamilia.text = coletavelEntidade.familia.ToString();
         canvasDetalheDto.ImgDetalhe.transform.position = itemSelecionado.ImgItem.transform.position;
 
-        if(imgItemPrateleria.color == Color.black)
-        {
-            string texto = "Desbloqueie esse coletavel chegando no mapa da familia " + coletavelEntidade.familia.ToString();
-            canvasDetalheDto.LblTexto.text = texto;
-            canvasDetalheDto.LblTexto.transform.gameObject.SetActive(true);
-            canvasDetalheDto.CanvasBotoes.transform.gameObject.SetActive(false);
-        }
-        else if(MaterialGrayScale.isMaterialGrayScale(imgItemPrateleria.material))
+        if(imgItemPrateleria.color == Color.black || MaterialGrayScale.isMaterialGrayScale(imgItemPrateleria.material))
         {
             canvasDetalheDto.CanvasBotoes.transform.gameObject.SetActive(true);
             canvasDetalheDto.LblTexto.transform.gameObject.SetActive(false);
         }
+
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //BLOCO ORIGINAL REMOVER O IF DE CIMA LINHA 37
+        //if(imgItemPrateleria.color == Color.black) 
+        //{
+        //    string texto = "Desbloqueie esse coletavel chegando no mapa da familia " + coletavelEntidade.familia.ToString();
+        //    canvasDetalheDto.LblTexto.text = texto;
+        //    canvasDetalheDto.LblTexto.transform.gameObject.SetActive(true);
+        //    canvasDetalheDto.CanvasBotoes.transform.gameObject.SetActive(false);
+        //}
+        //else if(MaterialGrayScale.isMaterialGrayScale(imgItemPrateleria.material))
+        //{
+        //    canvasDetalheDto.CanvasBotoes.transform.gameObject.SetActive(true);
+        //    canvasDetalheDto.LblTexto.transform.gameObject.SetActive(false);
+        //}
         else
         {
             string texto = "Parabens voce ja conquistou o coletavel " + coletavelEntidade.nome;

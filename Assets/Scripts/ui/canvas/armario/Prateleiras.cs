@@ -55,6 +55,12 @@ public class Prateleiras
         }
     }   
 
+    public bool isPrateleiraBaixoVisivel()
+    {
+        float posYPrateleira = prateleiraBaixo.RectTransformPrateleira.transform.position.y;
+        return posYPrateleira > posYReferenciaBaixo;
+    }
+
     public void movimentarParaCima(PrateleirasDto prateleirasDto)
     {
         float posYPrateleira = prateleiraCima.RectTransformPrateleira.transform.position.y;
