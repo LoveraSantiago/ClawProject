@@ -4,7 +4,7 @@ public class BotaoIrGameColetaveis
 {
     private ColetavelEntidade coletavelEntidade;
     private ModalNoFicha modalNoFicha;
-    private float posicaoScroll;
+    private IndiceArmarioSelecionadoDto indiceArmarioSelecionado;
 
     public BotaoIrGameColetaveis(Button btnColetavel, ModalNoFichaDto modalNoFichaDto)
     {
@@ -20,10 +20,9 @@ public class BotaoIrGameColetaveis
         if(PlayerPrefsFichas.possueFichas(Ficha.OURO, 1))
         {
             PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
-            PlayerPrefsLevel.salvarLevel(coletavelEntidade.level);
-            PlayerPrefsColetaveis.salvarIndiceFamilia(indiceFamilia);
+            PlayerPrefsLevel.salvarLevel(coletavelEntidade.level);            
             PlayerPrefsColetaveis.salvarNavegacaoColetavel(coletavelEntidade.id);
-            PlayerPrefsScrollPosition.salvarPosScrollRectColetaveis(posicaoScroll);
+            PlayerPrefsScrollPosition.salvarPosScrollRectArmario(indiceArmarioSelecionado);
             CenaUtils.irParaCenaMainGame();
         }
         else
@@ -32,9 +31,9 @@ public class BotaoIrGameColetaveis
         }
     }
 
-    public void prepararColetavelEntidade(ColetavelEntidade coletavelEntidade, float posicaoScroll)
+    public void prepararColetavelEntidade(ColetavelEntidade coletavelEntidade, IndiceArmarioSelecionadoDto indiceArmarioSelecionado)
     {
         this.coletavelEntidade = coletavelEntidade;
-        this.posicaoScroll = posicaoScroll;
+        this.indiceArmarioSelecionado = indiceArmarioSelecionado;
     }
 }

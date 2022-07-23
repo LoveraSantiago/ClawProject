@@ -15,7 +15,8 @@ public class BlocoImgColetaveis : AcaoBlocoImgColetavelAtual.ProdutorEvento,
         imgSelecionadaEvento = new ImgSelecionadaEvento();        
 
         ColetavelEntidade.FAMILIA[] familias = ColetavelEntidade.getFamiliasDeColetaveis();
-        int indiceInicial = PlayerPrefsColetaveis.recuperarEApagarIndiceFamilia();
+        //int indiceInicial = PlayerPrefsColetaveis.recuperarEApagarIndiceFamilia();
+        int indiceInicial = 0;
         controleFamilia = new NavegacaoDeArray<ColetavelEntidade.FAMILIA>(familias, indiceInicial);
         blocoImgsDto.BtnDireita.onClick.AddListener(()=> irParaDireita());
         blocoImgsDto.BtnEsquerda.onClick.AddListener(()=> irParaEsquerda());

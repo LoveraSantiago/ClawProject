@@ -91,7 +91,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
     {
         if (!movimentadorArmario.isArmarioMovimentado())
         {
-            movimentadorArmario.movimentar(scrollRect, prateleirasDto);       
+            movimentadorArmario.movimentarAnimado(scrollRect, prateleirasDto);       
         }
     }
 
@@ -115,11 +115,36 @@ public class ColetaveisSceneV2 : MonoBehaviour,
         if(indice != 0)
         {
             Debug.Log("Restauracao SIM");
-            scrollRect.verticalNormalizedPosition = PlayerPrefsScrollPosition.recuperarELimparPosScrollRectColetaveis();
-            while (prateleiras.isPrateleiraBaixoVisivel())
+            IndiceArmarioSelecionadoDto indiceArmarioSelecionado =PlayerPrefsScrollPosition.recuperarELimparPosScrollRectColetaveis();
+            scrollRect.verticalNormalizedPosition = indiceArmarioSelecionado.posScrollArmario;
+            int trava = 50;
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
+            while (prateleiras.isPrateleiraBaixoVisivel() && trava-- > 0)
             {
                 prateleiras.movimentarParaBaixo(prateleirasDto);
+                Debug.Log("Movimentando para Baixo " + trava);
             }
+            movimentadorArmario.movimentarImediato(indiceArmarioSelecionado, scrollRect, prateleirasDto);
         }
         else
         {
@@ -134,6 +159,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
     void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
     {
-        detalheColetavel.abrirDetalhe(evento, prateleirasDto, scrollRect.verticalNormalizedPosition);
+        IndiceArmarioSelecionadoDto indiceArmario = new IndiceArmarioSelecionadoDto(evento, scrollRect.verticalNormalizedPosition);
+        detalheColetavel.abrirDetalhe(evento, prateleirasDto);
     }
 }

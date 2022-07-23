@@ -20,7 +20,7 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
         produtorDeEvento = new ProdutorDeEvento<IndiceArmarioSelecionadoDto>();
     }
 
-    public void movimentar(ScrollRect scrollRect, PrateleirasDto prateleirasDto)
+    public void movimentarAnimado(ScrollRect scrollRect, PrateleirasDto prateleirasDto)
     {
         movimentado = true;
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
@@ -42,7 +42,24 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
         pivotOriginal = rtScrollRect.pivot;
         rtScrollRect.pivot = new Vector2(rtScrollRect.pivot.x + xPivot, 1f - Mathf.Abs(yPivot));
 
-        Utils.MonoBehaviour.StartCoroutine(movimentarArmario(indicePrateleira, indiceItem, rtScrollRect, diferenca));
+        Utils.MonoBehaviour.StartCoroutine(movimentarArmarioAnimado(indicePrateleira, indiceItem, rtScrollRect, diferenca));
+    }
+
+    public void movimentarImediato(IndiceArmarioSelecionadoDto indiceArmario , ScrollRect scrollRect, PrateleirasDto prateleirasDto)
+    {
+        Vector2 posicaoAnchored = pegarPosicaoClicado(indiceArmario.indicePrateleira, indiceArmario.indiceItem, prateleirasDto);
+        posicaoAnchored = new Vector2(posicaoAnchored.x, posicaoAnchored.y + prateleirasDto.RTransformArmario.offsetMax.y);
+
+        Vector2 diferenca = posicaoAnchored - posItemReferencia;
+        RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
+        float xPivot = diferenca.x / rtScrollRect.rect.width;
+        float yPivot = posicaoAnchored.y / rtScrollRect.rect.height;
+        pivotOriginal = rtScrollRect.pivot;
+        rtScrollRect.pivot = new Vector2(rtScrollRect.pivot.x + xPivot, 1f - Mathf.Abs(yPivot));
+        posOriginal = rtScrollRect.anchoredPosition;
+        Vector2 posDestino = rtScrollRect.anchoredPosition - diferenca;
+        rtScrollRect.anchoredPosition = posDestino;
+        rtScrollRect.localScale = new Vector3(movimentadorDto.EscalaFinal, movimentadorDto.EscalaFinal, 1);
     }
 
     public bool isArmarioMovimentado()
@@ -57,7 +74,7 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
         Utils.MonoBehaviour.StartCoroutine(voltarArmario(rtScrollRect));
     }
 
-    private IEnumerator movimentarArmario(int indicePrateleira, int indiceItem, RectTransform rtScrollRect, Vector2 diferenca)
+    private IEnumerator movimentarArmarioAnimado(int indicePrateleira, int indiceItem, RectTransform rtScrollRect, Vector2 diferenca)
     {
         posOriginal = rtScrollRect.anchoredPosition;
 
