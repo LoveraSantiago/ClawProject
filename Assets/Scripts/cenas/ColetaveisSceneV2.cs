@@ -117,32 +117,12 @@ public class ColetaveisSceneV2 : MonoBehaviour,
             Debug.Log("Restauracao SIM");
             IndiceArmarioSelecionadoDto indiceArmarioSelecionado =PlayerPrefsScrollPosition.recuperarELimparPosScrollRectColetaveis();
             scrollRect.verticalNormalizedPosition = indiceArmarioSelecionado.posScrollArmario;
-            int trava = 50;
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            //VERIFICAR O INDICE DA PRATELEIRA VISIVEL
-            while (prateleiras.isPrateleiraBaixoVisivel() && trava-- > 0)
+            HelperColetavelEntidade helper = new HelperColetavelEntidade();
+            ColetavelEntidade coletavelEntidade = helper.getColetavelEntidadeById(indice);
+            while (prateleiras.isPrateleiraBaixoVisivel(coletavelEntidade.ordem))
             {
                 prateleiras.movimentarParaBaixo(prateleirasDto);
-                Debug.Log("Movimentando para Baixo " + trava);
+                Debug.Log("Movimentando para Baixo ");
             }
             movimentadorArmario.movimentarImediato(indiceArmarioSelecionado, scrollRect, prateleirasDto);
         }

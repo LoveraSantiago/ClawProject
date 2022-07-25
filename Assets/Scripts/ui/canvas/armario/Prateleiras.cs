@@ -55,10 +55,9 @@ public class Prateleiras
         }
     }   
 
-    public bool isPrateleiraBaixoVisivel()
+    public bool isPrateleiraBaixoVisivel(int indiceOrdemColetavel)
     {
-        float posYPrateleira = prateleiraBaixo.RectTransformPrateleira.transform.position.y;
-        return posYPrateleira > posYReferenciaBaixo;
+        return indiceOrdemColetavel <= contadorBaixoSprites;
     }
 
     public void movimentarParaCima(PrateleirasDto prateleirasDto)
