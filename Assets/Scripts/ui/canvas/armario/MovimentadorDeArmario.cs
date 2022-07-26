@@ -22,6 +22,7 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
 
     public void movimentarAnimado(ScrollRect scrollRect, PrateleirasDto prateleirasDto)
     {
+        Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
         movimentado = true;
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
         int indiceItem = int.Parse(goSelecionado.name);
@@ -31,14 +32,13 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
         posicaoAnchored = new Vector2(posicaoAnchored.x, posicaoAnchored.y + prateleirasDto.RTransformArmario.offsetMax.y);
 
         Vector2 diferenca = posicaoAnchored - posItemReferencia;
-        Debug.Log("Referencia " + posItemReferencia + " Atual " + posicaoAnchored + " Dif " + diferenca);
+        //Debug.Log("Referencia " + posItemReferencia + " Atual " + posicaoAnchored + " Dif " + diferenca);
 
         RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
 
         float xPivot = diferenca.x / rtScrollRect.rect.width;
         float yPivot = posicaoAnchored.y / rtScrollRect.rect.height;
-        Debug.Log("Pivot X " + xPivot + " Pivot Y " + yPivot + " rect " + rtScrollRect.rect);
-
+        //Debug.Log("Pivot X " + xPivot + " Pivot Y " + yPivot + " rect " + rtScrollRect.rect);
         pivotOriginal = rtScrollRect.pivot;
         rtScrollRect.pivot = new Vector2(rtScrollRect.pivot.x + xPivot, 1f - Mathf.Abs(yPivot));
 

@@ -117,9 +117,10 @@ public class ColetaveisSceneV2 : MonoBehaviour,
             Debug.Log("Restauracao SIM");
             IndiceArmarioSelecionadoDto indiceArmarioSelecionado =PlayerPrefsScrollPosition.recuperarELimparPosScrollRectColetaveis();
             scrollRect.verticalNormalizedPosition = indiceArmarioSelecionado.posScrollArmario;
+            Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
             HelperColetavelEntidade helper = new HelperColetavelEntidade();
             ColetavelEntidade coletavelEntidade = helper.getColetavelEntidadeById(indice);
-            while (prateleiras.isPrateleiraBaixoVisivel(coletavelEntidade.ordem))
+            while (!prateleiras.isPrateleiraVisivel(coletavelEntidade.ordem))
             {
                 prateleiras.movimentarParaBaixo(prateleirasDto);
                 Debug.Log("Movimentando para Baixo ");
@@ -139,7 +140,8 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
     void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
     {
+        Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
         IndiceArmarioSelecionadoDto indiceArmario = new IndiceArmarioSelecionadoDto(evento, scrollRect.verticalNormalizedPosition);
-        detalheColetavel.abrirDetalhe(evento, prateleirasDto);
+        detalheColetavel.abrirDetalhe(indiceArmario, prateleirasDto);
     }
 }

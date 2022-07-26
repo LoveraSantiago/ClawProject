@@ -55,7 +55,7 @@ public class Prateleiras
         }
     }   
 
-    public bool isPrateleiraBaixoVisivel(int indiceOrdemColetavel)
+    public bool isPrateleiraVisivel(int indiceOrdemColetavel)
     {
         return indiceOrdemColetavel <= contadorBaixoSprites;
     }
