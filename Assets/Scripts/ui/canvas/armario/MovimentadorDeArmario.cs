@@ -47,6 +47,7 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
 
     public void movimentarImediato(IndiceArmarioSelecionadoDto indiceArmario , ScrollRect scrollRect, PrateleirasDto prateleirasDto)
     {
+        movimentado = true;
         Vector2 posicaoAnchored = pegarPosicaoClicado(indiceArmario.indicePrateleira, indiceArmario.indiceItem, prateleirasDto);
         posicaoAnchored = new Vector2(posicaoAnchored.x, posicaoAnchored.y + prateleirasDto.RTransformArmario.offsetMax.y);
 
