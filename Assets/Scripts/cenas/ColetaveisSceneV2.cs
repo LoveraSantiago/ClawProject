@@ -126,6 +126,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
                 Debug.Log("Movimentando para Baixo ");
             }
             movimentadorArmario.movimentarImediato(indiceArmarioSelecionado, scrollRect, prateleirasDto);
+            detalheColetavel.detalheAberto(coletavelEntidade, indiceArmarioSelecionado, prateleirasDto);
         }
         else
         {
