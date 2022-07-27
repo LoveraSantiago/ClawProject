@@ -54,13 +54,7 @@ public class ContadorNormal : AbstractContadorDeColetaveis
     {
         totalColetaveis += qtd;
         //Debug.Log("PosAdicionado Total: " + totalColetaveis);
-    }
-
-    private void subtrairColetavel()
-    {
-        totalColetaveis -= 1;
-        //Debug.Log("Total: " + totalColetaveis);
-    }       
+    } 
 
     public override void reajustarContagem(ColetadoFimDto evento, bool devolverBoard)
     {
@@ -97,12 +91,23 @@ public class ContadorNormal : AbstractContadorDeColetaveis
 
     public override InformacoesFimDeJogoDto getInfoFimDeJogo()
     {
-        return InformacoesFimDeJogoDto.ofFimColetados(totalColetaveis == 0);
+        return InformacoesFimDeJogoDto.ofFimColetados(isZeroTotalColetaveis());
     }
 
     public override TrocadorDeOrdem fornecer()
     {
         return new TrocadorDeOrdemVazio();
+    }
+
+    protected bool isZeroTotalColetaveis()
+    {
+        return totalColetaveis == 0;
+    }
+
+    private void subtrairColetavel()
+    {
+        totalColetaveis -= 1;
+        //Debug.Log("Total: " + totalColetaveis);
     }
 
     private void adicionaAoContainerDeColetados(Coletavel coletado)

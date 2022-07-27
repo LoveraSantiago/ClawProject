@@ -53,9 +53,13 @@ public class ContadorColetavel : ContadorNormal
         {
             return InformacoesFimDeJogoDto.ofTrinca();
         }
-        else
+        else if (isZeroTotalColetaveis())
         {
             return InformacoesFimDeJogoDto.ofTrincaFail();
+        }
+        else
+        {
+            return base.getInfoFimDeJogo();
         }
     }
 
