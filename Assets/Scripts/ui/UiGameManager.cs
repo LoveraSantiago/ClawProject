@@ -1,6 +1,4 @@
-public class UiGameManager : AcaoTempoEsgotado.ConsumidorEvento,
-                             AcaoBoardElevadoFim.ConsumidorEvento,                                                          
-                             AcaoDesligarMaquina.ConsumidorEvento
+public class UiGameManager 
 {
     public ModalResultadosManager modalResultados { get; private set; }
     public ModalSair modalSair { get; private set; }
@@ -15,20 +13,5 @@ public class UiGameManager : AcaoTempoEsgotado.ConsumidorEvento,
     {
         modalResultados.configurarLevel(levelEscolhido.getLevelName());        
         modalSair.configuradoPeloLevel(levelEscolhido);
-    }    
-
-    void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
-    {
-        ((AcaoTempoEsgotado.ConsumidorEvento)modalResultados).consumirEvento(evento);
-    }
-
-    void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
-    {
-        ((AcaoBoardElevadoFim.ConsumidorEvento)modalResultados).consumirEvento(evento);
-    }
-
-    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
-    {
-        ((AcaoDesligarMaquina.ConsumidorEvento)modalSair).consumirEvento(evento);
-    }
+    }        
 }

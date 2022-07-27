@@ -62,14 +62,14 @@ public class MainGameEventos
             .adicionarConsumidor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(maquinaManager.arcoIrisEfeito)
             .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(uiManager)
+            .adicionarConsumidor(uiManager.modalResultados)
             .adicionarConsumidor(coletaveisManager);
 
         new AcaoBoardElevadoFim()
             .configurarProdutor(coletaveisManager)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(uiManager);
+            .adicionarConsumidor(uiManager.modalResultados);
 
         new AcaoCacaNiquel()
             .configurarProdutor(maquinaManager.displayDeColetados)
@@ -80,7 +80,7 @@ public class MainGameEventos
 
         new AcaoDesligarMaquina()
             .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(uiManager)
+            .adicionarConsumidor(uiManager.modalSair)
             .adicionarConsumidor(inputGameImpl);
 
         new AcaoDesligarMaquinaResultado()
