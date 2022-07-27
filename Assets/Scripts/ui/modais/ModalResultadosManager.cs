@@ -39,6 +39,15 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         }
     }
 
+    private void mostrarModalColetadosFail()
+    {
+        if (!mostrandoModal)
+        {
+            modalResultado.configurarColetavelFail();
+            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+        }
+    }
+
     private void mostrarModalCacaNiquelSinglePup(CacaNiquelEventoDto evento)
     {
         if (!mostrandoModal)
@@ -87,6 +96,10 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         else if (infoFimDeJogo.trincaColetaveis)
         {
             mostrarModalColetados();
+        }
+        else if (infoFimDeJogo.trincaColetaveisFail)
+        {
+            mostrarModalColetadosFail();
         }
     }
 

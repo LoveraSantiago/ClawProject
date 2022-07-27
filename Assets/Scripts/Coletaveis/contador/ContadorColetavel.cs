@@ -55,7 +55,7 @@ public class ContadorColetavel : ContadorNormal
         }
         else
         {
-            return base.getInfoFimDeJogo();
+            return InformacoesFimDeJogoDto.ofTrincaFail();
         }
     }
 
