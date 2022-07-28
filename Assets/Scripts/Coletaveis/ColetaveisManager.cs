@@ -123,16 +123,13 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     void AcaoInfoDaGarra.ConsumidorEvento.consumirEvento(InformacoesDaGarraDto evento)
     {
+        processarDesimantado();
         if (evento.isImantadoInfo)
         {
             HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
             coletavelImantado = helperInGame.getColetavelInGameByGoName(evento.nomeColetado);
             coletavelImantado.imantar();
-        }
-        else if (evento.isNotImantadoInfo)
-        {
-            processarDesimantado();
-        }
+        }       
     }   
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
