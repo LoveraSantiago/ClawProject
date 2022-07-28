@@ -3755,7 +3755,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1729035073}
   - component: {fileID: 1729035075}
-  - component: {fileID: 1729035074}
   - component: {fileID: 1729035072}
   - component: {fileID: 1729035071}
   - component: {fileID: 1729035070}
@@ -3854,50 +3853,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1729035074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729035069}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5b6116e30d023a49904558ee41447b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerFichaDto:
-    btnMais: {fileID: 373956815}
-    lblQdtFichas: {fileID: 373956814}
-    relogioDto:
-      lblHoras: {fileID: 373956813}
-      transfSegundos: {fileID: 373956812}
-      transfMinutos: {fileID: 373956811}
-      transfHoras: {fileID: 373956810}
-  btnBack: {fileID: 818320628}
-  blocoImgDto:
-    lblNomeFamilia: {fileID: 0}
-    btnEsquerda: {fileID: 0}
-    btnDireita: {fileID: 0}
-    grupoImgsColetaveis:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  blocoImgDetalheDto:
-    lblName: {fileID: 0}
-    imgDetalhe: {fileID: 0}
-    btnGanharColetavel: {fileID: 0}
-    lblBtnGanharColetavel: {fileID: 0}
-  prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
-  prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
-  prefabBottomBar: {fileID: 0}
-  modalNoFichaDto:
-    modalNoFicha: {fileID: 1927668547}
-    btnOk: {fileID: 1927668546}
 --- !u!114 &1729035075
 MonoBehaviour:
   m_ObjectHideFlags: 0
