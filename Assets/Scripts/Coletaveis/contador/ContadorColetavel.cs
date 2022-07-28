@@ -21,9 +21,8 @@ public class ContadorColetavel : ContadorNormal
     }
 
     private void destacarColetaveis()
-    {
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        Coletavel[] coletaveis = helperInGame.getColetavelInGameDoTipo(coletavelEntidade);
+    {        
+        Coletavel[] coletaveis = HelperColetaveisInGame.getColetavelInGameDoTipo(coletavelEntidade);
         for(int contador = 0; contador < coletaveis.Length; contador++)
         {
             Coletavel coletavelIt = coletaveis[contador];
@@ -52,6 +51,10 @@ public class ContadorColetavel : ContadorNormal
         if (resultSucessoColetavel)
         {
             return InformacoesFimDeJogoDto.ofTrinca();
+        }
+        else if (isZeroTotalColetaveis())
+        {
+            return InformacoesFimDeJogoDto.ofTrincaFail();
         }
         else
         {

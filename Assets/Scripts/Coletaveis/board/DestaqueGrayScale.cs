@@ -20,9 +20,8 @@ public class DestaqueGrayScale
     public void destacar(Coletavel coletavel)
     {
         if (destaque)
-        {
-            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-            Material materialGray = helperInGame.getMaterialGrayscaleTo(coletavel);
+        {            
+            Material materialGray = HelperColetaveisInGame.getMaterialGrayscaleTo(coletavel);
             coletavel.addMaterial(materialGray);
             coletavel.colocarNoOrderComum();
         }

@@ -52,8 +52,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
     }
 
     private IEnumerator descerPeloTubo(bool[] resultados, Coletavel[] coletados)
-    {
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+    {        
         for (int contador = 0; contador < coletados.Length; contador++)
         {
             if (resultados[contador])
@@ -63,7 +62,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
 
                 ColetavelTuboDeSaida coletavelDescarte = new ColetavelTuboDeSaida(tuboDto.ColetavelTuboDeSaida[contador]);
                 coletavelDescarte.prepararParaDescarte(torque, tuboDto.Gravidade, spriteAtual);
-                helperInGame.inativarColetavel(coletados[contador]);                
+                HelperColetaveisInGame.inativarColetavel(coletados[contador]);                
             }
         }        
         yield return null;

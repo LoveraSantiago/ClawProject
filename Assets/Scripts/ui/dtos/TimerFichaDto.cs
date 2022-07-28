@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TimerFichaDto 
 {   
     [SerializeField] private Button btnMais;
-    [SerializeField] private TextMeshProUGUI lblQdtFichas;
+    [SerializeField] private TextMeshProUGUI lblQdtFichas;    
     [Space(5)]
     [SerializeField] private RelogioDto relogioDto;    
     

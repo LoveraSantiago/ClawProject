@@ -26,9 +26,8 @@ public class Gaiola : GO
     private void soltarColetavel()
     {
         if (isNaoVazia())
-        {
-            HelperColetaveisInGame coletaveisInGame = new HelperColetaveisInGame();
-            Coletavel coletavelPreso = coletaveisInGame.getColetavelInGameByGoName(nomeColetavelPreso);
+        {            
+            Coletavel coletavelPreso = HelperColetaveisInGame.getColetavelInGameByGoName(nomeColetavelPreso);
             coletavelPreso.soltar();
             coletavelPreso.desafixarVerticalmente();
             coletavelPreso.ligarAnimacaoIdle();

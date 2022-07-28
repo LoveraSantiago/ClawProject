@@ -15,9 +15,8 @@ public class ExplosaoHit
         for (int contador = 0; contador < acertados.Length; contador++)
         {
             string nomeAcertado = acertados[contador].name;
-
-            HelperColetaveisInGame coletaveisInGame = new HelperColetaveisInGame();
-            Coletavel acertado = coletaveisInGame.getColetavelInGameByGoName(nomeAcertado);
+            
+            Coletavel acertado = HelperColetaveisInGame.getColetavelInGameByGoName(nomeAcertado);
             if (acertado.isLivre())
             {
                 int angulo = determinarAngulo(posicaoBomba, acertado.getPosicao(), anguloHit);

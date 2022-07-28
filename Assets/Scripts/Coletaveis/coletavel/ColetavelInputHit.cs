@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class ColetavelInputHit 
 {
-    private static HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-
     public static Coletavel hit(InputGame inputGame)
     {
         Vector3 posicaoTap = inputGame.getPosicaoTap();
@@ -18,7 +16,7 @@ public class ColetavelInputHit
         if(colliderResult != null)
         {
             //Debug.Log("Coletavel acertado no input " + inputGame.getPosicaoTap());
-            return helperInGame.getColetavelInGameByGoName(colliderResult.name);
+            return HelperColetaveisInGame.getColetavelInGameByGoName(colliderResult.name);
         }
         else
         {         

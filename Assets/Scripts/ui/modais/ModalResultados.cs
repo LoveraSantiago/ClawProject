@@ -52,13 +52,21 @@ public class ModalResultados : ModalManipulacao
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
     }
 
+    public void configurarColetavelFail()
+    {
+        naoMostrarLinhasResult();
+        AbstractModalFim modalFim = new ModalFimColetaveisFail();
+        modalFim.configurar(this);
+        modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
+    }
+
     public void configurarModalFailOrdem()
     {
         naoMostrarLinhasResult();
         AbstractModalFim modalFim = new ModalFimOrdem();
         modalFim.configurar(this);
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
-    }
+    }   
 
     public void ligar()
     {

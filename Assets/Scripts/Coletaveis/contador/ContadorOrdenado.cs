@@ -55,9 +55,8 @@ public class ContadorOrdenado : ContadorNormal
         if (navegacaoOrdem.isIndiceAtualMenorQtdItensArray())
         {
             BoardOrdem ordemIt = navegacaoOrdem.getItemIndiceAtual();
-
-            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-            Coletavel coletavelTile = helperInGame.getColetavelInGameByGoName(ordemIt.nome);
+            
+            Coletavel coletavelTile = HelperColetaveisInGame.getColetavelInGameByGoName(ordemIt.nome);
                         
             Material materialOutline = MaterialOutline.of(coletavelTile.getSprite());
             coletavelTile.addMaterial(materialOutline);

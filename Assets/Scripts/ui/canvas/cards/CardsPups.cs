@@ -55,7 +55,7 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
     {
         if (isClicado == false && goSelecionado != null)
         {
-            GameObject goParent = goSelecionado.transform.parent.gameObject;
+            GameObject goParent = goSelecionado.transform.parent.parent.gameObject;
             string nomeParent = goParent.name;
 
             int indice = int.Parse(nomeParent);
@@ -73,7 +73,7 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
         if (!evento)
         {
             CardsPupsDto cardPupDto = cardsPupsDto[cardSelecionado.indice];
-            GameObject goParent = cardPupDto.ImgCard.transform.parent.parent.gameObject;
+            GameObject goParent = cardPupDto.ImgCard.transform.parent.parent.parent.gameObject;
             goParent.SetActive(true);            
             isClicado = false;
         }

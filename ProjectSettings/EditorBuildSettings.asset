@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/NotImplementedScene.unity
     guid: 8f66ff1883797554db1367c80c944cb2
   - enabled: 1
-    path: Assets/Scenes/ColetaveisScene.unity
+    path: Assets/Scenes/ColetaveisSceneV2.unity
     guid: b98310ac55222c04d937bd89c96e15ae
   - enabled: 1
     path: Assets/Scenes/LojaScene.unity

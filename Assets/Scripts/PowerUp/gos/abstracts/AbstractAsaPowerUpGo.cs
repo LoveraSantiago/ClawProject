@@ -22,8 +22,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
 
     public override void iniciarPup()
     {
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        helperInGame.ligarMirasNosColetaveis(true);
+        HelperColetaveisInGame.ligarMirasNosColetaveis(true);
 
         hitColetavel = false;
         HumAlvoColetavelSelecionado alvoSelecionado = new HumAlvoColetavelSelecionado(true);
@@ -78,8 +77,8 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
         if (!hitColetavel)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
-            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-            helperInGame.desligarMirasNosColetaveis();
+
+            HelperColetaveisInGame.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
         }
     }   

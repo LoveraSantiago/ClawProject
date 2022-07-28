@@ -68,14 +68,13 @@ public class MolaPowerUpGo : PowerUpSemInteracao
         Collider2D[] colliders = new Collider2D[tamanhoArray];
         ContactFilter2D filter = new ContactFilter2D().NoFilter();        
         boxCollider2d.OverlapCollider(filter, colliders);
-
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
+        
         for (int contador = 0; contador < tamanhoArray; contador++)
         {
             Collider2D coliderIt = colliders[contador];
             if (coliderIt != null && TagUtils.isColetavel(coliderIt.gameObject))
             {   
-                Coletavel coletavel = helperInGame.getColetavelInGameByGoName(coliderIt.name);
+                Coletavel coletavel = HelperColetaveisInGame.getColetavelInGameByGoName(coliderIt.name);
                 if (coletavel.isLivre())
                 {
                     listaDeColetaveis.Add(coletavel);

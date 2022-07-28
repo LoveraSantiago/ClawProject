@@ -1,9 +1,10 @@
 using UnityEngine.UI;
 
-public class BotaoIrGameColetaveis : AcaoBlocoImgColetavelAtual.ConsumidorEvento
+public class BotaoIrGameColetaveis 
 {
     private ColetavelEntidade coletavelEntidade;
     private ModalNoFicha modalNoFicha;
+    private IndiceArmarioSelecionadoDto indiceArmarioSelecionado;
 
     public BotaoIrGameColetaveis(Button btnColetavel, ModalNoFichaDto modalNoFichaDto)
     {
@@ -19,9 +20,9 @@ public class BotaoIrGameColetaveis : AcaoBlocoImgColetavelAtual.ConsumidorEvento
         if(PlayerPrefsFichas.possueFichas(Ficha.OURO, 1))
         {
             PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
-            PlayerPrefsLevel.salvarLevel(coletavelEntidade.level);
-            PlayerPrefsColetaveis.salvarIndiceFamilia(indiceFamilia);
+            PlayerPrefsLevel.salvarLevel(coletavelEntidade.level);            
             PlayerPrefsColetaveis.salvarNavegacaoColetavel(coletavelEntidade.id);
+            PlayerPrefsScrollPosition.salvarPosScrollRectArmario(indiceArmarioSelecionado);
             CenaUtils.irParaCenaMainGame();
         }
         else
@@ -30,8 +31,9 @@ public class BotaoIrGameColetaveis : AcaoBlocoImgColetavelAtual.ConsumidorEvento
         }
     }
 
-    void AcaoBlocoImgColetavelAtual.ConsumidorEvento.consumirEvento(UiColetavelInfo evento)
+    public void prepararColetavelEntidade(ColetavelEntidade coletavelEntidade, IndiceArmarioSelecionadoDto indiceArmarioSelecionado)
     {
-        coletavelEntidade = evento.coletavelEntidade;
+        this.coletavelEntidade = coletavelEntidade;
+        this.indiceArmarioSelecionado = indiceArmarioSelecionado;
     }
 }

@@ -10675,7 +10675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 17
+  level: 10
   mainDto:
     dragCollider: {fileID: 491158116}
     garraDto:
@@ -22196,7 +22196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_SortingOrder
-      value: 53
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Positions.Array.data[0].y
