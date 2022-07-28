@@ -15,9 +15,8 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
     public override void iniciarPup()
     {        
         hitColetavel2 = false;
-
-        HelperColetaveisInGame coletaveisInGame = new HelperColetaveisInGame();
-        if (coletaveisInGame.naoTemColetavelOvoInGame())
+        
+        if (HelperColetaveisInGame.naoTemColetavelOvoInGame())
         {
             alvosSelecionados = new DoisAlvoColetavelSelecionado(true);
             coroutine = Utils.MonoBehaviour.StartCoroutine(alvosSelecionados.onSelecionar(inputGame, this));
@@ -53,9 +52,8 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
     }  
     
     private void finalizar()
-    {   
-        HelperColetaveisInGame coletaveisInGame = new HelperColetaveisInGame();
-        coletaveisInGame.desligarMirasNosColetaveis();
+    {           
+        HelperColetaveisInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.finalizado();
     }
 }

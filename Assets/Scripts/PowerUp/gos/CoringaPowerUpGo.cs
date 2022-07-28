@@ -21,12 +21,11 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
     public override void configurarPup(){}
 
     public override void iniciarPup()
-    {
-        HelperColetaveisInGame coletaveisInGame = new HelperColetaveisInGame();
+    {   
 
-        if (coletaveisInGame.naoTemColetavelOvoInGame())
+        if (HelperColetaveisInGame.naoTemColetavelOvoInGame())
         {
-            coletaveisInGame.ligarMirasNosColetaveis(true);
+            HelperColetaveisInGame.ligarMirasNosColetaveis(true);
 
             alvoSelecionado = new HumAlvoColetavelSelecionado(true);
             coroutineAlvo = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));
@@ -60,8 +59,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
     {
         coletavelSelecionado = coletavel;
 
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-        HelperColetaveisInGame coletaveisInGame     = new HelperColetaveisInGame();
+        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();        
 
         ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeBySprite(coletavel.nomeSprite);
         List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavelEntidade);
@@ -118,8 +116,8 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         }
 
         finalizando = true;
-        
-        coletaveisInGame.desligarMirasNosColetaveis();
+
+        HelperColetaveisInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.preFinalizar();
         coletavel.receberSprite(sprSorteado);
         coletavel.clearMaterial();
@@ -146,8 +144,8 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
             coletavelSelecionado.clearMaterial();
             getTrocadorDeOrdem().atualizar(coletavelSelecionado);
         }
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        helperInGame.desligarMirasNosColetaveis();
+
+        HelperColetaveisInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.finalizado();
         resetPup();
     }

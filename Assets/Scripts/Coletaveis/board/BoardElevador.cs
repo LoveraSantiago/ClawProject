@@ -16,10 +16,8 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
 
         BoardElevadorReferencias refs = new BoardElevadorReferencias();
         refs.iniciarRefs(boardDto);
-
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        helperInGame.fixarTodosColetaveisEixoXY();
-
+        
+        HelperColetaveisInGame.fixarTodosColetaveisEixoXY();
         while (isBoardAbaixoDoLimite(boardDto, refs.limite))
         {
             subirBoard(boardDto);
@@ -34,7 +32,7 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
         {
             refs.setarRefs(boardDto);
 
-            helperInGame.desafixarTodosColetaveisXY();
+            HelperColetaveisInGame.desafixarTodosColetaveisXY();
             yield return montadorExtra.createBoard(boardDto);
 
             float acrescimoFinal = boardDto.BoardPosicao.position.y - refs.acrescimo;
@@ -54,9 +52,8 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
     }    
 
     private bool isAlgumColetavelAcimaDoLimiteGameOver(BoardDto boardDto)
-    {
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        return helperInGame.isAlgumColetavelAcimaDaHaltura(boardDto.LimiteSubida);        
+    {        
+        return HelperColetaveisInGame.isAlgumColetavelAcimaDaHaltura(boardDto.LimiteSubida);        
     }
 
     ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()

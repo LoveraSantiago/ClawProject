@@ -17,9 +17,8 @@ public class AsaMiniPowerUpGo : AbstractAsaPowerUpGo
     }
 
     protected override float getHalturaLimite()
-    {
-        HelperColetaveisInGame coletaveisInGame = new HelperColetaveisInGame();
-        Coletavel coletavelMaisAlto = coletaveisInGame.getColetavelMaisAlto();
+    {        
+        Coletavel coletavelMaisAlto = HelperColetaveisInGame.getColetavelMaisAlto();
 
         HelperGaiolasInGame gaiolasInGame = new HelperGaiolasInGame();
         Gaiola gaiolaMaisAlta = gaiolasInGame.getGaiolaMaisAlta();

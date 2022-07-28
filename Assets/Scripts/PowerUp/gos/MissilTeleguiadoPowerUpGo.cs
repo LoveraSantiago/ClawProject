@@ -135,9 +135,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         if (!hitColetavel)
         {
             Utils.MonoBehaviour.StopCoroutine(coroutine);
-
-            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-            helperInGame.desligarMirasNosColetaveis();
+            HelperColetaveisInGame.desligarMirasNosColetaveis();
             resetPup();
         }
     }   

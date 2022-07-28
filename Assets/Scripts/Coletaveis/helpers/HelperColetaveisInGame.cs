@@ -6,81 +6,81 @@ public class HelperColetaveisInGame
     private static PoolDeColetaveis poolDeColetaveis;
     private static Dictionary<string, Material> poolGrayscale;   
 
-    public int getQtdColetaveisInGame()
+    public static int getQtdColetaveisInGame()
     {
         ContadorDeColetaveisInGame contador = new ContadorDeColetaveisInGame();
         poolDeColetaveis.executeEmTodosColetaveis(contador);
         return contador.qtd;        
     }
 
-    public bool temColetavelInGameByNome(string name)
+    public static bool temColetavelInGameByNome(string name)
     {
         return poolDeColetaveis.contemNome(name);
     }
 
-    public bool temColetavelOvoInGame()
+    public static bool temColetavelOvoInGame()
     {
         return poolDeColetaveis.getColetavelPeloGoNome("1").isOvo();
     }
 
-    public bool naoTemColetavelOvoInGame()
+    public static bool naoTemColetavelOvoInGame()
     {
         return !temColetavelOvoInGame();
     }
 
-    public Coletavel getColetavelInGameByGoName(string name)
+    public static Coletavel getColetavelInGameByGoName(string name)
     {
         return poolDeColetaveis.getColetavelPeloGoNome(name);
     }
 
-    public Coletavel[] getColetavelInGameDoTipo(ColetavelEntidade coletavelEntidade)
+    public static Coletavel[] getColetavelInGameDoTipo(ColetavelEntidade coletavelEntidade)
     {
         return poolDeColetaveis.getTrincaDeColetaveis(coletavelEntidade);
     }
 
-    public Coletavel getColetavelMaisAlto()
+    public static Coletavel getColetavelMaisAlto()
     {
         ProcuradorGOMaisAlto<Coletavel> procurador = new ProcuradorGOMaisAlto<Coletavel>();
         poolDeColetaveis.executeEmTodosColetaveis(procurador);
         return procurador.goMaisAlto;
     }    
 
-    public void ligarMiraAlvoFinalNoColetavel(string nomeAlvo)
+    public static void ligarMiraAlvoFinalNoColetavel(string nomeAlvo)
     {
         poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeAlvoFinal(nomeAlvo));
     }
 
-    public void ligarMirasNosColetaveis(bool filtrarGaiolas)
+    public static void ligarMirasNosColetaveis(bool filtrarGaiolas)
     {
         poolDeColetaveis.executeEmTodosColetaveis(new LigadorDeMiras(filtrarGaiolas));
     }
 
-    public void desligarMirasNosColetaveis()
+    public static void desligarMirasNosColetaveis()
     {
         poolDeColetaveis.executeEmTodosColetaveis(new DesligadorDeMiras());
     }
 
-    public void fixarTodosColetaveisEixoXY()
+    public static void fixarTodosColetaveisEixoXY()
     {
         poolDeColetaveis.executeEmTodosColetaveis(new FixadorEixosXY());
     }
 
-    public void desafixarTodosColetaveisXY()
+    public static void desafixarTodosColetaveisXY()
     {
         poolDeColetaveis.executeEmTodosColetaveis(new DesafixadorEixosXY());
     }
 
-    public bool isAlgumColetavelAcimaDaHaltura(float haltura)
+    public static bool isAlgumColetavelAcimaDaHaltura(float haltura)
     {
         return poolDeColetaveis.temEmAlgumColetavel(new AcimaHalturaColetavel(haltura));
     }
 
-    public void inativarColetavel(Coletavel coletado)
+    public static void inativarColetavel(Coletavel coletado)
     {
         poolDeColetaveis.inativarColetavel(coletado);
     }
 
-    public Material getMaterialGrayscaleTo(Coletavel coletavel)
+    public static Material getMaterialGrayscaleTo(Coletavel coletavel)
     {
         Sprite spr = coletavel.getSprite();
         if (!poolGrayscale.ContainsKey(spr.name))
@@ -91,26 +91,24 @@ public class HelperColetaveisInGame
         return poolGrayscale[spr.name];
     }
 
-    public Coletavel criarColetavel()
+    public static Coletavel criarColetavel()
     {
         return poolDeColetaveis.criarColetavel();
     }
 
-    public Coletavel criarColetavel(GameObject goParent)
+    public static Coletavel criarColetavel(GameObject goParent)
     {
         return poolDeColetaveis.criarColetavel(goParent);
     }
 
     public static Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
     {
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        return configColetavel(helperInGame.criarColetavel(), nomeSprite, posicao);
+        return configColetavel(criarColetavel(), nomeSprite, posicao);
     }
 
     public static Coletavel criarColetavel(string nomeSprite, Vector3 posicao, GameObject goParent)
-    {
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        return configColetavel(helperInGame.criarColetavel(goParent), nomeSprite, posicao);
+    {        
+        return configColetavel(criarColetavel(goParent), nomeSprite, posicao);
     }
 
     private static Coletavel configColetavel(Coletavel coletavel, string nomeSprite, Vector3 posicao)

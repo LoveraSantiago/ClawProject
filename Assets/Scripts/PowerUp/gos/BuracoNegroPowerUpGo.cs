@@ -41,8 +41,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
             totalDesocupados = 3;
         }
 
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        helperInGame.ligarMirasNosColetaveis(true);
+        HelperColetaveisInGame.ligarMirasNosColetaveis(true);
 
         tresAlvosSelecionados = new AteTresAlvoColetavelSelecionado(totalDesocupados, true);
         coroutine = Utils.MonoBehaviour.StartCoroutine(tresAlvosSelecionados.onSelecionar(inputGame, this));

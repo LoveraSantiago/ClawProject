@@ -49,11 +49,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     public IEnumerator start()
     {
         yield return board.create();
-
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();        
-        int qtdColetaveisDoBoard = helperInGame.getQtdColetaveisInGame();
+        
+        int qtdColetaveisDoBoard = HelperColetaveisInGame.getQtdColetaveisInGame();
         contador.iniciar(qtdColetaveisDoBoard);        
-        coletavelImantado = helperInGame.getColetavelInGameByGoName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK    
+        coletavelImantado = HelperColetaveisInGame.getColetavelInGameByGoName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK    
     }    
 
     public Fornecedor<TrocadorDeOrdem> getFornecedorTrocadorDeOrdem()
@@ -81,9 +80,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     }
 
     private void processarColetado(GameObject gameObjectColetado)
-    {        
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        Coletavel coletavelAcertado = helperInGame.getColetavelInGameByGoName(gameObjectColetado.name);
+    {   
+        Coletavel coletavelAcertado = HelperColetaveisInGame.getColetavelInGameByGoName(gameObjectColetado.name);
         coletavelAcertado.desligar();
 
         int score = contador.contarColetado(coletavelAcertado);
@@ -108,11 +106,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     //É DISPARADO QDO SENSOR PEGA UM COLETAVEL QUE A VELOCIDADE Y É POSITIVA
     public void consumir(Collider2D goColetado)
     {
-        //Debug.Log("Nome Coletado: " + goColetado.name);
-        HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-        if (helperInGame.temColetavelInGameByNome(goColetado.name))
+        //Debug.Log("Nome Coletado: " + goColetado.name);        
+        if (HelperColetaveisInGame.temColetavelInGameByNome(goColetado.name))
         {
-            Coletavel coletado = helperInGame.getColetavelInGameByGoName(goColetado.name);            
+            Coletavel coletado = HelperColetaveisInGame.getColetavelInGameByGoName(goColetado.name);            
             if(coletado.isTouchingCentroDaGarra())
             {            
                 processarColetado(goColetado.gameObject);
@@ -125,9 +122,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     {
         processarDesimantado();
         if (evento.isImantadoInfo)
-        {
-            HelperColetaveisInGame helperInGame = new HelperColetaveisInGame();
-            coletavelImantado = helperInGame.getColetavelInGameByGoName(evento.nomeColetado);
+        {            
+            coletavelImantado = HelperColetaveisInGame.getColetavelInGameByGoName(evento.nomeColetado);
             coletavelImantado.imantar();
         }       
     }   
