@@ -114,23 +114,23 @@ public class ColetaveisSceneV2 : MonoBehaviour,
         int indice = PlayerPrefsColetaveis.recuperarEApagarNavegacaoColetavel();
         if(indice != 0)
         {
-            Debug.Log("Restauracao SIM");
+            //Debug.Log("Restauracao SIM");
             IndiceArmarioSelecionadoDto indiceArmarioSelecionado =PlayerPrefsScrollPosition.recuperarELimparPosScrollRectColetaveis();
             scrollRect.verticalNormalizedPosition = indiceArmarioSelecionado.posScrollArmario;
-            Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
+            //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
             HelperColetavelEntidade helper = new HelperColetavelEntidade();
             ColetavelEntidade coletavelEntidade = helper.getColetavelEntidadeById(indice);
             while (!prateleiras.isPrateleiraVisivel(coletavelEntidade.ordem))
             {
                 prateleiras.movimentarParaBaixo(prateleirasDto);
-                Debug.Log("Movimentando para Baixo ");
+                //Debug.Log("Movimentando para Baixo ");
             }
             movimentadorArmario.movimentarImediato(indiceArmarioSelecionado, scrollRect, prateleirasDto);
             detalheColetavel.detalheAberto(coletavelEntidade, indiceArmarioSelecionado, prateleirasDto);
         }
         else
         {
-            Debug.Log("Restauracao NAO");
+            //Debug.Log("Restauracao NAO");
         }
     }
 
@@ -141,7 +141,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
     void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
     {
-        Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
+        //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
         IndiceArmarioSelecionadoDto indiceArmario = new IndiceArmarioSelecionadoDto(evento, scrollRect.verticalNormalizedPosition);
         detalheColetavel.abrirDetalhe(indiceArmario, prateleirasDto);
     }
