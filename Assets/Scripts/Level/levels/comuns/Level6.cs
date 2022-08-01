@@ -12,6 +12,11 @@ public class Level6 : AbstractLevelOvo
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
 
+    public override string getNameMap()
+    {
+        return Mapas.PARQUE_DIVERSOES;
+    }
+
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]

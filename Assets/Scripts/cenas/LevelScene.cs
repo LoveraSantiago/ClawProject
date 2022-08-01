@@ -8,12 +8,15 @@ public class LevelScene : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect;
 
     private float ultimaPosicao;
+    private string[] levels;
 
     void Start()
     {
         Utils.configMainMono(this);
 
         scrollRect.onValueChanged.AddListener((pos) => movimentado(pos));
+        levels = LevelHelper.getAllLevelsMapsAlias();
+        Debug.Log("QTD LEVELS " + levels.Length);
     }
     
     void Update()

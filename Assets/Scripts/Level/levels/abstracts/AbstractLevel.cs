@@ -49,6 +49,16 @@ public abstract class AbstractLevel
         return isLevelAlbedo0();
     }
 
+    public virtual string getNameMap()
+    {
+        return null;
+    }
+
+    public bool isLevelMap()
+    {
+        return getNameMap() != null;
+    }
+
     public bool hasPupToLevel()
     {
         return getPupsToLevel() != null;

@@ -21,9 +21,9 @@ public class LevelHelper
         return getLevelsFiltradosPor(new FilterLevelsAliasAll());
     }
 
-    public static List<LevelEntidade> getAllLevelsMaps()
+    public static string[] getAllLevelsMapsAlias()
     {
-
+        return getLevelsFiltradosPor(new FilterLevelsAliasMaps()).ToArray();
     }
 
     public static List<string> geLevelsNaoObstaculosAlias()

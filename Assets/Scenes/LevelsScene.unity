@@ -1341,6 +1341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d17661c767c9a7149b508e56916936f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollRect: {fileID: 1600028417}
 --- !u!224 &1963792649 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4144852225125329737, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}

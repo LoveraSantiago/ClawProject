@@ -18,6 +18,11 @@ public class Level8 : AbstractLevel
         return TipoGame.NORMAL;
     }
 
+    public override string getNameMap()
+    {
+        return Mapas.PARQUE_DIVERSOES;
+    }
+
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]

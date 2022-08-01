@@ -16,7 +16,12 @@ public class Level1 : AbstractLevel
     public override TipoGame getTipoGame()
     {
         return TipoGame.NORMAL;
-    }    
+    }
+
+    public override string getNameMap()
+    {
+        return Mapas.PARQUE_DIVERSOES;
+    }
 
     public override int[,] getArrayDeColetaveis()
     {

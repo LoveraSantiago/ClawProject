@@ -10,6 +10,11 @@ public abstract class FilterLevelsAlias : Consumidor<LevelEntidade>
         levelAlias.Add("-");
     }
 
+    protected void somenteNomesLevels()
+    {
+        levelAlias.Clear();
+    }
+
     public void consumir(LevelEntidade levelEntidade)
     {
         filtrar(levelAlias, levelEntidade);

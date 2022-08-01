@@ -10,7 +10,12 @@ public class Level4 : AbstractLevelOrdem
     public override string getMsgObjetivoLevel()
     {
         return "Siga a ordem dos coletaveis";
-    }   
+    }
+
+    public override string getNameMap()
+    {
+        return Mapas.PARQUE_DIVERSOES;
+    }
 
     public override int[,] getArrayDeColetaveis()
     {
