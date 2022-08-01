@@ -16,12 +16,12 @@ public class LevelHelper
         return levelEntidade.supplierLevel.fornecer();
     }
 
-    public static List<string> getAllLevels()
+    public static List<string> getAllLevelsAlias()
     {
         return getLevelsFiltradosPor(new FilterLevelsAll());
     }
 
-    public static List<string> getNormalLevelsAlias()
+    public static List<string> geLevelsNaoObstaculosAlias()
     {
         return getLevelsFiltradosPor(new FilterLevelsNormal());
     }
