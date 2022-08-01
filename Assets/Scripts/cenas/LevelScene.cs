@@ -15,7 +15,6 @@ public class LevelScene : MonoBehaviour
 
         scrollRect.onValueChanged.AddListener((pos) => movimentado(pos));
     }
-
     
     void Update()
     {
