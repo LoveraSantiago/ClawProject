@@ -961,7 +961,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481599766}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1342,6 +1342,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 1600028417}
+  qtdItensVisiveis: 5
+  rTransformScroll: {fileID: 1481599767}
+  rItens:
+  - {fileID: 1963792649}
+  - {fileID: 2078935669}
+  - {fileID: 561216928}
+  - {fileID: 2095980027}
+  - {fileID: 714508393}
 --- !u!224 &1963792649 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4144852225125329737, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}
