@@ -45,7 +45,7 @@ public class LevelScene : MonoBehaviour
 
     private void calcularTamanhoScroll()
     {
-        float qtdItens = levels.Length - qtdItensVisiveis;
+        float qtdItens   = levels.Length - qtdItensVisiveis;
         float yAcrescimo = qtdItens * rItens[0].rect.height;
         rTransformScroll.offsetMin += new Vector2(0, -yAcrescimo);
     }
