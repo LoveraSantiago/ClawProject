@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Prateleiras 
+public class Prateleiras : ScrollMovimentador<PrateleirasDto>
 {
     private Sprite[] sprites;
 
@@ -25,11 +25,11 @@ public class Prateleiras
         carregarReferenciasPosicoes(prateleirasDto);
         popularArmario(prateleirasDto);
 
-        prateleiraCima = prateleirasDto.PrateleiraDto[0];
+        prateleiraCima  = prateleirasDto.PrateleiraDto[0];
         prateleiraBaixo = prateleirasDto.PrateleiraDto[prateleirasDto.PrateleiraDto.Length - 1];
     }
 
-    public void movimentarParaBaixo(PrateleirasDto prateleirasDto)
+    public override void movimentarParaBaixo(PrateleirasDto prateleirasDto)
     {
         float posYPrateleira = prateleiraBaixo.RectTransformPrateleira.transform.position.y;
         if (contadorBaixoSprites < sprites.Length && posYPrateleira > posYReferenciaBaixo)
@@ -60,7 +60,7 @@ public class Prateleiras
         return indiceOrdemColetavel <= contadorBaixoSprites;
     }
 
-    public void movimentarParaCima(PrateleirasDto prateleirasDto)
+    public override void movimentarParaCima(PrateleirasDto prateleirasDto)
     {
         float posYPrateleira = prateleiraCima.RectTransformPrateleira.transform.position.y;
         if (contadorCimaSprites > 0 && posYPrateleira < posYReferenciaCima)
