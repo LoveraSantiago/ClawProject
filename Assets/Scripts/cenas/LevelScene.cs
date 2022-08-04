@@ -6,8 +6,7 @@ public class LevelScene : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect;
     [Space(5)]    
     [SerializeField] private LevelsScrollDto levelsScrollDto;
-
-    private float ultimaPosicao;    
+         
     private LevelsScroll levelsScroll;
 
     void Start()

@@ -1419,14 +1419,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 1600028417}
-  qtdItensVisiveis: 5
-  rTransformScroll: {fileID: 1481599767}
-  rItens:
-  - {fileID: 1963792649}
-  - {fileID: 2078935669}
-  - {fileID: 561216928}
-  - {fileID: 2095980027}
-  - {fileID: 714508393}
+  levelsScrollDto:
+    qtdItensVisiveis: 5
+    rTransformRefCima: {fileID: 1963792649}
+    rTransformRefBaixo: {fileID: 714508393}
+    rTransformScroll: {fileID: 1481599767}
+    rItens:
+    - {fileID: 1963792649}
+    - {fileID: 2078935669}
+    - {fileID: 561216928}
+    - {fileID: 2095980027}
+    - {fileID: 714508393}
 --- !u!224 &1963792649 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4144852225125329737, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}
