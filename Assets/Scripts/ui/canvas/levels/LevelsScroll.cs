@@ -7,10 +7,11 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
     private float posYReferenciaBaixo;
     private float posYReferenciaCima;
 
-    private int contadorLevels;
+    private int contadorBaixoLevel;
+    private int contadorCimaLevel;
 
-    private RectTransform itemLevelCima;
-    private RectTransform itemLevelBaixo;
+    private ItemLevelDto itemLevelCima;
+    private ItemLevelDto itemLevelBaixo;
 
     public LevelsScroll(LevelsScrollDto levelsScrollDto)
     {
@@ -19,30 +20,33 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         carregarReferenciasPosicoes(levelsScrollDto);
         popularItensLevels(levelsScrollDto);
 
-        itemLevelCima  = levelsScrollDto.ItensLevelDto[0].RItem;
-        itemLevelBaixo = levelsScrollDto.ItensLevelDto[levelsScrollDto.ItensLevelDto.Length - 1].RItem;
+        itemLevelCima  = levelsScrollDto.ItensLevelDto[0];
+        itemLevelBaixo = levelsScrollDto.ItensLevelDto[levelsScrollDto.ItensLevelDto.Length - 1];
     }
 
     public override void movimentarParaBaixo(LevelsScrollDto levelsScrollDto)
     {
-        float posYItemLevel = itemLevelBaixo.transform.position.y;
-        if(contadorLevels < levels.Length && posYItemLevel > posYReferenciaBaixo)
+        float posYItemLevel = itemLevelBaixo.RItem.transform.position.y;
+        if(contadorBaixoLevel < levels.Length && posYItemLevel > posYReferenciaBaixo)
         {
+            Debug.Log("movimentarParaBaixo ACIONADO");
+            popularItemLevel(itemLevelCima, levels[contadorBaixoLevel]);
             reposicionarLevelItemParaUltimaPosicao(levelsScrollDto);
-            contadorLevels++;
+            contadorBaixoLevel++;
+            contadorCimaLevel++;            
         }
-        Debug.Log("movimentarParaBaixo CHAMADO");
     }
 
     public override void movimentarParaCima(LevelsScrollDto levelsScrollDto)
     {
-        float posYPrateleira = itemLevelCima.transform.position.y;
-        if(contadorLevels > 0 && posYPrateleira < posYReferenciaCima)
+        float posYPrateleira = itemLevelCima.RItem.transform.position.y;
+        if(contadorCimaLevel >= 0 && posYPrateleira < posYReferenciaCima)
         {
+            Debug.Log("movimentarParaCima ACIONADO");
+            popularItemLevel(itemLevelBaixo, levels[--contadorCimaLevel]);
             reposicionarLevelItemParaPrimeiraPosicao(levelsScrollDto);
-            contadorLevels--;            
+            contadorBaixoLevel--;            
         }
-        Debug.Log("movimentarParaCima CHAMADO");
     }
 
     private void carregarLevels()
@@ -61,44 +65,48 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
     private void carregarReferenciasPosicoes(LevelsScrollDto levelsScrollDto)
     {
         posYReferenciaBaixo = levelsScrollDto.RTransformRefBaixo.position.y;
-        posYReferenciaCima = levelsScrollDto.RTransformRefCima.position.y;
+        //posYReferenciaCima = levelsScrollDto.RTransformRefCima.position.y + levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
+        posYReferenciaCima = levelsScrollDto.RTransformRefCima.position.y + levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
     }
 
     private void reposicionarLevelItemParaUltimaPosicao(LevelsScrollDto levelsScrollDto)
     {
-        Vector2 posBaixo = itemLevelBaixo.anchoredPosition;
+        Vector2 posBaixo = itemLevelBaixo.RItem.anchoredPosition;
         float haltura = posBaixo.y - levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
-        itemLevelCima.anchoredPosition = new Vector2(posBaixo.x, haltura);
-        itemLevelCima.gameObject.SetActive(true);
+        itemLevelCima.RItem.anchoredPosition = new Vector2(posBaixo.x, haltura);
+        itemLevelCima.RItem.gameObject.SetActive(true);
 
         itemLevelBaixo = itemLevelCima;
-        int indiceItem = (int.Parse(itemLevelCima.name) + 1) % levelsScrollDto.ItensLevelDto.Length;
-        itemLevelCima = levelsScrollDto.ItensLevelDto[indiceItem].RItem;
+        int indiceItem = (int.Parse(itemLevelCima.RItem.name) + 1) % levelsScrollDto.ItensLevelDto.Length;
+        itemLevelCima = levelsScrollDto.ItensLevelDto[indiceItem];
     }
 
     private void reposicionarLevelItemParaPrimeiraPosicao(LevelsScrollDto levelsScrollDto)
     {
-        Vector2 posCima = itemLevelCima.anchoredPosition;
+        Vector2 posCima = itemLevelCima.RItem.anchoredPosition;
         float haltura = posCima.y + levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
-        itemLevelBaixo.anchoredPosition = new Vector2(posCima.x, haltura);
-        itemLevelBaixo.gameObject.SetActive(true);
+        itemLevelBaixo.RItem.anchoredPosition = new Vector2(posCima.x, haltura);        
 
         itemLevelCima = itemLevelBaixo;
-        int indicePrateleira = ((int.Parse(itemLevelBaixo.name) + levelsScrollDto.ItensLevelDto.Length) - 1) % levelsScrollDto.ItensLevelDto.Length;
-        itemLevelBaixo = levelsScrollDto.ItensLevelDto[indicePrateleira].RItem;
+        int indicePrateleira = ((int.Parse(itemLevelBaixo.RItem.name) + levelsScrollDto.ItensLevelDto.Length) - 1) % levelsScrollDto.ItensLevelDto.Length;
+        itemLevelBaixo = levelsScrollDto.ItensLevelDto[indicePrateleira];
     }
 
     private void popularItensLevels(LevelsScrollDto levelsScrollDto)
     {
-        for(int contadorItensLevels = 1; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
+        for(int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
         {
-            ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];
-            string levelAlias = levels[contadorItensLevels - 1];
-            AbstractLevel level = LevelHelper.getLevelByString(levelAlias);
-            string levelName = level.getLevelName();
-            itemLevelDtoIt.LblLevel.text = levelName;
-            contadorLevels++;
-            Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
+            popularItemLevel(levelsScrollDto.ItensLevelDto[contadorItensLevels], levels[contadorItensLevels]);
+            contadorBaixoLevel++;
         }
+    }
+
+    private void popularItemLevel(ItemLevelDto itemLevelDtoIt, string levelAlias)
+    {   
+        AbstractLevel level = LevelHelper.getLevelByString(levelAlias);
+        string levelName = level.getLevelName();
+        itemLevelDtoIt.LblLevel.text = levelName;
+
+        Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
     }
 }
