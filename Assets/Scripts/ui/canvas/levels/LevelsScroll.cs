@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
@@ -19,9 +17,10 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         carregarLevels();
         calcularTamanhoScroll(levelsScrollDto);
         carregarReferenciasPosicoes(levelsScrollDto);
+        popularItensLevels(levelsScrollDto);
 
-        itemLevelCima  = levelsScrollDto.RItens[0];
-        itemLevelBaixo = levelsScrollDto.RItens[levelsScrollDto.RItens.Length - 1];
+        itemLevelCima  = levelsScrollDto.ItensLevelDto[0].RItem;
+        itemLevelBaixo = levelsScrollDto.ItensLevelDto[levelsScrollDto.ItensLevelDto.Length - 1].RItem;
     }
 
     public override void movimentarParaBaixo(LevelsScrollDto levelsScrollDto)
@@ -55,7 +54,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
     private void calcularTamanhoScroll(LevelsScrollDto levelsScrollDto)
     {
         float qtdItens = levels.Length - levelsScrollDto.QtdItensVisiveis;
-        float yAcrescimo = qtdItens * levelsScrollDto.RItens[0].rect.height;
+        float yAcrescimo = qtdItens * levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
         levelsScrollDto.RTransformScroll.offsetMin += new Vector2(0, -yAcrescimo);
     }
 
@@ -68,24 +67,35 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
     private void reposicionarLevelItemParaUltimaPosicao(LevelsScrollDto levelsScrollDto)
     {
         Vector2 posBaixo = itemLevelBaixo.anchoredPosition;
-        float haltura = posBaixo.y - levelsScrollDto.RItens[0].rect.height;
+        float haltura = posBaixo.y - levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
         itemLevelCima.anchoredPosition = new Vector2(posBaixo.x, haltura);
         itemLevelCima.gameObject.SetActive(true);
 
         itemLevelBaixo = itemLevelCima;
-        int indiceItem = (int.Parse(itemLevelCima.name) + 1) % levelsScrollDto.RItens.Length;
-        itemLevelCima = levelsScrollDto.RItens[indiceItem];
+        int indiceItem = (int.Parse(itemLevelCima.name) + 1) % levelsScrollDto.ItensLevelDto.Length;
+        itemLevelCima = levelsScrollDto.ItensLevelDto[indiceItem].RItem;
     }
 
     private void reposicionarLevelItemParaPrimeiraPosicao(LevelsScrollDto levelsScrollDto)
     {
         Vector2 posCima = itemLevelCima.anchoredPosition;
-        float haltura = posCima.y + levelsScrollDto.RItens[0].rect.height;
+        float haltura = posCima.y + levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
         itemLevelBaixo.anchoredPosition = new Vector2(posCima.x, haltura);
         itemLevelBaixo.gameObject.SetActive(true);
 
         itemLevelCima = itemLevelBaixo;
-        int indicePrateleira = ((int.Parse(itemLevelBaixo.name) + levelsScrollDto.RItens.Length) - 1) % levelsScrollDto.RItens.Length;
-        itemLevelBaixo = levelsScrollDto.RItens[indicePrateleira];
+        int indicePrateleira = ((int.Parse(itemLevelBaixo.name) + levelsScrollDto.ItensLevelDto.Length) - 1) % levelsScrollDto.ItensLevelDto.Length;
+        itemLevelBaixo = levelsScrollDto.ItensLevelDto[indicePrateleira].RItem;
+    }
+
+    private void popularItensLevels(LevelsScrollDto levelsScrollDto)
+    {
+        for(int contadorItensLevels = 1; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
+        {
+            ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];
+            AbstractLevel level = LevelHelper.getLevelByString(levels[contadorItensLevels - 1]);
+            itemLevelDtoIt.LblLevel.text = level.getLevelName();
+            contadorLevels++;
+        }
     }
 }

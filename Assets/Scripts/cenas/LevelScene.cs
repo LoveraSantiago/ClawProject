@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+#pragma warning disable 0649
 public class LevelScene : MonoBehaviour
 {
     [SerializeField] private ScrollRect scrollRect;

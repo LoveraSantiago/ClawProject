@@ -10,12 +10,13 @@ public class LevelsScrollDto
     [SerializeField] private RectTransform rTransformRefBaixo;
     [Space(3)]
     [SerializeField] private RectTransform rTransformScroll;
-    [Space(3)]
-    [SerializeField] private RectTransform[] rItens;
+    [Space(3)]    
+    [SerializeField] private ItemLevelDto[] itensLevelDto;
 
     public int QtdItensVisiveis { get { return qtdItensVisiveis; } }
     public RectTransform RTransformRefCima { get { return rTransformRefCima; } }
     public RectTransform RTransformRefBaixo { get { return rTransformRefBaixo; } }
-    public RectTransform[] RItens { get { return rItens; } }
+    
     public RectTransform RTransformScroll { get { return rTransformScroll; } }
+    public ItemLevelDto[] ItensLevelDto { get { return itensLevelDto; } }
 }
