@@ -4,8 +4,13 @@ public abstract class AbstractLevel
 {
     public static readonly string TIMER_ZERO = "00:00";
 
-    public abstract string getLevelName();
+    public abstract string getLevelTitle();
 
+    public virtual string getLevelName()
+    {
+        return getLevelTitle();
+    }
+    
     public abstract string getMsgObjetivoLevel();    
 
     public abstract bool devolverParaBoard();

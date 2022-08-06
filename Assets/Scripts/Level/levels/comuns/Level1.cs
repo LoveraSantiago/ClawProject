@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Level1 : AbstractLevel
 {
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Nível 1";
     }

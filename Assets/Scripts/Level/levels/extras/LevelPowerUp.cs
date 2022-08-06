@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class LevelPowerUp : AbstractLevel
 {
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Treino de Power Up";
     }

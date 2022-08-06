@@ -4,7 +4,7 @@ public abstract class AbstractLevelColetavel : AbstractLevel
 {
     public abstract int getIdColetavel();
 
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Coletavel Level";
     }

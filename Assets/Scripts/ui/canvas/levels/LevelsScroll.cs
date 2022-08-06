@@ -30,8 +30,8 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         {
             reposicionarLevelItemParaUltimaPosicao(levelsScrollDto);
             contadorLevels++;
-            //Debug.Log("Contador de levels " + contadorLevels);
         }
+        Debug.Log("movimentarParaBaixo CHAMADO");
     }
 
     public override void movimentarParaCima(LevelsScrollDto levelsScrollDto)
@@ -40,9 +40,9 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         if(contadorLevels > 0 && posYPrateleira < posYReferenciaCima)
         {
             reposicionarLevelItemParaPrimeiraPosicao(levelsScrollDto);
-            contadorLevels--;
-            //Debug.Log("Contador de levels " + contadorLevels);
+            contadorLevels--;            
         }
+        Debug.Log("movimentarParaCima CHAMADO");
     }
 
     private void carregarLevels()
@@ -93,9 +93,12 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         for(int contadorItensLevels = 1; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
         {
             ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];
-            AbstractLevel level = LevelHelper.getLevelByString(levels[contadorItensLevels - 1]);
-            itemLevelDtoIt.LblLevel.text = level.getLevelName();
+            string levelAlias = levels[contadorItensLevels - 1];
+            AbstractLevel level = LevelHelper.getLevelByString(levelAlias);
+            string levelName = level.getLevelName();
+            itemLevelDtoIt.LblLevel.text = levelName;
             contadorLevels++;
+            Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
         }
     }
 }

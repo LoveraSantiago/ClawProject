@@ -1,6 +1,6 @@
 public abstract class AbstractLevelOvo : AbstractLevel
 {
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Momorizacao Level";
     }

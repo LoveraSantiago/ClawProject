@@ -1257,7 +1257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4144852225125329737, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3200
+      value: -3800
       objectReference: {fileID: 0}
     - target: {fileID: 4144852225125329737, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1579,7 +1579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 1600028417}
   levelsScrollDto:
-    qtdItensVisiveis: 5
+    qtdItensVisiveis: 4
     rTransformRefCima: {fileID: 2078935669}
     rTransformRefBaixo: {fileID: 2131974978}
     rTransformScroll: {fileID: 1481599767}
@@ -1879,7 +1879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4144852225125329736, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4144852225125329737, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}
       propertyPath: m_Pivot.x

@@ -1,6 +1,6 @@
 public class LevelCacaNiquelPowerUpGeral : AbstractLevelCacaNiquel
 {
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Caça Niquel Pup Geral";
     }

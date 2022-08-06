@@ -3,9 +3,9 @@ using System.Collections.Generic;
 public class Level7 : AbstractLevel
 {
     //COPIADO DO LEVEL 1 SO PRA TER CLASSE P COLOCAR COR NA MAQUINA
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
-        return "Nível 1";
+        return "Nível 7";
     }
 
     public override string getMsgObjetivoLevel()

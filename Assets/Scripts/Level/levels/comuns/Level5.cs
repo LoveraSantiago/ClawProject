@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class Level5 : AbstractLevelObstaculos
 {
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Nível 5";
     }
