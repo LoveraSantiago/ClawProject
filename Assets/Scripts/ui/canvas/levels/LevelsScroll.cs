@@ -64,10 +64,10 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
 
     private void carregarReferenciasPosicoes(LevelsScrollDto levelsScrollDto)
     {
-        posYReferenciaBaixo = levelsScrollDto.RTransformRefBaixo.position.y;
-        posYReferenciaCima = levelsScrollDto.RTransformRefCima.position.y + levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
-        //posYReferenciaCima = levelsScrollDto.RTransformRefCima.position.y;
-        Debug.Log("posYReferenciaBaixo " + posYReferenciaBaixo + " posYReferenciaCima " + posYReferenciaCima);
+        posYReferenciaBaixo = levelsScrollDto.RTransformRefBaixo.position.y;        
+        float yDiferenca = (levelsScrollDto.ItensLevelDto[0].RItem.position.y - levelsScrollDto.ItensLevelDto[1].RItem.position.y);
+        posYReferenciaCima = levelsScrollDto.RTransformRefCima.position.y + yDiferenca;        
+        //Debug.Log("posYReferenciaBaixo " + posYReferenciaBaixo + " posYReferenciaCima " + posYReferenciaCima);
     }
 
     private void reposicionarLevelItemParaUltimaPosicao(LevelsScrollDto levelsScrollDto)
