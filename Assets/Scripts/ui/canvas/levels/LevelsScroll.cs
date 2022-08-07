@@ -29,23 +29,23 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         float posYItemLevel = itemLevelBaixo.RItem.transform.position.y;
         if(contadorBaixoLevel < levels.Length && posYItemLevel > posYReferenciaBaixo)
         {
-            Debug.Log("movimentarParaBaixo ACIONADO");
             popularItemLevel(itemLevelCima, levels[contadorBaixoLevel]);
             reposicionarLevelItemParaUltimaPosicao(levelsScrollDto);
             contadorBaixoLevel++;
             contadorCimaLevel++;            
+            //Debug.Log("movimentarParaBaixo ACIONADO contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
         }
     }
 
     public override void movimentarParaCima(LevelsScrollDto levelsScrollDto)
     {
         float posYPrateleira = itemLevelCima.RItem.transform.position.y;
-        if(contadorCimaLevel >= 0 && posYPrateleira < posYReferenciaCima)
+        if(contadorCimaLevel > 0 && posYPrateleira < posYReferenciaCima)
         {
-            Debug.Log("movimentarParaCima ACIONADO");
             popularItemLevel(itemLevelBaixo, levels[--contadorCimaLevel]);
             reposicionarLevelItemParaPrimeiraPosicao(levelsScrollDto);
             contadorBaixoLevel--;            
+            //Debug.Log("movimentarParaCima ACIONADO contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
         }
     }
 
@@ -65,8 +65,9 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
     private void carregarReferenciasPosicoes(LevelsScrollDto levelsScrollDto)
     {
         posYReferenciaBaixo = levelsScrollDto.RTransformRefBaixo.position.y;
-        //posYReferenciaCima = levelsScrollDto.RTransformRefCima.position.y + levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
         posYReferenciaCima = levelsScrollDto.RTransformRefCima.position.y + levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
+        //posYReferenciaCima = levelsScrollDto.RTransformRefCima.position.y;
+        Debug.Log("posYReferenciaBaixo " + posYReferenciaBaixo + " posYReferenciaCima " + posYReferenciaCima);
     }
 
     private void reposicionarLevelItemParaUltimaPosicao(LevelsScrollDto levelsScrollDto)
@@ -96,9 +97,10 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
     {
         for(int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
         {
-            popularItemLevel(levelsScrollDto.ItensLevelDto[contadorItensLevels], levels[contadorItensLevels]);
+            popularItemLevel(levelsScrollDto.ItensLevelDto[contadorItensLevels], levels[contadorItensLevels]);            
             contadorBaixoLevel++;
         }
+        //Debug.Log("Populado contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
     }
 
     private void popularItemLevel(ItemLevelDto itemLevelDtoIt, string levelAlias)
@@ -107,6 +109,6 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         string levelName = level.getLevelName();
         itemLevelDtoIt.LblLevel.text = levelName;
 
-        Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
+        //Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
     }
 }
