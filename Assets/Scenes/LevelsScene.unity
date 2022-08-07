@@ -1579,8 +1579,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 1600028417}
   levelsScrollDto:
-    qtdItensVisiveis: 5
-    rTransformRefCima: {fileID: 561216928}
+    qtdItensVisiveis: 4
+    rTransformRefCima: {fileID: 2078935669}
     rTransformRefBaixo: {fileID: 2131974978}
     rTransformScroll: {fileID: 1481599767}
     itensLevelDto:
