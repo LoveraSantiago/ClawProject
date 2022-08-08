@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: baa98f0005e378149a8e6e40e9659a38
+guid: ea3f1b2e788b91641a58c31c039e390f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet-joystick-esc1_0
+      name: spritesheet-joystick-esc1V2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9e31e0854d222e419153fc6eca3010f
-      internalID: 1521695159
+      spriteID: b64554f7d1f5e2943b3899c9d2ff2f43
+      internalID: 1750908680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-joystick-esc1_1
+      name: spritesheet-joystick-esc1V2_1
       rect:
         serializedVersion: 2
         x: 448
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f4f34ffce4ad2441a14a04ad5ae183c
-      internalID: -829317284
+      spriteID: d4bfca993bfc9c24ba96c31dc3060e9c
+      internalID: -2108799783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-joystick-esc1_2
+      name: spritesheet-joystick-esc1V2_2
       rect:
         serializedVersion: 2
         x: 896
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fef51cac43aaf24a9fa332b716bd189
-      internalID: -145134288
+      spriteID: 5e5409b83ffd2dc4abfac5229f6fe6e1
+      internalID: 1642295593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-joystick-esc1_3
+      name: spritesheet-joystick-esc1V2_3
       rect:
         serializedVersion: 2
         x: 1344
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c05d2faf232c7e44be2044bb99e1f9a
-      internalID: 310111280
+      spriteID: 4a3c4d26d62d1ac46a90edd0fa1a465b
+      internalID: -727780920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-joystick-esc1_4
+      name: spritesheet-joystick-esc1V2_4
       rect:
         serializedVersion: 2
         x: 1792
@@ -214,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 061dcb695173c764ba95cbb65a053575
-      internalID: 1195707191
+      spriteID: 6062237723cc19b40990b8a73d434968
+      internalID: 139929599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-joystick-esc1_5
+      name: spritesheet-joystick-esc1V2_5
       rect:
         serializedVersion: 2
         x: 2240
@@ -235,14 +235,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0beb40220b9e76949b308250db5a78e0
-      internalID: 1382192792
+      spriteID: 1b2102c78cfd86f41a006dd6260c40c1
+      internalID: 1700309938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-joystick-esc1_6
+      name: spritesheet-joystick-esc1V2_6
       rect:
         serializedVersion: 2
         x: 2688
@@ -256,14 +256,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a81f05a7fd36024c971c7bd5aba3259
-      internalID: -1848777461
+      spriteID: 972210ee27a5d2746abb119607239db4
+      internalID: -1115816295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-joystick-esc1_7
+      name: spritesheet-joystick-esc1V2_7
       rect:
         serializedVersion: 2
         x: 3136
@@ -277,14 +277,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 239b2080fcaf7bd478b655068244bbf8
-      internalID: 878519270
+      spriteID: 9b3b8ce2359c6fd49af4d8e05825fa89
+      internalID: -1409602130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-joystick-esc1_8
+      name: spritesheet-joystick-esc1V2_8
       rect:
         serializedVersion: 2
         x: 3584
@@ -298,8 +298,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d60c9cb4a8356da409016c40fbcac723
-      internalID: -1627469708
+      spriteID: 88f507bcae4586149bc388aebe4723af
+      internalID: -159761364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-joystick-esc1V2_9
+      rect:
+        serializedVersion: 2
+        x: 4032
+        y: 0
+        width: 448
+        height: 704
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3006e222a97bb8f4caf8eb7a0719b15e
+      internalID: -823872191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-joystick-esc1V2_10
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 0
+        width: 448
+        height: 704
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6857e8fb33bbd514da2b3908fe7660e8
+      internalID: 1811975307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-joystick-esc1V2_11
+      rect:
+        serializedVersion: 2
+        x: 4928
+        y: 0
+        width: 448
+        height: 704
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e8a830001918341a9e6e0fae93164c
+      internalID: 1121686240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-joystick-esc1V2_12
+      rect:
+        serializedVersion: 2
+        x: 5376
+        y: 0
+        width: 448
+        height: 704
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76494a03b2891294ba97cbb113d0b25c
+      internalID: -2060022514
       vertices: []
       indices: 
       edges: []
@@ -315,15 +399,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spritesheet-joystick-esc1_8: -1627469708
-      spritesheet-joystick-esc1_1: -829317284
-      spritesheet-joystick-esc1_5: 1382192792
-      spritesheet-joystick-esc1_2: -145134288
-      spritesheet-joystick-esc1_4: 1195707191
-      spritesheet-joystick-esc1_6: -1848777461
-      spritesheet-joystick-esc1_3: 310111280
-      spritesheet-joystick-esc1_0: 1521695159
-      spritesheet-joystick-esc1_7: 878519270
+      spritesheet-joystick-esc1V2_8: -159761364
+      spritesheet-joystick-esc1V2_5: 1700309938
+      spritesheet-joystick-esc1V2_0: 1750908680
+      spritesheet-joystick-esc1V2_10: 1811975307
+      spritesheet-joystick-esc1V2_3: -727780920
+      spritesheet-joystick-esc1V2_12: -2060022514
+      spritesheet-joystick-esc1V2_9: -823872191
+      spritesheet-joystick-esc1V2_2: 1642295593
+      spritesheet-joystick-esc1V2_11: 1121686240
+      spritesheet-joystick-esc1V2_6: -1115816295
+      spritesheet-joystick-esc1V2_7: -1409602130
+      spritesheet-joystick-esc1V2_1: -2108799783
+      spritesheet-joystick-esc1V2_4: 139929599
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
