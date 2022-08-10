@@ -1474,7 +1474,7 @@
         "m_SerializableColors": []
     },
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"c77813a969665974392a5cb348493b08\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"7032e3c7492a12743bded2c0b7f3af3f\",\"type\":3}}",
         "m_Guid": ""
     }
 }
@@ -2433,7 +2433,7 @@
         "m_SerializableColors": []
     },
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"974df6ee164ea2b4ca4f6e61e39ef2a4\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"b9a6c9f0f78f3a3438c44d33f2411cda\",\"type\":3}}",
         "m_Guid": ""
     }
 }
@@ -2748,7 +2748,7 @@
     "m_SourceType": 1,
     "m_FunctionName": "filtrarSeno",
     "m_FunctionSource": "",
-    "m_FunctionBody": "senoFiltrado=(abs(seno))*13;\nsenoFiltrado=senoFiltrado>12?12:senoFiltrado;\nif(seno>0)\n{\n\ttillingX = 1;\t\n\toffsetX = 0;\n}\nelse\n{\n\ttillingX = -1;\t\t\n\toffsetX = 1;\n}"
+    "m_FunctionBody": "senoFiltrado=(abs(seno))*12.5f;\nsenoFiltrado=senoFiltrado>12?12:senoFiltrado;\nif(seno>0)\n{\n\ttillingX = 1;\t\n\toffsetX = 0;\n}\nelse\n{\n\ttillingX = -1;\t\t\n\toffsetX = 1;\n}"
 }
 
 {
@@ -3343,7 +3343,7 @@
         "m_SerializableColors": []
     },
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"ea3f1b2e788b91641a58c31c039e390f\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"256cee104673302429ecb86bb5f1ce51\",\"type\":3}}",
         "m_Guid": ""
     }
 }
