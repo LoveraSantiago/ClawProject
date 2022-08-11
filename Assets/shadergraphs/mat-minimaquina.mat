@@ -78,4 +78,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _corExterno: {r: 1, g: 0, b: 0, a: 0}
+    - _corFundo: {r: 0.4745098, g: 1, b: 0, a: 0}
+    - _corJoystick: {r: 1, g: 0.9882353, b: 0, a: 0}
   m_BuildTextureStacks: []

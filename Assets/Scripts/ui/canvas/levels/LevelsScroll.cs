@@ -130,6 +130,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         itemLevelDtoIt.LblMap.text     = level.getNameMap();
         itemLevelDtoIt.LblMaquina.text = level.getMaquinaNome();
 
+        MaterialMiniMaquina.addCores(materialMaquinas[indiceMaterialMaquina], level.getDicionarioDeCores());
         //Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
     }
 }
