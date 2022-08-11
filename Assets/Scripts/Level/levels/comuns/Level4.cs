@@ -141,10 +141,10 @@ public class Level4 : AbstractLevelOrdem
         return true;
     }
 
-    //public override bool isLevelAlbedo0Timer2Pontos()
-    //{
-    //    return false;
-    //}
+    public override string getNomeMapa()
+    {
+        return LevelMapNomes.PARQUE_DIVERSOES;
+    }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
     {

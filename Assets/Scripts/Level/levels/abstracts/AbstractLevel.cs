@@ -32,6 +32,11 @@ public abstract class AbstractLevel
 
     public abstract Dictionary<string, string> getDicionarioDeCores();
 
+    public virtual string getNomeMapa()
+    {
+        return "";
+    }
+
     public abstract bool isLevelAlbedo0();
 
     public virtual bool isLevelAlbedo0Scores()

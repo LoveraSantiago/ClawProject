@@ -89,7 +89,12 @@ public class Level6 : AbstractLevelOvo
     public override bool isLevelAlbedo0()
     {
         return false;
-    }   
+    }
+
+    public override string getNomeMapa()
+    {
+        return LevelMapNomes.PARQUE_DIVERSOES;
+    }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
     {

@@ -41,6 +41,11 @@ public class Level2 : AbstractLevel
         return false;
     }
 
+    public override string getNomeMapa()
+    {
+        return LevelMapNomes.PARQUE_DIVERSOES;
+    }
+
     public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
     {
         return ColetavelEntidade.FAMILIA.FRUTAS;

@@ -118,6 +118,11 @@ public class Level7 : AbstractLevel
         return false;
     }
 
+    public override string getNomeMapa()
+    {
+        return LevelMapNomes.PARQUE_DIVERSOES;
+    }
+
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorLevel7();

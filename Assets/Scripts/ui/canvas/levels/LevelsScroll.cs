@@ -108,6 +108,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         AbstractLevel level = LevelHelper.getLevelByString(levelAlias);
         string levelName = level.getLevelName();
         itemLevelDtoIt.LblLevel.text = levelName;
+        itemLevelDtoIt.LblMap.text = level.getNameMap();
 
         //Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
     }

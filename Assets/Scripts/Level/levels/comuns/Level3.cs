@@ -108,6 +108,11 @@ public class Level3 : AbstractLevelElevador
         return false;
     }
 
+    public override string getNomeMapa()
+    {
+        return LevelMapNomes.PARQUE_DIVERSOES;
+    }
+
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorLevel3();
