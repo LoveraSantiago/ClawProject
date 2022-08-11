@@ -69,6 +69,11 @@ public class Level1 : AbstractLevel
 
     }
 
+    public override string getMaquinaNome()
+    {
+        return "Chiclete e Embalagem";
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

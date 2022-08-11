@@ -54,6 +54,11 @@ public class Level3 : AbstractLevelElevador
         //return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:10");        
     }
 
+    public override string getMaquinaNome()
+    {
+        return "Brilhante Fresco";
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         //01.Fresh & Bright
@@ -111,7 +116,7 @@ public class Level3 : AbstractLevelElevador
     public override string getNomeMapa()
     {
         return LevelMapNomes.PARQUE_DIVERSOES;
-    }
+    }    
 
     public static Fornecedor<AbstractLevel> getFornecedor()
     {

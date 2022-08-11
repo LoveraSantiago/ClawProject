@@ -20,7 +20,12 @@ public class LevelMaca : AbstractLevelColetavel
     public override int getIdColetavel()
     {
         return 11;
-    }   
+    }
+
+    public override string getMaquinaNome()
+    {
+        return "Bonita Refrescante";
+    }
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {

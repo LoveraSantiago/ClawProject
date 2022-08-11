@@ -64,6 +64,11 @@ public class Level8 : AbstractLevel
 
     }
 
+    public override string getMaquinaNome()
+    {
+        return "Azuis Legais";
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         //05. Cool Blues

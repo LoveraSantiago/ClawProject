@@ -47,6 +47,11 @@ public class LevelPowerUp : AbstractLevel
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
 
+    public override string getMaquinaNome()
+    {
+        return "Agua Azul Esverdeada";
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         //07. Watery Blue-Greens

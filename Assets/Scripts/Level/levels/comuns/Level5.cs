@@ -60,6 +60,11 @@ public class Level5 : AbstractLevelObstaculos
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
 
+    public override string getMaquinaNome()
+    {
+        return "Terrosa Escura";
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         //03. Dark & Earthy

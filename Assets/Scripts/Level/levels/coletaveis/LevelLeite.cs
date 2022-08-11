@@ -22,6 +22,11 @@ public class LevelLeite : AbstractLevelColetavel
         return 10;
     }
 
+    public override string getMaquinaNome()
+    {
+        return "Azul e Verdes Brincantes";
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         //10. Playful Greens & Blues

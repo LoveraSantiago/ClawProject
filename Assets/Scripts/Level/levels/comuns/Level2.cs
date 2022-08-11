@@ -54,7 +54,12 @@ public class Level2 : AbstractLevel
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.REGRESSIVA, "02:01");
-    }   
+    }
+
+    public override string getMaquinaNome()
+    {
+        return "Chiclete e Embalagem";
+    }
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {   

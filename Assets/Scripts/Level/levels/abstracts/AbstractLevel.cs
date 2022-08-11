@@ -32,6 +32,8 @@ public abstract class AbstractLevel
 
     public abstract Dictionary<string, string> getDicionarioDeCores();
 
+    public abstract string getMaquinaNome();
+
     public virtual string getNomeMapa()
     {
         return "";

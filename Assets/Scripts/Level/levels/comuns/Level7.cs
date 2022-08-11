@@ -64,6 +64,11 @@ public class Level7 : AbstractLevel
 
     }
 
+    public override string getMaquinaNome()
+    {
+        return "Ar fresco Natural";
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         //06. Outdoorsy & Natural

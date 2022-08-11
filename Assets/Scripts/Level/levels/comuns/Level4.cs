@@ -87,6 +87,11 @@ public class Level4 : AbstractLevelOrdem
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
 
+    public override string getMaquinaNome()
+    {
+        return "Moderada Profissional";
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         //02. Subdued & Professional
@@ -145,7 +150,7 @@ public class Level4 : AbstractLevelOrdem
     {
         return LevelMapNomes.PARQUE_DIVERSOES;
     }
-
+    
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorLevel4();

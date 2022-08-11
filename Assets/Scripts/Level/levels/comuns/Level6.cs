@@ -37,6 +37,11 @@ public class Level6 : AbstractLevelOvo
         };
     }
 
+    public override string getMaquinaNome()
+    {
+        return "Dramatica Crocante";
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         //04. Crisp & Dramatic

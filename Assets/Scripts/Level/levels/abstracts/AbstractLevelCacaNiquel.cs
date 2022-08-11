@@ -39,6 +39,11 @@ public abstract class AbstractLevelCacaNiquel : AbstractLevel
         return false;
     }
 
+    public override string getMaquinaNome()
+    {
+        return "Chiclete e Embalagem";
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
