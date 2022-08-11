@@ -11,5 +11,6 @@ public class MateriaisUtils
         MaterialTeleporte.configurar(prefabDeMateriais.MaterialTroca);
         MaterialHdr.configurar(prefabDeMateriais.MaterialHdrAditivo, prefabDeMateriais.MaterialHdrAlpha);
         MaterialSprUnlitDefault.configurar(prefabDeMateriais.MaterialSprUnlitDefault);
+        MaterialMiniMaquina.configurar(prefabDeMateriais.MaterialMaquina);
     }    
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
 {
     private string[] levels;
+    private Material[] materialMaquinas;
 
     private float posYReferenciaBaixo;
     private float posYReferenciaCima;
@@ -16,6 +17,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
     public LevelsScroll(LevelsScrollDto levelsScrollDto)
     {
         carregarLevels();
+        carregarMateriais(levelsScrollDto);
         calcularTamanhoScroll(levelsScrollDto);
         carregarReferenciasPosicoes(levelsScrollDto);
         popularItensLevels(levelsScrollDto);
@@ -53,6 +55,16 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
     {
         levels = LevelHelper.getAllLevelsMapsAlias();
         Debug.Log("QTD LEVELS " + levels.Length);
+    }
+
+    private void carregarMateriais(LevelsScrollDto levelsScrollDto)
+    {
+        int qtdItens = levelsScrollDto.ItensLevelDto.Length;
+        materialMaquinas = new Material[qtdItens];
+        for(int contador = 0; contador < qtdItens; contador++)
+        {
+            materialMaquinas[contador] = MaterialMiniMaquina.getNewMaterial();
+        }
     }
 
     private void calcularTamanhoScroll(LevelsScrollDto levelsScrollDto)
@@ -97,18 +109,25 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
     {
         for(int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
         {
-            popularItemLevel(levelsScrollDto.ItensLevelDto[contadorItensLevels], levels[contadorItensLevels]);            
+            ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];            
+            itemLevelDtoIt.ImgMaquina.material = materialMaquinas[contadorItensLevels];
+            popularItemLevel(contadorItensLevels, itemLevelDtoIt, levels[contadorItensLevels]);            
             contadorBaixoLevel++;
         }
         //Debug.Log("Populado contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
     }
 
     private void popularItemLevel(ItemLevelDto itemLevelDtoIt, string levelAlias)
+    {
+        popularItemLevel(int.Parse(itemLevelDtoIt.RItem.name), itemLevelDtoIt, levelAlias);
+    }
+
+    private void popularItemLevel(int indiceMaterialMaquina, ItemLevelDto itemLevelDtoIt, string levelAlias)
     {   
         AbstractLevel level = LevelHelper.getLevelByString(levelAlias);
-        string levelName = level.getLevelName();
-        itemLevelDtoIt.LblLevel.text = levelName;
-        itemLevelDtoIt.LblMap.text = level.getNameMap();
+        string levelName               = level.getLevelName();
+        itemLevelDtoIt.LblLevel.text   = levelName;
+        itemLevelDtoIt.LblMap.text     = level.getNameMap();
         itemLevelDtoIt.LblMaquina.text = level.getMaquinaNome();
 
         //Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);

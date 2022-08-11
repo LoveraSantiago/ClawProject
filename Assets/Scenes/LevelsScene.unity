@@ -859,6 +859,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1481599767}
     m_Modifications:
+    - target: {fileID: 4144852223566241911, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144852224185314523, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4144852225125329736, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}
       propertyPath: m_Name
       value: 0
@@ -1706,33 +1714,41 @@ MonoBehaviour:
     rTransformScroll: {fileID: 1481599767}
     itensLevelDto:
     - rItem: {fileID: 2078935669}
+      imgMaquina: {fileID: 0}
       lblLevel: {fileID: 1023398955}
       lblMap: {fileID: 2017319853}
       lblMaquina: {fileID: 39318933}
     - rItem: {fileID: 561216928}
+      imgMaquina: {fileID: 0}
       lblLevel: {fileID: 857747207}
       lblMap: {fileID: 1446936480}
       lblMaquina: {fileID: 2094092905}
     - rItem: {fileID: 2095980027}
+      imgMaquina: {fileID: 0}
       lblLevel: {fileID: 154208199}
       lblMap: {fileID: 1197603972}
       lblMaquina: {fileID: 901862509}
     - rItem: {fileID: 714508393}
+      imgMaquina: {fileID: 0}
       lblLevel: {fileID: 115989665}
       lblMap: {fileID: 244180974}
       lblMaquina: {fileID: 686156698}
     - rItem: {fileID: 2131974978}
+      imgMaquina: {fileID: 0}
       lblLevel: {fileID: 2131974979}
       lblMap: {fileID: 292881503}
       lblMaquina: {fileID: 698516251}
     - rItem: {fileID: 1576097994}
+      imgMaquina: {fileID: 0}
       lblLevel: {fileID: 1576097995}
       lblMap: {fileID: 452074992}
       lblMaquina: {fileID: 1398443480}
     - rItem: {fileID: 1988281363}
+      imgMaquina: {fileID: 0}
       lblLevel: {fileID: 1988281362}
       lblMap: {fileID: 1911783722}
       lblMaquina: {fileID: 602398533}
+  prefabMateriais: {fileID: 0}
 --- !u!114 &1911783722 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4144852224983348773, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}
