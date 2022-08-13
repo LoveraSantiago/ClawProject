@@ -20,5 +20,6 @@ public class MaterialMiniMaquina
         material.SetColor("_corExterno", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.PLACA_FRENTE]));
         material.SetColor("_corFundo", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.BASE_CHAO]));
         material.SetColor("_corJoystick", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA]));
+        material.SetColor("_corSetas", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS]));
     }
 }
