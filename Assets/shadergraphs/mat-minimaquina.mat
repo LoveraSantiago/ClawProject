@@ -47,11 +47,31 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_778e2cb13f8d4962986f94ffaf303faa_Out_0:
+        m_Texture: {fileID: 2800000, guid: d5e205598221ae44fbb95ea46d073392, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_7b2acd18a8a94781bdc032df92e37f3b_Out_0:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_86be1a1a5d924ff983cc0cd8b0573574_Out_0:
+        m_Texture: {fileID: 2800000, guid: 256cee104673302429ecb86bb5f1ce51, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_8c54de3622d645a0a673b176beb3c6cf_Out_0:
+        m_Texture: {fileID: 2800000, guid: 70217412a00039140bd526c2182bb0bd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_90c18b6b8c4c4f4692ef70f434897260_Out_0:
+        m_Texture: {fileID: 2800000, guid: ad7ead7571e29264696127f3282823c6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_99a3205b6cde4965b095505633138338_Out_0:
+        m_Texture: {fileID: 2800000, guid: 7032e3c7492a12743bded2c0b7f3af3f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_ab9ceb5039254f4281348cea965a708c_Out_0:
         m_Texture: {fileID: 2800000, guid: 7032e3c7492a12743bded2c0b7f3af3f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -69,6 +89,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_edd698f6fea447c582b823476cbe70c0_Out_0:
         m_Texture: {fileID: 2800000, guid: 256cee104673302429ecb86bb5f1ce51, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_ee86d95812d74c68815775b7a0ec1d78_Out_0:
+        m_Texture: {fileID: 2800000, guid: b9a6c9f0f78f3a3438c44d33f2411cda, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_ef44b4b853f1404ba6fa8699b868ad1c_Out_0:
@@ -94,6 +118,8 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _corBackgroundCards: {r: 1, g: 0, b: 0.827451, a: 0}
+    - _corCards: {r: 0, g: 1, b: 0.7529412, a: 0}
     - _corExterno: {r: 1, g: 0, b: 0, a: 0}
     - _corFundo: {r: 0.4745098, g: 1, b: 0, a: 0}
     - _corJoystick: {r: 1, g: 0.9882353, b: 0, a: 0}
