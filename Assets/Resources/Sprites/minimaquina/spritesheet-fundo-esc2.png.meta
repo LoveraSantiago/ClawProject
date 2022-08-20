@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 168d005e0b191014a853a5bbb023f1eb
+guid: 6de16d1904b9ff84e9738e1d22085084
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -49,7 +49,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -112,11 +112,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_0
+      name: spritesheet-fundo-esc2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dca0246e498eaba44b578eb8d366c02c
-      internalID: -456636364
+      spriteID: 96f86c54d01ea104aa8d8bc95fbdb90b
+      internalID: -785560865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_1
+      name: spritesheet-fundo-esc2_1
       rect:
         serializedVersion: 2
         x: 224
@@ -151,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b394d2393fb4af14188ba7090f378c26
-      internalID: -2079801207
+      spriteID: b8ee98d0461c67c499dfe6db2a39fcb7
+      internalID: -1307845156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_2
+      name: spritesheet-fundo-esc2_2
       rect:
         serializedVersion: 2
         x: 448
@@ -172,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c2c23d25f84d6341b027c09ca0e55e6
-      internalID: 1486589235
+      spriteID: c61fa7f3f85625b4cad5a65abf2f0155
+      internalID: -1085488060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_3
+      name: spritesheet-fundo-esc2_3
       rect:
         serializedVersion: 2
         x: 672
@@ -193,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db534503757c0704886aae6904151c89
-      internalID: 557239078
+      spriteID: 72db2f184be6b35499fd6da8cefc68ab
+      internalID: 1705627198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_4
+      name: spritesheet-fundo-esc2_4
       rect:
         serializedVersion: 2
         x: 896
@@ -214,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fedbcb50d3db9fa4c8424b9e46a804a6
-      internalID: 550931302
+      spriteID: 58c243158f720ed4f9e6758ad7f15fa8
+      internalID: -56349361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_5
+      name: spritesheet-fundo-esc2_5
       rect:
         serializedVersion: 2
         x: 1120
@@ -235,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fabe87f22eaa8e43b2b2ef7909a277d
-      internalID: -1530438079
+      spriteID: 4d8a65df1bab0af47a5a1aa268e43e72
+      internalID: -105047208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_6
+      name: spritesheet-fundo-esc2_6
       rect:
         serializedVersion: 2
         x: 1344
@@ -256,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa5c344c30e463c4a99e5f6ca688b378
-      internalID: 738090072
+      spriteID: e2dd37b1921b1ec4b80e59f360726157
+      internalID: -1632157666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_7
+      name: spritesheet-fundo-esc2_7
       rect:
         serializedVersion: 2
         x: 1568
@@ -277,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d997d09e3b3f1c40bec316905bae74b
-      internalID: 1351032256
+      spriteID: b0ee2bf3dda9ed640906d44a72f10447
+      internalID: 509763797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_8
+      name: spritesheet-fundo-esc2_8
       rect:
         serializedVersion: 2
         x: 1792
@@ -298,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 736c4c32dc3d2144b9ba24f9191f3712
-      internalID: -512985536
+      spriteID: 6a84189bf3f0aac49b7d6be17b4835a3
+      internalID: -1992505501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_9
+      name: spritesheet-fundo-esc2_9
       rect:
         serializedVersion: 2
         x: 2016
@@ -319,14 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f1576e14c47c6d49a2e58efe3538bdd
-      internalID: 1680378285
+      spriteID: 6eefb996bd4aad74b83304d406defd21
+      internalID: -1628375342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_10
+      name: spritesheet-fundo-esc2_10
       rect:
         serializedVersion: 2
         x: 2240
@@ -340,14 +352,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff321bf3817a5194482df24c7535d31f
-      internalID: -802043208
+      spriteID: 043dbf05f388a234fa84ff78e5dfe1b0
+      internalID: 1660862962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_11
+      name: spritesheet-fundo-esc2_11
       rect:
         serializedVersion: 2
         x: 2464
@@ -361,14 +373,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fe6cf098ff7a1c4f85cc477c8751f32
-      internalID: -834477813
+      spriteID: f101157e047140f46a08c960dbfcbe66
+      internalID: -1124563232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_12
+      name: spritesheet-fundo-esc2_12
       rect:
         serializedVersion: 2
         x: 2688
@@ -382,14 +394,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e393ce8a789cea747a4af7e38a053f42
-      internalID: 1649237034
+      spriteID: ba61560544e33e2419c1b3b0cdd079ff
+      internalID: 225168570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_13
+      name: spritesheet-fundo-esc2_13
       rect:
         serializedVersion: 2
         x: 2912
@@ -403,14 +415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c9977bf36968eb45bd4be76ba98524b
-      internalID: 1163332420
+      spriteID: dd7273d79dbdfdb4893909d6438eadf5
+      internalID: 929501996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_14
+      name: spritesheet-fundo-esc2_14
       rect:
         serializedVersion: 2
         x: 3136
@@ -424,14 +436,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54950a696ec87bb48a312350f2eafaf3
-      internalID: -1335574824
+      spriteID: 6a679fbde341fe042b17d3587c43bda4
+      internalID: -1253115395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_15
+      name: spritesheet-fundo-esc2_15
       rect:
         serializedVersion: 2
         x: 3360
@@ -445,14 +457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 676dadd6c5d3c504190df49a3c49b4e7
-      internalID: 1317756396
+      spriteID: 2d780e4abcae94a438cf87bcf210ac8a
+      internalID: 1292616761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_16
+      name: spritesheet-fundo-esc2_16
       rect:
         serializedVersion: 2
         x: 3584
@@ -466,14 +478,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6dbae02b4ca5d7547bab780db19fe2e6
-      internalID: 850777146
+      spriteID: 38dfa3c7c8e17c7408dbca1bb3070887
+      internalID: -2052068008
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_17
+      name: spritesheet-fundo-esc2_17
       rect:
         serializedVersion: 2
         x: 3808
@@ -487,14 +499,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7aa30ba5c8bd7f46a3a897c894cfc8f
-      internalID: -2006989028
+      spriteID: ec5895a5a18139f4dbc8f838a4af9f06
+      internalID: -708208633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_18
+      name: spritesheet-fundo-esc2_18
       rect:
         serializedVersion: 2
         x: 4032
@@ -508,14 +520,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ff3b35722b268a4bb17345bfce5c28a
-      internalID: 1323427481
+      spriteID: 041a60d6ddec24e4da4b6487abfc7827
+      internalID: -2083307906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_19
+      name: spritesheet-fundo-esc2_19
       rect:
         serializedVersion: 2
         x: 4256
@@ -529,14 +541,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f33261e7b2578634b98d5c3a3c244782
-      internalID: 274382980
+      spriteID: ef03350dcd7f56542b8be20e7f7ea727
+      internalID: 1106626999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_20
+      name: spritesheet-fundo-esc2_20
       rect:
         serializedVersion: 2
         x: 4480
@@ -550,14 +562,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a40ae01acc12b5b41b6bcd9f1e19966b
-      internalID: -2007773894
+      spriteID: 73db41f1952590647b8243386aede90d
+      internalID: -1269690977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_21
+      name: spritesheet-fundo-esc2_21
       rect:
         serializedVersion: 2
         x: 4704
@@ -571,14 +583,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dc913ec332a22643ab49d1a430c1bf6
-      internalID: -917895270
+      spriteID: da8f468176ba9b442a5af10a962d2e66
+      internalID: 2093256461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_22
+      name: spritesheet-fundo-esc2_22
       rect:
         serializedVersion: 2
         x: 4928
@@ -592,14 +604,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed9aea884b8b47d419755d911039e281
-      internalID: 881227166
+      spriteID: a45be87299c6e1648bf69f1296af5adb
+      internalID: 51842962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_23
+      name: spritesheet-fundo-esc2_23
       rect:
         serializedVersion: 2
         x: 5152
@@ -613,29 +625,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a684f3eddff16cd49baa1b93fed6b4ff
-      internalID: -909545011
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2_24
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1874
-        height: 352
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ad6b1d26b9e08574b8c4316d3aa42b42
-      internalID: -699765435
+      spriteID: cf1cca3d4309f9348a02dfb6f4736a9c
+      internalID: -1379577281
       vertices: []
       indices: 
       edges: []
@@ -651,31 +642,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spritesheet-maquina-externa-esc2_11: -834477813
-      spritesheet-maquina-externa-esc2_7: 1351032256
-      spritesheet-maquina-externa-esc2_19: 274382980
-      spritesheet-maquina-externa-esc2_3: 557239078
-      spritesheet-maquina-externa-esc2_0: -456636364
-      spritesheet-maquina-externa-esc2_22: 881227166
-      spritesheet-maquina-externa-esc2_10: -802043208
-      spritesheet-maquina-externa-esc2_20: -2007773894
-      spritesheet-maquina-externa-esc2_13: 1163332420
-      spritesheet-maquina-externa-esc2_1: -2079801207
-      spritesheet-maquina-externa-esc2_5: -1530438079
-      spritesheet-maquina-externa-esc2_15: 1317756396
-      spritesheet-maquina-externa-esc2_18: 1323427481
-      spritesheet-maquina-externa-esc2_6: 738090072
-      spritesheet-maquina-externa-esc2_21: -917895270
-      spritesheet-maquina-externa-esc2_8: -512985536
-      spritesheet-maquina-externa-esc2_16: 850777146
-      spritesheet-maquina-externa-esc2_4: 550931302
-      spritesheet-maquina-externa-esc2_14: -1335574824
-      spritesheet-maquina-externa-esc2_23: -909545011
-      spritesheet-maquina-externa-esc2_12: 1649237034
-      spritesheet-maquina-externa-esc2_17: -2006989028
-      spritesheet-maquina-externa-esc2_2: 1486589235
-      spritesheet-maquina-externa-esc2_24: -699765435
-      spritesheet-maquina-externa-esc2_9: 1680378285
+      spritesheet-fundo-esc2_17: -708208633
+      spritesheet-fundo-esc2_16: -2052068008
+      spritesheet-fundo-esc2_1: -1307845156
+      spritesheet-fundo-esc2_22: 51842962
+      spritesheet-fundo-esc2_20: -1269690977
+      spritesheet-fundo-esc2_4: -56349361
+      spritesheet-fundo-esc2_12: 225168570
+      spritesheet-fundo-esc2_18: -2083307906
+      spritesheet-fundo-esc2_23: -1379577281
+      spritesheet-fundo-esc2_11: -1124563232
+      spritesheet-fundo-esc2_2: -1085488060
+      spritesheet-fundo-esc2_14: -1253115395
+      spritesheet-fundo-esc2_8: -1992505501
+      spritesheet-fundo-esc2_10: 1660862962
+      spritesheet-fundo-esc2_19: 1106626999
+      spritesheet-fundo-esc2_0: -785560865
+      spritesheet-fundo-esc2_13: 929501996
+      spritesheet-fundo-esc2_3: 1705627198
+      spritesheet-fundo-esc2_15: 1292616761
+      spritesheet-fundo-esc2_21: 2093256461
+      spritesheet-fundo-esc2_5: -105047208
+      spritesheet-fundo-esc2_7: 509763797
+      spritesheet-fundo-esc2_9: -1628375342
+      spritesheet-fundo-esc2_6: -1632157666
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
