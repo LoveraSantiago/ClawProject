@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5e7b995179ef9fc43a9132b967e9ba9f
+guid: 071a71b72be9cd545801ea1cf125da3b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_0
+      name: spritesheet-cards-esc2v2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60e3c9af06b5b1445986918a31c8b231
-      internalID: 1075616116
+      spriteID: 86786a1b695ae3c4f8676e5dd0436cfb
+      internalID: 1508889272
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_1
+      name: spritesheet-cards-esc2v2_1
       rect:
         serializedVersion: 2
         x: 224
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8d5752767c84de4da3bb6a64ff34aae
-      internalID: 243512348
+      spriteID: c9f1165716cad4948bbaa99fd5978ac8
+      internalID: 286111232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_2
+      name: spritesheet-cards-esc2v2_2
       rect:
         serializedVersion: 2
         x: 448
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1568ca45ff1b9348b5015f9d28516ca
-      internalID: 1965441535
+      spriteID: 14bbce6e1e0f5e549b3e9b9093be4437
+      internalID: -2006635144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_3
+      name: spritesheet-cards-esc2v2_3
       rect:
         serializedVersion: 2
         x: 672
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3156dcd23ad6df749a5510e2fe4c97fa
-      internalID: 1222053862
+      spriteID: bb9c4c13423c69141887087da005ca4b
+      internalID: 382028428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_4
+      name: spritesheet-cards-esc2v2_4
       rect:
         serializedVersion: 2
         x: 896
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfd1eb865b9d827448149915b8ae093f
-      internalID: 1439425683
+      spriteID: d8b6b215dbaf0f44a8385fa7f47ae15e
+      internalID: 1837378169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_5
+      name: spritesheet-cards-esc2v2_5
       rect:
         serializedVersion: 2
         x: 1120
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfc1231f561314a48b3c1f142845f5eb
-      internalID: -179813210
+      spriteID: d53fcc3d076411a42bb5a87c7ef2bd5b
+      internalID: 1604353468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_6
+      name: spritesheet-cards-esc2v2_6
       rect:
         serializedVersion: 2
         x: 1344
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f34af54f98c17e54982e6c17a13e56c0
-      internalID: -954844763
+      spriteID: 13c96e68ee3dd804cb1482e7b9378c55
+      internalID: 826743124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_7
+      name: spritesheet-cards-esc2v2_7
       rect:
         serializedVersion: 2
         x: 1568
@@ -289,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8e3ae1035bc462499333f2dc4d4b61a
-      internalID: -1541535624
+      spriteID: 348bb13b85b16484687badaa7fc9a3d0
+      internalID: 458259270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_8
+      name: spritesheet-cards-esc2v2_8
       rect:
         serializedVersion: 2
         x: 1792
@@ -310,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3978c0ba6f0e6d74b8362d76264c51da
-      internalID: 1562646828
+      spriteID: dbdd399657aa8a143b44b975c5ee95e1
+      internalID: 1144957535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_9
+      name: spritesheet-cards-esc2v2_9
       rect:
         serializedVersion: 2
         x: 2016
@@ -331,14 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39bd4954f88f36a41ab3ddfc65b5bfe7
-      internalID: -1790913869
+      spriteID: 7b28323036aed5d46a7e417857f4bbe9
+      internalID: -526485469
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_10
+      name: spritesheet-cards-esc2v2_10
       rect:
         serializedVersion: 2
         x: 2240
@@ -352,14 +352,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2dfb92a442b92d4ba603cfea36becc8
-      internalID: -654416608
+      spriteID: ae290e87ff3dc3e49a2ff8963965acb2
+      internalID: -1468843133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_11
+      name: spritesheet-cards-esc2v2_11
       rect:
         serializedVersion: 2
         x: 2464
@@ -373,14 +373,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 697e55da12768eb489b663df7d6abc0c
-      internalID: 1662497528
+      spriteID: 26f2463759f8a724b9ae0ae5613b762e
+      internalID: 1019419470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_12
+      name: spritesheet-cards-esc2v2_12
       rect:
         serializedVersion: 2
         x: 2688
@@ -394,14 +394,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2147849503b5a84186a33f9426d45dc
-      internalID: -1086354282
+      spriteID: 9604d2ff639c6b447bfe5e12e0d02dc2
+      internalID: 1675722238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_13
+      name: spritesheet-cards-esc2v2_13
       rect:
         serializedVersion: 2
         x: 2912
@@ -415,14 +415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8dd4aaecbf5283e42a99fe7865d0120f
-      internalID: -1644748905
+      spriteID: 0a572e0753b89644bb891b1ab7150880
+      internalID: 204278361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_14
+      name: spritesheet-cards-esc2v2_14
       rect:
         serializedVersion: 2
         x: 3136
@@ -436,14 +436,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1482c0e42d3480d4faf1fd25b759b5d5
-      internalID: 353643255
+      spriteID: d8f06e1f974df1f4f8885a83cff563c3
+      internalID: -993297169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_15
+      name: spritesheet-cards-esc2v2_15
       rect:
         serializedVersion: 2
         x: 3360
@@ -457,14 +457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 262edd560c082f64fb53908a17f04a88
-      internalID: 2145587480
+      spriteID: 957d1acc066ae4f429c0ed69c36a7575
+      internalID: -704314325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_16
+      name: spritesheet-cards-esc2v2_16
       rect:
         serializedVersion: 2
         x: 3584
@@ -478,14 +478,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab20e83471f97d148a0ffef9d2f18aa0
-      internalID: -1163875880
+      spriteID: 2e9fb5b51f71c9a419ba3f589be153f6
+      internalID: 1053966399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_17
+      name: spritesheet-cards-esc2v2_17
       rect:
         serializedVersion: 2
         x: 3808
@@ -499,14 +499,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42574d4a85c51ea4b930dce02bf60f57
-      internalID: -1648977687
+      spriteID: eed57a0d53b5d4b4f85b9e6bce51eaa6
+      internalID: -944582204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_18
+      name: spritesheet-cards-esc2v2_18
       rect:
         serializedVersion: 2
         x: 4032
@@ -520,14 +520,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b701b3f6bff9fb4f9139b7e0b230f84
-      internalID: 1782210369
+      spriteID: a6be1be0d7cf5194ea23a076e46f63f6
+      internalID: 204989527
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_19
+      name: spritesheet-cards-esc2v2_19
       rect:
         serializedVersion: 2
         x: 4256
@@ -541,14 +541,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e8e3b7ed4d672d4e9d2e2a0f97e2f4d
-      internalID: -73744071
+      spriteID: 37cb623238a92ab4bb8a170c6427eb30
+      internalID: 434707125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_20
+      name: spritesheet-cards-esc2v2_20
       rect:
         serializedVersion: 2
         x: 4480
@@ -562,14 +562,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b577c6e49d8d95d49b9c85df3d2bbd84
-      internalID: 211468056
+      spriteID: 5faa9dc3b5254c245b0954232e9fdec9
+      internalID: 1118669897
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_21
+      name: spritesheet-cards-esc2v2_21
       rect:
         serializedVersion: 2
         x: 4704
@@ -583,14 +583,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e430baf9aeb4784287a2a112c5f8d34
-      internalID: -84283204
+      spriteID: 8881d9591e30bc24fad7a40be9847656
+      internalID: 546977292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_22
+      name: spritesheet-cards-esc2v2_22
       rect:
         serializedVersion: 2
         x: 4928
@@ -604,14 +604,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f46e5419b4e8ff4484a02983c4746df
-      internalID: -1611714571
+      spriteID: d9c2d7257990a074ba25f911501bfb93
+      internalID: -1789395172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-maquina-externa-esc2v2_23
+      name: spritesheet-cards-esc2v2_23
       rect:
         serializedVersion: 2
         x: 5152
@@ -625,8 +625,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18c4dbe8998f803409f4b1427c218d9f
-      internalID: -1177716797
+      spriteID: ddb9e0aec5cc3624b8093205180b8e15
+      internalID: 2092830499
       vertices: []
       indices: 
       edges: []
@@ -642,30 +642,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spritesheet-maquina-externa-esc2v2_8: 1562646828
-      spritesheet-maquina-externa-esc2v2_2: 1965441535
-      spritesheet-maquina-externa-esc2v2_12: -1086354282
-      spritesheet-maquina-externa-esc2v2_18: 1782210369
-      spritesheet-maquina-externa-esc2v2_15: 2145587480
-      spritesheet-maquina-externa-esc2v2_3: 1222053862
-      spritesheet-maquina-externa-esc2v2_21: -84283204
-      spritesheet-maquina-externa-esc2v2_14: 353643255
-      spritesheet-maquina-externa-esc2v2_4: 1439425683
-      spritesheet-maquina-externa-esc2v2_20: 211468056
-      spritesheet-maquina-externa-esc2v2_13: -1644748905
-      spritesheet-maquina-externa-esc2v2_0: 1075616116
-      spritesheet-maquina-externa-esc2v2_7: -1541535624
-      spritesheet-maquina-externa-esc2v2_11: 1662497528
-      spritesheet-maquina-externa-esc2v2_23: -1177716797
-      spritesheet-maquina-externa-esc2v2_5: -179813210
-      spritesheet-maquina-externa-esc2v2_17: -1648977687
-      spritesheet-maquina-externa-esc2v2_1: 243512348
-      spritesheet-maquina-externa-esc2v2_6: -954844763
-      spritesheet-maquina-externa-esc2v2_22: -1611714571
-      spritesheet-maquina-externa-esc2v2_19: -73744071
-      spritesheet-maquina-externa-esc2v2_16: -1163875880
-      spritesheet-maquina-externa-esc2v2_10: -654416608
-      spritesheet-maquina-externa-esc2v2_9: -1790913869
+      spritesheet-cards-esc2v2_9: -526485469
+      spritesheet-cards-esc2v2_23: 2092830499
+      spritesheet-cards-esc2v2_5: 1604353468
+      spritesheet-cards-esc2v2_12: 1675722238
+      spritesheet-cards-esc2v2_4: 1837378169
+      spritesheet-cards-esc2v2_11: 1019419470
+      spritesheet-cards-esc2v2_13: 204278361
+      spritesheet-cards-esc2v2_19: 434707125
+      spritesheet-cards-esc2v2_1: 286111232
+      spritesheet-cards-esc2v2_14: -993297169
+      spritesheet-cards-esc2v2_21: 546977292
+      spritesheet-cards-esc2v2_8: 1144957535
+      spritesheet-cards-esc2v2_18: 204989527
+      spritesheet-cards-esc2v2_17: -944582204
+      spritesheet-cards-esc2v2_20: 1118669897
+      spritesheet-cards-esc2v2_16: 1053966399
+      spritesheet-cards-esc2v2_15: -704314325
+      spritesheet-cards-esc2v2_10: -1468843133
+      spritesheet-cards-esc2v2_22: -1789395172
+      spritesheet-cards-esc2v2_3: 382028428
+      spritesheet-cards-esc2v2_7: 458259270
+      spritesheet-cards-esc2v2_2: -2006635144
+      spritesheet-cards-esc2v2_6: 826743124
+      spritesheet-cards-esc2v2_0: 1508889272
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
