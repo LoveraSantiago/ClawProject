@@ -559,20 +559,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "4df016a9d20d45c292a01d2af38ba223"
-                },
-                "m_SlotId": 2
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "f718b6dd3272434596b212dbae6a663c"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "537d912806e64c99bc0f00938954f002"
                 },
                 "m_SlotId": 0
@@ -649,20 +635,6 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "853c64b0013f44b59f5bdec91d769852"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "6a21969670f34d0bb30ffc9ef329671f"
-                },
-                "m_SlotId": 2
-            },
-            "m_InputSlot": {
-                "m_Node": {
                     "m_Id": "8d6c2d51c7b84203bcf539d09b134990"
                 },
                 "m_SlotId": 0
@@ -713,6 +685,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "781c7a28d6104cea8f6f644c52ab86c7"
+                },
+                "m_SlotId": 2
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "853c64b0013f44b59f5bdec91d769852"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "7b05ad7d66c9405aa9039068931d28d5"
                 },
                 "m_SlotId": 0
@@ -720,6 +706,20 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "ab13d05b22ec4b0dad4b1a42a6d99766"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "7c4b4f60ee3343c1a2382aefb9853bce"
+                },
+                "m_SlotId": 2
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "f718b6dd3272434596b212dbae6a663c"
                 },
                 "m_SlotId": 0
             }
@@ -1782,7 +1782,7 @@
         "m_SerializableColors": []
     },
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"70217412a00039140bd526c2182bb0bd\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"6279d6a22be50784a8f9506fbee76b59\",\"type\":3}}",
         "m_Guid": ""
     }
 }
@@ -2462,7 +2462,7 @@
         "m_SerializableColors": []
     },
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"167ded6391f00f44d8be2fc32118c778\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"8a65be8e8b0c5da45add74058b7d5d37\",\"type\":3}}",
         "m_Guid": ""
     }
 }
@@ -2515,7 +2515,7 @@
     "m_ShaderOutputName": "A",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": 0.25,
+        "e00": 0.6000000238418579,
         "e01": 0.0,
         "e02": 0.0,
         "e03": 0.0,
@@ -6182,7 +6182,7 @@
     "m_SourceType": 1,
     "m_FunctionName": "filtrarSeno",
     "m_FunctionSource": "",
-    "m_FunctionBody": "if(seno>=0)\n{\n\tsenoFiltrado=seno*24.5f;\n}\nelse\n{\n\tsenoFiltrado=(((abs(seno))*24.5f)-seno);\n}"
+    "m_FunctionBody": "if(seno>=0)\n{\n\tsenoFiltrado=seno*24.5f;\n}\nelse\n{\n\tsenoFiltrado=(((abs(seno))*24.5f)-seno);\n}\nsenoFiltrado = senoFiltrado > 24? 24:senoFiltrado;"
 }
 
 {
@@ -6728,7 +6728,7 @@
         "m_SerializableColors": []
     },
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"7a4a61cbc8ab9ca459d4936ede8f01fe\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"63e93f1e76f82ed4ba84f966feeda4c9\",\"type\":3}}",
         "m_Guid": ""
     }
 }
@@ -7284,7 +7284,7 @@
         "m_SerializableColors": []
     },
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"256cee104673302429ecb86bb5f1ce51\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"9ae8485636afecb47bd79261293b4a88\",\"type\":3}}",
         "m_Guid": ""
     }
 }
