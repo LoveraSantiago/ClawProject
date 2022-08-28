@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_537d912806e64c99bc0f00938954f002_Out_0:
-        m_Texture: {fileID: 2800000, guid: a931f8c2fa1b32549bd6728702cd5266, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5e08c8b8bd0f88d4d8f4d2633228117f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_62665607cfc14c2cbb34853d74598787_Out_0:
@@ -72,11 +72,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_86cad980470547dab86c8cf638f9db26_Out_0:
-        m_Texture: {fileID: 2800000, guid: 071a71b72be9cd545801ea1cf125da3b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4518d86bd1870e24e905a2f32bdb4fc9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_a7b489db45464b0c8c625ff99bb8145e_Out_0:
-        m_Texture: {fileID: 2800000, guid: 6de16d1904b9ff84e9738e1d22085084, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4c3bf1ca0871cd64ba69902bc86d2d6b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_d323a89e1edf44e8a3aabcc86a14f992_Out_0:
@@ -88,7 +88,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_e81a51bfc62b4ee3a328f9003e0b1615_Out_0:
-        m_Texture: {fileID: 2800000, guid: 9ae8485636afecb47bd79261293b4a88, type: 3}
+        m_Texture: {fileID: 2800000, guid: e381f051ca0660a4dbef0b56c371dc9c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -110,18 +110,18 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _corCards: {r: 1, g: 0.25882354, b: 0.05490196, a: 1}
-    - _corCardsBackground: {r: 0.73333335, g: 0.91764706, b: 0.62352943, a: 1}
-    - _corColetado: {r: 0.5019608, g: 0.7411765, b: 0.61960787, a: 1}
-    - _corColetadoBackground: {r: 0.73333335, g: 0.91764706, b: 0.62352943, a: 1}
-    - _corExterno: {r: 0.5372549, g: 0.85490197, b: 0.34901962, a: 1}
-    - _corFundo: {r: 0.5019608, g: 0.7411765, b: 0.61960787, a: 1}
-    - _corJoystick: {r: 1, g: 0.25882354, b: 0.05490196, a: 1}
-    - _corPontos: {r: 0.5019608, g: 0.7411765, b: 0.61960787, a: 1}
-    - _corPontosBackground: {r: 0.73333335, g: 0.91764706, b: 0.62352943, a: 1}
+    - _corCards: {r: 0.2, g: 0.41960785, b: 0.5294118, a: 1}
+    - _corCardsBackground: {r: 0.16470589, g: 0.19215687, b: 0.19607843, a: 1}
+    - _corColetado: {r: 0.2, g: 0.41960785, b: 0.5294118, a: 1}
+    - _corColetadoBackground: {r: 0.16470589, g: 0.19215687, b: 0.19607843, a: 1}
+    - _corExterno: {r: 0.5647059, g: 0.6862745, b: 0.77254903, a: 1}
+    - _corFundo: {r: 0.16470589, g: 0.19215687, b: 0.19607843, a: 1}
+    - _corJoystick: {r: 0.2, g: 0.41960785, b: 0.5294118, a: 1}
+    - _corPontos: {r: 0.2, g: 0.41960785, b: 0.5294118, a: 1}
+    - _corPontosBackground: {r: 0.16470589, g: 0.19215687, b: 0.19607843, a: 1}
     - _corSetas: {r: 0, g: 0.9294118, b: 1, a: 0}
-    - _corSimbolo: {r: 0.5019608, g: 0.7411765, b: 0.61960787, a: 1}
-    - _corSimboloBackground: {r: 0.73333335, g: 0.91764706, b: 0.62352943, a: 1}
-    - _corTimer: {r: 0.5019608, g: 0.7411765, b: 0.61960787, a: 1}
-    - _corTimerBackground: {r: 0.73333335, g: 0.91764706, b: 0.62352943, a: 1}
+    - _corSimbolo: {r: 0.6901961, g: 0.31764707, b: 0.22352941, a: 1}
+    - _corSimboloBackground: {r: 0.15294118, g: 0.40392157, b: 0.46666667, a: 1}
+    - _corTimer: {r: 0.2, g: 0.41960785, b: 0.5294118, a: 1}
+    - _corTimerBackground: {r: 0.16470589, g: 0.19215687, b: 0.19607843, a: 1}
   m_BuildTextureStacks: []

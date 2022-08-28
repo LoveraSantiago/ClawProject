@@ -49,7 +49,7 @@ public class MaterialMiniMaquina
     }
 
     public static void addCores(Material materialDestino, Material materialOrigem)
-    {
+    {        
         materialDestino.SetColor(COR_FUNDO        , materialOrigem.GetColor(COR_FUNDO));
         materialDestino.SetColor(COR_EXTERNO      , materialOrigem.GetColor(COR_EXTERNO));
         materialDestino.SetColor(COR_CARD_BACK    , materialOrigem.GetColor(COR_CARD_BACK));

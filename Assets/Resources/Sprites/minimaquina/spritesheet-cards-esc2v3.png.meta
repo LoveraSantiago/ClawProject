@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 071a71b72be9cd545801ea1cf125da3b
+guid: 4518d86bd1870e24e905a2f32bdb4fc9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_0
+      name: spritesheet-cards-esc2v3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86786a1b695ae3c4f8676e5dd0436cfb
-      internalID: 1508889272
+      spriteID: 2be134be24866cd45873eb3450ee737d
+      internalID: 670471628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_1
+      name: spritesheet-cards-esc2v3_1
       rect:
         serializedVersion: 2
         x: 224
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9f1165716cad4948bbaa99fd5978ac8
-      internalID: 286111232
+      spriteID: 19c284f9c93c2de4aba58ab638a88acf
+      internalID: -1205712120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_2
+      name: spritesheet-cards-esc2v3_2
       rect:
         serializedVersion: 2
         x: 448
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14bbce6e1e0f5e549b3e9b9093be4437
-      internalID: -2006635144
+      spriteID: 94f21e40f05be184fbf428bded5f4319
+      internalID: -394421833
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_3
+      name: spritesheet-cards-esc2v3_3
       rect:
         serializedVersion: 2
         x: 672
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb9c4c13423c69141887087da005ca4b
-      internalID: 382028428
+      spriteID: a33264c97a19ef247a8e838948f3e838
+      internalID: 778158458
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_4
+      name: spritesheet-cards-esc2v3_4
       rect:
         serializedVersion: 2
         x: 896
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8b6b215dbaf0f44a8385fa7f47ae15e
-      internalID: 1837378169
+      spriteID: 66046ba06beb9924a875630bdc3700a5
+      internalID: 219236935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_5
+      name: spritesheet-cards-esc2v3_5
       rect:
         serializedVersion: 2
         x: 1120
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d53fcc3d076411a42bb5a87c7ef2bd5b
-      internalID: 1604353468
+      spriteID: 62ceda87d8e369744b018f676a19b513
+      internalID: 2058304945
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_6
+      name: spritesheet-cards-esc2v3_6
       rect:
         serializedVersion: 2
         x: 1344
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13c96e68ee3dd804cb1482e7b9378c55
-      internalID: 826743124
+      spriteID: d103d7e65a244a745ac19138ac0d68b7
+      internalID: 1298064703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_7
+      name: spritesheet-cards-esc2v3_7
       rect:
         serializedVersion: 2
         x: 1568
@@ -289,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 348bb13b85b16484687badaa7fc9a3d0
-      internalID: 458259270
+      spriteID: 5b4133916ad6c9141ad7e17851eb9ea6
+      internalID: 134526615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_8
+      name: spritesheet-cards-esc2v3_8
       rect:
         serializedVersion: 2
         x: 1792
@@ -310,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbdd399657aa8a143b44b975c5ee95e1
-      internalID: 1144957535
+      spriteID: e8ca610773c6a4449bdc90d0d4758abc
+      internalID: 398757865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_9
+      name: spritesheet-cards-esc2v3_9
       rect:
         serializedVersion: 2
         x: 2016
@@ -331,14 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b28323036aed5d46a7e417857f4bbe9
-      internalID: -526485469
+      spriteID: 348657ad258cdf6419329a96be942c32
+      internalID: 261367883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_10
+      name: spritesheet-cards-esc2v3_10
       rect:
         serializedVersion: 2
         x: 2240
@@ -352,14 +352,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae290e87ff3dc3e49a2ff8963965acb2
-      internalID: -1468843133
+      spriteID: 9373c15ea5f21134886bb2820aef9859
+      internalID: -1474505505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_11
+      name: spritesheet-cards-esc2v3_11
       rect:
         serializedVersion: 2
         x: 2464
@@ -373,14 +373,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26f2463759f8a724b9ae0ae5613b762e
-      internalID: 1019419470
+      spriteID: 5a025e93fff1c4e44a9c6de71bbc1cd8
+      internalID: 438510603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_12
+      name: spritesheet-cards-esc2v3_12
       rect:
         serializedVersion: 2
         x: 2688
@@ -394,14 +394,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9604d2ff639c6b447bfe5e12e0d02dc2
-      internalID: 1675722238
+      spriteID: 8306fce64fbe8364882470ca7d92a53a
+      internalID: 1094476787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_13
+      name: spritesheet-cards-esc2v3_13
       rect:
         serializedVersion: 2
         x: 2912
@@ -415,14 +415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a572e0753b89644bb891b1ab7150880
-      internalID: 204278361
+      spriteID: 3008d7448d3fc284ca138861c4ce3e66
+      internalID: -682093281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_14
+      name: spritesheet-cards-esc2v3_14
       rect:
         serializedVersion: 2
         x: 3136
@@ -436,14 +436,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8f06e1f974df1f4f8885a83cff563c3
-      internalID: -993297169
+      spriteID: c682754e562ba8141a6f03208f07eb98
+      internalID: -991723284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_15
+      name: spritesheet-cards-esc2v3_15
       rect:
         serializedVersion: 2
         x: 3360
@@ -457,14 +457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 957d1acc066ae4f429c0ed69c36a7575
-      internalID: -704314325
+      spriteID: b509a880e28cfa34f9dd4364cd05413b
+      internalID: -1951894490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_16
+      name: spritesheet-cards-esc2v3_16
       rect:
         serializedVersion: 2
         x: 3584
@@ -478,14 +478,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e9fb5b51f71c9a419ba3f589be153f6
-      internalID: 1053966399
+      spriteID: 094372d19c77b2d4dbf3670694448a81
+      internalID: 633623249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_17
+      name: spritesheet-cards-esc2v3_17
       rect:
         serializedVersion: 2
         x: 3808
@@ -499,14 +499,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eed57a0d53b5d4b4f85b9e6bce51eaa6
-      internalID: -944582204
+      spriteID: d89a9b6bf9b855141a332d593cef8eb8
+      internalID: -1181644080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_18
+      name: spritesheet-cards-esc2v3_18
       rect:
         serializedVersion: 2
         x: 4032
@@ -520,14 +520,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6be1be0d7cf5194ea23a076e46f63f6
-      internalID: 204989527
+      spriteID: 541aee7cb1679204f9a3626807950f6f
+      internalID: 1116907673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_19
+      name: spritesheet-cards-esc2v3_19
       rect:
         serializedVersion: 2
         x: 4256
@@ -541,14 +541,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37cb623238a92ab4bb8a170c6427eb30
-      internalID: 434707125
+      spriteID: f6b52af7fdbcb584ea1ff57b8657afc5
+      internalID: -2143725678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_20
+      name: spritesheet-cards-esc2v3_20
       rect:
         serializedVersion: 2
         x: 4480
@@ -562,14 +562,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5faa9dc3b5254c245b0954232e9fdec9
-      internalID: 1118669897
+      spriteID: e1c76ba29e0e58840bd42f8a853ec7bd
+      internalID: 1183259055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_21
+      name: spritesheet-cards-esc2v3_21
       rect:
         serializedVersion: 2
         x: 4704
@@ -583,14 +583,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8881d9591e30bc24fad7a40be9847656
-      internalID: 546977292
+      spriteID: d712503a49a8b354789c0904247616db
+      internalID: -612586412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_22
+      name: spritesheet-cards-esc2v3_22
       rect:
         serializedVersion: 2
         x: 4928
@@ -604,14 +604,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9c2d7257990a074ba25f911501bfb93
-      internalID: -1789395172
+      spriteID: 99a25a903af672847ae39452f64bac41
+      internalID: -1456567398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-cards-esc2v2_23
+      name: spritesheet-cards-esc2v3_23
       rect:
         serializedVersion: 2
         x: 5152
@@ -625,8 +625,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddb9e0aec5cc3624b8093205180b8e15
-      internalID: 2092830499
+      spriteID: 29cc26caa3fd7894fb1df2c035e79dbb
+      internalID: -658433744
       vertices: []
       indices: 
       edges: []
@@ -642,30 +642,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spritesheet-cards-esc2v2_9: -526485469
-      spritesheet-cards-esc2v2_23: 2092830499
-      spritesheet-cards-esc2v2_5: 1604353468
-      spritesheet-cards-esc2v2_12: 1675722238
-      spritesheet-cards-esc2v2_4: 1837378169
-      spritesheet-cards-esc2v2_11: 1019419470
-      spritesheet-cards-esc2v2_13: 204278361
-      spritesheet-cards-esc2v2_19: 434707125
-      spritesheet-cards-esc2v2_1: 286111232
-      spritesheet-cards-esc2v2_14: -993297169
-      spritesheet-cards-esc2v2_21: 546977292
-      spritesheet-cards-esc2v2_8: 1144957535
-      spritesheet-cards-esc2v2_18: 204989527
-      spritesheet-cards-esc2v2_17: -944582204
-      spritesheet-cards-esc2v2_20: 1118669897
-      spritesheet-cards-esc2v2_16: 1053966399
-      spritesheet-cards-esc2v2_15: -704314325
-      spritesheet-cards-esc2v2_10: -1468843133
-      spritesheet-cards-esc2v2_22: -1789395172
-      spritesheet-cards-esc2v2_3: 382028428
-      spritesheet-cards-esc2v2_7: 458259270
-      spritesheet-cards-esc2v2_2: -2006635144
-      spritesheet-cards-esc2v2_6: 826743124
-      spritesheet-cards-esc2v2_0: 1508889272
+      spritesheet-cards-esc2v3_6: 1298064703
+      spritesheet-cards-esc2v3_0: 670471628
+      spritesheet-cards-esc2v3_7: 134526615
+      spritesheet-cards-esc2v3_9: 261367883
+      spritesheet-cards-esc2v3_15: -1951894490
+      spritesheet-cards-esc2v3_10: -1474505505
+      spritesheet-cards-esc2v3_20: 1183259055
+      spritesheet-cards-esc2v3_21: -612586412
+      spritesheet-cards-esc2v3_22: -1456567398
+      spritesheet-cards-esc2v3_5: 2058304945
+      spritesheet-cards-esc2v3_2: -394421833
+      spritesheet-cards-esc2v3_14: -991723284
+      spritesheet-cards-esc2v3_18: 1116907673
+      spritesheet-cards-esc2v3_17: -1181644080
+      spritesheet-cards-esc2v3_3: 778158458
+      spritesheet-cards-esc2v3_4: 219236935
+      spritesheet-cards-esc2v3_19: -2143725678
+      spritesheet-cards-esc2v3_11: 438510603
+      spritesheet-cards-esc2v3_13: -682093281
+      spritesheet-cards-esc2v3_16: 633623249
+      spritesheet-cards-esc2v3_1: -1205712120
+      spritesheet-cards-esc2v3_8: 398757865
+      spritesheet-cards-esc2v3_23: -658433744
+      spritesheet-cards-esc2v3_12: 1094476787
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

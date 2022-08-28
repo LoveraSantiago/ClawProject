@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_166fbfbb2b1e499eaa243f409a273566_Out_0:
-        m_Texture: {fileID: 2800000, guid: a931f8c2fa1b32549bd6728702cd5266, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5e08c8b8bd0f88d4d8f4d2633228117f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_1c663c8c90a8458aa0d70a3a490f5b73_Out_0:
@@ -80,7 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_8cf10e0b86024f9482264425a03d2abc_Out_0:
-        m_Texture: {fileID: 2800000, guid: 9ae8485636afecb47bd79261293b4a88, type: 3}
+        m_Texture: {fileID: 2800000, guid: e381f051ca0660a4dbef0b56c371dc9c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_8eee37cc3fbd4a1d8153ad71861c894e_Out_0:
@@ -92,7 +92,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_951b9bbe12344007abded7a5ecbcc549_Out_0:
-        m_Texture: {fileID: 2800000, guid: 6de16d1904b9ff84e9738e1d22085084, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4c3bf1ca0871cd64ba69902bc86d2d6b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_99a3205b6cde4965b095505633138338_Out_0:
@@ -124,7 +124,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_df00a194274348588d5707e0952343ad_Out_0:
-        m_Texture: {fileID: 2800000, guid: 071a71b72be9cd545801ea1cf125da3b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4518d86bd1870e24e905a2f32bdb4fc9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_edd698f6fea447c582b823476cbe70c0_Out_0:
@@ -176,6 +176,7 @@ Material:
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _corBackgroundCards: {r: 1, g: 0, b: 0.827451, a: 0}
     - _corCards: {r: 0, g: 1, b: 0.7529412, a: 0}
+    - _corCardsBackground: {r: 1, g: 0, b: 0.827451, a: 0}
     - _corColetado: {r: 0.6117647, g: 0, b: 0.3176471, a: 0}
     - _corColetadoBackground: {r: 0.5058824, g: 0.6117647, b: 0, a: 0}
     - _corExterno: {r: 1, g: 0, b: 0, a: 0}
