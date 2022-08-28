@@ -1,7 +1,8 @@
-using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
+public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
+                            AcaoItemEscolhido<LevelItemDto>.ProdutorEvento  
 {
     private string[] levels;
     private Material[] materialMaquinas;
@@ -14,15 +15,22 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
 
     private ItemLevelDto itemLevelCima;
     private ItemLevelDto itemLevelBaixo;
+    private LevelsScrollDto levelsScrollDto;
+
+    private ProdutorDeEvento<LevelItemDto> produtorDeEvento;
+    GameObject goImgMaquina;
 
     public LevelsScroll(LevelsScrollDto levelsScrollDto)
     {
+        this.levelsScrollDto = levelsScrollDto;
+        produtorDeEvento = new ProdutorDeEvento<LevelItemDto>();
+
         carregarLevels();
-        carregarMateriais(levelsScrollDto);
-        calcularTamanhoScroll(levelsScrollDto);
-        carregarReferenciasPosicoes(levelsScrollDto);
-        popularItensLevels(levelsScrollDto);
-        bindarBtnsLinha(levelsScrollDto);
+        carregarMateriais();
+        calcularTamanhoScroll();
+        carregarReferenciasPosicoes();
+        popularItensLevels();
+        bindarBtnsLinha();
 
         itemLevelCima  = levelsScrollDto.ItensLevelDto[0];
         itemLevelBaixo = levelsScrollDto.ItensLevelDto[levelsScrollDto.ItensLevelDto.Length - 1];
@@ -59,7 +67,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         Debug.Log("QTD LEVELS " + levels.Length);
     }
 
-    private void carregarMateriais(LevelsScrollDto levelsScrollDto)
+    private void carregarMateriais()
     {
         int qtdItens = levelsScrollDto.ItensLevelDto.Length;
         materialMaquinas = new Material[qtdItens];
@@ -69,14 +77,14 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         }
     }
 
-    private void calcularTamanhoScroll(LevelsScrollDto levelsScrollDto)
+    private void calcularTamanhoScroll()
     {
         float qtdItens = levels.Length - levelsScrollDto.QtdItensVisiveis;
         float yAcrescimo = qtdItens * levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
         levelsScrollDto.RTransformScroll.offsetMin += new Vector2(0, -yAcrescimo);
     }
 
-    private void carregarReferenciasPosicoes(LevelsScrollDto levelsScrollDto)
+    private void carregarReferenciasPosicoes()
     {
         posYReferenciaBaixo = levelsScrollDto.RTransformRefBaixo.position.y;        
         float yDiferenca = (levelsScrollDto.ItensLevelDto[0].RItem.position.y - levelsScrollDto.ItensLevelDto[1].RItem.position.y);
@@ -107,7 +115,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         itemLevelBaixo = levelsScrollDto.ItensLevelDto[indicePrateleira];
     }
 
-    private void popularItensLevels(LevelsScrollDto levelsScrollDto)
+    private void popularItensLevels()
     {
         for(int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
         {
@@ -119,7 +127,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         //Debug.Log("Populado contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
     }
 
-    private void bindarBtnsLinha(LevelsScrollDto levelsScrollDto)
+    private void bindarBtnsLinha()
     {
         for (int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
         {
@@ -147,6 +155,28 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
 
     private void selecionado()
     {
+        Debug.Log("Selecionado chamado");
+        GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
+        int indiceItem = int.Parse(goSelecionado.transform.parent.name);
+        ItemLevelDto itemLevelDto = levelsScrollDto.ItensLevelDto[indiceItem];
 
+        Vector3 posicaoItem = itemLevelDto.ImgMaquina.transform.position;
+        Material materialCor = materialMaquinas[indiceItem];
+
+        itemLevelDto.ImgMaquina.gameObject.SetActive(false);
+
+        if(goImgMaquina != null)
+        {
+            goImgMaquina.SetActive(true);
+        }
+        goImgMaquina = itemLevelDto.ImgMaquina.gameObject;
+
+        LevelItemDto levelItem = new LevelItemDto(posicaoItem, materialCor);
+        produtorDeEvento.produziuEvento(levelItem);
+    }
+
+    ProdutorDeEvento<LevelItemDto> AcaoItemEscolhido<LevelItemDto>.ProdutorEvento.getProdutorDeEvento()
+    {
+        return produtorDeEvento;
     }
 }
