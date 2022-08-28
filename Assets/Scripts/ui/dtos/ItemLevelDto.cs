@@ -8,6 +8,8 @@ public class ItemLevelDto
 {
     [SerializeField] private RectTransform rItem;
     [Space(3)]
+    [SerializeField] private Button btnLinha;
+    [Space(3)]
     [SerializeField] private Image imgMaquina;
     [Space(3)]
     [SerializeField] private TextMeshProUGUI lblLevel;
@@ -15,6 +17,7 @@ public class ItemLevelDto
     [SerializeField] private TextMeshProUGUI lblMaquina;
 
     public RectTransform RItem { get { return rItem; } }
+    public Button BtnLinha { get { return btnLinha; } }
     public Image ImgMaquina { get { return imgMaquina; } }
     public TextMeshProUGUI LblLevel { get { return lblLevel; } }
     public TextMeshProUGUI LblMap { get { return lblMap; } }

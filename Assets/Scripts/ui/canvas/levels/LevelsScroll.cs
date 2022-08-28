@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
@@ -21,11 +22,12 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
         calcularTamanhoScroll(levelsScrollDto);
         carregarReferenciasPosicoes(levelsScrollDto);
         popularItensLevels(levelsScrollDto);
+        bindarBtnsLinha(levelsScrollDto);
 
         itemLevelCima  = levelsScrollDto.ItensLevelDto[0];
         itemLevelBaixo = levelsScrollDto.ItensLevelDto[levelsScrollDto.ItensLevelDto.Length - 1];
     }
-
+   
     public override void movimentarParaBaixo(LevelsScrollDto levelsScrollDto)
     {
         float posYItemLevel = itemLevelBaixo.RItem.transform.position.y;
@@ -112,9 +114,18 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
             ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];            
             itemLevelDtoIt.ImgMaquina.material = materialMaquinas[contadorItensLevels];
             popularItemLevel(contadorItensLevels, itemLevelDtoIt, levels[contadorItensLevels]);            
-            contadorBaixoLevel++;
+            contadorBaixoLevel++;            
         }
         //Debug.Log("Populado contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
+    }
+
+    private void bindarBtnsLinha(LevelsScrollDto levelsScrollDto)
+    {
+        for (int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
+        {
+            ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];
+            itemLevelDtoIt.BtnLinha.onClick.AddListener(() => selecionado());
+        }
     }
 
     private void popularItemLevel(ItemLevelDto itemLevelDtoIt, string levelAlias)
@@ -132,5 +143,10 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>
 
         MaterialMiniMaquina.addCores(materialMaquinas[indiceMaterialMaquina], level.getDicionarioDeCores());
         //Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
+    }
+
+    private void selecionado()
+    {
+
     }
 }

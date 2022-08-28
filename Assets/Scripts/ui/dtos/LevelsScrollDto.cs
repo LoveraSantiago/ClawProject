@@ -12,6 +12,8 @@ public class LevelsScrollDto
     [SerializeField] private RectTransform rTransformScroll;
     [Space(3)]    
     [SerializeField] private ItemLevelDto[] itensLevelDto;
+    [Space(3)]
+    [SerializeField] private RectTransform rTransformMaquinaGiratoria;
 
     public int QtdItensVisiveis { get { return qtdItensVisiveis; } }
     public RectTransform RTransformRefCima { get { return rTransformRefCima; } }
@@ -19,4 +21,6 @@ public class LevelsScrollDto
     
     public RectTransform RTransformScroll { get { return rTransformScroll; } }
     public ItemLevelDto[] ItensLevelDto { get { return itensLevelDto; } }
+
+    public RectTransform RTransformMaquinaGiratoria { get { return rTransformMaquinaGiratoria; } }
 }

@@ -18,7 +18,5 @@ public class LevelScene : MonoBehaviour
         MateriaisUtils.configurar(prefabMateriais);
         levelsScroll = new LevelsScroll(levelsScrollDto);
         scrollRect.onValueChanged.AddListener((pos) => levelsScroll.movimentado(pos, levelsScrollDto));            
-    }
-    
-    
+    }    
 }
