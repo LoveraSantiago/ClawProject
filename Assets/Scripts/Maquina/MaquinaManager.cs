@@ -6,7 +6,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,                              
                               AcaoBotaoPowerUpVazio.ConsumidorEvento,
-                              AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento
+                              AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento
 {
     private bool isGamePlay;
     private PartesMaquinaDtoV2 partesDto;
@@ -145,7 +145,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         isGamePlay = false;
     }
 
-    void AcaoBBarItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {   
         isGamePlay = true;
     }

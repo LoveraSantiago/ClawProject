@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class ScrollPupsManager : Draggavel,
-                                 AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
+                                 AcaoItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
                                  AcaoPowerUpAcionado.ConsumidorEvento
 {   
     private bool isLevelPup;
@@ -153,8 +153,8 @@ public class ScrollPupsManager : Draggavel,
         }
     }
 
-    ProdutorDeEvento<PowerUpBtnInfo> AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<PowerUpBtnInfo> AcaoItemEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
     {
-        return ((AcaoBBarItemEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollSelecao).getProdutorDeEvento();
+        return ((AcaoItemEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollSelecao).getProdutorDeEvento();
     }
 }
