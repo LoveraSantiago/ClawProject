@@ -2447,7 +2447,7 @@
         "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
-    "m_DefaultType": 3
+    "m_DefaultType": 0
 }
 
 {
@@ -4094,7 +4094,7 @@
         "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
-    "m_DefaultType": 3
+    "m_DefaultType": 0
 }
 
 {
@@ -5014,8 +5014,8 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_TextureType": 1,
-    "m_NormalMapSpace": 1,
+    "m_TextureType": 0,
+    "m_NormalMapSpace": 0,
     "m_EnableGlobalMipBias": true
 }
 
@@ -5205,8 +5205,8 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_TextureType": 1,
-    "m_NormalMapSpace": 1,
+    "m_TextureType": 0,
+    "m_NormalMapSpace": 0,
     "m_EnableGlobalMipBias": true
 }
 
@@ -5258,7 +5258,7 @@
         "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
-    "m_DefaultType": 3
+    "m_DefaultType": 0
 }
 
 {
@@ -5714,10 +5714,10 @@
     "m_Guid": {
         "m_GuidSerialized": "782fe736-694b-4cb1-8928-26f8d5dca4fa"
     },
-    "m_Name": "corBackgroundCards",
+    "m_Name": "corCardsBackground",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "corBackgroundCards",
-    "m_DefaultReferenceName": "_corBackgroundCards",
+    "m_RefNameGeneratedByDisplayName": "corCardsBackground",
+    "m_DefaultReferenceName": "_corCardsBackground",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -6087,8 +6087,8 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_TextureType": 1,
-    "m_NormalMapSpace": 1,
+    "m_TextureType": 0,
+    "m_NormalMapSpace": 0,
     "m_EnableGlobalMipBias": true
 }
 
@@ -12343,7 +12343,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "fe1067867b564169911a1c423fa9c336",
     "m_Id": 0,
-    "m_DisplayName": "corBackgroundCards",
+    "m_DisplayName": "corCardsBackground",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
