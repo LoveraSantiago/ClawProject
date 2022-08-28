@@ -23,8 +23,8 @@ public class MaterialMiniMaquina
         material.SetColor("_corCards", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA]));
         material.SetColor("_corJoystick", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA]));
         material.SetColor("_corSetas", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS]));
-        material.SetColor("_corPontosBackground", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_GRUPO]));
-        material.SetColor("_corPontos", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1]));
+        material.SetColor("_corPontosBackground", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1]));
+        material.SetColor("_corPontos", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_GRUPO]));
         material.SetColor("_corTimerBackground", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL]));
         material.SetColor("_corTimer", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO]));
         material.SetColor("_corSimboloBackground", Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO]));
