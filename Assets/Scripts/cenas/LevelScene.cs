@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class LevelScene : MonoBehaviour,
                          AcaoItemEscolhido<LevelItemDto>.ConsumidorEvento
 {
+    [SerializeField] private Button btnBack;
+    [Space(5)]
     [SerializeField] private ScrollRect scrollRect;
     [Space(5)]    
     [SerializeField] private LevelsScrollDto levelsScrollDto;
@@ -19,6 +21,8 @@ public class LevelScene : MonoBehaviour,
     {
         Utils.configMainMono(this);
         MateriaisUtils.configurar(prefabMateriais);
+        btnBack.onClick.AddListener(() => voltar());
+
         levelsScroll = new LevelsScroll(levelsScrollDto);
         scrollRect.onValueChanged.AddListener((pos) => levelsScroll.movimentado(pos, levelsScrollDto));
 
@@ -32,5 +36,10 @@ public class LevelScene : MonoBehaviour,
         imageMaquinaGiratoria.transform.gameObject.SetActive(true);
         imageMaquinaGiratoria.transform.position = evento.posicaoItem;
         MaterialMiniMaquina.addCores(imageMaquinaGiratoria.material, evento.materialItem);
+    }
+
+    private void voltar()
+    {       
+         CenaUtils.irParaCenaMap();       
     }
 }
