@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 110a73304e591f6469891478f4576df4
+guid: f603139e0448df042b28ee76e48ca6bd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_0
+      name: spritesheet-background-cards-esc2v3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a8bcc1d76e51ec4598b9a5472122ccb
-      internalID: 433907985
+      spriteID: a78367c075177a1409106763f8745979
+      internalID: 30084978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_1
+      name: spritesheet-background-cards-esc2v3_1
       rect:
         serializedVersion: 2
         x: 224
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71694019bd8dd8e43b807ed0666514de
-      internalID: 2072338625
+      spriteID: 93c044732382ebb44a4d53dce62795f1
+      internalID: 1821367021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_2
+      name: spritesheet-background-cards-esc2v3_2
       rect:
         serializedVersion: 2
         x: 448
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fd4354c6e28ece498f1ff9aa5789de8
-      internalID: -1141435215
+      spriteID: 7e33446e52132f3478240d1b852c1333
+      internalID: -1003328555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_3
+      name: spritesheet-background-cards-esc2v3_3
       rect:
         serializedVersion: 2
         x: 672
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1ca789890d32fb4dae4f9adfab0b62b
-      internalID: 522818012
+      spriteID: e374790a7e6431b469e3b8f6e99d6a2a
+      internalID: 1791089665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_4
+      name: spritesheet-background-cards-esc2v3_4
       rect:
         serializedVersion: 2
         x: 896
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff7f7230442a9bc43a07edc80e61c8ad
-      internalID: 1949682216
+      spriteID: 21657ef889f1d1e4199bd2ad97d954fb
+      internalID: 1519900006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_5
+      name: spritesheet-background-cards-esc2v3_5
       rect:
         serializedVersion: 2
         x: 1120
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ade29fe7720839f43a5c839192dcaa47
-      internalID: 1825159235
+      spriteID: 09b4f764e3f832b4a968a290c0d37fc6
+      internalID: -2109992304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_6
+      name: spritesheet-background-cards-esc2v3_6
       rect:
         serializedVersion: 2
         x: 1344
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39627f51db28ad147acd88deb262e38d
-      internalID: -2036094070
+      spriteID: 049d787734f00e64fa67d40669e93a13
+      internalID: 346742782
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_7
+      name: spritesheet-background-cards-esc2v3_7
       rect:
         serializedVersion: 2
         x: 1568
@@ -289,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 610c76351c6059a45a7c4b4d9ecb456c
-      internalID: -576429033
+      spriteID: f1684bd685c95324cbcc669da9d2d6f5
+      internalID: -774791347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_8
+      name: spritesheet-background-cards-esc2v3_8
       rect:
         serializedVersion: 2
         x: 1792
@@ -310,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a06f1b5ad2eaa054583402f856e00bd1
-      internalID: -913507381
+      spriteID: c077a94ee77707a4786745583e79bc30
+      internalID: -1512255046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_9
+      name: spritesheet-background-cards-esc2v3_9
       rect:
         serializedVersion: 2
         x: 2016
@@ -331,14 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f385db82f3583d84b9b9f4488441dbf6
-      internalID: 1878016787
+      spriteID: 9d0dd4d275d2a7c459c0999adb04a719
+      internalID: 244538126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_10
+      name: spritesheet-background-cards-esc2v3_10
       rect:
         serializedVersion: 2
         x: 2240
@@ -352,14 +352,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b443ebf6270cdbe4bad43f1bb359dd71
-      internalID: 1400486321
+      spriteID: 799431a48b6ea4746a30017237388fc5
+      internalID: 878383086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_11
+      name: spritesheet-background-cards-esc2v3_11
       rect:
         serializedVersion: 2
         x: 2464
@@ -373,14 +373,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea5be85ac3e874444a77bed7ae203f28
-      internalID: 1920448356
+      spriteID: 2089fdebe57a7154da7b2b96c2554d69
+      internalID: -1690886231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_12
+      name: spritesheet-background-cards-esc2v3_12
       rect:
         serializedVersion: 2
         x: 2688
@@ -394,14 +394,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e73e6f41a48199e4cb0c38805bdabb44
-      internalID: -2081115851
+      spriteID: 5f0bf06c496059e49bbe88eee9c61f72
+      internalID: 1855420326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_13
+      name: spritesheet-background-cards-esc2v3_13
       rect:
         serializedVersion: 2
         x: 2912
@@ -415,14 +415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 690425c7ecdf99d4ca0e876c977184a9
-      internalID: -458753035
+      spriteID: 4a78b2eaf25d99441b53bc20073647a6
+      internalID: -420422714
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_14
+      name: spritesheet-background-cards-esc2v3_14
       rect:
         serializedVersion: 2
         x: 3136
@@ -436,14 +436,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e474366953f57d643b3a60c925f4b179
-      internalID: 484872854
+      spriteID: 90c9064fa3193214a8be7672fdc52749
+      internalID: 878023338
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_15
+      name: spritesheet-background-cards-esc2v3_15
       rect:
         serializedVersion: 2
         x: 3360
@@ -457,14 +457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b16795843cf89c40ad841d837cd94f4
-      internalID: -65035166
+      spriteID: 591c7d3eb622eda48a07aefd17c71fc9
+      internalID: -640523869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_16
+      name: spritesheet-background-cards-esc2v3_16
       rect:
         serializedVersion: 2
         x: 3584
@@ -478,14 +478,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 075080fd5fd61374b847b2684f5eb33d
-      internalID: -2013273610
+      spriteID: e782cee0bbd664248b1bb384f88a1c02
+      internalID: -1847076350
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_17
+      name: spritesheet-background-cards-esc2v3_17
       rect:
         serializedVersion: 2
         x: 3808
@@ -499,14 +499,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e3b27bed77ef174ca7cdd7cf2e67b41
-      internalID: 1878266070
+      spriteID: 0390f988542a7f841afd29761c66acc1
+      internalID: 156009873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_18
+      name: spritesheet-background-cards-esc2v3_18
       rect:
         serializedVersion: 2
         x: 4032
@@ -520,14 +520,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 863d497446ff0054f87da1c210d37e1b
-      internalID: -266837866
+      spriteID: afa47531e4537024db68e3a32dda92ee
+      internalID: -453037329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_19
+      name: spritesheet-background-cards-esc2v3_19
       rect:
         serializedVersion: 2
         x: 4256
@@ -541,14 +541,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a786f6157a42d4b4b8126123a05786be
-      internalID: 163408600
+      spriteID: 71f4bcae6a1acdc498e38e9459b7a893
+      internalID: 1519808181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_20
+      name: spritesheet-background-cards-esc2v3_20
       rect:
         serializedVersion: 2
         x: 4480
@@ -562,14 +562,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdb35a422aa52dc4985361a41eb16831
-      internalID: 1057388741
+      spriteID: eec7ff8a70221ae4faa0b2385d25027a
+      internalID: -849338209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_21
+      name: spritesheet-background-cards-esc2v3_21
       rect:
         serializedVersion: 2
         x: 4704
@@ -583,14 +583,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f826acb574c84942b5c4c95c11cf4a4
-      internalID: 1354220805
+      spriteID: a0c00547ea5fe2a4c8450d92db7449cf
+      internalID: 183275853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_22
+      name: spritesheet-background-cards-esc2v3_22
       rect:
         serializedVersion: 2
         x: 4928
@@ -604,14 +604,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52cfc81b9ce8f064d9df052792037ac8
-      internalID: 238651064
+      spriteID: 4eb76da26bf2ace468802735fdc0af5b
+      internalID: -929014573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-background-cards-esc2v2_23
+      name: spritesheet-background-cards-esc2v3_23
       rect:
         serializedVersion: 2
         x: 5152
@@ -625,8 +625,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94c25e88559f90b44bd56fc694040451
-      internalID: -914980083
+      spriteID: 31cd523bda674144a8d901fdf2d625f7
+      internalID: 1841811095
       vertices: []
       indices: 
       edges: []
@@ -642,30 +642,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spritesheet-background-cards-esc2v2_21: 1354220805
-      spritesheet-background-cards-esc2v2_15: -65035166
-      spritesheet-background-cards-esc2v2_3: 522818012
-      spritesheet-background-cards-esc2v2_8: -913507381
-      spritesheet-background-cards-esc2v2_2: -1141435215
-      spritesheet-background-cards-esc2v2_14: 484872854
-      spritesheet-background-cards-esc2v2_18: -266837866
-      spritesheet-background-cards-esc2v2_12: -2081115851
-      spritesheet-background-cards-esc2v2_9: 1878016787
-      spritesheet-background-cards-esc2v2_5: 1825159235
-      spritesheet-background-cards-esc2v2_0: 433907985
-      spritesheet-background-cards-esc2v2_4: 1949682216
-      spritesheet-background-cards-esc2v2_6: -2036094070
-      spritesheet-background-cards-esc2v2_10: 1400486321
-      spritesheet-background-cards-esc2v2_11: 1920448356
-      spritesheet-background-cards-esc2v2_22: 238651064
-      spritesheet-background-cards-esc2v2_17: 1878266070
-      spritesheet-background-cards-esc2v2_19: 163408600
-      spritesheet-background-cards-esc2v2_1: 2072338625
-      spritesheet-background-cards-esc2v2_23: -914980083
-      spritesheet-background-cards-esc2v2_16: -2013273610
-      spritesheet-background-cards-esc2v2_13: -458753035
-      spritesheet-background-cards-esc2v2_7: -576429033
-      spritesheet-background-cards-esc2v2_20: 1057388741
+      spritesheet-background-cards-esc2v3_23: 1841811095
+      spritesheet-background-cards-esc2v3_15: -640523869
+      spritesheet-background-cards-esc2v3_16: -1847076350
+      spritesheet-background-cards-esc2v3_22: -929014573
+      spritesheet-background-cards-esc2v3_9: 244538126
+      spritesheet-background-cards-esc2v3_17: 156009873
+      spritesheet-background-cards-esc2v3_7: -774791347
+      spritesheet-background-cards-esc2v3_4: 1519900006
+      spritesheet-background-cards-esc2v3_20: -849338209
+      spritesheet-background-cards-esc2v3_21: 183275853
+      spritesheet-background-cards-esc2v3_19: 1519808181
+      spritesheet-background-cards-esc2v3_5: -2109992304
+      spritesheet-background-cards-esc2v3_8: -1512255046
+      spritesheet-background-cards-esc2v3_6: 346742782
+      spritesheet-background-cards-esc2v3_11: -1690886231
+      spritesheet-background-cards-esc2v3_14: 878023338
+      spritesheet-background-cards-esc2v3_12: 1855420326
+      spritesheet-background-cards-esc2v3_13: -420422714
+      spritesheet-background-cards-esc2v3_2: -1003328555
+      spritesheet-background-cards-esc2v3_0: 30084978
+      spritesheet-background-cards-esc2v3_1: 1821367021
+      spritesheet-background-cards-esc2v3_3: 1791089665
+      spritesheet-background-cards-esc2v3_10: 878383086
+      spritesheet-background-cards-esc2v3_18: -453037329
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8a65be8e8b0c5da45add74058b7d5d37
+guid: 62df0eb50e3973e42a4f546596bd7435
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_0
+      name: spritesheet-displaycoletado-esc2v2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 645e76d42ab38a54b9b31171410355ed
-      internalID: 956422127
+      spriteID: d82d45d9168b2d24796ff15b7c775837
+      internalID: -465028108
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_1
+      name: spritesheet-displaycoletado-esc2v2_1
       rect:
         serializedVersion: 2
         x: 224
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 575678208e5477a4791995d292a570c0
-      internalID: 366111875
+      spriteID: a2bf933b93c6fa544a8913747b4312fc
+      internalID: -339025144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_2
+      name: spritesheet-displaycoletado-esc2v2_2
       rect:
         serializedVersion: 2
         x: 448
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67f81211ec96efc48b2ace5a036ff955
-      internalID: -531400680
+      spriteID: f9e60bd63bb5de7408acc39ed207b3a4
+      internalID: -1154744435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_3
+      name: spritesheet-displaycoletado-esc2v2_3
       rect:
         serializedVersion: 2
         x: 672
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba850cba059129147a84ac030b9290bc
-      internalID: 974589940
+      spriteID: 1155ba25fcb8e8044aa0ba37bc6d6a8d
+      internalID: 1931456957
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_4
+      name: spritesheet-displaycoletado-esc2v2_4
       rect:
         serializedVersion: 2
         x: 896
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eea3352e52e0d744fb167a012953a05a
-      internalID: 205675546
+      spriteID: ee8464a08fea1544db1f49c73f41f8d0
+      internalID: -243865892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_5
+      name: spritesheet-displaycoletado-esc2v2_5
       rect:
         serializedVersion: 2
         x: 1120
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbceeae657bce6d47b2d7f018e43f6f0
-      internalID: -84716926
+      spriteID: 8a0da8dea2293894a95b2acd008fa203
+      internalID: 366165024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_6
+      name: spritesheet-displaycoletado-esc2v2_6
       rect:
         serializedVersion: 2
         x: 1344
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab3f7f56c231fdd4eb7c2d0bf5c5df55
-      internalID: -1578407865
+      spriteID: 1f35c7a326f2fad4b98e909e9d9a8222
+      internalID: 1018338929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_7
+      name: spritesheet-displaycoletado-esc2v2_7
       rect:
         serializedVersion: 2
         x: 1568
@@ -289,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8020b7c70bca334c8bc4c6dbf863b46
-      internalID: -2082836404
+      spriteID: c5d691189fa209f4bb758ae06e0af222
+      internalID: 1345180548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_8
+      name: spritesheet-displaycoletado-esc2v2_8
       rect:
         serializedVersion: 2
         x: 1792
@@ -310,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b1e412f344f8a442912c5a10a9dc5e6
-      internalID: -2073745006
+      spriteID: 17f64cb8a9836664990ff854f94bc87e
+      internalID: 236007269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_9
+      name: spritesheet-displaycoletado-esc2v2_9
       rect:
         serializedVersion: 2
         x: 2016
@@ -331,14 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c1687a3c3d28e145a2cc88af5ae803b
-      internalID: -1107491140
+      spriteID: ecd3b4f736d183141a5486210a8f8ff4
+      internalID: -895211824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_10
+      name: spritesheet-displaycoletado-esc2v2_10
       rect:
         serializedVersion: 2
         x: 2240
@@ -352,14 +352,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f3ae638af40a5c49958dd2ebfe74f62
-      internalID: 839601761
+      spriteID: 2897d1df6ab8dc6438fc4a714e0c8302
+      internalID: -153183705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_11
+      name: spritesheet-displaycoletado-esc2v2_11
       rect:
         serializedVersion: 2
         x: 2464
@@ -373,14 +373,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c52b84f071a93ec448237e758f6a22af
-      internalID: 1474041159
+      spriteID: 66b8445c4924e40479ae35481d28faf4
+      internalID: 1797585648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_12
+      name: spritesheet-displaycoletado-esc2v2_12
       rect:
         serializedVersion: 2
         x: 2688
@@ -394,14 +394,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1bfdca0110410c4f88e1629cb558862
-      internalID: -574720268
+      spriteID: b40cb1d756baf954bb3bf1cbcde3e5b5
+      internalID: 24221337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_13
+      name: spritesheet-displaycoletado-esc2v2_13
       rect:
         serializedVersion: 2
         x: 2912
@@ -415,14 +415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9efd44a37b623f743b9e8fdde4ccafb1
-      internalID: 814674171
+      spriteID: 5f7edb382767ad84c928ed3a97b5ee0b
+      internalID: 518475142
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_14
+      name: spritesheet-displaycoletado-esc2v2_14
       rect:
         serializedVersion: 2
         x: 3136
@@ -436,14 +436,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de00a8d427bbff2459d38945d1283dd0
-      internalID: 3762623
+      spriteID: 305daeee0891ee14fbfd1aa2932eacfb
+      internalID: -1556600627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_15
+      name: spritesheet-displaycoletado-esc2v2_15
       rect:
         serializedVersion: 2
         x: 3360
@@ -457,14 +457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9b0b99b499557348977eff91e73dfdd
-      internalID: 7538876
+      spriteID: 516e7060bbe2dd34497faf10f4a907e7
+      internalID: -736501135
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_16
+      name: spritesheet-displaycoletado-esc2v2_16
       rect:
         serializedVersion: 2
         x: 3584
@@ -478,14 +478,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4adf347a57a2a684082f3e956f863e42
-      internalID: -1468622145
+      spriteID: 3569006acc3324d4cb8f44f6a99dbe86
+      internalID: -1758843331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_17
+      name: spritesheet-displaycoletado-esc2v2_17
       rect:
         serializedVersion: 2
         x: 3808
@@ -499,14 +499,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49636cab20fdc3c4b9f90637c4fd12ea
-      internalID: 1160374429
+      spriteID: f58cc7f6f46f2024e98b714938b1975e
+      internalID: -1629706039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_18
+      name: spritesheet-displaycoletado-esc2v2_18
       rect:
         serializedVersion: 2
         x: 4032
@@ -520,14 +520,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43a2fc3b50e72ec4cad523b2e0ee6a4d
-      internalID: 946587523
+      spriteID: ed691ee4633f7f14fbe1053d931fa087
+      internalID: 1799632506
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_19
+      name: spritesheet-displaycoletado-esc2v2_19
       rect:
         serializedVersion: 2
         x: 4256
@@ -541,14 +541,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd45b857a4dce834ca19b99b66b7960d
-      internalID: -1726576065
+      spriteID: 4479fdb8e7c9ce6478d7808061009971
+      internalID: -702182953
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_20
+      name: spritesheet-displaycoletado-esc2v2_20
       rect:
         serializedVersion: 2
         x: 4480
@@ -562,14 +562,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60c75b319880f4746bf2694308dd8a46
-      internalID: -1036303799
+      spriteID: b3d61c172ea83a442aa2fc07a3750dbd
+      internalID: -1920741979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_21
+      name: spritesheet-displaycoletado-esc2v2_21
       rect:
         serializedVersion: 2
         x: 4704
@@ -583,14 +583,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edd8439ed272f274aa82cef643375a6c
-      internalID: 1850284341
+      spriteID: fa374dfcff24f684b90cf2a9511cd418
+      internalID: 2065086622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_22
+      name: spritesheet-displaycoletado-esc2v2_22
       rect:
         serializedVersion: 2
         x: 4928
@@ -604,14 +604,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2b81ab0ee8de46428c2774b9ad75bd3
-      internalID: -1918847610
+      spriteID: ed202dbf41362fe4aad332f59b39dd3c
+      internalID: -459071431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaypontosbackground-esc2_23
+      name: spritesheet-displaycoletado-esc2v2_23
       rect:
         serializedVersion: 2
         x: 5152
@@ -625,8 +625,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: feb84c1ee56d0f645908602aac5ace9b
-      internalID: 810301078
+      spriteID: f84eace9db340c04487cf3c38136406e
+      internalID: 1779696482
       vertices: []
       indices: 
       edges: []
@@ -642,30 +642,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spritesheet-displaypontosbackground-esc2_21: 1850284341
-      spritesheet-displaypontosbackground-esc2_0: 956422127
-      spritesheet-displaypontosbackground-esc2_10: 839601761
-      spritesheet-displaypontosbackground-esc2_6: -1578407865
-      spritesheet-displaypontosbackground-esc2_11: 1474041159
-      spritesheet-displaypontosbackground-esc2_18: 946587523
-      spritesheet-displaypontosbackground-esc2_8: -2073745006
-      spritesheet-displaypontosbackground-esc2_12: -574720268
-      spritesheet-displaypontosbackground-esc2_15: 7538876
-      spritesheet-displaypontosbackground-esc2_23: 810301078
-      spritesheet-displaypontosbackground-esc2_5: -84716926
-      spritesheet-displaypontosbackground-esc2_17: 1160374429
-      spritesheet-displaypontosbackground-esc2_1: 366111875
-      spritesheet-displaypontosbackground-esc2_13: 814674171
-      spritesheet-displaypontosbackground-esc2_22: -1918847610
-      spritesheet-displaypontosbackground-esc2_2: -531400680
-      spritesheet-displaypontosbackground-esc2_3: 974589940
-      spritesheet-displaypontosbackground-esc2_9: -1107491140
-      spritesheet-displaypontosbackground-esc2_19: -1726576065
-      spritesheet-displaypontosbackground-esc2_14: 3762623
-      spritesheet-displaypontosbackground-esc2_20: -1036303799
-      spritesheet-displaypontosbackground-esc2_7: -2082836404
-      spritesheet-displaypontosbackground-esc2_4: 205675546
-      spritesheet-displaypontosbackground-esc2_16: -1468622145
+      spritesheet-displaycoletado-esc2v2_0: -465028108
+      spritesheet-displaycoletado-esc2v2_11: 1797585648
+      spritesheet-displaycoletado-esc2v2_4: -243865892
+      spritesheet-displaycoletado-esc2v2_13: 518475142
+      spritesheet-displaycoletado-esc2v2_23: 1779696482
+      spritesheet-displaycoletado-esc2v2_14: -1556600627
+      spritesheet-displaycoletado-esc2v2_1: -339025144
+      spritesheet-displaycoletado-esc2v2_9: -895211824
+      spritesheet-displaycoletado-esc2v2_7: 1345180548
+      spritesheet-displaycoletado-esc2v2_3: 1931456957
+      spritesheet-displaycoletado-esc2v2_10: -153183705
+      spritesheet-displaycoletado-esc2v2_8: 236007269
+      spritesheet-displaycoletado-esc2v2_19: -702182953
+      spritesheet-displaycoletado-esc2v2_20: -1920741979
+      spritesheet-displaycoletado-esc2v2_2: -1154744435
+      spritesheet-displaycoletado-esc2v2_18: 1799632506
+      spritesheet-displaycoletado-esc2v2_6: 1018338929
+      spritesheet-displaycoletado-esc2v2_15: -736501135
+      spritesheet-displaycoletado-esc2v2_12: 24221337
+      spritesheet-displaycoletado-esc2v2_5: 366165024
+      spritesheet-displaycoletado-esc2v2_21: 2065086622
+      spritesheet-displaycoletado-esc2v2_22: -459071431
+      spritesheet-displaycoletado-esc2v2_16: -1758843331
+      spritesheet-displaycoletado-esc2v2_17: -1629706039
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

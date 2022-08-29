@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e018ce89200a55b429c1f58a76e17894
+guid: dd6ff9e208b1cf2479e060b61ca26f42
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_0
+      name: spritesheet-displaypontos-esc2v2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14e54b370f024d244b867cc5f1e1ece7
-      internalID: 1451701206
+      spriteID: 411b2f467c1bb9e4588fb2acec2b8436
+      internalID: 1309807540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_1
+      name: spritesheet-displaypontos-esc2v2_1
       rect:
         serializedVersion: 2
         x: 224
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 376f0b4b93d778543bd075beea67a348
-      internalID: 440060367
+      spriteID: 6d68d9d6802e7664a85a893af557970d
+      internalID: -1093857253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_2
+      name: spritesheet-displaypontos-esc2v2_2
       rect:
         serializedVersion: 2
         x: 448
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8e868fcf5d74e143bef32e9b8c30887
-      internalID: -1590898295
+      spriteID: d66fd995ecd276c43961d43be362172f
+      internalID: 2142243414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_3
+      name: spritesheet-displaypontos-esc2v2_3
       rect:
         serializedVersion: 2
         x: 672
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b18ea2333c3a1244b5e85191c2fe46d
-      internalID: 1135952893
+      spriteID: 326b8e2cd5ed8724dbf9f03c904efbe4
+      internalID: -958617686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_4
+      name: spritesheet-displaypontos-esc2v2_4
       rect:
         serializedVersion: 2
         x: 896
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bebcc74ddd2d0bb40b3d94fe8c723954
-      internalID: 2057549242
+      spriteID: f1686289a02d7f3409dd0244c53ef9b8
+      internalID: 1015633293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_5
+      name: spritesheet-displaypontos-esc2v2_5
       rect:
         serializedVersion: 2
         x: 1120
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bda0dc3e77c65244a077c85cef749e3
-      internalID: 278572626
+      spriteID: 87a86aadad0b35e4eb8b629570a847cd
+      internalID: 873644307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_6
+      name: spritesheet-displaypontos-esc2v2_6
       rect:
         serializedVersion: 2
         x: 1344
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d57ccc91c071f24696ad0180b91e14f
-      internalID: -1742618277
+      spriteID: 578e53d28ca123143b72bb3359c23292
+      internalID: -615692341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_7
+      name: spritesheet-displaypontos-esc2v2_7
       rect:
         serializedVersion: 2
         x: 1568
@@ -289,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fefb608b9e5ecd640b06a683b811f1bf
-      internalID: 1505839937
+      spriteID: 04c215fc812a0f241a04df2f92cd8151
+      internalID: -1501797972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_8
+      name: spritesheet-displaypontos-esc2v2_8
       rect:
         serializedVersion: 2
         x: 1792
@@ -310,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cf1c5c75e0baa946b2b8b6bcf460112
-      internalID: 562102470
+      spriteID: 787a396c77e864e469350bdd40145865
+      internalID: 1729999270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_9
+      name: spritesheet-displaypontos-esc2v2_9
       rect:
         serializedVersion: 2
         x: 2016
@@ -331,14 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c92a7e6333170c44a2316d0f4f99015
-      internalID: -1128092944
+      spriteID: a10995ba0ec1c2742a1f9a9716bf0c1d
+      internalID: -1701154071
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_10
+      name: spritesheet-displaypontos-esc2v2_10
       rect:
         serializedVersion: 2
         x: 2240
@@ -352,14 +352,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0348fbb08403c049993b36b52adc9c2
-      internalID: 689820867
+      spriteID: 04dfa3564f70c4942bdeb251b23140e1
+      internalID: 348927157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_11
+      name: spritesheet-displaypontos-esc2v2_11
       rect:
         serializedVersion: 2
         x: 2464
@@ -373,14 +373,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e140c2d06d6162145ab388940e8e75f3
-      internalID: 1452924753
+      spriteID: 72b618b63b28e3e468dcea9099a536a6
+      internalID: 1312129359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_12
+      name: spritesheet-displaypontos-esc2v2_12
       rect:
         serializedVersion: 2
         x: 2688
@@ -394,14 +394,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b303bab57590cbb48a83e8731bcd7d78
-      internalID: -536525679
+      spriteID: 74865488cd5cbe741a7e7f1b0bb17524
+      internalID: 1726860866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_13
+      name: spritesheet-displaypontos-esc2v2_13
       rect:
         serializedVersion: 2
         x: 2912
@@ -415,14 +415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5035dc091b81c54ebd9b050e4e44750
-      internalID: 1713056200
+      spriteID: 8eb901b2d83ca1d4c8fff5b2b64e7de1
+      internalID: -1439173182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_14
+      name: spritesheet-displaypontos-esc2v2_14
       rect:
         serializedVersion: 2
         x: 3136
@@ -436,14 +436,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7ebf4c90a5940a4eacbcdddaba57668
-      internalID: 252872090
+      spriteID: 0c32d13c215386649ada5d75101e06e6
+      internalID: -2146856282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_15
+      name: spritesheet-displaypontos-esc2v2_15
       rect:
         serializedVersion: 2
         x: 3360
@@ -457,14 +457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9023f17b24af9d4e919e5b6d4854299
-      internalID: 1989448575
+      spriteID: dd9057e6ec6058b4eb5fc9e1dec970b4
+      internalID: 1412270812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_16
+      name: spritesheet-displaypontos-esc2v2_16
       rect:
         serializedVersion: 2
         x: 3584
@@ -478,14 +478,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ed032a9ed4251443bfc3c4a3fd06133
-      internalID: -1719354291
+      spriteID: 16c15f3e57a8a774988211818ca6758d
+      internalID: -895870539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_17
+      name: spritesheet-displaypontos-esc2v2_17
       rect:
         serializedVersion: 2
         x: 3808
@@ -499,14 +499,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ea320d63a2f0154faff71a4a8fd4bd6
-      internalID: 1645994914
+      spriteID: e1ceabb5b4a7ceb489abfda35f845330
+      internalID: 1874391752
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_18
+      name: spritesheet-displaypontos-esc2v2_18
       rect:
         serializedVersion: 2
         x: 4032
@@ -520,14 +520,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62b6a622c8f4b2a44ba9a22bcf82a67b
-      internalID: 100459274
+      spriteID: ab7af43c2e87e01428a780d70b0e2726
+      internalID: -1703587558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_19
+      name: spritesheet-displaypontos-esc2v2_19
       rect:
         serializedVersion: 2
         x: 4256
@@ -541,14 +541,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 400957b7af3e37742a0ed0ee842abaee
-      internalID: 1653127820
+      spriteID: 87873adb2eb9c53469fbfa62fd25646e
+      internalID: 1694056459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_20
+      name: spritesheet-displaypontos-esc2v2_20
       rect:
         serializedVersion: 2
         x: 4480
@@ -562,14 +562,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a226d0e4eabb5e4299de6557a8561af
-      internalID: 1078277725
+      spriteID: 0f917b55b034d284d91a2b5783a1c0cf
+      internalID: -154238910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_21
+      name: spritesheet-displaypontos-esc2v2_21
       rect:
         serializedVersion: 2
         x: 4704
@@ -583,14 +583,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04cd6b90551433d4c9debe7af2ff3797
-      internalID: 1368468486
+      spriteID: 5ffca2a8b4357e840a20d911832701a5
+      internalID: 697157266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_22
+      name: spritesheet-displaypontos-esc2v2_22
       rect:
         serializedVersion: 2
         x: 4928
@@ -604,14 +604,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45c578e70c0db6b4aaccbb3720ad366e
-      internalID: -1801695612
+      spriteID: f2af9c366515ba8418fe2174d5c73afe
+      internalID: -807883219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-circulo-background-esc2_23
+      name: spritesheet-displaypontos-esc2v2_23
       rect:
         serializedVersion: 2
         x: 5152
@@ -625,8 +625,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac53398f17c92334d9c3995808c18fb6
-      internalID: -387281022
+      spriteID: bc620b2d3cef83c49b08bfdafdb5db39
+      internalID: 1986835134
       vertices: []
       indices: 
       edges: []
@@ -642,30 +642,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spritesheet-circulo-background-esc2_16: -1719354291
-      spritesheet-circulo-background-esc2_13: 1713056200
-      spritesheet-circulo-background-esc2_1: 440060367
-      spritesheet-circulo-background-esc2_18: 100459274
-      spritesheet-circulo-background-esc2_19: 1653127820
-      spritesheet-circulo-background-esc2_4: 2057549242
-      spritesheet-circulo-background-esc2_20: 1078277725
-      spritesheet-circulo-background-esc2_10: 689820867
-      spritesheet-circulo-background-esc2_6: -1742618277
-      spritesheet-circulo-background-esc2_2: -1590898295
-      spritesheet-circulo-background-esc2_5: 278572626
-      spritesheet-circulo-background-esc2_23: -387281022
-      spritesheet-circulo-background-esc2_7: 1505839937
-      spritesheet-circulo-background-esc2_22: -1801695612
-      spritesheet-circulo-background-esc2_8: 562102470
-      spritesheet-circulo-background-esc2_14: 252872090
-      spritesheet-circulo-background-esc2_21: 1368468486
-      spritesheet-circulo-background-esc2_0: 1451701206
-      spritesheet-circulo-background-esc2_9: -1128092944
-      spritesheet-circulo-background-esc2_11: 1452924753
-      spritesheet-circulo-background-esc2_3: 1135952893
-      spritesheet-circulo-background-esc2_12: -536525679
-      spritesheet-circulo-background-esc2_15: 1989448575
-      spritesheet-circulo-background-esc2_17: 1645994914
+      spritesheet-displaypontos-esc2v2_17: 1874391752
+      spritesheet-displaypontos-esc2v2_6: -615692341
+      spritesheet-displaypontos-esc2v2_5: 873644307
+      spritesheet-displaypontos-esc2v2_22: -807883219
+      spritesheet-displaypontos-esc2v2_11: 1312129359
+      spritesheet-displaypontos-esc2v2_14: -2146856282
+      spritesheet-displaypontos-esc2v2_1: -1093857253
+      spritesheet-displaypontos-esc2v2_0: 1309807540
+      spritesheet-displaypontos-esc2v2_2: 2142243414
+      spritesheet-displaypontos-esc2v2_18: -1703587558
+      spritesheet-displaypontos-esc2v2_3: -958617686
+      spritesheet-displaypontos-esc2v2_12: 1726860866
+      spritesheet-displaypontos-esc2v2_15: 1412270812
+      spritesheet-displaypontos-esc2v2_8: 1729999270
+      spritesheet-displaypontos-esc2v2_16: -895870539
+      spritesheet-displaypontos-esc2v2_4: 1015633293
+      spritesheet-displaypontos-esc2v2_21: 697157266
+      spritesheet-displaypontos-esc2v2_19: 1694056459
+      spritesheet-displaypontos-esc2v2_20: -154238910
+      spritesheet-displaypontos-esc2v2_23: 1986835134
+      spritesheet-displaypontos-esc2v2_7: -1501797972
+      spritesheet-displaypontos-esc2v2_9: -1701154071
+      spritesheet-displaypontos-esc2v2_10: 348927157
+      spritesheet-displaypontos-esc2v2_13: -1439173182
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

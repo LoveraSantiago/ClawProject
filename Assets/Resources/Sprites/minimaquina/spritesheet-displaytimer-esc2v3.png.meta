@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 916d62a7d05447c46adbbe1b844eab68
+guid: ba0b163c5982bcf40a2839456ba012c6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_0
+      name: spritesheet-displaytimer-esc2v3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c6edcd818b10244494e438b4f583db0
-      internalID: -1195260679
+      spriteID: 18323bec36380b544a67ccc4cd5ebadf
+      internalID: -1975265194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_1
+      name: spritesheet-displaytimer-esc2v3_1
       rect:
         serializedVersion: 2
         x: 224
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df8491bca60c46041bd721241dc4e577
-      internalID: -763471937
+      spriteID: 6cd667fd9c6d0de428269a4671fce5e7
+      internalID: 1797506514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_2
+      name: spritesheet-displaytimer-esc2v3_2
       rect:
         serializedVersion: 2
         x: 448
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50be9fe2966f594449366407e144f537
-      internalID: 438313586
+      spriteID: 8b812b04bd3553249b416660da768bf0
+      internalID: 1558608299
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_3
+      name: spritesheet-displaytimer-esc2v3_3
       rect:
         serializedVersion: 2
         x: 672
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0f17fa85fcd32c43b9e26f5b42896f7
-      internalID: 766295567
+      spriteID: 5b4c8511c7427e6498d27669d6db3a0c
+      internalID: 40395149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_4
+      name: spritesheet-displaytimer-esc2v3_4
       rect:
         serializedVersion: 2
         x: 896
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 849dfa58d6f6c8441926a00ef303ae57
-      internalID: -207138065
+      spriteID: f65149fa9f0775f41b752b4cf857fc14
+      internalID: 215059784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_5
+      name: spritesheet-displaytimer-esc2v3_5
       rect:
         serializedVersion: 2
         x: 1120
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19565414ba6ae77448b5fe7210a71667
-      internalID: -267492045
+      spriteID: 38d923a4fd121854791a93025d54a2b3
+      internalID: 753193622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_6
+      name: spritesheet-displaytimer-esc2v3_6
       rect:
         serializedVersion: 2
         x: 1344
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18baf9def44bbcd4fb353d2f3f67c76b
-      internalID: -690774062
+      spriteID: a0d461f0724612f4c8871b8bfbd09382
+      internalID: 1110584758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_7
+      name: spritesheet-displaytimer-esc2v3_7
       rect:
         serializedVersion: 2
         x: 1568
@@ -289,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 411e7b31b216ff248a6f59db750c65b8
-      internalID: 759607064
+      spriteID: 247e3160573be134cb0be6ce0d54e376
+      internalID: -1368561533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_8
+      name: spritesheet-displaytimer-esc2v3_8
       rect:
         serializedVersion: 2
         x: 1792
@@ -310,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8a689e8096043c41a6dd105e6e761bb
-      internalID: -1367210121
+      spriteID: 560f24abe6ba7bf46ae7eb267e58f69a
+      internalID: -144303098
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_9
+      name: spritesheet-displaytimer-esc2v3_9
       rect:
         serializedVersion: 2
         x: 2016
@@ -331,14 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 689bfdb9d54628940b9ef66ab4adb029
-      internalID: -1731159472
+      spriteID: b806bba817f42824c8df6f43ddc9963e
+      internalID: -992326465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_10
+      name: spritesheet-displaytimer-esc2v3_10
       rect:
         serializedVersion: 2
         x: 2240
@@ -352,14 +352,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84e31c52a93fe0540add605816fa9877
-      internalID: -1845428157
+      spriteID: 02e77feb945982547bf10a8013e64a12
+      internalID: -646372277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_11
+      name: spritesheet-displaytimer-esc2v3_11
       rect:
         serializedVersion: 2
         x: 2464
@@ -373,14 +373,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8c9cd13dc6875f4db9300b136334b1c
-      internalID: -538407572
+      spriteID: 950c61fee616b814b85f7c30afaae18f
+      internalID: 1411244782
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_12
+      name: spritesheet-displaytimer-esc2v3_12
       rect:
         serializedVersion: 2
         x: 2688
@@ -394,14 +394,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4e51a9c135101843813f906c08fc85d
-      internalID: 2131654189
+      spriteID: 451ca586616b9d440803000c6a8c96e6
+      internalID: -1613118716
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_13
+      name: spritesheet-displaytimer-esc2v3_13
       rect:
         serializedVersion: 2
         x: 2912
@@ -415,14 +415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a459922af3295e4588b59ad15f791b6
-      internalID: 2006373055
+      spriteID: abfdee3097d585648a678c613857e1a2
+      internalID: 562342520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_14
+      name: spritesheet-displaytimer-esc2v3_14
       rect:
         serializedVersion: 2
         x: 3136
@@ -436,14 +436,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fcedb218d84b8342bd9cc7c4b813c4e
-      internalID: 352205970
+      spriteID: 6bd90c10549039c449d966013c18e884
+      internalID: -968955284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_15
+      name: spritesheet-displaytimer-esc2v3_15
       rect:
         serializedVersion: 2
         x: 3360
@@ -457,14 +457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3d12b8ea5a4d124184f5a57f395873d
-      internalID: -1409521413
+      spriteID: 8fc7b5bbc1cb4a24f9c0bb4177468bac
+      internalID: -1689610536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_16
+      name: spritesheet-displaytimer-esc2v3_16
       rect:
         serializedVersion: 2
         x: 3584
@@ -478,14 +478,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8cf7d86e40f4e44fa9d10631e2f1b81
-      internalID: -1125600586
+      spriteID: 0ba51fe883860fc46be9b19f185a1edc
+      internalID: 1635255943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_17
+      name: spritesheet-displaytimer-esc2v3_17
       rect:
         serializedVersion: 2
         x: 3808
@@ -499,14 +499,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c8dc847298c05041a72442cdb691825
-      internalID: 1608768724
+      spriteID: 2591314d53ad83e499f3407cbf108150
+      internalID: -590230791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_18
+      name: spritesheet-displaytimer-esc2v3_18
       rect:
         serializedVersion: 2
         x: 4032
@@ -520,14 +520,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a1c9cf9344afda41bdd90a2ffc53b8c
-      internalID: -1546210498
+      spriteID: 5acf77e88fcf2c042b81a19a20981d08
+      internalID: 1808204937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_19
+      name: spritesheet-displaytimer-esc2v3_19
       rect:
         serializedVersion: 2
         x: 4256
@@ -541,14 +541,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cd9fc96a3436484db03fdc55d968665
-      internalID: 115765274
+      spriteID: ae65b3667ba40c243be89cc817b71c90
+      internalID: -1581255285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_20
+      name: spritesheet-displaytimer-esc2v3_20
       rect:
         serializedVersion: 2
         x: 4480
@@ -562,14 +562,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e70d41078ad8fc40b5e93e30eef085d
-      internalID: -259439369
+      spriteID: 4c384625706371040b19b81925a5cd0b
+      internalID: 1871056617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_21
+      name: spritesheet-displaytimer-esc2v3_21
       rect:
         serializedVersion: 2
         x: 4704
@@ -583,14 +583,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 862a7fed11aa55a468f1c29287f2c5b7
-      internalID: -481432481
+      spriteID: 2914533156ce0c940a797888795c729c
+      internalID: -958795632
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_22
+      name: spritesheet-displaytimer-esc2v3_22
       rect:
         serializedVersion: 2
         x: 4928
@@ -604,14 +604,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 220106227154fec40a36d64d7c92175b
-      internalID: -1891175790
+      spriteID: c9be97025399fa945b3a35041e769b90
+      internalID: -1376366703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-displaycoletado-esc2_23
+      name: spritesheet-displaytimer-esc2v3_23
       rect:
         serializedVersion: 2
         x: 5152
@@ -625,8 +625,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebf33dde6cfa7624f87db47684ace281
-      internalID: 1533503339
+      spriteID: 5cb7427dfd5c9b4439a6f7f100e0c7b6
+      internalID: -228063791
       vertices: []
       indices: 
       edges: []
@@ -642,30 +642,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spritesheet-displaycoletado-esc2_2: 438313586
-      spritesheet-displaycoletado-esc2_16: -1125600586
-      spritesheet-displaycoletado-esc2_22: -1891175790
-      spritesheet-displaycoletado-esc2_8: -1367210121
-      spritesheet-displaycoletado-esc2_15: -1409521413
-      spritesheet-displaycoletado-esc2_17: 1608768724
-      spritesheet-displaycoletado-esc2_18: -1546210498
-      spritesheet-displaycoletado-esc2_7: 759607064
-      spritesheet-displaycoletado-esc2_4: -207138065
-      spritesheet-displaycoletado-esc2_0: -1195260679
-      spritesheet-displaycoletado-esc2_14: 352205970
-      spritesheet-displaycoletado-esc2_20: -259439369
-      spritesheet-displaycoletado-esc2_5: -267492045
-      spritesheet-displaycoletado-esc2_1: -763471937
-      spritesheet-displaycoletado-esc2_10: -1845428157
-      spritesheet-displaycoletado-esc2_23: 1533503339
-      spritesheet-displaycoletado-esc2_3: 766295567
-      spritesheet-displaycoletado-esc2_9: -1731159472
-      spritesheet-displaycoletado-esc2_6: -690774062
-      spritesheet-displaycoletado-esc2_12: 2131654189
-      spritesheet-displaycoletado-esc2_11: -538407572
-      spritesheet-displaycoletado-esc2_19: 115765274
-      spritesheet-displaycoletado-esc2_21: -481432481
-      spritesheet-displaycoletado-esc2_13: 2006373055
+      spritesheet-displaytimer-esc2v3_12: -1613118716
+      spritesheet-displaytimer-esc2v3_10: -646372277
+      spritesheet-displaytimer-esc2v3_16: 1635255943
+      spritesheet-displaytimer-esc2v3_7: -1368561533
+      spritesheet-displaytimer-esc2v3_9: -992326465
+      spritesheet-displaytimer-esc2v3_13: 562342520
+      spritesheet-displaytimer-esc2v3_4: 215059784
+      spritesheet-displaytimer-esc2v3_6: 1110584758
+      spritesheet-displaytimer-esc2v3_11: 1411244782
+      spritesheet-displaytimer-esc2v3_3: 40395149
+      spritesheet-displaytimer-esc2v3_2: 1558608299
+      spritesheet-displaytimer-esc2v3_14: -968955284
+      spritesheet-displaytimer-esc2v3_0: -1975265194
+      spritesheet-displaytimer-esc2v3_1: 1797506514
+      spritesheet-displaytimer-esc2v3_20: 1871056617
+      spritesheet-displaytimer-esc2v3_8: -144303098
+      spritesheet-displaytimer-esc2v3_15: -1689610536
+      spritesheet-displaytimer-esc2v3_5: 753193622
+      spritesheet-displaytimer-esc2v3_22: -1376366703
+      spritesheet-displaytimer-esc2v3_17: -590230791
+      spritesheet-displaytimer-esc2v3_19: -1581255285
+      spritesheet-displaytimer-esc2v3_21: -958795632
+      spritesheet-displaytimer-esc2v3_23: -228063791
+      spritesheet-displaytimer-esc2v3_18: 1808204937
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
