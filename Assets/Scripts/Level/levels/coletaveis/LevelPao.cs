@@ -20,7 +20,12 @@ public class LevelPao : AbstractLevelColetavel
     public override int getIdColetavel()
     {
         return 13;
-    }   
+    }
+
+    public override string getMaquinaNome()
+    {
+        return "Vibrante Primaria";
+    }
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {

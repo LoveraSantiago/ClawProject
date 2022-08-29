@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class FilterLevelsAll : FilterLevels
+public class FilterLevelsAliasAll : FilterLevelsAlias
 {
     protected override void filtrar(List<string> levelAlias, LevelEntidade levelEntidade)
     {

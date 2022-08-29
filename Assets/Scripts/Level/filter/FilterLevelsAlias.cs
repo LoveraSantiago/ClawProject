@@ -1,13 +1,18 @@
 using System.Collections.Generic;
 
-public abstract class FilterLevels : Consumidor<LevelEntidade>
+public abstract class FilterLevelsAlias : Consumidor<LevelEntidade>
 {
     private List<string> levelAlias;
 
-    public FilterLevels()
+    public FilterLevelsAlias()
     {
         levelAlias = new List<string>();
         levelAlias.Add("-");
+    }
+
+    protected void somenteNomesLevels()
+    {
+        levelAlias.Clear();
     }
 
     public void consumir(LevelEntidade levelEntidade)

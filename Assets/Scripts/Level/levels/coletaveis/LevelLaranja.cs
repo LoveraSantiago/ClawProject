@@ -27,6 +27,11 @@ public class LevelLaranja : AbstractLevelColetavel
         return true;
     }
 
+    public override string getMaquinaNome()
+    {
+        return "Outono Natural";
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         //13. Autumn in Vermont

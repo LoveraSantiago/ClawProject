@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class Level3 : AbstractLevelElevador
 {
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Nível 3";
     }
@@ -10,7 +10,12 @@ public class Level3 : AbstractLevelElevador
     public override string getMsgObjetivoLevel()
     {
         return "Cuidado com o numero de coletaveis";
-    }   
+    }
+
+    public override string getNameMap()
+    {
+        return Mapas.PARQUE_DIVERSOES;
+    }
 
     public override int[,] getArrayDeColetaveis()
     {
@@ -47,6 +52,11 @@ public class Level3 : AbstractLevelElevador
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "01:00");
         //return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:10");        
+    }
+
+    public override string getMaquinaNome()
+    {
+        return "Brilhante Fresco";
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()
@@ -102,6 +112,11 @@ public class Level3 : AbstractLevelElevador
     {
         return false;
     }
+
+    public override string getNomeMapa()
+    {
+        return LevelMapNomes.PARQUE_DIVERSOES;
+    }    
 
     public static Fornecedor<AbstractLevel> getFornecedor()
     {

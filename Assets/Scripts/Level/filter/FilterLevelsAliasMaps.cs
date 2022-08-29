@@ -1,15 +1,19 @@
 using System.Collections.Generic;
 
-public class FilterLevelsElevador : FilterLevels
+public class FilterLevelsAliasMaps : FilterLevelsAlias
 {
+    public FilterLevelsAliasMaps()
+    {
+        somenteNomesLevels();
+    }
+
     protected override void filtrar(List<string> levelAlias, LevelEntidade levelEntidade)
     {
         Fornecedor<AbstractLevel> fornecedorLevel = levelEntidade.supplierLevel;
         AbstractLevel level = fornecedorLevel.fornecer();
-
-        if (LevelUtils.isElevadorLevel(level))
+        if (level.isLevelMap())
         {
             levelAlias.Add(levelEntidade.level.ToString());
-        }        
+        }
     }
 }

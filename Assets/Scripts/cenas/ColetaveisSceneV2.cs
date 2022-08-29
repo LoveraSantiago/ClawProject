@@ -22,8 +22,6 @@ public class ColetaveisSceneV2 : MonoBehaviour,
     [Space(5)]
     [SerializeField] private ModalNoFichaDto modalNoFichaDto;
 
-    private float ultimaPosicao;
-
     private TimerFicha timerFichaOuro;
     private Prateleiras prateleiras;    
     private MovimentadorDeArmario movimentadorArmario;
@@ -40,8 +38,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
         timerFichaOuro = new TimerFicha(timerFichaDto, Ficha.OURO);
         prateleiras    = new Prateleiras(prateleirasDto);
 
-        scrollRect.onValueChanged.AddListener((pos) => movimentado(pos));
-        ultimaPosicao = 1;
+        scrollRect.onValueChanged.AddListener((pos) => prateleiras.movimentado(pos, prateleirasDto));
 
         popularBotoes();
         movimentadorArmario = new MovimentadorDeArmario(prateleirasDto, movimentadorDto);
@@ -58,20 +55,6 @@ public class ColetaveisSceneV2 : MonoBehaviour,
     private void Update()
     {
         timerFichaOuro.update();
-    }
-
-    private void movimentado(Vector2 posicao)
-    {
-        float result = ultimaPosicao - posicao.y;
-        if(result > 0)
-        {
-            prateleiras.movimentarParaBaixo(prateleirasDto);
-        }
-        else if(result < 0)
-        {
-            prateleiras.movimentarParaCima(prateleirasDto);
-        }
-        ultimaPosicao = posicao.y;        
     }
 
     private void popularBotoes()
@@ -114,23 +97,23 @@ public class ColetaveisSceneV2 : MonoBehaviour,
         int indice = PlayerPrefsColetaveis.recuperarEApagarNavegacaoColetavel();
         if(indice != 0)
         {
-            Debug.Log("Restauracao SIM");
+            //Debug.Log("Restauracao SIM");
             IndiceArmarioSelecionadoDto indiceArmarioSelecionado =PlayerPrefsScrollPosition.recuperarELimparPosScrollRectColetaveis();
             scrollRect.verticalNormalizedPosition = indiceArmarioSelecionado.posScrollArmario;
-            Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
+            //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
             HelperColetavelEntidade helper = new HelperColetavelEntidade();
             ColetavelEntidade coletavelEntidade = helper.getColetavelEntidadeById(indice);
             while (!prateleiras.isPrateleiraVisivel(coletavelEntidade.ordem))
             {
                 prateleiras.movimentarParaBaixo(prateleirasDto);
-                Debug.Log("Movimentando para Baixo ");
+                //Debug.Log("Movimentando para Baixo ");
             }
             movimentadorArmario.movimentarImediato(indiceArmarioSelecionado, scrollRect, prateleirasDto);
             detalheColetavel.detalheAberto(coletavelEntidade, indiceArmarioSelecionado, prateleirasDto);
         }
         else
         {
-            Debug.Log("Restauracao NAO");
+            //Debug.Log("Restauracao NAO");
         }
     }
 
@@ -141,7 +124,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
     void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
     {
-        Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
+        //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
         IndiceArmarioSelecionadoDto indiceArmario = new IndiceArmarioSelecionadoDto(evento, scrollRect.verticalNormalizedPosition);
         detalheColetavel.abrirDetalhe(indiceArmario, prateleirasDto);
     }

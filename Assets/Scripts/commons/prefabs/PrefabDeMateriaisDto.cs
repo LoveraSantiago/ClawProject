@@ -9,6 +9,7 @@ public class PrefabDeMateriaisDto : MonoBehaviour
     [SerializeField] private Material materialHdrAditivo;
     [SerializeField] private Material materialHdrAlpha;
     [SerializeField] private Material materialSprUnlitDefault;
+    [SerializeField] private Material materialMaquina;
 
     public Material MaterialGrayScale { get { return materialGrayScale; } }
     public Material MaterialOutline   { get { return materialOutline; } }
@@ -16,4 +17,5 @@ public class PrefabDeMateriaisDto : MonoBehaviour
     public Material MaterialHdrAditivo{ get { return materialHdrAditivo; } }    
     public Material MaterialHdrAlpha  { get { return materialHdrAlpha; } }    
     public Material MaterialSprUnlitDefault { get { return materialSprUnlitDefault; } }
+    public Material MaterialMaquina   { get { return materialMaquina; } }
 }

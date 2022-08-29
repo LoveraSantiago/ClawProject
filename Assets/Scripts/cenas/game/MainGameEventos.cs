@@ -50,7 +50,7 @@ public class MainGameEventos
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(draggavelManager);
 
-        new AcaoBBarItemEscolhido<PowerUpBtnInfo>()
+        new AcaoItemEscolhido<PowerUpBtnInfo>()
             .configurarProdutor(maquinaManager.scrollPupsManager)
             .adicionarConsumidor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(cameraManager)

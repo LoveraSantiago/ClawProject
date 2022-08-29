@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class LevelPowerUp : AbstractLevel
 {
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Treino de Power Up";
     }
@@ -45,6 +45,11 @@ public class LevelPowerUp : AbstractLevel
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
+    }
+
+    public override string getMaquinaNome()
+    {
+        return "Agua Azul Esverdeada";
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()

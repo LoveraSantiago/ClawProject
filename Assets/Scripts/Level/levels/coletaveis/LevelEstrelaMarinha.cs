@@ -19,7 +19,12 @@ public class LevelEstrelaMarinha : AbstractLevelColetavel
     public override int getIdColetavel()
     {
         return 16;
-    }  
+    }
+
+    public override string getMaquinaNome()
+    {
+        return "Iceberg Gelada";
+    }
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {

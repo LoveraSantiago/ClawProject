@@ -34,12 +34,7 @@ public class CenaUtils
     public static void irParaCenaColetaveis()
     {
         SceneManager.LoadScene("ColetaveisSceneV2");
-    }
-
-    public static void irParaCenaNaoImplementada()
-    {
-        SceneManager.LoadScene("NotImplementedScene");
-    }
+    }   
 
     public static void irParaCenaLoja()
     {
@@ -49,5 +44,10 @@ public class CenaUtils
     public static void irParaCenaConfig()
     {
         SceneManager.LoadScene("ConfigScene");
+    }
+
+    public static void irParaCenaLevels()
+    {
+        SceneManager.LoadScene("LevelsScene");
     }
 }

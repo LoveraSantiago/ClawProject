@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Level2 : AbstractLevel
 {
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Nível 2";
     }
@@ -16,7 +16,12 @@ public class Level2 : AbstractLevel
     public override TipoGame getTipoGame()
     {
         return TipoGame.NORMAL;
-    }   
+    }
+
+    public override string getNameMap()
+    {
+        return Mapas.PARQUE_DIVERSOES;
+    }
 
     public override int[,] getArrayDeColetaveis()
     {
@@ -36,6 +41,11 @@ public class Level2 : AbstractLevel
         return false;
     }
 
+    public override string getNomeMapa()
+    {
+        return LevelMapNomes.PARQUE_DIVERSOES;
+    }
+
     public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
     {
         return ColetavelEntidade.FAMILIA.FRUTAS;
@@ -44,7 +54,12 @@ public class Level2 : AbstractLevel
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.REGRESSIVA, "02:01");
-    }   
+    }
+
+    public override string getMaquinaNome()
+    {
+        return "Chiclete e Embalagem";
+    }
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {   

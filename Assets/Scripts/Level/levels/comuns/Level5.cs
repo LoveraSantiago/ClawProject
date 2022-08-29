@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class Level5 : AbstractLevelObstaculos
 {
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Nível 5";
     }
@@ -24,6 +24,11 @@ public class Level5 : AbstractLevelObstaculos
             {0, 0, 0, 0, 0, 0, 0}
         };
         return coletaveis;
+    }
+
+    public override string getNameMap()
+    {
+        return Mapas.PARQUE_DIVERSOES;
     }
 
     public override bool[,] getArrayDeObstaculos()
@@ -53,6 +58,11 @@ public class Level5 : AbstractLevelObstaculos
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
+    }
+
+    public override string getMaquinaNome()
+    {
+        return "Terrosa Escura";
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()
@@ -107,6 +117,11 @@ public class Level5 : AbstractLevelObstaculos
     public override bool isLevelAlbedo0()
     {
         return true;
+    }
+
+    public override string getNomeMapa()
+    {
+        return LevelMapNomes.PARQUE_DIVERSOES;
     }
 
     public static Fornecedor<AbstractLevel> getFornecedor()

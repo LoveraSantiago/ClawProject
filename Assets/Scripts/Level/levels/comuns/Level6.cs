@@ -2,6 +2,11 @@ using System.Collections.Generic;
 
 public class Level6 : AbstractLevelOvo
 {
+    public override string getLevelName()
+    {
+        return "Level 6";
+    }
+
     public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
     {
         return ColetavelEntidade.FAMILIA.FRUTAS;
@@ -10,6 +15,11 @@ public class Level6 : AbstractLevelOvo
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
+    }
+
+    public override string getNameMap()
+    {
+        return Mapas.PARQUE_DIVERSOES;
     }
 
     public override int[,] getArrayDeColetaveis()
@@ -25,6 +35,11 @@ public class Level6 : AbstractLevelOvo
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0}
         };
+    }
+
+    public override string getMaquinaNome()
+    {
+        return "Dramatica Crocante";
     }
 
     public override Dictionary<string, string> getDicionarioDeCores()
@@ -79,7 +94,12 @@ public class Level6 : AbstractLevelOvo
     public override bool isLevelAlbedo0()
     {
         return false;
-    }   
+    }
+
+    public override string getNomeMapa()
+    {
+        return LevelMapNomes.PARQUE_DIVERSOES;
+    }
 
     public static Fornecedor<AbstractLevel> getFornecedor()
     {

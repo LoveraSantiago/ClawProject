@@ -20,7 +20,12 @@ public class LevelAspargo : AbstractLevelColetavel
     public override int getIdColetavel()
     {
         return 14;
-    }    
+    }
+
+    public override string getMaquinaNome()
+    {
+        return "Frescor Energetica";
+    }
 
     public override Dictionary<string, string> getDicionarioDeCores()
     {

@@ -16,27 +16,32 @@ public class LevelHelper
         return levelEntidade.supplierLevel.fornecer();
     }
 
-    public static List<string> getAllLevels()
+    public static List<string> getAllLevelsAlias()
     {
-        return getLevelsFiltradosPor(new FilterLevelsAll());
+        return getLevelsFiltradosPor(new FilterLevelsAliasAll());
     }
 
-    public static List<string> getNormalLevelsAlias()
+    public static string[] getAllLevelsMapsAlias()
     {
-        return getLevelsFiltradosPor(new FilterLevelsNormal());
+        return getLevelsFiltradosPor(new FilterLevelsAliasMaps()).ToArray();
+    }
+
+    public static List<string> geLevelsNaoObstaculosAlias()
+    {
+        return getLevelsFiltradosPor(new FilterLevelsAliasNormal());
     }
 
     public static List<string> getElevadorLevelsAlias()
     {
-        return getLevelsFiltradosPor(new FilterLevelsElevador());
+        return getLevelsFiltradosPor(new FilterLevelsAliasElevador());
     }
 
     public static List<string> getObstaculoLevelsAlias()
     {
-        return getLevelsFiltradosPor(new FilterLevelsObstaculos());
+        return getLevelsFiltradosPor(new FilterLevelsAliasObstaculos());
     }
 
-    private static List<string> getLevelsFiltradosPor(FilterLevels filterLevels)
+    private static List<string> getLevelsFiltradosPor(FilterLevelsAlias filterLevels)
     {
         return filterLevels.getLevelsAlias(poolLevels);
     }

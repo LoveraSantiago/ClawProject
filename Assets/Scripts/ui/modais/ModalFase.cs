@@ -14,7 +14,7 @@ public class ModalFase
         PlayerPrefsLevel.salvarLevel(levelEnum);
 
         AbstractLevel level = LevelHelper.getLevelByEnum(levelEnum);
-        modalFaseDto.LblNivel.text = level.getLevelName();
+        modalFaseDto.LblNivel.text = level.getLevelTitle();
         modalFaseDto.LblObjetivo.text = level.getMsgObjetivoLevel();
 
         modalFaseDto.ModalFase.SetActive(true);

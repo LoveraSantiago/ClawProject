@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class Level4 : AbstractLevelOrdem
 {
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Nível 4";
     }
@@ -10,7 +10,12 @@ public class Level4 : AbstractLevelOrdem
     public override string getMsgObjetivoLevel()
     {
         return "Siga a ordem dos coletaveis";
-    }   
+    }
+
+    public override string getNameMap()
+    {
+        return Mapas.PARQUE_DIVERSOES;
+    }
 
     public override int[,] getArrayDeColetaveis()
     {
@@ -82,6 +87,11 @@ public class Level4 : AbstractLevelOrdem
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
 
+    public override string getMaquinaNome()
+    {
+        return "Moderada Profissional";
+    }
+
     public override Dictionary<string, string> getDicionarioDeCores()
     {
         //02. Subdued & Professional
@@ -136,11 +146,11 @@ public class Level4 : AbstractLevelOrdem
         return true;
     }
 
-    //public override bool isLevelAlbedo0Timer2Pontos()
-    //{
-    //    return false;
-    //}
-
+    public override string getNomeMapa()
+    {
+        return LevelMapNomes.PARQUE_DIVERSOES;
+    }
+    
     public static Fornecedor<AbstractLevel> getFornecedor()
     {
         return new FornecedorLevel4();

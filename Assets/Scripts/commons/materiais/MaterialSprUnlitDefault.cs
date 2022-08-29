@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class MaterialSprUnlitDefault
 {
     private static Material matSprUnlitDefault;
@@ -13,5 +14,5 @@ public class MaterialSprUnlitDefault
     {
         return matSprUnlitDefault;
         //return new Material(matSprUnlitDefault);
-    }
+    }   
 }

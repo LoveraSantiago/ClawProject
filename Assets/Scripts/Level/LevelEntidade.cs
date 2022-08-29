@@ -30,8 +30,6 @@ public class LevelEntidade
             new LevelEntidade(Level.QUATRO, Level4.getFornecedor()),
             new LevelEntidade(Level.CINCO , Level5.getFornecedor()),
             new LevelEntidade(Level.SEIS  , Level6.getFornecedor()),
-            new LevelEntidade(Level.SEIS  , Level6.getFornecedor()),
-            new LevelEntidade(Level.SEIS  , Level6.getFornecedor()),
             new LevelEntidade(Level.SETE  , Level7.getFornecedor()),
             new LevelEntidade(Level.OITO  , Level8.getFornecedor()),
 
