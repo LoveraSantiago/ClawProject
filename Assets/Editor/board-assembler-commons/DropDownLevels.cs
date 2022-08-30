@@ -19,7 +19,7 @@ public abstract class DropDownLevels
 
             cleaner.clean();
 
-            if (evt.newValue != "0" && evt.newValue != "-")
+            if (!"0".Equals(evt.newValue) && !"-".Equals(evt.newValue))
             {
                 AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
                 int[,] coletaveis = getArrayParaOBoard(level);
@@ -44,14 +44,18 @@ public abstract class DropDownLevels
             cleaner.clean();
             listaDeSprites.limparTodaLista();
 
-            if (evt.newValue != "0" && evt.newValue != "-")
+            if (!"0".Equals(evt.newValue) && !"-".Equals(evt.newValue) && !"DEFAULTS".Equals(evt.newValue))
             {
-                List<ColetavelEntidade>  listaDeColetaveis = HelperColetavelEntidade.getListaDeColetaveisEntidadeByFamilia(evt.newValue);
+                MapaEnum mapaEnum = Mapas.getEnumByName(evt.newValue);
+                List<ColetavelEntidade>  listaDeColetaveis = HelperColetavelEntidade.getListaDeColetaveisEntidadeByFamilia(mapaEnum);
+                MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
                 for(int contador = 0; contador < listaDeColetaveis.Count; contador++)
                 {
-                    //string nomeSprite = listaDeColetaveis[contador].nomeSprite;
-                    //Sprite sprite = HelperColetavelEntidade.getSpriteColetavelByNomeSprite(nomeSprite);
-                    //listaDeSprites.receberSprite(sprite);
+                    string nomeSprite = listaDeColetaveis[contador].nomeSprite;
+                    string spriteFileName = mapaEntidade.getRootPathSprites() + nomeSprite;
+                    Debug.Log("arquivo sprite: " + spriteFileName);
+                    Sprite sprite = Resources.Load(spriteFileName) as Sprite;
+                    listaDeSprites.receberSprite(sprite);
                 }
             }
         });

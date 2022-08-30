@@ -64,13 +64,7 @@ public class HelperColetavelEntidade
         listaFamilia.RemoveAt(indiceRemover);
         return listaFamilia;
     }
-
-    public static List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamilia(string nomeMapaEnum)
-    {
-        MapaEnum mapaEnum = Mapas.getEnumByName(nomeMapaEnum);
-        return getListaDeColetaveisEntidadeByFamilia(mapaEnum);
-    }
-
+   
     public static List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamilia(MapaEnum mapaENum)
     {
         return new List<ColetavelEntidade>(familiasPorEnum[mapaENum]);
