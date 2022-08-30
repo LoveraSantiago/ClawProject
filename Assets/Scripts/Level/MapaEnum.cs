@@ -1,4 +1,4 @@
-public enum MapasEnum 
+public enum MapaEnum 
 {
     DEFAULTS,
     FRUTAS,

@@ -6,5 +6,5 @@ using UnityEngine;
 [System.Serializable]
 public class LevelMapDto 
 {
-    [SerializeField] private MapasEnum mapaEnum;
+    [SerializeField] private MapaEnum mapaEnum;
 }
