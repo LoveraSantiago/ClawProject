@@ -57,12 +57,10 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 
     private IEnumerator fazerTroca(Coletavel coletavel)
     {
-        coletavelSelecionado = coletavel;
+        coletavelSelecionado = coletavel;            
 
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();        
-
-        ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeBySprite(coletavel.nomeSprite);
-        List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavelEntidade);
+        ColetavelEntidade coletavelEntidade = HelperColetavelEntidade.getColetavelEntidadeBySprite(coletavel.nomeSprite);
+        List<ColetavelEntidade> listaFamilia = HelperColetavelEntidade.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavelEntidade);
 
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();        
         materialTeleporte.addTrocaIn(coletavel.getSprite());
@@ -74,7 +72,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         {
             ColetavelEntidade coletavelSorteado = listaFamilia[indiceSorteado];
             Debug.Log("indice sorteado " + indiceSorteado);
-            sprSorteado = helperColetavel.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);            
+            sprSorteado = HelperColetavelEntidade.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);            
             materialTeleporte.addTrocaOut(sprSorteado);
              
             bool houveToque = false;
@@ -95,7 +93,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
             indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
             Debug.Log("indice sorteado " + indiceSorteado);
             coletavelSorteado = listaFamilia[indiceSorteado];
-            sprSorteado = helperColetavel.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);            
+            sprSorteado = HelperColetavelEntidade.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);            
             materialTeleporte.addTrocaIn(sprSorteado);
 
             houveToque = false;

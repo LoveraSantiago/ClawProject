@@ -72,9 +72,8 @@ public class LevelUtils
 
     public static ColetavelEntidade getColetavelFromLevelColetavel(AbstractLevel level)
     {
-        int id = ((AbstractLevelColetavel)level).getIdColetavel();
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-        ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeById(id);
+        int id = ((AbstractLevelColetavel)level).getIdColetavel();        
+        ColetavelEntidade coletavelEntidade = HelperColetavelEntidade.getColetavelEntidadeById(id);
         return coletavelEntidade;
     }
 

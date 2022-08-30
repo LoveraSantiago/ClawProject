@@ -7,15 +7,13 @@ public class CanvasDetalheColetavel
     private static readonly int FECHAR_DETALHE = Animator.StringToHash("fechar-detalhe");
     private static readonly int DETALHE_ABERTO = Animator.StringToHash("detalhe-aberto");
 
-    private CanvasDetalheColetavelDto canvasDetalheDto;
-    private HelperColetavelEntidade helperColetavelEntidade;
+    private CanvasDetalheColetavelDto canvasDetalheDto;    
     private BotaoIrGameColetaveis btnIrGameColetavel;
 
     public CanvasDetalheColetavel(CanvasDetalheColetavelDto canvasDetalheDto, ModalNoFichaDto modalNoFichaDto)
     {
         this.canvasDetalheDto = canvasDetalheDto;
-        btnIrGameColetavel = new BotaoIrGameColetaveis(canvasDetalheDto.BtnColetavel, modalNoFichaDto);
-        helperColetavelEntidade = new HelperColetavelEntidade();
+        btnIrGameColetavel = new BotaoIrGameColetaveis(canvasDetalheDto.BtnColetavel, modalNoFichaDto);        
     }
 
     public void abrirDetalhe(IndiceArmarioSelecionadoDto indiceArmarioSelecionado, PrateleirasDto prateleirasDto)
@@ -24,7 +22,7 @@ public class CanvasDetalheColetavel
         ItemPrateleiraDto itemSelecionado = prateleira.ItensPrateleira[indiceArmarioSelecionado.indiceItem];
         Image imgItemPrateleria = itemSelecionado.ImgItem;
         Sprite sprColetavel = imgItemPrateleria.sprite;
-        ColetavelEntidade coletavelEntidade = helperColetavelEntidade.getColetavelEntidadeBySprite(sprColetavel.name);
+        ColetavelEntidade coletavelEntidade = HelperColetavelEntidade.getColetavelEntidadeBySprite(sprColetavel.name);
         abrirDetalhe(coletavelEntidade, indiceArmarioSelecionado, prateleirasDto);        
         canvasDetalheDto.AnimatorCanvas.Play(ABRIR_DETALHE);
     }    

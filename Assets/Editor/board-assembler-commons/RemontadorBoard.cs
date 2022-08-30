@@ -14,15 +14,13 @@ public class RemontadorBoard
 
     public void montarColetaveis(int[,] arrayDeColetaveis)
     {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-
         for (int contadorLinha = 0; contadorLinha < arrayDeColetaveis.GetLength(0); contadorLinha++)
         {   
             int totalColunas = referencias.getQtdColunasDoBoard(contadorLinha);
             for (int contadorColuna = 0; contadorColuna < totalColunas; contadorColuna++)
             {
                 int id = arrayDeColetaveis[contadorLinha, contadorColuna];
-                ColetavelEntidade coletavelEntidade  = helperColetavel.getColetavelEntidadeById(id);
+                ColetavelEntidade coletavelEntidade  = HelperColetavelEntidade.getColetavelEntidadeById(id);
 
                 if (coletavelEntidade.isVazio())
                 {

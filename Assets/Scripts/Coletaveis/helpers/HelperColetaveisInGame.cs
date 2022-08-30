@@ -112,9 +112,8 @@ public class HelperColetaveisInGame
     }
 
     private static Coletavel configColetavel(Coletavel coletavel, string nomeSprite, Vector3 posicao)
-    {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-        Sprite sprite = helperColetavel.getSpriteColetavelByNomeSprite(nomeSprite);
+    {        
+        Sprite sprite = HelperColetavelEntidade.getSpriteColetavelByNomeSprite(nomeSprite);
         coletavel.receberSprite(sprite);
         coletavel.colocarNaPosicao(posicao);
         coletavel.ligar();

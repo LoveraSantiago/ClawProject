@@ -96,9 +96,8 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
     private Sprite getSpriteAcertado(Coletavel coletavelAcertado)
     {
         if (coletavelAcertado.isOvo())
-        {
-            HelperColetavelEntidade helperColetavelEntidade = new HelperColetavelEntidade();
-            return helperColetavelEntidade.getSpriteOvo();
+        {            
+            return HelperColetavelEntidade.getSpriteOvo();
         }
         else
         {

@@ -5,12 +5,10 @@ public class PopuladorPrateleira
     private bool estadoUltimaFamilia;    
     private MapaEnum ultimaFamiliaMapa;
 
-    private PoolMaterialGrayscale poolMaterialGrayScale;
-    private HelperColetavelEntidade helperColetavelEntidade;
+    private PoolMaterialGrayscale poolMaterialGrayScale;    
 
     public PopuladorPrateleira()
-    {
-        helperColetavelEntidade = new HelperColetavelEntidade();
+    {        
         ultimaFamiliaMapa = MapaEnum.DEFAULTS;
         poolMaterialGrayScale = new PoolMaterialGrayscale();
     }
@@ -21,7 +19,7 @@ public class PopuladorPrateleira
         itemPrateleira.ImgItem.sprite = sprite;
         itemPrateleira.GoItem.SetActive(true);
 
-        ColetavelEntidade coletavel = helperColetavelEntidade.getColetavelEntidadeBySprite(sprite.name);
+        ColetavelEntidade coletavel = HelperColetavelEntidade.getColetavelEntidadeBySprite(sprite.name);
         MapaEnum mapaEnum = coletavel.mapaEnum;
         if(mapaEnum == ultimaFamiliaMapa)
         {

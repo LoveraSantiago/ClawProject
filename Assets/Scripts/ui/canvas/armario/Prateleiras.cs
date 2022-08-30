@@ -108,9 +108,8 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>
     }
 
     private void carregarSpritesColetaveis()
-    {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-        sprites = helperColetavel.getAllSpritesColetaveisOrdenados();
+    {        
+        sprites = HelperColetavelEntidade.getAllSpritesColetaveisOrdenados();
     }
 
     private void calcularTamanhoArmario(PrateleirasDto prateleirasDto)

@@ -8,7 +8,7 @@ public class HelperColetavelEntidade
     private static Dictionary<string, Sprite> spritesPorNome;
     private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;   
 
-    public ColetavelEntidade getColetavelEntidadeById(int idQuery)
+    public static ColetavelEntidade getColetavelEntidadeById(int idQuery)
     {   
         if (coletaveisPorId.ContainsKey(idQuery))
         {
@@ -21,7 +21,7 @@ public class HelperColetavelEntidade
         }
     }
 
-    public ColetavelEntidade getColetavelEntidadeBySprite(string spriteName)
+    public static ColetavelEntidade getColetavelEntidadeBySprite(string spriteName)
     {     
         if (coletaveisPorSpriteNome.ContainsKey(spriteName))
         {
@@ -34,7 +34,7 @@ public class HelperColetavelEntidade
         }
     }
 
-    public ColetavelEntidade getRandomColetavelEntidadeByFamilia(MapaEnum mapaENum)
+    public static ColetavelEntidade getRandomColetavelEntidadeByFamilia(MapaEnum mapaENum)
     {
         if (familiasPorEnum.ContainsKey(mapaENum))
         {
@@ -49,7 +49,7 @@ public class HelperColetavelEntidade
         }        
     }
 
-    public List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamiliaExcluindo(ColetavelEntidade coletavel)
+    public static List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamiliaExcluindo(ColetavelEntidade coletavel)
     {
         List<ColetavelEntidade> listaFamilia = getListaDeColetaveisEntidadeByFamilia(coletavel.mapaEnum);
         int indiceRemover = 0;
@@ -65,12 +65,12 @@ public class HelperColetavelEntidade
         return listaFamilia;
     }
 
-    public List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamilia(MapaEnum mapaENum)
+    public static List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamilia(MapaEnum mapaENum)
     {
         return new List<ColetavelEntidade>(familiasPorEnum[mapaENum]);
     }    
 
-    public int getIndiceDaFamilia(MapaEnum mapaENum)
+    public static int getIndiceDaFamilia(MapaEnum mapaENum)
     {
         MapaEnum[] arrayDeMapas = MapaEntidade.getTodosMapas();
         for (int contador = 0; contador < arrayDeMapas.Length; contador++)
@@ -83,18 +83,18 @@ public class HelperColetavelEntidade
         return 0;
     }
 
-    public Sprite getSpriteColetavelByNomeSprite(string nomeSprite)
+    public static Sprite getSpriteColetavelByNomeSprite(string nomeSprite)
     {   
         return spritesPorNome[nomeSprite];
     }
 
-    public Sprite getSpriteOvo()
+    public static Sprite getSpriteOvo()
     {
         ColetavelEntidade coletavelEntidadeOvo = getColetavelEntidadeById(2);
         return spritesPorNome[coletavelEntidadeOvo.nomeSprite];
     }
 
-    public Sprite[] getAllSpritesColetaveisOrdenados()
+    public static Sprite[] getAllSpritesColetaveisOrdenados()
     {
         int totalDefault = familiasPorEnum[MapaEnum.DEFAULTS].Count;
         Sprite[] array = new Sprite[coletaveisPorId.Count - totalDefault];

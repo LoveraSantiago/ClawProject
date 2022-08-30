@@ -16,12 +16,10 @@ public abstract class BoardMontador
 
     protected IEnumerator montarLinha(PosicaoItensDoBoardDto posItem, int contadorLinha, float altura)
     {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-
         for (int contadorColuna = 0; contadorColuna < posItem.Total; contadorColuna++)
         {
             int id = arrayDeColetaveis[contadorLinha, contadorColuna];
-            ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeById(id);
+            ColetavelEntidade coletavelEntidade = HelperColetavelEntidade.getColetavelEntidadeById(id);
             Vector3 posicao = calcularPosicao(posItem, contadorColuna, altura);            
 
             if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
@@ -31,7 +29,7 @@ public abstract class BoardMontador
             }
             else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
             {
-                coletavelEntidade = helperColetavel.getRandomColetavelEntidadeByFamilia(mapaEnum);
+                coletavelEntidade = HelperColetavelEntidade.getRandomColetavelEntidadeByFamilia(mapaEnum);
             }
 
             Coletavel coletavel = criarColetavel(coletavelEntidade.nomeSprite, posicao);

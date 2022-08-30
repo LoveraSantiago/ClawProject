@@ -19,9 +19,8 @@ public class PlayerPrefsColetaveis : MonoBehaviour
     }
 
     public static bool isAllFamiliaComColetaveisDisponiveis(MapaEnum mapaEnum)
-    {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-        List<ColetavelEntidade> coletaveisDaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamilia(mapaEnum);
+    {        
+        List<ColetavelEntidade> coletaveisDaFamilia = HelperColetavelEntidade.getListaDeColetaveisEntidadeByFamilia(mapaEnum);
         for(int contador = 0; contador < coletaveisDaFamilia.Count; contador++)
         {
             ColetavelEntidade coletavelIt = coletaveisDaFamilia[contador];
