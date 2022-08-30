@@ -67,7 +67,7 @@ public class HelperColetavelEntidade
 
     public static List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamilia(string nomeMapaEnum)
     {
-        MapaEnum mapaEnum = MapaEntidade.getEnumByName(nomeMapaEnum);
+        MapaEnum mapaEnum = Mapas.getEnumByName(nomeMapaEnum);
         return getListaDeColetaveisEntidadeByFamilia(mapaEnum);
     }
 
@@ -78,7 +78,7 @@ public class HelperColetavelEntidade
 
     public static int getIndiceDaFamilia(MapaEnum mapaENum)
     {
-        MapaEnum[] arrayDeMapas = MapaEntidade.getTodosMapas();
+        MapaEnum[] arrayDeMapas = Mapas.getTodosMapas();
         for (int contador = 0; contador < arrayDeMapas.Length; contador++)
         {
             if(mapaENum == arrayDeMapas[contador])
