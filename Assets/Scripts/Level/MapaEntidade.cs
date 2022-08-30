@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 public class MapaEntidade 
 {
@@ -16,5 +17,16 @@ public class MapaEntidade
             }
         }
         return MAPAS;
+    }
+
+    public static List<string> getTodosOsMapasAsListString()
+    {
+        getTodosMapas();
+        List<string> lista = new List<string>(MAPAS.Length);
+        for(int contador = 0; contador < MAPAS.Length; contador++)
+        {
+            lista.Add(MAPAS[contador].ToString());
+        }
+        return lista;
     }
 }

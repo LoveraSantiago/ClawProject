@@ -46,6 +46,7 @@ public class BoardAssemblerV5 : EditorWindow
         RemontadorBoard remontadorLbls  = new RemontadorLabelsBoard(referenciasDoBoard, listaDeSprites);
         DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(LevelHelper.geLevelsNaoObstaculosAlias());
         dropDownLevels.criarComponentDropDownField(root, cleaner, remontadorLbls);
+        dropDownLevels.criarComponenteDropDownFamilias(root, cleaner, remontadorLbls, listaDeSprites);
 
         EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>
         {
