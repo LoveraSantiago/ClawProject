@@ -54,7 +54,7 @@ public abstract class DropDownLevels
                     string nomeSprite = listaDeColetaveis[contador].nomeSprite;
                     string spriteFileName = mapaEntidade.getRootPathSprites() + nomeSprite;
                     Debug.Log("arquivo sprite: " + spriteFileName);
-                    Sprite sprite = Resources.Load(spriteFileName) as Sprite;
+                    Sprite sprite = Resources.Load<Sprite>(spriteFileName);
                     listaDeSprites.receberSprite(sprite);
                 }
             }
