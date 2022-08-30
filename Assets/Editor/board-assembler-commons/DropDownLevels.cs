@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine.UIElements;
+using UnityEngine;
 
 public abstract class DropDownLevels 
 {
@@ -45,7 +46,13 @@ public abstract class DropDownLevels
 
             if (evt.newValue != "0" && evt.newValue != "-")
             {
-                
+                List<ColetavelEntidade>  listaDeColetaveis = HelperColetavelEntidade.getListaDeColetaveisEntidadeByFamilia(evt.newValue);
+                for(int contador = 0; contador < listaDeColetaveis.Count; contador++)
+                {
+                    //string nomeSprite = listaDeColetaveis[contador].nomeSprite;
+                    //Sprite sprite = HelperColetavelEntidade.getSpriteColetavelByNomeSprite(nomeSprite);
+                    //listaDeSprites.receberSprite(sprite);
+                }
             }
         });
 

@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 
 public class BoardAssemblerV5 : EditorWindow
 {
+    [SerializeField] int teste;
+
     [MenuItem("Window/assemblers/BoardAssemblerV5")]
     public static void ShowExample()
     {
@@ -22,7 +24,7 @@ public class BoardAssemblerV5 : EditorWindow
         var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/board-assembler/BoardAssemblerV5.uxml");
         VisualElement labelFromUXML = visualTree.Instantiate();
         root.Add(labelFromUXML);
-
+        
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler/BoardAssemblerV5.uss");

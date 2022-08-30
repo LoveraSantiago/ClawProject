@@ -29,4 +29,17 @@ public class MapaEntidade
         }
         return lista;
     }
+
+    public static MapaEnum getEnumByName(string nomeMapa)
+    {
+        getTodosMapas();
+        for(int contador = 0; contador < MAPAS.Length; contador++)
+        {
+            if (MAPAS[contador].ToString().Equals(nomeMapa))
+            {
+                return MAPAS[contador];
+            }
+        }
+        return MapaEnum.DEFAULTS;
+    }
 }
