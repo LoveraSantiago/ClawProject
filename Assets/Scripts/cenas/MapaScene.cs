@@ -18,6 +18,8 @@ public class MapaScene : MonoBehaviour
     [SerializeField] private ModalNoFichaDto modalNoFichaDto;
     [Space(5)]
     [SerializeField] private BotoesCenasDto botoesCenasDto;
+    [Space(5)]
+    [SerializeField] private GameObject prefabLevelsDto;
 
     private TimerFicha timerFichaOuro;
     private TimerFicha timerFichaPrata;

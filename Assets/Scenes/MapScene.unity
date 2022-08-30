@@ -1776,6 +1776,7 @@ MonoBehaviour:
     btnStore: {fileID: 1513573892}
     btnPelucia: {fileID: 1246110284}
     btnConfig: {fileID: 592234356}
+  prefabLevelsDto: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
 --- !u!1 &1381132999
 GameObject:
   m_ObjectHideFlags: 0
