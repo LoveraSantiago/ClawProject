@@ -5,12 +5,7 @@ public class Level6 : AbstractLevelOvo
     public override string getLevelName()
     {
         return "Level 6";
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }    
 
     public override TipoContagemTempoDto getTempoContagem()
     {

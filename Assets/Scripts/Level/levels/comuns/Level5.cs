@@ -43,12 +43,7 @@ public class Level5 : AbstractLevelObstaculos
             {false, false, false, false, false, false, false}
         };
         return gaiolas;
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }    
 
     public override bool devolverParaBoard()
     {

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PopuladorPrateleira
 {
-    private bool estadoUltimaFamilia;
-    private ColetavelEntidade.FAMILIA ultimaFamilia;
+    private bool estadoUltimaFamilia;    
+    private MapaEnum ultimaFamiliaMapa;
 
     private PoolMaterialGrayscale poolMaterialGrayScale;
     private HelperColetavelEntidade helperColetavelEntidade;
@@ -11,7 +11,7 @@ public class PopuladorPrateleira
     public PopuladorPrateleira()
     {
         helperColetavelEntidade = new HelperColetavelEntidade();
-        ultimaFamilia = ColetavelEntidade.FAMILIA.DEFAULTS;
+        ultimaFamiliaMapa = MapaEnum.DEFAULTS;
         poolMaterialGrayScale = new PoolMaterialGrayscale();
     }
 
@@ -22,8 +22,8 @@ public class PopuladorPrateleira
         itemPrateleira.GoItem.SetActive(true);
 
         ColetavelEntidade coletavel = helperColetavelEntidade.getColetavelEntidadeBySprite(sprite.name);
-        ColetavelEntidade.FAMILIA familiaEntidade = coletavel.familia;
-        if(familiaEntidade == ultimaFamilia)
+        MapaEnum mapaEnum = coletavel.mapaEnum;
+        if(mapaEnum == ultimaFamiliaMapa)
         {
             if (estadoUltimaFamilia)
             {
@@ -36,7 +36,7 @@ public class PopuladorPrateleira
         }
         else
         {
-            estadoUltimaFamilia = PlayerPrefsColetaveis.isFamiliaNotLocked(familiaEntidade.ToString());
+            estadoUltimaFamilia = PlayerPrefsColetaveis.isFamiliaNotLocked(mapaEnum.ToString());
             if (estadoUltimaFamilia)
             {
                 popularMaterialItem(itemPrateleira, coletavel, sprite);               
@@ -46,7 +46,7 @@ public class PopuladorPrateleira
                 popularItemIndisponivel(itemPrateleira);
             }
 
-            ultimaFamilia = familiaEntidade;
+            ultimaFamiliaMapa = mapaEnum;
         }
     }
 

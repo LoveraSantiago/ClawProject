@@ -10,5 +10,5 @@ public enum MapaEnum
     MARIO,
     MEGAMAN,
     COGUMELOS,
-    POOPS
+    POOPS    
 }

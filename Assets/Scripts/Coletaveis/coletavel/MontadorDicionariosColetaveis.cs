@@ -4,13 +4,13 @@ public class MontadorDicionariosColetaveis
 {
     public Dictionary<int, ColetavelEntidade> dicionarioDeIds { get; private set; }
     public Dictionary<string, ColetavelEntidade> dicionarioDeSprites { get; private set; }
-    public Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>> dicionarioDeFamilias { get; private set; }
+    public Dictionary<MapaEnum, List<ColetavelEntidade>> dicionarioDeFamilias { get; private set; }
 
     public MontadorDicionariosColetaveis()
     {
         dicionarioDeIds      = new Dictionary<int, ColetavelEntidade>();
         dicionarioDeSprites  = new Dictionary<string, ColetavelEntidade>();
-        dicionarioDeFamilias = new Dictionary<ColetavelEntidade.FAMILIA, List<ColetavelEntidade>>();
+        dicionarioDeFamilias = new Dictionary<MapaEnum, List<ColetavelEntidade>>();
     }
 
     public void montarDicionariosDeColetaveis()
@@ -33,12 +33,12 @@ public class MontadorDicionariosColetaveis
 
     private void addAoDicionarioDeFamilias(ColetavelEntidade coletavelEntidadeIt)
     {
-        if (!dicionarioDeFamilias.ContainsKey(coletavelEntidadeIt.familia))
+        if (!dicionarioDeFamilias.ContainsKey(coletavelEntidadeIt.mapaEnum))
         {
-            dicionarioDeFamilias.Add(coletavelEntidadeIt.familia, new List<ColetavelEntidade>());
+            dicionarioDeFamilias.Add(coletavelEntidadeIt.mapaEnum, new List<ColetavelEntidade>());
         }
 
-        List<ColetavelEntidade> lista = dicionarioDeFamilias[coletavelEntidadeIt.familia];
+        List<ColetavelEntidade> lista = dicionarioDeFamilias[coletavelEntidadeIt.mapaEnum];
         lista.Add(coletavelEntidadeIt);
     }
 }

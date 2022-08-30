@@ -3,7 +3,7 @@ using System.Collections;
 
 public abstract class BoardMontador 
 {
-    private static ColetavelEntidade.FAMILIA familia;
+    private static MapaEnum mapaEnum;
     private int[,] arrayDeColetaveis;   
 
     public IEnumerator createBoard(BoardDto boardDto)
@@ -31,7 +31,7 @@ public abstract class BoardMontador
             }
             else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
             {
-                coletavelEntidade = helperColetavel.getRandomColetavelEntidadeByFamilia(familia);
+                coletavelEntidade = helperColetavel.getRandomColetavelEntidadeByFamilia(mapaEnum);
             }
 
             Coletavel coletavel = criarColetavel(coletavelEntidade.nomeSprite, posicao);
@@ -93,9 +93,9 @@ public abstract class BoardMontador
         return arrayDeColetaveis.GetLength(0);
     }   
 
-    public static void configurar(ColetavelEntidade.FAMILIA familiaArg)
+    public static void configurar(MapaEnum mapaEnumArg)
     {
-        familia = familiaArg;
+        mapaEnum = mapaEnumArg;
     }
 
     protected virtual float getDelay()

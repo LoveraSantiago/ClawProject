@@ -15,7 +15,7 @@ public class BotaoIrGameColetaveis
     private void irParaLevelDeColetado()
     {
         HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-        int indiceFamilia = helperColetavel.getIndiceDaFamilia(coletavelEntidade.familia);
+        int indiceFamilia = helperColetavel.getIndiceDaFamilia(coletavelEntidade.mapaEnum);
 
         if(PlayerPrefsFichas.possueFichas(Ficha.OURO, 1))
         {

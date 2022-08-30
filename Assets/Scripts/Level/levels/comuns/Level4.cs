@@ -70,12 +70,7 @@ public class Level4 : AbstractLevelOrdem
             new BoardOrdem(28, "3")
         };
         return ordem;
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }    
 
     public override bool devolverParaBoard()
     {

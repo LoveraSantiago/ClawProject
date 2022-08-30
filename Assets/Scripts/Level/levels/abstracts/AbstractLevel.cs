@@ -13,9 +13,7 @@ public abstract class AbstractLevel
     
     public abstract string getMsgObjetivoLevel();    
 
-    public abstract bool devolverParaBoard();
-
-    public abstract ColetavelEntidade.FAMILIA getFamiliaColetavel();
+    public abstract bool devolverParaBoard();    
 
     public abstract int[,] getArrayDeColetaveis();        
 

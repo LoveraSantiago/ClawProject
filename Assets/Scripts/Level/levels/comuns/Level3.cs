@@ -37,12 +37,7 @@ public class Level3 : AbstractLevelElevador
             { 1, 1, 1, 1, 1, 1, 1 }
         };
     }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
-
+    
     public override bool devolverParaBoard()
     {
         return true;

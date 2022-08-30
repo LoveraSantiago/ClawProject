@@ -32,12 +32,7 @@ public abstract class AbstractLevelColetavel : AbstractLevel
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0}
         };
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }   
 
     public override bool devolverParaBoard()
     {

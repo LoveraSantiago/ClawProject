@@ -41,12 +41,7 @@ public class Level7 : AbstractLevel
     public override bool devolverParaBoard()
     {
         return false;
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }    
 
     public override TipoContagemTempoDto getTempoContagem()
     {

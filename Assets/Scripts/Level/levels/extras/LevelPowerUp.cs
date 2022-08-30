@@ -35,12 +35,7 @@ public class LevelPowerUp : AbstractLevel
     public override bool devolverParaBoard()
     {
         return false;
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }    
 
     public override TipoContagemTempoDto getTempoContagem()
     {
@@ -97,7 +92,8 @@ public class LevelPowerUp : AbstractLevel
         dicionario.Add("divisoria", "#C1E1CF");
         dicionario.Add("digitos", "#C1E1CF");
         dicionario.Add("circulo-externo", "#021C1E");
-        dicionario.Add("circulo-interno", "#2C7873");        return dicionario;        
+        dicionario.Add("circulo-interno", "#2C7873");
+        return dicionario;        
     }
 
     public override bool isLevelAlbedo0()

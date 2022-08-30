@@ -33,7 +33,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
         MateriaisUtils.configurar(prefabMateriais);
         HelperColetavelEntidade.configurar(prefabColetaveisDto);
 
-        PlayerPrefsColetaveis.unlockFamilia(ColetavelEntidade.FAMILIA.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
+        PlayerPrefsColetaveis.unlockFamilia(MapaEnum.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
 
         timerFichaOuro = new TimerFicha(timerFichaDto, Ficha.OURO);
         prateleiras    = new Prateleiras(prateleirasDto);

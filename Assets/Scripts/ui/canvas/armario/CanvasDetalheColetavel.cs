@@ -43,12 +43,12 @@ public class CanvasDetalheColetavel
         imgDetalhe.color = imgItemPrateleria.color;
         imgDetalhe.material = imgItemPrateleria.material;
         canvasDetalheDto.LblNome.text = coletavelEntidade.nome;
-        canvasDetalheDto.LblFamilia.text = coletavelEntidade.familia.ToString();
+        canvasDetalheDto.LblFamilia.text = coletavelEntidade.mapaEnum.ToString();
         canvasDetalheDto.ImgDetalhe.transform.position = itemSelecionado.ImgItem.transform.position;
 
         if (imgItemPrateleria.color == Color.black)
         {
-            string texto = "Desbloqueie esse coletavel chegando no mapa da familia " + coletavelEntidade.familia.ToString();
+            string texto = "Desbloqueie esse coletavel chegando no mapa da familia " + coletavelEntidade.mapaEnum.ToString();
             canvasDetalheDto.LblTexto.text = texto;
             canvasDetalheDto.LblTexto.transform.gameObject.SetActive(true);
             canvasDetalheDto.CanvasBotoes.transform.gameObject.SetActive(false);
