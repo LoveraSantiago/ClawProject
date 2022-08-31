@@ -46,3 +46,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsMapDto:
   - mapaEnum: 1
+    sprMapa: {fileID: 21300000, guid: fad4885706635a243a0fe217d88d1889, type: 3}
+    posicoes:
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
