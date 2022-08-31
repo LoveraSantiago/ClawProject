@@ -47,15 +47,11 @@ public class BoardAssemblerNegativo : EditorWindow
         DropDownLevels dropDownLevels = new DropDownLevelsNegativo(LevelHelper.getElevadorLevelsAlias(), listaDeSprites);
         dropDownLevels.criarComponentesDropDowns(root, cleaner, remontador);
 
-        EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>
+        root.Q<Button>("botaoClean").clicked += () =>
         {
-            listaDeSprites.receberSprite((Sprite)e1.newValue);
+            cleaner.clean();
+            dropDownLevels.resetDropDowns();   
         };
-        root.Q<ObjectField>("objectFieldSprite").RegisterCallback(onSpriteAdicionado);
-
-        root.Q<Button>("botaoMenosTodos") .clicked += () => listaDeSprites.limparTodaLista();
-        root.Q<Button>("botaoMenos")      .clicked += () => listaDeSprites.removerUltimaLinha();
-        root.Q<Button>("botaoClean")      .clicked += () => cleaner.clean();
         root.Q<Button>("botaoProcessar")  .clicked += () => processadorColetaveis.processar();
         root.Q<Button>("botaoCimaAll")    .clicked += () => navegacao.navegarBaixoTotal();
         root.Q<Button>("botaoBaixoAll")   .clicked += () => navegacao.navegarCimaTotal();

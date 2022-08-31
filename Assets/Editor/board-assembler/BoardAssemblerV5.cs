@@ -41,7 +41,6 @@ public class BoardAssemblerV5 : EditorWindow
         ListaDeSprites listaDeSprites = new ListaDeSprites(root, styleSheet, onItemSelecionado);
 
         BoardCleanerPositivo cleaner = new BoardCleanerPositivo(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio());
-
         navegacao.resetMira();
 
         RemontadorBoard remontadorLbls  = new RemontadorLabelsBoard(referenciasDoBoard, listaDeSprites);

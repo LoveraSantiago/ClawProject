@@ -32,13 +32,8 @@
       </engine:VisualElement>
     </engine:VisualElement>
 
-    <engine:VisualElement name="container2">
-      <engine:VisualElement name="containerBtns">
-        <engine:VisualElement name="containerBtnLinha">
-          <editor:ObjectField name="objectFieldSprite" type="UnityEngine.Sprite, UnityEngine.CoreModule" label="Coletavel" allow-scene-objects="false" />
-          <engine:Button name="botaoMenosTodos" text="-A"/>
-          <engine:Button name="botaoMenos" text="-1"/>
-        </engine:VisualElement>
+    <engine:VisualElement name="container">
+      <engine:VisualElement name="espacoDropDownFamilias">
       </engine:VisualElement>
     </engine:VisualElement>
   </engine:VisualElement>  
