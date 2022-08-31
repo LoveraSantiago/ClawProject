@@ -7,6 +7,9 @@ public abstract class DropDownLevels
     private List<string> listaDeLevels;
     private ListaDeSprites listaDeSprites;
 
+    private DropdownField dropDownLevels;
+    private DropdownField dropDownFamilia;
+
     public DropDownLevels(List<string> listaDeLevels, ListaDeSprites listaDeSprites)
     {
         this.listaDeLevels = listaDeLevels;
@@ -19,11 +22,17 @@ public abstract class DropDownLevels
         criarComponenteDropDownFamilias(root, cleaner, remontador);
     }
 
+    public void resetDropDowns()
+    {
+        dropDownLevels.index = 0;
+        dropDownFamilia.index = 0;
+    }
+
     private void criarComponenteDropDownField(
        VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {   
-        DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
-        dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {
+        dropDownLevels = new DropdownField("Dicionarios", listaDeLevels, 0);        
+        dropDownLevels.RegisterCallback<ChangeEvent<string>>((evt) => {
 
             cleaner.clean();
 
@@ -38,16 +47,16 @@ public abstract class DropDownLevels
         });
 
         root.Q<VisualElement>("espacoDropDown")
-               .Add(dropDownField);
-    }
+               .Add(dropDownLevels);
+    }    
 
     private void criarComponenteDropDownFamilias(
         VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {
         List<string> listaDeFamilia = Mapas.getTodosOsMapasAsListString();
-        DropdownField dropDownField = new DropdownField("Familias", listaDeFamilia, 0);
+        dropDownFamilia = new DropdownField("Familias", listaDeFamilia, 0);
 
-        dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {
+        dropDownFamilia.RegisterCallback<ChangeEvent<string>>((evt) => {
 
             cleaner.clean();
             listaDeSprites.limparTodaLista();
@@ -60,8 +69,7 @@ public abstract class DropDownLevels
                 for(int contador = 0; contador < listaDeColetaveis.Count; contador++)
                 {
                     string nomeSprite = listaDeColetaveis[contador].nomeSprite;
-                    string spriteFileName = mapaEntidade.getRootPathSprites() + nomeSprite;
-                    Debug.Log("arquivo sprite: " + spriteFileName);
+                    string spriteFileName = mapaEntidade.getRootPathSprites() + nomeSprite;                    
                     Sprite sprite = Resources.Load<Sprite>(spriteFileName);
                     listaDeSprites.receberSprite(sprite);
                 }
@@ -69,7 +77,7 @@ public abstract class DropDownLevels
         });
 
             root.Q<VisualElement>("espacoDropDownFamilias")
-               .Add(dropDownField);
+               .Add(dropDownFamilia);
     }
 
     protected abstract int[,] getArrayParaOBoard(AbstractLevel level);

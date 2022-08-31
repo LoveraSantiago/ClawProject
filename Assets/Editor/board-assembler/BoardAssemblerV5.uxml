@@ -34,7 +34,7 @@
         </engine:VisualElement>
 
         <engine:VisualElement name="container">
-            <editor:IntegerField label="Ordem" name="ordem"/>
+            <editor:IntegerField label="Ordem Coletavel" name="ordem"/>
         </engine:VisualElement>
       
         <engine:VisualElement name="container">

@@ -48,7 +48,11 @@ public class BoardAssemblerV5 : EditorWindow
         DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(LevelHelper.geLevelsNaoObstaculosAlias(), listaDeSprites);
         dropDownLevels.criarComponentesDropDowns(root, cleaner, remontadorLbls);
 
-        root.Q<Button>("botaoClean")         .clicked += () => cleaner.clean();
+
+        root.Q<Button>("botaoClean").clicked += () => {
+            cleaner.clean();
+            dropDownLevels.resetDropDowns();
+        };
         root.Q<Button>("botaoProcessar")     .clicked += () => processador.processar();
         root.Q<Button>("botaoProcessarOrdem").clicked += () => processador.processarOrdem();
         root.Q<Button>("botaoCimaAll")       .clicked += () => navegacao.navegarCimaTotal();
