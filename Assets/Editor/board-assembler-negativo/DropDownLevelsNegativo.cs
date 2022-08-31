@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 public class DropDownLevelsNegativo : DropDownLevels
 {
-    public DropDownLevelsNegativo(List<string> listaDeLevels)
-        : base(listaDeLevels)
+    public DropDownLevelsNegativo(List<string> listaDeLevels, ListaDeSprites listaDeSprites)
+        : base(listaDeLevels, listaDeSprites)
     {
     }
 

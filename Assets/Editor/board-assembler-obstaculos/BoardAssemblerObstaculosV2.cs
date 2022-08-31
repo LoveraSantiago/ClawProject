@@ -43,8 +43,8 @@ public class BoardAssemblerObstaculosV2 : EditorWindow
         BoardCleanerObstaculos cleaner = new BoardCleanerObstaculos(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio(), controleObstaculos);
         navegacao.resetMira();
         
-        DropDownLevels dropoDownLevels = new DropDownLevelsObstaculo(LevelHelper.getObstaculoLevelsAlias());
-        dropoDownLevels.criarComponentDropDownField(root, cleaner, controleObstaculos);
+        DropDownLevels dropoDownLevels = new DropDownLevelsObstaculo(LevelHelper.getObstaculoLevelsAlias(), listaDeSprites);
+        dropoDownLevels.criarComponentesDropDowns(root, cleaner, controleObstaculos);
 
         EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>
         {

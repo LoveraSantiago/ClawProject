@@ -5,13 +5,21 @@ using UnityEngine;
 public abstract class DropDownLevels 
 {
     private List<string> listaDeLevels;
+    private ListaDeSprites listaDeSprites;
 
-    public DropDownLevels(List<string> listaDeLevels)
+    public DropDownLevels(List<string> listaDeLevels, ListaDeSprites listaDeSprites)
     {
         this.listaDeLevels = listaDeLevels;
+        this.listaDeSprites = listaDeSprites;
     }
 
-    public void criarComponentDropDownField(
+    public void criarComponentesDropDowns(VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
+    {
+        criarComponenteDropDownField(root, cleaner, remontador);
+        criarComponenteDropDownFamilias(root, cleaner, remontador);
+    }
+
+    private void criarComponenteDropDownField(
        VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {   
         DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
@@ -33,8 +41,8 @@ public abstract class DropDownLevels
                .Add(dropDownField);
     }
 
-    public void criarComponenteDropDownFamilias(
-        VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador, ListaDeSprites listaDeSprites)
+    private void criarComponenteDropDownFamilias(
+        VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {
         List<string> listaDeFamilia = Mapas.getTodosOsMapasAsListString();
         DropdownField dropDownField = new DropdownField("Familias", listaDeFamilia, 0);

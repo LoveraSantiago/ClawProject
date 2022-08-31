@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class BoardAssemblerV5 : EditorWindow
 {
-    [SerializeField] int teste;
 
     [MenuItem("Window/assemblers/BoardAssemblerV5")]
     public static void ShowExample()
@@ -46,18 +45,9 @@ public class BoardAssemblerV5 : EditorWindow
         navegacao.resetMira();
 
         RemontadorBoard remontadorLbls  = new RemontadorLabelsBoard(referenciasDoBoard, listaDeSprites);
-        DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(LevelHelper.geLevelsNaoObstaculosAlias());
-        dropDownLevels.criarComponentDropDownField(root, cleaner, remontadorLbls);
-        dropDownLevels.criarComponenteDropDownFamilias(root, cleaner, remontadorLbls, listaDeSprites);
+        DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(LevelHelper.geLevelsNaoObstaculosAlias(), listaDeSprites);
+        dropDownLevels.criarComponentesDropDowns(root, cleaner, remontadorLbls);
 
-        EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>
-        {
-            listaDeSprites.receberSprite((Sprite)e1.newValue);
-        };
-        root.Q<ObjectField>("objectFieldSprite").RegisterCallback(onSpriteAdicionado);
-
-        root.Q<Button>("botaoMenosTodos")    .clicked += () => listaDeSprites.limparTodaLista();
-        root.Q<Button>("botaoMenos")         .clicked += () => listaDeSprites.removerUltimaLinha();
         root.Q<Button>("botaoClean")         .clicked += () => cleaner.clean();
         root.Q<Button>("botaoProcessar")     .clicked += () => processador.processar();
         root.Q<Button>("botaoProcessarOrdem").clicked += () => processador.processarOrdem();
