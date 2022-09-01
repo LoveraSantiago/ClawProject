@@ -18,4 +18,10 @@ public class FactoryMapaEntidade
         }
         return null;
     }
+
+    public static MapaEntidade getMapaEntidadeByIndice(int indice)
+    {
+        MapaEnum mapaEnum = Mapas.getMapaEnumPeloIndice(indice);
+        return getMapaEntidadeByMapaEnum(mapaEnum);
+    }
 }

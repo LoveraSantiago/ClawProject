@@ -17,7 +17,8 @@ public class MapaScene : MonoBehaviour
     [Space(5)]
     [SerializeField] private GameObject prefabLevelsDto;
 
-    private AllTimersFichas allTimersFichas;    
+    private AllTimersFichas allTimersFichas;
+    private LevelMapaUi levelMapaUi;
 
     private void Start()
     {
@@ -25,6 +26,12 @@ public class MapaScene : MonoBehaviour
         new BotoesCenasMapa(botoesCenasDto);
 
         allTimersFichas = new AllTimersFichas(timerFichaDto);        
+
+        PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
+        LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto();
+
+        levelMapaUi = new LevelMapaUi(levelMapaUiDto);
+        levelMapaUi.addMapaParaTela(1, levelsMapDto[0]);
     }
 
     private void Update()

@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PrefabLevelsDto : MonoBehaviour
 {
-
     [SerializeField] private LevelMapDto[] levelsMapDto;
+
+    public LevelMapDto[] getLevelsMapDto()
+    {
+        return levelsMapDto;
+    }
 
 }

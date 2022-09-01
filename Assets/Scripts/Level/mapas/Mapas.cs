@@ -44,4 +44,10 @@ public class Mapas
         }
         return MapaEnum.DEFAULTS;
     }
+
+    public static MapaEnum getMapaEnumPeloIndice(int indice)
+    {
+        getTodosMapas();
+        return MAPAS[indice];
+    }
 }
