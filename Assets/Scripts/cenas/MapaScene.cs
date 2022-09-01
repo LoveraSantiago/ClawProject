@@ -22,6 +22,8 @@ public class MapaScene : MonoBehaviour
 
     private void Start()
     {
+        Utils.configMainMono(this);
+
         ModalMapsManager modalManager = new ModalMapsManager(modalFaseDto, modalNoFichaDto);
         new BotoesCenasMapa(botoesCenasDto);
 
