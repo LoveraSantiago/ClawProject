@@ -17,31 +17,18 @@ public class MapaScene : MonoBehaviour
     [Space(5)]
     [SerializeField] private GameObject prefabLevelsDto;
 
-    private TimerFicha timerFichaOuro;
-    private TimerFicha timerFichaPrata;
-    private TimerFicha timerFichaBronze;
+    private AllTimersFichas allTimersFichas;    
 
     private void Start()
     {
         ModalMapsManager modalManager = new ModalMapsManager(modalFaseDto, modalNoFichaDto);
         new BotoesCenasMapa(botoesCenasDto);
 
-        timerFichaOuro   = new TimerFicha(timerFichaDto[0], Ficha.OURO);
-        timerFichaPrata  = new TimerFicha(timerFichaDto[1], Ficha.PRATA);
-        timerFichaBronze = new TimerFicha(timerFichaDto[2], Ficha.BRONZE);        
+        allTimersFichas = new AllTimersFichas(timerFichaDto);        
     }
 
     private void Update()
     {
-        timerFichaOuro.update();
-        timerFichaPrata.update();
-        timerFichaBronze.update();
-    }
-
-    private void OnDisable()
-    {
-        //PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, 2);
-        //PlayerPrefsFichas.consumirFicha(Ficha.PRATA, 1);
-        //PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
-    }
+        allTimersFichas.update();
+    }    
 }
