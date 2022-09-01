@@ -4,9 +4,9 @@ public class FactoryMapaEntidade
     {
         switch (mapaEnum)
         {
-            case MapaEnum.DEFAULTS:  return new MapaEntidade(0, "Parque de Diversoes", "");
-            case MapaEnum.FRUTAS:    return new MapaEntidade(1, "Parque Jurassico", "frutas");
-            case MapaEnum.DINO:      return new MapaEntidade(2, "X", "dinos");
+            case MapaEnum.DEFAULTS:  return new MapaEntidade(0, "", "");
+            case MapaEnum.FRUTAS:    return new MapaEntidade(1, "Parque de Diversoes", "frutas");
+            case MapaEnum.DINO:      return new MapaEntidade(2, "Parque Jurassico", "dinos");
             case MapaEnum.BOLAS:     return new MapaEntidade(3, "X", "bolas");
             case MapaEnum.FALLGUYS:  return new MapaEntidade(4, "X", "fg");
             case MapaEnum.YUYU:      return new MapaEntidade(5, "X", "yuyu");
