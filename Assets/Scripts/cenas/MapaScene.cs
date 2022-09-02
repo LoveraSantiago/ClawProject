@@ -45,7 +45,7 @@ public class MapaScene : MonoBehaviour,
 
     private void Update()
     {
-        allTimersFichas.update();
+        allTimersFichas.update();        
     }
 
     void AcaoItemEscolhido<LevelMapDto>.ConsumidorEvento.consumirEvento(LevelMapDto evento)

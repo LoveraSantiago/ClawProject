@@ -1,7 +1,7 @@
 public class NavegacaoMapas : AcaoItemEscolhido<LevelMapDto>.ProdutorEvento
 {
     private BotoesNavegacaoMapaDto botoesNavegacao;
-    private NavegacaoDeArray<LevelMapDto> navegacaoDeArray;
+    private NavegacaoDeArray<LevelMapDto> navegacaoDeArray;    
 
     private ProdutorDeEvento<LevelMapDto> produtorDeEvento;
 
@@ -12,25 +12,30 @@ public class NavegacaoMapas : AcaoItemEscolhido<LevelMapDto>.ProdutorEvento
         this.botoesNavegacao.BtnNavegacaoDireita.onClick.AddListener (() => navegacaoDireita());
 
         navegacaoDeArray = new NavegacaoDeArray<LevelMapDto>(levelsMapDto, 0);
-        produtorDeEvento = new ProdutorDeEvento<LevelMapDto>();
+        produtorDeEvento = new ProdutorDeEvento<LevelMapDto>();        
     }
 
     public void inicializar()
     {
         LevelMapDto levelMapDto = navegacaoDeArray.getItemIndiceAtual();
-        produtorDeEvento.produziuEvento(levelMapDto);
-    }
+        produzirEvento(levelMapDto);
+    }    
 
     private void navegacaoEsquerda()
-    {
+    {        
         LevelMapDto levelMapDto = navegacaoDeArray.getItemProximo();
-        produtorDeEvento.produziuEvento(levelMapDto);
+        produzirEvento(levelMapDto);        
     }
 
     private void navegacaoDireita()
-    {
+    {        
         LevelMapDto levelMapDto = navegacaoDeArray.getItemAnterior();
-        produtorDeEvento.produziuEvento(levelMapDto);
+        produzirEvento(levelMapDto);        
+    }
+
+    private void produzirEvento(LevelMapDto levelMapDto)
+    {        
+        produtorDeEvento.produziuEvento(levelMapDto);     
     }
 
     ProdutorDeEvento<LevelMapDto> ProdutorConsumidoresDeEvento<LevelMapDto>.ProdutorEvento.getProdutorDeEvento()
