@@ -2090,6 +2090,15 @@ MonoBehaviour:
       animator: {fileID: 1643526243}
     - btnLevel: {fileID: 1859291351}
       animator: {fileID: 1859291352}
+  botoesNavegacao:
+    btnNavegacaoEsquerda: {fileID: 615640189}
+    btnNavegacaoDireita: {fileID: 2062181147}
+  botoesCenasDto:
+    btnCards: {fileID: 250196780}
+    btnScore: {fileID: 1357853671}
+    btnStore: {fileID: 1513573892}
+    btnPelucia: {fileID: 1246110284}
+    btnConfig: {fileID: 592234356}
   modalFaseDto:
     modalFase: {fileID: 1990500530}
     lblNivel: {fileID: 303498680}
@@ -2099,12 +2108,6 @@ MonoBehaviour:
   modalNoFichaDto:
     modalNoFicha: {fileID: 4837428847216123165}
     btnOk: {fileID: 4837428846761883698}
-  botoesCenasDto:
-    btnCards: {fileID: 250196780}
-    btnScore: {fileID: 1357853671}
-    btnStore: {fileID: 1513573892}
-    btnPelucia: {fileID: 1246110284}
-    btnConfig: {fileID: 592234356}
   prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
 --- !u!1 &1381132999
 GameObject:

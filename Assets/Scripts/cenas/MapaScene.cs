@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class MapaScene : MonoBehaviour
@@ -9,11 +8,13 @@ public class MapaScene : MonoBehaviour
     [Space(5)]
     [SerializeField] private LevelMapaUiDto levelMapaUiDto;
     [Space(5)]
+    [SerializeField] private BotoesNavegacaoMapaDto botoesNavegacao;
+    [Space(5)]
+    [SerializeField] private BotoesCenasDto botoesCenasDto;
+    [Space(5)]
     [SerializeField] private ModalFaseDto modalFaseDto;
     [Space(5)]    
     [SerializeField] private ModalNoFichaDto modalNoFichaDto;
-    [Space(5)]
-    [SerializeField] private BotoesCenasDto botoesCenasDto;
     [Space(5)]
     [SerializeField] private GameObject prefabLevelsDto;
 
