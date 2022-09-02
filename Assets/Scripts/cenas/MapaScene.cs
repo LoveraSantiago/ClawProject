@@ -1,7 +1,8 @@
 using UnityEngine;
 
 #pragma warning disable 0649
-public class MapaScene : MonoBehaviour
+public class MapaScene : MonoBehaviour, 
+                         AcaoItemEscolhido<LevelMapDto>.ConsumidorEvento
 {       
     
     [SerializeField] private TimerFichaDto[] timerFichaDto = new TimerFichaDto[3];
@@ -19,26 +20,36 @@ public class MapaScene : MonoBehaviour
     [SerializeField] private GameObject prefabLevelsDto;
 
     private AllTimersFichas allTimersFichas;
-    private LevelMapaUi levelMapaUi;
+    private LevelMapaUi levelMapaUi;    
 
     private void Start()
     {
         Utils.configMainMono(this);
 
+        allTimersFichas = new AllTimersFichas(timerFichaDto);        
         ModalMapsManager modalManager = new ModalMapsManager(modalFaseDto, modalNoFichaDto);
         new BotoesCenasMapa(botoesCenasDto);
 
-        allTimersFichas = new AllTimersFichas(timerFichaDto);        
+        levelMapaUi = new LevelMapaUi(levelMapaUiDto);
 
         PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
         LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto();
+        NavegacaoMapas navegacaoMapas = new NavegacaoMapas(botoesNavegacao, levelsMapDto);
 
-        levelMapaUi = new LevelMapaUi(levelMapaUiDto);
-        levelMapaUi.addMapaParaTela(1, levelsMapDto[0]);
+        new ProdutorConsumidoresDeEvento<LevelMapDto>()
+            .configurarProdutor(navegacaoMapas)
+            .adicionarConsumidor(this);
+
+        navegacaoMapas.inicializar();
     }
 
     private void Update()
     {
         allTimersFichas.update();
-    }    
+    }
+
+    void AcaoItemEscolhido<LevelMapDto>.ConsumidorEvento.consumirEvento(LevelMapDto evento)
+    {
+        levelMapaUi.addMapaParaTela(1, evento);        
+    }
 }
