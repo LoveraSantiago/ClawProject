@@ -50,6 +50,6 @@ public class MapaScene : MonoBehaviour,
 
     void AcaoItemEscolhido<LevelMapDto>.ConsumidorEvento.consumirEvento(LevelMapDto evento)
     {
-        levelMapaUi.addMapaParaTela(1, evento);        
+        levelMapaUi.addMapaParaTela(evento);        
     }
 }

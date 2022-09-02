@@ -23,13 +23,13 @@ public class NavegacaoMapas : AcaoItemEscolhido<LevelMapDto>.ProdutorEvento
 
     private void navegacaoEsquerda()
     {
-        LevelMapDto levelMapDto = navegacaoDeArray.getItemAnterior();
+        LevelMapDto levelMapDto = navegacaoDeArray.getItemProximo();
         produtorDeEvento.produziuEvento(levelMapDto);
     }
 
     private void navegacaoDireita()
     {
-        LevelMapDto levelMapDto = navegacaoDeArray.getItemProximo();
+        LevelMapDto levelMapDto = navegacaoDeArray.getItemAnterior();
         produtorDeEvento.produziuEvento(levelMapDto);
     }
 

@@ -12,10 +12,10 @@ public class LevelMapaUi
         inicializarBotoesBaloesMapas();
     }
 
-    public void addMapaParaTela(int indice, LevelMapDto levelMapDto)
+    public void addMapaParaTela(LevelMapDto levelMapDto)
     {
-        MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByIndice(indice);
-        levelMapaUiDto.LblJorney.text = "Jorney " + indice;
+        MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(levelMapDto.MapaEnum);
+        levelMapaUiDto.LblJorney.text = "JORNEY " + mapaEntidade.id;
         levelMapaUiDto.LblTitle.text = mapaEntidade.title;
         levelMapaUiDto.ImgMapa.sprite = levelMapDto.SprMapa;
 
