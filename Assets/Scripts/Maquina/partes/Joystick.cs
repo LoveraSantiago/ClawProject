@@ -42,19 +42,19 @@ public class Joystick : AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<Direcao> INICIO
     //CONSOME EVENTO DE DIRECAO DISPARADO PELA GARRA PARA TER SINCRONIA NA DIRECAO DA GARRA
-    void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)
+    void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(Direcao evento)
     {
-        if(evento == DirecaoDaGarra.DIREITA)
+        if(evento == Direcao.DIREITA)
         {
             anguloDesejadoAtual = anguloDesejadoDireita;
             multiplicador = 1;
         }
-        else if(evento == DirecaoDaGarra.ESQUERDA)
+        else if(evento == Direcao.ESQUERDA)
         {
             anguloDesejadoAtual = anguloDesejadoEsquerda;
             multiplicador = 1;
         }
-        else if(evento == DirecaoDaGarra.CENTRALIZADA)
+        else if(evento == Direcao.CENTRALIZADA)
         {
             //Debug.Log("Direcao CENTRO");
             anguloDesejadoAtual = Quaternion.Euler(0, 0, 0); ;

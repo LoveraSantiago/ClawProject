@@ -3,13 +3,13 @@ using UnityEngine;
 public class Garra : ComponenteAnimacaoDaGarra,
                      AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {   
-    private ProdutorDeEvento<DirecaoDaGarra> produtorEventoDirecao;
+    private ProdutorDeEvento<Direcao> produtorEventoDirecao;
 
     public Garra(GarraDto garraDto)
         :base(garraDto)
     {        
         definindoGenero(garraDto);        
-        produtorEventoDirecao = new ProdutorDeEvento<DirecaoDaGarra>();
+        produtorEventoDirecao = new ProdutorDeEvento<Direcao>();
     }          
     
     public Vector3 getPosicaoCentroGarra()
@@ -21,11 +21,11 @@ public class Garra : ComponenteAnimacaoDaGarra,
     {
         if (direcao == 1)
         {
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.DIREITA);
+            produtorEventoDirecao.produziuEvento(Direcao.DIREITA);
         }
         else
         {
-            produtorEventoDirecao.produziuEvento(DirecaoDaGarra.ESQUERDA);
+            produtorEventoDirecao.produziuEvento(Direcao.ESQUERDA);
         }
     }
 
@@ -54,12 +54,12 @@ public class Garra : ComponenteAnimacaoDaGarra,
         corpo.SprRendererSimbolo.sprite = genero.Simbolo;
     }
 
-    public void dispararEventoDirecao(DirecaoDaGarra direcao)
+    public void dispararEventoDirecao(Direcao direcao)
     {
         produtorEventoDirecao.produziuEvento(direcao);
     }
 
-    ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<Direcao> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorEventoDirecao;
     }

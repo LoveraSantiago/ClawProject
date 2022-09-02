@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class MovimentacaoVoltarParaPosicao : AbstractMovimentacaoDaGarra
 {
-    private DirecaoDaGarra direcaoVoltar;       
-    public bool isDirecaoEsquerda { get { return direcaoVoltar == DirecaoDaGarra.ESQUERDA; } }
-    public bool isDirecaoDireita  { get { return direcaoVoltar == DirecaoDaGarra.DIREITA; } }
-    public bool isDirecaoCentralizada { get { return direcaoVoltar == DirecaoDaGarra.CENTRALIZADA; } }
+    private Direcao direcaoVoltar;       
+    public bool isDirecaoEsquerda { get { return direcaoVoltar == Direcao.ESQUERDA; } }
+    public bool isDirecaoDireita  { get { return direcaoVoltar == Direcao.DIREITA; } }
+    public bool isDirecaoCentralizada { get { return direcaoVoltar == Direcao.CENTRALIZADA; } }
 
     public void preInicio(float posicaoHorizontal)
     {
@@ -46,12 +46,12 @@ public class MovimentacaoVoltarParaPosicao : AbstractMovimentacaoDaGarra
     {
         if (isMaiorPosHorizontal(posicaoHorizontal))
         {
-            direcaoVoltar = DirecaoDaGarra.ESQUERDA;
+            direcaoVoltar = Direcao.ESQUERDA;
             playAnimacaoIrPDireita();
         }
         else
         {
-            direcaoVoltar = DirecaoDaGarra.DIREITA;
+            direcaoVoltar = Direcao.DIREITA;
             playAnimacaoIrPEsquerda();
         }
     }
@@ -60,6 +60,6 @@ public class MovimentacaoVoltarParaPosicao : AbstractMovimentacaoDaGarra
     {
         parar();
         colocarNaPosHorizontal(posicaoHorizontal);
-        direcaoVoltar = DirecaoDaGarra.CENTRALIZADA;        
+        direcaoVoltar = Direcao.CENTRALIZADA;        
     }
 }

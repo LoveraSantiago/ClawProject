@@ -2,7 +2,7 @@ using UnityEngine;
 
 #pragma warning disable 0649
 public class MapaScene : MonoBehaviour, 
-                         AcaoItemEscolhido<LevelMapDto>.ConsumidorEvento
+                         AcaoItemEscolhido<WrapperLevelMapDto>.ConsumidorEvento
 {       
     
     [SerializeField] private TimerFichaDto[] timerFichaDto = new TimerFichaDto[3];
@@ -36,7 +36,7 @@ public class MapaScene : MonoBehaviour,
         LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto();
         NavegacaoMapas navegacaoMapas = new NavegacaoMapas(botoesNavegacao, levelsMapDto);
 
-        new ProdutorConsumidoresDeEvento<LevelMapDto>()
+        new ProdutorConsumidoresDeEvento<WrapperLevelMapDto>()
             .configurarProdutor(navegacaoMapas)
             .adicionarConsumidor(this);
 
@@ -48,7 +48,7 @@ public class MapaScene : MonoBehaviour,
         allTimersFichas.update();        
     }
 
-    void AcaoItemEscolhido<LevelMapDto>.ConsumidorEvento.consumirEvento(LevelMapDto evento)
+    void AcaoItemEscolhido<WrapperLevelMapDto>.ConsumidorEvento.consumirEvento(WrapperLevelMapDto evento)
     {
         levelMapaUi.addMapaParaTela(evento);        
     }

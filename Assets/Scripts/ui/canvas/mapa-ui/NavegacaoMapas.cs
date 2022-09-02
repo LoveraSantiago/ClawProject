@@ -1,9 +1,9 @@
-public class NavegacaoMapas : AcaoItemEscolhido<LevelMapDto>.ProdutorEvento
+public class NavegacaoMapas : AcaoItemEscolhido<WrapperLevelMapDto>.ProdutorEvento
 {
     private BotoesNavegacaoMapaDto botoesNavegacao;
     private NavegacaoDeArray<LevelMapDto> navegacaoDeArray;    
 
-    private ProdutorDeEvento<LevelMapDto> produtorDeEvento;
+    private ProdutorDeEvento<WrapperLevelMapDto> produtorDeEvento;
 
     public NavegacaoMapas(BotoesNavegacaoMapaDto botoesNavegacao, LevelMapDto[] levelsMapDto)
     {
@@ -12,33 +12,34 @@ public class NavegacaoMapas : AcaoItemEscolhido<LevelMapDto>.ProdutorEvento
         this.botoesNavegacao.BtnNavegacaoDireita.onClick.AddListener (() => navegacaoDireita());
 
         navegacaoDeArray = new NavegacaoDeArray<LevelMapDto>(levelsMapDto, 0);
-        produtorDeEvento = new ProdutorDeEvento<LevelMapDto>();        
+        produtorDeEvento = new ProdutorDeEvento<WrapperLevelMapDto>();        
     }
 
     public void inicializar()
     {
         LevelMapDto levelMapDto = navegacaoDeArray.getItemIndiceAtual();
-        produzirEvento(levelMapDto);
+        produzirEvento(Direcao.CENTRALIZADA, levelMapDto);
     }    
 
     private void navegacaoEsquerda()
     {        
         LevelMapDto levelMapDto = navegacaoDeArray.getItemProximo();
-        produzirEvento(levelMapDto);        
+        produzirEvento(Direcao.ESQUERDA, levelMapDto);        
     }
 
     private void navegacaoDireita()
     {        
         LevelMapDto levelMapDto = navegacaoDeArray.getItemAnterior();
-        produzirEvento(levelMapDto);        
+        produzirEvento(Direcao.DIREITA, levelMapDto);        
     }
 
-    private void produzirEvento(LevelMapDto levelMapDto)
-    {        
-        produtorDeEvento.produziuEvento(levelMapDto);     
+    private void produzirEvento(Direcao direcao, LevelMapDto levelMapDto)
+    {
+        WrapperLevelMapDto wrapperMapLevelDto = FactoryWrapperLevelMapDto.factory(direcao, levelMapDto);
+        produtorDeEvento.produziuEvento(wrapperMapLevelDto);     
     }
 
-    ProdutorDeEvento<LevelMapDto> ProdutorConsumidoresDeEvento<LevelMapDto>.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<WrapperLevelMapDto> ProdutorConsumidoresDeEvento<WrapperLevelMapDto>.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

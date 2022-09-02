@@ -1,4 +1,4 @@
-public enum DirecaoDaGarra 
+public enum Direcao 
 {
     ESQUERDA, DIREITA, PARADA, CENTRALIZADA
 }

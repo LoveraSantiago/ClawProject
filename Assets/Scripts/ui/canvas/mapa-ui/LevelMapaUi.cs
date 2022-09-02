@@ -14,18 +14,29 @@ public class LevelMapaUi
         animacaMainMapa = new AnimacaoMainMapa(levelMapaUiDto.AnimatorMainMapa);
     }
 
-    public void addMapaParaTela(LevelMapDto levelMapDto)
+    public void addMapaParaTela(WrapperLevelMapDto evento)
     {
+        LevelMapDto levelMapDto = evento.levelMapDto; 
         MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(levelMapDto.MapaEnum);
         levelMapaUiDto.LblJorney.text = "JORNEY " + mapaEntidade.id;
         levelMapaUiDto.LblTitle.text = mapaEntidade.title;
         levelMapaUiDto.ImgMapa.sprite = levelMapDto.SprMapa;
+        showBotoesBaloes(levelMapDto.Posicoes);
+        
+        Utils.MonoBehaviour.StartCoroutine(zommarBaloes());
+    }
 
+    private void dismissBotoesBaloes()
+    {
+
+    }
+
+    private void showBotoesBaloes(Vector2[] posicoes)
+    {
         for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
         {
-            btnsMapasBaloes[contador].colocarNaPosicao(levelMapDto.Posicoes[contador]);
+            btnsMapasBaloes[contador].colocarNaPosicao(posicoes[contador]);
         }
-        Utils.MonoBehaviour.StartCoroutine(zommarBaloes());
     }
 
     private void inicializarBotoesBaloesMapas()

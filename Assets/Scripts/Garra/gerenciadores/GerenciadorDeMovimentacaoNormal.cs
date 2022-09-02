@@ -104,7 +104,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
         return MovimentadorProdutorInformacaoGarra.produtorEventoInfoGarra;
     }
 
-    public override ProdutorDeEvento<DirecaoDaGarra> getProdutorDeEvento()
+    public override ProdutorDeEvento<Direcao> getProdutorDeEvento()
     {
         return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)new MovimentacaoLateralZigZag()).getProdutorDeEvento();
     }    
