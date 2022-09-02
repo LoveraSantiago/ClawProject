@@ -9,6 +9,7 @@ public class LevelMapaUiDto
     [SerializeField] private TextMeshProUGUI lblJorney;
     [SerializeField] private TextMeshProUGUI lblTitle;
     [Space(3)]
+    [SerializeField] private Animator animatorMainMapa;
     [SerializeField] private Image imgMapa;
     [Space(3)]
     [SerializeField] private Button[] btnLevels = new Button[10];
@@ -17,6 +18,7 @@ public class LevelMapaUiDto
     public TextMeshProUGUI LblJorney { get { return lblJorney; } }
     public TextMeshProUGUI LblTitle { get { return lblTitle; } }
 
+    public Animator AnimatorMainMapa { get { return animatorMainMapa; } }
     public Image ImgMapa { get { return imgMapa; } }
 
     public Button[] BtnLevels { get { return btnLevels; } }

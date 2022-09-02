@@ -5,11 +5,13 @@ public class LevelMapaUi
 {
     private LevelMapaUiDto levelMapaUiDto;
     private BtnMapaBalao[] btnsMapasBaloes;
+    private AnimacaoMainMapa animacaMainMapa;
 
     public LevelMapaUi(LevelMapaUiDto levelMapaUiDto)
     {
         this.levelMapaUiDto = levelMapaUiDto;
         inicializarBotoesBaloesMapas();
+        animacaMainMapa = new AnimacaoMainMapa(levelMapaUiDto.AnimatorMainMapa);
     }
 
     public void addMapaParaTela(LevelMapDto levelMapDto)

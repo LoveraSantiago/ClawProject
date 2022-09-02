@@ -2078,6 +2078,7 @@ MonoBehaviour:
   levelMapaUiDto:
     lblJorney: {fileID: 1261413183}
     lblTitle: {fileID: 944140}
+    animatorMainMapa: {fileID: 1145818212}
     imgMapa: {fileID: 806134968}
     btnLevels:
     - {fileID: 1488078935}
