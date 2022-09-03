@@ -32,11 +32,8 @@ public class MapaScene : MonoBehaviour,
         ModalMapsManager modalManager = new ModalMapsManager(modalFaseDto, modalNoFichaDto);
         new BotoesCenasMapa(botoesCenasDto);
 
-        mapaUi = new MapaUi(levelMapaUiDto);
-
-        PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
-        LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto(PlayerPrefsMapas.getMapaMaxLevel());
-        NavegacaoMapas navegacaoMapas = new NavegacaoMapas(botoesNavegacao, levelsMapDto);
+        mapaUi = new MapaUi(levelMapaUiDto);        
+        NavegacaoMapas navegacaoMapas = new NavegacaoMapas(botoesNavegacao, prefabLevelsDto);
 
         new ProdutorConsumidoresDeEvento<WrapperLevelMapDto>()
             .configurarProdutor(navegacaoMapas)

@@ -7,13 +7,13 @@ public class NavegacaoMapas : AcaoItemEscolhido<WrapperLevelMapDto>.ProdutorEven
 
     private ProdutorDeEvento<WrapperLevelMapDto> produtorDeEvento;
 
-    public NavegacaoMapas(BotoesNavegacaoMapaDto botoesNavegacao, LevelMapDto[] levelsMapDto)
+    public NavegacaoMapas(BotoesNavegacaoMapaDto botoesNavegacao, GameObject prefabLevelsDto)
     {
         this.botoesNavegacao = botoesNavegacao;
         this.botoesNavegacao.BtnNavegacaoEsquerda.onClick.AddListener(() => navegacaoEsquerda());
         this.botoesNavegacao.BtnNavegacaoDireita.onClick.AddListener (() => navegacaoDireita());
 
-        navegacaoDeArray = new NavegacaoDeArray<LevelMapDto>(levelsMapDto, 0);
+        configurarMapasParaNavegacao(prefabLevelsDto);
         produtorDeEvento = new ProdutorDeEvento<WrapperLevelMapDto>();        
     }
 
@@ -42,6 +42,13 @@ public class NavegacaoMapas : AcaoItemEscolhido<WrapperLevelMapDto>.ProdutorEven
         Debug.Log("Penultimo " + penultimo + " Ultimo " + ultimo);
         WrapperLevelMapDto wrapperMapLevelDto = FactoryWrapperLevelMapDto.factory(direcao, levelMapDto, penultimo, ultimo);
         produtorDeEvento.produziuEvento(wrapperMapLevelDto);     
+    }
+
+    private void configurarMapasParaNavegacao(GameObject prefabLevelsDto)
+    {
+        PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
+        LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto(PlayerPrefsMapas.getMapaMaxLevel());
+        navegacaoDeArray = new NavegacaoDeArray<LevelMapDto>(levelsMapDto, 0);
     }
 
     ProdutorDeEvento<WrapperLevelMapDto> ProdutorConsumidoresDeEvento<WrapperLevelMapDto>.ProdutorEvento.getProdutorDeEvento()
