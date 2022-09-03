@@ -15,8 +15,7 @@ public class LevelMapaUiDto
     [Space(3)]
     [SerializeField] private Animator animatorMainMapa;
     [SerializeField] private Image imgMapa;
-    [Space(3)]
-    [SerializeField] private Button[] btnLevels = new Button[10];
+    [Space(3)]    
     [SerializeField] private BalaoLevelBtnDto[] baloesLevels = new BalaoLevelBtnDto[10];
 
     public float DelayEntreBaloes { get { return delayEntreBaloes; } }
@@ -28,7 +27,6 @@ public class LevelMapaUiDto
 
     public Animator AnimatorMainMapa { get { return animatorMainMapa; } }
     public Image ImgMapa { get { return imgMapa; } }
-
-    public Button[] BtnLevels { get { return btnLevels; } }
+        
     public BalaoLevelBtnDto[] BaloesLevels { get { return baloesLevels; } }
 }

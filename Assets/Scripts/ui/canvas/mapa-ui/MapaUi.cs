@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class MapaUi 
 {
-    private LevelMapaUiDto levelMapaUiDto;
-    private BtnBalaoMapa[] btnsMapasBaloes;
+    private LevelMapaUiDto levelMapaUiDto;    
     private AnimacaoMainMapa animacaMainMapa;
+    private GrupoBtnBaloesMapa grupoBtnBaloes;
 
     public MapaUi(LevelMapaUiDto levelMapaUiDto)
     {
         this.levelMapaUiDto = levelMapaUiDto;
-        inicializarBotoesBaloesMapas();
+        grupoBtnBaloes = new GrupoBtnBaloesMapa(levelMapaUiDto.BaloesLevels);
+        
         animacaMainMapa = new AnimacaoMainMapa(levelMapaUiDto.AnimatorMainMapa);
     }
 
@@ -18,52 +19,23 @@ public class MapaUi
     {   
         if(evento.isDireita)
         {
-            dismissBotoesBaloes();
+            grupoBtnBaloes.dismissBotoesBaloes();
             animacaMainMapa.navegarParaEsquerda();
             Utils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
         }
         else if (evento.isEsquerda)
         {
-            dismissBotoesBaloes();
+            grupoBtnBaloes.dismissBotoesBaloes();
             animacaMainMapa.navegarParaDireita();
             Utils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
         }
         else if(evento.isCentralizado)
         {
             updateMapa(evento);
-            posicionarBaloes(evento);        
-            Utils.MonoBehaviour.StartCoroutine(zommarBaloes(evento));
+            grupoBtnBaloes.posicionarBaloes(evento);        
+            Utils.MonoBehaviour.StartCoroutine(grupoBtnBaloes.coroutineZommarBaloes(evento));
         }
-    }
-
-    private void dismissBotoesBaloes()
-    {
-        for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
-        {
-            btnsMapasBaloes[contador].zoomarBalaoMenos();
-        }
-    }
-
-    private void posicionarBaloes(WrapperLevelMapDto evento)
-    {
-        Vector2[] posicoes = evento.levelMapDto.Posicoes;
-        if (evento.isAberto)
-        {
-            for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
-            {
-                btnsMapasBaloes[contador].colocarNaPosicao(posicoes[contador]);
-            }
-        }
-    }
-
-    private void inicializarBotoesBaloesMapas()
-    {
-        btnsMapasBaloes = new BtnBalaoMapa[levelMapaUiDto.BtnLevels.Length];
-        for (int contador = 0; contador < levelMapaUiDto.BtnLevels.Length; contador++)
-        {
-            btnsMapasBaloes[contador] = new BtnBalaoMapa(levelMapaUiDto.BaloesLevels[contador]);
-        }
-    }
+    }        
 
     private void updateMapa(WrapperLevelMapDto evento)
     {
@@ -79,21 +51,8 @@ public class MapaUi
     {
         yield return new WaitForSeconds(levelMapaUiDto.DelayInicioMapa);
         updateMapa(evento);
-        posicionarBaloes(evento);
+        grupoBtnBaloes.posicionarBaloes(evento);
         yield return new WaitForSeconds(levelMapaUiDto.DelayInicioBaloes);
-        yield return zommarBaloes(evento);        
-    }
-
-    private IEnumerator zommarBaloes(WrapperLevelMapDto evento)
-    {
-        if (evento.isAberto)
-        {
-            for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
-            {
-                btnsMapasBaloes[contador].zoomarBalaoMais();
-                yield return new WaitForSeconds(levelMapaUiDto.DelayEntreBaloes);
-            }
-        }
-        yield return null;
-    }
+        yield return grupoBtnBaloes.coroutineZommarBaloes(evento);        
+    }   
 }
