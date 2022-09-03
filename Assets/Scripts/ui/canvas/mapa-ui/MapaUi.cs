@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class LevelMapaUi 
+public class MapaUi 
 {
     private LevelMapaUiDto levelMapaUiDto;
     private BtnMapaBalao[] btnsMapasBaloes;
     private AnimacaoMainMapa animacaMainMapa;
 
-    public LevelMapaUi(LevelMapaUiDto levelMapaUiDto)
+    public MapaUi(LevelMapaUiDto levelMapaUiDto)
     {
         this.levelMapaUiDto = levelMapaUiDto;
         inicializarBotoesBaloesMapas();

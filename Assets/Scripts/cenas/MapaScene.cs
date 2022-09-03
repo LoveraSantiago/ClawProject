@@ -20,7 +20,7 @@ public class MapaScene : MonoBehaviour,
     [SerializeField] private GameObject prefabLevelsDto;
 
     private AllTimersFichas allTimersFichas;
-    private LevelMapaUi levelMapaUi;    
+    private MapaUi mapaUi;    
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class MapaScene : MonoBehaviour,
         ModalMapsManager modalManager = new ModalMapsManager(modalFaseDto, modalNoFichaDto);
         new BotoesCenasMapa(botoesCenasDto);
 
-        levelMapaUi = new LevelMapaUi(levelMapaUiDto);
+        mapaUi = new MapaUi(levelMapaUiDto);
 
         PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
         LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto(PlayerPrefsMapas.getMapaMaxLevel());
@@ -50,6 +50,6 @@ public class MapaScene : MonoBehaviour,
 
     void AcaoItemEscolhido<WrapperLevelMapDto>.ConsumidorEvento.consumirEvento(WrapperLevelMapDto evento)
     {
-        levelMapaUi.addMapaParaTela(evento);        
+        mapaUi.addMapaParaTela(evento);        
     }
 }
