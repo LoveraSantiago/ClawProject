@@ -3,7 +3,8 @@ using UnityEngine;
 public class BtnMapaBalao 
 {
     private static readonly int IDLE = Animator.StringToHash("idle-baloes");
-    private static readonly int ZOOM = Animator.StringToHash("zoom-baloes");
+    private static readonly int ZOOM_MAIS  = Animator.StringToHash("zoom-mais");
+    private static readonly int ZOOM_MENOS = Animator.StringToHash("zoom-menos");
 
     private BalaoLevelBtnDto balaoLevelDto;
 
@@ -14,13 +15,16 @@ public class BtnMapaBalao
 
     public void colocarNaPosicao(Vector2 posicao)
     {
-        balaoLevelDto.BtnLevel.transform.localPosition = posicao;
-        balaoLevelDto.BtnLevel.gameObject.SetActive(false);
+        balaoLevelDto.BtnLevel.transform.localPosition = posicao;        
     }
 
-    public void zoomarBalao()
+    public void zoomarBalaoMais()
+    {        
+        balaoLevelDto.Animator.Play(ZOOM_MAIS);
+    }
+
+    public void zoomarBalaoMenos()
     {
-        balaoLevelDto.BtnLevel.gameObject.SetActive(true);
-        balaoLevelDto.Animator.Play(ZOOM);
+        balaoLevelDto.Animator.Play(ZOOM_MENOS);        
     }
 }

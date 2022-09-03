@@ -16,6 +16,7 @@ public class LevelMapaUi
 
     public void addMapaParaTela(WrapperLevelMapDto evento)
     {
+        dismissBotoesBaloes();
         LevelMapDto levelMapDto = evento.levelMapDto; 
         MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(levelMapDto.MapaEnum);
         levelMapaUiDto.LblJorney.text = "JORNEY " + mapaEntidade.id;
@@ -28,7 +29,10 @@ public class LevelMapaUi
 
     private void dismissBotoesBaloes()
     {
-
+        for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
+        {
+            btnsMapasBaloes[contador].zoomarBalaoMenos();
+        }
     }
 
     private void showBotoesBaloes(Vector2[] posicoes)
@@ -52,7 +56,7 @@ public class LevelMapaUi
     {
         for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
         {
-            btnsMapasBaloes[contador].zoomarBalao();
+            btnsMapasBaloes[contador].zoomarBalaoMais();
             yield return new WaitForSeconds(0.1f);
         }
         yield return null;
