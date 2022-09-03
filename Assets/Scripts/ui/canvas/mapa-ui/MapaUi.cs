@@ -7,12 +7,14 @@ public class MapaUi
     private AnimacaoMainMapa animacaMainMapa;
     private GrupoBtnBaloesMapa grupoBtnBaloes;
 
+    private Material materialGrayScale;
+
     public MapaUi(LevelMapaUiDto levelMapaUiDto)
     {
         this.levelMapaUiDto = levelMapaUiDto;
-        grupoBtnBaloes = new GrupoBtnBaloesMapa(levelMapaUiDto.BaloesLevels);
-        
+        grupoBtnBaloes = new GrupoBtnBaloesMapa(levelMapaUiDto.BaloesLevels);        
         animacaMainMapa = new AnimacaoMainMapa(levelMapaUiDto.AnimatorMainMapa);
+        materialGrayScale = MaterialGrayScale.of();
     }
 
     public void addMapaParaTela(WrapperLevelMapDto evento)
@@ -42,9 +44,30 @@ public class MapaUi
         LevelMapDto levelMapDto = evento.levelMapDto;
         MapaEntidade mapaEntidade = evento.mapaEntidade;
 
-        levelMapaUiDto.LblJorney.text = "JORNEY " + mapaEntidade.id;
-        levelMapaUiDto.LblTitle.text = mapaEntidade.title;
         levelMapaUiDto.ImgMapa.sprite = levelMapDto.SprMapa;
+
+        if (evento.isAberto)
+        {
+            levelMapaUiDto.ImgMapa.color = Color.white;
+            levelMapaUiDto.ImgMapa.material = null;
+            levelMapaUiDto.LblJorney.text = "JORNEY " + mapaEntidade.id;
+            levelMapaUiDto.LblTitle.text = mapaEntidade.title;
+        }
+        else if (evento.isLocked)
+        {
+            materialGrayScale = MaterialGrayScale.changeSprite(materialGrayScale, levelMapDto.SprMapa);
+            levelMapaUiDto.ImgMapa.color = Color.white;
+            levelMapaUiDto.ImgMapa.material = materialGrayScale;
+            levelMapaUiDto.LblJorney.text = "LEVEL BLOQUEADO";
+            levelMapaUiDto.LblTitle.text = "Complete o Mapa Anterior para Desbloquear";
+        }
+        else if (evento.isBlocked)
+        {
+            levelMapaUiDto.ImgMapa.color = Color.black;
+            levelMapaUiDto.ImgMapa.material = null;
+            levelMapaUiDto.LblJorney.text = "LEVEL SECRETO";            
+            levelMapaUiDto.LblTitle.text = "Complete o Mapa Anterior para Revelar";
+        }
     }
 
     private IEnumerator alterarMaps(WrapperLevelMapDto evento)

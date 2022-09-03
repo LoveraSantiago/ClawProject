@@ -16,8 +16,9 @@ public class MapaScene : MonoBehaviour,
     [SerializeField] private ModalFaseDto modalFaseDto;
     [Space(5)]    
     [SerializeField] private ModalNoFichaDto modalNoFichaDto;
-    [Space(5)]
+    [Space(5)]    
     [SerializeField] private GameObject prefabLevelsDto;
+    [SerializeField] private GameObject prefabMateriais;
 
     private AllTimersFichas allTimersFichas;
     private MapaUi mapaUi;    
@@ -25,6 +26,7 @@ public class MapaScene : MonoBehaviour,
     private void Start()
     {
         Utils.configMainMono(this);
+        MateriaisUtils.configurar(prefabMateriais);
 
         allTimersFichas = new AllTimersFichas(timerFichaDto);        
         ModalMapsManager modalManager = new ModalMapsManager(modalFaseDto, modalNoFichaDto);
