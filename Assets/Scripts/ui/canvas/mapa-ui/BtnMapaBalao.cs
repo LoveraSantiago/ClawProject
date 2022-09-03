@@ -11,6 +11,7 @@ public class BtnMapaBalao
     public BtnMapaBalao(BalaoLevelBtnDto balaoLevelDto)
     {
         this.balaoLevelDto = balaoLevelDto;
+        this.balaoLevelDto.BtnLevel.gameObject.SetActive(false);
     }
 
     public void colocarNaPosicao(Vector2 posicao)
@@ -19,7 +20,8 @@ public class BtnMapaBalao
     }
 
     public void zoomarBalaoMais()
-    {        
+    {
+        this.balaoLevelDto.BtnLevel.gameObject.SetActive(true);
         balaoLevelDto.Animator.Play(ZOOM_MAIS);
     }
 

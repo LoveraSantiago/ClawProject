@@ -6,6 +6,8 @@ using TMPro;
 [System.Serializable]
 public class LevelMapaUiDto
 {
+    [SerializeField] private float delayEntreBaloes;
+    [Space(3)]
     [SerializeField] private TextMeshProUGUI lblJorney;
     [SerializeField] private TextMeshProUGUI lblTitle;
     [Space(3)]
@@ -15,6 +17,7 @@ public class LevelMapaUiDto
     [SerializeField] private Button[] btnLevels = new Button[10];
     [SerializeField] private BalaoLevelBtnDto[] baloesLevels = new BalaoLevelBtnDto[10];
 
+    public float DelayEntreBaloes { get { return delayEntreBaloes; } }
     public TextMeshProUGUI LblJorney { get { return lblJorney; } }
     public TextMeshProUGUI LblTitle { get { return lblTitle; } }
 
