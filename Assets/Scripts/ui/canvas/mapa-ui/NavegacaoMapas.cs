@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class NavegacaoMapas : AcaoItemEscolhido<WrapperLevelMapDto>.ProdutorEvento
 {
     private BotoesNavegacaoMapaDto botoesNavegacao;
@@ -37,6 +39,7 @@ public class NavegacaoMapas : AcaoItemEscolhido<WrapperLevelMapDto>.ProdutorEven
     {
         bool penultimo = navegacaoDeArray.isIndiceAtualPenultimo();
         bool ultimo = navegacaoDeArray.isIndiceAtualUltimo();
+        Debug.Log("Penultimo " + penultimo + " Ultimo " + ultimo);
         WrapperLevelMapDto wrapperMapLevelDto = FactoryWrapperLevelMapDto.factory(direcao, levelMapDto, penultimo, ultimo);
         produtorDeEvento.produziuEvento(wrapperMapLevelDto);     
     }

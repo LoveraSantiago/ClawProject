@@ -4,7 +4,7 @@ using UnityEngine;
 public class MapaUi 
 {
     private LevelMapaUiDto levelMapaUiDto;
-    private BtnMapaBalao[] btnsMapasBaloes;
+    private BtnBalaoMapa[] btnsMapasBaloes;
     private AnimacaoMainMapa animacaMainMapa;
 
     public MapaUi(LevelMapaUiDto levelMapaUiDto)
@@ -15,26 +15,24 @@ public class MapaUi
     }
 
     public void addMapaParaTela(WrapperLevelMapDto evento)
-    {        
-        LevelMapDto levelMapDto = evento.levelMapDto;
-        MapaEntidade mapaEntidade = evento.mapaEntidade;
+    {   
         if(evento.isDireita)
         {
             dismissBotoesBaloes();
             animacaMainMapa.navegarParaEsquerda();
-            Utils.MonoBehaviour.StartCoroutine(alterarMaps(levelMapDto, mapaEntidade));
+            Utils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
         }
         else if (evento.isEsquerda)
         {
             dismissBotoesBaloes();
             animacaMainMapa.navegarParaDireita();
-            Utils.MonoBehaviour.StartCoroutine(alterarMaps(levelMapDto, mapaEntidade));
+            Utils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
         }
         else if(evento.isCentralizado)
         {
-            updateMapa(levelMapDto, mapaEntidade);
-            posicionarBaloes(levelMapDto.Posicoes);        
-            Utils.MonoBehaviour.StartCoroutine(zommarBaloes());
+            updateMapa(evento);
+            posicionarBaloes(evento);        
+            Utils.MonoBehaviour.StartCoroutine(zommarBaloes(evento));
         }
     }
 
@@ -46,45 +44,55 @@ public class MapaUi
         }
     }
 
-    private void posicionarBaloes(Vector2[] posicoes)
+    private void posicionarBaloes(WrapperLevelMapDto evento)
     {
-        for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
+        Vector2[] posicoes = evento.levelMapDto.Posicoes;
+        if (evento.isAberto)
         {
-            btnsMapasBaloes[contador].colocarNaPosicao(posicoes[contador]);
+            for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
+            {
+                btnsMapasBaloes[contador].colocarNaPosicao(posicoes[contador]);
+            }
         }
     }
 
     private void inicializarBotoesBaloesMapas()
     {
-        btnsMapasBaloes = new BtnMapaBalao[levelMapaUiDto.BtnLevels.Length];
+        btnsMapasBaloes = new BtnBalaoMapa[levelMapaUiDto.BtnLevels.Length];
         for (int contador = 0; contador < levelMapaUiDto.BtnLevels.Length; contador++)
         {
-            btnsMapasBaloes[contador] = new BtnMapaBalao(levelMapaUiDto.BaloesLevels[contador]);
+            btnsMapasBaloes[contador] = new BtnBalaoMapa(levelMapaUiDto.BaloesLevels[contador]);
         }
     }
 
-    private void updateMapa(LevelMapDto levelMapDto, MapaEntidade mapaEntidade)
+    private void updateMapa(WrapperLevelMapDto evento)
     {
+        LevelMapDto levelMapDto = evento.levelMapDto;
+        MapaEntidade mapaEntidade = evento.mapaEntidade;
+
         levelMapaUiDto.LblJorney.text = "JORNEY " + mapaEntidade.id;
         levelMapaUiDto.LblTitle.text = mapaEntidade.title;
         levelMapaUiDto.ImgMapa.sprite = levelMapDto.SprMapa;
     }
 
-    private IEnumerator alterarMaps(LevelMapDto levelMapDto, MapaEntidade mapaEntidade)
+    private IEnumerator alterarMaps(WrapperLevelMapDto evento)
     {
         yield return new WaitForSeconds(levelMapaUiDto.DelayInicioMapa);
-        updateMapa(levelMapDto, mapaEntidade);
-        posicionarBaloes(levelMapDto.Posicoes);
+        updateMapa(evento);
+        posicionarBaloes(evento);
         yield return new WaitForSeconds(levelMapaUiDto.DelayInicioBaloes);
-        yield return zommarBaloes();        
+        yield return zommarBaloes(evento);        
     }
 
-    private IEnumerator zommarBaloes()
+    private IEnumerator zommarBaloes(WrapperLevelMapDto evento)
     {
-        for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
+        if (evento.isAberto)
         {
-            btnsMapasBaloes[contador].zoomarBalaoMais();
-            yield return new WaitForSeconds(levelMapaUiDto.DelayEntreBaloes);
+            for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
+            {
+                btnsMapasBaloes[contador].zoomarBalaoMais();
+                yield return new WaitForSeconds(levelMapaUiDto.DelayEntreBaloes);
+            }
         }
         yield return null;
     }

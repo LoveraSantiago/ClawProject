@@ -64,7 +64,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
     private void carregarLevels()
     {
         levels = LevelHelper.getAllLevelsMapsAlias();
-        Debug.Log("QTD LEVELS " + levels.Length);
+        //Debug.Log("QTD LEVELS " + levels.Length);
     }
 
     private void carregarMateriais()
@@ -155,7 +155,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
 
     private void selecionado()
     {
-        Debug.Log("Selecionado chamado");
+        //Debug.Log("Selecionado chamado");
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
         int indiceItem = int.Parse(goSelecionado.transform.parent.name);
         ItemLevelDto itemLevelDto = levelsScrollDto.ItensLevelDto[indiceItem];
