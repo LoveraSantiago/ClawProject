@@ -22,13 +22,13 @@ public class MapaUi
         if(evento.isDireita)
         {
             grupoBtnBaloes.dismissBotoesBaloes();
-            animacaMainMapa.navegarParaEsquerda();
+            animacaMainMapa.navegarParaEsquerda(evento.isAberto);
             Utils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
         }
         else if (evento.isEsquerda)
         {
             grupoBtnBaloes.dismissBotoesBaloes();
-            animacaMainMapa.navegarParaDireita();
+            animacaMainMapa.navegarParaDireita(evento.isAberto);
             Utils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
         }
         else if(evento.isCentralizado)
@@ -36,7 +36,7 @@ public class MapaUi
             updateMapa(evento);
             grupoBtnBaloes.posicionarBaloes(evento);        
             Utils.MonoBehaviour.StartCoroutine(grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes));
-            animacaMainMapa.mostrarSetasNavegacao();
+            animacaMainMapa.mostrarSetasNavegacao(evento.isAberto);
         }
     }        
 
