@@ -39,14 +39,14 @@ public class GrupoBtnBaloesMapa
         }
     }
 
-    public IEnumerator coroutineZommarBaloes(WrapperLevelMapDto evento)
+    public IEnumerator coroutineZommarBaloes(WrapperLevelMapDto evento, float delay)
     {
         if (evento.isAberto)
         {
             for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
             {
                 btnsMapasBaloes[contador].zoomarBalaoMais();
-                yield return new WaitForSeconds(levelMapaUiDto.DelayEntreBaloes);
+                yield return new WaitForSeconds(delay);
             }
         }
         yield return null;

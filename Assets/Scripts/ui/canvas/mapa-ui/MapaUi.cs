@@ -33,7 +33,7 @@ public class MapaUi
         {
             updateMapa(evento);
             grupoBtnBaloes.posicionarBaloes(evento);        
-            Utils.MonoBehaviour.StartCoroutine(grupoBtnBaloes.coroutineZommarBaloes(evento));
+            Utils.MonoBehaviour.StartCoroutine(grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes));
         }
     }        
 
@@ -53,6 +53,6 @@ public class MapaUi
         updateMapa(evento);
         grupoBtnBaloes.posicionarBaloes(evento);
         yield return new WaitForSeconds(levelMapaUiDto.DelayInicioBaloes);
-        yield return grupoBtnBaloes.coroutineZommarBaloes(evento);        
+        yield return grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes);        
     }   
 }
