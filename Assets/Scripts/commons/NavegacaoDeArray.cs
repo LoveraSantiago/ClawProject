@@ -74,4 +74,14 @@ public class NavegacaoDeArray<T>
     {
         return indiceAtual < array.Length;
     }
+
+    public bool isIndiceAtualUltimo()
+    {
+        return indiceAtual == array.Length - 1;
+    }
+
+    public bool isIndiceAtualPenultimo()
+    {
+        return indiceAtual == array.Length - 2;
+    }
 }

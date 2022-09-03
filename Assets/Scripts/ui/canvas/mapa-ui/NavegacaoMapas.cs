@@ -35,7 +35,9 @@ public class NavegacaoMapas : AcaoItemEscolhido<WrapperLevelMapDto>.ProdutorEven
 
     private void produzirEvento(Direcao direcao, LevelMapDto levelMapDto)
     {
-        WrapperLevelMapDto wrapperMapLevelDto = FactoryWrapperLevelMapDto.factory(direcao, levelMapDto);
+        bool penultimo = navegacaoDeArray.isIndiceAtualPenultimo();
+        bool ultimo = navegacaoDeArray.isIndiceAtualUltimo();
+        WrapperLevelMapDto wrapperMapLevelDto = FactoryWrapperLevelMapDto.factory(direcao, levelMapDto, penultimo, ultimo);
         produtorDeEvento.produziuEvento(wrapperMapLevelDto);     
     }
 
