@@ -51,4 +51,9 @@ public class GrupoBtnBaloesMapa
         }
         yield return null;
     }
+
+    private void cliqueAcionado()
+    {
+
+    }
 }
