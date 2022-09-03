@@ -7,6 +7,8 @@ using TMPro;
 public class LevelMapaUiDto
 {
     [SerializeField] private float delayEntreBaloes;
+    [SerializeField] private float delayInicioMapa;
+    [SerializeField] private float delayInicioBaloes;
     [Space(3)]
     [SerializeField] private TextMeshProUGUI lblJorney;
     [SerializeField] private TextMeshProUGUI lblTitle;
@@ -18,6 +20,9 @@ public class LevelMapaUiDto
     [SerializeField] private BalaoLevelBtnDto[] baloesLevels = new BalaoLevelBtnDto[10];
 
     public float DelayEntreBaloes { get { return delayEntreBaloes; } }
+    public float DelayInicioMapa { get { return delayInicioMapa; } }
+    public float DelayInicioBaloes { get { return delayInicioBaloes; } }
+
     public TextMeshProUGUI LblJorney { get { return lblJorney; } }
     public TextMeshProUGUI LblTitle { get { return lblTitle; } }
 

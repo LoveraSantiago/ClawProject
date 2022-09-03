@@ -72,10 +72,10 @@ public class LevelMapaUi
 
     private IEnumerator alterarMaps(LevelMapDto levelMapDto, MapaEntidade mapaEntidade)
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(levelMapaUiDto.DelayInicioMapa);
         updateMapa(levelMapDto, mapaEntidade);
         posicionarBaloes(levelMapDto.Posicoes);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(levelMapaUiDto.DelayInicioBaloes);
         yield return zommarBaloes();        
     }
 
