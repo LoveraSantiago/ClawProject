@@ -41,6 +41,7 @@ public class NavegacaoMapas : AcaoItemEscolhido<WrapperLevelMapDto>.ProdutorEven
         bool ultimo = navegacaoDeArray.isIndiceAtualUltimo();
         Debug.Log("Penultimo " + penultimo + " Ultimo " + ultimo);
         WrapperLevelMapDto wrapperMapLevelDto = FactoryWrapperLevelMapDto.factory(direcao, levelMapDto, penultimo, ultimo);
+        PlayerPrefsMapas.salvarIndiceNavegacaoMapa(wrapperMapLevelDto.mapaEntidade.id);
         produtorDeEvento.produziuEvento(wrapperMapLevelDto);     
     }
 
@@ -48,7 +49,7 @@ public class NavegacaoMapas : AcaoItemEscolhido<WrapperLevelMapDto>.ProdutorEven
     {
         PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
         LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto(PlayerPrefsMapas.getMapaMaxLevel());
-        navegacaoDeArray = new NavegacaoDeArray<LevelMapDto>(levelsMapDto, 0);
+        navegacaoDeArray = new NavegacaoDeArray<LevelMapDto>(levelsMapDto, PlayerPrefsMapas.getIndiceNavegacaoMapa());
     }
 
     ProdutorDeEvento<WrapperLevelMapDto> ProdutorConsumidoresDeEvento<WrapperLevelMapDto>.ProdutorEvento.getProdutorDeEvento()
