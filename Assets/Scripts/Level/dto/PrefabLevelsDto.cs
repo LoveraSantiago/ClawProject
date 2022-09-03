@@ -1,14 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PrefabLevelsDto : MonoBehaviour
 {
     [SerializeField] private LevelMapDto[] levelsMapDto;
 
-    public LevelMapDto[] getLevelsMapDto()
+    public LevelMapDto[] getLevelsMapDto(int limite)
     {
-        return levelsMapDto;
+        LevelMapDto[] levelsMapsLimitado = new LevelMapDto[limite + 2];
+        for(int contador = 0; contador < levelsMapsLimitado.Length; contador++)
+        {
+            levelsMapsLimitado[contador] = levelsMapDto[contador];
+        }
+        return levelsMapsLimitado;
     }
 
 }

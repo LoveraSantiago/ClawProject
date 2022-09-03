@@ -11,6 +11,7 @@ public class WrapperLevelMapDto
     {
         this.direcao = direcao;
         this.levelMapDto = levelMapDto;
+        this.mapaEntidade = mapaEntidade;
         
     }
 

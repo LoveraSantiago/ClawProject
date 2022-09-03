@@ -33,7 +33,7 @@ public class MapaScene : MonoBehaviour,
         levelMapaUi = new LevelMapaUi(levelMapaUiDto);
 
         PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
-        LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto();
+        LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto(PlayerPrefsMapas.getMapaMaxLevel());
         NavegacaoMapas navegacaoMapas = new NavegacaoMapas(botoesNavegacao, levelsMapDto);
 
         new ProdutorConsumidoresDeEvento<WrapperLevelMapDto>()
