@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class BtnMapaBalao 
+public class BtnBalaoMapa 
 {
-    private static readonly int IDLE = Animator.StringToHash("idle-baloes");
+    private static readonly int IDLE       = Animator.StringToHash("idle-baloes");
     private static readonly int ZOOM_MAIS  = Animator.StringToHash("zoom-mais");
     private static readonly int ZOOM_MENOS = Animator.StringToHash("zoom-menos");
 
     private BalaoLevelBtnDto balaoLevelDto;
 
-    public BtnMapaBalao(BalaoLevelBtnDto balaoLevelDto)
+    public BtnBalaoMapa(BalaoLevelBtnDto balaoLevelDto)
     {
         this.balaoLevelDto = balaoLevelDto;
         this.balaoLevelDto.BtnLevel.gameObject.SetActive(false);
