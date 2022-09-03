@@ -9,7 +9,7 @@ public class FactoryMapaEntidade
             case MapaEnum.DINO:      return new MapaEntidade(2, "PARQUE JURASSICO", "dinos");
             case MapaEnum.BOLAS:     return new MapaEntidade(3, "QUADRAS POLIESPORTIVAS", "bolas");
             case MapaEnum.FALLGUYS:  return new MapaEntidade(4, "FULL GUYS WORLD", "fg");
-            case MapaEnum.YUYU:      return new MapaEntidade(5, "X", "yuyu");
+            case MapaEnum.YUYU:      return new MapaEntidade(5, "DESERTO ATACAMA", "yuyu");
             case MapaEnum.GELEIA:    return new MapaEntidade(6, "X", "geleia");
             case MapaEnum.MARIO:     return new MapaEntidade(7, "X", "mario");
             case MapaEnum.MEGAMAN:   return new MapaEntidade(8, "X", "megaman");

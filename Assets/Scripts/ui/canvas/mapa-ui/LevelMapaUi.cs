@@ -16,8 +16,8 @@ public class LevelMapaUi
 
     public void addMapaParaTela(WrapperLevelMapDto evento)
     {        
-        LevelMapDto levelMapDto = evento.levelMapDto; 
-        MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(levelMapDto.MapaEnum);
+        LevelMapDto levelMapDto = evento.levelMapDto;
+        MapaEntidade mapaEntidade = evento.mapaEntidade;
         if(evento.isDireita)
         {
             dismissBotoesBaloes();
