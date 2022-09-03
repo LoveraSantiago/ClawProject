@@ -36,6 +36,7 @@ public class MapaUi
             updateMapa(evento);
             grupoBtnBaloes.posicionarBaloes(evento);        
             Utils.MonoBehaviour.StartCoroutine(grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes));
+            animacaMainMapa.mostrarSetasNavegacao();
         }
     }        
 
