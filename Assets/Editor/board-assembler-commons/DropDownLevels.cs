@@ -65,7 +65,7 @@ public abstract class DropDownLevels
             {
                 MapaEnum mapaEnum = Mapas.getEnumByName(evt.newValue);
                 List<ColetavelEntidade>  listaDeColetaveis = HelperColetavelEntidade.getListaDeColetaveisEntidadeByFamilia(mapaEnum);
-                MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
+                MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
                 for(int contador = 0; contador < listaDeColetaveis.Count; contador++)
                 {
                     string nomeSprite = listaDeColetaveis[contador].nomeSprite;

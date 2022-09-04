@@ -2,7 +2,7 @@ public class FactoryWrapperLevelMapDto
 {
     public static WrapperLevelMapDto factory(Direcao direcao, LevelMapDto levelMapDto, bool penultimo, bool ultimo)
     {
-        MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(levelMapDto.MapaEnum);        
+        MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(levelMapDto.MapaEnum);        
 
         return new WrapperLevelMapDto()
                 .configDirecao(direcao)

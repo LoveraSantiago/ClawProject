@@ -1,4 +1,4 @@
-public class FactoryMapaEntidade 
+public class HelperMapaEntidade 
 {
     public static MapaEntidade getMapaEntidadeByMapaEnum(MapaEnum mapaEnum)
     {
