@@ -48,7 +48,7 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
     private void configurarMapasParaNavegacao(GameObject prefabLevelsDto)
     {
         PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
-        LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto(PlayerPrefsMapas.getMapaMaxLevel());
+        LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto();
         navegacaoDeArray = new NavegacaoDeArray<LevelMapDto>(levelsMapDto, PlayerPrefsMapas.getIndiceNavegacaoMapa());
     }
 

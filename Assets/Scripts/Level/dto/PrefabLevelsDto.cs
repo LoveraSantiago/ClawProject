@@ -5,8 +5,9 @@ public class PrefabLevelsDto : MonoBehaviour
 {
     [SerializeField] private LevelMapDto[] levelsMapDto;
 
-    public LevelMapDto[] getLevelsMapDto(int limite)
+    public LevelMapDto[] getLevelsMapDto()
     {
+        int limite = PlayerPrefsMapas.getMapaMaxLevelIndice();
         int maxIndice = limite + 2;
         maxIndice = Mathf.Min(maxIndice, levelsMapDto.Length);
 
