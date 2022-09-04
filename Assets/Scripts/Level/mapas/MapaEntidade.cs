@@ -3,7 +3,7 @@ public class MapaEntidade
     public int id { get; private set; }
     public string title { get; private set; }
     private string pathSprites;
-    private AbstractMapaLevelFornecedor levelFornecedor;
+    private AbstractFornecedorLevels levelFornecedor;
     private AbstractTemporarioMapaColetaveisLevelsFornecedor levelColetavelTemporarioFornecedor;
 
     public MapaEntidade()
@@ -23,7 +23,7 @@ public class MapaEntidade
         return this;
     }
 
-    public MapaEntidade addFornecedoresLevels(AbstractMapaLevelFornecedor levelFornecedor, AbstractTemporarioMapaColetaveisLevelsFornecedor levelColetavelTemporarioFornecedor)
+    public MapaEntidade addFornecedoresLevels(AbstractFornecedorLevels levelFornecedor, AbstractTemporarioMapaColetaveisLevelsFornecedor levelColetavelTemporarioFornecedor)
     {
         this.levelFornecedor = levelFornecedor;
         this.levelColetavelTemporarioFornecedor = levelColetavelTemporarioFornecedor;

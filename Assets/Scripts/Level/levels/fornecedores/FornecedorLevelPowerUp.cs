@@ -1,4 +1,4 @@
-public class LevelFornecedorPowerUp : AbstractMapaLevelFornecedor
+public class FornecedorLevelPowerUp : AbstractFornecedorLevels
 {
     public override AbstractLevel getLevelPorIndice(int level)
     {

@@ -7,7 +7,7 @@ public class HelperMapaEntidade
             case MapaEnum.FRUTAS:    return new MapaEntidade()
                     .addInfo(1, "PARQUE DE DIVERSÕES")
                     .addPathSprite("frutas")
-                    .addFornecedoresLevels(new ParqueDiversoesLevelFornecedor(), new FrutasColetaveisLevelFornecedor());
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.DINO:      return new MapaEntidade()
                     .addInfo(2, "PARQUE JURASSICO")
@@ -46,10 +46,10 @@ public class HelperMapaEntidade
                     .addPathSprite("poops");
 
             case MapaEnum.CACANIQUEL: return new MapaEntidade()
-                    .addFornecedoresLevels(new CacaNiquelLevelFornecedor(), null);
+                    .addFornecedoresLevels(new FornecedorLevelsCacaNiquel(), null);
 
             case MapaEnum.POWERUP: return new MapaEntidade()
-                    .addFornecedoresLevels(new LevelFornecedorPowerUp(), null);
+                    .addFornecedoresLevels(new FornecedorLevelPowerUp(), null);
         }
         return null;
     }

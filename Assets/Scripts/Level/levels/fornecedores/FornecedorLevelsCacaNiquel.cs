@@ -1,4 +1,4 @@
-public class CacaNiquelLevelFornecedor : AbstractMapaLevelFornecedor
+public class FornecedorLevelsCacaNiquel : AbstractFornecedorLevels
 {
     public override AbstractLevel getLevelPorIndice(int level)
     {

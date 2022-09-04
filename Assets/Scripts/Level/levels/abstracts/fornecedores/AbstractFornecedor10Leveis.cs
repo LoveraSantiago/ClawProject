@@ -1,4 +1,4 @@
-public abstract class AbstractMapa10LeveisFornecedor : AbstractMapaLevelFornecedor
+public abstract class AbstractFornecedor10Leveis : AbstractFornecedorLevels
 {
     public override AbstractLevel getLevelPorIndice(int level)
     {

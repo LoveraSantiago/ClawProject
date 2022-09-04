@@ -1,4 +1,4 @@
-public class ParqueDiversoesLevelFornecedor : AbstractMapa10LeveisFornecedor
+public class FornecedorLevelsParqueDeDiversoes : AbstractFornecedor10Leveis
 {
     protected override AbstractLevel getLevelPrimeiro()
     {

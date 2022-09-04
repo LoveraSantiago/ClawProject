@@ -1,4 +1,4 @@
-public abstract class AbstractMapaLevelFornecedor
+public abstract class AbstractFornecedorLevels
 {
     public AbstractLevel getLevel(int level)
     {
