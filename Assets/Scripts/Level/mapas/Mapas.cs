@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 public class Mapas 
 {
-    public static readonly string PARQUE_DIVERSOES = "Parque de Diversoes";
-
     private static MapaEnum[] MAPAS;
 
     public static MapaEnum[] getTodosMapas()
