@@ -78,18 +78,5 @@ public class LevelCoco : AbstractLevelColetavel
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorCoco();
-    }    
-
-    public class FornecedorCoco : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelCoco();
-        }
-    }
+    }   
 }

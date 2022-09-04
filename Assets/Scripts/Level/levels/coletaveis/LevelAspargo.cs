@@ -77,18 +77,5 @@ public class LevelAspargo : AbstractLevelColetavel
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorAspargo();
-    }
-    
-    public class FornecedorAspargo : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelAspargo();
-        }
-    }
+    }    
 }

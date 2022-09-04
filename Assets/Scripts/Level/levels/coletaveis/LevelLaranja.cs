@@ -79,18 +79,5 @@ public class LevelLaranja : AbstractLevelColetavel
         dicionario.Add("circulo-externo", "#9B4F0F");
         dicionario.Add("circulo-interno", "#C99E10");
         return dicionario;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLaranja();
     }   
-
-    public class FornecedorLaranja : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelLaranja();
-        }
-    }
 }

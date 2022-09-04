@@ -84,18 +84,4 @@ public class LevelLeite : AbstractLevelColetavel
     //{
     //    return true;
     //}
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLeite();
-    }
-    
-    public class FornecedorLeite : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelLeite();
-        }
-    }
-
 }

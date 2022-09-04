@@ -11,7 +11,7 @@ public class HelperMapaEntidade
             case MapaEnum.FRUTAS:    return new MapaEntidade()
                     .addInfo(1, "PARQUE DE DIVERSÕES")
                     .addPathSprite("frutas")
-                    .addFornecedorLevels(new ParqueDiversoesLevelFornecedor());
+                    .addFornecedoresLevels(new ParqueDiversoesLevelFornecedor(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.DINO:      return new MapaEntidade()
                     .addInfo(2, "PARQUE JURASSICO")

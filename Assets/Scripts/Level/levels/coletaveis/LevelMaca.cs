@@ -80,18 +80,4 @@ public class LevelMaca : AbstractLevelColetavel
     {
         return false;
     }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorMaca();
-    }    
-
-    public class FornecedorMaca : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelMaca();
-        }
-    }
-
 }

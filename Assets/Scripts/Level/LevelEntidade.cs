@@ -31,13 +31,13 @@ public class LevelEntidade
 
             new LevelEntidade(Level.PUP, LevelPowerUp.getFornecedor()),
 
-            new LevelEntidade(Level.COLETAVEL_PAO           , LevelPao.getFornecedor()),
-            new LevelEntidade(Level.COLETAVEL_MACA          , LevelMaca.getFornecedor()),
-            new LevelEntidade(Level.COLETAVEL_LEITE         , LevelLeite.getFornecedor()),
-            new LevelEntidade(Level.COLETAVEL_COCO          , LevelCoco.getFornecedor()),
-            new LevelEntidade(Level.COLETAVEL_ASPARGO       , LevelAspargo.getFornecedor()),
-            new LevelEntidade(Level.COLETAVEL_LARANJA       , LevelLaranja.getFornecedor()),
-            new LevelEntidade(Level.COLETAVEL_ESTRELAMARINHA, LevelEstrelaMarinha.getFornecedor())
+            new LevelEntidade(Level.COLETAVEL_PAO           , null),
+            new LevelEntidade(Level.COLETAVEL_MACA          , null),
+            new LevelEntidade(Level.COLETAVEL_LEITE         , null),
+            new LevelEntidade(Level.COLETAVEL_COCO          , null),
+            new LevelEntidade(Level.COLETAVEL_ASPARGO       , null),
+            new LevelEntidade(Level.COLETAVEL_LARANJA       , null),
+            new LevelEntidade(Level.COLETAVEL_ESTRELAMARINHA, null)
         };
         }
         return ARRAY_LEVELS_ENTIDADE;
