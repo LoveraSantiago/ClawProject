@@ -10,9 +10,10 @@ public class PlayerPrefsMapas
         return PlayerPrefs.GetInt(MAPA_MAX, 1);
     }
 
-    public static int getIndiceNavegacaoMapa()
+    public static MapaEntidade getIndiceNavegacaoMapa()
     {
-        return PlayerPrefs.GetInt(MAPA_NAVEGACAO, 1) - 1;
+        int indice = PlayerPrefs.GetInt(MAPA_NAVEGACAO, 1);
+        return HelperMapaEntidade.getMapaEntidadeByIndice(indice);
     }
 
     public static void salvarIndiceNavegacaoMapa(MapaEntidade mapaEntidade)

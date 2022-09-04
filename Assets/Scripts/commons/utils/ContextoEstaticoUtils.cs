@@ -3,7 +3,8 @@ using UnityEngine;
 public class ContextoEstaticoUtils 
 {
     public static MonoBehaviour MonoBehaviour { get; private set; }
-    public static MapaEntidade MapaEntidade { get; private set; }
+
+    private static MapaEntidade MapaEntidade;
     private static AbstractLevel Level;
 
     public static void configMainMono(MonoBehaviour monoBehaviour)
@@ -11,18 +12,34 @@ public class ContextoEstaticoUtils
         MonoBehaviour = monoBehaviour;
     }
 
-    public static void configMainMapaEntidade(MapaEntidade mapaEntidade, AbstractLevel level)
+    public static void configMapaEntidade(MapaEntidade mapaEntidade)
     {
         MapaEntidade = mapaEntidade;
+        PlayerPrefsMapas.salvarIndiceNavegacaoMapa(mapaEntidade);
+    }
+
+    public static MapaEntidade loadMapaEntidade()
+    {
+        if(MapaEntidade == null)
+        {
+            MapaEntidade = PlayerPrefsMapas.getIndiceNavegacaoMapa();
+        }
+        return MapaEntidade;
+    }
+
+    public static void configLevelAtual(AbstractLevel level)
+    {
         Level = level;
     }
 
-    public static AbstractLevel loadResetLevelEstaticoOrCreateLevel(int indiceMapa, int indiceLevel)
+    public static AbstractLevel loadResetLevelEstaticoAtualOrCreateLevel(int indiceMapa, int indiceLevel)
     {
         if(Level == null)
         {
             MapaEntidade = HelperMapaEntidade.getMapaEntidadeByIndice(indiceMapa);
-            Level = MapaEntidade.getLevel(indiceLevel);            
+            if (MapaEntidade == null) Debug.LogError("ESCOLHIDO INDICE DE MAPA INEXISTENTE " + indiceMapa);
+            Level = MapaEntidade.getLevel(indiceLevel);
+            if (Level == null) Debug.LogError("LEVEL " + indiceLevel + " NAO EXISTE NO INDICE MAPA " + indiceMapa + " NOME MAPA " + MapaEntidade);
         }
 
         AbstractLevel levelAtual = Level;
