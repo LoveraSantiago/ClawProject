@@ -5,7 +5,7 @@ public class PlayerPrefsMapas
     private static readonly string MAPA_MAX = "mapa-max";
     private static readonly string MAPA_NAVEGACAO = "mapa-naveg";
 
-    public static int getMapaMaxLevel()
+    public static int getMapaMaxLevel()//TODO ADICIONAR CRIPTOGRAFIA SEGURANCA
     {
         return PlayerPrefs.GetInt(MAPA_MAX, 1);
     }
