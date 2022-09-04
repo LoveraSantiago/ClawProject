@@ -47,6 +47,9 @@ public class HelperMapaEntidade
 
             case MapaEnum.CACANIQUEL: return new MapaEntidade()
                     .addFornecedoresLevels(new CacaNiquelLevelFornecedor(), null);
+
+            case MapaEnum.POWERUP: return new MapaEntidade()
+                    .addFornecedoresLevels(new LevelFornecedorPowerUp(), null);
         }
         return null;
     }

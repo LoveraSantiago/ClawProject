@@ -29,7 +29,7 @@ public class LevelEntidade
             new LevelEntidade(Level.CACANIQUEL_PUP_G, null),
             new LevelEntidade(Level.CACANIQUEL_PUP_I, null),
 
-            new LevelEntidade(Level.PUP, LevelPowerUp.getFornecedor()),
+            new LevelEntidade(Level.PUP, null),
 
             new LevelEntidade(Level.COLETAVEL_PAO           , null),
             new LevelEntidade(Level.COLETAVEL_MACA          , null),

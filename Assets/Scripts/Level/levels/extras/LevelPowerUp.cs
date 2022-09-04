@@ -99,18 +99,5 @@ public class LevelPowerUp : AbstractLevel
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevelPup();
-    }
-
-    public class FornecedorLevelPup : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelPowerUp();
-        }
-    }
+    }    
 }

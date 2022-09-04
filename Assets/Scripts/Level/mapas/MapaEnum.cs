@@ -12,5 +12,6 @@ public enum MapaEnum
     COGUMELOS,
     POOPS,
     
-    CACANIQUEL
+    CACANIQUEL,
+    POWERUP
 }
