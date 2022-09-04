@@ -4,10 +4,6 @@ public class HelperMapaEntidade
     {
         switch (mapaEnum)
         {
-            case MapaEnum.DEFAULTS:  return new MapaEntidade()
-                    .addInfo(0, "")
-                    .addPathSprite("");
-
             case MapaEnum.FRUTAS:    return new MapaEntidade()
                     .addInfo(1, "PARQUE DE DIVERSÕES")
                     .addPathSprite("frutas")
@@ -48,6 +44,9 @@ public class HelperMapaEntidade
             case MapaEnum.POOPS:     return new MapaEntidade()
                     .addInfo(10, "X")
                     .addPathSprite("poops");
+
+            case MapaEnum.CACANIQUEL: return new MapaEntidade()
+                    .addFornecedoresLevels(new CacaNiquelLevelFornecedor(), null);
         }
         return null;
     }
