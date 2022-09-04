@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerPrefsLevel : MonoBehaviour
+public class PlayerPrefsLevel
 {
     private static readonly string LEVEL = "LEVEL";
 
