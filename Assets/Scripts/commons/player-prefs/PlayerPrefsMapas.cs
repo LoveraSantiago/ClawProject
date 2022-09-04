@@ -15,8 +15,8 @@ public class PlayerPrefsMapas
         return PlayerPrefs.GetInt(MAPA_NAVEGACAO, 1) - 1;
     }
 
-    public static void salvarIndiceNavegacaoMapa(int indice)
+    public static void salvarIndiceNavegacaoMapa(MapaEntidade mapaEntidade)
     {
-        PlayerPrefs.SetInt(MAPA_NAVEGACAO, indice);
+        PlayerPrefs.SetInt(MAPA_NAVEGACAO, mapaEntidade.id);
     }
 }

@@ -41,7 +41,7 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
         bool ultimo = navegacaoDeArray.isIndiceAtualUltimo();
         Debug.Log("Penultimo " + penultimo + " Ultimo " + ultimo);
         WrapperLevelMapDto wrapperMapLevelDto = FactoryWrapperLevelMapDto.factory(direcao, levelMapDto, penultimo, ultimo);
-        PlayerPrefsMapas.salvarIndiceNavegacaoMapa(wrapperMapLevelDto.mapaEntidade.id);
+        PlayerPrefsMapas.salvarIndiceNavegacaoMapa(wrapperMapLevelDto.mapaEntidade);
         produtorDeEvento.produziuEvento(wrapperMapLevelDto);     
     }
 
