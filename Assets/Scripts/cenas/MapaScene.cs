@@ -47,7 +47,7 @@ public class MapaScene : MonoBehaviour,
         allTimersFichas.update();        
     }
 
-    void AcaoItemEscolhido<WrapperLevelMapDto>.ConsumidorEvento.consumirEvento(WrapperLevelMapDto evento)
+    void AcaoMapaNavegado.ConsumidorEvento.consumirEvento(WrapperLevelMapDto evento)
     {
         mapaUi.addMapaParaTela(evento);        
     }

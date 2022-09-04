@@ -145,7 +145,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         isGamePlay = false;
     }
 
-    void AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {   
         isGamePlay = true;
     }

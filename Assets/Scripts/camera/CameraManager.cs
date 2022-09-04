@@ -25,7 +25,7 @@ public class CameraManager : AcaoBotaoPowerUpVazio.ConsumidorEvento,
         }
     }
 
-    void AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {
         if (cameraDto.VirtualCam2.Priority == 2)
         {
