@@ -10,12 +10,7 @@ public class Level3 : AbstractLevelElevador
     public override string getMsgObjetivoLevel()
     {
         return "Cuidado com o numero de coletaveis";
-    }
-
-    public override string getNameMap()
-    {
-        return Mapas.PARQUE_DIVERSOES;
-    }
+    }   
 
     public override int[,] getArrayDeColetaveis()
     {
@@ -106,10 +101,5 @@ public class Level3 : AbstractLevelElevador
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public override string getNomeMapa()
-    {
-        return LevelMapNomes.PARQUE_DIVERSOES;
-    }        
+    }    
 }

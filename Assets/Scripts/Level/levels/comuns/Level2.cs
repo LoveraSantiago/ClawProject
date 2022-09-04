@@ -16,12 +16,7 @@ public class Level2 : AbstractLevel
     public override TipoGame getTipoGame()
     {
         return TipoGame.NORMAL;
-    }
-
-    public override string getNameMap()
-    {
-        return Mapas.PARQUE_DIVERSOES;
-    }
+    }   
 
     public override int[,] getArrayDeColetaveis()
     {
@@ -39,11 +34,6 @@ public class Level2 : AbstractLevel
     public override bool devolverParaBoard()
     {
         return false;
-    }
-
-    public override string getNomeMapa()
-    {
-        return LevelMapNomes.PARQUE_DIVERSOES;
     }    
 
     public override TipoContagemTempoDto getTempoContagem()

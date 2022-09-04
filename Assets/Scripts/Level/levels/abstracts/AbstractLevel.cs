@@ -30,12 +30,7 @@ public abstract class AbstractLevel
 
     public abstract Dictionary<string, string> getDicionarioDeCores();
 
-    public abstract string getMaquinaNome();
-
-    public virtual string getNomeMapa()
-    {
-        return "";
-    }
+    public abstract string getMaquinaNome();   
 
     public abstract bool isLevelAlbedo0();
 
@@ -59,7 +54,7 @@ public abstract class AbstractLevel
         return isLevelAlbedo0();
     }
 
-    public virtual string getNameMap()
+    private string getNameMap()
     {
         return null;
     }

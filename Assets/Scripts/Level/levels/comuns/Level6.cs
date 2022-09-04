@@ -10,12 +10,7 @@ public class Level6 : AbstractLevelOvo
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
-    }
-
-    public override string getNameMap()
-    {
-        return Mapas.PARQUE_DIVERSOES;
-    }
+    } 
 
     public override int[,] getArrayDeColetaveis()
     {
@@ -89,10 +84,5 @@ public class Level6 : AbstractLevelOvo
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public override string getNomeMapa()
-    {
-        return LevelMapNomes.PARQUE_DIVERSOES;
     }    
 }

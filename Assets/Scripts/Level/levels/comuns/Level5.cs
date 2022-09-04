@@ -25,12 +25,7 @@ public class Level5 : AbstractLevelObstaculos
         };
         return coletaveis;
     }
-
-    public override string getNameMap()
-    {
-        return Mapas.PARQUE_DIVERSOES;
-    }
-
+ 
     public override bool[,] getArrayDeObstaculos()
     {
         bool[,] gaiolas = new bool[,]{
@@ -112,10 +107,5 @@ public class Level5 : AbstractLevelObstaculos
     public override bool isLevelAlbedo0()
     {
         return true;
-    }
-
-    public override string getNomeMapa()
-    {
-        return LevelMapNomes.PARQUE_DIVERSOES;
     }    
 }

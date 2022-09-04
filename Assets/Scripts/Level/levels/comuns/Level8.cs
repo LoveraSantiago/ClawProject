@@ -17,12 +17,7 @@ public class Level8 : AbstractLevel
     {
         return TipoGame.NORMAL;
     }
-
-    public override string getNameMap()
-    {
-        return Mapas.PARQUE_DIVERSOES;
-    }
-
+        
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
@@ -116,10 +111,5 @@ public class Level8 : AbstractLevel
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public override string getNomeMapa()
-    {
-        return LevelMapNomes.PARQUE_DIVERSOES;
     }    
 }
