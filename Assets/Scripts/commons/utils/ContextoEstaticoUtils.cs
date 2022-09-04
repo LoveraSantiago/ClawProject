@@ -4,7 +4,7 @@ public class ContextoEstaticoUtils
 {
     public static MonoBehaviour MonoBehaviour { get; private set; }
     public static MapaEntidade MapaEntidade { get; private set; }
-    public static AbstractLevel Level { get; private set; }
+    private static AbstractLevel Level;
 
     public static void configMainMono(MonoBehaviour monoBehaviour)
     {
@@ -15,5 +15,18 @@ public class ContextoEstaticoUtils
     {
         MapaEntidade = mapaEntidade;
         Level = level;
+    }
+
+    public static AbstractLevel loadResetLevelEstaticoOrCreateLevel(int indiceMapa, int indiceLevel)
+    {
+        if(Level == null)
+        {
+            MapaEntidade = HelperMapaEntidade.getMapaEntidadeByIndice(indiceMapa);
+            Level = MapaEntidade.getLevel(indiceLevel);            
+        }
+
+        AbstractLevel levelAtual = Level;
+        Level = null;
+        return levelAtual;
     }
 }
