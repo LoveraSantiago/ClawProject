@@ -1,24 +1,24 @@
-public abstract class AbstractMapaLevelFornecedor
+public abstract class AbstractMapa10LeveisFornecedor : AbstractMapaLevelFornecedor
 {
-    public AbstractLevel getLevel(int level)
+    public override AbstractLevel getLevelPorIndice(int level)
     {
         switch (level)
         {
-            case 1:  return getLevelPrimeiro();
-            case 2:  return getLevelSegundo();
-            case 3:  return getLevelTerceiro();
-            case 4:  return getLevelQuarto();
-            case 5:  return getLevelQuinto();
-            case 6:  return getLevelSexto();
-            case 7:  return getLevelSetimo();
-            case 8:  return getLevelOitavo();
-            case 9:  return getLevelNono();
+            case 1: return getLevelPrimeiro();
+            case 2: return getLevelSegundo();
+            case 3: return getLevelTerceiro();
+            case 4: return getLevelQuarto();
+            case 5: return getLevelQuinto();
+            case 6: return getLevelSexto();
+            case 7: return getLevelSetimo();
+            case 8: return getLevelOitavo();
+            case 9: return getLevelNono();
             case 10: return getLevelDecimo();
         }
         return null;
     }
 
-    public int getQtdLevels()
+    public override int getQtdLevels()
     {
         return 10;
     }
@@ -33,4 +33,5 @@ public abstract class AbstractMapaLevelFornecedor
     protected abstract AbstractLevel getLevelOitavo();
     protected abstract AbstractLevel getLevelNono();
     protected abstract AbstractLevel getLevelDecimo();
+
 }

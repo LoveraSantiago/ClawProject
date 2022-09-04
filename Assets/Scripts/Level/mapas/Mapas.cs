@@ -30,7 +30,7 @@ public class Mapas
         return lista;
     }
 
-    public static MapaEnum getEnumByName(string nomeMapa)
+    public static MapaEnum getMapaEnumByName(string nomeMapa)
     {
         getTodosMapas();
         for (int contador = 0; contador < MAPAS.Length; contador++)

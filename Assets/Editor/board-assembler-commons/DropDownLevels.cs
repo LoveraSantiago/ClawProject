@@ -63,7 +63,7 @@ public abstract class DropDownLevels
 
             if (!"0".Equals(evt.newValue) && !"-".Equals(evt.newValue) && !"DEFAULTS".Equals(evt.newValue))
             {
-                MapaEnum mapaEnum = Mapas.getEnumByName(evt.newValue);
+                MapaEnum mapaEnum = Mapas.getMapaEnumByName(evt.newValue);
                 List<ColetavelEntidade>  listaDeColetaveis = HelperColetavelEntidade.getListaDeColetaveisEntidadeByFamilia(mapaEnum);
                 MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
                 for(int contador = 0; contador < listaDeColetaveis.Count; contador++)
