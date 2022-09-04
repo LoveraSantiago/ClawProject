@@ -21,7 +21,8 @@ public class MapaScene : MonoBehaviour,
     [SerializeField] private GameObject prefabMateriais;
 
     private AllTimersFichas allTimersFichas;
-    private MapaUi mapaUi;    
+    private MapaUi mapaUi;
+    private ModalMapsManager modalsManager;
 
     private void Start()
     {
@@ -34,10 +35,15 @@ public class MapaScene : MonoBehaviour,
 
         mapaUi = new MapaUi(levelMapaUiDto);        
         NavegacaoMapas navegacaoMapas = new NavegacaoMapas(botoesNavegacao, prefabLevelsDto);
+        modalsManager = new ModalMapsManager(modalFaseDto, modalNoFichaDto);
 
         new AcaoMapaNavegado()
             .configurarProdutor(navegacaoMapas)
             .adicionarConsumidor(this);
+
+        new AcaoBotaoMapaAcionado()
+            .configurarProdutor(mapaUi.grupoBtnBaloes)
+            .adicionarConsumidor(modalManager);
 
         navegacaoMapas.inicializar();
     }

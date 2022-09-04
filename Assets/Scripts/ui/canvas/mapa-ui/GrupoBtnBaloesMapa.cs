@@ -1,13 +1,16 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class GrupoBtnBaloesMapa
+public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
 {
     private BtnBalaoMapa[] btnsMapasBaloes;
+    private ProdutorDeEvento<int> produtorDeEvento;
 
     public GrupoBtnBaloesMapa(BalaoLevelBtnDto[] baloesLevelBtnDto)
     {        
         inicializarBotoesBaloesMapas(baloesLevelBtnDto);
+        produtorDeEvento = new ProdutorDeEvento<int>();
     }
 
     private void inicializarBotoesBaloesMapas(BalaoLevelBtnDto[] baloesLevelBtnDto)
@@ -16,6 +19,7 @@ public class GrupoBtnBaloesMapa
         for (int contador = 0; contador < baloesLevelBtnDto.Length; contador++)
         {
             btnsMapasBaloes[contador] = new BtnBalaoMapa(baloesLevelBtnDto[contador]);
+            baloesLevelBtnDto[contador].BtnLevel.onClick.AddListener(() => cliqueAcionado());
         }
     }
 
@@ -54,6 +58,12 @@ public class GrupoBtnBaloesMapa
 
     private void cliqueAcionado()
     {
+        GameObject go = EventSystem.current.currentSelectedGameObject;
+        produtorDeEvento.produziuEvento(int.Parse(go.name));
+    }
 
+    ProdutorDeEvento<int> ProdutorConsumidoresDeEvento<int>.ProdutorEvento.getProdutorDeEvento()
+    {
+        return produtorDeEvento;
     }
 }

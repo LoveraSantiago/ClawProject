@@ -5,7 +5,7 @@ public class MapaUi
 {
     private LevelMapaUiDto levelMapaUiDto;    
     private AnimacaoMainMapa animacaMainMapa;
-    private GrupoBtnBaloesMapa grupoBtnBaloes;
+    public GrupoBtnBaloesMapa grupoBtnBaloes { get; private set; }
 
     private Material materialGrayScale;
 

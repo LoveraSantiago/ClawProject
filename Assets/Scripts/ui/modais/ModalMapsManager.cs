@@ -1,7 +1,10 @@
-public class ModalMapsManager 
+public class ModalMapsManager : AcaoMapaNavegado.ConsumidorEvento,
+                                AcaoBotaoMapaAcionado.ConsumidorEvento
 {
     private ModalFase modalFase;
     private ModalNoFicha modalNoFicha;
+
+    private MapaEntidade mapaEntidadeAtual;
 
     public ModalMapsManager(ModalFaseDto modalFaseDto, ModalNoFichaDto modalNoFichaDto)
     {
@@ -9,7 +12,7 @@ public class ModalMapsManager
         modalNoFicha = new ModalNoFicha(modalNoFichaDto);
     }
 
-    public void abrirModal(Level level)
+    private void abrirModal(Level level)
     {
         if(PlayerPrefsFichas.possueFichas(Ficha.PRATA, 1))
         {
@@ -19,5 +22,15 @@ public class ModalMapsManager
         {
             modalNoFicha.ligar();
         }
+    }
+
+    void AcaoMapaNavegado.ConsumidorEvento.consumirEvento(WrapperLevelMapDto evento)
+    {
+        mapaEntidadeAtual = evento.mapaEntidade;
+    }
+
+    void AcaoBotaoMapaAcionado.ConsumidorEvento.consumirEvento(int evento)
+    {
+        
     }
 }
