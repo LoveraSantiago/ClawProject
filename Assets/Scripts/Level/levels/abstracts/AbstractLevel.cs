@@ -52,17 +52,7 @@ public abstract class AbstractLevel
     public virtual bool isLevelAlbedo0DigitosScrollPup()
     {
         return isLevelAlbedo0();
-    }
-
-    private string getNameMap()
-    {
-        return null;
-    }
-
-    public bool isLevelMap()
-    {
-        return getNameMap() != null;
-    }
+    }  
 
     public bool hasPupToLevel()
     {

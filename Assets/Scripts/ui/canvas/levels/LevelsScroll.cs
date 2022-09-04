@@ -18,7 +18,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
     private LevelsScrollDto levelsScrollDto;
 
     private ProdutorDeEvento<LevelItemDto> produtorDeEvento;
-    GameObject goImgMaquina;
+    private GameObject goImgMaquina;
 
     public LevelsScroll(LevelsScrollDto levelsScrollDto)
     {
@@ -146,7 +146,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
         AbstractLevel level = LevelHelper.getLevelByString(levelAlias);
         string levelName               = level.getLevelName();
         itemLevelDtoIt.LblLevel.text   = levelName;
-        itemLevelDtoIt.LblMap.text     = level.getNameMap();
+        itemLevelDtoIt.LblMap.text     = "FALTANDO COLOCAR NOME DO MAPA AQUI";
         itemLevelDtoIt.LblMaquina.text = level.getMaquinaNome();
 
         MaterialMiniMaquina.addCores(materialMaquinas[indiceMaterialMaquina], level.getDicionarioDeCores());

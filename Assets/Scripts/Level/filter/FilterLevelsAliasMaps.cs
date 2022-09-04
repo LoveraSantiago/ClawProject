@@ -11,7 +11,7 @@ public class FilterLevelsAliasMaps : FilterLevelsAlias
     {
         Fornecedor<AbstractLevel> fornecedorLevel = levelEntidade.supplierLevel;
         AbstractLevel level = fornecedorLevel.fornecer();
-        if (level.isLevelMap())
+        if (true)//ESTAVA FILTRANDO PARA SABER SE O LEVEL ERA UM LEVEL MAP O TOBE E SER PEGAR SO OS MAPAENUM LEVELS JOGAVEIS
         {
             levelAlias.Add(levelEntidade.level.ToString());
         }
