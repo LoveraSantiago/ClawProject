@@ -6,7 +6,6 @@ public class MainGameScene : MonoBehaviour,
                              Consumidor<UpdaterManagers>,
                              IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    //[SerializeField] private Level level;
     [SerializeField] private int indiceMapa;
     [SerializeField] private int indiceLevel;
     [Space(5)]
@@ -26,7 +25,7 @@ public class MainGameScene : MonoBehaviour,
         MateriaisUtils.configurar(mainDto.PrefabMateriais);
         FactoryPowerUpEntidade.resetContextoEstatico();
 
-        AbstractLevel levelEscolhido = LevelUtils.loadLevelEscolhido(Level.HUM);
+        AbstractLevel levelEscolhido = ContextoEstaticoUtils.loadResetLevelEstaticoAtualOrCreateLevel(indiceMapa, indiceLevel);
         MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido, this);        
     }        
     

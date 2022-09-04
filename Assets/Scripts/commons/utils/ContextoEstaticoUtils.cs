@@ -37,13 +37,34 @@ public class ContextoEstaticoUtils
         if(Level == null)
         {
             MapaEntidade = HelperMapaEntidade.getMapaEntidadeByIndice(indiceMapa);
-            if (MapaEntidade == null) Debug.LogError("ESCOLHIDO INDICE DE MAPA INEXISTENTE " + indiceMapa);
+            logInfoMapaEntidade(indiceMapa);
+
             Level = MapaEntidade.getLevel(indiceLevel);
-            if (Level == null) Debug.LogError("LEVEL " + indiceLevel + " NAO EXISTE NO INDICE MAPA " + indiceMapa + " NOME MAPA " + MapaEntidade);
+            logInfoLevel(indiceLevel);
         }
 
         AbstractLevel levelAtual = Level;
         Level = null;
         return levelAtual;
+    }
+
+    private static void logInfoMapaEntidade(int indiceMapa)
+    {
+        if (MapaEntidade == null)
+        {
+            Debug.LogError("ESCOLHIDO INDICE DE MAPA INEXISTENTE " + indiceMapa);
+        }
+        else
+        {
+            Debug.LogWarning("CARREGADO MAPA " + MapaEntidade.ToString() + " A PARTIR DE PARAMETRIZACAO DE MAINGAMESCENE");
+        }
+    }
+
+    private static void logInfoLevel(int indiceLevel)
+    {
+        if (Level == null)
+        {
+            Debug.LogError("LEVEL " + indiceLevel + " NAO EXISTE NO INDICE MAPA " + (MapaEntidade == null ? "MAPA INEXISTENTE": MapaEntidade.ToString()));
+        }
     }
 }
