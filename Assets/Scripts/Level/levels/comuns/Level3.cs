@@ -111,22 +111,5 @@ public class Level3 : AbstractLevelElevador
     public override string getNomeMapa()
     {
         return LevelMapNomes.PARQUE_DIVERSOES;
-    }    
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevel3();
-    }
-
-    public class FornecedorLevel3 : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new Level3();
-        }
-    }
+    }        
 }
-
-
-
-

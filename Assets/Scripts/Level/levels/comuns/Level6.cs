@@ -94,18 +94,5 @@ public class Level6 : AbstractLevelOvo
     public override string getNomeMapa()
     {
         return LevelMapNomes.PARQUE_DIVERSOES;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevel6();
-    }
-
-    public class FornecedorLevel6 : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new Level6();
-        }
-    }
+    }    
 }

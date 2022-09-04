@@ -145,17 +145,4 @@ public class Level4 : AbstractLevelOrdem
     {
         return LevelMapNomes.PARQUE_DIVERSOES;
     }
-    
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevel4();
-    }
-
-    public class FornecedorLevel4 : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new Level4();
-        }
-    }
 }

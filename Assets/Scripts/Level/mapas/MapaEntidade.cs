@@ -22,7 +22,7 @@ public class MapaEntidade
         return this;
     }
 
-    public MapaEntidade addSupplierLevels(AbstractMapaLevelFornecedor levelFornecedor)
+    public MapaEntidade addFornecedorLevels(AbstractMapaLevelFornecedor levelFornecedor)
     {
         this.levelFornecedor = levelFornecedor;
         return this;

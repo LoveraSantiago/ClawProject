@@ -18,6 +18,11 @@ public abstract class AbstractMapaLevelFornecedor
         return null;
     }
 
+    public int getQtdLevels()
+    {
+        return 10;
+    }
+
     protected abstract AbstractLevel getLevelPrimeiro();
     protected abstract AbstractLevel getLevelSegundo();
     protected abstract AbstractLevel getLevelTerceiro();

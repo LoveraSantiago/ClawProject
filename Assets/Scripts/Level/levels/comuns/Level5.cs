@@ -117,18 +117,5 @@ public class Level5 : AbstractLevelObstaculos
     public override string getNomeMapa()
     {
         return LevelMapNomes.PARQUE_DIVERSOES;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevel5();
-    }
-
-    public class FornecedorLevel5 : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new Level5();
-        }
-    }
+    }    
 }

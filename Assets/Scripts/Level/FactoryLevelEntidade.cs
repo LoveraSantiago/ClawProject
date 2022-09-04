@@ -4,14 +4,14 @@ public class FactoryLevelEntidade
     {
         return new LevelEntidade[] {
 
-            new LevelEntidade(Level.HUM   , Level1.getFornecedor()),
-            new LevelEntidade(Level.DOIS  , Level2.getFornecedor()),
-            new LevelEntidade(Level.TRES  , Level3.getFornecedor()),
-            new LevelEntidade(Level.QUATRO, Level4.getFornecedor()),
-            new LevelEntidade(Level.CINCO , Level5.getFornecedor()),
-            new LevelEntidade(Level.SEIS  , Level6.getFornecedor()),
-            new LevelEntidade(Level.SETE  , Level7.getFornecedor()),
-            new LevelEntidade(Level.OITO  , Level8.getFornecedor()),
+            new LevelEntidade(Level.HUM   , null),
+            new LevelEntidade(Level.DOIS  , null),
+            new LevelEntidade(Level.TRES  , null),
+            new LevelEntidade(Level.QUATRO, null),
+            new LevelEntidade(Level.CINCO , null),
+            new LevelEntidade(Level.SEIS  , null),
+            new LevelEntidade(Level.SETE  , null),
+            new LevelEntidade(Level.OITO  , null),
 
             new LevelEntidade(Level.CACANIQUEL_PUP_G, LevelCacaNiquelPowerUpGeral.getFornecedor()),
             new LevelEntidade(Level.CACANIQUEL_PUP_I, LevelCacaNiquelPowerUpIndividual.getFornecedor()),

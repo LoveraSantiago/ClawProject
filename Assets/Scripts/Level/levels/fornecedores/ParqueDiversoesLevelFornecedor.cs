@@ -1,52 +1,52 @@
 public class ParqueDiversoesLevelFornecedor : AbstractMapaLevelFornecedor
 {
-    protected override AbstractLevel getLevelDecimo()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override AbstractLevel getLevelNono()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override AbstractLevel getLevelOitavo()
-    {
-        throw new System.NotImplementedException();
-    }
-
     protected override AbstractLevel getLevelPrimeiro()
     {
-        throw new System.NotImplementedException();
-    }
-
-    protected override AbstractLevel getLevelQuarto()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override AbstractLevel getLevelQuinto()
-    {
-        throw new System.NotImplementedException();
+        return new Level1();
     }
 
     protected override AbstractLevel getLevelSegundo()
     {
-        throw new System.NotImplementedException();
-    }
-
-    protected override AbstractLevel getLevelSetimo()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override AbstractLevel getLevelSexto()
-    {
-        throw new System.NotImplementedException();
+        return new Level2();
     }
 
     protected override AbstractLevel getLevelTerceiro()
     {
-        throw new System.NotImplementedException();
+        return new Level3();
+    }
+
+    protected override AbstractLevel getLevelQuarto()
+    {
+        return new Level4();
+    }
+
+    protected override AbstractLevel getLevelQuinto()
+    {
+        return new Level5();
+    }
+
+    protected override AbstractLevel getLevelSexto()
+    {
+        return new Level6();
+    }
+
+    protected override AbstractLevel getLevelSetimo()
+    {
+        return new Level7();
+    }
+
+    protected override AbstractLevel getLevelOitavo()
+    {
+        return new Level8();
+    }
+
+    protected override AbstractLevel getLevelNono()
+    {
+        return null;
+    }
+
+    protected override AbstractLevel getLevelDecimo()
+    {
+        return null;
     }
 }

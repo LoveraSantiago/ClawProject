@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 
 public class Level1 : AbstractLevel
@@ -120,18 +119,5 @@ public class Level1 : AbstractLevel
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevel1();
-    }
-
-    public class FornecedorLevel1 : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new Level1();
-        }
-    }
+    }    
 }
