@@ -6,7 +6,8 @@ public class FactoryMapaEntidade
         {
             case MapaEnum.DEFAULTS:  return new MapaEntidade()
                     .addInfo(0, "")
-                    .addPathSprite("");
+                    .addPathSprite("")
+                    .addSupplierLevels(new ParqueDiversoesLevelFornecedor());
 
             case MapaEnum.FRUTAS:    return new MapaEntidade()
                     .addInfo(1, "PARQUE DE DIVERSÕES")
