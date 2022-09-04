@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NavegacaoMapas : AcaoItemEscolhido<WrapperLevelMapDto>.ProdutorEvento
+public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
 {
     private BotoesNavegacaoMapaDto botoesNavegacao;
     private NavegacaoDeArray<LevelMapDto> navegacaoDeArray;    
@@ -52,7 +52,7 @@ public class NavegacaoMapas : AcaoItemEscolhido<WrapperLevelMapDto>.ProdutorEven
         navegacaoDeArray = new NavegacaoDeArray<LevelMapDto>(levelsMapDto, PlayerPrefsMapas.getIndiceNavegacaoMapa());
     }
 
-    ProdutorDeEvento<WrapperLevelMapDto> ProdutorConsumidoresDeEvento<WrapperLevelMapDto>.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<WrapperLevelMapDto> AcaoMapaNavegado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

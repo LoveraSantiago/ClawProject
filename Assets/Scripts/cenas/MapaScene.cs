@@ -1,8 +1,8 @@
 using UnityEngine;
 
 #pragma warning disable 0649
-public class MapaScene : MonoBehaviour, 
-                         AcaoItemEscolhido<WrapperLevelMapDto>.ConsumidorEvento
+public class MapaScene : MonoBehaviour,
+                         AcaoMapaNavegado.ConsumidorEvento
 {       
     
     [SerializeField] private TimerFichaDto[] timerFichaDto = new TimerFichaDto[3];
@@ -35,7 +35,7 @@ public class MapaScene : MonoBehaviour,
         mapaUi = new MapaUi(levelMapaUiDto);        
         NavegacaoMapas navegacaoMapas = new NavegacaoMapas(botoesNavegacao, prefabLevelsDto);
 
-        new ProdutorConsumidoresDeEvento<WrapperLevelMapDto>()
+        new AcaoMapaNavegado()
             .configurarProdutor(navegacaoMapas)
             .adicionarConsumidor(this);
 
