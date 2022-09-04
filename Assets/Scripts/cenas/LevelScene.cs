@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class LevelScene : MonoBehaviour,
-                         AcaoLevelScrollSelecionado.ConsumidorEvento
+                         AcaoLevelFromScrollSelecao.ConsumidorEvento
 {
     [SerializeField] private Button btnBack;
     [Space(5)]
@@ -26,12 +26,12 @@ public class LevelScene : MonoBehaviour,
         levelsScroll = new LevelsScroll(levelsScrollDto);
         scrollRect.onValueChanged.AddListener((pos) => levelsScroll.movimentado(pos, levelsScrollDto));
 
-        new AcaoItemEscolhido<LevelItemDto>()
+        new AcaoLevelFromScrollSelecao()
             .configurarProdutor(levelsScroll)
             .adicionarConsumidor(this);
     }
     
-    void AcaoLevelScrollSelecionado.ConsumidorEvento.consumirEvento(LevelItemDto evento)
+    void AcaoLevelFromScrollSelecao.ConsumidorEvento.consumirEvento(LevelItemDto evento)
     {
         imageMaquinaGiratoria.transform.gameObject.SetActive(true);
         imageMaquinaGiratoria.transform.position = evento.posicaoItem;

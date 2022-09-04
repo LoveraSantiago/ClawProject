@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
-                            AcaoLevelScrollSelecionado.ProdutorEvento  
+                            AcaoLevelFromScrollSelecao.ProdutorEvento  
 {
     private string[] levels;
     private Material[] materialMaquinas;
@@ -175,7 +175,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
         produtorDeEvento.produziuEvento(levelItem);
     }
 
-    ProdutorDeEvento<LevelItemDto> AcaoLevelScrollSelecionado.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<LevelItemDto> AcaoLevelFromScrollSelecao.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }
