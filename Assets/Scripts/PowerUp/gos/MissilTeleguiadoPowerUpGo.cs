@@ -45,7 +45,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         ligar();
         hitColetavel = false;
         HumAlvoGOSelecionado alvoSelecionado = new HumAlvoGOSelecionado();
-        coroutine = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));        
+        coroutine = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));        
     }
 
     public override void resetPup()
@@ -134,7 +134,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         if (!hitColetavel)
         {
-            Utils.MonoBehaviour.StopCoroutine(coroutine);
+            ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutine);
             HelperColetaveisInGame.desligarMirasNosColetaveis();
             resetPup();
         }

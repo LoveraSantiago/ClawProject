@@ -6,7 +6,9 @@ public class MainGameScene : MonoBehaviour,
                              Consumidor<UpdaterManagers>,
                              IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private Level level;
+    //[SerializeField] private Level level;
+    [SerializeField] private int indiceMapa;
+    [SerializeField] private int indiceLevel;
     [Space(5)]
     [SerializeField] private MainGameDto mainDto;
 
@@ -20,11 +22,11 @@ public class MainGameScene : MonoBehaviour,
     void Start()
     {
         CameraManager.forceAspectCameraAsRatio();
-        Utils.configMainMono(this);
+        ContextoEstaticoUtils.configMainMono(this);
         MateriaisUtils.configurar(mainDto.PrefabMateriais);
         FactoryPowerUpEntidade.resetContextoEstatico();
 
-        AbstractLevel levelEscolhido = LevelUtils.loadLevelEscolhido(level);
+        AbstractLevel levelEscolhido = LevelUtils.loadLevelEscolhido(Level.HUM);
         MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido, this);        
     }        
     

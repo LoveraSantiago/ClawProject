@@ -19,7 +19,7 @@ public class LevelScene : MonoBehaviour,
 
     void Start()
     {
-        Utils.configMainMono(this);
+        ContextoEstaticoUtils.configMainMono(this);
         MateriaisUtils.configurar(prefabMateriais);
         btnBack.onClick.AddListener(() => voltar());
 

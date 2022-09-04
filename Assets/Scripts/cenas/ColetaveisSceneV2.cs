@@ -29,7 +29,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
     void Start()
     {
-        Utils.configMainMono(this);
+        ContextoEstaticoUtils.configMainMono(this);
         MateriaisUtils.configurar(prefabMateriais);
         HelperColetavelEntidade.configurar(prefabColetaveisDto);
 

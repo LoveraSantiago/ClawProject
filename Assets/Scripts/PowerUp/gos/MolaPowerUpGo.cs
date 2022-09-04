@@ -31,7 +31,7 @@ public class MolaPowerUpGo : PowerUpSemInteracao
         ligar();
         posInicial.y = powerUpDto.HalturaPupDraggavel;
         base.colocarNaPosicao(posInicial);
-        Utils.MonoBehaviour.StartCoroutine(jumpar());
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(jumpar());
     }
 
     public override void resetPup()

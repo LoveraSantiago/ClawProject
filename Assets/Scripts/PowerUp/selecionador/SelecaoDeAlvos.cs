@@ -34,7 +34,7 @@ public abstract class SelecaoDeAlvos<T>
     {
         if(coroutineOnSelecionado != null)
         {
-            Utils.MonoBehaviour.StopCoroutine(coroutineOnSelecionado);
+            ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutineOnSelecionado);
             coroutineOnSelecionado = null;
         }
     }

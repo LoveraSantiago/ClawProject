@@ -23,19 +23,19 @@ public class MapaUi
         {
             grupoBtnBaloes.dismissBotoesBaloes();
             animacaMainMapa.navegarParaEsquerda(evento.isAberto);
-            Utils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
         }
         else if (evento.isEsquerda)
         {
             grupoBtnBaloes.dismissBotoesBaloes();
             animacaMainMapa.navegarParaDireita(evento.isAberto);
-            Utils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
         }
         else if(evento.isCentralizado)
         {
             updateMapa(evento);
-            grupoBtnBaloes.posicionarBaloes(evento);        
-            Utils.MonoBehaviour.StartCoroutine(grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes));
+            grupoBtnBaloes.posicionarBaloes(evento);
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes));
             animacaMainMapa.mostrarSetasNavegacao(evento.isAberto);
         }
     }        

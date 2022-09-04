@@ -49,7 +49,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
             if (contadorTimer.isTimeOver())
             {
                 produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotadoDto(false));
-                Utils.MonoBehaviour.StopCoroutine(coroutineBlink);
+                ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutineBlink);
                 coroutineBlink = null;
             }
         }
@@ -78,7 +78,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
         contadorTimer.passarTempoAosScores(digitos);
         if(contadorTimer.isNearTimeOver() && coroutineBlink == null)
         {            
-            coroutineBlink = Utils.MonoBehaviour.StartCoroutine(blinkarTimer());         
+            coroutineBlink = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(blinkarTimer());         
         }
     }
 

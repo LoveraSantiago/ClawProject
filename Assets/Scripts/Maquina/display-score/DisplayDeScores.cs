@@ -34,11 +34,11 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
         splitarScore(score);
         if (result)
         {
-            Utils.MonoBehaviour.StartCoroutine(orquestrador.blinkarScoreSucesso(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.blinkarScoreSucesso(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
         }
         else
         {
-            Utils.MonoBehaviour.StartCoroutine(orquestrador.blinkarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.blinkarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
         }
     }
 
@@ -46,7 +46,7 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
     {
         //Debug.Log("PiscarAstericos");
         finalizarCoroutineAtual();
-        coroutineAtual = Utils.MonoBehaviour.StartCoroutine(orquestrador.blinkarAsteriscos());
+        coroutineAtual = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.blinkarAsteriscos());
     }
 
     public void finalizarContagemRegressiva()
@@ -58,7 +58,7 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
     public void iniciarContagemRegressiva(int duracao)
     {
         armazenarScoreAtual();
-        coroutineAtual = Utils.MonoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));                
+        coroutineAtual = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));                
     }     
 
     private void splitarScore(int score)
@@ -82,7 +82,7 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
     
     private void finalizarCoroutineAtual()
     {
-        Utils.MonoBehaviour.StopCoroutine(coroutineAtual);        
+        ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutineAtual);        
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)

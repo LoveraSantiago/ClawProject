@@ -17,7 +17,7 @@ public class BoardDevolvedor
             evento.isRollback)
         {
             Coletavel[] coletadosOriginais = Utils.copiarArray(coletados);
-            Utils.MonoBehaviour.StartCoroutine(devolverParaBoard(evento.clears, boardDto, coletadosOriginais));            
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(devolverParaBoard(evento.clears, boardDto, coletadosOriginais));            
         }
     }
 

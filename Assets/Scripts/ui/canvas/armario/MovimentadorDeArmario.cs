@@ -42,7 +42,7 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
         pivotOriginal = rtScrollRect.pivot;
         rtScrollRect.pivot = new Vector2(rtScrollRect.pivot.x + xPivot, 1f - Mathf.Abs(yPivot));
 
-        Utils.MonoBehaviour.StartCoroutine(movimentarArmarioAnimado(indicePrateleira, indiceItem, rtScrollRect, diferenca));
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(movimentarArmarioAnimado(indicePrateleira, indiceItem, rtScrollRect, diferenca));
     }
 
     public void movimentarImediato(IndiceArmarioSelecionadoDto indiceArmario , ScrollRect scrollRect, PrateleirasDto prateleirasDto)
@@ -71,8 +71,8 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
     public void voltar(ScrollRect scrollRect)
     {
         Debug.Log("Voltar chamado");
-        RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);        
-        Utils.MonoBehaviour.StartCoroutine(voltarArmario(rtScrollRect));
+        RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(voltarArmario(rtScrollRect));
     }
 
     private IEnumerator movimentarArmarioAnimado(int indicePrateleira, int indiceItem, RectTransform rtScrollRect, Vector2 diferenca)

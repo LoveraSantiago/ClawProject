@@ -26,7 +26,7 @@ public class MapaScene : MonoBehaviour,
 
     private void Start()
     {
-        Utils.configMainMono(this);
+        ContextoEstaticoUtils.configMainMono(this);
         MateriaisUtils.configurar(prefabMateriais);
 
         allTimersFichas = new AllTimersFichas(timerFichaDto);        
