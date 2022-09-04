@@ -27,6 +27,12 @@ public class ContextoEstaticoUtils
         return MapaEntidade;
     }
 
+    public static void configMapaLevelAtual(MapaEntidade mapaEntidade, AbstractLevel level)
+    {
+        configMapaEntidade(mapaEntidade);
+        configLevelAtual(level);
+    }
+    
     public static void configLevelAtual(AbstractLevel level)
     {
         Level = level;

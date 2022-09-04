@@ -39,4 +39,9 @@ public class MapaEntidade
     {
         return levelFornecedor.getLevel(indice);
     }
+
+    public AbstractLevel getLevel(ColetavelEntidade coletavelEntidade)
+    {
+        return levelColetavelTemporarioFornecedor.getLevel(coletavelEntidade);
+    }
 }

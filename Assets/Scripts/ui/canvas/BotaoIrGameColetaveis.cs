@@ -19,7 +19,11 @@ public class BotaoIrGameColetaveis
         if(PlayerPrefsFichas.possueFichas(Ficha.OURO, 1))
         {
             PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
-            PlayerPrefsLevel.salvarLevel(coletavelEntidade.level);            
+
+            MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(coletavelEntidade.mapaEnum);
+            AbstractLevel level = mapaEntidade.getLevel(coletavelEntidade);
+            ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);            
+            
             PlayerPrefsColetaveis.salvarNavegacaoColetavel(coletavelEntidade.id);
             PlayerPrefsScrollPosition.salvarPosScrollRectArmario(indiceArmarioSelecionado);
             CenaUtils.irParaCenaMainGame();
