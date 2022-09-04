@@ -6,7 +6,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,                              
                               AcaoBotaoPowerUpVazio.ConsumidorEvento,
-                              AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento
+                              AcaoPupFromScrollSelecao.ConsumidorEvento
 {
     private bool isGamePlay;
     private PartesMaquinaDtoV2 partesDto;

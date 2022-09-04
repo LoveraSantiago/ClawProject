@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DraggavelManager : AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
+public class DraggavelManager : AcaoPupFromScrollSelecao.ConsumidorEvento,
                                 AcaoPowerUpAcionado.ConsumidorEvento,
                                 AcaoBotaoPowerUpVazio.ConsumidorEvento
 {

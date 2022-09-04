@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BotoesPowerUp : Draggavel,
                              AcaoBotaoPowerUpVazio.ProdutorEvento,
-                             AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
+                             AcaoPupFromScrollSelecao.ConsumidorEvento,
                              AcaoColetado.ConsumidorEvento,
                              AcaoDesligarMaquinaResultado.ConsumidorEvento,
                              AcaoTempoEsgotado.ConsumidorEvento,

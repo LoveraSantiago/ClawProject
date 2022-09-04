@@ -1,4 +1,4 @@
-public class ScrollSelecao : AcaoItemEscolhido<PowerUpBtnInfo>.ProdutorEvento
+public class ScrollSelecao : AcaoPupFromScrollSelecao.ProdutorEvento
 {
     private ProdutorDeEvento<PowerUpBtnInfo> produtorDeEvento;
 
@@ -34,7 +34,7 @@ public class ScrollSelecao : AcaoItemEscolhido<PowerUpBtnInfo>.ProdutorEvento
         }
     }
 
-    ProdutorDeEvento<PowerUpBtnInfo> AcaoItemEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<PowerUpBtnInfo> AcaoPupFromScrollSelecao.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

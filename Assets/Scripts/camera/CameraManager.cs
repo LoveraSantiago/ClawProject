@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class CameraManager : AcaoBotaoPowerUpVazio.ConsumidorEvento,
-                             AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
+                             AcaoPupFromScrollSelecao.ConsumidorEvento,
                              AcaoCacaNiquel.ConsumidorEvento
 {
     private static readonly float RATIO_SCREEN = 0.5625f;
