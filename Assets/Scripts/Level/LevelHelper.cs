@@ -2,13 +2,7 @@ using System.Collections.Generic;
 
 public class LevelHelper
 {
-    private static GenericPool<string, LevelEntidade> poolLevels = inicializarDicionarioDeEnum();
-
-    public static AbstractLevel getLevelByEnum(Level level)
-    {
-        LevelEntidade levelEntidade = poolLevels.getValor(level.ToString());
-        return levelEntidade.supplierLevel.fornecer();
-    }
+    private static GenericPool<string, LevelEntidade> poolLevels = inicializarDicionarioDeEnum();   
 
     public static AbstractLevel getLevelByString(string level)
     {
