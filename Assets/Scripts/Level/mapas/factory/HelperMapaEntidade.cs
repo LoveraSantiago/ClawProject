@@ -56,7 +56,7 @@ public class HelperMapaEntidade
 
     public static MapaEntidade getMapaEntidadeByIndice(int indice)
     {
-        MapaEnum mapaEnum = Mapas.getMapaEnumPeloIndice(indice);
+        MapaEnum mapaEnum = Mapas.getMapaTodosEnumPeloIndice(indice);
         return getMapaEntidadeByMapaEnum(mapaEnum);
     }
 }
