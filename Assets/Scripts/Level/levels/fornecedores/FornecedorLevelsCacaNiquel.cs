@@ -5,7 +5,7 @@ public class FornecedorLevelsCacaNiquel : AbstractFornecedorLevels
         switch (level)
         {
             case 1: return new LevelCacaNiquelPowerUpGeral();
-            case 2: return new LevelCacaNiquelPowerUpIndividual();
+            case 2: return new LevelCacaNiquelPowerUpIndividual();            
         }
         return null;
     }
