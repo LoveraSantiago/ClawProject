@@ -39,7 +39,7 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
     {
         bool penultimo = navegacaoDeArray.isIndiceAtualPenultimo();
         bool ultimo = navegacaoDeArray.isIndiceAtualUltimo();
-        Debug.Log("Penultimo " + penultimo + " Ultimo " + ultimo);
+        //Debug.Log("Penultimo " + penultimo + " Ultimo " + ultimo);
         WrapperLevelMapDto wrapperMapLevelDto = FactoryWrapperLevelMapDto.factory(direcao, levelMapDto, penultimo, ultimo);
         ContextoEstaticoUtils.configMapaEntidade(wrapperMapLevelDto.mapaEntidade);
         produtorDeEvento.produziuEvento(wrapperMapLevelDto);     
