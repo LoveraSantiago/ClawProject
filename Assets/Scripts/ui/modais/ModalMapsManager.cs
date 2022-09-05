@@ -12,11 +12,11 @@ public class ModalMapsManager : AcaoMapaNavegado.ConsumidorEvento,
         modalNoFicha = new ModalNoFicha(modalNoFichaDto);
     }
 
-    private void abrirModal(Level level)
+    private void abrirModal(MapaEntidade mapaEntidade, int indiceLevel)
     {
         if(PlayerPrefsFichas.possueFichas(Ficha.PRATA, 1))
         {
-            modalFase.ligar(level);
+            modalFase.ligar(mapaEntidade, indiceLevel);
         }
         else
         {
@@ -31,6 +31,6 @@ public class ModalMapsManager : AcaoMapaNavegado.ConsumidorEvento,
 
     void AcaoBotaoMapaAcionado.ConsumidorEvento.consumirEvento(int evento)
     {
-        
+        abrirModal(mapaEntidadeAtual, evento);
     }
 }
