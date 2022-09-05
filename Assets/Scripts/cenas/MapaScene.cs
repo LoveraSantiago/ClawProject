@@ -39,7 +39,8 @@ public class MapaScene : MonoBehaviour,
 
         new AcaoMapaNavegado()
             .configurarProdutor(navegacaoMapas)
-            .adicionarConsumidor(this);
+            .adicionarConsumidor(this)
+            .adicionarConsumidor(modalManager);
 
         new AcaoBotaoMapaAcionado()
             .configurarProdutor(mapaUi.grupoBtnBaloes)
