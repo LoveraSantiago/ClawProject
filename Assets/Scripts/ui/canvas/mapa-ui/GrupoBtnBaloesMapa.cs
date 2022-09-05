@@ -59,7 +59,9 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
     private void cliqueAcionado()
     {
         GameObject go = EventSystem.current.currentSelectedGameObject;
-        produtorDeEvento.produziuEvento(int.Parse(go.name));
+        int indiceEscolhido = int.Parse(go.name);
+        Debug.Log("Indice escolhido " + indiceEscolhido);
+        produtorDeEvento.produziuEvento(indiceEscolhido);
     }
 
     ProdutorDeEvento<int> ProdutorConsumidoresDeEvento<int>.ProdutorEvento.getProdutorDeEvento()
