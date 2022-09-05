@@ -33,6 +33,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.POWERUP);
         AbstractLevel level = mapaEntidade.getLevel(0);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
+
         abrirCenaOuModal(0, 0);
     }
 
@@ -52,8 +53,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.CACANIQUEL);
         AbstractLevel level = mapaEntidade.getLevel(1);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
-
-        PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_G);
+        
         abrirCenaOuModal(2, 1);
     }
 
