@@ -1840,8 +1840,8 @@ MonoBehaviour:
       lblLevel: {fileID: 1988281362}
       lblMap: {fileID: 1911783722}
       lblMaquina: {fileID: 602398533}
-  prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
   imageMaquinaGiratoria: {fileID: 1430094561}
+  prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
 --- !u!114 &1747746063 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4144852223566241913, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}

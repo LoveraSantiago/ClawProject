@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PlayerPrefsMapas 
 {
-    private static readonly string MAPA_MAX = "mapa-max";
+    private static readonly string MAPA_LIBERADO = "mapa-liberado";
     private static readonly string MAPA_NAVEGACAO = "mapa-naveg";
 
-    public static int getMapaMaxLevelIndice()//TODO ADICIONAR CRIPTOGRAFIA SEGURANCA
+    public static int getIndiceMapaLiberado()//TODO ADICIONAR CRIPTOGRAFIA SEGURANCA
     {
-        return PlayerPrefs.GetInt(MAPA_MAX, 1);
+        return PlayerPrefs.GetInt(MAPA_LIBERADO, 1);
     }
 
     public static MapaEntidade getIndiceNavegacaoMapa()
@@ -18,6 +18,10 @@ public class PlayerPrefsMapas
 
     public static void salvarIndiceNavegacaoMapa(MapaEntidade mapaEntidade)
     {
-        PlayerPrefs.SetInt(MAPA_NAVEGACAO, mapaEntidade.id);
+        int indiceAtual = getIndiceMapaLiberado();
+        if(mapaEntidade.id > indiceAtual)
+        {
+            PlayerPrefs.SetInt(MAPA_NAVEGACAO, mapaEntidade.id);
+        }
     }
 }

@@ -11,9 +11,9 @@ public class LevelScene : MonoBehaviour,
     [Space(5)]    
     [SerializeField] private LevelsScrollDto levelsScrollDto;
     [Space(5)]
-    [SerializeField] private GameObject prefabMateriais;
-    [Space(5)]
     [SerializeField] private Image imageMaquinaGiratoria;
+    [Space(5)]
+    [SerializeField] private GameObject prefabMateriais;    
 
     private LevelsScroll levelsScroll;
 

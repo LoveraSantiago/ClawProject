@@ -2,21 +2,31 @@ using System.Collections.Generic;
 
 public class LevelHelper
 {
-    private static GenericPool<string, LevelEntidade> poolLevels = inicializarDicionarioDeEnum();   
+    private static GenericPool<string, LevelEntidade> poolLevels = inicializarDicionarioDeEnum();       
 
-    public static int getTotalNormalLevels()
+    public static int getIndiceMapaNormalLiberado()
     {
-        return Mapas.getNormalMapas().Length * 10;
+        return PlayerPrefsMapas.getIndiceMapaLiberado();
     }
 
-    public static AbstractLevel getNormalLevelByIndice(int indice)
+    public static int getTotalLevelsDosMapasNormaisLiberados()
     {
-        int indiceMapaEntidade = (indice -1) / 10;
-        int indiceLevel = indice % 10;
+        return getIndiceMapaNormalLiberado() * 10;
+    }
 
+    public static AbstractLevel getLevelNormalByIndicesTotaisDeLevels(int indice)
+    {        
+        int indiceLevel = (indice + 1) % 11;
+        MapaEntidade mapaEntidade = getMapaNormalByIndicesTotasDeLevels(indice);
+        return mapaEntidade.getLevel(indiceLevel);        
+    }
+
+    public static MapaEntidade getMapaNormalByIndicesTotasDeLevels(int indice)
+    {
+        int indiceMapaEntidade = (indice) / 10;
         MapaEnum mapaEnum = Mapas.getMapaNormalEnumPeloIndice(indiceMapaEntidade);
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
-        return mapaEntidade.getLevel(indiceLevel);        
+        return mapaEntidade;
     }
 
     public static AbstractLevel getLevelByString(string level)

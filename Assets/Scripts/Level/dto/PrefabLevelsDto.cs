@@ -7,7 +7,7 @@ public class PrefabLevelsDto : MonoBehaviour
 
     public LevelMapDto[] getLevelsMapDto()
     {
-        int limite = PlayerPrefsMapas.getMapaMaxLevelIndice();
+        int limite = LevelHelper.getIndiceMapaNormalLiberado();
         int maxIndice = limite + 2;
         maxIndice = Mathf.Min(maxIndice, levelsMapDto.Length);
 
