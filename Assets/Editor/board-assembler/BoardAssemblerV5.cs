@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class BoardAssemblerV5 : EditorWindow
 {
-
     [MenuItem("Window/assemblers/BoardAssemblerV5")]
     public static void ShowExample()
     {
@@ -28,6 +27,7 @@ public class BoardAssemblerV5 : EditorWindow
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler/BoardAssemblerV5.uss");
 
+        EditorLevelHelper.inicializar();
         HelperColetavelEntidade.configurar();
         ReferenciasDoBoardPositivo referenciasDoBoard = new ReferenciasDoBoardPositivo();
         NavegacaoPeloBoardPositivo navegacao  = new NavegacaoPeloBoardPositivo(root, referenciasDoBoard);        
@@ -44,7 +44,7 @@ public class BoardAssemblerV5 : EditorWindow
         navegacao.resetMira();
 
         RemontadorBoard remontadorLbls  = new RemontadorLabelsBoard(referenciasDoBoard, listaDeSprites);
-        DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(LevelHelper.geLevelsNaoObstaculosAlias(), listaDeSprites);
+        DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(EditorLevelHelper.listaDeNomesLevelsNaoObstaculos, listaDeSprites);
         dropDownLevels.criarComponentesDropDowns(root, cleaner, remontadorLbls);
 
 

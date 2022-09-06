@@ -37,7 +37,20 @@ public class MapaEntidade
 
     public AbstractLevel getLevel(int indice)
     {
-        return levelFornecedor.getLevel(indice);
+        if(levelFornecedor != null)
+        {
+            return levelFornecedor.getLevel(indice);
+        }
+        return null;
+    }
+
+    public int getQtdLevels()
+    {
+        if(levelFornecedor != null)
+        {
+            return levelFornecedor.getQtdLevels();
+        }
+        return 0;
     }
 
     public AbstractLevel getLevel(ColetavelEntidade coletavelEntidade)

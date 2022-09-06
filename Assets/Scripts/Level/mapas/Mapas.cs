@@ -45,18 +45,7 @@ public class Mapas
     private static bool isNormalMapa(MapaEnum mapaEnum)
     {
         return mapaEnum != MapaEnum.DEFAULTS && mapaEnum != MapaEnum.CACANIQUEL && mapaEnum != MapaEnum.POWERUP;
-    }
-
-    public static List<string> getTodosOsMapasAsListString()
-    {
-        getTodosMapas();
-        List<string> lista = new List<string>(MAPAS_TODOS.Length);
-        for (int contador = 0; contador < MAPAS_TODOS.Length; contador++)
-        {
-            lista.Add(MAPAS_TODOS[contador].ToString());
-        }
-        return lista;
-    }
+    }    
 
     public static MapaEnum getMapaEnumByName(string nomeMapa)
     {

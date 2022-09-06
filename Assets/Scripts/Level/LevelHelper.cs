@@ -43,12 +43,7 @@ public class LevelHelper
     public static string[] getAllLevelsMapsAlias()
     {
         return getLevelsFiltradosPor(new FilterLevelsAliasMaps()).ToArray();
-    }
-
-    public static List<string> geLevelsNaoObstaculosAlias()
-    {
-        return getLevelsFiltradosPor(new FilterLevelsAliasNormal());
-    }
+    }    
 
     public static List<string> getElevadorLevelsAlias()
     {

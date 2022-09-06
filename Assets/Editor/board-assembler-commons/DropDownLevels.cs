@@ -53,7 +53,7 @@ public abstract class DropDownLevels
     private void criarComponenteDropDownFamilias(
         VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {
-        List<string> listaDeFamilia = Mapas.getTodosOsMapasAsListString();
+        List<string> listaDeFamilia = EditorLevelHelper.listaDeNomesMapas;
         dropDownFamilia = new DropdownField("Familias", listaDeFamilia, 0);
 
         dropDownFamilia.RegisterCallback<ChangeEvent<string>>((evt) => {
