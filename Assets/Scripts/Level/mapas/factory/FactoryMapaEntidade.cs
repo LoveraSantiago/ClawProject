@@ -13,55 +13,66 @@ public class FactoryMapaEntidade
             case MapaEnum.DINO:
                 return new MapaEntidade()
                     .addInfo(2, "PARQUE JURASSICO")
-                    .addPathSprite("dinos");
+                    .addPathSprite("dinos")
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.BOLAS:
                 return new MapaEntidade()
                     .addInfo(3, "QUADRAS POLIESPORTIVAS")
-                    .addPathSprite("bolas");
+                    .addPathSprite("bolas")
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.FALLGUYS:
                 return new MapaEntidade()
                     .addInfo(4, "FULL GUYS WORLD")
-                    .addPathSprite("fg");
+                    .addPathSprite("fg")
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.YUYU:
                 return new MapaEntidade()
                     .addInfo(5, "DESERTO ATACAMA")
-                    .addPathSprite("yuyu");
+                    .addPathSprite("yuyu")
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.GELEIA:
                 return new MapaEntidade()
                     .addInfo(6, "X")
-                    .addPathSprite("geleia");
+                    .addPathSprite("geleia")
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.MARIO:
                 return new MapaEntidade()
                     .addInfo(7, "X")
-                    .addPathSprite("mario");
+                    .addPathSprite("mario")
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.MEGAMAN:
                 return new MapaEntidade()
                     .addInfo(8, "X")
-                    .addPathSprite("megaman");
+                    .addPathSprite("megaman")
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.COGUMELOS:
                 return new MapaEntidade()
                     .addInfo(9, "X")
-                    .addPathSprite("cogumelos");
+                    .addPathSprite("cogumelos")
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.POOPS:
                 return new MapaEntidade()
                     .addInfo(10, "X")
-                    .addPathSprite("poops");
+                    .addPathSprite("poops")
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.CACANIQUEL:
                 return new MapaEntidade()
-                    .addFornecedoresLevels(new FornecedorLevelsCacaNiquel(), null);
+                    .addFornecedoresLevels(new FornecedorLevelsCacaNiquel(), null)
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.POWERUP:
                 return new MapaEntidade()
-                    .addFornecedoresLevels(new FornecedorLevelPowerUp(), null);
+                    .addFornecedoresLevels(new FornecedorLevelPowerUp(), null)
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
         }
         return null;
     }
