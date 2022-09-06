@@ -25,6 +25,8 @@
             </engine:VisualElement>
 
             <engine:VisualElement name="container1Lado">
+               <engine:VisualElement name="espacoDropDownMapas">
+               </engine:VisualElement>
                 <engine:VisualElement name="espacoDropDown">
                 </engine:VisualElement>
                 <engine:Button name="botaoClean" text="Clean"/>
@@ -35,11 +37,6 @@
 
         <engine:VisualElement name="container">
             <editor:IntegerField label="Ordem Coletavel" name="ordem"/>
-        </engine:VisualElement>
-      
-        <engine:VisualElement name="container">
-             <engine:VisualElement name="espacoDropDownFamilias">
-             </engine:VisualElement>
         </engine:VisualElement>
     </engine:VisualElement>    
 </engine:UXML>

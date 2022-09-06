@@ -19,7 +19,7 @@ public abstract class DropDownLevels
     public void criarComponentesDropDowns(VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {
         criarComponenteDropDownField(root, cleaner, remontador);
-        criarComponenteDropDownFamilias(root, cleaner, remontador);
+        criarComponenteDropDownMapas(root, cleaner, remontador);
     }
 
     public void resetDropDowns()
@@ -50,11 +50,11 @@ public abstract class DropDownLevels
                .Add(dropDownLevels);
     }    
 
-    private void criarComponenteDropDownFamilias(
+    private void criarComponenteDropDownMapas(
         VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {
         List<string> listaDeFamilia = EditorLevelHelper.listaDeNomesMapas;
-        dropDownFamilia = new DropdownField("Familias", listaDeFamilia, 0);
+        dropDownFamilia = new DropdownField("Mapas", listaDeFamilia, 0);
 
         dropDownFamilia.RegisterCallback<ChangeEvent<string>>((evt) => {
 
@@ -76,7 +76,7 @@ public abstract class DropDownLevels
             }
         });
 
-            root.Q<VisualElement>("espacoDropDownFamilias")
+            root.Q<VisualElement>("espacoDropDownMapas")
                .Add(dropDownFamilia);
     }
 
