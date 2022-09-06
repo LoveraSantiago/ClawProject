@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
                             AcaoLevelFromScrollSelecao.ProdutorEvento  
 {
-    //private string[] levels;
     private int totalLevels;
     private Material[] materialMaquinas;
 
@@ -27,7 +26,6 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
         this.levelsScrollDto = levelsScrollDto;
         produtorDeEvento = new ProdutorDeEvento<LevelItemDto>();
 
-        //carregarLevels();
         carregarMateriais();
         calcularTamanhoScroll();
         carregarReferenciasPosicoes();
@@ -42,9 +40,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
     {
         float posYItemLevel = itemLevelBaixo.RItem.transform.position.y;
         if(contadorBaixoLevel < totalLevels && posYItemLevel > posYReferenciaBaixo)
-        //if(contadorBaixoLevel < levels.Length && posYItemLevel > posYReferenciaBaixo)
         {
-            //popularItemLevel(itemLevelCima, levels[contadorBaixoLevel]);
             popularItemLevel(itemLevelCima, contadorBaixoLevel);
             reposicionarLevelItemParaUltimaPosicao(levelsScrollDto);
             contadorBaixoLevel++;
@@ -58,19 +54,12 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
         float posYPrateleira = itemLevelCima.RItem.transform.position.y;
         if(contadorCimaLevel > 0 && posYPrateleira < posYReferenciaCima)
         {
-            //popularItemLevel(itemLevelBaixo, levels[--contadorCimaLevel]);
             popularItemLevel(itemLevelBaixo, --contadorCimaLevel);
             reposicionarLevelItemParaPrimeiraPosicao(levelsScrollDto);
             contadorBaixoLevel--;            
             //Debug.Log("movimentarParaCima ACIONADO contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
         }
     }
-
-    //private void carregarLevels()
-    //{
-    //    levels = LevelHelper.getAllLevelsMapsAlias();
-    //    //Debug.Log("QTD LEVELS " + levels.Length);
-    //}
 
     private void carregarMateriais()
     {
@@ -84,7 +73,6 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
 
     private void calcularTamanhoScroll()
     {
-        //float qtdItens = levels.Length - levelsScrollDto.QtdItensVisiveis;
         float qtdItens = totalLevels - levelsScrollDto.QtdItensVisiveis;
         float yAcrescimo = qtdItens * levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
         levelsScrollDto.RTransformScroll.offsetMin += new Vector2(0, -yAcrescimo);
@@ -127,7 +115,6 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
         {
             ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];            
             itemLevelDtoIt.ImgMaquina.material = materialMaquinas[contadorItensLevels];
-            //popularItemLevel(contadorItensLevels, itemLevelDtoIt, levels[contadorItensLevels]);            
             popularItemLevel(contadorItensLevels, itemLevelDtoIt, contadorItensLevels);            
             contadorBaixoLevel++;            
         }
@@ -143,28 +130,10 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
         }
     }
 
-    //private void popularItemLevel(ItemLevelDto itemLevelDtoIt, string levelAlias)
-    //{
-    //    popularItemLevel(int.Parse(itemLevelDtoIt.RItem.name), itemLevelDtoIt, levelAlias);
-    //}
-
     private void popularItemLevel(ItemLevelDto itemLevelDtoIt, int indiceAtual)
     {
         popularItemLevel(int.Parse(itemLevelDtoIt.RItem.name), itemLevelDtoIt, indiceAtual);
     }
-
-
-    //private void popularItemLevel(int indiceMaterialMaquina, ItemLevelDto itemLevelDtoIt, string levelAlias)
-    //{   
-    //    AbstractLevel level = LevelHelper.getLevelByString(levelAlias);
-    //    string levelName               = level.getLevelName();
-    //    itemLevelDtoIt.LblLevel.text   = levelName;
-    //    itemLevelDtoIt.LblMap.text     = "FALTANDO COLOCAR NOME DO MAPA AQUI";
-    //    itemLevelDtoIt.LblMaquina.text = level.getMaquinaNome();
-
-    //    MaterialMiniMaquina.addCores(materialMaquinas[indiceMaterialMaquina], level.getDicionarioDeCores());
-    //    //Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
-    //}
 
     private void popularItemLevel(int indiceMaterialMaquina, ItemLevelDto itemLevelDtoIt, int indiceAtual)
     {
