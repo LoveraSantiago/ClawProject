@@ -16,9 +16,11 @@ public class EditorLevelHelper
         {
             MapaEnum mapaIt = mapas[contadorMapas];
             listaDeNomesMapas.Add(mapaIt.ToString());
-            Debug.Log("Iterando mapa " + mapaIt.ToString());
+            Debug.Log("mapa " + mapaIt.ToString());
 
             MapaEntidade mapaEntidadeIt = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(mapaIt);
+            Debug.Log("MapaEntidade " + mapaEntidadeIt.title + " levels " + mapaEntidadeIt.getQtdLevels());
+
             for(int contadorLevels = 1; contadorLevels <= mapaEntidadeIt.getQtdLevels(); contadorLevels++)
             {
                 AbstractLevel levelIt = mapaEntidadeIt.getLevel(contadorLevels);

@@ -61,13 +61,11 @@ public class FactoryMapaEntidade
 
             case MapaEnum.CACANIQUEL:
                 return new MapaEntidade()
-                    .addFornecedoresLevels(new FornecedorLevelsCacaNiquel(), null)
-                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
+                    .addFornecedoresLevels(new FornecedorLevelsCacaNiquel(), null);
 
             case MapaEnum.POWERUP:
                 return new MapaEntidade()
-                    .addFornecedoresLevels(new FornecedorLevelPowerUp(), null)
-                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
+                    .addFornecedoresLevels(new FornecedorLevelPowerUp(), null);                    
         }
         return null;
     }
