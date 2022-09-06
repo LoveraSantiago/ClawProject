@@ -2,7 +2,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:engine="UnityEngine.UIElements"
     xmlns:editor="UnityEditor.UIElements" xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd">
-    <engine:Style src="BoardAssemblerV5.uss"/>
+    <engine:Style src="BoardAssemblerV6.uss"/>
     <engine:VisualElement name="main">
         <engine:VisualElement name="containerCima">
             <engine:VisualElement name="container1">
