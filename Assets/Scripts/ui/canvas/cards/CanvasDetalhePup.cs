@@ -31,7 +31,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
     private void gotoScenePupPratica()
     {
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.POWERUP);
-        AbstractLevel level = mapaEntidade.getLevel(0);
+        AbstractLevel level = mapaEntidade.getLevel(1);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
 
         abrirCenaOuModal(0, 0);
