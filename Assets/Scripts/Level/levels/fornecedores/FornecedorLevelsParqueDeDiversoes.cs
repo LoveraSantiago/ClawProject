@@ -42,11 +42,11 @@ public class FornecedorLevelsParqueDeDiversoes : AbstractFornecedor10Leveis
 
     protected override AbstractLevel getLevelNono()
     {
-        return null;
+        return new Level1();
     }
 
     protected override AbstractLevel getLevelDecimo()
     {
-        return null;
+        return new Level1();
     }
 }
