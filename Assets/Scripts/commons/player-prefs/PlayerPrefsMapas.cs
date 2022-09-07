@@ -24,10 +24,6 @@ public class PlayerPrefsMapas
 
     public static void salvarIndiceNavegacaoMapa(MapaEntidade mapaEntidade)
     {
-        int indiceAtual = getIndiceMapaLiberado();
-        if(mapaEntidade.id > indiceAtual)
-        {
-            PlayerPrefs.SetInt(MAPA_NAVEGACAO, mapaEntidade.id);
-        }
+        PlayerPrefs.SetInt(MAPA_NAVEGACAO, mapaEntidade.id);        
     }
 }
