@@ -30,6 +30,17 @@ public class EditorLevelHelper
         }
     }
 
+    public static List<string> getListaDeNomesLevels(MapaEntidade mapaEntidade)
+    {
+        List<string> listaDeNomes = new List<string>(listaEmpty);
+        for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
+        {
+            AbstractLevel levelIt = mapaEntidade.getLevel(contadorLevels);
+            listaDeNomes.Add(levelIt.getLevelName());           
+        }
+        return listaDeNomes;
+    }
+
     public static List<string> getListaDeNomesLevelsNaoObstaculo(MapaEntidade mapaEntidade)
     {
         List<string> listaDeNomes = new List<string>(listaEmpty);
