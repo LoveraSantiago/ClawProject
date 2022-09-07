@@ -26,6 +26,7 @@ public class BoardAssemblerNegativo : EditorWindow
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler-negativo/BoardAssemblerNegativo.uss");
 
+        EditorLevelHelper.inicializar();
         HelperColetavelEntidade.configurar();
         ReferenciasDoBoardNegativo referenciasDoBoard = new ReferenciasDoBoardNegativo();
         NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);        
@@ -43,7 +44,7 @@ public class BoardAssemblerNegativo : EditorWindow
 
 
         RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
-        DropDownLevels dropDownLevels = new DropDownLevelsNegativo(LevelHelper.getElevadorLevelsAlias(), listaDeSprites);
+        DropDownLevels dropDownLevels = new DropDownLevelsNegativo(listaDeSprites);
         dropDownLevels.criarComponentesDropDowns(root, cleaner, remontador);
 
         root.Q<Button>("botaoClean").clicked += () =>

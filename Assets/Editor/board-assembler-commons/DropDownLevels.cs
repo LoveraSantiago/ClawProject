@@ -80,6 +80,7 @@ public abstract class DropDownLevels
                     listaDeSprites.receberSprite(sprite);
                 }                
                 dropDownLevels.choices = getListaBy(mapaEntidade);
+                dropDownLevels.index = 0;
             }
         });
 

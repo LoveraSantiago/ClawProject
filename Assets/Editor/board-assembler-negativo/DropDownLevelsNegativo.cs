@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 public class DropDownLevelsNegativo : DropDownLevels
 {
-    public DropDownLevelsNegativo(List<string> listaDeLevels, ListaDeSprites listaDeSprites)
-        : base(listaDeLevels, listaDeSprites)
+    public DropDownLevelsNegativo(ListaDeSprites listaDeSprites)
+        : base(listaDeSprites)
     {
     }
 
@@ -14,7 +14,7 @@ public class DropDownLevelsNegativo : DropDownLevels
 
     protected override List<string> getListaBy(MapaEntidade mapaEntidade)
     {
-        throw new System.NotImplementedException();
+        return EditorLevelHelper.getListaDenomesLevelsElevadores(mapaEntidade);
     }
 
     protected override void onDropDownSelected(AbstractLevel level, RemontadorBoard remontador){}
