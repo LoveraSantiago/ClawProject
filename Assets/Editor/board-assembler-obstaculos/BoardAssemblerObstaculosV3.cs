@@ -26,6 +26,7 @@ public class BoardAssemblerObstaculosV3 : EditorWindow
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler-obstaculos/BoardAssemblerObstaculosV3.uss");
 
+        EditorLevelHelper.inicializar();
         HelperColetavelEntidade.configurar();
         ReferenciasDoBoardObstaculo referenciasDoBoard = new ReferenciasDoBoardObstaculo();
         NavegacaoPeloBoardObstaculos navegacao = new NavegacaoPeloBoardObstaculos(root, referenciasDoBoard);
@@ -43,7 +44,7 @@ public class BoardAssemblerObstaculosV3 : EditorWindow
         BoardCleanerObstaculos cleaner = new BoardCleanerObstaculos(referenciasDoBoard, navegacao, () => listaDeSprites.getSpriteVazio(), controleObstaculos);
         navegacao.resetMira();
 
-        DropDownLevels dropDownLevels = new DropDownLevelsObstaculo(LevelHelper.getObstaculoLevelsAlias(), listaDeSprites);
+        DropDownLevels dropDownLevels = new DropDownLevelsObstaculo(listaDeSprites);
         dropDownLevels.criarComponentesDropDowns(root, cleaner, controleObstaculos);
 
         root.Q<Button>("botaoClean").clicked += () => {
@@ -60,7 +61,6 @@ public class BoardAssemblerObstaculosV3 : EditorWindow
             PosicaoMira posicaoMira = navegacao.getPosicaoDaMira();
             controleObstaculos.processarObstaculo(posicaoMira);
         };
-
         cleaner.clean();
     }
 }

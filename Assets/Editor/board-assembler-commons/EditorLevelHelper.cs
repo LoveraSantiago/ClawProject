@@ -60,6 +60,21 @@ public class EditorLevelHelper
         return listaDeNomes;
     }
 
+    public static List<string> getListaDenomesLevelsObstaculos(MapaEntidade mapaEntidade)
+    {
+        List<string> listaDeNomes = new List<string>(listaEmpty);
+        for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
+        {
+            AbstractLevel levelIt = mapaEntidade.getLevel(contadorLevels);
+
+            if (LevelUtils.isObstaculoLevel(levelIt))
+            {
+                listaDeNomes.Add(levelIt.getLevelName());
+            }
+        }
+        return listaDeNomes;
+    }
+
     public static AbstractLevel getLevelByNameIndice(string nomeMapaEntidade, string nomeLevel)
     {
         MapaEntidade mapaEntidade = mapasEntidadesPorNomes[nomeMapaEntidade];

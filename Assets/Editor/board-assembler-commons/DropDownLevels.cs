@@ -14,13 +14,7 @@ public abstract class DropDownLevels
     {
         this.listaDeLevels = EditorLevelHelper.listaEmpty;
         this.listaDeSprites = listaDeSprites;
-    }
-
-    public DropDownLevels(List<string> listaDeLevels, ListaDeSprites listaDeSprites)
-    {
-        this.listaDeLevels = listaDeLevels;
-        this.listaDeSprites = listaDeSprites;
-    }
+    }   
 
     public void criarComponentesDropDowns(VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {

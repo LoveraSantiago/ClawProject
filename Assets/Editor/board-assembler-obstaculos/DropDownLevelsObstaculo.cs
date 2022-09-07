@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 public class DropDownLevelsObstaculo : DropDownLevels
 {
-    public DropDownLevelsObstaculo(List<string> listaDeLevels, ListaDeSprites listaDeSprites) 
-        : base(listaDeLevels, listaDeSprites) {}
+    public DropDownLevelsObstaculo(ListaDeSprites listaDeSprites) 
+        : base(listaDeSprites) {}
 
     protected override int[,] getArrayParaOBoard(AbstractLevel level)
     {
@@ -12,7 +12,7 @@ public class DropDownLevelsObstaculo : DropDownLevels
 
     protected override List<string> getListaBy(MapaEntidade mapaEntidade)
     {
-        throw new System.NotImplementedException();
+        return EditorLevelHelper.getListaDenomesLevelsObstaculos(mapaEntidade);
     }
 
     protected override void onDropDownSelected(AbstractLevel level, RemontadorBoard remontador)
