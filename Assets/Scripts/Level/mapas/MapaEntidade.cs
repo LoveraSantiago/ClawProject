@@ -39,7 +39,9 @@ public class MapaEntidade
     {
         if(levelFornecedor != null)
         {
-            return levelFornecedor.getLevel(indice);
+            AbstractLevel level = levelFornecedor.getLevel(indice);
+            level.setIndiceLevelAtual(((10 * id) - 10) + indice);
+            return level;
         }
         return null;
     }

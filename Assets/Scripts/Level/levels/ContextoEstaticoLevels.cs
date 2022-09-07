@@ -9,6 +9,6 @@ public class ContextoEstaticoLevels
 
     public void salvarLevelAtual()
     {
-        PlayerPrefsMapas.salvarIndiceLevelLiberado(indiceLevelAtual);
+        PlayerPrefsMapas.salvarIndiceLevelLiberado(indiceLevelAtual + 1);
     }
 }
