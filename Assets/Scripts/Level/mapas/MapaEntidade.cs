@@ -53,6 +53,16 @@ public class MapaEntidade
         return 0;
     }
 
+    public int getIndiceLevelsLiberado()
+    {
+        int maxLevelLiberado = PlayerPrefsMapas.getIndiceLevelLiberado();
+        if((id * 10) <= maxLevelLiberado)
+        {
+            return 10; 
+        }
+        return maxLevelLiberado % 11;
+    }
+
     public AbstractLevel getLevel(ColetavelEntidade coletavelEntidade)
     {
         return levelColetavelTemporarioFornecedor.getLevel(coletavelEntidade);

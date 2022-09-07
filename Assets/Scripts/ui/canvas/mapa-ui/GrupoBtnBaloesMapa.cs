@@ -35,7 +35,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
     {
         Vector2[] posicoes = evento.levelMapDto.Posicoes;
         if (evento.isAberto)
-        {
+        {            
             for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
             {
                 btnsMapasBaloes[contador].colocarNaPosicao(posicoes[contador]);
@@ -47,7 +47,8 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
     {
         if (evento.isAberto)
         {
-            for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
+            int levelsLiberados = evento.mapaEntidade.getIndiceLevelsLiberado();
+            for (int contador = 0; contador < levelsLiberados; contador++)
             {
                 btnsMapasBaloes[contador].zoomarBalaoMais();
                 yield return new WaitForSeconds(delay);
