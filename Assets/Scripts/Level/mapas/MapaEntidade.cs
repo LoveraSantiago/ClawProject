@@ -62,7 +62,12 @@ public class MapaEntidade
         {
             return 10; 
         }
-        return maxLevelLiberado % 11;
+        maxLevelLiberado = maxLevelLiberado % 10;
+        if(maxLevelLiberado == 0)
+        {
+            return 1;
+        }
+        return maxLevelLiberado;         
     }
 
     public AbstractLevel getLevel(ColetavelEntidade coletavelEntidade)

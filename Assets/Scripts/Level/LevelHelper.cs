@@ -1,13 +1,8 @@
 public class LevelHelper
 {
-    public static int getIndiceMapaNormalLiberado()
-    {
-        return PlayerPrefsMapas.getIndiceMapaLiberado();
-    }
-
     public static int getTotalLevelsDosMapasNormaisLiberados()
     {
-        return getIndiceMapaNormalLiberado() * 10;
+        return PlayerPrefsMapas.getIndiceMapaLiberado() * 10;
     }
 
     public static AbstractLevel getLevelNormalByIndicesTotaisDeLevels(int indice)

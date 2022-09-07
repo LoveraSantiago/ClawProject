@@ -1,14 +1,13 @@
 using UnityEngine;
 
 public class PlayerPrefsMapas 
-{
-    private static readonly string MAPA_LIBERADO  = "mapa-liberado";
+{    
     private static readonly string LEVEL_LIBERADO = "level-liberado";
     private static readonly string MAPA_NAVEGACAO = "mapa-naveg";
 
     public static int getIndiceMapaLiberado()//TODO ADICIONAR CRIPTOGRAFIA SEGURANCA
     {
-        return PlayerPrefs.GetInt(MAPA_LIBERADO, 1);
+        return (getIndiceLevelLiberado() / 10) + 1;        
     }
 
     public static MapaEntidade getIndiceNavegacaoMapa()
@@ -19,7 +18,9 @@ public class PlayerPrefsMapas
 
     public static int getIndiceLevelLiberado()
     {
-        return PlayerPrefs.GetInt(LEVEL_LIBERADO, 1);
+        int indice = PlayerPrefs.GetInt(LEVEL_LIBERADO, 1);
+        Debug.Log("Recuperando indice level " + indice);
+        return indice;
     }
 
     public static void salvarIndiceLevelLiberado(int indiceLevel)
@@ -27,6 +28,7 @@ public class PlayerPrefsMapas
         int indiceAtual = getIndiceLevelLiberado();
         if(indiceLevel > indiceAtual)
         {
+            Debug.Log("Salvando indice level " + indiceLevel);
             PlayerPrefs.SetInt(LEVEL_LIBERADO, indiceLevel);
         }
     }

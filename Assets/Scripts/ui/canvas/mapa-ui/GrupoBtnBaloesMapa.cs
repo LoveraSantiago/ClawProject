@@ -48,6 +48,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
         if (evento.isAberto)
         {
             int levelsLiberados = evento.mapaEntidade.getIndiceLevelsLiberado();
+            Debug.Log("Qtd Levels Baloes Liberados " + levelsLiberados);
             for (int contador = 0; contador < levelsLiberados; contador++)
             {
                 btnsMapasBaloes[contador].zoomarBalaoMais();

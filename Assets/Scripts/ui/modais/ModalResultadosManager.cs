@@ -86,8 +86,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         modalResultado.setScoreAtual(evento.score.ToString());
         InformacoesFimDeJogoDto infoFimDeJogo = evento.infosFimDeJogo;
         if (infoFimDeJogo.fimColetados)
-        {
-            Debug.Log("Salvando indice");
+        {            
             AbstractLevel levelAtual = ContextoEstaticoUtils.level;
             levelAtual.levelConcluido();
             
