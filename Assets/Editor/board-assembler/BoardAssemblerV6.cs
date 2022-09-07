@@ -44,7 +44,7 @@ public class BoardAssemblerV6 : EditorWindow
         navegacao.resetMira();
 
         RemontadorBoard remontadorLbls = new RemontadorLabelsBoard(referenciasDoBoard, listaDeSprites);
-        DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(EditorLevelHelper.listaDeNomesLevelsNaoObstaculos, listaDeSprites);
+        DropDownLevelsPositivo dropDownLevels = new DropDownLevelsPositivo(listaDeSprites);
         dropDownLevels.criarComponentesDropDowns(root, cleaner, remontadorLbls);
 
 

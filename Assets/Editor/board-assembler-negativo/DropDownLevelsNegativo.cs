@@ -12,5 +12,10 @@ public class DropDownLevelsNegativo : DropDownLevels
         return ((AbstractLevelElevador)level).getArrayDeColetaveisSub();
     }
 
+    protected override List<string> getListaBy(MapaEntidade mapaEntidade)
+    {
+        throw new System.NotImplementedException();
+    }
+
     protected override void onDropDownSelected(AbstractLevel level, RemontadorBoard remontador){}
 }

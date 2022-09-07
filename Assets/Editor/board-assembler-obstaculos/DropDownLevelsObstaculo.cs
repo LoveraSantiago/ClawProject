@@ -10,6 +10,11 @@ public class DropDownLevelsObstaculo : DropDownLevels
         return level.getArrayDeColetaveis();
     }
 
+    protected override List<string> getListaBy(MapaEntidade mapaEntidade)
+    {
+        throw new System.NotImplementedException();
+    }
+
     protected override void onDropDownSelected(AbstractLevel level, RemontadorBoard remontador)
     {
         bool[,] obstaculos = LevelUtils.getArrayDeObstaculos(level);

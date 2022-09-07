@@ -8,7 +8,13 @@ public abstract class DropDownLevels
     private ListaDeSprites listaDeSprites;
 
     private DropdownField dropDownLevels;
-    private DropdownField dropDownFamilia;
+    private DropdownField dropDownMapas;
+
+    public DropDownLevels(ListaDeSprites listaDeSprites)
+    {
+        this.listaDeLevels = EditorLevelHelper.listaEmpty;
+        this.listaDeSprites = listaDeSprites;
+    }
 
     public DropDownLevels(List<string> listaDeLevels, ListaDeSprites listaDeSprites)
     {
@@ -25,7 +31,7 @@ public abstract class DropDownLevels
     public void resetDropDowns()
     {
         dropDownLevels.index = 0;
-        dropDownFamilia.index = 0;
+        dropDownMapas.index = 0;
     }
 
     private void criarComponenteDropDownField(
@@ -37,8 +43,8 @@ public abstract class DropDownLevels
             cleaner.clean();
 
             if (!"0".Equals(evt.newValue) && !"-".Equals(evt.newValue))
-            {
-                AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
+            {                
+                AbstractLevel level = EditorLevelHelper.getLevelByNameIndice(dropDownMapas.value, evt.newValue);
                 int[,] coletaveis = getArrayParaOBoard(level);
                 remontador.montarColetaveis(coletaveis);
 
@@ -54,9 +60,9 @@ public abstract class DropDownLevels
         VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {
         List<string> listaDeFamilia = EditorLevelHelper.listaDeNomesMapas;
-        dropDownFamilia = new DropdownField("Mapas", listaDeFamilia, 0);
+        dropDownMapas = new DropdownField("Mapas", listaDeFamilia, 0);
 
-        dropDownFamilia.RegisterCallback<ChangeEvent<string>>((evt) => {
+        dropDownMapas.RegisterCallback<ChangeEvent<string>>((evt) => {
 
             cleaner.clean();
             listaDeSprites.limparTodaLista();
@@ -72,15 +78,18 @@ public abstract class DropDownLevels
                     string spriteFileName = mapaEntidade.getRootPathSprites() + nomeSprite;                    
                     Sprite sprite = Resources.Load<Sprite>(spriteFileName);
                     listaDeSprites.receberSprite(sprite);
-                }
+                }                
+                dropDownLevels.choices = getListaBy(mapaEntidade);
             }
         });
 
             root.Q<VisualElement>("espacoDropDownMapas")
-               .Add(dropDownFamilia);
+               .Add(dropDownMapas);
     }
 
     protected abstract int[,] getArrayParaOBoard(AbstractLevel level);
 
     protected abstract void onDropDownSelected(AbstractLevel level, RemontadorBoard remontador);
+
+    protected abstract List<string> getListaBy(MapaEntidade mapaEntidade);
 }
