@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevel 
 {
+    private static ContextoEstaticoLevels contexto = new ContextoEstaticoLevels();
+
     public static readonly string TIMER_ZERO = "00:00";
 
     public abstract string getLevelTitle();
@@ -58,4 +60,14 @@ public abstract class AbstractLevel
     {
         return getPupsToLevel() != null;
     }   
+
+    public void setIndiceLevelAtual(int indiceLevelAtual)
+    {
+        contexto.receberIndiceLevelAtual(indiceLevelAtual);
+    }
+
+    public void levelConcluido()
+    {
+        contexto.salvarLevelAtual();
+    }
 }

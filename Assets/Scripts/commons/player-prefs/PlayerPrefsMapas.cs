@@ -22,6 +22,15 @@ public class PlayerPrefsMapas
         return PlayerPrefs.GetInt(LEVEL_LIBERADO, 1);
     }
 
+    public static void salvarIndiceLevelLiberado(int indiceLevel)
+    {
+        int indiceAtual = getIndiceLevelLiberado();
+        if(indiceLevel > indiceAtual)
+        {
+            PlayerPrefs.SetInt(LEVEL_LIBERADO, indiceLevel);
+        }
+    }
+
     public static void salvarIndiceNavegacaoMapa(MapaEntidade mapaEntidade)
     {
         PlayerPrefs.SetInt(MAPA_NAVEGACAO, mapaEntidade.id);        
