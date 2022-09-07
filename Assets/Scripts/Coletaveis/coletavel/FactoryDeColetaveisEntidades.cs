@@ -7,14 +7,14 @@ public class FactoryDeColetaveisEntidades
             new ColetavelEntidade(1, -1, "random", "tile-random"     , MapaEnum.DEFAULTS),
             new ColetavelEntidade(2, -1, "ovo"   , "capsula-completa", MapaEnum.DEFAULTS),
 
-            new ColetavelEntidade(10, 1, "Leite"          , "characters_0001", MapaEnum.FRUTAS, Level.COLETAVEL_LEITE),//Range de 10 a 19 frutas
-            new ColetavelEntidade(11, 2, "Maca"           , "characters_0002", MapaEnum.FRUTAS, Level.COLETAVEL_MACA),
-            new ColetavelEntidade(12, 3, "Laranja"        , "characters_0003", MapaEnum.FRUTAS, Level.COLETAVEL_LARANJA),
-            new ColetavelEntidade(13, 4, "Pao"            , "characters_0004", MapaEnum.FRUTAS, Level.COLETAVEL_PAO),
-            new ColetavelEntidade(14, 5, "Aspargo"        , "characters_0005", MapaEnum.FRUTAS, Level.COLETAVEL_ASPARGO),
-            new ColetavelEntidade(15, 6, "Coco"           , "characters_0006", MapaEnum.FRUTAS, Level.COLETAVEL_COCO),
-            new ColetavelEntidade(16, 7, "Estrela Marinha", "characters_0007", MapaEnum.FRUTAS, Level.COLETAVEL_ESTRELAMARINHA),
-            new ColetavelEntidade(17, 8, "Abobora"        , "aboborav3"      , MapaEnum.FRUTAS, Level.COLETAVEL_ESTRELAMARINHA),
+            new ColetavelEntidade(10, 1, "Leite"          , "characters_0001", MapaEnum.FRUTAS),//Range de 10 a 19 frutas
+            new ColetavelEntidade(11, 2, "Maca"           , "characters_0002", MapaEnum.FRUTAS),
+            new ColetavelEntidade(12, 3, "Laranja"        , "characters_0003", MapaEnum.FRUTAS),
+            new ColetavelEntidade(13, 4, "Pao"            , "characters_0004", MapaEnum.FRUTAS),
+            new ColetavelEntidade(14, 5, "Aspargo"        , "characters_0005", MapaEnum.FRUTAS),
+            new ColetavelEntidade(15, 6, "Coco"           , "characters_0006", MapaEnum.FRUTAS),
+            new ColetavelEntidade(16, 7, "Estrela Marinha", "characters_0007", MapaEnum.FRUTAS),
+            new ColetavelEntidade(17, 8, "Abobora"        , "aboborav3"      , MapaEnum.FRUTAS),
 
             new ColetavelEntidade(20, 9, "Triceratops"      , "triceratops256"      , MapaEnum.DINO),//Range de 20 a 29 dinos
             new ColetavelEntidade(21, 10, "T-Rex"            , "trex256"             , MapaEnum.DINO),

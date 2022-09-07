@@ -7,18 +7,13 @@ public class ColetavelEntidade
     public string nome { get; private set; }
     public string nomeSprite { get; private set; }//Deve ser unico        
     public MapaEnum mapaEnum { get; private set; }
-    public Level level { get; private set; }
 
     public ColetavelEntidade(int id, int ordem, string nome, string nomeSprite, MapaEnum mapaEnum)
-        : this(id, ordem, nome, nomeSprite, mapaEnum, Level.NONE){}
-
-    public ColetavelEntidade(int id, int ordem, string nome, string nomeSprite, MapaEnum mapaEnum, Level level)
     {
         this.id         = id;
         this.nome       = nome;
         this.nomeSprite = nomeSprite;
-        this.mapaEnum   = mapaEnum;
-        this.level      = level;
+        this.mapaEnum   = mapaEnum;        
         this.ordem      = ordem;
     }
 
