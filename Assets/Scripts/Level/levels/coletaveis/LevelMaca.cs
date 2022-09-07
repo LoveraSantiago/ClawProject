@@ -27,7 +27,7 @@ public class LevelMaca : AbstractLevelColetavel
         return "Bonita Refrescante";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //09. Refreshing & Pretty
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

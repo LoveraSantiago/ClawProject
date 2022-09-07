@@ -3,6 +3,7 @@ using System.Collections.Generic;
 public abstract class AbstractLevel 
 {
     private static ContextoEstaticoLevels contexto = new ContextoEstaticoLevels();
+    private Dictionary<string, string> dicionario;
 
     public static readonly string TIMER_ZERO = "00:00";
 
@@ -30,7 +31,16 @@ public abstract class AbstractLevel
 
     public abstract TipoContagemTempoDto getTempoContagem();
 
-    public abstract Dictionary<string, string> getDicionarioDeCores();
+    public Dictionary<string, string> getDicionarioDeCores()
+    {
+        if(dicionario == null)
+        {
+            dicionario = getCoresMaquina();
+        }
+        return dicionario;
+    }
+
+    protected abstract Dictionary<string, string> getCoresMaquina();
 
     public abstract string getMaquinaNome();   
 

@@ -82,7 +82,7 @@ public class Level4 : AbstractLevelOrdem
         return "Moderada Profissional";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //02. Subdued & Professional
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

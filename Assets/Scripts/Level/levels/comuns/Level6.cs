@@ -32,7 +32,7 @@ public class Level6 : AbstractLevelOvo
         return "Dramatica Crocante";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //04. Crisp & Dramatic
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

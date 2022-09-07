@@ -59,7 +59,7 @@ public class Level7 : AbstractLevel
         return "Ar fresco Natural";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //06. Outdoorsy & Natural
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

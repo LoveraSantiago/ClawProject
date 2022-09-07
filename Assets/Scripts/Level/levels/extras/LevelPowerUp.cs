@@ -47,7 +47,7 @@ public class LevelPowerUp : AbstractLevel
         return "Agua Azul Esverdeada";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //07. Watery Blue-Greens
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

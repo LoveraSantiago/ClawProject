@@ -27,7 +27,7 @@ public class LevelPao : AbstractLevelColetavel
         return "Vibrante Primaria";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //08. Primary Colors With a Vibrant Twist
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

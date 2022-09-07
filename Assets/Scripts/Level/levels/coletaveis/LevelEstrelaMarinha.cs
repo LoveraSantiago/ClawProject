@@ -26,7 +26,7 @@ public class LevelEstrelaMarinha : AbstractLevelColetavel
         return "Iceberg Gelada";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //14. Icy Blues and Grays
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

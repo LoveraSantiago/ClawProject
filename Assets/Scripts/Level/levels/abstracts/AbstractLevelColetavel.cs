@@ -44,7 +44,7 @@ public abstract class AbstractLevelColetavel : AbstractLevel
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-cima", "#F2E205");

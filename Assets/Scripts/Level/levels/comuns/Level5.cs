@@ -55,7 +55,7 @@ public class Level5 : AbstractLevelObstaculos
         return "Terrosa Escura";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //03. Dark & Earthy
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

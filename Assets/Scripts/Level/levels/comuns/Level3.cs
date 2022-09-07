@@ -49,7 +49,7 @@ public class Level3 : AbstractLevelElevador
         return "Brilhante Fresco";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //01.Fresh & Bright
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

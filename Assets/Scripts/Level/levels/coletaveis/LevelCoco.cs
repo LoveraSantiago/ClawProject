@@ -27,7 +27,7 @@ public class LevelCoco : AbstractLevelColetavel
         return "Frescor Energetica";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {   
         //11. Fresh & Energetic
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -72,7 +72,8 @@ public class LevelCoco : AbstractLevelColetavel
         dicionario.Add("divisoria", "#838482");
         dicionario.Add("digitos", "#FFFFFF");
         dicionario.Add("circulo-externo", "#838482");
-        dicionario.Add("circulo-interno", "#4D9988");        return dicionario;
+        dicionario.Add("circulo-interno", "#4D9988");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()

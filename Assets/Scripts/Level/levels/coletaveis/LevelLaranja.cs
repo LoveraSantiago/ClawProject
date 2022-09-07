@@ -32,7 +32,7 @@ public class LevelLaranja : AbstractLevelColetavel
         return "Outono Natural";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //13. Autumn in Vermont
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

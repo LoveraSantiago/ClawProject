@@ -27,7 +27,7 @@ public class LevelLeite : AbstractLevelColetavel
         return "Azul e Verdes Brincantes";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //10. Playful Greens & Blues
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -72,7 +72,8 @@ public class LevelLeite : AbstractLevelColetavel
         dicionario.Add("divisoria", "#324851");
         dicionario.Add("digitos", "#7DA3A1");
         dicionario.Add("circulo-externo", "#324851");
-        dicionario.Add("circulo-interno", "#7DA3A1");        return dicionario;
+        dicionario.Add("circulo-interno", "#7DA3A1");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()

@@ -58,7 +58,7 @@ public class Level1 : AbstractLevel
         return "Chiclete e Embalagem";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-frente", "#EB82EB");

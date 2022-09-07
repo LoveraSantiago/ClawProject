@@ -59,7 +59,7 @@ public class Level8 : AbstractLevel
         return "Azuis Legais";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //05. Cool Blues
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

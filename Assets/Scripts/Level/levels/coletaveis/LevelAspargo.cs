@@ -27,7 +27,7 @@ public class LevelAspargo : AbstractLevelColetavel
         return "Frescor Energetica";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-frente", "#F4CC70");
@@ -71,7 +71,8 @@ public class LevelAspargo : AbstractLevelColetavel
         dicionario.Add("divisoria", "#BE681C");
         dicionario.Add("digitos", "#F9E2AE");
         dicionario.Add("circulo-externo", "#20948B");
-        dicionario.Add("circulo-interno", "#6AB187");        return dicionario;
+        dicionario.Add("circulo-interno", "#6AB187");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
