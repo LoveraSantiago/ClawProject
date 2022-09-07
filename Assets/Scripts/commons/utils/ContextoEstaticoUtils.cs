@@ -4,8 +4,8 @@ public class ContextoEstaticoUtils
 {
     public static MonoBehaviour MonoBehaviour { get; private set; }
 
-    private static MapaEntidade MapaEntidade;
-    private static AbstractLevel Level;
+    private static MapaEntidade mapaEntidade;
+    private static AbstractLevel level;
 
     public static void configMainMono(MonoBehaviour monoBehaviour)
     {
@@ -14,17 +14,17 @@ public class ContextoEstaticoUtils
 
     public static void configMapaEntidade(MapaEntidade mapaEntidade)
     {
-        MapaEntidade = mapaEntidade;
+        ContextoEstaticoUtils.mapaEntidade = mapaEntidade;
         PlayerPrefsMapas.salvarIndiceNavegacaoMapa(mapaEntidade);
     }
 
     public static MapaEntidade loadMapaEntidade()
     {
-        if(MapaEntidade == null)
+        if(mapaEntidade == null)
         {
-            MapaEntidade = PlayerPrefsMapas.getIndiceNavegacaoMapa();
+            mapaEntidade = PlayerPrefsMapas.getIndiceNavegacaoMapa();
         }
-        return MapaEntidade;
+        return mapaEntidade;
     }
 
     public static void configMapaLevelAtual(MapaEntidade mapaEntidade, AbstractLevel level)
@@ -35,42 +35,39 @@ public class ContextoEstaticoUtils
     
     public static void configLevelAtual(AbstractLevel level)
     {
-        Level = level;
+        ContextoEstaticoUtils.level = level;
     }
 
-    public static AbstractLevel loadResetLevelEstaticoAtualOrCreateLevel(int indiceMapa, int indiceLevel)
+    public static AbstractLevel loadLevelEstaticoAtualOrCreateLevel(int indiceMapa, int indiceLevel)
     {
-        if(Level == null)
+        if(level == null)
         {
-            MapaEntidade = HelperMapaEntidade.getMapaEntidadeByIndice(indiceMapa);
+            mapaEntidade = HelperMapaEntidade.getMapaEntidadeByIndice(indiceMapa);
             logInfoMapaEntidade(indiceMapa);
 
-            Level = MapaEntidade.getLevel(indiceLevel);
+            level = mapaEntidade.getLevel(indiceLevel);
             logInfoLevel(indiceLevel);
-        }
-
-        AbstractLevel levelAtual = Level;
-        Level = null;
-        return levelAtual;
+        }        
+        return level;
     }
 
     private static void logInfoMapaEntidade(int indiceMapa)
     {
-        if (MapaEntidade == null)
+        if (mapaEntidade == null)
         {
             Debug.LogError("ESCOLHIDO INDICE DE MAPA INEXISTENTE " + indiceMapa);
         }
         else
         {
-            Debug.LogWarning("CARREGADO MAPA " + MapaEntidade.ToString() + " A PARTIR DE PARAMETRIZACAO DE MAINGAMESCENE");
+            Debug.LogWarning("CARREGADO MAPA " + mapaEntidade.ToString() + " A PARTIR DE PARAMETRIZACAO DE MAINGAMESCENE");
         }
     }
 
     private static void logInfoLevel(int indiceLevel)
     {
-        if (Level == null)
+        if (level == null)
         {
-            Debug.LogError("LEVEL " + indiceLevel + " NAO EXISTE NO INDICE MAPA " + (MapaEntidade == null ? "MAPA INEXISTENTE": MapaEntidade.ToString()));
+            Debug.LogError("LEVEL " + indiceLevel + " NAO EXISTE NO INDICE MAPA " + (mapaEntidade == null ? "MAPA INEXISTENTE": mapaEntidade.ToString()));
         }
     }
 }

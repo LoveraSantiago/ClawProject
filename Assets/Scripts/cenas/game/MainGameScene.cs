@@ -25,7 +25,7 @@ public class MainGameScene : MonoBehaviour,
         MateriaisUtils.configurar(mainDto.PrefabMateriais);
         FactoryPowerUpEntidade.resetContextoEstatico();
 
-        AbstractLevel levelEscolhido = ContextoEstaticoUtils.loadResetLevelEstaticoAtualOrCreateLevel(indiceMapa, indiceLevel);
+        AbstractLevel levelEscolhido = ContextoEstaticoUtils.loadLevelEstaticoAtualOrCreateLevel(indiceMapa, indiceLevel);
         MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido, this);        
     }        
     
