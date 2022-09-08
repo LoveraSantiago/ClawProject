@@ -29,4 +29,14 @@ public class BtnBalaoMapa
     {
         balaoLevelDto.Animator.Play(ZOOM_MENOS);        
     }
+
+    public void ativarExclamacao()
+    {
+        balaoLevelDto.GoExclamacao.SetActive(true);
+    }
+
+    public void desativarExclamacao()
+    {
+        balaoLevelDto.GoExclamacao.SetActive(false);
+    }    
 }

@@ -48,10 +48,17 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
         if (evento.isAberto)
         {
             int levelsLiberados = evento.mapaEntidade.getIndiceLevelsLiberado();
+            bool newLevelLiberado = PlayerPrefsMapas.isNovaLiberacaoLevelBalao();
+
             Debug.Log("Qtd Levels Baloes Liberados " + levelsLiberados);
             for (int contador = 0; contador < levelsLiberados; contador++)
             {
-                btnsMapasBaloes[contador].zoomarBalaoMais();
+                BtnBalaoMapa btnBalaoMapaIt = btnsMapasBaloes[contador];
+                btnBalaoMapaIt.zoomarBalaoMais();
+                if((contador == (levelsLiberados - 1)) && newLevelLiberado)
+                {
+                    btnBalaoMapaIt.ativarExclamacao();
+                }
                 yield return new WaitForSeconds(delay);
             }
         }
@@ -62,6 +69,10 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
     {
         GameObject go = EventSystem.current.currentSelectedGameObject;
         int indiceEscolhido = int.Parse(go.name);
+
+        btnsMapasBaloes[indiceEscolhido - 1].desativarExclamacao();
+        PlayerPrefsMapas.consumidoNovaLiberacaoLevelBalao();
+        
         Debug.Log("Indice escolhido " + indiceEscolhido);
         produtorDeEvento.produziuEvento(indiceEscolhido);
     }
