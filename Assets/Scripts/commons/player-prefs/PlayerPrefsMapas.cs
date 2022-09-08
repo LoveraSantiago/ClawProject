@@ -2,16 +2,22 @@ using UnityEngine;
 
 public class PlayerPrefsMapas 
 {    
-    private static readonly string LEVEL_LIBERADO = "level-liberado";
-    private static readonly string MAPA_NAVEGACAO = "mapa-naveg";
+    private static readonly string LEVEL_LIBERADO      = "level-liberado";
+    private static readonly string MAPA_NAVEGACAO      = "mapa-naveg";
     private static readonly string NEW_LEVEL_BTN_BALAO = "new-level-balao";
+    private static readonly string NEW_MAPA            = "new-mapa-naveg";
 
     private static int DESLIGADO = 0;
     private static int LIGADO = 1;
 
     public static int getIndiceMapaLiberado()//TODO ADICIONAR CRIPTOGRAFIA SEGURANCA
     {
-        return (getIndiceLevelLiberado() / 10) + 1;        
+        int indiceLevelLiberado = getIndiceLevelLiberado();
+        if(indiceLevelLiberado <= 10)
+        {
+            return 1;
+        }
+        return (indiceLevelLiberado/10) + 1;
     }
 
     public static MapaEntidade getIndiceNavegacaoMapa()
@@ -23,7 +29,7 @@ public class PlayerPrefsMapas
     public static int getIndiceLevelLiberado()
     {
         int indice = PlayerPrefs.GetInt(LEVEL_LIBERADO, 1);
-        //Debug.Log("Recuperando indice level " + indice);
+        Debug.Log("Recuperando indice level " + indice);
         return indice;
     }
 
@@ -32,9 +38,14 @@ public class PlayerPrefsMapas
         int indiceAtual = getIndiceLevelLiberado();
         if(indiceLevel > indiceAtual)
         {
-            //Debug.Log("Salvando indice level " + indiceLevel);
+            Debug.Log("Salvando indice level " + indiceLevel);
             PlayerPrefs.SetInt(NEW_LEVEL_BTN_BALAO, LIGADO);
             PlayerPrefs.SetInt(LEVEL_LIBERADO, indiceLevel);
+
+            if(indiceLevel % 10 == 1 && indiceLevel > 10)
+            {
+                PlayerPrefs.SetInt(NEW_MAPA, LIGADO);
+            }
         }
     }
 
@@ -52,5 +63,16 @@ public class PlayerPrefsMapas
     public static void consumidoNovaLiberacaoLevelBalao()
     {
         PlayerPrefs.SetInt(NEW_LEVEL_BTN_BALAO, DESLIGADO);
+    }
+
+    public static bool isNovaLiberacaoMapa()
+    {
+        int result = PlayerPrefs.GetInt(NEW_MAPA);
+        return result == LIGADO;
+    }
+
+    public static void consumidoNovaLiberacaoMapa()
+    {
+        PlayerPrefs.SetInt(NEW_MAPA, DESLIGADO);
     }
 }

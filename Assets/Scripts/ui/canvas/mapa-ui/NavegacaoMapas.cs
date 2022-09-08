@@ -21,12 +21,15 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
     {
         LevelMapDto levelMapDto = navegacaoDeArray.getItemIndiceAtual();
         produzirEvento(Direcao.CENTRALIZADA, levelMapDto);
+
     }    
 
     private void navegacaoEsquerda()
     {        
         LevelMapDto levelMapDto = navegacaoDeArray.getItemProximo();
         produzirEvento(Direcao.ESQUERDA, levelMapDto);        
+        PlayerPrefsMapas.consumidoNovaLiberacaoMapa();
+        botoesNavegacao.GoExclamacao.SetActive(false);
     }
 
     private void navegacaoDireita()
@@ -51,6 +54,10 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
         LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto();
         MapaEntidade mapaNavegacao = ContextoEstaticoUtils.loadMapaEntidade();
         navegacaoDeArray = new NavegacaoDeArray<LevelMapDto>(levelsMapDto, mapaNavegacao.id - 1);
+        if (PlayerPrefsMapas.isNovaLiberacaoMapa())
+        {
+            botoesNavegacao.GoExclamacao.SetActive(true);
+        }
     }
 
     ProdutorDeEvento<WrapperLevelMapDto> AcaoMapaNavegado.ProdutorEvento.getProdutorDeEvento()

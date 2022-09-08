@@ -41,7 +41,7 @@ public class FactoryMapaEntidade
 
             case MapaEnum.GELEIA:
                 return new MapaEntidade()
-                    .addInfo(6, "X")
+                    .addInfo(6, "DESERTO DE GELO")
                     .addPathSprite("geleia")
                     .addFornecedoresLevels(new FornecedorLevelsTestes(), new FrutasColetaveisLevelFornecedor());
 
