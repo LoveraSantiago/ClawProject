@@ -1,4 +1,4 @@
 public enum MapaEstadoEnum
 {
-    LIVRE, LOCKED, BLOCKED
+    LIVRE, ANDAMENTO, LOCKED, BLOCKED
 }

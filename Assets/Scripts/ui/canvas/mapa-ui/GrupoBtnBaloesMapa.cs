@@ -45,7 +45,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
 
     public IEnumerator coroutineZommarBaloes(WrapperLevelMapDto evento, float delay)
     {
-        if (evento.isAberto)
+        if (evento.isAberto || evento.isEmAndamento)
         {
             int levelsLiberados = evento.mapaEntidade.getIndiceLevelsLiberado();
             bool newLevelLiberado = PlayerPrefsMapas.isNovaLiberacaoLevelBalao();
@@ -55,7 +55,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
             {
                 BtnBalaoMapa btnBalaoMapaIt = btnsMapasBaloes[contador];
                 btnBalaoMapaIt.zoomarBalaoMais();
-                if((contador == (levelsLiberados - 1)) && newLevelLiberado)
+                if((contador == (levelsLiberados - 1)) && newLevelLiberado && evento.isEmAndamento)
                 {
                     btnBalaoMapaIt.ativarExclamacao();
                 }

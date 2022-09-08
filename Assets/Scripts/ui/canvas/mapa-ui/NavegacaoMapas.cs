@@ -21,7 +21,6 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
     {
         LevelMapDto levelMapDto = navegacaoDeArray.getItemIndiceAtual();
         produzirEvento(Direcao.CENTRALIZADA, levelMapDto);
-
     }    
 
     private void navegacaoEsquerda()
@@ -40,10 +39,13 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
 
     private void produzirEvento(Direcao direcao, LevelMapDto levelMapDto)
     {
-        bool penultimo = navegacaoDeArray.isIndiceAtualPenultimo();
-        bool ultimo = navegacaoDeArray.isIndiceAtualUltimo();
+        bool isAntePenultimo = navegacaoDeArray.isIndiceAtualAntepenultimo();
+        bool penultimo       = navegacaoDeArray.isIndiceAtualPenultimo();
+        bool ultimo          = navegacaoDeArray.isIndiceAtualUltimo();
         //Debug.Log("Penultimo " + penultimo + " Ultimo " + ultimo);
-        WrapperLevelMapDto wrapperMapLevelDto = FactoryWrapperLevelMapDto.factory(direcao, levelMapDto, penultimo, ultimo);
+
+        EstadoOrdemMapaDto estadoOrdem = new EstadoOrdemMapaDto(isAntePenultimo, penultimo, ultimo);        
+        WrapperLevelMapDto wrapperMapLevelDto = FactoryWrapperLevelMapDto.factory(direcao, levelMapDto, estadoOrdem);
         ContextoEstaticoUtils.configMapaEntidade(wrapperMapLevelDto.mapaEntidade);
         produtorDeEvento.produziuEvento(wrapperMapLevelDto);     
     }

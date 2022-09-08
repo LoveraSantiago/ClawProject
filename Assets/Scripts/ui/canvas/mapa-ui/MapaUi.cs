@@ -22,13 +22,13 @@ public class MapaUi
         if(evento.isDireita)
         {
             grupoBtnBaloes.dismissBotoesBaloes();
-            animacaMainMapa.navegarParaEsquerda(evento.isAberto);
+            animacaMainMapa.navegarParaEsquerda(evento.isAberto || evento.isEmAndamento);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
         }
         else if (evento.isEsquerda)
         {
             grupoBtnBaloes.dismissBotoesBaloes();
-            animacaMainMapa.navegarParaDireita(evento.isAberto);
+            animacaMainMapa.navegarParaDireita(evento.isAberto || evento.isEmAndamento);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
         }
         else if(evento.isCentralizado)
@@ -47,7 +47,7 @@ public class MapaUi
 
         levelMapaUiDto.ImgMapa.sprite = levelMapDto.SprMapa;
 
-        if (evento.isAberto)
+        if (evento.isAberto || evento.isEmAndamento)
         {
             levelMapaUiDto.ImgMapa.color = Color.white;
             levelMapaUiDto.ImgMapa.material = null;

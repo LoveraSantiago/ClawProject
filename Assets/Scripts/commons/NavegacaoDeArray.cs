@@ -84,4 +84,9 @@ public class NavegacaoDeArray<T>
     {
         return indiceAtual == array.Length - 2;
     }
+
+    public bool isIndiceAtualAntepenultimo()
+    {
+        return indiceAtual == array.Length - 3;
+    }
 }

@@ -9,9 +9,10 @@ public class WrapperLevelMapDto
     public bool isEsquerda     { get { return direcao == Direcao.ESQUERDA; } }
     public bool isDireita      { get { return direcao == Direcao.DIREITA; } }
 
-    public bool isAberto  { get { return mapaEstado == MapaEstadoEnum.LIVRE; } }
-    public bool isLocked  { get { return mapaEstado == MapaEstadoEnum.LOCKED; } }
-    public bool isBlocked { get { return mapaEstado == MapaEstadoEnum.BLOCKED; } }
+    public bool isAberto      { get { return mapaEstado == MapaEstadoEnum.LIVRE; } }
+    public bool isEmAndamento { get { return mapaEstado == MapaEstadoEnum.ANDAMENTO; } }
+    public bool isLocked      { get { return mapaEstado == MapaEstadoEnum.LOCKED; } }
+    public bool isBlocked     { get { return mapaEstado == MapaEstadoEnum.BLOCKED; } }
 
     public WrapperLevelMapDto()
     {

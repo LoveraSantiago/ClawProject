@@ -1,6 +1,6 @@
 public class FactoryWrapperLevelMapDto 
 {
-    public static WrapperLevelMapDto factory(Direcao direcao, LevelMapDto levelMapDto, bool penultimo, bool ultimo)
+    public static WrapperLevelMapDto factory(Direcao direcao, LevelMapDto levelMapDto, EstadoOrdemMapaDto estadoOrdem)
     {
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(levelMapDto.MapaEnum);        
 
@@ -8,18 +8,22 @@ public class FactoryWrapperLevelMapDto
                 .configDirecao(direcao)
                 .configMapaEntidade(mapaEntidade)
                 .configLevelMapDto(levelMapDto)
-                .configEstado(determinarMapaEstado(penultimo, ultimo));
+                .configEstado(determinarMapaEstado(estadoOrdem));
     }
 
-    private static MapaEstadoEnum determinarMapaEstado(bool penultimo, bool ultimo)
+    private static MapaEstadoEnum determinarMapaEstado(EstadoOrdemMapaDto estadoOrdem)
     {
-        if (penultimo)
+        if (estadoOrdem.isPenultimo)
         {
             return MapaEstadoEnum.LOCKED;
         }
-        else if (ultimo)
+        else if (estadoOrdem.isUltimo)
         {
             return MapaEstadoEnum.BLOCKED;
+        }
+        else if (estadoOrdem.isAntepenultimo)
+        {
+            return MapaEstadoEnum.ANDAMENTO;
         }
         else
         {
