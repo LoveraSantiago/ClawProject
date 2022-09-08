@@ -7,7 +7,9 @@ public class BalaoLevelBtnDto
 {
     [SerializeField] private Button btnLevel;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject goExclamacao;
 
     public Button BtnLevel { get { return btnLevel; } }
     public Animator Animator { get { return animator; } }
+    public GameObject GoExclamacao { get { return goExclamacao; } }
 }
