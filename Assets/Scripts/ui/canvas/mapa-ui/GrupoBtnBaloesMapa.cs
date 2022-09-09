@@ -73,7 +73,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
         btnsMapasBaloes[indiceEscolhido - 1].desativarExclamacao();
         PlayerPrefsMapas.consumidoNovaLiberacaoLevelBalao();
         
-        Debug.Log("Indice escolhido " + indiceEscolhido);
+        //Debug.Log("Indice escolhido " + indiceEscolhido);
         produtorDeEvento.produziuEvento(indiceEscolhido);
     }
 

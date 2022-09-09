@@ -14,7 +14,7 @@ public class PlayerPrefsMapas
     {
         int indiceLevelLiberado = getIndiceLevelLiberado();
         int resultado = (indiceLevelLiberado + 9) / 10;
-        Debug.Log("Resultado indice mapa liberado " + resultado);
+        //Debug.Log("Resultado indice mapa liberado " + resultado);
         return resultado;
     }
 
@@ -36,7 +36,7 @@ public class PlayerPrefsMapas
         int indiceAtual = getIndiceLevelLiberado();
         if(indiceLevel > indiceAtual)
         {
-            Debug.Log("Salvando indice level " + indiceLevel);
+            //Debug.Log("Salvando indice level " + indiceLevel);
             PlayerPrefs.SetInt(NEW_LEVEL_BTN_BALAO, LIGADO);
             PlayerPrefs.SetInt(LEVEL_LIBERADO, indiceLevel);
 
@@ -54,7 +54,7 @@ public class PlayerPrefsMapas
 
     public static bool isNovaLiberacaoLevelBalao()
     {
-        int result = PlayerPrefs.GetInt(NEW_LEVEL_BTN_BALAO);
+        int result = PlayerPrefs.GetInt(NEW_LEVEL_BTN_BALAO, 1);
         return result == LIGADO;
     }
 
