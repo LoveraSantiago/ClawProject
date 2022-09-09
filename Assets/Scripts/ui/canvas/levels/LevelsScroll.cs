@@ -22,7 +22,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
 
     public LevelsScroll(LevelsScrollDto levelsScrollDto)
     {
-        totalLevels = LevelHelper.getTotalLevelsDosMapasNormaisLiberados();
+        totalLevels = PlayerPrefsMapas.getIndiceLevelLiberado();
         this.levelsScrollDto = levelsScrollDto;
         produtorDeEvento = new ProdutorDeEvento<LevelItemDto>();
 
