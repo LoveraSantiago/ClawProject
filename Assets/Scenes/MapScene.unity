@@ -2384,6 +2384,7 @@ MonoBehaviour:
     btnStore: {fileID: 1513573892}
     btnPelucia: {fileID: 1246110284}
     btnConfig: {fileID: 592234356}
+    exclamacaoLevel: {fileID: 348724935}
   modalFaseDto:
     modalFase: {fileID: 1990500530}
     lblNivel: {fileID: 303498680}

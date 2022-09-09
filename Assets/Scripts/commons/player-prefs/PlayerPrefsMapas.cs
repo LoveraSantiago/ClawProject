@@ -5,6 +5,7 @@ public class PlayerPrefsMapas
     private static readonly string LEVEL_LIBERADO      = "level-liberado";
     private static readonly string MAPA_NAVEGACAO      = "mapa-naveg";
     private static readonly string NEW_LEVEL_BTN_BALAO = "new-level-balao";
+    private static readonly string NEW_LEVEL_LEVEL     = "new-level-level";
     private static readonly string NEW_MAPA            = "new-mapa-naveg";
 
     private static int DESLIGADO = 0;
@@ -38,6 +39,7 @@ public class PlayerPrefsMapas
         {
             //Debug.Log("Salvando indice level " + indiceLevel);
             PlayerPrefs.SetInt(NEW_LEVEL_BTN_BALAO, LIGADO);
+            PlayerPrefs.SetInt(NEW_LEVEL_LEVEL, LIGADO);
             PlayerPrefs.SetInt(LEVEL_LIBERADO, indiceLevel);
 
             if(indiceLevel % 10 == 1 && indiceLevel > 10)
@@ -54,7 +56,7 @@ public class PlayerPrefsMapas
 
     public static bool isNovaLiberacaoLevelBalao()
     {
-        int result = PlayerPrefs.GetInt(NEW_LEVEL_BTN_BALAO, 1);
+        int result = PlayerPrefs.GetInt(NEW_LEVEL_BTN_BALAO, LIGADO);
         return result == LIGADO;
     }
 
@@ -72,5 +74,16 @@ public class PlayerPrefsMapas
     public static void consumidoNovaLiberacaoMapa()
     {
         PlayerPrefs.SetInt(NEW_MAPA, DESLIGADO);
+    }
+
+    public static bool isNovaLiberacaoLevel()
+    {
+        int result = PlayerPrefs.GetInt(NEW_LEVEL_LEVEL, LIGADO);
+        return result == LIGADO; 
+    }
+
+    public static void consumidoNovaLiberacaoLevel()
+    {
+        PlayerPrefs.SetInt(NEW_LEVEL_LEVEL, DESLIGADO);
     }
 }
