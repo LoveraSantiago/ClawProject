@@ -50,7 +50,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
             int levelsLiberados = evento.mapaEntidade.getIndiceLevelsLiberado();
             bool newLevelLiberado = PlayerPrefsMapas.isNovaLiberacaoLevelBalao();
 
-            Debug.Log("Qtd Levels Baloes Liberados " + levelsLiberados);
+            //Debug.Log("Qtd Levels Baloes Liberados " + levelsLiberados);
             for (int contador = 0; contador < levelsLiberados; contador++)
             {
                 BtnBalaoMapa btnBalaoMapaIt = btnsMapasBaloes[contador];
