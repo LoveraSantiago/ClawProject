@@ -6,7 +6,7 @@ public class ContextoEstaticoLevels
 
     public void receberIndiceLevelAtual(int indiceLevelAtual)
     {
-        Debug.Log("Level recebendo indice " + indiceLevelAtual);
+        //Debug.Log("Level recebendo indice " + indiceLevelAtual);
         this.indiceLevelAtual = indiceLevelAtual;
     }
 
