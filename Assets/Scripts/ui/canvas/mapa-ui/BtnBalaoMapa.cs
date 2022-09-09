@@ -16,7 +16,8 @@ public class BtnBalaoMapa
 
     public void colocarNaPosicao(Vector2 posicao)
     {
-        balaoLevelDto.BtnLevel.transform.localPosition = posicao;        
+        balaoLevelDto.BtnLevel.transform.localPosition = posicao;
+        desativarExclamacao();
     }
 
     public void zoomarBalaoMais()

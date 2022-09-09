@@ -43,10 +43,12 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
         bool isAntePenultimo = navegacaoDeArray.isIndiceAtualAntepenultimo();
         bool penultimo       = navegacaoDeArray.isIndiceAtualPenultimo();
         bool ultimo          = navegacaoDeArray.isIndiceAtualUltimo();
-        //Debug.Log("Penultimo " + penultimo + " Ultimo " + ultimo);
+        Debug.Log("antepenultimo " + isAntePenultimo +  " penultimo " + penultimo + " Ultimo " + ultimo);
 
         EstadoOrdemMapaDto estadoOrdem = new EstadoOrdemMapaDto(isAntePenultimo, penultimo, ultimo);        
         wrapperMapLevelAtual = FactoryWrapperLevelMapDto.factory(direcao, levelMapDto, estadoOrdem);
+
+        Debug.Log("estado " + wrapperMapLevelAtual.mapaEstado);
         ContextoEstaticoUtils.configMapaEntidade(wrapperMapLevelAtual.mapaEntidade);
         produtorDeEvento.produziuEvento(wrapperMapLevelAtual);     
     }

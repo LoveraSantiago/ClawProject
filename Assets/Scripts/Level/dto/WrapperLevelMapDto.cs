@@ -1,6 +1,6 @@
 public class WrapperLevelMapDto 
 {
-    private MapaEstadoEnum mapaEstado;
+    public MapaEstadoEnum mapaEstado { get; private set; }
     public Direcao direcao { get; private set; }
     public MapaEntidade mapaEntidade { get; private set; }
     public LevelMapDto levelMapDto { get; private set; }
