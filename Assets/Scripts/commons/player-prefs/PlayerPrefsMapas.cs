@@ -13,11 +13,9 @@ public class PlayerPrefsMapas
     public static int getIndiceMapaLiberado()//TODO ADICIONAR CRIPTOGRAFIA SEGURANCA
     {
         int indiceLevelLiberado = getIndiceLevelLiberado();
-        if(indiceLevelLiberado <= 10)
-        {
-            return 1;
-        }
-        return (indiceLevelLiberado/10) + 1;
+        int resultado = (indiceLevelLiberado + 9) / 10;
+        Debug.Log("Resultado indice mapa liberado " + resultado);
+        return resultado;
     }
 
     public static MapaEntidade getIndiceNavegacaoMapa()
@@ -29,7 +27,7 @@ public class PlayerPrefsMapas
     public static int getIndiceLevelLiberado()
     {
         int indice = PlayerPrefs.GetInt(LEVEL_LIBERADO, 1);
-        Debug.Log("Recuperando indice level " + indice);
+        //Debug.Log("Recuperando indice level " + indice);
         return indice;
     }
 
