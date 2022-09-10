@@ -12,8 +12,8 @@ public class FactoryMapaEntidade
                 return new MapaEntidade()
                     .addInfo(1, "PARQUE DE DIVERSÕES")
                     .addPathSprite("frutas")
-                    //.addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
-                    .addFornecedoresLevels(new FornecedorLevelsTestes(), new FrutasColetaveisLevelFornecedor());
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes(), new FrutasColetaveisLevelFornecedor());
+            //.addFornecedoresLevels(new FornecedorLevelsTestes(), new FrutasColetaveisLevelFornecedor());
 
             case MapaEnum.DINO:
                 return new MapaEntidade()

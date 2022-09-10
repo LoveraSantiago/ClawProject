@@ -78,6 +78,12 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
         levelsScrollDto.RTransformScroll.offsetMin += new Vector2(0, -yAcrescimo);
     }
 
+    private bool isTotalLevelsMenorQueScroll()
+    {
+        Debug.Log("Total levels " + totalLevels + " Lenght " + levelsScrollDto.ItensLevelDto.Length);
+        return totalLevels <= levelsScrollDto.ItensLevelDto.Length;
+    }
+
     private void carregarReferenciasPosicoes()
     {
         posYReferenciaBaixo = levelsScrollDto.RTransformRefBaixo.position.y;        
@@ -110,13 +116,18 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
     }
 
     private void popularItensLevels()
-    {
+    {        
         for(int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
         {
             ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];            
             itemLevelDtoIt.ImgMaquina.material = materialMaquinas[contadorItensLevels];
-            popularItemLevel(contadorItensLevels, itemLevelDtoIt, contadorItensLevels);            
-            contadorBaixoLevel++;            
+            popularItemLevel(contadorItensLevels, itemLevelDtoIt, contadorItensLevels);    
+            contadorBaixoLevel++;
+
+            if (isTotalLevelsMenorQueScroll() && ((contadorItensLevels + 1) > totalLevels))
+            {
+                itemLevelDtoIt.RItem.gameObject.SetActive(false);
+            }
         }
         //Debug.Log("Populado contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
     }
