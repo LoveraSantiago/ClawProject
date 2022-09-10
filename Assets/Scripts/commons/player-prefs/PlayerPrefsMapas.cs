@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerPrefsMapas 
 {    
@@ -42,8 +43,7 @@ public class PlayerPrefsMapas
             //Debug.Log("Salvando indice level " + indiceLevel);
             PlayerPrefs.SetInt(NEW_LEVEL_BTN_BALAO, LIGADO);
             PlayerPrefs.SetInt(NEW_LEVEL_LEVEL, LIGADO);
-            PlayerPrefs.SetInt(LEVEL_LIBERADO, indiceLevel);
-            PlayerPrefs.SetInt(NEW_LEVEL_ESPECIFICO, indiceLevel);
+            PlayerPrefs.SetInt(LEVEL_LIBERADO, indiceLevel);            
 
             if(indiceLevel % 10 == 1 && indiceLevel > 10)
             {
@@ -90,13 +90,49 @@ public class PlayerPrefsMapas
         PlayerPrefs.SetInt(NEW_LEVEL_LEVEL, DESLIGADO);
     }
 
-    public static int getNovaLiberacaoLevelEspecifico()
+    private static void salvarNovaLiberacaoLevelEspecifico(int indiceLevel)
     {
-        return PlayerPrefs.GetInt(NEW_LEVEL_ESPECIFICO, -1);
+        int[] arrayLevels = recuperarLiberacaoLevelsEspecificos();       
+        List<int> listaOrdenada = new List<int>(arrayLevels);
+        listaOrdenada.Add(indiceLevel);
+        listaOrdenada.Sort();
+
+        salvarListaLiveracaoLevelEspecifico(listaOrdenada);        
     }
 
-    public static void consumidoNovaLiberacaoLevelEspecifico()
+    public static int[] getNovaLiberacaoLevelEspecifico()
     {
-        PlayerPrefs.DeleteKey(NEW_LEVEL_ESPECIFICO);
+        return recuperarLiberacaoLevelsEspecificos();
+    }
+
+    public static int[] consumidoNovaLiberacaoLevelEspecifico(int indiceConsumido)
+    {
+        int[] arrayLevels = recuperarLiberacaoLevelsEspecificos();
+        List<int> listaOrdenada = new List<int>(arrayLevels);
+        listaOrdenada.Sort();
+        listaOrdenada.Remove(indiceConsumido);
+
+        salvarListaLiveracaoLevelEspecifico(listaOrdenada);
+        return listaOrdenada.ToArray();
+    }
+
+    private static int[] recuperarLiberacaoLevelsEspecificos()
+    {        
+        string arrayString = PlayerPrefs.GetString(NEW_LEVEL_ESPECIFICO);
+        if (arrayString == null)
+        {
+            return new int[0]{};
+        }
+        else
+        {
+            return JsonUtility.FromJson<int[]>(arrayString);
+        }        
+    }
+
+    private static void salvarListaLiveracaoLevelEspecifico(List<int> listaOrdenada)
+    {
+        int[] arrayLevels = listaOrdenada.ToArray();
+        string arrayString = JsonUtility.ToJson(arrayLevels);
+        PlayerPrefs.SetString(NEW_LEVEL_ESPECIFICO, arrayString);
     }
 }

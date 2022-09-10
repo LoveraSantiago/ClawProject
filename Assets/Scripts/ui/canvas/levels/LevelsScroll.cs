@@ -11,8 +11,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
     private float posYReferenciaCima;
 
     private int contadorBaixoLevel;
-    private int contadorCimaLevel;
-    private int exclamacaoLevel;
+    private int contadorCimaLevel;    
 
     private ItemLevelDto itemLevelCima;
     private ItemLevelDto itemLevelBaixo;
