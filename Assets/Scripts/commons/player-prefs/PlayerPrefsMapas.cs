@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class PlayerPrefsMapas 
 {    
-    private static readonly string LEVEL_LIBERADO      = "level-liberado";
-    private static readonly string MAPA_NAVEGACAO      = "mapa-naveg";
-    private static readonly string NEW_LEVEL_BTN_BALAO = "new-level-balao";
-    private static readonly string NEW_LEVEL_LEVEL     = "new-level-level";
-    private static readonly string NEW_MAPA            = "new-mapa-naveg";
+    private static readonly string LEVEL_LIBERADO       = "level-liberado";
+    private static readonly string MAPA_NAVEGACAO       = "mapa-naveg";
+    private static readonly string NEW_LEVEL_BTN_BALAO  = "new-level-balao";
+    private static readonly string NEW_LEVEL_LEVEL      = "new-level-level";
+    private static readonly string NEW_LEVEL_ESPECIFICO = "new-level-especifico";
+    private static readonly string NEW_MAPA             = "new-mapa-naveg";
 
     private static int DESLIGADO = 0;
     private static int LIGADO = 1;
@@ -42,6 +43,7 @@ public class PlayerPrefsMapas
             PlayerPrefs.SetInt(NEW_LEVEL_BTN_BALAO, LIGADO);
             PlayerPrefs.SetInt(NEW_LEVEL_LEVEL, LIGADO);
             PlayerPrefs.SetInt(LEVEL_LIBERADO, indiceLevel);
+            PlayerPrefs.SetInt(NEW_LEVEL_ESPECIFICO, indiceLevel);
 
             if(indiceLevel % 10 == 1 && indiceLevel > 10)
             {
@@ -86,5 +88,15 @@ public class PlayerPrefsMapas
     public static void consumidoNovaLiberacaoLevel()
     {
         PlayerPrefs.SetInt(NEW_LEVEL_LEVEL, DESLIGADO);
+    }
+
+    public static int getNovaLiberacaoLevelEspecifico()
+    {
+        return PlayerPrefs.GetInt(NEW_LEVEL_ESPECIFICO, -1);
+    }
+
+    public static void consumidoNovaLiberacaoLevelEspecifico()
+    {
+        PlayerPrefs.DeleteKey(NEW_LEVEL_ESPECIFICO);
     }
 }

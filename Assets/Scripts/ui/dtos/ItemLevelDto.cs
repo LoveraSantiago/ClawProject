@@ -11,6 +11,7 @@ public class ItemLevelDto
     [SerializeField] private Button btnLinha;
     [Space(3)]
     [SerializeField] private Image imgMaquina;
+    [SerializeField] private GameObject exclamacao;
     [Space(3)]
     [SerializeField] private TextMeshProUGUI lblLevel;
     [SerializeField] private TextMeshProUGUI lblMap;
@@ -18,7 +19,10 @@ public class ItemLevelDto
 
     public RectTransform RItem { get { return rItem; } }
     public Button BtnLinha { get { return btnLinha; } }
+
     public Image ImgMaquina { get { return imgMaquina; } }
+    public GameObject Exclamacao { get { return exclamacao; } }
+
     public TextMeshProUGUI LblLevel { get { return lblLevel; } }
     public TextMeshProUGUI LblMap { get { return lblMap; } }
     public TextMeshProUGUI LblMaquina { get { return lblMaquina; } }
