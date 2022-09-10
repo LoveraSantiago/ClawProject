@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
                             AcaoLevelFromScrollSelecao.ProdutorEvento  
 {
     private int totalLevels;
     private Material[] materialMaquinas;
+    private List<int> levelsLiberados;
 
     private PropsCimaBaixoLevelsSCroll props;   
     private LevelsScrollDto levelsScrollDto;
@@ -24,6 +26,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
         carregarMateriais();
         calcularTamanhoScroll();
         carregarReferenciasPosicoes();
+        carregarLevelsLiberados();
         popularItensLevels();
         bindarBtnsLinha();
 
@@ -119,11 +122,18 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
             ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];            
             itemLevelDtoIt.ImgMaquina.material = materialMaquinas[contadorItensLevels];
             popularItemLevel(contadorItensLevels, itemLevelDtoIt, contadorItensLevels);
-            props.incrementarContadorBaixo();            
+            props.incrementarContadorBaixo();
+            itemLevelDtoIt.Exclamacao.SetActive(false);
 
-            if (isTotalLevelsMenorQueScroll() && ((contadorItensLevels + 1) > totalLevels))
+            int indiceItemLevels = contadorItensLevels + 1;
+            if (isTotalLevelsMenorQueScroll() && (indiceItemLevels > totalLevels))
             {
                 itemLevelDtoIt.RItem.gameObject.SetActive(false);
+            }
+
+            if (levelsLiberados.Contains(indiceItemLevels))
+            {
+                itemLevelDtoIt.Exclamacao.SetActive(true);
             }
         }
         //Debug.Log("Populado contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
@@ -176,6 +186,12 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
 
         LevelItemDto levelItem = new LevelItemDto(posicaoItem, materialCor);
         produtorDeEvento.produziuEvento(levelItem);
+    }
+
+    private void carregarLevelsLiberados()
+    {
+        int[] levels = PlayerPrefsMapas.getNovaLiberacaoLevelEspecifico();
+        levelsLiberados = new List<int>(levels);        
     }
 
     ProdutorDeEvento<LevelItemDto> AcaoLevelFromScrollSelecao.ProdutorEvento.getProdutorDeEvento()

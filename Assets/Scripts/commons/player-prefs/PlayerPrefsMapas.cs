@@ -11,7 +11,7 @@ public class PlayerPrefsMapas
     private static readonly string NEW_MAPA             = "new-mapa-naveg";
 
     private static int DESLIGADO = 0;
-    private static int LIGADO = 1;
+    private static int LIGADO    = 1;
 
     public static int getIndiceMapaLiberado()//TODO ADICIONAR CRIPTOGRAFIA SEGURANCA
     {
@@ -43,9 +43,10 @@ public class PlayerPrefsMapas
             //Debug.Log("Salvando indice level " + indiceLevel);
             PlayerPrefs.SetInt(NEW_LEVEL_BTN_BALAO, LIGADO);
             PlayerPrefs.SetInt(NEW_LEVEL_LEVEL, LIGADO);
-            PlayerPrefs.SetInt(LEVEL_LIBERADO, indiceLevel);            
+            PlayerPrefs.SetInt(LEVEL_LIBERADO, indiceLevel);
+            salvarNovaLiberacaoLevelEspecifico(indiceLevel);
 
-            if(indiceLevel % 10 == 1 && indiceLevel > 10)
+            if (indiceLevel % 10 == 1 && indiceLevel > 10)
             {
                 PlayerPrefs.SetInt(NEW_MAPA, LIGADO);
             }
@@ -97,7 +98,7 @@ public class PlayerPrefsMapas
         listaOrdenada.Add(indiceLevel);
         listaOrdenada.Sort();
 
-        salvarListaLiveracaoLevelEspecifico(listaOrdenada);        
+        salvarListaLiberacaoLevelEspecifico(listaOrdenada);        
     }
 
     public static int[] getNovaLiberacaoLevelEspecifico()
@@ -112,27 +113,42 @@ public class PlayerPrefsMapas
         listaOrdenada.Sort();
         listaOrdenada.Remove(indiceConsumido);
 
-        salvarListaLiveracaoLevelEspecifico(listaOrdenada);
+        salvarListaLiberacaoLevelEspecifico(listaOrdenada);
         return listaOrdenada.ToArray();
     }
 
     private static int[] recuperarLiberacaoLevelsEspecificos()
     {        
         string arrayString = PlayerPrefs.GetString(NEW_LEVEL_ESPECIFICO);
-        if (arrayString == null)
+        if (arrayString == null || "".Equals(arrayString))
         {
-            return new int[0]{};
-        }
-        else
-        {
-            return JsonUtility.FromJson<int[]>(arrayString);
+            List<int> listaInicial = new List<int>();
+            listaInicial.Add(1);
+
+            salvarListaLiberacaoLevelEspecifico(listaInicial);
+            arrayString = PlayerPrefs.GetString(NEW_LEVEL_ESPECIFICO); 
         }        
+        WrapperArray wrapper= JsonUtility.FromJson<WrapperArray>(arrayString);
+        if(wrapper.array == null)
+        {
+            return new int[0] { };
+        }
+        return wrapper.array;                
     }
 
-    private static void salvarListaLiveracaoLevelEspecifico(List<int> listaOrdenada)
+    private static void salvarListaLiberacaoLevelEspecifico(List<int> listaOrdenada)
     {
         int[] arrayLevels = listaOrdenada.ToArray();
-        string arrayString = JsonUtility.ToJson(arrayLevels);
+        WrapperArray wrapper = new WrapperArray();
+        wrapper.array = arrayLevels;
+
+        string arrayString = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString(NEW_LEVEL_ESPECIFICO, arrayString);
+    }
+
+
+    private class WrapperArray
+    {
+        public int[] array;
     }
 }
