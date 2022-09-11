@@ -6,7 +6,6 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
                             AcaoLevelFromScrollSelecao.ProdutorEvento  
 {
     private int totalLevels;
-    private Material[] materialMaquinas;
     private List<int> levelsLiberados;
 
     private PropsCimaBaixoScrollManager props;   
@@ -22,7 +21,6 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         levelScroll = new LevelScroll(levelsScrollDto);
         produtorDeEvento = new ProdutorDeEvento<LevelItemScrollSelecaoDto>();
 
-        carregarMateriais();
         calcularTamanhoScroll();
         carregarReferenciasPosicoes();
         carregarLevelsLiberados();
@@ -57,16 +55,6 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
             reposicionarLevelItemParaPrimeiraPosicao(levelScroll);
             props.decrementarContadorBaixo();
             //Debug.Log("movimentarParaCima ACIONADO contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
-        }
-    }
-
-    private void carregarMateriais()
-    {
-        int qtdItens = levelScroll.getQtdItens();
-        materialMaquinas = new Material[qtdItens];
-        for(int contador = 0; contador < qtdItens; contador++)
-        {
-            materialMaquinas[contador] = MaterialMiniMaquina.getNewMaterial();
         }
     }
 
@@ -121,7 +109,6 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         for(int contadorItensLevels = 0; contadorItensLevels < levelScroll.getQtdItens(); contadorItensLevels++)
         {
             ItemLevelScroll itemLevelIt = levelScroll.getItemLevel(contadorItensLevels);
-            itemLevelIt.setMaterial(materialMaquinas[contadorItensLevels]);
             popularItemLevel(contadorItensLevels, itemLevelIt, contadorItensLevels);
             props.incrementarContadorBaixo();            
 
@@ -156,13 +143,13 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         string levelName = level.getLevelName();
         itemLevel.addLabels(indiceLevel, levelName, mapaEntidade.title, level.getMaquinaNome());
         itemLevel.desligarExclamacao();
+        itemLevel.colorirImgMaquina(3, level.getDicionarioDeCores());
 
         if (levelsLiberados.BinarySearch(indiceLevel) >= 0)
         {
             itemLevel.ligarExclamacao();
         }
 
-        MaterialMiniMaquina.addCores(3, materialMaquinas[indiceMaterialMaquina], level.getDicionarioDeCores());
         //Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
     }
 
@@ -174,7 +161,6 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         ItemLevelScroll itemLevel = levelScroll.getItemLevel(indiceItem);
 
         Vector3 posicaoItem = itemLevel.getPosicaoImgMaquina();
-        Material materialCor = materialMaquinas[indiceItem];
 
         if (itemLevel.isExclamacaoLigado)
         {
@@ -186,7 +172,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         levelScroll.ligarUltimaImgMaquina();
         levelScroll.atualizarItemAtual(indiceItem);
 
-        LevelItemScrollSelecaoDto levelItem = new LevelItemScrollSelecaoDto(posicaoItem, materialCor);
+        LevelItemScrollSelecaoDto levelItem = new LevelItemScrollSelecaoDto(posicaoItem, itemLevel.material);
         produtorDeEvento.produziuEvento(levelItem);
     }
 

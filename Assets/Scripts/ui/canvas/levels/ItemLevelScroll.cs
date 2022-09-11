@@ -1,14 +1,19 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ItemLevelScroll 
 {
     public int indiceLevel { get; private set; }
     public bool isExclamacaoLigado { get; private set; }
+    public Material material { get; private set; }
+
     private ItemLevelDto itemLevelDto;
 
     public ItemLevelScroll(ItemLevelDto itemLevelDto)
     {
         this.itemLevelDto = itemLevelDto;
+        material = MaterialMiniMaquina.getNewMaterial();
+        setMaterial(material);
     }
 
     public string getNomeItem()
@@ -36,9 +41,14 @@ public class ItemLevelScroll
         return itemLevelDto.ImgMaquina.transform.position;
     }
 
-    public void setMaterial(Material material)
+    private void setMaterial(Material material)
     {
         itemLevelDto.ImgMaquina.material = material;
+    }
+
+    public void colorirImgMaquina(int numeroEstrelas, Dictionary<string, string> cores)
+    {
+        MaterialMiniMaquina.addCores(numeroEstrelas, material, cores);
     }
 
     public void desligar()
