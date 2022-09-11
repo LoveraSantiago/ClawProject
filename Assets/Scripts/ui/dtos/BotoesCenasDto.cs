@@ -12,6 +12,7 @@ public class BotoesCenasDto
     [SerializeField] private Button btnConfig;
     [Space(5)]
     [SerializeField] private GameObject exclamacaoLevel;
+    [SerializeField] private GameObject exclamacaoColetavel;
 
     public Button BtnCards { get { return btnCards; } }
     public Button BtnScore { get { return btnScore; } }
@@ -20,4 +21,5 @@ public class BotoesCenasDto
     public Button BtnConfig { get { return btnConfig; } }
 
     public GameObject ExclamacaoLevel { get { return exclamacaoLevel; } }
+    public GameObject ExclamacaoColetavel { get { return exclamacaoColetavel; } }
 }
