@@ -35,7 +35,7 @@ public class MapaEntidade
         return "sprites/coletaveis/" + pathSprites + "/";
     }    
 
-    public AbstractLevel getLevel(int indice)
+    public AbstractLevel getLevelByIndiceDezena(int indice)
     {
         if(levelFornecedor != null)
         {
@@ -44,6 +44,12 @@ public class MapaEntidade
             return level;
         }
         return null;
+    }
+
+    public AbstractLevel getLevelByIndiceGeral(int indice)
+    {
+        int indiceLevel = (indice + 1) % 11;
+        return getLevelByIndiceDezena(indiceLevel);
     }
 
     public int getQtdLevels()
@@ -70,7 +76,7 @@ public class MapaEntidade
         return maxLevelLiberado;         
     }
 
-    public AbstractLevel getLevel(ColetavelEntidade coletavelEntidade)
+    public AbstractLevel getLevelByColetavelEntidade(ColetavelEntidade coletavelEntidade)
     {
         return levelColetavelTemporarioFornecedor.getLevel(coletavelEntidade);
     }

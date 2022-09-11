@@ -31,7 +31,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
     private void gotoScenePupPratica()
     {
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.POWERUP);
-        AbstractLevel level = mapaEntidade.getLevel(1);
+        AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(1);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
 
         abrirCenaOuModal(0, 0);
@@ -40,7 +40,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
     private void gotoScenePupCacaNiquelIndividual()
     {
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.CACANIQUEL);
-        AbstractLevel level = mapaEntidade.getLevel(2);
+        AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(2);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
 
         PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePupSelecionado);
@@ -51,7 +51,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
     private void gotoScenePupCacaNiquelGeral()
     {
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.CACANIQUEL);
-        AbstractLevel level = mapaEntidade.getLevel(1);
+        AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(1);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
         
         abrirCenaOuModal(2, 1);

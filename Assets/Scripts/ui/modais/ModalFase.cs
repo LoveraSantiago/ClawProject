@@ -11,7 +11,7 @@ public class ModalFase
 
     public void ligar(MapaEntidade mapaEntidade, int indiceLevel)
     {
-        AbstractLevel level = mapaEntidade.getLevel(indiceLevel);
+        AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(indiceLevel);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
 
 

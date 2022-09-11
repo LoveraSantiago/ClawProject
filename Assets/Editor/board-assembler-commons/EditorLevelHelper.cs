@@ -35,7 +35,7 @@ public class EditorLevelHelper
         List<string> listaDeNomes = new List<string>(listaEmpty);
         for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
         {
-            AbstractLevel levelIt = mapaEntidade.getLevel(contadorLevels);
+            AbstractLevel levelIt = mapaEntidade.getLevelByIndiceDezena(contadorLevels);
             listaDeNomes.Add(levelIt.getLevelName());           
         }
         return listaDeNomes;
@@ -46,7 +46,7 @@ public class EditorLevelHelper
         List<string> listaDeNomes = new List<string>(listaEmpty);
         for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
         {
-            AbstractLevel levelIt = mapaEntidade.getLevel(contadorLevels);
+            AbstractLevel levelIt = mapaEntidade.getLevelByIndiceDezena(contadorLevels);
 
             if (!LevelUtils.isObstaculoLevel(levelIt))
             {
@@ -61,7 +61,7 @@ public class EditorLevelHelper
         List<string> listaDeNomes = new List<string>(listaEmpty);
         for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
         {
-            AbstractLevel levelIt = mapaEntidade.getLevel(contadorLevels);
+            AbstractLevel levelIt = mapaEntidade.getLevelByIndiceDezena(contadorLevels);
 
             if (LevelUtils.isElevadorLevel(levelIt))
             {
@@ -76,7 +76,7 @@ public class EditorLevelHelper
         List<string> listaDeNomes = new List<string>(listaEmpty);
         for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
         {
-            AbstractLevel levelIt = mapaEntidade.getLevel(contadorLevels);
+            AbstractLevel levelIt = mapaEntidade.getLevelByIndiceDezena(contadorLevels);
 
             if (LevelUtils.isObstaculoLevel(levelIt))
             {
@@ -91,7 +91,7 @@ public class EditorLevelHelper
         MapaEntidade mapaEntidade = mapasEntidadesPorNomes[nomeMapaEntidade];
         for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
         {
-            AbstractLevel levelIt = mapaEntidade.getLevel(contadorLevels);
+            AbstractLevel levelIt = mapaEntidade.getLevelByIndiceDezena(contadorLevels);
             if (levelIt.getLevelName().Equals(nomeLevel))
             {
                 return levelIt;

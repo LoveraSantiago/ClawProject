@@ -45,7 +45,7 @@ public class ContextoEstaticoUtils
             mapaEntidade = HelperMapaEntidade.getMapaEntidadeByIndice(indiceMapa);
             logInfoMapaEntidade(indiceMapa);
 
-            level = mapaEntidade.getLevel(indiceLevel);
+            level = mapaEntidade.getLevelByIndiceDezena(indiceLevel);
             logInfoLevel(indiceLevel);
         }        
         return level;

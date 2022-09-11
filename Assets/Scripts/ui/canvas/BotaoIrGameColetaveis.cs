@@ -21,7 +21,7 @@ public class BotaoIrGameColetaveis
             PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
 
             MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(coletavelEntidade.mapaEnum);
-            AbstractLevel level = mapaEntidade.getLevel(coletavelEntidade);
+            AbstractLevel level = mapaEntidade.getLevelByColetavelEntidade(coletavelEntidade);
             ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);            
             
             PlayerPrefsColetaveis.salvarNavegacaoColetavel(coletavelEntidade.id);

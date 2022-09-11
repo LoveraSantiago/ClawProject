@@ -18,4 +18,12 @@ public class HelperMapaEntidade
         MapaEnum mapaEnum = Mapas.getMapaTodosEnumPeloIndice(indice);
         return getMapaEntidadeByMapaEnum(mapaEnum);
     }
+
+    public static MapaEntidade getMapaNormalByIndicesTotasDeLevels(int indice)
+    {
+        int indiceMapaEntidade = (indice) / 10;
+        MapaEnum mapaEnum = Mapas.getMapaNormalEnumPeloIndice(indiceMapaEntidade);
+        MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
+        return mapaEntidade;
+    }
 }
