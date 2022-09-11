@@ -31,8 +31,8 @@ public class PlayerPrefsMapas
     {
         int indice = PlayerPrefs.GetInt(LEVEL_LIBERADO, 1);
         //Debug.Log("Recuperando indice level " + indice);
-        //return indice;
-        return 8; //PARA TESTES DIRETO NO LEVEL DE FASES
+        return indice;
+        //return 8; //PARA TESTES DIRETO NO LEVEL DE FASES
     }
 
     public static void salvarIndiceLevelLiberado(int indiceLevel)
@@ -145,7 +145,6 @@ public class PlayerPrefsMapas
         string arrayString = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString(NEW_LEVEL_ESPECIFICO, arrayString);
     }
-
 
     private class WrapperArray
     {
