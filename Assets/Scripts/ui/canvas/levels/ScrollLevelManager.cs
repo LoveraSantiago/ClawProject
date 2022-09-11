@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
-public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
+public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
                             AcaoLevelFromScrollSelecao.ProdutorEvento  
 {
     private int totalLevels;
@@ -15,7 +15,7 @@ public class LevelsScroll : ScrollMovimentador<LevelsScrollDto>,
     private GameObject goImgMaquina;
     private ProdutorDeEvento<LevelItemDto> produtorDeEvento;
 
-    public LevelsScroll(LevelsScrollDto levelsScrollDto)
+    public ScrollLevelManager(LevelsScrollDto levelsScrollDto)
     {
         totalLevels = PlayerPrefsMapas.getIndiceLevelLiberado();
         props = new PropsCimaBaixoLevelsSCroll();

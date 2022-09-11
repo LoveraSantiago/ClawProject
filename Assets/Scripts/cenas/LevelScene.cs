@@ -15,7 +15,7 @@ public class LevelScene : MonoBehaviour,
     [Space(5)]
     [SerializeField] private GameObject prefabMateriais;    
 
-    private LevelsScroll levelsScroll;
+    private ScrollLevelManager scrollManager;
 
     void Start()
     {
@@ -23,11 +23,11 @@ public class LevelScene : MonoBehaviour,
         MateriaisUtils.configurar(prefabMateriais);
         btnBack.onClick.AddListener(() => voltar());
 
-        levelsScroll = new LevelsScroll(levelsScrollDto);
-        scrollRect.onValueChanged.AddListener((pos) => levelsScroll.movimentado(pos, levelsScrollDto));
+        scrollManager = new ScrollLevelManager(levelsScrollDto);
+        scrollRect.onValueChanged.AddListener((pos) => scrollManager.movimentado(pos, levelsScrollDto));
 
         new AcaoLevelFromScrollSelecao()
-            .configurarProdutor(levelsScroll)
+            .configurarProdutor(scrollManager)
             .adicionarConsumidor(this);
     }
     
