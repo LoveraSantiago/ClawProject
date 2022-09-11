@@ -176,6 +176,12 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         Vector3 posicaoItem = itemLevel.getPosicaoImgMaquina();
         Material materialCor = materialMaquinas[indiceItem];
 
+        if (itemLevel.isExclamacaoLigado)
+        {
+            itemLevel.desligarExclamacao();
+            PlayerPrefsMapas.consumidoNovaLiberacaoLevelEspecifico(itemLevel.indiceLevel);
+        }
+
         itemLevel.desligarImgMaquina();
         levelScroll.ligarUltimaImgMaquina();
         levelScroll.atualizarItemAtual(indiceItem);

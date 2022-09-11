@@ -31,8 +31,8 @@ public class PlayerPrefsMapas
     {
         int indice = PlayerPrefs.GetInt(LEVEL_LIBERADO, 1);
         //Debug.Log("Recuperando indice level " + indice);
-        //return indice;
-        return 9; //PARA TESTES DIRETO NO LEVEL DE FASES
+        return indice;
+        //return 9; //PARA TESTES DIRETO NO LEVEL DE FASES
     }
 
     public static void salvarIndiceLevelLiberado(int indiceLevel)

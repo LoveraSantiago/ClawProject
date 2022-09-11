@@ -3,6 +3,7 @@ using UnityEngine;
 public class ItemLevelScroll 
 {
     public int indiceLevel { get; private set; }
+    public bool isExclamacaoLigado { get; private set; }
     private ItemLevelDto itemLevelDto;
 
     public ItemLevelScroll(ItemLevelDto itemLevelDto)
@@ -52,18 +53,20 @@ public class ItemLevelScroll
 
     public void desligarExclamacao()
     {
+        isExclamacaoLigado = false;
         itemLevelDto.Exclamacao.SetActive(false);
     }
 
     public void ligarExclamacao()
     {
         itemLevelDto.Exclamacao.SetActive(true);
+        isExclamacaoLigado = true;
     }
 
     public void desligarImgMaquina()
     {
         Debug.Log("Desgligar img maquina chamado");
-        //itemLevelDto.ImgMaquina.gameObject.SetActive(false);
+        itemLevelDto.ImgMaquina.gameObject.SetActive(false);
     }
 
     public void ligarImgMaquina()
