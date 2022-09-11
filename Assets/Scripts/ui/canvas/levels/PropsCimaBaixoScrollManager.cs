@@ -1,4 +1,4 @@
-public class PropsCimaBaixoLevelsSCroll 
+public class PropsCimaBaixoScrollManager 
 {    
     public float PosYReferenciaBaixo { get; private set; }
     public float PosYReferenciaCima { get; private set; }

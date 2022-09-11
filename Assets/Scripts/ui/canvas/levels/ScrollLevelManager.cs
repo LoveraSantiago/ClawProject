@@ -9,7 +9,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
     private Material[] materialMaquinas;
     private List<int> levelsLiberados;
 
-    private PropsCimaBaixoLevelsSCroll props;   
+    private PropsCimaBaixoScrollManager props;   
     private LevelsScrollDto levelsScrollDto;
 
     private GameObject goImgMaquina;
@@ -18,7 +18,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
     public ScrollLevelManager(LevelsScrollDto levelsScrollDto)
     {
         totalLevels = PlayerPrefsMapas.getIndiceLevelLiberado();
-        props = new PropsCimaBaixoLevelsSCroll();
+        props = new PropsCimaBaixoScrollManager();
 
         this.levelsScrollDto = levelsScrollDto;
         produtorDeEvento = new ProdutorDeEvento<LevelItemDto>();
