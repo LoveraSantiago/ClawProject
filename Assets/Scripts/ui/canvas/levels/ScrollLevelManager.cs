@@ -180,7 +180,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         levelScroll.ligarUltimaImgMaquina();
         levelScroll.atualizarItemAtual(indiceItem);
 
-        LevelItemScrollSelecaoDto levelItem = new LevelItemScrollSelecaoDto(posicaoItem, materialCor);//Rename de classe
+        LevelItemScrollSelecaoDto levelItem = new LevelItemScrollSelecaoDto(posicaoItem, materialCor);
         produtorDeEvento.produziuEvento(levelItem);
     }
 
