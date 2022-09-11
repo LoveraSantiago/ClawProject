@@ -162,7 +162,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
             itemLevel.ligarExclamacao();
         }
 
-        MaterialMiniMaquina.addCores(materialMaquinas[indiceMaterialMaquina], level.getDicionarioDeCores());
+        MaterialMiniMaquina.addCores(3, materialMaquinas[indiceMaterialMaquina], level.getDicionarioDeCores());
         //Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
     }
 
