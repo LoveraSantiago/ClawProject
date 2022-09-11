@@ -32,7 +32,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         props.setItemLevelCima(levelScroll.getPrimeiroItemLevel());
         props.setItemLevelBaixo(levelScroll.getUltimoItemLevel());
     }
-   
+
     public override void movimentarParaBaixo(LevelScroll levelScrollVazio)
     {
         float posYItemLevel = props.ItemLevelBaixo.getPosY();
@@ -123,19 +123,13 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
             ItemLevelScroll itemLevelIt = levelScroll.getItemLevel(contadorItensLevels);
             itemLevelIt.setMaterial(materialMaquinas[contadorItensLevels]);
             popularItemLevel(contadorItensLevels, itemLevelIt, contadorItensLevels);
-            props.incrementarContadorBaixo();
-            itemLevelIt.desligarExclamacao();
+            props.incrementarContadorBaixo();            
 
             int indiceItemLevels = contadorItensLevels + 1;
             if (isTotalLevelsMenorQueScroll() && (indiceItemLevels > totalLevels))
             {
                 itemLevelIt.desligar();
-            }
-
-            if (levelsLiberados.Contains(indiceItemLevels))
-            {
-                itemLevelIt.ligarExclamacao();
-            }
+            }          
         }
         //Debug.Log("Populado contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
     }
@@ -159,7 +153,13 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         MapaEntidade mapaEntidade = LevelHelper.getMapaNormalByIndicesTotasDeLevels(indiceAtual);
         AbstractLevel level = LevelHelper.getLevelNormalByIndicesTotaisDeLevels(indiceAtual);
         string levelName = level.getLevelName();
-        itemLevel.addLabels(levelName, mapaEntidade.title, level.getMaquinaNome());       
+        itemLevel.addLabels(levelName, mapaEntidade.title, level.getMaquinaNome());
+        itemLevel.desligarExclamacao();
+
+        if (levelsLiberados.Contains(indiceAtual +1))
+        {
+            itemLevel.ligarExclamacao();
+        }
 
         MaterialMiniMaquina.addCores(materialMaquinas[indiceMaterialMaquina], level.getDicionarioDeCores());
         //Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
