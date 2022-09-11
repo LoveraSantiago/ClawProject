@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ItemLevelScroll 
 {
+    public int indiceLevel { get; private set; }
     private ItemLevelDto itemLevelDto;
 
     public ItemLevelScroll(ItemLevelDto itemLevelDto)
@@ -70,8 +71,9 @@ public class ItemLevelScroll
         itemLevelDto.ImgMaquina.gameObject.SetActive(true);
     }
 
-    public void addLabels(string nomeLevel, string titulo, string nomeMaquina)
+    public void addLabels(int indiceLevel, string nomeLevel, string titulo, string nomeMaquina)
     {
+        this.indiceLevel = indiceLevel;
         itemLevelDto.LblLevel.text = nomeLevel;
         itemLevelDto.LblMap.text = titulo;
         itemLevelDto.LblMaquina.text = nomeMaquina;

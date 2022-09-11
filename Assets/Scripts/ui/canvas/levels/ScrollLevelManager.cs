@@ -125,8 +125,8 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
             popularItemLevel(contadorItensLevels, itemLevelIt, contadorItensLevels);
             props.incrementarContadorBaixo();            
 
-            int indiceItemLevels = contadorItensLevels + 1;
-            if (isTotalLevelsMenorQueScroll() && (indiceItemLevels > totalLevels))
+            int indiceLevel = contadorItensLevels + 1;
+            if (isTotalLevelsMenorQueScroll() && (indiceLevel > totalLevels))
             {
                 itemLevelIt.desligar();
             }          
@@ -150,13 +150,14 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
 
     private void popularItemLevel(int indiceMaterialMaquina, ItemLevelScroll itemLevel, int indiceAtual)
     {
+        int indiceLevel = indiceAtual + 1;
         MapaEntidade mapaEntidade = LevelHelper.getMapaNormalByIndicesTotasDeLevels(indiceAtual);
         AbstractLevel level = LevelHelper.getLevelNormalByIndicesTotaisDeLevels(indiceAtual);
         string levelName = level.getLevelName();
-        itemLevel.addLabels(levelName, mapaEntidade.title, level.getMaquinaNome());
+        itemLevel.addLabels(indiceLevel, levelName, mapaEntidade.title, level.getMaquinaNome());
         itemLevel.desligarExclamacao();
 
-        if (levelsLiberados.Contains(indiceAtual +1))
+        if (levelsLiberados.BinarySearch(indiceLevel) >= 0)
         {
             itemLevel.ligarExclamacao();
         }
