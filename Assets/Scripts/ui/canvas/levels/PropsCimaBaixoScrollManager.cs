@@ -6,8 +6,8 @@ public class PropsCimaBaixoScrollManager
     public int ContadorBaixoLevel { get; private set; }
     public int ContadorCimaLevel { get; private set; }
 
-    public ItemLevelDto ItemLevelCima { get; private set; }
-    public ItemLevelDto ItemLevelBaixo { get; private set; }
+    public ItemLevelScroll ItemLevelCima { get; private set; }
+    public ItemLevelScroll ItemLevelBaixo { get; private set; }
 
     public void setPosYReferenciaBaixo(float value)
     {
@@ -39,12 +39,12 @@ public class PropsCimaBaixoScrollManager
         ContadorCimaLevel--;
     }
 
-    public void setItemLevelCima(ItemLevelDto value)
+    public void setItemLevelCima(ItemLevelScroll value)
     {
         ItemLevelCima = value;
     }
 
-    public void setItemLevelBaixo(ItemLevelDto value)
+    public void setItemLevelBaixo(ItemLevelScroll value)
     {
         ItemLevelBaixo = value;
     }

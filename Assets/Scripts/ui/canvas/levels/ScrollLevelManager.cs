@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
-public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
+public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
                             AcaoLevelFromScrollSelecao.ProdutorEvento  
 {
     private int totalLevels;
@@ -13,7 +13,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
     //private LevelsScrollDto levelsScrollDto;
     private LevelScroll levelScroll;
 
-    private GameObject goImgMaquina;
+    //private GameObject goImgMaquina;
     private ProdutorDeEvento<LevelItemDto> produtorDeEvento;
 
     public ScrollLevelManager(LevelsScrollDto levelsScrollDto)
@@ -30,19 +30,22 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
         carregarReferenciasPosicoes();
         carregarLevelsLiberados();
         popularItensLevels();
-        bindarBtnsLinha();
+        bindarBtnsLinha(levelsScrollDto);
 
-        props.setItemLevelCima(levelsScrollDto.ItensLevelDto[0]);
-        props.setItemLevelBaixo(levelsScrollDto.ItensLevelDto[levelsScrollDto.ItensLevelDto.Length - 1]);
+        //props.setItemLevelCima(levelsScrollDto.ItensLevelDto[0]);
+        props.setItemLevelCima(levelScroll.getPrimeiroItemLevel());
+        //props.setItemLevelBaixo(levelsScrollDto.ItensLevelDto[levelsScrollDto.ItensLevelDto.Length - 1]);
+        props.setItemLevelBaixo(levelScroll.getUltimoItemLevel());
     }
    
-    public override void movimentarParaBaixo(LevelsScrollDto levelsScrollDto)
+    public override void movimentarParaBaixo(LevelScroll levelScrollVazio)
     {
-        float posYItemLevel = props.ItemLevelBaixo.RItem.transform.position.y;
+        //float posYItemLevel = props.ItemLevelBaixo.RItem.transform.position.y;
+        float posYItemLevel = props.ItemLevelBaixo.getPosY();
         if (props.ContadorBaixoLevel < totalLevels && posYItemLevel > props.PosYReferenciaBaixo)
         {
             popularItemLevel(props.ItemLevelCima, props.ContadorBaixoLevel);
-            reposicionarLevelItemParaUltimaPosicao(levelsScrollDto);
+            reposicionarLevelItemParaUltimaPosicao(levelScroll);
             props.incrementarContadorBaixo();
             props.incrementarContadorCima();
             
@@ -50,14 +53,15 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
         }
     }
 
-    public override void movimentarParaCima(LevelsScrollDto levelsScrollDto)
+    public override void movimentarParaCima(LevelScroll levelsScrollVazio)
     {
-        float posYPrateleira = props.ItemLevelCima.RItem.transform.position.y;
+        //float posYPrateleira = props.ItemLevelCima.RItem.transform.position.y;
+        float posYPrateleira = props.ItemLevelCima.getPosY();
         if(props.ContadorCimaLevel > 0 && posYPrateleira < props.PosYReferenciaCima)
         {
             props.decrementarContadorCima();
             popularItemLevel(props.ItemLevelBaixo, props.ContadorCimaLevel);
-            reposicionarLevelItemParaPrimeiraPosicao(levelsScrollDto);
+            reposicionarLevelItemParaPrimeiraPosicao(levelScroll);
             props.decrementarContadorBaixo();
             //Debug.Log("movimentarParaCima ACIONADO contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
         }
@@ -104,27 +108,38 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
         //Debug.Log("posYReferenciaBaixo " + posYReferenciaBaixo + " posYReferenciaCima " + posYReferenciaCima);
     }
 
-    private void reposicionarLevelItemParaUltimaPosicao(LevelsScrollDto levelsScrollDto)
+    private void reposicionarLevelItemParaUltimaPosicao(LevelScroll levelsScroll)
     {
-        Vector2 posBaixo = props.ItemLevelBaixo.RItem.anchoredPosition;
-        float haltura = posBaixo.y - levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
-        props.ItemLevelCima.RItem.anchoredPosition = new Vector2(posBaixo.x, haltura);
-        props.ItemLevelCima.RItem.gameObject.SetActive(true);
+        //Vector2 posBaixo = props.ItemLevelBaixo.RItem.anchoredPosition;
+        Vector2 posBaixo = props.ItemLevelBaixo.getAnchoredPosition();
+        //float haltura = posBaixo.y - levelsScroll.ItensLevelDto[0].RItem.rect.height;
+        float haltura = posBaixo.y - levelsScroll.getItemLevel(0).getHaltura();
+        //props.ItemLevelCima.RItem.anchoredPosition = new Vector2(posBaixo.x, haltura);
+        props.ItemLevelCima.setAnchoredPosition(new Vector2(posBaixo.x, haltura));
+        //props.ItemLevelCima.RItem.gameObject.SetActive(true);
+        props.ItemLevelCima.ligar();
 
         props.setItemLevelBaixo(props.ItemLevelCima);
-        int indiceItem = (int.Parse(props.ItemLevelCima.RItem.name) + 1) % levelsScrollDto.ItensLevelDto.Length;
-        props.setItemLevelCima(levelsScrollDto.ItensLevelDto[indiceItem]);
+        //int indiceItem = (int.Parse(props.ItemLevelCima.RItem.name) + 1) % levelsScrollDto.ItensLevelDto.Length;
+        int indiceItem = (props.ItemLevelCima.getNomeItemNumerico() + 1) % levelsScroll.getQtdItens();
+        //props.setItemLevelCima(levelsScrollDto.ItensLevelDto[indiceItem]);
+        props.setItemLevelCima(levelScroll.getItemLevel(indiceItem));
     }
 
-    private void reposicionarLevelItemParaPrimeiraPosicao(LevelsScrollDto levelsScrollDto)
+    private void reposicionarLevelItemParaPrimeiraPosicao(LevelScroll levelScroll)
     {
-        Vector2 posCima = props.ItemLevelCima.RItem.anchoredPosition;
-        float haltura = posCima.y + levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
-        props.ItemLevelBaixo.RItem.anchoredPosition = new Vector2(posCima.x, haltura);        
+        //Vector2 posCima = props.ItemLevelCima.RItem.anchoredPosition;
+        Vector2 posCima = props.ItemLevelCima.getAnchoredPosition();
+        //float haltura = posCima.y + levelScroll.ItensLevelDto[0].RItem.rect.height;
+        float haltura = posCima.y + levelScroll.getItemLevel(0).getHaltura();
+        //props.ItemLevelBaixo.RItem.anchoredPosition = new Vector2(posCima.x, haltura);        
+        props.ItemLevelBaixo.setAnchoredPosition(new Vector2(posCima.x, haltura));        
 
         props.setItemLevelCima(props.ItemLevelBaixo);
-        int indicePrateleira = ((int.Parse(props.ItemLevelBaixo.RItem.name) + levelsScrollDto.ItensLevelDto.Length) - 1) % levelsScrollDto.ItensLevelDto.Length;
-        props.setItemLevelBaixo(levelsScrollDto.ItensLevelDto[indicePrateleira]);
+        //int indicePrateleira = ((int.Parse(props.ItemLevelBaixo.RItem.name) + levelsScrollDto.ItensLevelDto.Length) - 1) % levelsScrollDto.ItensLevelDto.Length;
+        int indicePrateleira = ((props.ItemLevelCima.getNomeItemNumerico() + levelScroll.getQtdItens()) - 1) % levelScroll.getQtdItens();
+        //props.setItemLevelBaixo(levelsScrollDto.ItensLevelDto[indicePrateleira]);
+        props.setItemLevelBaixo(this.levelScroll.getItemLevel(indicePrateleira));
     }
 
     private void popularItensLevels()
@@ -132,49 +147,71 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
         //for(int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
         for(int contadorItensLevels = 0; contadorItensLevels < levelScroll.getQtdItens(); contadorItensLevels++)
         {
-            ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];            
-            itemLevelDtoIt.ImgMaquina.material = materialMaquinas[contadorItensLevels];
-            popularItemLevel(contadorItensLevels, itemLevelDtoIt, contadorItensLevels);
+            //ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];            
+            ItemLevelScroll itemLevelIt = levelScroll.getItemLevel(contadorItensLevels);
+            //itemLevelDtoIt.ImgMaquina.material = materialMaquinas[contadorItensLevels];
+            itemLevelIt.setMaterial(materialMaquinas[contadorItensLevels]);
+            //popularItemLevel(contadorItensLevels, itemLevelDtoIt, contadorItensLevels);
+            popularItemLevel(contadorItensLevels, itemLevelIt, contadorItensLevels);
             props.incrementarContadorBaixo();
-            itemLevelDtoIt.Exclamacao.SetActive(false);
+            //itemLevelDtoIt.Exclamacao.SetActive(false);
+            itemLevelIt.desligarExclamacao();
 
             int indiceItemLevels = contadorItensLevels + 1;
             if (isTotalLevelsMenorQueScroll() && (indiceItemLevels > totalLevels))
             {
-                itemLevelDtoIt.RItem.gameObject.SetActive(false);
+                //itemLevelDtoIt.RItem.gameObject.SetActive(false);
+                itemLevelIt.desligar();
             }
 
             if (levelsLiberados.Contains(indiceItemLevels))
             {
-                itemLevelDtoIt.Exclamacao.SetActive(true);
+                //itemLevelDtoIt.Exclamacao.SetActive(true);
+                itemLevelIt.ligarExclamacao();
             }
         }
         //Debug.Log("Populado contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
     }
 
-    private void bindarBtnsLinha()
+    private void bindarBtnsLinha(LevelsScrollDto levelsScrollDto)
     {
         //for (int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
-        for (int contadorItensLevels = 0; contadorItensLevels < levelScroll.getQtdItens(); contadorItensLevels++)
+        for (int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
         {
             ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];
             itemLevelDtoIt.BtnLinha.onClick.AddListener(() => selecionado());
         }
     }
 
-    private void popularItemLevel(ItemLevelDto itemLevelDtoIt, int indiceAtual)
+    //private void popularItemLevel(ItemLevelDto itemLevelDtoIt, int indiceAtual)
+    //{
+    //    popularItemLevel(int.Parse(itemLevelDtoIt.RItem.name), itemLevelDtoIt, indiceAtual);
+    //}
+
+    private void popularItemLevel(ItemLevelScroll itemLevel, int indiceAtual)
     {
-        popularItemLevel(int.Parse(itemLevelDtoIt.RItem.name), itemLevelDtoIt, indiceAtual);
+        popularItemLevel(itemLevel.getNomeItemNumerico(), itemLevel, indiceAtual);
     }
 
-    private void popularItemLevel(int indiceMaterialMaquina, ItemLevelDto itemLevelDtoIt, int indiceAtual)
+    //private void popularItemLevel(int indiceMaterialMaquina, ItemLevelDto itemLevelDtoIt, int indiceAtual)
+    //{
+    //    MapaEntidade mapaEntidade = LevelHelper.getMapaNormalByIndicesTotasDeLevels(indiceAtual);
+    //    AbstractLevel level = LevelHelper.getLevelNormalByIndicesTotaisDeLevels(indiceAtual);
+    //    string levelName               = level.getLevelName();
+    //    itemLevelDtoIt.LblLevel.text   = levelName;
+    //    itemLevelDtoIt.LblMap.text     = mapaEntidade.title;
+    //    itemLevelDtoIt.LblMaquina.text = level.getMaquinaNome();
+
+    //    MaterialMiniMaquina.addCores(materialMaquinas[indiceMaterialMaquina], level.getDicionarioDeCores());
+    //    //Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
+    //}
+
+    private void popularItemLevel(int indiceMaterialMaquina, ItemLevelScroll itemLevel, int indiceAtual)
     {
         MapaEntidade mapaEntidade = LevelHelper.getMapaNormalByIndicesTotasDeLevels(indiceAtual);
         AbstractLevel level = LevelHelper.getLevelNormalByIndicesTotaisDeLevels(indiceAtual);
-        string levelName               = level.getLevelName();
-        itemLevelDtoIt.LblLevel.text   = levelName;
-        itemLevelDtoIt.LblMap.text     = mapaEntidade.title;
-        itemLevelDtoIt.LblMaquina.text = level.getMaquinaNome();
+        string levelName = level.getLevelName();
+        itemLevel.addLabels(levelName, mapaEntidade.title, level.getMaquinaNome());       
 
         MaterialMiniMaquina.addCores(materialMaquinas[indiceMaterialMaquina], level.getDicionarioDeCores());
         //Debug.Log("level alias " + levelAlias + " level name " + levelName + " nome componente" + itemLevelDtoIt.LblLevel.transform.parent.name);
@@ -182,23 +219,29 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
 
     private void selecionado()
     {
-        //Debug.Log("Selecionado chamado");
+        Debug.Log("Selecionado chamado");
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
         int indiceItem = int.Parse(goSelecionado.transform.parent.name);
-        ItemLevelDto itemLevelDto = levelsScrollDto.ItensLevelDto[indiceItem];
+        //ItemLevelDto itemLevelDto = levelsScrollDto.ItensLevelDto[indiceItem];
+        ItemLevelScroll itemLevel = levelScroll.getItemLevel(indiceItem);
 
-        Vector3 posicaoItem = itemLevelDto.ImgMaquina.transform.position;
+        //Vector3 posicaoItem = itemLevelDto.ImgMaquina.transform.position;
+        Vector3 posicaoItem = itemLevel.getPosicaoImgMaquina();
         Material materialCor = materialMaquinas[indiceItem];
 
-        itemLevelDto.ImgMaquina.gameObject.SetActive(false);
+        //itemLevelDto.ImgMaquina.gameObject.SetActive(false);
+        itemLevel.desligarImgMaquina();
 
-        if(goImgMaquina != null)
-        {
-            goImgMaquina.SetActive(true);
-        }
-        goImgMaquina = itemLevelDto.ImgMaquina.gameObject;
+        //if(goImgMaquina != null)
+        //{
+        //    goImgMaquina.SetActive(true);
+        //}
+        //goImgMaquina = itemLevelDto.ImgMaquina.gameObject;
 
-        LevelItemDto levelItem = new LevelItemDto(posicaoItem, materialCor);
+        levelScroll.ligarUltimaImgMaquina();
+        levelScroll.atualizarItemAtual(indiceItem);
+
+        LevelItemDto levelItem = new LevelItemDto(posicaoItem, materialCor);//Rename de classe
         produtorDeEvento.produziuEvento(levelItem);
     }
 

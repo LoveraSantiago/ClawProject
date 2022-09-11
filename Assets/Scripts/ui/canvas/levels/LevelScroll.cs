@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelScroll 
 {
     private LevelsScrollDto levelsScrollDto;
+
+    private ItemLevelScroll itemAtual;
     private ItemLevelScroll[] itens;
 
     public LevelScroll(LevelsScrollDto levelsScrollDto)
@@ -28,6 +28,16 @@ public class LevelScroll
         return itens[indice];
     }
 
+    public ItemLevelScroll getPrimeiroItemLevel()
+    {
+        return getItemLevel(0);
+    }
+
+    public ItemLevelScroll getUltimoItemLevel()
+    {
+        return getItemLevel(getQtdItens() - 1);
+    }
+
     public void posicionarOffset(Vector2 posicao)
     {
         levelsScrollDto.RTransformScroll.offsetMin += posicao;
@@ -41,6 +51,19 @@ public class LevelScroll
     public float getPosYReferenciaCima()
     {
         return levelsScrollDto.RTransformRefCima.position.y;
+    }
+
+    public void ligarUltimaImgMaquina()
+    {
+        if(itemAtual != null)
+        {
+            itemAtual.ligarImgMaquina();
+        }
+    }
+
+    public void atualizarItemAtual(int indice)
+    {
+        itemAtual = getItemLevel(indice);
     }
 
     private void inicializarItensLevelScroll()

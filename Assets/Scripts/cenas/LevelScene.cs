@@ -24,7 +24,7 @@ public class LevelScene : MonoBehaviour,
         btnBack.onClick.AddListener(() => voltar());
 
         scrollManager = new ScrollLevelManager(levelsScrollDto);
-        scrollRect.onValueChanged.AddListener((pos) => scrollManager.movimentado(pos, levelsScrollDto));
+        scrollRect.onValueChanged.AddListener((pos) => scrollManager.movimentado(pos, null));
 
         new AcaoLevelFromScrollSelecao()
             .configurarProdutor(scrollManager)
