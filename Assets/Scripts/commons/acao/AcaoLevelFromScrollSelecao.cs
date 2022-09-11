@@ -1,3 +1,3 @@
-public class AcaoLevelFromScrollSelecao : ProdutorConsumidoresDeEvento<LevelItemDto>
+public class AcaoLevelFromScrollSelecao : ProdutorConsumidoresDeEvento<LevelItemScrollSelecaoDto>
 {    
 }

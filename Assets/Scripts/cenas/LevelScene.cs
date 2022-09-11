@@ -31,7 +31,7 @@ public class LevelScene : MonoBehaviour,
             .adicionarConsumidor(this);
     }
     
-    void AcaoLevelFromScrollSelecao.ConsumidorEvento.consumirEvento(LevelItemDto evento)
+    void AcaoLevelFromScrollSelecao.ConsumidorEvento.consumirEvento(LevelItemScrollSelecaoDto evento)
     {
         imageMaquinaGiratoria.transform.gameObject.SetActive(true);
         imageMaquinaGiratoria.transform.position = evento.posicaoItem;

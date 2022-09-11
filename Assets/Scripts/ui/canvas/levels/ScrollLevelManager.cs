@@ -12,7 +12,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
     private PropsCimaBaixoScrollManager props;   
     private LevelScroll levelScroll;
 
-    private ProdutorDeEvento<LevelItemDto> produtorDeEvento;
+    private ProdutorDeEvento<LevelItemScrollSelecaoDto> produtorDeEvento;
 
     public ScrollLevelManager(LevelsScrollDto levelsScrollDto)
     {
@@ -20,7 +20,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         props = new PropsCimaBaixoScrollManager();
 
         levelScroll = new LevelScroll(levelsScrollDto);
-        produtorDeEvento = new ProdutorDeEvento<LevelItemDto>();
+        produtorDeEvento = new ProdutorDeEvento<LevelItemScrollSelecaoDto>();
 
         carregarMateriais();
         calcularTamanhoScroll();
@@ -180,7 +180,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         levelScroll.ligarUltimaImgMaquina();
         levelScroll.atualizarItemAtual(indiceItem);
 
-        LevelItemDto levelItem = new LevelItemDto(posicaoItem, materialCor);//Rename de classe
+        LevelItemScrollSelecaoDto levelItem = new LevelItemScrollSelecaoDto(posicaoItem, materialCor);//Rename de classe
         produtorDeEvento.produziuEvento(levelItem);
     }
 
@@ -190,7 +190,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         levelsLiberados = new List<int>(levels);        
     }
 
-    ProdutorDeEvento<LevelItemDto> AcaoLevelFromScrollSelecao.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<LevelItemScrollSelecaoDto> AcaoLevelFromScrollSelecao.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }
