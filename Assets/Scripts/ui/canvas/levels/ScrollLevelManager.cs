@@ -10,7 +10,8 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
     private List<int> levelsLiberados;
 
     private PropsCimaBaixoScrollManager props;   
-    private LevelsScrollDto levelsScrollDto;
+    //private LevelsScrollDto levelsScrollDto;
+    private LevelScroll levelScroll;
 
     private GameObject goImgMaquina;
     private ProdutorDeEvento<LevelItemDto> produtorDeEvento;
@@ -20,7 +21,8 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
         totalLevels = PlayerPrefsMapas.getIndiceLevelLiberado();
         props = new PropsCimaBaixoScrollManager();
 
-        this.levelsScrollDto = levelsScrollDto;
+        levelScroll = new LevelScroll(levelsScrollDto);
+        //this.levelsScrollDto = levelsScrollDto;
         produtorDeEvento = new ProdutorDeEvento<LevelItemDto>();
 
         carregarMateriais();
@@ -63,7 +65,8 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
 
     private void carregarMateriais()
     {
-        int qtdItens = levelsScrollDto.ItensLevelDto.Length;
+        //int qtdItens = levelsScrollDto.ItensLevelDto.Length;
+        int qtdItens = levelScroll.getQtdItens();
         materialMaquinas = new Material[qtdItens];
         for(int contador = 0; contador < qtdItens; contador++)
         {
@@ -73,22 +76,31 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
 
     private void calcularTamanhoScroll()
     {
-        float qtdItens = totalLevels - levelsScrollDto.QtdItensVisiveis;
-        float yAcrescimo = qtdItens * levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
-        levelsScrollDto.RTransformScroll.offsetMin += new Vector2(0, -yAcrescimo);
+        //float qtdItens = totalLevels - levelsScrollDto.QtdItensVisiveis;
+        float qtdItens = totalLevels - levelScroll.getQtdItensVisiveis();
+        //float yAcrescimo = qtdItens * levelsScrollDto.ItensLevelDto[0].RItem.rect.height;
+        float yAcrescimo = qtdItens * levelScroll.getItemLevel(0).getHaltura();
+        //levelsScrollDto.RTransformScroll.offsetMin += new Vector2(0, -yAcrescimo);
+        levelScroll.posicionarOffset(new Vector2(0, -yAcrescimo));
     }
 
     private bool isTotalLevelsMenorQueScroll()
     {
-        Debug.Log("Total levels " + totalLevels + " Lenght " + levelsScrollDto.ItensLevelDto.Length);
-        return totalLevels <= levelsScrollDto.ItensLevelDto.Length;
+        //Debug.Log("Total levels " + totalLevels + " Lenght " + levelsScrollDto.ItensLevelDto.Length);
+        //return totalLevels <= levelsScrollDto.ItensLevelDto.Length;
+        return totalLevels <= levelScroll.getQtdItens(); 
     }
 
     private void carregarReferenciasPosicoes()
     {
-        props.setPosYReferenciaBaixo(levelsScrollDto.RTransformRefBaixo.position.y);        
-        float yDiferenca = (levelsScrollDto.ItensLevelDto[0].RItem.position.y - levelsScrollDto.ItensLevelDto[1].RItem.position.y);
-        props.setPosYReferenciaCima(levelsScrollDto.RTransformRefCima.position.y + yDiferenca);        
+        //props.setPosYReferenciaBaixo(levelsScrollDto.RTransformRefBaixo.position.y);        
+        props.setPosYReferenciaBaixo(levelScroll.getPosYReferenciaBaixo());
+        //float yDiferenca = (levelsScrollDto.ItensLevelDto[0].RItem.position.y - levelsScrollDto.ItensLevelDto[1].RItem.position.y);
+        float posYZero = levelScroll.getItemLevel(0).getPosY();
+        float posYHum  = levelScroll.getItemLevel(1).getPosY();
+        float yDiferenca = posYZero - posYHum;
+        //props.setPosYReferenciaCima(levelsScrollDto.RTransformRefCima.position.y + yDiferenca);        
+        props.setPosYReferenciaCima(levelScroll.getPosYReferenciaCima() + yDiferenca);        
         //Debug.Log("posYReferenciaBaixo " + posYReferenciaBaixo + " posYReferenciaCima " + posYReferenciaCima);
     }
 
@@ -117,7 +129,8 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
 
     private void popularItensLevels()
     {        
-        for(int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
+        //for(int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
+        for(int contadorItensLevels = 0; contadorItensLevels < levelScroll.getQtdItens(); contadorItensLevels++)
         {
             ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];            
             itemLevelDtoIt.ImgMaquina.material = materialMaquinas[contadorItensLevels];
@@ -141,7 +154,8 @@ public class ScrollLevelManager : ScrollMovimentador<LevelsScrollDto>,
 
     private void bindarBtnsLinha()
     {
-        for (int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
+        //for (int contadorItensLevels = 0; contadorItensLevels < levelsScrollDto.ItensLevelDto.Length; contadorItensLevels++)
+        for (int contadorItensLevels = 0; contadorItensLevels < levelScroll.getQtdItens(); contadorItensLevels++)
         {
             ItemLevelDto itemLevelDtoIt = levelsScrollDto.ItensLevelDto[contadorItensLevels];
             itemLevelDtoIt.BtnLinha.onClick.AddListener(() => selecionado());
