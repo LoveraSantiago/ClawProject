@@ -11,6 +11,7 @@ public class LevelScroll
     {
         this.levelsScrollDto = levelsScrollDto;
         inicializarItensLevelScroll();
+        ItemLevelScroll.configurarSpritesEstrelas(levelsScrollDto.SprEstrelBranca, levelsScrollDto.SprEstrelaColorida);
     }
 
     public int getQtdItens()

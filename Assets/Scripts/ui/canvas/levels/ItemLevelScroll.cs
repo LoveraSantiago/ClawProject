@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 public class ItemLevelScroll 
 {
+    private static Sprite estrelaBranca;
+    private static Sprite estrelaColorida;
+
     public int indiceLevel { get; private set; }
     public bool isExclamacaoLigado { get; private set; }
     public Material material { get; private set; }
@@ -49,6 +52,9 @@ public class ItemLevelScroll
     public void colorirImgMaquina(int numeroEstrelas, Dictionary<string, string> cores)
     {
         MaterialMiniMaquina.addCores(numeroEstrelas, material, cores);
+        itemLevelDto.ImgEstrela1.sprite = numeroEstrelas >= 1 ? estrelaColorida : estrelaBranca;
+        itemLevelDto.ImgEstrela2.sprite = numeroEstrelas >= 2 ? estrelaColorida : estrelaBranca;
+        itemLevelDto.ImgEstrela3.sprite = numeroEstrelas >= 3 ? estrelaColorida : estrelaBranca;
     }
 
     public void desligar()
@@ -100,5 +106,11 @@ public class ItemLevelScroll
     public void setAnchoredPosition(Vector2 posicao)
     {
         itemLevelDto.RItem.anchoredPosition = posicao;
+    }
+
+    public static void configurarSpritesEstrelas(Sprite estralaBrancaArg, Sprite estrelaColoridaArg)
+    {
+        estrelaBranca = estralaBrancaArg;
+        estrelaColorida = estrelaColoridaArg;
     }
 }
