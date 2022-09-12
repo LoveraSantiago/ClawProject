@@ -1,4 +1,4 @@
-public abstract class AbstractTemporarioMapaColetaveisLevelsFornecedor
+public abstract class AbstractFornecedorColetaveisLevels
 {
     public AbstractLevel getLevel(ColetavelEntidade coletavelEntidade)
     {

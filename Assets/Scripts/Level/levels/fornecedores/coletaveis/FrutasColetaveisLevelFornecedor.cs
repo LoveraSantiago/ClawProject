@@ -1,4 +1,4 @@
-public class FrutasColetaveisLevelFornecedor : AbstractTemporarioMapaColetaveisLevelsFornecedor
+public class FrutasColetaveisLevelFornecedor : AbstractFornecedorColetaveisLevels
 {
     protected override AbstractLevel getLevelToColetavel(ColetavelEntidade coletavelEntidade)
     {
