@@ -4,7 +4,7 @@ public class MapaEntidade
     public string title { get; private set; }
     private string pathSprites;
     private AbstractFornecedorLevels levelFornecedor;
-    private AbstractFornecedorColetaveisLevels levelColetavelTemporarioFornecedor;
+    private AbstractFornecedorColetaveisLevels coletaveisLevelsFornecedor;
 
     public MapaEntidade()
     {   
@@ -26,7 +26,7 @@ public class MapaEntidade
     public MapaEntidade addFornecedoresLevels(AbstractFornecedorLevels levelFornecedor, AbstractFornecedorColetaveisLevels levelColetavelTemporarioFornecedor)
     {
         this.levelFornecedor = levelFornecedor;
-        this.levelColetavelTemporarioFornecedor = levelColetavelTemporarioFornecedor;
+        this.coletaveisLevelsFornecedor = levelColetavelTemporarioFornecedor;
         return this;
     }
 
@@ -61,7 +61,7 @@ public class MapaEntidade
         return 0;
     }
 
-    public int getIndiceLevelsLiberado()
+    public int getIndiceMaxLevelLiberadoDoMapa()
     {
         int maxLevelLiberado = PlayerPrefsMapas.getIndiceLevelLiberado();
         if((id * 10) <= maxLevelLiberado)
@@ -78,6 +78,6 @@ public class MapaEntidade
 
     public AbstractLevel getLevelByColetavelEntidade(ColetavelEntidade coletavelEntidade)
     {
-        return levelColetavelTemporarioFornecedor.getLevel(coletavelEntidade);
+        return coletaveisLevelsFornecedor.getLevel(coletavelEntidade);
     }
 }

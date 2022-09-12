@@ -47,7 +47,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
     {
         if (evento.isAberto || evento.isEmAndamento)
         {
-            int levelsLiberados = evento.mapaEntidade.getIndiceLevelsLiberado();
+            int levelsLiberados = evento.mapaEntidade.getIndiceMaxLevelLiberadoDoMapa();
             bool newLevelLiberado = PlayerPrefsMapas.isNovaLiberacaoLevelBalao();
 
             //Debug.Log("Qtd Levels Baloes Liberados " + levelsLiberados);

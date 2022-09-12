@@ -1,0 +1,22 @@
+public class GeleiaColetaveisLevelFornecedor : AbstractFornecedorColetaveisLevels
+{
+    public override ColetavelEntidade[] getColetaveis()
+    {
+        return new ColetavelEntidade[] {
+            new ColetavelEntidade(60, 36, "Geleia 1"  , "geleia1"  , MapaEnum.GELEIA),
+            new ColetavelEntidade(61, 37, "Geleia 2"  , "geleia2"  , MapaEnum.GELEIA),
+            new ColetavelEntidade(62, 38, "Geleia 3"  , "geleia3"  , MapaEnum.GELEIA),
+            new ColetavelEntidade(63, 39, "Geleia 4"  , "geleia4"  , MapaEnum.GELEIA),
+            new ColetavelEntidade(64, 40, "Geleia 5"  , "geleia5"  , MapaEnum.GELEIA),
+            new ColetavelEntidade(65, 41, "Geleia 6"  , "geleia6"  , MapaEnum.GELEIA),
+            new ColetavelEntidade(66, 42, "Geleia 7"  , "geleia7"  , MapaEnum.GELEIA),
+            new ColetavelEntidade(67, 43, "Geleia 8"  , "geleia8"  , MapaEnum.GELEIA),
+            new ColetavelEntidade(68, 44, "Geleia 9"  , "geleia9"  , MapaEnum.GELEIA)
+        };
+    }
+
+    protected override AbstractLevel getLevelToColetavel(ColetavelEntidade coletavelEntidade)
+    {
+        return null;
+    }    
+}
