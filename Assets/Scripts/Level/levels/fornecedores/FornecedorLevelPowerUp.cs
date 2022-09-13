@@ -1,6 +1,6 @@
 public class FornecedorLevelPowerUp : AbstractFornecedorLevels
 {
-    public override AbstractLevel getLevelPorIndice(int level)
+    protected override AbstractLevel getLevelPorIndice(int level)
     {
         switch (level)
         {

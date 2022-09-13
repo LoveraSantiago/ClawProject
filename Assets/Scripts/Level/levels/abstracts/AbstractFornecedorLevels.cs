@@ -5,6 +5,6 @@ public abstract class AbstractFornecedorLevels
         return getLevelPorIndice(level);
     }
 
-    public abstract AbstractLevel getLevelPorIndice(int level);
+    protected abstract AbstractLevel getLevelPorIndice(int level);
     public abstract int getQtdLevels();    
 }
