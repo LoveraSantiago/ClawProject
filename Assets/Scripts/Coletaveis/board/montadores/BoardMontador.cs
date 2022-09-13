@@ -19,17 +19,21 @@ public abstract class BoardMontador
         for (int contadorColuna = 0; contadorColuna < posItem.Total; contadorColuna++)
         {
             int id = arrayDeColetaveis[contadorLinha, contadorColuna];
-            ColetavelEntidade coletavelEntidade = HelperColetavelEntidade.getColetavelEntidadeById(id);
-            Vector3 posicao = calcularPosicao(posItem, contadorColuna, altura);            
+            Vector3 posicao = calcularPosicao(posItem, contadorColuna, altura);
 
-            if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
+            ColetavelEntidade coletavelEntidade = null;
+            if (ColetavelEntidade.isIndiceVazio(id))//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
             {               
                 yield return onPosicaoVaziaCriado(contadorColuna, contadorLinha, posicao);                
                 continue;
             }
-            else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
+            else if (ColetavelEntidade.isIndiceRandom(id))//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
             {
                 coletavelEntidade = HelperColetavelEntidade.getRandomColetavelEntidadeByFamilia(mapaEnum);
+            }
+            else
+            {
+                coletavelEntidade = HelperColetavelEntidade.getColetavelEntidadeById(id);
             }
 
             Coletavel coletavel = criarColetavel(coletavelEntidade.nomeSprite, posicao);
@@ -99,5 +103,5 @@ public abstract class BoardMontador
     protected virtual float getDelay()
     {
         return 0.1f;
-    }
+    }   
 }

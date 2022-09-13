@@ -15,20 +15,20 @@ public class ColetavelEntidade
         this.nomeSprite = nomeSprite;
         this.mapaEnum   = mapaEnum;        
         this.ordem      = ordem;
-    }    
-
-    public bool isVazio()
-    {
-        return id == 0;
-    }
-
-    public bool isRandom()
-    {
-        return id == 1;
-    }
+    }        
 
     public void setMapaEnum(MapaEnum mapaEnum)
     {
         this.mapaEnum = mapaEnum;
+    }
+
+    public static bool isIndiceVazio(int indice)
+    {
+        return indice == 10;
+    }
+
+    public static bool isIndiceRandom(int indice)
+    {
+        return indice == 11;
     }
 }

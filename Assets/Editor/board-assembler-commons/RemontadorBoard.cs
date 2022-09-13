@@ -20,50 +20,20 @@ public class RemontadorBoard
             for (int contadorColuna = 0; contadorColuna < totalColunas; contadorColuna++)
             {
                 int id = arrayDeColetaveis[contadorLinha, contadorColuna];
-                ColetavelEntidade coletavelEntidade  = HelperColetavelEntidade.getColetavelEntidadeById(id);
+                ColetavelEntidade coletavelEntidade = null;
 
-                if (coletavelEntidade.isVazio())
+                if (ColetavelEntidade.isIndiceVazio(id))
                 {
                     continue;
                 }
-                else if (coletavelEntidade.isRandom())
+                else if (ColetavelEntidade.isIndiceRandom(id))
                 {
                     referencias.updateElementoGo(contadorLinha, contadorColuna, listaDeSprites.getSpriteRandom());                                        
                 }
                 else
                 {
-                    string nomeSprite = coletavelEntidade.nomeSprite;
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
-                    //DANDO ERRO SE A FAMILIA DE FRUTAS NAO ESTIVER PRESELECIONADO
+                    coletavelEntidade = HelperColetavelEntidade.getColetavelEntidadeById(id); 
+                    string nomeSprite = coletavelEntidade.nomeSprite;                    
                     Sprite spr = listaDeSprites.getSpriteByName(nomeSprite);
                     referencias.updateElementoGo(contadorLinha, contadorColuna, spr);                    
                 }
