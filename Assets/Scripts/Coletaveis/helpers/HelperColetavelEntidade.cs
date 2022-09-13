@@ -118,14 +118,14 @@ public class HelperColetavelEntidade
 
     public static void configurar()
     {
-        if (coletaveisPorId == null)
-        {
-            MontadorDicionariosColetaveis montador = new MontadorDicionariosColetaveis();
-            montador.montarDicionariosDeColetaveis();
-            coletaveisPorId      = montador.dicionarioDeIds;
-            coletaveisPorSpriteNome  = montador.dicionarioDeSprites;
-            familiasPorEnum = montador.dicionarioDeFamilias;
-        }
+        //if (coletaveisPorId == null)
+        //{
+        //    MontadorDicionariosColetaveis montador = new MontadorDicionariosColetaveis();
+        //    montador.montarDicionariosDeColetaveis();
+        //    coletaveisPorId      = montador.dicionarioDeIds;
+        //    coletaveisPorSpriteNome  = montador.dicionarioDeSprites;
+        //    familiasPorEnum = montador.dicionarioDeFamilias;
+        //}
     }
 
     public static void configurar(GameObject goPrefabSprites)

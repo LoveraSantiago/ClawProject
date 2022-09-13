@@ -15,12 +15,7 @@ public class ColetavelEntidade
         this.nomeSprite = nomeSprite;
         this.mapaEnum   = mapaEnum;        
         this.ordem      = ordem;
-    }
-
-    public static ColetavelEntidade[] getColetaveisEntidades()
-    {       
-        return ARRAY_COLETAVEIS_ENTIDADES;
-    }        
+    }    
 
     public bool isVazio()
     {
