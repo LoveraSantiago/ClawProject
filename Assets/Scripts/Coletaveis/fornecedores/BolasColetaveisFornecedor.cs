@@ -1,5 +1,10 @@
 public class BolasColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
+    public override string getPathSprite()
+    {
+        return "bolas";
+    }
+
     protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {

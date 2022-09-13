@@ -1,5 +1,10 @@
 public class MegamanColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
+    public override string getPathSprite()
+    {
+        return "megaman";
+    }
+
     protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {

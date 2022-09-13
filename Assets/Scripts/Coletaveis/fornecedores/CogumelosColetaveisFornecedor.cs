@@ -1,5 +1,10 @@
 public class CogumelosColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
+    public override string getPathSprite()
+    {
+        return "cogumelos";
+    }
+
     protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
