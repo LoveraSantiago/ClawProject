@@ -1,6 +1,6 @@
 public class FrutasColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override ColetavelEntidade[] getColetaveis()
+    protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
             new ColetavelEntidade(10, 1, "Leite"          , "characters_0001", MapaEnum.FRUTAS),

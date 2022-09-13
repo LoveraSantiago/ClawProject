@@ -1,6 +1,6 @@
 public abstract class AbstractFornecedorColetaveisLevels
 {
-    public abstract ColetavelEntidade[] getColetaveis();
+    protected abstract ColetavelEntidade[] getArrayDeColetaveis();
 
     public AbstractLevel getLevel(ColetavelEntidade coletavelEntidade)
     {

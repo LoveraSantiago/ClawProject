@@ -1,6 +1,6 @@
 public class GeleiaColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override ColetavelEntidade[] getColetaveis()
+    protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
             new ColetavelEntidade(60, 36, "Geleia 1"  , "geleia1"  , MapaEnum.GELEIA),

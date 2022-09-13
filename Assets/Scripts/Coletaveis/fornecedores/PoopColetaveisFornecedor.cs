@@ -1,6 +1,6 @@
 public class PoopColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override ColetavelEntidade[] getColetaveis()
+    protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
             new ColetavelEntidade(100, 62, "Poop 1",  "poop1", MapaEnum.POOPS),

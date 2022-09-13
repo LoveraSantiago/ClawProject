@@ -1,6 +1,6 @@
 public class YuyuColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override ColetavelEntidade[] getColetaveis()
+    protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
             new ColetavelEntidade(50, 32, "Yusuke"  , "hiei"    , MapaEnum.YUYU),

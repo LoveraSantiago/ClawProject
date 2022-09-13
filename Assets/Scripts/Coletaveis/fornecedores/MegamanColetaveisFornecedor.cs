@@ -1,6 +1,6 @@
 public class MegamanColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override ColetavelEntidade[] getColetaveis()
+    protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
             new ColetavelEntidade(80, 50, "Kalinka", "kalinka", MapaEnum.MEGAMAN),

@@ -1,6 +1,6 @@
 public class DinosColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override ColetavelEntidade[] getColetaveis()
+    protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
             new ColetavelEntidade(20, 9, "Triceratops"       , "triceratops256"      , MapaEnum.DINO),

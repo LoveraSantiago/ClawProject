@@ -1,6 +1,6 @@
 public class CogumelosColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override ColetavelEntidade[] getColetaveis()
+    protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
             new ColetavelEntidade(90, 53, "Congumelo1", "cogumelo1", MapaEnum.COGUMELOS),

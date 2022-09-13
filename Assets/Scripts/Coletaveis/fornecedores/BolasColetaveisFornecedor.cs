@@ -1,6 +1,6 @@
 public class BolasColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override ColetavelEntidade[] getColetaveis()
+    protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
             new ColetavelEntidade(30, 14, "Bola de Beisebol"       , "baseball"        , MapaEnum.BOLAS),

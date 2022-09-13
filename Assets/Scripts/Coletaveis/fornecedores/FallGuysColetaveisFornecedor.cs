@@ -1,6 +1,6 @@
 public class FallGuysColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override ColetavelEntidade[] getColetaveis()
+    protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[]{
             new ColetavelEntidade(40, 23, "FG1", "fg1", MapaEnum.FALLGUYS),

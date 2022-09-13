@@ -1,6 +1,6 @@
 public class DefaultColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override ColetavelEntidade[] getColetaveis()
+    protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
             new ColetavelEntidade(0, -1, "vazio" , "tile-vazio"      , MapaEnum.DEFAULTS),

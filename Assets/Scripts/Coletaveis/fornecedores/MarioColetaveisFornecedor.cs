@@ -1,6 +1,6 @@
 public class MarioColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override ColetavelEntidade[] getColetaveis()
+    protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
             new ColetavelEntidade(70, 45, "Kopa"    , "kopa"    , MapaEnum.MARIO),
