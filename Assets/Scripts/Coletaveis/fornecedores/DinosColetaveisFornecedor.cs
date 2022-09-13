@@ -1,4 +1,4 @@
-public class DinosColetaveisLevelFornecedor : AbstractFornecedorColetaveisLevels
+public class DinosColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
     public override ColetavelEntidade[] getColetaveis()
     {

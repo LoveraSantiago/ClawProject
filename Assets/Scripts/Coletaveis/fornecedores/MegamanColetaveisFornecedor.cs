@@ -1,4 +1,4 @@
-public class MegamanColetaveisLevelFornecedor : AbstractFornecedorColetaveisLevels
+public class MegamanColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
     public override ColetavelEntidade[] getColetaveis()
     {

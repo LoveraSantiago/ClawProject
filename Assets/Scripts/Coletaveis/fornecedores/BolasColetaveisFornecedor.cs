@@ -1,4 +1,4 @@
-public class BolasColetaveisLevelFornecedor : AbstractFornecedorColetaveisLevels
+public class BolasColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
     public override ColetavelEntidade[] getColetaveis()
     {

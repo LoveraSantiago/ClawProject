@@ -1,4 +1,4 @@
-public class CogumelosColetaveisLevelFornecedor : AbstractFornecedorColetaveisLevels
+public class CogumelosColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
     public override ColetavelEntidade[] getColetaveis()
     {

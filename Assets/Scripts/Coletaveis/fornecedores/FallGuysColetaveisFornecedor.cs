@@ -1,4 +1,4 @@
-public class FallGuysColetaveisLevelFornecedor : AbstractFornecedorColetaveisLevels
+public class FallGuysColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
     public override ColetavelEntidade[] getColetaveis()
     {

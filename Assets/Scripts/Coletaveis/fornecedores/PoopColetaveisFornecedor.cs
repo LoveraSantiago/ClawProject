@@ -1,4 +1,4 @@
-public class PoopColetaveisLevelsFornecedor : AbstractFornecedorColetaveisLevels
+public class PoopColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
     public override ColetavelEntidade[] getColetaveis()
     {

@@ -1,4 +1,4 @@
-public class YuyuColetaveisLevelFornecedor : AbstractFornecedorColetaveisLevels
+public class YuyuColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
     public override ColetavelEntidade[] getColetaveis()
     {
