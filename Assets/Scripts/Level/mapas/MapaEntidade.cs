@@ -2,7 +2,7 @@ public class MapaEntidade
 {
     public int id { get; private set; }
     public string title { get; private set; }
-    private AbstractFornecedorLevels levelFornecedor;
+    private AbstractFornecedorLevels levelFornecedor = FornecedorLevelsDefault.getInstance();
     private AbstractFornecedorColetaveisLevels coletaveisFornecedor;
 
     public MapaEntidade addInfo(int id, string title)
@@ -31,43 +31,22 @@ public class MapaEntidade
 
     public AbstractLevel getLevelByIndiceDezena(int indice)
     {
-        if(levelFornecedor != null)
-        {
-            AbstractLevel level = levelFornecedor.getLevel(indice);
-            level.setIndiceLevelAtual(((10 * id) - 10) + indice);
-            return level;
-        }
-        return null;
+        return levelFornecedor.getLevelByIndiceDezena(id, indice);        
     }
 
     public AbstractLevel getLevelByIndiceGeral(int indice)
     {
-        int indiceLevel = (indice + 1) % 11;
-        return getLevelByIndiceDezena(indiceLevel);
+        return levelFornecedor.getLevelByIndiceGeral(id, indice);
     }
 
     public int getQtdLevels()
     {
-        if(levelFornecedor != null)
-        {
-            return levelFornecedor.getQtdLevels();
-        }
-        return 0;
+        return levelFornecedor.getQtdLevels();        
     }
 
     public int getIndiceMaxLevelLiberadoDoMapa()
     {
-        int maxLevelLiberado = PlayerPrefsMapas.getIndiceLevelLiberado();
-        if((id * 10) <= maxLevelLiberado)
-        {
-            return 10; 
-        }
-        maxLevelLiberado = maxLevelLiberado % 10;
-        if(maxLevelLiberado == 0)
-        {
-            return 1;
-        }
-        return maxLevelLiberado;         
+        return levelFornecedor.getIndiceMaxLevelLiberadoDoMapa(id);
     }
 
     public AbstractLevel getLevelByColetavelEntidade(ColetavelEntidade coletavelEntidade)

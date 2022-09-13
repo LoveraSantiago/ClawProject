@@ -1,8 +1,31 @@
 public abstract class AbstractFornecedorLevels
 {
-    public AbstractLevel getLevel(int level)
+    public AbstractLevel getLevelByIndiceDezena(int idMapa, int indice)
     {
-        return getLevelPorIndice(level);
+        AbstractLevel level = getLevelPorIndice(indice);
+        level.setIndiceLevelAtual(((10 * idMapa) - 10) + indice);
+        return level;
+    }
+
+    public AbstractLevel getLevelByIndiceGeral(int idMapa, int indice)
+    {
+        int indiceLevel = (indice + 1) % 11;
+        return getLevelByIndiceDezena(idMapa, indiceLevel);
+    }
+
+    public int getIndiceMaxLevelLiberadoDoMapa(int idMapa)
+    {
+        int maxLevelGeralLiberado = PlayerPrefsMapas.getIndiceLevelLiberado();
+        if ((idMapa * 10) <= maxLevelGeralLiberado)
+        {
+            return getQtdLevels();
+        }
+        maxLevelGeralLiberado = maxLevelGeralLiberado % 10;
+        if (maxLevelGeralLiberado == 0)
+        {
+            return 1;
+        }
+        return maxLevelGeralLiberado;
     }
 
     protected abstract AbstractLevel getLevelPorIndice(int level);
