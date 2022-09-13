@@ -4,7 +4,7 @@ public class MapaEntidade
     public string title { get; private set; }
     private string pathSprites;
     private AbstractFornecedorLevels levelFornecedor;
-    private AbstractFornecedorColetaveisLevels coletaveisLevelsFornecedor;
+    private AbstractFornecedorColetaveisLevels coletaveisFornecedor;
 
     public MapaEntidade()
     {   
@@ -23,10 +23,15 @@ public class MapaEntidade
         return this;
     }
 
-    public MapaEntidade addFornecedoresLevels(AbstractFornecedorLevels levelFornecedor, AbstractFornecedorColetaveisLevels levelColetavelTemporarioFornecedor)
+    public MapaEntidade addFornecedoresLevels(AbstractFornecedorLevels levelFornecedor)
     {
-        this.levelFornecedor = levelFornecedor;
-        this.coletaveisLevelsFornecedor = levelColetavelTemporarioFornecedor;
+        this.levelFornecedor = levelFornecedor;        
+        return this;
+    }
+
+    public MapaEntidade addFornecedoresColetaveis(AbstractFornecedorColetaveisLevels coletaveisFornecedor)
+    {
+        this.coletaveisFornecedor = coletaveisFornecedor;
         return this;
     }
 
@@ -78,6 +83,6 @@ public class MapaEntidade
 
     public AbstractLevel getLevelByColetavelEntidade(ColetavelEntidade coletavelEntidade)
     {
-        return coletaveisLevelsFornecedor.getLevel(coletavelEntidade);
+        return coletaveisFornecedor.getLevel(coletavelEntidade);
     }
 }
