@@ -18,11 +18,7 @@ public class ColetavelEntidade
     }
 
     public static ColetavelEntidade[] getColetaveisEntidades()
-    {
-        if(ARRAY_COLETAVEIS_ENTIDADES == null)
-        {
-            ARRAY_COLETAVEIS_ENTIDADES = FactoryDeColetaveisEntidades.factory();
-        }
+    {       
         return ARRAY_COLETAVEIS_ENTIDADES;
     }        
 
