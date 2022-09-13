@@ -1,9 +1,15 @@
 public class MapaEntidade 
 {
+    public MapaEnum mapaEnum { get; private set; }
     public int id { get; private set; }
     public string title { get; private set; }
     private AbstractFornecedorLevels levelFornecedor = FornecedorLevelsDefault.getInstance();
     private AbstractFornecedorColetaveisLevels coletaveisFornecedor;
+
+    public MapaEntidade(MapaEnum mapaEnum)
+    {
+        this.mapaEnum = mapaEnum;
+    }
 
     public MapaEntidade addInfo(int id, string title)
     {
@@ -52,5 +58,10 @@ public class MapaEntidade
     public AbstractLevel getLevelByColetavelEntidade(ColetavelEntidade coletavelEntidade)
     {
         return coletaveisFornecedor.getLevel(coletavelEntidade);
+    }
+
+    public ColetavelEntidade getColetavelEntidadeByIndice(int indice)
+    {
+        return null;
     }
 }

@@ -8,9 +8,9 @@ public class MegamanColetaveisFornecedor : AbstractFornecedorColetaveisLevels
     protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
-            new ColetavelEntidade(80, 50, "Kalinka", "kalinka", MapaEnum.MEGAMAN),
-            new ColetavelEntidade(81, 51, "Megaman", "megaman", MapaEnum.MEGAMAN),
-            new ColetavelEntidade(82, 52, "Tadashi", "tadashi", MapaEnum.MEGAMAN)
+            new ColetavelEntidade(80, 50, "Kalinka", "kalinka"),
+            new ColetavelEntidade(81, 51, "Megaman", "megaman"),
+            new ColetavelEntidade(82, 52, "Tadashi", "tadashi")
         };
     }
 

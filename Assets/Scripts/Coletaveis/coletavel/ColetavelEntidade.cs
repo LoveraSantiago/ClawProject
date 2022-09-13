@@ -8,7 +8,7 @@ public class ColetavelEntidade
     public string nomeSprite { get; private set; }//Deve ser unico        
     public MapaEnum mapaEnum { get; private set; }
 
-    public ColetavelEntidade(int id, int ordem, string nome, string nomeSprite, MapaEnum mapaEnum)
+    public ColetavelEntidade(int id, int ordem, string nome, string nomeSprite)
     {
         this.id         = id;
         this.nome       = nome;
@@ -25,5 +25,10 @@ public class ColetavelEntidade
     public bool isRandom()
     {
         return id == 1;
+    }
+
+    public void setMapaEnum(MapaEnum mapaEnum)
+    {
+        this.mapaEnum = mapaEnum;
     }
 }
