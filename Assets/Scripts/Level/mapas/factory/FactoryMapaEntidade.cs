@@ -6,7 +6,8 @@ public class FactoryMapaEntidade
         {
             case MapaEnum.DEFAULTS:
                 return new MapaEntidade()
-                    .addInfo(0, "Defaults");
+                    .addInfo(0, "Defaults")
+                    .addFornecedoresColetaveis(new DefaultColetaveisLevelFornecedor());
 
             case MapaEnum.FRUTAS:
                 return new MapaEntidade()
