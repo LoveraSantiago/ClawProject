@@ -56,7 +56,7 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
     private void configurarMapasParaNavegacao(GameObject prefabLevelsDto)
     {
         PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
-        LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapDto();
+        LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapLiberadosDto();
         MapaEntidade mapaNavegacao = ContextoEstaticoUtils.loadMapaEntidade();
         navegacaoDeArray = new NavegacaoDeArray<LevelMapDto>(levelsMapDto, mapaNavegacao.id - 1);
         if (PlayerPrefsMapas.isNovaLiberacaoMapa())

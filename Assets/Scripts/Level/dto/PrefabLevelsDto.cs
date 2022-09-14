@@ -5,7 +5,7 @@ public class PrefabLevelsDto : MonoBehaviour
 {
     [SerializeField] private LevelMapDto[] levelsMapDto;
 
-    public LevelMapDto[] getLevelsMapDto()
+    public LevelMapDto[] getLevelsMapLiberadosDto()
     {
         int limite = PlayerPrefsMapas.getIndiceMapaLiberado();
         int maxIndice = limite + 2;
