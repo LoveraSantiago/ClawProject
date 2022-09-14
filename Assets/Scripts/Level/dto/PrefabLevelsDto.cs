@@ -19,4 +19,16 @@ public class PrefabLevelsDto : MonoBehaviour
         return levelsMapsLimitado;
     }
 
+    public LevelMapDto getLevelMapByEnum(MapaEnum mapaEnum)
+    {
+        for (int contador = 0; contador < levelsMapDto.Length; contador++){
+            LevelMapDto levelMapDtoIt = levelsMapDto[contador];
+            if(levelMapDtoIt.MapaEnum == mapaEnum)
+            {
+                return levelMapDtoIt;
+            }
+        }
+        return null;
+    }
+
 }

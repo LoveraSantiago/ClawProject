@@ -6,9 +6,9 @@ public class MapaEntidade
     private AbstractFornecedorLevels levelFornecedor = FornecedorLevelsDefault.getInstance();
     private AbstractFornecedorColetaveisLevels coletaveisFornecedor;
 
-    public MapaEntidade(MapaEnum mapaEnum)
+    public MapaEntidade(LevelMapDto levelMapDto)
     {
-        this.mapaEnum = mapaEnum;
+        this.mapaEnum = levelMapDto.MapaEnum;
     }
 
     public MapaEntidade addInfo(int id, string title)
