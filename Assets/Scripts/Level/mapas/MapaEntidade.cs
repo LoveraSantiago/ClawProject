@@ -27,6 +27,7 @@ public class MapaEntidade
     public MapaEntidade addFornecedoresColetaveis(AbstractFornecedorColetaveisLevels coletaveisFornecedor)
     {
         this.coletaveisFornecedor = coletaveisFornecedor;
+        this.coletaveisFornecedor.configurar(mapaEnum);
         return this;
     }
 
@@ -66,6 +67,6 @@ public class MapaEntidade
         {
             return null;
         }
-        return coletaveisFornecedor.getColetavelEntidadeByIndice(indice, mapaEnum);
+        return coletaveisFornecedor.getColetavelEntidadeByIndice(indice);
     }
 }
