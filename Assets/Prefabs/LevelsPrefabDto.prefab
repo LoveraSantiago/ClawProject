@@ -58,6 +58,23 @@ MonoBehaviour:
     - {x: -348.3, y: 197.2}
     - {x: -32.1, y: 381.52}
     - {x: 173.9, y: 564.5}
+    coletaveisDto:
+    - nome: Leite
+      sprite: {fileID: 21300000, guid: 0b082251c8af14642bd56a42a89b025e, type: 3}
+    - nome: Maca
+      sprite: {fileID: 21300000, guid: 12248e2a121b8400aa4464081fa6dce1, type: 3}
+    - nome: Laranja
+      sprite: {fileID: 21300000, guid: dca2e233e9a6e4ef7be9a5b392e5effc, type: 3}
+    - nome: Pao
+      sprite: {fileID: 21300000, guid: efb723cbae18641a9954c28d1f5cf3e9, type: 3}
+    - nome: Aspargo
+      sprite: {fileID: 21300000, guid: 197f4c6ad86ad4eea9ece9b073043381, type: 3}
+    - nome: Coco
+      sprite: {fileID: 21300000, guid: 1b34677d209914bd88468db12bd7ef0f, type: 3}
+    - nome: Estrela Marinha
+      sprite: {fileID: 21300000, guid: 6ff825b4da47d4749bb0a0b28414a44d, type: 3}
+    - nome: Abobora
+      sprite: {fileID: 21300000, guid: 5dc9932ec24df9c4185f1ed16dad9ea9, type: 3}
   - mapaEnum: 2
     sprMapa: {fileID: 21300000, guid: f615137fbbf65e141affb46e03d2dbb6, type: 3}
     posicoes:
@@ -71,6 +88,7 @@ MonoBehaviour:
     - {x: -240.66, y: 452.97}
     - {x: 0, y: 608.76}
     - {x: 311.27, y: 532.49}
+    coletaveisDto: []
   - mapaEnum: 3
     sprMapa: {fileID: 21300000, guid: 592237e27ddcca84cb60f32d8443665c, type: 3}
     posicoes:
@@ -84,6 +102,7 @@ MonoBehaviour:
     - {x: -99.3, y: 364}
     - {x: 51.7, y: 483.7}
     - {x: 222, y: 615.9}
+    coletaveisDto: []
   - mapaEnum: 4
     sprMapa: {fileID: 21300000, guid: bd468a21bd70f4649836c1b662e366d8, type: 3}
     posicoes:
@@ -97,6 +116,7 @@ MonoBehaviour:
     - {x: 165.2, y: 364}
     - {x: -121.9, y: 483.7}
     - {x: 120.1, y: 615.9}
+    coletaveisDto: []
   - mapaEnum: 5
     sprMapa: {fileID: 21300000, guid: 8b77ab0f331e1f943ab7f05a152f475c, type: 3}
     posicoes:
@@ -110,6 +130,7 @@ MonoBehaviour:
     - {x: -236.4, y: 138.2}
     - {x: 100.7, y: 382.9}
     - {x: 101, y: 597.3}
+    coletaveisDto: []
   - mapaEnum: 6
     sprMapa: {fileID: 21300000, guid: 9e205ddc8bec90045837ff2496773523, type: 3}
     posicoes:
@@ -123,6 +144,7 @@ MonoBehaviour:
     - {x: -236.4, y: 389.5}
     - {x: -79.2, y: 531.5}
     - {x: 101, y: 627}
+    coletaveisDto: []
   - mapaEnum: 7
     sprMapa: {fileID: 21300000, guid: 65853aea469d1fa43996dec84f491384, type: 3}
     posicoes:
@@ -136,3 +158,4 @@ MonoBehaviour:
     - {x: -204.2, y: 389.5}
     - {x: -27.1, y: 531.5}
     - {x: 208.7, y: 627}
+    coletaveisDto: []
