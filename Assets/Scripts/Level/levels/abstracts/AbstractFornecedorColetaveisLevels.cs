@@ -1,16 +1,10 @@
 public abstract class AbstractFornecedorColetaveisLevels
-{
-    private MapaEnum mapaEnum;
+{    
     private ColetavelEntidade[] arrayDeColetaveis;    
-
-    public void configurar(MapaEnum mapaEnum)
+    
+    public ColetavelEntidade getColetavelEntidadeByIndice(int indice, LevelMapDto levelMapDto)
     {
-        this.mapaEnum = mapaEnum;
-    }
-
-    public ColetavelEntidade getColetavelEntidadeByIndice(int indice)
-    {
-        iniciarArrayDeColetaveis();
+        iniciarArrayDeColetaveis(levelMapDto);
         if(indice < 0 || indice > arrayDeColetaveis.Length)
         {
             return arrayDeColetaveis[0];
@@ -34,20 +28,21 @@ public abstract class AbstractFornecedorColetaveisLevels
 
     protected abstract AbstractLevel getLevelToColetavel(ColetavelEntidade coletavelEntidade);
 
-    private void iniciarArrayDeColetaveis()
+    private void iniciarArrayDeColetaveis(LevelMapDto levelMapDto)
     {
         if(arrayDeColetaveis == null)
         {
             arrayDeColetaveis = getArrayDeColetaveis();
         }
-        configurarMapaEnumParaColetaveis();
+        configurarColetaveis(levelMapDto);
     }
 
-    private void configurarMapaEnumParaColetaveis()
+    private void configurarColetaveis(LevelMapDto levelMapDto)
     {
         for (int contador = 0; contador < arrayDeColetaveis.Length; contador++)
         {
-            arrayDeColetaveis[contador].setMapaEnum(mapaEnum);
+            arrayDeColetaveis[contador].setMapaEnum(levelMapDto.MapaEnum);
+            ColetavelEntidadeDto coletavelEntidadeIt = levelMapDto.ColetaveisDto[contador];
         }
     }
 }

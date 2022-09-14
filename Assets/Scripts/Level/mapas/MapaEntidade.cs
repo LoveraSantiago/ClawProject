@@ -1,6 +1,7 @@
 public class MapaEntidade 
 {
-    public MapaEnum mapaEnum { get; private set; }
+    private LevelMapDto levelMapDto;
+
     public int id { get; private set; }
     public string title { get; private set; }
     private AbstractFornecedorLevels levelFornecedor = FornecedorLevelsDefault.getInstance();
@@ -8,7 +9,7 @@ public class MapaEntidade
 
     public MapaEntidade(LevelMapDto levelMapDto)
     {
-        this.mapaEnum = levelMapDto.MapaEnum;
+        this.levelMapDto = levelMapDto;
     }
 
     public MapaEntidade addInfo(int id, string title)
@@ -26,8 +27,7 @@ public class MapaEntidade
 
     public MapaEntidade addFornecedoresColetaveis(AbstractFornecedorColetaveisLevels coletaveisFornecedor)
     {
-        this.coletaveisFornecedor = coletaveisFornecedor;
-        this.coletaveisFornecedor.configurar(mapaEnum);
+        this.coletaveisFornecedor = coletaveisFornecedor;        
         return this;
     }
 
@@ -67,6 +67,6 @@ public class MapaEntidade
         {
             return null;
         }
-        return coletaveisFornecedor.getColetavelEntidadeByIndice(indice);
+        return coletaveisFornecedor.getColetavelEntidadeByIndice(indice, levelMapDto);
     }
 }
