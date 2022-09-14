@@ -12,8 +12,7 @@ public class ColetavelEntidade
     {
         this.id         = id;
         this.nome       = nome;
-        this.nomeSprite = nomeSprite;
-        this.mapaEnum   = mapaEnum;        
+        this.nomeSprite = nomeSprite;             
         this.ordem      = ordem;
     }        
 
