@@ -8,7 +8,7 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
 
     private ProdutorDeEvento<WrapperLevelMapDto> produtorDeEvento;
 
-    public NavegacaoMapas(BotoesNavegacaoMapaDto botoesNavegacao, GameObject prefabLevelsDto)
+    public NavegacaoMapas(BotoesNavegacaoMapaDto botoesNavegacao, PrefabLevelsDto prefabLevelsDto)
     {
         this.botoesNavegacao = botoesNavegacao;
         this.botoesNavegacao.BtnNavegacaoEsquerda.onClick.AddListener(() => navegacaoEsquerda());
@@ -53,10 +53,9 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
         produtorDeEvento.produziuEvento(wrapperMapLevelAtual);     
     }
 
-    private void configurarMapasParaNavegacao(GameObject prefabLevelsDto)
+    private void configurarMapasParaNavegacao(PrefabLevelsDto prefabLevelsDto)
     {
-        PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
-        LevelMapDto[] levelsMapDto = prefabLevels.getLevelsMapLiberadosDto();
+        LevelMapDto[] levelsMapDto = prefabLevelsDto.getLevelsMapLiberadosDto();
         MapaEntidade mapaNavegacao = ContextoEstaticoUtils.loadMapaEntidade();
         navegacaoDeArray = new NavegacaoDeArray<LevelMapDto>(levelsMapDto, mapaNavegacao.id - 1);
         if (PlayerPrefsMapas.isNovaLiberacaoMapa())

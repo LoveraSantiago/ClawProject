@@ -29,6 +29,12 @@ public class BoardAssemblerV6 : EditorWindow
 
         EditorLevelHelper.inicializar();
         HelperColetavelEntidade.configurar();
+
+        GameObject goPrefabsLevelsDto = Resources.Load<GameObject>("");
+        PrefabUtility.InstantiatePrefab(goPrefabsLevelsDto);
+        PrefabLevelsDto prefabLevelsDto = goPrefabsLevelsDto.GetComponent<PrefabLevelsDto>();
+        FactoryMapaEntidade.configurar(prefabLevelsDto);
+
         ReferenciasDoBoardPositivo referenciasDoBoard = new ReferenciasDoBoardPositivo();
         NavegacaoPeloBoardPositivo navegacao = new NavegacaoPeloBoardPositivo(root, referenciasDoBoard);
         ProcessadorDeOrdem processador = new ProcessadorDeOrdem(referenciasDoBoard);

@@ -85,4 +85,9 @@ public class FactoryMapaEntidade
         }
         return null;
     }
+
+    public static void configurar(PrefabLevelsDto prefabsLevelsDtoArg)
+    {
+        prefabsLevelsDto = prefabsLevelsDtoArg;
+    }
 }

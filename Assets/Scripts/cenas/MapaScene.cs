@@ -32,8 +32,11 @@ public class MapaScene : MonoBehaviour,
         ModalMapsManager modalManager = new ModalMapsManager(modalFaseDto, modalNoFichaDto);
         new BotoesCenasMapa(botoesCenasDto);
 
-        mapaUi = new MapaUi(levelMapaUiDto);        
-        NavegacaoMapas navegacaoMapas = new NavegacaoMapas(botoesNavegacao, prefabLevelsDto);        
+        mapaUi = new MapaUi(levelMapaUiDto);
+
+        PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
+        FactoryMapaEntidade.configurar(prefabLevels);
+        NavegacaoMapas navegacaoMapas = new NavegacaoMapas(botoesNavegacao, prefabLevels);        
 
         new AcaoMapaNavegado()
             .configurarProdutor(navegacaoMapas)
