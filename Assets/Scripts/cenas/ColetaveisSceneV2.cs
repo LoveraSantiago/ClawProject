@@ -101,7 +101,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
             IndiceArmarioSelecionadoDto indiceArmarioSelecionado =PlayerPrefsScrollPosition.recuperarELimparPosScrollRectColetaveis();
             scrollRect.verticalNormalizedPosition = indiceArmarioSelecionado.posScrollArmario;
             //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);            
-            ColetavelEntidade coletavelEntidade = HelperColetavelEntidade.getColetavelEntidadeById(indice);
+            ColetavelEntidade coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(indice);
             while (!prateleiras.isPrateleiraVisivel(coletavelEntidade.ordem))
             {
                 prateleiras.movimentarParaBaixo(prateleirasDto);

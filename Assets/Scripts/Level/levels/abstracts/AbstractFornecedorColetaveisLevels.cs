@@ -4,7 +4,12 @@ public abstract class AbstractFornecedorColetaveisLevels
 
     public ColetavelEntidade getColetavelEntidadeByIndice(int indice, MapaEnum mapaEnum)
     {
-        return null;
+        iniciarArrayDeColetaveis(mapaEnum);
+        if(indice < 0 || indice > arrayDeColetaveis.Length)
+        {
+            return arrayDeColetaveis[0];
+        }
+        return arrayDeColetaveis[indice];
     }
 
     private void iniciarArrayDeColetaveis(MapaEnum mapaEnum)

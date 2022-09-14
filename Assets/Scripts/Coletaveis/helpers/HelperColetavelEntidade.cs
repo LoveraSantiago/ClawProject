@@ -6,20 +6,7 @@ public class HelperColetavelEntidade
     private static Dictionary<int, ColetavelEntidade> coletaveisPorId;
     private static Dictionary<string, ColetavelEntidade> coletaveisPorSpriteNome;
     private static Dictionary<string, Sprite> spritesPorNome;
-    private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;   
-
-    public static ColetavelEntidade getColetavelEntidadeById(int idQuery)
-    {   
-        if (coletaveisPorId.ContainsKey(idQuery))
-        {
-            return coletaveisPorId[idQuery];
-        }
-        else
-        {
-            Debug.LogError("O id solicitado nao existe: " + idQuery);
-            return null;
-        }
-    }
+    private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;      
 
     public static ColetavelEntidade getColetavelEntidadeBySprite(string spriteName)
     {     
@@ -90,7 +77,8 @@ public class HelperColetavelEntidade
 
     public static Sprite getSpriteOvo()
     {
-        ColetavelEntidade coletavelEntidadeOvo = getColetavelEntidadeById(2);
+        MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.DEFAULTS);
+        ColetavelEntidade coletavelEntidadeOvo = mapaEntidade.getColetavelEntidadeByIndice(2);
         return spritesPorNome[coletavelEntidadeOvo.nomeSprite];
     }
 

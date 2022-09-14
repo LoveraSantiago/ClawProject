@@ -32,7 +32,8 @@ public class RemontadorBoard
                 }
                 else
                 {
-                    coletavelEntidade = HelperColetavelEntidade.getColetavelEntidadeById(id); 
+                    
+                    coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(id);
                     string nomeSprite = coletavelEntidade.nomeSprite;                    
                     Sprite spr = listaDeSprites.getSpriteByName(nomeSprite);
                     referencias.updateElementoGo(contadorLinha, contadorColuna, spr);                    

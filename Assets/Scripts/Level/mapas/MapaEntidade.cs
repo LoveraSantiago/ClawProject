@@ -62,6 +62,10 @@ public class MapaEntidade
 
     public ColetavelEntidade getColetavelEntidadeByIndice(int indice)
     {
-        return null;
+        if(coletaveisFornecedor == null)
+        {
+            return null;
+        }
+        return coletaveisFornecedor.getColetavelEntidadeByIndice(indice, mapaEnum);
     }
 }

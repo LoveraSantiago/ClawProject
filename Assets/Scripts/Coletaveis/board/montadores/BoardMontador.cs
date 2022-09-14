@@ -33,7 +33,7 @@ public abstract class BoardMontador
             }
             else
             {
-                coletavelEntidade = HelperColetavelEntidade.getColetavelEntidadeById(id);
+                coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(id);
             }
 
             Coletavel coletavel = criarColetavel(coletavelEntidade.nomeSprite, posicao);

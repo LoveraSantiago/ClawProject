@@ -2,8 +2,8 @@ public class ModalFimColetaveis : AbstractModalFim
 {
     public override void configurar(ModalManipulacao modalManipulacao)
     {
-        int idColetavel = PlayerPrefsColetaveis.recuperarNavegacaoColetavel();        
-        ColetavelEntidade coletavel = HelperColetavelEntidade.getColetavelEntidadeById(idColetavel);
+        int idColetavel = PlayerPrefsColetaveis.recuperarNavegacaoColetavel();
+        ColetavelEntidade coletavel = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(idColetavel);
 
         modalManipulacao.setScoreAtual("Coletou " + coletavel.nome);
         PlayerPrefsColetaveis.disponibilizarColetavel(coletavel.nome);

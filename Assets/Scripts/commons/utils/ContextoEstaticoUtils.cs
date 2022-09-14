@@ -4,7 +4,7 @@ public class ContextoEstaticoUtils
 {
     public static MonoBehaviour MonoBehaviour { get; private set; }
 
-    private static MapaEntidade mapaEntidade;
+    public static MapaEntidade mapaEntidade { get; private set; }
     public static AbstractLevel level { get; private set; }
 
     public static void configMainMono(MonoBehaviour monoBehaviour)
