@@ -13,6 +13,7 @@ public class BoardAssemblerV7 : EditorWindow
         wnd.titleContent = new GUIContent("BoardAssemblerV7");
     }
 
+
     public void CreateGUI()
     {
         // Each editor window contains a root VisualElement object
@@ -28,7 +29,6 @@ public class BoardAssemblerV7 : EditorWindow
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler/BoardAssemblerV7.uss");
                 
         GameObject goPrefabsLevelsDto = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelsPrefabDto.prefab");        
-        PrefabUtility.InstantiatePrefab(goPrefabsLevelsDto);
         PrefabLevelsDto prefabLevelsDto = goPrefabsLevelsDto.GetComponent<PrefabLevelsDto>();
 
         FactoryMapaEntidade.configurar(prefabLevelsDto);
