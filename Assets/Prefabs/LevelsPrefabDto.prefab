@@ -88,7 +88,17 @@ MonoBehaviour:
     - {x: -240.66, y: 452.97}
     - {x: 0, y: 608.76}
     - {x: 311.27, y: 532.49}
-    coletaveisDto: []
+    coletaveisDto:
+    - nome: Triceratops
+      sprite: {fileID: 21300000, guid: 05a0b12b1fd839f4c9287690fc8185f2, type: 3}
+    - nome: T-Rex
+      sprite: {fileID: 21300000, guid: 4f386c07d3f3d6e42a86f92041d7282b, type: 3}
+    - nome: Pterodatilo
+      sprite: {fileID: 21300000, guid: b604379b5f6888d4b8947cc446ce0bf1, type: 3}
+    - nome: Parassauro
+      sprite: {fileID: 21300000, guid: a006e7911ade7d84aade6733c5a773df, type: 3}
+    - nome: Pachicefalossauro
+      sprite: {fileID: 21300000, guid: fdf5728c7d408de48961d6e6a054559b, type: 3}
   - mapaEnum: 3
     sprMapa: {fileID: 21300000, guid: 592237e27ddcca84cb60f32d8443665c, type: 3}
     posicoes:
@@ -102,7 +112,25 @@ MonoBehaviour:
     - {x: -99.3, y: 364}
     - {x: 51.7, y: 483.7}
     - {x: 222, y: 615.9}
-    coletaveisDto: []
+    coletaveisDto:
+    - nome: Bola de Beisebol
+      sprite: {fileID: 21300000, guid: 57e7c97ffea881f498c2c221f044e2ea, type: 3}
+    - nome: Bola de Basquete
+      sprite: {fileID: 21300000, guid: 5b5753be35bc60a4d9330a68e05113e9, type: 3}
+    - nome: Bola de Bilhar
+      sprite: {fileID: 21300000, guid: f3344c762fee6f748811839b7960bd30, type: 3}
+    - nome: Bocha
+      sprite: {fileID: 21300000, guid: 19ba83337e8d64e41a0d0b2de90e5500, type: 3}
+    - nome: Bola de Leite
+      sprite: {fileID: 21300000, guid: 8349aa696a2d6784aa1f92609aef50a4, type: 3}
+    - nome: Bola de Boliche
+      sprite: {fileID: 21300000, guid: 8587647b79e11824399465740f3081e6, type: 3}
+    - nome: Bola de Capotao
+      sprite: {fileID: 21300000, guid: 9ccc019d7dfa14a409fcea95631145d4, type: 3}
+    - nome: Bola de Futebol
+      sprite: {fileID: 21300000, guid: 264fbbb07ad7044438cf9f750c68c2e0, type: 3}
+    - nome: Bola de Tenis
+      sprite: {fileID: 21300000, guid: 49da32c8555f3794ca2d049b7a4008de, type: 3}
   - mapaEnum: 4
     sprMapa: {fileID: 21300000, guid: bd468a21bd70f4649836c1b662e366d8, type: 3}
     posicoes:
@@ -116,7 +144,25 @@ MonoBehaviour:
     - {x: 165.2, y: 364}
     - {x: -121.9, y: 483.7}
     - {x: 120.1, y: 615.9}
-    coletaveisDto: []
+    coletaveisDto:
+    - nome: fg1
+      sprite: {fileID: 21300000, guid: 89457043be15594498911469ffc1bcae, type: 3}
+    - nome: fg2
+      sprite: {fileID: 21300000, guid: 3473d0c56d556a0448c57d8d0486595d, type: 3}
+    - nome: fg3
+      sprite: {fileID: 21300000, guid: d4bfb1893fa582347a6b4bb358e37193, type: 3}
+    - nome: fg4
+      sprite: {fileID: 21300000, guid: bc18de2e837d2cf47923a2d8ee98d738, type: 3}
+    - nome: fg5
+      sprite: {fileID: 21300000, guid: 732ee9d322891ba4b8bf4733eddea721, type: 3}
+    - nome: fg6
+      sprite: {fileID: 21300000, guid: ad53f0b28e0fedd44bd9f8b5a65ff5fc, type: 3}
+    - nome: fg7
+      sprite: {fileID: 21300000, guid: e04097d2215ceda4e9b290cc46b38a4e, type: 3}
+    - nome: fg8
+      sprite: {fileID: 21300000, guid: 3aa1c3ddf982eb84c848db473007240d, type: 3}
+    - nome: fg9
+      sprite: {fileID: 21300000, guid: 0576517fa8ab1534ab166c2d73d20ff5, type: 3}
   - mapaEnum: 5
     sprMapa: {fileID: 21300000, guid: 8b77ab0f331e1f943ab7f05a152f475c, type: 3}
     posicoes:
@@ -130,7 +176,15 @@ MonoBehaviour:
     - {x: -236.4, y: 138.2}
     - {x: 100.7, y: 382.9}
     - {x: 101, y: 597.3}
-    coletaveisDto: []
+    coletaveisDto:
+    - nome: Hiei
+      sprite: {fileID: 21300000, guid: 2274c44b187b9594bbc76d6720d36bdb, type: 3}
+    - nome: Kurama
+      sprite: {fileID: 21300000, guid: dc3c42af33a576c46903fc3693c14d66, type: 3}
+    - nome: Kuwabara
+      sprite: {fileID: 21300000, guid: 437f7c4b341e96346b445d3bba44d36b, type: 3}
+    - nome: Yusuke
+      sprite: {fileID: 21300000, guid: 393624cd56221e947a9620f49e1a2d4a, type: 3}
   - mapaEnum: 6
     sprMapa: {fileID: 21300000, guid: 9e205ddc8bec90045837ff2496773523, type: 3}
     posicoes:
@@ -144,7 +198,25 @@ MonoBehaviour:
     - {x: -236.4, y: 389.5}
     - {x: -79.2, y: 531.5}
     - {x: 101, y: 627}
-    coletaveisDto: []
+    coletaveisDto:
+    - nome: Geleia1
+      sprite: {fileID: 21300000, guid: 43ebebc4f66348742aebd4e299edc056, type: 3}
+    - nome: Geleia2
+      sprite: {fileID: 21300000, guid: f015e3d57412af54a8122956edd55d1d, type: 3}
+    - nome: Geleia3
+      sprite: {fileID: 21300000, guid: 840dfa22f37f965409f37872c25fac6b, type: 3}
+    - nome: Geleia4
+      sprite: {fileID: 21300000, guid: 9dd4441e09a1c5c49a189e008fd12888, type: 3}
+    - nome: Geleia5
+      sprite: {fileID: 21300000, guid: 720200b1a3cc529418c2aa47fa6bcc01, type: 3}
+    - nome: Geleia6
+      sprite: {fileID: 21300000, guid: 6706819c7274a4c41ba3ff2152e73d97, type: 3}
+    - nome: Geleia7
+      sprite: {fileID: 21300000, guid: 136defa860e947a4389ca2be213af03e, type: 3}
+    - nome: Geleia8
+      sprite: {fileID: 21300000, guid: 71468851d90e20b41b083e119464a72f, type: 3}
+    - nome: Geleia9
+      sprite: {fileID: 21300000, guid: 12e879f136c1a944d8534e481236a9e1, type: 3}
   - mapaEnum: 7
     sprMapa: {fileID: 21300000, guid: 65853aea469d1fa43996dec84f491384, type: 3}
     posicoes:
@@ -158,4 +230,14 @@ MonoBehaviour:
     - {x: -204.2, y: 389.5}
     - {x: -27.1, y: 531.5}
     - {x: 208.7, y: 627}
-    coletaveisDto: []
+    coletaveisDto:
+    - nome: Kopa
+      sprite: {fileID: 21300000, guid: b07721163716ef34ca912d2fbdeb570a, type: 3}
+    - nome: Luigi
+      sprite: {fileID: 21300000, guid: 37eae6d906268ed44b833abf39cfb530, type: 3}
+    - nome: Mario
+      sprite: {fileID: 21300000, guid: 6c378aae7d9d6d0499f6efc8f7e40b52, type: 3}
+    - nome: Princesa
+      sprite: {fileID: 21300000, guid: 322005054e22c3147bc4a03250154a5e, type: 3}
+    - nome: Todi
+      sprite: {fileID: 21300000, guid: d9bcd8ab1e3e2964bab7343a50755108, type: 3}
