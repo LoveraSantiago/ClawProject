@@ -1,10 +1,5 @@
 public class GeleiaColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override string getPathSprite()
-    {
-        return "geleia";
-    }
-
     protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {

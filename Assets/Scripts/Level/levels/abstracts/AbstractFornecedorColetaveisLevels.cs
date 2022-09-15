@@ -1,6 +1,6 @@
 public abstract class AbstractFornecedorColetaveisLevels
 {    
-    private ColetavelEntidade[] arrayDeColetaveis;    
+    public ColetavelEntidade[] arrayDeColetaveis { get; private set; }
     
     public ColetavelEntidade getColetavelEntidadeByIndice(int indice, LevelMapDto levelMapDto)
     {
@@ -12,14 +12,7 @@ public abstract class AbstractFornecedorColetaveisLevels
         return arrayDeColetaveis[indice];
     }
 
-    protected abstract ColetavelEntidade[] getArrayDeColetaveis();
-
-    public string getRootPathSprites()
-    {
-        return "sprites/coletaveis/" + getPathSprite() + "/";
-    }
-
-    public abstract string getPathSprite();
+    protected abstract ColetavelEntidade[] getArrayDeColetaveis();    
 
     public AbstractLevel getLevel(ColetavelEntidade coletavelEntidade)
     {

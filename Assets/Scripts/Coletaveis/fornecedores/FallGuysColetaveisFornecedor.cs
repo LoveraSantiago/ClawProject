@@ -1,10 +1,5 @@
 public class FallGuysColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override string getPathSprite()
-    {
-        return "fg";
-    }
-
     protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[]{

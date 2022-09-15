@@ -1,11 +1,6 @@
 public class MarioColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override string getPathSprite()
-    {
-        return "mario";
-    }
-
-    protected override ColetavelEntidade[] getArrayDeColetaveis()
+   protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
             new ColetavelEntidade(70, 45),

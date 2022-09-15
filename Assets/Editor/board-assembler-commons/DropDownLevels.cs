@@ -64,14 +64,13 @@ public abstract class DropDownLevels
             if (!"0".Equals(evt.newValue) && !"-".Equals(evt.newValue) && !"DEFAULTS".Equals(evt.newValue))
             {
                 MapaEnum mapaEnum = Mapas.getMapaEnumByName(evt.newValue);
-                List<ColetavelEntidade>  listaDeColetaveis = HelperColetavelEntidade.getListaDeColetaveisEntidadeByFamilia(mapaEnum);
-                MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
-                for(int contador = 0; contador < listaDeColetaveis.Count; contador++)
-                {
-                    string nomeSprite = listaDeColetaveis[contador].nomeSprite;
-                    string spriteFileName = mapaEntidade.getRootPathSprites() + nomeSprite;                    
-                    Sprite sprite = Resources.Load<Sprite>(spriteFileName);
-                    listaDeSprites.receberSprite(sprite);
+                MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
+                ColetavelEntidade[] coletaveis = mapaEntidade.getColetaveis();                
+                
+                for(int contador = 0; contador < coletaveis.Length; contador++)
+                {   
+                    ColetavelEntidade coletavelIt = coletaveis[contador];
+                    listaDeSprites.receberSprite(coletavelIt.sprite);
                 }                
                 dropDownLevels.choices = getListaBy(mapaEntidade);
                 dropDownLevels.index = 0;

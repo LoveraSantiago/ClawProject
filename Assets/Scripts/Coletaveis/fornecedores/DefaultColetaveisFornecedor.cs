@@ -1,10 +1,5 @@
 public class DefaultColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override string getPathSprite()
-    {
-        return "";
-    }
-
     protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {

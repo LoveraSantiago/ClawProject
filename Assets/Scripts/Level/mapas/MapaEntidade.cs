@@ -29,11 +29,6 @@ public class MapaEntidade
     {
         this.coletaveisFornecedor = coletaveisFornecedor;        
         return this;
-    }
-
-    public string getRootPathSprites()
-    {
-        return coletaveisFornecedor.getRootPathSprites();
     }    
 
     public AbstractLevel getLevelByIndiceDezena(int indice)
@@ -68,5 +63,10 @@ public class MapaEntidade
             return null;
         }
         return coletaveisFornecedor.getColetavelEntidadeByIndice(indice, levelMapDto);
+    }
+
+    public ColetavelEntidade[] getColetaveis()
+    {
+        return coletaveisFornecedor.arrayDeColetaveis;
     }
 }

@@ -1,10 +1,5 @@
 public class YuyuColetaveisFornecedor : AbstractFornecedorColetaveisLevels
 {
-    public override string getPathSprite()
-    {
-        return "yuyu";
-    }
-
     protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
