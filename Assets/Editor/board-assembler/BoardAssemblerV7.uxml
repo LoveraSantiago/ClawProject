@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements" xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd">
+  <engine:Style src="BoardAssemblerV7.uss"/>
+  <engine:VisualElement name="main">
+    <engine:VisualElement name="containerCima">
+      <engine:VisualElement name="container1">
+        <engine:VisualElement name="primeiraLinha" class="ctnLinha">
+          <engine:Button name="botaoCimaAll" class="btnDirecaoAll"/>
+          <engine:Button name="botaoCima" class="btnDirecao"/>
+        </engine:VisualElement>
+
+        <engine:VisualElement name="segundaLinha" class="ctnLinha">
+          <engine:Button name="botaoEsquerdaAll"/>
+          <engine:Button name="botaoEsquerda" class="btnDirecao"/>
+          <engine:Button name="botaoDireita" class="btnDirecao"/>
+          <engine:Button name="botaoDireitaAll" />
+        </engine:VisualElement>
+
+        <engine:VisualElement name="terceiraLinha" class="ctnLinha">
+          <engine:Button name="botaoBaixo" class="btnDirecao"/>
+          <engine:Button name="botaoBaixoAll" class="btnDirecaoAll"/>
+        </engine:VisualElement>
+      </engine:VisualElement>
+
+      <engine:VisualElement name="container1Lado">
+        <engine:VisualElement name="espacoDropDownMapas">
+        </engine:VisualElement>
+        <engine:VisualElement name="espacoDropDown">
+        </engine:VisualElement>
+        <engine:Button name="botaoClean" text="Clean"/>
+        <engine:Button name="botaoProcessar" text="Proc Coletaveis"/>
+        <engine:Button name="botaoProcessarOrdem" text="Proc Ordem"/>
+      </engine:VisualElement>
+    </engine:VisualElement>
+
+    <engine:VisualElement name="container">
+      <editor:IntegerField label="Ordem Coletavel" name="ordem"/>
+    </engine:VisualElement>
+  </engine:VisualElement>
+</engine:UXML>
