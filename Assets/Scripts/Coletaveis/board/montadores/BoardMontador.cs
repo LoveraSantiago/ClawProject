@@ -22,12 +22,12 @@ public abstract class BoardMontador
             Vector3 posicao = calcularPosicao(posItem, contadorColuna, altura);
 
             ColetavelEntidade coletavelEntidade = null;
-            if (ColetavelEntidade.isIndiceVazio(id))//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
+            if (HelperColetavelEntidade.isIndiceVazio(id))//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
             {               
                 yield return onPosicaoVaziaCriado(contadorColuna, contadorLinha, posicao);                
                 continue;
             }
-            else if (ColetavelEntidade.isIndiceRandom(id))//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
+            else if (HelperColetavelEntidade.isIndiceRandom(id))//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
             {
                 coletavelEntidade = HelperColetavelEntidade.getRandomColetavelEntidadeByFamilia(mapaEnum);
             }

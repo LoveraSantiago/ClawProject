@@ -121,5 +121,15 @@ public class HelperColetavelEntidade
         PrefabDeSpriteDto prefabSpritesDto = goPrefabSprites.GetComponent<PrefabDeSpriteDto>();
         spritesPorNome = prefabSpritesDto.getDicionarioDeSprites();
         configurar();
-    }    
+    }
+
+    public static bool isIndiceVazio(int indice)
+    {
+        return indice == -1;
+    }
+
+    public static bool isIndiceRandom(int indice)
+    {
+        return indice == -2;
+    }
 }
