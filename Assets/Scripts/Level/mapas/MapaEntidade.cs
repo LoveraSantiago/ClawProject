@@ -67,6 +67,6 @@ public class MapaEntidade
 
     public ColetavelEntidade[] getColetaveis()
     {
-        return coletaveisFornecedor.arrayDeColetaveis;
+        return coletaveisFornecedor.getColetaveis(levelMapDto);
     }
 }

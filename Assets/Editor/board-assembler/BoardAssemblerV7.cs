@@ -29,7 +29,7 @@ public class BoardAssemblerV7 : EditorWindow
 
         //HelperColetavelEntidade.configurar();
         GameObject goPrefabsLevelsDto = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelsPrefabDto.prefab");
-        Debug.Log(goPrefabsLevelsDto);
+        //Debug.Log(goPrefabsLevelsDto);
         PrefabUtility.InstantiatePrefab(goPrefabsLevelsDto);
         PrefabLevelsDto prefabLevelsDto = goPrefabsLevelsDto.GetComponent<PrefabLevelsDto>();
         FactoryMapaEntidade.configurar(prefabLevelsDto);

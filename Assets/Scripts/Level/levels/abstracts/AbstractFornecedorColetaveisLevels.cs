@@ -1,6 +1,6 @@
 public abstract class AbstractFornecedorColetaveisLevels
-{    
-    public ColetavelEntidade[] arrayDeColetaveis { get; private set; }
+{
+    private ColetavelEntidade[] arrayDeColetaveis;
     
     public ColetavelEntidade getColetavelEntidadeByIndice(int indice, LevelMapDto levelMapDto)
     {
@@ -20,6 +20,12 @@ public abstract class AbstractFornecedorColetaveisLevels
     }
 
     protected abstract AbstractLevel getLevelToColetavel(ColetavelEntidade coletavelEntidade);
+
+    public ColetavelEntidade[] getColetaveis(LevelMapDto levelMapDto)
+    {
+        iniciarArrayDeColetaveis(levelMapDto);
+        return arrayDeColetaveis;
+    }
 
     private void iniciarArrayDeColetaveis(LevelMapDto levelMapDto)
     {
