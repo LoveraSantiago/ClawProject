@@ -4,8 +4,9 @@ public class MapaEntidade
 
     public int id { get; private set; }
     public string title { get; private set; }
-    private AbstractFornecedorLevels levelFornecedor = FornecedorLevelsDefault.getInstance();
-    private AbstractFornecedorColetaveisLevels coletaveisFornecedor;
+
+    private AbstractFornecedorLevels levelFornecedor                = FornecedorLevelsDefault.getInstance();
+    private AbstractFornecedorColetaveisLevels coletaveisFornecedor = FornecedorColetaveisDefault.getInstace();
 
     public MapaEntidade(LevelMapDto levelMapDto)
     {
@@ -58,10 +59,6 @@ public class MapaEntidade
 
     public ColetavelEntidade getColetavelEntidadeByIndice(int indice)
     {
-        if(coletaveisFornecedor == null)
-        {
-            return null;
-        }
         return coletaveisFornecedor.getColetavelEntidadeByIndice(indice, levelMapDto);
     }
 

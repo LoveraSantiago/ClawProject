@@ -1,6 +1,6 @@
 public class FornecedorLevelsDefault : AbstractFornecedorLevels
 {
-    private static FornecedorLevelsDefault level;
+    private static FornecedorLevelsDefault instance;
 
     public override int getQtdLevels()
     {
@@ -14,10 +14,10 @@ public class FornecedorLevelsDefault : AbstractFornecedorLevels
 
     public static FornecedorLevelsDefault getInstance()
     {
-        if(level == null)
+        if(instance == null)
         {
-            level = new FornecedorLevelsDefault();
+            instance = new FornecedorLevelsDefault();
         }
-        return level;
+        return instance;
     }
 }
