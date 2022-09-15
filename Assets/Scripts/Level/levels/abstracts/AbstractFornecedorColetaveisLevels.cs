@@ -41,8 +41,12 @@ public abstract class AbstractFornecedorColetaveisLevels
     {
         for (int contador = 0; contador < arrayDeColetaveis.Length; contador++)
         {
-            arrayDeColetaveis[contador].setMapaEnum(levelMapDto.MapaEnum);
-            ColetavelEntidadeDto coletavelEntidadeIt = levelMapDto.ColetaveisDto[contador];
+            ColetavelEntidade coletavelEntidadeIt = arrayDeColetaveis[contador];
+            coletavelEntidadeIt.setMapaEnum(levelMapDto.MapaEnum);
+
+            ColetavelEntidadeDto coletavelEntidadeDtoIt = levelMapDto.ColetaveisDto[contador];
+            coletavelEntidadeIt.setNome(coletavelEntidadeDtoIt.Nome);
+            coletavelEntidadeIt.setSprite(coletavelEntidadeDtoIt.Sprite);
         }
     }
 }

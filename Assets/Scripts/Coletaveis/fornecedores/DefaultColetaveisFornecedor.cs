@@ -8,9 +8,9 @@ public class DefaultColetaveisFornecedor : AbstractFornecedorColetaveisLevels
     protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
-            new ColetavelEntidade(0, -1, "vazio" , "tile-vazio"      ),
-            new ColetavelEntidade(1, -1, "random", "tile-random"     ),
-            new ColetavelEntidade(2, -1, "ovo"   , "capsula-completa"),
+            new ColetavelEntidade(0, -1),
+            new ColetavelEntidade(1, -1),
+            new ColetavelEntidade(2, -1),
         };
     }
 

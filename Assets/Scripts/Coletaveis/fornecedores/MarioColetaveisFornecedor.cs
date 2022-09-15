@@ -8,11 +8,11 @@ public class MarioColetaveisFornecedor : AbstractFornecedorColetaveisLevels
     protected override ColetavelEntidade[] getArrayDeColetaveis()
     {
         return new ColetavelEntidade[] {
-            new ColetavelEntidade(70, 45, "Kopa"    , "kopa"    ),
-            new ColetavelEntidade(71, 46, "Luigi"   , "luigi"   ),
-            new ColetavelEntidade(72, 47, "Mario"   , "mario"   ),
-            new ColetavelEntidade(73, 48, "Princesa", "princesa"),
-            new ColetavelEntidade(74, 49, "Todi"    , "todi"    )
+            new ColetavelEntidade(70, 45),
+            new ColetavelEntidade(71, 46),
+            new ColetavelEntidade(72, 47),
+            new ColetavelEntidade(73, 48),
+            new ColetavelEntidade(74, 49)
         };
     }
 
