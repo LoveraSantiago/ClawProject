@@ -34,11 +34,11 @@ public class ColetavelEntidade
 
     public static bool isIndiceVazio(int indice)
     {
-        return indice == 10;
+        return indice == -1;
     }
 
     public static bool isIndiceRandom(int indice)
     {
-        return indice == 11;
+        return indice == -2;
     }
 }

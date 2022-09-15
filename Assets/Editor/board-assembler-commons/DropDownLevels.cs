@@ -65,6 +65,7 @@ public abstract class DropDownLevels
             {
                 MapaEnum mapaEnum = Mapas.getMapaEnumByName(evt.newValue);
                 MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
+                ContextoEstaticoUtils.configMapaEntidade(mapaEntidade);
                 ColetavelEntidade[] coletaveis = mapaEntidade.getColetaveis();                
                 
                 for(int contador = 0; contador < coletaveis.Length; contador++)
