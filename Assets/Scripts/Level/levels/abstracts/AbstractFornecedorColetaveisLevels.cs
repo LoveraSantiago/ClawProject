@@ -14,7 +14,7 @@ public abstract class AbstractFornecedorColetaveisLevels
         return arrayDeColetaveis[indice];
     }
 
-    public ColetavelEntidade getColetavelEntidadeBySprite(Sprite sprite, LevelMapDto levelMapDto)
+    public int getIndiceColetavelEntidadeBySprite(Sprite sprite, LevelMapDto levelMapDto)
     {
         iniciarArrayDeColetaveis(levelMapDto);
         for(int contador = 0; contador < arrayDeColetaveis.Length; contador++)
@@ -22,10 +22,10 @@ public abstract class AbstractFornecedorColetaveisLevels
             ColetavelEntidade coletavelEntidadeIt = arrayDeColetaveis[contador];
             if(coletavelEntidadeIt.sprite == sprite)
             {
-                return coletavelEntidadeIt;
+                return contador;
             }
         }
-        return null;
+        return HelperColetavelEntidade.getIndiceSpriteNaoEncontrado(sprite);
     }
 
     protected abstract ColetavelEntidade[] getArrayDeColetaveis();    

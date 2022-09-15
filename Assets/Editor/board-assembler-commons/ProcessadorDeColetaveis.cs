@@ -24,9 +24,9 @@ public class ProcessadorDeColetaveis
             for (int contadorColuna = 0; contadorColuna < totalColunas; contadorColuna++)
             {   
                 Sprite spriteIt = referencias.getSpriteElementoGo(contadorLinha, contadorColuna);
-                ColetavelEntidade coletavelEntidade = mapaEntidade.getColetavelEntidadeBySprite(spriteIt);
+                int indice = mapaEntidade.getIndiceColetavelEntidadeBySprite(spriteIt);
 
-                result += coletavelEntidade.id + addVirgula(contadorColuna, totalColunas);
+                result += indice + addVirgula(contadorColuna, totalColunas);
             }            
             result += "}" + addNovaLinha(contadorLinha, totalLinhas);
         }

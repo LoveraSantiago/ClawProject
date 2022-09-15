@@ -132,4 +132,16 @@ public class HelperColetavelEntidade
     {
         return indice == -2;
     }
+
+    public static int getIndiceSpriteNaoEncontrado(Sprite sprite)
+    {
+        if ("tile-random".Equals(sprite.name))
+        {
+            return -2;
+        }
+        else
+        {
+            return -1;
+        }
+    }
 }

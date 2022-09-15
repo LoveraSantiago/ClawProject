@@ -13,8 +13,8 @@ public class ColetavelEntidade
 
     public ColetavelEntidade(int id, int ordem)
     {
-        this.id         = id;        
-        this.ordem      = ordem;
+        this.id    = id;        
+        this.ordem = ordem;
     }        
 
     public void setNome(string nome)

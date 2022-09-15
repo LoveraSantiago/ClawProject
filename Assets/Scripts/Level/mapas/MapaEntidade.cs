@@ -64,9 +64,9 @@ public class MapaEntidade
         return coletaveisFornecedor.getColetavelEntidadeByIndice(indice, levelMapDto);
     }
 
-    public ColetavelEntidade getColetavelEntidadeBySprite(Sprite sprite)
+    public int getIndiceColetavelEntidadeBySprite(Sprite sprite)
     {
-        return coletaveisFornecedor.getColetavelEntidadeBySprite(sprite, levelMapDto);
+        return coletaveisFornecedor.getIndiceColetavelEntidadeBySprite(sprite, levelMapDto);
     }
 
     public ColetavelEntidade[] getColetaveis()
