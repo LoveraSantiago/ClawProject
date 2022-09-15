@@ -26,12 +26,11 @@ public class BoardAssemblerV7 : EditorWindow
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler/BoardAssemblerV7.uss");
-
-        //HelperColetavelEntidade.configurar();
-        GameObject goPrefabsLevelsDto = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelsPrefabDto.prefab");
-        //Debug.Log(goPrefabsLevelsDto);
+                
+        GameObject goPrefabsLevelsDto = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelsPrefabDto.prefab");        
         PrefabUtility.InstantiatePrefab(goPrefabsLevelsDto);
         PrefabLevelsDto prefabLevelsDto = goPrefabsLevelsDto.GetComponent<PrefabLevelsDto>();
+
         FactoryMapaEntidade.configurar(prefabLevelsDto);
         EditorLevelHelper.inicializar();
 

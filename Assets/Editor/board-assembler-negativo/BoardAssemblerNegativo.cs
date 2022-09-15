@@ -26,8 +26,13 @@ public class BoardAssemblerNegativo : EditorWindow
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler-negativo/BoardAssemblerNegativo.uss");
 
+        GameObject goPrefabsLevelsDto = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelsPrefabDto.prefab");
+        PrefabUtility.InstantiatePrefab(goPrefabsLevelsDto);
+        PrefabLevelsDto prefabLevelsDto = goPrefabsLevelsDto.GetComponent<PrefabLevelsDto>();
+
+        FactoryMapaEntidade.configurar(prefabLevelsDto);
         EditorLevelHelper.inicializar();
-        HelperColetavelEntidade.configurar();
+                
         ReferenciasDoBoardNegativo referenciasDoBoard = new ReferenciasDoBoardNegativo();
         NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);        
         ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);

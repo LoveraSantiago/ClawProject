@@ -26,8 +26,13 @@ public class BoardAssemblerObstaculosV3 : EditorWindow
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler-obstaculos/BoardAssemblerObstaculosV3.uss");
 
+        GameObject goPrefabsLevelsDto = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelsPrefabDto.prefab");
+        PrefabUtility.InstantiatePrefab(goPrefabsLevelsDto);
+        PrefabLevelsDto prefabLevelsDto = goPrefabsLevelsDto.GetComponent<PrefabLevelsDto>();
+
+        FactoryMapaEntidade.configurar(prefabLevelsDto);
         EditorLevelHelper.inicializar();
-        HelperColetavelEntidade.configurar();
+
         ReferenciasDoBoardObstaculo referenciasDoBoard = new ReferenciasDoBoardObstaculo();
         NavegacaoPeloBoardObstaculos navegacao = new NavegacaoPeloBoardObstaculos(root, referenciasDoBoard);
 
