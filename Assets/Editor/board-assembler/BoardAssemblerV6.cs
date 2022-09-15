@@ -27,13 +27,13 @@ public class BoardAssemblerV6 : EditorWindow
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler/BoardAssemblerV6.uss");
 
-        EditorLevelHelper.inicializar();
-        HelperColetavelEntidade.configurar();
-
-        GameObject goPrefabsLevelsDto = Resources.Load<GameObject>("");
+        //HelperColetavelEntidade.configurar();
+        GameObject goPrefabsLevelsDto = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelsPrefabDto.prefab");
+        Debug.Log(goPrefabsLevelsDto);
         PrefabUtility.InstantiatePrefab(goPrefabsLevelsDto);
         PrefabLevelsDto prefabLevelsDto = goPrefabsLevelsDto.GetComponent<PrefabLevelsDto>();
         FactoryMapaEntidade.configurar(prefabLevelsDto);
+        EditorLevelHelper.inicializar();
 
         ReferenciasDoBoardPositivo referenciasDoBoard = new ReferenciasDoBoardPositivo();
         NavegacaoPeloBoardPositivo navegacao = new NavegacaoPeloBoardPositivo(root, referenciasDoBoard);
