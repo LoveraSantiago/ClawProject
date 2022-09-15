@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public abstract class AbstractFornecedorColetaveisLevels
 {
     private ColetavelEntidade[] arrayDeColetaveis;
@@ -10,6 +12,20 @@ public abstract class AbstractFornecedorColetaveisLevels
             return arrayDeColetaveis[0];
         }
         return arrayDeColetaveis[indice];
+    }
+
+    public ColetavelEntidade getColetavelEntidadeBySprite(Sprite sprite, LevelMapDto levelMapDto)
+    {
+        iniciarArrayDeColetaveis(levelMapDto);
+        for(int contador = 0; contador < arrayDeColetaveis.Length; contador++)
+        {
+            ColetavelEntidade coletavelEntidadeIt = arrayDeColetaveis[contador];
+            if(coletavelEntidadeIt.sprite == sprite)
+            {
+                return coletavelEntidadeIt;
+            }
+        }
+        return null;
     }
 
     protected abstract ColetavelEntidade[] getArrayDeColetaveis();    

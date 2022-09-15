@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class MapaEntidade 
 {
     private LevelMapDto levelMapDto;
@@ -62,8 +64,14 @@ public class MapaEntidade
         return coletaveisFornecedor.getColetavelEntidadeByIndice(indice, levelMapDto);
     }
 
+    public ColetavelEntidade getColetavelEntidadeBySprite(Sprite sprite)
+    {
+        return coletaveisFornecedor.getColetavelEntidadeBySprite(sprite, levelMapDto);
+    }
+
     public ColetavelEntidade[] getColetaveis()
     {
         return coletaveisFornecedor.getColetaveis(levelMapDto);
     }
+
 }

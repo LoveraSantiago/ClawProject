@@ -31,8 +31,7 @@ public class RemontadorBoard
                     referencias.updateElementoGo(contadorLinha, contadorColuna, listaDeSprites.getSpriteRandom());                                        
                 }
                 else
-                {
-                    
+                {                    
                     coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(id);
                     string nomeSprite = coletavelEntidade.nomeSprite;                    
                     Sprite spr = listaDeSprites.getSpriteByName(nomeSprite);
