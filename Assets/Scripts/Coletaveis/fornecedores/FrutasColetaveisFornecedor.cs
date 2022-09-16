@@ -14,17 +14,17 @@ public class FrutasColetaveisFornecedor : AbstractFornecedorColetaveisLevels
         };
     }
 
-    protected override AbstractLevel getLevelToColetavel(ColetavelEntidade coletavelEntidade)
+    protected override AbstractLevel getLevelToColetavel(int indice)
     {
-        switch (coletavelEntidade.id)
+        switch (indice)
         {
-            case 10: return new LevelLeite(); 
-            case 11: return new LevelMaca();
-            case 12: return new LevelLaranja();
-            case 13: return new LevelPao();
-            case 14: return new LevelAspargo(); 
-            case 15: return new LevelCoco();
-            case 16: return new LevelEstrelaMarinha();
+            case 0: return new LevelLeite(); 
+            case 1: return new LevelMaca();
+            case 2: return new LevelLaranja();
+            case 3: return new LevelPao();
+            case 4: return new LevelAspargo(); 
+            case 5: return new LevelCoco();
+            case 6: return new LevelEstrelaMarinha();
         }
         return null;
     }

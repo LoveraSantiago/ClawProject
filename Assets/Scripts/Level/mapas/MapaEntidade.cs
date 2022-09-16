@@ -44,6 +44,11 @@ public class MapaEntidade
         return levelFornecedor.getLevelByIndiceGeral(id, indice);
     }
 
+    public AbstractLevel getLevelColetavelByIndice(int indice)
+    {
+        return coletaveisFornecedor.getLevel(indice);
+    }
+
     public int getQtdLevels()
     {
         return levelFornecedor.getQtdLevels();        
@@ -53,12 +58,7 @@ public class MapaEntidade
     {
         return levelFornecedor.getIndiceMaxLevelLiberadoDoMapa(id);
     }
-
-    public AbstractLevel getLevelByColetavelEntidade(ColetavelEntidade coletavelEntidade)
-    {
-        return coletaveisFornecedor.getLevel(coletavelEntidade);
-    }
-
+    
     public ColetavelEntidade getColetavelEntidadeByIndice(int indice)
     {
         return coletaveisFornecedor.getColetavelEntidadeByIndice(indice, levelMapDto);

@@ -31,7 +31,7 @@ public abstract class DropDownLevels
     private void criarComponenteDropDownField(
        VisualElement root, BoardCleaner cleaner, RemontadorBoard remontador)
     {   
-        dropDownLevels = new DropdownField("Dicionarios", listaDeLevels, 0);        
+        dropDownLevels = new DropdownField("Levels", listaDeLevels, 0);        
         dropDownLevels.RegisterCallback<ChangeEvent<string>>((evt) => {
 
             cleaner.clean();

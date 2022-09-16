@@ -30,12 +30,12 @@ public abstract class AbstractFornecedorColetaveisLevels
 
     protected abstract ColetavelEntidade[] getArrayDeColetaveis();    
 
-    public AbstractLevel getLevel(ColetavelEntidade coletavelEntidade)
+    public AbstractLevel getLevel(int indice)
     {
         return getLevelToColetavel(coletavelEntidade);
     }
 
-    protected abstract AbstractLevel getLevelToColetavel(ColetavelEntidade coletavelEntidade);
+    protected abstract AbstractLevel getLevelToColetavel(int indice);
 
     public ColetavelEntidade[] getColetaveis(LevelMapDto levelMapDto)
     {

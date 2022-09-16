@@ -53,6 +53,18 @@ public class EditorLevelHelper
                 listaDeNomes.Add(levelIt.getLevelName());
             }
         }
+
+        for(int contador = 0; contador < mapaEntidade.getColetaveis().Length; contador++)
+        {
+            AbstractLevel levelIt = mapaEntidade.getLevelColetavelByIndice(contador);
+            if(levelIt != null)
+            {
+                if (!LevelUtils.isObstaculoLevel(levelIt))
+                {
+                    listaDeNomes.Add(levelIt.getLevelName());
+                }
+            }
+        }
         return listaDeNomes;
     }
 
