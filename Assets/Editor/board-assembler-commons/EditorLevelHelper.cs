@@ -57,7 +57,16 @@ public class EditorLevelHelper
         for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
         {
             AbstractLevel levelIt = mapaEntidade.getLevelByIndiceDezena(contadorLevels);
-            if (levelIt.getLevelName().Equals(nomeLevel))
+            if (levelIt != null && levelIt.getLevelName().Equals(nomeLevel))
+            {
+                return levelIt;
+            }
+        }
+
+        for(int contador = 0; contador < mapaEntidade.getColetaveis().Length; contador++)
+        {
+            AbstractLevel levelIt = mapaEntidade.getLevelColetavelByIndice(contador);
+            if (levelIt != null && levelIt.getLevelName().Equals(nomeLevel))
             {
                 return levelIt;
             }
@@ -81,10 +90,8 @@ public class EditorLevelHelper
         {
             AbstractLevel levelIt = mapaEntidade.getLevelColetavelByIndice(contador);
             if (levelIt != null && filtro.Invoke(levelIt))
-            {
-                
-                listaDeNomes.Add(levelIt.getLevelName());
-                
+            {                
+                listaDeNomes.Add(levelIt.getLevelName());                
             }
         }
         return listaDeNomes;
