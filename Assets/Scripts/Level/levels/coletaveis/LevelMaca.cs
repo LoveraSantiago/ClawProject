@@ -2,6 +2,11 @@ using System.Collections.Generic;
 
 public class LevelMaca : AbstractLevelColetavel
 {
+    public override string getLevelTitle()
+    {
+        return "Level Maca";
+    }
+
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]

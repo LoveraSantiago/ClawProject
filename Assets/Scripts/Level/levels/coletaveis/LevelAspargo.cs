@@ -2,6 +2,11 @@ using System.Collections.Generic;
 
 public class LevelAspargo : AbstractLevelColetavel
 {
+    public override string getLevelTitle()
+    {
+        return "Level Aspargo";
+    }
+
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]

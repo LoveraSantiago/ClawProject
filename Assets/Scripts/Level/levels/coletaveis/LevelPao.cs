@@ -2,6 +2,11 @@ using System.Collections.Generic;
 
 public class LevelPao : AbstractLevelColetavel
 {
+    public override string getLevelTitle()
+    {
+        return "Level Pao";
+    }
+
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
@@ -79,18 +84,5 @@ public class LevelPao : AbstractLevelColetavel
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorPao();
-    }  
-
-    public class FornecedorPao : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelPao();
-        }
-    }
+    }       
 }

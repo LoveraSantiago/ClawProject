@@ -2,12 +2,7 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevelColetavel : AbstractLevel
 {
-    public abstract int getIdColetavel();
-
-    public override string getLevelTitle()
-    {
-        return "Coletavel Level";
-    }
+    public abstract int getIdColetavel();   
 
     public override string getMsgObjetivoLevel()
     {
