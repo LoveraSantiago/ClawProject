@@ -7,7 +7,7 @@ public class FornecedorColetaveisDefault : AbstractFornecedorColetaveisLevels
         return new ColetavelEntidade[] { };
     }
 
-    protected override AbstractLevel getLevelToColetavel(ColetavelEntidade coletavelEntidade)
+    protected override AbstractLevel getLevelToColetavel(int indice)
     {
         return null;
     }

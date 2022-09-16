@@ -32,7 +32,7 @@ public abstract class AbstractFornecedorColetaveisLevels
 
     public AbstractLevel getLevel(int indice)
     {
-        return getLevelToColetavel(coletavelEntidade);
+        return getLevelToColetavel(indice);
     }
 
     protected abstract AbstractLevel getLevelToColetavel(int indice);
