@@ -102,25 +102,12 @@ public class HelperColetavelEntidade
             }
         }
         return array;
-    }
-
-    public static void configurar()
-    {
-        //if (coletaveisPorId == null)
-        //{
-        //    MontadorDicionariosColetaveis montador = new MontadorDicionariosColetaveis();
-        //    montador.montarDicionariosDeColetaveis();
-        //    coletaveisPorId      = montador.dicionarioDeIds;
-        //    coletaveisPorSpriteNome  = montador.dicionarioDeSprites;
-        //    familiasPorEnum = montador.dicionarioDeFamilias;
-        //}
-    }
+    }   
 
     public static void configurar(GameObject goPrefabSprites)
     {     
         PrefabDeSpriteDto prefabSpritesDto = goPrefabSprites.GetComponent<PrefabDeSpriteDto>();
-        spritesPorNome = prefabSpritesDto.getDicionarioDeSprites();
-        configurar();
+        spritesPorNome = prefabSpritesDto.getDicionarioDeSprites();        
     }
 
     public static bool isIndiceVazio(int indice)
