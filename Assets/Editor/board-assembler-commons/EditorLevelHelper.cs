@@ -22,6 +22,7 @@ public class EditorLevelHelper
         {
             MapaEnum mapaIt = mapas[contadorMapas];
             listaDeNomesMapas.Add(mapaIt.ToString());
+
             //Debug.Log("mapa " + mapaIt.ToString());
 
             MapaEntidade mapaEntidadeIt = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(mapaIt);
