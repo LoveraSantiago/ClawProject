@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class Level7 : Level1
+public class Level7 : AbstractLevel
 {
     //COPIADO DO LEVEL 1 SO PRA TER CLASSE P COLOCAR COR NA MAQUINA
     public override string getLevelTitle()
@@ -16,7 +16,20 @@ public class Level7 : Level1
     public override TipoGame getTipoGame()
     {
         return TipoGame.NORMAL;
-    }      
+    }
+
+    public override int[,] getArrayDeColetaveis()
+    {
+        return new int[,]{
+        {7, 6, 7, 6, 7, 6, 7},
+        {6, 5, 6, 5, 6, 5, -1},
+        {4, 6, 4, 6, 4, 6, 4},
+        {-1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1}};        
+    }
 
     public override bool devolverParaBoard()
     {
