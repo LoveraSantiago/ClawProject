@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EditorLevelHelper 
 {
@@ -32,70 +33,22 @@ public class EditorLevelHelper
 
     public static List<string> getListaDeNomesLevels(MapaEntidade mapaEntidade)
     {
-        List<string> listaDeNomes = new List<string>(listaEmpty);
-        for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
-        {
-            AbstractLevel levelIt = mapaEntidade.getLevelByIndiceDezena(contadorLevels);
-            listaDeNomes.Add(levelIt.getLevelName());           
-        }
-        return listaDeNomes;
+        return recuperarLevels(mapaEntidade, (level) => true);       
     }
 
     public static List<string> getListaDeNomesLevelsNaoObstaculo(MapaEntidade mapaEntidade)
     {
-        List<string> listaDeNomes = new List<string>(listaEmpty);
-        for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
-        {
-            AbstractLevel levelIt = mapaEntidade.getLevelByIndiceDezena(contadorLevels);
-
-            if (!LevelUtils.isObstaculoLevel(levelIt))
-            {
-                listaDeNomes.Add(levelIt.getLevelName());
-            }
-        }
-
-        for(int contador = 0; contador < mapaEntidade.getColetaveis().Length; contador++)
-        {
-            AbstractLevel levelIt = mapaEntidade.getLevelColetavelByIndice(contador);
-            if(levelIt != null)
-            {
-                if (!LevelUtils.isObstaculoLevel(levelIt))
-                {
-                    listaDeNomes.Add(levelIt.getLevelName());
-                }
-            }
-        }
-        return listaDeNomes;
+        return recuperarLevels(mapaEntidade, (level) => !LevelUtils.isObstaculoLevel(level));        
     }
 
     public static List<string> getListaDenomesLevelsElevadores(MapaEntidade mapaEntidade)
     {
-        List<string> listaDeNomes = new List<string>(listaEmpty);
-        for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
-        {
-            AbstractLevel levelIt = mapaEntidade.getLevelByIndiceDezena(contadorLevels);
-
-            if (LevelUtils.isElevadorLevel(levelIt))
-            {
-                listaDeNomes.Add(levelIt.getLevelName());
-            }
-        }
-        return listaDeNomes;
+        return recuperarLevels(mapaEntidade, (level) => LevelUtils.isElevadorLevel(level));        
     }
 
     public static List<string> getListaDenomesLevelsObstaculos(MapaEntidade mapaEntidade)
     {
-        List<string> listaDeNomes = new List<string>(listaEmpty);
-        for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
-        {
-            AbstractLevel levelIt = mapaEntidade.getLevelByIndiceDezena(contadorLevels);
-
-            if (LevelUtils.isObstaculoLevel(levelIt))
-            {
-                listaDeNomes.Add(levelIt.getLevelName());
-            }
-        }
-        return listaDeNomes;
+        return recuperarLevels(mapaEntidade, (level)=> LevelUtils.isObstaculoLevel(level));        
     }
 
     public static AbstractLevel getLevelByNameIndice(string nomeMapaEntidade, string nomeLevel)
@@ -111,4 +64,30 @@ public class EditorLevelHelper
         }
         return null;
     }
+
+    private static List<string> recuperarLevels(MapaEntidade mapaEntidade, Func<AbstractLevel, bool> filtro)
+    {        
+        List<string> listaDeNomes = new List<string>(listaEmpty);
+        for (int contadorLevels = 1; contadorLevels <= mapaEntidade.getQtdLevels(); contadorLevels++)
+        {
+            AbstractLevel levelIt = mapaEntidade.getLevelByIndiceDezena(contadorLevels);
+            if (levelIt != null && filtro.Invoke(levelIt))
+            {
+                listaDeNomes.Add(levelIt.getLevelName());
+            }
+        }
+
+        for (int contador = 0; contador < mapaEntidade.getColetaveis().Length; contador++)
+        {
+            AbstractLevel levelIt = mapaEntidade.getLevelColetavelByIndice(contador);
+            if (levelIt != null && filtro.Invoke(levelIt))
+            {
+                
+                listaDeNomes.Add(levelIt.getLevelName());
+                
+            }
+        }
+        return listaDeNomes;
+    }  
+
 }
