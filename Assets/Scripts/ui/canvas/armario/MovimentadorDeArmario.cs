@@ -3,12 +3,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
+public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento,
+                                     AcaoBtnPrateleiraAcionado.ConsumidorEvento
 {
     private bool movimentado;
     private Vector2 posItemReferencia;
     private Vector2 posOriginal;
     private Vector2 pivotOriginal;
+
+    private ScrollRect scrollRect;
+    private PrateleirasDto prateleirasDto;
 
     private MovimentadorArmarioDto movimentadorDto;
     private ProdutorDeEvento<IndiceArmarioSelecionadoDto> produtorDeEvento;
@@ -16,15 +20,14 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
     public MovimentadorDeArmario(MainColetaveisDto mainDto)
     {
         this.movimentadorDto = mainDto.MovimentadorDto;
+        scrollRect = mainDto.ScrollRect;
+        prateleirasDto = mainDto.PrateleirasDto;
         posItemReferencia = pegarPosicaoReferencia(mainDto.PrateleirasDto);
         produtorDeEvento = new ProdutorDeEvento<IndiceArmarioSelecionadoDto>();
     }
 
-    public void movimentarAnimado(MainColetaveisDto mainDto)
+    public void movimentarAnimado()
     {
-        ScrollRect scrollRect = mainDto.ScrollRect;
-        PrateleirasDto prateleirasDto = mainDto.PrateleirasDto;
-
         Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
         movimentado = true;
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
@@ -48,10 +51,8 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(movimentarArmarioAnimado(indicePrateleira, indiceItem, rtScrollRect, diferenca));
     }
 
-    public void movimentarImediato(IndiceArmarioSelecionadoDto indiceArmario , MainColetaveisDto mainDto)
-    {
-        ScrollRect scrollRect = mainDto.ScrollRect;
-        PrateleirasDto prateleirasDto = mainDto.PrateleirasDto;
+    public void movimentarImediato(IndiceArmarioSelecionadoDto indiceArmario)
+    {        
         movimentado = true;
         Vector2 posicaoAnchored = pegarPosicaoClicado(indiceArmario.indicePrateleira, indiceArmario.indiceItem, prateleirasDto);
         posicaoAnchored = new Vector2(posicaoAnchored.x, posicaoAnchored.y + prateleirasDto.RTransformArmario.offsetMax.y);
@@ -182,5 +183,13 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
     ProdutorDeEvento<IndiceArmarioSelecionadoDto> AcaoItemArmarioSelecionado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
+    }
+
+    void AcaoBtnPrateleiraAcionado.ConsumidorEvento.consumirEvento(bool evento)
+    {
+        if (!isArmarioMovimentado())
+        {
+            movimentarAnimado();
+        }
     }
 }

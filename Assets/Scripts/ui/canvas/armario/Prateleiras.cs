@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 
-public class Prateleiras : ScrollMovimentador<PrateleirasDto>
+public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
+                           AcaoBtnPrateleiraAcionado.ProdutorEvento
 {
     private Sprite[] sprites;
 
@@ -15,6 +16,7 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>
     private PrateleiraArmarioDto prateleiraBaixo;
 
     private PopuladorPrateleira populadorPrateleira;
+    private ProdutorDeEvento<bool> produtorDeEvento;
 
     public Prateleiras(PrateleirasDto prateleirasDto)
     {        
@@ -27,6 +29,7 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>
 
         prateleiraCima  = prateleirasDto.PrateleiraDto[0];
         prateleiraBaixo = prateleirasDto.PrateleiraDto[prateleirasDto.PrateleiraDto.Length - 1];
+        produtorDeEvento = new ProdutorDeEvento<bool>();
     }
 
     public override void movimentarParaBaixo(PrateleirasDto prateleirasDto)
@@ -141,7 +144,8 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>
                 ItemPrateleiraDto itemPrateleiraIt = prateleiraDtoIt.ItensPrateleira[contadorItens];
                 if (contadorBaixoSprites < sprites.Length)
                 {
-                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, sprites[contadorBaixoSprites]);                    
+                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, sprites[contadorBaixoSprites]);
+                    itemPrateleiraIt.BtnItem.onClick.AddListener(()=> btnPrateleiraAcionado());
                 }
                 else
                 {
@@ -150,5 +154,15 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>
                 contadorBaixoSprites++;
             }
         }
+    }
+
+    private void btnPrateleiraAcionado()
+    {
+        produtorDeEvento.produziuEvento(true);
+    }
+
+    ProdutorDeEvento<bool> AcaoBtnPrateleiraAcionado.ProdutorEvento.getProdutorDeEvento()
+    {
+        return produtorDeEvento;
     }
 }

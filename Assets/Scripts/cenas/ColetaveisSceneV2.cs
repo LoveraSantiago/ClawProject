@@ -26,8 +26,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
         prateleiras    = new Prateleiras(mainDto.PrateleirasDto);
 
         mainDto.ScrollRect.onValueChanged.AddListener((pos) => prateleiras.movimentado(pos, mainDto.PrateleirasDto));
-
-        popularBotoes();
+                
         movimentadorArmario = new MovimentadorDeArmario(mainDto);
         detalheColetavel = new CanvasDetalheColetavel(mainDto);
         configBtnBack(mainDto.BtnBack);
@@ -36,35 +35,17 @@ public class ColetaveisSceneV2 : MonoBehaviour,
             .configurarProdutor(movimentadorArmario)
             .adicionarConsumidor(this);
 
+        new AcaoBtnPrateleiraAcionado()
+            .configurarProdutor(prateleiras)
+            .adicionarConsumidor(movimentadorArmario);
+
         restaurarArmario();
     }
 
     private void Update()
     {
         timerFichaOuro.update();
-    }
-
-    private void popularBotoes()
-    {
-        int qtdPrateleiras = mainDto.PrateleirasDto.PrateleiraDto.Length;
-        for (int contadorPrateleiras = 0; contadorPrateleiras < qtdPrateleiras; contadorPrateleiras++)
-        {
-            PrateleiraArmarioDto prateleiraDtoIt = mainDto.PrateleirasDto.PrateleiraDto[contadorPrateleiras];
-            for (int contadorItens = 0; contadorItens < prateleiraDtoIt.ItensPrateleira.Length; contadorItens++)
-            {
-                ItemPrateleiraDto itemPrateleiraIt = prateleiraDtoIt.ItensPrateleira[contadorItens];
-                itemPrateleiraIt.BtnItem.onClick.AddListener(() => movimentarArmario());
-            }
-        }
-    }
-    
-    private void movimentarArmario()
-    {
-        if (!movimentadorArmario.isArmarioMovimentado())
-        {
-            movimentadorArmario.movimentarAnimado(mainDto);       
-        }
-    }
+    }    
 
     private void configBtnBack(Button btnBack)
     {
@@ -95,7 +76,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
                 prateleiras.movimentarParaBaixo(mainDto.PrateleirasDto);
                 //Debug.Log("Movimentando para Baixo ");
             }
-            movimentadorArmario.movimentarImediato(indiceArmarioSelecionado, mainDto);
+            movimentadorArmario.movimentarImediato(indiceArmarioSelecionado);
             detalheColetavel.detalheAberto(coletavelEntidade, indiceArmarioSelecionado, mainDto.PrateleirasDto);
         }
         else

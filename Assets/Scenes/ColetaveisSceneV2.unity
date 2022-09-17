@@ -4003,19 +4003,11 @@ MonoBehaviour:
       lblTexto: {fileID: 1305474768}
       canvasBotoes: {fileID: 1344838666}
       btnColetavel: {fileID: 1034266202}
-  canvasDetalheColetavelDto:
-    animatorCanvas: {fileID: 1729035076}
-    imgDetalhe: {fileID: 1486025653}
-    lblNome: {fileID: 1345600534}
-    lblFamilia: {fileID: 1156071475}
-    lblTexto: {fileID: 1305474768}
-    canvasBotoes: {fileID: 1344838666}
-    btnColetavel: {fileID: 1034266202}
-  prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
-  prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
-  modalNoFichaDto:
-    modalNoFicha: {fileID: 1927668547}
-    btnOk: {fileID: 1927668546}
+    prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
+    prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
+    modalNoFichaDto:
+      modalNoFicha: {fileID: 1927668547}
+      btnOk: {fileID: 1927668546}
 --- !u!95 &1729035076
 Animator:
   serializedVersion: 4
