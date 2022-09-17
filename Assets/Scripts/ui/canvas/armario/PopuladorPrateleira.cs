@@ -13,19 +13,18 @@ public class PopuladorPrateleira
         poolMaterialGrayScale = new PoolMaterialGrayscale();
     }
 
-    public void popularItemDaPrateleira(ItemPrateleiraDto itemPrateleira, Sprite sprite)
+    public void popularItemDaPrateleira(ItemPrateleiraDto itemPrateleira, ColetavelEntidade coletavel)
     {
         //Debug.Log("Vai popular item " + itemPrateleira.ImgItem.gameObject.name + " sprite " + sprite.name);
-        itemPrateleira.ImgItem.sprite = sprite;
+        itemPrateleira.ImgItem.sprite = coletavel.sprite;
         itemPrateleira.GoItem.SetActive(true);
 
-        ColetavelEntidade coletavel = HelperColetavelEntidade.getColetavelEntidadeBySprite(sprite.name);
         MapaEnum mapaEnum = coletavel.mapaEnum;
         if(mapaEnum == ultimaFamiliaMapa)
         {
             if (estadoUltimaFamilia)
             {
-                popularMaterialItem(itemPrateleira, coletavel, sprite);
+                popularMaterialItem(itemPrateleira, coletavel, coletavel.sprite);
             }
             else
             {
@@ -37,7 +36,7 @@ public class PopuladorPrateleira
             estadoUltimaFamilia = PlayerPrefsColetaveis.isFamiliaNotLocked(mapaEnum.ToString());
             if (estadoUltimaFamilia)
             {
-                popularMaterialItem(itemPrateleira, coletavel, sprite);               
+                popularMaterialItem(itemPrateleira, coletavel, coletavel.sprite);               
             }
             else
             {

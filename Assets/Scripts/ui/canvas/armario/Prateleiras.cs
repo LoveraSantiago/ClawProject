@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
                            AcaoBtnPrateleiraAcionado.ProdutorEvento
 {
-    private Sprite[] sprites;
     private ColetavelEntidade[] coletaveis;
     private PropsCimaBaixoPrateleiraDto propsDto;   
 
@@ -15,7 +14,7 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
     public Prateleiras(PrateleirasDto prateleirasDto)
     {        
         populadorPrateleira = new PopuladorPrateleira();
-        carregarSpritesColetaveis();
+        carregarColetaveis();
         calcularTamanhoArmario(prateleirasDto);
         carregarReferenciasPosicoes(prateleirasDto);
         popularArmario(prateleirasDto);
@@ -28,16 +27,16 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
     public override void movimentarParaBaixo(PrateleirasDto prateleirasDto)
     {
         float posYPrateleira = propsDto.prateleiraBaixo.RectTransformPrateleira.transform.position.y;
-        if (propsDto.contadorBaixoSprites < sprites.Length && posYPrateleira > propsDto.posYReferenciaBaixo)
+        if (propsDto.contadorBaixoSprites < coletaveis.Length && posYPrateleira > propsDto.posYReferenciaBaixo)
         {
             PrateleiraArmarioDto prateleiraCima = propsDto.prateleiraCima;
             populadorPrateleira.disposePrateleira(prateleiraCima);
             for (int contadorItens = 0; contadorItens < prateleiraCima.ItensPrateleira.Length; contadorItens++)
             {
                 ItemPrateleiraDto itemPrateleiraIt = prateleiraCima.ItensPrateleira[contadorItens];
-                if (propsDto.contadorBaixoSprites < sprites.Length)
+                if (propsDto.contadorBaixoSprites < coletaveis.Length)
                 {
-                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, sprites[propsDto.contadorBaixoSprites]);                    
+                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, coletaveis[propsDto.contadorBaixoSprites]);                    
                 }
                 else
                 {
@@ -70,7 +69,7 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
                 if (propsDto.contadorCimaSprites >= 0)
                 {
                     propsDto.decrementarContadorCimaSprites();
-                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, sprites[propsDto.contadorCimaSprites]);
+                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, coletaveis[propsDto.contadorCimaSprites]);
                 }
                 else
                 {
@@ -106,7 +105,7 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
         propsDto.setPrateleiraBaixo(prateleirasDto.PrateleiraDto[indicePrateleira]);
     }
 
-    private void carregarSpritesColetaveis()
+    private void carregarColetaveis()
     {
         //sprites = HelperColetavelEntidade.getAllSpritesColetaveisOrdenados();
         MapaEntidade[] mapas = FactoryMapaEntidade.getMapaEntidadesLiberados();
@@ -121,7 +120,7 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
 
     private void calcularTamanhoArmario(PrateleirasDto prateleirasDto)
     {
-        float result = ((float)sprites.Length) / ((float)prateleirasDto.PrateleiraDto[0].ItensPrateleira.Length);
+        float result = ((float)coletaveis.Length) / ((float)prateleirasDto.PrateleiraDto[0].ItensPrateleira.Length);
         int qtdPrateleira = (int)Math.Ceiling(result);
         int acrescimoPrateleiras = prateleirasDto.QtdPrateleirasVisiveis - qtdPrateleira;
         Debug.Log("result " + result + " qtdPrateleiras " + qtdPrateleira + " acrescimo " + acrescimoPrateleiras);
@@ -147,9 +146,9 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
             for (int contadorItens = 0; contadorItens < prateleiraDtoIt.ItensPrateleira.Length; contadorItens++)
             {
                 ItemPrateleiraDto itemPrateleiraIt = prateleiraDtoIt.ItensPrateleira[contadorItens];
-                if (propsDto.contadorBaixoSprites < sprites.Length)
+                if (propsDto.contadorBaixoSprites < coletaveis.Length)
                 {
-                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, sprites[propsDto.contadorBaixoSprites]);
+                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, coletaveis[propsDto.contadorBaixoSprites]);
                     itemPrateleiraIt.BtnItem.onClick.AddListener(()=> btnPrateleiraAcionado());
                 }
                 else
