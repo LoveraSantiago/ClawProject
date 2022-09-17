@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
                            AcaoBtnPrateleiraAcionado.ProdutorEvento
 {
     private Sprite[] sprites;
+    private ColetavelEntidade[] coletaveis;
     private PropsCimaBaixoPrateleiraDto propsDto;   
 
     private PopuladorPrateleira populadorPrateleira;
@@ -105,8 +107,16 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
     }
 
     private void carregarSpritesColetaveis()
-    {        
-        sprites = HelperColetavelEntidade.getAllSpritesColetaveisOrdenados();
+    {
+        //sprites = HelperColetavelEntidade.getAllSpritesColetaveisOrdenados();
+        MapaEntidade[] mapas = FactoryMapaEntidade.getMapaEntidadesLiberados();
+        List<ColetavelEntidade> listaDeColetaveis = new List<ColetavelEntidade>();
+        for(int contador = 0; contador < mapas.Length; contador++)
+        {
+            ColetavelEntidade[] coletaveis = mapas[contador].getColetaveis();
+            listaDeColetaveis.AddRange(coletaveis);
+        }
+        coletaveis = listaDeColetaveis.ToArray();
     }
 
     private void calcularTamanhoArmario(PrateleirasDto prateleirasDto)
