@@ -38,6 +38,7 @@ public class ConfiguradorDePrateleiras
         for (int contadorPrateleiras = 0; contadorPrateleiras < prateleirasDto.PrateleiraDto.Length; contadorPrateleiras++)
         {
             PrateleiraArmarioDto prateleiraDtoIt = prateleirasDto.PrateleiraDto[contadorPrateleiras];
+            int itensPopulados = 0;
             for (int contadorItens = 0; contadorItens < prateleiraDtoIt.ItensPrateleira.Length; contadorItens++)
             {
                 ItemPrateleiraDto itemPrateleiraIt = prateleiraDtoIt.ItensPrateleira[contadorItens];
@@ -45,12 +46,18 @@ public class ConfiguradorDePrateleiras
                 {
                     populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, coletaveis[propsDto.contadorBaixoSprites]);
                     itemPrateleiraIt.BtnItem.onClick.AddListener(() => btnPrateleiraAcionado(produtorDeEvento));
+                    itensPopulados++;
                 }
                 else
                 {
                     itemPrateleiraIt.GoItem.SetActive(false);
                 }
                 propsDto.incrementarContadorBaixoSprites();
+
+                if(itensPopulados == 0)
+                {
+                    prateleiraDtoIt.RectTransformPrateleira.gameObject.SetActive(false);
+                }
             }
         }
     }

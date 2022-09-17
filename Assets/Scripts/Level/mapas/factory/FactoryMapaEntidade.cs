@@ -86,9 +86,9 @@ public class FactoryMapaEntidade
         return null;
     }
 
-    public static MapaEntidade[] getMapaEntidadesLiberados()
+    public static MapaEntidade[] getMapaEntidadesLiberados(int adicao)
     {
-        LevelMapDto[] levelMapsDto = prefabsLevelsDto.getLevelsMapLiberadosDto();
+        LevelMapDto[] levelMapsDto = prefabsLevelsDto.getLevelsMapLiberadosDto(adicao);
         MapaEntidade[] mapaEntidades = new MapaEntidade[levelMapsDto.Length];
         for(int contador = 0; contador < levelMapsDto.Length; contador++)
         {

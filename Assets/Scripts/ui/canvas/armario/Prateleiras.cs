@@ -12,10 +12,10 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
 
     public Prateleiras(PrateleirasDto prateleirasDto)
     {        
+        produtorDeEvento = new ProdutorDeEvento<bool>();
         populadorPrateleira = new PopuladorPrateleira();
         carregarColetaveis();
         configurarPrateleiras(prateleirasDto);                
-        produtorDeEvento = new ProdutorDeEvento<bool>();
     }
 
     public override void movimentarParaBaixo(PrateleirasDto prateleirasDto)
@@ -102,7 +102,7 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
     private void carregarColetaveis()
     {
         //sprites = HelperColetavelEntidade.getAllSpritesColetaveisOrdenados();
-        MapaEntidade[] mapas = FactoryMapaEntidade.getMapaEntidadesLiberados();
+        MapaEntidade[] mapas = FactoryMapaEntidade.getMapaEntidadesLiberados(1);
         List<ColetavelEntidade> listaDeColetaveis = new List<ColetavelEntidade>();
         for(int contador = 0; contador < mapas.Length; contador++)
         {
