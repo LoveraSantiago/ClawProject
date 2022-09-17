@@ -4,23 +4,8 @@ using UnityEngine.UI;
 #pragma warning disable 0649
 public class ColetaveisSceneV2 : MonoBehaviour,
                                  AcaoItemArmarioSelecionado.ConsumidorEvento
-{       
-    [SerializeField] private TimerFichaDto timerFichaDto;
-    [Space(5)]
-    [SerializeField] private Button btnBack;
-    [Space(5)]    
-    [SerializeField] private ScrollRect scrollRect;
-    [Space(5)]
-    [SerializeField] private MovimentadorArmarioDto movimentadorDto;
-    [Space(5)]
-    [SerializeField] private PrateleirasDto prateleirasDto;
-    [Space(5)]
-    [SerializeField] private CanvasDetalheColetavelDto canvasDetalheColetavelDto;
-    [Space(5)]
-    [SerializeField] private GameObject prefabMateriais;
-    [SerializeField] private GameObject prefabLevelsDto;
-    [Space(5)]
-    [SerializeField] private ModalNoFichaDto modalNoFichaDto;
+{
+    [SerializeField] private MainColetaveisDto mainDto;                            
 
     private TimerFicha timerFichaOuro;
     private Prateleiras prateleiras;    
@@ -30,22 +15,22 @@ public class ColetaveisSceneV2 : MonoBehaviour,
     void Start()
     {
         ContextoEstaticoUtils.configMainMono(this);
-        MateriaisUtils.configurar(prefabMateriais);
+        MateriaisUtils.configurar(mainDto.PrefabMateriais);
 
-        PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
+        PrefabLevelsDto prefabLevels = mainDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         FactoryMapaEntidade.configurar(prefabLevels);
 
         PlayerPrefsColetaveis.unlockFamilia(MapaEnum.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
 
-        timerFichaOuro = new TimerFicha(timerFichaDto, Ficha.OURO);
-        prateleiras    = new Prateleiras(prateleirasDto);
+        timerFichaOuro = new TimerFicha(mainDto.TimerFichaDto, Ficha.OURO);
+        prateleiras    = new Prateleiras(mainDto.PrateleirasDto);
 
-        scrollRect.onValueChanged.AddListener((pos) => prateleiras.movimentado(pos, prateleirasDto));
+        mainDto.ScrollRect.onValueChanged.AddListener((pos) => prateleiras.movimentado(pos, mainDto.PrateleirasDto));
 
         popularBotoes();
-        movimentadorArmario = new MovimentadorDeArmario(prateleirasDto, movimentadorDto);
-        detalheColetavel = new CanvasDetalheColetavel(canvasDetalheColetavelDto, modalNoFichaDto);
-        configBtnBack(btnBack);
+        movimentadorArmario = new MovimentadorDeArmario(mainDto.PrateleirasDto, mainDto.MovimentadorDto);
+        detalheColetavel = new CanvasDetalheColetavel(mainDto.CanvasDetalheColetavelDto, mainDto.ModalNoFichaDto);
+        configBtnBack(mainDto.BtnBack);
 
         new AcaoItemArmarioSelecionado()
             .configurarProdutor(movimentadorArmario)
@@ -61,9 +46,9 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
     private void popularBotoes()
     {
-        for (int contadorPrateleiras = 0; contadorPrateleiras < prateleirasDto.PrateleiraDto.Length; contadorPrateleiras++)
+        for (int contadorPrateleiras = 0; contadorPrateleiras < mainDto.PrateleirasDto.PrateleiraDto.Length; contadorPrateleiras++)
         {
-            PrateleiraArmarioDto prateleiraDtoIt = prateleirasDto.PrateleiraDto[contadorPrateleiras];
+            PrateleiraArmarioDto prateleiraDtoIt = mainDto.PrateleirasDto.PrateleiraDto[contadorPrateleiras];
             for (int contadorItens = 0; contadorItens < prateleiraDtoIt.ItensPrateleira.Length; contadorItens++)
             {
                 ItemPrateleiraDto itemPrateleiraIt = prateleiraDtoIt.ItensPrateleira[contadorItens];
@@ -76,7 +61,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
     {
         if (!movimentadorArmario.isArmarioMovimentado())
         {
-            movimentadorArmario.movimentarAnimado(scrollRect, prateleirasDto);       
+            movimentadorArmario.movimentarAnimado(mainDto.ScrollRect, mainDto.PrateleirasDto);       
         }
     }
 
@@ -101,16 +86,16 @@ public class ColetaveisSceneV2 : MonoBehaviour,
         {
             //Debug.Log("Restauracao SIM");
             IndiceArmarioSelecionadoDto indiceArmarioSelecionado =PlayerPrefsScrollPosition.recuperarELimparPosScrollRectColetaveis();
-            scrollRect.verticalNormalizedPosition = indiceArmarioSelecionado.posScrollArmario;
+            mainDto.ScrollRect.verticalNormalizedPosition = indiceArmarioSelecionado.posScrollArmario;
             //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);            
             ColetavelEntidade coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(indice);
             while (!prateleiras.isPrateleiraVisivel(coletavelEntidade.ordem))
             {
-                prateleiras.movimentarParaBaixo(prateleirasDto);
+                prateleiras.movimentarParaBaixo(mainDto.PrateleirasDto);
                 //Debug.Log("Movimentando para Baixo ");
             }
-            movimentadorArmario.movimentarImediato(indiceArmarioSelecionado, scrollRect, prateleirasDto);
-            detalheColetavel.detalheAberto(coletavelEntidade, indiceArmarioSelecionado, prateleirasDto);
+            movimentadorArmario.movimentarImediato(indiceArmarioSelecionado, mainDto.ScrollRect, mainDto.PrateleirasDto);
+            detalheColetavel.detalheAberto(coletavelEntidade, indiceArmarioSelecionado, mainDto.PrateleirasDto);
         }
         else
         {
@@ -120,13 +105,13 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
     public void animacaoFecharDetalheEnd()
     {
-        movimentadorArmario.voltar(scrollRect);
+        movimentadorArmario.voltar(mainDto.ScrollRect);
     }
 
     void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
     {
         //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
-        IndiceArmarioSelecionadoDto indiceArmario = new IndiceArmarioSelecionadoDto(evento, scrollRect.verticalNormalizedPosition);
-        detalheColetavel.abrirDetalhe(indiceArmario, prateleirasDto);
+        IndiceArmarioSelecionadoDto indiceArmario = new IndiceArmarioSelecionadoDto(evento, mainDto.ScrollRect.verticalNormalizedPosition);
+        detalheColetavel.abrirDetalhe(indiceArmario, mainDto.PrateleirasDto);
     }
 }

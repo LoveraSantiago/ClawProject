@@ -3865,135 +3865,144 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58dcf0902b596394ba87598cf6e37fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerFichaDto:
-    btnMais: {fileID: 373956815}
-    lblQdtFichas: {fileID: 373956814}
-    relogioDto:
-      lblHoras: {fileID: 373956813}
-      transfSegundos: {fileID: 373956812}
-      transfMinutos: {fileID: 373956811}
-      transfHoras: {fileID: 373956810}
-  btnBack: {fileID: 818320628}
-  scrollRect: {fileID: 1600028417}
-  movimentadorDto:
-    velocidadeMovimentacao: 1.9
-    velocidadeZoom: 4
-    escalaFinal: 4.5
-  prateleirasDto:
-    qtdPrateleirasVisiveis: 5
-    rTransformRefCima: {fileID: 932677080}
-    rTransformRefBaixo: {fileID: 1895251953}
-    rTransformArmario: {fileID: 1481599767}
-    prateleiraDto:
-    - rectTransformPrateleira: {fileID: 1963792649}
-      itensPrateleira:
-      - imgItem: {fileID: 1832271359}
-        btnItem: {fileID: 1832271361}
-      - imgItem: {fileID: 2106149304}
-        btnItem: {fileID: 5468921717297467941}
-      - imgItem: {fileID: 1248113638}
-        btnItem: {fileID: 5468921717297467940}
-      - imgItem: {fileID: 178738547}
-        btnItem: {fileID: 5468921717297467939}
-      - imgItem: {fileID: 1166718144}
-        btnItem: {fileID: 5468921717297467938}
-    - rectTransformPrateleira: {fileID: 687549848}
-      itensPrateleira:
-      - imgItem: {fileID: 1681496090}
-        btnItem: {fileID: 1681496092}
-      - imgItem: {fileID: 123284760}
-        btnItem: {fileID: 687549852}
-      - imgItem: {fileID: 1328874988}
-        btnItem: {fileID: 687549851}
-      - imgItem: {fileID: 1100007438}
-        btnItem: {fileID: 687549850}
-      - imgItem: {fileID: 1249197765}
-        btnItem: {fileID: 687549849}
-    - rectTransformPrateleira: {fileID: 218605943}
-      itensPrateleira:
-      - imgItem: {fileID: 657936388}
-        btnItem: {fileID: 657936390}
-      - imgItem: {fileID: 1195882635}
-        btnItem: {fileID: 1195882636}
-      - imgItem: {fileID: 536415455}
-        btnItem: {fileID: 218605946}
-      - imgItem: {fileID: 930608674}
-        btnItem: {fileID: 218605945}
-      - imgItem: {fileID: 1129605269}
-        btnItem: {fileID: 218605944}
-    - rectTransformPrateleira: {fileID: 106071519}
-      itensPrateleira:
-      - imgItem: {fileID: 2054527924}
-        btnItem: {fileID: 2054527926}
-      - imgItem: {fileID: 526443738}
-        btnItem: {fileID: 106071523}
-      - imgItem: {fileID: 1613184203}
-        btnItem: {fileID: 106071522}
-      - imgItem: {fileID: 1183084159}
-        btnItem: {fileID: 106071521}
-      - imgItem: {fileID: 1662049292}
-        btnItem: {fileID: 106071520}
-    - rectTransformPrateleira: {fileID: 606322377}
-      itensPrateleira:
-      - imgItem: {fileID: 1483817519}
-        btnItem: {fileID: 1483817521}
-      - imgItem: {fileID: 1220980897}
-        btnItem: {fileID: 606322381}
-      - imgItem: {fileID: 1397022836}
-        btnItem: {fileID: 606322380}
-      - imgItem: {fileID: 224179798}
-        btnItem: {fileID: 606322379}
-      - imgItem: {fileID: 860122232}
-        btnItem: {fileID: 606322378}
-    - rectTransformPrateleira: {fileID: 1895251953}
-      itensPrateleira:
-      - imgItem: {fileID: 967834126}
-        btnItem: {fileID: 967834128}
-      - imgItem: {fileID: 551562844}
-        btnItem: {fileID: 1895251957}
-      - imgItem: {fileID: 1704302778}
-        btnItem: {fileID: 1895251956}
-      - imgItem: {fileID: 1802446545}
-        btnItem: {fileID: 1895251955}
-      - imgItem: {fileID: 988046926}
-        btnItem: {fileID: 1895251954}
-    - rectTransformPrateleira: {fileID: 1389853996}
-      itensPrateleira:
-      - imgItem: {fileID: 571676069}
-        btnItem: {fileID: 571676068}
-      - imgItem: {fileID: 642204476}
-        btnItem: {fileID: 642204475}
-      - imgItem: {fileID: 1688350429}
-        btnItem: {fileID: 1688350428}
-      - imgItem: {fileID: 1573171684}
-        btnItem: {fileID: 1573171683}
-      - imgItem: {fileID: 335678023}
-        btnItem: {fileID: 335678020}
-    - rectTransformPrateleira: {fileID: 525297709}
-      itensPrateleira:
-      - imgItem: {fileID: 186208969}
-        btnItem: {fileID: 186208968}
-      - imgItem: {fileID: 2078831744}
-        btnItem: {fileID: 2078831743}
-      - imgItem: {fileID: 738309966}
-        btnItem: {fileID: 738309965}
-      - imgItem: {fileID: 1740410187}
-        btnItem: {fileID: 1740410186}
-      - imgItem: {fileID: 1724041328}
-        btnItem: {fileID: 1724041325}
-    - rectTransformPrateleira: {fileID: 612347649}
-      itensPrateleira:
-      - imgItem: {fileID: 957963967}
-        btnItem: {fileID: 957963964}
-      - imgItem: {fileID: 1615332374}
-        btnItem: {fileID: 1615332371}
-      - imgItem: {fileID: 814429187}
-        btnItem: {fileID: 814429184}
-      - imgItem: {fileID: 370669044}
-        btnItem: {fileID: 370669041}
-      - imgItem: {fileID: 1510036066}
-        btnItem: {fileID: 1510036063}
-    rPrateleiraBottom: {fileID: 1086853750}
+  mainDto:
+    timerFichaDto:
+      btnMais: {fileID: 373956815}
+      lblQdtFichas: {fileID: 373956814}
+      relogioDto:
+        lblHoras: {fileID: 373956813}
+        transfSegundos: {fileID: 373956812}
+        transfMinutos: {fileID: 373956811}
+        transfHoras: {fileID: 373956810}
+    btnBack: {fileID: 818320628}
+    scrollRect: {fileID: 1600028417}
+    movimentadorDto:
+      velocidadeMovimentacao: 1.9
+      velocidadeZoom: 4
+      escalaFinal: 4.5
+    prateleirasDto:
+      qtdPrateleirasVisiveis: 5
+      rTransformRefCima: {fileID: 932677080}
+      rTransformRefBaixo: {fileID: 1895251953}
+      rTransformArmario: {fileID: 1481599767}
+      prateleiraDto:
+      - rectTransformPrateleira: {fileID: 1963792649}
+        itensPrateleira:
+        - imgItem: {fileID: 1832271359}
+          btnItem: {fileID: 1832271361}
+        - imgItem: {fileID: 2106149304}
+          btnItem: {fileID: 5468921717297467941}
+        - imgItem: {fileID: 1248113638}
+          btnItem: {fileID: 5468921717297467940}
+        - imgItem: {fileID: 178738547}
+          btnItem: {fileID: 5468921717297467939}
+        - imgItem: {fileID: 1166718144}
+          btnItem: {fileID: 5468921717297467938}
+      - rectTransformPrateleira: {fileID: 687549848}
+        itensPrateleira:
+        - imgItem: {fileID: 1681496090}
+          btnItem: {fileID: 1681496092}
+        - imgItem: {fileID: 123284760}
+          btnItem: {fileID: 687549852}
+        - imgItem: {fileID: 1328874988}
+          btnItem: {fileID: 687549851}
+        - imgItem: {fileID: 1100007438}
+          btnItem: {fileID: 687549850}
+        - imgItem: {fileID: 1249197765}
+          btnItem: {fileID: 687549849}
+      - rectTransformPrateleira: {fileID: 218605943}
+        itensPrateleira:
+        - imgItem: {fileID: 657936388}
+          btnItem: {fileID: 657936390}
+        - imgItem: {fileID: 1195882635}
+          btnItem: {fileID: 1195882636}
+        - imgItem: {fileID: 536415455}
+          btnItem: {fileID: 218605946}
+        - imgItem: {fileID: 930608674}
+          btnItem: {fileID: 218605945}
+        - imgItem: {fileID: 1129605269}
+          btnItem: {fileID: 218605944}
+      - rectTransformPrateleira: {fileID: 106071519}
+        itensPrateleira:
+        - imgItem: {fileID: 2054527924}
+          btnItem: {fileID: 2054527926}
+        - imgItem: {fileID: 526443738}
+          btnItem: {fileID: 106071523}
+        - imgItem: {fileID: 1613184203}
+          btnItem: {fileID: 106071522}
+        - imgItem: {fileID: 1183084159}
+          btnItem: {fileID: 106071521}
+        - imgItem: {fileID: 1662049292}
+          btnItem: {fileID: 106071520}
+      - rectTransformPrateleira: {fileID: 606322377}
+        itensPrateleira:
+        - imgItem: {fileID: 1483817519}
+          btnItem: {fileID: 1483817521}
+        - imgItem: {fileID: 1220980897}
+          btnItem: {fileID: 606322381}
+        - imgItem: {fileID: 1397022836}
+          btnItem: {fileID: 606322380}
+        - imgItem: {fileID: 224179798}
+          btnItem: {fileID: 606322379}
+        - imgItem: {fileID: 860122232}
+          btnItem: {fileID: 606322378}
+      - rectTransformPrateleira: {fileID: 1895251953}
+        itensPrateleira:
+        - imgItem: {fileID: 967834126}
+          btnItem: {fileID: 967834128}
+        - imgItem: {fileID: 551562844}
+          btnItem: {fileID: 1895251957}
+        - imgItem: {fileID: 1704302778}
+          btnItem: {fileID: 1895251956}
+        - imgItem: {fileID: 1802446545}
+          btnItem: {fileID: 1895251955}
+        - imgItem: {fileID: 988046926}
+          btnItem: {fileID: 1895251954}
+      - rectTransformPrateleira: {fileID: 1389853996}
+        itensPrateleira:
+        - imgItem: {fileID: 571676069}
+          btnItem: {fileID: 571676068}
+        - imgItem: {fileID: 642204476}
+          btnItem: {fileID: 642204475}
+        - imgItem: {fileID: 1688350429}
+          btnItem: {fileID: 1688350428}
+        - imgItem: {fileID: 1573171684}
+          btnItem: {fileID: 1573171683}
+        - imgItem: {fileID: 335678023}
+          btnItem: {fileID: 335678020}
+      - rectTransformPrateleira: {fileID: 525297709}
+        itensPrateleira:
+        - imgItem: {fileID: 186208969}
+          btnItem: {fileID: 186208968}
+        - imgItem: {fileID: 2078831744}
+          btnItem: {fileID: 2078831743}
+        - imgItem: {fileID: 738309966}
+          btnItem: {fileID: 738309965}
+        - imgItem: {fileID: 1740410187}
+          btnItem: {fileID: 1740410186}
+        - imgItem: {fileID: 1724041328}
+          btnItem: {fileID: 1724041325}
+      - rectTransformPrateleira: {fileID: 612347649}
+        itensPrateleira:
+        - imgItem: {fileID: 957963967}
+          btnItem: {fileID: 957963964}
+        - imgItem: {fileID: 1615332374}
+          btnItem: {fileID: 1615332371}
+        - imgItem: {fileID: 814429187}
+          btnItem: {fileID: 814429184}
+        - imgItem: {fileID: 370669044}
+          btnItem: {fileID: 370669041}
+        - imgItem: {fileID: 1510036066}
+          btnItem: {fileID: 1510036063}
+      rPrateleiraBottom: {fileID: 1086853750}
+    canvasDetalheColetavelDto:
+      animatorCanvas: {fileID: 1729035076}
+      imgDetalhe: {fileID: 1486025653}
+      lblNome: {fileID: 1345600534}
+      lblFamilia: {fileID: 1156071475}
+      lblTexto: {fileID: 1305474768}
+      canvasBotoes: {fileID: 1344838666}
+      btnColetavel: {fileID: 1034266202}
   canvasDetalheColetavelDto:
     animatorCanvas: {fileID: 1729035076}
     imgDetalhe: {fileID: 1486025653}
