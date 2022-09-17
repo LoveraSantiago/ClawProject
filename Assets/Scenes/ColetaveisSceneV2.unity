@@ -4003,7 +4003,7 @@ MonoBehaviour:
     canvasBotoes: {fileID: 1344838666}
     btnColetavel: {fileID: 1034266202}
   prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
-  prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
+  prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
   modalNoFichaDto:
     modalNoFicha: {fileID: 1927668547}
     btnOk: {fileID: 1927668546}

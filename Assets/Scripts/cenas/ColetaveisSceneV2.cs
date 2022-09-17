@@ -18,7 +18,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
     [SerializeField] private CanvasDetalheColetavelDto canvasDetalheColetavelDto;
     [Space(5)]
     [SerializeField] private GameObject prefabMateriais;
-    [SerializeField] private GameObject prefabColetaveisDto;
+    [SerializeField] private GameObject prefabLevelsDto;
     [Space(5)]
     [SerializeField] private ModalNoFichaDto modalNoFichaDto;
 
@@ -31,7 +31,9 @@ public class ColetaveisSceneV2 : MonoBehaviour,
     {
         ContextoEstaticoUtils.configMainMono(this);
         MateriaisUtils.configurar(prefabMateriais);
-        HelperColetavelEntidade.configurar(prefabColetaveisDto);
+
+        PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
+        FactoryMapaEntidade.configurar(prefabLevels);
 
         PlayerPrefsColetaveis.unlockFamilia(MapaEnum.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
 
