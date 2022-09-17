@@ -8,7 +8,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
     private int totalLevels;
     private List<int> levelsLiberados;
 
-    private PropsCimaBaixoScrollManager props;   
+    private PropsCimaBaixoScrollManagerDto propsDto;   
     private LevelScroll levelScroll;
 
     private ProdutorDeEvento<LevelItemScrollSelecaoDto> produtorDeEvento;
@@ -16,7 +16,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
     public ScrollLevelManager(LevelsScrollDto levelsScrollDto)
     {
         totalLevels = PlayerPrefsMapas.getIndiceLevelLiberado();
-        props = new PropsCimaBaixoScrollManager();
+        propsDto = new PropsCimaBaixoScrollManagerDto();
 
         levelScroll = new LevelScroll(levelsScrollDto);
         produtorDeEvento = new ProdutorDeEvento<LevelItemScrollSelecaoDto>();
@@ -27,19 +27,19 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         popularItensLevels();
         bindarBtnsLinha(levelsScrollDto);
 
-        props.setItemLevelCima(levelScroll.getPrimeiroItemLevel());
-        props.setItemLevelBaixo(levelScroll.getUltimoItemLevel());
+        propsDto.setItemLevelCima(levelScroll.getPrimeiroItemLevel());
+        propsDto.setItemLevelBaixo(levelScroll.getUltimoItemLevel());
     }
 
     public override void movimentarParaBaixo(LevelScroll levelScrollVazio)
     {
-        float posYItemLevel = props.ItemLevelBaixo.getPosY();
-        if (props.ContadorBaixoLevel < totalLevels && posYItemLevel > props.PosYReferenciaBaixo)
+        float posYItemLevel = propsDto.ItemLevelBaixo.getPosY();
+        if (propsDto.ContadorBaixoLevel < totalLevels && posYItemLevel > propsDto.PosYReferenciaBaixo)
         {
-            popularItemLevel(props.ItemLevelCima, props.ContadorBaixoLevel);
+            popularItemLevel(propsDto.ItemLevelCima, propsDto.ContadorBaixoLevel);
             reposicionarLevelItemParaUltimaPosicao(levelScroll);
-            props.incrementarContadorBaixo();
-            props.incrementarContadorCima();
+            propsDto.incrementarContadorBaixo();
+            propsDto.incrementarContadorCima();
             
             //Debug.Log("movimentarParaBaixo ACIONADO contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
         }
@@ -47,13 +47,13 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
 
     public override void movimentarParaCima(LevelScroll levelsScrollVazio)
     {
-        float posYPrateleira = props.ItemLevelCima.getPosY();
-        if(props.ContadorCimaLevel > 0 && posYPrateleira < props.PosYReferenciaCima)
+        float posYPrateleira = propsDto.ItemLevelCima.getPosY();
+        if(propsDto.ContadorCimaLevel > 0 && posYPrateleira < propsDto.PosYReferenciaCima)
         {
-            props.decrementarContadorCima();
-            popularItemLevel(props.ItemLevelBaixo, props.ContadorCimaLevel);
+            propsDto.decrementarContadorCima();
+            popularItemLevel(propsDto.ItemLevelBaixo, propsDto.ContadorCimaLevel);
             reposicionarLevelItemParaPrimeiraPosicao(levelScroll);
-            props.decrementarContadorBaixo();
+            propsDto.decrementarContadorBaixo();
             //Debug.Log("movimentarParaCima ACIONADO contadorcima " + contadorCimaLevel + " contadorbaixo " + contadorBaixoLevel);
         }
     }
@@ -73,35 +73,35 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
 
     private void carregarReferenciasPosicoes()
     {
-        props.setPosYReferenciaBaixo(levelScroll.getPosYReferenciaBaixo());
+        propsDto.setPosYReferenciaBaixo(levelScroll.getPosYReferenciaBaixo());
         float posYZero = levelScroll.getItemLevel(0).getPosY();
         float posYHum  = levelScroll.getItemLevel(1).getPosY();
         float yDiferenca = posYZero - posYHum;
-        props.setPosYReferenciaCima(levelScroll.getPosYReferenciaCima() + yDiferenca);        
+        propsDto.setPosYReferenciaCima(levelScroll.getPosYReferenciaCima() + yDiferenca);        
         //Debug.Log("posYReferenciaBaixo " + posYReferenciaBaixo + " posYReferenciaCima " + posYReferenciaCima);
     }
 
     private void reposicionarLevelItemParaUltimaPosicao(LevelScroll levelsScroll)
     {
-        Vector2 posBaixo = props.ItemLevelBaixo.getAnchoredPosition();
+        Vector2 posBaixo = propsDto.ItemLevelBaixo.getAnchoredPosition();
         float haltura = posBaixo.y - levelsScroll.getItemLevel(0).getHaltura();
-        props.ItemLevelCima.setAnchoredPosition(new Vector2(posBaixo.x, haltura));
-        props.ItemLevelCima.ligar();
+        propsDto.ItemLevelCima.setAnchoredPosition(new Vector2(posBaixo.x, haltura));
+        propsDto.ItemLevelCima.ligar();
 
-        props.setItemLevelBaixo(props.ItemLevelCima);
-        int indiceItem = (props.ItemLevelCima.getNomeItemNumerico() + 1) % levelsScroll.getQtdItens();
-        props.setItemLevelCima(levelScroll.getItemLevel(indiceItem));
+        propsDto.setItemLevelBaixo(propsDto.ItemLevelCima);
+        int indiceItem = (propsDto.ItemLevelCima.getNomeItemNumerico() + 1) % levelsScroll.getQtdItens();
+        propsDto.setItemLevelCima(levelScroll.getItemLevel(indiceItem));
     }
 
     private void reposicionarLevelItemParaPrimeiraPosicao(LevelScroll levelScroll)
     {
-        Vector2 posCima = props.ItemLevelCima.getAnchoredPosition();
+        Vector2 posCima = propsDto.ItemLevelCima.getAnchoredPosition();
         float haltura = posCima.y + levelScroll.getItemLevel(0).getHaltura();
-        props.ItemLevelBaixo.setAnchoredPosition(new Vector2(posCima.x, haltura));        
+        propsDto.ItemLevelBaixo.setAnchoredPosition(new Vector2(posCima.x, haltura));        
 
-        props.setItemLevelCima(props.ItemLevelBaixo);
-        int indicePrateleira = ((props.ItemLevelCima.getNomeItemNumerico() + levelScroll.getQtdItens()) - 1) % levelScroll.getQtdItens();
-        props.setItemLevelBaixo(this.levelScroll.getItemLevel(indicePrateleira));
+        propsDto.setItemLevelCima(propsDto.ItemLevelBaixo);
+        int indicePrateleira = ((propsDto.ItemLevelCima.getNomeItemNumerico() + levelScroll.getQtdItens()) - 1) % levelScroll.getQtdItens();
+        propsDto.setItemLevelBaixo(this.levelScroll.getItemLevel(indicePrateleira));
     }
 
     private void popularItensLevels()
@@ -110,7 +110,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         {
             ItemLevelScroll itemLevelIt = levelScroll.getItemLevel(contadorItensLevels);
             popularItemLevel(contadorItensLevels, itemLevelIt, contadorItensLevels);
-            props.incrementarContadorBaixo();            
+            propsDto.incrementarContadorBaixo();            
 
             int indiceLevel = contadorItensLevels + 1;
             if (isTotalLevelsMenorQueScroll() && (indiceLevel > totalLevels))
