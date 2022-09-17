@@ -57,9 +57,9 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 
     private IEnumerator fazerTroca(Coletavel coletavel)
     {
-        coletavelSelecionado = coletavel;            
-
-        ColetavelEntidade coletavelEntidade = HelperColetavelEntidade.getColetavelEntidadeBySprite(coletavel.nomeSprite);
+        coletavelSelecionado = coletavel;
+        
+        ColetavelEntidade coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeBySpriteNome(coletavel.nomeSprite);
         List<ColetavelEntidade> listaFamilia = HelperColetavelEntidade.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavelEntidade);
 
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();        
