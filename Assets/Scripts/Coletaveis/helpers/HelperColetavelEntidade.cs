@@ -102,13 +102,7 @@ public class HelperColetavelEntidade
             }
         }
         return array;
-    }   
-
-    public static void configurar(GameObject goPrefabSprites)
-    {     
-        PrefabDeSpriteDto prefabSpritesDto = goPrefabSprites.GetComponent<PrefabDeSpriteDto>();
-        spritesPorNome = prefabSpritesDto.getDicionarioDeSprites();        
-    }
+    }       
 
     public static bool isIndiceVazio(int indice)
     {

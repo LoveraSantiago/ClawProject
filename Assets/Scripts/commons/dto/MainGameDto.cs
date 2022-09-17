@@ -19,6 +19,7 @@ public class MainGameDto
     [SerializeField] private UIGameDto uiDto;
     [Space(5)]
     [SerializeField] private GameObject prefabMateriais;
+    [SerializeField] private GameObject prefabLevelsDto;
 
     public BoxCollider2D DragCollider { get { return dragCollider; } }
     public GarraDto GarraDto { get { return garraDto; } }
@@ -28,4 +29,5 @@ public class MainGameDto
     public PowerUpGameDto PowerUpDto { get { return powerUpDto; } }
     public UIGameDto UiDto { get { return uiDto; } }    
     public GameObject PrefabMateriais { get { return prefabMateriais; } }
+    public GameObject PrefabLevelsDto { get { return prefabLevelsDto; } }
 }
