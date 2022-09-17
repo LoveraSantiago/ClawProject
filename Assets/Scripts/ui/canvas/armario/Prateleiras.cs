@@ -1,6 +1,5 @@
-using System;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
                            AcaoBtnPrateleiraAcionado.ProdutorEvento
@@ -15,12 +14,7 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
     {        
         populadorPrateleira = new PopuladorPrateleira();
         carregarColetaveis();
-        calcularTamanhoArmario(prateleirasDto);
-        carregarReferenciasPosicoes(prateleirasDto);
-        popularArmario(prateleirasDto);
-
-        propsDto.setPrateleiraCima(prateleirasDto.PrateleiraDto[0]);
-        propsDto.setPrateleiraBaixo(prateleirasDto.PrateleiraDto[prateleirasDto.PrateleiraDto.Length - 1]);
+        configurarPrateleiras(prateleirasDto);                
         produtorDeEvento = new ProdutorDeEvento<bool>();
     }
 
@@ -116,53 +110,18 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
             listaDeColetaveis.AddRange(coletaveis);
         }
         coletaveis = listaDeColetaveis.ToArray();
-    }
+    }      
 
-    private void calcularTamanhoArmario(PrateleirasDto prateleirasDto)
+    private void configurarPrateleiras(PrateleirasDto prateleirasDto)
     {
-        float result = ((float)coletaveis.Length) / ((float)prateleirasDto.PrateleiraDto[0].ItensPrateleira.Length);
-        int qtdPrateleira = (int)Math.Ceiling(result);
-        int acrescimoPrateleiras = prateleirasDto.QtdPrateleirasVisiveis - qtdPrateleira;
-        Debug.Log("result " + result + " qtdPrateleiras " + qtdPrateleira + " acrescimo " + acrescimoPrateleiras);
-        float yAcrescimo = acrescimoPrateleiras * prateleirasDto.PrateleiraDto[0].RectTransformPrateleira.rect.height;
-        prateleirasDto.RTransformArmario.offsetMin += new Vector2(0, yAcrescimo);
+        ConfiguradorDePrateleiras configurador = new ConfiguradorDePrateleiras(coletaveis, prateleirasDto);
+        configurador.config1CalcularTamanhoArmario();
+        configurador.config2CarregarReferenciasPosicoes();
+        configurador.config3PopularArmario(populadorPrateleira, produtorDeEvento);
 
-        float haltura = - (qtdPrateleira + 2) * prateleirasDto.PrateleiraDto[0].RectTransformPrateleira.rect.height;
-        prateleirasDto.RPrateleiraBottom.anchoredPosition = new Vector2(prateleirasDto.RPrateleiraBottom.anchoredPosition.x, haltura);
-    }
-
-    private void carregarReferenciasPosicoes(PrateleirasDto prateleirasDto)
-    {
-        float posYReferenciaBaixo = prateleirasDto.RTransformRefBaixo.position.y;
-        float posYReferenciaCima = prateleirasDto.RTransformRefCima.position.y;
-        propsDto = new PropsCimaBaixoPrateleiraDto(posYReferenciaBaixo, posYReferenciaCima);
-    }
-
-    private void popularArmario(PrateleirasDto prateleirasDto)
-    {
-        for (int contadorPrateleiras = 0; contadorPrateleiras < prateleirasDto.PrateleiraDto.Length; contadorPrateleiras++)
-        {
-            PrateleiraArmarioDto prateleiraDtoIt = prateleirasDto.PrateleiraDto[contadorPrateleiras];
-            for (int contadorItens = 0; contadorItens < prateleiraDtoIt.ItensPrateleira.Length; contadorItens++)
-            {
-                ItemPrateleiraDto itemPrateleiraIt = prateleiraDtoIt.ItensPrateleira[contadorItens];
-                if (propsDto.contadorBaixoSprites < coletaveis.Length)
-                {
-                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, coletaveis[propsDto.contadorBaixoSprites]);
-                    itemPrateleiraIt.BtnItem.onClick.AddListener(()=> btnPrateleiraAcionado());
-                }
-                else
-                {
-                    itemPrateleiraIt.GoItem.SetActive(false);
-                }
-                propsDto.incrementarContadorBaixoSprites();
-            }
-        }
-    }
-
-    private void btnPrateleiraAcionado()
-    {
-        produtorDeEvento.produziuEvento(true);
+        propsDto = configurador.propsDto;
+        propsDto.setPrateleiraCima(prateleirasDto.PrateleiraDto[0]);
+        propsDto.setPrateleiraBaixo(prateleirasDto.PrateleiraDto[prateleirasDto.PrateleiraDto.Length - 1]);
     }
 
     ProdutorDeEvento<bool> AcaoBtnPrateleiraAcionado.ProdutorEvento.getProdutorDeEvento()
