@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ColetaveisSceneV2 : MonoBehaviour,
                                  AcaoItemArmarioSelecionado.ConsumidorEvento
 {
-    [SerializeField] private MainColetaveisDto mainDto;                            
+    [SerializeField] private MainColetaveisDto mainDto;
 
     private TimerFicha timerFichaOuro;
     private Prateleiras prateleiras;    
@@ -28,8 +28,8 @@ public class ColetaveisSceneV2 : MonoBehaviour,
         mainDto.ScrollRect.onValueChanged.AddListener((pos) => prateleiras.movimentado(pos, mainDto.PrateleirasDto));
 
         popularBotoes();
-        movimentadorArmario = new MovimentadorDeArmario(mainDto.PrateleirasDto, mainDto.MovimentadorDto);
-        detalheColetavel = new CanvasDetalheColetavel(mainDto.CanvasDetalheColetavelDto, mainDto.ModalNoFichaDto);
+        movimentadorArmario = new MovimentadorDeArmario(mainDto);
+        detalheColetavel = new CanvasDetalheColetavel(mainDto);
         configBtnBack(mainDto.BtnBack);
 
         new AcaoItemArmarioSelecionado()
@@ -46,7 +46,8 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
     private void popularBotoes()
     {
-        for (int contadorPrateleiras = 0; contadorPrateleiras < mainDto.PrateleirasDto.PrateleiraDto.Length; contadorPrateleiras++)
+        int qtdPrateleiras = mainDto.PrateleirasDto.PrateleiraDto.Length;
+        for (int contadorPrateleiras = 0; contadorPrateleiras < qtdPrateleiras; contadorPrateleiras++)
         {
             PrateleiraArmarioDto prateleiraDtoIt = mainDto.PrateleirasDto.PrateleiraDto[contadorPrateleiras];
             for (int contadorItens = 0; contadorItens < prateleiraDtoIt.ItensPrateleira.Length; contadorItens++)
@@ -61,7 +62,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
     {
         if (!movimentadorArmario.isArmarioMovimentado())
         {
-            movimentadorArmario.movimentarAnimado(mainDto.ScrollRect, mainDto.PrateleirasDto);       
+            movimentadorArmario.movimentarAnimado(mainDto);       
         }
     }
 
@@ -94,7 +95,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
                 prateleiras.movimentarParaBaixo(mainDto.PrateleirasDto);
                 //Debug.Log("Movimentando para Baixo ");
             }
-            movimentadorArmario.movimentarImediato(indiceArmarioSelecionado, mainDto.ScrollRect, mainDto.PrateleirasDto);
+            movimentadorArmario.movimentarImediato(indiceArmarioSelecionado, mainDto);
             detalheColetavel.detalheAberto(coletavelEntidade, indiceArmarioSelecionado, mainDto.PrateleirasDto);
         }
         else

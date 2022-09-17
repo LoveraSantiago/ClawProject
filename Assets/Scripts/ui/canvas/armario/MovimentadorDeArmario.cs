@@ -13,15 +13,18 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
     private MovimentadorArmarioDto movimentadorDto;
     private ProdutorDeEvento<IndiceArmarioSelecionadoDto> produtorDeEvento;
 
-    public MovimentadorDeArmario(PrateleirasDto prateleirasDto, MovimentadorArmarioDto movimentadorDto)
+    public MovimentadorDeArmario(MainColetaveisDto mainDto)
     {
-        this.movimentadorDto = movimentadorDto;
-        posItemReferencia = pegarPosicaoReferencia(prateleirasDto);
+        this.movimentadorDto = mainDto.MovimentadorDto;
+        posItemReferencia = pegarPosicaoReferencia(mainDto.PrateleirasDto);
         produtorDeEvento = new ProdutorDeEvento<IndiceArmarioSelecionadoDto>();
     }
 
-    public void movimentarAnimado(ScrollRect scrollRect, PrateleirasDto prateleirasDto)
+    public void movimentarAnimado(MainColetaveisDto mainDto)
     {
+        ScrollRect scrollRect = mainDto.ScrollRect;
+        PrateleirasDto prateleirasDto = mainDto.PrateleirasDto;
+
         Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
         movimentado = true;
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
@@ -45,8 +48,10 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(movimentarArmarioAnimado(indicePrateleira, indiceItem, rtScrollRect, diferenca));
     }
 
-    public void movimentarImediato(IndiceArmarioSelecionadoDto indiceArmario , ScrollRect scrollRect, PrateleirasDto prateleirasDto)
+    public void movimentarImediato(IndiceArmarioSelecionadoDto indiceArmario , MainColetaveisDto mainDto)
     {
+        ScrollRect scrollRect = mainDto.ScrollRect;
+        PrateleirasDto prateleirasDto = mainDto.PrateleirasDto;
         movimentado = true;
         Vector2 posicaoAnchored = pegarPosicaoClicado(indiceArmario.indicePrateleira, indiceArmario.indiceItem, prateleirasDto);
         posicaoAnchored = new Vector2(posicaoAnchored.x, posicaoAnchored.y + prateleirasDto.RTransformArmario.offsetMax.y);

@@ -10,10 +10,10 @@ public class CanvasDetalheColetavel
     private CanvasDetalheColetavelDto canvasDetalheDto;    
     private BotaoIrGameColetaveis btnIrGameColetavel;
 
-    public CanvasDetalheColetavel(CanvasDetalheColetavelDto canvasDetalheDto, ModalNoFichaDto modalNoFichaDto)
+    public CanvasDetalheColetavel(MainColetaveisDto mainDto)
     {
-        this.canvasDetalheDto = canvasDetalheDto;
-        btnIrGameColetavel = new BotaoIrGameColetaveis(canvasDetalheDto.BtnColetavel, modalNoFichaDto);        
+        this.canvasDetalheDto = mainDto.CanvasDetalheColetavelDto;
+        btnIrGameColetavel = new BotaoIrGameColetaveis(canvasDetalheDto.BtnColetavel, mainDto.ModalNoFichaDto);        
     }
 
     public void abrirDetalhe(IndiceArmarioSelecionadoDto indiceArmarioSelecionado, PrateleirasDto prateleirasDto)
