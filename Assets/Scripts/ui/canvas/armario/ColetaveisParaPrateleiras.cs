@@ -41,6 +41,7 @@ public class ColetaveisParaPrateleiras
 
     private void inicializarDicionarioDeSprites()
     {
+        dicionarioDeSprites = new Dictionary<Sprite, ColetavelEntidade>();
         for (int contador = 0; contador < coletaveis.Length; contador++)
         {
             ColetavelEntidade coletavelIt = coletaveis[contador];
