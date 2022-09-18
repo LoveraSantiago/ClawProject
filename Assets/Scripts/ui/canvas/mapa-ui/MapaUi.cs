@@ -18,17 +18,18 @@ public class MapaUi
     }
 
     public void addMapaParaTela(WrapperLevelMapDto evento)
-    {   
+    {
+        MapaEntidade mapaEntidade = evento.mapaEntidade;
         if(evento.isDireita)
         {
             grupoBtnBaloes.dismissBotoesBaloes();
-            animacaMainMapa.navegarParaEsquerda(evento.isAberto || evento.isEmAndamento);
+            animacaMainMapa.navegarParaEsquerda(mapaEntidade.isLivre|| mapaEntidade.isProgresso);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
         }
         else if (evento.isEsquerda)
         {
             grupoBtnBaloes.dismissBotoesBaloes();
-            animacaMainMapa.navegarParaDireita(evento.isAberto || evento.isEmAndamento);
+            animacaMainMapa.navegarParaDireita(mapaEntidade.isLivre || mapaEntidade.isProgresso);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
         }
         else if(evento.isCentralizado)
@@ -36,33 +37,31 @@ public class MapaUi
             updateMapa(evento);
             grupoBtnBaloes.posicionarBaloes(evento);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes));
-            animacaMainMapa.mostrarSetasNavegacao(evento.isAberto);
+            animacaMainMapa.mostrarSetasNavegacao(mapaEntidade.isLivre);
         }
     }        
 
     private void updateMapa(WrapperLevelMapDto evento)
     {
-        LevelMapDto levelMapDto = evento.levelMapDto;
-        MapaEntidade mapaEntidade = evento.mapaEntidade;
+        MapaEntidade mapaEntidade = evento.mapaEntidade;        
+        levelMapaUiDto.ImgMapa.sprite = mapaEntidade.spriteMapa;
 
-        levelMapaUiDto.ImgMapa.sprite = levelMapDto.SprMapa;
-
-        if (evento.isAberto || evento.isEmAndamento)
+        if (mapaEntidade.isLivre || mapaEntidade.isProgresso)
         {
             levelMapaUiDto.ImgMapa.color = Color.white;
             levelMapaUiDto.ImgMapa.material = null;
             levelMapaUiDto.LblJorney.text = "JORNEY " + mapaEntidade.id;
             levelMapaUiDto.LblTitle.text = mapaEntidade.title;
         }
-        else if (evento.isLocked)
+        else if (mapaEntidade.isLockado)
         {
-            materialGrayScale = MaterialGrayScale.changeSprite(materialGrayScale, levelMapDto.SprMapa);
+            materialGrayScale = MaterialGrayScale.changeSprite(materialGrayScale, mapaEntidade.spriteMapa);
             levelMapaUiDto.ImgMapa.color = Color.white;
             levelMapaUiDto.ImgMapa.material = materialGrayScale;
             levelMapaUiDto.LblJorney.text = "LEVEL BLOQUEADO";
             levelMapaUiDto.LblTitle.text = "Complete o Mapa Anterior para Desbloquear";
         }
-        else if (evento.isBlocked)
+        else if (mapaEntidade.isBloqueado)
         {
             levelMapaUiDto.ImgMapa.color = Color.black;
             levelMapaUiDto.ImgMapa.material = null;
