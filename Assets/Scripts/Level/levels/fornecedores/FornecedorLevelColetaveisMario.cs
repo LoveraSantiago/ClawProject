@@ -1,4 +1,4 @@
-public class DinosColetaveisFornecedor : AbstractFornecedorColetaveisLevels
+public class FornecedorLevelColetaveisMario : AbstractFornecedorColetaveisLevels
 {
     protected override AbstractLevel getLevelToColetavel(int indice)
     {

@@ -10,68 +10,68 @@ public class FactoryMapaEntidade
             case MapaEnum.DEFAULTS:
                 return new MapaEntidade(levelMapDto)
                     .addInfo(0, "Defaults")
-                    .addFornecedoresColetaveis(new DefaultColetaveisFornecedor());
+                    .addFornecedoresColetaveis(new DefaultFornecedorLevelsColetaveis());
 
             case MapaEnum.FRUTAS:
                 return new MapaEntidade(levelMapDto)
                     .addInfo(1, "PARQUE DE DIVERSÕES")                   
                     .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes())
                     //.addFornecedoresLevels(new FornecedorLevelsTestes())
-                    .addFornecedoresColetaveis(new FrutasColetaveisFornecedor());
+                    .addFornecedoresColetaveis(new FornecedorLevelColetaveisFrutas());
 
             case MapaEnum.DINO:
                 return new MapaEntidade(levelMapDto)
                     .addInfo(2, "PARQUE JURASSICO")                    
                     .addFornecedoresLevels(new FornecedorLevelsTestes())
-                    .addFornecedoresColetaveis(new DinosColetaveisFornecedor());
+                    .addFornecedoresColetaveis(new FornecedorLevelColetaveisDinos());
 
             case MapaEnum.BOLAS:
                 return new MapaEntidade(levelMapDto)
                     .addInfo(3, "QUADRAS POLIESPORTIVAS")                    
                     .addFornecedoresLevels(new FornecedorLevelsTestes())
-                    .addFornecedoresColetaveis(new BolasColetaveisFornecedor());
+                    .addFornecedoresColetaveis(new FornecedorLevelColetaveisBolas());
 
             case MapaEnum.FALLGUYS:
                 return new MapaEntidade(levelMapDto)
                     .addInfo(4, "FULL GUYS WORLD")                    
                     .addFornecedoresLevels(new FornecedorLevelsTestes())
-                    .addFornecedoresColetaveis(new FallGuysColetaveisFornecedor());
+                    .addFornecedoresColetaveis(new FornecedorLevelColetaveisFallGuys());
 
             case MapaEnum.YUYU:
                 return new MapaEntidade(levelMapDto)
                     .addInfo(5, "DESERTO ATACAMA")                    
                     .addFornecedoresLevels(new FornecedorLevelsTestes())
-                    .addFornecedoresColetaveis(new YuyuColetaveisFornecedor());
+                    .addFornecedoresColetaveis(new FornecedorLevelColetaveisYuyu());
 
             case MapaEnum.GELEIA:
                 return new MapaEntidade(levelMapDto)
                     .addInfo(6, "DESERTO DE GELO")
                     .addFornecedoresLevels(new FornecedorLevelsTestes())
-                    .addFornecedoresColetaveis(new GeleiaColetaveisFornecedor());
+                    .addFornecedoresColetaveis(new FornecedorLevelColetaveisGeleia());
 
             case MapaEnum.MARIO:
                 return new MapaEntidade(levelMapDto)
                     .addInfo(7, "X")                    
                     .addFornecedoresLevels(new FornecedorLevelsTestes())
-                    .addFornecedoresColetaveis(new MarioColetaveisFornecedor());
+                    .addFornecedoresColetaveis(new FornecedorLevelColetaveisMario());
 
             case MapaEnum.MEGAMAN:
                 return new MapaEntidade(levelMapDto)
                     .addInfo(8, "X")                    
                     .addFornecedoresLevels(new FornecedorLevelsTestes())
-                    .addFornecedoresColetaveis(new MegamanColetaveisFornecedor());
+                    .addFornecedoresColetaveis(new FornecedorLevelColetaveisMegaman());
 
             case MapaEnum.COGUMELOS:
                 return new MapaEntidade(levelMapDto)
                     .addInfo(9, "X")                    
                     .addFornecedoresLevels(new FornecedorLevelsTestes())
-                    .addFornecedoresColetaveis(new CogumelosColetaveisFornecedor());
+                    .addFornecedoresColetaveis(new FornecedorLevelColetaveisCogumelos());
 
             case MapaEnum.POOPS:
                 return new MapaEntidade(levelMapDto)
                     .addInfo(10, "X")                    
                     .addFornecedoresLevels(new FornecedorLevelsTestes())
-                    .addFornecedoresColetaveis(new PoopColetaveisFornecedor());
+                    .addFornecedoresColetaveis(new FornecedorLevelColetaveisPoop());
 
             case MapaEnum.CACANIQUEL:
                 return new MapaEntidade(levelMapDto)
@@ -80,7 +80,7 @@ public class FactoryMapaEntidade
 
             case MapaEnum.POWERUP:
                 return new MapaEntidade(levelMapDto)
-                    .addFornecedoresLevels(new FornecedorLevelPowerUp())
+                    .addFornecedoresLevels(new FornecedorLevelsPowerUp())
                     .addFornecedoresColetaveis(null);                    
         }
         return null;

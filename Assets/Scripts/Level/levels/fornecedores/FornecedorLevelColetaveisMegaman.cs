@@ -1,4 +1,4 @@
-public class YuyuColetaveisFornecedor : AbstractFornecedorColetaveisLevels
+public class FornecedorLevelColetaveisMegaman : AbstractFornecedorColetaveisLevels
 {
     protected override AbstractLevel getLevelToColetavel(int indice)
     {

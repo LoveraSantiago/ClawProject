@@ -1,4 +1,4 @@
-public class MegamanColetaveisFornecedor : AbstractFornecedorColetaveisLevels
+public class FornecedorLevelColetaveisDinos : AbstractFornecedorColetaveisLevels
 {
     protected override AbstractLevel getLevelToColetavel(int indice)
     {

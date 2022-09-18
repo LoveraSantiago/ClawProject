@@ -1,5 +1,5 @@
-public class BolasColetaveisFornecedor : AbstractFornecedorColetaveisLevels
-{
+public class FornecedorLevelColetaveisPoop : AbstractFornecedorColetaveisLevels
+{   
     protected override AbstractLevel getLevelToColetavel(int indice)
     {
         return null;

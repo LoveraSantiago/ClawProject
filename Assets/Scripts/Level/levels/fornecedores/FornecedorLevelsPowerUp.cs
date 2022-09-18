@@ -1,4 +1,4 @@
-public class FornecedorLevelPowerUp : AbstractFornecedorLevels
+public class FornecedorLevelsPowerUp : AbstractFornecedorLevels
 {
     protected override AbstractLevel getLevelPorIndice(int level)
     {

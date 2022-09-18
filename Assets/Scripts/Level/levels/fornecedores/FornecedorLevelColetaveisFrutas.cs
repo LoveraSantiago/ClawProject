@@ -1,4 +1,4 @@
-public class FrutasColetaveisFornecedor : AbstractFornecedorColetaveisLevels
+public class FornecedorLevelColetaveisFrutas : AbstractFornecedorColetaveisLevels
 {
     protected override AbstractLevel getLevelToColetavel(int indice)
     {

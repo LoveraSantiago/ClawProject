@@ -9,8 +9,8 @@ public class MapaEntidade
     public string title { get; private set; }
     public bool locked { get; private set; }
 
-    private AbstractFornecedorLevels levelFornecedor                = FornecedorLevelsDefault.getInstance();
-    private AbstractFornecedorColetaveisLevels coletaveisFornecedor = FornecedorColetaveisDefault.getInstace();
+    private AbstractFornecedorLevels levelFornecedor                = DefaultFornecedorLevels.getInstance();
+    private AbstractFornecedorColetaveisLevels coletaveisFornecedor = DefaultFornecedorLevelsColetaveis.getInstace();
 
     public MapaEntidade(LevelMapDto levelMapDto)
     {
