@@ -17,9 +17,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
         ContextoEstaticoUtils.configMainMono(this);
         MateriaisUtils.configurar(mainDto.PrefabMateriais);
-        FactoryMapaEntidade.configurar(prefabLevels);
-
-        PlayerPrefsColetaveis.unlockFamilia(MapaEnum.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
+        FactoryMapaEntidade.configurar(prefabLevels);                
 
         ColetaveisParaPrateleiras coletaveisParaPrateleiras = new ColetaveisParaPrateleiras();
         timerFichaOuro      = new TimerFicha(mainDto.TimerFichaDto, Ficha.OURO);

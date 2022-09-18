@@ -19,7 +19,7 @@ public class PopuladorPrateleira
         itemPrateleira.ImgItem.sprite = coletavel.sprite;
         itemPrateleira.GoItem.SetActive(true);
 
-        MapaEnum mapaEnum = coletavel.mapaEnum;
+        MapaEnum mapaEnum = coletavel.mapaEntidade.mapaEnum;
         if(mapaEnum == ultimaFamiliaMapa)
         {
             if (estadoUltimaFamilia)

@@ -30,6 +30,7 @@ public class ColetaveisParaPrateleiras
     private void carregarColetaveis()
     {
         MapaEntidade[] mapas = FactoryMapaEntidade.getMapaEntidadesLiberados(1);
+        mapas[mapas.Length - 1].lockar();
         List<ColetavelEntidade> listaDeColetaveis = new List<ColetavelEntidade>();
         for (int contador = 0; contador < mapas.Length; contador++)
         {

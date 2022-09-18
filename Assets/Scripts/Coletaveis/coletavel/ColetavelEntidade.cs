@@ -9,7 +9,8 @@ public class ColetavelEntidade
     public string nome { get; private set; }
     public string nomeSprite { get { return sprite.name; } }
     public Sprite sprite {get; private set;}
-    public MapaEnum mapaEnum { get; private set; }
+    
+    public MapaEntidade mapaEntidade { get; private set; }
 
     public ColetavelEntidade(int id, int ordem)
     {
@@ -27,8 +28,8 @@ public class ColetavelEntidade
         this.sprite = sprite;
     }
 
-    public void setMapaEnum(MapaEnum mapaEnum)
+    public void setMapaEntidade(MapaEntidade mapaEntidade)
     {
-        this.mapaEnum = mapaEnum;
+        this.mapaEntidade = mapaEntidade;
     }    
 }
