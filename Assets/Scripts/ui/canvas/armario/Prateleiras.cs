@@ -1,36 +1,38 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
                            AcaoBtnPrateleiraAcionado.ProdutorEvento
-{
-    private ColetavelEntidade[] coletaveis;
-    private PropsCimaBaixoPrateleiraDto propsDto;   
+{    
+    private PropsCimaBaixoPrateleiraDto propsDto;
+    private ColetaveisParaPrateleiras coletaveisParaPrateleiras;
 
     private PopuladorPrateleira populadorPrateleira;
     private ProdutorDeEvento<bool> produtorDeEvento;
 
-    public Prateleiras(PrateleirasDto prateleirasDto)
-    {        
+    public Prateleiras(PrateleirasDto prateleirasDto, ColetaveisParaPrateleiras coletaveisParaPrateleiras)
+    {
+        this.coletaveisParaPrateleiras = coletaveisParaPrateleiras;
         produtorDeEvento = new ProdutorDeEvento<bool>();
-        populadorPrateleira = new PopuladorPrateleira();
-        carregarColetaveis();
+        populadorPrateleira = new PopuladorPrateleira();        
         configurarPrateleiras(prateleirasDto);                
     }
 
     public override void movimentarParaBaixo(PrateleirasDto prateleirasDto)
     {
         float posYPrateleira = propsDto.prateleiraBaixo.RectTransformPrateleira.transform.position.y;
-        if (propsDto.contadorBaixoSprites < coletaveis.Length && posYPrateleira > propsDto.posYReferenciaBaixo)
+        int qtdColetaveis = coletaveisParaPrateleiras.getQtdColetaveis();
+        if (propsDto.contadorBaixoSprites < qtdColetaveis  && posYPrateleira > propsDto.posYReferenciaBaixo)
         {
             PrateleiraArmarioDto prateleiraCima = propsDto.prateleiraCima;
             populadorPrateleira.disposePrateleira(prateleiraCima);
             for (int contadorItens = 0; contadorItens < prateleiraCima.ItensPrateleira.Length; contadorItens++)
             {
                 ItemPrateleiraDto itemPrateleiraIt = prateleiraCima.ItensPrateleira[contadorItens];
-                if (propsDto.contadorBaixoSprites < coletaveis.Length)
+                if (propsDto.contadorBaixoSprites < qtdColetaveis)
                 {
-                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, coletaveis[propsDto.contadorBaixoSprites]);                    
+                    int indice = propsDto.contadorBaixoSprites;
+                    ColetavelEntidade coletavel = coletaveisParaPrateleiras.getColetavelPeloIndice(indice);
+                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, coletavel);                    
                 }
                 else
                 {
@@ -63,7 +65,9 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
                 if (propsDto.contadorCimaSprites >= 0)
                 {
                     propsDto.decrementarContadorCimaSprites();
-                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, coletaveis[propsDto.contadorCimaSprites]);
+                    int indice = propsDto.contadorCimaSprites;
+                    ColetavelEntidade coletavel = coletaveisParaPrateleiras.getColetavelPeloIndice(indice);
+                    populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, coletavel);
                 }
                 else
                 {
@@ -97,23 +101,11 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
         propsDto.setPrateleiraCima(propsDto.prateleiraBaixo);
         int indicePrateleira = ((int.Parse(propsDto.prateleiraBaixo.RectTransformPrateleira.name) + prateleirasDto.PrateleiraDto.Length) - 1) % prateleirasDto.PrateleiraDto.Length;
         propsDto.setPrateleiraBaixo(prateleirasDto.PrateleiraDto[indicePrateleira]);
-    }
-
-    private void carregarColetaveis()
-    {
-        //sprites = HelperColetavelEntidade.getAllSpritesColetaveisOrdenados();
-        MapaEntidade[] mapas = FactoryMapaEntidade.getMapaEntidadesLiberados(1);
-        List<ColetavelEntidade> listaDeColetaveis = new List<ColetavelEntidade>();
-        for(int contador = 0; contador < mapas.Length; contador++)
-        {
-            ColetavelEntidade[] coletaveis = mapas[contador].getColetaveis();
-            listaDeColetaveis.AddRange(coletaveis);
-        }
-        coletaveis = listaDeColetaveis.ToArray();
-    }      
+    }   
 
     private void configurarPrateleiras(PrateleirasDto prateleirasDto)
     {
+        ColetavelEntidade[] coletaveis = coletaveisParaPrateleiras.coletaveis;
         ConfiguradorDePrateleiras configurador = new ConfiguradorDePrateleiras(coletaveis, prateleirasDto);
         configurador.config1CalcularTamanhoArmario();
         configurador.config2CarregarReferenciasPosicoes();

@@ -23,7 +23,9 @@ public class ColetaveisSceneV2 : MonoBehaviour,
         PlayerPrefsColetaveis.unlockFamilia(MapaEnum.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
 
         timerFichaOuro = new TimerFicha(mainDto.TimerFichaDto, Ficha.OURO);
-        prateleiras    = new Prateleiras(mainDto.PrateleirasDto);
+        ColetaveisParaPrateleiras coletaveisParaPrateleiras = new ColetaveisParaPrateleiras();
+
+        prateleiras    = new Prateleiras(mainDto.PrateleirasDto, coletaveisParaPrateleiras);
 
         mainDto.ScrollRect.onValueChanged.AddListener((pos) => prateleiras.movimentado(pos, mainDto.PrateleirasDto));
                 
