@@ -12,7 +12,8 @@ public class ColetavelEntidade
 
     public ColetavelEntidade(int indice, ColetavelEntidadeDto coletavelEntidadeDto)
     {
-        this.indice = indice;                     
+        this.indice = indice;
+        this.coletavelEntidadeDto = coletavelEntidadeDto;
     }            
 
     public void setMapaEntidade(MapaEntidade mapaEntidade)
