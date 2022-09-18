@@ -31,13 +31,13 @@ public class ColetaveisSceneV2 : MonoBehaviour,
         detalheColetavel = new CanvasDetalheColetavel(mainDto);
         configBtnBack(mainDto.BtnBack);
 
-        new AcaoItemArmarioSelecionado()
-            .configurarProdutor(movimentadorArmario)
-            .adicionarConsumidor(this);
-
         new AcaoBtnPrateleiraAcionado()
             .configurarProdutor(prateleiras)
             .adicionarConsumidor(movimentadorArmario);
+
+        new AcaoItemArmarioSelecionado()
+            .configurarProdutor(movimentadorArmario)
+            .adicionarConsumidor(this);
 
         restaurarArmario();
     }
