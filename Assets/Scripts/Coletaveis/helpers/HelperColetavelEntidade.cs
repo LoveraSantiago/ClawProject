@@ -24,7 +24,7 @@ public class HelperColetavelEntidade
 
     public static List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamiliaExcluindo(ColetavelEntidade coletavel)
     {
-        List<ColetavelEntidade> listaFamilia = getListaDeColetaveisEntidadeByFamilia(coletavel.mapaEnum);
+        List<ColetavelEntidade> listaFamilia = getListaDeColetaveisEntidadeByFamilia(coletavel.mapaEntidade.mapaEnum);
         int indiceRemover = 0;
         for(int contador = 0; contador < listaFamilia.Count; contador++)
         {
