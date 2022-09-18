@@ -14,15 +14,15 @@ public class PlayerPrefsScrollPosition
     public static void salvarPosScrollRectArmario(float posicao, int indicePrateleira, int indiceItem)
     {
         PlayerPrefs.SetFloat(SCROLL_RECT_ARMARIO, posicao);
-        PlayerPrefs.SetInt(SCROLL_RECT_ARMARIO_PRATELEIRA, indicePrateleira);
-        PlayerPrefs.SetInt(SCROLL_RECT_ARMARIO_ITEM, indiceItem);
+        PlayerPrefs.SetInt  (SCROLL_RECT_ARMARIO_PRATELEIRA, indicePrateleira);
+        PlayerPrefs.SetInt  (SCROLL_RECT_ARMARIO_ITEM, indiceItem);
     }
 
     public static IndiceArmarioSelecionadoDto recuperarELimparPosScrollRectColetaveis()
     {
-        float posicao = PlayerPrefs.GetFloat(SCROLL_RECT_ARMARIO);
+        float posicao        = PlayerPrefs.GetFloat(SCROLL_RECT_ARMARIO);
         int indicePrateleira = PlayerPrefs.GetInt(SCROLL_RECT_ARMARIO_PRATELEIRA);
-        int indiceItem = PlayerPrefs.GetInt(SCROLL_RECT_ARMARIO_ITEM);
+        int indiceItem       = PlayerPrefs.GetInt(SCROLL_RECT_ARMARIO_ITEM);
 
         PlayerPrefs.DeleteKey(SCROLL_RECT_ARMARIO);
         PlayerPrefs.DeleteKey(SCROLL_RECT_ARMARIO_PRATELEIRA);

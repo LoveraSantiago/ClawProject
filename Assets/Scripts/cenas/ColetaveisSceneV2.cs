@@ -66,7 +66,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         if(indice != 0)
         {
             //Debug.Log("Restauracao SIM");
-            IndiceArmarioSelecionadoDto indiceArmarioSelecionado =PlayerPrefsScrollPosition.recuperarELimparPosScrollRectColetaveis();
+            IndiceArmarioSelecionadoDto indiceArmarioSelecionado = PlayerPrefsScrollPosition.recuperarELimparPosScrollRectColetaveis();
             mainDto.ScrollRect.verticalNormalizedPosition = indiceArmarioSelecionado.posScrollArmario;
             //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);            
             ColetavelEntidade coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(indice);
