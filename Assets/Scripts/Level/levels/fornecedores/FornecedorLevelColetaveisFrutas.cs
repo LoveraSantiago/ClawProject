@@ -11,6 +11,7 @@ public class FornecedorLevelColetaveisFrutas : AbstractFornecedorColetaveisLevel
             case 4: return new LevelAspargo(); 
             case 5: return new LevelCoco();
             case 6: return new LevelEstrelaMarinha();
+            case 7: return new LevelAbobora();
         }
         return null;
     }
