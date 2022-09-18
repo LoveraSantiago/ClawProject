@@ -33,7 +33,7 @@ public class PopuladorPrateleira
         }
         else
         {
-            estadoUltimaFamilia = PlayerPrefsColetaveis.isFamiliaNotLocked(mapaEnum.ToString());
+            estadoUltimaFamilia = false;
             if (estadoUltimaFamilia)
             {
                 popularMaterialItem(itemPrateleira, coletavel, coletavel.sprite);               
