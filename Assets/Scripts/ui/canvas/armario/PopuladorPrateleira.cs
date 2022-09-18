@@ -2,14 +2,10 @@ using UnityEngine;
 
 public class PopuladorPrateleira
 {
-    private bool estadoUltimaFamilia;    
-    private MapaEnum ultimaFamiliaMapa;
-
     private PoolMaterialGrayscale poolMaterialGrayScale;    
 
     public PopuladorPrateleira()
     {        
-        ultimaFamiliaMapa = MapaEnum.DEFAULTS;
         poolMaterialGrayScale = new PoolMaterialGrayscale();
     }
 
@@ -19,32 +15,14 @@ public class PopuladorPrateleira
         itemPrateleira.ImgItem.sprite = coletavel.sprite;
         itemPrateleira.GoItem.SetActive(true);
 
-        MapaEnum mapaEnum = coletavel.mapaEntidade.mapaEnum;
-        if(mapaEnum == ultimaFamiliaMapa)
+        if(coletavel.mapaEntidade.isLockado || coletavel.mapaEntidade.isBloqueado)
         {
-            if (estadoUltimaFamilia)
-            {
-                popularMaterialItem(itemPrateleira, coletavel, coletavel.sprite);
-            }
-            else
-            {
-                popularItemIndisponivel(itemPrateleira);
-            }
+            popularItemIndisponivel(itemPrateleira);
         }
         else
         {
-            estadoUltimaFamilia = false;
-            if (estadoUltimaFamilia)
-            {
-                popularMaterialItem(itemPrateleira, coletavel, coletavel.sprite);               
-            }
-            else
-            {
-                popularItemIndisponivel(itemPrateleira);
-            }
-
-            ultimaFamiliaMapa = mapaEnum;
-        }
+            popularMaterialItem(itemPrateleira, coletavel);
+        }            
     }
 
     public void disposePrateleira(PrateleiraArmarioDto prateleira)
@@ -65,12 +43,12 @@ public class PopuladorPrateleira
         }
     }
 
-    private void popularMaterialItem(ItemPrateleiraDto itemPrateleira, ColetavelEntidade coletavel, Sprite sprite)
+    private void popularMaterialItem(ItemPrateleiraDto itemPrateleira, ColetavelEntidade coletavel)
     {
         if (PlayerPrefsColetaveis.isColetavelIndisponivel(coletavel.nome))
         {
             //Debug.Log("Vai popular item grayscale" + itemPrateleira.ImgItem.gameObject.name + " sprite " + sprite.name);
-            Material matGray = poolMaterialGrayScale.getObjeto(sprite);
+            Material matGray = poolMaterialGrayScale.getObjeto(coletavel.sprite);
             itemPrateleira.ImgItem.material = matGray;
         }
         else
