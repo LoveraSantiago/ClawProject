@@ -66,8 +66,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
         if(indice != 0)
         {
             //Debug.Log("Restauracao SIM");
-            IndiceArmarioSelecionadoDto indiceArmarioSelecionado = PlayerPrefsScrollPosition.recuperarELimparPosScrollRectColetaveis();
-            mainDto.ScrollRect.verticalNormalizedPosition = indiceArmarioSelecionado.posScrollArmario;
+            PlayerPrefScrollArmarioDto playerPrefsDto  = PlayerPrefsScrollArmarioPosition.recuperarELimparPosScrollRectColetaveis();
+            mainDto.ScrollRect.verticalNormalizedPosition = playerPrefsDto.posicaoScroll;
             //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);            
             ColetavelEntidade coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(indice);
             while (!prateleiras.isPrateleiraVisivel(coletavelEntidade.ordem))
@@ -75,6 +75,15 @@ public class ColetaveisSceneV2 : MonoBehaviour
                 prateleiras.movimentarParaBaixo(mainDto.PrateleirasDto);
                 //Debug.Log("Movimentando para Baixo ");
             }
+
+            PrateleiraArmarioDto prateleira = mainDto.PrateleirasDto.PrateleiraDto[playerPrefsDto.indicePrateleira];
+            ItemPrateleiraDto itemSelecionado = prateleira.ItensPrateleira[playerPrefsDto.indiceItem];
+
+            IndiceArmarioSelecionadoDto indiceArmarioSelecionado = new IndiceArmarioSelecionadoDto()
+                .addIndices(playerPrefsDto.indicePrateleira, playerPrefsDto.indiceItem)
+                .addScrollPosition(playerPrefsDto.posicaoScroll)
+                .addItemSelecionado(itemSelecionado);
+
             movimentadorArmario.movimentarImediato(indiceArmarioSelecionado);
             detalheColetavel.detalheAberto(coletavelEntidade, indiceArmarioSelecionado);
         }

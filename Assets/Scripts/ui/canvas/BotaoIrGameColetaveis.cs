@@ -25,7 +25,7 @@ public class BotaoIrGameColetaveis
             ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);            
             
             PlayerPrefsColetaveis.salvarNavegacaoColetavel(coletavelEntidade.id);
-            PlayerPrefsScrollPosition.salvarPosScrollRectArmario(indiceArmarioSelecionado);
+            PlayerPrefsScrollArmarioPosition.salvarPosScrollRectArmario(indiceArmarioSelecionado);
             CenaUtils.irParaCenaMainGame();
         }
         else

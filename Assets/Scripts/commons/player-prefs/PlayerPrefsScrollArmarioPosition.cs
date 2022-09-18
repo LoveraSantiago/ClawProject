@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerPrefsScrollPosition 
+public class PlayerPrefsScrollArmarioPosition 
 {
     private static readonly string SCROLL_RECT_ARMARIO            = "scrollRectArmario";
     private static readonly string SCROLL_RECT_ARMARIO_PRATELEIRA = "scrollRectArmarioPrateleira";
@@ -18,7 +18,7 @@ public class PlayerPrefsScrollPosition
         PlayerPrefs.SetInt  (SCROLL_RECT_ARMARIO_ITEM, indiceItem);
     }
 
-    public static IndiceArmarioSelecionadoDto recuperarELimparPosScrollRectColetaveis()
+    public static PlayerPrefScrollArmarioDto recuperarELimparPosScrollRectColetaveis()
     {
         float posicao        = PlayerPrefs.GetFloat(SCROLL_RECT_ARMARIO);
         int indicePrateleira = PlayerPrefs.GetInt(SCROLL_RECT_ARMARIO_PRATELEIRA);
@@ -27,6 +27,6 @@ public class PlayerPrefsScrollPosition
         PlayerPrefs.DeleteKey(SCROLL_RECT_ARMARIO);
         PlayerPrefs.DeleteKey(SCROLL_RECT_ARMARIO_PRATELEIRA);
         PlayerPrefs.DeleteKey(SCROLL_RECT_ARMARIO_ITEM);
-        return new IndiceArmarioSelecionadoDto(indicePrateleira, indiceItem, posicao);
+        return new PlayerPrefScrollArmarioDto(posicao, indicePrateleira, indiceItem);
     }
 }

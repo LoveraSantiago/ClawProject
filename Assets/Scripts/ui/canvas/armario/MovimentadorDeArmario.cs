@@ -110,8 +110,16 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento,
             time = incrementarTimer(time);
             yield return null;
         }
-        //Debug.Log("Finalizado");        
-        produtorDeEvento.produziuEvento(new IndiceArmarioSelecionadoDto(indicePrateleira, indiceItem, scrollRect.verticalNormalizedPosition));
+        //Debug.Log("Finalizado");     
+        PrateleiraArmarioDto prateleira = prateleirasDto.PrateleiraDto[indicePrateleira];
+        ItemPrateleiraDto itemSelecionado = prateleira.ItensPrateleira[indiceItem];
+
+        IndiceArmarioSelecionadoDto indiceArmarioSelecionado = new IndiceArmarioSelecionadoDto()
+            .addIndices(indicePrateleira, indiceItem)
+            .addScrollPosition(scrollRect.verticalNormalizedPosition)
+            .addItemSelecionado(itemSelecionado);
+
+        produtorDeEvento.produziuEvento(indiceArmarioSelecionado);
         yield return null;
     }
 

@@ -7,23 +7,20 @@ public class CanvasDetalheColetavel : AcaoItemArmarioSelecionado.ConsumidorEvent
     private static readonly int FECHAR_DETALHE = Animator.StringToHash("fechar-detalhe");
     private static readonly int DETALHE_ABERTO = Animator.StringToHash("detalhe-aberto");
 
-    private CanvasDetalheColetavelDto canvasDetalheDto;
-    private PrateleirasDto prateleirasDto;
+    private CanvasDetalheColetavelDto canvasDetalheDto;    
     private ColetaveisParaPrateleiras coletaveisParaPrateleiras;
     private BotaoIrGameColetaveis     btnIrGameColetavel;   
 
     public CanvasDetalheColetavel(MainColetaveisDto mainDto, ColetaveisParaPrateleiras coletaveisParaPrateleiras)
     {
-        this.canvasDetalheDto = mainDto.CanvasDetalheColetavelDto;
-        this.prateleirasDto   = mainDto.PrateleirasDto;
+        this.canvasDetalheDto = mainDto.CanvasDetalheColetavelDto;        
         btnIrGameColetavel    = new BotaoIrGameColetaveis(canvasDetalheDto.BtnColetavel, mainDto.ModalNoFichaDto);
         this.coletaveisParaPrateleiras = coletaveisParaPrateleiras;
     }
 
     public void abrirDetalhe(IndiceArmarioSelecionadoDto indiceArmarioSelecionado)
-    {
-        PrateleiraArmarioDto prateleira     = prateleirasDto.PrateleiraDto[indiceArmarioSelecionado.indicePrateleira];
-        ItemPrateleiraDto itemSelecionado   = prateleira.ItensPrateleira[indiceArmarioSelecionado.indiceItem];
+    {        
+        ItemPrateleiraDto itemSelecionado = indiceArmarioSelecionado.itemSelecionado;
         Image imgItemPrateleria             = itemSelecionado.ImgItem;
         Sprite sprColetavel                 = imgItemPrateleria.sprite;
         ColetavelEntidade coletavelEntidade = coletaveisParaPrateleiras.getColetavelPeloSprite(sprColetavel);
@@ -32,9 +29,8 @@ public class CanvasDetalheColetavel : AcaoItemArmarioSelecionado.ConsumidorEvent
     }    
 
     private void abrirDetalhe(ColetavelEntidade coletavelEntidade, IndiceArmarioSelecionadoDto indiceArmarioSelecionado)
-    {
-        PrateleiraArmarioDto prateleira   = prateleirasDto.PrateleiraDto[indiceArmarioSelecionado.indicePrateleira];
-        ItemPrateleiraDto itemSelecionado = prateleira.ItensPrateleira[indiceArmarioSelecionado.indiceItem];
+    {        
+        ItemPrateleiraDto itemSelecionado = indiceArmarioSelecionado.itemSelecionado;
         Image imgItemPrateleria           = itemSelecionado.ImgItem;
         Sprite sprColetavel               = imgItemPrateleria.sprite;
         
