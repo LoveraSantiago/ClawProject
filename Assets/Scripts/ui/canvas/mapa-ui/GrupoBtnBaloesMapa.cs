@@ -33,8 +33,9 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
 
     public void posicionarBaloes(WrapperLevelMapDto evento)
     {
-        Vector2[] posicoes = evento.levelMapDto.Posicoes;
-        if (evento.isAberto)
+        MapaEntidade mapaEntidade = evento.mapaEntidade;
+        Vector2[] posicoes = mapaEntidade.getPosicoesBaloes();
+        if (mapaEntidade.isLivre)
         {            
             for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
             {
@@ -45,7 +46,8 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
 
     public IEnumerator coroutineZommarBaloes(WrapperLevelMapDto evento, float delay)
     {
-        if (evento.isAberto || evento.isEmAndamento)
+        MapaEntidade mapaEntidade = evento.mapaEntidade;
+        if (mapaEntidade.isLivre|| mapaEntidade.isProgresso)
         {
             int levelsLiberados = evento.mapaEntidade.getIndiceMaxLevelLiberadoDoMapa();
             bool newLevelLiberado = PlayerPrefsMapas.isNovaLiberacaoLevelBalao();
@@ -55,7 +57,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
             {
                 BtnBalaoMapa btnBalaoMapaIt = btnsMapasBaloes[contador];
                 btnBalaoMapaIt.zoomarBalaoMais();
-                if((contador == (levelsLiberados - 1)) && newLevelLiberado && evento.isEmAndamento)
+                if((contador == (levelsLiberados - 1)) && newLevelLiberado && mapaEntidade.isLivre)
                 {
                     btnBalaoMapaIt.ativarExclamacao();
                 }

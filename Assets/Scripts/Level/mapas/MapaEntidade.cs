@@ -3,20 +3,29 @@ using UnityEngine;
 public class MapaEntidade 
 {
     public MapaEnum mapaEnum { get { return levelMapDto.MapaEnum; } }
-    private LevelMapDto levelMapDto;
 
     public int id { get; private set; }
     public string title { get; private set; }
-    public bool locked { get; private set; }
 
+    public bool isLivre     { get { return mapaEstado.isLivre; } }
+    public bool isProgresso { get { return mapaEstado.isProgresso; } }
+    public bool isBloqueado { get { return mapaEstado.isBloqueado; } }
+    public bool isLockado   { get { return mapaEstado.isLockado; } }
+
+    public Sprite spriteMapa { get { return levelMapDto.SprMapa; } }
+
+    private LevelMapDto levelMapDto;
+    private MapaEstado mapaEstado;
     private AbstractFornecedorLevels levelFornecedor                = DefaultFornecedorLevels.getInstance();
     private AbstractFornecedorColetaveisLevels coletaveisFornecedor = DefaultFornecedorLevelsColetaveis.getInstace();
 
     public MapaEntidade(LevelMapDto levelMapDto)
     {
+        mapaEstado = new MapaEstado();
         this.levelMapDto = levelMapDto;        
     }
 
+    //**** PARTE CONFIGURACOES BUILDER INICIO ****//
     public MapaEntidade addInfo(int id, string title)
     {
         this.id = id;
@@ -34,13 +43,34 @@ public class MapaEntidade
     {
         this.coletaveisFornecedor = coletaveisFornecedor;        
         return this;
-    }    
+    }
+    //**** PARTE CONFIGURACOES BUILDER FIM****//
+
+    //**** PARTE ESTADO INICIO ****//
+    public void emProgresso()
+    {
+        mapaEstado.emProgresso();
+    }
 
     public void lockar()
     {
-        locked = true;
+        mapaEstado.lockar();
     }
 
+    public void bloquear()
+    {
+        mapaEstado.bloquear();
+    }
+    //**** PARTE ESTADO FIM ****//
+
+    //**** PARTE UI INICIO ****//
+    public Vector2[] getPosicoesBaloes()
+    {
+        return levelMapDto.Posicoes;
+    }
+    //**** PARTE UI FIM ****//
+
+    //**** PARTE LEVELS INICIO ****//
     public AbstractLevel getLevelByIndiceDezena(int indice)
     {
         return levelFornecedor.getLevelByIndiceDezena(id, indice);        
@@ -65,7 +95,9 @@ public class MapaEntidade
     {
         return levelFornecedor.getIndiceMaxLevelLiberadoDoMapa(id);
     }
-    
+    //**** PARTE LEVELS FIM ****//
+
+    //**** PARTE COLETAVEIS INICIO ****//
     public ColetavelEntidade getColetavelEntidadeByIndice(int indice)
     {
         return coletaveisFornecedor.getColetavelEntidadeByIndice(indice, this, levelMapDto);
@@ -90,5 +122,5 @@ public class MapaEntidade
     {
         return coletaveisFornecedor.getColetaveis(this, levelMapDto);
     }
-
+    //**** PARTE COLETAVEIS FIM ****//
 }

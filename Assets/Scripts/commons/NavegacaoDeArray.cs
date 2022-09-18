@@ -73,20 +73,5 @@ public class NavegacaoDeArray<T>
     public bool isIndiceAtualMenorQtdItensArray()
     {
         return indiceAtual < array.Length;
-    }
-
-    public bool isIndiceAtualUltimo()
-    {
-        return indiceAtual == array.Length - 1;
-    }
-
-    public bool isIndiceAtualPenultimo()
-    {
-        return indiceAtual == array.Length - 2;
-    }
-
-    public bool isIndiceAtualAntepenultimo()
-    {
-        return indiceAtual == array.Length - 3;
-    }
+    }    
 }

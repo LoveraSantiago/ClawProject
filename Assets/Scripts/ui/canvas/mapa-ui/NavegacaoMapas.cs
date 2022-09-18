@@ -1,63 +1,59 @@
-using UnityEngine;
-
 public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
 {
     private BotoesNavegacaoMapaDto botoesNavegacao;
-    private NavegacaoDeArray<LevelMapDto> navegacaoDeArray;
+    private NavegacaoDeArray<MapaEntidade> navegacaoDeArray;
     private WrapperLevelMapDto wrapperMapLevelAtual;
 
     private ProdutorDeEvento<WrapperLevelMapDto> produtorDeEvento;
 
-    public NavegacaoMapas(BotoesNavegacaoMapaDto botoesNavegacao, PrefabLevelsDto prefabLevelsDto)
+    public NavegacaoMapas(BotoesNavegacaoMapaDto botoesNavegacao)
     {
         this.botoesNavegacao = botoesNavegacao;
         this.botoesNavegacao.BtnNavegacaoEsquerda.onClick.AddListener(() => navegacaoEsquerda());
         this.botoesNavegacao.BtnNavegacaoDireita.onClick.AddListener (() => navegacaoDireita());
 
-        configurarMapasParaNavegacao(prefabLevelsDto);
+        configurarMapasParaNavegacao();
         produtorDeEvento = new ProdutorDeEvento<WrapperLevelMapDto>();        
     }
 
     public void inicializar()
     {
-        LevelMapDto levelMapDto = navegacaoDeArray.getItemIndiceAtual();
-        produzirEvento(Direcao.CENTRALIZADA, levelMapDto);
+        MapaEntidade mapaEntidade = navegacaoDeArray.getItemIndiceAtual();
+        produzirEvento(Direcao.CENTRALIZADA, mapaEntidade);
     }    
 
     private void navegacaoEsquerda()
-    {        
-        LevelMapDto levelMapDto = navegacaoDeArray.getItemProximo();
-        produzirEvento(Direcao.ESQUERDA, levelMapDto);
+    {
+        MapaEntidade mapaEntidade = navegacaoDeArray.getItemProximo();
+        produzirEvento(Direcao.ESQUERDA, mapaEntidade);
         dismissExclamacao();
     }
 
     private void navegacaoDireita()
-    {        
-        LevelMapDto levelMapDto = navegacaoDeArray.getItemAnterior();
-        produzirEvento(Direcao.DIREITA, levelMapDto);
+    {
+        MapaEntidade mapaEntidade = navegacaoDeArray.getItemAnterior();
+        produzirEvento(Direcao.DIREITA, mapaEntidade);
         dismissExclamacao();
     }
 
-    private void produzirEvento(Direcao direcao, LevelMapDto levelMapDto)
+    private void produzirEvento(Direcao direcao, MapaEntidade mapaEntidade)
     {
-        bool isAntePenultimo = navegacaoDeArray.isIndiceAtualAntepenultimo();
-        bool penultimo       = navegacaoDeArray.isIndiceAtualPenultimo();
-        bool ultimo          = navegacaoDeArray.isIndiceAtualUltimo();
-        //Debug.Log("antepenultimo " + isAntePenultimo +  " penultimo " + penultimo + " Ultimo " + ultimo);
-
-        EstadoOrdemMapaDto estadoOrdem = new EstadoOrdemMapaDto(isAntePenultimo, penultimo, ultimo);        
-        wrapperMapLevelAtual = FactoryWrapperLevelMapDto.factory(direcao, levelMapDto, estadoOrdem);
+        wrapperMapLevelAtual = new WrapperLevelMapDto(direcao, mapaEntidade);
 
         //Debug.Log("estado " + wrapperMapLevelAtual.mapaEstado);
         ContextoEstaticoUtils.configMapaEntidade(wrapperMapLevelAtual.mapaEntidade);
         produtorDeEvento.produziuEvento(wrapperMapLevelAtual);     
     }
 
-    private void configurarMapasParaNavegacao(PrefabLevelsDto prefabLevelsDto)
+    private void configurarMapasParaNavegacao()
     {
-        LevelMapDto[] levelsMapDto = prefabLevelsDto.getLevelsMapLiberadosDto(2);
+        MapaEntidade[] mapas = FactoryMapaEntidade.getMapaEntidadesLiberados(2);
+        mapas[mapas.Length - 1].lockar();
+        mapas[mapas.Length - 2].bloquear();
+        mapas[mapas.Length - 3].emProgresso();
+
         MapaEntidade mapaNavegacao = ContextoEstaticoUtils.loadMapaEntidade();
-        navegacaoDeArray = new NavegacaoDeArray<LevelMapDto>(levelsMapDto, mapaNavegacao.id - 1);
+        navegacaoDeArray = new NavegacaoDeArray<MapaEntidade>(mapas, mapaNavegacao.id - 1);
         if (PlayerPrefsMapas.isNovaLiberacaoMapa())
         {
             botoesNavegacao.GoExclamacao.SetActive(true);
@@ -66,7 +62,7 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
 
     private void dismissExclamacao()
     {
-        if (wrapperMapLevelAtual.isEmAndamento)
+        if (wrapperMapLevelAtual.mapaEntidade.isProgresso)
         {
             PlayerPrefsMapas.consumidoNovaLiberacaoMapa();
             botoesNavegacao.GoExclamacao.SetActive(false);

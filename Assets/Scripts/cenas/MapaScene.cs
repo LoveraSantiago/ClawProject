@@ -36,7 +36,7 @@ public class MapaScene : MonoBehaviour,
 
         PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
         FactoryMapaEntidade.configurar(prefabLevels);
-        NavegacaoMapas navegacaoMapas = new NavegacaoMapas(botoesNavegacao, prefabLevels);        
+        NavegacaoMapas navegacaoMapas = new NavegacaoMapas(botoesNavegacao);        
 
         new AcaoMapaNavegado()
             .configurarProdutor(navegacaoMapas)
