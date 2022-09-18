@@ -1,35 +1,37 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CanvasDetalheColetavel 
+public class CanvasDetalheColetavel : AcaoItemArmarioSelecionado.ConsumidorEvento
 {
     private static readonly int ABRIR_DETALHE  = Animator.StringToHash("abrir-detalhe");
     private static readonly int FECHAR_DETALHE = Animator.StringToHash("fechar-detalhe");
     private static readonly int DETALHE_ABERTO = Animator.StringToHash("detalhe-aberto");
 
-    private CanvasDetalheColetavelDto canvasDetalheDto;    
+    private CanvasDetalheColetavelDto canvasDetalheDto;
+    private PrateleirasDto prateleirasDto;
     private ColetaveisParaPrateleiras coletaveisParaPrateleiras;
-    private BotaoIrGameColetaveis     btnIrGameColetavel;
+    private BotaoIrGameColetaveis     btnIrGameColetavel;   
 
     public CanvasDetalheColetavel(MainColetaveisDto mainDto, ColetaveisParaPrateleiras coletaveisParaPrateleiras)
     {
         this.canvasDetalheDto = mainDto.CanvasDetalheColetavelDto;
+        this.prateleirasDto   = mainDto.PrateleirasDto;
         btnIrGameColetavel    = new BotaoIrGameColetaveis(canvasDetalheDto.BtnColetavel, mainDto.ModalNoFichaDto);
         this.coletaveisParaPrateleiras = coletaveisParaPrateleiras;
     }
 
-    public void abrirDetalhe(IndiceArmarioSelecionadoDto indiceArmarioSelecionado, PrateleirasDto prateleirasDto)
+    public void abrirDetalhe(IndiceArmarioSelecionadoDto indiceArmarioSelecionado)
     {
         PrateleiraArmarioDto prateleira     = prateleirasDto.PrateleiraDto[indiceArmarioSelecionado.indicePrateleira];
         ItemPrateleiraDto itemSelecionado   = prateleira.ItensPrateleira[indiceArmarioSelecionado.indiceItem];
         Image imgItemPrateleria             = itemSelecionado.ImgItem;
         Sprite sprColetavel                 = imgItemPrateleria.sprite;
         ColetavelEntidade coletavelEntidade = coletaveisParaPrateleiras.getColetavelPeloSprite(sprColetavel);
-        abrirDetalhe(coletavelEntidade, indiceArmarioSelecionado, prateleirasDto);        
+        abrirDetalhe(coletavelEntidade, indiceArmarioSelecionado);        
         canvasDetalheDto.AnimatorCanvas.Play(ABRIR_DETALHE);
     }    
 
-    private void abrirDetalhe(ColetavelEntidade coletavelEntidade, IndiceArmarioSelecionadoDto indiceArmarioSelecionado, PrateleirasDto prateleirasDto)
+    private void abrirDetalhe(ColetavelEntidade coletavelEntidade, IndiceArmarioSelecionadoDto indiceArmarioSelecionado)
     {
         PrateleiraArmarioDto prateleira   = prateleirasDto.PrateleiraDto[indiceArmarioSelecionado.indicePrateleira];
         ItemPrateleiraDto itemSelecionado = prateleira.ItensPrateleira[indiceArmarioSelecionado.indiceItem];
@@ -67,14 +69,19 @@ public class CanvasDetalheColetavel
         }
     }
 
-    public void detalheAberto(ColetavelEntidade coletavelEntidade, IndiceArmarioSelecionadoDto indiceArmarioSelecionado, PrateleirasDto prateleirasDto)
+    public void detalheAberto(ColetavelEntidade coletavelEntidade, IndiceArmarioSelecionadoDto indiceArmarioSelecionado)
     {
-        abrirDetalhe(coletavelEntidade, indiceArmarioSelecionado, prateleirasDto);
+        abrirDetalhe(coletavelEntidade, indiceArmarioSelecionado);
         canvasDetalheDto.AnimatorCanvas.Play(DETALHE_ABERTO);
     }
 
     public void fecharDetalhe()
     {
         canvasDetalheDto.AnimatorCanvas.Play(FECHAR_DETALHE);        
-    }    
+    }
+
+    void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
+    {
+        abrirDetalhe(evento);
+    }
 }

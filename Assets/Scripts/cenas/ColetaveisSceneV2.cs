@@ -2,8 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 #pragma warning disable 0649
-public class ColetaveisSceneV2 : MonoBehaviour,
-                                 AcaoItemArmarioSelecionado.ConsumidorEvento
+public class ColetaveisSceneV2 : MonoBehaviour                                 
 {
     [SerializeField] private MainColetaveisDto mainDto;
 
@@ -37,7 +36,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
         new AcaoItemArmarioSelecionado()
             .configurarProdutor(movimentadorArmario)
-            .adicionarConsumidor(this);
+            .adicionarConsumidor(detalheColetavel);
 
         restaurarArmario();
     }
@@ -77,7 +76,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
                 //Debug.Log("Movimentando para Baixo ");
             }
             movimentadorArmario.movimentarImediato(indiceArmarioSelecionado);
-            detalheColetavel.detalheAberto(coletavelEntidade, indiceArmarioSelecionado, mainDto.PrateleirasDto);
+            detalheColetavel.detalheAberto(coletavelEntidade, indiceArmarioSelecionado);
         }
         else
         {
@@ -88,10 +87,5 @@ public class ColetaveisSceneV2 : MonoBehaviour,
     public void animacaoFecharDetalheEnd()
     {
         movimentadorArmario.voltar(mainDto.ScrollRect);
-    }
-
-    void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
-    {        
-        detalheColetavel.abrirDetalhe(evento, mainDto.PrateleirasDto);
-    }
+    }   
 }
