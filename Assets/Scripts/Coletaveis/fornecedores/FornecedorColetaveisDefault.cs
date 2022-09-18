@@ -1,11 +1,6 @@
 public class FornecedorColetaveisDefault : AbstractFornecedorColetaveisLevels
 {
-    private static FornecedorColetaveisDefault instance;
-
-    protected override ColetavelEntidade[] getArrayDeColetaveis()
-    {
-        return new ColetavelEntidade[] { };
-    }
+    private static FornecedorColetaveisDefault instance;    
 
     protected override AbstractLevel getLevelToColetavel(int indice)
     {

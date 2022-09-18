@@ -68,7 +68,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
             mainDto.ScrollRect.verticalNormalizedPosition = playerPrefsDto.posicaoScroll;
             //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);            
             ColetavelEntidade coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(indice);
-            while (!prateleiras.isPrateleiraVisivel(coletavelEntidade.ordem))
+            while (!prateleiras.isPrateleiraVisivel(coletavelEntidade.indice))
             {
                 prateleiras.movimentarParaBaixo(mainDto.PrateleirasDto);
                 //Debug.Log("Movimentando para Baixo ");

@@ -46,9 +46,7 @@ public abstract class AbstractFornecedorColetaveisLevels
             }
         }
         return HelperColetavelEntidade.getIndiceSpriteNaoEncontrado(sprite);
-    }
-
-    protected abstract ColetavelEntidade[] getArrayDeColetaveis();    
+    }    
 
     public AbstractLevel getLevel(int indice)
     {
@@ -66,22 +64,25 @@ public abstract class AbstractFornecedorColetaveisLevels
     private void iniciarArrayDeColetaveis(MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
     {
         if(arrayDeColetaveis == null)
-        {
-            arrayDeColetaveis = getArrayDeColetaveis();
+        {            
+            configurarColetaveis(mapaEntidade, levelMapDto);
         }
-        configurarColetaveis(mapaEntidade, levelMapDto);
     }
 
     private void configurarColetaveis(MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
     {
-        for (int contador = 0; contador < arrayDeColetaveis.Length; contador++)
+        int qtdColetaveisDto = levelMapDto.ColetaveisDto.Length;
+
+        arrayDeColetaveis = new ColetavelEntidade[qtdColetaveisDto];
+
+        for (int contador = 0; contador < qtdColetaveisDto; contador++)
         {
-            ColetavelEntidade coletavelEntidadeIt = arrayDeColetaveis[contador];
-            coletavelEntidadeIt.setMapaEntidade(mapaEntidade);
 
             ColetavelEntidadeDto coletavelEntidadeDtoIt = levelMapDto.ColetaveisDto[contador];
-            coletavelEntidadeIt.setNome(coletavelEntidadeDtoIt.Nome);
-            coletavelEntidadeIt.setSprite(coletavelEntidadeDtoIt.Sprite);
+
+            ColetavelEntidade coletavelEntidadeIt = new ColetavelEntidade(contador, coletavelEntidadeDtoIt);
+            coletavelEntidadeIt.setMapaEntidade(mapaEntidade);
+            arrayDeColetaveis[contador] = coletavelEntidadeIt;
         }
     }
 }
