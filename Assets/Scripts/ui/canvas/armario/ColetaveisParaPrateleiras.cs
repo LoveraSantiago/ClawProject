@@ -17,6 +17,11 @@ public class ColetaveisParaPrateleiras
         return coletaveis[indice];
     }
 
+    public ColetavelEntidade getColetavelPeloSprite(Sprite sprite)
+    {
+        return dicionarioDeSprites[sprite];
+    }
+
     public int getQtdColetaveis()
     {
         return coletaveis.Length;

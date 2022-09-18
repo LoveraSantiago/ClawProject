@@ -14,24 +14,22 @@ public class ColetaveisSceneV2 : MonoBehaviour,
 
     void Start()
     {
+        PrefabLevelsDto prefabLevels = mainDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
+
         ContextoEstaticoUtils.configMainMono(this);
         MateriaisUtils.configurar(mainDto.PrefabMateriais);
-
-        PrefabLevelsDto prefabLevels = mainDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         FactoryMapaEntidade.configurar(prefabLevels);
 
         PlayerPrefsColetaveis.unlockFamilia(MapaEnum.FRUTAS.ToString());//TEMPORARIAMENTE AQUI               
 
-        timerFichaOuro = new TimerFicha(mainDto.TimerFichaDto, Ficha.OURO);
         ColetaveisParaPrateleiras coletaveisParaPrateleiras = new ColetaveisParaPrateleiras();
-
-        prateleiras    = new Prateleiras(mainDto.PrateleirasDto, coletaveisParaPrateleiras);
-
-        mainDto.ScrollRect.onValueChanged.AddListener((pos) => prateleiras.movimentado(pos, mainDto.PrateleirasDto));
-                
+        timerFichaOuro      = new TimerFicha(mainDto.TimerFichaDto, Ficha.OURO);
+        prateleiras         = new Prateleiras(mainDto.PrateleirasDto, coletaveisParaPrateleiras);                
         movimentadorArmario = new MovimentadorDeArmario(mainDto);
-        detalheColetavel = new CanvasDetalheColetavel(mainDto);
+        detalheColetavel    = new CanvasDetalheColetavel(mainDto, coletaveisParaPrateleiras);
+
         configBtnBack(mainDto.BtnBack);
+        mainDto.ScrollRect.onValueChanged.AddListener((pos) => prateleiras.movimentado(pos, mainDto.PrateleirasDto));
 
         new AcaoBtnPrateleiraAcionado()
             .configurarProdutor(prateleiras)

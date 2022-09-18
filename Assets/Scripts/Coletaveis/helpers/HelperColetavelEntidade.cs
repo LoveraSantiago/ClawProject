@@ -3,23 +3,9 @@ using UnityEngine;
 
 public class HelperColetavelEntidade 
 {
-    private static Dictionary<int, ColetavelEntidade> coletaveisPorId;
-    private static Dictionary<string, ColetavelEntidade> coletaveisPorSpriteNome;
+    private static Dictionary<int, ColetavelEntidade> coletaveisPorId;    
     private static Dictionary<string, Sprite> spritesPorNome;
-    private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;      
-
-    public static ColetavelEntidade getColetavelEntidadeBySprite(string spriteName)
-    {     
-        if (coletaveisPorSpriteNome.ContainsKey(spriteName))
-        {
-            return coletaveisPorSpriteNome[spriteName];
-        }
-        else
-        {
-            Debug.LogError("O spritename solicitado nao existe: " + spriteName);
-            return null;
-        }
-    }
+    private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;          
 
     public static ColetavelEntidade getRandomColetavelEntidadeByFamilia(MapaEnum mapaENum)
     {

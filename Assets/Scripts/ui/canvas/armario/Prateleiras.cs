@@ -12,7 +12,7 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
     public Prateleiras(PrateleirasDto prateleirasDto, ColetaveisParaPrateleiras coletaveisParaPrateleiras)
     {
         this.coletaveisParaPrateleiras = coletaveisParaPrateleiras;
-        produtorDeEvento = new ProdutorDeEvento<bool>();
+        produtorDeEvento    = new ProdutorDeEvento<bool>();
         populadorPrateleira = new PopuladorPrateleira();        
         configurarPrateleiras(prateleirasDto);                
     }
