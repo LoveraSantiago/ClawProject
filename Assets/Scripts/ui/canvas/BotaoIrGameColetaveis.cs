@@ -13,14 +13,12 @@ public class BotaoIrGameColetaveis
     }
 
     private void irParaLevelDeColetado()
-    {        
-        int indiceFamilia = HelperColetavelEntidade.getIndiceDaFamilia(coletavelEntidade.mapaEntidade.mapaEnum);
-
+    {   
         if(PlayerPrefsFichas.possueFichas(Ficha.OURO, 1))
         {
             PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
 
-            MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(coletavelEntidade.mapaEntidade.mapaEnum);
+            MapaEntidade mapaEntidade = coletavelEntidade.mapaEntidade;
             AbstractLevel level = mapaEntidade.getLevelColetavelByIndice(coletavelEntidade.indice);
             ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);            
             
