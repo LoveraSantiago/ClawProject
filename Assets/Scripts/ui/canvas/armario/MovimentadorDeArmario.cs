@@ -111,7 +111,7 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento,
             yield return null;
         }
         //Debug.Log("Finalizado");        
-        produtorDeEvento.produziuEvento(new IndiceArmarioSelecionadoDto(indicePrateleira, indiceItem));
+        produtorDeEvento.produziuEvento(new IndiceArmarioSelecionadoDto(indicePrateleira, indiceItem, scrollRect.verticalNormalizedPosition));
         yield return null;
     }
 

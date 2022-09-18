@@ -91,9 +91,7 @@ public class ColetaveisSceneV2 : MonoBehaviour,
     }
 
     void AcaoItemArmarioSelecionado.ConsumidorEvento.consumirEvento(IndiceArmarioSelecionadoDto evento)
-    {
-        //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
-        IndiceArmarioSelecionadoDto indiceArmario = new IndiceArmarioSelecionadoDto(evento, mainDto.ScrollRect.verticalNormalizedPosition);
-        detalheColetavel.abrirDetalhe(indiceArmario, mainDto.PrateleirasDto);
+    {        
+        detalheColetavel.abrirDetalhe(evento, mainDto.PrateleirasDto);
     }
 }

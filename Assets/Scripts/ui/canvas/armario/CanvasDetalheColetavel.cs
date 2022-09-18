@@ -8,22 +8,22 @@ public class CanvasDetalheColetavel
     private static readonly int DETALHE_ABERTO = Animator.StringToHash("detalhe-aberto");
 
     private CanvasDetalheColetavelDto canvasDetalheDto;    
-    private BotaoIrGameColetaveis btnIrGameColetavel;
     private ColetaveisParaPrateleiras coletaveisParaPrateleiras;
+    private BotaoIrGameColetaveis     btnIrGameColetavel;
 
     public CanvasDetalheColetavel(MainColetaveisDto mainDto, ColetaveisParaPrateleiras coletaveisParaPrateleiras)
     {
         this.canvasDetalheDto = mainDto.CanvasDetalheColetavelDto;
-        btnIrGameColetavel = new BotaoIrGameColetaveis(canvasDetalheDto.BtnColetavel, mainDto.ModalNoFichaDto);
+        btnIrGameColetavel    = new BotaoIrGameColetaveis(canvasDetalheDto.BtnColetavel, mainDto.ModalNoFichaDto);
         this.coletaveisParaPrateleiras = coletaveisParaPrateleiras;
     }
 
     public void abrirDetalhe(IndiceArmarioSelecionadoDto indiceArmarioSelecionado, PrateleirasDto prateleirasDto)
     {
-        PrateleiraArmarioDto prateleira = prateleirasDto.PrateleiraDto[indiceArmarioSelecionado.indicePrateleira];
-        ItemPrateleiraDto itemSelecionado = prateleira.ItensPrateleira[indiceArmarioSelecionado.indiceItem];
-        Image imgItemPrateleria = itemSelecionado.ImgItem;
-        Sprite sprColetavel = imgItemPrateleria.sprite;
+        PrateleiraArmarioDto prateleira     = prateleirasDto.PrateleiraDto[indiceArmarioSelecionado.indicePrateleira];
+        ItemPrateleiraDto itemSelecionado   = prateleira.ItensPrateleira[indiceArmarioSelecionado.indiceItem];
+        Image imgItemPrateleria             = itemSelecionado.ImgItem;
+        Sprite sprColetavel                 = imgItemPrateleria.sprite;
         ColetavelEntidade coletavelEntidade = coletaveisParaPrateleiras.getColetavelPeloSprite(sprColetavel);
         abrirDetalhe(coletavelEntidade, indiceArmarioSelecionado, prateleirasDto);        
         canvasDetalheDto.AnimatorCanvas.Play(ABRIR_DETALHE);
@@ -31,18 +31,18 @@ public class CanvasDetalheColetavel
 
     private void abrirDetalhe(ColetavelEntidade coletavelEntidade, IndiceArmarioSelecionadoDto indiceArmarioSelecionado, PrateleirasDto prateleirasDto)
     {
-        PrateleiraArmarioDto prateleira = prateleirasDto.PrateleiraDto[indiceArmarioSelecionado.indicePrateleira];
+        PrateleiraArmarioDto prateleira   = prateleirasDto.PrateleiraDto[indiceArmarioSelecionado.indicePrateleira];
         ItemPrateleiraDto itemSelecionado = prateleira.ItensPrateleira[indiceArmarioSelecionado.indiceItem];
-        Image imgItemPrateleria = itemSelecionado.ImgItem;
-        Sprite sprColetavel = imgItemPrateleria.sprite;
+        Image imgItemPrateleria           = itemSelecionado.ImgItem;
+        Sprite sprColetavel               = imgItemPrateleria.sprite;
         
         btnIrGameColetavel.prepararColetavelEntidade(coletavelEntidade, indiceArmarioSelecionado);
 
-        Image imgDetalhe = canvasDetalheDto.ImgDetalhe;
-        imgDetalhe.sprite = sprColetavel;
-        imgDetalhe.color = imgItemPrateleria.color;
-        imgDetalhe.material = imgItemPrateleria.material;
-        canvasDetalheDto.LblNome.text = coletavelEntidade.nome;
+        Image imgDetalhe                 = canvasDetalheDto.ImgDetalhe;
+        imgDetalhe.sprite                = sprColetavel;
+        imgDetalhe.color                 = imgItemPrateleria.color;
+        imgDetalhe.material              = imgItemPrateleria.material;
+        canvasDetalheDto.LblNome.text    = coletavelEntidade.nome;
         canvasDetalheDto.LblFamilia.text = coletavelEntidade.mapaEnum.ToString();
         canvasDetalheDto.ImgDetalhe.transform.position = itemSelecionado.ImgItem.transform.position;
 
