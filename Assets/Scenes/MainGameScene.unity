@@ -10675,7 +10675,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 10
+  indiceMapa: 0
+  indiceLevel: 0
   mainDto:
     dragCollider: {fileID: 491158116}
     garraDto:
@@ -10724,7 +10725,6 @@ MonoBehaviour:
       sensorDeColetado: {fileID: 2083913115}
       referenciaColliderColetado: {fileID: 1930189876}
       efeitoColetado: {fileID: 1488198865}
-      prefabColetaveisDto: {fileID: 540356726179213900, guid: dcc5634ee836cc04b9ebb0cbbf722dcf, type: 3}
       goMainColetavel: {fileID: 5086955511063805750, guid: 922cd5882161dbc43b6822ea4e60efc2, type: 3}
       goMainGaiola: {fileID: 4127936681606313068, guid: ec66f55dc2dbd2e4a99c4e9958eb980f, type: 3}
       descarteTuboDto:
@@ -11171,6 +11171,7 @@ MonoBehaviour:
         textoSair: {fileID: 1038405836}
       prefabBottomBar: {fileID: 0}
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
+    prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
 --- !u!61 &491158116
 BoxCollider2D:
   m_ObjectHideFlags: 0
