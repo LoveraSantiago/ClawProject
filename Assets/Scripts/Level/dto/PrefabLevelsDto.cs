@@ -1,6 +1,6 @@
 using UnityEngine;
 
-//CANDIDATO A SER SINGLETO VER CONSUMO E QTD DE VEZES Q É INSTANCIADO
+//CANDIDATO A SER SINGLETON VER CONSUMO E QTD DE VEZES Q É INSTANCIADO
 #pragma warning disable 0649
 public class PrefabLevelsDto : MonoBehaviour
 {

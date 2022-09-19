@@ -16,6 +16,8 @@ public abstract class BoardMontador
 
     protected IEnumerator montarLinha(PosicaoItensDoBoardDto posItem, int contadorLinha, float altura)
     {
+        MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;
+
         for (int contadorColuna = 0; contadorColuna < posItem.Total; contadorColuna++)
         {
             int id = arrayDeColetaveis[contadorLinha, contadorColuna];
@@ -29,11 +31,11 @@ public abstract class BoardMontador
             }
             else if (HelperColetavelEntidade.isIndiceRandom(id))//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
             {
-                coletavelEntidade = HelperColetavelEntidade.getRandomColetavelEntidadeByFamilia(mapaEnum);
+                coletavelEntidade = mapaEntidade.getColetavelEntidadeRandom();
             }
             else
             {
-                coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(id);
+                coletavelEntidade = mapaEntidade.getColetavelEntidadeByIndice(id);
             }
 
             Coletavel coletavel = criarColetavel(coletavelEntidade.nomeSprite, posicao);

@@ -16,8 +16,7 @@ public abstract class AbstractFornecedorColetaveisLevels
 
     public ColetavelEntidade getColetavelEntidadeBySprite(Sprite sprite, MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
     {
-        int indice = getIndiceColetavelEntidadeBySprite(sprite, mapaEntidade, levelMapDto);
-        return getColetavelEntidadeByIndice(indice, mapaEntidade, levelMapDto);
+        return getColetavelEntidadeBySpriteNome(sprite.name, mapaEntidade, levelMapDto);        
     }
 
     public ColetavelEntidade getColetavelEntidadeBySpriteNome(string nomeSprite, MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
@@ -36,17 +35,16 @@ public abstract class AbstractFornecedorColetaveisLevels
 
     public int getIndiceColetavelEntidadeBySprite(Sprite sprite, MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
     {
-        iniciarArrayDeColetaveis(mapaEntidade, levelMapDto);
-        for(int contador = 0; contador < arrayDeColetaveis.Length; contador++)
-        {
-            ColetavelEntidade coletavelEntidadeIt = arrayDeColetaveis[contador];
-            if(coletavelEntidadeIt.sprite == sprite)
-            {
-                return contador;
-            }
-        }
-        return HelperColetavelEntidade.getIndiceSpriteNaoEncontrado(sprite);
+        ColetavelEntidade coletavel = getColetavelEntidadeBySpriteNome(sprite.name, mapaEntidade, levelMapDto);
+        return coletavel.indice;
     }    
+
+    public ColetavelEntidade getColetavelEntidadeRandom(MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
+    {
+        iniciarArrayDeColetaveis(mapaEntidade, levelMapDto);
+        int indiceSorteado = Random.Range(0, arrayDeColetaveis.Length);
+        return getColetavelEntidadeByIndice(indiceSorteado, mapaEntidade, levelMapDto);
+    }
 
     public AbstractLevel getLevel(int indice)
     {

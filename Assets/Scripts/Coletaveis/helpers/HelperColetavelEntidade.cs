@@ -5,38 +5,7 @@ public class HelperColetavelEntidade
 {
     private static Dictionary<int, ColetavelEntidade> coletaveisPorId;    
     private static Dictionary<string, Sprite> spritesPorNome;
-    private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;          
-
-    public static ColetavelEntidade getRandomColetavelEntidadeByFamilia(MapaEnum mapaENum)
-    {
-        if (familiasPorEnum.ContainsKey(mapaENum))
-        {
-            List<ColetavelEntidade> listaDeFamilias = familiasPorEnum[mapaENum];
-            int indiceSorteadoDaLista = Random.Range(0, listaDeFamilias.Count);
-            return listaDeFamilias[indiceSorteadoDaLista];
-        }
-        else
-        {
-            Debug.LogError("A familia solicitada nao existe: " + mapaENum);
-            return null;
-        }        
-    }
-
-    public static List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamiliaExcluindo(ColetavelEntidade coletavel)
-    {
-        List<ColetavelEntidade> listaFamilia = getListaDeColetaveisEntidadeByFamilia(coletavel.mapaEntidade.mapaEnum);
-        int indiceRemover = 0;
-        for(int contador = 0; contador < listaFamilia.Count; contador++)
-        {
-            if (listaFamilia[contador].nomeSprite.Equals(coletavel.nomeSprite))
-            {
-                indiceRemover = contador;
-                break;
-            }
-        }
-        listaFamilia.RemoveAt(indiceRemover);
-        return listaFamilia;
-    }
+    private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;               
    
     public static List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamilia(MapaEnum mapaENum)
     {

@@ -113,6 +113,11 @@ public class MapaEntidade
         return coletaveisFornecedor.getColetavelEntidadeBySpriteNome(spriteNome, this, levelMapDto);
     }
 
+    public ColetavelEntidade getColetavelEntidadeRandom()
+    {
+        return coletaveisFornecedor.getColetavelEntidadeRandom(this, levelMapDto);
+    }
+
     public int getIndiceColetavelEntidadeBySprite(Sprite sprite)
     {
         return coletaveisFornecedor.getIndiceColetavelEntidadeBySprite(sprite, this, levelMapDto);
