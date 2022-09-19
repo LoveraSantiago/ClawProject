@@ -127,5 +127,10 @@ public class MapaEntidade
     {
         return coletaveisFornecedor.getColetaveis(this, levelMapDto);
     }
+
+    public ColetavelEntidade[] getColetaveisExcluindo(ColetavelEntidade coletavelEntidade)
+    {
+        return coletaveisFornecedor.getColetaveisExcluindo(coletavelEntidade, this, levelMapDto);
+    }
     //**** PARTE COLETAVEIS FIM ****//
 }

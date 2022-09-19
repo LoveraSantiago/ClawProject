@@ -58,19 +58,20 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
     private IEnumerator fazerTroca(Coletavel coletavel)
     {
         coletavelSelecionado = coletavel;
-        
-        ColetavelEntidade coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeBySpriteNome(coletavel.nomeSprite);
-        List<ColetavelEntidade> listaFamilia = HelperColetavelEntidade.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavelEntidade);
+
+        MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;        
+        ColetavelEntidade coletavelEntidade = mapaEntidade.getColetavelEntidadeBySpriteNome(coletavel.nomeSprite);
+        ColetavelEntidade[] coletaveisFamilia = mapaEntidade.getColetaveisExcluindo(coletavelEntidade);        
 
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();        
         materialTeleporte.addTrocaIn(coletavel.getSprite());
         coletavel.addMaterial(materialTeleporte.materialTeleporte);
 
-        int indiceSorteado = MathUtils.escolherDeZeroAteLimite(listaFamilia.Count);
+        int indiceSorteado = MathUtils.escolherDeZeroAteLimite(coletaveisFamilia.Length);
         Sprite sprSorteado = null;
         while (!finalizando)
         {
-            ColetavelEntidade coletavelSorteado = listaFamilia[indiceSorteado];
+            ColetavelEntidade coletavelSorteado = coletaveisFamilia[indiceSorteado];
             Debug.Log("indice sorteado " + indiceSorteado);
             sprSorteado = HelperColetavelEntidade.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);            
             materialTeleporte.addTrocaOut(sprSorteado);
@@ -90,9 +91,9 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
                 break;
             }
 
-            indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
+            indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(coletaveisFamilia.Length, indiceSorteado);
             Debug.Log("indice sorteado " + indiceSorteado);
-            coletavelSorteado = listaFamilia[indiceSorteado];
+            coletavelSorteado = coletaveisFamilia[indiceSorteado];
             sprSorteado = HelperColetavelEntidade.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);            
             materialTeleporte.addTrocaIn(sprSorteado);
 
@@ -110,7 +111,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
                 break;
             }
 
-            indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
+            indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(coletaveisFamilia.Length, indiceSorteado);
         }
 
         finalizando = true;

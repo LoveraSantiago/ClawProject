@@ -59,6 +59,24 @@ public abstract class AbstractFornecedorColetaveisLevels
         return arrayDeColetaveis;
     }
 
+    public ColetavelEntidade[] getColetaveisExcluindo(ColetavelEntidade coletavelEntidade, MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
+    {
+        iniciarArrayDeColetaveis(mapaEntidade, levelMapDto);
+        ColetavelEntidade[] coletaveisFiltrado = new ColetavelEntidade[arrayDeColetaveis.Length - 1];
+
+        int contadorFiltrado = 0;
+        for(int contadorColetaveis = 0; contadorColetaveis < arrayDeColetaveis.Length; contadorColetaveis++)
+        {
+            ColetavelEntidade coletavelIt = arrayDeColetaveis[contadorColetaveis];
+            if(coletavelIt.indice != coletavelEntidade.indice)
+            {
+                coletaveisFiltrado[contadorFiltrado] = coletavelIt;
+                contadorFiltrado++;
+            }
+        }
+        return coletaveisFiltrado;
+    }
+
     private void iniciarArrayDeColetaveis(MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
     {
         if(arrayDeColetaveis == null)
