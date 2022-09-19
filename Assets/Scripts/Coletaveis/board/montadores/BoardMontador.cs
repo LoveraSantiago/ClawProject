@@ -38,14 +38,14 @@ public abstract class BoardMontador
                 coletavelEntidade = mapaEntidade.getColetavelEntidadeByIndice(id);
             }
 
-            Coletavel coletavel = criarColetavel(coletavelEntidade.nomeSprite, posicao);
+            Coletavel coletavel = criarColetavel(coletavelEntidade.sprite, posicao);
             yield return onColetavelCriado(contadorColuna, contadorLinha,coletavel);            
         }
     }
 
-    protected virtual Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
+    protected virtual Coletavel criarColetavel(Sprite sprite, Vector3 posicao)
     {
-        return HelperColetaveisInGame.criarColetavel(nomeSprite, posicao); 
+        return HelperColetaveisInGame.criarColetavel(sprite, posicao); 
     }
 
     private Vector3 calcularPosicao(PosicaoItensDoBoardDto posItem, int contadorColuna, float altura)
