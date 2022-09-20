@@ -22,11 +22,11 @@ public class RemontadorBoard
                 int id = arrayDeColetaveis[contadorLinha, contadorColuna];
                 ColetavelEntidade coletavelEntidade = null;
 
-                if (HelperColetavelEntidade.isIndiceVazio(id))
+                if (ColetavelEntidade.isIndiceVazio(id))
                 {
                     continue;
                 }
-                else if (HelperColetavelEntidade.isIndiceRandom(id))
+                else if (ColetavelEntidade.isIndiceRandom(id))
                 {
                     referencias.updateElementoGo(contadorLinha, contadorColuna, listaDeSprites.getSpriteRandom());                                        
                 }
