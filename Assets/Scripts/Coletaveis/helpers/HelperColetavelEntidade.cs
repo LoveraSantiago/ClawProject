@@ -1,34 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HelperColetavelEntidade 
 {
-    private static Dictionary<int, ColetavelEntidade> coletaveisPorId;    
-    private static Dictionary<string, Sprite> spritesPorNome;
-    private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;
-
-    public static Sprite[] getAllSpritesColetaveisOrdenados()
-    {
-        int totalDefault = familiasPorEnum[MapaEnum.DEFAULTS].Count;
-        Sprite[] array = new Sprite[coletaveisPorId.Count - totalDefault];
-        int contador = 0;
-        foreach(KeyValuePair<MapaEnum, List<ColetavelEntidade>> entry in familiasPorEnum)
-        {
-            if(entry.Key != MapaEnum.DEFAULTS)
-            {
-                List <ColetavelEntidade> coletaveis = entry.Value;
-                for(int contadorColetavel = 0; contadorColetavel < coletaveis.Count; contadorColetavel++)
-                {
-                    ColetavelEntidade coletavelIt = coletaveis[contadorColetavel];
-                    Sprite sprite = spritesPorNome[coletavelIt.nomeSprite];
-                    array[contador] = sprite;
-                    contador++;
-                }
-            }
-        }
-        return array;
-    }       
-
     public static bool isIndiceVazio(int indice)
     {
         return indice == -1;
