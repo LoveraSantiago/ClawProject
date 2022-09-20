@@ -7,19 +7,6 @@ public class HelperColetavelEntidade
     private static Dictionary<string, Sprite> spritesPorNome;
     private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;
 
-    public static int getIndiceDaFamilia(MapaEnum mapaENum)
-    {
-        MapaEnum[] arrayDeMapas = Mapas.getTodosMapas();
-        for (int contador = 0; contador < arrayDeMapas.Length; contador++)
-        {
-            if(mapaENum == arrayDeMapas[contador])
-            {
-                return contador;
-            }
-        }
-        return 0;
-    }
-
     public static Sprite getSpriteColetavelByNomeSprite(string nomeSprite)
     {   
         return spritesPorNome[nomeSprite];
