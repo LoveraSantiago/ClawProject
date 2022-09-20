@@ -35,7 +35,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
     {
         MapaEntidade mapaEntidade = evento.mapaEntidade;
         Vector2[] posicoes = mapaEntidade.getPosicoesBaloes();
-        if (mapaEntidade.isLivre)
+        if (mapaEntidade.isLivre || mapaEntidade.isProgresso)
         {            
             for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
             {
