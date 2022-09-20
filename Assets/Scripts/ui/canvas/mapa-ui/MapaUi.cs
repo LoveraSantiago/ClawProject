@@ -53,7 +53,7 @@ public class MapaUi
             levelMapaUiDto.LblJorney.text = "JORNEY " + mapaEntidade.id;
             levelMapaUiDto.LblTitle.text = mapaEntidade.title;
         }
-        else if (mapaEntidade.isLockado)
+        else if (mapaEntidade.isBloqueado)
         {
             materialGrayScale = MaterialGrayScale.changeSprite(materialGrayScale, mapaEntidade.spriteMapa);
             levelMapaUiDto.ImgMapa.color = Color.white;
@@ -61,7 +61,7 @@ public class MapaUi
             levelMapaUiDto.LblJorney.text = "LEVEL BLOQUEADO";
             levelMapaUiDto.LblTitle.text = "Complete o Mapa Anterior para Desbloquear";
         }
-        else if (mapaEntidade.isBloqueado)
+        else if (mapaEntidade.isLockado)
         {
             levelMapaUiDto.ImgMapa.color = Color.black;
             levelMapaUiDto.ImgMapa.material = null;
