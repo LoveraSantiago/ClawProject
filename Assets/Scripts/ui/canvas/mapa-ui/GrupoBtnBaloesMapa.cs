@@ -57,7 +57,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
             {
                 BtnBalaoMapa btnBalaoMapaIt = btnsMapasBaloes[contador];
                 btnBalaoMapaIt.zoomarBalaoMais();
-                if((contador == (levelsLiberados - 1)) && newLevelLiberado && mapaEntidade.isLivre)
+                if((contador == (levelsLiberados - 1)) && newLevelLiberado && mapaEntidade.isProgresso)
                 {
                     btnBalaoMapaIt.ativarExclamacao();
                 }
