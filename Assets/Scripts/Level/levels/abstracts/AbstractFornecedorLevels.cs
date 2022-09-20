@@ -9,7 +9,7 @@ public abstract class AbstractFornecedorLevels
 
     public AbstractLevel getLevelByIndiceGeral(int idMapa, int indice)
     {
-        int indiceLevel = (indice + 1) % 11;
+        int indiceLevel = ((indice - 1) % 10) + 1;
         return getLevelByIndiceDezena(idMapa, indiceLevel);
     }
 

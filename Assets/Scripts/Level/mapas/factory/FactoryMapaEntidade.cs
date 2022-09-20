@@ -14,9 +14,9 @@ public class FactoryMapaEntidade
 
             case MapaEnum.FRUTAS:
                 return new MapaEntidade(levelMapDto)
-                    .addInfo(1, "PARQUE DE DIVERSÕES")                   
-                    //.addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes())
-                    .addFornecedoresLevels(new FornecedorLevelsTestes())
+                    .addInfo(1, "PARQUE DE DIVERSÕES")
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes())
+                    //.addFornecedoresLevels(new FornecedorLevelsTestes())
                     .addFornecedoresColetaveis(new FornecedorLevelColetaveisFrutas());
 
             case MapaEnum.DINO:

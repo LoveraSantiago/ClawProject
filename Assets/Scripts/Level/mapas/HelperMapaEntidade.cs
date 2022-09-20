@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class HelperMapaEntidade 
 {
@@ -23,7 +24,8 @@ public class HelperMapaEntidade
     {
         int indiceMapaEntidade = (indice) / 10;
         MapaEnum mapaEnum = Mapas.getMapaNormalEnumPeloIndice(indiceMapaEntidade);
-        MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
+        MapaEntidade mapaEntidade = getMapaEntidadeByMapaEnum(mapaEnum);
+        Debug.Log("indice " + indice + " calculado " + indiceMapaEntidade + " mapa " + mapaEntidade);
         return mapaEntidade;
     }
 }
