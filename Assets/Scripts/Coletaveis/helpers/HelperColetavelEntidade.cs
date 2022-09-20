@@ -5,12 +5,7 @@ public class HelperColetavelEntidade
 {
     private static Dictionary<int, ColetavelEntidade> coletaveisPorId;    
     private static Dictionary<string, Sprite> spritesPorNome;
-    private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;               
-   
-    public static List<ColetavelEntidade> getListaDeColetaveisEntidadeByFamilia(MapaEnum mapaENum)
-    {
-        return new List<ColetavelEntidade>(familiasPorEnum[mapaENum]);
-    }    
+    private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;
 
     public static int getIndiceDaFamilia(MapaEnum mapaENum)
     {
