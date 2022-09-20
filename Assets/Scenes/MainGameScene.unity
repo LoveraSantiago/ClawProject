@@ -10675,8 +10675,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indiceMapa: 0
-  indiceLevel: 0
+  indiceMapa: 1
+  indiceLevel: 6
   mainDto:
     dragCollider: {fileID: 491158116}
     garraDto:
@@ -11072,6 +11072,7 @@ MonoBehaviour:
       prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
       efeitoExplosao: {fileID: 2125492028}
       goMainPup: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+      spriteOvo: {fileID: 21300000, guid: 11086334af5190745adab0ee0c5dad25, type: 3}
       bombaDto:
         angGarra: 5
         raioExplosao: 1

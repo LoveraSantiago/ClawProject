@@ -7,13 +7,6 @@ public class HelperColetavelEntidade
     private static Dictionary<string, Sprite> spritesPorNome;
     private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;
 
-    public static Sprite getSpriteOvo()
-    {
-        MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.DEFAULTS);
-        ColetavelEntidade coletavelEntidadeOvo = mapaEntidade.getColetavelEntidadeByIndice(2);
-        return spritesPorNome[coletavelEntidadeOvo.nomeSprite];
-    }
-
     public static Sprite[] getAllSpritesColetaveisOrdenados()
     {
         int totalDefault = familiasPorEnum[MapaEnum.DEFAULTS].Count;
