@@ -73,7 +73,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         {
             ColetavelEntidade coletavelSorteado = coletaveisFamilia[indiceSorteado];
             Debug.Log("indice sorteado " + indiceSorteado);
-            sprSorteado = HelperColetavelEntidade.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);            
+            sprSorteado = coletavelSorteado.sprite;      
             materialTeleporte.addTrocaOut(sprSorteado);
              
             bool houveToque = false;
@@ -94,7 +94,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
             indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(coletaveisFamilia.Length, indiceSorteado);
             Debug.Log("indice sorteado " + indiceSorteado);
             coletavelSorteado = coletaveisFamilia[indiceSorteado];
-            sprSorteado = HelperColetavelEntidade.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);            
+            sprSorteado = coletavelSorteado.sprite;
             materialTeleporte.addTrocaIn(sprSorteado);
 
             houveToque = false;

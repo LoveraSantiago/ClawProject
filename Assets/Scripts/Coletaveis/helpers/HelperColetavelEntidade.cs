@@ -7,11 +7,6 @@ public class HelperColetavelEntidade
     private static Dictionary<string, Sprite> spritesPorNome;
     private static Dictionary<MapaEnum, List<ColetavelEntidade>> familiasPorEnum;
 
-    public static Sprite getSpriteColetavelByNomeSprite(string nomeSprite)
-    {   
-        return spritesPorNome[nomeSprite];
-    }
-
     public static Sprite getSpriteOvo()
     {
         MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.DEFAULTS);
