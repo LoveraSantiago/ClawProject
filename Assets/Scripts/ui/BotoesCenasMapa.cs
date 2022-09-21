@@ -16,7 +16,7 @@ public class BotoesCenasMapa
         });
         botoesCenasDto.BtnPelucia.onClick.AddListener(() => {
             CenaUtils.irParaCenaColetaveis();
-            PlayerPrefsMapas.consumidoNobaLiberacaoColetavel();
+            PlayerPrefsMapas.consumidoNovaLiberacaoColetavel();
         });
         botoesCenasDto.BtnConfig.onClick.AddListener(() => CenaUtils.irParaCenaConfig());
     }

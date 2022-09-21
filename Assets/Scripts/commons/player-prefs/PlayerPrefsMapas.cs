@@ -5,6 +5,7 @@ public class PlayerPrefsMapas
 {    
     private static readonly string LEVEL_LIBERADO       = "level-liberado";
     private static readonly string MAPA_NAVEGACAO       = "mapa-naveg";
+    private static readonly string MAPA_COLETAVEIS      = "mapa-col-";
     private static readonly string NEW_LEVEL_BTN_BALAO  = "new-level-balao";
     private static readonly string NEW_LEVEL_LEVEL      = "new-level-level";
     private static readonly string NEW_LEVEL_ESPECIFICO = "new-level-especifico";
@@ -99,7 +100,7 @@ public class PlayerPrefsMapas
         return result == LIGADO;
     }
 
-    public static void consumidoNobaLiberacaoColetavel()
+    public static void consumidoNovaLiberacaoColetavel()
     {
         PlayerPrefs.SetInt(NEW_COLETAVEL_LEVEL, DESLIGADO);
     }
