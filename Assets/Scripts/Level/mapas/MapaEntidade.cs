@@ -129,6 +129,11 @@ public class MapaEntidade
         return coletaveisFornecedor.getColetaveis(this, levelMapDto);
     }
 
+    public int getQtdColetaveis()
+    {
+        return getColetaveis().Length;
+    }
+
     public ColetavelEntidade[] getColetaveisExcluindo(ColetavelEntidade coletavelEntidade)
     {
         return coletaveisFornecedor.getColetaveisExcluindo(coletavelEntidade, this, levelMapDto);

@@ -2,12 +2,7 @@ using UnityEngine;
 
 public class PlayerPrefsColetaveis 
 {   
-    private const string TAG_NAVEGACAO_COLETAVEL = "IndiceColetavel";
-
-    public static void disponibilizarColetavel(string nome)
-    {
-        PlayerPrefs.SetInt(nome, 1);        
-    }
+    private const string TAG_NAVEGACAO_COLETAVEL = "IndiceColetavel";    
 
     public static void salvarNavegacaoColetavel(int idColetavel)
     {
