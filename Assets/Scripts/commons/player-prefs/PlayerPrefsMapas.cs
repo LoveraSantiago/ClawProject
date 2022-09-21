@@ -25,7 +25,7 @@ public class PlayerPrefsMapas
     public static MapaEntidade getIndiceNavegacaoMapa()
     {
         int indice = PlayerPrefs.GetInt(MAPA_NAVEGACAO, 1);
-        return HelperMapaEntidade.getMapaEntidadeByIndice(indice);
+        return HelperMapaEntidade.getMapaEntidadeByIndice(indice, false);
     }
 
     public static int getIndiceLevelLiberado()

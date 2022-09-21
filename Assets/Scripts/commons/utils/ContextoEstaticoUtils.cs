@@ -42,7 +42,7 @@ public class ContextoEstaticoUtils
     {
         if(level == null)
         {
-            mapaEntidade = HelperMapaEntidade.getMapaEntidadeByIndice(indiceMapa);
+            mapaEntidade = HelperMapaEntidade.getMapaEntidadeByIndice(indiceMapa, false);
             logInfoMapaEntidade(indiceMapa);
 
             level = mapaEntidade.getLevelByIndiceDezena(indiceLevel);

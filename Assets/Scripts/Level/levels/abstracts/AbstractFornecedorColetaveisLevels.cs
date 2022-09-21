@@ -2,7 +2,13 @@ using UnityEngine;
 
 public abstract class AbstractFornecedorColetaveisLevels
 {
+    private bool loadLiberacao;
     private ColetavelEntidade[] arrayDeColetaveis;
+
+    public void configurarLoadingDeLiberados(bool loadLiberacao)
+    {
+        this.loadLiberacao = loadLiberacao;
+    }
     
     public ColetavelEntidade getColetavelEntidadeByIndice(int indice, MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
     {

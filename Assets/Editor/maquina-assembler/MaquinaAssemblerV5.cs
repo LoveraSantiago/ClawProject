@@ -134,7 +134,7 @@ public class MaquinaAssemblerV5 : EditorWindow
             {
                 reset();
                 MapaEnum mapaEnum = Mapas.getMapaEnumByName(evt.newValue);
-                MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
+                MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum, false);
 
                 dropDownFieldLevels.choices = EditorLevelHelper.getListaDeNomesLevels(mapaEntidade);
                 dropDownFieldLevels.index = 0;
