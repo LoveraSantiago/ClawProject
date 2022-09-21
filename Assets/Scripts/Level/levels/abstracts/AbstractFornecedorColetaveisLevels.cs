@@ -96,14 +96,30 @@ public abstract class AbstractFornecedorColetaveisLevels
         int qtdColetaveisDto = levelMapDto.ColetaveisDto.Length;
         arrayDeColetaveis    = new ColetavelEntidade[qtdColetaveisDto];
 
-
+        int[] liberacaoColetaveis = loadLiberacaoDeColetaveis(mapaEntidade, qtdColetaveisDto);
         for (int contador = 0; contador < qtdColetaveisDto; contador++)
         {
             ColetavelEntidadeDto coletavelEntidadeDtoIt = levelMapDto.ColetaveisDto[contador];
-
             ColetavelEntidade coletavelEntidadeIt = new ColetavelEntidade(contador, coletavelEntidadeDtoIt);
             coletavelEntidadeIt.setMapaEntidade(mapaEntidade);
-            arrayDeColetaveis[contador] = coletavelEntidadeIt;
+
+            int numericoLiberacao = liberacaoColetaveis[contador];
+            bool liberar = numericoLiberacao == 1;
+            coletavelEntidadeIt.liberar(liberar);
+
+            arrayDeColetaveis[contador] = coletavelEntidadeIt;            
+        }
+    }
+
+    private int[] loadLiberacaoDeColetaveis(MapaEntidade mapaEntidade, int qtdColetaveisDto)
+    {
+        if (loadLiberacao)
+        {
+            return  PlayerPrefsMapas.recuperarColetaveisLiberadosDoMapa(mapaEntidade, qtdColetaveisDto);
+        }
+        else
+        {
+            return Utils.criarArrayVazioDeInteiros(qtdColetaveisDto);
         }
     }
 }

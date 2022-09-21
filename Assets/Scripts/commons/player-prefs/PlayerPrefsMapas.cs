@@ -137,7 +137,7 @@ public class PlayerPrefsMapas
         string arrayString = PlayerPrefs.GetString(chave);
         if (isBlank(arrayString))
         {
-            int[] arrayVazio = criarArrayVazio(qtdColetaveis);
+            int[] arrayVazio = Utils.criarArrayVazioDeInteiros(qtdColetaveis);
             WrapperArray wrapper = new WrapperArray();
             wrapper.array = arrayVazio;
             arrayString = JsonUtility.ToJson(wrapper);
@@ -149,7 +149,7 @@ public class PlayerPrefsMapas
             WrapperArray wrapper = JsonUtility.FromJson<WrapperArray>(arrayString);
             if(wrapper.array == null)
             {
-                return criarArrayVazio(qtdColetaveis);
+                return Utils.criarArrayVazioDeInteiros(qtdColetaveis);
             }
             return wrapper.array;
         }
@@ -172,17 +172,7 @@ public class PlayerPrefsMapas
             return new int[0] { };
         }
         return wrapper.array;                
-    }
-
-    private static int[] criarArrayVazio(int tamanhoArray)
-    {
-        int[] arrayVazio = new int[tamanhoArray];
-        for (int contador = 0; contador < tamanhoArray; contador++)
-        {
-            arrayVazio[contador] = 0;
-        }
-        return arrayVazio;
-    }
+    }    
 
     private static void salvarListaLiberacaoLevelEspecifico(List<int> listaOrdenada)
     {

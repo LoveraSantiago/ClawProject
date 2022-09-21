@@ -22,9 +22,9 @@ public class ColetavelEntidade
         this.mapaEntidade = mapaEntidade;
     }
 
-    public void liberar()
+    public void liberar(bool estado)
     {
-        isLiberado = true;
+        isLiberado = estado;
     }
 
     public static bool isIndiceVazio(int indice)
