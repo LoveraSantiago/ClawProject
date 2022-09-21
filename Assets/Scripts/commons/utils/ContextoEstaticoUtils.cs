@@ -51,6 +51,16 @@ public class ContextoEstaticoUtils
         return level;
     }
 
+    public static void pausarGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public static void continuarGame()
+    {
+        Time.timeScale = 1;
+    }
+
     private static void logInfoMapaEntidade(int indiceMapa)
     {
         if (mapaEntidade == null)

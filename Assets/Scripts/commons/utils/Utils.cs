@@ -2,16 +2,6 @@ using UnityEngine;
 
 public class Utils 
 {
-    public static void pausarGame()
-    {
-        Time.timeScale = 0;
-    }
-
-    public static void continuarGame()
-    {
-        Time.timeScale = 1;
-    }
-
     public static Color getCorByHex(string hex)
     {
         Color cor;

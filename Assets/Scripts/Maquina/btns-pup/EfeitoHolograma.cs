@@ -64,7 +64,7 @@ public class EfeitoHolograma
 
         if(estadoAtual == ESTADO_DESLIGADO)
         {
-            Utils.continuarGame();
+            ContextoEstaticoUtils.continuarGame();
             yield return new WaitForSeconds(0.2f);
             efeitoHologramaDto.GoMainEfeito.SetActive(false);            
         }
