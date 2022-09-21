@@ -3,6 +3,7 @@ using UnityEngine;
 public class ColetavelEntidade
 {
     public int indice { get; private set; }
+    public bool isLiberado { get; private set; }
     public string nome { get { return coletavelEntidadeDto.Nome; } }
     public string nomeSprite { get { return sprite.name; } }
     public Sprite sprite { get { return coletavelEntidadeDto.Sprite; } }
@@ -19,6 +20,11 @@ public class ColetavelEntidade
     public void setMapaEntidade(MapaEntidade mapaEntidade)
     {
         this.mapaEntidade = mapaEntidade;
+    }
+
+    public void liberar()
+    {
+        isLiberado = true;
     }
 
     public static bool isIndiceVazio(int indice)

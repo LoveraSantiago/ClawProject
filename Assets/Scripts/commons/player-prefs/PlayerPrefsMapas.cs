@@ -131,10 +131,34 @@ public class PlayerPrefsMapas
         return listaOrdenada.ToArray();
     }
 
+    public static int[] recuperarColetaveisLiberadosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)
+    {
+        string chave = MAPA_COLETAVEIS + mapaEntidade.id;
+        string arrayString = PlayerPrefs.GetString(chave);
+        if (isBlank(arrayString))
+        {
+            int[] arrayVazio = criarArrayVazio(qtdColetaveis);
+            WrapperArray wrapper = new WrapperArray();
+            wrapper.array = arrayVazio;
+            arrayString = JsonUtility.ToJson(wrapper);
+            PlayerPrefs.SetString(chave, arrayString);
+            return arrayVazio;
+        }
+        else
+        {
+            WrapperArray wrapper = JsonUtility.FromJson<WrapperArray>(arrayString);
+            if(wrapper.array == null)
+            {
+                return criarArrayVazio(qtdColetaveis);
+            }
+            return wrapper.array;
+        }
+    }
+
     private static int[] recuperarLiberacaoLevelsEspecificos()
     {        
         string arrayString = PlayerPrefs.GetString(NEW_LEVEL_ESPECIFICO);
-        if (arrayString == null || "".Equals(arrayString))
+        if (isBlank(arrayString))
         {
             List<int> listaInicial = new List<int>();
             listaInicial.Add(1);
@@ -150,6 +174,16 @@ public class PlayerPrefsMapas
         return wrapper.array;                
     }
 
+    private static int[] criarArrayVazio(int tamanhoArray)
+    {
+        int[] arrayVazio = new int[tamanhoArray];
+        for (int contador = 0; contador < tamanhoArray; contador++)
+        {
+            arrayVazio[contador] = 0;
+        }
+        return arrayVazio;
+    }
+
     private static void salvarListaLiberacaoLevelEspecifico(List<int> listaOrdenada)
     {
         int[] arrayLevels = listaOrdenada.ToArray();
@@ -158,6 +192,11 @@ public class PlayerPrefsMapas
 
         string arrayString = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString(NEW_LEVEL_ESPECIFICO, arrayString);
+    }
+
+    private static bool isBlank(string valor)
+    {
+        return valor == null || "".Equals(valor);
     }
 
     private class WrapperArray

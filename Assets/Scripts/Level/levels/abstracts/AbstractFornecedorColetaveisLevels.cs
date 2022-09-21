@@ -94,12 +94,11 @@ public abstract class AbstractFornecedorColetaveisLevels
     private void configurarColetaveis(MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
     {
         int qtdColetaveisDto = levelMapDto.ColetaveisDto.Length;
+        arrayDeColetaveis    = new ColetavelEntidade[qtdColetaveisDto];
 
-        arrayDeColetaveis = new ColetavelEntidade[qtdColetaveisDto];
 
         for (int contador = 0; contador < qtdColetaveisDto; contador++)
         {
-
             ColetavelEntidadeDto coletavelEntidadeDtoIt = levelMapDto.ColetaveisDto[contador];
 
             ColetavelEntidade coletavelEntidadeIt = new ColetavelEntidade(contador, coletavelEntidadeDtoIt);
