@@ -29,7 +29,7 @@ public class PrefabLevelsDto : MonoBehaviour
                 return levelMapDtoIt;
             }
         }
-        return null;
+        return levelsMapDto[0];
     }
 
 }
