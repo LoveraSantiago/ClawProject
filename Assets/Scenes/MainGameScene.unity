@@ -22081,7 +22081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_SortingOrder
-      value: 51
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 8245793874599924412, guid: b4dbddbdf6b90704f8d123eda4fb23d6, type: 3}
       propertyPath: m_Positions.Array.data[0].y
@@ -58982,6 +58982,10 @@ PrefabInstance:
     - target: {fileID: 1789961601, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_Color.r
       value: 0.8745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838698300, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1936392616, guid: 60c301260e6514149bc0e163ff994732, type: 3}
       propertyPath: m_Color.b

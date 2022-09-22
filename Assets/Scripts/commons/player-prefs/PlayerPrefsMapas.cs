@@ -21,7 +21,8 @@ public class PlayerPrefsMapas
         int indiceLevelLiberado = getIndiceLevelLiberado();
         int resultado = (indiceLevelLiberado + 9) / 10;
         //Debug.Log("Resultado indice mapa liberado " + resultado);
-        return resultado;
+        //return resultado;
+        return 2;
     }
 
     public static MapaEntidade getIndiceNavegacaoMapa()
