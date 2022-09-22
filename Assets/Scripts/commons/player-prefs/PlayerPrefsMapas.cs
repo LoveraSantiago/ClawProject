@@ -26,7 +26,7 @@ public class PlayerPrefsMapas
 
     public static MapaEntidade getIndiceNavegacaoMapa()
     {
-        int indice = PlayerPrefs.GetInt(MAPA_NAVEGACAO, 1);
+        int indice = PlayerPrefs.GetInt(MAPA_NAVEGACAO, LIGADO);
         return HelperMapaEntidade.getMapaEntidadeByIndice(indice, false);
     }
 
@@ -138,7 +138,7 @@ public class PlayerPrefsMapas
         string arrayString = PlayerPrefs.GetString(chave);
         if (Utils.isBlank(arrayString))
         {
-            int[] arrayVazio = Utils.criarArrayPopuladoDeInteiros(qtdColetaveis, 0);
+            int[] arrayVazio = Utils.criarArrayPopuladoDeInteiros(qtdColetaveis, DESLIGADO);
             salvarArray(chave, arrayVazio);           
             return arrayVazio;
         }
@@ -147,7 +147,7 @@ public class PlayerPrefsMapas
             WrapperArray wrapper = JsonUtility.FromJson<WrapperArray>(arrayString);
             if(wrapper.array == null)
             {
-                return Utils.criarArrayPopuladoDeInteiros(qtdColetaveis, 0);
+                return Utils.criarArrayPopuladoDeInteiros(qtdColetaveis, DESLIGADO);
             }
             return wrapper.array;
         }
@@ -159,7 +159,7 @@ public class PlayerPrefsMapas
         string arrayString = PlayerPrefs.GetString(chave);
         if (Utils.isBlank(arrayString))
         {
-            int[] arrayLiberados = Utils.criarArrayPopuladoDeInteiros(qtdColetaveis, 1);
+            int[] arrayLiberados = Utils.criarArrayPopuladoDeInteiros(qtdColetaveis, LIGADO);
             salvarArray(chave, arrayLiberados);
             return arrayLiberados;
         }
@@ -168,10 +168,19 @@ public class PlayerPrefsMapas
             WrapperArray wrapper = JsonUtility.FromJson<WrapperArray>(arrayString);
             if (wrapper.array == null)
             {
-                return Utils.criarArrayPopuladoDeInteiros(qtdColetaveis, 1);
+                return Utils.criarArrayPopuladoDeInteiros(qtdColetaveis, LIGADO);
             }
             return wrapper.array;
         }
+    }
+
+    public static void consumirColetavelEstadoLiberadosDoMapa(ColetavelEntidade coletavel)
+    {
+        MapaEntidade mapaEntidade = coletavel.mapaEntidade;
+        string chave = NEW_COLETAVEIS + mapaEntidade.id;
+        int[] arrayLiberados = recuperarColetaveisEstadoLiberadosDoMapa(mapaEntidade, mapaEntidade.getQtdColetaveis());
+        arrayLiberados[coletavel.indice] = DESLIGADO;
+        salvarArray(chave, arrayLiberados);
     }
 
     public static void salvarColetavelAdquiridoDoDoMapa(ColetavelEntidade coletavel)
@@ -180,9 +189,9 @@ public class PlayerPrefsMapas
         string chave = MAPA_COLETAVEIS + mapaEntidade.id;
         int[] coletaveisEstadoLiberado = recuperarColetaveisAdquiridosDoMapa(mapaEntidade, mapaEntidade.getQtdColetaveis());
 
-        if(coletaveisEstadoLiberado[coletavel.indice] == 0)
+        if(coletaveisEstadoLiberado[coletavel.indice] == DESLIGADO)
         {
-            coletaveisEstadoLiberado[coletavel.indice] = 1;
+            coletaveisEstadoLiberado[coletavel.indice] = LIGADO;
             salvarArray(chave, coletaveisEstadoLiberado);
         }
     }

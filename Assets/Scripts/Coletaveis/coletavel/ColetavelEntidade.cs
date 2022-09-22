@@ -33,6 +33,11 @@ public class ColetavelEntidade
         isExclamacao = estado;
     }
 
+    public void desligarExclamacao()
+    {
+        exclamar(false);
+    }
+
     public static bool isIndiceVazio(int indice)
     {
         return indice == -1;

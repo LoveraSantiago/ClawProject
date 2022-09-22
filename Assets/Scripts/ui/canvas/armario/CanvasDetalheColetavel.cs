@@ -20,7 +20,7 @@ public class CanvasDetalheColetavel : AcaoItemArmarioSelecionado.ConsumidorEvent
 
     public void abrirDetalhe(IndiceArmarioSelecionadoDto indiceArmarioSelecionado)
     {        
-        ItemPrateleiraDto itemSelecionado = indiceArmarioSelecionado.itemSelecionado;
+        ItemPrateleiraDto itemSelecionado   = indiceArmarioSelecionado.itemSelecionado;
         Image imgItemPrateleria             = itemSelecionado.ImgItem;
         Sprite sprColetavel                 = imgItemPrateleria.sprite;
         ColetavelEntidade coletavelEntidade = coletaveisParaPrateleiras.getColetavelPeloSprite(sprColetavel);
@@ -55,6 +55,13 @@ public class CanvasDetalheColetavel : AcaoItemArmarioSelecionado.ConsumidorEvent
         {
             canvasDetalheDto.CanvasBotoes.transform.gameObject.SetActive(true);
             canvasDetalheDto.LblTexto.transform.gameObject.SetActive(false);
+
+            if (coletavelEntidade.isExclamacao)
+            {
+                itemSelecionado.ImgExclamacao.SetActive(false);
+                coletavelEntidade.desligarExclamacao();
+                PlayerPrefsMapas.consumirColetavelEstadoLiberadosDoMapa(coletavelEntidade);
+            }            
         }
         else
         {
