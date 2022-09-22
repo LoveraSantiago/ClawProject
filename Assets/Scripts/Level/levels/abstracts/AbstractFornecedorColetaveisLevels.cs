@@ -98,22 +98,25 @@ public abstract class AbstractFornecedorColetaveisLevels
         int qtdColetaveisDto = levelMapDto.ColetaveisDto.Length;
         arrayDeColetaveis    = new ColetavelEntidade[qtdColetaveisDto];
 
-        int[] liberacaoColetaveis = loadLiberacaoDeColetaveis(mapaEntidade, qtdColetaveisDto);
+        int[] adquiridosColetaveis = loadColetaveisAdquiridos(mapaEntidade, qtdColetaveisDto);
+        int[] liberadosColetaveis  = loadColetaveisLiberados(mapaEntidade, qtdColetaveisDto);
         for (int contador = 0; contador < qtdColetaveisDto; contador++)
         {
             ColetavelEntidadeDto coletavelEntidadeDtoIt = levelMapDto.ColetaveisDto[contador];
             ColetavelEntidade coletavelEntidadeIt = new ColetavelEntidade(contador, coletavelEntidadeDtoIt);
             coletavelEntidadeIt.setMapaEntidade(mapaEntidade);
 
-            int numericoLiberacao = liberacaoColetaveis[contador];
-            bool liberar = numericoLiberacao == 1;
-            coletavelEntidadeIt.liberar(liberar);
+            
+            bool adquirido = adquiridosColetaveis[contador] == 1;
+            bool liberado  = liberadosColetaveis[contador] == 1;
+            coletavelEntidadeIt.adquirir(adquirido);
+            coletavelEntidadeIt.exclamar(liberado);
 
             arrayDeColetaveis[contador] = coletavelEntidadeIt;            
         }
     }
 
-    private int[] loadLiberacaoDeColetaveis(MapaEntidade mapaEntidade, int qtdColetaveisDto)
+    private int[] loadColetaveisAdquiridos(MapaEntidade mapaEntidade, int qtdColetaveisDto)
     {
         if (loadLiberacao)
         {
@@ -121,7 +124,19 @@ public abstract class AbstractFornecedorColetaveisLevels
         }
         else
         {
-            return Utils.criarArrayVazioDeInteiros(qtdColetaveisDto);
+            return Utils.criarArrayPopuladoDeInteiros(qtdColetaveisDto, 0);
+        }
+    }
+
+    private int[] loadColetaveisLiberados(MapaEntidade mapaEntidade, int qtdColetaveisDto)
+    {
+        if (loadLiberacao)
+        {
+            return PlayerPrefsMapas.recuperarColetaveisEstadoLiberadosDoMapa(mapaEntidade, qtdColetaveisDto);
+        }
+        else
+        {
+            return Utils.criarArrayPopuladoDeInteiros(qtdColetaveisDto, 0);
         }
     }
 }

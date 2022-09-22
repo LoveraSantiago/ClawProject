@@ -19,12 +19,12 @@ public class Utils
         return result;
     }
 
-    public static int[] criarArrayVazioDeInteiros(int tamanhoArray)
+    public static int[] criarArrayPopuladoDeInteiros(int tamanhoArray, int valor)
     {
         int[] arrayVazio = new int[tamanhoArray];
         for (int contador = 0; contador < tamanhoArray; contador++)
         {
-            arrayVazio[contador] = 0;
+            arrayVazio[contador] = valor;
         }
         return arrayVazio;
     }

@@ -138,8 +138,8 @@ public class PlayerPrefsMapas
         string arrayString = PlayerPrefs.GetString(chave);
         if (Utils.isBlank(arrayString))
         {
-            int[] arrayVazio = Utils.criarArrayVazioDeInteiros(qtdColetaveis);
-            salvarColetaveisEstadoLiberacao(chave, arrayVazio);           
+            int[] arrayVazio = Utils.criarArrayPopuladoDeInteiros(qtdColetaveis, 0);
+            salvarArray(chave, arrayVazio);           
             return arrayVazio;
         }
         else
@@ -147,13 +147,32 @@ public class PlayerPrefsMapas
             WrapperArray wrapper = JsonUtility.FromJson<WrapperArray>(arrayString);
             if(wrapper.array == null)
             {
-                return Utils.criarArrayVazioDeInteiros(qtdColetaveis);
+                return Utils.criarArrayPopuladoDeInteiros(qtdColetaveis, 0);
             }
             return wrapper.array;
         }
     }
 
-    
+    public static int[] recuperarColetaveisEstadoLiberadosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)
+    {
+        string chave = NEW_COLETAVEIS + mapaEntidade.id;
+        string arrayString = PlayerPrefs.GetString(chave);
+        if (Utils.isBlank(arrayString))
+        {
+            int[] arrayLiberados = Utils.criarArrayPopuladoDeInteiros(qtdColetaveis, 1);
+            salvarArray(chave, arrayLiberados);
+            return arrayLiberados;
+        }
+        else
+        {
+            WrapperArray wrapper = JsonUtility.FromJson<WrapperArray>(arrayString);
+            if (wrapper.array == null)
+            {
+                return Utils.criarArrayPopuladoDeInteiros(qtdColetaveis, 1);
+            }
+            return wrapper.array;
+        }
+    }
 
     public static void salvarColetavelAdquiridoDoDoMapa(ColetavelEntidade coletavel)
     {
@@ -164,11 +183,11 @@ public class PlayerPrefsMapas
         if(coletaveisEstadoLiberado[coletavel.indice] == 0)
         {
             coletaveisEstadoLiberado[coletavel.indice] = 1;
-            salvarColetaveisEstadoLiberacao(chave, coletaveisEstadoLiberado);
+            salvarArray(chave, coletaveisEstadoLiberado);
         }
     }
 
-    private static void salvarColetaveisEstadoLiberacao(string chave, int[] estados)
+    private static void salvarArray(string chave, int[] estados)
     {
         WrapperArray wrapper = new WrapperArray();
         wrapper.array = estados;

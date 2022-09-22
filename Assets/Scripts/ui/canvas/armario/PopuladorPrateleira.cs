@@ -45,7 +45,7 @@ public class PopuladorPrateleira
 
     private void popularMaterialItem(ItemPrateleiraDto itemPrateleira, ColetavelEntidade coletavel)
     {
-        if (!coletavel.isLiberado)
+        if (!coletavel.isAdquirido)
         {
             //Debug.Log("Vai popular item grayscale" + itemPrateleira.ImgItem.gameObject.name + " sprite " + sprite.name);
             Material matGray = poolMaterialGrayScale.getObjeto(coletavel.sprite);
