@@ -20,12 +20,7 @@ public class LevelLaranja : AbstractLevelColetavel
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
-
-    public override int getIdColetavel()
-    {
-        return 12;
-    }
+    }    
 
     public override bool isLevelAlbedo0()
     {

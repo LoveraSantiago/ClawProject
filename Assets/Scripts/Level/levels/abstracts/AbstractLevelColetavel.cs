@@ -2,7 +2,12 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevelColetavel : AbstractLevel
 {
-    public abstract int getIdColetavel();   
+    public ColetavelEntidade coletavelEntidade { get; private set; }
+
+    public void setColetavelEntidade(ColetavelEntidade coletavelEntidade)
+    {
+        this.coletavelEntidade = coletavelEntidade;
+    }
 
     public override string getMsgObjetivoLevel()
     {

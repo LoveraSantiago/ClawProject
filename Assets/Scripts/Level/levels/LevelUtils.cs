@@ -65,9 +65,7 @@ public class LevelUtils
 
     public static ColetavelEntidade getColetavelFromLevelColetavel(AbstractLevel level)
     {
-        int id = ((AbstractLevelColetavel)level).getIdColetavel();
-        ColetavelEntidade coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(id);
-        return coletavelEntidade;
+        return ((AbstractLevelColetavel)level).coletavelEntidade;        
     }
 
     public static int[,] getArrayDeColetaveisLevelElevador(AbstractLevel level)

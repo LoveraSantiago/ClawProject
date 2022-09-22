@@ -20,12 +20,7 @@ public class LevelMaca : AbstractLevelColetavel
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
-
-    public override int getIdColetavel()
-    {
-        return 11;
-    }
+    }    
 
     public override string getMaquinaNome()
     {

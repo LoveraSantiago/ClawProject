@@ -20,12 +20,7 @@ public class LevelAspargo : AbstractLevelColetavel
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
-
-    public override int getIdColetavel()
-    {
-        return 14;
-    }
+    }   
 
     public override string getMaquinaNome()
     {

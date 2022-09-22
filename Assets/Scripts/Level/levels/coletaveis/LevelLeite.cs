@@ -20,12 +20,7 @@ public class LevelLeite : AbstractLevelColetavel
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
-
-    public override int getIdColetavel()
-    {
-        return 10;
-    }
+    }    
 
     public override string getMaquinaNome()
     {

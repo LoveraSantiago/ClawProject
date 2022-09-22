@@ -19,12 +19,7 @@ public class LevelEstrelaMarinha : AbstractLevelColetavel
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
-
-    public override int getIdColetavel()
-    {
-        return 16;
-    }
+    }    
 
     public override string getMaquinaNome()
     {

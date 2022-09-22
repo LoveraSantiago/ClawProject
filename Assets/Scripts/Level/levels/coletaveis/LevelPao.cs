@@ -21,12 +21,7 @@ public class LevelPao : AbstractLevelColetavel
             {-1, -1, -1, -1, -1, -1, -1}
         };        
     }
-
-    public override int getIdColetavel()
-    {
-        return 13;
-    }
-
+    
     public override string getMaquinaNome()
     {
         return "Vibrante Primaria";

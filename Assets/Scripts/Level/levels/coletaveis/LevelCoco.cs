@@ -21,12 +21,7 @@ public class LevelCoco : AbstractLevelColetavel
             {-1, -1, -1, -1, -1, -1, -1}
         };
     }
-
-    public override int getIdColetavel()
-    {
-        return 15;
-    }
-
+    
     public override string getMaquinaNome()
     {
         return "Frescor Energetica";
