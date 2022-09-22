@@ -6,7 +6,7 @@ public class ModalFimColetaveis : AbstractModalFim
         ColetavelEntidade coletavel = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(idColetavel);
 
         modalManipulacao.setScoreAtual("Coletou " + coletavel.nome);
-        PlayerPrefsMapas.salvarColetavelLiberadoDoMapa(coletavel);        
+        PlayerPrefsMapas.salvarColetavelAdquiridoDoDoMapa(coletavel);        
     }
 
     protected override void irParaCena()

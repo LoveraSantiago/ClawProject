@@ -117,7 +117,7 @@ public abstract class AbstractFornecedorColetaveisLevels
     {
         if (loadLiberacao)
         {
-            return  PlayerPrefsMapas.recuperarColetaveisEstadoLiberadosDoMapa(mapaEntidade, qtdColetaveisDto);
+            return  PlayerPrefsMapas.recuperarColetaveisAdquiridosDoMapa(mapaEntidade, qtdColetaveisDto);
         }
         else
         {

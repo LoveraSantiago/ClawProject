@@ -10,6 +10,7 @@ public class PlayerPrefsMapas
     private static readonly string NEW_LEVEL_LEVEL      = "new-level-level";
     private static readonly string NEW_LEVEL_ESPECIFICO = "new-level-especifico";
     private static readonly string NEW_COLETAVEL_LEVEL  = "new-coletavel-level";
+    private static readonly string NEW_COLETAVEIS       = "new-coletaveis";
     private static readonly string NEW_MAPA             = "new-mapa-naveg";
 
     private static int DESLIGADO = 0;
@@ -131,7 +132,7 @@ public class PlayerPrefsMapas
         return listaOrdenada.ToArray();
     }
 
-    public static int[] recuperarColetaveisEstadoLiberadosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)
+    public static int[] recuperarColetaveisAdquiridosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)
     {
         string chave = MAPA_COLETAVEIS + mapaEntidade.id;
         string arrayString = PlayerPrefs.GetString(chave);
@@ -152,11 +153,13 @@ public class PlayerPrefsMapas
         }
     }
 
-    public static void salvarColetavelLiberadoDoMapa(ColetavelEntidade coletavel)
+    
+
+    public static void salvarColetavelAdquiridoDoDoMapa(ColetavelEntidade coletavel)
     {
         MapaEntidade mapaEntidade = coletavel.mapaEntidade;
         string chave = MAPA_COLETAVEIS + mapaEntidade.id;
-        int[] coletaveisEstadoLiberado = recuperarColetaveisEstadoLiberadosDoMapa(mapaEntidade, mapaEntidade.getQtdColetaveis());
+        int[] coletaveisEstadoLiberado = recuperarColetaveisAdquiridosDoMapa(mapaEntidade, mapaEntidade.getQtdColetaveis());
 
         if(coletaveisEstadoLiberado[coletavel.indice] == 0)
         {
