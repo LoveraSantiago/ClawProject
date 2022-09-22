@@ -28,4 +28,9 @@ public class Utils
         }
         return arrayVazio;
     }
+
+    public static bool isBlank(string valor)
+    {
+        return valor == null || "".Equals(valor);
+    }
 }

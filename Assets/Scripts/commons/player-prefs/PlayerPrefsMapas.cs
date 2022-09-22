@@ -135,7 +135,7 @@ public class PlayerPrefsMapas
     {
         string chave = MAPA_COLETAVEIS + mapaEntidade.id;
         string arrayString = PlayerPrefs.GetString(chave);
-        if (isBlank(arrayString))
+        if (Utils.isBlank(arrayString))
         {
             int[] arrayVazio = Utils.criarArrayVazioDeInteiros(qtdColetaveis);
             salvarColetaveisEstadoLiberacao(chave, arrayVazio);           
@@ -176,7 +176,7 @@ public class PlayerPrefsMapas
     private static int[] recuperarLiberacaoLevelsEspecificos()
     {        
         string arrayString = PlayerPrefs.GetString(NEW_LEVEL_ESPECIFICO);
-        if (isBlank(arrayString))
+        if (Utils.isBlank(arrayString))
         {
             List<int> listaInicial = new List<int>();
             listaInicial.Add(1);
@@ -200,12 +200,7 @@ public class PlayerPrefsMapas
 
         string arrayString = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString(NEW_LEVEL_ESPECIFICO, arrayString);
-    }
-
-    private static bool isBlank(string valor)
-    {
-        return valor == null || "".Equals(valor);
-    }
+    }   
 
     private class WrapperArray
     {
