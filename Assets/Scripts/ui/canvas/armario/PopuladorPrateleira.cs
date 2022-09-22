@@ -14,13 +14,13 @@ public class PopuladorPrateleira
         //Debug.Log("Vai popular item " + itemPrateleira.ImgItem.gameObject.name + " sprite " + sprite.name);
         itemPrateleira.ImgItem.sprite = coletavel.sprite;
         itemPrateleira.GoItem.SetActive(true);
-
         if(coletavel.mapaEntidade.isLockado || coletavel.mapaEntidade.isBloqueado)
         {
             popularItemIndisponivel(itemPrateleira);
         }
         else
         {
+            itemPrateleira.ImgExclamacao.SetActive(coletavel.isExclamacao);
             popularMaterialItem(itemPrateleira, coletavel);
         }            
     }
