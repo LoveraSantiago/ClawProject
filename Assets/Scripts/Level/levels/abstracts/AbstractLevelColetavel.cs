@@ -44,6 +44,15 @@ public abstract class AbstractLevelColetavel : AbstractLevel
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
 
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        //return new PowerUpsParaLevel(1)
+        //   .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MOLA });
+
+        return new PowerUpsParaLevel(2)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BURACO_NEGRO, });
+    }
+
     protected override Dictionary<string, string> getCoresMaquina()
     {
         Dictionary<string, string> dicionario = new Dictionary<string, string>();

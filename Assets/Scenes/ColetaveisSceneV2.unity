@@ -3877,8 +3877,8 @@ MonoBehaviour:
     btnBack: {fileID: 818320628}
     scrollRect: {fileID: 1600028417}
     movimentadorDto:
-      velocidadeMovimentacao: 1.9
-      velocidadeZoom: 4
+      velocidadeMovimentacao: 2.1
+      velocidadeZoom: 4.2
       escalaFinal: 4.5
     prateleirasDto:
       qtdPrateleirasVisiveis: 5

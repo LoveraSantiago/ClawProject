@@ -25,7 +25,7 @@ public class LevelLeite : AbstractLevelColetavel
     public override string getMaquinaNome()
     {
         return "Azul e Verdes Brincantes";
-    }
+    }   
 
     protected override Dictionary<string, string> getCoresMaquina()
     {

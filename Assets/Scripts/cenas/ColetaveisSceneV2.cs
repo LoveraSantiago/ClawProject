@@ -61,9 +61,9 @@ public class ColetaveisSceneV2 : MonoBehaviour
     private void restaurarArmario()
     {
         int indice = PlayerPrefsColetaveis.recuperarEApagarNavegacaoColetavel();
-        if(indice != 0)
+        if(indice >= 0)
         {
-            //Debug.Log("Restauracao SIM");
+            Debug.Log("Restauracao SIM");
             PlayerPrefScrollArmarioDto playerPrefsDto  = PlayerPrefsScrollArmarioPosition.recuperarELimparPosScrollRectColetaveis();
             mainDto.ScrollRect.verticalNormalizedPosition = playerPrefsDto.posicaoScroll;
             //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);            
@@ -87,7 +87,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Restauracao NAO");
+            Debug.Log("Restauracao NAO");
         }
     }
 

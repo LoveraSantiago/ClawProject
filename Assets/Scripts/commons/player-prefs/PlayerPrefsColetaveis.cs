@@ -11,7 +11,7 @@ public class PlayerPrefsColetaveis
 
     public static int recuperarNavegacaoColetavel()
     {
-        int id = PlayerPrefs.GetInt(TAG_NAVEGACAO_COLETAVEL);
+        int id = PlayerPrefs.GetInt(TAG_NAVEGACAO_COLETAVEL, -1);
         return id;
     }
 
