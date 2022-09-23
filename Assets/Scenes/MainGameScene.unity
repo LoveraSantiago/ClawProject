@@ -10806,12 +10806,12 @@ MonoBehaviour:
           sprRendererSlotBaixo: {fileID: 292278086}
           sprRendererSlotMeio: {fileID: 1966319445}
           sprRendererSlotCima: {fileID: 1741533510}
-        - velocidadeSlot: 4.5
+        - velocidadeSlot: 5
           sprRendererSlotColetado: {fileID: 726165964}
           sprRendererSlotBaixo: {fileID: 292278085}
           sprRendererSlotMeio: {fileID: 918276164}
           sprRendererSlotCima: {fileID: 1741533509}
-        - velocidadeSlot: 5
+        - velocidadeSlot: 6
           sprRendererSlotColetado: {fileID: 1632403940}
           sprRendererSlotBaixo: {fileID: 292278084}
           sprRendererSlotMeio: {fileID: 1831559279}
