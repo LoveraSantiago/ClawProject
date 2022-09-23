@@ -6,7 +6,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,                              
                               AcaoBotaoPowerUpVazio.ConsumidorEvento,
-                              AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento
+                              AcaoPupFromScrollSelecao.ConsumidorEvento
 {
     private bool isGamePlay;
     private PartesMaquinaDtoV2 partesDto;
@@ -145,12 +145,12 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         isGamePlay = false;
     }
 
-    void AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {   
         isGamePlay = true;
     }
 
-    void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(DirecaoDaGarra evento)
+    void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(Direcao evento)
     {
         ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
     }    

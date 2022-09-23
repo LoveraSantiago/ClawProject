@@ -101,20 +101,18 @@ public class HelperColetaveisInGame
         return poolDeColetaveis.criarColetavel(goParent);
     }
 
-    public static Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
+    public static Coletavel criarColetavel(Sprite sprite, Vector3 posicao)
     {
-        return configColetavel(criarColetavel(), nomeSprite, posicao);
+        return configColetavel(criarColetavel(), sprite, posicao);
     }
 
-    public static Coletavel criarColetavel(string nomeSprite, Vector3 posicao, GameObject goParent)
+    public static Coletavel criarColetavel(Sprite sprite, Vector3 posicao, GameObject goParent)
     {        
-        return configColetavel(criarColetavel(goParent), nomeSprite, posicao);
+        return configColetavel(criarColetavel(goParent), sprite, posicao);
     }
 
-    private static Coletavel configColetavel(Coletavel coletavel, string nomeSprite, Vector3 posicao)
-    {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-        Sprite sprite = helperColetavel.getSpriteColetavelByNomeSprite(nomeSprite);
+    private static Coletavel configColetavel(Coletavel coletavel, Sprite sprite, Vector3 posicao)
+    {   
         coletavel.receberSprite(sprite);
         coletavel.colocarNaPosicao(posicao);
         coletavel.ligar();

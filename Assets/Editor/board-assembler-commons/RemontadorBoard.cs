@@ -14,27 +14,26 @@ public class RemontadorBoard
 
     public void montarColetaveis(int[,] arrayDeColetaveis)
     {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-
         for (int contadorLinha = 0; contadorLinha < arrayDeColetaveis.GetLength(0); contadorLinha++)
         {   
             int totalColunas = referencias.getQtdColunasDoBoard(contadorLinha);
             for (int contadorColuna = 0; contadorColuna < totalColunas; contadorColuna++)
             {
                 int id = arrayDeColetaveis[contadorLinha, contadorColuna];
-                ColetavelEntidade coletavelEntidade  = helperColetavel.getColetavelEntidadeById(id);
+                ColetavelEntidade coletavelEntidade = null;
 
-                if (coletavelEntidade.isVazio())
+                if (ColetavelEntidade.isIndiceVazio(id))
                 {
                     continue;
                 }
-                else if (coletavelEntidade.isRandom())
+                else if (ColetavelEntidade.isIndiceRandom(id))
                 {
                     referencias.updateElementoGo(contadorLinha, contadorColuna, listaDeSprites.getSpriteRandom());                                        
                 }
                 else
-                {
-                    string nomeSprite = coletavelEntidade.nomeSprite;
+                {                    
+                    coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(id);
+                    string nomeSprite = coletavelEntidade.nomeSprite;                    
                     Sprite spr = listaDeSprites.getSpriteByName(nomeSprite);
                     referencias.updateElementoGo(contadorLinha, contadorColuna, spr);                    
                 }

@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 
 public class Level1 : AbstractLevel
@@ -16,42 +15,27 @@ public class Level1 : AbstractLevel
     public override TipoGame getTipoGame()
     {
         return TipoGame.NORMAL;
-    }
-
-    public override string getNameMap()
-    {
-        return Mapas.PARQUE_DIVERSOES;
-    }
+    }    
 
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
         {
-            {14, 12, 11, 12, 11, 12, 11},
-            {12, 11, 14, 11, 11, 13, 0},
-            {0, 0, 14, 14, 14, 0, 0},
-            {0, 0, 0, 14, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}
+            { 4,  2,  1,  2,  1,  2,  1},
+            { 2,  1,  4,  1,  1,  3, -1},
+            {-1,  0,  4,  4,  4,  0, -1},
+            {-1, -1,  0,  4,  0, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1}
         };
     }
 
     public override bool devolverParaBoard()
     {
         return false;
-    }
-
-    public override string getNomeMapa()
-    {
-        return LevelMapNomes.PARQUE_DIVERSOES;        
-    }
-    
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }   
 
     public override TipoContagemTempoDto getTempoContagem()
     {
@@ -74,7 +58,7 @@ public class Level1 : AbstractLevel
         return "Chiclete e Embalagem";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-frente", "#EB82EB");
@@ -125,18 +109,5 @@ public class Level1 : AbstractLevel
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevel1();
-    }
-
-    public class FornecedorLevel1 : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new Level1();
-        }
-    }
+    }    
 }

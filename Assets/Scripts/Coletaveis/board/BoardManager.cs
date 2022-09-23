@@ -19,7 +19,19 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 
     public void configuradoPeloLevel(AbstractLevel level, BoardDto boardDto)
     {
-        BoardMontador.configurar(level.getFamiliaColetavel());
+        //CHAPADO AQUI POR QUE PEGAVA FAMILIAS POR LEVEL
+        //CHAPADO AQUI POR QUE PEGAVA FAMILIAS POR LEVEL
+        //CHAPADO AQUI POR QUE PEGAVA FAMILIAS POR LEVEL
+        //CHAPADO AQUI POR QUE PEGAVA FAMILIAS POR LEVEL
+        //CHAPADO AQUI POR QUE PEGAVA FAMILIAS POR LEVEL
+        //CHAPADO AQUI POR QUE PEGAVA FAMILIAS POR LEVEL
+        //CHAPADO AQUI POR QUE PEGAVA FAMILIAS POR LEVEL
+        //CHAPADO AQUI POR QUE PEGAVA FAMILIAS POR LEVEL
+        //CHAPADO AQUI POR QUE PEGAVA FAMILIAS POR LEVEL
+        //CHAPADO AQUI POR QUE PEGAVA FAMILIAS POR LEVEL
+        //CHAPADO AQUI POR QUE PEGAVA FAMILIAS POR LEVEL
+        //CHAPADO AQUI POR QUE PEGAVA FAMILIAS POR LEVEL
+        BoardMontador.configurar(MapaEnum.DEFAULTS);
         montador      = FactoryBoardMontador.getMontadorByLevel(level, boardDto.GoBoardPosicao);
         montadorExtra = FactoryBoardMontador.getMontadorExtraByLevel(level, boardDto.GoBoardPosicao);
         devolvedor.configuradoPeloLevel(level.devolverParaBoard());
@@ -34,7 +46,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
     public int subirBoard()
     {
         int qtdColetaveis = montadorExtra.getQtdAcrescentada();
-        Utils.MonoBehaviour.StartCoroutine(elevador.subirBoardComPool(boardDto, montadorExtra));
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(elevador.subirBoardComPool(boardDto, montadorExtra));
         return qtdColetaveis;
     }       
 

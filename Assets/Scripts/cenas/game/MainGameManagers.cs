@@ -27,7 +27,7 @@ public class MainGameManagers
         configurandoEventos();
         consumidorUpdateManagers.consumir(new UpdaterEmptyManagers());
 
-        Utils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));        
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));        
     }   
 
     private void configurandoLevel(MainGameDto mainDto, AbstractLevel levelEscolhido)

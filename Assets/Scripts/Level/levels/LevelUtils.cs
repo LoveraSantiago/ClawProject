@@ -1,12 +1,5 @@
 public class LevelUtils 
 {
-    public static AbstractLevel loadLevelEscolhido(Level levelDefault)
-    {
-        Level levelFlow = PlayerPrefsLevel.recuperarELimparLevel(levelDefault);
-        AbstractLevel levelEscolhido = LevelHelper.getLevelByEnum(levelFlow);
-        return levelEscolhido;
-    }
-
     public static bool isNormalLevel(AbstractLevel level)
     {
         return level.getTipoGame() == TipoGame.NORMAL;
@@ -72,10 +65,7 @@ public class LevelUtils
 
     public static ColetavelEntidade getColetavelFromLevelColetavel(AbstractLevel level)
     {
-        int id = ((AbstractLevelColetavel)level).getIdColetavel();
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
-        ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeById(id);
-        return coletavelEntidade;
+        return ((AbstractLevelColetavel)level).coletavelEntidade;        
     }
 
     public static int[,] getArrayDeColetaveisLevelElevador(AbstractLevel level)

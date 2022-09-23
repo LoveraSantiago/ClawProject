@@ -26,7 +26,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
 
         hitColetavel = false;
         HumAlvoColetavelSelecionado alvoSelecionado = new HumAlvoColetavelSelecionado(true);
-        coroutine = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));
+        coroutine = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));
     }
 
     public override void resetPup() { }
@@ -64,7 +64,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
             yield return null;
         }
         yield return null;
-        Utils.MonoBehaviour.StartCoroutine(finalizarVoar(coletavelAcertado));
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(finalizarVoar(coletavelAcertado));
     }
 
     protected abstract float getGravidadeNegativa();
@@ -76,7 +76,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
     {
         if (!hitColetavel)
         {
-            Utils.MonoBehaviour.StopCoroutine(coroutine);
+            ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutine);
 
             HelperColetaveisInGame.desligarMirasNosColetaveis();
             powerUpFinalizacao.finalizado();
@@ -97,8 +97,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
     {
         if (coletavelAcertado.isOvo())
         {
-            HelperColetavelEntidade helperColetavelEntidade = new HelperColetavelEntidade();
-            return helperColetavelEntidade.getSpriteOvo();
+            return powerUpDto.SpriteOvo;
         }
         else
         {

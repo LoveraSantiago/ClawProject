@@ -2,52 +2,27 @@ using UnityEngine;
 
 public class PopuladorPrateleira
 {
-    private bool estadoUltimaFamilia;
-    private ColetavelEntidade.FAMILIA ultimaFamilia;
-
-    private PoolMaterialGrayscale poolMaterialGrayScale;
-    private HelperColetavelEntidade helperColetavelEntidade;
+    private PoolMaterialGrayscale poolMaterialGrayScale;    
 
     public PopuladorPrateleira()
-    {
-        helperColetavelEntidade = new HelperColetavelEntidade();
-        ultimaFamilia = ColetavelEntidade.FAMILIA.DEFAULTS;
+    {        
         poolMaterialGrayScale = new PoolMaterialGrayscale();
     }
 
-    public void popularItemDaPrateleira(ItemPrateleiraDto itemPrateleira, Sprite sprite)
+    public void popularItemDaPrateleira(ItemPrateleiraDto itemPrateleira, ColetavelEntidade coletavel)
     {
         //Debug.Log("Vai popular item " + itemPrateleira.ImgItem.gameObject.name + " sprite " + sprite.name);
-        itemPrateleira.ImgItem.sprite = sprite;
+        itemPrateleira.ImgItem.sprite = coletavel.sprite;
         itemPrateleira.GoItem.SetActive(true);
-
-        ColetavelEntidade coletavel = helperColetavelEntidade.getColetavelEntidadeBySprite(sprite.name);
-        ColetavelEntidade.FAMILIA familiaEntidade = coletavel.familia;
-        if(familiaEntidade == ultimaFamilia)
+        if(coletavel.mapaEntidade.isLockado || coletavel.mapaEntidade.isBloqueado)
         {
-            if (estadoUltimaFamilia)
-            {
-                popularMaterialItem(itemPrateleira, coletavel, sprite);
-            }
-            else
-            {
-                popularItemIndisponivel(itemPrateleira);
-            }
+            popularItemIndisponivel(itemPrateleira);
         }
         else
         {
-            estadoUltimaFamilia = PlayerPrefsColetaveis.isFamiliaNotLocked(familiaEntidade.ToString());
-            if (estadoUltimaFamilia)
-            {
-                popularMaterialItem(itemPrateleira, coletavel, sprite);               
-            }
-            else
-            {
-                popularItemIndisponivel(itemPrateleira);
-            }
-
-            ultimaFamilia = familiaEntidade;
-        }
+            itemPrateleira.ImgExclamacao.SetActive(coletavel.isExclamacao);
+            popularMaterialItem(itemPrateleira, coletavel);
+        }            
     }
 
     public void disposePrateleira(PrateleiraArmarioDto prateleira)
@@ -68,12 +43,12 @@ public class PopuladorPrateleira
         }
     }
 
-    private void popularMaterialItem(ItemPrateleiraDto itemPrateleira, ColetavelEntidade coletavel, Sprite sprite)
+    private void popularMaterialItem(ItemPrateleiraDto itemPrateleira, ColetavelEntidade coletavel)
     {
-        if (PlayerPrefsColetaveis.isColetavelIndisponivel(coletavel.nome))
+        if (!coletavel.isAdquirido)
         {
             //Debug.Log("Vai popular item grayscale" + itemPrateleira.ImgItem.gameObject.name + " sprite " + sprite.name);
-            Material matGray = poolMaterialGrayScale.getObjeto(sprite);
+            Material matGray = poolMaterialGrayScale.getObjeto(coletavel.sprite);
             itemPrateleira.ImgItem.material = matGray;
         }
         else

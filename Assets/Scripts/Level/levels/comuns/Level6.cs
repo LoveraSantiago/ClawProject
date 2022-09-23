@@ -5,35 +5,25 @@ public class Level6 : AbstractLevelOvo
     public override string getLevelName()
     {
         return "Level 6";
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }    
 
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
-    }
-
-    public override string getNameMap()
-    {
-        return Mapas.PARQUE_DIVERSOES;
-    }
+    } 
 
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
         {
-            {14, 12, 11, 12, 11, 12, 11},
-            {12, 11, 14, 11, 11, 13, 0},
-            {0, 0, 14, 14, 14, 0, 0},
-            {0, 0, 0, 14, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}
+            { 4,  2,  1,  2,  1,  2,  1},
+            { 2,  1,  4,  7,  1,  3, -1},
+            {-1, -1,  5,  6,  4, -1, -1},
+            {-1, -1, -1,  4, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1}
         };
     }
 
@@ -42,7 +32,7 @@ public class Level6 : AbstractLevelOvo
         return "Dramatica Crocante";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //04. Crisp & Dramatic
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -94,23 +84,5 @@ public class Level6 : AbstractLevelOvo
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public override string getNomeMapa()
-    {
-        return LevelMapNomes.PARQUE_DIVERSOES;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevel6();
-    }
-
-    public class FornecedorLevel6 : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new Level6();
-        }
-    }
+    }    
 }

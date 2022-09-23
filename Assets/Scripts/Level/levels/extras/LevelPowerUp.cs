@@ -21,26 +21,21 @@ public class LevelPowerUp : AbstractLevel
     {
         return new int[,]
         {
-            {1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 0},
-            {1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}
+            {0, 1, 2, 3, 4, 5, 6},
+            {1, 2, 3, 4, 5, 6, -1},
+            {0, 1, 2, 3, 4, 5, 6},
+            {1, 2, 3, 4, 5, 6, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1}
         };
     }
 
     public override bool devolverParaBoard()
     {
         return false;
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }    
 
     public override TipoContagemTempoDto getTempoContagem()
     {
@@ -52,7 +47,7 @@ public class LevelPowerUp : AbstractLevel
         return "Agua Azul Esverdeada";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //07. Watery Blue-Greens
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -97,24 +92,12 @@ public class LevelPowerUp : AbstractLevel
         dicionario.Add("divisoria", "#C1E1CF");
         dicionario.Add("digitos", "#C1E1CF");
         dicionario.Add("circulo-externo", "#021C1E");
-        dicionario.Add("circulo-interno", "#2C7873");        return dicionario;        
+        dicionario.Add("circulo-interno", "#2C7873");
+        return dicionario;        
     }
 
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevelPup();
-    }
-
-    public class FornecedorLevelPup : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelPowerUp();
-        }
-    }
+    }    
 }

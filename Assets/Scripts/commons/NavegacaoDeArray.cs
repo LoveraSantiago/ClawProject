@@ -9,7 +9,8 @@ public class NavegacaoDeArray<T>
     public NavegacaoDeArray(T[] array, int indiceInicial)
     {
         this.array = array;
-        setIndiceAtual(indiceInicial);
+        int indiceSanitizado = indiceInicial < 0 ? 0 : indiceInicial;
+        setIndiceAtual(indiceSanitizado);
     }
 
     public T getItemIndiceAtual()
@@ -73,5 +74,5 @@ public class NavegacaoDeArray<T>
     public bool isIndiceAtualMenorQtdItensArray()
     {
         return indiceAtual < array.Length;
-    }
+    }    
 }

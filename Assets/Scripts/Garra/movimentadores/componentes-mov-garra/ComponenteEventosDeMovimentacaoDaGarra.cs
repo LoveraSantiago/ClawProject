@@ -5,7 +5,7 @@ public class ComponenteEventosDeMovimentacaoDaGarra : ComponenteGarraDeMovimenta
         getGarra().dispararEventoDirecao(direcao);
     }
 
-    public void produziuEventoDeDirecao(DirecaoDaGarra direcao)
+    public void produziuEventoDeDirecao(Direcao direcao)
     {
         getGarra().dispararEventoDirecao(direcao);
     }

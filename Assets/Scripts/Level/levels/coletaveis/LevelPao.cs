@@ -2,32 +2,32 @@ using System.Collections.Generic;
 
 public class LevelPao : AbstractLevelColetavel
 {
+    public override string getLevelTitle()
+    {
+        return "Level Pao";
+    }
+
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
         {
-            {13, 11, 12, 13, 14, 15, 13},
-            {16, 15, 14, 12, 11, 10, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}
+            {3, 1, 2, 3, 4, 5, 3},
+            {6, 5, 4, 2, 1, 0, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1}
         };        
     }
-
-    public override int getIdColetavel()
-    {
-        return 13;
-    }
-
+    
     public override string getMaquinaNome()
     {
         return "Vibrante Primaria";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //08. Primary Colors With a Vibrant Twist
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -79,18 +79,5 @@ public class LevelPao : AbstractLevelColetavel
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorPao();
-    }  
-
-    public class FornecedorPao : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelPao();
-        }
-    }
+    }       
 }

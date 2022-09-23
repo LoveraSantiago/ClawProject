@@ -2,23 +2,6 @@ using UnityEngine;
 
 public class Utils 
 {
-    public static MonoBehaviour MonoBehaviour { get; private set; }    
-
-    public static void configMainMono(MonoBehaviour monoBehaviour)
-    {
-        MonoBehaviour = monoBehaviour;
-    }   
-
-    public static void pausarGame()
-    {
-        Time.timeScale = 0;
-    }
-
-    public static void continuarGame()
-    {
-        Time.timeScale = 1;
-    }
-
     public static Color getCorByHex(string hex)
     {
         Color cor;
@@ -36,4 +19,18 @@ public class Utils
         return result;
     }
 
+    public static int[] criarArrayPopuladoDeInteiros(int tamanhoArray, int valor)
+    {
+        int[] arrayVazio = new int[tamanhoArray];
+        for (int contador = 0; contador < tamanhoArray; contador++)
+        {
+            arrayVazio[contador] = valor;
+        }
+        return arrayVazio;
+    }
+
+    public static bool isBlank(string valor)
+    {
+        return valor == null || "".Equals(valor);
+    }
 }

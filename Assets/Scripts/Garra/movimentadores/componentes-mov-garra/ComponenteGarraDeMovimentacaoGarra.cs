@@ -19,7 +19,7 @@ public abstract class ComponenteGarraDeMovimentacaoGarra : AcaoSincroniaComDirec
         return angulosProps;
     }
 
-    ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<Direcao> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)garra).getProdutorDeEvento();
     }

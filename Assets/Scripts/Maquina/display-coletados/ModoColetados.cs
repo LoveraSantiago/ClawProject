@@ -21,7 +21,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
     public void mostrarColetadoNoDisplay(
         InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
     {
-        Utils.MonoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris));        
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris));        
     }    
     
     public void processarPowerUp(PowerUpEnums.TIPO tipoPup, PowerUpInteracaoComDisplayColetado interacaoDisplayColetado)
@@ -144,7 +144,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
     {
         if (grupoDisplays.isTodosDisplayOcupados())
         {
-            Utils.MonoBehaviour.StartCoroutine(finalizacaoCompletaTodosDisplaysOcupados(agendados));
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(finalizacaoCompletaTodosDisplaysOcupados(agendados));
         }
         else
         {
@@ -183,7 +183,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
             bool result = displayDeColetado[contador].isCliqueDentroArea(toque);
             if (result)
             {
-                Utils.MonoBehaviour.StartCoroutine(descartarColetado(contador));
+                ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(descartarColetado(contador));
                 return true;
             }
         }

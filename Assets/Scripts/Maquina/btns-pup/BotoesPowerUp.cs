@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BotoesPowerUp : Draggavel,
                              AcaoBotaoPowerUpVazio.ProdutorEvento,
-                             AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
+                             AcaoPupFromScrollSelecao.ConsumidorEvento,
                              AcaoColetado.ConsumidorEvento,
                              AcaoDesligarMaquinaResultado.ConsumidorEvento,
                              AcaoTempoEsgotado.ConsumidorEvento,
@@ -142,7 +142,7 @@ public class BotoesPowerUp : Draggavel,
         }        
     }
 
-    void AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {
         btnsPowerUp[evento.indiceBotao].receberAcaoPowerUp(evento, controleAcionamentoPup);
     }

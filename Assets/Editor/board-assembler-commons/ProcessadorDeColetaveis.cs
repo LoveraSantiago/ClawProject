@@ -11,9 +11,10 @@ public class ProcessadorDeColetaveis
     }
 
     public void processar()
-    {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+    {        
         string result = "int[,] coletaveis = new int[,]{" + Environment.NewLine;
+
+        MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;
 
         int totalLinhas = referencias.getQtdLinhasDoBoard();
         for (int contadorLinha = 0; contadorLinha < totalLinhas; contadorLinha++)
@@ -23,9 +24,9 @@ public class ProcessadorDeColetaveis
             for (int contadorColuna = 0; contadorColuna < totalColunas; contadorColuna++)
             {   
                 Sprite spriteIt = referencias.getSpriteElementoGo(contadorLinha, contadorColuna);
-                ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeBySprite(spriteIt.name);
-                
-                result += coletavelEntidade.id + addVirgula(contadorColuna, totalColunas);
+                int indice = mapaEntidade.getIndiceColetavelEntidadeBySprite(spriteIt);
+
+                result += indice + addVirgula(contadorColuna, totalColunas);
             }            
             result += "}" + addNovaLinha(contadorLinha, totalLinhas);
         }

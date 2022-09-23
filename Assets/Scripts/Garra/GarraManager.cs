@@ -140,7 +140,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         return gerDeMovNormal == null ? null : ((AcaoInfoDaGarra.ProdutorEvento)gerDeMovNormal).getProdutorDeEvento();        
     }   
 
-    ProdutorDeEvento<DirecaoDaGarra> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<Direcao> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
         return gerDeMovAtual.getProdutorDeEvento();
     }   

@@ -15,22 +15,17 @@ public class Level5 : AbstractLevelObstaculos
     public override int[,] getArrayDeColetaveis()
     {
         int[,] coletaveis = new int[,]{
-            {12, 12, 12, 11, 15, 15, 15},
-            {15, 15, 15, 11, 12, 12, 12},
-            {12, 12, 12, 11, 15, 15, 15},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}
+            {2, 2, 2, 1, 5, 5, 5},
+            {5, 5, 5, 1, 2, 2, -1},
+            {2, 2, 2, 1, 5, 5, 5},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1}
         };
         return coletaveis;
     }
-
-    public override string getNameMap()
-    {
-        return Mapas.PARQUE_DIVERSOES;
-    }
-
+ 
     public override bool[,] getArrayDeObstaculos()
     {
         bool[,] gaiolas = new bool[,]{
@@ -43,12 +38,7 @@ public class Level5 : AbstractLevelObstaculos
             {false, false, false, false, false, false, false}
         };
         return gaiolas;
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }    
 
     public override bool devolverParaBoard()
     {
@@ -65,7 +55,7 @@ public class Level5 : AbstractLevelObstaculos
         return "Terrosa Escura";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //03. Dark & Earthy
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -117,23 +107,5 @@ public class Level5 : AbstractLevelObstaculos
     public override bool isLevelAlbedo0()
     {
         return true;
-    }
-
-    public override string getNomeMapa()
-    {
-        return LevelMapNomes.PARQUE_DIVERSOES;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevel5();
-    }
-
-    public class FornecedorLevel5 : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new Level5();
-        }
-    }
+    }    
 }

@@ -2,32 +2,32 @@ using System.Collections.Generic;
 
 public class LevelMaca : AbstractLevelColetavel
 {
+    public override string getLevelTitle()
+    {
+        return "Level Maca";
+    }
+
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
         {
-            {13, 12, 15, 11, 14, 14, 15},
-            {0, 16, 11, 11, 13, 0, 0},
-            {0, 0, 10, 10, 12, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}
+            {3, 2, 5, 1, 4, 4, 5},
+            {0, 6, 1, 1, 3, 0, -1},
+            {-1, -1, 0, 0, 2, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
-
-    public override int getIdColetavel()
-    {
-        return 11;
-    }
+    }    
 
     public override string getMaquinaNome()
     {
         return "Bonita Refrescante";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //09. Refreshing & Pretty
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -80,18 +80,4 @@ public class LevelMaca : AbstractLevelColetavel
     {
         return false;
     }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorMaca();
-    }    
-
-    public class FornecedorMaca : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelMaca();
-        }
-    }
-
 }

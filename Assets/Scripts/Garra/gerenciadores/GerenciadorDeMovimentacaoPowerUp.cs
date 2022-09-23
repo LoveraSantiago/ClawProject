@@ -12,7 +12,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
     public override void iniciarMovimentacoes()
     {
-        movAtual.produziuEventoDeDirecao(DirecaoDaGarra.CENTRALIZADA);        
+        movAtual.produziuEventoDeDirecao(Direcao.CENTRALIZADA);        
         trocarParaAcaoVoltarParaCima();
     }    
 
@@ -90,7 +90,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         movAtual = movimentador;
     }
 
-    public override ProdutorDeEvento<DirecaoDaGarra> getProdutorDeEvento()
+    public override ProdutorDeEvento<Direcao> getProdutorDeEvento()
     {
         return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)movAtual).getProdutorDeEvento();
     }

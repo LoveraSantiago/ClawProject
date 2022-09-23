@@ -38,12 +38,12 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
     {
         modalSairDto.ModalSair.SetActive(false);
         produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(false));
-        Utils.continuarGame();
+        ContextoEstaticoUtils.continuarGame();
     }
 
     private void sairDoGame()
     {
-        Utils.continuarGame();        
+        ContextoEstaticoUtils.continuarGame();        
         switch (estadoSairPara)
         {
             case SAIR_NORMAL:
@@ -69,7 +69,7 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
 
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
     {
-        Utils.pausarGame();
+        ContextoEstaticoUtils.pausarGame();
         string text = null;
         switch (estadoSairPara)
         {

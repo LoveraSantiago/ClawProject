@@ -9,8 +9,8 @@ public class BoardMontadorElevadorNormal : BoardMontadorNormal
         this.goParent = goParent;
     }
 
-    protected override Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
+    protected override Coletavel criarColetavel(Sprite sprite, Vector3 posicao)
     {
-        return HelperColetaveisInGame.criarColetavel(nomeSprite, posicao, goParent);
+        return HelperColetaveisInGame.criarColetavel(sprite, posicao, goParent);
     }
 }

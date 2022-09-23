@@ -25,14 +25,14 @@ public class MovimentacaoDirecao : AbstractMovimentacaoDaGarra
             direcao = -1;
             moverHorizontalmenteFreeze(direcao);
             playAnimacaoIrPEsquerda();
-            produziuEventoDeDirecao(DirecaoDaGarra.ESQUERDA);
+            produziuEventoDeDirecao(Direcao.ESQUERDA);
         }
         else if (isMenorPosHorizontal(-limiteGarra))
         {
             direcao = 1;
             moverHorizontalmenteFreeze(direcao);
             playAnimacaoIrPDireita();
-            produziuEventoDeDirecao(DirecaoDaGarra.DIREITA);
+            produziuEventoDeDirecao(Direcao.DIREITA);
         }
     }
 }

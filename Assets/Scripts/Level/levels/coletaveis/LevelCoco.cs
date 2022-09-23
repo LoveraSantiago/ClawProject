@@ -2,32 +2,32 @@ using System.Collections.Generic;
 
 public class LevelCoco : AbstractLevelColetavel
 {
+    public override string getLevelTitle()
+    {
+        return "Level Coco";
+    }
+
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
         {
-            {15, 13, 13, 13, 13, 13, 13},
-            {12, 15, 12, 12, 12, 12, 0},
-            {11, 11, 11, 15, 11, 11, 11},
-            {10, 10, 10, 10, 10, 10, 0},
+            {5, 3, 3, 3, 3, 3, 3},
+            {2, 5, 2, 2, 2, 2, -1},
+            {1, 1, 1, 5, 1, 1, 1},
             {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1}
         };
     }
-
-    public override int getIdColetavel()
-    {
-        return 15;
-    }
-
+    
     public override string getMaquinaNome()
     {
         return "Frescor Energetica";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {   
         //11. Fresh & Energetic
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -72,24 +72,12 @@ public class LevelCoco : AbstractLevelColetavel
         dicionario.Add("divisoria", "#838482");
         dicionario.Add("digitos", "#FFFFFF");
         dicionario.Add("circulo-externo", "#838482");
-        dicionario.Add("circulo-interno", "#4D9988");        return dicionario;
+        dicionario.Add("circulo-interno", "#4D9988");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorCoco();
-    }    
-
-    public class FornecedorCoco : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelCoco();
-        }
-    }
+    }   
 }

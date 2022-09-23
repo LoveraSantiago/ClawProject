@@ -4,9 +4,14 @@ public class MaterialGrayScale
 {
     private static Material matGrayScale;
 
+    public static Material of()
+    {
+        return new Material(matGrayScale);
+    }
+
     public static Material of(Sprite sprite)
     {
-        Material material = new Material(matGrayScale);
+        Material material = of();
         return changeSprite(material, sprite);
     }
 

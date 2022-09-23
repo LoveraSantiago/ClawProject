@@ -30,7 +30,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
         if (isDevolver(combinacaoValida, evento))
         {
             //Debug.Log("Devolver tubo acionado");
-            Utils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, coletados));
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, coletados));
         }
     }
 

@@ -51,8 +51,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         yield return board.create();
         
         int qtdColetaveisDoBoard = HelperColetaveisInGame.getQtdColetaveisInGame();
-        contador.iniciar(qtdColetaveisDoBoard);        
-        coletavelImantado = HelperColetaveisInGame.getColetavelInGameByGoName("1");//PEGANDO UM COLETAVEL DEFAULT P EVITAR NULL CHECK    
+        contador.iniciar(qtdColetaveisDoBoard);                
     }    
 
     public Fornecedor<TrocadorDeOrdem> getFornecedorTrocadorDeOrdem()
@@ -67,8 +66,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     }
 
     private void configurarColetaveis(ColetaveisDto coletaveisDto)
-    {   
-        HelperColetavelEntidade.configurar(coletaveisDto.PrefabColetaveisDto);
+    {           
         HelperColetaveisInGame.configurar();
         Coletavel.configurar(coletaveisDto.ReferenciaColliderColetado, coletaveisDto);
     }
@@ -99,7 +97,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     private void processarDesimantado()
     {
-        coletavelImantado.desimantar();
+        if(coletavelImantado != null)
+        {
+            coletavelImantado.desimantar();
+        }
     }
 
     //IMPLEMENTACAO INTERFACE CONSUMIDORDEEVENTOTRIGGER INICIO

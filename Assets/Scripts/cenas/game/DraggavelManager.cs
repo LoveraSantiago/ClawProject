@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DraggavelManager : AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento,
+public class DraggavelManager : AcaoPupFromScrollSelecao.ConsumidorEvento,
                                 AcaoPowerUpAcionado.ConsumidorEvento,
                                 AcaoBotaoPowerUpVazio.ConsumidorEvento
 {
@@ -12,7 +12,7 @@ public class DraggavelManager : AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEven
         this.colliderDrag = colliderDrag;
     }
 
-    void AcaoItemEscolhido<PowerUpBtnInfo>.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {
         if (evento.hasEntidade)
         {

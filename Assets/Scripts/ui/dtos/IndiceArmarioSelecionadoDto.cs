@@ -3,20 +3,24 @@ public class IndiceArmarioSelecionadoDto
     public int indicePrateleira { get; private set; }
     public int indiceItem { get; private set; }
     public float posScrollArmario { get; private set; }
-
-    public IndiceArmarioSelecionadoDto(int indicePrateleira, int indiceItem)
+    public ItemPrateleiraDto itemSelecionado { get; private set; }    
+    
+    public IndiceArmarioSelecionadoDto addIndices(int indicePrateleira, int indiceItem)
     {
         this.indicePrateleira = indicePrateleira;
         this.indiceItem = indiceItem;
-        posScrollArmario = 0;
+        return this;
     }
 
-    public IndiceArmarioSelecionadoDto(int indicePrateleira, int indiceItem, float posScrollArmario)
-        :this(indicePrateleira, indiceItem)
-    {        
+    public IndiceArmarioSelecionadoDto addScrollPosition(float posScrollArmario)
+    {
         this.posScrollArmario = posScrollArmario;
+        return this;
     }
 
-    public IndiceArmarioSelecionadoDto(IndiceArmarioSelecionadoDto indiceDto, float posScrollArmario)
-        : this(indiceDto.indicePrateleira, indiceDto.indiceItem, posScrollArmario){}
+    public IndiceArmarioSelecionadoDto addItemSelecionado(ItemPrateleiraDto itemSelecionado)
+    {
+        this.itemSelecionado = itemSelecionado;
+        return this;
+    }
 }

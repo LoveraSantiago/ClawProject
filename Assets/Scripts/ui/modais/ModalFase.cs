@@ -9,11 +9,12 @@ public class ModalFase
         modalFaseDto.BtnFechar.onClick.AddListener(() => desligar());
     }
 
-    public void ligar(Level levelEnum)
+    public void ligar(MapaEntidade mapaEntidade, int indiceLevel)
     {
-        PlayerPrefsLevel.salvarLevel(levelEnum);
+        AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(indiceLevel);
+        ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
 
-        AbstractLevel level = LevelHelper.getLevelByEnum(levelEnum);
+
         modalFaseDto.LblNivel.text = level.getLevelTitle();
         modalFaseDto.LblObjetivo.text = level.getMsgObjetivoLevel();
 

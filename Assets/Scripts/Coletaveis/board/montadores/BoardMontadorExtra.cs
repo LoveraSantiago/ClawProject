@@ -29,9 +29,9 @@ public class BoardMontadorExtra : BoardMontador
         incrementarContadorDeLinha();        
     }
 
-    protected override Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
+    protected override Coletavel criarColetavel(Sprite sprite, Vector3 posicao)
     {
-        return HelperColetaveisInGame.criarColetavel(nomeSprite, posicao, goParent);
+        return HelperColetaveisInGame.criarColetavel(sprite, posicao, goParent);
     }
 
     protected override IEnumerator onColetavelCriado(int posX, int posY, Coletavel coletavel)

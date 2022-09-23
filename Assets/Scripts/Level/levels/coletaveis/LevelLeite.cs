@@ -2,32 +2,32 @@ using System.Collections.Generic;
 
 public class LevelLeite : AbstractLevelColetavel
 {
+    public override string getLevelTitle()
+    {
+        return "Level Leite";
+    }
+
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
         {
-            {10, 10, 10, 11, 12, 13, 14},
-            {13, 14, 15, 16, 16, 15, 0},
-            {12, 11, 12, 13, 14, 15, 16},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}
+            {0, 0, 0, 1, 2, 3, 4},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
-
-    public override int getIdColetavel()
-    {
-        return 10;
-    }
+    }    
 
     public override string getMaquinaNome()
     {
         return "Azul e Verdes Brincantes";
-    }
+    }   
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //10. Playful Greens & Blues
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -72,7 +72,8 @@ public class LevelLeite : AbstractLevelColetavel
         dicionario.Add("divisoria", "#324851");
         dicionario.Add("digitos", "#7DA3A1");
         dicionario.Add("circulo-externo", "#324851");
-        dicionario.Add("circulo-interno", "#7DA3A1");        return dicionario;
+        dicionario.Add("circulo-interno", "#7DA3A1");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
@@ -84,18 +85,4 @@ public class LevelLeite : AbstractLevelColetavel
     //{
     //    return true;
     //}
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLeite();
-    }
-    
-    public class FornecedorLeite : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelLeite();
-        }
-    }
-
 }

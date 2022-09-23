@@ -14,9 +14,7 @@ public class ColetaveisDto
     [SerializeField] private GameObject sensorDeColetado;     
     [SerializeField] private CircleCollider2D referenciaColliderColetado;
     [Space(3)]
-    [SerializeField] private ParticleSystem efeitoColetado;    
-    [Space(3)]        
-    [SerializeField] private GameObject prefabColetaveisDto;
+    [SerializeField] private ParticleSystem efeitoColetado;        
     [Space(3)]
     [SerializeField] private GameObject goMainColetavel;    
     [SerializeField] private GameObject goMainGaiola;        
@@ -39,8 +37,6 @@ public class ColetaveisDto
 
     public CircleCollider2D ReferenciaColliderColetado { get { return referenciaColliderColetado; } }
     public ParticleSystem EfeitoColetado { get { return efeitoColetado; } }    
-    
-    public GameObject PrefabColetaveisDto { get { return prefabColetaveisDto; } }
    
     public DescarteTuboDto DescarteTuboDto { get { return descarteTuboDto; } }
 

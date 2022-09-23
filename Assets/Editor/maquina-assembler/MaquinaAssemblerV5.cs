@@ -14,6 +14,9 @@ public class MaquinaAssemblerV5 : EditorWindow
     }
 
     private MaquinaColoridaV2 maquina;
+    private DropdownField dropDownFieldMapas;
+    private DropdownField dropDownFieldLevels;
+    private List<ColorField> listaDeColorFields;
 
     public void CreateGUI()
     {
@@ -33,9 +36,11 @@ public class MaquinaAssemblerV5 : EditorWindow
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/maquina-assembler/MaquinaAssemblerV5.uss");
 
-        criarComponentDropDownField(root);
+        EditorLevelHelper.inicializar();
+        criarComponentDropDownFieldMapas(root);
+        criarComponentDropDownFieldLevels(root);
         maquina = new MaquinaColoridaV2();
-        List<ColorField>  listaDeColorFields = new List<ColorField>();
+        listaDeColorFields = new List<ColorField>();
 
         bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.PLACA_FRENTE);
         bindarComponentes(root, maquina, listaDeColorFields, ConstantesCoresMaquinaV2.VIGAS);
@@ -91,10 +96,8 @@ public class MaquinaAssemblerV5 : EditorWindow
 
         root.Q<Button>("mapa").clicked += () => maquina.gerarMapa();
         root.Q<Button>("reset-mapa").clicked += () => {
-            for(int contador = 0; contador < listaDeColorFields.Count; contador++)
-            {
-                listaDeColorFields[contador].value = Color.white;
-            }
+            resetarDropDowns();
+            reset();
         };
     }
     
@@ -113,15 +116,42 @@ public class MaquinaAssemblerV5 : EditorWindow
             .clicked += () => colorField.value = Color.white;
     }
 
-    private void criarComponentDropDownField(VisualElement root)
+    private void reset()
     {
-        List<string> listaDeLevels = LevelHelper.getAllLevelsAlias();
+        for (int contador = 0; contador < listaDeColorFields.Count; contador++)
+        {
+            listaDeColorFields[contador].value = Color.white;
+        }
+    }
 
-        DropdownField dropDownField = new DropdownField("Dicionarios", listaDeLevels, 0);
-        dropDownField.RegisterCallback<ChangeEvent<string>>((evt) => {
-            if (evt.newValue != "0")
+    private void criarComponentDropDownFieldMapas(VisualElement root)
+    {
+        List<string> listaDeMapas = EditorLevelHelper.listaDeNomesMapas;
+
+        dropDownFieldMapas = new DropdownField("Mapas", listaDeMapas, 0);
+        dropDownFieldMapas.RegisterCallback<ChangeEvent<string>>((evt) => {
+            if (!"0".Equals(evt.newValue) && !"-".Equals(evt.newValue))
             {
-                AbstractLevel level = LevelHelper.getLevelByString(evt.newValue);
+                reset();
+                MapaEnum mapaEnum = Mapas.getMapaEnumByName(evt.newValue);
+                MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum, false);
+
+                dropDownFieldLevels.choices = EditorLevelHelper.getListaDeNomesLevels(mapaEntidade);
+                dropDownFieldLevels.index = 0;
+            }
+        });
+
+        root.Q<VisualElement>("dropDownMapa")
+               .Add(dropDownFieldMapas);
+    }
+
+    private void criarComponentDropDownFieldLevels(VisualElement root)
+    {
+        dropDownFieldLevels  = new DropdownField("Levels", EditorLevelHelper.listaEmpty, 0);
+        dropDownFieldLevels.RegisterCallback<ChangeEvent<string>>((evt) => {
+            if (!"0".Equals(evt.newValue) && !"-".Equals(evt.newValue))
+            {
+                AbstractLevel level = EditorLevelHelper.getLevelByNameIndice(dropDownFieldMapas.value, evt.newValue);
                 Dictionary<string, string> dicionarioDeCores = level.getDicionarioDeCores();
                 foreach (KeyValuePair<string, string> entry in dicionarioDeCores)
                 {
@@ -133,7 +163,13 @@ public class MaquinaAssemblerV5 : EditorWindow
             }
         });
 
-        root.Q<VisualElement>("linha0")
-               .Add(dropDownField);
+        root.Q<VisualElement>("dropDownMapa")
+               .Add(dropDownFieldLevels);
+    }
+
+    private void resetarDropDowns()
+    {
+        dropDownFieldMapas.index = 0;
+        dropDownFieldLevels.index = 0;
     }
 }

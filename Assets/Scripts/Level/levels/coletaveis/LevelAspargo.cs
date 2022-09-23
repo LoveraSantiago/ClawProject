@@ -2,32 +2,32 @@ using System.Collections.Generic;
 
 public class LevelAspargo : AbstractLevelColetavel
 {
+    public override string getLevelTitle()
+    {
+        return "Level Aspargo";
+    }
+
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
         {
-            {16, 16, 16, 16, 16, 16, 14},
-            {16, 16, 16, 16, 16, 14, 0},
-            {16, 16, 16, 16, 16, 14, 16},
-            {16, 16, 16, 16, 16, 16, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}
+            {6, 6, 6, 6, 6, 6, 4},
+            {6, 6, 6, 6, 6, 4, -1},
+            {6, 6, 6, 6, 6, 4, 6},
+            {6, 6, 6, 6, 6, 6, 0},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
-
-    public override int getIdColetavel()
-    {
-        return 14;
-    }
+    }   
 
     public override string getMaquinaNome()
     {
         return "Frescor Energetica";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-frente", "#F4CC70");
@@ -71,24 +71,12 @@ public class LevelAspargo : AbstractLevelColetavel
         dicionario.Add("divisoria", "#BE681C");
         dicionario.Add("digitos", "#F9E2AE");
         dicionario.Add("circulo-externo", "#20948B");
-        dicionario.Add("circulo-interno", "#6AB187");        return dicionario;
+        dicionario.Add("circulo-interno", "#6AB187");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorAspargo();
-    }
-    
-    public class FornecedorAspargo : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelAspargo();
-        }
-    }
+    }    
 }

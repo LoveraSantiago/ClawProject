@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevelColetavel : AbstractLevel
 {
-    public abstract int getIdColetavel();
+    public ColetavelEntidade coletavelEntidade { get; private set; }
 
-    public override string getLevelTitle()
+    public void setColetavelEntidade(ColetavelEntidade coletavelEntidade)
     {
-        return "Coletavel Level";
+        this.coletavelEntidade = coletavelEntidade;
     }
 
     public override string getMsgObjetivoLevel()
@@ -32,12 +32,7 @@ public abstract class AbstractLevelColetavel : AbstractLevel
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0}
         };
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }   
 
     public override bool devolverParaBoard()
     {
@@ -49,7 +44,16 @@ public abstract class AbstractLevelColetavel : AbstractLevel
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        //return new PowerUpsParaLevel(1)
+        //   .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MOLA });
+
+        return new PowerUpsParaLevel(2)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BURACO_NEGRO, });
+    }
+
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-cima", "#F2E205");

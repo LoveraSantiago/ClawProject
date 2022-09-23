@@ -10,5 +10,5 @@ public abstract class GerenciadorDeMovimentacao : AcaoSincroniaComDirecaoDaGarra
 
     public abstract void garraComemorar();
 
-    public abstract ProdutorDeEvento<DirecaoDaGarra> getProdutorDeEvento();
+    public abstract ProdutorDeEvento<Direcao> getProdutorDeEvento();
 }

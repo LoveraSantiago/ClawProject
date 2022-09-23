@@ -25,8 +25,8 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            modalResultado.configurar();   
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            modalResultado.configurar();
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
 
@@ -35,7 +35,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         if (!mostrandoModal)
         {
             modalResultado.configurarColetavel();
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
 
@@ -44,7 +44,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         if (!mostrandoModal)
         {
             modalResultado.configurarColetavelFail();
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
 
@@ -52,8 +52,8 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            modalResultado.configurarCacaNiquelIndividual(evento);           
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            modalResultado.configurarCacaNiquelIndividual(evento);
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }   
 
@@ -62,7 +62,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         if (!mostrandoModal)
         {
             modalResultado.configurarCacaNiquelGeral(evento);
-            Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
         }
     }
 
@@ -71,7 +71,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         modalResultado.setScoreAtual("Não seguiu ordem " + ordem);
         //faltando navegacao de volta
         modalResultado.configurarModalFailOrdem();
-        Utils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
     }  
 
     private IEnumerator coroutineMostrarModal()
@@ -86,7 +86,10 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         modalResultado.setScoreAtual(evento.score.ToString());
         InformacoesFimDeJogoDto infoFimDeJogo = evento.infosFimDeJogo;
         if (infoFimDeJogo.fimColetados)
-        {
+        {            
+            AbstractLevel levelAtual = ContextoEstaticoUtils.level;
+            levelAtual.levelConcluido();
+            
             mostrarModalPontuacao();
         }
         else if (infoFimDeJogo.erroOrdem)

@@ -28,11 +28,11 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
             HelperColetaveisInGame.ligarMirasNosColetaveis(true);
 
             alvoSelecionado = new HumAlvoColetavelSelecionado(true);
-            coroutineAlvo = Utils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));
+            coroutineAlvo = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));
         }
         else
         {
-            Utils.MonoBehaviour.StartCoroutine(ativacaoFalha());
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(ativacaoFalha());
         }
     }
 
@@ -59,22 +59,21 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
     {
         coletavelSelecionado = coletavel;
 
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();        
-
-        ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeBySprite(coletavel.nomeSprite);
-        List<ColetavelEntidade> listaFamilia = helperColetavel.getListaDeColetaveisEntidadeByFamiliaExcluindo(coletavelEntidade);
+        MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;        
+        ColetavelEntidade coletavelEntidade = mapaEntidade.getColetavelEntidadeBySpriteNome(coletavel.nomeSprite);
+        ColetavelEntidade[] coletaveisFamilia = mapaEntidade.getColetaveisExcluindo(coletavelEntidade);        
 
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();        
         materialTeleporte.addTrocaIn(coletavel.getSprite());
         coletavel.addMaterial(materialTeleporte.materialTeleporte);
 
-        int indiceSorteado = MathUtils.escolherDeZeroAteLimite(listaFamilia.Count);
+        int indiceSorteado = MathUtils.escolherDeZeroAteLimite(coletaveisFamilia.Length);
         Sprite sprSorteado = null;
         while (!finalizando)
         {
-            ColetavelEntidade coletavelSorteado = listaFamilia[indiceSorteado];
+            ColetavelEntidade coletavelSorteado = coletaveisFamilia[indiceSorteado];
             Debug.Log("indice sorteado " + indiceSorteado);
-            sprSorteado = helperColetavel.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);            
+            sprSorteado = coletavelSorteado.sprite;      
             materialTeleporte.addTrocaOut(sprSorteado);
              
             bool houveToque = false;
@@ -92,10 +91,10 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
                 break;
             }
 
-            indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
+            indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(coletaveisFamilia.Length, indiceSorteado);
             Debug.Log("indice sorteado " + indiceSorteado);
-            coletavelSorteado = listaFamilia[indiceSorteado];
-            sprSorteado = helperColetavel.getSpriteColetavelByNomeSprite(coletavelSorteado.nomeSprite);            
+            coletavelSorteado = coletaveisFamilia[indiceSorteado];
+            sprSorteado = coletavelSorteado.sprite;
             materialTeleporte.addTrocaIn(sprSorteado);
 
             houveToque = false;
@@ -112,7 +111,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
                 break;
             }
 
-            indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(listaFamilia.Count, indiceSorteado);
+            indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(coletaveisFamilia.Length, indiceSorteado);
         }
 
         finalizando = true;
@@ -131,7 +130,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
     {
         if (!finalizando)
         {
-            Utils.MonoBehaviour.StopCoroutine(coroutineAlvo);
+            ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutineAlvo);
             alvoSelecionado.timeout();
             finalizar();   
         }

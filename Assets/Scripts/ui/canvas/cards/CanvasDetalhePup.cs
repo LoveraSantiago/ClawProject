@@ -30,13 +30,19 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
 
     private void gotoScenePupPratica()
     {
-        PlayerPrefsLevel.salvarLevel(Level.PUP);
+        MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.POWERUP, false);
+        AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(1);
+        ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
+
         abrirCenaOuModal(0, 0);
     }
 
     private void gotoScenePupCacaNiquelIndividual()
     {
-        PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_I);
+        MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.CACANIQUEL, false);
+        AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(2);
+        ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
+
         PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePupSelecionado);
         int precoFicha = int.Parse(pupEntidade.preco);
         abrirCenaOuModal(1, precoFicha);
@@ -44,7 +50,10 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
 
     private void gotoScenePupCacaNiquelGeral()
     {
-        PlayerPrefsLevel.salvarLevel(Level.CACANIQUEL_PUP_G);
+        MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.CACANIQUEL, false);
+        AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(1);
+        ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
+        
         abrirCenaOuModal(2, 1);
     }
 

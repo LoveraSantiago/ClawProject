@@ -24,8 +24,8 @@ public class ModoCacaNiquel : AcaoCacaNiquel.ProdutorEvento
     }
 
     public void iniciar(GrupoDisplays grupoDisplays, InputGame inputGame)
-    {   
-        Utils.MonoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel(grupoDisplays, inputGame));
+    {
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel(grupoDisplays, inputGame));
     }   
 
     private IEnumerator iniciarDisplayCacaNiquel(GrupoDisplays grupoDisplays, InputGame inputGame)

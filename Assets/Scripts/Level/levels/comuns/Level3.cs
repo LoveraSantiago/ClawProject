@@ -10,39 +10,29 @@ public class Level3 : AbstractLevelElevador
     public override string getMsgObjetivoLevel()
     {
         return "Cuidado com o numero de coletaveis";
-    }
-
-    public override string getNameMap()
-    {
-        return Mapas.PARQUE_DIVERSOES;
-    }
+    }   
 
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,] {
-            { 10, 10, 10, 11, 11, 11, 12 },
-            { 14, 14, 14, 13, 13, 13, 0 },
-            { 1, 1, 1, 1, 1, 1, 1 },
-            { 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0 } };
+            {  0,  1,  2,  5,  5,  5,  2 },
+            {  4,  4,  4,  3,  3,  3, -1 },
+            {  1,  6,  1,  6,  1,  7,  7 },
+            { -1, -1, -1, -1, -1, -1, -1 },
+            { -1, -1, -1, -1, -1, -1, -1 },
+            { -1, -1, -1, -1, -1, -1, -1 },
+            { -1, -1, -1, -1, -1, -1, -1 },
+            { -1, -1, -1, -1, -1, -1, -1 } };
     }
 
     public override int[,] getArrayDeColetaveisSub()
     {
         return new int[,] {
-            { 10, 10, 10, 11, 11, 11, 0 },
-            { 1, 1, 1, 1, 1, 1, 1 }
+            { 0, 0, 0, 1, 1, 1, -1 },
+            { 1, 1, 1, 1, 1, 1,  1 }
         };
     }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
-
+    
     public override bool devolverParaBoard()
     {
         return true;
@@ -59,7 +49,7 @@ public class Level3 : AbstractLevelElevador
         return "Brilhante Fresco";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //01.Fresh & Bright
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -111,27 +101,5 @@ public class Level3 : AbstractLevelElevador
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public override string getNomeMapa()
-    {
-        return LevelMapNomes.PARQUE_DIVERSOES;
     }    
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevel3();
-    }
-
-    public class FornecedorLevel3 : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new Level3();
-        }
-    }
 }
-
-
-
-

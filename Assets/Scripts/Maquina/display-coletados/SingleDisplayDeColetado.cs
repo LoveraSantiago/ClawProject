@@ -73,15 +73,15 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
 
     public void ligarCacaNiquel(Sprite[] sprites)
     {   
-        coroutineCacaNiquel = Utils.MonoBehaviour.StartCoroutine(ligarCacaNiquelCoroutine(sprites));
+        coroutineCacaNiquel = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(ligarCacaNiquelCoroutine(sprites));
     } 
     
     public void pararCacaNiquel(Sprite[] sprites, Sprite sprSucesso)
     {
         SpriteRenderer sprRendererEscolhido = getSprRendererMaisProximo();
         Sprite sprEscolhido = sprRendererEscolhido.sprite;
-        Utils.MonoBehaviour.StopCoroutine(coroutineCacaNiquel);
-        Utils.MonoBehaviour.StartCoroutine(reposicionarCacaNiquel());        
+        ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutineCacaNiquel);
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(reposicionarCacaNiquel());        
         if(sprSucesso == null)
         {
             colorirSucesso();

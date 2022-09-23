@@ -3,27 +3,32 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
+public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento,
+                                     AcaoBtnPrateleiraAcionado.ConsumidorEvento
 {
-    private bool movimentado;
-    private Vector2 posItemReferencia;
-    private Vector2 posOriginal;
-    private Vector2 pivotOriginal;
-
+    private PrateleirasDto prateleirasDto;
     private MovimentadorArmarioDto movimentadorDto;
+    private EstadoPosicoesMovimentadorArmarioDto estadoPosicoesDto;
+
+    private ScrollRect scrollRect;
     private ProdutorDeEvento<IndiceArmarioSelecionadoDto> produtorDeEvento;
 
-    public MovimentadorDeArmario(PrateleirasDto prateleirasDto, MovimentadorArmarioDto movimentadorDto)
+    public MovimentadorDeArmario(MainColetaveisDto mainDto)
     {
-        this.movimentadorDto = movimentadorDto;
-        posItemReferencia = pegarPosicaoReferencia(prateleirasDto);
+        this.movimentadorDto = mainDto.MovimentadorDto;
+        scrollRect = mainDto.ScrollRect;
+        prateleirasDto = mainDto.PrateleirasDto;
+
+        Vector2 posItemReferencia = pegarPosicaoReferencia(mainDto.PrateleirasDto);
+        estadoPosicoesDto = new EstadoPosicoesMovimentadorArmarioDto(posItemReferencia);
+        
         produtorDeEvento = new ProdutorDeEvento<IndiceArmarioSelecionadoDto>();
     }
 
-    public void movimentarAnimado(ScrollRect scrollRect, PrateleirasDto prateleirasDto)
+    public void movimentarAnimado()
     {
         Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
-        movimentado = true;
+        estadoPosicoesDto.setMovimentado(true);
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
         int indiceItem = int.Parse(goSelecionado.name);
         int indicePrateleira = int.Parse(goSelecionado.transform.parent.name);
@@ -31,7 +36,7 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
         Vector2 posicaoAnchored = pegarPosicaoClicado(indicePrateleira, indiceItem, prateleirasDto);
         posicaoAnchored = new Vector2(posicaoAnchored.x, posicaoAnchored.y + prateleirasDto.RTransformArmario.offsetMax.y);
 
-        Vector2 diferenca = posicaoAnchored - posItemReferencia;
+        Vector2 diferenca = posicaoAnchored - estadoPosicoesDto.posItemReferencia;
         //Debug.Log("Referencia " + posItemReferencia + " Atual " + posicaoAnchored + " Dif " + diferenca);
 
         RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
@@ -39,25 +44,25 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
         float xPivot = diferenca.x / rtScrollRect.rect.width;
         float yPivot = posicaoAnchored.y / rtScrollRect.rect.height;
         //Debug.Log("Pivot X " + xPivot + " Pivot Y " + yPivot + " rect " + rtScrollRect.rect);
-        pivotOriginal = rtScrollRect.pivot;
+        estadoPosicoesDto.setPivotOriginal(rtScrollRect.pivot);
         rtScrollRect.pivot = new Vector2(rtScrollRect.pivot.x + xPivot, 1f - Mathf.Abs(yPivot));
 
-        Utils.MonoBehaviour.StartCoroutine(movimentarArmarioAnimado(indicePrateleira, indiceItem, rtScrollRect, diferenca));
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(movimentarArmarioAnimado(indicePrateleira, indiceItem, rtScrollRect, diferenca));
     }
 
-    public void movimentarImediato(IndiceArmarioSelecionadoDto indiceArmario , ScrollRect scrollRect, PrateleirasDto prateleirasDto)
+    public void movimentarImediato(IndiceArmarioSelecionadoDto indiceArmario)
     {
-        movimentado = true;
+        estadoPosicoesDto.setMovimentado(true);
         Vector2 posicaoAnchored = pegarPosicaoClicado(indiceArmario.indicePrateleira, indiceArmario.indiceItem, prateleirasDto);
         posicaoAnchored = new Vector2(posicaoAnchored.x, posicaoAnchored.y + prateleirasDto.RTransformArmario.offsetMax.y);
 
-        Vector2 diferenca = posicaoAnchored - posItemReferencia;
+        Vector2 diferenca = posicaoAnchored - estadoPosicoesDto.posItemReferencia;
         RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
         float xPivot = diferenca.x / rtScrollRect.rect.width;
         float yPivot = posicaoAnchored.y / rtScrollRect.rect.height;
-        pivotOriginal = rtScrollRect.pivot;
+        estadoPosicoesDto.setPivotOriginal(rtScrollRect.pivot);
         rtScrollRect.pivot = new Vector2(rtScrollRect.pivot.x + xPivot, 1f - Mathf.Abs(yPivot));
-        posOriginal = rtScrollRect.anchoredPosition;
+        estadoPosicoesDto.setPosOriginal(rtScrollRect.anchoredPosition);
         Vector2 posDestino = rtScrollRect.anchoredPosition - diferenca;
         rtScrollRect.anchoredPosition = posDestino;
         rtScrollRect.localScale = new Vector3(movimentadorDto.EscalaFinal, movimentadorDto.EscalaFinal, 1);
@@ -65,19 +70,19 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
 
     public bool isArmarioMovimentado()
     {
-        return movimentado;
+        return estadoPosicoesDto.movimentado;
     }
 
     public void voltar(ScrollRect scrollRect)
     {
         Debug.Log("Voltar chamado");
-        RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);        
-        Utils.MonoBehaviour.StartCoroutine(voltarArmario(rtScrollRect));
+        RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(voltarArmario(rtScrollRect));
     }
 
     private IEnumerator movimentarArmarioAnimado(int indicePrateleira, int indiceItem, RectTransform rtScrollRect, Vector2 diferenca)
     {
-        posOriginal = rtScrollRect.anchoredPosition;
+        estadoPosicoesDto.setPosOriginal(rtScrollRect.anchoredPosition);
 
         Vector2 posDestino = rtScrollRect.anchoredPosition - diferenca;
         float time          = 1f;
@@ -105,8 +110,16 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
             time = incrementarTimer(time);
             yield return null;
         }
-        //Debug.Log("Finalizado");        
-        produtorDeEvento.produziuEvento(new IndiceArmarioSelecionadoDto(indicePrateleira, indiceItem));
+        //Debug.Log("Finalizado");     
+        PrateleiraArmarioDto prateleira = prateleirasDto.PrateleiraDto[indicePrateleira];
+        ItemPrateleiraDto itemSelecionado = prateleira.ItensPrateleira[indiceItem];
+
+        IndiceArmarioSelecionadoDto indiceArmarioSelecionado = new IndiceArmarioSelecionadoDto()
+            .addIndices(indicePrateleira, indiceItem)
+            .addScrollPosition(scrollRect.verticalNormalizedPosition)
+            .addItemSelecionado(itemSelecionado);
+
+        produtorDeEvento.produziuEvento(indiceArmarioSelecionado);
         yield return null;
     }
 
@@ -116,9 +129,13 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
         float escalaIt = 4f;
         float escalaInicial = 1;
 
-        while (rtScrollRect.anchoredPosition != posOriginal)
+        while (rtScrollRect.anchoredPosition != estadoPosicoesDto.posOriginal)
         {
-            Vector2 result = Vector2.MoveTowards(rtScrollRect.anchoredPosition, posOriginal, movimentadorDto.VelocidadeMovimentacao * 1000f * Time.deltaTime);
+            Vector2 result = Vector2.MoveTowards(
+                rtScrollRect.anchoredPosition,
+                estadoPosicoesDto.posOriginal, 
+                movimentadorDto.VelocidadeMovimentacao * 1000f * Time.deltaTime);
+
             rtScrollRect.anchoredPosition = result;
 
             escalaIt = Mathf.Clamp(time, escalaInicial, movimentadorDto.EscalaFinal);
@@ -138,8 +155,8 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
         }
         Debug.Log("Finalizado");
 
-        rtScrollRect.pivot = pivotOriginal;
-        movimentado = false;        
+        rtScrollRect.pivot = estadoPosicoesDto.pivotOriginal;
+        estadoPosicoesDto.setMovimentado(false);        
         yield return null;
     }
 
@@ -177,5 +194,13 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento
     ProdutorDeEvento<IndiceArmarioSelecionadoDto> AcaoItemArmarioSelecionado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
+    }
+
+    void AcaoBtnPrateleiraAcionado.ConsumidorEvento.consumirEvento(bool evento)
+    {
+        if (!isArmarioMovimentado())
+        {
+            movimentarAnimado();
+        }
     }
 }

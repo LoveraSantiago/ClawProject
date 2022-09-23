@@ -35,7 +35,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
         if (!finalizado)
         {
             Debug.Log("timeout acionado");
-            Utils.MonoBehaviour.StopCoroutine(coroutine);
+            ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutine);
             informacaoDisplayColetado.restaurarEstadoAntesPowerUp(new ExecutorFim(this));
         }
     }
@@ -51,7 +51,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
         //Debug.Log("Inicio chamado " + contador + " vezes");
         if (contador == 3)
         {
-            coroutine = Utils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados());
+            coroutine = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados());
         }
     }
 

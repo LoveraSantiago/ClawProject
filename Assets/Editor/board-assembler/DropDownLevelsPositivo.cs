@@ -2,12 +2,17 @@ using System.Collections.Generic;
 
 public class DropDownLevelsPositivo : DropDownLevels
 {
-    public DropDownLevelsPositivo(List<string> listaDeLevels) 
-        : base(listaDeLevels){}
+    public DropDownLevelsPositivo(ListaDeSprites listaDeSprites) 
+        : base(listaDeSprites){}
 
     protected override int[,] getArrayParaOBoard(AbstractLevel level)
     {
         return level.getArrayDeColetaveis();
+    }
+
+    protected override List<string> getListaBy(MapaEntidade mapaEntidade)
+    {
+        return EditorLevelHelper.getListaDeNomesLevelsNaoObstaculo(mapaEntidade);
     }
 
     protected override void onDropDownSelected(AbstractLevel level, RemontadorBoard remontador)

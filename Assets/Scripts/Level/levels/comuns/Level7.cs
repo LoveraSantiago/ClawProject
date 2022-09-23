@@ -18,35 +18,23 @@ public class Level7 : AbstractLevel
         return TipoGame.NORMAL;
     }
 
-    public override string getNameMap()
-    {
-        return Mapas.PARQUE_DIVERSOES;
-    }
-
     public override int[,] getArrayDeColetaveis()
     {
-        return new int[,]
-        {
-            {14, 12, 11, 12, 11, 12, 11},
-            {12, 11, 14, 11, 11, 13, 0},
-            {0, 0, 14, 14, 14, 0, 0},
-            {0, 0, 0, 14, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}
-        };
+        return new int[,]{
+        {7, 6, 7, 6, 7, 6, 7},
+        {6, 5, 6, 5, 6, 5, -1},
+        {4, 6, 4, 6, 4, 6, 4},
+        {-1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1}};        
     }
 
     public override bool devolverParaBoard()
     {
         return false;
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }    
 
     public override TipoContagemTempoDto getTempoContagem()
     {
@@ -69,7 +57,7 @@ public class Level7 : AbstractLevel
         return "Ar fresco Natural";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //06. Outdoorsy & Natural
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -121,23 +109,5 @@ public class Level7 : AbstractLevel
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public override string getNomeMapa()
-    {
-        return LevelMapNomes.PARQUE_DIVERSOES;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevel7();
-    }
-
-    public class FornecedorLevel7 : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new Level7();
-        }
-    }
+    }    
 }

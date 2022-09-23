@@ -1,6 +1,5 @@
 using System;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -27,7 +26,12 @@ public class BoardAssemblerNegativo : EditorWindow
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler-negativo/BoardAssemblerNegativo.uss");
 
-        HelperColetavelEntidade.configurar();
+        GameObject goPrefabsLevelsDto = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelsPrefabDto.prefab");        
+        PrefabLevelsDto prefabLevelsDto = goPrefabsLevelsDto.GetComponent<PrefabLevelsDto>();
+
+        FactoryMapaEntidade.configurar(prefabLevelsDto);
+        EditorLevelHelper.inicializar();
+                
         ReferenciasDoBoardNegativo referenciasDoBoard = new ReferenciasDoBoardNegativo();
         NavegacaoPeloBoardNegativo navegacao = new NavegacaoPeloBoardNegativo(root, referenciasDoBoard);        
         ProcessadorDeColetaveis processadorColetaveis = new ProcessadorDeColetaveis(referenciasDoBoard);
@@ -44,18 +48,14 @@ public class BoardAssemblerNegativo : EditorWindow
 
 
         RemontadorBoard remontador = new RemontadorBoard(referenciasDoBoard, listaDeSprites);
-        DropDownLevels dropDownLevels = new DropDownLevelsNegativo(LevelHelper.getElevadorLevelsAlias());
-        dropDownLevels.criarComponentDropDownField(root, cleaner, remontador);
+        DropDownLevels dropDownLevels = new DropDownLevelsNegativo(listaDeSprites);
+        dropDownLevels.criarComponentesDropDowns(root, cleaner, remontador);
 
-        EventCallback<ChangeEvent<UnityEngine.Object>> onSpriteAdicionado = (e1) =>
+        root.Q<Button>("botaoClean").clicked += () =>
         {
-            listaDeSprites.receberSprite((Sprite)e1.newValue);
+            cleaner.clean();
+            dropDownLevels.resetDropDowns();   
         };
-        root.Q<ObjectField>("objectFieldSprite").RegisterCallback(onSpriteAdicionado);
-
-        root.Q<Button>("botaoMenosTodos") .clicked += () => listaDeSprites.limparTodaLista();
-        root.Q<Button>("botaoMenos")      .clicked += () => listaDeSprites.removerUltimaLinha();
-        root.Q<Button>("botaoClean")      .clicked += () => cleaner.clean();
         root.Q<Button>("botaoProcessar")  .clicked += () => processadorColetaveis.processar();
         root.Q<Button>("botaoCimaAll")    .clicked += () => navegacao.navegarBaixoTotal();
         root.Q<Button>("botaoBaixoAll")   .clicked += () => navegacao.navegarCimaTotal();

@@ -2,31 +2,31 @@ using System.Collections.Generic;
 
 public class LevelEstrelaMarinha : AbstractLevelColetavel
 {
+    public override string getLevelTitle()
+    {
+        return "Level EstrelaMarinha";
+    }
+
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]{
-            {16, 15, 15, 15, 15, 15, 15},
-            {14, 14, 14, 14, 14, 14, 0},
-            {13, 13, 13, 13, 13, 13, 16},
-            {12, 12, 12, 12, 12, 12, 0},
-            {16, 11, 11, 11, 11, 11, 11},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}
+            {6, 5, 5, 5, 5, 5, 5},
+            {4, 4, 4, 4, 4, 4, -1},
+            {3, 3, 3, 3, 3, 3, 6},
+            {2, 2, 2, 2, 2, 2, -1},
+            {6, 1, 1, 1, 1, 1, 1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
-
-    public override int getIdColetavel()
-    {
-        return 16;
-    }
+    }    
 
     public override string getMaquinaNome()
     {
         return "Iceberg Gelada";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //14. Icy Blues and Grays
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -78,18 +78,5 @@ public class LevelEstrelaMarinha : AbstractLevelColetavel
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorEstrelaMarinha();
-    }
-
-    public class FornecedorEstrelaMarinha : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelEstrelaMarinha();
-        }
-    }
+    }    
 }

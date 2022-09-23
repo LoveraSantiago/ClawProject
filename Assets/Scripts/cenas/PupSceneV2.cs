@@ -32,7 +32,7 @@ public class PupSceneV2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Utils.configMainMono(this);
+        ContextoEstaticoUtils.configMainMono(this);
         FactoryPowerUpEntidade.resetContextoEstatico();
         PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
 

@@ -18,7 +18,7 @@ public class HumAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<Coletavel>
         Coletavel coletavelSelecionado = selecionadorDeAlvos.goSelecionado;
         ligarMiraFinal(coletavelSelecionado);
 
-        Coroutine coroutine = Utils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(coletavelSelecionado));
+        Coroutine coroutine = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(coletavelSelecionado));
         cacheCoroutineOnSelecionado(coroutine);
         yield return coroutine;
     }    

@@ -2,6 +2,9 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevel 
 {
+    private static ContextoEstaticoLevels contexto = new ContextoEstaticoLevels();
+    private Dictionary<string, string> dicionario;
+
     public static readonly string TIMER_ZERO = "00:00";
 
     public abstract string getLevelTitle();
@@ -13,9 +16,7 @@ public abstract class AbstractLevel
     
     public abstract string getMsgObjetivoLevel();    
 
-    public abstract bool devolverParaBoard();
-
-    public abstract ColetavelEntidade.FAMILIA getFamiliaColetavel();
+    public abstract bool devolverParaBoard();    
 
     public abstract int[,] getArrayDeColetaveis();        
 
@@ -30,14 +31,18 @@ public abstract class AbstractLevel
 
     public abstract TipoContagemTempoDto getTempoContagem();
 
-    public abstract Dictionary<string, string> getDicionarioDeCores();
-
-    public abstract string getMaquinaNome();
-
-    public virtual string getNomeMapa()
+    public Dictionary<string, string> getDicionarioDeCores()
     {
-        return "";
+        if(dicionario == null)
+        {
+            dicionario = getCoresMaquina();
+        }
+        return dicionario;
     }
+
+    protected abstract Dictionary<string, string> getCoresMaquina();
+
+    public abstract string getMaquinaNome();   
 
     public abstract bool isLevelAlbedo0();
 
@@ -59,20 +64,20 @@ public abstract class AbstractLevel
     public virtual bool isLevelAlbedo0DigitosScrollPup()
     {
         return isLevelAlbedo0();
-    }
-
-    public virtual string getNameMap()
-    {
-        return null;
-    }
-
-    public bool isLevelMap()
-    {
-        return getNameMap() != null;
-    }
+    }  
 
     public bool hasPupToLevel()
     {
         return getPupsToLevel() != null;
     }   
+
+    public void setIndiceLevelAtual(int indiceLevelAtual)
+    {
+        contexto.receberIndiceLevelAtual(indiceLevelAtual);
+    }
+
+    public void levelConcluido()
+    {
+        contexto.salvarLevelAtual();
+    }
 }

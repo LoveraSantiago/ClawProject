@@ -8,8 +8,15 @@
     <engine:Style src="MaquinaAssemblerV5.uss"/>
 
     <engine:ScrollView name="itemContainer">
+      
+      <engine:VisualElement name="linha1-1" class="linha">
+        <engine:VisualElement name="dropDownMapa">
+        </engine:VisualElement>
+      </engine:VisualElement>
 
-      <engine:VisualElement name="linha0" class="linha">
+      <engine:VisualElement name="linha1-1" class="linha">
+        <engine:VisualElement name="dropaDownLevels">
+        </engine:VisualElement>
       </engine:VisualElement>
       
       <engine:VisualElement name="linha1-1" class="linha">

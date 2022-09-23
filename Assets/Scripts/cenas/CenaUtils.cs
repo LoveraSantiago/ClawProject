@@ -21,7 +21,7 @@ public class CenaUtils
 
     public static void irParaCenaMainGame(float delay)
     {
-        Utils.MonoBehaviour.StartCoroutine(coroutineIrParaCenaMainGame(delay));
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineIrParaCenaMainGame(delay));
     }
 
     private static IEnumerator coroutineIrParaCenaMainGame(float delay)

@@ -3,7 +3,7 @@ using System.Collections;
 
 public abstract class BoardMontador 
 {
-    private static ColetavelEntidade.FAMILIA familia;
+    private static MapaEnum mapaEnum;
     private int[,] arrayDeColetaveis;   
 
     public IEnumerator createBoard(BoardDto boardDto)
@@ -16,32 +16,36 @@ public abstract class BoardMontador
 
     protected IEnumerator montarLinha(PosicaoItensDoBoardDto posItem, int contadorLinha, float altura)
     {
-        HelperColetavelEntidade helperColetavel = new HelperColetavelEntidade();
+        MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;
 
         for (int contadorColuna = 0; contadorColuna < posItem.Total; contadorColuna++)
         {
             int id = arrayDeColetaveis[contadorLinha, contadorColuna];
-            ColetavelEntidade coletavelEntidade = helperColetavel.getColetavelEntidadeById(id);
-            Vector3 posicao = calcularPosicao(posItem, contadorColuna, altura);            
+            Vector3 posicao = calcularPosicao(posItem, contadorColuna, altura);
 
-            if (coletavelEntidade.isVazio())//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
+            ColetavelEntidade coletavelEntidade = null;
+            if (ColetavelEntidade.isIndiceVazio(id))//SE FOR VAZIO VAI PARA A PROXIMA ITERACAO
             {               
                 yield return onPosicaoVaziaCriado(contadorColuna, contadorLinha, posicao);                
                 continue;
             }
-            else if (coletavelEntidade.isRandom())//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
+            else if (ColetavelEntidade.isIndiceRandom(id))//SE FOR RANDOMICO SORTEIA UM COLETAVEL ENTIDADE POR FAMILIA
             {
-                coletavelEntidade = helperColetavel.getRandomColetavelEntidadeByFamilia(familia);
+                coletavelEntidade = mapaEntidade.getColetavelEntidadeRandom();
+            }
+            else
+            {
+                coletavelEntidade = mapaEntidade.getColetavelEntidadeByIndice(id);
             }
 
-            Coletavel coletavel = criarColetavel(coletavelEntidade.nomeSprite, posicao);
+            Coletavel coletavel = criarColetavel(coletavelEntidade.sprite, posicao);
             yield return onColetavelCriado(contadorColuna, contadorLinha,coletavel);            
         }
     }
 
-    protected virtual Coletavel criarColetavel(string nomeSprite, Vector3 posicao)
+    protected virtual Coletavel criarColetavel(Sprite sprite, Vector3 posicao)
     {
-        return HelperColetaveisInGame.criarColetavel(nomeSprite, posicao); 
+        return HelperColetaveisInGame.criarColetavel(sprite, posicao); 
     }
 
     private Vector3 calcularPosicao(PosicaoItensDoBoardDto posItem, int contadorColuna, float altura)
@@ -93,13 +97,13 @@ public abstract class BoardMontador
         return arrayDeColetaveis.GetLength(0);
     }   
 
-    public static void configurar(ColetavelEntidade.FAMILIA familiaArg)
+    public static void configurar(MapaEnum mapaEnumArg)
     {
-        familia = familiaArg;
+        mapaEnum = mapaEnumArg;
     }
 
     protected virtual float getDelay()
     {
         return 0.1f;
-    }
+    }   
 }

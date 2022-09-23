@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class ScrollPupsManager : Draggavel,
-                                 AcaoItemEscolhido<PowerUpBtnInfo>.ProdutorEvento,
+public class ScrollPupsManager : Draggavel,                                 
                                  AcaoPowerUpAcionado.ConsumidorEvento
 {   
     private bool isLevelPup;
@@ -11,7 +10,7 @@ public class ScrollPupsManager : Draggavel,
     private int indiceBtnDesocupado;
 
     private ScrollPups scrollPups;
-    private ScrollSelecao scrollSelecao;
+    public ScrollSelecao scrollSelecao { get; private set; }
     private PowerUpsParaLevel pupsToLevel;
     private IntervaloDeTempo intervaloTempo;
 
@@ -151,10 +150,5 @@ public class ScrollPupsManager : Draggavel,
                 scrollSelecao.selecionouPup(evento.indiceBtn, pupsToLevel.getPupEntidade(evento.indiceBtn));
             }
         }
-    }
-
-    ProdutorDeEvento<PowerUpBtnInfo> AcaoItemEscolhido<PowerUpBtnInfo>.ProdutorEvento.getProdutorDeEvento()
-    {
-        return ((AcaoItemEscolhido<PowerUpBtnInfo>.ProdutorEvento)scrollSelecao).getProdutorDeEvento();
-    }
+    }    
 }

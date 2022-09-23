@@ -16,40 +16,25 @@ public class Level2 : AbstractLevel
     public override TipoGame getTipoGame()
     {
         return TipoGame.NORMAL;
-    }
-
-    public override string getNameMap()
-    {
-        return Mapas.PARQUE_DIVERSOES;
-    }
+    }   
 
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,] {
-            { 10, 10, 10, 11, 11, 11, 12 },
-            { 14, 14, 14, 13, 13, 13, 0 },
-            { 1, 1, 1, 1, 1, 1, 1 },
-            { 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0 } };
+            {  0,  0,  0,  1,  1,  1,  2 },
+            {  4,  4,  4,  3,  3,  3, -1 },
+            {  1,  1,  1,  1,  1,  1,  1 },
+            { -1, -1, -1, -1, -1, -1, -1 },
+            { -1, -1, -1, -1, -1, -1, -1 },
+            { -1, -1, -1, -1, -1, -1, -1 },
+            { -1, -1, -1, -1, -1, -1, -1 },
+            { -1, -1, -1, -1, -1, -1, -1 } };
     }
 
     public override bool devolverParaBoard()
     {
         return false;
-    }
-
-    public override string getNomeMapa()
-    {
-        return LevelMapNomes.PARQUE_DIVERSOES;
-    }
-
-    public override ColetavelEntidade.FAMILIA getFamiliaColetavel()
-    {
-        return ColetavelEntidade.FAMILIA.FRUTAS;
-    }
+    }    
 
     public override TipoContagemTempoDto getTempoContagem()
     {
@@ -61,7 +46,7 @@ public class Level2 : AbstractLevel
         return "Chiclete e Embalagem";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {   
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-frente", "#000000");
@@ -132,19 +117,6 @@ public class Level2 : AbstractLevel
         //return new PowerUpsParaLevel(2)
         //    .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.BOMBA_DA_GARRA })
         //    .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.ASAS});
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLevel2();
-    }
-
-    public class FornecedorLevel2: Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new Level2();
-        }
-    }
+    }    
 }
 

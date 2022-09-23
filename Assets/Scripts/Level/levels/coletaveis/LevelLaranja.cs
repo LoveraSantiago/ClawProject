@@ -2,25 +2,25 @@ using System.Collections.Generic;
 
 public class LevelLaranja : AbstractLevelColetavel
 {
+    public override string getLevelTitle()
+    {
+        return "Level Laranja";
+    }
+
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
         {
-            {15, 15, 12, 12, 12, 15, 15},
-            {11, 11, 11, 11, 11, 11, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0}
+            {5, 5, 2, 2, 2, 5, 5},
+            {1, 1, 1, 1, 1, 1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
-
-    public override int getIdColetavel()
-    {
-        return 12;
-    }
+    }    
 
     public override bool isLevelAlbedo0()
     {
@@ -32,7 +32,7 @@ public class LevelLaranja : AbstractLevelColetavel
         return "Outono Natural";
     }
 
-    public override Dictionary<string, string> getDicionarioDeCores()
+    protected override Dictionary<string, string> getCoresMaquina()
     {
         //13. Autumn in Vermont
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -79,18 +79,5 @@ public class LevelLaranja : AbstractLevelColetavel
         dicionario.Add("circulo-externo", "#9B4F0F");
         dicionario.Add("circulo-interno", "#C99E10");
         return dicionario;
-    }
-
-    public static Fornecedor<AbstractLevel> getFornecedor()
-    {
-        return new FornecedorLaranja();
     }   
-
-    public class FornecedorLaranja : Fornecedor<AbstractLevel>
-    {
-        public AbstractLevel fornecer()
-        {
-            return new LevelLaranja();
-        }
-    }
 }
