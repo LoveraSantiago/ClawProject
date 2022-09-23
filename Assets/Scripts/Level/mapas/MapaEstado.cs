@@ -8,26 +8,40 @@ public class MapaEstado
 
     public MapaEstado()
     {
+        estadoAtual = MapaEstadoEnum.NONE;
+    }
+
+    public void liberar()
+    {
         estadoAtual = MapaEstadoEnum.LIVRE;
     }
 
     public void emProgresso()
     {
-        estadoAtual = MapaEstadoEnum.PROGRESSO;
+        if(estadoAtual == MapaEstadoEnum.NONE || estadoAtual == MapaEstadoEnum.LIVRE)
+        {
+            estadoAtual = MapaEstadoEnum.PROGRESSO;
+        }
     }
 
     public void bloquear()
     {
-        estadoAtual = MapaEstadoEnum.BLOCKED;
+        if(estadoAtual == MapaEstadoEnum.NONE)
+        {
+            estadoAtual = MapaEstadoEnum.BLOCKED;
+        }
     }
 
     public void lockar()
     {
-        estadoAtual = MapaEstadoEnum.LOCKED;
+        if(estadoAtual == MapaEstadoEnum.NONE)
+        {
+            estadoAtual = MapaEstadoEnum.LOCKED;
+        }
     }
 
     private enum MapaEstadoEnum
     {
-        LIVRE, PROGRESSO, LOCKED, BLOCKED
+        LIVRE, PROGRESSO, LOCKED, BLOCKED, NONE
     }
 }

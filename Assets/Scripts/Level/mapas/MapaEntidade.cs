@@ -48,6 +48,11 @@ public class MapaEntidade
     //**** PARTE CONFIGURACOES BUILDER FIM****//
 
     //**** PARTE ESTADO INICIO ****//
+    public void liberar()
+    {
+        mapaEstado.liberar();
+    }
+
     public void emProgresso()
     {
         mapaEstado.emProgresso();
