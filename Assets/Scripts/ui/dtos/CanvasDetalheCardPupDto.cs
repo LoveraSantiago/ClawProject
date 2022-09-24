@@ -6,6 +6,8 @@ using TMPro;
 [System.Serializable]
 public class CanvasDetalheCardPupDto
 {
+    [SerializeField] private ScrollRect scrollRect;
+    [Space(3)]    
     [SerializeField] private Image imgBackground;
     [SerializeField] private Image imgCirculo;
     [SerializeField] private Image imgExplicacao;
@@ -23,6 +25,8 @@ public class CanvasDetalheCardPupDto
     [SerializeField] private Button btnPratica;
     [SerializeField] private Button btnCacaNiquelPupIndividual;
     [SerializeField] private Button btnCacaNiquelPupGeral;    
+
+    public ScrollRect ScrollRect { get { return scrollRect; } }
 
     public Image ImgBackground { get { return imgBackground; } }
     public Image ImgCirculo { get { return imgCirculo; } }

@@ -4250,6 +4250,7 @@ MonoBehaviour:
       lblPreco: {fileID: 193887634}
       lblQtd: {fileID: 1932365738}
     canvasDetalheDto:
+      scrollRect: {fileID: 748251340}
       imgBackground: {fileID: 1011788920}
       imgCirculo: {fileID: 468711134}
       imgExplicacao: {fileID: 148039480}

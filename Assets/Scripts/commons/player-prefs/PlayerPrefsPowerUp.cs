@@ -3,10 +3,12 @@ using UnityEngine;
 public class PlayerPrefsPowerUp 
 {
     private static readonly string PUP = "PUP";    
+    private static readonly string PUP_SCROLL = "PUPSCROLL";    
 
-    public static void salvarIndicePup(int indicePup)
+    public static void salvarIndicePup(int indicePup, float posScroll)
     {
         PlayerPrefs.SetString(PUP, indicePup.ToString());
+        PlayerPrefs.SetFloat(PUP_SCROLL, posScroll);
     }
 
     public static int recuperarIndicePup()
