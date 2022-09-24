@@ -4233,116 +4233,117 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2802f8ad40c918c42be86b09c5f776eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerFichaDto:
-    btnMais: {fileID: 2080252812}
-    lblQdtFichas: {fileID: 2080252811}
-    relogioDto:
-      lblHoras: {fileID: 2080252810}
-      transfSegundos: {fileID: 2080252809}
-      transfMinutos: {fileID: 2080252808}
-      transfHoras: {fileID: 2080252807}
-  btnBack: {fileID: 98718867}
-  cardDetalheDto:
-    velocidade: 16
-    cardDetalhe: {fileID: 477344582}
-    materialDetalhe: {fileID: 2100000, guid: 5c307d6e140da704d86f900ede344223, type: 2}
-    lblPreco: {fileID: 193887634}
-    lblQtd: {fileID: 1932365738}
-  canvasDetalheDto:
-    imgBackground: {fileID: 1011788920}
-    imgCirculo: {fileID: 468711134}
-    imgExplicacao: {fileID: 148039480}
-    imgPup: {fileID: 1249506848}
-    imgBtn: {fileID: 462469563}
-    imgsCorBtns:
-    - {fileID: 1193500555}
-    - {fileID: 1309820836}
-    - {fileID: 174873529}
-    lblPreco: {fileID: 2119918193}
-    lblExplicacao: {fileID: 2065954064}
-    lblQtd: {fileID: 1400807178}
-    lblNome: {fileID: 919096078}
-    lblTipo: {fileID: 1741452966}
-    btnPratica: {fileID: 1425523258}
-    btnCacaNiquelPupIndividual: {fileID: 1309820838}
-    btnCacaNiquelPupGeral: {fileID: 2054206807}
-  cardsPupsDto:
-  - btn: {fileID: 1097314354}
-    imgContornoCard: {fileID: 1097314356}
-    imgCard: {fileID: 2090098951}
-    lblPreco: {fileID: 549342961}
-    lblQtd: {fileID: 149412151}
-  - btn: {fileID: 1489691082}
-    imgContornoCard: {fileID: 1489691084}
-    imgCard: {fileID: 7148608781663563525}
-    lblPreco: {fileID: 725425631}
-    lblQtd: {fileID: 305789540}
-  - btn: {fileID: 791131045}
-    imgContornoCard: {fileID: 791131047}
-    imgCard: {fileID: 1101223274}
-    lblPreco: {fileID: 912850945}
-    lblQtd: {fileID: 1058306433}
-  - btn: {fileID: 336143854}
-    imgContornoCard: {fileID: 725106264}
-    imgCard: {fileID: 1555547113}
-    lblPreco: {fileID: 2053822838}
-    lblQtd: {fileID: 19799379}
-  - btn: {fileID: 1409321679}
-    imgContornoCard: {fileID: 1868868948}
-    imgCard: {fileID: 1919869781}
-    lblPreco: {fileID: 859669914}
-    lblQtd: {fileID: 1428718968}
-  - btn: {fileID: 2074579757}
-    imgContornoCard: {fileID: 2074579759}
-    imgCard: {fileID: 1087858055}
-    lblPreco: {fileID: 360090916}
-    lblQtd: {fileID: 1819168727}
-  - btn: {fileID: 1835433918}
-    imgContornoCard: {fileID: 1835433920}
-    imgCard: {fileID: 2060194178}
-    lblPreco: {fileID: 2142096546}
-    lblQtd: {fileID: 352114396}
-  - btn: {fileID: 2049457507}
-    imgContornoCard: {fileID: 2049457509}
-    imgCard: {fileID: 1589512505}
-    lblPreco: {fileID: 93131571}
-    lblQtd: {fileID: 44795830}
-  - btn: {fileID: 1712552280}
-    imgContornoCard: {fileID: 1712552282}
-    imgCard: {fileID: 493223390}
-    lblPreco: {fileID: 1656637417}
-    lblQtd: {fileID: 1256285334}
-  - btn: {fileID: 1177681979}
-    imgContornoCard: {fileID: 2102487540}
-    imgCard: {fileID: 360053381}
-    lblPreco: {fileID: 1079170914}
-    lblQtd: {fileID: 44962483}
-  - btn: {fileID: 1961826578}
-    imgContornoCard: {fileID: 1961826580}
-    imgCard: {fileID: 2092633532}
-    lblPreco: {fileID: 711029696}
-    lblQtd: {fileID: 1359661144}
-  - btn: {fileID: 1453340348}
-    imgContornoCard: {fileID: 1453340350}
-    imgCard: {fileID: 1843781543}
-    lblPreco: {fileID: 556502265}
-    lblQtd: {fileID: 1112797150}
-  - btn: {fileID: 1022272071}
-    imgContornoCard: {fileID: 1119533652}
-    imgCard: {fileID: 846679531}
-    lblPreco: {fileID: 753132951}
-    lblQtd: {fileID: 1976098459}
-  fichaAnimadaDto:
-    animatorFicha: {fileID: 1723204384}
-    posFichas:
-    - {fileID: 8509958741005101044}
-    - {fileID: 1290136930}
-    - {fileID: 2001463828}
-  animator: {fileID: 1668072994}
-  prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
-  modalNoFichaDto:
-    modalNoFicha: {fileID: 913691524}
-    btnOk: {fileID: 913691523}
+  mainPupDto:
+    timerFichaDto:
+      btnMais: {fileID: 2080252812}
+      lblQdtFichas: {fileID: 2080252811}
+      relogioDto:
+        lblHoras: {fileID: 2080252810}
+        transfSegundos: {fileID: 2080252809}
+        transfMinutos: {fileID: 2080252808}
+        transfHoras: {fileID: 2080252807}
+    btnBack: {fileID: 98718867}
+    cardDetalheDto:
+      velocidade: 16
+      cardDetalhe: {fileID: 477344582}
+      materialDetalhe: {fileID: 2100000, guid: 5c307d6e140da704d86f900ede344223, type: 2}
+      lblPreco: {fileID: 193887634}
+      lblQtd: {fileID: 1932365738}
+    canvasDetalheDto:
+      imgBackground: {fileID: 1011788920}
+      imgCirculo: {fileID: 468711134}
+      imgExplicacao: {fileID: 148039480}
+      imgPup: {fileID: 1249506848}
+      imgBtn: {fileID: 462469563}
+      imgsCorBtns:
+      - {fileID: 1193500555}
+      - {fileID: 1309820836}
+      - {fileID: 174873529}
+      lblPreco: {fileID: 2119918193}
+      lblExplicacao: {fileID: 2065954064}
+      lblQtd: {fileID: 1400807178}
+      lblNome: {fileID: 919096078}
+      lblTipo: {fileID: 1741452966}
+      btnPratica: {fileID: 1425523258}
+      btnCacaNiquelPupIndividual: {fileID: 1309820838}
+      btnCacaNiquelPupGeral: {fileID: 2054206807}
+    cardsPupsDto:
+    - btn: {fileID: 1097314354}
+      imgContornoCard: {fileID: 1097314356}
+      imgCard: {fileID: 2090098951}
+      lblPreco: {fileID: 549342961}
+      lblQtd: {fileID: 149412151}
+    - btn: {fileID: 1489691082}
+      imgContornoCard: {fileID: 1489691084}
+      imgCard: {fileID: 7148608781663563525}
+      lblPreco: {fileID: 725425631}
+      lblQtd: {fileID: 305789540}
+    - btn: {fileID: 791131045}
+      imgContornoCard: {fileID: 791131047}
+      imgCard: {fileID: 1101223274}
+      lblPreco: {fileID: 912850945}
+      lblQtd: {fileID: 1058306433}
+    - btn: {fileID: 336143854}
+      imgContornoCard: {fileID: 725106264}
+      imgCard: {fileID: 1555547113}
+      lblPreco: {fileID: 2053822838}
+      lblQtd: {fileID: 19799379}
+    - btn: {fileID: 1409321679}
+      imgContornoCard: {fileID: 1868868948}
+      imgCard: {fileID: 1919869781}
+      lblPreco: {fileID: 859669914}
+      lblQtd: {fileID: 1428718968}
+    - btn: {fileID: 2074579757}
+      imgContornoCard: {fileID: 2074579759}
+      imgCard: {fileID: 1087858055}
+      lblPreco: {fileID: 360090916}
+      lblQtd: {fileID: 1819168727}
+    - btn: {fileID: 1835433918}
+      imgContornoCard: {fileID: 1835433920}
+      imgCard: {fileID: 2060194178}
+      lblPreco: {fileID: 2142096546}
+      lblQtd: {fileID: 352114396}
+    - btn: {fileID: 2049457507}
+      imgContornoCard: {fileID: 2049457509}
+      imgCard: {fileID: 1589512505}
+      lblPreco: {fileID: 93131571}
+      lblQtd: {fileID: 44795830}
+    - btn: {fileID: 1712552280}
+      imgContornoCard: {fileID: 1712552282}
+      imgCard: {fileID: 493223390}
+      lblPreco: {fileID: 1656637417}
+      lblQtd: {fileID: 1256285334}
+    - btn: {fileID: 1177681979}
+      imgContornoCard: {fileID: 2102487540}
+      imgCard: {fileID: 360053381}
+      lblPreco: {fileID: 1079170914}
+      lblQtd: {fileID: 44962483}
+    - btn: {fileID: 1961826578}
+      imgContornoCard: {fileID: 2092633533}
+      imgCard: {fileID: 2092633532}
+      lblPreco: {fileID: 711029696}
+      lblQtd: {fileID: 1359661144}
+    - btn: {fileID: 1453340348}
+      imgContornoCard: {fileID: 1453340350}
+      imgCard: {fileID: 1843781543}
+      lblPreco: {fileID: 556502265}
+      lblQtd: {fileID: 1112797150}
+    - btn: {fileID: 1022272071}
+      imgContornoCard: {fileID: 1119533652}
+      imgCard: {fileID: 846679531}
+      lblPreco: {fileID: 753132951}
+      lblQtd: {fileID: 1976098459}
+    fichaAnimadaDto:
+      animatorFicha: {fileID: 1723204384}
+      posFichas:
+      - {fileID: 8509958741005101044}
+      - {fileID: 1290136930}
+      - {fileID: 2001463828}
+    animator: {fileID: 1668072994}
+    prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
+    modalNoFichaDto:
+      modalNoFicha: {fileID: 913691524}
+      btnOk: {fileID: 913691523}
 --- !u!95 &1668072994
 Animator:
   serializedVersion: 4
@@ -5026,17 +5027,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1961826580 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4381012859268473733, guid: a6237346f646e9647aeca1a21532ffe5, type: 3}
-  m_PrefabInstance: {fileID: 2092633531}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1976098459 stripped
@@ -5879,6 +5869,17 @@ PrefabInstance:
 --- !u!114 &2092633532 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3322495774380593848, guid: a6237346f646e9647aeca1a21532ffe5, type: 3}
+  m_PrefabInstance: {fileID: 2092633531}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2092633533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3791353074506692126, guid: a6237346f646e9647aeca1a21532ffe5, type: 3}
   m_PrefabInstance: {fileID: 2092633531}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

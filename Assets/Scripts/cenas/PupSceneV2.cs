@@ -4,23 +4,7 @@ using UnityEngine.UI;
 #pragma warning disable 0649
 public class PupSceneV2 : MonoBehaviour
 {
-    [SerializeField] private TimerFichaDto timerFichaDto;
-    [Space(5)]
-    [SerializeField] private Button btnBack;
-    [Space(5)]
-    [SerializeField] private CardPupDetalheDto cardDetalheDto;
-    [Space(5)]
-    [SerializeField] private CanvasDetalheCardPupDto canvasDetalheDto;
-    [Space(5)]
-    [SerializeField] private CardsPupsDto[] cardsPupsDto;
-    [Space(5)]
-    [SerializeField] private FichaAnimadaDto fichaAnimadaDto;
-    [Space(5)]
-    [SerializeField] private Animator animator;
-    [Space(5)]
-    [SerializeField] private GameObject prefabPowerUpDto;    
-    [Space(5)]
-    [SerializeField] private ModalNoFichaDto modalNoFichaDto;
+    [SerializeField] private MainPupDto mainPupDto;                
 
     private TimerFicha       timerFichaBronze;
     private CardDetalhePup   cardDetalhe;
@@ -34,15 +18,15 @@ public class PupSceneV2 : MonoBehaviour
     {
         ContextoEstaticoUtils.configMainMono(this);
         FactoryPowerUpEntidade.resetContextoEstatico();
-        PowerUpEntidade.configurarDicionarioDeSpritesPup(prefabPowerUpDto);
+        PowerUpEntidade.configurarDicionarioDeSpritesPup(mainPupDto.PrefabPowerUpDto);
 
-        timerFichaBronze = new TimerFicha(timerFichaDto, Ficha.BRONZE);
-        cardDetalhe      = new CardDetalhePup(cardDetalheDto);
-        animacao         = new AnimacaoCardsPup(animator);
-        cardsPups        = new CardsPups(cardsPupsDto);
-        canvasDetalhe    = new CanvasDetalhePup(canvasDetalheDto, modalNoFichaDto);
-        fichaAnimada     = new FichaAnimada(fichaAnimadaDto);
-        btnBack.onClick.AddListener(()=>voltar());
+        timerFichaBronze = new TimerFicha(mainPupDto.TimerFichaDto, Ficha.BRONZE);
+        cardDetalhe      = new CardDetalhePup(mainPupDto.CardDetalheDto);
+        animacao         = new AnimacaoCardsPup(mainPupDto.Animator);
+        cardsPups        = new CardsPups(mainPupDto.CardsPupsDto);
+        canvasDetalhe    = new CanvasDetalhePup(mainPupDto.CanvasDetalheDto, mainPupDto.ModalNoFichaDto);
+        fichaAnimada     = new FichaAnimada(mainPupDto.FichaAnimadaDto);
+        mainPupDto.BtnBack.onClick.AddListener(()=>voltar());
 
         new AcaoCardPupDetalheMovimentado()
             .configurarProdutor(cardDetalhe)
