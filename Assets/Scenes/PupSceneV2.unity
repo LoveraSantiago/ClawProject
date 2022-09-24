@@ -4342,6 +4342,7 @@ MonoBehaviour:
       - {fileID: 2001463828}
     animator: {fileID: 1668072994}
     prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
+    prefabLevesDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     modalNoFichaDto:
       modalNoFicha: {fileID: 913691524}
       btnOk: {fileID: 913691523}

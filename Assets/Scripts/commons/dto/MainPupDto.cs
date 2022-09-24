@@ -20,6 +20,7 @@ public class MainPupDto
     [SerializeField] private Animator animator;
     [Space(5)]
     [SerializeField] private GameObject prefabPowerUpDto;
+    [SerializeField] private GameObject prefabLevesDto;
     [Space(5)]
     [SerializeField] private ModalNoFichaDto modalNoFichaDto;
 
@@ -31,5 +32,6 @@ public class MainPupDto
     public FichaAnimadaDto FichaAnimadaDto { get { return fichaAnimadaDto; } }
     public Animator Animator { get { return animator; } }
     public GameObject PrefabPowerUpDto { get { return prefabPowerUpDto; } }
+    public GameObject PrefabLevesDto { get { return prefabLevesDto; } }
     public ModalNoFichaDto ModalNoFichaDto { get { return modalNoFichaDto; } }
 }
