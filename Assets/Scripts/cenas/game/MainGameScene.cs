@@ -6,7 +6,7 @@ public class MainGameScene : MonoBehaviour,
                              Consumidor<UpdaterManagers>,
                              IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private int indiceMapa;
+    [SerializeField] private MapaEnum mapa;
     [SerializeField] private int indiceLevel;
     [Space(5)]
     [SerializeField] private MainGameDto mainDto;
@@ -28,7 +28,7 @@ public class MainGameScene : MonoBehaviour,
         PrefabLevelsDto prefabLevels = mainDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         FactoryMapaEntidade.configurar(prefabLevels);
 
-        AbstractLevel levelEscolhido = ContextoEstaticoUtils.loadLevelEstaticoAtualOrCreateLevel(indiceMapa, indiceLevel);
+        AbstractLevel levelEscolhido = ContextoEstaticoUtils.loadLevelEstaticoAtualOrCreateLevel(mapa, indiceLevel);
         MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido, this);        
     }        
     

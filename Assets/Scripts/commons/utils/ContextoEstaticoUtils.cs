@@ -38,12 +38,11 @@ public class ContextoEstaticoUtils
         ContextoEstaticoUtils.level = level;
     }
 
-    public static AbstractLevel loadLevelEstaticoAtualOrCreateLevel(int indiceMapa, int indiceLevel)
+    public static AbstractLevel loadLevelEstaticoAtualOrCreateLevel(MapaEnum mapaEnum, int indiceLevel)
     {
-        if(level == null)
+        if(level == null && MapaEnum.DEFAULTS != mapaEnum)
         {
-            mapaEntidade = HelperMapaEntidade.getMapaEntidadeByIndice(indiceMapa, false);
-            logInfoMapaEntidade(indiceMapa);
+            mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum, false);            
 
             level = mapaEntidade.getLevelByIndiceDezena(indiceLevel);
             logInfoLevel(indiceLevel);
@@ -59,19 +58,7 @@ public class ContextoEstaticoUtils
     public static void continuarGame()
     {
         Time.timeScale = 1;
-    }
-
-    private static void logInfoMapaEntidade(int indiceMapa)
-    {
-        if (mapaEntidade == null)
-        {
-            Debug.LogError("ESCOLHIDO INDICE DE MAPA INEXISTENTE " + indiceMapa);
-        }
-        else
-        {
-            Debug.LogWarning("CARREGADO MAPA " + mapaEntidade.ToString() + " A PARTIR DE PARAMETRIZACAO DE MAINGAMESCENE");
-        }
-    }
+    }   
 
     private static void logInfoLevel(int indiceLevel)
     {
