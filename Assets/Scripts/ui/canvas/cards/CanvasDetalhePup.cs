@@ -60,9 +60,8 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
     {
         if (PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
         {
-            PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);
-            float posScroll = canvasDetalheDto.ScrollRect.verticalNormalizedPosition;
-            PlayerPrefsPowerUp.salvarIndicePup(indicePupSelecionado, posScroll);
+            PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);            
+            PlayerPrefsPowerUp.salvarIndicePup(indicePupSelecionado);
             produtorEventoBtnEscohido.produziuEvento(indiceBtn);            
             CenaUtils.irParaCenaMainGame(0.9f);            
         }

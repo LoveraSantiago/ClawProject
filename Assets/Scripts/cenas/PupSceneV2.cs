@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 #pragma warning disable 0649
-public class PupSceneV2 : MonoBehaviour
+public class PupSceneV2 : MonoBehaviour,
+                          AcaoCardPowerUpSelecionado.ConsumidorEvento
 {
     [SerializeField] private MainPupDto mainPupDto;                
 
@@ -39,7 +40,8 @@ public class PupSceneV2 : MonoBehaviour
         new AcaoCardPowerUpSelecionado()
             .configurarProdutor(cardsPups)
             .adicionarConsumidor(cardDetalhe)
-            .adicionarConsumidor(canvasDetalhe);
+            .adicionarConsumidor(canvasDetalhe)
+            .adicionarConsumidor(this);
 
         new AcaoBotaoPowerUpEscolhido()
             .configurarProdutor(canvasDetalhe)
@@ -81,6 +83,15 @@ public class PupSceneV2 : MonoBehaviour
         if(indicePrevio > -1)
         {
             cardsPups.forceClique(indicePrevio);
+            mainPupDto.ScrollRect.verticalNormalizedPosition = PlayerPrefsPowerUp.getPosScroll();
+        }
+    }
+
+    void AcaoCardPowerUpSelecionado.ConsumidorEvento.consumirEvento(CardPupSelecionadoDto evento)
+    {
+        if (!evento.restauracaoTela)
+        {
+            PlayerPrefsPowerUp.salvarPosScroll(mainPupDto.ScrollRect.verticalNormalizedPosition);
         }
     }
 }

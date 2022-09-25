@@ -17,6 +17,7 @@ public class MainPupDto
     [Space(5)]
     [SerializeField] private FichaAnimadaDto fichaAnimadaDto;
     [Space(5)]
+    [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private Animator animator;
     [Space(5)]
     [SerializeField] private GameObject prefabPowerUpDto;
@@ -30,6 +31,7 @@ public class MainPupDto
     public CanvasDetalheCardPupDto CanvasDetalheDto { get { return canvasDetalheDto; } }
     public CardsPupsDto[] CardsPupsDto { get { return cardsPupsDto; } }
     public FichaAnimadaDto FichaAnimadaDto { get { return fichaAnimadaDto; } }
+    public ScrollRect ScrollRect { get { return scrollRect; } }
     public Animator Animator { get { return animator; } }
     public GameObject PrefabPowerUpDto { get { return prefabPowerUpDto; } }
     public GameObject PrefabLevesDto { get { return prefabLevesDto; } }
