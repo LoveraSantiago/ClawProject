@@ -72,9 +72,9 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
         }
     }
 
-    void AcaoCardPupDetalheMovimentado.ConsumidorEvento.consumirEvento(bool evento)
+    void AcaoCardPupDetalheMovimentado.ConsumidorEvento.consumirEvento(CardPupDetalheMovimentadoDto evento)
     {
-        if (!evento)
+        if (evento.isFlipUp)
         {
             CardsPupsDto cardPupDto = cardsPupsDto[cardSelecionado.indice];
             GameObject goParent = cardPupDto.ImgCard.transform.parent.parent.parent.gameObject;

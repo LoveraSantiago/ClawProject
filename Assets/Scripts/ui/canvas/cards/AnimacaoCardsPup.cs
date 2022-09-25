@@ -32,11 +32,15 @@ public class AnimacaoCardsPup : AcaoCardPupDetalheMovimentado.ConsumidorEvento,
         animator.Play(FLIP_UP);
     }    
 
-    void AcaoCardPupDetalheMovimentado.ConsumidorEvento.consumirEvento(bool evento)
+    void AcaoCardPupDetalheMovimentado.ConsumidorEvento.consumirEvento(CardPupDetalheMovimentadoDto evento)
     {
-        if (evento)
+        if (evento.isFlipDown)
         {
             playFlipDown();
+        }
+        else if (evento.isRestauracao)
+        {
+
         }
     }
 

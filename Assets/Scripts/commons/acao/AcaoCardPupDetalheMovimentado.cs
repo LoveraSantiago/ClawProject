@@ -1,3 +1,3 @@
-public class AcaoCardPupDetalheMovimentado : ProdutorConsumidoresDeEvento<bool>
+public class AcaoCardPupDetalheMovimentado : ProdutorConsumidoresDeEvento<CardPupDetalheMovimentadoDto>
 {    
 }
