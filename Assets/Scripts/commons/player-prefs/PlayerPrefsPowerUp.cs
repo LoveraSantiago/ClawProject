@@ -3,10 +3,16 @@ using UnityEngine;
 public class PlayerPrefsPowerUp 
 {
     private static readonly string PUP = "PUP";    
+    private static readonly string PUP_SCROLL = "PUPSCROLL";    
 
     public static void salvarIndicePup(int indicePup)
     {
         PlayerPrefs.SetString(PUP, indicePup.ToString());
+    }
+
+    public static void salvarPosScroll(float posScroll)
+    {
+        PlayerPrefs.SetFloat(PUP_SCROLL, posScroll);
     }
 
     public static int recuperarIndicePup()
@@ -24,6 +30,11 @@ public class PlayerPrefsPowerUp
         int indice = recuperarIndicePup();
         PlayerPrefs.DeleteKey(PUP);
         return indice;
+    }
+
+    public static float getPosScroll()
+    {
+        return PlayerPrefs.GetFloat(PUP_SCROLL);
     }
 
     public static int recuperarQtdPup(string nomePup)

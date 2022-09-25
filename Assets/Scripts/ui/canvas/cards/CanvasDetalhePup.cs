@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
                                 AcaoCardPowerUpSelecionado.ConsumidorEvento
@@ -61,7 +60,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
     {
         if (PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
         {
-            PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);
+            PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);            
             PlayerPrefsPowerUp.salvarIndicePup(indicePupSelecionado);
             produtorEventoBtnEscohido.produziuEvento(indiceBtn);            
             CenaUtils.irParaCenaMainGame(0.9f);            

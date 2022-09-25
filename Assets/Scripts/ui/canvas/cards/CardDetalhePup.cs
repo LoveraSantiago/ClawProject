@@ -8,14 +8,14 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
     private Vector3 posInicial;
     private CardPupDetalheDto cardDetalheDto;
 
-    private ProdutorDeEvento<bool> produtorDeEvento;
+    private ProdutorDeEvento<CardPupDetalheMovimentadoDto> produtorDeEvento;
 
     public CardDetalhePup(CardPupDetalheDto cardDetalheDto)
     {
         this.cardDetalheDto = cardDetalheDto;
         posOriginal = cardDetalheDto.CardDetalhe.transform.position;
         posInicial = Vector3.zero;
-        produtorDeEvento = new ProdutorDeEvento<bool>();
+        produtorDeEvento = new ProdutorDeEvento<CardPupDetalheMovimentadoDto>();
     }
 
     public void update()
@@ -27,27 +27,22 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
             float distancia = Vector3.Distance(cardDetalheDto.CardDetalhe.transform.position, posFinal);
             if (distancia < 0.1f)
             {
-                cardDetalheDto.CardDetalhe.transform.position = posFinal;
-                posInicial = Vector3.zero;
-                if (posOriginal == posFinal)
-                {                
-                    produtorDeEvento.produziuEvento(true);
-                }
-                else
-                {
-                    cardDetalheDto.CardDetalhe.SetActive(false);
-                    produtorDeEvento.produziuEvento(false);
-                }
+                movimentoFinal(false);
             }
         }
     }
 
-    public void movimentar(Vector3 posicaoInicial)
+    public void movimentar(Vector3 posicaoInicial, bool restauracao)
     {
         posInicial = posicaoInicial;
         posFinal   = posOriginal;
         cardDetalheDto.CardDetalhe.transform.position = posInicial;
         cardDetalheDto.CardDetalhe.SetActive(true);
+
+        if (restauracao)
+        {
+            movimentoFinal(true);
+        }
     }
 
     public void voltar(Vector3 posicaoVoltar)
@@ -63,14 +58,39 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
         return posInicial != Vector3.zero;
     }
 
-    ProdutorDeEvento<bool> AcaoCardPupDetalheMovimentado.ProdutorEvento.getProdutorDeEvento()
+    private void movimentoFinal(bool restauracao)
+    {
+        cardDetalheDto.CardDetalhe.transform.position = posFinal;
+        posInicial = Vector3.zero;
+        CardPupDetalheMovimentadoDto cardDetalheMovimentado = new CardPupDetalheMovimentadoDto();
+
+        if (posOriginal == posFinal)
+        {
+            if (restauracao)
+            {
+                cardDetalheMovimentado.restaurar();
+            }
+            else
+            {
+                cardDetalheMovimentado.flipDown();
+            }
+        }
+        else
+        {
+            cardDetalheMovimentado.flipUp();
+            cardDetalheDto.CardDetalhe.SetActive(false);            
+        }
+        produtorDeEvento.produziuEvento(cardDetalheMovimentado);
+    }
+
+    ProdutorDeEvento<CardPupDetalheMovimentadoDto> AcaoCardPupDetalheMovimentado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }
 
     void AcaoCardPowerUpSelecionado.ConsumidorEvento.consumirEvento(CardPupSelecionadoDto evento)
     {
-        movimentar(evento.posicaoCard);
+        movimentar(evento.posicaoCard, evento.restauracaoTela);
 
         PowerUpEntidade pupEntidade = evento.powerUpEntidade;
         cardDetalheDto.LblPreco.text = pupEntidade.preco;

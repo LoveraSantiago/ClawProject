@@ -26,7 +26,7 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
     public void forceClique(int indice)
     {
         CardsPupsDto cardPupIt = cardsPupsDto[indice];
-        clicado(cardPupIt.Btn.gameObject);
+        clicado(cardPupIt.Btn.gameObject, true);
     }
 
     private void popularCards()
@@ -48,10 +48,10 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
     private void clicado()
     {
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
-        clicado(goSelecionado);
+        clicado(goSelecionado, false);
     }    
 
-    private void clicado(GameObject goSelecionado)
+    private void clicado(GameObject goSelecionado, bool restauracaoTela)
     {
         if (isClicado == false && goSelecionado != null)
         {
@@ -60,7 +60,11 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
 
             int indice = int.Parse(nomeParent);
             PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indice);
-            cardSelecionado = new CardPupSelecionadoDto(indice, goSelecionado.transform.position, pupEntidade);
+            cardSelecionado = new CardPupSelecionadoDto()
+                .addIndice(indice)
+                .addPosicaoCardSelecionado(goSelecionado.transform.position)
+                .addPupSelecionado(pupEntidade)
+                .addRestauracaoTela(restauracaoTela);
 
             produtorDeEvento.produziuEvento(cardSelecionado);
             goParent.SetActive(false);
@@ -68,9 +72,9 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
         }
     }
 
-    void AcaoCardPupDetalheMovimentado.ConsumidorEvento.consumirEvento(bool evento)
+    void AcaoCardPupDetalheMovimentado.ConsumidorEvento.consumirEvento(CardPupDetalheMovimentadoDto evento)
     {
-        if (!evento)
+        if (evento.isFlipUp)
         {
             CardsPupsDto cardPupDto = cardsPupsDto[cardSelecionado.indice];
             GameObject goParent = cardPupDto.ImgCard.transform.parent.parent.parent.gameObject;

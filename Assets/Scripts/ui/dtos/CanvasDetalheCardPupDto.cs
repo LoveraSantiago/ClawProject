@@ -6,6 +6,8 @@ using TMPro;
 [System.Serializable]
 public class CanvasDetalheCardPupDto
 {
+    
+    [Space(3)]    
     [SerializeField] private Image imgBackground;
     [SerializeField] private Image imgCirculo;
     [SerializeField] private Image imgExplicacao;
