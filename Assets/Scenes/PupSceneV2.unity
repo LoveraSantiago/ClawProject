@@ -4250,7 +4250,6 @@ MonoBehaviour:
       lblPreco: {fileID: 193887634}
       lblQtd: {fileID: 1932365738}
     canvasDetalheDto:
-      scrollRect: {fileID: 748251340}
       imgBackground: {fileID: 1011788920}
       imgCirculo: {fileID: 468711134}
       imgExplicacao: {fileID: 148039480}
@@ -4340,6 +4339,7 @@ MonoBehaviour:
       - {fileID: 8509958741005101044}
       - {fileID: 1290136930}
       - {fileID: 2001463828}
+    scrollRect: {fileID: 748251340}
     animator: {fileID: 1668072994}
     prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
     prefabLevesDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
@@ -6159,6 +6159,10 @@ PrefabInstance:
     - target: {fileID: 8509958741943219005, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
       propertyPath: m_Name
       value: btns-pup-detalhe1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8509958741943219005, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8509958742103440325, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
       propertyPath: m_IsActive

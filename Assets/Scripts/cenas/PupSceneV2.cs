@@ -82,8 +82,8 @@ public class PupSceneV2 : MonoBehaviour,
         int indicePrevio = PlayerPrefsPowerUp.recuperarEApagarIndicePup();        
         if(indicePrevio > -1)
         {
-            cardsPups.forceClique(indicePrevio);
             mainPupDto.ScrollRect.verticalNormalizedPosition = PlayerPrefsPowerUp.getPosScroll();
+            cardsPups.forceClique(indicePrevio);
         }
     }
 

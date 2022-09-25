@@ -66,19 +66,19 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
 
         if (posOriginal == posFinal)
         {
-            cardDetalheMovimentado.flipDown();
-        }
-        else
-        {
             if (restauracao)
             {
                 cardDetalheMovimentado.restaurar();
             }
             else
             {
-                cardDetalheMovimentado.flipUp();
-                cardDetalheDto.CardDetalhe.SetActive(false);            
+                cardDetalheMovimentado.flipDown();
             }
+        }
+        else
+        {
+            cardDetalheMovimentado.flipUp();
+            cardDetalheDto.CardDetalhe.SetActive(false);            
         }
         produtorDeEvento.produziuEvento(cardDetalheMovimentado);
     }

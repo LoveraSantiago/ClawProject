@@ -9,6 +9,7 @@ public class AnimacaoCardsPup : AcaoCardPupDetalheMovimentado.ConsumidorEvento,
     private static readonly int DISMISS_BTN_1 = Animator.StringToHash("dismiss-btn1");
     private static readonly int DISMISS_BTN_2 = Animator.StringToHash("dismiss-btn2");
     private static readonly int DISMISS_BTN_3 = Animator.StringToHash("dismiss-btn3");
+    private static readonly int SHOW_MODAL   = Animator.StringToHash("show-modal");
 
     private Animator animator;
 
@@ -32,6 +33,11 @@ public class AnimacaoCardsPup : AcaoCardPupDetalheMovimentado.ConsumidorEvento,
         animator.Play(FLIP_UP);
     }    
 
+    public void showModal()
+    {
+        animator.Play(SHOW_MODAL);
+    }
+
     void AcaoCardPupDetalheMovimentado.ConsumidorEvento.consumirEvento(CardPupDetalheMovimentadoDto evento)
     {
         if (evento.isFlipDown)
@@ -40,7 +46,7 @@ public class AnimacaoCardsPup : AcaoCardPupDetalheMovimentado.ConsumidorEvento,
         }
         else if (evento.isRestauracao)
         {
-
+            showModal();
         }
     }
 
