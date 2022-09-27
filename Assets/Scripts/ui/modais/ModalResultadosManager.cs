@@ -8,17 +8,20 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
 {    
     private bool mostrandoModal;
 
-    private ModalPontosDto modalPontosDto;    
+    private UIGameDto uiGameDto;
+    private CacaNiquelDto cacaNiquelDto;
+
     private ModalResultados modalResultado;
 
-    public ModalResultadosManager(ModalPontosDto modalPontosDto)
+    public ModalResultadosManager(UIGameDto uiGameDto, CacaNiquelDto cacaNiquelDto)
     {
-        this.modalPontosDto = modalPontosDto;        
+        this.uiGameDto = uiGameDto;
+        this.cacaNiquelDto = cacaNiquelDto;
     }
 
     public void configurarLevel(string levelName)
     {        
-        modalResultado = new ModalResultados(levelName, modalPontosDto);
+        modalResultado = new ModalResultados(levelName, uiGameDto.ModalPontosDto);
     }              
 
     private void mostrarModalPontuacao()
@@ -52,8 +55,8 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            modalResultado.configurarCacaNiquelIndividual(evento);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            ModalFimCacaNiquelIndividual modal = new ModalFimCacaNiquelIndividual(evento, uiGameDto.ModalCacaNiquelDto, cacaNiquelDto);
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }   
 
@@ -79,6 +82,14 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         mostrandoModal = true;                   
         yield return new WaitForSeconds(0.5f);
         modalResultado.ligar();
+    }
+
+    private IEnumerator coroutineMostrarModal(AbstractModalFim modal)
+    {
+        mostrandoModal = true;
+        modal.configurar(modalResultado);
+        yield return new WaitForSeconds(0.5f);
+        modal.ligar();
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
@@ -136,5 +147,4 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
             }
         }
     }
-
 }

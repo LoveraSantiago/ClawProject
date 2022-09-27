@@ -28,13 +28,13 @@ public class ModalResultados : ModalManipulacao
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
     }
 
-    public void configurarCacaNiquelIndividual(CacaNiquelEventoDto evento)
-    {
-        naoMostrarLinhasResult();
-        AbstractModalFim modalFim = new ModalFimCacaNiquelIndividual(evento, linhasModal);
-        modalFim.configurar(this);
-        modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
-    }
+    //public void configurarCacaNiquelIndividual(CacaNiquelEventoDto evento)
+    //{
+    //    naoMostrarLinhasResult();
+    //    AbstractModalFim modalFim = new ModalFimCacaNiquelIndividual(evento, linhasModal);
+    //    modalFim.configurar(this);
+    //    modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
+    //}
 
     public void configurarCacaNiquelGeral(CacaNiquelEventoDto evento)
     {

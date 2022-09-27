@@ -11416,7 +11416,24 @@ MonoBehaviour:
         btnSair: {fileID: 1200365936}
         btnCancelar: {fileID: 381730343}
         textoSair: {fileID: 1038405836}
-      prefabBottomBar: {fileID: 0}
+      modalCacaNiquelDto:
+        modal: {fileID: 2809398436136827086}
+        imgHeadPup: {fileID: 8541953030632069931}
+        lblNomePup: {fileID: 2809398436998504416}
+        slotsCacaNiquel:
+        - imgBackground: {fileID: 1327715869}
+          imgResultado: {fileID: 1301605747290472910}
+        - imgBackground: {fileID: 176932131}
+          imgResultado: {fileID: 326400892}
+        - imgBackground: {fileID: 1939675673}
+          imgResultado: {fileID: 880128641}
+        linhaResult:
+        - imgLinha: {fileID: 8630093420018118390}
+          lblLinha: {fileID: 5217693756635976062}
+        - imgLinha: {fileID: 1941271574}
+          lblLinha: {fileID: 1025742916}
+        - imgLinha: {fileID: 1333439980}
+          lblLinha: {fileID: 1971572902}
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
 --- !u!61 &491158116
@@ -59805,7 +59822,7 @@ GameObject:
   - component: {fileID: 7300788963807872201}
   - component: {fileID: 4769402845789788995}
   m_Layer: 5
-  m_Name: linha-result-caca-niquel
+  m_Name: results-caca-niquel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
