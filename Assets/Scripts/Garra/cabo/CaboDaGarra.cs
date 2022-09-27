@@ -5,9 +5,9 @@ public class CaboDaGarra
 {    
     private SegmentoCabo[] segmentos;   
 
-    public void configuradoPeloLevel(
-        CaboGarraDto caboDto, Dictionary<string, string> dicionarioDeCores)
+    public CaboDaGarra(CaboGarraDto caboDto)
     {
+        Dictionary<string, string> dicionarioDeCores = ContextoEstaticoUtils.level.getDicionarioDeCores();
         string corHex = dicionarioDeCores[ConstantesCoresMaquina.CABO_DA_GARRA];
         Color cor = Utils.getCorByHex(corHex);
         caboDto.LineRenderer.startColor = cor;

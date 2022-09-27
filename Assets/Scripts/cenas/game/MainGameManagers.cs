@@ -31,8 +31,7 @@ public class MainGameManagers
     }   
 
     private void configurandoLevel(MainGameDto mainDto, AbstractLevel levelEscolhido)
-    {
-        garraManager     .configuradoPeloLevel(mainDto.GarraDto, levelEscolhido);
+    {        
         coletaveisManager.configuradoPeloLevel(levelEscolhido, mainDto.ColetaveisDto);
         maquinaManager   .configuradoPeloLevel(levelEscolhido, mainDto.MaquinaDto);
         uiManager        .configurandoLevel(levelEscolhido);
