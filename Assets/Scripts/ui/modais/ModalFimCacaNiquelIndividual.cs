@@ -91,21 +91,21 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
             case 0:
                 {
                     textLinhaPups = qtdPups + " +  0 = " + qtdPups;
-                    textBonus     = qtdPups + " + 1 = " + (qtdPups + 1);
+                    textBonus     = "  + 1 = " + (qtdPups + 1);
                     PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 1);
                     break;
                 }
             case 3:
                 {
                     textLinhaPups = qtdPups + " +  3 = " + (qtdPups + 3);
-                    textBonus     = (qtdPups + 3) + " + 3 = " + (qtdPups + 6);                    
+                    textBonus     = "  + 3 = " + (qtdPups + 6);                    
                     PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 6);
                     break;
                 }
             default:
                 {
                     textLinhaPups = qtdPups + " + " + qtdSucesso + " = " + (qtdPups + qtdSucesso);
-                    textBonus     = (qtdPups + qtdSucesso) + " + 0 = " + (qtdPups + qtdSucesso);                    
+                    textBonus     = "  + 0 = " + (qtdPups + qtdSucesso);                    
                     PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, qtdSucesso);
                     break;
                 }
@@ -113,12 +113,12 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
 
         if (evento.hasFicha())
         {
-            textFicha = qtdFichasBronze + " + 1 = " + (qtdFichasBronze + 1);
+            textFicha = "  + 1 = " + (qtdFichasBronze + 1);
             PlayerPrefsFichas.ganharFicha(Ficha.BRONZE, 1);
         }
         else
         {
-            textFicha = qtdFichasBronze + " + 0 = " + qtdFichasBronze;
+            textFicha = "  + 0 = " + qtdFichasBronze;
         }
 
         popularModal(pupEscolhido.sprIconPowerUp, textLinhaPups, textBonus, textFicha);
