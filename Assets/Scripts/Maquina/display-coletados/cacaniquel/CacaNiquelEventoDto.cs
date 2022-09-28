@@ -66,7 +66,7 @@ public class CacaNiquelEventoDto
         int contadorSucesso = 0;
         for(int contador = 0; contador < resultados.Length; contador++)
         {
-            if (isResultSucesso(0))
+            if (isResultSucesso(contador))
             {
                 contadorSucesso++;
             }
