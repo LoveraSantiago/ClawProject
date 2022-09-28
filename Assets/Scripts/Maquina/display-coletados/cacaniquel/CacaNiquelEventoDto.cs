@@ -56,18 +56,22 @@ public class CacaNiquelEventoDto
         return resultado == CacaNiquelResultadoEnum.FAIL;
     }
 
-    public bool isTripleSucess()
+    public bool hasFicha()
     {
-        return isResultSucesso(0) &&
-               isResultSucesso(1) &&
-               isResultSucesso(2);
+        return resultados[2] == CacaNiquelResultadoEnum.COIN;
     }
 
-    public bool isTripleFail()
+    public int getQtdSucesso()
     {
-        return isResultFail(0) &&
-               isResultFail(1) &&
-               isResultFail(2);
+        int contadorSucesso = 0;
+        for(int contador = 0; contador < resultados.Length; contador++)
+        {
+            if (isResultSucesso(0))
+            {
+                contadorSucesso++;
+            }
+        }
+        return contadorSucesso;
     }
 
     public bool isPupGeral()

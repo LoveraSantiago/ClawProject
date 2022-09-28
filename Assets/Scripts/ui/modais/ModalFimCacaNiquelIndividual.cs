@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class ModalFimCacaNiquelIndividual : AbstractModalFim
 {
     //private CacaNiquelEventoDto evento;
@@ -27,23 +29,24 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         modalCacaNiquelDto.ImgHeadPup.sprite = pupEscolhido.sprPersonagemPup;
         modalCacaNiquelDto.LblNomePup.text = pupEscolhido.nome;
         montarSlotsResultados(evento, pupEscolhido, cacaNiquelDto);
+        montarLinhasResultados(evento, pupEscolhido);
 
         //montarSlotResultados(0, evento, pupEscolhido);
         //montarSlotResultados(1, evento, pupEscolhido);
         //montarSlotResultados(2, evento, pupEscolhido);
 
-        if (evento.isTripleSucess())
-        {
-            linhasModal[3].ligar();
-            linhasModal[3].passarInfos("Bonus!!!", pupEscolhido.sprIconPowerUp, "3");
-            PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 3);
-        }
-        else if (evento.isTripleFail())
-        {
-            linhasModal[3].ligar();
-            linhasModal[3].passarInfos("Consolação", pupEscolhido.sprIconPowerUp, "1");
-            PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 1);
-        }
+        //if (evento.isTripleSucess())
+        //{
+        //    linhasModal[3].ligar();
+        //    linhasModal[3].passarInfos("Bonus!!!", pupEscolhido.sprIconPowerUp, "3");
+        //    PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 3);
+        //}
+        //else if (evento.isTripleFail())
+        //{
+        //    linhasModal[3].ligar();
+        //    linhasModal[3].passarInfos("Consolação", pupEscolhido.sprIconPowerUp, "1");
+        //    PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 1);
+        //}
 
         //modalManipulacao.setScoreAtual("Power Ups Ganhos");        
     }
@@ -71,6 +74,66 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
                 //PlayerPrefsFichas.comprarFicha(Ficha.BRONZE, 1);
             }
         }
+    }
+
+    private void montarLinhasResultados(CacaNiquelEventoDto evento, PowerUpEntidade pupEscolhido)
+    {
+        int qtdPups = PlayerPrefsPowerUp.recuperarQtdPup(pupEscolhido.nome);
+        int qtdFichasBronze = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE);        
+
+        string textLinhaPups = null;
+        string textBonus     = null;
+        string textFicha = null;
+
+        int qtdSucesso = evento.getQtdSucesso();
+        switch (qtdSucesso)
+        {
+            case 0:
+                {
+                    textLinhaPups = qtdPups + " +  0 = " + qtdPups;
+                    textBonus     = qtdPups + " + 1 = " + (qtdPups + 1);
+                    PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 1);
+                    break;
+                }
+            case 3:
+                {
+                    textLinhaPups = qtdPups + " +  3 = " + (qtdPups + 3);
+                    textBonus     = (qtdPups + 3) + " + 3 = " + (qtdPups + 6);                    
+                    PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 6);
+                    break;
+                }
+            default:
+                {
+                    textLinhaPups = qtdPups + " + " + qtdSucesso + " = " + (qtdPups + qtdSucesso);
+                    textBonus     = (qtdPups + qtdSucesso) + " + 0 = " + (qtdPups + qtdSucesso);                    
+                    PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, qtdSucesso);
+                    break;
+                }
+        }
+
+        if (evento.hasFicha())
+        {
+            textFicha = qtdFichasBronze + " + 1 = " + (qtdFichasBronze + 1);
+            PlayerPrefsFichas.ganharFicha(Ficha.BRONZE, 1);
+        }
+        else
+        {
+            textFicha = qtdFichasBronze + " + 0 = " + qtdFichasBronze;
+        }
+
+        popularModal(pupEscolhido.sprIconPowerUp, textLinhaPups, textBonus, textFicha);
+    }
+
+    private void popularModal(Sprite sprite, string textLinhaPup, string textLinhaBonus, string textFicha)
+    {
+        LinhaModalCacaNiquelDto linha0 = modalCacaNiquelDto.LinhaResult[0];
+        LinhaModalCacaNiquelDto linha1 = modalCacaNiquelDto.LinhaResult[1];
+        LinhaModalCacaNiquelDto linha2 = modalCacaNiquelDto.LinhaResult[2];
+
+        linha0.ImgLinha.sprite = sprite;
+        linha0.LblLinha.text = textLinhaPup;
+        linha1.LblLinha.text = textLinhaBonus;
+        linha2.LblLinha.text = textFicha;
     }
 
     public override void ligar()
