@@ -3,7 +3,6 @@ using System.Collections;
 
 public abstract class BoardMontador 
 {
-    private static MapaEnum mapaEnum;
     private int[,] arrayDeColetaveis;   
 
     public IEnumerator createBoard(BoardDto boardDto)
@@ -62,7 +61,6 @@ public abstract class BoardMontador
     protected virtual IEnumerator onPosicaoVaziaCriado(int posX, int posY, Vector3 posicao)
     {
         yield return null;
-
     }
 
     public virtual int getQtdAcrescentada()
@@ -96,11 +94,6 @@ public abstract class BoardMontador
     {
         return arrayDeColetaveis.GetLength(0);
     }   
-
-    public static void configurar(MapaEnum mapaEnumArg)
-    {
-        mapaEnum = mapaEnumArg;
-    }
 
     protected virtual float getDelay()
     {
