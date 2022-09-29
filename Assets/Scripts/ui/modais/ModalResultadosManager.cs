@@ -86,8 +86,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
 
     private IEnumerator coroutineMostrarModal(AbstractModalFim modal)
     {
-        mostrandoModal = true;
-        modal.configurar(modalResultado);
+        mostrandoModal = true;       
         yield return new WaitForSeconds(0.5f);
         modal.ligar();
     }

@@ -13,6 +13,8 @@ public class ModalCacaNiquelDto
     [SerializeField] private SlotModalCacaNiquelDto[] slotsCacaNiquel = new SlotModalCacaNiquelDto[3];
     [Space(3)]
     [SerializeField] private LinhaModalCacaNiquelDto[] linhaResult = new LinhaModalCacaNiquelDto[3];
+    [Space(3)]
+    [SerializeField] private Button btnAvancar;
 
     public GameObject Modal { get { return modal; } }
     public Image ImgHeadPup { get { return imgHeadPup; } }
@@ -20,4 +22,5 @@ public class ModalCacaNiquelDto
 
     public SlotModalCacaNiquelDto[] SlotsCacaNiquel { get { return slotsCacaNiquel; } }
     public LinhaModalCacaNiquelDto[] LinhaResult { get { return linhaResult; } }
+    public Button BtnAvancar { get { return btnAvancar; } }
 }

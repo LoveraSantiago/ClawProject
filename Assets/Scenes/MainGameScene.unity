@@ -11434,6 +11434,7 @@ MonoBehaviour:
           lblLinha: {fileID: 1025742916}
         - imgLinha: {fileID: 1333439980}
           lblLinha: {fileID: 1971572902}
+        btnAvancar: {fileID: 2809398436682013431}
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
 --- !u!61 &491158116

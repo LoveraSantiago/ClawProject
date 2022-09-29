@@ -13,6 +13,7 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         //this.linhasModal = linhasModal;
         this.modalCacaNiquelDto = modalCacaNiquelDto;
         configurar(evento, cacaNiquelDto);
+        modalCacaNiquelDto.BtnAvancar.onClick.AddListener(()=> irParaCena());
     }
 
     //public override void configurar(ModalManipulacao modalManipulacao)
@@ -90,21 +91,21 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         {
             case 0:
                 {
-                    textLinhaPups = qtdPups + " +  0 = " + qtdPups;
+                    textLinhaPups = "  +  0 = " + qtdPups;
                     textBonus     = "  + 1 = " + (qtdPups + 1);
                     PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 1);
                     break;
                 }
             case 3:
                 {
-                    textLinhaPups = qtdPups + " +  3 = " + (qtdPups + 3);
+                    textLinhaPups = "  +  3 = " + (qtdPups + 3);
                     textBonus     = "  + 3 = " + (qtdPups + 6);                    
                     PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 6);
                     break;
                 }
             default:
                 {
-                    textLinhaPups = qtdPups + " + " + qtdSucesso + " = " + (qtdPups + qtdSucesso);
+                    textLinhaPups = "  + " + qtdSucesso + " = " + (qtdPups + qtdSucesso);
                     textBonus     = "  + 0 = " + (qtdPups + qtdSucesso);                    
                     PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, qtdSucesso);
                     break;
