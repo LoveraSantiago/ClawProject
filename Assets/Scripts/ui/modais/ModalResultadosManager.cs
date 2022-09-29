@@ -64,8 +64,8 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            modalResultado.configurarCacaNiquelGeral(evento);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            ModalFimCacaNiquelGeral modal = new ModalFimCacaNiquelGeral(evento, uiGameDto.ModalCacaNiquelDto, cacaNiquelDto);
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
 

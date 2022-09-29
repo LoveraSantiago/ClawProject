@@ -3,7 +3,6 @@ using UnityEngine;
 public class ModalFimCacaNiquelIndividual : AbstractModalFim
 {
     private LinhaModalPontos[] linhasModal;
-
     private ModalCacaNiquelDto modalCacaNiquelDto;
 
     public ModalFimCacaNiquelIndividual(CacaNiquelEventoDto evento, ModalCacaNiquelDto modalCacaNiquelDto, CacaNiquelDto cacaNiquelDto)

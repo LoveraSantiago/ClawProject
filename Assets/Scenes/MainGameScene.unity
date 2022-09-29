@@ -11430,9 +11430,9 @@ MonoBehaviour:
         linhaResult:
         - imgLinha: {fileID: 8630093420018118390}
           lblLinha: {fileID: 5217693756635976062}
-        - imgLinha: {fileID: 1941271574}
+        - imgLinha: {fileID: 1765441830}
           lblLinha: {fileID: 1025742916}
-        - imgLinha: {fileID: 1333439980}
+        - imgLinha: {fileID: 1578191747}
           lblLinha: {fileID: 1971572902}
         btnAvancar: {fileID: 2809398436682013431}
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
@@ -63674,7 +63674,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee04a29e7b6216c4cb3adb34ffac06aa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 168f63b59acef354aa5a65d0623038d0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
