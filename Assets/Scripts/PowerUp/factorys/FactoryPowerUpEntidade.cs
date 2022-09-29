@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class FactoryPowerUpEntidade 
 {   
     private static PoolPowerUps poolPups;                                         
@@ -14,6 +16,19 @@ public class FactoryPowerUpEntidade
     public static PowerUpEntidade[] getAllPowerUps()
     {
         return poolPups.getArrayDeValores();       
+    }
+
+    public static PowerUpEntidade getPowerUpEntidadeBySprite(Sprite sprite)
+    {
+        PowerUpEntidade[] arrayPups = getAllPowerUps();
+        for(int contador = 0; contador < arrayPups.Length; contador++)
+        {
+            if(arrayPups[contador].sprIconPowerUp == sprite)
+            {
+                return arrayPups[contador];
+            }
+        }
+        return null;
     }
 
     public static PowerUpEntidade getPowerUpFromIndice(int indice)

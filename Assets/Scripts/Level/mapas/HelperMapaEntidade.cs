@@ -12,7 +12,7 @@ public class HelperMapaEntidade
             mapasEntidadesPorMapaEnum.Add(mapaEnum, FactoryMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum, loadLiberacao));
         }
         return mapasEntidadesPorMapaEnum[mapaEnum];
-    }    
+    }        
 
     public static MapaEntidade getMapaEntidadeByIndice(int indice, bool loadLiberacao)
     {

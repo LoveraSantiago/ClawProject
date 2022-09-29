@@ -1,32 +1,43 @@
+using UnityEngine;
+
 public class ModalFimCacaNiquelGeral : AbstractModalFim
 {
-    private CacaNiquelEventoDto evento;
-    private LinhaModalPontos[] linhasModal;
+    private ModalCacaNiquelDto modalCacaNiquelDto;
 
-    public ModalFimCacaNiquelGeral(CacaNiquelEventoDto evento, LinhaModalPontos[] linhasModal)
+    public ModalFimCacaNiquelGeral(CacaNiquelEventoDto evento, ModalCacaNiquelDto modalCacaNiquelDto, CacaNiquelDto cacaNiquelDto)
     {
-        this.evento = evento;
-        this.linhasModal = linhasModal;
+        this.modalCacaNiquelDto = modalCacaNiquelDto;
+        configurar(evento, cacaNiquelDto);
+        modalCacaNiquelDto.BtnAvancar.onClick.AddListener(() => irParaCena());
     }
 
-    public override void configurar(ModalManipulacao modalManipulacao)
+    public void configurar(CacaNiquelEventoDto evento, CacaNiquelDto cacaNiquelDto)
+    {        
+        modalCacaNiquelDto.LblNomePup.text = "Power Ups Todos";
+
+        for (int contador = 0; contador < evento.sprResultados.Length; contador++)
+        {
+            Sprite spritePup = evento.sprResultados[contador];
+            PowerUpEntidade powerUp = FactoryPowerUpEntidade.getPowerUpEntidadeBySprite(spritePup);
+            int qtdPup = PlayerPrefsPowerUp.recuperarQtdPup(powerUp.nome);
+            PlayerPrefsPowerUp.adicionarPup(powerUp.nome, 1);
+            string textLinha = " + 1 = " + (qtdPup + 1);
+
+            modalCacaNiquelDto.SlotsCacaNiquel[contador].ImgResultado.sprite = spritePup;
+            modalCacaNiquelDto.SlotsCacaNiquel[contador].ImgBackground.color = cacaNiquelDto.CorSucesso;
+            LinhaModalCacaNiquelDto linha = modalCacaNiquelDto.LinhaResult[contador];
+            linha.ImgLinha.sprite = spritePup;
+            linha.LblLinha.text = textLinha;
+        }        
+    }    
+
+    private void montarLinhas(CacaNiquelEventoDto evento, CacaNiquelDto cacaNiquelDto)
     {
-        linhasModal[0].ligar();
-        linhasModal[1].ligar();
-        linhasModal[2].ligar();
-        linhasModal[3].desligar();
+    }
 
-        string[] nomes = PowerUpHelper.getNomesPupsBySprites(evento.sprResultados);
-
-        linhasModal[0].passarInfos(nomes[0], evento.sprResultados[0], "1");
-        linhasModal[1].passarInfos(nomes[1], evento.sprResultados[1], "1");
-        linhasModal[2].passarInfos(nomes[2], evento.sprResultados[2], "1");
-
-        PlayerPrefsPowerUp.adicionarPup(nomes[0], 1);
-        PlayerPrefsPowerUp.adicionarPup(nomes[1], 1);
-        PlayerPrefsPowerUp.adicionarPup(nomes[2], 1);
-
-        modalManipulacao.setScoreAtual("Power Ups Ganhos");
+    public override void ligar()
+    {
+        modalCacaNiquelDto.Modal.SetActive(true);
     }
 
     protected override void irParaCena()

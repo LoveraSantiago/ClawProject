@@ -20,14 +20,9 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     public GarraManager(GarraDto garraDto)
     {
         AbstractMovimentacaoDaGarra.configurar(garraDto);
-    }  
+        cabo = new CaboDaGarra(garraDto.CaboDaGarraDto);
 
-    public void configuradoPeloLevel(GarraDto garraDto, AbstractLevel level)
-    {        
-        cabo = new CaboDaGarra();
-        cabo.configuradoPeloLevel(garraDto.CaboDaGarraDto, level.getDicionarioDeCores());
-
-        if(LevelUtils.isCacaNiquelLevel(level))
+        if(LevelUtils.isCacaNiquelLevel(ContextoEstaticoUtils.level))
         {
             gerDeMovAtual = new GerenciadorDeMovimentacaoCacaNiquel();
         }
@@ -38,7 +33,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
             gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
             gerDeMovAtual   = gerDeMovNormal;
         }
-    }
+    }      
 
     public void start(GarraDto garraDto)
     {

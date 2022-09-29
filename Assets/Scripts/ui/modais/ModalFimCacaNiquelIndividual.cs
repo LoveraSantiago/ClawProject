@@ -1,61 +1,111 @@
+using UnityEngine;
+
 public class ModalFimCacaNiquelIndividual : AbstractModalFim
 {
-    private CacaNiquelEventoDto evento;
     private LinhaModalPontos[] linhasModal;
+    private ModalCacaNiquelDto modalCacaNiquelDto;
 
-    public ModalFimCacaNiquelIndividual(CacaNiquelEventoDto evento, LinhaModalPontos[] linhasModal)
+    public ModalFimCacaNiquelIndividual(CacaNiquelEventoDto evento, ModalCacaNiquelDto modalCacaNiquelDto, CacaNiquelDto cacaNiquelDto)
     {
-        this.evento = evento;
-        this.linhasModal = linhasModal;
+        this.modalCacaNiquelDto = modalCacaNiquelDto;
+        configurar(evento, cacaNiquelDto);
+        modalCacaNiquelDto.BtnAvancar.onClick.AddListener(()=> irParaCena());
     }
 
-    public override void configurar(ModalManipulacao modalManipulacao)
+    public void configurar(CacaNiquelEventoDto evento, CacaNiquelDto cacaNiquelDto)
     {
-        linhasModal[0].ligar();
-        linhasModal[1].ligar();
-        linhasModal[2].ligar();
-        linhasModal[3].desligar();
-
         int indicePup = PlayerPrefsPowerUp.recuperarIndicePup();
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
-        montarLinhaPupSingle(0, evento, pupEscolhido);
-        montarLinhaPupSingle(1, evento, pupEscolhido);
-        montarLinhaPupSingle(2, evento, pupEscolhido);
-
-        if (evento.isTripleSucess())
-        {
-            linhasModal[3].ligar();
-            linhasModal[3].passarInfos("Bonus!!!", pupEscolhido.sprIconPowerUp, "3");
-            PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 3);
-        }
-        else if (evento.isTripleFail())
-        {
-            linhasModal[3].ligar();
-            linhasModal[3].passarInfos("Consolação", pupEscolhido.sprIconPowerUp, "1");
-            PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 1);
-        }
-
-        modalManipulacao.setScoreAtual("Power Ups Ganhos");        
+        modalCacaNiquelDto.ImgHeadPup.sprite = pupEscolhido.sprPersonagemPup;
+        modalCacaNiquelDto.LblNomePup.text = pupEscolhido.nome;
+        montarSlotsResultados(evento, pupEscolhido, cacaNiquelDto);
+        montarLinhasResultados(evento, pupEscolhido);
     }
 
-    private void montarLinhaPupSingle(int indice, CacaNiquelEventoDto evento, PowerUpEntidade pup)
+    private void montarSlotsResultados(CacaNiquelEventoDto evento, PowerUpEntidade pup, CacaNiquelDto cacaNiquelDto)
     {
-
-        if (evento.isResultSucesso(indice))
+        for(int contador = 0; contador < modalCacaNiquelDto.SlotsCacaNiquel.Length; contador++)
         {
-            linhasModal[indice].passarInfos(pup.nome, evento.sprResultados[indice], "OK");
-            PlayerPrefsPowerUp.adicionarPup(pup.nome, 1);
+            modalCacaNiquelDto.SlotsCacaNiquel[contador].ImgResultado.sprite = evento.sprResultados[contador];
+            if (evento.isResultSucesso(contador))
+            {
+                modalCacaNiquelDto.SlotsCacaNiquel[contador].ImgBackground.color = cacaNiquelDto.CorSucesso;
+            }
+            else if (evento.isResultFail(contador))
+            {
+                modalCacaNiquelDto.SlotsCacaNiquel[contador].ImgBackground.color = cacaNiquelDto.CorFalha;
+            }
+            else
+            {
+                modalCacaNiquelDto.SlotsCacaNiquel[contador].ImgBackground.color = cacaNiquelDto.CorMeio;
+            }
         }
-        else if (evento.isResultFail(indice))
+    }
+
+    private void montarLinhasResultados(CacaNiquelEventoDto evento, PowerUpEntidade pupEscolhido)
+    {
+        int qtdPups = PlayerPrefsPowerUp.recuperarQtdPup(pupEscolhido.nome);
+        int qtdFichasBronze = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE);        
+
+        string textLinhaPups = null;
+        string textBonus     = null;
+        string textFicha = null;
+
+        int qtdSucesso = evento.getQtdSucesso();
+        switch (qtdSucesso)
         {
-            linhasModal[indice].passarInfos("Nada", evento.sprResultados[indice], "NOK");
+            case 0:
+                {
+                    textLinhaPups = "  +  0 = " + qtdPups;
+                    textBonus     = "  + 1 = " + (qtdPups + 1);
+                    PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 1);
+                    break;
+                }
+            case 3:
+                {
+                    textLinhaPups = "  +  3 = " + (qtdPups + 3);
+                    textBonus     = "  + 3 = " + (qtdPups + 6);                    
+                    PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 6);
+                    break;
+                }
+            default:
+                {
+                    textLinhaPups = "  + " + qtdSucesso + " = " + (qtdPups + qtdSucesso);
+                    textBonus     = "  + 0 = " + (qtdPups + qtdSucesso);                    
+                    PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, qtdSucesso);
+                    break;
+                }
+        }
+
+        if (evento.hasFicha())
+        {
+            textFicha = "  + 1 = " + (qtdFichasBronze + 1);
+            PlayerPrefsFichas.ganharFicha(Ficha.BRONZE, 1);
         }
         else
         {
-            linhasModal[indice].passarInfos("Ficha", evento.sprResultados[indice], "OK");
-            PlayerPrefsFichas.comprarFicha(Ficha.BRONZE, 1);
+            textFicha = "  + 0 = " + qtdFichasBronze;
         }
+
+        popularModal(pupEscolhido.sprIconPowerUp, textLinhaPups, textBonus, textFicha);
+    }
+
+    private void popularModal(Sprite sprite, string textLinhaPup, string textLinhaBonus, string textFicha)
+    {
+        LinhaModalCacaNiquelDto linha0 = modalCacaNiquelDto.LinhaResult[0];
+        LinhaModalCacaNiquelDto linha1 = modalCacaNiquelDto.LinhaResult[1];
+        LinhaModalCacaNiquelDto linha2 = modalCacaNiquelDto.LinhaResult[2];
+
+        linha0.ImgLinha.sprite = sprite;
+        linha0.LblLinha.text = textLinhaPup;
+        linha1.LblLinha.text = textLinhaBonus;
+        linha2.LblLinha.text = textFicha;
+    }
+
+    public override void ligar()
+    {
+        modalCacaNiquelDto.Modal.SetActive(true);
     }
 
     protected override void irParaCena()

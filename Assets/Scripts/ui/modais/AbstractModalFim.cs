@@ -2,7 +2,7 @@ using UnityEngine.UI;
 
 public abstract class AbstractModalFim 
 {
-    public abstract void configurar(ModalManipulacao modalManipulacao);
+    public virtual void configurar(ModalManipulacao modalManipulacao) { }
 
     public void configurarBotaoAvancar(Button btn)
     {
@@ -10,4 +10,6 @@ public abstract class AbstractModalFim
     }
 
     protected abstract void irParaCena();
+
+    public virtual void ligar(){}
 }

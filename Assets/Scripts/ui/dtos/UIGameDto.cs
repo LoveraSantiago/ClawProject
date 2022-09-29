@@ -9,9 +9,9 @@ public class UIGameDto
     [Space(5)]
     [SerializeField] private ModalSairDto modalSairDto;
     [Space(5)]
-    [SerializeField] private GameObject prefabBottomBar;
+    [SerializeField] private ModalCacaNiquelDto modalCacaNiquelDto;
 
     public ModalPontosDto ModalPontosDto { get { return modalPontosDto; } }
-    public ModalSairDto ModalSairDto { get { return modalSairDto; } }
-    public GameObject PrefabBottomBar { get { return prefabBottomBar; } }
+    public ModalSairDto ModalSairDto { get { return modalSairDto; } }    
+    public ModalCacaNiquelDto ModalCacaNiquelDto { get { return modalCacaNiquelDto; } }
 }
