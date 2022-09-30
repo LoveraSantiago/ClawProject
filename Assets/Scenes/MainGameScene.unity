@@ -11435,6 +11435,12 @@ MonoBehaviour:
         - imgLinha: {fileID: 1578191747}
           lblLinha: {fileID: 1971572902}
         btnAvancar: {fileID: 2809398436682013431}
+      modalColetaveisDto:
+        modal: {fileID: 1573277288}
+        lblLevelTitle: {fileID: 1325478757}
+        lblMsg: {fileID: 1587407716}
+        imgColetavel: {fileID: 2021469726}
+        btnAvancar: {fileID: 1259820080}
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
 --- !u!61 &491158116
@@ -33734,7 +33740,7 @@ RectTransform:
   m_Children:
   - {fileID: 982006568}
   m_Father: {fileID: 1947977997}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -44684,7 +44690,7 @@ GameObject:
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1573277289
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44866,7 +44872,7 @@ GameObject:
   - component: {fileID: 1587407717}
   - component: {fileID: 1587407716}
   m_Layer: 5
-  m_Name: lbl-nome-pup
+  m_Name: lbl-msg-pup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50384,8 +50390,8 @@ RectTransform:
   - {fileID: 1173158953}
   - {fileID: 875260072}
   - {fileID: 1587407715}
-  - {fileID: 1259820079}
   - {fileID: 2021469725}
+  - {fileID: 1259820079}
   m_Father: {fileID: 1573277289}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -55495,7 +55501,7 @@ GameObject:
   - component: {fileID: 2021469727}
   - component: {fileID: 2021469726}
   m_Layer: 5
-  m_Name: Image
+  m_Name: imgColetavel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55514,7 +55520,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1947977997}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

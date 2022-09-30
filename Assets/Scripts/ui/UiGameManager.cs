@@ -5,8 +5,8 @@ public class UiGameManager
 
     public UiGameManager(UIGameDto uiDto, CacaNiquelDto cacaNiquelDto)
     {
-        modalResultados   = new ModalResultadosManager(uiDto, cacaNiquelDto);        
-        modalSair         = new ModalSair(uiDto.ModalSairDto);
+        modalResultados = new ModalResultadosManager(uiDto, cacaNiquelDto);        
+        modalSair       = new ModalSair(uiDto.ModalSairDto);
     }
 
     public void configurandoLevel(AbstractLevel levelEscolhido)
