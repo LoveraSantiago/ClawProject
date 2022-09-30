@@ -1,5 +1,7 @@
 public class ModalFimColetaveis : AbstractModalFim
 {
+    
+
     public override void configurar(ModalManipulacao modalManipulacao)
     {
         int idColetavel = PlayerPrefsColetaveis.recuperarNavegacaoColetavel();

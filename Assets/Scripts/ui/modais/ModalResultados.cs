@@ -26,23 +26,7 @@ public class ModalResultados : ModalManipulacao
         AbstractModalFim modalFim = new ModalFimPontos();
         modalFim.configurar(this);
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
-    }
-
-    public void configurarColetavel()
-    {
-        naoMostrarLinhasResult();
-        AbstractModalFim modalFim = new ModalFimColetaveis();
-        modalFim.configurar(this);
-        modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
-    }
-
-    public void configurarColetavelFail()
-    {
-        naoMostrarLinhasResult();
-        AbstractModalFim modalFim = new ModalFimColetaveisFail();
-        modalFim.configurar(this);
-        modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
-    }
+    }      
 
     public void configurarModalFailOrdem()
     {
