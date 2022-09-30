@@ -26,6 +26,11 @@ public class TrincaColetaveisTiles
         return arrayColetados[0] != null && arrayColetados[1] != null && arrayColetados[2] != null;
     }
 
+    public bool isTodasPosicoesOcupadas(Coletavel[] arrayColetados)
+    {
+        return arrayColetados[0] != null && arrayColetados[1] != null && arrayColetados[2] != null;
+    }
+
     public bool isColetavelNaTrinca(Coletavel coletavel)
     {
         for (int contador = 0; contador < arrayColetados.Length; contador++)
@@ -50,6 +55,19 @@ public class TrincaColetaveisTiles
             }
         }
         return true;
+    }
+
+    public bool isQualquerColetavelNaTrinca(Coletavel[] coletaveis)
+    {
+        for(int contador = 0; contador < coletaveis.Length; contador++)
+        {
+            bool resultIt = isColetavelNaTrinca(coletaveis[contador]);
+            if (resultIt)
+            {
+                return resultIt;
+            }
+        }
+        return false;
     }
 
     public int getIndiceNaTrinca(Coletavel coletavel)
