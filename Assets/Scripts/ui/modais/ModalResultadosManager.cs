@@ -37,8 +37,8 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            modalResultado.configurarColetavel();
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            ModalFimColetaveis modal = ModalFimColetaveis.ofSucess(uiGameDto.ModalColetaveisDto);
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
 
@@ -46,8 +46,8 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            modalResultado.configurarColetavelFail();
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            ModalFimColetaveis modal = ModalFimColetaveis.ofFail(uiGameDto.ModalColetaveisDto);
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
 

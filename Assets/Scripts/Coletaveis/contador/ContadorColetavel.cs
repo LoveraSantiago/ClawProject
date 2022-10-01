@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class ContadorColetavel : ContadorNormal
 {
-    private bool resultSucessoColetavel;
+    
+    private EstadoContadorDeColetaveis estado;
     private ColetavelEntidade coletavelEntidade;
     private TrincaColetaveisTiles trincaLevelColetaveis;    
 
     public ContadorColetavel(int pontosColetado, int pontosAcerto) 
-        : base(pontosColetado, pontosAcerto){}
+        : base(pontosColetado, pontosAcerto)
+    {
+        estado = new EstadoContadorDeColetaveis();
+    }
 
     public override void configuradoPeloLevel(AbstractLevel level)
     {
@@ -36,23 +40,31 @@ public class ContadorColetavel : ContadorNormal
 
     public override int contarColetado(Coletavel coletavel)
     {
-        resultSucessoColetavel = false;
+        estado.reset();
         int score = base.contarColetado(coletavel);
-
-        if (resultCombinacao && trincaLevelColetaveis.isColetaveisNaTrinca(coletados))
+        
+        if (resultCombinacao && 
+            trincaLevelColetaveis.isColetaveisNaTrinca(coletados))
         {
-            resultSucessoColetavel = true;            
-        }        
+            estado.coletadoTrincaSucesso();
+        }
+        else if (!resultCombinacao && 
+            trincaLevelColetaveis.isTodasPosicoesOcupadas(coletados) &&
+            trincaLevelColetaveis.isQualquerColetavelNaTrinca(coletados))
+        {
+            estado.coletadoFailPrematuro();
+        }
+        
         return score;
     }    
 
     public override InformacoesFimDeJogoDto getInfoFimDeJogo()
     {
-        if (resultSucessoColetavel)
+        if (estado.isTrincaSucesso)
         {
             return InformacoesFimDeJogoDto.ofTrinca();
         }
-        else if (isZeroTotalColetaveis())
+        else if (isZeroTotalColetaveis() || estado.isFailPrematuro)
         {
             return InformacoesFimDeJogoDto.ofTrincaFail();
         }
