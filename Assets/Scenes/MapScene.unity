@@ -3370,6 +3370,7 @@ MonoBehaviour:
       exclamacaoColetavel: {fileID: 1098353876}
     modalFaseDto:
       modalFase: {fileID: 1990500530}
+      imgMiniMaquina: {fileID: 1555968225}
       lblNivel: {fileID: 1619602479}
       lblObjetivo: {fileID: 56316674}
       btnFechar: {fileID: 1075245242}

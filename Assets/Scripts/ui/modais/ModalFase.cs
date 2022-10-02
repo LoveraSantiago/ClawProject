@@ -13,7 +13,7 @@ public class ModalFase
     {
         AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(indiceLevel);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
-
+        MaterialMiniMaquina.addCores(3, modalFaseDto.ImgMiniMaquina.material, level.getDicionarioDeCores());
 
         modalFaseDto.LblNivel.text = level.getLevelTitle();
         modalFaseDto.LblObjetivo.text = level.getMsgObjetivoLevel();

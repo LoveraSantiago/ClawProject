@@ -42,6 +42,11 @@ public class MapaScene : MonoBehaviour,
         allTimersFichas.update();        
     }
 
+    private void OnDisable()
+    {
+        PlayerPrefsMapas.salvarIndiceLevelLiberado(100);
+    }
+
     void AcaoMapaNavegado.ConsumidorEvento.consumirEvento(WrapperLevelMapDto evento)
     {
         mapaUi.addMapaParaTela(evento);        

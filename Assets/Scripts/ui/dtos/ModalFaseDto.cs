@@ -7,6 +7,8 @@ public class ModalFaseDto
 {
     [SerializeField] private GameObject modalFase;
     [Space(5)]
+    [SerializeField] private Image imgMiniMaquina;
+    [Space(5)]
     [SerializeField] private Text lblNivel;
     [SerializeField] private Text lblObjetivo;
     [Space(5)]
@@ -14,6 +16,8 @@ public class ModalFaseDto
     [SerializeField] private Button btnLevel;
 
     public GameObject ModalFase { get { return modalFase; } }
+
+    public Image ImgMiniMaquina { get { return imgMiniMaquina; } }
 
     public Text LblNivel { get { return lblNivel; } }
     public Text LblObjetivo { get { return lblObjetivo; } }
