@@ -3,6 +3,9 @@ using System.Collections.Generic;
 public abstract class AbstractLevel 
 {
     private static ContextoEstaticoLevels contexto = new ContextoEstaticoLevels();
+    public static readonly string MSG_COLETE_ITENS = "Colete todos os itens";
+    public static readonly string MSG_ELEVADOR     = "Colete os itens antes do elevador subir";
+
     private Dictionary<string, string> dicionario;
 
     public static readonly string TIMER_ZERO = "00:00";

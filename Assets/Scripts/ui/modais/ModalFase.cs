@@ -16,6 +16,7 @@ public class ModalFase
         MaterialMiniMaquina.addCores(3, modalFaseDto.ImgMiniMaquina.material, level.getDicionarioDeCores());
 
         modalFaseDto.LblNivel.text = level.getLevelTitle();
+        modalFaseDto.LblTipoGame.text = "LEVEL " + level.getTipoGame().ToString();
         modalFaseDto.LblObjetivo.text = level.getMsgObjetivoLevel();
 
         modalFaseDto.Animator.Play("modal-objetivo");

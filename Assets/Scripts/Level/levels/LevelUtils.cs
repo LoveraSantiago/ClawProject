@@ -60,7 +60,7 @@ public class LevelUtils
 
     public static bool isOvoLevel(AbstractLevel level)
     {
-        return level.getTipoGame() == TipoGame.OVO;
+        return level.getTipoGame() == TipoGame.SURPRESA;
     }
 
     public static ColetavelEntidade getColetavelFromLevelColetavel(AbstractLevel level)

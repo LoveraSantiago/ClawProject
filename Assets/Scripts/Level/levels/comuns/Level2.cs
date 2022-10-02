@@ -10,7 +10,7 @@ public class Level2 : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return "Faça o maior número de combinações";
+        return AbstractLevel.MSG_COLETE_ITENS;
     }
 
     public override TipoGame getTipoGame()

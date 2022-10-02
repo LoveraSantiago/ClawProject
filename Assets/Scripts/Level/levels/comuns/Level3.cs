@@ -9,7 +9,7 @@ public class Level3 : AbstractLevelElevador
 
     public override string getMsgObjetivoLevel()
     {
-        return "Cuidado com o numero de coletaveis";
+        return AbstractLevel.MSG_ELEVADOR;
     }   
 
     public override int[,] getArrayDeColetaveis()
