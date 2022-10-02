@@ -4,8 +4,8 @@ using UnityEngine.UI;
 #pragma warning disable 0649
 [System.Serializable]
 public class ModalFaseDto 
-{
-    [SerializeField] private GameObject modalFase;
+{    
+    [SerializeField] private Animator animator;
     [Space(5)]
     [SerializeField] private Image imgMiniMaquina;
     [Space(5)]
@@ -14,8 +14,8 @@ public class ModalFaseDto
     [Space(5)]
     [SerializeField] private Button btnFechar;
     [SerializeField] private Button btnLevel;
-
-    public GameObject ModalFase { get { return modalFase; } }
+        
+    public Animator Animator { get { return animator; } }
 
     public Image ImgMiniMaquina { get { return imgMiniMaquina; } }
 

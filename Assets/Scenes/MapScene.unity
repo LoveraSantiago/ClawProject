@@ -1851,7 +1851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &938532416
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3369,7 +3369,7 @@ MonoBehaviour:
       exclamacaoLevel: {fileID: 348724935}
       exclamacaoColetavel: {fileID: 1098353876}
     modalFaseDto:
-      modalFase: {fileID: 1990500530}
+      animator: {fileID: 1990500537}
       imgMiniMaquina: {fileID: 1555968225}
       lblNivel: {fileID: 1619602479}
       lblObjetivo: {fileID: 56316674}
@@ -4547,7 +4547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1701353301
 RectTransform:
   m_ObjectHideFlags: 0

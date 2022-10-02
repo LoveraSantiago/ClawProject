@@ -18,7 +18,7 @@ public class ModalFase
         modalFaseDto.LblNivel.text = level.getLevelTitle();
         modalFaseDto.LblObjetivo.text = level.getMsgObjetivoLevel();
 
-        modalFaseDto.ModalFase.SetActive(true);
+        modalFaseDto.Animator.Play("modal-objetivo");
     }
 
     private void irParaCenaGame()
@@ -29,6 +29,6 @@ public class ModalFase
 
     private void desligar()
     {
-        modalFaseDto.ModalFase.SetActive(false);
+        modalFaseDto.Animator.Play("modal-fechar");
     }   
 }
