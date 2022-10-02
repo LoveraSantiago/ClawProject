@@ -3320,7 +3320,7 @@ MonoBehaviour:
     levelMapaUiDto:
       delayEntreBaloes: 0.1
       delayInicioMapa: 0.75
-      delayInicioBaloes: 3
+      delayInicioBaloes: 0.3
       lblJorney: {fileID: 1261413183}
       lblTitle: {fileID: 944140}
       animatorMainMapa: {fileID: 1145818212}
