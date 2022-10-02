@@ -3294,90 +3294,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16da4b80d168b4cafa36b6465327e1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerFichaDto:
-  - btnMais: {fileID: 7590549816917667955}
-    lblQdtFichas: {fileID: 629066646}
-    relogioDto:
-      lblHoras: {fileID: 1230615357}
-      transfSegundos: {fileID: 2016376342}
-      transfMinutos: {fileID: 688400143}
-      transfHoras: {fileID: 637592631}
-  - btnMais: {fileID: 2053571111}
-    lblQdtFichas: {fileID: 538125770}
-    relogioDto:
-      lblHoras: {fileID: 2069187303}
-      transfSegundos: {fileID: 527848700}
-      transfMinutos: {fileID: 1613830221}
-      transfHoras: {fileID: 1218783897}
-  - btnMais: {fileID: 1274495454}
-    lblQdtFichas: {fileID: 963554058}
-    relogioDto:
-      lblHoras: {fileID: 200512466}
-      transfSegundos: {fileID: 357575424}
-      transfMinutos: {fileID: 832065659}
-      transfHoras: {fileID: 996434554}
-  levelMapaUiDto:
-    delayEntreBaloes: 0.1
-    delayInicioMapa: 0.75
-    delayInicioBaloes: 0.3
-    lblJorney: {fileID: 1261413183}
-    lblTitle: {fileID: 944140}
-    animatorMainMapa: {fileID: 1145818212}
-    imgMapa: {fileID: 806134968}
-    baloesLevels:
-    - btnLevel: {fileID: 1488078935}
-      animator: {fileID: 2746002245882112965}
-      goExclamacao: {fileID: 2746002245882112966}
-    - btnLevel: {fileID: 1678957762}
-      animator: {fileID: 1678957763}
-      goExclamacao: {fileID: 1678957764}
-    - btnLevel: {fileID: 1806647841}
-      animator: {fileID: 1806647842}
-      goExclamacao: {fileID: 1806647843}
-    - btnLevel: {fileID: 1802940262}
-      animator: {fileID: 1802940263}
-      goExclamacao: {fileID: 1802940264}
-    - btnLevel: {fileID: 136314702}
-      animator: {fileID: 136314703}
-      goExclamacao: {fileID: 136314704}
-    - btnLevel: {fileID: 1492842765}
-      animator: {fileID: 1492842766}
-      goExclamacao: {fileID: 1492842767}
-    - btnLevel: {fileID: 571754942}
-      animator: {fileID: 571754943}
-      goExclamacao: {fileID: 571754944}
-    - btnLevel: {fileID: 1766935394}
-      animator: {fileID: 1766935395}
-      goExclamacao: {fileID: 1766935396}
-    - btnLevel: {fileID: 1643526242}
-      animator: {fileID: 1643526243}
-      goExclamacao: {fileID: 1643526244}
-    - btnLevel: {fileID: 1859291351}
-      animator: {fileID: 1859291352}
-      goExclamacao: {fileID: 1859291353}
-  botoesNavegacao:
-    btnNavegacaoEsquerda: {fileID: 615640189}
-    btnNavegacaoDireita: {fileID: 2062181147}
-    goExclamacao: {fileID: 613894934}
-  botoesCenasDto:
-    btnCards: {fileID: 250196780}
-    btnScore: {fileID: 1357853671}
-    btnStore: {fileID: 1513573892}
-    btnPelucia: {fileID: 1246110284}
-    btnConfig: {fileID: 592234356}
-    exclamacaoLevel: {fileID: 348724935}
-    exclamacaoColetavel: {fileID: 1098353876}
-  modalFaseDto:
-    modalFase: {fileID: 1990500530}
-    lblNivel: {fileID: 1619602479}
-    lblObjetivo: {fileID: 56316674}
-    btnFechar: {fileID: 1075245242}
-    btnLevel: {fileID: 1398261149}
-  modalNoFichaDto:
-    modalNoFicha: {fileID: 4837428847216123165}
-    btnOk: {fileID: 4837428846761883698}
-  prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
-  prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
+  mainMapaDto:
+    timerFichaDto:
+    - btnMais: {fileID: 7590549816917667955}
+      lblQdtFichas: {fileID: 629066646}
+      relogioDto:
+        lblHoras: {fileID: 1230615357}
+        transfSegundos: {fileID: 2016376342}
+        transfMinutos: {fileID: 688400143}
+        transfHoras: {fileID: 637592631}
+    - btnMais: {fileID: 2053571111}
+      lblQdtFichas: {fileID: 538125770}
+      relogioDto:
+        lblHoras: {fileID: 2069187303}
+        transfSegundos: {fileID: 527848700}
+        transfMinutos: {fileID: 1613830221}
+        transfHoras: {fileID: 1218783897}
+    - btnMais: {fileID: 1274495454}
+      lblQdtFichas: {fileID: 963554058}
+      relogioDto:
+        lblHoras: {fileID: 200512466}
+        transfSegundos: {fileID: 357575424}
+        transfMinutos: {fileID: 832065659}
+        transfHoras: {fileID: 996434554}
+    levelMapaUiDto:
+      delayEntreBaloes: 0.1
+      delayInicioMapa: 0.75
+      delayInicioBaloes: 3
+      lblJorney: {fileID: 1261413183}
+      lblTitle: {fileID: 944140}
+      animatorMainMapa: {fileID: 1145818212}
+      imgMapa: {fileID: 806134968}
+      baloesLevels:
+      - btnLevel: {fileID: 1488078935}
+        animator: {fileID: 2746002245882112965}
+        goExclamacao: {fileID: 2746002245882112966}
+      - btnLevel: {fileID: 1678957762}
+        animator: {fileID: 1678957763}
+        goExclamacao: {fileID: 1678957764}
+      - btnLevel: {fileID: 1806647841}
+        animator: {fileID: 1806647842}
+        goExclamacao: {fileID: 1806647843}
+      - btnLevel: {fileID: 1802940262}
+        animator: {fileID: 1802940263}
+        goExclamacao: {fileID: 1802940264}
+      - btnLevel: {fileID: 136314702}
+        animator: {fileID: 136314703}
+        goExclamacao: {fileID: 136314704}
+      - btnLevel: {fileID: 1492842765}
+        animator: {fileID: 1492842766}
+        goExclamacao: {fileID: 1492842767}
+      - btnLevel: {fileID: 571754942}
+        animator: {fileID: 571754943}
+        goExclamacao: {fileID: 571754944}
+      - btnLevel: {fileID: 1766935394}
+        animator: {fileID: 1766935395}
+        goExclamacao: {fileID: 1766935396}
+      - btnLevel: {fileID: 1643526242}
+        animator: {fileID: 1643526243}
+        goExclamacao: {fileID: 1643526244}
+      - btnLevel: {fileID: 1859291351}
+        animator: {fileID: 1859291352}
+        goExclamacao: {fileID: 1859291353}
+    botoesNavegacao:
+      btnNavegacaoEsquerda: {fileID: 615640189}
+      btnNavegacaoDireita: {fileID: 2062181147}
+      goExclamacao: {fileID: 613894934}
+    botoesCenasDto:
+      btnCards: {fileID: 250196780}
+      btnScore: {fileID: 1357853671}
+      btnStore: {fileID: 1513573892}
+      btnPelucia: {fileID: 1246110284}
+      btnConfig: {fileID: 592234356}
+      exclamacaoLevel: {fileID: 348724935}
+      exclamacaoColetavel: {fileID: 1098353876}
+    modalFaseDto:
+      modalFase: {fileID: 1990500530}
+      lblNivel: {fileID: 1619602479}
+      lblObjetivo: {fileID: 56316674}
+      btnFechar: {fileID: 1075245242}
+      btnLevel: {fileID: 1398261149}
+    modalNoFichaDto:
+      modalNoFicha: {fileID: 4837428847216123165}
+      btnOk: {fileID: 4837428846761883698}
+    prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
+    prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
 --- !u!1 &1396471775
 GameObject:
   m_ObjectHideFlags: 0

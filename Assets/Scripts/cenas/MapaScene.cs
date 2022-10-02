@@ -3,22 +3,9 @@ using UnityEngine;
 #pragma warning disable 0649
 public class MapaScene : MonoBehaviour,
                          AcaoMapaNavegado.ConsumidorEvento
-{       
-    
-    [SerializeField] private TimerFichaDto[] timerFichaDto = new TimerFichaDto[3];
-    [Space(5)]
-    [SerializeField] private LevelMapaUiDto levelMapaUiDto;
-    [Space(5)]
-    [SerializeField] private BotoesNavegacaoMapaDto botoesNavegacao;
-    [Space(5)]
-    [SerializeField] private BotoesCenasDto botoesCenasDto;
-    [Space(5)]
-    [SerializeField] private ModalFaseDto modalFaseDto;
-    [Space(5)]    
-    [SerializeField] private ModalNoFichaDto modalNoFichaDto;
-    [Space(5)]    
-    [SerializeField] private GameObject prefabLevelsDto;
-    [SerializeField] private GameObject prefabMateriais;
+{
+
+    [SerializeField] private MainMapaDto mainMapaDto;                        
 
     private AllTimersFichas allTimersFichas;
     private MapaUi mapaUi;    
@@ -26,17 +13,17 @@ public class MapaScene : MonoBehaviour,
     private void Start()
     {
         ContextoEstaticoUtils.configMainMono(this);
-        MateriaisUtils.configurar(prefabMateriais);
+        MateriaisUtils.configurar(mainMapaDto.PrefabMateriais);
 
-        allTimersFichas = new AllTimersFichas(timerFichaDto);        
-        ModalMapsManager modalManager = new ModalMapsManager(modalFaseDto, modalNoFichaDto);
-        new BotoesCenasMapa(botoesCenasDto);
+        allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto);        
+        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto.ModalFaseDto, mainMapaDto.ModalNoFichaDto);
+        new BotoesCenasMapa(mainMapaDto.BotoesCenasDto);
 
-        mapaUi = new MapaUi(levelMapaUiDto);
+        mapaUi = new MapaUi(mainMapaDto.LevelMapaUiDto);
 
-        PrefabLevelsDto prefabLevels = prefabLevelsDto.GetComponent<PrefabLevelsDto>();
+        PrefabLevelsDto prefabLevels = mainMapaDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         FactoryMapaEntidade.configurar(prefabLevels);
-        NavegacaoMapas navegacaoMapas = new NavegacaoMapas(botoesNavegacao);        
+        NavegacaoMapas navegacaoMapas = new NavegacaoMapas(mainMapaDto.BotoesNavegacao);        
 
         new AcaoMapaNavegado()
             .configurarProdutor(navegacaoMapas)
