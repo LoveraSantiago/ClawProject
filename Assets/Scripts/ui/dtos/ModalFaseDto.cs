@@ -8,6 +8,7 @@ public class ModalFaseDto
     [SerializeField] private Animator animator;
     [Space(5)]
     [SerializeField] private Image imgMiniMaquina;
+    [SerializeField] private Image[] imgsColetaveis = new Image[3];
     [Space(5)]
     [SerializeField] private Text lblNivel;
     [SerializeField] private Text lblTipoGame;
@@ -19,6 +20,7 @@ public class ModalFaseDto
     public Animator Animator { get { return animator; } }
 
     public Image ImgMiniMaquina { get { return imgMiniMaquina; } }
+    public Image[] ImgsColetaveis { get { return imgsColetaveis; } }
 
     public Text LblNivel { get { return lblNivel; } }
     public Text LblTipoGame { get { return lblTipoGame; } }

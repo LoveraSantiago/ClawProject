@@ -4,7 +4,6 @@ using UnityEngine;
 public class MapaScene : MonoBehaviour,
                          AcaoMapaNavegado.ConsumidorEvento
 {
-
     [SerializeField] private MainMapaDto mainMapaDto;                        
 
     private AllTimersFichas allTimersFichas;

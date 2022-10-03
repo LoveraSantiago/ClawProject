@@ -3,14 +3,16 @@ public class NavegacaoDeArray<T>
     private T[] array;
     public int indiceAtual { get; private set; }
 
+    public NavegacaoDeArray()
+    {
+    }
+
     public NavegacaoDeArray(T[] array)
         :this(array, 0){}
 
     public NavegacaoDeArray(T[] array, int indiceInicial)
     {
-        this.array = array;
-        int indiceSanitizado = indiceInicial < 0 ? 0 : indiceInicial;
-        setIndiceAtual(indiceSanitizado);
+        setArray(array, indiceInicial);        
     }
 
     public T getItemIndiceAtual()
@@ -61,9 +63,17 @@ public class NavegacaoDeArray<T>
         return indiceAtual;
     }    
 
+    public void setArray(T[] array, int indiceInicial)
+    {
+        this.array = array;
+        setIndiceAtual(indiceInicial);
+    }
+
     public void setIndiceAtual(int indice)
     {
-        indiceAtual = indice;
+        int indiceSanitizado = indice < 0 ? 0 : indice;
+        indiceSanitizado = indiceSanitizado >= array.Length ? indiceSanitizado % array.Length : indiceSanitizado;
+        indiceAtual = indiceSanitizado;
     }
 
     public int getTamanhoArray()
