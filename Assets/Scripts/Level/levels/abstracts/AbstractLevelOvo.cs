@@ -3,12 +3,7 @@ public abstract class AbstractLevelOvo : AbstractLevel
     public override string getLevelTitle()
     {
         return "Momorizacao Level";
-    }
-
-    public override string getMsgObjetivoLevel()
-    {
-        return "Memorize e Acerte a trinca de coletaveis";
-    }
+    }  
 
     public override bool devolverParaBoard()
     {
