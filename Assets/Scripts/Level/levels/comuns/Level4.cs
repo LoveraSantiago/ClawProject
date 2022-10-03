@@ -5,12 +5,7 @@ public class Level4 : AbstractLevelOrdem
     public override string getLevelTitle()
     {
         return "Nível 4";
-    }
-
-    public override string getMsgObjetivoLevel()
-    {
-        return "Siga a ordem dos coletaveis";
-    }    
+    }     
 
     public override int[,] getArrayDeColetaveis()
     {

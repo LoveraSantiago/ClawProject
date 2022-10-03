@@ -5,12 +5,7 @@ public class Level3 : AbstractLevelElevador
     public override string getLevelTitle()
     {
         return "Nível 3";
-    }
-
-    public override string getMsgObjetivoLevel()
-    {
-        return AbstractLevel.MSG_ELEVADOR;
-    }   
+    }  
 
     public override int[,] getArrayDeColetaveis()
     {

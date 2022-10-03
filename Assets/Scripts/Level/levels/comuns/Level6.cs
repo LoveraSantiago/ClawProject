@@ -5,7 +5,7 @@ public class Level6 : AbstractLevelOvo
     public override string getLevelName()
     {
         return "Level 6";
-    }    
+    }   
 
     public override TipoContagemTempoDto getTempoContagem()
     {

@@ -15,8 +15,13 @@ public abstract class AbstractLevelOvo : AbstractLevel
         return true;
     }
 
+    public override string getMsgObjetivoLevel()
+    {
+        return AbstractLevel.MSG_MEMORIA;
+    }
+
     public override TipoGame getTipoGame()
     {
-        return TipoGame.SURPRESA;
+        return TipoGame.MEMORIA;
     }
 }

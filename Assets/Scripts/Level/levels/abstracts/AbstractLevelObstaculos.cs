@@ -5,5 +5,10 @@ public abstract class AbstractLevelObstaculos : AbstractLevel
         return TipoGame.OBSTACULO;
     }
 
+    public override string getMsgObjetivoLevel()
+    {
+        return AbstractLevel.MSG_OBSTACULOS;
+    }
+
     public abstract bool[,] getArrayDeObstaculos();    
 }

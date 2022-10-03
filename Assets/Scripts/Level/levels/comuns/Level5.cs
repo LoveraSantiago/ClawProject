@@ -5,12 +5,7 @@ public class Level5 : AbstractLevelObstaculos
     public override string getLevelTitle()
     {
         return "Nível 5";
-    }
-
-    public override string getMsgObjetivoLevel()
-    {
-        return "Colete com obstaculos";
-    }
+    }   
 
     public override int[,] getArrayDeColetaveis()
     {

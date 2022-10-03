@@ -9,7 +9,7 @@ public class Level1 : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return AbstractLevel.MSG_COLETE_ITENS;
+        return AbstractLevel.MSG_COLETAR_ITENS;
     }
 
     public override TipoGame getTipoGame()

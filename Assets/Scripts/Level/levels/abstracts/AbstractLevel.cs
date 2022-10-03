@@ -2,10 +2,14 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevel 
 {
-    private static ContextoEstaticoLevels contexto = new ContextoEstaticoLevels();
-    public static readonly string MSG_COLETE_ITENS = "Colete todos os itens";
-    public static readonly string MSG_ELEVADOR     = "Colete os itens antes do elevador subir";
+    public static readonly string MSG_COLETAR_ITENS = "Colete todos os itens.";
+    public static readonly string MSG_TEMPO         = "Colete os itens antes do tempo acabar.";
+    public static readonly string MSG_ELEVADOR      = "Colete os itens antes do elevador subir.";
+    public static readonly string MSG_ORDENADO      = "Colete seguindo a ordenação.";
+    public static readonly string MSG_OBSTACULOS    = "Colete apesar dos obstaculos.";
+    public static readonly string MSG_MEMORIA       = "Colete memorizando as posições.";
 
+    private static ContextoEstaticoLevels contexto = new ContextoEstaticoLevels();
     private Dictionary<string, string> dicionario;
 
     public static readonly string TIMER_ZERO = "00:00";

@@ -10,7 +10,7 @@ public class Level7 : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return "Colete todos os itens";
+        return AbstractLevel.MSG_COLETAR_ITENS;
     }
 
     public override TipoGame getTipoGame()
