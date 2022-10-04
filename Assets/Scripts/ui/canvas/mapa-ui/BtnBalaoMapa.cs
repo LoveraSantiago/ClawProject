@@ -40,4 +40,12 @@ public class BtnBalaoMapa
     {
         balaoLevelDto.GoExclamacao.SetActive(false);
     }    
+
+    public void ligarEstrelas(bool[] estrelas)
+    {
+        for(int contador = 0; contador < balaoLevelDto.ImgsEstrelas.Length; contador++)
+        {
+            balaoLevelDto.ImgsEstrelas[contador].gameObject.SetActive(estrelas[contador]);
+        }
+    }
 }

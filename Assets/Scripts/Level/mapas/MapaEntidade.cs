@@ -101,6 +101,11 @@ public class MapaEntidade
     {
         return levelFornecedor.getIndiceMaxLevelLiberadoDoMapa(id);
     }
+
+    public int[] getChallenges()
+    {
+        return levelFornecedor.getChallenges(this);
+    }
     //**** PARTE LEVELS FIM ****//
 
     //**** PARTE COLETAVEIS INICIO ****//

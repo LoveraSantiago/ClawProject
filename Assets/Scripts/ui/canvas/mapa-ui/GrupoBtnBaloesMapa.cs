@@ -51,6 +51,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
         {
             int levelsLiberados = evento.mapaEntidade.getIndiceMaxLevelLiberadoDoMapa();
             bool newLevelLiberado = PlayerPrefsMapas.isNovaLiberacaoLevelBalao();
+            int[] challenges = mapaEntidade.getChallenges();
 
             //Debug.Log("Qtd Levels Baloes Liberados " + levelsLiberados);
             for (int contador = 0; contador < levelsLiberados; contador++)
@@ -60,6 +61,8 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
                 if((contador == (levelsLiberados - 1)) && newLevelLiberado && mapaEntidade.isProgresso)
                 {
                     btnBalaoMapaIt.ativarExclamacao();
+                    bool[] estrelasChallenges = ChallengesUtils.toArray(challenges[contador]);
+                    btnBalaoMapaIt.ligarEstrelas(estrelasChallenges);
                 }
                 yield return new WaitForSeconds(delay);
             }

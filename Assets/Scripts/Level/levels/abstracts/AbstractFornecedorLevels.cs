@@ -1,5 +1,7 @@
 public abstract class AbstractFornecedorLevels
 {
+    private int[] challenges;
+
     public AbstractLevel getLevelByIndiceDezena(int idMapa, int indice)
     {
         AbstractLevel level = getLevelPorIndice(indice);
@@ -26,6 +28,15 @@ public abstract class AbstractFornecedorLevels
             return 1;
         }
         return maxLevelGeralLiberado;
+    }
+
+    public int[] getChallenges(MapaEntidade mapaEntidade)
+    {
+        if(challenges == null)
+        {
+            challenges = PlayerPrefsMapas.getChallengesDoMapa(mapaEntidade);
+        }
+        return challenges;
     }
 
     protected abstract AbstractLevel getLevelPorIndice(int level);
