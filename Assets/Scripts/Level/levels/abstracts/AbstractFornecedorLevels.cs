@@ -5,7 +5,8 @@ public abstract class AbstractFornecedorLevels
     public AbstractLevel getLevelByIndiceDezena(int idMapa, int indice)
     {
         AbstractLevel level = getLevelPorIndice(indice);
-        level.setIndiceLevelAtual(((10 * idMapa) - 10) + indice);
+        int indiceLevelAtual = ((10 * idMapa) - 10) + indice;
+        level.addInfosParaLevelEmAndamento(indiceLevelAtual, challenges[indice - 1]);
         return level;
     }
 

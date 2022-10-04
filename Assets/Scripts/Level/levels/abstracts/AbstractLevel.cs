@@ -25,7 +25,12 @@ public abstract class AbstractLevel
 
     public abstract bool devolverParaBoard();    
 
-    public abstract int[,] getArrayDeColetaveis();        
+    public abstract int[,] getArrayDeColetaveis();     
+    
+    public int getChallenge()
+    {
+        return contexto.getChallenge();
+    }
 
     public virtual PowerUpsParaLevel getPupsToLevel() { return null; }
 
@@ -78,9 +83,9 @@ public abstract class AbstractLevel
         return getPupsToLevel() != null;
     }   
 
-    public void setIndiceLevelAtual(int indiceLevelAtual)
+    public void addInfosParaLevelEmAndamento(int indiceLevelAtual, int challenge)
     {
-        contexto.receberIndiceLevelAtual(indiceLevelAtual);
+        contexto.addInfosParaLevelEmAndamento(indiceLevelAtual, challenge);
     }
 
     public void levelConcluido()

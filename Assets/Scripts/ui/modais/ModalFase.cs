@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class ModalFase 
 {
     private ModalFaseDto modalFaseDto;
@@ -26,6 +28,19 @@ public class ModalFase
         modalFaseDto.ImgsColetaveis[2].sprite = navegacaDeColetaveis.getItemProximo().sprite;
 
         modalFaseDto.Animator.Play("modal-objetivo");
+
+        int challenge = level.getChallenge();
+        bool[] estrelasChallenges =  ChallengesUtils.toArray(challenge);
+        
+        for(int contador = 0; contador < estrelasChallenges.Length; contador++)
+        {
+            Color corAtual = Color.white;
+            if (estrelasChallenges[contador])
+            {
+                corAtual = modalFaseDto.CorEstrela;
+            }
+            modalFaseDto.LinhasChallenges[contador].ImgEstrela.color = corAtual;
+        }
     }
 
     private void irParaCenaGame()
