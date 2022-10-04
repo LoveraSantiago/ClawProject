@@ -15,8 +15,9 @@ public class ContextoEstaticoLevels
         return challenge;
     }
 
-    public void salvarLevelAtual()
+    public void salvarLevelAtual(int challenge)
     {
+        this.challenge = challenge;
         PlayerPrefsMapas.salvarIndiceLevelLiberado(indiceLevelAtual + 1);
     }
 }

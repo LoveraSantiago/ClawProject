@@ -88,8 +88,14 @@ public abstract class AbstractLevel
         contexto.addInfosParaLevelEmAndamento(indiceLevelAtual, challenge);
     }
 
+    public Challenge[] getChallenges()
+    {
+        return new Challenge[] {};
+    }
+
     public void levelConcluido()
     {
-        contexto.salvarLevelAtual();
+        Avaliadores avaliadores = new Avaliadores(getChallenges());
+        contexto.salvarLevelAtual(avaliadores.avaliar());
     }
 }
