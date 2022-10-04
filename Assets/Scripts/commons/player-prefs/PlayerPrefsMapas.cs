@@ -137,7 +137,7 @@ public class PlayerPrefsMapas
     public static int[] getChallengesDoMapa(MapaEntidade mapaEntidade)
     {
         string chave = MAPA_CHALLENGES + mapaEntidade.id;
-        return recuperarArray(chave, 10, 1);        
+        return recuperarArray(chave, 10, 7);        
         //return recuperarArray(chave, 10, DESLIGADO);        
     }
 
