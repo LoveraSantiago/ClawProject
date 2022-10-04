@@ -19,7 +19,6 @@ public class ModalFaseDto
     [Space(3)]
     [SerializeField] private Color corEstrela;
     [SerializeField] private LinhaChallengeDto[] linhasChallenges = new LinhaChallengeDto[3];
-
         
     public Animator Animator { get { return animator; } }
 
