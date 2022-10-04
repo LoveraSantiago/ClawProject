@@ -2,12 +2,12 @@ using UnityEngine;
 
 public abstract class AbstractFornecedorColetaveisLevels
 {
-    private bool loadLiberacao;
+    private bool loadLiberacaoColetaveis;
     private ColetavelEntidade[] arrayDeColetaveis;
 
-    public void configurarLoadingDeLiberados(bool loadLiberacao)
+    public void configurarLoadingDeLiberados(bool loadLiberacaoColetaveis)
     {
-        this.loadLiberacao = loadLiberacao;
+        this.loadLiberacaoColetaveis = loadLiberacaoColetaveis;
     }
     
     public ColetavelEntidade getColetavelEntidadeByIndice(int indice, MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
@@ -118,7 +118,7 @@ public abstract class AbstractFornecedorColetaveisLevels
 
     private int[] loadColetaveisAdquiridos(MapaEntidade mapaEntidade, int qtdColetaveisDto)
     {
-        if (loadLiberacao)
+        if (loadLiberacaoColetaveis)
         {
             return  PlayerPrefsMapas.recuperarColetaveisAdquiridosDoMapa(mapaEntidade, qtdColetaveisDto);
         }
@@ -130,7 +130,7 @@ public abstract class AbstractFornecedorColetaveisLevels
 
     private int[] loadColetaveisLiberados(MapaEntidade mapaEntidade, int qtdColetaveisDto)
     {
-        if (loadLiberacao)
+        if (loadLiberacaoColetaveis)
         {
             return PlayerPrefsMapas.recuperarColetaveisEstadoLiberadosDoMapa(mapaEntidade, qtdColetaveisDto);
         }
