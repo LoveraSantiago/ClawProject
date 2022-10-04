@@ -15,7 +15,7 @@ public class MapaScene : MonoBehaviour,
         MateriaisUtils.configurar(mainMapaDto.PrefabMateriais);
 
         allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto);        
-        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto.ModalFaseDto, mainMapaDto.ModalNoFichaDto);
+        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto);
         new BotoesCenasMapa(mainMapaDto.BotoesCenasDto);
 
         mapaUi = new MapaUi(mainMapaDto.LevelMapaUiDto);
