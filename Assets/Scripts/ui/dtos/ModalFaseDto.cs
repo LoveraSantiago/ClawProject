@@ -6,16 +6,20 @@ using UnityEngine.UI;
 public class ModalFaseDto 
 {    
     [SerializeField] private Animator animator;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private Image imgMiniMaquina;
     [SerializeField] private Image[] imgsColetaveis = new Image[3];
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private Text lblNivel;
     [SerializeField] private Text lblTipoGame;
     [SerializeField] private Text lblObjetivo;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private Button btnFechar;
     [SerializeField] private Button btnLevel;
+    [Space(3)]
+    [SerializeField] private Color corEstrela;
+    [SerializeField] private LinhaChallengeDto[] linhasChallenges = new LinhaChallengeDto[3];
+
         
     public Animator Animator { get { return animator; } }
 
@@ -28,4 +32,7 @@ public class ModalFaseDto
 
     public Button BtnFechar { get { return btnFechar; } }
     public Button BtnLevel { get { return btnLevel; } }
+
+    public Color CorEstrela { get { return corEstrela; } }
+    public LinhaChallengeDto[] LinhasChallenges { get { return linhasChallenges; } }
 }
