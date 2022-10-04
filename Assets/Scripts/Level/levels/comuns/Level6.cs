@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class Level6 : AbstractLevelOvo
 {
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Level 6";
     }   

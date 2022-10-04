@@ -1,10 +1,5 @@
 public abstract class AbstractLevelOvo : AbstractLevel
 {
-    public override string getLevelTitle()
-    {
-        return "Momorizacao Level";
-    }  
-
     public override bool devolverParaBoard()
     {
         return true;
