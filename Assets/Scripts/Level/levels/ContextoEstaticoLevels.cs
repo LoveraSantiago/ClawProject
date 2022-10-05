@@ -19,5 +19,7 @@ public class ContextoEstaticoLevels
     {
         this.challenge = challenge;
         PlayerPrefsMapas.salvarIndiceLevelLiberado(indiceLevelAtual + 1);
+        MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;
+        PlayerPrefsMapas.salvarChallengeDoMapa(mapaEntidade, indiceLevelAtual - 1, challenge);
     }
 }

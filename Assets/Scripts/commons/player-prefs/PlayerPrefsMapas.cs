@@ -141,6 +141,15 @@ public class PlayerPrefsMapas
         return getArray(chave, 10, DESLIGADO);        
     }
 
+    public static void salvarChallengeDoMapa(MapaEntidade mapaEntidade, int indiceLevel, int challenge)
+    {
+        int[] challenges = getChallengesDoMapa(mapaEntidade);
+        challenges[indiceLevel] = challenge;
+
+        string chave = MAPA_CHALLENGES + mapaEntidade.id;
+        salvarArray(chave, challenges);
+    }
+
     public static int[] getColetaveisAdquiridosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)
     {
         string chave = MAPA_COLETAVEIS + mapaEntidade.id;
@@ -201,6 +210,7 @@ public class PlayerPrefsMapas
         wrapper.array = estados;
         string arrayString = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString(chave, arrayString);
+        Debug.Log("Chave " + chave + " array " + arrayString);
     }
 
     private static int[] getLiberacaoLevelsEspecificos()
