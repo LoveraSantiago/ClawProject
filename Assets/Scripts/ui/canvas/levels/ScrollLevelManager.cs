@@ -144,7 +144,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         string levelName = level.getLevelName();
         itemLevel.addLabels(indiceLevel, levelName, mapaEntidade.title, level.getMaquinaNome());
         itemLevel.desligarExclamacao();
-        itemLevel.colorirImgMaquina(3, level.getDicionarioDeCores());
+        itemLevel.colorirImgMaquina(level.getChallenge(), level.getDicionarioDeCores());
 
         if (levelsLiberados.BinarySearch(indiceLevel) >= 0)
         {
