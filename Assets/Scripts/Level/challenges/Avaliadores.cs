@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Avaliadores 
 {
     private Challenge[] challenges;
@@ -18,6 +14,6 @@ public class Avaliadores
         {
             resultados[contador] = challenges[contador].resultado();
         }
-        return 0;
+        return ChallengesUtils.toInteiro(resultados);
     }
 }
