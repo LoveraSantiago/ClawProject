@@ -90,7 +90,11 @@ public abstract class AbstractLevel
 
     public Challenge[] getChallenges()
     {
-        return new Challenge[] {};
+        return new Challenge[] {
+            new LevelCompletoChallenge(),
+            new LevelCompletoChallenge(),
+            new LevelCompletoChallenge()
+        };
     }
 
     public void levelConcluido()
