@@ -1,3 +1,5 @@
+using UnityEngine;
+//ESSE CARA TEM Q DEIXAR DE SER UTILITARIA E DEVE SER ESTATICA DE HELPERMAPAENTIDADE FECHAR ACESSO DESSA CLASSE
 public class FactoryMapaEntidade 
 {
     private static PrefabLevelsDto prefabsLevelsDto;
@@ -13,6 +15,7 @@ public class FactoryMapaEntidade
                     .addFornecedoresColetaveis(new DefaultFornecedorLevelsColetaveis(), loadLiberacaoColetaveis);
 
             case MapaEnum.FRUTAS:
+                Debug.Log("Instanciado mapa entidade frutas");
                 return new MapaEntidade(levelMapDto)
                     .addInfo(1, "PARQUE DE DIVERSÕES")
                     .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes())

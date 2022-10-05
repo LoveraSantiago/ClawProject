@@ -1,12 +1,12 @@
 public abstract class AbstractFornecedorLevels
 {
-    private int[] challenges;
+    private int[] estadoChallenges;
 
     public AbstractLevel getLevelByIndiceDezena(int idMapa, int indice)
     {
         AbstractLevel level = getLevelPorIndice(indice);
         int indiceLevelAtual = ((10 * idMapa) - 10) + indice;
-        level.addInfosParaLevelEmAndamento(indiceLevelAtual, challenges[indice - 1]);
+        level.addInfosParaLevelEmAndamento(indiceLevelAtual, estadoChallenges[indice - 1]);
         return level;
     }
 
@@ -31,13 +31,19 @@ public abstract class AbstractFornecedorLevels
         return maxLevelGeralLiberado;
     }
 
-    public int[] getChallenges(MapaEntidade mapaEntidade)
+    public int[] getEstadoChallenges(MapaEntidade mapaEntidade)
     {
-        if(challenges == null)
+        if(estadoChallenges == null)
         {
-            challenges = PlayerPrefsMapas.getChallengesDoMapa(mapaEntidade);
+            estadoChallenges = PlayerPrefsMapas.getChallengesDoMapa(mapaEntidade);
         }
-        return challenges;
+        return estadoChallenges;
+    }
+
+    public void resetChallenges(MapaEntidade mapaEntidade)
+    {
+        estadoChallenges = null;
+        getEstadoChallenges(mapaEntidade);
     }
 
     protected abstract AbstractLevel getLevelPorIndice(int level);

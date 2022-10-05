@@ -36,7 +36,7 @@ public class MapaEntidade
     public MapaEntidade addFornecedoresLevels(AbstractFornecedorLevels levelFornecedor)
     {
         this.levelFornecedor = levelFornecedor;
-        this.levelFornecedor.getChallenges(this);
+        getChallenges();
         return this;
     }
 
@@ -105,7 +105,12 @@ public class MapaEntidade
 
     public int[] getChallenges()
     {
-        return levelFornecedor.getChallenges(this);
+        return levelFornecedor.getEstadoChallenges(this);
+    }
+
+    public void reloadChallenges()
+    {
+        levelFornecedor.resetChallenges(this);
     }
     //**** PARTE LEVELS FIM ****//
 

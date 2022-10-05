@@ -8,11 +8,12 @@ public abstract class AbstractLevel
     public static readonly string MSG_ORDENADO      = "Colete seguindo a ordenação.";
     public static readonly string MSG_OBSTACULOS    = "Colete apesar dos obstaculos.";
     public static readonly string MSG_MEMORIA       = "Colete memorizando as posições.";
+    public static readonly string TIMER_ZERO        = "00:00";
 
-    private static ContextoEstaticoLevels contexto = new ContextoEstaticoLevels();
+    private int indiceLevelAtual;
+    private int challenge;
+
     private Dictionary<string, string> dicionario;
-
-    public static readonly string TIMER_ZERO = "00:00";
 
     public abstract string getLevelTitle();
 
@@ -29,7 +30,7 @@ public abstract class AbstractLevel
     
     public int getChallenge()
     {
-        return contexto.getChallenge();
+        return challenge;
     }
 
     public virtual PowerUpsParaLevel getPupsToLevel() { return null; }
@@ -84,8 +85,9 @@ public abstract class AbstractLevel
     }   
 
     public void addInfosParaLevelEmAndamento(int indiceLevelAtual, int challenge)
-    {
-        contexto.addInfosParaLevelEmAndamento(indiceLevelAtual, challenge);
+    {        
+        this.indiceLevelAtual = indiceLevelAtual;
+        this.challenge = challenge;
     }
 
     public Challenge[] getChallenges()
@@ -100,6 +102,12 @@ public abstract class AbstractLevel
     public void levelConcluido()
     {
         Avaliadores avaliadores = new Avaliadores(getChallenges());
-        contexto.salvarLevelAtual(avaliadores.avaliar());
+
+        challenge = avaliadores.avaliar();
+        
+        PlayerPrefsMapas.salvarIndiceLevelLiberado(indiceLevelAtual + 1);
+        MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;
+        PlayerPrefsMapas.salvarChallengeDoMapa(mapaEntidade, indiceLevelAtual - 1, challenge);
+        mapaEntidade.reloadChallenges();
     }
 }

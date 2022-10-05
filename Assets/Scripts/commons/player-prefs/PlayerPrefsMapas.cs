@@ -144,10 +144,15 @@ public class PlayerPrefsMapas
     public static void salvarChallengeDoMapa(MapaEntidade mapaEntidade, int indiceLevel, int challenge)
     {
         int[] challenges = getChallengesDoMapa(mapaEntidade);
-        challenges[indiceLevel] = challenge;
+        if(challenges[indiceLevel] != challenge)
+        {
+            challenges[indiceLevel] = challenge;
 
-        string chave = MAPA_CHALLENGES + mapaEntidade.id;
-        salvarArray(chave, challenges);
+            string chave = MAPA_CHALLENGES + mapaEntidade.id;
+            salvarArray(chave, challenges);
+
+            salvarNovaLiberacaoLevelEspecifico(indiceLevel);
+        }
     }
 
     public static int[] getColetaveisAdquiridosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)
