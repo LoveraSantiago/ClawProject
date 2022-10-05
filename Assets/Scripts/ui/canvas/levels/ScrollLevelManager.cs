@@ -139,6 +139,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
     {
         int indiceLevel = indiceAtual + 1;
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaNormalByIndicesTotasDeLevels(indiceAtual, false);
+        Debug.Log("Indice level " + indiceLevel);
         AbstractLevel level = mapaEntidade.getLevelByIndiceGeral(indiceLevel);
         string levelName = level.getLevelName();
         itemLevel.addLabels(indiceLevel, levelName, mapaEntidade.title, level.getMaquinaNome());

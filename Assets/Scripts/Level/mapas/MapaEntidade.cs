@@ -35,7 +35,8 @@ public class MapaEntidade
 
     public MapaEntidade addFornecedoresLevels(AbstractFornecedorLevels levelFornecedor)
     {
-        this.levelFornecedor = levelFornecedor;        
+        this.levelFornecedor = levelFornecedor;
+        this.levelFornecedor.getChallenges(this);
         return this;
     }
 
