@@ -120,7 +120,7 @@ public abstract class AbstractFornecedorColetaveisLevels
     {
         if (loadLiberacaoColetaveis)
         {
-            return  PlayerPrefsMapas.recuperarColetaveisAdquiridosDoMapa(mapaEntidade, qtdColetaveisDto);
+            return  PlayerPrefsMapas.getColetaveisAdquiridosDoMapa(mapaEntidade, qtdColetaveisDto);
         }
         else
         {
@@ -132,7 +132,7 @@ public abstract class AbstractFornecedorColetaveisLevels
     {
         if (loadLiberacaoColetaveis)
         {
-            return PlayerPrefsMapas.recuperarColetaveisEstadoLiberadosDoMapa(mapaEntidade, qtdColetaveisDto);
+            return PlayerPrefsMapas.getColetaveisEstadoLiberadosDoMapa(mapaEntidade, qtdColetaveisDto);
         }
         else
         {

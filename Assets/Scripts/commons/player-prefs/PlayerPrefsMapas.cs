@@ -110,7 +110,7 @@ public class PlayerPrefsMapas
 
     private static void salvarNovaLiberacaoLevelEspecifico(int indiceLevel)
     {
-        int[] arrayLevels = recuperarLiberacaoLevelsEspecificos();       
+        int[] arrayLevels = getLiberacaoLevelsEspecificos();       
         List<int> listaOrdenada = new List<int>(arrayLevels);
         listaOrdenada.Add(indiceLevel);
         listaOrdenada.Sort();
@@ -120,12 +120,12 @@ public class PlayerPrefsMapas
 
     public static int[] getNovaLiberacaoLevelEspecifico()
     {
-        return recuperarLiberacaoLevelsEspecificos();
+        return getLiberacaoLevelsEspecificos();
     }
 
     public static int[] consumidoNovaLiberacaoLevelEspecifico(int indiceConsumido)
     {
-        int[] arrayLevels = recuperarLiberacaoLevelsEspecificos();
+        int[] arrayLevels = getLiberacaoLevelsEspecificos();
         List<int> listaOrdenada = new List<int>(arrayLevels);
         listaOrdenada.Sort();
         listaOrdenada.Remove(indiceConsumido);
@@ -138,26 +138,26 @@ public class PlayerPrefsMapas
     {
         string chave = MAPA_CHALLENGES + mapaEntidade.id;
         //return recuperarArray(chave, 10, 7);        
-        return recuperarArray(chave, 10, DESLIGADO);        
+        return getArray(chave, 10, DESLIGADO);        
     }
 
-    public static int[] recuperarColetaveisAdquiridosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)
+    public static int[] getColetaveisAdquiridosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)
     {
         string chave = MAPA_COLETAVEIS + mapaEntidade.id;
-        return recuperarArray(chave, qtdColetaveis, DESLIGADO);
+        return getArray(chave, qtdColetaveis, DESLIGADO);
     }
 
-    public static int[] recuperarColetaveisEstadoLiberadosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)
+    public static int[] getColetaveisEstadoLiberadosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)
     {
         string chave = NEW_COLETAVEIS + mapaEntidade.id;
-        return recuperarArray(chave, qtdColetaveis, LIGADO);
+        return getArray(chave, qtdColetaveis, LIGADO);
     }   
 
     public static void consumirColetavelEstadoLiberadosDoMapa(ColetavelEntidade coletavel)
     {
         MapaEntidade mapaEntidade = coletavel.mapaEntidade;
         string chave = NEW_COLETAVEIS + mapaEntidade.id;
-        int[] arrayLiberados = recuperarColetaveisEstadoLiberadosDoMapa(mapaEntidade, mapaEntidade.getQtdColetaveis());
+        int[] arrayLiberados = getColetaveisEstadoLiberadosDoMapa(mapaEntidade, mapaEntidade.getQtdColetaveis());
         arrayLiberados[coletavel.indice] = DESLIGADO;
         salvarArray(chave, arrayLiberados);
     }
@@ -166,7 +166,7 @@ public class PlayerPrefsMapas
     {
         MapaEntidade mapaEntidade = coletavel.mapaEntidade;
         string chave = MAPA_COLETAVEIS + mapaEntidade.id;
-        int[] coletaveisEstadoLiberado = recuperarColetaveisAdquiridosDoMapa(mapaEntidade, mapaEntidade.getQtdColetaveis());
+        int[] coletaveisEstadoLiberado = getColetaveisAdquiridosDoMapa(mapaEntidade, mapaEntidade.getQtdColetaveis());
 
         if(coletaveisEstadoLiberado[coletavel.indice] == DESLIGADO)
         {
@@ -175,7 +175,7 @@ public class PlayerPrefsMapas
         }
     }
 
-    private static int[] recuperarArray(string chave, int tamanhoArray, int estado)
+    private static int[] getArray(string chave, int tamanhoArray, int estado)
     {
         string arrayString = PlayerPrefs.GetString(chave);
         if (Utils.isBlank(arrayString))
@@ -203,7 +203,7 @@ public class PlayerPrefsMapas
         PlayerPrefs.SetString(chave, arrayString);
     }
 
-    private static int[] recuperarLiberacaoLevelsEspecificos()
+    private static int[] getLiberacaoLevelsEspecificos()
     {        
         string arrayString = PlayerPrefs.GetString(NEW_LEVEL_ESPECIFICO);
         if (Utils.isBlank(arrayString))
