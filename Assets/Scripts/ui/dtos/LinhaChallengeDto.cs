@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class LinhaChallengeDto 
 {
     [SerializeField] private Image imgEstrela;
+    [SerializeField] private Text lblTextoChallenge;
 
     public Image ImgEstrela { get { return imgEstrela; } }
+    public Text LblTextoChallenge { get { return lblTextoChallenge; } }
 }

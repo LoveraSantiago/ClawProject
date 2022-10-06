@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LinhaChallenge
@@ -18,6 +16,6 @@ public class LinhaChallenge
 
     public void configurarChallenge(Challenge challenge)
     {
-
+        linhaChallengeDto.LblTextoChallenge.text = challenge.getLabelChallenge();
     }
 }
