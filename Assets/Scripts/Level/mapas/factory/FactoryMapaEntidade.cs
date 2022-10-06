@@ -1,10 +1,10 @@
 using UnityEngine;
-//ESSE CARA TEM Q DEIXAR DE SER UTILITARIA E DEVE SER ESTATICA DE HELPERMAPAENTIDADE FECHAR ACESSO DESSA CLASSE
+
 public class FactoryMapaEntidade 
 {
-    private static PrefabLevelsDto prefabsLevelsDto;
+    private PrefabLevelsDto prefabsLevelsDto;
 
-    public static MapaEntidade getMapaEntidadeByMapaEnum(MapaEnum mapaEnum, bool loadLiberacaoColetaveis)
+    public MapaEntidade getMapaEntidadeByMapaEnum(MapaEnum mapaEnum, bool loadLiberacaoColetaveis)//DEPRECIAR BOOELANO
     {
         LevelMapDto levelMapDto = prefabsLevelsDto.getLevelMapByEnum(mapaEnum);
         switch (mapaEnum)
@@ -96,16 +96,16 @@ public class FactoryMapaEntidade
         return null;
     }
 
-    public static MapaEntidade[] getMapaEntidadesLiberados(int adicao, bool loadLiberacaoColetaveis)
+    public MapaEntidade[] getMapaEntidadesLiberados(int adicao, bool loadLiberacaoColetaveis)
     {
         int indiceMapaLiberado = PlayerPrefsMapas.getIndiceMapaLiberado();
         LevelMapDto[] levelMapsDto = prefabsLevelsDto.getLevelsMapLiberadosDto(indiceMapaLiberado, adicao);
         MapaEntidade[] mapaEntidades = new MapaEntidade[levelMapsDto.Length];
-        for(int contador = 0; contador < levelMapsDto.Length; contador++)
+        for (int contador = 0; contador < levelMapsDto.Length; contador++)
         {
             MapaEntidade mapaEntidadeIt = mapaEntidades[contador];
-            mapaEntidadeIt = getMapaEntidadeByMapaEnum(levelMapsDto[contador].MapaEnum, loadLiberacaoColetaveis); 
-            if(mapaEntidadeIt.id <= indiceMapaLiberado)
+            mapaEntidadeIt = getMapaEntidadeByMapaEnum(levelMapsDto[contador].MapaEnum, loadLiberacaoColetaveis);
+            if (mapaEntidadeIt.id <= indiceMapaLiberado)
             {
                 mapaEntidadeIt.liberar();
             }
@@ -114,7 +114,7 @@ public class FactoryMapaEntidade
         return mapaEntidades;
     }
 
-    public static void configurar(PrefabLevelsDto prefabsLevelsDtoArg)
+    public void configurar(PrefabLevelsDto prefabsLevelsDtoArg)
     {
         prefabsLevelsDto = prefabsLevelsDtoArg;
     }

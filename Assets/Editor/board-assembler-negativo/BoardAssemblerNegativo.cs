@@ -29,7 +29,7 @@ public class BoardAssemblerNegativo : EditorWindow
         GameObject goPrefabsLevelsDto = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelsPrefabDto.prefab");        
         PrefabLevelsDto prefabLevelsDto = goPrefabsLevelsDto.GetComponent<PrefabLevelsDto>();
 
-        FactoryMapaEntidade.configurar(prefabLevelsDto);
+        HelperMapaEntidade.configurar(prefabLevelsDto);
         EditorLevelHelper.inicializar();
                 
         ReferenciasDoBoardNegativo referenciasDoBoard = new ReferenciasDoBoardNegativo();

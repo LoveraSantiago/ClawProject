@@ -64,7 +64,7 @@ public abstract class DropDownLevels
             if (!"0".Equals(evt.newValue) && !"-".Equals(evt.newValue) && !"DEFAULTS".Equals(evt.newValue))
             {
                 MapaEnum mapaEnum = Mapas.getMapaEnumByName(evt.newValue);
-                MapaEntidade mapaEntidade = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum, false);
+                MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum, false);
                 ContextoEstaticoUtils.configMapaEntidade(mapaEntidade);
                 ColetavelEntidade[] coletaveis = mapaEntidade.getColetaveis();                
                 

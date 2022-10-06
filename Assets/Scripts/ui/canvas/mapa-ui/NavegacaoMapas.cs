@@ -47,7 +47,7 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
 
     private void configurarMapasParaNavegacao()
     {
-        MapaEntidade[] mapas = FactoryMapaEntidade.getMapaEntidadesLiberados(2, false);
+        MapaEntidade[] mapas = HelperMapaEntidade.getMapaEntidadesLiberados(2, false);
         mapas[mapas.Length - 1].lockar();
         mapas[mapas.Length - 2].bloquear();
         mapas[mapas.Length - 3].emProgresso();

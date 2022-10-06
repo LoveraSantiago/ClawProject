@@ -4,12 +4,14 @@ using UnityEngine;
 public class HelperMapaEntidade 
 {
     private static Dictionary<MapaEnum, MapaEntidade> mapasEntidadesPorMapaEnum = new Dictionary<MapaEnum, MapaEntidade>();
+    private static FactoryMapaEntidade factoryMapaEntidade = new FactoryMapaEntidade();
 
     public static MapaEntidade getMapaEntidadeByMapaEnum(MapaEnum mapaEnum, bool loadLiberacao)
     {
         if (!mapasEntidadesPorMapaEnum.ContainsKey(mapaEnum))
         {
-            mapasEntidadesPorMapaEnum.Add(mapaEnum, FactoryMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum, loadLiberacao));
+            MapaEntidade mapaEntidade = factoryMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum, loadLiberacao);
+            mapasEntidadesPorMapaEnum.Add(mapaEnum, mapaEntidade);
         }
         return mapasEntidadesPorMapaEnum[mapaEnum];
     }        
@@ -27,5 +29,15 @@ public class HelperMapaEntidade
         MapaEntidade mapaEntidade = getMapaEntidadeByMapaEnum(mapaEnum, loadLiberacao);
         Debug.Log("indice " + indice + " calculado " + indiceMapaEntidade + " mapa " + mapaEntidade);
         return mapaEntidade;
+    }
+
+    public static MapaEntidade[] getMapaEntidadesLiberados(int adicao, bool loadLiberacaoColetaveis)
+    {
+        return factoryMapaEntidade.getMapaEntidadesLiberados(adicao, loadLiberacaoColetaveis);
+    }
+
+    public static void configurar(PrefabLevelsDto prefabsLevelsDtoArg)
+    {
+        factoryMapaEntidade.configurar(prefabsLevelsDtoArg);
     }
 }
