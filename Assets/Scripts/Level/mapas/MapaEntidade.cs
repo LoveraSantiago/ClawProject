@@ -40,10 +40,9 @@ public class MapaEntidade
         return this;
     }
 
-    public MapaEntidade addFornecedoresColetaveis(AbstractFornecedorColetaveisLevels coletaveisFornecedor, bool loadLiberacaoColetaveis)
+    public MapaEntidade addFornecedoresColetaveis(AbstractFornecedorColetaveisLevels coletaveisFornecedor)
     {
-        this.coletaveisFornecedor = coletaveisFornecedor;
-        this.coletaveisFornecedor.configurarLoadingDeLiberados(loadLiberacaoColetaveis);
+        this.coletaveisFornecedor = coletaveisFornecedor;        
         return this;
     }
     //**** PARTE CONFIGURACOES BUILDER FIM****//

@@ -29,7 +29,7 @@ public class PlayerPrefsMapas
     public static MapaEntidade getIndiceNavegacaoMapa()
     {
         int indice = PlayerPrefs.GetInt(MAPA_NAVEGACAO, LIGADO);
-        return HelperMapaEntidade.getMapaEntidadeByIndice(indice, false);
+        return HelperMapaEntidade.getMapaEntidadeByIndice(indice);
     }
 
     public static int getIndiceLevelLiberado()
