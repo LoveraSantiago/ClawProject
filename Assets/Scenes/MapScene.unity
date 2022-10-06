@@ -942,7 +942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92941177, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.019607844, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3809,7 +3809,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 740, y: 620}
+  m_SizeDelta: {x: 740, y: 630}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398261149
 MonoBehaviour:
@@ -6512,6 +6512,10 @@ PrefabInstance:
     - target: {fileID: 7455996003005887474, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455996003005887477, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 630
       objectReference: {fileID: 0}
     - target: {fileID: 7455996003005887477, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
       propertyPath: m_AnchoredPosition.y
