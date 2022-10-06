@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class ModalNoFicha 
 {
     private ModalNoFichaDto modalNoFichaDto;
@@ -5,16 +7,36 @@ public class ModalNoFicha
     public ModalNoFicha(ModalNoFichaDto modalNoFichaDto)
     {
         this.modalNoFichaDto = modalNoFichaDto;
-        modalNoFichaDto.BtnOk.onClick.AddListener(() => desligar());
+        modalNoFichaDto.BtnSair.onClick.AddListener(() => desligar());
+        modalNoFichaDto.BtnIrLoja.onClick.AddListener(() => irParaLoja());
     }
 
-    public void ligar()
+    public void ligar(Ficha ficha)
     {
-        //modalNoFichaDto.ModalNoFicha.SetActive(true);
+        Color corEscolhida = Color.white;
+        if(Ficha.BRONZE == ficha)
+        {
+            corEscolhida = modalNoFichaDto.CorBronze;
+        }
+        else if (Ficha.OURO == ficha)
+        {
+            corEscolhida = modalNoFichaDto.CorOuro;
+        }
+        else if(Ficha.PRATA == ficha)
+        {
+            corEscolhida = modalNoFichaDto.CorPrata;
+        }
+        modalNoFichaDto.ImgFicha.color = corEscolhida;
+        modalNoFichaDto.Animator.Play("modal-objetivo");
     }
 
     private void desligar()
     {
-        //modalNoFichaDto.ModalNoFicha.SetActive(false);
+        modalNoFichaDto.Animator.Play("fechar-modal");        
+    }
+
+    private void irParaLoja()
+    {
+        CenaUtils.irParaCenaLoja();
     }
 }

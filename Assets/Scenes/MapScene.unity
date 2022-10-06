@@ -1045,6 +1045,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &564068255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7455996002891480074, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+  m_PrefabInstance: {fileID: 2619119385962204102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &571754940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3662,11 +3673,12 @@ MonoBehaviour:
         lblTextoChallenge: {fileID: 152915757}
     modalNoFichaDto:
       animator: {fileID: 4837428847216123167}
-      imgFicha: {fileID: 0}
+      imgFicha: {fileID: 564068255}
       corOuro: {r: 1, g: 0.9647059, b: 0, a: 1}
       corPrata: {r: 0.85882354, g: 0.85882354, b: 0.85882354, a: 1}
       corBronze: {r: 1, g: 0.42745098, b: 0, a: 1}
-      btnOk: {fileID: 4837428846761883698}
+      btnIrLoja: {fileID: 4837428846761883698}
+      btnSair: {fileID: 1871906316}
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
 --- !u!114 &1393420355 stripped
@@ -5801,6 +5813,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2129605722735190202, guid: 509e21522e06b7445bc8d965d554c05e, type: 3}
   m_PrefabInstance: {fileID: 1859291349}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1871906316 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1871906316, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+  m_PrefabInstance: {fileID: 2619119385962204102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1881830901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 42590092743789315, guid: 509e21522e06b7445bc8d965d554c05e, type: 3}
@@ -6334,26 +6357,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1360404545}
     m_Modifications:
-    - target: {fileID: 7455996001262950250, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 618093782, guid: 3b3de1094aabc2347b7bfd810e060bde, type: 3}
+    - target: {fileID: 1871906314, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7455996001317480534, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455996001460970302, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455996001663935849, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455996001992094217, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455996002166284605, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455996002206161476, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7455996002371540699, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
       propertyPath: m_Name
       value: modal-sem-ficha
       objectReference: {fileID: 0}
+    - target: {fileID: 7455996002371540699, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7455996002371540700, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1201691977}
-    - target: {fileID: 7455996002371540701, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7455996002371540703, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6438,14 +6481,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7455996002748692209, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 618093782, guid: 3b3de1094aabc2347b7bfd810e060bde, type: 3}
-    - target: {fileID: 7455996002891480074, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 618093782, guid: 3b3de1094aabc2347b7bfd810e060bde, type: 3}
+    - target: {fileID: 7455996002839148009, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455996002891480072, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455996003005887474, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
 --- !u!1001 &2746002245882112964

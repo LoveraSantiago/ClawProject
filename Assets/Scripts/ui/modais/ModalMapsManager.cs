@@ -20,7 +20,7 @@ public class ModalMapsManager : AcaoMapaNavegado.ConsumidorEvento,
         }
         else
         {
-            modalNoFicha.ligar();
+            modalNoFicha.ligar(Ficha.PRATA);
         }
     }
 

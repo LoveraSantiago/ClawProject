@@ -67,7 +67,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         }
         else
         {
-            modalNoFicha.ligar();
+            modalNoFicha.ligar(Ficha.BRONZE);
         }
     }
 

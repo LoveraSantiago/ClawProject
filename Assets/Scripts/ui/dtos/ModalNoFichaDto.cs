@@ -12,12 +12,14 @@ public class ModalNoFichaDto
     [SerializeField] private Color corPrata;
     [SerializeField] private Color corBronze;
     [Space(3)]
-    [SerializeField] private Button btnOk; 
+    [SerializeField] private Button btnIrLoja; 
+    [SerializeField] private Button btnSair; 
 
     public Animator Animator { get { return animator; } }
     public Image ImgFicha { get { return imgFicha; } }
     public Color CorOuro { get { return corOuro; } }
     public Color CorPrata { get { return corPrata; } }
     public Color CorBronze { get { return corBronze; } }
-    public Button BtnOk { get { return btnOk; } }
+    public Button BtnIrLoja { get { return btnIrLoja; } }
+    public Button BtnSair { get { return btnSair; } }
 }
