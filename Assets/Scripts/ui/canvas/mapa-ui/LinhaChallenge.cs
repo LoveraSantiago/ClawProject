@@ -15,4 +15,9 @@ public class LinhaChallenge
     {
         linhaChallengeDto.ImgEstrela.color = cor;
     }
+
+    public void configurarChallenge(Challenge challenge)
+    {
+
+    }
 }

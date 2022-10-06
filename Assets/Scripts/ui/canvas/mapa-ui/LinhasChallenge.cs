@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LinhasChallenge 
@@ -19,7 +17,7 @@ public class LinhasChallenge
     {
         bool[] estrelasChallenges = ChallengesUtils.toArray(challenge);
 
-        for (int contador = 0; contador < estrelasChallenges.Length; contador++)
+        for (int contador = 0; contador < linhasChallenge.Length; contador++)
         {
             Color corAtual = Color.white;
             if (estrelasChallenges[contador])
@@ -27,6 +25,14 @@ public class LinhasChallenge
                 corAtual = cor;
             }
             linhasChallenge[contador].colorirEstrela(corAtual);            
+        }
+    }
+
+    public void addConfiguracaoChallenges(Challenge[] challenges)
+    {
+        for (int contador = 0; contador < linhasChallenge.Length; contador++)
+        {
+            linhasChallenge[contador].configurarChallenge(challenges[contador]);
         }
     }
 }

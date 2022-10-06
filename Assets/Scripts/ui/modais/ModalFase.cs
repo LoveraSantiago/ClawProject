@@ -30,7 +30,8 @@ public class ModalFase
         modalFaseDto.Animator.Play("modal-objetivo");
 
         int challenge = level.getChallenge();
-        linhasChallenge.addEstrelasChallenges(modalFaseDto.CorEstrela, challenge);        
+        linhasChallenge.addEstrelasChallenges(modalFaseDto.CorEstrela, challenge);
+        linhasChallenge.addConfiguracaoChallenges(level.getChallenges());
     }
 
     private void irParaCenaGame()
