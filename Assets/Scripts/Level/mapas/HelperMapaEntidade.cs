@@ -1,19 +1,12 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HelperMapaEntidade 
-{
-    private static Dictionary<MapaEnum, MapaEntidade> mapasEntidadesPorMapaEnum = new Dictionary<MapaEnum, MapaEntidade>();
+{    
     private static FactoryMapaEntidade factoryMapaEntidade = new FactoryMapaEntidade();
 
     public static MapaEntidade getMapaEntidadeByMapaEnum(MapaEnum mapaEnum)
     {
-        if (!mapasEntidadesPorMapaEnum.ContainsKey(mapaEnum))
-        {
-            MapaEntidade mapaEntidade = factoryMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
-            mapasEntidadesPorMapaEnum.Add(mapaEnum, mapaEntidade);
-        }
-        return mapasEntidadesPorMapaEnum[mapaEnum];
+        return factoryMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
     }        
 
     public static MapaEntidade getMapaEntidadeByIndice(int indice)
