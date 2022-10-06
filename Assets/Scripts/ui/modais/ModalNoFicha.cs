@@ -10,11 +10,11 @@ public class ModalNoFicha
 
     public void ligar()
     {
-        modalNoFichaDto.ModalNoFicha.SetActive(true);
+        //modalNoFichaDto.ModalNoFicha.SetActive(true);
     }
 
     private void desligar()
     {
-        modalNoFichaDto.ModalNoFicha.SetActive(false);
+        //modalNoFichaDto.ModalNoFicha.SetActive(false);
     }
 }
