@@ -1,8 +1,7 @@
-using UnityEngine;
-
 public class ModalFase 
 {
     private ModalFaseDto modalFaseDto;
+    private LinhasChallenge linhasChallenge;
     private NavegacaoDeArray<ColetavelEntidade> navegacaDeColetaveis;
 
     public ModalFase(ModalFaseDto modalFaseDto)
@@ -11,6 +10,7 @@ public class ModalFase
         modalFaseDto.BtnLevel.onClick.AddListener(()=> irParaCenaGame());
         modalFaseDto.BtnFechar.onClick.AddListener(() => desligar());
         navegacaDeColetaveis = new NavegacaoDeArray<ColetavelEntidade>();
+        linhasChallenge = new LinhasChallenge(modalFaseDto.LinhasChallenges);
     }
 
     public void ligar(MapaEntidade mapaEntidade, int indiceLevel)
@@ -20,7 +20,7 @@ public class ModalFase
         MaterialMiniMaquina.addCores(3, modalFaseDto.ImgMiniMaquina.material, level.getDicionarioDeCores());
         navegacaDeColetaveis.setArray(mapaEntidade.getColetaveis(), indiceLevel - 1);
 
-        modalFaseDto.LblNivel.text = level.getLevelTitle();
+        modalFaseDto.LblNivel.text    = level.getLevelTitle();
         modalFaseDto.LblTipoGame.text = "LEVEL " + level.getTipoGame().ToString();
         modalFaseDto.LblObjetivo.text = level.getMsgObjetivoLevel();
         modalFaseDto.ImgsColetaveis[0].sprite = navegacaDeColetaveis.getItemIndiceAtual().sprite;
@@ -30,17 +30,7 @@ public class ModalFase
         modalFaseDto.Animator.Play("modal-objetivo");
 
         int challenge = level.getChallenge();
-        bool[] estrelasChallenges =  ChallengesUtils.toArray(challenge);
-        
-        for(int contador = 0; contador < estrelasChallenges.Length; contador++)
-        {
-            Color corAtual = Color.white;
-            if (estrelasChallenges[contador])
-            {
-                corAtual = modalFaseDto.CorEstrela;
-            }
-            modalFaseDto.LinhasChallenges[contador].ImgEstrela.color = corAtual;
-        }
+        linhasChallenge.addEstrelasChallenges(modalFaseDto.CorEstrela, challenge);        
     }
 
     private void irParaCenaGame()
