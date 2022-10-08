@@ -26,15 +26,7 @@ public class ModalResultados : ModalManipulacao
         AbstractModalFim modalFim = new ModalFimPontos();
         modalFim.configurar(this);
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
-    }      
-
-    public void configurarModalFailOrdem()
-    {
-        naoMostrarLinhasResult();
-        AbstractModalFim modalFim = new ModalFimOrdem();
-        modalFim.configurar(this);
-        modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
-    }   
+    }         
 
     public void ligar()
     {

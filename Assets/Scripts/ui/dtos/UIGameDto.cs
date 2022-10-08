@@ -12,9 +12,12 @@ public class UIGameDto
     [SerializeField] private ModalCacaNiquelDto modalCacaNiquelDto;
     [Space(5)]
     [SerializeField] private ModalColetaveisDto modalColetaveisDto;
+    [Space(5)]
+    [SerializeField] private ModalFailOrdemDto modalFailOrdem;
 
     public ModalPontosDto ModalPontosDto { get { return modalPontosDto; } }
     public ModalSairDto ModalSairDto { get { return modalSairDto; } }    
     public ModalCacaNiquelDto ModalCacaNiquelDto { get { return modalCacaNiquelDto; } }
     public ModalColetaveisDto ModalColetaveisDto { get { return modalColetaveisDto; } }
+    public ModalFailOrdemDto ModalFailOrdem { get { return modalFailOrdem; } }
 }

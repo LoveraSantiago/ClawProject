@@ -70,11 +70,10 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     }
 
     private void mostrarModalOrdemFail(int ordem)
-    {        
-        modalResultado.setScoreAtual("Não seguiu ordem " + ordem);
-        //faltando navegacao de volta
-        modalResultado.configurarModalFailOrdem();
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+    {
+
+        ModalFailOrdem modal = new ModalFailOrdem(uiGameDto.ModalFailOrdem);
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
     }  
 
     private IEnumerator coroutineMostrarModal()
@@ -87,7 +86,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     private IEnumerator coroutineMostrarModal(AbstractModalFim modal)
     {
         mostrandoModal = true;       
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
         modal.ligar();
     }
 
