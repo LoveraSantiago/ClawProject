@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class UIGameDto 
 {
+    [SerializeField] private float delayAbrirModal;
     [Space(5)]
     [SerializeField] private ModalPontosDto modalPontosDto;
     [Space(5)]
@@ -15,6 +16,7 @@ public class UIGameDto
     [Space(5)]
     [SerializeField] private ModalFailOrdemDto modalFailOrdem;
 
+    public float DelayAbrirModal { get { return delayAbrirModal; } }
     public ModalPontosDto ModalPontosDto { get { return modalPontosDto; } }
     public ModalSairDto ModalSairDto { get { return modalSairDto; } }    
     public ModalCacaNiquelDto ModalCacaNiquelDto { get { return modalCacaNiquelDto; } }

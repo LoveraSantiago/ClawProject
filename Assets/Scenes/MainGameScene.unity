@@ -11806,6 +11806,7 @@ MonoBehaviour:
         delayInicial: 0.2
         molaGo: {fileID: 4127936681606313068, guid: 726671bcf599b5647aba20a381f66cfc, type: 3}
     uiDto:
+      delayAbrirModal: 0.3
       modalPontosDto:
         textoNivel: {fileID: 376184029}
         textoTempo: {fileID: 1903160288}
