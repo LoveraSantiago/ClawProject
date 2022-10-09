@@ -1,8 +1,13 @@
 public class ModalFimPontos : AbstractModalFim
 {
+    public ModalFimPontos()
+    {
+
+    }
+
     public override void ligar()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     protected override void irParaCena()

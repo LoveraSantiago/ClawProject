@@ -9,20 +9,23 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     private bool mostrandoModal;
 
     private UIGameDto uiGameDto;
-    private CacaNiquelDto cacaNiquelDto;    
+    private CacaNiquelDto cacaNiquelDto;
+    private ColetorDeDados coletorDeDados;
 
-    public ModalResultadosManager(UIGameDto uiGameDto, CacaNiquelDto cacaNiquelDto)
+    public ModalResultadosManager(UIGameDto uiGameDto, CacaNiquelDto cacaNiquelDto, ColetorDeDados coletorDeDados)
     {
         this.uiGameDto = uiGameDto;
-        this.cacaNiquelDto = cacaNiquelDto;
+        this.cacaNiquelDto  = cacaNiquelDto;
+        this.coletorDeDados = coletorDeDados;
     }             
 
     private void mostrarModalPontuacao()
     {
         if (!mostrandoModal)
         {
-            
-            
+            string resultado = coletorDeDados.coletar();
+            ModalFimPontos modal = new ModalFimPontos();
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
 

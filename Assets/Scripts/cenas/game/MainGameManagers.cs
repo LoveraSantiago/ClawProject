@@ -14,12 +14,14 @@ public class MainGameManagers
     public MainGameManagers(
         MainGameDto mainDto, AbstractLevel levelEscolhido, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
+        ColetorDeDados coletorDeDados = new ColetorDeDados();
+
         inputGame         = new InputGameImpl();
         garraManager      = new GarraManager(mainDto.GarraDto);
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
         maquinaManager    = new MaquinaManager(mainDto.MaquinaDto);
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
-        uiManager         = new UiGameManager(mainDto.UiDto, mainDto.MaquinaDto.DisplayColetadosDto.CacaNiquelDto);        
+        uiManager         = new UiGameManager(mainDto, coletorDeDados);
         cameraManager     = new CameraManager(mainDto.CameraDto);
         draggavelManager  = new DraggavelManager(mainDto.DragCollider);
 
