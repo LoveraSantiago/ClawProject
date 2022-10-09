@@ -107,7 +107,35 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (evento.isTimeOver())
         {
-            mostrarModalPontuacao();//CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            //CRIAR MODAL TEMPO ESGOTADO
+            mostrarModalPontuacao();
         }
     }
 
@@ -115,7 +143,42 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (evento.isGameOver)
         {
-            mostrarModalPontuacao();//CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            //CRIAR MODAL ELEVADOR GAME OVER
+            mostrarModalPontuacao();
         }
     }    
 
