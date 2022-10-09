@@ -24,7 +24,8 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         if (!mostrandoModal)
         {
             string resultado = coletorDeDados.coletar();
-            ModalFimPontos modal = new ModalFimPontos();
+            ModalFimPontos modal = new ModalFimPontos(uiGameDto.ModalPontosDto);
+            modal.passarResultados(resultado);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
