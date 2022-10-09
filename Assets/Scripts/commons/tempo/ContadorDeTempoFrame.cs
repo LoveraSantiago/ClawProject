@@ -24,6 +24,12 @@ public abstract class ContadorDeTempoFrame : ContadorDeTempo
         tempoInicial = tempoInicial + tempoPause;
     }
     
+    public float getTempoInicioPartida()
+    {
+        return tempoInicial;
+    }
+
     public abstract bool isTimeOver();
     public abstract bool isNearTimeOver();
+
 }

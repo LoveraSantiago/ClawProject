@@ -3,7 +3,9 @@ using System;
 public class ContadorTimer 
 {
     public enum Contagem { NORMAL, REGRESSIVA, CONTINUA };
-    private ContadorDeTempo contadorDeTempo;
+
+    public DadosDeTempo dadosDeTempo { get; private set; }
+    private ContadorDeTempo contadorDeTempo;    
 
     public void definirContador(TipoContagemTempoDto tipoContagemTempo, Executor executorTimerRestart)
     {
@@ -25,6 +27,7 @@ public class ContadorTimer
                 break;
             }
         }        
+        dadosDeTempo = new DadosDeTempo(contadorDeTempo);
     }
 
     public void iniciarContagemTempo()

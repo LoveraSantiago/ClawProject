@@ -10,7 +10,7 @@ public class ModalFimPontos : AbstractModalFim
 
     public void passarResultados(string resultados)
     {
-
+        modalPontosDto.TextoTempo.text = resultados;
     }
 
     public override void ligar()

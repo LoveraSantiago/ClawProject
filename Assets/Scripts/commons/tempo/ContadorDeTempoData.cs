@@ -52,5 +52,8 @@ public class ContadorDeTempoData : ContadorDeTempo
         return false;
     }
 
-
+    public float getTempoInicioPartida()
+    {
+        return 0;
+    }
 }

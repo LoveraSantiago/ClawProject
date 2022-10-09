@@ -8,7 +8,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
 {  
     private bool isPausado;
     
-    private ContadorTimer contadorTimer;    
+    public ContadorTimer contadorTimer { get; private set; }
     private DisplayTimerDigitos digitos;
     private Coroutine coroutineBlink;    
 
