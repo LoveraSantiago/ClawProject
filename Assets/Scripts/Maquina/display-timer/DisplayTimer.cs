@@ -6,12 +6,10 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
                             AcaoColetadoFim.ConsumidorEvento,
                             Executor
 {  
-    private float tempoInicial;
     private bool isPausado;
-        
+    
     private ContadorTimer contadorTimer;    
     private DisplayTimerDigitos digitos;
-
     private Coroutine coroutineBlink;    
 
     private ProdutorDeEvento<TempoEsgotadoDto> produtorDeEventoTempoEsgotado;
