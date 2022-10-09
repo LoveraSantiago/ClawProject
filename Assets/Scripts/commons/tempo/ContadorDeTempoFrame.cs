@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class ContadorDeTempoFrame : ContadorDeTempo
 {
-    protected float tempoInicial;
+    protected float tempoInicial { get; private set; }
     protected float tempoPause;
 
     public void iniciarContagem()
