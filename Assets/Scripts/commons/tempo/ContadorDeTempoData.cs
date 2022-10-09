@@ -3,11 +3,7 @@ using UnityEngine;
 
 public class ContadorDeTempoData : ContadorDeTempo
 {
-    private DateTime tempoInicial;
-
-    public ContadorDeTempoData()
-    {
-    }
+    private DateTime tempoInicial;    
 
     public ContadorDeTempoData(DateTime dateTime)
     {
