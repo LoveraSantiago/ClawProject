@@ -1,4 +1,4 @@
-public class ModalResultados : ModalManipulacao
+public class ModalResultados 
 {
     private ModalPontosDto modalPontosDto;
     private LinhaModalPontos[] linhasModal;
@@ -23,8 +23,7 @@ public class ModalResultados : ModalManipulacao
     public void configurar()
     {
         naoMostrarLinhasResult();
-        AbstractModalFim modalFim = new ModalFimPontos();
-        modalFim.configurar(this);
+        AbstractModalFim modalFim = new ModalFimPontos();        
         modalFim.configurarBotaoAvancar(modalPontosDto.BtnAvancar);
     }         
 
