@@ -55,6 +55,7 @@ public class ContadorTimer
         return contadorDeTempo.isNearTimeOver();
     }
 
+    //*OBS resplicado logica de TempoUtils para evitar reprocesso de dezenas
     public void passarTempoAosScores(DisplayTimerDigitos digitos)
     {
         TimeSpan timeSpan = contadorDeTempo.processarContagem();

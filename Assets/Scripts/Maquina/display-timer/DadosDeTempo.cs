@@ -14,6 +14,6 @@ public class DadosDeTempo : ProvedorDadosTempo
     {
         float tempoPartida = Time.time - contadorTempo.getTempoInicioPartida();
         TimeSpan timeSpan = TimeSpan.FromSeconds(tempoPartida);
-        return timeSpan.Minutes + ":" + timeSpan.Seconds;
+        return TempoUtils.extrairTextoDoTempo(timeSpan);
     }
 }
