@@ -8,7 +8,7 @@ public class UiGameManager
         modalResultados = new ModalResultadosManager(
             mainDto.UiDto, mainDto.MaquinaDto.DisplayColetadosDto.CacaNiquelDto, coletorDeDados);
 
-        modalSair       = new ModalSair(uiDto.ModalSairDto);
+        modalSair       = new ModalSair(mainDto.UiDto.ModalSairDto);
     }
 
     public void configurandoLevel(AbstractLevel levelEscolhido)
