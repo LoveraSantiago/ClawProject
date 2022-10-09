@@ -9,27 +9,20 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     private bool mostrandoModal;
 
     private UIGameDto uiGameDto;
-    private CacaNiquelDto cacaNiquelDto;
-
-    private ModalResultados modalResultado;
+    private CacaNiquelDto cacaNiquelDto;    
 
     public ModalResultadosManager(UIGameDto uiGameDto, CacaNiquelDto cacaNiquelDto)
     {
         this.uiGameDto = uiGameDto;
         this.cacaNiquelDto = cacaNiquelDto;
-    }
-
-    public void configurarLevel(string levelName)
-    {        
-        modalResultado = new ModalResultados(levelName, uiGameDto.ModalPontosDto);
-    }              
+    }             
 
     private void mostrarModalPontuacao()
     {
         if (!mostrandoModal)
         {
-            modalResultado.configurar();
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            
+            
         }
     }
 
@@ -73,14 +66,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         ModalFailOrdem modal = new ModalFailOrdem(uiGameDto.ModalFailOrdem);
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
-    }  
-
-    private IEnumerator coroutineMostrarModal()
-    {      
-        mostrandoModal = true;                   
-        yield return new WaitForSeconds(uiGameDto.DelayAbrirModal);
-        modalResultado.ligar();
-    }
+    }    
 
     private IEnumerator coroutineMostrarModal(AbstractModalFim modal)
     {
@@ -90,14 +76,12 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
-    {        
-        modalResultado.setScoreAtual(evento.score.ToString());
+    {  
         InformacoesFimDeJogoDto infoFimDeJogo = evento.infosFimDeJogo;
         if (infoFimDeJogo.fimColetados)
         {            
             AbstractLevel levelAtual = ContextoEstaticoUtils.level;
-            levelAtual.levelConcluido();
-            
+            levelAtual.levelConcluido();            
             mostrarModalPontuacao();
         }
         else if (infoFimDeJogo.erroOrdem)

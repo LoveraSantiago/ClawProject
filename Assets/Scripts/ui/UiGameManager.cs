@@ -10,8 +10,7 @@ public class UiGameManager
     }
 
     public void configurandoLevel(AbstractLevel levelEscolhido)
-    {
-        modalResultados.configurarLevel(levelEscolhido.getLevelTitle());        
+    {        
         modalSair.configuradoPeloLevel(levelEscolhido);
     }        
 }

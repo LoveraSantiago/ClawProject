@@ -9,5 +9,5 @@ public abstract class AbstractModalFim
 
     protected abstract void irParaCena();
 
-    public virtual void ligar(){}
+    public abstract void ligar();
 }
