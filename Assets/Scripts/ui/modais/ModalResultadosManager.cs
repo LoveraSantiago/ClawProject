@@ -23,9 +23,10 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            string resultado = coletorDeDados.coletar();
+            ResultadoLevelsDto resultadoLevels = coletorDeDados.coletar();
+
             ModalFimPontos modal = new ModalFimPontos(uiGameDto.ModalPontosDto);
-            modal.passarResultados(resultado);
+            modal.passarResultados(resultadoLevels);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
@@ -106,7 +107,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (evento.isTimeOver())
         {
-            mostrarModalPontuacao();
+            mostrarModalPontuacao();//CRIAR MODAL TEMPO ESGOTADO
         }
     }
 
@@ -114,7 +115,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (evento.isGameOver)
         {
-            mostrarModalPontuacao();
+            mostrarModalPontuacao();//CRIAR MODAL ELEVADOR GAME OVER
         }
     }    
 

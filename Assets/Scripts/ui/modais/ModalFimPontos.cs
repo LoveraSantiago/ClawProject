@@ -8,9 +8,10 @@ public class ModalFimPontos : AbstractModalFim
         modalPontosDto.BtnAvancar.onClick.AddListener(() => irParaCena());
     }
 
-    public void passarResultados(string resultados)
+    public void passarResultados(ResultadoLevelsDto resultadoLevelsDto)
     {
-        modalPontosDto.TextoTempo.text = resultados;
+        modalPontosDto.TextoTempo.text = resultadoLevelsDto.tempoPartida;
+        modalPontosDto.TextoPontos.text = Utils.to3Digitos(resultadoLevelsDto.score);
     }
 
     public override void ligar()

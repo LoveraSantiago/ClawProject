@@ -8,8 +8,10 @@ public class ColetorDeDados
         return this;
     }
 
-    public string coletar()
+    public ResultadoLevelsDto coletar()
     {
-        return provedorDadosTempo.getTempoPartida();
+        string tempoPartida = provedorDadosTempo.getTempoPartida();
+        ResultadoLevelsDto resultadoLevelsDto = new ResultadoLevelsDto(tempoPartida, 0);
+        return resultadoLevelsDto;
     }
 }
