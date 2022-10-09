@@ -12,13 +12,13 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     private PartesMaquinaDtoV2 partesDto;
 
     private Joystick            joystick;       
-    public  DisplayTimer        displayTimer { get; private set; }
-    public  BotoesPowerUp       botoesPowerUp { get; private set; }
-    public  BotaoLigaDesliga    botaoLigaDesliga { get; private set; }
-    public  ArcoIrisEfeito      arcoIrisEfeito { get; private set; }
-    public  DisplayDeScores     displayDeScores { get; private set; }
+    public  DisplayTimer        displayTimer       { get; private set; }
+    public  BotoesPowerUp       botoesPowerUp      { get; private set; }
+    public  BotaoLigaDesliga    botaoLigaDesliga   { get; private set; }
+    public  ArcoIrisEfeito      arcoIrisEfeito     { get; private set; }
+    public  DisplayDeScores     displayDeScores    { get; private set; }
     public  DisplaysDeColetados displayDeColetados { get; private set; }
-    public  ScrollPupsManager   scrollPupsManager { get; private set; }
+    public  ScrollPupsManager   scrollPupsManager  { get; private set; }
     private Draggavel           draggavel;
 
     public MaquinaManager(MaquinaDto maquinaDto)
