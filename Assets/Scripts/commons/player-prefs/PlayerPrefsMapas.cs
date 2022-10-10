@@ -245,10 +245,5 @@ public class PlayerPrefsMapas
 
         string arrayString = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString(NEW_LEVEL_ESPECIFICO, arrayString);
-    }   
-
-    private class WrapperArray
-    {
-        public int[] array;
-    }
+    }      
 }
