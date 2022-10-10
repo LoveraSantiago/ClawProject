@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class DadosDeTempo : ProvedorDadosTempo
+public class DadosDeTempo : Fornecedor<string>
 {
     private ContadorDeTempo contadorTempo;
 
@@ -10,10 +10,10 @@ public class DadosDeTempo : ProvedorDadosTempo
         this.contadorTempo = contadorTempo;
     }
 
-    public string getTempoPartida()
+    public string fornecer()
     {
         float tempoPartida = Time.time - contadorTempo.getTempoInicioPartida();
         TimeSpan timeSpan = TimeSpan.FromSeconds(tempoPartida);
-        return TempoUtils.extrairTextoDoTempo(timeSpan);
-    }
+        return TempoUtils.extrairTextoDoTempo(timeSpan);        
+    }    
 }
