@@ -99,7 +99,7 @@ public abstract class AbstractLevel
         };
     }
 
-    public void levelConcluido()
+    public void levelConcluido(string tempo, int score)
     {
         Avaliadores avaliadores = new Avaliadores(getChallenges());
 

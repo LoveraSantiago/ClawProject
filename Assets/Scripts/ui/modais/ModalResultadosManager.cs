@@ -25,6 +25,9 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         {
             ResultadoLevelsDto resultadoLevels = coletorDeDados.coletar();
 
+            AbstractLevel levelAtual = ContextoEstaticoUtils.level;
+            levelAtual.levelConcluido(resultadoLevels.tempoPartida, resultadoLevels.score);
+
             ModalFimPontos modal = new ModalFimPontos(uiGameDto.ModalPontosDto);
             modal.passarResultados(resultadoLevels);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
@@ -84,9 +87,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {  
         InformacoesFimDeJogoDto infoFimDeJogo = evento.infosFimDeJogo;
         if (infoFimDeJogo.fimColetados)
-        {            
-            AbstractLevel levelAtual = ContextoEstaticoUtils.level;
-            levelAtual.levelConcluido();            
+        {           
             mostrarModalPontuacao();
         }
         else if (infoFimDeJogo.erroOrdem)
