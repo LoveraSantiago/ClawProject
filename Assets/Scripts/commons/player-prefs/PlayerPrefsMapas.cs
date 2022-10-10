@@ -7,6 +7,8 @@ public class PlayerPrefsMapas
     private static readonly string MAPA_NAVEGACAO       = "mapa-naveg";
     private static readonly string MAPA_COLETAVEIS      = "mapa-col-";
     private static readonly string MAPA_CHALLENGES      = "mapa-challenges-";
+    private static readonly string MAPA_TEMPOS          = "mapa-tempos-";
+    private static readonly string MAPA_SCORES          = "mapa-scores-";
     private static readonly string NEW_LEVEL_BTN_BALAO  = "new-level-balao";
     private static readonly string NEW_LEVEL_LEVEL      = "new-level-level";
     private static readonly string NEW_LEVEL_ESPECIFICO = "new-level-especifico";
@@ -153,6 +155,23 @@ public class PlayerPrefsMapas
 
             salvarNovaLiberacaoLevelEspecifico(indiceLevel);
         }
+    }
+
+    public static void salvarScoreDoMapa(MapaEntidade mapaEntidade, int indiceLevel, int score)
+    {
+        int[] scores = getScoresDoMapa(mapaEntidade);
+        if(scores[indiceLevel] < score)
+        {
+            scores[indiceLevel] = score;
+            string chave = MAPA_SCORES + mapaEntidade.id;
+            salvarArray(chave, scores);
+        }
+    }
+
+    public static int[] getScoresDoMapa(MapaEntidade mapaEntidade)
+    {
+        string chave = MAPA_SCORES + mapaEntidade.id;
+        return getArray(chave, 10, DESLIGADO);
     }
 
     public static int[] getColetaveisAdquiridosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)

@@ -102,12 +102,14 @@ public abstract class AbstractLevel
     public void levelConcluido(string tempo, int score)
     {
         Avaliadores avaliadores = new Avaliadores(getChallenges());
+        MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;
 
         challenge = avaliadores.avaliar();
-        
+
         PlayerPrefsMapas.salvarIndiceLevelLiberado(indiceLevelAtual + 1);
-        MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;
+        PlayerPrefsMapas.salvarScoreDoMapa(mapaEntidade, indiceLevelAtual - 1, score);
         PlayerPrefsMapas.salvarChallengeDoMapa(mapaEntidade, indiceLevelAtual - 1, challenge);
+
         mapaEntidade.reloadChallenges();
     }
 }
