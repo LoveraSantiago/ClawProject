@@ -29,7 +29,9 @@ public class MainGameManagers
         configurandoEventos();
         consumidorUpdateManagers.consumir(new UpdaterEmptyManagers());
 
-        coletorDeDados.addProvedorDadosTempo(maquinaManager.displayTimer.contadorTimer.dadosDeTempo);
+        coletorDeDados
+            .addProvedorDadosTempo(maquinaManager.displayTimer.contadorTimer.dadosDeTempo)
+            .addProvedorDadosScore(coletaveisManager.contador);
 
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));        
     }   

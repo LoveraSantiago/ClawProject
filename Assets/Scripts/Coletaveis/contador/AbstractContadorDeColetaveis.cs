@@ -19,6 +19,8 @@ public abstract class AbstractContadorDeColetaveis : Fornecedor<TrocadorDeOrdem>
         return 0;
     }
 
+    public abstract int getScore();
+
     public abstract InformacoesFimDeJogoDto getInfoFimDeJogo();
 
     public abstract TrocadorDeOrdem fornecer();

@@ -14,7 +14,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private BoardManager board;
     private TuboDeDescarte tuboDeDescarte;
     private EfeitoColetado efeito;
-    private ContadorManager contador;
+    public ContadorManager contador { get; private set; }
 
     private DetectorDeTriggers detectorDeTrigger;
 

@@ -1,4 +1,4 @@
-public class ContadorManager 
+public class ContadorManager : Fornecedor<int>
 {
     private AbstractContadorDeColetaveis contador;
     private ColetaveisDto coletaveisDto;
@@ -71,5 +71,10 @@ public class ContadorManager
     public Fornecedor<TrocadorDeOrdem> getFornecedorTrocadorDeOrdem()
     {
         return contador;
+    }
+
+    public int fornecer()
+    {
+        return contador.getScore();
     }
 }

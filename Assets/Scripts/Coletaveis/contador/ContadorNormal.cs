@@ -116,5 +116,10 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         int indice = trinca.getPrimeiroIndiceVazio();
         //Debug.Log("Indice contador de coletaveis " + indice);
         coletados[indice] = coletado;        
-    }    
+    }
+
+    public override int getScore()
+    {
+        return score;
+    }
 }
