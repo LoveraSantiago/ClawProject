@@ -200,7 +200,7 @@ public class PlayerPrefsMapas
         }
         else
         {
-            WrapperArray wrapper = JsonUtility.FromJson<WrapperArray>(arrayString);
+            WrapperArrayInteiros wrapper = JsonUtility.FromJson<WrapperArrayInteiros>(arrayString);
             if (wrapper.array == null)
             {
                 return Utils.criarArrayPopuladoDeInteiros(tamanhoArray, estado);
@@ -211,7 +211,7 @@ public class PlayerPrefsMapas
 
     private static void salvarArray(string chave, int[] estados)
     {
-        WrapperArray wrapper = new WrapperArray();
+        WrapperArrayInteiros wrapper = new WrapperArrayInteiros();
         wrapper.array = estados;
         string arrayString = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString(chave, arrayString);
@@ -229,7 +229,7 @@ public class PlayerPrefsMapas
             salvarListaLiberacaoLevelEspecifico(listaInicial);
             arrayString = PlayerPrefs.GetString(NEW_LEVEL_ESPECIFICO); 
         }        
-        WrapperArray wrapper= JsonUtility.FromJson<WrapperArray>(arrayString);
+        WrapperArrayInteiros wrapper= JsonUtility.FromJson<WrapperArrayInteiros>(arrayString);
         if(wrapper.array == null)
         {
             return new int[0] { };
@@ -240,7 +240,7 @@ public class PlayerPrefsMapas
     private static void salvarListaLiberacaoLevelEspecifico(List<int> listaOrdenada)
     {
         int[] arrayLevels = listaOrdenada.ToArray();
-        WrapperArray wrapper = new WrapperArray();
+        WrapperArrayInteiros wrapper = new WrapperArrayInteiros();
         wrapper.array = arrayLevels;
 
         string arrayString = JsonUtility.ToJson(wrapper);
