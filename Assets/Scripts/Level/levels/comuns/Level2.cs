@@ -43,7 +43,7 @@ public class Level2 : AbstractLevel
 
     public override string getMaquinaNome()
     {
-        return "Chiclete e Embalagem";
+        return "Carvão Carbonita";
     }
 
     protected override Dictionary<string, string> getCoresMaquina()
