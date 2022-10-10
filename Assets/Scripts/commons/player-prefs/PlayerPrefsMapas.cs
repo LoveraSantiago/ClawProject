@@ -140,7 +140,7 @@ public class PlayerPrefsMapas
     {
         string chave = MAPA_CHALLENGES + mapaEntidade.id;
         //return recuperarArray(chave, 10, 7);        
-        return getArray(chave, 10, DESLIGADO);        
+        return getArrayNumerico(chave, 10, DESLIGADO);        
     }
 
     public static void salvarChallengeDoMapa(MapaEntidade mapaEntidade, int indiceLevel, int challenge)
@@ -151,7 +151,7 @@ public class PlayerPrefsMapas
             challenges[indiceLevel] = challenge;
 
             string chave = MAPA_CHALLENGES + mapaEntidade.id;
-            salvarArray(chave, challenges);
+            salvarArrayNumerico(chave, challenges);
 
             salvarNovaLiberacaoLevelEspecifico(indiceLevel);
         }
@@ -164,26 +164,46 @@ public class PlayerPrefsMapas
         {
             scores[indiceLevel] = score;
             string chave = MAPA_SCORES + mapaEntidade.id;
-            salvarArray(chave, scores);
+            salvarArrayNumerico(chave, scores);
         }
     }
 
     public static int[] getScoresDoMapa(MapaEntidade mapaEntidade)
     {
         string chave = MAPA_SCORES + mapaEntidade.id;
-        return getArray(chave, 10, DESLIGADO);
+        return getArrayNumerico(chave, 10, DESLIGADO);
+    }
+
+    public static void salvarTempoDoMapa(MapaEntidade mapaEntidade, int indiceLevel, string tempo)
+    {
+        string[] tempos = getTemposDoMapa(mapaEntidade);
+        double tempoSalvo = TempoUtils.parseTimeFromString(tempos[indiceLevel]);
+        double tempoASalvar = TempoUtils.parseTimeFromString(tempo);
+
+        if(tempoASalvar < tempoSalvo)
+        {
+            tempos[indiceLevel] = tempo;
+            string chave = MAPA_TEMPOS + mapaEntidade.id;
+            salvarArrayString(chave, tempos);
+        }
+    }
+
+    public static string[] getTemposDoMapa(MapaEntidade mapaEntidade)
+    {
+        string chave = MAPA_TEMPOS + mapaEntidade.id;
+        return getArrayStrings(chave, 10, "00:00");
     }
 
     public static int[] getColetaveisAdquiridosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)
     {
         string chave = MAPA_COLETAVEIS + mapaEntidade.id;
-        return getArray(chave, qtdColetaveis, DESLIGADO);
+        return getArrayNumerico(chave, qtdColetaveis, DESLIGADO);
     }
 
     public static int[] getColetaveisEstadoLiberadosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)
     {
         string chave = NEW_COLETAVEIS + mapaEntidade.id;
-        return getArray(chave, qtdColetaveis, LIGADO);
+        return getArrayNumerico(chave, qtdColetaveis, LIGADO);
     }   
 
     public static void consumirColetavelEstadoLiberadosDoMapa(ColetavelEntidade coletavel)
@@ -192,7 +212,7 @@ public class PlayerPrefsMapas
         string chave = NEW_COLETAVEIS + mapaEntidade.id;
         int[] arrayLiberados = getColetaveisEstadoLiberadosDoMapa(mapaEntidade, mapaEntidade.getQtdColetaveis());
         arrayLiberados[coletavel.indice] = DESLIGADO;
-        salvarArray(chave, arrayLiberados);
+        salvarArrayNumerico(chave, arrayLiberados);
     }
 
     public static void salvarColetavelAdquiridoDoDoMapa(ColetavelEntidade coletavel)
@@ -204,17 +224,17 @@ public class PlayerPrefsMapas
         if(coletaveisEstadoLiberado[coletavel.indice] == DESLIGADO)
         {
             coletaveisEstadoLiberado[coletavel.indice] = LIGADO;
-            salvarArray(chave, coletaveisEstadoLiberado);
+            salvarArrayNumerico(chave, coletaveisEstadoLiberado);
         }
     }
 
-    private static int[] getArray(string chave, int tamanhoArray, int estado)
+    private static int[] getArrayNumerico(string chave, int tamanhoArray, int estado)
     {
         string arrayString = PlayerPrefs.GetString(chave);
         if (Utils.isBlank(arrayString))
         {
             int[] arrayVazio = Utils.criarArrayPopuladoDeInteiros(tamanhoArray, estado);
-            salvarArray(chave, arrayVazio);
+            salvarArrayNumerico(chave, arrayVazio);
             return arrayVazio;
         }
         else
@@ -228,9 +248,38 @@ public class PlayerPrefsMapas
         }
     }
 
-    private static void salvarArray(string chave, int[] estados)
+    private static void salvarArrayNumerico(string chave, int[] estados)
     {
         WrapperArrayInteiros wrapper = new WrapperArrayInteiros();
+        wrapper.array = estados;
+        string arrayString = JsonUtility.ToJson(wrapper);
+        PlayerPrefs.SetString(chave, arrayString);
+        Debug.Log("Chave " + chave + " array " + arrayString);
+    }
+
+    private static string[] getArrayStrings(string chave, int tamanhoArray, string valor)
+    {
+        string arrayString = PlayerPrefs.GetString(chave);
+        if (Utils.isBlank(arrayString))
+        {
+            string[] arrayVazio = Utils.criarArrayPopuladoDeString(tamanhoArray, valor);
+            salvarArrayString(chave, arrayVazio);
+            return arrayVazio;
+        }
+        else
+        {
+            WrapperArrayString wrapper = JsonUtility.FromJson<WrapperArrayString>(arrayString);
+            if (wrapper.array == null)
+            {
+                return Utils.criarArrayPopuladoDeString(tamanhoArray, valor);
+            }
+            return wrapper.array;
+        }
+    }
+
+    private static void salvarArrayString(string chave, string[] estados)
+    {
+        WrapperArrayString wrapper = new WrapperArrayString();
         wrapper.array = estados;
         string arrayString = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString(chave, arrayString);

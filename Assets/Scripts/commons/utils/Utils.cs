@@ -29,6 +29,16 @@ public class Utils
         return arrayVazio;
     }
 
+    public static string[] criarArrayPopuladoDeString(int tamanhoArray, string valor)
+    {
+        string[] arrayVazio = new string[tamanhoArray];
+        for (int contador = 0; contador < tamanhoArray; contador++)
+        {
+            arrayVazio[contador] = valor;
+        }
+        return arrayVazio;
+    }
+
     public static bool isBlank(string valor)
     {
         return valor == null || "".Equals(valor);

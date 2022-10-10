@@ -105,10 +105,12 @@ public abstract class AbstractLevel
         MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;
 
         challenge = avaliadores.avaliar();
+        int indiceDecremento = indiceLevelAtual - 1;
 
         PlayerPrefsMapas.salvarIndiceLevelLiberado(indiceLevelAtual + 1);
-        PlayerPrefsMapas.salvarScoreDoMapa(mapaEntidade, indiceLevelAtual - 1, score);
-        PlayerPrefsMapas.salvarChallengeDoMapa(mapaEntidade, indiceLevelAtual - 1, challenge);
+        PlayerPrefsMapas.salvarScoreDoMapa(mapaEntidade, indiceDecremento, score);
+        PlayerPrefsMapas.salvarChallengeDoMapa(mapaEntidade, indiceDecremento, challenge);
+        PlayerPrefsMapas.salvarTempoDoMapa(mapaEntidade, indiceDecremento, tempo);
 
         mapaEntidade.reloadChallenges();
     }
