@@ -49,9 +49,10 @@ public class ItemLevelScroll
         itemLevelDto.ImgMaquina.material = material;
     }
 
-    public void colorirImgMaquina(int numeroEstrelas, Dictionary<string, string> cores)
+    public void colorirImgMaquina(AbstractLevel level)
     {
-        MaterialMiniMaquina.addCores(numeroEstrelas, material, cores);
+        int numeroEstrelas = level.challenge;
+        MaterialMiniMaquina.addCores(numeroEstrelas, material, level.getDicionarioDeCores());
         itemLevelDto.ImgEstrela1.sprite = numeroEstrelas >= 1 ? estrelaColorida : estrelaBranca;
         itemLevelDto.ImgEstrela2.sprite = numeroEstrelas >= 2 ? estrelaColorida : estrelaBranca;
         itemLevelDto.ImgEstrela3.sprite = numeroEstrelas >= 3 ? estrelaColorida : estrelaBranca;
@@ -90,12 +91,14 @@ public class ItemLevelScroll
         itemLevelDto.ImgMaquina.gameObject.SetActive(true);
     }
 
-    public void addLabels(int indiceLevel, string nomeLevel, string titulo, string nomeMaquina)
+    public void addLabels(int indiceLevel, string titulo, AbstractLevel level)
     {
         this.indiceLevel = indiceLevel;
-        itemLevelDto.LblLevel.text = nomeLevel;
+        itemLevelDto.LblLevel.text = level.getLevelName();
         itemLevelDto.LblMap.text = titulo;
-        itemLevelDto.LblMaquina.text = nomeMaquina;
+        itemLevelDto.LblMaquina.text = level.getMaquinaNome();
+        itemLevelDto.LblScore.text = level.score.ToString();
+        itemLevelDto.LblTempo.text = level.tempo;
     }
 
     public Vector2 getAnchoredPosition()

@@ -107,9 +107,9 @@ public class MapaEntidade
         return levelFornecedor.getEstadoChallenges(this);
     }
 
-    public void reloadChallenges()
+    public void reloadEstadosLevels()
     {
-        levelFornecedor.resetChallenges(this);
+        levelFornecedor.resetEstadosLevels(this);
     }
     //**** PARTE LEVELS FIM ****//
 

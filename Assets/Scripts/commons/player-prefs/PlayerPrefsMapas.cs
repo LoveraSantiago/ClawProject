@@ -177,7 +177,7 @@ public class PlayerPrefsMapas
     public static void salvarTempoDoMapa(MapaEntidade mapaEntidade, int indiceLevel, string tempo)
     {
         string[] tempos = getTemposDoMapa(mapaEntidade);
-        double tempoSalvo = TempoUtils.parseTimeFromString(tempos[indiceLevel]);
+        double tempoSalvo   = TempoUtils.parseTimeFromString(tempos[indiceLevel]);
         double tempoASalvar = TempoUtils.parseTimeFromString(tempo);
 
         if(tempoASalvar < tempoSalvo)
@@ -191,7 +191,7 @@ public class PlayerPrefsMapas
     public static string[] getTemposDoMapa(MapaEntidade mapaEntidade)
     {
         string chave = MAPA_TEMPOS + mapaEntidade.id;
-        return getArrayStrings(chave, 10, "00:00");
+        return getArrayStrings(chave, 10, "59:59");
     }
 
     public static int[] getColetaveisAdquiridosDoMapa(MapaEntidade mapaEntidade, int qtdColetaveis)

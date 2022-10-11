@@ -28,9 +28,8 @@ public class ModalFase
         modalFaseDto.ImgsColetaveis[2].sprite = navegacaDeColetaveis.getItemProximo().sprite;
 
         modalFaseDto.Animator.Play("modal-objetivo");
-
-        int challenge = level.getChallenge();
-        linhasChallenge.addEstrelasChallenges(modalFaseDto.CorEstrela, challenge);
+                
+        linhasChallenge.addEstrelasChallenges(modalFaseDto.CorEstrela, level.challenge);
         linhasChallenge.addConfiguracaoChallenges(level.getChallenges());
     }
 

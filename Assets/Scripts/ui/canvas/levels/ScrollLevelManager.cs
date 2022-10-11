@@ -142,9 +142,9 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         Debug.Log("Indice level " + indiceLevel);
         AbstractLevel level = mapaEntidade.getLevelByIndiceGeral(indiceLevel);
         string levelName = level.getLevelName();
-        itemLevel.addLabels(indiceLevel, levelName, mapaEntidade.title, level.getMaquinaNome());
+        itemLevel.addLabels(indiceLevel, mapaEntidade.title, level);
         itemLevel.desligarExclamacao();
-        itemLevel.colorirImgMaquina(level.getChallenge(), level.getDicionarioDeCores());
+        itemLevel.colorirImgMaquina(level);
 
         if (levelsLiberados.BinarySearch(indiceLevel) >= 0)
         {

@@ -11,7 +11,9 @@ public abstract class AbstractLevel
     public static readonly string TIMER_ZERO        = "00:00";
 
     private int indiceLevelAtual;
-    private int challenge;
+    public int challenge { get; private set; }
+    public int score     { get; private set; }
+    public string tempo  { get; private set; }
 
     private Dictionary<string, string> dicionario;
 
@@ -26,12 +28,8 @@ public abstract class AbstractLevel
 
     public abstract bool devolverParaBoard();    
 
-    public abstract int[,] getArrayDeColetaveis();     
-    
-    public int getChallenge()
-    {
-        return challenge;
-    }
+    public abstract int[,] getArrayDeColetaveis();        
+  
 
     public virtual PowerUpsParaLevel getPupsToLevel() { return null; }
 
@@ -84,10 +82,12 @@ public abstract class AbstractLevel
         return getPupsToLevel() != null;
     }   
 
-    public void addInfosParaLevelEmAndamento(int indiceLevelAtual, int challenge)
+    public void addInfosParaLevelEmAndamento(int indiceLevelAtual, int challenge, int score, string tempo)
     {        
         this.indiceLevelAtual = indiceLevelAtual;
         this.challenge = challenge;
+        this.score = score;
+        this.tempo = tempo;
     }
 
     public Challenge[] getChallenges()
@@ -112,6 +112,6 @@ public abstract class AbstractLevel
         PlayerPrefsMapas.salvarChallengeDoMapa(mapaEntidade, indiceDecremento, challenge);
         PlayerPrefsMapas.salvarTempoDoMapa(mapaEntidade, indiceDecremento, tempo);
 
-        mapaEntidade.reloadChallenges();
+        mapaEntidade.reloadEstadosLevels();
     }
 }
