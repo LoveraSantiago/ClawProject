@@ -1,19 +1,22 @@
 public class Avaliadores 
 {
-    private Challenge[] challenges;
+    public int challengeUnificado { get; private set; }
+    public bool[] resultadoLevel { get; private set; }
 
-    public Avaliadores(Challenge[] challenges)
+    public void avaliar(ResultadoLevelsDto resultadoLevels, Challenge[] challenges, int challengeAtual)
     {
-        this.challenges = challenges;
-    }
+        int tamanhoArray = 3;
 
-    public int avaliar()
-    {
-        bool[] resultados = new bool[3];
-        for(int contador = 0; contador < resultados.Length; contador++)
+        resultadoLevel = new bool[tamanhoArray];
+        bool[] resultadosUnificados = new bool[tamanhoArray];
+        bool[] resultadosAtuais = ChallengesUtils.toArray(challengeAtual);
+
+        for(int contador = 0; contador < resultadosUnificados.Length; contador++)
         {
-            resultados[contador] = challenges[contador].resultado();
+            resultadosAtuais[contador] = challenges[contador].resultado();
+            resultadosUnificados[contador] = resultadosAtuais[contador] || resultadosAtuais[contador];
         }
-        return ChallengesUtils.toInteiro(resultados);
+
+        challengeUnificado = ChallengesUtils.toInteiro(resultadosUnificados);
     }
 }

@@ -23,13 +23,16 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
+            AbstractLevel levelAtual = ContextoEstaticoUtils.level;
             ResultadoLevelsDto resultadoLevels = coletorDeDados.coletar();
 
-            AbstractLevel levelAtual = ContextoEstaticoUtils.level;
-            levelAtual.levelConcluido(resultadoLevels.tempoPartida, resultadoLevels.score);
+            Avaliadores avaliadores = new Avaliadores();
+            avaliadores.avaliar(resultadoLevels, levelAtual.getChallenges(), levelAtual.challenge);
+
+            levelAtual.levelConcluido(resultadoLevels.tempoPartida, resultadoLevels.score, avaliadores.challengeUnificado);
 
             ModalFimPontos modal = new ModalFimPontos(uiGameDto.ModalPontosDto);
-            modal.passarResultados(resultadoLevels);
+            modal.passarResultados(resultadoLevels, avaliadores.resultadoLevel);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }

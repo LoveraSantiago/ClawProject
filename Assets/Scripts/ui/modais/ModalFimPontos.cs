@@ -8,7 +8,7 @@ public class ModalFimPontos : AbstractModalFim
         modalPontosDto.BtnAvancar.onClick.AddListener(() => irParaCena());
     }
 
-    public void passarResultados(ResultadoLevelsDto resultadoLevelsDto)
+    public void passarResultados(ResultadoLevelsDto resultadoLevelsDto, bool[] challenges)
     {
         modalPontosDto.TextoTempo.text = resultadoLevelsDto.tempoPartida;
         modalPontosDto.TextoPontos.text = Utils.to3Digitos(resultadoLevelsDto.score);
