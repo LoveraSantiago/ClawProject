@@ -1,17 +1,21 @@
 public class ModalFimPontos : AbstractModalFim
 {
     private ModalPontosDto modalPontosDto;
+    private LinhasChallenge linhasChallenge;
 
     public ModalFimPontos(ModalPontosDto modalPontosDto)
     {
         this.modalPontosDto = modalPontosDto;
+        linhasChallenge = new LinhasChallenge(modalPontosDto.LinhasChallenges);
         modalPontosDto.BtnAvancar.onClick.AddListener(() => irParaCena());
     }
 
-    public void passarResultados(ResultadoLevelsDto resultadoLevelsDto, bool[] challenges)
+    public void passarResultados(ResultadoLevelsDto resultadoLevelsDto, Challenge[] challenges, bool[] resultChallenges)
     {
         modalPontosDto.TextoTempo.text = resultadoLevelsDto.tempoPartida;
         modalPontosDto.TextoPontos.text = Utils.to3Digitos(resultadoLevelsDto.score);
+        linhasChallenge.addConfiguracaoChallenges(challenges);
+        linhasChallenge.addEstrelasChallenges(modalPontosDto.CorEstrela, resultChallenges);
     }
 
     public override void ligar()

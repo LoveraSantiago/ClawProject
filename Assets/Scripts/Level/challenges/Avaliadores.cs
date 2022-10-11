@@ -13,8 +13,8 @@ public class Avaliadores
 
         for(int contador = 0; contador < resultadosUnificados.Length; contador++)
         {
-            resultadosAtuais[contador] = challenges[contador].resultado();
-            resultadosUnificados[contador] = resultadosAtuais[contador] || resultadosAtuais[contador];
+            resultadoLevel[contador] = challenges[contador].resultado();
+            resultadosUnificados[contador] = resultadoLevel[contador] || resultadosAtuais[contador];
         }
 
         challengeUnificado = ChallengesUtils.toInteiro(resultadosUnificados);

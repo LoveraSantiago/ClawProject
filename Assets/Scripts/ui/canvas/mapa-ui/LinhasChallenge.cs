@@ -16,15 +16,19 @@ public class LinhasChallenge
     public void addEstrelasChallenges(Color cor, int challenge)
     {
         bool[] estrelasChallenges = ChallengesUtils.toArray(challenge);
+        addEstrelasChallenges(cor, estrelasChallenges);
+    }
 
+    public void addEstrelasChallenges(Color cor, bool[] challenges)
+    {
         for (int contador = 0; contador < linhasChallenge.Length; contador++)
         {
             Color corAtual = Color.white;
-            if (estrelasChallenges[contador])
+            if (challenges[contador])
             {
                 corAtual = cor;
             }
-            linhasChallenge[contador].colorirEstrela(corAtual);            
+            linhasChallenge[contador].colorirEstrela(corAtual);
         }
     }
 
