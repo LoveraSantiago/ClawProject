@@ -90,7 +90,7 @@ public abstract class AbstractLevel
         this.tempo = tempo;
     }
 
-    public Challenge[] getChallenges()
+    public virtual Challenge[] getChallenges()
     {
         return new Challenge[] {
             new LevelCompletoChallenge(),

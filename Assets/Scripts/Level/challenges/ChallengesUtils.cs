@@ -31,4 +31,18 @@ public class ChallengesUtils
 
         return 0;
     }
+
+    public static int toQtdEstrelas(int challenge)
+    {
+        bool[] resultados = toArray(challenge);
+        int total = 0;
+        for(int contador = 0; contador < resultados.Length; contador++)
+        {
+            if (resultados[contador])
+            {
+                total++;
+            }
+        }
+        return total;
+    }
 }

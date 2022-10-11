@@ -27,7 +27,7 @@ public class FactoryMapaEntidade
                     .addFornecedoresColetaveis(new DefaultFornecedorLevelsColetaveis());
 
             case MapaEnum.FRUTAS:
-                Debug.Log("Instanciado mapa entidade frutas");
+                //Debug.Log("Instanciado mapa entidade frutas");
                 return new MapaEntidade(levelMapDto)
                     .addInfo(1, "PARQUE DE DIVERSÕES")
                     .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes())

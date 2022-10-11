@@ -50,7 +50,16 @@ public class Level1 : AbstractLevel
     public override bool devolverParaBoard()
     {
         return false;
-    }   
+    }
+
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+            new LevelCompletoChallenge(),
+            new TempoChallenge("00:30"),
+            new LevelCompletoChallenge()
+        };
+    }
 
     public override TipoContagemTempoDto getTempoContagem()
     {
