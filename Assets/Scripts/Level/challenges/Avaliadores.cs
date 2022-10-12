@@ -13,7 +13,7 @@ public class Avaliadores
 
         for(int contador = 0; contador < resultadosUnificados.Length; contador++)
         {
-            resultadoLevel[contador] = challenges[contador].resultado();
+            resultadoLevel[contador] = challenges[contador].resultado(resultadoLevels);
             resultadosUnificados[contador] = resultadoLevel[contador] || resultadosAtuais[contador];
         }
 

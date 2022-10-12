@@ -5,7 +5,7 @@ public class LevelCompletoChallenge : Challenge
         return "Colete todos os itens";
     }
 
-    public bool resultado()
+    public bool resultado(ResultadoLevelsDto resultadoLevelsDto)
     {
         return true;
     }
