@@ -2118,102 +2118,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d17661c767c9a7149b508e56916936f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnBack: {fileID: 818320628}
-  scrollRect: {fileID: 1600028417}
-  levelsScrollDto:
-    qtdItensVisiveis: 4
-    rTransformRefCima: {fileID: 2078935669}
-    rTransformRefBaixo: {fileID: 2131974978}
-    rTransformScroll: {fileID: 1481599767}
-    sprEstrelBranca: {fileID: 21300000, guid: 225ffc4002feb5f4b8a1867b5b6d116e, type: 3}
-    sprEstrelaColorida: {fileID: 21300000, guid: e27d64ba6ac8fea4a85452f05f311dce, type: 3}
-    itensLevelDto:
-    - rItem: {fileID: 2078935669}
-      btnLinha: {fileID: 1314937790}
-      imgMaquina: {fileID: 1314937787}
-      exclamacao: {fileID: 845045926}
-      lblLevel: {fileID: 1023398955}
-      lblMap: {fileID: 2017319853}
-      lblMaquina: {fileID: 39318933}
-      lblTempo: {fileID: 1023398960}
-      lblScore: {fileID: 1023398959}
-      imgEstrela1: {fileID: 1023398958}
-      imgEstrela2: {fileID: 1023398957}
-      imgEstrela3: {fileID: 1023398956}
-    - rItem: {fileID: 561216928}
-      btnLinha: {fileID: 1885609546}
-      imgMaquina: {fileID: 523384376}
-      exclamacao: {fileID: 1147823189}
-      lblLevel: {fileID: 857747207}
-      lblMap: {fileID: 1446936480}
-      lblMaquina: {fileID: 2094092905}
-      lblTempo: {fileID: 857747212}
-      lblScore: {fileID: 857747211}
-      imgEstrela1: {fileID: 857747210}
-      imgEstrela2: {fileID: 857747209}
-      imgEstrela3: {fileID: 857747208}
-    - rItem: {fileID: 2095980027}
-      btnLinha: {fileID: 779241223}
-      imgMaquina: {fileID: 446562466}
-      exclamacao: {fileID: 357996753}
-      lblLevel: {fileID: 154208199}
-      lblMap: {fileID: 1197603972}
-      lblMaquina: {fileID: 901862509}
-      lblTempo: {fileID: 154208204}
-      lblScore: {fileID: 154208203}
-      imgEstrela1: {fileID: 154208202}
-      imgEstrela2: {fileID: 154208201}
-      imgEstrela3: {fileID: 154208200}
-    - rItem: {fileID: 714508393}
-      btnLinha: {fileID: 1942262974}
-      imgMaquina: {fileID: 267314398}
-      exclamacao: {fileID: 1575319275}
-      lblLevel: {fileID: 115989665}
-      lblMap: {fileID: 244180974}
-      lblMaquina: {fileID: 686156698}
-      lblTempo: {fileID: 115989670}
-      lblScore: {fileID: 115989669}
-      imgEstrela1: {fileID: 115989668}
-      imgEstrela2: {fileID: 115989667}
-      imgEstrela3: {fileID: 115989666}
-    - rItem: {fileID: 2131974978}
-      btnLinha: {fileID: 1747746066}
-      imgMaquina: {fileID: 1747746063}
-      exclamacao: {fileID: 177661612}
-      lblLevel: {fileID: 2131974979}
-      lblMap: {fileID: 292881503}
-      lblMaquina: {fileID: 698516251}
-      lblTempo: {fileID: 368950080}
-      lblScore: {fileID: 368950079}
-      imgEstrela1: {fileID: 2131974982}
-      imgEstrela2: {fileID: 2131974981}
-      imgEstrela3: {fileID: 2131974980}
-    - rItem: {fileID: 1576097994}
-      btnLinha: {fileID: 2095533159}
-      imgMaquina: {fileID: 2095533156}
-      exclamacao: {fileID: 1280919024}
-      lblLevel: {fileID: 1576097995}
-      lblMap: {fileID: 452074992}
-      lblMaquina: {fileID: 1398443480}
-      lblTempo: {fileID: 1900275736}
-      lblScore: {fileID: 1900275735}
-      imgEstrela1: {fileID: 1576097998}
-      imgEstrela2: {fileID: 1576097997}
-      imgEstrela3: {fileID: 1576097996}
-    - rItem: {fileID: 1988281363}
-      btnLinha: {fileID: 1177271897}
-      imgMaquina: {fileID: 1177271894}
-      exclamacao: {fileID: 1101911179}
-      lblLevel: {fileID: 1988281362}
-      lblMap: {fileID: 1911783722}
-      lblMaquina: {fileID: 602398533}
-      lblTempo: {fileID: 863236236}
-      lblScore: {fileID: 863236235}
-      imgEstrela1: {fileID: 1988281366}
-      imgEstrela2: {fileID: 1988281365}
-      imgEstrela3: {fileID: 1988281364}
-  imageMaquinaGiratoria: {fileID: 1430094561}
-  prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
+  mainLevelDto:
+    btnBack: {fileID: 818320628}
+    scrollRect: {fileID: 1600028417}
+    levelsScrollDto:
+      qtdItensVisiveis: 4
+      rTransformRefCima: {fileID: 2078935669}
+      rTransformRefBaixo: {fileID: 2131974978}
+      rTransformScroll: {fileID: 1481599767}
+      sprEstrelBranca: {fileID: 21300000, guid: 225ffc4002feb5f4b8a1867b5b6d116e, type: 3}
+      sprEstrelaColorida: {fileID: 21300000, guid: e27d64ba6ac8fea4a85452f05f311dce, type: 3}
+      itensLevelDto:
+      - rItem: {fileID: 2078935669}
+        btnLinha: {fileID: 1314937790}
+        imgMaquina: {fileID: 1314937787}
+        exclamacao: {fileID: 845045926}
+        lblLevel: {fileID: 1023398955}
+        lblMap: {fileID: 2017319853}
+        lblMaquina: {fileID: 39318933}
+        lblTempo: {fileID: 1023398960}
+        lblScore: {fileID: 1023398959}
+        imgEstrela1: {fileID: 1023398958}
+        imgEstrela2: {fileID: 1023398957}
+        imgEstrela3: {fileID: 1023398956}
+      - rItem: {fileID: 561216928}
+        btnLinha: {fileID: 1885609546}
+        imgMaquina: {fileID: 523384376}
+        exclamacao: {fileID: 1147823189}
+        lblLevel: {fileID: 857747207}
+        lblMap: {fileID: 1446936480}
+        lblMaquina: {fileID: 2094092905}
+        lblTempo: {fileID: 857747212}
+        lblScore: {fileID: 857747211}
+        imgEstrela1: {fileID: 857747210}
+        imgEstrela2: {fileID: 857747209}
+        imgEstrela3: {fileID: 857747208}
+      - rItem: {fileID: 2095980027}
+        btnLinha: {fileID: 779241223}
+        imgMaquina: {fileID: 446562466}
+        exclamacao: {fileID: 357996753}
+        lblLevel: {fileID: 154208199}
+        lblMap: {fileID: 1197603972}
+        lblMaquina: {fileID: 901862509}
+        lblTempo: {fileID: 154208204}
+        lblScore: {fileID: 154208203}
+        imgEstrela1: {fileID: 154208202}
+        imgEstrela2: {fileID: 154208201}
+        imgEstrela3: {fileID: 154208200}
+      - rItem: {fileID: 714508393}
+        btnLinha: {fileID: 1942262974}
+        imgMaquina: {fileID: 267314398}
+        exclamacao: {fileID: 1575319275}
+        lblLevel: {fileID: 115989665}
+        lblMap: {fileID: 244180974}
+        lblMaquina: {fileID: 686156698}
+        lblTempo: {fileID: 115989670}
+        lblScore: {fileID: 115989669}
+        imgEstrela1: {fileID: 115989668}
+        imgEstrela2: {fileID: 115989667}
+        imgEstrela3: {fileID: 115989666}
+      - rItem: {fileID: 2131974978}
+        btnLinha: {fileID: 1747746066}
+        imgMaquina: {fileID: 1747746063}
+        exclamacao: {fileID: 177661612}
+        lblLevel: {fileID: 2131974979}
+        lblMap: {fileID: 292881503}
+        lblMaquina: {fileID: 698516251}
+        lblTempo: {fileID: 368950080}
+        lblScore: {fileID: 368950079}
+        imgEstrela1: {fileID: 2131974982}
+        imgEstrela2: {fileID: 2131974981}
+        imgEstrela3: {fileID: 2131974980}
+      - rItem: {fileID: 1576097994}
+        btnLinha: {fileID: 2095533159}
+        imgMaquina: {fileID: 2095533156}
+        exclamacao: {fileID: 1280919024}
+        lblLevel: {fileID: 1576097995}
+        lblMap: {fileID: 452074992}
+        lblMaquina: {fileID: 1398443480}
+        lblTempo: {fileID: 1900275736}
+        lblScore: {fileID: 1900275735}
+        imgEstrela1: {fileID: 1576097998}
+        imgEstrela2: {fileID: 1576097997}
+        imgEstrela3: {fileID: 1576097996}
+      - rItem: {fileID: 1988281363}
+        btnLinha: {fileID: 1177271897}
+        imgMaquina: {fileID: 1177271894}
+        exclamacao: {fileID: 1101911179}
+        lblLevel: {fileID: 1988281362}
+        lblMap: {fileID: 1911783722}
+        lblMaquina: {fileID: 602398533}
+        lblTempo: {fileID: 863236236}
+        lblScore: {fileID: 863236235}
+        imgEstrela1: {fileID: 1988281366}
+        imgEstrela2: {fileID: 1988281365}
+        imgEstrela3: {fileID: 1988281364}
+    imageMaquinaGiratoria: {fileID: 1430094561}
+    prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
 --- !u!114 &1747746063 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4144852223566241913, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}
