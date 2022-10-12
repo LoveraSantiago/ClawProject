@@ -10,7 +10,7 @@ public class Level2 : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return AbstractLevel.MSG_TEMPO;
+        return LevelUtils.MSG_TEMPO;
     }
 
     public override TipoGame getTipoGame()

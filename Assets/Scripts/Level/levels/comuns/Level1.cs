@@ -9,7 +9,7 @@ public class Level1 : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return AbstractLevel.MSG_COLETAR_ITENS;
+        return LevelUtils.MSG_COLETAR_ITENS;
     }
 
     public override TipoGame getTipoGame()
@@ -63,7 +63,7 @@ public class Level1 : AbstractLevel
 
     public override TipoContagemTempoDto getTempoContagem()
     {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
     }
 
     public override PowerUpsParaLevel getPupsToLevel()

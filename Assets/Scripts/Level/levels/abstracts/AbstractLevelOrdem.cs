@@ -7,7 +7,7 @@ public abstract class AbstractLevelOrdem : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return AbstractLevel.MSG_ORDENADO;
+        return LevelUtils.MSG_ORDENADO;
     }
 
     public abstract BoardOrdem[] getBoardOrdem();

@@ -42,7 +42,7 @@ public class Level5 : AbstractLevelObstaculos
 
     public override TipoContagemTempoDto getTempoContagem()
     {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
     }
 
     public override string getMaquinaNome()

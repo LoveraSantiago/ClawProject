@@ -7,7 +7,7 @@ public abstract class AbstractLevelOvo : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return AbstractLevel.MSG_MEMORIA;
+        return LevelUtils.MSG_MEMORIA;
     }
 
     public override TipoGame getTipoGame()

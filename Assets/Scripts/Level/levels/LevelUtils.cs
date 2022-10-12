@@ -1,5 +1,14 @@
 public class LevelUtils 
 {
+    public static readonly string MSG_COLETAR_ITENS = "Colete todos os itens.";
+    public static readonly string MSG_TEMPO         = "Colete os itens antes do tempo acabar.";
+    public static readonly string MSG_ELEVADOR      = "Colete os itens antes do elevador subir.";
+    public static readonly string MSG_ORDENADO      = "Colete seguindo a ordenação.";
+    public static readonly string MSG_OBSTACULOS    = "Colete apesar dos obstaculos.";
+    public static readonly string MSG_MEMORIA       = "Colete memorizando as posições.";
+    public static readonly string TIMER_ZERO        = "00:00";
+
+
     public static bool isNormalLevel(AbstractLevel level)
     {
         return level.getTipoGame() == TipoGame.NORMAL;

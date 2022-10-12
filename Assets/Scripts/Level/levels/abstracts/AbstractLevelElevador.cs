@@ -7,7 +7,7 @@ public abstract class AbstractLevelElevador : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return AbstractLevel.MSG_ELEVADOR;
+        return LevelUtils.MSG_ELEVADOR;
     }
 
     public abstract int[,] getArrayDeColetaveisSub();

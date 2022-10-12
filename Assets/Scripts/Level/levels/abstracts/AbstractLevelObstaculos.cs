@@ -7,7 +7,7 @@ public abstract class AbstractLevelObstaculos : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return AbstractLevel.MSG_OBSTACULOS;
+        return LevelUtils.MSG_OBSTACULOS;
     }
 
     public abstract bool[,] getArrayDeObstaculos();    
