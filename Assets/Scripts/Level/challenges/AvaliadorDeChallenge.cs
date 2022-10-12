@@ -1,9 +1,9 @@
-public class Avaliadores 
+public class AvaliadorDeChallenge 
 {
     public int challengeUnificado { get; private set; }
     public bool[] resultadoLevel { get; private set; }
 
-    public Avaliadores(ResultadoLevelsDto resultadoLevels, Challenge[] challenges, int challengeAtual)
+    public AvaliadorDeChallenge(ResultadoLevelsDto resultadoLevels, Challenge[] challenges, int challengeAtual)
     {
         int tamanhoArray = 3;
 

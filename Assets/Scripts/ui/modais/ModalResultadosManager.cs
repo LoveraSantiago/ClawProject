@@ -27,7 +27,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
             ResultadoLevelsDto resultadoLevels = coletorDeDados.coletar();
             Challenge[] challenges = levelAtual.getChallenges();
 
-            Avaliadores avaliadores = new Avaliadores(resultadoLevels, challenges, levelAtual.challenge);            
+            AvaliadorDeChallenge avaliadores = new AvaliadorDeChallenge(resultadoLevels, challenges, levelAtual.challenge);            
 
             levelAtual.levelConcluido(resultadoLevels.tempoPartida, resultadoLevels.score, avaliadores.challengeUnificado);
 
