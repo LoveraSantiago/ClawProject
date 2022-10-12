@@ -93,9 +93,9 @@ public abstract class AbstractLevel
     public virtual Challenge[] getChallenges()
     {
         return new Challenge[] {
-            new LevelCompletoChallenge(),
-            new LevelCompletoChallenge(),
-            new LevelCompletoChallenge()
+            new ChallengeLevelCompleto(),
+            new ChallengeLevelCompleto(),
+            new ChallengeLevelCompleto()
         };
     }
 

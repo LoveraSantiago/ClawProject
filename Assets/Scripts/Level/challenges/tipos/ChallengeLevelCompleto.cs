@@ -1,4 +1,4 @@
-public class LevelCompletoChallenge : Challenge
+public class ChallengeLevelCompleto : Challenge
 {
     public string getLabelChallenge()
     {

@@ -55,9 +55,9 @@ public class Level1 : AbstractLevel
     public override Challenge[] getChallenges()
     {
         return new Challenge[] {
-            new LevelCompletoChallenge(),
+            new ChallengeLevelCompleto(),
             new TempoChallenge("00:30"),
-            new LevelCompletoChallenge()
+            new ChallengeLevelCompleto()
         };
     }
 
