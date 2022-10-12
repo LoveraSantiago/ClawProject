@@ -1,8 +1,8 @@
-public class TempoChallenge : Challenge
+public class ChallengeTempoMenor : Challenge
 {
     private string tempoEstimado;
 
-    public TempoChallenge(string tempoEstimado)
+    public ChallengeTempoMenor(string tempoEstimado)
     {
         this.tempoEstimado = tempoEstimado;
     }
