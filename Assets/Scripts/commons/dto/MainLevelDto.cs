@@ -14,10 +14,13 @@ public class MainLevelDto
     [SerializeField] private Image imageMaquinaGiratoria;
     [Space(5)]
     [SerializeField] private GameObject prefabMateriais;
+    [SerializeField] private GameObject prefabLevelsDto;
 
     public Button BtnBack { get { return btnBack; } }
     public ScrollRect ScrollRect { get { return scrollRect; } }
     public LevelsScrollDto LevelsScrollDto { get { return levelsScrollDto; } }
     public Image ImageMaquinaGiratoria { get { return imageMaquinaGiratoria; } }
     public GameObject PrefabMateriais { get { return prefabMateriais; } }
+    public GameObject PrefabLevelsDto { get { return prefabLevelsDto; } }
+
 }

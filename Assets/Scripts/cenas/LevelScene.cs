@@ -15,6 +15,9 @@ public class LevelScene : MonoBehaviour,
         MateriaisUtils.configurar(mainLevelDto.PrefabMateriais);
         mainLevelDto.BtnBack.onClick.AddListener(() => voltar());
 
+        PrefabLevelsDto prefabLevels = mainLevelDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
+        HelperMapaEntidade.configurar(prefabLevels);
+
         scrollManager = new ScrollLevelManager(mainLevelDto.LevelsScrollDto);
         mainLevelDto.ScrollRect.onValueChanged.AddListener((pos) => scrollManager.movimentado(pos, null));
 

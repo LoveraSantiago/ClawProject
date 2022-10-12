@@ -2215,6 +2215,7 @@ MonoBehaviour:
         imgEstrela3: {fileID: 1988281364}
     imageMaquinaGiratoria: {fileID: 1430094561}
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
+    prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
 --- !u!114 &1747746063 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4144852223566241913, guid: 92aaae85be0cdc447bcf6b4c40b4158f, type: 3}
