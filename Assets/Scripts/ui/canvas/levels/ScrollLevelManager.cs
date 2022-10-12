@@ -6,6 +6,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
                             AcaoLevelFromScrollSelecao.ProdutorEvento  
 {
     private int totalLevels;
+    private int ultimoItemClicado;
     private List<int> levelsLiberados;
 
     private PropsCimaBaixoScrollManagerDto propsDto;   
@@ -29,6 +30,8 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
 
         propsDto.setItemLevelCima(levelScroll.getPrimeiroItemLevel());
         propsDto.setItemLevelBaixo(levelScroll.getUltimoItemLevel());
+
+        ultimoItemClicado = -1;
     }
 
     public override void movimentarParaBaixo(LevelScroll levelScrollVazio)
@@ -159,22 +162,26 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         Debug.Log("Selecionado chamado");
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
         int indiceItem = int.Parse(goSelecionado.transform.parent.name);
-        ItemLevelScroll itemLevel = levelScroll.getItemLevel(indiceItem);
-
-        Vector3 posicaoItem = itemLevel.getPosicaoImgMaquina();
-
-        if (itemLevel.isExclamacaoLigado)
+        if(indiceItem != ultimoItemClicado)
         {
-            itemLevel.desligarExclamacao();
-            PlayerPrefsMapas.consumidoNovaLiberacaoLevelEspecifico(itemLevel.indiceLevel);
+            ItemLevelScroll itemLevel = levelScroll.getItemLevel(indiceItem);
+
+            Vector3 posicaoItem = itemLevel.getPosicaoImgMaquina();
+
+            if (itemLevel.isExclamacaoLigado)
+            {
+                itemLevel.desligarExclamacao();
+                PlayerPrefsMapas.consumidoNovaLiberacaoLevelEspecifico(itemLevel.indiceLevel);
+            }
+
+            itemLevel.desligarImgMaquina();
+            levelScroll.ligarUltimaImgMaquina();
+            levelScroll.atualizarItemAtual(indiceItem);
+
+            LevelItemScrollSelecaoDto levelItem = new LevelItemScrollSelecaoDto(posicaoItem, itemLevel.material);
+            produtorDeEvento.produziuEvento(levelItem);
+            ultimoItemClicado = indiceItem;
         }
-
-        itemLevel.desligarImgMaquina();
-        levelScroll.ligarUltimaImgMaquina();
-        levelScroll.atualizarItemAtual(indiceItem);
-
-        LevelItemScrollSelecaoDto levelItem = new LevelItemScrollSelecaoDto(posicaoItem, itemLevel.material);
-        produtorDeEvento.produziuEvento(levelItem);
     }
 
     private void carregarLevelsLiberados()
