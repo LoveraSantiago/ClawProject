@@ -1,8 +1,8 @@
-public class ChallengeScore : Challenge
+public class ChallengeScoreMaior : Challenge
 {
     private int scoreEstimado;
 
-    public ChallengeScore(int scoreEstimado)
+    public ChallengeScoreMaior(int scoreEstimado)
     {
         this.scoreEstimado = scoreEstimado;
     }
