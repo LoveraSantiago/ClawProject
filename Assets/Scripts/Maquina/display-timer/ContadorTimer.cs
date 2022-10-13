@@ -9,24 +9,19 @@ public class ContadorTimer
 
     public void definirContador(TipoContagemTempoDto tipoContagemTempo, Executor executorTimerRestart)
     {
-        switch (tipoContagemTempo.contagem)
+        if (tipoContagemTempo.isContagemNormal())
         {
-            case Contagem.NORMAL:
-            {
-                contadorDeTempo = new ContadorDeTempoFramePositivo();
-                break;
-            }
-            case Contagem.REGRESSIVA:
-            {
-                contadorDeTempo = new ContadorDeTempoFrameNegativo(tipoContagemTempo.tempo);
-                break;
-            }
-            case Contagem.CONTINUA:
-            {
-                contadorDeTempo = new ContadorDeTempoFrameContinuo(tipoContagemTempo.tempo, executorTimerRestart);
-                break;
-            }
-        }        
+            contadorDeTempo = new ContadorDeTempoFramePositivo();
+        }
+        else if (tipoContagemTempo.isContagemRegressiva())
+        {
+            contadorDeTempo = new ContadorDeTempoFrameNegativo(tipoContagemTempo.tempo);
+
+        }
+        else if (tipoContagemTempo.isContagemContinua())
+        {
+            contadorDeTempo = new ContadorDeTempoFrameContinuo(tipoContagemTempo.tempo, executorTimerRestart);
+        }
         dadosDeTempo = new DadosDeTempo(contadorDeTempo);
     }
 
