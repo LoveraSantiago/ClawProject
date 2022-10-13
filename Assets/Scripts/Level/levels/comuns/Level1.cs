@@ -15,37 +15,37 @@ public class Level1 : AbstractLevel
     public override TipoGame getTipoGame()
     {
         return TipoGame.NORMAL;
-    }    
-
-    //public override int[,] getArrayDeColetaveis()
-    //{
-    //    return new int[,]
-    //    {
-    //        { 4,  2,  1,  2,  1,  2,  1},
-    //        { 2,  1,  4,  1,  1,  3, -1},
-    //        {-1,  0,  4,  4,  4,  0, -1},
-    //        {-1, -1,  0,  4,  0, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1}
-    //    };
-    //}
+    }
 
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
         {
-            {-1, -1, -1, 12, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1},
+            { 4,  2,  1,  2,  1,  2,  1},
+            { 2,  1,  4,  1,  1,  3, -1},
+            {-1,  0,  4,  4,  4,  0, -1},
+            {-1, -1,  0,  4,  0, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
     }
+
+    //public override int[,] getArrayDeColetaveis()
+    //{
+    //    return new int[,]
+    //    {
+    //        {-1, -1, -1, 12, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1}
+    //    };
+    //}
 
     public override bool devolverParaBoard()
     {
@@ -57,7 +57,7 @@ public class Level1 : AbstractLevel
         return new Challenge[] {
             new ChallengeLevelCompleto(),
             new ChallengeTempoMenor("00:30"),
-            new ChallengeLevelCompleto()
+            new ChallengeTempoMaior(this, "00:30")
         };
     }
 
