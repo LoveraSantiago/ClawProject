@@ -56,8 +56,8 @@ public class Level1 : AbstractLevel
     {
         return new Challenge[] {
             new ChallengeLevelCompleto(),
-            new ChallengeTempoMenor("00:30"),
-            new ChallengeTempoMaior(this, "00:30")
+            new ChallengeTempoMenor("00:40"),
+            new ChallengeScore(25)
         };
     }
 

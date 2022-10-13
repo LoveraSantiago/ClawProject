@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ChallengeScore : MonoBehaviour
+public class ChallengeScore : Challenge
 {
-    // Start is called before the first frame update
-    void Start()
+    private int scoreEstimado;
+
+    public ChallengeScore(int scoreEstimado)
     {
-        
+        this.scoreEstimado = scoreEstimado;
     }
 
-    // Update is called once per frame
-    void Update()
+    public string getLabelChallenge()
     {
-        
+        return "Supere o score total de " + scoreEstimado.ToString();
+    }
+
+    public bool resultado(ResultadoLevelsDto resultadoLevelsDto)
+    {        
+        return scoreEstimado < resultadoLevelsDto.score;
     }
 }
