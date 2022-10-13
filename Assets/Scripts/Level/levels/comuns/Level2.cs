@@ -39,9 +39,9 @@ public class Level2 : AbstractLevel
     public override Challenge[] getChallenges()
     {
         return new Challenge[] {
-            new ChallengeLevelCompleto(),
-            new ChallengeTempoMenor("00:30"),
-            new ChallengeTempoMaior(this, "00:30")
+            new ChallengeTempoMaior(this, "00:30"),
+            new ChallengeScoreMenor(1000),
+            new ChallengeTempoMenor("00:30")
         };
     }
 
