@@ -16,6 +16,6 @@ public abstract class MovimentadorProdutorInformacaoGarra : AbstractMovimentacao
 
     protected void produzirEventoInfoDaGarra(string nomeColidido)
     {
-        produtorEventoInfoGarra.produziuEvento(new InformacoesDaGarraDto(contadorDeSubidas, nomeColidido));
+        produtorEventoInfoGarra.produziuEvento(new InformacoesDaGarraDto(nomeColidido));
     }
 }
