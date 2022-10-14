@@ -21,6 +21,8 @@ public abstract class AbstractContadorDeColetaveis : Fornecedor<TrocadorDeOrdem>
 
     public abstract int getScore();
 
+    public abstract int getTotalDeColetaveis();
+
     public abstract InformacoesFimDeJogoDto getInfoFimDeJogo();
 
     public abstract TrocadorDeOrdem fornecer();
