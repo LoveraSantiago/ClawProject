@@ -12,7 +12,7 @@ public class ChallengeScoreMenor : Challenge
         return "Fique abaixo do score total de " + scoreEstimado.ToString();
     }
 
-    public bool resultado(ResultadoLevelsDto resultadoLevelsDto)
+    public bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
         return scoreEstimado > resultadoLevelsDto.score;
     }

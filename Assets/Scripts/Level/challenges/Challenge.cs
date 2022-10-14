@@ -1,5 +1,5 @@
 public interface Challenge 
 {
-    bool resultado(ResultadoLevelsDto resultadoLevelsDto);
+    bool resultado(ResultadoLevelDto resultadoLevelsDto);
     string getLabelChallenge();
 }

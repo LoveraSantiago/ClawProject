@@ -3,7 +3,7 @@ public class AvaliadorDeChallenge
     public int challengeUnificado { get; private set; }
     public bool[] resultadoLevel { get; private set; }
 
-    public AvaliadorDeChallenge(ResultadoLevelsDto resultadoLevels, Challenge[] challenges, int challengeAtual)
+    public AvaliadorDeChallenge(ResultadoLevelDto resultadoLevels, Challenge[] challenges, int challengeAtual)
     {
         int tamanhoArray = 3;
 

@@ -12,7 +12,7 @@ public class ChallengeTempoMenor : Challenge
         return "Complete o level antes de " + tempoEstimado;
     }
 
-    public bool resultado(ResultadoLevelsDto resultadoLevelsDto)
+    public bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
         double tempoEstimadoDouble = TempoUtils.parseTimeFromString(tempoEstimado);
         double tempoLevel = TempoUtils.parseTimeFromString(resultadoLevelsDto.tempoPartida);

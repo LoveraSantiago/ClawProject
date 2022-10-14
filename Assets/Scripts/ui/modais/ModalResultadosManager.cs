@@ -24,7 +24,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
         if (!mostrandoModal)
         {
             AbstractLevel levelAtual = ContextoEstaticoUtils.level;
-            ResultadoLevelsDto resultadoLevels = coletorDeDados.coletar();
+            ResultadoLevelDto resultadoLevels = coletorDeDados.coletar();
             Challenge[] challenges = levelAtual.getChallenges();
 
             AvaliadorDeChallenge avaliadores = new AvaliadorDeChallenge(resultadoLevels, challenges, levelAtual.challenge);            

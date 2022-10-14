@@ -12,7 +12,7 @@ public class ChallengeScoreMaior : Challenge
         return "Supere o score total de " + scoreEstimado.ToString();
     }
 
-    public bool resultado(ResultadoLevelsDto resultadoLevelsDto)
+    public bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {        
         return scoreEstimado < resultadoLevelsDto.score;
     }

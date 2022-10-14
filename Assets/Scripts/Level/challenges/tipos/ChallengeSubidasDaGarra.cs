@@ -9,7 +9,7 @@ public class ChallengeSubidasDaGarra : Challenge
         return "";
     }
 
-    public bool resultado(ResultadoLevelsDto resultadoLevelsDto)
+    public bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
         return false;
     }
