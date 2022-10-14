@@ -1,16 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ChallengeSubidasDaGarra : Challenge
 {
+    private int subidas;
+
+    public ChallengeSubidasDaGarra(int subidas)
+    {
+        this.subidas = subidas;
+    }
+
     public string getLabelChallenge()
     {
-        return "";
+        return "Finalize o level com menos de " + subidas.ToString() + " da Garra";
     }
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)
-    {
-        return false;
+    {        
+        return resultadoLevelsDto.subidasDaGarra < subidas;
     }
 }
