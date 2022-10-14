@@ -1,18 +1,18 @@
 public class ColetorDeDados 
 {    
-    private Fornecedor<string> provedorDadosTempo;
-    private Fornecedor<int> provedorDadosScore;
+    private Fornecedor<string> provedorDadosTempo;    
     private Fornecedor<int> provedorSubidasDaGarra;
+    private Fornecedor<ResultadoColetaveisDto> provedorDadosColetaveis;
 
     public ColetorDeDados addProvedorDadosTempo(Fornecedor<string> provedorDadosTempo)
     {
         this.provedorDadosTempo = provedorDadosTempo;
         return this;
-    }
+    }   
 
-    public ColetorDeDados addProvedorDadosScore(Fornecedor<int> provedorDadosScore)
+    public ColetorDeDados addProvedorDadosColetaveis(Fornecedor<ResultadoColetaveisDto> provedorDadosColetaveis)
     {
-        this.provedorDadosScore = provedorDadosScore;
+        this.provedorDadosColetaveis = provedorDadosColetaveis;
         return this;
     }
 
@@ -24,11 +24,11 @@ public class ColetorDeDados
 
     public ResultadoLevelDto coletar()
     {
-        string tempoPartida = provedorDadosTempo.fornecer();
-        int score = provedorDadosScore.fornecer();
+        string tempoPartida = provedorDadosTempo.fornecer();        
         int subidasDaGarra = provedorSubidasDaGarra.fornecer();
+        ResultadoColetaveisDto resultadoColetaveis = provedorDadosColetaveis.fornecer();
 
-        ResultadoLevelDto resultadoLevelsDto = new ResultadoLevelDto(tempoPartida, score, subidasDaGarra);
+        ResultadoLevelDto resultadoLevelsDto = new ResultadoLevelDto(tempoPartida, resultadoColetaveis, subidasDaGarra);
         return resultadoLevelsDto;
     }
 }
