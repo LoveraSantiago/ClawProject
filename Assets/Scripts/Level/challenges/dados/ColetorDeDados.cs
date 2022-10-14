@@ -26,8 +26,9 @@ public class ColetorDeDados
     {
         string tempoPartida = provedorDadosTempo.fornecer();
         int score = provedorDadosScore.fornecer();
+        int subidasDaGarra = provedorSubidasDaGarra.fornecer();
 
-        ResultadoLevelsDto resultadoLevelsDto = new ResultadoLevelsDto(tempoPartida, score);
+        ResultadoLevelsDto resultadoLevelsDto = new ResultadoLevelsDto(tempoPartida, score, subidasDaGarra);
         return resultadoLevelsDto;
     }
 }
