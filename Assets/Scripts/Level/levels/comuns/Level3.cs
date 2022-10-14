@@ -27,7 +27,16 @@ public class Level3 : AbstractLevelElevador
             { 1, 1, 1, 1, 1, 1,  1 }
         };
     }
-    
+
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+            new ChallengeSubidasDaGarraMaior(5),
+             new ChallengeLevelCompleto(),
+             new ChallengeLevelCompleto()
+        };
+    }
+
     public override bool devolverParaBoard()
     {
         return true;

@@ -41,7 +41,7 @@ public class Level2 : AbstractLevel
         return new Challenge[] {
             new ChallengeTempoMaior(this, "00:30"),
             new ChallengeScoreMenor(1000),
-            new ChallengeSubidasDaGarra(50)
+            new ChallengeSubidasDaGarraMenor(50)
         };
     }
 
