@@ -9,7 +9,7 @@ public class ChallengeSubidasDaGarra : Challenge
 
     public string getLabelChallenge()
     {
-        return "Finalize o level com menos de " + subidas.ToString() + " da Garra";
+        return "Finalize o level com menos de " + subidas.ToString() + " subidas da Garra";
     }
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)
