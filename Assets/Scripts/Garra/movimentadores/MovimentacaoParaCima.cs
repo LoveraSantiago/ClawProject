@@ -1,4 +1,4 @@
-public class MovimentacaoParaCima : MovimentadorProdutorInformacaoGarra
+public class MovimentacaoParaCima : AbstractMovimentacaoDaGarraNormal
 {
     public override void preInicio()
     {

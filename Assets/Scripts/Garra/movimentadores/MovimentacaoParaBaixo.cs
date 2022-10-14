@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoParaBaixo : MovimentadorProdutorInformacaoGarra
+public class MovimentacaoParaBaixo : AbstractMovimentacaoDaGarraNormal
 {   
     private IntervaloDeTempo intervaloTempoDeTravamento;    
 

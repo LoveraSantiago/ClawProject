@@ -8,8 +8,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public GerenciadorDeMovimentacaoNormal()
     {        
-        AbstractMovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
-        MovimentadorProdutorInformacaoGarra.configurar();               
+        AbstractMovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);               
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO
@@ -101,7 +100,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     ProdutorDeEvento<InformacoesDaGarraDto> AcaoInfoDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
-        return MovimentadorProdutorInformacaoGarra.produtorEventoInfoGarra;
+        return AbstractMovimentacaoDaGarra.produtorEventoInfoGarra;
     }
 
     public override ProdutorDeEvento<Direcao> getProdutorDeEvento()
