@@ -48,6 +48,11 @@ public abstract class AbstractMovimentacaoDaGarra : ComponenteRigidBodyDeMovimen
         contadorDeSubidas++;
     }
 
+    public int getContagemDeSubidas()
+    {
+        return contadorDeSubidas;
+    }
+
     protected void produzirEventoInfoDaGarra(string nomeColidido)
     {
         produtorEventoInfoGarra.produziuEvento(new InformacoesDaGarraDto(nomeColidido));

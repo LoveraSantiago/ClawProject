@@ -2,10 +2,12 @@ public class ResultadoLevelsDto
 {
     public string tempoPartida { get; private set; }
     public int score { get; private set; }
+    public int subidasDaGarra { get; private set; }
 
-    public ResultadoLevelsDto(string tempoPartida, int score)
+    public ResultadoLevelsDto(string tempoPartida, int score, int subidasDaGarra)
     {
         this.tempoPartida = tempoPartida;
         this.score = score;
+        this.subidasDaGarra = subidasDaGarra;
     }
 }

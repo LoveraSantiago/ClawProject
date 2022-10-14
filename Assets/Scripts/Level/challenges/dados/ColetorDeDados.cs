@@ -2,6 +2,7 @@ public class ColetorDeDados
 {    
     private Fornecedor<string> provedorDadosTempo;
     private Fornecedor<int> provedorDadosScore;
+    private Fornecedor<int> provedorSubidasDaGarra;
 
     public ColetorDeDados addProvedorDadosTempo(Fornecedor<string> provedorDadosTempo)
     {
@@ -12,6 +13,12 @@ public class ColetorDeDados
     public ColetorDeDados addProvedorDadosScore(Fornecedor<int> provedorDadosScore)
     {
         this.provedorDadosScore = provedorDadosScore;
+        return this;
+    }
+
+    public ColetorDeDados addProvedorSubidasDaGarra(Fornecedor<int> provedorSubidasDaGarra)
+    {
+        this.provedorSubidasDaGarra = provedorSubidasDaGarra;
         return this;
     }
 

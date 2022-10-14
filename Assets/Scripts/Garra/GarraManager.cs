@@ -8,7 +8,8 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
                             AcaoBoardElevadoFim.ConsumidorEvento,
                             AcaoColetadoFim.ConsumidorEvento,
                             AcaoCacaNiquel.ConsumidorEvento,
-                            ConsumidorDeEventoTrigger
+                            ConsumidorDeEventoTrigger,
+                            Fornecedor<int>
 {
     private bool tempoEsgotadoEmAcao;
 
@@ -129,6 +130,11 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         }
     }
 
+    public int fornecer()
+    {
+        return gerDeMovAtual.getContagemDeSubidas();
+    }
+
     //TODO tentar unificar
     ProdutorDeEvento<InformacoesDaGarraDto> AcaoInfoDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
@@ -138,5 +144,5 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     ProdutorDeEvento<Direcao> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
         return gerDeMovAtual.getProdutorDeEvento();
-    }   
+    }
 }

@@ -92,6 +92,11 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     }
     //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL FIM
 
+    public override int getContagemDeSubidas()
+    {
+        return movAtual.getContagemDeSubidas();
+    }
+
     private void trocarMovimentador(AbstractMovimentacaoDaGarra movimentador)
     {
         movimentador.preInicio();

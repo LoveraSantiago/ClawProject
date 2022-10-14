@@ -90,8 +90,13 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
         movAtual = movimentador;
     }
 
+    public override int getContagemDeSubidas()
+    {
+        return movAtual.getContagemDeSubidas();
+    }
+
     public override ProdutorDeEvento<Direcao> getProdutorDeEvento()
     {
         return ((AcaoSincroniaComDirecaoDaGarra.ProdutorEvento)movAtual).getProdutorDeEvento();
-    }
+    }    
 }
