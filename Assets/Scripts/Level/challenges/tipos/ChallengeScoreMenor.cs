@@ -14,6 +14,6 @@ public class ChallengeScoreMenor : Challenge
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
-        return scoreEstimado > resultadoLevelsDto.score;
+        return scoreEstimado > resultadoLevelsDto.resultadosColetaveis.score;
     }
 }

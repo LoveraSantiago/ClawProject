@@ -25,7 +25,7 @@ public class ColetorDeDados
     public ResultadoLevelDto coletar()
     {
         string tempoPartida = provedorDadosTempo.fornecer();        
-        int subidasDaGarra = provedorSubidasDaGarra.fornecer();
+        int subidasDaGarra  = provedorSubidasDaGarra.fornecer();
         ResultadoColetaveisDto resultadoColetaveis = provedorDadosColetaveis.fornecer();
 
         ResultadoLevelDto resultadoLevelsDto = new ResultadoLevelDto(tempoPartida, resultadoColetaveis, subidasDaGarra);
