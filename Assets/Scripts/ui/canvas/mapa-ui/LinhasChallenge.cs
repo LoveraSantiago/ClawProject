@@ -32,11 +32,11 @@ public class LinhasChallenge
         }
     }
 
-    public void addConfiguracaoChallenges(Challenge[] challenges)
+    public void addConfiguracaoChallenges(MapaEntidade mapaEntidade, Challenge[] challenges)
     {
         for (int contador = 0; contador < linhasChallenge.Length; contador++)
         {
-            linhasChallenge[contador].configurarChallenge(challenges[contador]);
+            linhasChallenge[contador].configurarChallenge(mapaEntidade, challenges[contador]);
         }
     }
 }

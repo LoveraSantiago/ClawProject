@@ -9,7 +9,7 @@ public class ChallengeTempoMaior : Challenge
         validarPrevencaoDeChallenge(abstractLevel);
     }
 
-    public ChallengeLabel getLabelChallenge()
+    public ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
         return new ChallengeLabel("Complete o level depois de " + tempoEstimado);
     }

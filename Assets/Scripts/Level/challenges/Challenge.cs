@@ -1,5 +1,5 @@
 public interface Challenge 
 {
     bool resultado(ResultadoLevelDto resultadoLevelsDto);
-    ChallengeLabel getLabelChallenge();
+    ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade);
 }

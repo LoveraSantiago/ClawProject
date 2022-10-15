@@ -14,9 +14,9 @@ public class LinhaChallenge
         linhaChallengeDto.ImgEstrela.color = cor;
     }
 
-    public void configurarChallenge(Challenge challenge)
+    public void configurarChallenge(MapaEntidade mapaEntidade, Challenge challenge)
     {
-        ChallengeLabel challengeLabel = challenge.getLabelChallenge();
+        ChallengeLabel challengeLabel = challenge.getLabelChallenge(mapaEntidade);
         linhaChallengeDto.LblTextoChallenge.text = challengeLabel.conteudo;
 
         if (challengeLabel.temImg1)

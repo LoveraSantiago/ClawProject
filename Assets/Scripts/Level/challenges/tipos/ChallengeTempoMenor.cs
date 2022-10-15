@@ -7,7 +7,7 @@ public class ChallengeTempoMenor : Challenge
         this.tempoEstimado = tempoEstimado;
     }
 
-    public ChallengeLabel getLabelChallenge()
+    public ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
         return new ChallengeLabel("Complete o level antes de " + tempoEstimado);
     }

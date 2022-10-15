@@ -7,7 +7,7 @@ public class ChallengeSubidasDaGarraMaior : Challenge
         this.subidas = subidas;
     }
 
-    public ChallengeLabel getLabelChallenge()
+    public ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
         return new ChallengeLabel("Finalize o level com mais de " + subidas.ToString() + " subidas da Garra");
     }

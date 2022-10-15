@@ -28,7 +28,10 @@ public class ColetorDeDados
         int subidasDaGarra  = provedorSubidasDaGarra.fornecer();
         ResultadoColetaveisDto resultadoColetaveis = provedorDadosColetaveis.fornecer();
 
-        ResultadoLevelDto resultadoLevelsDto = new ResultadoLevelDto(tempoPartida, resultadoColetaveis, subidasDaGarra);
+        ResultadoLevelDto resultadoLevelsDto = new ResultadoLevelDto(tempoPartida, subidasDaGarra)
+            .addResultadoColetaveis(resultadoColetaveis)
+            .addMapaEntidade(ContextoEstaticoUtils.mapaEntidade);
+
         return resultadoLevelsDto;
     }
 }

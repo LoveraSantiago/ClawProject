@@ -7,7 +7,7 @@ public class ChallengeScoreMaior : Challenge
         this.scoreEstimado = scoreEstimado;
     }
 
-    public ChallengeLabel getLabelChallenge()
+    public ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
         return new ChallengeLabel("Supere o score total de " + scoreEstimado.ToString());
     }

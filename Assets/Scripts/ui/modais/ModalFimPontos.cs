@@ -14,7 +14,7 @@ public class ModalFimPontos : AbstractModalFim
     {
         modalPontosDto.TextoTempo.text = resultadoLevelsDto.tempoPartida;
         modalPontosDto.TextoPontos.text = Utils.to3Digitos(resultadoLevelsDto.resultadosColetaveis.score);
-        linhasChallenge.addConfiguracaoChallenges(challenges);
+        linhasChallenge.addConfiguracaoChallenges(resultadoLevelsDto.mapaEntidade, challenges);
         linhasChallenge.addEstrelasChallenges(modalPontosDto.LinhasChallenges.CorEstrela, resultChallenges);
     }
 

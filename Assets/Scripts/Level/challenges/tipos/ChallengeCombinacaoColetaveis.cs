@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChallengeCombinacaoColetaveis : Challenge
@@ -15,9 +13,14 @@ public class ChallengeCombinacaoColetaveis : Challenge
         this.indice3 = indice3;
     }
 
-    public ChallengeLabel getLabelChallenge()
+    public ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
+        Sprite spr1 = mapaEntidade.getColetavelEntidadeByIndice(indice1).sprite;
+        Sprite spr2 = mapaEntidade.getColetavelEntidadeByIndice(indice2).sprite;
+        Sprite spr3 = mapaEntidade.getColetavelEntidadeByIndice(indice3).sprite;
+
         ChallengeLabel challengeLabel = new ChallengeLabel("Colete a combinacao ");
+        challengeLabel.addIgms(spr1, spr2, spr3);
         return challengeLabel; ;
     }
 
