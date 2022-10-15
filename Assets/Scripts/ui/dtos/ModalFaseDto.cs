@@ -17,8 +17,7 @@ public class ModalFaseDto
     [SerializeField] private Button btnFechar;
     [SerializeField] private Button btnLevel;
     [Space(3)]
-    [SerializeField] private Color corEstrela;
-    [SerializeField] private LinhaChallengeDto[] linhasChallenges = new LinhaChallengeDto[3];
+    [SerializeField] private LinhasChallengeDto linhasChallenge;
         
     public Animator Animator { get { return animator; } }
 
@@ -31,7 +30,6 @@ public class ModalFaseDto
 
     public Button BtnFechar { get { return btnFechar; } }
     public Button BtnLevel { get { return btnLevel; } }
-
-    public Color CorEstrela { get { return corEstrela; } }
-    public LinhaChallengeDto[] LinhasChallenges { get { return linhasChallenges; } }
+        
+    public LinhasChallengeDto LinhasChallenges { get { return linhasChallenge; } }
 }

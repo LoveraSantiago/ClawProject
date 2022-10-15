@@ -10,7 +10,7 @@ public class ModalFase
         modalFaseDto.BtnLevel.onClick.AddListener(()=> irParaCenaGame());
         modalFaseDto.BtnFechar.onClick.AddListener(() => desligar());
         navegacaDeColetaveis = new NavegacaoDeArray<ColetavelEntidade>();
-        linhasChallenge = new LinhasChallenge(modalFaseDto.LinhasChallenges);
+        linhasChallenge = new LinhasChallenge(modalFaseDto.LinhasChallenges.LinhaChallenges);
     }
 
     public void ligar(MapaEntidade mapaEntidade, int indiceLevel)
@@ -29,7 +29,7 @@ public class ModalFase
 
         modalFaseDto.Animator.Play("modal-objetivo");
                 
-        linhasChallenge.addEstrelasChallenges(modalFaseDto.CorEstrela, level.challenge);
+        linhasChallenge.addEstrelasChallenges(modalFaseDto.LinhasChallenges.CorEstrela, level.challenge);
         linhasChallenge.addConfiguracaoChallenges(level.getChallenges());
     }
 

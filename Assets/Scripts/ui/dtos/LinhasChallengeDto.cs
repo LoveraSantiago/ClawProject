@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LinhasChallengeDto : MonoBehaviour
+#pragma warning disable 0649
+[System.Serializable]
+public class LinhasChallengeDto 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Color corEstrela;
+    [Space(3)]
+    [SerializeField] private LinhaChallengeDto[] linhaChallenges = new LinhaChallengeDto[3];
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Color CorEstrela { get { return corEstrela; } }
+    public LinhaChallengeDto[] LinhaChallenges { get { return linhaChallenges; } }
 }
