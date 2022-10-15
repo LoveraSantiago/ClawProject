@@ -7,9 +7,9 @@ public class ChallengeTempoMenor : Challenge
         this.tempoEstimado = tempoEstimado;
     }
 
-    public string getLabelChallenge()
+    public ChallengeLabel getLabelChallenge()
     {
-        return "Complete o level antes de " + tempoEstimado;
+        return new ChallengeLabel("Complete o level antes de " + tempoEstimado);
     }
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)

@@ -16,6 +16,6 @@ public class LinhaChallenge
 
     public void configurarChallenge(Challenge challenge)
     {
-        linhaChallengeDto.LblTextoChallenge.text = challenge.getLabelChallenge();
+        linhaChallengeDto.LblTextoChallenge.text = challenge.getLabelChallenge().conteudo;
     }
 }

@@ -7,9 +7,9 @@ public class ChallengeScoreMaior : Challenge
         this.scoreEstimado = scoreEstimado;
     }
 
-    public string getLabelChallenge()
+    public ChallengeLabel getLabelChallenge()
     {
-        return "Supere o score total de " + scoreEstimado.ToString();
+        return new ChallengeLabel("Supere o score total de " + scoreEstimado.ToString());
     }
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)

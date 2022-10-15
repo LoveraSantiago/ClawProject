@@ -1,8 +1,8 @@
 public class ChallengeLevelCompleto : Challenge
 {
-    public string getLabelChallenge()
+    public ChallengeLabel getLabelChallenge()
     {
-        return "Colete todos os itens";
+        return new ChallengeLabel("Colete todos os itens");
     }
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)

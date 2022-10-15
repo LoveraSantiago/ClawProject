@@ -7,9 +7,9 @@ public class ChallengeSubidasDaGarraMenor : Challenge
         this.subidas = subidas;
     }
 
-    public string getLabelChallenge()
+    public ChallengeLabel getLabelChallenge()
     {
-        return "Finalize o level com menos de " + subidas.ToString() + " subidas da Garra";
+        return new ChallengeLabel("Finalize o level com menos de " + subidas.ToString() + " subidas da Garra");
     }
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)

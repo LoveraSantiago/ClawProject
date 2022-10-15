@@ -9,9 +9,9 @@ public class ChallengeTempoMaior : Challenge
         validarPrevencaoDeChallenge(abstractLevel);
     }
 
-    public string getLabelChallenge()
+    public ChallengeLabel getLabelChallenge()
     {
-        return "Complete o level depois de " + tempoEstimado;
+        return new ChallengeLabel("Complete o level depois de " + tempoEstimado);
     }
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)

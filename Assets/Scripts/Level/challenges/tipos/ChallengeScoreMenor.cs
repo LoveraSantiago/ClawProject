@@ -7,9 +7,9 @@ public class ChallengeScoreMenor : Challenge
         this.scoreEstimado = scoreEstimado;
     }
 
-    public string getLabelChallenge()
+    public ChallengeLabel getLabelChallenge()
     {
-        return "Fique abaixo do score total de " + scoreEstimado.ToString();
+        return new ChallengeLabel("Fique abaixo do score total de " + scoreEstimado.ToString());
     }
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)
