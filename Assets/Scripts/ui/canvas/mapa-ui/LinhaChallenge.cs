@@ -16,6 +16,25 @@ public class LinhaChallenge
 
     public void configurarChallenge(Challenge challenge)
     {
-        linhaChallengeDto.LblTextoChallenge.text = challenge.getLabelChallenge().conteudo;
+        ChallengeLabel challengeLabel = challenge.getLabelChallenge();
+        linhaChallengeDto.LblTextoChallenge.text = challengeLabel.conteudo;
+
+        if (challengeLabel.temImg1)
+        {
+            linhaChallengeDto.Img1.gameObject.SetActive(true);
+            linhaChallengeDto.Img1.sprite = challengeLabel.img1;
+        }
+
+        if (challengeLabel.temImg2)
+        {
+            linhaChallengeDto.Img2.gameObject.SetActive(true);
+            linhaChallengeDto.Img2.sprite = challengeLabel.img2;
+        }
+
+        if (challengeLabel.temImg3)
+        {
+            linhaChallengeDto.Img3.gameObject.SetActive(true);
+            linhaChallengeDto.Img3.sprite = challengeLabel.img3;
+        }        
     }
 }
