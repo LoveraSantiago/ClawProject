@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ColetadoFimDto 
 {
-    private static readonly int ESTADO_NORMAL    = 0;
-    private static readonly int ESTADO_ROLLBACK     = 1;
+    private static readonly int ESTADO_NORMAL   = 0;
+    private static readonly int ESTADO_ROLLBACK = 1;
     private static readonly int ESTADO_DESCARTE = 2;
 
     private int estadoAtual;
