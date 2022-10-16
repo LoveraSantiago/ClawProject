@@ -25,13 +25,13 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     {
         partesDto = maquinaDto.PartesDtoV2;
 
-        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto);        
+        arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
+        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto, arcoIrisEfeito);        
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick           = new Joystick(maquinaDto.MesaJoystickDto);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
-        arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
         scrollPupsManager  = new ScrollPupsManager(maquinaDto.ScrollPupsDto);
         draggavel          = botoesPowerUp;
         isGamePlay = true;
@@ -102,7 +102,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
-        displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIrisEfeito);                        
+        displayDeColetados.mostrarColetadoNoDisplay(evento);                        
     }   
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)

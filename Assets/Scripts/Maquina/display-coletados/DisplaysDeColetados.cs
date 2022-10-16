@@ -4,10 +4,10 @@ public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento
     public ModoColetados modoColetados { get; private set; }
     private ModoCacaNiquel modoCacaNiquel;
 
-    public DisplaysDeColetados(DisplaysColetadosDto displaysSlotsDto)
+    public DisplaysDeColetados(DisplaysColetadosDto displaysSlotsDto, ArcoIrisEfeito arcoIrisEfeito)
     {
         grupoDisplays = new GrupoDisplays(displaysSlotsDto);
-        modoColetados = new ModoColetados(grupoDisplays);        
+        modoColetados = new ModoColetados(grupoDisplays, arcoIrisEfeito);        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido, DisplaysColetadosDto displaysSlotsDto)
@@ -29,9 +29,9 @@ public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento
         }
     }  
 
-    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
+    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento)
     {
-        modoColetados.mostrarColetadoNoDisplay(evento, arcoIris);
+        modoColetados.mostrarColetadoNoDisplay(evento);
     }
 
     public void processarPowerUp(PowerUpInfo evento)
