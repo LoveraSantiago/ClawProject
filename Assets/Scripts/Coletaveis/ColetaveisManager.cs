@@ -7,17 +7,16 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoColetadoFim.ConsumidorEvento,
                                 AcaoInfoDaGarra.ConsumidorEvento,                                
                                 AcaoPowerUpAcionado.ConsumidorEvento,                                
-                                AcaoTempoEsgotado.ConsumidorEvento
-{    
-    private Coletavel coletavelImantado;
-    
+                                AcaoTempoEsgotado.ConsumidorEvento,
+                                Fornecedor<ResultadoColetaveisDto>
+{        
     private BoardManager board;
-    private TuboDeDescarte tuboDeDescarte;
     private EfeitoColetado efeito;
-    public ContadorManager contador { get; private set; }
+    private Coletavel coletavelImantado;
+    private TuboDeDescarte tuboDeDescarte;
+    public  ContadorManager contador { get; private set; }
 
     private DetectorDeTriggers detectorDeTrigger;
-
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;    
 
     public ColetaveisManager(ColetaveisDto coletaveisDto)
@@ -166,6 +165,14 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         contador.reajustarContagem(evento, board.isDevolverBoard());
     }
 
+    public ResultadoColetaveisDto fornecer()
+    {
+        ResultadoColetaveisDto resultadoColetaveis = new ResultadoColetaveisDto()
+            .addResultados(contador.getScore(), contador.getTotalDeColetaveis())
+            .addDescartados(tuboDeDescarte.fornecer());        
+        return resultadoColetaveis;
+    }
+
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeInformacoesDoColetado;
@@ -174,5 +181,5 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoBoardElevadoFim.ProdutorEvento)board).getProdutorDeEvento();
-    }
+    }   
 }

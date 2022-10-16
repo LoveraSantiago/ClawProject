@@ -31,7 +31,7 @@ public class MainGameManagers
 
         coletorDeDados
             .addProvedorDadosTempo(maquinaManager.displayTimer.contadorTimer.dadosDeTempo)
-            .addProvedorDadosColetaveis(coletaveisManager.contador)            
+            .addProvedorDadosColetaveis(coletaveisManager)            
             .addProvedorSubidasDaGarra(garraManager);
 
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));        

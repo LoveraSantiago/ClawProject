@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class TuboDeDescarte : ConsumidorDeEventoTrigger
+public class TuboDeDescarte : ConsumidorDeEventoTrigger,
+                              Fornecedor<ColetaveisDescartadosDto>
 {
     private bool devolverTubo;    
     private float torque;    
@@ -33,6 +34,11 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
             //Debug.Log("Devolver tubo acionado");
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, coletados));
         }
+    }
+
+    public ColetaveisDescartadosDto fornecer()
+    {
+        return coletaveisDescartados;
     }
 
     private bool isDevolver(bool combinacaoValida, ColetadoFimDto evento)
@@ -109,6 +115,6 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
     public void consumir(Collider2D collider)
     {
         triggerDeSaidaDeTuboAcionado(collider);
-    }
+    }   
     //IMPLEMENTANDO INTERFACE ConsumidorDeEventoTrigger FIM
 }
