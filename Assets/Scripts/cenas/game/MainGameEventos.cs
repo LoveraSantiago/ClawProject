@@ -16,7 +16,7 @@ public class MainGameEventos
             .configurarProdutor(coletaveisManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(maquinaManager.displayTimer)
-            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(maquinaManager.displayDeColetados)
             .adicionarConsumidor(maquinaManager.displayDeScores)
             .adicionarConsumidor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(uiManager.modalResultados);

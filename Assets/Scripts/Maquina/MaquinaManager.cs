@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
-                              AcaoColetado.ConsumidorEvento,                                
+public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,                                                            
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,                              
@@ -98,12 +97,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         {
             draggavel.onEndDrag(maquinaDto);
         }
-    }
-
-    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
-    {
-        displayDeColetados.mostrarColetadoNoDisplay(evento);                        
-    }   
+    }    
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
