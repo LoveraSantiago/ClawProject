@@ -1,5 +1,4 @@
-public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
-                                   AcaoCacaNiquel.ProdutorEvento
+public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento
 {
     private GrupoDisplays grupoDisplays;
     public ModoColetados modoColetados { get; private set; }
@@ -53,12 +52,7 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private bool isDisplayCacaNiquelAtivado()
     {
         return modoCacaNiquel != null;
-    }
-
-    ProdutorDeEvento<ColetadoFimDto> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
-    {
-        return ((AcaoColetadoFim.ProdutorEvento)modoColetados).getProdutorDeEvento();
-    }
+    }   
 
     ProdutorDeEvento<CacaNiquelEventoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {
