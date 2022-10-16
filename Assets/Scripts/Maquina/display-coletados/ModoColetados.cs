@@ -18,8 +18,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFimDto>();            
     }        
 
-    public void mostrarColetadoNoDisplay(
-        InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
+    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
     {
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris));        
     }    
@@ -71,8 +70,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
         //Debug.Log("Pup acionado no display de coletado fim");
     }     
 
-    private IEnumerator mostrarSprite(
-        InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
+    private IEnumerator mostrarSprite(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
     {        
         displayColetando = true;
         int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();        
