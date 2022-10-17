@@ -5,8 +5,9 @@ public class ChallengeCombinacaoColetaveis : Challenge
     private int indice1;
     private int indice2;
     private int indice3;
+    private bool prevencao;
 
-    public ChallengeCombinacaoColetaveis(int indice1, int indice2, int indice3)
+    public ChallengeCombinacaoColetaveis(AbstractLevel abstractLevel, int indice1, int indice2, int indice3)
     {
         this.indice1 = indice1;
         this.indice2 = indice2;
@@ -21,11 +22,24 @@ public class ChallengeCombinacaoColetaveis : Challenge
 
         ChallengeLabel challengeLabel = new ChallengeLabel("Colete a combinacao ");
         challengeLabel.addIgms(spr1, spr2, spr3);
-        return challengeLabel; ;
+        return challengeLabel; 
     }
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
-        return false;
+        return prevencao;
+    }
+
+    private void validarPrevencaoDeChallenge(AbstractLevel abstractLevel)
+    {
+        if(abstractLevel.devolverParaBoard() && !isMesmoIndices())
+        {
+            prevencao = true;
+        }
+    }
+
+    private bool isMesmoIndices()
+    {
+        return indice1 == indice2 && indice2 == indice3;
     }
 }
