@@ -43,7 +43,14 @@ public class MapaScene : MonoBehaviour,
 
     //private void OnDisable()
     //{
-    //    PlayerPrefsMapas.salvarIndiceLevelLiberado(100);
+    //    //PlayerPrefsMapas.salvarIndiceLevelLiberado(100);
+
+    //    Debug.Log("OnDisable chamado");
+    //    FactoryMapaEntidade factoryMapaEntidade = new FactoryMapaEntidade();
+    //    PlayerPrefsMapas.salvarChallengeDoMapa(
+    //         factoryMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.FRUTAS),
+    //         2, 
+    //         0);
     //}
 
     void AcaoMapaNavegado.ConsumidorEvento.consumirEvento(WrapperLevelMapDto evento)

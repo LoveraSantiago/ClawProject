@@ -14,6 +14,6 @@ public class ChallengeSubidasDaGarraMaior : Challenge
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
-        return resultadoLevelsDto.subidasDaGarra < subidas;
+        return resultadoLevelsDto.subidasDaGarra > subidas;
     }
 }
