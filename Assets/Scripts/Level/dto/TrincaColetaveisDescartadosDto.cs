@@ -10,4 +10,9 @@ public class TrincaColetaveisDescartadosDto
         this.sprites = sprites;
         this.timeStamp = timeStamp;
     }
+
+    public bool isSpritesIguais(Sprite spr1, Sprite spr2, Sprite spr3)
+    {
+        return sprites[0] == spr1 && sprites[1] == spr2 && sprites[2] == spr3;
+    }
 }
