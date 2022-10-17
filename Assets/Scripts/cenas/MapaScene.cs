@@ -49,7 +49,7 @@ public class MapaScene : MonoBehaviour,
     //    FactoryMapaEntidade factoryMapaEntidade = new FactoryMapaEntidade();
     //    PlayerPrefsMapas.salvarChallengeDoMapa(
     //         factoryMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.FRUTAS),
-    //         2, 
+    //         2,
     //         0);
     //}
 

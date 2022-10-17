@@ -22,7 +22,14 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
 
     public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento)
     {
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(mostrarSprite(evento));        
+        if (evento.infosFimDeJogo.fimColetados)
+        {
+            processarUltimoOcupacaoDisplaysColetados();
+        }
+        else
+        {
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(mostrarSprite(evento));
+        }
     }    
     
     public void processarPowerUp(PowerUpEnums.TIPO tipoPup, PowerUpInteracaoComDisplayColetado interacaoDisplayColetado)
@@ -71,6 +78,15 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
         grupoDisplays.acionarMostrarAlvos(interacaoDisplayColetado.getExecutorDeInicio());
         //Debug.Log("Pup acionado no display de coletado fim");
     }     
+
+    private void processarUltimoOcupacaoDisplaysColetados()
+    {
+        int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();
+        if(indiceDesocupado == 2)
+        {
+            finalizacaoTodosDisplaysOcupados();
+        }
+    }
 
     private IEnumerator mostrarSprite(InformacoesColetadoDto evento)
     {        
