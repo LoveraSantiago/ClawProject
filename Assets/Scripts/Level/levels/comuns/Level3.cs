@@ -5,7 +5,7 @@ public class Level3 : AbstractLevelElevador
     public override string getLevelTitle()
     {
         return "Nível 3";
-    }
+    }  
 
     //public override int[,] getArrayDeColetaveis()
     //{
@@ -24,7 +24,7 @@ public class Level3 : AbstractLevelElevador
     {
         return new int[,]
         {
-            {-1, -1, -1, 12, -1, -1, -1},
+            {-1, -1,  0,  0,  0, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
