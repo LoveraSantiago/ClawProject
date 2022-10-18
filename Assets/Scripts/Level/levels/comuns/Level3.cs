@@ -10,9 +10,9 @@ public class Level3 : AbstractLevelElevador
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,] {
-            {  0,  1,  2,  5,  5,  5,  2 },
+            {  2,  1,  2,  5,  5,  5,  2 },
             {  4,  4,  4,  3,  3,  3, -1 },
-            {  1,  6,  1,  6,  1,  7,  7 },
+            { -1, -1, -1, -1, -1, -1, -1 },
             { -1, -1, -1, -1, -1, -1, -1 },
             { -1, -1, -1, -1, -1, -1, -1 },
             { -1, -1, -1, -1, -1, -1, -1 },
@@ -48,7 +48,7 @@ public class Level3 : AbstractLevelElevador
         return new Challenge[] {
             new ChallengeSubidasDaGarraMaior(5),
             new ChallengeCombinacaoColetaveis(this, 5, 5, 5),
-            new ChallengeLevelCompleto()
+            new ChallengeSubidasDoElevadorMenor(this, 3)
         };
     }
 
