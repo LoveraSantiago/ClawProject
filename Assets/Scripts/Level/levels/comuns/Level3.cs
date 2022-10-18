@@ -47,8 +47,8 @@ public class Level3 : AbstractLevelElevador
     {
         return new Challenge[] {
             new ChallengeSubidasDaGarraMaior(5),
-             new ChallengeCombinacaoColetaveis(this, 5, 5, 5),
-             new ChallengeLevelCompleto()
+            new ChallengeCombinacaoColetaveis(this, 5, 5, 5),
+            new ChallengeLevelCompleto()
         };
     }
 

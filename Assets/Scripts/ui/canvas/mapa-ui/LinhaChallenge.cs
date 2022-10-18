@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LinhaChallenge
 {
@@ -19,22 +20,21 @@ public class LinhaChallenge
         ChallengeLabel challengeLabel = challenge.getLabelChallenge(mapaEntidade);
         linhaChallengeDto.LblTextoChallenge.text = challengeLabel.conteudo;
 
-        if (challengeLabel.temImg1)
-        {
-            linhaChallengeDto.Img1.gameObject.SetActive(true);
-            linhaChallengeDto.Img1.sprite = challengeLabel.img1;
-        }
+        configurarLinha(challengeLabel.temImg1, linhaChallengeDto.Img1, challengeLabel.img1);
+        configurarLinha(challengeLabel.temImg2, linhaChallengeDto.Img2, challengeLabel.img2);
+        configurarLinha(challengeLabel.temImg3, linhaChallengeDto.Img3, challengeLabel.img3);        
+    }
 
-        if (challengeLabel.temImg2)
+    private void configurarLinha(bool configurar, Image img, Sprite sprite)
+    {
+        if (configurar)
         {
-            linhaChallengeDto.Img2.gameObject.SetActive(true);
-            linhaChallengeDto.Img2.sprite = challengeLabel.img2;
+            img.gameObject.SetActive(true);
+            img.sprite = sprite;
         }
-
-        if (challengeLabel.temImg3)
+        else
         {
-            linhaChallengeDto.Img3.gameObject.SetActive(true);
-            linhaChallengeDto.Img3.sprite = challengeLabel.img3;
-        }        
+            img.gameObject.SetActive(false);
+        }
     }
 }
