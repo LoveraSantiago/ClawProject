@@ -4,7 +4,7 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
 {   
     private BoardDto boardDto;
 
-    private BoardElevador elevador;   
+    public  BoardElevador elevador { get; private set; }
     private BoardDevolvedor devolvedor;
 
     private BoardMontador montador; 

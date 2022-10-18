@@ -10,10 +10,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoTempoEsgotado.ConsumidorEvento,
                                 Fornecedor<ResultadoColetaveisDto>
 {        
-    private BoardManager board;
-    private EfeitoColetado efeito;
-    private Coletavel coletavelImantado;
-    private TuboDeDescarte tuboDeDescarte;
+    public  BoardManager    board { get; private set; }
+    private EfeitoColetado  efeito;
+    private Coletavel       coletavelImantado;
+    private TuboDeDescarte  tuboDeDescarte;
     public  ContadorManager contador { get; private set; }
 
     private DetectorDeTriggers detectorDeTrigger;

@@ -1,14 +1,17 @@
 public class ResultadoLevelDto
 {
     public MapaEntidade mapaEntidade { get; private set;  }
+
+    public int subidasDaGarra { get; private set; }
+    public int subidasDoElevador { get; private set; }
     public string tempoPartida { get; private set; }
     public ResultadoColetaveisDto resultadosColetaveis;
-    public int subidasDaGarra { get; private set; }
 
-    public ResultadoLevelDto(string tempoPartida, int subidasDaGarra)
+    public ResultadoLevelDto(string tempoPartida, int subidasDaGarra, int subidasElevador)
     {
         this.tempoPartida = tempoPartida;
         this.subidasDaGarra = subidasDaGarra;
+        this.subidasDoElevador = subidasDoElevador;
     }
 
     public ResultadoLevelDto addResultadoColetaveis(ResultadoColetaveisDto resultadosColetaveis)
