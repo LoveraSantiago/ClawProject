@@ -254,7 +254,7 @@ public class PlayerPrefsMapas
         wrapper.array = estados;
         string arrayString = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString(chave, arrayString);
-        Debug.Log("Chave " + chave + " array " + arrayString);
+        //Debug.Log("Chave " + chave + " array " + arrayString);
     }
 
     private static string[] getArrayStrings(string chave, int tamanhoArray, string valor)

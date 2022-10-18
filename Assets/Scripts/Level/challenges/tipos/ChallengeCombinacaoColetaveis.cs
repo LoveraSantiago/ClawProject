@@ -84,12 +84,14 @@ public class ChallengeCombinacaoColetaveis : Challenge
         {
             if (!dicionarioDescartados.ContainsKey(keyValue.Key))
             {
+                Debug.Log("Combinacao nao possivel");
                 return true;
             }
 
             int qtdDescartados = dicionarioDescartados[keyValue.Key];
             if(qtdDescartados < keyValue.Value)
             {
+                Debug.Log("Combinacao nao possivel");
                 return true;
             }
         }
