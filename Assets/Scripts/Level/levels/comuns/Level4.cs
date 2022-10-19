@@ -71,7 +71,7 @@ public class Level4 : AbstractLevelOrdem
         return new Challenge[] {
             new ChallengeCombinacaoColetaveisTempoMenor(this, 4, 4, 3, "00:30"),
             new ChallengeCombinacaoColetaveisTempoMaior(this, 1, 1, 1, "00:40"),
-            new ChallengeScoreMaior(25)
+            new ChallengeSubidasDaGarraMaior(5)
         };
     }
 
