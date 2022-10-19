@@ -6,7 +6,7 @@ public class ChallengeCombinacaoColetaveis : Challenge
     private int indice1;
     private int indice2;
     private int indice3;
-    private bool prevencao;
+    protected bool prevencao;
 
     public ChallengeCombinacaoColetaveis(AbstractLevel abstractLevel, int indice1, int indice2, int indice3)
     {
@@ -16,7 +16,7 @@ public class ChallengeCombinacaoColetaveis : Challenge
         validarPrevencaoDeChallenge(abstractLevel);
     }
 
-    public ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
+    public virtual ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
         Sprite[] sprites = indicesToSprite(mapaEntidade);
         ChallengeLabel challengeLabel = new ChallengeLabel("Colete a combinacao ");
@@ -24,7 +24,7 @@ public class ChallengeCombinacaoColetaveis : Challenge
         return challengeLabel; 
     }
 
-    public bool resultado(ResultadoLevelDto resultadoLevelsDto)
+    public virtual bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
         return prevencao || 
                validarCombinacao(resultadoLevelsDto) || 
@@ -60,7 +60,7 @@ public class ChallengeCombinacaoColetaveis : Challenge
         return false;
     }
 
-    private Sprite[] indicesToSprite()
+    protected Sprite[] indicesToSprite()
     {
         MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;
         return indicesToSprite(mapaEntidade);
@@ -75,7 +75,7 @@ public class ChallengeCombinacaoColetaveis : Challenge
         };
     }
 
-    private bool isCombinacaoNaoPossivelInGame(ResultadoLevelDto resultadoLevelsDto)
+    protected bool isCombinacaoNaoPossivelInGame(ResultadoLevelDto resultadoLevelsDto)
     {
         Sprite[] sprites = indicesToSprite();
         Dictionary<Sprite, int> dicionarioDeSprites   = indicesParaDicionario(sprites);

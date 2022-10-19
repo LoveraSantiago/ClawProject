@@ -66,6 +66,15 @@ public class Level4 : AbstractLevelOrdem
         return false;
     }
 
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+            new ChallengeCombinacaoColetaveisTempoMenor(this, 4, 4, 3, "00:30"),
+            new ChallengeTempoMenor("00:40"),
+            new ChallengeScoreMaior(25)
+        };
+    }
+
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);

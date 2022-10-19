@@ -12,6 +12,11 @@ public class ChallengeLabel
 
     public ChallengeLabel(string conteudo)
     {
+        addConteudo(conteudo);
+    }
+
+    public void addConteudo(string conteudo)
+    {
         this.conteudo = conteudo;
     }
 
