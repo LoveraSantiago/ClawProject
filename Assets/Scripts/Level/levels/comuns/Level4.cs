@@ -69,7 +69,7 @@ public class Level4 : AbstractLevelOrdem
     public override Challenge[] getChallenges()
     {
         return new Challenge[] {
-            new ChallengeCombinacaoColetaveisTempoMenor(this, 4, 4, 3, "00:30"),
+            new ChallengeCombinacaoColetaveis(this, 5, 5, 5),            
             new ChallengeCombinacaoColetaveisTempoMaior(this, 1, 1, 1, "00:40"),
             new ChallengeSubidasDaGarraMaior(5)
         };

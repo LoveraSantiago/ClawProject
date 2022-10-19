@@ -33,7 +33,16 @@ public class Level5 : AbstractLevelObstaculos
             {false, false, false, false, false, false, false}
         };
         return gaiolas;
-    }    
+    }
+
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+           new ChallengeCombinacaoColetaveisTempoMenor(this, 1, 1, 1, "01:30"),
+            new ChallengeLevelCompleto(),
+            new ChallengeLevelCompleto()
+        };
+    }
 
     public override bool devolverParaBoard()
     {

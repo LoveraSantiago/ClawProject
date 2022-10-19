@@ -46,7 +46,7 @@ public class Level3 : AbstractLevelElevador
     public override Challenge[] getChallenges()
     {
         return new Challenge[] {            
-            new ChallengeCombinacaoColetaveis(this, 5, 5, 5),
+            new ChallengeSubidasDoElevadorIgual(this, 1),
             new ChallengeSubidasDoElevadorMenor(this, 3),
             new ChallengeSubidasDoElevadorMaior(this, 2)
         };
