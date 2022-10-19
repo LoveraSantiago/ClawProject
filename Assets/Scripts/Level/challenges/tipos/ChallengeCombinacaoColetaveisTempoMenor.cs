@@ -15,9 +15,14 @@ public class ChallengeCombinacaoColetaveisTempoMenor : ChallengeCombinacaoColeta
     public override ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
         ChallengeLabel challengeLabel = base.getLabelChallenge(mapaEntidade);
-        string novoConteudo = challengeLabel.conteudo + "\nantes de " + tempoEstimado;
+        string novoConteudo = challengeLabel.conteudo + "\n" + getMomentoDeTempo() + " de " + tempoEstimado;
         challengeLabel.addConteudo(novoConteudo);
         return challengeLabel;
+    }
+
+    protected virtual string getMomentoDeTempo()
+    {
+        return "antes";
     }
 
     public override bool resultado(ResultadoLevelDto resultadoLevelsDto)
@@ -37,11 +42,16 @@ public class ChallengeCombinacaoColetaveisTempoMenor : ChallengeCombinacaoColeta
         {
             TrincaColetaveisDescartadosDto trincaIt = coletaveisDescartados[contador];
             bool resultado = trincaIt.isSpritesIguais(sprites[0], sprites[1], sprites[2]);
-            if (resultado && (tempoEstimadoNumerico < trincaIt.timeStamp))
+            if (resultado && validarTempo(tempoEstimadoNumerico, trincaIt.timeStamp))
             {
                 return resultado;
             }
         }
         return false;
-    }    
+    }   
+    
+    protected virtual bool validarTempo(double tempoEstimado, double timestamp)
+    {
+        return tempoEstimado < timestamp;
+    }
 }
