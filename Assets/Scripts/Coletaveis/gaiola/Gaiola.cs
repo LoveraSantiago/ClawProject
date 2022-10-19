@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Gaiola : GO
 {
-    public static GaiolaContexto contexto;
+    private static GaiolaContexto contexto;
     public string nomeColetavelPreso { get; private set; }
 
     public Gaiola() 
