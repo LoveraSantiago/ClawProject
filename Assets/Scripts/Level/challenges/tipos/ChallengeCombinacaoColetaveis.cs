@@ -13,6 +13,7 @@ public class ChallengeCombinacaoColetaveis : Challenge
         this.indice1 = indice1;
         this.indice2 = indice2;
         this.indice3 = indice3;
+        validarPrevencaoDeChallenge(abstractLevel);
     }
 
     public ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
