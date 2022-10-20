@@ -39,8 +39,8 @@ public class Level5 : AbstractLevelObstaculos
     {
         return new Challenge[] {
            new ChallengeCombinacaoColetaveisTempoMenor(this, 1, 1, 1, "01:30"),
-            new ChallengeLevelCompleto(),
-            new ChallengeLevelCompleto()
+           new ChallengeQuebrarGaiolasTodas(this),
+           new ChallengeLevelCompleto()
         };
     }
 
