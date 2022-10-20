@@ -27,6 +27,15 @@ public class Level6 : AbstractLevelOvo
         };
     }
 
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+            new ChallengeLevelCompleto(),
+            new ChallengeLevelCompleto(),
+            new ChallengeLevelCompleto()
+        };
+    }
+
     public override string getMaquinaNome()
     {
         return "Dramatica Crocante";

@@ -7,12 +7,12 @@ public class ChallengeQuebrarGaiolasTodas : Challenge
         totalGaiolas = getQtdGaiolas(abstractLevelObstaculo);
     }
 
-    public ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
+    public virtual ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
         return new ChallengeLabel("Quebre todas as gaiolas do level");
     }
 
-    public bool resultado(ResultadoLevelDto resultadoLevelsDto)
+    public virtual bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
         return totalGaiolas == resultadoLevelsDto.resultadosColetaveis.totalGaiolasQuebradas;
     }
@@ -22,9 +22,9 @@ public class ChallengeQuebrarGaiolasTodas : Challenge
         bool[,] obstaculos = abstractLevelObstaculo.getArrayDeObstaculos();
 
         int contadorGaiolas = 0;
-        for (int contadorX = 0; contadorX < obstaculos.Length; contadorX++)
+        for (int contadorX = 0; contadorX < obstaculos.GetLength(0); contadorX++)
         {
-            for (int contadorY = 0; contadorY < obstaculos.GetLength(contadorX); contadorY++)
+            for (int contadorY = 0; contadorY < obstaculos.GetLength(1); contadorY++)
             {
                 if (obstaculos[contadorX, contadorY])
                 {
