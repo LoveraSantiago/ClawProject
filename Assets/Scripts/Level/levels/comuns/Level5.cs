@@ -44,6 +44,17 @@ public class Level5 : AbstractLevelObstaculos
         };
     }
 
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        //return new PowerUpsParaLevel(1)
+        //   .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MOLA });
+
+        return new PowerUpsParaLevel(2)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE })
+           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE });
+
+    }
+
     public override bool devolverParaBoard()
     {
         return false;
