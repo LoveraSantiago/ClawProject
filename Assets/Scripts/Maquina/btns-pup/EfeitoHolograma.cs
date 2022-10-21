@@ -36,7 +36,7 @@ public class EfeitoHolograma
 
     public void desligar()
     {
-        Debug.Log("Estado desligado chamado");
+        //Debug.Log("Estado desligado chamado");
         estadoAtual = ESTADO_DESLIGADO;    
     }
 
