@@ -26,7 +26,7 @@ public class ScrollPups
     }
 
     public bool isToqueDentroPlacaInterna(Vector2 posToque)
-    {
+    {        
         return scrollPupsDto.SprRendererPlacaInterna.bounds.Contains(posToque);
     }
 

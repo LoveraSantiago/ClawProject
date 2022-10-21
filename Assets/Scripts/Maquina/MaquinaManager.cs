@@ -79,7 +79,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     {
         if (draggavel.isDragAcionavel(posicao))
         {
-            Debug.Log("MaquinaManager begin drag");
+            //Debug.Log("MaquinaManager begin drag");
             draggavel.onBeginDrag(posicao);
         }
     }
@@ -88,6 +88,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     {
         if (draggavel.foiDragAcionado())
         {
+            //Debug.Log("MaquinaManager on drag");
             draggavel.onDrag(delta, maquinaDto);
         }
     }
@@ -143,6 +144,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {   
         isGamePlay = true;
+        draggavel = botoesPowerUp;
     }
 
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(Direcao evento)

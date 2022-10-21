@@ -76,6 +76,7 @@ public class BotoesPowerUp : Draggavel,
 
     public bool foiDragAcionado()
     {
+        //Debug.Log("foidragacionado " + (btnDragavelAtual != btnDragavelVazio) + " e " + controleAcionamentoPup.podeAcionarPupDraggavel());
         return btnDragavelAtual != btnDragavelVazio && controleAcionamentoPup.podeAcionarPupDraggavel(); 
     }
 
