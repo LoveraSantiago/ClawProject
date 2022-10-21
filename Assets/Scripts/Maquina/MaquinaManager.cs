@@ -79,6 +79,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     {
         if (draggavel.isDragAcionavel(posicao))
         {
+            Debug.Log("MaquinaManager begin drag");
             draggavel.onBeginDrag(posicao);
         }
     }
