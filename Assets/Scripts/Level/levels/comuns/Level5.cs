@@ -38,7 +38,7 @@ public class Level5 : AbstractLevelObstaculos
     public override Challenge[] getChallenges()
     {
         return new Challenge[] {
-           new ChallengeCombinacaoColetaveisTempoMenor(this, 1, 1, 1, "01:30"),
+           new ChallengeQuebrarGaiolasMaior(this, 4),
            new ChallengeQuebrarGaiolasTodas(this),
            new ChallengeQuebrarGaiolasIgual(this, 5)
         };

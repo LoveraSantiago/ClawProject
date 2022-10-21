@@ -30,7 +30,7 @@ public class Level6 : AbstractLevelOvo
     public override Challenge[] getChallenges()
     {
         return new Challenge[] {
-            new ChallengeLevelCompleto(),
+            new ChallengeCombinacaoColetaveisTempoMenor(this, 1, 1, 1, "01:30"),
             new ChallengeLevelCompleto(),
             new ChallengeLevelCompleto()
         };
