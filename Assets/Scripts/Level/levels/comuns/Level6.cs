@@ -32,7 +32,7 @@ public class Level6 : AbstractLevelOvo
         return new Challenge[] {
             new ChallengeCombinacaoColetaveisTempoMenor(this, 1, 1, 1, "01:30"),
             new ChallengeCombinacaoColetaveisTodasCorretas(this),
-            new ChallengeLevelCompleto()
+            new ChallengePowerUpNenhumAcionado()
         };
     }
 
