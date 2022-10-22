@@ -17,6 +17,11 @@ public class TrincaColetaveisDescartadosDto
         return sprites[0] == spr1 && sprites[1] == spr2 && sprites[2] == spr3;
     }
 
+    public bool isMesmosSprites()
+    {
+        return sprites[0] == sprites[1] && sprites[1] == sprites[2];
+    }
+
     public static Dictionary<Sprite, int> descartadosToDictionary(List<TrincaColetaveisDescartadosDto> lista)
     {
         Dictionary<Sprite, int> dicionarioDescartados = new Dictionary<Sprite, int>();
