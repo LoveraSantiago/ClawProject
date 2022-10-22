@@ -10,7 +10,7 @@ public class ChallengeQuebrarGaiolasIgual : ChallengeQuebrarGaiolasTodas
 
     public override ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
-        return new ChallengeLabel("Quebre " + qtdGaiolas.ToString() + " Gaiolas");
+        return new ChallengeLabel("Quebre exatamente " + qtdGaiolas.ToString() + " Gaiolas");
     }
 
     public override bool resultado(ResultadoLevelDto resultadoLevelsDto)

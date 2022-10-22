@@ -9,7 +9,7 @@ public class ChallengeQuebrarGaiolasTodas : Challenge
 
     public virtual ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
-        return new ChallengeLabel("Quebre todas as gaiolas do level");
+        return new ChallengeLabel("Quebre todas as Gaiolas");
     }
 
     public virtual bool resultado(ResultadoLevelDto resultadoLevelsDto)

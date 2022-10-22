@@ -10,7 +10,7 @@ public class ChallengeQuebrarGaiolasMaior : ChallengeQuebrarGaiolasTodas
 
     public override ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
-        return new ChallengeLabel("Quebre mais gaiolas do que " + qtdGaiolas.ToString());
+        return new ChallengeLabel("Quebre mais do que " + qtdGaiolas.ToString() + " Gaiolas");
     }
 
     public override bool resultado(ResultadoLevelDto resultadoLevelsDto)
