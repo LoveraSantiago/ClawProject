@@ -4,6 +4,7 @@ public class ColetorDeDados
     private Fornecedor<int> provedorSubidasDaGarra;
     private Fornecedor<ResultadoColetaveisDto> provedorDadosColetaveis;
     private Fornecedor<int> provedorSubidasDoElevador;
+    private Fornecedor<ResultadoPowerUpDto> provedorDadosPowerUp;
 
     public ColetorDeDados addProvedorDadosTempo(Fornecedor<string> provedorDadosTempo)
     {
@@ -29,16 +30,24 @@ public class ColetorDeDados
         return this;
     }
 
+    public ColetorDeDados addProvedorDadosPowerUp(Fornecedor<ResultadoPowerUpDto> provedorDadosPowerUp)
+    {
+        this.provedorDadosPowerUp = provedorDadosPowerUp;
+        return this;
+    }
+
     public ResultadoLevelDto coletar()
     {
         string tempoPartida = provedorDadosTempo.fornecer();        
         int subidasDaGarra  = provedorSubidasDaGarra.fornecer();
         int subidasDoElevador = provedorSubidasDoElevador.fornecer();
         ResultadoColetaveisDto resultadoColetaveis = provedorDadosColetaveis.fornecer();
+        ResultadoPowerUpDto resultadoPowerUp = provedorDadosPowerUp.fornecer();
 
         ResultadoLevelDto resultadoLevelsDto = new ResultadoLevelDto(tempoPartida, subidasDaGarra, subidasDoElevador)
             .addResultadoColetaveis(resultadoColetaveis)
-            .addMapaEntidade(ContextoEstaticoUtils.mapaEntidade);
+            .addMapaEntidade(ContextoEstaticoUtils.mapaEntidade)
+            .addResultadosPowerUp(resultadoPowerUp);
 
         return resultadoLevelsDto;
     }

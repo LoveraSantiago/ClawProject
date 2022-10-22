@@ -5,7 +5,8 @@ public class ResultadoLevelDto
     public int subidasDaGarra { get; private set; }
     public int subidasDoElevador { get; private set; }
     public string tempoPartida { get; private set; }
-    public ResultadoColetaveisDto resultadosColetaveis;
+    public ResultadoColetaveisDto resultadosColetaveis { get; private set; }
+    public ResultadoPowerUpDto resultadosPowerUp { get; private set; }
 
     public ResultadoLevelDto(string tempoPartida, int subidasDaGarra, int subidasElevador)
     {
@@ -23,6 +24,12 @@ public class ResultadoLevelDto
     public ResultadoLevelDto addMapaEntidade(MapaEntidade mapaEntidade)
     {
         this.mapaEntidade = mapaEntidade;
+        return this;
+    }
+
+    public ResultadoLevelDto addResultadosPowerUp(ResultadoPowerUpDto resultadosPowerUp)
+    {
+        this.resultadosColetaveis = resultadosColetaveis;
         return this;
     }
 }

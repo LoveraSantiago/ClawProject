@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class PowerUpManager : PowerUpAcaoAcionamento,
                               PowerUpAcaoFinalizacao,                              
-                              AcaoPowerUpAcionado.ProdutorEvento
+                              AcaoPowerUpAcionado.ProdutorEvento,
+                              Fornecedor<ResultadoPowerUpDto>
 {
     private int indiceBtnEmAcao;
+    private int totalPowerUpsAcionados;
     private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;
 
     private ContadorTimeout contadorTimeout;
 
     public PowerUpManager(PowerUpGameDto powerUpDto, InputGame inputGame)
     {
+        totalPowerUpsAcionados = 0;
         configurarPowerUps(powerUpDto, inputGame);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         contadorTimeout = new ContadorPowerUpInativo();
@@ -38,6 +41,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp)
     {
+        totalPowerUpsAcionados++;
         indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
@@ -46,6 +50,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp, Vector3 posicaoAtual)
     {
+        totalPowerUpsAcionados++;
         indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp, posicaoAtual);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
@@ -73,7 +78,12 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     {
         contadorTimeout = new ContadorPowerUpInativo();
         produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofFinalizar(indiceBtnEmAcao));
-    }    
+    }
+
+    public ResultadoPowerUpDto fornecer()
+    {
+        return new ResultadoPowerUpDto(totalPowerUpsAcionados);
+    }
 
     private void iniciarPowerUp(PowerUpInfo powerUpInfo)
     {
@@ -89,5 +99,5 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     ProdutorDeEvento<PowerUpInfo> AcaoPowerUpAcionado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoPowerUp;
-    }    
+    }   
 }
