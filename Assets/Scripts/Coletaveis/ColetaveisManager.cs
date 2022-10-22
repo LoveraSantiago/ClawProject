@@ -50,6 +50,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         yield return board.create();
         
         int qtdColetaveisDoBoard = HelperColetaveisInGame.getQtdColetaveisInGame();
+        Debug.Log("Total de coletaveis " + qtdColetaveisDoBoard);
         contador.iniciar(qtdColetaveisDoBoard);                
     }    
 

@@ -21,17 +21,22 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
 
     public void colocarNoLayerElevador()
     {        
-        setLayer(contexto.LAYER_ELEVADOR);
+        setLayer(LayerUtils.LAYER_ELEVADOR_INDICE);
     }
 
     public void colocarNoLayerNormal()
     {
-        setLayer(contexto.LAYER_NORMAL);        
+        setLayer(LayerUtils.LAYER_NORMAL_INDICE);        
     }
 
     public bool isLayerNormal()
     {
-        return isLayer(contexto.LAYER_NORMAL);
+        return isLayer(LayerUtils.LAYER_NORMAL_INDICE);
+    }
+
+    public bool isLayerPreso()
+    {
+        return isLayer(LayerUtils.LAYER_COLETAVELGAIOLA_INDICE);
     }
 
     public void colocarNoOrderDestaque()
@@ -52,22 +57,22 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
 
     public void imantar()
     {        
-        setLayer(LayerMask.NameToLayer("Atracao"));
+        setLayer(LayerUtils.LAYER_ATRACAO_INDICE);
     }
 
     public void desimantar()
     {
-        setLayer(LayerMask.NameToLayer(TagUtils.TAG_LAYER_COLETAVEL));
+        setLayer(LayerUtils.LAYER_COLETAVEL_INDICE);
     }
 
     public void naoInteracaoComOutrosColetaveis()
     {
-        setLayer(LayerMask.NameToLayer("ColetavelNaoInteracao"));
+        setLayer(LayerUtils.LAYER_NAOINTERACAOCOLETAVEL_INDICE);
     }
 
     public void preso(string nomeGaiola)
     {
-        setLayer(LayerMask.NameToLayer(TagUtils.LAYER_COLETAVELGAIOLA));
+        setLayer(LayerUtils.LAYER_COLETAVELGAIOLA_INDICE);
         nomeGaiolaAprisionadora = nomeGaiola;
         fixarEixoXY();
     }
@@ -100,9 +105,8 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
     }   
 
     public bool isTouchingCentroDaGarra()
-    {
-        LayerMask mask = LayerMask.GetMask("GarraCentro");
-        Collider2D collider2d = Physics2D.OverlapCircle(getPosicao(), 0.3f, mask);
+    {        
+        Collider2D collider2d = Physics2D.OverlapCircle(getPosicao(), 0.3f, LayerUtils.LAYER_GARRACCENTRO_MASK);
         return contexto.referenciaColliderColetado == collider2d && isVelocidadeYPositiva();
     }
 

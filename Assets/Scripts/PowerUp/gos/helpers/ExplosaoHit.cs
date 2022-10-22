@@ -10,7 +10,7 @@ public class ExplosaoHit
 
     private void acertarColetaveis(Vector3 posicaoBomba, float raio, int anguloHit, float velocidadeHit)
     {
-        Collider2D[] acertados = acertarAlvos(posicaoBomba, raio, TagUtils.TAG_LAYER_COLETAVEL);                    
+        Collider2D[] acertados = acertarAlvos(posicaoBomba, raio, LayerUtils.LAYER_COLETAVEL_DESCRICAO);                    
 
         for (int contador = 0; contador < acertados.Length; contador++)
         {
@@ -27,7 +27,7 @@ public class ExplosaoHit
 
     public void acertarGaiolas(Vector3 posicaoBomba, float raio)
     {
-        Collider2D[] acertados = acertarAlvos(posicaoBomba, raio, TagUtils.LAYER_GAIOLA);        
+        Collider2D[] acertados = acertarAlvos(posicaoBomba, raio, LayerUtils.LAYER_GAIOLA_DESCRICAO);        
 
         for (int contador = 0; contador < acertados.Length; contador++)
         {

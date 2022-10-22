@@ -9,7 +9,7 @@ public class GaiolaInputHit
         Vector3 posicaoTap = inputGame.getPosicaoTap();
         posicaoTap.z = 0;
         //Debug.Log("Posicao tap " + posicaoTap);
-        int layerMask = LayerMask.GetMask(TagUtils.LAYER_GAIOLA);
+        int layerMask = LayerMask.GetMask(LayerUtils.LAYER_GAIOLA_DESCRICAO);
         RaycastHit2D raycastHit;
         raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
 

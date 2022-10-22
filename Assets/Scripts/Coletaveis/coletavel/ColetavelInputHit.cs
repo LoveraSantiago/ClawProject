@@ -7,7 +7,7 @@ public class ColetavelInputHit
         Vector3 posicaoTap = inputGame.getPosicaoTap();
         posicaoTap.z = 0;
         //Debug.Log("Posicao tap " + posicaoTap);
-        string[] layers = new string[] { TagUtils.TAG_LAYER_COLETAVEL, TagUtils.LAYER_COLETAVELGAIOLA };
+        string[] layers = new string[] { LayerUtils.LAYER_COLETAVEL_DESCRICAO, LayerUtils.LAYER_COLETAVELGAIOLA_DESCRICAO };
         int layerMask = LayerMask.GetMask(layers);
         RaycastHit2D raycastHit;
         raycastHit = Physics2D.Raycast(posicaoTap, Vector3.up, 2, layerMask);
