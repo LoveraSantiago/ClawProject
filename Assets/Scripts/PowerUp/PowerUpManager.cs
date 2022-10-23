@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PowerUpManager : PowerUpAcaoAcionamento,
                               PowerUpAcaoFinalizacao,                              
@@ -6,14 +7,14 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
                               Fornecedor<ResultadoPowerUpDto>
 {
     private int indiceBtnEmAcao;
-    private int totalPowerUpsAcionados;
+    private List<PowerUpUsadoDto> listaPupsUsados;
     private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;
 
     private ContadorTimeout contadorTimeout;
 
     public PowerUpManager(PowerUpGameDto powerUpDto, InputGame inputGame)
     {
-        totalPowerUpsAcionados = 0;
+        listaPupsUsados = new List<PowerUpUsadoDto>();
         configurarPowerUps(powerUpDto, inputGame);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         contadorTimeout = new ContadorPowerUpInativo();
@@ -41,7 +42,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp)
     {
-        totalPowerUpsAcionados++;
+        listaPupsUsados.Add(new PowerUpUsadoDto(powerUp.tipo, Time.time));
         indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
@@ -50,7 +51,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp, Vector3 posicaoAtual)
     {
-        totalPowerUpsAcionados++;
+        listaPupsUsados.Add(new PowerUpUsadoDto(powerUp.tipo, Time.time));
         indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp, posicaoAtual);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
@@ -82,7 +83,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public ResultadoPowerUpDto fornecer()
     {
-        return new ResultadoPowerUpDto(totalPowerUpsAcionados);
+        return new ResultadoPowerUpDto(listaPupsUsados);
     }
 
     private void iniciarPowerUp(PowerUpInfo powerUpInfo)

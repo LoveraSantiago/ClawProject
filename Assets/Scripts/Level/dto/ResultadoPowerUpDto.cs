@@ -1,9 +1,12 @@
+using System.Collections.Generic;
+
 public class ResultadoPowerUpDto 
 {
-    public int totalPowerUps { get; private set; }
+    private List<PowerUpUsadoDto> listaPupsUsados;
+    public int totalPowerUps { get { return listaPupsUsados.Count; } }
 
-    public ResultadoPowerUpDto(int totaoPowerUps)
+    public ResultadoPowerUpDto(List<PowerUpUsadoDto> listaPupsUsados)
     {
-        this.totalPowerUps = totaoPowerUps;
+        this.listaPupsUsados = listaPupsUsados;
     }
 }
