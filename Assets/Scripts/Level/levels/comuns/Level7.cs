@@ -44,7 +44,7 @@ public class Level7 : AbstractLevelObstaculos
         return new Challenge[] {
             new ChallengeCombinacaoColetaveisTodasIncorretas(this),
             new ChallengeQuebrarGaiolasMenor(this, 6),
-            new ChallengeLevelCompleto()
+            new ChallengePowerUpAcionadoMaior(2)
         };
     }  
 
