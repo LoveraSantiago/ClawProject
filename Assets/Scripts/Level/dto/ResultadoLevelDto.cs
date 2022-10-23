@@ -29,7 +29,7 @@ public class ResultadoLevelDto
 
     public ResultadoLevelDto addResultadosPowerUp(ResultadoPowerUpDto resultadosPowerUp)
     {
-        this.resultadosColetaveis = resultadosColetaveis;
+        this.resultadosPowerUp = resultadosPowerUp;
         return this;
     }
 }
