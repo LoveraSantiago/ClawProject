@@ -10,7 +10,7 @@ public class ChallengeCombinacaoColetaveisTodasIncorretas : ChallengeCombinacaoC
 
     public override ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
-        return new ChallengeLabel("Consiga todas as combinações perfeitas");
+        return new ChallengeLabel("Consiga todas as combinações imperfeitas");
     }
 
     public override bool resultado(ResultadoLevelDto resultadoLevelsDto)
