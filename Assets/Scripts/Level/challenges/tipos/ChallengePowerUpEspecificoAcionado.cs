@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class ChallengePowerUpEspecificoAcionado : Challenge
 {
     private PowerUpEntidade pupEntidade;
@@ -16,6 +18,14 @@ public class ChallengePowerUpEspecificoAcionado : Challenge
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
-        throw new System.NotImplementedException();
+        List<PowerUpUsadoDto> listaPupsUsados  = resultadoLevelsDto.resultadosPowerUp.listaPupsUsados;
+        for(int contador = 0; contador < listaPupsUsados.Count; contador++)
+        {
+            if (listaPupsUsados[contador].tipo == pupEntidade.tipo)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

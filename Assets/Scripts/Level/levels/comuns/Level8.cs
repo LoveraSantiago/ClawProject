@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 
 public class Level8 : AbstractLevel
-{
-    //COPIADO DO LEVEL 1 SO PRA TER CLASSE P COLOCAR COR NA MAQUINA
+{    
     public override string getLevelTitle()
     {
         return "Nível 8";
@@ -34,7 +33,16 @@ public class Level8 : AbstractLevel
     public override bool devolverParaBoard()
     {
         return false;
-    }   
+    }
+
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+            new ChallengePowerUpEspecificoAcionado(PowerUpEnums.TIPO.BOMBA_DA_GARRA),
+            new ChallengeLevelCompleto(),
+            new ChallengeLevelCompleto()
+        };
+    }
 
     public override TipoContagemTempoDto getTempoContagem()
     {
