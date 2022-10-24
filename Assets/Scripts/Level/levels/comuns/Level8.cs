@@ -40,7 +40,7 @@ public class Level8 : AbstractLevel
         return new Challenge[] {
             new ChallengePowerUpEspecificoAcionado(PowerUpEnums.TIPO.BOMBA_DA_GARRA),
             new ChallengePowerUpEspecificoNaoAcionado(PowerUpEnums.TIPO.BURACO_NEGRO),
-            new ChallengeLevelCompleto()
+            new ChallengePowerUpEspecificoAcionadoTempoMenor(PowerUpEnums.TIPO.BOMBA_DA_GARRA, "01:00")
         };
     }
 
