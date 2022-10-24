@@ -11,8 +11,8 @@ public class ChallengePowerUpEspecificoAcionado : Challenge
 
     public ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
-        ChallengeLabel challengeLabel = new ChallengeLabel("Acione o power up " + pupEntidade.nome);
-        challengeLabel.addIgms(null, null, pupEntidade.sprIconPowerUp);
+        ChallengeLabel challengeLabel = new ChallengeLabel("Acione o power up\n " + pupEntidade.nome);
+        challengeLabel.addIgms(null, pupEntidade.sprIconPowerUp, null);
         return challengeLabel;
     }
 
