@@ -13,6 +13,7 @@ public class MapaScene : MonoBehaviour,
     {
         ContextoEstaticoUtils.configMainMono(this);
         MateriaisUtils.configurar(mainMapaDto.PrefabMateriais);
+        PowerUpEntidade.configurarDicionarioDeSpritesPup(mainMapaDto.PrefabPowerUpDto);
 
         allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto);        
         ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto);
