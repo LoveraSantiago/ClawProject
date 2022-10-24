@@ -14,6 +14,6 @@ public class ChallengePowerUpAcionadoMaior : Challenge
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
-        return resultadoLevelsDto.resultadosPowerUp.totalPowerUps <= qtdEsperada;
+        return qtdEsperada <= resultadoLevelsDto.resultadosPowerUp.totalPowerUps;
     }
 }
