@@ -49,7 +49,10 @@ public abstract class AbstractFornecedorColetaveisLevels
     public AbstractLevel getLevel(int indice)
     {
         AbstractLevelColetavel levelColetavel = (AbstractLevelColetavel)getLevelToColetavel(indice);
-        levelColetavel.setColetavelEntidade(arrayDeColetaveis[indice]);
+        if(levelColetavel != null)
+        {
+            levelColetavel.setColetavelEntidade(arrayDeColetaveis[indice]);
+        }
         return levelColetavel;
     }
 
