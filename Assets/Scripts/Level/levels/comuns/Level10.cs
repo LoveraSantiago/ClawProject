@@ -101,7 +101,8 @@ public class Level10 : AbstractLevel
         dicionario.Add("divisoria", "#4F6457");
         dicionario.Add("digitos", "#4F6457");
         dicionario.Add("circulo-externo", "#4F6457");
-        dicionario.Add("circulo-interno", "#ACD0C0");        return dicionario;
+        dicionario.Add("circulo-interno", "#ACD0C0");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()

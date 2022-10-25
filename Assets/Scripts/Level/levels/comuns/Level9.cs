@@ -40,6 +40,15 @@ public class Level9 : AbstractLevel
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
     }
 
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+            new ChallengePowerUpEspecificoAcionadoTempoMaior(PowerUpEnums.TIPO.BOMBA_DA_GARRA, "01:00"),
+            new ChallengeLevelCompleto(),
+            new ChallengeLevelCompleto()
+        };
+    }
+
     public override PowerUpsParaLevel getPupsToLevel()
     {
         //return new PowerUpsParaLevel(1)
@@ -101,7 +110,8 @@ public class Level9 : AbstractLevel
         dicionario.Add("divisoria", "#063852");
         dicionario.Add("digitos", "#063852");
         dicionario.Add("circulo-externo", "#011A27");
-        dicionario.Add("circulo-interno", "#F0810F");
+        dicionario.Add("circulo-interno", "#F0810F");
+
         return dicionario;
     }
 
