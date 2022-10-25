@@ -112,12 +112,13 @@ public class PlayerPrefsMapas
 
     private static void salvarNovaLiberacaoLevelEspecifico(int indiceLevel)
     {
-        int[] arrayLevels = getLiberacaoLevelsEspecificos();       
-        List<int> listaOrdenada = new List<int>(arrayLevels);
-        listaOrdenada.Add(indiceLevel);
-        listaOrdenada.Sort();
+        int[] arrayLevels = getLiberacaoLevelsEspecificos();
+        SortedSet<int> levelsOrdenados = new SortedSet<int>(arrayLevels);
+        levelsOrdenados.Add(indiceLevel);
 
-        salvarListaLiberacaoLevelEspecifico(listaOrdenada);        
+        int[] arrayLevelsOrdenados = new int[levelsOrdenados.Count];
+        levelsOrdenados.CopyTo(arrayLevelsOrdenados);
+        salvarListaLiberacaoLevelEspecifico(arrayLevelsOrdenados);        
     }
 
     public static int[] getNovaLiberacaoLevelEspecifico()
@@ -128,12 +129,14 @@ public class PlayerPrefsMapas
     public static int[] consumidoNovaLiberacaoLevelEspecifico(int indiceConsumido)
     {
         int[] arrayLevels = getLiberacaoLevelsEspecificos();
-        List<int> listaOrdenada = new List<int>(arrayLevels);
-        listaOrdenada.Sort();
-        listaOrdenada.Remove(indiceConsumido);
+        SortedSet<int> levelsOrdenados = new SortedSet<int>(arrayLevels);
+        levelsOrdenados.Remove(indiceConsumido);
 
-        salvarListaLiberacaoLevelEspecifico(listaOrdenada);
-        return listaOrdenada.ToArray();
+        int[] arrayLevelsOrdenados = new int[levelsOrdenados.Count];
+        levelsOrdenados.CopyTo(arrayLevelsOrdenados);
+
+        salvarListaLiberacaoLevelEspecifico(arrayLevelsOrdenados);
+        return arrayLevelsOrdenados;
     }
 
     public static int[] getChallengesDoMapa(MapaEntidade mapaEntidade)
@@ -289,7 +292,7 @@ public class PlayerPrefsMapas
     private static int[] getLiberacaoLevelsEspecificos()
     {        
         string arrayString = PlayerPrefs.GetString(NEW_LEVEL_ESPECIFICO);
-        if (Utils.isBlank(arrayString))
+        if (Utils.isBlank(arrayString) && getIndiceLevelLiberado() <= 1)
         {
             List<int> listaInicial = new List<int>();
             listaInicial.Add(LIGADO);
@@ -308,10 +311,15 @@ public class PlayerPrefsMapas
     private static void salvarListaLiberacaoLevelEspecifico(List<int> listaOrdenada)
     {
         int[] arrayLevels = listaOrdenada.ToArray();
+        salvarListaLiberacaoLevelEspecifico(arrayLevels);
+    }
+
+    private static void salvarListaLiberacaoLevelEspecifico(int[] arrayLevelsOrdenados)
+    {        
         WrapperArrayInteiros wrapper = new WrapperArrayInteiros();
-        wrapper.array = arrayLevels;
+        wrapper.array = arrayLevelsOrdenados;
 
         string arrayString = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString(NEW_LEVEL_ESPECIFICO, arrayString);
-    }      
+    }
 }

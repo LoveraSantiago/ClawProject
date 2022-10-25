@@ -52,7 +52,7 @@ public class ItemLevelScroll
     public void colorirImgMaquina(AbstractLevel level)
     {
         int numeroEstrelas = ChallengesUtils.toQtdEstrelas(level.challenge);
-        Debug.Log("Colorindo nivel estrelas " + numeroEstrelas);
+        //Debug.Log("Colorindo nivel estrelas " + numeroEstrelas);
         MaterialMiniMaquina.addCores(numeroEstrelas, material, level.getDicionarioDeCores());
         itemLevelDto.ImgEstrela1.sprite = numeroEstrelas >= 1 ? estrelaColorida : estrelaBranca;
         itemLevelDto.ImgEstrela2.sprite = numeroEstrelas >= 2 ? estrelaColorida : estrelaBranca;
@@ -83,7 +83,7 @@ public class ItemLevelScroll
 
     public void desligarImgMaquina()
     {
-        Debug.Log("Desgligar img maquina chamado");
+        //Debug.Log("Desligar img maquina chamado");
         itemLevelDto.ImgMaquina.gameObject.SetActive(false);
     }
 

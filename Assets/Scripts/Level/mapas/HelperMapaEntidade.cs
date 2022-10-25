@@ -20,7 +20,7 @@ public class HelperMapaEntidade
         int indiceMapaEntidade = (indice) / 10;
         MapaEnum mapaEnum = Mapas.getMapaNormalEnumPeloIndice(indiceMapaEntidade);
         MapaEntidade mapaEntidade = getMapaEntidadeByMapaEnum(mapaEnum);
-        Debug.Log("indice " + indice + " calculado " + indiceMapaEntidade + " mapa " + mapaEntidade);
+        //Debug.Log("indice " + indice + " calculado " + indiceMapaEntidade + " mapa " + mapaEntidade);
         return mapaEntidade;
     }
 

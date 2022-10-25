@@ -142,7 +142,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
     {
         int indiceLevel = indiceAtual + 1;
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaNormalByIndicesTotasDeLevels(indiceAtual);
-        Debug.Log("Indice level " + indiceLevel);
+        //Debug.Log("Indice level " + indiceLevel);
         AbstractLevel level = mapaEntidade.getLevelByIndiceGeral(indiceLevel);
         string levelName = level.getLevelName();
         itemLevel.addLabels(indiceLevel, mapaEntidade.title, level);
@@ -187,7 +187,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
 
     private void carregarLevelsLiberados()
     {
-        int[] levels = PlayerPrefsMapas.getNovaLiberacaoLevelEspecifico();
+        int[] levels = PlayerPrefsMapas.getNovaLiberacaoLevelEspecifico();        
         levelsLiberados = new List<int>(levels);        
     }
 
