@@ -44,8 +44,8 @@ public class Level9 : AbstractLevel
     {
         return new Challenge[] {
             new ChallengePowerUpEspecificoAcionadoTempoMaior(PowerUpEnums.TIPO.BOMBA_DA_GARRA, "01:00"),
-            new ChallengeLevelCompleto(),
-            new ChallengeLevelCompleto()
+            new ChallengeSubidasDaGarraTodasComSucesso(),
+            new ChallengeSubidasDaGarraComFalhas(2)
         };
     }
 
