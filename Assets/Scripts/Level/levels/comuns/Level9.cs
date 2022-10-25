@@ -53,7 +53,7 @@ public class Level9 : AbstractLevel
 
     public override string getMaquinaNome()
     {
-        return "Chiclete e Embalagem";
+        return "Surpresa de Abobora";
     }
 
     protected override Dictionary<string, string> getCoresMaquina()
@@ -61,11 +61,11 @@ public class Level9 : AbstractLevel
         //16. Day & Night
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-frente", "#063852");
-        dicionario.Add("base-chao", "#FFFFFF");
-        dicionario.Add("chao-dentro", "#FFFFFF");
-        dicionario.Add("cabo-da-garra", "#FFFFFF");
-        dicionario.Add("viga", "#FFFFFF");
-        dicionario.Add("barra", "#FFFFFF");
+        dicionario.Add("base-chao", "#011A27");
+        dicionario.Add("chao-dentro", "#011A27");
+        dicionario.Add("cabo-da-garra", "#C6D4FF");
+        dicionario.Add("viga", "#063852");
+        dicionario.Add("barra", "#011A27");
         dicionario.Add("placa-timer", "#E6DF44");
         dicionario.Add("display-timer-digito", "#063852");
         dicionario.Add("seg", "#011A27");
@@ -78,30 +78,30 @@ public class Level9 : AbstractLevel
         dicionario.Add("display-pontos2", "#063852");
         dicionario.Add("display-pontos3", "#063852");
         dicionario.Add("leds", "#011A27");
-        dicionario.Add("topo", "#FFFFFF");
-        dicionario.Add("base", "#FFFFFF");
-        dicionario.Add("mesa-joystick-cima", "#FFFFFF");
-        dicionario.Add("mesa-joystick-baixo", "#FFFFFF");
-        dicionario.Add("buraco-joystick", "#FFFFFF");
-        dicionario.Add("haste-joystick", "#FFFFFF");
-        dicionario.Add("bola-joystick", "#FFFFFF");
-        dicionario.Add("buraco-botao", "#FFFFFF");
-        dicionario.Add("botao", "#FFFFFF");
-        dicionario.Add("buraco-ficha", "#FFFFFF");
-        dicionario.Add("buraco-card", "#FFFFFF");
-        dicionario.Add("triangulo-card", "#FFFFFF");
-        dicionario.Add("btn-pup-base-d", "#FFFFFF");
-        dicionario.Add("btn-pup-topo-d", "#FFFFFF");
-        dicionario.Add("btn-pup-base-e", "#FFFFFF");
-        dicionario.Add("btn-pup-topo-e", "#FFFFFF");
-        dicionario.Add("placa-externa", "#FFFFFF");
-        dicionario.Add("placa-interna", "#FFFFFF");
-        dicionario.Add("setas-laterais", "#FFFFFF");
-        dicionario.Add("seta-cima", "#FFFFFF");
-        dicionario.Add("divisoria", "#FFFFFF");
-        dicionario.Add("digitos", "#FFFFFF");
-        dicionario.Add("circulo-externo", "#FFFFFF");
-        dicionario.Add("circulo-interno", "#FFFFFF");
+        dicionario.Add("topo", "#063852");
+        dicionario.Add("base", "#E6DF44");
+        dicionario.Add("mesa-joystick-cima", "#F0810F");
+        dicionario.Add("mesa-joystick-baixo", "#F0810F");
+        dicionario.Add("buraco-joystick", "#063852");
+        dicionario.Add("haste-joystick", "#011A27");
+        dicionario.Add("bola-joystick", "#063852");
+        dicionario.Add("buraco-botao", "#063852");
+        dicionario.Add("botao", "#E6DF44");
+        dicionario.Add("buraco-ficha", "#E6DF44");
+        dicionario.Add("buraco-card", "#E6DF44");
+        dicionario.Add("triangulo-card", "#E6DF44");
+        dicionario.Add("btn-pup-base-d", "#063852");
+        dicionario.Add("btn-pup-topo-d", "#E6DF44");
+        dicionario.Add("btn-pup-base-e", "#063852");
+        dicionario.Add("btn-pup-topo-e", "#E6DF44");
+        dicionario.Add("placa-externa", "#011A27");
+        dicionario.Add("placa-interna", "#F0810F");
+        dicionario.Add("setas-laterais", "#E6DF44");
+        dicionario.Add("seta-cima", "#F0810F");
+        dicionario.Add("divisoria", "#063852");
+        dicionario.Add("digitos", "#063852");
+        dicionario.Add("circulo-externo", "#011A27");
+        dicionario.Add("circulo-interno", "#F0810F");
         return dicionario;
     }
 

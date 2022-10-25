@@ -24,7 +24,7 @@ public class LevelLeite : AbstractLevelColetavel
 
     public override string getMaquinaNome()
     {
-        return "Azul e Verdes Brincantes";
+        return "Chocolate com Morango";
     }   
 
     protected override Dictionary<string, string> getCoresMaquina()
@@ -72,7 +72,8 @@ public class LevelLeite : AbstractLevelColetavel
         dicionario.Add("divisoria", "#5D535E");
         dicionario.Add("digitos", "#5D535E");
         dicionario.Add("circulo-externo", "#DFE166");
-        dicionario.Add("circulo-interno", "#EC96A4");        return dicionario;
+        dicionario.Add("circulo-interno", "#EC96A4");
+        return dicionario;
     }
 
     public override bool isLevelAlbedo0()
