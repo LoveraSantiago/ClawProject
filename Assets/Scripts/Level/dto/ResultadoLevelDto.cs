@@ -5,6 +5,7 @@ public class ResultadoLevelDto
     public int subidasDaGarra { get; private set; }
     public int subidasDoElevador { get; private set; }
     public string tempoPartida { get; private set; }
+    public int totalColetaveis { get { return resultadosColetaveis.coletaveisDescartados.coletaveisDescartados.Count * 3; } }
     public ResultadoColetaveisDto resultadosColetaveis { get; private set; }
     public ResultadoPowerUpDto resultadosPowerUp { get; private set; }
 

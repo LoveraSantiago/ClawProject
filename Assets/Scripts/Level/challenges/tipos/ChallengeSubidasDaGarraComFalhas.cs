@@ -17,9 +17,9 @@ public class ChallengeSubidasDaGarraComFalhas : Challenge
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
 
-        int diferenca = resultadoLevelsDto.subidasDaGarra - resultadoLevelsDto.resultadosColetaveis.coletaveisDescartados.coletaveisDescartados.Count;
-        //Debug.Log(" Subidas " + resultadoLevelsDto.subidasDaGarra + " coletados " + resultadoLevelsDto.resultadosColetaveis.totalColetaveis
-        //    + " diferenca " + diferenca + " falhas " + falhas);
-        return diferenca <= falhas;
+        int diferenca = resultadoLevelsDto.subidasDaGarra - resultadoLevelsDto.totalColetaveis;
+        Debug.Log(" Subidas " + resultadoLevelsDto.subidasDaGarra + " coletados " + resultadoLevelsDto.totalColetaveis
+            + " diferenca " + diferenca + " falhas " + falhas);
+        return diferenca >= falhas;
     }
 }
