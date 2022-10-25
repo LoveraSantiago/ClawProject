@@ -112,6 +112,7 @@ public class PlayerPrefsMapas
 
     private static void salvarNovaLiberacaoLevelEspecifico(int indiceLevel)
     {
+        Debug.Log("chamado salvando nova liberacao");
         int[] arrayLevels = getLiberacaoLevelsEspecificos();
         SortedSet<int> levelsOrdenados = new SortedSet<int>(arrayLevels);
         levelsOrdenados.Add(indiceLevel);
@@ -146,7 +147,7 @@ public class PlayerPrefsMapas
         return getArrayNumerico(chave, 10, DESLIGADO);        
     }
 
-    public static void salvarChallengeDoMapa(MapaEntidade mapaEntidade, int indiceLevel, int challenge)
+    public static void salvarChallengeDoMapa(MapaEntidade mapaEntidade, int indiceLevel, int challenge, bool evolucao)
     {
         int[] challenges = getChallengesDoMapa(mapaEntidade);
         if(challenges[indiceLevel] != challenge)
@@ -156,7 +157,10 @@ public class PlayerPrefsMapas
             string chave = MAPA_CHALLENGES + mapaEntidade.id;
             salvarArrayNumerico(chave, challenges);
 
-            salvarNovaLiberacaoLevelEspecifico(indiceLevel);
+            if (evolucao)
+            {
+                salvarNovaLiberacaoLevelEspecifico(indiceLevel + 1);
+            }
         }
     }
 
@@ -286,7 +290,7 @@ public class PlayerPrefsMapas
         wrapper.array = estados;
         string arrayString = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString(chave, arrayString);
-        Debug.Log("Chave " + chave + " array " + arrayString);
+        //Debug.Log("Chave " + chave + " array " + arrayString);
     }
 
     private static int[] getLiberacaoLevelsEspecificos()
@@ -301,10 +305,11 @@ public class PlayerPrefsMapas
             arrayString = PlayerPrefs.GetString(NEW_LEVEL_ESPECIFICO); 
         }        
         WrapperArrayInteiros wrapper= JsonUtility.FromJson<WrapperArrayInteiros>(arrayString);
-        if(wrapper.array == null)
+        if(wrapper == null || wrapper.array == null)
         {
             return new int[0] { };
         }
+        Debug.Log("recuperando liberacao " + arrayString);
         return wrapper.array;                
     }    
 
@@ -320,6 +325,7 @@ public class PlayerPrefsMapas
         wrapper.array = arrayLevelsOrdenados;
 
         string arrayString = JsonUtility.ToJson(wrapper);
+        Debug.Log("Salvando liberacao " + arrayString);
         PlayerPrefs.SetString(NEW_LEVEL_ESPECIFICO, arrayString);
     }
 }

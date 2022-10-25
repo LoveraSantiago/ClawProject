@@ -91,7 +91,7 @@ public abstract class AbstractLevel
         };
     }
 
-    public void levelConcluido(string tempo, int score, int challenge)
+    public void levelConcluido(string tempo, int score, int challenge, bool evolucao)
     {
         MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;
 
@@ -99,7 +99,7 @@ public abstract class AbstractLevel
 
         PlayerPrefsMapas.salvarIndiceLevelLiberado(indiceLevelAtual + 1);
         PlayerPrefsMapas.salvarScoreDoMapa(mapaEntidade, indiceDecremento, score);
-        PlayerPrefsMapas.salvarChallengeDoMapa(mapaEntidade, indiceDecremento, challenge);
+        PlayerPrefsMapas.salvarChallengeDoMapa(mapaEntidade, indiceDecremento, challenge, evolucao);
         PlayerPrefsMapas.salvarTempoDoMapa(mapaEntidade, indiceDecremento, tempo);
 
         mapaEntidade.reloadEstadosLevels();

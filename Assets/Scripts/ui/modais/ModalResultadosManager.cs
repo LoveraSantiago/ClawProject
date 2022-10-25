@@ -29,7 +29,9 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
 
             AvaliadorDeChallenge avaliadores = new AvaliadorDeChallenge(resultadoLevels, challenges, levelAtual.challenge);            
 
-            levelAtual.levelConcluido(resultadoLevels.tempoPartida, resultadoLevels.resultadosColetaveis.score, avaliadores.challengeUnificado);
+            levelAtual.levelConcluido(
+                resultadoLevels.tempoPartida, resultadoLevels.resultadosColetaveis.score, 
+                avaliadores.challengeUnificado, avaliadores.evolucao);
 
             ModalFimPontos modal = new ModalFimPontos(uiGameDto.ModalPontosDto);
             modal.passarResultados(resultadoLevels, challenges, avaliadores.resultadoLevel);
