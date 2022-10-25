@@ -7,6 +7,6 @@ public class ChallengeSubidasDaGarraTodasComSucesso : Challenge
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
-        return resultadoLevelsDto.subidasDaGarra < resultadoLevelsDto.resultadosColetaveis.totalColetaveis;
+        return resultadoLevelsDto.subidasDaGarra < resultadoLevelsDto.resultadosColetaveis.coletaveisDescartados.coletaveisDescartados.Count;
     }
 }

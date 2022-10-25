@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class ChallengeSubidasDaGarraComFalhas : Challenge
 {
     private int falhas;
@@ -14,7 +16,10 @@ public class ChallengeSubidasDaGarraComFalhas : Challenge
 
     public bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
-        int diferenca =resultadoLevelsDto.subidasDaGarra - resultadoLevelsDto.resultadosColetaveis.totalColetaveis;
+
+        int diferenca = resultadoLevelsDto.subidasDaGarra - resultadoLevelsDto.resultadosColetaveis.coletaveisDescartados.coletaveisDescartados.Count;
+        //Debug.Log(" Subidas " + resultadoLevelsDto.subidasDaGarra + " coletados " + resultadoLevelsDto.resultadosColetaveis.totalColetaveis
+        //    + " diferenca " + diferenca + " falhas " + falhas);
         return diferenca <= falhas;
     }
 }

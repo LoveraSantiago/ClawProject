@@ -1,14 +1,12 @@
 public class ResultadoColetaveisDto 
 {
-    public int score { get; private set; }
-    public int totalColetaveis { get; private set; }
+    public int score { get; private set; }    
     public int totalGaiolasQuebradas { get; private set; }
     public ColetaveisDescartadosDto coletaveisDescartados { get; private set; }
 
-    public ResultadoColetaveisDto addResultados(int score, int totalColetaveis)
+    public ResultadoColetaveisDto addResultados(int score)
     {
-        this.score = score;
-        this.totalColetaveis = totalColetaveis;
+        this.score = score;        
         return this;
     }
 

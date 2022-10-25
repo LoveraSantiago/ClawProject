@@ -169,7 +169,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     public ResultadoColetaveisDto fornecer()
     {
         ResultadoColetaveisDto resultadoColetaveis = new ResultadoColetaveisDto()
-            .addResultados(contador.getScore(), contador.getTotalDeColetaveis())
+            .addResultados(contador.getScore())
             .addDescartados(tuboDeDescarte.fornecer())
             .addTotalGaiolasQuebradas(Gaiola.getGaiolasDesligadas());        
         return resultadoColetaveis;
