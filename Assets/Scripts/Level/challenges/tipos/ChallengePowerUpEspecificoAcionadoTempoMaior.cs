@@ -13,7 +13,7 @@ public class ChallengePowerUpEspecificoAcionadoTempoMaior : Challenge
 
     public ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
-        ChallengeLabel challengeLabel = new ChallengeLabel("Acione o power up " + pupEntidade.nome + "\n antes de " + tempoEstimado);
+        ChallengeLabel challengeLabel = new ChallengeLabel("Acione o power up " + pupEntidade.nome + "\n depois de " + tempoEstimado);
         challengeLabel.addIgms(null, null, pupEntidade.sprIconPowerUp);
         return challengeLabel;
     }
