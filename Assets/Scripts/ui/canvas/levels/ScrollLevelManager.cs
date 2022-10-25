@@ -148,6 +148,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
         itemLevel.addLabels(indiceLevel, mapaEntidade.title, level);
         itemLevel.desligarExclamacao();
         itemLevel.colorirImgMaquina(level);
+        itemLevel.ligarImgMaquina();
 
         if (levelsLiberados.BinarySearch(indiceLevel) >= 0)
         {
