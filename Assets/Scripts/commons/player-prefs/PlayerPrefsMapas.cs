@@ -309,7 +309,7 @@ public class PlayerPrefsMapas
         {
             return new int[0] { };
         }
-        Debug.Log("recuperando liberacao " + arrayString);
+        //Debug.Log("recuperando liberacao " + arrayString);
         return wrapper.array;                
     }    
 
@@ -325,7 +325,7 @@ public class PlayerPrefsMapas
         wrapper.array = arrayLevelsOrdenados;
 
         string arrayString = JsonUtility.ToJson(wrapper);
-        Debug.Log("Salvando liberacao " + arrayString);
+        //Debug.Log("Salvando liberacao " + arrayString);
         PlayerPrefs.SetString(NEW_LEVEL_ESPECIFICO, arrayString);
     }
 }
