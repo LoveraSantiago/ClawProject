@@ -171,6 +171,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         ResultadoColetaveisDto resultadoColetaveis = new ResultadoColetaveisDto()
             .addResultados(contador.getScore())
             .addDescartados(tuboDeDescarte.fornecer())
+            .addDevolvidos(board.fornecer())
             .addTotalGaiolasQuebradas(Gaiola.getGaiolasDesligadas());        
         return resultadoColetaveis;
     }
