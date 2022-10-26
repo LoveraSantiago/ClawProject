@@ -1,21 +1,16 @@
 using System.Collections.Generic;
 
-public class Level10 : AbstractLevel
+public class Level10 : AbstractLevelOvo
 {
     public override string getLevelTitle()
     {
         return "Nível 10";
     }
 
-    public override string getMsgObjetivoLevel()
+    public override TipoContagemTempoDto getTempoContagem()
     {
-        return LevelUtils.MSG_COLETAR_ITENS;
-    }
-
-    public override TipoGame getTipoGame()
-    {
-        return TipoGame.NORMAL;
-    }
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
+    }        
 
     public override int[,] getArrayDeColetaveis()
     {
@@ -30,14 +25,13 @@ public class Level10 : AbstractLevel
             {-1, -1, -1, -1, -1, -1, -1}};
     }
 
-    public override bool devolverParaBoard()
+    public override Challenge[] getChallenges()
     {
-        return false;
-    }
-
-    public override TipoContagemTempoDto getTempoContagem()
-    {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
+        return new Challenge[] {
+            new ChallengeLevelCompleto(),
+            new ChallengeLevelCompleto(),
+            new ChallengeLevelCompleto()
+        };
     }
 
     public override PowerUpsParaLevel getPupsToLevel()

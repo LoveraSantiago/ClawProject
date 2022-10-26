@@ -114,18 +114,18 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _corCards: {r: 1, g: 0.5019608, b: 0.5882353, a: 1}
-    - _corCardsBackground: {r: 0.52156866, g: 0.88235295, b: 0.9411765, a: 1}
-    - _corColetado: {r: 1, g: 0.5019608, b: 0.5882353, a: 1}
-    - _corColetadoBackground: {r: 0.52156866, g: 0.88235295, b: 0.9411765, a: 1}
-    - _corExterno: {r: 0.92156863, g: 0.50980395, b: 0.92156863, a: 1}
-    - _corFundo: {r: 0, g: 0.7411765, b: 0.8117647, a: 1}
-    - _corJoystick: {r: 0.91764706, g: 0.9019608, b: 0.48235294, a: 1}
-    - _corPontos: {r: 1, g: 0.5019608, b: 0.5882353, a: 1}
-    - _corPontosBackground: {r: 0.52156866, g: 0.88235295, b: 0.9411765, a: 1}
-    - _corSetas: {r: 0, g: 0.74509805, b: 0.8666667, a: 1}
-    - _corSimbolo: {r: 1, g: 0.5019608, b: 0.5882353, a: 1}
-    - _corSimboloBackground: {r: 0.42352942, g: 0.68235296, b: 0.8509804, a: 1}
-    - _corTimer: {r: 1, g: 0.5019608, b: 0.5882353, a: 1}
-    - _corTimerBackground: {r: 0.52156866, g: 0.88235295, b: 0.9411765, a: 1}
+    - _corCards: {r: 0.30980393, g: 0.39215687, b: 0.34117648, a: 1}
+    - _corCardsBackground: {r: 0.45882353, g: 0.69411767, b: 0.6627451, a: 1}
+    - _corColetado: {r: 0.45882353, g: 0.69411767, b: 0.6627451, a: 1}
+    - _corColetadoBackground: {r: 0.6745098, g: 0.8156863, b: 0.7529412, a: 1}
+    - _corExterno: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
+    - _corFundo: {r: 0.6745098, g: 0.8156863, b: 0.7529412, a: 1}
+    - _corJoystick: {r: 0.8509804, g: 0.7058824, b: 0.2901961, a: 1}
+    - _corPontos: {r: 0.45882353, g: 0.69411767, b: 0.6627451, a: 1}
+    - _corPontosBackground: {r: 0.6745098, g: 0.8156863, b: 0.7529412, a: 1}
+    - _corSetas: {r: 0.6745098, g: 0.8156863, b: 0.7529412, a: 1}
+    - _corSimbolo: {r: 0.30980393, g: 0.39215687, b: 0.34117648, a: 1}
+    - _corSimboloBackground: {r: 0.6745098, g: 0.8156863, b: 0.7529412, a: 1}
+    - _corTimer: {r: 0.6745098, g: 0.8156863, b: 0.7529412, a: 1}
+    - _corTimerBackground: {r: 0.45882353, g: 0.69411767, b: 0.6627451, a: 1}
   m_BuildTextureStacks: []
