@@ -15,7 +15,7 @@ public class Level10 : AbstractLevelOvo
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]{
-            {7, -1, -1, 5, -1, -1, 7},
+            {-1,  5,  5,  5,  7,  7,  7},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
