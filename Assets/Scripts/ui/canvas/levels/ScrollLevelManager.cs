@@ -142,13 +142,21 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
     {
         int indiceLevel = indiceAtual + 1;
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaNormalByIndicesTotasDeLevels(indiceAtual);
-        //Debug.Log("Indice level " + indiceLevel);
+        Debug.Log("Indice level " + indiceLevel);
         AbstractLevel level = mapaEntidade.getLevelByIndiceGeral(indiceLevel);
         string levelName = level.getLevelName();
         itemLevel.addLabels(indiceLevel, mapaEntidade.title, level);
         itemLevel.desligarExclamacao();
-        itemLevel.colorirImgMaquina(level);
-        itemLevel.ligarImgMaquina();
+        itemLevel.colorirImgMaquina(level);                
+        
+        if (indiceLevel != ultimoItemClicado)
+        {
+            itemLevel.ligarImgMaquina();
+        }
+        else
+        {
+            itemLevel.desligarImgMaquina();
+        }
 
         if (levelsLiberados.BinarySearch(indiceLevel) >= 0)
         {
@@ -160,12 +168,13 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
 
     private void selecionado()
     {
-        Debug.Log("Selecionado chamado");
+        //Debug.Log("Selecionado chamado");
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
         int indiceItem = int.Parse(goSelecionado.transform.parent.name);
-        if(indiceItem != ultimoItemClicado)
+        ItemLevelScroll itemLevel = levelScroll.getItemLevel(indiceItem);
+
+        if(itemLevel.indiceLevel != ultimoItemClicado)
         {
-            ItemLevelScroll itemLevel = levelScroll.getItemLevel(indiceItem);
 
             Vector3 posicaoItem = itemLevel.getPosicaoImgMaquina();
 
@@ -181,7 +190,9 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
 
             LevelItemScrollSelecaoDto levelItem = new LevelItemScrollSelecaoDto(posicaoItem, itemLevel.material);
             produtorDeEvento.produziuEvento(levelItem);
-            ultimoItemClicado = indiceItem;
+            ultimoItemClicado = itemLevel.indiceLevel;
+
+            Debug.Log("Ultimo item clicado " + ultimoItemClicado);
         }
     }
 
