@@ -11916,7 +11916,7 @@ MonoBehaviour:
         lblMsg: {fileID: 1587407716}
         imgColetavel: {fileID: 2021469726}
         btnAvancar: {fileID: 1259820080}
-      modalFailOrdem:
+      modalFailGameDto:
         spriteOrderFail: {fileID: 21300000, guid: 48bff0a52fd4758468f61e467eb749a1, type: 3}
         spriteTimeOver: {fileID: 21300000, guid: 19d414dc9d399a64a93d90eb38ff8a8d, type: 3}
         spriteElevadorFail: {fileID: 21300000, guid: e7860a600c7a222479ab5e209aca580a, type: 3}

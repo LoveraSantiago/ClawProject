@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class ModalFailOrdemDto 
+public class ModalFailGameDto 
 {
     [SerializeField] private Sprite spriteOrderFail;
     [SerializeField] private Sprite spriteTimeOver;

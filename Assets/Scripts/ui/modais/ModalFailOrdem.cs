@@ -1,16 +1,16 @@
 public class ModalFailOrdem : AbstractModalFim
 {
-    private ModalFailOrdemDto modalFailOrdemDto;
+    private ModalFailGameDto modalFailGameDto;
 
-    public ModalFailOrdem(ModalFailOrdemDto modalFailOrdemDto)
+    public ModalFailOrdem(ModalFailGameDto modalFailOrdemDto)
     {
-        this.modalFailOrdemDto = modalFailOrdemDto;
+        this.modalFailGameDto = modalFailOrdemDto;
         modalFailOrdemDto.BtnAvancar.onClick.AddListener(() => irParaCena());
     }
 
     public override void ligar()
     {
-        modalFailOrdemDto.GoModal.SetActive(true);        
+        modalFailGameDto.GoModal.SetActive(true);        
     }
 
     protected override void irParaCena()
