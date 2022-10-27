@@ -11917,7 +11917,12 @@ MonoBehaviour:
         imgColetavel: {fileID: 2021469726}
         btnAvancar: {fileID: 1259820080}
       modalFailOrdem:
+        spriteOrderFail: {fileID: 21300000, guid: 48bff0a52fd4758468f61e467eb749a1, type: 3}
+        spriteTimeOver: {fileID: 21300000, guid: 19d414dc9d399a64a93d90eb38ff8a8d, type: 3}
+        spriteElevadorFail: {fileID: 21300000, guid: e7860a600c7a222479ab5e209aca580a, type: 3}
         goModal: {fileID: 1733829163}
+        txtTitle: {fileID: 189234180}
+        txtMsg: {fileID: 1318552828}
         btnAvancar: {fileID: 828203236}
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
