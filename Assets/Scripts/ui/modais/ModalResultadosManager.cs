@@ -77,8 +77,12 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
 
     private void mostrarModalOrdemFail(int ordem)
     {
-        ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem);
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
+        if (!mostrandoModal)
+        {
+            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem);
+            modal.failOrdem();
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
+        }
     }    
 
     private IEnumerator coroutineMostrarModal(AbstractModalFim modal)
@@ -111,80 +115,21 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
 
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
-        if (evento.isTimeOver())
+        if (evento.isTimeOver() && !mostrandoModal)
         {
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            //CRIAR MODAL TEMPO ESGOTADO
-            mostrarModalPontuacao();
+            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem);
+            modal.failTimeOver();
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
     {
-        if (evento.isGameOver)
-        {
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            //CRIAR MODAL ELEVADOR GAME OVER
-            mostrarModalPontuacao();
+        if (evento.isGameOver && !mostrandoModal)
+        {   
+            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem);
+            modal.failElevador();
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));            
         }
     }    
 

@@ -10,8 +10,11 @@ public class ModalFailGameDto
     [SerializeField] private Sprite spriteElevadorFail;
     [Space(3)]
     [SerializeField] private GameObject goModal;
+    [Space(3)]
     [SerializeField] private Text txtTitle;
     [SerializeField] private Text txtMsg;
+    [Space(3)]
+    [SerializeField] private Image imgFail;
     [SerializeField] private Button btnAvancar;
 
     public Sprite SpriteOrderFail { get { return spriteOrderFail; } }
@@ -23,4 +26,6 @@ public class ModalFailGameDto
 
     public Text TxtTitle { get { return txtTitle; } }
     public Text TxtMsg { get { return txtMsg; } }
+
+    public Image ImgFail { get { return imgFail; } }
 }
