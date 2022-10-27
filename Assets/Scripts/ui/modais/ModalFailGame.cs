@@ -1,8 +1,8 @@
-public class ModalFailOrdem : AbstractModalFim
+public class ModalFailGame : AbstractModalFim
 {
     private ModalFailGameDto modalFailGameDto;
 
-    public ModalFailOrdem(ModalFailGameDto modalFailOrdemDto)
+    public ModalFailGame(ModalFailGameDto modalFailOrdemDto)
     {
         this.modalFailGameDto = modalFailOrdemDto;
         modalFailOrdemDto.BtnAvancar.onClick.AddListener(() => irParaCena());

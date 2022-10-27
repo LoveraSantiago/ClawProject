@@ -77,7 +77,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
 
     private void mostrarModalOrdemFail(int ordem)
     {
-        ModalFailOrdem modal = new ModalFailOrdem(uiGameDto.ModalFailOrdem);
+        ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem);
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
     }    
 
