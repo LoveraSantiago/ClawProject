@@ -48,7 +48,7 @@ public class ChallengeCombinacaoColetaveis : Challenge
     {
         Sprite[] sprites = indicesToSprite();
 
-        List<TrincaColetaveisDescartadosDto> coletaveisDescartados = resultadoLevelsDto.resultadosColetaveis.coletaveisDescartados.coletaveisDescartados;
+        List<TrincaColetaveisDescartadosDto> coletaveisDescartados = resultadoLevelsDto.resultadosColetaveis.coletaveisDescartados.listaDeTrincaDeDescartados;
         for(int contador = 0; contador < coletaveisDescartados.Count; contador++)
         {
             bool resultado = coletaveisDescartados[contador].isSpritesIguais(sprites[0], sprites[1], sprites[2]);
@@ -79,7 +79,7 @@ public class ChallengeCombinacaoColetaveis : Challenge
     {
         Sprite[] sprites = indicesToSprite();
         Dictionary<Sprite, int> dicionarioDeSprites   = indicesParaDicionario(sprites);
-        Dictionary<Sprite, int> dicionarioDescartados = TrincaColetaveisDescartadosDto.descartadosToDictionary(resultadoLevelsDto.resultadosColetaveis.coletaveisDescartados.coletaveisDescartados);
+        Dictionary<Sprite, int> dicionarioDescartados = TrincaColetaveisDescartadosDto.descartadosToDictionary(resultadoLevelsDto.resultadosColetaveis.coletaveisDescartados.listaDeTrincaDeDescartados);
 
         foreach(KeyValuePair<Sprite, int> keyValue in dicionarioDeSprites)
         {

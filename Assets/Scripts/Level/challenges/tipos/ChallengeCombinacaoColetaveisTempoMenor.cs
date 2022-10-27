@@ -37,7 +37,7 @@ public class ChallengeCombinacaoColetaveisTempoMenor : ChallengeCombinacaoColeta
         Sprite[] sprites = indicesToSprite();
         double tempoEstimadoNumerico = TempoUtils.parseTimeFromString(tempoEstimado);
 
-        List<TrincaColetaveisDescartadosDto> coletaveisDescartados = resultadoLevelsDto.resultadosColetaveis.coletaveisDescartados.coletaveisDescartados;
+        List<TrincaColetaveisDescartadosDto> coletaveisDescartados = resultadoLevelsDto.resultadosColetaveis.coletaveisDescartados.listaDeTrincaDeDescartados;
         for (int contador = 0; contador < coletaveisDescartados.Count; contador++)
         {
             TrincaColetaveisDescartadosDto trincaIt = coletaveisDescartados[contador];

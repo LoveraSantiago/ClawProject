@@ -28,9 +28,9 @@ public class Level10 : AbstractLevelOvo
     public override Challenge[] getChallenges()
     {
         return new Challenge[] {
-            new ChallengeLevelCompleto(),
-            new ChallengeLevelCompleto(),
-            new ChallengeLevelCompleto()
+            new ChallengeSubidasDaGarraMenorQueColetaveis(),
+            new ChallengeMemoriaSemDevolucao(this),
+            new ChallengeMemoriaComMaxDevolucao(this, 1)
         };
     }
 

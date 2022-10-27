@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class ColetaveisDescartadosDto 
 {
-    public List<TrincaColetaveisDescartadosDto> coletaveisDescartados { get; private set; }
+    public List<TrincaColetaveisDescartadosDto> listaDeTrincaDeDescartados { get; private set; }
 
     public ColetaveisDescartadosDto()
     {
-        coletaveisDescartados = new List<TrincaColetaveisDescartadosDto>();
+        listaDeTrincaDeDescartados = new List<TrincaColetaveisDescartadosDto>();
     }
 
     private void addTrinca(TrincaColetaveisDescartadosDto trinca)
     {
-        coletaveisDescartados.Add(trinca);
+        listaDeTrincaDeDescartados.Add(trinca);
     }
 
     public void addTrinca(Sprite[] sprites)

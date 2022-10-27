@@ -1,8 +1,8 @@
-public class ChallengeSubidasDaGarraMenor : Challenge
+public class ChallengeSubidasDaGarraMenorQueUmValor : Challenge
 {
     private int subidas;
 
-    public ChallengeSubidasDaGarraMenor(int subidas)
+    public ChallengeSubidasDaGarraMenorQueUmValor(int subidas)
     {
         this.subidas = subidas;
     }

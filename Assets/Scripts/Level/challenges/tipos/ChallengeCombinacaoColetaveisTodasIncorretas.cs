@@ -15,7 +15,7 @@ public class ChallengeCombinacaoColetaveisTodasIncorretas : ChallengeCombinacaoC
 
     public override bool resultado(ResultadoLevelDto resultadoLevelsDto)
     {
-        List<TrincaColetaveisDescartadosDto> coletaveisDescartados = resultadoLevelsDto.resultadosColetaveis.coletaveisDescartados.coletaveisDescartados;
+        List<TrincaColetaveisDescartadosDto> coletaveisDescartados = resultadoLevelsDto.resultadosColetaveis.coletaveisDescartados.listaDeTrincaDeDescartados;
         for (int contador = 0; contador < coletaveisDescartados.Count; contador++)
         {
             if (coletaveisDescartados[contador].isMesmosSprites())

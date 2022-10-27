@@ -139,7 +139,7 @@ MonoBehaviour:
     width: 1440
     height: 817
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Inspector
   m_RootView: {fileID: 16}
   m_MinSize: {x: 875, y: 350}
   m_MaxSize: {x: 10000, y: 10000}
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 872
     height: 824
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 26}
   m_Panes:
   - {fileID: 26}
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 101
+  controlID: 98
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -462,7 +462,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 86
+  controlID: 63
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -487,7 +487,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 114
+  controlID: 69
 --- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -506,7 +506,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 603
-    height: 443
+    height: 189
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 28}
@@ -530,11 +530,11 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 443
+    y: 189
     width: 603
-    height: 324
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+    height: 578
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 27}
   m_Panes:
   - {fileID: 29}
@@ -817,8 +817,8 @@ MonoBehaviour:
     - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
     pluginStates:
     - '{}'
-    scale: 23
-    fitToScreenEnabled: 0
+    scale: 24
+    fitToScreenEnabled: 1
     rotationDegree: 0
     highlightSafeAreaEnabled: 0
     friendlyName: Samsung Galaxy S7
@@ -1071,9 +1071,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.074237, y: -4.526326, z: -0.016577795}
+    m_Target: {x: -13.153878, y: -2.3290749, z: 909.195}
     speed: 2
-    m_Value: {x: -2.074237, y: -4.526326, z: -0.016577795}
+    m_Value: {x: -13.153878, y: -2.3290749, z: 909.195}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1124,9 +1124,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 11.433656
+    m_Target: 87.876945
     speed: 2
-    m_Value: 11.433656
+    m_Value: 87.876945
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1172,9 +1172,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: -381
-    y: -407
+    y: -661
     width: 602
-    height: 303
+    height: 557
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1202,7 +1202,7 @@ MonoBehaviour:
     x: -381
     y: -850
     width: 602
-    height: 422
+    height: 168
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1292,7 +1292,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 431}
     m_SelectedIDs: dc720000
     m_LastClickedID: 29404
-    m_ExpandedIDs: 000000007a7200007c7200007e72000080720000827200008472000086720000887200008a7200008c7200008e72000090720000927200009472000096720000987200009a7200009c7200009e720000a072000000ca9a3b
+    m_ExpandedIDs: 0000000076720000787200007a7200007c7200007e72000080720000827200008472000086720000887200008a7200008c7200008e72000090720000927200009472000096720000987200009a7200009c720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1320,7 +1320,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000007a7200007c7200007e72000080720000827200008472000086720000887200008a7200008c7200008e72000090720000927200009472000096720000987200009a7200009c7200009e720000a0720000
+    m_ExpandedIDs: 0000000076720000787200007a7200007c7200007e72000080720000827200008472000086720000887200008a7200008c7200008e72000090720000927200009472000096720000987200009a7200009c720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
