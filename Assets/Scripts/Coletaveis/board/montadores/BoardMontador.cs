@@ -38,6 +38,7 @@ public abstract class BoardMontador
             }
 
             Coletavel coletavel = criarColetavel(coletavelEntidade.sprite, posicao);
+            coletavel.fixarEixoXY();
             yield return onColetavelCriado(contadorColuna, contadorLinha,coletavel);            
         }
     }
