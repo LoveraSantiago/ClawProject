@@ -2,7 +2,7 @@ public class MovimentacaoParaCima : AbstractMovimentacaoDaGarraNormal
 {
     public override void preInicio()
     {
-        colocarMassa(3);
+        colocarMassa(getMassaMovimentacaoCima());
 
         contabilizarSubida();                
         playAnimacaoIrPCima();        

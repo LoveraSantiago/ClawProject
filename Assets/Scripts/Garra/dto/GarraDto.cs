@@ -7,6 +7,10 @@ public class GarraDto
     [SerializeField] private float posCacaNiquel;
     [SerializeField] private float posLimiteGarra;
     [Space(3)]
+    [SerializeField] private float massaMovCima;
+    [SerializeField] private float massaMovBaixo;
+    [SerializeField] private float massaMovAgarrar;
+    [Space(3)]
     [SerializeField] private GarraVelocidadesDto velocidades;
     [Space(3)]
     [SerializeField] private GarraAngulosDto angulos;    
@@ -26,6 +30,10 @@ public class GarraDto
 
     public float PosCacaNiquel { get { return posCacaNiquel; } }
     public float PosLimiteGarra { get { return posLimiteGarra; } }
+
+    public float MassaMovCima { get { return massaMovCima; } }
+    public float MassaMovBaixo { get { return massaMovBaixo; } }
+    public float MassaMovAgarrar { get { return massaMovAgarrar; } }
 
     public CorpoGarraDto Corpo { get { return corpo; } }
     

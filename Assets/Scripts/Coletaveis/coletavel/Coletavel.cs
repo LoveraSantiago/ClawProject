@@ -65,6 +65,11 @@ public class Coletavel : ComponenteAnimacaoDeColetavel
         setLayer(LayerUtils.LAYER_COLETAVEL_INDICE);
     }
 
+    public bool isImantado()
+    {
+        return isLayer(LayerUtils.LAYER_ATRACAO_INDICE);
+    }
+
     public void naoInteracaoComOutrosColetaveis()
     {
         setLayer(LayerUtils.LAYER_NAOINTERACAOCOLETAVEL_INDICE);

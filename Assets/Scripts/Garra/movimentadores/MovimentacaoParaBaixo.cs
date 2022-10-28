@@ -11,7 +11,7 @@ public class MovimentacaoParaBaixo : AbstractMovimentacaoDaGarraNormal
 
     public override void preInicio()
     {   
-        colocarMassa(2);
+        colocarMassa(getMassaMovimentacaoBaixo());
         intervaloTempoDeTravamento.resetContador();
         playAnimacaoIrPBaixo();
     }

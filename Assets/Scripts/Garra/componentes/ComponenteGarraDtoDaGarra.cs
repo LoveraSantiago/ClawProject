@@ -31,4 +31,19 @@ public class ComponenteGarraDtoDaGarra
     {
         return garraDto.PosLimiteGarra;
     }
+
+    public float getMassaMovimentacaoCima()
+    {
+        return garraDto.MassaMovCima;
+    }
+
+    public float getMassaMovimentacaoBaixo()
+    {
+        return garraDto.MassaMovBaixo;
+    }
+
+    public float getMassaMovimentacaoAgarrar()
+    {
+        return garraDto.MassaMovAgarrar;
+    }
 }

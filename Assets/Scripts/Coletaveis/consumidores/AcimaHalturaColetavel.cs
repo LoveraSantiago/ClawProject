@@ -9,10 +9,13 @@ public class AcimaHalturaColetavel : Predicate<Coletavel>
 
     public bool test(Coletavel coletavel)
     {
-        if (coletavel.isAtivo())
-        {
-            return coletavel.getPosicao().y >= alturaLimite;
-        }
-        return false;
+        return coletavel.isAtivo() && 
+             isAcimaPosicao(coletavel) &&
+             (!coletavel.isImantado());         
     }
+
+    private bool isAcimaPosicao(Coletavel coletavel)
+    {
+        return coletavel.getPosicao().y >= alturaLimite;
+    }    
 }

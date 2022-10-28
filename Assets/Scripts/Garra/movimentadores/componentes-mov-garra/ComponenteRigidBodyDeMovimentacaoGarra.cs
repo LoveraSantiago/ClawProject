@@ -17,7 +17,7 @@ public class ComponenteRigidBodyDeMovimentacaoGarra : ComponenteEfeitoDeMoviment
         getGarra().colocarNaPosicaoHorizontal(posHorizontal);
     }
 
-    protected void colocarMassa(int massa)
+    protected void colocarMassa(float massa)
     {
         getGarra().colocarMassa(massa);
     }
@@ -90,5 +90,20 @@ public class ComponenteRigidBodyDeMovimentacaoGarra : ComponenteEfeitoDeMoviment
     protected float getPosicaoCacaNiquel()
     {
         return getGarra().getPosicaoCacaNiquel();
+    }
+
+    public float getMassaMovimentacaoCima()
+    {
+        return getGarra().getMassaMovimentacaoCima();
+    }
+
+    public float getMassaMovimentacaoBaixo()
+    {
+        return getGarra().getMassaMovimentacaoBaixo();
+    }
+
+    public float getMassaMovimentacaoAgarrar()
+    {
+        return getGarra().getMassaMovimentacaoAgarrar();
     }
 }
