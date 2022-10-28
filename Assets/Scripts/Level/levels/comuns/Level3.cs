@@ -38,8 +38,8 @@ public class Level3 : AbstractLevelElevador
     public override int[,] getArrayDeColetaveisSub()
     {
         return new int[,] {
-            { 0, 0, 0, 1, 1, 1, -1 },
-            { 1, 1, 1, 1, 1, 1,  1 }
+            { 1, 1, 1, 1, 1, 1, -1 },
+            { 2, 2, 2, 2, 2, 2,  2 }
         };
     }
 
