@@ -11923,6 +11923,7 @@ MonoBehaviour:
         goModal: {fileID: 1733829163}
         txtTitle: {fileID: 189234180}
         txtMsg: {fileID: 1318552828}
+        imgFail: {fileID: 859365588}
         btnAvancar: {fileID: 828203236}
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
@@ -52303,7 +52304,7 @@ GameObject:
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1733829164
 RectTransform:
   m_ObjectHideFlags: 0
