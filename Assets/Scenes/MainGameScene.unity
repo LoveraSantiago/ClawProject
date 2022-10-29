@@ -11394,7 +11394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapa: 1
-  indiceLevel: 3
+  indiceLevel: 10
   mainDto:
     dragCollider: {fileID: 491158116}
     garraDto:
@@ -41602,7 +41602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476824514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4972641, y: -0.20257616, z: -7.416614}
+  m_LocalPosition: {x: -0.18, y: 6.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
