@@ -17,4 +17,6 @@ public class LayerUtils
     public static readonly int LAYER_NAOINTERACAOCOLETAVEL_INDICE = LayerMask.NameToLayer("ColetavelNaoInteracao");
 
     public static readonly LayerMask LAYER_GARRACCENTRO_MASK = LayerMask.GetMask("GarraCentro");
+
+    public static readonly int LAYER_CONTAINER_COLETAVEL_INDICE = LayerMask.NameToLayer("ContainerColetavel");
 }
