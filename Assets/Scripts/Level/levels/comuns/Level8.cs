@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 
 public class Level8 : AbstractLevel
-{
-    //COPIADO DO LEVEL 1 SO PRA TER CLASSE P COLOCAR COR NA MAQUINA
+{    
     public override string getLevelTitle()
     {
         return "Nível 8";
@@ -10,7 +9,7 @@ public class Level8 : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return "Colete todos os itens";
+        return LevelUtils.MSG_COLETAR_ITENS;
     }
 
     public override TipoGame getTipoGame()
@@ -34,11 +33,20 @@ public class Level8 : AbstractLevel
     public override bool devolverParaBoard()
     {
         return false;
-    }   
+    }
+
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+            new ChallengePowerUpEspecificoAcionado(PowerUpEnums.TIPO.BOMBA_DA_GARRA),
+            new ChallengePowerUpEspecificoNaoAcionado(PowerUpEnums.TIPO.BURACO_NEGRO),
+            new ChallengePowerUpEspecificoAcionadoTempoMenor(PowerUpEnums.TIPO.BOMBA_DA_GARRA, "01:00")
+        };
+    }
 
     public override TipoContagemTempoDto getTempoContagem()
     {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
     }
 
     public override PowerUpsParaLevel getPupsToLevel()

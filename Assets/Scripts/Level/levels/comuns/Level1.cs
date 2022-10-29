@@ -9,13 +9,13 @@ public class Level1 : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return "Colete todos os itens";
+        return LevelUtils.MSG_COLETAR_ITENS;
     }
 
     public override TipoGame getTipoGame()
     {
         return TipoGame.NORMAL;
-    }    
+    }
 
     public override int[,] getArrayDeColetaveis()
     {
@@ -32,14 +32,38 @@ public class Level1 : AbstractLevel
         };
     }
 
+    //public override int[,] getArrayDeColetaveis()
+    //{
+    //    return new int[,]
+    //    {
+    //        {-1, -1, -1, 12, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1}
+    //    };
+    //}
+
     public override bool devolverParaBoard()
     {
         return false;
-    }   
+    }
+
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+            new ChallengeLevelCompleto(),
+            new ChallengeTempoMenor("00:40"),
+            new ChallengeScoreMaior(25)
+        };
+    }
 
     public override TipoContagemTempoDto getTempoContagem()
     {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
     }
 
     public override PowerUpsParaLevel getPupsToLevel()

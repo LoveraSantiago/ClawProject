@@ -72,4 +72,14 @@ public class ContadorManager
     {
         return contador;
     }
+
+    public int getScore()
+    {
+        return contador.getScore();
+    }
+
+    public int getTotalDeColetaveis()
+    {
+        return contador.getTotalDeColetaveis();
+    }    
 }

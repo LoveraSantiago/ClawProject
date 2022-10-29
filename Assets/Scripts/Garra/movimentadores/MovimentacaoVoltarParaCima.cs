@@ -11,7 +11,7 @@ public class MovimentacaoVoltarParaCima : AbstractMovimentacaoDaGarra
 
     public override void preInicio()
     {
-        colocarMassa(3);
+        colocarMassa(getMassaMovimentacaoCima());
         playAnimacaoIrPCima();
     }
 

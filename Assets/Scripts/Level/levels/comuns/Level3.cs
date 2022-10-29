@@ -7,17 +7,12 @@ public class Level3 : AbstractLevelElevador
         return "Nível 3";
     }
 
-    public override string getMsgObjetivoLevel()
-    {
-        return "Cuidado com o numero de coletaveis";
-    }   
-
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,] {
-            {  0,  1,  2,  5,  5,  5,  2 },
+            {  2,  1,  2,  5,  5,  5,  2 },
             {  4,  4,  4,  3,  3,  3, -1 },
-            {  1,  6,  1,  6,  1,  7,  7 },
+            { -1, -1, -1, -1, -1, -1, -1 },
             { -1, -1, -1, -1, -1, -1, -1 },
             { -1, -1, -1, -1, -1, -1, -1 },
             { -1, -1, -1, -1, -1, -1, -1 },
@@ -25,14 +20,38 @@ public class Level3 : AbstractLevelElevador
             { -1, -1, -1, -1, -1, -1, -1 } };
     }
 
+    //public override int[,] getArrayDeColetaveis()
+    //{
+    //    return new int[,]
+    //    {
+    //        {-1, -1,  0,  1,  2, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1}
+    //    };
+    //}
+
     public override int[,] getArrayDeColetaveisSub()
     {
         return new int[,] {
-            { 0, 0, 0, 1, 1, 1, -1 },
-            { 1, 1, 1, 1, 1, 1,  1 }
+            { 1, 1, 1, 1, 1, 1, -1 },
+            { 2, 2, 2, 2, 2, 2,  2 }
         };
     }
-    
+
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {            
+            new ChallengeSubidasDoElevadorIgual(this, 1),
+            new ChallengeSubidasDoElevadorMenor(this, 3),
+            new ChallengeSubidasDoElevadorMaior(this, 2)
+        };
+    }
+
     public override bool devolverParaBoard()
     {
         return true;
@@ -41,7 +60,7 @@ public class Level3 : AbstractLevelElevador
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "01:00");
-        //return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:10");        
+        //return new TipoContagemTempoDto(ContadorTimer.Contagem.CONTINUA, "00:11");        
     }
 
     public override string getMaquinaNome()

@@ -18,6 +18,7 @@ public class MaquinaAssemblerV5 : EditorWindow
     private DropdownField dropDownFieldLevels;
     private List<ColorField> listaDeColorFields;
 
+
     public void CreateGUI()
     {
         // Each editor window contains a root VisualElement object
@@ -36,7 +37,11 @@ public class MaquinaAssemblerV5 : EditorWindow
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/maquina-assembler/MaquinaAssemblerV5.uss");
 
+        GameObject goPrefabsLevelsDto = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelsPrefabDto.prefab");
+        PrefabLevelsDto prefabLevelsDto = goPrefabsLevelsDto.GetComponent<PrefabLevelsDto>();
+        HelperMapaEntidade.configurar(prefabLevelsDto);
         EditorLevelHelper.inicializar();
+
         criarComponentDropDownFieldMapas(root);
         criarComponentDropDownFieldLevels(root);
         maquina = new MaquinaColoridaV2();
@@ -134,7 +139,7 @@ public class MaquinaAssemblerV5 : EditorWindow
             {
                 reset();
                 MapaEnum mapaEnum = Mapas.getMapaEnumByName(evt.newValue);
-                MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum, false);
+                MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);
 
                 dropDownFieldLevels.choices = EditorLevelHelper.getListaDeNomesLevels(mapaEntidade);
                 dropDownFieldLevels.index = 0;

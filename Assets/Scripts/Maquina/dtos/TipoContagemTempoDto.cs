@@ -1,6 +1,6 @@
 public class TipoContagemTempoDto 
 {
-    public ContadorTimer.Contagem contagem { get; private set; }
+    private ContadorTimer.Contagem contagem;
     public string tempo { get; private set; }
 
     public TipoContagemTempoDto(ContadorTimer.Contagem contagem, string tempo)
@@ -9,8 +9,18 @@ public class TipoContagemTempoDto
         this.tempo = tempo;
     }
 
+    public bool isContagemNormal()
+    {
+        return contagem == ContadorTimer.Contagem.NORMAL;
+    }
+
     public bool isContagemContinua()
     {
         return contagem == ContadorTimer.Contagem.CONTINUA;
+    }
+
+    public bool isContagemRegressiva()
+    {
+        return contagem == ContadorTimer.Contagem.REGRESSIVA;
     }
 }

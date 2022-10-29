@@ -21,6 +21,9 @@ public abstract class AbstractExplosivelPowerUpGo : AbstractPowerUpGo,
 
     protected bool isAlvoExplosivel(Collision2D evento)
     {
-        return TagUtils.isColetavel(evento) || TagUtils.isGaiola(evento);
+        //Debug.Log(evento.gameObject.name);
+        return TagUtils.isColetavel(evento) || 
+               TagUtils.isGaiola(evento) || 
+               evento.gameObject.layer == LayerUtils.LAYER_CONTAINER_COLETAVEL_INDICE;
     }
 }

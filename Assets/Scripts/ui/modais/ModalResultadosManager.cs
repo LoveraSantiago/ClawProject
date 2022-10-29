@@ -10,26 +10,32 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
 
     private UIGameDto uiGameDto;
     private CacaNiquelDto cacaNiquelDto;
+    private ColetorDeDados coletorDeDados;
 
-    private ModalResultados modalResultado;
-
-    public ModalResultadosManager(UIGameDto uiGameDto, CacaNiquelDto cacaNiquelDto)
+    public ModalResultadosManager(UIGameDto uiGameDto, CacaNiquelDto cacaNiquelDto, ColetorDeDados coletorDeDados)
     {
         this.uiGameDto = uiGameDto;
-        this.cacaNiquelDto = cacaNiquelDto;
-    }
-
-    public void configurarLevel(string levelName)
-    {        
-        modalResultado = new ModalResultados(levelName, uiGameDto.ModalPontosDto);
-    }              
+        this.cacaNiquelDto  = cacaNiquelDto;
+        this.coletorDeDados = coletorDeDados;
+    }             
 
     private void mostrarModalPontuacao()
     {
         if (!mostrandoModal)
         {
-            modalResultado.configurar();
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
+            AbstractLevel levelAtual = ContextoEstaticoUtils.level;
+            ResultadoLevelDto resultadoLevels = coletorDeDados.coletar();
+            Challenge[] challenges = levelAtual.getChallenges();
+
+            AvaliadorDeChallenge avaliadores = new AvaliadorDeChallenge(resultadoLevels, challenges, levelAtual.challenge);            
+
+            levelAtual.levelConcluido(
+                resultadoLevels.tempoPartida, resultadoLevels.resultadosColetaveis.score, 
+                avaliadores.challengeUnificado, avaliadores.evolucao);
+
+            ModalFimPontos modal = new ModalFimPontos(uiGameDto.ModalPontosDto);
+            modal.passarResultados(resultadoLevels, challenges, avaliadores.resultadoLevel);
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
 
@@ -70,36 +76,27 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     }
 
     private void mostrarModalOrdemFail(int ordem)
-    {        
-        modalResultado.setScoreAtual("Não seguiu ordem " + ordem);
-        //faltando navegacao de volta
-        modalResultado.configurarModalFailOrdem();
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal());
-    }  
-
-    private IEnumerator coroutineMostrarModal()
-    {      
-        mostrandoModal = true;                   
-        yield return new WaitForSeconds(0.5f);
-        modalResultado.ligar();
-    }
+    {
+        if (!mostrandoModal)
+        {
+            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem);
+            modal.failOrdem();
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
+        }
+    }    
 
     private IEnumerator coroutineMostrarModal(AbstractModalFim modal)
     {
         mostrandoModal = true;       
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(uiGameDto.DelayAbrirModal);
         modal.ligar();
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
-    {        
-        modalResultado.setScoreAtual(evento.score.ToString());
+    {  
         InformacoesFimDeJogoDto infoFimDeJogo = evento.infosFimDeJogo;
         if (infoFimDeJogo.fimColetados)
-        {            
-            AbstractLevel levelAtual = ContextoEstaticoUtils.level;
-            levelAtual.levelConcluido();
-            
+        {           
             mostrarModalPontuacao();
         }
         else if (infoFimDeJogo.erroOrdem)
@@ -118,17 +115,21 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
 
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
-        if (evento.isTimeOver())
+        if (evento.isTimeOver() && !mostrandoModal)
         {
-            mostrarModalPontuacao();
+            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem);
+            modal.failTimeOver();
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
     {
-        if (evento.isGameOver)
-        {
-            mostrarModalPontuacao();
+        if (evento.isGameOver && !mostrandoModal)
+        {   
+            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem);
+            modal.failElevador();
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));            
         }
     }    
 

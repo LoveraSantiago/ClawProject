@@ -99,6 +99,16 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         return new TrocadorDeOrdemVazio();
     }
 
+    public override int getScore()
+    {
+        return score;
+    }
+
+    public override int getTotalDeColetaveis()
+    {
+        return totalColetaveis;
+    }
+
     protected bool isZeroTotalColetaveis()
     {
         return totalColetaveis == 0;
@@ -116,5 +126,6 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         int indice = trinca.getPrimeiroIndiceVazio();
         //Debug.Log("Indice contador de coletaveis " + indice);
         coletados[indice] = coletado;        
-    }    
+    }
+
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Gaiola : GO
 {
-    public static GaiolaContexto contexto;
+    private static GaiolaContexto contexto;
     public string nomeColetavelPreso { get; private set; }
 
     public Gaiola() 
@@ -48,6 +48,16 @@ public class Gaiola : GO
     public override void desligar()
     {
         base.desligar();
+        contexto.adicionarDesligado();
         soltarColetavel();
+    }
+
+    public static int getGaiolasDesligadas()
+    {
+        if(contexto == null)
+        {
+            return 0;
+        }
+        return contexto.contadorDesligados;
     }
 }

@@ -35,14 +35,14 @@ public class MapaEntidade
 
     public MapaEntidade addFornecedoresLevels(AbstractFornecedorLevels levelFornecedor)
     {
-        this.levelFornecedor = levelFornecedor;        
+        this.levelFornecedor = levelFornecedor;
+        getChallenges();
         return this;
     }
 
-    public MapaEntidade addFornecedoresColetaveis(AbstractFornecedorColetaveisLevels coletaveisFornecedor, bool loadLiberacao)
+    public MapaEntidade addFornecedoresColetaveis(AbstractFornecedorColetaveisLevels coletaveisFornecedor)
     {
-        this.coletaveisFornecedor = coletaveisFornecedor;
-        this.coletaveisFornecedor.configurarLoadingDeLiberados(loadLiberacao);
+        this.coletaveisFornecedor = coletaveisFornecedor;        
         return this;
     }
     //**** PARTE CONFIGURACOES BUILDER FIM****//
@@ -100,6 +100,16 @@ public class MapaEntidade
     public int getIndiceMaxLevelLiberadoDoMapa()
     {
         return levelFornecedor.getIndiceMaxLevelLiberadoDoMapa(id);
+    }
+
+    public int[] getChallenges()
+    {
+        return levelFornecedor.getEstadoChallenges(this);
+    }
+
+    public void reloadEstadosLevels()
+    {
+        levelFornecedor.resetEstadosLevels(this);
     }
     //**** PARTE LEVELS FIM ****//
 

@@ -3,15 +3,16 @@ public class UiGameManager
     public ModalResultadosManager modalResultados { get; private set; }
     public ModalSair modalSair { get; private set; }
 
-    public UiGameManager(UIGameDto uiDto, CacaNiquelDto cacaNiquelDto)
+    public UiGameManager(MainGameDto mainDto, ColetorDeDados coletorDeDados)
     {
-        modalResultados = new ModalResultadosManager(uiDto, cacaNiquelDto);        
-        modalSair       = new ModalSair(uiDto.ModalSairDto);
+        modalResultados = new ModalResultadosManager(
+            mainDto.UiDto, mainDto.MaquinaDto.DisplayColetadosDto.CacaNiquelDto, coletorDeDados);
+
+        modalSair       = new ModalSair(mainDto.UiDto.ModalSairDto);
     }
 
     public void configurandoLevel(AbstractLevel levelEscolhido)
-    {
-        modalResultados.configurarLevel(levelEscolhido.getLevelTitle());        
+    {        
         modalSair.configuradoPeloLevel(levelEscolhido);
     }        
 }

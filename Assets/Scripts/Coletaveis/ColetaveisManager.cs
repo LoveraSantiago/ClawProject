@@ -7,17 +7,16 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                                 AcaoColetadoFim.ConsumidorEvento,
                                 AcaoInfoDaGarra.ConsumidorEvento,                                
                                 AcaoPowerUpAcionado.ConsumidorEvento,                                
-                                AcaoTempoEsgotado.ConsumidorEvento
-{    
-    private Coletavel coletavelImantado;
-    
-    private BoardManager board;
-    private TuboDeDescarte tuboDeDescarte;
-    private EfeitoColetado efeito;
-    private ContadorManager contador;
+                                AcaoTempoEsgotado.ConsumidorEvento,
+                                Fornecedor<ResultadoColetaveisDto>
+{        
+    public  BoardManager    board { get; private set; }
+    private EfeitoColetado  efeito;
+    private Coletavel       coletavelImantado;
+    private TuboDeDescarte  tuboDeDescarte;
+    public  ContadorManager contador { get; private set; }
 
     private DetectorDeTriggers detectorDeTrigger;
-
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;    
 
     public ColetaveisManager(ColetaveisDto coletaveisDto)
@@ -51,6 +50,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         yield return board.create();
         
         int qtdColetaveisDoBoard = HelperColetaveisInGame.getQtdColetaveisInGame();
+        //Debug.Log("Total de coletaveis " + qtdColetaveisDoBoard);
         contador.iniciar(qtdColetaveisDoBoard);                
     }    
 
@@ -166,6 +166,16 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         contador.reajustarContagem(evento, board.isDevolverBoard());
     }
 
+    public ResultadoColetaveisDto fornecer()
+    {
+        ResultadoColetaveisDto resultadoColetaveis = new ResultadoColetaveisDto()
+            .addResultados(contador.getScore())
+            .addDescartados(tuboDeDescarte.fornecer())
+            .addDevolvidos(board.fornecer())
+            .addTotalGaiolasQuebradas(Gaiola.getGaiolasDesligadas());        
+        return resultadoColetaveis;
+    }
+
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeInformacoesDoColetado;
@@ -174,5 +184,5 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoBoardElevadoFim.ProdutorEvento)board).getProdutorDeEvento();
-    }
+    }   
 }

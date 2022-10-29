@@ -25,8 +25,8 @@ public class EditorLevelHelper
 
             //Debug.Log("mapa " + mapaIt.ToString());
 
-            MapaEntidade mapaEntidadeIt = FactoryMapaEntidade.getMapaEntidadeByMapaEnum(mapaIt, false);
-            //Debug.Log("MapaEntidade " + mapaEntidadeIt.title + " levels " + mapaEntidadeIt.getQtdLevels());
+            MapaEntidade mapaEntidadeIt = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaIt);
+            Debug.Log("MapaEntidade " + mapaEntidadeIt.title + " levels " + mapaEntidadeIt.getQtdLevels());
 
             mapasEntidadesPorNomes.Add(mapaIt.ToString(), mapaEntidadeIt);
         }

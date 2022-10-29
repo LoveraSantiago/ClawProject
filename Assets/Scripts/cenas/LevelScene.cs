@@ -5,26 +5,21 @@ using UnityEngine.UI;
 public class LevelScene : MonoBehaviour,
                          AcaoLevelFromScrollSelecao.ConsumidorEvento
 {
-    [SerializeField] private Button btnBack;
-    [Space(5)]
-    [SerializeField] private ScrollRect scrollRect;
-    [Space(5)]    
-    [SerializeField] private LevelsScrollDto levelsScrollDto;
-    [Space(5)]
-    [SerializeField] private Image imageMaquinaGiratoria;
-    [Space(5)]
-    [SerializeField] private GameObject prefabMateriais;    
+    [SerializeField] private MainLevelDto mainLevelDto;                
 
     private ScrollLevelManager scrollManager;
 
     void Start()
     {
         ContextoEstaticoUtils.configMainMono(this);
-        MateriaisUtils.configurar(prefabMateriais);
-        btnBack.onClick.AddListener(() => voltar());
+        MateriaisUtils.configurar(mainLevelDto.PrefabMateriais);
+        mainLevelDto.BtnBack.onClick.AddListener(() => voltar());
 
-        scrollManager = new ScrollLevelManager(levelsScrollDto);
-        scrollRect.onValueChanged.AddListener((pos) => scrollManager.movimentado(pos, null));
+        PrefabLevelsDto prefabLevels = mainLevelDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
+        HelperMapaEntidade.configurar(prefabLevels);
+
+        scrollManager = new ScrollLevelManager(mainLevelDto.LevelsScrollDto);
+        mainLevelDto.ScrollRect.onValueChanged.AddListener((pos) => scrollManager.movimentado(pos, null));
 
         new AcaoLevelFromScrollSelecao()
             .configurarProdutor(scrollManager)
@@ -33,9 +28,9 @@ public class LevelScene : MonoBehaviour,
     
     void AcaoLevelFromScrollSelecao.ConsumidorEvento.consumirEvento(LevelItemScrollSelecaoDto evento)
     {
-        imageMaquinaGiratoria.transform.gameObject.SetActive(true);
-        imageMaquinaGiratoria.transform.position = evento.posicaoItem;
-        MaterialMiniMaquina.addCores(imageMaquinaGiratoria.material, evento.materialItem);
+        mainLevelDto.ImageMaquinaGiratoria.transform.gameObject.SetActive(true);
+        mainLevelDto.ImageMaquinaGiratoria.transform.position = evento.posicaoItem;
+        MaterialMiniMaquina.addCores(mainLevelDto.ImageMaquinaGiratoria.material, evento.materialItem);
     }
 
     private void voltar()

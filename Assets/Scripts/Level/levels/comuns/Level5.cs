@@ -5,12 +5,7 @@ public class Level5 : AbstractLevelObstaculos
     public override string getLevelTitle()
     {
         return "Nível 5";
-    }
-
-    public override string getMsgObjetivoLevel()
-    {
-        return "Colete com obstaculos";
-    }
+    }   
 
     public override int[,] getArrayDeColetaveis()
     {
@@ -38,7 +33,26 @@ public class Level5 : AbstractLevelObstaculos
             {false, false, false, false, false, false, false}
         };
         return gaiolas;
-    }    
+    }
+
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+           new ChallengeQuebrarGaiolasMaior(this, 4),
+           new ChallengeQuebrarGaiolasTodas(this),
+           new ChallengeQuebrarGaiolasIgual(this, 5)
+        };
+    }
+
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        //return new PowerUpsParaLevel(1)
+        //   .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MOLA });
+
+        return new PowerUpsParaLevel(1)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE });           
+
+    }
 
     public override bool devolverParaBoard()
     {
@@ -47,7 +61,7 @@ public class Level5 : AbstractLevelObstaculos
 
     public override TipoContagemTempoDto getTempoContagem()
     {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
     }
 
     public override string getMaquinaNome()

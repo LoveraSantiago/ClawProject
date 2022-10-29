@@ -35,11 +35,17 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
     {
         MapaEntidade mapaEntidade = evento.mapaEntidade;
         Vector2[] posicoes = mapaEntidade.getPosicoesBaloes();
+        int[] challenges = mapaEntidade.getChallenges();
+
         if (mapaEntidade.isLivre || mapaEntidade.isProgresso)
         {            
             for (int contador = 0; contador < btnsMapasBaloes.Length; contador++)
             {
-                btnsMapasBaloes[contador].colocarNaPosicao(posicoes[contador]);
+                bool[] estrelasChallenges = ChallengesUtils.toArray(challenges[contador]);
+
+                BtnBalaoMapa btnBalaoMapaIt = btnsMapasBaloes[contador];
+                btnBalaoMapaIt.colocarNaPosicao(posicoes[contador]);
+                btnBalaoMapaIt.ligarEstrelas(estrelasChallenges);
             }
         }
     }

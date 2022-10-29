@@ -5,12 +5,7 @@ public class Level4 : AbstractLevelOrdem
     public override string getLevelTitle()
     {
         return "Nível 4";
-    }
-
-    public override string getMsgObjetivoLevel()
-    {
-        return "Siga a ordem dos coletaveis";
-    }    
+    }     
 
     public override int[,] getArrayDeColetaveis()
     {
@@ -71,9 +66,18 @@ public class Level4 : AbstractLevelOrdem
         return false;
     }
 
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+            new ChallengeCombinacaoColetaveis(this, 5, 5, 5),            
+            new ChallengeCombinacaoColetaveisTempoMaior(this, 1, 1, 1, "00:40"),
+            new ChallengeSubidasDaGarraMaior(5)
+        };
+    }
+
     public override TipoContagemTempoDto getTempoContagem()
     {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
     }
 
     public override string getMaquinaNome()

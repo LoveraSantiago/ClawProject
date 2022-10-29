@@ -3,11 +3,7 @@ using UnityEngine;
 
 public class ContadorDeTempoData : ContadorDeTempo
 {
-    private DateTime tempoInicial;
-
-    public ContadorDeTempoData()
-    {
-    }
+    private DateTime tempoInicial;    
 
     public ContadorDeTempoData(DateTime dateTime)
     {
@@ -52,5 +48,8 @@ public class ContadorDeTempoData : ContadorDeTempo
         return false;
     }
 
-
+    public float getTempoInicioPartida()
+    {
+        return 0;
+    }
 }

@@ -6,6 +6,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
                             AcaoLevelFromScrollSelecao.ProdutorEvento  
 {
     private int totalLevels;
+    private int ultimoItemClicado;
     private List<int> levelsLiberados;
 
     private PropsCimaBaixoScrollManagerDto propsDto;   
@@ -29,6 +30,8 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
 
         propsDto.setItemLevelCima(levelScroll.getPrimeiroItemLevel());
         propsDto.setItemLevelBaixo(levelScroll.getUltimoItemLevel());
+
+        ultimoItemClicado = -1;
     }
 
     public override void movimentarParaBaixo(LevelScroll levelScrollVazio)
@@ -138,12 +141,22 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
     private void popularItemLevel(int indiceMaterialMaquina, ItemLevelScroll itemLevel, int indiceAtual)
     {
         int indiceLevel = indiceAtual + 1;
-        MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaNormalByIndicesTotasDeLevels(indiceAtual, false);
+        MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaNormalByIndicesTotasDeLevels(indiceAtual);
+        Debug.Log("Indice level " + indiceLevel);
         AbstractLevel level = mapaEntidade.getLevelByIndiceGeral(indiceLevel);
         string levelName = level.getLevelName();
-        itemLevel.addLabels(indiceLevel, levelName, mapaEntidade.title, level.getMaquinaNome());
+        itemLevel.addLabels(indiceLevel, mapaEntidade.title, level);
         itemLevel.desligarExclamacao();
-        itemLevel.colorirImgMaquina(3, level.getDicionarioDeCores());
+        itemLevel.colorirImgMaquina(level);                
+        
+        if (indiceLevel != ultimoItemClicado)
+        {
+            itemLevel.ligarImgMaquina();
+        }
+        else
+        {
+            itemLevel.desligarImgMaquina();
+        }
 
         if (levelsLiberados.BinarySearch(indiceLevel) >= 0)
         {
@@ -155,30 +168,37 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
 
     private void selecionado()
     {
-        Debug.Log("Selecionado chamado");
+        //Debug.Log("Selecionado chamado");
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
         int indiceItem = int.Parse(goSelecionado.transform.parent.name);
         ItemLevelScroll itemLevel = levelScroll.getItemLevel(indiceItem);
 
-        Vector3 posicaoItem = itemLevel.getPosicaoImgMaquina();
-
-        if (itemLevel.isExclamacaoLigado)
+        if(itemLevel.indiceLevel != ultimoItemClicado)
         {
-            itemLevel.desligarExclamacao();
-            PlayerPrefsMapas.consumidoNovaLiberacaoLevelEspecifico(itemLevel.indiceLevel);
+
+            Vector3 posicaoItem = itemLevel.getPosicaoImgMaquina();
+
+            if (itemLevel.isExclamacaoLigado)
+            {
+                itemLevel.desligarExclamacao();
+                PlayerPrefsMapas.consumidoNovaLiberacaoLevelEspecifico(itemLevel.indiceLevel);
+            }
+
+            itemLevel.desligarImgMaquina();
+            levelScroll.ligarUltimaImgMaquina();
+            levelScroll.atualizarItemAtual(indiceItem);
+
+            LevelItemScrollSelecaoDto levelItem = new LevelItemScrollSelecaoDto(posicaoItem, itemLevel.material);
+            produtorDeEvento.produziuEvento(levelItem);
+            ultimoItemClicado = itemLevel.indiceLevel;
+
+            Debug.Log("Ultimo item clicado " + ultimoItemClicado);
         }
-
-        itemLevel.desligarImgMaquina();
-        levelScroll.ligarUltimaImgMaquina();
-        levelScroll.atualizarItemAtual(indiceItem);
-
-        LevelItemScrollSelecaoDto levelItem = new LevelItemScrollSelecaoDto(posicaoItem, itemLevel.material);
-        produtorDeEvento.produziuEvento(levelItem);
     }
 
     private void carregarLevelsLiberados()
     {
-        int[] levels = PlayerPrefsMapas.getNovaLiberacaoLevelEspecifico();
+        int[] levels = PlayerPrefsMapas.getNovaLiberacaoLevelEspecifico();        
         levelsLiberados = new List<int>(levels);        
     }
 

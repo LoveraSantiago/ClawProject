@@ -5,5 +5,10 @@ public abstract class AbstractLevelOrdem : AbstractLevel
         return TipoGame.ORDENADO;
     }
 
+    public override string getMsgObjetivoLevel()
+    {
+        return LevelUtils.MSG_ORDENADO;
+    }
+
     public abstract BoardOrdem[] getBoardOrdem();
 }

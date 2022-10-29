@@ -1,10 +1,11 @@
 using System.Collections;
 
-public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
+public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento,
+                            Fornecedor<ColetaveisDescartadosDto>
 {   
     private BoardDto boardDto;
 
-    private BoardElevador elevador;   
+    public  BoardElevador elevador { get; private set; }
     private BoardDevolvedor devolvedor;
 
     private BoardMontador montador; 
@@ -45,10 +46,15 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento
     public bool isDevolverBoard()
     {
         return devolvedor.devolverBoard;
-    }     
+    }
+
+    public ColetaveisDescartadosDto fornecer()
+    {
+        return devolvedor.fornecer();
+    }
 
     ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return ((AcaoBoardElevadoFim.ProdutorEvento)elevador).getProdutorDeEvento();
-    }
+    }    
 }

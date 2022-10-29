@@ -1,22 +1,24 @@
 using System.Collections;
 using UnityEngine;
 
-public class TuboDeDescarte : ConsumidorDeEventoTrigger
+public class TuboDeDescarte : ConsumidorDeEventoTrigger,
+                              Fornecedor<ColetaveisDescartadosDto>
 {
     private bool devolverTubo;    
     private float torque;    
 
     private Vector3[] posicoesOriginais;
     private DescarteTuboDto tuboDto;
+    private ColetaveisDescartadosDto coletaveisDescartados;
 
     public TuboDeDescarte(DescarteTuboDto tuboDto)
     {
         this.tuboDto = tuboDto;
-
-        inicializarArrays();
-        configurarEventoTrigger();        
         
-        torque = tuboDto.Torque;        
+        inicializarArrays();
+        configurarEventoTrigger();                
+        torque = tuboDto.Torque;
+        coletaveisDescartados = new ColetaveisDescartadosDto();
     }
 
     public void configuradoPeloLevel(bool devolverParaBoard)
@@ -32,6 +34,11 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
             //Debug.Log("Devolver tubo acionado");
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, coletados));
         }
+    }
+
+    public ColetaveisDescartadosDto fornecer()
+    {
+        return coletaveisDescartados;
     }
 
     private bool isDevolver(bool combinacaoValida, ColetadoFimDto evento)
@@ -52,19 +59,22 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
     }
 
     private IEnumerator descerPeloTubo(bool[] resultados, Coletavel[] coletados)
-    {        
+    {
+        Sprite[] spritesDescarte = new Sprite[coletados.Length];
         for (int contador = 0; contador < coletados.Length; contador++)
         {
             if (resultados[contador])
             {
                 torque *= -1;
                 Sprite spriteAtual = coletados[contador].getSprite();
+                spritesDescarte[contador] = spriteAtual;
 
                 ColetavelTuboDeSaida coletavelDescarte = new ColetavelTuboDeSaida(tuboDto.ColetavelTuboDeSaida[contador]);
                 coletavelDescarte.prepararParaDescarte(torque, tuboDto.Gravidade, spriteAtual);
                 HelperColetaveisInGame.inativarColetavel(coletados[contador]);                
             }
-        }        
+        }
+        coletaveisDescartados.addTrinca(spritesDescarte);
         yield return null;
     }
 
@@ -105,6 +115,6 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger
     public void consumir(Collider2D collider)
     {
         triggerDeSaidaDeTuboAcionado(collider);
-    }
+    }   
     //IMPLEMENTANDO INTERFACE ConsumidorDeEventoTrigger FIM
 }

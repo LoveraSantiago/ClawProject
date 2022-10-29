@@ -37,7 +37,7 @@ public abstract class BoardMontador
                 coletavelEntidade = mapaEntidade.getColetavelEntidadeByIndice(id);
             }
 
-            Coletavel coletavel = criarColetavel(coletavelEntidade.sprite, posicao);
+            Coletavel coletavel = criarColetavel(coletavelEntidade.sprite, posicao);            
             yield return onColetavelCriado(contadorColuna, contadorLinha,coletavel);            
         }
     }

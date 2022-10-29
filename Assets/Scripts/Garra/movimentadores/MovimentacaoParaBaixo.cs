@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentacaoParaBaixo : MovimentadorProdutorInformacaoGarra
+public class MovimentacaoParaBaixo : AbstractMovimentacaoDaGarraNormal
 {   
     private IntervaloDeTempo intervaloTempoDeTravamento;    
 
@@ -11,7 +11,7 @@ public class MovimentacaoParaBaixo : MovimentadorProdutorInformacaoGarra
 
     public override void preInicio()
     {   
-        colocarMassa(2);
+        colocarMassa(getMassaMovimentacaoBaixo());
         intervaloTempoDeTravamento.resetContador();
         playAnimacaoIrPBaixo();
     }

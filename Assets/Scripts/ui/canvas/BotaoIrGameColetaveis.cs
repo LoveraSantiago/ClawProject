@@ -28,7 +28,7 @@ public class BotaoIrGameColetaveis
         }
         else
         {
-            modalNoFicha.ligar();
+            modalNoFicha.ligar(Ficha.OURO);
         }
     }
 

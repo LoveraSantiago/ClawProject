@@ -10,7 +10,7 @@ public class Level2 : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return "Faça o maior número de combinações";
+        return LevelUtils.MSG_TEMPO;
     }
 
     public override TipoGame getTipoGame()
@@ -34,16 +34,26 @@ public class Level2 : AbstractLevel
     public override bool devolverParaBoard()
     {
         return false;
-    }    
+    }
+
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+            new ChallengeTempoMaior(this, "00:30"),
+            new ChallengeScoreMenor(1000),
+            new ChallengeSubidasDaGarraMenorQueUmValor(50)
+        };
+    }
 
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.REGRESSIVA, "02:01");
+        //return new TipoContagemTempoDto(ContadorTimer.Contagem.REGRESSIVA, "00:15");
     }
 
     public override string getMaquinaNome()
     {
-        return "Chiclete e Embalagem";
+        return "Carvão Carbonita";
     }
 
     protected override Dictionary<string, string> getCoresMaquina()

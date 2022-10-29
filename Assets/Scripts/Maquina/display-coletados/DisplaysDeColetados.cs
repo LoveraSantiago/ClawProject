@@ -1,14 +1,14 @@
-public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
-                                   AcaoCacaNiquel.ProdutorEvento
+public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento,
+                                   AcaoColetado.ConsumidorEvento
 {
     private GrupoDisplays grupoDisplays;
     public ModoColetados modoColetados { get; private set; }
     private ModoCacaNiquel modoCacaNiquel;
 
-    public DisplaysDeColetados(DisplaysColetadosDto displaysSlotsDto)
+    public DisplaysDeColetados(DisplaysColetadosDto displaysSlotsDto, ArcoIrisEfeito arcoIrisEfeito)
     {
         grupoDisplays = new GrupoDisplays(displaysSlotsDto);
-        modoColetados = new ModoColetados(grupoDisplays);        
+        modoColetados = new ModoColetados(grupoDisplays, arcoIrisEfeito);        
     }
 
     public void configuradoPeloLevel(AbstractLevel levelEscolhido, DisplaysColetadosDto displaysSlotsDto)
@@ -30,9 +30,9 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
         }
     }  
 
-    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
+    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento)
     {
-        modoColetados.mostrarColetadoNoDisplay(evento, arcoIris);
+        modoColetados.mostrarColetadoNoDisplay(evento);
     }
 
     public void processarPowerUp(PowerUpInfo evento)
@@ -53,15 +53,16 @@ public class DisplaysDeColetados : AcaoColetadoFim.ProdutorEvento,
     private bool isDisplayCacaNiquelAtivado()
     {
         return modoCacaNiquel != null;
-    }
+    }   
 
-    ProdutorDeEvento<ColetadoFimDto> AcaoColetadoFim.ProdutorEvento.getProdutorDeEvento()
+    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
-        return ((AcaoColetadoFim.ProdutorEvento)modoColetados).getProdutorDeEvento();
+        mostrarColetadoNoDisplay(evento);
     }
 
     ProdutorDeEvento<CacaNiquelEventoDto> AcaoCacaNiquel.ProdutorEvento.getProdutorDeEvento()
     {
         return isDisplayCacaNiquelAtivado() ? ((AcaoCacaNiquel.ProdutorEvento)modoCacaNiquel).getProdutorDeEvento() : null;
     }
+
 }

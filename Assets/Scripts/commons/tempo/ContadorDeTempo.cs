@@ -8,5 +8,6 @@ public interface ContadorDeTempo
     void continuar();
     bool isTimeOver();
     bool isNearTimeOver();
+    float getTempoInicioPartida();
 }
 

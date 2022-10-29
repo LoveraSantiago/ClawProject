@@ -8,20 +8,28 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
     private bool displayColetando;
         
     private GrupoDisplays grupoDisplays;    
-    private AgendamentoDisplayColetados agendados;    
+    private ArcoIrisEfeito arcoIrisEfeito;
+    private AgendamentoDisplayColetados agendados;
     private ProdutorDeEvento<ColetadoFimDto> produtorDeEventoFimColetagem;
 
-    public ModoColetados(GrupoDisplays grupoDisplays)
+    public ModoColetados(GrupoDisplays grupoDisplays, ArcoIrisEfeito arcoIrisEfeito)
     {    
         this.grupoDisplays = grupoDisplays;
         agendados = new AgendamentoDisplayColetados();
+        this.arcoIrisEfeito = arcoIrisEfeito;
         produtorDeEventoFimColetagem = new ProdutorDeEvento<ColetadoFimDto>();            
     }        
 
-    public void mostrarColetadoNoDisplay(
-        InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
+    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento)
     {
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(mostrarSprite(evento, arcoIris));        
+        if (evento.infosFimDeJogo.fimColetados)
+        {
+            processarUltimoOcupacaoDisplaysColetados();
+        }
+        else
+        {
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(mostrarSprite(evento));
+        }
     }    
     
     public void processarPowerUp(PowerUpEnums.TIPO tipoPup, PowerUpInteracaoComDisplayColetado interacaoDisplayColetado)
@@ -71,8 +79,16 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
         //Debug.Log("Pup acionado no display de coletado fim");
     }     
 
-    private IEnumerator mostrarSprite(
-        InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
+    private void processarUltimoOcupacaoDisplaysColetados()
+    {
+        int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();
+        if(indiceDesocupado == 2)
+        {
+            finalizacaoTodosDisplaysOcupados();
+        }
+    }
+
+    private IEnumerator mostrarSprite(InformacoesColetadoDto evento)
     {        
         displayColetando = true;
         int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();        
@@ -80,23 +96,23 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
 
         if (agendados.possuiAgendamentoDePowerUp())
         {
-            acionarPowerUpAgendado(evento, arcoIris);
+            acionarPowerUpAgendado(evento);
         }
         else if (grupoDisplays.isTodosDisplayOcupados() && !powerUpAcionado)
         {
-            yield return limpezaTodosDisplaysOcupados(evento, arcoIris);
+            yield return limpezaTodosDisplaysOcupados(evento);
             if (agendados.possuiAgendamentoDePowerUp())
             {
-                acionarPowerUpAgendado(evento, arcoIris);
+                acionarPowerUpAgendado(evento);
             }
             else
             {
-                finalizacaoTodosDisplaysOcupados(arcoIris);                
+                finalizacaoTodosDisplaysOcupados();                
             }
         }
         else if (powerUpAcionado)
         {
-            agendados.agendar(evento, arcoIris);
+            agendados.agendar(evento);
         }
         else if(!powerUpAcionado)
         {
@@ -105,11 +121,11 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
         displayColetando = false;
     }                
 
-    private void acionarPowerUpAgendado(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
+    private void acionarPowerUpAgendado(InformacoesColetadoDto evento)
     {
         displayColetando = false;
         acionarPowerUp(agendados.interacaoDisplayColetado);
-        agendados.agendar(evento, arcoIris);
+        agendados.agendar(evento);
     }      
 
     private IEnumerator descartarColetado(int indice)
@@ -121,15 +137,15 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
         produtorDeEventoFimColetagem.produziuEvento(ColetadoFimDto.ofPup(agendados.tipoPup, result));
     }
 
-    private IEnumerator limpezaTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito  arcoIris)
+    private IEnumerator limpezaTodosDisplaysOcupados(InformacoesColetadoDto evento)
     {
         if (evento.resultCombinacao)
         {
-            arcoIris.ligarBlinkVerde();
+            arcoIrisEfeito.ligarBlinkVerde();
         }
         else
         {
-            arcoIris.ligarBlinkRed();
+            arcoIrisEfeito.ligarBlinkRed();
         }
 
         yield return grupoDisplays.limparSprColetado(0);
@@ -154,18 +170,18 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
 
     private IEnumerator finalizacaoCompletaTodosDisplaysOcupados(AgendamentoDisplayColetados agendados)
     {
-        yield return finalizacaoCompletaTodosDisplaysOcupados(agendados.infoColetadoDto, agendados.arcoIris);
+        yield return finalizacaoCompletaTodosDisplaysOcupados(agendados.infoColetadoDto);
     }
 
-    private IEnumerator finalizacaoCompletaTodosDisplaysOcupados(InformacoesColetadoDto evento, ArcoIrisEfeito arcoIris)
+    private IEnumerator finalizacaoCompletaTodosDisplaysOcupados(InformacoesColetadoDto evento)
     {
-        yield return limpezaTodosDisplaysOcupados(evento, arcoIris);
-        finalizacaoTodosDisplaysOcupados(arcoIris);
+        yield return limpezaTodosDisplaysOcupados(evento);
+        finalizacaoTodosDisplaysOcupados();
     }
 
-    private void finalizacaoTodosDisplaysOcupados(ArcoIrisEfeito arcoIris)
+    private void finalizacaoTodosDisplaysOcupados()
     {
-        arcoIris.desligarEfeito();
+        arcoIrisEfeito.desligarEfeito();
         produtorDeEventoFimColetagem.produziuEvento(ColetadoFimDto.ofNormal(new bool[] { true, true, true }));        
     }
 

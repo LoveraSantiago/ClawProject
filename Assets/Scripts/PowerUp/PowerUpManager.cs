@@ -1,16 +1,20 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PowerUpManager : PowerUpAcaoAcionamento,
                               PowerUpAcaoFinalizacao,                              
-                              AcaoPowerUpAcionado.ProdutorEvento
+                              AcaoPowerUpAcionado.ProdutorEvento,
+                              Fornecedor<ResultadoPowerUpDto>
 {
     private int indiceBtnEmAcao;
+    private List<PowerUpUsadoDto> listaPupsUsados;
     private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;
 
     private ContadorTimeout contadorTimeout;
 
     public PowerUpManager(PowerUpGameDto powerUpDto, InputGame inputGame)
     {
+        listaPupsUsados = new List<PowerUpUsadoDto>();
         configurarPowerUps(powerUpDto, inputGame);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         contadorTimeout = new ContadorPowerUpInativo();
@@ -38,6 +42,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp)
     {
+        listaPupsUsados.Add(new PowerUpUsadoDto(powerUp.tipo, Time.time));
         indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
@@ -46,6 +51,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp, Vector3 posicaoAtual)
     {
+        listaPupsUsados.Add(new PowerUpUsadoDto(powerUp.tipo, Time.time));
         indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp, posicaoAtual);
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
@@ -73,7 +79,12 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     {
         contadorTimeout = new ContadorPowerUpInativo();
         produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofFinalizar(indiceBtnEmAcao));
-    }    
+    }
+
+    public ResultadoPowerUpDto fornecer()
+    {
+        return new ResultadoPowerUpDto(listaPupsUsados);
+    }
 
     private void iniciarPowerUp(PowerUpInfo powerUpInfo)
     {
@@ -89,5 +100,5 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     ProdutorDeEvento<PowerUpInfo> AcaoPowerUpAcionado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoPowerUp;
-    }    
+    }   
 }

@@ -16,6 +16,8 @@ public class ItemLevelDto
     [SerializeField] private TextMeshProUGUI lblLevel;
     [SerializeField] private TextMeshProUGUI lblMap;
     [SerializeField] private TextMeshProUGUI lblMaquina;
+    [SerializeField] private TextMeshProUGUI lblTempo;
+    [SerializeField] private TextMeshProUGUI lblScore;
     [Space(3)]
     [SerializeField] private Image imgEstrela1;
     [SerializeField] private Image imgEstrela2;
@@ -30,6 +32,8 @@ public class ItemLevelDto
     public TextMeshProUGUI LblLevel { get { return lblLevel; } }
     public TextMeshProUGUI LblMap { get { return lblMap; } }
     public TextMeshProUGUI LblMaquina { get { return lblMaquina; } }
+    public TextMeshProUGUI LblTempo { get { return lblTempo; } }
+    public TextMeshProUGUI LblScore { get { return lblScore; } }
 
     public Image ImgEstrela1 { get { return imgEstrela1; } }
     public Image ImgEstrela2 { get { return imgEstrela2; } }

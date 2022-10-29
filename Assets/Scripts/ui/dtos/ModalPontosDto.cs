@@ -6,17 +6,20 @@ using UnityEngine.UI;
 public class ModalPontosDto 
 {
     [SerializeField] private Text textoNivel;
+    [SerializeField] private Text textoTempo;
     [SerializeField] private Text textoPontos;
+    [Space(3)]
     [SerializeField] private Button btnAvancar;
     [Space(3)]
     [SerializeField] private GameObject goModalPontos;
     [Space(3)]
-    [SerializeField] private LinhaModalPontosDto[] linhas = new LinhaModalPontosDto[4];
+    [SerializeField] private LinhasChallengeDto linhasChallenge;
 
     public Text TextoNivel { get { return textoNivel; } }
     public Text TextoPontos { get { return textoPontos; } }
+    public Text TextoTempo { get { return textoTempo; } }
     public Button BtnAvancar { get { return btnAvancar; } }
     public GameObject GoModalPontos { get { return goModalPontos; } }
-    public LinhaModalPontosDto[] Linhas { get { return linhas; } }
-    
+
+    public LinhasChallengeDto LinhasChallenges { get { return linhasChallenge; } }
 }

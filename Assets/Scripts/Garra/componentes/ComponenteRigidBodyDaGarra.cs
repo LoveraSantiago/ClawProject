@@ -53,7 +53,7 @@ public class ComponenteRigidBodyDaGarra : ComponenteGarraDtoDaGarra
         setVelocidade(new Vector2(direcao * getVelocidades().MovHorizontal, 0));
     }
 
-    public void colocarMassa(int massa)
+    public void colocarMassa(float massa)
     {
         getRigidBody().mass = massa;
     }

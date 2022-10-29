@@ -2083,7 +2083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7455996002371540699, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7455996002371540703, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
       propertyPath: m_Pivot.x
@@ -2187,9 +2187,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &913691524 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7455996002371540699, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+--- !u!114 &913691524 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1871906316, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+  m_PrefabInstance: {fileID: 913691521}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &913691525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7455996002891480074, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
+  m_PrefabInstance: {fileID: 913691521}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &913691526 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7455996002371540688, guid: c93e46c40aed4484d9e608d9a05e05c7, type: 3}
   m_PrefabInstance: {fileID: 913691521}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &919096076
@@ -4344,8 +4366,13 @@ MonoBehaviour:
     prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
     prefabLevesDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     modalNoFichaDto:
-      modalNoFicha: {fileID: 913691524}
-      btnOk: {fileID: 913691523}
+      animator: {fileID: 913691526}
+      imgFicha: {fileID: 913691525}
+      corOuro: {r: 1, g: 0.9647059, b: 0, a: 1}
+      corPrata: {r: 0.85882354, g: 0.85882354, b: 0.85882354, a: 1}
+      corBronze: {r: 1, g: 0.42745098, b: 0, a: 1}
+      btnIrLoja: {fileID: 913691523}
+      btnSair: {fileID: 913691524}
 --- !u!95 &1668072994
 Animator:
   serializedVersion: 4

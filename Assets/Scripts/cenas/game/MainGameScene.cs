@@ -26,7 +26,7 @@ public class MainGameScene : MonoBehaviour,
         FactoryPowerUpEntidade.resetContextoEstatico();
 
         PrefabLevelsDto prefabLevels = mainDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
-        FactoryMapaEntidade.configurar(prefabLevels);
+        HelperMapaEntidade.configurar(prefabLevels);
 
         AbstractLevel levelEscolhido = ContextoEstaticoUtils.loadLevelEstaticoAtualOrCreateLevel(mapa, indiceLevel);
         MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido, this);        
@@ -56,6 +56,7 @@ public class MainGameScene : MonoBehaviour,
 
     public void OnDrag(PointerEventData eventData)
     {
+        //Debug.Log("original on drag");
         updaterManagers.onDrag(eventData, mainDto);        
     }
 

@@ -3,28 +3,26 @@ using System;
 public class ContadorTimer 
 {
     public enum Contagem { NORMAL, REGRESSIVA, CONTINUA };
-    private ContadorDeTempo contadorDeTempo;
+
+    public DadosDeTempo dadosDeTempo { get; private set; }
+    private ContadorDeTempo contadorDeTempo;    
 
     public void definirContador(TipoContagemTempoDto tipoContagemTempo, Executor executorTimerRestart)
     {
-        switch (tipoContagemTempo.contagem)
+        if (tipoContagemTempo.isContagemNormal())
         {
-            case Contagem.NORMAL:
-            {
-                contadorDeTempo = new ContadorDeTempoFramePositivo();
-                break;
-            }
-            case Contagem.REGRESSIVA:
-            {
-                contadorDeTempo = new ContadorDeTempoFrameNegativo(tipoContagemTempo.tempo);
-                break;
-            }
-            case Contagem.CONTINUA:
-            {
-                contadorDeTempo = new ContadorDeTempoFrameContinuo(tipoContagemTempo.tempo, executorTimerRestart);
-                break;
-            }
-        }        
+            contadorDeTempo = new ContadorDeTempoFramePositivo();
+        }
+        else if (tipoContagemTempo.isContagemRegressiva())
+        {
+            contadorDeTempo = new ContadorDeTempoFrameNegativo(tipoContagemTempo.tempo);
+
+        }
+        else if (tipoContagemTempo.isContagemContinua())
+        {
+            contadorDeTempo = new ContadorDeTempoFrameContinuo(tipoContagemTempo.tempo, executorTimerRestart);
+        }
+        dadosDeTempo = new DadosDeTempo(contadorDeTempo);
     }
 
     public void iniciarContagemTempo()
@@ -52,6 +50,7 @@ public class ContadorTimer
         return contadorDeTempo.isNearTimeOver();
     }
 
+    //*OBS resplicado logica de TempoUtils para evitar reprocesso de dezenas
     public void passarTempoAosScores(DisplayTimerDigitos digitos)
     {
         TimeSpan timeSpan = contadorDeTempo.processarContagem();

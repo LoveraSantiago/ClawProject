@@ -1,22 +1,11 @@
 using System.Collections.Generic;
 
-public class Level7 : AbstractLevel
-{
-    //COPIADO DO LEVEL 1 SO PRA TER CLASSE P COLOCAR COR NA MAQUINA
+public class Level7 : AbstractLevelObstaculos
+{    
     public override string getLevelTitle()
     {
         return "Nível 7";
-    }
-
-    public override string getMsgObjetivoLevel()
-    {
-        return "Colete todos os itens";
-    }
-
-    public override TipoGame getTipoGame()
-    {
-        return TipoGame.NORMAL;
-    }
+    }   
 
     public override int[,] getArrayDeColetaveis()
     {
@@ -31,14 +20,37 @@ public class Level7 : AbstractLevel
         {-1, -1, -1, -1, -1, -1, -1}};        
     }
 
+    public override bool[,] getArrayDeObstaculos()
+    {
+        bool[,] gaiolas = new bool[,]{
+            {false, true, false, true, false, true, false},
+            {true, false, true, false, true, false, true},
+            {false, false, false, false, false, false, false},
+            {false, false, false, false, false, false, false},
+            {false, false, false, false, false, false, false},
+            {false, false, false, false, false, false, false},
+            {false, false, false, false, false, false, false}
+        };
+        return gaiolas;
+    }
+
     public override bool devolverParaBoard()
     {
         return false;
-    }    
+    }
+
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+            new ChallengeCombinacaoColetaveisTodasIncorretas(this),
+            new ChallengeQuebrarGaiolasMenor(this, 6),
+            new ChallengePowerUpAcionadoMaior(2)
+        };
+    }  
 
     public override TipoContagemTempoDto getTempoContagem()
     {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
     }
 
     public override PowerUpsParaLevel getPupsToLevel()

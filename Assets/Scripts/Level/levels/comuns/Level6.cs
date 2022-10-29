@@ -2,28 +2,37 @@ using System.Collections.Generic;
 
 public class Level6 : AbstractLevelOvo
 {
-    public override string getLevelName()
+    public override string getLevelTitle()
     {
         return "Level 6";
-    }    
+    }   
 
     public override TipoContagemTempoDto getTempoContagem()
     {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, TIMER_ZERO);
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
     } 
 
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
         {
-            { 4,  2,  1,  2,  1,  2,  1},
-            { 2,  1,  4,  7,  1,  3, -1},
-            {-1, -1,  5,  6,  4, -1, -1},
-            {-1, -1, -1,  4, -1, -1, -1},
+            { 4,  4,  4,  1,  1,  3,  3},
+            { 2,  2,  2,  7,  1,  3, -1},
+            {-1, -1,  5,  5,  7, 7, -1},
+            {-1, -1, -1,  5, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
+        };
+    }
+
+    public override Challenge[] getChallenges()
+    {
+        return new Challenge[] {
+            new ChallengeCombinacaoColetaveisTempoMenor(this, 1, 1, 1, "01:30"),
+            new ChallengeCombinacaoColetaveisTodasCorretas(this),
+            new ChallengePowerUpNenhumAcionado()
         };
     }
 

@@ -2,10 +2,12 @@ using System.Collections.Generic;
 
 public abstract class AbstractLevel 
 {
-    private static ContextoEstaticoLevels contexto = new ContextoEstaticoLevels();
-    private Dictionary<string, string> dicionario;
+    private int indiceLevelAtual;
+    public int challenge { get; private set; }
+    public int score     { get; private set; }
+    public string tempo  { get; private set; }
 
-    public static readonly string TIMER_ZERO = "00:00";
+    private Dictionary<string, string> dicionario;
 
     public abstract string getLevelTitle();
 
@@ -19,6 +21,7 @@ public abstract class AbstractLevel
     public abstract bool devolverParaBoard();    
 
     public abstract int[,] getArrayDeColetaveis();        
+  
 
     public virtual PowerUpsParaLevel getPupsToLevel() { return null; }
 
@@ -71,13 +74,34 @@ public abstract class AbstractLevel
         return getPupsToLevel() != null;
     }   
 
-    public void setIndiceLevelAtual(int indiceLevelAtual)
-    {
-        contexto.receberIndiceLevelAtual(indiceLevelAtual);
+    public void addInfosParaLevelEmAndamento(int indiceLevelAtual, int challenge, int score, string tempo)
+    {        
+        this.indiceLevelAtual = indiceLevelAtual;
+        this.challenge = challenge;
+        this.score = score;
+        this.tempo = tempo;
     }
 
-    public void levelConcluido()
+    public virtual Challenge[] getChallenges()
     {
-        contexto.salvarLevelAtual();
+        return new Challenge[] {
+            new ChallengeLevelCompleto(),
+            new ChallengeLevelCompleto(),
+            new ChallengeLevelCompleto()
+        };
+    }
+
+    public void levelConcluido(string tempo, int score, int challenge, bool evolucao)
+    {
+        MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;
+
+        int indiceDecremento = indiceLevelAtual - 1;
+
+        PlayerPrefsMapas.salvarIndiceLevelLiberado(indiceLevelAtual + 1);
+        PlayerPrefsMapas.salvarScoreDoMapa(mapaEntidade, indiceDecremento, score);
+        PlayerPrefsMapas.salvarChallengeDoMapa(mapaEntidade, indiceDecremento, challenge, evolucao);
+        PlayerPrefsMapas.salvarTempoDoMapa(mapaEntidade, indiceDecremento, tempo);
+
+        mapaEntidade.reloadEstadosLevels();
     }
 }

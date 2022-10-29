@@ -1,9 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class BoardDevolvedor 
+public class BoardDevolvedor : Fornecedor<ColetaveisDescartadosDto>
 {
     public bool devolverBoard { get; private set; }
+    private ColetaveisDescartadosDto coletaveisDevolvidos;
+
+    public BoardDevolvedor()
+    {
+        coletaveisDevolvidos = new ColetaveisDescartadosDto();
+    }
 
     public void configuradoPeloLevel(bool devolverParaBoard)
     {
@@ -21,13 +27,21 @@ public class BoardDevolvedor
         }
     }
 
+    public ColetaveisDescartadosDto fornecer()
+    {
+        return coletaveisDevolvidos;
+    }
+
     private IEnumerator devolverParaBoard(bool[]resultados, BoardDto boardDto, Coletavel[] coletados)
     {
         //Debug.Log("Devolver para o board chamado");
+        Sprite[] spritesDevolvidos = new Sprite[coletados.Length];
         for (int contador = 0; contador < coletados.Length; contador++)
         {
             if(deveDevolver(contador, coletados, resultados))
             {
+                Coletavel coletavelIt = coletados[contador];
+                spritesDevolvidos[contador] = coletavelIt.getSprite();
                 yield return devolverColetavel(coletados[contador], boardDto);
             }
             else
@@ -35,6 +49,7 @@ public class BoardDevolvedor
                 yield return null;
             }
         }
+        coletaveisDevolvidos.addTrinca(spritesDevolvidos);
         yield return null;
     }
 
@@ -61,5 +76,5 @@ public class BoardDevolvedor
         {
             yield return new WaitForSeconds(boardDto.DelayVoltaBoard);
         }
-    }
+    }   
 }

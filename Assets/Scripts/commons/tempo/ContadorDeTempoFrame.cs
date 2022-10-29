@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class ContadorDeTempoFrame : ContadorDeTempo
 {
-    protected float tempoInicial;
+    protected float tempoInicial { get; private set; }
     protected float tempoPause;
 
     public void iniciarContagem()
@@ -24,6 +24,12 @@ public abstract class ContadorDeTempoFrame : ContadorDeTempo
         tempoInicial = tempoInicial + tempoPause;
     }
     
+    public float getTempoInicioPartida()
+    {
+        return tempoInicial;
+    }
+
     public abstract bool isTimeOver();
     public abstract bool isNearTimeOver();
+
 }

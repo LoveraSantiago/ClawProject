@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
-                              AcaoColetado.ConsumidorEvento,                                
+public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,                                                            
                               AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,                              
@@ -12,26 +11,26 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     private PartesMaquinaDtoV2 partesDto;
 
     private Joystick            joystick;       
-    public  DisplayTimer        displayTimer { get; private set; }
-    public  BotoesPowerUp       botoesPowerUp { get; private set; }
-    public  BotaoLigaDesliga    botaoLigaDesliga { get; private set; }
-    public  ArcoIrisEfeito      arcoIrisEfeito { get; private set; }
-    public  DisplayDeScores     displayDeScores { get; private set; }
+    public  DisplayTimer        displayTimer       { get; private set; }
+    public  BotoesPowerUp       botoesPowerUp      { get; private set; }
+    public  BotaoLigaDesliga    botaoLigaDesliga   { get; private set; }
+    public  ArcoIrisEfeito      arcoIrisEfeito     { get; private set; }
+    public  DisplayDeScores     displayDeScores    { get; private set; }
     public  DisplaysDeColetados displayDeColetados { get; private set; }
-    public  ScrollPupsManager   scrollPupsManager { get; private set; }
+    public  ScrollPupsManager   scrollPupsManager  { get; private set; }
     private Draggavel           draggavel;
 
     public MaquinaManager(MaquinaDto maquinaDto)
     {
         partesDto = maquinaDto.PartesDtoV2;
 
-        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto);        
+        arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
+        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto, arcoIrisEfeito);        
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick           = new Joystick(maquinaDto.MesaJoystickDto);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
-        arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
         scrollPupsManager  = new ScrollPupsManager(maquinaDto.ScrollPupsDto);
         draggavel          = botoesPowerUp;
         isGamePlay = true;
@@ -80,6 +79,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     {
         if (draggavel.isDragAcionavel(posicao))
         {
+            //Debug.Log("MaquinaManager begin drag");
             draggavel.onBeginDrag(posicao);
         }
     }
@@ -88,6 +88,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     {
         if (draggavel.foiDragAcionado())
         {
+            //Debug.Log("MaquinaManager on drag");
             draggavel.onDrag(delta, maquinaDto);
         }
     }
@@ -98,12 +99,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         {
             draggavel.onEndDrag(maquinaDto);
         }
-    }
-
-    void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
-    {
-        displayDeColetados.mostrarColetadoNoDisplay(evento, arcoIrisEfeito);                        
-    }   
+    }    
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
@@ -148,6 +144,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {   
         isGamePlay = true;
+        draggavel = botoesPowerUp;
     }
 
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(Direcao evento)

@@ -1,17 +1,21 @@
 using System.Collections;
 using UnityEngine;
 
-public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
+public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento,
+                             Fornecedor<int>
 {
+    private int qtdSubidas;
     private ProdutorDeEvento<SubidaBoardAcaoFim> produtorDeEvento;
 
     public BoardElevador()
     {
+        qtdSubidas = 0;
         produtorDeEvento = new ProdutorDeEvento<SubidaBoardAcaoFim>();
     }
 
     public IEnumerator subirBoardComPool(BoardDto boardDto, BoardMontador montadorExtra)
     {
+        qtdSubidas++;
         yield return new WaitForSeconds(0.6f);
 
         BoardElevadorReferencias refs = new BoardElevadorReferencias();
@@ -41,6 +45,11 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
         yield return null;
     }
 
+    public int fornecer()
+    {
+        return qtdSubidas;
+    }
+
     private bool isBoardAbaixoDoLimite(BoardDto boardDto, float limite)
     {
         return boardDto.BoardPosicao.position.y < limite;
@@ -59,5 +68,5 @@ public class BoardElevador : AcaoBoardElevadoFim.ProdutorEvento
     ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
-    }
+    }   
 }

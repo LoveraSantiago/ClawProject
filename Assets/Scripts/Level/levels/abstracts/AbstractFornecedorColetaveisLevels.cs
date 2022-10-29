@@ -2,13 +2,7 @@ using UnityEngine;
 
 public abstract class AbstractFornecedorColetaveisLevels
 {
-    private bool loadLiberacao;
-    private ColetavelEntidade[] arrayDeColetaveis;
-
-    public void configurarLoadingDeLiberados(bool loadLiberacao)
-    {
-        this.loadLiberacao = loadLiberacao;
-    }
+    private ColetavelEntidade[] arrayDeColetaveis;   
     
     public ColetavelEntidade getColetavelEntidadeByIndice(int indice, MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
     {
@@ -55,7 +49,10 @@ public abstract class AbstractFornecedorColetaveisLevels
     public AbstractLevel getLevel(int indice)
     {
         AbstractLevelColetavel levelColetavel = (AbstractLevelColetavel)getLevelToColetavel(indice);
-        levelColetavel.setColetavelEntidade(arrayDeColetaveis[indice]);
+        if(levelColetavel != null)
+        {
+            levelColetavel.setColetavelEntidade(arrayDeColetaveis[indice]);
+        }
         return levelColetavel;
     }
 
@@ -118,25 +115,11 @@ public abstract class AbstractFornecedorColetaveisLevels
 
     private int[] loadColetaveisAdquiridos(MapaEntidade mapaEntidade, int qtdColetaveisDto)
     {
-        if (loadLiberacao)
-        {
-            return  PlayerPrefsMapas.recuperarColetaveisAdquiridosDoMapa(mapaEntidade, qtdColetaveisDto);
-        }
-        else
-        {
-            return Utils.criarArrayPopuladoDeInteiros(qtdColetaveisDto, 0);
-        }
+        return  PlayerPrefsMapas.getColetaveisAdquiridosDoMapa(mapaEntidade, qtdColetaveisDto);        
     }
 
     private int[] loadColetaveisLiberados(MapaEntidade mapaEntidade, int qtdColetaveisDto)
     {
-        if (loadLiberacao)
-        {
-            return PlayerPrefsMapas.recuperarColetaveisEstadoLiberadosDoMapa(mapaEntidade, qtdColetaveisDto);
-        }
-        else
-        {
-            return Utils.criarArrayPopuladoDeInteiros(qtdColetaveisDto, 0);
-        }
+        return PlayerPrefsMapas.getColetaveisEstadoLiberadosDoMapa(mapaEntidade, qtdColetaveisDto);        
     }
 }

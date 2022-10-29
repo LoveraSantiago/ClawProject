@@ -1,0 +1,54 @@
+public class ColetorDeDados 
+{    
+    private Fornecedor<string> provedorDadosTempo;    
+    private Fornecedor<int> provedorSubidasDaGarra;
+    private Fornecedor<ResultadoColetaveisDto> provedorDadosColetaveis;
+    private Fornecedor<int> provedorSubidasDoElevador;
+    private Fornecedor<ResultadoPowerUpDto> provedorDadosPowerUp;
+
+    public ColetorDeDados addProvedorDadosTempo(Fornecedor<string> provedorDadosTempo)
+    {
+        this.provedorDadosTempo = provedorDadosTempo;
+        return this;
+    }   
+
+    public ColetorDeDados addProvedorDadosColetaveis(Fornecedor<ResultadoColetaveisDto> provedorDadosColetaveis)
+    {
+        this.provedorDadosColetaveis = provedorDadosColetaveis;
+        return this;
+    }
+
+    public ColetorDeDados addProvedorSubidasDaGarra(Fornecedor<int> provedorSubidasDaGarra)
+    {
+        this.provedorSubidasDaGarra = provedorSubidasDaGarra;
+        return this;
+    }
+
+    public ColetorDeDados addProvedorSubidasDoElevador(Fornecedor<int> provedorSubidasDoElevador)
+    {
+        this.provedorSubidasDoElevador = provedorSubidasDoElevador;
+        return this;
+    }
+
+    public ColetorDeDados addProvedorDadosPowerUp(Fornecedor<ResultadoPowerUpDto> provedorDadosPowerUp)
+    {
+        this.provedorDadosPowerUp = provedorDadosPowerUp;
+        return this;
+    }
+
+    public ResultadoLevelDto coletar()
+    {
+        string tempoPartida = provedorDadosTempo.fornecer();        
+        int subidasDaGarra  = provedorSubidasDaGarra.fornecer();
+        int subidasDoElevador = provedorSubidasDoElevador.fornecer();
+        ResultadoColetaveisDto resultadoColetaveis = provedorDadosColetaveis.fornecer();
+        ResultadoPowerUpDto resultadoPowerUp = provedorDadosPowerUp.fornecer();
+
+        ResultadoLevelDto resultadoLevelsDto = new ResultadoLevelDto(tempoPartida, subidasDaGarra, subidasDoElevador)
+            .addResultadoColetaveis(resultadoColetaveis)
+            .addMapaEntidade(ContextoEstaticoUtils.mapaEntidade)
+            .addResultadosPowerUp(resultadoPowerUp);
+
+        return resultadoLevelsDto;
+    }
+}

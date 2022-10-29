@@ -6,10 +6,10 @@ public class ModalMapsManager : AcaoMapaNavegado.ConsumidorEvento,
 
     private MapaEntidade mapaEntidadeAtual;
 
-    public ModalMapsManager(ModalFaseDto modalFaseDto, ModalNoFichaDto modalNoFichaDto)
+    public ModalMapsManager(MainMapaDto mainMapaDto)
     {
-        modalFase = new ModalFase(modalFaseDto);
-        modalNoFicha = new ModalNoFicha(modalNoFichaDto);
+        modalFase = new ModalFase(mainMapaDto.ModalFaseDto);
+        modalNoFicha = new ModalNoFicha(mainMapaDto.ModalNoFichaDto);
     }
 
     private void abrirModal(MapaEntidade mapaEntidade, int indiceLevel)
@@ -20,7 +20,7 @@ public class ModalMapsManager : AcaoMapaNavegado.ConsumidorEvento,
         }
         else
         {
-            modalNoFicha.ligar();
+            modalNoFicha.ligar(Ficha.PRATA);
         }
     }
 

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class PupSceneV2 : MonoBehaviour,
@@ -21,7 +20,7 @@ public class PupSceneV2 : MonoBehaviour,
         FactoryPowerUpEntidade.resetContextoEstatico();
 
         PrefabLevelsDto prefabLevels = mainPupDto.PrefabLevesDto.GetComponent<PrefabLevelsDto>();
-        FactoryMapaEntidade.configurar(prefabLevels);
+        HelperMapaEntidade.configurar(prefabLevels);
         PowerUpEntidade.configurarDicionarioDeSpritesPup(mainPupDto.PrefabPowerUpDto);
 
         timerFichaBronze = new TimerFicha(mainPupDto.TimerFichaDto, Ficha.BRONZE);

@@ -4,10 +4,7 @@ public class ColetavelContexto : GOContexto
 {
     public int sprOrderComum;
     public int sprOrdemDestaque;
-    public int sprOrdemEscondido;
-
-    public readonly int LAYER_ELEVADOR = 20;
-    public readonly int LAYER_NORMAL = 9;
+    public int sprOrdemEscondido;    
 
     public Nomeador nomeador { get; private set; }
     public CircleCollider2D referenciaColliderColetado { get; private set; }

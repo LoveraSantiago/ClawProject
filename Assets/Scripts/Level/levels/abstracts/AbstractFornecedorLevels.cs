@@ -1,9 +1,20 @@
 public abstract class AbstractFornecedorLevels
 {
+    private int[] estadoChallenges;
+    private int[] estadoScores;
+    private string[] estadosTempos;
+
     public AbstractLevel getLevelByIndiceDezena(int idMapa, int indice)
     {
         AbstractLevel level = getLevelPorIndice(indice);
-        level.setIndiceLevelAtual(((10 * idMapa) - 10) + indice);
+        int indiceLevelAtual = ((10 * idMapa) - 10) + indice;
+
+        int indiceDecremento = indice - 1;
+        int challenge = estadoChallenges[indiceDecremento];
+        int score = estadoScores[indiceDecremento];
+        string tempo = estadosTempos[indiceDecremento];
+
+        level.addInfosParaLevelEmAndamento(indiceLevelAtual, challenge, score, tempo);
         return level;
     }
 
@@ -28,6 +39,28 @@ public abstract class AbstractFornecedorLevels
         return maxLevelGeralLiberado;
     }
 
+    public int[] getEstadoChallenges(MapaEntidade mapaEntidade)
+    {
+        if(estadoChallenges == null)
+        {
+            carregarEstadosLevels(mapaEntidade);
+        }
+        return estadoChallenges;
+    }
+
+    public void resetEstadosLevels(MapaEntidade mapaEntidade)
+    {
+        estadoChallenges = null;
+        getEstadoChallenges(mapaEntidade);
+    }
+
     protected abstract AbstractLevel getLevelPorIndice(int level);
     public abstract int getQtdLevels();    
+
+    private void carregarEstadosLevels(MapaEntidade mapaEntidade)
+    {
+        estadoChallenges = PlayerPrefsMapas.getChallengesDoMapa(mapaEntidade);
+        estadoScores     = PlayerPrefsMapas.getScoresDoMapa(mapaEntidade);
+        estadosTempos    = PlayerPrefsMapas.getTemposDoMapa(mapaEntidade);
+    }
 }
