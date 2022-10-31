@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_01bf9563050c419b8100969233084bcf_Out_0:
-        m_Texture: {fileID: 2800000, guid: 8df5effa488b4634d8af26244c057b1f, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_1c4da6acb52a4df9ab46741e90328a01_Out_0:
