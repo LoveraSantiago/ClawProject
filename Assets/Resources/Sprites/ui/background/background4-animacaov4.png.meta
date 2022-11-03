@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2b788f38affc769459436951f9832118
+guid: 29914f8f18766a9409f2ff9e84929420
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -49,7 +49,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background4-animacaov2_0
+      name: background4-animacaov4_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee6187085554d57438abd825f808ec24
-      internalID: -808545637
+      spriteID: 12908cb31c2a26441b1949fafe54171d
+      internalID: 1396447366
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background4-animacaov2_1
+      name: background4-animacaov4_1
       rect:
         serializedVersion: 2
         x: 460
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a306c83a748fbaf4da40e2555604f946
-      internalID: -1522935799
+      spriteID: 62e5167ed929f624aa64d067913017d4
+      internalID: 1086462272
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background4-animacaov2_2
+      name: background4-animacaov4_2
       rect:
         serializedVersion: 2
         x: 920
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f612c8706e9bec49abf6411f053552c
-      internalID: -680986145
+      spriteID: 5b0114af4745459498ae209add8f662b
+      internalID: 597954485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background4-animacaov2_3
+      name: background4-animacaov4_3
       rect:
         serializedVersion: 2
         x: 1380
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 084a708381bd61342aca674cbe6d4daa
-      internalID: 1696561849
+      spriteID: f52c5894956ac324a8ec3f1f9623106f
+      internalID: -1421677055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background4-animacaov2_4
+      name: background4-animacaov4_4
       rect:
         serializedVersion: 2
         x: 1840
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a0c0ba7e4cbbe944ba6c6633676dc51
-      internalID: 569715217
+      spriteID: 4fe0ca1a13c907f4dbf13186c5e09c80
+      internalID: -1934210784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background4-animacaov2_5
+      name: background4-animacaov4_5
       rect:
         serializedVersion: 2
         x: 2300
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5740dcba84f6c804793c4d862e547e15
-      internalID: 594337192
+      spriteID: c6e81ff9403d9d0408af87c410971780
+      internalID: 73241785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background4-animacaov2_6
+      name: background4-animacaov4_6
       rect:
         serializedVersion: 2
         x: 2760
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8418973a66531941bc2a68fe39e3ec7
-      internalID: -566315493
+      spriteID: d1b193ee9dfcc2f4dba65618f0a0a885
+      internalID: 1231988214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background4-animacaov2_7
+      name: background4-animacaov4_7
       rect:
         serializedVersion: 2
         x: 3220
@@ -289,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8b8fd6ad8c3291439f28ff415c71d76
-      internalID: -1508250640
+      spriteID: e19ffdcb0fea3fa40a3460b3b231b786
+      internalID: 1313373933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background4-animacaov2_8
+      name: background4-animacaov4_8
       rect:
         serializedVersion: 2
         x: 3680
@@ -310,8 +310,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b002eb52b2b12b54faf4c728306ffc9d
-      internalID: -480073028
+      spriteID: 0a39f02f6d218934993318cb0e1e19c1
+      internalID: 1567385307
       vertices: []
       indices: 
       edges: []
@@ -327,15 +327,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      background4-animacaov2_7: -1508250640
-      background4-animacaov2_2: -680986145
-      background4-animacaov2_5: 594337192
-      background4-animacaov2_3: 1696561849
-      background4-animacaov2_8: -480073028
-      background4-animacaov2_1: -1522935799
-      background4-animacaov2_6: -566315493
-      background4-animacaov2_0: -808545637
-      background4-animacaov2_4: 569715217
+      background4-animacaov4_6: 1231988214
+      background4-animacaov4_8: 1567385307
+      background4-animacaov4_4: -1934210784
+      background4-animacaov4_0: 1396447366
+      background4-animacaov4_2: 597954485
+      background4-animacaov4_5: 73241785
+      background4-animacaov4_7: 1313373933
+      background4-animacaov4_3: -1421677055
+      background4-animacaov4_1: 1086462272
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
