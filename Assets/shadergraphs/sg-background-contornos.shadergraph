@@ -26,6 +26,9 @@
         },
         {
             "m_Id": "b9c92c064a9d471a8fcc1f5df07e28e1"
+        },
+        {
+            "m_Id": "af8bc4811fd74fde9f1adbd0cf2de6df"
         }
     ],
     "m_Keywords": [],
@@ -1900,7 +1903,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": 0.4000000059604645,
+        "e00": 10.0,
         "e01": 2.0,
         "e02": 2.0,
         "e03": 2.0,
@@ -2941,6 +2944,33 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "af8bc4811fd74fde9f1adbd0cf2de6df",
+    "m_Guid": {
+        "m_GuidSerialized": "1849755e-157e-40e7-8606-4d513ebb8860"
+    },
+    "m_Name": "tempoSubtracao",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "tempoSubtracao",
+    "m_DefaultReferenceName": "_tempoSubtracao",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 0.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Texture2DInputMaterialSlot",
     "m_ObjectId": "afb4770ec3404e01b80b9b01c1c74678",
@@ -3428,6 +3458,9 @@
         },
         {
             "m_Id": "b9c92c064a9d471a8fcc1f5df07e28e1"
+        },
+        {
+            "m_Id": "af8bc4811fd74fde9f1adbd0cf2de6df"
         }
     ]
 }

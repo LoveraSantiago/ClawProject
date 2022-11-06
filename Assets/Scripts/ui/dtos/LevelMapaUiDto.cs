@@ -15,6 +15,7 @@ public class LevelMapaUiDto
     [Space(3)]
     [SerializeField] private Animator animatorMainMapa;
     [SerializeField] private Image imgMapa;
+    [SerializeField] private Material matBackground;
     [Space(3)]    
     [SerializeField] private BalaoLevelBtnDto[] baloesLevels = new BalaoLevelBtnDto[10];
 
@@ -27,6 +28,7 @@ public class LevelMapaUiDto
 
     public Animator AnimatorMainMapa { get { return animatorMainMapa; } }
     public Image ImgMapa { get { return imgMapa; } }
-        
+    public Material MatBackground { get { return matBackground; } }
+
     public BalaoLevelBtnDto[] BaloesLevels { get { return baloesLevels; } }
 }
