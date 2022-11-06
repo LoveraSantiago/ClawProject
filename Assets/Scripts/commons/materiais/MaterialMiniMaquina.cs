@@ -65,7 +65,8 @@ public class MaterialMiniMaquina
         materialDestino.SetColor(COR_SIMBOLO      , materialOrigem.GetColor(COR_SIMBOLO));
         materialDestino.SetColor(COR_COLETADO_BACK, materialOrigem.GetColor(COR_COLETADO_BACK));
         materialDestino.SetColor(COR_COLETADO     , materialOrigem.GetColor(COR_COLETADO));        
-        materialDestino.SetColor(COR_SETAS        , materialOrigem.GetColor(COR_SETAS));        
+        materialDestino.SetColor(COR_SETAS        , materialOrigem.GetColor(COR_SETAS));
+        subtrairTempo(materialDestino);
     }
 
     private static void colorirFullBranco(Material material)
@@ -84,6 +85,7 @@ public class MaterialMiniMaquina
         material.SetColor(COR_SIMBOLO,       Color.black);
         material.SetColor(COR_COLETADO_BACK, Color.black);
         material.SetColor(COR_COLETADO,      Color.black);
+        subtrairTempo(material);
     }
 
     private static void colorirNivelHum(Material material, Dictionary<string, string> cores)
@@ -102,6 +104,7 @@ public class MaterialMiniMaquina
         material.SetColor(COR_SIMBOLO,       Color.black);
         material.SetColor(COR_COLETADO_BACK, Color.black);
         material.SetColor(COR_COLETADO,      Color.black);
+        subtrairTempo(material);
     }
 
     private static void colorirNivelDois(Material material, Dictionary<string, string> cores)
@@ -120,6 +123,7 @@ public class MaterialMiniMaquina
         material.SetColor(COR_SIMBOLO,       Color.black);
         material.SetColor(COR_COLETADO_BACK, Color.black);
         material.SetColor(COR_COLETADO,      Color.black);
+        subtrairTempo(material);
     }
 
     private static void coloriCompleto(Material material, Dictionary<string, string> cores)
@@ -138,6 +142,11 @@ public class MaterialMiniMaquina
         material.SetColor(COR_SIMBOLO,       Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO]));
         material.SetColor(COR_COLETADO_BACK, Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL1]));
         material.SetColor(COR_COLETADO,      Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO]));
+        subtrairTempo(material);
     }
 
+    private static void subtrairTempo(Material material)
+    {
+        material.SetFloat("_tempoSubtrair", Time.time);
+    }
 }

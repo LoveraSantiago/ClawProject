@@ -192,7 +192,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
             produtorDeEvento.produziuEvento(levelItem);
             ultimoItemClicado = itemLevel.indiceLevel;
 
-            Debug.Log("Ultimo item clicado " + ultimoItemClicado);
+            //Debug.Log("Ultimo item clicado " + ultimoItemClicado);
         }
     }
 
