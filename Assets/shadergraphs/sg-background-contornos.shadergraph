@@ -133,34 +133,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "0ca1b64b16e54d0a9bcc9496633e07a8"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "4aa3b6b1bd634a748b534aae33346f30"
-                },
-                "m_SlotId": 2
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "0ca1b64b16e54d0a9bcc9496633e07a8"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "91bf593a63b94f6198814f84619cfe32"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "21bf390397654aa59562cf268ba8840e"
                 },
                 "m_SlotId": 2
@@ -279,9 +251,9 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "3925458f633342808df40c7a28fc2a46"
+                    "m_Id": "91bf593a63b94f6198814f84619cfe32"
                 },
-                "m_SlotId": 3
+                "m_SlotId": 0
             }
         },
         {
@@ -413,6 +385,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "8856d4263bd3432f8e308981559b5084"
+                },
+                "m_SlotId": 2
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "4aa3b6b1bd634a748b534aae33346f30"
+                },
+                "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "8a4eeb30c65b4290af7a922b81c9f50f"
                 },
                 "m_SlotId": 0
@@ -420,6 +406,20 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "49bd70eb303e4ee8a40a2240bd35dbf9"
+                },
+                "m_SlotId": 3
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "91bf593a63b94f6198814f84619cfe32"
+                },
+                "m_SlotId": 3
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "3925458f633342808df40c7a28fc2a46"
                 },
                 "m_SlotId": 3
             }
@@ -637,7 +637,7 @@
     "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
     "m_ObjectId": "0594ab3e6b354dff9f1a3a473c07e3c0",
     "m_Id": 0,
-    "m_DisplayName": "inicio",
+    "m_DisplayName": "subida",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1522,10 +1522,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1697.0001220703125,
-            "y": 751.0000610351563,
-            "width": 207.9998779296875,
-            "height": 301.99993896484377
+            "x": -1608.9998779296875,
+            "y": 89.00001525878906,
+            "width": 208.0,
+            "height": 302.0
         }
     },
     "m_Slots": [
@@ -1552,7 +1552,7 @@
     "m_SourceType": 1,
     "m_FunctionName": "inicioFim",
     "m_FunctionSource": "",
-    "m_FunctionBody": "if(subida){\n_out = 6;\n}\nelse{\n_out = 0;\n}"
+    "m_FunctionBody": "if(subida){\r\n  _out = entrada;\t \r\n}\r\nelse{\r\n    _out = (entrada * -1) + 6;\t \r\n}"
 }
 
 {
@@ -2326,10 +2326,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2331.000244140625,
-            "y": 751.0000610351563,
-            "width": 105.0,
-            "height": 33.99993896484375
+            "x": -1738.0,
+            "y": -109.0000228881836,
+            "width": 105.0001220703125,
+            "height": 34.00001525878906
         }
     },
     "m_Slots": [
@@ -2460,8 +2460,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1303.9998779296875,
-            "y": 427.0,
+            "x": -1027.0,
+            "y": 456.0,
             "width": 208.0,
             "height": 302.0
         }
@@ -2518,7 +2518,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "X",
     "m_StageCapability": 3,
-    "m_Value": -12.819999694824219,
+    "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
 }
@@ -2583,10 +2583,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1533.0001220703125,
-            "y": 89.00000762939453,
+            "x": -1264.9998779296875,
+            "y": 101.00000762939453,
             "width": 208.0,
-            "height": 326.0
+            "height": 326.0000305175781
         }
     },
     "m_Slots": [
@@ -2907,10 +2907,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1304.0001220703125,
-            "y": 846.0,
+            "x": -1369.0,
+            "y": 456.0,
             "width": 208.0,
-            "height": 302.0001220703125
+            "height": 302.0
         }
     },
     "m_Slots": [
@@ -3106,10 +3106,10 @@
     "m_Guid": {
         "m_GuidSerialized": "d1cf9664-844e-43f6-93ad-34ad55469387"
     },
-    "m_Name": "inicio",
+    "m_Name": "subida",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "inicio",
-    "m_DefaultReferenceName": "_inicio",
+    "m_RefNameGeneratedByDisplayName": "subida",
+    "m_DefaultReferenceName": "_subida",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
