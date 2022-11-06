@@ -131,12 +131,12 @@ TextureImporter:
       name: spritesheet-animacao-backgroundv2_0
       rect:
         serializedVersion: 2
-        x: 104
+        x: 0
         y: 0
-        width: 104
+        width: 148.57143
         height: 124
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,12 +152,12 @@ TextureImporter:
       name: spritesheet-animacao-backgroundv2_1
       rect:
         serializedVersion: 2
-        x: 207
+        x: 148
         y: 0
-        width: 104
+        width: 148.57143
         height: 124
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,12 +173,12 @@ TextureImporter:
       name: spritesheet-animacao-backgroundv2_2
       rect:
         serializedVersion: 2
-        x: 312
+        x: 296
         y: 0
-        width: 104
+        width: 148.57143
         height: 124
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,12 +194,12 @@ TextureImporter:
       name: spritesheet-animacao-backgroundv2_3
       rect:
         serializedVersion: 2
-        x: 416
+        x: 444
         y: 0
-        width: 104
+        width: 148.57143
         height: 124
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,12 +215,12 @@ TextureImporter:
       name: spritesheet-animacao-backgroundv2_4
       rect:
         serializedVersion: 2
-        x: 520
+        x: 592
         y: 0
-        width: 104
+        width: 148.57143
         height: 124
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,12 +236,12 @@ TextureImporter:
       name: spritesheet-animacao-backgroundv2_5
       rect:
         serializedVersion: 2
-        x: 624
+        x: 740
         y: 0
-        width: 104
+        width: 148.57143
         height: 124
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,12 +257,12 @@ TextureImporter:
       name: spritesheet-animacao-backgroundv2_6
       rect:
         serializedVersion: 2
-        x: 728
+        x: 888
         y: 0
-        width: 104
+        width: 148.57143
         height: 124
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -270,48 +270,6 @@ TextureImporter:
       bones: []
       spriteID: 2831fbaa714360b4a903083273a4c6aa
       internalID: 1367592736
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-animacao-backgroundv2_7
-      rect:
-        serializedVersion: 2
-        x: 832
-        y: 0
-        width: 104
-        height: 124
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f9e7a8b164da4864a8fe49c9ff3b3b38
-      internalID: 635021408
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-animacao-backgroundv2_8
-      rect:
-        serializedVersion: 2
-        x: 936
-        y: 0
-        width: 104
-        height: 124
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f25978140c8783549882048385732ae1
-      internalID: 1517599022
       vertices: []
       indices: 
       edges: []
@@ -333,9 +291,7 @@ TextureImporter:
       spritesheet-animacao-backgroundv2_3: -750203249
       spritesheet-animacao-backgroundv2_1: -1980860705
       spritesheet-animacao-backgroundv2_5: -845029122
-      spritesheet-animacao-backgroundv2_7: 635021408
       spritesheet-animacao-backgroundv2_0: -1766694589
-      spritesheet-animacao-backgroundv2_8: 1517599022
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
