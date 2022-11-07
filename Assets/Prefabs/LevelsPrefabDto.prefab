@@ -75,6 +75,14 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 6ff825b4da47d4749bb0a0b28414a44d, type: 3}
     - nome: Abobora
       sprite: {fileID: 21300000, guid: 5dc9932ec24df9c4185f1ed16dad9ea9, type: 3}
+    levelCorBackground:
+      corBackground: {r: 1, g: 1, b: 1, a: 1}
+      corContorno: {r: 0.007843138, g: 0.9372549, b: 1, a: 1}
+      cor1: {r: 0.10980392, g: 0.9411765, b: 1, a: 1}
+      cor2: {r: 0.007843138, g: 0.7490196, b: 0.8, a: 1}
+      cor3: {r: 0.011764706, g: 0.7647059, b: 1, a: 1}
+      cor4: {r: 0.6431373, g: 0.9764706, b: 1, a: 1}
+      clareamento: 0.2
   - mapaEnum: 2
     sprMapa: {fileID: 21300000, guid: f615137fbbf65e141affb46e03d2dbb6, type: 3}
     posicoes:
@@ -99,6 +107,14 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: a006e7911ade7d84aade6733c5a773df, type: 3}
     - nome: Pachicefalossauro
       sprite: {fileID: 21300000, guid: fdf5728c7d408de48961d6e6a054559b, type: 3}
+    levelCorBackground:
+      corBackground: {r: 0, g: 0, b: 0, a: 0}
+      corContorno: {r: 0, g: 0, b: 0, a: 0}
+      cor1: {r: 0, g: 0, b: 0, a: 0}
+      cor2: {r: 0, g: 0, b: 0, a: 0}
+      cor3: {r: 0, g: 0, b: 0, a: 0}
+      cor4: {r: 0, g: 0, b: 0, a: 0}
+      clareamento: 0
   - mapaEnum: 3
     sprMapa: {fileID: 21300000, guid: 592237e27ddcca84cb60f32d8443665c, type: 3}
     posicoes:
@@ -131,6 +147,14 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 264fbbb07ad7044438cf9f750c68c2e0, type: 3}
     - nome: Bola de Tenis
       sprite: {fileID: 21300000, guid: 49da32c8555f3794ca2d049b7a4008de, type: 3}
+    levelCorBackground:
+      corBackground: {r: 0, g: 0, b: 0, a: 0}
+      corContorno: {r: 0, g: 0, b: 0, a: 0}
+      cor1: {r: 0, g: 0, b: 0, a: 0}
+      cor2: {r: 0, g: 0, b: 0, a: 0}
+      cor3: {r: 0, g: 0, b: 0, a: 0}
+      cor4: {r: 0, g: 0, b: 0, a: 0}
+      clareamento: 0
   - mapaEnum: 4
     sprMapa: {fileID: 21300000, guid: bd468a21bd70f4649836c1b662e366d8, type: 3}
     posicoes:
@@ -163,6 +187,14 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 3aa1c3ddf982eb84c848db473007240d, type: 3}
     - nome: fg9
       sprite: {fileID: 21300000, guid: 0576517fa8ab1534ab166c2d73d20ff5, type: 3}
+    levelCorBackground:
+      corBackground: {r: 0, g: 0, b: 0, a: 0}
+      corContorno: {r: 0, g: 0, b: 0, a: 0}
+      cor1: {r: 0, g: 0, b: 0, a: 0}
+      cor2: {r: 0, g: 0, b: 0, a: 0}
+      cor3: {r: 0, g: 0, b: 0, a: 0}
+      cor4: {r: 0, g: 0, b: 0, a: 0}
+      clareamento: 0
   - mapaEnum: 5
     sprMapa: {fileID: 21300000, guid: 8b77ab0f331e1f943ab7f05a152f475c, type: 3}
     posicoes:
@@ -185,6 +217,14 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 437f7c4b341e96346b445d3bba44d36b, type: 3}
     - nome: Yusuke
       sprite: {fileID: 21300000, guid: 393624cd56221e947a9620f49e1a2d4a, type: 3}
+    levelCorBackground:
+      corBackground: {r: 0, g: 0, b: 0, a: 0}
+      corContorno: {r: 0, g: 0, b: 0, a: 0}
+      cor1: {r: 0, g: 0, b: 0, a: 0}
+      cor2: {r: 0, g: 0, b: 0, a: 0}
+      cor3: {r: 0, g: 0, b: 0, a: 0}
+      cor4: {r: 0, g: 0, b: 0, a: 0}
+      clareamento: 0
   - mapaEnum: 6
     sprMapa: {fileID: 21300000, guid: 9e205ddc8bec90045837ff2496773523, type: 3}
     posicoes:
@@ -217,6 +257,14 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 71468851d90e20b41b083e119464a72f, type: 3}
     - nome: Geleia9
       sprite: {fileID: 21300000, guid: 12e879f136c1a944d8534e481236a9e1, type: 3}
+    levelCorBackground:
+      corBackground: {r: 0, g: 0, b: 0, a: 0}
+      corContorno: {r: 0, g: 0, b: 0, a: 0}
+      cor1: {r: 0, g: 0, b: 0, a: 0}
+      cor2: {r: 0, g: 0, b: 0, a: 0}
+      cor3: {r: 0, g: 0, b: 0, a: 0}
+      cor4: {r: 0, g: 0, b: 0, a: 0}
+      clareamento: 0
   - mapaEnum: 7
     sprMapa: {fileID: 21300000, guid: 65853aea469d1fa43996dec84f491384, type: 3}
     posicoes:
@@ -241,3 +289,11 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 322005054e22c3147bc4a03250154a5e, type: 3}
     - nome: Todi
       sprite: {fileID: 21300000, guid: d9bcd8ab1e3e2964bab7343a50755108, type: 3}
+    levelCorBackground:
+      corBackground: {r: 0, g: 0, b: 0, a: 0}
+      corContorno: {r: 0, g: 0, b: 0, a: 0}
+      cor1: {r: 0, g: 0, b: 0, a: 0}
+      cor2: {r: 0, g: 0, b: 0, a: 0}
+      cor3: {r: 0, g: 0, b: 0, a: 0}
+      cor4: {r: 0, g: 0, b: 0, a: 0}
+      clareamento: 0
