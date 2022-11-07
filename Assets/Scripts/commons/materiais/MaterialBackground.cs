@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MaterialBackground 
 {
-    
+    private static readonly int ID_TEMPO_SUBTRAIR = Shader.PropertyToID("_tempoSubtracao");
 
     public static void movimentarEntrada(Material material)
     {
-        material.SetFloat("_tempoSubtracao", Time.time);
+        material.SetFloat(ID_TEMPO_SUBTRAIR, Time.time);
     }
 }

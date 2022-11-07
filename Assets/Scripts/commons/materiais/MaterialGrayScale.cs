@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MaterialGrayScale 
 {
+    private static readonly int ID_MAIN_TEXTURE = Shader.PropertyToID("main_text");
     private static Material matGrayScale;
 
     public static Material of()
@@ -17,7 +18,7 @@ public class MaterialGrayScale
 
     public static Material changeSprite(Material material, Sprite sprite)
     {
-        material.SetTexture("main_text", sprite.texture);
+        material.SetTexture(ID_MAIN_TEXTURE, sprite.texture);
         return material;
     }
 

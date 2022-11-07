@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MaterialHdr //REMOVER ESSA CLASSE ASSIM Q POSSIVEL
 {
+    private static readonly int ID_MAIN_TEXTURE = Shader.PropertyToID("MainTexture");
+
     private static Material materialHdrAditivo;    
     private static Material materialHdrAlpha;
 
@@ -29,7 +31,7 @@ public class MaterialHdr //REMOVER ESSA CLASSE ASSIM Q POSSIVEL
 
     public static Material setTexture(Material material, Sprite sprite)
     {
-        material.SetTexture("MainTexture", sprite.texture);
+        material.SetTexture(ID_MAIN_TEXTURE, sprite.texture);
         return material;
     }
 
