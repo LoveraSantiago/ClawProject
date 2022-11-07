@@ -1793,7 +1793,7 @@
     "m_SourceType": 1,
     "m_FunctionName": "subidaDescida",
     "m_FunctionSource": "",
-    "m_FunctionBody": "if(subida == 0){\r\n _out = entrada;\t \r\n lerp = 1;\n}\r\nelse{\r\n _out = (entrada * -1) + 6;\t \r\n lerp = 0;\n}"
+    "m_FunctionBody": "if(subida == 0){\r\n _out = entrada;\t\r\n if(entrada > 6){\r\n  lerp = 1;\r\n }\r\n else{\r\n  lerp = 0;\r\n }\r\n}\r\nelse{\r\n _out = (entrada * -1) + 6;\t \r\n lerp = 0;\r\n}"
 }
 
 {
@@ -2217,7 +2217,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": 18.0,
+        "e00": 16.0,
         "e01": 2.0,
         "e02": 2.0,
         "e03": 2.0,
