@@ -3601,6 +3601,7 @@ MonoBehaviour:
       lblTitle: {fileID: 944140}
       animatorMainMapa: {fileID: 1145818212}
       imgMapa: {fileID: 806134968}
+      matBackground: {fileID: 2100000, guid: 703357eefd164db46a4770bf5f908f9f, type: 2}
       baloesLevels:
       - btnLevel: {fileID: 1488078935}
         animator: {fileID: 2746002245882112965}
