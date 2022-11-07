@@ -36,7 +36,7 @@ public class MapaUi
         {
             updateMapa(evento);
             grupoBtnBaloes.posicionarBaloes(evento);
-            MaterialBackground.movimentarSaida(levelMapaUiDto.MatBackground);
+            MaterialBackground.movimentarSaida(levelMapaUiDto.MatBackground, evento.mapaEntidade.levelCorBackground);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes));
             animacaMainMapa.mostrarSetasNavegacao(mapaEntidade.isLivre);
         }
@@ -78,7 +78,7 @@ public class MapaUi
         updateMapa(evento);
         grupoBtnBaloes.posicionarBaloes(evento);
         yield return new WaitForSeconds(levelMapaUiDto.DelayInicioBaloes);
-        MaterialBackground.movimentarSaida(levelMapaUiDto.MatBackground);
+        MaterialBackground.movimentarSaida(levelMapaUiDto.MatBackground, evento.mapaEntidade.levelCorBackground);
         yield return grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes);
     }   
 }
