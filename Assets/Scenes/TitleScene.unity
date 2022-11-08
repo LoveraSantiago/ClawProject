@@ -1128,8 +1128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c04612a595b74c2da272b0e052ad58d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  garraMacho: {fileID: 21300000, guid: 6fefb066203ee9a4bb97cb6f1e7c9bca, type: 3}
-  garraFemea: {fileID: 21300000, guid: bf3e49291513a814ca33e8dbb031cbe2, type: 3}
+  garraMacho: {fileID: 21300000, guid: 0840c636e7c1ee14ebbe96fb9635bd57, type: 3}
+  garraFemea: {fileID: 21300000, guid: 9d366a5faba097941aa62ead5cea928a, type: 3}
   imgGarra: {fileID: 1438709128}
   materialMacho: {fileID: 2100000, guid: 93da1243e80407341a5621c36bc5b382, type: 2}
   materialFemea: {fileID: 2100000, guid: e8c416f1cbd30654a831a13d06cfcb6f, type: 2}
@@ -2242,7 +2242,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6fefb066203ee9a4bb97cb6f1e7c9bca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0840c636e7c1ee14ebbe96fb9635bd57, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
