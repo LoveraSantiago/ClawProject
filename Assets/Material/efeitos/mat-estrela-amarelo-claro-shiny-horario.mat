@@ -46,7 +46,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _direcao: -1
+    - _velocidade: 0.2
     m_Colors:
-    - _corEstrela: {r: 0.9882353, g: 1, b: 0.4509804, a: 0}
+    - _corEstrela: {r: 0.9956537, g: 1, b: 0.7971698, a: 0}
     - _corShine: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
