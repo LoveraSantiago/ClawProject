@@ -56,7 +56,7 @@ public class ScrollPups
     private void configurarItens(Materiais7SegmentosDto mat7Segmentos, AbstractLevel level)
     {
         string hexCor = level.getDicionarioDeCores()[ConstantesCoresMaquinaV2.SCROLL_PUP_DIGITOS];
-        Color corDigito = Utils.getCorByHex(hexCor);
+        Color corDigito = CorUtils.getCorByHex(hexCor);
         Material material7Segmentos = mat7Segmentos.getMaterialFromAlbedo(level.isLevelAlbedo0DigitosScrollPup());
 
         for (int contador = 0; contador < scrollPupsDto.ItensScrollPup.Length; contador++)

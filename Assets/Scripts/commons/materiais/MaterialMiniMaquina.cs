@@ -90,8 +90,8 @@ public class MaterialMiniMaquina
 
     private static void colorirNivelHum(Material material, Dictionary<string, string> cores)
     {
-        material.SetColor(ID_COR_FUNDO,         Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.CHAO_DENTRO]));
-        material.SetColor(ID_COR_EXTERNO,       Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.PLACA_FRENTE]));
+        material.SetColor(ID_COR_FUNDO,         CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.CHAO_DENTRO]));
+        material.SetColor(ID_COR_EXTERNO,       CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.PLACA_FRENTE]));
         material.SetColor(ID_COR_CARD_BACK,     Color.black);
         material.SetColor(ID_COR_CARD,          Color.black);
         material.SetColor(ID_COR_JOYSTICK,      Color.black);
@@ -109,12 +109,12 @@ public class MaterialMiniMaquina
 
     private static void colorirNivelDois(Material material, Dictionary<string, string> cores)
     {
-        material.SetColor(ID_COR_FUNDO,         Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.CHAO_DENTRO]));
-        material.SetColor(ID_COR_EXTERNO,       Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.PLACA_FRENTE]));
-        material.SetColor(ID_COR_CARD_BACK,     Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA]));
-        material.SetColor(ID_COR_CARD,          Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA]));
-        material.SetColor(ID_COR_JOYSTICK,      Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA]));
-        material.SetColor(ID_COR_SETAS,         Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS]));
+        material.SetColor(ID_COR_FUNDO,         CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.CHAO_DENTRO]));
+        material.SetColor(ID_COR_EXTERNO,       CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.PLACA_FRENTE]));
+        material.SetColor(ID_COR_CARD_BACK,     CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA]));
+        material.SetColor(ID_COR_CARD,          CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA]));
+        material.SetColor(ID_COR_JOYSTICK,      CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA]));
+        material.SetColor(ID_COR_SETAS,         CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS]));
         material.SetColor(ID_COR_PONTOS_BACK,   Color.black);
         material.SetColor(ID_COR_PONTOS,        Color.black);
         material.SetColor(ID_COR_TIMER_BACK,    Color.black);
@@ -128,20 +128,20 @@ public class MaterialMiniMaquina
 
     private static void coloriCompleto(Material material, Dictionary<string, string> cores)
     {
-        material.SetColor(ID_COR_FUNDO,         Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.CHAO_DENTRO]));
-        material.SetColor(ID_COR_EXTERNO,       Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.PLACA_FRENTE]));
-        material.SetColor(ID_COR_CARD_BACK,     Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA]));
-        material.SetColor(ID_COR_CARD,          Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA]));
-        material.SetColor(ID_COR_JOYSTICK,      Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA]));
-        material.SetColor(ID_COR_SETAS,         Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS]));
-        material.SetColor(ID_COR_PONTOS_BACK,   Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1]));
-        material.SetColor(ID_COR_PONTOS,        Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_GRUPO]));
-        material.SetColor(ID_COR_TIMER_BACK,    Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO]));
-        material.SetColor(ID_COR_TIMER,         Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL]));
-        material.SetColor(ID_COR_SIMBOLO_BACK,  Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO]));
-        material.SetColor(ID_COR_SIMBOLO,       Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO]));
-        material.SetColor(ID_COR_COLETADO_BACK, Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL1]));
-        material.SetColor(ID_COR_COLETADO,      Utils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO]));
+        material.SetColor(ID_COR_FUNDO,         CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.CHAO_DENTRO]));
+        material.SetColor(ID_COR_EXTERNO,       CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.PLACA_FRENTE]));
+        material.SetColor(ID_COR_CARD_BACK,     CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA]));
+        material.SetColor(ID_COR_CARD,          CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA]));
+        material.SetColor(ID_COR_JOYSTICK,      CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA]));
+        material.SetColor(ID_COR_SETAS,         CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS]));
+        material.SetColor(ID_COR_PONTOS_BACK,   CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_INDIVIDUAL1]));
+        material.SetColor(ID_COR_PONTOS,        CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_GRUPO]));
+        material.SetColor(ID_COR_TIMER_BACK,    CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO]));
+        material.SetColor(ID_COR_TIMER,         CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL]));
+        material.SetColor(ID_COR_SIMBOLO_BACK,  CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.SIMBOLO_CIRC_INTERNO]));
+        material.SetColor(ID_COR_SIMBOLO,       CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.SIMBOLO_CIRC_EXTERNO]));
+        material.SetColor(ID_COR_COLETADO_BACK, CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL1]));
+        material.SetColor(ID_COR_COLETADO,      CorUtils.getCorByHex(cores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO]));
         subtrairTempo(material);
     }
 

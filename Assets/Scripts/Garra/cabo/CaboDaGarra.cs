@@ -9,7 +9,7 @@ public class CaboDaGarra
     {
         Dictionary<string, string> dicionarioDeCores = ContextoEstaticoUtils.level.getDicionarioDeCores();
         string corHex = dicionarioDeCores[ConstantesCoresMaquina.CABO_DA_GARRA];
-        Color cor = Utils.getCorByHex(corHex);
+        Color cor = CorUtils.getCorByHex(corHex);
         caboDto.LineRenderer.startColor = cor;
         caboDto.LineRenderer.endColor = cor;
     }

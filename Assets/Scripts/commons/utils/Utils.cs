@@ -1,14 +1,5 @@
-using UnityEngine;
-
 public class Utils 
 {
-    public static Color getCorByHex(string hex)
-    {
-        Color cor;
-        ColorUtility.TryParseHtmlString(hex, out cor);
-        return cor;
-    }  
-
     public static T[] copiarArray<T>(T[] array)
     {
         T[] result = new T[array.Length];
