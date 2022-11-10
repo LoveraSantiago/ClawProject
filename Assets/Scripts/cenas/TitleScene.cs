@@ -4,6 +4,8 @@ using UnityEngine.UI;
 #pragma warning disable 0649
 public class TitleScene : MonoBehaviour
 {
+    [SerializeField] private MainTitleDto mainTitleDto;
+    [Space(5)]
     [SerializeField] private Sprite garraMacho;
     [SerializeField] private Sprite garraFemea;
     [SerializeField] private Image imgGarra;
@@ -26,6 +28,8 @@ public class TitleScene : MonoBehaviour
 
     private void Start()
     {
+        GarraTitle garraTitle = new GarraTitle();
+
         generoResult = MathUtils.escolherDeZeroAteLimite(2);        
         if(generoResult == 0)
         {
