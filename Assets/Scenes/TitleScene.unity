@@ -1968,7 +1968,7 @@ GameObject:
   - component: {fileID: 1261479316}
   - component: {fileID: 1261479315}
   m_Layer: 5
-  m_Name: background-face
+  m_Name: face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2001,7 +2001,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261479313}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2014,7 +2014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1460005339, guid: 37f1c581cd0c78d4dba42671bc5893b6, type: 3}
+  m_Sprite: {fileID: 605973535, guid: a6d76c95648105e4d8d58d8304be991b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2319,7 +2319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0840c636e7c1ee14ebbe96fb9635bd57, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 090c34a8a06ec0f44b0115231f308fc2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
