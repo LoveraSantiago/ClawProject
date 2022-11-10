@@ -240,7 +240,7 @@ public class PlayerPrefsMapas
         string arrayString = PlayerPrefs.GetString(chave);
         if (Utils.isBlank(arrayString))
         {
-            int[] arrayVazio = Utils.criarArrayPopuladoDeInteiros(tamanhoArray, estado);
+            int[] arrayVazio = ArrayUtils.criarArrayPopuladoDeInteiros(tamanhoArray, estado);
             salvarArrayNumerico(chave, arrayVazio);
             return arrayVazio;
         }
@@ -249,7 +249,7 @@ public class PlayerPrefsMapas
             WrapperArrayInteiros wrapper = JsonUtility.FromJson<WrapperArrayInteiros>(arrayString);
             if (wrapper.array == null)
             {
-                return Utils.criarArrayPopuladoDeInteiros(tamanhoArray, estado);
+                return ArrayUtils.criarArrayPopuladoDeInteiros(tamanhoArray, estado);
             }
             return wrapper.array;
         }
@@ -269,7 +269,7 @@ public class PlayerPrefsMapas
         string arrayString = PlayerPrefs.GetString(chave);
         if (Utils.isBlank(arrayString))
         {
-            string[] arrayVazio = Utils.criarArrayPopuladoDeString(tamanhoArray, valor);
+            string[] arrayVazio = ArrayUtils.criarArrayPopuladoDeString(tamanhoArray, valor);
             salvarArrayString(chave, arrayVazio);
             return arrayVazio;
         }
@@ -278,7 +278,7 @@ public class PlayerPrefsMapas
             WrapperArrayString wrapper = JsonUtility.FromJson<WrapperArrayString>(arrayString);
             if (wrapper.array == null)
             {
-                return Utils.criarArrayPopuladoDeString(tamanhoArray, valor);
+                return ArrayUtils.criarArrayPopuladoDeString(tamanhoArray, valor);
             }
             return wrapper.array;
         }
