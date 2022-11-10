@@ -23,15 +23,15 @@ public class TitleScene : MonoBehaviour
     private static readonly int ANIMACAO1_MACHO = Animator.StringToHash("macho-piscando");
     private static readonly int ANIMACAO1_FEMEA = Animator.StringToHash("femea-coracao");
 
-    private int generoResult;
+    private Genero genero;
     private InputGame inputGame;
 
     private void Start()
     {
         GarraTitle garraTitle = new GarraTitle();
 
-        generoResult = MathUtils.escolherDeZeroAteLimite(2);        
-        if(generoResult == 0)
+        genero = GeneroUtils.getGeneroDoIndice(MathUtils.escolherDeZeroAteLimite(2));        
+        if(GeneroUtils.isGeneroMacho(genero))
         {
             imgGarra.sprite = garraMacho;
             imgBackground.material = materialMacho;
@@ -52,7 +52,7 @@ public class TitleScene : MonoBehaviour
         inputGame.update();
         if (inputGame.aconteceuTap())
         {
-            if(generoResult == 0)
+            if(GeneroUtils.isGeneroMacho(genero))
             {
                 animator.Play(ANIMACAO1_MACHO);
             }

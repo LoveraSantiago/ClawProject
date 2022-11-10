@@ -10,33 +10,33 @@ public class PlayerPrefsGarra
         return resultado;
     }
 
-    public static int getGarraMachoOrFemea()
+    public static Genero getGarraMachoOrFemea()
     {
         int resultado = getEscolhaGarra();
         if (resultado == 0)
         {
             resultado = MathUtils.escolherDeZeroAteLimite(1) + 1;
         }
-        return resultado;
+        return GeneroUtils.getGeneroDoIndice(resultado);
     }
 
     public static void saveEscolhaGarraRandom()
     {
-        saveEscolhaTipoGarra(0);
+        saveEscolhaTipoGarra(Genero.NAO_ESCOLHIDO);
     }
 
     public static void saveEscolhaGarraMacho()
     {
-        saveEscolhaTipoGarra(1);
+        saveEscolhaTipoGarra(Genero.MACHO);
     }
 
     public static void saveEscolhaGarraFemea()
     {
-        saveEscolhaTipoGarra(2);
+        saveEscolhaTipoGarra(Genero.FEMEA);
     }
 
-    private static void saveEscolhaTipoGarra(int escolha)
+    private static void saveEscolhaTipoGarra(Genero genero)
     {
-        PlayerPrefs.SetInt(CHAVE_GARRA, escolha);
+        PlayerPrefs.SetInt(CHAVE_GARRA, GeneroUtils.getIndiceDoGenero(genero));
     }
 }
