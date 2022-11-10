@@ -6,10 +6,7 @@ public class TitleScene : MonoBehaviour
 {
     [SerializeField] private Sprite garraMacho;
     [SerializeField] private Sprite garraFemea;
-    [SerializeField] private Sprite garraFaceMacho;
-    [SerializeField] private Sprite garraFaceFemea;
     [SerializeField] private Image imgGarra;
-    [SerializeField] private Image imgFace;
     [Space(5)]
     [SerializeField] private Material materialMacho;
     [SerializeField] private Material materialFemea;
@@ -33,14 +30,12 @@ public class TitleScene : MonoBehaviour
         if(generoResult == 0)
         {
             imgGarra.sprite = garraMacho;
-            imgFace.sprite = garraFaceMacho;
             imgBackground.material = materialMacho;
             imgBtnPlay.sprite = btnVerde;
         }
         else
         {
             imgGarra.sprite = garraFemea;
-            imgFace.sprite = garraFaceFemea;
             imgBackground.material = materialFemea;
             imgBtnPlay.sprite = btnRosa;
         }
