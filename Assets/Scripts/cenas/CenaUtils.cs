@@ -4,50 +4,62 @@ using UnityEngine;
 
 public class CenaUtils 
 {
+    private static readonly string CENA_MAIN_GAME = "MainGameScene";
+
     public static void irParaCenaMap()
     {
-        SceneManager.LoadScene("MapScene");
+        irParaCena("MapScene");
+    }
+
+    public static void irParaCenaMap(float delay)
+    {
+        irParaCena("MapScene");
     }
 
     public static void irParaCenaPup()
     {
-        SceneManager.LoadScene("PupSceneV2");
+        irParaCena("PupSceneV2");
     }
 
     public static void irParaCenaMainGame()
     {
-        SceneManager.LoadScene("MainGameScene");
+        irParaCena(CENA_MAIN_GAME);
     }
 
     public static void irParaCenaMainGame(float delay)
     {
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineIrParaCenaMainGame(delay));
-    }
-
-    private static IEnumerator coroutineIrParaCenaMainGame(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        irParaCenaMainGame();
-        yield return null;
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineIrParaCenaComDelay(delay, CENA_MAIN_GAME));
     }
 
     public static void irParaCenaColetaveis()
     {
-        SceneManager.LoadScene("ColetaveisSceneV2");
+        irParaCena("ColetaveisSceneV2");
     }   
 
     public static void irParaCenaLoja()
     {
-        SceneManager.LoadScene("LojaScene");
+        irParaCena("LojaScene");
     }
 
     public static void irParaCenaConfig()
     {
-        SceneManager.LoadScene("ConfigScene");
+        irParaCena("ConfigScene");
     }
 
     public static void irParaCenaLevels()
     {
-        SceneManager.LoadScene("LevelsScene");
+        irParaCena("LevelsScene");
+    }
+    
+    private static void irParaCena(string nomeCena)
+    {
+        SceneManager.LoadScene(nomeCena);
+    }
+
+    private static IEnumerator coroutineIrParaCenaComDelay(float delay, string nomeCena)
+    {
+        yield return new WaitForSeconds(delay);
+        irParaCena(nomeCena);
+        yield return null;
     }
 }

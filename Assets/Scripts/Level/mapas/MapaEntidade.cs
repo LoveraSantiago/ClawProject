@@ -13,6 +13,7 @@ public class MapaEntidade
     public bool isLockado   { get { return mapaEstado.isLockado; } }
 
     public Sprite spriteMapa { get { return levelMapDto.SprMapa; } }
+    public LevelCorBackgroundDto levelCorBackground { get { return levelMapDto.LevelCorBackground; } }
 
     private LevelMapDto levelMapDto;
     private MapaEstado mapaEstado;

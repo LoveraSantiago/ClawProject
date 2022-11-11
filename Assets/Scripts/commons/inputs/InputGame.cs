@@ -2,6 +2,7 @@ using UnityEngine;
 
 public interface InputGame 
 {
+    void update();
     void update(Transform referenciaChao);
     bool aconteceuTapNaAreaSuperior();
     bool aconteceuTapNaAreaInferior();

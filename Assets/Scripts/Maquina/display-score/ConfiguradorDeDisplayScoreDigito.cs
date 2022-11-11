@@ -22,7 +22,7 @@ public class ConfiguradorDeDisplayScoreDigito
 
         Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
         string hexLed = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS];
-        Color corOriginalDoLed = Utils.getCorByHex(hexLed);
+        Color corOriginalDoLed = CorUtils.getCorByHex(hexLed);
 
         DisplayScoreDigito.configurar(materialEfeitoLed, materialDefaultLed, corOriginalDoLed);
 
@@ -37,7 +37,7 @@ public class ConfiguradorDeDisplayScoreDigito
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_PLACA_GRUPO];
         SpriteRenderer sprRendererPlacaGrupo = displayDeScoresDto.SprRendererPlacaGrupo;
-        sprRendererPlacaGrupo.color = Utils.getCorByHex(hexCor);
+        sprRendererPlacaGrupo.color = CorUtils.getCorByHex(hexCor);
     }
 
     private Material getMaterialLedToLevel(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)

@@ -36,6 +36,7 @@ public class MapaUi
         {
             updateMapa(evento);
             grupoBtnBaloes.posicionarBaloes(evento);
+            MaterialBackground.movimentarSaida(levelMapaUiDto.MatBackground, evento.mapaEntidade.levelCorBackground);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes));
             animacaMainMapa.mostrarSetasNavegacao(mapaEntidade.isLivre);
         }
@@ -72,10 +73,12 @@ public class MapaUi
 
     private IEnumerator alterarMaps(WrapperLevelMapDto evento)
     {
+        MaterialBackground.movimentarEntrada(levelMapaUiDto.MatBackground);
         yield return new WaitForSeconds(levelMapaUiDto.DelayInicioMapa);
         updateMapa(evento);
         grupoBtnBaloes.posicionarBaloes(evento);
         yield return new WaitForSeconds(levelMapaUiDto.DelayInicioBaloes);
-        yield return grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes);        
+        MaterialBackground.movimentarSaida(levelMapaUiDto.MatBackground, evento.mapaEntidade.levelCorBackground);
+        yield return grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes);
     }   
 }

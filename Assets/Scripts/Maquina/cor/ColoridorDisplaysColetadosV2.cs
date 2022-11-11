@@ -7,15 +7,15 @@ public class ColoridorDisplaysColetadosV2
         Dictionary<string, string> dicionarioDeCores)
     {
         string hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO];
-        displayDeSlot[0].colorirPlacaGrupo(Utils.getCorByHex(hexCor));
+        displayDeSlot[0].colorirPlacaGrupo(CorUtils.getCorByHex(hexCor));
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL1];
-        displayDeSlot[0].configuradoPeloLevel(Utils.getCorByHex(hexCor));
+        displayDeSlot[0].configuradoPeloLevel(CorUtils.getCorByHex(hexCor));
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL2];
-        displayDeSlot[1].configuradoPeloLevel(Utils.getCorByHex(hexCor));
+        displayDeSlot[1].configuradoPeloLevel(CorUtils.getCorByHex(hexCor));
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_INDIVIDUAL3];
-        displayDeSlot[2].configuradoPeloLevel(Utils.getCorByHex(hexCor));
+        displayDeSlot[2].configuradoPeloLevel(CorUtils.getCorByHex(hexCor));
     }
 }

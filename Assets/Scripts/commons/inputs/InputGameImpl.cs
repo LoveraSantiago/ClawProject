@@ -41,6 +41,20 @@ public class InputGameImpl : InputGame,
         }
     }
 
+    public void update()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            isTapAreaInferior = true;
+            isTapAreaSuperior = true;
+        }
+        else
+        {
+            isTapAreaInferior = false;
+            isTapAreaSuperior = false;
+        }
+    }
+
     public bool aconteceuTapNaAreaSuperior()
     {
         return isTapAreaSuperior;

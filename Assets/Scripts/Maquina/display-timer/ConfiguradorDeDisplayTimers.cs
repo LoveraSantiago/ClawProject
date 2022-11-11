@@ -17,13 +17,13 @@ public class ConfiguradorDeDisplayTimers
         Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
         string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL];
         SpriteRenderer placaTimer = displayDto.SprRendererPlacaGrupo;
-        placaTimer.color = Utils.getCorByHex(corDigitosHex);
+        placaTimer.color = CorUtils.getCorByHex(corDigitosHex);
 
         corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_DISPLAY_SEGMENTOS];
-        Color corDigito = Utils.getCorByHex(corDigitosHex);
+        Color corDigito = CorUtils.getCorByHex(corDigitosHex);
 
         corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO];
-        Color corPlaca = Utils.getCorByHex(corDigitosHex);
+        Color corPlaca = CorUtils.getCorByHex(corDigitosHex);
 
         bool isAlbedo0Level = levelEscolhido.isLevelAlbedo0Timers();
         Material materialDisplay = materiais7SegsDto.getMaterialFromAlbedo(isAlbedo0Level);

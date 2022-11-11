@@ -161,7 +161,7 @@ public class MaquinaAssemblerV5 : EditorWindow
                 foreach (KeyValuePair<string, string> entry in dicionarioDeCores)
                 {
                     ColorField colorField = root.Q<ColorField>(entry.Key);
-                    Color cor = Utils.getCorByHex(entry.Value);
+                    Color cor = CorUtils.getCorByHex(entry.Value);
                     colorField.value = cor;
                     maquina.colorir(entry.Key, cor);
                 }

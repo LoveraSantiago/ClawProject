@@ -24,7 +24,7 @@ public class DisplayScoreDigito
 
     public void configuradoPeloLevel(string corScore)
     {   
-        sprDisplay.color = Utils.getCorByHex(corScore);
+        sprDisplay.color = CorUtils.getCorByHex(corScore);
         ligarPosicoes(contexto.Segmentos.ARRAY_CHEIO, contexto.CorOriginalLed, contexto.DefaultMaterial);
 
         mostrarDigito(0, Color.red);

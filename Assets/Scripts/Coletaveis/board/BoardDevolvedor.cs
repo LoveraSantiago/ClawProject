@@ -22,7 +22,7 @@ public class BoardDevolvedor : Fornecedor<ColetaveisDescartadosDto>
         if ((devolverBoard && evento.isTodosColetados() && !combinacaoValida) || 
             evento.isRollback)
         {
-            Coletavel[] coletadosOriginais = Utils.copiarArray(coletados);
+            Coletavel[] coletadosOriginais = ArrayUtils.copiarArray(coletados);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(devolverParaBoard(evento.clears, boardDto, coletadosOriginais));            
         }
     }

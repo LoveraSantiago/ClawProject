@@ -1,42 +1,51 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class TitleScene : MonoBehaviour
 {
-    [SerializeField] private Sprite garraMacho;
-    [SerializeField] private Sprite garraFemea;
-    [SerializeField] private Image imgGarra;
-    [Space(5)]
-    [SerializeField] private Material materialMacho;
-    [SerializeField] private Material materialFemea;
-    [SerializeField] private Image imgBackground;
-    [Space(5)]
-    [SerializeField] private Sprite btnVerde;
-    [SerializeField] private Sprite btnRosa;
-    [SerializeField] private Image imgBtnPlay;
+    [SerializeField] private MainTitleDto mainTitleDto;   
 
-    
+    private Genero genero;
+    private InputGame inputGame;
+
+    private GarraTitle garraTitle;
+    private SomManagerTitle somManager;
 
     private void Start()
     {
-        int result = MathUtils.escolherDeZeroAteLimite(2);        
-        if(result == 0)
+        ContextoEstaticoUtils.configMainMono(this);        
+        genero = PlayerPrefsGarra.getGarraMachoOrFemea();
+        Debug.Log("Genero " + genero.ToString());
+        garraTitle = new GarraTitle(genero, mainTitleDto.Animator);
+        somManager = new SomManagerTitle(mainTitleDto.AudioTitleDto);
+
+        if(GeneroUtils.isGeneroMacho(genero))
         {
-            imgGarra.sprite = garraMacho;
-            imgBackground.material = materialMacho;
-            imgBtnPlay.sprite = btnVerde;
+            mainTitleDto.ImgBackground.material = mainTitleDto.MaterialMacho;
+            mainTitleDto.ImgBtnPlay.sprite = mainTitleDto.BtnVerde;
         }
         else
+        {   
+            mainTitleDto.ImgBackground.material = mainTitleDto.MaterialFemea;
+            mainTitleDto.ImgBtnPlay.sprite = mainTitleDto.BtnRosa;
+        }
+        inputGame = new InputGameImpl();
+        somManager.playSomGarra();
+        somManager.playSomBumpTexto();
+    }
+
+    private void Update()
+    {
+        inputGame.update();
+        if (inputGame.aconteceuTap())
         {
-            imgGarra.sprite = garraFemea;
-            imgBackground.material = materialFemea;
-            imgBtnPlay.sprite = btnRosa;
+            garraTitle.playAnimacao();            
         }
     }
 
     public void irParaMainScene()
     {
-        CenaUtils.irParaCenaMap();
+        somManager.playSomBotaoClicado();
+        CenaUtils.irParaCenaMap(1);
     }
 }

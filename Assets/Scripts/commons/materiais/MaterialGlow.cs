@@ -1,8 +1,8 @@
 using UnityEngine;
 
 public class MaterialGlow 
-{
-    private static readonly string propMaterial = "_corGlow";
+{    
+    private static readonly int ID_COR_GLOW = Shader.PropertyToID("_corGlow");
     public Material material { get; private set; }
 
     public MaterialGlow(Material material)
@@ -12,6 +12,6 @@ public class MaterialGlow
 
     public void setCorNoMaterial(Color cor)
     {
-        material.SetColor(propMaterial, cor);
+        material.SetColor(ID_COR_GLOW, cor);
     }    
 }

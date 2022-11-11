@@ -33,8 +33,8 @@ public class AparenciaBotaoPowerUp
 
     public void colorirBotaoFromLevelV2(string corBase, string corTampa)
     {   
-        botaoDtoV2.SprRendererBtnBase.color = Utils.getCorByHex(corBase);
-        botaoDtoV2.SprRendererBtnTampa.color = Utils.getCorByHex(corTampa);
+        botaoDtoV2.SprRendererBtnBase.color = CorUtils.getCorByHex(corBase);
+        botaoDtoV2.SprRendererBtnTampa.color = CorUtils.getCorByHex(corTampa);
     }
 
     public void pressionarBotao()

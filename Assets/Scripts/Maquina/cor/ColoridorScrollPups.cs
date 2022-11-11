@@ -6,13 +6,13 @@ public class ColoridorScrollPups
     public void colorir(ScrollPupsDto scrollPupsDto, Dictionary<string, string> dicionarioDeCores)
     {
         string hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA];
-        scrollPupsDto.SprRendererPlacaExterna.color = Utils.getCorByHex(hexCor);
+        scrollPupsDto.SprRendererPlacaExterna.color = CorUtils.getCorByHex(hexCor);
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_INTERNA];
-        scrollPupsDto.SprRendererPlacaInterna.color = Utils.getCorByHex(hexCor);
+        scrollPupsDto.SprRendererPlacaInterna.color = CorUtils.getCorByHex(hexCor);
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SCROLL_PUP_SETAS_LATERAIS];
-        Color cor = Utils.getCorByHex(hexCor);
+        Color cor = CorUtils.getCorByHex(hexCor);
         scrollPupsDto.SprRendererPlacaSetaDireita.color = cor;
         scrollPupsDto.SprRendererPlacaSetaEsquerda.color = cor;
 
@@ -20,7 +20,7 @@ public class ColoridorScrollPups
         scrollPupsDto.SprRendererPlacaSetaCima.color = cor;
 
         hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SCROLL_PUP_DIVISORIA];
-        cor = Utils.getCorByHex(hexCor);
+        cor = CorUtils.getCorByHex(hexCor);
         for(int contador = 0; contador < scrollPupsDto.ItensScrollPup.Length; contador++)
         {
             scrollPupsDto.ItensScrollPup[contador].SprRendererDivisoria.color = cor;

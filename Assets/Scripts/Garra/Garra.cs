@@ -31,8 +31,8 @@ public class Garra : ComponenteAnimacaoDaGarra,
 
     private void definindoGenero(GarraDto garraDto)
     {
-        int generoConfigurado = PlayerPrefsGarra.getGarraMachoOrFemea();        
-        if(generoConfigurado == 1)
+        Genero genero = PlayerPrefsGarra.getGarraMachoOrFemea();        
+        if(GeneroUtils.isGeneroMacho(genero))
         {
             GeneroGarraDto generoMacho = garraDto.GeneroMacho;
             setarGenero(garraDto.Corpo, generoMacho);
