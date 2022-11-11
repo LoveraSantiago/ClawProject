@@ -12,8 +12,10 @@ public class TitleScene : MonoBehaviour
     private SomManagerTitle somManager;
 
     private void Start()
-    {   
-        genero = GeneroUtils.getGeneroDoIndice(MathUtils.escolherDeZeroAteLimite(2));
+    {
+        int indiceGenero = MathUtils.escolherDeZeroAteLimite(2);
+        genero = GeneroUtils.getGeneroDoIndice(indiceGenero);
+        Debug.Log("Genero " + indiceGenero + " " + genero.ToString());
         garraTitle = new GarraTitle(genero, mainTitleDto.Animator);
         somManager = new SomManagerTitle(mainTitleDto.AudioTitleDto);
 
