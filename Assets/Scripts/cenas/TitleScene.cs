@@ -1,41 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class TitleScene : MonoBehaviour
 {
-    [SerializeField] private MainTitleDto mainTitleDto;
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    //TODO encapsular dentro de maintitledto
-    [Space(5)]
-    [SerializeField] private Material materialMacho;
-    [SerializeField] private Material materialFemea;
-    [SerializeField] private Image imgBackground;
-    [Space(5)]
-    [SerializeField] private Sprite btnVerde;
-    [SerializeField] private Sprite btnRosa;
-    [SerializeField] private Image imgBtnPlay;  
+    [SerializeField] private MainTitleDto mainTitleDto;   
 
     private Genero genero;
     private InputGame inputGame;
@@ -47,15 +15,14 @@ public class TitleScene : MonoBehaviour
         garraTitle = new GarraTitle(genero, mainTitleDto.Animator);
 
         if(GeneroUtils.isGeneroMacho(genero))
-        {            
-            imgBackground.material = materialMacho;
-            imgBtnPlay.sprite = btnVerde;
+        {
+            mainTitleDto.ImgBackground.material = mainTitleDto.MaterialMacho;
+            mainTitleDto.ImgBtnPlay.sprite = mainTitleDto.BtnVerde;
         }
         else
-        {        
-            
-            imgBackground.material = materialFemea;
-            imgBtnPlay.sprite = btnRosa;
+        {   
+            mainTitleDto.ImgBackground.material = mainTitleDto.MaterialFemea;
+            mainTitleDto.ImgBtnPlay.sprite = mainTitleDto.BtnRosa;
         }
         inputGame = new InputGameImpl();        
     }

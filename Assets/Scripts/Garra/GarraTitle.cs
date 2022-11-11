@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class GarraTitle 
 {
-    private static readonly int INTRO_MACHO = Animator.StringToHash("intro-macho");
-    private static readonly int INTRO_FEMEA = Animator.StringToHash("intro-femea");
+    private static readonly int INTRO_MACHO     = Animator.StringToHash("intro-macho");
+    private static readonly int INTRO_FEMEA     = Animator.StringToHash("intro-femea");
     private static readonly int ANIMACAO1_MACHO = Animator.StringToHash("macho-piscando");
     private static readonly int ANIMACAO1_FEMEA = Animator.StringToHash("femea-coracao");
         
