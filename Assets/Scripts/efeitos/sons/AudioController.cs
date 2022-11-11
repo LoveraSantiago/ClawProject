@@ -14,6 +14,7 @@ public class AudioController : MonoBehaviour {
     private AudioSource audioSourceGarra;
 
     void Start() {
+        Debug.Log("audiocontroller iniciado");
         current = this;
         audioSourceGeneral = GetComponent<AudioSource>();
         audioSourceGarra   = gameObject.AddComponent<AudioSource>();
