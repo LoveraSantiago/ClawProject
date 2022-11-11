@@ -15,7 +15,7 @@ public class PlayerPrefsGarra
         int resultado = getEscolhaGarra();
         if (resultado == 0)
         {
-            resultado = MathUtils.escolherDeZeroAteLimite(1) + 1;
+            resultado = MathUtils.escolherDeZeroAteLimite(2);
         }
         return GeneroUtils.getGeneroDoIndice(resultado);
     }

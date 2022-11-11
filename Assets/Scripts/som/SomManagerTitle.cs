@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SomManagerTitle
@@ -19,5 +18,23 @@ public class SomManagerTitle
     public void playSomBotaoClicado()
     {        
         audioSecundario.PlayOneShot(audioTitleDto.SomCliqueBotao);
+    }
+
+    public void playSomBumpTexto()
+    {
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePlayBumpSongs());
+    }
+
+    private IEnumerator coroutinePlayBumpSongs()
+    {
+        yield return new WaitForSeconds(audioTitleDto.DelayBumpTexto1);
+        audioSecundario.PlayOneShot(audioTitleDto.SomCliqueBotao);
+        yield return new WaitForSeconds(audioTitleDto.DelayBumpTexto2);
+        audioSecundario.PlayOneShot(audioTitleDto.SomCliqueBotao);
+        yield return new WaitForSeconds(audioTitleDto.DelayBumpTexto3);
+        audioSecundario.PlayOneShot(audioTitleDto.SomCliqueBotao);
+        yield return new WaitForSeconds(audioTitleDto.DelayBumpEstrela);
+        audioSecundario.PlayOneShot(audioTitleDto.SomBumpEstrelas);
+        yield return null;
     }
 }

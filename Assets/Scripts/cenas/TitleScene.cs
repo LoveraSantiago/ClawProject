@@ -13,9 +13,9 @@ public class TitleScene : MonoBehaviour
 
     private void Start()
     {
-        int indiceGenero = MathUtils.escolherDeZeroAteLimite(2);
-        genero = GeneroUtils.getGeneroDoIndice(indiceGenero);
-        Debug.Log("Genero " + indiceGenero + " " + genero.ToString());
+        ContextoEstaticoUtils.configMainMono(this);        
+        genero = PlayerPrefsGarra.getGarraMachoOrFemea();
+        Debug.Log("Genero " + genero.ToString());
         garraTitle = new GarraTitle(genero, mainTitleDto.Animator);
         somManager = new SomManagerTitle(mainTitleDto.AudioTitleDto);
 
@@ -29,7 +29,8 @@ public class TitleScene : MonoBehaviour
             mainTitleDto.ImgBackground.material = mainTitleDto.MaterialFemea;
             mainTitleDto.ImgBtnPlay.sprite = mainTitleDto.BtnRosa;
         }
-        inputGame = new InputGameImpl();        
+        inputGame = new InputGameImpl();
+        somManager.playSomBumpTexto();
     }
 
     private void Update()
