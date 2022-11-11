@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class MainTitleDto 
 {
-    [SerializeField] private GarraTitleDto garraTitleDto;
+    [SerializeField] private Animator animator;
 
-    public GarraTitleDto GarraTitleDto { get { return garraTitleDto; } }
+    public Animator Animator { get { return animator; } }
 }

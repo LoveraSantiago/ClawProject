@@ -6,10 +6,6 @@ public class TitleScene : MonoBehaviour
 {
     [SerializeField] private MainTitleDto mainTitleDto;
     [Space(5)]
-    [SerializeField] private Sprite garraMacho;
-    [SerializeField] private Sprite garraFemea;
-    [SerializeField] private Image imgGarra;
-    [Space(5)]
     [SerializeField] private Material materialMacho;
     [SerializeField] private Material materialFemea;
     [SerializeField] private Image imgBackground;
@@ -23,28 +19,29 @@ public class TitleScene : MonoBehaviour
     private static readonly int ANIMACAO1_MACHO = Animator.StringToHash("macho-piscando");
     private static readonly int ANIMACAO1_FEMEA = Animator.StringToHash("femea-coracao");
 
+    private GarraTitle garraTitle;
     private Genero genero;
     private InputGame inputGame;
 
-    private void Start()
-    {
-        GarraTitle garraTitle = new GarraTitle();
 
-        genero = GeneroUtils.getGeneroDoIndice(MathUtils.escolherDeZeroAteLimite(2));        
+    private void Start()
+    {   
+        genero = GeneroUtils.getGeneroDoIndice(MathUtils.escolherDeZeroAteLimite(2));
+        garraTitle = new GarraTitle(genero, mainTitleDto.Animator);
+
         if(GeneroUtils.isGeneroMacho(genero))
-        {
-            imgGarra.sprite = garraMacho;
+        {            
             imgBackground.material = materialMacho;
             imgBtnPlay.sprite = btnVerde;
         }
         else
-        {
-            imgGarra.sprite = garraFemea;
+        {        
+            
             imgBackground.material = materialFemea;
             imgBtnPlay.sprite = btnRosa;
         }
 
-        inputGame = new InputGameImpl();
+        inputGame = new InputGameImpl();        
     }
 
     private void Update()
@@ -52,14 +49,7 @@ public class TitleScene : MonoBehaviour
         inputGame.update();
         if (inputGame.aconteceuTap())
         {
-            if(GeneroUtils.isGeneroMacho(genero))
-            {
-                animator.Play(ANIMACAO1_MACHO);
-            }
-            else
-            {
-                animator.Play(ANIMACAO1_FEMEA);
-            }
+            garraTitle.playAnimacao();            
         }
     }
 

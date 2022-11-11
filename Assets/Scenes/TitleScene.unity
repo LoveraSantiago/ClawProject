@@ -1129,13 +1129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTitleDto:
-    garraTitleDto:
-      sprGarraMacho: {fileID: 21300000, guid: 090c34a8a06ec0f44b0115231f308fc2, type: 3}
-      sprGarraFemea: {fileID: 21300000, guid: 5946a0137bd80eb4bbfa0862f0284f2a, type: 3}
-      imgGarra: {fileID: 1438709128}
-  garraMacho: {fileID: 21300000, guid: 090c34a8a06ec0f44b0115231f308fc2, type: 3}
-  garraFemea: {fileID: 21300000, guid: 5946a0137bd80eb4bbfa0862f0284f2a, type: 3}
-  imgGarra: {fileID: 1438709128}
+    animator: {fileID: 676319755}
   materialMacho: {fileID: 2100000, guid: 93da1243e80407341a5621c36bc5b382, type: 2}
   materialFemea: {fileID: 2100000, guid: e8c416f1cbd30654a831a13d06cfcb6f, type: 2}
   imgBackground: {fileID: 953145805}
