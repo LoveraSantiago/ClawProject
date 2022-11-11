@@ -5,6 +5,29 @@ using UnityEngine.UI;
 public class TitleScene : MonoBehaviour
 {
     [SerializeField] private MainTitleDto mainTitleDto;
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
+    //TODO encapsular dentro de maintitledto
     [Space(5)]
     [SerializeField] private Material materialMacho;
     [SerializeField] private Material materialFemea;
