@@ -7,12 +7,15 @@ public class TitleScene : MonoBehaviour
 
     private Genero genero;
     private InputGame inputGame;
+
     private GarraTitle garraTitle;
+    private SomManagerTitle somManager;
 
     private void Start()
     {   
         genero = GeneroUtils.getGeneroDoIndice(MathUtils.escolherDeZeroAteLimite(2));
         garraTitle = new GarraTitle(genero, mainTitleDto.Animator);
+        somManager = new SomManagerTitle(mainTitleDto.AudioTitleDto);
 
         if(GeneroUtils.isGeneroMacho(genero))
         {
@@ -38,6 +41,7 @@ public class TitleScene : MonoBehaviour
 
     public void irParaMainScene()
     {
-        CenaUtils.irParaCenaMap();
+        somManager.playSomBotaoClicado();
+        CenaUtils.irParaCenaMap(1);
     }
 }
