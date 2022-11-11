@@ -12,17 +12,11 @@ public class TitleScene : MonoBehaviour
     [Space(5)]
     [SerializeField] private Sprite btnVerde;
     [SerializeField] private Sprite btnRosa;
-    [SerializeField] private Image imgBtnPlay;
-    [Space(5)]
-    [SerializeField] private Animator animator;
+    [SerializeField] private Image imgBtnPlay;  
 
-    private static readonly int ANIMACAO1_MACHO = Animator.StringToHash("macho-piscando");
-    private static readonly int ANIMACAO1_FEMEA = Animator.StringToHash("femea-coracao");
-
-    private GarraTitle garraTitle;
     private Genero genero;
     private InputGame inputGame;
-
+    private GarraTitle garraTitle;
 
     private void Start()
     {   
@@ -40,7 +34,6 @@ public class TitleScene : MonoBehaviour
             imgBackground.material = materialFemea;
             imgBtnPlay.sprite = btnRosa;
         }
-
         inputGame = new InputGameImpl();        
     }
 
