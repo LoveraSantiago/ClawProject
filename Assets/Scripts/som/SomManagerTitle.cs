@@ -20,9 +20,23 @@ public class SomManagerTitle
         audioSecundario.PlayOneShot(audioTitleDto.SomCliqueBotao);
     }
 
+    public void playSomGarra()
+    {        
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePlaySomGarra());
+    }
+
     public void playSomBumpTexto()
     {
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePlayBumpSongs());
+    }
+
+    private IEnumerator coroutinePlaySomGarra()
+    {
+        yield return new WaitForSeconds(audioTitleDto.DelayInicioSomGarra);
+        audioSecundario.clip = audioTitleDto.SomGarra;
+        audioSecundario.Play();
+        yield return new WaitForSeconds(audioTitleDto.DelayStopSomGarra);
+        audioSecundario.Stop();
     }
 
     private IEnumerator coroutinePlayBumpSongs()

@@ -30,6 +30,7 @@ public class TitleScene : MonoBehaviour
             mainTitleDto.ImgBtnPlay.sprite = mainTitleDto.BtnRosa;
         }
         inputGame = new InputGameImpl();
+        somManager.playSomGarra();
         somManager.playSomBumpTexto();
     }
 
