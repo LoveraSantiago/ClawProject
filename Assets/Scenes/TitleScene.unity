@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 104041525}
   - component: {fileID: 104041526}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: main-camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 110871671}
   - component: {fileID: 110871670}
   m_Layer: 5
-  m_Name: Match
+  m_Name: texto-match
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -670,7 +670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 282653328}
   m_Layer: 5
-  m_Name: Match
+  m_Name: grupo-textos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1096,7 +1096,7 @@ GameObject:
   - component: {fileID: 676319756}
   - component: {fileID: 676319755}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1335,7 +1335,7 @@ GameObject:
   - component: {fileID: 689170620}
   - component: {fileID: 689170619}
   m_Layer: 5
-  m_Name: 3
+  m_Name: texto-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1548,7 +1548,7 @@ GameObject:
   - component: {fileID: 784550786}
   - component: {fileID: 784550785}
   m_Layer: 5
-  m_Name: Claw
+  m_Name: texto-claw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1683,7 +1683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 906852579}
   m_Layer: 5
-  m_Name: Title
+  m_Name: grupo-title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2534,7 +2534,7 @@ GameObject:
   - component: {fileID: 1438709129}
   - component: {fileID: 1438709128}
   m_Layer: 5
-  m_Name: claw2
+  m_Name: img-claw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2716,7 +2716,7 @@ GameObject:
   - component: {fileID: 1561186520}
   - component: {fileID: 1561186519}
   m_Layer: 5
-  m_Name: PlayButton
+  m_Name: btn-play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
