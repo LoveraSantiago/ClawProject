@@ -42,6 +42,8 @@ public class SomManagerTitle : SomLoading
 
     public void playSomAbrirModal()
     {
+        Debug.Log("Som abrir modal chamado");
+        audioSecundario.clip = null;
         audioPlayOneShot(audioSecundario, audioTitleDto.SomBatidaAbrirModal);
     }
 
@@ -53,7 +55,7 @@ public class SomManagerTitle : SomLoading
     }
 
     private void audioPlayOneShot(AudioSource audioSource, AudioClipDto audioClipDto)
-    {
+    {        
         audioSource.volume = audioClipDto.Volume;
         audioSource.PlayOneShot(audioClipDto.AudioClip);
     }

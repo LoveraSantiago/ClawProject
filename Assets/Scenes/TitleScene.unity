@@ -524,7 +524,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 130
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1600,7 +1600,7 @@ MonoBehaviour:
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
     loadingDto:
       delayAbrirModal: 2
-      delayFecharModal: 0.3
+      delayFecharModal: 1
       animator: {fileID: 40799390}
       goCanvas: {fileID: 40799382}
       lblLoadingTexto: {fileID: 1502043592}

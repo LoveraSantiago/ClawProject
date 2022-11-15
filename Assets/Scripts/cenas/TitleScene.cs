@@ -15,7 +15,7 @@ public class TitleScene : MonoBehaviour
     {
         ContextoEstaticoUtils.configMainMono(this);        
         genero = PlayerPrefsGarra.getGarraMachoOrFemea();
-        Debug.Log("Genero " + genero.ToString());
+        //Debug.Log("Genero " + genero.ToString());
         garraTitle = new GarraTitle(genero, mainTitleDto.Animator);
         somManager = new SomManagerTitle(mainTitleDto.AudioTitleDto);
 
