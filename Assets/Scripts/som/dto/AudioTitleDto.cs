@@ -14,10 +14,10 @@ public class AudioTitleDto
     [Space(3)]
     [SerializeField] private AudioSource mainAudioSource;    
     [Space(3)]
-    [SerializeField] private AudioClip somBackground;
-    [SerializeField] private AudioClip somCliqueBotao;
-    [SerializeField] private AudioClip somBumpEstrelas;
-    [SerializeField] private AudioClip somGarra;
+    [SerializeField] private AudioClipDto somBackground;
+    [SerializeField] private AudioClipDto somCliqueBotao;
+    [SerializeField] private AudioClipDto somBumpEstrelas;
+    [SerializeField] private AudioClipDto somGarra;
 
     public float DelayInicioSomGarra { get { return delayInicioSomGarra; } }
     public float DelayStopSomGarra { get { return delayStopSomGarra; } }
@@ -30,9 +30,9 @@ public class AudioTitleDto
     public AudioSource MainAudioSource { get { return mainAudioSource; } }
     public GameObject GoAudioSource { get { return mainAudioSource.gameObject; } }
 
-    public AudioClip SomBackground { get { return somBackground; } }
-    public AudioClip SomCliqueBotao { get { return somCliqueBotao; } }
-    public AudioClip SomBumpEstrelas { get { return somBumpEstrelas; } }
-    public AudioClip SomGarra { get { return somGarra; } }
+    public AudioClipDto SomBackground { get { return somBackground; } }
+    public AudioClipDto SomCliqueBotao { get { return somCliqueBotao; } }
+    public AudioClipDto SomBumpEstrelas { get { return somBumpEstrelas; } }
+    public AudioClipDto SomGarra { get { return somGarra; } }
 
 }

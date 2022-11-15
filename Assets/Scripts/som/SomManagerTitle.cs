@@ -11,13 +11,18 @@ public class SomManagerTitle
         this.audioTitleDto = audioTitleDto;
         audioSecundario = audioTitleDto.GoAudioSource.AddComponent<AudioSource>();
 
-        audioTitleDto.MainAudioSource.clip = audioTitleDto.SomBackground;
+        audioPlay(audioTitleDto.MainAudioSource, audioTitleDto.SomBackground);        
         audioTitleDto.MainAudioSource.Play();
     }
 
+    public void stopSomPrincipal()
+    {
+        audioTitleDto.MainAudioSource.Stop();
+    }
+
     public void playSomBotaoClicado()
-    {        
-        audioSecundario.PlayOneShot(audioTitleDto.SomCliqueBotao);
+    {
+        audioPlayOneShot(audioSecundario, audioTitleDto.SomCliqueBotao);        
     }
 
     public void playSomGarra()
@@ -30,11 +35,25 @@ public class SomManagerTitle
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePlayBumpSongs());
     }
 
+    private void audioPlay(AudioSource audioSource, AudioClipDto audioClipDto)
+    {
+        audioSource.volume = audioClipDto.Volume;
+        audioSource.clip = audioClipDto.AudioClip;
+        audioSource.Play();
+    }
+
+    private void audioPlayOneShot(AudioSource audioSource, AudioClipDto audioClipDto)
+    {
+        audioSource.volume = audioClipDto.Volume;
+        audioSource.PlayOneShot(audioClipDto.AudioClip);
+    }
+
     private IEnumerator coroutinePlaySomGarra()
     {
         yield return new WaitForSeconds(audioTitleDto.DelayInicioSomGarra);
-        audioSecundario.clip = audioTitleDto.SomGarra;
-        audioSecundario.Play();
+
+        AudioClipDto audioSomGarra = audioTitleDto.SomGarra;
+        audioPlay(audioSecundario, audioSomGarra);        
         yield return new WaitForSeconds(audioTitleDto.DelayStopSomGarra);
         audioSecundario.Stop();
     }
@@ -42,13 +61,13 @@ public class SomManagerTitle
     private IEnumerator coroutinePlayBumpSongs()
     {
         yield return new WaitForSeconds(audioTitleDto.DelayBumpTexto1);
-        audioSecundario.PlayOneShot(audioTitleDto.SomCliqueBotao);
+        audioPlayOneShot(audioSecundario, audioTitleDto.SomCliqueBotao);
         yield return new WaitForSeconds(audioTitleDto.DelayBumpTexto2);
-        audioSecundario.PlayOneShot(audioTitleDto.SomCliqueBotao);
+        audioPlayOneShot(audioSecundario, audioTitleDto.SomCliqueBotao);
         yield return new WaitForSeconds(audioTitleDto.DelayBumpTexto3);
-        audioSecundario.PlayOneShot(audioTitleDto.SomCliqueBotao);
+        audioPlayOneShot(audioSecundario, audioTitleDto.SomCliqueBotao);
         yield return new WaitForSeconds(audioTitleDto.DelayBumpEstrela);
-        audioSecundario.PlayOneShot(audioTitleDto.SomBumpEstrelas);
+        audioPlayOneShot(audioSecundario, audioTitleDto.SomBumpEstrelas);
         yield return null;
     }
 }
