@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SomManagerTitle
+public class SomManagerTitle : SomLoading
 {
     private AudioTitleDto audioTitleDto;
     private AudioSource audioSecundario;
@@ -25,14 +25,24 @@ public class SomManagerTitle
         audioPlayOneShot(audioSecundario, audioTitleDto.SomCliqueBotao);        
     }
 
-    public void playSomGarra()
+    public void playSomGarraAsSecundario()
     {        
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePlaySomGarra());
+    }
+
+    public void playGarraGirando()
+    {
+        audioPlay(audioTitleDto.MainAudioSource, audioTitleDto.SomGarra);
     }
 
     public void playSomBumpTexto()
     {
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePlayBumpSongs());
+    }
+
+    public void playSomAbrirModal()
+    {
+        audioPlayOneShot(audioSecundario, audioTitleDto.SomBatidaAbrirModal);
     }
 
     private void audioPlay(AudioSource audioSource, AudioClipDto audioClipDto)

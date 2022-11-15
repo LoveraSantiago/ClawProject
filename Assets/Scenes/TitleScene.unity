@@ -1577,7 +1577,7 @@ MonoBehaviour:
     imgBtnPlay: {fileID: 1561186520}
     audioTitleDto:
       delayInicioSomGarra: 0.027
-      delayStopSomGarra: 0.7
+      delayStopSomGarra: 0.68
       delayBumpTexto1: 1.45
       delayBumpTexto2: 0.15
       delayBumpTexto3: 0.15
@@ -1593,10 +1593,13 @@ MonoBehaviour:
         volume: 1
         audioClip: {fileID: 8300000, guid: fb39762ebe68af940bf391ed6d49f7fc, type: 3}
       somGarra:
-        volume: 0.05
+        volume: 0.04
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
+      somBatidaAbrirModal:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
     loadingDto:
-      delayAbrirModal: 1
+      delayAbrirModal: 2
       delayFecharModal: 0.3
       animator: {fileID: 40799390}
       goCanvas: {fileID: 40799382}

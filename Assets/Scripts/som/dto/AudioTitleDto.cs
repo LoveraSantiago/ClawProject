@@ -18,6 +18,7 @@ public class AudioTitleDto
     [SerializeField] private AudioClipDto somCliqueBotao;
     [SerializeField] private AudioClipDto somBumpEstrelas;
     [SerializeField] private AudioClipDto somGarra;
+    [SerializeField] private AudioClipDto somBatidaAbrirModal;
 
     public float DelayInicioSomGarra { get { return delayInicioSomGarra; } }
     public float DelayStopSomGarra { get { return delayStopSomGarra; } }
@@ -34,5 +35,6 @@ public class AudioTitleDto
     public AudioClipDto SomCliqueBotao { get { return somCliqueBotao; } }
     public AudioClipDto SomBumpEstrelas { get { return somBumpEstrelas; } }
     public AudioClipDto SomGarra { get { return somGarra; } }
+    public AudioClipDto SomBatidaAbrirModal { get { return somBatidaAbrirModal; } }
 
 }

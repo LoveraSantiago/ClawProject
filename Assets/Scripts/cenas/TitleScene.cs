@@ -30,7 +30,7 @@ public class TitleScene : MonoBehaviour
             mainTitleDto.ImgBtnPlay.sprite = mainTitleDto.BtnRosa;
         }
         inputGame = new InputGameImpl();
-        somManager.playSomGarra();
+        somManager.playSomGarraAsSecundario();
         somManager.playSomBumpTexto();
     }
 
@@ -46,9 +46,9 @@ public class TitleScene : MonoBehaviour
     public void irParaMainScene()
     {
         somManager.playSomBotaoClicado();
-        somManager.stopSomPrincipal();
+        somManager.stopSomPrincipal();        
         Loading loading = new Loading(mainTitleDto.LoadingDto);
-        loading.abrirModal();
+        loading.abrirModal(somManager);
         //CenaUtils.irParaCenaMap(1);
     }
 }

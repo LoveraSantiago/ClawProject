@@ -14,15 +14,17 @@ public class Loading
         this.loadingDto = loadingDto;
     }
 
-    public void abrirModal()
+    public void abrirModal(SomLoading somLoading)
     {
         loadingDto.GoCanvas.gameObject.SetActive(true);
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineIrParaCenaComDelay());
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineIrParaCenaComDelay(somLoading));
     }
 
-    private IEnumerator coroutineIrParaCenaComDelay()
+    private IEnumerator coroutineIrParaCenaComDelay(SomLoading somLoading)
     {
+        somLoading.playGarraGirando();
         loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 0);
+        somLoading.playSomAbrirModal();
         yield return new WaitForSeconds(loadingDto.DelayAbrirModal);
 
         AsyncOperation operation = SceneManager.LoadSceneAsync("MapScene");
@@ -36,6 +38,7 @@ public class Loading
         }
         loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 100);
         loadingDto.Animator.Play(FECHAR_MODAL);
+        somLoading.playSomAbrirModal();
         yield return new WaitForSeconds(loadingDto.DelayFecharModal);
         operation.allowSceneActivation = true;
         yield return null;
