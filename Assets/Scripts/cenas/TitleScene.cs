@@ -46,6 +46,8 @@ public class TitleScene : MonoBehaviour
     public void irParaMainScene()
     {
         somManager.playSomBotaoClicado();
-        CenaUtils.irParaCenaMap(1);
+        Loading loading = new Loading(mainTitleDto.LoadingDto);
+        loading.abrirModal();
+        //CenaUtils.irParaCenaMap(1);
     }
 }
