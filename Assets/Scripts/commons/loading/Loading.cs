@@ -6,6 +6,7 @@ public class Loading
 {
     private static readonly string LABEL_LOADING = "LOADING... {0}%";
     private static readonly int FECHAR_MODAL = Animator.StringToHash("fechar-loading");
+    private static readonly int ABRIR_MODAL = Animator.StringToHash("abrir-loading");
 
     private LoadingDto loadingDto;
     private SomLoading somLoading;
@@ -26,6 +27,7 @@ public class Loading
 
     public void fecharModal()
     {
+        loadingDto.GoCanvas.gameObject.SetActive(true);
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineFecharModal());
     }
 

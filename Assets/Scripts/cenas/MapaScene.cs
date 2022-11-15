@@ -36,7 +36,9 @@ public class MapaScene : MonoBehaviour,
             .adicionarConsumidor(modalManager);
 
         PrefabLoading prefabLoading = mainMapaDto.PrefabLoading.GetComponent<PrefabLoading>();
-        Loading loading = prefabLoading.getLoading(null);
+        SomManagerMap somManager = new SomManagerMap(mainMapaDto.AudioMapDto);
+        Loading loading = prefabLoading.getLoading(somManager);
+        loading.fecharModal();
         navegacaoMapas.inicializar();
     }
 
