@@ -20,8 +20,6 @@ public class Loading
     public void abrirModal()
     {
         loadingDto.GoCanvas.gameObject.SetActive(true);
-        somLoading.playSomAbrirModal();
-
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineAbrirModal());
     }
 
@@ -33,9 +31,12 @@ public class Loading
 
     private IEnumerator coroutineAbrirModal()
     {
-        yield return null;
-        somLoading.playGarraGirando();
+        somLoading.playSomAbrirModal();
+        loadingDto.Animator.Play(ABRIR_MODAL);
         loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 0);
+        yield return null;
+
+        somLoading.playGarraGirando();
         yield return new WaitForSeconds(loadingDto.DelayAbrirModal);        
 
         AsyncOperation operation = SceneManager.LoadSceneAsync("MapScene");
