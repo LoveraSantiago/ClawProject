@@ -8,21 +8,28 @@ public class Loading
     private static readonly int FECHAR_MODAL = Animator.StringToHash("fechar-loading");
 
     private LoadingDto loadingDto;
+    private SomLoading somLoading;
 
-    public Loading(LoadingDto loadingDto)
+    public Loading(LoadingDto loadingDto, SomLoading somLoading)
     {
         this.loadingDto = loadingDto;
+        this.somLoading = somLoading;
     }
 
-    public void abrirModal(SomLoading somLoading)
+    public void abrirModal()
     {
         loadingDto.GoCanvas.gameObject.SetActive(true);
         somLoading.playSomAbrirModal();
 
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineIrParaCenaComDelay(somLoading));
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineAbrirModal());
     }
 
-    private IEnumerator coroutineIrParaCenaComDelay(SomLoading somLoading)
+    public void fecharModal()
+    {
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineFecharModal());
+    }
+
+    private IEnumerator coroutineAbrirModal()
     {
         yield return null;
         somLoading.playGarraGirando();
@@ -39,10 +46,22 @@ public class Loading
             yield return null;
         }
         loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 100);
-        loadingDto.Animator.Play(FECHAR_MODAL);
-        somLoading.playSomAbrirModal();
+        //loadingDto.Animator.Play(FECHAR_MODAL);
+        //somLoading.playSomAbrirModal();
         yield return new WaitForSeconds(loadingDto.DelayFecharModal);
         operation.allowSceneActivation = true;
         yield return null;
+    }
+
+    private IEnumerator coroutineFecharModal()
+    {
+        yield return null;
+        somLoading.playGarraGirando();        
+        
+        loadingDto.Animator.Play(FECHAR_MODAL);
+        somLoading.playSomAbrirModal();
+        yield return new WaitForSeconds(loadingDto.DelayFecharModal);
+
+        loadingDto.GoCanvas.gameObject.SetActive(false);
     }
 }

@@ -49,8 +49,8 @@ public class TitleScene : MonoBehaviour
         somManager.stopSomPrincipal();
 
         PrefabLoading prefabLoading = mainTitleDto.GoLoading.GetComponent<PrefabLoading>();
-        Loading loading = prefabLoading.getLoading();
-        loading.abrirModal(somManager);
+        Loading loading = prefabLoading.getLoading(somManager);
+        loading.abrirModal();
         //CenaUtils.irParaCenaMap(1);
     }
 }
