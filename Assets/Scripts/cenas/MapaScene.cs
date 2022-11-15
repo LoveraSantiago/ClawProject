@@ -35,6 +35,8 @@ public class MapaScene : MonoBehaviour,
             .configurarProdutor(mapaUi.grupoBtnBaloes)
             .adicionarConsumidor(modalManager);
 
+        PrefabLoading prefabLoading = mainMapaDto.PrefabLoading.GetComponent<PrefabLoading>();
+        Loading loading = prefabLoading.getLoading(null);
         navegacaoMapas.inicializar();
     }
 
