@@ -17,7 +17,7 @@ public class MainTitleDto
     [Space(5)]
     [SerializeField] private AudioTitleDto audioTitleDto;
     [Space(5)]
-    [SerializeField] private LoadingDto loadingDto;
+    [SerializeField] private GameObject goLoading;
 
     public Animator Animator { get { return animator; } }
     public Material MaterialMacho { get { return materialMacho; } }
@@ -29,5 +29,5 @@ public class MainTitleDto
     public Image ImgBtnPlay { get { return imgBtnPlay; } }
 
     public AudioTitleDto AudioTitleDto { get { return audioTitleDto; } }
-    public LoadingDto LoadingDto { get { return loadingDto; } }
+    public GameObject GoLoading { get { return goLoading; } }
 }

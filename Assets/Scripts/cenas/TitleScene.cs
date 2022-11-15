@@ -46,8 +46,10 @@ public class TitleScene : MonoBehaviour
     public void irParaMainScene()
     {
         somManager.playSomBotaoClicado();
-        somManager.stopSomPrincipal();        
-        Loading loading = new Loading(mainTitleDto.LoadingDto);
+        somManager.stopSomPrincipal();
+
+        PrefabLoading prefabLoading = mainTitleDto.GoLoading.GetComponent<PrefabLoading>();
+        Loading loading = prefabLoading.getLoading();
         loading.abrirModal(somManager);
         //CenaUtils.irParaCenaMap(1);
     }
