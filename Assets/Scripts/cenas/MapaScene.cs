@@ -20,7 +20,7 @@ public class MapaScene : MonoBehaviour,
         SomManagerMap somManager = new SomManagerMap(mainMapaDto.AudioMapDto);
         Loading loading = prefabLoading.getLoading(somManager);
 
-        allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto);        
+        allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto, loading);        
         ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto);
         new BotoesCenasMapa(mainMapaDto.BotoesCenasDto, loading);
 
