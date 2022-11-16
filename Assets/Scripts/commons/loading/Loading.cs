@@ -47,6 +47,11 @@ public class Loading
         abrirModal("ConfigScene");
     }
 
+    public void irParaGameCena()
+    {
+        abrirModal("MainGameScene");
+    }
+
     public void fecharModal()
     {
         loadingDto.GoCanvas.gameObject.SetActive(true);

@@ -62,7 +62,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _ligado: 1
+    - _ligado: 0
     - valor_clareamento: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

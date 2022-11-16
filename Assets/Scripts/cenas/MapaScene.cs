@@ -21,7 +21,7 @@ public class MapaScene : MonoBehaviour,
         Loading loading = prefabLoading.getLoading(somManager);
 
         allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto, loading);        
-        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto);
+        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto, loading);
         new BotoesCenasMapa(mainMapaDto.BotoesCenasDto, loading);
 
         mapaUi = new MapaUi(mainMapaDto.LevelMapaUiDto);
