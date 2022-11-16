@@ -17,10 +17,34 @@ public class Loading
         this.somLoading = somLoading;
     }
 
-    public void abrirModal()
+    public void irParaMapScene()
     {
-        loadingDto.GoCanvas.gameObject.SetActive(true);
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineAbrirModal());
+        abrirModal("MapScene");
+    }
+
+    public void irParaPowerUpCena()
+    {
+        abrirModal("PupSceneV2");
+    }
+
+    public void irParaLojaCena()
+    {
+        abrirModal("LojaScene");
+    }
+
+    public void irParaLevelCena()
+    {
+        abrirModal("LevelsScene");
+    }
+
+    public void irParaColetaveisCena()
+    {
+        abrirModal("ColetaveisSceneV2");
+    }
+
+    public void irParaConfiguracaoCena()
+    {
+        abrirModal("ConfigScene");
     }
 
     public void fecharModal()
@@ -29,7 +53,13 @@ public class Loading
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineFecharModal());
     }
 
-    private IEnumerator coroutineAbrirModal()
+    private void abrirModal(string nomeCena)
+    {
+        loadingDto.GoCanvas.gameObject.SetActive(true);
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineAbrirModal(nomeCena));
+    }
+
+    private IEnumerator coroutineAbrirModal(string nomeCena)
     {
         somLoading.playSomAbrirModal();
         loadingDto.Animator.Play(ABRIR_MODAL);
@@ -39,7 +69,7 @@ public class Loading
         somLoading.playGarraGirando();
         yield return new WaitForSeconds(loadingDto.DelayAbrirModal);        
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync("MapScene");
+        AsyncOperation operation = SceneManager.LoadSceneAsync(nomeCena);
         operation.allowSceneActivation = false;
         while (operation.progress < 0.89)
         {
