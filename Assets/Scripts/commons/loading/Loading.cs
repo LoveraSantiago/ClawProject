@@ -78,7 +78,7 @@ public class Loading
         operation.allowSceneActivation = false;
         while (operation.progress < 0.89)
         {
-            float progresso = operation.progress * 100;
+            int progresso = (int)(operation.progress * 100);
             loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, progresso);
             //Debug.Log(operation.progress);
             yield return null;
