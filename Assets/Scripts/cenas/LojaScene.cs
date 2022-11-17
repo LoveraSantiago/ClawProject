@@ -8,7 +8,17 @@ public class LojaScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainLojaDto.BtnVoltar.onClick.AddListener(() => CenaUtils.irParaCenaMap());
+        ContextoEstaticoUtils.configMainMono(this);
+        PrefabLoading prefabLoading = mainLojaDto.PrefabLoading.GetComponent<PrefabLoading>();
+        SomManagerLoja somManager = new SomManagerLoja(mainLojaDto.AudioLojaDto);
+        Loading loading = prefabLoading.getLoading(somManager, mainLojaDto.GosDesligar);
+        loading.fecharModal();
+        configurarBotoes(loading);
+    }    
+
+    private void configurarBotoes(Loading loading)
+    {
+        mainLojaDto.BtnVoltar.onClick.AddListener(() => loading.irParaMapScene());
 
         mainLojaDto.LblQtdFichasOuro.text   = PlayerPrefsFichas.getQtdFichas(Ficha.OURO).ToString();
         mainLojaDto.LblQtdFichasPrata.text  = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
@@ -40,5 +50,5 @@ public class LojaScene : MonoBehaviour
             PlayerPrefsFichas.comprarFicha(Ficha.BRONZE, 30);
             mainLojaDto.LblQtdFichasBronze.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
         });
-    }    
+    }
 }
