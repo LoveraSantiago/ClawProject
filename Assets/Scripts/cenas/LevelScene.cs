@@ -11,8 +11,14 @@ public class LevelScene : MonoBehaviour,
     void Start()
     {
         ContextoEstaticoUtils.configMainMono(this);
+
+        PrefabLoading prefabLoading = mainLevelDto.PrefabLoading.GetComponent<PrefabLoading>();
+        SomManagerLevel somManager = new SomManagerLevel(mainLevelDto.AudioLevelDto);
+        Loading loading = prefabLoading.getLoading(somManager, mainLevelDto.GosDesligar);
+        loading.fecharModal();
+
         MateriaisUtils.configurar(mainLevelDto.PrefabMateriais);
-        mainLevelDto.BtnBack.onClick.AddListener(() => voltar());
+        mainLevelDto.BtnBack.onClick.AddListener(() => loading.irParaMapScene());
 
         PrefabLevelsDto prefabLevels = mainLevelDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         HelperMapaEntidade.configurar(prefabLevels);
@@ -30,10 +36,5 @@ public class LevelScene : MonoBehaviour,
         mainLevelDto.ImageMaquinaGiratoria.transform.gameObject.SetActive(true);
         mainLevelDto.ImageMaquinaGiratoria.transform.position = evento.posicaoItem;
         MaterialMiniMaquina.addCores(mainLevelDto.ImageMaquinaGiratoria.material, evento.materialItem);
-    }
-
-    private void voltar()
-    {       
-         CenaUtils.irParaCenaMap();       
-    }
+    }    
 }
