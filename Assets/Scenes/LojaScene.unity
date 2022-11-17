@@ -2934,6 +2934,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af66c21c0f47c446bbf5b4deb702611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainLojaDto:
+    btnVoltar: {fileID: 1854863032}
+    lblQtdFichasOuro: {fileID: 642954505}
+    lblQtdFichasPrata: {fileID: 2131849260}
+    lblQtdFichasBronze: {fileID: 296503229}
+    btnOuro: {fileID: 1239058804}
+    btnPrata: {fileID: 897239904}
+    btnBronze: {fileID: 825648693}
+    btnAssinatura: {fileID: 821101363}
   btnVoltar: {fileID: 1854863032}
   lblQtdFichasOuro: {fileID: 642954505}
   lblQtdFichasPrata: {fileID: 2131849260}
