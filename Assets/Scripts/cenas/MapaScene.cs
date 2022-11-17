@@ -18,7 +18,7 @@ public class MapaScene : MonoBehaviour,
 
         PrefabLoading prefabLoading = mainMapaDto.PrefabLoading.GetComponent<PrefabLoading>();
         SomManagerMap somManager = new SomManagerMap(mainMapaDto.AudioMapDto);
-        Loading loading = prefabLoading.getLoading(somManager);
+        Loading loading = prefabLoading.getLoading(somManager, mainMapaDto.GosDesligar);
 
         allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto, loading);        
         ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto, loading);

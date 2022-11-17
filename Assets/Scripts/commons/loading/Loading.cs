@@ -10,11 +10,13 @@ public class Loading
 
     private LoadingDto loadingDto;
     private SomLoading somLoading;
+    private GameObject[] gosDesligar;
 
-    public Loading(LoadingDto loadingDto, SomLoading somLoading)
+    public Loading(LoadingDto loadingDto, SomLoading somLoading, GameObject[] gosDesligar)
     {
         this.loadingDto = loadingDto;
         this.somLoading = somLoading;
+        this.gosDesligar = gosDesligar;
     }
 
     public void irParaMapScene()
@@ -64,6 +66,17 @@ public class Loading
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineAbrirModal(nomeCena));
     }
 
+    private void desligarGos()
+    {
+        if(gosDesligar != null)
+        {
+            for(int contador = 0; contador < gosDesligar.Length; contador++)
+            {
+                gosDesligar[contador].SetActive(false);
+            }
+        }
+    }
+
     private IEnumerator coroutineAbrirModal(string nomeCena)
     {
         somLoading.playSomAbrirModal();
@@ -72,7 +85,8 @@ public class Loading
         yield return null;
 
         somLoading.playGarraGirando();
-        yield return new WaitForSeconds(loadingDto.DelayAbrirModal);        
+        yield return new WaitForSeconds(loadingDto.DelayAbrirModal);
+        desligarGos();
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(nomeCena);
         operation.allowSceneActivation = false;

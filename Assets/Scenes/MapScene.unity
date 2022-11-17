@@ -3832,6 +3832,8 @@ MonoBehaviour:
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
     prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
     prefabLoading: {fileID: 2064940685}
+    gosDesligar:
+    - {fileID: 1360404541}
 --- !u!114 &1393420355 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8651896912941709733, guid: 509e21522e06b7445bc8d965d554c05e, type: 3}

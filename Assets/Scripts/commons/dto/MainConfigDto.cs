@@ -14,6 +14,7 @@ public class MainConfigDto
     [SerializeField] private AudioConfigDto audioConfigDto;
     [Space(5)]
     [SerializeField] private GameObject prefabLoading;
+    [SerializeField] private GameObject[] gosDesligar;
 
     public Button BtnBack { get { return btnBack; } }
     public Toggle ToggleMacho { get { return toggleMacho; } }
@@ -23,4 +24,5 @@ public class MainConfigDto
     public AudioConfigDto AudioConfigDto { get { return audioConfigDto; } }
 
     public GameObject PrefabLoading { get { return prefabLoading; } }
+    public GameObject[] GosDesligar { get { return gosDesligar; } }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+#pragma warning disable 0649
 public class ConfigScene : MonoBehaviour
 {
     [SerializeField] private MainConfigDto mainConfigDto;  
@@ -10,7 +11,7 @@ public class ConfigScene : MonoBehaviour
         ContextoEstaticoUtils.configMainMono(this);
         PrefabLoading prefabLoading = mainConfigDto.PrefabLoading.GetComponent<PrefabLoading>();
         SomManagerConfig somManager = new SomManagerConfig(mainConfigDto.AudioConfigDto);
-        Loading loading = prefabLoading.getLoading(somManager);
+        Loading loading = prefabLoading.getLoading(somManager, mainConfigDto.GosDesligar);
         loading.fecharModal();
 
         configurarToogles();

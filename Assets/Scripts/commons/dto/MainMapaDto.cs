@@ -22,6 +22,7 @@ public class MainMapaDto
     [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabPowerUpDto;
     [SerializeField] private GameObject prefabLoading;
+    [SerializeField] private GameObject[] gosDesligar;
 
     public TimerFichaDto[] TimerFichaDto { get { return timerFichaDto; } }
     public LevelMapaUiDto LevelMapaUiDto { get { return levelMapaUiDto; } }
@@ -35,4 +36,5 @@ public class MainMapaDto
     public GameObject PrefabMateriais { get { return prefabMateriais; } }
     public GameObject PrefabPowerUpDto { get { return prefabPowerUpDto; } }
     public GameObject PrefabLoading { get { return prefabLoading; } }
+    public GameObject[] GosDesligar { get { return gosDesligar; } }
 }
