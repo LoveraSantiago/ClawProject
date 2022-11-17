@@ -1947,7 +1947,15 @@ MonoBehaviour:
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
     prefabLoading: {fileID: 1119871077}
     gosDesligar:
-    - {fileID: 1747550982}
+    - {fileID: 765485543}
+    - {fileID: 615110042}
+    - {fileID: 273062363}
+    - {fileID: 1283231619}
+    - {fileID: 479819822}
+    - {fileID: 1863259580}
+    - {fileID: 1613105772}
+    - {fileID: 995126369}
+    - {fileID: 560008463}
 --- !u!1 &1863259580
 GameObject:
   m_ObjectHideFlags: 0

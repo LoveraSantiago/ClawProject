@@ -86,7 +86,9 @@ public class Loading
 
         somLoading.playGarraGirando();
         yield return new WaitForSeconds(loadingDto.DelayAbrirModal);
+
         desligarGos();
+        yield return null;
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(nomeCena);
         operation.allowSceneActivation = false;

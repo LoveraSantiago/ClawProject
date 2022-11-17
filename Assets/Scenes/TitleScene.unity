@@ -1265,7 +1265,10 @@ MonoBehaviour:
         audioClip: {fileID: 8300000, guid: fb39762ebe68af940bf391ed6d49f7fc, type: 3}
     goLoading: {fileID: 40799382}
     gosDesligar:
-    - {fileID: 676319750}
+    - {fileID: 953145803}
+    - {fileID: 1438709126}
+    - {fileID: 1561186517}
+    - {fileID: 906852578}
 --- !u!1 &679433603
 GameObject:
   m_ObjectHideFlags: 0
