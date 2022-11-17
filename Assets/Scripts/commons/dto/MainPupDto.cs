@@ -20,6 +20,10 @@ public class MainPupDto
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private Animator animator;
     [Space(5)]
+    [SerializeField] private AudioPupDto audioPupDto;
+    [SerializeField] private GameObject prefabLoading;
+    [SerializeField] private GameObject[] gosDesligar;
+    [Space(5)]
     [SerializeField] private GameObject prefabPowerUpDto;
     [SerializeField] private GameObject prefabLevesDto;
     [Space(5)]
@@ -33,6 +37,11 @@ public class MainPupDto
     public FichaAnimadaDto FichaAnimadaDto { get { return fichaAnimadaDto; } }
     public ScrollRect ScrollRect { get { return scrollRect; } }
     public Animator Animator { get { return animator; } }
+
+    public AudioPupDto AudioPupDto { get { return audioPupDto; } }
+    public GameObject PrefabLoading { get { return prefabLoading; } }
+    public GameObject[] GosDesligar { get { return gosDesligar; } }
+
     public GameObject PrefabPowerUpDto { get { return prefabPowerUpDto; } }
     public GameObject PrefabLevesDto { get { return prefabLevesDto; } }
     public ModalNoFichaDto ModalNoFichaDto { get { return modalNoFichaDto; } }

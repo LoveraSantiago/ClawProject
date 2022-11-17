@@ -5,17 +5,7 @@ public class TimerFicha : Executor
     private readonly Ficha ficha;
 
     private TimerFichaDto timerFichaDto;
-    private Relogio relogio;
-
-    [Obsolete("sem loading")]
-    public TimerFicha(TimerFichaDto timerFichaDto, Ficha ficha)
-    {
-        this.ficha = ficha;
-        this.timerFichaDto = timerFichaDto;
-        
-        configurarBotao();
-        setupDeFichas();
-    }
+    private Relogio relogio;   
 
     public TimerFicha(TimerFichaDto timerFichaDto, Loading loading, Ficha ficha)
     {
