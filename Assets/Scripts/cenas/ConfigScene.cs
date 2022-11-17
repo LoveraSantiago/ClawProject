@@ -7,23 +7,35 @@ public class ConfigScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ContextoEstaticoUtils.configMainMono(this);
+        PrefabLoading prefabLoading = mainConfigDto.PrefabLoading.GetComponent<PrefabLoading>();
+        SomManagerConfig somManager = new SomManagerConfig(mainConfigDto.AudioConfigDto);
+        Loading loading = prefabLoading.getLoading(somManager);
+        loading.fecharModal();
+
+        configurarToogles();
+        mainConfigDto.BtnBack.onClick.AddListener(() => loading.irParaMapScene());
+    }   
+
+    private void configurarToogles()
+    {
         int escolhaGarra = PlayerPrefsGarra.getEscolhaGarra();
-        if(escolhaGarra == 0)
+        if (escolhaGarra == 0)
         {
-            mainConfigDto.ToggleRandom.Select();            
+            mainConfigDto.ToggleRandom.Select();
         }
-        else if(escolhaGarra == 1)
+        else if (escolhaGarra == 1)
         {
             mainConfigDto.ToggleMacho.Select();
         }
-        else if(escolhaGarra == 2)
+        else if (escolhaGarra == 2)
         {
             mainConfigDto.ToggleFemea.Select();
         }
 
         mainConfigDto.ToggleFemea.onValueChanged.AddListener((ativo) =>
-        {   
-           PlayerPrefsGarra.saveEscolhaGarraFemea();
+        {
+            PlayerPrefsGarra.saveEscolhaGarraFemea();
         });
 
         mainConfigDto.ToggleMacho.onValueChanged.AddListener((ativo) =>
@@ -35,7 +47,5 @@ public class ConfigScene : MonoBehaviour
         {
             PlayerPrefsGarra.saveEscolhaGarraRandom();
         });
-
-        mainConfigDto.BtnBack.onClick.AddListener(() => CenaUtils.irParaCenaMap());
-    }   
+    }
 }
