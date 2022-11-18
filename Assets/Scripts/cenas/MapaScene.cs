@@ -16,9 +16,13 @@ public class MapaScene : MonoBehaviour,
         PowerUpEntidade.configurarDicionarioDeSpritesPup(mainMapaDto.PrefabPowerUpDto);
         FactoryPowerUpEntidade.resetContextoEstatico();
 
-        allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto);        
-        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto);
-        new BotoesCenasMapa(mainMapaDto.BotoesCenasDto);
+        PrefabLoading prefabLoading = mainMapaDto.PrefabLoading.GetComponent<PrefabLoading>();
+        SomManagerMap somManager = new SomManagerMap(mainMapaDto.AudioMapDto);
+        Loading loading = prefabLoading.getLoading(somManager, mainMapaDto.GosDesligar);
+
+        allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto, loading);        
+        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto, loading);
+        new BotoesCenasMapa(mainMapaDto.BotoesCenasDto, loading);
 
         mapaUi = new MapaUi(mainMapaDto.LevelMapaUiDto);
 
@@ -35,6 +39,7 @@ public class MapaScene : MonoBehaviour,
             .configurarProdutor(mapaUi.grupoBtnBaloes)
             .adicionarConsumidor(modalManager);
 
+        loading.fecharModal();
         navegacaoMapas.inicializar();
     }
 

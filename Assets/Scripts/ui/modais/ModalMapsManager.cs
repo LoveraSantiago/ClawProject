@@ -6,10 +6,10 @@ public class ModalMapsManager : AcaoMapaNavegado.ConsumidorEvento,
 
     private MapaEntidade mapaEntidadeAtual;
 
-    public ModalMapsManager(MainMapaDto mainMapaDto)
+    public ModalMapsManager(MainMapaDto mainMapaDto, Loading loading)
     {
-        modalFase = new ModalFase(mainMapaDto.ModalFaseDto);
-        modalNoFicha = new ModalNoFicha(mainMapaDto.ModalNoFichaDto);
+        modalFase = new ModalFase(mainMapaDto.ModalFaseDto, loading);
+        modalNoFicha = new ModalNoFicha(mainMapaDto.ModalNoFichaDto, loading);
     }
 
     private void abrirModal(MapaEntidade mapaEntidade, int indiceLevel)

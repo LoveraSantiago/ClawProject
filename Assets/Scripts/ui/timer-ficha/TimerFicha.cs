@@ -5,14 +5,14 @@ public class TimerFicha : Executor
     private readonly Ficha ficha;
 
     private TimerFichaDto timerFichaDto;
-    private Relogio relogio;
+    private Relogio relogio;   
 
-    public TimerFicha(TimerFichaDto timerFichaDto, Ficha ficha)
+    public TimerFicha(TimerFichaDto timerFichaDto, Loading loading, Ficha ficha)
     {
         this.ficha = ficha;
         this.timerFichaDto = timerFichaDto;
-        
-        configurarBotao();
+
+        configurarBotao(loading);
         setupDeFichas();
     }
 
@@ -85,10 +85,10 @@ public class TimerFicha : Executor
     private void setLabelQtdDeFichas(int fichas)
     {
         timerFichaDto.LblQdtFichas.text = fichas.ToString();
-    }     
+    }   
 
-    private void configurarBotao()
+    private void configurarBotao(Loading loading)
     {
-        timerFichaDto.BtnMais.onClick.AddListener(() => CenaUtils.irParaCenaLoja());
+        timerFichaDto.BtnMais.onClick.AddListener(() => loading.irParaLojaCena());
     }    
 }

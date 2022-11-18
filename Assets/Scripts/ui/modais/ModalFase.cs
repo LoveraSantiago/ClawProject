@@ -4,10 +4,10 @@ public class ModalFase
     private LinhasChallenge linhasChallenge;
     private NavegacaoDeArray<ColetavelEntidade> navegacaDeColetaveis;
 
-    public ModalFase(ModalFaseDto modalFaseDto)
+    public ModalFase(ModalFaseDto modalFaseDto, Loading loading)
     {
         this.modalFaseDto = modalFaseDto;
-        modalFaseDto.BtnLevel.onClick.AddListener(()=> irParaCenaGame());
+        modalFaseDto.BtnLevel.onClick.AddListener(()=> irParaCenaGame(loading));
         modalFaseDto.BtnFechar.onClick.AddListener(() => desligar());
         navegacaDeColetaveis = new NavegacaoDeArray<ColetavelEntidade>();
         linhasChallenge = new LinhasChallenge(modalFaseDto.LinhasChallenges.LinhaChallenges);
@@ -33,10 +33,10 @@ public class ModalFase
         linhasChallenge.addConfiguracaoChallenges(mapaEntidade, level.getChallenges());
     }
 
-    private void irParaCenaGame()
+    private void irParaCenaGame(Loading loading)
     {
         PlayerPrefsFichas.consumirFicha(Ficha.PRATA, 1);
-        CenaUtils.irParaCenaMainGame();
+        loading.irParaGameCena();        
     }
 
     private void desligar()

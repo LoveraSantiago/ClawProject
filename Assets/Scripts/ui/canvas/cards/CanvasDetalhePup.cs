@@ -10,15 +10,15 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
     private ModalNoFicha modalNoFicha;//Temporariamente aqui    
     private ProdutorDeEvento<int> produtorEventoBtnEscohido;
 
-    public CanvasDetalhePup(CanvasDetalheCardPupDto canvasDetalheDto, ModalNoFichaDto modalNoFichaDto)
+    public CanvasDetalhePup(CanvasDetalheCardPupDto canvasDetalheDto, ModalNoFichaDto modalNoFichaDto, Loading loading)
     {
         this.canvasDetalheDto = canvasDetalheDto;
-        this.canvasDetalheDto.BtnPratica.onClick.AddListener(()=> gotoScenePupPratica());
-        this.canvasDetalheDto.BtnCacaNiquelPupIndividual.onClick.AddListener(() => gotoScenePupCacaNiquelIndividual());
-        this.canvasDetalheDto.BtnCacaNiquelPupGeral.onClick.AddListener(()=> gotoScenePupCacaNiquelGeral());
+        this.canvasDetalheDto.BtnPratica.onClick.AddListener(()=> gotoScenePupPratica(loading));
+        this.canvasDetalheDto.BtnCacaNiquelPupIndividual.onClick.AddListener(() => gotoScenePupCacaNiquelIndividual(loading));
+        this.canvasDetalheDto.BtnCacaNiquelPupGeral.onClick.AddListener(()=> gotoScenePupCacaNiquelGeral(loading));
         isAberto = false;
 
-        modalNoFicha = new ModalNoFicha(modalNoFichaDto);
+        modalNoFicha = new ModalNoFicha(modalNoFichaDto, loading);
         produtorEventoBtnEscohido = new ProdutorDeEvento<int>();
     }
 
@@ -27,16 +27,16 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         isAberto = false;
     }
 
-    private void gotoScenePupPratica()
+    private void gotoScenePupPratica(Loading loading)
     {
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.POWERUP);
         AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(1);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
 
-        abrirCenaOuModal(0, 0);
+        abrirCenaOuModal(0, 0, loading);
     }
 
-    private void gotoScenePupCacaNiquelIndividual()
+    private void gotoScenePupCacaNiquelIndividual(Loading loading)
     {
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.CACANIQUEL);
         AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(2);
@@ -44,26 +44,26 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
 
         PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePupSelecionado);
         int precoFicha = int.Parse(pupEntidade.preco);
-        abrirCenaOuModal(1, precoFicha);
+        abrirCenaOuModal(1, precoFicha, loading);
     }
 
-    private void gotoScenePupCacaNiquelGeral()
+    private void gotoScenePupCacaNiquelGeral(Loading loading)
     {
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.CACANIQUEL);
         AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(1);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
         
-        abrirCenaOuModal(2, 1);
+        abrirCenaOuModal(2, 1, loading);
     }
 
-    private void abrirCenaOuModal(int indiceBtn, int precoFicha)
+    private void abrirCenaOuModal(int indiceBtn, int precoFicha, Loading loading)
     {
         if (PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
         {
             PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);            
             PlayerPrefsPowerUp.salvarIndicePup(indicePupSelecionado);
-            produtorEventoBtnEscohido.produziuEvento(indiceBtn);            
-            CenaUtils.irParaCenaMainGame(0.9f);            
+            produtorEventoBtnEscohido.produziuEvento(indiceBtn);
+            loading.irParaGameCena();            
         }
         else
         {

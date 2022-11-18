@@ -17,15 +17,20 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
         ContextoEstaticoUtils.configMainMono(this);
         MateriaisUtils.configurar(mainDto.PrefabMateriais);
-        HelperMapaEntidade.configurar(prefabLevels);                
+        HelperMapaEntidade.configurar(prefabLevels);
+
+        PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
+        SomManagerColetaveis somManager = new SomManagerColetaveis(mainDto.AudioColetaveisDto);
+        Loading loading = prefabLoading.getLoading(somManager, mainDto.GosDesligar);
+        loading.fecharModal();
 
         ColetaveisParaPrateleiras coletaveisParaPrateleiras = new ColetaveisParaPrateleiras();
-        timerFichaOuro      = new TimerFicha(mainDto.TimerFichaDto, Ficha.OURO);
+        timerFichaOuro      = new TimerFicha(mainDto.TimerFichaDto, loading, Ficha.OURO);
         prateleiras         = new Prateleiras(mainDto.PrateleirasDto, coletaveisParaPrateleiras);                
         movimentadorArmario = new MovimentadorDeArmario(mainDto);
-        detalheColetavel    = new CanvasDetalheColetavel(mainDto, coletaveisParaPrateleiras);
+        detalheColetavel    = new CanvasDetalheColetavel(mainDto, coletaveisParaPrateleiras, loading);
 
-        configBtnBack(mainDto.BtnBack);
+        configBtnBack(mainDto.BtnBack, loading);
         mainDto.ScrollRect.onValueChanged.AddListener((pos) => prateleiras.movimentado(pos, mainDto.PrateleirasDto));
 
         new AcaoBtnPrateleiraAcionado()
@@ -44,7 +49,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         timerFichaOuro.update();
     }    
 
-    private void configBtnBack(Button btnBack)
+    private void configBtnBack(Button btnBack, Loading loading)
     {
         btnBack.onClick.AddListener(() => {
                 if (movimentadorArmario.isArmarioMovimentado())
@@ -53,7 +58,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
                 }
                 else
                 {
-                    CenaUtils.irParaCenaMap();
+                loading.irParaMapScene();
                 }
             });
     }

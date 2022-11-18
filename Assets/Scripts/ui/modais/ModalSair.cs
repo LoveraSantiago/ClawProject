@@ -10,11 +10,11 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
     private ModalSairDto modalSairDto;
     private ProdutorDeEvento<ResultadoDesligarMaquinaDto> produtorDeEvento;
 
-    public ModalSair(ModalSairDto modalSairDto)
+    public ModalSair(ModalSairDto modalSairDto, Loading loading)
     {
         this.modalSairDto = modalSairDto;
         this.modalSairDto.BtnCancelar.onClick.AddListener(()=>cancelarSaida());
-        this.modalSairDto.BtnSair.onClick.AddListener(()=>sairDoGame());
+        this.modalSairDto.BtnSair.onClick.AddListener(()=>sairDoGame(loading));
         produtorDeEvento = new ProdutorDeEvento<ResultadoDesligarMaquinaDto>();
     }
 
@@ -41,7 +41,7 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
         ContextoEstaticoUtils.continuarGame();
     }
 
-    private void sairDoGame()
+    private void sairDoGame(Loading loading)
     {
         ContextoEstaticoUtils.continuarGame();        
         switch (estadoSairPara)
@@ -49,19 +49,19 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
             case SAIR_NORMAL:
                 {
                     produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, true));
-                    CenaUtils.irParaCenaMap();
+                    loading.irParaMapScene();                    
                     break;
                 }
             case SAIR_COLETAVEL:
                 {
                     produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, false));
-                    CenaUtils.irParaCenaColetaveis();
+                    loading.irParaColetaveisCena();
                     break;
                 }
             case SAIR_EXTRA:
                 {
                     produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, false));
-                    CenaUtils.irParaCenaPup();
+                    loading.irParaPowerUpCena();
                     break;
                 }
         }        

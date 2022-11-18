@@ -11,8 +11,7 @@ public class MainGameManagers
     public InputGameImpl     inputGame         { get; private set; }
     public DraggavelManager  draggavelManager  { get; private set; }
 
-    public MainGameManagers(
-        MainGameDto mainDto, AbstractLevel levelEscolhido, Consumidor<UpdaterManagers> consumidorUpdateManagers)
+    public MainGameManagers(MainGameDto mainDto, Loading loading, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
         ColetorDeDados coletorDeDados = new ColetorDeDados();
 
@@ -21,11 +20,11 @@ public class MainGameManagers
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
         maquinaManager    = new MaquinaManager(mainDto.MaquinaDto);
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
-        uiManager         = new UiGameManager(mainDto, coletorDeDados);
+        uiManager         = new UiGameManager(mainDto, coletorDeDados, loading);
         cameraManager     = new CameraManager(mainDto.CameraDto);
         draggavelManager  = new DraggavelManager(mainDto.DragCollider);
 
-        configurandoLevel(mainDto, levelEscolhido);
+        configurandoLevel(mainDto);
         configurandoEventos();
         consumidorUpdateManagers.consumir(new UpdaterEmptyManagers());
 
@@ -39,8 +38,9 @@ public class MainGameManagers
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));        
     }   
 
-    private void configurandoLevel(MainGameDto mainDto, AbstractLevel levelEscolhido)
-    {        
+    private void configurandoLevel(MainGameDto mainDto)
+    {
+        AbstractLevel levelEscolhido = ContextoEstaticoUtils.level;
         coletaveisManager.configuradoPeloLevel(levelEscolhido, mainDto.ColetaveisDto);
         maquinaManager   .configuradoPeloLevel(levelEscolhido, mainDto.MaquinaDto);
         uiManager        .configurandoLevel(levelEscolhido);

@@ -20,6 +20,10 @@ public class MainColetaveisDto
     [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabLevelsDto;
     [Space(5)]
+    [SerializeField] private AudioColetaveisDto audioColetaveisDto;
+    [SerializeField] private GameObject prefabLoading;
+    [SerializeField] private GameObject[] gosDesligar;
+    [Space(5)]
     [SerializeField] private ModalNoFichaDto modalNoFichaDto;
 
     public TimerFichaDto TimerFichaDto { get { return timerFichaDto; } }
@@ -30,5 +34,8 @@ public class MainColetaveisDto
     public CanvasDetalheColetavelDto CanvasDetalheColetavelDto { get { return canvasDetalheColetavelDto; } }
     public GameObject PrefabMateriais { get { return prefabMateriais; } }
     public GameObject PrefabLevelsDto { get { return prefabLevelsDto; } }
+    public AudioColetaveisDto AudioColetaveisDto { get { return audioColetaveisDto; } }
+    public GameObject PrefabLoading { get { return prefabLoading; } }
+    public GameObject[] GosDesligar { get { return gosDesligar; } }
     public ModalNoFichaDto ModalNoFichaDto { get { return modalNoFichaDto; } }
 }

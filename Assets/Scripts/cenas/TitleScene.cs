@@ -15,7 +15,7 @@ public class TitleScene : MonoBehaviour
     {
         ContextoEstaticoUtils.configMainMono(this);        
         genero = PlayerPrefsGarra.getGarraMachoOrFemea();
-        Debug.Log("Genero " + genero.ToString());
+        //Debug.Log("Genero " + genero.ToString());
         garraTitle = new GarraTitle(genero, mainTitleDto.Animator);
         somManager = new SomManagerTitle(mainTitleDto.AudioTitleDto);
 
@@ -30,7 +30,7 @@ public class TitleScene : MonoBehaviour
             mainTitleDto.ImgBtnPlay.sprite = mainTitleDto.BtnRosa;
         }
         inputGame = new InputGameImpl();
-        somManager.playSomGarra();
+        somManager.playSomGarraAsSecundario();
         somManager.playSomBumpTexto();
     }
 
@@ -46,6 +46,11 @@ public class TitleScene : MonoBehaviour
     public void irParaMainScene()
     {
         somManager.playSomBotaoClicado();
-        CenaUtils.irParaCenaMap(1);
+        somManager.stopSomPrincipal();        
+
+        PrefabLoading prefabLoading = mainTitleDto.GoLoading.GetComponent<PrefabLoading>();
+        Loading loading = prefabLoading.getLoading(somManager, mainTitleDto.GosDesligar);
+        loading.irParaMapScene();
+        //CenaUtils.irParaCenaMap(1);
     }
 }

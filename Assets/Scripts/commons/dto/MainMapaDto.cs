@@ -16,6 +16,10 @@ public class MainMapaDto
     [Space(5)]
     [SerializeField] private ModalNoFichaDto modalNoFichaDto;
     [Space(5)]
+    [SerializeField] private AudioMapDto audioMapDto;
+    [SerializeField] private GameObject prefabLoading;
+    [SerializeField] private GameObject[] gosDesligar;
+    [Space(5)]
     [SerializeField] private GameObject prefabLevelsDto;
     [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabPowerUpDto;
@@ -26,6 +30,10 @@ public class MainMapaDto
     public BotoesCenasDto BotoesCenasDto { get { return botoesCenasDto; } }
     public ModalFaseDto ModalFaseDto { get { return modalFaseDto; } }
     public ModalNoFichaDto ModalNoFichaDto { get { return modalNoFichaDto; } }
+
+    public AudioMapDto AudioMapDto { get { return audioMapDto; } }
+    public GameObject PrefabLoading { get { return prefabLoading; } }
+    public GameObject[] GosDesligar { get { return gosDesligar; } }
 
     public GameObject PrefabLevelsDto { get { return prefabLevelsDto; } }
     public GameObject PrefabMateriais { get { return prefabMateriais; } }

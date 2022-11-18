@@ -1,24 +1,24 @@
 public class BotoesCenasMapa 
 {
-    public BotoesCenasMapa(BotoesCenasDto botoesCenasDto)
+    public BotoesCenasMapa(BotoesCenasDto botoesCenasDto, Loading loading)
     {
-        configurarBotoesCenas(botoesCenasDto);
+        configurarBotoesCenas(botoesCenasDto, loading);
     }
 
-    private void configurarBotoesCenas(BotoesCenasDto botoesCenasDto)
+    private void configurarBotoesCenas(BotoesCenasDto botoesCenasDto, Loading loading)
     {
         configurarExclamacoes(botoesCenasDto);
-        botoesCenasDto.BtnCards.onClick.AddListener(() => CenaUtils.irParaCenaPup());
-        botoesCenasDto.BtnStore.onClick.AddListener(() => CenaUtils.irParaCenaLoja());
+        botoesCenasDto.BtnCards.onClick.AddListener(() => loading.irParaPowerUpCena());
+        botoesCenasDto.BtnStore.onClick.AddListener(() => loading.irParaLojaCena());
         botoesCenasDto.BtnScore.onClick.AddListener(() => {
-            CenaUtils.irParaCenaLevels();
+            loading.irParaLevelCena();
             PlayerPrefsMapas.consumidoNovaLiberacaoLevel();
         });
         botoesCenasDto.BtnPelucia.onClick.AddListener(() => {
-            CenaUtils.irParaCenaColetaveis();
+            loading.irParaColetaveisCena();
             PlayerPrefsMapas.consumidoNovaLiberacaoColetavel();
         });
-        botoesCenasDto.BtnConfig.onClick.AddListener(() => CenaUtils.irParaCenaConfig());
+        botoesCenasDto.BtnConfig.onClick.AddListener(() => loading.irParaConfiguracaoCena());
     }
 
     private void configurarExclamacoes(BotoesCenasDto botoesCenasDto)

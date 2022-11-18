@@ -1,46 +1,52 @@
 using UnityEngine;
-using UnityEngine.UI;
 
+#pragma warning disable 0649
 public class ConfigScene : MonoBehaviour
 {
-    [SerializeField] private Button btnBack;
-    [Space(5)]
-    [SerializeField] private Toggle toggleMacho;
-    [SerializeField] private Toggle toggleFemea;
-    [SerializeField] private Toggle toggleRandom;
+    [SerializeField] private MainConfigDto mainConfigDto;  
 
     // Start is called before the first frame update
     void Start()
     {
+        ContextoEstaticoUtils.configMainMono(this);
+        PrefabLoading prefabLoading = mainConfigDto.PrefabLoading.GetComponent<PrefabLoading>();
+        SomManagerConfig somManager = new SomManagerConfig(mainConfigDto.AudioConfigDto);
+        Loading loading = prefabLoading.getLoading(somManager, mainConfigDto.GosDesligar);
+        loading.fecharModal();
+
+        configurarToogles();
+        mainConfigDto.BtnBack.onClick.AddListener(() => loading.irParaMapScene());
+    }   
+
+    private void configurarToogles()
+    {
         int escolhaGarra = PlayerPrefsGarra.getEscolhaGarra();
-        if(escolhaGarra == 0)
-        {   
-            toggleRandom.Select();            
-        }
-        else if(escolhaGarra == 1)
+        if (escolhaGarra == 0)
         {
-            toggleMacho.Select();
+            mainConfigDto.ToggleRandom.Select();
         }
-        else if(escolhaGarra == 2)
+        else if (escolhaGarra == 1)
         {
-            toggleFemea.Select();
+            mainConfigDto.ToggleMacho.Select();
+        }
+        else if (escolhaGarra == 2)
+        {
+            mainConfigDto.ToggleFemea.Select();
         }
 
-        toggleFemea.onValueChanged.AddListener((ativo) =>
-        {   
-           PlayerPrefsGarra.saveEscolhaGarraFemea();
+        mainConfigDto.ToggleFemea.onValueChanged.AddListener((ativo) =>
+        {
+            PlayerPrefsGarra.saveEscolhaGarraFemea();
         });
 
-        toggleMacho.onValueChanged.AddListener((ativo) =>
+        mainConfigDto.ToggleMacho.onValueChanged.AddListener((ativo) =>
         {
             PlayerPrefsGarra.saveEscolhaGarraMacho();
         });
 
-        toggleRandom.onValueChanged.AddListener((ativo) =>
+        mainConfigDto.ToggleRandom.onValueChanged.AddListener((ativo) =>
         {
             PlayerPrefsGarra.saveEscolhaGarraRandom();
         });
-
-        btnBack.onClick.AddListener(() => CenaUtils.irParaCenaMap());
-    }   
+    }
 }
