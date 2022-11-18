@@ -33,7 +33,7 @@ public class MainGameScene : MonoBehaviour,
         HelperMapaEntidade.configurar(prefabLevels);
 
         AbstractLevel levelEscolhido = ContextoEstaticoUtils.loadLevelEstaticoAtualOrCreateLevel(mapa, indiceLevel);
-        MainGameManagers managers = new MainGameManagers(mainDto, levelEscolhido, this);
+        MainGameManagers managers = new MainGameManagers(mainDto, loading, this);
         loading.fecharModal();
     }        
     
