@@ -4,11 +4,11 @@ public class ModalNoFicha
 {
     private ModalNoFichaDto modalNoFichaDto;
 
-    public ModalNoFicha(ModalNoFichaDto modalNoFichaDto)
+    public ModalNoFicha(ModalNoFichaDto modalNoFichaDto, Loading loading)
     {
         this.modalNoFichaDto = modalNoFichaDto;
         modalNoFichaDto.BtnSair.onClick.AddListener(() => desligar());
-        modalNoFichaDto.BtnIrLoja.onClick.AddListener(() => irParaLoja());
+        modalNoFichaDto.BtnIrLoja.onClick.AddListener(() => loading.irParaLojaCena());
     }
 
     public void ligar(Ficha ficha)
@@ -33,10 +33,5 @@ public class ModalNoFicha
     private void desligar()
     {
         modalNoFichaDto.Animator.Play("fechar-modal");        
-    }
-
-    private void irParaLoja()
-    {
-        CenaUtils.irParaCenaLoja();
-    }
+    }    
 }

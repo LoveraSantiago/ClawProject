@@ -4,10 +4,10 @@ public class ModalFimColetaveis : AbstractModalFim
 {
     private ModalColetaveisDto modalColetaveisDto;
 
-    public ModalFimColetaveis(ModalColetaveisDto modalColetaveisDto)
+    public ModalFimColetaveis(ModalColetaveisDto modalColetaveisDto, Loading loading)
     {
         this.modalColetaveisDto = modalColetaveisDto;
-        modalColetaveisDto.BtnAvancar.onClick.AddListener(() => irParaCena());
+        modalColetaveisDto.BtnAvancar.onClick.AddListener(() => irParaCena(loading));
     }
 
    public void sucesso()
@@ -41,21 +41,21 @@ public class ModalFimColetaveis : AbstractModalFim
         modalColetaveisDto.Modal.SetActive(true);
     }
 
-    protected override void irParaCena()
+    protected override void irParaCena(Loading loading)
     {
-        CenaUtils.irParaCenaColetaveis();
+        loading.irParaColetaveisCena();        
     }
 
-    public static ModalFimColetaveis ofSucess(ModalColetaveisDto modalColetaveisDto)
+    public static ModalFimColetaveis ofSucess(ModalColetaveisDto modalColetaveisDto, Loading loading)
     {
-        ModalFimColetaveis modal = new ModalFimColetaveis(modalColetaveisDto);
+        ModalFimColetaveis modal = new ModalFimColetaveis(modalColetaveisDto, loading);
         modal.sucesso();
         return modal;
     }
 
-    public static ModalFimColetaveis ofFail(ModalColetaveisDto modalColetaveisDto)
+    public static ModalFimColetaveis ofFail(ModalColetaveisDto modalColetaveisDto, Loading loading)
     {
-        ModalFimColetaveis modal = new ModalFimColetaveis(modalColetaveisDto);
+        ModalFimColetaveis modal = new ModalFimColetaveis(modalColetaveisDto, loading);
         modal.fail();
         return modal;
     }

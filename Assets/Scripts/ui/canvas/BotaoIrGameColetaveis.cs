@@ -9,7 +9,7 @@ public class BotaoIrGameColetaveis
     public BotaoIrGameColetaveis(Button btnColetavel, ModalNoFichaDto modalNoFichaDto, Loading loading)
     {
         btnColetavel.onClick.AddListener(() => irParaLevelDeColetado(loading));
-        modalNoFicha = new ModalNoFicha(modalNoFichaDto);
+        modalNoFicha = new ModalNoFicha(modalNoFichaDto, loading);
     }
 
     private void irParaLevelDeColetado(Loading loading)
