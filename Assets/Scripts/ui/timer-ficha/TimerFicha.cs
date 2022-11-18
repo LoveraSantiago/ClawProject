@@ -85,13 +85,7 @@ public class TimerFicha : Executor
     private void setLabelQtdDeFichas(int fichas)
     {
         timerFichaDto.LblQdtFichas.text = fichas.ToString();
-    }
-
-    [Obsolete("sem loading")]
-    private void configurarBotao()
-    {
-        timerFichaDto.BtnMais.onClick.AddListener(() => CenaUtils.irParaCenaLoja());
-    }
+    }   
 
     private void configurarBotao(Loading loading)
     {
