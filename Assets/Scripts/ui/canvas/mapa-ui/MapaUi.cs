@@ -17,27 +17,30 @@ public class MapaUi
         materialGrayScale = MaterialGrayScale.of();
     }
 
-    public void addMapaParaTela(WrapperLevelMapDto evento)
+    public void addMapaParaTela(WrapperLevelMapDto evento, SomMap somMap)
     {
         MapaEntidade mapaEntidade = evento.mapaEntidade;
         if(evento.isDireita)
         {
             grupoBtnBaloes.dismissBotoesBaloes();
             animacaMainMapa.navegarParaEsquerda(mapaEntidade.isLivre|| mapaEntidade.isProgresso);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alterarMaps(evento, somMap));
         }
         else if (evento.isEsquerda)
         {
             grupoBtnBaloes.dismissBotoesBaloes();
             animacaMainMapa.navegarParaDireita(mapaEntidade.isLivre || mapaEntidade.isProgresso);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alterarMaps(evento));
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alterarMaps(evento, somMap));
         }
         else if(evento.isCentralizado)
         {
             updateMapa(evento);
             grupoBtnBaloes.posicionarBaloes(evento);
             MaterialBackground.movimentarSaida(levelMapaUiDto.MatBackground, evento.mapaEntidade.levelCorBackground);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes));
+
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(
+                grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes, somMap));
+
             animacaMainMapa.mostrarSetasNavegacao(mapaEntidade.isLivre);
         }
     }        
@@ -71,7 +74,7 @@ public class MapaUi
         }
     }
 
-    private IEnumerator alterarMaps(WrapperLevelMapDto evento)
+    private IEnumerator alterarMaps(WrapperLevelMapDto evento, SomMap somMap)
     {
         MaterialBackground.movimentarEntrada(levelMapaUiDto.MatBackground);
         yield return new WaitForSeconds(levelMapaUiDto.DelayInicioMapa);
@@ -79,6 +82,6 @@ public class MapaUi
         grupoBtnBaloes.posicionarBaloes(evento);
         yield return new WaitForSeconds(levelMapaUiDto.DelayInicioBaloes);
         MaterialBackground.movimentarSaida(levelMapaUiDto.MatBackground, evento.mapaEntidade.levelCorBackground);
-        yield return grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes);
+        yield return grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes, somMap);
     }   
 }

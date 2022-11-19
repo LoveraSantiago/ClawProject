@@ -50,7 +50,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
         }
     }
 
-    public IEnumerator coroutineZommarBaloes(WrapperLevelMapDto evento, float delay)
+    public IEnumerator coroutineZommarBaloes(WrapperLevelMapDto evento, float delay, SomMap somMap)
     {
         MapaEntidade mapaEntidade = evento.mapaEntidade;
         if (mapaEntidade.isLivre|| mapaEntidade.isProgresso)
@@ -63,6 +63,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
             {
                 BtnBalaoMapa btnBalaoMapaIt = btnsMapasBaloes[contador];
                 btnBalaoMapaIt.zoomarBalaoMais();
+                somMap.playSomUiBaloesLevel();
                 if((contador == (levelsLiberados - 1)) && newLevelLiberado && mapaEntidade.isProgresso)
                 {
                     btnBalaoMapaIt.ativarExclamacao();
