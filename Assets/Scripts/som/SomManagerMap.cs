@@ -10,6 +10,6 @@ public class SomManagerMap : SomManager
 
     public void playSomBaloesLevel()
     {
-        audioPlayOneShot(getAudioSource(1), audioDto.BumpBaloesLevels);
+        audioPlayOneShot(getAudioSourceUi(), audioDto.BumpBaloesLevels);
     }
 }

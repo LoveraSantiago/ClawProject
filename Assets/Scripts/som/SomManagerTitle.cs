@@ -14,7 +14,7 @@ public class SomManagerTitle : SomManager
 
     public void playSomBackground()
     {
-        audioPlay(getAudioSource(0), audioTitleDto.SomBackground);                
+        audioPlay(getAudioSourceBackground(), audioTitleDto.SomBackground);                
     }
 
     public void stopSomPrincipal()
@@ -24,7 +24,7 @@ public class SomManagerTitle : SomManager
 
     public void playSomBotaoClicado()
     {
-        audioPlayOneShot(getAudioSource(1), audioTitleDto.SomCliqueBotao);        
+        audioPlayOneShot(getAudioSourceUi(), audioTitleDto.SomCliqueBotao);        
     }
 
     public void playSomGarraAsSecundario()
@@ -42,21 +42,21 @@ public class SomManagerTitle : SomManager
         yield return new WaitForSeconds(audioTitleDto.DelayInicioSomGarra);
 
         AudioClipDto audioSomGarra = audioTitleDto.SomGarra;
-        audioPlay(getAudioSource(1), audioSomGarra);        
+        audioPlay(getAudioSourceGarra(), audioSomGarra);        
         yield return new WaitForSeconds(audioTitleDto.DelayStopSomGarra);
-        getAudioSource(1).Stop();
+        getAudioSourceGarra().Stop();
     }
 
     private IEnumerator coroutinePlayBumpSongs()
     {
         yield return new WaitForSeconds(audioTitleDto.DelayBumpTexto1);
-        audioPlayOneShot(getAudioSource(1), audioTitleDto.SomCliqueBotao);
+        audioPlayOneShot(getAudioSourceUi(), audioTitleDto.SomCliqueBotao);
         yield return new WaitForSeconds(audioTitleDto.DelayBumpTexto2);
-        audioPlayOneShot(getAudioSource(1), audioTitleDto.SomCliqueBotao);
+        audioPlayOneShot(getAudioSourceUi(), audioTitleDto.SomCliqueBotao);
         yield return new WaitForSeconds(audioTitleDto.DelayBumpTexto3);
-        audioPlayOneShot(getAudioSource(1), audioTitleDto.SomCliqueBotao);
+        audioPlayOneShot(getAudioSourceUi(), audioTitleDto.SomCliqueBotao);
         yield return new WaitForSeconds(audioTitleDto.DelayBumpEstrela);
-        audioPlayOneShot(getAudioSource(1), audioTitleDto.SomBumpEstrelas);
+        audioPlayOneShot(getAudioSourceUi(), audioTitleDto.SomBumpEstrelas);
         yield return null;
     }
 }

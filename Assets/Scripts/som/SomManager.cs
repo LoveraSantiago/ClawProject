@@ -11,9 +11,9 @@ public abstract class SomManager : SomLoading
         audiosSources = new AudioSource[3];
         audiosSources[0] = audioDto.MainAudioSource;
 
-        for(int contador = 0; contador < audiosSources.Length; contador++)
+        for(int contador = 1; contador < audiosSources.Length; contador++)
         {
-            audiosSources[contador + 1] = audioDto.GoAudioSource.AddComponent<AudioSource>();
+            audiosSources[contador] = audioDto.GoAudioSource.AddComponent<AudioSource>();
         } 
     }
 
@@ -30,23 +30,47 @@ public abstract class SomManager : SomLoading
         audioSource.PlayOneShot(audioClipDto.AudioClip);
     }
 
-    protected AudioSource getAudioSource(int indice)
+    protected AudioSource getAudioSourceBackground()
+    {
+        return getAudioSource(0);
+    }
+
+    protected AudioSource getAudioSourceGarra()
+    {
+        return getAudioSource(1);
+    }
+
+    protected AudioSource getAudioSourceUi()
+    {
+        return getAudioSource(2);
+    }
+
+    private AudioSource getAudioSource(int indice)
     {
         return audiosSources[indice];
     }
 
     //***** IMPLEMENTACAO INTERFACE SOMLOADING INICIO *****
-    public void playGarraGirando()
+    public void playSomGarraGirando()
     {
         audioPlay(getAudioSource(1), audioDto.SomGarra);
     }
 
-    public void playSomAbrirModal()
+    public void stopSomGarraGirando()
     {
-        Debug.Log("Som abrir modal chamado");
-        AudioSource audioSource = getAudioSource(1);
-        audioSource.clip = null;
+        getAudioSourceGarra().Stop();
+    }
+
+    public void playSomBumpModal()
+    {        
+        AudioSource audioSource = getAudioSourceUi();        
         audioPlayOneShot(audioSource, audioDto.SomBatidaAbrirModal);
     }
+
+    public void stopSomBackground()
+    {
+        getAudioSourceBackground().Stop();
+    }
+
     //***** IMPLEMENTACAO INTERFACE SOMLOADING FIM *****
 }
