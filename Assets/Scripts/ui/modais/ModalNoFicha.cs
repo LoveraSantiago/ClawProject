@@ -4,14 +4,14 @@ public class ModalNoFicha
 {
     private ModalNoFichaDto modalNoFichaDto;
 
-    public ModalNoFicha(ModalNoFichaDto modalNoFichaDto, Loading loading)
+    public ModalNoFicha(ModalNoFichaDto modalNoFichaDto, Loading loading, SomMap somMap)
     {
         this.modalNoFichaDto = modalNoFichaDto;
-        modalNoFichaDto.BtnSair.onClick.AddListener(() => desligar());
+        modalNoFichaDto.BtnSair.onClick.AddListener(() => desligar(somMap));
         modalNoFichaDto.BtnIrLoja.onClick.AddListener(() => loading.irParaLojaCena());
     }
 
-    public void ligar(Ficha ficha)
+    public void ligar(Ficha ficha, SomMap somMap)
     {
         Color corEscolhida = Color.white;
         if(Ficha.BRONZE == ficha)
@@ -27,11 +27,13 @@ public class ModalNoFicha
             corEscolhida = modalNoFichaDto.CorPrata;
         }
         modalNoFichaDto.ImgFicha.color = corEscolhida;
+        somMap.playSomAbrirModal();
         modalNoFichaDto.Animator.Play("modal-objetivo");
     }
 
-    private void desligar()
+    private void desligar(SomMap somMap)
     {
+        somMap.playSomAbrirModal();
         modalNoFichaDto.Animator.Play("fechar-modal");        
     }    
 }
