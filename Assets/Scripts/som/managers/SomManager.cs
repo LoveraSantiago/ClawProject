@@ -10,10 +10,12 @@ public abstract class SomManager : SomLoading
         this.audioDto = audioDto;
         audiosSources = new AudioSource[3];
         audiosSources[0] = audioDto.MainAudioSource;
+        audiosSources[0].priority = audiosSources.Length;
 
-        for(int contador = 1; contador < audiosSources.Length; contador++)
+        for (int contador = 1; contador < audiosSources.Length; contador++)
         {
             audiosSources[contador] = audioDto.GoAudioSource.AddComponent<AudioSource>();
+            audiosSources[contador].priority = audiosSources.Length - contador;
         } 
     }
 
