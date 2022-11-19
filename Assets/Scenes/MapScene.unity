@@ -3834,7 +3834,7 @@ MonoBehaviour:
         volume: 1
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
       bumpBaloesLevels:
-        volume: 0.75
+        volume: 0.05
         audioClip: {fileID: 8300000, guid: fa108c0a81e575740b81033e701de32f, type: 3}
     prefabLoading: {fileID: 2064940685}
     gosDesligar:
