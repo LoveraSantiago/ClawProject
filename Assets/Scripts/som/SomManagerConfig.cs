@@ -1,6 +1,7 @@
 public class SomManagerConfig : SomManager
 {
-    public SomManagerConfig(AudioDto audioDto) : base(audioDto, 1)
+    public SomManagerConfig(AudioDto audioDto) 
+        : base(audioDto)
     {
     }
 }

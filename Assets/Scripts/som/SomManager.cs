@@ -5,13 +5,13 @@ public abstract class SomManager : SomLoading
     private AudioDto audioDto;
     private AudioSource[] audiosSources;
 
-    protected SomManager(AudioDto audioDto, int qtdAudioSources)
+    protected SomManager(AudioDto audioDto)
     {
         this.audioDto = audioDto;
-        audiosSources = new AudioSource[qtdAudioSources + 1];
+        audiosSources = new AudioSource[3];
         audiosSources[0] = audioDto.MainAudioSource;
 
-        for(int contador = 0; contador < qtdAudioSources; contador++)
+        for(int contador = 0; contador < audiosSources.Length; contador++)
         {
             audiosSources[contador + 1] = audioDto.GoAudioSource.AddComponent<AudioSource>();
         } 

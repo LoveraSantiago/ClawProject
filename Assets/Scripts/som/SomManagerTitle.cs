@@ -6,7 +6,7 @@ public class SomManagerTitle : SomManager
     private AudioTitleDto audioTitleDto;    
 
     public SomManagerTitle(AudioTitleDto audioTitleDto)
-        :base(audioTitleDto, 1)
+        :base(audioTitleDto)
     {
         this.audioTitleDto = audioTitleDto;
         playSomBackground();
