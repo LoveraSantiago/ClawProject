@@ -1,5 +1,10 @@
+using UnityEngine;
+
 public class ModalFase 
 {
+    private readonly int ANIM_OBJETIVO = Animator.StringToHash("modal-objetivo");
+    private readonly int ANIM_FECHAR = Animator.StringToHash("modal-fechar");
+
     private ModalFaseDto modalFaseDto;
     private LinhasChallenge linhasChallenge;
     private NavegacaoDeArray<ColetavelEntidade> navegacaDeColetaveis;
@@ -28,7 +33,7 @@ public class ModalFase
         modalFaseDto.ImgsColetaveis[2].sprite = navegacaDeColetaveis.getItemProximo().sprite;
 
         somMap.playSomAbrirModal();
-        modalFaseDto.Animator.Play("modal-objetivo");
+        modalFaseDto.Animator.Play(ANIM_OBJETIVO);
                 
         linhasChallenge.addEstrelasChallenges(modalFaseDto.LinhasChallenges.CorEstrela, level.challenge);
         linhasChallenge.addConfiguracaoChallenges(mapaEntidade, level.getChallenges());
@@ -39,13 +44,13 @@ public class ModalFase
         PlayerPrefsFichas.consumirFicha(Ficha.PRATA, 1);
         somMap.playSomStart();
         loading.irParaGameCena();
-        modalFaseDto.Animator.Play("modal-fechar");
+        modalFaseDto.Animator.Play(ANIM_FECHAR);
     }
 
     private void desligar(SomMap somMap)
     {
         somMap.playSomCliqueCancelar();
         somMap.playSomAbrirModal();
-        modalFaseDto.Animator.Play("modal-fechar");
+        modalFaseDto.Animator.Play(ANIM_FECHAR);
     }   
 }

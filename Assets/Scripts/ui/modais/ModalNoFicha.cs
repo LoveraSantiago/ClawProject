@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class ModalNoFicha 
 {
+    private readonly int ANIM_OBJETIVO = Animator.StringToHash("modal-objetivo");
+    private readonly int ANIM_FECHAR   = Animator.StringToHash("fechar-modal");
     private ModalNoFichaDto modalNoFichaDto;
 
     public ModalNoFicha(ModalNoFichaDto modalNoFichaDto, Loading loading, SomMap somMap)
     {
         this.modalNoFichaDto = modalNoFichaDto;
         modalNoFichaDto.BtnSair.onClick.AddListener(() => desligar(somMap));
-        modalNoFichaDto.BtnIrLoja.onClick.AddListener(() => loading.irParaLojaCena());
+        modalNoFichaDto.BtnIrLoja.onClick.AddListener(() => irParaCena(loading, somMap));
     }
 
     public void ligar(Ficha ficha, SomMap somMap)
@@ -28,13 +30,19 @@ public class ModalNoFicha
         }
         modalNoFichaDto.ImgFicha.color = corEscolhida;
         somMap.playSomAbrirModal();
-        modalNoFichaDto.Animator.Play("modal-objetivo");
+        modalNoFichaDto.Animator.Play(ANIM_OBJETIVO);
+    }
+
+    private void irParaCena(Loading loading, SomMap somMap)
+    {
+        modalNoFichaDto.Animator.Play(ANIM_FECHAR);
+        loading.irParaLojaCena();
     }
 
     private void desligar(SomMap somMap)
     {
         somMap.playSomCliqueCancelar();
         somMap.playSomAbrirModal();
-        modalNoFichaDto.Animator.Play("fechar-modal");        
+        modalNoFichaDto.Animator.Play(ANIM_FECHAR);        
     }    
 }
