@@ -11,12 +11,17 @@ public class SomManagerMap : SomManager,
 
     public void playSomAbrirModal()
     {
-        audioPlayOneShot(getAudioSourceUi(), audioDto.AbrirModal);
+        audioPlayOneShot(getAudioSourceGarra(), audioDto.AbrirModal);//PROPOSITALMENTE PEGANDO AUDIO GARRA
     }
 
     public void playSomCliqueBalao()
     {
         audioPlayOneShot(getAudioSourceUi(), audioDto.CliqueSomBalao);
+    }
+
+    public void playSomCliqueCancelar()
+    {
+        audioPlayOneShot(getAudioSourceUi(), audioDto.CliqueSomCancelar);
     }
 
     public void playSomCliqueSetas()

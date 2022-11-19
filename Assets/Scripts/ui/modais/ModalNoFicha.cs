@@ -33,6 +33,7 @@ public class ModalNoFicha
 
     private void desligar(SomMap somMap)
     {
+        somMap.playSomCliqueCancelar();
         somMap.playSomAbrirModal();
         modalNoFichaDto.Animator.Play("fechar-modal");        
     }    

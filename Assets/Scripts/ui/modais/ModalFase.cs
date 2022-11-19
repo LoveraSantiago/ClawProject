@@ -42,6 +42,7 @@ public class ModalFase
 
     private void desligar(SomMap somMap)
     {
+        somMap.playSomCliqueCancelar();
         somMap.playSomAbrirModal();
         modalFaseDto.Animator.Play("modal-fechar");
     }   
