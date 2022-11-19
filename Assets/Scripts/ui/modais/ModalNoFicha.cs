@@ -36,6 +36,7 @@ public class ModalNoFicha
     private void irParaCena(Loading loading, SomMap somMap)
     {
         modalNoFichaDto.Animator.Play(ANIM_FECHAR);
+        somMap.playSomClique();
         loading.irParaLojaCena();
     }
 

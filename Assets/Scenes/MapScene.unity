@@ -3845,6 +3845,9 @@ MonoBehaviour:
       cliqueSomCancelar:
         volume: 0.04
         audioClip: {fileID: 8300000, guid: 239f092fc5d70a04fa691a9a9c3239d8, type: 3}
+      clique:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: 043c86f09fa068b46ba73b0486d14265, type: 3}
       abrirModal:
         volume: 0.08
         audioClip: {fileID: 8300000, guid: 218f1e44b165a5d41bd052a972aa81dd, type: 3}

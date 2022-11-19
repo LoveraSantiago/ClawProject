@@ -14,6 +14,11 @@ public class SomManagerMap : SomManager,
         audioPlayOneShot(getAudioSourceGarra(), audioDto.AbrirModal);//PROPOSITALMENTE PEGANDO AUDIO GARRA
     }
 
+    public void playSomClique()
+    {
+        audioPlayOneShot(getAudioSourceUi(), audioDto.Clique);
+    }
+
     public void playSomCliqueBalao()
     {
         audioPlayOneShot(getAudioSourceUi(), audioDto.CliqueSomBalao);
