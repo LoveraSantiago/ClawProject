@@ -5,4 +5,5 @@ public interface SomMap
     void playSomCliqueBalao();
     void playSomCliqueCancelar();
     void playSomCliqueSetas();
+    void playSomStart();
 }

@@ -29,6 +29,11 @@ public class SomManagerMap : SomManager,
         audioPlayOneShot(getAudioSourceUi(), audioDto.CliqueSomSetas);
     }
 
+    public void playSomStart()
+    {
+        audioPlayOneShot(getAudioSourceUi(), audioDto.SomStart);
+    }
+
     public void playSomUiBaloesLevel()
     {
         audioPlayOneShot(getAudioSourceUi(), audioDto.BumpBaloesLevels);
