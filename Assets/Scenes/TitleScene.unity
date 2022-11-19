@@ -1255,13 +1255,16 @@ MonoBehaviour:
       delayBumpTexto3: 0.15
       delayBumpEstrela: 0.1
       somBackground:
-        volume: 0.25
+        volume: 0.1
         audioClip: {fileID: 8300000, guid: 62f3dce088f8c0646b6cefd54e499d49, type: 3}
-      somCliqueBotao:
-        volume: 1
+      somBumpTexto:
+        volume: 0.8
         audioClip: {fileID: 8300000, guid: 043c86f09fa068b46ba73b0486d14265, type: 3}
+      somStart:
+        volume: 0.1
+        audioClip: {fileID: 8300000, guid: a03714c7d1b136346841d029d1fe7e35, type: 3}
       somBumpEstrelas:
-        volume: 1
+        volume: 0.85
         audioClip: {fileID: 8300000, guid: fb39762ebe68af940bf391ed6d49f7fc, type: 3}
     goLoading: {fileID: 40799382}
     gosDesligar:

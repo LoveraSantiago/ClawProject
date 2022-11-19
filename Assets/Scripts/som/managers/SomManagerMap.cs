@@ -1,4 +1,5 @@
-public class SomManagerMap : SomManager
+public class SomManagerMap : SomManager,
+                             SomMap
 {
     private AudioMapDto audioDto;
 

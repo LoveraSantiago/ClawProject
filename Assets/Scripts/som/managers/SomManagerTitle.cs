@@ -22,9 +22,14 @@ public class SomManagerTitle : SomManager
         audioTitleDto.MainAudioSource.Stop();
     }
 
-    public void playSomBotaoClicado()
+    public void playSomBumpTexto()
     {
-        audioPlayOneShot(getAudioSourceUi(), audioTitleDto.SomCliqueBotao);        
+        audioPlayOneShot(getAudioSourceUi(), audioTitleDto.SomBumpTexto);        
+    }
+
+    public void playSomStart()
+    {
+        audioPlayOneShot(getAudioSourceUi(), audioTitleDto.SomStart);
     }
 
     public void playSomGarraAsSecundario()
@@ -32,7 +37,7 @@ public class SomManagerTitle : SomManager
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePlaySomGarraAbertura());
     }    
 
-    public void playSomBumpTexto()
+    public void playSonsBumpsDeTexto()
     {
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePlayBumpSongs());
     }         
@@ -50,11 +55,11 @@ public class SomManagerTitle : SomManager
     private IEnumerator coroutinePlayBumpSongs()
     {
         yield return new WaitForSeconds(audioTitleDto.DelayBumpTexto1);
-        audioPlayOneShot(getAudioSourceUi(), audioTitleDto.SomCliqueBotao);
+        playSomBumpTexto();
         yield return new WaitForSeconds(audioTitleDto.DelayBumpTexto2);
-        audioPlayOneShot(getAudioSourceUi(), audioTitleDto.SomCliqueBotao);
+        playSomBumpTexto();
         yield return new WaitForSeconds(audioTitleDto.DelayBumpTexto3);
-        audioPlayOneShot(getAudioSourceUi(), audioTitleDto.SomCliqueBotao);
+        playSomBumpTexto();
         yield return new WaitForSeconds(audioTitleDto.DelayBumpEstrela);
         audioPlayOneShot(getAudioSourceUi(), audioTitleDto.SomBumpEstrelas);
         yield return null;

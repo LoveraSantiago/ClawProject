@@ -25,9 +25,8 @@ public abstract class SomManager : SomLoading
     }
 
     protected void audioPlayOneShot(AudioSource audioSource, AudioClipDto audioClipDto)
-    {
-        audioSource.volume = audioClipDto.Volume;
-        audioSource.PlayOneShot(audioClipDto.AudioClip);
+    {        
+        audioSource.PlayOneShot(audioClipDto.AudioClip, audioClipDto.Volume);
     }
 
     protected AudioSource getAudioSourceBackground()

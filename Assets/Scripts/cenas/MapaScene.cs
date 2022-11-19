@@ -7,7 +7,8 @@ public class MapaScene : MonoBehaviour,
     [SerializeField] private MainMapaDto mainMapaDto;                        
 
     private AllTimersFichas allTimersFichas;
-    private MapaUi mapaUi;    
+    private MapaUi mapaUi;
+    private SomManagerMap somManager;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class MapaScene : MonoBehaviour,
         FactoryPowerUpEntidade.resetContextoEstatico();
 
         PrefabLoading prefabLoading = mainMapaDto.PrefabLoading.GetComponent<PrefabLoading>();
-        SomManagerMap somManager = new SomManagerMap(mainMapaDto.AudioMapDto);
+        somManager = new SomManagerMap(mainMapaDto.AudioMapDto);
         Loading loading = prefabLoading.getLoading(somManager, mainMapaDto.GosDesligar);
 
         allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto, loading);        
@@ -61,6 +62,6 @@ public class MapaScene : MonoBehaviour,
 
     void AcaoMapaNavegado.ConsumidorEvento.consumirEvento(WrapperLevelMapDto evento)
     {
-        mapaUi.addMapaParaTela(evento);        
+        mapaUi.addMapaParaTela(evento, somManager);        
     }
 }
