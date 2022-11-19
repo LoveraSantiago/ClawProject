@@ -9,10 +9,10 @@ public class MapaUi
 
     private Material materialGrayScale;
 
-    public MapaUi(LevelMapaUiDto levelMapaUiDto)
+    public MapaUi(LevelMapaUiDto levelMapaUiDto, SomMap somMap)
     {
         this.levelMapaUiDto = levelMapaUiDto;
-        grupoBtnBaloes = new GrupoBtnBaloesMapa(levelMapaUiDto.BaloesLevels);        
+        grupoBtnBaloes = new GrupoBtnBaloesMapa(levelMapaUiDto.BaloesLevels, somMap);        
         animacaMainMapa = new AnimacaoMainMapa(levelMapaUiDto.AnimatorMainMapa);
         materialGrayScale = MaterialGrayScale.of();
     }

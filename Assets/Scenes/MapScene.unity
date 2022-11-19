@@ -3839,6 +3839,9 @@ MonoBehaviour:
       cliqueSomSetas:
         volume: 0.08
         audioClip: {fileID: 8300000, guid: 4f6325760753d3049b8e4fdcfc5837bc, type: 3}
+      cliqueSomBalao:
+        volume: 0.5
+        audioClip: {fileID: 8300000, guid: a8b967fbafab8584db3c534753ab0fef, type: 3}
     prefabLoading: {fileID: 2064940685}
     gosDesligar:
     - {fileID: 1770993062}

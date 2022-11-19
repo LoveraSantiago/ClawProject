@@ -25,7 +25,7 @@ public class MapaScene : MonoBehaviour,
         ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto, loading);
         new BotoesCenasMapa(mainMapaDto.BotoesCenasDto, loading);
 
-        mapaUi = new MapaUi(mainMapaDto.LevelMapaUiDto);
+        mapaUi = new MapaUi(mainMapaDto.LevelMapaUiDto, somManager);
 
         PrefabLevelsDto prefabLevels = mainMapaDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         HelperMapaEntidade.configurar(prefabLevels);
