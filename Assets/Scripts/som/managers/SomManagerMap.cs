@@ -9,6 +9,11 @@ public class SomManagerMap : SomManager,
         this.audioDto = audioDto;
     }
 
+    public void playSomAbrirModal()
+    {
+        audioPlayOneShot(getAudioSourceUi(), audioDto.AbrirModal);
+    }
+
     public void playSomCliqueBalao()
     {
         audioPlayOneShot(getAudioSourceUi(), audioDto.CliqueSomBalao);

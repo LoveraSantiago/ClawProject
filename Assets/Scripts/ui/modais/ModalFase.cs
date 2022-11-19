@@ -4,17 +4,17 @@ public class ModalFase
     private LinhasChallenge linhasChallenge;
     private NavegacaoDeArray<ColetavelEntidade> navegacaDeColetaveis;
 
-    public ModalFase(ModalFaseDto modalFaseDto, Loading loading)
+    public ModalFase(ModalFaseDto modalFaseDto, Loading loading, SomMap somMap)
     {
         this.modalFaseDto = modalFaseDto;
         modalFaseDto.BtnLevel.onClick.AddListener(()=> irParaCenaGame(loading));
-        modalFaseDto.BtnFechar.onClick.AddListener(() => desligar());
+        modalFaseDto.BtnFechar.onClick.AddListener(() => desligar(somMap));
         navegacaDeColetaveis = new NavegacaoDeArray<ColetavelEntidade>();
         linhasChallenge = new LinhasChallenge(modalFaseDto.LinhasChallenges.LinhaChallenges);
     }
 
-    public void ligar(MapaEntidade mapaEntidade, int indiceLevel)
-    {
+    public void ligar(MapaEntidade mapaEntidade, int indiceLevel, SomMap somMap)
+    {        
         AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(indiceLevel);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
         MaterialMiniMaquina.addCores(3, modalFaseDto.ImgMiniMaquina.material, level.getDicionarioDeCores());
@@ -27,6 +27,7 @@ public class ModalFase
         modalFaseDto.ImgsColetaveis[1].sprite = navegacaDeColetaveis.getItemProximo().sprite;
         modalFaseDto.ImgsColetaveis[2].sprite = navegacaDeColetaveis.getItemProximo().sprite;
 
+        somMap.playSomAbrirModal();
         modalFaseDto.Animator.Play("modal-objetivo");
                 
         linhasChallenge.addEstrelasChallenges(modalFaseDto.LinhasChallenges.CorEstrela, level.challenge);
@@ -39,8 +40,9 @@ public class ModalFase
         loading.irParaGameCena();        
     }
 
-    private void desligar()
+    private void desligar(SomMap somMap)
     {
+        somMap.playSomAbrirModal();
         modalFaseDto.Animator.Play("modal-fechar");
     }   
 }
