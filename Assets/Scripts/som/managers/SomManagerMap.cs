@@ -8,7 +8,7 @@ public class SomManagerMap : SomManager
         this.audioDto = audioDto;
     }
 
-    public void playSomBaloesLevel()
+    public void playSomUiBaloesLevel()
     {
         audioPlayOneShot(getAudioSourceUi(), audioDto.BumpBaloesLevels);
     }
