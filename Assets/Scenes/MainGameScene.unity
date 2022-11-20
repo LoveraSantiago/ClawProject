@@ -11938,6 +11938,18 @@ MonoBehaviour:
       somBatidaAbrirModal:
         volume: 1
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
+      somBackground:
+        volume: 0.2
+        audioClip: {fileID: 8300000, guid: 9ab0aa6a032f1004595d6bcaf989713b, type: 3}
+      somCombinacaoOK:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: 65d429aec42b5bb40a09e11d30d918f9, type: 3}
+      somCombinacaoNOK:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: 883d7eb57b3fad741844e17b63e0a96d, type: 3}
+      somColetado:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: 82edef6eac25f524cbfc99e5ece0e3d4, type: 3}
     prefabLoading: {fileID: 712928913}
     gosDesligar:
     - {fileID: 1078757848}
