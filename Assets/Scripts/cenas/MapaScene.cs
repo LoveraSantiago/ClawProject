@@ -42,6 +42,7 @@ public class MapaScene : MonoBehaviour,
 
         loading.fecharModal();
         navegacaoMapas.inicializar();
+        somManager.playSomBackground();
     }
 
     private void Update()

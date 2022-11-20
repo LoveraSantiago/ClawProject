@@ -72,6 +72,5 @@ public abstract class SomManager : SomLoading
     {
         getAudioSourceBackground().Stop();
     }
-
     //***** IMPLEMENTACAO INTERFACE SOMLOADING FIM *****
 }

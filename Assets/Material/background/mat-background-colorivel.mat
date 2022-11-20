@@ -79,16 +79,16 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _subida: 0
-    - _tempoSubtracao: 0
+    - _tempoSubtracao: 6.670359
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _cor_background: {r: 1, g: 1, b: 1, a: 1}
-    - _cor_contorno: {r: 0.007843138, g: 0.9372549, b: 1, a: 1}
-    - _cor_g1: {r: 0.10980392, g: 0.9411765, b: 1, a: 1}
-    - _cor_g2: {r: 0.007843138, g: 0.7490196, b: 0.8, a: 1}
-    - _cor_g3: {r: 0.011764706, g: 0.7647059, b: 1, a: 1}
-    - _cor_g4: {r: 0.6431373, g: 0.9764706, b: 1, a: 1}
+    - _cor_background: {r: 0.31764707, g: 0.9098039, b: 0.7137255, a: 1}
+    - _cor_contorno: {r: 0.14901961, g: 0.27450982, b: 0.3254902, a: 1}
+    - _cor_g1: {r: 0.16470589, g: 0.6156863, b: 0.56078434, a: 1}
+    - _cor_g2: {r: 0.9137255, g: 0.76862746, b: 0.41568628, a: 1}
+    - _cor_g3: {r: 0.95686275, g: 0.63529414, b: 0.38039216, a: 1}
+    - _cor_g4: {r: 0.90588236, g: 0.43529412, b: 0.31764707, a: 1}
     - _valor_clareamento: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
