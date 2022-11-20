@@ -28,7 +28,7 @@ public class PupSceneV2 : MonoBehaviour,
         Loading loading = prefabLoading.getLoading(somManager, mainPupDto.GosDesligar);
         loading.fecharModal();
 
-        timerFichaBronze = new TimerFicha(mainPupDto.TimerFichaDto, loading, Ficha.BRONZE);
+        timerFichaBronze = new TimerFicha(mainPupDto.TimerFichaDto, loading, null, Ficha.BRONZE);
         cardDetalhe      = new CardDetalhePup(mainPupDto.CardDetalheDto);
         animacao         = new AnimacaoCardsPup(mainPupDto.Animator);
         cardsPups        = new CardsPups(mainPupDto.CardsPupsDto);
