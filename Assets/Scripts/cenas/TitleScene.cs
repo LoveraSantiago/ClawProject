@@ -31,7 +31,7 @@ public class TitleScene : MonoBehaviour
         }
         inputGame = new InputGameImpl();
         somManager.playSomGarraAsSecundario();
-        somManager.playSomBumpTexto();
+        somManager.playSonsBumpsDeTexto();
     }
 
     private void Update()
@@ -45,7 +45,7 @@ public class TitleScene : MonoBehaviour
 
     public void irParaMainScene()
     {
-        somManager.playSomBotaoClicado();
+        somManager.playSomStart();
         somManager.stopSomPrincipal();        
 
         PrefabLoading prefabLoading = mainTitleDto.GoLoading.GetComponent<PrefabLoading>();

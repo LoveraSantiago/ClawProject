@@ -79,12 +79,15 @@ public class Loading
 
     private IEnumerator coroutineAbrirModal(string nomeCena)
     {
-        somLoading.playSomAbrirModal();
+        somLoading.stopSomBackground();
         loadingDto.Animator.Play(ABRIR_MODAL);
+        yield return new WaitForSeconds(0.1f);
+
+        somLoading.playSomBumpModal();
         loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 0);
         yield return null;
 
-        somLoading.playGarraGirando();
+        somLoading.playSomGarraGirando();
         yield return new WaitForSeconds(loadingDto.DelayAbrirModal);
 
         desligarGos();
@@ -99,9 +102,7 @@ public class Loading
             //Debug.Log(operation.progress);
             yield return null;
         }
-        loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 100);
-        //loadingDto.Animator.Play(FECHAR_MODAL);
-        //somLoading.playSomAbrirModal();
+        loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 100);        
         yield return new WaitForSeconds(loadingDto.DelayFecharModal);
         operation.allowSceneActivation = true;
         yield return null;
@@ -109,11 +110,11 @@ public class Loading
 
     private IEnumerator coroutineFecharModal()
     {
+        somLoading.stopSomGarraGirando();
         yield return null;
-        somLoading.playGarraGirando();        
         
         loadingDto.Animator.Play(FECHAR_MODAL);
-        somLoading.playSomAbrirModal();
+        somLoading.playSomBumpModal();
         yield return new WaitForSeconds(loadingDto.DelayFecharModal);
 
         loadingDto.GoCanvas.gameObject.SetActive(false);

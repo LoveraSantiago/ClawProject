@@ -3300,6 +3300,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3064867128851755661, guid: 55e3d5bbb75662d4e87c325a06b1aae2, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 220680146}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55e3d5bbb75662d4e87c325a06b1aae2, type: 3}
 --- !u!1 &1390433028 stripped
@@ -4437,7 +4441,7 @@ MonoBehaviour:
     audioColetaveisDto:
       mainAudioSource: {fileID: 220680149}
       somGarra:
-        volume: 0.3
+        volume: 0.03
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
       somBatidaAbrirModal:
         volume: 1

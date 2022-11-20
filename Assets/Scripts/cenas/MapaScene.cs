@@ -7,7 +7,8 @@ public class MapaScene : MonoBehaviour,
     [SerializeField] private MainMapaDto mainMapaDto;                        
 
     private AllTimersFichas allTimersFichas;
-    private MapaUi mapaUi;    
+    private MapaUi mapaUi;
+    private SomManagerMap somManager;
 
     private void Start()
     {
@@ -17,18 +18,18 @@ public class MapaScene : MonoBehaviour,
         FactoryPowerUpEntidade.resetContextoEstatico();
 
         PrefabLoading prefabLoading = mainMapaDto.PrefabLoading.GetComponent<PrefabLoading>();
-        SomManagerMap somManager = new SomManagerMap(mainMapaDto.AudioMapDto);
+        somManager = new SomManagerMap(mainMapaDto.AudioMapDto);
         Loading loading = prefabLoading.getLoading(somManager, mainMapaDto.GosDesligar);
 
-        allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto, loading);        
-        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto, loading);
-        new BotoesCenasMapa(mainMapaDto.BotoesCenasDto, loading);
+        allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto, loading, somManager);        
+        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto, loading, somManager);
+        new BotoesCenasMapa(mainMapaDto.BotoesCenasDto, loading, somManager);
 
-        mapaUi = new MapaUi(mainMapaDto.LevelMapaUiDto);
+        mapaUi = new MapaUi(mainMapaDto.LevelMapaUiDto, somManager);
 
         PrefabLevelsDto prefabLevels = mainMapaDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         HelperMapaEntidade.configurar(prefabLevels);
-        NavegacaoMapas navegacaoMapas = new NavegacaoMapas(mainMapaDto.BotoesNavegacao);        
+        NavegacaoMapas navegacaoMapas = new NavegacaoMapas(mainMapaDto.BotoesNavegacao, somManager);        
 
         new AcaoMapaNavegado()
             .configurarProdutor(navegacaoMapas)
@@ -41,6 +42,7 @@ public class MapaScene : MonoBehaviour,
 
         loading.fecharModal();
         navegacaoMapas.inicializar();
+        somManager.playSomBackground();
     }
 
     private void Update()
@@ -61,6 +63,6 @@ public class MapaScene : MonoBehaviour,
 
     void AcaoMapaNavegado.ConsumidorEvento.consumirEvento(WrapperLevelMapDto evento)
     {
-        mapaUi.addMapaParaTela(evento);        
+        mapaUi.addMapaParaTela(evento, somManager);        
     }
 }

@@ -1,24 +1,18 @@
 public class BotoesCenasMapa 
 {
-    public BotoesCenasMapa(BotoesCenasDto botoesCenasDto, Loading loading)
+    public BotoesCenasMapa(BotoesCenasDto botoesCenasDto, Loading loading, SomMap somMap)
     {
-        configurarBotoesCenas(botoesCenasDto, loading);
+        configurarBotoesCenas(botoesCenasDto, loading, somMap);
     }
 
-    private void configurarBotoesCenas(BotoesCenasDto botoesCenasDto, Loading loading)
+    private void configurarBotoesCenas(BotoesCenasDto botoesCenasDto, Loading loading, SomMap somMap)
     {
         configurarExclamacoes(botoesCenasDto);
-        botoesCenasDto.BtnCards.onClick.AddListener(() => loading.irParaPowerUpCena());
-        botoesCenasDto.BtnStore.onClick.AddListener(() => loading.irParaLojaCena());
-        botoesCenasDto.BtnScore.onClick.AddListener(() => {
-            loading.irParaLevelCena();
-            PlayerPrefsMapas.consumidoNovaLiberacaoLevel();
-        });
-        botoesCenasDto.BtnPelucia.onClick.AddListener(() => {
-            loading.irParaColetaveisCena();
-            PlayerPrefsMapas.consumidoNovaLiberacaoColetavel();
-        });
-        botoesCenasDto.BtnConfig.onClick.AddListener(() => loading.irParaConfiguracaoCena());
+        botoesCenasDto.BtnCards.onClick.AddListener  (() => irParaCenaPowerUp(loading, somMap));
+        botoesCenasDto.BtnStore.onClick.AddListener  (() => irParaCenaLoja(loading, somMap));
+        botoesCenasDto.BtnScore.onClick.AddListener  (() => irParaCenaLevel(loading, somMap));
+        botoesCenasDto.BtnPelucia.onClick.AddListener(() => irParaCenaColetaveis(loading, somMap));
+        botoesCenasDto.BtnConfig.onClick.AddListener (() => irParaCenaConfiguracao(loading, somMap));
     }
 
     private void configurarExclamacoes(BotoesCenasDto botoesCenasDto)
@@ -50,4 +44,36 @@ public class BotoesCenasMapa
             botoesCenasDto.ExclamacaoColetavel.SetActive(false);
         }
     }
+
+    private void irParaCenaPowerUp(Loading loading, SomMap somMap)
+    {
+        somMap.playSomClique();
+        loading.irParaPowerUpCena();
+    }
+
+    private void irParaCenaLoja(Loading loading, SomMap somMap)
+    {
+        somMap.playSomClique();
+        loading.irParaLojaCena();
+    }
+
+    private void irParaCenaLevel(Loading loading, SomMap somMap)
+    {
+        somMap.playSomClique();
+        loading.irParaLevelCena();
+        PlayerPrefsMapas.consumidoNovaLiberacaoLevel();
+    }
+
+    private void irParaCenaColetaveis(Loading loading, SomMap somMap)
+    {
+        somMap.playSomClique();
+        loading.irParaColetaveisCena();
+        PlayerPrefsMapas.consumidoNovaLiberacaoColetavel();
+    }
+
+    private void irParaCenaConfiguracao(Loading loading, SomMap somMap)
+    {
+        somMap.playSomClique();
+        loading.irParaConfiguracaoCena();
+    }    
 }

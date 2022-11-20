@@ -1,20 +1,25 @@
+using UnityEngine;
+
 public class ModalFase 
 {
+    private readonly int ANIM_OBJETIVO = Animator.StringToHash("modal-objetivo");
+    private readonly int ANIM_FECHAR = Animator.StringToHash("modal-fechar");
+
     private ModalFaseDto modalFaseDto;
     private LinhasChallenge linhasChallenge;
     private NavegacaoDeArray<ColetavelEntidade> navegacaDeColetaveis;
 
-    public ModalFase(ModalFaseDto modalFaseDto, Loading loading)
+    public ModalFase(ModalFaseDto modalFaseDto, Loading loading, SomMap somMap)
     {
         this.modalFaseDto = modalFaseDto;
-        modalFaseDto.BtnLevel.onClick.AddListener(()=> irParaCenaGame(loading));
-        modalFaseDto.BtnFechar.onClick.AddListener(() => desligar());
+        modalFaseDto.BtnLevel.onClick.AddListener(()=> irParaCenaGame(loading, somMap));
+        modalFaseDto.BtnFechar.onClick.AddListener(() => desligar(somMap));
         navegacaDeColetaveis = new NavegacaoDeArray<ColetavelEntidade>();
         linhasChallenge = new LinhasChallenge(modalFaseDto.LinhasChallenges.LinhaChallenges);
     }
 
-    public void ligar(MapaEntidade mapaEntidade, int indiceLevel)
-    {
+    public void ligar(MapaEntidade mapaEntidade, int indiceLevel, SomMap somMap)
+    {        
         AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(indiceLevel);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
         MaterialMiniMaquina.addCores(3, modalFaseDto.ImgMiniMaquina.material, level.getDicionarioDeCores());
@@ -27,20 +32,25 @@ public class ModalFase
         modalFaseDto.ImgsColetaveis[1].sprite = navegacaDeColetaveis.getItemProximo().sprite;
         modalFaseDto.ImgsColetaveis[2].sprite = navegacaDeColetaveis.getItemProximo().sprite;
 
-        modalFaseDto.Animator.Play("modal-objetivo");
+        somMap.playSomAbrirModal();
+        modalFaseDto.Animator.Play(ANIM_OBJETIVO);
                 
         linhasChallenge.addEstrelasChallenges(modalFaseDto.LinhasChallenges.CorEstrela, level.challenge);
         linhasChallenge.addConfiguracaoChallenges(mapaEntidade, level.getChallenges());
     }
 
-    private void irParaCenaGame(Loading loading)
+    private void irParaCenaGame(Loading loading, SomMap somMap)
     {
         PlayerPrefsFichas.consumirFicha(Ficha.PRATA, 1);
-        loading.irParaGameCena();        
+        somMap.playSomStart();
+        loading.irParaGameCena();
+        modalFaseDto.Animator.Play(ANIM_FECHAR);
     }
 
-    private void desligar()
+    private void desligar(SomMap somMap)
     {
-        modalFaseDto.Animator.Play("modal-fechar");
+        somMap.playSomCliqueCancelar();
+        somMap.playSomAbrirModal();
+        modalFaseDto.Animator.Play(ANIM_FECHAR);
     }   
 }

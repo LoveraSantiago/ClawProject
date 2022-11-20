@@ -6,11 +6,11 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
 
     private ProdutorDeEvento<WrapperLevelMapDto> produtorDeEvento;
 
-    public NavegacaoMapas(BotoesNavegacaoMapaDto botoesNavegacao)
+    public NavegacaoMapas(BotoesNavegacaoMapaDto botoesNavegacao, SomMap somMap)
     {
         this.botoesNavegacao = botoesNavegacao;
-        this.botoesNavegacao.BtnNavegacaoEsquerda.onClick.AddListener(() => navegacaoEsquerda());
-        this.botoesNavegacao.BtnNavegacaoDireita.onClick.AddListener (() => navegacaoDireita());
+        this.botoesNavegacao.BtnNavegacaoEsquerda.onClick.AddListener(() => navegacaoEsquerda(somMap));
+        this.botoesNavegacao.BtnNavegacaoDireita.onClick.AddListener (() => navegacaoDireita(somMap));
 
         configurarMapasParaNavegacao();
         produtorDeEvento = new ProdutorDeEvento<WrapperLevelMapDto>();        
@@ -22,15 +22,17 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
         produzirEvento(Direcao.CENTRALIZADA, mapaEntidade);
     }    
 
-    private void navegacaoEsquerda()
+    private void navegacaoEsquerda(SomMap somMap)
     {
+        somMap.playSomCliqueSetas();
         MapaEntidade mapaEntidade = navegacaoDeArray.getItemProximo();
         produzirEvento(Direcao.ESQUERDA, mapaEntidade);
         dismissExclamacao();
     }
 
-    private void navegacaoDireita()
+    private void navegacaoDireita(SomMap somMap)
     {
+        somMap.playSomCliqueSetas();
         MapaEntidade mapaEntidade = navegacaoDeArray.getItemAnterior();
         produzirEvento(Direcao.DIREITA, mapaEntidade);
         dismissExclamacao();

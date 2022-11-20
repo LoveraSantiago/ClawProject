@@ -7,19 +7,19 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
     private BtnBalaoMapa[] btnsMapasBaloes;
     private ProdutorDeEvento<int> produtorDeEvento;
 
-    public GrupoBtnBaloesMapa(BalaoLevelBtnDto[] baloesLevelBtnDto)
+    public GrupoBtnBaloesMapa(BalaoLevelBtnDto[] baloesLevelBtnDto, SomMap somMap)
     {        
-        inicializarBotoesBaloesMapas(baloesLevelBtnDto);
+        inicializarBotoesBaloesMapas(baloesLevelBtnDto, somMap);
         produtorDeEvento = new ProdutorDeEvento<int>();
     }
 
-    private void inicializarBotoesBaloesMapas(BalaoLevelBtnDto[] baloesLevelBtnDto)
+    private void inicializarBotoesBaloesMapas(BalaoLevelBtnDto[] baloesLevelBtnDto, SomMap somMap)
     {
         btnsMapasBaloes = new BtnBalaoMapa[baloesLevelBtnDto.Length];
         for (int contador = 0; contador < baloesLevelBtnDto.Length; contador++)
         {
             btnsMapasBaloes[contador] = new BtnBalaoMapa(baloesLevelBtnDto[contador]);
-            baloesLevelBtnDto[contador].BtnLevel.onClick.AddListener(() => cliqueAcionado());
+            baloesLevelBtnDto[contador].BtnLevel.onClick.AddListener(() => cliqueAcionado(somMap));
         }
     }
 
@@ -50,7 +50,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
         }
     }
 
-    public IEnumerator coroutineZommarBaloes(WrapperLevelMapDto evento, float delay)
+    public IEnumerator coroutineZommarBaloes(WrapperLevelMapDto evento, float delay, SomMap somMap)
     {
         MapaEntidade mapaEntidade = evento.mapaEntidade;
         if (mapaEntidade.isLivre|| mapaEntidade.isProgresso)
@@ -63,6 +63,7 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
             {
                 BtnBalaoMapa btnBalaoMapaIt = btnsMapasBaloes[contador];
                 btnBalaoMapaIt.zoomarBalaoMais();
+                somMap.playSomUiBaloesLevel();
                 if((contador == (levelsLiberados - 1)) && newLevelLiberado && mapaEntidade.isProgresso)
                 {
                     btnBalaoMapaIt.ativarExclamacao();
@@ -73,8 +74,9 @@ public class GrupoBtnBaloesMapa : AcaoBotaoMapaAcionado.ProdutorEvento
         yield return null;
     }
 
-    private void cliqueAcionado()
+    private void cliqueAcionado(SomMap somMap)
     {
+        somMap.playSomCliqueBalao();
         GameObject go = EventSystem.current.currentSelectedGameObject;
         int indiceEscolhido = int.Parse(go.name);
 
