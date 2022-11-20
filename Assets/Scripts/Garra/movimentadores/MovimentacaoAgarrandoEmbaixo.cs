@@ -3,7 +3,8 @@ public class MovimentacaoAgarrandoEmbaixo : AbstractMovimentacaoDaGarraNormal
     public override void preInicio()
     {
         agarrando();
-        colocarMassa(getMassaMovimentacaoAgarrar());        
+        colocarMassa(getMassaMovimentacaoAgarrar());
+        stopSomGarraMovimentoVertical();
     }
 
     public override void fixedUpdate()

@@ -4,8 +4,8 @@ public class ComponenteAnimacaoDaGarra : ComponenteEfeitosDaGarra
 {
     private AbstractGarraAnimacao animacao;
 
-    public ComponenteAnimacaoDaGarra(GarraDto garraDto) : 
-        base(garraDto){}
+    public ComponenteAnimacaoDaGarra(GarraDto garraDto, SomGarra somGarra) : 
+        base(garraDto, somGarra){}
 
     public void animacaoParaDireita()
     {

@@ -13,6 +13,7 @@ public class MovimentacaoVoltarParaCima : AbstractMovimentacaoDaGarra
     {
         colocarMassa(getMassaMovimentacaoCima());
         playAnimacaoIrPCima();
+        playSomGarraMovimentoVertical();
     }
 
     public override void update(InputGame inputGame)

@@ -41,8 +41,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL INICIO    
     public void trocarParaAcaoDescendo()
-    {
-        AudioController.current.PlayAudioGarra();        
+    {        
         trocarMovimentador(new MovimentacaoParaBaixo());
     }
 
@@ -52,8 +51,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     }
 
     public void trocarParaAcaoNormal()
-    {
-        AudioController.current.StopAudioGarra();
+    {        
         if (movAtual.isPlayAnimacaoComemorando())
         {
             //Debug.Log("comemorando");

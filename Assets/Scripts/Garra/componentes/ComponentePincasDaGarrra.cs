@@ -7,8 +7,8 @@ public class ComponentePincasDaGarrra : ComponenteRigidBodyDaGarra
     private EdgeCollider2D colliderPEsquerda;
     private EdgeCollider2D colliderPDireita;    
 
-    public ComponentePincasDaGarrra(GarraDto garraDto)
-        : base(garraDto)
+    public ComponentePincasDaGarrra(GarraDto garraDto, SomGarra somGarra)
+        : base(garraDto, somGarra)
     {   
         colliderPEsquerda = getTransformPincaEsquerda().GetComponent<EdgeCollider2D>();
         colliderPDireita  = getTransformPincaDireita().GetComponent<EdgeCollider2D>(); ;

@@ -26,14 +26,14 @@ public class MainGameScene : MonoBehaviour,
         FactoryPowerUpEntidade.resetContextoEstatico();
 
         PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
-        SomManagerGame somManagerGame = new SomManagerGame(mainDto.AudioGameDto);
-        Loading loading = prefabLoading.getLoading(somManagerGame, mainDto.GosDesligar);
+        SomManagerGame somManager = new SomManagerGame(mainDto.AudioGameDto);
+        Loading loading = prefabLoading.getLoading(somManager, mainDto.GosDesligar);
 
         PrefabLevelsDto prefabLevels = mainDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         HelperMapaEntidade.configurar(prefabLevels);
 
         AbstractLevel levelEscolhido = ContextoEstaticoUtils.loadLevelEstaticoAtualOrCreateLevel(mapa, indiceLevel);
-        MainGameManagers managers = new MainGameManagers(mainDto, loading, this);
+        MainGameManagers managers = new MainGameManagers(mainDto, loading, somManager, this);
         loading.fecharModal();
     }        
     

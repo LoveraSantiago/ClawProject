@@ -11,12 +11,12 @@ public class MainGameManagers
     public InputGameImpl     inputGame         { get; private set; }
     public DraggavelManager  draggavelManager  { get; private set; }
 
-    public MainGameManagers(MainGameDto mainDto, Loading loading, Consumidor<UpdaterManagers> consumidorUpdateManagers)
+    public MainGameManagers(MainGameDto mainDto, Loading loading, SomGarra somgarra, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
         ColetorDeDados coletorDeDados = new ColetorDeDados();
 
         inputGame         = new InputGameImpl();
-        garraManager      = new GarraManager(mainDto.GarraDto);
+        garraManager      = new GarraManager(mainDto.GarraDto, somgarra);
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
         maquinaManager    = new MaquinaManager(mainDto.MaquinaDto);
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);

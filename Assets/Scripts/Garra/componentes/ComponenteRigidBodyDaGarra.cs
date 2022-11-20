@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class ComponenteRigidBodyDaGarra : ComponenteGarraDtoDaGarra
+public class ComponenteRigidBodyDaGarra : ComponenteSomDaGarra
 {
     private Vector2 posInicial;
 
-    public ComponenteRigidBodyDaGarra(GarraDto garraDto)
-        : base(garraDto)
+    public ComponenteRigidBodyDaGarra(GarraDto garraDto, SomGarra somGarra)
+        : base(garraDto, somGarra)
     {
         posInicial = garraDto.Corpo.RigidBody.transform.localPosition;
     }

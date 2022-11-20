@@ -58,9 +58,9 @@ public abstract class AbstractMovimentacaoDaGarra : ComponenteRigidBodyDeMovimen
         produtorEventoInfoGarra.produziuEvento(new InformacoesDaGarraDto(nomeColidido));
     }
 
-    public static void configurar(GarraDto garraDto)
+    public static void configurar(GarraDto garraDto, SomGarra somGarra)
     {
-        configurarComponenteGarra(garraDto);
+        configurarComponenteGarra(garraDto, somGarra);
         contadorDeSubidas = 0;
         produtorEventoInfoGarra = new ProdutorDeEvento<InformacoesDaGarraDto>();
     }

@@ -18,9 +18,9 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     private GerenciadorDeMovimentacaoPowerUp gerDeMovPowerUp;
     private GerenciadorDeMovimentacao        gerDeMovAtual;
 
-    public GarraManager(GarraDto garraDto)
+    public GarraManager(GarraDto garraDto, SomGarra somGarra)
     {
-        AbstractMovimentacaoDaGarra.configurar(garraDto);
+        AbstractMovimentacaoDaGarra.configurar(garraDto, somGarra);
         cabo = new CaboDaGarra(garraDto.CaboDaGarraDto);
 
         if(LevelUtils.isCacaNiquelLevel(ContextoEstaticoUtils.level))

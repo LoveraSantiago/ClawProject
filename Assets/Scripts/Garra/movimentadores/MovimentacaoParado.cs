@@ -9,6 +9,7 @@ public class MovimentacaoParado : AbstractMovimentacaoDaGarra
         {
             playAnimacaoPiscar();            
         }
+        stopSomGarraMovimentoVertical();
     }
 
     public override void fixedUpdate()
