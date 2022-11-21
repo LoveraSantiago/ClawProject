@@ -61,25 +61,17 @@ public class MainGameManagers
         eventos.configurarEventos(this);
     }
 
-    private IEnumerator startLaizy(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
+    protected virtual IEnumerator startLaizy(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
         yield return coletaveisManager.start();
         yield return new WaitForSeconds(mainDto.DelayInicio);
 
-        maquinaManager.start(inputGame);         
-
-        AbstractLevel levelEscolhido = ContextoEstaticoUtils.level;
-        if (LevelUtils.isTutorialLevel(levelEscolhido))
-        {
-            Tutorial tutorial = LevelUtils.getTutorial(levelEscolhido);
-            yield return tutorial.iniciar(mainDto);
-        }
-
+        maquinaManager.start(inputGame);
         garraManager.start(mainDto.GarraDto);
         consumidorUpdateManagers.consumir(getUpdatables());
     }
 
-    private UpdaterMainGameManagers getUpdatables()
+    protected UpdaterMainGameManagers getUpdatables()
     {
         return new UpdaterMainGameManagers(garraManager, maquinaManager, powerUpManager, inputGame);
     }
