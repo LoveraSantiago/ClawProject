@@ -17,9 +17,10 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     public  ContadorManager contador { get; private set; }
 
     private DetectorDeTriggers detectorDeTrigger;
-    private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;    
+    private ProdutorDeEvento<InformacoesColetadoDto> produtorDeInformacoesDoColetado;
+    private SomColetagem somColetagem;
 
-    public ColetaveisManager(ColetaveisDto coletaveisDto)
+    public ColetaveisManager(ColetaveisDto coletaveisDto, SomColetagem somColetagem)
     {   
         configuracoes(coletaveisDto);        
 
@@ -29,6 +30,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         efeito         = new EfeitoColetado(coletaveisDto.EfeitoColetado);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();
+        this.somColetagem = somColetagem;
     }
 
     private void configuracoes(ColetaveisDto coletaveisDto)
@@ -84,7 +86,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
         int score = contador.contarColetado(coletavelAcertado);
 
-        AudioController.current.PlayAudio(AudioController.current.coletar);
+        somColetagem.playSomColetagem();
 
         InformacoesColetadoDto infoColetadoDto = new InformacoesColetadoDto()
             .addInfosDisplayColetados(coletavelAcertado.getSprite(), contador.getResultCombinacao())

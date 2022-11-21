@@ -1,10 +1,23 @@
+using UnityEngine;
+
 public class SomManagerGame : SomManager,
-                              SomGarra
+                              SomGarra,
+                              SomColetagem
 {
-    public SomManagerGame(AudioDto audioDto) 
-        : base(audioDto)
+    private AudioGameDto audioGameDto;
+
+    public SomManagerGame(AudioGameDto audioDto) 
+        : base(audioDto, 1)
     {
+        this.audioGameDto = audioDto;
     }
+
+    //***** IMPLEMENTACAO INTERFACE SOMGARRA INICIO *****
+    public void playSomColetagem()
+    {
+        audioPlayOneShot(getAudioSourceColetagem(), audioGameDto.SomColetado);
+    }
+    //***** IMPLEMENTACAO INTERFACE SOMGARRA FIM *****
 
     //***** IMPLEMENTACAO INTERFACE SOMGARRA INICIO *****
     public void playSomGarraSubindo()
@@ -17,4 +30,9 @@ public class SomManagerGame : SomManager,
         base.stopSomGarraGirando();
     }
     //***** IMPLEMENTACAO INTERFACE SOMGARRA FIM *****
+
+    private AudioSource getAudioSourceColetagem()
+    {
+        return getAudioSource(3);
+    }
 }
