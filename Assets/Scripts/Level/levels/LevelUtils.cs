@@ -64,12 +64,17 @@ public class LevelUtils
     {
         return isNormalLevel(level) || isOrdemLevel(level) ||
                isObstaculoLevel(level) || isElevadorLevel(level) || 
-               isOvoLevel(level);
+               isOvoLevel(level) || isTutorialLevel(level);
     }
 
     public static bool isOvoLevel(AbstractLevel level)
     {
         return level.getTipoGame() == TipoGame.MEMORIA;
+    }
+
+    public static bool isTutorialLevel(AbstractLevel level)
+    {
+        return level.getTipoGame() == TipoGame.TUTORIAL;
     }
 
     public static ColetavelEntidade getColetavelFromLevelColetavel(AbstractLevel level)
