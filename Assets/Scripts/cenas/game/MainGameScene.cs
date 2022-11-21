@@ -23,18 +23,13 @@ public class MainGameScene : MonoBehaviour,
         CameraManager.forceAspectCameraAsRatio();
         ContextoEstaticoUtils.configMainMono(this);
         MateriaisUtils.configurar(mainDto.PrefabMateriais);
-        FactoryPowerUpEntidade.resetContextoEstatico();
-
-        PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
-        SomManagerGame somManager = new SomManagerGame(mainDto.AudioGameDto);
-        Loading loading = prefabLoading.getLoading(somManager, mainDto.GosDesligar);
+        FactoryPowerUpEntidade.resetContextoEstatico();       
 
         PrefabLevelsDto prefabLevels = mainDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         HelperMapaEntidade.configurar(prefabLevels);
 
         AbstractLevel levelEscolhido = ContextoEstaticoUtils.loadLevelEstaticoAtualOrCreateLevel(mapa, indiceLevel);
-        MainGameManagers managers = new MainGameManagers(mainDto, loading, somManager, this);
-        loading.fecharModal();
+        MainGameManagers managers = new MainGameManagers(mainDto, this);        
     }        
     
     void Update()

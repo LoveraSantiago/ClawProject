@@ -11,9 +11,12 @@ public class MainGameManagers
     public InputGameImpl     inputGame         { get; private set; }
     public DraggavelManager  draggavelManager  { get; private set; }
 
-    public MainGameManagers(
-        MainGameDto mainDto, Loading loading, SomManagerGame somManager, Consumidor<UpdaterManagers> consumidorUpdateManagers)
+    public MainGameManagers(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
+        PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
+        SomManagerGame somManager = new SomManagerGame(mainDto.AudioGameDto);
+        Loading loading = prefabLoading.getLoading(somManager, mainDto.GosDesligar);
+
         ColetorDeDados coletorDeDados = new ColetorDeDados();
 
         inputGame         = new InputGameImpl();
@@ -36,7 +39,8 @@ public class MainGameManagers
             .addProvedorSubidasDoElevador(coletaveisManager.board.elevador)
             .addProvedorDadosPowerUp(powerUpManager);
 
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));        
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));
+        loading.fecharModal();
     }   
 
     private void configurandoLevel(MainGameDto mainDto)
