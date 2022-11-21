@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class LevelTeste : AbstractLevel
+public class LevelTeste : AbstractLevelNormal
 {
     public override string getLevelTitle()
     {
@@ -10,12 +10,7 @@ public class LevelTeste : AbstractLevel
     public override string getMsgObjetivoLevel()
     {
         return "Colete todos os itens";
-    }
-
-    public override TipoGame getTipoGame()
-    {
-        return TipoGame.NORMAL;
-    }
+    }  
 
     public override int[,] getArrayDeColetaveis()
     {
