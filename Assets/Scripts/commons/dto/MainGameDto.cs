@@ -24,6 +24,8 @@ public class MainGameDto
     [SerializeField] private AudioGameDto audioGameDto;
     [SerializeField] private GameObject prefabLoading;
     [SerializeField] private GameObject[] gosDesligar;
+    [Space(5)]
+    [SerializeField] private TutorialDto tutorialDto;
 
     public BoxCollider2D DragCollider { get { return dragCollider; } }
     public GarraDto GarraDto { get { return garraDto; } }
@@ -38,4 +40,6 @@ public class MainGameDto
     public AudioGameDto AudioGameDto { get { return audioGameDto; } }
     public GameObject PrefabLoading { get { return prefabLoading; } }
     public GameObject[] GosDesligar { get { return gosDesligar; } }
+
+    public TutorialDto TutorialDto { get { return tutorialDto; } }
 }
