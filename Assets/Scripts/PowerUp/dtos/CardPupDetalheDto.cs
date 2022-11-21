@@ -15,7 +15,5 @@ public class CardPupDetalheDto
     public GameObject CardDetalhe { get { return cardDetalhe; } }
     public Material MaterialDetalhe { get { return materialDetalhe; } }
     public TextMeshProUGUI LblPreco { get { return lblPreco; } }
-    public TextMeshProUGUI LblQtd { get { return lblQtd; } }
-
-    
+    public TextMeshProUGUI LblQtd { get { return lblQtd; } }    
 }
