@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class Level1 : AbstractLevel
+public class Level1 : AbstractTutorial
 {
     public override string getLevelTitle()
     {
@@ -21,10 +21,10 @@ public class Level1 : AbstractLevel
     {
         return new int[,]
         {
-            { 4,  2,  1,  2,  1,  2,  1},
-            { 2,  1,  4,  1,  1,  3, -1},
-            {-1,  0,  4,  4,  4,  0, -1},
-            {-1, -1,  0,  4,  0, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
