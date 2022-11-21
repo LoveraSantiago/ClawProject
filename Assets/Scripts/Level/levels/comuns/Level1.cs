@@ -9,7 +9,7 @@ public class Level1 : AbstractLevelTutorial
 
     public override string getMsgObjetivoLevel()
     {
-        return LevelUtils.MSG_COLETAR_ITENS;
+        return "Complete o tutorial";
     } 
 
     public override int[,] getArrayDeColetaveis()
@@ -26,6 +26,8 @@ public class Level1 : AbstractLevelTutorial
             {-1, -1, -1, -1, -1, -1, -1}
         };
     }
+
+    //desabilitar o botao sair
 
     //public override int[,] getArrayDeColetaveis()
     //{
