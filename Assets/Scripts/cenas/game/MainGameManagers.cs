@@ -67,15 +67,16 @@ public class MainGameManagers
         yield return new WaitForSeconds(mainDto.DelayInicio);
 
         maquinaManager.start(inputGame);         
-        garraManager.start(mainDto.GarraDto);
-        consumidorUpdateManagers.consumir(getUpdatables());
 
         AbstractLevel levelEscolhido = ContextoEstaticoUtils.level;
         if (LevelUtils.isTutorialLevel(levelEscolhido))
         {
             Tutorial tutorial = LevelUtils.getTutorial(levelEscolhido);
-            tutorial.addDto(mainDto.TutorialDto);
+            yield return tutorial.iniciar(mainDto);
         }
+
+        garraManager.start(mainDto.GarraDto);
+        consumidorUpdateManagers.consumir(getUpdatables());
     }
 
     private UpdaterMainGameManagers getUpdatables()
