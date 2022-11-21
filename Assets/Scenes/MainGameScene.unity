@@ -11394,7 +11394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapa: 1
-  indiceLevel: 10
+  indiceLevel: 1
   mainDto:
     dragCollider: {fileID: 491158116}
     garraDto:
@@ -11933,7 +11933,7 @@ MonoBehaviour:
     audioGameDto:
       mainAudioSource: {fileID: 519420030}
       somGarra:
-        volume: 0.03
+        volume: 0.15
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
       somBatidaAbrirModal:
         volume: 1
@@ -12322,10 +12322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66991bffcc3529c47b845a523f11eba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  garra: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
-  combinacaoOk: {fileID: 8300000, guid: 65d429aec42b5bb40a09e11d30d918f9, type: 3}
-  combinacaoNok: {fileID: 8300000, guid: 883d7eb57b3fad741844e17b63e0a96d, type: 3}
-  coletar: {fileID: 8300000, guid: 82edef6eac25f524cbfc99e5ece0e3d4, type: 3}
 --- !u!212 &540035230 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5894626487799723653, guid: 60c301260e6514149bc0e163ff994732, type: 3}
