@@ -117,4 +117,9 @@ public class LevelUtils
             return null;
         }
     }
+
+    public static Tutorial getTutorial(AbstractLevel level)
+    {
+        return ((AbstractLevelTutorial)level).getTutorial();
+    }
 }

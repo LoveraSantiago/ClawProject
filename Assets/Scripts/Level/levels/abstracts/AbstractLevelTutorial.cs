@@ -5,4 +5,5 @@ public abstract class AbstractLevelTutorial : AbstractLevel
         return TipoGame.TUTORIAL;
     }
 
+    public abstract Tutorial getTutorial();
 }

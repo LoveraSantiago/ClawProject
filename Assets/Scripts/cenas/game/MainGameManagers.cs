@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 
 public class MainGameManagers 
 {   
@@ -51,7 +52,7 @@ public class MainGameManagers
         uiManager        .configurandoLevel(levelEscolhido);
 
         powerUpManager.configurarGosPowerUps(
-            getInformacaoDisplayColetado(), coletaveisManager.getFornecedorTrocadorDeOrdem());
+            getInformacaoDisplayColetado(), coletaveisManager.getFornecedorTrocadorDeOrdem());       
     }
 
     private void configurandoEventos()
@@ -63,10 +64,18 @@ public class MainGameManagers
     private IEnumerator startLaizy(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
         yield return coletaveisManager.start();
+        yield return new WaitForSeconds(mainDto.DelayInicio);
 
         maquinaManager.start(inputGame);         
         garraManager.start(mainDto.GarraDto);
-        consumidorUpdateManagers.consumir(getUpdatables());        
+        consumidorUpdateManagers.consumir(getUpdatables());
+
+        AbstractLevel levelEscolhido = ContextoEstaticoUtils.level;
+        if (LevelUtils.isTutorialLevel(levelEscolhido))
+        {
+            Tutorial tutorial = LevelUtils.getTutorial(levelEscolhido);
+            tutorial.addDto(mainDto.TutorialDto);
+        }
     }
 
     private UpdaterMainGameManagers getUpdatables()

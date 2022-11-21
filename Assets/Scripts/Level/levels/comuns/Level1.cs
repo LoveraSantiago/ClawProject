@@ -128,5 +128,10 @@ public class Level1 : AbstractLevelTutorial
     public override bool isLevelAlbedo0()
     {
         return false;
-    }    
+    }
+
+    public override Tutorial getTutorial()
+    {
+        return new Tutorial();
+    }
 }

@@ -11397,6 +11397,7 @@ MonoBehaviour:
   mapa: 1
   indiceLevel: 1
   mainDto:
+    delayInicio: 0.25
     dragCollider: {fileID: 491158116}
     garraDto:
       posCacaNiquel: -1.75
