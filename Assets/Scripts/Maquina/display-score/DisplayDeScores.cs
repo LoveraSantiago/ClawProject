@@ -12,8 +12,9 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
 
     private OrquestradorDisplayDigitos orquestrador;
     private Coroutine coroutineAtual;
+    private SomMaquina somMaquina;
 
-    public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto)
+    public DisplayDeScores(DisplayDeScoreDto displayDeScoresDto, SomMaquina somMaquina)
     {        
         SingleDisplayScoreDto[] singleDisplays = displayDeScoresDto.SingleDisplayScoreDto;        
         displayCentena = new DisplayScoreDigito(singleDisplays[0]);
@@ -21,6 +22,7 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
         displayUnidade = new DisplayScoreDigito(singleDisplays[2]);
 
         orquestrador = new OrquestradorDisplayDigitos(displayDeScoresDto, displayCentena, displayDezena, displayUnidade);
+        this.somMaquina = somMaquina;
     }
 
     public void configuradoPeloLevel(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)
@@ -29,15 +31,17 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
         configuradorDisplayDigito.configurar(displayDeScoresDto, levelEscolhido);
     }
     
-    public void mostrarScore(int score, bool result)
+    private void mostrarScore(int score, bool result)
     {
         splitarScore(score);
         if (result)
         {
+            somMaquina.playScoreColetagemSucesso();
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.blinkarScoreSucesso(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
         }
         else
         {
+            somMaquina.playScoreColetagemNaoSucesso();
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.blinkarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
         }
     }

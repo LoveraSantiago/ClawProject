@@ -33,13 +33,11 @@ public class ContadorNormal : AbstractContadorDeColetaveis
             if (trinca.isCombinacaoValida())
             {
                 resultCombinacao = true;
-                score += pontosAcerto;
-                AudioController.current.PlayAudio(AudioController.current.combinacaoOk);                
+                score += pontosAcerto;                
             }
             else
             {
-                resultCombinacao = false;
-                AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
+                resultCombinacao = false;                
             }           
         }
         else

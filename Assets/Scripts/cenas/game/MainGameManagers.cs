@@ -19,7 +19,7 @@ public class MainGameManagers
         inputGame         = new InputGameImpl();
         garraManager      = new GarraManager(mainDto.GarraDto, somManager);
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto, somManager);
-        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto);
+        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, somManager);
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
         uiManager         = new UiGameManager(mainDto, coletorDeDados, loading);
         cameraManager     = new CameraManager(mainDto.CameraDto);
