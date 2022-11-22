@@ -8,10 +8,12 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento
 
     private int contagemColetados;
     private MainGameDto mainDto;
+    private GarraManager garraManager;
 
-    public void iniciar(MainGameDto mainDto, MaquinaManager maquinaManager)
+    public void iniciar(MainGameDto mainDto, GarraManager garraManager, MaquinaManager maquinaManager)
     {
         this.mainDto = mainDto;
+        this.garraManager = garraManager;
         mainDto.TutorialDto.GoTutorial.SetActive(true);
         prepararTutorialParteCliqueColetavel(maquinaManager);
     }
@@ -52,7 +54,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento
         }
         if(contagemColetados == 3)
         {
-            
+            garraManager.parar();
         }
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class GerenciadorDeMovimentacao : AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {
-    public abstract int getContagemDeSubidas();
+    public abstract int  getContagemDeSubidas();
     public abstract void iniciarMovimentacoes();
     public abstract void update(InputGame inputGame);
     public abstract void fixedUpdate();
