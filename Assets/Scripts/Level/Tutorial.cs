@@ -8,11 +8,13 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento
     private int contagemColetados;
     private MainGameDto mainDto;
 
-    public void iniciar(MainGameDto mainDto)
+    public void iniciar(MainGameDto mainDto, MaquinaManager maquinaManager)
     {
         this.mainDto = mainDto;
-        mainDto.TutorialDto.GoTutorial.SetActive(true);        
+        mainDto.TutorialDto.GoTutorial.SetActive(true);
 
+        maquinaManager.botoesPowerUp.desativarPowerUp();
+        maquinaManager.botaoLigaDesliga.desligar();
         colocarNaPosicaoCliqueColetavel();                
     }
 
