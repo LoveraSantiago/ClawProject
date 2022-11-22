@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class Tutorial : AcaoColetadoFim.ConsumidorEvento
+public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
+                        AcaoBotaoPowerUpVazio.ConsumidorEvento
 {
-    private readonly int ANIM_ZOOM    = Animator.StringToHash("zoom");
-    private readonly int ANIM_COLETAR = Animator.StringToHash("clique-coletar");
+    private readonly int ANIM_PARTE_COLETAR = Animator.StringToHash("clique-coletar");
+    private readonly int ANIM_PARTE_POWERUP = Animator.StringToHash("clique-powerup");
+    private readonly int ANIM_PARTE_DRAGPUP = Animator.StringToHash("drag-powerup");
 
     private readonly string MSG_TUTORIAL_PARTE1 = "Clique para acionar a garra";
 
@@ -27,7 +29,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento
         maquinaManager.botoesPowerUp.desativarPowerUp();
         maquinaManager.botaoLigaDesliga.desligar();
         mainDto.TutorialDto.LblTexto.text = MSG_TUTORIAL_PARTE1;
-        mainDto.TutorialDto.Animator.Play(ANIM_COLETAR);        
+        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_COLETAR);        
     }    
 
     private void tratarColetadosParteCliqueColetavel()
@@ -48,27 +50,43 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento
 
     private void prepararTutorialPartePowerUp()
     {
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePrepararTutorialPartePowerUp());
-    }
-
-    protected IEnumerator coroutinePrepararTutorialPartePowerUp()
-    {
-        garraManager.parar();
-        mainDto.TutorialDto.GoTutorial.SetActive(false);
-        mainDto.TutorialDto.LblTexto.text = "Acione o botão power up";
-        mainDto.TutorialDto.Animator.Play(ANIM_COLETAR);        
-        yield return null;
+        garraManager.parar();        
+        mainDto.TutorialDto.LblTexto.text = "Acione o botão power up";        
 
         mainDto.TutorialDto.GoTutorial.SetActive(true);
-        maquinaManager.botoesPowerUp.reativarPowerUp();
-        yield return new WaitForSeconds(mainDto.DelayInicio / 2);
+        maquinaManager.botoesPowerUp.reativarPowerUp();        
+        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_POWERUP);
 
-        mainDto.TutorialDto.Animator.Play(ANIM_COLETAR);
-    }    
+        //ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePrepararTutorialPartePowerUp());
+    }
+
+    //protected IEnumerator coroutinePrepararTutorialPartePowerUp()
+    //{
+    //    garraManager.parar();
+    //    mainDto.TutorialDto.GoTutorial.SetActive(false);
+    //    mainDto.TutorialDto.LblTexto.text = "Acione o botão power up";
+    //    yield return null;        
+
+    //    mainDto.TutorialDto.GoTutorial.SetActive(true);
+    //    maquinaManager.botoesPowerUp.reativarPowerUp();
+    //    yield return new WaitForSeconds(mainDto.DelayInicio / 2);
+    //    mainDto.TutorialDto.Animator.Play(ANIM_PARTE_POWERUP);
+    //}   
+    
+    private void prepararTutorialParteDragPup()
+    {
+        mainDto.TutorialDto.LblTexto.text = "Arraste e encontre um powerup\ndisponivel";
+        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_DRAGPUP);
+    }
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
         contagemColetados++;
         tratarColetadosParteCliqueColetavel();
+    }
+
+    void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
+    {
+        prepararTutorialParteDragPup();
     }
 }

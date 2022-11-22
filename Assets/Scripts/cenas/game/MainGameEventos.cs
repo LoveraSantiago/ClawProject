@@ -40,11 +40,7 @@ public class MainGameEventos
             .adicionarConsumidor(maquinaManager.scrollPupsManager)
             .adicionarConsumidor(draggavelManager);
 
-        new AcaoBotaoPowerUpVazio()
-            .configurarProdutor(maquinaManager.botoesPowerUp)
-            .adicionarConsumidor(cameraManager)            
-            .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(draggavelManager);
+        configurarAcaoBotaoPowerUpVazio();
 
         new AcaoPupFromScrollSelecao()
             .configurarProdutor(maquinaManager.scrollPupsManager.scrollSelecao)
@@ -118,5 +114,16 @@ public class MainGameEventos
         acaoInfoDaGarra.configurarProdutor(garraManager)
                        .adicionarConsumidor(coletaveisManager);
         return acaoInfoDaGarra;
+    }
+
+    protected virtual AcaoBotaoPowerUpVazio configurarAcaoBotaoPowerUpVazio()
+    {
+        AcaoBotaoPowerUpVazio acaoBotaoPupVazio = new AcaoBotaoPowerUpVazio();
+        acaoBotaoPupVazio.configurarProdutor(maquinaManager.botoesPowerUp)
+            .adicionarConsumidor(cameraManager)
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(draggavelManager);
+
+        return acaoBotaoPupVazio;
     }
 }
