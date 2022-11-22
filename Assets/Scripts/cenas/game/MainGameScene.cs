@@ -68,13 +68,16 @@ public class MainGameScene : MonoBehaviour,
 
     private void iniciarManagers(AbstractLevel levelEscolhido)
     {
+        MainGameManagers mainGameManagers = null;
+
         if (LevelUtils.isTutorialLevel(levelEscolhido))
         {
-            new MainGameManagersTutorial(mainDto, this);
+            mainGameManagers = new MainGameManagersTutorial();
         }
         else
         {
-            new MainGameManagers(mainDto, this);
+            mainGameManagers = new MainGameManagers();
         }
+        mainGameManagers.configurar(mainDto, this);
     }
 }

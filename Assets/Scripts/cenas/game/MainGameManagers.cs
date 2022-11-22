@@ -10,9 +10,9 @@ public class MainGameManagers
     public CameraManager     cameraManager     { get; private set; }
     public UiGameManager     uiManager         { get; private set; }    
     public InputGameImpl     inputGame         { get; private set; }
-    public DraggavelManager  draggavelManager  { get; private set; }
+    public DraggavelManager  draggavelManager  { get; private set; }    
 
-    public MainGameManagers(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
+    public void configurar(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
         PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
         SomManagerGame somManager = new SomManagerGame(mainDto.AudioGameDto);
@@ -42,7 +42,7 @@ public class MainGameManagers
 
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));
         loading.fecharModal();
-    }   
+    }
 
     private void configurandoLevel(MainGameDto mainDto)
     {
@@ -55,7 +55,7 @@ public class MainGameManagers
             getInformacaoDisplayColetado(), coletaveisManager.getFornecedorTrocadorDeOrdem());       
     }
 
-    private void configurandoEventos()
+    protected virtual void configurandoEventos()
     {
         MainGameEventos eventos = new MainGameEventos();
         eventos.configurarEventos(this);

@@ -21,16 +21,8 @@ public class MainGameEventos
             .adicionarConsumidor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(uiManager.modalResultados);
 
-        new AcaoColetadoFim()
-            .configurarProdutor(maquinaManager.displayDeColetados.modoColetados)
-            .adicionarConsumidor(coletaveisManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager.displayTimer)
-            .adicionarConsumidor(maquinaManager.botoesPowerUp);
-
-        new AcaoInfoDaGarra()
-            .configurarProdutor(garraManager)
-            .adicionarConsumidor(coletaveisManager);      
+        configurarAcaoColetadoFim(mainGameManagers);
+        configurarAcaoInfoDaGarra(mainGameManagers);
 
         new AcaoSincroniaComDirecaoDaGarra()
             .configurarProdutor(garraManager)
@@ -88,5 +80,32 @@ public class MainGameEventos
             .adicionarConsumidor(maquinaManager.botaoLigaDesliga)
             .adicionarConsumidor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(inputGameImpl);
+    }
+
+    protected virtual AcaoColetadoFim configurarAcaoColetadoFim(MainGameManagers mainGameManagers)
+    {
+        MaquinaManager maquinaManager       = mainGameManagers.maquinaManager;
+        ColetaveisManager coletaveisManager = mainGameManagers.coletaveisManager;
+        GarraManager garraManager           = mainGameManagers.garraManager;
+
+        AcaoColetadoFim acaoColetadoFim = new AcaoColetadoFim();
+        acaoColetadoFim.configurarProdutor(maquinaManager.displayDeColetados.modoColetados)
+            .adicionarConsumidor(coletaveisManager)
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(maquinaManager.displayTimer)
+            .adicionarConsumidor(maquinaManager.botoesPowerUp);
+
+        return acaoColetadoFim;
+    }
+
+    protected virtual AcaoInfoDaGarra configurarAcaoInfoDaGarra(MainGameManagers mainGameManagers)
+    {
+        GarraManager garraManager           = mainGameManagers.garraManager;
+        ColetaveisManager coletaveisManager = mainGameManagers.coletaveisManager;
+
+        AcaoInfoDaGarra acaoInfoDaGarra = new AcaoInfoDaGarra();
+        acaoInfoDaGarra.configurarProdutor(garraManager)
+                       .adicionarConsumidor(coletaveisManager);
+        return acaoInfoDaGarra;
     }
 }

@@ -5,8 +5,8 @@ public class MainGameManagersTutorial : MainGameManagers
 {
     private Tutorial tutorial;
 
-    public MainGameManagersTutorial(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers) 
-        : base(mainDto, consumidorUpdateManagers)
+    public MainGameManagersTutorial() 
+        : base()
     {
         AbstractLevel levelEscolhido = ContextoEstaticoUtils.level;
         tutorial = LevelUtils.getTutorial(levelEscolhido);
@@ -23,5 +23,11 @@ public class MainGameManagersTutorial : MainGameManagers
 
         garraManager.start(mainDto.GarraDto);
         consumidorUpdateManagers.consumir(getUpdatables());
+    }
+
+    protected override void configurandoEventos()
+    {
+        MainGameEventos eventos = new MainGameEventosTutorial(tutorial);
+        eventos.configurarEventos(this);
     }
 }
