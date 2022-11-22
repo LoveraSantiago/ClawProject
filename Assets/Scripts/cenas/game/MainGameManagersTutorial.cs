@@ -18,8 +18,7 @@ public class MainGameManagersTutorial : MainGameManagers
         yield return new WaitForSeconds(mainDto.DelayInicio);
 
         maquinaManager.start(inputGame);
-
-        yield return tutorial.iniciar(mainDto);        
+        tutorial.iniciar(mainDto);        
 
         garraManager.start(mainDto.GarraDto);
         consumidorUpdateManagers.consumir(getUpdatables());

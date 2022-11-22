@@ -8,14 +8,12 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento
     private int contagemColetados;
     private MainGameDto mainDto;
 
-    public IEnumerator iniciar(MainGameDto mainDto)
+    public void iniciar(MainGameDto mainDto)
     {
         this.mainDto = mainDto;
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
-        yield return new WaitForSeconds(mainDto.DelayInicio);
+        mainDto.TutorialDto.GoTutorial.SetActive(true);        
 
-        colocarNaPosicaoCliqueColetavel();        
-        yield return new WaitForSeconds(mainDto.DelayInicio);
+        colocarNaPosicaoCliqueColetavel();                
     }
 
     private void colocarNaPosicaoCliqueColetavel()
@@ -34,15 +32,15 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento
         contagemColetados++;
         if(contagemColetados == 1)
         {
-            mainDto.TutorialDto.LblTexto.text = "Conseguiu coletar!\nContinue assim.";
+            mainDto.TutorialDto.LblTexto.text = "Clique para acionar a garra\nMuito bom!";
         }
         else if (contagemColetados == 2)
         {
-            mainDto.TutorialDto.LblTexto.text = "Falta só mais um.";
+            mainDto.TutorialDto.LblTexto.text = "Clique para acionar a garra\nFalta só mais um!";
         }
         if(contagemColetados == 3)
         {
-
+            
         }
     }
 }
