@@ -38,10 +38,10 @@ public class ContadorColetavel : ContadorNormal
         trincaLevelColetaveis = new TrincaColetaveisTiles(coletaveis);
     }
 
-    public override int contarColetado(Coletavel coletavel)
+    public override int contarColetado(Coletavel coletavel, SomColetagem somColetagem)
     {
         estado.reset();
-        int score = base.contarColetado(coletavel);
+        int score = base.contarColetado(coletavel, somColetagem);
         
         if (resultCombinacao && 
             trincaLevelColetaveis.isColetaveisNaTrinca(coletados))

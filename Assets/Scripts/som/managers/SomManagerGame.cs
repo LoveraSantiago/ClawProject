@@ -14,6 +14,9 @@ public class SomManagerGame : SomManager,
     }
 
     //***** IMPLEMENTACAO INTERFACE SOMMAQUINA INICIO *****
+    //***** IMPLEMENTACAO INTERFACE SOMMAQUINA FIM *****
+
+    //***** IMPLEMENTACAO INTERFACE SOMGARRA INICIO *****
     public void playScoreColetagemNaoSucesso()
     {
         audioPlayOneShot(getAudioSourceMaquina(), audioGameDto.SomCombinacaoNOK);
@@ -23,9 +26,7 @@ public class SomManagerGame : SomManager,
     {
         audioPlayOneShot(getAudioSourceMaquina(), audioGameDto.SomCombinacaoOK);
     }
-    //***** IMPLEMENTACAO INTERFACE SOMMAQUINA FIM *****
 
-    //***** IMPLEMENTACAO INTERFACE SOMGARRA INICIO *****
     public void playSomColetagem()
     {
         audioPlayOneShot(getAudioSourceColetagem(), audioGameDto.SomColetado);

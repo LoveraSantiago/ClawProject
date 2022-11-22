@@ -22,7 +22,7 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         this.totalColetaveis = totalColetaveis;        
     }
 
-    public override int contarColetado(Coletavel coletavel)
+    public override int contarColetado(Coletavel coletavel, SomColetagem somColetagem)
     {
         // Debug.Log(nomeColetado);
         subtrairColetavel();
@@ -32,11 +32,13 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         {
             if (trinca.isCombinacaoValida())
             {
+                somColetagem.playScoreColetagemSucesso();
                 resultCombinacao = true;
                 score += pontosAcerto;                
             }
             else
             {
+                somColetagem.playScoreColetagemNaoSucesso();
                 resultCombinacao = false;                
             }           
         }
