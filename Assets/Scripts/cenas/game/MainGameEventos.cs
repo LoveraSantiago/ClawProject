@@ -9,18 +9,10 @@ public class MainGameEventos
         PowerUpManager    powerUpManager    = mainGameManagers.powerUpManager;
         CameraManager     cameraManager     = mainGameManagers.cameraManager;
         InputGameImpl     inputGameImpl     = mainGameManagers.inputGame;
-        DraggavelManager  draggavelManager = mainGameManagers.draggavelManager;
+        DraggavelManager  draggavelManager  = mainGameManagers.draggavelManager;
 
         //TODO sugestao de especificar exatamente os consumidores e os produtores
-        new AcaoColetado()
-            .configurarProdutor(coletaveisManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager.displayTimer)
-            .adicionarConsumidor(maquinaManager.displayDeColetados)
-            .adicionarConsumidor(maquinaManager.displayDeScores)
-            .adicionarConsumidor(maquinaManager.botoesPowerUp)
-            .adicionarConsumidor(uiManager.modalResultados);
-
+        configurarAcaoColetado(mainGameManagers);
         configurarAcaoColetadoFim(mainGameManagers);
         configurarAcaoInfoDaGarra(mainGameManagers);
 
@@ -80,6 +72,25 @@ public class MainGameEventos
             .adicionarConsumidor(maquinaManager.botaoLigaDesliga)
             .adicionarConsumidor(maquinaManager.botoesPowerUp)
             .adicionarConsumidor(inputGameImpl);
+    }
+
+    protected virtual AcaoColetado configurarAcaoColetado(MainGameManagers mainGameManagers)
+    {
+        MaquinaManager maquinaManager       = mainGameManagers.maquinaManager;
+        ColetaveisManager coletaveisManager = mainGameManagers.coletaveisManager;
+        GarraManager garraManager           = mainGameManagers.garraManager;
+        UiGameManager uiManager = mainGameManagers.uiManager;
+
+        AcaoColetado acaoColetado = new AcaoColetado();
+        acaoColetado.configurarProdutor(coletaveisManager)
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(maquinaManager.displayTimer)
+            .adicionarConsumidor(maquinaManager.displayDeColetados)
+            .adicionarConsumidor(maquinaManager.displayDeScores)
+            .adicionarConsumidor(maquinaManager.botoesPowerUp)
+            .adicionarConsumidor(uiManager.modalResultados);
+
+        return acaoColetado;
     }
 
     protected virtual AcaoColetadoFim configurarAcaoColetadoFim(MainGameManagers mainGameManagers)
