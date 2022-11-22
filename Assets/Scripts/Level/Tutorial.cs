@@ -56,8 +56,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento
         garraManager.parar();
         mainDto.TutorialDto.GoTutorial.SetActive(false);
         mainDto.TutorialDto.LblTexto.text = "Acione o botão power up";
-        mainDto.TutorialDto.Animator.Play(ANIM_COLETAR);
-        colocarNaPosicaoCliquePowerUp();
+        mainDto.TutorialDto.Animator.Play(ANIM_COLETAR);        
         yield return null;
 
         mainDto.TutorialDto.GoTutorial.SetActive(true);
