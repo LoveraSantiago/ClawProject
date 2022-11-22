@@ -57,8 +57,8 @@ public class MainGameManagers
 
     protected virtual void configurandoEventos()
     {
-        MainGameEventos eventos = new MainGameEventos();
-        eventos.configurarEventos(this);
+        MainGameEventos eventos = new MainGameEventos(this);
+        eventos.configurarEventos();
     }
 
     protected virtual IEnumerator startLaizy(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)

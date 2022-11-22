@@ -26,7 +26,7 @@ public class MainGameManagersTutorial : MainGameManagers
 
     protected override void configurandoEventos()
     {
-        MainGameEventos eventos = new MainGameEventosTutorial(tutorial);
-        eventos.configurarEventos(this);
+        MainGameEventos eventos = new MainGameEventosTutorial(this, tutorial);
+        eventos.configurarEventos();
     }
 }
