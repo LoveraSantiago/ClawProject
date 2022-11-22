@@ -3,44 +3,32 @@ using System.Collections;
 
 public class Tutorial : AcaoColetadoFim.ConsumidorEvento
 {
+    private readonly int ANIM_ZOOM    = Animator.StringToHash("zoom");
     private readonly int ANIM_COLETAR = Animator.StringToHash("clique-coletar");
+
     private readonly string MSG_TUTORIAL_PARTE1 = "Clique para acionar a garra";
 
     private int contagemColetados;
     private MainGameDto mainDto;
     private GarraManager garraManager;
+    private MaquinaManager maquinaManager;
 
     public void iniciar(MainGameDto mainDto, GarraManager garraManager, MaquinaManager maquinaManager)
     {
-        this.mainDto = mainDto;
-        this.garraManager = garraManager;
+        this.mainDto        = mainDto;
+        this.garraManager   = garraManager;
+        this.maquinaManager = maquinaManager;
         mainDto.TutorialDto.GoTutorial.SetActive(true);
-        prepararTutorialParteCliqueColetavel(maquinaManager);
+        prepararTutorialParteCliqueColetavel();
     }
 
-    private void prepararTutorialParteCliqueColetavel(MaquinaManager maquinaManager)
+    private void prepararTutorialParteCliqueColetavel()
     {
         maquinaManager.botoesPowerUp.desativarPowerUp();
         maquinaManager.botaoLigaDesliga.desligar();
-        colocarNaPosicaoCliqueColetavel();                
-    }
-
-    private void colocarNaPosicaoCliqueColetavel()
-    {
-        mainDto.TutorialDto.TranformGoTutorial.localPosition = new Vector3(0.48f, 0, 0);
-        mainDto.TutorialDto.TransformPonto.localPosition     = new Vector3(-0.45f, 0.54f, 0);
-        mainDto.TutorialDto.TransformMao.localPosition       = Vector3.zero;
-        mainDto.TutorialDto.TransformText.localPosition      = new Vector3(0.07f, -1.1f, 0);
-        mainDto.TutorialDto.LblTexto.text                    = MSG_TUTORIAL_PARTE1;
-
-        mainDto.TutorialDto.Animator.Play(ANIM_COLETAR);
-    }
-
-    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
-    {
-        contagemColetados++;
-        tratarColetadosParteCliqueColetavel();
-    }
+        mainDto.TutorialDto.LblTexto.text = MSG_TUTORIAL_PARTE1;
+        mainDto.TutorialDto.Animator.Play(ANIM_COLETAR);        
+    }    
 
     private void tratarColetadosParteCliqueColetavel()
     {
@@ -54,7 +42,34 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento
         }
         if(contagemColetados == 3)
         {
-            garraManager.parar();
+            prepararTutorialPartePowerUp();
         }
+    }
+
+    private void prepararTutorialPartePowerUp()
+    {
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePrepararTutorialPartePowerUp());
+    }
+
+    protected IEnumerator coroutinePrepararTutorialPartePowerUp()
+    {
+        garraManager.parar();
+        mainDto.TutorialDto.GoTutorial.SetActive(false);
+        mainDto.TutorialDto.LblTexto.text = "Acione o botão power up";
+        mainDto.TutorialDto.Animator.Play(ANIM_COLETAR);
+        colocarNaPosicaoCliquePowerUp();
+        yield return null;
+
+        mainDto.TutorialDto.GoTutorial.SetActive(true);
+        maquinaManager.botoesPowerUp.reativarPowerUp();
+        yield return new WaitForSeconds(mainDto.DelayInicio / 2);
+
+        mainDto.TutorialDto.Animator.Play(ANIM_COLETAR);
+    }    
+
+    void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
+    {
+        contagemColetados++;
+        tratarColetadosParteCliqueColetavel();
     }
 }
