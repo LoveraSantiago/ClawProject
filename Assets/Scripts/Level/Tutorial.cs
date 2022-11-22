@@ -12,7 +12,11 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento
     {
         this.mainDto = mainDto;
         mainDto.TutorialDto.GoTutorial.SetActive(true);
+        prepararTutorialParteCliqueColetavel(maquinaManager);
+    }
 
+    private void prepararTutorialParteCliqueColetavel(MaquinaManager maquinaManager)
+    {
         maquinaManager.botoesPowerUp.desativarPowerUp();
         maquinaManager.botaoLigaDesliga.desligar();
         colocarNaPosicaoCliqueColetavel();                
@@ -32,6 +36,11 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento
     void ProdutorConsumidoresDeEvento<ColetadoFimDto>.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
         contagemColetados++;
+        tratarColetadosParteCliqueColetavel();
+    }
+
+    private void tratarColetadosParteCliqueColetavel()
+    {
         if(contagemColetados == 1)
         {
             mainDto.TutorialDto.LblTexto.text = "Clique para acionar a garra\nMuito bom!";
