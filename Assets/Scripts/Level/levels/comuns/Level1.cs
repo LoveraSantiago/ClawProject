@@ -25,24 +25,7 @@ public class Level1 : AbstractLevelTutorial
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
-
-    //desabilitar o botao sair
-
-    //public override int[,] getArrayDeColetaveis()
-    //{
-    //    return new int[,]
-    //    {
-    //        {-1, -1, -1, 12, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1}
-    //    };
-    //}
+    }   
 
     public override bool devolverParaBoard()
     {

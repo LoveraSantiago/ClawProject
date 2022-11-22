@@ -56,23 +56,8 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
         mainDto.TutorialDto.GoTutorial.SetActive(true);
         maquinaManager.botoesPowerUp.reativarPowerUp();        
         mainDto.TutorialDto.Animator.Play(ANIM_PARTE_POWERUP);
-
-        //ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePrepararTutorialPartePowerUp());
     }
 
-    //protected IEnumerator coroutinePrepararTutorialPartePowerUp()
-    //{
-    //    garraManager.parar();
-    //    mainDto.TutorialDto.GoTutorial.SetActive(false);
-    //    mainDto.TutorialDto.LblTexto.text = "Acione o botão power up";
-    //    yield return null;        
-
-    //    mainDto.TutorialDto.GoTutorial.SetActive(true);
-    //    maquinaManager.botoesPowerUp.reativarPowerUp();
-    //    yield return new WaitForSeconds(mainDto.DelayInicio / 2);
-    //    mainDto.TutorialDto.Animator.Play(ANIM_PARTE_POWERUP);
-    //}   
-    
     private void prepararTutorialParteDragPup()
     {
         mainDto.TutorialDto.LblTexto.text = "Arraste e encontre um powerup\ndisponivel";
