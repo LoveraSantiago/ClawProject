@@ -76,7 +76,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _updateTime: 22.98505
+    - _updateTime: 30.766857
     m_Colors:
     - _Color: {r: 16.94838, g: 15.972295, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
