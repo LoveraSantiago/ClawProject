@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 public class Level1 : AbstractLevelTutorial
 {
+    private Tutorial tutorial;
+
     public override string getLevelTitle()
     {
         return "Nível 1";
@@ -106,6 +108,19 @@ public class Level1 : AbstractLevelTutorial
 
     public override Tutorial getTutorial()
     {
-        return new Tutorial();
+        if(tutorial == null)
+        {
+            tutorial = new Tutorial();
+        }
+        return tutorial;
+    }
+
+    public override int recuperarQtdPup(PowerUpEnums.TIPO powerupTipo)
+    {
+        if(powerupTipo == PowerUpEnums.TIPO.BOMBA_DA_GARRA)
+        {
+            return 1;
+        }
+        return 0;
     }
 }

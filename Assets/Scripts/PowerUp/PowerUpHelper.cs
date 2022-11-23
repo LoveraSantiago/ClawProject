@@ -40,7 +40,7 @@ public class PowerUpHelper
     public static int getQtdPupsFromIndice(int indice)
     {
         PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indice);
-        int qtdPup = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome);
+        int qtdPup = recuperarQtdPup(pupEntidade);
         return qtdPup;
     }   
 
@@ -55,6 +55,17 @@ public class PowerUpHelper
             }
         }
         return null;
+    }
+
+    private static int recuperarQtdPup(PowerUpEntidade pupEntidade)
+    {
+        AbstractLevel levelAtual = ContextoEstaticoUtils.level;
+        if (LevelUtils.isTutorialLevel(levelAtual))
+        {
+            AbstractLevelTutorial levelTutorial = (AbstractLevelTutorial)levelAtual;
+            return levelTutorial.recuperarQtdPup(pupEntidade.tipo);
+        }
+        return PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome);
     }
 
     private static string getNomePupBySprite(PowerUpEntidade[] allPups, Sprite sprite)

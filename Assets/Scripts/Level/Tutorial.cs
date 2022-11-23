@@ -4,11 +4,11 @@ using System.Collections;
 public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
                         AcaoBotaoPowerUpVazio.ConsumidorEvento
 {
-    private readonly int ANIM_PARTE_COLETAR = Animator.StringToHash("clique-coletar");
-    private readonly int ANIM_PARTE_POWERUP = Animator.StringToHash("clique-powerup");
-    private readonly int ANIM_PARTE_DRAGPUP = Animator.StringToHash("drag-powerup");
+    private static readonly int ANIM_PARTE_COLETAR = Animator.StringToHash("clique-coletar");
+    private static readonly int ANIM_PARTE_POWERUP = Animator.StringToHash("clique-powerup");
+    private static readonly int ANIM_PARTE_DRAGPUP = Animator.StringToHash("drag-powerup");
 
-    private readonly string MSG_TUTORIAL_PARTE1 = "Clique para acionar a garra";
+    private static readonly string MSG_TUTORIAL_PARTE1 = "Clique para acionar a garra";
 
     private int contagemColetados;
     private MainGameDto mainDto;

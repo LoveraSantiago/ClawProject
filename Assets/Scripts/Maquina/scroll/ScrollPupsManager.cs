@@ -16,8 +16,8 @@ public class ScrollPupsManager : Draggavel,
 
     public ScrollPupsManager(ScrollPupsDto scrollPupsDto)
     {
-        scrollPups = new ScrollPups(scrollPupsDto);
-        scrollSelecao = new ScrollSelecao();
+        scrollPups     = new ScrollPups(scrollPupsDto);
+        scrollSelecao  = new ScrollSelecao();
         intervaloTempo = new IntervaloDeTempo(0);
     }
 
