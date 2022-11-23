@@ -9,6 +9,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
     private static readonly int ANIM_PARTE_COLETAR = Animator.StringToHash("clique-coletar");
     private static readonly int ANIM_PARTE_POWERUP = Animator.StringToHash("clique-powerup");
     private static readonly int ANIM_PARTE_DRAGPUP = Animator.StringToHash("drag-powerup");    
+    private static readonly int ANIM_PARTE_TEXTO   = Animator.StringToHash("so-texto");    
 
     private int contagemColetados;
     private MainGameDto mainDto;
@@ -74,7 +75,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
     {
         mainDto.TutorialDto.LblTexto.text = "Ative o powerup!\nClique para soltar o power up!";
         mainDto.TutorialDto.Animator.Play(ANIM_PARTE_COLETAR);
-    }
+    }    
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
@@ -94,6 +95,17 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        prepararTutorialParteJogarPowerUp();
+        if (evento.isInicio)
+        {
+            prepararTutorialParteJogarPowerUp();
+        }
+        else if (evento.isExpirado)
+        {
+
+        }
+        else if(evento.isFinalizar)
+        {
+
+        }
     }
 }
