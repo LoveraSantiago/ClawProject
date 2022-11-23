@@ -28,4 +28,11 @@ public class MainGameEventosTutorial : MainGameEventos
         acaoPupScrollSelecao.adicionarConsumidor(tutorial);
         return acaoPupScrollSelecao;
     }
+
+    protected override AcaoPowerUpAcionado configurarAcaoPowerUpAcionado()
+    {
+        AcaoPowerUpAcionado acaoPowerUpAcionado = base.configurarAcaoPowerUpAcionado();
+        acaoPowerUpAcionado.adicionarConsumidor(tutorial);
+        return acaoPowerUpAcionado;
+    }
 }

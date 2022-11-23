@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
                         AcaoBotaoPowerUpVazio.ConsumidorEvento, 
-                        AcaoPupFromScrollSelecao.ConsumidorEvento
+                        AcaoPupFromScrollSelecao.ConsumidorEvento,
+                        AcaoPowerUpAcionado.ConsumidorEvento
 {
     private static readonly int ANIM_PARTE_COLETAR = Animator.StringToHash("clique-coletar");
     private static readonly int ANIM_PARTE_POWERUP = Animator.StringToHash("clique-powerup");
@@ -69,6 +70,12 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
         mainDto.TutorialDto.Animator.Play(ANIM_PARTE_POWERUP);
     }
 
+    private void prepararTutorialParteJogarPowerUp()
+    {
+        mainDto.TutorialDto.LblTexto.text = "Ative o powerup!\nClique para soltar o power up!";
+        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_COLETAR);
+    }
+
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
         contagemColetados++;
@@ -83,5 +90,10 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
     void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
     {
         prepararTutorialParteAcionarPowerUp();
+    }
+
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    {
+        prepararTutorialParteJogarPowerUp();
     }
 }

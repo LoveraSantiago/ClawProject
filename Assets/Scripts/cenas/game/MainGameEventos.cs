@@ -27,18 +27,11 @@ public class MainGameEventos
         configurarAcaoColetado();
         configurarAcaoColetadoFim();
         configurarAcaoInfoDaGarra();
+        configurarAcaoPowerUpAcionado();
 
         new AcaoSincroniaComDirecaoDaGarra()
             .configurarProdutor(garraManager)
-            .adicionarConsumidor(maquinaManager);
-
-        new AcaoPowerUpAcionado()
-            .configurarProdutor(powerUpManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(coletaveisManager)
-            .adicionarConsumidor(maquinaManager.scrollPupsManager)
-            .adicionarConsumidor(draggavelManager);
+            .adicionarConsumidor(maquinaManager);        
 
         configurarAcaoBotaoPowerUpVazio();
         configurarAcaoPupFromScrollSelecao();
@@ -131,5 +124,18 @@ public class MainGameEventos
             .adicionarConsumidor(maquinaManager);
 
         return acaoPupScrollSelecao;
+    }
+
+    protected virtual AcaoPowerUpAcionado configurarAcaoPowerUpAcionado()
+    {
+        AcaoPowerUpAcionado acaoPowerUpAcionado = new AcaoPowerUpAcionado();
+        acaoPowerUpAcionado.configurarProdutor(powerUpManager)
+            .adicionarConsumidor(garraManager)
+            .adicionarConsumidor(maquinaManager)
+            .adicionarConsumidor(coletaveisManager)
+            .adicionarConsumidor(maquinaManager.scrollPupsManager)
+            .adicionarConsumidor(draggavelManager);
+
+        return acaoPowerUpAcionado;
     }
 }
