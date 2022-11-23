@@ -9,8 +9,7 @@ public class MovimentacaoVoltarParaCimaPowerUp : AbstractMovimentacaoDaGarraPowe
 
     public override void preInicio()
     {
-        movVoltarPCima.preInicio();
-        playSomGarraMovimentoVertical();
+        movVoltarPCima.preInicio();        
     }
 
     public override void update(InputGame inputGame)

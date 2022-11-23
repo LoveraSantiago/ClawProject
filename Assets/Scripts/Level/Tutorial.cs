@@ -39,7 +39,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
         }
         else if (contagemColetados == 2)
         {
-            mainDto.TutorialDto.LblTexto.text = "Vamos completar uma trinca!nFalta só mais um!";
+            mainDto.TutorialDto.LblTexto.text = "Vamos completar uma trinca!\nFalta só mais um!";
         }
         if(contagemColetados == 3)
         {

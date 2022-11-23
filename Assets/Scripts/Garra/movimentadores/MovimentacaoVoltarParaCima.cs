@@ -21,6 +21,7 @@ public class MovimentacaoVoltarParaCima : AbstractMovimentacaoDaGarra
         if (isAcimaPosInicial())
         {
             //Debug.Log("isAcimaPosInicial");
+            stopSomGarraMovimentoVertical();
             parar();
             colocarNaAlturaInicial();
             comunicadorComGerMovimentacaoComum.trocarParaAcaoVoltarParaMeio();
