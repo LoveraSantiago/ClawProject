@@ -35,4 +35,15 @@ public class MainGameEventosTutorial : MainGameEventos
         acaoPowerUpAcionado.adicionarConsumidor(tutorial);
         return acaoPowerUpAcionado;
     }
+
+    protected override AcaoColetado configurarAcaoColetado()
+    {
+        AcaoColetado acaoColetado = base.configurarAcaoColetado();
+
+        AcaoColetado acaoColetadoTutorial = new AcaoColetado();
+        acaoColetadoTutorial.configurarProdutor(tutorial)
+            .adicionarConsumidor(uiManager.modalResultados);
+
+        return acaoColetado;
+    }
 }
