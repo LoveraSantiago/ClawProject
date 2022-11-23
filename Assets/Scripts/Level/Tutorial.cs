@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
-                        AcaoBotaoPowerUpVazio.ConsumidorEvento
+                        AcaoBotaoPowerUpVazio.ConsumidorEvento, 
+                        AcaoPupFromScrollSelecao.ConsumidorEvento
 {
     private static readonly int ANIM_PARTE_COLETAR = Animator.StringToHash("clique-coletar");
     private static readonly int ANIM_PARTE_POWERUP = Animator.StringToHash("clique-powerup");
@@ -60,8 +61,14 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
 
     private void prepararTutorialParteDragPup()
     {
-        mainDto.TutorialDto.LblTexto.text = "Arraste e encontre um powerup\ndisponivel";
+        mainDto.TutorialDto.LblTexto.text = "Arraste e encontre um powerup\ndisponivel clique nele";
         mainDto.TutorialDto.Animator.Play(ANIM_PARTE_DRAGPUP);
+    }
+
+    private void prepararTutorialParteAcionarPowerUp()
+    {
+        mainDto.TutorialDto.LblTexto.text = "Acione o botão power up";
+        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_POWERUP);
     }
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
@@ -73,5 +80,10 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
     void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
         prepararTutorialParteDragPup();
+    }
+
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    {
+        prepararTutorialParteAcionarPowerUp();
     }
 }

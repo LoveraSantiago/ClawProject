@@ -41,13 +41,7 @@ public class MainGameEventos
             .adicionarConsumidor(draggavelManager);
 
         configurarAcaoBotaoPowerUpVazio();
-
-        new AcaoPupFromScrollSelecao()
-            .configurarProdutor(maquinaManager.scrollPupsManager.scrollSelecao)
-            .adicionarConsumidor(maquinaManager.botoesPowerUp)
-            .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(draggavelManager)
-            .adicionarConsumidor(maquinaManager);
+        configurarAcaoPupFromScrollSelecao();
 
         new AcaoTempoEsgotado()
             .configurarProdutor(maquinaManager.displayTimer)
@@ -125,5 +119,17 @@ public class MainGameEventos
             .adicionarConsumidor(draggavelManager);
 
         return acaoBotaoPupVazio;
+    }
+
+    protected virtual AcaoPupFromScrollSelecao configurarAcaoPupFromScrollSelecao()
+    {
+        AcaoPupFromScrollSelecao acaoPupScrollSelecao = new AcaoPupFromScrollSelecao();
+        acaoPupScrollSelecao.configurarProdutor(maquinaManager.scrollPupsManager.scrollSelecao)
+            .adicionarConsumidor(maquinaManager.botoesPowerUp)
+            .adicionarConsumidor(cameraManager)
+            .adicionarConsumidor(draggavelManager)
+            .adicionarConsumidor(maquinaManager);
+
+        return acaoPupScrollSelecao;
     }
 }

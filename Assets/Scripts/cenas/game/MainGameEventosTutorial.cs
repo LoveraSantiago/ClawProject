@@ -21,4 +21,11 @@ public class MainGameEventosTutorial : MainGameEventos
         acaoBotaoPupVazio.adicionarConsumidor(tutorial);
         return acaoBotaoPupVazio;
     }
+
+    protected override AcaoPupFromScrollSelecao configurarAcaoPupFromScrollSelecao()
+    {
+        AcaoPupFromScrollSelecao acaoPupScrollSelecao = base.configurarAcaoPupFromScrollSelecao();
+        acaoPupScrollSelecao.adicionarConsumidor(tutorial);
+        return acaoPupScrollSelecao;
+    }
 }
