@@ -96,7 +96,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
-        Debug.Log("AcaoColetado chamado");
+        //Debug.Log("AcaoColetado chamado");
         InformacoesFimDeJogoDto infoFimDeJogo = evento.infosFimDeJogo;
         if (infoFimDeJogo.fimColetados)
         {           

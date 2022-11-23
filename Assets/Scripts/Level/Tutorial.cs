@@ -109,7 +109,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
         InformacoesColetadoDto eventoFim = new InformacoesColetadoDto()
             .addInfoFimDeJogo(infoFimDeJogo);
 
-        Debug.Log("Criando evento de fim de jogo");
+        //Debug.Log("Criando evento de fim de jogo");
         produtorDeEvento.produziuEvento(eventoFim);
     }
 
