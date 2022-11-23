@@ -12,6 +12,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
     private static readonly int ANIM_PARTE_DRAGPUP = Animator.StringToHash("drag-powerup");    
     private static readonly int ANIM_PARTE_TEXTO   = Animator.StringToHash("so-texto");    
 
+    private bool finalizacaoDisparada;
     private int contagemColetados;
     private MainGameDto    mainDto;
     private GarraManager   garraManager;
@@ -86,16 +87,24 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
 
     private void prepararFimTutorialPupExpirado()
     {
-        mainDto.TutorialDto.LblTexto.text = "ok!O tempo acabou.\nBoa Sorte!";
-        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_TEXTO);
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineEncerrarTutorial());
+        if (!finalizacaoDisparada)
+        {
+            finalizacaoDisparada = true;
+            mainDto.TutorialDto.LblTexto.text = "ok!O tempo acabou.\nBoa Sorte!";
+            mainDto.TutorialDto.Animator.Play(ANIM_PARTE_TEXTO);
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineEncerrarTutorial());
+        }
     }
 
     private void prepararFimTutorial()
     {
-        mainDto.TutorialDto.LblTexto.text = "Isso ai!Muibo bom!\nBoa Sorte!";
-        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_TEXTO);
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineEncerrarTutorial());
+        if (!finalizacaoDisparada)
+        {
+            finalizacaoDisparada = true;
+            mainDto.TutorialDto.LblTexto.text = "Isso ai!Muibo bom!\nBoa Sorte!";
+            mainDto.TutorialDto.Animator.Play(ANIM_PARTE_TEXTO);
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineEncerrarTutorial());        
+        }
     }
 
     protected IEnumerator coroutineEncerrarTutorial()
@@ -142,11 +151,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
         else if(evento.isFinalizar)
         {
             prepararFimTutorial();
-        }
-        else
-        {
-            prepararFimTutorialPupExpirado();
-        }
+        }       
     }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
