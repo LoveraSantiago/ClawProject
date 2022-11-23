@@ -143,6 +143,10 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
         {
             prepararFimTutorial();
         }
+        else
+        {
+            prepararFimTutorialPupExpirado();
+        }
     }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()

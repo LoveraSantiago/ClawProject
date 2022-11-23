@@ -37,9 +37,9 @@ public class Level1 : AbstractLevelTutorial
     public override Challenge[] getChallenges()
     {
         return new Challenge[] {
-            new ChallengeLevelCompleto(),
-            new ChallengeTempoMenor("00:40"),
-            new ChallengeScoreMaior(25)
+            new ChallengeCombinacaoColetaveis(this, 0, 0, 0),
+            new ChallengeTempoMenor("59:59"),
+            new ChallengeScoreMaior(1)
         };
     }
 
