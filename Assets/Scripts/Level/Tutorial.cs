@@ -111,7 +111,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
     {
         maquinaManager.botoesPowerUp.desativarPowerUp();
         garraManager.parar();
-        yield return new WaitForSeconds(mainDto.DelayInicio * 2);
+        yield return new WaitForSeconds(mainDto.DelayInicio * 3);
 
         mainDto.TutorialDto.GoTutorial.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
