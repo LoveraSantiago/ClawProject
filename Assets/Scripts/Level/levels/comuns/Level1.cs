@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 
-public class Level1 : AbstractLevel
+public class Level1 : AbstractLevelTutorial
 {
+    private Tutorial tutorial;
+
     public override string getLevelTitle()
     {
         return "Nível 1";
@@ -9,43 +11,23 @@ public class Level1 : AbstractLevel
 
     public override string getMsgObjetivoLevel()
     {
-        return LevelUtils.MSG_COLETAR_ITENS;
-    }
-
-    public override TipoGame getTipoGame()
-    {
-        return TipoGame.NORMAL;
-    }
+        return "Complete o tutorial";
+    } 
 
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
         {
-            { 4,  2,  1,  2,  1,  2,  1},
-            { 2,  1,  4,  1,  1,  3, -1},
-            {-1,  0,  4,  4,  4,  0, -1},
-            {-1, -1,  0,  4,  0, -1, -1},
+            {-1, -1,  0,  0,  0,  0, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
-
-    //public override int[,] getArrayDeColetaveis()
-    //{
-    //    return new int[,]
-    //    {
-    //        {-1, -1, -1, 12, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1},
-    //        {-1, -1, -1, -1, -1, -1, -1}
-    //    };
-    //}
+    }   
 
     public override bool devolverParaBoard()
     {
@@ -55,27 +37,16 @@ public class Level1 : AbstractLevel
     public override Challenge[] getChallenges()
     {
         return new Challenge[] {
-            new ChallengeLevelCompleto(),
-            new ChallengeTempoMenor("00:40"),
-            new ChallengeScoreMaior(25)
+            new ChallengeCombinacaoColetaveis(this, 0, 0, 0),
+            new ChallengeTempoMenor("59:59"),
+            new ChallengeScoreMaior(1)
         };
     }
 
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
-    }
-
-    public override PowerUpsParaLevel getPupsToLevel()
-    {
-        //return new PowerUpsParaLevel(1)
-        //   .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MOLA });
-
-        return new PowerUpsParaLevel(2)
-           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MISSIL_TELEGUIADO, PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.CORINGA, PowerUpEnums.TIPO.MINI_ASAS, PowerUpEnums.TIPO.ASAS, PowerUpEnums.TIPO.BURACO_NEGRO, PowerUpEnums.TIPO.MOLA, PowerUpEnums.TIPO.ROLLBACK, PowerUpEnums.TIPO.DESCARTE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MISSIL_TELEGUIADO, PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.CORINGA, PowerUpEnums.TIPO.MINI_ASAS, PowerUpEnums.TIPO.ASAS, PowerUpEnums.TIPO.BURACO_NEGRO, PowerUpEnums.TIPO.MOLA, PowerUpEnums.TIPO.ROLLBACK, PowerUpEnums.TIPO.DESCARTE })
-           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MISSIL_TELEGUIADO, PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.CORINGA, PowerUpEnums.TIPO.MINI_ASAS, PowerUpEnums.TIPO.ASAS, PowerUpEnums.TIPO.BURACO_NEGRO, PowerUpEnums.TIPO.MOLA, PowerUpEnums.TIPO.ROLLBACK, PowerUpEnums.TIPO.DESCARTE });
-
-    }
+    }    
 
     public override string getMaquinaNome()
     {
@@ -133,5 +104,23 @@ public class Level1 : AbstractLevel
     public override bool isLevelAlbedo0()
     {
         return false;
-    }    
+    }
+
+    public override Tutorial getTutorial()
+    {
+        if(tutorial == null)
+        {
+            tutorial = new Tutorial();
+        }
+        return tutorial;
+    }
+
+    public override int recuperarQtdPup(PowerUpEnums.TIPO powerupTipo)
+    {
+        if(powerupTipo == PowerUpEnums.TIPO.BOMBA_DA_GARRA)
+        {
+            return 1;
+        }
+        return 0;
+    }
 }

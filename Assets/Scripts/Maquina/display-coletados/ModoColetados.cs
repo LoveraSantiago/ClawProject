@@ -23,11 +23,11 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
     public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento)
     {
         if (evento.infosFimDeJogo.fimColetados)
-        {
+        {            
             processarUltimoOcupacaoDisplaysColetados();
         }
         else
-        {
+        {         
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(mostrarSprite(evento));
         }
     }    
@@ -81,7 +81,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
 
     private void processarUltimoOcupacaoDisplaysColetados()
     {
-        int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();
+        int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();        
         if(indiceDesocupado == 2)
         {
             finalizacaoTodosDisplaysOcupados();

@@ -22,7 +22,7 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         this.totalColetaveis = totalColetaveis;        
     }
 
-    public override int contarColetado(Coletavel coletavel)
+    public override int contarColetado(Coletavel coletavel, SomColetagem somColetagem)
     {
         // Debug.Log(nomeColetado);
         subtrairColetavel();
@@ -32,14 +32,14 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         {
             if (trinca.isCombinacaoValida())
             {
+                somColetagem.playScoreColetagemSucesso();
                 resultCombinacao = true;
-                score += pontosAcerto;
-                AudioController.current.PlayAudio(AudioController.current.combinacaoOk);                
+                score += pontosAcerto;                
             }
             else
             {
-                resultCombinacao = false;
-                AudioController.current.PlayAudio(AudioController.current.combinacaoNok);
+                somColetagem.playScoreColetagemNaoSucesso();
+                resultCombinacao = false;                
             }           
         }
         else

@@ -4,8 +4,8 @@ public class ComponenteEfeitosDaGarra : ComponentePincasDaGarrra
 {
     public float alturaLocalEfeitoTrail { get; private set; }
 
-    public ComponenteEfeitosDaGarra(GarraDto garraDto) 
-        : base(garraDto)
+    public ComponenteEfeitosDaGarra(GarraDto garraDto, SomGarra somGarra) 
+        : base(garraDto, somGarra)
     {
         alturaLocalEfeitoTrail = garraDto.EfeitoTrail.transform.localPosition.y;
     }

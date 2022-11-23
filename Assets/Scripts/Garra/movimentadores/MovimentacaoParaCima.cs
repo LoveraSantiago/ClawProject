@@ -5,7 +5,8 @@ public class MovimentacaoParaCima : AbstractMovimentacaoDaGarraNormal
         colocarMassa(getMassaMovimentacaoCima());
 
         contabilizarSubida();                
-        playAnimacaoIrPCima();        
+        playAnimacaoIrPCima();
+        playSomGarraMovimentoVertical();
     }
 
     public override void update(InputGame inputGame)

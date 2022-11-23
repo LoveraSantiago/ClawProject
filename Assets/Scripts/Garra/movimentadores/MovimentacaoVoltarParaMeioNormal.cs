@@ -9,7 +9,7 @@ public class MovimentacaoVoltarParaMeioNormal : AbstractMovimentacaoDaGarraNorma
 
     public override void preInicio()
     {
-        movVoltarParaMeio.preInicio(getPosicaoHorizontalMeio());
+        movVoltarParaMeio.preInicio(getPosicaoHorizontalMeio());        
     }
 
     public override void fixedUpdate()

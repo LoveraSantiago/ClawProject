@@ -33,9 +33,9 @@ public class ContadorManager
         contador.iniciar(totalColetaveis);
     }
 
-    public int contarColetado(Coletavel coletavel)
+    public int contarColetado(Coletavel coletavel, SomColetagem somColetagem)
     {
-        return contador.contarColetado(coletavel);
+        return contador.contarColetado(coletavel, somColetagem);
     }
 
     public void adicionarColetaveisExtras(int qtd)

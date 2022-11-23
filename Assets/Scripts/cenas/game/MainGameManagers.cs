@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 
 public class MainGameManagers 
 {   
@@ -9,16 +10,20 @@ public class MainGameManagers
     public CameraManager     cameraManager     { get; private set; }
     public UiGameManager     uiManager         { get; private set; }    
     public InputGameImpl     inputGame         { get; private set; }
-    public DraggavelManager  draggavelManager  { get; private set; }
+    public DraggavelManager  draggavelManager  { get; private set; }    
 
-    public MainGameManagers(MainGameDto mainDto, Loading loading, Consumidor<UpdaterManagers> consumidorUpdateManagers)
+    public void configurar(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
+        PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
+        SomManagerGame somManager = new SomManagerGame(mainDto.AudioGameDto);
+        Loading loading = prefabLoading.getLoading(somManager, mainDto.GosDesligar);
+
         ColetorDeDados coletorDeDados = new ColetorDeDados();
 
         inputGame         = new InputGameImpl();
-        garraManager      = new GarraManager(mainDto.GarraDto);
-        coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto);
-        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto);
+        garraManager      = new GarraManager(mainDto.GarraDto, somManager);
+        coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto, somManager);
+        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, somManager);
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
         uiManager         = new UiGameManager(mainDto, coletorDeDados, loading);
         cameraManager     = new CameraManager(mainDto.CameraDto);
@@ -35,8 +40,9 @@ public class MainGameManagers
             .addProvedorSubidasDoElevador(coletaveisManager.board.elevador)
             .addProvedorDadosPowerUp(powerUpManager);
 
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));        
-    }   
+        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));
+        loading.fecharModal();
+    }
 
     private void configurandoLevel(MainGameDto mainDto)
     {
@@ -46,25 +52,26 @@ public class MainGameManagers
         uiManager        .configurandoLevel(levelEscolhido);
 
         powerUpManager.configurarGosPowerUps(
-            getInformacaoDisplayColetado(), coletaveisManager.getFornecedorTrocadorDeOrdem());
+            getInformacaoDisplayColetado(), coletaveisManager.getFornecedorTrocadorDeOrdem());       
     }
 
-    private void configurandoEventos()
+    protected virtual void configurandoEventos()
     {
-        MainGameEventos eventos = new MainGameEventos();
-        eventos.configurarEventos(this);
+        MainGameEventos eventos = new MainGameEventos(this);
+        eventos.configurarEventos();
     }
 
-    private IEnumerator startLaizy(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
+    protected virtual IEnumerator startLaizy(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
         yield return coletaveisManager.start();
+        yield return new WaitForSeconds(mainDto.DelayInicio);
 
-        maquinaManager.start(inputGame);         
+        maquinaManager.start(inputGame);
         garraManager.start(mainDto.GarraDto);
-        consumidorUpdateManagers.consumir(getUpdatables());        
+        consumidorUpdateManagers.consumir(getUpdatables());
     }
 
-    private UpdaterMainGameManagers getUpdatables()
+    protected UpdaterMainGameManagers getUpdatables()
     {
         return new UpdaterMainGameManagers(garraManager, maquinaManager, powerUpManager, inputGame);
     }

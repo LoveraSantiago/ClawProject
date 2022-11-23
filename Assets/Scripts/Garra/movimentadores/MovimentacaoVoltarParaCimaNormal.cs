@@ -10,6 +10,7 @@ public class MovimentacaoVoltarParaCimaNormal : AbstractMovimentacaoDaGarraNorma
     public override void preInicio()
     {
         movVoltarPCima.preInicio();
+        playSomGarraMovimentoVertical();
     }
 
 

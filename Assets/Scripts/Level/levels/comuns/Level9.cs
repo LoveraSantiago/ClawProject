@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class Level9 : AbstractLevel
+public class Level9 : AbstractLevelNormal
 {
     public override string getLevelTitle()
     {
@@ -10,12 +10,7 @@ public class Level9 : AbstractLevel
     public override string getMsgObjetivoLevel()
     {
         return LevelUtils.MSG_COLETAR_ITENS;
-    }
-
-    public override TipoGame getTipoGame()
-    {
-        return TipoGame.NORMAL;
-    }
+    }  
 
     public override int[,] getArrayDeColetaveis()
     {

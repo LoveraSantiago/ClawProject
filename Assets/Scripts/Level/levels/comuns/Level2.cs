@@ -1,7 +1,7 @@
 
 using System.Collections.Generic;
 
-public class Level2 : AbstractLevel
+public class Level2 : AbstractLevelNormal
 {
     public override string getLevelTitle()
     {
@@ -11,12 +11,7 @@ public class Level2 : AbstractLevel
     public override string getMsgObjetivoLevel()
     {
         return LevelUtils.MSG_TEMPO;
-    }
-
-    public override TipoGame getTipoGame()
-    {
-        return TipoGame.NORMAL;
-    }   
+    }  
 
     public override int[,] getArrayDeColetaveis()
     {

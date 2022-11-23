@@ -1,4 +1,4 @@
-public class ComponenteEventosDeMovimentacaoDaGarra : ComponenteGarraDeMovimentacaoGarra
+public class ComponenteEventosDeMovimentacaoDaGarra : ComponenteSomDaGarraDeMovimentacaoGarra
 {
     protected void produziuEventoDeDirecao(int direcao)
     {

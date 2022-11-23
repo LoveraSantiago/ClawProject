@@ -20,13 +20,13 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     public  ScrollPupsManager   scrollPupsManager  { get; private set; }
     private Draggavel           draggavel;
 
-    public MaquinaManager(MaquinaDto maquinaDto)
+    public MaquinaManager(MaquinaDto maquinaDto, SomMaquina somMaquina)
     {
         partesDto = maquinaDto.PartesDtoV2;
 
         arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
         displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto, arcoIrisEfeito);        
-        displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto);
+        displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, somMaquina);
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick           = new Joystick(maquinaDto.MesaJoystickDto);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);

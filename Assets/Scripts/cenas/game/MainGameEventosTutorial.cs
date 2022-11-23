@@ -1,0 +1,49 @@
+public class MainGameEventosTutorial : MainGameEventos
+{
+    private Tutorial tutorial;
+
+    public MainGameEventosTutorial(MainGameManagers mainGameManagers, Tutorial tutorial)
+        :base(mainGameManagers)
+    {
+        this.tutorial = tutorial;
+    }    
+
+    protected override AcaoColetadoFim configurarAcaoColetadoFim()
+    {
+        AcaoColetadoFim acaoColetadoFim = base.configurarAcaoColetadoFim();
+        acaoColetadoFim.adicionarConsumidor(tutorial);
+        return acaoColetadoFim;
+    }
+
+    protected override AcaoBotaoPowerUpVazio configurarAcaoBotaoPowerUpVazio()
+    {
+        AcaoBotaoPowerUpVazio acaoBotaoPupVazio = base.configurarAcaoBotaoPowerUpVazio();
+        acaoBotaoPupVazio.adicionarConsumidor(tutorial);
+        return acaoBotaoPupVazio;
+    }
+
+    protected override AcaoPupFromScrollSelecao configurarAcaoPupFromScrollSelecao()
+    {
+        AcaoPupFromScrollSelecao acaoPupScrollSelecao = base.configurarAcaoPupFromScrollSelecao();
+        acaoPupScrollSelecao.adicionarConsumidor(tutorial);
+        return acaoPupScrollSelecao;
+    }
+
+    protected override AcaoPowerUpAcionado configurarAcaoPowerUpAcionado()
+    {
+        AcaoPowerUpAcionado acaoPowerUpAcionado = base.configurarAcaoPowerUpAcionado();
+        acaoPowerUpAcionado.adicionarConsumidor(tutorial);
+        return acaoPowerUpAcionado;
+    }
+
+    protected override AcaoColetado configurarAcaoColetado()
+    {
+        AcaoColetado acaoColetado = base.configurarAcaoColetado();
+
+        AcaoColetado acaoColetadoTutorial = new AcaoColetado();
+        acaoColetadoTutorial.configurarProdutor(tutorial)
+            .adicionarConsumidor(uiManager.modalResultados);
+
+        return acaoColetado;
+    }
+}

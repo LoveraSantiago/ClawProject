@@ -14,6 +14,7 @@ public class MovimentacaoParaBaixo : AbstractMovimentacaoDaGarraNormal
         colocarMassa(getMassaMovimentacaoBaixo());
         intervaloTempoDeTravamento.resetContador();
         playAnimacaoIrPBaixo();
+        playSomGarraMovimentoVertical();
     }
 
     public override void update(InputGame inputGame)

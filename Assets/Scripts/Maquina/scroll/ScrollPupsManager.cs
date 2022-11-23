@@ -16,8 +16,8 @@ public class ScrollPupsManager : Draggavel,
 
     public ScrollPupsManager(ScrollPupsDto scrollPupsDto)
     {
-        scrollPups = new ScrollPups(scrollPupsDto);
-        scrollSelecao = new ScrollSelecao();
+        scrollPups     = new ScrollPups(scrollPupsDto);
+        scrollSelecao  = new ScrollSelecao();
         intervaloTempo = new IntervaloDeTempo(0);
     }
 
@@ -73,7 +73,7 @@ public class ScrollPupsManager : Draggavel,
                 int qtdPup = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome);
                 if(qtdPup > 0)
                 {
-                    qtdPup = PlayerPrefsPowerUp.subtrairPup(pupEntidade.nome);
+                    qtdPup = subtrairPowerUp(pupEntidade.nome);
                     DigitosItemScrollPup digitos = new DigitosItemScrollPup(itemSelecionado);
                     digitos.addQuantidade(qtdPup);
                     scrollSelecao.selecionouPup(indiceBtnDesocupado, pupEntidade.tipo);
@@ -134,6 +134,15 @@ public class ScrollPupsManager : Draggavel,
     private bool desconsiderarTap()
     {
         return !considerarTap();
+    }
+
+    private int subtrairPowerUp(string nome)
+    {
+        if (LevelUtils.isTutorialLevel(ContextoEstaticoUtils.level))
+        {
+            return 1;
+        }
+        return PlayerPrefsPowerUp.subtrairPup(nome); 
     }
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)

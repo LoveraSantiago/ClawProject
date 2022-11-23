@@ -20,9 +20,9 @@ public class ContadorOrdenado : ContadorNormal
         indicarProximoColetavel();             
     }
 
-    public override int contarColetado(Coletavel coletavel)
+    public override int contarColetado(Coletavel coletavel, SomColetagem somColetagem)
     {
-        int score = base.contarColetado(coletavel);
+        int score = base.contarColetado(coletavel, somColetagem);
         BoardOrdem ordemIt = navegacaoOrdem.getItemIndiceAtual();
         if (coletavel.nome.Equals(ordemIt.nome))
         {

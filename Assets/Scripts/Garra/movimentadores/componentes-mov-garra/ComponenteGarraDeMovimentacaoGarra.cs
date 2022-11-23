@@ -3,9 +3,9 @@ public abstract class ComponenteGarraDeMovimentacaoGarra : AcaoSincroniaComDirec
     private static Garra garra;
     private static AngulosPropriedades angulosProps;
 
-    public static void configurarComponenteGarra(GarraDto garraDto)
+    public static void configurarComponenteGarra(GarraDto garraDto, SomGarra somGarra)
     {
-        garra = new Garra(garraDto);
+        garra = new Garra(garraDto, somGarra);
         angulosProps = new AngulosPropriedades(garraDto.Angulos);
     }
 

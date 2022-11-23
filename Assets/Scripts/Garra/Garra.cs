@@ -3,10 +3,10 @@ using UnityEngine;
 public class Garra : ComponenteAnimacaoDaGarra,
                      AcaoSincroniaComDirecaoDaGarra.ProdutorEvento
 {   
-    private ProdutorDeEvento<Direcao> produtorEventoDirecao;
+    private ProdutorDeEvento<Direcao> produtorEventoDirecao;    
 
-    public Garra(GarraDto garraDto)
-        :base(garraDto)
+    public Garra(GarraDto garraDto, SomGarra somGarra)
+        :base(garraDto, somGarra)
     {        
         definindoGenero(garraDto);        
         produtorEventoDirecao = new ProdutorDeEvento<Direcao>();

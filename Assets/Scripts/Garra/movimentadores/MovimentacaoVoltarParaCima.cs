@@ -13,6 +13,7 @@ public class MovimentacaoVoltarParaCima : AbstractMovimentacaoDaGarra
     {
         colocarMassa(getMassaMovimentacaoCima());
         playAnimacaoIrPCima();
+        playSomGarraMovimentoVertical();
     }
 
     public override void update(InputGame inputGame)
@@ -20,6 +21,7 @@ public class MovimentacaoVoltarParaCima : AbstractMovimentacaoDaGarra
         if (isAcimaPosInicial())
         {
             //Debug.Log("isAcimaPosInicial");
+            stopSomGarraMovimentoVertical();
             parar();
             colocarNaAlturaInicial();
             comunicadorComGerMovimentacaoComum.trocarParaAcaoVoltarParaMeio();

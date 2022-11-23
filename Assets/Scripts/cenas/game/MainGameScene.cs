@@ -23,18 +23,13 @@ public class MainGameScene : MonoBehaviour,
         CameraManager.forceAspectCameraAsRatio();
         ContextoEstaticoUtils.configMainMono(this);
         MateriaisUtils.configurar(mainDto.PrefabMateriais);
-        FactoryPowerUpEntidade.resetContextoEstatico();
-
-        PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
-        SomManagerGame somManagerGame = new SomManagerGame(mainDto.AudioGameDto);
-        Loading loading = prefabLoading.getLoading(somManagerGame, mainDto.GosDesligar);
+        FactoryPowerUpEntidade.resetContextoEstatico();       
 
         PrefabLevelsDto prefabLevels = mainDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         HelperMapaEntidade.configurar(prefabLevels);
 
         AbstractLevel levelEscolhido = ContextoEstaticoUtils.loadLevelEstaticoAtualOrCreateLevel(mapa, indiceLevel);
-        MainGameManagers managers = new MainGameManagers(mainDto, loading, this);
-        loading.fecharModal();
+        iniciarManagers(levelEscolhido);
     }        
     
     void Update()
@@ -70,4 +65,19 @@ public class MainGameScene : MonoBehaviour,
         this.updaterManagers = evento;
     }
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM
+
+    private void iniciarManagers(AbstractLevel levelEscolhido)
+    {
+        MainGameManagers mainGameManagers = null;
+
+        if (LevelUtils.isTutorialLevel(levelEscolhido))
+        {
+            mainGameManagers = new MainGameManagersTutorial();
+        }
+        else
+        {
+            mainGameManagers = new MainGameManagers();
+        }
+        mainGameManagers.configurar(mainDto, this);
+    }
 }

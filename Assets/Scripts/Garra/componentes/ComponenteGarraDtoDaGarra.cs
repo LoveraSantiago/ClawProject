@@ -1,6 +1,6 @@
 public class ComponenteGarraDtoDaGarra 
 {
-    protected GarraDto garraDto;
+    protected GarraDto garraDto;    
 
     public ComponenteGarraDtoDaGarra(GarraDto garraDto)
     {

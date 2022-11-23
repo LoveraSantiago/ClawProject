@@ -10,6 +10,7 @@ public class MovimentacaoParadoNormal : AbstractMovimentacaoDaGarraNormal
     public override void preInicio()
     {
         movParado.preInicio();
+        stopSomGarraMovimentoVertical();
     }
 
     public override void fixedUpdate()

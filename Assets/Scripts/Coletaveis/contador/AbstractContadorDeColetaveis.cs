@@ -4,7 +4,7 @@ public abstract class AbstractContadorDeColetaveis : Fornecedor<TrocadorDeOrdem>
 
     public virtual void configuradoPeloLevel(AbstractLevel level) {}
 
-    public abstract int contarColetado(Coletavel coletavel);
+    public abstract int contarColetado(Coletavel coletavel, SomColetagem somColetagem);
 
     public abstract void adicionarColetaveisExtras(int qtd);
 

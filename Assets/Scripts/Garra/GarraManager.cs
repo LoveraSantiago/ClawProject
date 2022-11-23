@@ -18,9 +18,9 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     private GerenciadorDeMovimentacaoPowerUp gerDeMovPowerUp;
     private GerenciadorDeMovimentacao        gerDeMovAtual;
 
-    public GarraManager(GarraDto garraDto)
+    public GarraManager(GarraDto garraDto, SomGarra somGarra)
     {
-        AbstractMovimentacaoDaGarra.configurar(garraDto);
+        AbstractMovimentacaoDaGarra.configurar(garraDto, somGarra);
         cabo = new CaboDaGarra(garraDto.CaboDaGarraDto);
 
         if(LevelUtils.isCacaNiquelLevel(ContextoEstaticoUtils.level))
@@ -54,6 +54,25 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.Corpo.TransformBaseCorpo.transform);
     }    
 
+    public void parar()
+    {
+        gerDeMovNormal.trocarParaAcaoVoltarParaMeio();
+        gerDeMovAtual = gerDeMovNormal;
+    }
+
+    public int fornecer()
+    {
+        return gerDeMovAtual.getContagemDeSubidas();
+    }
+
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
+    //ACIONADO QDO GARRA COLLIDE COM UM COLETAVEL
+    public void consumir(Collider2D colliderDeColetavel)
+    {        
+        gerDeMovAtual.garraColidiuCom(colliderDeColetavel);
+    }
+    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
+
     private void configurarColisorCentroDaPinca(GameObject goColisor)
     {
         DetectorDeTriggers detectorDeColisoes = goColisor.GetComponent<DetectorDeTriggers>();
@@ -79,14 +98,6 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
             gerDeMovAtual = gerDeMovNormal;
         }
     }
-
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
-    //ACIONADO QDO GARRA COLLIDE COM UM COLETAVEL
-    public void consumir(Collider2D colliderDeColetavel)
-    {        
-        gerDeMovAtual.garraColidiuCom(colliderDeColetavel);
-    }
-    //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
    
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {        
@@ -128,12 +139,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         {
             gerDeMovAtual.garraComemorar();
         }
-    }
-
-    public int fornecer()
-    {
-        return gerDeMovAtual.getContagemDeSubidas();
-    }
+    }   
 
     //TODO tentar unificar
     ProdutorDeEvento<InformacoesDaGarraDto> AcaoInfoDaGarra.ProdutorEvento.getProdutorDeEvento()

@@ -10,6 +10,7 @@ public class MovimentacaoParadoPowerUp : AbstractMovimentacaoDaGarraPowerUp
     public override void preInicio()
     {
         movParado.preInicio();
+        stopSomGarraMovimentoVertical();
     }
 
     public override void fixedUpdate()

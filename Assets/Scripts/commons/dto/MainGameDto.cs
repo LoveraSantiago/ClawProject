@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class MainGameDto 
 {
+    [SerializeField] private float delayInicio;
     [SerializeField] private BoxCollider2D dragCollider;
     [Space(5)]
     [SerializeField] private GarraDto garraDto;
@@ -24,7 +25,10 @@ public class MainGameDto
     [SerializeField] private AudioGameDto audioGameDto;
     [SerializeField] private GameObject prefabLoading;
     [SerializeField] private GameObject[] gosDesligar;
+    [Space(5)]
+    [SerializeField] private TutorialDto tutorialDto;
 
+    public float DelayInicio { get { return delayInicio; } }
     public BoxCollider2D DragCollider { get { return dragCollider; } }
     public GarraDto GarraDto { get { return garraDto; } }
     public ColetaveisDto ColetaveisDto { get { return coletaveisDto; } }
@@ -38,4 +42,6 @@ public class MainGameDto
     public AudioGameDto AudioGameDto { get { return audioGameDto; } }
     public GameObject PrefabLoading { get { return prefabLoading; } }
     public GameObject[] GosDesligar { get { return gosDesligar; } }
+
+    public TutorialDto TutorialDto { get { return tutorialDto; } }
 }

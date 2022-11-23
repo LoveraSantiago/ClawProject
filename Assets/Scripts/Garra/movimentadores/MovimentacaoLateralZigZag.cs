@@ -17,6 +17,7 @@ public class MovimentacaoLateralZigZag : AbstractMovimentacaoDaGarraNormal
         movDirecao.produziuEventoDeDirecao();
         acionarTriggerDasPincas();
         movDirecao.moverHorizontalmenteFreeze();
+        stopSomGarraMovimentoVertical();
     }
 
     public override void update(InputGame inputGame)

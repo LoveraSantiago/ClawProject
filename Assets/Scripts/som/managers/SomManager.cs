@@ -5,10 +5,15 @@ public abstract class SomManager : SomLoading
     private AudioDto audioDto;
     private AudioSource[] audiosSources;
 
-    protected SomManager(AudioDto audioDto)
+    protected SomManager(AudioDto audioDto):
+        this(audioDto, 0)
+    {        
+    }
+
+    protected SomManager(AudioDto audioDto, int qtdAudioSources)
     {
         this.audioDto = audioDto;
-        audiosSources = new AudioSource[3];
+        audiosSources = new AudioSource[3 + qtdAudioSources];
         audiosSources[0] = audioDto.MainAudioSource;
         audiosSources[0].priority = audiosSources.Length;
 
@@ -46,7 +51,7 @@ public abstract class SomManager : SomLoading
         return getAudioSource(2);
     }
 
-    private AudioSource getAudioSource(int indice)
+    protected AudioSource getAudioSource(int indice)
     {
         return audiosSources[indice];
     }
