@@ -16,7 +16,7 @@ public class SomManagerGame : SomManager,
     //***** IMPLEMENTACAO INTERFACE SOMMAQUINA INICIO *****
     public void playSomDisplayColetado()
     {
-        audioPlayOneShot(getAudioSourceMaquina(), audioGameDto.SomMaqColetaveis);
+        audioPlayOneShot(getAudioSourceMaquinaDisplayColetados(), audioGameDto.SomMaqColetaveis);
     }
     //***** IMPLEMENTACAO INTERFACE SOMMAQUINA FIM *****
 
@@ -80,7 +80,7 @@ public class SomManagerGame : SomManager,
         return getAudioSource(5);
     }
 
-    private AudioSource getAudioSourceMaquina()
+    private AudioSource getAudioSourceMaquinaDisplayColetados()
     {
         return getAudioSource(6);
     }   
