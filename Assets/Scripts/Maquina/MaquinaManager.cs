@@ -25,7 +25,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         partesDto = maquinaDto.PartesDtoV2;
 
         arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
-        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto, arcoIrisEfeito);        
+        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto, arcoIrisEfeito, somMaquina);        
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, somMaquina);
         displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
         joystick           = new Joystick(maquinaDto.MesaJoystickDto);

@@ -40,10 +40,10 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
         }        
     }
 
-    public IEnumerator mostrarSprColetado(Sprite sprite, bool mostrarMira)
+    public IEnumerator mostrarSprColetado(Sprite sprite, SomMaquina somMaquina, bool mostrarMira)
     {        
         yield return limparSprNoneCasoOcupado();
-        mostrarColetado(sprite);
+        mostrarColetado(sprite, somMaquina);
         isOcupado = true;
         yield return subirSlotColetado();                
 
@@ -53,10 +53,10 @@ public class SingleDisplayDeColetado : ComponenteMovimentadorDeSingleDisplayDeCo
         }        
     }      
 
-    public IEnumerator limparSprColetado()
+    public IEnumerator limparSprColetado(SomMaquina somMaquina)
     {
         isOcupado = false;
-        yield return descerSlotColetado();        
+        yield return descerSlotColetado(somMaquina);        
     }     
     
     public IEnumerator mostrarSprNone(Executor executor)

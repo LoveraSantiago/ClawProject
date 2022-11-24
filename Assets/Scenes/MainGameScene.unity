@@ -11956,11 +11956,14 @@ MonoBehaviour:
         volume: 0.7
         audioClip: {fileID: 8300000, guid: 0a456e588b2e0264c8f86d7040e09183, type: 3}
       somGarraLateral:
-        volume: 0.45
+        volume: 0.4
         audioClip: {fileID: 8300000, guid: 4bbdb2013bf43174ab2655c927b520a0, type: 3}
       somGarraInicioDescida:
         volume: 0.15
         audioClip: {fileID: 8300000, guid: 454eb1f25a6edb843be3277d3450d833, type: 3}
+      somMaqColetaveis:
+        volume: 0.9
+        audioClip: {fileID: 8300000, guid: 803387846d4bc0840bb58e4d52a49c94, type: 3}
     prefabLoading: {fileID: 712928913}
     gosDesligar:
     - {fileID: 1078757848}

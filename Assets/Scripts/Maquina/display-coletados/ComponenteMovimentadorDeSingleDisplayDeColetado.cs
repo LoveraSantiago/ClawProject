@@ -31,7 +31,7 @@ public class ComponenteMovimentadorDeSingleDisplayDeColetado : ComponenteDtoDeSi
         yield return movimentarSlot(velocidade, delay, goSlotBaixo, posFinal);
     }
 
-    protected IEnumerator descerSlotColetado()
+    protected IEnumerator descerSlotColetado(SomMaquina somMaquina)
     {
         float velocidade = getDisplaysColetadosDto().VelocImg;
         float fimDelay = getDisplaysColetadosDto().FimDelay;
@@ -39,7 +39,7 @@ public class ComponenteMovimentadorDeSingleDisplayDeColetado : ComponenteDtoDeSi
         GameObject goSlotBaixo = getSingleSlotColetadoDto().GoSlotBaixo;
         float posYBaixoInicial = getDisplaysColetadosDto().PosYSlotAcrescimoNeg;
         Vector3 posSlotBaixoInicial = new Vector3(goSlotBaixo.transform.localPosition.x, posYBaixoInicial, goSlotBaixo.transform.localPosition.z);
-
+        somMaquina.playSomDisplayColetado();
         yield return movimentarSlot(velocidade, fimDelay, goSlotBaixo, posSlotBaixoInicial);
     }
 

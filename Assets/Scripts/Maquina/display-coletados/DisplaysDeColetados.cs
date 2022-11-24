@@ -5,9 +5,9 @@ public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento,
     public ModoColetados modoColetados { get; private set; }
     private ModoCacaNiquel modoCacaNiquel;
 
-    public DisplaysDeColetados(DisplaysColetadosDto displaysSlotsDto, ArcoIrisEfeito arcoIrisEfeito)
+    public DisplaysDeColetados(DisplaysColetadosDto displaysSlotsDto, ArcoIrisEfeito arcoIrisEfeito, SomMaquina somMaquina)
     {
-        grupoDisplays = new GrupoDisplays(displaysSlotsDto);
+        grupoDisplays = new GrupoDisplays(displaysSlotsDto, somMaquina);
         modoColetados = new ModoColetados(grupoDisplays, arcoIrisEfeito);        
     }
 

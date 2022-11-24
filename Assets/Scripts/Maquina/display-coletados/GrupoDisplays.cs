@@ -4,11 +4,11 @@ using System.Collections;
 
 public class GrupoDisplays 
 {
-    private bool powerUpDisplayColetado;
-    
+    private bool powerUpDisplayColetado;    
     public SingleDisplayDeColetado[] singleDisplayDeColetado { get; private set; }
+    private SomMaquina somMaquina;
 
-    public GrupoDisplays(DisplaysColetadosDto displaysSlotsDto)
+    public GrupoDisplays(DisplaysColetadosDto displaysSlotsDto, SomMaquina somMaquina)
     {   
         SingleDisplayDeColetado.configurar(displaysSlotsDto);
         SingleSlotColetadoDto[] singleSlotColetadoDto = displaysSlotsDto.SingleSlotColetadoDto;
@@ -17,7 +17,8 @@ public class GrupoDisplays
         for(int contador = 0; contador < singleDisplayDeColetado.Length; contador++)
         {
             singleDisplayDeColetado[contador] = new SingleDisplayDeColetado(singleSlotColetadoDto[contador]);
-        }        
+        }
+        this.somMaquina = somMaquina;
     }
 
     public void colorirDisplays(Dictionary<string, string> dicionarioDeCores)
@@ -47,19 +48,19 @@ public class GrupoDisplays
 
     public IEnumerator mostrarSprColetado(int indice, Sprite sprite, bool powerUpAcionado)
     {
-        yield return singleDisplayDeColetado[indice].mostrarSprColetado(sprite, powerUpAcionado);
+        yield return singleDisplayDeColetado[indice].mostrarSprColetado(sprite, somMaquina, powerUpAcionado);
     }
 
     public IEnumerator limparSprColetado(int indice)
     {
-        yield return singleDisplayDeColetado[indice].limparSprColetado();
+        yield return singleDisplayDeColetado[indice].limparSprColetado(somMaquina);
     }
 
     public IEnumerator mostrarAlvoELimparSprColetado(int indice)
     {
 
         singleDisplayDeColetado[indice].mostrarAlvoSelecionado();
-        yield return singleDisplayDeColetado[indice].limparSprColetado();
+        yield return singleDisplayDeColetado[indice].limparSprColetado(somMaquina);
     }
 
     public int getIndicePrimeiroDisplayDesocupado()

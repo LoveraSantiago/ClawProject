@@ -5,12 +5,16 @@ using UnityEngine;
 public class AudioGameDto : AudioDto
 {
     [SerializeField] private AudioClipDto somBackground;
+    [Space(3)]
     [SerializeField] private AudioClipDto somCombinacaoOK;
     [SerializeField] private AudioClipDto somCombinacaoNOK;
     [SerializeField] private AudioClipDto somColetado;
+    [Space(3)]
     [SerializeField] private AudioClipDto somGarraAgarrada;
     [SerializeField] private AudioClipDto somGarraLateral;
     [SerializeField] private AudioClipDto somGarraInicioDescida;
+    [Space(3)]
+    [SerializeField] private AudioClipDto somMaqColetaveis;
 
     public AudioClipDto SomBackground { get { return somBackground; } }
     public AudioClipDto SomCombinacaoOK { get { return somCombinacaoOK; } }
@@ -19,4 +23,5 @@ public class AudioGameDto : AudioDto
     public AudioClipDto SomGarraAgarrada { get { return somGarraAgarrada; } }
     public AudioClipDto SomGarraLateral { get { return somGarraLateral; } }
     public AudioClipDto SomGarraInicioDescida { get { return somGarraInicioDescida; } }
+    public AudioClipDto SomMaqColetaveis { get { return somMaqColetaveis; } }
 }
