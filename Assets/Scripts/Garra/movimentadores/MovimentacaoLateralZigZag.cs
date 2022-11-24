@@ -14,6 +14,7 @@ public class MovimentacaoLateralZigZag : AbstractMovimentacaoDaGarraNormal
     public override void preInicio()
     {        
         movPincaZigZag.preInicio();
+        movDirecao.preInicio();
         movDirecao.produziuEventoDeDirecao();
         acionarTriggerDasPincas();
         movDirecao.moverHorizontalmenteFreeze();

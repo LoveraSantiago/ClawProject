@@ -11411,7 +11411,7 @@ MonoBehaviour:
         movBaixo: 7.5
         movAnguloIdle: 0.3
         movAnguloAbertura: 4
-        movAnguloFechamento: 1.5
+        movAnguloFechamento: 1.4
       angulos:
         idleMin: -5
         idleMax: 10
@@ -11935,7 +11935,7 @@ MonoBehaviour:
     audioGameDto:
       mainAudioSource: {fileID: 519420030}
       somGarra:
-        volume: 0.025
+        volume: 0.06
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
       somBatidaAbrirModal:
         volume: 1
@@ -11953,10 +11953,13 @@ MonoBehaviour:
         volume: 1
         audioClip: {fileID: 8300000, guid: 82edef6eac25f524cbfc99e5ece0e3d4, type: 3}
       somGarraAgarrada:
-        volume: 0.3
+        volume: 0.7
         audioClip: {fileID: 8300000, guid: 0a456e588b2e0264c8f86d7040e09183, type: 3}
-      somInicioDescida:
-        volume: 0.1
+      somGarraLateral:
+        volume: 0.45
+        audioClip: {fileID: 8300000, guid: 4bbdb2013bf43174ab2655c927b520a0, type: 3}
+      somGarraInicioDescida:
+        volume: 0.15
         audioClip: {fileID: 8300000, guid: 454eb1f25a6edb843be3277d3450d833, type: 3}
     prefabLoading: {fileID: 712928913}
     gosDesligar:

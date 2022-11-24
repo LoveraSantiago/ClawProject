@@ -19,4 +19,9 @@ public class ComponenteSomDaGarraDeMovimentacaoGarra : ComponenteGarraDeMoviment
     {
         getGarra().playSomGarraInicioDescida();
     }
+
+    public void playSomGarraMovimentoLateral()
+    {
+        getGarra().playSomGarraMovimentoLateral();
+    }
 }

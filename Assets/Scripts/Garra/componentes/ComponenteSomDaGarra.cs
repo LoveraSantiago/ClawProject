@@ -27,4 +27,9 @@ public class ComponenteSomDaGarra : ComponenteGarraDtoDaGarra
     {
         somGarra.playSomGarraInicioDescida();
     }
+
+    public void playSomGarraMovimentoLateral()
+    {
+        somGarra.playSomGarraLateral();
+    }
 }

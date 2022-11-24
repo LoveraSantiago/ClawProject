@@ -8,7 +8,7 @@ public class SomManagerGame : SomManager,
     private AudioGameDto audioGameDto;
 
     public SomManagerGame(AudioGameDto audioDto) 
-        : base(audioDto, 2)
+        : base(audioDto, 3)
     {
         this.audioGameDto = audioDto;
     }
@@ -49,22 +49,32 @@ public class SomManagerGame : SomManager,
     {
         Debug.Log("Som Garra Agarrando");
         //audioPlayOneShot(getAudioSourceGarra(), audioGameDto.SomGarraAgarrada);   
-        audioPlayOneShot(getAudioSourceColetagem(), audioGameDto.SomGarraAgarrada);   
+        audioPlayOneShot(getAudioSourceGarraComplementar(), audioGameDto.SomGarraAgarrada);   
+    }
+
+    public void playSomGarraLateral()
+    {
+        audioPlayOneShot(getAudioSourceGarraComplementar(), audioGameDto.SomGarraLateral);
     }
 
     public void playSomGarraInicioDescida()
     {
-        audioPlayOneShot(getAudioSourceColetagem(), audioGameDto.SomInicioDescida);
+        audioPlayOneShot(getAudioSourceGarraComplementar(), audioGameDto.SomGarraInicioDescida);
     }
     //***** IMPLEMENTACAO INTERFACE SOMGARRA FIM *****
 
-    private AudioSource getAudioSourceColetagem()
+    private AudioSource getAudioSourceGarraComplementar()
     {
         return getAudioSource(3);
     }
 
-    private AudioSource getAudioSourceMaquina()
+    private AudioSource getAudioSourceColetagem()
     {
         return getAudioSource(4);
+    }
+
+    private AudioSource getAudioSourceMaquina()
+    {
+        return getAudioSource(5);
     }
 }
