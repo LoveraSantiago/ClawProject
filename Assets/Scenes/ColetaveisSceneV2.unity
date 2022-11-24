@@ -4441,7 +4441,7 @@ MonoBehaviour:
     audioColetaveisDto:
       mainAudioSource: {fileID: 220680149}
       somGarra:
-        volume: 0.03
+        volume: 0.02
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
       somBatidaAbrirModal:
         volume: 1
