@@ -50,20 +50,25 @@ public class CameraManager : AcaoBotaoPowerUpVazio.ConsumidorEvento,
     public static void forceLocalEscala(Transform transform)
     {
         //forcando escala Y pra ficar dentro da safe area
-        float escalaY = Screen.safeArea.height / Screen.height;
-        float escalaX = Screen.safeArea.width / Screen.width;
-        transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
+        //log("0");
+        if (Camera.main.aspect < RATIO_SCREEN)
+        {
+            //Debug.Log("REDIMENSIONAMENTO DE TELA ATIVADO");
+            //log("1");
+            float escalaY = Screen.safeArea.height / Screen.height;
+            float escalaX = Screen.safeArea.width / Screen.width;
+            transform.localScale = new Vector3(escalaX, escalaY, transform.localScale.z);
+        }
     }
 
     public static void forceAspectCameraAsRatio()
     {
-        log("1");
+        //log("2");
         if (Camera.main.aspect < RATIO_SCREEN)
         {
-            //Debug.Log("REDIMENSIONAMENTO DE TELA ATIVADO");
-            //Camera.main.orthographicSize = 1440 / Camera.main.aspect;
-            //log("2");
-            //Camera.main.aspect = RATIO_SCREEN;
+            //Debug.Log("REDIMENSIONAMENTO DE TELA ATIVADO");            
+            //log("3");
+            Camera.main.aspect = RATIO_SCREEN;
         }
 
         //Debug.Log("DEPOIS w: " + Camera.main.pixelWidth + " h: " + Camera.main.pixelHeight + " ratio: " + Camera.main.aspect);
