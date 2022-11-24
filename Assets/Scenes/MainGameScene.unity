@@ -11941,7 +11941,7 @@ MonoBehaviour:
         volume: 1
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
       somBackground:
-        volume: 0.2
+        volume: 0.1
         audioClip: {fileID: 8300000, guid: 9ab0aa6a032f1004595d6bcaf989713b, type: 3}
       somCombinacaoOK:
         volume: 1
@@ -11952,6 +11952,12 @@ MonoBehaviour:
       somColetado:
         volume: 1
         audioClip: {fileID: 8300000, guid: 82edef6eac25f524cbfc99e5ece0e3d4, type: 3}
+      somGarraAgarrada:
+        volume: 0.3
+        audioClip: {fileID: 8300000, guid: 0a456e588b2e0264c8f86d7040e09183, type: 3}
+      somInicioDescida:
+        volume: 0.1
+        audioClip: {fileID: 8300000, guid: 454eb1f25a6edb843be3277d3450d833, type: 3}
     prefabLoading: {fileID: 712928913}
     gosDesligar:
     - {fileID: 1078757848}
@@ -64072,7 +64078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1585168848629503406, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
       propertyPath: m_ForceMagnitude
-      value: -8
+      value: -5.75
       objectReference: {fileID: 0}
     - target: {fileID: 5249334261176073609, guid: 7fce3bec6fa24fc479a630b7fdc5e1e2, type: 3}
       propertyPath: m_Mass

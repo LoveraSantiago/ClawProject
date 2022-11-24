@@ -17,4 +17,14 @@ public class ComponenteSomDaGarra : ComponenteGarraDtoDaGarra
     {
         somGarra.stopSomGarraSubindo();
     }
+
+    public void playSomGarraAgarrando()
+    {
+        somGarra.playSomGarraAgarrando();
+    }
+
+    public void playSomGarraInicioDescida()
+    {
+        somGarra.playSomGarraInicioDescida();
+    }
 }

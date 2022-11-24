@@ -2,6 +2,7 @@ public class MovimentacaoAgarrandoEmbaixo : AbstractMovimentacaoDaGarraNormal
 {   
     public override void preInicio()
     {
+        playSomGarraAgarrando();
         agarrando();
         colocarMassa(getMassaMovimentacaoAgarrar());
         stopSomGarraMovimentoVertical();

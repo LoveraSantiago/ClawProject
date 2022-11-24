@@ -31,6 +31,7 @@ public class SomManagerGame : SomManager,
     {
         audioPlayOneShot(getAudioSourceColetagem(), audioGameDto.SomColetado);
     }
+
     //***** IMPLEMENTACAO INTERFACE SOMGARRA FIM *****
 
     //***** IMPLEMENTACAO INTERFACE SOMGARRA INICIO *****
@@ -42,6 +43,18 @@ public class SomManagerGame : SomManager,
     public void stopSomGarraSubindo()
     {
         base.stopSomGarraGirando();
+    }
+
+    public void playSomGarraAgarrando()
+    {
+        Debug.Log("Som Garra Agarrando");
+        //audioPlayOneShot(getAudioSourceGarra(), audioGameDto.SomGarraAgarrada);   
+        audioPlayOneShot(getAudioSourceColetagem(), audioGameDto.SomGarraAgarrada);   
+    }
+
+    public void playSomGarraInicioDescida()
+    {
+        audioPlayOneShot(getAudioSourceColetagem(), audioGameDto.SomInicioDescida);
     }
     //***** IMPLEMENTACAO INTERFACE SOMGARRA FIM *****
 
