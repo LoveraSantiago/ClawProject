@@ -3,7 +3,8 @@ using UnityEngine;
 #pragma warning disable 0649
 [System.Serializable]
 public class AudioGameDto : AudioDto
-{    
+{
+    [SerializeField] private AudioClipDto somBackgroundPowerUp;
     [Space(3)]
     [SerializeField] private AudioClipDto somCombinacaoOK;
     [SerializeField] private AudioClipDto somCombinacaoNOK;
@@ -20,6 +21,7 @@ public class AudioGameDto : AudioDto
     [SerializeField] private AudioClipDto somMaqCliqueScroll;
     [SerializeField] private AudioClipDto somMaqCliqueScrollCancel;
  
+    public AudioClipDto SomBackgroundPowerUp { get { return somBackgroundPowerUp; } }
     public AudioClipDto SomCombinacaoOK { get { return somCombinacaoOK; } }
     public AudioClipDto SomCombinacaoNOK { get { return somCombinacaoNOK; } }
     public AudioClipDto SomColetado { get { return somColetado; } }

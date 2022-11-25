@@ -11395,7 +11395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapa: 1
-  indiceLevel: 3
+  indiceLevel: 4
   mainDto:
     delayInicio: 0.25
     dragCollider: {fileID: 491158116}
@@ -11943,6 +11943,9 @@ MonoBehaviour:
       somBatidaAbrirModal:
         volume: 1
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
+      somBackgroundPowerUp:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: 6ea00a2914e920246bee6a6c827a6eaf, type: 3}
       somCombinacaoOK:
         volume: 1
         audioClip: {fileID: 8300000, guid: 65d429aec42b5bb40a09e11d30d918f9, type: 3}

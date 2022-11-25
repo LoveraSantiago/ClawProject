@@ -3,7 +3,8 @@ using UnityEngine;
 public class SomManagerGame : SomManager,
                               SomGarra,
                               SomColetagem,
-                              SomMaquina
+                              SomMaquina,
+                              SomPowerUp
 {
     private AudioGameDto audioGameDto;
 
@@ -99,6 +100,18 @@ public class SomManagerGame : SomManager,
     }
     //***** IMPLEMENTACAO INTERFACE SOMGARRA FIM *****
 
+    //***** IMPLEMENTACAO INTERFACE SOMPOWERUP INICIO *****
+    public void playSomBackgroundNormal()
+    {
+        playSomBackground();
+    }
+
+    public void playSomBackgroundPowerUp()
+    {
+        audioPlay(getAudioSourceBackground(), audioGameDto.SomBackgroundPowerUp);
+    }
+    //***** IMPLEMENTACAO INTERFACE SOMPOWERUP INICIO *****
+
     private AudioSource getAudioSourceGarraComplementar()
     {
         return getAudioSource(3);
@@ -127,5 +140,5 @@ public class SomManagerGame : SomManager,
     private AudioSource getAudioSourceMaquinaScore()
     {
         return getAudioSource(8);
-    } 
+    }  
 }
