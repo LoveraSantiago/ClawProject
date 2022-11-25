@@ -67,7 +67,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         }
         else
         {
-            scrollPupsManager.update(inputGame);
+            scrollPupsManager.update(inputGame, somMaquina);
         }
     }
 

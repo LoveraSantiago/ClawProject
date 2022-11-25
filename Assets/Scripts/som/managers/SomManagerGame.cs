@@ -43,6 +43,11 @@ public class SomManagerGame : SomManager,
     {
         audioPlayOneShot(getAudioSourceColetaveis(), audioGameDto.SomMaqCliqueBtn);
     }
+
+    public void playSomCliqueScroll()
+    {
+        audioPlayOneShot(getAudioSourceColetaveis(), audioGameDto.SomMaqCliqueScroll);
+    }
     //***** IMPLEMENTACAO INTERFACE SOMMAQUINA FIM *****
 
     //***** IMPLEMENTACAO INTERFACE SOMGARRA INICIO *****
@@ -117,5 +122,5 @@ public class SomManagerGame : SomManager,
     private AudioSource getAudioSourceMaquinaScore()
     {
         return getAudioSource(8);
-    }
+    }   
 }

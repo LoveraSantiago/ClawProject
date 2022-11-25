@@ -11973,6 +11973,9 @@ MonoBehaviour:
       somMaqCliqueBtn:
         volume: 1
         audioClip: {fileID: 8300000, guid: 4f6325760753d3049b8e4fdcfc5837bc, type: 3}
+      somMaqCliqueScroll:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: 3acd285413e4aa445b1e3d9a45eee20d, type: 3}
     prefabLoading: {fileID: 712928913}
     gosDesligar:
     - {fileID: 1078757848}
