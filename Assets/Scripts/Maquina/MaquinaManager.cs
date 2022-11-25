@@ -19,11 +19,12 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     public  DisplaysDeColetados displayDeColetados { get; private set; }
     public  ScrollPupsManager   scrollPupsManager  { get; private set; }
     private Draggavel           draggavel;
+    private SomMaquina          somMaquina;
 
     public MaquinaManager(MaquinaDto maquinaDto, SomMaquina somMaquina)
     {
-        partesDto = maquinaDto.PartesDtoV2;
-
+        partesDto          = maquinaDto.PartesDtoV2;
+        this.somMaquina    = somMaquina;
         arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
         displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto, arcoIrisEfeito, somMaquina);        
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, somMaquina);
@@ -60,7 +61,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     {
         if (isGamePlay)
         {
-            botoesPowerUp.update(maquinaDto.BotoesPowerUpDto, inputGame);
+            botoesPowerUp.update(maquinaDto.BotoesPowerUpDto, somMaquina, inputGame);
             botaoLigaDesliga.update(inputGame);
             displayTimer.update();
         }

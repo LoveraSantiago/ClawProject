@@ -16,6 +16,7 @@ public class AudioGameDto : AudioDto
     [SerializeField] private AudioClipDto somMaqColetaveis;
     [SerializeField] private AudioClipDto somMaqAlarme;
     [SerializeField] private AudioClipDto somMaqAlarmeTimer;
+    [SerializeField] private AudioClipDto somMaqCliqueBtn;
  
     public AudioClipDto SomCombinacaoOK { get { return somCombinacaoOK; } }
     public AudioClipDto SomCombinacaoNOK { get { return somCombinacaoNOK; } }
@@ -26,4 +27,5 @@ public class AudioGameDto : AudioDto
     public AudioClipDto SomMaqColetaveis { get { return somMaqColetaveis; } }
     public AudioClipDto SomMaqAlarme { get { return somMaqAlarme; } }
     public AudioClipDto SomMaqAlarmeTimer { get { return somMaqAlarmeTimer; } }
+    public AudioClipDto SomMaqCliqueBtn { get { return somMaqCliqueBtn; } }
 }
