@@ -7,4 +7,5 @@ public interface SomMaquina
     void stopSomMaqAlarmePowerUp();
     void playSomBotaoPowerUp();
     void playSomCliqueScroll();
+    void playSomCliqueScrollCancel();
 }

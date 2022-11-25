@@ -81,6 +81,7 @@ public class ScrollPupsManager : Draggavel,
                 }
                 else
                 {
+                    somMaquina.playSomCliqueScrollCancel();
                     scrollSelecao.cancelouSelecao();
                 }
             }
