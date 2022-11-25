@@ -11395,7 +11395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapa: 1
-  indiceLevel: 4
+  indiceLevel: 8
   mainDto:
     delayInicio: 0.25
     dragCollider: {fileID: 491158116}
@@ -11452,7 +11452,8 @@ MonoBehaviour:
       goMainGaiola: {fileID: 4127936681606313068, guid: ec66f55dc2dbd2e4a99c4e9958eb980f, type: 3}
       descarteTuboDto:
         torque: 550
-        gravidade: 0.65
+        gravidade: 1
+        delayDescarte: 0.35
         parentColetavelTubo: {fileID: 1607848931}
         coletavelTuboDeSaida:
         - rigidBodyColetavel: {fileID: 650369890}
@@ -11955,6 +11956,9 @@ MonoBehaviour:
       somColetado:
         volume: 1
         audioClip: {fileID: 8300000, guid: 82edef6eac25f524cbfc99e5ece0e3d4, type: 3}
+      somColetadoCaindo:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: da4765f3630332f4abe79a6c06a868e0, type: 3}
       somGarraAgarrada:
         volume: 0.7
         audioClip: {fileID: 8300000, guid: 0a456e588b2e0264c8f86d7040e09183, type: 3}

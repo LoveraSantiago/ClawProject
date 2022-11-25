@@ -162,8 +162,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
         //Debug.Log("Evento acao coletado fim chamado");
-        tuboDeDescarte.devolver(contador.getResultCombinacao(), evento, contador.getColetados());                
-        board.devolver(contador.getResultCombinacao(), evento, contador.getColetados());        
+        tuboDeDescarte.devolver(contador, evento, somColetagem);                
+        board.devolver(contador, evento, somColetagem);        
         contador.reajustarContagem(evento, board.isDevolverBoard());
     }
 

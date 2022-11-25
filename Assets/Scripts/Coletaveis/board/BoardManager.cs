@@ -38,9 +38,9 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento,
         return qtdColetaveis;
     }       
 
-    public void devolver(bool combinacaoValida, ColetadoFimDto evento, Coletavel[] coletados)
+    public void devolver(ContadorManager contador, ColetadoFimDto evento, SomColetagem somColetagem)
     {
-        devolvedor.devolver(combinacaoValida, evento, boardDto, coletados);        
+        devolvedor.devolver(contador, evento, boardDto, somColetagem);        
     }
 
     public bool isDevolverBoard()

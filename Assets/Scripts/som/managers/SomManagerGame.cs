@@ -71,6 +71,11 @@ public class SomManagerGame : SomManager,
     {
         audioPlayOneShot(getAudioSourceColetagem(), audioGameDto.SomColetado);
     }
+
+    public void playSomColetadosCaindo()
+    {        
+        audioPlayOneShot(getAudioSourceColetagem(), audioGameDto.SomColetadoCaindo);
+    }
     //***** IMPLEMENTACAO INTERFACE SOMGARRA FIM *****
 
     //***** IMPLEMENTACAO INTERFACE SOMGARRA INICIO *****
@@ -140,5 +145,5 @@ public class SomManagerGame : SomManager,
     private AudioSource getAudioSourceMaquinaScore()
     {
         return getAudioSource(8);
-    }  
+    }   
 }

@@ -9,6 +9,7 @@ public class AudioGameDto : AudioDto
     [SerializeField] private AudioClipDto somCombinacaoOK;
     [SerializeField] private AudioClipDto somCombinacaoNOK;
     [SerializeField] private AudioClipDto somColetado;
+    [SerializeField] private AudioClipDto somColetadoCaindo;
     [Space(3)]
     [SerializeField] private AudioClipDto somGarraAgarrada;
     [SerializeField] private AudioClipDto somGarraLateral;
@@ -25,6 +26,7 @@ public class AudioGameDto : AudioDto
     public AudioClipDto SomCombinacaoOK { get { return somCombinacaoOK; } }
     public AudioClipDto SomCombinacaoNOK { get { return somCombinacaoNOK; } }
     public AudioClipDto SomColetado { get { return somColetado; } }
+    public AudioClipDto SomColetadoCaindo { get { return somColetadoCaindo; } }
     public AudioClipDto SomGarraAgarrada { get { return somGarraAgarrada; } }
     public AudioClipDto SomGarraLateral { get { return somGarraLateral; } }
     public AudioClipDto SomGarraInicioDescida { get { return somGarraInicioDescida; } }

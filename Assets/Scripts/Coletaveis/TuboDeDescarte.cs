@@ -26,13 +26,12 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger,
         devolverTubo = !devolverParaBoard;
     }
 
-    public void devolver(
-        bool combinacaoValida, ColetadoFimDto evento, Coletavel[] coletados)
+    public void devolver(ContadorManager contador, ColetadoFimDto evento, SomColetagem somColetagem)
     {
-        if (isDevolver(combinacaoValida, evento))
+        if (isDevolver(contador.getResultCombinacao(), evento))
         {
             //Debug.Log("Devolver tubo acionado");
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, coletados));
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, contador.getColetados(), somColetagem));
         }
     }
 
@@ -58,20 +57,24 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger,
         return !devolverTubo && combinacaoValida;
     }
 
-    private IEnumerator descerPeloTubo(bool[] resultados, Coletavel[] coletados)
+    private IEnumerator descerPeloTubo(bool[] resultados, Coletavel[] coletados, SomColetagem somColetagem)
     {
         Sprite[] spritesDescarte = new Sprite[coletados.Length];
-        for (int contador = 0; contador < coletados.Length; contador++)
+        Coletavel[] coletadosCopia = ArrayUtils.copiarArray<Coletavel>(coletados);
+
+        for (int contador = 0; contador < coletadosCopia.Length; contador++)
         {
             if (resultados[contador])
             {
                 torque *= -1;
-                Sprite spriteAtual = coletados[contador].getSprite();
+                Sprite spriteAtual = coletadosCopia[contador].getSprite();
                 spritesDescarte[contador] = spriteAtual;
 
                 ColetavelTuboDeSaida coletavelDescarte = new ColetavelTuboDeSaida(tuboDto.ColetavelTuboDeSaida[contador]);
                 coletavelDescarte.prepararParaDescarte(torque, tuboDto.Gravidade, spriteAtual);
-                HelperColetaveisInGame.inativarColetavel(coletados[contador]);                
+                HelperColetaveisInGame.inativarColetavel(coletadosCopia[contador]);
+                yield return new WaitForSeconds(tuboDto.DelayDescarte);
+                somColetagem.playSomColetadosCaindo();
             }
         }
         coletaveisDescartados.addTrinca(spritesDescarte);
