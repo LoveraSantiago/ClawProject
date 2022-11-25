@@ -33,7 +33,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
     {
         pause();
         produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotadoDto(true));
-        somMaquina.stopSomMaqAlarme();
+        somMaquina.stopSomMaqAlarmeTempo();
     }
 
     public void iniciarContagemTempo()
@@ -89,7 +89,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
 
     private IEnumerator blinkarTimer(SomMaquina somMaquina)
     {
-        somMaquina.playSomMaqAlarme();
+        somMaquina.playSomMaqAlarmeTempo();
         while (contadorTimer.isNearTimeOver())
         {
             digitos.blinkar(true);

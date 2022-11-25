@@ -8,7 +8,7 @@ public class SomManagerGame : SomManager,
     private AudioGameDto audioGameDto;
 
     public SomManagerGame(AudioGameDto audioDto) 
-        : base(audioDto, 5)
+        : base(audioDto, 6)
     {
         this.audioGameDto = audioDto;
     }
@@ -19,14 +19,24 @@ public class SomManagerGame : SomManager,
         audioPlayOneShot(getAudioSourceMaquinaDisplayColetados(), audioGameDto.SomMaqColetaveis);
     }
 
-    public void stopSomMaqAlarme()
+    public void stopSomMaqAlarmeTempo()
     {     
         getAudioSourceMaquinaTimer().Stop();
     }
 
-    public void playSomMaqAlarme()
+    public void playSomMaqAlarmeTempo()
     {        
         audioPlay(getAudioSourceMaquinaTimer(), audioGameDto.SomMaqAlarme);
+    }
+
+    public void playSomMaqAlarmePowerUp()
+    {
+        audioPlay(getAudioSourceMaquinaScore(), audioGameDto.SomMaqAlarmeTimer);
+    }
+
+    public void stopSomMaqAlarmePowerUp()
+    {
+        getAudioSourceMaquinaScore().Stop();
     }
     //***** IMPLEMENTACAO INTERFACE SOMMAQUINA FIM *****
 
@@ -98,4 +108,9 @@ public class SomManagerGame : SomManager,
     {
         return getAudioSource(7);
     }    
+
+    private AudioSource getAudioSourceMaquinaScore()
+    {
+        return getAudioSource(8);
+    }
 }

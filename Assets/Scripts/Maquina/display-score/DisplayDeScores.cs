@@ -53,6 +53,7 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
 
     public void finalizarContagemRegressiva()
     {
+        somMaquina.stopSomMaqAlarmePowerUp();
         finalizarCoroutineAtual();        
         orquestrador.passarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual);
     }
@@ -60,6 +61,7 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
     public void iniciarContagemRegressiva(int duracao)
     {
         armazenarScoreAtual();
+        somMaquina.playSomMaqAlarmePowerUp();
         coroutineAtual = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));                
     }     
 

@@ -11967,6 +11967,9 @@ MonoBehaviour:
       somMaqAlarme:
         volume: 0.45
         audioClip: {fileID: 8300000, guid: 116b10e87252f174ebc712bb83ac6015, type: 3}
+      somMaqAlarmeTimer:
+        volume: 0.15
+        audioClip: {fileID: 8300000, guid: c106aa3f0dfb8134cbf522f43dc62130, type: 3}
     prefabLoading: {fileID: 712928913}
     gosDesligar:
     - {fileID: 1078757848}

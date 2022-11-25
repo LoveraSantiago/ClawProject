@@ -1,6 +1,8 @@
 public interface SomMaquina 
 {
     void playSomDisplayColetado();
-    void playSomMaqAlarme();
-    void stopSomMaqAlarme();
+    void playSomMaqAlarmeTempo();
+    void stopSomMaqAlarmeTempo();
+    void playSomMaqAlarmePowerUp();
+    void stopSomMaqAlarmePowerUp();
 }
