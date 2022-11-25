@@ -11934,15 +11934,15 @@ MonoBehaviour:
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     audioGameDto:
       mainAudioSource: {fileID: 519420030}
+      somBackground:
+        volume: 0.175
+        audioClip: {fileID: 8300000, guid: 9ab0aa6a032f1004595d6bcaf989713b, type: 3}
       somGarra:
         volume: 0.06
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
       somBatidaAbrirModal:
         volume: 1
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
-      somBackground:
-        volume: 0.1
-        audioClip: {fileID: 8300000, guid: 9ab0aa6a032f1004595d6bcaf989713b, type: 3}
       somCombinacaoOK:
         volume: 1
         audioClip: {fileID: 8300000, guid: 65d429aec42b5bb40a09e11d30d918f9, type: 3}

@@ -10,6 +10,11 @@ public abstract class SomManager : SomLoading
     {        
     }
 
+    public void playSomBackground()
+    {
+        audioPlay(getAudioSourceBackground(), audioDto.SomBackground);
+    }
+
     protected SomManager(AudioDto audioDto, int qtdAudioSources)
     {
         this.audioDto = audioDto;

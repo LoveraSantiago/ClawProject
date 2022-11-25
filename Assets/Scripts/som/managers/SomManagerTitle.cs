@@ -10,12 +10,7 @@ public class SomManagerTitle : SomManager
     {
         this.audioTitleDto = audioTitleDto;
         playSomBackground();
-    }
-
-    public void playSomBackground()
-    {
-        audioPlay(getAudioSourceBackground(), audioTitleDto.SomBackground);                
-    }
+    }   
 
     public void stopSomPrincipal()
     {

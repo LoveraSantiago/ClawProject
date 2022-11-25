@@ -42,6 +42,7 @@ public class MainGameManagers
 
         ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));
         loading.fecharModal();
+        somManager.playSomBackground();
     }
 
     private void configurandoLevel(MainGameDto mainDto)
