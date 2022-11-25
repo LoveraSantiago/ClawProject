@@ -28,6 +28,7 @@ public abstract class SomManager : SomLoading
     {
         audioSource.volume = audioClipDto.Volume;
         audioSource.clip = audioClipDto.AudioClip;
+        audioSource.loop = true;
         audioSource.Play();
     }
 

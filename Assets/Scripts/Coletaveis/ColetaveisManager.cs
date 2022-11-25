@@ -2,8 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class ColetaveisManager : ConsumidorDeEventoTrigger,
-                                AcaoColetado.ProdutorEvento,                              
-                                AcaoBoardElevadoFim.ProdutorEvento,
+                                AcaoColetado.ProdutorEvento,                                                              
                                 AcaoColetadoFim.ConsumidorEvento,
                                 AcaoInfoDaGarra.ConsumidorEvento,                                
                                 AcaoPowerUpAcionado.ConsumidorEvento,                                
@@ -181,10 +180,5 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeInformacoesDoColetado;
-    }
-
-    ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
-    {
-        return ((AcaoBoardElevadoFim.ProdutorEvento)board).getProdutorDeEvento();
     }   
 }

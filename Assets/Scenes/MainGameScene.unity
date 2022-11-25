@@ -11395,7 +11395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapa: 1
-  indiceLevel: 2
+  indiceLevel: 3
   mainDto:
     delayInicio: 0.25
     dragCollider: {fileID: 491158116}
@@ -11964,6 +11964,9 @@ MonoBehaviour:
       somMaqColetaveis:
         volume: 0.9
         audioClip: {fileID: 8300000, guid: 803387846d4bc0840bb58e4d52a49c94, type: 3}
+      somMaqAlarme:
+        volume: 0.45
+        audioClip: {fileID: 8300000, guid: 116b10e87252f174ebc712bb83ac6015, type: 3}
     prefabLoading: {fileID: 712928913}
     gosDesligar:
     - {fileID: 1078757848}
@@ -12056,9 +12059,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9ab0aa6a032f1004595d6bcaf989713b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0

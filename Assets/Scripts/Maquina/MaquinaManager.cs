@@ -27,7 +27,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
         displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto, arcoIrisEfeito, somMaquina);        
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, somMaquina);
-        displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
+        displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto, somMaquina);
         joystick           = new Joystick(maquinaDto.MesaJoystickDto);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
@@ -125,12 +125,13 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     }              
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
-    {
+    {        
         if (!evento.isGameOver)
         {
             botoesPowerUp.reativarPowerUp();
             arcoIrisEfeito.desligarEfeito();
             displayTimer.continuar();
+            displayTimer.resetCoroutine();
         }
     }
 

@@ -45,7 +45,7 @@ public class MainGameEventos
             .adicionarConsumidor(coletaveisManager);
 
         new AcaoBoardElevadoFim()
-            .configurarProdutor(coletaveisManager)
+            .configurarProdutor(coletaveisManager.board)
             .adicionarConsumidor(maquinaManager)
             .adicionarConsumidor(garraManager)
             .adicionarConsumidor(uiManager.modalResultados);
