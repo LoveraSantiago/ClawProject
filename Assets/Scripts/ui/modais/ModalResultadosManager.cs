@@ -37,7 +37,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
                 resultadoLevels.tempoPartida, resultadoLevels.resultadosColetaveis.score, 
                 avaliadores.challengeUnificado, avaliadores.evolucao);
 
-            ModalFimPontos modal = new ModalFimPontos(uiGameDto.ModalPontosDto, loading);
+            ModalFimPontos modal = new ModalFimPontos(uiGameDto.ModalPontosDto, loading, somModais);
             modal.passarResultados(resultadoLevels, challenges, avaliadores.resultadoLevel);
             ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
@@ -93,7 +93,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         mostrandoModal = true;       
         yield return new WaitForSeconds(uiGameDto.DelayAbrirModal);        
-        modal.ligar(somModais);
+        modal.ligar();
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)

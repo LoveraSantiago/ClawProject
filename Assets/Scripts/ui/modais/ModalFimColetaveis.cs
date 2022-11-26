@@ -36,7 +36,7 @@ public class ModalFimColetaveis : AbstractModalFim
         modalColetaveisDto.LblMsg.text = "Ah que pena! Nao foi dessa vez que conseguiu coletar " + coletavel.nome + " para a sua coleção!!!";
     }
 
-    public override void ligar(SomModais somModais)
+    public override void ligar()
     {
         modalColetaveisDto.Modal.SetActive(true);
     }

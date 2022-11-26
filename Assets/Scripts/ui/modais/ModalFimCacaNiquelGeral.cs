@@ -36,7 +36,7 @@ public class ModalFimCacaNiquelGeral : AbstractModalFim
     {
     }
 
-    public override void ligar(SomModais somModais)
+    public override void ligar()
     {
         modalCacaNiquelDto.Modal.SetActive(true);
     }
