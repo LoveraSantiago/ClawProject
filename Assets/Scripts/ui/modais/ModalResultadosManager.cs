@@ -81,7 +81,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem);
+            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem, somModais);
             modal.failOrdem();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
@@ -120,7 +120,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (evento.isTimeOver() && !mostrandoModal)
         {
-            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem);
+            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem, somModais);
             modal.failTimeOver();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
@@ -130,7 +130,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (evento.isGameOver && !mostrandoModal)
         {   
-            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem);
+            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem, somModais);
             modal.failElevador();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));            
         }
