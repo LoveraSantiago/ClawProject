@@ -29,7 +29,7 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         ligar();
         posInicial.y = powerUpDto.HalturaPupDraggavel;
         base.colocarNaPosicao(posInicial);
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(explodir());
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(explodir());
     }
 
     public override void resetPup()

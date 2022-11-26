@@ -21,16 +21,16 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
         PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
         SomManagerColetaveis somManager = new SomManagerColetaveis(mainDto.AudioColetaveisDto);
-        Loading loading = prefabLoading.getLoading(somManager, mainDto.GosDesligar);
-        loading.fecharModal();
+        prefabLoading.iniciarLoading(somManager, mainDto.GosDesligar);
+        ContextoEstaticoUtils.loading.fecharModal();
 
         ColetaveisParaPrateleiras coletaveisParaPrateleiras = new ColetaveisParaPrateleiras();
-        timerFichaOuro      = new TimerFicha(mainDto.TimerFichaDto, loading, null, Ficha.OURO);
+        timerFichaOuro      = new TimerFicha(mainDto.TimerFichaDto, null, Ficha.OURO);
         prateleiras         = new Prateleiras(mainDto.PrateleirasDto, coletaveisParaPrateleiras);                
         movimentadorArmario = new MovimentadorDeArmario(mainDto);
-        detalheColetavel    = new CanvasDetalheColetavel(mainDto, coletaveisParaPrateleiras, loading);
+        detalheColetavel    = new CanvasDetalheColetavel(mainDto, coletaveisParaPrateleiras);
 
-        configBtnBack(mainDto.BtnBack, loading);
+        configBtnBack(mainDto.BtnBack);
         mainDto.ScrollRect.onValueChanged.AddListener((pos) => prateleiras.movimentado(pos, mainDto.PrateleirasDto));
 
         new AcaoBtnPrateleiraAcionado()
@@ -49,7 +49,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         timerFichaOuro.update();
     }    
 
-    private void configBtnBack(Button btnBack, Loading loading)
+    private void configBtnBack(Button btnBack)
     {
         btnBack.onClick.AddListener(() => {
                 if (movimentadorArmario.isArmarioMovimentado())
@@ -58,7 +58,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
                 }
                 else
                 {
-                loading.irParaMapScene();
+                    ContextoEstaticoUtils.loading.irParaMapScene();
                 }
             });
     }

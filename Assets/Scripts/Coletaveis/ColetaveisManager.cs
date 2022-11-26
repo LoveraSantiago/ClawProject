@@ -2,8 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class ColetaveisManager : ConsumidorDeEventoTrigger,
-                                AcaoColetado.ProdutorEvento,                              
-                                AcaoBoardElevadoFim.ProdutorEvento,
+                                AcaoColetado.ProdutorEvento,                                                              
                                 AcaoColetadoFim.ConsumidorEvento,
                                 AcaoInfoDaGarra.ConsumidorEvento,                                
                                 AcaoPowerUpAcionado.ConsumidorEvento,                                
@@ -26,7 +25,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
         board          = new BoardManager(coletaveisDto.BoardDto);
         contador       = new ContadorManager(coletaveisDto);
-        tuboDeDescarte = new TuboDeDescarte(coletaveisDto.DescarteTuboDto);
+        tuboDeDescarte = new TuboDeDescarte(coletaveisDto.DescarteTuboDto, somColetagem);
         efeito         = new EfeitoColetado(coletaveisDto.EfeitoColetado);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();
@@ -40,8 +39,9 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         configurarGaiolas(coletaveisDto);
     }
 
-    public void configuradoPeloLevel(AbstractLevel level, ColetaveisDto coletaveisDto)
+    public void configuradoPeloLevel(ColetaveisDto coletaveisDto)
     {
+        AbstractLevel level = ContextoEstaticoUtils.level;
         board.configuradoPeloLevel(level, coletaveisDto.BoardDto);
         tuboDeDescarte.configuradoPeloLevel(level.devolverParaBoard());
         contador.configuradoPeloLevel(level);
@@ -163,8 +163,8 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
         //Debug.Log("Evento acao coletado fim chamado");
-        tuboDeDescarte.devolver(contador.getResultCombinacao(), evento, contador.getColetados());                
-        board.devolver(contador.getResultCombinacao(), evento, contador.getColetados());        
+        tuboDeDescarte.devolver(contador, evento);                
+        board.devolver(contador, evento, somColetagem);        
         contador.reajustarContagem(evento, board.isDevolverBoard());
     }
 
@@ -181,10 +181,5 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeInformacoesDoColetado;
-    }
-
-    ProdutorDeEvento<SubidaBoardAcaoFim> AcaoBoardElevadoFim.ProdutorEvento.getProdutorDeEvento()
-    {
-        return ((AcaoBoardElevadoFim.ProdutorEvento)board).getProdutorDeEvento();
     }   
 }

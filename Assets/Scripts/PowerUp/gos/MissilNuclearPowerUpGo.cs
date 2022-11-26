@@ -55,7 +55,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         if (!acionado && isAlvoExplosivel(evento))
         {
             acionado = true;
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(explodir());
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(explodir());
         }
     }    
 

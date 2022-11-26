@@ -6,11 +6,11 @@ public class ModalNoFicha
     private readonly int ANIM_FECHAR   = Animator.StringToHash("fechar-modal");
     private ModalNoFichaDto modalNoFichaDto;
 
-    public ModalNoFicha(ModalNoFichaDto modalNoFichaDto, Loading loading, SomMap somMap)
+    public ModalNoFicha(ModalNoFichaDto modalNoFichaDto, SomMap somMap)
     {
         this.modalNoFichaDto = modalNoFichaDto;
         modalNoFichaDto.BtnSair.onClick.AddListener(() => desligar(somMap));
-        modalNoFichaDto.BtnIrLoja.onClick.AddListener(() => irParaCena(loading, somMap));
+        modalNoFichaDto.BtnIrLoja.onClick.AddListener(() => irParaCena(somMap));
     }
 
     public void ligar(Ficha ficha, SomMap somMap)
@@ -33,11 +33,11 @@ public class ModalNoFicha
         modalNoFichaDto.Animator.Play(ANIM_OBJETIVO);
     }
 
-    private void irParaCena(Loading loading, SomMap somMap)
+    private void irParaCena(SomMap somMap)
     {
         modalNoFichaDto.Animator.Play(ANIM_FECHAR);
         somMap.playSomClique();
-        loading.irParaLojaCena();
+        ContextoEstaticoUtils.loading.irParaLojaCena();
     }
 
     private void desligar(SomMap somMap)

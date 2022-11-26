@@ -10,15 +10,15 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
 
     private UIGameDto uiGameDto;
     private CacaNiquelDto cacaNiquelDto;
-    private ColetorDeDados coletorDeDados;
-    private Loading loading;
+    private ColetorDeDados coletorDeDados;    
+    private SomModais somModais;
 
-    public ModalResultadosManager(MainGameDto mainDto, ColetorDeDados coletorDeDados, Loading loading)
+    public ModalResultadosManager(MainGameDto mainDto, ColetorDeDados coletorDeDados, SomModais somModais)
     {
         this.uiGameDto      = mainDto.UiDto;
         this.cacaNiquelDto  = mainDto.MaquinaDto.DisplayColetadosDto.CacaNiquelDto;
-        this.coletorDeDados = coletorDeDados;
-        this.loading        = loading;
+        this.coletorDeDados = coletorDeDados;        
+        this.somModais      = somModais;
     }             
 
     private void mostrarModalPontuacao()
@@ -35,9 +35,9 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
                 resultadoLevels.tempoPartida, resultadoLevels.resultadosColetaveis.score, 
                 avaliadores.challengeUnificado, avaliadores.evolucao);
 
-            ModalFimPontos modal = new ModalFimPontos(uiGameDto.ModalPontosDto, loading);
+            ModalFimPontos modal = new ModalFimPontos(uiGameDto.ModalPontosDto, somModais);
             modal.passarResultados(resultadoLevels, challenges, avaliadores.resultadoLevel);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
 
@@ -45,8 +45,8 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            ModalFimColetaveis modal = ModalFimColetaveis.ofSucess(uiGameDto.ModalColetaveisDto, loading);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
+            ModalFimColetaveis modal = ModalFimColetaveis.ofSucess(uiGameDto.ModalColetaveisDto, somModais);
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
 
@@ -54,8 +54,8 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            ModalFimColetaveis modal = ModalFimColetaveis.ofFail(uiGameDto.ModalColetaveisDto, loading);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
+            ModalFimColetaveis modal = ModalFimColetaveis.ofFail(uiGameDto.ModalColetaveisDto, somModais);
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
 
@@ -63,8 +63,8 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            ModalFimCacaNiquelIndividual modal = new ModalFimCacaNiquelIndividual(evento, uiGameDto.ModalCacaNiquelDto, cacaNiquelDto, loading);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
+            ModalFimCacaNiquelIndividual modal = new ModalFimCacaNiquelIndividual(evento, uiGameDto.ModalCacaNiquelDto, cacaNiquelDto, somModais);
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }   
 
@@ -72,8 +72,8 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            ModalFimCacaNiquelGeral modal = new ModalFimCacaNiquelGeral(evento, uiGameDto.ModalCacaNiquelDto, cacaNiquelDto, loading);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
+            ModalFimCacaNiquelGeral modal = new ModalFimCacaNiquelGeral(evento, uiGameDto.ModalCacaNiquelDto, cacaNiquelDto, somModais);
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
 
@@ -81,16 +81,16 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem, loading);
+            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem, somModais);
             modal.failOrdem();
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }    
 
     private IEnumerator coroutineMostrarModal(AbstractModalFim modal)
     {
         mostrandoModal = true;       
-        yield return new WaitForSeconds(uiGameDto.DelayAbrirModal);
+        yield return new WaitForSeconds(uiGameDto.DelayAbrirModal);        
         modal.ligar();
     }
 
@@ -120,9 +120,9 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (evento.isTimeOver() && !mostrandoModal)
         {
-            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem, loading);
+            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem, somModais);
             modal.failTimeOver();
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
 
@@ -130,9 +130,9 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (evento.isGameOver && !mostrandoModal)
         {   
-            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem, loading);
+            ModalFailGame modal = new ModalFailGame(uiGameDto.ModalFailOrdem, somModais);
             modal.failElevador();
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineMostrarModal(modal));            
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));            
         }
     }    
 

@@ -10,14 +10,16 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     private List<PowerUpUsadoDto> listaPupsUsados;
     private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;
 
+    private SomPowerUp somPowerUp;
     private ContadorTimeout contadorTimeout;
 
-    public PowerUpManager(PowerUpGameDto powerUpDto, InputGame inputGame)
+    public PowerUpManager(PowerUpGameDto powerUpDto, InputGame inputGame, SomPowerUp somPowerUp)
     {
         listaPupsUsados = new List<PowerUpUsadoDto>();
         configurarPowerUps(powerUpDto, inputGame);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         contadorTimeout = new ContadorPowerUpInativo();
+        this.somPowerUp = somPowerUp;
     }    
 
     private void configurarPowerUps(PowerUpGameDto powerUpDto, InputGame inputGame)
@@ -45,6 +47,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
         listaPupsUsados.Add(new PowerUpUsadoDto(powerUp.tipo, Time.time));
         indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp);
+        somPowerUp.playSomBackgroundPowerUp();
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         iniciarPowerUp(powerUpInfo);
     }
@@ -54,6 +57,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
         listaPupsUsados.Add(new PowerUpUsadoDto(powerUp.tipo, Time.time));
         indiceBtnEmAcao = indiceBtn;
         PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp, posicaoAtual);
+        somPowerUp.playSomBackgroundPowerUp();
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         iniciarPowerUp(powerUpInfo);
     }   
@@ -72,12 +76,14 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     public void expirado()
     {
         PowerUpInfo powerUpInfo = PowerUpInfo.ofExpirado();
+        somPowerUp.playSomBackgroundNormal();
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
     public void finalizado()
     {
         contadorTimeout = new ContadorPowerUpInativo();
+        somPowerUp.playSomBackgroundNormal();
         produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofFinalizar(indiceBtnEmAcao));
     }
 

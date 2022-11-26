@@ -24,13 +24,13 @@ public class MapaUi
         {
             grupoBtnBaloes.dismissBotoesBaloes();
             animacaMainMapa.navegarParaEsquerda(mapaEntidade.isLivre|| mapaEntidade.isProgresso);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alterarMaps(evento, somMap));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(alterarMaps(evento, somMap));
         }
         else if (evento.isEsquerda)
         {
             grupoBtnBaloes.dismissBotoesBaloes();
             animacaMainMapa.navegarParaDireita(mapaEntidade.isLivre || mapaEntidade.isProgresso);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alterarMaps(evento, somMap));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(alterarMaps(evento, somMap));
         }
         else if(evento.isCentralizado)
         {
@@ -38,7 +38,7 @@ public class MapaUi
             grupoBtnBaloes.posicionarBaloes(evento);
             MaterialBackground.movimentarSaida(levelMapaUiDto.MatBackground, evento.mapaEntidade.levelCorBackground);
 
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes, somMap));
 
             animacaMainMapa.mostrarSetasNavegacao(mapaEntidade.isLivre);

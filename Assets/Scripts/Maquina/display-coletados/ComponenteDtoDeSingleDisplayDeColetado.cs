@@ -43,8 +43,9 @@ public abstract class ComponenteDtoDeSingleDisplayDeColetado
         singleSlotColetadoDto.SprRendererSlotMeio.sharedMaterial = MaterialSprUnlitDefault.getMaterial();
     }
 
-    protected void mostrarColetado(Sprite sprite)
+    protected void mostrarColetado(Sprite sprite, SomMaquina somMaquina)
     {
+        somMaquina.playSomDisplayColetado();
         singleSlotColetadoDto.SprRendererSlotBaixo.sprite = sprite;
     }
 

@@ -2,6 +2,11 @@ public class MovimentacaoDirecao : AbstractMovimentacaoDaGarra
 {
     private static int direcao = 1;
 
+    public override void preInicio()
+    {
+        playSomGarraMovimentoLateral();
+    }
+
     public override void fixedUpdate()
     {
         verificarSeMovimentacaoAtingiuLimites();
@@ -24,6 +29,7 @@ public class MovimentacaoDirecao : AbstractMovimentacaoDaGarra
         {
             direcao = -1;
             moverHorizontalmenteFreeze(direcao);
+            playSomGarraMovimentoLateral();
             playAnimacaoIrPEsquerda();
             produziuEventoDeDirecao(Direcao.ESQUERDA);
         }
@@ -31,6 +37,7 @@ public class MovimentacaoDirecao : AbstractMovimentacaoDaGarra
         {
             direcao = 1;
             moverHorizontalmenteFreeze(direcao);
+            playSomGarraMovimentoLateral();
             playAnimacaoIrPDireita();
             produziuEventoDeDirecao(Direcao.DIREITA);
         }

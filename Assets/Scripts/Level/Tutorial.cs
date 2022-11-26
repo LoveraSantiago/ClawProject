@@ -92,7 +92,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
             finalizacaoDisparada = true;
             mainDto.TutorialDto.LblTexto.text = "ok!O tempo acabou.\nBoa Sorte!";
             mainDto.TutorialDto.Animator.Play(ANIM_PARTE_TEXTO);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineEncerrarTutorial());
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial());
         }
     }
 
@@ -103,7 +103,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
             finalizacaoDisparada = true;
             mainDto.TutorialDto.LblTexto.text = "Isso ai!Muibo bom!\nBoa Sorte!";
             mainDto.TutorialDto.Animator.Play(ANIM_PARTE_TEXTO);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineEncerrarTutorial());        
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial());        
         }
     }
 

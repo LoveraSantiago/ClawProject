@@ -1,11 +1,13 @@
 using UnityEngine;
 
+#pragma warning disable 0649
 public class PrefabLoading : MonoBehaviour
 {
     [SerializeField] private LoadingDto loadingDto;
 
-    public Loading getLoading(SomLoading somLoading, GameObject[] gosDesligar)
+    public void iniciarLoading(SomLoading somLoading, GameObject[] gosDesligar)
     {
-        return new Loading(loadingDto, somLoading, gosDesligar);
+        Loading loading = new Loading(loadingDto, somLoading, gosDesligar);
+        ContextoEstaticoUtils.configLoading(loading);
     }
 }

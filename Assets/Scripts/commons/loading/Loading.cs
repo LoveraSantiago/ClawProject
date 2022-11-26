@@ -8,6 +8,7 @@ public class Loading
     private static readonly int FECHAR_MODAL = Animator.StringToHash("fechar-loading");
     private static readonly int ABRIR_MODAL  = Animator.StringToHash("abrir-loading");
 
+    private bool acionado;
     private LoadingDto loadingDto;
     private SomLoading somLoading;
     private GameObject[] gosDesligar;
@@ -57,13 +58,13 @@ public class Loading
     public void fecharModal()
     {
         loadingDto.GoCanvas.gameObject.SetActive(true);
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineFecharModal());
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineFecharModal());
     }
 
     private void abrirModal(string nomeCena)
     {
         loadingDto.GoCanvas.gameObject.SetActive(true);
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineAbrirModal(nomeCena));
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineAbrirModal(nomeCena));
     }
 
     private void desligarGos()
@@ -79,33 +80,37 @@ public class Loading
 
     private IEnumerator coroutineAbrirModal(string nomeCena)
     {
-        somLoading.stopSomBackground();
-        loadingDto.Animator.Play(ABRIR_MODAL);
-        yield return new WaitForSeconds(0.1f);
-
-        somLoading.playSomBumpModal();
-        loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 0);
-        yield return null;
-
-        somLoading.playSomGarraGirando();
-        yield return new WaitForSeconds(loadingDto.DelayAbrirModal);
-
-        desligarGos();
-        yield return null;
-
-        AsyncOperation operation = SceneManager.LoadSceneAsync(nomeCena);
-        operation.allowSceneActivation = false;
-        while (operation.progress < 0.89)
+        if (!acionado)
         {
-            int progresso = (int)(operation.progress * 100);
-            loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, progresso);
-            //Debug.Log(operation.progress);
+            acionado = true;
+            somLoading.stopSomBackground();
+            loadingDto.Animator.Play(ABRIR_MODAL);
+            yield return new WaitForSeconds(0.1f);
+
+            somLoading.playSomBumpModal();
+            loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 0);
+            yield return null;
+
+            somLoading.playSomGarraGirando();
+            yield return new WaitForSeconds(loadingDto.DelayAbrirModal);
+
+            desligarGos();
+            yield return null;
+
+            AsyncOperation operation = SceneManager.LoadSceneAsync(nomeCena);
+            operation.allowSceneActivation = false;
+            while (operation.progress < 0.89)
+            {
+                int progresso = (int)(operation.progress * 100);
+                loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, progresso);
+                //Debug.Log(operation.progress);
+                yield return null;
+            }
+            loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 100);        
+            yield return new WaitForSeconds(loadingDto.DelayFecharModal);
+            operation.allowSceneActivation = true;
             yield return null;
         }
-        loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 100);        
-        yield return new WaitForSeconds(loadingDto.DelayFecharModal);
-        operation.allowSceneActivation = true;
-        yield return null;
     }
 
     private IEnumerator coroutineFecharModal()

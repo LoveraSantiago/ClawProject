@@ -3,11 +3,13 @@ using UnityEngine;
 public class ModalFimColetaveis : AbstractModalFim
 {
     private ModalColetaveisDto modalColetaveisDto;
+    private SomModais somModais;
 
-    public ModalFimColetaveis(ModalColetaveisDto modalColetaveisDto, Loading loading)
+    public ModalFimColetaveis(ModalColetaveisDto modalColetaveisDto, SomModais somModais)
     {
         this.modalColetaveisDto = modalColetaveisDto;
-        modalColetaveisDto.BtnAvancar.onClick.AddListener(() => irParaCena(loading));
+        this.somModais = somModais;
+        modalColetaveisDto.BtnAvancar.onClick.AddListener(() => irParaCena());
     }
 
    public void sucesso()
@@ -21,6 +23,7 @@ public class ModalFimColetaveis : AbstractModalFim
         modalColetaveisDto.LblMsg.text = "Parabens!!! Conseguiu coletar " + coletavel.nome + " para a sua coleção!!! Muito bem!!!";
 
         PlayerPrefsMapas.salvarColetavelAdquiridoDoDoMapa(coletavel);
+        somModais.playSomSucessoAbrirModal();
     }
 
     public void fail()
@@ -34,6 +37,7 @@ public class ModalFimColetaveis : AbstractModalFim
         modalColetaveisDto.ImgColetavel.sprite = coletavel.sprite;
         modalColetaveisDto.ImgColetavel.material = materialGrayScale;
         modalColetaveisDto.LblMsg.text = "Ah que pena! Nao foi dessa vez que conseguiu coletar " + coletavel.nome + " para a sua coleção!!!";
+        somModais.playSomAbrirModal();
     }
 
     public override void ligar()
@@ -41,21 +45,22 @@ public class ModalFimColetaveis : AbstractModalFim
         modalColetaveisDto.Modal.SetActive(true);
     }
 
-    protected override void irParaCena(Loading loading)
+    protected override void irParaCena()
     {
-        loading.irParaColetaveisCena();        
+        somModais.playSomCliquePositivo();
+        ContextoEstaticoUtils.loading.irParaColetaveisCena();        
     }
 
-    public static ModalFimColetaveis ofSucess(ModalColetaveisDto modalColetaveisDto, Loading loading)
+    public static ModalFimColetaveis ofSucess(ModalColetaveisDto modalColetaveisDto, SomModais somModais)
     {
-        ModalFimColetaveis modal = new ModalFimColetaveis(modalColetaveisDto, loading);
+        ModalFimColetaveis modal = new ModalFimColetaveis(modalColetaveisDto, somModais);
         modal.sucesso();
         return modal;
     }
 
-    public static ModalFimColetaveis ofFail(ModalColetaveisDto modalColetaveisDto, Loading loading)
+    public static ModalFimColetaveis ofFail(ModalColetaveisDto modalColetaveisDto, SomModais somModais)
     {
-        ModalFimColetaveis modal = new ModalFimColetaveis(modalColetaveisDto, loading);
+        ModalFimColetaveis modal = new ModalFimColetaveis(modalColetaveisDto, somModais);
         modal.fail();
         return modal;
     }

@@ -44,7 +44,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         HelperColetaveisInGame.ligarMirasNosColetaveis(true);
 
         tresAlvosSelecionados = new AteTresAlvoColetavelSelecionado(totalDesocupados, true);
-        coroutine = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(tresAlvosSelecionados.onSelecionar(inputGame, this));
+        coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(tresAlvosSelecionados.onSelecionar(inputGame, this));
     }
 
     public override void resetPup()

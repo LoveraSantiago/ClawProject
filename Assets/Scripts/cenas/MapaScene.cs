@@ -19,11 +19,11 @@ public class MapaScene : MonoBehaviour,
 
         PrefabLoading prefabLoading = mainMapaDto.PrefabLoading.GetComponent<PrefabLoading>();
         somManager = new SomManagerMap(mainMapaDto.AudioMapDto);
-        Loading loading = prefabLoading.getLoading(somManager, mainMapaDto.GosDesligar);
+        prefabLoading.iniciarLoading(somManager, mainMapaDto.GosDesligar);
 
-        allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto, loading, somManager);        
-        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto, loading, somManager);
-        new BotoesCenasMapa(mainMapaDto.BotoesCenasDto, loading, somManager);
+        allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto, somManager);        
+        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto, somManager);
+        new BotoesCenasMapa(mainMapaDto.BotoesCenasDto, somManager);
 
         mapaUi = new MapaUi(mainMapaDto.LevelMapaUiDto, somManager);
 
@@ -40,7 +40,7 @@ public class MapaScene : MonoBehaviour,
             .configurarProdutor(mapaUi.grupoBtnBaloes)
             .adicionarConsumidor(modalManager);
 
-        loading.fecharModal();
+        ContextoEstaticoUtils.loading.fecharModal();
         navegacaoMapas.inicializar();
         somManager.playSomBackground();
     }

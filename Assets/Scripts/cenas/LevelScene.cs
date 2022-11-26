@@ -14,11 +14,11 @@ public class LevelScene : MonoBehaviour,
 
         PrefabLoading prefabLoading = mainLevelDto.PrefabLoading.GetComponent<PrefabLoading>();
         SomManagerLevel somManager = new SomManagerLevel(mainLevelDto.AudioLevelDto);
-        Loading loading = prefabLoading.getLoading(somManager, mainLevelDto.GosDesligar);
-        loading.fecharModal();
+        prefabLoading.iniciarLoading(somManager, mainLevelDto.GosDesligar);
+        ContextoEstaticoUtils.loading.fecharModal();
 
         MateriaisUtils.configurar(mainLevelDto.PrefabMateriais);
-        mainLevelDto.BtnBack.onClick.AddListener(() => loading.irParaMapScene());
+        mainLevelDto.BtnBack.onClick.AddListener(() => ContextoEstaticoUtils.loading.irParaMapScene());
 
         PrefabLevelsDto prefabLevels = mainLevelDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         HelperMapaEntidade.configurar(prefabLevels);

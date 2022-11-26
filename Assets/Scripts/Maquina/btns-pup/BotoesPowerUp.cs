@@ -39,7 +39,7 @@ public class BotoesPowerUp : Draggavel,
         new ColoridorBotoesV2().colorir(btnsPowerUp, level.getDicionarioDeCores());        
     }   
     
-    public void update(BotoesPowerUpDto botoesPowerUpDto, InputGame inputGame)
+    public void update(BotoesPowerUpDto botoesPowerUpDto, SomMaquina somMaquina, InputGame inputGame)
     {
         if (inputGame.aconteceuTapNaAreaInferior())
         {
@@ -48,6 +48,7 @@ public class BotoesPowerUp : Draggavel,
             {
                 if (btnsPowerUp[contador].isCliqueValido(controleAcionamentoPup, posicaoTap))
                 {
+                    somMaquina.playSomBotaoPowerUp();
                     inputGame.consumirTap();
                     acionarBotao(contador, botoesPowerUpDto);
                     break;

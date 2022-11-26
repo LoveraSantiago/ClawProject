@@ -28,7 +28,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
         }
         else
         {         
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(mostrarSprite(evento));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(mostrarSprite(evento));
         }
     }    
     
@@ -160,7 +160,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
     {
         if (grupoDisplays.isTodosDisplayOcupados())
         {
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(finalizacaoCompletaTodosDisplaysOcupados(agendados));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(finalizacaoCompletaTodosDisplaysOcupados(agendados));
         }
         else
         {
@@ -199,7 +199,7 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
             bool result = displayDeColetado[contador].isCliqueDentroArea(toque);
             if (result)
             {
-                ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(descartarColetado(contador));
+                ContextoEstaticoUtils.monoBehaviour.StartCoroutine(descartarColetado(contador));
                 return true;
             }
         }

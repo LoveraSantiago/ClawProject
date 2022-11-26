@@ -10,4 +10,18 @@ public class ComponenteSomDaGarraDeMovimentacaoGarra : ComponenteGarraDeMoviment
         getGarra().stopSomGarraSubindo();
     }
 
+    public void playSomGarraAgarrando()
+    {
+        getGarra().playSomGarraAgarrando();
+    }
+
+    public void playSomGarraInicioDescida()
+    {
+        getGarra().playSomGarraInicioDescida();
+    }
+
+    public void playSomGarraMovimentoLateral()
+    {
+        getGarra().playSomGarraMovimentoLateral();
+    }
 }

@@ -7,12 +7,12 @@ public class TimerFicha : Executor
     private TimerFichaDto timerFichaDto;
     private Relogio relogio;   
 
-    public TimerFicha(TimerFichaDto timerFichaDto, Loading loading, SomMap somMap, Ficha ficha)
+    public TimerFicha(TimerFichaDto timerFichaDto, SomMap somMap, Ficha ficha)
     {
         this.ficha = ficha;
         this.timerFichaDto = timerFichaDto;
 
-        configurarBotao(loading, somMap);
+        configurarBotao(somMap);
         setupDeFichas();
     }
 
@@ -87,11 +87,11 @@ public class TimerFicha : Executor
         timerFichaDto.LblQdtFichas.text = fichas.ToString();
     }   
 
-    private void configurarBotao(Loading loading, SomMap somMap)
+    private void configurarBotao(SomMap somMap)
     {
         timerFichaDto.BtnMais.onClick.AddListener(() => {
                 somMap.playSomClique();
-            loading.irParaLojaCena();
+                ContextoEstaticoUtils.loading.irParaLojaCena();
             }
         );
     }    

@@ -11,10 +11,10 @@ public class CanvasDetalheColetavel : AcaoItemArmarioSelecionado.ConsumidorEvent
     private ColetaveisParaPrateleiras coletaveisParaPrateleiras;
     private BotaoIrGameColetaveis     btnIrGameColetavel;   
 
-    public CanvasDetalheColetavel(MainColetaveisDto mainDto, ColetaveisParaPrateleiras coletaveisParaPrateleiras, Loading loading)
+    public CanvasDetalheColetavel(MainColetaveisDto mainDto, ColetaveisParaPrateleiras coletaveisParaPrateleiras)
     {
         this.canvasDetalheDto = mainDto.CanvasDetalheColetavelDto;        
-        btnIrGameColetavel    = new BotaoIrGameColetaveis(canvasDetalheDto.BtnColetavel, mainDto.ModalNoFichaDto, loading);
+        btnIrGameColetavel    = new BotaoIrGameColetaveis(canvasDetalheDto.BtnColetavel, mainDto.ModalNoFichaDto);
         this.coletaveisParaPrateleiras = coletaveisParaPrateleiras;
     }
 

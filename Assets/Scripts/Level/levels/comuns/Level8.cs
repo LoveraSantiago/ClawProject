@@ -10,7 +10,7 @@ public class Level8 : AbstractLevelNormal
     public override string getMsgObjetivoLevel()
     {
         return LevelUtils.MSG_COLETAR_ITENS;
-    } 
+    }
 
     public override int[,] getArrayDeColetaveis()
     {
@@ -24,6 +24,19 @@ public class Level8 : AbstractLevelNormal
             {-1, -1, -1, 7, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}};
     }
+
+    //public override int[,] getArrayDeColetaveis()
+    //{
+    //    return new int[,]{
+    //        {-1, -1, -1, 2, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1},
+    //        {-1, -1, -1, -1, -1, -1, -1}};
+    //}
 
     public override bool devolverParaBoard()
     {

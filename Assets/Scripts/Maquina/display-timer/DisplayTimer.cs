@@ -3,19 +3,20 @@ using UnityEngine;
 
 public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
                             AcaoColetado.ConsumidorEvento,
-                            AcaoColetadoFim.ConsumidorEvento,
+                            AcaoColetadoFim.ConsumidorEvento,                            
                             Executor
 {  
     private bool isPausado;
     
     public ContadorTimer contadorTimer { get; private set; }
     private DisplayTimerDigitos digitos;
-    private Coroutine coroutineBlink;    
-
+    private Coroutine coroutineBlink;
+    private SomMaquina somMaquina;
     private ProdutorDeEvento<TempoEsgotadoDto> produtorDeEventoTempoEsgotado;
 
-    public DisplayTimer(DisplayTimerDto displayDto)
-    {   
+    public DisplayTimer(DisplayTimerDto displayDto, SomMaquina somMaquina)
+    {
+        this.somMaquina = somMaquina;
         digitos = new DisplayTimerDigitos(displayDto);
         
         produtorDeEventoTempoEsgotado = new ProdutorDeEvento<TempoEsgotadoDto>();
@@ -32,6 +33,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
     {
         pause();
         produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotadoDto(true));
+        somMaquina.stopSomMaqAlarmeTempo();
     }
 
     public void iniciarContagemTempo()
@@ -43,12 +45,11 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
     {    
         if(Time.frameCount % 2 == 0 && !isPausado)//Contabilizando tempo a cada 2frames
         {
-            atualizarTempo();
+            atualizarTempo(somMaquina);
             if (contadorTimer.isTimeOver())
             {
                 produtorDeEventoTempoEsgotado.produziuEvento(new TempoEsgotadoDto(false));
-                ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutineBlink);
-                coroutineBlink = null;
+                resetCoroutine();
             }
         }
     }
@@ -69,26 +70,33 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
             isPausado = false;
             contadorTimer.continuar();
         }
-    }  
+    }
 
-    private void atualizarTempo()
+    public void resetCoroutine()
+    {        
+        ContextoEstaticoUtils.monoBehaviour.StopCoroutine(coroutineBlink);
+        coroutineBlink = null;
+    }
+
+    private void atualizarTempo(SomMaquina somMaquina)
     {
         contadorTimer.passarTempoAosScores(digitos);
         if(contadorTimer.isNearTimeOver() && coroutineBlink == null)
         {            
-            coroutineBlink = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(blinkarTimer());         
+            coroutineBlink = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(blinkarTimer(somMaquina));         
         }
     }
 
-    private IEnumerator blinkarTimer()
+    private IEnumerator blinkarTimer(SomMaquina somMaquina)
     {
+        somMaquina.playSomMaqAlarmeTempo();
         while (contadorTimer.isNearTimeOver())
         {
             digitos.blinkar(true);
             yield return new WaitForSeconds(0.25f);
             digitos.blinkar(false);
             yield return new WaitForSeconds(0.25f);
-        }
+        }        
         yield return null;
     }
 
@@ -105,5 +113,5 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         pause();
-    }
+    }   
 }

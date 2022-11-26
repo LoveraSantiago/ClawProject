@@ -16,7 +16,7 @@ public class MainGameManagers
     {
         PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
         SomManagerGame somManager = new SomManagerGame(mainDto.AudioGameDto);
-        Loading loading = prefabLoading.getLoading(somManager, mainDto.GosDesligar);
+        prefabLoading.iniciarLoading(somManager, mainDto.GosDesligar);
 
         ColetorDeDados coletorDeDados = new ColetorDeDados();
 
@@ -24,8 +24,8 @@ public class MainGameManagers
         garraManager      = new GarraManager(mainDto.GarraDto, somManager);
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto, somManager);
         maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, somManager);
-        powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame);
-        uiManager         = new UiGameManager(mainDto, coletorDeDados, loading);
+        powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame, somManager);
+        uiManager         = new UiGameManager(mainDto, coletorDeDados, somManager);
         cameraManager     = new CameraManager(mainDto.CameraDto);
         draggavelManager  = new DraggavelManager(mainDto.DragCollider);
 
@@ -40,14 +40,16 @@ public class MainGameManagers
             .addProvedorSubidasDoElevador(coletaveisManager.board.elevador)
             .addProvedorDadosPowerUp(powerUpManager);
 
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));
-        loading.fecharModal();
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));
+        ContextoEstaticoUtils.loading.fecharModal();
+        somManager.playSomBackground();
     }
 
     private void configurandoLevel(MainGameDto mainDto)
     {
+        coletaveisManager.configuradoPeloLevel(mainDto.ColetaveisDto);
+
         AbstractLevel levelEscolhido = ContextoEstaticoUtils.level;
-        coletaveisManager.configuradoPeloLevel(levelEscolhido, mainDto.ColetaveisDto);
         maquinaManager   .configuradoPeloLevel(levelEscolhido, mainDto.MaquinaDto);
         uiManager        .configurandoLevel(levelEscolhido);
 

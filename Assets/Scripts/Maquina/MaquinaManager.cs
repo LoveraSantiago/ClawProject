@@ -19,15 +19,16 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     public  DisplaysDeColetados displayDeColetados { get; private set; }
     public  ScrollPupsManager   scrollPupsManager  { get; private set; }
     private Draggavel           draggavel;
+    private SomMaquina          somMaquina;
 
     public MaquinaManager(MaquinaDto maquinaDto, SomMaquina somMaquina)
     {
-        partesDto = maquinaDto.PartesDtoV2;
-
+        partesDto          = maquinaDto.PartesDtoV2;
+        this.somMaquina    = somMaquina;
         arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
-        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto, arcoIrisEfeito);        
+        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto, arcoIrisEfeito, somMaquina);        
         displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, somMaquina);
-        displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto);
+        displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto, somMaquina);
         joystick           = new Joystick(maquinaDto.MesaJoystickDto);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
@@ -60,13 +61,13 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     {
         if (isGamePlay)
         {
-            botoesPowerUp.update(maquinaDto.BotoesPowerUpDto, inputGame);
-            botaoLigaDesliga.update(inputGame);
+            botoesPowerUp.update(maquinaDto.BotoesPowerUpDto, somMaquina, inputGame);
+            botaoLigaDesliga.update(inputGame, somMaquina);
             displayTimer.update();
         }
         else
         {
-            scrollPupsManager.update(inputGame);
+            scrollPupsManager.update(inputGame, somMaquina);
         }
     }
 
@@ -125,12 +126,13 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     }              
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
-    {
+    {        
         if (!evento.isGameOver)
         {
             botoesPowerUp.reativarPowerUp();
             arcoIrisEfeito.desligarEfeito();
             displayTimer.continuar();
+            displayTimer.resetCoroutine();
         }
     }
 

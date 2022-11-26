@@ -11,11 +11,11 @@ public class ConfigScene : MonoBehaviour
         ContextoEstaticoUtils.configMainMono(this);
         PrefabLoading prefabLoading = mainConfigDto.PrefabLoading.GetComponent<PrefabLoading>();
         SomManagerConfig somManager = new SomManagerConfig(mainConfigDto.AudioConfigDto);
-        Loading loading = prefabLoading.getLoading(somManager, mainConfigDto.GosDesligar);
-        loading.fecharModal();
+        prefabLoading.iniciarLoading(somManager, mainConfigDto.GosDesligar);
+        ContextoEstaticoUtils.loading.fecharModal();
 
         configurarToogles();
-        mainConfigDto.BtnBack.onClick.AddListener(() => loading.irParaMapScene());
+        mainConfigDto.BtnBack.onClick.AddListener(() => ContextoEstaticoUtils.loading.irParaMapScene());
     }   
 
     private void configurarToogles()

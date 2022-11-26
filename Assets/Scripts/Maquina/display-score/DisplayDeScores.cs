@@ -36,11 +36,13 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
         splitarScore(score);
         if (result)
         {            
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.blinkarScoreSucesso(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                orquestrador.blinkarScoreSucesso(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual, somMaquina));
         }
         else
         {         
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.blinkarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                orquestrador.blinkarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual, somMaquina));
         }
     }
 
@@ -48,11 +50,12 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
     {
         //Debug.Log("PiscarAstericos");
         finalizarCoroutineAtual();
-        coroutineAtual = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.blinkarAsteriscos());
+        coroutineAtual = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(orquestrador.blinkarAsteriscos());
     }
 
     public void finalizarContagemRegressiva()
     {
+        somMaquina.stopSomMaqAlarmePowerUp();
         finalizarCoroutineAtual();        
         orquestrador.passarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual);
     }
@@ -60,7 +63,8 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
     public void iniciarContagemRegressiva(int duracao)
     {
         armazenarScoreAtual();
-        coroutineAtual = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));                
+        somMaquina.playSomMaqAlarmePowerUp();
+        coroutineAtual = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(orquestrador.mostrarContagemRegressivo(duracao));                
     }     
 
     private void splitarScore(int score)
@@ -84,7 +88,7 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
     
     private void finalizarCoroutineAtual()
     {
-        ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutineAtual);        
+        ContextoEstaticoUtils.monoBehaviour.StopCoroutine(coroutineAtual);        
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)

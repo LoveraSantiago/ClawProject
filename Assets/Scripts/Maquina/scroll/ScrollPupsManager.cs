@@ -56,7 +56,7 @@ public class ScrollPupsManager : Draggavel,
         scrollPups.iniciar();
     }    
 
-    public void update(InputGame inputGame)
+    public void update(InputGame inputGame, SomMaquina somMaquina)
     {
         if (desconsiderarTap())
         {
@@ -77,9 +77,11 @@ public class ScrollPupsManager : Draggavel,
                     DigitosItemScrollPup digitos = new DigitosItemScrollPup(itemSelecionado);
                     digitos.addQuantidade(qtdPup);
                     scrollSelecao.selecionouPup(indiceBtnDesocupado, pupEntidade.tipo);
+                    somMaquina.playSomCliqueScroll();
                 }
                 else
                 {
+                    somMaquina.playSomCliqueScrollCancel();
                     scrollSelecao.cancelouSelecao();
                 }
             }

@@ -45,7 +45,7 @@ public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<TrioDeCo
         desligarMiras();
 
         TrioDeColetaveis trioDeColetaveis = new TrioDeColetaveis(coletavel1, coletavel2, coletavel3);
-        Coroutine coroutine = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(trioDeColetaveis));
+        Coroutine coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(trioDeColetaveis));
         cacheCoroutineOnSelecionado(coroutine);
         yield return coroutine;
     }   

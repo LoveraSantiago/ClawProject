@@ -17,13 +17,13 @@ public class BoardDevolvedor : Fornecedor<ColetaveisDescartadosDto>
     }
 
     public void devolver(
-        bool combinacaoValida, ColetadoFimDto evento, BoardDto boardDto, Coletavel[] coletados)
+        ContadorManager contador, ColetadoFimDto evento, BoardDto boardDto, SomColetagem somColetagem)
     {
-        if ((devolverBoard && evento.isTodosColetados() && !combinacaoValida) || 
+        if ((devolverBoard && evento.isTodosColetados() && !contador.getResultCombinacao()) || 
             evento.isRollback)
         {
-            Coletavel[] coletadosOriginais = ArrayUtils.copiarArray(coletados);
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(devolverParaBoard(evento.clears, boardDto, coletadosOriginais));            
+            Coletavel[] coletadosOriginais = ArrayUtils.copiarArray(contador.getColetados());
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(devolverParaBoard(evento.clears, boardDto, coletadosOriginais, somColetagem));            
         }
     }
 
@@ -32,7 +32,7 @@ public class BoardDevolvedor : Fornecedor<ColetaveisDescartadosDto>
         return coletaveisDevolvidos;
     }
 
-    private IEnumerator devolverParaBoard(bool[]resultados, BoardDto boardDto, Coletavel[] coletados)
+    private IEnumerator devolverParaBoard(bool[]resultados, BoardDto boardDto, Coletavel[] coletados, SomColetagem somColetagem)
     {
         //Debug.Log("Devolver para o board chamado");
         Sprite[] spritesDevolvidos = new Sprite[coletados.Length];
@@ -42,7 +42,7 @@ public class BoardDevolvedor : Fornecedor<ColetaveisDescartadosDto>
             {
                 Coletavel coletavelIt = coletados[contador];
                 spritesDevolvidos[contador] = coletavelIt.getSprite();
-                yield return devolverColetavel(coletados[contador], boardDto);
+                yield return devolverColetavel(coletados[contador], boardDto, somColetagem);
             }
             else
             {
@@ -58,13 +58,14 @@ public class BoardDevolvedor : Fornecedor<ColetaveisDescartadosDto>
         return coletados[contador] != null && resultados[contador];
     }
 
-    private IEnumerator devolverColetavel(Coletavel coletavel, BoardDto boardDto)
+    private IEnumerator devolverColetavel(Coletavel coletavel, BoardDto boardDto, SomColetagem somColetagem)
     {
         coletavel.ligar();
         coletavel.desimantar();
 
         float anguloDevolucao = Random.Range(180, 230);        
         coletavel.disparar(boardDto.PosicaoRefVoltaBoard.position, anguloDevolucao, boardDto.VelocidadeDevolucao);
+        somColetagem.playSomColetadosCaindo();
 
         if (coletavel.isOvo())
         {
