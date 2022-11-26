@@ -26,7 +26,7 @@ public class EfeitoHolograma
         efeitoHologramaDto.GoEfeitoVertical.SetActive(false);
 
         estadoAtual = ESTADO_LIGADO_EFEITO_HOR;
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(updateTime());
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(updateTime());
     }
 
     public void ligarEfeitoExtra()

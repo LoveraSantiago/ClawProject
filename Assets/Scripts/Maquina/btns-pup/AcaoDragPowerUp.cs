@@ -64,7 +64,7 @@ public class AcaoDragPowerUp
         }
         else
         {
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal(posicao, aparencia));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(voltarBotaoDragPosOriginal(posicao, aparencia));
             goAreaDraggavel.SetActive(false);
             return false;
         }

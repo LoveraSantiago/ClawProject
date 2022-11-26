@@ -4,12 +4,12 @@ public class ModalFimPontos : AbstractModalFim
     private LinhasChallenge linhasChallenge;
     private SomModais somModais;
 
-    public ModalFimPontos(ModalPontosDto modalPontosDto, Loading loading, SomModais somModais)
+    public ModalFimPontos(ModalPontosDto modalPontosDto, SomModais somModais)
     {
         this.modalPontosDto = modalPontosDto;
         this.somModais      = somModais;
         linhasChallenge = new LinhasChallenge(modalPontosDto.LinhasChallenges.LinhaChallenges);
-        modalPontosDto.BtnAvancar.onClick.AddListener(() => irParaCena(loading));
+        modalPontosDto.BtnAvancar.onClick.AddListener(() => irParaCena());
     }
 
     public void passarResultados(ResultadoLevelDto resultadoLevelsDto, Challenge[] challenges, bool[] resultChallenges)
@@ -26,9 +26,9 @@ public class ModalFimPontos : AbstractModalFim
         modalPontosDto.GoModalPontos.SetActive(true);
     }
 
-    protected override void irParaCena(Loading loading)
+    protected override void irParaCena()
     {
         somModais.playSomCliquePositivo();
-        loading.irParaMapScene();        
+        ContextoEstaticoUtils.loading.irParaMapScene();        
     }
 }

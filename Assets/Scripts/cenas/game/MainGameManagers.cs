@@ -16,7 +16,7 @@ public class MainGameManagers
     {
         PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
         SomManagerGame somManager = new SomManagerGame(mainDto.AudioGameDto);
-        Loading loading = prefabLoading.getLoading(somManager, mainDto.GosDesligar);
+        prefabLoading.iniciarLoading(somManager, mainDto.GosDesligar);
 
         ColetorDeDados coletorDeDados = new ColetorDeDados();
 
@@ -25,7 +25,7 @@ public class MainGameManagers
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto, somManager);
         maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, somManager);
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame, somManager);
-        uiManager         = new UiGameManager(mainDto, coletorDeDados, loading, somManager);
+        uiManager         = new UiGameManager(mainDto, coletorDeDados, somManager);
         cameraManager     = new CameraManager(mainDto.CameraDto);
         draggavelManager  = new DraggavelManager(mainDto.DragCollider);
 
@@ -40,8 +40,8 @@ public class MainGameManagers
             .addProvedorSubidasDoElevador(coletaveisManager.board.elevador)
             .addProvedorDadosPowerUp(powerUpManager);
 
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));
-        loading.fecharModal();
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));
+        ContextoEstaticoUtils.loading.fecharModal();
         somManager.playSomBackground();
     }
 

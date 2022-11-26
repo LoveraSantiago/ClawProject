@@ -34,16 +34,16 @@ public class GrupoDisplays
 
     public void acionarMostrarAlvos(Executor executorFimMovimentacao)
     {
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(singleDisplayDeColetado[0].mostrarAlvo(executorFimMovimentacao));
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(singleDisplayDeColetado[1].mostrarAlvo(executorFimMovimentacao));
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(singleDisplayDeColetado[2].mostrarAlvo(executorFimMovimentacao));
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(singleDisplayDeColetado[0].mostrarAlvo(executorFimMovimentacao));
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(singleDisplayDeColetado[1].mostrarAlvo(executorFimMovimentacao));
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(singleDisplayDeColetado[2].mostrarAlvo(executorFimMovimentacao));
     }
 
     public void desligarAlvos(Executor executorFimMovimentacao)
     {
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(singleDisplayDeColetado[0].desligarAlvo(executorFimMovimentacao));
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(singleDisplayDeColetado[1].desligarAlvo(executorFimMovimentacao));
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(singleDisplayDeColetado[2].desligarAlvo(executorFimMovimentacao));
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(singleDisplayDeColetado[0].desligarAlvo(executorFimMovimentacao));
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(singleDisplayDeColetado[1].desligarAlvo(executorFimMovimentacao));
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(singleDisplayDeColetado[2].desligarAlvo(executorFimMovimentacao));
     }
 
     public IEnumerator mostrarSprColetado(int indice, Sprite sprite, bool powerUpAcionado)

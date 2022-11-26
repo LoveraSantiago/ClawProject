@@ -1,18 +1,18 @@
 public class BotoesCenasMapa 
 {
-    public BotoesCenasMapa(BotoesCenasDto botoesCenasDto, Loading loading, SomMap somMap)
+    public BotoesCenasMapa(BotoesCenasDto botoesCenasDto, SomMap somMap)
     {
-        configurarBotoesCenas(botoesCenasDto, loading, somMap);
+        configurarBotoesCenas(botoesCenasDto, somMap);
     }
 
-    private void configurarBotoesCenas(BotoesCenasDto botoesCenasDto, Loading loading, SomMap somMap)
+    private void configurarBotoesCenas(BotoesCenasDto botoesCenasDto, SomMap somMap)
     {
         configurarExclamacoes(botoesCenasDto);
-        botoesCenasDto.BtnCards.onClick.AddListener  (() => irParaCenaPowerUp(loading, somMap));
-        botoesCenasDto.BtnStore.onClick.AddListener  (() => irParaCenaLoja(loading, somMap));
-        botoesCenasDto.BtnScore.onClick.AddListener  (() => irParaCenaLevel(loading, somMap));
-        botoesCenasDto.BtnPelucia.onClick.AddListener(() => irParaCenaColetaveis(loading, somMap));
-        botoesCenasDto.BtnConfig.onClick.AddListener (() => irParaCenaConfiguracao(loading, somMap));
+        botoesCenasDto.BtnCards.onClick.AddListener  (() => irParaCenaPowerUp(somMap));
+        botoesCenasDto.BtnStore.onClick.AddListener  (() => irParaCenaLoja(somMap));
+        botoesCenasDto.BtnScore.onClick.AddListener  (() => irParaCenaLevel(somMap));
+        botoesCenasDto.BtnPelucia.onClick.AddListener(() => irParaCenaColetaveis(somMap));
+        botoesCenasDto.BtnConfig.onClick.AddListener (() => irParaCenaConfiguracao(somMap));
     }
 
     private void configurarExclamacoes(BotoesCenasDto botoesCenasDto)
@@ -45,35 +45,35 @@ public class BotoesCenasMapa
         }
     }
 
-    private void irParaCenaPowerUp(Loading loading, SomMap somMap)
+    private void irParaCenaPowerUp(SomMap somMap)
     {
         somMap.playSomClique();
-        loading.irParaPowerUpCena();
+        ContextoEstaticoUtils.loading.irParaPowerUpCena();
     }
 
-    private void irParaCenaLoja(Loading loading, SomMap somMap)
+    private void irParaCenaLoja(SomMap somMap)
     {
         somMap.playSomClique();
-        loading.irParaLojaCena();
+        ContextoEstaticoUtils.loading.irParaLojaCena();
     }
 
-    private void irParaCenaLevel(Loading loading, SomMap somMap)
+    private void irParaCenaLevel(SomMap somMap)
     {
         somMap.playSomClique();
-        loading.irParaLevelCena();
+        ContextoEstaticoUtils.loading.irParaLevelCena();
         PlayerPrefsMapas.consumidoNovaLiberacaoLevel();
     }
 
-    private void irParaCenaColetaveis(Loading loading, SomMap somMap)
+    private void irParaCenaColetaveis(SomMap somMap)
     {
         somMap.playSomClique();
-        loading.irParaColetaveisCena();
+        ContextoEstaticoUtils.loading.irParaColetaveisCena();
         PlayerPrefsMapas.consumidoNovaLiberacaoColetavel();
     }
 
-    private void irParaCenaConfiguracao(Loading loading, SomMap somMap)
+    private void irParaCenaConfiguracao(SomMap somMap)
     {
         somMap.playSomClique();
-        loading.irParaConfiguracaoCena();
+        ContextoEstaticoUtils.loading.irParaConfiguracaoCena();
     }    
 }

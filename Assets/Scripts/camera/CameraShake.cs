@@ -27,7 +27,7 @@ public class CameraShake
         perlim.m_PivotOffset = offset;
         perlim.m_FrequencyGain = ganhoFreq;
         perlim.m_AmplitudeGain = amplitude;
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(diminuirEfeito(amplitude, duracao));
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(diminuirEfeito(amplitude, duracao));
     }
 
     public void shakeEParar(
@@ -36,7 +36,7 @@ public class CameraShake
         perlim.m_PivotOffset = offset;
         perlim.m_FrequencyGain = ganhoFreq;
         perlim.m_AmplitudeGain = amplitude;
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(pararEfeito(duracao));
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(pararEfeito(duracao));
     }
 
     private IEnumerator pararEfeito(float duracao)

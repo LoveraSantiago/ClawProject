@@ -5,11 +5,11 @@ public class ModalFimCacaNiquelGeral : AbstractModalFim
     private ModalCacaNiquelDto modalCacaNiquelDto;
 
     public ModalFimCacaNiquelGeral(
-        CacaNiquelEventoDto evento, ModalCacaNiquelDto modalCacaNiquelDto, CacaNiquelDto cacaNiquelDto, Loading loading)
+        CacaNiquelEventoDto evento, ModalCacaNiquelDto modalCacaNiquelDto, CacaNiquelDto cacaNiquelDto)
     {
         this.modalCacaNiquelDto = modalCacaNiquelDto;
         configurar(evento, cacaNiquelDto);
-        modalCacaNiquelDto.BtnAvancar.onClick.AddListener(() => irParaCena(loading));
+        modalCacaNiquelDto.BtnAvancar.onClick.AddListener(() => irParaCena());
     }
 
     public void configurar(CacaNiquelEventoDto evento, CacaNiquelDto cacaNiquelDto)
@@ -41,8 +41,8 @@ public class ModalFimCacaNiquelGeral : AbstractModalFim
         modalCacaNiquelDto.Modal.SetActive(true);
     }
 
-    protected override void irParaCena(Loading loading)
+    protected override void irParaCena()
     {
-        loading.irParaPowerUpCena();
+        ContextoEstaticoUtils.loading.irParaPowerUpCena();
     }
 }

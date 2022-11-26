@@ -58,13 +58,13 @@ public class Loading
     public void fecharModal()
     {
         loadingDto.GoCanvas.gameObject.SetActive(true);
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineFecharModal());
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineFecharModal());
     }
 
     private void abrirModal(string nomeCena)
     {
         loadingDto.GoCanvas.gameObject.SetActive(true);
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineAbrirModal(nomeCena));
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineAbrirModal(nomeCena));
     }
 
     private void desligarGos()

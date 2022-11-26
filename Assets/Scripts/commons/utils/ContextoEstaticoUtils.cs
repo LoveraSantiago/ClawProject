@@ -2,20 +2,26 @@ using UnityEngine;
 
 public class ContextoEstaticoUtils 
 {
-    public static MonoBehaviour MonoBehaviour { get; private set; }
+    public static MonoBehaviour monoBehaviour { get; private set; }
 
     public static MapaEntidade mapaEntidade { get; private set; }
     public static AbstractLevel level { get; private set; }
+    public static Loading loading { get; private set; }
 
     public static void configMainMono(MonoBehaviour monoBehaviour)
     {
-        MonoBehaviour = monoBehaviour;
+        ContextoEstaticoUtils.monoBehaviour = monoBehaviour;
     }
 
     public static void configMapaEntidade(MapaEntidade mapaEntidade)
     {
         ContextoEstaticoUtils.mapaEntidade = mapaEntidade;
         PlayerPrefsMapas.salvarIndiceNavegacaoMapa(mapaEntidade);
+    }
+
+    public static void configLoading(Loading loading)
+    {
+        ContextoEstaticoUtils.loading = loading;
     }
 
     public static MapaEntidade loadMapaEntidade()

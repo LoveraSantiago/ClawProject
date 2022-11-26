@@ -24,7 +24,7 @@ public class DoisAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<DuplaDeCole
 
         DuplaDeColetaveisDto duplaDeColetaveis = new DuplaDeColetaveisDto(coletavel1, coletavel2);
 
-        Coroutine coroutine = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(duplaDeColetaveis));
+        Coroutine coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(duplaDeColetaveis));
         cacheCoroutineOnSelecionado(coroutine);
         yield return coroutine;
     }    

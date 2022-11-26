@@ -11,14 +11,14 @@ public class LojaScene : MonoBehaviour
         ContextoEstaticoUtils.configMainMono(this);
         PrefabLoading prefabLoading = mainLojaDto.PrefabLoading.GetComponent<PrefabLoading>();
         SomManagerLoja somManager = new SomManagerLoja(mainLojaDto.AudioLojaDto);
-        Loading loading = prefabLoading.getLoading(somManager, mainLojaDto.GosDesligar);
-        loading.fecharModal();
-        configurarBotoes(loading);
+        prefabLoading.iniciarLoading(somManager, mainLojaDto.GosDesligar);
+        ContextoEstaticoUtils.loading.fecharModal();
+        configurarBotoes();
     }    
 
-    private void configurarBotoes(Loading loading)
+    private void configurarBotoes()
     {
-        mainLojaDto.BtnVoltar.onClick.AddListener(() => loading.irParaMapScene());
+        mainLojaDto.BtnVoltar.onClick.AddListener(() => ContextoEstaticoUtils.loading.irParaMapScene());
 
         mainLojaDto.LblQtdFichasOuro.text   = PlayerPrefsFichas.getQtdFichas(Ficha.OURO).ToString();
         mainLojaDto.LblQtdFichasPrata.text  = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();

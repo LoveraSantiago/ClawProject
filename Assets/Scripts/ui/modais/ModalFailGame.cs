@@ -2,10 +2,10 @@ public class ModalFailGame : AbstractModalFim
 {
     private ModalFailGameDto modalFailGameDto;
 
-    public ModalFailGame(ModalFailGameDto modalFailOrdemDto, Loading loading)
+    public ModalFailGame(ModalFailGameDto modalFailOrdemDto)
     {
         this.modalFailGameDto = modalFailOrdemDto;
-        modalFailOrdemDto.BtnAvancar.onClick.AddListener(() => irParaCena(loading));
+        modalFailOrdemDto.BtnAvancar.onClick.AddListener(() => irParaCena());
     }
 
     public void failOrdem()
@@ -34,8 +34,8 @@ public class ModalFailGame : AbstractModalFim
         modalFailGameDto.GoModal.SetActive(true);        
     }
 
-    protected override void irParaCena(Loading loading)
+    protected override void irParaCena()
     {
-        loading.irParaMapScene();
+        ContextoEstaticoUtils.loading.irParaMapScene();
     }
 }

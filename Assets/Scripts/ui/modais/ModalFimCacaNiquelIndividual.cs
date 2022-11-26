@@ -4,12 +4,11 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
 {    
     private ModalCacaNiquelDto modalCacaNiquelDto;
 
-    public ModalFimCacaNiquelIndividual(
-        CacaNiquelEventoDto evento, ModalCacaNiquelDto modalCacaNiquelDto, CacaNiquelDto cacaNiquelDto, Loading loading)
+    public ModalFimCacaNiquelIndividual(CacaNiquelEventoDto evento, ModalCacaNiquelDto modalCacaNiquelDto, CacaNiquelDto cacaNiquelDto)
     {
         this.modalCacaNiquelDto = modalCacaNiquelDto;
         configurar(evento, cacaNiquelDto);
-        modalCacaNiquelDto.BtnAvancar.onClick.AddListener(()=> irParaCena(loading));
+        modalCacaNiquelDto.BtnAvancar.onClick.AddListener(()=> irParaCena());
     }
 
     public void configurar(CacaNiquelEventoDto evento, CacaNiquelDto cacaNiquelDto)
@@ -108,8 +107,8 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         modalCacaNiquelDto.Modal.SetActive(true);
     }
 
-    protected override void irParaCena(Loading loading)
+    protected override void irParaCena()
     {
-        loading.irParaPowerUpCena();        
+        ContextoEstaticoUtils.loading.irParaPowerUpCena();        
     }
 }

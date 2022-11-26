@@ -74,7 +74,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
 
     public void resetCoroutine()
     {        
-        ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutineBlink);
+        ContextoEstaticoUtils.monoBehaviour.StopCoroutine(coroutineBlink);
         coroutineBlink = null;
     }
 
@@ -83,7 +83,7 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
         contadorTimer.passarTempoAosScores(digitos);
         if(contadorTimer.isNearTimeOver() && coroutineBlink == null)
         {            
-            coroutineBlink = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(blinkarTimer(somMaquina));         
+            coroutineBlink = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(blinkarTimer(somMaquina));         
         }
     }
 

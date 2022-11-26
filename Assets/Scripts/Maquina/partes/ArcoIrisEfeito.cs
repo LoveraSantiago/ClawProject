@@ -21,25 +21,25 @@ public class ArcoIrisEfeito : AcaoTempoEsgotado.ConsumidorEvento,
     {
         ligarGlows();
         cleanCoroutineEmAndamento();
-        coroutineAtual = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(ligarGlowArcoIris());
+        coroutineAtual = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(ligarGlowArcoIris());
     }
 
     public void ligarBlinkRed()
     {
         cleanCoroutineEmAndamento();
-        coroutineAtual = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(blinkarCor(redHdr));
+        coroutineAtual = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(blinkarCor(redHdr));
     }
 
     public void ligarBlinkVerde()
     {
         cleanCoroutineEmAndamento();
-        coroutineAtual = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(blinkarCor(greenHdr));
+        coroutineAtual = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(blinkarCor(greenHdr));
     }
 
     public void ligarBlinkYellow()
     {
         cleanCoroutineEmAndamento();
-        coroutineAtual = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(blinkarCor(yellowHdr));
+        coroutineAtual = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(blinkarCor(yellowHdr));
     }
 
     public void desligarEfeito()
@@ -62,7 +62,7 @@ public class ArcoIrisEfeito : AcaoTempoEsgotado.ConsumidorEvento,
     {
         if (coroutineAtual != null)
         {
-            ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutineAtual);
+            ContextoEstaticoUtils.monoBehaviour.StopCoroutine(coroutineAtual);
             coroutineAtual = null;
         }
     }

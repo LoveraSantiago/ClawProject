@@ -33,7 +33,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger,
         if (isDevolver(contador.getResultCombinacao(), evento))
         {
             //Debug.Log("Devolver tubo acionado");
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, contador.getColetados()));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, contador.getColetados()));
         }
     }
 
@@ -75,7 +75,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger,
                 ColetavelTuboDeSaida coletavelDescarte = new ColetavelTuboDeSaida(tuboDto.ColetavelTuboDeSaida[contador]);
                 coletavelDescarte.prepararParaDescarte(torque, tuboDto.Gravidade, spriteAtual);
                 HelperColetaveisInGame.inativarColetavel(coletadosCopia[contador]);
-                ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(playSonsColetadosCaindo());
+                ContextoEstaticoUtils.monoBehaviour.StartCoroutine(playSonsColetadosCaindo());
                 yield return new WaitForSeconds(tuboDto.DelayDescarte);
             }
         }

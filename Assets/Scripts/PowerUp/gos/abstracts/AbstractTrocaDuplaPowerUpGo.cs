@@ -19,11 +19,11 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
         if (HelperColetaveisInGame.naoTemColetavelOvoInGame())
         {
             alvosSelecionados = new DoisAlvoColetavelSelecionado(true);
-            coroutine = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alvosSelecionados.onSelecionar(inputGame, this));
+            coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(alvosSelecionados.onSelecionar(inputGame, this));
         }
         else
         {
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(ativacaoFalha());
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(ativacaoFalha());
         }
     }
 
@@ -45,7 +45,7 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
     {
         if (!hitColetavel2)
         {
-            ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutine);
+            ContextoEstaticoUtils.monoBehaviour.StopCoroutine(coroutine);
             alvosSelecionados.timeout();
             finalizar();
         }

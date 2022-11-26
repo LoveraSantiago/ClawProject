@@ -16,12 +16,12 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
     private ProdutorDeEvento<ResultadoDesligarMaquinaDto> produtorDeEvento;
     private SomModais somModais;
 
-    public ModalSair(ModalSairDto modalSairDto, Loading loading, SomModais somModais)
+    public ModalSair(ModalSairDto modalSairDto, SomModais somModais)
     {
         this.modalSairDto = modalSairDto;
         this.somModais    = somModais;
         this.modalSairDto.BtnCancelar.onClick.AddListener(()=>cancelarSaida());
-        this.modalSairDto.BtnSair.onClick.AddListener(()=>sairDoGame(loading));
+        this.modalSairDto.BtnSair.onClick.AddListener(()=>sairDoGame());
         produtorDeEvento = new ProdutorDeEvento<ResultadoDesligarMaquinaDto>();
     }
 
@@ -50,7 +50,7 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
         ContextoEstaticoUtils.continuarGame();
     }
 
-    private void sairDoGame(Loading loading)
+    private void sairDoGame()
     {
         ContextoEstaticoUtils.continuarGame();
         somModais.playSomCliquePositivo();
@@ -59,19 +59,19 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
             case SAIR_NORMAL:
                 {
                     produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, true));
-                    loading.irParaMapScene();                    
+                    ContextoEstaticoUtils.loading.irParaMapScene();                    
                     break;
                 }
             case SAIR_COLETAVEL:
                 {
                     produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, false));
-                    loading.irParaColetaveisCena();
+                    ContextoEstaticoUtils.loading.irParaColetaveisCena();
                     break;
                 }
             case SAIR_EXTRA:
                 {
                     produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, false));
-                    loading.irParaPowerUpCena();
+                    ContextoEstaticoUtils.loading.irParaPowerUpCena();
                     break;
                 }
         }        

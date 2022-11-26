@@ -46,7 +46,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         if(!acionado && isAlvoExplosivel(evento))
         {
             acionado = true;
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(explodir());
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(explodir());
         }
     }    
     

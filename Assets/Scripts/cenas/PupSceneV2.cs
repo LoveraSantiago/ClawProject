@@ -25,16 +25,16 @@ public class PupSceneV2 : MonoBehaviour,
 
         PrefabLoading prefabLoading = mainPupDto.PrefabLoading.GetComponent<PrefabLoading>();
         SomManagerPup somManager = new SomManagerPup(mainPupDto.AudioPupDto);
-        Loading loading = prefabLoading.getLoading(somManager, mainPupDto.GosDesligar);
-        loading.fecharModal();
+        prefabLoading.iniciarLoading(somManager, mainPupDto.GosDesligar);
+        ContextoEstaticoUtils.loading.fecharModal();
 
-        timerFichaBronze = new TimerFicha(mainPupDto.TimerFichaDto, loading, null, Ficha.BRONZE);
+        timerFichaBronze = new TimerFicha(mainPupDto.TimerFichaDto, null, Ficha.BRONZE);
         cardDetalhe      = new CardDetalhePup(mainPupDto.CardDetalheDto);
         animacao         = new AnimacaoCardsPup(mainPupDto.Animator);
         cardsPups        = new CardsPups(mainPupDto.CardsPupsDto);
-        canvasDetalhe    = new CanvasDetalhePup(mainPupDto.CanvasDetalheDto, mainPupDto.ModalNoFichaDto, loading);
+        canvasDetalhe    = new CanvasDetalhePup(mainPupDto.CanvasDetalheDto, mainPupDto.ModalNoFichaDto);
         fichaAnimada     = new FichaAnimada(mainPupDto.FichaAnimadaDto);
-        mainPupDto.BtnBack.onClick.AddListener(()=>voltar(loading));
+        mainPupDto.BtnBack.onClick.AddListener(()=>voltar());
 
         new AcaoCardPupDetalheMovimentado()
             .configurarProdutor(cardDetalhe)
@@ -62,7 +62,7 @@ public class PupSceneV2 : MonoBehaviour,
         cardDetalhe.update();
     }
 
-    private void voltar(Loading loading)
+    private void voltar()
     {
         if (canvasDetalhe.isAberto)
         {
@@ -70,7 +70,7 @@ public class PupSceneV2 : MonoBehaviour,
         }
         else
         {
-            loading.irParaMapScene();            
+            ContextoEstaticoUtils.loading.irParaMapScene();            
         }
     }      
     

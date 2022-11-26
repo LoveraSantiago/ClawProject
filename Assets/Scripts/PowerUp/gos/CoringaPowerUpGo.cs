@@ -28,11 +28,11 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
             HelperColetaveisInGame.ligarMirasNosColetaveis(true);
 
             alvoSelecionado = new HumAlvoColetavelSelecionado(true);
-            coroutineAlvo = ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));
+            coroutineAlvo = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));
         }
         else
         {
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(ativacaoFalha());
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(ativacaoFalha());
         }
     }
 
@@ -130,7 +130,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
     {
         if (!finalizando)
         {
-            ContextoEstaticoUtils.MonoBehaviour.StopCoroutine(coroutineAlvo);
+            ContextoEstaticoUtils.monoBehaviour.StopCoroutine(coroutineAlvo);
             alvoSelecionado.timeout();
             finalizar();   
         }

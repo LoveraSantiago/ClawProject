@@ -29,12 +29,12 @@ public class SomManagerTitle : SomManager
 
     public void playSomGarraAsSecundario()
     {        
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePlaySomGarraAbertura());
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutinePlaySomGarraAbertura());
     }    
 
     public void playSonsBumpsDeTexto()
     {
-        ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(coroutinePlayBumpSongs());
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutinePlayBumpSongs());
     }         
 
     private IEnumerator coroutinePlaySomGarraAbertura()
