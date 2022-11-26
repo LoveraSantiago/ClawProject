@@ -11395,7 +11395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapa: 1
-  indiceLevel: 8
+  indiceLevel: 4
   mainDto:
     delayInicio: 0.25
     dragCollider: {fileID: 491158116}
