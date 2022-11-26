@@ -11938,7 +11938,7 @@ MonoBehaviour:
     audioGameDto:
       mainAudioSource: {fileID: 519420030}
       somBackground:
-        volume: 0.175
+        volume: 0.1
         audioClip: {fileID: 8300000, guid: 9ab0aa6a032f1004595d6bcaf989713b, type: 3}
       somGarra:
         volume: 0.06
