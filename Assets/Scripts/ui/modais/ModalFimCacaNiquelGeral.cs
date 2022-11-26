@@ -3,11 +3,13 @@ using UnityEngine;
 public class ModalFimCacaNiquelGeral : AbstractModalFim
 {
     private ModalCacaNiquelDto modalCacaNiquelDto;
+    private SomModais somModais;
 
     public ModalFimCacaNiquelGeral(
-        CacaNiquelEventoDto evento, ModalCacaNiquelDto modalCacaNiquelDto, CacaNiquelDto cacaNiquelDto)
+        CacaNiquelEventoDto evento, ModalCacaNiquelDto modalCacaNiquelDto, CacaNiquelDto cacaNiquelDto, SomModais somModais)
     {
         this.modalCacaNiquelDto = modalCacaNiquelDto;
+        this.somModais = somModais;
         configurar(evento, cacaNiquelDto);
         modalCacaNiquelDto.BtnAvancar.onClick.AddListener(() => irParaCena());
     }
@@ -38,11 +40,13 @@ public class ModalFimCacaNiquelGeral : AbstractModalFim
 
     public override void ligar()
     {
+        somModais.playSomSucessoAbrirModal();
         modalCacaNiquelDto.Modal.SetActive(true);
     }
 
     protected override void irParaCena()
     {
+        somModais.playSomCliquePositivo();
         ContextoEstaticoUtils.loading.irParaPowerUpCena();
     }
 }
