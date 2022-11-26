@@ -4,4 +4,5 @@ public interface SomColetagem
     void playScoreColetagemSucesso();
     void playScoreColetagemNaoSucesso();
     void playSomColetadosCaindo();
+    void playSomColetadosNoTubo();
 }

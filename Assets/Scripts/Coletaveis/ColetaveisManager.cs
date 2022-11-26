@@ -25,7 +25,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
         board          = new BoardManager(coletaveisDto.BoardDto);
         contador       = new ContadorManager(coletaveisDto);
-        tuboDeDescarte = new TuboDeDescarte(coletaveisDto.DescarteTuboDto);
+        tuboDeDescarte = new TuboDeDescarte(coletaveisDto.DescarteTuboDto, somColetagem);
         efeito         = new EfeitoColetado(coletaveisDto.EfeitoColetado);
 
         produtorDeInformacoesDoColetado = new ProdutorDeEvento<InformacoesColetadoDto>();
@@ -162,7 +162,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
         //Debug.Log("Evento acao coletado fim chamado");
-        tuboDeDescarte.devolver(contador, evento, somColetagem);                
+        tuboDeDescarte.devolver(contador, evento);                
         board.devolver(contador, evento, somColetagem);        
         contador.reajustarContagem(evento, board.isDevolverBoard());
     }

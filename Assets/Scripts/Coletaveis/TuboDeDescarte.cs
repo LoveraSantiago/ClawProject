@@ -10,10 +10,12 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger,
     private Vector3[] posicoesOriginais;
     private DescarteTuboDto tuboDto;
     private ColetaveisDescartadosDto coletaveisDescartados;
+    private SomColetagem somColetagem;
 
-    public TuboDeDescarte(DescarteTuboDto tuboDto)
+    public TuboDeDescarte(DescarteTuboDto tuboDto, SomColetagem somColetagem)
     {
         this.tuboDto = tuboDto;
+        this.somColetagem = somColetagem;
         
         inicializarArrays();
         configurarEventoTrigger();                
@@ -26,12 +28,12 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger,
         devolverTubo = !devolverParaBoard;
     }
 
-    public void devolver(ContadorManager contador, ColetadoFimDto evento, SomColetagem somColetagem)
+    public void devolver(ContadorManager contador, ColetadoFimDto evento)
     {
         if (isDevolver(contador.getResultCombinacao(), evento))
         {
             //Debug.Log("Devolver tubo acionado");
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, contador.getColetados(), somColetagem));
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(descerPeloTubo(evento.clears, contador.getColetados()));
         }
     }
 
@@ -57,7 +59,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger,
         return !devolverTubo && combinacaoValida;
     }
 
-    private IEnumerator descerPeloTubo(bool[] resultados, Coletavel[] coletados, SomColetagem somColetagem)
+    private IEnumerator descerPeloTubo(bool[] resultados, Coletavel[] coletados)
     {
         Sprite[] spritesDescarte = new Sprite[coletados.Length];
         Coletavel[] coletadosCopia = ArrayUtils.copiarArray<Coletavel>(coletados);
@@ -73,12 +75,21 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger,
                 ColetavelTuboDeSaida coletavelDescarte = new ColetavelTuboDeSaida(tuboDto.ColetavelTuboDeSaida[contador]);
                 coletavelDescarte.prepararParaDescarte(torque, tuboDto.Gravidade, spriteAtual);
                 HelperColetaveisInGame.inativarColetavel(coletadosCopia[contador]);
+                ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(playSonsColetadosCaindo());
                 yield return new WaitForSeconds(tuboDto.DelayDescarte);
-                somColetagem.playSomColetadosCaindo();
             }
         }
         coletaveisDescartados.addTrinca(spritesDescarte);
         yield return null;
+    }
+
+    private IEnumerator playSonsColetadosCaindo()
+    {
+        yield return new WaitForSeconds(tuboDto.DelaySomQueda);
+        somColetagem.playSomColetadosCaindo();
+
+        yield return new WaitForSeconds(tuboDto.DelaySomTubo);
+        somColetagem.playSomColetadosNoTubo();
     }
 
     private void restaurandoColetaveisParaOTubo(int indice)
@@ -90,7 +101,7 @@ public class TuboDeDescarte : ConsumidorDeEventoTrigger,
     private void triggerDeSaidaDeTuboAcionado(Collider2D coletavelSaindo)
     {
         if (TagUtils.isNome(coletavelSaindo, "ColetavelDoTubo"))
-        {   
+        {
             restaurandoColetaveisParaOTubo(int.Parse(coletavelSaindo.name));
         }
     }

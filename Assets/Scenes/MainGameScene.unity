@@ -11454,6 +11454,8 @@ MonoBehaviour:
         torque: 550
         gravidade: 1
         delayDescarte: 0.35
+        delaySomQueda: 0.3
+        delaySomTubo: 0.425
         parentColetavelTubo: {fileID: 1607848931}
         coletavelTuboDeSaida:
         - rigidBodyColetavel: {fileID: 650369890}
@@ -11957,8 +11959,11 @@ MonoBehaviour:
         volume: 1
         audioClip: {fileID: 8300000, guid: 82edef6eac25f524cbfc99e5ece0e3d4, type: 3}
       somColetadoCaindo:
-        volume: 1
+        volume: 0.8
         audioClip: {fileID: 8300000, guid: da4765f3630332f4abe79a6c06a868e0, type: 3}
+      somColetadoNoTubo:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: 6ba85e467cec4a14b87eeb98f686df51, type: 3}
       somGarraAgarrada:
         volume: 0.7
         audioClip: {fileID: 8300000, guid: 0a456e588b2e0264c8f86d7040e09183, type: 3}
