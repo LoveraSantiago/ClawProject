@@ -45,7 +45,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            ModalFimColetaveis modal = ModalFimColetaveis.ofSucess(uiGameDto.ModalColetaveisDto);
+            ModalFimColetaveis modal = ModalFimColetaveis.ofSucess(uiGameDto.ModalColetaveisDto, somModais);
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
@@ -54,7 +54,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            ModalFimColetaveis modal = ModalFimColetaveis.ofFail(uiGameDto.ModalColetaveisDto);
+            ModalFimColetaveis modal = ModalFimColetaveis.ofFail(uiGameDto.ModalColetaveisDto, somModais);
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
@@ -72,7 +72,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         if (!mostrandoModal)
         {
-            ModalFimCacaNiquelGeral modal = new ModalFimCacaNiquelGeral(evento, uiGameDto.ModalCacaNiquelDto, cacaNiquelDto);
+            ModalFimCacaNiquelGeral modal = new ModalFimCacaNiquelGeral(evento, uiGameDto.ModalCacaNiquelDto, cacaNiquelDto, somModais);
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineMostrarModal(modal));
         }
     }
