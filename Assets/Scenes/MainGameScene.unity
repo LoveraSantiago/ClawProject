@@ -11982,6 +11982,9 @@ MonoBehaviour:
       somMaqAlarmeTimer:
         volume: 0.15
         audioClip: {fileID: 8300000, guid: c106aa3f0dfb8134cbf522f43dc62130, type: 3}
+      somMaqBlinkTimer:
+        volume: 0.1
+        audioClip: {fileID: 8300000, guid: a58c02aabe714b04b8ac6ddec25956c1, type: 3}
       somMaqCliqueBtn:
         volume: 1
         audioClip: {fileID: 8300000, guid: 4f6325760753d3049b8e4fdcfc5837bc, type: 3}

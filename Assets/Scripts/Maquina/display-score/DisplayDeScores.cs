@@ -36,11 +36,13 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
         splitarScore(score);
         if (result)
         {            
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.blinkarScoreSucesso(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(
+                orquestrador.blinkarScoreSucesso(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual, somMaquina));
         }
         else
         {         
-            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(orquestrador.blinkarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual));
+            ContextoEstaticoUtils.MonoBehaviour.StartCoroutine(
+                orquestrador.blinkarScore(scoreCentenaAtual, scoreDezenaAtual, scoreUnidadeAtual, somMaquina));
         }
     }
 

@@ -19,35 +19,40 @@ public class OrquestradorDisplayDigitos
         this.displayUnidade = displayUnidade;
     }
 
-    public IEnumerator blinkarScore(int centena, int dezena, int unidade)
+    public IEnumerator blinkarScore(int centena, int dezena, int unidade, SomMaquina somMaquina)
     {
         WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
         for (int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
         {
+            somMaquina.playSomLedsBlink();
             desligarTodosDigitos();
             yield return wfsTempoBlink;
 
+            somMaquina.playSomLedsBlink();
             passarScore(centena, dezena, unidade);
             yield return wfsTempoBlink;
         }
         yield return null;
     }
 
-    public IEnumerator blinkarScoreSucesso(int centena, int dezena, int unidade)
+    public IEnumerator blinkarScoreSucesso(int centena, int dezena, int unidade, SomMaquina somMaquina)
     {
         WaitForSeconds wfsTempoBlink = new WaitForSeconds(displayDeScoresDto.TempoBlink);
         for (int contador = 0; contador < displayDeScoresDto.QtdBlinks; contador++)
         {
+            somMaquina.playSomLedsBlink();
             passarScore(centena, dezena, unidade);
             yield return wfsTempoBlink;
 
+            somMaquina.playSomLedsBlink();
             displayCentena.mostrarDigito("Y", Color.green);
             displayDezena.mostrarDigito ("E", Color.green);
             displayUnidade.mostrarDigito("S", Color.green);
 
             yield return wfsTempoBlink;
         }
-        
+
+        somMaquina.playSomLedsBlink();
         passarScore(centena, dezena, unidade);
         yield return null;
     }

@@ -54,6 +54,12 @@ public class SomManagerGame : SomManager,
     {
         audioPlayOneShot(getAudioSourceColetaveis(), audioGameDto.SomMaqCliqueScrollCancel);
     }
+
+    public void playSomLedsBlink()
+    {
+        Debug.Log("Blink score");
+        audioPlayOneShot(getAudioSourceMaquinaTimer(), audioGameDto.SomMaqBlinkTimer);
+    }
     //***** IMPLEMENTACAO INTERFACE SOMMAQUINA FIM *****
 
     //***** IMPLEMENTACAO INTERFACE SOMGARRA INICIO *****
@@ -129,7 +135,7 @@ public class SomManagerGame : SomManager,
 
     private AudioSource getAudioSourceColetagem()
     {
-        return getAudioSource(4);
+        return getAudioSource(8);
     }
 
     private AudioSource getAudioSourceColetaveis()
@@ -149,6 +155,6 @@ public class SomManagerGame : SomManager,
 
     private AudioSource getAudioSourceMaquinaScore()
     {
-        return getAudioSource(8);
-    }   
+        return getAudioSource(4);
+    }  
 }

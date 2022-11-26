@@ -8,4 +8,5 @@ public interface SomMaquina
     void playSomBotaoPowerUp();
     void playSomCliqueScroll();
     void playSomCliqueScrollCancel();
+    void playSomLedsBlink();
 }
