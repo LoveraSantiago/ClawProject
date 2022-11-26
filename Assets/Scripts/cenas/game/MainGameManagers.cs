@@ -47,8 +47,9 @@ public class MainGameManagers
 
     private void configurandoLevel(MainGameDto mainDto)
     {
+        coletaveisManager.configuradoPeloLevel(mainDto.ColetaveisDto);
+
         AbstractLevel levelEscolhido = ContextoEstaticoUtils.level;
-        coletaveisManager.configuradoPeloLevel(levelEscolhido, mainDto.ColetaveisDto);
         maquinaManager   .configuradoPeloLevel(levelEscolhido, mainDto.MaquinaDto);
         uiManager        .configurandoLevel(levelEscolhido);
 
