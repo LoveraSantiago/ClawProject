@@ -25,7 +25,7 @@ public class MainGameManagers
         coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto, somManager);
         maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, somManager);
         powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame, somManager);
-        uiManager         = new UiGameManager(mainDto, coletorDeDados, loading);
+        uiManager         = new UiGameManager(mainDto, coletorDeDados, loading, somManager);
         cameraManager     = new CameraManager(mainDto.CameraDto);
         draggavelManager  = new DraggavelManager(mainDto.DragCollider);
 

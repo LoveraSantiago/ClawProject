@@ -11933,8 +11933,6 @@ MonoBehaviour:
         txtMsg: {fileID: 1318552828}
         imgFail: {fileID: 859365588}
         btnAvancar: {fileID: 828203236}
-    prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
-    prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     audioGameDto:
       mainAudioSource: {fileID: 519420030}
       somBackground:
@@ -11994,6 +11992,9 @@ MonoBehaviour:
       somMaqCliqueScrollCancel:
         volume: 0.2
         audioClip: {fileID: 8300000, guid: 239f092fc5d70a04fa691a9a9c3239d8, type: 3}
+      abrirModal:
+        volume: 0.25
+        audioClip: {fileID: 8300000, guid: 218f1e44b165a5d41bd052a972aa81dd, type: 3}
     prefabLoading: {fileID: 712928913}
     gosDesligar:
     - {fileID: 1078757848}
@@ -12005,6 +12006,8 @@ MonoBehaviour:
     - {fileID: 2086766167889621234}
     - {fileID: 1245264362}
     - {fileID: 1488572495}
+    prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
+    prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     tutorialDto:
       animator: {fileID: 846774093}
       lblTexto: {fileID: 918211904}

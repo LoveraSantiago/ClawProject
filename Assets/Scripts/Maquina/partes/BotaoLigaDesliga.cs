@@ -17,14 +17,15 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
         desacionarBtnLigaDesliga();
     }   
 
-    public void update(InputGame inputGame)
+    public void update(InputGame inputGame, SomMaquina somMaquina)
     {
         if (inputGame.aconteceuTapNaAreaInferior() && habilitado)
         {
             Vector2 posicaoTap = inputGame.getPosicaoTap();
             if (btnLigaDesligaDto.SprRendererBtnLigaDesliga.bounds.Contains(posicaoTap))
             {
-                acionarBtnLigaDesliga();           
+                acionarBtnLigaDesliga();
+                somMaquina.playSomBotaoPowerUp();
                 produtorDeEvento.produziuEvento(null);
                 inputGame.consumirTap();
             }

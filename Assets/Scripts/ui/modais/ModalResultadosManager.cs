@@ -12,13 +12,15 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     private CacaNiquelDto cacaNiquelDto;
     private ColetorDeDados coletorDeDados;
     private Loading loading;
+    private SomModais somModais;
 
-    public ModalResultadosManager(MainGameDto mainDto, ColetorDeDados coletorDeDados, Loading loading)
+    public ModalResultadosManager(MainGameDto mainDto, ColetorDeDados coletorDeDados, Loading loading, SomModais somModais)
     {
         this.uiGameDto      = mainDto.UiDto;
         this.cacaNiquelDto  = mainDto.MaquinaDto.DisplayColetadosDto.CacaNiquelDto;
         this.coletorDeDados = coletorDeDados;
         this.loading        = loading;
+        this.somModais      = somModais;
     }             
 
     private void mostrarModalPontuacao()
@@ -91,6 +93,7 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     {
         mostrandoModal = true;       
         yield return new WaitForSeconds(uiGameDto.DelayAbrirModal);
+        somModais.playSomAbrirModal();
         modal.ligar();
     }
 

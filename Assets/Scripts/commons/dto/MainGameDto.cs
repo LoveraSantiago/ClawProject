@@ -19,12 +19,12 @@ public class MainGameDto
     [Space(5)]
     [SerializeField] private UIGameDto uiDto;
     [Space(5)]
-    [SerializeField] private GameObject prefabMateriais;
-    [SerializeField] private GameObject prefabLevelsDto;
-    [Space(5)]
     [SerializeField] private AudioGameDto audioGameDto;
     [SerializeField] private GameObject prefabLoading;
     [SerializeField] private GameObject[] gosDesligar;
+    [Space(5)]
+    [SerializeField] private GameObject prefabMateriais;
+    [SerializeField] private GameObject prefabLevelsDto;
     [Space(5)]
     [SerializeField] private TutorialDto tutorialDto;
 

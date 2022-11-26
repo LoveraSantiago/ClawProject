@@ -9,10 +9,12 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
     
     private ModalSairDto modalSairDto;
     private ProdutorDeEvento<ResultadoDesligarMaquinaDto> produtorDeEvento;
+    private SomModais somModais;
 
-    public ModalSair(ModalSairDto modalSairDto, Loading loading)
+    public ModalSair(ModalSairDto modalSairDto, Loading loading, SomModais somModais)
     {
         this.modalSairDto = modalSairDto;
+        this.somModais    = somModais;
         this.modalSairDto.BtnCancelar.onClick.AddListener(()=>cancelarSaida());
         this.modalSairDto.BtnSair.onClick.AddListener(()=>sairDoGame(loading));
         produtorDeEvento = new ProdutorDeEvento<ResultadoDesligarMaquinaDto>();
@@ -79,6 +81,7 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
         }
         
         modalSairDto.TextoSair.text = text;
+        somModais.playSomAbrirModal();
         modalSairDto.ModalSair.SetActive(true);        
     }
 

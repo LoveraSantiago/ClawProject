@@ -4,7 +4,8 @@ public class SomManagerGame : SomManager,
                               SomGarra,
                               SomColetagem,
                               SomMaquina,
-                              SomPowerUp
+                              SomPowerUp,
+                              SomModais
 {
     private AudioGameDto audioGameDto;
 
@@ -126,7 +127,14 @@ public class SomManagerGame : SomManager,
     {
         audioPlay(getAudioSourceBackground(), audioGameDto.SomBackgroundPowerUp);
     }
-    //***** IMPLEMENTACAO INTERFACE SOMPOWERUP INICIO *****
+    //***** IMPLEMENTACAO INTERFACE SOMPOWERUP FIM *****
+
+    //***** IMPLEMENTACAO INTERFACE SOMMODAIS INICIO *****
+    public void playSomAbrirModal()
+    {
+        audioPlayOneShot(getAudioSourceGarraComplementar(), audioGameDto.SomAbrirModal);
+    }
+    //***** IMPLEMENTACAO INTERFACE SOMMODAIS INICIO *****
 
     private AudioSource getAudioSourceGarraComplementar()
     {
@@ -156,5 +164,5 @@ public class SomManagerGame : SomManager,
     private AudioSource getAudioSourceMaquinaScore()
     {
         return getAudioSource(4);
-    }  
+    }   
 }

@@ -62,7 +62,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         if (isGamePlay)
         {
             botoesPowerUp.update(maquinaDto.BotoesPowerUpDto, somMaquina, inputGame);
-            botaoLigaDesliga.update(inputGame);
+            botaoLigaDesliga.update(inputGame, somMaquina);
             displayTimer.update();
         }
         else
