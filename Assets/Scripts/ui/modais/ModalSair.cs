@@ -1,9 +1,14 @@
+using UnityEngine;
+
 public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento, 
                          AcaoDesligarMaquina.ConsumidorEvento    
 {
     private const int SAIR_NORMAL    = 0;
     private const int SAIR_COLETAVEL = 1;
     private const int SAIR_EXTRA     = 2;
+
+    private static readonly int ANIM_ABRIR  = Animator.StringToHash("modal-sair-abrir");
+    private static readonly int ANIM_FECHAR = Animator.StringToHash("modal-sair-fechar");
 
     private int estadoSairPara;    
     
@@ -38,14 +43,17 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
 
     private void cancelarSaida()
     {
-        modalSairDto.ModalSair.SetActive(false);
+        somModais.playSomAbrirModal();
+        somModais.playSomCliqueNegativo();
+        modalSairDto.Animator.Play(ANIM_FECHAR);
         produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(false));
         ContextoEstaticoUtils.continuarGame();
     }
 
     private void sairDoGame(Loading loading)
     {
-        ContextoEstaticoUtils.continuarGame();        
+        ContextoEstaticoUtils.continuarGame();
+        somModais.playSomCliquePositivo();
         switch (estadoSairPara)
         {
             case SAIR_NORMAL:
@@ -82,7 +90,7 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
         
         modalSairDto.TextoSair.text = text;
         somModais.playSomAbrirModal();
-        modalSairDto.ModalSair.SetActive(true);        
+        modalSairDto.Animator.Play(ANIM_ABRIR);
     }
 
     ProdutorDeEvento<ResultadoDesligarMaquinaDto> AcaoDesligarMaquinaResultado.ProdutorEvento.getProdutorDeEvento()

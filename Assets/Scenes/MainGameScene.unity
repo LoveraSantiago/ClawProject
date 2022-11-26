@@ -11895,7 +11895,7 @@ MonoBehaviour:
             img2: {fileID: 1078916703}
             img3: {fileID: 1078916702}
       modalSairDto:
-        modalSair: {fileID: 1306329716}
+        animator: {fileID: 1306329721}
         btnSair: {fileID: 1200365936}
         btnCancelar: {fileID: 381730343}
         textoSair: {fileID: 1038405836}
@@ -11993,7 +11993,7 @@ MonoBehaviour:
         volume: 0.2
         audioClip: {fileID: 8300000, guid: 239f092fc5d70a04fa691a9a9c3239d8, type: 3}
       abrirModal:
-        volume: 0.25
+        volume: 0.15
         audioClip: {fileID: 8300000, guid: 218f1e44b165a5d41bd052a972aa81dd, type: 3}
     prefabLoading: {fileID: 712928913}
     gosDesligar:
@@ -24090,7 +24090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &927868424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25018,7 +25018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1030318031
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40913,7 +40913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1306329717
 RectTransform:
   m_ObjectHideFlags: 0
