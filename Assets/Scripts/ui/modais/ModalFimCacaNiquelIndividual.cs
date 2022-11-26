@@ -103,7 +103,7 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         linha2.LblLinha.text = textFicha;
     }
 
-    public override void ligar()
+    public override void ligar(SomModais somModais)
     {
         modalCacaNiquelDto.Modal.SetActive(true);
     }

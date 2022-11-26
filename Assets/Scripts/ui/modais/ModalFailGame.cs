@@ -29,7 +29,7 @@ public class ModalFailGame : AbstractModalFim
         modalFailGameDto.TxtMsg.text = "O elevador atingiu sua posição máxima";
     }
 
-    public override void ligar()
+    public override void ligar(SomModais somModais)
     {
         modalFailGameDto.GoModal.SetActive(true);        
     }

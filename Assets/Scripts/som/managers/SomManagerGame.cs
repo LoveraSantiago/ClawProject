@@ -144,6 +144,11 @@ public class SomManagerGame : SomManager,
     {
         playSomCliqueScrollCancel();
     }
+
+    public void playSomSucessoAbrirModal()
+    {
+        audioPlayOneShot(getAudioSourceGarraComplementar(), audioGameDto.SomAbrirModalSucesso);
+    }
     //***** IMPLEMENTACAO INTERFACE SOMMODAIS INICIO *****
 
     private AudioSource getAudioSourceGarraComplementar()
@@ -174,5 +179,5 @@ public class SomManagerGame : SomManager,
     private AudioSource getAudioSourceMaquinaScore()
     {
         return getAudioSource(4);
-    }  
+    }   
 }

@@ -18,7 +18,7 @@ public class ModalFimPontos : AbstractModalFim
         linhasChallenge.addEstrelasChallenges(modalPontosDto.LinhasChallenges.CorEstrela, resultChallenges);
     }
 
-    public override void ligar()
+    public override void ligar(SomModais somModais)
     {
         modalPontosDto.GoModalPontos.SetActive(true);
     }

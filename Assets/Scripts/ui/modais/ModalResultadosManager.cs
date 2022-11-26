@@ -92,9 +92,8 @@ public class ModalResultadosManager : AcaoColetado.ConsumidorEvento,
     private IEnumerator coroutineMostrarModal(AbstractModalFim modal)
     {
         mostrandoModal = true;       
-        yield return new WaitForSeconds(uiGameDto.DelayAbrirModal);
-        somModais.playSomAbrirModal();
-        modal.ligar();
+        yield return new WaitForSeconds(uiGameDto.DelayAbrirModal);        
+        modal.ligar(somModais);
     }
 
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
