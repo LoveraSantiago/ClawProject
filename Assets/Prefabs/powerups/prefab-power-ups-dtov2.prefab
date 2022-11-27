@@ -103,8 +103,8 @@ MonoBehaviour:
       corPrincipal: {r: 1, g: 0, b: 0, a: 1}
       corEscura: {r: 0.7019608, g: 0.07058824, b: 0.07058824, a: 1}
       corCirculo: {r: 1, g: 1, b: 1, a: 1}
-      corVariacao1: {r: 1, g: 1, b: 0.9019608, a: 1}
-      corVariacao2: {r: 0.9019608, g: 0.9607843, b: 1, a: 1}
+      corVariacao1: {r: 0.15294118, g: 0.1882353, b: 0.2627451, a: 1}
+      corVariacao2: {r: 0.03529412, g: 0.5019608, b: 0.91764706, a: 1}
       corVariacao3: {r: 0.6313726, g: 0.6745098, b: 0.7019608, a: 1}
     matMecanimso:
       material: {fileID: 2100000, guid: 34e248d882c22f64cb7f6eed8c5fae56, type: 2}
