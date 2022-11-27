@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System;
 
+[Obsolete("ser removida qdo todos os tutoriais de pups estiverem prontos. Tudo copiadao para AbstractLevelTutorialPowerUp")]
 public class LevelPowerUp : AbstractLevel
 {
     public override string getLevelTitle()
