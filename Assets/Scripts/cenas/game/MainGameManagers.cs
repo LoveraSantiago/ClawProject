@@ -2,7 +2,9 @@ using System.Collections;
 using UnityEngine;
 
 public class MainGameManagers 
-{   
+{
+    private AllGameManagersImpl allGameManagers;
+
     public GarraManager      garraManager      { get; private set; }
     public MaquinaManager    maquinaManager    { get; private set; }
     public PowerUpManager    powerUpManager    { get; private set; }
@@ -11,6 +13,11 @@ public class MainGameManagers
     public UiGameManager     uiManager         { get; private set; }    
     public InputGameImpl     inputGame         { get; private set; }
     public DraggavelManager  draggavelManager  { get; private set; }    
+
+    public MainGameManagers()
+    {
+        allGameManagers = new AllGameManagersImpl();
+    }
 
     public void configurar(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {

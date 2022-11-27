@@ -2,14 +2,14 @@ using System.Collections;
 using UnityEngine;
 
 public class MainGameManagersTutorial : MainGameManagers
-{
-    private Tutorial tutorial;
+{    
+    private MainGameEventosTutorial eventos;
 
     public MainGameManagersTutorial() 
         : base()
     {
         AbstractLevel levelEscolhido = ContextoEstaticoUtils.level;
-        tutorial = LevelUtils.getTutorial(levelEscolhido);
+        eventos = LevelUtils.getMainGameEventosTutorial(levelEscolhido, this);        
     }
 
     protected override IEnumerator startLaizy(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
@@ -18,7 +18,8 @@ public class MainGameManagersTutorial : MainGameManagers
         yield return new WaitForSeconds(mainDto.DelayInicio);
 
         maquinaManager.start(inputGame);
-        tutorial.iniciar(mainDto, garraManager, maquinaManager);        
+        eventos.iniciar();
+        //tutorial.iniciar(mainDto, garraManager, maquinaManager);        
 
         garraManager.start(mainDto.GarraDto);
         consumidorUpdateManagers.consumir(getUpdatables());
@@ -26,7 +27,7 @@ public class MainGameManagersTutorial : MainGameManagers
 
     protected override void configurandoEventos()
     {
-        MainGameEventos eventos = new MainGameEventosTutorial(this, tutorial);
+        //MainGameEventos eventos = new MainGameEventosTutorial(this, tutorial);
         eventos.configurarEventos();
     }
 }

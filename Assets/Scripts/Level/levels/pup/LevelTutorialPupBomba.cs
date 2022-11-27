@@ -17,10 +17,10 @@ public class LevelTutorialPupBomba : AbstractLevelTutorialPowerUp
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }
+    }    
 
-    public override Tutorial getTutorial()
+    public override MainGameEventosTutorial getMainGameEventos(MainGameManagers mainGameManagers)
     {
         throw new System.NotImplementedException();
-    }    
+    }   
 }
