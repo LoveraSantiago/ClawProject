@@ -3,6 +3,11 @@ using UnityEngine;
 public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
                               AcaoCardPowerUpSelecionado.ConsumidorEvento
 {
+    private static readonly int ID_IMG_CARD      = Shader.PropertyToID("_imgCard");
+    private static readonly int ID_COR_PRINCIPAL = Shader.PropertyToID("_corPrincipal");
+    private static readonly int ID_COR_CIRCULO   = Shader.PropertyToID("_corCirculo");
+    private static readonly int ID_COR_ESCURA    = Shader.PropertyToID("_corEscura");
+
     private Vector3 posOriginal;
     private Vector3 posFinal;
     private Vector3 posInicial;
@@ -98,9 +103,9 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
 
         MaterialTipoPowerUpDto materialPup = pupEntidade.getMaterial();
         Material materialDetalhe = cardDetalheDto.MaterialDetalhe;
-        materialDetalhe.SetTexture("_imgCard", pupEntidade.sprCard.texture);
-        materialDetalhe.SetColor("_corPrincipal", materialPup.CorPrincipal);
-        materialDetalhe.SetColor("_corCirculo", materialPup.CorCirculo);
-        materialDetalhe.SetColor("_corEscura", materialPup.CorEscura);
+        materialDetalhe.SetTexture(ID_IMG_CARD     , pupEntidade.sprCard.texture);
+        materialDetalhe.SetColor  (ID_COR_PRINCIPAL, materialPup.CorPrincipal);
+        materialDetalhe.SetColor  (ID_COR_CIRCULO  , materialPup.CorCirculo);
+        materialDetalhe.SetColor  (ID_COR_ESCURA   , materialPup.CorEscura);
     }
 }
