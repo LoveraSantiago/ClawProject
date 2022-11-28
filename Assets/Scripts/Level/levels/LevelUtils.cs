@@ -151,8 +151,8 @@ public class LevelUtils
         }
     }   
 
-    public static MainGameEventosTutorial getMainGameEventosTutorial(AbstractLevel level, AllGameManagers allGameManagers)
+    public static MainGameEventosTutorial getMainGameEventosTutorial(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
-        return ((AbstractLevelTutorial)level).getMainGameEventos(allGameManagers);
+        return ((AbstractLevelTutorial)ContextoEstaticoUtils.level).getMainGameEventos(allGameManagers, mainDto);
     }
 }

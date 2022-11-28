@@ -14,29 +14,28 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
 
     private bool finalizacaoDisparada;
     private int contagemColetados;
-    private MainGameDto    mainDto;
-    private GarraManager   garraManager;
-    private MaquinaManager maquinaManager;
+    private MainGameDto    mainDto;    
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeEvento;
 
-    public Tutorial()
+    private AllGameManagers allGameManagers;
+
+    public Tutorial(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
+        this.allGameManagers = allGameManagers;
+        this.mainDto        = mainDto;       
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
-    public void iniciar(MainGameDto mainDto, GarraManager garraManager, MaquinaManager maquinaManager)
+    public void iniciar()
     {
-        this.mainDto        = mainDto;
-        this.garraManager   = garraManager;
-        this.maquinaManager = maquinaManager;
         mainDto.TutorialDto.GoTutorial.SetActive(true);
         prepararTutorialParteCliqueColetavel();
     }
 
     private void prepararTutorialParteCliqueColetavel()
     {
-        maquinaManager.botoesPowerUp.desativarPowerUp();
-        maquinaManager.botaoLigaDesliga.desligar();
+        allGameManagers.getBotoesPowerUp().desativarPowerUp();
+        allGameManagers.getBotaoLigaDesliga().desligar();
         mainDto.TutorialDto.LblTexto.text = "Vamos Coletar!\nClique para acionar a garra!";
         mainDto.TutorialDto.Animator.Play(ANIM_PARTE_COLETAR);        
     }    
@@ -59,11 +58,11 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
 
     private void prepararTutorialPartePowerUp()
     {
-        garraManager.parar();        
+        allGameManagers.getGarraManager().parar();        
         mainDto.TutorialDto.LblTexto.text = "Acione o botão power up!\nEsta vazio agora.";        
 
         mainDto.TutorialDto.GoTutorial.SetActive(true);
-        maquinaManager.botoesPowerUp.reativarPowerUp();        
+        allGameManagers.getBotoesPowerUp().reativarPowerUp();        
         mainDto.TutorialDto.Animator.Play(ANIM_PARTE_POWERUP);
     }
 
@@ -109,8 +108,8 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
 
     protected IEnumerator coroutineEncerrarTutorial()
     {
-        maquinaManager.botoesPowerUp.desativarPowerUp();
-        garraManager.parar();
+        allGameManagers.getBotoesPowerUp().desativarPowerUp();
+        allGameManagers.getGarraManager().parar();
         yield return new WaitForSeconds(mainDto.DelayInicio * 3);
 
         mainDto.TutorialDto.GoTutorial.SetActive(false);

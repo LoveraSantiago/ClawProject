@@ -72,7 +72,7 @@ public class MainGameScene : MonoBehaviour,
 
         if (LevelUtils.isTutorialLevel())
         {
-            mainGameManagers = new MainGameManagersTutorial();
+            mainGameManagers = new MainGameManagersTutorial(mainDto);
         }
         else
         {

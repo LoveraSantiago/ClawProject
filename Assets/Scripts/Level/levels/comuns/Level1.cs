@@ -113,8 +113,8 @@ public class Level1 : AbstractLevelTutorial
         return 0;
     }
 
-    public override MainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers)
+    public override MainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
-        return new MainGameEventosTutorial(allGameManagers, new Tutorial());
+        return new MainGameEventosTutorial(allGameManagers, new Tutorial(allGameManagers, mainDto));
     }
 }

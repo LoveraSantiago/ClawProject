@@ -5,11 +5,10 @@ public class MainGameManagersTutorial : MainGameManagers
 {    
     private MainGameEventosTutorial eventos;
 
-    public MainGameManagersTutorial() 
+    public MainGameManagersTutorial(MainGameDto mainDto) 
         : base()
-    {
-        AbstractLevel levelEscolhido = ContextoEstaticoUtils.level;
-        eventos = LevelUtils.getMainGameEventosTutorial(levelEscolhido, allGameManagers);        
+    {   
+        eventos = LevelUtils.getMainGameEventosTutorial(allGameManagers, mainDto);        
     }
 
     protected override IEnumerator startLaizy(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)

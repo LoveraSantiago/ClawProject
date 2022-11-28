@@ -10,7 +10,7 @@ public class MainGameEventosTutorial : MainGameEventos
 
     public void iniciar()
     {
-     //   tutorial.iniciar();
+        tutorial.iniciar();
     }
 
     protected override AcaoColetadoFim configurarAcaoColetadoFim()
