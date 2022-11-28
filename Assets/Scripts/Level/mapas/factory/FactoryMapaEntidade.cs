@@ -103,7 +103,8 @@ public class FactoryMapaEntidade
 
             case MapaEnum.POWERUP:
                 return new MapaEntidade(levelMapDto)
-                    .addFornecedoresLevels(new FornecedorLevelsPowerUp());
+                    .addFornecedoresLevels(new FornecedorLevelsPowerUp())
+                    .addFornecedoresColetaveis(new FornecedorLevelColetaveisFrutas());
         }
         return null;
     }

@@ -17,10 +17,17 @@ public class LevelTutorialPupBomba : AbstractLevelTutorialPowerUp
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }    
+    }
+
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        return new PowerUpsParaLevel(2)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA })
+           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA });       
+    }
 
     public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
-        throw new System.NotImplementedException();
+        return new MainGameEventosPowerUpBomba(allGameManagers);
     }   
 }
