@@ -21,19 +21,19 @@ public class ScrollPupsManager : Draggavel,
         intervaloTempo = new IntervaloDeTempo(0);
     }
 
-    public void configuradoPeloLevel(ScrollPupsDto scrollPupsDto, Materiais7SegmentosDto mat7Segmentos, AbstractLevel level)
+    public void configuradoPeloLevel(ScrollPupsDto scrollPupsDto, Materiais7SegmentosDto mat7Segmentos)
     {   
-        if (LevelUtils.isPupLevel(level))
+        if (LevelUtils.isPupLevel())
         {
             isLevelPup = true;
         }
-        else if (level.hasPupToLevel())
+        else if (ContextoEstaticoUtils.level.hasPupToLevel())
         {
-            pupsToLevel = level.getPupsToLevel();
+            pupsToLevel = ContextoEstaticoUtils.level.getPupsToLevel();
             isPupsToLevel = true;
         }
-        new ColoridorScrollPups().colorir(scrollPupsDto, level.getDicionarioDeCores());
-        scrollPups.configuradoPeloLevel(mat7Segmentos, level);
+        new ColoridorScrollPups().colorir(scrollPupsDto);
+        scrollPups.configuradoPeloLevel(mat7Segmentos);
     }
 
     public void iniciar()
@@ -140,7 +140,7 @@ public class ScrollPupsManager : Draggavel,
 
     private int subtrairPowerUp(string nome)
     {
-        if (LevelUtils.isTutorialLevel(ContextoEstaticoUtils.level))
+        if (LevelUtils.isTutorialLevel())
         {
             return 1;
         }

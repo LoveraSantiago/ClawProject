@@ -2,8 +2,9 @@ using System.Collections.Generic;
 
 public class ColoridorJoystickV2
 {
-    public void colorir(MesaJoystickDto mesaJoystickDto, Dictionary<string, string> dicionarioCores)
+    public void colorir(MesaJoystickDto mesaJoystickDto)
     {
+        Dictionary<string, string> dicionarioCores = ContextoEstaticoUtils.level.getDicionarioDeCores();
         string hexCor = dicionarioCores[ConstantesCoresMaquinaV2.JOYSTICK_MESA_CIMA];
         mesaJoystickDto.SprRendererMesaCima.color = CorUtils.getCorByHex(hexCor);
 

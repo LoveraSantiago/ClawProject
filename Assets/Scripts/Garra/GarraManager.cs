@@ -23,7 +23,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         AbstractMovimentacaoDaGarra.configurar(garraDto, somGarra);
         cabo = new CaboDaGarra(garraDto.CaboDaGarraDto);
 
-        if(LevelUtils.isCacaNiquelLevel(ContextoEstaticoUtils.level))
+        if(LevelUtils.isCacaNiquelLevel())
         {
             gerDeMovAtual = new GerenciadorDeMovimentacaoCacaNiquel();
         }

@@ -14,9 +14,9 @@ public class BoardMontadorExtra : BoardMontador
         this.goParent = goParent;
     }
 
-    public override void configuradoPeloLevel(AbstractLevel level)
+    public override void configuradoPeloLevel()
     {
-        setArrayDeColetavel(LevelUtils.getArrayDeColetaveisLevelElevador(level));
+        setArrayDeColetavel(LevelUtils.getArrayDeColetaveisLevelElevador());
         poolExtraSubs = new PoolList<Coletavel>();
     }
 

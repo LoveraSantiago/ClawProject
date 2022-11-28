@@ -44,7 +44,7 @@ public class ContextoEstaticoUtils
         ContextoEstaticoUtils.level = level;
     }
 
-    public static AbstractLevel loadLevelEstaticoAtualOrCreateLevel(MapaEnum mapaEnum, int indiceLevel)
+    public static void loadLevelEstaticoAtualOrCreateLevel(MapaEnum mapaEnum, int indiceLevel)
     {
         if(level == null && MapaEnum.DEFAULTS != mapaEnum)
         {
@@ -52,8 +52,7 @@ public class ContextoEstaticoUtils
 
             level = mapaEntidade.getLevelByIndiceDezena(indiceLevel);
             logInfoLevel(indiceLevel);
-        }        
-        return level;
+        }                
     }
 
     public static void pausarGame()

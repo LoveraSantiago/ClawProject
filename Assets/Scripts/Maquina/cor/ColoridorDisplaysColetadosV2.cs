@@ -3,9 +3,9 @@ using System.Collections.Generic;
 public class ColoridorDisplaysColetadosV2
 {
     public void colorir(        
-        SingleDisplayDeColetado[] displayDeSlot, 
-        Dictionary<string, string> dicionarioDeCores)
+        SingleDisplayDeColetado[] displayDeSlot)
     {
+        Dictionary<string, string> dicionarioDeCores = ContextoEstaticoUtils.level.getDicionarioDeCores();
         string hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_COLETADOS_PLACA_GRUPO];
         displayDeSlot[0].colorirPlacaGrupo(CorUtils.getCorByHex(hexCor));
 

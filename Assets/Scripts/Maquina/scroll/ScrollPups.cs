@@ -14,10 +14,10 @@ public class ScrollPups
         this.scrollPupsDto = scrollPupsDto;
     }
 
-    public void configuradoPeloLevel(Materiais7SegmentosDto mat7Segmentos, AbstractLevel level)
+    public void configuradoPeloLevel(Materiais7SegmentosDto mat7Segmentos)
     {
         pupsSprites = PowerUpHelper.getAllSpritesPowerUp();
-        configurarItens(mat7Segmentos, level);
+        configurarItens(mat7Segmentos);
     }
 
     public void iniciar()
@@ -53,8 +53,9 @@ public class ScrollPups
         movimentarBarraDeRollagem(posToque);        
     }
 
-    private void configurarItens(Materiais7SegmentosDto mat7Segmentos, AbstractLevel level)
+    private void configurarItens(Materiais7SegmentosDto mat7Segmentos)
     {
+        AbstractLevel level = ContextoEstaticoUtils.level;
         string hexCor = level.getDicionarioDeCores()[ConstantesCoresMaquinaV2.SCROLL_PUP_DIGITOS];
         Color corDigito = CorUtils.getCorByHex(hexCor);
         Material material7Segmentos = mat7Segmentos.getMaterialFromAlbedo(level.isLevelAlbedo0DigitosScrollPup());

@@ -18,11 +18,11 @@ public class BoardManager : AcaoBoardElevadoFim.ProdutorEvento,
         elevador      = new BoardElevador();        
     }
 
-    public void configuradoPeloLevel(AbstractLevel level, BoardDto boardDto)
+    public void configuradoPeloLevel(BoardDto boardDto)
     {
-        montador      = FactoryBoardMontador.getMontadorByLevel(level, boardDto.GoBoardPosicao);
-        montadorExtra = FactoryBoardMontador.getMontadorExtraByLevel(level, boardDto.GoBoardPosicao);
-        devolvedor.configuradoPeloLevel(level.devolverParaBoard());
+        montador      = FactoryBoardMontador.getMontadorByLevel(boardDto.GoBoardPosicao);
+        montadorExtra = FactoryBoardMontador.getMontadorExtraByLevel(boardDto.GoBoardPosicao);
+        devolvedor.configuradoPeloLevel(ContextoEstaticoUtils.level.devolverParaBoard());
     }   
 
     public IEnumerator create()

@@ -55,13 +55,10 @@ public class MainGameManagers
         allGameManagers.getColetaveisManager()
                        .configuradoPeloLevel(mainDto.ColetaveisDto);
 
-        AbstractLevel levelEscolhido = ContextoEstaticoUtils.level;
-        allGameManagers.getMaquinaManager()
-            .configuradoPeloLevel(levelEscolhido, mainDto.MaquinaDto);
+        allGameManagers.getMaquinaManager().configuradoPeloLevel(mainDto.MaquinaDto);
 
-        allGameManagers.getUiManager()
-            .configurandoLevel(levelEscolhido);
-
+        allGameManagers.getUiManager().configurandoLevel();
+        
         ColetaveisManager coletaveiManager = allGameManagers.getColetaveisManager();
         allGameManagers.getPowerUpManager()
             .configurarGosPowerUps(getInformacaoDisplayColetado(),

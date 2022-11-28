@@ -34,9 +34,9 @@ public class BotoesPowerUp : Draggavel,
         }        
     }
 
-    public void configuradoPeloLevel(AbstractLevel level)
+    public void configuradoPeloLevel()
     {        
-        new ColoridorBotoesV2().colorir(btnsPowerUp, level.getDicionarioDeCores());        
+        new ColoridorBotoesV2().colorir(btnsPowerUp);        
     }   
     
     public void update(BotoesPowerUpDto botoesPowerUpDto, SomMaquina somMaquina, InputGame inputGame)

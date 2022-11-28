@@ -4,8 +4,9 @@ using UnityEngine;
 public class ColoridorMaquinaV2 
 {
     public void colorir(
-        PartesMaquinaDtoV2 partesDto, Dictionary<string, string> dicionarioDeCores)
+        PartesMaquinaDtoV2 partesDto)
     {
+        Dictionary<string, string> dicionarioDeCores = ContextoEstaticoUtils.level.getDicionarioDeCores();
         string hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.PLACA_FRENTE];
         partesDto.PlacaFrente.color = CorUtils.getCorByHex(hexCor);
 

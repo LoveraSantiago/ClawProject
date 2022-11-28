@@ -12,9 +12,9 @@ public class ConfiguradorDeDisplayTimers
         this.displayTimerDigitos = displayTimerDigito;
     }
 
-    public void configurarPeloLevel(Materiais7SegmentosDto materiais7SegsDto, AbstractLevel levelEscolhido)
+    public void configurarPeloLevel(Materiais7SegmentosDto materiais7SegsDto)
     {
-        Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
+        Dictionary<string, string> dicionarioDeCores = ContextoEstaticoUtils.level.getDicionarioDeCores();
         string corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_PRINCIPAL];
         SpriteRenderer placaTimer = displayDto.SprRendererPlacaGrupo;
         placaTimer.color = CorUtils.getCorByHex(corDigitosHex);
@@ -25,12 +25,12 @@ public class ConfiguradorDeDisplayTimers
         corDigitosHex = dicionarioDeCores[ConstantesCoresMaquinaV2.TIMER_PLACA_DIGITO];
         Color corPlaca = CorUtils.getCorByHex(corDigitosHex);
 
-        bool isAlbedo0Level = levelEscolhido.isLevelAlbedo0Timers();
+        bool isAlbedo0Level = ContextoEstaticoUtils.level.isLevelAlbedo0Timers();
         Material materialDisplay = materiais7SegsDto.getMaterialFromAlbedo(isAlbedo0Level);
         passarCoresAosDisplaysDigitos(materialDisplay, corDigito, corPlaca);        
 
         DisplayTimerDigito2Pontos displayTimer2Pontos = displayTimerDigitos.getDisplayTimer2Segmentos();
-        bool isAlbedo0Timer2Pontos = levelEscolhido.isLevelAlbedo0Timer2Pontos();
+        bool isAlbedo0Timer2Pontos = ContextoEstaticoUtils.level.isLevelAlbedo0Timer2Pontos();
         Material materialDisplay2Pontos = getMaterialSegmentos2Pontos(isAlbedo0Timer2Pontos);
         displayTimer2Pontos.configuradoPeloLevel(materialDisplay2Pontos, corDigito);
     }    

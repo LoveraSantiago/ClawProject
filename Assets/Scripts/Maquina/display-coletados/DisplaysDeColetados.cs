@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento,
                                    AcaoColetado.ConsumidorEvento
 {
@@ -11,14 +13,14 @@ public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento,
         modoColetados = new ModoColetados(grupoDisplays, arcoIrisEfeito);        
     }
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido, DisplaysColetadosDto displaysSlotsDto)
+    public void configuradoPeloLevel(DisplaysColetadosDto displaysSlotsDto)
     {        
-        grupoDisplays.colorirDisplays(levelEscolhido.getDicionarioDeCores());
+        grupoDisplays.colorirDisplays();
 
-        if (LevelUtils.isCacaNiquelLevel(levelEscolhido))
+        if (LevelUtils.isCacaNiquelLevel())
         {
             modoCacaNiquel = new ModoCacaNiquel();
-            modoCacaNiquel.configuradoPeloLevel(levelEscolhido, displaysSlotsDto.CacaNiquelDto);
+            modoCacaNiquel.configuradoPeloLevel(displaysSlotsDto.CacaNiquelDto);
         }
     }
 

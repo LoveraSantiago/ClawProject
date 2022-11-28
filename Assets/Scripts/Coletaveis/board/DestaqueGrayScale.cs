@@ -6,16 +6,11 @@ public class DestaqueGrayScale
 
     public DestaqueGrayScale()
     {
-        destaque = true;
-    }
-
-    public DestaqueGrayScale(AbstractLevel level)
-    {
-        if (LevelUtils.isLevelDeDestaque(level))
+        if (LevelUtils.isLevelDeDestaque())
         {
             destaque = true;
-        }
-    }
+        }        
+    }    
 
     public void destacar(Coletavel coletavel)
     {

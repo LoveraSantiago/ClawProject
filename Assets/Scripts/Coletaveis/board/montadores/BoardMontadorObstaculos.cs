@@ -5,10 +5,10 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
 {
     private bool[,] obstaculos;
 
-    public override void configuradoPeloLevel(AbstractLevel level)
+    public override void configuradoPeloLevel()
     {
-        base.configuradoPeloLevel(level);
-        obstaculos = LevelUtils.getArrayDeObstaculos(level);
+        base.configuradoPeloLevel();
+        obstaculos = LevelUtils.getArrayDeObstaculos();
     }
 
     protected override PosicaoItensDoBoardDto getPosYITem(BoardDto boardDto)

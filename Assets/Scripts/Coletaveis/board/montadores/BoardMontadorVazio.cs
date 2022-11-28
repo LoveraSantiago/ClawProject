@@ -2,7 +2,7 @@ using System.Collections;
 
 public class BoardMontadorVazio : BoardMontador
 {
-    public override void configuradoPeloLevel(AbstractLevel level){}
+    public override void configuradoPeloLevel(){}
 
     protected override IEnumerator create(BoardDto boardDto)
     {

@@ -25,13 +25,13 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
         produtorDeEvento = new ProdutorDeEvento<ResultadoDesligarMaquinaDto>();
     }
 
-    public void configuradoPeloLevel(AbstractLevel level)
+    public void configuradoPeloLevel()
     {
-        if(LevelUtils.isPlayableLevel(level))
+        if(LevelUtils.isPlayableLevel())
         {
             estadoSairPara = SAIR_NORMAL;                       
         }
-        else if (LevelUtils.isColetavelLevel(level))
+        else if (LevelUtils.isColetavelLevel())
         {
             estadoSairPara = SAIR_COLETAVEL;
         }

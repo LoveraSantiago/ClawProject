@@ -25,10 +25,10 @@ public class DisplayDeScores : AcaoColetado.ConsumidorEvento
         this.somMaquina = somMaquina;
     }
 
-    public void configuradoPeloLevel(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)
+    public void configuradoPeloLevel(DisplayDeScoreDto displayDeScoresDto)
     {
         ConfiguradorDeDisplayScoreDigito configuradorDisplayDigito = new ConfiguradorDeDisplayScoreDigito(displayCentena, displayDezena, displayUnidade);
-        configuradorDisplayDigito.configurar(displayDeScoresDto, levelEscolhido);
+        configuradorDisplayDigito.configurar(displayDeScoresDto);
     }
     
     private void mostrarScore(int score, bool result)
