@@ -1,14 +1,14 @@
-public class MainGameEventosTutorial : MainGameEventos
+public class MainGameEventosTutorialLevel1 : AbstractMainGameEventosTutorial
 {
-    private Tutorial tutorial;
+    private TutorialLevel1 tutorial;
 
-    public MainGameEventosTutorial(AllGameManagers allGameManagers, Tutorial tutorial)
-        :base(allGameManagers)
+    public MainGameEventosTutorialLevel1(AllGameManagers allGameManagers, TutorialLevel1 tutorial)
+        : base(allGameManagers)
     {
         this.tutorial = tutorial;
-    }    
+    }
 
-    public void iniciar()
+    public override void iniciar()
     {
         tutorial.iniciar();
     }

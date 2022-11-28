@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MainGameManagersTutorial : MainGameManagers
 {    
-    private MainGameEventosTutorial eventos;
+    private AbstractMainGameEventosTutorial eventos;
 
     public MainGameManagersTutorial(MainGameDto mainDto) 
         : base()

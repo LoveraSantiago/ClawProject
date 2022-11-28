@@ -19,7 +19,7 @@ public class LevelTutorialPupBomba : AbstractLevelTutorialPowerUp
         };
     }    
 
-    public override MainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
+    public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
         throw new System.NotImplementedException();
     }   

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
+public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
                         AcaoBotaoPowerUpVazio.ConsumidorEvento, 
                         AcaoPupFromScrollSelecao.ConsumidorEvento,
                         AcaoPowerUpAcionado.ConsumidorEvento,
@@ -19,7 +19,7 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
 
     private AllGameManagers allGameManagers;
 
-    public Tutorial(AllGameManagers allGameManagers, MainGameDto mainDto)
+    public TutorialLevel1(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
         this.allGameManagers = allGameManagers;
         this.mainDto        = mainDto;       
