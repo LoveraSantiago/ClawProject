@@ -2,8 +2,8 @@ public class MainGameEventosTutorial : MainGameEventos
 {
     private Tutorial tutorial;
 
-    public MainGameEventosTutorial(MainGameManagers mainGameManagers, Tutorial tutorial)
-        :base(mainGameManagers)
+    public MainGameEventosTutorial(AllGameManagers allGameManagers, Tutorial tutorial)
+        :base(allGameManagers)
     {
         this.tutorial = tutorial;
     }    
@@ -47,7 +47,7 @@ public class MainGameEventosTutorial : MainGameEventos
 
         AcaoColetado acaoColetadoTutorial = new AcaoColetado();
         acaoColetadoTutorial.configurarProdutor(tutorial)
-            .adicionarConsumidor(uiManager.modalResultados);
+            .adicionarConsumidor(allGameManagers.getModalResultadosManager());
 
         return acaoColetado;
     }

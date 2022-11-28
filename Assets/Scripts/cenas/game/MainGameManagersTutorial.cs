@@ -9,19 +9,19 @@ public class MainGameManagersTutorial : MainGameManagers
         : base()
     {
         AbstractLevel levelEscolhido = ContextoEstaticoUtils.level;
-        eventos = LevelUtils.getMainGameEventosTutorial(levelEscolhido, this);        
+        eventos = LevelUtils.getMainGameEventosTutorial(levelEscolhido, allGameManagers);        
     }
 
     protected override IEnumerator startLaizy(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
-        yield return coletaveisManager.start();
+        yield return allGameManagers.getColetaveisManager().start();
         yield return new WaitForSeconds(mainDto.DelayInicio);
 
-        maquinaManager.start(inputGame);
+        allGameManagers.getMaquinaManager().start(allGameManagers.getInputGame());
         eventos.iniciar();
         //tutorial.iniciar(mainDto, garraManager, maquinaManager);        
 
-        garraManager.start(mainDto.GarraDto);
+        allGameManagers.getGarraManager().start(mainDto.GarraDto);
         consumidorUpdateManagers.consumir(getUpdatables());
     }
 

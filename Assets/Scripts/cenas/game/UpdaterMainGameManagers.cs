@@ -3,41 +3,35 @@ using UnityEngine.EventSystems;
 
 public class UpdaterMainGameManagers : UpdaterManagers
 {
-    private GarraManager garraManager;
-    private MaquinaManager maquinaManager;
-    private PowerUpManager pupManager;
-    private InputGame inputGame;
+    private AllGameManagers allGameMangers;
 
-    public UpdaterMainGameManagers(
-        GarraManager garraManager, MaquinaManager maquinaManager, PowerUpManager pupManager, InputGame inputGame)
+    public UpdaterMainGameManagers(AllGameManagers allGameMangers)
     {
-        this.garraManager = garraManager;
-        this.inputGame = inputGame;
-        this.maquinaManager = maquinaManager;
-        this.pupManager = pupManager;
+        this.allGameMangers = allGameMangers;        
     }
 
     public void update(MainGameDto mainDto)
     {
-        inputGame.update(mainDto.MaquinaDto.ReferenciaChao);
-        maquinaManager.update(mainDto.MaquinaDto, inputGame);
-        garraManager.update(mainDto.GarraDto, inputGame);
-        pupManager.update();
+        allGameMangers.getInputGame()     .update(mainDto.MaquinaDto.ReferenciaChao);
+        allGameMangers.getMaquinaManager().update(mainDto.MaquinaDto, allGameMangers.getInputGame());
+        allGameMangers.getGarraManager()  .update(mainDto.GarraDto, allGameMangers.getInputGame());
+        allGameMangers.getPowerUpManager().update();
     }
 
     public void fixedUpdate(MainGameDto mainDto)
     {
-        garraManager.fixedUpdate(mainDto.GarraDto);
-        maquinaManager.fixedUpdate();
+        allGameMangers.getGarraManager()  .fixedUpdate(mainDto.GarraDto);
+        allGameMangers.getMaquinaManager().fixedUpdate();
     }
 
     public void onBeginDrag(PointerEventData eventData, MainGameDto mainDto)
     {
         Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;       
-        if (inputGame.aconteceuDragNaAreaInferior(posicaoToque, mainDto.MaquinaDto.ReferenciaChao))
+        if (allGameMangers.getInputGame()
+                .aconteceuDragNaAreaInferior(posicaoToque, mainDto.MaquinaDto.ReferenciaChao))
         {
             //Debug.Log("updatermaingamemanager begin drag");
-            maquinaManager.onBeginDrag(posicaoToque);
+            allGameMangers.getMaquinaManager().onBeginDrag(posicaoToque);
         }
     }
 
@@ -45,11 +39,11 @@ public class UpdaterMainGameManagers : UpdaterManagers
     {
         //Debug.Log("updatermaingamemanager on drag");
         Vector3 posicaoToque = eventData.pointerCurrentRaycast.worldPosition;
-        maquinaManager.onDragPowerUp(posicaoToque, mainDto.MaquinaDto);
+        allGameMangers.getMaquinaManager().onDragPowerUp(posicaoToque, mainDto.MaquinaDto);
     }
 
     public void onEndDrag(PointerEventData eventData, MainGameDto mainDto)
     {
-        maquinaManager.onEndDragPowerUp(mainDto.MaquinaDto);
+        allGameMangers.getMaquinaManager().onEndDragPowerUp(mainDto.MaquinaDto);
     }
 }

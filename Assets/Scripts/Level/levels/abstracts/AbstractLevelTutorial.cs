@@ -5,7 +5,7 @@ public abstract class AbstractLevelTutorial : AbstractLevel
         return TipoGame.TUTORIAL;
     }
     
-    public abstract MainGameEventosTutorial getMainGameEventos(MainGameManagers mainGameManagers);
+    public abstract MainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers);
 
     public abstract int recuperarQtdPup(PowerUpEnums.TIPO powerupTipo);
 }

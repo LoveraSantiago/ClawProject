@@ -118,8 +118,8 @@ public class LevelUtils
         }
     }   
 
-    public static MainGameEventosTutorial getMainGameEventosTutorial(AbstractLevel level, MainGameManagers mainGameManagers)
+    public static MainGameEventosTutorial getMainGameEventosTutorial(AbstractLevel level, AllGameManagers allGameManagers)
     {
-        return ((AbstractLevelTutorial)level).getMainGameEventos(mainGameManagers);
+        return ((AbstractLevelTutorial)level).getMainGameEventos(allGameManagers);
     }
 }

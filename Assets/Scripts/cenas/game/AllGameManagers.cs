@@ -6,7 +6,21 @@ public interface AllGameManagers
     ColetaveisManager getColetaveisManager();
     CameraManager     getCameraManager();
     UiGameManager     getUiManager();
-    InputGameImpl     getInputGame();
     DraggavelManager  getDraggavelManager();
+    InputGame         getInputGame();
+    ModalResultadosManager getModalResultadosManager();
 
+    DadosDeTempo      getDadosTempo();
+    BoardElevador     getBoardElevador();
+    ModoColetados     getModoColetados();
+    DisplayTimer      getDisplayTimer();
+    DisplaysDeColetados getDisplaysDeColetados();
+    DisplayDeScores   getDisplayDeScores();
+    ScrollSelecao     getScrollSelecao();
+    ScrollPupsManager getScrollPupsManager();
+    BotaoLigaDesliga  getBotaoLigaDesliga();
+    BotoesPowerUp     getBotoesPowerUp();
+    ArcoIrisEfeito    getArcoIrisEfeito();
+    ModalSair         getModalSair();
+    
 }

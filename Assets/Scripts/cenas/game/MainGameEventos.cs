@@ -1,24 +1,10 @@
 public class MainGameEventos 
 {
-    protected GarraManager      garraManager;
-    protected ColetaveisManager coletaveisManager;
-    protected MaquinaManager    maquinaManager;
-    protected UiGameManager     uiManager;
-    protected PowerUpManager    powerUpManager;
-    protected CameraManager     cameraManager;
-    protected InputGameImpl     inputGameImpl;
-    protected DraggavelManager  draggavelManager;
+    protected AllGameManagers allGameManagers;
 
-    public MainGameEventos(MainGameManagers mainGameManagers)
+    public MainGameEventos(AllGameManagers allGameManagers)
     {
-        garraManager      = mainGameManagers.garraManager;
-        coletaveisManager = mainGameManagers.coletaveisManager;
-        maquinaManager    = mainGameManagers.maquinaManager;
-        uiManager         = mainGameManagers.uiManager;
-        powerUpManager    = mainGameManagers.powerUpManager;
-        cameraManager     = mainGameManagers.cameraManager;
-        inputGameImpl     = mainGameManagers.inputGame;
-        draggavelManager  = mainGameManagers.draggavelManager;
+        this.allGameManagers = allGameManagers;
     }
 
     public void configurarEventos()
@@ -30,55 +16,55 @@ public class MainGameEventos
         configurarAcaoPowerUpAcionado();
 
         new AcaoSincroniaComDirecaoDaGarra()
-            .configurarProdutor(garraManager)
-            .adicionarConsumidor(maquinaManager);        
+            .configurarProdutor(allGameManagers.getGarraManager())
+            .adicionarConsumidor(allGameManagers.getMaquinaManager());        
 
         configurarAcaoBotaoPowerUpVazio();
         configurarAcaoPupFromScrollSelecao();
 
         new AcaoTempoEsgotado()
-            .configurarProdutor(maquinaManager.displayTimer)
-            .adicionarConsumidor(maquinaManager.botoesPowerUp)
-            .adicionarConsumidor(maquinaManager.arcoIrisEfeito)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(uiManager.modalResultados)
-            .adicionarConsumidor(coletaveisManager);
+            .configurarProdutor (allGameManagers.getDisplayTimer())
+            .adicionarConsumidor(allGameManagers.getBotoesPowerUp())
+            .adicionarConsumidor(allGameManagers.getArcoIrisEfeito())
+            .adicionarConsumidor(allGameManagers.getGarraManager())
+            .adicionarConsumidor(allGameManagers.getModalResultadosManager())
+            .adicionarConsumidor(allGameManagers.getColetaveisManager());
 
         new AcaoBoardElevadoFim()
-            .configurarProdutor(coletaveisManager.board)
-            .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(uiManager.modalResultados);
+            .configurarProdutor (allGameManagers.getBoardElevador())
+            .adicionarConsumidor(allGameManagers.getMaquinaManager())
+            .adicionarConsumidor(allGameManagers.getGarraManager())
+            .adicionarConsumidor(allGameManagers.getModalResultadosManager());
 
         new AcaoCacaNiquel()
-            .configurarProdutor(maquinaManager.displayDeColetados)
-            .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(uiManager.modalResultados)
-            .adicionarConsumidor(maquinaManager.arcoIrisEfeito);
+            .configurarProdutor (allGameManagers.getDisplaysDeColetados())
+            .adicionarConsumidor(allGameManagers.getCameraManager())
+            .adicionarConsumidor(allGameManagers.getGarraManager())
+            .adicionarConsumidor(allGameManagers.getModalResultadosManager())
+            .adicionarConsumidor(allGameManagers.getArcoIrisEfeito());
 
         new AcaoDesligarMaquina()
-            .configurarProdutor(maquinaManager)
-            .adicionarConsumidor(uiManager.modalSair)
-            .adicionarConsumidor(inputGameImpl);
+            .configurarProdutor (allGameManagers.getMaquinaManager())
+            .adicionarConsumidor(allGameManagers.getModalSair())
+            .adicionarConsumidor((InputGameImpl)allGameManagers.getInputGame());
 
         new AcaoDesligarMaquinaResultado()
-            .configurarProdutor(uiManager.modalSair)
-            .adicionarConsumidor(maquinaManager.botaoLigaDesliga)
-            .adicionarConsumidor(maquinaManager.botoesPowerUp)
-            .adicionarConsumidor(inputGameImpl);
+            .configurarProdutor(allGameManagers.getModalSair())
+            .adicionarConsumidor(allGameManagers.getBotaoLigaDesliga())
+            .adicionarConsumidor(allGameManagers.getBotoesPowerUp())
+            .adicionarConsumidor((InputGameImpl)allGameManagers.getInputGame());
     }
 
     protected virtual AcaoColetado configurarAcaoColetado()
     {
         AcaoColetado acaoColetado = new AcaoColetado();
-        acaoColetado.configurarProdutor(coletaveisManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager.displayTimer)
-            .adicionarConsumidor(maquinaManager.displayDeColetados)
-            .adicionarConsumidor(maquinaManager.displayDeScores)
-            .adicionarConsumidor(maquinaManager.botoesPowerUp)
-            .adicionarConsumidor(uiManager.modalResultados);
+        acaoColetado.configurarProdutor(allGameManagers.getColetaveisManager())
+            .adicionarConsumidor(allGameManagers.getGarraManager())
+            .adicionarConsumidor(allGameManagers.getDisplayTimer())
+            .adicionarConsumidor(allGameManagers.getDisplaysDeColetados())
+            .adicionarConsumidor(allGameManagers.getDisplayDeScores())
+            .adicionarConsumidor(allGameManagers.getBotoesPowerUp())
+            .adicionarConsumidor(allGameManagers.getModalResultadosManager());
 
         return acaoColetado;
     }
@@ -86,11 +72,11 @@ public class MainGameEventos
     protected virtual AcaoColetadoFim configurarAcaoColetadoFim()
     {
         AcaoColetadoFim acaoColetadoFim = new AcaoColetadoFim();
-        acaoColetadoFim.configurarProdutor(maquinaManager.displayDeColetados.modoColetados)
-            .adicionarConsumidor(coletaveisManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager.displayTimer)
-            .adicionarConsumidor(maquinaManager.botoesPowerUp);
+        acaoColetadoFim.configurarProdutor(allGameManagers.getModoColetados())
+            .adicionarConsumidor(allGameManagers.getColetaveisManager())
+            .adicionarConsumidor(allGameManagers.getGarraManager())
+            .adicionarConsumidor(allGameManagers.getDisplayTimer())
+            .adicionarConsumidor(allGameManagers.getBotoesPowerUp());
 
         return acaoColetadoFim;
     }
@@ -98,18 +84,18 @@ public class MainGameEventos
     protected virtual AcaoInfoDaGarra configurarAcaoInfoDaGarra()
     {        
         AcaoInfoDaGarra acaoInfoDaGarra = new AcaoInfoDaGarra();
-        acaoInfoDaGarra.configurarProdutor(garraManager)
-                       .adicionarConsumidor(coletaveisManager);
+        acaoInfoDaGarra.configurarProdutor(allGameManagers.getGarraManager())
+                       .adicionarConsumidor(allGameManagers.getColetaveisManager());
         return acaoInfoDaGarra;
     }
 
     protected virtual AcaoBotaoPowerUpVazio configurarAcaoBotaoPowerUpVazio()
     {
         AcaoBotaoPowerUpVazio acaoBotaoPupVazio = new AcaoBotaoPowerUpVazio();
-        acaoBotaoPupVazio.configurarProdutor(maquinaManager.botoesPowerUp)
-            .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(draggavelManager);
+        acaoBotaoPupVazio.configurarProdutor(allGameManagers.getBotoesPowerUp())
+            .adicionarConsumidor(allGameManagers.getCameraManager())
+            .adicionarConsumidor(allGameManagers.getMaquinaManager())
+            .adicionarConsumidor(allGameManagers.getDraggavelManager());
 
         return acaoBotaoPupVazio;
     }
@@ -117,11 +103,11 @@ public class MainGameEventos
     protected virtual AcaoPupFromScrollSelecao configurarAcaoPupFromScrollSelecao()
     {
         AcaoPupFromScrollSelecao acaoPupScrollSelecao = new AcaoPupFromScrollSelecao();
-        acaoPupScrollSelecao.configurarProdutor(maquinaManager.scrollPupsManager.scrollSelecao)
-            .adicionarConsumidor(maquinaManager.botoesPowerUp)
-            .adicionarConsumidor(cameraManager)
-            .adicionarConsumidor(draggavelManager)
-            .adicionarConsumidor(maquinaManager);
+        acaoPupScrollSelecao.configurarProdutor(allGameManagers.getScrollSelecao())
+            .adicionarConsumidor(allGameManagers.getBotoesPowerUp())
+            .adicionarConsumidor(allGameManagers.getCameraManager())
+            .adicionarConsumidor(allGameManagers.getDraggavelManager())
+            .adicionarConsumidor(allGameManagers.getMaquinaManager());
 
         return acaoPupScrollSelecao;
     }
@@ -129,12 +115,12 @@ public class MainGameEventos
     protected virtual AcaoPowerUpAcionado configurarAcaoPowerUpAcionado()
     {
         AcaoPowerUpAcionado acaoPowerUpAcionado = new AcaoPowerUpAcionado();
-        acaoPowerUpAcionado.configurarProdutor(powerUpManager)
-            .adicionarConsumidor(garraManager)
-            .adicionarConsumidor(maquinaManager)
-            .adicionarConsumidor(coletaveisManager)
-            .adicionarConsumidor(maquinaManager.scrollPupsManager)
-            .adicionarConsumidor(draggavelManager);
+        acaoPowerUpAcionado.configurarProdutor(allGameManagers.getPowerUpManager())
+            .adicionarConsumidor(allGameManagers.getGarraManager())
+            .adicionarConsumidor(allGameManagers.getMaquinaManager())
+            .adicionarConsumidor(allGameManagers.getColetaveisManager())
+            .adicionarConsumidor(allGameManagers.getScrollPupsManager())
+            .adicionarConsumidor(allGameManagers.getDraggavelManager());
 
         return acaoPowerUpAcionado;
     }
