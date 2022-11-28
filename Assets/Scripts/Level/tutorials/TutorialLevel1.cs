@@ -7,14 +7,10 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
                         AcaoPowerUpAcionado.ConsumidorEvento,
                         AcaoColetado.ProdutorEvento
 {
-    private static readonly int ANIM_PARTE_COLETAR = Animator.StringToHash("clique-coletar");
-    private static readonly int ANIM_PARTE_POWERUP = Animator.StringToHash("clique-powerup");
-    private static readonly int ANIM_PARTE_DRAGPUP = Animator.StringToHash("drag-powerup");    
-    private static readonly int ANIM_PARTE_TEXTO   = Animator.StringToHash("so-texto");    
-
     private bool finalizacaoDisparada;
     private int contagemColetados;
-    private MainGameDto    mainDto;    
+    private MainGameDto mainDto;
+    private AnimacaoTutorial animacaoTutorial;
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeEvento;
 
     private AllGameManagers allGameManagers;
@@ -22,7 +18,8 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
     public TutorialLevel1(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
         this.allGameManagers = allGameManagers;
-        this.mainDto        = mainDto;       
+        this.mainDto        = mainDto;
+        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
@@ -37,7 +34,7 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
         allGameManagers.getBotoesPowerUp().desativarPowerUp();
         allGameManagers.getBotaoLigaDesliga().desligar();
         mainDto.TutorialDto.LblTexto.text = "Vamos Coletar!\nClique para acionar a garra!";
-        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_COLETAR);        
+        animacaoTutorial.playColetar();        
     }    
 
     private void tratarColetadosParteCliqueColetavel()
@@ -62,26 +59,26 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
         mainDto.TutorialDto.LblTexto.text = "Acione o botão power up!\nEsta vazio agora.";        
 
         mainDto.TutorialDto.GoTutorial.SetActive(true);
-        allGameManagers.getBotoesPowerUp().reativarPowerUp();        
-        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_POWERUP);
+        allGameManagers.getBotoesPowerUp().reativarPowerUp();
+        animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialParteDragPup()
     {
         mainDto.TutorialDto.LblTexto.text = "Arraste e encontre um powerup\ndisponivel, clique nele!";
-        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_DRAGPUP);
+        animacaoTutorial.playDragPowerUp();        
     }
 
     private void prepararTutorialParteAcionarPowerUp()
     {
         mainDto.TutorialDto.LblTexto.text = "Acione o botão power up!\nAgora esta carregado!";
-        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_POWERUP);
+        animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialParteJogarPowerUp()
     {
         mainDto.TutorialDto.LblTexto.text = "Ative o powerup!\nClique para soltar o power up!";
-        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_COLETAR);
+        animacaoTutorial.playColetar();
     }    
 
     private void prepararFimTutorialPupExpirado()
@@ -90,7 +87,7 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
         {
             finalizacaoDisparada = true;
             mainDto.TutorialDto.LblTexto.text = "ok!O tempo acabou.\nBoa Sorte!";
-            mainDto.TutorialDto.Animator.Play(ANIM_PARTE_TEXTO);
+            animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial());
         }
     }
@@ -101,7 +98,7 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
         {
             finalizacaoDisparada = true;
             mainDto.TutorialDto.LblTexto.text = "Isso ai!Muibo bom!\nBoa Sorte!";
-            mainDto.TutorialDto.Animator.Play(ANIM_PARTE_TEXTO);
+            animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial());        
         }
     }
