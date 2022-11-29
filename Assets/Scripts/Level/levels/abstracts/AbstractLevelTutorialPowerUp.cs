@@ -87,4 +87,8 @@ public abstract class AbstractLevelTutorialPowerUp : AbstractLevelTutorial
     {
         return 0;
     }
+
+    public override void levelConcluido(string tempo, int score, int challenge, bool evolucao)
+    {        
+    }
 }

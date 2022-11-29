@@ -91,7 +91,7 @@ public abstract class AbstractLevel
         };
     }
 
-    public void levelConcluido(string tempo, int score, int challenge, bool evolucao)
+    public virtual void levelConcluido(string tempo, int score, int challenge, bool evolucao)
     {
         MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;
 

@@ -79,7 +79,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _subida: 0
-    - _tempoSubtracao: 0
+    - _tempoSubtracao: 6.0737567
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
