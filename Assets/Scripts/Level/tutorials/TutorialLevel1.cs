@@ -18,7 +18,7 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
     public TutorialLevel1(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
         this.allGameManagers = allGameManagers;
-        this.mainDto        = mainDto;
+        this.mainDto         = mainDto;
         animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }

@@ -28,6 +28,6 @@ public class LevelTutorialPupBomba : AbstractLevelTutorialPowerUp
 
     public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
-        return new MainGameEventosPowerUpBomba(allGameManagers);
+        return new MainGameEventosPowerUpBomba(allGameManagers, new TutorialPowerUpBomba(allGameManagers, mainDto));
     }   
 }
