@@ -14,6 +14,11 @@ public abstract class AbstractLevelTutorialPowerUp : AbstractLevelTutorial
         return "Treinar Habilidades em Power Up";
     }
 
+    public override TipoGame getTipoGame()
+    {
+        return TipoGame.TUTORIAL_PUP;
+    }
+
     public override bool devolverParaBoard()
     {
         return false;

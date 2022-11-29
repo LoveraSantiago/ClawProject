@@ -14,6 +14,7 @@ public class ModalFimPontos : AbstractModalFim
 
     public void passarResultados(ResultadoLevelDto resultadoLevelsDto, Challenge[] challenges, bool[] resultChallenges)
     {
+        modalPontosDto.TextoNivel.text = ContextoEstaticoUtils.level.getLevelTitle();
         modalPontosDto.TextoTempo.text = resultadoLevelsDto.tempoPartida;
         modalPontosDto.TextoPontos.text = Utils.to3Digitos(resultadoLevelsDto.resultadosColetaveis.score);
         linhasChallenge.addConfiguracaoChallenges(resultadoLevelsDto.mapaEntidade, challenges);
@@ -29,6 +30,13 @@ public class ModalFimPontos : AbstractModalFim
     protected override void irParaCena()
     {
         somModais.playSomCliquePositivo();
-        ContextoEstaticoUtils.loading.irParaMapScene();        
+        if (LevelUtils.isTutorialPowerUp())
+        {
+            ContextoEstaticoUtils.loading.irParaPowerUpCena();
+        }
+        else
+        {
+            ContextoEstaticoUtils.loading.irParaMapScene();        
+        }
     }
 }

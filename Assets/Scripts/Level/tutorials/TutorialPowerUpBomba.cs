@@ -62,7 +62,7 @@ public class TutorialPowerUpBomba : AcaoPowerUpAcionado.ConsumidorEvento,
         if (!finalizacaoDisparada)
         {
             finalizacaoDisparada = true;            
-            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial(8));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial(4));
         }
     }
 

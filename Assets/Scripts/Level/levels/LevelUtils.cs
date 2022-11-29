@@ -96,7 +96,13 @@ public class LevelUtils
 
     public static bool isTutorialLevel()
     {
-        return ContextoEstaticoUtils.level.getTipoGame() == TipoGame.TUTORIAL;
+        return ContextoEstaticoUtils.level.getTipoGame() == TipoGame.TUTORIAL ||
+            isTutorialPowerUp();
+    }
+
+    public static bool isTutorialPowerUp()
+    {
+        return ContextoEstaticoUtils.level.getTipoGame() == TipoGame.TUTORIAL_PUP;
     }
 
     public static ColetavelEntidade getColetavelFromLevelColetavel()

@@ -11104,7 +11104,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 960, y: 170}
+  m_SizeDelta: {x: 1560, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &376184029
 MonoBehaviour:
@@ -11936,7 +11936,7 @@ MonoBehaviour:
     audioGameDto:
       mainAudioSource: {fileID: 519420030}
       somBackground:
-        volume: 0.1
+        volume: 0.5
         audioClip: {fileID: 8300000, guid: 9ab0aa6a032f1004595d6bcaf989713b, type: 3}
       somGarra:
         volume: 0.06
