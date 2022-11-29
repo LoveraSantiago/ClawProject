@@ -4,6 +4,7 @@ using UnityEngine;
 public class TutorialPowerUpBomba : AcaoPowerUpAcionado.ConsumidorEvento,
                                     AcaoColetado.ProdutorEvento
 {
+    private bool finalizacaoDisparada;
     private MainGameDto mainDto;
     private AnimacaoTutorial animacaoTutorial;
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeEvento;
@@ -41,16 +42,35 @@ public class TutorialPowerUpBomba : AcaoPowerUpAcionado.ConsumidorEvento,
 
     private void prepararFimTutorialPupExpirado()
     {
-        mainDto.TutorialDto.LblTexto.text = "O tempo de duracao da Bomba acabou!";
-        animacaoTutorial.playParteTexto();
-        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial());        
+        if (!finalizacaoDisparada)
+        {
+            finalizacaoDisparada = true;
+            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao da Bomba acabou!";
+            animacaoTutorial.playParteTexto();
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial(16));        
+        }
     }
 
-    protected IEnumerator coroutineEncerrarTutorial()
+    private void prepararMensagemPupAcionado()
+    {
+        mainDto.TutorialDto.LblTexto.text = "Bomba acionada!\nA explosão espalha os coletaveis.";
+        animacaoTutorial.playParteTexto();        
+    }
+
+    private void prepararFimTutorialPupAcionado()
+    {
+        if (!finalizacaoDisparada)
+        {
+            finalizacaoDisparada = true;            
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial(8));
+        }
+    }
+
+    protected IEnumerator coroutineEncerrarTutorial(int acrescimoDelay)
     {
         allGameManagers.getBotoesPowerUp().desativarPowerUp();
         allGameManagers.getGarraManager().parar();
-        yield return new WaitForSeconds(mainDto.DelayInicio * 6);
+        yield return new WaitForSeconds(mainDto.DelayInicio * acrescimoDelay);
 
         mainDto.TutorialDto.GoTutorial.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
@@ -66,6 +86,14 @@ public class TutorialPowerUpBomba : AcaoPowerUpAcionado.ConsumidorEvento,
         if (evento.isInicio)
         {
             prepararTutorialInicioPowerUp();
+        }
+        else if (evento.isPreFinalizar)
+        {
+            prepararMensagemPupAcionado();
+        }
+        else if (evento.isFinalizar)
+        {
+            prepararFimTutorialPupAcionado();
         }
         else if (evento.isExpirado)
         {
