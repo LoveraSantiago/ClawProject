@@ -18,11 +18,13 @@ public class TutorialPowerUpBomba
 
     public void iniciar()
     {
+        mainDto.TutorialDto.GoTutorial.SetActive(true);
         prepararTutorialCliquePowerUp();
     }
 
     private void prepararTutorialCliquePowerUp()
     {
+        //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getGarraManager().parar();
         mainDto.TutorialDto.LblTexto.text = "Bomba disponivel!\nAcione o botão power up!";
         animacaoTutorial.playPowerUp();

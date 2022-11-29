@@ -17,11 +17,11 @@ public class MainGameManagersTutorial : MainGameManagers
         yield return new WaitForSeconds(mainDto.DelayInicio);
 
         allGameManagers.getMaquinaManager().start(allGameManagers.getInputGame());
-        eventos.iniciar();
         //tutorial.iniciar(mainDto, garraManager, maquinaManager);        
 
         allGameManagers.getGarraManager().start(mainDto.GarraDto);
         consumidorUpdateManagers.consumir(getUpdatables());
+        eventos.iniciar();
     }
 
     protected override void configurandoEventos()

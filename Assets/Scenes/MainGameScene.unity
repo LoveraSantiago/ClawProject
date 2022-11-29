@@ -11394,8 +11394,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapa: 0
-  indiceLevel: 1
+  mapa: 12
+  indiceLevel: 0
   mainDto:
     delayInicio: 0.25
     dragCollider: {fileID: 491158116}

@@ -99,6 +99,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     {
         movimentador.preInicio();
         movAtual = movimentador;
+        //Debug.Log("Trocado " + movAtual);
     }
 
     ProdutorDeEvento<InformacoesDaGarraDto> AcaoInfoDaGarra.ProdutorEvento.getProdutorDeEvento()

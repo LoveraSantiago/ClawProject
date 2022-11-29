@@ -58,7 +58,7 @@ public class SomManagerGame : SomManager,
 
     public void playSomLedsBlink()
     {
-        Debug.Log("Blink score");
+        //Debug.Log("Blink score");
         audioPlayOneShot(getAudioSourceMaquinaTimer(), audioGameDto.SomMaqBlinkTimer);
     }
     //***** IMPLEMENTACAO INTERFACE SOMMAQUINA FIM *****

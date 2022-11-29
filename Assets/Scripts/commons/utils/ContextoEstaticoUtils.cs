@@ -45,14 +45,14 @@ public class ContextoEstaticoUtils
     }
 
     public static void loadLevelEstaticoAtualOrCreateLevel(MapaEnum mapaEnum, int indiceLevel)
-    {
+    {        
         if(level == null && MapaEnum.DEFAULTS != mapaEnum)
         {
             mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(mapaEnum);            
 
-            level = mapaEntidade.getLevelByIndiceDezena(indiceLevel);
+            level = mapaEntidade.getLevelByIndiceDezena(indiceLevel);     
             logInfoLevel(indiceLevel);
-        }                
+        }        
     }
 
     public static void pausarGame()
