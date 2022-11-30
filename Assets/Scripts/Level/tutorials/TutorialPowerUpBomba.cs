@@ -44,6 +44,7 @@ public class TutorialPowerUpBomba : AcaoPowerUpAcionado.ConsumidorEvento,
     {
         if (!finalizacaoDisparada)
         {
+            allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
             mainDto.TutorialDto.LblTexto.text = "O tempo de duracao da Bomba acabou!";
             animacaoTutorial.playParteTexto();
@@ -61,6 +62,7 @@ public class TutorialPowerUpBomba : AcaoPowerUpAcionado.ConsumidorEvento,
     {
         if (!finalizacaoDisparada)
         {
+            allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;            
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial(4));
         }
