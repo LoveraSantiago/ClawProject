@@ -57,11 +57,11 @@ public class MainGameManagers
 
         allGameManagers.getMaquinaManager().configuradoPeloLevel(mainDto.MaquinaDto);
 
-        allGameManagers.getUiManager().configurandoLevel();
+        allGameManagers.getUiManager().configuradoPeloLevel();
         
         ColetaveisManager coletaveiManager = allGameManagers.getColetaveisManager();
         allGameManagers.getPowerUpManager()
-            .configurarGosPowerUps(getInformacaoDisplayColetado(),
+            .configuradoPeloLevel(allGameManagers.getModoColetados(),
                                    coletaveiManager.getFornecedorTrocadorDeOrdem());       
     }
 
@@ -85,10 +85,5 @@ public class MainGameManagers
     protected UpdaterMainGameManagers getUpdatables()
     {
         return new UpdaterMainGameManagers(allGameManagers);
-    }
-
-    private InformacaoDisplayColetado getInformacaoDisplayColetado()
-    {
-        return allGameManagers.getModoColetados();            
-    }
+    }    
 }

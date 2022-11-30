@@ -7,6 +7,7 @@ public abstract class AbstractPowerUpGo : GO,
     private static GOContexto contexto;
 
     protected static InputGame inputGame;
+    protected static SomPowerUp somPowerUp;
     protected static PowerUpAcaoFinalizacao powerUpFinalizacao;
     protected static InformacaoDisplayColetado informacaoDisplayColetado;
 
@@ -53,18 +54,17 @@ public abstract class AbstractPowerUpGo : GO,
         return contexto;
     }
 
-    public static void configurarAbstractPowerUp(PowerUpGameDto powerUpDtoArg, PowerUpAcaoFinalizacao powerUpFinalizacaoArg, 
-        InputGame inputGameArg)
+    public static void configurarAbstractPowerUp(
+        PowerUpGameDto powerUpDtoArg, PowerUpAcaoFinalizacao powerUpFinalizacaoArg, InputGame inputGameArg, SomPowerUp somPowerUpArg)
     {
-        powerUpDto = powerUpDtoArg;        
+        powerUpDto         = powerUpDtoArg;        
         powerUpFinalizacao = powerUpFinalizacaoArg;
-        inputGame = inputGameArg;
-
-        contexto = new GOContexto(powerUpDto.GoMainPup);
+        inputGame          = inputGameArg;
+        contexto           = new GOContexto(powerUpDto.GoMainPup);
+        somPowerUp         = somPowerUpArg;
     }
-
-    //TODO unificar configuracao
-    public static void configurar(InformacaoDisplayColetado informacaoDisplayColetadoArg)
+    
+    public static void configuradoPeloLevel(InformacaoDisplayColetado informacaoDisplayColetadoArg)
     {
         informacaoDisplayColetado = informacaoDisplayColetadoArg;
     }

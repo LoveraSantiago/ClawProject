@@ -55,7 +55,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);
 
-        processarExplosao();
+        processarExplosao();        
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayExplosao);
 
         processarPosExplosao();
@@ -69,6 +69,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
         efeitoExplosao.explodir(getPosicao());
+        somPowerUp.playSomExplosao();
 
         ExplosaoHit explosaoHit = new ExplosaoHit();
         explosaoHit.acertarTudo(getPosicao(), 

@@ -10,7 +10,7 @@ public class SomManagerGame : SomManager,
     private AudioGameDto audioGameDto;
 
     public SomManagerGame(AudioGameDto audioDto) 
-        : base(audioDto, 6)
+        : base(audioDto, 7)
     {
         this.audioGameDto = audioDto;
     }
@@ -127,6 +127,11 @@ public class SomManagerGame : SomManager,
     {
         audioPlay(getAudioSourceBackground(), audioGameDto.SomBackgroundPowerUp);
     }
+
+    public void playSomExplosao()
+    {
+        audioPlayOneShot(getAudioSourcePowerUp(), audioGameDto.SomExplosao);
+    }
     //***** IMPLEMENTACAO INTERFACE SOMPOWERUP FIM *****
 
     //***** IMPLEMENTACAO INTERFACE SOMMODAIS INICIO *****
@@ -179,5 +184,10 @@ public class SomManagerGame : SomManager,
     private AudioSource getAudioSourceMaquinaScore()
     {
         return getAudioSource(4);
-    }   
+    }
+
+    private AudioSource getAudioSourcePowerUp()
+    {
+        return getAudioSource(9);
+    }
 }

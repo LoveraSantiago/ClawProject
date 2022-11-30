@@ -11998,6 +11998,9 @@ MonoBehaviour:
       abrirModalSucesso:
         volume: 0.7
         audioClip: {fileID: 8300000, guid: 307e060c11fea634e98ef843d01bdc73, type: 3}
+      somExplosao:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: 1fd5648b19586544babe1622b3cc4941, type: 3}
     prefabLoading: {fileID: 712928913}
     gosDesligar:
     - {fileID: 1078757848}

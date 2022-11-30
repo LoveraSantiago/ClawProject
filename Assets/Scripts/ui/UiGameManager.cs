@@ -10,7 +10,7 @@ public class UiGameManager
         modalSair = new ModalSair(mainDto.UiDto.ModalSairDto, somModais);
     }
 
-    public void configurandoLevel()
+    public void configuradoPeloLevel()
     {        
         modalSair.configuradoPeloLevel();
     }        
