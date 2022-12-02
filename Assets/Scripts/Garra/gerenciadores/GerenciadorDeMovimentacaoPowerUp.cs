@@ -32,7 +32,7 @@ public class GerenciadorDeMovimentacaoPowerUp : GerenciadorDeMovimentacao,
     }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
-    public void receberGarraInteracaoComPowerUp(InteracaoPowerUpComComponente interacaoPupComComponentes, float tempoDuracao)
+    public void receberGarraInteracaoComPowerUp(InteracaoPowerUpComComponente interacaoPupComComponentes)
     {        
         PowerUpInteracaoComGarra interacaoComGarra = InteracaoComponentesUtils.getAsInteracaoComGarra(interacaoPupComComponentes);
         AbstractMovimentacaoDaGarraPowerUp.receberInteracaoComPowerUp(interacaoComGarra);                
