@@ -18,7 +18,6 @@ public class MovimentacaoAgarrandoEmcima : AbstractMovimentacaoDaGarraPowerUp
         garraInteracaoComPowerUp.iniciar();
         garraInteracaoComPowerUp.ligarGravidadeZero();
         garraInteracaoComPowerUp.colocarNaPosicao(getPosicaoCentroGarra());
-
     }       
 
     public override void fixedUpdate()
