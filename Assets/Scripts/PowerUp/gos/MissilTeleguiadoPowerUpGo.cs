@@ -55,6 +55,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         efeitoFaiscas.gameObject.SetActive(false);
         animacao.parado();
         colocarNoAngulo(0);
+        desligarParticulasEfeitoExplosao();
     }   
 
     public IEnumerator transformar(GO entrada)
@@ -105,8 +106,8 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         acertarGo(go);
 
         Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MissilTeleguiadoDto.HalturaExplosao, 0);
-        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
-        efeitoExplosao.explodir(posicaoExplosao);
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
+        efeitoExplosao.explodir(powerUpDto.EfeitoExplosao, posicaoExplosao);
     }
 
     private void processarPosExplosao()

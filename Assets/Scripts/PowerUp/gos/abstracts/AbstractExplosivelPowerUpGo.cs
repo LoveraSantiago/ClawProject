@@ -9,6 +9,11 @@ public abstract class AbstractExplosivelPowerUpGo : AbstractPowerUpGo,
     
     public abstract float getAnguloParaGarraSegurar();
 
+    public virtual float getDelayInicio()
+    {
+        return 0;
+    }
+
     public virtual TipoInteracaoGarra getInteracaoComGarra()
     {
         return TipoInteracaoGarra.MOVIMENTO;
@@ -26,4 +31,9 @@ public abstract class AbstractExplosivelPowerUpGo : AbstractPowerUpGo,
                TagUtils.isGaiola(evento) || 
                evento.gameObject.layer == LayerUtils.LAYER_CONTAINER_COLETAVEL_INDICE;
     }
+
+    protected void desligarParticulasEfeitoExplosao()
+    {
+        powerUpDto.EfeitoExplosao.gameObject.SetActive(false);
+    }  
 }

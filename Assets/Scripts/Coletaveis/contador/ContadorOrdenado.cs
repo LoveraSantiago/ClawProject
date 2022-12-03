@@ -8,9 +8,9 @@ public class ContadorOrdenado : ContadorNormal
     public ContadorOrdenado(int pontosColetado, int pontosAcerto)
         :base(pontosColetado, pontosAcerto){}
 
-    public override void configuradoPeloLevel(AbstractLevel level)
+    public override void configuradoPeloLevel()
     {
-        BoardOrdem[] ordens = LevelUtils.getBoardOrdensFromLevelOrdenado(level);
+        BoardOrdem[] ordens = LevelUtils.getBoardOrdensFromLevelOrdenado();
         navegacaoOrdem = new NavegacaoDeArray<BoardOrdem>(ordens, 0);
     }
 

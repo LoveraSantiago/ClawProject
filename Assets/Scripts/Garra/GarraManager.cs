@@ -23,7 +23,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         AbstractMovimentacaoDaGarra.configurar(garraDto, somGarra);
         cabo = new CaboDaGarra(garraDto.CaboDaGarraDto);
 
-        if(LevelUtils.isCacaNiquelLevel(ContextoEstaticoUtils.level))
+        if(LevelUtils.isCacaNiquelLevel())
         {
             gerDeMovAtual = new GerenciadorDeMovimentacaoCacaNiquel();
         }
@@ -43,7 +43,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     }
 
     public void update(GarraDto garraDto, InputGame inputGame)
-    {   
+    {        
         gerDeMovAtual.update(inputGame);
         cabo.update(garraDto.CaboDaGarraDto);
     }
@@ -56,8 +56,10 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     public void parar()
     {
-        gerDeMovNormal.trocarParaAcaoVoltarParaMeio();
+        //Debug.Log("parar");
+        gerDeMovNormal.trocarParaAcaoParado();
         gerDeMovAtual = gerDeMovNormal;
+        //Debug.Log(gerDeMovAtual);
     }
 
     public int fornecer()
@@ -83,7 +85,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     {
         if (evento.isInicio)
         {
-            gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.interacaoComComponentes, evento.duracaoTempo);
+            gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.interacaoComComponentes);
             gerDeMovPowerUp.iniciarMovimentacoes();
             gerDeMovAtual = gerDeMovPowerUp;
         }

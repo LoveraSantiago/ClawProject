@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class FactoryBoardMontador 
 {
-    public static BoardMontador getMontadorByLevel(AbstractLevel level, GameObject goParent)
+    public static BoardMontador getMontadorByLevel(GameObject goParent)
     {
         BoardMontador montador = null;
-        if (LevelUtils.isNormalLevel(level))
+        if (LevelUtils.isNormalLevel())
         {
             montador = new BoardMontadorNormal();
         }
-        else if (LevelUtils.isObstaculoLevel(level))
+        else if (LevelUtils.isObstaculoLevel())
         {
             montador = new BoardMontadorObstaculos();
         }
-        else if (LevelUtils.isOvoLevel(level))
+        else if (LevelUtils.isOvoLevel())
         {
             montador = new BoardMontadorOvo();
         }
-        else if (LevelUtils.isElevadorLevel(level))
+        else if (LevelUtils.isElevadorLevel())
         {
             montador = new BoardMontadorElevadorNormal(goParent);
         }
@@ -25,14 +25,15 @@ public class FactoryBoardMontador
         {
             montador = new BoardMontadorNormal();
         }
-        montador.configuradoPeloLevel(level);
+        
+        montador.configuradoPeloLevel();
         return montador;
     }
 
-    public static BoardMontador getMontadorExtraByLevel(AbstractLevel level, GameObject goParent)
+    public static BoardMontador getMontadorExtraByLevel(GameObject goParent)
     {
         BoardMontador montadorExtra = null;
-        if (LevelUtils.isElevadorLevel(level))
+        if (LevelUtils.isElevadorLevel())
         {
             montadorExtra = new BoardMontadorExtra(goParent);
         }
@@ -40,7 +41,7 @@ public class FactoryBoardMontador
         {
             montadorExtra = new BoardMontadorVazio();
         }
-        montadorExtra.configuradoPeloLevel(level);
+        montadorExtra.configuradoPeloLevel();
         return montadorExtra;
     }
 }

@@ -10,6 +10,7 @@ public class PowerUpGameDto
     [SerializeField] private GameObject prefabPowerUpDto;
     [Space(3)]
     [SerializeField] private ParticleSystem efeitoExplosao;
+    [SerializeField] private EfeitoMaterializeDto efeitoMaterializeDto;    
     [Space(3)]
     [SerializeField] private GameObject goMainPup;
     [Space(3)]
@@ -41,7 +42,7 @@ public class PowerUpGameDto
     public GameObject PrefabPowerUpDto { get { return prefabPowerUpDto; } }
 
     public ParticleSystem EfeitoExplosao { get { return efeitoExplosao;  } }
-    public GameObject GoEfeitoExplosao { get { return efeitoExplosao.gameObject; } }
+    public EfeitoMaterializeDto EfeitoMaterializeDto { get { return efeitoMaterializeDto; } }    
 
     public GameObject GoMainPup { get { return goMainPup; } }
     public Sprite SpriteOvo { get { return spriteOvo; } }

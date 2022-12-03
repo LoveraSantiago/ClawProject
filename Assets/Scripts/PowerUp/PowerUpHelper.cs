@@ -58,11 +58,10 @@ public class PowerUpHelper
     }
 
     private static int recuperarQtdPup(PowerUpEntidade pupEntidade)
-    {
-        AbstractLevel levelAtual = ContextoEstaticoUtils.level;
-        if (LevelUtils.isTutorialLevel(levelAtual))
+    {        
+        if (LevelUtils.isTutorialLevel())
         {
-            AbstractLevelTutorial levelTutorial = (AbstractLevelTutorial)levelAtual;
+            AbstractLevelTutorial levelTutorial = (AbstractLevelTutorial)ContextoEstaticoUtils.level;
             return levelTutorial.recuperarQtdPup(pupEntidade.tipo);
         }
         return PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome);

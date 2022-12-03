@@ -37,17 +37,16 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         isGamePlay = true;
     }
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido, MaquinaDto maquinaDto)
+    public void configuradoPeloLevel(MaquinaDto maquinaDto)
     {
-        botoesPowerUp.configuradoPeloLevel(levelEscolhido);
-        joystick.configuradoPeloLevel(levelEscolhido.getDicionarioDeCores());        
-        displayDeColetados.configuradoPeloLevel(levelEscolhido, maquinaDto.DisplayColetadosDto);
-        displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto, levelEscolhido);
-        scrollPupsManager.configuradoPeloLevel(maquinaDto.ScrollPupsDto, maquinaDto.Material7SegsDto, levelEscolhido);
-        displayTimer.configuradoPeloLevel(maquinaDto.DisplayTimerDto, maquinaDto.Material7SegsDto, levelEscolhido);
+        botoesPowerUp.configuradoPeloLevel();
+        joystick.configuradoPeloLevel();        
+        displayDeColetados.configuradoPeloLevel(maquinaDto.DisplayColetadosDto);
+        displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto);
+        scrollPupsManager.configuradoPeloLevel(maquinaDto.ScrollPupsDto, maquinaDto.Material7SegsDto);
+        displayTimer.configuradoPeloLevel(maquinaDto.DisplayTimerDto, maquinaDto.Material7SegsDto);
 
-        new ColoridorMaquinaV2()
-            .colorir(partesDto, levelEscolhido.getDicionarioDeCores());        
+        new ColoridorMaquinaV2().colorir(partesDto);        
     }
 
     public void start(InputGame inputGame)

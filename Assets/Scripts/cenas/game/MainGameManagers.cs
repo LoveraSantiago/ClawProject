@@ -2,15 +2,13 @@ using System.Collections;
 using UnityEngine;
 
 public class MainGameManagers 
-{   
-    public GarraManager      garraManager      { get; private set; }
-    public MaquinaManager    maquinaManager    { get; private set; }
-    public PowerUpManager    powerUpManager    { get; private set; }
-    public ColetaveisManager coletaveisManager { get; private set; }
-    public CameraManager     cameraManager     { get; private set; }
-    public UiGameManager     uiManager         { get; private set; }    
-    public InputGameImpl     inputGame         { get; private set; }
-    public DraggavelManager  draggavelManager  { get; private set; }    
+{
+    protected AllGameManagersImpl allGameManagers;  
+
+    public MainGameManagers()
+    {
+        allGameManagers = new AllGameManagersImpl();
+    }
 
     public void configurar(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
@@ -20,66 +18,72 @@ public class MainGameManagers
 
         ColetorDeDados coletorDeDados = new ColetorDeDados();
 
-        inputGame         = new InputGameImpl();
-        garraManager      = new GarraManager(mainDto.GarraDto, somManager);
-        coletaveisManager = new ColetaveisManager(mainDto.ColetaveisDto, somManager);
-        maquinaManager    = new MaquinaManager(mainDto.MaquinaDto, somManager);
-        powerUpManager    = new PowerUpManager(mainDto.PowerUpDto, inputGame, somManager);
-        uiManager         = new UiGameManager(mainDto, coletorDeDados, somManager);
-        cameraManager     = new CameraManager(mainDto.CameraDto);
-        draggavelManager  = new DraggavelManager(mainDto.DragCollider);
-
+        iniciarManagers(mainDto, somManager, coletorDeDados);
         configurandoLevel(mainDto);
         configurandoEventos();
         consumidorUpdateManagers.consumir(new UpdaterEmptyManagers());
 
         coletorDeDados
-            .addProvedorDadosTempo(maquinaManager.displayTimer.contadorTimer.dadosDeTempo)
-            .addProvedorDadosColetaveis(coletaveisManager)            
-            .addProvedorSubidasDaGarra(garraManager)
-            .addProvedorSubidasDoElevador(coletaveisManager.board.elevador)
-            .addProvedorDadosPowerUp(powerUpManager);
+            .addProvedorDadosTempo       (allGameManagers.getDadosTempo())
+            .addProvedorDadosColetaveis  (allGameManagers.getColetaveisManager())            
+            .addProvedorSubidasDaGarra   (allGameManagers.getGarraManager())
+            .addProvedorSubidasDoElevador(allGameManagers.getBoardElevador())
+            .addProvedorDadosPowerUp     (allGameManagers.getPowerUpManager());
 
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));
         ContextoEstaticoUtils.loading.fecharModal();
         somManager.playSomBackground();
     }
 
+    private void iniciarManagers(MainGameDto mainDto, SomManagerGame somManager, ColetorDeDados coletorDeDados)
+    {
+        InputGameImpl inputGame = new InputGameImpl();
+
+        allGameManagers
+            .addInputManager     (inputGame)
+            .addGarraManager     (new GarraManager(mainDto.GarraDto, somManager))
+            .addColetaveisManager(new ColetaveisManager(mainDto.ColetaveisDto, somManager))
+            .addMaquinaManager   (new MaquinaManager(mainDto.MaquinaDto, somManager))
+            .addPowerUpManager   (new PowerUpManager(mainDto.PowerUpDto, inputGame, somManager))
+            .addUiGameManager    (new UiGameManager(mainDto, coletorDeDados, somManager))
+            .addCameraManager    (new CameraManager(mainDto.CameraDto))
+            .addDraggavelManager (new DraggavelManager(mainDto.DragCollider));
+    }
+
     private void configurandoLevel(MainGameDto mainDto)
     {
-        coletaveisManager.configuradoPeloLevel(mainDto.ColetaveisDto);
+        allGameManagers.getColetaveisManager()
+                       .configuradoPeloLevel(mainDto.ColetaveisDto);
 
-        AbstractLevel levelEscolhido = ContextoEstaticoUtils.level;
-        maquinaManager   .configuradoPeloLevel(levelEscolhido, mainDto.MaquinaDto);
-        uiManager        .configurandoLevel(levelEscolhido);
+        allGameManagers.getMaquinaManager().configuradoPeloLevel(mainDto.MaquinaDto);
 
-        powerUpManager.configurarGosPowerUps(
-            getInformacaoDisplayColetado(), coletaveisManager.getFornecedorTrocadorDeOrdem());       
+        allGameManagers.getUiManager().configuradoPeloLevel();
+        
+        ColetaveisManager coletaveiManager = allGameManagers.getColetaveisManager();
+        allGameManagers.getPowerUpManager()
+            .configuradoPeloLevel(allGameManagers.getModoColetados(),
+                                   coletaveiManager.getFornecedorTrocadorDeOrdem());       
     }
 
     protected virtual void configurandoEventos()
     {
-        MainGameEventos eventos = new MainGameEventos(this);
+        MainGameEventos eventos = new MainGameEventos(allGameManagers);
         eventos.configurarEventos();
     }
 
     protected virtual IEnumerator startLaizy(MainGameDto mainDto, Consumidor<UpdaterManagers> consumidorUpdateManagers)
     {
-        yield return coletaveisManager.start();
+        yield return allGameManagers.getColetaveisManager().start();
         yield return new WaitForSeconds(mainDto.DelayInicio);
 
-        maquinaManager.start(inputGame);
-        garraManager.start(mainDto.GarraDto);
+        InputGame inputGame = allGameManagers.getInputGame();
+        allGameManagers.getMaquinaManager().start(inputGame);
+        allGameManagers.getGarraManager().start(mainDto.GarraDto);
         consumidorUpdateManagers.consumir(getUpdatables());
     }
 
     protected UpdaterMainGameManagers getUpdatables()
     {
-        return new UpdaterMainGameManagers(garraManager, maquinaManager, powerUpManager, inputGame);
-    }
-
-    private InformacaoDisplayColetado getInformacaoDisplayColetado()
-    {
-        return maquinaManager.displayDeColetados.modoColetados;
-    }
+        return new UpdaterMainGameManagers(allGameManagers);
+    }    
 }

@@ -19,10 +19,10 @@ public class DisplayTimerDigitos
         displayTimer2Pontos = new DisplayTimerDigito2Pontos(displayDto.SprRenderer2Pontos);
     }
 
-    public void passarCoresAosDisplayDigitos(DisplayTimerDto displayDto, Materiais7SegmentosDto materiais7SegsDto, AbstractLevel levelEscolhido)
+    public void passarCoresAosDisplayDigitos(DisplayTimerDto displayDto, Materiais7SegmentosDto materiais7SegsDto)
     {   
         ConfiguradorDeDisplayTimers configuradorDisplayTimers = new ConfiguradorDeDisplayTimers(displayDto, this);
-        configuradorDisplayTimers.configurarPeloLevel(materiais7SegsDto, levelEscolhido);
+        configuradorDisplayTimers.configurarPeloLevel(materiais7SegsDto);
     }
 
     public void blinkar(bool estadoBlink)

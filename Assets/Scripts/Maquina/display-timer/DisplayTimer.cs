@@ -23,10 +23,10 @@ public class DisplayTimer : AcaoTempoEsgotado.ProdutorEvento,
         contadorTimer = new ContadorTimer();        
     }
 
-    public void configuradoPeloLevel(DisplayTimerDto displayDto, Materiais7SegmentosDto materiais7SegsDto, AbstractLevel levelEscolhido)
+    public void configuradoPeloLevel(DisplayTimerDto displayDto, Materiais7SegmentosDto materiais7SegsDto)
     {
-        contadorTimer.definirContador(levelEscolhido.getTempoContagem(), this);        
-        digitos.passarCoresAosDisplayDigitos(displayDto, materiais7SegsDto, levelEscolhido);        
+        contadorTimer.definirContador(ContextoEstaticoUtils.level.getTempoContagem(), this);        
+        digitos.passarCoresAosDisplayDigitos(displayDto, materiais7SegsDto);        
     }
 
     public void execute()

@@ -54,7 +54,7 @@ public abstract class BoardMontador
         return posicao;
     }
 
-    public abstract void configuradoPeloLevel(AbstractLevel level);
+    public abstract void configuradoPeloLevel();
     protected abstract IEnumerator create(BoardDto boardDto);
     protected abstract IEnumerator onColetavelCriado(int posX, int posY, Coletavel coletavel);
 

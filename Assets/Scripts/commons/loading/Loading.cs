@@ -10,8 +10,9 @@ public class Loading
 
     private bool acionado;
     private LoadingDto loadingDto;
-    private SomLoading somLoading;
     private GameObject[] gosDesligar;
+    private Coroutine coroutineAtual;
+    private SomLoading somLoading;
 
     public Loading(LoadingDto loadingDto, SomLoading somLoading, GameObject[] gosDesligar)
     {
@@ -57,14 +58,14 @@ public class Loading
 
     public void fecharModal()
     {
-        loadingDto.GoCanvas.gameObject.SetActive(true);
-        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineFecharModal());
+        cancelarCoroutine();
+        coroutineAtual = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineFecharModal());
     }
 
     private void abrirModal(string nomeCena)
     {
-        loadingDto.GoCanvas.gameObject.SetActive(true);
-        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineAbrirModal(nomeCena));
+        cancelarCoroutine();
+        coroutineAtual = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineAbrirModal(nomeCena));
     }
 
     private void desligarGos()
@@ -78,10 +79,20 @@ public class Loading
         }
     }
 
+    private void cancelarCoroutine()
+    {
+        if(coroutineAtual != null)
+        {
+            ContextoEstaticoUtils.monoBehaviour.StopCoroutine(coroutineAtual);
+        }
+        coroutineAtual = null;
+    }
+
     private IEnumerator coroutineAbrirModal(string nomeCena)
     {
         if (!acionado)
         {
+            loadingDto.GoCanvas.gameObject.SetActive(true);
             acionado = true;
             somLoading.stopSomBackground();
             loadingDto.Animator.Play(ABRIR_MODAL);
@@ -109,12 +120,15 @@ public class Loading
             loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 100);        
             yield return new WaitForSeconds(loadingDto.DelayFecharModal);
             operation.allowSceneActivation = true;
+
+            cancelarCoroutine();
             yield return null;
         }
     }
 
     private IEnumerator coroutineFecharModal()
     {
+        loadingDto.GoCanvas.gameObject.SetActive(true);
         somLoading.stopSomGarraGirando();
         yield return null;
         
@@ -123,5 +137,6 @@ public class Loading
         yield return new WaitForSeconds(loadingDto.DelayFecharModal);
 
         loadingDto.GoCanvas.gameObject.SetActive(false);
+        cancelarCoroutine();
     }
 }

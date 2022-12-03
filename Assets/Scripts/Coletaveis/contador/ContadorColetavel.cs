@@ -13,9 +13,9 @@ public class ContadorColetavel : ContadorNormal
         estado = new EstadoContadorDeColetaveis();
     }
 
-    public override void configuradoPeloLevel(AbstractLevel level)
+    public override void configuradoPeloLevel()
     {
-        coletavelEntidade = LevelUtils.getColetavelFromLevelColetavel(level);
+        coletavelEntidade = LevelUtils.getColetavelFromLevelColetavel();
     }
 
     public override void iniciar(int totalColetaveis)

@@ -9,9 +9,14 @@ public class LevelUtils
     public static readonly string TIMER_ZERO        = "00:00";
 
 
-    public static bool isNormalLevel(AbstractLevel level)
+    public static bool isNormalLevel()
     {
-        return level.getTipoGame() == TipoGame.NORMAL;
+        return ContextoEstaticoUtils.level.getTipoGame() == TipoGame.NORMAL;
+    }
+
+    public static bool isElevadorLevel()
+    {
+        return isElevadorLevel(ContextoEstaticoUtils.level);
     }
 
     public static bool isElevadorLevel(AbstractLevel level)
@@ -19,20 +24,26 @@ public class LevelUtils
         return level.getTipoGame() == TipoGame.ELEVADOR;
     }
 
-    public static bool isColetavelLevel(AbstractLevel level)
+    public static bool isColetavelLevel()
     {
-        return level.getTipoGame() == TipoGame.COLETAVEL;
+        return ContextoEstaticoUtils.level.getTipoGame() == TipoGame.COLETAVEL;
     }
 
-    public static bool isCacaNiquelLevel(AbstractLevel level)
+    public static bool isCacaNiquelLevel()
     {
-        return isCacaNiquelGeralLevel(level) ||
+        AbstractLevel level = ContextoEstaticoUtils.level;
+        return isCacaNiquelGeralLevel() ||
                isCacaNiquelSingleLevel(level);        
     }
 
-    public static bool isPupLevel(AbstractLevel level)
+    public static bool isPupLevel()
     {
-        return level.getTipoGame() == TipoGame.PUP;
+        return ContextoEstaticoUtils.level.getTipoGame() == TipoGame.PUP;
+    }
+
+    public static bool isOrdemLevel()
+    {
+        return isOrdemLevel(ContextoEstaticoUtils.level);
     }
 
     public static bool isOrdemLevel(AbstractLevel level)
@@ -40,14 +51,14 @@ public class LevelUtils
         return level.getTipoGame() == TipoGame.ORDENADO;
     }
 
-    public static bool isLevelDeDestaque(AbstractLevel level)
-    {
-        return isColetavelLevel(level) || isOrdemLevel(level);
+    public static bool isLevelDeDestaque()
+    {        
+        return isColetavelLevel() || isOrdemLevel();
     }    
 
-    public static bool isCacaNiquelGeralLevel(AbstractLevel level)
+    public static bool isCacaNiquelGeralLevel()
     {
-        return level.getTipoGame() == TipoGame.CACANIQUEL_PUP_GERAL;        
+        return ContextoEstaticoUtils.level.getTipoGame() == TipoGame.CACANIQUEL_PUP_GERAL;        
     }
 
     public static bool isCacaNiquelSingleLevel(AbstractLevel level)
@@ -55,16 +66,27 @@ public class LevelUtils
         return level.getTipoGame() == TipoGame.CACANIQUEL_PUP_INDIVIDUAL;
     }
 
+    public static bool isObstaculoLevel()
+    {
+        return isObstaculoLevel(ContextoEstaticoUtils.level);
+    }
+
     public static bool isObstaculoLevel(AbstractLevel level)
     {
         return level.getTipoGame() == TipoGame.OBSTACULO;
     }
 
-    public static bool isPlayableLevel(AbstractLevel level)
+    public static bool isPlayableLevel()
     {
-        return isNormalLevel(level) || isOrdemLevel(level) ||
+        AbstractLevel level = ContextoEstaticoUtils.level;
+        return isNormalLevel() || isOrdemLevel() ||
                isObstaculoLevel(level) || isElevadorLevel(level) || 
-               isOvoLevel(level) || isTutorialLevel(level);
+               isOvoLevel(level) || isTutorialLevel();
+    }
+
+    public static bool isOvoLevel()
+    {
+        return isOvoLevel(ContextoEstaticoUtils.level);
     }
 
     public static bool isOvoLevel(AbstractLevel level)
@@ -72,18 +94,25 @@ public class LevelUtils
         return level.getTipoGame() == TipoGame.MEMORIA;
     }
 
-    public static bool isTutorialLevel(AbstractLevel level)
+    public static bool isTutorialLevel()
     {
-        return level.getTipoGame() == TipoGame.TUTORIAL;
+        return ContextoEstaticoUtils.level.getTipoGame() == TipoGame.TUTORIAL ||
+            isTutorialPowerUp();
     }
 
-    public static ColetavelEntidade getColetavelFromLevelColetavel(AbstractLevel level)
+    public static bool isTutorialPowerUp()
     {
-        return ((AbstractLevelColetavel)level).coletavelEntidade;        
+        return ContextoEstaticoUtils.level.getTipoGame() == TipoGame.TUTORIAL_PUP;
     }
 
-    public static int[,] getArrayDeColetaveisLevelElevador(AbstractLevel level)
+    public static ColetavelEntidade getColetavelFromLevelColetavel()
     {
+        return ((AbstractLevelColetavel)ContextoEstaticoUtils.level).coletavelEntidade;        
+    }
+
+    public static int[,] getArrayDeColetaveisLevelElevador()
+    {
+        AbstractLevel level = ContextoEstaticoUtils.level;
         if (isElevadorLevel(level))
         {
             return ((AbstractLevelElevador)level).getArrayDeColetaveisSub();
@@ -92,6 +121,11 @@ public class LevelUtils
         {
             return null;
         }
+    }
+
+    public static BoardOrdem[] getBoardOrdensFromLevelOrdenado()
+    {
+        return getBoardOrdensFromLevelOrdenado(ContextoEstaticoUtils.level);
     }
 
     public static BoardOrdem[] getBoardOrdensFromLevelOrdenado(AbstractLevel level)
@@ -106,6 +140,11 @@ public class LevelUtils
         }
     }
 
+    public static bool[,] getArrayDeObstaculos()
+    {
+        return getArrayDeObstaculos(ContextoEstaticoUtils.level);
+    }
+
     public static bool[,] getArrayDeObstaculos(AbstractLevel level)
     {
         if (isObstaculoLevel(level))
@@ -116,10 +155,10 @@ public class LevelUtils
         {
             return null;
         }
-    }
+    }   
 
-    public static Tutorial getTutorial(AbstractLevel level)
+    public static AbstractMainGameEventosTutorial getMainGameEventosTutorial(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
-        return ((AbstractLevelTutorial)level).getTutorial();
+        return ((AbstractLevelTutorial)ContextoEstaticoUtils.level).getMainGameEventos(allGameManagers, mainDto);
     }
 }

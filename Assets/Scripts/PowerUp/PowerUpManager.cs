@@ -15,26 +15,26 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public PowerUpManager(PowerUpGameDto powerUpDto, InputGame inputGame, SomPowerUp somPowerUp)
     {
+        this.somPowerUp = somPowerUp;
         listaPupsUsados = new List<PowerUpUsadoDto>();
         configurarPowerUps(powerUpDto, inputGame);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
         contadorTimeout = new ContadorPowerUpInativo();
-        this.somPowerUp = somPowerUp;
     }    
 
     private void configurarPowerUps(PowerUpGameDto powerUpDto, InputGame inputGame)
     {        
         PowerUpEntidade.configurarDicionarioDeSpritesPup(powerUpDto.PrefabPowerUpDto);
         PowerUpsParaMaquina.configAcionadorDePowerUp(this);
-        AbstractPowerUpGo.configurarAbstractPowerUp(powerUpDto, this, inputGame);        
+        AbstractPowerUpGo.configurarAbstractPowerUp(powerUpDto, this, inputGame, somPowerUp);        
     }
 
-    public void configurarGosPowerUps(
+    public void configuradoPeloLevel(
         InformacaoDisplayColetado informacaoDisplayColetado,
         Fornecedor<TrocadorDeOrdem> fornecedorTrocadorDeOrdem)
     {
         AbstractTrocaPowerUpGo.configurarTrocadorDeOrdem(fornecedorTrocadorDeOrdem);
-        AbstractPowerUpGo.configurar(informacaoDisplayColetado);
+        AbstractPowerUpGo.configuradoPeloLevel(informacaoDisplayColetado);
     }
 
     public void update()
@@ -75,6 +75,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void expirado()
     {
+        contadorTimeout = new ContadorPowerUpInativo();
         PowerUpInfo powerUpInfo = PowerUpInfo.ofExpirado();
         somPowerUp.playSomBackgroundNormal();
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);

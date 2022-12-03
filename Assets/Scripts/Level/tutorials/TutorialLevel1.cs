@@ -1,44 +1,40 @@
 using UnityEngine;
 using System.Collections;
 
-public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
-                        AcaoBotaoPowerUpVazio.ConsumidorEvento, 
-                        AcaoPupFromScrollSelecao.ConsumidorEvento,
-                        AcaoPowerUpAcionado.ConsumidorEvento,
-                        AcaoColetado.ProdutorEvento
+public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
+                              AcaoBotaoPowerUpVazio.ConsumidorEvento, 
+                              AcaoPupFromScrollSelecao.ConsumidorEvento,
+                              AcaoPowerUpAcionado.ConsumidorEvento,
+                              AcaoColetado.ProdutorEvento
 {
-    private static readonly int ANIM_PARTE_COLETAR = Animator.StringToHash("clique-coletar");
-    private static readonly int ANIM_PARTE_POWERUP = Animator.StringToHash("clique-powerup");
-    private static readonly int ANIM_PARTE_DRAGPUP = Animator.StringToHash("drag-powerup");    
-    private static readonly int ANIM_PARTE_TEXTO   = Animator.StringToHash("so-texto");    
-
     private bool finalizacaoDisparada;
     private int contagemColetados;
-    private MainGameDto    mainDto;
-    private GarraManager   garraManager;
-    private MaquinaManager maquinaManager;
+    private MainGameDto mainDto;
+    private AnimacaoTutorial animacaoTutorial;
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeEvento;
 
-    public Tutorial()
+    private AllGameManagers allGameManagers;
+
+    public TutorialLevel1(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
+        this.allGameManagers = allGameManagers;
+        this.mainDto         = mainDto;
+        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
-    public void iniciar(MainGameDto mainDto, GarraManager garraManager, MaquinaManager maquinaManager)
+    public void iniciar()
     {
-        this.mainDto        = mainDto;
-        this.garraManager   = garraManager;
-        this.maquinaManager = maquinaManager;
         mainDto.TutorialDto.GoTutorial.SetActive(true);
         prepararTutorialParteCliqueColetavel();
     }
 
     private void prepararTutorialParteCliqueColetavel()
     {
-        maquinaManager.botoesPowerUp.desativarPowerUp();
-        maquinaManager.botaoLigaDesliga.desligar();
+        allGameManagers.getBotoesPowerUp().desativarPowerUp();
+        allGameManagers.getBotaoLigaDesliga().desligar();
         mainDto.TutorialDto.LblTexto.text = "Vamos Coletar!\nClique para acionar a garra!";
-        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_COLETAR);        
+        animacaoTutorial.playColetar();        
     }    
 
     private void tratarColetadosParteCliqueColetavel()
@@ -59,30 +55,30 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
 
     private void prepararTutorialPartePowerUp()
     {
-        garraManager.parar();        
+        allGameManagers.getGarraManager().parar();        
         mainDto.TutorialDto.LblTexto.text = "Acione o botão power up!\nEsta vazio agora.";        
 
         mainDto.TutorialDto.GoTutorial.SetActive(true);
-        maquinaManager.botoesPowerUp.reativarPowerUp();        
-        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_POWERUP);
+        allGameManagers.getBotoesPowerUp().reativarPowerUp();
+        animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialParteDragPup()
     {
         mainDto.TutorialDto.LblTexto.text = "Arraste e encontre um powerup\ndisponivel, clique nele!";
-        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_DRAGPUP);
+        animacaoTutorial.playDragPowerUp();        
     }
 
     private void prepararTutorialParteAcionarPowerUp()
     {
         mainDto.TutorialDto.LblTexto.text = "Acione o botão power up!\nAgora esta carregado!";
-        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_POWERUP);
+        animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialParteJogarPowerUp()
     {
         mainDto.TutorialDto.LblTexto.text = "Ative o powerup!\nClique para soltar o power up!";
-        mainDto.TutorialDto.Animator.Play(ANIM_PARTE_COLETAR);
+        animacaoTutorial.playColetar();
     }    
 
     private void prepararFimTutorialPupExpirado()
@@ -91,8 +87,9 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
         {
             finalizacaoDisparada = true;
             mainDto.TutorialDto.LblTexto.text = "ok!O tempo acabou.\nBoa Sorte!";
-            mainDto.TutorialDto.Animator.Play(ANIM_PARTE_TEXTO);
-            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial());
+            animacaoTutorial.playParteTexto();
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
         }
     }
 
@@ -102,16 +99,17 @@ public class Tutorial : AcaoColetadoFim.ConsumidorEvento,
         {
             finalizacaoDisparada = true;
             mainDto.TutorialDto.LblTexto.text = "Isso ai!Muibo bom!\nBoa Sorte!";
-            mainDto.TutorialDto.Animator.Play(ANIM_PARTE_TEXTO);
-            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial());        
+            animacaoTutorial.playParteTexto();
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialSucesso));        
         }
     }
 
-    protected IEnumerator coroutineEncerrarTutorial()
+    protected IEnumerator coroutineEncerrarTutorial(float valorDelay)
     {
-        maquinaManager.botoesPowerUp.desativarPowerUp();
-        garraManager.parar();
-        yield return new WaitForSeconds(mainDto.DelayInicio * 3);
+        allGameManagers.getBotoesPowerUp().desativarPowerUp();
+        allGameManagers.getGarraManager().parar();
+        yield return new WaitForSeconds(valorDelay);
 
         mainDto.TutorialDto.GoTutorial.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);

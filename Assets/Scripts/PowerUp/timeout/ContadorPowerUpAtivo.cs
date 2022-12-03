@@ -1,7 +1,7 @@
 public class ContadorPowerUpAtivo : ContadorTimeout
 {
     private IntervaloDeTempo intervaloFimTempo;
-    PowerUpAcaoExpirado pupExpiracao;
+    private PowerUpAcaoExpirado pupExpiracao;
 
     public ContadorPowerUpAtivo(PowerUpInfo pupInfo)
     {

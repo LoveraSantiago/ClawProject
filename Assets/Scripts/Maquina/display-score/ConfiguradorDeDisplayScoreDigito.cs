@@ -15,12 +15,12 @@ public class ConfiguradorDeDisplayScoreDigito
         this.displayUnidade = displayUnidade;
     }
 
-    public void configurar(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)
+    public void configurar(DisplayDeScoreDto displayDeScoresDto)
     {
-        Material materialEfeitoLed = getMaterialLedToLevel(displayDeScoresDto, levelEscolhido);
+        Material materialEfeitoLed = getMaterialLedToLevel(displayDeScoresDto);
         Material materialDefaultLed= displayDeScoresDto.SingleDisplayScoreDto[0].Fileira1[0].sharedMaterial;
 
-        Dictionary<string, string> dicionarioDeCores = levelEscolhido.getDicionarioDeCores();
+        Dictionary<string, string> dicionarioDeCores = ContextoEstaticoUtils.level.getDicionarioDeCores();
         string hexLed = dicionarioDeCores[ConstantesCoresMaquinaV2.DISPLAY_SCORE_LEDS];
         Color corOriginalDoLed = CorUtils.getCorByHex(hexLed);
 
@@ -40,9 +40,9 @@ public class ConfiguradorDeDisplayScoreDigito
         sprRendererPlacaGrupo.color = CorUtils.getCorByHex(hexCor);
     }
 
-    private Material getMaterialLedToLevel(DisplayDeScoreDto displayDeScoresDto, AbstractLevel levelEscolhido)
+    private Material getMaterialLedToLevel(DisplayDeScoreDto displayDeScoresDto)
     {
-        if (levelEscolhido.isLevelAlbedo0Scores())
+        if (ContextoEstaticoUtils.level.isLevelAlbedo0Scores())
         {
             return displayDeScoresDto.MaterialEfeitoLedAditivo;
         }

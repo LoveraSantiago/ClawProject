@@ -42,9 +42,9 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     public void configuradoPeloLevel(ColetaveisDto coletaveisDto)
     {
         AbstractLevel level = ContextoEstaticoUtils.level;
-        board.configuradoPeloLevel(level, coletaveisDto.BoardDto);
+        board.configuradoPeloLevel(coletaveisDto.BoardDto);
         tuboDeDescarte.configuradoPeloLevel(level.devolverParaBoard());
-        contador.configuradoPeloLevel(level);
+        contador.configuradoPeloLevel();
     }
 
     public IEnumerator start()

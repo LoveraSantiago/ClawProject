@@ -11,9 +11,9 @@ public class ModoCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         produtorDeEvento = new ProdutorDeEvento<CacaNiquelEventoDto>();        
     }
 
-    public void configuradoPeloLevel(AbstractLevel levelEscolhido, CacaNiquelDto cacaNiquelDto)
+    public void configuradoPeloLevel(CacaNiquelDto cacaNiquelDto)
     {
-        if (LevelUtils.isCacaNiquelGeralLevel(levelEscolhido))
+        if (LevelUtils.isCacaNiquelGeralLevel())
         {
             cacaNiquel = new CacaNiquelGeral(cacaNiquelDto);
         }

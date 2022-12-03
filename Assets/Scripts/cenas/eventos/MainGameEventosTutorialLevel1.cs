@@ -1,12 +1,17 @@
-public class MainGameEventosTutorial : MainGameEventos
+public class MainGameEventosTutorialLevel1 : AbstractMainGameEventosTutorial
 {
-    private Tutorial tutorial;
+    private TutorialLevel1 tutorial;
 
-    public MainGameEventosTutorial(MainGameManagers mainGameManagers, Tutorial tutorial)
-        :base(mainGameManagers)
+    public MainGameEventosTutorialLevel1(AllGameManagers allGameManagers, TutorialLevel1 tutorial)
+        : base(allGameManagers)
     {
         this.tutorial = tutorial;
-    }    
+    }
+
+    public override void iniciar()
+    {
+        tutorial.iniciar();
+    }
 
     protected override AcaoColetadoFim configurarAcaoColetadoFim()
     {
@@ -42,7 +47,7 @@ public class MainGameEventosTutorial : MainGameEventos
 
         AcaoColetado acaoColetadoTutorial = new AcaoColetado();
         acaoColetadoTutorial.configurarProdutor(tutorial)
-            .adicionarConsumidor(uiManager.modalResultados);
+            .adicionarConsumidor(allGameManagers.getModalResultadosManager());
 
         return acaoColetado;
     }

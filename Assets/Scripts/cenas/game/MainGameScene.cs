@@ -28,8 +28,8 @@ public class MainGameScene : MonoBehaviour,
         PrefabLevelsDto prefabLevels = mainDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         HelperMapaEntidade.configurar(prefabLevels);
 
-        AbstractLevel levelEscolhido = ContextoEstaticoUtils.loadLevelEstaticoAtualOrCreateLevel(mapa, indiceLevel);
-        iniciarManagers(levelEscolhido);
+        ContextoEstaticoUtils.loadLevelEstaticoAtualOrCreateLevel(mapa, indiceLevel);
+        iniciarManagers();
     }        
     
     void Update()
@@ -66,13 +66,13 @@ public class MainGameScene : MonoBehaviour,
     }
     //IMPLEMENTACAO FUNCIONALIDADE DRAG AND DROP FIM
 
-    private void iniciarManagers(AbstractLevel levelEscolhido)
+    private void iniciarManagers()
     {
         MainGameManagers mainGameManagers = null;
 
-        if (LevelUtils.isTutorialLevel(levelEscolhido))
+        if (LevelUtils.isTutorialLevel())
         {
-            mainGameManagers = new MainGameManagersTutorial();
+            mainGameManagers = new MainGameManagersTutorial(mainDto);
         }
         else
         {

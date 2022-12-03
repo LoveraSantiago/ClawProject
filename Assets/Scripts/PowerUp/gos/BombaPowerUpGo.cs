@@ -16,7 +16,12 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     public override float getAnguloParaGarraSegurar()
     {
         return powerUpDto.BombaDto.AngGarra;
-    }    
+    }
+
+    public override float getDelayInicio()
+    {
+        return powerUpDto.EfeitoMaterializeDto.DelayDuracao;
+    }
 
     public override void configurarPup()
     {
@@ -28,8 +33,17 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     }
 
     public override void iniciarPup()
+    {        
+        EfeitoSpawner efeitoSpwaner = new EfeitoSpawner();
+        efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoMaterializeDto, getPosicao().y);
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
+    }
+
+    private IEnumerator showBombaAposSpawnMaterialize(EfeitoSpawner efeitoSpwaner)
     {
+        yield return new WaitForSeconds(getDelayInicio());
         ligar();
+        efeitoSpwaner.desligar(powerUpDto.EfeitoMaterializeDto);
     }
 
     public override void resetPup()
@@ -39,6 +53,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         acionado = false;
         desafixarVerticalmente();
         colocarNoAngulo(0);
+        desligarParticulasEfeitoExplosao();
     }
 
     public void consumir(Collision2D evento)
@@ -55,7 +70,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);
 
-        processarExplosao();
+        processarExplosao();        
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayExplosao);
 
         processarPosExplosao();
@@ -67,8 +82,9 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
 
     private void processarExplosao()
     {
-        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
-        efeitoExplosao.explodir(getPosicao());
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
+        efeitoExplosao.explodir(powerUpDto.EfeitoExplosao, getPosicao());
+        somPowerUp.playSomExplosao();
 
         ExplosaoHit explosaoHit = new ExplosaoHit();
         explosaoHit.acertarTudo(getPosicao(), 

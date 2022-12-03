@@ -2,8 +2,6 @@ using System.Collections.Generic;
 
 public class Level1 : AbstractLevelTutorial
 {
-    private Tutorial tutorial;
-
     public override string getLevelTitle()
     {
         return "Nível 1";
@@ -104,16 +102,7 @@ public class Level1 : AbstractLevelTutorial
     public override bool isLevelAlbedo0()
     {
         return false;
-    }
-
-    public override Tutorial getTutorial()
-    {
-        if(tutorial == null)
-        {
-            tutorial = new Tutorial();
-        }
-        return tutorial;
-    }
+    }   
 
     public override int recuperarQtdPup(PowerUpEnums.TIPO powerupTipo)
     {
@@ -122,5 +111,10 @@ public class Level1 : AbstractLevelTutorial
             return 1;
         }
         return 0;
+    }
+
+    public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
+    {
+        return new MainGameEventosTutorialLevel1(allGameManagers, new TutorialLevel1(allGameManagers, mainDto));
     }
 }

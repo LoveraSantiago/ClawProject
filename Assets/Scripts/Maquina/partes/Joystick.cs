@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class Joystick : AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento
 {
@@ -34,10 +33,10 @@ public class Joystick : AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento
         mesaJoystickDto.HasteTransform.rotation = Quaternion.RotateTowards(mesaJoystickDto.HasteTransform.rotation, anguloDesejadoAtual, incremento);
     }
 
-    public void configuradoPeloLevel(Dictionary<string, string> dicionarioCores)
+    public void configuradoPeloLevel()
     {
         ColoridorJoystickV2 coloridorJoystick = new ColoridorJoystickV2();
-        coloridorJoystick.colorir(mesaJoystickDto, dicionarioCores);        
+        coloridorJoystick.colorir(mesaJoystickDto);        
     }
 
     //IMPLEMENTACAO INTERFACE ConsumidorDeEvento<Direcao> INICIO

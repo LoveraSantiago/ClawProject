@@ -3,7 +3,8 @@ using UnityEngine;
 public class MovimentacaoAgarrandoEmcima : AbstractMovimentacaoDaGarraPowerUp
 {
     private Quaternion anguloDesejadoEsquerdaFechado;
-    private Quaternion anguloDesejadoDireitaFechado;       
+    private Quaternion anguloDesejadoDireitaFechado;
+    private IntervaloDeTempo intervaloDeTempo;
 
     public override void preInicio()
     {
@@ -13,16 +14,44 @@ public class MovimentacaoAgarrandoEmcima : AbstractMovimentacaoDaGarraPowerUp
         anguloDesejadoDireitaFechado  = Quaternion.Euler(0, 0,  garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
         anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
 
-        acionarColliderDasPincas();
-
-        garraInteracaoComPowerUp.iniciar();
-        garraInteracaoComPowerUp.ligarGravidadeZero();
-        garraInteracaoComPowerUp.colocarNaPosicao(getPosicaoCentroGarra());
-
+        intervaloDeTempo = new IntervaloDeTempo(100f);
+        interagirComPup();
     }       
 
     public override void fixedUpdate()
-    {
-        rotacionarPincaVelocidadeFechamentoFDT(anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);        
+    {        
+        if (intervaloDeTempo.contarTempo())
+        {
+            if(isInteracaoComPowerUpMovimento())
+            {
+                comunicadorComGerMovimentacao.trocarParaAcaoSegurandoEmMovimento();
+            }
+            else
+            {
+                rotacionarPincaVelocidadeFechamentoFDT(anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);        
+            }
+        }
     }   
+
+    private void interagirComPup()
+    {
+        if (isInteracaoComPowerUpMovimento())
+        {
+            configurarAngulos();
+        }
+
+        acionarColliderDasPincas();
+
+        garraInteracaoComPowerUp.colocarNaPosicao(getPosicaoCentroGarra());
+        garraInteracaoComPowerUp.ligarGravidadeZero();
+        garraInteracaoComPowerUp.iniciar();
+
+        intervaloDeTempo.configTempoParaAcao(garraInteracaoComPowerUp.getDelayInicio());
+    }
+
+    private void configurarAngulos()
+    {
+        anguloDesejadoDireitaFechado = Quaternion.Euler(0, 0, garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
+        anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
+    }
 }

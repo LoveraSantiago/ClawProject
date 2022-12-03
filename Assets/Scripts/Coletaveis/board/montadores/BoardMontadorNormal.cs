@@ -5,10 +5,10 @@ public class BoardMontadorNormal : BoardMontador
 {
     private DestaqueGrayScale destaque;
 
-    public override void configuradoPeloLevel(AbstractLevel level)
+    public override void configuradoPeloLevel()
     {   
-        setArrayDeColetavel(level.getArrayDeColetaveis());
-        destaque = new DestaqueGrayScale(level);
+        setArrayDeColetavel(ContextoEstaticoUtils.level.getArrayDeColetaveis());
+        destaque = new DestaqueGrayScale();
     }
 
     protected override IEnumerator create(BoardDto boardDto)

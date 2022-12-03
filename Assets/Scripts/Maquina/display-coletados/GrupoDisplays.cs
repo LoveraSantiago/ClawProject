@@ -1,6 +1,5 @@
-using System.Collections.Generic;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class GrupoDisplays 
 {
@@ -21,10 +20,10 @@ public class GrupoDisplays
         this.somMaquina = somMaquina;
     }
 
-    public void colorirDisplays(Dictionary<string, string> dicionarioDeCores)
+    public void colorirDisplays()
     {
         ColoridorDisplaysColetadosV2 coloridor = new ColoridorDisplaysColetadosV2();
-        coloridor.colorir(singleDisplayDeColetado, dicionarioDeCores);
+        coloridor.colorir(singleDisplayDeColetado);
     }
 
     public void setarEstadoPowerUp(bool estado)

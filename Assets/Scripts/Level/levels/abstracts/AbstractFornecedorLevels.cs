@@ -4,7 +4,7 @@ public abstract class AbstractFornecedorLevels
     private int[] estadoScores;
     private string[] estadosTempos;
 
-    public AbstractLevel getLevelByIndiceDezena(int idMapa, int indice)
+    public virtual AbstractLevel getLevelByIndiceDezena(int idMapa, int indice)
     {
         AbstractLevel level = getLevelPorIndice(indice);
         int indiceLevelAtual = ((10 * idMapa) - 10) + indice;

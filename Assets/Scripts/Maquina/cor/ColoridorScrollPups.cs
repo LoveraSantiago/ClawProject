@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class ColoridorScrollPups
 {
-    public void colorir(ScrollPupsDto scrollPupsDto, Dictionary<string, string> dicionarioDeCores)
+    public void colorir(ScrollPupsDto scrollPupsDto)
     {
+        Dictionary<string, string> dicionarioDeCores = ContextoEstaticoUtils.level.getDicionarioDeCores();
         string hexCor = dicionarioDeCores[ConstantesCoresMaquinaV2.SCROLL_PUP_PLACA_EXTERNA];
         scrollPupsDto.SprRendererPlacaExterna.color = CorUtils.getCorByHex(hexCor);
 
