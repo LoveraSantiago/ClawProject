@@ -55,6 +55,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         efeitoFaiscas.gameObject.SetActive(false);
         animacao.parado();
         colocarNoAngulo(0);
+        desligarParticulasEfeitoExplosao();
     }   
 
     public IEnumerator transformar(GO entrada)

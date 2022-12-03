@@ -37,6 +37,7 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         desligar();
         animacao.playIdle();        
         powerUpFinalizacao.preFinalizar();
+        powerUpDto.EfeitoExplosao.gameObject.SetActive(false);
     }
 
     private IEnumerator explodir()

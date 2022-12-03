@@ -48,6 +48,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         acionado = false;
         desafixarVerticalmente();
         colocarNoAngulo(0);
+        desligarParticulasEfeitoExplosao();
     }
 
     public void consumir(Collision2D evento)

@@ -26,4 +26,9 @@ public abstract class AbstractExplosivelPowerUpGo : AbstractPowerUpGo,
                TagUtils.isGaiola(evento) || 
                evento.gameObject.layer == LayerUtils.LAYER_CONTAINER_COLETAVEL_INDICE;
     }
+
+    protected void desligarParticulasEfeitoExplosao()
+    {
+        powerUpDto.EfeitoExplosao.gameObject.SetActive(false);
+    }
 }
