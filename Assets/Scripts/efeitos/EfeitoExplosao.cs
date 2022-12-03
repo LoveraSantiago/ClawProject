@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class EfeitoExplosao 
 {
-    public void explodir(ParticleSystem efeitoExploao, Vector3 posicao)
+    public void explodir(ParticleSystem efeitoExplosao, Vector3 posicao)
     {
-        efeitoExploao.gameObject.SetActive(true);
-        efeitoExploao.transform.position = posicao;
-        efeitoExploao.Play();        
+        efeitoExplosao.gameObject.SetActive(true);
+        efeitoExplosao.transform.position = posicao;
+        efeitoExplosao.Play();        
     }
 }
