@@ -30,6 +30,8 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     public override void iniciarPup()
     {
         ligar();
+        EfeitoSpawner efeitoSpwaner = new EfeitoSpawner();
+        efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoSpawn, powerUpDto.MaterialMaterialize);
     }
 
     public override void resetPup()
