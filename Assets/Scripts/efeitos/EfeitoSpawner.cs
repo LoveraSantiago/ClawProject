@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class EfeitoSpawner 
 {
-    private static readonly int ID_TIMESTAMP = Shader.PropertyToID("_timestamp");
+    private static readonly int ID_TIMESTAMP  = Shader.PropertyToID("_timestamp");
+    private static readonly int ID_VELOCIDADE = Shader.PropertyToID("_velocidade");
 
     public void spawnPowerUp(EfeitoMaterializeDto efeitoMaterializeDto, float haltura)
     {
@@ -10,6 +11,7 @@ public class EfeitoSpawner
         efeitoMaterializeDto.EfeitoSpawnParticulas.Play();
         efeitoMaterializeDto.EfeitoSpawnParticulas.transform.position = getPosicao(efeitoMaterializeDto.EfeitoSpawnParticulas.gameObject, haltura);
         efeitoMaterializeDto.MaterialMaterialize.SetFloat(ID_TIMESTAMP, Time.time);
+        efeitoMaterializeDto.MaterialMaterialize.SetFloat(ID_VELOCIDADE, efeitoMaterializeDto.VelocidadeMaterializacao);
     }
 
     private Vector3 getPosicao(GameObject original, float haltura)
