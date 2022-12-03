@@ -16292,8 +16292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapa: 1
-  indiceLevel: 2
+  mapa: 12
+  indiceLevel: 0
   mainDto:
     delayInicio: 0.25
     dragCollider: {fileID: 491158116}
@@ -16918,6 +16918,8 @@ MonoBehaviour:
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     tutorialDto:
+      delayFimTutorialSucesso: 2.5
+      delayFimTutorialExpirado: 3.5
       animator: {fileID: 846774093}
       lblTexto: {fileID: 918211904}
 --- !u!61 &491158116

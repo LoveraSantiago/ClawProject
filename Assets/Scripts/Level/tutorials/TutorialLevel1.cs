@@ -88,7 +88,8 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
             finalizacaoDisparada = true;
             mainDto.TutorialDto.LblTexto.text = "ok!O tempo acabou.\nBoa Sorte!";
             animacaoTutorial.playParteTexto();
-            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial());
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
         }
     }
 
@@ -99,15 +100,16 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
             finalizacaoDisparada = true;
             mainDto.TutorialDto.LblTexto.text = "Isso ai!Muibo bom!\nBoa Sorte!";
             animacaoTutorial.playParteTexto();
-            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial());        
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialSucesso));        
         }
     }
 
-    protected IEnumerator coroutineEncerrarTutorial()
+    protected IEnumerator coroutineEncerrarTutorial(float valorDelay)
     {
         allGameManagers.getBotoesPowerUp().desativarPowerUp();
         allGameManagers.getGarraManager().parar();
-        yield return new WaitForSeconds(mainDto.DelayInicio * 3);
+        yield return new WaitForSeconds(valorDelay);
 
         mainDto.TutorialDto.GoTutorial.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);

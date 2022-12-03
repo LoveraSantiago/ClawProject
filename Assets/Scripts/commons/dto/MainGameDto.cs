@@ -4,7 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class MainGameDto 
 {
-    [SerializeField] private float delayInicio;
+    [SerializeField] private float delayInicio;    
+    [Space(5)]
     [SerializeField] private BoxCollider2D dragCollider;
     [Space(5)]
     [SerializeField] private GarraDto garraDto;

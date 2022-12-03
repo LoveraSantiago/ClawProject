@@ -48,13 +48,14 @@ public class TutorialPowerUpBomba : AcaoPowerUpAcionado.ConsumidorEvento,
             finalizacaoDisparada = true;
             mainDto.TutorialDto.LblTexto.text = "O tempo de duracao da Bomba acabou!";
             animacaoTutorial.playParteTexto();
-            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial(16));        
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));        
         }
     }
 
     private void prepararMensagemPupAcionado()
     {
-        mainDto.TutorialDto.LblTexto.text = "Bomba acionada!\nA explosão espalha os coletaveis.";
+        mainDto.TutorialDto.LblTexto.text = "Otimo! Bomba acionada!\nA explosão espalha os coletaveis.";
         animacaoTutorial.playParteTexto();        
     }
 
@@ -64,15 +65,16 @@ public class TutorialPowerUpBomba : AcaoPowerUpAcionado.ConsumidorEvento,
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;            
-            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineEncerrarTutorial(4));
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialSucesso));
         }
     }
 
-    protected IEnumerator coroutineEncerrarTutorial(int acrescimoDelay)
+    protected IEnumerator coroutineEncerrarTutorial(float valorDelay)
     {
         allGameManagers.getBotoesPowerUp().desativarPowerUp();
         allGameManagers.getGarraManager().parar();
-        yield return new WaitForSeconds(mainDto.DelayInicio * acrescimoDelay);
+        yield return new WaitForSeconds(valorDelay);
 
         mainDto.TutorialDto.GoTutorial.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
