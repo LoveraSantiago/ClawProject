@@ -3827,6 +3827,9 @@ MonoBehaviour:
       btnSair: {fileID: 1871906316}
     audioMapDto:
       mainAudioSource: {fileID: 1201691980}
+      somBackground:
+        volume: 0.06
+        audioClip: {fileID: 8300000, guid: 62f3dce088f8c0646b6cefd54e499d49, type: 3}
       somGarra:
         volume: 0.02
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
@@ -3854,9 +3857,6 @@ MonoBehaviour:
       somStart:
         volume: 0.2
         audioClip: {fileID: 8300000, guid: a03714c7d1b136346841d029d1fe7e35, type: 3}
-      somBackground:
-        volume: 0.06
-        audioClip: {fileID: 8300000, guid: 62f3dce088f8c0646b6cefd54e499d49, type: 3}
     prefabLoading: {fileID: 2064940685}
     gosDesligar:
     - {fileID: 1770993062}
