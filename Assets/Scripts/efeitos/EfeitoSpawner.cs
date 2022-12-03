@@ -14,6 +14,11 @@ public class EfeitoSpawner
         efeitoMaterializeDto.MaterialMaterialize.SetFloat(ID_VELOCIDADE, efeitoMaterializeDto.VelocidadeMaterializacao);
     }
 
+    public void desligar(EfeitoMaterializeDto efeitoMaterializeDto)
+    {
+        efeitoMaterializeDto.EfeitoSpawnParticulas.gameObject.SetActive(false);
+    }
+
     private Vector3 getPosicao(GameObject original, float haltura)
     {
         Vector3 posOriginal = original.transform.position;

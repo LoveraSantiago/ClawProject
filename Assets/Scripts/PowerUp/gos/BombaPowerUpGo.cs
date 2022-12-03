@@ -36,13 +36,14 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     {        
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner();
         efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoMaterializeDto, getPosicao().y);
-        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize());
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
     }
 
-    private IEnumerator showBombaAposSpawnMaterialize()
+    private IEnumerator showBombaAposSpawnMaterialize(EfeitoSpawner efeitoSpwaner)
     {
         yield return new WaitForSeconds(getDelayInicio());
         ligar();
+        efeitoSpwaner.desligar(powerUpDto.EfeitoMaterializeDto);
     }
 
     public override void resetPup()
