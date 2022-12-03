@@ -24,14 +24,11 @@ public class MovimentacaoVoltarParaMeioPowerUp : AbstractMovimentacaoDaGarraPowe
         }
         else if(movVoltarParaMeio.isDirecaoCentralizada)
         {
-            if (garraInteracaoComPowerUp.getInteracaoComGarra() == TipoInteracaoGarra.MOVIMENTO)
+            if (garraInteracaoComPowerUp.getInteracaoComGarra() == TipoInteracaoGarra.MOVIMENTO ||
+                garraInteracaoComPowerUp.getInteracaoComGarra() == TipoInteracaoGarra.PARADO)
             {
-                comunicadorComGerMovimentacao.trocarParaAcaoSegurandoEmMovimento();
-            }
-            else if (garraInteracaoComPowerUp.getInteracaoComGarra() == TipoInteracaoGarra.PARADO)
-            {
-                comunicadorComGerMovimentacao.trocarParaAcaoSegurandoParado();
-            }
+                comunicadorComGerMovimentacao.trocarParaAcaoSegurandoParado();                
+            }            
             else
             {                    
                 comunicadorComGerMovimentacao.trocarParaAcaoParado();
