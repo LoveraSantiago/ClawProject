@@ -10,8 +10,7 @@ public class AudioMapDto : AudioDto
     [SerializeField] private AudioClipDto cliqueSomCancelar;
     [SerializeField] private AudioClipDto clique;
     [SerializeField] private AudioClipDto abrirModal;
-    [SerializeField] private AudioClipDto somStart;
-    [SerializeField] private AudioClipDto somBackground;
+    [SerializeField] private AudioClipDto somStart;    
 
     public AudioClipDto BumpBaloesLevels { get { return bumpBaloesLevels; } }
     public AudioClipDto CliqueSomSetas { get { return cliqueSomSetas; } }
@@ -20,7 +19,4 @@ public class AudioMapDto : AudioDto
     public AudioClipDto Clique { get { return clique; } }
     public AudioClipDto AbrirModal { get { return abrirModal; } }
     public AudioClipDto SomStart { get { return somStart; } }
-    public AudioClipDto SomBackground { get { return somBackground; } }
-    
-
 }
