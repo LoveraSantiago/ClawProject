@@ -16292,8 +16292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapa: 12
-  indiceLevel: 0
+  mapa: 1
+  indiceLevel: 2
   mainDto:
     delayInicio: 0.25
     dragCollider: {fileID: 491158116}
@@ -16842,7 +16842,7 @@ MonoBehaviour:
         volume: 0.5
         audioClip: {fileID: 8300000, guid: 9ab0aa6a032f1004595d6bcaf989713b, type: 3}
       somGarra:
-        volume: 0.06
+        volume: 0.045
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
       somBatidaAbrirModal:
         volume: 1
@@ -16918,8 +16918,8 @@ MonoBehaviour:
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     tutorialDto:
-      delayFimTutorialSucesso: 2.5
-      delayFimTutorialExpirado: 3.5
+      delayFimTutorialSucesso: 1.5
+      delayFimTutorialExpirado: 2.5
       animator: {fileID: 846774093}
       lblTexto: {fileID: 918211904}
 --- !u!61 &491158116
@@ -35383,7 +35383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156075000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
