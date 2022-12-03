@@ -20,7 +20,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
 
     public override float getDelayInicio()
     {
-        return 1;
+        return powerUpDto.EfeitoMaterializeDto.DelayDuracao;
     }
 
     public override void configurarPup()
@@ -35,7 +35,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     public override void iniciarPup()
     {        
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner();
-        efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoSpawn, powerUpDto.MaterialMaterialize, powerUpDto.BombaDto.BombaGo.transform.position.y);
+        efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoMaterializeDto, getPosicao().y);
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize());
     }
 

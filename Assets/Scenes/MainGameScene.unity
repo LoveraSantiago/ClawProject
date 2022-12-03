@@ -16695,8 +16695,10 @@ MonoBehaviour:
       vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
       prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
       efeitoExplosao: {fileID: 2125492028}
-      efeitoSpawn: {fileID: 850062424}
-      materialMaterialize: {fileID: 2100000, guid: 3c37f0ffa2c39c640be414e2d690a8c7, type: 2}
+      efeitoMaterializeDto:
+        delayDuracao: 1
+        efeitoSpawnParticulas: {fileID: 850062424}
+        materialMaterialize: {fileID: 2100000, guid: 3c37f0ffa2c39c640be414e2d690a8c7, type: 2}
       goMainPup: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       spriteOvo: {fileID: 21300000, guid: 11086334af5190745adab0ee0c5dad25, type: 3}
       bombaDto:

@@ -4,11 +4,17 @@ public class EfeitoSpawner
 {
     private static readonly int ID_TIMESTAMP = Shader.PropertyToID("_timestamp");
 
-    public void spawnPowerUp(ParticleSystem efeitoSpawn, Material materialMaterialize, float haltura)
+    public void spawnPowerUp(EfeitoMaterializeDto efeitoMaterializeDto, float haltura)
     {
-        efeitoSpawn.gameObject.SetActive(true);
-        efeitoSpawn.Play();        
-        efeitoSpawn.transform.position = new Vector3(efeitoSpawn.transform.position.x, haltura, efeitoSpawn.transform.position.z);
-        materialMaterialize.SetFloat(ID_TIMESTAMP, Time.time);
+        efeitoMaterializeDto.EfeitoSpawnParticulas.gameObject.SetActive(true);
+        efeitoMaterializeDto.EfeitoSpawnParticulas.Play();
+        efeitoMaterializeDto.EfeitoSpawnParticulas.transform.position = getPosicao(efeitoMaterializeDto.EfeitoSpawnParticulas.gameObject, haltura);
+        efeitoMaterializeDto.MaterialMaterialize.SetFloat(ID_TIMESTAMP, Time.time);
+    }
+
+    private Vector3 getPosicao(GameObject original, float haltura)
+    {
+        Vector3 posOriginal = original.transform.position;
+        return new Vector3(posOriginal.x, haltura, posOriginal.z);
     }
 }
