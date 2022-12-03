@@ -27,4 +27,15 @@ public abstract class AbstractMovimentacaoDaGarraPowerUp : AbstractMovimentacaoD
     {
         return (this is MovimentacaoAgarrandoEmcimaEmMovimento);
     }
+
+    protected bool isInteracaoComPowerUp()
+    {
+        return isInteracaoComPowerUpMovimento() ||
+                garraInteracaoComPowerUp.getInteracaoComGarra() == TipoInteracaoGarra.PARADO;
+    }
+
+    protected bool isInteracaoComPowerUpMovimento()
+    {
+        return garraInteracaoComPowerUp.getInteracaoComGarra() == TipoInteracaoGarra.MOVIMENTO;
+    }
 }

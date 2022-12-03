@@ -18,7 +18,7 @@ public class MovimentacaoAgarrandoEmcima : AbstractMovimentacaoDaGarraPowerUp
 
     public override void fixedUpdate()
     {
-        if(garraInteracaoComPowerUp.getInteracaoComGarra() == TipoInteracaoGarra.MOVIMENTO)
+        if(isInteracaoComPowerUpMovimento())
         {
             comunicadorComGerMovimentacao.trocarParaAcaoSegurandoEmMovimento();
         }
@@ -30,7 +30,7 @@ public class MovimentacaoAgarrandoEmcima : AbstractMovimentacaoDaGarraPowerUp
 
     private void interagirComPup()
     {
-        if (garraInteracaoComPowerUp.getInteracaoComGarra() == TipoInteracaoGarra.MOVIMENTO)
+        if (isInteracaoComPowerUpMovimento())
         {
             configurarAngulos();
         }

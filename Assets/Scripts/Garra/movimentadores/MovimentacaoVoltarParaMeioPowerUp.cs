@@ -24,8 +24,7 @@ public class MovimentacaoVoltarParaMeioPowerUp : AbstractMovimentacaoDaGarraPowe
         }
         else if(movVoltarParaMeio.isDirecaoCentralizada)
         {
-            if (garraInteracaoComPowerUp.getInteracaoComGarra() == TipoInteracaoGarra.MOVIMENTO ||
-                garraInteracaoComPowerUp.getInteracaoComGarra() == TipoInteracaoGarra.PARADO)
+            if (isInteracaoComPowerUp())
             {
                 comunicadorComGerMovimentacao.trocarParaAcaoSegurandoParado();                
             }            
