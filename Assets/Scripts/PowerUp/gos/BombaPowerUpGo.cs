@@ -67,8 +67,8 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
 
     private void processarExplosao()
     {
-        EfeitoExplosao efeitoExplosao = new EfeitoExplosao(powerUpDto);
-        efeitoExplosao.explodir(getPosicao());
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
+        efeitoExplosao.explodir(powerUpDto.EfeitoExplosao, getPosicao());
         somPowerUp.playSomExplosao();
 
         ExplosaoHit explosaoHit = new ExplosaoHit();
