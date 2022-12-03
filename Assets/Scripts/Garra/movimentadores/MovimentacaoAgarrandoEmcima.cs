@@ -3,7 +3,8 @@ using UnityEngine;
 public class MovimentacaoAgarrandoEmcima : AbstractMovimentacaoDaGarraPowerUp
 {
     private Quaternion anguloDesejadoEsquerdaFechado;
-    private Quaternion anguloDesejadoDireitaFechado;       
+    private Quaternion anguloDesejadoDireitaFechado;
+    private IntervaloDeTempo intervaloDeTempo;
 
     public override void preInicio()
     {
@@ -13,18 +14,22 @@ public class MovimentacaoAgarrandoEmcima : AbstractMovimentacaoDaGarraPowerUp
         anguloDesejadoDireitaFechado  = Quaternion.Euler(0, 0,  garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
         anguloDesejadoEsquerdaFechado = Quaternion.Euler(0, 0, -garraInteracaoComPowerUp.getAnguloParaGarraSegurar());
 
+        intervaloDeTempo = new IntervaloDeTempo(100f);
         interagirComPup();
     }       
 
     public override void fixedUpdate()
-    {
-        if(isInteracaoComPowerUpMovimento())
+    {        
+        if (intervaloDeTempo.contarTempo())
         {
-            comunicadorComGerMovimentacao.trocarParaAcaoSegurandoEmMovimento();
-        }
-        else
-        {
-            rotacionarPincaVelocidadeFechamentoFDT(anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);        
+            if(isInteracaoComPowerUpMovimento())
+            {
+                comunicadorComGerMovimentacao.trocarParaAcaoSegurandoEmMovimento();
+            }
+            else
+            {
+                rotacionarPincaVelocidadeFechamentoFDT(anguloDesejadoEsquerdaFechado, anguloDesejadoDireitaFechado);        
+            }
         }
     }   
 
@@ -37,9 +42,11 @@ public class MovimentacaoAgarrandoEmcima : AbstractMovimentacaoDaGarraPowerUp
 
         acionarColliderDasPincas();
 
-        garraInteracaoComPowerUp.iniciar();
-        garraInteracaoComPowerUp.ligarGravidadeZero();
         garraInteracaoComPowerUp.colocarNaPosicao(getPosicaoCentroGarra());
+        garraInteracaoComPowerUp.ligarGravidadeZero();
+        garraInteracaoComPowerUp.iniciar();
+
+        intervaloDeTempo.configTempoParaAcao(garraInteracaoComPowerUp.getDelayInicio());
     }
 
     private void configurarAngulos()

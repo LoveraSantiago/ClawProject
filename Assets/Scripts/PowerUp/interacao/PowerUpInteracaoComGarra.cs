@@ -4,6 +4,7 @@ public interface PowerUpInteracaoComGarra : InteracaoPowerUpComComponente
 {
     TipoInteracaoGarra getInteracaoComGarra();
 
+    float getDelayInicio();
     float getAnguloParaGarraSegurar();        
     void parar();
     void colocarNaPosicao(Vector3 posicao);

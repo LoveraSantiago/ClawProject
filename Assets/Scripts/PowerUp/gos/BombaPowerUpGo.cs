@@ -16,7 +16,12 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     public override float getAnguloParaGarraSegurar()
     {
         return powerUpDto.BombaDto.AngGarra;
-    }    
+    }
+
+    public override float getDelayInicio()
+    {
+        return 1;
+    }
 
     public override void configurarPup()
     {
@@ -28,10 +33,16 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     }
 
     public override void iniciarPup()
-    {
-        ligar();
+    {        
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner();
         efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoSpawn, powerUpDto.MaterialMaterialize, powerUpDto.BombaDto.BombaGo.transform.position.y);
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize());
+    }
+
+    private IEnumerator showBombaAposSpawnMaterialize()
+    {
+        yield return new WaitForSeconds(getDelayInicio());
+        ligar();
     }
 
     public override void resetPup()

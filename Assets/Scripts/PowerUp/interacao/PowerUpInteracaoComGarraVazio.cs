@@ -11,6 +11,11 @@ public class PowerUpInteracaoComGarraVazio : PowerUpInteracaoComGarra
         return 0;
     }
 
+    public float getDelayInicio()
+    {
+        return 0;
+    }
+
     public TipoInteracaoGarra getInteracaoComGarra()
     {
         return TipoInteracaoGarra.NAO_INTERACAO;
