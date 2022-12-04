@@ -7,13 +7,14 @@ public class LevelScene : MonoBehaviour,
     [SerializeField] private MainLevelDto mainLevelDto;                
 
     private ScrollLevelManager scrollManager;
+    private SomManagerLevel somManager;
 
     void Start()
     {
         ContextoEstaticoUtils.configMainMono(this);
 
         PrefabLoading prefabLoading = mainLevelDto.PrefabLoading.GetComponent<PrefabLoading>();
-        SomManagerLevel somManager = new SomManagerLevel(mainLevelDto.AudioLevelDto);
+        somManager = new SomManagerLevel(mainLevelDto.AudioLevelDto);
         prefabLoading.iniciarLoading(somManager, mainLevelDto.GosDesligar);
         ContextoEstaticoUtils.loading.fecharModal();
 
@@ -41,6 +42,7 @@ public class LevelScene : MonoBehaviour,
     {
         mainLevelDto.ImageMaquinaGiratoria.transform.gameObject.SetActive(true);
         mainLevelDto.ImageMaquinaGiratoria.transform.position = evento.posicaoItem;
+        somManager.playSomCliqueItem();
         MaterialMiniMaquina.addCores(mainLevelDto.ImageMaquinaGiratoria.material, evento.materialItem);
     }    
 }

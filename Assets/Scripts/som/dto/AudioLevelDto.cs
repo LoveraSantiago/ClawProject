@@ -6,6 +6,8 @@ public class AudioLevelDto : AudioDto
 {
     [Space(3)]
     [SerializeField] private AudioClipDto somCliqueVoltar;
+    [SerializeField] private AudioClipDto somCliqueLevel;
 
     public AudioClipDto SomCliqueVoltar { get { return somCliqueVoltar; } }
+    public AudioClipDto SomCliqueLevel { get { return somCliqueLevel; } }
 }
