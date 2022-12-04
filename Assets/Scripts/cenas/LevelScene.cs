@@ -18,7 +18,11 @@ public class LevelScene : MonoBehaviour,
         ContextoEstaticoUtils.loading.fecharModal();
 
         MateriaisUtils.configurar(mainLevelDto.PrefabMateriais);
-        mainLevelDto.BtnBack.onClick.AddListener(() => ContextoEstaticoUtils.loading.irParaMapScene());
+        mainLevelDto.BtnBack.onClick.AddListener(() =>
+        {
+            somManager.playSomCliqueVoltar();
+            ContextoEstaticoUtils.loading.irParaMapScene();
+        });
 
         PrefabLevelsDto prefabLevels = mainLevelDto.PrefabLevelsDto.GetComponent<PrefabLevelsDto>();
         HelperMapaEntidade.configurar(prefabLevels);
