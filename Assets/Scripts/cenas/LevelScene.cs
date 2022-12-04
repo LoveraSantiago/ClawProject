@@ -29,6 +29,8 @@ public class LevelScene : MonoBehaviour,
         new AcaoLevelFromScrollSelecao()
             .configurarProdutor(scrollManager)
             .adicionarConsumidor(this);
+
+        somManager.playSomBackground();
     }
     
     void AcaoLevelFromScrollSelecao.ConsumidorEvento.consumirEvento(LevelItemScrollSelecaoDto evento)
