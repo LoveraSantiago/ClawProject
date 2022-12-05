@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7311748063074778528}
   - component: {fileID: 1728044167180535733}
   m_Layer: 5
-  m_Name: strela2
+  m_Name: estrela2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: d2f0655342b9a8c41b792dc7d1ca0562, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e27d64ba6ac8fea4a85452f05f311dce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 087ac613f699ff344b38eab55c715bed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 4033226712898486786}
   - component: {fileID: 8651896912941709733}
   m_Layer: 5
-  m_Name: strela3
+  m_Name: estrela3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -492,7 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: d2f0655342b9a8c41b792dc7d1ca0562, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -522,7 +522,7 @@ GameObject:
   - component: {fileID: 879487354341227689}
   - component: {fileID: 42590092743789315}
   m_Layer: 5
-  m_Name: strela1
+  m_Name: estrela1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: d2f0655342b9a8c41b792dc7d1ca0562, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e27d64ba6ac8fea4a85452f05f311dce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 087ac613f699ff344b38eab55c715bed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
