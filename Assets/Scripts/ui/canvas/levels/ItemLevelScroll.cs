@@ -1,10 +1,9 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class ItemLevelScroll 
 {
-    private static Sprite estrelaBranca;
-    private static Sprite estrelaColorida;
+    private static Material estrelaBranca;
+    private static Material estrelaColorida;
 
     public int indiceLevel { get; private set; }
     public bool isExclamacaoLigado { get; private set; }
@@ -16,6 +15,7 @@ public class ItemLevelScroll
     {
         this.itemLevelDto = itemLevelDto;
         material = MaterialMiniMaquina.getNewMaterial();
+        colocarCorBranca();
         setMaterial(material);
     }
 
@@ -49,14 +49,21 @@ public class ItemLevelScroll
         itemLevelDto.ImgMaquina.material = material;
     }
 
+    public void colocarCorBranca()
+    {
+        itemLevelDto.ImgEstrela1.color = Color.white;
+        itemLevelDto.ImgEstrela2.color = Color.white;
+        itemLevelDto.ImgEstrela3.color = Color.white;
+    }
+
     public void colorirImgMaquina(AbstractLevel level)
     {
         int numeroEstrelas = ChallengesUtils.toQtdEstrelas(level.challenge);
         //Debug.Log("Colorindo nivel estrelas " + numeroEstrelas);
         MaterialMiniMaquina.addCores(numeroEstrelas, material, level.getDicionarioDeCores());
-        itemLevelDto.ImgEstrela1.sprite = numeroEstrelas >= 1 ? estrelaColorida : estrelaBranca;
-        itemLevelDto.ImgEstrela2.sprite = numeroEstrelas >= 2 ? estrelaColorida : estrelaBranca;
-        itemLevelDto.ImgEstrela3.sprite = numeroEstrelas >= 3 ? estrelaColorida : estrelaBranca;
+        itemLevelDto.ImgEstrela1.material = numeroEstrelas >= 1 ? estrelaColorida : estrelaBranca;
+        itemLevelDto.ImgEstrela2.material = numeroEstrelas >= 2 ? estrelaColorida : estrelaBranca;
+        itemLevelDto.ImgEstrela3.material = numeroEstrelas >= 3 ? estrelaColorida : estrelaBranca;
     }
 
     public void desligar()
@@ -112,7 +119,7 @@ public class ItemLevelScroll
         itemLevelDto.RItem.anchoredPosition = posicao;
     }
 
-    public static void configurarSpritesEstrelas(Sprite estralaBrancaArg, Sprite estrelaColoridaArg)
+    public static void configurarSpritesEstrelas(Material estralaBrancaArg, Material estrelaColoridaArg)
     {
         estrelaBranca = estralaBrancaArg;
         estrelaColorida = estrelaColoridaArg;

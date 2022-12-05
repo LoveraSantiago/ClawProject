@@ -2340,8 +2340,8 @@ MonoBehaviour:
       rTransformRefCima: {fileID: 2078935669}
       rTransformRefBaixo: {fileID: 2131974978}
       rTransformScroll: {fileID: 1481599767}
-      sprEstrelBranca: {fileID: 21300000, guid: 225ffc4002feb5f4b8a1867b5b6d116e, type: 3}
-      sprEstrelaColorida: {fileID: 21300000, guid: e27d64ba6ac8fea4a85452f05f311dce, type: 3}
+      materialEstrelaLigada: {fileID: 2100000, guid: d2f0655342b9a8c41b792dc7d1ca0562, type: 2}
+      materialEstrelaDesligada: {fileID: 2100000, guid: 06e58cac5cdcced4093dad2c6b66c572, type: 2}
       itensLevelDto:
       - rItem: {fileID: 2078935669}
         btnLinha: {fileID: 1796073875}
