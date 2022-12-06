@@ -56,6 +56,7 @@ Material:
     - _direcao: -1
     - _velocidade: 0.2
     m_Colors:
+    - _corContorno: {r: 0, g: 0.30137348, b: 2, a: 0}
     - _corEstrela: {r: 0.99215686, g: 0.84135205, b: 0, a: 0}
     - _corShine: {r: 2, g: 1.7333333, b: 0, a: 0}
   m_BuildTextureStacks: []
