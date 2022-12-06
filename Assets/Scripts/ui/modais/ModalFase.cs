@@ -35,7 +35,7 @@ public class ModalFase
         somMap.playSomAbrirModal();
         modalFaseDto.Animator.Play(ANIM_OBJETIVO);
                 
-        linhasChallenge.addEstrelasChallenges(modalFaseDto.LinhasChallenges.CorEstrela, level.challenge);
+        linhasChallenge.addEstrelasChallenges(modalFaseDto.LinhasChallenges.MaterialEstrelaLigada, level.challenge);
         linhasChallenge.addConfiguracaoChallenges(mapaEntidade, level.getChallenges());
     }
 

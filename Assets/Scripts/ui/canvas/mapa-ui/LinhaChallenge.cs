@@ -10,9 +10,9 @@ public class LinhaChallenge
         this.linhaChallengeDto = linhaChallengeDto;
     }
 
-    public void colorirEstrela(Color cor)
+    public void colorirEstrela(Material materialCorEstrela)
     {
-        linhaChallengeDto.ImgEstrela.color = cor;
+        linhaChallengeDto.ImgEstrela.material = materialCorEstrela;
     }
 
     public void configurarChallenge(MapaEntidade mapaEntidade, Challenge challenge)
