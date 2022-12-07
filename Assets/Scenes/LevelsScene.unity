@@ -1013,7 +1013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7718939, g: 0.88168585, b: 0.9245283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2340,8 +2340,8 @@ MonoBehaviour:
       rTransformRefCima: {fileID: 2078935669}
       rTransformRefBaixo: {fileID: 2131974978}
       rTransformScroll: {fileID: 1481599767}
-      sprEstrelBranca: {fileID: 21300000, guid: 225ffc4002feb5f4b8a1867b5b6d116e, type: 3}
-      sprEstrelaColorida: {fileID: 21300000, guid: e27d64ba6ac8fea4a85452f05f311dce, type: 3}
+      materialEstrelaLigada: {fileID: 2100000, guid: d2f0655342b9a8c41b792dc7d1ca0562, type: 2}
+      materialEstrelaDesligada: {fileID: 2100000, guid: 06e58cac5cdcced4093dad2c6b66c572, type: 2}
       itensLevelDto:
       - rItem: {fileID: 2078935669}
         btnLinha: {fileID: 1796073875}
@@ -2432,12 +2432,21 @@ MonoBehaviour:
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     audioLevelDto:
       mainAudioSource: {fileID: 220680149}
+      somBackground:
+        volume: 0.06
+        audioClip: {fileID: 8300000, guid: 62f3dce088f8c0646b6cefd54e499d49, type: 3}
       somGarra:
-        volume: 0.02
+        volume: 0.03
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
       somBatidaAbrirModal:
         volume: 1
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
+      somCliqueVoltar:
+        volume: 0.5
+        audioClip: {fileID: 8300000, guid: fa108c0a81e575740b81033e701de32f, type: 3}
+      somCliqueLevel:
+        volume: 0.5
+        audioClip: {fileID: 8300000, guid: 3acd285413e4aa445b1e3d9a45eee20d, type: 3}
     prefabLoading: {fileID: 1617099972}
     gosDesligar:
     - {fileID: 818320626}

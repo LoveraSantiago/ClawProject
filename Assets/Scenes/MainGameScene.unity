@@ -5854,7 +5854,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.4787234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -16293,7 +16293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapa: 1
-  indiceLevel: 2
+  indiceLevel: 1
   mainDto:
     delayInicio: 0.25
     dragCollider: {fileID: 491158116}
@@ -16780,7 +16780,7 @@ MonoBehaviour:
         btnAvancar: {fileID: 1088575704}
         goModalPontos: {fileID: 543390433}
         linhasChallenge:
-          corEstrela: {r: 1, g: 0.959195, b: 0, a: 1}
+          materialEstrelaLigada: {fileID: 2100000, guid: d2f0655342b9a8c41b792dc7d1ca0562, type: 2}
           linhaChallenges:
           - imgEstrela: {fileID: 95004534}
             lblTextoChallenge: {fileID: 95004535}
@@ -40294,7 +40294,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.4787234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -52045,7 +52045,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b1b372a0ea1f3ca4baf0fc72c24701fb, type: 2}
+  - {fileID: 2100000, guid: d2f0655342b9a8c41b792dc7d1ca0562, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -63557,7 +63557,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1971238197}
   serializedVersion: 8
   lengthInSec: 1
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 1
   ringBufferMode: 0
@@ -63630,9 +63630,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0.6
-      minScalar: 5
+      minScalar: 0.75
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -64880,7 +64880,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 0.8980392, g: 0.8980392, b: 0.36862746, a: 1}
         key1: {r: 1, g: 0.9614687, b: 0.2972938, a: 0}
-        key2: {r: 1, g: 1, b: 1, a: 0}
+        key2: {r: 0.7735849, g: 0.67898667, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -73585,7 +73585,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.4787234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

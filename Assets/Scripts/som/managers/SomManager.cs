@@ -10,11 +10,6 @@ public abstract class SomManager : SomLoading
     {        
     }
 
-    public void playSomBackground()
-    {
-        audioPlay(getAudioSourceBackground(), audioDto.SomBackground);
-    }
-
     protected SomManager(AudioDto audioDto, int qtdAudioSources)
     {
         this.audioDto = audioDto;
@@ -28,6 +23,12 @@ public abstract class SomManager : SomLoading
             audiosSources[contador].priority = audiosSources.Length - contador;
         } 
     }
+
+    public void playSomBackground()
+    {
+        audioPlay(getAudioSourceBackground(), audioDto.SomBackground);
+    }
+
 
     protected void audioPlay(AudioSource audioSource, AudioClipDto audioClipDto)
     {

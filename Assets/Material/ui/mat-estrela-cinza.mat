@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: mat-estrela-cinza
+  m_Shader: {fileID: -6465566751694194690, guid: e093a484db45b1e4d9572d42a9d7b8fe, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_fc8158568e4a4d638bc1e8ffc326ad3e_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 2e900bf8ef536f74fa6bff3b4c4c6ec5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_0be1e7a43104495cb3b377f1584ab9d1_Out_0:
+        m_Texture: {fileID: 2800000, guid: 087ac613f699ff344b38eab55c715bed, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_40411290aabf40629f466c2de0203a25_Out_0:
+        m_Texture: {fileID: 2800000, guid: e56e55cfe64e57a4ba26bedfbe60b133, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_516878eed4c847e9ab3a5f6ce2b44ea5_Out_0:
+        m_Texture: {fileID: 2800000, guid: e56e55cfe64e57a4ba26bedfbe60b133, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_5efa8f3b92c3491793b680e75ef2a9ea_Out_0:
+        m_Texture: {fileID: 2800000, guid: e56e55cfe64e57a4ba26bedfbe60b133, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_7ddb3b7e0ac149798561755503aa5912_Out_0:
+        m_Texture: {fileID: 2800000, guid: 087ac613f699ff344b38eab55c715bed, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_efc57afa57444e77b19b89c7b9f49a20_Out_0:
+        m_Texture: {fileID: 2800000, guid: 087ac613f699ff344b38eab55c715bed, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _estrela_contorno:
+        m_Texture: {fileID: 2800000, guid: 087ac613f699ff344b38eab55c715bed, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _estrela_interno:
+        m_Texture: {fileID: 2800000, guid: e56e55cfe64e57a4ba26bedfbe60b133, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats: []
+    m_Colors:
+    - _cor_contorno: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0}
+    - _cor_interno: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 0}
+  m_BuildTextureStacks: []

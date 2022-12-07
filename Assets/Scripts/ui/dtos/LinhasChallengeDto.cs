@@ -4,10 +4,10 @@ using UnityEngine;
 [System.Serializable]
 public class LinhasChallengeDto 
 {
-    [SerializeField] private Color corEstrela;
+    [SerializeField] private Material materialEstrelaLigada;
     [Space(3)]
     [SerializeField] private LinhaChallengeDto[] linhaChallenges = new LinhaChallengeDto[3];
 
-    public Color CorEstrela { get { return corEstrela; } }
+    public Material MaterialEstrelaLigada { get { return materialEstrelaLigada; } }
     public LinhaChallengeDto[] LinhaChallenges { get { return linhaChallenges; } }
 }

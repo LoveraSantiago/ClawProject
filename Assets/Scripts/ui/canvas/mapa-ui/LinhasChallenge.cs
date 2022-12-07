@@ -13,22 +13,20 @@ public class LinhasChallenge
         }
     }
 
-    public void addEstrelasChallenges(Color cor, int challenge)
+    public void addEstrelasChallenges(Material materialCorEstrela, int challenge)
     {
         bool[] estrelasChallenges = ChallengesUtils.toArray(challenge);
-        addEstrelasChallenges(cor, estrelasChallenges);
+        addEstrelasChallenges(materialCorEstrela, estrelasChallenges);
     }
 
-    public void addEstrelasChallenges(Color cor, bool[] challenges)
+    public void addEstrelasChallenges(Material materialCorEstrela, bool[] challenges)
     {
         for (int contador = 0; contador < linhasChallenge.Length; contador++)
-        {
-            Color corAtual = Color.white;
+        {            
             if (challenges[contador])
             {
-                corAtual = cor;
+                linhasChallenge[contador].colorirEstrela(materialCorEstrela);                
             }
-            linhasChallenge[contador].colorirEstrela(corAtual);
         }
     }
 
