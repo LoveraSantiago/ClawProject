@@ -811,7 +811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.6084906, b: 0.6084906, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1943,6 +1943,9 @@ MonoBehaviour:
     toggleRandom: {fileID: 479819824}
     audioConfigDto:
       mainAudioSource: {fileID: 1936356013}
+      somBackground:
+        volume: 0
+        audioClip: {fileID: 0}
       somGarra:
         volume: 0.02
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}

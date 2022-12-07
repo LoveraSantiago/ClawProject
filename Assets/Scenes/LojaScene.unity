@@ -3148,6 +3148,9 @@ MonoBehaviour:
     btnAssinatura: {fileID: 821101363}
     audioLojaDto:
       mainAudioSource: {fileID: 120067638}
+      somBackground:
+        volume: 0
+        audioClip: {fileID: 0}
       somGarra:
         volume: 0.02
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
@@ -3692,7 +3695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4575472, b: 0.9456661, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

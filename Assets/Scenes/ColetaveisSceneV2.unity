@@ -1732,7 +1732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.976174, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4440,6 +4440,9 @@ MonoBehaviour:
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     audioColetaveisDto:
       mainAudioSource: {fileID: 220680149}
+      somBackground:
+        volume: 0
+        audioClip: {fileID: 0}
       somGarra:
         volume: 0.02
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
