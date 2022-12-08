@@ -19,6 +19,11 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         return powerUpDto.MissilNuclearDto.AngGarra;
     }
 
+    public override float getDelayInicio()
+    {
+        return powerUpDto.EfeitoMaterializeDto.DelayDuracao;
+    }
+
     public override void colocarNaPosicao(Vector3 posicao)
     {        
         base.colocarNaPosicao(posicao + new Vector3(0, powerUpDto.MissilNuclearDto.HalturaPos, 0));
@@ -37,7 +42,16 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
 
     public override void iniciarPup()
     {
+        EfeitoSpawner efeitoSpwaner = new EfeitoSpawner();
+        efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoMaterializeDto, getPosicao().y);
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
+    }
+
+    private IEnumerator showBombaAposSpawnMaterialize(EfeitoSpawner efeitoSpwaner)
+    {
+        yield return new WaitForSeconds(getDelayInicio());
         ligar();
+        efeitoSpwaner.desligar(powerUpDto.EfeitoMaterializeDto);
     }
 
     public override void resetPup()
