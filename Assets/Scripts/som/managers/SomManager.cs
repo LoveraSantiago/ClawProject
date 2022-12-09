@@ -41,7 +41,7 @@ public abstract class SomManager : SomLoading
 
     protected void audioPlayOneShot(AudioSource audioSource, AudioClipDto audioClipDto)
     {
-        Debug.Log("audioPlayOneShot " + audioClipDto.AudioClip.name);
+        //Debug.Log("audioPlayOneShot " + audioClipDto.AudioClip.name);
         audioSource.PlayOneShot(audioClipDto.AudioClip, audioClipDto.Volume);
     }
 

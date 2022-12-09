@@ -6,6 +6,9 @@ public abstract class AbstractExplosivelPowerUpGo : AbstractPowerUpGo,
     public AbstractExplosivelPowerUpGo(GameObject go, string nome) 
         : base(go, nome){}
 
+    public AbstractExplosivelPowerUpGo(GameObject go, FinderDeSprRenderer finderDeSprRenderer, string nome) 
+        : base(go, finderDeSprRenderer, nome) {}
+
     
     public abstract float getAnguloParaGarraSegurar();
 

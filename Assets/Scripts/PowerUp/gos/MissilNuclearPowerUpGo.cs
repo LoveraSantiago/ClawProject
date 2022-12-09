@@ -9,7 +9,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     private CircleCollider2D colliderExplosao;
  
     public MissilNuclearPowerUpGo()
-        : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, "missil-nuclear")
+        : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, new FinderDeSprRenderer1Nivel("imagem"), "missil-nuclear")
     {
         desligar();        
     }        
@@ -43,7 +43,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     public override void iniciarPup()
     {
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner();
-        efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoMaterializeDto, getPosicao().y);
+        efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoMaterializeDto, getSprite(), getPosicao().y);
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
     }
 
