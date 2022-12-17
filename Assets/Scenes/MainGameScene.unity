@@ -230,7 +230,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1496791513}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &50493999
 BoxCollider2D:
@@ -38150,7 +38150,7 @@ Transform:
   - {fileID: 1992821391}
   - {fileID: 344182092}
   m_Father: {fileID: 1496791513}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!199 &850062423
 ParticleSystemRenderer:
@@ -70844,7 +70844,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1496791513}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1392206647
 BoxCollider2D:
@@ -71465,7 +71465,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1496791513}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1478049250 stripped
 SpriteRenderer:
@@ -76489,10 +76489,10 @@ Transform:
   m_Children:
   - {fileID: 2125492026}
   - {fileID: 584250567}
+  - {fileID: 850062422}
   - {fileID: 50493998}
   - {fileID: 1392206646}
   - {fileID: 1476824515}
-  - {fileID: 850062422}
   m_Father: {fileID: 491158114}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82524,7 +82524,7 @@ Transform:
   m_GameObject: {fileID: 1882503343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 1.1, y: 1.5, z: 1}
+  m_LocalScale: {x: 1.05, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 584250567}
@@ -82625,7 +82625,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.16
+    scalar: 0.19
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -82685,7 +82685,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.75
+      scalar: 0.775
       minScalar: 5
       maxCurve:
         serializedVersion: 2
