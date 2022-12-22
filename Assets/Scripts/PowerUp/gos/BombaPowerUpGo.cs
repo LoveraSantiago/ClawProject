@@ -10,6 +10,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     public BombaPowerUpGo()
         : base(powerUpDto.BombaDto.BombaGo, new FinderDeSprRenderer1Nivel("imagem"), "bomba")
     {
+        Debug.Log("Bomba instanciada");
         desligar();        
     }     
 
@@ -33,9 +34,10 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     }
 
     public override void iniciarPup()
-    {   
+    {
+        Debug.Log("Bomba iniciada");
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner();
-        efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoMaterializeDto, getSprite(), getPosicao().y);
+        efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoMaterializeDto, getSpriteBomba(), getPosicao().y);
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
     }
 
@@ -105,4 +107,9 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         resetPup();
         powerUpFinalizacao.finalizado();
     }    
+
+    private Sprite getSpriteBomba()
+    {
+        return FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(PowerUpEnums.TIPO.BOMBA_DA_GARRA).sprIconPowerUp;
+    }
 }

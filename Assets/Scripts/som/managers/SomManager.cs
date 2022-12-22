@@ -32,7 +32,7 @@ public abstract class SomManager : SomLoading
 
     protected void audioPlay(AudioSource audioSource, AudioClipDto audioClipDto)
     {
-        Debug.Log("audioPlay " + audioClipDto.AudioClip.name);
+        //Debug.Log("audioPlay " + audioClipDto.AudioClip.name);
         audioSource.volume = audioClipDto.Volume;
         audioSource.clip = audioClipDto.AudioClip;
         audioSource.loop = true;
