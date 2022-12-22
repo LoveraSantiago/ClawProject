@@ -21638,6 +21638,7 @@ MonoBehaviour:
         delayInicial: 0.5
         delayExplosao: 0.25
         delayPosExplosao: 1.1
+        spriteBomba: {fileID: 21300000, guid: ff767bdfc020f404783fe84614e5a795, type: 3}
         bombaGo: {fileID: 4127936681606313068, guid: 1aebaac37a5e3fc4c9c5f91ca3e6e90f, type: 3}
       missilNuclearDto:
         angGarra: 4
@@ -21645,6 +21646,7 @@ MonoBehaviour:
         delayInicial: 0.5
         delayExplosao: 0.35
         delayPosExplosao: 1.1
+        spriteMissilNuclear: {fileID: 21300000, guid: c6ec77fbc42919f4ab8d775b7562da24, type: 3}
         missilNuclearGo: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
       minaDto:
         halturaExplosao: 0.4

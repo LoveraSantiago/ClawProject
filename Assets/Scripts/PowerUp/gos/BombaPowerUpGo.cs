@@ -37,7 +37,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         Debug.Log("Bomba iniciada");
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner();
-        Sprite spriteBomba = getSpriteExplosivel(PowerUpEnums.TIPO.BOMBA_DA_GARRA);
+        Sprite spriteBomba = powerUpDto.BombaDto.SpriteBomba;
         efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoMaterializeDto, spriteBomba, getPosicao().y);
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
     }

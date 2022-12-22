@@ -13,6 +13,7 @@ public class BombaDto
     [SerializeField] float delayExplosao;
     [SerializeField] float delayPosExplosao;
     [Space(3)]
+    [SerializeField] private Sprite spriteBomba;
     [SerializeField] private GameObject bombaGo;
 
     public float AngGarra { get { return angGarra; } }
@@ -25,5 +26,6 @@ public class BombaDto
     public float VelocidadeHit { get { return velocidadeHit; } }
     public int AnguloHit { get { return anguloHit; } }
 
+    public Sprite SpriteBomba { get { return spriteBomba; } }
     public GameObject BombaGo { get { return bombaGo; } }
 }

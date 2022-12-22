@@ -43,7 +43,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     public override void iniciarPup()
     {
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner();
-        Sprite spriteMissil = getSpriteExplosivel(PowerUpEnums.TIPO.MISSIL_NUCLEAR);
+        Sprite spriteMissil = powerUpDto.MissilNuclearDto.SpriteMissilNuclear;
         efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoMaterializeDto, spriteMissil, getPosicao().y);
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
     }
