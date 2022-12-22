@@ -21628,6 +21628,7 @@ MonoBehaviour:
         velocidadeMaterializacao: 1.2
         efeitoSpawnParticulas: {fileID: 850062424}
         materialMaterialize: {fileID: 2100000, guid: 3c37f0ffa2c39c640be414e2d690a8c7, type: 2}
+        goGo: {fileID: 1992821390}
       goMainPup: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
       spriteOvo: {fileID: 21300000, guid: 11086334af5190745adab0ee0c5dad25, type: 3}
       bombaDto:
@@ -38194,7 +38195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &850062422
 Transform:
   m_ObjectHideFlags: 0

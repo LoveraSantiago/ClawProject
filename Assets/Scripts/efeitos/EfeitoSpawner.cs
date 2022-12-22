@@ -6,7 +6,14 @@ public class EfeitoSpawner
     private static readonly int ID_VELOCIDADE  = Shader.PropertyToID("_velocidade");
     private static readonly int ID_MATERIALIZE = Shader.PropertyToID("_imgMaterialize");
 
-    public void spawnPowerUp(EfeitoMaterializeDto efeitoMaterializeDto, Sprite imgMaterialize, float haltura)
+    private EfeitoMaterializeDto efeitoMaterializeDto;
+
+    public EfeitoSpawner(EfeitoMaterializeDto efeitoMaterializeDto)
+    {
+        this.efeitoMaterializeDto = efeitoMaterializeDto;
+    }
+
+    public void spawnPowerUp(Sprite imgMaterialize, float haltura, float escala)
     {
         efeitoMaterializeDto.EfeitoSpawnParticulas.gameObject.SetActive(true);
         efeitoMaterializeDto.EfeitoSpawnParticulas.Play();
@@ -14,9 +21,10 @@ public class EfeitoSpawner
         efeitoMaterializeDto.MaterialMaterialize.SetFloat(ID_TIMESTAMP, Time.time);
         efeitoMaterializeDto.MaterialMaterialize.SetFloat(ID_VELOCIDADE, efeitoMaterializeDto.VelocidadeMaterializacao);
         efeitoMaterializeDto.MaterialMaterialize.SetTexture(ID_MATERIALIZE, imgMaterialize.texture);
+        efeitoMaterializeDto.GoGo.transform.localScale = new Vector3(escala, escala, 0);
     }
 
-    public void desligar(EfeitoMaterializeDto efeitoMaterializeDto)
+    public void desligar()
     {
         efeitoMaterializeDto.EfeitoSpawnParticulas.gameObject.SetActive(false);
     }

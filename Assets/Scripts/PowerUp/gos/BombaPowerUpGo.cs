@@ -36,9 +36,9 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     public override void iniciarPup()
     {
         Debug.Log("Bomba iniciada");
-        EfeitoSpawner efeitoSpwaner = new EfeitoSpawner();
+        EfeitoSpawner efeitoSpwaner = new EfeitoSpawner(powerUpDto.EfeitoMaterializeDto);
         Sprite spriteBomba = powerUpDto.BombaDto.SpriteBomba;
-        efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoMaterializeDto, spriteBomba, getPosicao().y);
+        efeitoSpwaner.spawnPowerUp(spriteBomba, getPosicao().y, 1);
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
     }
 
@@ -46,7 +46,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         yield return new WaitForSeconds(getDelayInicio());
         ligar();
-        efeitoSpwaner.desligar(powerUpDto.EfeitoMaterializeDto);
+        efeitoSpwaner.desligar();
     }
 
     public override void resetPup()
