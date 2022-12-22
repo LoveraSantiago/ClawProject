@@ -38,5 +38,10 @@ public abstract class AbstractExplosivelPowerUpGo : AbstractPowerUpGo,
     protected void desligarParticulasEfeitoExplosao()
     {
         powerUpDto.EfeitoExplosao.gameObject.SetActive(false);
-    }  
+    }
+
+    protected Sprite getSpriteExplosivel(PowerUpEnums.TIPO tipo)
+    {
+        return FactoryPowerUpEntidade.getPowerUpEntidadeByEnum(tipo).sprIconPowerUp;
+    }
 }
