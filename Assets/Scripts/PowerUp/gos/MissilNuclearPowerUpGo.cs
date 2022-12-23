@@ -64,6 +64,9 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         desafixarVerticalmente();
         colocarNoAngulo(0);
         desligarParticulasEfeitoExplosao();
+
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
+        efeitoExplosao.desligar(powerUpDto.EfeitoExplosaoAtomica);
     }
 
     public void consumir(Collision2D evento)
@@ -95,7 +98,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         colliderExplosao.gameObject.SetActive(true);        
 
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
-        efeitoExplosao.explodir(powerUpDto.EfeitoExplosao, getPosicao());
+        efeitoExplosao.explodir(powerUpDto.EfeitoExplosaoAtomica, getPosicao());
     }
 
     private void processarPosExplosao()

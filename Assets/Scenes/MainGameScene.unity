@@ -21623,6 +21623,7 @@ MonoBehaviour:
       vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
       prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
       efeitoExplosao: {fileID: 2125492028}
+      efeitoExplosaoAtomica: {fileID: 584250569}
       efeitoMaterializeDto:
         delayDuracao: 1
         velocidadeMaterializacao: 1.2
@@ -21645,8 +21646,8 @@ MonoBehaviour:
         angGarra: 4
         halturaPos: -0.6
         delayInicial: 0.5
-        delayExplosao: 0.35
-        delayPosExplosao: 1.1
+        delayExplosao: 1
+        delayPosExplosao: 1.15
         spriteMissilNuclear: {fileID: 21300000, guid: c6ec77fbc42919f4ab8d775b7562da24, type: 3}
         missilNuclearGo: {fileID: 4127936681606313068, guid: 71e9601de080b9a46b3afef8a7f2cbb3, type: 3}
       minaDto:
