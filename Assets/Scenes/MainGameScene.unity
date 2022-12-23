@@ -21663,7 +21663,7 @@ MonoBehaviour:
       minaDto:
         halturaExplosao: 0.4
         delayInicial: 0.5
-        delayExplosao: 0.25
+        delayExplosao: 1
         delayPosExplosao: 1.1
         cameraShakeDto:
           amplitude: 1
