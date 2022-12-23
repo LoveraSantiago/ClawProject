@@ -57,6 +57,9 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         desafixarVerticalmente();
         colocarNoAngulo(0);
         desligarParticulasEfeitoExplosao();
+
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
+        efeitoExplosao.desligar(powerUpDto.EfeitoExplosao);
     }
 
     public void consumir(Collision2D evento)

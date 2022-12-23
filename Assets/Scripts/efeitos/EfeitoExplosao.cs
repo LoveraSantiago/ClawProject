@@ -8,4 +8,9 @@ public class EfeitoExplosao
         efeitoExplosao.transform.position = posicao;
         efeitoExplosao.Play();        
     }
+
+    public void desligar(ParticleSystem efeitoExplosao)
+    {
+        efeitoExplosao.gameObject.SetActive(false);
+    }
 }
