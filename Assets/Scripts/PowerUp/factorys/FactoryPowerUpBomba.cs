@@ -10,7 +10,7 @@ public class FactoryPowerUpBomba : AbstractFactoryPowerUp
                 .configIsClicavel(true)
                 .configDescricao(
                     "Jogue uma bomba nos coletaveis para espalhar suas posições.",
-                    "Você tem 9 segundos para soltar a bomba em cima do seu alvo.");
+                    "Fique atento ao tempo de duração para soltar a bomba em cima do seu alvo.");
     }
 
     public override AbstractPowerUpGo fornecer()
