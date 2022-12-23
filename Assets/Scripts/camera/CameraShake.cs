@@ -19,24 +19,21 @@ public class CameraShake
         perlim.m_FrequencyGain = 0;
         perlim.m_NoiseProfile = cameraShakeDto.Noise6d;
     }
-
-    //TODO refatorar muitos argumentos
-    public void shakeEDiminuir(
-        float amplitude, Vector3 offset, float ganhoFreq, float duracao)
+        
+    public void shakeEDiminuir(CameraShakeDto cameraShakeDto)
     {
-        perlim.m_PivotOffset = offset;
-        perlim.m_FrequencyGain = ganhoFreq;
-        perlim.m_AmplitudeGain = amplitude;
-        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(diminuirEfeito(amplitude, duracao));
+        perlim.m_PivotOffset = cameraShakeDto.Offset;
+        perlim.m_FrequencyGain = cameraShakeDto.GanhoFreq;
+        perlim.m_AmplitudeGain = cameraShakeDto.Amplitude;
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(diminuirEfeito(cameraShakeDto.Amplitude, cameraShakeDto.Duracao));
     }
 
-    public void shakeEParar(
-        float amplitude, Vector3 offset, float ganhoFreq, float duracao)
+    public void shakeEParar(CameraShakeDto cameraShakeDto)
     {
-        perlim.m_PivotOffset = offset;
-        perlim.m_FrequencyGain = ganhoFreq;
-        perlim.m_AmplitudeGain = amplitude;
-        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(pararEfeito(duracao));
+        perlim.m_PivotOffset   = cameraShakeDto.Offset;
+        perlim.m_FrequencyGain = cameraShakeDto.GanhoFreq;
+        perlim.m_AmplitudeGain = cameraShakeDto.Amplitude;
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(pararEfeito(cameraShakeDto.Duracao));
     }
 
     private IEnumerator pararEfeito(float duracao)

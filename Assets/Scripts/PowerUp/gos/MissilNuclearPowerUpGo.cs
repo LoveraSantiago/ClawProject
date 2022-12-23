@@ -99,6 +99,9 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
 
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
         efeitoExplosao.explodir(powerUpDto.EfeitoExplosaoAtomica, getPosicao());
+
+        CameraShake cameraShake = new CameraShake();
+        cameraShake.shakeEDiminuir(powerUpDto.MissilNuclearDto.CameraShakeDto);
     }
 
     private void processarPosExplosao()
@@ -108,8 +111,8 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         ExplosaoHit explosaoHit = new ExplosaoHit();
         explosaoHit.acertarGaiolas(colliderExplosao.transform.position, colliderExplosao.radius);
 
-        CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEDiminuir(1f, new Vector3(150, 150, 150), 25f, 0.4f);
+        //CameraShake cameraShake = new CameraShake();        
+        //cameraShake.shakeEDiminuir(powerUpDto.MissilNuclearDto.CameraShakeDto);
         resetPup();
     }
 }

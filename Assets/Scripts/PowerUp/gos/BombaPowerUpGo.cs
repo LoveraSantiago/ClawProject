@@ -102,7 +102,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     private void processarPosExplosao()
     {
         CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
+        cameraShake.shakeEParar(powerUpDto.BombaDto.CameraShakeDto);
         powerUpFinalizacao.preFinalizar();
     }
 

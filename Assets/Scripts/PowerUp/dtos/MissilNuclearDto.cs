@@ -11,6 +11,8 @@ public class MissilNuclearDto
     [SerializeField] float delayExplosao;
     [SerializeField] float delayPosExplosao;
     [Space(3)]
+    [SerializeField] private CameraShakeDto cameraShakeDto;
+    [Space(3)]
     [SerializeField] private Sprite spriteMissilNuclear;
     [SerializeField] private GameObject missilNuclearGo;
 
@@ -21,6 +23,7 @@ public class MissilNuclearDto
     public float DelayExplosao { get { return delayExplosao; } }
     public float DelayPosExplosao { get { return delayPosExplosao; } }
 
+    public CameraShakeDto CameraShakeDto { get { return cameraShakeDto; } }
     public Sprite SpriteMissilNuclear { get { return spriteMissilNuclear; } }
     public GameObject MissilNuclearGo { get { return missilNuclearGo; } }
 }

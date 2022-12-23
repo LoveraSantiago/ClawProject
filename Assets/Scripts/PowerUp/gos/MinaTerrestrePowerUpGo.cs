@@ -71,8 +71,8 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         ExplosaoHit explosaoHit = new ExplosaoHit();
         explosaoHit.acertarGaiolas(colliderExplosao.transform.position, colliderExplosao.radius);
 
-        CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
+        CameraShake cameraShake = new CameraShake();        
+        cameraShake.shakeEParar(powerUpDto.MinaDto.CameraShakeDto);
         resetPup();
     }    
 }
