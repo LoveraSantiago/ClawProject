@@ -100,6 +100,8 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
         efeitoExplosao.explodir(powerUpDto.EfeitoExplosaoAtomica, getPosicao());
 
+        somPowerUp.playSomExplosao();
+
         CameraShake cameraShake = new CameraShake();
         cameraShake.shakeEDiminuir(powerUpDto.MissilNuclearDto.CameraShakeDto);
     }

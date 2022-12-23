@@ -10,7 +10,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     public BombaPowerUpGo()
         : base(powerUpDto.BombaDto.BombaGo, new FinderDeSprRenderer1Nivel("imagem"), "bomba")
     {
-        Debug.Log("Bomba instanciada");
+        //Debug.Log("Bomba instanciada");
         desligar();        
     }     
 
@@ -35,7 +35,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
 
     public override void iniciarPup()
     {
-        Debug.Log("Bomba iniciada");
+        //Debug.Log("Bomba iniciada");
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner(powerUpDto.EfeitoMaterializeDto);
         Sprite spriteBomba = powerUpDto.BombaDto.SpriteBomba;
         efeitoSpwaner.spawnPowerUp(spriteBomba, getPosicao().y, 1);
