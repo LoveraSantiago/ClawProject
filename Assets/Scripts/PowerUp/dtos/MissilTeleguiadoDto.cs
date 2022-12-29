@@ -12,6 +12,8 @@ public class MissilTeleguiadoDto
     [SerializeField] float halturaExplosao;
     [SerializeField] float delayPosExplosao;
     [Space(3)]
+    [SerializeField] private CameraShakeDto cameraShakeDto;
+    [Space(3)]
     [SerializeField] private GameObject missilGo;
     [Space(3)]
     [SerializeField] private PathMissilDto pathMissilDto;
@@ -24,6 +26,7 @@ public class MissilTeleguiadoDto
     public float HalturaExplosao { get { return halturaExplosao; } }
     public float DelayPosExplosao { get { return delayPosExplosao; } }
 
+    public CameraShakeDto CameraShakeDto { get { return cameraShakeDto; } }
     public GameObject MissilGo { get { return missilGo; } }
     public PathMissilDto PathMissilDto { get { return pathMissilDto; } }
 }

@@ -8,8 +8,9 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     private AnimacaoExplosaoPup animacao;
 
     public BombaPowerUpGo()
-        : base(powerUpDto.BombaDto.BombaGo, "bomba")
+        : base(powerUpDto.BombaDto.BombaGo, new FinderDeSprRenderer1Nivel("imagem"), "bomba")
     {
+        //Debug.Log("Bomba instanciada");
         desligar();        
     }     
 
@@ -33,9 +34,11 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     }
 
     public override void iniciarPup()
-    {        
-        EfeitoSpawner efeitoSpwaner = new EfeitoSpawner();
-        efeitoSpwaner.spawnPowerUp(powerUpDto.EfeitoMaterializeDto, getPosicao().y);
+    {
+        //Debug.Log("Bomba iniciada");
+        EfeitoSpawner efeitoSpwaner = new EfeitoSpawner(powerUpDto.EfeitoMaterializeDto);
+        Sprite spriteBomba = powerUpDto.BombaDto.SpriteBomba;
+        efeitoSpwaner.spawnPowerUp(spriteBomba, getPosicao().y, 1);
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
     }
 
@@ -43,7 +46,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         yield return new WaitForSeconds(getDelayInicio());
         ligar();
-        efeitoSpwaner.desligar(powerUpDto.EfeitoMaterializeDto);
+        efeitoSpwaner.desligar();
     }
 
     public override void resetPup()
@@ -54,6 +57,9 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         desafixarVerticalmente();
         colocarNoAngulo(0);
         desligarParticulasEfeitoExplosao();
+
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
+        efeitoExplosao.desligar(powerUpDto.EfeitoExplosao);
     }
 
     public void consumir(Collision2D evento)
@@ -96,7 +102,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     private void processarPosExplosao()
     {
         CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
+        cameraShake.shakeEParar(powerUpDto.BombaDto.CameraShakeDto);
         powerUpFinalizacao.preFinalizar();
     }
 
@@ -104,5 +110,5 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         resetPup();
         powerUpFinalizacao.finalizado();
-    }    
+    }        
 }

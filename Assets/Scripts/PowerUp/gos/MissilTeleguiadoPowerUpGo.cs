@@ -108,12 +108,12 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MissilTeleguiadoDto.HalturaExplosao, 0);
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
         efeitoExplosao.explodir(powerUpDto.EfeitoExplosao, posicaoExplosao);
+        CameraShake cameraShake = new CameraShake();        
+        cameraShake.shakeEParar(powerUpDto.MissilTeleguiadoDto.CameraShakeDto);
     }
 
     private void processarPosExplosao()
     {
-        CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEParar(1f, new Vector3(50, 50, 50), 50f, 0.4f);
         powerUpFinalizacao.preFinalizar();
     }
 

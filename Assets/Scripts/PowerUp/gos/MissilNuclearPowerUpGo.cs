@@ -9,7 +9,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     private CircleCollider2D colliderExplosao;
  
     public MissilNuclearPowerUpGo()
-        : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, "missil-nuclear")
+        : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, new FinderDeSprRenderer1Nivel("imagem"), "missil-nuclear")
     {
         desligar();        
     }        
@@ -17,6 +17,11 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     public override float getAnguloParaGarraSegurar()
     {
         return powerUpDto.MissilNuclearDto.AngGarra;
+    }
+
+    public override float getDelayInicio()
+    {
+        return powerUpDto.EfeitoMaterializeDto.DelayDuracao;
     }
 
     public override void colocarNaPosicao(Vector3 posicao)
@@ -37,7 +42,17 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
 
     public override void iniciarPup()
     {
+        EfeitoSpawner efeitoSpwaner = new EfeitoSpawner(powerUpDto.EfeitoMaterializeDto);
+        Sprite spriteMissil = powerUpDto.MissilNuclearDto.SpriteMissilNuclear;
+        efeitoSpwaner.spawnPowerUp(spriteMissil, getPosicao().y, 1.25f);
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
+    }
+
+    private IEnumerator showBombaAposSpawnMaterialize(EfeitoSpawner efeitoSpwaner)
+    {
+        yield return new WaitForSeconds(getDelayInicio());
         ligar();
+        efeitoSpwaner.desligar();
     }
 
     public override void resetPup()
@@ -49,6 +64,9 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         desafixarVerticalmente();
         colocarNoAngulo(0);
         desligarParticulasEfeitoExplosao();
+
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
+        efeitoExplosao.desligar(powerUpDto.EfeitoExplosaoAtomica);
     }
 
     public void consumir(Collision2D evento)
@@ -80,7 +98,12 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         colliderExplosao.gameObject.SetActive(true);        
 
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
-        efeitoExplosao.explodir(powerUpDto.EfeitoExplosao, getPosicao());
+        efeitoExplosao.explodir(powerUpDto.EfeitoExplosaoAtomica, getPosicao());
+
+        somPowerUp.playSomExplosao();
+
+        CameraShake cameraShake = new CameraShake();
+        cameraShake.shakeEDiminuir(powerUpDto.MissilNuclearDto.CameraShakeDto);
     }
 
     private void processarPosExplosao()
@@ -90,8 +113,8 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         ExplosaoHit explosaoHit = new ExplosaoHit();
         explosaoHit.acertarGaiolas(colliderExplosao.transform.position, colliderExplosao.radius);
 
-        CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEDiminuir(1f, new Vector3(150, 150, 150), 25f, 0.4f);
+        //CameraShake cameraShake = new CameraShake();        
+        //cameraShake.shakeEDiminuir(powerUpDto.MissilNuclearDto.CameraShakeDto);
         resetPup();
     }
 }

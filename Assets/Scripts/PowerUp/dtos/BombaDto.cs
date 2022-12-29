@@ -4,15 +4,18 @@ using UnityEngine;
 [System.Serializable]
 public class BombaDto
 {
-    [SerializeField] float angGarra;
-    [SerializeField] float raioExplosao;
-    [SerializeField] float velocidadeHit;
-    [SerializeField] int anguloHit;
+    [SerializeField] private float angGarra;
+    [SerializeField] private float raioExplosao;
+    [SerializeField] private float velocidadeHit;
+    [SerializeField] private int anguloHit;
     [Space(3)]
-    [SerializeField] float delayInicial;
-    [SerializeField] float delayExplosao;
-    [SerializeField] float delayPosExplosao;
+    [SerializeField] private float delayInicial;
+    [SerializeField] private float delayExplosao;
+    [SerializeField] private float delayPosExplosao;
     [Space(3)]
+    [SerializeField] private CameraShakeDto cameraShakeDto;
+    [Space(3)]
+    [SerializeField] private Sprite spriteBomba;
     [SerializeField] private GameObject bombaGo;
 
     public float AngGarra { get { return angGarra; } }
@@ -25,5 +28,7 @@ public class BombaDto
     public float VelocidadeHit { get { return velocidadeHit; } }
     public int AnguloHit { get { return anguloHit; } }
 
+    public CameraShakeDto CameraShakeDto { get { return cameraShakeDto; } }
+    public Sprite SpriteBomba { get { return spriteBomba; } }
     public GameObject BombaGo { get { return bombaGo; } }
 }

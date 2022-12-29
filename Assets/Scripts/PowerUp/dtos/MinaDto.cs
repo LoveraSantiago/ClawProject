@@ -10,6 +10,8 @@ public class MinaDto
     [SerializeField] private float delayExplosao;
     [SerializeField] private float delayPosExplosao;
     [Space(3)]
+    [SerializeField] private CameraShakeDto cameraShakeDto;
+    [Space(3)]
     [SerializeField] private GameObject minaTerrestreGo;
     
     public float HalturaExplosao { get { return halturaExplosao; } }
@@ -18,5 +20,6 @@ public class MinaDto
     public float DelayExplosao { get { return delayExplosao; } }
     public float DelayPosExplosao { get { return delayPosExplosao; } }
 
+    public CameraShakeDto CameraShakeDto { get { return cameraShakeDto; } }
     public GameObject MinaTerrestreGo { get { return minaTerrestreGo; } }
 }
