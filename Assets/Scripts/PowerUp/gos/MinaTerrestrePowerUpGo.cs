@@ -70,6 +70,9 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MinaDto.HalturaExplosao, 0);
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
         efeitoExplosao.explodir(powerUpDto.EfeitoExplosaoMinaTerrestre, posicaoExplosao);
+        
+        CameraShake cameraShake = new CameraShake();        
+        cameraShake.shakeEParar(powerUpDto.MinaDto.CameraShakeDto);
     }
 
     private void processarPosExplosao()
@@ -79,8 +82,6 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         ExplosaoHit explosaoHit = new ExplosaoHit();
         explosaoHit.acertarGaiolas(colliderExplosao.transform.position, colliderExplosao.radius);
 
-        CameraShake cameraShake = new CameraShake();        
-        cameraShake.shakeEParar(powerUpDto.MinaDto.CameraShakeDto);
         resetPup();
     }    
 }

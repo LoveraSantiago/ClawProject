@@ -51,7 +51,7 @@ Material:
     m_Floats:
     - _direcao: 1
     - _ligado: 1
-    - _timestamp: 63.683674
-    - _velocidade: 2
+    - _timestamp: 60.212357
+    - _velocidade: 1.2
     m_Colors: []
   m_BuildTextureStacks: []

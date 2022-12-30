@@ -130,8 +130,8 @@ public class Level2 : AbstractLevelNormal
         //    PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR });
 
         return new PowerUpsParaLevel(2)
-            .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE,
-            PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE })
+            .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.MISSIL_NUCLEAR, 
+                PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.MISSIL_NUCLEAR })
             .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE,
             PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE });
     }

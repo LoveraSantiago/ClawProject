@@ -97,12 +97,13 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
             powerUpDto.BombaDto.RaioExplosao, 
             powerUpDto.BombaDto.AnguloHit, 
             powerUpDto.BombaDto.VelocidadeHit);        
+        
+        CameraShake cameraShake = new CameraShake();
+        cameraShake.shakeEParar(powerUpDto.BombaDto.CameraShakeDto);
     }
 
     private void processarPosExplosao()
     {
-        CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEParar(powerUpDto.BombaDto.CameraShakeDto);
         powerUpFinalizacao.preFinalizar();
     }
 
