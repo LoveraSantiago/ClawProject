@@ -52,6 +52,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         yield return new WaitForSeconds(getDelayInicio());
         ligar();
+        fixarEixoY();
         efeitoSpwaner.desligar();
     }
 

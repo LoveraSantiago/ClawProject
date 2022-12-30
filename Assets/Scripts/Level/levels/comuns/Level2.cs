@@ -124,7 +124,7 @@ public class Level2 : AbstractLevelNormal
 
 
         return new PowerUpsParaLevel(2)
-            .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR,
+            .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_TELEGUIADO, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR,
             PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR })
             .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR,
             PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MISSIL_NUCLEAR });
