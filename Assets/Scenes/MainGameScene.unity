@@ -21624,6 +21624,7 @@ MonoBehaviour:
       prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
       efeitoExplosao: {fileID: 2125492028}
       efeitoExplosaoAtomica: {fileID: 584250569}
+      efeitoExplosaoMinaTerrestre: {fileID: 671291367}
       efeitoMaterializeDto:
         delayDuracao: 1
         velocidadeMaterializacao: 1.2
