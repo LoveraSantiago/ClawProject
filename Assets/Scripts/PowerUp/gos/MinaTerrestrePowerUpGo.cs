@@ -26,10 +26,15 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
 
     public override void iniciarPup()
     {
-        ligar();
         posInicial.y = powerUpDto.HalturaPupDraggavel;
         base.colocarNaPosicao(posInicial);
-        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(explodir());
+
+        EfeitoSpawner efeitoSpwaner = new EfeitoSpawner(powerUpDto.EfeitoMaterializeDto);
+        Sprite spriteBomba = powerUpDto.MinaDto.SpriteMina;
+        
+        efeitoSpwaner.spawnPowerUp(spriteBomba, getPosicao(), 0.8f);
+
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(explodir(efeitoSpwaner));
     }
 
     public override void resetPup()
@@ -39,9 +44,12 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         powerUpFinalizacao.preFinalizar();
         powerUpDto.EfeitoExplosao.gameObject.SetActive(false);
     }
-
-    private IEnumerator explodir()
+    private IEnumerator explodir(EfeitoSpawner efeitoSpwaner)
     {
+        yield return new WaitForSeconds(getDelayInicioMaterialize());
+
+        ligar();
+        efeitoSpwaner.desligar();
         animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayInicial);
 

@@ -48,6 +48,11 @@ public abstract class AbstractPowerUpGo : GO,
         powerUpFinalizacao.expirado();
         timeout();
     }
+
+    protected float getDelayInicioMaterialize()
+    {
+        return powerUpDto.EfeitoMaterializeDto.DelayDuracao;
+    }
     
     protected override GOContexto getGOContext()
     {

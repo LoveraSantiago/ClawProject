@@ -21,7 +21,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
 
     public override float getDelayInicio()
     {
-        return powerUpDto.EfeitoMaterializeDto.DelayDuracao;
+        return getDelayInicioMaterialize();
     }
 
     public override void colocarNaPosicao(Vector3 posicao)
@@ -44,7 +44,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner(powerUpDto.EfeitoMaterializeDto);
         Sprite spriteMissil = powerUpDto.MissilNuclearDto.SpriteMissilNuclear;
-        efeitoSpwaner.spawnPowerUp(spriteMissil, getPosicao().y, 1.25f);
+        efeitoSpwaner.spawnPowerUp(spriteMissil, getPosicao(), 1.25f);
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
     }
 
