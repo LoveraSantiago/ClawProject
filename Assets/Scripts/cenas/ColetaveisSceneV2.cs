@@ -25,7 +25,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         ContextoEstaticoUtils.loading.fecharModal();
 
         ColetaveisParaPrateleiras coletaveisParaPrateleiras = new ColetaveisParaPrateleiras();
-        timerFichaOuro      = new TimerFicha(mainDto.TimerFichaDto, null, Ficha.OURO);
+        timerFichaOuro      = new TimerFicha(mainDto.TimerFichaDto, somManager, Ficha.OURO);
         prateleiras         = new Prateleiras(mainDto.PrateleirasDto, coletaveisParaPrateleiras);                
         movimentadorArmario = new MovimentadorDeArmario(mainDto);
         detalheColetavel    = new CanvasDetalheColetavel(mainDto, coletaveisParaPrateleiras);

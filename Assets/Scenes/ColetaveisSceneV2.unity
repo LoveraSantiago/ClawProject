@@ -4449,6 +4449,9 @@ MonoBehaviour:
       somBatidaAbrirModal:
         volume: 1
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
+      somClique:
+        volume: 0.5
+        audioClip: {fileID: 8300000, guid: 3acd285413e4aa445b1e3d9a45eee20d, type: 3}
     prefabLoading: {fileID: 1390433028}
     gosDesligar:
     - {fileID: 1074246855}

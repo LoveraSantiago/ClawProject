@@ -24,11 +24,10 @@ public abstract class SomManager : SomLoading
         } 
     }
 
-    public void playSomBackground()
+    public virtual void playSomBackground()
     {
         audioPlay(getAudioSourceBackground(), audioDto.SomBackground);
     }
-
 
     protected void audioPlay(AudioSource audioSource, AudioClipDto audioClipDto)
     {

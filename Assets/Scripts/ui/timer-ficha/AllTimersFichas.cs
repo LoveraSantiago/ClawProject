@@ -6,11 +6,11 @@ public class AllTimersFichas
     private TimerFicha timerFichaPrata;
     private TimerFicha timerFichaBronze;  
 
-    public AllTimersFichas(TimerFichaDto[] timerFichaDto, SomMap somMap)
+    public AllTimersFichas(TimerFichaDto[] timerFichaDto, SomTimerFicha somTimerFicha)
     {
-        timerFichaOuro   = new TimerFicha(timerFichaDto[0], somMap, Ficha.OURO);
-        timerFichaPrata  = new TimerFicha(timerFichaDto[1], somMap, Ficha.PRATA);
-        timerFichaBronze = new TimerFicha(timerFichaDto[2], somMap, Ficha.BRONZE);
+        timerFichaOuro   = new TimerFicha(timerFichaDto[0], somTimerFicha, Ficha.OURO);
+        timerFichaPrata  = new TimerFicha(timerFichaDto[1], somTimerFicha, Ficha.PRATA);
+        timerFichaBronze = new TimerFicha(timerFichaDto[2], somTimerFicha, Ficha.BRONZE);
     }
 
     public void update()
