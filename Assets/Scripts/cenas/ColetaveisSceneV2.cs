@@ -7,7 +7,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
     [SerializeField] private MainColetaveisDto mainDto;
 
     private TimerFicha timerFichaOuro;
-    private Prateleiras prateleiras;    
+    private Prateleiras prateleiras;
+    private SomManagerColetaveis somManager;
     private MovimentadorDeArmario movimentadorArmario;
     private CanvasDetalheColetavel detalheColetavel;
 
@@ -20,7 +21,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         HelperMapaEntidade.configurar(prefabLevels);
 
         PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
-        SomManagerColetaveis somManager = new SomManagerColetaveis(mainDto.AudioColetaveisDto);
+        somManager = new SomManagerColetaveis(mainDto.AudioColetaveisDto);
         prefabLoading.iniciarLoading(somManager, mainDto.GosDesligar);
         ContextoEstaticoUtils.loading.fecharModal();
 
@@ -59,6 +60,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
                 }
                 else
                 {
+                    somManager.playSomCliqueVoltar();
                     ContextoEstaticoUtils.loading.irParaMapScene();
                 }
             });
