@@ -5,7 +5,7 @@ public class SomManagerColetaveis : SomManager,
     private AudioColetaveisDto audioDto;
 
     public SomManagerColetaveis(AudioColetaveisDto audioDto) 
-        : base(audioDto, 1)
+        : base(audioDto, 2)
     {
         this.audioDto = audioDto;
     }
@@ -30,8 +30,18 @@ public class SomManagerColetaveis : SomManager,
         audioPlayOneShot(getComumAudioSource(), audioDto.SomCliqueColetavel);
     }
 
+    public void playSomZoomArmario()
+    {
+        audioPlayOneShot(getReservaAudioSource(), audioDto.SomZoomArmario);
+    }
+
     public AudioSource getComumAudioSource()
     {
         return getAudioSource(1);
+    }
+    
+    public AudioSource getReservaAudioSource()
+    {
+        return getAudioSource(2);
     }
 }

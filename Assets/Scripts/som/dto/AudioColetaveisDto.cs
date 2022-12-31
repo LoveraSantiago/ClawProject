@@ -8,8 +8,11 @@ public class AudioColetaveisDto : AudioDto
     [SerializeField] private AudioClipDto somCliqueVoltar;
     [SerializeField] private AudioClipDto somClique;
     [SerializeField] private AudioClipDto somCliqueColetavel;
+    [SerializeField] private AudioClipDto somZoomArmario;
 
     public AudioClipDto SomCliqueVoltar { get { return somCliqueVoltar; } }
     public AudioClipDto SomClique { get { return somClique; } }
     public AudioClipDto SomCliqueColetavel { get { return somCliqueColetavel; } }
+    public AudioClipDto SomZoomArmario { get { return somZoomArmario; } }
+    
 }
