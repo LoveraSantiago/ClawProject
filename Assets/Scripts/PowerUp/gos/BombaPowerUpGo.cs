@@ -21,7 +21,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
 
     public override float getDelayInicio()
     {
-        return powerUpDto.EfeitoMaterializeDto.DelayDuracao;
+        return getDelayInicioMaterialize();
     }
 
     public override void configurarPup()
@@ -38,7 +38,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         //Debug.Log("Bomba iniciada");
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner(powerUpDto.EfeitoMaterializeDto);
         Sprite spriteBomba = powerUpDto.BombaDto.SpriteBomba;
-        efeitoSpwaner.spawnPowerUp(spriteBomba, getPosicao().y, 1);
+        efeitoSpwaner.spawnPowerUp(spriteBomba, getPosicao(), 1);
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
     }
 
@@ -97,12 +97,13 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
             powerUpDto.BombaDto.RaioExplosao, 
             powerUpDto.BombaDto.AnguloHit, 
             powerUpDto.BombaDto.VelocidadeHit);        
+        
+        CameraShake cameraShake = new CameraShake();
+        cameraShake.shakeEParar(powerUpDto.BombaDto.CameraShakeDto);
     }
 
     private void processarPosExplosao()
     {
-        CameraShake cameraShake = new CameraShake();
-        cameraShake.shakeEParar(powerUpDto.BombaDto.CameraShakeDto);
         powerUpFinalizacao.preFinalizar();
     }
 

@@ -26,10 +26,15 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
 
     public override void iniciarPup()
     {
-        ligar();
         posInicial.y = powerUpDto.HalturaPupDraggavel;
         base.colocarNaPosicao(posInicial);
-        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(explodir());
+
+        EfeitoSpawner efeitoSpwaner = new EfeitoSpawner(powerUpDto.EfeitoMaterializeDto);
+        Sprite spriteBomba = powerUpDto.MinaDto.SpriteMina;
+        
+        efeitoSpwaner.spawnPowerUp(spriteBomba, getPosicao(), 0.8f);
+
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(explodir(efeitoSpwaner));
     }
 
     public override void resetPup()
@@ -37,11 +42,17 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         desligar();
         animacao.playIdle();        
         powerUpFinalizacao.preFinalizar();
-        powerUpDto.EfeitoExplosao.gameObject.SetActive(false);
+
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
+        efeitoExplosao.desligar(powerUpDto.EfeitoExplosaoMinaTerrestre);            
     }
 
-    private IEnumerator explodir()
+    private IEnumerator explodir(EfeitoSpawner efeitoSpwaner)
     {
+        yield return new WaitForSeconds(getDelayInicioMaterialize());
+
+        ligar();
+        efeitoSpwaner.desligar();
         animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayInicial);
 
@@ -61,7 +72,12 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
 
         Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MinaDto.HalturaExplosao, 0);
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
-        efeitoExplosao.explodir(powerUpDto.EfeitoExplosao, posicaoExplosao);
+        efeitoExplosao.explodir(powerUpDto.EfeitoExplosaoMinaTerrestre, posicaoExplosao);
+
+        somPowerUp.playSomExplosao();
+
+        CameraShake cameraShake = new CameraShake();        
+        cameraShake.shakeEParar(powerUpDto.MinaDto.CameraShakeDto);
     }
 
     private void processarPosExplosao()
@@ -71,8 +87,6 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         ExplosaoHit explosaoHit = new ExplosaoHit();
         explosaoHit.acertarGaiolas(colliderExplosao.transform.position, colliderExplosao.radius);
 
-        CameraShake cameraShake = new CameraShake();        
-        cameraShake.shakeEParar(powerUpDto.MinaDto.CameraShakeDto);
         resetPup();
     }    
 }

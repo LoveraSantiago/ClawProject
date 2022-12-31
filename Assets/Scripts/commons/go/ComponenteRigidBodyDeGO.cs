@@ -42,6 +42,11 @@ public class ComponenteRigidBodyDeGO : ComponenteSpriteDeGO
     {
         rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
+    
+    public virtual void fixarEixoY()
+    {
+        rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+    }
 
     public virtual void fixarEixoXY()
     {
