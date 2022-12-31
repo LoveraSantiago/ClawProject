@@ -27,7 +27,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
 
         ColetaveisParaPrateleiras coletaveisParaPrateleiras = new ColetaveisParaPrateleiras();
         timerFichaOuro      = new TimerFicha(mainDto.TimerFichaDto, somManager, Ficha.OURO);
-        prateleiras         = new Prateleiras(mainDto.PrateleirasDto, coletaveisParaPrateleiras);                
+        prateleiras         = new Prateleiras(mainDto.PrateleirasDto, coletaveisParaPrateleiras, somManager);                
         movimentadorArmario = new MovimentadorDeArmario(mainDto);
         detalheColetavel    = new CanvasDetalheColetavel(mainDto, coletaveisParaPrateleiras);
 
@@ -56,6 +56,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
         btnBack.onClick.AddListener(() => {
                 if (movimentadorArmario.isArmarioMovimentado())
                 {
+                    somManager.playSomCliqueItem();
                     detalheColetavel.fecharDetalhe();
                 }
                 else

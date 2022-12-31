@@ -4455,6 +4455,9 @@ MonoBehaviour:
       somClique:
         volume: 0.5
         audioClip: {fileID: 8300000, guid: 3acd285413e4aa445b1e3d9a45eee20d, type: 3}
+      somCliqueColetavel:
+        volume: 0.7
+        audioClip: {fileID: 8300000, guid: a8b967fbafab8584db3c534753ab0fef, type: 3}
     prefabLoading: {fileID: 1390433028}
     gosDesligar:
     - {fileID: 1074246855}

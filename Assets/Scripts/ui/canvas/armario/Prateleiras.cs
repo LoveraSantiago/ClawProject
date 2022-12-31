@@ -9,12 +9,13 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
     private PopuladorPrateleira populadorPrateleira;
     private ProdutorDeEvento<bool> produtorDeEvento;
 
-    public Prateleiras(PrateleirasDto prateleirasDto, ColetaveisParaPrateleiras coletaveisParaPrateleiras)
+    public Prateleiras(
+        PrateleirasDto prateleirasDto, ColetaveisParaPrateleiras coletaveisParaPrateleiras, SomManagerColetaveis somManager)
     {
         this.coletaveisParaPrateleiras = coletaveisParaPrateleiras;
         produtorDeEvento    = new ProdutorDeEvento<bool>();
         populadorPrateleira = new PopuladorPrateleira();        
-        configurarPrateleiras(prateleirasDto);                
+        configurarPrateleiras(prateleirasDto, somManager); 
     }
 
     public override void movimentarParaBaixo(PrateleirasDto prateleirasDto)
@@ -103,13 +104,13 @@ public class Prateleiras : ScrollMovimentador<PrateleirasDto>,
         propsDto.setPrateleiraBaixo(prateleirasDto.PrateleiraDto[indicePrateleira]);
     }   
 
-    private void configurarPrateleiras(PrateleirasDto prateleirasDto)
+    private void configurarPrateleiras(PrateleirasDto prateleirasDto, SomManagerColetaveis somManager)
     {
         ColetavelEntidade[] coletaveis = coletaveisParaPrateleiras.coletaveis;
         ConfiguradorDePrateleiras configurador = new ConfiguradorDePrateleiras(coletaveis, prateleirasDto);
         configurador.config1CalcularTamanhoArmario();
         configurador.config2CarregarReferenciasPosicoes();
-        configurador.config3PopularArmario(populadorPrateleira, produtorDeEvento);
+        configurador.config3PopularArmario(populadorPrateleira, produtorDeEvento, somManager);
 
         propsDto = configurador.propsDto;
         propsDto.setPrateleiraCima(prateleirasDto.PrateleiraDto[0]);

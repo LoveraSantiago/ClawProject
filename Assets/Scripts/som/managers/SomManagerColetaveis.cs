@@ -25,6 +25,11 @@ public class SomManagerColetaveis : SomManager,
         playSomCliqueItem();
     }
 
+    public void playSomCliqueColetavel()
+    {
+        audioPlayOneShot(getComumAudioSource(), audioDto.SomCliqueColetavel);
+    }
+
     public AudioSource getComumAudioSource()
     {
         return getAudioSource(1);

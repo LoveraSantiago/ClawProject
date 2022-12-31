@@ -153,7 +153,7 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento,
             time = decrementarTimer(time);
             yield return null;
         }
-        Debug.Log("Finalizado");
+        //Debug.Log("Finalizado");
 
         rtScrollRect.pivot = estadoPosicoesDto.pivotOriginal;
         estadoPosicoesDto.setMovimentado(false);        
