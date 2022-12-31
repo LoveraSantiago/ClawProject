@@ -11,8 +11,8 @@ public class FactoryPowerUpMinaTerrestre : AbstractFactoryPowerUp
                 .configSupplierDePowerUpGo(this)
                 .configIsClicavel(false)
                 .configDescricao(
-                    "Plante uma mina de explosão terrestre nos coletaveis para espalhar suas posições.",
-                    "Arraste o botão da mina terrestre para a area azulada indicada. Um explosão abaixo dos coletaveis é acionada quando a mina é solta no lugar que foi posicionada.");
+                    "Plante uma mina terrestre abaixo dos coletaveis para espalhar suas posições.",
+                    "Fique atento a àrea de plantio da mina.");
     }
 
     public override AbstractPowerUpGo fornecer()
