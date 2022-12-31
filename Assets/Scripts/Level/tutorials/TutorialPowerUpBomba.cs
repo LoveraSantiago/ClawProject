@@ -6,10 +6,9 @@ public class TutorialPowerUpBomba : AcaoPowerUpAcionado.ConsumidorEvento,
 {
     private bool finalizacaoDisparada;
     private MainGameDto mainDto;
+    private AllGameManagers allGameManagers;
     private AnimacaoTutorial animacaoTutorial;
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeEvento;
-
-    private AllGameManagers allGameManagers;
 
     public TutorialPowerUpBomba(AllGameManagers allGameManagers, MainGameDto mainDto)
     {

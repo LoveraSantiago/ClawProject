@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimacaoTutorial 
@@ -7,7 +5,7 @@ public class AnimacaoTutorial
     private static readonly int ANIM_PARTE_COLETAR = Animator.StringToHash("clique-coletar");
     private static readonly int ANIM_PARTE_POWERUP = Animator.StringToHash("clique-powerup");
     private static readonly int ANIM_PARTE_DRAGPUP = Animator.StringToHash("drag-powerup");
-    private static readonly int ANIM_PARTE_TEXTO = Animator.StringToHash("so-texto");
+    private static readonly int ANIM_PARTE_TEXTO   = Animator.StringToHash("so-texto");
 
     private Animator animator;
 
