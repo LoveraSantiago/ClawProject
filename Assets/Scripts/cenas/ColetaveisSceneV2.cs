@@ -42,6 +42,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
             .adicionarConsumidor(detalheColetavel);
 
         restaurarArmario();
+        somManager.playSomBackground();
     }
 
     private void Update()
