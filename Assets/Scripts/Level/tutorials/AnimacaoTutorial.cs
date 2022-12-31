@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class AnimacaoTutorial 
 {
+    private static readonly int IDLE                = Animator.StringToHash("idle");
     private static readonly int ANIM_PARTE_COLETAR  = Animator.StringToHash("clique-coletar");
     private static readonly int ANIM_PARTE_POWERUP  = Animator.StringToHash("clique-powerup");
     private static readonly int ANIM_PARTE_DRAGPUP  = Animator.StringToHash("drag-powerup");
@@ -13,6 +14,11 @@ public class AnimacaoTutorial
     public AnimacaoTutorial(Animator animator)
     {
         this.animator = animator;
+    }
+
+    public void playIdle()
+    {
+        animator.Play(IDLE);
     }
 
     public void playColetar()
