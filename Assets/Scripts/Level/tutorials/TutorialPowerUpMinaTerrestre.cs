@@ -26,7 +26,7 @@ public class TutorialPowerUpMinaTerrestre
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getGarraManager().parar();
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Mina disponivel!\nArraste para a area de acao e solte!";
-        animacaoTutorial.playPowerUp();
+        mainDto.TutorialDto.LblTexto.text = "Mina disponivel!\nArraste para a area de acao\ne solte!";
+        animacaoTutorial.playDragAreaPowerUp();
     }
 }
