@@ -2436,16 +2436,16 @@ MonoBehaviour:
         volume: 0.06
         audioClip: {fileID: 8300000, guid: 62f3dce088f8c0646b6cefd54e499d49, type: 3}
       somGarra:
-        volume: 0.03
+        volume: 0.13
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
       somBatidaAbrirModal:
         volume: 1
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
       somCliqueVoltar:
-        volume: 0.5
+        volume: 0.6
         audioClip: {fileID: 8300000, guid: fa108c0a81e575740b81033e701de32f, type: 3}
       somCliqueLevel:
-        volume: 0.5
+        volume: 0.6
         audioClip: {fileID: 8300000, guid: 3acd285413e4aa445b1e3d9a45eee20d, type: 3}
     prefabLoading: {fileID: 1617099972}
     gosDesligar:

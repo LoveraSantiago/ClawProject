@@ -1243,10 +1243,10 @@ MonoBehaviour:
     audioTitleDto:
       mainAudioSource: {fileID: 104041526}
       somBackground:
-        volume: 0.1
+        volume: 0.2
         audioClip: {fileID: 8300000, guid: 62f3dce088f8c0646b6cefd54e499d49, type: 3}
       somGarra:
-        volume: 0.025
+        volume: 0.125
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
       somBatidaAbrirModal:
         volume: 1
@@ -1258,13 +1258,13 @@ MonoBehaviour:
       delayBumpTexto3: 0.15
       delayBumpEstrela: 0.1
       somBumpTexto:
-        volume: 0.8
+        volume: 0.9
         audioClip: {fileID: 8300000, guid: 043c86f09fa068b46ba73b0486d14265, type: 3}
       somStart:
-        volume: 0.1
+        volume: 0.2
         audioClip: {fileID: 8300000, guid: a03714c7d1b136346841d029d1fe7e35, type: 3}
       somBumpEstrelas:
-        volume: 0.85
+        volume: 0.95
         audioClip: {fileID: 8300000, guid: fb39762ebe68af940bf391ed6d49f7fc, type: 3}
     goLoading: {fileID: 40799382}
     gosDesligar:
