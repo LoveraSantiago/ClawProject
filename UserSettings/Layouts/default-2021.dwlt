@@ -139,7 +139,7 @@ MonoBehaviour:
     width: 1440
     height: 817
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Project
   m_RootView: {fileID: 19}
   m_MinSize: {x: 875, y: 421}
   m_MaxSize: {x: 10000, y: 10000}
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 352
     height: 767
-  m_MinSize: {x: 277, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 25}
   m_Panes:
   - {fileID: 25}
@@ -215,8 +215,8 @@ MonoBehaviour:
     y: 0
     width: 422
     height: 680
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 27}
   m_Panes:
   - {fileID: 27}
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 88
+  controlID: 116
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 100
+  controlID: 64
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 6596
+  controlID: 22
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -557,7 +557,7 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Inspector
-    m_Image: {fileID: -2667387946076563598, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: -440750813802333266, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
@@ -696,7 +696,7 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Inspector
-    m_Image: {fileID: -2667387946076563598, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: -440750813802333266, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
@@ -715,7 +715,7 @@ MonoBehaviour:
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 432
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -968,9 +968,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -27.637829, y: 0.8739019, z: -0.8551087}
+    m_Target: {x: 1.1544657, y: 0, z: 90}
     speed: 2
-    m_Value: {x: -27.637829, y: 0.8739019, z: -0.8551087}
+    m_Value: {x: 1.154465, y: -0.00000018658254, z: 89.99999}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1021,9 +1021,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 68.54165
+    m_Target: 10.264865
     speed: 2
-    m_Value: 68.54165
+    m_Value: 10.264867
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1166,9 +1166,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 6a060200
-      m_LastClickedID: 132714
-      m_ExpandedIDs: e8fcfdffd801feff0e07feffda23feff4429feff6248feffb64dfeffe456feff625cfeff727afeff48a5feffa6a7feff66a8feffa4acfeff58b1feffa6b1fefffeb1feff42b7feff30bcfefff4bffeff42c0feffcac2feff8ac3feffc8c7feff7cccfeffcaccfeff22cdfeff66d2feff54d7feff18dbfeff66dbfeff36defefff6defeffece4feffa4e9fefffae9feff58eafeffa2effeffa8f4feff72f8feffc6f8feff6a18ffffe834ffff263dffffda4dffffd46dffff208fffff00d8ffff18e1ffff9ee8ffff0efbffff78670000b2a600009ca700009eae000088af000030d70000aaff000094000100
+      m_SelectedIDs: 0e890000
+      m_LastClickedID: 0
+      m_ExpandedIDs: b4bcffff8cc0ffff20c8fffff2cdffff6ed4ffff1ceaffffd0eeffff0efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1233,22 +1233,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Audio
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Audio
+  - Assets/Scenes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Public\Documents\ClawProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 43}
-    m_SelectedIDs: d8810000
-    m_LastClickedID: 33240
-    m_ExpandedIDs: 00000000467b00004a7b00000282000000ca9a3bffffff7f
+    m_SelectedIDs: 48750000
+    m_LastClickedID: 30024
+    m_ExpandedIDs: 0000000024750000267500002875000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1276,7 +1276,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000467b0000487b00004a7b0000
+    m_ExpandedIDs: 00000000247500002675000028750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1307,18 +1307,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000a0700000f0640000480f0000746a0000047f0000e069000090760000007f0000ac6a000024040000ae6a0000b66a0000b46a00004ea90000b267000088810100e2ac0000148b0000028f0000088f0000f073000076890000fe850000b69900009a74000046a40000447c0000e0750000f0750000e8750000f4750000f8750000006a00002a740000387c0000846500002a7c0000527c0000f6730000207b0000666a0000146a0000166a0000662f0100807b00007ec8000038040000387b0000ee6a0000a83c010024790000246b000078a901004e6b00004a6b00000e7a00000c7a0000287a0000ac770000c2690000f4710000f67900002c640000a2650000386d0000ac640000d2640000e06400006065000040740000b2650000b4950000c2640000c0640000c4640000b2640000386600001670000048040000cc660000ea6600004c0400001c660000d6680000ec65000050640000006f00003a640000c66e00005265000040680000c49e0000f66500004c650000ae66000044650000027000008a6600001e6b00003c6c00000a6c0000186d0000ee680000dc680000a66e0000706d0000007e0000e46b00007074000092670000a0670000a2670000246d00009e6700000e6c0000166c000032700000c26c00003a6b0000b2700000806a00001e6e0000706e0000f46f0000486d000078830000d46f000032e30000a86e0000a2a00000a6a000001c6a0000f2de000000000000506f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: SomTimerFicha
-      m_OriginalName: SomTimerFicha
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 115726
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 13}
     m_CreateAssetUtility:
