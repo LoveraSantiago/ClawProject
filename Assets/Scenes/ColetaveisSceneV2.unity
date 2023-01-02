@@ -4606,6 +4606,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4152461654618144344, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1400
+      objectReference: {fileID: 0}
     - target: {fileID: 6097345865915502950, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4636,7 +4640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509958741727034358, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1533
+      value: 1400
       objectReference: {fileID: 0}
     - target: {fileID: 8509958741943219004, guid: f521bda8a75ec5d40ad68f5a332992d2, type: 3}
       propertyPath: m_Pivot.x
