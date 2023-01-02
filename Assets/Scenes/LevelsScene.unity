@@ -2433,7 +2433,7 @@ MonoBehaviour:
     audioLevelDto:
       mainAudioSource: {fileID: 220680149}
       somBackground:
-        volume: 0.06
+        volume: 0.2
         audioClip: {fileID: 8300000, guid: 62f3dce088f8c0646b6cefd54e499d49, type: 3}
       somGarra:
         volume: 0.13
