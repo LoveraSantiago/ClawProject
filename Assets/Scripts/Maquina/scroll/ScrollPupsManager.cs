@@ -70,7 +70,7 @@ public class ScrollPupsManager : Draggavel,
                 ItemScrollDto itemSelecionado = scrollPups.getSpritePupTocado(posicaoTap);
                 Sprite sprPup = itemSelecionado.SprRendererImgPup.sprite;
                 PowerUpEntidade pupEntidade = PowerUpHelper.getTipoPupBySprite(sprPup);
-                int qtdPup = PlayerPrefsPowerUp.recuperarQtdPup(pupEntidade.nome);
+                int qtdPup = PowerUpHelper.recuperarQtdPup(pupEntidade);
                 if(qtdPup > 0)
                 {
                     qtdPup = subtrairPowerUp(pupEntidade.nome);
