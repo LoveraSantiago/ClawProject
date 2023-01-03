@@ -1,6 +1,7 @@
 public class SomManagerMap : SomManager,
                              SomMap, 
-                             SomTimerFicha
+                             SomTimerFicha,
+                             SomModalNoFicha
 {
     private AudioMapDto audioDto;
 

@@ -6,14 +6,14 @@ public class ModalNoFicha
     private readonly int ANIM_FECHAR   = Animator.StringToHash("fechar-modal");
     private ModalNoFichaDto modalNoFichaDto;
 
-    public ModalNoFicha(ModalNoFichaDto modalNoFichaDto, SomMap somMap)
+    public ModalNoFicha(ModalNoFichaDto modalNoFichaDto, SomModalNoFicha somModalNoFicha)
     {
         this.modalNoFichaDto = modalNoFichaDto;
-        modalNoFichaDto.BtnSair.onClick.AddListener(() => desligar(somMap));
-        modalNoFichaDto.BtnIrLoja.onClick.AddListener(() => irParaCena(somMap));
+        modalNoFichaDto.BtnSair.onClick.AddListener(() => desligar(somModalNoFicha));
+        modalNoFichaDto.BtnIrLoja.onClick.AddListener(() => irParaCena(somModalNoFicha));
     }
 
-    public void ligar(Ficha ficha, SomMap somMap)
+    public void ligar(Ficha ficha, SomModalNoFicha somModalNoFicha)
     {
         Color corEscolhida = Color.white;
         if(Ficha.BRONZE == ficha)
@@ -29,21 +29,21 @@ public class ModalNoFicha
             corEscolhida = modalNoFichaDto.CorPrata;
         }
         modalNoFichaDto.ImgFicha.color = corEscolhida;
-        somMap.playSomAbrirModal();
+        somModalNoFicha.playSomAbrirModal();
         modalNoFichaDto.Animator.Play(ANIM_OBJETIVO);
     }
 
-    private void irParaCena(SomMap somMap)
+    private void irParaCena(SomModalNoFicha somModalNoFicha)
     {
         modalNoFichaDto.Animator.Play(ANIM_FECHAR);
-        somMap.playSomClique();
+        somModalNoFicha.playSomClique();
         ContextoEstaticoUtils.loading.irParaLojaCena();
     }
 
-    private void desligar(SomMap somMap)
+    private void desligar(SomModalNoFicha somModalNoFicha)
     {
-        somMap.playSomCliqueCancelar();
-        somMap.playSomAbrirModal();
+        somModalNoFicha.playSomCliqueCancelar();
+        somModalNoFicha.playSomAbrirModal();
         modalNoFichaDto.Animator.Play(ANIM_FECHAR);        
     }    
 }

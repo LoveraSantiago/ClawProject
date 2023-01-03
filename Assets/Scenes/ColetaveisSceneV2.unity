@@ -4462,8 +4462,14 @@ MonoBehaviour:
         volume: 0.4
         audioClip: {fileID: 8300000, guid: 218f1e44b165a5d41bd052a972aa81dd, type: 3}
       somStartGame:
-        volume: 0
+        volume: 0.2
         audioClip: {fileID: 8300000, guid: a03714c7d1b136346841d029d1fe7e35, type: 3}
+      somCancelar:
+        volume: 0.28
+        audioClip: {fileID: 8300000, guid: 239f092fc5d70a04fa691a9a9c3239d8, type: 3}
+      abrirModal:
+        volume: 0.29
+        audioClip: {fileID: 8300000, guid: 218f1e44b165a5d41bd052a972aa81dd, type: 3}
     prefabLoading: {fileID: 1390433028}
     gosDesligar:
     - {fileID: 1074246855}

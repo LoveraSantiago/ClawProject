@@ -1,6 +1,7 @@
 using UnityEngine;
 public class SomManagerColetaveis : SomManager,
-                                    SomTimerFicha
+                                    SomTimerFicha, 
+                                    SomModalNoFicha
 {
     private AudioColetaveisDto audioDto;
 
@@ -38,15 +39,31 @@ public class SomManagerColetaveis : SomManager,
     public void playSomCliqueIrParaGame()
     {
         audioPlayOneShot(getComumAudioSource(), audioDto.SomStartGame);
+    } 
+
+    public void playSomClique()
+    {
+        playSomCliqueColetavel();
+    }
+
+    public void playSomCliqueCancelar()
+    {
+        audioPlayOneShot(getComumAudioSource(), audioDto.SomCancelar);
+    }
+
+    public void playSomAbrirModal()
+    {
+        audioPlayOneShot(getComumAudioSource(), audioDto.AbrirModal);
     }
 
     public AudioSource getComumAudioSource()
     {
         return getAudioSource(1);
     }
-    
+
     public AudioSource getReservaAudioSource()
     {
         return getAudioSource(2);
     }
+
 }
