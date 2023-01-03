@@ -1,5 +1,7 @@
 public class SomManagerMap : SomManager,
-                             SomMap
+                             SomMap, 
+                             SomTimerFicha,
+                             SomModalNoFicha
 {
     private AudioMapDto audioDto;
 
@@ -39,7 +41,7 @@ public class SomManagerMap : SomManager,
         audioPlayOneShot(getAudioSourceUi(), audioDto.SomStart);
     }
 
-    public void playSomBackground()
+    public override void playSomBackground()
     {
         audioPlay(getAudioSourceBackground(), audioDto.SomBackground);
     }
@@ -47,5 +49,10 @@ public class SomManagerMap : SomManager,
     public void playSomUiBaloesLevel()
     {
         audioPlayOneShot(getAudioSourceUi(), audioDto.BumpBaloesLevels);
+    }
+
+    public void playSomCliqueIrParaLojaScene()
+    {
+        playSomClique();
     }
 }

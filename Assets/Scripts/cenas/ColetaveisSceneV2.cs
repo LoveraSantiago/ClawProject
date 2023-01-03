@@ -7,7 +7,8 @@ public class ColetaveisSceneV2 : MonoBehaviour
     [SerializeField] private MainColetaveisDto mainDto;
 
     private TimerFicha timerFichaOuro;
-    private Prateleiras prateleiras;    
+    private Prateleiras prateleiras;
+    private SomManagerColetaveis somManager;
     private MovimentadorDeArmario movimentadorArmario;
     private CanvasDetalheColetavel detalheColetavel;
 
@@ -20,18 +21,18 @@ public class ColetaveisSceneV2 : MonoBehaviour
         HelperMapaEntidade.configurar(prefabLevels);
 
         PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
-        SomManagerColetaveis somManager = new SomManagerColetaveis(mainDto.AudioColetaveisDto);
+        somManager = new SomManagerColetaveis(mainDto.AudioColetaveisDto);
         prefabLoading.iniciarLoading(somManager, mainDto.GosDesligar);
         ContextoEstaticoUtils.loading.fecharModal();
 
         ColetaveisParaPrateleiras coletaveisParaPrateleiras = new ColetaveisParaPrateleiras();
-        timerFichaOuro      = new TimerFicha(mainDto.TimerFichaDto, null, Ficha.OURO);
-        prateleiras         = new Prateleiras(mainDto.PrateleirasDto, coletaveisParaPrateleiras);                
-        movimentadorArmario = new MovimentadorDeArmario(mainDto);
-        detalheColetavel    = new CanvasDetalheColetavel(mainDto, coletaveisParaPrateleiras);
+        timerFichaOuro      = new TimerFicha(mainDto.TimerFichaDto, somManager, Ficha.OURO);
+        prateleiras         = new Prateleiras(mainDto.PrateleirasDto, coletaveisParaPrateleiras, somManager);                
+        movimentadorArmario = new MovimentadorDeArmario(mainDto, somManager);
+        detalheColetavel    = new CanvasDetalheColetavel(mainDto, coletaveisParaPrateleiras, somManager);
 
         configBtnBack(mainDto.BtnBack);
-        mainDto.ScrollRect.onValueChanged.AddListener((pos) => prateleiras.movimentado(pos, mainDto.PrateleirasDto));
+        mainDto.ScrollRect.onValueChanged.AddListener((posicao) => prateleiras.movimentado(posicao, mainDto.PrateleirasDto));
 
         new AcaoBtnPrateleiraAcionado()
             .configurarProdutor(prateleiras)
@@ -42,6 +43,7 @@ public class ColetaveisSceneV2 : MonoBehaviour
             .adicionarConsumidor(detalheColetavel);
 
         restaurarArmario();
+        somManager.playSomBackground();
     }
 
     private void Update()
@@ -54,10 +56,12 @@ public class ColetaveisSceneV2 : MonoBehaviour
         btnBack.onClick.AddListener(() => {
                 if (movimentadorArmario.isArmarioMovimentado())
                 {
+                    somManager.playSomCliqueItem();
                     detalheColetavel.fecharDetalhe();
                 }
                 else
                 {
+                    somManager.playSomCliqueVoltar();
                     ContextoEstaticoUtils.loading.irParaMapScene();
                 }
             });

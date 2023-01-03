@@ -4778,7 +4778,7 @@ MonoBehaviour:
         volume: 0
         audioClip: {fileID: 0}
       somGarra:
-        volume: 0.02
+        volume: 0.13
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
       somBatidaAbrirModal:
         volume: 1

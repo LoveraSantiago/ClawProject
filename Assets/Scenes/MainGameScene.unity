@@ -10782,7 +10782,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.47368422, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -21794,10 +21794,10 @@ MonoBehaviour:
     audioGameDto:
       mainAudioSource: {fileID: 519420030}
       somBackground:
-        volume: 0.5
+        volume: 0.6
         audioClip: {fileID: 8300000, guid: 9ab0aa6a032f1004595d6bcaf989713b, type: 3}
       somGarra:
-        volume: 0.045
+        volume: 0.055
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
       somBatidaAbrirModal:
         volume: 1
@@ -21815,31 +21815,31 @@ MonoBehaviour:
         volume: 1
         audioClip: {fileID: 8300000, guid: 82edef6eac25f524cbfc99e5ece0e3d4, type: 3}
       somColetadoCaindo:
-        volume: 0.8
+        volume: 0.9
         audioClip: {fileID: 8300000, guid: da4765f3630332f4abe79a6c06a868e0, type: 3}
       somColetadoNoTubo:
         volume: 1
         audioClip: {fileID: 8300000, guid: 6ba85e467cec4a14b87eeb98f686df51, type: 3}
       somGarraAgarrada:
-        volume: 0.7
+        volume: 0.8
         audioClip: {fileID: 8300000, guid: 0a456e588b2e0264c8f86d7040e09183, type: 3}
       somGarraLateral:
-        volume: 0.4
+        volume: 0.5
         audioClip: {fileID: 8300000, guid: 4bbdb2013bf43174ab2655c927b520a0, type: 3}
       somGarraInicioDescida:
-        volume: 0.15
+        volume: 0.25
         audioClip: {fileID: 8300000, guid: 454eb1f25a6edb843be3277d3450d833, type: 3}
       somMaqColetaveis:
         volume: 0.9
         audioClip: {fileID: 8300000, guid: 803387846d4bc0840bb58e4d52a49c94, type: 3}
       somMaqAlarme:
-        volume: 0.45
+        volume: 0.55
         audioClip: {fileID: 8300000, guid: 116b10e87252f174ebc712bb83ac6015, type: 3}
       somMaqAlarmeTimer:
-        volume: 0.15
+        volume: 0.25
         audioClip: {fileID: 8300000, guid: c106aa3f0dfb8134cbf522f43dc62130, type: 3}
       somMaqBlinkTimer:
-        volume: 0.1
+        volume: 0.2
         audioClip: {fileID: 8300000, guid: a58c02aabe714b04b8ac6ddec25956c1, type: 3}
       somMaqCliqueBtn:
         volume: 1
@@ -21848,13 +21848,13 @@ MonoBehaviour:
         volume: 1
         audioClip: {fileID: 8300000, guid: 3acd285413e4aa445b1e3d9a45eee20d, type: 3}
       somMaqCliqueScrollCancel:
-        volume: 0.2
+        volume: 0.3
         audioClip: {fileID: 8300000, guid: 239f092fc5d70a04fa691a9a9c3239d8, type: 3}
       abrirModal:
-        volume: 0.15
+        volume: 0.25
         audioClip: {fileID: 8300000, guid: 218f1e44b165a5d41bd052a972aa81dd, type: 3}
       abrirModalSucesso:
-        volume: 0.7
+        volume: 0.8
         audioClip: {fileID: 8300000, guid: 307e060c11fea634e98ef843d01bdc73, type: 3}
       somExplosao:
         volume: 1
@@ -69643,7 +69643,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.47368422, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -117552,7 +117552,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.47368422, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

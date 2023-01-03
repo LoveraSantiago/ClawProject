@@ -33,7 +33,8 @@ public class ConfiguradorDePrateleiras
         propsDto = new PropsCimaBaixoPrateleiraDto(posYReferenciaBaixo, posYReferenciaCima);
     }
 
-    public void config3PopularArmario(PopuladorPrateleira populadorPrateleira, ProdutorDeEvento<bool> produtorDeEvento)
+    public void config3PopularArmario(
+        PopuladorPrateleira populadorPrateleira, ProdutorDeEvento<bool> produtorDeEvento, SomManagerColetaveis somManager)
     {
         for (int contadorPrateleiras = 0; contadorPrateleiras < prateleirasDto.PrateleiraDto.Length; contadorPrateleiras++)
         {
@@ -45,7 +46,10 @@ public class ConfiguradorDePrateleiras
                 if (propsDto.contadorBaixoSprites < coletaveis.Length)
                 {
                     populadorPrateleira.popularItemDaPrateleira(itemPrateleiraIt, coletaveis[propsDto.contadorBaixoSprites]);
-                    itemPrateleiraIt.BtnItem.onClick.AddListener(() => btnPrateleiraAcionado(produtorDeEvento));
+                    itemPrateleiraIt.BtnItem.onClick.AddListener(() => {
+                            somManager.playSomCliqueColetavel();
+                            btnPrateleiraAcionado(produtorDeEvento);
+                        });
                     itensPopulados++;
                 }
                 else

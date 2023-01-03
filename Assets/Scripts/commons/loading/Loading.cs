@@ -96,7 +96,7 @@ public class Loading
             acionado = true;
             somLoading.stopSomBackground();
             loadingDto.Animator.Play(ABRIR_MODAL);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.15f);
 
             somLoading.playSomBumpModal();
             loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 0);

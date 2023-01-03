@@ -6,17 +6,21 @@ public class BotaoIrGameColetaveis
     private ModalNoFicha modalNoFicha;
     private IndiceArmarioSelecionadoDto indiceArmarioSelecionado;
 
-    public BotaoIrGameColetaveis(Button btnColetavel, ModalNoFichaDto modalNoFichaDto)
+    public BotaoIrGameColetaveis(
+        Button btnColetavel, ModalNoFichaDto modalNoFichaDto, SomManagerColetaveis somManager)
     {
-        btnColetavel.onClick.AddListener(() => irParaLevelDeColetado());
-        modalNoFicha = new ModalNoFicha(modalNoFichaDto, null);
+        btnColetavel.onClick.AddListener(() => {                
+                irParaLevelDeColetado(somManager);
+            });
+        modalNoFicha = new ModalNoFicha(modalNoFichaDto, somManager);
     }
 
-    private void irParaLevelDeColetado()
+    private void irParaLevelDeColetado(SomManagerColetaveis somManager)
     {   
         if(PlayerPrefsFichas.possueFichas(Ficha.OURO, 1))
         {
             PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
+            somManager.playSomCliqueIrParaGame();
 
             MapaEntidade mapaEntidade = coletavelEntidade.mapaEntidade;
             AbstractLevel level = mapaEntidade.getLevelColetavelByIndice(coletavelEntidade.indice);
@@ -28,7 +32,7 @@ public class BotaoIrGameColetaveis
         }
         else
         {
-            modalNoFicha.ligar(Ficha.OURO, null);
+            modalNoFicha.ligar(Ficha.OURO, somManager);
         }
     }
 

@@ -11,23 +11,24 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento,
     private EstadoPosicoesMovimentadorArmarioDto estadoPosicoesDto;
 
     private ScrollRect scrollRect;
+    private SomManagerColetaveis somManager;
     private ProdutorDeEvento<IndiceArmarioSelecionadoDto> produtorDeEvento;
 
-    public MovimentadorDeArmario(MainColetaveisDto mainDto)
+    public MovimentadorDeArmario(MainColetaveisDto mainDto, SomManagerColetaveis somManager)
     {
         this.movimentadorDto = mainDto.MovimentadorDto;
-        scrollRect = mainDto.ScrollRect;
-        prateleirasDto = mainDto.PrateleirasDto;
+        scrollRect           = mainDto.ScrollRect;
+        prateleirasDto       = mainDto.PrateleirasDto;
+        this.somManager      = somManager;
 
         Vector2 posItemReferencia = pegarPosicaoReferencia(mainDto.PrateleirasDto);
-        estadoPosicoesDto = new EstadoPosicoesMovimentadorArmarioDto(posItemReferencia);
-        
-        produtorDeEvento = new ProdutorDeEvento<IndiceArmarioSelecionadoDto>();
+        estadoPosicoesDto = new EstadoPosicoesMovimentadorArmarioDto(posItemReferencia);        
+        produtorDeEvento  = new ProdutorDeEvento<IndiceArmarioSelecionadoDto>();
     }
 
     public void movimentarAnimado()
     {
-        Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
+        //Debug.Log("Vertical normalized position " + scrollRect.verticalNormalizedPosition);
         estadoPosicoesDto.setMovimentado(true);
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
         int indiceItem = int.Parse(goSelecionado.name);
@@ -75,7 +76,8 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento,
 
     public void voltar(ScrollRect scrollRect)
     {
-        Debug.Log("Voltar chamado");
+        //Debug.Log("Voltar chamado");
+        somManager.playSomZoomArmario();
         RectTransform rtScrollRect = ((RectTransform)scrollRect.transform);
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(voltarArmario(rtScrollRect));
     }
@@ -153,7 +155,7 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento,
             time = decrementarTimer(time);
             yield return null;
         }
-        Debug.Log("Finalizado");
+        //Debug.Log("Finalizado");
 
         rtScrollRect.pivot = estadoPosicoesDto.pivotOriginal;
         estadoPosicoesDto.setMovimentado(false);        
@@ -191,16 +193,17 @@ public class MovimentadorDeArmario : AcaoItemArmarioSelecionado.ProdutorEvento,
         return new Vector2(rItemSelecionado.anchoredPosition.x, rPrateleira.anchoredPosition.y);
     }
 
-    ProdutorDeEvento<IndiceArmarioSelecionadoDto> AcaoItemArmarioSelecionado.ProdutorEvento.getProdutorDeEvento()
-    {
-        return produtorDeEvento;
-    }
-
     void AcaoBtnPrateleiraAcionado.ConsumidorEvento.consumirEvento(bool evento)
     {
         if (!isArmarioMovimentado())
         {
+            somManager.playSomZoomArmario();
             movimentarAnimado();
         }
+    }
+
+    ProdutorDeEvento<IndiceArmarioSelecionadoDto> AcaoItemArmarioSelecionado.ProdutorEvento.getProdutorDeEvento()
+    {
+        return produtorDeEvento;
     }
 }
