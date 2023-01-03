@@ -29,10 +29,10 @@ public class ColetaveisSceneV2 : MonoBehaviour
         timerFichaOuro      = new TimerFicha(mainDto.TimerFichaDto, somManager, Ficha.OURO);
         prateleiras         = new Prateleiras(mainDto.PrateleirasDto, coletaveisParaPrateleiras, somManager);                
         movimentadorArmario = new MovimentadorDeArmario(mainDto, somManager);
-        detalheColetavel    = new CanvasDetalheColetavel(mainDto, coletaveisParaPrateleiras);
+        detalheColetavel    = new CanvasDetalheColetavel(mainDto, coletaveisParaPrateleiras, somManager);
 
         configBtnBack(mainDto.BtnBack);
-        mainDto.ScrollRect.onValueChanged.AddListener((pos) => prateleiras.movimentado(pos, mainDto.PrateleirasDto));
+        mainDto.ScrollRect.onValueChanged.AddListener((posicao) => prateleiras.movimentado(posicao, mainDto.PrateleirasDto));
 
         new AcaoBtnPrateleiraAcionado()
             .configurarProdutor(prateleiras)

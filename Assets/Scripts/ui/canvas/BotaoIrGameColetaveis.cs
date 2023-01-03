@@ -6,9 +6,13 @@ public class BotaoIrGameColetaveis
     private ModalNoFicha modalNoFicha;
     private IndiceArmarioSelecionadoDto indiceArmarioSelecionado;
 
-    public BotaoIrGameColetaveis(Button btnColetavel, ModalNoFichaDto modalNoFichaDto)
+    public BotaoIrGameColetaveis(
+        Button btnColetavel, ModalNoFichaDto modalNoFichaDto, SomManagerColetaveis somManager)
     {
-        btnColetavel.onClick.AddListener(() => irParaLevelDeColetado());
+        btnColetavel.onClick.AddListener(() => {
+            somManager.playSomCliqueIrParaGame();
+                irParaLevelDeColetado();
+            });
         modalNoFicha = new ModalNoFicha(modalNoFichaDto, null);
     }
 

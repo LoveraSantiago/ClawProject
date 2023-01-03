@@ -35,6 +35,11 @@ public class SomManagerColetaveis : SomManager,
         audioPlayOneShot(getReservaAudioSource(), audioDto.SomZoomArmario);
     }
 
+    public void playSomCliqueIrParaGame()
+    {
+        audioPlayOneShot(getComumAudioSource(), audioDto.SomStartGame);
+    }
+
     public AudioSource getComumAudioSource()
     {
         return getAudioSource(1);
