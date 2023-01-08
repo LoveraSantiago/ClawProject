@@ -8,6 +8,7 @@ public class AnimacaoTutorial
     private static readonly int ANIM_PARTE_DRAGPUP  = Animator.StringToHash("drag-powerup");
     private static readonly int ANIM_PARTE_TEXTO    = Animator.StringToHash("so-texto");
     private static readonly int ANIM_PARTE_DRAGAREA = Animator.StringToHash("drag-area-powerup");
+    private static readonly int ANIM_PARTE_ALVO     = Animator.StringToHash("clique-alvo");
 
     private Animator animator;
 
@@ -44,5 +45,10 @@ public class AnimacaoTutorial
     public void playParteTexto()
     {
         animator.Play(ANIM_PARTE_TEXTO);
+    }
+
+    public void playAlvo()
+    {
+        animator.Play(ANIM_PARTE_ALVO);
     }
 }

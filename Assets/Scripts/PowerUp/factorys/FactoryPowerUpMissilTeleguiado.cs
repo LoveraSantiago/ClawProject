@@ -11,7 +11,7 @@ public class FactoryPowerUpMissilTeleguiado : AbstractFactoryPowerUp
                 .configIsClicavel(true)
                 .configDescricao(
                     "Acerte um missil teleguiado no coletavel de interesse para mudar a posição atual dele.",
-                    "Selecione a mira do coletavel de interesse a ser acertado pelo missil teleguiado.");
+                    "");
     }
 
     public override AbstractPowerUpGo fornecer()

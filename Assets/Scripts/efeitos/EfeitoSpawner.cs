@@ -13,7 +13,7 @@ public class EfeitoSpawner
         this.efeitoMaterializeDto = efeitoMaterializeDto;
     }
 
-    public void spawnPowerUp(Sprite imgMaterialize, Vector3 posicao, float escala)
+    public void spawnPowerUp(Sprite imgMaterialize, Vector3 posicao, Vector3 escala)
     {
         efeitoMaterializeDto.EfeitoSpawnParticulas.gameObject.SetActive(true);
         efeitoMaterializeDto.EfeitoSpawnParticulas.Play();
@@ -21,7 +21,7 @@ public class EfeitoSpawner
         efeitoMaterializeDto.MaterialMaterialize.SetFloat(ID_TIMESTAMP, Time.time);
         efeitoMaterializeDto.MaterialMaterialize.SetFloat(ID_VELOCIDADE, efeitoMaterializeDto.VelocidadeMaterializacao);
         efeitoMaterializeDto.MaterialMaterialize.SetTexture(ID_MATERIALIZE, imgMaterialize.texture);
-        efeitoMaterializeDto.GoGo.transform.localScale = new Vector3(escala, escala, 0);
+        efeitoMaterializeDto.GoGo.transform.localScale = escala;
     }
 
     public void desligar()

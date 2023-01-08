@@ -17,6 +17,7 @@ public class BombaDto
     [Space(3)]
     [SerializeField] private Sprite spriteBomba;
     [SerializeField] private GameObject bombaGo;
+    [SerializeField] private ParticleSystem efeitoExplosao;
 
     public float AngGarra { get { return angGarra; } }
 
@@ -31,4 +32,6 @@ public class BombaDto
     public CameraShakeDto CameraShakeDto { get { return cameraShakeDto; } }
     public Sprite SpriteBomba { get { return spriteBomba; } }
     public GameObject BombaGo { get { return bombaGo; } }
+
+    public ParticleSystem EfeitoExplosao { get { return efeitoExplosao; } }
 }

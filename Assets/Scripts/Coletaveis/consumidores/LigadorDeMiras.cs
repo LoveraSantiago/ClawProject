@@ -8,8 +8,8 @@ public class LigadorDeMiras : Consumidor<Coletavel>
     }
 
     public void consumir(Coletavel coletavel)
-    {
-        if (coletavel.isAtivo())
+    {        
+        if (coletavel.isAtivo() && coletavel.isLayerNormal())
         {
             if (filtrarGaiolas)
             {

@@ -33,10 +33,5 @@ public abstract class AbstractExplosivelPowerUpGo : AbstractPowerUpGo,
         return TagUtils.isColetavel(evento) || 
                TagUtils.isGaiola(evento) || 
                evento.gameObject.layer == LayerUtils.LAYER_CONTAINER_COLETAVEL_INDICE;
-    }
-
-    protected void desligarParticulasEfeitoExplosao()
-    {
-        powerUpDto.EfeitoExplosao.gameObject.SetActive(false);
-    }   
+    }  
 }

@@ -57,7 +57,7 @@ public class PowerUpHelper
         return null;
     }
 
-    private static int recuperarQtdPup(PowerUpEntidade pupEntidade)
+    public static int recuperarQtdPup(PowerUpEntidade pupEntidade)
     {        
         if (LevelUtils.isTutorialLevel())
         {

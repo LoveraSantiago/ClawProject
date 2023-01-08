@@ -38,7 +38,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         //Debug.Log("Bomba iniciada");
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner(powerUpDto.EfeitoMaterializeDto);
         Sprite spriteBomba = powerUpDto.BombaDto.SpriteBomba;
-        efeitoSpwaner.spawnPowerUp(spriteBomba, getPosicao(), 1);
+        efeitoSpwaner.spawnPowerUp(spriteBomba, getPosicao(), Vector3.one);
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
     }
 
@@ -55,11 +55,10 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         animacao.playIdle();
         acionado = false;
         desafixarVerticalmente();
-        colocarNoAngulo(0);
-        desligarParticulasEfeitoExplosao();
+        colocarNoAngulo(0);        
 
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
-        efeitoExplosao.desligar(powerUpDto.EfeitoExplosao);
+        efeitoExplosao.desligar(powerUpDto.BombaDto.EfeitoExplosao);
     }
 
     public void consumir(Collision2D evento)
@@ -89,7 +88,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     private void processarExplosao()
     {
         EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
-        efeitoExplosao.explodir(powerUpDto.EfeitoExplosao, getPosicao());
+        efeitoExplosao.explodir(powerUpDto.BombaDto.EfeitoExplosao, getPosicao());
         somPowerUp.playSomExplosao();
 
         ExplosaoHit explosaoHit = new ExplosaoHit();

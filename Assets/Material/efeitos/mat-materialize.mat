@@ -32,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _imgMaterialize:
-        m_Texture: {fileID: 2800000, guid: a7d45f520d37bf4489a4bb139dcd9335, type: 3}
+        m_Texture: {fileID: 2800000, guid: e72d588508fe87d449d8ad6aad3b969b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -51,7 +51,7 @@ Material:
     m_Floats:
     - _direcao: 1
     - _ligado: 1
-    - _timestamp: 14.821606
+    - _timestamp: 15.139999
     - _velocidade: 1.2
     m_Colors: []
   m_BuildTextureStacks: []

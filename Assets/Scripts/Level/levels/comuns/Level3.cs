@@ -120,5 +120,12 @@ public class Level3 : AbstractLevelElevador
     public override bool isLevelAlbedo0()
     {
         return false;
-    }    
+    }
+
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        return new PowerUpsParaLevel(2)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MISSIL_TELEGUIADO, PowerUpEnums.TIPO.MISSIL_TELEGUIADO })
+           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MISSIL_TELEGUIADO, PowerUpEnums.TIPO.MISSIL_TELEGUIADO });
+    }
 }
