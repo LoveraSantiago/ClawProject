@@ -100,6 +100,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         efeitoFaiscas.gameObject.SetActive(true);
         efeitoFaiscas.Play();
         capsuleCollider.isTrigger = true;
+        somPowerUp.playSomMissil();
     }
 
     private IEnumerator processarMissilEmRota(GO go)
@@ -110,7 +111,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         int tamanhoDaRota = pathMissilDto.PathPointsMissil.Length;
 
         RotaDoMissilTeleguiado rota = new RotaDoMissilTeleguiado();
-        rota.recalcularRota(go.getPosicao(), pathMissilDto);
+        rota.recalcularRota(go.getPosicao(), pathMissilDto);        
         yield return rota.rotaParaOAlvo(this, velocidadeMissil, tamanhoDaRota);
     }
 

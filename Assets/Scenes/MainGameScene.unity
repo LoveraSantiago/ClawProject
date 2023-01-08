@@ -21861,6 +21861,9 @@ MonoBehaviour:
       somExplosao:
         volume: 1
         audioClip: {fileID: 8300000, guid: 1fd5648b19586544babe1622b3cc4941, type: 3}
+      somMissil:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: 334a19371065a1f41ad9afed8409b733, type: 3}
     prefabLoading: {fileID: 712928913}
     gosDesligar:
     - {fileID: 1078757848}
