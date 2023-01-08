@@ -4,7 +4,7 @@ public class LevelTutorialPupMissilTeleguiado : AbstractLevelTutorialPowerUp
     {
         return new int[,]
         {
-            {0, 1, 2, 3, 2, 1, 0},
+            {-1, -1,  2,  3,  2, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
@@ -24,7 +24,7 @@ public class LevelTutorialPupMissilTeleguiado : AbstractLevelTutorialPowerUp
 
     public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
-        TutorialPowerUpMissilTeleguiado tutorial = new TutorialPowerUpMissilTeleguiado();
+        TutorialPowerUpMissilTeleguiado tutorial = new TutorialPowerUpMissilTeleguiado(allGameManagers, mainDto);
         return new MainGameEventosPowerUpMissilTeleguiado(allGameManagers, tutorial);
     }
 }

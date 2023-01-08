@@ -21876,7 +21876,7 @@ MonoBehaviour:
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     tutorialDto:
       delayFimTutorialSucesso: 1.5
-      delayFimTutorialExpirado: 2.5
+      delayFimTutorialExpirado: 2.1
       animator: {fileID: 846774093}
       lblTexto: {fileID: 918211904}
 --- !u!61 &491158116
