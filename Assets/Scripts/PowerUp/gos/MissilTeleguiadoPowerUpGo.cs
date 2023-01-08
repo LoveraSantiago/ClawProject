@@ -40,12 +40,27 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
                                .GetComponent<ParticleSystem>();
     }
 
+    public override float getDelayInicio()
+    {
+        return getDelayInicioMaterialize();
+    }
+
     public override void iniciarPup()
     {
+        EfeitoSpawner efeitoSpwaner = new EfeitoSpawner(powerUpDto.EfeitoMaterializeDto);
+        Sprite spriteMissil = powerUpDto.MissilTeleguiadoDto.SpriteMissil;
+        efeitoSpwaner.spawnPowerUp(spriteMissil, getPosicao(), new Vector3(0.3f, 1.1f, 0));
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showMissilAposSpawnMaterialize(efeitoSpwaner));
+    }
+
+    private IEnumerator showMissilAposSpawnMaterialize(EfeitoSpawner efeitoSpwaner)
+    {
+        yield return new WaitForSeconds(getDelayInicio());
         ligar();
         hitColetavel = false;
         HumAlvoGOSelecionado alvoSelecionado = new HumAlvoGOSelecionado();
-        coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));        
+        coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));
+        efeitoSpwaner.desligar();
     }
 
     public override void resetPup()

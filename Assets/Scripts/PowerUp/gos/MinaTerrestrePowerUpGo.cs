@@ -32,7 +32,7 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner(powerUpDto.EfeitoMaterializeDto);
         Sprite spriteBomba = powerUpDto.MinaDto.SpriteMina;
         
-        efeitoSpwaner.spawnPowerUp(spriteBomba, getPosicao(), 0.8f);
+        efeitoSpwaner.spawnPowerUp(spriteBomba, getPosicao(), new Vector3(0.8f, 0.8f, 0));
 
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(explodir(efeitoSpwaner));
     }

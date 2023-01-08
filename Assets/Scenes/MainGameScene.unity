@@ -21688,6 +21688,7 @@ MonoBehaviour:
           ganhoFreq: 50
           duracao: 0.4
         missilGo: {fileID: 4127936681606313068, guid: f4b85493ee34d5749b9c9e3d0dd804d1, type: 3}
+        spriteMissil: {fileID: 21300000, guid: e72d588508fe87d449d8ad6aad3b969b, type: 3}
         pathMissilDto:
           goMainPath: {fileID: 1245264362}
           pathPointsMissil:

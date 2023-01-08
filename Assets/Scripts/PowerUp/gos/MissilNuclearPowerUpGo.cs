@@ -44,7 +44,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         EfeitoSpawner efeitoSpwaner = new EfeitoSpawner(powerUpDto.EfeitoMaterializeDto);
         Sprite spriteMissil = powerUpDto.MissilNuclearDto.SpriteMissilNuclear;
-        efeitoSpwaner.spawnPowerUp(spriteMissil, getPosicao(), 1.25f);
+        efeitoSpwaner.spawnPowerUp(spriteMissil, getPosicao(), new Vector3(1.25f, 1.25f, 0));
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(showBombaAposSpawnMaterialize(efeitoSpwaner));
     }
 
