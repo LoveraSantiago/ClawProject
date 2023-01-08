@@ -69,7 +69,10 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         powerUpFinalizacao.finalizado();
         efeitoFaiscas.gameObject.SetActive(false);
         animacao.parado();
-        colocarNoAngulo(0);        
+        colocarNoAngulo(0);
+
+        EfeitoExplosao efeitoExplosao = new EfeitoExplosao();
+        efeitoExplosao.desligar(powerUpDto.MissilTeleguiadoDto.EfeitoExplosao);
     }   
 
     public IEnumerator transformar(GO entrada)
