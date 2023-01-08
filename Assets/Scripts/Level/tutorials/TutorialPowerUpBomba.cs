@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class TutorialPowerUpBomba : AcaoPowerUpAcionado.ConsumidorEvento,
+public class TutorialPowerUpBomba : TutorialPowerUp,
+                                    AcaoPowerUpAcionado.ConsumidorEvento,
                                     AcaoColetado.ProdutorEvento
 {
     private bool finalizacaoDisparada;

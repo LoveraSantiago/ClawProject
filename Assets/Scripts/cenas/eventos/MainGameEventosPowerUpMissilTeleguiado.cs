@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class MainGameEventosPowerUpMissilTeleguiado : AbstractMainGameEventosTutorial
 {
+    private TutorialPowerUpMissilTeleguiado tutorial;
     public MainGameEventosPowerUpMissilTeleguiado(AllGameManagers allGameManagers, TutorialPowerUpMissilTeleguiado tutorial)
        : base(allGameManagers)
-    {        
+    {
+        this.tutorial = tutorial;
     }
 
     public override void iniciar()
     {
-        throw new System.NotImplementedException();
+        tutorial.iniciar();
     }
 }
