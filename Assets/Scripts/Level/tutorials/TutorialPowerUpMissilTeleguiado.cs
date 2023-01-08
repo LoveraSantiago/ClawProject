@@ -53,6 +53,12 @@ public class TutorialPowerUpMissilTeleguiado : TutorialPowerUp,
         }
     }
 
+    private void prepararMensagemPupAcionado()
+    {
+        mainDto.TutorialDto.LblTexto.text = "Otimo! Alvo selecionado!\nO missil espalha o coletavel especifico.";
+        animacaoTutorial.playParteTexto();
+    }
+
     protected IEnumerator coroutineEncerrarTutorial(float valorDelay)
     {
         allGameManagers.getBotoesPowerUp().desativarPowerUp();
@@ -68,11 +74,30 @@ public class TutorialPowerUpMissilTeleguiado : TutorialPowerUp,
         produtorDeEvento.produziuEvento(eventoFim);
     }
 
+    private void prepararFimTutorialPupAcionado()
+    {
+        if (!finalizacaoDisparada)
+        {
+            allGameManagers.getGarraManager().parar();
+            finalizacaoDisparada = true;
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialSucesso));
+        }
+    }
+
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
         if (evento.isInicio)
         {
             prepararTutorialInicioPowerUp();
+        }
+        else if (evento.isPreFinalizar)
+        {
+            prepararMensagemPupAcionado();
+        }
+        else if (evento.isFinalizar)
+        {
+            prepararFimTutorialPupAcionado();
         }
         else if (evento.isExpirado)
         {

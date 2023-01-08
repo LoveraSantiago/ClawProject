@@ -21679,7 +21679,7 @@ MonoBehaviour:
         halturaPos: -0.4
         velocidade: 2.5
         anguloHit: 0
-        velocidadeHit: 20
+        velocidadeHit: 18
         halturaExplosao: 0.5
         delayPosExplosao: 1.1
         cameraShakeDto:
