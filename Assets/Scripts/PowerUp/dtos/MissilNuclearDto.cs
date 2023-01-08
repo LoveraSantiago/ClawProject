@@ -15,6 +15,7 @@ public class MissilNuclearDto
     [Space(3)]
     [SerializeField] private Sprite spriteMissilNuclear;
     [SerializeField] private GameObject missilNuclearGo;
+    [SerializeField] private ParticleSystem efeitoExplosao;
 
     public float AngGarra { get { return angGarra; } }
     public float HalturaPos { get { return halturaPos; } }
@@ -26,4 +27,5 @@ public class MissilNuclearDto
     public CameraShakeDto CameraShakeDto { get { return cameraShakeDto; } }
     public Sprite SpriteMissilNuclear { get { return spriteMissilNuclear; } }
     public GameObject MissilNuclearGo { get { return missilNuclearGo; } }
+    public ParticleSystem EfeitoExplosao { get { return efeitoExplosao; } }
 }

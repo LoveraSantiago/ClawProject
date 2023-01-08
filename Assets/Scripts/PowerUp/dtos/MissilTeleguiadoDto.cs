@@ -17,6 +17,7 @@ public class MissilTeleguiadoDto
     [SerializeField] private GameObject missilGo;
     [Space(3)]
     [SerializeField] private PathMissilDto pathMissilDto;
+    [SerializeField] private ParticleSystem efeitoExplosao;
 
     public float AngGarra { get { return angGarra; } }
     public float HalturaPos { get { return halturaPos; } }
@@ -29,4 +30,5 @@ public class MissilTeleguiadoDto
     public CameraShakeDto CameraShakeDto { get { return cameraShakeDto; } }
     public GameObject MissilGo { get { return missilGo; } }
     public PathMissilDto PathMissilDto { get { return pathMissilDto; } }
+    public ParticleSystem EfeitoExplosao { get { return efeitoExplosao; } }
 }

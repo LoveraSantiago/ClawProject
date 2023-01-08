@@ -14,7 +14,8 @@ public class MinaDto
     [Space(3)]
     [SerializeField] private Sprite spriteMina;
     [SerializeField] private GameObject minaTerrestreGo;
-    
+    [SerializeField] private ParticleSystem efeitoExplosao;
+
     public float HalturaExplosao { get { return halturaExplosao; } }
 
     public float DelayInicial { get { return delayInicial; } }
@@ -24,4 +25,5 @@ public class MinaDto
     public CameraShakeDto CameraShakeDto { get { return cameraShakeDto; } }
     public Sprite SpriteMina { get { return spriteMina; } }
     public GameObject MinaTerrestreGo { get { return minaTerrestreGo; } }
+    public ParticleSystem EfeitoExplosao { get { return efeitoExplosao; } }
 }
