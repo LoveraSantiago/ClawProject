@@ -33,7 +33,7 @@ public class PupSceneV2 : MonoBehaviour,
         timerFichaBronze = new TimerFicha(mainPupDto.TimerFichaDto, somManager, Ficha.BRONZE);
         cardDetalhe      = new CardDetalhePup(mainPupDto.CardDetalheDto);
         animacao         = new AnimacaoCardsPup(mainPupDto.Animator);
-        cardsPups        = new CardsPups(mainPupDto.CardsPupsDto);
+        cardsPups        = new CardsPups(mainPupDto.CardsPupsDto, somManager);
         canvasDetalhe    = new CanvasDetalhePup(mainPupDto.CanvasDetalheDto, mainPupDto.ModalNoFichaDto);
         fichaAnimada     = new FichaAnimada(mainPupDto.FichaAnimadaDto);
         configBtnBack(mainPupDto.BtnBack);        
@@ -71,6 +71,7 @@ public class PupSceneV2 : MonoBehaviour,
         btnBack.onClick.AddListener(() => {
             if (canvasDetalhe.isAberto)
             {
+                somManager.playSomCliqueItem();
                 animacao.playFlipUp();
             }
             else
@@ -94,7 +95,7 @@ public class PupSceneV2 : MonoBehaviour,
         if(indicePrevio > -1)
         {
             mainPupDto.ScrollRect.verticalNormalizedPosition = PlayerPrefsPowerUp.getPosScroll();
-            cardsPups.forceClique(indicePrevio);
+            cardsPups.forceClique(indicePrevio, somManager);
         }
     }
 
