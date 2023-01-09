@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class SomManagerPup : SomManager,
-                             SomTimerFicha
+                             SomTimerFicha,
+                             SomModalNoFicha
 {
     private AudioPupDto audioDto;
 
@@ -36,6 +37,21 @@ public class SomManagerPup : SomManager,
         audioPlayOneShot(getReservaAudioSource(), audioDto.SomStartGame);
     }
 
+    public void playSomClique()
+    {
+        audioPlayOneShot(getComumAudioSource(), audioDto.SomCliqueItem);
+    }
+
+    public void playSomCliqueCancelar()
+    {
+        audioPlayOneShot(getComumAudioSource(), audioDto.SomCancelar);
+    }
+
+    public void playSomAbrirModal()
+    {
+        audioPlayOneShot(getComumAudioSource(), audioDto.AbrirModal);
+    }
+
     public AudioSource getComumAudioSource()
     {
         return getAudioSource(1);
@@ -44,5 +60,5 @@ public class SomManagerPup : SomManager,
     public AudioSource getReservaAudioSource()
     {
         return getAudioSource(2);
-    }
+    }   
 }

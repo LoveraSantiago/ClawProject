@@ -19,7 +19,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         this.canvasDetalheDto.BtnCacaNiquelPupGeral.onClick.AddListener(()=> gotoScenePupCacaNiquelGeral(somManager));
         isAberto = false;
 
-        modalNoFicha = new ModalNoFicha(modalNoFichaDto, null);
+        modalNoFicha = new ModalNoFicha(modalNoFichaDto, somManager);
         produtorEventoBtnEscohido = new ProdutorDeEvento<int>();
     }
 
