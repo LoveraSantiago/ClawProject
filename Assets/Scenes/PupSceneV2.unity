@@ -1542,7 +1542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &477344583
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4792,6 +4792,9 @@ MonoBehaviour:
       somCliqueCard:
         volume: 0.4
         audioClip: {fileID: 8300000, guid: 218f1e44b165a5d41bd052a972aa81dd, type: 3}
+      somStartGame:
+        volume: 0.2
+        audioClip: {fileID: 8300000, guid: a03714c7d1b136346841d029d1fe7e35, type: 3}
     prefabLoading: {fileID: 102672797}
     gosDesligar:
     - {fileID: 19417943}

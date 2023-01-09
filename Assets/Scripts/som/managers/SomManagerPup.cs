@@ -31,6 +31,11 @@ public class SomManagerPup : SomManager,
         audioPlayOneShot(getReservaAudioSource(), audioDto.SomCliqueCard);
     }
 
+    public void playSomCliqueIrParaLevel()
+    {
+        audioPlayOneShot(getReservaAudioSource(), audioDto.SomStartGame);
+    }
+
     public AudioSource getComumAudioSource()
     {
         return getAudioSource(1);

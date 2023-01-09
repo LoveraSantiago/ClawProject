@@ -34,7 +34,7 @@ public class PupSceneV2 : MonoBehaviour,
         cardDetalhe      = new CardDetalhePup(mainPupDto.CardDetalheDto, somManager);
         animacao         = new AnimacaoCardsPup(mainPupDto.Animator);
         cardsPups        = new CardsPups(mainPupDto.CardsPupsDto, somManager);
-        canvasDetalhe    = new CanvasDetalhePup(mainPupDto.CanvasDetalheDto, mainPupDto.ModalNoFichaDto);
+        canvasDetalhe    = new CanvasDetalhePup(mainPupDto.CanvasDetalheDto, mainPupDto.ModalNoFichaDto, somManager);
         fichaAnimada     = new FichaAnimada(mainPupDto.FichaAnimadaDto);
         configBtnBack(mainPupDto.BtnBack);        
 
