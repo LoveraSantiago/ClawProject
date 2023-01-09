@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class PupSceneV2 : MonoBehaviour,
@@ -12,6 +13,7 @@ public class PupSceneV2 : MonoBehaviour,
     private AnimacaoCardsPup animacao;
     private CanvasDetalhePup canvasDetalhe;
     private FichaAnimada     fichaAnimada;
+    private SomManagerPup    somManager;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +26,7 @@ public class PupSceneV2 : MonoBehaviour,
         PowerUpEntidade.configurarDicionarioDeSpritesPup(mainPupDto.PrefabPowerUpDto);
 
         PrefabLoading prefabLoading = mainPupDto.PrefabLoading.GetComponent<PrefabLoading>();
-        SomManagerPup somManager = new SomManagerPup(mainPupDto.AudioPupDto);
+        somManager = new SomManagerPup(mainPupDto.AudioPupDto);
         prefabLoading.iniciarLoading(somManager, mainPupDto.GosDesligar);
         ContextoEstaticoUtils.loading.fecharModal();
 
@@ -34,7 +36,7 @@ public class PupSceneV2 : MonoBehaviour,
         cardsPups        = new CardsPups(mainPupDto.CardsPupsDto);
         canvasDetalhe    = new CanvasDetalhePup(mainPupDto.CanvasDetalheDto, mainPupDto.ModalNoFichaDto);
         fichaAnimada     = new FichaAnimada(mainPupDto.FichaAnimadaDto);
-        mainPupDto.BtnBack.onClick.AddListener(()=>voltar());
+        configBtnBack(mainPupDto.BtnBack);        
 
         new AcaoCardPupDetalheMovimentado()
             .configurarProdutor(cardDetalhe)
@@ -62,20 +64,23 @@ public class PupSceneV2 : MonoBehaviour,
     {
         timerFichaBronze.update();
         cardDetalhe.update();
+    }   
+
+    private void configBtnBack(Button btnBack)
+    {
+        btnBack.onClick.AddListener(() => {
+            if (canvasDetalhe.isAberto)
+            {
+                animacao.playFlipUp();
+            }
+            else
+            {
+                somManager.playSomCliqueVoltar();
+                ContextoEstaticoUtils.loading.irParaMapScene();
+            }
+        });
     }
 
-    private void voltar()
-    {
-        if (canvasDetalhe.isAberto)
-        {
-            animacao.playFlipUp();
-        }
-        else
-        {
-            ContextoEstaticoUtils.loading.irParaMapScene();            
-        }
-    }      
-    
     public void animacaoFlipUpEnd()
     {
         canvasDetalhe.dismiss();

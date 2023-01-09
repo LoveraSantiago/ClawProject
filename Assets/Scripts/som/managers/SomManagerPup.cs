@@ -3,22 +3,27 @@ using UnityEngine;
 public class SomManagerPup : SomManager,
                              SomTimerFicha
 {
-    private AudioPupDto audioPupDto;
+    private AudioPupDto audioDto;
 
-    public SomManagerPup(AudioPupDto audioPupDto)
-        : base(audioPupDto, 1)
+    public SomManagerPup(AudioPupDto audioDto)
+        : base(audioDto, 1)
     {
-        this.audioPupDto = audioPupDto;
+        this.audioDto = audioDto;
     }
 
     public void playSomCliqueItem()
     {
-        audioPlayOneShot(getComumAudioSource(), audioPupDto.SomClique);
+        audioPlayOneShot(getComumAudioSource(), audioDto.SomClique);
     }
 
     public void playSomCliqueIrParaLojaScene()
     {
         playSomCliqueItem();
+    }
+
+    public void playSomCliqueVoltar()
+    {
+        audioPlayOneShot(getComumAudioSource(), audioDto.SomCliqueVoltar);
     }
 
     public AudioSource getComumAudioSource()
