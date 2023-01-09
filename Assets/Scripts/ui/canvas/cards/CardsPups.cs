@@ -10,12 +10,12 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
 
     private CardPupSelecionadoDto cardSelecionado;
 
-    public CardsPups(CardsPupsDto[] cardsPupsDto)
+    public CardsPups(CardsPupsDto[] cardsPupsDto, SomManagerPup somManager)
     {
         isClicado = false;
         this.cardsPupsDto = cardsPupsDto;
         produtorDeEvento = new ProdutorDeEvento<CardPupSelecionadoDto>();
-        popularCards();
+        popularCards(somManager);
     }
 
     public CardPupSelecionadoDto recuperarUltimoCardSelecionado()
@@ -23,19 +23,19 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
         return cardSelecionado;
     }
 
-    public void forceClique(int indice)
+    public void forceClique(int indice, SomManagerPup somManager)
     {
         CardsPupsDto cardPupIt = cardsPupsDto[indice];
-        clicado(cardPupIt.Btn.gameObject, true);
+        clicado(cardPupIt.Btn.gameObject, true, somManager);
     }
 
-    private void popularCards()
+    private void popularCards(SomManagerPup somManager)
     {
         PowerUpEntidade[] pupEntidades = FactoryPowerUpEntidade.getAllPowerUps();
         for (int contador = 0; contador < cardsPupsDto.Length; contador++)
         {
             CardsPupsDto cardPupIt = cardsPupsDto[contador];
-            cardPupIt.Btn.onClick.AddListener(() => clicado());
+            cardPupIt.Btn.onClick.AddListener(() => clicado(somManager));
 
             PowerUpEntidade pupEntidade = pupEntidades[contador];
             cardPupIt.ImgCard.sprite    = pupEntidade.sprCard;
@@ -45,13 +45,13 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
         }
     }
 
-    private void clicado()
+    private void clicado(SomManagerPup somManager)
     {
         GameObject goSelecionado = EventSystem.current.currentSelectedGameObject;
-        clicado(goSelecionado, false);
+        clicado(goSelecionado, false, somManager);
     }    
 
-    private void clicado(GameObject goSelecionado, bool restauracaoTela)
+    private void clicado(GameObject goSelecionado, bool restauracaoTela, SomManagerPup somManager)
     {
         if (isClicado == false && goSelecionado != null)
         {
@@ -67,6 +67,10 @@ public class CardsPups : AcaoCardPowerUpSelecionado.ProdutorEvento,
                 .addRestauracaoTela(restauracaoTela);
 
             produtorDeEvento.produziuEvento(cardSelecionado);
+            if (!restauracaoTela)
+            {
+                somManager.playSomCliqueItem();
+            }
             goParent.SetActive(false);
             isClicado = true;
         }

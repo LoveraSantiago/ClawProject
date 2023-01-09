@@ -12,14 +12,16 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
     private Vector3 posFinal;
     private Vector3 posInicial;
     private CardPupDetalheDto cardDetalheDto;
+    private SomManagerPup     somManager;
 
     private ProdutorDeEvento<CardPupDetalheMovimentadoDto> produtorDeEvento;
 
-    public CardDetalhePup(CardPupDetalheDto cardDetalheDto)
+    public CardDetalhePup(CardPupDetalheDto cardDetalheDto, SomManagerPup somManager)
     {
         this.cardDetalheDto = cardDetalheDto;
         posOriginal = cardDetalheDto.CardDetalhe.transform.position;
         posInicial = Vector3.zero;
+        this.somManager = somManager;
         produtorDeEvento = new ProdutorDeEvento<CardPupDetalheMovimentadoDto>();
     }
 
@@ -95,6 +97,10 @@ public class CardDetalhePup : AcaoCardPupDetalheMovimentado.ProdutorEvento,
 
     void AcaoCardPowerUpSelecionado.ConsumidorEvento.consumirEvento(CardPupSelecionadoDto evento)
     {
+        if (!evento.restauracaoTela)
+        {
+            somManager.playSomMovimentoCard();
+        }
         movimentar(evento.posicaoCard, evento.restauracaoTela);
 
         PowerUpEntidade pupEntidade = evento.powerUpEntidade;

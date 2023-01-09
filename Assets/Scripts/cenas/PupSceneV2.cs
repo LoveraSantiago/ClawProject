@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 #pragma warning disable 0649
 public class PupSceneV2 : MonoBehaviour,
@@ -12,6 +13,7 @@ public class PupSceneV2 : MonoBehaviour,
     private AnimacaoCardsPup animacao;
     private CanvasDetalhePup canvasDetalhe;
     private FichaAnimada     fichaAnimada;
+    private SomManagerPup    somManager;
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +26,17 @@ public class PupSceneV2 : MonoBehaviour,
         PowerUpEntidade.configurarDicionarioDeSpritesPup(mainPupDto.PrefabPowerUpDto);
 
         PrefabLoading prefabLoading = mainPupDto.PrefabLoading.GetComponent<PrefabLoading>();
-        SomManagerPup somManager = new SomManagerPup(mainPupDto.AudioPupDto);
+        somManager = new SomManagerPup(mainPupDto.AudioPupDto);
         prefabLoading.iniciarLoading(somManager, mainPupDto.GosDesligar);
         ContextoEstaticoUtils.loading.fecharModal();
 
-        timerFichaBronze = new TimerFicha(mainPupDto.TimerFichaDto, null, Ficha.BRONZE);
-        cardDetalhe      = new CardDetalhePup(mainPupDto.CardDetalheDto);
+        timerFichaBronze = new TimerFicha(mainPupDto.TimerFichaDto, somManager, Ficha.BRONZE);
+        cardDetalhe      = new CardDetalhePup(mainPupDto.CardDetalheDto, somManager);
         animacao         = new AnimacaoCardsPup(mainPupDto.Animator);
-        cardsPups        = new CardsPups(mainPupDto.CardsPupsDto);
-        canvasDetalhe    = new CanvasDetalhePup(mainPupDto.CanvasDetalheDto, mainPupDto.ModalNoFichaDto);
+        cardsPups        = new CardsPups(mainPupDto.CardsPupsDto, somManager);
+        canvasDetalhe    = new CanvasDetalhePup(mainPupDto.CanvasDetalheDto, mainPupDto.ModalNoFichaDto, somManager);
         fichaAnimada     = new FichaAnimada(mainPupDto.FichaAnimadaDto);
-        mainPupDto.BtnBack.onClick.AddListener(()=>voltar());
+        configBtnBack(mainPupDto.BtnBack);        
 
         new AcaoCardPupDetalheMovimentado()
             .configurarProdutor(cardDetalhe)
@@ -53,6 +55,8 @@ public class PupSceneV2 : MonoBehaviour,
             .adicionarConsumidor(animacao);
 
         restaurarTela();
+
+        somManager.playSomBackground();
     }
 
     // Update is called once per frame
@@ -60,20 +64,25 @@ public class PupSceneV2 : MonoBehaviour,
     {
         timerFichaBronze.update();
         cardDetalhe.update();
+    }   
+
+    private void configBtnBack(Button btnBack)
+    {
+        btnBack.onClick.AddListener(() => {
+            if (canvasDetalhe.isAberto)
+            {
+                somManager.playSomCliqueItem();
+                somManager.playSomMovimentoCard();
+                animacao.playFlipUp();
+            }
+            else
+            {
+                somManager.playSomCliqueVoltar();
+                ContextoEstaticoUtils.loading.irParaMapScene();
+            }
+        });
     }
 
-    private void voltar()
-    {
-        if (canvasDetalhe.isAberto)
-        {
-            animacao.playFlipUp();
-        }
-        else
-        {
-            ContextoEstaticoUtils.loading.irParaMapScene();            
-        }
-    }      
-    
     public void animacaoFlipUpEnd()
     {
         canvasDetalhe.dismiss();
@@ -87,7 +96,7 @@ public class PupSceneV2 : MonoBehaviour,
         if(indicePrevio > -1)
         {
             mainPupDto.ScrollRect.verticalNormalizedPosition = PlayerPrefsPowerUp.getPosScroll();
-            cardsPups.forceClique(indicePrevio);
+            cardsPups.forceClique(indicePrevio, somManager);
         }
     }
 

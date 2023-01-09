@@ -4775,14 +4775,35 @@ MonoBehaviour:
     audioPupDto:
       mainAudioSource: {fileID: 142530078}
       somBackground:
-        volume: 0
-        audioClip: {fileID: 0}
+        volume: 0.2
+        audioClip: {fileID: 8300000, guid: 62f3dce088f8c0646b6cefd54e499d49, type: 3}
       somGarra:
         volume: 0.13
         audioClip: {fileID: 8300000, guid: 8eedf5c37e1063c4995e080dbaa2a47b, type: 3}
       somBatidaAbrirModal:
         volume: 1
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
+      somCliqueVoltar:
+        volume: 0.6
+        audioClip: {fileID: 8300000, guid: fa108c0a81e575740b81033e701de32f, type: 3}
+      somClique:
+        volume: 0.6
+        audioClip: {fileID: 8300000, guid: 3acd285413e4aa445b1e3d9a45eee20d, type: 3}
+      somCliqueItem:
+        volume: 0.8
+        audioClip: {fileID: 8300000, guid: a8b967fbafab8584db3c534753ab0fef, type: 3}
+      somCliqueCard:
+        volume: 0.4
+        audioClip: {fileID: 8300000, guid: 218f1e44b165a5d41bd052a972aa81dd, type: 3}
+      somStartGame:
+        volume: 0.2
+        audioClip: {fileID: 8300000, guid: a03714c7d1b136346841d029d1fe7e35, type: 3}
+      somCancelar:
+        volume: 0.28
+        audioClip: {fileID: 8300000, guid: 239f092fc5d70a04fa691a9a9c3239d8, type: 3}
+      abrirModal:
+        volume: 0.29
+        audioClip: {fileID: 8300000, guid: 218f1e44b165a5d41bd052a972aa81dd, type: 3}
     prefabLoading: {fileID: 102672797}
     gosDesligar:
     - {fileID: 19417943}
