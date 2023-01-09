@@ -28,7 +28,7 @@ public class PupSceneV2 : MonoBehaviour,
         prefabLoading.iniciarLoading(somManager, mainPupDto.GosDesligar);
         ContextoEstaticoUtils.loading.fecharModal();
 
-        timerFichaBronze = new TimerFicha(mainPupDto.TimerFichaDto, null, Ficha.BRONZE);
+        timerFichaBronze = new TimerFicha(mainPupDto.TimerFichaDto, somManager, Ficha.BRONZE);
         cardDetalhe      = new CardDetalhePup(mainPupDto.CardDetalheDto);
         animacao         = new AnimacaoCardsPup(mainPupDto.Animator);
         cardsPups        = new CardsPups(mainPupDto.CardsPupsDto);
@@ -53,6 +53,8 @@ public class PupSceneV2 : MonoBehaviour,
             .adicionarConsumidor(animacao);
 
         restaurarTela();
+
+        somManager.playSomBackground();
     }
 
     // Update is called once per frame
