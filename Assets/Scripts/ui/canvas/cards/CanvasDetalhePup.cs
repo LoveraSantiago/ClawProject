@@ -8,15 +8,17 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
 
     private CanvasDetalheCardPupDto canvasDetalheDto;
     private ModalNoFicha modalNoFicha;//Temporariamente aqui    
+    private SomManagerPup somManager;
     private ProdutorDeEvento<int> produtorEventoBtnEscohido;
 
     public CanvasDetalhePup(
         CanvasDetalheCardPupDto canvasDetalheDto, ModalNoFichaDto modalNoFichaDto, SomManagerPup somManager)
     {
         this.canvasDetalheDto = canvasDetalheDto;
-        this.canvasDetalheDto.BtnPratica.onClick.AddListener(()=> gotoScenePupPratica(somManager));
-        this.canvasDetalheDto.BtnCacaNiquelPupIndividual.onClick.AddListener(() => gotoScenePupCacaNiquelIndividual(somManager));
-        this.canvasDetalheDto.BtnCacaNiquelPupGeral.onClick.AddListener(()=> gotoScenePupCacaNiquelGeral(somManager));
+        this.somManager       = somManager;
+        this.canvasDetalheDto.BtnPratica.onClick.AddListener(()=> gotoScenePupPratica());
+        this.canvasDetalheDto.BtnCacaNiquelPupIndividual.onClick.AddListener(() => gotoScenePupCacaNiquelIndividual());
+        this.canvasDetalheDto.BtnCacaNiquelPupGeral.onClick.AddListener(()=> gotoScenePupCacaNiquelGeral());
         isAberto = false;
 
         modalNoFicha = new ModalNoFicha(modalNoFichaDto, somManager);
@@ -28,9 +30,8 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         isAberto = false;
     }
 
-    private void gotoScenePupPratica(SomManagerPup somManager)
-    {
-        somManager.playSomCliqueIrParaLevel();
+    private void gotoScenePupPratica()
+    {        
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.POWERUP);
 
         PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePupSelecionado);
@@ -40,9 +41,9 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         abrirCenaOuModal(0, 0);
     }
 
-    private void gotoScenePupCacaNiquelIndividual(SomManagerPup somManager)
+    private void gotoScenePupCacaNiquelIndividual()
     {
-        somManager.playSomCliqueIrParaLevel();
+     
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.CACANIQUEL);
         AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(2);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
@@ -52,9 +53,8 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         abrirCenaOuModal(1, precoFicha);
     }
 
-    private void gotoScenePupCacaNiquelGeral(SomManagerPup somManager)
-    {
-        somManager.playSomCliqueIrParaLevel();
+    private void gotoScenePupCacaNiquelGeral()
+    {     
         MapaEntidade mapaEntidade = HelperMapaEntidade.getMapaEntidadeByMapaEnum(MapaEnum.CACANIQUEL);
         AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(1);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
@@ -66,6 +66,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
     {
         if (PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
         {
+            somManager.playSomCliqueIrParaLevel();
             PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);            
             PlayerPrefsPowerUp.salvarIndicePup(indicePupSelecionado);
             produtorEventoBtnEscohido.produziuEvento(indiceBtn);
@@ -73,7 +74,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         }
         else
         {
-            modalNoFicha.ligar(Ficha.BRONZE, null);
+            modalNoFicha.ligar(Ficha.BRONZE, somManager);
         }
     }
 
