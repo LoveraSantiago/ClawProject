@@ -6,7 +6,7 @@ public class SomManagerPup : SomManager,
     private AudioPupDto audioDto;
 
     public SomManagerPup(AudioPupDto audioDto)
-        : base(audioDto, 1)
+        : base(audioDto, 2)
     {
         this.audioDto = audioDto;
     }
@@ -26,8 +26,18 @@ public class SomManagerPup : SomManager,
         audioPlayOneShot(getComumAudioSource(), audioDto.SomCliqueVoltar);
     }
 
+    public void playSomMovimentoCard()
+    {
+        audioPlayOneShot(getReservaAudioSource(), audioDto.SomCliqueCard);
+    }
+
     public AudioSource getComumAudioSource()
     {
         return getAudioSource(1);
+    }
+
+    public AudioSource getReservaAudioSource()
+    {
+        return getAudioSource(2);
     }
 }

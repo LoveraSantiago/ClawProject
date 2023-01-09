@@ -31,7 +31,7 @@ public class PupSceneV2 : MonoBehaviour,
         ContextoEstaticoUtils.loading.fecharModal();
 
         timerFichaBronze = new TimerFicha(mainPupDto.TimerFichaDto, somManager, Ficha.BRONZE);
-        cardDetalhe      = new CardDetalhePup(mainPupDto.CardDetalheDto);
+        cardDetalhe      = new CardDetalhePup(mainPupDto.CardDetalheDto, somManager);
         animacao         = new AnimacaoCardsPup(mainPupDto.Animator);
         cardsPups        = new CardsPups(mainPupDto.CardsPupsDto, somManager);
         canvasDetalhe    = new CanvasDetalhePup(mainPupDto.CanvasDetalheDto, mainPupDto.ModalNoFichaDto);
@@ -72,6 +72,7 @@ public class PupSceneV2 : MonoBehaviour,
             if (canvasDetalhe.isAberto)
             {
                 somManager.playSomCliqueItem();
+                somManager.playSomMovimentoCard();
                 animacao.playFlipUp();
             }
             else
