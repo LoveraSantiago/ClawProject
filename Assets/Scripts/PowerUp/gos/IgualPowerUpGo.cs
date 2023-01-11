@@ -30,7 +30,6 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
             yield return null;
         }
 
-        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte);
         powerUpFinalizacao.preFinalizar();
         coletavel1.receberSprite(spr2);
 
@@ -43,6 +42,7 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
         getTrocadorDeOrdem().trocarFigura(coletavel1, coletavel2);
 
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte);
         powerUpFinalizacao.finalizado();
         yield return null;
     }          
