@@ -26523,6 +26523,7 @@ MonoBehaviour:
         velocidadeTeleporte: 0.75
         velocidadeCoringa: 1.25
         delayFinal: 0.5
+        efeitoTeleporte: {fileID: 111721538}
       asaDto:
         gravidadeNeg: -0.1
         offset: 0.3
