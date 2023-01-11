@@ -27,9 +27,33 @@ public class PowerUpInfoDto
     public InteracaoPowerUpComComponente interacaoPupComComponentes { get; private set; }    
     public PowerUpAcaoExpirado pupEntidadeAcaoExpirado { get { return pupEntidade.getPowerUpGo(); } }
 
-    private PowerUpInfoDto(PowerUpEnums.ESTADO estado)
+    public PowerUpInfoDto(PowerUpEnums.ESTADO estado)
     {
         estadoAtual = estado;
+    }
+    
+    public PowerUpInfoDto(PowerUpEnums.ESTADO estado, int indiceBtn)
+    {
+        estadoAtual = estado;
+        this.indiceBtn = indiceBtn;
+    }
+    
+    public PowerUpInfoDto(PowerUpEnums.ESTADO estado, Coletavel coletavel)
+    {
+        estadoAtual = estado;
+        this.coletavel = coletavel;
+    }
+
+    public PowerUpInfoDto(PowerUpEnums.ESTADO estado, PowerUpEntidade pupEntidade)
+    {
+        estadoAtual = estado;
+        configurarPupEntidade(pupEntidade);
+    }
+    
+    public PowerUpInfoDto(PowerUpEnums.ESTADO estado, PowerUpEntidade pupEntidade, Vector3 posInicial)
+    {
+        estadoAtual = estado;
+        configurarPupEntidade(pupEntidade, posInicial);
     }
 
     private void configurarPupEntidade(PowerUpEntidade pupEntidade)
@@ -40,7 +64,7 @@ public class PowerUpInfoDto
         interacaoPupComComponentes = powerUpGo.getInteracaoComComponente();        
     }
 
-    public PowerUpInfoDto configurarPupEntidade(PowerUpEntidade pupEntidade, Vector3 posInicial)
+    private PowerUpInfoDto configurarPupEntidade(PowerUpEntidade pupEntidade, Vector3 posInicial)
     {
         configurarPupEntidade(pupEntidade);
 
@@ -49,49 +73,9 @@ public class PowerUpInfoDto
         return this;
     }    
 
-    public PowerUpInfoDto addColetavel(Coletavel coletavel)
+    private PowerUpInfoDto addColetavel(Coletavel coletavel)
     {
         this.coletavel = coletavel;        
         return this;
-    }
-    
-    public static PowerUpInfoDto ofInicio(PowerUpEntidade pupEntidade)
-    {
-        PowerUpInfoDto pupInfo = new PowerUpInfoDto(PowerUpEnums.ESTADO.INICIO);
-        pupInfo.configurarPupEntidade(pupEntidade);
-        return pupInfo;
-    }
-
-    public static PowerUpInfoDto ofInicio(PowerUpEntidade pupEntidade, Vector3 posInicial)
-    {
-        PowerUpInfoDto pupInfo = new PowerUpInfoDto(PowerUpEnums.ESTADO.INICIO);
-        pupInfo.configurarPupEntidade(pupEntidade, posInicial);
-        return pupInfo;
-    }
-
-    public static PowerUpInfoDto ofPreFinalizar()
-    {
-        PowerUpInfoDto pupInfo = new PowerUpInfoDto(PowerUpEnums.ESTADO.PREFINALIZAR);
-        return pupInfo;
-    }
-
-    public static PowerUpInfoDto ofPreFinalizar(Coletavel coletavel)
-    {
-        PowerUpInfoDto pupInfo = new PowerUpInfoDto(PowerUpEnums.ESTADO.PREFINALIZAR);
-        pupInfo.coletavel = coletavel;
-        return pupInfo;
-    }
-
-    public static PowerUpInfoDto ofExpirado()
-    {
-        PowerUpInfoDto pupInfo = new PowerUpInfoDto(PowerUpEnums.ESTADO.EXPIRADO);
-        return pupInfo;
-    }
-
-    public static PowerUpInfoDto ofFinalizar(int indiceBtn)
-    {
-        PowerUpInfoDto pupInfo = new PowerUpInfoDto(PowerUpEnums.ESTADO.FINALIZAR);
-        pupInfo.indiceBtn = indiceBtn;
-        return pupInfo;
     }
 }

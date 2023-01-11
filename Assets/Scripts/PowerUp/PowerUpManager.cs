@@ -46,7 +46,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     {
         listaPupsUsados.Add(new PowerUpUsadoDto(powerUp.tipo, Time.time));
         indiceBtnEmAcao = indiceBtn;
-        PowerUpInfoDto powerUpInfo = PowerUpInfoDto.ofInicio(powerUp);
+        PowerUpInfoDto powerUpInfo = FactoryPowerUpInfoDto.ofInicio(powerUp);
         somPowerUp.playSomBackgroundPowerUp();
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         iniciarPowerUp(powerUpInfo);
@@ -56,7 +56,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     {
         listaPupsUsados.Add(new PowerUpUsadoDto(powerUp.tipo, Time.time));
         indiceBtnEmAcao = indiceBtn;
-        PowerUpInfoDto powerUpInfo = PowerUpInfoDto.ofInicio(powerUp, posicaoAtual);
+        PowerUpInfoDto powerUpInfo = FactoryPowerUpInfoDto.ofInicio(powerUp, posicaoAtual);
         somPowerUp.playSomBackgroundPowerUp();
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         iniciarPowerUp(powerUpInfo);
@@ -64,19 +64,19 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void preFinalizar()
     {        
-        produtorDeEventoPowerUp.produziuEvento(PowerUpInfoDto.ofPreFinalizar());
+        produtorDeEventoPowerUp.produziuEvento(FactoryPowerUpInfoDto.ofPreFinalizar());
     }
 
     public void preFinalizar(Coletavel coletavel)
     {
-        PowerUpInfoDto powerUpInfo = PowerUpInfoDto.ofPreFinalizar(coletavel);            
+        PowerUpInfoDto powerUpInfo = FactoryPowerUpInfoDto.ofPreFinalizar(coletavel);            
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
     public void expirado()
     {
         contadorTimeout = new ContadorPowerUpInativo();
-        PowerUpInfoDto powerUpInfo = PowerUpInfoDto.ofExpirado();
+        PowerUpInfoDto powerUpInfo = FactoryPowerUpInfoDto.ofExpirado();
         somPowerUp.playSomBackgroundNormal();
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
@@ -85,7 +85,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     {
         contadorTimeout = new ContadorPowerUpInativo();
         somPowerUp.playSomBackgroundNormal();
-        produtorDeEventoPowerUp.produziuEvento(PowerUpInfoDto.ofFinalizar(indiceBtnEmAcao));
+        produtorDeEventoPowerUp.produziuEvento(FactoryPowerUpInfoDto.ofFinalizar(indiceBtnEmAcao));
     }
 
     public ResultadoPowerUpDto fornecer()
