@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EfeitoExplosao 
+public class EfeitoParticulas 
 {
     public void explodir(ParticleSystem efeitoExplosao, Vector3 posicao)
     {
