@@ -131,7 +131,7 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
         prepararTutorialParteDragPup();
     }
 
-    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfoDto evento)
     {
         prepararTutorialParteAcionarPowerUp();
     }

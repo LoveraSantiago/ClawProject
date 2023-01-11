@@ -12,7 +12,7 @@ public class DraggavelManager : AcaoPupFromScrollSelecao.ConsumidorEvento,
         this.colliderDrag = colliderDrag;
     }
 
-    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfoDto evento)
     {
         if (evento.hasEntidade)
         {

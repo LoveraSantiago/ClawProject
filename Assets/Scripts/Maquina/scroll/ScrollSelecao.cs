@@ -1,10 +1,10 @@
 public class ScrollSelecao : AcaoPupFromScrollSelecao.ProdutorEvento
 {
-    private ProdutorDeEvento<PowerUpBtnInfo> produtorDeEvento;
+    private ProdutorDeEvento<PowerUpBtnInfoDto> produtorDeEvento;
 
     public ScrollSelecao()
     {
-        produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfo>();
+        produtorDeEvento = new ProdutorDeEvento<PowerUpBtnInfoDto>();
     }
 
     public void selecionouIndicePup(int indiceBtn, int indicePup)
@@ -21,7 +21,7 @@ public class ScrollSelecao : AcaoPupFromScrollSelecao.ProdutorEvento
 
     public void cancelouSelecao()
     {
-        PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(0);
+        PowerUpBtnInfoDto pupBtnInfo = new PowerUpBtnInfoDto(0);
         produtorDeEvento.produziuEvento(pupBtnInfo);
     }
 
@@ -29,12 +29,12 @@ public class ScrollSelecao : AcaoPupFromScrollSelecao.ProdutorEvento
     {
         if (pupEscolhido != null)
         {
-            PowerUpBtnInfo pupBtnInfo = new PowerUpBtnInfo(indiceBtn, pupEscolhido);
+            PowerUpBtnInfoDto pupBtnInfo = new PowerUpBtnInfoDto(indiceBtn, pupEscolhido);
             produtorDeEvento.produziuEvento(pupBtnInfo);
         }
     }
 
-    ProdutorDeEvento<PowerUpBtnInfo> AcaoPupFromScrollSelecao.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<PowerUpBtnInfoDto> AcaoPupFromScrollSelecao.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }
