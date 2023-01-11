@@ -8,7 +8,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 {
     private int indiceBtnEmAcao;
     private List<PowerUpUsadoDto> listaPupsUsados;
-    private ProdutorDeEvento<PowerUpInfo> produtorDeEventoPowerUp;
+    private ProdutorDeEvento<PowerUpInfoDto> produtorDeEventoPowerUp;
 
     private SomPowerUp somPowerUp;
     private ContadorTimeout contadorTimeout;
@@ -18,7 +18,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
         this.somPowerUp = somPowerUp;
         listaPupsUsados = new List<PowerUpUsadoDto>();
         configurarPowerUps(powerUpDto, inputGame);
-        produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfo>();
+        produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfoDto>();
         contadorTimeout = new ContadorPowerUpInativo();
     }    
 
@@ -46,7 +46,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     {
         listaPupsUsados.Add(new PowerUpUsadoDto(powerUp.tipo, Time.time));
         indiceBtnEmAcao = indiceBtn;
-        PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp);
+        PowerUpInfoDto powerUpInfo = PowerUpInfoDto.ofInicio(powerUp);
         somPowerUp.playSomBackgroundPowerUp();
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         iniciarPowerUp(powerUpInfo);
@@ -56,7 +56,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     {
         listaPupsUsados.Add(new PowerUpUsadoDto(powerUp.tipo, Time.time));
         indiceBtnEmAcao = indiceBtn;
-        PowerUpInfo powerUpInfo = PowerUpInfo.ofInicio(powerUp, posicaoAtual);
+        PowerUpInfoDto powerUpInfo = PowerUpInfoDto.ofInicio(powerUp, posicaoAtual);
         somPowerUp.playSomBackgroundPowerUp();
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         iniciarPowerUp(powerUpInfo);
@@ -64,19 +64,19 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void preFinalizar()
     {        
-        produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofPreFinalizar());
+        produtorDeEventoPowerUp.produziuEvento(PowerUpInfoDto.ofPreFinalizar());
     }
 
     public void preFinalizar(Coletavel coletavel)
     {
-        PowerUpInfo powerUpInfo = PowerUpInfo.ofPreFinalizar(coletavel);            
+        PowerUpInfoDto powerUpInfo = PowerUpInfoDto.ofPreFinalizar(coletavel);            
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
     public void expirado()
     {
         contadorTimeout = new ContadorPowerUpInativo();
-        PowerUpInfo powerUpInfo = PowerUpInfo.ofExpirado();
+        PowerUpInfoDto powerUpInfo = PowerUpInfoDto.ofExpirado();
         somPowerUp.playSomBackgroundNormal();
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
@@ -85,7 +85,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     {
         contadorTimeout = new ContadorPowerUpInativo();
         somPowerUp.playSomBackgroundNormal();
-        produtorDeEventoPowerUp.produziuEvento(PowerUpInfo.ofFinalizar(indiceBtnEmAcao));
+        produtorDeEventoPowerUp.produziuEvento(PowerUpInfoDto.ofFinalizar(indiceBtnEmAcao));
     }
 
     public ResultadoPowerUpDto fornecer()
@@ -93,7 +93,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
         return new ResultadoPowerUpDto(listaPupsUsados);
     }
 
-    private void iniciarPowerUp(PowerUpInfo powerUpInfo)
+    private void iniciarPowerUp(PowerUpInfoDto powerUpInfo)
     {
         contadorTimeout = new ContadorPowerUpAtivo(powerUpInfo);
 
@@ -104,7 +104,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
         }
     }   
 
-    ProdutorDeEvento<PowerUpInfo> AcaoPowerUpAcionado.ProdutorEvento.getProdutorDeEvento()
+    ProdutorDeEvento<PowerUpInfoDto> AcaoPowerUpAcionado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoPowerUp;
     }   

@@ -81,7 +81,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         detectorDeColisoes.registrarConsumidorDeTrigger(this);
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
     {
         if (evento.isEstadoInicio)
         {

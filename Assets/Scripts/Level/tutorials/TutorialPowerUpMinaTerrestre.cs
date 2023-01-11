@@ -62,7 +62,7 @@ public class TutorialPowerUpMinaTerrestre : TutorialPowerUp,
         produtorDeEvento.produziuEvento(eventoFim);
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
     {
         if (evento.isEstadoInicio)
         {

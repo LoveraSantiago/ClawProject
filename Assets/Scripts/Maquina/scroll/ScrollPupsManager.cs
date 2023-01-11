@@ -147,7 +147,7 @@ public class ScrollPupsManager : Draggavel,
         return PlayerPrefsPowerUp.subtrairPup(nome); 
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
     {
         if (evento.isEstadoFinalizar)
         {

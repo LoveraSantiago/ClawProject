@@ -85,7 +85,7 @@ public class TutorialPowerUpMissilTeleguiado : TutorialPowerUp,
         }
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
     {
         if (evento.isEstadoInicio)
         {

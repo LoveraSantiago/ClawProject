@@ -131,7 +131,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         }       
     }   
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
     {
         if (evento.isEstadoInicio)
         {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PowerUpInfo
+public class PowerUpInfoDto
 {
     private PowerUpEnums.ESTADO estadoAtual;
 
@@ -27,7 +27,7 @@ public class PowerUpInfo
     public InteracaoPowerUpComComponente interacaoPupComComponentes { get; private set; }    
     public PowerUpAcaoExpirado pupEntidadeAcaoExpirado { get { return pupEntidade.getPowerUpGo(); } }
 
-    private PowerUpInfo(PowerUpEnums.ESTADO estado)
+    private PowerUpInfoDto(PowerUpEnums.ESTADO estado)
     {
         estadoAtual = estado;
     }
@@ -40,7 +40,7 @@ public class PowerUpInfo
         interacaoPupComComponentes = powerUpGo.getInteracaoComComponente();        
     }
 
-    public PowerUpInfo configurarPupEntidade(PowerUpEntidade pupEntidade, Vector3 posInicial)
+    public PowerUpInfoDto configurarPupEntidade(PowerUpEntidade pupEntidade, Vector3 posInicial)
     {
         configurarPupEntidade(pupEntidade);
 
@@ -49,48 +49,48 @@ public class PowerUpInfo
         return this;
     }    
 
-    public PowerUpInfo addColetavel(Coletavel coletavel)
+    public PowerUpInfoDto addColetavel(Coletavel coletavel)
     {
         this.coletavel = coletavel;        
         return this;
     }
     
-    public static PowerUpInfo ofInicio(PowerUpEntidade pupEntidade)
+    public static PowerUpInfoDto ofInicio(PowerUpEntidade pupEntidade)
     {
-        PowerUpInfo pupInfo = new PowerUpInfo(PowerUpEnums.ESTADO.INICIO);
+        PowerUpInfoDto pupInfo = new PowerUpInfoDto(PowerUpEnums.ESTADO.INICIO);
         pupInfo.configurarPupEntidade(pupEntidade);
         return pupInfo;
     }
 
-    public static PowerUpInfo ofInicio(PowerUpEntidade pupEntidade, Vector3 posInicial)
+    public static PowerUpInfoDto ofInicio(PowerUpEntidade pupEntidade, Vector3 posInicial)
     {
-        PowerUpInfo pupInfo = new PowerUpInfo(PowerUpEnums.ESTADO.INICIO);
+        PowerUpInfoDto pupInfo = new PowerUpInfoDto(PowerUpEnums.ESTADO.INICIO);
         pupInfo.configurarPupEntidade(pupEntidade, posInicial);
         return pupInfo;
     }
 
-    public static PowerUpInfo ofPreFinalizar()
+    public static PowerUpInfoDto ofPreFinalizar()
     {
-        PowerUpInfo pupInfo = new PowerUpInfo(PowerUpEnums.ESTADO.PREFINALIZAR);
+        PowerUpInfoDto pupInfo = new PowerUpInfoDto(PowerUpEnums.ESTADO.PREFINALIZAR);
         return pupInfo;
     }
 
-    public static PowerUpInfo ofPreFinalizar(Coletavel coletavel)
+    public static PowerUpInfoDto ofPreFinalizar(Coletavel coletavel)
     {
-        PowerUpInfo pupInfo = new PowerUpInfo(PowerUpEnums.ESTADO.PREFINALIZAR);
+        PowerUpInfoDto pupInfo = new PowerUpInfoDto(PowerUpEnums.ESTADO.PREFINALIZAR);
         pupInfo.coletavel = coletavel;
         return pupInfo;
     }
 
-    public static PowerUpInfo ofExpirado()
+    public static PowerUpInfoDto ofExpirado()
     {
-        PowerUpInfo pupInfo = new PowerUpInfo(PowerUpEnums.ESTADO.EXPIRADO);
+        PowerUpInfoDto pupInfo = new PowerUpInfoDto(PowerUpEnums.ESTADO.EXPIRADO);
         return pupInfo;
     }
 
-    public static PowerUpInfo ofFinalizar(int indiceBtn)
+    public static PowerUpInfoDto ofFinalizar(int indiceBtn)
     {
-        PowerUpInfo pupInfo = new PowerUpInfo(PowerUpEnums.ESTADO.FINALIZAR);
+        PowerUpInfoDto pupInfo = new PowerUpInfoDto(PowerUpEnums.ESTADO.FINALIZAR);
         pupInfo.indiceBtn = indiceBtn;
         return pupInfo;
     }

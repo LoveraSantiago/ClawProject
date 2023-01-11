@@ -37,7 +37,7 @@ public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento,
         modoColetados.mostrarColetadoNoDisplay(evento);
     }
 
-    public void processarPowerUp(PowerUpInfo evento)
+    public void processarPowerUp(PowerUpInfoDto evento)
     {
         InteracaoPowerUpComComponente interacaoPupCComponentes = evento.interacaoPupComComponentes;
         if (InteracaoComponentesUtils.isInteracaoComDisplayColetado(interacaoPupCComponentes))            
