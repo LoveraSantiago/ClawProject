@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
+                                                    MiraSelecionadoOnColetavel,
                                                     Transformador<DuplaDeColetaveisDto, IEnumerator>
 {
     private bool hitColetavel2;
@@ -18,7 +19,7 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
         
         if (HelperColetaveisInGame.naoTemColetavelOvoInGame())
         {
-            alvosSelecionados = new DoisAlvoColetavelSelecionado(true);
+            alvosSelecionados = new DoisAlvoColetavelSelecionado(true, this);
             coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(alvosSelecionados.onSelecionar(inputGame, this));
         }
         else
@@ -26,12 +27,25 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(ativacaoFalha());
         }
     }
+    //***** IMPLEMENTACAO TrocaDuplaPowerUpGo INICIO *****
+    public void coletavel1Selecionado(Coletavel coletavel)
+    {
+        powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO1_SELECIONADO);
+    }
 
+    public void coletavel2Selecionado(Coletavel coletavel)
+    {
+        powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO2_SELECIONADO);
+    }
+    //***** IMPLEMENTACAO TrocaDuplaPowerUpGo FIM *****  
+
+    //***** IMPLEMENTACAO Transformador<DuplaDeColetaveisDto, IEnumerator> INICIO *****
     public IEnumerator transformar(DuplaDeColetaveisDto duplaDeColetaveis)
     {
         hitColetavel2 = true;
         return realizarTroca(duplaDeColetaveis);
-    }    
+    }
+    //***** IMPLEMENTACAO Transformador<DuplaDeColetaveisDto, IEnumerator> FIM *****
 
     private IEnumerator ativacaoFalha()
     {
@@ -55,5 +69,5 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
     {           
         HelperColetaveisInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.finalizado();
-    }
+    }   
 }

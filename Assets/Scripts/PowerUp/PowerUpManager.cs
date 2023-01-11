@@ -60,7 +60,12 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
         somPowerUp.playSomBackgroundPowerUp();
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
         iniciarPowerUp(powerUpInfo);
-    }   
+    }
+
+    public void emAndamento(PowerUpEnums.ESTADO estadoAtual)
+    {
+        produtorDeEventoPowerUp.produziuEvento(FactoryPowerUpInfoDto.ofEmAndamento(estadoAtual));
+    }
 
     public void preFinalizar()
     {        
@@ -107,5 +112,5 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     ProdutorDeEvento<PowerUpInfoDto> AcaoPowerUpAcionado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoPowerUp;
-    }   
+    }    
 }

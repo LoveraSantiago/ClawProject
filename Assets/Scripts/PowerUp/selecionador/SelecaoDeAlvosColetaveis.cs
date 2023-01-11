@@ -1,5 +1,5 @@
 public abstract class SelecaoDeAlvosColetaveis<T> : SelecaoDeAlvos<T>,
-                                           Transformador<InputGame, Coletavel>
+                                                    Transformador<InputGame, Coletavel>
 {
     protected bool filtrarGaiolas;
 

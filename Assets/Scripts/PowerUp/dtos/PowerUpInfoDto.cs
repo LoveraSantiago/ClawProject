@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PowerUpInfoDto
 {
-    private PowerUpEnums.ESTADO estadoAtual;
+    public PowerUpEnums.ESTADO estadoAtual { get; private set; }
 
     public bool isEstadoInicio       { get { return estadoAtual == PowerUpEnums.ESTADO.INICIO; } }
     public bool isEstadoPreFinalizar { get { return estadoAtual == PowerUpEnums.ESTADO.PREFINALIZAR; } }
