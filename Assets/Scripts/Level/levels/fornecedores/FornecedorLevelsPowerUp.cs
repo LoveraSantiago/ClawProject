@@ -13,7 +13,8 @@ public class FornecedorLevelsPowerUp : AbstractFornecedorLevels
             case 1: return new LevelTutorialPupMissilNuclear();
             case 2: return new LevelTutorialPupMinaTerrestre();
             case 3: return new LevelTutorialPupMissilTeleguiado();
-            case 4: return new LevelPowerUp();
+            case 4: return new LevelTutorialPupIgual();
+            case 5: return new LevelPowerUp();
         }
         return null;
     }
