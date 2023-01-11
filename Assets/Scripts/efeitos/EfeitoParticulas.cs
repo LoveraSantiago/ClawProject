@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class EfeitoParticulas 
 {
-    public void explodir(ParticleSystem efeitoExplosao, Vector3 posicao)
+    public void ligar(ParticleSystem particleSystem, Vector3 posicao)
     {
-        efeitoExplosao.gameObject.SetActive(true);
-        efeitoExplosao.transform.position = posicao;
-        efeitoExplosao.Play();        
+        particleSystem.gameObject.SetActive(true);
+        particleSystem.transform.position = posicao;
+        particleSystem.Play();        
     }
 
-    public void desligar(ParticleSystem efeitoExplosao)
+    public void desligar(ParticleSystem particleSystem)
     {
-        efeitoExplosao.gameObject.SetActive(false);
+        particleSystem.gameObject.SetActive(false);
     }
 }

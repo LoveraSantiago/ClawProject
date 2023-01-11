@@ -98,7 +98,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         colliderExplosao.gameObject.SetActive(true);        
 
         EfeitoParticulas efeitoExplosao = new EfeitoParticulas();
-        efeitoExplosao.explodir(powerUpDto.MissilNuclearDto.EfeitoExplosao, getPosicao());
+        efeitoExplosao.ligar(powerUpDto.MissilNuclearDto.EfeitoExplosao, getPosicao());
 
         somPowerUp.playSomExplosao();
 

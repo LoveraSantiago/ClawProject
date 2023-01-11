@@ -72,7 +72,7 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
 
         Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MinaDto.HalturaExplosao, 0);
         EfeitoParticulas efeitoExplosao = new EfeitoParticulas();
-        efeitoExplosao.explodir(powerUpDto.MinaDto.EfeitoExplosao, posicaoExplosao);
+        efeitoExplosao.ligar(powerUpDto.MinaDto.EfeitoExplosao, posicaoExplosao);
 
         somPowerUp.playSomExplosao();
 
