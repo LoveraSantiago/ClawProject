@@ -13,6 +13,11 @@ public class PowerUpEnums
     {
         CHAO, NONE
     }
+    public enum ESTADO 
+    { 
+        INICIO, PREFINALIZAR, FINALIZAR, EXPIRADO,
+        ALVO1_SELECIONADO
+    }
 
     public class FAMILIA
     {
@@ -21,5 +26,6 @@ public class PowerUpEnums
         public const string LEVITACAO    = "LEVITAÇÃO";
         public const string MECANISMO    = "MECANISMO";
         public const string IMPULSO      = "IMPULSO";
-    }  
+    }
+
 }
