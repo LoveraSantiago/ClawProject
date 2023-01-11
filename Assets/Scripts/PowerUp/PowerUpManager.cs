@@ -97,7 +97,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     {
         contadorTimeout = new ContadorPowerUpAtivo(powerUpInfo);
 
-        InteracaoPowerUpComComponente interacao = powerUpInfo.interacaoComComponentes;
+        InteracaoPowerUpComComponente interacao = powerUpInfo.interacaoPupComComponentes;
         if (InteracaoComponentesUtils.isNotInteracaoComGarra(interacao))
         {
             interacao.iniciar();

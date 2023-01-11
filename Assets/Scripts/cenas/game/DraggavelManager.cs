@@ -36,7 +36,7 @@ public class DraggavelManager : AcaoPupFromScrollSelecao.ConsumidorEvento,
     {
         if (evento.isEstadoInicio)
         {
-            if (!evento.isClicavel)
+            if (!evento.isPupEntidadeClicavel)
             {
                 qtdDraggaveis--;
                 if(qtdDraggaveis == 0)

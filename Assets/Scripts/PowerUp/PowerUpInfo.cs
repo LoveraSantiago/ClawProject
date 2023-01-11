@@ -10,21 +10,22 @@ public class PowerUpInfo
     public bool isEstadoPreFinalizar { get { return estadoAtual == ESTADO.PREFINALIZAR; } }
     public bool isEstadoFinalizar    { get { return estadoAtual == ESTADO.FINALIZAR; } }
     public bool isEstadoExpirado     { get { return estadoAtual == ESTADO.EXPIRADO; } }
-    public bool isClicavel     { get { return pupEntidade.isClicavel; } }
 
-    public bool isColetavel { get { return pupEntidade.isColetavel; } }
-    public bool isNotColetavel { get { return !isColetavel; } }
+    public bool isPupEntidadeClicavel     { get { return pupEntidade.isClicavel; } }
+
+    public bool isPupEntidadeColetavel { get { return pupEntidade.isColetavel; } }
+    public bool isPupEntidadeNotColetavel { get { return !isPupEntidadeColetavel; } }
     public bool hasColetavel { get { return coletavel != null; } }
 
     public int indiceBtn { get; private set; }
-    public int duracaoTempo { get { return pupEntidade.duracao; }}
+    public int duracaoTempoPupEntidade { get { return pupEntidade.duracao; }}
 
-    public PowerUpEnums.TIPO tipo { get { return pupEntidade.tipo; } }
+    public PowerUpEnums.TIPO tipoPupEntidade { get { return pupEntidade.tipo; } }
     private PowerUpEntidade pupEntidade;
     public  Coletavel coletavel { get; private set; }
     
-    public InteracaoPowerUpComComponente interacaoComComponentes { get; private set; }    
-    public PowerUpAcaoExpirado pupAcaoExpirado { get { return pupEntidade.getPowerUpGo(); } }
+    public InteracaoPowerUpComComponente interacaoPupComComponentes { get; private set; }    
+    public PowerUpAcaoExpirado pupEntidadeAcaoExpirado { get { return pupEntidade.getPowerUpGo(); } }
 
     private PowerUpInfo(ESTADO estado)
     {
@@ -36,7 +37,7 @@ public class PowerUpInfo
         this.pupEntidade = pupEntidade;
 
         AbstractPowerUpGo powerUpGo = pupEntidade.getPowerUpGo();
-        interacaoComComponentes = powerUpGo.getInteracaoComComponente();        
+        interacaoPupComComponentes = powerUpGo.getInteracaoComComponente();        
     }
 
     public PowerUpInfo configurarPupEntidade(PowerUpEntidade pupEntidade, Vector3 posInicial)

@@ -136,7 +136,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
         if (evento.isEstadoInicio)
         {
             processarDesimantado();
-            if (evento.isNotColetavel)
+            if (evento.isPupEntidadeNotColetavel)
             {
                 detectorDeTrigger.desligarTrigger();
             }
