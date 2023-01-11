@@ -138,15 +138,15 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        if (evento.isInicio)
+        if (evento.isEstadoInicio)
         {
             prepararTutorialParteJogarPowerUp();
         }
-        else if (evento.isExpirado)
+        else if (evento.isEstadoExpirado)
         {
             prepararFimTutorialPupExpirado();
         }
-        else if(evento.isFinalizar)
+        else if(evento.isEstadoFinalizar)
         {
             prepararFimTutorial();
         }       

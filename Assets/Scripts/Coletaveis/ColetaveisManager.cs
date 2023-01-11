@@ -133,7 +133,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        if (evento.isInicio)
+        if (evento.isEstadoInicio)
         {
             processarDesimantado();
             if (evento.isNotColetavel)
@@ -141,11 +141,11 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
                 detectorDeTrigger.desligarTrigger();
             }
         }
-        else if (evento.isPreFinalizar && evento.hasColetavel)
+        else if (evento.isEstadoPreFinalizar && evento.hasColetavel)
         {
             processarColetado(evento.coletavel.getGOColetavel());
         }        
-        else if (evento.isFinalizar)
+        else if (evento.isEstadoFinalizar)
         {
             detectorDeTrigger.ligarTrigger();
         }

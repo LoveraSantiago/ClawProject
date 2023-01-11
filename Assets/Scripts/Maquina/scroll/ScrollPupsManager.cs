@@ -149,7 +149,7 @@ public class ScrollPupsManager : Draggavel,
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        if (evento.isFinalizar)
+        if (evento.isEstadoFinalizar)
         {
             if (isLevelPup)
             {

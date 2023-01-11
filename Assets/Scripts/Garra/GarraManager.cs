@@ -83,17 +83,17 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        if (evento.isInicio)
+        if (evento.isEstadoInicio)
         {
             gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.interacaoComComponentes);
             gerDeMovPowerUp.iniciarMovimentacoes();
             gerDeMovAtual = gerDeMovPowerUp;
         }
-        else if (evento.isExpirado)
+        else if (evento.isEstadoExpirado)
         {
             gerDeMovPowerUp.largarPowerUp();
         }
-        else if (evento.isFinalizar)
+        else if (evento.isEstadoFinalizar)
         {
             gerDeMovPowerUp.finalizarPowerUp();
             gerDeMovNormal.trocarParaAcaoNormal();

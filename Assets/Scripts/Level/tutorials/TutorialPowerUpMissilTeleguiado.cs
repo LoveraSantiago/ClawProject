@@ -87,19 +87,19 @@ public class TutorialPowerUpMissilTeleguiado : TutorialPowerUp,
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        if (evento.isInicio)
+        if (evento.isEstadoInicio)
         {
             prepararTutorialInicioPowerUp();
         }
-        else if (evento.isPreFinalizar)
+        else if (evento.isEstadoPreFinalizar)
         {
             prepararMensagemPupAcionado();
         }
-        else if (evento.isFinalizar)
+        else if (evento.isEstadoFinalizar)
         {
             prepararFimTutorialPupAcionado();
         }
-        else if (evento.isExpirado)
+        else if (evento.isEstadoExpirado)
         {
             prepararFimTutorialPupExpirado();
         }

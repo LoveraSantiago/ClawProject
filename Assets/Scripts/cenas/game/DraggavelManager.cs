@@ -34,7 +34,7 @@ public class DraggavelManager : AcaoPupFromScrollSelecao.ConsumidorEvento,
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        if (evento.isInicio)
+        if (evento.isEstadoInicio)
         {
             if (!evento.isClicavel)
             {

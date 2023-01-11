@@ -64,7 +64,7 @@ public class TutorialPowerUpIgual : TutorialPowerUp,
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
     {
-        if (evento.isExpirado)
+        if (evento.isEstadoExpirado)
         {
             prepararFimTutorialPupExpirado();
         }
