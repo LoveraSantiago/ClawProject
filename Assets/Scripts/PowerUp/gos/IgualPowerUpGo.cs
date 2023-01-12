@@ -13,7 +13,7 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
 
         EfeitoParticulas efeitoTeleporte = new EfeitoParticulas();
-        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte, coletavel1.getPosicao());
+        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, coletavel1.getPosicao());
 
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();
@@ -43,7 +43,7 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
         getTrocadorDeOrdem().trocarFigura(coletavel1, coletavel2);
 
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
-        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte);
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
         powerUpFinalizacao.finalizado();
         yield return null;
     }          
