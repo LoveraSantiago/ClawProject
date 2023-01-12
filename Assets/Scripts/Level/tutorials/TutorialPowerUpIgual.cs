@@ -6,6 +6,7 @@ public class TutorialPowerUpIgual : TutorialPowerUp,
                                     AcaoColetado.ProdutorEvento
 {
     private bool finalizacaoDisparada;
+    private bool emAndamento;
     private AllGameManagers allGameManagers;
     private AnimacaoTutorial animacaoTutorial;
     private MainGameDto mainDto;
@@ -36,7 +37,7 @@ public class TutorialPowerUpIgual : TutorialPowerUp,
 
     private void prepararFimTutorialPupExpirado()
     {
-        if (!finalizacaoDisparada)
+        if (!finalizacaoDisparada && !emAndamento)
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
@@ -45,6 +46,25 @@ public class TutorialPowerUpIgual : TutorialPowerUp,
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
         }
+    }
+
+    private void prepararTutorialInicioPowerUp()
+    {
+        mainDto.TutorialDto.LblTexto.text = "Selecione o 1º coletavel \npara ser igualado.";
+        animacaoTutorial.playParteTextoBaixo();
+    }
+    
+    private void prepararTutorialColetavel1Acionado()
+    {
+        mainDto.TutorialDto.LblTexto.text = "Selecione o 2º coletavel \npara igualar.\n";
+        animacaoTutorial.playParteTextoBaixo();
+    }
+    
+    private void prepararTutorialColetavel2Acionado()
+    {
+        emAndamento = true;
+        mainDto.TutorialDto.LblTexto.text = "Otimo!\nAgora você tem 2 coletaveis iguais!";
+        animacaoTutorial.playParteTextoBaixo();
     }
 
     protected IEnumerator coroutineEncerrarTutorial(float valorDelay)
@@ -62,9 +82,39 @@ public class TutorialPowerUpIgual : TutorialPowerUp,
         produtorDeEvento.produziuEvento(eventoFim);
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
+    private void prepararFimTutorialPupAcionado()
     {
-        if (evento.isEstadoExpirado)
+        if (!finalizacaoDisparada)
+        {
+            allGameManagers.getGarraManager().parar();
+            finalizacaoDisparada = true;
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialSucesso));
+        }
+    }
+
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
+    {        
+        if (evento.isEstadoInicio)
+        {
+            prepararTutorialInicioPowerUp();
+        }
+        else if (evento.isEstadoEmAndamento)
+        {
+            if(evento.estadoAtual == PowerUpEnums.ESTADO.ALVO1_SELECIONADO)
+            {
+                prepararTutorialColetavel1Acionado();
+            }
+            else if(evento.estadoAtual == PowerUpEnums.ESTADO.ALVO2_SELECIONADO)
+            {
+                prepararTutorialColetavel2Acionado();
+            }
+        }
+        else if (evento.isEstadoFinalizar)
+        {
+            prepararFimTutorialPupAcionado();
+        }
+        else if (evento.isEstadoExpirado)
         {
             prepararFimTutorialPupExpirado();
         }

@@ -23,6 +23,7 @@ public class SelecionadorDeAlvos<T> where T : GO
                 if (go != null && isGoNaoSelecionadoAntes(go))
                 {
                     goSelecionado = go;
+                    gosJaSelecionados.Add(go);
                 }
             }
             yield return null;

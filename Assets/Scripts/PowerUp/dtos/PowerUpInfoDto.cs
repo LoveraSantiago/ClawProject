@@ -7,7 +7,11 @@ public class PowerUpInfoDto
     public bool isEstadoInicio       { get { return estadoAtual == PowerUpEnums.ESTADO.INICIO; } }
     public bool isEstadoPreFinalizar { get { return estadoAtual == PowerUpEnums.ESTADO.PREFINALIZAR; } }
 
-    public bool isEstadoEmAndamento { get { return estadoAtual == PowerUpEnums.ESTADO.ALVO1_SELECIONADO; } }
+    public bool isEstadoEmAndamento { get 
+        { 
+            return estadoAtual == PowerUpEnums.ESTADO.ALVO1_SELECIONADO || estadoAtual == PowerUpEnums.ESTADO.ALVO2_SELECIONADO; 
+        } }
+
     public bool isEstadoFinalizar    { get { return estadoAtual == PowerUpEnums.ESTADO.FINALIZAR; } }
     public bool isEstadoExpirado     { get { return estadoAtual == PowerUpEnums.ESTADO.EXPIRADO; } }
 

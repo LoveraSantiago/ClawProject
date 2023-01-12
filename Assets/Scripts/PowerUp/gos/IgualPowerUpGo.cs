@@ -12,14 +12,15 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
         Coletavel coletavel1 = duplaDeColetaveis.coletavel1;
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
 
+        EfeitoParticulas efeitoTeleporte = new EfeitoParticulas();
+        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte, coletavel1.getPosicao());
+
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();
 
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();
         materialTeleporte.addTroca(spr1, spr2);
 
-        EfeitoParticulas efeitoTeleporte = new EfeitoParticulas();
-        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte, coletavel1.getPosicao());
         coletavel1.addMaterial(materialTeleporte.materialTeleporte);
 
         float contador = 0;

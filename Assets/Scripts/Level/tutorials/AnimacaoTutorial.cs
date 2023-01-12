@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class AnimacaoTutorial 
 {
-    private static readonly int IDLE                = Animator.StringToHash("idle");
-    private static readonly int ANIM_PARTE_COLETAR  = Animator.StringToHash("clique-coletar");
-    private static readonly int ANIM_PARTE_POWERUP  = Animator.StringToHash("clique-powerup");
-    private static readonly int ANIM_PARTE_DRAGPUP  = Animator.StringToHash("drag-powerup");
-    private static readonly int ANIM_PARTE_TEXTO    = Animator.StringToHash("so-texto");
-    private static readonly int ANIM_PARTE_DRAGAREA = Animator.StringToHash("drag-area-powerup");
-    private static readonly int ANIM_PARTE_ALVO     = Animator.StringToHash("clique-alvo");
+    private static readonly int IDLE                  = Animator.StringToHash("idle");
+    private static readonly int ANIM_PARTE_COLETAR    = Animator.StringToHash("clique-coletar");
+    private static readonly int ANIM_PARTE_POWERUP    = Animator.StringToHash("clique-powerup");
+    private static readonly int ANIM_PARTE_DRAGPUP    = Animator.StringToHash("drag-powerup");
+    private static readonly int ANIM_PARTE_TEXTO      = Animator.StringToHash("so-texto");
+    private static readonly int ANIM_PARTE_TEXTOBAIXO = Animator.StringToHash("so-texto-baixo");
+    private static readonly int ANIM_PARTE_DRAGAREA   = Animator.StringToHash("drag-area-powerup");
+    private static readonly int ANIM_PARTE_ALVO       = Animator.StringToHash("clique-alvo");
 
     private Animator animator;
 
@@ -45,6 +46,11 @@ public class AnimacaoTutorial
     public void playParteTexto()
     {
         animator.Play(ANIM_PARTE_TEXTO);
+    }
+    
+    public void playParteTextoBaixo()
+    {
+        animator.Play(ANIM_PARTE_TEXTOBAIXO);
     }
 
     public void playAlvo()

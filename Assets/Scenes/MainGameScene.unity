@@ -26520,7 +26520,7 @@ MonoBehaviour:
           - {fileID: 1245264348}
         efeitoExplosao: {fileID: 1602993054}
       teleporteDto:
-        velocidadeTeleporte: 0.6
+        velocidadeTeleporte: 0.5
         velocidadeCoringa: 1.25
         delayFinal: 0.5
         efeitoTeleporte: {fileID: 111721538}
@@ -47855,7 +47855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &846774092
 Transform:
   m_ObjectHideFlags: 0

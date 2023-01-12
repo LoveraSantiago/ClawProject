@@ -6,7 +6,10 @@ public class DoisAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<DuplaDeCole
     private MiraSelecionadoOnColetavel miraSelecionadoOnColetavel;
 
     public DoisAlvoColetavelSelecionado(bool filtrarGaiolas, MiraSelecionadoOnColetavel miraSelecionadoOnColetavel) 
-        : base(filtrarGaiolas){}
+        : base(filtrarGaiolas)
+    {
+        this.miraSelecionadoOnColetavel = miraSelecionadoOnColetavel;
+    }
 
     public override IEnumerator onSelecionar(
         InputGame inputGame, Transformador<DuplaDeColetaveisDto, IEnumerator> coroutineOnSelecionado)
