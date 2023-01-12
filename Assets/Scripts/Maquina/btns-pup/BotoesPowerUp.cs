@@ -144,7 +144,7 @@ public class BotoesPowerUp : Draggavel,
         }        
     }
 
-    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfoDto evento)
     {
         btnsPowerUp[evento.indiceBotao].receberAcaoPowerUp(evento, controleAcionamentoPup);
     }

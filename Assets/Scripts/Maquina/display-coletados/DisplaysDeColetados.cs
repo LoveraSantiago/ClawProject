@@ -37,13 +37,13 @@ public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento,
         modoColetados.mostrarColetadoNoDisplay(evento);
     }
 
-    public void processarPowerUp(PowerUpInfo evento)
+    public void processarPowerUp(PowerUpInfoDto evento)
     {
-        InteracaoPowerUpComComponente interacaoPupCComponentes = evento.interacaoComComponentes;
+        InteracaoPowerUpComComponente interacaoPupCComponentes = evento.interacaoPupComComponentes;
         if (InteracaoComponentesUtils.isInteracaoComDisplayColetado(interacaoPupCComponentes))            
         {
             PowerUpInteracaoComDisplayColetado interacaoDisplayColetado = InteracaoComponentesUtils.getAsInteracaoComDisplayColetado(interacaoPupCComponentes);
-            modoColetados.processarPowerUp(evento.tipo, interacaoDisplayColetado);
+            modoColetados.processarPowerUp(evento.tipoPupEntidade, interacaoDisplayColetado);
         }
     }
 

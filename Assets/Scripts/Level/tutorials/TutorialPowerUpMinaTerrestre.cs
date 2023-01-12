@@ -62,17 +62,17 @@ public class TutorialPowerUpMinaTerrestre : TutorialPowerUp,
         produtorDeEvento.produziuEvento(eventoFim);
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
     {
-        if (evento.isInicio)
+        if (evento.isEstadoInicio)
         {
             animacaoTutorial.playIdle();
         }
-        else if (evento.isPreFinalizar)
+        else if (evento.isEstadoPreFinalizar)
         {
             prepararMensagemPupAcionado();
         }
-        else if (evento.isFinalizar)
+        else if (evento.isEstadoFinalizar)
         {
             prepararFimTutorialPupAcionado();
         }

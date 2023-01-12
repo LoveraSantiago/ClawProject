@@ -101,20 +101,20 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         }
     }    
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
     {
-        if (evento.isInicio)
+        if (evento.isEstadoInicio)
         {
             displayDeColetados.processarPowerUp(evento);            
             arcoIrisEfeito.ligarEfeitoArcoIris();
             displayTimer.pause();
-            displayDeScores.iniciarContagemRegressiva(evento.duracaoTempo);
+            displayDeScores.iniciarContagemRegressiva(evento.duracaoTempoPupEntidade);
         }
-        else if (evento.isPreFinalizar)
+        else if (evento.isEstadoPreFinalizar)
         {
             displayDeScores.piscarAsteriscos();
         }
-        else if (evento.isFinalizar)
+        else if (evento.isEstadoFinalizar)
         {
             displayDeScores.finalizarContagemRegressiva();
             displayTimer.continuar();
@@ -142,7 +142,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         isGamePlay = false;
     }
 
-    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfoDto evento)
     {   
         isGamePlay = true;
         draggavel = botoesPowerUp;

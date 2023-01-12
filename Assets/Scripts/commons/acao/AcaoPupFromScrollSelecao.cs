@@ -1,3 +1,3 @@
-public class AcaoPupFromScrollSelecao : ProdutorConsumidoresDeEvento<PowerUpBtnInfo>
+public class AcaoPupFromScrollSelecao : ProdutorConsumidoresDeEvento<PowerUpBtnInfoDto>
 {
 }

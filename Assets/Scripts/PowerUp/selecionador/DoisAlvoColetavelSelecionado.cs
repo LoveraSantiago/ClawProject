@@ -3,8 +3,13 @@ using UnityEngine;
 
 public class DoisAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<DuplaDeColetaveisDto>
 {
-    public DoisAlvoColetavelSelecionado(bool filtrarGaiolas) 
-        : base(filtrarGaiolas){}
+    private MiraSelecionadoOnColetavel miraSelecionadoOnColetavel;
+
+    public DoisAlvoColetavelSelecionado(bool filtrarGaiolas, MiraSelecionadoOnColetavel miraSelecionadoOnColetavel) 
+        : base(filtrarGaiolas)
+    {
+        this.miraSelecionadoOnColetavel = miraSelecionadoOnColetavel;
+    }
 
     public override IEnumerator onSelecionar(
         InputGame inputGame, Transformador<DuplaDeColetaveisDto, IEnumerator> coroutineOnSelecionado)
@@ -16,9 +21,11 @@ public class DoisAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<DuplaDeCole
 
         Coletavel coletavel1 = selecionadorDeAlvos.goSelecionado;
         coletavel1.ligarAnimacaoMiraSelecionado();
+        miraSelecionadoOnColetavel.coletavel1Selecionado(coletavel1);
 
         yield return selecionadorDeAlvos.selecionarAlvo(inputGame, this);
         Coletavel coletavel2 = selecionadorDeAlvos.goSelecionado;
+        miraSelecionadoOnColetavel.coletavel2Selecionado(coletavel2);
 
         ligarMiraFinal(coletavel1);
 

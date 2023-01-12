@@ -12,7 +12,7 @@ public class DraggavelManager : AcaoPupFromScrollSelecao.ConsumidorEvento,
         this.colliderDrag = colliderDrag;
     }
 
-    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfoDto evento)
     {
         if (evento.hasEntidade)
         {
@@ -32,11 +32,11 @@ public class DraggavelManager : AcaoPupFromScrollSelecao.ConsumidorEvento,
         }
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
     {
-        if (evento.isInicio)
+        if (evento.isEstadoInicio)
         {
-            if (!evento.isClicavel)
+            if (!evento.isPupEntidadeClicavel)
             {
                 qtdDraggaveis--;
                 if(qtdDraggaveis == 0)

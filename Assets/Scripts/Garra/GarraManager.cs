@@ -81,19 +81,19 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         detectorDeColisoes.registrarConsumidorDeTrigger(this);
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
     {
-        if (evento.isInicio)
+        if (evento.isEstadoInicio)
         {
-            gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.interacaoComComponentes);
+            gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.interacaoPupComComponentes);
             gerDeMovPowerUp.iniciarMovimentacoes();
             gerDeMovAtual = gerDeMovPowerUp;
         }
-        else if (evento.isExpirado)
+        else if (evento.isEstadoExpirado)
         {
             gerDeMovPowerUp.largarPowerUp();
         }
-        else if (evento.isFinalizar)
+        else if (evento.isEstadoFinalizar)
         {
             gerDeMovPowerUp.finalizarPowerUp();
             gerDeMovNormal.trocarParaAcaoNormal();

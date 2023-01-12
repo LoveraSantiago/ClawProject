@@ -131,22 +131,29 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
         prepararTutorialParteDragPup();
     }
 
-    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfo evento)
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfoDto evento)
     {
-        prepararTutorialParteAcionarPowerUp();
+        if (evento.hasEntidade)
+        {
+            prepararTutorialParteAcionarPowerUp();
+        }
+        else
+        {
+            prepararTutorialPartePowerUp();
+        }
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfo evento)
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
     {
-        if (evento.isInicio)
+        if (evento.isEstadoInicio)
         {
             prepararTutorialParteJogarPowerUp();
         }
-        else if (evento.isExpirado)
+        else if (evento.isEstadoExpirado)
         {
             prepararFimTutorialPupExpirado();
         }
-        else if(evento.isFinalizar)
+        else if(evento.isEstadoFinalizar)
         {
             prepararFimTutorial();
         }       

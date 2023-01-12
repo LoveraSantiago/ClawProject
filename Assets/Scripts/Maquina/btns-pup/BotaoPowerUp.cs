@@ -66,7 +66,7 @@ public class BotaoPowerUp : BotaoDraggavel
         aparencia.colorirBotaoFromLevelV2(corBase, corTampa);
     }
 
-    public void receberAcaoPowerUp(PowerUpBtnInfo evento, ControleAcionamentoPowerUp controlePup)
+    public void receberAcaoPowerUp(PowerUpBtnInfoDto evento, ControleAcionamentoPowerUp controlePup)
     {   
         controlePup.habilitarPowerUp();
         if (evento.hasEntidade)
