@@ -13,34 +13,43 @@ public class LojaScene : MonoBehaviour
         SomManagerLoja somManager = new SomManagerLoja(mainLojaDto.AudioLojaDto);
         prefabLoading.iniciarLoading(somManager, mainLojaDto.GosDesligar);
         ContextoEstaticoUtils.loading.fecharModal();
-        configurarBotoes();
-    }    
+        configurarBotoes(somManager);
 
-    private void configurarBotoes()
+        somManager.playSomBackground();
+    }
+
+    private void configurarBotoes(SomManagerLoja somManager)
     {
-        mainLojaDto.BtnVoltar.onClick.AddListener(() => ContextoEstaticoUtils.loading.irParaMapScene());
+        mainLojaDto.BtnVoltar.onClick.AddListener(() => {
+                somManager.playSomCliqueVoltar();
+                ContextoEstaticoUtils.loading.irParaMapScene();
+            });
 
         mainLojaDto.LblQtdFichasOuro.text   = PlayerPrefsFichas.getQtdFichas(Ficha.OURO).ToString();
         mainLojaDto.LblQtdFichasPrata.text  = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
         mainLojaDto.LblQtdFichasBronze.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
 
         mainLojaDto.BtnOuro.onClick.AddListener(()=> {
+            somManager.playSomClique();
             PlayerPrefsFichas.comprarFicha(Ficha.OURO, 1);
             mainLojaDto.LblQtdFichasOuro.text = PlayerPrefsFichas.getQtdFichas(Ficha.OURO).ToString();
         });
 
         mainLojaDto.BtnPrata.onClick.AddListener(() => {
+            somManager.playSomClique();
             PlayerPrefsFichas.comprarFicha(Ficha.PRATA, 1);
             mainLojaDto.LblQtdFichasPrata.text = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
         });
 
         mainLojaDto.BtnBronze.onClick.AddListener(() => {
+            somManager.playSomClique();
             PlayerPrefsFichas.comprarFicha(Ficha.BRONZE, 1);
             mainLojaDto.LblQtdFichasBronze.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
         });
 
         mainLojaDto.BtnAssinatura.onClick.AddListener(() =>
         {
+            somManager.playSomClique();
             PlayerPrefsFichas.comprarFicha(Ficha.OURO, 10);
             mainLojaDto.LblQtdFichasOuro.text = PlayerPrefsFichas.getQtdFichas(Ficha.OURO).ToString();
 
