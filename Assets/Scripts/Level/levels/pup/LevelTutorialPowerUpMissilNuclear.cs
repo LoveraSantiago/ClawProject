@@ -1,4 +1,4 @@
-public class LevelTutorialPupMinaTerrestre : AbstractLevelTutorialPowerUp
+public class LevelTutorialPowerUpMissilNuclear : AbstractLevelTutorialPowerUp
 {
     public override int[,] getArrayDeColetaveis()
     {
@@ -18,13 +18,13 @@ public class LevelTutorialPupMinaTerrestre : AbstractLevelTutorialPowerUp
     public override PowerUpsParaLevel getPupsToLevel()
     {
         return new PowerUpsParaLevel(2)
-           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE })
-           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE });
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MISSIL_NUCLEAR })
+           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MISSIL_NUCLEAR });
     }
 
     public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
-        TutorialPowerUpMinaTerrestre tutorial = new TutorialPowerUpMinaTerrestre(allGameManagers, mainDto);
+        TutorialPowerUpMissilNuclear tutorial = new TutorialPowerUpMissilNuclear(allGameManagers, mainDto);
         return new MainGameEventosPowerUp(allGameManagers, tutorial);
     }
 }

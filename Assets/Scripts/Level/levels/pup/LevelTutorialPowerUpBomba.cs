@@ -1,4 +1,4 @@
-public class LevelTutorialPupBomba : AbstractLevelTutorialPowerUp
+public class LevelTutorialPowerUpBomba : AbstractLevelTutorialPowerUp
 {
     public override int[,] getArrayDeColetaveis()
     {

@@ -1,4 +1,4 @@
-public class LevelTutorialPupMissilTeleguiado : AbstractLevelTutorialPowerUp
+public class LevelTutorialPowerUpTeleporte : AbstractLevelTutorialPowerUp
 {
     public override int[,] getArrayDeColetaveis()
     {
