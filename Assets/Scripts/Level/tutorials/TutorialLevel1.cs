@@ -133,7 +133,14 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
 
     void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfoDto evento)
     {
-        prepararTutorialParteAcionarPowerUp();
+        if (evento.hasEntidade)
+        {
+            prepararTutorialParteAcionarPowerUp();
+        }
+        else
+        {
+            prepararTutorialPartePowerUp();
+        }
     }
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
