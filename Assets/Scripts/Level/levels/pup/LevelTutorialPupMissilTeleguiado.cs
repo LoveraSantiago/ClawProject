@@ -25,6 +25,6 @@ public class LevelTutorialPupMissilTeleguiado : AbstractLevelTutorialPowerUp
     public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
         TutorialPowerUpMissilTeleguiado tutorial = new TutorialPowerUpMissilTeleguiado(allGameManagers, mainDto);
-        return new MainGameEventosPowerUpMissilTeleguiado(allGameManagers, tutorial);
+        return new MainGameEventosPowerUp(allGameManagers, tutorial);
     }
 }

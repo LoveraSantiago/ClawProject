@@ -25,6 +25,6 @@ public class LevelTutorialPupMinaTerrestre : AbstractLevelTutorialPowerUp
     public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
         TutorialPowerUpMinaTerrestre tutorial = new TutorialPowerUpMinaTerrestre(allGameManagers, mainDto);
-        return new MainGameEventosPowerUpMinaTerrestre(allGameManagers, tutorial);
+        return new MainGameEventosPowerUp(allGameManagers, tutorial);
     }
 }

@@ -1,9 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TutorialPowerUpMinaTerrestre : TutorialPowerUp,
-                                            AcaoPowerUpAcionado.ConsumidorEvento,
-                                            AcaoColetado.ProdutorEvento
+public class TutorialPowerUpMinaTerrestre : TutorialPowerUp
 {
     private MainGameDto mainDto;
     private AllGameManagers allGameManagers;
