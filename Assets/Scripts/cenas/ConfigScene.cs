@@ -14,11 +14,15 @@ public class ConfigScene : MonoBehaviour
         prefabLoading.iniciarLoading(somManager, mainConfigDto.GosDesligar);
         ContextoEstaticoUtils.loading.fecharModal();
 
-        configurarToogles();
-        mainConfigDto.BtnBack.onClick.AddListener(() => ContextoEstaticoUtils.loading.irParaMapScene());
+        configurarToogles(somManager);
+        mainConfigDto.BtnBack.onClick.AddListener(() => {
+                somManager.playSomCliqueVoltar();
+                ContextoEstaticoUtils.loading.irParaMapScene();
+            });
+        somManager.playSomBackground();
     }   
 
-    private void configurarToogles()
+    private void configurarToogles(SomManagerConfig somManager)
     {
         int escolhaGarra = PlayerPrefsGarra.getEscolhaGarra();
         if (escolhaGarra == 0)
@@ -36,16 +40,19 @@ public class ConfigScene : MonoBehaviour
 
         mainConfigDto.ToggleFemea.onValueChanged.AddListener((ativo) =>
         {
+            somManager.playSomClique();
             PlayerPrefsGarra.saveEscolhaGarraFemea();
         });
 
         mainConfigDto.ToggleMacho.onValueChanged.AddListener((ativo) =>
         {
+            somManager.playSomClique();
             PlayerPrefsGarra.saveEscolhaGarraMacho();
         });
 
         mainConfigDto.ToggleRandom.onValueChanged.AddListener((ativo) =>
         {
+            somManager.playSomClique();
             PlayerPrefsGarra.saveEscolhaGarraRandom();
         });
     }
