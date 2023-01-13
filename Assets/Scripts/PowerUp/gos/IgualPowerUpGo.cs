@@ -5,7 +5,11 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
 {
     public IgualPowerUpGo() : base(powerUpDto.VazioPUp, "igual"){ }    
     
-    public override void resetPup() { }    
+    public override void resetPup() 
+    {
+        EfeitoParticulas efeitoTeleporte = new EfeitoParticulas();
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
+    }    
 
     protected override IEnumerator realizarTroca(DuplaDeColetaveisDto duplaDeColetaveis)
     {
@@ -43,8 +47,7 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
 
         getTrocadorDeOrdem().trocarFigura(coletavel1, coletavel2);
 
-        yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
-        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
+        yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);        
         powerUpFinalizacao.finalizado();
         yield return null;
     }          

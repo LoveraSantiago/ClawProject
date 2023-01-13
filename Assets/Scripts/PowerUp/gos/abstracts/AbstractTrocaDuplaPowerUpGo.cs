@@ -69,5 +69,6 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
     {           
         HelperColetaveisInGame.desligarMirasNosColetaveis();
         powerUpFinalizacao.finalizado();
+        resetPup();
     }   
 }

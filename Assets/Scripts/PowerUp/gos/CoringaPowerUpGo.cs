@@ -41,7 +41,10 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         Debug.Log("Reset chamado");
         coletavelSelecionado = null;
         finalizando = false;
-        coroutineAlvo = null;        
+        coroutineAlvo = null;
+
+        EfeitoParticulas efeitoTeleporte = new EfeitoParticulas();
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
     }
 
     public IEnumerator transformar(Coletavel entrada)
@@ -59,6 +62,9 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
     {
         coletavelSelecionado = coletavel;
 
+        EfeitoParticulas efeitoTeleporte = new EfeitoParticulas();
+        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, coletavelSelecionado.getPosicao());
+
         MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;        
         ColetavelEntidade coletavelEntidade = mapaEntidade.getColetavelEntidadeBySpriteNome(coletavel.nomeSprite);
         ColetavelEntidade[] coletaveisFamilia = mapaEntidade.getColetaveisExcluindo(coletavelEntidade);        
@@ -71,6 +77,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         Sprite sprSorteado = null;
         while (!finalizando)
         {
+            somPowerUp.playSomTeleporte();
             ColetavelEntidade coletavelSorteado = coletaveisFamilia[indiceSorteado];
             Debug.Log("indice sorteado " + indiceSorteado);
             sprSorteado = coletavelSorteado.sprite;      
@@ -91,6 +98,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
                 break;
             }
 
+            somPowerUp.playSomTeleporte();
             indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(coletaveisFamilia.Length, indiceSorteado);
             Debug.Log("indice sorteado " + indiceSorteado);
             coletavelSorteado = coletaveisFamilia[indiceSorteado];
@@ -122,7 +130,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         coletavel.clearMaterial();
         getTrocadorDeOrdem().atualizar(coletavel);
         resetPup();        
-        powerUpFinalizacao.finalizado();
+        powerUpFinalizacao.finalizado();        
         yield return null;
     }
 

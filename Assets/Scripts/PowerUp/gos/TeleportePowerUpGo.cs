@@ -5,7 +5,12 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
 {  
     public TeleportePowerUpGo() : base(powerUpDto.VazioPUp, "teleporte"){}    
    
-    public override void resetPup(){}
+    public override void resetPup()
+    {
+        EfeitoParticulas efeitoTeleporte = new EfeitoParticulas();
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte2);
+    }
 
     protected override IEnumerator realizarTroca(DuplaDeColetaveisDto duplaDeColetaveis)
     {

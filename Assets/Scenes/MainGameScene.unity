@@ -21874,7 +21874,7 @@ MonoBehaviour:
         volume: 1
         audioClip: {fileID: 8300000, guid: 1fd5648b19586544babe1622b3cc4941, type: 3}
       somTeleporte:
-        volume: 1
+        volume: 0.85
         audioClip: {fileID: 8300000, guid: f9a00ad1bc8117645be70d80bc176e96, type: 3}
       somMissil:
         volume: 1
