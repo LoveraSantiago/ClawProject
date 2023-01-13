@@ -15,6 +15,11 @@ public class SomManagerConfig : SomManager
         audioPlayOneShot(getComumAudioSource(), audioDto.SomCliqueVoltar);
     }
 
+    public void playSomClique()
+    {
+        audioPlayOneShot(getComumAudioSource(), audioDto.SomClique);
+    }
+
     public AudioSource getComumAudioSource()
     {
         return getAudioSource(1);
