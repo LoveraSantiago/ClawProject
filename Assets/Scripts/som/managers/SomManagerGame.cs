@@ -137,6 +137,11 @@ public class SomManagerGame : SomManager,
     {
         audioPlayOneShot(getAudioSourcePowerUp(), audioGameDto.SomMissil);
     }
+
+    public void playSomTeleporte()
+    {
+        audioPlayOneShot(getAudioSourcePowerUp(), audioGameDto.SomTeleporte);
+    }
     //***** IMPLEMENTACAO INTERFACE SOMPOWERUP FIM *****
 
     //***** IMPLEMENTACAO INTERFACE SOMMODAIS INICIO *****
@@ -194,5 +199,5 @@ public class SomManagerGame : SomManager,
     private AudioSource getAudioSourcePowerUp()
     {
         return getAudioSource(9);
-    }  
+    }   
 }

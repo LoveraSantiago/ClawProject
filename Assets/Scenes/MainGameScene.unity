@@ -21717,7 +21717,7 @@ MonoBehaviour:
           - {fileID: 1245264348}
         efeitoExplosao: {fileID: 1602993054}
       teleporteDto:
-        velocidadeTeleporte: 0.5
+        velocidadeTeleporte: 0.65
         velocidadeCoringa: 1.25
         delayFinal: 0.5
         efeitoTeleporte1: {fileID: 111721538}
@@ -21873,6 +21873,9 @@ MonoBehaviour:
       somExplosao:
         volume: 1
         audioClip: {fileID: 8300000, guid: 1fd5648b19586544babe1622b3cc4941, type: 3}
+      somTeleporte:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: f9a00ad1bc8117645be70d80bc176e96, type: 3}
       somMissil:
         volume: 1
         audioClip: {fileID: 8300000, guid: 334a19371065a1f41ad9afed8409b733, type: 3}

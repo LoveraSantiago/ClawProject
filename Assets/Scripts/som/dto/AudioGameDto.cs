@@ -28,6 +28,7 @@ public class AudioGameDto : AudioDto
     [SerializeField] private AudioClipDto abrirModalSucesso;
     [Space(3)]
     [SerializeField] private AudioClipDto somExplosao;
+    [SerializeField] private AudioClipDto somTeleporte;
     [SerializeField] private AudioClipDto somMissil;
 
     public AudioClipDto SomBackgroundPowerUp { get { return somBackgroundPowerUp; } }
@@ -49,5 +50,6 @@ public class AudioGameDto : AudioDto
     public AudioClipDto SomAbrirModal { get { return abrirModal; } }
     public AudioClipDto SomAbrirModalSucesso { get { return abrirModalSucesso; } }
     public AudioClipDto SomExplosao { get { return somExplosao; } }
+    public AudioClipDto SomTeleporte { get { return somTeleporte; } }
     public AudioClipDto SomMissil { get { return somMissil; } }
 }

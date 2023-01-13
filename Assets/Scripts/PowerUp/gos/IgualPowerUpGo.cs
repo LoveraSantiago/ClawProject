@@ -22,6 +22,7 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
         materialTeleporte.addTroca(spr1, spr2);
 
         coletavel1.addMaterial(materialTeleporte.materialTeleporte);
+        somPowerUp.playSomTeleporte();
 
         float contador = 0;
         while (contador < 1.01f)

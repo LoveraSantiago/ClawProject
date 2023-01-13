@@ -29,6 +29,7 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         coletavel2.addMaterial(materialTeleporteOut.materialTeleporte);
 
         float contador = 0;
+        somPowerUp.playSomTeleporte();
         while(contador < 1.01f)
         {
             contador += Time.deltaTime * powerUpDto.TeleporteDto.VelocidadeTeleporte;
