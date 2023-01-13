@@ -1,9 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TutorialPowerUpBomba : TutorialPowerUp,
-                                    AcaoPowerUpAcionado.ConsumidorEvento,
-                                    AcaoColetado.ProdutorEvento
+public class TutorialPowerUpBomba : TutorialPowerUp
 {
     private bool finalizacaoDisparada;
     private MainGameDto mainDto;

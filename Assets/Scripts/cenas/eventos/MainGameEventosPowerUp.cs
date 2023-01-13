@@ -1,9 +1,9 @@
-public class MainGameEventosPowerUpMissilNuclear : AbstractMainGameEventosTutorial
+public class MainGameEventosPowerUp : AbstractMainGameEventosTutorial
 {
-    private TutorialPowerUpMissilNuclear tutorial;
+    private TutorialPowerUp tutorial;
 
-    public MainGameEventosPowerUpMissilNuclear(AllGameManagers allGameManagers, TutorialPowerUpMissilNuclear tutorial)
-        : base(allGameManagers)
+    public MainGameEventosPowerUp(AllGameManagers allGameManagers, TutorialPowerUp tutorial)
+      : base(allGameManagers)
     {
         this.tutorial = tutorial;
     }

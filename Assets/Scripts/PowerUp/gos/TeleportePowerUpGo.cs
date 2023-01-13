@@ -12,6 +12,10 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         Coletavel coletavel1 = duplaDeColetaveis.coletavel1;
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
 
+        EfeitoParticulas efeitoTeleporte = new EfeitoParticulas();
+        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, coletavel1.getPosicao());
+        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte2, coletavel2.getPosicao());
+
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();
 
@@ -25,6 +29,7 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         coletavel2.addMaterial(materialTeleporteOut.materialTeleporte);
 
         float contador = 0;
+        somPowerUp.playSomTeleporte();
         while(contador < 1.01f)
         {
             contador += Time.deltaTime * powerUpDto.TeleporteDto.VelocidadeTeleporte;
@@ -46,6 +51,9 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         getTrocadorDeOrdem().trocar(coletavel1, coletavel2);
 
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
+
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte2);
         powerUpFinalizacao.finalizado();
         yield return null;
     }      

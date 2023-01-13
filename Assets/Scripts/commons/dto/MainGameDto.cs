@@ -5,28 +5,29 @@ using UnityEngine;
 public class MainGameDto 
 {
     [SerializeField] private float delayInicio;    
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private BoxCollider2D dragCollider;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private GarraDto garraDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private ColetaveisDto coletaveisDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private MaquinaDto maquinaDto;    
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private CameraDto cameraDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private PowerUpGameDto powerUpDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private UIGameDto uiDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private AudioGameDto audioGameDto;
+    [Space(3)]
     [SerializeField] private GameObject prefabLoading;
     [SerializeField] private GameObject[] gosDesligar;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private GameObject prefabMateriais;
     [SerializeField] private GameObject prefabLevelsDto;
-    [Space(5)]
+    [Space(3)]
     [SerializeField] private TutorialDto tutorialDto;
 
     public float DelayInicio { get { return delayInicio; } }

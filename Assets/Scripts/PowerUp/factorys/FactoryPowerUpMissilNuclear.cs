@@ -9,7 +9,7 @@ public class FactoryPowerUpMissilNuclear : AbstractFactoryPowerUp
                 .configSupplierDePowerUpGo(this)
                 .configIsClicavel(true)
                 .configDescricao(
-                    "Jogue uma bomba de grande raio de explosão nos coletaveis para espalhar suas posições.",
+                    "Jogue a bomba de grande raio explosivo nos coletaveis para espalhar suas posições.",
                     "Fique atento ao tempo de duração para soltar a bomba em cima do seu alvo.");
     }
 

@@ -10,8 +10,8 @@ public class FactoryPowerUpIgual : AbstractFactoryPowerUp
                 .configSupplierDePowerUpGo(this)
                 .configIsClicavel(true)
                 .configDescricao(
-                    "Troque as posições de um par de coletaveis para mudar suas respectivas posições.",
-                    "Selecione o primeiro coletavel a ser igualado com o segundo coletavel.");
+                    "Transforme um primeiro coletavel igual a um segundo coletavel",
+                    "Fique atento ao tempo de duração para igualar o coletavel.");
     }
 
     public override AbstractPowerUpGo fornecer()

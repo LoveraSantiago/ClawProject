@@ -10,8 +10,8 @@ public class FactoryPowerUpTeleporte : AbstractFactoryPowerUp
                 .configSupplierDePowerUpGo(this)
                 .configIsClicavel(true)
                 .configDescricao(
-                    "Troque as posições de um par de coletaveis para mudar suas respectivas posições.",
-                    "Selecione o primeiro coletavel a ser trocado de lugar. Selecione o segundo coletavel que será trocado de posicao com o primeiro");
+                    "Troque as posições de um par de coletaveis.",
+                    "Fique atento ao tempo de duração para realizar a troca.");
     }
 
     public override AbstractPowerUpGo fornecer()
