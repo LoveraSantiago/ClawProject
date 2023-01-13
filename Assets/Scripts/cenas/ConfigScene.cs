@@ -16,6 +16,7 @@ public class ConfigScene : MonoBehaviour
 
         configurarToogles();
         mainConfigDto.BtnBack.onClick.AddListener(() => ContextoEstaticoUtils.loading.irParaMapScene());
+        somManager.playSomBackground();
     }   
 
     private void configurarToogles()
