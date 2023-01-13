@@ -15,7 +15,10 @@ public class ConfigScene : MonoBehaviour
         ContextoEstaticoUtils.loading.fecharModal();
 
         configurarToogles();
-        mainConfigDto.BtnBack.onClick.AddListener(() => ContextoEstaticoUtils.loading.irParaMapScene());
+        mainConfigDto.BtnBack.onClick.AddListener(() => {
+            somManager.playSomCliqueVoltar();
+            ContextoEstaticoUtils.loading.irParaMapScene();
+            });
         somManager.playSomBackground();
     }   
 
