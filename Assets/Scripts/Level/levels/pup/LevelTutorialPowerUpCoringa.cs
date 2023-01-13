@@ -24,7 +24,7 @@ public class LevelTutorialPowerUpCoringa : AbstractLevelTutorialPowerUp
 
     public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
-        TutorialPowerUpIgual tutorial = new TutorialPowerUpIgual(allGameManagers, mainDto);
+        TutorialPowerUpCoringa tutorial = new TutorialPowerUpCoringa(allGameManagers, mainDto);
         return new MainGameEventosPowerUp(allGameManagers, tutorial);
     }
 }
