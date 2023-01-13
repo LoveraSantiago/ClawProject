@@ -11,7 +11,7 @@ public class FactoryPowerUpCoringa : AbstractFactoryPowerUp
                 .configIsClicavel(true)
                 .configDescricao(
                     "Troque um coletavel por um outro coletavel aleatorio",
-                    "Selecione o coletavel de interesse de ser trocado. Toque novamente nele durante para fixar a transformação.");
+                    "Fique atento ao tempo de duração para trocar o coletavel.");
     }
 
     public override AbstractPowerUpGo fornecer()
