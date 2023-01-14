@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
@@ -60,6 +59,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 
     private IEnumerator fazerTroca(Coletavel coletavel)
     {
+        powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO1_SELECIONADO);
         coletavelSelecionado = coletavel;
 
         CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoCoringa;
@@ -98,6 +98,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 
             if (houveToque)
             {
+                powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO2_SELECIONADO);
                 break;
             }
 
@@ -119,6 +120,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 
             if (houveToque)
             {
+                powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO2_SELECIONADO);
                 break;
             }
 

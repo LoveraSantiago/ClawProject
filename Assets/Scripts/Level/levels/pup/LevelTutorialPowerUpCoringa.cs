@@ -4,7 +4,7 @@ public class LevelTutorialPowerUpCoringa : AbstractLevelTutorialPowerUp
     {
         return new int[,]
         {
-            {-1, -1,  0, -1, -1,  1, -1},
+            {-1, -1, -1,  0, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
