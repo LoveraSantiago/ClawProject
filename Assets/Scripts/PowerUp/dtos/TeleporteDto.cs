@@ -12,8 +12,8 @@ public class TeleporteDto
     [SerializeField] private CorEfeitoTeleporteDto corEfeitoTeleporte;
     [SerializeField] private CorEfeitoTeleporteDto corEfeitoCoringa;
     [Space(3)]
-    [SerializeField] private ParticleSystem efeitoTeleporte1;
-    [SerializeField] private ParticleSystem efeitoTeleporte2;
+    [SerializeField] private EfeitoParticulasTeleporteDto efeitoTeleporte1;
+    [SerializeField] private EfeitoParticulasTeleporteDto efeitoTeleporte2;
 
     public float VelocidadeTeleporte { get { return velocidadeTeleporte; } }
     public float VelocidadeCoringa { get { return velocidadeCoringa; } }
@@ -23,6 +23,6 @@ public class TeleporteDto
     public CorEfeitoTeleporteDto CorEfeitoTeleporte { get { return corEfeitoTeleporte; } }
     public CorEfeitoTeleporteDto CorEfeitoCoringa { get { return corEfeitoCoringa; } }
 
-    public ParticleSystem EfeitoTeleporte1 { get { return efeitoTeleporte1; } }
-    public ParticleSystem EfeitoTeleporte2 { get { return efeitoTeleporte2; } }
+    public EfeitoParticulasTeleporteDto EfeitoTeleporte1 { get { return efeitoTeleporte1; } }
+    public EfeitoParticulasTeleporteDto EfeitoTeleporte2 { get { return efeitoTeleporte2; } }
 }

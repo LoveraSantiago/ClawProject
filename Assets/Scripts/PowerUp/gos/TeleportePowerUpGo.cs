@@ -8,8 +8,8 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
     public override void resetPup()
     {
         EfeitosExplosoes efeitoTeleporte = new EfeitosExplosoes();
-        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
-        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte2);
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1.EfeitoTeleportePrincipal);
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte2.EfeitoTeleportePrincipal);
     }
 
     protected override IEnumerator realizarTroca(DuplaDeColetaveisDto duplaDeColetaveis)
@@ -18,8 +18,8 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
 
         EfeitosExplosoes efeitoTeleporte = new EfeitosExplosoes();
-        efeitoTeleporte.explodir(powerUpDto.TeleporteDto.EfeitoTeleporte1, coletavel1.getPosicao());
-        efeitoTeleporte.explodir(powerUpDto.TeleporteDto.EfeitoTeleporte2, coletavel2.getPosicao());
+        efeitoTeleporte.explodir(powerUpDto.TeleporteDto.EfeitoTeleporte1.EfeitoTeleportePrincipal, coletavel1.getPosicao());
+        efeitoTeleporte.explodir(powerUpDto.TeleporteDto.EfeitoTeleporte2.EfeitoTeleportePrincipal, coletavel2.getPosicao());
 
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();
@@ -59,8 +59,8 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
 
         yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
 
-        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
-        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte2);
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1.EfeitoTeleportePrincipal);
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte2.EfeitoTeleportePrincipal);
         finalizar();
         yield return null;
     }      
