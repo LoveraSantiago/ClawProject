@@ -62,14 +62,14 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
     {
         coletavelSelecionado = coletavel;
 
+        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoCoringa;
         EfeitosTeleportes efeitoTeleporte = new EfeitosTeleportes();
-        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, coletavelSelecionado.getPosicao());
+        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, corEfeitoTeleporte.CorMaterial, coletavelSelecionado.getPosicao());
 
         MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;        
         ColetavelEntidade coletavelEntidade = mapaEntidade.getColetavelEntidadeBySpriteNome(coletavel.nomeSprite);
         ColetavelEntidade[] coletaveisFamilia = mapaEntidade.getColetaveisExcluindo(coletavelEntidade);
 
-        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoCoringa;
         Color corHdr = HSBColor.toHdrColor(corEfeitoTeleporte.CorMaterial, corEfeitoTeleporte.HdrMaterial);
 
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();        

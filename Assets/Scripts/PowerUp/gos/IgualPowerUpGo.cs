@@ -16,13 +16,13 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
         Coletavel coletavel1 = duplaDeColetaveis.coletavel1;
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
 
+        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoIgual;
         EfeitosTeleportes efeitoTeleporte = new EfeitosTeleportes();
-        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, coletavel1.getPosicao());
+        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, corEfeitoTeleporte.CorMaterial, coletavel1.getPosicao());
 
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();
 
-        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoIgual;
         Color corHdr = HSBColor.toHdrColor(corEfeitoTeleporte.CorMaterial, corEfeitoTeleporte.HdrMaterial);
 
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();

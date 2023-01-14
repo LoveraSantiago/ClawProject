@@ -17,9 +17,10 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         Coletavel coletavel1 = duplaDeColetaveis.coletavel1;
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
 
+        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoTeleporte;
         EfeitosTeleportes efeitoTeleporte = new EfeitosTeleportes();
-        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, coletavel1.getPosicao());
-        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte2, coletavel2.getPosicao());
+        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, corEfeitoTeleporte.CorMaterial, coletavel1.getPosicao());
+        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte2, corEfeitoTeleporte.CorMaterial, coletavel2.getPosicao());
 
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();
@@ -27,7 +28,6 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         MaterialTeleporte materialTeleporteIn  = new MaterialTeleporte();
         MaterialTeleporte materialTeleporteOut = new MaterialTeleporte();
 
-        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoTeleporte;
         Color corHdr = HSBColor.toHdrColor(corEfeitoTeleporte.CorMaterial, corEfeitoTeleporte.HdrMaterial);
         materialTeleporteIn.addTroca(spr1, spr2, corHdr);
         materialTeleporteOut.addTroca(spr2, spr1, corHdr);

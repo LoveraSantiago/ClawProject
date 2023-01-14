@@ -10917,6 +10917,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4344844130965553443, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &289935181 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3135691194689639050, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
+  m_PrefabInstance: {fileID: 3135691194286916499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &291322821
 GameObject:
   m_ObjectHideFlags: 0
@@ -21729,8 +21734,12 @@ MonoBehaviour:
         corEfeitoCoringa:
           corMaterial: {r: 0.6513128, g: 0, b: 1, a: 1}
           hdrMaterial: 8
-        efeitoTeleporte1: {fileID: 111721538}
-        efeitoTeleporte2: {fileID: 1351553587}
+        efeitoTeleporte1:
+          efeitoTeleportePrincipal: {fileID: 111721538}
+          efeitoTeleporteBaixo: {fileID: 289935181}
+        efeitoTeleporte2:
+          efeitoTeleportePrincipal: {fileID: 1351553587}
+          efeitoTeleporteBaixo: {fileID: 1794910118}
       asaDto:
         gravidadeNeg: -0.1
         offset: 0.3
@@ -90366,6 +90375,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: faiscas-teleporte2
       objectReference: {fileID: 0}
+    - target: {fileID: 3135691194380746668, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3135691194380746707, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -116682,6 +116695,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765441828}
   m_CullTransparentMesh: 1
+--- !u!198 &1794910118 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3135691194689639050, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
+  m_PrefabInstance: {fileID: 1351553584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1807401128
 GameObject:
   m_ObjectHideFlags: 0
@@ -138239,7 +138257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3135691194380746668, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3135691194380746707, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
       propertyPath: m_RootOrder
