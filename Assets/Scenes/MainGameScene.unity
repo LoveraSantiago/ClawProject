@@ -138237,6 +138237,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: faiscas-teleporte1
       objectReference: {fileID: 0}
+    - target: {fileID: 3135691194380746668, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3135691194380746707, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
       propertyPath: m_RootOrder
       value: 4

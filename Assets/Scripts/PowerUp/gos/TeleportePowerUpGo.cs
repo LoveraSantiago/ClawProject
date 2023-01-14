@@ -7,7 +7,7 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
    
     public override void resetPup()
     {
-        EfeitoExplosoes efeitoTeleporte = new EfeitoExplosoes();
+        EfeitosExplosoes efeitoTeleporte = new EfeitosExplosoes();
         efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
         efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte2);
     }
@@ -17,9 +17,9 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         Coletavel coletavel1 = duplaDeColetaveis.coletavel1;
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
 
-        EfeitoExplosoes efeitoTeleporte = new EfeitoExplosoes();
-        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, coletavel1.getPosicao());
-        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte2, coletavel2.getPosicao());
+        EfeitosExplosoes efeitoTeleporte = new EfeitosExplosoes();
+        efeitoTeleporte.explodir(powerUpDto.TeleporteDto.EfeitoTeleporte1, coletavel1.getPosicao());
+        efeitoTeleporte.explodir(powerUpDto.TeleporteDto.EfeitoTeleporte2, coletavel2.getPosicao());
 
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();

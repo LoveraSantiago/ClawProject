@@ -43,7 +43,7 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         animacao.playIdle();        
         powerUpFinalizacao.preFinalizar();
 
-        EfeitoExplosoes efeitoExplosao = new EfeitoExplosoes();
+        EfeitosExplosoes efeitoExplosao = new EfeitosExplosoes();
         efeitoExplosao.desligar(powerUpDto.MinaDto.EfeitoExplosao);            
     }
 
@@ -71,8 +71,8 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
         colliderExplosao.gameObject.SetActive(true);
 
         Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MinaDto.HalturaExplosao, 0);
-        EfeitoExplosoes efeitoExplosao = new EfeitoExplosoes();
-        efeitoExplosao.ligar(powerUpDto.MinaDto.EfeitoExplosao, posicaoExplosao);
+        EfeitosExplosoes efeitoExplosao = new EfeitosExplosoes();
+        efeitoExplosao.explodir(powerUpDto.MinaDto.EfeitoExplosao, posicaoExplosao);
 
         somPowerUp.playSomExplosao();
 

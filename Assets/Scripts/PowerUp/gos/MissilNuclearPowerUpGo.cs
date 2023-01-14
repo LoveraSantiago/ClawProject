@@ -65,7 +65,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         desafixarVerticalmente();
         colocarNoAngulo(0);        
 
-        EfeitoExplosoes efeitoExplosao = new EfeitoExplosoes();
+        EfeitosExplosoes efeitoExplosao = new EfeitosExplosoes();
         efeitoExplosao.desligar(powerUpDto.MissilNuclearDto.EfeitoExplosao);
     }
 
@@ -97,8 +97,8 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     {
         colliderExplosao.gameObject.SetActive(true);        
 
-        EfeitoExplosoes efeitoExplosao = new EfeitoExplosoes();
-        efeitoExplosao.ligar(powerUpDto.MissilNuclearDto.EfeitoExplosao, getPosicao());
+        EfeitosExplosoes efeitoExplosao = new EfeitosExplosoes();
+        efeitoExplosao.explodir(powerUpDto.MissilNuclearDto.EfeitoExplosao, getPosicao());
 
         somPowerUp.playSomExplosao();
 
