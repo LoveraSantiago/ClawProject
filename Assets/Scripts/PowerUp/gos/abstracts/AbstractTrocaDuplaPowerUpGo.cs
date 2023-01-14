@@ -43,7 +43,7 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
     public IEnumerator transformar(DuplaDeColetaveisDto duplaDeColetaveis)
     {
         hitColetavel2 = true;
-        return realizarTroca(duplaDeColetaveis);
+        return realizarTroca(duplaDeColetaveis);        
     }
     //***** IMPLEMENTACAO Transformador<DuplaDeColetaveisDto, IEnumerator> FIM *****
 
@@ -65,10 +65,10 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
         }
     }  
     
-    private void finalizar()
+    protected void finalizar()
     {           
         HelperColetaveisInGame.desligarMirasNosColetaveis();
-        powerUpFinalizacao.finalizado();
         resetPup();
+        powerUpFinalizacao.finalizado();
     }   
 }

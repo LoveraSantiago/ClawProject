@@ -135,9 +135,13 @@ public class Level2 : AbstractLevelNormal
         //    .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE,
         //    PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MINA_TERRESTRE });
 
+        //return new PowerUpsParaLevel(2)
+        //   .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.TELEPORTE })
+        //   .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.TELEPORTE });
+
         return new PowerUpsParaLevel(2)
-           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.TELEPORTE })
-           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.TELEPORTE });
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.CORINGA })
+           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.CORINGA });
     }
 }
 

@@ -6,7 +6,7 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
     public IgualPowerUpGo() : base(powerUpDto.VazioPUp, "igual"){ }    
     
     public override void resetPup() 
-    {
+    {        
         EfeitoParticulas efeitoTeleporte = new EfeitoParticulas();
         efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
     }    
@@ -22,8 +22,11 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
         Sprite spr1 = coletavel1.getSprite();
         Sprite spr2 = coletavel2.getSprite();
 
+        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoIgual;
+        Color corHdr = HSBColor.toHdrColor(corEfeitoTeleporte.CorMaterial, corEfeitoTeleporte.HdrMaterial);
+
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();
-        materialTeleporte.addTroca(spr1, spr2);
+        materialTeleporte.addTroca(spr1, spr2, corHdr);
 
         coletavel1.addMaterial(materialTeleporte.materialTeleporte);
         somPowerUp.playSomTeleporte();
@@ -47,8 +50,8 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
 
         getTrocadorDeOrdem().trocarFigura(coletavel1, coletavel2);
 
-        yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);        
-        powerUpFinalizacao.finalizado();
+        yield return new WaitForSeconds(powerUpDto.TeleporteDto.DelayFinal);
+        finalizar();
         yield return null;
     }          
 }

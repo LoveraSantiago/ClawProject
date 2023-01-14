@@ -5,6 +5,7 @@ public class MaterialTeleporte
     private static readonly int ID_SPRITE_IN  = Shader.PropertyToID("inSprite");
     private static readonly int ID_SPRITE_OUT = Shader.PropertyToID("outSprite");
     private static readonly int ID_VALOR      = Shader.PropertyToID("valor");
+    private static readonly int ID_COR        = Shader.PropertyToID("_cor");
 
     private static Material matEstaticoTeleporte;
     public Material materialTeleporte { get; private set; }
@@ -14,15 +15,22 @@ public class MaterialTeleporte
         materialTeleporte = new Material(matEstaticoTeleporte);
     }
 
-    public void addTroca(Sprite sprIn, Sprite sprOut)
+    public void addTroca(Sprite sprIn, Sprite sprOut, Color corDivisoria)
     {
         addTrocaIn(sprIn);
         addTrocaOut(sprOut);
+        setCor(corDivisoria);
     }
 
-    public void addTrocaIn(Sprite sprite)
+    private void addTrocaIn(Sprite sprite)
     {
         materialTeleporte.SetTexture(ID_SPRITE_IN, sprite.texture);
+    }
+    
+    public void addTrocaIn(Sprite sprite, Color corDivisoria)
+    {
+        addTrocaIn(sprite);
+        setCor(corDivisoria);
     }
 
     public void addTrocaOut(Sprite sprite)
@@ -32,7 +40,12 @@ public class MaterialTeleporte
 
     public void addValorDeTroca(float troca)
     {
-        materialTeleporte.SetFloat(ID_VALOR, troca);
+        materialTeleporte.SetFloat(ID_VALOR, troca);        
+    }
+
+    private void setCor(Color corDivisoria)
+    {
+        materialTeleporte.SetColor(ID_COR, corDivisoria);
     }
 
     public static void configurar(Material materialTrocaArg)

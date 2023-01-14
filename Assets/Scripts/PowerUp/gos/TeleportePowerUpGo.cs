@@ -27,8 +27,10 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         MaterialTeleporte materialTeleporteIn  = new MaterialTeleporte();
         MaterialTeleporte materialTeleporteOut = new MaterialTeleporte();
 
-        materialTeleporteIn.addTroca(spr1, spr2);
-        materialTeleporteOut.addTroca(spr2, spr1);
+        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoTeleporte;
+        Color corHdr = HSBColor.toHdrColor(corEfeitoTeleporte.CorMaterial, corEfeitoTeleporte.HdrMaterial);
+        materialTeleporteIn.addTroca(spr1, spr2, corHdr);
+        materialTeleporteOut.addTroca(spr2, spr1, corHdr);
 
         coletavel1.addMaterial(materialTeleporteIn.materialTeleporte);
         coletavel2.addMaterial(materialTeleporteOut.materialTeleporte);
@@ -59,7 +61,7 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
 
         efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
         efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte2);
-        powerUpFinalizacao.finalizado();
+        finalizar();
         yield return null;
     }      
 }

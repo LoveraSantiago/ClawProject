@@ -67,10 +67,13 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 
         MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;        
         ColetavelEntidade coletavelEntidade = mapaEntidade.getColetavelEntidadeBySpriteNome(coletavel.nomeSprite);
-        ColetavelEntidade[] coletaveisFamilia = mapaEntidade.getColetaveisExcluindo(coletavelEntidade);        
+        ColetavelEntidade[] coletaveisFamilia = mapaEntidade.getColetaveisExcluindo(coletavelEntidade);
+
+        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoCoringa;
+        Color corHdr = HSBColor.toHdrColor(corEfeitoTeleporte.CorMaterial, corEfeitoTeleporte.HdrMaterial);
 
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();        
-        materialTeleporte.addTrocaIn(coletavel.getSprite());
+        materialTeleporte.addTrocaIn(coletavel.getSprite(), corHdr);
         coletavel.addMaterial(materialTeleporte.materialTeleporte);
 
         int indiceSorteado = MathUtils.escolherDeZeroAteLimite(coletaveisFamilia.Length);
@@ -103,7 +106,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
             Debug.Log("indice sorteado " + indiceSorteado);
             coletavelSorteado = coletaveisFamilia[indiceSorteado];
             sprSorteado = coletavelSorteado.sprite;
-            materialTeleporte.addTrocaIn(sprSorteado);
+            materialTeleporte.addTrocaIn(sprSorteado, corHdr);
 
             houveToque = false;
             while (contador > -0.09f)
@@ -130,7 +133,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         coletavel.clearMaterial();
         getTrocadorDeOrdem().atualizar(coletavel);
         resetPup();        
-        powerUpFinalizacao.finalizado();        
+        finalizar();        
         yield return null;
     }
 

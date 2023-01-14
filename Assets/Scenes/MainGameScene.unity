@@ -10792,7 +10792,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.46153846, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -21720,6 +21720,15 @@ MonoBehaviour:
         velocidadeTeleporte: 0.65
         velocidadeCoringa: 1.25
         delayFinal: 0.5
+        corEfeitoIgual:
+          corMaterial: {r: 0, g: 1, b: 0.95960426, a: 1}
+          hdrMaterial: 5
+        corEfeitoTeleporte:
+          corMaterial: {r: 0, g: 1, b: 0.0153307915, a: 1}
+          hdrMaterial: 4
+        corEfeitoCoringa:
+          corMaterial: {r: 0.6513128, g: 0, b: 1, a: 1}
+          hdrMaterial: 8
         efeitoTeleporte1: {fileID: 111721538}
         efeitoTeleporte2: {fileID: 1351553587}
       asaDto:
@@ -69667,7 +69676,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.46153846, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -132255,7 +132264,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.46153846, y: 1}
+    m_SensorSize: {x: 0.5625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
