@@ -44,7 +44,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         coroutineAlvo = null;
 
         EfeitosTeleportes efeitoTeleporte = new EfeitosTeleportes();
-        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1.EfeitoTeleportePrincipal);
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
     }
 
     public IEnumerator transformar(Coletavel entrada)
@@ -63,7 +63,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         coletavelSelecionado = coletavel;
 
         EfeitosTeleportes efeitoTeleporte = new EfeitosTeleportes();
-        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1.EfeitoTeleportePrincipal, coletavelSelecionado.getPosicao());
+        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, coletavelSelecionado.getPosicao());
 
         MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;        
         ColetavelEntidade coletavelEntidade = mapaEntidade.getColetavelEntidadeBySpriteNome(coletavel.nomeSprite);

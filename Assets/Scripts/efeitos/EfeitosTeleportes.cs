@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class EfeitosTeleportes 
 {
-    public void ligar(ParticleSystem particleSystem, Vector3 posicao)
+    public void ligar(EfeitoParticulasTeleporteDto efeitoParticulasTeleporteDto, Vector3 posicao)
     {
-        particleSystem.gameObject.SetActive(true);
-        particleSystem.transform.position = posicao;
-        particleSystem.Play();
+        efeitoParticulasTeleporteDto.EfeitoTeleportePrincipal.gameObject.SetActive(true);
+        efeitoParticulasTeleporteDto.EfeitoTeleportePrincipal.transform.position = posicao;
+        efeitoParticulasTeleporteDto.EfeitoTeleportePrincipal.Play();
     }
 
-    public void desligar(ParticleSystem particleSystem)
+    public void desligar(EfeitoParticulasTeleporteDto efeitoParticulasTeleporteDto)
     {
-        particleSystem.gameObject.SetActive(false);
+        efeitoParticulasTeleporteDto.EfeitoTeleportePrincipal.gameObject.SetActive(false);
     }
 }
