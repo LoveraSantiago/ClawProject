@@ -57,7 +57,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         desafixarVerticalmente();
         colocarNoAngulo(0);        
 
-        EfeitoParticulas efeitoExplosao = new EfeitoParticulas();
+        EfeitoExplosoes efeitoExplosao = new EfeitoExplosoes();
         efeitoExplosao.desligar(powerUpDto.BombaDto.EfeitoExplosao);
     }
 
@@ -87,7 +87,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
 
     private void processarExplosao()
     {
-        EfeitoParticulas efeitoExplosao = new EfeitoParticulas();
+        EfeitoExplosoes efeitoExplosao = new EfeitoExplosoes();
         efeitoExplosao.ligar(powerUpDto.BombaDto.EfeitoExplosao, getPosicao());
         somPowerUp.playSomExplosao();
 

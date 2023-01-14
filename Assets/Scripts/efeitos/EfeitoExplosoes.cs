@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EfeitoParticulas 
+public class EfeitoExplosoes 
 {
     public void ligar(ParticleSystem particleSystem, Vector3 posicao)
     {

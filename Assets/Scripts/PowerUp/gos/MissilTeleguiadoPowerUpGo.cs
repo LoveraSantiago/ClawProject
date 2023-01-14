@@ -71,7 +71,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         animacao.parado();
         colocarNoAngulo(0);
 
-        EfeitoParticulas efeitoExplosao = new EfeitoParticulas();
+        EfeitoExplosoes efeitoExplosao = new EfeitoExplosoes();
         efeitoExplosao.desligar(powerUpDto.MissilTeleguiadoDto.EfeitoExplosao);
     }   
 
@@ -124,7 +124,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         acertarGo(go);
 
         Vector3 posicaoExplosao = getPosicao() + new Vector3(0, powerUpDto.MissilTeleguiadoDto.HalturaExplosao, 0);
-        EfeitoParticulas efeitoExplosao = new EfeitoParticulas();
+        EfeitoExplosoes efeitoExplosao = new EfeitoExplosoes();
         efeitoExplosao.ligar(powerUpDto.MissilTeleguiadoDto.EfeitoExplosao, posicaoExplosao);
         CameraShake cameraShake = new CameraShake();        
         cameraShake.shakeEParar(powerUpDto.MissilTeleguiadoDto.CameraShakeDto);

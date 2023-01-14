@@ -43,7 +43,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         finalizando = false;
         coroutineAlvo = null;
 
-        EfeitoParticulas efeitoTeleporte = new EfeitoParticulas();
+        EfeitoExplosoes efeitoTeleporte = new EfeitoExplosoes();
         efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
     }
 
@@ -62,7 +62,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
     {
         coletavelSelecionado = coletavel;
 
-        EfeitoParticulas efeitoTeleporte = new EfeitoParticulas();
+        EfeitoExplosoes efeitoTeleporte = new EfeitoExplosoes();
         efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, coletavelSelecionado.getPosicao());
 
         MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;        
