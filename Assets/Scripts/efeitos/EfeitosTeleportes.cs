@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EfeitosTeleportes : MonoBehaviour
+public class EfeitosTeleportes 
 {
-    // Start is called before the first frame update
-    void Start()
+    public void ligar(ParticleSystem particleSystem, Vector3 posicao)
     {
-        
+        particleSystem.gameObject.SetActive(true);
+        particleSystem.transform.position = posicao;
+        particleSystem.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void desligar(ParticleSystem particleSystem)
     {
-        
+        particleSystem.gameObject.SetActive(false);
     }
 }
