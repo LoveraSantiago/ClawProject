@@ -4,6 +4,19 @@ public class EfeitosTeleportes
 {
     public void ligar(EfeitoParticulasTeleporteDto efeitoParticulasTeleporteDto, Color cor, Vector3 posicao)
     {
+        colorirParticulas(efeitoParticulasTeleporteDto, cor);
+        efeitoParticulasTeleporteDto.EfeitoTeleportePrincipal.gameObject.SetActive(true);
+        efeitoParticulasTeleporteDto.EfeitoTeleportePrincipal.transform.position = posicao;
+        efeitoParticulasTeleporteDto.EfeitoTeleportePrincipal.Play();
+    }
+
+    public void desligar(EfeitoParticulasTeleporteDto efeitoParticulasTeleporteDto)
+    {
+        efeitoParticulasTeleporteDto.EfeitoTeleportePrincipal.gameObject.SetActive(false);
+    }
+
+    private void colorirParticulas(EfeitoParticulasTeleporteDto efeitoParticulasTeleporteDto, Color cor)
+    {
         GradientColorKey[] gradientColor = new GradientColorKey[]{
             new GradientColorKey(Color.white, 0.179f),
             new GradientColorKey(cor, 0.309f),
@@ -24,14 +37,5 @@ public class EfeitosTeleportes
 
         col = efeitoParticulasTeleporteDto.EfeitoTeleporteBaixo.colorOverLifetime;
         col.color = gradient;
-
-        efeitoParticulasTeleporteDto.EfeitoTeleportePrincipal.gameObject.SetActive(true);
-        efeitoParticulasTeleporteDto.EfeitoTeleportePrincipal.transform.position = posicao;
-        efeitoParticulasTeleporteDto.EfeitoTeleportePrincipal.Play();
-    }
-
-    public void desligar(EfeitoParticulasTeleporteDto efeitoParticulasTeleporteDto)
-    {
-        efeitoParticulasTeleporteDto.EfeitoTeleportePrincipal.gameObject.SetActive(false);
-    }
+    }   
 }
