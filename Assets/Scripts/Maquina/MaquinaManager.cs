@@ -37,11 +37,11 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
         isGamePlay = true;
     }
 
-    public void configuradoPeloLevel(MaquinaDto maquinaDto)
+    public void configuradoPeloLevel(MaquinaDto maquinaDto, SomCacaNiquel somCacaNiquel)
     {
         botoesPowerUp.configuradoPeloLevel();
         joystick.configuradoPeloLevel();        
-        displayDeColetados.configuradoPeloLevel(maquinaDto.DisplayColetadosDto);
+        displayDeColetados.configuradoPeloLevel(maquinaDto.DisplayColetadosDto, somCacaNiquel);
         displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto);
         scrollPupsManager.configuradoPeloLevel(maquinaDto.ScrollPupsDto, maquinaDto.Material7SegsDto);
         displayTimer.configuradoPeloLevel(maquinaDto.DisplayTimerDto, maquinaDto.Material7SegsDto);

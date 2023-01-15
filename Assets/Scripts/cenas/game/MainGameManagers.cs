@@ -14,12 +14,13 @@ public class MainGameManagers
     {
         PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
         SomManagerGame somManager = new SomManagerGame(mainDto.AudioGameDto);
-        prefabLoading.iniciarLoading(somManager, mainDto.GosDesligar);
+        somManager.playSomBackground();
 
+        prefabLoading.iniciarLoading(somManager, mainDto.GosDesligar);
         ColetorDeDados coletorDeDados = new ColetorDeDados();
 
         iniciarManagers(mainDto, somManager, coletorDeDados);
-        configurandoLevel(mainDto);
+        configurandoLevel(mainDto, somManager);
         configurandoEventos();
         consumidorUpdateManagers.consumir(new UpdaterEmptyManagers());
 
@@ -32,7 +33,6 @@ public class MainGameManagers
 
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));
         ContextoEstaticoUtils.loading.fecharModal();
-        somManager.playSomBackground();
     }
 
     private void iniciarManagers(MainGameDto mainDto, SomManagerGame somManager, ColetorDeDados coletorDeDados)
@@ -50,12 +50,12 @@ public class MainGameManagers
             .addDraggavelManager (new DraggavelManager(mainDto.DragCollider));
     }
 
-    private void configurandoLevel(MainGameDto mainDto)
+    private void configurandoLevel(MainGameDto mainDto, SomCacaNiquel somCacaNiquel)
     {
         allGameManagers.getColetaveisManager()
                        .configuradoPeloLevel(mainDto.ColetaveisDto);
 
-        allGameManagers.getMaquinaManager().configuradoPeloLevel(mainDto.MaquinaDto);
+        allGameManagers.getMaquinaManager().configuradoPeloLevel(mainDto.MaquinaDto, somCacaNiquel);
 
         allGameManagers.getUiManager().configuradoPeloLevel();
         

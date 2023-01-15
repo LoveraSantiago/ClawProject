@@ -5,7 +5,8 @@ public class SomManagerGame : SomManager,
                               SomColetagem,
                               SomMaquina,
                               SomPowerUp,
-                              SomModais
+                              SomModais,
+                              SomCacaNiquel
 {
     private AudioGameDto audioGameDto;
 
@@ -165,6 +166,13 @@ public class SomManagerGame : SomManager,
         audioPlayOneShot(getAudioSourceGarraComplementar(), audioGameDto.SomAbrirModalSucesso);
     }
     //***** IMPLEMENTACAO INTERFACE SOMMODAIS INICIO *****
+
+    //***** IMPLEMENTACAO INTERFACE SomCacaNiquel INICIO *****
+    public void playSomBackgroundCacaNiquel()
+    {
+        audioPlay(getAudioSourceBackground(), audioGameDto.SomBackgroundCacaNiquel);
+    }
+    //***** IMPLEMENTACAO INTERFACE SomCacaNiquel FIM    *****
 
     private AudioSource getAudioSourceGarraComplementar()
     {
