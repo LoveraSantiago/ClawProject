@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
@@ -41,7 +40,10 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         Debug.Log("Reset chamado");
         coletavelSelecionado = null;
         finalizando = false;
-        coroutineAlvo = null;        
+        coroutineAlvo = null;
+
+        EfeitosTeleportes efeitoTeleporte = new EfeitosTeleportes();
+        efeitoTeleporte.desligar(powerUpDto.TeleporteDto.EfeitoTeleporte1);
     }
 
     public IEnumerator transformar(Coletavel entrada)
@@ -57,20 +59,28 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 
     private IEnumerator fazerTroca(Coletavel coletavel)
     {
+        powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO1_SELECIONADO);
         coletavelSelecionado = coletavel;
+
+        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoCoringa;
+        EfeitosTeleportes efeitoTeleporte = new EfeitosTeleportes();
+        efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, corEfeitoTeleporte.CorMaterial, coletavelSelecionado.getPosicao());
 
         MapaEntidade mapaEntidade = ContextoEstaticoUtils.mapaEntidade;        
         ColetavelEntidade coletavelEntidade = mapaEntidade.getColetavelEntidadeBySpriteNome(coletavel.nomeSprite);
-        ColetavelEntidade[] coletaveisFamilia = mapaEntidade.getColetaveisExcluindo(coletavelEntidade);        
+        ColetavelEntidade[] coletaveisFamilia = mapaEntidade.getColetaveisExcluindo(coletavelEntidade);
+
+        Color corHdr = HSBColor.toHdrColor(corEfeitoTeleporte.CorMaterial, corEfeitoTeleporte.HdrMaterial);
 
         MaterialTeleporte materialTeleporte = new MaterialTeleporte();        
-        materialTeleporte.addTrocaIn(coletavel.getSprite());
+        materialTeleporte.addTrocaIn(coletavel.getSprite(), corHdr);
         coletavel.addMaterial(materialTeleporte.materialTeleporte);
 
         int indiceSorteado = MathUtils.escolherDeZeroAteLimite(coletaveisFamilia.Length);
         Sprite sprSorteado = null;
         while (!finalizando)
         {
+            somPowerUp.playSomTeleporte();
             ColetavelEntidade coletavelSorteado = coletaveisFamilia[indiceSorteado];
             Debug.Log("indice sorteado " + indiceSorteado);
             sprSorteado = coletavelSorteado.sprite;      
@@ -88,14 +98,16 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 
             if (houveToque)
             {
+                powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO2_SELECIONADO);
                 break;
             }
 
+            somPowerUp.playSomTeleporte();
             indiceSorteado = MathUtils.escolherDeZeroAteLimiteDiferenteDe(coletaveisFamilia.Length, indiceSorteado);
             Debug.Log("indice sorteado " + indiceSorteado);
             coletavelSorteado = coletaveisFamilia[indiceSorteado];
             sprSorteado = coletavelSorteado.sprite;
-            materialTeleporte.addTrocaIn(sprSorteado);
+            materialTeleporte.addTrocaIn(sprSorteado, corHdr);
 
             houveToque = false;
             while (contador > -0.09f)
@@ -108,6 +120,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
 
             if (houveToque)
             {
+                powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO2_SELECIONADO);
                 break;
             }
 
@@ -122,7 +135,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         coletavel.clearMaterial();
         getTrocadorDeOrdem().atualizar(coletavel);
         resetPup();        
-        powerUpFinalizacao.finalizado();
+        finalizar();        
         yield return null;
     }
 

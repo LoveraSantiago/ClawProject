@@ -125,7 +125,7 @@ public class Level3 : AbstractLevelElevador
     public override PowerUpsParaLevel getPupsToLevel()
     {
         return new PowerUpsParaLevel(2)
-           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.IGUAL })
-           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.IGUAL });
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.CORINGA })
+           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.CORINGA });
     }
 }
