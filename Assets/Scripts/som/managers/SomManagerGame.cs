@@ -3,10 +3,11 @@ using UnityEngine;
 public class SomManagerGame : SomManager,
                               SomGarra,
                               SomColetagem,
+                              SonsDeMaquina,
                               SomMaquina,
+                              SomCacaNiquel,
                               SomPowerUp,
-                              SomModais,
-                              SomCacaNiquel
+                              SomModais
 {
     private AudioGameDto audioGameDto;
 
@@ -171,6 +172,15 @@ public class SomManagerGame : SomManager,
     public void playSomBackgroundCacaNiquel()
     {
         audioPlay(getAudioSourceBackground(), audioGameDto.SomBackgroundCacaNiquel);
+    }
+
+    public void iniciarSomSlotsMovimento()
+    {
+        audioPlay(getAudioSourcePowerUp(), audioGameDto.SomSlotCacaNiquel);
+    }
+    public void pararSomSlotsMovimento()
+    {
+        getAudioSourcePowerUp().Stop();
     }
     //***** IMPLEMENTACAO INTERFACE SomCacaNiquel FIM    *****
 

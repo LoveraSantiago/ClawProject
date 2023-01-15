@@ -20,7 +20,7 @@ public class MainGameManagers
         ColetorDeDados coletorDeDados = new ColetorDeDados();
 
         iniciarManagers(mainDto, somManager, coletorDeDados);
-        configurandoLevel(mainDto, somManager);
+        configurandoLevel(mainDto);
         configurandoEventos();
         consumidorUpdateManagers.consumir(new UpdaterEmptyManagers());
 
@@ -50,12 +50,12 @@ public class MainGameManagers
             .addDraggavelManager (new DraggavelManager(mainDto.DragCollider));
     }
 
-    private void configurandoLevel(MainGameDto mainDto, SomCacaNiquel somCacaNiquel)
+    private void configurandoLevel(MainGameDto mainDto)
     {
         allGameManagers.getColetaveisManager()
                        .configuradoPeloLevel(mainDto.ColetaveisDto);
 
-        allGameManagers.getMaquinaManager().configuradoPeloLevel(mainDto.MaquinaDto, somCacaNiquel);
+        allGameManagers.getMaquinaManager().configuradoPeloLevel(mainDto.MaquinaDto);
 
         allGameManagers.getUiManager().configuradoPeloLevel();
         

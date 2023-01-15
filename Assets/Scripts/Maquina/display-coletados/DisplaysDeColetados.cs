@@ -24,11 +24,11 @@ public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento,
         }
     }
 
-    public void iniciar(InputGame inputGame)
+    public void iniciar(InputGame inputGame, SomCacaNiquel somCacaNiquel)
     {
         if (isDisplayCacaNiquelAtivado())
         {
-            modoCacaNiquel.iniciar(grupoDisplays, inputGame);
+            modoCacaNiquel.iniciar(grupoDisplays, somCacaNiquel, inputGame);
         }
     }  
 

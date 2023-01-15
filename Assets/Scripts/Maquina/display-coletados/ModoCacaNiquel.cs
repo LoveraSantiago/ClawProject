@@ -25,12 +25,12 @@ public class ModoCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         }        
     }
 
-    public void iniciar(GrupoDisplays grupoDisplays, InputGame inputGame)
+    public void iniciar(GrupoDisplays grupoDisplays, SomCacaNiquel somCacaNiquel, InputGame inputGame)
     {
-        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel(grupoDisplays, inputGame));
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(iniciarDisplayCacaNiquel(grupoDisplays, somCacaNiquel, inputGame));
     }   
 
-    private IEnumerator iniciarDisplayCacaNiquel(GrupoDisplays grupoDisplays, InputGame inputGame)
+    private IEnumerator iniciarDisplayCacaNiquel(GrupoDisplays grupoDisplays, SomCacaNiquel somCacaNiquel, InputGame inputGame)
     {
         yield return new WaitForSeconds(0.5f);
         CacaNiquelEventoDto eventoInicio = new CacaNiquelEventoDto();
@@ -44,6 +44,7 @@ public class ModoCacaNiquel : AcaoCacaNiquel.ProdutorEvento
         PowerUpEntidade pupEscolhido = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePup);
 
         int clicado = 0;
+        somCacaNiquel.iniciarSomSlotsMovimento();
         while(clicado < 3)
         {
             if (inputGame.aconteceuTap())
@@ -62,6 +63,7 @@ public class ModoCacaNiquel : AcaoCacaNiquel.ProdutorEvento
                 yield return null;
             }
         }
+        somCacaNiquel.pararSomSlotsMovimento();
         yield return new WaitForSeconds(0.1f);
 
         Sprite[] resultadosSprs = grupoDisplays.getResultadosCacaNiquel();                
