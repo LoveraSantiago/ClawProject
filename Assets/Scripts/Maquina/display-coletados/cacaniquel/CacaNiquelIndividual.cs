@@ -29,9 +29,9 @@ public class CacaNiquelIndividual : AbstractCacaNiquel
         return pupEscolhido.sprIconPowerUp;
     }    
 
-    public override CacaNiquelEventoDto montarResultado(PowerUpEntidade pupEscolhido, Sprite spriteEscolhido)
+    public override CacaNiquelEventoDto montarResultado(PowerUpEntidade pupEscolhido, SomCacaNiquel somCacaNiquel, Sprite spriteEscolhido)
     {
-        CacaNiquelResultadoEnum resultado = avaliarResultado(pupEscolhido, spriteEscolhido);
+        CacaNiquelResultadoEnum resultado = avaliarResultado(pupEscolhido, somCacaNiquel, spriteEscolhido);
         CacaNiquelEventoDto eventoEmAndamento = CacaNiquelEventoDto.ofEmAndamento(resultado);
         return eventoEmAndamento;
     }

@@ -21903,6 +21903,9 @@ MonoBehaviour:
       somSlotCacaNiquel:
         volume: 0.3
         audioClip: {fileID: 8300000, guid: 803387846d4bc0840bb58e4d52a49c94, type: 3}
+      somCoin:
+        volume: 1
+        audioClip: {fileID: 8300000, guid: 4ef7a286003d9094981f35105a327dac, type: 3}
     prefabLoading: {fileID: 712928913}
     gosDesligar:
     - {fileID: 1078757848}

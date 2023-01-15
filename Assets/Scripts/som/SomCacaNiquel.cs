@@ -4,4 +4,8 @@ public interface SomCacaNiquel
 
     void iniciarSomSlotsMovimento();
     void pararSomSlotsMovimento();
+
+    void playSomCacaNiquelSucesso();
+    void playSomCacaNiquelFail();
+    void playSomCacaNiquelCoin();
 }
