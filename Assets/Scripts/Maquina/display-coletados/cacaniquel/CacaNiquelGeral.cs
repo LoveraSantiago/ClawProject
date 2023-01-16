@@ -19,6 +19,7 @@ public class CacaNiquelGeral : AbstractCacaNiquel
 
     public override CacaNiquelEventoDto montarResultado(PowerUpEntidade pupEscolhido, SomCacaNiquel somCacaNiquel, Sprite spriteEscolhido)
     {
+        somCacaNiquel.playSomCacaNiquelSucesso();
         return CacaNiquelEventoDto.ofEmAndamento(CacaNiquelResultadoEnum.SUCESSO);
     }
 

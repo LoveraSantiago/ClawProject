@@ -14,8 +14,7 @@ public abstract class AbstractCacaNiquel
 
     public abstract CacaNiquelEventoDto montarResultado(PowerUpEntidade pupEscolhido, SomCacaNiquel somCacaNiquel, Sprite spriteEscolhido);
 
-    public CacaNiquelEventoDto montarResultados(
-        PowerUpEntidade pupEscolhido, SomCacaNiquel somCacaNiquel, Sprite[] resultadosSprs)
+    public CacaNiquelEventoDto montarResultados(PowerUpEntidade pupEscolhido, Sprite[] resultadosSprs)
     {
         CacaNiquelResultadoEnum[] resultados = new CacaNiquelResultadoEnum[] {
             avaliarResultado(pupEscolhido, resultadosSprs[0]),
@@ -27,38 +26,19 @@ public abstract class AbstractCacaNiquel
     }    
 
     protected abstract CacaNiquelEventoDto getEvento(Sprite[] sprResultados, CacaNiquelResultadoEnum[] resultados);
-
-    protected CacaNiquelResultadoEnum avaliarResultado(
-       PowerUpEntidade pupEscolhido, Sprite sprSorteado)
-    {
-        return avaliarResultado(pupEscolhido, null, sprSorteado);
-    }
-
-    protected CacaNiquelResultadoEnum avaliarResultado(
-        PowerUpEntidade pupEscolhido, SomCacaNiquel somCacaNiquel, Sprite sprSorteado)
+    
+    protected CacaNiquelResultadoEnum avaliarResultado(PowerUpEntidade pupEscolhido, Sprite sprSorteado)
     {
         if (sprSorteado == pupEscolhido.sprIconPowerUp)
-        {
-            if(somCacaNiquel != null)
-            {
-                somCacaNiquel.playSomCacaNiquelSucesso();
-            }
+        {           
             return CacaNiquelResultadoEnum.SUCESSO;
         }
         else if (sprSorteado == cacaNiquelDto.SprVazio)
-        {
-            if(somCacaNiquel != null)
-            {
-                somCacaNiquel.playSomCacaNiquelFail();
-            }
+        {         
             return CacaNiquelResultadoEnum.FAIL;
         }
         else
-        {
-            if(somCacaNiquel != null)
-            {
-                somCacaNiquel.playSomCacaNiquelCoin();
-            }
+        {         
             return CacaNiquelResultadoEnum.COIN;
         }
     }
