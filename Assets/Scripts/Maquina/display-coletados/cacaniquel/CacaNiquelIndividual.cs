@@ -29,9 +29,15 @@ public class CacaNiquelIndividual : AbstractCacaNiquel
         return pupEscolhido.sprIconPowerUp;
     }    
 
-    public override CacaNiquelEventoDto montarResultado(PowerUpEntidade pupEscolhido, Sprite spriteEscolhido)
+    public override CacaNiquelEventoDto montarResultado(PowerUpEntidade pupEscolhido, SomCacaNiquel somCacaNiquel, Sprite spriteEscolhido)
     {
         CacaNiquelResultadoEnum resultado = avaliarResultado(pupEscolhido, spriteEscolhido);
+        switch (resultado)
+        {
+            case CacaNiquelResultadoEnum.SUCESSO: somCacaNiquel.playSomCacaNiquelSucesso(); break;
+            case CacaNiquelResultadoEnum.FAIL   : somCacaNiquel.playSomCacaNiquelFail();    break;
+            case CacaNiquelResultadoEnum.COIN   : somCacaNiquel.playSomCacaNiquelCoin();    break;
+        }
         CacaNiquelEventoDto eventoEmAndamento = CacaNiquelEventoDto.ofEmAndamento(resultado);
         return eventoEmAndamento;
     }

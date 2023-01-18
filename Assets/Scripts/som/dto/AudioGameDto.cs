@@ -30,6 +30,10 @@ public class AudioGameDto : AudioDto
     [SerializeField] private AudioClipDto somExplosao;
     [SerializeField] private AudioClipDto somTeleporte;
     [SerializeField] private AudioClipDto somMissil;
+    [Space(3)]
+    [SerializeField] private AudioClipDto somBackgroundCacaNiquel;
+    [SerializeField] private AudioClipDto somSlotCacaNiquel;
+    [SerializeField] private AudioClipDto somCoin;
 
     public AudioClipDto SomBackgroundPowerUp { get { return somBackgroundPowerUp; } }
     public AudioClipDto SomCombinacaoOK { get { return somCombinacaoOK; } }
@@ -52,4 +56,9 @@ public class AudioGameDto : AudioDto
     public AudioClipDto SomExplosao { get { return somExplosao; } }
     public AudioClipDto SomTeleporte { get { return somTeleporte; } }
     public AudioClipDto SomMissil { get { return somMissil; } }
+
+    public AudioClipDto SomBackgroundCacaNiquel { get { return somBackgroundCacaNiquel; } }
+
+    public AudioClipDto SomSlotCacaNiquel { get { return somSlotCacaNiquel; } }
+    public AudioClipDto SomCoin { get { return somCoin; } }
 }

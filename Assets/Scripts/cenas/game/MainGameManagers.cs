@@ -14,8 +14,9 @@ public class MainGameManagers
     {
         PrefabLoading prefabLoading = mainDto.PrefabLoading.GetComponent<PrefabLoading>();
         SomManagerGame somManager = new SomManagerGame(mainDto.AudioGameDto);
-        prefabLoading.iniciarLoading(somManager, mainDto.GosDesligar);
+        somManager.playSomBackground();
 
+        prefabLoading.iniciarLoading(somManager, mainDto.GosDesligar);
         ColetorDeDados coletorDeDados = new ColetorDeDados();
 
         iniciarManagers(mainDto, somManager, coletorDeDados);
@@ -32,7 +33,6 @@ public class MainGameManagers
 
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(startLaizy(mainDto, consumidorUpdateManagers));
         ContextoEstaticoUtils.loading.fecharModal();
-        somManager.playSomBackground();
     }
 
     private void iniciarManagers(MainGameDto mainDto, SomManagerGame somManager, ColetorDeDados coletorDeDados)

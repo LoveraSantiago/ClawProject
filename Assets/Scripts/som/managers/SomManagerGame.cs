@@ -3,22 +3,24 @@ using UnityEngine;
 public class SomManagerGame : SomManager,
                               SomGarra,
                               SomColetagem,
+                              SonsDeMaquina,
                               SomMaquina,
+                              SomCacaNiquel,
                               SomPowerUp,
                               SomModais
 {
-    private AudioGameDto audioGameDto;
+    private AudioGameDto audioDto;
 
     public SomManagerGame(AudioGameDto audioDto) 
         : base(audioDto, 7)
     {
-        this.audioGameDto = audioDto;
+        this.audioDto = audioDto;
     }
 
     //***** IMPLEMENTACAO INTERFACE SOMMAQUINA INICIO *****
     public void playSomDisplayColetado()
     {
-        audioPlayOneShot(getAudioSourceMaquinaDisplayColetados(), audioGameDto.SomMaqColetaveis);
+        audioPlayOneShot(getAudioSourceMaquinaDisplayColetados(), audioDto.SomMaqColetaveis);
     }
 
     public void stopSomMaqAlarmeTempo()
@@ -28,12 +30,12 @@ public class SomManagerGame : SomManager,
 
     public void playSomMaqAlarmeTempo()
     {        
-        audioPlay(getAudioSourceMaquinaTimer(), audioGameDto.SomMaqAlarme);
+        audioPlay(getAudioSourceMaquinaTimer(), audioDto.SomMaqAlarme);
     }
 
     public void playSomMaqAlarmePowerUp()
     {
-        audioPlay(getAudioSourceMaquinaScore(), audioGameDto.SomMaqAlarmeTimer);
+        audioPlay(getAudioSourceMaquinaScore(), audioDto.SomMaqAlarmeTimer);
     }
 
     public void stopSomMaqAlarmePowerUp()
@@ -43,50 +45,50 @@ public class SomManagerGame : SomManager,
 
     public void playSomBotaoPowerUp()
     {
-        audioPlayOneShot(getAudioSourceColetaveis(), audioGameDto.SomMaqCliqueBtn);
+        audioPlayOneShot(getAudioSourceColetaveis(), audioDto.SomMaqCliqueBtn);
     }
 
     public void playSomCliqueScroll()
     {
-        audioPlayOneShot(getAudioSourceColetaveis(), audioGameDto.SomMaqCliqueScroll);
+        audioPlayOneShot(getAudioSourceColetaveis(), audioDto.SomMaqCliqueScroll);
     }
 
     public void playSomCliqueScrollCancel()
     {
-        audioPlayOneShot(getAudioSourceColetaveis(), audioGameDto.SomMaqCliqueScrollCancel);
+        audioPlayOneShot(getAudioSourceColetaveis(), audioDto.SomMaqCliqueScrollCancel);
     }
 
     public void playSomLedsBlink()
     {
         //Debug.Log("Blink score");
-        audioPlayOneShot(getAudioSourceMaquinaTimer(), audioGameDto.SomMaqBlinkTimer);
+        audioPlayOneShot(getAudioSourceMaquinaTimer(), audioDto.SomMaqBlinkTimer);
     }
     //***** IMPLEMENTACAO INTERFACE SOMMAQUINA FIM *****
 
     //***** IMPLEMENTACAO INTERFACE SOMGARRA INICIO *****
     public void playScoreColetagemNaoSucesso()
     {
-        audioPlayOneShot(getAudioSourceColetaveis(), audioGameDto.SomCombinacaoNOK);
+        audioPlayOneShot(getAudioSourceColetaveis(), audioDto.SomCombinacaoNOK);
     }
 
     public void playScoreColetagemSucesso()
     {
-        audioPlayOneShot(getAudioSourceColetaveis(), audioGameDto.SomCombinacaoOK);
+        audioPlayOneShot(getAudioSourceColetaveis(), audioDto.SomCombinacaoOK);
     }
 
     public void playSomColetagem()
     {
-        audioPlayOneShot(getAudioSourceColetagem(), audioGameDto.SomColetado);
+        audioPlayOneShot(getAudioSourceColetagem(), audioDto.SomColetado);
     }
 
     public void playSomColetadosCaindo()
     {        
-        audioPlayOneShot(getAudioSourceColetagem(), audioGameDto.SomColetadoCaindo);
+        audioPlayOneShot(getAudioSourceColetagem(), audioDto.SomColetadoCaindo);
     }
 
     public void playSomColetadosNoTubo()
     {        
-        audioPlayOneShot(getAudioSourceMaquinaDisplayColetados(), audioGameDto.SomColetadoNoTubo);
+        audioPlayOneShot(getAudioSourceMaquinaDisplayColetados(), audioDto.SomColetadoNoTubo);
     }
     //***** IMPLEMENTACAO INTERFACE SOMGARRA FIM *****
 
@@ -103,17 +105,17 @@ public class SomManagerGame : SomManager,
 
     public void playSomGarraAgarrando()
     {        
-        audioPlayOneShot(getAudioSourceGarraComplementar(), audioGameDto.SomGarraAgarrada);   
+        audioPlayOneShot(getAudioSourceGarraComplementar(), audioDto.SomGarraAgarrada);   
     }
 
     public void playSomGarraLateral()
     {
-        audioPlayOneShot(getAudioSourceGarraComplementar(), audioGameDto.SomGarraLateral);
+        audioPlayOneShot(getAudioSourceGarraComplementar(), audioDto.SomGarraLateral);
     }
 
     public void playSomGarraInicioDescida()
     {
-        audioPlayOneShot(getAudioSourceGarraComplementar(), audioGameDto.SomGarraInicioDescida);
+        audioPlayOneShot(getAudioSourceGarraComplementar(), audioDto.SomGarraInicioDescida);
     }
     //***** IMPLEMENTACAO INTERFACE SOMGARRA FIM *****
 
@@ -125,29 +127,29 @@ public class SomManagerGame : SomManager,
 
     public void playSomBackgroundPowerUp()
     {
-        audioPlay(getAudioSourceBackground(), audioGameDto.SomBackgroundPowerUp);
+        audioPlay(getAudioSourceBackground(), audioDto.SomBackgroundPowerUp);
     }
 
     public void playSomExplosao()
     {
-        audioPlayOneShot(getAudioSourcePowerUp(), audioGameDto.SomExplosao);
+        audioPlayOneShot(getAudioSourcePowerUp(), audioDto.SomExplosao);
     }
 
     public void playSomMissil()
     {
-        audioPlayOneShot(getAudioSourcePowerUp(), audioGameDto.SomMissil);
+        audioPlayOneShot(getAudioSourcePowerUp(), audioDto.SomMissil);
     }
 
     public void playSomTeleporte()
     {
-        audioPlayOneShot(getAudioSourcePowerUp(), audioGameDto.SomTeleporte);
+        audioPlayOneShot(getAudioSourcePowerUp(), audioDto.SomTeleporte);
     }
     //***** IMPLEMENTACAO INTERFACE SOMPOWERUP FIM *****
 
     //***** IMPLEMENTACAO INTERFACE SOMMODAIS INICIO *****
     public void playSomAbrirModal()
     {
-        audioPlayOneShot(getAudioSourceGarraComplementar(), audioGameDto.SomAbrirModal);
+        audioPlayOneShot(getAudioSourceGarraComplementar(), audioDto.SomAbrirModal);
     }
 
     public void playSomCliquePositivo()
@@ -162,9 +164,40 @@ public class SomManagerGame : SomManager,
 
     public void playSomSucessoAbrirModal()
     {
-        audioPlayOneShot(getAudioSourceGarraComplementar(), audioGameDto.SomAbrirModalSucesso);
+        audioPlayOneShot(getAudioSourceGarraComplementar(), audioDto.SomAbrirModalSucesso);
     }
     //***** IMPLEMENTACAO INTERFACE SOMMODAIS INICIO *****
+
+    //***** IMPLEMENTACAO INTERFACE SomCacaNiquel INICIO *****
+    public void playSomBackgroundCacaNiquel()
+    {
+        audioPlay(getAudioSourceBackground(), audioDto.SomBackgroundCacaNiquel);
+    }
+
+    public void iniciarSomSlotsMovimento()
+    {
+        audioPlay(getAudioSourcePowerUp(), audioDto.SomSlotCacaNiquel);
+    }
+    public void pararSomSlotsMovimento()
+    {
+        getAudioSourcePowerUp().Stop();
+    }
+
+    public void playSomCacaNiquelSucesso()
+    {
+        playScoreColetagemSucesso();
+    }
+
+    public void playSomCacaNiquelFail()
+    {
+        playScoreColetagemNaoSucesso();
+    }
+
+    public void playSomCacaNiquelCoin()
+    {
+        audioPlayOneShot(getAudioSourceColetaveis(), audioDto.SomCoin);
+    }
+    //***** IMPLEMENTACAO INTERFACE SomCacaNiquel FIM    *****
 
     private AudioSource getAudioSourceGarraComplementar()
     {

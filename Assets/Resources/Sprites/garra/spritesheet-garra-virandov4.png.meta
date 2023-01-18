@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9159d48f80402fa4e95d7d0e158b6230
+guid: 83192d51354350041b08eb40327a7584
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -116,7 +116,259 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_0
+      name: spritesheet-garra-virandov4_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 134
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27a01f115c63e3c4bb315e170ef20721
+      internalID: -2012096648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-garra-virandov4_1
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 480
+        width: 134
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f389a0d969d5740ac9047d3110f46b
+      internalID: 830154312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-garra-virandov4_2
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 480
+        width: 134
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 862057cbba431e64fb789c36de73d1f0
+      internalID: 158942901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-garra-virandov4_3
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 480
+        width: 134
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e7b36c7207f38341a8ba0aadd4c7ec8
+      internalID: -1321815609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-garra-virandov4_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 134
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cba776312918d1d4694aea27a1b81f15
+      internalID: 1916730826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-garra-virandov4_5
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 320
+        width: 134
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c1e51a286092254ea78db55595668b1
+      internalID: -235347920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-garra-virandov4_6
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 320
+        width: 134
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc719664c77bfe94f9884c858f125cb9
+      internalID: -791164978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-garra-virandov4_7
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 320
+        width: 134
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e429b7169605e1428e56e0d6fdb3d23
+      internalID: -1466725723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-garra-virandov4_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 134
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8341a6ba4facff4d9bd0dc65bbb3f36
+      internalID: -779790460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-garra-virandov4_9
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 160
+        width: 134
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5c879f385c375a4296db6d3a7a3efa0
+      internalID: 1277100778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-garra-virandov4_10
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 160
+        width: 134
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67dbed3d9c01ea34cafbabc3a653953c
+      internalID: -1425955759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-garra-virandov4_11
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 160
+        width: 134
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce69d14971c349a4eb207159f0fd6b1d
+      internalID: -1457444334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet-garra-virandov4_12
       rect:
         serializedVersion: 2
         x: 0
@@ -130,260 +382,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e39467ccb3e6f444941df1ce99f1458
-      internalID: -1212579982
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_1
-      rect:
-        serializedVersion: 2
-        x: 134
-        y: 0
-        width: 134
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 239af5bfc1b468847844924636d66e9a
-      internalID: -1163073882
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_2
-      rect:
-        serializedVersion: 2
-        x: 268
-        y: 0
-        width: 134
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1abcf7e71287c814897011159c343bea
-      internalID: 2120286589
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_3
-      rect:
-        serializedVersion: 2
-        x: 402
-        y: 0
-        width: 134
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df4e801c237c51e41a89aa696c1da2eb
-      internalID: -1527810768
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_4
-      rect:
-        serializedVersion: 2
-        x: 536
-        y: 0
-        width: 134
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f5b848cb7e100424282ba4afdae45f6c
-      internalID: -133778493
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_5
-      rect:
-        serializedVersion: 2
-        x: 670
-        y: 0
-        width: 134
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4824e9a34ec4d84c85978eb038f142b
-      internalID: 775898342
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_6
-      rect:
-        serializedVersion: 2
-        x: 804
-        y: 0
-        width: 134
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f25e2794811b454fa2dc45bc2e1cee2
-      internalID: 1942001967
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_7
-      rect:
-        serializedVersion: 2
-        x: 938
-        y: 0
-        width: 134
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ffb631bdd05971d48af9cd3552fd71f2
-      internalID: -1146045613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_8
-      rect:
-        serializedVersion: 2
-        x: 1072
-        y: 0
-        width: 134
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3cf264dda80ab1d4b8d5d9f8ee19a2b9
-      internalID: 1684476404
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_9
-      rect:
-        serializedVersion: 2
-        x: 1206
-        y: 0
-        width: 134
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ab90fe6b119f69d41918e139969491b6
-      internalID: 1892839287
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_10
-      rect:
-        serializedVersion: 2
-        x: 1340
-        y: 0
-        width: 134
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 792d9cc6b3d9715459cea925fd8c61ad
-      internalID: 1606127838
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_11
-      rect:
-        serializedVersion: 2
-        x: 1474
-        y: 0
-        width: 134
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 451335e91e20a6b40adcec55d7f01938
-      internalID: -1347093840
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet-garra-femea-virando_12
-      rect:
-        serializedVersion: 2
-        x: 1608
-        y: 0
-        width: 134
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a0b00418d8626e4fbef2c5b6b24f0d8
-      internalID: 274347963
+      spriteID: 41c683919b6412c4d8e84353935fff5a
+      internalID: 2079195325
       vertices: []
       indices: 
       edges: []
@@ -399,19 +399,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spritesheet-garra-femea-virando_3: -1527810768
-      spritesheet-garra-femea-virando_10: 1606127838
-      spritesheet-garra-femea-virando_2: 2120286589
-      spritesheet-garra-femea-virando_11: -1347093840
-      spritesheet-garra-femea-virando_5: 775898342
-      spritesheet-garra-femea-virando_0: -1212579982
-      spritesheet-garra-femea-virando_1: -1163073882
-      spritesheet-garra-femea-virando_12: 274347963
-      spritesheet-garra-femea-virando_9: 1892839287
-      spritesheet-garra-femea-virando_8: 1684476404
-      spritesheet-garra-femea-virando_4: -133778493
-      spritesheet-garra-femea-virando_6: 1942001967
-      spritesheet-garra-femea-virando_7: -1146045613
+      spritesheet-garra-virandov4_12: 2079195325
+      spritesheet-garra-virandov4_5: -235347920
+      spritesheet-garra-virandov4_1: 830154312
+      spritesheet-garra-virandov4_6: -791164978
+      spritesheet-garra-virandov4_8: -779790460
+      spritesheet-garra-virandov4_9: 1277100778
+      spritesheet-garra-virandov4_2: 158942901
+      spritesheet-garra-virandov4_11: -1457444334
+      spritesheet-garra-virandov4_3: -1321815609
+      spritesheet-garra-virandov4_4: 1916730826
+      spritesheet-garra-virandov4_7: -1466725723
+      spritesheet-garra-virandov4_10: -1425955759
+      spritesheet-garra-virandov4_0: -2012096648
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -13,22 +13,22 @@ public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento,
         modoColetados = new ModoColetados(grupoDisplays, arcoIrisEfeito);        
     }
 
-    public void configuradoPeloLevel(DisplaysColetadosDto displaysSlotsDto)
+    public void configuradoPeloLevel(DisplaysColetadosDto displaysSlotsDto, SomCacaNiquel somCacaNiquel)
     {        
         grupoDisplays.colorirDisplays();
 
         if (LevelUtils.isCacaNiquelLevel())
         {
             modoCacaNiquel = new ModoCacaNiquel();
-            modoCacaNiquel.configuradoPeloLevel(displaysSlotsDto.CacaNiquelDto);
+            modoCacaNiquel.configuradoPeloLevel(displaysSlotsDto.CacaNiquelDto, somCacaNiquel);
         }
     }
 
-    public void iniciar(InputGame inputGame)
+    public void iniciar(InputGame inputGame, SomCacaNiquel somCacaNiquel)
     {
         if (isDisplayCacaNiquelAtivado())
         {
-            modoCacaNiquel.iniciar(grupoDisplays, inputGame);
+            modoCacaNiquel.iniciar(grupoDisplays, somCacaNiquel, inputGame);
         }
     }  
 

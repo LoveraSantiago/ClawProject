@@ -19,16 +19,16 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     public  DisplaysDeColetados displayDeColetados { get; private set; }
     public  ScrollPupsManager   scrollPupsManager  { get; private set; }
     private Draggavel           draggavel;
-    private SomMaquina          somMaquina;
+    private SonsDeMaquina       sonsDeMaquina;
 
-    public MaquinaManager(MaquinaDto maquinaDto, SomMaquina somMaquina)
+    public MaquinaManager(MaquinaDto maquinaDto, SonsDeMaquina sonsDeMaquina)
     {
         partesDto          = maquinaDto.PartesDtoV2;
-        this.somMaquina    = somMaquina;
+        this.sonsDeMaquina = sonsDeMaquina;
         arcoIrisEfeito     = new ArcoIrisEfeito(maquinaDto.MaquinaEfeitoGlowDto);
-        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto, arcoIrisEfeito, somMaquina);        
-        displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, somMaquina);
-        displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto, somMaquina);
+        displayDeColetados = new DisplaysDeColetados(maquinaDto.DisplayColetadosDto, arcoIrisEfeito, sonsDeMaquina);        
+        displayDeScores    = new DisplayDeScores(maquinaDto.DisplayDeScoreDto, sonsDeMaquina);
+        displayTimer       = new DisplayTimer(maquinaDto.DisplayTimerDto, sonsDeMaquina);
         joystick           = new Joystick(maquinaDto.MesaJoystickDto);
         botoesPowerUp      = new BotoesPowerUp(maquinaDto.BotoesPowerUpDto);
         botaoLigaDesliga   = new BotaoLigaDesliga(maquinaDto.BotaoLigaDesligaDto);
@@ -41,7 +41,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     {
         botoesPowerUp.configuradoPeloLevel();
         joystick.configuradoPeloLevel();        
-        displayDeColetados.configuradoPeloLevel(maquinaDto.DisplayColetadosDto);
+        displayDeColetados.configuradoPeloLevel(maquinaDto.DisplayColetadosDto, sonsDeMaquina);
         displayDeScores.configuradoPeloLevel(maquinaDto.DisplayDeScoreDto);
         scrollPupsManager.configuradoPeloLevel(maquinaDto.ScrollPupsDto, maquinaDto.Material7SegsDto);
         displayTimer.configuradoPeloLevel(maquinaDto.DisplayTimerDto, maquinaDto.Material7SegsDto);
@@ -52,7 +52,7 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     public void start(InputGame inputGame)
     {
         displayTimer.iniciarContagemTempo();
-        displayDeColetados.iniciar(inputGame);
+        displayDeColetados.iniciar(inputGame, sonsDeMaquina);
         scrollPupsManager.iniciar();
     }
 
@@ -60,13 +60,13 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     {
         if (isGamePlay)
         {
-            botoesPowerUp.update(maquinaDto.BotoesPowerUpDto, somMaquina, inputGame);
-            botaoLigaDesliga.update(inputGame, somMaquina);
+            botoesPowerUp.update(maquinaDto.BotoesPowerUpDto, sonsDeMaquina, inputGame);
+            botaoLigaDesliga.update(inputGame, sonsDeMaquina);
             displayTimer.update();
         }
         else
         {
-            scrollPupsManager.update(inputGame, somMaquina);
+            scrollPupsManager.update(inputGame, sonsDeMaquina);
         }
     }
 
