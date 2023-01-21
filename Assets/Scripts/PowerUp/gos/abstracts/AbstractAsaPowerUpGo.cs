@@ -4,7 +4,7 @@ using System.Collections;
 public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
                                              Transformador<Coletavel, IEnumerator>
 {
-    private static readonly int VOADA = Animator.StringToHash("voada");
+    private static readonly int VOADA = Animator.StringToHash("abrindo-asas");
 
     private bool hitColetavel;
     private Animator animator;
@@ -46,9 +46,11 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
         coletavelAcertado.desligar();        
         ligar();
 
+        playAnimacaoVoar();
+        yield return new WaitForSeconds(0f);
+
         setGravidade(getGravidadeNegativa());
         acionarTriggerNoCollider();
-        playAnimacaoVoar();
 
         Vector3 posicaoInicial = getPosicao();
         float offset = getOffset();
