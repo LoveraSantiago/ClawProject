@@ -21744,6 +21744,7 @@ MonoBehaviour:
         gravidadeNeg: -0.1
         offset: 0.3
         haltura: 3
+        delayAsaAbrir: 1
         delayFinalizar: 0.5
         asaGo: {fileID: 4127936681606313068, guid: 5432931c59eafda478e032d555b31327, type: 3}
       asaMiniDto:

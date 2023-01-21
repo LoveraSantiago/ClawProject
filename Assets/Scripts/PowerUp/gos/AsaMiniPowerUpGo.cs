@@ -50,5 +50,6 @@ public class AsaMiniPowerUpGo : AbstractAsaPowerUpGo
 
         powerUpFinalizacao.finalizado();
         yield return null;
+        resetPup();
     }    
 }

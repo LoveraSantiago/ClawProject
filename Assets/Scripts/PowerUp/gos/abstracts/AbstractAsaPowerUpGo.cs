@@ -29,7 +29,10 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
         coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));
     }
 
-    public override void resetPup() { }
+    public override void resetPup() 
+    {
+        setGravidade(0f);
+    }
 
     public IEnumerator transformar(Coletavel coletavel)
     {
@@ -47,7 +50,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
         ligar();
 
         playAnimacaoVoar();
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(powerUpDto.AsaDto.DelayAsaAbrir);
 
         setGravidade(getGravidadeNegativa());
         acionarTriggerNoCollider();
