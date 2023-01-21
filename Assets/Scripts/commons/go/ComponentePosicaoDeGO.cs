@@ -10,9 +10,14 @@ public class ComponentePosicaoDeGO : ComponenteGameObjectDeGO
         return getGo().transform.position;
     }
 
-    public Quaternion getAngulo()
+    public Quaternion getAnguloQuaternium()
     {
         return getGo().transform.rotation;
+    }
+
+    public Vector3 getAngulo()
+    {
+        return getAnguloQuaternium().eulerAngles;
     }
 
     public virtual void colocarNaPosicao(Vector3 posicao)

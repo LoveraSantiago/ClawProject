@@ -14,6 +14,28 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
     protected override IEnumerator realizarTroca(DuplaDeColetaveisDto duplaDeColetaveis)
     {
         Coletavel coletavel1 = duplaDeColetaveis.coletavel1;
+        Vector3 angulo = coletavel1.getAngulo();
+        float angZ = angulo.z;
+        Debug.Log("Angulo Coletavel " + angulo);
+        if((int)angZ > 180)
+        {
+            do
+            {
+                angZ += 10 * Time.deltaTime;
+                coletavel1.colocarNoAngulo(angZ);
+                yield return null;
+            } while ((int)angZ < 359);
+        }
+        else
+        {
+            do
+            {
+                angZ -= 10 * Time.deltaTime;
+                coletavel1.colocarNoAngulo(angZ);
+                yield return null;
+            } while ((int)angZ < 0);
+        }    
+        
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
 
         CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoIgual;
