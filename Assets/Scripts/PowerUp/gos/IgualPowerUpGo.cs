@@ -14,35 +14,8 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
     protected override IEnumerator realizarTroca(DuplaDeColetaveisDto duplaDeColetaveis)
     {
         Coletavel coletavel1 = duplaDeColetaveis.coletavel1;
-        Vector3 angulo = coletavel1.getAngulo();
-        float angZ = angulo.z;
-        Debug.Log("Angulo Coletavel " + angulo);
-        if((int) angZ >10 || angZ < -10)
-        {
-            Debug.Log("maior que 10 ou menor que -10");
-            if((int)angZ > 180)
-            {
-                Debug.Log("E maior que 180");
-                do
-                {
-                    angZ += powerUpDto.VelocidadeRotacao * Time.deltaTime;
-                    Debug.Log("Angulo Coletavel Update " + angZ);
-                    coletavel1.colocarNoAngulo(angZ);
-                    yield return null;
-                } while ((int)angZ < 359);
-            }
-            else
-            {
-                Debug.Log("E menor que 180");
-                do
-                {
-                    angZ -= powerUpDto.VelocidadeRotacao * Time.deltaTime;
-                    Debug.Log("Angulo Coletavel Update " + angZ);
-                    coletavel1.colocarNoAngulo(angZ);
-                    yield return null;
-                } while ((int)angZ > 0);
-            }    
-        }
+        PowerUpRotacionadorDeColetavel rotacionador = new PowerUpRotacionadorDeColetavel(powerUpDto.VelocidadeRotacao, coletavel1);
+        yield return rotacionador.rotacionar();       
         
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
 
