@@ -113,8 +113,8 @@ public class Level2 : AbstractLevelNormal
     {      
 
         return new PowerUpsParaLevel(2)
-           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.IGUAL })
-           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.IGUAL });
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.CORINGA, PowerUpEnums.TIPO.CORINGA, PowerUpEnums.TIPO.CORINGA })
+           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.CORINGA, PowerUpEnums.TIPO.CORINGA, PowerUpEnums.TIPO.CORINGA, PowerUpEnums.TIPO.CORINGA });
     }
 }
 
