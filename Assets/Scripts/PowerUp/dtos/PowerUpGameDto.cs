@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerUpGameDto 
 {    
     [SerializeField] private float halturaPupDraggavel;
+    [SerializeField] private float velocidadeRotacao;
     [Space(3)]
     [SerializeField] private GameObject vazioPUp;
     [SerializeField] private GameObject prefabPowerUpDto;
@@ -36,6 +37,7 @@ public class PowerUpGameDto
     [SerializeField] private MolaDto molaDto;
  
     public float HalturaPupDraggavel { get { return halturaPupDraggavel; } }
+    public float VelocidadeRotacao { get { return velocidadeRotacao; } }
 
     public GameObject VazioPUp { get { return vazioPUp; } }
     public GameObject PrefabPowerUpDto { get { return prefabPowerUpDto; } }    

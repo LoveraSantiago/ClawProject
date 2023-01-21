@@ -21636,6 +21636,7 @@ MonoBehaviour:
       virtualCam3: {fileID: 2101427130}
     powerUpDto:
       halturaPupDraggavel: -3.7
+      velocidadeRotacao: 75
       vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
       prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
       efeitoMaterializeDto:

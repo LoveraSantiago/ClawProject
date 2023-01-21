@@ -17,24 +17,32 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
         Vector3 angulo = coletavel1.getAngulo();
         float angZ = angulo.z;
         Debug.Log("Angulo Coletavel " + angulo);
-        if((int)angZ > 180)
+        if((int) angZ >10 || angZ < -10)
         {
-            do
+            Debug.Log("maior que 10 ou menor que -10");
+            if((int)angZ > 180)
             {
-                angZ += 10 * Time.deltaTime;
-                coletavel1.colocarNoAngulo(angZ);
-                yield return null;
-            } while ((int)angZ < 359);
+                Debug.Log("E maior que 180");
+                do
+                {
+                    angZ += powerUpDto.VelocidadeRotacao * Time.deltaTime;
+                    Debug.Log("Angulo Coletavel Update " + angZ);
+                    coletavel1.colocarNoAngulo(angZ);
+                    yield return null;
+                } while ((int)angZ < 359);
+            }
+            else
+            {
+                Debug.Log("E menor que 180");
+                do
+                {
+                    angZ -= powerUpDto.VelocidadeRotacao * Time.deltaTime;
+                    Debug.Log("Angulo Coletavel Update " + angZ);
+                    coletavel1.colocarNoAngulo(angZ);
+                    yield return null;
+                } while ((int)angZ > 0);
+            }    
         }
-        else
-        {
-            do
-            {
-                angZ -= 10 * Time.deltaTime;
-                coletavel1.colocarNoAngulo(angZ);
-                yield return null;
-            } while ((int)angZ < 0);
-        }    
         
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
 
