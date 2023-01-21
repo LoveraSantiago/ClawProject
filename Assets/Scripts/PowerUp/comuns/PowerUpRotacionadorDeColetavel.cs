@@ -5,11 +5,18 @@ public class PowerUpRotacionadorDeColetavel
 {
     private float velocidade;
     private Coletavel coletavel;
+    private Executor executorFinalizado;
 
     public PowerUpRotacionadorDeColetavel(float velocidade, Coletavel coletavel)
     {
         this.velocidade = velocidade;
         this.coletavel = coletavel;
+    }
+    
+    public PowerUpRotacionadorDeColetavel(float velocidade, Coletavel coletavel, Executor executorFinalizado)
+        :this(velocidade, coletavel)
+    {
+        this.executorFinalizado = executorFinalizado;
     }
 
     public IEnumerator rotacionar()
@@ -43,7 +50,14 @@ public class PowerUpRotacionadorDeColetavel
                 } while ((int)anguloZDouble > 0);
             }
         }
-    }
-
+        callExecutorFinalizado();
+    }   
     
+    private void callExecutorFinalizado()
+    {
+        if(executorFinalizado != null)
+        {
+            executorFinalizado.execute();
+        }
+    }
 }
