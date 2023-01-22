@@ -43,6 +43,9 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
     {
         hitColetavel = true;
 
+        PowerUpRotacionadorDeColetavel rotacionador = new PowerUpRotacionadorDeColetavel(powerUpDto.VelocidadeRotacao, coletavelAcertado);
+        yield return rotacionador.rotacionar();
+
         colocarNaPosicao(coletavelAcertado.getPosicao());
         Sprite spriteAcertado = getSpriteAcertado(coletavelAcertado);        
         receberSprite(spriteAcertado);

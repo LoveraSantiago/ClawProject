@@ -113,8 +113,8 @@ public class Level2 : AbstractLevelNormal
     {      
 
         return new PowerUpsParaLevel(2)
-           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.TELEPORTE })
-           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.TELEPORTE });
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MISSIL_NUCLEAR, PowerUpEnums.TIPO.MINI_ASAS, PowerUpEnums.TIPO.MINI_ASAS, PowerUpEnums.TIPO.MINI_ASAS })
+           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINI_ASAS, PowerUpEnums.TIPO.MINI_ASAS, PowerUpEnums.TIPO.MINI_ASAS, PowerUpEnums.TIPO.MINI_ASAS });
     }
 }
 
