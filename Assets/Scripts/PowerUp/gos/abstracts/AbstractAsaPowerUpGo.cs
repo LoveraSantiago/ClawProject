@@ -16,7 +16,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
 
     public override void configurarPup()
     {
-        animator = extrairComponenteFrom<Animator>("asas");
+        animator = extrairComponente<Animator>();
         circleCollider = extrairComponente<CircleCollider2D>();
     }
 
@@ -52,10 +52,12 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
         coletavelAcertado.desligar();        
         ligar();
 
+        somPowerUp.playSomAnjo();
         playAnimacaoVoar();
         yield return new WaitForSeconds(powerUpDto.AsaDto.DelayAsaAbrir);
 
         setGravidade(getGravidadeNegativa());
+        somPowerUp.iniciarSomAsa();
         acionarTriggerNoCollider();
 
         Vector3 posicaoInicial = getPosicao();
@@ -71,6 +73,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
             colocarNaPosicao(posicaoZigZag);
             yield return null;
         }
+        somPowerUp.pararSomAsa();
         yield return null;
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(finalizarVoar(coletavelAcertado));
     }

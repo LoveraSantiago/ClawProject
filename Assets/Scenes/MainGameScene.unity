@@ -21899,6 +21899,12 @@ MonoBehaviour:
       somMissil:
         volume: 1
         audioClip: {fileID: 8300000, guid: 334a19371065a1f41ad9afed8409b733, type: 3}
+      somAnjo:
+        volume: 0.9
+        audioClip: {fileID: 8300000, guid: 65f8915b56d330d44a613bf2ad9ebdfc, type: 3}
+      somAsa:
+        volume: 0.5
+        audioClip: {fileID: 8300000, guid: 71dc05b4da8a4c349a85766befdea1d5, type: 3}
       somBackgroundCacaNiquel:
         volume: 0.5
         audioClip: {fileID: 8300000, guid: 1a749cb0629a7ea4ab5c4e90b40c5668, type: 3}
