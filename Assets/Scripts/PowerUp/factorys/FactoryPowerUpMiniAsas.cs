@@ -10,7 +10,7 @@ public class FactoryPowerUpMiniAsas : AbstractFactoryPowerUp
                 .configSupplierDePowerUpGo(this)
                 .configIsClicavel(true)
                 .configDescricao(
-                    "Dê um par de mini asas ao coletavel do seu interesse para que ele tente alcançar a liberdade.",
+                    "Dê um par de mini asas ao coletavel para tentar alcançar a liberdade.",
                     "Selecione o coletavel de interesse a tentar alcançar a liberdade.");
     }
 
