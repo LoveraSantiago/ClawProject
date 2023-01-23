@@ -17,7 +17,7 @@ public class BotaoIrGameColetaveis
 
     private void irParaLevelDeColetado(SomManagerColetaveis somManager)
     {   
-        if(PlayerPrefsFichas.possueFichas(Ficha.OURO, 1))
+        if(PlayerPrefsFichas.possueFichas(Ficha.OURO, 1) && ContextoEstaticoUtils.loading.naoAcionado)
         {
             PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
             somManager.playSomCliqueIrParaGame();

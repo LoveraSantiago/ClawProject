@@ -54,27 +54,30 @@ public class ModalSair : AcaoDesligarMaquinaResultado.ProdutorEvento,
     {
         ContextoEstaticoUtils.continuarGame();
         somModais.playSomCliquePositivo();
-        switch (estadoSairPara)
+        if (ContextoEstaticoUtils.loading.naoAcionado)
         {
-            case SAIR_NORMAL:
-                {
-                    produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, true));
-                    ContextoEstaticoUtils.loading.irParaMapScene();                    
-                    break;
-                }
-            case SAIR_COLETAVEL:
-                {
-                    produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, false));
-                    ContextoEstaticoUtils.loading.irParaColetaveisCena();
-                    break;
-                }
-            case SAIR_EXTRA:
-                {
-                    produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, false));
-                    ContextoEstaticoUtils.loading.irParaPowerUpCena();
-                    break;
-                }
-        }        
+            switch (estadoSairPara)
+            {
+                case SAIR_NORMAL:
+                    {
+                            produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, true));
+                            ContextoEstaticoUtils.loading.irParaMapScene();                    
+                        break;
+                    }
+                case SAIR_COLETAVEL:
+                    {
+                        produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, false));
+                        ContextoEstaticoUtils.loading.irParaColetaveisCena();
+                        break;
+                    }
+                case SAIR_EXTRA:
+                    {
+                        produtorDeEvento.produziuEvento(new ResultadoDesligarMaquinaDto(true, false));
+                        ContextoEstaticoUtils.loading.irParaPowerUpCena();
+                        break;
+                    }
+            }        
+        }
     }
 
     void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)

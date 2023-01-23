@@ -35,9 +35,12 @@ public class ModalNoFicha
 
     private void irParaCena(SomModalNoFicha somModalNoFicha)
     {
-        modalNoFichaDto.Animator.Play(ANIM_FECHAR);
-        somModalNoFicha.playSomClique();
-        ContextoEstaticoUtils.loading.irParaLojaCena();
+        if (ContextoEstaticoUtils.loading.naoAcionado)
+        {
+            modalNoFichaDto.Animator.Play(ANIM_FECHAR);
+            somModalNoFicha.playSomClique();
+            ContextoEstaticoUtils.loading.irParaLojaCena();
+        }
     }
 
     private void desligar(SomModalNoFicha somModalNoFicha)
