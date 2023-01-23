@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TutorialPowerUpMissilTeleguiado : TutorialPowerUp
 {
+    private bool emAndamento;
     private bool finalizacaoDisparada;
     private MainGameDto mainDto;
     private AllGameManagers allGameManagers;
@@ -39,7 +40,7 @@ public class TutorialPowerUpMissilTeleguiado : TutorialPowerUp
 
     private void prepararFimTutorialPupExpirado()
     {
-        if (!finalizacaoDisparada)
+        if (!finalizacaoDisparada && !emAndamento)
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
@@ -52,6 +53,7 @@ public class TutorialPowerUpMissilTeleguiado : TutorialPowerUp
 
     private void prepararMensagemPupAcionado()
     {
+        emAndamento = true;
         mainDto.TutorialDto.LblTexto.text = "Otimo! Alvo selecionado!\nO missil espalha o coletavel especifico.";
         animacaoTutorial.playParteTexto();
     }

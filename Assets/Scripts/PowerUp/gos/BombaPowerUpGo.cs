@@ -66,19 +66,19 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         if(!acionado && isAlvoExplosivel(evento))
         {
             acionado = true;
+            powerUpFinalizacao.preFinalizar();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(explodir());
         }
     }    
     
     private IEnumerator explodir()
     {        
-        animacao.playPreExplodir();
+        animacao.playPreExplodir();        
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayInicial);
 
         processarExplosao();        
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayExplosao);
-
-        processarPosExplosao();
+                
         yield return new WaitForSeconds(powerUpDto.BombaDto.DelayPosExplosao);
 
         processarFinalizacao();
@@ -99,12 +99,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         
         CameraShake cameraShake = new CameraShake();
         cameraShake.shakeEParar(powerUpDto.BombaDto.CameraShakeDto);
-    }
-
-    private void processarPosExplosao()
-    {
-        powerUpFinalizacao.preFinalizar();
-    }
+    }  
 
     private void processarFinalizacao()
     {

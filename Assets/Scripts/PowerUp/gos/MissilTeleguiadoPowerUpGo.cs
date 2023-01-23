@@ -82,11 +82,11 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
     
     private IEnumerator dispararMissil(GO go)
     {
+        powerUpFinalizacao.preFinalizar();
         processarPreExplosao();
         yield return processarMissilEmRota(go);
 
-        processarExplosao(go);
-        processarPosExplosao();
+        processarExplosao(go);        
         yield return new WaitForSeconds(powerUpDto.MissilTeleguiadoDto.DelayPosExplosao);
 
         resetPup();
@@ -128,12 +128,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         efeitoExplosao.explodir(powerUpDto.MissilTeleguiadoDto.EfeitoExplosao, posicaoExplosao);
         CameraShake cameraShake = new CameraShake();        
         cameraShake.shakeEParar(powerUpDto.MissilTeleguiadoDto.CameraShakeDto);
-    }
-
-    private void processarPosExplosao()
-    {
-        powerUpFinalizacao.preFinalizar();
-    }
+    }    
 
     private void acertarGo(GO go)
     {
