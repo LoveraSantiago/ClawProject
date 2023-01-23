@@ -41,6 +41,7 @@ public class TutorialPowerUpMiniAsa : TutorialPowerUp
 
     private void prepararMensagemPupAcionado()
     {
+        emAndamento = true;
         mainDto.TutorialDto.LblTexto.text = "Otimo! Mini-Asas acionadas!\nO coletavel esta em uma posição melhor.";
         animacaoTutorial.playParteTexto();
     }
@@ -73,7 +74,7 @@ public class TutorialPowerUpMiniAsa : TutorialPowerUp
 
     private void prepararFimTutorialPupExpirado()
     {
-        if (!finalizacaoDisparada)
+        if (!finalizacaoDisparada && !emAndamento)
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
