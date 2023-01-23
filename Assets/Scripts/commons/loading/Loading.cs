@@ -23,37 +23,58 @@ public class Loading
 
     public void irParaMapScene()
     {
-        abrirModal("MapScene");
+        if (!acionado)
+        {
+            abrirModal("MapScene");
+        }
     }
 
     public void irParaPowerUpCena()
     {
-        abrirModal("PupSceneV2");
+        if (!acionado)
+        {
+            abrirModal("PupSceneV2");
+        }
     }
 
     public void irParaLojaCena()
     {
-        abrirModal("LojaScene");
+        if (!acionado)
+        {
+            abrirModal("LojaScene");
+        }
     }
 
     public void irParaLevelCena()
     {
-        abrirModal("LevelsScene");
+        if (!acionado)
+        {
+            abrirModal("LevelsScene");
+        }
     }
 
     public void irParaColetaveisCena()
     {
-        abrirModal("ColetaveisSceneV2");
+        if (!acionado)
+        {
+            abrirModal("ColetaveisSceneV2");
+        }
     }
 
     public void irParaConfiguracaoCena()
     {
-        abrirModal("ConfigScene");
+        if (!acionado)
+        {
+            abrirModal("ConfigScene");
+        }
     }
 
     public void irParaGameCena()
     {
-        abrirModal("MainGameScene");
+        if (!acionado)
+        {
+            abrirModal("MainGameScene");
+        }
     }
 
     public void fecharModal()
