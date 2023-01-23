@@ -8,7 +8,7 @@ public class Loading
     private static readonly int FECHAR_MODAL = Animator.StringToHash("fechar-loading");
     private static readonly int ABRIR_MODAL  = Animator.StringToHash("abrir-loading");
 
-    private bool acionado;
+    public bool acionado { get; private set; }
     private LoadingDto loadingDto;
     private GameObject[] gosDesligar;
     private Coroutine coroutineAtual;
