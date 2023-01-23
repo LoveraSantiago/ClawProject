@@ -30,6 +30,7 @@ public class AsaPowerUpGo : AbstractAsaPowerUpGo
         yield return new WaitForSeconds(powerUpDto.AsaDto.DelayFinalizar);
 
         powerUpFinalizacao.finalizado();
-        yield return null;        
+        yield return null;
+        resetPup();
     }   
 }
