@@ -14,6 +14,9 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
     protected override IEnumerator realizarTroca(DuplaDeColetaveisDto duplaDeColetaveis)
     {
         Coletavel coletavel1 = duplaDeColetaveis.coletavel1;
+        PowerUpRotacionadorDeColetavel rotacionador = new PowerUpRotacionadorDeColetavel(powerUpDto.VelocidadeRotacao, coletavel1);
+        yield return rotacionador.rotacionar();       
+        
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
 
         CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoIgual;

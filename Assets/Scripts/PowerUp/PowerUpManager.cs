@@ -79,10 +79,9 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     }
 
     public void expirado()
-    {
+    {        
         contadorTimeout = new ContadorPowerUpInativo();
-        PowerUpInfoDto powerUpInfo = FactoryPowerUpInfoDto.ofExpirado();
-        somPowerUp.playSomBackgroundNormal();
+        PowerUpInfoDto powerUpInfo = FactoryPowerUpInfoDto.ofExpirado();        
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 

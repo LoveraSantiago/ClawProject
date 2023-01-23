@@ -12,7 +12,7 @@ public class FactoryPowerUpAsas : AbstractFactoryPowerUp
                 .configIsColetavel(true)
                 .configDescricao(
                     "Dê um par de asas ao coletavel do seu interesse para que ele alcance a liberdade.",
-                    "Selecione o coletavel de interesse a alcançar a liberdade.");
+                    "Fique atento ao tempo de duração para dar asas ao coletavel.");
     }
 
     public override AbstractPowerUpGo fornecer()

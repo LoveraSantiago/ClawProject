@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TutorialPowerUpMissilNuclear : TutorialPowerUp
 {
+    private bool emAndamento;
     private bool finalizacaoDisparada;
     private MainGameDto mainDto;
     private AnimacaoTutorial animacaoTutorial;
@@ -41,7 +42,7 @@ public class TutorialPowerUpMissilNuclear : TutorialPowerUp
 
     private void prepararFimTutorialPupExpirado()
     {
-        if (!finalizacaoDisparada)
+        if (!finalizacaoDisparada && !emAndamento)
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
@@ -54,6 +55,7 @@ public class TutorialPowerUpMissilNuclear : TutorialPowerUp
 
     private void prepararMensagemPupAcionado()
     {
+        emAndamento = true;
         mainDto.TutorialDto.LblTexto.text = "Otimo! Missil acionado!\nA explosão gigante espalha os coletaveis.";
         animacaoTutorial.playParteTexto();
     }

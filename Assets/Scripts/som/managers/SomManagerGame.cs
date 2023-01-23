@@ -144,6 +144,21 @@ public class SomManagerGame : SomManager,
     {
         audioPlayOneShot(getAudioSourcePowerUp(), audioDto.SomTeleporte);
     }
+
+    public void playSomAnjo()
+    {
+        audioPlayOneShot(getAudioSourcePowerUp(), audioDto.SomAnjo);
+    }
+
+    public void iniciarSomAsa()
+    {
+        audioPlay(getAudioSourcePowerUp(), audioDto.SomAsa);
+    }
+
+    public void pararSomAsa()
+    {
+        getAudioSourcePowerUp().Stop();
+    }
     //***** IMPLEMENTACAO INTERFACE SOMPOWERUP FIM *****
 
     //***** IMPLEMENTACAO INTERFACE SOMMODAIS INICIO *****

@@ -115,7 +115,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
     {
         if(coletavelSelecionado != null)
         {
-            coletavelAtracao.colocarNaPosicao(coletavelSelecionado.getPosicao(), coletavelSelecionado.getAngulo());            
+            coletavelAtracao.colocarNaPosicao(coletavelSelecionado.getPosicao(), coletavelSelecionado.getAnguloQuaternium());            
             coletavelAtracao.ligar();
 
             if (coletavelSelecionado.isOvo())

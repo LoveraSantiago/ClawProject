@@ -5,4 +5,9 @@ public interface SomPowerUp
     void playSomExplosao();
     void playSomMissil();
     void playSomTeleporte();
+
+    void playSomAnjo();
+    void iniciarSomAsa();
+    void pararSomAsa();
+
 }

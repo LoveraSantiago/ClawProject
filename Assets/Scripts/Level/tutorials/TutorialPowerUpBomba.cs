@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TutorialPowerUpBomba : TutorialPowerUp
 {
+    private bool emAndamento;
     private bool finalizacaoDisparada;
     private MainGameDto mainDto;
     private AllGameManagers allGameManagers;
@@ -40,7 +41,7 @@ public class TutorialPowerUpBomba : TutorialPowerUp
 
     private void prepararFimTutorialPupExpirado()
     {
-        if (!finalizacaoDisparada)
+        if (!finalizacaoDisparada && !emAndamento)
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
@@ -53,6 +54,7 @@ public class TutorialPowerUpBomba : TutorialPowerUp
 
     private void prepararMensagemPupAcionado()
     {
+        emAndamento = true;
         mainDto.TutorialDto.LblTexto.text = "Otimo! Bomba acionada!\nA explosão espalha os coletaveis.";
         animacaoTutorial.playParteTexto();        
     }

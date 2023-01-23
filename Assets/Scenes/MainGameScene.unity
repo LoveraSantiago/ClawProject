@@ -21636,6 +21636,7 @@ MonoBehaviour:
       virtualCam3: {fileID: 2101427130}
     powerUpDto:
       halturaPupDraggavel: -3.7
+      velocidadeRotacao: 90
       vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
       prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
       efeitoMaterializeDto:
@@ -21744,8 +21745,9 @@ MonoBehaviour:
         gravidadeNeg: -0.1
         offset: 0.3
         haltura: 3
+        delayAsaAbrir: 1.1
         delayFinalizar: 0.5
-        asaGo: {fileID: 4127936681606313068, guid: 5432931c59eafda478e032d555b31327, type: 3}
+        asaGo: {fileID: 4127936681606313068, guid: 07decaffb3cc5ed43b17c76d996fd309, type: 3}
       asaMiniDto:
         gravidadeNeg: -0.075
         offset: 0.15
@@ -21897,6 +21899,12 @@ MonoBehaviour:
       somMissil:
         volume: 1
         audioClip: {fileID: 8300000, guid: 334a19371065a1f41ad9afed8409b733, type: 3}
+      somAnjo:
+        volume: 0.9
+        audioClip: {fileID: 8300000, guid: 65f8915b56d330d44a613bf2ad9ebdfc, type: 3}
+      somAsa:
+        volume: 0.5
+        audioClip: {fileID: 8300000, guid: 71dc05b4da8a4c349a85766befdea1d5, type: 3}
       somBackgroundCacaNiquel:
         volume: 0.5
         audioClip: {fileID: 8300000, guid: 1a749cb0629a7ea4ab5c4e90b40c5668, type: 3}

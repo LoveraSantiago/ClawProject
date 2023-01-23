@@ -59,8 +59,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     public override void resetPup()
     {
         desligar();
-        animacao.playIdle();        
-        powerUpFinalizacao.preFinalizar();
+        animacao.playIdle();                
         acionado = false;
         desafixarVerticalmente();
         colocarNoAngulo(0);        
@@ -74,6 +73,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         if (!acionado && isAlvoExplosivel(evento))
         {
             acionado = true;
+            powerUpFinalizacao.preFinalizar();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(explodir());
         }
     }    
@@ -111,10 +111,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
         colliderExplosao.gameObject.SetActive(false);
 
         ExplosaoHit explosaoHit = new ExplosaoHit();
-        explosaoHit.acertarGaiolas(colliderExplosao.transform.position, colliderExplosao.radius);
-
-        //CameraShake cameraShake = new CameraShake();        
-        //cameraShake.shakeEDiminuir(powerUpDto.MissilNuclearDto.CameraShakeDto);
+        explosaoHit.acertarGaiolas(colliderExplosao.transform.position, colliderExplosao.radius);      
         resetPup();
     }
 }

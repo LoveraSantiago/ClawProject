@@ -4,7 +4,7 @@ using System.Collections;
 public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
                                              Transformador<Coletavel, IEnumerator>
 {
-    private static readonly int VOADA = Animator.StringToHash("voada");
+    private static readonly int VOADA = Animator.StringToHash("abrindo-asas");
 
     private bool hitColetavel;
     private Animator animator;
@@ -16,7 +16,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
 
     public override void configurarPup()
     {
-        animator = extrairComponenteFrom<Animator>("asas");
+        animator = extrairComponente<Animator>();
         circleCollider = extrairComponente<CircleCollider2D>();
     }
 
@@ -29,7 +29,10 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
         coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));
     }
 
-    public override void resetPup() { }
+    public override void resetPup() 
+    {
+        setGravidade(0f);
+    }
 
     public IEnumerator transformar(Coletavel coletavel)
     {
@@ -40,15 +43,22 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
     {
         hitColetavel = true;
 
+        PowerUpRotacionadorDeColetavel rotacionador = new PowerUpRotacionadorDeColetavel(powerUpDto.VelocidadeRotacao, coletavelAcertado);
+        yield return rotacionador.rotacionar();
+
         colocarNaPosicao(coletavelAcertado.getPosicao());
         Sprite spriteAcertado = getSpriteAcertado(coletavelAcertado);        
         receberSprite(spriteAcertado);
         coletavelAcertado.desligar();        
         ligar();
 
-        setGravidade(getGravidadeNegativa());
-        acionarTriggerNoCollider();
+        somPowerUp.playSomAnjo();
         playAnimacaoVoar();
+        yield return new WaitForSeconds(powerUpDto.AsaDto.DelayAsaAbrir);
+
+        setGravidade(getGravidadeNegativa());
+        somPowerUp.iniciarSomAsa();
+        acionarTriggerNoCollider();
 
         Vector3 posicaoInicial = getPosicao();
         float offset = getOffset();
@@ -63,6 +73,7 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
             colocarNaPosicao(posicaoZigZag);
             yield return null;
         }
+        somPowerUp.pararSomAsa();
         yield return null;
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(finalizarVoar(coletavelAcertado));
     }

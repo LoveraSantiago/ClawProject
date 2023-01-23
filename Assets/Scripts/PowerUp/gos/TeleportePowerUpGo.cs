@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
 {  
@@ -16,6 +16,9 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
     {
         Coletavel coletavel1 = duplaDeColetaveis.coletavel1;
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
+
+        PowerUpRotacionadorDeColetaveis rotacionador = new PowerUpRotacionadorDeColetaveis(powerUpDto.VelocidadeRotacao, coletavel1, coletavel2);
+        yield return rotacionador.rotacionar();
 
         CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoTeleporte;
         EfeitosTeleportes efeitoTeleporte = new EfeitosTeleportes();
