@@ -16,7 +16,7 @@ public class ConfiguradorDePrateleiras
     public void config1CalcularTamanhoArmario()
     {
         float result = ((float)coletaveis.Length) / ((float)prateleirasDto.PrateleiraDto[0].ItensPrateleira.Length);
-        int qtdPrateleira = (int)Math.Ceiling(result);
+        int qtdPrateleira = (int)Math.Ceiling(result) + 1;
         int acrescimoPrateleiras = prateleirasDto.QtdPrateleirasVisiveis - qtdPrateleira;
         Debug.Log("result " + result + " qtdPrateleiras " + qtdPrateleira + " acrescimo " + acrescimoPrateleiras);
         float yAcrescimo = acrescimoPrateleiras * prateleirasDto.PrateleiraDto[0].RectTransformPrateleira.rect.height;
