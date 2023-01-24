@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class MapaUi 
+public class MapaUi : AcaoMapaExibido.ProdutorEvento
 {
     private LevelMapaUiDto levelMapaUiDto;    
     private AnimacaoMainMapa animacaMainMapa;
     public GrupoBtnBaloesMapa grupoBtnBaloes { get; private set; }
-
+    private ProdutorDeEvento<bool> produtorDeEvento;
     private Material materialGrayScale;
 
     public MapaUi(LevelMapaUiDto levelMapaUiDto, SomMap somMap)
@@ -15,6 +15,7 @@ public class MapaUi
         grupoBtnBaloes = new GrupoBtnBaloesMapa(levelMapaUiDto.BaloesLevels, somMap);        
         animacaMainMapa = new AnimacaoMainMapa(levelMapaUiDto.AnimatorMainMapa);
         materialGrayScale = MaterialGrayScale.of();
+        produtorDeEvento = new ProdutorDeEvento<bool>();
     }
 
     public void addMapaParaTela(WrapperLevelMapDto evento, SomMap somMap)
@@ -83,5 +84,12 @@ public class MapaUi
         yield return new WaitForSeconds(levelMapaUiDto.DelayInicioBaloes);
         MaterialBackground.movimentarSaida(levelMapaUiDto.MatBackground, evento.mapaEntidade.levelCorBackground);
         yield return grupoBtnBaloes.coroutineZommarBaloes(evento, levelMapaUiDto.DelayEntreBaloes, somMap);
-    }   
+        yield return new WaitForSeconds(levelMapaUiDto.DelayInicioBaloes);
+        produtorDeEvento.produziuEvento(true);
+    }
+
+    ProdutorDeEvento<bool> AcaoMapaExibido.ProdutorEvento.getProdutorDeEvento()
+    {
+        return produtorDeEvento;
+    }
 }

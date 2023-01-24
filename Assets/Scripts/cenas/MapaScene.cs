@@ -40,6 +40,10 @@ public class MapaScene : MonoBehaviour,
             .configurarProdutor(mapaUi.grupoBtnBaloes)
             .adicionarConsumidor(modalManager);
 
+        new AcaoMapaExibido()
+            .configurarProdutor(mapaUi)
+            .adicionarConsumidor(navegacaoMapas);
+
         ContextoEstaticoUtils.loading.fecharModal();
         navegacaoMapas.inicializar();
         somManager.playSomBackground();
