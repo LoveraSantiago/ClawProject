@@ -29,20 +29,20 @@ public class TutorialPowerUpAsa : TutorialPowerUp
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getGarraManager().parar();
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Mini-Asa disponivel!\nAcione o botão power up!";
+        mainDto.TutorialDto.LblTexto.text = "Asa disponivel!\nAcione o botão power up!";
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialInicioPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Selecione um coletavel \npara receber Mini-Asas.";
+        mainDto.TutorialDto.LblTexto.text = "Selecione um coletavel \npara receber as Asas.";
         animacaoTutorial.playParteTexto();
     }
 
     private void prepararMensagemPupAcionado()
     {
         emAndamento = true;
-        mainDto.TutorialDto.LblTexto.text = "Otimo! Mini-Asas acionadas!\nO coletavel esta em uma posição melhor.";
+        mainDto.TutorialDto.LblTexto.text = "Otimo! Asas acionadas!\nColetavel coletado.";
         animacaoTutorial.playParteTexto();
     }
 
@@ -78,7 +78,7 @@ public class TutorialPowerUpAsa : TutorialPowerUp
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao da Mini-Asa acabou!";
+            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao da Asa acabou!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
