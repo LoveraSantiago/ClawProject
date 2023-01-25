@@ -3800,7 +3800,7 @@ MonoBehaviour:
       btnFechar: {fileID: 1075245242}
       btnLevel: {fileID: 1398261149}
       linhasChallenge:
-        materialEstrelaLigada: {fileID: 0}
+        materialEstrelaLigada: {fileID: 2100000, guid: d2f0655342b9a8c41b792dc7d1ca0562, type: 2}
         linhaChallenges:
         - imgEstrela: {fileID: 6404112}
           lblTextoChallenge: {fileID: 1224977965}

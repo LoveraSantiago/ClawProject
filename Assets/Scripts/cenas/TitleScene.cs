@@ -13,11 +13,14 @@ public class TitleScene : MonoBehaviour
 
     private void Start()
     {
-        ContextoEstaticoUtils.configMainMono(this);        
+        ContextoEstaticoUtils.configMainMono(this);
+
         genero = PlayerPrefsGarra.getGarraMachoOrFemea();
         //Debug.Log("Genero " + genero.ToString());
         garraTitle = new GarraTitle(genero, mainTitleDto.Animator);
         somManager = new SomManagerTitle(mainTitleDto.AudioTitleDto);
+        PrefabLoading prefabLoading = mainTitleDto.GoLoading.GetComponent<PrefabLoading>();
+        prefabLoading.iniciarLoading(somManager, mainTitleDto.GosDesligar);
 
         if(GeneroUtils.isGeneroMacho(genero))
         {
@@ -44,13 +47,9 @@ public class TitleScene : MonoBehaviour
     }
 
     public void irParaMainScene()
-    {
+    {        
         somManager.playSomStart();
-        somManager.stopSomPrincipal();        
-
-        PrefabLoading prefabLoading = mainTitleDto.GoLoading.GetComponent<PrefabLoading>();
-        prefabLoading.iniciarLoading(somManager, mainTitleDto.GosDesligar);
-        ContextoEstaticoUtils.loading.irParaMapScene();
-        //CenaUtils.irParaCenaMap(1);
+        somManager.stopSomPrincipal();      
+        ContextoEstaticoUtils.loading.irParaMapScene();        
     }
 }

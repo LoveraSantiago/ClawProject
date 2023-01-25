@@ -59,16 +59,22 @@ public class BotoesCenasMapa
 
     private void irParaCenaLevel(SomMap somMap)
     {
-        somMap.playSomClique();
-        ContextoEstaticoUtils.loading.irParaLevelCena();
-        PlayerPrefsMapas.consumidoNovaLiberacaoLevel();
+        if (ContextoEstaticoUtils.loading.naoAcionado)
+        {
+            somMap.playSomClique();
+            ContextoEstaticoUtils.loading.irParaLevelCena();
+            PlayerPrefsMapas.consumidoNovaLiberacaoLevel();
+        }
     }
 
     private void irParaCenaColetaveis(SomMap somMap)
     {
-        somMap.playSomClique();
-        ContextoEstaticoUtils.loading.irParaColetaveisCena();
-        PlayerPrefsMapas.consumidoNovaLiberacaoColetavel();
+        if (ContextoEstaticoUtils.loading.naoAcionado)
+        {
+            somMap.playSomClique();
+            ContextoEstaticoUtils.loading.irParaColetaveisCena();
+            PlayerPrefsMapas.consumidoNovaLiberacaoColetavel();
+        }
     }
 
     private void irParaCenaConfiguracao(SomMap somMap)

@@ -1,5 +1,7 @@
-public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
+public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento,
+                              AcaoMapaExibido.ConsumidorEvento
 {
+    private bool acionado;
     private BotoesNavegacaoMapaDto botoesNavegacao;
     private NavegacaoDeArray<MapaEntidade> navegacaoDeArray;
     private WrapperLevelMapDto wrapperMapLevelAtual;
@@ -24,18 +26,26 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
 
     private void navegacaoEsquerda(SomMap somMap)
     {
-        somMap.playSomCliqueSetas();
-        MapaEntidade mapaEntidade = navegacaoDeArray.getItemProximo();
-        produzirEvento(Direcao.ESQUERDA, mapaEntidade);
-        dismissExclamacao();
+        if (!acionado)
+        {
+            acionado = true; 
+            somMap.playSomCliqueSetas();
+            MapaEntidade mapaEntidade = navegacaoDeArray.getItemProximo();
+            produzirEvento(Direcao.ESQUERDA, mapaEntidade);
+            dismissExclamacao();
+        }
     }
 
     private void navegacaoDireita(SomMap somMap)
     {
-        somMap.playSomCliqueSetas();
-        MapaEntidade mapaEntidade = navegacaoDeArray.getItemAnterior();
-        produzirEvento(Direcao.DIREITA, mapaEntidade);
-        dismissExclamacao();
+        if (!acionado)
+        {
+            acionado = true;
+            somMap.playSomCliqueSetas();
+            MapaEntidade mapaEntidade = navegacaoDeArray.getItemAnterior();
+            produzirEvento(Direcao.DIREITA, mapaEntidade);
+            dismissExclamacao();
+        }
     }
 
     private void produzirEvento(Direcao direcao, MapaEntidade mapaEntidade)
@@ -74,5 +84,10 @@ public class NavegacaoMapas : AcaoMapaNavegado.ProdutorEvento
     ProdutorDeEvento<WrapperLevelMapDto> AcaoMapaNavegado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
+    }
+
+    void ProdutorConsumidoresDeEvento<bool>.ConsumidorEvento.consumirEvento(bool evento)
+    {
+        acionado = false;
     }
 }

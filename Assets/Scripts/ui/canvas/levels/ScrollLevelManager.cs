@@ -63,7 +63,7 @@ public class ScrollLevelManager : ScrollMovimentador<LevelScroll>,
 
     private void calcularTamanhoScroll()
     {
-        float qtdItens = totalLevels - levelScroll.getQtdItensVisiveis();
+        float qtdItens = totalLevels - (levelScroll.getQtdItensVisiveis()-1);
         float yAcrescimo = qtdItens * levelScroll.getItemLevel(0).getHaltura();
         levelScroll.posicionarOffset(new Vector2(0, -yAcrescimo));
     }

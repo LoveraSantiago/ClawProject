@@ -8,7 +8,8 @@ public class Loading
     private static readonly int FECHAR_MODAL = Animator.StringToHash("fechar-loading");
     private static readonly int ABRIR_MODAL  = Animator.StringToHash("abrir-loading");
 
-    private bool acionado;
+    public bool acionado { get; private set; }
+    public bool naoAcionado { get { return !acionado; } }
     private LoadingDto loadingDto;
     private GameObject[] gosDesligar;
     private Coroutine coroutineAtual;
@@ -23,37 +24,65 @@ public class Loading
 
     public void irParaMapScene()
     {
-        abrirModal("MapScene");
+        if (!acionado)
+        {
+            acionado = true;
+            abrirModal("MapScene");
+        }
     }
 
     public void irParaPowerUpCena()
     {
-        abrirModal("PupSceneV2");
+        if (!acionado)
+        {
+            acionado = true;
+            abrirModal("PupSceneV2");
+        }
     }
 
     public void irParaLojaCena()
     {
-        abrirModal("LojaScene");
+        if (!acionado)
+        {
+            acionado = true;
+            abrirModal("LojaScene");
+        }
     }
 
     public void irParaLevelCena()
     {
-        abrirModal("LevelsScene");
+        if (!acionado)
+        {
+            acionado = true;
+            abrirModal("LevelsScene");
+        }
     }
 
     public void irParaColetaveisCena()
     {
-        abrirModal("ColetaveisSceneV2");
+        if (!acionado)
+        {
+            acionado = true;
+            abrirModal("ColetaveisSceneV2");
+        }
     }
 
     public void irParaConfiguracaoCena()
     {
-        abrirModal("ConfigScene");
+        if (!acionado)
+        {
+            acionado = true;
+            abrirModal("ConfigScene");
+        }
     }
 
     public void irParaGameCena()
     {
-        abrirModal("MainGameScene");
+        if (!acionado)
+        {
+            acionado = true;
+            abrirModal("MainGameScene");
+        }
     }
 
     public void fecharModal()
@@ -89,41 +118,39 @@ public class Loading
     }
 
     private IEnumerator coroutineAbrirModal(string nomeCena)
-    {
-        if (!acionado)
+    {        
+        loadingDto.GoCanvas.gameObject.SetActive(true);
+            
+        somLoading.stopSomBackground();
+        loadingDto.Animator.Play(ABRIR_MODAL);
+        yield return new WaitForSeconds(0.15f);
+
+        somLoading.playSomBumpModal();
+        loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 0);
+        yield return null;
+
+        somLoading.playSomGarraGirando();
+        yield return new WaitForSeconds(loadingDto.DelayAbrirModal);
+
+        desligarGos();
+        yield return null;
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(nomeCena);
+        operation.allowSceneActivation = false;
+        while (operation.progress < 0.89)
         {
-            loadingDto.GoCanvas.gameObject.SetActive(true);
-            acionado = true;
-            somLoading.stopSomBackground();
-            loadingDto.Animator.Play(ABRIR_MODAL);
-            yield return new WaitForSeconds(0.15f);
-
-            somLoading.playSomBumpModal();
-            loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 0);
-            yield return null;
-
-            somLoading.playSomGarraGirando();
-            yield return new WaitForSeconds(loadingDto.DelayAbrirModal);
-
-            desligarGos();
-            yield return null;
-
-            AsyncOperation operation = SceneManager.LoadSceneAsync(nomeCena);
-            operation.allowSceneActivation = false;
-            while (operation.progress < 0.89)
-            {
-                int progresso = (int)(operation.progress * 100);
-                loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, progresso);
-                //Debug.Log(operation.progress);
-                yield return null;
-            }
-            loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 100);        
-            yield return new WaitForSeconds(loadingDto.DelayFecharModal);
-            operation.allowSceneActivation = true;
-
-            cancelarCoroutine();
+            int progresso = (int)(operation.progress * 100);
+            loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, progresso);
+            //Debug.Log(operation.progress);
             yield return null;
         }
+        loadingDto.LblLoadingTexto.text = string.Format(LABEL_LOADING, 100);        
+        yield return new WaitForSeconds(loadingDto.DelayFecharModal);
+        operation.allowSceneActivation = true;
+
+        cancelarCoroutine();
+        yield return null;
+        
     }
 
     private IEnumerator coroutineFecharModal()
