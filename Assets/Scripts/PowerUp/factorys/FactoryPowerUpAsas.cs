@@ -11,7 +11,7 @@ public class FactoryPowerUpAsas : AbstractFactoryPowerUp
                 .configIsClicavel(true)
                 .configIsColetavel(true)
                 .configDescricao(
-                    "Dê um par de asas ao coletavel do seu interesse para que ele alcance a liberdade.",
+                    "Dê um par de asas ao coletavel para ele alcançar a liberdade.",
                     "Fique atento ao tempo de duração para dar asas ao coletavel.");
     }
 
