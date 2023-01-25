@@ -1,4 +1,4 @@
-public class LevelTutorialMiniAsa : AbstractLevelTutorialPowerUp
+public class LevelTutorialPowerUpMiniAsa : AbstractLevelTutorialPowerUp
 {
     public override int[,] getArrayDeColetaveis()
     {
