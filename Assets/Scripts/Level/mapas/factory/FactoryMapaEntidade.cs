@@ -30,8 +30,8 @@ public class FactoryMapaEntidade
                 //Debug.Log("Instanciado mapa entidade frutas");
                 return new MapaEntidade(levelMapDto)
                     .addInfo(1, "PARQUE DE DIVERSÕES")
-                    //.addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes())
-                    .addFornecedoresLevels(new FornecedorLevelsTestes())
+                    .addFornecedoresLevels(new FornecedorLevelsParqueDeDiversoes())
+                    //.addFornecedoresLevels(new FornecedorLevelsTestes())
                     .addFornecedoresColetaveis(new FornecedorLevelColetaveisFrutas());
 
             case MapaEnum.DINO:
