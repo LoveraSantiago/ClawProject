@@ -14,56 +14,14 @@ public class ConfigScene : MonoBehaviour
         prefabLoading.iniciarLoading(somManager, mainConfigDto.GosDesligar);
         ContextoEstaticoUtils.loading.fecharModal();
 
-        configurarToogles(somManager);
+        TogglesGenero togglesGenero = new TogglesGenero(mainConfigDto.TogglesGeneroDto);
+        togglesGenero.configurarToggles(somManager);
+        togglesGenero.recuperarEstado();
+        
         mainConfigDto.BtnBack.onClick.AddListener(() => {
                 somManager.playSomCliqueVoltar();
                 ContextoEstaticoUtils.loading.irParaMapScene();
             });
         somManager.playSomBackground();
-    }   
-
-    private void configurarToogles(SomManagerConfig somManager)
-    {
-        int escolhaGarra = PlayerPrefsGarra.getEscolhaGarra();
-        Debug.Log("Escolha da garra " + escolhaGarra);
-        if (escolhaGarra == 0)
-        {
-            mainConfigDto.ToggleRandom.isOn = true;
-        }
-        else if (escolhaGarra == 1)
-        {
-            mainConfigDto.ToggleMacho.isOn = true;
-        }
-        else if (escolhaGarra == 2)
-        {
-            mainConfigDto.ToggleFemea.isOn = true;
-        }
-
-        mainConfigDto.ToggleFemea.onValueChanged.AddListener((ativo) =>
-        {
-            if (ativo)
-            {
-                somManager.playSomClique();
-                PlayerPrefsGarra.saveEscolhaGarraFemea();
-            }
-        });
-
-        mainConfigDto.ToggleMacho.onValueChanged.AddListener((ativo) =>
-        {
-            if (ativo)
-            {
-                somManager.playSomClique();
-                PlayerPrefsGarra.saveEscolhaGarraMacho();
-            }
-        });
-
-        mainConfigDto.ToggleRandom.onValueChanged.AddListener((ativo) =>
-        {
-            if (ativo)
-            {
-                somManager.playSomClique();
-                PlayerPrefsGarra.saveEscolhaGarraRandom();
-            }
-        });
-    }
+    }          
 }

@@ -2254,6 +2254,7 @@ MonoBehaviour:
     toggleMacho: {fileID: 1283231621}
     toggleFemea: {fileID: 1384317299}
     toggleRandom: {fileID: 648740576}
+    sliderVolume: {fileID: 644586254}
     audioConfigDto:
       mainAudioSource: {fileID: 1936356013}
       somBackground:

@@ -7,20 +7,25 @@ public class MainConfigDto
 {
     [SerializeField] private Button btnBack;
     [Space(5)]
+    [SerializeField] private TogglesGeneroDto togglesGeneroDto;
     [SerializeField] private Toggle toggleMacho;
     [SerializeField] private Toggle toggleFemea;
     [SerializeField] private Toggle toggleRandom;
     [Space(5)]
+    [SerializeField] private Slider sliderVolume;
     [SerializeField] private AudioConfigDto audioConfigDto;
     [Space(5)]
     [SerializeField] private GameObject prefabLoading;
     [SerializeField] private GameObject[] gosDesligar;
 
     public Button BtnBack { get { return btnBack; } }
+
+    public TogglesGeneroDto TogglesGeneroDto { get { return togglesGeneroDto; } }
     public Toggle ToggleMacho { get { return toggleMacho; } }
     public Toggle ToggleFemea { get { return toggleFemea; } }
     public Toggle ToggleRandom { get { return toggleRandom; } }
 
+    public Slider SliderVolume { get { return sliderVolume; } }
     public AudioConfigDto AudioConfigDto { get { return audioConfigDto; } }
 
     public GameObject PrefabLoading { get { return prefabLoading; } }
