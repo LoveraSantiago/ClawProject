@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MainConfigDto 
 {
     [SerializeField] private Button btnBack;
+    [SerializeField] private Button btnReset;
     [Space(5)]
     [SerializeField] private TogglesGeneroDto togglesGeneroDto;    
     [Space(5)]
@@ -16,6 +17,7 @@ public class MainConfigDto
     [SerializeField] private GameObject[] gosDesligar;
 
     public Button BtnBack { get { return btnBack; } }
+    public Button BtnReset { get { return btnReset; } }
 
     public TogglesGeneroDto TogglesGeneroDto { get { return togglesGeneroDto; } }   
 

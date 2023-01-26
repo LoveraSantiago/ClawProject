@@ -20,13 +20,17 @@ public class ConfigScene : MonoBehaviour
         togglesGenero.recuperarEstado();
 
         configurarSliderVolume(somManager);
-        
+        configurarBotaoVoltar(somManager);
+        somManager.playSomBackground();
+    }       
+
+    private void configurarBotaoVoltar(SomManagerConfig somManager)
+    {
         mainConfigDto.BtnBack.onClick.AddListener(() => {
                 somManager.playSomCliqueVoltar();
                 ContextoEstaticoUtils.loading.irParaMapScene();
             });
-        somManager.playSomBackground();
-    }       
+    }
     
     private void configurarSliderVolume(SomManagerConfig somManager)
     {
