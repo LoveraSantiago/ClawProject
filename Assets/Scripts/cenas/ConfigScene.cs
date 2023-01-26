@@ -25,35 +25,45 @@ public class ConfigScene : MonoBehaviour
     private void configurarToogles(SomManagerConfig somManager)
     {
         int escolhaGarra = PlayerPrefsGarra.getEscolhaGarra();
+        Debug.Log("Escolha da garra " + escolhaGarra);
         if (escolhaGarra == 0)
         {
-            mainConfigDto.ToggleRandom.Select();
+            mainConfigDto.ToggleRandom.isOn = true;
         }
         else if (escolhaGarra == 1)
         {
-            mainConfigDto.ToggleMacho.Select();
+            mainConfigDto.ToggleMacho.isOn = true;
         }
         else if (escolhaGarra == 2)
         {
-            mainConfigDto.ToggleFemea.Select();
+            mainConfigDto.ToggleFemea.isOn = true;
         }
 
         mainConfigDto.ToggleFemea.onValueChanged.AddListener((ativo) =>
         {
-            somManager.playSomClique();
-            PlayerPrefsGarra.saveEscolhaGarraFemea();
+            if (ativo)
+            {
+                somManager.playSomClique();
+                PlayerPrefsGarra.saveEscolhaGarraFemea();
+            }
         });
 
         mainConfigDto.ToggleMacho.onValueChanged.AddListener((ativo) =>
         {
-            somManager.playSomClique();
-            PlayerPrefsGarra.saveEscolhaGarraMacho();
+            if (ativo)
+            {
+                somManager.playSomClique();
+                PlayerPrefsGarra.saveEscolhaGarraMacho();
+            }
         });
 
         mainConfigDto.ToggleRandom.onValueChanged.AddListener((ativo) =>
         {
-            somManager.playSomClique();
-            PlayerPrefsGarra.saveEscolhaGarraRandom();
+            if (ativo)
+            {
+                somManager.playSomClique();
+                PlayerPrefsGarra.saveEscolhaGarraRandom();
+            }
         });
     }
 }
