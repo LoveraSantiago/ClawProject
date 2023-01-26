@@ -7,10 +7,7 @@ public class MainConfigDto
 {
     [SerializeField] private Button btnBack;
     [Space(5)]
-    [SerializeField] private TogglesGeneroDto togglesGeneroDto;
-    [SerializeField] private Toggle toggleMacho;
-    [SerializeField] private Toggle toggleFemea;
-    [SerializeField] private Toggle toggleRandom;
+    [SerializeField] private TogglesGeneroDto togglesGeneroDto;    
     [Space(5)]
     [SerializeField] private Slider sliderVolume;
     [SerializeField] private AudioConfigDto audioConfigDto;
@@ -20,10 +17,7 @@ public class MainConfigDto
 
     public Button BtnBack { get { return btnBack; } }
 
-    public TogglesGeneroDto TogglesGeneroDto { get { return togglesGeneroDto; } }
-    public Toggle ToggleMacho { get { return toggleMacho; } }
-    public Toggle ToggleFemea { get { return toggleFemea; } }
-    public Toggle ToggleRandom { get { return toggleRandom; } }
+    public TogglesGeneroDto TogglesGeneroDto { get { return togglesGeneroDto; } }   
 
     public Slider SliderVolume { get { return sliderVolume; } }
     public AudioConfigDto AudioConfigDto { get { return audioConfigDto; } }
