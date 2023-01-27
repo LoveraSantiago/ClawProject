@@ -19,11 +19,11 @@ public class ConfigScene : MonoBehaviour
         togglesGenero.configurarToggles(somManager);
         togglesGenero.recuperarEstado();
 
-        configurarBotaoReset();
+        configurarBotaoReset(somManager);
         configurarSliderVolume(somManager);
         configurarBotaoVoltar(somManager);
-        configurarBotaoCreditos();
-        configurarBotaoSairCreditos();
+        configurarBotaoCreditos(somManager);
+        configurarBotaoSairCreditos(somManager);
         somManager.playSomBackground();
     }       
 
@@ -45,23 +45,29 @@ public class ConfigScene : MonoBehaviour
         });
     }
 
-    private void configurarBotaoReset()
+    private void configurarBotaoReset(SomManagerConfig somManager)
     {
-        mainConfigDto.BtnReset.onClick.AddListener(() => PlayerPrefs.DeleteAll());
+        mainConfigDto.BtnReset.onClick.AddListener(() => 
+        {
+            somManager.playSomClique();
+            PlayerPrefs.DeleteAll();
+        });
     }
 
-    private void configurarBotaoCreditos()
+    private void configurarBotaoCreditos(SomManagerConfig somManager)
     {
         mainConfigDto.BtnCreditos.onClick.AddListener(() =>
         {
+            somManager.playSomClique();
             mainConfigDto.Animator.Play("creditos-abrir");
         });
     }
 
-    private void configurarBotaoSairCreditos()
+    private void configurarBotaoSairCreditos(SomManagerConfig somManager)
     {
         mainConfigDto.BtnFecharCreditos.onClick.AddListener(() =>
         {
+            somManager.playSomCliqueVoltar();
             mainConfigDto.Animator.Play("creditos-fechar");
         });
     }

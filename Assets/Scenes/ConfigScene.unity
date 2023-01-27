@@ -383,24 +383,27 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Desenvolvedores:
+  m_text: '
+
+
+    Desenvolvedores:
 
     Adalberto Fernandez Junior
 
-    Henrique Goes
+    Henrique
+    Goes
 
-    Santiago
-    dos Santos Lovera
+    Santiago dos Santos Lovera
 
     ---
 
 
     Artistas:
 
-    Luan Alves Pires
+    Luan Alves
+    Pires
 
-    Santiago
-    dos Santos Lovera
+    Santiago dos Santos Lovera
 
     ---
 
