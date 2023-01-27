@@ -19,6 +19,7 @@ public class ConfigScene : MonoBehaviour
         togglesGenero.configurarToggles(somManager);
         togglesGenero.recuperarEstado();
 
+        configurarBotaoReset();
         configurarSliderVolume(somManager);
         configurarBotaoVoltar(somManager);
         somManager.playSomBackground();
@@ -40,5 +41,10 @@ public class ConfigScene : MonoBehaviour
             PlayerPrefsVolume.salvarVolume(valor);
             somManager.trocarVolume(valor);
         });
+    }
+
+    private void configurarBotaoReset()
+    {
+        mainConfigDto.BtnReset.onClick.AddListener(() => PlayerPrefs.DeleteAll());
     }
 }
