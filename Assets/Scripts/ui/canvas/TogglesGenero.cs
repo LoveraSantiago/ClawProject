@@ -42,7 +42,7 @@ public class TogglesGenero
     public void recuperarEstado()
     {
         int escolhaGarra = PlayerPrefsGarra.getEscolhaGarra();
-        Debug.Log("Escolha da garra " + escolhaGarra);
+        //Debug.Log("Escolha da garra " + escolhaGarra);
         if (escolhaGarra == 0)
         {
             togglesGeneroDto.ToggleRandom.isOn = true;
