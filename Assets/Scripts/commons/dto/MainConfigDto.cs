@@ -7,6 +7,10 @@ public class MainConfigDto
 {
     [SerializeField] private Button btnBack;
     [SerializeField] private Button btnReset;
+    [SerializeField] private Button btnCreditos;
+    [SerializeField] private Button btnFecharCreditos;
+    [Space(5)]
+    [SerializeField] private Animator animator;
     [Space(5)]
     [SerializeField] private TogglesGeneroDto togglesGeneroDto;    
     [Space(5)]
@@ -18,6 +22,9 @@ public class MainConfigDto
 
     public Button BtnBack { get { return btnBack; } }
     public Button BtnReset { get { return btnReset; } }
+    public Button BtnCreditos { get { return btnCreditos; } }
+    public Button BtnFecharCreditos { get { return btnFecharCreditos; } }
+    public Animator Animator { get { return animator; } }
 
     public TogglesGeneroDto TogglesGeneroDto { get { return togglesGeneroDto; } }   
 

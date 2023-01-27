@@ -22,6 +22,8 @@ public class ConfigScene : MonoBehaviour
         configurarBotaoReset();
         configurarSliderVolume(somManager);
         configurarBotaoVoltar(somManager);
+        configurarBotaoCreditos();
+        configurarBotaoSairCreditos();
         somManager.playSomBackground();
     }       
 
@@ -46,5 +48,21 @@ public class ConfigScene : MonoBehaviour
     private void configurarBotaoReset()
     {
         mainConfigDto.BtnReset.onClick.AddListener(() => PlayerPrefs.DeleteAll());
+    }
+
+    private void configurarBotaoCreditos()
+    {
+        mainConfigDto.BtnCreditos.onClick.AddListener(() =>
+        {
+            mainConfigDto.Animator.Play("creditos-abrir");
+        });
+    }
+
+    private void configurarBotaoSairCreditos()
+    {
+        mainConfigDto.BtnFecharCreditos.onClick.AddListener(() =>
+        {
+            mainConfigDto.Animator.Play("creditos-fechar");
+        });
     }
 }

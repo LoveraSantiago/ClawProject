@@ -392,13 +392,17 @@ MonoBehaviour:
     Santiago
     dos Santos Lovera
 
+    ---
+
 
     Artistas:
 
     Luan Alves Pires
 
-    Santiago dos Santos
-    Lovera
+    Santiago
+    dos Santos Lovera
+
+    ---
 
 
     Ferramentas:
@@ -409,23 +413,25 @@ MonoBehaviour:
 
     Blender
 
+    ---
 
-    Sons Baixados
-    FreeSound.org
+
+    Sons
+    Baixados FreeSound.org
 
     UI back sound - KieranKeegan
 
-    ClickGlass.wav - Divoljud
+    ClickGlass.wav
+    - Divoljud
 
-    Ethereal
-    Woosh.wav - newagesoup
+    Ethereal Woosh.wav - newagesoup
 
     success.wav - grunz
 
-    click_01-fast.wav - Qat
+    click_01-fast.wav
+    - Qat
 
-    Access
-    Denied - suntemple
+    Access Denied - suntemple
 
     UI_Cancel - unfa
 
@@ -472,20 +478,20 @@ MonoBehaviour:
 
     Sliding Clothes on Rail - _MC5_
 
-    Sliding Envelope.wav -
-    MTJohnson
+    Sliding Envelope.wav - MTJohnson
 
-    Beretta M9 slide release - vabadus
+    Beretta
+    M9 slide release - vabadus
 
     paper slide - pauliperez1999
 
-    Playing
-    Card Slide Right - el_boss
+    Playing Card
+    Slide Right - el_boss
 
     chair hydraulic.wav - tim.kahn
 
-    Receipt
-    Printer 01.wav - thepodcastdoctor
+    Receipt Printer
+    01.wav - thepodcastdoctor
 
     Servo Glitch 3.wav - Brett_Lavallee
 
@@ -501,20 +507,20 @@ MonoBehaviour:
 
     Square Wave Buzz - Seidhepriest
 
-    Short Crackle
-    04.wav - ironcross32
+    Short Crackle 04.wav
+    - ironcross32
 
     Decline Buzz/Beep - TannerSound
 
-    Shield Hit -
-    JustInvoke
+    Shield Hit - JustInvoke
 
-    uhhhhhhh.wav - dayvonjersen
+    uhhhhhhh.wav
+    - dayvonjersen
 
     Electric Shock 5 Hit - The-Sacha-Rush
 
-    Turning
-    the TV off - Cloud-10
+    Turning the TV
+    off - Cloud-10
 
     Poly800 Zap.aiff - blepjes
 
@@ -525,34 +531,34 @@ MonoBehaviour:
 
     rocket-whistle2.wav - ReadeOnly
 
-    Short Loud Whistle.wav -
-    kirmm
+    Short Loud Whistle.wav - kirmm
 
-    Public Domain Jump Sound - qubodup
+    Public
+    Domain Jump Sound - qubodup
 
     Jump.wav - MakoFox
 
-    Magic
-    chorus - punisherdan
+    Magic chorus - punisherdan
 
-    Tap 01 - rhodesmas
+    Tap
+    01 - rhodesmas
 
     Coins Purchase 4 - rhodesmas
 
-    Failure
-    01 - rhodesmas
+    Failure 01 - rhodesmas
 
-    Coins Purchase 02 - rhodesmas
+    Coins
+    Purchase 02 - rhodesmas
 
-    Slotting Foot into Oil
-    Radiator 2.wav - F.M.Audio
+    Slotting Foot into Oil Radiator 2.wav - F.M.Audio
 
-    Jazz Game Theme Loop.wav - Mrthenoronha
+    Jazz
+    Game Theme Loop.wav - Mrthenoronha
 
-    Powerup_05.wav
-    - MATRIXXX_
+    Powerup_05.wav - MATRIXXX_
 
-    Page Turn 2.mp3 - SilverIllusionist
+    Page
+    Turn 2.mp3 - SilverIllusionist
 
     paper - 1bob
 
@@ -564,15 +570,15 @@ MonoBehaviour:
     Success Fanfare
     Trumpets.mp3 - FunWithSound'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 16acb7c67a54cba4d8d2c7a50b6c2d31, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 16acb7c67a54cba4d8d2c7a50b6c2d31, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -794,7 +800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &286554075
 RectTransform:
   m_ObjectHideFlags: 0
@@ -807,8 +813,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 591813945}
   - {fileID: 1141981385}
+  - {fileID: 591813945}
   m_Father: {fileID: 1747550986}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -871,12 +877,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &286554080
 MonoBehaviour:
@@ -1201,6 +1207,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1338232063674505608, guid: e106d0372087da143ae291a459cca6b5, type: 3}
   m_PrefabInstance: {fileID: 421905435}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &421905438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1338232063674505610, guid: e106d0372087da143ae291a459cca6b5, type: 3}
+  m_PrefabInstance: {fileID: 421905435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421905437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &526966767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,6 +1517,7 @@ GameObject:
   - component: {fileID: 591813945}
   - component: {fileID: 591813947}
   - component: {fileID: 591813946}
+  - component: {fileID: 591813948}
   m_Layer: 5
   m_Name: icn-sair
   m_TagString: Untagged
@@ -1520,7 +1538,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 286554075}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1565,6 +1583,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591813944}
   m_CullTransparentMesh: 1
+--- !u!114 &591813948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591813944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 591813946}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &615110042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,7 +2558,7 @@ RectTransform:
   m_Children:
   - {fileID: 154314044}
   m_Father: {fileID: 286554075}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2516,10 +2578,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 154314044}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
-  m_Elasticity: 0.1
+  m_Elasticity: 0.05
   m_Inertia: 1
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 1
@@ -3302,7 +3364,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainConfigDto:
     btnBack: {fileID: 615110044}
-    btnReset: {fileID: 0}
+    btnReset: {fileID: 8810081097757307124}
+    btnCreditos: {fileID: 421905438}
+    btnFecharCreditos: {fileID: 591813948}
+    animator: {fileID: 1747550988}
     togglesGeneroDto:
       toggleMacho: {fileID: 1283231621}
       toggleFemea: {fileID: 1384317299}
@@ -4060,3 +4125,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1338232063674505608, guid: e106d0372087da143ae291a459cca6b5, type: 3}
   m_PrefabInstance: {fileID: 8810081097757307121}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8810081097757307124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1338232063674505610, guid: e106d0372087da143ae291a459cca6b5, type: 3}
+  m_PrefabInstance: {fileID: 8810081097757307121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810081097757307123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
