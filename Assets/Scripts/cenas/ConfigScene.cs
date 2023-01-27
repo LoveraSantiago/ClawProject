@@ -10,50 +10,65 @@ public class ConfigScene : MonoBehaviour
     {
         ContextoEstaticoUtils.configMainMono(this);
         PrefabLoading prefabLoading = mainConfigDto.PrefabLoading.GetComponent<PrefabLoading>();
+
         SomManagerConfig somManager = new SomManagerConfig(mainConfigDto.AudioConfigDto);
         prefabLoading.iniciarLoading(somManager, mainConfigDto.GosDesligar);
         ContextoEstaticoUtils.loading.fecharModal();
 
-        configurarToogles(somManager);
+        TogglesGenero togglesGenero = new TogglesGenero(mainConfigDto.TogglesGeneroDto);
+        togglesGenero.configurarToggles(somManager);
+        togglesGenero.recuperarEstado();
+
+        configurarBotaoReset(somManager);
+        configurarSliderVolume(somManager);
+        configurarBotaoVoltar(somManager);
+        configurarBotaoCreditos(somManager);
+        configurarBotaoSairCreditos(somManager);
+        somManager.playSomBackground();
+    }       
+
+    private void configurarBotaoVoltar(SomManagerConfig somManager)
+    {
         mainConfigDto.BtnBack.onClick.AddListener(() => {
                 somManager.playSomCliqueVoltar();
                 ContextoEstaticoUtils.loading.irParaMapScene();
             });
-        somManager.playSomBackground();
-    }   
-
-    private void configurarToogles(SomManagerConfig somManager)
+    }
+    
+    private void configurarSliderVolume(SomManagerConfig somManager)
     {
-        int escolhaGarra = PlayerPrefsGarra.getEscolhaGarra();
-        if (escolhaGarra == 0)
-        {
-            mainConfigDto.ToggleRandom.Select();
-        }
-        else if (escolhaGarra == 1)
-        {
-            mainConfigDto.ToggleMacho.Select();
-        }
-        else if (escolhaGarra == 2)
-        {
-            mainConfigDto.ToggleFemea.Select();
-        }
+        mainConfigDto.SliderVolume.value = PlayerPrefsVolume.recuperarVolume();
 
-        mainConfigDto.ToggleFemea.onValueChanged.AddListener((ativo) =>
-        {
-            somManager.playSomClique();
-            PlayerPrefsGarra.saveEscolhaGarraFemea();
+        mainConfigDto.SliderVolume.onValueChanged.AddListener((valor)=> {
+            PlayerPrefsVolume.salvarVolume(valor);
+            somManager.trocarVolume(valor);
         });
+    }
 
-        mainConfigDto.ToggleMacho.onValueChanged.AddListener((ativo) =>
+    private void configurarBotaoReset(SomManagerConfig somManager)
+    {
+        mainConfigDto.BtnReset.onClick.AddListener(() => 
         {
             somManager.playSomClique();
-            PlayerPrefsGarra.saveEscolhaGarraMacho();
+            PlayerPrefs.DeleteAll();
         });
+    }
 
-        mainConfigDto.ToggleRandom.onValueChanged.AddListener((ativo) =>
+    private void configurarBotaoCreditos(SomManagerConfig somManager)
+    {
+        mainConfigDto.BtnCreditos.onClick.AddListener(() =>
         {
             somManager.playSomClique();
-            PlayerPrefsGarra.saveEscolhaGarraRandom();
+            mainConfigDto.Animator.Play("creditos-abrir");
+        });
+    }
+
+    private void configurarBotaoSairCreditos(SomManagerConfig somManager)
+    {
+        mainConfigDto.BtnFecharCreditos.onClick.AddListener(() =>
+        {
+            somManager.playSomCliqueVoltar();
+            mainConfigDto.Animator.Play("creditos-fechar");
         });
     }
 }

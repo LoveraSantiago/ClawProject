@@ -2,16 +2,24 @@ using UnityEngine;
 
 public abstract class SomManager : SomLoading
 {
+    private float volume;
     private AudioDto audioDto;
     private AudioSource[] audiosSources;
 
     protected SomManager(AudioDto audioDto):
         this(audioDto, 0)
-    {        
+    {
+    }
+
+    public void trocarVolume(float volume) 
+    {
+        this.volume = volume;
+        getAudioSourceBackground().volume = audioDto.SomBackground.Volume * volume;        
     }
 
     protected SomManager(AudioDto audioDto, int qtdAudioSources)
     {
+        volume = PlayerPrefsVolume.recuperarVolume();
         this.audioDto = audioDto;
         audiosSources = new AudioSource[3 + qtdAudioSources];
         audiosSources[0] = audioDto.MainAudioSource;
@@ -32,7 +40,7 @@ public abstract class SomManager : SomLoading
     protected void audioPlay(AudioSource audioSource, AudioClipDto audioClipDto)
     {
         //Debug.Log("audioPlay " + audioClipDto.AudioClip.name);
-        audioSource.volume = audioClipDto.Volume;
+        audioSource.volume = audioClipDto.Volume * volume;
         audioSource.clip = audioClipDto.AudioClip;
         audioSource.loop = true;
         audioSource.Play();
@@ -41,7 +49,7 @@ public abstract class SomManager : SomLoading
     protected void audioPlayOneShot(AudioSource audioSource, AudioClipDto audioClipDto)
     {
         //Debug.Log("audioPlayOneShot " + audioClipDto.AudioClip.name);
-        audioSource.PlayOneShot(audioClipDto.AudioClip, audioClipDto.Volume);
+        audioSource.PlayOneShot(audioClipDto.AudioClip, audioClipDto.Volume * volume);
     }
 
     protected AudioSource getAudioSourceBackground()

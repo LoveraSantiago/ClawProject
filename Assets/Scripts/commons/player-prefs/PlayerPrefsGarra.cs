@@ -37,6 +37,7 @@ public class PlayerPrefsGarra
 
     private static void saveEscolhaTipoGarra(Genero genero)
     {
+        //Debug.Log("Salvando " + GeneroUtils.getIndiceDoGenero(genero));
         PlayerPrefs.SetInt(CHAVE_GARRA, GeneroUtils.getIndiceDoGenero(genero));
     }
 }
