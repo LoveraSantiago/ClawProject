@@ -9,7 +9,9 @@ public class PowerUpInfoDto
 
     public bool isEstadoEmAndamento { get 
         { 
-            return estadoAtual == PowerUpEnums.ESTADO.ALVO1_SELECIONADO || estadoAtual == PowerUpEnums.ESTADO.ALVO2_SELECIONADO; 
+            return estadoAtual == PowerUpEnums.ESTADO.ALVO1_SELECIONADO || 
+                   estadoAtual == PowerUpEnums.ESTADO.ALVO2_SELECIONADO ||
+                   estadoAtual == PowerUpEnums.ESTADO.ALVO3_SELECIONADO; 
         } }
 
     public bool isEstadoFinalizar    { get { return estadoAtual == PowerUpEnums.ESTADO.FINALIZAR; } }

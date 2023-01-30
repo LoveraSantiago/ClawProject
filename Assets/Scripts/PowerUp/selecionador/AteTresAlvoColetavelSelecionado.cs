@@ -45,10 +45,11 @@ public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<TrioDeCo
             yield return selecionadorDeAlvos.selecionarAlvo(inputGame, this);
             coletavel1 = selecionadorDeAlvos.goSelecionado;
             coletavel1.ligarAnimacaoMiraSelecionado();
-            miraSelecionadoOnColetavel.coletavelSelecionado(3, coletavel1);
         }
 
         desligarMiras();
+        miraSelecionadoOnColetavel.coletavelSelecionado(3, coletavel1);
+        yield return null;
 
         TrioDeColetaveis trioDeColetaveis = new TrioDeColetaveis(coletavel1, coletavel2, coletavel3);
         Coroutine coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(trioDeColetaveis));

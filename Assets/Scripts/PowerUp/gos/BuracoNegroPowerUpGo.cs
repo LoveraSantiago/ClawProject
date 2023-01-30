@@ -133,6 +133,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
     //***** IMPLEMENTACAO TrocaDuplaPowerUpGo INICIO *****
     public void coletavelSelecionado(int ordem, Coletavel coletavel)
     {
+        Debug.Log("Ordem " + ordem);
         if (ordem == 1)
         {
             powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO1_SELECIONADO);
