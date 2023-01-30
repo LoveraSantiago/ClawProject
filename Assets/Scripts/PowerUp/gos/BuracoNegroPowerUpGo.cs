@@ -34,6 +34,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
     public override void iniciarPup()
     {
         ligar();
+        somPowerUp.iniciarSomBuracoNegro();
 
         int totalDesocupados = 3 - informacaoDisplayColetado.getQtdDisplaysOcupados();
         if(totalDesocupados == 0)
@@ -53,6 +54,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         atraido1.desligar();
         atraido2.desligar();
         atraido3.desligar();
+        somPowerUp.pararSomBuracoNegro();
 
         desligar();
         delayTresOcupados = false;

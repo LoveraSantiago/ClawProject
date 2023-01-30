@@ -10,4 +10,7 @@ public interface SomPowerUp
     void iniciarSomAsa();
     void pararSomAsa();
 
+    void iniciarSomBuracoNegro();
+
+    void pararSomBuracoNegro();
 }

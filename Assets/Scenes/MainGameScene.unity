@@ -21837,7 +21837,7 @@ MonoBehaviour:
         volume: 1
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
       somBackgroundPowerUp:
-        volume: 1
+        volume: 0.8
         audioClip: {fileID: 8300000, guid: 6ea00a2914e920246bee6a6c827a6eaf, type: 3}
       somCombinacaoOK:
         volume: 1
@@ -21905,6 +21905,9 @@ MonoBehaviour:
       somAsa:
         volume: 0.5
         audioClip: {fileID: 8300000, guid: 71dc05b4da8a4c349a85766befdea1d5, type: 3}
+      somBuracoNegro:
+        volume: 0.9
+        audioClip: {fileID: 8300000, guid: cc45e91c28ea4e04088f1538df7ca284, type: 3}
       somBackgroundCacaNiquel:
         volume: 0.5
         audioClip: {fileID: 8300000, guid: 1a749cb0629a7ea4ab5c4e90b40c5668, type: 3}
