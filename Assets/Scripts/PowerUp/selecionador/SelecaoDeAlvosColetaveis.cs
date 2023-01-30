@@ -15,7 +15,7 @@ public abstract class SelecaoDeAlvosColetaveis<T> : SelecaoDeAlvos<T>,
         {
             return coletavel;
         }
-        else if(coletavel.isLivre())
+        else if(coletavel != null && coletavel.isLivre())
         {
             return coletavel;
         }

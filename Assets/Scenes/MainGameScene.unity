@@ -10792,7 +10792,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.47368422, y: 1}
+    m_SensorSize: {x: 0.5622189, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -21754,7 +21754,7 @@ MonoBehaviour:
         incrementoHaltura: 0.9
         asaMiniGo: {fileID: 4127936681606313068, guid: 3d5bbd7b9b7d372408b0b38de7933937, type: 3}
       buracoNegroDto:
-        buracoNegroGo: {fileID: 6487671133722059723, guid: a6d0d3b2d60d76b479a70c8d08650e90, type: 3}
+        buracoNegroGo: {fileID: 6134466145752774681, guid: bbdae4f57395f8d449318d93c38b7cc0, type: 3}
       rollBackDto:
         delayReset: 1.5
       molaDto:
@@ -21837,7 +21837,7 @@ MonoBehaviour:
         volume: 1
         audioClip: {fileID: 8300000, guid: 014dc5a615e98324babcfca3589ac46a, type: 3}
       somBackgroundPowerUp:
-        volume: 1
+        volume: 0.8
         audioClip: {fileID: 8300000, guid: 6ea00a2914e920246bee6a6c827a6eaf, type: 3}
       somCombinacaoOK:
         volume: 1
@@ -21905,6 +21905,9 @@ MonoBehaviour:
       somAsa:
         volume: 0.5
         audioClip: {fileID: 8300000, guid: 71dc05b4da8a4c349a85766befdea1d5, type: 3}
+      somBuracoNegro:
+        volume: 0.9
+        audioClip: {fileID: 8300000, guid: cc45e91c28ea4e04088f1538df7ca284, type: 3}
       somBackgroundCacaNiquel:
         volume: 0.5
         audioClip: {fileID: 8300000, guid: 1a749cb0629a7ea4ab5c4e90b40c5668, type: 3}
@@ -69703,7 +69706,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.47368422, y: 1}
+    m_SensorSize: {x: 0.5622189, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -132299,7 +132302,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.47368422, y: 1}
+    m_SensorSize: {x: 0.5622189, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

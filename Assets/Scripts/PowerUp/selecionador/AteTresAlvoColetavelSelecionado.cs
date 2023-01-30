@@ -4,11 +4,14 @@ using UnityEngine;
 public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<TrioDeColetaveis>
 {
     private int qtdDeSelecionados;
+    private MiraSelecionadoOnColetavel miraSelecionadoOnColetavel;
 
-    public AteTresAlvoColetavelSelecionado(int qtdDeSelecionados, bool filtrarGaiolas)
+    public AteTresAlvoColetavelSelecionado(
+        int qtdDeSelecionados, bool filtrarGaiolas, MiraSelecionadoOnColetavel miraSelecionadoOnColetavel)
         :base(filtrarGaiolas)
     {
         this.qtdDeSelecionados = qtdDeSelecionados;
+        this.miraSelecionadoOnColetavel = miraSelecionadoOnColetavel;
     }
 
     public override IEnumerator onSelecionar(
@@ -26,6 +29,7 @@ public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<TrioDeCo
             yield return selecionadorDeAlvos.selecionarAlvo(inputGame, this);
             coletavel3 = selecionadorDeAlvos.goSelecionado;
             coletavel3.ligarAnimacaoMiraSelecionado();
+            miraSelecionadoOnColetavel.coletavelSelecionado(1, coletavel3);
         }
 
         if(qtdDeSelecionados >= 2)
@@ -33,6 +37,7 @@ public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<TrioDeCo
             yield return selecionadorDeAlvos.selecionarAlvo(inputGame, this);
             coletavel2 = selecionadorDeAlvos.goSelecionado;
             coletavel2.ligarAnimacaoMiraSelecionado();
+            miraSelecionadoOnColetavel.coletavelSelecionado(2, coletavel2);
         }
 
         if (qtdDeSelecionados >= 1)
@@ -43,6 +48,8 @@ public class AteTresAlvoColetavelSelecionado : SelecaoDeAlvosColetaveis<TrioDeCo
         }
 
         desligarMiras();
+        miraSelecionadoOnColetavel.coletavelSelecionado(3, coletavel1);
+        yield return null;
 
         TrioDeColetaveis trioDeColetaveis = new TrioDeColetaveis(coletavel1, coletavel2, coletavel3);
         Coroutine coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineOnSelecionado.transformar(trioDeColetaveis));

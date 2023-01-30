@@ -159,6 +159,16 @@ public class SomManagerGame : SomManager,
     {
         getAudioSourcePowerUp().Stop();
     }
+
+    public void iniciarSomBuracoNegro()
+    {
+        audioPlay(getAudioSourcePowerUp(), audioDto.SomBuracoNegro);
+    }
+
+    public void pararSomBuracoNegro()
+    {
+        pararSomAsa();
+    }
     //***** IMPLEMENTACAO INTERFACE SOMPOWERUP FIM *****
 
     //***** IMPLEMENTACAO INTERFACE SOMMODAIS INICIO *****

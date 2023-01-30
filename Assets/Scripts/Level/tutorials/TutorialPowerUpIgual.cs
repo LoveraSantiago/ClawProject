@@ -48,13 +48,13 @@ public class TutorialPowerUpIgual : TutorialPowerUp
 
     private void prepararTutorialInicioPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Selecione o 1º coletavel \npara ser igualado.";
+        mainDto.TutorialDto.LblTexto.text = "Selecione o 1º coletavel\npara ser igualado.";
         animacaoTutorial.playParteTextoBaixo();
     }
     
     private void prepararTutorialColetavel1Acionado()
     {
-        mainDto.TutorialDto.LblTexto.text = "Selecione o 2º coletavel \npara igualar.\n";
+        mainDto.TutorialDto.LblTexto.text = "Selecione o 2º coletavel\npara igualar.\n";
         animacaoTutorial.playParteTextoBaixo();
     }
     

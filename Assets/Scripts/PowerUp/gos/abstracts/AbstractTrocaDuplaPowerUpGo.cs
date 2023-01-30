@@ -28,15 +28,17 @@ public abstract class AbstractTrocaDuplaPowerUpGo : AbstractTrocaPowerUpGo,
         }
     }
     //***** IMPLEMENTACAO TrocaDuplaPowerUpGo INICIO *****
-    public void coletavel1Selecionado(Coletavel coletavel)
+    public void coletavelSelecionado(int ordem, Coletavel coletavel)
     {
-        powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO1_SELECIONADO);
-    }
-
-    public void coletavel2Selecionado(Coletavel coletavel)
-    {
-        powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO2_SELECIONADO);
-    }
+        if(ordem == 1)
+        {
+            powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO1_SELECIONADO);
+        }
+        else if(ordem == 2)
+        {
+            powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO2_SELECIONADO);
+        }
+    }    
     //***** IMPLEMENTACAO TrocaDuplaPowerUpGo FIM *****  
 
     //***** IMPLEMENTACAO Transformador<DuplaDeColetaveisDto, IEnumerator> INICIO *****
