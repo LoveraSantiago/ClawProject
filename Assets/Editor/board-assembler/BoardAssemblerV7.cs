@@ -28,7 +28,7 @@ public class BoardAssemblerV7 : EditorWindow
         // The style will be applied to the VisualElement and all of its children.
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/board-assembler/BoardAssemblerV7.uss");
                 
-        GameObject goPrefabsLevelsDto = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelsPrefabDto.prefab");        
+        GameObject goPrefabsLevelsDto = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/levels/LevelsPrefabDto.prefab");        
         PrefabLevelsDto prefabLevelsDto = goPrefabsLevelsDto.GetComponent<PrefabLevelsDto>();
 
         HelperMapaEntidade.configurar(prefabLevelsDto);
