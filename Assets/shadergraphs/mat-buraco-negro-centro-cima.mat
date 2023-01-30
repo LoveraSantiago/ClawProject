@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat-buraco-negro-centro
+  m_Name: mat-buraco-negro-centro-cima
   m_Shader: {fileID: -6465566751694194690, guid: a390fea9095f2f042938f155a1439fe6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -50,6 +50,38 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_111c07382afc4bcab7ea1d8d73199f83_Out_0:
+        m_Texture: {fileID: 2800000, guid: 65fb81ee3c1e22a4a941e05f0124cba1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_1826f7de3a7047849faade395807b46b_Out_0:
+        m_Texture: {fileID: 2800000, guid: bf427e6c78811e34da4819814ceaebe1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_3a64e8c0ceac44fca3bac4c5985431e8_Out_0:
+        m_Texture: {fileID: 2800000, guid: 1352a238d69d1254784cbd827711c394, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_3e7c6364aaea425b8df50654d51d5fda_Out_0:
+        m_Texture: {fileID: 2800000, guid: 1352a238d69d1254784cbd827711c394, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_5e459b88fdf14520b8605c4af7ede6d8_Out_0:
+        m_Texture: {fileID: 2800000, guid: 65fb81ee3c1e22a4a941e05f0124cba1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_a19bec53c1d249dda309a7cb77a5db2d_Out_0:
+        m_Texture: {fileID: 2800000, guid: 4793b833ea4e2d54bb4283000874db8f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_eb1c34056b9742e881d5b88c7dfb9dc2_Out_0:
+        m_Texture: {fileID: 2800000, guid: bf427e6c78811e34da4819814ceaebe1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_f9413ceed46d4c879e7feef105c1a4b2_Out_0:
+        m_Texture: {fileID: 2800000, guid: 4793b833ea4e2d54bb4283000874db8f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
