@@ -16,7 +16,7 @@ public class PowerUpEnums
     public enum ESTADO 
     { 
         INICIO, PREFINALIZAR, FINALIZAR, EXPIRADO,
-        ALVO1_SELECIONADO, ALVO2_SELECIONADO
+        ALVO1_SELECIONADO, ALVO2_SELECIONADO, ALVO3_SELECIONADO
     }
 
     public class FAMILIA

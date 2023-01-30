@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
+                                    MiraSelecionadoOnColetavel,
                                     Transformador<TrioDeColetaveis, IEnumerator>
 {
     private bool delayTresOcupados;
@@ -43,7 +44,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
 
         HelperColetaveisInGame.ligarMirasNosColetaveis(true);
 
-        tresAlvosSelecionados = new AteTresAlvoColetavelSelecionado(totalDesocupados, true);
+        tresAlvosSelecionados = new AteTresAlvoColetavelSelecionado(totalDesocupados, true, this);
         coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(tresAlvosSelecionados.onSelecionar(inputGame, this));
     }
 
@@ -129,6 +130,24 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
             coletavelSelecionado.desligar();
         }
     }
+    //***** IMPLEMENTACAO TrocaDuplaPowerUpGo INICIO *****
+    public void coletavelSelecionado(int ordem, Coletavel coletavel)
+    {
+        if (ordem == 1)
+        {
+            powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO1_SELECIONADO);
+        }
+        else if (ordem == 2)
+        {
+            powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO2_SELECIONADO);
+        }
+        else if(ordem == 3)
+        {
+            powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO3_SELECIONADO);
+        }
+    }
+    //***** IMPLEMENTACAO TrocaDuplaPowerUpGo FIM *****  
+
 
     public override void timeout()
     {
