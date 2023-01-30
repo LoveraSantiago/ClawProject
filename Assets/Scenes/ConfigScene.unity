@@ -581,7 +581,9 @@ MonoBehaviour:
     collide.wav.wav - deleted_user_13668154
 
     Success Fanfare
-    Trumpets.mp3 - FunWithSound'
+    Trumpets.mp3 - FunWithSound
+
+    Strange_Energy.wav - MATRIXXX_'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16acb7c67a54cba4d8d2c7a50b6c2d31, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 16acb7c67a54cba4d8d2c7a50b6c2d31, type: 2}
@@ -590,7 +592,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -608,8 +610,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 76
+  m_fontSizeBase: 76
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -813,7 +815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &286554075
 RectTransform:
   m_ObjectHideFlags: 0
