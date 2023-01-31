@@ -2571,7 +2571,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1145818209}
   - component: {fileID: 1145818211}
-  - component: {fileID: 1145818212}
   m_Layer: 5
   m_Name: main-mapa
   m_TagString: Untagged
@@ -2622,26 +2621,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145818208}
   m_CullTransparentMesh: 1
---- !u!95 &1145818212
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145818208}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 43a4c3dee91ea0842919331121af47d4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1201691975
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,6 +3539,7 @@ GameObject:
   - component: {fileID: 1360404544}
   - component: {fileID: 1360404543}
   - component: {fileID: 1360404542}
+  - component: {fileID: 1360404547}
   m_Layer: 5
   m_Name: main-canvas
   m_TagString: Untagged
@@ -3701,7 +3681,7 @@ MonoBehaviour:
       delayInicioBaloes: 0.3
       lblJorney: {fileID: 1261413183}
       lblTitle: {fileID: 944140}
-      animatorMainMapa: {fileID: 1145818212}
+      animatorMainMapa: {fileID: 1360404547}
       imgMapa: {fileID: 806134968}
       matBackground: {fileID: 2100000, guid: 703357eefd164db46a4770bf5f908f9f, type: 2}
       baloesLevels:
@@ -3874,6 +3854,26 @@ MonoBehaviour:
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
     prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
+--- !u!95 &1360404547
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360404541}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 43a4c3dee91ea0842919331121af47d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1393420355 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8651896912941709733, guid: 509e21522e06b7445bc8d965d554c05e, type: 3}
