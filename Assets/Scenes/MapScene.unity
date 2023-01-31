@@ -3212,6 +3212,14 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.42745098
       objectReference: {fileID: 0}
+    - target: {fileID: 7590549816864591554, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590549816864591554, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7590549816884906465, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
       propertyPath: m_Name
       value: timer-ficha-bronze
@@ -6252,6 +6260,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.85882354
       objectReference: {fileID: 0}
+    - target: {fileID: 7590549816864591554, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590549816864591554, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7590549816884906465, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
       propertyPath: m_Name
       value: timer-ficha-prata
@@ -7129,6 +7145,18 @@ PrefabInstance:
     - target: {fileID: 7590549816797380793, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
       propertyPath: m_Color.g
       value: 0.9647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590549816864591554, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590549816864591554, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590549816864591581, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7590549816884906465, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
       propertyPath: m_Name
