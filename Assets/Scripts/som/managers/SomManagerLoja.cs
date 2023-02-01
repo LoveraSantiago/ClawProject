@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class SomManagerLoja : SomManager
+public class SomManagerLoja : SomManager,
+                              SomTimerFicha
 {
     private AudioLojaDto audioDto;
 
@@ -24,4 +25,8 @@ public class SomManagerLoja : SomManager
     {
         return getAudioSource(1);
     }
+
+    //***** IMPLEMENTACAO SOMTIMERFICHA INICIO *****
+    public void playSomCliqueIrParaLojaScene(){}
+    //***** IMPLEMENTACAO SOMTIMERFICHA FIM *****
 }

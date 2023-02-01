@@ -6,6 +6,8 @@ using UnityEngine.UI;
 [System.Serializable]
 public class MainLojaDto 
 {
+    [SerializeField] private TimerFichaDto[] timerFichaDto = new TimerFichaDto[3];
+    [Space(5)]
     [SerializeField] private Button btnVoltar;
     [Space(5)]
     [SerializeField] private TextMeshProUGUI lblQtdFichasOuro;
@@ -22,8 +24,8 @@ public class MainLojaDto
     [SerializeField] private GameObject prefabLoading;
     [SerializeField] private GameObject[] gosDesligar;
 
+    public TimerFichaDto[] TimerFichaDto { get { return timerFichaDto; } }
     public Button BtnVoltar { get { return btnVoltar; } }
-
     public TextMeshProUGUI LblQtdFichasOuro { get { return lblQtdFichasOuro; } }
     public TextMeshProUGUI LblQtdFichasPrata { get { return lblQtdFichasPrata; } }
     public TextMeshProUGUI LblQtdFichasBronze { get { return lblQtdFichasBronze; } }

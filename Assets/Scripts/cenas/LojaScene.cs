@@ -3,7 +3,8 @@ using UnityEngine;
 #pragma warning disable 0649
 public class LojaScene : MonoBehaviour
 {
-    [SerializeField] private MainLojaDto mainLojaDto;   
+    [SerializeField] private MainLojaDto mainLojaDto;
+    private AllTimersFichas allTimersFichas;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,13 @@ public class LojaScene : MonoBehaviour
         ContextoEstaticoUtils.loading.fecharModal();
         configurarBotoes(somManager);
 
+        allTimersFichas = new AllTimersFichas(mainLojaDto.TimerFichaDto, somManager);
         somManager.playSomBackground();
+    }
+
+    private void Update()
+    {
+        allTimersFichas.update();
     }
 
     private void configurarBotoes(SomManagerLoja somManager)
