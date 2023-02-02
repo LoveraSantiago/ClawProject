@@ -19,4 +19,19 @@ public class AllTimersFichas
         timerFichaPrata.update();
         timerFichaBronze.update();
     }
+
+    public void ganharFichasDeOuro(int qtdFichas)
+    {
+        timerFichaOuro.ganharFichas(qtdFichas);
+    }
+    
+    public void ganharFichasDePrata(int qtdFichas)
+    {
+        timerFichaPrata.ganharFichas(qtdFichas);
+    }
+    
+    public void ganharFichasDeBronze(int qtdFichas)
+    {
+        timerFichaBronze.ganharFichas(qtdFichas);
+    }
 }

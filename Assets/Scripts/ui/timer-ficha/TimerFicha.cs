@@ -23,9 +23,14 @@ public class TimerFicha : Executor
 
     public void execute()
     {
-        PlayerPrefsFichas.ganharFicha(ficha, 1);
-        recontarFichas();
+        ganharFichas(1);        
     }
+
+    public void ganharFichas(int qtdFichas)
+    {
+        PlayerPrefsFichas.ganharFicha(ficha, qtdFichas);
+        recontarFichas();
+    }    
 
     private void setupDeFichas()
     {

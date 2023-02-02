@@ -32,39 +32,27 @@ public class LojaScene : MonoBehaviour
                 ContextoEstaticoUtils.loading.irParaMapScene();
             });
 
-        mainLojaDto.LblQtdFichasOuro.text   = PlayerPrefsFichas.getQtdFichas(Ficha.OURO).ToString();
-        mainLojaDto.LblQtdFichasPrata.text  = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
-        mainLojaDto.LblQtdFichasBronze.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
-
         mainLojaDto.BtnOuro.onClick.AddListener(()=> {
             somManager.playSomClique();
-            PlayerPrefsFichas.comprarFicha(Ficha.OURO, 1);
-            mainLojaDto.LblQtdFichasOuro.text = PlayerPrefsFichas.getQtdFichas(Ficha.OURO).ToString();
+            allTimersFichas.ganharFichasDeOuro(2);            
         });
 
         mainLojaDto.BtnPrata.onClick.AddListener(() => {
-            somManager.playSomClique();
-            PlayerPrefsFichas.comprarFicha(Ficha.PRATA, 1);
-            mainLojaDto.LblQtdFichasPrata.text = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
+            somManager.playSomClique();            
+            allTimersFichas.ganharFichasDePrata(4);            
         });
 
         mainLojaDto.BtnBronze.onClick.AddListener(() => {
             somManager.playSomClique();
-            PlayerPrefsFichas.comprarFicha(Ficha.BRONZE, 1);
-            mainLojaDto.LblQtdFichasBronze.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
+            allTimersFichas.ganharFichasDeBronze(6);            
         });
 
         mainLojaDto.BtnAssinatura.onClick.AddListener(() =>
         {
-            somManager.playSomClique();
-            PlayerPrefsFichas.comprarFicha(Ficha.OURO, 10);
-            mainLojaDto.LblQtdFichasOuro.text = PlayerPrefsFichas.getQtdFichas(Ficha.OURO).ToString();
-
-            PlayerPrefsFichas.comprarFicha(Ficha.PRATA, 20);
-            mainLojaDto.LblQtdFichasPrata.text = PlayerPrefsFichas.getQtdFichas(Ficha.PRATA).ToString();
-
-            PlayerPrefsFichas.comprarFicha(Ficha.BRONZE, 30);
-            mainLojaDto.LblQtdFichasBronze.text = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE).ToString();
+            somManager.playSomClique();            
+            allTimersFichas.ganharFichasDeOuro(1);
+            allTimersFichas.ganharFichasDePrata(2);
+            allTimersFichas.ganharFichasDeBronze(3);
         });
     }
 }
