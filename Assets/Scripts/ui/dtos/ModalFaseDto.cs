@@ -16,6 +16,7 @@ public class ModalFaseDto
     [Space(3)]
     [SerializeField] private Button btnFechar;
     [SerializeField] private Button btnLevel;
+    [SerializeField] private Button btnFree;
     [Space(3)]
     [SerializeField] private LinhasChallengeDto linhasChallenge;
         
@@ -30,6 +31,7 @@ public class ModalFaseDto
 
     public Button BtnFechar { get { return btnFechar; } }
     public Button BtnLevel { get { return btnLevel; } }
+    public Button BtnFree { get { return btnFree; } }
         
     public LinhasChallengeDto LinhasChallenges { get { return linhasChallenge; } }
 }

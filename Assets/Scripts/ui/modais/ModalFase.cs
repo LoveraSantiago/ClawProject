@@ -14,6 +14,7 @@ public class ModalFase
         this.modalFaseDto = modalFaseDto;
         modalFaseDto.BtnLevel.onClick.AddListener(()=> irParaCenaGame(somMap));
         modalFaseDto.BtnFechar.onClick.AddListener(() => desligar(somMap));
+        modalFaseDto.BtnFree.onClick.AddListener(() => liberarLevel());
         navegacaDeColetaveis = new NavegacaoDeArray<ColetavelEntidade>();
         linhasChallenge = new LinhasChallenge(modalFaseDto.LinhasChallenges.LinhaChallenges);
     }
@@ -44,6 +45,13 @@ public class ModalFase
         PlayerPrefsFichas.consumirFicha(Ficha.PRATA, 1);
         somMap.playSomStart();
         ContextoEstaticoUtils.loading.irParaGameCena();
+        modalFaseDto.Animator.Play(ANIM_FECHAR);
+    }
+
+    private void liberarLevel()
+    {
+        ContextoEstaticoUtils.level.levelConcluido("10:00", 10, 7, true);
+        ContextoEstaticoUtils.loading.irParaMapScene();
         modalFaseDto.Animator.Play(ANIM_FECHAR);
     }
 
