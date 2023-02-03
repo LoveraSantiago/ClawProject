@@ -15,6 +15,7 @@ public class MainConfigDto
     [SerializeField] private TogglesGeneroDto togglesGeneroDto;    
     [Space(5)]
     [SerializeField] private Slider sliderVolume;
+    [SerializeField] private Toggle toggleSomBackground;
     [SerializeField] private AudioConfigDto audioConfigDto;
     [Space(5)]
     [SerializeField] private GameObject prefabLoading;
@@ -29,6 +30,8 @@ public class MainConfigDto
     public TogglesGeneroDto TogglesGeneroDto { get { return togglesGeneroDto; } }   
 
     public Slider SliderVolume { get { return sliderVolume; } }
+
+    public Toggle ToggleSomBackground { get { return toggleSomBackground; } }
     public AudioConfigDto AudioConfigDto { get { return audioConfigDto; } }
 
     public GameObject PrefabLoading { get { return prefabLoading; } }

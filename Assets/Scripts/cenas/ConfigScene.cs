@@ -24,6 +24,7 @@ public class ConfigScene : MonoBehaviour
         configurarBotaoVoltar(somManager);
         configurarBotaoCreditos(somManager);
         configurarBotaoSairCreditos(somManager);
+        configurarToggleSomBackground(somManager);
         somManager.playSomBackground();
     }       
 
@@ -42,6 +43,18 @@ public class ConfigScene : MonoBehaviour
         mainConfigDto.SliderVolume.onValueChanged.AddListener((valor)=> {
             PlayerPrefsVolume.salvarVolume(valor);
             somManager.trocarVolume(valor);
+        });
+    }
+
+    private void configurarToggleSomBackground(SomManagerConfig somManager)
+    {
+        bool estado = PlayerPrefsVolume.recuperarEstadoSomBackground();
+        mainConfigDto.ToggleSomBackground.isOn = estado;
+
+        mainConfigDto.ToggleSomBackground.onValueChanged.AddListener((valor) =>
+        {
+            somManager.playSomClique();
+            PlayerPrefsVolume.salvarEstadoSomBackground(valor);
         });
     }
 
