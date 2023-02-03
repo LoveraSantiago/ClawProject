@@ -43,7 +43,10 @@ public class SomManagerMap : SomManager,
 
     public override void playSomBackground()
     {
-        audioPlay(getAudioSourceBackground(), audioDto.SomBackground);
+        if (isSomBackgroundLigado)
+        {
+            audioPlay(getAudioSourceBackground(), audioDto.SomBackground);
+        }
     }
 
     public void playSomUiBaloesLevel()

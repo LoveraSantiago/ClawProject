@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class SomManager : SomLoading
 {
+    protected bool isSomBackgroundLigado;
     private float volume;
     private AudioDto audioDto;
     private AudioSource[] audiosSources;
@@ -17,8 +18,22 @@ public abstract class SomManager : SomLoading
         getAudioSourceBackground().volume = audioDto.SomBackground.Volume * volume;        
     }
 
+    public void trocarIsSomBackgroundLigado(bool estado)
+    {
+        isSomBackgroundLigado = estado;
+        if (estado)
+        {            
+            playSomBackground();            
+        }
+        else
+        {            
+            stopSomBackground();
+        }
+    }
+
     protected SomManager(AudioDto audioDto, int qtdAudioSources)
     {
+        isSomBackgroundLigado = PlayerPrefsVolume.recuperarEstadoSomBackground();
         volume = PlayerPrefsVolume.recuperarVolume();
         this.audioDto = audioDto;
         audiosSources = new AudioSource[3 + qtdAudioSources];
@@ -34,7 +49,10 @@ public abstract class SomManager : SomLoading
 
     public virtual void playSomBackground()
     {
-        audioPlay(getAudioSourceBackground(), audioDto.SomBackground);
+        if (isSomBackgroundLigado)
+        {
+            audioPlay(getAudioSourceBackground(), audioDto.SomBackground);
+        }
     }
 
     protected void audioPlay(AudioSource audioSource, AudioClipDto audioClipDto)
