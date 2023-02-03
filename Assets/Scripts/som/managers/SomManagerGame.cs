@@ -127,7 +127,10 @@ public class SomManagerGame : SomManager,
 
     public void playSomBackgroundPowerUp()
     {
-        audioPlay(getAudioSourceBackground(), audioDto.SomBackgroundPowerUp);
+        if (isSomBackgroundLigado)
+        {
+            audioPlay(getAudioSourceBackground(), audioDto.SomBackgroundPowerUp);
+        }
     }
 
     public void playSomExplosao()
@@ -196,7 +199,10 @@ public class SomManagerGame : SomManager,
     //***** IMPLEMENTACAO INTERFACE SomCacaNiquel INICIO *****
     public void playSomBackgroundCacaNiquel()
     {
-        audioPlay(getAudioSourceBackground(), audioDto.SomBackgroundCacaNiquel);
+        if (isSomBackgroundLigado)
+        {
+            audioPlay(getAudioSourceBackground(), audioDto.SomBackgroundCacaNiquel);
+        }
     }
 
     public void iniciarSomSlotsMovimento()

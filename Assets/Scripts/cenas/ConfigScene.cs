@@ -52,9 +52,10 @@ public class ConfigScene : MonoBehaviour
         mainConfigDto.ToggleSomBackground.isOn = estado;
 
         mainConfigDto.ToggleSomBackground.onValueChanged.AddListener((valor) =>
-        {
+        {            
             somManager.playSomClique();
             PlayerPrefsVolume.salvarEstadoSomBackground(valor);
+            somManager.trocarIsSomBackgroundLigado(valor);
         });
     }
 
