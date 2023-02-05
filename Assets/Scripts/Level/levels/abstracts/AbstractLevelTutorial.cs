@@ -26,7 +26,7 @@ public abstract class AbstractLevelTutorial : AbstractLevel
         InformacoesColetadoDto[] informacoesColetados = new InformacoesColetadoDto[indicesColetados.Length];
         for(int contador = 0; contador < indicesColetados.Length; contador++)
         {
-            ColetavelEntidade coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(0);
+            ColetavelEntidade coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(indicesColetados[contador]);
             Sprite spriteColetado = coletavelEntidade.sprite;
 
             InformacoesColetadoDto infoColetado = new InformacoesColetadoDto();
