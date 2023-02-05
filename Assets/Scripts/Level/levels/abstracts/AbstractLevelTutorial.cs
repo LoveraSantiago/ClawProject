@@ -31,6 +31,8 @@ public abstract class AbstractLevelTutorial : AbstractLevel
 
             InformacoesColetadoDto infoColetado = new InformacoesColetadoDto();
             infoColetado.addInfosDisplayColetados(spriteColetado, false);
+            infoColetado.addInfoFimDeJogo(InformacoesFimDeJogoDto.ofFimColetados(false));
+            informacoesColetados[contador] = infoColetado;
         }
         return informacoesColetados;
     }
