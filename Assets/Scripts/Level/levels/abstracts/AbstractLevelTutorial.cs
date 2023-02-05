@@ -30,8 +30,7 @@ public abstract class AbstractLevelTutorial : AbstractLevel
             Sprite spriteColetado = coletavelEntidade.sprite;
 
             InformacoesColetadoDto infoColetado = new InformacoesColetadoDto();
-            infoColetado.addInfosDisplayColetados(spriteColetado, false);
-            infoColetado.addInfoFimDeJogo(InformacoesFimDeJogoDto.ofFimColetados(false));
+            infoColetado.addInfosDisplayColetados(spriteColetado, false);            
             informacoesColetados[contador] = infoColetado;
         }
         return informacoesColetados;

@@ -27,7 +27,7 @@ public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento,
             InformacoesColetadoDto[] informacoesColetados = LevelUtils.getInformacoesColetadosDto();
             for(int contador = 0; contador < informacoesColetados.Length; contador++)
             {
-                mostrarColetadoNoDisplay(informacoesColetados[contador]);
+                mostrarColetadoNoDisplay(informacoesColetados[contador], contador);
             }
         }
     }
@@ -43,6 +43,11 @@ public class DisplaysDeColetados : AcaoCacaNiquel.ProdutorEvento,
     public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento)
     {
         modoColetados.mostrarColetadoNoDisplay(evento);
+    }
+    
+    private void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, int indiceDisplay)
+    {
+        modoColetados.mostrarColetadoNoDisplay(evento, indiceDisplay);
     }
 
     public void processarPowerUp(PowerUpInfoDto evento)
