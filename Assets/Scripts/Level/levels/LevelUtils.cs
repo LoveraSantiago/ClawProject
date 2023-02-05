@@ -155,7 +155,12 @@ public class LevelUtils
         {
             return null;
         }
-    }   
+    }
+
+    public static InformacoesColetadoDto[] getInformacoesColetadosDto()
+    {
+        return ((AbstractLevelTutorial)ContextoEstaticoUtils.level).getInformacoesColetadosDto();
+    }
 
     public static AbstractMainGameEventosTutorial getMainGameEventosTutorial(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
