@@ -36,6 +36,22 @@ public abstract class AbstractLevelTutorial : AbstractLevel
         return informacoesColetados;
     }
 
+    public Coletavel[] getColetaveisColetados()
+    {
+        int[] indicesColetados = getColetados();
+        Coletavel[] coletaveis = new Coletavel[indicesColetados.Length];
+        for(int contador = 0; contador < indicesColetados.Length; contador++)
+        {
+            ColetavelEntidade coletavelEntidade = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(indicesColetados[contador]);
+
+            Coletavel coletavel = HelperColetaveisInGame.criarColetavel();
+            coletavel.receberSprite(coletavelEntidade.sprite);
+            coletavel.desligar();
+            coletaveis[contador] = coletavel;
+        }
+        return coletaveis;
+    }
+
     public virtual int[] getColetados()
     {
         return new int[] { };

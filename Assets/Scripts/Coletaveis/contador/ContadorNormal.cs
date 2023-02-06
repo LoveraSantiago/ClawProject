@@ -17,6 +17,19 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         coletados = new Coletavel[3];        
     }
 
+    public override void configuradoPeloLevel()
+    {
+        if (LevelUtils.isTutorialLevel())
+        {
+            Coletavel[] coletados = LevelUtils.getColetaveisColetados();
+            for(int contador = 0; contador < coletados.Length; contador++)
+            {
+                contarColetado(coletados[contador], null); 
+            }
+        }
+    }
+
+
     public override void iniciar(int totalColetaveis)
     {
         this.totalColetaveis = totalColetaveis;        
@@ -32,13 +45,19 @@ public class ContadorNormal : AbstractContadorDeColetaveis
         {
             if (trinca.isCombinacaoValida())
             {
-                somColetagem.playScoreColetagemSucesso();
+                if(somColetagem != null)
+                {
+                    somColetagem.playScoreColetagemSucesso();
+                }
                 resultCombinacao = true;
                 score += pontosAcerto;                
             }
             else
             {
-                somColetagem.playScoreColetagemNaoSucesso();
+                if(somColetagem != null)
+                {
+                    somColetagem.playScoreColetagemNaoSucesso();
+                }
                 resultCombinacao = false;                
             }           
         }

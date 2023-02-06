@@ -162,6 +162,11 @@ public class LevelUtils
         return ((AbstractLevelTutorial)ContextoEstaticoUtils.level).getInformacoesColetadosDto();
     }
 
+    public static Coletavel[] getColetaveisColetados()
+    {
+        return ((AbstractLevelTutorial)ContextoEstaticoUtils.level).getColetaveisColetados();
+    }
+
     public static AbstractMainGameEventosTutorial getMainGameEventosTutorial(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
         return ((AbstractLevelTutorial)ContextoEstaticoUtils.level).getMainGameEventos(allGameManagers, mainDto);
