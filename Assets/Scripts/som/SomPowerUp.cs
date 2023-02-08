@@ -7,8 +7,10 @@ public interface SomPowerUp
     void playSomTeleporte();
 
     void playSomAnjo();
+    void playSomChoque();
     void iniciarSomAsa();
     void pararSomAsa();
+
 
     void iniciarSomBuracoNegro();
 

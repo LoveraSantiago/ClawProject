@@ -26788,6 +26788,9 @@ MonoBehaviour:
       somBuracoNegro:
         volume: 0.9
         audioClip: {fileID: 8300000, guid: cc45e91c28ea4e04088f1538df7ca284, type: 3}
+      somChoque:
+        volume: 0.7
+        audioClip: {fileID: 8300000, guid: 3b7cf09f52ff3ee47aae090f4be7d349, type: 3}
       somBackgroundCacaNiquel:
         volume: 0.5
         audioClip: {fileID: 8300000, guid: 1a749cb0629a7ea4ab5c4e90b40c5668, type: 3}

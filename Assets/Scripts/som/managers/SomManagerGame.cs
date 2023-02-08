@@ -152,6 +152,10 @@ public class SomManagerGame : SomManager,
     {
         audioPlayOneShot(getAudioSourcePowerUp(), audioDto.SomAnjo);
     }
+    public void playSomChoque()
+    {
+        audioPlayOneShot(getAudioSourcePowerUp(), audioDto.SomChoque);
+    }
 
     public void iniciarSomAsa()
     {
@@ -162,6 +166,7 @@ public class SomManagerGame : SomManager,
     {
         getAudioSourcePowerUp().Stop();
     }
+
 
     public void iniciarSomBuracoNegro()
     {

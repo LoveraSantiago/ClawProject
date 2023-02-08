@@ -23,6 +23,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
     public override void iniciarPup()
     {
         finalizado = false;
+        somPowerUp.playSomChoque();
     }
 
     public override void resetPup()
