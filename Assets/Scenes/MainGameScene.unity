@@ -21177,8 +21177,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 1
+      scalar: 0.5
+      minScalar: 1.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -26636,6 +26636,7 @@ MonoBehaviour:
         buracoNegroGo: {fileID: 6134466145752774681, guid: bbdae4f57395f8d449318d93c38b7cc0, type: 3}
       rollBackDto:
         delayReset: 1.5
+        efeitoChoque: {fileID: 381374555}
       molaDto:
         delayInicial: 0.2
         molaGo: {fileID: 4127936681606313068, guid: 726671bcf599b5647aba20a381f66cfc, type: 3}
