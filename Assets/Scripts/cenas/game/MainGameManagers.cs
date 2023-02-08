@@ -54,10 +54,8 @@ public class MainGameManagers
     {
         allGameManagers.getColetaveisManager()
                        .configuradoPeloLevel(mainDto.ColetaveisDto);
-
         allGameManagers.getMaquinaManager().configuradoPeloLevel(mainDto.MaquinaDto);
-
-        allGameManagers.getUiManager().configuradoPeloLevel();
+        allGameManagers.getUiManager().configuradoPeloLevel();        
         
         ColetaveisManager coletaveiManager = allGameManagers.getColetaveisManager();
         allGameManagers.getPowerUpManager()

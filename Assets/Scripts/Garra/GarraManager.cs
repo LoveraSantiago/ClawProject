@@ -33,30 +33,41 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
             gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
             gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
             gerDeMovAtual   = gerDeMovNormal;
+
         }
     }      
 
     public void start(GarraDto garraDto)
     {
+        Debug.Log("garra start");
         cabo.start(garraDto.CaboDaGarraDto);
-        gerDeMovAtual.iniciarMovimentacoes();
+        if (LevelUtils.isTutorialLevel())
+        {
+            parar();
+        }
+        else
+        {
+            gerDeMovAtual.iniciarMovimentacoes();
+        }
     }
 
     public void update(GarraDto garraDto, InputGame inputGame)
-    {        
+    {
+        Debug.Log("garra update");
         gerDeMovAtual.update(inputGame);
         cabo.update(garraDto.CaboDaGarraDto);
     }
 
     public void fixedUpdate(GarraDto garraDto)
     {
+        Debug.Log("garra fixedUpdate");
         gerDeMovAtual.fixedUpdate();        
         cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.Corpo.TransformBaseCorpo.transform);
-    }    
+    }      
 
     public void parar()
     {
-        //Debug.Log("parar");
+        Debug.Log("garra parar");
         gerDeMovNormal.trocarParaAcaoParado();
         gerDeMovAtual = gerDeMovNormal;
         //Debug.Log(gerDeMovAtual);

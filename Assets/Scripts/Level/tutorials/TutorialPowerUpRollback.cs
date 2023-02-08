@@ -19,6 +19,7 @@ public class TutorialPowerUpRollback : TutorialPowerUp
 
     public void iniciar()
     {
+        allGameManagers.getGarraManager().parar();
         mainDto.TutorialDto.GoTutorial.SetActive(true);
         prepararTutorialCliquePowerUp();
     }
@@ -26,7 +27,6 @@ public class TutorialPowerUpRollback : TutorialPowerUp
     private void prepararTutorialCliquePowerUp()
     {
         //Debug.Log("prepararTutorialCliquePowerUp");
-        allGameManagers.getGarraManager().parar();
         allGameManagers.getBotaoLigaDesliga().desligar();
         mainDto.TutorialDto.LblTexto.text = "Rollback disponivel!\nAcione o botão power up!";
         animacaoTutorial.playPowerUp();
