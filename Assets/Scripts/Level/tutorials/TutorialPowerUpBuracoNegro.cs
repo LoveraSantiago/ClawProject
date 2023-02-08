@@ -73,7 +73,7 @@ public class TutorialPowerUpBuracoNegro : TutorialPowerUp
     {
         allGameManagers.getBotoesPowerUp().desativarPowerUp();
         allGameManagers.getGarraManager().parar();
-        yield return new WaitForSeconds(valorDelay);
+        yield return new WaitForSeconds(valorDelay * 3);
 
         mainDto.TutorialDto.GoTutorial.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
