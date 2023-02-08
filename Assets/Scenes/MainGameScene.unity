@@ -100973,7 +100973,7 @@ GameObject:
   - component: {fileID: 1488198865}
   - component: {fileID: 1488198864}
   m_Layer: 0
-  m_Name: efeito-coletado
+  m_Name: coletado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
