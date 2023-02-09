@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TutorialPowerUpBuracoNegro : TutorialPowerUp
+public class TutorialPowerUpBuracoNegro : AbstractTutorialPowerUp
 {
     private bool finalizacaoDisparada;
     private bool emAndamento;
@@ -18,7 +18,7 @@ public class TutorialPowerUpBuracoNegro : TutorialPowerUp
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
-    public void iniciar()
+    public override void iniciar()
     {
         mainDto.TutorialDto.GoTutorial.SetActive(true);
         prepararTutorialCliquePowerUp();
@@ -97,7 +97,7 @@ public class TutorialPowerUpBuracoNegro : TutorialPowerUp
         }
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
+    public override void consumirEvento(PowerUpInfoDto evento)
     {
         Debug.Log("Evento estado " + evento.estadoAtual + " andamento " + evento.isEstadoEmAndamento);
         if (evento.isEstadoInicio)
@@ -132,7 +132,7 @@ public class TutorialPowerUpBuracoNegro : TutorialPowerUp
         }
     }
 
-    ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
+    public override ProdutorDeEvento<InformacoesColetadoDto> getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

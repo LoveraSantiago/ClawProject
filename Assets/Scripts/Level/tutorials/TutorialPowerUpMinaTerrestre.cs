@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TutorialPowerUpMinaTerrestre : TutorialPowerUp
+public class TutorialPowerUpMinaTerrestre : AbstractTutorialPowerUp
 {
     private MainGameDto mainDto;
     private AllGameManagers allGameManagers;
@@ -17,7 +17,7 @@ public class TutorialPowerUpMinaTerrestre : TutorialPowerUp
     }
 
 
-    public void iniciar()
+    public override void iniciar()
     {
         mainDto.TutorialDto.GoTutorial.SetActive(true);
         prepararTutorialDragPowerUp();
@@ -60,7 +60,7 @@ public class TutorialPowerUpMinaTerrestre : TutorialPowerUp
         produtorDeEvento.produziuEvento(eventoFim);
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
+    public override void consumirEvento(PowerUpInfoDto evento)
     {
         if (evento.isEstadoInicio)
         {
@@ -76,7 +76,7 @@ public class TutorialPowerUpMinaTerrestre : TutorialPowerUp
         }
     }
 
-    ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
+    public override ProdutorDeEvento<InformacoesColetadoDto> getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

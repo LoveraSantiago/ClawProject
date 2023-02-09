@@ -1,8 +1,8 @@
 public class MainGameEventosPowerUp : AbstractMainGameEventosTutorial
 {
-    private TutorialPowerUp tutorial;
+    private AbstractTutorialPowerUp tutorial;
 
-    public MainGameEventosPowerUp(AllGameManagers allGameManagers, TutorialPowerUp tutorial)
+    public MainGameEventosPowerUp(AllGameManagers allGameManagers, AbstractTutorialPowerUp tutorial)
       : base(allGameManagers)
     {
         this.tutorial = tutorial;
@@ -18,7 +18,7 @@ public class MainGameEventosPowerUp : AbstractMainGameEventosTutorial
         AcaoPowerUpAcionado acaoPowerUpAcionado = base.configurarAcaoPowerUpAcionado();
         acaoPowerUpAcionado.adicionarConsumidor(tutorial);
         return acaoPowerUpAcionado;
-    }
+    }    
 
     protected override AcaoColetado configurarAcaoColetado()
     {
@@ -29,5 +29,12 @@ public class MainGameEventosPowerUp : AbstractMainGameEventosTutorial
             .adicionarConsumidor(allGameManagers.getModalResultadosManager());
 
         return acaoColetado;
+    }
+
+    protected override AcaoColetadoFim configurarAcaoColetadoFim()
+    {
+        AcaoColetadoFim acaoColetadoFim = base.configurarAcaoColetadoFim();
+        acaoColetadoFim.adicionarConsumidor(tutorial);
+        return acaoColetadoFim;
     }
 }

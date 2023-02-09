@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialPowerUpRollback : TutorialPowerUp
+public class TutorialPowerUpRollback : AbstractTutorialPowerUp
 {
+    private bool emAndamento;
+    private bool finalizacaoDisparada;
     private AllGameManagers allGameManagers;
     private AnimacaoTutorial animacaoTutorial;
     private MainGameDto mainDto;
@@ -17,7 +19,7 @@ public class TutorialPowerUpRollback : TutorialPowerUp
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
-    public void iniciar()
+    public override void iniciar()
     {
         allGameManagers.getGarraManager().parar();
         mainDto.TutorialDto.GoTutorial.SetActive(true);
@@ -38,15 +40,47 @@ public class TutorialPowerUpRollback : TutorialPowerUp
         animacaoTutorial.playAlvoColetado();
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
+    private void prepararFimTutorialPupExpirado()
+    {
+        if (!finalizacaoDisparada && !emAndamento)
+        {
+            allGameManagers.getGarraManager().parar();
+            finalizacaoDisparada = true;
+            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao do Rollback acabou!";
+            animacaoTutorial.playParteTexto();
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
+        }
+    }
+
+    protected IEnumerator coroutineEncerrarTutorial(float valorDelay)
+    {
+        allGameManagers.getBotoesPowerUp().desativarPowerUp();
+        allGameManagers.getGarraManager().parar();
+        yield return new WaitForSeconds(valorDelay);
+
+        mainDto.TutorialDto.GoTutorial.SetActive(false);
+        InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
+        InformacoesColetadoDto eventoFim = new InformacoesColetadoDto()
+            .addInfoFimDeJogo(infoFimDeJogo);
+
+        //Debug.Log("Criando evento de fim de jogo");
+        produtorDeEvento.produziuEvento(eventoFim);
+    }
+
+    public override void consumirEvento(PowerUpInfoDto evento)
     {
         if (evento.isEstadoInicio)
         {
             prepararTutorialInicioPowerUp();
         }
+        else if (evento.isEstadoExpirado)
+        {
+            prepararFimTutorialPupExpirado();
+        }
     }
 
-    public ProdutorDeEvento<InformacoesColetadoDto> getProdutorDeEvento()
+    public override ProdutorDeEvento<InformacoesColetadoDto> getProdutorDeEvento()
     {
         return produtorDeEvento;
     }

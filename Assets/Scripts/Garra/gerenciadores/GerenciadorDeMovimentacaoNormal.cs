@@ -8,7 +8,8 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
 
     public GerenciadorDeMovimentacaoNormal()
     {        
-        AbstractMovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);               
+        AbstractMovimentacaoDaGarraNormal.configurarComunicadorComGerMovimentacao(this);
+        trocarParaAcaoParado();
     }
 
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO INICIO

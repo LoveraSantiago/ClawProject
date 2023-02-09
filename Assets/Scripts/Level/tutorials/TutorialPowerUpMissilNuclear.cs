@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TutorialPowerUpMissilNuclear : TutorialPowerUp
+public class TutorialPowerUpMissilNuclear : AbstractTutorialPowerUp
 {
     private bool emAndamento;
     private bool finalizacaoDisparada;
@@ -19,7 +19,7 @@ public class TutorialPowerUpMissilNuclear : TutorialPowerUp
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
-    public void iniciar()
+    public override void iniciar()
     {
         mainDto.TutorialDto.GoTutorial.SetActive(true);
         prepararTutorialCliquePowerUp();
@@ -86,7 +86,7 @@ public class TutorialPowerUpMissilNuclear : TutorialPowerUp
         produtorDeEvento.produziuEvento(eventoFim);
     }
 
-    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
+    public override void consumirEvento(PowerUpInfoDto evento)
     {
         if (evento.isEstadoInicio)
         {
@@ -106,7 +106,7 @@ public class TutorialPowerUpMissilNuclear : TutorialPowerUp
         }
     }
 
-    ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
+    public override ProdutorDeEvento<InformacoesColetadoDto> getProdutorDeEvento()
     {
         return produtorDeEvento;
     }
