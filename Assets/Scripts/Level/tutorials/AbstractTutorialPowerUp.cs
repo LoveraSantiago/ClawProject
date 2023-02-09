@@ -5,7 +5,7 @@ public abstract class AbstractTutorialPowerUp : AcaoPowerUpAcionado.ConsumidorEv
     public abstract void iniciar();
     public abstract void consumirEvento(PowerUpInfoDto evento);
 
-    public void consumirEvento(ColetadoFimDto evento){}
+    public virtual void consumirEvento(ColetadoFimDto evento){}
 
     public abstract ProdutorDeEvento<InformacoesColetadoDto> getProdutorDeEvento();
 }

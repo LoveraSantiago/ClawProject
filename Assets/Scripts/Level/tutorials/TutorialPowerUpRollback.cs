@@ -57,7 +57,7 @@ public class TutorialPowerUpRollback : AbstractTutorialPowerUp
     {
         allGameManagers.getBotoesPowerUp().desativarPowerUp();
         allGameManagers.getGarraManager().parar();
-        yield return new WaitForSeconds(valorDelay);
+        yield return new WaitForSeconds(valorDelay * 2);
 
         mainDto.TutorialDto.GoTutorial.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
@@ -68,15 +68,45 @@ public class TutorialPowerUpRollback : AbstractTutorialPowerUp
         produtorDeEvento.produziuEvento(eventoFim);
     }
 
+    public void prepararTutorialColetavelDevolvido()
+    {
+        emAndamento = true;
+        mainDto.TutorialDto.LblTexto.text = "Otimo!\nO Coletavel foi devolvido à maquina.";
+        animacaoTutorial.playParteTexto();
+    }
+
+    private void prepararFimTutorialPupAcionado()
+    {
+        if (!finalizacaoDisparada)
+        {
+            allGameManagers.getGarraManager().parar();
+            finalizacaoDisparada = true;
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialSucesso));
+        }
+    }
+
     public override void consumirEvento(PowerUpInfoDto evento)
     {
         if (evento.isEstadoInicio)
         {
             prepararTutorialInicioPowerUp();
         }
+        else if (evento.isEstadoFinalizar)
+        {
+            prepararFimTutorialPupAcionado();
+        }
         else if (evento.isEstadoExpirado)
         {
             prepararFimTutorialPupExpirado();
+        }
+    }
+
+    public override void consumirEvento(ColetadoFimDto evento)
+    {
+        if (evento.isRollback)
+        {
+            prepararTutorialColetavelDevolvido();
         }
     }
 
