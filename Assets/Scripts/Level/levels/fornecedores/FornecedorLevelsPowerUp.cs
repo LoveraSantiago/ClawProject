@@ -19,6 +19,7 @@ public class FornecedorLevelsPowerUp : AbstractFornecedorLevels
             case 7: return new LevelTutorialPowerUpMiniAsa();
             case 8: return new LevelTutorialPowerUpAsa();
             case 9: return new LevelTutorialPowerUpBuracoNegro();
+            case 11: return new LevelTutorialPowerUpRollback();
             case 10: return new LevelPowerUp();
         }
         return null;

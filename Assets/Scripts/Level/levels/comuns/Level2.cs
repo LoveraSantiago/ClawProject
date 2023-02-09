@@ -113,8 +113,8 @@ public class Level2 : AbstractLevelNormal
     {      
 
         return new PowerUpsParaLevel(2)
-           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BURACO_NEGRO, PowerUpEnums.TIPO.BURACO_NEGRO, PowerUpEnums.TIPO.BURACO_NEGRO, PowerUpEnums.TIPO.BURACO_NEGRO })
-           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BURACO_NEGRO, PowerUpEnums.TIPO.BURACO_NEGRO, PowerUpEnums.TIPO.BURACO_NEGRO, PowerUpEnums.TIPO.BURACO_NEGRO });
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.ROLLBACK, PowerUpEnums.TIPO.ROLLBACK, PowerUpEnums.TIPO.ROLLBACK, PowerUpEnums.TIPO.ROLLBACK })
+           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MOLA, PowerUpEnums.TIPO.MOLA, PowerUpEnums.TIPO.MOLA, PowerUpEnums.TIPO.MOLA });
     }
 }
 

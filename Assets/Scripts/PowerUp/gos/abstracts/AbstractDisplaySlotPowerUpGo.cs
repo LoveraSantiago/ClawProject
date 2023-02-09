@@ -23,6 +23,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
     public override void iniciarPup()
     {
         finalizado = false;
+        somPowerUp.playSomChoque();
     }
 
     public override void resetPup()
@@ -51,6 +52,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
         //Debug.Log("Inicio chamado " + contador + " vezes");
         if (contador == 3)
         {
+            powerUpDto.RollBackDto.EfeitoChoque.gameObject.SetActive(true);
             coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(getCliqueNoDisplayDeColetados());
         }
     }
@@ -63,6 +65,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
         {
             powerUpFinalizacao.preFinalizar();
             powerUpFinalizacao.finalizado();
+            powerUpDto.RollBackDto.EfeitoChoque.gameObject.SetActive(false);
         }
     }
 
@@ -89,7 +92,7 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
             {
                 finalizado = informacaoDisplayColetado.acertouDisplay(inputGame.getPosicaoTap());
                 yield return null;
-            }
+            }            
             informacaoDisplayColetado.restaurarEstadoAntesPowerUp(new ExecutorFim(this));
         }
     }

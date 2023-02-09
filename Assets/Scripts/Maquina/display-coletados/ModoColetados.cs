@@ -31,7 +31,13 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(mostrarSprite(evento));
         }
     }    
-    
+
+    public void mostrarColetadoNoDisplay(InformacoesColetadoDto evento, int indiceDisplay)
+    {
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(mostrarSprite(evento, indiceDisplay));
+    }
+
+
     public void processarPowerUp(PowerUpEnums.TIPO tipoPup, PowerUpInteracaoComDisplayColetado interacaoDisplayColetado)
     {
         agendados.agendar(tipoPup);
@@ -89,10 +95,14 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
     }
 
     private IEnumerator mostrarSprite(InformacoesColetadoDto evento)
-    {        
-        displayColetando = true;
-        int indiceDesocupado = grupoDisplays.getIndicePrimeiroDisplayDesocupado();        
-        yield return grupoDisplays.mostrarSprColetado(indiceDesocupado, evento.sprite, powerUpAcionado);        
+    {
+        yield return mostrarSprite(evento, grupoDisplays.getIndicePrimeiroDisplayDesocupado());        
+    }
+
+    private IEnumerator mostrarSprite(InformacoesColetadoDto evento, int indiceDesocupado)
+    {
+        displayColetando = true;        
+        yield return grupoDisplays.mostrarSprColetado(indiceDesocupado, evento.sprite, powerUpAcionado);
 
         if (agendados.possuiAgendamentoDePowerUp())
         {
@@ -107,19 +117,19 @@ public class ModoColetados : AcaoColetadoFim.ProdutorEvento,
             }
             else
             {
-                finalizacaoTodosDisplaysOcupados();                
+                finalizacaoTodosDisplaysOcupados();
             }
         }
         else if (powerUpAcionado)
         {
             agendados.agendar(evento);
         }
-        else if(!powerUpAcionado)
+        else if (!powerUpAcionado)
         {
-            finalizacaoTodosDisplaysNaoOcupados();                        
+            finalizacaoTodosDisplaysNaoOcupados();
         }
         displayColetando = false;
-    }                
+    }
 
     private void acionarPowerUpAgendado(InformacoesColetadoDto evento)
     {
