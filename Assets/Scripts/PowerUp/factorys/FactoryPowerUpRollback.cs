@@ -10,8 +10,8 @@ public class FactoryPowerUpRollback : AbstractFactoryPowerUp
                 .configIsClicavel(true)
                 .configIsColetavel(true)
                 .configDescricao(
-                    "Selecione um coletado para retornar ao board para tentar uma melhor combinação de coletados.",
-                    "Selecione no display de coletados o coletado que deseja ser retornado ao boarde.");
+                    "Selecione no display de coletados o coletado que deseja ser retornado à maquina.",
+                    "Fique atento ao tempo de duração selecionar um coletado.");
     }
 
     public override AbstractPowerUpGo fornecer()
