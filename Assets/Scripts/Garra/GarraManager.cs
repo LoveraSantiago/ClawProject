@@ -33,44 +33,36 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
             gerDeMovNormal  = new GerenciadorDeMovimentacaoNormal();
             gerDeMovPowerUp = new GerenciadorDeMovimentacaoPowerUp();
             gerDeMovAtual   = gerDeMovNormal;
-
         }
     }      
 
     public void start(GarraDto garraDto)
     {
-        Debug.Log("garra start");
+        //Debug.log("garra start");
         cabo.start(garraDto.CaboDaGarraDto);
-        if (LevelUtils.isTutorialLevel())
-        {
-            parar();
-        }
-        else
-        {
-            gerDeMovAtual.iniciarMovimentacoes();
-        }
+        gerDeMovAtual.iniciarMovimentacoes();        
     }
 
     public void update(GarraDto garraDto, InputGame inputGame)
     {
-        Debug.Log("garra update");
+        //Debug.log("garra update");
         gerDeMovAtual.update(inputGame);
         cabo.update(garraDto.CaboDaGarraDto);
     }
 
     public void fixedUpdate(GarraDto garraDto)
     {
-        Debug.Log("garra fixedUpdate");
+        //Debug.log("garra fixedUpdate");
         gerDeMovAtual.fixedUpdate();        
         cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.Corpo.TransformBaseCorpo.transform);
     }      
 
     public void parar()
     {
-        Debug.Log("garra parar");
+        //Debug.log("garra parar");
         gerDeMovNormal.trocarParaAcaoParado();
         gerDeMovAtual = gerDeMovNormal;
-        //Debug.Log(gerDeMovAtual);
+        ////Debug.log(gerDeMovAtual);
     }
 
     public int fornecer()
@@ -81,7 +73,8 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger INICIO
     //ACIONADO QDO GARRA COLLIDE COM UM COLETAVEL
     public void consumir(Collider2D colliderDeColetavel)
-    {        
+    {
+        //Debug.log("garra consumindo evento Collider2D");
         gerDeMovAtual.garraColidiuCom(colliderDeColetavel);
     }
     //IMPLEMENTACAO INTERFACE ConsumidorDeEventoTrigger FIM
@@ -94,6 +87,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
     {
+        //Debug.log("garra consumindo evento PowerUpInfoDto");
         if (evento.isEstadoInicio)
         {
             gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.interacaoPupComComponentes);
@@ -113,12 +107,14 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     }
    
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
-    {        
+    {
+        //Debug.log("garra consumindo evento InformacoesColetadoDto");
         gerDeMovAtual.garraComemorar();
     }        
 
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
+        //Debug.log("garra consumindo evento TempoEsgotadoDto");
         tempoEsgotadoEmAcao = true;        
         gerDeMovNormal.trocarParaAcaoVoltarParaCima();
         gerDeMovAtual = gerDeMovNormal;
@@ -126,6 +122,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
     {
+        //Debug.log("garra consumindo evento SubidaBoardAcaoFim");
         if (!evento.isGameOver)
         {
             tempoEsgotadoEmAcao = false;
@@ -136,7 +133,8 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     void AcaoColetadoFim.ConsumidorEvento.consumirEvento(ColetadoFimDto evento)
     {
-        if (gerDeMovAtual != gerDeMovPowerUp && !tempoEsgotadoEmAcao)
+        //Debug.log("garra consumindo evento ColetadoFimDto");
+        if (gerDeMovAtual != gerDeMovPowerUp && !tempoEsgotadoEmAcao && gerDeMovAtual.getContagemDeSubidas() > 0)
         {
             gerDeMovNormal.iniciarMovimentacoes();            
         }
@@ -144,6 +142,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     void AcaoCacaNiquel.ConsumidorEvento.consumirEvento(CacaNiquelEventoDto evento)
     {
+        //Debug.log("garra consumindo evento CacaNiquelEventoDto");
         if (evento.isInicio)
         {
             gerDeMovAtual.iniciarMovimentacoes();
