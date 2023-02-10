@@ -6,12 +6,14 @@ public class TimerFicha : Executor
     private readonly Ficha ficha;
 
     private TimerFichaDto timerFichaDto;
+    private AnimacaoTimerFicha animacaoTimerFicha;
     private Relogio relogio;   
 
     public TimerFicha(TimerFichaDto timerFichaDto, SomTimerFicha somTimerFicha, Ficha ficha)
     {
         this.ficha = ficha;
         this.timerFichaDto = timerFichaDto;
+        animacaoTimerFicha = new AnimacaoTimerFicha(timerFichaDto.Animator);
 
         configurarBotao(somTimerFicha);
         setupDeFichas();
@@ -93,12 +95,17 @@ public class TimerFicha : Executor
         timerFichaDto.LblQdtFichasOld.text = fichasAtual.ToString();
         if(fichasGanhas > 0)
         {
-
+            timerFichaDto.LblQdtAcrescimo.text = String.Format("+{0}", fichasGanhas);            
+            timerFichaDto.LblQdtFichasOld.text = (fichasAtual - fichasGanhas).ToString();
+            animacaoTimerFicha.playGanharFicha();            
         }
         else if(fichasGanhas < 0)
         {
-
-        }
+            timerFichaDto.LblQdtAcrescimo.text = String.Format("-{0}", fichasGanhas);            
+            timerFichaDto.LblQdtFichasOld.text = (fichasAtual + fichasGanhas).ToString();
+            animacaoTimerFicha.playGastarFicha();
+        }        
+        timerFichaDto.LblQdtFichasAtual.text = fichasAtual.ToString();
     }   
 
     private void configurarBotao(SomTimerFicha somTimerFicha)
