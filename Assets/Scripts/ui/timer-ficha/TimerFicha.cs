@@ -7,13 +7,15 @@ public class TimerFicha : Executor
 
     private TimerFichaDto timerFichaDto;
     private AnimacaoTimerFicha animacaoTimerFicha;
-    private Relogio relogio;   
+    private Relogio relogio;
+    private IntervaloDeTempo intervaloDeTempo;
 
     public TimerFicha(TimerFichaDto timerFichaDto, SomTimerFicha somTimerFicha, Ficha ficha)
     {
         this.ficha = ficha;
         this.timerFichaDto = timerFichaDto;
         animacaoTimerFicha = new AnimacaoTimerFicha(timerFichaDto.Animator);
+        intervaloDeTempo = new IntervaloDeTempo();
 
         configurarBotao(somTimerFicha);
         setupDeFichas();
@@ -21,6 +23,7 @@ public class TimerFicha : Executor
 
     public void update()
     {
+        intervaloDeTempo.contarTempo();
         relogio.updateSegundo(timerFichaDto.RelogioDto);
     }
 
@@ -29,10 +32,16 @@ public class TimerFicha : Executor
         ganharFichas(1);        
     }
 
-    public void ganharFichas(int qtdFichas)
+    public bool ganharFichas(int qtdFichas)
     {
-        playerPrefsFichas.ganharFicha(ficha, qtdFichas);
-        recontarFichas(qtdFichas);
+        if (intervaloDeTempo.contarTempo())
+        {
+            playerPrefsFichas.ganharFicha(ficha, qtdFichas);
+            recontarFichas(qtdFichas);
+            intervaloDeTempo.configTempoParaAcao(1);
+            return true;
+        }
+        return false;
     }    
 
     private void setupDeFichas()
