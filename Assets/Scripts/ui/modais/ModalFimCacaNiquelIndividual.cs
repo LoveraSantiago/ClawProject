@@ -48,7 +48,7 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
     private void montarLinhasResultados(CacaNiquelEventoDto evento, PowerUpEntidade pupEscolhido)
     {
         int qtdPups = PlayerPrefsPowerUp.recuperarQtdPup(pupEscolhido.nome);
-        int qtdFichasBronze = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE);        
+        int qtdFichasBronze = UtilsFicha.getQtdFichasBronze();      
 
         string textLinhaPups = null;
         string textBonus     = null;
@@ -83,7 +83,7 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         if (evento.hasFicha())
         {
             textFicha = "  + 1 = " + (qtdFichasBronze + 1);
-            PlayerPrefsFichas.ganharFicha(Ficha.BRONZE, 1);
+            UtilsFicha.agendarFichaDeBronzeGanha(1);            
         }
         else
         {

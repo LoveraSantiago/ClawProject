@@ -64,7 +64,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
 
     private void abrirCenaOuModal(int indiceBtn, int precoFicha)
     {
-        if (PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
+        if (UtilsFicha.possuiFichasDeBronze(precoFicha))
         {
             somManager.playSomCliqueIrParaLevel();
             PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);            

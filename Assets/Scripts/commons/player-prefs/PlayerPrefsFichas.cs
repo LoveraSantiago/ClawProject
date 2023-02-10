@@ -6,7 +6,7 @@ public class PlayerPrefsFichas
     private static readonly string CHAVE_QTD = "qtd";
     private static readonly string CHAVE_TEMPO = "tempo";
 
-    public static int getQtdFichas(Ficha ficha)
+    public int getQtdFichas(Ficha ficha)
     {
         string chave = gerarChaveQtdFichas(ficha);
 
@@ -17,14 +17,14 @@ public class PlayerPrefsFichas
         return PlayerPrefs.GetInt(chave);
     }
 
-    private static void salvarLimiteParaFicha(Ficha ficha)
+    private void salvarLimiteParaFicha(Ficha ficha)
     {
         string chave = gerarChaveQtdFichas(ficha);
         FichaEntidade fichaEntidade = FichaEntidade.getFichaEntidade(ficha);
         PlayerPrefs.SetInt(chave, fichaEntidade.limiteFree);
     }
 
-    public static bool possueFichas(Ficha ficha, int qtd)
+    public bool possueFichas(Ficha ficha, int qtd)
     {
         string chave = gerarChaveQtdFichas(ficha);
         int qtdAtual = PlayerPrefs.GetInt(chave);
@@ -56,7 +56,7 @@ public class PlayerPrefsFichas
         }
     }
     
-    public static void ganharFicha(Ficha ficha, int qtd)
+    public void ganharFicha(Ficha ficha, int qtd)
     {
         if(qtd > 0)
         {
@@ -74,7 +74,7 @@ public class PlayerPrefsFichas
             }
             else
             {
-                DateTime ultimaData = getDataFicha(ficha);
+                DateTime ultimaData = getDataFicha(ficha);                
                 while (qtdAnterior < qtdAtual)
                 {
                     ultimaData = ultimaData.AddHours(fichaEntidade.intervaloHoras)
@@ -84,21 +84,9 @@ public class PlayerPrefsFichas
                 saveDataFicha(ficha, ultimaData);
             }
         }
-    }
+    }  
 
-    public static void comprarFicha(Ficha ficha, int qtd)
-    {
-        if(qtd > 0)
-        {
-            string chaveQtd = gerarChaveQtdFichas(ficha);
-
-            int qtdAnterior = PlayerPrefs.GetInt(chaveQtd);
-            int qtdAtual = qtdAnterior + qtd;
-            PlayerPrefs.SetInt(chaveQtd, qtdAtual);
-        }
-    }
-
-    public static DateTime getDataFicha(Ficha ficha)
+    public DateTime getDataFicha(Ficha ficha)
     {
         string chaveTempo = gerarChaveTempo(ficha);
         string tempoFicha = PlayerPrefs.GetString(chaveTempo);

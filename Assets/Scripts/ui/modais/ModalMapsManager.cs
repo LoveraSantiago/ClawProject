@@ -15,7 +15,7 @@ public class ModalMapsManager : AcaoMapaNavegado.ConsumidorEvento,
 
     private void abrirModal(MapaEntidade mapaEntidade, int indiceLevel)
     {
-        if(PlayerPrefsFichas.possueFichas(Ficha.PRATA, 1))
+        if(UtilsFicha.possuiFichasDePrata(1))
         {
             modalFase.ligar(mapaEntidade, indiceLevel, somMap);
         }
