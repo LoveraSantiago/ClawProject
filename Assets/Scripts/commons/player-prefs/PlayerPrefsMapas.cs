@@ -112,7 +112,7 @@ public class PlayerPrefsMapas
 
     private static void salvarNovaLiberacaoLevelEspecifico(int indiceLevel)
     {
-        Debug.Log("chamado salvando nova liberacao");
+        //Debug.Log("chamado salvando nova liberacao");
         int[] arrayLevels = getLiberacaoLevelsEspecificos();
         SortedSet<int> levelsOrdenados = new SortedSet<int>(arrayLevels);
         levelsOrdenados.Add(indiceLevel);
