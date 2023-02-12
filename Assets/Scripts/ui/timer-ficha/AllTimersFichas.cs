@@ -2,9 +2,9 @@ using System;
 
 public class AllTimersFichas 
 {
-    private TimerFicha timerFichaOuro;
-    private TimerFicha timerFichaPrata;
-    private TimerFicha timerFichaBronze;  
+    public TimerFicha timerFichaOuro { get; private set; }
+    public TimerFicha timerFichaPrata { get; private set; }
+    public TimerFicha timerFichaBronze { get; private set; }
 
     public AllTimersFichas(TimerFichaDto[] timerFichaDto, SomTimerFicha somTimerFicha)
     {

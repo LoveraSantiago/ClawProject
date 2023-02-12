@@ -31,7 +31,7 @@ public class PlayerPrefsFichas
         return qtdAtual >= qtd;
     }
 
-    public static void consumirFicha(Ficha ficha, int qtd)
+    public void consumirFicha(Ficha ficha, int qtd)
     {
         if (qtd > 0)
         {
@@ -93,18 +93,18 @@ public class PlayerPrefsFichas
         return DateTime.Parse(tempoFicha);
     }
 
-    private static void saveDataFicha(Ficha ficha, DateTime dataFicha)
+    private void saveDataFicha(Ficha ficha, DateTime dataFicha)
     {
         string chaveTempo = gerarChaveTempo(ficha);
         PlayerPrefs.SetString(chaveTempo, dataFicha.ToString());
     }
 
-    private static string gerarChaveQtdFichas(Ficha ficha)
+    private string gerarChaveQtdFichas(Ficha ficha)
     {
         return ficha.ToString() + CHAVE_QTD;
     }
 
-    private static string gerarChaveTempo(Ficha ficha)
+    private string gerarChaveTempo(Ficha ficha)
     {
         return ficha.ToString() + CHAVE_TEMPO;
     }

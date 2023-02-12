@@ -1,6 +1,7 @@
 using System;
 
-public class TimerFicha : Executor
+public class TimerFicha : OperacaoFicha, 
+                          Executor
 {
     private static PlayerPrefsFichas playerPrefsFichas = new PlayerPrefsFichas();
     private readonly Ficha ficha;
@@ -42,7 +43,12 @@ public class TimerFicha : Executor
             return true;
         }
         return false;
-    }    
+    }
+
+    public void consumirFicha(int qtd)
+    {
+        playerPrefsFichas.consumirFicha(ficha, qtd);        
+    }
 
     private void setupDeFichas()
     {
