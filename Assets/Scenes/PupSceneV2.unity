@@ -2029,6 +2029,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &726211883 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7209883023910115086, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+  m_PrefabInstance: {fileID: 2080252805}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &726211884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1468901612222037699, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+  m_PrefabInstance: {fileID: 2080252805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &726211885 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3936004836841104932, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+  m_PrefabInstance: {fileID: 2080252805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &748251338
 GameObject:
   m_ObjectHideFlags: 0
@@ -4862,7 +4889,10 @@ MonoBehaviour:
   mainPupDto:
     timerFichaDto:
       btnMais: {fileID: 2080252812}
-      lblQdtFichas: {fileID: 2080252811}
+      lblQdtFichasOld: {fileID: 2080252811}
+      lblQdtFichasAtual: {fileID: 726211885}
+      lblQdtAcrescimo: {fileID: 726211884}
+      animator: {fileID: 726211883}
       relogioDto:
         lblHoras: {fileID: 2080252810}
         transfSegundos: {fileID: 2080252809}

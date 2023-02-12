@@ -112,16 +112,18 @@ public class TimerFicha : OperacaoFicha,
         if(fichasGanhas > 0)
         {
             timerFichaDto.LblQdtAcrescimo.text = String.Format("+{0}", fichasGanhas);            
-            timerFichaDto.LblQdtFichasOld.text = (fichasAtual - fichasGanhas).ToString();
+            timerFichaDto.LblQdtFichasOld.text = (fichasAtual - fichasGanhas).ToString();            
             animacaoTimerFicha.playGanharFicha();            
         }
         else if(fichasGanhas < 0)
         {
-            timerFichaDto.LblQdtAcrescimo.text = String.Format("{0}", fichasGanhas);            
-            timerFichaDto.LblQdtFichasOld.text = (fichasAtual + fichasGanhas).ToString();
+            fichasGanhas = -fichasGanhas;
+            timerFichaDto.LblQdtAcrescimo.text = String.Format("-{0}", fichasGanhas);            
+            timerFichaDto.LblQdtFichasOld.text = (fichasAtual + fichasGanhas).ToString();             
             animacaoTimerFicha.playGastarFicha();
         }        
         timerFichaDto.LblQdtFichasAtual.text = fichasAtual.ToString();
+        
     }   
 
     private void configurarBotao(SomTimerFicha somTimerFicha)
