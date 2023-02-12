@@ -47,7 +47,8 @@ public class TimerFicha : OperacaoFicha,
 
     public void consumirFicha(int qtd)
     {
-        playerPrefsFichas.consumirFicha(ficha, qtd);        
+        playerPrefsFichas.consumirFicha(ficha, qtd);
+        recontarFichas(-qtd);
     }
 
     private void setupDeFichas()
@@ -116,7 +117,7 @@ public class TimerFicha : OperacaoFicha,
         }
         else if(fichasGanhas < 0)
         {
-            timerFichaDto.LblQdtAcrescimo.text = String.Format("-{0}", fichasGanhas);            
+            timerFichaDto.LblQdtAcrescimo.text = String.Format("{0}", fichasGanhas);            
             timerFichaDto.LblQdtFichasOld.text = (fichasAtual + fichasGanhas).ToString();
             animacaoTimerFicha.playGastarFicha();
         }        
