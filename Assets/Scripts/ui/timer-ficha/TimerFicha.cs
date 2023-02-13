@@ -45,6 +45,12 @@ public class TimerFicha : OperacaoFicha,
         return false;
     }
 
+    public void mostrarFichasGanhas(int qtdFichasGanhas)
+    {
+        int qtdFichas = playerPrefsFichas.getQtdFichas(ficha);
+        setLabelQtdDeFichas(qtdFichas, qtdFichasGanhas);
+    }
+
     public void consumirFicha(int qtd)
     {
         playerPrefsFichas.consumirFicha(ficha, qtd);

@@ -26,4 +26,9 @@ public class UtilsFicha
     {
         playerPrefsFichas.ganharFicha(Ficha.BRONZE, qtd);//TODO MODIFICAR PARA AGENDAMENTO E EM TIMER FICHA RECUPERAR AGENDAMENTOS
     }
+
+    public static int getFichasGanhasDeBronze()
+    {
+        return playerPrefsFichas.getFichasDeBronzeGanhas();
+    }
 }
