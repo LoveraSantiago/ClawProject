@@ -9,23 +9,24 @@ public class Level1 : AbstractLevelTutorial
 
     public override string getMsgObjetivoLevel()
     {
-        return "Complete o tutorial";
-    } 
+        //return "Complete o tutorial";
+        return "Colete todos os itens";
+    }
 
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]
         {
-            {-1, -1,  0,  0,  0,  0, -1},
-            {-1, -1, -1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1, -1, -1},
+            { 0,  0,  1, 1, 1,  0,  0},
+            {-1,  0,  0, 0, 0, -1, -1},
+            {-1, -1, -1, 0, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }   
+    }
 
     public override bool devolverParaBoard()
     {
@@ -44,7 +45,7 @@ public class Level1 : AbstractLevelTutorial
     public override TipoContagemTempoDto getTempoContagem()
     {
         return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
-    }    
+    }
 
     public override string getMaquinaNome()
     {
@@ -102,11 +103,11 @@ public class Level1 : AbstractLevelTutorial
     public override bool isLevelAlbedo0()
     {
         return false;
-    }   
+    }
 
     public override int recuperarQtdPup(PowerUpEnums.TIPO powerupTipo)
     {
-        if(powerupTipo == PowerUpEnums.TIPO.BOMBA_DA_GARRA)
+        if (powerupTipo == PowerUpEnums.TIPO.BOMBA_DA_GARRA)
         {
             return 1;
         }

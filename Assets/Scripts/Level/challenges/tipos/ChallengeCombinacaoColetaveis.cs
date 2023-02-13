@@ -19,7 +19,7 @@ public class ChallengeCombinacaoColetaveis : Challenge
     public virtual ChallengeLabel getLabelChallenge(MapaEntidade mapaEntidade)
     {
         Sprite[] sprites = indicesToSprite(mapaEntidade);
-        ChallengeLabel challengeLabel = new ChallengeLabel("Colete a combinacao ");
+        ChallengeLabel challengeLabel = new ChallengeLabel("Colete todos os itens!");
         challengeLabel.addIgms(sprites[0], sprites[1], sprites[2]);
         return challengeLabel; 
     }

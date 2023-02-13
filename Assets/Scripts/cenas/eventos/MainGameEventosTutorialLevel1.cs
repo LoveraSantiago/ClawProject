@@ -1,8 +1,8 @@
-public class MainGameEventosTutorialLevel1 : AbstractMainGameEventosTutorial
+public class MainGameEventosTutorialLevel1Orginal : AbstractMainGameEventosTutorial
 {
-    private TutorialLevel1 tutorial;
+    private TutorialLevel1Original tutorial;
 
-    public MainGameEventosTutorialLevel1(AllGameManagers allGameManagers, TutorialLevel1 tutorial)
+    public MainGameEventosTutorialLevel1Orginal(AllGameManagers allGameManagers, TutorialLevel1Original tutorial)
         : base(allGameManagers)
     {
         this.tutorial = tutorial;
