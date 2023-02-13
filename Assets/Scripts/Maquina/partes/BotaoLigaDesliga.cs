@@ -37,6 +37,11 @@ public class BotaoLigaDesliga : AcaoDesligarMaquina.ProdutorEvento,
         habilitado = false;
     }
 
+    public void ligar()
+    {
+        habilitado = true;
+    }
+
     private void acionarBtnLigaDesliga()
     {
         setarAparenciaBtnLigaDesliga(0);

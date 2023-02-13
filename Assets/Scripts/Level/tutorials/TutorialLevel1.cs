@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
-                              AcaoBotaoPowerUpVazio.ConsumidorEvento, 
+                              AcaoBotaoPowerUpVazio.ConsumidorEvento,
                               AcaoPupFromScrollSelecao.ConsumidorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,
                               AcaoColetado.ProdutorEvento
@@ -18,60 +18,70 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
     public TutorialLevel1(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
         this.allGameManagers = allGameManagers;
-        this.mainDto         = mainDto;
+        this.mainDto = mainDto;
         animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
     public void iniciar()
     {
+        allGameManagers.getBotoesPowerUp().desativarPowerUp();
+        allGameManagers.getBotaoLigaDesliga().ligar();
+
         mainDto.TutorialDto.GoTutorial.SetActive(true);
         prepararTutorialParteCliqueColetavel();
     }
 
     private void prepararTutorialParteCliqueColetavel()
     {
-        allGameManagers.getBotoesPowerUp().desativarPowerUp();
-        allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Vamos Coletar!\nClique para acionar a garra!";
-        animacaoTutorial.playColetar();        
-    }    
+        //allGameManagers.getBotoesPowerUp().desativarPowerUp();
+        //allGameManagers.getBotaoLigaDesliga().desligar();
+        //mainDto.TutorialDto.LblTexto.text = "Vamos Coletar!\nClique para acionar a garra!";
+
+        mainDto.TutorialDto.LblTexto.text = "Toque na tela para acionar a garra.";
+        animacaoTutorial.playColetar();
+    }
 
     private void tratarColetadosParteCliqueColetavel()
     {
-        if(contagemColetados == 1)
+        if (contagemColetados == 1)
         {
-            mainDto.TutorialDto.LblTexto.text = "Muito bom!\nColete mais um item!";
+            mainDto.TutorialDto.LblTexto.text = "Muito bom!\nColete mais um item.";
         }
         else if (contagemColetados == 2)
         {
-            mainDto.TutorialDto.LblTexto.text = "Vamos completar uma trinca!\nFalta só mais um!";
+            //mainDto.TutorialDto.LblTexto.text = "Vamos completar uma trinca!\nFalta sï¿½ mais um!";
+            mainDto.TutorialDto.LblTexto.text = "Colete mais item para combinar e aumentar sua pontuaÃ§Ã£o!";
         }
-        if(contagemColetados == 3)
+
+        if (contagemColetados == 3)
         {
-            prepararTutorialPartePowerUp();
+            //prepararTutorialPartePowerUp();
+            mainDto.TutorialDto.GoTutorial.SetActive(false);
+            //allGameManagers.getBotoesPowerUp().desativarPowerUp();
+            //allGameManagers.getBotaoLigaDesliga().ligar();
         }
     }
 
     private void prepararTutorialPartePowerUp()
     {
-        allGameManagers.getGarraManager().parar();        
-        mainDto.TutorialDto.LblTexto.text = "Acione o botão power up!\nEsta vazio agora.";        
+        allGameManagers.getGarraManager().parar();
+        mainDto.TutorialDto.LblTexto.text = "Acione o botï¿½o power up!\nEsta vazio agora.";
 
         mainDto.TutorialDto.GoTutorial.SetActive(true);
-        allGameManagers.getBotoesPowerUp().reativarPowerUp();
+        //allGameManagers.getBotoesPowerUp().reativarPowerUp();
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialParteDragPup()
     {
         mainDto.TutorialDto.LblTexto.text = "Arraste e encontre um powerup\ndisponivel, clique nele!";
-        animacaoTutorial.playDragPowerUp();        
+        animacaoTutorial.playDragPowerUp();
     }
 
     private void prepararTutorialParteAcionarPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Acione o botão power up!\nAgora esta carregado!";
+        mainDto.TutorialDto.LblTexto.text = "Acione o botï¿½o power up!\nAgora esta carregado!";
         animacaoTutorial.playPowerUp();
     }
 
@@ -79,7 +89,7 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
     {
         mainDto.TutorialDto.LblTexto.text = "Ative o powerup!\nClique para soltar o power up!";
         animacaoTutorial.playColetar();
-    }    
+    }
 
     private void prepararFimTutorialPupExpirado()
     {
@@ -101,13 +111,13 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
             mainDto.TutorialDto.LblTexto.text = "Isso ai!Muibo bom!\nBoa Sorte!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
-                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialSucesso));        
+                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialSucesso));
         }
     }
 
     protected IEnumerator coroutineEncerrarTutorial(float valorDelay)
     {
-        allGameManagers.getBotoesPowerUp().desativarPowerUp();
+        //allGameManagers.getBotoesPowerUp().desativarPowerUp();
         allGameManagers.getGarraManager().parar();
         yield return new WaitForSeconds(valorDelay);
 
@@ -153,10 +163,10 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
         {
             prepararFimTutorialPupExpirado();
         }
-        else if(evento.isEstadoFinalizar)
+        else if (evento.isEstadoFinalizar)
         {
             prepararFimTutorial();
-        }       
+        }
     }
 
     ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
