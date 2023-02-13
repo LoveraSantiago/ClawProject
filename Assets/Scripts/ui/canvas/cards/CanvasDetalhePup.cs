@@ -1,3 +1,6 @@
+using System.Collections;
+using UnityEngine;
+
 public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
                                 AcaoCardPowerUpSelecionado.ConsumidorEvento
 {
@@ -84,6 +87,13 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         
         new PopuladorCanvasDetalhePup()
             .popular(canvasDetalheDto, pupEntidade);
+
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(mostrarPremiosGanhos());
+    }
+
+    private IEnumerator mostrarPremiosGanhos()
+    {
+        yield return new WaitForSeconds(canvasDetalheDto.DelayMostrarPremios);
 
         int fichasGanhasDeBronze = UtilsFicha.getFichasGanhasDeBronze();
         if (fichasGanhasDeBronze > 0)

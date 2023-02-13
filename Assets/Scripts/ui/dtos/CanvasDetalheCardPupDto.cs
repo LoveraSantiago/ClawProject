@@ -6,7 +6,8 @@ using TMPro;
 [System.Serializable]
 public class CanvasDetalheCardPupDto
 {
-    
+
+    [SerializeField] private float delayMostrarPremios;
     [Space(3)]    
     [SerializeField] private Image imgBackground;
     [SerializeField] private Image imgCirculo;
@@ -27,6 +28,7 @@ public class CanvasDetalheCardPupDto
     [SerializeField] private Button btnCacaNiquelPupIndividual;
     [SerializeField] private Button btnCacaNiquelPupGeral;    
 
+    public float DelayMostrarPremios { get { return delayMostrarPremios; } }
     public Image ImgBackground { get { return imgBackground; } }
     public Image ImgCirculo { get { return imgCirculo; } }
     public Image ImgExplicacao { get { return imgExplicacao; } }
