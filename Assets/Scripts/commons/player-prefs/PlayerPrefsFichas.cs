@@ -87,17 +87,17 @@ public class PlayerPrefsFichas
         }
     }  
 
-    public void ganhouFichasBronze(int qtd)
+    public void ganhouFichasBronzeCacaNiquel(int qtd)
     {
         PlayerPrefs.SetInt(CHAVE_GANHAR_FICHA_BRONZE, qtd);
     }
     
-    public int getFichasDeBronzeGanhas()
+    public int getFichasDeBronzeGanhasCacaNiquel()
     {
         int result = PlayerPrefs.GetInt(CHAVE_GANHAR_FICHA_BRONZE, 0);
         if (result > 0)
         {
-            ganhouFichasBronze(0);
+            ganhouFichasBronzeCacaNiquel(0);
         }
         return result;
     }

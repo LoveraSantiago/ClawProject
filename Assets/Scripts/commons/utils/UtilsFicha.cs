@@ -25,10 +25,11 @@ public class UtilsFicha
     public static void agendarFichaDeBronzeGanha(int qtd)
     {
         playerPrefsFichas.ganharFicha(Ficha.BRONZE, qtd);//TODO MODIFICAR PARA AGENDAMENTO E EM TIMER FICHA RECUPERAR AGENDAMENTOS
+        playerPrefsFichas.ganhouFichasBronzeCacaNiquel(qtd);
     }
 
     public static int getFichasGanhasDeBronze()
     {
-        return playerPrefsFichas.getFichasDeBronzeGanhas();
+        return playerPrefsFichas.getFichasDeBronzeGanhasCacaNiquel();
     }
 }
