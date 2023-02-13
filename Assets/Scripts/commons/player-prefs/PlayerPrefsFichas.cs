@@ -5,6 +5,7 @@ public class PlayerPrefsFichas
 {
     private static readonly string CHAVE_QTD = "qtd";
     private static readonly string CHAVE_TEMPO = "tempo";
+    private static readonly string CHAVE_GANHAR_FICHA_BRONZE = "temfichabronze";
 
     public int getQtdFichas(Ficha ficha)
     {
@@ -85,6 +86,21 @@ public class PlayerPrefsFichas
             }
         }
     }  
+
+    public void ganhouFichasBronze(int qtd)
+    {
+        PlayerPrefs.SetInt(CHAVE_GANHAR_FICHA_BRONZE, qtd);
+    }
+    
+    public int getFichasDeBronzeGanhas()
+    {
+        int result = PlayerPrefs.GetInt(CHAVE_GANHAR_FICHA_BRONZE, 0);
+        if (result > 0)
+        {
+            ganhouFichasBronze(0);
+        }
+        return result;
+    }
 
     public DateTime getDataFicha(Ficha ficha)
     {
