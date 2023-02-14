@@ -23,7 +23,9 @@ public class ModalFimCacaNiquelGeral : AbstractModalFim
             Sprite spritePup = evento.sprResultados[contador];
             PowerUpEntidade powerUp = FactoryPowerUpEntidade.getPowerUpEntidadeBySprite(spritePup);
             int qtdPup = PlayerPrefsPowerUp.recuperarQtdPup(powerUp.nome);
-            PlayerPrefsPowerUp.adicionarPup(powerUp.nome, 1);
+            int qtdHum = 1;
+            PlayerPrefsPowerUp.adicionarPup(powerUp.nome, qtdHum);
+            PlayerPrefsPowerUp.agendarPup(powerUp.nome, qtdHum);
             string textLinha = " + 1 = " + (qtdPup + 1);
 
             modalCacaNiquelDto.SlotsCacaNiquel[contador].ImgResultado.sprite = spritePup;

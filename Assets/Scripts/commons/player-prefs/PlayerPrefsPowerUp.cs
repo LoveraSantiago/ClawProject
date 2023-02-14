@@ -4,6 +4,7 @@ public class PlayerPrefsPowerUp
 {
     private static readonly string PUP = "PUP";    
     private static readonly string PUP_SCROLL = "PUPSCROLL";    
+    private static readonly string PUP_AGENDADO = "PUPSAGENDADOS";    
 
     public static void salvarIndicePup(int indicePup)
     {
@@ -47,6 +48,44 @@ public class PlayerPrefsPowerUp
         int atual = recuperarQtdPup(nomePup);
         atual += qtd;
         salvarQtdPup(nomePup, atual);
+    }
+
+    public static void agendarPup(string nomePup, int qtd)
+    {        
+        WrapperArrayStringInteiro wrapper = recuperarPupAgendado();     
+        WrapperSingleStringInteiro single = new WrapperSingleStringInteiro(nomePup, qtd);
+        WrapperSingleStringInteiro[] stringInteiros = ArrayUtils.adicionarAoArray(wrapper.stringInteiros, single);
+        wrapper.stringInteiros = stringInteiros;
+        string agendados = JsonUtility.ToJson(wrapper);
+        PlayerPrefs.SetString(PUP_AGENDADO, agendados);
+    }
+
+    public int recuperarPupAgendado(string nomePup)
+    {
+        WrapperArrayStringInteiro wrapper = recuperarPupAgendado();
+        for(int contador = 0; contador < wrapper.stringInteiros.Length; contador++)
+        {
+            if (nomePup.Equals(wrapper.stringInteiros[contador].texto))
+            {
+                PlayerPrefs.DeleteKey(PUP_AGENDADO);
+                return wrapper.stringInteiros[contador].qtd;
+            }
+        }
+        PlayerPrefs.DeleteKey(PUP_AGENDADO);
+        return 0;
+    }
+
+    private static WrapperArrayStringInteiro recuperarPupAgendado()
+    {
+        string agendados = PlayerPrefs.GetString(PUP_AGENDADO);        
+        if (Utils.isBlank(agendados))
+        {
+            return new WrapperArrayStringInteiro(0);
+        }
+        else
+        {
+            return JsonUtility.FromJson<WrapperArrayStringInteiro>(agendados);
+        }
     }
 
     public static void adicionarPup(PowerUpEnums.TIPO tipo, int qtd)
