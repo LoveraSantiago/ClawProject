@@ -60,7 +60,7 @@ public class PlayerPrefsPowerUp
         PlayerPrefs.SetString(PUP_AGENDADO, agendados);
     }
 
-    public int recuperarPupAgendado(string nomePup)
+    public static int recuperarPupAgendado(string nomePup)
     {
         WrapperArrayStringInteiro wrapper = recuperarPupAgendado();
         for(int contador = 0; contador < wrapper.stringInteiros.Length; contador++)

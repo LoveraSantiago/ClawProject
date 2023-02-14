@@ -5062,6 +5062,7 @@ MonoBehaviour:
       lblPreco: {fileID: 2119918193}
       lblExplicacao: {fileID: 2065954064}
       lblQtd: {fileID: 1400807178}
+      lblQtdGanhos: {fileID: 431008713}
       lblNome: {fileID: 919096078}
       lblTipo: {fileID: 1741452966}
       btnPratica: {fileID: 1425523258}

@@ -6,7 +6,6 @@ using TMPro;
 [System.Serializable]
 public class CanvasDetalheCardPupDto
 {
-
     [SerializeField] private float delayMostrarPremios;
     [Space(3)]    
     [SerializeField] private Image imgBackground;
@@ -21,6 +20,7 @@ public class CanvasDetalheCardPupDto
     [SerializeField] private TextMeshProUGUI lblPreco;
     [SerializeField] private TextMeshProUGUI lblExplicacao;
     [SerializeField] private TextMeshProUGUI lblQtd;
+    [SerializeField] private TextMeshProUGUI lblQtdGanhos;
     [SerializeField] private TextMeshProUGUI lblNome;
     [SerializeField] private TextMeshProUGUI lblTipo;
     [Space(3)]
@@ -41,6 +41,7 @@ public class CanvasDetalheCardPupDto
     public TextMeshProUGUI LblPreco { get { return lblPreco; } }
     public TextMeshProUGUI LblExplicacao { get { return lblExplicacao; } }
     public TextMeshProUGUI LblQtd { get { return lblQtd; } }
+    public TextMeshProUGUI LblQtdGanhos { get { return lblQtdGanhos; } }
     public TextMeshProUGUI LblNome { get { return lblNome; } }
     public TextMeshProUGUI LblTipo { get { return lblTipo; } }
 
