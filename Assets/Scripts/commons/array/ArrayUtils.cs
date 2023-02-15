@@ -12,13 +12,23 @@ public class ArrayUtils
 
     public static T[] adicionarAoArray<T>(T[] array, T item)
     {
-        T[] result = new T[array.Length + 1];
-        for (int contador = 0; contador < array.Length; contador++)
+        if(array == null)
         {
-            result[contador] = array[contador];
+            T[] result = new T[1];
+            result[0] = item;
+            return result;
         }
-        result[result.Length - 1] = item;
-        return result;
+        else
+        {
+            T[] result = new T[array.Length + 1];
+            for (int contador = 0; contador < array.Length; contador++)
+            {
+                result[contador] = array[contador];
+            }
+            result[result.Length - 1] = item;
+            return result;
+        }
+
     }
 
     public static int[] criarArrayPopuladoDeInteiros(int tamanhoArray, int valor)
