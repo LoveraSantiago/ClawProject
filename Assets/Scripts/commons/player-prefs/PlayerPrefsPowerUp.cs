@@ -4,6 +4,7 @@ public class PlayerPrefsPowerUp
 {
     private static readonly string PUP = "PUP";    
     private static readonly string PUP_SCROLL = "PUPSCROLL";    
+    private static readonly string PUP_AGENDADO = "PUPSAGENDADOS";    
 
     public static void salvarIndicePup(int indicePup)
     {
@@ -47,6 +48,57 @@ public class PlayerPrefsPowerUp
         int atual = recuperarQtdPup(nomePup);
         atual += qtd;
         salvarQtdPup(nomePup, atual);
+    }
+
+    public static void agendarPup(string nomePup, int qtd)
+    {        
+        WrapperArrayStringInteiro wrapper = recuperarPupAgendado();     
+        WrapperSingleStringInteiro single = new WrapperSingleStringInteiro();
+        single.texto = nomePup;
+        single.qtd = qtd;
+
+        WrapperSingleStringInteiro[] stringInteiros = ArrayUtils.adicionarAoArray(wrapper.stringInteiros, single);
+        wrapper.stringInteiros = stringInteiros;
+        string agendados = JsonUtility.ToJson(wrapper);
+        //Debug.Log("Agendado valor: " + agendados);
+        PlayerPrefs.SetString(PUP_AGENDADO, agendados);
+    }
+
+    public static int recuperarPupAgendado(string nomePup)
+    {
+        WrapperArrayStringInteiro wrapper = recuperarPupAgendado();
+        for(int contador = 0; contador < wrapper.stringInteiros.Length; contador++)
+        {
+            if (nomePup.Equals(wrapper.stringInteiros[contador].texto))
+            {
+                PlayerPrefs.DeleteKey(PUP_AGENDADO);
+                return wrapper.stringInteiros[contador].qtd;
+            }
+        }
+        PlayerPrefs.DeleteKey(PUP_AGENDADO);
+        return 0;
+    }
+
+    private static WrapperArrayStringInteiro recuperarPupAgendado()
+    {        
+        string agendados = PlayerPrefs.GetString(PUP_AGENDADO);
+        //Debug.Log("Recuperado agendados " + agendados);
+        if (Utils.isBlank(agendados))
+        {
+            WrapperArrayStringInteiro wrapperArrayStringInteiro = new WrapperArrayStringInteiro();
+            WrapperSingleStringInteiro[] stringInteiros = new WrapperSingleStringInteiro[0];
+            wrapperArrayStringInteiro.stringInteiros = stringInteiros;
+            return wrapperArrayStringInteiro;
+        }
+        else
+        {
+            WrapperArrayStringInteiro wrapperArrayStringInteiro = JsonUtility.FromJson<WrapperArrayStringInteiro>(agendados);
+            if(wrapperArrayStringInteiro.stringInteiros == null)
+            {
+                wrapperArrayStringInteiro.stringInteiros = new WrapperSingleStringInteiro[0];
+            }
+            return wrapperArrayStringInteiro;
+        }
     }
 
     public static void adicionarPup(PowerUpEnums.TIPO tipo, int qtd)

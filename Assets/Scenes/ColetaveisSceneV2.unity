@@ -1249,6 +1249,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &389280979 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3936004836841104932, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+  m_PrefabInstance: {fileID: 373956808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &394447836
 GameObject:
   m_ObjectHideFlags: 0
@@ -3014,6 +3025,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1268032128 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1468901612222037699, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+  m_PrefabInstance: {fileID: 373956808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1305474766
 GameObject:
   m_ObjectHideFlags: 0
@@ -3434,6 +3456,11 @@ CanvasRenderer:
 --- !u!1 &1346150238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7590549816884906465, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
+  m_PrefabInstance: {fileID: 373956808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1346150244 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7209883023910115086, guid: bef1b717dc6bf604a8c6cf736a623c44, type: 3}
   m_PrefabInstance: {fileID: 373956808}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1389853995
@@ -4659,7 +4686,10 @@ MonoBehaviour:
   mainDto:
     timerFichaDto:
       btnMais: {fileID: 373956815}
-      lblQdtFichas: {fileID: 373956814}
+      lblQdtFichasOld: {fileID: 373956814}
+      lblQdtFichasAtual: {fileID: 389280979}
+      lblQdtAcrescimo: {fileID: 1268032128}
+      animator: {fileID: 1346150244}
       relogioDto:
         lblHoras: {fileID: 373956813}
         transfSegundos: {fileID: 373956812}

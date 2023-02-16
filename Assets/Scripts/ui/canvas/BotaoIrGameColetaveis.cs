@@ -7,19 +7,19 @@ public class BotaoIrGameColetaveis
     private IndiceArmarioSelecionadoDto indiceArmarioSelecionado;
 
     public BotaoIrGameColetaveis(
-        Button btnColetavel, ModalNoFichaDto modalNoFichaDto, SomManagerColetaveis somManager)
+        MainColetaveisDto mainDto, OperacaoFicha operacaoFichaOuro, SomManagerColetaveis somManager)
     {
-        btnColetavel.onClick.AddListener(() => {                
-                irParaLevelDeColetado(somManager);
+        mainDto.CanvasDetalheColetavelDto.BtnColetavel.onClick.AddListener(() => {                
+                irParaLevelDeColetado(operacaoFichaOuro, somManager);
             });
-        modalNoFicha = new ModalNoFicha(modalNoFichaDto, somManager);
+        modalNoFicha = new ModalNoFicha(mainDto.ModalNoFichaDto, somManager);
     }
 
-    private void irParaLevelDeColetado(SomManagerColetaveis somManager)
+    private void irParaLevelDeColetado(OperacaoFicha operacaoFichaOuro, SomManagerColetaveis somManager)
     {   
-        if(PlayerPrefsFichas.possueFichas(Ficha.OURO, 1) && ContextoEstaticoUtils.loading.naoAcionado)
+        if(UtilsFicha.possuiFichasDeOuro(1) && ContextoEstaticoUtils.loading.naoAcionado)
         {
-            PlayerPrefsFichas.consumirFicha(Ficha.OURO, 1);
+            operacaoFichaOuro.consumirFicha(1);            
             somManager.playSomCliqueIrParaGame();
 
             MapaEntidade mapaEntidade = coletavelEntidade.mapaEntidade;

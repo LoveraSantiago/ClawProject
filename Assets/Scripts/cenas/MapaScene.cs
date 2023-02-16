@@ -22,7 +22,7 @@ public class MapaScene : MonoBehaviour,
         prefabLoading.iniciarLoading(somManager, mainMapaDto.GosDesligar);
 
         allTimersFichas = new AllTimersFichas(mainMapaDto.TimerFichaDto, somManager);        
-        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto, somManager);
+        ModalMapsManager modalManager = new ModalMapsManager(mainMapaDto, allTimersFichas.timerFichaPrata, somManager);
         new BotoesCenasMapa(mainMapaDto.BotoesCenasDto, somManager);
 
         mapaUi = new MapaUi(mainMapaDto.LevelMapaUiDto, somManager);

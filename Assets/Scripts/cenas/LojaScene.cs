@@ -33,26 +33,39 @@ public class LojaScene : MonoBehaviour
             });
 
         mainLojaDto.BtnOuro.onClick.AddListener(()=> {
-            somManager.playSomClique();
-            allTimersFichas.ganharFichasDeOuro(2);            
+            bool result = allTimersFichas.ganharFichasDeOuro(2);
+            if (result)
+            {
+                somManager.playSomClique();
+            }
         });
 
         mainLojaDto.BtnPrata.onClick.AddListener(() => {
-            somManager.playSomClique();            
-            allTimersFichas.ganharFichasDePrata(4);            
+            bool result = allTimersFichas.ganharFichasDePrata(4);
+            if (result)
+            {
+                somManager.playSomClique();            
+            }
         });
 
         mainLojaDto.BtnBronze.onClick.AddListener(() => {
-            somManager.playSomClique();
-            allTimersFichas.ganharFichasDeBronze(6);            
+            bool result = allTimersFichas.ganharFichasDeBronze(6);
+            if (result)
+            {
+                somManager.playSomClique();
+            }
         });
 
         mainLojaDto.BtnAssinatura.onClick.AddListener(() =>
         {
-            somManager.playSomClique();            
-            allTimersFichas.ganharFichasDeOuro(1);
-            allTimersFichas.ganharFichasDePrata(2);
-            allTimersFichas.ganharFichasDeBronze(3);
+            bool result = true;
+            result = result && allTimersFichas.ganharFichasDeOuro(1);
+            result = result && allTimersFichas.ganharFichasDePrata(2);
+            result = result && allTimersFichas.ganharFichasDeBronze(3);
+            if (result)
+            {
+                somManager.playSomClique();            
+            }
         });
     }
 }

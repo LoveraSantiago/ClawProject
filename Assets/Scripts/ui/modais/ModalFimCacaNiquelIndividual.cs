@@ -48,7 +48,7 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
     private void montarLinhasResultados(CacaNiquelEventoDto evento, PowerUpEntidade pupEscolhido)
     {
         int qtdPups = PlayerPrefsPowerUp.recuperarQtdPup(pupEscolhido.nome);
-        int qtdFichasBronze = PlayerPrefsFichas.getQtdFichas(Ficha.BRONZE);        
+        int qtdFichasBronze = UtilsFicha.getQtdFichasBronze();      
 
         string textLinhaPups = null;
         string textBonus     = null;
@@ -59,16 +59,20 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         {
             case 0:
                 {
+                    int qtdHum = 1;
                     textLinhaPups = "  +  0 = " + qtdPups;
-                    textBonus     = "  + 1 = " + (qtdPups + 1);
-                    PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 1);
+                    textBonus     = "  + 1 = " + (qtdPups + qtdHum);
+                    PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, qtdHum);
+                    PlayerPrefsPowerUp.agendarPup(pupEscolhido.nome, qtdHum);
                     break;
                 }
             case 3:
                 {
+                    int qtdSeis = 6;
                     textLinhaPups = "  +  3 = " + (qtdPups + 3);
-                    textBonus     = "  + 3 = " + (qtdPups + 6);                    
-                    PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, 6);
+                    textBonus     = "  + 3 = " + (qtdPups + qtdSeis);
+                    PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, qtdSeis);
+                    PlayerPrefsPowerUp.agendarPup(pupEscolhido.nome, qtdSeis);
                     break;
                 }
             default:
@@ -76,6 +80,7 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
                     textLinhaPups = "  + " + qtdSucesso + " = " + (qtdPups + qtdSucesso);
                     textBonus     = "  + 0 = " + (qtdPups + qtdSucesso);                    
                     PlayerPrefsPowerUp.adicionarPup(pupEscolhido.nome, qtdSucesso);
+                    PlayerPrefsPowerUp.agendarPup(pupEscolhido.nome, qtdSucesso);
                     break;
                 }
         }
@@ -83,7 +88,7 @@ public class ModalFimCacaNiquelIndividual : AbstractModalFim
         if (evento.hasFicha())
         {
             textFicha = "  + 1 = " + (qtdFichasBronze + 1);
-            PlayerPrefsFichas.ganharFicha(Ficha.BRONZE, 1);
+            UtilsFicha.agendarFichaDeBronzeGanha(1);            
         }
         else
         {

@@ -2,9 +2,9 @@ using System;
 
 public class AllTimersFichas 
 {
-    private TimerFicha timerFichaOuro;
-    private TimerFicha timerFichaPrata;
-    private TimerFicha timerFichaBronze;  
+    public TimerFicha timerFichaOuro { get; private set; }
+    public TimerFicha timerFichaPrata { get; private set; }
+    public TimerFicha timerFichaBronze { get; private set; }
 
     public AllTimersFichas(TimerFichaDto[] timerFichaDto, SomTimerFicha somTimerFicha)
     {
@@ -20,18 +20,18 @@ public class AllTimersFichas
         timerFichaBronze.update();
     }
 
-    public void ganharFichasDeOuro(int qtdFichas)
+    public bool ganharFichasDeOuro(int qtdFichas)
     {
-        timerFichaOuro.ganharFichas(qtdFichas);
+        return timerFichaOuro.ganharFichas(qtdFichas);
     }
     
-    public void ganharFichasDePrata(int qtdFichas)
+    public bool ganharFichasDePrata(int qtdFichas)
     {
-        timerFichaPrata.ganharFichas(qtdFichas);
+        return timerFichaPrata.ganharFichas(qtdFichas);
     }
     
-    public void ganharFichasDeBronze(int qtdFichas)
+    public bool ganharFichasDeBronze(int qtdFichas)
     {
-        timerFichaBronze.ganharFichas(qtdFichas);
+        return timerFichaBronze.ganharFichas(qtdFichas);
     }
 }

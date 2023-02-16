@@ -6,16 +6,16 @@ public class ModalMapsManager : AcaoMapaNavegado.ConsumidorEvento,
     private MapaEntidade mapaEntidadeAtual;
     private SomManagerMap somMap;
 
-    public ModalMapsManager(MainMapaDto mainMapaDto, SomManagerMap somManagerMap)
+    public ModalMapsManager(MainMapaDto mainMapaDto, OperacaoFicha operacaoFichaPrata, SomManagerMap somManagerMap)
     {
-        modalFase = new ModalFase(mainMapaDto.ModalFaseDto, somManagerMap);
+        modalFase = new ModalFase(mainMapaDto.ModalFaseDto, operacaoFichaPrata, somManagerMap);
         modalNoFicha = new ModalNoFicha(mainMapaDto.ModalNoFichaDto, somManagerMap);
         this.somMap = somManagerMap;
     }
 
     private void abrirModal(MapaEntidade mapaEntidade, int indiceLevel)
     {
-        if(PlayerPrefsFichas.possueFichas(Ficha.PRATA, 1))
+        if(UtilsFicha.possuiFichasDePrata(1))
         {
             modalFase.ligar(mapaEntidade, indiceLevel, somMap);
         }

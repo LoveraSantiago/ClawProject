@@ -1,16 +1,22 @@
 using System;
 
-public class TimerFicha : Executor
+public class TimerFicha : OperacaoFicha, 
+                          Executor
 {
+    private static PlayerPrefsFichas playerPrefsFichas = new PlayerPrefsFichas();
     private readonly Ficha ficha;
 
     private TimerFichaDto timerFichaDto;
-    private Relogio relogio;   
+    private AnimacaoTimerFicha animacaoTimerFicha;
+    private Relogio relogio;
+    private IntervaloDeTempo intervaloDeTempo;
 
     public TimerFicha(TimerFichaDto timerFichaDto, SomTimerFicha somTimerFicha, Ficha ficha)
     {
         this.ficha = ficha;
         this.timerFichaDto = timerFichaDto;
+        animacaoTimerFicha = new AnimacaoTimerFicha(timerFichaDto.Animator);
+        intervaloDeTempo = new IntervaloDeTempo();
 
         configurarBotao(somTimerFicha);
         setupDeFichas();
@@ -18,6 +24,7 @@ public class TimerFicha : Executor
 
     public void update()
     {
+        intervaloDeTempo.contarTempo();
         relogio.updateSegundo(timerFichaDto.RelogioDto);
     }
 
@@ -26,16 +33,34 @@ public class TimerFicha : Executor
         ganharFichas(1);        
     }
 
-    public void ganharFichas(int qtdFichas)
+    public bool ganharFichas(int qtdFichas)
     {
-        PlayerPrefsFichas.ganharFicha(ficha, qtdFichas);
-        recontarFichas();
-    }    
+        if (intervaloDeTempo.contarTempo())
+        {
+            playerPrefsFichas.ganharFicha(ficha, qtdFichas);
+            recontarFichas(qtdFichas);
+            intervaloDeTempo.configTempoParaAcao(1);
+            return true;
+        }
+        return false;
+    }
+
+    public void mostrarFichasGanhas(int qtdFichasGanhas)
+    {
+        int qtdFichas = playerPrefsFichas.getQtdFichas(ficha);
+        setLabelQtdDeFichas(qtdFichas, qtdFichasGanhas);
+    }
+
+    public void consumirFicha(int qtd)
+    {
+        playerPrefsFichas.consumirFicha(ficha, qtd);
+        recontarFichas(-qtd);
+    }
 
     private void setupDeFichas()
     {
-        int qtdFichas = PlayerPrefsFichas.getQtdFichas(ficha);
-        setLabelQtdDeFichas(qtdFichas);
+        int qtdFichas = playerPrefsFichas.getQtdFichas(ficha);
+        setLabelQtdDeFichas(qtdFichas, 0);
 
         FichaEntidade fichaEntidade = FichaEntidade.getFichaEntidade(ficha);
         if(qtdFichas >= fichaEntidade.limiteFree)
@@ -46,14 +71,14 @@ public class TimerFicha : Executor
         else
         {   
             atualizarTempoDesdeUltimaFicha(qtdFichas, fichaEntidade);
-            recontarFichas();
+            recontarFichas(0);
         }
     }
 
     private void atualizarTempoDesdeUltimaFicha(int fichasAtuais, FichaEntidade fichaEntidade)
     {
         int resultado = 0;
-        DateTime dataProjetada = PlayerPrefsFichas.getDataFicha(fichaEntidade.ficha);
+        DateTime dataProjetada = playerPrefsFichas.getDataFicha(fichaEntidade.ficha);
 
         while (fichasAtuais < fichaEntidade.limiteFree)
         {
@@ -66,18 +91,18 @@ public class TimerFicha : Executor
             }
             fichasAtuais++;
         }                
-        PlayerPrefsFichas.ganharFicha(fichaEntidade.ficha, resultado);
+        playerPrefsFichas.ganharFicha(fichaEntidade.ficha, resultado);
     }
 
-    private void recontarFichas()
+    private void recontarFichas(int fichasGanhas)
     {
-        int qtdFichas = PlayerPrefsFichas.getQtdFichas(ficha);
-        setLabelQtdDeFichas(qtdFichas);
+        int qtdFichas = playerPrefsFichas.getQtdFichas(ficha);
+        setLabelQtdDeFichas(qtdFichas, fichasGanhas);
 
         FichaEntidade fichaEntidade = FichaEntidade.getFichaEntidade(ficha);
         if (qtdFichas < fichaEntidade.limiteFree)
         {
-            DateTime dataSalva = PlayerPrefsFichas.getDataFicha(ficha);
+            DateTime dataSalva = playerPrefsFichas.getDataFicha(ficha);
             relogio = new RelogioContador(dataSalva, fichaEntidade, this);
         }
         else
@@ -87,9 +112,24 @@ public class TimerFicha : Executor
         }
     }
 
-    private void setLabelQtdDeFichas(int fichas)
+    private void setLabelQtdDeFichas(int fichasAtual, int fichasGanhas)
     {
-        timerFichaDto.LblQdtFichas.text = fichas.ToString();
+        timerFichaDto.LblQdtFichasOld.text = fichasAtual.ToString();
+        if(fichasGanhas > 0)
+        {
+            timerFichaDto.LblQdtAcrescimo.text = String.Format("+{0}", fichasGanhas);            
+            timerFichaDto.LblQdtFichasOld.text = (fichasAtual - fichasGanhas).ToString();            
+            animacaoTimerFicha.playGanharFicha();            
+        }
+        else if(fichasGanhas < 0)
+        {
+            fichasGanhas = -fichasGanhas;
+            timerFichaDto.LblQdtAcrescimo.text = String.Format("-{0}", fichasGanhas);            
+            timerFichaDto.LblQdtFichasOld.text = (fichasAtual + fichasGanhas).ToString();             
+            animacaoTimerFicha.playGastarFicha();
+        }        
+        timerFichaDto.LblQdtFichasAtual.text = fichasAtual.ToString();
+        
     }   
 
     private void configurarBotao(SomTimerFicha somTimerFicha)

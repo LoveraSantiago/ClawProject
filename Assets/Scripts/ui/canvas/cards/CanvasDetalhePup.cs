@@ -1,4 +1,5 @@
-using System;
+using System.Collections;
+using UnityEngine;
 
 public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
                                 AcaoCardPowerUpSelecionado.ConsumidorEvento
@@ -8,20 +9,21 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
 
     private CanvasDetalheCardPupDto canvasDetalheDto;
     private ModalNoFicha modalNoFicha;//Temporariamente aqui    
+    private OperacaoFicha operacaoFichaBronze;
     private SomManagerPup somManager;
     private ProdutorDeEvento<int> produtorEventoBtnEscohido;
 
-    public CanvasDetalhePup(
-        CanvasDetalheCardPupDto canvasDetalheDto, ModalNoFichaDto modalNoFichaDto, SomManagerPup somManager)
+    public CanvasDetalhePup(MainPupDto mainPupDto, OperacaoFicha operacaoFichaBronze, SomManagerPup somManager)
     {
-        this.canvasDetalheDto = canvasDetalheDto;
+        this.canvasDetalheDto = mainPupDto.CanvasDetalheDto;
         this.somManager       = somManager;
+        this.operacaoFichaBronze = operacaoFichaBronze;
         this.canvasDetalheDto.BtnPratica.onClick.AddListener(()=> gotoScenePupPratica());
         this.canvasDetalheDto.BtnCacaNiquelPupIndividual.onClick.AddListener(() => gotoScenePupCacaNiquelIndividual());
         this.canvasDetalheDto.BtnCacaNiquelPupGeral.onClick.AddListener(()=> gotoScenePupCacaNiquelGeral());
         isAberto = false;
 
-        modalNoFicha = new ModalNoFicha(modalNoFichaDto, somManager);
+        modalNoFicha = new ModalNoFicha(mainPupDto.ModalNoFichaDto, somManager);
         produtorEventoBtnEscohido = new ProdutorDeEvento<int>();
     }
 
@@ -38,7 +40,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         AbstractLevel level = mapaEntidade.getLevelByIndiceDezena((int)pupEntidade.tipo);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
 
-        abrirCenaOuModal(0, 0);
+        abrirCenaOuModal(0, 0, operacaoFichaBronze);
     }
 
     private void gotoScenePupCacaNiquelIndividual()
@@ -50,7 +52,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
 
         PowerUpEntidade pupEntidade = FactoryPowerUpEntidade.getPowerUpFromIndice(indicePupSelecionado);
         int precoFicha = int.Parse(pupEntidade.preco);
-        abrirCenaOuModal(1, precoFicha);
+        abrirCenaOuModal(1, precoFicha, operacaoFichaBronze);
     }
 
     private void gotoScenePupCacaNiquelGeral()
@@ -59,15 +61,15 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         AbstractLevel level = mapaEntidade.getLevelByIndiceDezena(1);
         ContextoEstaticoUtils.configMapaLevelAtual(mapaEntidade, level);
         
-        abrirCenaOuModal(2, 1);
+        abrirCenaOuModal(2, 1, operacaoFichaBronze);
     }
 
-    private void abrirCenaOuModal(int indiceBtn, int precoFicha)
+    private void abrirCenaOuModal(int indiceBtn, int precoFicha, OperacaoFicha operacaoFichaBronze)
     {
-        if (PlayerPrefsFichas.possueFichas(Ficha.BRONZE, precoFicha))
+        if (UtilsFicha.possuiFichasDeBronze(precoFicha))
         {
             somManager.playSomCliqueIrParaLevel();
-            PlayerPrefsFichas.consumirFicha(Ficha.BRONZE, precoFicha);            
+            operacaoFichaBronze.consumirFicha(precoFicha);            
             PlayerPrefsPowerUp.salvarIndicePup(indicePupSelecionado);
             produtorEventoBtnEscohido.produziuEvento(indiceBtn);
             ContextoEstaticoUtils.loading.irParaGameCena();            
@@ -82,26 +84,33 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
     {
         isAberto = true;
         indicePupSelecionado = pupEntidade.indice;
+        
+        new PopuladorCanvasDetalhePup()
+            .popular(canvasDetalheDto, pupEntidade);
 
-        MaterialTipoPowerUpDto materialDetalhe  = pupEntidade.getMaterial();
-        canvasDetalheDto.ImgBackground.color    = materialDetalhe.CorPrincipal;
-        canvasDetalheDto.ImgCirculo.color       = materialDetalhe.CorCirculo;
-        canvasDetalheDto.ImgExplicacao.color    = materialDetalhe.CorEscura;
-        canvasDetalheDto.ImgPup.sprite          = pupEntidade.sprPersonagemPup;        
-        canvasDetalheDto.ImgCorBtnPrin[0].color = materialDetalhe.CorVariacao1;
-        canvasDetalheDto.ImgCorBtnPrin[1].color = materialDetalhe.CorVariacao2;
-        canvasDetalheDto.ImgCorBtnPrin[2].color = materialDetalhe.CorVariacao3;
-        canvasDetalheDto.ImgCorBtnSec[0].color  = materialDetalhe.CorCirculo;
-        canvasDetalheDto.ImgCorBtnSec[1].color  = materialDetalhe.CorCirculo;
-        canvasDetalheDto.ImgCorBtnSec[2].color  = materialDetalhe.CorCirculo;
-        canvasDetalheDto.ImgBtns[0].color       = materialDetalhe.CorEscura;
-        canvasDetalheDto.ImgBtns[1].color       = materialDetalhe.CorEscura;
-        canvasDetalheDto.ImgBtns[2].color       = materialDetalhe.CorEscura;
-        canvasDetalheDto.LblPreco.text          = pupEntidade.preco;
-        canvasDetalheDto.LblExplicacao.text     = pupEntidade.descCurta + Environment.NewLine + pupEntidade.descDetalhada;
-        canvasDetalheDto.LblQtd.text            = pupEntidade.getQtd().ToString();
-        canvasDetalheDto.LblNome.text           = pupEntidade.nome;
-        canvasDetalheDto.LblTipo.text           = pupEntidade.familia;
+        int qtd = PlayerPrefsPowerUp.recuperarPupAgendado(pupEntidade.nome);
+        if(qtd == 0)
+        {
+            canvasDetalheDto.LblQtdGanhos.text = "";
+        }
+        else
+        {
+            canvasDetalheDto.LblQtdGanhos.text = string.Format("+{0}", qtd.ToString());
+        }
+
+        ContextoEstaticoUtils.monoBehaviour.StartCoroutine(mostrarPremiosGanhos());
+    }
+
+    private IEnumerator mostrarPremiosGanhos()
+    {
+
+        yield return new WaitForSeconds(canvasDetalheDto.DelayMostrarPremios);
+
+        int fichasGanhasDeBronze = UtilsFicha.getFichasGanhasDeBronze();
+        if (fichasGanhasDeBronze > 0)
+        {
+            operacaoFichaBronze.mostrarFichasGanhas(fichasGanhasDeBronze);
+        }
     }
 
     void AcaoCardPowerUpSelecionado.ConsumidorEvento.consumirEvento(CardPupSelecionadoDto evento)

@@ -9,10 +9,10 @@ public class ModalFase
     private LinhasChallenge linhasChallenge;
     private NavegacaoDeArray<ColetavelEntidade> navegacaDeColetaveis;
 
-    public ModalFase(ModalFaseDto modalFaseDto, SomMap somMap)
+    public ModalFase(ModalFaseDto modalFaseDto, OperacaoFicha operacaoFichaPrata, SomMap somMap)
     {
         this.modalFaseDto = modalFaseDto;
-        modalFaseDto.BtnLevel.onClick.AddListener(()=> irParaCenaGame(somMap));
+        modalFaseDto.BtnLevel.onClick.AddListener(()=> irParaCenaGame(operacaoFichaPrata, somMap));
         modalFaseDto.BtnFechar.onClick.AddListener(() => desligar(somMap));
         modalFaseDto.BtnFree.onClick.AddListener(() => liberarLevel());
         navegacaDeColetaveis = new NavegacaoDeArray<ColetavelEntidade>();
@@ -40,9 +40,9 @@ public class ModalFase
         linhasChallenge.addConfiguracaoChallenges(mapaEntidade, level.getChallenges());
     }
 
-    private void irParaCenaGame(SomMap somMap)
-    {
-        PlayerPrefsFichas.consumirFicha(Ficha.PRATA, 1);
+    private void irParaCenaGame(OperacaoFicha operacaoFichaPrata, SomMap somMap)
+    {        
+        operacaoFichaPrata.consumirFicha(1);
         somMap.playSomStart();
         ContextoEstaticoUtils.loading.irParaGameCena();
         modalFaseDto.Animator.Play(ANIM_FECHAR);
