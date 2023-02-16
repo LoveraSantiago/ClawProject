@@ -25,7 +25,7 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
 
     public void iniciar()
     {
-        allGameManagers.getBotoesPowerUp().desativarPowerUp();
+        allGameManagers.getBotoesPowerUp().desligarBotoes();
         allGameManagers.getBotaoLigaDesliga().ligar();
 
         mainDto.TutorialDto.GoTutorial.SetActive(true);
