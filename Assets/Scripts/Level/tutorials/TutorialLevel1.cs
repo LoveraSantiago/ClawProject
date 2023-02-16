@@ -9,11 +9,11 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
 {
     private bool finalizacaoDisparada;
     private int contagemColetados;
+
     private MainGameDto mainDto;
     private AnimacaoTutorial animacaoTutorial;
-    private ProdutorDeEvento<InformacoesColetadoDto> produtorDeEvento;
-
     private AllGameManagers allGameManagers;
+    private ProdutorDeEvento<InformacoesColetadoDto> produtorDeEvento;
 
     public TutorialLevel1(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
@@ -34,10 +34,6 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
 
     private void prepararTutorialParteCliqueColetavel()
     {
-        //allGameManagers.getBotoesPowerUp().desativarPowerUp();
-        //allGameManagers.getBotaoLigaDesliga().desligar();
-        //mainDto.TutorialDto.LblTexto.text = "Vamos Coletar!\nClique para acionar a garra!";
-
         mainDto.TutorialDto.LblTexto.text = "Toque na tela para acionar a garra.";
         animacaoTutorial.playColetar();
     }
@@ -50,28 +46,14 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
         }
         else if (contagemColetados == 2)
         {
-            //mainDto.TutorialDto.LblTexto.text = "Vamos completar uma trinca!\nFalta s� mais um!";
             mainDto.TutorialDto.LblTexto.text = "Colete mais item para combinar e aumentar sua pontuação!";
         }
 
         if (contagemColetados == 3)
         {
-            //prepararTutorialPartePowerUp();
             mainDto.TutorialDto.GoTutorial.SetActive(false);
-            //allGameManagers.getBotoesPowerUp().desativarPowerUp();
-            //allGameManagers.getBotaoLigaDesliga().ligar();
         }
-    }
-
-    private void prepararTutorialPartePowerUp()
-    {
-        allGameManagers.getGarraManager().parar();
-        mainDto.TutorialDto.LblTexto.text = "Acione o bot�o power up!\nEsta vazio agora.";
-
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
-        //allGameManagers.getBotoesPowerUp().reativarPowerUp();
-        animacaoTutorial.playPowerUp();
-    }
+    }    
 
     private void prepararTutorialParteDragPup()
     {
@@ -149,7 +131,7 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento,
         }
         else
         {
-            prepararTutorialPartePowerUp();
+            //prepararTutorialPartePowerUp();
         }
     }
 
