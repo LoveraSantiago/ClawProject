@@ -1,14 +1,18 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class TutorialLevel2 : AbstractTutorialPowerUp
+public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
+                              AcaoPupFromScrollSelecao.ConsumidorEvento,
+                              AcaoPowerUpAcionado.ConsumidorEvento,
+                              AcaoColetado.ProdutorEvento
 {
-    private bool emAndamento;
     private bool finalizacaoDisparada;
-    private AllGameManagers allGameManagers;
-    private AnimacaoTutorial animacaoTutorial;
+    private int contagemColetados;
     private MainGameDto mainDto;
+    private AnimacaoTutorial animacaoTutorial;
     private ProdutorDeEvento<InformacoesColetadoDto> produtorDeEvento;
+
+    private AllGameManagers allGameManagers;
 
     public TutorialLevel2(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
@@ -18,62 +22,59 @@ public class TutorialLevel2 : AbstractTutorialPowerUp
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
-    public override void iniciar()
+    public void iniciar()
     {
         mainDto.TutorialDto.GoTutorial.SetActive(true);
-        prepararTutorialCliquePowerUp();
-    }
+        prepararTutorialPartePowerUp();
+    }   
 
-    public override void consumirEvento(PowerUpInfoDto evento)
-    {
-        if (evento.isEstadoInicio)
-        {
-            prepararTutorialInicioPowerUp();
-        }
-        else if (evento.isEstadoPreFinalizar)
-        {
-            mainDto.TutorialDto.GoTutorial.SetActive(false);
-            //prepararMensagemPupAcionado();
-        }
-        else if (evento.isEstadoFinalizar)
-        {
-            // prepararFimTutorialPupAcionado();
-        }
-        else if (evento.isEstadoExpirado)
-        {
-            // prepararFimTutorialPupExpirado();
-            mainDto.TutorialDto.GoTutorial.SetActive(false);
-        }
-    }
-
-    private void prepararTutorialCliquePowerUp()
+    private void prepararTutorialPartePowerUp()
     {
         allGameManagers.getGarraManager().parar();
-        mainDto.TutorialDto.LblTexto.text = "Uau, power-up!";
+        mainDto.TutorialDto.LblTexto.text = "Acione o bot�o power up!\nEsta vazio agora.";
+
         mainDto.TutorialDto.GoTutorial.SetActive(true);
         allGameManagers.getBotoesPowerUp().reativarPowerUp();
         animacaoTutorial.playPowerUp();
     }
 
-    private void prepararTutorialInicioPowerUp()
+    private void prepararTutorialParteDragPup()
     {
-        mainDto.TutorialDto.LblTexto.text = "Toque para usar a mini asas";
+        mainDto.TutorialDto.LblTexto.text = "Arraste e encontre um powerup\ndisponivel, clique nele!\nDica Mini-Asas";
+        animacaoTutorial.playDragPowerUp();
+    }
+
+    private void prepararTutorialParteAcionarPowerUp()
+    {
+        mainDto.TutorialDto.LblTexto.text = "Uau Mini-Asas!\nAcione ele!";
+        animacaoTutorial.playPowerUp();
+    }
+
+    private void prepararTutorialParteJogarPowerUp()
+    {
+        mainDto.TutorialDto.LblTexto.text = "Mini-Asas servem para um coletavel\nsubir de posição\ndentro da maquina!";
         animacaoTutorial.playParteTexto();
     }
 
-    private void prepararMensagemPupAcionado()
-    {
-        emAndamento = true;
-        mainDto.TutorialDto.LblTexto.text = "Otimo! Mini-Asas acionadas!\nO coletavel esta em uma posi��o melhor.";
-        animacaoTutorial.playParteTexto();
-    }
-
-    private void prepararFimTutorialPupAcionado()
+    private void prepararFimTutorialPupExpirado()
     {
         if (!finalizacaoDisparada)
         {
-            allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
+            mainDto.TutorialDto.LblTexto.text = "Ah!O tempo de ativação\nda Mini-Asa acabou.";
+            animacaoTutorial.playParteTexto();
+            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
+                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
+        }
+    }
+
+    private void prepararFimTutorial()
+    {
+        if (!finalizacaoDisparada)
+        {
+            finalizacaoDisparada = true;
+            mainDto.TutorialDto.LblTexto.text = "Isso ai!Muibo bom!\nBoa Sorte!";
+            animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialSucesso));
         }
@@ -93,21 +94,41 @@ public class TutorialLevel2 : AbstractTutorialPowerUp
         //Debug.Log("Criando evento de fim de jogo");
         produtorDeEvento.produziuEvento(eventoFim);
     }
-
-    private void prepararFimTutorialPupExpirado()
+    
+    void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
     {
-        if (!finalizacaoDisparada && !emAndamento)
+        prepararTutorialParteDragPup();
+    }
+
+    void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfoDto evento)
+    {
+        if (evento.hasEntidade)
         {
-            allGameManagers.getGarraManager().parar();
-            finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao da Mini-Asa acabou!";
-            animacaoTutorial.playParteTexto();
-            ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
-                coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
+            prepararTutorialParteAcionarPowerUp();
+        }
+        else
+        {
+            prepararTutorialPartePowerUp();
         }
     }
 
-    public override ProdutorDeEvento<InformacoesColetadoDto> getProdutorDeEvento()
+    void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
+    {
+        if (evento.isEstadoInicio)
+        {
+            prepararTutorialParteJogarPowerUp();
+        }
+        else if (evento.isEstadoExpirado)
+        {
+            prepararFimTutorialPupExpirado();
+        }
+        else if (evento.isEstadoFinalizar)
+        {
+            prepararFimTutorial();
+        }
+    }
+
+    ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEvento;
     }
