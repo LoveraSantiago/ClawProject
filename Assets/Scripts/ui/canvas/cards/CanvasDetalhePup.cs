@@ -95,7 +95,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
         }
         else
         {
-            canvasDetalheDto.LblQtdGanhos.text = qtd.ToString();
+            canvasDetalheDto.LblQtdGanhos.text = string.Format("+{0}", qtd.ToString());
         }
 
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(mostrarPremiosGanhos());

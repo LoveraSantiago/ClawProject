@@ -1,3 +1,4 @@
+[System.Serializable]
 public class WrapperSingleStringInteiro 
 {
     public string texto;

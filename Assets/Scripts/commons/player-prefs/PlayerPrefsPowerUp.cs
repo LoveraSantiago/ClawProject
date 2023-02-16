@@ -60,7 +60,7 @@ public class PlayerPrefsPowerUp
         WrapperSingleStringInteiro[] stringInteiros = ArrayUtils.adicionarAoArray(wrapper.stringInteiros, single);
         wrapper.stringInteiros = stringInteiros;
         string agendados = JsonUtility.ToJson(wrapper);
-        Debug.Log("Agendado valor: " + agendados);
+        //Debug.Log("Agendado valor: " + agendados);
         PlayerPrefs.SetString(PUP_AGENDADO, agendados);
     }
 
@@ -82,7 +82,7 @@ public class PlayerPrefsPowerUp
     private static WrapperArrayStringInteiro recuperarPupAgendado()
     {        
         string agendados = PlayerPrefs.GetString(PUP_AGENDADO);
-        Debug.Log("Recuperado agendados " + agendados);
+        //Debug.Log("Recuperado agendados " + agendados);
         if (Utils.isBlank(agendados))
         {
             WrapperArrayStringInteiro wrapperArrayStringInteiro = new WrapperArrayStringInteiro();
@@ -92,7 +92,12 @@ public class PlayerPrefsPowerUp
         }
         else
         {
-            return JsonUtility.FromJson<WrapperArrayStringInteiro>(agendados);
+            WrapperArrayStringInteiro wrapperArrayStringInteiro = JsonUtility.FromJson<WrapperArrayStringInteiro>(agendados);
+            if(wrapperArrayStringInteiro.stringInteiros == null)
+            {
+                wrapperArrayStringInteiro.stringInteiros = new WrapperSingleStringInteiro[0];
+            }
+            return wrapperArrayStringInteiro;
         }
     }
 
