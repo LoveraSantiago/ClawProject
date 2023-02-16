@@ -1,7 +1,6 @@
-
 using System.Collections.Generic;
 
-public class Level2 : AbstractLevelNormal
+public class Level2 : AbstractLevelTutorial
 {
     public override string getLevelTitle()
     {
@@ -10,14 +9,14 @@ public class Level2 : AbstractLevelNormal
 
     public override string getMsgObjetivoLevel()
     {
-        return LevelUtils.MSG_TEMPO;
-    }  
+        return "Combine o máximo de itens.";
+    }
 
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,] {
-            {  0,  0,  0,  1,  1,  1,  2 },
-            {  4,  4,  4,  3,  3,  3, -1 },
+            {  1,  0,  0,  4,  3,  0,  3 },
+            {    4, 3,  1,  1, 4, -1, -1 },
             { -1, -1, -1, -1, -1, -1, -1 },
             { -1, -1, -1, -1, -1, -1, -1 },
             { -1, -1, -1, -1, -1, -1, -1 },
@@ -42,17 +41,16 @@ public class Level2 : AbstractLevelNormal
 
     public override TipoContagemTempoDto getTempoContagem()
     {
-        return new TipoContagemTempoDto(ContadorTimer.Contagem.REGRESSIVA, "02:01");
-        //return new TipoContagemTempoDto(ContadorTimer.Contagem.REGRESSIVA, "00:15");
+        return new TipoContagemTempoDto(ContadorTimer.Contagem.NORMAL, LevelUtils.TIMER_ZERO);
     }
 
     public override string getMaquinaNome()
-    {
+    {   
         return "Carvão Carbonita";
     }
 
     protected override Dictionary<string, string> getCoresMaquina()
-    {   
+    {
         Dictionary<string, string> dicionario = new Dictionary<string, string>();
         dicionario.Add("placa-frente", "#000000");
         dicionario.Add("base-chao", "#5D5B5B");
@@ -101,20 +99,35 @@ public class Level2 : AbstractLevelNormal
 
     public override bool isLevelAlbedo0()
     {
-        return true;
+        return false;
     }
 
     public override bool isLevelAlbedo0Timer2Pontos()
     {
         return false;
-    }    
+    }
 
     public override PowerUpsParaLevel getPupsToLevel()
-    {      
+    {
 
         return new PowerUpsParaLevel(2)
-           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.ROLLBACK, PowerUpEnums.TIPO.ROLLBACK, PowerUpEnums.TIPO.ROLLBACK, PowerUpEnums.TIPO.ROLLBACK })
-           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MOLA, PowerUpEnums.TIPO.MOLA, PowerUpEnums.TIPO.MOLA, PowerUpEnums.TIPO.MOLA });
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINI_ASAS });
+    }
+
+
+    public override int recuperarQtdPup(PowerUpEnums.TIPO powerupTipo)
+    {
+        if (powerupTipo == PowerUpEnums.TIPO.MINI_ASAS)
+        {
+            return 1;
+        }
+        return 0;
+    }
+
+    public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
+    {
+        TutorialLevel2 tutorial = new TutorialLevel2(allGameManagers, mainDto);
+        return new MainGameEventosPowerUp(allGameManagers, tutorial);
     }
 }
 
