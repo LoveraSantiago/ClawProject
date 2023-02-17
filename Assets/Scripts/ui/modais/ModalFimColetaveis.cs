@@ -15,14 +15,13 @@ public class ModalFimColetaveis : AbstractModalFim
    public void sucesso()
     {
         int idColetavel = PlayerPrefsColetaveis.recuperarNavegacaoColetavel();
-        ColetavelEntidade coletavel = ContextoEstaticoUtils.mapaEntidade.getColetavelEntidadeByIndice(idColetavel);
+        ColetavelEntidade coletavel = ContextoEstaticoUtils.mapaEntidade.salvarColetavelAdquiridoDoDoMapa(idColetavel);
         string levelNome = ContextoEstaticoUtils.level.getLevelName();
 
         modalColetaveisDto.LblLevelTitle.text = levelNome;
         modalColetaveisDto.ImgColetavel.sprite = coletavel.sprite;
         modalColetaveisDto.LblMsg.text = "Parabens!!! Conseguiu coletar " + coletavel.nome + " para a sua coleção!!! Muito bem!!!";
-
-        PlayerPrefsMapas.salvarColetavelAdquiridoDoDoMapa(coletavel);
+                
         somModais.playSomSucessoAbrirModal();
     }
 

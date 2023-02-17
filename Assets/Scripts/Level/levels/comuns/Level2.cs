@@ -107,14 +107,6 @@ public class Level2 : AbstractLevelTutorial
         return false;
     }
 
-    public override PowerUpsParaLevel getPupsToLevel()
-    {
-
-        return new PowerUpsParaLevel(2)
-           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINI_ASAS });
-    }
-
-
     public override int recuperarQtdPup(PowerUpEnums.TIPO powerupTipo)
     {
         if (powerupTipo == PowerUpEnums.TIPO.MINI_ASAS)
@@ -127,7 +119,8 @@ public class Level2 : AbstractLevelTutorial
     public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
         TutorialLevel2 tutorial = new TutorialLevel2(allGameManagers, mainDto);
-        return new MainGameEventosPowerUp(allGameManagers, tutorial);
+        return new MainGameEventosTutorialLevel2(allGameManagers, tutorial);
+        //return new MainGameEventosPowerUp(allGameManagers, tutorial);
     }
 }
 

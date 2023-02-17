@@ -7,7 +7,8 @@ public class BotoesPowerUp : Draggavel,
                              AcaoDesligarMaquinaResultado.ConsumidorEvento,
                              AcaoTempoEsgotado.ConsumidorEvento,
                              AcaoColetadoFim.ConsumidorEvento
-{   
+{
+    private bool emFuncionamento;
     private BotaoPowerUp[] btnsPowerUp;    
     private BotaoPowerUp btnAcionado;
     private ControleAcionamentoPowerUp  controleAcionamentoPup;    
@@ -16,7 +17,8 @@ public class BotoesPowerUp : Draggavel,
     private BotaoDraggavel btnDragavelVazio;
 
     public BotoesPowerUp(BotoesPowerUpDto btnsPowerUpsDto)
-    {        
+    {
+        emFuncionamento = true;
         BotaoPowerUp.configurar(btnsPowerUpsDto);
         inicializarBotoes(btnsPowerUpsDto);
         
@@ -41,7 +43,7 @@ public class BotoesPowerUp : Draggavel,
     
     public void update(BotoesPowerUpDto botoesPowerUpDto, SomMaquina somMaquina, InputGame inputGame)
     {
-        if (inputGame.aconteceuTapNaAreaInferior())
+        if (inputGame.aconteceuTapNaAreaInferior() && emFuncionamento)
         {
             Vector2 posicaoTap = inputGame.getPosicaoTap();
             for (int contador = 0; contador < btnsPowerUp.Length; contador++)
@@ -121,6 +123,11 @@ public class BotoesPowerUp : Draggavel,
     {
         //Debug.Log("Reativado btns pup pos display");
         controleAcionamentoPup.habilitarPowerUpPosDisplay();
+    }
+
+    public void desligarBotoes()
+    {
+        emFuncionamento = false;
     }
 
     private void acionarBotao(int indice, BotoesPowerUpDto btnsPowerUpsDto)

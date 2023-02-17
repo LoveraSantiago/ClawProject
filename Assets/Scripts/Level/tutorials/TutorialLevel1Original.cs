@@ -2,10 +2,10 @@ using UnityEngine;
 using System.Collections;
 
 public class TutorialLevel1Original : AcaoColetadoFim.ConsumidorEvento,
-                              AcaoBotaoPowerUpVazio.ConsumidorEvento, 
-                              AcaoPupFromScrollSelecao.ConsumidorEvento,
-                              AcaoPowerUpAcionado.ConsumidorEvento,
-                              AcaoColetado.ProdutorEvento
+                                      AcaoBotaoPowerUpVazio.ConsumidorEvento, 
+                                      AcaoPupFromScrollSelecao.ConsumidorEvento,
+                                      AcaoPowerUpAcionado.ConsumidorEvento,
+                                      AcaoColetado.ProdutorEvento
 {
     private bool finalizacaoDisparada;
     private int contagemColetados;

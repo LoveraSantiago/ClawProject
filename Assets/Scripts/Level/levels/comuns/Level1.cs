@@ -36,7 +36,7 @@ public class Level1 : AbstractLevelTutorial
     public override Challenge[] getChallenges()
     {
         return new Challenge[] {
-            new ChallengeCombinacaoColetaveis(this, 0, 0, 0),
+            new ChallengeLevelCompleto(),
             new ChallengeTempoMenor("59:59"),
             new ChallengeScoreMaior(1)
         };
@@ -116,6 +116,7 @@ public class Level1 : AbstractLevelTutorial
 
     public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
     {
+        //return new MainGameEventosTutorialLevel1Original(allGameManagers, new TutorialLevel1Original(allGameManagers, mainDto));
         return new MainGameEventosTutorialLevel1(allGameManagers, new TutorialLevel1(allGameManagers, mainDto));
     }
 }
