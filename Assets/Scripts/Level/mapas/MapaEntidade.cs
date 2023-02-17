@@ -120,6 +120,14 @@ public class MapaEntidade
         return coletaveisFornecedor.getColetavelEntidadeByIndice(indice, this, levelMapDto);
     }
 
+    public ColetavelEntidade salvarColetavelAdquiridoDoDoMapa(int indice)
+    {
+        ColetavelEntidade coletavel = getColetavelEntidadeByIndice(indice);
+        PlayerPrefsMapas.salvarColetavelAdquiridoDoDoMapa(coletavel);
+        coletaveisFornecedor.resetArrayDeColetaveis();
+        return coletavel;
+    }
+
     public ColetavelEntidade getColetavelEntidadeBySprite(Sprite sprite)
     {
         return coletaveisFornecedor.getColetavelEntidadeBySprite(sprite, this, levelMapDto);

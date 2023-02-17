@@ -82,6 +82,11 @@ public abstract class AbstractFornecedorColetaveisLevels
         return coletaveisFiltrado;
     }
 
+    public void resetArrayDeColetaveis()
+    {
+        arrayDeColetaveis = null;
+    }
+
     private void iniciarArrayDeColetaveis(MapaEntidade mapaEntidade, LevelMapDto levelMapDto)
     {
         if(arrayDeColetaveis == null)
@@ -95,7 +100,7 @@ public abstract class AbstractFornecedorColetaveisLevels
         int qtdColetaveisDto = levelMapDto.ColetaveisDto.Length;
         arrayDeColetaveis    = new ColetavelEntidade[qtdColetaveisDto];
 
-        int[] adquiridosColetaveis = loadColetaveisAdquiridos(mapaEntidade, qtdColetaveisDto);
+        int[] adquiridosColetaveis = loadColetaveisAdquiridos(mapaEntidade, qtdColetaveisDto);        
         int[] liberadosColetaveis  = loadColetaveisLiberados(mapaEntidade, qtdColetaveisDto);
         for (int contador = 0; contador < qtdColetaveisDto; contador++)
         {
@@ -109,6 +114,7 @@ public abstract class AbstractFornecedorColetaveisLevels
             coletavelEntidadeIt.adquirir(adquirido);
             coletavelEntidadeIt.exclamar(liberado);
 
+            //Debug.Log("Coletavel " + coletavelEntidadeDtoIt.Nome + " adquirido: " + adquirido);
             arrayDeColetaveis[contador] = coletavelEntidadeIt;            
         }
     }
