@@ -102,8 +102,8 @@ public class TutorialPowerUpDescarte : AbstractTutorialPowerUp
     }
 
     public override void consumirEvento(ColetadoFimDto evento)
-    {
-        if (evento.isRollback)
+    {        
+        if (evento.isDescarte)
         {
             prepararTutorialColetavelDevolvido();
         }

@@ -8,7 +8,7 @@ public class FornecedorLevelsPowerUp : AbstractFornecedorLevels
 
     protected override AbstractLevel getLevelPorIndice(int level)
     {
-        Debug.Log("Level " + level);
+        //Debug.Log("Level " + level);
         switch (level)
         {
             case 0: return new LevelTutorialPowerUpBomba();
