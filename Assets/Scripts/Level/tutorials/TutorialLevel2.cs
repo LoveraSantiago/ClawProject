@@ -3,14 +3,12 @@ using System.Collections;
 
 public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
                               AcaoPupFromScrollSelecao.ConsumidorEvento,
-                              AcaoPowerUpAcionado.ConsumidorEvento,
-                              AcaoColetado.ProdutorEvento
+                              AcaoPowerUpAcionado.ConsumidorEvento
 {
     private bool finalizacaoDisparada;
     private int contagemColetados;
     private MainGameDto mainDto;
-    private AnimacaoTutorial animacaoTutorial;
-    private ProdutorDeEvento<InformacoesColetadoDto> produtorDeEvento;
+    private AnimacaoTutorial animacaoTutorial;    
 
     private AllGameManagers allGameManagers;
 
@@ -18,8 +16,7 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
     {
         this.allGameManagers = allGameManagers;
         this.mainDto = mainDto;
-        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
-        produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
+        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);        
     }
 
     public void iniciar()
@@ -81,18 +78,9 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
     }
 
     protected IEnumerator coroutineEncerrarTutorial(float valorDelay)
-    {
-        allGameManagers.getBotoesPowerUp().desativarPowerUp();
-        allGameManagers.getGarraManager().parar();
+    {   
         yield return new WaitForSeconds(valorDelay);
-
-        mainDto.TutorialDto.GoTutorial.SetActive(false);
-        InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
-        InformacoesColetadoDto eventoFim = new InformacoesColetadoDto()
-            .addInfoFimDeJogo(infoFimDeJogo);
-
-        //Debug.Log("Criando evento de fim de jogo");
-        produtorDeEvento.produziuEvento(eventoFim);
+        mainDto.TutorialDto.GoTutorial.SetActive(false);                
     }
     
     void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)
@@ -126,10 +114,5 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
         {
             prepararFimTutorial();
         }
-    }
-
-    ProdutorDeEvento<InformacoesColetadoDto> AcaoColetado.ProdutorEvento.getProdutorDeEvento()
-    {
-        return produtorDeEvento;
-    }
+    }    
 }
