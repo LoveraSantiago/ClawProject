@@ -2,6 +2,8 @@ using UnityEngine;
 
 public abstract class AbstractLevelTutorial : AbstractLevel
 {
+    protected AbstractLevelTutorial(MaquinaCor maquinaCor) : base(maquinaCor){}
+
     public override TipoGame getTipoGame()
     {
         return TipoGame.TUTORIAL;

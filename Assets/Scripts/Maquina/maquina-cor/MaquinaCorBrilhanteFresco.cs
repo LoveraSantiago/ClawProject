@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class MaquinaCorBrilhanteFresco : MaquinaCor
 {
@@ -60,6 +58,11 @@ public class MaquinaCorBrilhanteFresco : MaquinaCor
     }
 
     public bool isLevelAlbedo0()
+    {
+        return false;
+    }
+
+    public bool isLevelAlbedo0Timer2Pontos()
     {
         return false;
     }

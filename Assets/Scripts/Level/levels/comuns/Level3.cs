@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 public class Level3 : AbstractLevelElevador
 {
     public Level3():base(new MaquinaCorBrilhanteFresco()){}

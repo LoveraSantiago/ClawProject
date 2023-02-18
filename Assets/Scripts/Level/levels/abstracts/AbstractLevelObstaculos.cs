@@ -1,5 +1,7 @@
 public abstract class AbstractLevelObstaculos : AbstractLevel
 {
+    protected AbstractLevelObstaculos(MaquinaCor maquinaCor) : base(maquinaCor){}
+
     public override TipoGame getTipoGame()
     {
         return TipoGame.OBSTACULO;

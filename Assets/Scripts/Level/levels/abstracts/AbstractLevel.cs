@@ -8,11 +8,7 @@ public abstract class AbstractLevel
     public string tempo  { get; private set; }
 
     private MaquinaCor maquinaCor;
-    private Dictionary<string, string> dicionario;
-
-    public AbstractLevel()
-    {
-    }
+    private Dictionary<string, string> dicionario;   
 
     public AbstractLevel(MaquinaCor maquinaCor)
     {
@@ -81,7 +77,7 @@ public abstract class AbstractLevel
 
     public virtual bool isLevelAlbedo0Timer2Pontos()
     {
-        return isLevelAlbedo0();
+        return maquinaCor.isLevelAlbedo0Timer2Pontos();
     }
 
     public virtual bool isLevelAlbedo0DigitosScrollPup()

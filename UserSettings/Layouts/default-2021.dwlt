@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1280
     height: 680
   m_ShowMode: 0
-  m_Title: Scene
+  m_Title: Simulator
   m_RootView: {fileID: 11}
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 52
+  controlID: 56
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -511,7 +511,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 63
+  controlID: 67
 --- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -536,7 +536,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 100
+  controlID: 98
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -624,7 +624,7 @@ MonoBehaviour:
     m_CachedPref: 322
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: 129534
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
@@ -665,7 +665,7 @@ MonoBehaviour:
     m_CachedPref: -237
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: 129534
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
@@ -824,7 +824,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 102424
+  m_LastSelectedObjectID: 128154
 --- !u!114 &30
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1242,9 +1242,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 08fa0100
       m_LastClickedID: 0
-      m_ExpandedIDs: b89dfeff0cc6feffe8cbfefff2f6feff2e1dffffbc2effff8c75ffff0efbffff5a68000078c60000b2110100d648010000490100884901002e4a0100
+      m_ExpandedIDs: 28e9feff0efbffff8c680000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1309,22 +1309,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts/maquina/maquina-cor
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts/maquina/maquina-cor
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Public\Documents\ClawProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 540}
-    m_SelectedIDs: a4760000
-    m_LastClickedID: 30372
-    m_ExpandedIDs: 000000005476000056760000587600005a7600005c7600005e76000060760000627600006476000066760000687600006a7600006c7600006e760000707600007276000074760000a0760000a2760000ca7b000000ca9a3b
+    scrollPos: {x: 0, y: 780}
+    m_SelectedIDs: faf90100
+    m_LastClickedID: 129530
+    m_ExpandedIDs: 00000000a2750000a4750000a6750000a8750000aa750000ac750000ae750000b0750000b2750000b4750000b6750000b8750000ba750000be750000c0750000c2750000c4750000c6750000f07500003476000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1352,7 +1352,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005476000056760000587600005a7600005c7600005e76000060760000627600006476000066760000687600006a7600006c7600006e760000707600007276000074760000
+    m_ExpandedIDs: 00000000a2750000a4750000a6750000a8750000aa750000ac750000ae750000b0750000b2750000b4750000b6750000b8750000ba750000bc750000be750000c0750000c2750000c4750000c6750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1383,18 +1383,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000a0700000f0640000480f0000746a0000047f0000e069000090760000007f0000ac6a0000ae6a0000b66a0000b46a00004ea90000b267000088810100e2ac0000148b0000028f0000088f0000f073000076890000fe850000b69900009a74000046a40000447c0000e0750000f0750000e8750000f4750000f8750000006a0000387c0000846500002a7c0000527c0000f6730000207b0000666a0000146a0000166a0000662f0100807b00007ec80000387b0000ee6a0000a83c010024790000246b000078a901004e6b00004a6b00000e7a00000c7a0000287a0000ac770000c2690000f4710000f67900002c640000a2650000386d0000ac640000d2640000e06400006065000040740000b2650000b4950000c2640000c0640000c4640000b26400003866000016700000cc660000ea6600001c660000ec650000506400003a640000c66e000052650000c49e0000f66500004c650000ae66000044650000027000008a6600001e6b00003c6c00000a6c0000186d0000ee680000dc680000a66e0000706d0000007e0000e46b000070740000a0670000a2670000246d00009e670000166c0000c26c00003a6b0000b2700000806a00001e6e0000706e0000f46f0000486d00007883000032e30000a86e0000a2a00000a6a000001c6a0000f2de0000506f0000666c000044700000627100000a850000807f0000da730000886700009067000028040000be7d000000000000fad30000f4d300008eda00003c800000de800000c86c00004803010018680000ba900000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: MaquinaCor
+      m_OriginalName: MaquinaCor
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 129544
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 24}
     m_CreateAssetUtility:

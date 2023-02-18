@@ -6,4 +6,6 @@ public interface MaquinaCor
     Dictionary<string, string> getCores();
 
     bool isLevelAlbedo0();
+
+    bool isLevelAlbedo0Timer2Pontos();
 }
