@@ -2,7 +2,7 @@ using UnityEngine;
 
 #pragma warning disable 0649
 [System.Serializable]
-public class CorEfeitoTeleporteDto 
+public class CorHdrEfeitoDto 
 {
     [SerializeField] private Color corMaterial;
     [SerializeField] private float hdrMaterial;

@@ -9,7 +9,13 @@ public class DescartePowerUpGo : AbstractDisplaySlotPowerUpGo
     public DescartePowerUpGo()
         : base(powerUpDto.VazioPUp, "descarte")
     {
-    } 
+    }
+
+    protected override Color getCorEfeito()
+    {
+        CorHdrEfeitoDto corHdr = powerUpDto.RollBackDto.CorEfeitoDescarte;
+        return HSBColor.toHdrColor(corHdr.CorMaterial, corHdr.HdrMaterial);
+    }
 
     protected override PowerUpEnums.TIPO getTipoRestartPup()
     {

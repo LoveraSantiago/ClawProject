@@ -21006,7 +21006,7 @@ GameObject:
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &381374553
 Transform:
   m_ObjectHideFlags: 0
@@ -21346,8 +21346,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 3
+      scalar: 4
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -21730,7 +21730,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1.6, y: 0.8, z: 1}
+    m_Scale: {x: 1.5, y: 0.6, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -26116,7 +26116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapa: 1
-  indiceLevel: 2
+  indiceLevel: 3
   mainDto:
     delayInicio: 0.25
     dragCollider: {fileID: 491158116}
@@ -26518,14 +26518,14 @@ MonoBehaviour:
       velocidadeRotacao: 90
       vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
       prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
+      goMainPup: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+      spriteOvo: {fileID: 21300000, guid: 11086334af5190745adab0ee0c5dad25, type: 3}
       efeitoMaterializeDto:
         delayDuracao: 1
         velocidadeMaterializacao: 1.2
         efeitoSpawnParticulas: {fileID: 850062424}
         materialMaterialize: {fileID: 2100000, guid: 3c37f0ffa2c39c640be414e2d690a8c7, type: 2}
         goGo: {fileID: 1992821390}
-      goMainPup: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-      spriteOvo: {fileID: 21300000, guid: 11086334af5190745adab0ee0c5dad25, type: 3}
       bombaDto:
         angGarra: 5
         raioExplosao: 1
@@ -26636,7 +26636,14 @@ MonoBehaviour:
         buracoNegroGo: {fileID: 6134466145752774681, guid: bbdae4f57395f8d449318d93c38b7cc0, type: 3}
       rollBackDto:
         delayReset: 1.5
+        corEfeitoRollback:
+          corMaterial: {r: 1, g: 0.5045582, b: 0, a: 0}
+          hdrMaterial: 3
+        corEfeitoDescarte:
+          corMaterial: {r: 1, g: 0, b: 0, a: 0}
+          hdrMaterial: 3
         efeitoChoque: {fileID: 381374555}
+        renderer: {fileID: 381374554}
       molaDto:
         delayInicial: 0.2
         molaGo: {fileID: 4127936681606313068, guid: 726671bcf599b5647aba20a381f66cfc, type: 3}

@@ -4,6 +4,8 @@ using UnityEngine;
 public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
                                                      PowerUpInteracaoComDisplayColetado
 {
+    private static readonly int ID_COR = Shader.PropertyToID("_cor");
+
     private bool finalizado;
     private int contador;
     private Coroutine coroutine;
@@ -65,6 +67,8 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
         {
             powerUpFinalizacao.preFinalizar();
             powerUpFinalizacao.finalizado();
+
+            powerUpDto.RollBackDto.Renderer.material.SetColor(ID_COR, getCorEfeito());
             powerUpDto.RollBackDto.EfeitoChoque.gameObject.SetActive(false);
         }
     }
@@ -127,5 +131,6 @@ public abstract class AbstractDisplaySlotPowerUpGo : PowerUpSemInteracao,
         }
     }
 
+    protected abstract Color getCorEfeito();
     protected abstract PowerUpEnums.TIPO getTipoRestartPup();            
 }
