@@ -1,5 +1,7 @@
 public abstract class AbstractLevelOrdem : AbstractLevel
 {
+    protected AbstractLevelOrdem(MaquinaCor maquinaCor) : base(maquinaCor){}
+
     public override TipoGame getTipoGame()
     {
         return TipoGame.ORDENADO;

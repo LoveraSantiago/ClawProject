@@ -1,3 +1,4 @@
+using UnityEngine;
 public class FornecedorLevelsPowerUp : AbstractFornecedorLevels
 {
     public override AbstractLevel getLevelByIndiceDezena(int idMapa, int indice)
@@ -7,6 +8,7 @@ public class FornecedorLevelsPowerUp : AbstractFornecedorLevels
 
     protected override AbstractLevel getLevelPorIndice(int level)
     {
+        //Debug.Log("Level " + level);
         switch (level)
         {
             case 0: return new LevelTutorialPowerUpBomba();
@@ -19,8 +21,9 @@ public class FornecedorLevelsPowerUp : AbstractFornecedorLevels
             case 7: return new LevelTutorialPowerUpMiniAsa();
             case 8: return new LevelTutorialPowerUpAsa();
             case 9: return new LevelTutorialPowerUpBuracoNegro();
-            case 11: return new LevelTutorialPowerUpRollback();
-            case 10: return new LevelPowerUp();
+            case 10: return new LevelTutorialPowerUpRollback();
+            case 11: return new LevelTutorialPowerUpDescarte();
+            case 12: return new LevelPowerUp();
         }
         return null;
     }

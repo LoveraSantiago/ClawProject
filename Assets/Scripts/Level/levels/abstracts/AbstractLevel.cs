@@ -7,7 +7,13 @@ public abstract class AbstractLevel
     public int score     { get; private set; }
     public string tempo  { get; private set; }
 
-    private Dictionary<string, string> dicionario;
+    private MaquinaCor maquinaCor;
+    private Dictionary<string, string> dicionario;   
+
+    public AbstractLevel(MaquinaCor maquinaCor)
+    {
+        this.maquinaCor = maquinaCor;
+    }
 
     public abstract string getLevelTitle();
 
@@ -43,11 +49,21 @@ public abstract class AbstractLevel
         return dicionario;
     }
 
-    protected abstract Dictionary<string, string> getCoresMaquina();
+    //protected abstract Dictionary<string, string> getCoresMaquina();
+    private Dictionary<string, string> getCoresMaquina()
+    {
+        return maquinaCor.getCores();
+    }
 
-    public abstract string getMaquinaNome();   
+    public string getMaquinaNome()
+    {
+        return maquinaCor.getNome();
+    }
 
-    public abstract bool isLevelAlbedo0();
+    public bool isLevelAlbedo0()
+    {
+        return maquinaCor.isLevelAlbedo0();
+    }
 
     public virtual bool isLevelAlbedo0Scores()
     {
@@ -61,7 +77,7 @@ public abstract class AbstractLevel
 
     public virtual bool isLevelAlbedo0Timer2Pontos()
     {
-        return isLevelAlbedo0();
+        return maquinaCor.isLevelAlbedo0Timer2Pontos();
     }
 
     public virtual bool isLevelAlbedo0DigitosScrollPup()

@@ -20,7 +20,7 @@ public class TeleportePowerUpGo : AbstractTrocaDuplaPowerUpGo
         PowerUpRotacionadorDeColetaveis rotacionador = new PowerUpRotacionadorDeColetaveis(powerUpDto.VelocidadeRotacao, coletavel1, coletavel2);
         yield return rotacionador.rotacionar();
 
-        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoTeleporte;
+        CorHdrEfeitoDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoTeleporte;
         EfeitosTeleportes efeitoTeleporte = new EfeitosTeleportes();
         efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, corEfeitoTeleporte.CorMaterial, coletavel1.getPosicao());
         efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte2, corEfeitoTeleporte.CorMaterial, coletavel2.getPosicao());

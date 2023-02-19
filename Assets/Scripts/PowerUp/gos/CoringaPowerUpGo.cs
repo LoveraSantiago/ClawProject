@@ -65,7 +65,7 @@ public class CoringaPowerUpGo : AbstractTrocaPowerUpGo,
         PowerUpRotacionadorDeColetavel rotacionador = new PowerUpRotacionadorDeColetavel(powerUpDto.VelocidadeRotacao, coletavelSelecionado);
         yield return rotacionador.rotacionar();
 
-        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoCoringa;
+        CorHdrEfeitoDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoCoringa;
         EfeitosTeleportes efeitoTeleporte = new EfeitosTeleportes();
         efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, corEfeitoTeleporte.CorMaterial, coletavelSelecionado.getPosicao());
 

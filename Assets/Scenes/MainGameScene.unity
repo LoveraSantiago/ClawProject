@@ -10995,6 +10995,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4657305489617395321, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &302706019 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7688676769356553370, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &310144662
 GameObject:
   m_ObjectHideFlags: 0
@@ -21346,8 +21351,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 3
+      scalar: 4
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -21730,7 +21735,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1.6, y: 0.8, z: 1}
+    m_Scale: {x: 1.5, y: 0.6, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -26040,6 +26045,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4836599468361341265, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &456533561 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1097373836, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &461778613 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5786571377809477012, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -26116,7 +26126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapa: 1
-  indiceLevel: 2
+  indiceLevel: 3
   mainDto:
     delayInicio: 0.25
     dragCollider: {fileID: 491158116}
@@ -26500,6 +26510,11 @@ MonoBehaviour:
       maquinaEfeitoGlow:
         factorHdr: 6
         goEfeito: {fileID: 432249338}
+        layersMaquinaGlow:
+        - {fileID: 1675347045}
+        - {fileID: 302706019}
+        - {fileID: 1716391384}
+        - {fileID: 456533561}
         materialLayers:
         - {fileID: 2100000, guid: ad8c49788763354459227818737a4985, type: 2}
         - {fileID: 2100000, guid: 7c0fda5c368c6ca4492c8467b70c86d2, type: 2}
@@ -26518,14 +26533,14 @@ MonoBehaviour:
       velocidadeRotacao: 90
       vazioPUp: {fileID: 4127936681606313068, guid: 76498b64aaba49a4da6f04ac78ed07b3, type: 3}
       prefabPowerUpDto: {fileID: 880030616497037837, guid: 7f85bff2fdbc87742948eb7f2acda7d4, type: 3}
+      goMainPup: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
+      spriteOvo: {fileID: 21300000, guid: 11086334af5190745adab0ee0c5dad25, type: 3}
       efeitoMaterializeDto:
         delayDuracao: 1
         velocidadeMaterializacao: 1.2
         efeitoSpawnParticulas: {fileID: 850062424}
         materialMaterialize: {fileID: 2100000, guid: 3c37f0ffa2c39c640be414e2d690a8c7, type: 2}
         goGo: {fileID: 1992821390}
-      goMainPup: {fileID: 4127936681606313068, guid: 6fbf77f7c5a404d9097c76d1b34df700, type: 3}
-      spriteOvo: {fileID: 21300000, guid: 11086334af5190745adab0ee0c5dad25, type: 3}
       bombaDto:
         angGarra: 5
         raioExplosao: 1
@@ -26636,7 +26651,14 @@ MonoBehaviour:
         buracoNegroGo: {fileID: 6134466145752774681, guid: bbdae4f57395f8d449318d93c38b7cc0, type: 3}
       rollBackDto:
         delayReset: 1.5
+        corEfeitoRollback:
+          corMaterial: {r: 1, g: 0.5045582, b: 0, a: 0}
+          hdrMaterial: 3
+        corEfeitoDescarte:
+          corMaterial: {r: 1, g: 0, b: 0, a: 0}
+          hdrMaterial: 3
         efeitoChoque: {fileID: 381374555}
+        renderer: {fileID: 381374554}
       molaDto:
         delayInicial: 0.2
         molaGo: {fileID: 4127936681606313068, guid: 726671bcf599b5647aba20a381f66cfc, type: 3}
@@ -121361,6 +121383,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6042331374199176405, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1675347045 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9157266248139213794, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1689283372 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4320605484159820483, guid: 60c301260e6514149bc0e163ff994732, type: 3}
@@ -121374,6 +121401,11 @@ SpriteRenderer:
 --- !u!212 &1699830911 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4124672808994054739, guid: 60c301260e6514149bc0e163ff994732, type: 3}
+  m_PrefabInstance: {fileID: 4106799619402785295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1716391384 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8386970458206131452, guid: 60c301260e6514149bc0e163ff994732, type: 3}
   m_PrefabInstance: {fileID: 4106799619402785295}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1718459111 stripped

@@ -1,5 +1,7 @@
 public abstract class AbstractLevelOvo : AbstractLevel
 {
+    protected AbstractLevelOvo(MaquinaCor maquinaCor) : base(maquinaCor){}
+
     public override bool devolverParaBoard()
     {
         return true;

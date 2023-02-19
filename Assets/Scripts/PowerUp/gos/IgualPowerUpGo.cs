@@ -19,7 +19,7 @@ public class IgualPowerUpGo : AbstractTrocaDuplaPowerUpGo
         
         Coletavel coletavel2 = duplaDeColetaveis.coletavel2;
 
-        CorEfeitoTeleporteDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoIgual;
+        CorHdrEfeitoDto corEfeitoTeleporte = powerUpDto.TeleporteDto.CorEfeitoIgual;
         EfeitosTeleportes efeitoTeleporte = new EfeitosTeleportes();
         efeitoTeleporte.ligar(powerUpDto.TeleporteDto.EfeitoTeleporte1, corEfeitoTeleporte.CorMaterial, coletavel1.getPosicao());
 

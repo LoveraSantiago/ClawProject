@@ -8,9 +8,9 @@ public class MaquinaEfeitoGlowDto
     [SerializeField] private float factorHdr;
     [SerializeField] private GameObject goEfeito;
     [Space(3)]
-    [SerializeField] private Material[] materialLayers = new Material[4];
+    [SerializeField] private SpriteRenderer[] layersMaquinaGlow = new SpriteRenderer[4];    
 
     public float FactorHdr { get { return factorHdr; } }
     public GameObject GoEfeito { get { return goEfeito; } }
-    public Material[] MaterialLayers { get { return materialLayers; } }
+    public SpriteRenderer[] LayersMaquinaGlow { get { return layersMaquinaGlow; } }    
 }

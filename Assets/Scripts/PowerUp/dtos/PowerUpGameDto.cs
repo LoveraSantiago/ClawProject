@@ -9,12 +9,12 @@ public class PowerUpGameDto
     [Space(3)]
     [SerializeField] private GameObject vazioPUp;
     [SerializeField] private GameObject prefabPowerUpDto;
-    [Space(3)]        
-    [SerializeField] private EfeitoMaterializeDto efeitoMaterializeDto;    
     [Space(3)]
     [SerializeField] private GameObject goMainPup;
     [Space(3)]
     [SerializeField] private Sprite spriteOvo;
+    [Space(3)]        
+    [SerializeField] private EfeitoMaterializeDto efeitoMaterializeDto;    
     [Space(5)]
     [SerializeField] private BombaDto bombaDto;
     [Space(5)]    
