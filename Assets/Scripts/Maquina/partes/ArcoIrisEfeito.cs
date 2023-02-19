@@ -102,9 +102,9 @@ public class ArcoIrisEfeito : AcaoTempoEsgotado.ConsumidorEvento,
 
     private void setCorNosMateriaisLayers(Color cor)
     {
-        for (int contador = 0; contador < maquinaEfeitoGlowDto.MaterialLayers.Length; contador++)
+        for (int contador = 0; contador < maquinaEfeitoGlowDto.LayersMaquinaGlow.Length; contador++)
         {
-            maquinaEfeitoGlowDto.MaterialLayers[contador].SetColor("_corGlow", cor);
+            maquinaEfeitoGlowDto.LayersMaquinaGlow[contador].material.SetColor("_corGlow", cor);            
         }
     }
 
