@@ -2,51 +2,51 @@ public class FornecedorLevelsParqueDeDiversoes : AbstractFornecedor10Leveis
 {
     protected override AbstractLevel getLevelPrimeiro()
     {
-        return new Level1();
+        return new parque_diversoes.Level1();
     }
 
     protected override AbstractLevel getLevelSegundo()
     {
-        return new Level2();
+        return new parque_diversoes.Level2();
     }
 
     protected override AbstractLevel getLevelTerceiro()
     {
-        return new Level3();
+        return new parque_diversoes.Level3();
     }
 
     protected override AbstractLevel getLevelQuarto()
     {
-        return new Level4();
+        return new parque_diversoes.Level4();
     }
 
     protected override AbstractLevel getLevelQuinto()
     {
-        return new Level5();
+        return new parque_diversoes.Level5();
     }
 
     protected override AbstractLevel getLevelSexto()
     {
-        return new Level6();
+        return new parque_diversoes.Level6();
     }
 
     protected override AbstractLevel getLevelSetimo()
     {
-        return new Level7();
+        return new parque_diversoes.Level7();
     }
 
     protected override AbstractLevel getLevelOitavo()
     {
-        return new Level8();
+        return new parque_diversoes.Level8();
     }
 
     protected override AbstractLevel getLevelNono()
     {
-        return new Level9();
+        return new parque_diversoes.Level9();
     }
 
     protected override AbstractLevel getLevelDecimo()
     {
-        return new Level10();
+        return new parque_diversoes.Level10();
     }
 }
