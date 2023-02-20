@@ -13,6 +13,8 @@ public class InformacoesFimDeJogoDto
     public bool trincaColetaveis    { get { return estadoAtual == TRINCA_COLETAVEIS; } }
     public bool trincaColetaveisFail{ get { return estadoAtual == FAIL_TRINCA_COLETAVEIS; } }
 
+    public bool fimDeJogo { get { return fimColetados || erroOrdem || trincaColetaveis || trincaColetaveisFail; } }
+
     private InformacoesFimDeJogoDto(int estado)
     {
         estadoAtual = estado;

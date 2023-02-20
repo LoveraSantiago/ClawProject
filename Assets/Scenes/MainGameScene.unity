@@ -26126,7 +26126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapa: 1
-  indiceLevel: 3
+  indiceLevel: 1
   mainDto:
     delayInicio: 0.25
     dragCollider: {fileID: 491158116}
@@ -26515,11 +26515,6 @@ MonoBehaviour:
         - {fileID: 302706019}
         - {fileID: 1716391384}
         - {fileID: 456533561}
-        materialLayers:
-        - {fileID: 2100000, guid: ad8c49788763354459227818737a4985, type: 2}
-        - {fileID: 2100000, guid: 7c0fda5c368c6ca4492c8467b70c86d2, type: 2}
-        - {fileID: 2100000, guid: 2641516f013b57c478b0ee492e0a1bd8, type: 2}
-        - {fileID: 2100000, guid: 897a9f7785299924d9cbcd25d378b886, type: 2}
       material7SegsDto:
         mat7SegmentosAditivos: {fileID: 2100000, guid: 9f69d2b4a5d3be5409d3cbaa4a2b18a1, type: 2}
         mat7SegmentosAlpha: {fileID: 2100000, guid: 1eebc4ef93c5087479c71d4af13004b1, type: 2}
