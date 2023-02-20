@@ -87,34 +87,34 @@ public class Loading
 
     public void fecharModal()
     {
-        cancelarCoroutine();
-        coroutineAtual = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineFecharModal());
+        //cancelarCoroutine();
+        //coroutineAtual = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineFecharModal());
     }
 
     private void abrirModal(string nomeCena)
     {
-        cancelarCoroutine();
-        coroutineAtual = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineAbrirModal(nomeCena));
+        //cancelarCoroutine();
+        //coroutineAtual = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(coroutineAbrirModal(nomeCena));
     }
 
     private void desligarGos()
     {
-        if(gosDesligar != null)
-        {
-            for(int contador = 0; contador < gosDesligar.Length; contador++)
-            {
-                gosDesligar[contador].SetActive(false);
-            }
-        }
+        //if(gosDesligar != null)
+        //{
+        //    for(int contador = 0; contador < gosDesligar.Length; contador++)
+        //    {
+        //        gosDesligar[contador].SetActive(false);
+        //    }
+        //}
     }
 
     private void cancelarCoroutine()
     {
-        if(coroutineAtual != null)
-        {
-            ContextoEstaticoUtils.monoBehaviour.StopCoroutine(coroutineAtual);
-        }
-        coroutineAtual = null;
+        //if(coroutineAtual != null)
+        //{
+        //    ContextoEstaticoUtils.monoBehaviour.StopCoroutine(coroutineAtual);
+        //}
+        //coroutineAtual = null;
     }
 
     private IEnumerator coroutineAbrirModal(string nomeCena)

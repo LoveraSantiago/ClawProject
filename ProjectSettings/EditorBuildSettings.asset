@@ -8,28 +8,28 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TitleScene.unity
     guid: 534fd8311a037423ab8f9729d4632bb5
   - enabled: 1
     path: Assets/Scenes/MapScene.unity
     guid: 7362f9ecbae824216b1c9bc7da948d6e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainGameScene.unity
     guid: 3bb677a382b0d394f88d8a79b4220efb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ColetaveisSceneV2.unity
     guid: b98310ac55222c04d937bd89c96e15ae
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LojaScene.unity
     guid: f0d182880cc89af49ab4f26a0f37abb4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ConfigScene.unity
     guid: b77ce35700592454696fd78a29010ba4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PupSceneV2.unity
     guid: 6bb2297cbd3594c4bba155a42bdf7296
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelsScene.unity
     guid: a0102d41a7d335e41bbe72ad335cf1e6
   m_configObjects: {}
