@@ -4,7 +4,7 @@ namespace parque_diversoes
 
     public class Level2 : AbstractLevelTutorial
     {
-        public Level2() : base(new MaquinaCorCarvaoCarbonita()) { }
+        public Level2() : base(new MaquinaCorChicleteEEmbalagem()) { }
 
         public override string getLevelTitle()
         {
@@ -19,14 +19,17 @@ namespace parque_diversoes
         public override int[,] getArrayDeColetaveis()
         {
             return new int[,] {
-            {  1,  0,  0,  4,  3,  0,  3 },
-            {    4, 3,  1,  1, 4, -1, -1 },
-            { -1, -1, -1, -1, -1, -1, -1 },
-            { -1, -1, -1, -1, -1, -1, -1 },
-            { -1, -1, -1, -1, -1, -1, -1 },
-            { -1, -1, -1, -1, -1, -1, -1 },
-            { -1, -1, -1, -1, -1, -1, -1 },
-            { -1, -1, -1, -1, -1, -1, -1 } };
+                {  1,  0,  0,  4,  3,  0,  3 },
+                 {  1,  6,  0,  4,  3,  0,  3 },
+                {  1,  0,  6,  4,  3,  6,  3 },
+                 {  1,  0,  3,  4,  3,  0,  3 },
+                {  4, 3,  1,  1, 3, 4,  0 },
+                { -1, -1, -1, -1, -1, -1, -1 },
+                { -1, -1, -1, -1, -1, -1, -1 },
+                { -1, -1, -1, -1, -1, -1, -1 },
+                { -1, -1, -1, -1, -1, -1, -1 },
+                { -1, -1, -1, -1, -1, -1, -1 },
+                { -1, -1, -1, -1, -1, -1, -1 } };
         }
 
         public override bool devolverParaBoard()
@@ -52,9 +55,16 @@ namespace parque_diversoes
         {
             if (powerupTipo == PowerUpEnums.TIPO.MINI_ASAS)
             {
-                return 1;
+                return 2;
             }
             return 0;
+        }
+
+        public override PowerUpsParaLevel getPupsToLevel()
+        {
+            return new PowerUpsParaLevel(2)
+               .addPupsParaBtn(0, new PowerUpEnums.TIPO[] {  })
+               .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINI_ASAS});
         }
 
         public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
