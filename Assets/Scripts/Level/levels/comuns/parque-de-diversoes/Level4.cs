@@ -50,8 +50,9 @@ namespace parque_diversoes
 
         public override PowerUpsParaLevel getPupsToLevel()
         {
-            return new PowerUpsParaLevel(1)
-               .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA });               
+            return new PowerUpsParaLevel(2)
+                .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.MOLA })
+               .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MISSIL_TELEGUIADO, PowerUpEnums.TIPO.TELEPORTE, PowerUpEnums.TIPO.ASAS });
         }
 
         public override bool devolverParaBoard()
