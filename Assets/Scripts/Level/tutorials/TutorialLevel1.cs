@@ -32,7 +32,7 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento
     {
         if (contagemColetados == 1)
         {
-            mainDto.TutorialDto.LblTexto.text = "Muito bom!\nColete mais um item.";
+            mainDto.TutorialDto.LblTexto.text = "Colete um item igual ao anterior\npara preparar um combo.";
         }
         else if (contagemColetados == 2)
         {

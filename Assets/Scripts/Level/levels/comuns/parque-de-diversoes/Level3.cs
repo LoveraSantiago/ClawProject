@@ -44,8 +44,9 @@
 
         public override PowerUpsParaLevel getPupsToLevel()
         {
-            return new PowerUpsParaLevel(1)
-               .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINI_ASAS });
+            return new PowerUpsParaLevel(2)
+               .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINI_ASAS, PowerUpEnums.TIPO.BOMBA_DA_GARRA })
+               .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MISSIL_TELEGUIADO, PowerUpEnums.TIPO.TELEPORTE});
         }
 
         public override string getMsgObjetivoLevel()

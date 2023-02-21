@@ -18,12 +18,10 @@ namespace parque_diversoes
 
         public override int[,] getArrayDeColetaveis()
         {
-            return new int[,] {
-                {  1,  0,  0,  4,  3,  0,  3 },
-                 {  1,  6,  0,  4,  3,  0,  3 },
-                {  1,  0,  6,  4,  3,  6,  3 },
-                 {  1,  0,  3,  4,  3,  0,  3 },
-                {  4, 3,  1,  1, 3, 4,  0 },
+            return new int[,] {                
+                {  2,  6,  0,  4,  3,  4,  6 },
+                 {  1,  0,  6,  4,  3,  0,  -1 },                 
+                {  -1, 2,  1,  1, 3, 2, -1 },
                 { -1, -1, -1, -1, -1, -1, -1 },
                 { -1, -1, -1, -1, -1, -1, -1 },
                 { -1, -1, -1, -1, -1, -1, -1 },
@@ -64,7 +62,7 @@ namespace parque_diversoes
         {
             return new PowerUpsParaLevel(2)
                .addPupsParaBtn(0, new PowerUpEnums.TIPO[] {  })
-               .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINI_ASAS});
+               .addPupsParaBtn(1, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINI_ASAS, PowerUpEnums.TIPO.MINA_TERRESTRE, PowerUpEnums.TIPO.BURACO_NEGRO});
         }
 
         public override AbstractMainGameEventosTutorial getMainGameEventos(AllGameManagers allGameManagers, MainGameDto mainDto)
