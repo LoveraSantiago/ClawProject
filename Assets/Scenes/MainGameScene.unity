@@ -27172,8 +27172,8 @@ MonoBehaviour:
     tutorialDto:
       delayFimTutorialSucesso: 1.5
       delayFimTutorialExpirado: 2.1
-      animator: {fileID: 846774093}
-      lblTexto: {fileID: 918211904}
+      animator: {fileID: 1005132745}
+      lblTexto: {fileID: 2085958955}
 --- !u!61 &491158116
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59640,7 +59640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1005132744
 Transform:
   m_ObjectHideFlags: 0
@@ -59672,7 +59672,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: dde4b1ae5b43f4c4ead6010b24682c6d, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -137757,9 +137757,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mina disponivel!
-
-    Arraste para a area de acao e solte!'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f6e2b4d57413c94c919219473bb7c8d, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 3f6e2b4d57413c94c919219473bb7c8d, type: 2}
