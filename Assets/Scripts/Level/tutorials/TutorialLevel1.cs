@@ -10,7 +10,8 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento
     {
         this.allGameManagers = allGameManagers;
         this.mainDto = mainDto;
-        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);        
+        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
+        mainDto.TutorialDto.LblTexto.text = "Toque para coletar!\nCombine 3 itens iguais para um combo.";
     }
 
     public void iniciar()
@@ -24,15 +25,17 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento
 
     private void prepararTutorialParteCliqueColetavel()
     {
-        mainDto.TutorialDto.LblTexto.text = "Toque na tela para acionar a garra.";
-        animacaoTutorial.playColetar();
+        mainDto.TutorialDto.LblTexto.text = "Toque para coletar!\nCombine 3 itens iguais para um combo.";
+        //animacaoTutorial.playColetar();
+        animacaoTutorial.playAnimacao(AnimacaoTutorial.TUTORIAL_GARRA_COLETAR);
     }
 
     private void tratarColetadosParteCliqueColetavel()
     {
         if (contagemColetados == 1)
         {
-            mainDto.TutorialDto.LblTexto.text = "Muito bom!\nColete mais um item.";
+            mainDto.TutorialDto.GoTutorial.SetActive(false);
+            mainDto.TutorialDto.LblTexto.text = "Colete um item igual ao anterior\npara preparar um combo.";
         }
         else if (contagemColetados == 2)
         {
