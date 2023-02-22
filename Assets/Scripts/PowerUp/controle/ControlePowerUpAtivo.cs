@@ -1,19 +1,29 @@
 public class ControlePowerUpAtivo : ControlePowerUp
 {
     private IntervaloDeTempo intervaloFimTempo;
-    private PowerUpAcaoExpirado pupExpiracao;
+    private PowerUpControleExterno pupParaControleExterno;
 
     public ControlePowerUpAtivo(PowerUpInfoDto pupInfo)
     {
         intervaloFimTempo = new IntervaloDeTempo(pupInfo.duracaoTempoPupEntidade);
-        pupExpiracao = pupInfo.pupEntidadeAcaoExpirado;
+        pupParaControleExterno = pupInfo.pupEntidadeAcaoExpirado;
     }
 
     public void contarTimeout()
     {
         if (intervaloFimTempo.contarTempo())
         {
-            pupExpiracao.expirar();
+            pupParaControleExterno.expirar();
         }
+    }
+
+    public void continuar()
+    {
+        pupParaControleExterno.onContinue();
+    }
+
+    public void pausar()
+    {
+        pupParaControleExterno.onPause();
     }
 }

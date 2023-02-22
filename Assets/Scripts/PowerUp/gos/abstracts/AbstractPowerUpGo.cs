@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public abstract class AbstractPowerUpGo : GO,
-                                          PowerUpAcaoExpirado
+                                          PowerUpControleExterno
 {    
     protected static PowerUpGameDto powerUpDto;
     private static GOContexto contexto;
@@ -48,6 +48,10 @@ public abstract class AbstractPowerUpGo : GO,
         powerUpFinalizacao.expirado();
         timeout();
     }
+
+    public virtual void onPause(){}
+
+    public virtual void onContinue() { }
 
     protected float getDelayInicioMaterialize()
     {

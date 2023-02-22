@@ -31,7 +31,7 @@ public class PowerUpInfoDto
     public  Coletavel coletavel { get; private set; }
     
     public InteracaoPowerUpComComponente interacaoPupComComponentes { get; private set; }    
-    public PowerUpAcaoExpirado pupEntidadeAcaoExpirado { get { return pupEntidade.getPowerUpGo(); } }
+    public PowerUpControleExterno pupEntidadeAcaoExpirado { get { return pupEntidade.getPowerUpGo(); } }
 
     public PowerUpInfoDto(PowerUpEnums.ESTADO estado)
     {

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 public class PowerUpManager : PowerUpAcaoAcionamento,
                               PowerUpAcaoFinalizacao,                              
                               AcaoPowerUpAcionado.ProdutorEvento,
+                              AcaoDesligarMaquina.ConsumidorEvento,
+                              AcaoDesligarMaquinaResultado.ConsumidorEvento,
                               Fornecedor<ResultadoPowerUpDto>
 {
     private int indiceBtnEmAcao;
@@ -11,7 +13,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     private ProdutorDeEvento<PowerUpInfoDto> produtorDeEventoPowerUp;
 
     private SomPowerUp somPowerUp;
-    private ControlePowerUp contadorTimeout;
+    private ControlePowerUp controlePowerUp;
 
     public PowerUpManager(PowerUpGameDto powerUpDto, InputGame inputGame, SomPowerUp somPowerUp)
     {
@@ -19,7 +21,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
         listaPupsUsados = new List<PowerUpUsadoDto>();
         configurarPowerUps(powerUpDto, inputGame);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfoDto>();
-        contadorTimeout = new ControlePowerUpInativo();
+        controlePowerUp = new ControlePowerUpInativo();
     }    
 
     private void configurarPowerUps(PowerUpGameDto powerUpDto, InputGame inputGame)
@@ -39,7 +41,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void update()
     {
-        contadorTimeout.contarTimeout();
+        controlePowerUp.contarTimeout();
     }
 
     public void acionado(int indiceBtn, PowerUpEntidade powerUp)
@@ -80,14 +82,14 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void expirado()
     {        
-        contadorTimeout = new ControlePowerUpInativo();
+        controlePowerUp = new ControlePowerUpInativo();
         PowerUpInfoDto powerUpInfo = FactoryPowerUpInfoDto.ofExpirado();        
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
     public void finalizado()
     {
-        contadorTimeout = new ControlePowerUpInativo();
+        controlePowerUp = new ControlePowerUpInativo();
         somPowerUp.playSomBackgroundNormal();
         produtorDeEventoPowerUp.produziuEvento(FactoryPowerUpInfoDto.ofFinalizar(indiceBtnEmAcao));
     }
@@ -99,7 +101,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     private void iniciarPowerUp(PowerUpInfoDto powerUpInfo)
     {
-        contadorTimeout = new ControlePowerUpAtivo(powerUpInfo);
+        controlePowerUp = new ControlePowerUpAtivo(powerUpInfo);
 
         InteracaoPowerUpComComponente interacao = powerUpInfo.interacaoPupComComponentes;
         if (InteracaoComponentesUtils.isNotInteracaoComGarra(interacao))
@@ -111,5 +113,18 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     ProdutorDeEvento<PowerUpInfoDto> AcaoPowerUpAcionado.ProdutorEvento.getProdutorDeEvento()
     {
         return produtorDeEventoPowerUp;
-    }    
+    }
+
+    void ProdutorConsumidoresDeEvento<ResultadoDesligarMaquinaDto>.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
+    {
+        if (!evento.resultadoSair)
+        {
+            controlePowerUp.continuar();
+        }
+    }
+
+    void ProdutorConsumidoresDeEvento<DesligarMaquinaDto>.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
+    {
+        controlePowerUp.pausar();
+    }
 }
