@@ -30,7 +30,7 @@ public class LevelTeste : AbstractLevelNormal
     public override PowerUpsParaLevel getPupsToLevel()
     {
         return new PowerUpsParaLevel(2)
-           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.IGUAL, PowerUpEnums.TIPO.IGUAL })
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BURACO_NEGRO, PowerUpEnums.TIPO.BURACO_NEGRO })
            .addPupsParaBtn(1, new PowerUpEnums.TIPO[] {  });
     }
 

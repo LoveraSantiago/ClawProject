@@ -41,9 +41,9 @@ public class AsaMiniPowerUpGo : AbstractAsaPowerUpGo
     protected override IEnumerator finalizarVoar(Coletavel coletavelAcertado)
     {
         coletavelAcertado.colocarNaPosicao(getPosicao());
-        coletavelAcertado.ligar();
+        coletavelAcertado.ligarComEstado();
         coletavelAcertado.desligarMira();
-        desligar();
+        desligarComEstado();
 
         powerUpFinalizacao.preFinalizar();
         yield return new WaitForSeconds(powerUpDto.AsaDto.DelayFinalizar);

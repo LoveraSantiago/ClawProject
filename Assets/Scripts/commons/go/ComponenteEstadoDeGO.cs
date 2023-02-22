@@ -7,15 +7,25 @@ public class ComponenteEstadoDeGO : ComponentePosicaoDeGO
     public ComponenteEstadoDeGO(GameObject go) 
         : base(go){}
 
-    public virtual void ligar()
+    public virtual void ligarComEstado()
     {
         ativo = true;
+        ligar();
+    }
+
+    public virtual void desligarComEstado()
+    {
+        ativo = false;
+        desligar();
+    }
+
+    public void ligar()
+    {
         getGo().SetActive(true);
     }
 
-    public virtual void desligar()
+    public void desligar()
     {
-        ativo = false;
         getGo().SetActive(false);
     }
 

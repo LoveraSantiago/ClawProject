@@ -35,7 +35,7 @@ public class ExplosaoHit
 
             HelperGaiolasInGame gaiolasInGame = new HelperGaiolasInGame();
             Gaiola gaiola = gaiolasInGame.getGaiolaInGameByGoName(nomeAcertado);
-            gaiola.desligar();
+            gaiola.desligarComEstado();
             //Debug.Log("Gaiola " + gaiola.nome + " coletavel " + gaiola.nomeColetavelPreso);            
         }
     }

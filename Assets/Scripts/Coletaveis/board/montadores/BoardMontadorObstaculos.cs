@@ -60,7 +60,7 @@ public class BoardMontadorObstaculos : BoardMontadorNormal
     {
         HelperGaiolasInGame helperGaiolas = new HelperGaiolasInGame();
         Gaiola gaiola = helperGaiolas.criarGaiola();
-        gaiola.ligar();
+        gaiola.ligarComEstado();
         return gaiola;
     }
 }

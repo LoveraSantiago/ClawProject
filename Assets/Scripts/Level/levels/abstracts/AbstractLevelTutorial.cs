@@ -48,7 +48,7 @@ public abstract class AbstractLevelTutorial : AbstractLevel
 
             Coletavel coletavel = HelperColetaveisInGame.criarColetavel();
             coletavel.receberSprite(coletavelEntidade.sprite);
-            coletavel.desligar();
+            coletavel.desligarComEstado();
             coletaveis[contador] = coletavel;
         }
         return coletaveis;

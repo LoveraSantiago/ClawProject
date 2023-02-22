@@ -33,7 +33,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
 
     public override void iniciarPup()
     {
-        ligar();
+        ligarComEstado();
         somPowerUp.iniciarSomBuracoNegro();
 
         int totalDesocupados = 3 - informacaoDisplayColetado.getQtdDisplaysOcupados();
@@ -51,12 +51,12 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
 
     public override void resetPup()
     {
-        atraido1.desligar();
-        atraido2.desligar();
-        atraido3.desligar();
+        atraido1.desligarComEstado();
+        atraido2.desligarComEstado();
+        atraido3.desligarComEstado();
         somPowerUp.pararSomBuracoNegro();
 
-        desligar();
+        desligarComEstado();
         delayTresOcupados = false;
         alvosSelecionados = false;
     }
@@ -105,7 +105,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
             if (atraido.getPosicao().y > 2.9 && !preFinalizadoJaAcionado)
             {
                 coletavelSelecionado.colocarNaPosicao(atraido.getPosicao());
-                atraido.desligar();
+                atraido.desligarComEstado();
                 powerUpFinalizacao.preFinalizar(coletavelSelecionado);
 
                 preFinalizadoJaAcionado = true;
@@ -114,12 +114,22 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         }
     }
 
+    public override void onPause()
+    {        
+        desligar();
+    }
+
+    public override void onContinue()
+    {   
+        ligar();
+    }
+
     private void ligarColetavelAtraido(Coletavel coletavelAtracao, Coletavel coletavelSelecionado)
     {
         if(coletavelSelecionado != null)
         {
             coletavelAtracao.colocarNaPosicao(coletavelSelecionado.getPosicao(), coletavelSelecionado.getAnguloQuaternium());            
-            coletavelAtracao.ligar();
+            coletavelAtracao.ligarComEstado();
 
             if (coletavelSelecionado.isOvo())
             {
@@ -129,7 +139,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
             {
                 coletavelAtracao.receberSprite(coletavelSelecionado.getSprite());
             }
-            coletavelSelecionado.desligar();
+            coletavelSelecionado.desligarComEstado();
         }
     }
     //***** IMPLEMENTACAO TrocaDuplaPowerUpGo INICIO *****

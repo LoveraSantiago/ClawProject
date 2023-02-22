@@ -45,9 +45,9 @@ public class Gaiola : GO
         return !isVazia();
     }
 
-    public override void desligar()
+    public override void desligarComEstado()
     {
-        base.desligar();
+        base.desligarComEstado();
         contexto.adicionarDesligado();
         soltarColetavel();
     }

@@ -115,7 +115,7 @@ public class HelperColetaveisInGame
     {   
         coletavel.receberSprite(sprite);
         coletavel.colocarNaPosicao(posicao);
-        coletavel.ligar();
+        coletavel.ligarComEstado();
         return coletavel;
     }
 

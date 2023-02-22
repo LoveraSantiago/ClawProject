@@ -60,7 +60,7 @@ public class BoardDevolvedor : Fornecedor<ColetaveisDescartadosDto>
 
     private IEnumerator devolverColetavel(Coletavel coletavel, BoardDto boardDto, SomColetagem somColetagem)
     {
-        coletavel.ligar();
+        coletavel.ligarComEstado();
         coletavel.desimantar();
 
         float anguloDevolucao = Random.Range(180, 230);        

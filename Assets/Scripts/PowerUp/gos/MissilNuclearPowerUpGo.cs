@@ -11,7 +11,7 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     public MissilNuclearPowerUpGo()
         : base(powerUpDto.MissilNuclearDto.MissilNuclearGo, new FinderDeSprRenderer1Nivel("imagem"), "missil-nuclear")
     {
-        desligar();        
+        desligarComEstado();        
     }        
 
     public override float getAnguloParaGarraSegurar()
@@ -51,14 +51,14 @@ public class MissilNuclearPowerUpGo : AbstractExplosivelPowerUpGo,
     private IEnumerator showBombaAposSpawnMaterialize(EfeitoSpawner efeitoSpwaner)
     {
         yield return new WaitForSeconds(getDelayInicio());
-        ligar();
+        ligarComEstado();
         fixarEixoY();
         efeitoSpwaner.desligar();
     }
 
     public override void resetPup()
     {
-        desligar();
+        desligarComEstado();
         animacao.playIdle();                
         acionado = false;
         desafixarVerticalmente();
