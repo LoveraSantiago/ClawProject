@@ -8,7 +8,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
                             AcaoBoardElevadoFim.ConsumidorEvento,
                             AcaoColetadoFim.ConsumidorEvento,
                             AcaoCacaNiquel.ConsumidorEvento,
-                            AcaoDesligarMaquina.ConsumidorEvento,
+                            AcaoDesligarMaquinaResultado.ConsumidorEvento,                            
                             ConsumidorDeEventoTrigger,
                             Fornecedor<int>
 {
@@ -192,10 +192,13 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         }
     }
 
-    void AcaoDesligarMaquina.ConsumidorEvento.consumirEvento(DesligarMaquinaDto evento)
+    void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
     {
-        pararGameOver();
-    }
+        if (evento.resultadoSair)
+        {
+            pararGameOver();
+        }
+    }   
 
     //TODO tentar unificar
     ProdutorDeEvento<InformacoesDaGarraDto> AcaoInfoDaGarra.ProdutorEvento.getProdutorDeEvento()
@@ -206,5 +209,6 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     ProdutorDeEvento<Direcao> AcaoSincroniaComDirecaoDaGarra.ProdutorEvento.getProdutorDeEvento()
     {
         return gerDeMovAtual.getProdutorDeEvento();
-    }  
+    }
+
 }

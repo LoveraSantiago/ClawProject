@@ -52,7 +52,8 @@ public class MainGameEventos
             .configurarProdutor(allGameManagers.getModalSair())
             .adicionarConsumidor(allGameManagers.getBotaoLigaDesliga())
             .adicionarConsumidor(allGameManagers.getBotoesPowerUp())
-            .adicionarConsumidor((InputGameImpl)allGameManagers.getInputGame());
+            .adicionarConsumidor((InputGameImpl)allGameManagers.getInputGame())
+            .adicionarConsumidor(allGameManagers.getGarraManager());
     }
 
     protected virtual AcaoColetado configurarAcaoColetado()
