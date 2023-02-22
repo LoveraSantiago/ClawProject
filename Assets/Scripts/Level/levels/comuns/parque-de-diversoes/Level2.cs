@@ -1,7 +1,5 @@
 namespace parque_diversoes
 {
-    using System.Collections.Generic;
-
     public class Level2 : AbstractLevelTutorial
     {
         public Level2() : base(new MaquinaCorCarvaoCarbonita()) { }

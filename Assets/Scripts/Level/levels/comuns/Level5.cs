@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 public class Level5 : AbstractLevelObstaculos
 {
     public Level5() : base(new MaquinaCorTerrosaEscura()){}

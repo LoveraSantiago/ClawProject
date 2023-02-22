@@ -2,7 +2,7 @@ namespace parque_diversoes
 {
     public class Level7 : AbstractLevelOrdem
     {
-        public Level7() : base(new MaquinaCorModeradaProfissional()) { }
+        public Level7() : base(new MaquinaCorArFrescoNatural()) { }
 
         public override string getLevelTitle()
         {
