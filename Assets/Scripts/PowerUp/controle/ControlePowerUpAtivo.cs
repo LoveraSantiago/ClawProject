@@ -1,9 +1,9 @@
-public class ContadorPowerUpAtivo : ContadorTimeout
+public class ControlePowerUpAtivo : ControlePowerUp
 {
     private IntervaloDeTempo intervaloFimTempo;
     private PowerUpAcaoExpirado pupExpiracao;
 
-    public ContadorPowerUpAtivo(PowerUpInfoDto pupInfo)
+    public ControlePowerUpAtivo(PowerUpInfoDto pupInfo)
     {
         intervaloFimTempo = new IntervaloDeTempo(pupInfo.duracaoTempoPupEntidade);
         pupExpiracao = pupInfo.pupEntidadeAcaoExpirado;

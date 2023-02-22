@@ -11,7 +11,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
     private ProdutorDeEvento<PowerUpInfoDto> produtorDeEventoPowerUp;
 
     private SomPowerUp somPowerUp;
-    private ContadorTimeout contadorTimeout;
+    private ControlePowerUp contadorTimeout;
 
     public PowerUpManager(PowerUpGameDto powerUpDto, InputGame inputGame, SomPowerUp somPowerUp)
     {
@@ -19,7 +19,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
         listaPupsUsados = new List<PowerUpUsadoDto>();
         configurarPowerUps(powerUpDto, inputGame);
         produtorDeEventoPowerUp = new ProdutorDeEvento<PowerUpInfoDto>();
-        contadorTimeout = new ContadorPowerUpInativo();
+        contadorTimeout = new ControlePowerUpInativo();
     }    
 
     private void configurarPowerUps(PowerUpGameDto powerUpDto, InputGame inputGame)
@@ -80,14 +80,14 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     public void expirado()
     {        
-        contadorTimeout = new ContadorPowerUpInativo();
+        contadorTimeout = new ControlePowerUpInativo();
         PowerUpInfoDto powerUpInfo = FactoryPowerUpInfoDto.ofExpirado();        
         produtorDeEventoPowerUp.produziuEvento(powerUpInfo);
     }
 
     public void finalizado()
     {
-        contadorTimeout = new ContadorPowerUpInativo();
+        contadorTimeout = new ControlePowerUpInativo();
         somPowerUp.playSomBackgroundNormal();
         produtorDeEventoPowerUp.produziuEvento(FactoryPowerUpInfoDto.ofFinalizar(indiceBtnEmAcao));
     }
@@ -99,7 +99,7 @@ public class PowerUpManager : PowerUpAcaoAcionamento,
 
     private void iniciarPowerUp(PowerUpInfoDto powerUpInfo)
     {
-        contadorTimeout = new ContadorPowerUpAtivo(powerUpInfo);
+        contadorTimeout = new ControlePowerUpAtivo(powerUpInfo);
 
         InteracaoPowerUpComComponente interacao = powerUpInfo.interacaoPupComComponentes;
         if (InteracaoComponentesUtils.isNotInteracaoComGarra(interacao))
