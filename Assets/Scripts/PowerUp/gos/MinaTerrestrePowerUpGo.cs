@@ -39,7 +39,7 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
 
     public override void resetPup()
     {
-        desligar();
+        desligarComEstado();
         animacao.playIdle();        
         powerUpFinalizacao.preFinalizar();
 
@@ -51,7 +51,7 @@ public class MinaTerrestrePowerUpGo : PowerUpSemInteracao
     {
         yield return new WaitForSeconds(getDelayInicioMaterialize());
 
-        ligar();
+        ligarComEstado();
         efeitoSpwaner.desligar();
         animacao.playPreExplodir();
         yield return new WaitForSeconds(powerUpDto.MinaDto.DelayInicial);

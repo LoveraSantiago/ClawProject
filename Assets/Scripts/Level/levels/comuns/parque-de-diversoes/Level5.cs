@@ -2,7 +2,7 @@
 {
     public class Level5 : AbstractLevelOrdem
     {
-        public Level5() : base(new MaquinaCorModeradaProfissional()) { }
+        public Level5() : base(new MaquinaCorTerrosaEscura()) { }
 
         public override string getLevelTitle()
         {

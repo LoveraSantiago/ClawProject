@@ -2,7 +2,7 @@ namespace parque_diversoes
 {
     public class Level10 : AbstractLevelNormal
     {
-        public Level10() : base(new MaquinaCorBrilhanteFresco()) { }
+        public Level10() : base(new MaquinaCorSucrilhosComErvilha()) { }
 
         public override string getLevelTitle()
         {

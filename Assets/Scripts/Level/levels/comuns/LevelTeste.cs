@@ -16,7 +16,7 @@ public class LevelTeste : AbstractLevelNormal
     {
         return new int[,]
         {
-            {-1, -1, -1, 12, -1, -1, -1},
+            {-1, -1,  3,  1,  2, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
@@ -25,6 +25,13 @@ public class LevelTeste : AbstractLevelNormal
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
+    }
+
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        return new PowerUpsParaLevel(2)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BURACO_NEGRO, PowerUpEnums.TIPO.BURACO_NEGRO })
+           .addPupsParaBtn(1, new PowerUpEnums.TIPO[] {  });
     }
 
     public override bool devolverParaBoard()

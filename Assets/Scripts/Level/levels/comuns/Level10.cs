@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 public class Level10 : AbstractLevelOvo
 {
     public Level10() : base(new MaquinaCorSucrilhosComErvilha()){}

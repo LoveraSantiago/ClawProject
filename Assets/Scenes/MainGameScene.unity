@@ -26485,8 +26485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd445b5d8cb03c43a6f8120733b95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapa: 1
-  indiceLevel: 3
+  mapa: 2
+  indiceLevel: 1
   mainDto:
     delayInicio: 0.25
     dragCollider: {fileID: 491158116}
@@ -27620,7 +27620,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 118
+  m_SortingOrder: 98
   m_Sprite: {fileID: 21300000, guid: 9b9e964a7d3e4534e8b8d9eb474a2adb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.43137255}
   m_FlipX: 0
@@ -58823,7 +58823,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 120
+  m_SortingOrder: 100
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!212 &918276164 stripped
 SpriteRenderer:
@@ -95892,6 +95892,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3135691194380746706, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3135691194380746707, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -95935,6 +95939,10 @@ PrefabInstance:
     - target: {fileID: 3135691194380746707, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135691194689639051, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
@@ -101045,7 +101053,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 119
+  m_SortingOrder: 99
   m_Sprite: {fileID: 21300000, guid: ea429f8887fe94d439817998d49c5daf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.43137255}
   m_FlipX: 0
@@ -143938,6 +143946,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3135691194380746706, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3135691194380746707, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -143981,6 +143993,10 @@ PrefabInstance:
     - target: {fileID: 3135691194380746707, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135691194689639051, guid: f0e175e3359755343b89805d5d7c7901, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0e175e3359755343b89805d5d7c7901, type: 3}

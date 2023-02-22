@@ -49,8 +49,8 @@ public abstract class AbstractAsaPowerUpGo : PowerUpSemInteracao,
         colocarNaPosicao(coletavelAcertado.getPosicao());
         Sprite spriteAcertado = getSpriteAcertado(coletavelAcertado);        
         receberSprite(spriteAcertado);
-        coletavelAcertado.desligar();        
-        ligar();
+        coletavelAcertado.desligarComEstado();        
+        ligarComEstado();
 
         somPowerUp.playSomAnjo();
         playAnimacaoVoar();

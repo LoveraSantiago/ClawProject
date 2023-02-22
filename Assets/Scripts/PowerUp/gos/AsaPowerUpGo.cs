@@ -25,7 +25,7 @@ public class AsaPowerUpGo : AbstractAsaPowerUpGo
     protected override IEnumerator finalizarVoar(Coletavel coletavelAcertado)
     {
         powerUpFinalizacao.preFinalizar(coletavelAcertado);
-        desligar();
+        desligarComEstado();
 
         yield return new WaitForSeconds(powerUpDto.AsaDto.DelayFinalizar);
 

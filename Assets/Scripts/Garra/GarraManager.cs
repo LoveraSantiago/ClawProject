@@ -8,10 +8,12 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
                             AcaoBoardElevadoFim.ConsumidorEvento,
                             AcaoColetadoFim.ConsumidorEvento,
                             AcaoCacaNiquel.ConsumidorEvento,
+                            AcaoDesligarMaquinaResultado.ConsumidorEvento,                            
                             ConsumidorDeEventoTrigger,
                             Fornecedor<int>
 {
     private bool tempoEsgotadoEmAcao;
+    private bool gameOver;
 
     private CaboDaGarra cabo;
     private GerenciadorDeMovimentacaoNormal  gerDeMovNormal;
@@ -22,6 +24,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     {
         AbstractMovimentacaoDaGarra.configurar(garraDto, somGarra);
         cabo = new CaboDaGarra(garraDto.CaboDaGarraDto);
+        gameOver = false;
 
         if(LevelUtils.isCacaNiquelLevel())
         {
@@ -45,24 +48,32 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     public void update(GarraDto garraDto, InputGame inputGame)
     {
-        //Debug.log("garra update");
+        //Debug.log("garra update");        
         gerDeMovAtual.update(inputGame);
         cabo.update(garraDto.CaboDaGarraDto);
+        
     }
 
     public void fixedUpdate(GarraDto garraDto)
     {
         //Debug.log("garra fixedUpdate");
+        
         gerDeMovAtual.fixedUpdate();        
-        cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.Corpo.TransformBaseCorpo.transform);
+        cabo.fixedUpdate(garraDto.CaboDaGarraDto, garraDto.Corpo.TransformBaseCorpo.transform);        
     }      
 
     public void parar()
     {
-        //Debug.log("garra parar");
+        Debug.Log("garra parar");
         gerDeMovNormal.trocarParaAcaoParado();
         gerDeMovAtual = gerDeMovNormal;
         ////Debug.log(gerDeMovAtual);
+    }
+
+    private void pararGameOver()
+    {
+        gameOver = true;
+        parar();
     }
 
     public int fornecer()
@@ -109,15 +120,33 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     void AcaoColetado.ConsumidorEvento.consumirEvento(InformacoesColetadoDto evento)
     {
         //Debug.log("garra consumindo evento InformacoesColetadoDto");
-        gerDeMovAtual.garraComemorar();
+        InformacoesFimDeJogoDto infoFimDeJogo = evento.infosFimDeJogo;
+        if (infoFimDeJogo.fimDeJogo)
+        {
+            pararGameOver();
+        }
+        else
+        {
+            gerDeMovAtual.garraComemorar();
+        }
     }        
 
     void AcaoTempoEsgotado.ConsumidorEvento.consumirEvento(TempoEsgotadoDto evento)
     {
         //Debug.log("garra consumindo evento TempoEsgotadoDto");
-        tempoEsgotadoEmAcao = true;        
-        gerDeMovNormal.trocarParaAcaoVoltarParaCima();
-        gerDeMovAtual = gerDeMovNormal;
+        if (!evento.isTimeOver())
+        {
+            if (!gameOver)
+            {
+                tempoEsgotadoEmAcao = true;        
+                gerDeMovNormal.trocarParaAcaoVoltarParaCima();
+                gerDeMovAtual = gerDeMovNormal;
+            }
+        }
+        else
+        {
+            pararGameOver();
+        }
     }
 
     void AcaoBoardElevadoFim.ConsumidorEvento.consumirEvento(SubidaBoardAcaoFim evento)
@@ -125,9 +154,16 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         //Debug.log("garra consumindo evento SubidaBoardAcaoFim");
         if (!evento.isGameOver)
         {
-            tempoEsgotadoEmAcao = false;
-            gerDeMovNormal.iniciarMovimentacoes();
-            gerDeMovAtual = gerDeMovNormal;
+            if (!gameOver)
+            {
+                tempoEsgotadoEmAcao = false;
+                gerDeMovNormal.iniciarMovimentacoes();
+                gerDeMovAtual = gerDeMovNormal;
+            }
+        }
+        else
+        {
+            pararGameOver();
         }
     }
 
@@ -136,7 +172,10 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         //Debug.log("garra consumindo evento ColetadoFimDto");
         if (gerDeMovAtual != gerDeMovPowerUp && !tempoEsgotadoEmAcao && gerDeMovAtual.getContagemDeSubidas() > 0)
         {
-            gerDeMovNormal.iniciarMovimentacoes();            
+            if (!gameOver)
+            {
+                gerDeMovNormal.iniciarMovimentacoes();            
+            }
         }
     }
 
@@ -151,6 +190,14 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         {
             gerDeMovAtual.garraComemorar();
         }
+    }
+
+    void AcaoDesligarMaquinaResultado.ConsumidorEvento.consumirEvento(ResultadoDesligarMaquinaDto evento)
+    {
+        if (evento.resultadoSair)
+        {
+            pararGameOver();
+        }
     }   
 
     //TODO tentar unificar
@@ -163,4 +210,5 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
     {
         return gerDeMovAtual.getProdutorDeEvento();
     }
+
 }

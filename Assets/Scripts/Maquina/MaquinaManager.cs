@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,                                                            
-                              AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
+public class MaquinaManager : AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento,                                                            
                               AcaoBoardElevadoFim.ConsumidorEvento,                              
                               AcaoBotaoPowerUpVazio.ConsumidorEvento,
@@ -151,10 +150,5 @@ public class MaquinaManager : AcaoDesligarMaquina.ProdutorEvento,
     void AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento.consumirEvento(Direcao evento)
     {
         ((AcaoSincroniaComDirecaoDaGarra.ConsumidorEvento)joystick).consumirEvento(evento);
-    }    
-
-    ProdutorDeEvento<DesligarMaquinaDto> AcaoDesligarMaquina.ProdutorEvento.getProdutorDeEvento()
-    {
-        return ((AcaoDesligarMaquina.ProdutorEvento)botaoLigaDesliga).getProdutorDeEvento();
-    }  
+    }        
 }

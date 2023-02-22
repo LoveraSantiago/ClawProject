@@ -2,7 +2,7 @@ namespace parque_diversoes
 {
     public class Level9 : AbstractLevelObstaculos
     {
-        public Level9() : base(new MaquinaCorTerrosaEscura()) { }
+        public Level9() : base(new MaquinaCorSurpresaDeAbobora()) { }
 
         public override string getLevelTitle()
         {

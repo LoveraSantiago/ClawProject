@@ -11,7 +11,7 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
         : base(powerUpDto.BombaDto.BombaGo, new FinderDeSprRenderer1Nivel("imagem"), "bomba")
     {
         //Debug.Log("Bomba instanciada");
-        desligar();        
+        desligarComEstado();        
     }     
 
     public override float getAnguloParaGarraSegurar()
@@ -45,13 +45,13 @@ public class BombaPowerUpGo : AbstractExplosivelPowerUpGo,
     private IEnumerator showBombaAposSpawnMaterialize(EfeitoSpawner efeitoSpwaner)
     {
         yield return new WaitForSeconds(getDelayInicio());
-        ligar();
+        ligarComEstado();
         efeitoSpwaner.desligar();
     }
 
     public override void resetPup()
     {
-        desligar();
+        desligarComEstado();
         animacao.playIdle();
         acionado = false;
         desafixarVerticalmente();

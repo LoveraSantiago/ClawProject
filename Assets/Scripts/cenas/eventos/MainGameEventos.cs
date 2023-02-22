@@ -44,15 +44,18 @@ public class MainGameEventos
             .adicionarConsumidor(allGameManagers.getArcoIrisEfeito());
 
         new AcaoDesligarMaquina()
-            .configurarProdutor (allGameManagers.getMaquinaManager())
+            .configurarProdutor (allGameManagers.getBotaoLigaDesliga())
             .adicionarConsumidor(allGameManagers.getModalSair())
-            .adicionarConsumidor((InputGameImpl)allGameManagers.getInputGame());
+            .adicionarConsumidor((InputGameImpl)allGameManagers.getInputGame())
+            .adicionarConsumidor(allGameManagers.getPowerUpManager());
 
         new AcaoDesligarMaquinaResultado()
             .configurarProdutor(allGameManagers.getModalSair())
             .adicionarConsumidor(allGameManagers.getBotaoLigaDesliga())
             .adicionarConsumidor(allGameManagers.getBotoesPowerUp())
-            .adicionarConsumidor((InputGameImpl)allGameManagers.getInputGame());
+            .adicionarConsumidor((InputGameImpl)allGameManagers.getInputGame())
+            .adicionarConsumidor(allGameManagers.getGarraManager())
+            .adicionarConsumidor(allGameManagers.getPowerUpManager());  
     }
 
     protected virtual AcaoColetado configurarAcaoColetado()

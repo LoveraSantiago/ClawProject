@@ -2,7 +2,7 @@ namespace parque_diversoes
 {
     public class Level6 : AbstractLevelObstaculos
     {
-        public Level6() : base(new MaquinaCorBrilhanteFresco())
+        public Level6() : base(new MaquinaCorDramaticaCrocante())
         {
         }
 

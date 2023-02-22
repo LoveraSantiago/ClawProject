@@ -1,10 +1,8 @@
-using System.Collections.Generic;
-
 namespace parque_diversoes
 {
     public class Level4 : AbstractLevelObstaculos
     {
-        public Level4() : base(new MaquinaCorTerrosaEscura()) { }
+        public Level4() : base(new MaquinaCorModeradaProfissional()) { }
 
         public override string getLevelTitle()
         {

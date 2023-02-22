@@ -56,7 +56,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
     private IEnumerator showMissilAposSpawnMaterialize(EfeitoSpawner efeitoSpwaner)
     {
         yield return new WaitForSeconds(getDelayInicio());
-        ligar();
+        ligarComEstado();
         hitColetavel = false;
         HumAlvoGOSelecionado alvoSelecionado = new HumAlvoGOSelecionado();
         coroutine = ContextoEstaticoUtils.monoBehaviour.StartCoroutine(alvoSelecionado.onSelecionar(inputGame, this));
@@ -65,7 +65,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
 
     public override void resetPup()
     {
-        desligar();
+        desligarComEstado();
         powerUpFinalizacao.finalizado();
         efeitoFaiscas.gameObject.SetActive(false);
         animacao.parado();
@@ -141,7 +141,7 @@ public class MissilTeleguiadoPowerUpGo : AbstractExplosivelPowerUpGo,
         }
         else
         {
-            go.desligar();
+            go.desligarComEstado();
         }
     }
 

@@ -82,7 +82,7 @@ public class ColetaveisManager : ConsumidorDeEventoTrigger,
     private void processarColetado(GameObject gameObjectColetado)
     {   
         Coletavel coletavelAcertado = HelperColetaveisInGame.getColetavelInGameByGoName(gameObjectColetado.name);
-        coletavelAcertado.desligar();
+        coletavelAcertado.desligarComEstado();
 
         int score = contador.contarColetado(coletavelAcertado, somColetagem);
 

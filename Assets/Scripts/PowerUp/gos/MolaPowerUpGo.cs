@@ -28,7 +28,7 @@ public class MolaPowerUpGo : PowerUpSemInteracao
 
     public override void iniciarPup()
     {
-        ligar();
+        ligarComEstado();
         posInicial.y = powerUpDto.HalturaPupDraggavel;
         base.colocarNaPosicao(posInicial);
         ContextoEstaticoUtils.monoBehaviour.StartCoroutine(jumpar());
@@ -36,7 +36,7 @@ public class MolaPowerUpGo : PowerUpSemInteracao
 
     public override void resetPup()
     {
-        desligar();
+        desligarComEstado();
         animacao.parar();        
         powerUpFinalizacao.preFinalizar();
     }

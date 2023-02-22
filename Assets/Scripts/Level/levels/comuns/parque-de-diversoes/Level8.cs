@@ -2,7 +2,7 @@ namespace parque_diversoes
 {
     public class Level8 : AbstractLevelOvo
     {
-        public Level8() : base(new MaquinaCorSucrilhosComErvilha()) { }
+        public Level8() : base(new MaquinaCorAzuisLegais()) { }
 
         public override string getLevelTitle()
         {
