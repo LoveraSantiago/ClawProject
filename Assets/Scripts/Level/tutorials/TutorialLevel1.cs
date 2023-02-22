@@ -26,7 +26,8 @@ public class TutorialLevel1 : AcaoColetadoFim.ConsumidorEvento
     private void prepararTutorialParteCliqueColetavel()
     {
         mainDto.TutorialDto.LblTexto.text = "Toque para coletar!\nCombine 3 itens iguais para um combo.";
-        animacaoTutorial.playColetar();        
+        //animacaoTutorial.playColetar();
+        animacaoTutorial.playAnimacao(AnimacaoTutorial.TUTORIAL_GARRA_COLETAR);
     }
 
     private void tratarColetadosParteCliqueColetavel()
