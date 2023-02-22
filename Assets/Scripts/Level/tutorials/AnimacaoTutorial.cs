@@ -12,11 +12,22 @@ public class AnimacaoTutorial
     private static readonly int ANIM_PARTE_ALVO          = Animator.StringToHash("clique-alvo");
     private static readonly int ANIM_PARTE_ALVO_COLETADO = Animator.StringToHash("clique-alvo-coletado");
 
+    //Novo Tutorial
+    public static readonly int TUTORIAL_IDLE = Animator.StringToHash("tutorial-idle");
+    public static readonly int TUTORIAL_GARRA_COLETAR = Animator.StringToHash("garra-toque");
+    public static readonly int TUTORIAL_POWER_UP = Animator.StringToHash("power-up-toque");
+    public static readonly int TUTORIAL_POWER_UP_ARRASTA = Animator.StringToHash("power-up-arrasta");
+
     private Animator animator;
 
     public AnimacaoTutorial(Animator animator)
     {
-        this.animator = animator;
+        this.animator = animator;       
+    }
+
+    public void playAnimacao(int animation)
+    {
+        animator.Play(animation);
     }
 
     public void playIdle()
