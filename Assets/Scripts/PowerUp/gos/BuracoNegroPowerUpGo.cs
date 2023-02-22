@@ -168,6 +168,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         {
             resetPup();
             powerUpFinalizacao.finalizado();
+            tresAlvosSelecionados.desligarMiras();
             tresAlvosSelecionados.timeout();
         }
     }
