@@ -44,7 +44,7 @@ public class MainGameEventos
             .adicionarConsumidor(allGameManagers.getArcoIrisEfeito());
 
         new AcaoDesligarMaquina()
-            .configurarProdutor (allGameManagers.getMaquinaManager())
+            .configurarProdutor (allGameManagers.getBotaoLigaDesliga())
             .adicionarConsumidor(allGameManagers.getModalSair())
             .adicionarConsumidor((InputGameImpl)allGameManagers.getInputGame());
 
