@@ -28,13 +28,13 @@ public class TutorialPowerUpMola : AbstractTutorialPowerUp
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getGarraManager().parar();
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Mola disponivel!\nArraste para a area de acao\ne solte!";
+        mainDto.TutorialDto.LblTextoOld.text = "Mola disponivel!\nArraste para a area de acao\ne solte!";
         animacaoTutorial.playDragAreaPowerUp();
     }
 
     private void prepararMensagemPupAcionado()
     {
-        mainDto.TutorialDto.LblTexto.text = "Otimo! Mola acionada!\nA mola alavanca os coletaveis\nda parte de baixo.";
+        mainDto.TutorialDto.LblTextoOld.text = "Otimo! Mola acionada!\nA mola alavanca os coletaveis\nda parte de baixo.";
         animacaoTutorial.playParteTexto();
     }
 

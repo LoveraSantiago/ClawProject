@@ -17,7 +17,7 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
         this.allGameManagers = allGameManagers;
         this.mainDto = mainDto;
         animacaoTutorial = new AnimacaoTutorialNew(mainDto.TutorialDto);
-        mainDto.TutorialDto.LblTexto.text = "Clique no botão e selecione um power-up incrível!";
+        mainDto.TutorialDto.LblTextoNew.text = "Clique no botão e selecione um power-up incrível!";
     }
 
     public void iniciar()
@@ -29,7 +29,7 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
     private void prepararTutorialPartePowerUp()
     {
         allGameManagers.getGarraManager().parar();
-        mainDto.TutorialDto.LblTexto.text = "Clique no botão e selecione um power-up incrível!";
+        mainDto.TutorialDto.LblTextoNew.text = "Clique no botão e selecione um power-up incrível!";
 
         mainDto.TutorialDto.GoTutorialNew.SetActive(true);
         allGameManagers.getBotoesPowerUp().reativarPowerUp();
@@ -39,14 +39,14 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
 
     private void prepararTutorialParteDragPup()
     {
-        mainDto.TutorialDto.LblTexto.text = "Uau, duas mini-Asas! Encontre ela e clique para selecionar!";
+        mainDto.TutorialDto.LblTextoNew.text = "Uau, duas mini-Asas! Encontre ela e clique para selecionar!";
         //animacaoTutorial.playDragPowerUp();
         animacaoTutorial.playDragAreaPowerUp();
     }
 
     private void prepararTutorialParteAcionarPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Mini-Asas traz o seu coletável para cima do outros. Clique nela!";
+        mainDto.TutorialDto.LblTextoNew.text = "Mini-Asas traz o seu coletável para cima do outros. Clique nela!";
         //animacaoTutorial.playPowerUp();
         animacaoTutorial.playPowerUp();
     }
@@ -63,7 +63,7 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
         if (!finalizacaoDisparada)
         {
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "Ah!O tempo de ativação\nda Mini-Asa acabou.";
+            mainDto.TutorialDto.LblTextoNew.text = "Ah!O tempo de ativação\nda Mini-Asa acabou.";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
@@ -75,7 +75,7 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
         if (!finalizacaoDisparada)
         {
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "Agora selecione um item! Rápido, cuidado com o tempo!";
+            mainDto.TutorialDto.LblTextoNew.text = "Agora selecione um item! Rápido, cuidado com o tempo!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialSucesso));

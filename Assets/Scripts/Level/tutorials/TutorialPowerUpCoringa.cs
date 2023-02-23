@@ -29,26 +29,26 @@ public class TutorialPowerUpCoringa : AbstractTutorialPowerUp
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getGarraManager().parar();
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Coringa disponivel!\nAcione o botão power up!";
+        mainDto.TutorialDto.LblTextoOld.text = "Coringa disponivel!\nAcione o botão power up!";
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialInicioPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Selecione o coletavel \npara ser alterado.";
+        mainDto.TutorialDto.LblTextoOld.text = "Selecione o coletavel \npara ser alterado.";
         animacaoTutorial.playParteTextoBaixo();
     }
 
     private void prepararTutorialColetavel1Acionado()
     {
-        mainDto.TutorialDto.LblTexto.text = "Clique no momento que o coletavel\nse transformar no desejado.";
+        mainDto.TutorialDto.LblTextoOld.text = "Clique no momento que o coletavel\nse transformar no desejado.";
         animacaoTutorial.playParteTextoBaixo();
     }
 
     private void prepararTutorialColetavel2Acionado()
     {
         emAndamento = true;
-        mainDto.TutorialDto.LblTexto.text = "Otimo!\nColetavel transformado!";
+        mainDto.TutorialDto.LblTextoOld.text = "Otimo!\nColetavel transformado!";
         animacaoTutorial.playParteTextoBaixo();
     }
 
@@ -84,7 +84,7 @@ public class TutorialPowerUpCoringa : AbstractTutorialPowerUp
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao do Coringa acabou!";
+            mainDto.TutorialDto.LblTextoOld.text = "O tempo de duracao do Coringa acabou!";
             animacaoTutorial.playParteTextoBaixo();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));

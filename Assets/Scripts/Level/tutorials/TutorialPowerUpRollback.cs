@@ -29,13 +29,13 @@ public class TutorialPowerUpRollback : AbstractTutorialPowerUp
     {
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Rollback disponivel!\nAcione o botão power up!";
+        mainDto.TutorialDto.LblTextoOld.text = "Rollback disponivel!\nAcione o botão power up!";
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialInicioPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Selecione um coletado \npara ser devolvido à\nmaquina.";
+        mainDto.TutorialDto.LblTextoOld.text = "Selecione um coletado \npara ser devolvido à\nmaquina.";
         animacaoTutorial.playAlvoColetado();
     }
 
@@ -45,7 +45,7 @@ public class TutorialPowerUpRollback : AbstractTutorialPowerUp
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao do Rollback acabou!";
+            mainDto.TutorialDto.LblTextoOld.text = "O tempo de duracao do Rollback acabou!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
@@ -70,7 +70,7 @@ public class TutorialPowerUpRollback : AbstractTutorialPowerUp
     public void prepararTutorialColetavelDevolvido()
     {
         emAndamento = true;
-        mainDto.TutorialDto.LblTexto.text = "Otimo!\nO Coletavel foi devolvido à maquina.";
+        mainDto.TutorialDto.LblTextoOld.text = "Otimo!\nO Coletavel foi devolvido à maquina.";
         animacaoTutorial.playParteTexto();
     }
 

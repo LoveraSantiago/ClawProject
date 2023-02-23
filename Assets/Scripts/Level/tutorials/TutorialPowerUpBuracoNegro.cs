@@ -29,32 +29,32 @@ public class TutorialPowerUpBuracoNegro : AbstractTutorialPowerUp
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getGarraManager().parar();
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Buraco Negro disponivel!\nAcione o botão power up!";
+        mainDto.TutorialDto.LblTextoOld.text = "Buraco Negro disponivel!\nAcione o botão power up!";
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialInicioPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Selecione o 1º coletavel\npara ser atraído pelo\nburaco negro.";
+        mainDto.TutorialDto.LblTextoOld.text = "Selecione o 1º coletavel\npara ser atraído pelo\nburaco negro.";
         animacaoTutorial.playParteTextoBaixo();
     }
 
     private void prepararTutorialColetavel1Acionado()
     {
-        mainDto.TutorialDto.LblTexto.text = "Selecione o 2º coletavel\npara ser atraído pelo\nburaco negro.";
+        mainDto.TutorialDto.LblTextoOld.text = "Selecione o 2º coletavel\npara ser atraído pelo\nburaco negro.";
         animacaoTutorial.playParteTextoBaixo();
     }
     
     private void prepararTutorialColetavel2Acionado()
     {
-        mainDto.TutorialDto.LblTexto.text = "Selecione o 3º coletavel\npara ser atraído pelo\nburaco negro.";
+        mainDto.TutorialDto.LblTextoOld.text = "Selecione o 3º coletavel\npara ser atraído pelo\nburaco negro.";
         animacaoTutorial.playParteTextoBaixo();
     }
 
     private void prepararTutorialColetavel3Acionado()
     {
         emAndamento = true;
-        mainDto.TutorialDto.LblTexto.text = "Otimo!\n3 Coletaveis\ncoletados de uma vez!";
+        mainDto.TutorialDto.LblTextoOld.text = "Otimo!\n3 Coletaveis\ncoletados de uma vez!";
         animacaoTutorial.playParteTextoBaixo();
     }
 
@@ -90,7 +90,7 @@ public class TutorialPowerUpBuracoNegro : AbstractTutorialPowerUp
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao do\nBuraco Negro acabou!";
+            mainDto.TutorialDto.LblTextoOld.text = "O tempo de duracao do\nBuraco Negro acabou!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));

@@ -29,13 +29,13 @@ public class TutorialPowerUpBomba : AbstractTutorialPowerUp
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getGarraManager().parar();
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Bomba disponivel!\nAcione o botão power up!";
+        mainDto.TutorialDto.LblTextoOld.text = "Bomba disponivel!\nAcione o botão power up!";
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialInicioPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Clique para soltar a bomba!\nO display timer marca a duração.";
+        mainDto.TutorialDto.LblTextoOld.text = "Clique para soltar a bomba!\nO display timer marca a duração.";
         animacaoTutorial.playColetar();
     }
 
@@ -45,7 +45,7 @@ public class TutorialPowerUpBomba : AbstractTutorialPowerUp
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao da Bomba acabou!";
+            mainDto.TutorialDto.LblTextoOld.text = "O tempo de duracao da Bomba acabou!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));        
@@ -55,7 +55,7 @@ public class TutorialPowerUpBomba : AbstractTutorialPowerUp
     private void prepararMensagemPupAcionado()
     {
         emAndamento = true;
-        mainDto.TutorialDto.LblTexto.text = "Otimo! Bomba acionada!\nA explosão espalha os coletaveis.";
+        mainDto.TutorialDto.LblTextoOld.text = "Otimo! Bomba acionada!\nA explosão espalha os coletaveis.";
         animacaoTutorial.playParteTexto();        
     }
 

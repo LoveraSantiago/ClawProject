@@ -28,13 +28,13 @@ public class TutorialPowerUpMinaTerrestre : AbstractTutorialPowerUp
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getGarraManager().parar();
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Mina disponivel!\nArraste para a area de acao\ne solte!";
+        mainDto.TutorialDto.LblTextoOld.text = "Mina disponivel!\nArraste para a area de acao\ne solte!";
         animacaoTutorial.playDragAreaPowerUp();
     }
 
     private void prepararMensagemPupAcionado()
     {
-        mainDto.TutorialDto.LblTexto.text = "Otimo! Mina acionada!\nA explosão espalha os coletaveis\nna parte de baixo.";
+        mainDto.TutorialDto.LblTextoOld.text = "Otimo! Mina acionada!\nA explosão espalha os coletaveis\nna parte de baixo.";
         animacaoTutorial.playParteTexto();
     }
 
