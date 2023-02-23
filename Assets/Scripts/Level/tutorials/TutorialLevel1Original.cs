@@ -19,13 +19,13 @@ public class TutorialLevel1Original : AcaoColetadoFim.ConsumidorEvento,
     {
         this.allGameManagers = allGameManagers;
         this.mainDto         = mainDto;
-        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
+        animacaoTutorial = new AnimacaoTutorialNew(mainDto.TutorialDto);
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
     public void iniciar()
     {
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
+        mainDto.TutorialDto.GoTutorialNew.SetActive(true);
         prepararTutorialParteCliqueColetavel();
     }
 
@@ -58,7 +58,7 @@ public class TutorialLevel1Original : AcaoColetadoFim.ConsumidorEvento,
         allGameManagers.getGarraManager().parar();        
         mainDto.TutorialDto.LblTexto.text = "Acione o bot�o power up!\nEsta vazio agora.";        
 
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
+        mainDto.TutorialDto.GoTutorialNew.SetActive(true);
         allGameManagers.getBotoesPowerUp().reativarPowerUp();
         animacaoTutorial.playPowerUp();
     }
@@ -111,7 +111,7 @@ public class TutorialLevel1Original : AcaoColetadoFim.ConsumidorEvento,
         allGameManagers.getGarraManager().parar();
         yield return new WaitForSeconds(valorDelay);
 
-        mainDto.TutorialDto.GoTutorial.SetActive(false);
+        mainDto.TutorialDto.GoTutorialNew.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
         InformacoesColetadoDto eventoFim = new InformacoesColetadoDto()
             .addInfoFimDeJogo(infoFimDeJogo);

@@ -15,13 +15,13 @@ public class TutorialPowerUpMissilNuclear : AbstractTutorialPowerUp
     {
         this.mainDto = mainDto;
         this.allGameManagers = allGameManagers;
-        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
+        animacaoTutorial = new AnimacaoTutorialOld(mainDto.TutorialDto);
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
     public override void iniciar()
     {
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
+        mainDto.TutorialDto.GoTutorialOld.SetActive(true);
         prepararTutorialCliquePowerUp();
     }
 
@@ -77,7 +77,7 @@ public class TutorialPowerUpMissilNuclear : AbstractTutorialPowerUp
         allGameManagers.getGarraManager().parar();
         yield return new WaitForSeconds(valorDelay);
 
-        mainDto.TutorialDto.GoTutorial.SetActive(false);
+        mainDto.TutorialDto.GoTutorialOld.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
         InformacoesColetadoDto eventoFim = new InformacoesColetadoDto()
             .addInfoFimDeJogo(infoFimDeJogo);

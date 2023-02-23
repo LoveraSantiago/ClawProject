@@ -27193,7 +27193,8 @@ MonoBehaviour:
     tutorialDto:
       delayFimTutorialSucesso: 1.5
       delayFimTutorialExpirado: 2.1
-      animator: {fileID: 1005132745}
+      animatorOld: {fileID: 846774093}
+      animatorNew: {fileID: 1005132745}
       lblTexto: {fileID: 2085958955}
 --- !u!61 &491158116
 BoxCollider2D:
