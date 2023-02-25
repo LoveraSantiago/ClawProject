@@ -233,6 +233,11 @@ public class SomManagerGame : SomManager,
     {
         audioPlayOneShot(getAudioSourceColetaveis(), audioDto.SomCoin);
     }
+
+    public void playSomMola()
+    {
+        audioPlayOneShot(getAudioSourcePowerUp(), audioDto.SomMola);
+    }
     //***** IMPLEMENTACAO INTERFACE SomCacaNiquel FIM    *****
 
     private AudioSource getAudioSourceGarraComplementar()
@@ -268,5 +273,5 @@ public class SomManagerGame : SomManager,
     private AudioSource getAudioSourcePowerUp()
     {
         return getAudioSource(9);
-    }   
+    }    
 }

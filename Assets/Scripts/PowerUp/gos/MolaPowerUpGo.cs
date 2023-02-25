@@ -56,6 +56,7 @@ public class MolaPowerUpGo : PowerUpSemInteracao
         dispararColetaveis(coletaveis);
         EfeitoConfete efeitoConfete = new EfeitoConfete();
         efeitoConfete.dispararConfetes(powerUpDto.MolaDto.EfeitoConfete, getPosicao());
+        somPowerUp.playSomMola();
         yield return null;
 
         yield return pousarColetaveis(coletaveis);

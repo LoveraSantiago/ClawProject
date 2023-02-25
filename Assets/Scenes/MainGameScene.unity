@@ -27169,6 +27169,9 @@ MonoBehaviour:
       somChoque:
         volume: 0.7
         audioClip: {fileID: 8300000, guid: 3b7cf09f52ff3ee47aae090f4be7d349, type: 3}
+      somMola:
+        volume: 0.75
+        audioClip: {fileID: 8300000, guid: 9ec6380f28b788f4f92a35e853443bed, type: 3}
       somBackgroundCacaNiquel:
         volume: 0.5
         audioClip: {fileID: 8300000, guid: 1a749cb0629a7ea4ab5c4e90b40c5668, type: 3}

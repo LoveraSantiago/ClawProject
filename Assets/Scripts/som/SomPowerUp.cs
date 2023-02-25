@@ -8,6 +8,8 @@ public interface SomPowerUp
 
     void playSomAnjo();
     void playSomChoque();
+
+    void playSomMola();
     void iniciarSomAsa();
     void pararSomAsa();
 
