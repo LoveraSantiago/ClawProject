@@ -11067,7 +11067,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.75, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -27016,6 +27016,7 @@ MonoBehaviour:
         renderer: {fileID: 381374554}
       molaDto:
         delayInicial: 0.2
+        efeitoConfete: {fileID: 1855993832}
         molaGo: {fileID: 4127936681606313068, guid: 726671bcf599b5647aba20a381f66cfc, type: 3}
     uiDto:
       delayAbrirModal: 0.3
@@ -75200,7 +75201,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.75, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -122407,12 +122408,12 @@ GameObject:
   - component: {fileID: 1855993832}
   - component: {fileID: 1855993831}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: confetes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1855993830
 Transform:
   m_ObjectHideFlags: 0
@@ -123075,7 +123076,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.4
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -123444,7 +123445,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 25
+        scalar: 50
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -142893,7 +142894,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.75, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

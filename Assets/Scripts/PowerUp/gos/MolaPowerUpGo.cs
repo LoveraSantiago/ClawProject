@@ -38,7 +38,11 @@ public class MolaPowerUpGo : PowerUpSemInteracao
     {
         desligarComEstado();
         animacao.parar();        
+
+        EfeitoConfete efeitoConfete = new EfeitoConfete();
+        efeitoConfete.desligarConfetes(powerUpDto.MolaDto.EfeitoConfete);
         powerUpFinalizacao.preFinalizar();
+
     }
     
     private IEnumerator jumpar()
@@ -49,7 +53,9 @@ public class MolaPowerUpGo : PowerUpSemInteracao
         animacao.pular();
         yield return new WaitForSeconds(0.1f);
 
-        dispararColetaveis(coletaveis);       
+        dispararColetaveis(coletaveis);
+        EfeitoConfete efeitoConfete = new EfeitoConfete();
+        efeitoConfete.dispararConfetes(powerUpDto.MolaDto.EfeitoConfete, getPosicao());
         yield return null;
 
         yield return pousarColetaveis(coletaveis);
