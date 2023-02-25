@@ -11,14 +11,20 @@ public class LevelAbobora : AbstractLevelColetavel
     {
         return new int[,]
         {
-            {0, 0, 0, 1, 2, 3, 4},
-            {3, 4, 5, 6, 6, 5, -1},
-            {2, 1, 2, 3, 4, 5, 6},
-            {-1, 7, 7, 7, -1, -1, -1},
+            {0, 1, 2, 7, 3, 4, 5},
+             {5, 4, 3, 2, 1, 0, -1},
+            {-1, -1, 7, -1, 7, -1, -1},
+             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }        
+    }
+
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        return new PowerUpsParaLevel(1)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MOLA });
+    }
 }

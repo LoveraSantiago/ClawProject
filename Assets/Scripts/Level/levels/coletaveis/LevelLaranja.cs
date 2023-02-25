@@ -11,14 +11,20 @@ public class LevelLaranja : AbstractLevelColetavel
     {
         return new int[,]
         {
-            {5, 5, 2, 2, 2, 5, 5},
-            {1, 1, 1, 1, 1, 1, -1},
-            {-1, -1, -1, -1, -1, -1, -1},
+            {5, 5, 5, 5, 5, 5, 5},
+             {1, 1, 2, 2, 1, 1, -1},
+            {-1, -1, 1, 2, 1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }    
+    }
+
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        return new PowerUpsParaLevel(1)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.BOMBA_DA_GARRA });
+    }
 }

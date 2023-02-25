@@ -10,14 +10,20 @@ public class LevelEstrelaMarinha : AbstractLevelColetavel
     public override int[,] getArrayDeColetaveis()
     {
         return new int[,]{
-            {6, 5, 5, 5, 5, 5, 5},
-            {4, 4, 4, 4, 4, 4, -1},
-            {3, 3, 3, 3, 3, 3, 6},
-            {2, 2, 2, 2, 2, 2, -1},
-            {6, 1, 1, 1, 1, 1, 1},
+            {1, 2, 5, 6, 5, 2, 1},
+             {-1, 4, 6, 6, 4, -1, -1},
+            {-1, -1, 3, -1, 3, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }          
+    }
+
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        return new PowerUpsParaLevel(1)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MINA_TERRESTRE });
+    }
 }
