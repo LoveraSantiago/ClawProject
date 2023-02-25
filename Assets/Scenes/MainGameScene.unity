@@ -27188,6 +27188,9 @@ MonoBehaviour:
     - {fileID: 2086766167889621234}
     - {fileID: 1245264362}
     - {fileID: 1488572495}
+    - {fileID: 1148070032}
+    - {fileID: 1005132743}
+    - {fileID: 846774091}
     prefabMateriais: {fileID: 7059144454470520481, guid: 3e6ecbb5f438fe24ea469414c97e85d3, type: 3}
     prefabLevelsDto: {fileID: 6475782412477804365, guid: 21a8117a6bfee1a48b00a0eb76687748, type: 3}
     tutorialDto:
