@@ -11,14 +11,20 @@ public class LevelCoco : AbstractLevelColetavel
     {
         return new int[,]
         {
-            {5, 3, 3, 3, 3, 3, 3},
-            {2, 5, 2, 2, 2, 2, -1},
-            {1, 1, 1, 5, 1, 1, 1},
-            {0, 0, 0, 0, 0, 0, 0},
+            {0, 1, 2, 5, 3, 4, 6},
+             {5, 6, 4, 0, 1, 5, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }   
+    }
+
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        return new PowerUpsParaLevel(1)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.TELEPORTE });
+    }
 }
