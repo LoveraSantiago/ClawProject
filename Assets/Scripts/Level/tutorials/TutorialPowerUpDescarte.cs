@@ -14,14 +14,14 @@ public class TutorialPowerUpDescarte : AbstractTutorialPowerUp
     {
         this.allGameManagers = allGameManagers;
         this.mainDto = mainDto;
-        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
+        animacaoTutorial = new AnimacaoTutorialOld(mainDto.TutorialDto);
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
     public override void iniciar()
     {
         allGameManagers.getGarraManager().parar();
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
+        mainDto.TutorialDto.GoTutorialOld.SetActive(true);
         prepararTutorialCliquePowerUp();
     }
 
@@ -29,13 +29,13 @@ public class TutorialPowerUpDescarte : AbstractTutorialPowerUp
     {
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Descarte disponivel!\nAcione o botão power up!";
+        mainDto.TutorialDto.LblTextoOld.text = "Descarte disponivel!\nAcione o botão power up!";
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialInicioPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Selecione um coletado \npara ser descartado\nde vez.";
+        mainDto.TutorialDto.LblTextoOld.text = "Selecione um coletado \npara ser descartado\nde vez.";
         animacaoTutorial.playAlvoColetado();
     }
 
@@ -45,7 +45,7 @@ public class TutorialPowerUpDescarte : AbstractTutorialPowerUp
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao do Descarte acabou!";
+            mainDto.TutorialDto.LblTextoOld.text = "O tempo de duracao do Descarte acabou!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
@@ -58,7 +58,7 @@ public class TutorialPowerUpDescarte : AbstractTutorialPowerUp
         allGameManagers.getGarraManager().parar();
         yield return new WaitForSeconds(valorDelay * 2);
 
-        mainDto.TutorialDto.GoTutorial.SetActive(false);
+        mainDto.TutorialDto.GoTutorialOld.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
         InformacoesColetadoDto eventoFim = new InformacoesColetadoDto()
             .addInfoFimDeJogo(infoFimDeJogo);
@@ -70,7 +70,7 @@ public class TutorialPowerUpDescarte : AbstractTutorialPowerUp
     public void prepararTutorialColetavelDevolvido()
     {
         emAndamento = true;
-        mainDto.TutorialDto.LblTexto.text = "Otimo!\nO Coletavel descartado de vez.";
+        mainDto.TutorialDto.LblTextoOld.text = "Otimo!\nO Coletavel descartado de vez.";
         animacaoTutorial.playParteTexto();
     }
 

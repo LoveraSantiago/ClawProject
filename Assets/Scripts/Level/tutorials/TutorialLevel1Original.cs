@@ -19,13 +19,13 @@ public class TutorialLevel1Original : AcaoColetadoFim.ConsumidorEvento,
     {
         this.allGameManagers = allGameManagers;
         this.mainDto         = mainDto;
-        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
+        animacaoTutorial = new AnimacaoTutorialNew(mainDto.TutorialDto);
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
     public void iniciar()
     {
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
+        mainDto.TutorialDto.GoTutorialNew.SetActive(true);
         prepararTutorialParteCliqueColetavel();
     }
 
@@ -33,7 +33,7 @@ public class TutorialLevel1Original : AcaoColetadoFim.ConsumidorEvento,
     {
         allGameManagers.getBotoesPowerUp().desativarPowerUp();
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Vamos Coletar!\nClique para acionar a garra!";
+        mainDto.TutorialDto.LblTextoNew.text = "Vamos Coletar!\nClique para acionar a garra!";
         animacaoTutorial.playColetar();        
     }    
 
@@ -41,11 +41,11 @@ public class TutorialLevel1Original : AcaoColetadoFim.ConsumidorEvento,
     {
         if(contagemColetados == 1)
         {
-            mainDto.TutorialDto.LblTexto.text = "Muito bom!\nColete mais um item!";
+            mainDto.TutorialDto.LblTextoNew.text = "Muito bom!\nColete mais um item!";
         }
         else if (contagemColetados == 2)
         {
-            mainDto.TutorialDto.LblTexto.text = "Vamos completar uma trinca!\nFalta s� mais um!";
+            mainDto.TutorialDto.LblTextoNew.text = "Vamos completar uma trinca!\nFalta s� mais um!";
         }
         if(contagemColetados == 3)
         {
@@ -56,28 +56,28 @@ public class TutorialLevel1Original : AcaoColetadoFim.ConsumidorEvento,
     private void prepararTutorialPartePowerUp()
     {
         allGameManagers.getGarraManager().parar();        
-        mainDto.TutorialDto.LblTexto.text = "Acione o bot�o power up!\nEsta vazio agora.";        
+        mainDto.TutorialDto.LblTextoNew.text = "Acione o bot�o power up!\nEsta vazio agora.";        
 
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
+        mainDto.TutorialDto.GoTutorialNew.SetActive(true);
         allGameManagers.getBotoesPowerUp().reativarPowerUp();
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialParteDragPup()
     {
-        mainDto.TutorialDto.LblTexto.text = "Arraste e encontre um powerup\ndisponivel, clique nele!";
+        mainDto.TutorialDto.LblTextoNew.text = "Arraste e encontre um powerup\ndisponivel, clique nele!";
         animacaoTutorial.playDragPowerUp();        
     }
 
     private void prepararTutorialParteAcionarPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Acione o bot�o power up!\nAgora esta carregado!";
+        mainDto.TutorialDto.LblTextoNew.text = "Acione o bot�o power up!\nAgora esta carregado!";
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialParteJogarPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Ative o powerup!\nClique para soltar o power up!";
+        mainDto.TutorialDto.LblTextoNew.text = "Ative o powerup!\nClique para soltar o power up!";
         animacaoTutorial.playColetar();
     }    
 
@@ -86,7 +86,7 @@ public class TutorialLevel1Original : AcaoColetadoFim.ConsumidorEvento,
         if (!finalizacaoDisparada)
         {
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "ok!O tempo acabou.\nBoa Sorte!";
+            mainDto.TutorialDto.LblTextoNew.text = "ok!O tempo acabou.\nBoa Sorte!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
@@ -98,7 +98,7 @@ public class TutorialLevel1Original : AcaoColetadoFim.ConsumidorEvento,
         if (!finalizacaoDisparada)
         {
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "Isso ai!Muibo bom!\nBoa Sorte!";
+            mainDto.TutorialDto.LblTextoNew.text = "Isso ai!Muibo bom!\nBoa Sorte!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialSucesso));        
@@ -111,7 +111,7 @@ public class TutorialLevel1Original : AcaoColetadoFim.ConsumidorEvento,
         allGameManagers.getGarraManager().parar();
         yield return new WaitForSeconds(valorDelay);
 
-        mainDto.TutorialDto.GoTutorial.SetActive(false);
+        mainDto.TutorialDto.GoTutorialNew.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
         InformacoesColetadoDto eventoFim = new InformacoesColetadoDto()
             .addInfoFimDeJogo(infoFimDeJogo);

@@ -16,8 +16,8 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
     {
         this.allGameManagers = allGameManagers;
         this.mainDto = mainDto;
-        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
-        mainDto.TutorialDto.LblTexto.text = "Clique no botão e selecione um power-up incrível!";
+        animacaoTutorial = new AnimacaoTutorialNew(mainDto.TutorialDto);
+        mainDto.TutorialDto.LblTextoNew.text = "Clique no botão e selecione um power-up incrível!";
     }
 
     public void iniciar()
@@ -29,26 +29,26 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
     private void prepararTutorialPartePowerUp()
     {
         allGameManagers.getGarraManager().parar();
-        mainDto.TutorialDto.LblTexto.text = "Clique no botão e selecione um power-up incrível!";
+        mainDto.TutorialDto.LblTextoNew.text = "Clique no botão e selecione um power-up incrível!";
 
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
+        mainDto.TutorialDto.GoTutorialNew.SetActive(true);
         allGameManagers.getBotoesPowerUp().reativarPowerUp();
         //animacaoTutorial.playPowerUp();
-        animacaoTutorial.playAnimacao(AnimacaoTutorial.TUTORIAL_POWER_UP);
+        animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialParteDragPup()
     {
-        mainDto.TutorialDto.LblTexto.text = "Uau, duas mini-Asas! Encontre ela e clique para selecionar!";
+        mainDto.TutorialDto.LblTextoNew.text = "Uau, duas mini-Asas! Encontre ela e clique para selecionar!";
         //animacaoTutorial.playDragPowerUp();
-        animacaoTutorial.playAnimacao(AnimacaoTutorial.TUTORIAL_POWER_UP_ARRASTA);
+        animacaoTutorial.playDragAreaPowerUp();
     }
 
     private void prepararTutorialParteAcionarPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Mini-Asas traz o seu coletável para cima do outros. Clique nela!";
+        mainDto.TutorialDto.LblTextoNew.text = "Mini-Asas traz o seu coletável para cima do outros. Clique nela!";
         //animacaoTutorial.playPowerUp();
-        animacaoTutorial.playAnimacao(AnimacaoTutorial.TUTORIAL_POWER_UP);
+        animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialParteJogarPowerUp()
@@ -63,7 +63,7 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
         if (!finalizacaoDisparada)
         {
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "Ah!O tempo de ativação\nda Mini-Asa acabou.";
+            mainDto.TutorialDto.LblTextoNew.text = "Ah!O tempo de ativação\nda Mini-Asa acabou.";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
@@ -75,7 +75,7 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
         if (!finalizacaoDisparada)
         {
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "Agora selecione um item! Rápido, cuidado com o tempo!";
+            mainDto.TutorialDto.LblTextoNew.text = "Agora selecione um item! Rápido, cuidado com o tempo!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialSucesso));
@@ -85,7 +85,7 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
     protected IEnumerator coroutineEncerrarTutorial(float valorDelay)
     {   
         yield return new WaitForSeconds(valorDelay);
-        mainDto.TutorialDto.GoTutorial.SetActive(false);                
+        mainDto.TutorialDto.GoTutorialNew.SetActive(false);                
     }
     
     void AcaoBotaoPowerUpVazio.ConsumidorEvento.consumirEvento(int evento)

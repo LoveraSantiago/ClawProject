@@ -15,13 +15,13 @@ public class TutorialPowerUpMissilNuclear : AbstractTutorialPowerUp
     {
         this.mainDto = mainDto;
         this.allGameManagers = allGameManagers;
-        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
+        animacaoTutorial = new AnimacaoTutorialOld(mainDto.TutorialDto);
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
     public override void iniciar()
     {
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
+        mainDto.TutorialDto.GoTutorialOld.SetActive(true);
         prepararTutorialCliquePowerUp();
     }
 
@@ -30,13 +30,13 @@ public class TutorialPowerUpMissilNuclear : AbstractTutorialPowerUp
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getGarraManager().parar();
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Missil Nuclear disponivel!\nAcione o botão power up!";
+        mainDto.TutorialDto.LblTextoOld.text = "Missil Nuclear disponivel!\nAcione o botão power up!";
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialInicioPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Clique para soltar o missil!\nO display timer marca a duração.";
+        mainDto.TutorialDto.LblTextoOld.text = "Clique para soltar o missil!\nO display timer marca a duração.";
         animacaoTutorial.playColetar();
     }
 
@@ -46,7 +46,7 @@ public class TutorialPowerUpMissilNuclear : AbstractTutorialPowerUp
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao do Missil acabou!";
+            mainDto.TutorialDto.LblTextoOld.text = "O tempo de duracao do Missil acabou!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
@@ -56,7 +56,7 @@ public class TutorialPowerUpMissilNuclear : AbstractTutorialPowerUp
     private void prepararMensagemPupAcionado()
     {
         emAndamento = true;
-        mainDto.TutorialDto.LblTexto.text = "Otimo! Missil acionado!\nA explosão gigante espalha os coletaveis.";
+        mainDto.TutorialDto.LblTextoOld.text = "Otimo! Missil acionado!\nA explosão gigante espalha os coletaveis.";
         animacaoTutorial.playParteTexto();
     }
 
@@ -77,7 +77,7 @@ public class TutorialPowerUpMissilNuclear : AbstractTutorialPowerUp
         allGameManagers.getGarraManager().parar();
         yield return new WaitForSeconds(valorDelay);
 
-        mainDto.TutorialDto.GoTutorial.SetActive(false);
+        mainDto.TutorialDto.GoTutorialOld.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
         InformacoesColetadoDto eventoFim = new InformacoesColetadoDto()
             .addInfoFimDeJogo(infoFimDeJogo);

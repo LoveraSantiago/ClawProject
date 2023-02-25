@@ -12,14 +12,14 @@ public class TutorialPowerUpMinaTerrestre : AbstractTutorialPowerUp
     {
         this.mainDto         = mainDto;
         this.allGameManagers = allGameManagers;
-        animacaoTutorial     = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
+        animacaoTutorial     = new AnimacaoTutorialOld(mainDto.TutorialDto);
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
 
     public override void iniciar()
     {
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
+        mainDto.TutorialDto.GoTutorialOld.SetActive(true);
         prepararTutorialDragPowerUp();
     }
 
@@ -28,13 +28,13 @@ public class TutorialPowerUpMinaTerrestre : AbstractTutorialPowerUp
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getGarraManager().parar();
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Mina disponivel!\nArraste para a area de acao\ne solte!";
+        mainDto.TutorialDto.LblTextoOld.text = "Mina disponivel!\nArraste para a area de acao\ne solte!";
         animacaoTutorial.playDragAreaPowerUp();
     }
 
     private void prepararMensagemPupAcionado()
     {
-        mainDto.TutorialDto.LblTexto.text = "Otimo! Mina acionada!\nA explosão espalha os coletaveis\nna parte de baixo.";
+        mainDto.TutorialDto.LblTextoOld.text = "Otimo! Mina acionada!\nA explosão espalha os coletaveis\nna parte de baixo.";
         animacaoTutorial.playParteTexto();
     }
 
@@ -52,7 +52,7 @@ public class TutorialPowerUpMinaTerrestre : AbstractTutorialPowerUp
         allGameManagers.getGarraManager().parar();
         yield return new WaitForSeconds(valorDelay);
 
-        mainDto.TutorialDto.GoTutorial.SetActive(false);
+        mainDto.TutorialDto.GoTutorialOld.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
         InformacoesColetadoDto eventoFim = new InformacoesColetadoDto()
             .addInfoFimDeJogo(infoFimDeJogo);

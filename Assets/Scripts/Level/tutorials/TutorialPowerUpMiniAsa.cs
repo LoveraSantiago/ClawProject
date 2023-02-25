@@ -14,13 +14,13 @@ public class TutorialPowerUpMiniAsa : AbstractTutorialPowerUp
     {
         this.allGameManagers = allGameManagers;
         this.mainDto = mainDto;
-        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
+        animacaoTutorial = new AnimacaoTutorialOld(mainDto.TutorialDto);
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
     public override void iniciar()
     {
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
+        mainDto.TutorialDto.GoTutorialOld.SetActive(true);
         prepararTutorialCliquePowerUp();
     }
 
@@ -29,20 +29,20 @@ public class TutorialPowerUpMiniAsa : AbstractTutorialPowerUp
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getGarraManager().parar();
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Mini-Asa disponivel!\nAcione o botão power up!";
+        mainDto.TutorialDto.LblTextoOld.text = "Mini-Asa disponivel!\nAcione o botão power up!";
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialInicioPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Selecione um coletavel \npara receber Mini-Asas.";
+        mainDto.TutorialDto.LblTextoOld.text = "Selecione um coletavel \npara receber Mini-Asas.";
         animacaoTutorial.playParteTexto();
     }
 
     private void prepararMensagemPupAcionado()
     {
         emAndamento = true;
-        mainDto.TutorialDto.LblTexto.text = "Otimo! Mini-Asas acionadas!\nO coletavel esta em uma posição melhor.";
+        mainDto.TutorialDto.LblTextoOld.text = "Otimo! Mini-Asas acionadas!\nO coletavel esta em uma posição melhor.";
         animacaoTutorial.playParteTexto();
     }
 
@@ -63,7 +63,8 @@ public class TutorialPowerUpMiniAsa : AbstractTutorialPowerUp
         allGameManagers.getGarraManager().parar();
         yield return new WaitForSeconds(valorDelay);
 
-        mainDto.TutorialDto.GoTutorial.SetActive(false);
+        mainDto.TutorialDto.GoTutorialOld.SetActive(false);
+
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
         InformacoesColetadoDto eventoFim = new InformacoesColetadoDto()
             .addInfoFimDeJogo(infoFimDeJogo);
@@ -78,7 +79,7 @@ public class TutorialPowerUpMiniAsa : AbstractTutorialPowerUp
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao da Mini-Asa acabou!";
+            mainDto.TutorialDto.LblTextoOld.text = "O tempo de duracao da Mini-Asa acabou!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));

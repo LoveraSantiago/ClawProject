@@ -14,13 +14,13 @@ public class TutorialPowerUpIgual : AbstractTutorialPowerUp
     {
         this.allGameManagers = allGameManagers;
         this.mainDto         = mainDto;
-        animacaoTutorial = new AnimacaoTutorial(mainDto.TutorialDto.Animator);
+        animacaoTutorial = new AnimacaoTutorialOld(mainDto.TutorialDto);
         produtorDeEvento = new ProdutorDeEvento<InformacoesColetadoDto>();
     }
 
     public override void iniciar()
     {
-        mainDto.TutorialDto.GoTutorial.SetActive(true);
+        mainDto.TutorialDto.GoTutorialOld.SetActive(true);
         prepararTutorialCliquePowerUp();
     }
 
@@ -29,7 +29,7 @@ public class TutorialPowerUpIgual : AbstractTutorialPowerUp
         //Debug.Log("prepararTutorialCliquePowerUp");
         allGameManagers.getGarraManager().parar();
         allGameManagers.getBotaoLigaDesliga().desligar();
-        mainDto.TutorialDto.LblTexto.text = "Igual disponivel!\nAcione o botão power up!";
+        mainDto.TutorialDto.LblTextoOld.text = "Igual disponivel!\nAcione o botão power up!";
         animacaoTutorial.playPowerUp();
     }
 
@@ -39,7 +39,7 @@ public class TutorialPowerUpIgual : AbstractTutorialPowerUp
         {
             allGameManagers.getGarraManager().parar();
             finalizacaoDisparada = true;
-            mainDto.TutorialDto.LblTexto.text = "O tempo de duracao do Igual acabou!";
+            mainDto.TutorialDto.LblTextoOld.text = "O tempo de duracao do Igual acabou!";
             animacaoTutorial.playParteTexto();
             ContextoEstaticoUtils.monoBehaviour.StartCoroutine(
                 coroutineEncerrarTutorial(mainDto.TutorialDto.DelayFimTutorialExpirado));
@@ -48,20 +48,20 @@ public class TutorialPowerUpIgual : AbstractTutorialPowerUp
 
     private void prepararTutorialInicioPowerUp()
     {
-        mainDto.TutorialDto.LblTexto.text = "Selecione o 1º coletavel\npara ser igualado.";
+        mainDto.TutorialDto.LblTextoOld.text = "Selecione o 1º coletavel\npara ser igualado.";
         animacaoTutorial.playParteTextoBaixo();
     }
     
     private void prepararTutorialColetavel1Acionado()
     {
-        mainDto.TutorialDto.LblTexto.text = "Selecione o 2º coletavel\npara igualar.\n";
+        mainDto.TutorialDto.LblTextoOld.text = "Selecione o 2º coletavel\npara igualar.\n";
         animacaoTutorial.playParteTextoBaixo();
     }
     
     private void prepararTutorialColetavel2Acionado()
     {
         emAndamento = true;
-        mainDto.TutorialDto.LblTexto.text = "Otimo!\nAgora você tem 2 coletaveis iguais!";
+        mainDto.TutorialDto.LblTextoOld.text = "Otimo!\nAgora você tem 2 coletaveis iguais!";
         animacaoTutorial.playParteTextoBaixo();
     }
 
@@ -71,7 +71,7 @@ public class TutorialPowerUpIgual : AbstractTutorialPowerUp
         allGameManagers.getGarraManager().parar();
         yield return new WaitForSeconds(valorDelay);
 
-        mainDto.TutorialDto.GoTutorial.SetActive(false);
+        mainDto.TutorialDto.GoTutorialOld.SetActive(false);
         InformacoesFimDeJogoDto infoFimDeJogo = InformacoesFimDeJogoDto.ofFimColetados(true);
         InformacoesColetadoDto eventoFim = new InformacoesColetadoDto()
             .addInfoFimDeJogo(infoFimDeJogo);
