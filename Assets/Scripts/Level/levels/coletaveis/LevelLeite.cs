@@ -11,8 +11,8 @@ public class LevelLeite : AbstractLevelColetavel
     {
         return new int[,]
         {
-            {0, 0, 0, 1, 2, 3, 4},
-            {-1, -1, -1, -1, -1, -1, -1},
+            {4, 0, 4, 0, 4, 0, 4},
+             {4, 4, 4, 4, 4, 4, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1},
@@ -20,6 +20,12 @@ public class LevelLeite : AbstractLevelColetavel
             {-1, -1, -1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1, -1, -1}
         };
-    }    
+    }
+
+    public override PowerUpsParaLevel getPupsToLevel()
+    {
+        return new PowerUpsParaLevel(1)
+           .addPupsParaBtn(0, new PowerUpEnums.TIPO[] { PowerUpEnums.TIPO.MISSIL_TELEGUIADO});            
+    }
 
 }
