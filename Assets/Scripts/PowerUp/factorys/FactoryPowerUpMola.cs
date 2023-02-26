@@ -10,8 +10,8 @@ public class FactoryPowerUpMola : AbstractFactoryPowerUp
             .configArea(PowerUpEnums.AREA.CHAO)
             .configSupplierDePowerUpGo(this)
             .configDescricao(
-                "Plante uma mola de impulsão para o coletavel ser posicionado em um lugar melhor para ser coletado",
-                "Arraste a molsa para a area azul indicada. Um impulso ao coletavel de interesse para que ele va para uma posicao melhor para ser coletado.");
+                "Plante uma mola de impulsão para os coletaveis serem posicionados em um lugar melhor",
+                "Fique atento a àrea de plantio da mola.");
     }
 
     public override AbstractPowerUpGo fornecer()

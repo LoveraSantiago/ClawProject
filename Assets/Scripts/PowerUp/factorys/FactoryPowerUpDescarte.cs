@@ -11,7 +11,7 @@ public class FactoryPowerUpDescarte : AbstractFactoryPowerUp
                 .configIsClicavel(true)
                 .configIsColetavel(true)
                 .configDescricao("Descarte um coletado para tentar uma melhor combinação de coletados.",
-                "Selecione no display de coletados o coletado que deseja ser descartado.");
+                "Fique atento ao tempo de duração selecionar um coletado.");
     }
 
     public override AbstractPowerUpGo fornecer()
