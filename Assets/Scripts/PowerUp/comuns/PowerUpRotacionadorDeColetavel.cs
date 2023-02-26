@@ -50,7 +50,7 @@ public class PowerUpRotacionadorDeColetavel
             //Debug.Log("maior que 10 ou menor que -10");
             if ((int)anguloZDouble > 180)
             {
-                Debug.Log("E maior que 180");
+                //Debug.Log("E maior que 180");
                 do
                 {
                     anguloZDouble += velocidade * Time.deltaTime;
@@ -61,7 +61,7 @@ public class PowerUpRotacionadorDeColetavel
             }
             else
             {
-                Debug.Log("E menor que 180");
+                //Debug.Log("E menor que 180");
                 do
                 {
                     anguloZDouble -= velocidade * Time.deltaTime;
