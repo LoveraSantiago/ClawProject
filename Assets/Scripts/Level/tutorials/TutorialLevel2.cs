@@ -6,7 +6,7 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
                               AcaoPowerUpAcionado.ConsumidorEvento
 {
     private bool finalizacaoDisparada;
-    private int contagemColetados;
+    private bool asaSelecionada;
     private MainGameDto mainDto;
     private AnimacaoTutorial animacaoTutorial;    
 
@@ -22,8 +22,7 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
 
     public void iniciar()
     {        
-        prepararTutorialPartePowerUp();
-        //prepararTutorialPartePowerUp();
+        prepararTutorialPartePowerUp();        
     }   
 
     private void prepararTutorialPartePowerUp()
@@ -32,30 +31,25 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
         mainDto.TutorialDto.LblTextoNew.text = "Clique no botão e selecione um power-up incrível!";
 
         mainDto.TutorialDto.GoTutorialNew.SetActive(true);
-        allGameManagers.getBotoesPowerUp().reativarPowerUp();
-        //animacaoTutorial.playPowerUp();
+        allGameManagers.getBotoesPowerUp().reativarPowerUp();        
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialParteDragPup()
     {
-        mainDto.TutorialDto.LblTextoNew.text = "Uau, duas mini-Asas! Encontre ela e clique para selecionar!";
-        //animacaoTutorial.playDragPowerUp();
+        mainDto.TutorialDto.LblTextoNew.text = "Uau, duas mini-Asas! Encontre ela e clique para selecionar!";        
         animacaoTutorial.playDragAreaPowerUp();
     }
 
     private void prepararTutorialParteAcionarPowerUp()
     {
-        mainDto.TutorialDto.LblTextoNew.text = "Mini-Asas traz o seu coletável para cima do outros. Clique nela!";
-        //animacaoTutorial.playPowerUp();
+        mainDto.TutorialDto.LblTextoNew.text = "Mini-Asas traz o seu coletável para cima do outros. Clique nela!";        
         animacaoTutorial.playPowerUp();
     }
 
     private void prepararTutorialParteJogarPowerUp()
     {        
-        prepararFimTutorial();
-        //mainDto.TutorialDto.LblTexto.text = "Mini-Asas servem para um coletavel\nsubir de posição\ndentro da maquina!2";
-        //animacaoTutorial.playParteTexto();
+        prepararFimTutorial();       
     }
 
     private void prepararFimTutorialPupExpirado()
@@ -94,12 +88,13 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
     }
 
     void AcaoPupFromScrollSelecao.ConsumidorEvento.consumirEvento(PowerUpBtnInfoDto evento)
-    {
+    {        
         if (evento.hasEntidade)
         {
+            asaSelecionada = true;
             prepararTutorialParteAcionarPowerUp();
         }
-        else
+        else if(!asaSelecionada)
         {
             prepararTutorialPartePowerUp();
         }
