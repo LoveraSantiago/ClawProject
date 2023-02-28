@@ -40,6 +40,11 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     }
     //IMPLEMENTANDO CLASSE ABSTRATA GERENCIADORDEMOVIMENTACAO FIM
 
+    public void trocarParaAcaoComemorando()
+    {
+        trocarMovimentador(new MovimentacaoComemorando());
+    }
+
     //IMPLEMENTACAO INTERFACE COMUNICADORCOMGERMOVNORMAL INICIO    
     public void trocarParaAcaoDescendo()
     {        
@@ -55,8 +60,8 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     {        
         if (movAtual.isPlayAnimacaoComemorando())
         {
-            //Debug.Log("comemorando");
-            trocarParaAcaoParado();
+            Debug.Log("comemorando");
+            trocarParaAcaoComemorando();
         }
         else
         {
