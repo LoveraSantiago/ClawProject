@@ -55,4 +55,9 @@ public class ComponenteSpriteDeGO : ComponenteEstadoDeGO
     {
         spriteRenderer.material = material;
     }
+
+    public Material getMaterial()
+    {
+        return spriteRenderer.material;
+    }
 }

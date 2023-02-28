@@ -98,7 +98,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
 
     void AcaoPowerUpAcionado.ConsumidorEvento.consumirEvento(PowerUpInfoDto evento)
     {
-        //Debug.log("garra consumindo evento PowerUpInfoDto");
+        //Debug.Log("garra consumindo evento PowerUpInfoDto ");
         if (evento.isEstadoInicio)
         {
             gerDeMovPowerUp.receberGarraInteracaoComPowerUp(evento.interacaoPupComComponentes);

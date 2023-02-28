@@ -84,7 +84,7 @@ public class CanvasDetalhePup : AcaoBotaoPowerUpEscolhido.ProdutorEvento,
     {
         isAberto = true;
         indicePupSelecionado = pupEntidade.indice;
-        Debug.Log("Indice selecionado " + pupEntidade.indice);  
+        //Debug.Log("Indice selecionado " + pupEntidade.indice);  
         
         new PopuladorCanvasDetalhePup()
             .popular(canvasDetalheDto, pupEntidade);

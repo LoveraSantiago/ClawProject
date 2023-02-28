@@ -66,6 +66,7 @@ public class TutorialLevel2 : AcaoBotaoPowerUpVazio.ConsumidorEvento,
 
     private void prepararFimTutorial()
     {
+        Debug.Log("Tutorial encerrar chamado");
         if (!finalizacaoDisparada)
         {
             finalizacaoDisparada = true;

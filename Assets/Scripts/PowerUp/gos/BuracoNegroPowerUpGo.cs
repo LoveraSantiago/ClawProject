@@ -59,6 +59,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         desligarComEstado();
         delayTresOcupados = false;
         alvosSelecionados = false;
+        powerUpFinalizacao.finalizado();
     }
 
     public IEnumerator transformar(TrioDeColetaveis trioDeColetaveis)
@@ -81,7 +82,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
             yield return new WaitForSeconds(0.5f);
         }
 
-        powerUpFinalizacao.finalizado();
+        powerUpFinalizacao.preFinalizar();
         resetPup();
         yield return null;   
     }    
@@ -128,7 +129,8 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
     {
         if(coletavelSelecionado != null)
         {
-            coletavelAtracao.colocarNaPosicao(coletavelSelecionado.getPosicao(), coletavelSelecionado.getAnguloQuaternium());            
+            coletavelAtracao.colocarNaPosicao(coletavelSelecionado.getPosicao(), coletavelSelecionado.getAnguloQuaternium());
+            coletavelAtracao.addMaterial(coletavelSelecionado.getMaterial());
             coletavelAtracao.ligarComEstado();
 
             if (coletavelSelecionado.isOvo())
@@ -145,7 +147,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
     //***** IMPLEMENTACAO TrocaDuplaPowerUpGo INICIO *****
     public void coletavelSelecionado(int ordem, Coletavel coletavel)
     {
-        Debug.Log("Ordem " + ordem);
+        //Debug.Log("Ordem " + ordem);
         if (ordem == 1)
         {
             powerUpFinalizacao.emAndamento(PowerUpEnums.ESTADO.ALVO1_SELECIONADO);
@@ -166,8 +168,8 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
     {
         if (!alvosSelecionados)
         {
-            resetPup();
-            powerUpFinalizacao.finalizado();
+            powerUpFinalizacao.preFinalizar();
+            resetPup();            
             tresAlvosSelecionados.desligarMiras();
             tresAlvosSelecionados.timeout();
         }
