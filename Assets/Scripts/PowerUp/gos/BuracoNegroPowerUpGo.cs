@@ -79,7 +79,7 @@ public class BuracoNegroPowerUpGo : PowerUpSemInteracao,
         while (!isTodosColetados(trioDeColetaveis))
         {
             preFinalizadoJaAcionado = false;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(powerUpDto.BuracoNegroDto.DelayEntreColetados);
         }
 
         powerUpFinalizacao.preFinalizar();
