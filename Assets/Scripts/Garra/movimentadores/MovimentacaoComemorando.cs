@@ -4,7 +4,7 @@ public class MovimentacaoComemorando : AbstractMovimentacaoDaGarraNormal
 
     public override void preInicio()
     {
-        intervaloDeTempo = new IntervaloDeTempo(0.5f);
+        intervaloDeTempo = new IntervaloDeTempo(getTempoComemoracao());
     }
 
 

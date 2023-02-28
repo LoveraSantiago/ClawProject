@@ -12,6 +12,11 @@ public class ComponenteGarraDtoDaGarra
         return garraDto.Velocidades.MovAnguloAbertura;
     }
 
+    public float getTempoDuracaoComemoracao()
+    {
+        return garraDto.TempoComemoracao;
+    }
+
     public float getVelocidadeMovAnguloFechamento()
     {
         return garraDto.Velocidades.MovAnguloFechamento;

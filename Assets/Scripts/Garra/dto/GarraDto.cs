@@ -6,6 +6,7 @@ public class GarraDto
 {       
     [SerializeField] private float posCacaNiquel;
     [SerializeField] private float posLimiteGarra;
+    [SerializeField] private float tempoComemoracao;
     [Space(3)]
     [SerializeField] private float massaMovCima;
     [SerializeField] private float massaMovBaixo;
@@ -30,6 +31,7 @@ public class GarraDto
 
     public float PosCacaNiquel { get { return posCacaNiquel; } }
     public float PosLimiteGarra { get { return posLimiteGarra; } }
+    public float TempoComemoracao { get { return tempoComemoracao; } }
 
     public float MassaMovCima { get { return massaMovCima; } }
     public float MassaMovBaixo { get { return massaMovBaixo; } }

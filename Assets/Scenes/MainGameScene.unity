@@ -26493,6 +26493,7 @@ MonoBehaviour:
     garraDto:
       posCacaNiquel: -1.75
       posLimiteGarra: 2.25
+      tempoComemoracao: 0.6
       massaMovCima: 3
       massaMovBaixo: 2
       massaMovAgarrar: 1

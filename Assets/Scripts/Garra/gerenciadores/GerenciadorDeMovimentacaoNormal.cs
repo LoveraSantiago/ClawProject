@@ -60,7 +60,7 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     {        
         if (movAtual.isPlayAnimacaoComemorando())
         {
-            Debug.Log("comemorando");
+            //Debug.Log("comemorando");
             trocarParaAcaoComemorando();
         }
         else
