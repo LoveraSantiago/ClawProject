@@ -57,6 +57,20 @@ public class GerenciadorDeMovimentacaoNormal : GerenciadorDeMovimentacao,
     }
 
     public void trocarParaAcaoNormal()
+    {
+        if (movAtual.isPlayAnimacaoComemorando())
+        {
+            Debug.Log("comemorando");
+            trocarParaAcaoParado();
+        }
+        else
+        {
+            //Debug.Log("normal");
+            trocarParaMovLateral();
+        }
+    }
+
+    public void trocarParaPosPowerUp()
     {        
         if (movAtual.isPlayAnimacaoComemorando())
         {

@@ -112,7 +112,7 @@ public class GarraManager : AcaoInfoDaGarra.ProdutorEvento,
         else if (evento.isEstadoFinalizar)
         {
             gerDeMovPowerUp.finalizarPowerUp();
-            gerDeMovNormal.trocarParaAcaoNormal();
+            gerDeMovNormal.trocarParaPosPowerUp();
             gerDeMovAtual = gerDeMovNormal;
         }
     }
